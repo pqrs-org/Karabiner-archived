@@ -13747,130 +13747,14 @@ KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
                   <identifier>remap.jis_qwerty2dvorak</identifier>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
                   <appendix>(英数入力のときだけDvorak配列にする)</appendix>
                   <identifier>remap.jis_qwerty2dvorak_roman_only</identifier>
                   <inputmode_only>ROMAN</inputmode_only>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
@@ -13886,65 +13770,7 @@ KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
                     ModifierFlag::OPTION_L,
                     ModifierFlag::OPTION_R
                   </modifier_not>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
               </list>
             </item>
@@ -16594,65 +16420,7 @@ KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
                     ModifierFlag::OPTION_L,
                     ModifierFlag::OPTION_R
                   </modifier_only>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
               </list>
             </item>
@@ -18397,127 +18165,11 @@ KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                   <block>
                     <inputmode_not>JAPANESE</inputmode_not>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                 </item>
                 <item>
@@ -18778,127 +18430,11 @@ KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                   <block>
                     <inputmode_not>JAPANESE</inputmode_not>
-<modifier_not>ModifierFlag::FN</modifier_not>
-
-<autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
-
-<!-- ============================================================ -->
-<!-- Q to ' " -->
-<autogen>--KeyToKey-- KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
-<autogen>--KeyToKey-- KeyCode::W,                          KeyCode::COMMA                            </autogen>
-<autogen>--KeyToKey-- KeyCode::E,                          KeyCode::DOT                              </autogen>
-<autogen>--KeyToKey-- KeyCode::R,                          KeyCode::P                                </autogen>
-<autogen>--KeyToKey-- KeyCode::T,                          KeyCode::Y                                </autogen>
-<autogen>--KeyToKey-- KeyCode::Y,                          KeyCode::F                                </autogen>
-<autogen>--KeyToKey-- KeyCode::U,                          KeyCode::G                                </autogen>
-<autogen>--KeyToKey-- KeyCode::I,                          KeyCode::C                                </autogen>
-<autogen>--KeyToKey-- KeyCode::O,                          KeyCode::R                                </autogen>
-<autogen>--KeyToKey-- KeyCode::P,                          KeyCode::L                                </autogen>
-<!-- @ to / ? -->
-<autogen>--KeyToKey-- KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
-<!-- [ to = + -->
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
-
-<!-- ============================================================ -->
-<autogen>--KeyToKey-- KeyCode::S,                           KeyCode::O                         </autogen>
-<autogen>--KeyToKey-- KeyCode::D,                           KeyCode::E                         </autogen>
-<autogen>--KeyToKey-- KeyCode::F,                           KeyCode::U                         </autogen>
-<autogen>--KeyToKey-- KeyCode::G,                           KeyCode::I                         </autogen>
-<autogen>--KeyToKey-- KeyCode::H,                           KeyCode::D                         </autogen>
-<autogen>--KeyToKey-- KeyCode::J,                           KeyCode::H                         </autogen>
-<autogen>--KeyToKey-- KeyCode::K,                           KeyCode::T                         </autogen>
-<autogen>--KeyToKey-- KeyCode::L,                           KeyCode::N                         </autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
-
-<!-- ============================================================ -->
-<!-- Z to ; : -->
-<autogen>--KeyToKey-- KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
-<autogen>--KeyToKey-- KeyCode::X,                        KeyCode::Q                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::C,                        KeyCode::J                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::V,                        KeyCode::K                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::B,                        KeyCode::X                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::N,                        KeyCode::B                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::COMMA,                    KeyCode::W                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,                      KeyCode::V                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
-<autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                 </item>
                 <item>

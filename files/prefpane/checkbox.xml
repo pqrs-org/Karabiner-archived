@@ -11395,14 +11395,14 @@
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
                   <identifier>remap.jis_qwerty2dvorak</identifier>
-                  <!-- #include "include/jis_dvorak.xml" -->
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
                   <appendix>(英数入力のときだけDvorak配列にする)</appendix>
                   <identifier>remap.jis_qwerty2dvorak_roman_only</identifier>
                   <inputmode_only>ROMAN</inputmode_only>
-                  <!-- #include "include/jis_dvorak.xml" -->
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
                 <item>
                   <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
@@ -11418,7 +11418,7 @@
                     ModifierFlag::OPTION_L,
                     ModifierFlag::OPTION_R
                   </modifier_not>
-                  <!-- #include "include/jis_dvorak.xml" -->
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
               </list>
             </item>
@@ -11980,7 +11980,7 @@
                     ModifierFlag::OPTION_L,
                     ModifierFlag::OPTION_R
                   </modifier_only>
-                  <!-- #include "include/jis_dvorak.xml" -->
+                  <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                 </item>
               </list>
             </item>
@@ -12036,11 +12036,11 @@
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>
-                    <!-- #include "include/jis_dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                   <block>
                     <inputmode_not>JAPANESE</inputmode_not>
-                    <!-- #include "include/jis_dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                 </item>
                 <item>
@@ -12064,11 +12064,11 @@
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>
-                    <!-- #include "include/jis_dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                   <block>
                     <inputmode_not>JAPANESE</inputmode_not>
-                    <!-- #include "include/jis_dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/japanese/dvorak.xml" />
                   </block>
                 </item>
                 <item>
