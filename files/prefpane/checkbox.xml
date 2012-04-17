@@ -12635,6 +12635,6 @@
       </list>
     </item>
 
-    <!-- #include "include/samples.xml" -->
+    <include system_xml_path="include/checkbox/samples.xml" />
   </list>
 </root>
