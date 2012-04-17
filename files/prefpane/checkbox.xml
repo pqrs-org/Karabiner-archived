@@ -11996,7 +11996,7 @@
                 <item>
                   <name>下駄配列（ATOK向け・ローマ字入力）</name>
                   <identifier>remap.geta_input_roman_qwerty_atok</identifier>
-                  <!-- #include "include/jis_geta.xml" -->
+                  <include system_xml_path="include/checkbox/japanese/geta.xml" />
                 </item>
                 <item>
                   <name>新下駄配列（ことえり向け・ローマ字入力）</name>
