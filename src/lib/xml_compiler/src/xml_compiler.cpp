@@ -265,43 +265,4 @@ namespace pqrs {
 
     return true;
   }
-
-  void
-  xml_compiler::extract_include_(ptree_ptr& out,
-                                 const boost::property_tree::ptree::value_type& it) const
-  {
-    out.reset();
-
-    if (it.first != "include") return;
-
-    // ----------------------------------------
-    // replacement
-    pqrs::string::replacement r;
-    if (! it.second.empty()) {
-      replacement_loader loader(*this, r);
-      loader.traverse(it.second);
-    }
-
-    for (auto& i : replacement_) {
-      if (r.find(i.first) == r.end()) {
-        r[i.first] = i.second;
-      }
-    }
-
-    // ----------------------------------------
-    {
-      auto path = it.second.get_optional<std::string>("<xmlattr>.path");
-      if (path) {
-        read_xml_(out, private_xml_directory_, *path, r);
-        return;
-      }
-    }
-    {
-      auto path = it.second.get_optional<std::string>("<xmlattr>.system_xml_path");
-      if (path) {
-        read_xml_(out, system_xml_directory_, *path, r);
-        return;
-      }
-    }
-  }
 }
