@@ -54,7 +54,9 @@ static PreferencesManager* global_instance = nil;
     default_ = [NSMutableDictionary new];
     [self setDefault];
 
-    essential_config_index_ = [[NSArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"include.bridge_essential_config_index" ofType:@"plist"]];
+    essential_configuration_identifiers_ = [[NSArray arrayWithObjects:
+#include "../../../bridge/output/include.bridge_essential_configuration_identifiers.m"
+                                            ] retain];
 
     // ------------------------------------------------------------
     // initialize
@@ -107,7 +109,7 @@ static PreferencesManager* global_instance = nil;
 - (void) dealloc
 {
   [default_ release];
-  [essential_config_index_ release];
+  [essential_configuration_identifiers_ release];
   [serverconnection_ release];
 
   [super dealloc];
@@ -184,9 +186,9 @@ static PreferencesManager* global_instance = nil;
 {
   NSMutableArray* a = [[NSMutableArray new] autorelease];
 
-  if (essential_config_index_) {
-    for (NSString* name in essential_config_index_) {
-      [a addObject:[NSNumber numberWithInt:[self value:name]]];
+  if (essential_configuration_identifiers_) {
+    for (NSString* identifier in essential_configuration_identifiers_) {
+      [a addObject:[NSNumber numberWithInt:[self value:identifier]]];
     }
   }
 

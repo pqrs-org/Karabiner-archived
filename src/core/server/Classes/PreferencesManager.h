@@ -3,7 +3,7 @@
 
 @interface PreferencesManager : NSObject {
   NSMutableDictionary* default_;
-  NSArray* essential_config_index_;
+  NSArray* essential_configuration_identifiers_;
   NSConnection* serverconnection_;
 }
 

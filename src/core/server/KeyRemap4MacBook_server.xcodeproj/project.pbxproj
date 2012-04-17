@@ -37,7 +37,6 @@
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
 		34F37D54149A2E7800D4694B /* languagedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* languagedef.xml */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
-		34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */; };
 		34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34FEAE4C148695AE0042D507 /* replacementdef.xml */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -71,7 +70,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
-		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = ../bridge/keycode/output/symbol_map.xml; sourceTree = "<group>"; };
+		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
 		3451A54F14532D400030EAD7 /* deviceproductdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = deviceproductdef.xml; path = Resources/deviceproductdef.xml; sourceTree = "<group>"; };
 		3451A55014532D400030EAD7 /* devicevendordef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicevendordef.xml; path = Resources/devicevendordef.xml; sourceTree = "<group>"; };
@@ -80,7 +79,7 @@
 		345647351346A7AF00FD0C38 /* UserClient_userspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserClient_userspace.m; path = Classes/UserClient_userspace.m; sourceTree = "<group>"; };
 		345647411346AE1700FD0C38 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../bridge/bridge.h; sourceTree = SOURCE_ROOT; };
+		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
 		347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kr4mb_pub.pem; path = Resources/kr4mb_pub.pem; sourceTree = "<group>"; };
 		347828F813EE5F6500D50AB1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		3484825F152F526B00A9A3BE /* libxml_compiler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml_compiler.a; path = ../../lib/xml_compiler/build/Release/libxml_compiler.a; sourceTree = "<group>"; };
@@ -105,7 +104,6 @@
 		34F37D53149A2E7800D4694B /* languagedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = languagedef.xml; path = Resources/languagedef.xml; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
-		34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = include.bridge_essential_config_index.plist; path = ../bridge/config/output/include.bridge_essential_config_index.plist; sourceTree = SOURCE_ROOT; };
 		34FEAE4C148695AE0042D507 /* replacementdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = replacementdef.xml; path = Resources/replacementdef.xml; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyRemap4MacBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,7 +216,6 @@
 				347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */,
 				343BB0C913E055B10037A81F /* app.icns */,
 				345248A21298F8A2005447DE /* private.xml */,
-				34FB9594128FCC030088B235 /* include.bridge_essential_config_index.plist */,
 				34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */,
 				34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -299,7 +296,6 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */,
 				34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */,
-				34FB9595128FCC030088B235 /* include.bridge_essential_config_index.plist in Resources */,
 				345248A31298F8A2005447DE /* private.xml in Resources */,
 				343BB0CA13E055B10037A81F /* app.icns in Resources */,
 				347828F613EE5F3400D50AB1 /* kr4mb_pub.pem in Resources */,
