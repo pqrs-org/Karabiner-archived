@@ -12,8 +12,8 @@ xcuserdata/
 *.mode1v3
 *.pbxuser
 files/prefpane/output/checkbox.xml
-src/core/bridge/keycode/output
-src/core/bridge/config/output
+src/bridge/output
+src/core/server/Resources/symbol_map.xml
 pkginfo/Info.plist
 src/core/kext/Info.plist
 src/core/server/Info.plist
@@ -23,4 +23,3 @@ src/util/multitouchextension/Info.plist
 src/util/prefpane/Info.plist
 src/util/uninstaller/Info.plist
 src/util/updater/Info.plist
-util/dump_xml_compiler_result/dump_xml_compiler_result/Info.plist
