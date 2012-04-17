@@ -11900,34 +11900,100 @@
                     <item>
                       <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝かな</name>
                       <identifier>remap.oyayubi_shift_roman_space_kana</identifier>
-                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
+
+                      <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_roman.xml">
+                        <replacementdef>
+                          <replacementname>LEFT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::SPACE</replacementvalue>
+                        </replacementdef>
+                        <replacementdef>
+                          <replacementname>RIGHT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::JIS_KANA</replacementvalue>
+                        </replacementdef>
+                      </include>
+
                     </item>
                     <item>
                       <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
                       <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
                       <identifier>remap.oyayubi_shift_roman_eisuu_space</identifier>
-                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput.xml" -->
+
+                      <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_roman.xml">
+                        <replacementdef>
+                          <replacementname>LEFT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::JIS_EISUU</replacementvalue>
+                        </replacementdef>
+                        <replacementdef>
+                          <replacementname>RIGHT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::SPACE</replacementvalue>
+                        </replacementdef>
+                      </include>
+
                     </item>
                     <item>
                       <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝かな</name>
                       <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
                       <identifier>remap.oyayubi_shift_roman_eisuu_kana</identifier>
-                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::JIS_EISUU|g' -e 's|RIGHT_THUMB|KeyCode::JIS_KANA|g' include/jis_oyayubishiftinput.xml" -->
+
+                      <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_roman.xml">
+                        <replacementdef>
+                          <replacementname>LEFT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::JIS_EISUU</replacementvalue>
+                        </replacementdef>
+                        <replacementdef>
+                          <replacementname>RIGHT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::JIS_KANA</replacementvalue>
+                        </replacementdef>
+                      </include>
+
                     </item>
                     <item>
                       <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝右コマンド</name>
                       <identifier>remap.oyayubi_shift_roman_space_command_r</identifier>
-                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::SPACE|g' -e 's|RIGHT_THUMB|KeyCode::COMMAND_R|g' include/jis_oyayubishiftinput.xml" -->
+
+                      <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_roman.xml">
+                        <replacementdef>
+                          <replacementname>LEFT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::SPACE</replacementvalue>
+                        </replacementdef>
+                        <replacementdef>
+                          <replacementname>RIGHT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::COMMAND_R</replacementvalue>
+                        </replacementdef>
+                      </include>
+
                     </item>
                     <item>
                       <name>＜ローマ字モード＞ 左シフト＝左コマンド, 右シフト＝スペース</name>
                       <identifier>remap.oyayubi_shift_roman_command_l_space</identifier>
-                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::COMMAND_L|g' -e 's|RIGHT_THUMB|KeyCode::SPACE|g' include/jis_oyayubishiftinput.xml" -->
+
+                      <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_roman.xml">
+                        <replacementdef>
+                          <replacementname>LEFT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::COMMAND_L</replacementvalue>
+                        </replacementdef>
+                        <replacementdef>
+                          <replacementname>RIGHT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::SPACE</replacementvalue>
+                        </replacementdef>
+                      </include>
+
                     </item>
                     <item>
                       <name>＜ローマ字モード＞ 左シフト＝左コマンド, 右シフト＝右コマンド</name>
                       <identifier>remap.oyayubi_shift_roman_command_l_command_r</identifier>
-                      <!-- #include "| sed -e 's|LEFT_THUMB|KeyCode::COMMAND_L|g' -e 's|RIGHT_THUMB|KeyCode::COMMAND_R|g' include/jis_oyayubishiftinput.xml" -->
+
+                      <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_roman.xml">
+                        <replacementdef>
+                          <replacementname>LEFT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::COMMAND_L</replacementvalue>
+                        </replacementdef>
+                        <replacementdef>
+                          <replacementname>RIGHT_THUMB</replacementname>
+                          <replacementvalue>KeyCode::COMMAND_R</replacementvalue>
+                        </replacementdef>
+                      </include>
+
                     </item>
                     <item><name>------------------------------------------------------------</name></item>
                     <item>
