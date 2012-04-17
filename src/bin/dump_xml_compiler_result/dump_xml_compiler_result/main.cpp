@@ -145,7 +145,7 @@ main(int argc, const char* argv[])
     for (size_t i = 0;; ++i) {
       auto essential_configuration = xml_compiler.get_essential_configuration(i);
       if (! essential_configuration) {
-        std::cout << "nil," << std::endl;
+        std::cout << "nil" << std::endl;
         break;
       }
 
