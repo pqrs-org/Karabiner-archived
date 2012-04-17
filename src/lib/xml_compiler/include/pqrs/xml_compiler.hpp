@@ -83,9 +83,6 @@ namespace pqrs {
       read_xml_(out, xml_file_path, replacement_);
     }
 
-    void extract_include_(ptree_ptr& out,
-                          const boost::property_tree::ptree::value_type& it) const;
-
     static void normalize_identifier_(std::string& identifier);
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
 

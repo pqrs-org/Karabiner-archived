@@ -50,8 +50,40 @@ namespace pqrs {
     if (stack_.empty()) return;
 
     auto& top = stack_.top();
+    auto& it = *(top.it);
+
+    if (it.first != "include") return;
+
+    // ----------------------------------------
+    // replacement
+    pqrs::string::replacement r;
+    if (! it.second.empty()) {
+      replacement_loader loader(xml_compiler_, r);
+      loader.traverse(it.second);
+    }
+
+    for (auto& i : xml_compiler_.replacement_) {
+      if (r.find(i.first) == r.end()) {
+        r[i.first] = i.second;
+      }
+    }
+
+    // ----------------------------------------
     ptree_ptr pt_ptr;
-    xml_compiler_.extract_include_(pt_ptr, *(top.it));
+    {
+      auto path = it.second.get_optional<std::string>("<xmlattr>.path");
+      if (path) {
+        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.private_xml_directory_, *path, r);
+      }
+    }
+    {
+      auto path = it.second.get_optional<std::string>("<xmlattr>.system_xml_path");
+      if (path) {
+        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.system_xml_directory_, *path, r);
+      }
+    }
+
+    // ----------------------------------------
     if (pt_ptr) {
       ++(top.it);
       collapse_();
