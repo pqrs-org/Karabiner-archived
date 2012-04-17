@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<root>
+  <autogen>--KeyToKey-- KeyCode::S, KeyCode::I</autogen>
+  <autogen>--KeyToKey-- KeyCode::D, KeyCode::U</autogen>
+  <autogen>--KeyToKey-- KeyCode::R, KeyCode::Q</autogen>
+  <autogen>--KeyToKey-- KeyCode::G, KeyCode::O</autogen>
+  <autogen>--KeyToKey-- KeyCode::U, KeyCode::G</autogen>
+  <autogen>--KeyToKey-- KeyCode::I, KeyCode::R</autogen>
+  <autogen>--KeyToKey-- KeyCode::O, KeyCode::W</autogen>
+  <autogen>--KeyToKey-- KeyCode::Z, KeyCode::COMMA</autogen>
+  <autogen>--KeyToKey-- KeyCode::X, KeyCode::DOT</autogen>
+  <autogen>--KeyToKey-- KeyCode::Q, KeyCode::X</autogen>
+  <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::Z</autogen>
+  <autogen>--KeyToKey-- KeyCode::T, KeyCode::SLASH</autogen>
+  <autogen>--KeyToKey-- KeyCode::B, KeyCode::L</autogen>
+  <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::T</autogen>
+  <autogen>--KeyToKey-- KeyCode::L, KeyCode::S</autogen>
+  <autogen>--KeyToKey-- KeyCode::W, KeyCode::MINUS</autogen>
+  <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::D</autogen>
+  <autogen>--KeyToKey-- KeyCode::DOT, KeyCode::B</autogen>
+</root>
