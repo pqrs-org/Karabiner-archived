@@ -1,6 +1,7 @@
 #ifndef PQRS_XML_COMPILER_HPP
 #define PQRS_XML_COMPILER_HPP
 
+#include <stack>
 #include <string>
 #include <stdexcept>
 #include <vector>
@@ -8,6 +9,7 @@
 #include <tr1/unordered_map>
 #include <boost/algorithm/string.hpp>
 #include <boost/format.hpp>
+#include <boost/iterator_adaptors.hpp>
 #include <boost/optional.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include "pqrs/string.hpp"
@@ -15,9 +17,11 @@
 namespace pqrs {
   class xml_compiler {
   public:
+    typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
 #include "pqrs/xml_compiler/detail/exception.hpp"
 #include "pqrs/xml_compiler/detail/error_information.hpp"
 #include "pqrs/xml_compiler/detail/xml_file_path.hpp"
+#include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
@@ -67,8 +71,6 @@ namespace pqrs {
     }
 
   private:
-    typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
-
     void read_xml_(ptree_ptr& out,
                    const std::string& base_diretory,
                    const std::string& relative_file_path,
@@ -87,12 +89,24 @@ namespace pqrs {
     static void normalize_identifier_(std::string& identifier);
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
 
-    void traverse_identifier_(const boost::property_tree::ptree& pt,
+    void traverse_identifier_(const extracted_ptree& pt,
                               const std::string& parent_tag_name);
-    void traverse_autogen_(const boost::property_tree::ptree& pt,
+    void traverse_identifier_(const boost::property_tree::ptree& pt,
+                              const std::string& parent_tag_name) {
+      traverse_identifier_(extracted_ptree(*this, pt), parent_tag_name);
+    }
+
+    void traverse_autogen_(const extracted_ptree& pt,
                            const std::string& identifier,
                            const filter_vector& filter_vector,
                            std::vector<uint32_t>& initialize_vector);
+    void traverse_autogen_(const boost::property_tree::ptree& pt,
+                           const std::string& identifier,
+                           const filter_vector& filter_vector,
+                           std::vector<uint32_t>& initialize_vector) {
+      traverse_autogen_(extracted_ptree(*this, pt), identifier, filter_vector, initialize_vector);
+    }
+
     void handle_autogen(const std::string& autogen,
                         const std::string& raw_autogen,
                         const filter_vector& filter_vector,

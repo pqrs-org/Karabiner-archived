@@ -4,7 +4,8 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-  xml_compiler::filter_vector::filter_vector(const symbol_map& symbol_map, const boost::property_tree::ptree& pt)
+  xml_compiler::filter_vector::filter_vector(const symbol_map& symbol_map,
+                                             const extracted_ptree& pt)
   {
     for (auto& it : pt) {
       /*  */ if (it.first == "not") {

@@ -84,15 +84,9 @@ namespace pqrs {
 
   // ============================================================
   void
-  xml_compiler::symbol_map_loader::traverse(const boost::property_tree::ptree& pt) const
+  xml_compiler::symbol_map_loader::traverse(const extracted_ptree& pt) const
   {
     for (auto& it : pt) {
-      // extract include
-      if (loader_wrapper<const symbol_map_loader>::extract_include(*this, xml_compiler_, it)) {
-        continue;
-      }
-
-      // ------------------------------------------------------------
       if (it.first != "symbol_map") {
         if (! it.second.empty()) {
           traverse(it.second);

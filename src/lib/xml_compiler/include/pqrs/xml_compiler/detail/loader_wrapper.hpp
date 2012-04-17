@@ -13,18 +13,4 @@ public:
       loader.traverse(*ptree_ptr);
     }
   }
-
-  static bool extract_include(T& loader,
-                              const xml_compiler& xml_compiler,
-                              const boost::property_tree::ptree::value_type& it) {
-    ptree_ptr pt_ptr;
-    xml_compiler.extract_include_(pt_ptr, it);
-    if (pt_ptr) {
-      if (! pt_ptr->empty()) {
-        loader.traverse(*pt_ptr);
-      }
-      return true;
-    }
-    return false;
-  }
 };

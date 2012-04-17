@@ -27,13 +27,8 @@ public:
     root_preferences_node_tree_(preferences_node_tree)
   {}
 
-  void traverse(const boost::property_tree::ptree& pt) {
+  void traverse(const extracted_ptree& pt) {
     for (auto& it : pt) {
-      // extract include
-      if (loader_wrapper<remapclasses_initialize_vector_prepare_loader>::extract_include(*this, xml_compiler_, it)) {
-        continue;
-      }
-
       // Hack for speed improvement.
       // We can stop traversing when we met <autogen>.
       if (it.first == "autogen") {
@@ -53,7 +48,7 @@ public:
           }
           std::tr1::shared_ptr<T_preferences_node_tree> ptr(new T_preferences_node_tree(preferences_node_tree_->get_node()));
 
-          for (auto& child : it.second) {
+          for (auto& child : extracted_ptree(xml_compiler_, it.second)) {
             ptr->handle_item_child(child);
 
             if (child.first == "identifier") {
@@ -107,6 +102,10 @@ public:
         }
       }
     }
+  }
+
+  void traverse(const boost::property_tree::ptree& pt) {
+    traverse(extracted_ptree(xml_compiler_, pt));
   }
 
   // call "fixup" at traversing each file.

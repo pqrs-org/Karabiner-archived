@@ -3,7 +3,7 @@
 class filter_vector {
 public:
   filter_vector(void) {}
-  filter_vector(const symbol_map& symbol_map, const boost::property_tree::ptree& pt);
+  filter_vector(const symbol_map& symbol_map, const extracted_ptree& pt);
 
   std::vector<uint32_t>& get(void) {
     return data_;

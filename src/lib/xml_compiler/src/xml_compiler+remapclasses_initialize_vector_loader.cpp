@@ -9,22 +9,11 @@
 
 namespace pqrs {
   void
-  xml_compiler::traverse_identifier_(const boost::property_tree::ptree& pt,
+  xml_compiler::traverse_identifier_(const extracted_ptree& pt,
                                      const std::string& parent_tag_name)
   {
     for (auto& it : pt) {
       try {
-        // extract include
-        {
-          ptree_ptr pt_ptr;
-          extract_include_(pt_ptr, it);
-          if (pt_ptr) {
-            traverse_identifier_(*pt_ptr, parent_tag_name);
-            continue;
-          }
-        }
-
-        // ------------------------------------------------------------
         if (it.first != "identifier") {
           traverse_identifier_(it.second, it.first);
 
@@ -73,7 +62,7 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::traverse_autogen_(const boost::property_tree::ptree& pt,
+  xml_compiler::traverse_autogen_(const extracted_ptree& pt,
                                   const std::string& identifier,
                                   const filter_vector& parent_filter_vector,
                                   std::vector<uint32_t>& initialize_vector)
@@ -94,17 +83,6 @@ namespace pqrs {
     // ----------------------------------------
     for (auto& it : pt) {
       try {
-        // extract include
-        {
-          ptree_ptr pt_ptr;
-          extract_include_(pt_ptr, it);
-          if (pt_ptr) {
-            traverse_autogen_(*pt_ptr, identifier, fv, initialize_vector);
-            continue;
-          }
-        }
-
-        // ------------------------------------------------------------
         if (it.first != "autogen") {
           traverse_autogen_(it.second, identifier, fv, initialize_vector);
 

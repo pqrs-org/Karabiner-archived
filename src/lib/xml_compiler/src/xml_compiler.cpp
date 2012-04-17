@@ -274,8 +274,6 @@ namespace pqrs {
 
     if (it.first != "include") return;
 
-    out.reset(new boost::property_tree::ptree());
-
     // ----------------------------------------
     // replacement
     pqrs::string::replacement r;
