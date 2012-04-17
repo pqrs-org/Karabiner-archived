@@ -9060,7 +9060,7 @@
           <name>Use Dvorak Keyboard Layout</name>
           <appendix>(QWERTY to Dvorak)</appendix>
           <identifier>remap.qwerty2dvorak</identifier>
-          <!-- #include "include/dvorak.xml" -->
+          <include system_xml_path="include/checkbox/dvorak.xml" />
         </item>
 
         <item>
@@ -9072,7 +9072,7 @@
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R
           </modifier_not>
-          <!-- #include "include/dvorak.xml" -->
+          <include system_xml_path="include/checkbox/dvorak.xml" />
         </item>
 
         <item>
@@ -9088,7 +9088,7 @@
             ModifierFlag::OPTION_L,
             ModifierFlag::OPTION_R
           </modifier_not>
-          <!-- #include "include/dvorak.xml" -->
+          <include system_xml_path="include/checkbox/dvorak.xml" />
         </item>
 
         <item>
@@ -9096,7 +9096,7 @@
           <appendix>(QWERTY to Dvorak, except in password dialogue boxes)</appendix>
           <identifier>remap.qwerty2dvorak_ex_password</identifier>
           <not>PASSWORD</not>
-          <!-- #include "include/dvorak.xml" -->
+          <include system_xml_path="include/checkbox/dvorak.xml" />
         </item>
 
         <item>
@@ -12112,11 +12112,11 @@
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>
-                    <!-- #include "include/dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/dvorak.xml" />
                   </block>
                   <block>
                     <inputmode_not>JAPANESE</inputmode_not>
-                    <!-- #include "include/dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/dvorak.xml" />
                   </block>
                 </item>
                 <item>
@@ -12140,11 +12140,11 @@
                       ModifierFlag::OPTION_L,
                       ModifierFlag::OPTION_R
                     </modifier_only>
-                    <!-- #include "include/dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/dvorak.xml" />
                   </block>
                   <block>
                     <inputmode_not>JAPANESE</inputmode_not>
-                    <!-- #include "include/dvorak.xml" -->
+                    <include system_xml_path="include/checkbox/dvorak.xml" />
                   </block>
                 </item>
               </list>
