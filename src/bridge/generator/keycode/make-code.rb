@@ -12,7 +12,7 @@ Dir.glob("*.data") do |filename|
     lastvalue = 0
 
     outfile = {
-      :hpp => open("../output/include.#{classname}.hpp.tmp", "w"),
+      :hpp => open("../../../output/include.kext.#{classname}.hpp.tmp", "w"),
     }
 
     open(filename) do |f|
@@ -59,23 +59,8 @@ Dir.glob("*.data") do |filename|
 end
 
 # ----------------------------------------------------------------------
-# output plist
-# http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/PropertyLists/QuickStartPlist/QuickStartPlist.html
-plist = []
-plist << '<?xml version="1.0" encoding="UTF-8"?>'
-plist << '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">'
-plist << '<plist version="1.0">'
-plist << '  <dict>'
-alldata.each do |info|
-  plist << "    <key>#{info[:name]}</key>"
-  plist << "    <integer>#{info[:value]}</integer>"
-end
-plist << '  </dict>'
-plist << '</plist>'
-
-# ----------------------------------------------------------------------
 # output cpp
-filepath = "../output/include.keycode.cpp.tmp"
+filepath = "../../../output/include.kext.keycode.cpp.tmp"
 open(filepath, 'w') do |f|
   alldata.each do |info|
     f << "const #{info[:classname]} #{info[:name]}(#{info[:value]});\n"
@@ -84,8 +69,8 @@ end
 KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
 
 # ----------------------------------------------------------------------
-# output xml
-filepath = "../output/symbol_map.xml.tmp"
+# symbol_map.xml
+filepath = "../../../../core/server/Resources/symbol_map.xml.tmp"
 open(filepath, 'w') do |f|
   f << "<?xml version=\"1.0\"?>\n"
   f << "<root>\n"
