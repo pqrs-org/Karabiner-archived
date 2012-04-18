@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>ThumbSense</name>
+    <list>
+      <item>
+        <name>What's ThumbSense</name>
+        <appendix>ThumbSense changes key while touching a finger in TrackPad.</appendix>
+        <appendix></appendix>
+        <appendix>- F/J to LeftClick</appendix>
+        <appendix>- D/K to RightClick</appendix>
+        <appendix>- S/L to "CursorMove to ScrollWheel"</appendix>
+        <appendix></appendix>
+        <appendix>- G/H to History Back/Forward (Command+[/Command+])</appendix>
+        <appendix>- W to Close Window (Command+W)</appendix>
+        <identifier>notsave.thumbsense</identifier>
+        <autogen>--ShowStatusMessage-- ThumbSense</autogen>
+        <!-- ============================================================ -->
+        <!-- PointingButton -->
+        <autogen>--KeyToPointingButton-- KeyCode::F,     PointingButton::LEFT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::J,     PointingButton::LEFT</autogen>
+        <block>
+          <config_only>option.thumbsense_space2leftclick</config_only>
+          <autogen>--KeyToPointingButton-- KeyCode::SPACE, PointingButton::LEFT</autogen>
+        </block>
+
+        <autogen>--KeyToPointingButton-- KeyCode::D,     PointingButton::RIGHT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::K,     PointingButton::RIGHT</autogen>
+
+        <!-- ============================================================ -->
+        <!-- Scroll Mode -->
+        <!--
+            We want to keep the scroll mode while pressing S key even if ThumbSense is turned off as follows.
+
+            (1) Turn ThumbSense on.
+            (2) Press S
+            (3) move pointer (=> scroll)
+            (4) Turn ThumbSense off.
+            (5) Turn ThumbSense on.
+            (6) move pointer (=> scroll)
+            (7) Release S
+
+            So, we use ModifierFlag::EXTRA1 instead of KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_*.
+            Because KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_* will be canceled when we turn ThumbSense off.
+          -->
+        <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::EXTRA1</autogen>
+
+        <!-- ============================================================ -->
+        <!-- no E definition -->
+        <!-- no T definition -->
+
+        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::BRACKET_LEFT,  ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+
+        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- no I definition -->
+        <!-- no O definition -->
+        <!-- no M definition -->
+      </item>
+      <item>
+        <name>How to use</name>
+        <appendix>Note: You need a multi-touch device to use ThumbSense.</appendix>
+        <appendix>(MacBook / Magic Mouse / Magic Trackpad)</appendix>
+        <appendix></appendix>
+        <appendix>(1) Launch multi-touch extension from "Misc &amp; Uninstall" tab.</appendix>
+        <appendix>(2) Click the icon in Dock to open preferences window.</appendix>
+        <appendix>(3) Enter "notsave.thumbsense" to Target setting.</appendix>
+      </item>
+      <item>
+        <name>[Option] Use Space as LeftClick in ThumbSense</name>
+        <identifier>option.thumbsense_space2leftclick</identifier>
+      </item>
+
+      <item><name>------------------------------------------------------------</name></item>
+
+      <item>
+        <name>Enhanced Copy&amp;Paste</name>
+        <appendix>You can do copy&amp;paste easily when you use mouse.</appendix>
+        <appendix>(Set "notsave.enhanced_copyandpaste" to Target setting in multi-touch extension)</appendix>
+        <appendix></appendix>
+        <appendix>X to Cut (Command+X)</appendix>
+        <appendix>C to Copy (Command+C)</appendix>
+        <appendix>V to Paste (Command+V)</appendix>
+        <appendix>G to Find Next (Command+G)</appendix>
+        <appendix>A to Select All (Command+A)</appendix>
+        <appendix>W to Close Window (Command+W)</appendix>
+        <appendix>E to Expose</appendix>
+        <appendix>1 to LeftClick</appendix>
+        <appendix>2 to MiddleClick</appendix>
+        <appendix>3 to RightClick</appendix>
+        <identifier>notsave.enhanced_copyandpaste</identifier>
+        <autogen>--ShowStatusMessage-- Copy&amp;Paste</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::G,                     KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::NONE, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_1, ModifierFlag::NONE, PointingButton::LEFT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_2, ModifierFlag::NONE, PointingButton::MIDDLE</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_3, ModifierFlag::NONE, PointingButton::RIGHT</autogen>
+      </item>
+    </list>
+  </item>
+</root>

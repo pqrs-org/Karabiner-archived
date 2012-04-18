@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Simultaneous Key Presses</name>
+    <list>
+      <item>
+        <name>Two cursors to diagonal</name>
+        <appendix>Simultaneous arrow keys presses to Home/End/PageUp/PageDown</appendix>
+        <appendix>(Up+Left to Home)</appendix>
+        <appendix>(Up+Right to PageUp)</appendix>
+        <appendix>(Down+Left to End)</appendix>
+        <appendix>(Down+Right to PageDown)</appendix>
+        <identifier>remap.simcursor_to_diagonal_cursor</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::CURSOR_LEFT, KeyCode::HOME</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::CURSOR_RIGHT, KeyCode::PAGEUP</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_DOWN, KeyCode::CURSOR_LEFT, KeyCode::END</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_DOWN, KeyCode::CURSOR_RIGHT, KeyCode::PAGEDOWN</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [F+HJKL] to Left/Down/Up/Right</name>
+        <appendix>(F+H to Left)</appendix>
+        <appendix>(F+J to Down)</appendix>
+        <appendix>(F+K to Up)</appendix>
+        <appendix>(F+L to Right)</appendix>
+        <identifier>remap.simultaneouskeypresses_vimode_f</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::F, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::F, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::F, KeyCode::CURSOR_UP</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::F, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>5, 6, 7 for Escape and Delete</name>
+        <list>
+          <item>
+            <name>5+6 for Escape</name>
+            <identifier>remap.key5_plus_key6_for_esc</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::KEY_6, KeyCode::ESCAPE</autogen>
+          </item>
+          <item>
+            <name>6+7 for Escape</name>
+            <identifier>remap.key6_plus_key7_for_esc</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::KEY_7, KeyCode::ESCAPE</autogen>
+          </item>
+          <item>
+            <name>6+7 for Delete</name>
+            <identifier>remap.key6_plus_key7_for_delete</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_6, KeyCode::KEY_7, KeyCode::DELETE</autogen>
+          </item>
+          <item>
+            <name>5+7 for Delete</name>
+            <identifier>remap.key5_plus_key7_for_delete</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::KEY_7, KeyCode::DELETE</autogen>
+          </item>
+          <item>
+            <name>5+7 for Forward Delete</name>
+            <identifier>remap.key5_plus_key7_for_forward_delete</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::KEY_5, KeyCode::KEY_7, KeyCode::FORWARD_DELETE</autogen>
+          </item>
+        </list>
+      </item>
+
+      <item>
+        <name>H, J, K for Return, Delete, Tab </name>
+        <list>
+          <item>
+            <name>H+J for Delete</name>
+            <identifier>remap.h_plus_j_for_delete</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::J, KeyCode::DELETE</autogen>
+          </item>
+
+          <item>
+            <name>J+K for Return</name>
+            <identifier>remap.j_plus_k_for_return</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::K, KeyCode::RETURN</autogen>
+          </item>
+
+          <item>
+            <name>H+K for Tab</name>
+            <identifier>remap.h_plus_k_for_tab</identifier>
+            <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::K, KeyCode::TAB</autogen>
+          </item>
+        </list>
+      </item>
+
+      <item>
+        <name>Simultaneous Key Presses [F+J] to Return</name>
+        <identifier>remap.simultaneouskeypresses_fj_to_return</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::RETURN</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [F+J] to Command+Space(invoke Launchbar,Quicksilver,etc)</name>
+        <identifier>remap.simultaneouskeypresses_fj_to_command_space</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::J, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [X+C] to Escape</name>
+        <identifier>remap.simultaneouskeypresses_xc2escape</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [Z+X] to LeftClick</name>
+        <identifier>remap.simultaneouskeypresses_zx2leftclick</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::Z, PointingButton::LEFT</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [M+N] to F13</name>
+        <identifier>remap.simultaneouskeypresses_mn2f13</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::N, KeyCode::M, KeyCode::F13</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [F+N] to Fn_Lock</name>
+        <identifier>remap.simultaneouskeypresses_fn_to_fnlock</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [V+I] to toggle Complete Vi Mode</name>
+        <identifier>remap.simultaneouskeypresses_vi_to_vimode</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::V, KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [Q+P] to M</name>
+        <identifier>remap.simultaneouskeypresses_pq2m</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::P, KeyCode::Q, KeyCode::M</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [K+L] to Control_L+F4 (= Move focus to the active (or next) window)</name>
+        <appendix>(+ Shift+[K+L] to EXPOSE_ALL)</appendix>
+        <appendix>(+ Control+[K+L] to F8)</appendix>
+        <identifier>remap.simultaneouskeypresses_kl2controlLf4</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, VK_SHIFT,   KeyCode::EXPOSE_ALL</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, VK_CONTROL, KeyCode::F8</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L,             KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [K+L] to PC Application Key</name>
+        <appendix>(We can change the key once again)</appendix>
+        <identifier>remap.simultaneouskeypresses_kl2pc_application</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [Shift_R+Up Arrow] to PC Application Key</name>
+        <appendix>(We can change the key once again)</appendix>
+        <identifier>remap.simultaneouskeypresses_shiftRuparrow2pc_application</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::SHIFT_R, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [Up-Arrow+Down-Arrow] to PC Application Key</name>
+        <appendix>(We can change the key once again)</appendix>
+        <identifier>remap.simultaneouskeypresses_UpDown2pc_application</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::CURSOR_UP, KeyCode::CURSOR_DOWN, KeyCode::PC_APPLICATION, SimultaneousKeyPresses::Option::RAW</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [K+L] to Return</name>
+        <appendix>(We can change the key once again)</appendix>
+        <identifier>remap.simultaneouskeypresses_kl2return</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [S+D] to Esc</name>
+        <identifier>remap.simultaneouskeypresses_sd_to_esc</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::D, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [Shift_L+Shift_R] to Capslock</name>
+        <identifier>remap.simultaneouskeypresses_ss_to_capslock</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::CAPSLOCK</autogen>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [Command_L+Command_R] to Return</name>
+        <appendix>(We can change the key once again)</appendix>
+        <identifier>remap.simultaneouskeypresses_commandLcommandR2return</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_L, KeyCode::COMMAND_R, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+      </item>
+    </list>
+  </item>
+</root>
