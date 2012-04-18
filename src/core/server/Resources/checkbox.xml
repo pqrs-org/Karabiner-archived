@@ -3274,7 +3274,7 @@
                   <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
                   <identifier>remap.f1_f12_to_functional</identifier>
                   <not>TERMINAL</not>
-                  <include system_xml_path="include/checkbox/f1_f12_to_functional_withfn.xml" />
+                  <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional_withfn.xml" />
                 </item>
 
                 <item>
@@ -3331,7 +3331,7 @@
                 <item>
                   <name>Macbook series: Keyboard Preferences Configured to Standard Function Keys</name>
                   <appendix>(Except in Virtual Machine, RDC)</appendix>
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <list>
                     <item>
                       <name>F1,F2 to Brightness Adjust (except in Parallels/RDP)</name>
@@ -3387,7 +3387,7 @@
                   <name>For MacbookAir3,1 (Macbook Air Late 2010)</name>
                   <appendix>Keyboard Preferences Configured to Standard Function Keys</appendix>
                   <appendix>(Except in Virtual Machine, RDC)</appendix>
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <list>
                     <item>
                       <name>F1,F2 to Brightness Adjust (except in Parallels/RDP)</name>
@@ -3450,37 +3450,37 @@
                 <item>
                   <name>F1..F12 to Functional</name>
                   <include system_xml_path="include/checkbox/snippets/appendix_f1_f12_to_functional.xml" />
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <identifier>remap.f1_f12_to_functional_all</identifier>
-                  <include system_xml_path="include/checkbox/fnF1_F12_to_function.xml" />
-                  <include system_xml_path="include/checkbox/f1_f12_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/fnF1_F12_to_function.xml" />
+                  <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional.xml" />
                 </item>
                 <item>
                   <name>F5,F6 to Functional</name>
                   <include system_xml_path="include/checkbox/snippets/appendix_f5_f6_to_functional.xml" />
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <identifier>remap.f5_f6_to_functional_all</identifier>
-                  <include system_xml_path="include/checkbox/fnF5_F6_to_function.xml" />
-                  <include system_xml_path="include/checkbox/f5_f6_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/fnF5_F6_to_function.xml" />
+                  <include system_xml_path="include/checkbox/snippets/f5_f6_to_functional.xml" />
                 </item>
 
                 <item>
                   <name>F1..F12 to Functional (except virtual machine, RDC)</name>
                   <include system_xml_path="include/checkbox/snippets/appendix_f1_f12_to_functional.xml" />
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <identifier>remap.f1_f12_to_functional_ex_vm</identifier>
                   <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-                  <include system_xml_path="include/checkbox/fnF1_F12_to_function.xml" />
-                  <include system_xml_path="include/checkbox/f1_f12_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/fnF1_F12_to_function.xml" />
+                  <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional.xml" />
                 </item>
                 <item>
                   <name>F5,F6 to Functional (except virtual machine, RDC)</name>
                   <include system_xml_path="include/checkbox/snippets/appendix_f5_f6_to_functional.xml" />
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <identifier>remap.f5_f6_to_functional_ex_vm</identifier>
                   <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-                  <include system_xml_path="include/checkbox/fnF5_F6_to_function.xml" />
-                  <include system_xml_path="include/checkbox/f5_f6_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/fnF5_F6_to_function.xml" />
+                  <include system_xml_path="include/checkbox/snippets/f5_f6_to_functional.xml" />
                 </item>
 
                 <item>
@@ -3499,9 +3499,9 @@
                   <appendix>Fn+F10 to Volume Mute</appendix>
                   <appendix>Fn+F11 to Volume Down</appendix>
                   <appendix>Fn+F12 to Volume Up</appendix>
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <identifier>remap.fnF1_F12_to_functional</identifier>
-                  <include system_xml_path="include/checkbox/f1_f12_to_functional_withfn.xml" />
+                  <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional_withfn.xml" />
                 </item>
 
                 <item>
@@ -3519,7 +3519,7 @@
                   <appendix>Fn+F10 to Keyboard Light HIGH</appendix>
                   <appendix>Fn+F11 to F11</appendix>
                   <appendix>Fn+F12 to F12</appendix>
-                  <include system_xml_path="include/checkbox/caution_functionkey.xml" />
+                  <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
                   <identifier>remap.fnF1_F12_to_functional_mbp31</identifier>
                   <autogen>--KeyToConsumer--      KeyCode::EXPOSE_ALL, ConsumerKeyCode::VOLUME_MUTE</autogen>
                   <autogen>--KeyToConsumer--      KeyCode::DASHBOARD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
@@ -5051,7 +5051,7 @@
         </item>
         <item>
           <name>Control+Tab to Command+Tab</name>
-          <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
+          <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
           <identifier>remap.controlTab2commandTab</identifier>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
@@ -5062,7 +5062,7 @@
         </item>
         <item>
           <name>Option+Tab to Command+Tab</name>
-          <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
+          <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
           <identifier>remap.optionTab2commandTab</identifier>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
@@ -5545,14 +5545,14 @@
           <name>Control+PNBF to Up/Down/Left/Right</name>
           <identifier>option.emacsmode_controlPNBF</identifier>
           <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-          <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
+          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
           <appendix>(when there are no other modifiers)</appendix>
           <identifier>option.emacsmode_controlPNBF_nomodifiers</identifier>
           <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-          <include system_xml_path="include/checkbox/emacsmode_controlPNBF_nomodifiers.xml" />
+          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_nomodifiers.xml" />
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
@@ -5563,7 +5563,7 @@
           <appendix>(+ retain Control+Shift+AE)</appendix>
           <identifier>option.emacsmode_controlPNBF_ex</identifier>
           <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-          <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
+          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
         </item>
         <item>
           <name>Control+V to PageDown</name>
@@ -5997,25 +5997,25 @@
                   <name>In Emacs, Terminal</name>
                   <identifier>option.emacsmode_force_controlPNBF_term</identifier>
                   <only>EMACS, TERMINAL</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
                 </item>
                 <item>
                   <name>In X11</name>
                   <identifier>option.emacsmode_force_controlPNBF_x11</identifier>
                   <only>X11</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <identifier>option.emacsmode_force_controlPNBF_vm</identifier>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
                 </item>
                 <item>
                   <name>In Eclipse</name>
                   <identifier>option.emacsmode_force_controlPNBF_eclipse</identifier>
                   <only>ECLIPSE</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
                 </item>
               </list>
             </item>
@@ -6031,25 +6031,25 @@
                   <name>In Emacs, Terminal</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_term</identifier>
                   <only>EMACS, TERMINAL</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
                 </item>
                 <item>
                   <name>In X11</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_x11</identifier>
                   <only>X11</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_vm</identifier>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
                 </item>
                 <item>
                   <name>In Eclipse</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_eclipse</identifier>
                   <only>ECLIPSE</only>
-                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
+                  <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
                 </item>
               </list>
             </item>
@@ -7512,7 +7512,7 @@
             <item>
               <name>Change Command_L to Option_L</name>
               <appendix>(Pass-Through Tab and Backquote)</appendix>
-              <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
+              <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
               <identifier>remap.app_term_commandL2optionL_except_tab</identifier>
               <only>TERMINAL</only>
               <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
@@ -7662,7 +7662,7 @@
                   <only>TERMINAL</only>
                   <identifier>remap.app_term_append_escape_for_keys</identifier>
                   <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-                  <include system_xml_path="include/checkbox/append_escape_for_keys.xml" />
+                  <include system_xml_path="include/checkbox/snippets/append_escape_for_keys.xml" />
                 </item>
               </list>
             </item>
@@ -7676,7 +7676,7 @@
                   <appendix>(Change Option_L+Arrow to Control+Arrow)</appendix>
                   <appendix></appendix>
                   <appendix>This setting is useful when you exchange Control+Tab and Command+Tab.</appendix>
-                  <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
+                  <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
                   <identifier>remap.app_term_controlL2optionL_except_tab</identifier>
                   <only>TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
@@ -8097,14 +8097,14 @@
             </item>
             <item>
               <name>Double Command to Quicksilver Mode</name>
-              <include system_xml_path="include/checkbox/quicksilver_mode_doublepressmodifier_appendix.xml" />
+              <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
               <identifier>remap.doublecommand_to_quicksilver_mode</identifier>
               <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
               <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
             </item>
             <item>
               <name>Double Control to Quicksilver Mode</name>
-              <include system_xml_path="include/checkbox/quicksilver_mode_doublepressmodifier_appendix.xml" />
+              <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
               <identifier>remap.doublecontrol_to_quicksilver_mode</identifier>
               <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
               <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
@@ -8125,7 +8125,7 @@
         <item>
           <name>Use Colemak Keyboard Layout</name>
           <identifier>remap.qwerty2colemak</identifier>
-          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
+          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::F</autogen>
           <autogen>--KeyToKey-- KeyCode::R, KeyCode::P</autogen>
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::G</autogen>
@@ -8147,7 +8147,7 @@
         <item>
           <name>Use QWERF Keyboard Layout</name>
           <identifier>remap.qwerty2qwerf</identifier>
-          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
+          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
           <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
           <autogen>--KeyToKey-- KeyCode::U, KeyCode::Y</autogen>
@@ -8163,7 +8163,7 @@
         <item>
           <name>Use Workman Keyboard Layout</name>
           <identifier>remap.qwerty2workman</identifier>
-          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
+          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::D</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::R</autogen>
           <autogen>--KeyToKey-- KeyCode::R, KeyCode::W</autogen>
@@ -8192,7 +8192,7 @@
           <appendix>asdfghjkl &#8594; klmnopqrs</appendix>
           <appendix>zxcvbnm &#8594; tuvwxyz</appendix>
           <identifier>remap.qwerty2abcdef</identifier>
-          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
+          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::Q, KeyCode::A</autogen>
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::B</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::C</autogen>
@@ -8467,12 +8467,12 @@
               <identifier vk_config="true">remap.keypadnumlock</identifier>
               <block>
                 <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-                <include system_xml_path="include/checkbox/keypadnumlock.xml" />
+                <include system_xml_path="include/checkbox/snippets/keypadnumlock.xml" />
               </block>
               <block>
                 <config_only>option.keypadnumlock_vm</config_only>
                 <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-                <include system_xml_path="include/checkbox/keypadnumlock.xml" />
+                <include system_xml_path="include/checkbox/snippets/keypadnumlock.xml" />
               </block>
             </item>
             <item>
@@ -8500,13 +8500,13 @@
               <identifier vk_config="true">remap.keypadnumlock_pclikehomeend</identifier>
               <block>
                 <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-                <include system_xml_path="include/checkbox/keypadnumlock_pclikehomeend.xml" />
+                <include system_xml_path="include/checkbox/snippets/keypadnumlock_pclikehomeend.xml" />
               </block>
               <block>
                 <config_only>option.keypadnumlock_vm</config_only>
                 <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 <!-- We use normal Home/End/PageUp/PageDown in VM -->
-                <include system_xml_path="include/checkbox/keypadnumlock.xml" />
+                <include system_xml_path="include/checkbox/snippets/keypadnumlock.xml" />
               </block>
             </item>
             <item>
@@ -8549,7 +8549,7 @@
           <appendix>(Change End to Control+E)</appendix>
           <identifier>remap.pclikehomeend_emacs</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <include system_xml_path="include/checkbox/pcstyle_homeend_ignore_apps.xml" />
+          <include system_xml_path="include/checkbox/snippets/pcstyle_homeend_ignore_apps.xml" />
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
@@ -8573,7 +8573,7 @@
           <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
           <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
           <identifier>remap.pclikehomeend</identifier>
-          <include system_xml_path="include/checkbox/pcstyle_homeend_ignore_apps.xml" />
+          <include system_xml_path="include/checkbox/snippets/pcstyle_homeend_ignore_apps.xml" />
           <block>
             <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
             <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
@@ -8854,7 +8854,7 @@
           <name>Use Dvorak Keyboard Layout</name>
           <appendix>(QWERTY to Dvorak)</appendix>
           <identifier>remap.qwerty2dvorak</identifier>
-          <include system_xml_path="include/checkbox/dvorak.xml" />
+          <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
         </item>
 
         <item>
@@ -8866,7 +8866,7 @@
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R
           </modifier_not>
-          <include system_xml_path="include/checkbox/dvorak.xml" />
+          <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
         </item>
 
         <item>
@@ -8882,7 +8882,7 @@
             ModifierFlag::OPTION_L,
             ModifierFlag::OPTION_R
           </modifier_not>
-          <include system_xml_path="include/checkbox/dvorak.xml" />
+          <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
         </item>
 
         <item>
@@ -8890,7 +8890,7 @@
           <appendix>(QWERTY to Dvorak, except in password dialogue boxes)</appendix>
           <identifier>remap.qwerty2dvorak_ex_password</identifier>
           <not>PASSWORD</not>
-          <include system_xml_path="include/checkbox/dvorak.xml" />
+          <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
         </item>
 
         <item>

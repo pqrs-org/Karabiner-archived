@@ -1079,7 +1079,7 @@
               </item>
               <item>
                 <name>Double Control to Quicksilver Mode (&amp; 入力ソースを英字にする)</name>
-                <include system_xml_path="include/checkbox/quicksilver_mode_doublepressmodifier_appendix.xml" />
+                <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
                 <identifier>remap.jis_doublecontrol_to_quicksilver_mode_eisuu</identifier>
                 <block>
                   <inputmode_only>JAPANESE</inputmode_only>
@@ -1977,11 +1977,11 @@
                     ModifierFlag::OPTION_L,
                     ModifierFlag::OPTION_R
                   </modifier_only>
-                  <include system_xml_path="include/checkbox/dvorak.xml" />
+                  <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
                 </block>
                 <block>
                   <inputmode_not>JAPANESE</inputmode_not>
-                  <include system_xml_path="include/checkbox/dvorak.xml" />
+                  <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
                 </block>
               </item>
               <item>
@@ -2005,11 +2005,11 @@
                     ModifierFlag::OPTION_L,
                     ModifierFlag::OPTION_R
                   </modifier_only>
-                  <include system_xml_path="include/checkbox/dvorak.xml" />
+                  <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
                 </block>
                 <block>
                   <inputmode_not>JAPANESE</inputmode_not>
-                  <include system_xml_path="include/checkbox/dvorak.xml" />
+                  <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
                 </block>
               </item>
             </list>
