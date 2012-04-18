@@ -919,7 +919,7 @@
         </item>
       </list>
     </item>
-    <include system_xml_path="include/checkbox/japanese.xml" />
+    <include system_xml_path="include/checkbox/languages/japanese.xml" />
     <item>
       <name>For Korean</name>
       <list>
