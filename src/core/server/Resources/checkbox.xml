@@ -5051,11 +5051,7 @@
         </item>
         <item>
           <name>Control+Tab to Command+Tab</name>
-<appendix></appendix>
-<appendix>*** We recommend using following settings together. ***</appendix>
-<appendix>General &gt; Don't restore modifiers in the mouse event</appendix>
-<appendix>Change Shift_L &gt; Shift_L to Lazy_Shift_L</appendix>
-<appendix>Change Shift_R &gt; Shift_R to Lazy_Shift_R</appendix>
+          <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
           <identifier>remap.controlTab2commandTab</identifier>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
@@ -5066,11 +5062,7 @@
         </item>
         <item>
           <name>Option+Tab to Command+Tab</name>
-<appendix></appendix>
-<appendix>*** We recommend using following settings together. ***</appendix>
-<appendix>General &gt; Don't restore modifiers in the mouse event</appendix>
-<appendix>Change Shift_L &gt; Shift_L to Lazy_Shift_L</appendix>
-<appendix>Change Shift_R &gt; Shift_R to Lazy_Shift_R</appendix>
+          <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
           <identifier>remap.optionTab2commandTab</identifier>
           <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </item>
@@ -5553,10 +5545,7 @@
           <name>Control+PNBF to Up/Down/Left/Right</name>
           <identifier>option.emacsmode_controlPNBF</identifier>
           <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+          <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
@@ -6031,37 +6020,25 @@
                   <name>In Emacs, Terminal</name>
                   <identifier>option.emacsmode_force_controlPNBF_term</identifier>
                   <only>EMACS, TERMINAL</only>
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
                 </item>
                 <item>
                   <name>In X11</name>
                   <identifier>option.emacsmode_force_controlPNBF_x11</identifier>
                   <only>X11</only>
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <identifier>option.emacsmode_force_controlPNBF_vm</identifier>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
                 </item>
                 <item>
                   <name>In Eclipse</name>
                   <identifier>option.emacsmode_force_controlPNBF_eclipse</identifier>
                   <only>ECLIPSE</only>
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF.xml" />
                 </item>
               </list>
             </item>
@@ -7638,11 +7615,7 @@
             <item>
               <name>Change Command_L to Option_L</name>
               <appendix>(Pass-Through Tab and Backquote)</appendix>
-<appendix></appendix>
-<appendix>*** We recommend using following settings together. ***</appendix>
-<appendix>General &gt; Don't restore modifiers in the mouse event</appendix>
-<appendix>Change Shift_L &gt; Shift_L to Lazy_Shift_L</appendix>
-<appendix>Change Shift_R &gt; Shift_R to Lazy_Shift_R</appendix>
+              <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
               <identifier>remap.app_term_commandL2optionL_except_tab</identifier>
               <only>TERMINAL</only>
               <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
@@ -7806,11 +7779,7 @@
                   <appendix>(Change Option_L+Arrow to Control+Arrow)</appendix>
                   <appendix></appendix>
                   <appendix>This setting is useful when you exchange Control+Tab and Command+Tab.</appendix>
-<appendix></appendix>
-<appendix>*** We recommend using following settings together. ***</appendix>
-<appendix>General &gt; Don't restore modifiers in the mouse event</appendix>
-<appendix>Change Shift_L &gt; Shift_L to Lazy_Shift_L</appendix>
-<appendix>Change Shift_R &gt; Shift_R to Lazy_Shift_R</appendix>
+                  <include system_xml_path="include/checkbox/lazy_recommendation.xml" />
                   <identifier>remap.app_term_controlL2optionL_except_tab</identifier>
                   <only>TERMINAL</only>
                   <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
