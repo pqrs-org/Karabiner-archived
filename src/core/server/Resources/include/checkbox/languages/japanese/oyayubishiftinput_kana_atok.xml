@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_kana_base.xml" />
+  <include system_xml_path="include/checkbox/languages/japanese/oyayubishiftinput_kana_base.xml" />
 
   <!-- 上段 数字キー -->
   <autogen>--KeyToKey-- KeyCode::KEY_1,   ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_1,   KeyCode::CAPSLOCK</autogen>
