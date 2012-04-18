@@ -157,7 +157,12 @@ namespace pqrs {
     try {
       out.reset(new boost::property_tree::ptree());
 
-      std::string path = base_diretory + "/" + relative_file_path;
+      std::string path;
+      if (boost::starts_with(relative_file_path, "/")) {
+        path = relative_file_path;
+      } else {
+        path = base_diretory + "/" + relative_file_path;
+      }
 
       std::string xml;
       if (replacement.empty()) {
@@ -166,7 +171,7 @@ namespace pqrs {
         pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, path.c_str(), replacement);
       }
       if (xml.empty()) {
-        error_information_.set(relative_file_path + " is not found.");
+        error_information_.set(path + " is not found.");
         return;
       }
 
