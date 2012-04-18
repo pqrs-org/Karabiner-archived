@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Vi Mode</name>
+    <list>
+      <item>
+        <name>Command_L+hjkl to Left/Down/Up/Right</name>
+        <identifier>option.vimode_commandl_hjkl</identifier>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::COMMAND_L, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_L, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::COMMAND_L, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_L, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>Command_R+hjkl to Left/Down/Up/Right</name>
+        <identifier>option.vimode_hjkl</identifier>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::COMMAND_R, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_R, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::COMMAND_R, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_R, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>Control_L+hjkl to Left/Down/Up/Right</name>
+        <identifier>option.vimode_control_hjkl</identifier>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::CONTROL_L, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>Fn+hjkl to Left/Down/Up/Right</name>
+        <identifier>option.vimode_fn_hjkl</identifier>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>Option_L+hjkl to Left/Down/Up/Right</name>
+        <identifier>option.extra_cursor_optionL_kjhl</identifier>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::OPTION_L, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>Command_R+g/G to Home/End</name>
+        <identifier>option.vimode_gG</identifier>
+        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::HOME</autogen>
+        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | VK_SHIFT, KeyCode::END</autogen>
+      </item>
+      <item>
+        <name>Control_L+g/G to Home/End</name>
+        <identifier>option.vimode_control_gG</identifier>
+        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::HOME</autogen>
+        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_L | VK_SHIFT, KeyCode::END</autogen>
+      </item>
+      <item>
+        <name>Command_R+bf to PageUp/PageDown</name>
+        <identifier>option.vimode_bf</identifier>
+        <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN</autogen>
+      </item>
+      <item>
+        <name>Coltrol_L+bf to PageUp/PageDown</name>
+        <identifier>option.vimode_control_bf</identifier>
+        <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::PAGEUP</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::PAGEDOWN</autogen>
+      </item>
+      <item>
+        <name>Command_R+0$ to Command+Left/Right</name>
+        <identifier>option.vimode_0dollar</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::COMMAND_R | VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L+0$ to Command+Left/Right</name>
+        <identifier>option.vimode_control_0dollar</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::CONTROL_L | VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Option_L+hjkl to Option+Left/Down/Up/Right</name>
+        <identifier>option.vimode_option_hjkl</identifier>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::OPTION_L, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+      </item>
+    </list>
+  </item>
+</root>
