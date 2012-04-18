@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Russian</name>
+    <list>
+      <item>
+        <name>Change Backquote(`) Key</name>
+        <list>
+          <item>
+            <name>Backquote(`) to Paragraph(§)</name>
+            <identifier>remap.russian_backquote2paragraph</identifier>
+            <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::RUSSIAN_PARAGRAPH</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change Command_L Key</name>
+        <list>
+          <item>
+            <name>Command_L to Command_L</name>
+            <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
+            <identifier>remap.russian_commandL2commandL_english</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change Command_R Key</name>
+        <list>
+          <item>
+            <name>Command_R to Command_R</name>
+            <appendix>(+ When you type Command_R only, change inputmode to russian)</appendix>
+            <identifier>remap.russian_commandR2commandR_russian</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change Paragraph(§) Key</name>
+        <list>
+          <item>
+            <name>Paragraph(§) to 1</name>
+            <identifier>remap.russian_paragraph2one</identifier>
+            <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::KEY_1</autogen>
+          </item>
+          <item>
+            <name>Paragraph(§) to Backquote(`)</name>
+            <identifier>remap.russian_paragraph2backquote</identifier>
+            <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::BACKQUOTE</autogen>
+          </item>
+          <item>
+            <name>Paragraph(§) to Escape</name>
+            <identifier>remap.russian_paragraph2escape</identifier>
+            <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::ESCAPE</autogen>
+          </item>
+          <item>
+            <name>Paragraph(§) to Forward Delete</name>
+            <identifier>remap.russian_paragraph2forwarddelete</identifier>
+            <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::FORWARD_DELETE</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change Shift_L Key</name>
+        <list>
+          <item>
+            <name>Shift_L to Shift_L</name>
+            <appendix>(+ When you type Shift_L only, change inputmode to english)</appendix>
+            <identifier>remap.russian_shiftL2shiftL_english</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+          </item>
+          <item>
+            <name>Shift_L to Shift_L</name>
+            <appendix>(+ When you type Shift_L only, change inputmode to english)</appendix>
+            <appendix></appendix>
+            <appendix>(+ When you type Command+Shift_L only,</appendix>
+            <appendix>change inputmode to "English - Ilya Birman Typography".)</appendix>
+            <identifier>remap.russian_shiftL2shiftL_english_typography</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L,             KeyCode::SHIFT_L,                          KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change Shift_R Key</name>
+        <list>
+          <item>
+            <name>Shift_R to Shift_R</name>
+            <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
+            <identifier>remap.russian_shiftR2shiftR_russian</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+          </item>
+          <item>
+            <name>Shift_R to Shift_R</name>
+            <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
+            <appendix></appendix>
+            <appendix>(+ When you type Command+Shift_R only,</appendix>
+            <appendix>change inputmode to "Russian - Ilya Birman Typography".)</appendix>
+            <identifier>remap.russian_shiftR2shiftR_russian_typography</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, VK_COMMAND, KeyCode::SHIFT_R, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R,             KeyCode::SHIFT_R,                          KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change Tilde(~) Key</name>
+        <list>
+          <item>
+            <name>Tilde(~) to Shift_L</name>
+            <identifier>remap.russian_tilda2shiftL</identifier>
+            <autogen>--KeyToKey-- KeyCode::RUSSIAN_TILDE, KeyCode::SHIFT_L</autogen>
+          </item>
+        </list>
+      </item>
+
+      <item>
+        <name>Change Option_R+,(≤) to Comma(,) Key for Russian</name>
+        <identifier>remap.change_option_r_plus_comma_to_comma_for_russian</identifier>
+        <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::OPTION_R,
+          KeyCode::KEY_6, VK_SHIFT</autogen>
+      </item>
+      <item>
+        <name>Change Option_R+.(≥) to Dot(.) Key for Russian</name>
+        <identifier>remap.change_option_r_plus_dot_to_dot_for_russian</identifier>
+        <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_R,
+          KeyCode::KEY_7, VK_SHIFT</autogen>
+      </item>
+    </list>
+  </item>
+</root>
