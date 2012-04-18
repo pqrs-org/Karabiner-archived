@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change Return Key</name>
+    <list>
+      <item>
+        <name>Return to Command_L</name>
+        <identifier>remap.return2commandL</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Return to Control_L</name>
+        <appendix>(+ When you type Return only, send Return)</appendix>
+        <identifier>remap.return2controlL_return</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
+      </item>
+      <item>
+        <name>Return to Control_L</name>
+        <appendix>(+ When you type Return only, send Return) + [KeyRepeat]</appendix>
+        <identifier>remap.return2controlL_return_keyrepeat</identifier>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::RETURN, KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
+      </item>
+      <item>
+        <name>Return to Option_L</name>
+        <identifier>remap.return2optionL</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Return to Option_L</name>
+        <appendix>(+ When you type Return only, send Escape)</appendix>
+        <identifier>remap.return2optionL_escape</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::OPTION_L, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Fn+Return to Option_L</name>
+        <identifier>remap.fnReturn2optionL</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Return to Delete</name>
+        <identifier>remap.return_to_delete</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Return to Control_L+F4 (= Move focus to the active (or next) window)</name>
+        <identifier>remap.return2controlLf4</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Fn+Return to Shift_L+Insert</name>
+        <identifier>remap.fnReturn2shiftLinsert</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::PC_INSERT, ModifierFlag::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Return to Semicolon</name>
+        <identifier>remap.return2semicolon</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SEMICOLON</autogen>
+      </item>
+      <item>
+        <name>Disable Return</name>
+        <identifier>remap.drop_return</identifier>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::VK_NONE</autogen>
+      </item>
+    </list>
+  </item>
+</root>
