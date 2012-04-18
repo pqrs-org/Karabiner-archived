@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only VMware Fusion, Parallels Desktop, VirtualBox</name>
+    <list>
+      <item>
+        <name>Eject to Forward Delete</name>
+        <appendix>(Fn+Eject to Eject)</appendix>
+        <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
+        <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+        <identifier>remap.app_vm_eject2forwarddelete</identifier>
+        <only>VIRTUALMACHINE</only>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Change Enter to Control_L</name>
+        <identifier>remap.app_vm_enter2controlL</identifier>
+        <only>VIRTUALMACHINE</only>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Change Fn+Return to Insert</name>
+        <identifier>remap.app_vm_fnReturn2insert</identifier>
+        <only>VIRTUALMACHINE</only>
+        <autogen>--KeyToKey-- KeyCode::RETURN, ModifierFlag::FN, KeyCode::HELP</autogen>
+      </item>
+      <item>
+        <name>Change Option_R to Control_R</name>
+        <identifier>remap.app_vm_optionR2controlR</identifier>
+        <only>VIRTUALMACHINE</only>
+        <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+      </item>
+      <item>
+        <name>Change Ctrl+Q to Alt+F4</name>
+        <only>VIRTUALMACHINE</only>
+        <identifier>remap.Ctrl_Q_to_Alt_F4</identifier>
+        <autogen>--KeyToKey-- KeyCode::Q, VK_CONTROL, KeyCode::F4, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Change Command+Space to Option+Backquote(`)</name>
+        <identifier>remap.app_vm_commandspace2optionbackquote</identifier>
+        <only>VIRTUALMACHINE</only>
+        <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Change Command+Space to Option_L+Shift_L</name>
+        <identifier>remap.app_vm_commandspace2optionLshiftL</identifier>
+        <only>VIRTUALMACHINE</only>
+        <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Change Command_L Keys</name>
+        <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
+        <list>
+          <item>
+            <name>Change Command_L to Option_L</name>
+            <identifier>remap.app_vm_commandL2optionL</identifier>
+            <appendix>(Option_L is translated to Alt_L by Fusion)</appendix>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_L+A to Control+A</name>
+            <identifier>remap.app_vm_commandLA</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_L+C to Control+C</name>
+            <identifier>remap.app_vm_commandLC</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_L+F to Control+F</name>
+            <identifier>remap.app_vm_commandLF</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_L+P to Control+P</name>
+            <identifier>remap.app_vm_commandLP</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::COMMAND_L, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_L+V to Control+V</name>
+            <identifier>remap.app_vm_commandLV</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_L+X to Control+X</name>
+            <identifier>remap.app_vm_commandLX</identifier>
+            <appendix>(Leave it unchecked for using left Meta+X in Emacs on Fusion)</appendix>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_L+Z to Control+Z</name>
+            <identifier>remap.app_vm_commandLZ</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change Command_R Keys</name>
+        <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
+        <list>
+          <item>
+            <name>Change Command_R to Option_R</name>
+            <appendix>(This allows controlling individual key translations)</appendix>
+            <identifier>remap.app_vm_commandR2optionR</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+          </item>
+          <item>
+            <name>Change Command_R+A to Control+A</name>
+            <identifier>remap.app_vm_commandRA</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_R+C to Control+C</name>
+            <identifier>remap.app_vm_commandRC</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_R+F to Control+F</name>
+            <identifier>remap.app_vm_commandRF</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_R+P to Control+P</name>
+            <identifier>remap.app_vm_commandRP</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::COMMAND_R, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_R+V to Control+V</name>
+            <identifier>remap.app_vm_commandRV</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_R, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_R+X to Control+X</name>
+            <appendix>(Leave it unchecked for using right Meta+X in Emacs on Fusion)</appendix>
+            <identifier>remap.app_vm_commandRX</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>Change Command_R+Z to Control+Z </name>
+            <identifier>remap.app_vm_commandRZ</identifier>
+            <only>VIRTUALMACHINE</only>
+            <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
+          </item>
+        </list>
+      </item>
+    </list>
+  </item>
+</root>

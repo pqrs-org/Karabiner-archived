@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only Safari</name>
+    <list>
+      <item>
+        <name>Firefox-like hotkey (Control+PgUp/PgDown) to switch tabs in Safari</name>
+        <identifier>remap.firefox_style_tab_switching_in_safari</identifier>
+        <only>SAFARI</only>
+        <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, VK_CONTROL | ModifierFlag::NONE,
+          KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   VK_CONTROL | ModifierFlag::NONE,
+          KeyCode::TAB, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+      </item>
+    </list>
+  </item>
+</root>
