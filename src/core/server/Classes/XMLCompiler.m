@@ -146,6 +146,11 @@ static XMLCompiler* global_instance = nil;
   return global_instance;
 }
 
++ (void) prepare_private_xml
+{
+  [XMLCompiler get_private_xml_path];
+}
+
 + (NSString*) get_private_xml_path
 {
   NSFileManager* filemanager = [NSFileManager defaultManager];
@@ -157,8 +162,11 @@ static XMLCompiler* global_instance = nil;
   }
 
   path = [path stringByAppendingPathComponent:@"private.xml"];
-  if (! [filemanager fileExistsAtPath:path]) {
-    [filemanager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"private" ofType:@"xml"] toPath:path error:NULL];
+  // Copy default private.xml to user directory if private.xml is not found or filesize is 0.
+  if (! [filemanager fileExistsAtPath:path] ||
+      [[filemanager attributesOfItemAtPath:path error:nil] fileSize] == 0) {
+    [filemanager removeItemAtPath:path error:nil];
+    [filemanager copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"private" ofType:@"xml"] toPath:path error:nil];
 
     // copyItemAtPath does not change ctime and mtime of file.
     // (For example, mtime of destination file == mtime of source file.)
@@ -204,6 +212,8 @@ static XMLCompiler* global_instance = nil;
 
 - (void) reload {
   @synchronized(self) {
+    [XMLCompiler prepare_private_xml];
+
     pqrs_xml_compiler_reload(pqrs_xml_compiler_);
 
     // build preferencepane_checkbox_
