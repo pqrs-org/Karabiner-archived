@@ -189,138 +189,23 @@
         <include system_xml_path="include/checkbox/apps/skype.xml" />
         <include system_xml_path="include/checkbox/apps/dictionary.xml" />
         <include system_xml_path="include/checkbox/apps/tweetdeck.xml" />
-        <item>
-          <name>Quicksilver Mode</name>
-          <list>
-            <item>
-              <name>What's Quicksilver Mode?</name>
-              <appendix>This mode is designed for Quicksilver.app.</appendix>
-              <appendix>- Control+M to Return (&amp; exit mode)</appendix>
-              <appendix>- Control+I to Tab</appendix>
-              <appendix>- Control+[ to Escape (&amp; exit mode)</appendix>
-              <appendix>- Escape to Escape (&amp; exit mode)</appendix>
-              <appendix>- Return to Return (&amp; exit mode)</appendix>
-              <appendix></appendix>
-              <identifier vk_config="true">notsave.quicksilver_mode</identifier>
-              <autogen>--ShowStatusMessage-- Quicksilver</autogen>
-              <autogen>--KeyToKey-- KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-              <autogen>--KeyToKey-- KeyCode::I,            VK_CONTROL, KeyCode::TAB</autogen>
-              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-              <autogen>--KeyToKey-- KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-              <autogen>--KeyToKey-- KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-              <block>
-                <config_only>remap.doublecommand_to_quicksilver_mode</config_only>
-                <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-                <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-              </block>
-              <block>
-                <config_only>remap.doublecontrol_to_quicksilver_mode</config_only>
-                <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-                <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-              </block>
-              <block>
-                <config_only>remap.commandspace_to_quicksilver_mode</config_only>
-                <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, VK_COMMAND, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-              </block>
-            </item>
-            <item>
-              <name>Double Command to Quicksilver Mode</name>
-              <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
-              <identifier>remap.doublecommand_to_quicksilver_mode</identifier>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
-              <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
-            </item>
-            <item>
-              <name>Double Control to Quicksilver Mode</name>
-              <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
-              <identifier>remap.doublecontrol_to_quicksilver_mode</identifier>
-              <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
-              <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
-            </item>
-            <item>
-              <name>Command+Space to Quicksilver Mode</name>
-              <identifier>remap.commandspace_to_quicksilver_mode</identifier>
-              <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, VK_COMMAND, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
-            </item>
-          </list>
-        </item>
+        <include system_xml_path="include/checkbox/apps/quicksilver.xml" />
       </list>
     </item>
 
     <item>
       <name>Change Keyboard Layout</name>
       <list>
-        <item>
-          <name>Use Colemak Keyboard Layout</name>
-          <identifier>remap.qwerty2colemak</identifier>
-          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
-          <autogen>--KeyToKey-- KeyCode::E, KeyCode::F</autogen>
-          <autogen>--KeyToKey-- KeyCode::R, KeyCode::P</autogen>
-          <autogen>--KeyToKey-- KeyCode::T, KeyCode::G</autogen>
-          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
-          <autogen>--KeyToKey-- KeyCode::U, KeyCode::L</autogen>
-          <autogen>--KeyToKey-- KeyCode::I, KeyCode::U</autogen>
-          <autogen>--KeyToKey-- KeyCode::O, KeyCode::Y</autogen>
-          <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
-          <autogen>--KeyToKey-- KeyCode::S, KeyCode::R</autogen>
-          <autogen>--KeyToKey-- KeyCode::D, KeyCode::S</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
-          <autogen>--KeyToKey-- KeyCode::G, KeyCode::D</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, KeyCode::N</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, KeyCode::E</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, KeyCode::I</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::O</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, KeyCode::K</autogen>
-        </item>
-        <item>
-          <name>Use QWERF Keyboard Layout</name>
-          <identifier>remap.qwerty2qwerf</identifier>
-          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
-          <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
-          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
-          <autogen>--KeyToKey-- KeyCode::U, KeyCode::Y</autogen>
-          <autogen>--KeyToKey-- KeyCode::I, KeyCode::K</autogen>
-          <autogen>--KeyToKey-- KeyCode::O, KeyCode::L</autogen>
-          <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, KeyCode::U</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, KeyCode::I</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, KeyCode::O</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::P</autogen>
-        </item>
-        <item>
-          <name>Use Workman Keyboard Layout</name>
-          <identifier>remap.qwerty2workman</identifier>
-          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
-          <autogen>--KeyToKey-- KeyCode::W, KeyCode::D</autogen>
-          <autogen>--KeyToKey-- KeyCode::E, KeyCode::R</autogen>
-          <autogen>--KeyToKey-- KeyCode::R, KeyCode::W</autogen>
-          <autogen>--KeyToKey-- KeyCode::T, KeyCode::B</autogen>
-          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
-          <autogen>--KeyToKey-- KeyCode::U, KeyCode::F</autogen>
-          <autogen>--KeyToKey-- KeyCode::I, KeyCode::U</autogen>
-          <autogen>--KeyToKey-- KeyCode::O, KeyCode::P</autogen>
-          <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
-          <autogen>--KeyToKey-- KeyCode::D, KeyCode::H</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, KeyCode::Y</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, KeyCode::N</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, KeyCode::E</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, KeyCode::O</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::I</autogen>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::M</autogen>
-          <autogen>--KeyToKey-- KeyCode::V, KeyCode::C</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::V</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, KeyCode::K</autogen>
-          <autogen>--KeyToKey-- KeyCode::M, KeyCode::L</autogen>
-        </item>
+        <include system_xml_path="include/checkbox/keyboard_layouts/colemak.xml" />
+        <include system_xml_path="include/checkbox/keyboard_layouts/qwerf.xml" />
+        <include system_xml_path="include/checkbox/keyboard_layouts/workman.xml" />
         <item>
           <name>Use ABCDEF Keyboard Layout</name>
           <appendix>qwertyuiop &#8594; abcdefghij</appendix>
           <appendix>asdfghjkl &#8594; klmnopqrs</appendix>
           <appendix>zxcvbnm &#8594; tuvwxyz</appendix>
           <identifier>remap.qwerty2abcdef</identifier>
-          <include system_xml_path="include/checkbox/snippets/keypad_redefinition.xml" />
+          <include system_xml_path="include/checkbox/keyboard_layouts/common/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::Q, KeyCode::A</autogen>
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::B</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::C</autogen>
