@@ -25,9 +25,6 @@ public:
   {}
 
   void traverse(const extracted_ptree& pt) const;
-  void traverse(const boost::property_tree::ptree& pt) const {
-    traverse(extracted_ptree(xml_compiler_, pt));
-  }
 
 private:
   const xml_compiler& xml_compiler_;
