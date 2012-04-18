@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For International English Keyboard and ISO Keyboard Users</name>
+    <list>
+      <item>
+        <name>Improve ISO Keyboard Layout</name>
+        <appendix>( '\' to additional Enter, '§' to '`' and '`' to '\' )</appendix>
+        <identifier>remap.uk_saneuklayout</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
+      </item>
+      <item>
+        <name>Improve ISO Keyboard Layout (Option 2)</name>
+        <appendix>( '§' to '`' and '`' to '\' )</appendix>
+        <identifier>remap.uk_saneuklayout2</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+      </item>
+      <item>
+        <name>Swap @ and double-quote(")</name>
+        <identifier>remap.uk_swap_at_doublequote</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Swap the Tilda(~) key with Section (§)</name>
+        <identifier>remap.iso_swap_tilda_section</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE,  KeyCode::UK_SECTION</autogen>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+      </item>
+      <item>
+        <name>Make Shift_R the Backslash (\)  and Backslash (\) into an extra Enter</name>
+        <identifier>remap.iso_better_enter</identifier>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ENTER</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Backslash(\)</name>
+        <identifier>remap.uk_backquote2backslash</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::BACKSLASH</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Section(§)</name>
+        <identifier>remap.uk_backquote2section</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::UK_SECTION</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Shift_L</name>
+        <identifier>remap.uk_backquote2shiftL</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Backslash(\) to Option_L+3 (Hash #), Shift+Backslash(\) to Tilde(~)</name>
+        <identifier>remap.uk_backslash2hash</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Forward Delete to Section(§)</name>
+        <identifier>remap.uk_forwarddelete2section</identifier>
+        <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::UK_SECTION</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Option_L+3 (Hash #), Shift+Section(§) to Tilde(~)</name>
+        <identifier>remap.uk_section2hash</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Command_L</name>
+        <identifier>remap.section_to_command_l</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Control_L</name>
+        <identifier>remap.section_to_control_l</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Option_L</name>
+        <identifier>remap.section_to_option_l</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Shift_L</name>
+        <identifier>remap.section_to_shift_l</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Backquote(`)</name>
+        <identifier>remap.uk_section2backquote</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Backquote(`)</name>
+        <appendix>(except virtual machine)</appendix>
+        <identifier>remap.uk_section2backquote_ex_vm</identifier>
+        <not>VIRTUALMACHINE</not>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Backslash(\)</name>
+        <identifier>remap.uk_section2backslash</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::BACKSLASH</autogen>
+      </item>
+      <item>
+        <name>Section(§) to Forward Delete</name>
+        <identifier>remap.uk_section2forwarddelete</identifier>
+        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Section(§) to LeftClick</name>
+        <identifier>remap.strangekey_to_leftclick</identifier>
+        <autogen>--KeyToPointingButton-- KeyCode::UK_SECTION, PointingButton::LEFT</autogen>
+      </item>
+    </list>
+  </item>
+</root>

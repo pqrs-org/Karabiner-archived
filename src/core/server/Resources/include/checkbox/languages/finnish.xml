@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Finnish</name>
+    <list>
+      <item>
+        <name>Command_L+Shift_L to Command_L+Shift_L (when inputmode == finnish)</name>
+        <appendix>(+ When you type Command_L+Shift_L only, change inputmode to english)</appendix>
+        <inputmode_only>FINNISH</inputmode_only>
+        <identifier>remap.finnish_shiftcommandL2shiftLcommandL_english</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+      </item>
+      <item>
+        <name>Command_L+Shift_L to Command_L+Shift_L</name>
+        <appendix>(+ When you type Command_L+Shift_L only, change inputmode to finnish)</appendix>
+        <!-- <inputmode_only>ENGLISH</inputmode_only> -->
+        <identifier>remap.finnish_shiftcommandL2shiftLcommandL_finnish</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
+      </item>
+    </list>
+  </item>
+</root>
