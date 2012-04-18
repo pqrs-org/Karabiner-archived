@@ -2,6 +2,11 @@
 <root>
   <symbol_map type="KeyCode" name="MY_INCLUDE_TEST_123" value="{{ MY_INCLUDE_TEST }}" />
 
+  <replacementdef>
+    <replacementname>MY_INCLUDE_TEST2</replacementname>
+    <replacementvalue>{{ MY_INCLUDE_TEST }}_2</replacementvalue>
+  </replacementdef>
+
   <item>
     <name>Swap Space and Tab</name>
     <include path="appendix.xml" />

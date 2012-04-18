@@ -2,4 +2,5 @@
 <root>
   <appendix>appendix1</appendix>
   <appendix>appendix{{ MY_INCLUDE_TEST }}</appendix>
+  <appendix>appendix{{ MY_INCLUDE_TEST2 }}</appendix>
 </root>

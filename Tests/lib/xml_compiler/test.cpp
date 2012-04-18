@@ -54,7 +54,7 @@ TEST(pqrs_xml_compiler, reload)
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());
   auto node_ptr = (*(node_tree.get_children()))[0];
-  EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123", node_ptr->get_node().get_name());
+  EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
@@ -425,8 +425,10 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   boost::property_tree::ptree pt;
   boost::property_tree::read_xml(istream, pt, flags);
 
+  pqrs::string::replacement replacement;
+
   for (auto& it : pt) {
-    pqrs::xml_compiler::filter_vector fv(s, pqrs::xml_compiler::extracted_ptree(xml_compiler, it.second));
+    pqrs::xml_compiler::filter_vector fv(s, pqrs::xml_compiler::extracted_ptree(xml_compiler, replacement, it.second));
 
     std::vector<uint32_t> expected;
 
