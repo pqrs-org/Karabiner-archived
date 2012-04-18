@@ -5552,10 +5552,7 @@
           <appendix>(when there are no other modifiers)</appendix>
           <identifier>option.emacsmode_controlPNBF_nomodifiers</identifier>
           <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+          <include system_xml_path="include/checkbox/emacsmode_controlPNBF_nomodifiers.xml" />
         </item>
         <item>
           <name>Control+PNBF to Up/Down/Left/Right</name>
@@ -5566,27 +5563,7 @@
           <appendix>(+ retain Control+Shift+AE)</appendix>
           <identifier>option.emacsmode_controlPNBF_ex</identifier>
           <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-<!-- retain -->
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL | VK_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL | VK_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL | VK_SHIFT, KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | VK_SHIFT, KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL | VK_SHIFT, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL | VK_SHIFT, KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
         </item>
         <item>
           <name>Control+V to PageDown</name>
@@ -6054,105 +6031,25 @@
                   <name>In Emacs, Terminal</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_term</identifier>
                   <only>EMACS, TERMINAL</only>
-<!-- retain -->
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL | VK_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL | VK_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL | VK_SHIFT, KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | VK_SHIFT, KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL | VK_SHIFT, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL | VK_SHIFT, KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
                 </item>
                 <item>
                   <name>In X11</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_x11</identifier>
                   <only>X11</only>
-<!-- retain -->
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL | VK_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL | VK_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL | VK_SHIFT, KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | VK_SHIFT, KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL | VK_SHIFT, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL | VK_SHIFT, KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
                 </item>
                 <item>
                   <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_vm</identifier>
                   <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-<!-- retain -->
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL | VK_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL | VK_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL | VK_SHIFT, KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | VK_SHIFT, KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL | VK_SHIFT, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL | VK_SHIFT, KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
                 </item>
                 <item>
                   <name>In Eclipse</name>
                   <identifier>option.emacsmode_force_controlPNBF_ex_eclipse</identifier>
                   <only>ECLIPSE</only>
-<!-- retain -->
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL | VK_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL | VK_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL | VK_SHIFT, KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | VK_SHIFT, KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL | VK_SHIFT, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL | VK_SHIFT, KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-
-<autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-<autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+                  <include system_xml_path="include/checkbox/emacsmode_controlPNBF_ex.xml" />
                 </item>
               </list>
             </item>
@@ -8228,26 +8125,7 @@
         <item>
           <name>Use Colemak Keyboard Layout</name>
           <identifier>remap.qwerty2colemak</identifier>
-<!-- number -->
-<autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN, KeyCode::KEYPAD_0</autogen>
-<autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN, KeyCode::KEYPAD_1</autogen>
-<autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN, KeyCode::KEYPAD_2</autogen>
-<autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN, KeyCode::KEYPAD_3</autogen>
-<autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN, KeyCode::KEYPAD_4</autogen>
-<autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN, KeyCode::KEYPAD_5</autogen>
-<autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN, KeyCode::KEYPAD_6</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN, KeyCode::KEYPAD_7</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN, KeyCode::KEYPAD_8</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN, KeyCode::KEYPAD_9</autogen>
-
-<!-- symbol -->
-<autogen>--KeyToKey-- KeyCode::KEY_6,     ModifierFlag::FN, KeyCode::KEYPAD_CLEAR</autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN, KeyCode::KEYPAD_PLUS</autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN, KeyCode::KEYPAD_MINUS</autogen>
-<autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN, KeyCode::KEYPAD_MULTIPLY</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN, KeyCode::KEYPAD_SLASH</autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::FN, KeyCode::KEYPAD_EQUAL</autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN, KeyCode::KEYPAD_DOT</autogen>
+          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::F</autogen>
           <autogen>--KeyToKey-- KeyCode::R, KeyCode::P</autogen>
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::G</autogen>
@@ -8269,26 +8147,7 @@
         <item>
           <name>Use QWERF Keyboard Layout</name>
           <identifier>remap.qwerty2qwerf</identifier>
-<!-- number -->
-<autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN, KeyCode::KEYPAD_0</autogen>
-<autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN, KeyCode::KEYPAD_1</autogen>
-<autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN, KeyCode::KEYPAD_2</autogen>
-<autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN, KeyCode::KEYPAD_3</autogen>
-<autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN, KeyCode::KEYPAD_4</autogen>
-<autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN, KeyCode::KEYPAD_5</autogen>
-<autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN, KeyCode::KEYPAD_6</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN, KeyCode::KEYPAD_7</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN, KeyCode::KEYPAD_8</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN, KeyCode::KEYPAD_9</autogen>
-
-<!-- symbol -->
-<autogen>--KeyToKey-- KeyCode::KEY_6,     ModifierFlag::FN, KeyCode::KEYPAD_CLEAR</autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN, KeyCode::KEYPAD_PLUS</autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN, KeyCode::KEYPAD_MINUS</autogen>
-<autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN, KeyCode::KEYPAD_MULTIPLY</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN, KeyCode::KEYPAD_SLASH</autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::FN, KeyCode::KEYPAD_EQUAL</autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN, KeyCode::KEYPAD_DOT</autogen>
+          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
           <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
           <autogen>--KeyToKey-- KeyCode::U, KeyCode::Y</autogen>
@@ -8304,26 +8163,7 @@
         <item>
           <name>Use Workman Keyboard Layout</name>
           <identifier>remap.qwerty2workman</identifier>
-<!-- number -->
-<autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN, KeyCode::KEYPAD_0</autogen>
-<autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN, KeyCode::KEYPAD_1</autogen>
-<autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN, KeyCode::KEYPAD_2</autogen>
-<autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN, KeyCode::KEYPAD_3</autogen>
-<autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN, KeyCode::KEYPAD_4</autogen>
-<autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN, KeyCode::KEYPAD_5</autogen>
-<autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN, KeyCode::KEYPAD_6</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN, KeyCode::KEYPAD_7</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN, KeyCode::KEYPAD_8</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN, KeyCode::KEYPAD_9</autogen>
-
-<!-- symbol -->
-<autogen>--KeyToKey-- KeyCode::KEY_6,     ModifierFlag::FN, KeyCode::KEYPAD_CLEAR</autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN, KeyCode::KEYPAD_PLUS</autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN, KeyCode::KEYPAD_MINUS</autogen>
-<autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN, KeyCode::KEYPAD_MULTIPLY</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN, KeyCode::KEYPAD_SLASH</autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::FN, KeyCode::KEYPAD_EQUAL</autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN, KeyCode::KEYPAD_DOT</autogen>
+          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::D</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::R</autogen>
           <autogen>--KeyToKey-- KeyCode::R, KeyCode::W</autogen>
@@ -8352,26 +8192,7 @@
           <appendix>asdfghjkl &#8594; klmnopqrs</appendix>
           <appendix>zxcvbnm &#8594; tuvwxyz</appendix>
           <identifier>remap.qwerty2abcdef</identifier>
-<!-- number -->
-<autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN, KeyCode::KEYPAD_0</autogen>
-<autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN, KeyCode::KEYPAD_1</autogen>
-<autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN, KeyCode::KEYPAD_2</autogen>
-<autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN, KeyCode::KEYPAD_3</autogen>
-<autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN, KeyCode::KEYPAD_4</autogen>
-<autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN, KeyCode::KEYPAD_5</autogen>
-<autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN, KeyCode::KEYPAD_6</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN, KeyCode::KEYPAD_7</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN, KeyCode::KEYPAD_8</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN, KeyCode::KEYPAD_9</autogen>
-
-<!-- symbol -->
-<autogen>--KeyToKey-- KeyCode::KEY_6,     ModifierFlag::FN, KeyCode::KEYPAD_CLEAR</autogen>
-<autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN, KeyCode::KEYPAD_PLUS</autogen>
-<autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN, KeyCode::KEYPAD_MINUS</autogen>
-<autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN, KeyCode::KEYPAD_MULTIPLY</autogen>
-<autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN, KeyCode::KEYPAD_SLASH</autogen>
-<autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::FN, KeyCode::KEYPAD_EQUAL</autogen>
-<autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN, KeyCode::KEYPAD_DOT</autogen>
+          <include system_xml_path="include/checkbox/keypad_redefinition.xml" />
           <autogen>--KeyToKey-- KeyCode::Q, KeyCode::A</autogen>
           <autogen>--KeyToKey-- KeyCode::W, KeyCode::B</autogen>
           <autogen>--KeyToKey-- KeyCode::E, KeyCode::C</autogen>
@@ -8646,34 +8467,12 @@
               <identifier vk_config="true">remap.keypadnumlock</identifier>
               <block>
                 <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::END</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::HOME</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
+                <include system_xml_path="include/checkbox/keypadnumlock.xml" />
               </block>
               <block>
                 <config_only>option.keypadnumlock_vm</config_only>
                 <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::END</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::HOME</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
+                <include system_xml_path="include/checkbox/keypadnumlock.xml" />
               </block>
             </item>
             <item>
@@ -8701,35 +8500,13 @@
               <identifier vk_config="true">remap.keypadnumlock_pclikehomeend</identifier>
               <block>
                 <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
+                <include system_xml_path="include/checkbox/keypadnumlock_pclikehomeend.xml" />
               </block>
               <block>
                 <config_only>option.keypadnumlock_vm</config_only>
                 <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
                 <!-- We use normal Home/End/PageUp/PageDown in VM -->
-<autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::CURSOR_LEFT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::CURSOR_RIGHT</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::CURSOR_UP</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::END</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::PAGEDOWN</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::HOME</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::PAGEUP</autogen>
-<autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::FORWARD_DELETE</autogen>
+                <include system_xml_path="include/checkbox/keypadnumlock.xml" />
               </block>
             </item>
             <item>
@@ -8772,16 +8549,7 @@
           <appendix>(Change End to Control+E)</appendix>
           <identifier>remap.pclikehomeend_emacs</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-<block>
-  <only>DREAMWEAVER</only>
-  <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::HOME, ModifierFlag::SHIFT_L</autogen>
-  <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::END,  ModifierFlag::SHIFT_L</autogen>
-</block>
-<block>
-  <only>BLUEFISH,WORD,EXCEL,POWERPOINT</only>
-  <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::HOME</autogen>
-  <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::END</autogen>
-</block>
+          <include system_xml_path="include/checkbox/pcstyle_homeend_ignore_apps.xml" />
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
           <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
@@ -8805,16 +8573,7 @@
           <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
           <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
           <identifier>remap.pclikehomeend</identifier>
-<block>
-  <only>DREAMWEAVER</only>
-  <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::HOME, ModifierFlag::SHIFT_L</autogen>
-  <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::END,  ModifierFlag::SHIFT_L</autogen>
-</block>
-<block>
-  <only>BLUEFISH,WORD,EXCEL,POWERPOINT</only>
-  <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::HOME</autogen>
-  <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::END</autogen>
-</block>
+          <include system_xml_path="include/checkbox/pcstyle_homeend_ignore_apps.xml" />
           <block>
             <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
             <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>

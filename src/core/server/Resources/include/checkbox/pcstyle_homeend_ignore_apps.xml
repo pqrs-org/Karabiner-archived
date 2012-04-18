@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <block>
+    <only>DREAMWEAVER</only>
+    <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::HOME, ModifierFlag::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::END,  ModifierFlag::SHIFT_L</autogen>
+  </block>
+  <block>
+    <only>BLUEFISH,WORD,EXCEL,POWERPOINT</only>
+    <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::HOME</autogen>
+    <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::END</autogen>
+  </block>
+</root>
