@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <symbol_map type="KeyCode" name="MY_INCLUDE_TEST_123" value="{{ MY_INCLUDE_TEST }}" />
+  <include path="keycode.xml" />
 
   <replacementdef>
     <replacementname>MY_INCLUDE_TEST2</replacementname>
