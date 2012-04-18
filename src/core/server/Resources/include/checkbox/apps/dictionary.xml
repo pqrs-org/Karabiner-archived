@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only Dictionary</name>
+    <list>
+      <item>
+        <name>Do not let Dictionary.app quit on Command+W</name>
+        <identifier>remap.app_dictionary_command_w_to_unfocus</identifier>
+        <only>DICTIONARY</only>
+        <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND | ModifierFlag::NONE, KeyCode::TAB, VK_COMMAND, KeyCode::RETURN, Option::NOREPEAT</autogen>
+      </item>
+    </list>
+  </item>
+</root>
