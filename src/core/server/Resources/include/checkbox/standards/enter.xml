@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change Enter Key</name>
+    <list>
+      <item>
+        <name>Note:</name>
+        <appendix>Enter key is a key in old MacBook and Keypads.</appendix>
+        <appendix>See "Change Return Key" section if you want to change a return key.</appendix>
+      </item>
+      <item>
+        <name>Enter to Command_L</name>
+        <identifier>remap.enter2commandL</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Command_L (except virtual machine, RDC)</name>
+        <identifier>remap.enter2commandL_ex_vm</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Command_R</name>
+        <identifier>remap.enter2commandR</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_R</autogen>
+      </item>
+      <item>
+        <name>Enter to Control_L</name>
+        <identifier>remap.enter2controlL</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Control_L (only in virtual machine, RDC)</name>
+        <identifier>remap.enter2controlL_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Control_R</name>
+        <identifier>remap.enter2controlR</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_R</autogen>
+      </item>
+      <item>
+        <name>Enter to Fn</name>
+        <identifier>remap.enter2fn</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::FN</autogen>
+      </item>
+      <item>
+        <name>Enter to Option_L</name>
+        <identifier>remap.enter2optionL</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Option_L</name>
+        <appendix>(+ When you type Enter only, toggle IM)</appendix>
+        <list>
+          <item>
+            <name>When you type Enter only, send Command+Space</name>
+            <appendix>(except virtual machine, RDC)</appendix>
+            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+            <identifier>remap.enter2optionL_commandSpace</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          </item>
+          <item>
+            <name>When you type Enter only, send Option+Backquote</name>
+            <appendix>(only in virtual machine, RDC)</appendix>
+            <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+            <identifier>remap.enter2optionL_optionBackquote_vm</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::VK_LAZY_OPTION_L, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Enter to Option_R</name>
+        <identifier>remap.enter2optionR</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::OPTION_R</autogen>
+      </item>
+      <item>
+        <name>Enter to Option_R</name>
+        <list>
+          <item>
+            <name>When you type Enter only, send Command+Space</name>
+            <appendix>(except virtual machine, RDC)</appendix>
+            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+            <identifier>remap.enter2optionR_commandSpace</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          </item>
+          <item>
+            <name>When you type Enter only, send Option+Backquote</name>
+            <appendix>(only in virtual machine, RDC)</appendix>
+            <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+            <identifier>remap.enter2optionR_optionBackquote_vm</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::ENTER, KeyCode::VK_LAZY_OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_R</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Enter to Command_L+Control_L</name>
+        <identifier>remap.enter2commandLcontrolL</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Command_L+Shift_L</name>
+        <identifier>remap.enter2commandLshiftL</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Control_L+Option_L</name>
+        <identifier>remap.enter2controlLoptionL</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_L, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Delete</name>
+        <identifier>remap.enter2delete</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Enter to End</name>
+        <identifier>remap.enter2end</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::END</autogen>
+      </item>
+      <item>
+        <name>Enter to End (only in virtual machine, RDC)</name>
+        <identifier>remap.enter2end_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::END</autogen>
+      </item>
+      <item>
+        <name>Enter to Forward Delete</name>
+        <identifier>remap.enter2forwarddelete</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Enter to Left-Arrow</name>
+        <identifier>remap.enter2leftarrow</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_LEFT</autogen>
+      </item>
+      <item>
+        <name>Enter to Return</name>
+        <identifier>remap.enter2return</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::RETURN</autogen>
+      </item>
+      <item>
+        <name>Enter to Command_L+Right-Arrow (end-of-line)</name>
+        <identifier>remap.enter2commandLrightarrow_all</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Command_L+Right-Arrow (end-of-line)</name>
+        <appendix>(+ Control+Enter to Command_L+Down-Arrow) (end-of-buffer)</appendix>
+        <appendix>(Except in Virtual Machine, RDC)</appendix>
+        <identifier>remap.enter2fnrightarrow</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>--KeyToKey-- KeyCode::ENTER, VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::ENTER,             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Enter to Right-Arrow</name>
+        <identifier>remap.enter2rightarrow</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>Enter to Semicolon</name>
+        <identifier>remap.enter2semicolon</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::SEMICOLON</autogen>
+      </item>
+      <item>
+        <name>Enter to Space</name>
+        <identifier>remap.enter2space</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::SPACE</autogen>
+      </item>
+      <item>
+        <name>Enter to Tab</name>
+        <identifier>remap.enter2tab</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::TAB</autogen>
+      </item>
+      <item>
+        <name>Enter to Up-Arrow</name>
+        <identifier>remap.enter2uparrow</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CURSOR_UP</autogen>
+      </item>
+    </list>
+  </item>
+</root>

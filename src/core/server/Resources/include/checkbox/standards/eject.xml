@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change Eject Key</name>
+    <list>
+      <item>
+        <name>Note:</name>
+        <appendix>Eject key has a delay.</appendix>
+        <appendix>You need to press eject key for a few seconds.</appendix>
+        <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
+        <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      </item>
+      <item>
+        <name>Limitation:</name>
+        <appendix>You cannot change eject key to a modifier key (Command,Control,Fn,Option,Shift),</appendix>
+        <appendix>and eject key does not support key repeat exceptionally.</appendix>
+        <appendix></appendix>
+        <appendix>Because eject key sends keydown&amp;keyup event at the same time when you press the key.</appendix>
+        <appendix>KeyRemap4MacBook cannot know whether you're holding eject key or not.</appendix>
+      </item>
+      <item>
+        <name>Eject to Option+Backquote(`)</name>
+        <identifier>remap.eject_to_option_backquote</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Eject to Dashboard if no modifiers pressed</name>
+        <identifier>remap.eject2dashboard_withoutmodifiers</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
+      </item>
+      <item>
+        <name>Eject to Control+Shift+Eject (Sleep displays)</name>
+        <identifier>remap.eject2controlshifteject</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Eject to Escape</name>
+        <identifier>remap.eject2escape</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Eject to Expose if no modifiers pressed</name>
+        <identifier>remap.eject2expose_withoutmodifiers</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+      </item>
+      <item>
+        <name>Eject to Expose</name>
+        <identifier>remap.eject2expose</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::EXPOSE_ALL</autogen>
+      </item>
+      <item>
+        <name>Eject to Forward Delete</name>
+        <identifier>remap.eject2forwarddelete</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Eject to Forward Delete</name>
+        <appendix>(Fn+Eject to Eject)</appendix>
+        <identifier>remap.eject2forwarddelete_retain_fnEject</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Eject to Forward Delete if no modifiers pressed</name>
+        <identifier>remap.eject2forwarddelete_withoutmodifiers</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Eject to Forward Delete</name>
+        <appendix>(+ Eject to Control+D in Terminal,X11)</appendix>
+        <identifier>remap.eject2forwarddelete_term_x11</identifier>
+        <block>
+          <only>TERMINAL, X11</only>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
+        </block>
+        <block>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Eject to Option_L+Delete</name>
+        <appendix>(Fn+Eject to Eject)</appendix>
+        <identifier>remap.eject2optionaLdelete</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Eject to Command+Control+Option+Shift+E</name>
+        <identifier>remap.eject2fccosE</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Fn+Eject to Command+Control+Option+Shift+E</name>
+        <identifier>remap.fneject2fccosE</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Eject to F12</name>
+        <identifier>remap.eject2f12</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F12</autogen>
+      </item>
+      <item>
+        <name>Eject to F12 (if no modifiers pressed)</name>
+        <identifier>remap.eject2f12_withoutmodifiers</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::F12</autogen>
+      </item>
+      <item>
+        <name>Eject to F13</name>
+        <appendix>(Fn+Eject to Eject)</appendix>
+        <identifier>remap.eject2f13</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F13</autogen>
+      </item>
+      <item>
+        <name>Eject to F14</name>
+        <identifier>remap.eject2f14</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
+      </item>
+      <item>
+        <name>Eject to F15</name>
+        <identifier>remap.eject2f15</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::F15</autogen>
+      </item>
+      <item>
+        <name>Eject to PageDown</name>
+        <identifier>remap.eject2pagedown</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
+      </item>
+    </list>
+  </item>
+</root>

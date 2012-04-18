@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change Control_L Key (Left Control)</name>
+    <list>
+      <item>
+        <name>Control_L to Command_L</name>
+        <identifier>remap.controlL2commandL</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (only in virtual machine, RDC)</name>
+        <identifier>remap.controlL2commandL_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (only in Terminal)</name>
+        <identifier>remap.controlL2commandL_terminal</identifier>
+        <only>TERMINAL</only>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (only in X11)</name>
+        <identifier>remap.controlL2commandL_x11</identifier>
+        <only>X11</only>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (except Emacs)</name>
+        <identifier>remap.controlL2commandL_ex_emacs</identifier>
+        <not>EMACS</not>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (except Terminal, Chrome, RDC)</name>
+        <identifier>remap.controlL2commandL_excustom</identifier>
+        <not>TERMINAL, GOOGLE_CHROME, REMOTEDESKTOPCONNECTION</not>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (except Terminal, Virtual Machine, RDC)</name>
+        <identifier>remap.controlL2commandL_extermvm</identifier>
+        <not>TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (except Virtual Machine, RDC)</name>
+        <identifier>remap.controlL2commandL_exvm</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Control_L</name>
+        <appendix>(+ When you type Control_L only, send Delete)</appendix>
+        <identifier>remap.controlL2controlL_delete</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Control_L to Control_L</name>
+        <appendix>(+ When you type Control_L only, send Delete) + [KeyRepeat]</appendix>
+        <identifier>remap.controlL2controlL_delete_keyrepeat</identifier>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Control_L to Control_L</name>
+        <appendix>(+ When you type Control_L only without other modifiers, send Delete) + [KeyRepeat]</appendix>
+        <identifier>remap.controlL2controlL_delete_nomod_keyrepeat</identifier>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Control_L to Control_L</name>
+        <appendix>(+ When you type Control_L only, send Escape)</appendix>
+        <identifier>remap.controlL2controlL_escape</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Fn+Control_L to Control_R</name>
+        <identifier>remap.fncontrolL2controlR</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
+      </item>
+      <item>
+        <name>Control_L to Fn</name>
+        <identifier>remap.controlL2fn</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::FN</autogen>
+      </item>
+      <item>
+        <name>Control_L to Fn (only in virtual machine, RDC)</name>
+        <identifier>remap.controlL2fn_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::FN</autogen>
+      </item>
+      <item>
+        <name>Option_L+Control_L to Fn</name>
+        <identifier>remap.optionLcontrolL2fn</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
+      </item>
+      <item>
+        <name>Control_L to Option_L</name>
+        <identifier>remap.controlL2optionL</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Option_L (only in virtual machine, RDC)</name>
+        <identifier>remap.controlL2optionL_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Shift_L</name>
+        <identifier>remap.controlL2shiftL</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Sticky Control_L</name>
+        <identifier>remap.sticky_controlL</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_STICKY_CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Backquote(`)</name>
+        <identifier>remap.controlL2backquote</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::BACKQUOTE</autogen>
+      </item>
+      <item>
+        <name>Control_L to Delete</name>
+        <identifier>remap.controlL2delete</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Control_L to Escape</name>
+        <identifier>remap.controlL2escape</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Command_R+Control_L to Escape</name>
+        <appendix>(Note: Escape is sent when you release Control_L)</appendix>
+        <identifier>remap.commandRcontrolL2escape</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Shift_L+Control_L to Escape</name>
+        <appendix>(Note: Escape is sent when you release Control_L)</appendix>
+        <identifier>remap.shiftLcontrolL2escape</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Control_L to Return</name>
+        <identifier>remap.controlL2return</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
+      </item>
+      <item>
+        <name>Disable Control_L</name>
+        <identifier>remap.drop_controlL</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::VK_NONE</autogen>
+      </item>
+      <item>
+        <name>Control_L x2 to Control_L+Space</name>
+        <identifier>remap.controlL_x2_to_controlLspace</identifier>
+        <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to LeftClick</name>
+        <identifier>remap.controlL2lefttclick</identifier>
+        <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::LEFT</autogen>
+      </item>
+      <item>
+        <name>Control_L to RightClick</name>
+        <identifier>remap.controlL2rightclick</identifier>
+        <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, PointingButton::RIGHT</autogen>
+      </item>
+    </list>
+  </item>
+
+  <item>
+    <name>Change Control_R Key (Right Control)</name>
+    <list>
+      <item>
+        <name>Control_R to Command_R</name>
+        <identifier>remap.controlR2commandR</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
+      </item>
+      <item>
+        <name>Control_R to Command_R (only in virtual machine, RDC)</name>
+        <identifier>remap.controlR2commandR_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
+      </item>
+      <item>
+        <name>Control_R to Option_R</name>
+        <identifier>remap.controlR2optionR</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+      </item>
+      <item>
+        <name>Control_R to Option_R (only in virtual machine, RDC)</name>
+        <identifier>remap.controlR2optionR_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+      </item>
+      <item>
+        <name>Control_R to Shift_R</name>
+        <identifier>remap.controlR2shiftR</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::SHIFT_R</autogen>
+      </item>
+      <item>
+        <name>Control_R to Sticky Control_R</name>
+        <identifier>remap.sticky_controlR</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_STICKY_CONTROL_R</autogen>
+      </item>
+      <item>
+        <name>Control_R to Enter</name>
+        <identifier>remap.controlR_to_enter</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ENTER</autogen>
+      </item>
+      <item>
+        <name>Control_R x2 to Enter</name>
+        <identifier>remap.controlRx2_to_enter</identifier>
+        <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::ENTER</autogen>
+      </item>
+      <item>
+        <name>Control_R to Escape</name>
+        <identifier>remap.controlR2escape</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Control_R to Fn</name>
+        <identifier>remap.controlR2fn</identifier>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::FN</autogen>
+      </item>
+      <item>
+        <name>Control_R to RightClick</name>
+        <identifier>remap.controlR2rightclick</identifier>
+        <autogen>--KeyToPointingButton-- KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
+      </item>
+    </list>
+  </item>
+</root>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change Backquote(`) Key</name>
+    <list>
+      <item>
+        <name>Backquote(`) to CapsLock</name>
+        <identifier>remap.backquote2capslock</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::CAPSLOCK</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Command_L</name>
+        <identifier>remap.backquote2commandL</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Control_L</name>
+        <identifier>remap.backquote2controlL</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Option_L</name>
+        <identifier>remap.backquote2optionL</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Shift_L</name>
+        <identifier>remap.backquote2shiftL</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Fn+Backquote(`) to Backslash(\)</name>
+        <identifier>remap.fnbackquote2backslash</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Delete</name>
+        <identifier>remap.backquote2delete</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Escape</name>
+        <identifier>remap.backquote2escape</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Control+Backquote(`) to Escape</name>
+        <identifier>remap.controlbackquote_to_escape</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, VK_CONTROL, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Fn+Backquote(`) to Fn+Enter</name>
+        <identifier>remap.fnbackquote2fnenter</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::FN, KeyCode::ENTER, ModifierFlag::FN</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Escape if no modifiers pressed</name>
+        <identifier>remap.backquote2escape_withoutmodifiers</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Forward Delete</name>
+        <identifier>remap.backquote2forwarddelete</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to F8</name>
+        <identifier>remap.backquote2f8</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::F8</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Cmd+Option+L</name>
+        <identifier>remap.backquote2cmdoptionl</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to Cmd+Space</name>
+        <identifier>remap.backquote2cmdspace</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Backquote(`) to LeftClick</name>
+        <identifier>remap.backquote2LeftClick</identifier>
+        <autogen>--KeyToPointingButton-- KeyCode::BACKQUOTE, PointingButton::LEFT</autogen>
+      </item>
+      <item>
+        <name>Swap Command+Backquote(`) and Option+Backquote(`)</name>
+        <identifier>remap.swap_commandbackquote_optionbackquote</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,  KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+      </item>
+    </list>
+  </item>
+</root>
