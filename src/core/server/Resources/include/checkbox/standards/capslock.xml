@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change CapsLock Key</name>
+    <list>
+      <item>
+        <name>CapsLock is an exceptional key.</name>
+        <appendix>Use "PCKeyboardHack" to change CapsLock key.</appendix>
+        <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      </item>
+      <item>
+        <name>Tips:</name>
+        <appendix>You can change CapsLock to an other key in PCKeyboardHack.</appendix>
+        <appendix>For example, you can change CapsLock to Escape by setting keycode=53.</appendix>
+        <appendix></appendix>
+        <appendix>If you want to change CapsLock to modifier+key such as Command+Space,</appendix>
+        <appendix>change the key code of CapsLock to 110 in PCKeyboardHack.</appendix>
+        <appendix>(keycode:110 is PC Application Key)</appendix>
+        <appendix></appendix>
+        <appendix>Then, change PC Application Key in KeyRemap4MacBook.</appendix>
+        <appendix>For example, activate the following setting to change CapsLock to Command+Space</appendix>
+        <appendix>"For PC Users &gt; Change PC Application Key &gt; Application Key to Command_L+Space"</appendix>
+      </item>
+    </list>
+  </item>
+</root>
