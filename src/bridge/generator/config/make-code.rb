@@ -18,7 +18,7 @@ require "#{File.dirname(__FILE__)}/../lib/converter.rb"
 ].each do |info|
   dump_xml_compiler_result = '../../../bin/dump_xml_compiler_result/build/Release/dump_xml_compiler_result'
   system_xml_directory     = '../../../core/server/Resources'
-  private_xml_directory    = '/noexistspath'
+  private_xml_directory    = '../../../core/server/Resources'
   system("#{dump_xml_compiler_result} #{system_xml_directory} #{private_xml_directory} #{info[:parameter]} > #{info[:filename]}")
 
   KeyRemap4MacBookBridge::Converter.update_file_if_needed(info[:filename])
