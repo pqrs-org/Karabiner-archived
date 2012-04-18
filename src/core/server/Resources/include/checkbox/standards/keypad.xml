@@ -1,0 +1,301 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change KeyPad Key</name>
+    <list>
+      <item>
+        <name>Change Clear Key</name>
+        <list>
+          <item>
+            <name>Clear to Delete</name>
+            <identifier>remap.clear2delete</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::DELETE</autogen>
+          </item>
+          <item>
+            <name>Clear to Equal</name>
+            <identifier>remap.clear2equal</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::EQUAL</autogen>
+          </item>
+          <item>
+            <name>Clear to Return</name>
+            <identifier>remap.clear2return</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::RETURN</autogen>
+          </item>
+          <item>
+            <name>Clear to Tab</name>
+            <identifier>remap.clear2tab</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::TAB</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change KeyPad-Comma(,) Key</name>
+        <list>
+          <item>
+            <name>KeyPad-Comma(,) to Shift+Comma</name>
+            <identifier>remap.keypadcomma2shiftComma</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Comma(,) to Equal</name>
+            <identifier>remap.keypadcomma2keypadequal</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_EQUAL</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change KeyPad-Dot(.) Key</name>
+        <list>
+          <item>
+            <name>Swap Dot and Shift+Dot</name>
+            <identifier>remap.swap_dot_and_shiftdot</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEYPAD_DOT</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT,            ModifierFlag::NONE, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Dot(.) to Comma(,)</name>
+            <identifier>remap.keypaddot2comma</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_COMMA</autogen>
+          </item>
+          <item>
+            <name>Fn+KeyPad-Dot(.) to Fn+Shift+Dot</name>
+            <appendix>(Useful for some keyboard layouts such as French, Italian, etc.)</appendix>
+            <identifier>remap.fndot2fnshiftdot</identifier>
+            <autogen>--KeyToKey-- KeyCode::DOT,        ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::FN, KeyCode::DOT, ModifierFlag::FN | ModifierFlag::SHIFT_L</autogen>
+          </item>
+          <item>
+            <name>Shift+KeyPad-Dot(.) to Comma</name>
+            <identifier>remap.shift_keypad_dot2comma</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
+          </item>
+          <item>
+            <name>Control+KeyPad-Dot(.) to Command+X (Cut)</name>
+            <identifier>remap.controlDot2commandX</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change KeyPad-Minus(-) Key</name>
+        <list>
+          <item>
+            <name>KeyPad-Minus(-) to Command_L</name>
+            <identifier>remap.keypadminus2commandL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS, KeyCode::COMMAND_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Minus(-) to Control_L</name>
+            <identifier>remap.keypadminus2controlL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS, KeyCode::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Minus(-) to Option_L</name>
+            <identifier>remap.keypadminus2optionL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS, KeyCode::OPTION_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Minus(-) to Shift_L</name>
+            <identifier>remap.keypadminus2shiftL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS, KeyCode::SHIFT_L</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Change KeyPad-Plus(+) Key</name>
+        <list>
+          <item>
+            <name>KeyPad-Plus(+) to Command_L</name>
+            <identifier>remap.keypadplus2commandL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::COMMAND_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Plus(+) to Control_L</name>
+            <identifier>remap.keypadplus2controlL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::CONTROL_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Plus(+) to Option_L</name>
+            <identifier>remap.keypadplus2optionL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::OPTION_L</autogen>
+          </item>
+          <item>
+            <name>KeyPad-Plus(+) to Shift_L</name>
+            <identifier>remap.keypadplus2shiftL</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::SHIFT_L</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Keypad_0 to Shift_L</name>
+        <appendix>(+ When you type Keypad_0 only, send Keypad_0) + [KeyRepeat]</appendix>
+        <identifier>remap.keypad0_2_shiftL_keypad0_keyrepeat</identifier>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::KEYPAD_0, KeyCode::SHIFT_L, KeyCode::KEYPAD_0</autogen>
+      </item>
+      <item>
+        <name>Control+Keypad_0 to Command+C (Copy)</name>
+        <identifier>remap.controlkeypad0_to_commandC</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_0, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Shift+Keypad_0 to Command+V (Paste)</name>
+        <identifier>remap.shiftkeypad0_to_commandV</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_0, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control+Keypad_1 to Command+Down Arrow</name>
+        <identifier>remap.controlkeypad1_to_commandDown</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control+Keypad_7 to Command+Up Arrow</name>
+        <identifier>remap.controlkeypad7_to_commandUp</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_CONTROL, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Shift+Enter to Equal</name>
+        <identifier>remap.shift_enter2equal</identifier>
+        <autogen>--KeyToKey-- KeyCode::ENTER, VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
+      </item>
+      <item>
+        <name>Keypad_0 x3 to Equal</name>
+        <appendix>(+ retaining Keypad_0)</appendix>
+        <appendix></appendix>
+        <appendix>// When you use this setting,</appendix>
+        <appendix>// open "Key Repeat" tab, and</appendix>
+        <appendix>// change "[Double Press Modifier] Recognition Threshold" to a small number.</appendix>
+        <appendix>// (For example, 50ms.)</appendix>
+        <identifier>remap.keypad0_x3_to_equal</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::EXTRA1, KeyCode::KEYPAD_EQUAL</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::KEYPAD_0, KeyCode::KEYPAD_0, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+      </item>
+      <item>
+        <name>Logitech N305 hack / FILCO FKBT22MB hack</name>
+        <appendix>(Enable equal, parentheses)</appendix>
+        <appendix>(Disable NumLock key)</appendix>
+        <identifier>remap.logitech_n305_hack</identifier>
+        <!--
+            ============================================================
+            [Device Information]
+
+            The following is the output for the number one key:
+            *** An unnecessary Clear key is output ***
+            eventType:keyDown code:0x47 name:Clear    flags:Fn         misc:
+            eventType:keyUp   code:0x47 name:Clear    flags:Fn         misc:
+            eventType:keyDown code:0x53 name:1        flags:NumPad     misc:
+            eventType:keyUp   code:0x53 name:1        flags:NumPad     misc:
+            eventType:keyDown code:0x47 name:Clear    flags:Fn         misc:
+            eventType:keyUp   code:0x47 name:Clear    flags:Fn         misc:
+
+            Equal Symbol:
+            eventType:keyMod  code:0x3a name:Option_L flags:Opt        misc:
+            eventType:keyDown code:0x58 name:6        flags:Opt NumPad misc:
+            eventType:keyDown code:0x53 name:1        flags:Opt NumPad misc:
+            eventType:keyUp   code:0x58 name:6        flags:Opt NumPad misc:
+            eventType:keyUp   code:0x53 name:1        flags:Opt NumPad misc:
+            eventType:keyMod  code:0x3a name:Option_L flags:           misc:
+
+            Left Parenthesis:
+            eventType:keyMod  code:0x3a name:Option_L flags:Opt        misc:
+            eventType:keyDown code:0x56 name:4        flags:Opt NumPad misc:
+            eventType:keyUp   code:0x56 name:4        flags:Opt NumPad misc:
+            eventType:keyDown code:0x52 name:0        flags:Opt NumPad misc:
+            eventType:keyUp   code:0x52 name:0        flags:Opt NumPad misc:
+            eventType:keyMod  code:0x3a name:Option_L flags:           misc:
+
+            Right Parenthesis:
+            eventType:keyMod  code:0x3a name:Option_L flags:Opt        misc:
+            eventType:keyDown code:0x56 name:4        flags:Opt NumPad misc:
+            eventType:keyDown code:0x53 name:1        flags:Opt NumPad misc:
+            eventType:keyUp   code:0x56 name:4        flags:Opt NumPad misc:
+            eventType:keyUp   code:0x53 name:1        flags:Opt NumPad misc:
+            eventType:keyMod  code:0x3a name:Option_L flags:           misc:
+
+            ============================================================
+            [Our approach]
+
+            We use sticky modifiers to achieve equal, parentheses.
+
+            Option_L+6 to EXTRA1.
+            - EXTRA1+1 to Equal
+
+            Option_L+4 to EXTRA2.
+            -EXTRA2+0 to Left Parenthesis
+            -EXTRA2+1 to Right Parenthesis
+
+            Option_L+1 to EXTRA3.
+            - EXTRA3+6 to Equal
+            - EXTRA3+4 to Right Parenthesis
+
+            Option_L+0 to EXTRA4.
+            - EXTRA4+4 to Left Parenthesis
+
+          -->
+        <!-- to Equal -->
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA1 | ModifierFlag::OPTION_L, KeyCode::KEYPAD_EQUAL</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA1,                          KeyCode::KEYPAD_EQUAL</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_6, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L, KeyCode::KEYPAD_EQUAL</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_6, ModifierFlag::EXTRA3,                          KeyCode::KEYPAD_EQUAL</autogen>
+
+        <!-- to Left Parenthesis -->
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::EXTRA2,                          KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA4 | ModifierFlag::OPTION_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA4,                          KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+
+        <!-- to Right Parenthesis -->
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::EXTRA2,                          KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::EXTRA3,                          KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+
+        <!-- to Sticky Modifier -->
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_6, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA1</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA2</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA3</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_0, ModifierFlag::OPTION_L | ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA4</autogen>
+
+        <!-- ================================================== -->
+        <!-- Disable unnecessary Clear -->
+        <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
+      </item>
+      <item>
+        <name>Logitech Number Pad Hack</name>
+        <appendix>Force turn NumLock on at Logitech Number Pad (0x046d,0xc523)</appendix>
+        <identifier>remap.logitech_number_pad_hack</identifier>
+        <autogen>--ForceNumLockOn-- DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_NUMBER_PAD</autogen>
+      </item>
+      <item>
+        <name>Use KeyPad as MS Project Build Keys</name>
+        <appendix>Maps some of the keypad keys to standard debugger step thru cmds for Visual Studio</appendix>
+        <list>
+          <item>
+            <name>Change Keypad Enter Key to F5 (Run)</name>
+            <identifier>remap.KPEnter_to_F5</identifier>
+            <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::F5</autogen>
+          </item>
+          <item>
+            <name>Change Keypad Dot(Del) Key to Shift+F5 (Stop)</name>
+            <identifier>remap.KPDot_to_Shift_F5</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::F5, ModifierFlag::SHIFT_L</autogen>
+          </item>
+          <item>
+            <name>Change Keypad 0 to F11 (Step in)</name>
+            <identifier>remap.KP0_to_F11</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::F11</autogen>
+          </item>
+          <item>
+            <name>Change Keypad 1 to Shift+F11/Step out (this is intentionally the key above F11)</name>
+            <identifier>remap.KP1_to_Shift_F11</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::F11, ModifierFlag::SHIFT_L</autogen>
+          </item>
+          <item>
+            <name>Change Keypad 2 to F10 (Step over)</name>
+            <identifier>remap.KP2_to_F10</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::F10</autogen>
+          </item>
+        </list>
+      </item>
+    </list>
+  </item>
+</root>

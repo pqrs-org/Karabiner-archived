@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Emacs Mode</name>
+    <list>
+      <item>
+        <name>Control+D to Forward Delete</name>
+        <identifier>option.emacsmode_controlD</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Control+D to Forward Delete</name>
+        <appendix>(when there are no other modifiers)</appendix>
+        <identifier>option.emacsmode_controlD_nomodifiers</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>Control+H to Delete</name>
+        <identifier>option.emacsmode_controlH</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+      </item>
+      <item>
+        <name>Control+I to Tab</name>
+        <identifier>option.emacsmode_controlI</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
+      </item>
+      <item>
+        <name>Control+[ to Escape</name>
+        <identifier>option.emacsmode_controlLeftbracket</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>Control+J to Return</name>
+        <identifier>remap.controlJ2return</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::RETURN</autogen>
+      </item>
+      <item>
+        <name>Control+J to Enter</name>
+        <identifier>remap.controlJ2enter</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::ENTER</autogen>
+      </item>
+      <item>
+        <name>Control+M to Return</name>
+        <identifier>option.emacsmode_controlM</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
+      </item>
+      <item>
+        <name>Control+PNBF to Up/Down/Left/Right</name>
+        <identifier>option.emacsmode_controlPNBF</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+      </item>
+      <item>
+        <name>Control+PNBF to Up/Down/Left/Right</name>
+        <appendix>(when there are no other modifiers)</appendix>
+        <identifier>option.emacsmode_controlPNBF_nomodifiers</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_nomodifiers.xml" />
+      </item>
+      <item>
+        <name>Control+PNBF to Up/Down/Left/Right</name>
+        <appendix>(+ Control+AE to Command+Left/Right)</appendix>
+        <appendix>(+ Command+Control+PNBF to Shift+Up/Down/Left/Right)</appendix>
+        <appendix>(+ Command+Control+AE to Shift+Command+Left/Right)</appendix>
+        <appendix>(+ retain Control+Shift+PNBF)</appendix>
+        <appendix>(+ retain Control+Shift+AE)</appendix>
+        <identifier>option.emacsmode_controlPNBF_ex</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+      </item>
+      <item>
+        <name>Control+V to PageDown</name>
+        <identifier>option.emacsmode_controlV</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
+      </item>
+      <item>
+        <name>Option+V to PageUp</name>
+        <identifier>option.emacsmode_optionV</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::PAGEUP</autogen>
+      </item>
+      <item>
+        <name>Command+V to PageUp</name>
+        <identifier>option.emacsmode_commandV</identifier>
+        <!-- Do not use "not filter" on changing Command+XXX -->
+        <autogen>--KeyToKey-- KeyCode::V, VK_COMMAND, KeyCode::PAGEUP</autogen>
+      </item>
+      <item>
+        <name>Control+Y to Command+V</name>
+        <identifier>option.emacsmode_controlY</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control+AE to Command+Left/Right</name>
+        <identifier>option.emacsmode_controlAE</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control+AE to Command+Shift+Left/Right,Left/Right</name>
+        <appendix>(An Alternative way if you use Command+Left/Right for Spaces)</appendix>
+        <identifier>option.emacsmode_controlAE_alternative</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+      </item>
+      <item>
+        <name>Control+K to Command+Shift+Right,Forward Delete</name>
+        <identifier>option.emacsmode_controlK_ex</identifier>
+        <block>
+          <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
+          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+        </block>
+        <block>
+          <only>DICTIONARY</only>
+          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::E, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Control+K to Command+Shift+Right,Command+X</name>
+        <identifier>option.emacsmode_controlK</identifier>
+        <block>
+          <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
+          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </block>
+        <block>
+          <only>DICTIONARY</only>
+          <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL | ModifierFlag::NONE, KeyCode::E, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Control+W to Command+X</name>
+        <identifier>option.emacsmode_controlW</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Option+W to Command+C</name>
+        <identifier>option.emacsmode_OptionWCopy</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::W, VK_OPTION, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Option+BF to Option+Left/Right</name>
+        <identifier>option.emacsmode_optionBF</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::B, VK_OPTION, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, VK_OPTION, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Option+D to Option+Forward Delete</name>
+        <identifier>option.emacsmode_optionD</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::D, VK_OPTION, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Option+&lt; to Home / Option+&gt; to End</name>
+        <identifier>option.emacsmode_optionLtGt</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::COMMA, VK_OPTION | VK_SHIFT, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::DOT,   VK_OPTION | VK_SHIFT, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Control+/ to Command_Z</name>
+        <identifier>option.emacsmode_controlSlash</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control+S to Command+F</name>
+        <identifier>option.emacsmode_controlS</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>[ex] Control+1 to Home / Control+2 to End</name>
+        <identifier>option.emacsmode_ex_control12</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, VK_CONTROL, KeyCode::HOME</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, VK_CONTROL, KeyCode::END</autogen>
+      </item>
+      <item>
+        <name>[ex] Control+Comma(,)/Dot(.) to Home/End</name>
+        <identifier>option.emacsmode_ex_controlcommadot</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::COMMA, VK_CONTROL, KeyCode::HOME</autogen>
+        <autogen>--KeyToKey-- KeyCode::DOT,   VK_CONTROL, KeyCode::END</autogen>
+      </item>
+      <item>
+        <name>[ex] Control+Q to PageUp</name>
+        <identifier>option.emacsmode_ex_controlQ</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::Q, VK_CONTROL, KeyCode::PAGEUP</autogen>
+      </item>
+      <item>
+        <name>[ex] Control+W to Option+Delete</name>
+        <identifier>option.emacsmode_ex_controlW</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
+        <identifier>option.emacsmode_ex_controlU</identifier>
+        <block>
+          <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        </block>
+        <block>
+          <only>DICTIONARY</only>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::A, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        </block>
+      </item>
+      <item>
+        <name>[ex] Control+U to Command+Shift+Left,Delete</name>
+        <identifier>option.emacsmode_ex_controlU_delete</identifier>
+        <block>
+          <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE, Option::NOREPEAT</autogen>
+        </block>
+        <block>
+          <only>DICTIONARY</only>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::A, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::DELETE, Option::NOREPEAT</autogen>
+        </block>
+      </item>
+      <item>
+        <name>[ex] Control+U to Command+Shift+Left,Forward Delete</name>
+        <identifier>option.emacsmode_ex_controlU_forwarddelete</identifier>
+        <block>
+          <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, Option::NOREPEAT</autogen>
+        </block>
+        <block>
+          <only>DICTIONARY</only>
+          <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::A, VK_CONTROL | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, Option::NOREPEAT</autogen>
+        </block>
+      </item>
+      <item>
+        <name>[ex] Control+U to PageUp</name>
+        <identifier>remap.controlU2pageup</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::U, VK_CONTROL, KeyCode::PAGEUP</autogen>
+      </item>
+      <item>
+        <name>[ex] Control+G to Escape</name>
+        <identifier>option.emacsmode_ex_controlG</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>[ex] Control+AE to Home/End</name>
+        <identifier>option.emacsmode_ex_controlAE</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
+      </item>
+      <item>
+        <name>[ex] Command+W to Command+C</name>
+        <identifier>option.emacsmode_ex_commandW</identifier>
+        <!-- Do not use "not filter" on changing Command+XXX -->
+        <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>[ex] Command+W to Control+X,Control+M,Command+C (only in Xcode)</name>
+        <appendix>(+ Command+W to Command+C (except Xcode))</appendix>
+        <identifier>option.emacsmode_ex_commandW_xcode</identifier>
+        <block>
+          <only>XCODE</only>
+          <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        </block>
+        <block>
+          <!-- Do not use "not filter" on changing Command+XXX -->
+          <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        </block>
+      </item>
+      <item>
+        <name>[ex] Control+W to Control+X,Control+M,Command+X (only in Xcode)</name>
+        <appendix>(+ Control+W to Command+X (except Xcode))</appendix>
+        <identifier>option.emacsmode_ex_controlW_xcode</identifier>
+        <block>
+          <only>XCODE</only>
+          <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </block>
+        <block>
+          <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+          <autogen>--KeyToKey-- KeyCode::W, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </block>
+      </item>
+      <item>
+        <name>[ex] Option+W to Command+W</name>
+        <identifier>option.emacsmode_ex_optionW</identifier>
+        <autogen>--KeyToKey-- KeyCode::W, VK_OPTION, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>[ex] Use Control+X as prefix key</name>
+        <list>
+          <item>
+            <!-- C-x Mode Core -->
+            <name>Control+X detail</name>
+            <appendix>C-x C-s to Command_L+S</appendix>
+            <appendix>C-x C-f to Command_L+O</appendix>
+            <appendix>C-x k to Command_L+W</appendix>
+            <appendix>C-x C-c to Command_L+Q</appendix>
+            <appendix>C-x C-g to turn off Control+X Mode</appendix>
+            <identifier vk_config="true">notsave.emacsmode_ex_controlX_core</identifier>
+            <autogen>--ShowStatusMessage-- C-x Mode</autogen>
+            <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL | ModifierFlag::NONE, KeyCode::S, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+            <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL | ModifierFlag::NONE, KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+            <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL | ModifierFlag::NONE, KeyCode::O, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+            <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::NONE,              KeyCode::W, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+            <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL | ModifierFlag::NONE,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
+          </item>
+          <item>
+            <name>Enable Control+X</name>
+            <identifier>option.emacsmode_ex_controlX</identifier>
+            <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+            <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_CONFIG_FORCE_ON_notsave_emacsmode_ex_controlX_core</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>[ex] Use Control+Space as MarkSet</name>
+        <list>
+          <item>
+            <!-- MarkSet Mode Core -->
+            <name>MarkSet Mode detail</name>
+            <appendix>Control+W to Command_L+X</appendix>
+            <appendix>Option+W to Command_L+C</appendix>
+            <appendix>Control+G to turn off MarkSet</appendix>
+            <appendix>Control+Space to turn off MarkSet</appendix>
+            <identifier vk_config="true">notsave.emacsmode_ex_controlSpace_core</identifier>
+            <autogen>--ShowStatusMessage-- MarkSet</autogen>
+            <autogen>--KeyToKey-- KeyCode::W,     VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+            <autogen>--KeyToKey-- KeyCode::W,     VK_OPTION  | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+            <autogen>--KeyToKey-- KeyCode::G,     VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+            <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,                                      KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core</autogen>
+          </item>
+          <item>
+            <name>Enable Control+Space</name>
+            <identifier>option.emacsmode_ex_controlSpace</identifier>
+            <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+            <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_LOCK_SHIFT_L_FORCE_ON, KeyCode::VK_CONFIG_FORCE_ON_notsave_emacsmode_ex_controlSpace_core</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC, Eclipse</name>
+        <list>
+          <item>
+            <name>Force change C-d to Forward Delete</name>
+            <list>
+              <item>
+                <name>In Emacs, Terminal</name>
+                <identifier>option.emacsmode_force_controlD_term</identifier>
+                <only>EMACS, TERMINAL</only>
+                <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+              </item>
+              <item>
+                <name>In X11</name>
+                <identifier>option.emacsmode_force_controlD_x11</identifier>
+                <only>X11</only>
+                <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+              </item>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_force_controlD_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+              </item>
+              <item>
+                <name>In Eclipse</name>
+                <identifier>option.emacsmode_force_controlD_eclipse</identifier>
+                <only>ECLIPSE</only>
+                <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>Force change C-h to Delete</name>
+            <list>
+              <item>
+                <name>In Emacs, Terminal</name>
+                <identifier>option.emacsmode_force_controlH_term</identifier>
+                <only>EMACS, TERMINAL</only>
+                <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+              </item>
+              <item>
+                <name>In X11</name>
+                <identifier>option.emacsmode_force_controlH_x11</identifier>
+                <only>X11</only>
+                <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+              </item>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_force_controlH_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+              </item>
+              <item>
+                <name>In Eclipse</name>
+                <identifier>option.emacsmode_force_controlH_eclipse</identifier>
+                <only>ECLIPSE</only>
+                <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>Force change C-i to Tab</name>
+            <list>
+              <item>
+                <name>In Emacs, Terminal</name>
+                <identifier>option.emacsmode_force_controlI_term</identifier>
+                <only>EMACS, TERMINAL</only>
+                <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>In X11</name>
+                <identifier>option.emacsmode_force_controlI_x11</identifier>
+                <only>X11</only>
+                <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_force_controlI_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>In Eclipse</name>
+                <identifier>option.emacsmode_force_controlI_eclipse</identifier>
+                <only>ECLIPSE</only>
+                <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL, KeyCode::TAB</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>Force change C-m to Return</name>
+            <list>
+              <item>
+                <name>In Emacs, Terminal</name>
+                <identifier>option.emacsmode_force_controlM_term</identifier>
+                <only>EMACS, TERMINAL</only>
+                <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
+              </item>
+              <item>
+                <name>In X11</name>
+                <identifier>option.emacsmode_force_controlM_x11</identifier>
+                <only>X11</only>
+                <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
+              </item>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_force_controlM_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
+              </item>
+              <item>
+                <name>In Eclipse</name>
+                <identifier>option.emacsmode_force_controlM_eclipse</identifier>
+                <only>ECLIPSE</only>
+                <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>Force change C-[ to Escape</name>
+            <list>
+              <item>
+                <name>In Emacs, Terminal</name>
+                <identifier>option.emacsmode_force_controlLeftbracket_term</identifier>
+                <only>EMACS, TERMINAL</only>
+                <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+              </item>
+              <item>
+                <name>In X11</name>
+                <identifier>option.emacsmode_force_controlLeftbracket_x11</identifier>
+                <only>X11</only>
+                <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+              </item>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_force_controlLeftbracket_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+              </item>
+              <item>
+                <name>In Eclipse</name>
+                <identifier>option.emacsmode_force_controlLeftbracket_eclipse</identifier>
+                <only>ECLIPSE</only>
+                <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>Force change C-pnbf to Up/Down/Left/Right</name>
+            <list>
+              <item>
+                <name>In Emacs, Terminal</name>
+                <identifier>option.emacsmode_force_controlPNBF_term</identifier>
+                <only>EMACS, TERMINAL</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+              </item>
+              <item>
+                <name>In X11</name>
+                <identifier>option.emacsmode_force_controlPNBF_x11</identifier>
+                <only>X11</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+              </item>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_force_controlPNBF_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+              </item>
+              <item>
+                <name>In Eclipse</name>
+                <identifier>option.emacsmode_force_controlPNBF_eclipse</identifier>
+                <only>ECLIPSE</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>Force change C-pnbf to Up/Down/Left/Right</name>
+            <appendix>(+ Control+AE to Command+Left/Right)</appendix>
+            <appendix>(+ Command+Control+PNBF to Shift+Up/Down/Left/Right)</appendix>
+            <appendix>(+ Command+Control+AE to Shift+Command+Left/Right)</appendix>
+            <appendix>(+ retain Control+Shift+PNBF)</appendix>
+            <appendix>(+ retain Control+Shift+AE)</appendix>
+            <list>
+              <item>
+                <name>In Emacs, Terminal</name>
+                <identifier>option.emacsmode_force_controlPNBF_ex_term</identifier>
+                <only>EMACS, TERMINAL</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+              </item>
+              <item>
+                <name>In X11</name>
+                <identifier>option.emacsmode_force_controlPNBF_ex_x11</identifier>
+                <only>X11</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+              </item>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_force_controlPNBF_ex_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+              </item>
+              <item>
+                <name>In Eclipse</name>
+                <identifier>option.emacsmode_force_controlPNBF_ex_eclipse</identifier>
+                <only>ECLIPSE</only>
+                <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>Control+AE to Home/End</name>
+            <list>
+              <item>
+                <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
+                <identifier>option.emacsmode_controlAE_vm</identifier>
+                <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+                <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+                <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>[Terminal] Control+/ to C-_ and Control+' to C-M-_</name>
+            <identifier>option.emacsmode_controlSlashTerminal</identifier>
+            <only>TERMINAL</only>
+            <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::MINUS, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::QUOTE, VK_CONTROL, KeyCode::MINUS, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+          </item>
+        </list>
+      </item>
+    </list>
+  </item>
+</root>
