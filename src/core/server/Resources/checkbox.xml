@@ -3449,7 +3449,7 @@
 
                 <item>
                   <name>F1..F12 to Functional</name>
-                  <include system_xml_path="include/checkbox/appendix_f1_f12_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/appendix_f1_f12_to_functional.xml" />
                   <include system_xml_path="include/checkbox/caution_functionkey.xml" />
                   <identifier>remap.f1_f12_to_functional_all</identifier>
                   <include system_xml_path="include/checkbox/fnF1_F12_to_function.xml" />
@@ -3457,7 +3457,7 @@
                 </item>
                 <item>
                   <name>F5,F6 to Functional</name>
-                  <include system_xml_path="include/checkbox/appendix_f5_f6_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/appendix_f5_f6_to_functional.xml" />
                   <include system_xml_path="include/checkbox/caution_functionkey.xml" />
                   <identifier>remap.f5_f6_to_functional_all</identifier>
                   <include system_xml_path="include/checkbox/fnF5_F6_to_function.xml" />
@@ -3466,7 +3466,7 @@
 
                 <item>
                   <name>F1..F12 to Functional (except virtual machine, RDC)</name>
-                  <include system_xml_path="include/checkbox/appendix_f1_f12_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/appendix_f1_f12_to_functional.xml" />
                   <include system_xml_path="include/checkbox/caution_functionkey.xml" />
                   <identifier>remap.f1_f12_to_functional_ex_vm</identifier>
                   <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
@@ -3475,7 +3475,7 @@
                 </item>
                 <item>
                   <name>F5,F6 to Functional (except virtual machine, RDC)</name>
-                  <include system_xml_path="include/checkbox/appendix_f5_f6_to_functional.xml" />
+                  <include system_xml_path="include/checkbox/snippets/appendix_f5_f6_to_functional.xml" />
                   <include system_xml_path="include/checkbox/caution_functionkey.xml" />
                   <identifier>remap.f5_f6_to_functional_ex_vm</identifier>
                   <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
