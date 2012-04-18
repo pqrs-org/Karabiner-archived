@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Browsing Mode</name>
+    <list>
+      <item>
+        <name>What's Browsing Mode?</name>
+        <appendix>Browsing Mode is a mode to perform reading of the text effectively.</appendix>
+        <appendix></appendix>
+        <appendix>- Change Space to PageDown</appendix>
+        <appendix>- Change Shift+Space to PageUp</appendix>
+        <appendix>- Change B to PageUp</appendix>
+        <appendix>- Change H to Home</appendix>
+        <appendix>- Change J to Option_L+Down</appendix>
+        <appendix>- Change K to Option_L+Up</appendix>
+        <appendix>- Change L to End</appendix>
+        <identifier vk_config="true">notsave.browsingmode</identifier>
+        <autogen>--ShowStatusMessage-- Browsing Mode</autogen>
+        <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::PAGEUP</autogen>
+        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::PAGEDOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::PAGEUP</autogen>
+        <autogen>--KeyToKey-- KeyCode::H, KeyCode::HOME</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, KeyCode::END</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Eject to toggle Browsing Mode</name>
+        <appendix>(+ Fn+Eject to Eject)</appendix>
+        <identifier>remap.eject2browsing</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::EJECT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+      </item>
+      <item>
+        <name>Fn to Fn</name>
+        <appendix>(+ When you type Fn only, toggle Browsing Mode)</appendix>
+        <identifier>remap.Fn2Fn_browsing</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+      </item>
+      <item>
+        <name>Option_R to Option_R</name>
+        <appendix>(+ When you type Option_R only, toggle Browsing Mode)</appendix>
+        <identifier>remap.optionR2optionR_browsing</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+      </item>
+      <item>
+        <name>RightClick to toggle Browsing Mode</name>
+        <identifier>remap.rightclick_to_browsing</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+      </item>
+    </list>
+  </item>
+</root>
