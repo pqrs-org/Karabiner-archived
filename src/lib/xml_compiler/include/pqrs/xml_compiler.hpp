@@ -92,21 +92,11 @@ namespace pqrs {
 
     void traverse_identifier_(const extracted_ptree& pt,
                               const std::string& parent_tag_name);
-    void traverse_identifier_(const boost::property_tree::ptree& pt,
-                              const std::string& parent_tag_name) {
-      traverse_identifier_(make_extracted_ptree(pt), parent_tag_name);
-    }
 
     void traverse_autogen_(const extracted_ptree& pt,
                            const std::string& identifier,
                            const filter_vector& filter_vector,
                            std::vector<uint32_t>& initialize_vector);
-    void traverse_autogen_(const boost::property_tree::ptree& pt,
-                           const std::string& identifier,
-                           const filter_vector& filter_vector,
-                           std::vector<uint32_t>& initialize_vector) {
-      traverse_autogen_(make_extracted_ptree(pt), identifier, filter_vector, initialize_vector);
-    }
 
     void handle_autogen(const std::string& autogen,
                         const std::string& raw_autogen,
