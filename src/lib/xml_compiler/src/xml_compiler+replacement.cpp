@@ -8,12 +8,12 @@ namespace pqrs {
     for (auto& it : pt) {
       if (it.first != "replacementdef") {
         if (! it.second.empty()) {
-          traverse(it.second);
+          traverse(it.children_extracted_ptree());
         }
       } else {
         boost::optional<std::string> name;
         boost::optional<std::string> value;
-        for (auto& child : extracted_ptree(xml_compiler_, it.second)) {
+        for (auto& child : it.children_extracted_ptree()) {
           if (child.first == "replacementname") {
             name = child.second.data();
           } else if (child.first == "replacementvalue") {

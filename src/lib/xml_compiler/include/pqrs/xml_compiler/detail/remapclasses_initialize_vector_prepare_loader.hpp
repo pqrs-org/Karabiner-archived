@@ -39,7 +39,7 @@ public:
       {
         if (it.first != "item") {
           if (! it.second.empty()) {
-            traverse(it.second);
+            traverse(it.children_extracted_ptree());
           }
         } else {
           // preferences_node_tree
@@ -48,8 +48,8 @@ public:
           }
           std::tr1::shared_ptr<T_preferences_node_tree> ptr(new T_preferences_node_tree(preferences_node_tree_->get_node()));
 
-          for (auto& child : extracted_ptree(xml_compiler_, it.second)) {
-            ptr->handle_item_child(child);
+          for (auto& child : it.children_extracted_ptree()) {
+            ptr->handle_item_child(child.get_node());
 
             if (child.first == "identifier") {
               auto raw_identifier = boost::trim_copy(child.second.data());
@@ -93,7 +93,7 @@ public:
           preferences_node_tree_ = ptr.get();
           {
             if (! it.second.empty()) {
-              traverse(it.second);
+              traverse(it.children_extracted_ptree());
             }
           }
           preferences_node_tree_ = saved_preferences_node_tree;
@@ -102,10 +102,6 @@ public:
         }
       }
     }
-  }
-
-  void traverse(const boost::property_tree::ptree& pt) {
-    traverse(extracted_ptree(xml_compiler_, pt));
   }
 
   // call "fixup" at traversing each file.

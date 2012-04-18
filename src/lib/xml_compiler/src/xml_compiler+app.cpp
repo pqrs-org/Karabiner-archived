@@ -44,13 +44,13 @@ namespace pqrs {
     for (auto& it : pt) {
       if (it.first != "appdef") {
         if (! it.second.empty()) {
-          traverse(it.second);
+          traverse(it.children_extracted_ptree());
         }
       } else {
         std::tr1::shared_ptr<app> newapp(new app());
         if (! newapp) continue;
 
-        for (auto& child : extracted_ptree(xml_compiler_, it.second)) {
+        for (auto& child : it.children_extracted_ptree()) {
           if (child.first == "appname") {
             newapp->set_name(boost::trim_copy(child.second.data()));
           } else if (child.first == "equal") {

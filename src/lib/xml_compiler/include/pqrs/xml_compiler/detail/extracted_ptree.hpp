@@ -4,13 +4,42 @@ class extracted_ptree
 {
 public:
   extracted_ptree(const xml_compiler& xml_compiler,
+                  const pqrs::string::replacement& replacement,
                   const boost::property_tree::ptree& pt) :
     xml_compiler_(xml_compiler),
+    replacement_(replacement),
     pt_(pt)
   {}
 
+  class extracted_ptree_node
+  {
+  public:
+    extracted_ptree_node(const boost::property_tree::ptree::value_type& node,
+                         const xml_compiler& xml_compiler,
+                         const pqrs::string::replacement& replacement) :
+      first(node.first),
+      second(node.second),
+      node_(node),
+      xml_compiler_(xml_compiler),
+      replacement_(replacement)
+    {}
+
+    const std::string& first;
+    const boost::property_tree::ptree& second;
+
+    const boost::property_tree::ptree::value_type& get_node(void) const { return node_; }
+    extracted_ptree children_extracted_ptree(void) const {
+      return extracted_ptree(xml_compiler_, replacement_, second);
+    }
+
+  private:
+    const boost::property_tree::ptree::value_type& node_;
+    const xml_compiler& xml_compiler_;
+    const pqrs::string::replacement& replacement_;
+  };
+
   class extracted_ptree_iterator : public boost::iterator_facade<extracted_ptree_iterator,
-                                                                 const boost::property_tree::ptree::value_type,
+                                                                 const extracted_ptree_node,
                                                                  boost::forward_traversal_tag>
   {
   public:
@@ -19,11 +48,12 @@ public:
     {}
 
     extracted_ptree_iterator(const xml_compiler& xml_compiler,
+                             const pqrs::string::replacement& replacement,
                              const boost::property_tree::ptree& pt) :
       xml_compiler_(xml_compiler)
     {
       if (! pt.empty()) {
-        stack_.push(stack_data(pt));
+        stack_.push(stack_data(pt, replacement));
         extract_include_();
       }
     }
@@ -32,7 +62,7 @@ public:
     friend class boost::iterator_core_access;
 
     void increment(void);
-    const boost::property_tree::ptree::value_type& dereference(void) const;
+    const extracted_ptree_node dereference(void) const;
     bool equal(const extracted_ptree_iterator const& other) const;
 
     void extract_include_(void);
@@ -40,23 +70,32 @@ public:
 
     class stack_data {
     public:
-      stack_data(const boost::property_tree::ptree& pt) :
+      stack_data(const boost::property_tree::ptree& pt,
+                 const pqrs::string::replacement& r) :
         it(pt.begin()),
-        end(pt.end())
+        end(pt.end()),
+        parent_replacement(r)
       {}
 
       // For extracted ptree.
-      stack_data(const ptree_ptr& p, const boost::property_tree::ptree& root_children) :
+      stack_data(const ptree_ptr& p,
+                 const std::tr1::shared_ptr<pqrs::string::replacement>& r,
+                 const boost::property_tree::ptree& root_children) :
         it(root_children.begin()),
         end(root_children.end()),
-        pt_ptr_(p)
+        parent_replacement(*r),
+        pt_ptr_(p),
+        replacement_ptr_(r)
       {}
 
       boost::property_tree::ptree::const_iterator it;
       boost::property_tree::ptree::const_iterator end;
+      const pqrs::string::replacement& parent_replacement;
 
     private:
-      ptree_ptr pt_ptr_; // Keep extracted ptree_ptr until we finish traversing.
+      // Keep extracted ptree_ptr, replacement_ptr until we finish traversing.
+      const ptree_ptr pt_ptr_;
+      const std::tr1::shared_ptr<pqrs::string::replacement> replacement_ptr_;
     };
 
     const xml_compiler& xml_compiler_;
@@ -64,7 +103,7 @@ public:
   };
 
   extracted_ptree_iterator begin(void) const {
-    return extracted_ptree_iterator(xml_compiler_, pt_);
+    return extracted_ptree_iterator(xml_compiler_, replacement_, pt_);
   }
 
   extracted_ptree_iterator end(void) const {
@@ -73,5 +112,6 @@ public:
 
 private:
   const xml_compiler& xml_compiler_;
+  const pqrs::string::replacement& replacement_;
   const boost::property_tree::ptree& pt_;
 };

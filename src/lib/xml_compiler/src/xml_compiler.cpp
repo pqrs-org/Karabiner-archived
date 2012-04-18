@@ -35,7 +35,7 @@ namespace pqrs {
                     xml_file_path(xml_file_path::base_directory::private_xml, "private.xml"),
                     dummy);
           if (ptree_ptr) {
-            loader.traverse(*ptree_ptr);
+            loader.traverse(make_extracted_ptree(*ptree_ptr));
           }
         }
         // replacementdef.xml
@@ -46,7 +46,7 @@ namespace pqrs {
                     xml_file_path(xml_file_path::base_directory::system_xml,  "replacementdef.xml"),
                     dummy);
           if (ptree_ptr) {
-            loader.traverse(*ptree_ptr);
+            loader.traverse(make_extracted_ptree(*ptree_ptr));
           }
         }
       }
@@ -66,7 +66,7 @@ namespace pqrs {
         symbol_map_loader loader(*this, symbol_map_);
 
         if (private_xml_ptree_ptr) {
-          loader.traverse(*private_xml_ptree_ptr);
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr));
         }
 
         loader_wrapper<symbol_map_loader>::traverse_system_xml(*this, loader, "symbol_map.xml");
@@ -77,7 +77,7 @@ namespace pqrs {
         app_loader loader(*this, symbol_map_, app_vector_);
 
         if (private_xml_ptree_ptr) {
-          loader.traverse(*private_xml_ptree_ptr);
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr));
         }
 
         loader_wrapper<app_loader>::traverse_system_xml(*this, loader, "appdef.xml");
@@ -88,7 +88,7 @@ namespace pqrs {
         device_loader loader(*this, symbol_map_);
 
         if (private_xml_ptree_ptr) {
-          loader.traverse(*private_xml_ptree_ptr);
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr));
         }
 
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicevendordef.xml");
@@ -112,7 +112,7 @@ namespace pqrs {
             remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_number_node> > loader(*this, symbol_map_, identifier_map_, essential_configurations_, &preferences_number_node_tree_);
 
             if (number_xml_ptree_ptr) {
-              loader.traverse(*number_xml_ptree_ptr);
+              loader.traverse(make_extracted_ptree(*number_xml_ptree_ptr));
               loader.fixup();
             }
             loader.cleanup();
@@ -121,11 +121,11 @@ namespace pqrs {
             remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_checkbox_node> > loader(*this, symbol_map_, identifier_map_, essential_configurations_, &preferences_checkbox_node_tree_);
 
             if (private_xml_ptree_ptr) {
-              loader.traverse(*private_xml_ptree_ptr);
+              loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr));
               loader.fixup();
             }
             if (checkbox_xml_ptree_ptr) {
-              loader.traverse(*checkbox_xml_ptree_ptr);
+              loader.traverse(make_extracted_ptree(*checkbox_xml_ptree_ptr));
               loader.fixup();
             }
             loader.cleanup();
@@ -133,10 +133,10 @@ namespace pqrs {
 
           // ----------------------------------------
           if (private_xml_ptree_ptr) {
-            traverse_identifier_(*private_xml_ptree_ptr, "");
+            traverse_identifier_(make_extracted_ptree(*private_xml_ptree_ptr), "");
           }
           if (checkbox_xml_ptree_ptr) {
-            traverse_identifier_(*checkbox_xml_ptree_ptr, "");
+            traverse_identifier_(make_extracted_ptree(*checkbox_xml_ptree_ptr), "");
           }
 
           remapclasses_initialize_vector_.freeze();

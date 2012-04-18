@@ -83,6 +83,10 @@ namespace pqrs {
       read_xml_(out, xml_file_path, replacement_);
     }
 
+    extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt) const {
+      return extracted_ptree(*this, replacement_, pt);
+    }
+
     static void normalize_identifier_(std::string& identifier);
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
 
@@ -90,7 +94,7 @@ namespace pqrs {
                               const std::string& parent_tag_name);
     void traverse_identifier_(const boost::property_tree::ptree& pt,
                               const std::string& parent_tag_name) {
-      traverse_identifier_(extracted_ptree(*this, pt), parent_tag_name);
+      traverse_identifier_(make_extracted_ptree(pt), parent_tag_name);
     }
 
     void traverse_autogen_(const extracted_ptree& pt,
@@ -101,7 +105,7 @@ namespace pqrs {
                            const std::string& identifier,
                            const filter_vector& filter_vector,
                            std::vector<uint32_t>& initialize_vector) {
-      traverse_autogen_(extracted_ptree(*this, pt), identifier, filter_vector, initialize_vector);
+      traverse_autogen_(make_extracted_ptree(pt), identifier, filter_vector, initialize_vector);
     }
 
     void handle_autogen(const std::string& autogen,

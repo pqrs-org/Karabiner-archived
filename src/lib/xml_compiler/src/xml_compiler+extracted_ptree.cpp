@@ -14,7 +14,7 @@ namespace pqrs {
     extract_include_();
   }
 
-  const boost::property_tree::ptree::value_type&
+  const xml_compiler::extracted_ptree::extracted_ptree_node
   xml_compiler::extracted_ptree::extracted_ptree_iterator::dereference(void) const
   {
     if (stack_.empty()) {
@@ -26,7 +26,7 @@ namespace pqrs {
       throw xml_compiler_logic_error("it == end in extracted_ptree_iterator.");
     }
 
-    return *(top.it);
+    return extracted_ptree_node(*(top.it), xml_compiler_, top.parent_replacement);
   }
 
   bool
@@ -56,15 +56,16 @@ namespace pqrs {
 
     // ----------------------------------------
     // replacement
-    pqrs::string::replacement r;
+    std::tr1::shared_ptr<pqrs::string::replacement> replacement_ptr(new pqrs::string::replacement);
     if (! it.second.empty()) {
-      replacement_loader loader(xml_compiler_, r);
-      loader.traverse(it.second);
+      replacement_loader loader(xml_compiler_, *replacement_ptr);
+      loader.traverse(extracted_ptree(xml_compiler_, top.parent_replacement, it.second));
     }
 
-    for (auto& i : xml_compiler_.replacement_) {
-      if (r.find(i.first) == r.end()) {
-        r[i.first] = i.second;
+    auto end = replacement_ptr->end();
+    for (auto& i : top.parent_replacement) {
+      if (replacement_ptr->find(i.first) == end) {
+        (*replacement_ptr)[i.first] = i.second;
       }
     }
 
@@ -73,13 +74,13 @@ namespace pqrs {
     {
       auto path = it.second.get_optional<std::string>("<xmlattr>.path");
       if (path) {
-        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.private_xml_directory_, *path, r);
+        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.private_xml_directory_, *path, *replacement_ptr);
       }
     }
     {
       auto path = it.second.get_optional<std::string>("<xmlattr>.system_xml_path");
       if (path) {
-        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.system_xml_directory_, *path, r);
+        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.system_xml_directory_, *path, *replacement_ptr);
       }
     }
 
@@ -92,7 +93,7 @@ namespace pqrs {
         auto root_node = pt_ptr->begin();
         auto& root_children = root_node->second;
         if (! root_children.empty()) {
-          stack_.push(stack_data(pt_ptr, root_children));
+          stack_.push(stack_data(pt_ptr, replacement_ptr, root_children));
           extract_include_();
         }
       }
