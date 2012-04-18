@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <root>
+  <include system_xml_path="include/checkbox/japanese/oyayubishiftinput_kana_base.xml" />
+
   <!-- 上段 数字キー -->
   <autogen>--KeyToKey-- KeyCode::KEY_1,   ModifierFlag::NONE, KeyCode::KEY_1,   ModifierFlag::OPTION_L</autogen>
   <autogen>--KeyToKey-- KeyCode::KEY_2,   ModifierFlag::NONE, KeyCode::KEY_2,   ModifierFlag::OPTION_L</autogen>
