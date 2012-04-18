@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Virtual KeyCode</name>
+    <list>
+      <item>
+        <name>VK_MODIFIER_EXTRA</name>
+        <appendix>Use A as ModifierFlag::EXTRA1</appendix>
+        <appendix>Use D as ModifierFlag::EXTRA5</appendix>
+        <appendix>Use F as ModifierFlag::EXTRA5 (When type only, send Space)</appendix>
+        <appendix>EXTRA1+S to B</appendix>
+        <appendix>EXTRA5+S to C</appendix>
+        <identifier>remap.samples_modifier_extra1</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MODIFIER_EXTRA5</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::SPACE</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA1, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA5, KeyCode::C</autogen>
+      </item>
+      <item>
+        <name>VK_WAIT</name>
+        <appendix>Change KEY_1 to A,B,&lt;wait10ms&gt;,C</appendix>
+        <appendix>Change KEY_2 to A,B,&lt;wait50ms&gt;,C</appendix>
+        <appendix>Change KEY_3 to A,B,&lt;wait100ms&gt;,C</appendix>
+        <identifier>remap.samples_vk_wait</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_10MS,  KeyCode::C</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_50MS,  KeyCode::C</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_100MS, KeyCode::C</autogen>
+      </item>
+
+      <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_lock.xml" />
+      <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_sticky.xml" />
+      <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_lazy.xml" />
+      <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_mousekey.xml" />
+
+      <item>
+        <name>VK_CHANGE_INPUTMODE_*</name>
+        <appendix>Use 1 to VK_CHANGE_INPUTMODE_ENGLISH</appendix>
+        <appendix>Use 2 to VK_CHANGE_INPUTMODE_FRENCH</appendix>
+        <appendix>Use 3 to VK_CHANGE_INPUTMODE_GERMAN</appendix>
+        <appendix>Use 4 to VK_CHANGE_INPUTMODE_JAPANESE</appendix>
+        <appendix>Use 5 to VK_CHANGE_INPUTMODE_SWEDISH</appendix>
+        <appendix>Use 6 to VK_CHANGE_INPUTMODE_CANADIAN</appendix>
+        <appendix>Use 7 to VK_CHANGE_INPUTMODE_RUSSIAN</appendix>
+        <appendix>Use 8 to VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</appendix>
+        <appendix>Use 9 to VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</appendix>
+        <appendix>Use 0 to VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</appendix>
+        <appendix>Use Q to VK_CHANGE_INPUTMODE_ESTONIAN</appendix>
+        <appendix>Use W to VK_CHANGE_INPUTMODE_FINNISH</appendix>
+        <appendix>Use E to VK_CHANGE_INPUTMODE_THAI</appendix>
+        <appendix>Use R to VK_CHANGE_INPUTSOURCE_DVORAK</appendix>
+        <appendix>Use T to VK_CHANGE_INPUTSOURCE_COLEMAK</appendix>
+        <identifier>remap.samples_vk_change_inputmode</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTMODE_GERMAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTMODE_CANADIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</autogen>
+        <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_CHANGE_INPUTMODE_THAI</autogen>
+        <autogen>--KeyToKey-- KeyCode::R,     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
+        <autogen>--KeyToKey-- KeyCode::T,     KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</autogen>
+      </item>
+      <item>
+        <name>VK_CONFIG</name>
+        <list>
+          <item>
+            <name></name>
+            <appendix>Use A to VK_CONFIG_TOGGLE</appendix>
+            <appendix>Use S to VK_CONFIG_FORCE_ON</appendix>
+            <appendix>Use D to VK_CONFIG_FORCE_OFF</appendix>
+            <appendix>Use F to VK_CONFIG_SYNC_KEYDOWNUP</appendix>
+            <appendix>Use G to Shift_L+VK_CONFIG_SYNC_KEYDOWNUP</appendix>
+            <appendix>Use H to A,VK_CONFIG_SYNC_KEYDOWNUP</appendix>
+            <appendix>Use J to A,Shift_L+VK_CONFIG_SYNC_KEYDOWNUP</appendix>
+            <identifier>remap.samples_vk_config</identifier>
+            <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_samples_vk_config</autogen>
+            <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_vk_config</autogen>
+            <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_vk_config</autogen>
+            <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config</autogen>
+            <autogen>--KeyToKey-- KeyCode::G, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config, ModifierFlag::SHIFT_L</autogen>
+            <autogen>--KeyToKey-- KeyCode::H, KeyCode::A, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config</autogen>
+            <autogen>--KeyToKey-- KeyCode::J, KeyCode::A, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config, ModifierFlag::SHIFT_L</autogen>
+          </item>
+          <item>
+            <name></name>
+            <identifier vk_config="true">notsave.samples_vk_config</identifier>
+            <autogen>--ShowStatusMessage-- VK_CONFIG</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>VK_CONSUMERKEY</name>
+        <list>
+          <item>
+            <name>Standard</name>
+            <appendix>Use 1 to VK_CONSUMERKEY_BRIGHTNESS_DOWN</appendix>
+            <appendix>Use 2 to VK_CONSUMERKEY_BRIGHTNESS_UP</appendix>
+            <appendix>Use 3 to VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</appendix>
+            <appendix>Use 4 to VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</appendix>
+            <appendix>Use 5 to VK_CONSUMERKEY_MUSIC_PREV</appendix>
+            <appendix>Use 6 to VK_CONSUMERKEY_MUSIC_PLAY</appendix>
+            <appendix>Use 7 to VK_CONSUMERKEY_MUSIC_NEXT</appendix>
+            <appendix>Use 8 to VK_CONSUMERKEY_VOLUME_MUTE</appendix>
+            <appendix>Use 9 to VK_CONSUMERKEY_VOLUME_DOWN</appendix>
+            <appendix>Use 0 to VK_CONSUMERKEY_VOLUME_UP</appendix>
+            <appendix>Use q to VK_CONSUMERKEY_EJECT</appendix>
+            <appendix>Use w to VK_CONSUMERKEY_POWER</appendix>
+            <identifier>remap.samples_vk_consumerkey</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CONSUMERKEY_MUSIC_PREV</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CONSUMERKEY_MUSIC_PLAY</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CONSUMERKEY_MUSIC_NEXT</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CONSUMERKEY_VOLUME_MUTE</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CONSUMERKEY_VOLUME_DOWN</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CONSUMERKEY_VOLUME_UP</autogen>
+            <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CONSUMERKEY_EJECT</autogen>
+            <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CONSUMERKEY_POWER</autogen>
+          </item>
+          <item>
+            <name>Combination with key repeat</name>
+            <appendix>Use 1 to VK_CONSUMERKEY_BRIGHTNESS_DOWN, Space</appendix>
+            <appendix>Use 2 to VK_CONSUMERKEY_BRIGHTNESS_UP, Space</appendix>
+            <identifier>remap.samples_vk_consumerkey_combination</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN, KeyCode::SPACE</autogen>
+            <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP, KeyCode::SPACE</autogen>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>VK_JIS_TOGGLE_EISUU_KANA</name>
+        <appendix>A to KANA/EISUU (toggle)</appendix>
+        <appendix>Command_L to KANA/EISUU (toggle)</appendix>
+        <appendix>Command_R to Command_R (When type only, send send KANA/EISUU (toggle))</appendix>
+        <identifier>remap.samples_vk_jis_toggle_eisuu_kana</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+      </item>
+      <item>
+        <name>VK_JIS_BACKSLASH</name>
+        <appendix>Use A as JIS_BACKSLASH</appendix>
+        <identifier>remap.samples_a2jisbackslash</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_BACKSLASH</autogen>
+      </item>
+      <item>
+        <name>VK_JIS_YEN</name>
+        <appendix>Use A as JIS_YEN</appendix>
+        <identifier>remap.samples_a2jisyen</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_JIS_YEN</autogen>
+      </item>
+      <item>
+        <name>VK_JIS_TEMPORARY_ROMAN</name>
+        <appendix>Use A as A,VK_JIS_TEMPORARY_ROMAN,I,U</appendix>
+        <appendix>Use B as VK_JIS_TEMPORARY_ROMAN,A,I,U</appendix>
+        <identifier>remap.samples_vk_jis_temporary_roman</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      </item>
+      <item>
+        <name>VK_JIS_TEMPORARY_HIRAGANA</name>
+        <appendix>Use A as A,VK_JIS_TEMPORARY_HIRAGANA,I,U</appendix>
+        <appendix>Use B as VK_JIS_TEMPORARY_HIRAGANA,A,I,U</appendix>
+        <identifier>remap.samples_vk_jis_temporary_hiragana</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_HIRAGANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_HIRAGANA, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      </item>
+      <item>
+        <name>VK_JIS_TEMPORARY_KATAKANA</name>
+        <appendix>Use A as A,VK_JIS_TEMPORARY_KATAKANA,I,U</appendix>
+        <appendix>Use B as VK_JIS_TEMPORARY_KATAKANA,A,I,U</appendix>
+        <identifier>remap.samples_vk_jis_temporary_katakana</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      </item>
+      <item>
+        <name>VK_JIS_TEMPORARY_AINU</name>
+        <appendix>Use A as A,VK_JIS_TEMPORARY_AINU,I,U</appendix>
+        <appendix>Use B as VK_JIS_TEMPORARY_AINU,A,I,U</appendix>
+        <identifier>remap.samples_vk_jis_temporary_ainu</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_AINU, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_JIS_TEMPORARY_AINU, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      </item>
+    </list>
+  </item>
+</root>
