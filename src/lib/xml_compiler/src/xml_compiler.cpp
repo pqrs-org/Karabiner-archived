@@ -165,6 +165,11 @@ namespace pqrs {
       } else {
         pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, path.c_str(), replacement);
       }
+      if (xml.empty()) {
+        error_information_.set(relative_file_path + " is not found.");
+        return;
+      }
+
       std::stringstream istream(xml, std::stringstream::in);
 
       int flags = boost::property_tree::xml_parser::no_comments;
