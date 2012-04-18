@@ -1,0 +1,596 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Filters</name>
+    <list>
+      <!-- application only -->
+      <item>
+        <name>application</name>
+        <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
+        <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
+        <appendix>Volume Mute to B if application == TERMINAL (ConsumerToKey)</appendix>
+        <appendix>Volume Mute to C if application != TERMINAL (ConsumerToKey)</appendix>
+        <identifier>remap.samples_application</identifier>
+        <block>
+          <only>TERMINAL</only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
+        </block>
+        <block>
+          <not>TERMINAL</not>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+          <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
+        </block>
+      </item>
+
+      <!-- Device only -->
+      <item>
+        <name>Device only</name>
+        <appendix>A to B if (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+        <appendix>A to C unless (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+        <appendix>S to Tab if VendorID == DeviceVendor::APPLE_COMPUTER (DeviceProduct::ANY)</appendix>
+        <appendix>S to Space unless VendorID == DeviceVendor::APPLE_COMPUTER (DeviceProduct::ANY)</appendix>
+        <appendix>* (0x5ac,0x21a) is MacBookPro2,1</appendix>
+        <appendix>* (0x5ac,0x222) is Apple Aluminum Keyboard (JIS)</appendix>
+        <identifier>remap.samples_device</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        </block>
+        <block>
+          <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+        </block>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::ANY</device_only>
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::TAB</autogen>
+        </block>
+        <block>
+          <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::ANY</device_not>
+          <autogen>--KeyToKey-- KeyCode::S, KeyCode::SPACE</autogen>
+        </block>
+      </item>
+
+      <!-- Config only -->
+      <item>
+        <name>Config only</name>
+        <list>
+          <item>
+            <name>Core</name>
+            <identifier>remap.samples_config</identifier>
+            <appendix>A to 1 if samples_config_mode1 == active</appendix>
+            <appendix>B to 2 if samples_config_mode1 or samples_config_mode2 == active</appendix>
+            <appendix>A to 3 if samples_config_mode1 != active</appendix>
+            <appendix>B to 4 if samples_config_mode1 and samples_config_mode2 != active</appendix>
+            <appendix>C to 5</appendix>
+            <block>
+              <config_only>option.samples_config_mode1</config_only>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_1</autogen>
+            </block>
+            <block>
+              <config_only>option.samples_config_mode1, option.samples_config_mode2</config_only>
+              <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_2</autogen>
+            </block>
+            <block>
+              <config_not>option.samples_config_mode1</config_not>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_3</autogen>
+            </block>
+            <block>
+              <config_not>option.samples_config_mode1, option.samples_config_mode2</config_not>
+              <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_4</autogen>
+            </block>
+            <block>
+              <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_5</autogen>
+            </block>
+          </item>
+          <item>
+            <name>Config only mode1</name>
+            <identifier vk_config="true">option.samples_config_mode1</identifier>
+          </item>
+          <item>
+            <name>Config only mode2</name>
+            <identifier>option.samples_config_mode2</identifier>
+          </item>
+          <item><name>----------------------------------------</name></item>
+          <item>
+            <name>With KEYTOKEY_BEFORE_KEYDOWN, KEYTOKEY_AFTER_KEYUP</name>
+            <appendix>Space to Tab (And Before A, After B)</appendix>
+            <appendix>(If you type Space key, a sequence of "A,Tab,B" is fired.)</appendix>
+            <identifier>remap.samples_config_before_keydown</identifier>
+
+            <config_not>option.samples_config_mode1</config_not>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB,
+              Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CONFIG_FORCE_ON_option_samples_config_mode1, KeyCode::A,
+              Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_CONFIG_FORCE_OFF_option_samples_config_mode1, KeyCode::B
+            </autogen>
+          </item>
+        </list>
+      </item>
+
+      <!-- inputmode only -->
+      <!-- inputmode not -->
+      <item>
+        <name>InputMode</name>
+        <list>
+          <item>
+            <name>bépo</name>
+            <list>
+              <item>
+                <name>inputmode_only (bépo-*)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmode_bepo</identifier>
+                <inputmode_only>BEPO</inputmode_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-normal)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo</identifier>
+                <inputmodedetail_only>BEPO</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-AzertyCmd)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo_azertycmd</identifier>
+                <inputmodedetail_only>BEPO_AZERTYCMD</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-AzertyCmdRoman)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo_azertycmdroman</identifier>
+                <inputmodedetail_only>BEPO_AZERTYCMDROMAN</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-QwertyCmd)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo_qwertycmd</identifier>
+                <inputmodedetail_only>BEPO_QWERTYCMD</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-QwertyCmdRoman)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo_qwertycmdroman</identifier>
+                <inputmodedetail_only>BEPO_QWERTYCMDROMAN</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-QwertzCmd)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo_qwertzcmd</identifier>
+                <inputmodedetail_only>BEPO_QWERTZCMD</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-QwertzCmdRoman)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo_qwertzcmdroman</identifier>
+                <inputmodedetail_only>BEPO_QWERTZCMDROMAN</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (bépo-Roman)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_bepo_roman</identifier>
+                <inputmodedetail_only>BEPO_ROMAN</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>inputmode_only (Chinese Traditional-*)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_tradchinese</identifier>
+            <inputmode_only>CHINESE_TRADITIONAL</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmodedetail_only (Chinese Traditional Yahoo! KeyKey)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_tradchinese_yahoo_keykey</identifier>
+            <inputmodedetail_only>CHINESE_TRADITIONAL_YAHOO_KEYKEY</inputmodedetail_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Chinese Simplified-*)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_simpchinese</identifier>
+            <inputmode_only>CHINESE_SIMPLIFIED</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Canadian)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_canadian</identifier>
+            <inputmode_only>CANADIAN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>Dvorak</name>
+            <list>
+              <item>
+                <name>inputmode_only (Dvorak-*)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmode_dvorak</identifier>
+                <inputmode_only>DVORAK</inputmode_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Dvorak-normal)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_dvorak</identifier>
+                <inputmodedetail_only>DVORAK</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Dvorak-Left)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_dvorak_left</identifier>
+                <inputmodedetail_only>DVORAK_LEFT</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Dvorak-QwertyCmd)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_dvorak_qwertycmd</identifier>
+                <inputmodedetail_only>DVORAK_QWERTYCMD</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Dvorak-Right)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_dvorak_right</identifier>
+                <inputmodedetail_only>DVORAK_RIGHT</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>inputmode_only (Finnish)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_finnish</identifier>
+            <inputmode_only>FINNISH</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (French-*)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_french</identifier>
+            <inputmode_only>FRENCH</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>Japanese</name>
+            <list>
+              <item>
+                <name>inputmode_only (Japanese-*)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmode_japanese</identifier>
+                <inputmode_only>JAPANESE</inputmode_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmode_not (Japanese-*)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmode_not_japanese</identifier>
+                <inputmode_not>JAPANESE</inputmode_not>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Japanese-Hiragana)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_japanese_hiragana</identifier>
+                <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
+                <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_not (Japanese-Hiragana)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_not_japanese_hiragana</identifier>
+                <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
+                <inputmodedetail_not>JAPANESE_HIRAGANA, JAPANESE</inputmodedetail_not>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Japanese-Katakana)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_japanese_katakana</identifier>
+                <inputmodedetail_only>JAPANESE_KATAKANA</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Japanese-Full-width Roman)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_japanese_fullwidth_roman</identifier>
+                <inputmodedetail_only>JAPANESE_FULLWIDTH_ROMAN</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Japanese-Half-width Katakana)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_japanese_halfwidth_kana</identifier>
+                <inputmodedetail_only>JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>Enforce roman input at semicolon(;).</name>
+                <identifier>remap.samples_inputmode_semicolon</identifier>
+                <inputmode_only>JAPANESE</inputmode_only>
+                <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
+                  Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
+                  Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
+                </autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>inputmode_only (Korean-*)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_korean</identifier>
+            <inputmode_only>KOREAN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>Polish</name>
+            <list>
+              <item>
+                <name>inputmode_only (Polish-*)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmode_polish</identifier>
+                <inputmode_only>POLISH</inputmode_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Polish)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_polish</identifier>
+                <inputmodedetail_only>POLISH</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Polish Pro)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_polishpro</identifier>
+                <inputmodedetail_only>POLISH_PRO</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>inputmode_only (Swedish)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_swedish</identifier>
+            <inputmode_only>SWEDISH</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>Roman</name>
+            <list>
+              <item>
+                <name>inputmode_only (Roman-*)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmode_roman</identifier>
+                <inputmode_only>ROMAN</inputmode_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Roman-JANSI)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_roman_jansi</identifier>
+                <inputmodedetail_only>ROMAN_JANSI</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+              <item>
+                <name>inputmodedetail_only (Roman others)</name>
+                <appendix>Space to Tab</appendix>
+                <identifier>remap.samples_inputmodedetail_roman</identifier>
+                <inputmodedetail_only>ROMAN</inputmodedetail_only>
+                <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+              </item>
+            </list>
+          </item>
+          <item>
+            <name>inputmode_only (Russian)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_russian</identifier>
+            <inputmode_only>RUSSIAN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Thai)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_thai</identifier>
+            <inputmode_only>THAI</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (German)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_german</identifier>
+            <inputmode_only>GERMAN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Slovenian)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_slovenian</identifier>
+            <inputmode_only>SLOVENIAN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Czech)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_czech</identifier>
+            <inputmode_only>CZECH</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (British)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_british</identifier>
+            <inputmode_only>BRITISH</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Bulgarian)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_bulgarian</identifier>
+            <inputmode_only>BULGARIAN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Swiss)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_swiss</identifier>
+            <inputmode_only>SWISS</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Croatian)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_croatian</identifier>
+            <inputmode_only>CROATIAN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+          <item>
+            <name>inputmode_only (Unknown == User Defined keylayout)</name>
+            <appendix>Space to Tab</appendix>
+            <identifier>remap.samples_inputmode_unknown</identifier>
+            <inputmode_only>UNKNOWN</inputmode_only>
+            <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          </item>
+        </list>
+      </item>
+
+      <item>
+        <name>Modifier</name>
+        <list>
+          <item>
+            <name>Note:</name>
+            <appendix>We cannot use VK_COMMAND,VK_CONTROL,VK_OPTION,VK_SHIFT in</appendix>
+            <appendix>&lt;modifier_only&gt;, &lt;modifier_not&gt;.</appendix>
+            <appendix></appendix>
+            <appendix>Expand these to ModifierFlags.</appendix>
+            <appendix>Example: &lt;modifier_only&gt;ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R&lt;/modifier_only&gt;</appendix>
+          </item>
+          <item>
+            <name>Standard</name>
+            <appendix>A to B if Command_L or Option_L is pressed.</appendix>
+            <appendix>  // Command_L+A to Command_L+B</appendix>
+            <appendix>  // Option_L+A to Option_L+B</appendix>
+            <appendix>  // Command_L+Option_L+A to Command_L+Option_L+B</appendix>
+            <appendix>  // Command_L+Shift_L+A to Command_L+Shift_L+B</appendix>
+            <appendix></appendix>
+            <appendix>A to C unless Shift_L or Control_L is pressed.</appendix>
+            <appendix>  // A to C</appendix>
+            <appendix>  // Shift_R+A to Shift_R+C</appendix>
+            <appendix>  // Control_L+A to Control_L+A</appendix>
+            <appendix>  // Shift_L+A to Shift_L+A</appendix>
+            <appendix>  // Shift_L+Command_R+A to Shift_L+Command_R+A</appendix>
+            <identifier>remap.samples_modifier_standard</identifier>
+            <block>
+              <modifier_only>ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L</modifier_only>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+            </block>
+            <block>
+              <modifier_not>ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</modifier_not>
+              <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+            </block>
+          </item>
+          <item>
+            <name>Combination</name>
+            <appendix>B to D if "Control_L+Option_L" or "Command_L+Option_L" is pressed.</appendix>
+            <appendix>  // Control_L+Option_L+B to Control_L+Option_L+D</appendix>
+            <appendix>  // Command_L+Option_L+B to Command_L+Option_L+D</appendix>
+            <appendix>  // Command_L+Option_L+Shift_L+B to Command_L+Option_L+Shift_L+D</appendix>
+            <appendix></appendix>
+            <appendix>B to E unless "COMMAND_L+SHIFT_L" or "COMMAND_L+SHIFT_R" is pressed.</appendix>
+            <appendix>  // B to E</appendix>
+            <appendix>  // Command_L+B to Command_L+E</appendix>
+            <appendix>  // Command_L+Shift_L+B to Command_L+Shift_L+B</appendix>
+            <appendix>  // Command_L+Shift_R+B to Command_L+Shift_R+B</appendix>
+            <identifier>remap.samples_modifier_combination</identifier>
+            <block>
+              <modifier_only>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</modifier_only>
+              <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+            </block>
+            <block>
+              <modifier_not>ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R</modifier_not>
+              <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+            </block>
+          </item>
+          <item>
+            <name>With ModifierFlag::NONE</name>
+            <appendix>C to F if Shift_L is pressed. (And no other modifiers are pressed.)</appendix>
+            <appendix>  // C to C</appendix>
+            <appendix>  // Shift_L+C to Shift_L+F</appendix>
+            <appendix>  // Command_L+Shift_L+C to Command_L+Shift_L+C</appendix>
+            <identifier>remap.samples_modifier_with_none</identifier>
+            <block>
+              <modifier_only>ModifierFlag::SHIFT_L | ModifierFlag::NONE</modifier_only>
+              <autogen>--KeyToKey-- KeyCode::C, KeyCode::F</autogen>
+            </block>
+          </item>
+        </list>
+      </item>
+
+      <!-- block -->
+      <item>
+        <name>block sample</name>
+        <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
+        <appendix>B to D if application == TERMINAL (KeyToKey)</appendix>
+        <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
+        <appendix>B to E if application != TERMINAL (KeyToKey)</appendix>
+        <appendix>Shift+C to Y</appendix>
+        <appendix>Shift+D to Z</appendix>
+        <appendix>----------------------------------------</appendix>
+        <appendix>(VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
+        <appendix>- C to 1 if application == TERMINAL (KeyToKey)</appendix>
+        <appendix>- C to 3 if application != TERMINAL (KeyToKey)</appendix>
+        <appendix>----------------------------------------</appendix>
+        <appendix>(VendorID,ProductID) != (0x5ac,0x21a) and (0x5ac,0x222)</appendix>
+        <appendix>C to 2 if application == TERMINAL (KeyToKey)</appendix>
+        <appendix>C to 4 if application != TERMINAL (KeyToKey)</appendix>
+        <identifier>remap.samples_block</identifier>
+        <block>
+          <only>TERMINAL</only>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+        </block>
+        <block>
+          <not>TERMINAL</not>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::Y</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::Z</autogen>
+        <block>
+          <only>TERMINAL</only>
+          <block>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
+            <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_1</autogen>
+          </block>
+          <block>
+            <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
+            <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_2</autogen>
+          </block>
+        </block>
+        <block>
+          <not>TERMINAL</not>
+          <block>
+            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
+            <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_3</autogen>
+          </block>
+          <block>
+            <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
+            <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_4</autogen>
+          </block>
+        </block>
+      </item>
+    </list>
+  </item>
+</root>
