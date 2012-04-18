@@ -85,6 +85,10 @@ main(int argc, const char* argv[])
 
   pqrs::xml_compiler xml_compiler(argv[1], argv[2]);
   xml_compiler.reload();
+  if (xml_compiler.get_error_information().get_count() > 0) {
+    std::cerr << xml_compiler.get_error_information().get_message() << std::endl;
+    exit(1);
+  }
 
   std::string command(argv[3]);
 
