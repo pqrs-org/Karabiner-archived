@@ -10,7 +10,7 @@ public:
     xml_compiler.read_xml_(ptree_ptr,
                            xml_file_path(xml_file_path::base_directory::system_xml, xml_file_name));
     if (ptree_ptr) {
-      loader.traverse(*ptree_ptr);
+      loader.traverse(xml_compiler.make_extracted_ptree(*ptree_ptr));
     }
   }
 };

@@ -10,7 +10,7 @@ namespace pqrs {
       if (it.first != "devicevendordef" &&
           it.first != "deviceproductdef") {
         if (! it.second.empty()) {
-          traverse(it.second);
+          traverse(it.children_extracted_ptree());
         }
       } else {
         std::string type;
@@ -35,7 +35,7 @@ namespace pqrs {
         }
 
         // ----------------------------------------
-        for (auto& child : extracted_ptree(xml_compiler_, it.second)) {
+        for (auto& child : it.children_extracted_ptree()) {
           if (child.first == name_tag_name) {
             name = boost::trim_copy(child.second.data());
           } else if (child.first == value_tag_name) {

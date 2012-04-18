@@ -15,7 +15,7 @@ namespace pqrs {
     for (auto& it : pt) {
       try {
         if (it.first != "identifier") {
-          traverse_identifier_(it.second, it.first);
+          traverse_identifier_(it.children_extracted_ptree(), it.first);
 
         } else {
           auto attr_essential = it.second.get_optional<std::string>("<xmlattr>.essential");
@@ -84,7 +84,7 @@ namespace pqrs {
     for (auto& it : pt) {
       try {
         if (it.first != "autogen") {
-          traverse_autogen_(it.second, identifier, fv, initialize_vector);
+          traverse_autogen_(it.children_extracted_ptree(), identifier, fv, initialize_vector);
 
         } else {
           std::string raw_autogen = boost::trim_copy(it.second.data());

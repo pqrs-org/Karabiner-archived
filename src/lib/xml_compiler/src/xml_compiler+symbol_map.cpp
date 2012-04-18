@@ -89,7 +89,7 @@ namespace pqrs {
     for (auto& it : pt) {
       if (it.first != "symbol_map") {
         if (! it.second.empty()) {
-          traverse(it.second);
+          traverse(it.children_extracted_ptree());
         }
 
       } else {
