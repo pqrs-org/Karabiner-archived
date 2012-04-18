@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>General</name>
+    <list>
+      <item>
+        <name>Suppress Growl warning</name>
+        <appendix>This option suppresses the warning: "Growl is not running"</appendix>
+        <appendix></appendix>
+        <appendix>If you want to suppress the Growl notification itself,</appendix>
+        <appendix>disable the notification of KeyRemap4MacBook from Growl Preferences.</appendix>
+        <identifier essential="true">general.suppress_growl_warning</identifier>
+      </item>
+      <item>
+        <name>------------------------------------------------------------</name>
+      </item>
+      <item>
+        <name>Don't remap an internal keyboard</name>
+        <identifier essential="true">general.dont_remap_internal</identifier>
+      </item>
+      <item>
+        <name>Don't remap external keyboards</name>
+        <identifier essential="true">general.dont_remap_external</identifier>
+      </item>
+      <item>
+        <name>Don't remap any pointing devices</name>
+        <identifier essential="true">general.dont_remap_any_pointing</identifier>
+      </item>
+      <item>
+        <name>Don't remap Apple's keyboards</name>
+        <identifier essential="true">general.dont_remap_apple_keyboard</identifier>
+      </item>
+      <item>
+        <name>Don't remap Apple's pointing devices</name>
+        <identifier essential="true">general.dont_remap_apple_pointing</identifier>
+      </item>
+      <item>
+        <name>Don't remap non-Apple's keyboards</name>
+        <appendix>(For example: Generic USB keyboard)</appendix>
+        <identifier essential="true">general.dont_remap_non_apple_keyboard</identifier>
+      </item>
+      <item>
+        <name>Don't remap non-Apple's pointing devices</name>
+        <appendix>(For example: Generic USB mouse)</appendix>
+        <identifier essential="true">general.dont_remap_non_apple_pointing</identifier>
+      </item>
+      <item>
+        <name>Don't remap keyboards which has third vendor's driver</name>
+        <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
+        <identifier essential="true">general.dont_remap_thirdvendor_keyboard</identifier>
+      </item>
+      <item>
+        <name>Don't remap pointing devices which has third vendor's driver</name>
+        <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
+        <identifier essential="true">general.dont_remap_thirdvendor_pointing</identifier>
+      </item>
+      <item>
+        <name>Excluding Devices</name>
+        <list>
+          <item>
+            <name>Don't Remap Logitech Cordless Presenter</name>
+            <identifier essential="true">general.dont_remap_logitech_cordless_presenter</identifier>
+          </item>
+        </list>
+      </item>
+      <item>
+        <name>------------------------------------------------------------</name>
+      </item>
+      <item>
+        <name>Pass-Through CapsLock LED status</name>
+        <appendix>(Don't enable this when you use "XXX to CapsLock")</appendix>
+        <identifier essential="true">general.passthrough_capslock_led_status</identifier>
+      </item>
+      <item>
+        <name>------------------------------------------------------------</name>
+      </item>
+      <item>
+        <name>Don't restore modifiers in the mouse event</name>
+        <appendix></appendix>
+        <appendix>For example, when you use Option+Tab to Command+Tab,</appendix>
+        <appendix>we send "Command+Click" when you did a mouse click while</appendix>
+        <appendix>pushing the Option key after you pushed Option+Tab.</appendix>
+        <appendix>"Option+Click" should be output, but this option changes this behavior.</appendix>
+        <identifier essential="true">general.lazy_modifiers_with_mouse_event</identifier>
+      </item>
+      <item>
+        <name>------------------------------------------------------------</name>
+      </item>
+      <item>
+        <name>Disable NumPad Hack</name>
+        <appendix>(Don't change Fn+JKL.. to NumPad, and other Fn+key combinations)</appendix>
+        <identifier essential="true">general.disable_numpad_hack</identifier>
+      </item>
+    </list>
+  </item>
+</root>
