@@ -38,7 +38,7 @@ public:
       // traverse
       {
         if (it.get_tag_name() != "item") {
-          if (! it.second.empty()) {
+          if (! it.children_empty()) {
             traverse(it.children_extracted_ptree());
           }
         } else {
@@ -92,7 +92,7 @@ public:
           auto saved_preferences_node_tree = preferences_node_tree_;
           preferences_node_tree_ = ptr.get();
           {
-            if (! it.second.empty()) {
+            if (! it.children_empty()) {
               traverse(it.children_extracted_ptree());
             }
           }
