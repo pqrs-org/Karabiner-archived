@@ -14,7 +14,7 @@ public:
   int get_default_value(void) const { return default_value_; }
 
 protected:
-  bool handle_name_and_appendix_(const extracted_ptree::extracted_ptree_node& it);
+  bool handle_name_and_appendix_(const extracted_ptree::node& it);
 
   std::string name_;
   int name_line_count_;
@@ -29,7 +29,7 @@ public:
     name_for_filter_(parent_node.name_for_filter_ + " ")
   {}
 
-  void handle_item_child(const extracted_ptree::extracted_ptree_node& it);
+  void handle_item_child(const extracted_ptree::node& it);
 
   const std::string& get_name_for_filter(void) const { return name_for_filter_; }
 
@@ -46,7 +46,7 @@ public:
     preferences_number_node()
   {}
 
-  void handle_item_child(const extracted_ptree::extracted_ptree_node& it);
+  void handle_item_child(const extracted_ptree::node& it);
 
   int get_step(void) const { return step_; }
   const std::string& get_base_unit(void) const { return base_unit_; }
@@ -71,7 +71,7 @@ public:
       children_->clear();
     }
   }
-  void handle_item_child(const extracted_ptree::extracted_ptree_node& it) {
+  void handle_item_child(const extracted_ptree::node& it) {
     node_.handle_item_child(it);
   }
 

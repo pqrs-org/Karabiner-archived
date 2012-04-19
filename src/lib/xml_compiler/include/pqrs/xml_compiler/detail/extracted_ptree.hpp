@@ -11,12 +11,12 @@ public:
     pt_(pt)
   {}
 
-  class extracted_ptree_node
+  class node
   {
   public:
-    extracted_ptree_node(const boost::property_tree::ptree::value_type& node,
-                         const xml_compiler& xml_compiler,
-                         const pqrs::string::replacement& replacement) :
+    node(const boost::property_tree::ptree::value_type& node,
+         const xml_compiler& xml_compiler,
+         const pqrs::string::replacement& replacement) :
       second(node.second),
       node_(node),
       xml_compiler_(xml_compiler),
@@ -39,7 +39,7 @@ public:
   };
 
   class extracted_ptree_iterator : public boost::iterator_facade<extracted_ptree_iterator,
-                                                                 const extracted_ptree_node,
+                                                                 const node,
                                                                  boost::forward_traversal_tag>
   {
   public:
@@ -62,7 +62,7 @@ public:
     friend class boost::iterator_core_access;
 
     void increment(void);
-    const extracted_ptree_node dereference(void) const;
+    const node dereference(void) const;
     bool equal(const extracted_ptree_iterator const& other) const;
 
     void extract_include_(void);
