@@ -42,7 +42,7 @@ namespace pqrs {
   xml_compiler::app_loader::traverse(const extracted_ptree& pt) const
   {
     for (auto& it : pt) {
-      if (it.first != "appdef") {
+      if (it.get_tag_name() != "appdef") {
         if (! it.second.empty()) {
           traverse(it.children_extracted_ptree());
         }
@@ -51,11 +51,11 @@ namespace pqrs {
         if (! newapp) continue;
 
         for (auto& child : it.children_extracted_ptree()) {
-          if (child.first == "appname") {
+          if (child.get_tag_name() == "appname") {
             newapp->set_name(boost::trim_copy(child.second.data()));
-          } else if (child.first == "equal") {
+          } else if (child.get_tag_name() == "equal") {
             newapp->add_rule_equal(boost::trim_copy(child.second.data()));
-          } else if (child.first == "prefix") {
+          } else if (child.get_tag_name() == "prefix") {
             newapp->add_rule_prefix(boost::trim_copy(child.second.data()));
           }
         }

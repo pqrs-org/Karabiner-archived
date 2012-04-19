@@ -31,13 +31,13 @@ public:
     for (auto& it : pt) {
       // Hack for speed improvement.
       // We can stop traversing when we met <autogen>.
-      if (it.first == "autogen") {
+      if (it.get_tag_name() == "autogen") {
         continue;
       }
 
       // traverse
       {
-        if (it.first != "item") {
+        if (it.get_tag_name() != "item") {
           if (! it.second.empty()) {
             traverse(it.children_extracted_ptree());
           }
@@ -49,11 +49,11 @@ public:
           std::tr1::shared_ptr<T_preferences_node_tree> ptr(new T_preferences_node_tree(preferences_node_tree_->get_node()));
 
           for (auto& child : it.children_extracted_ptree()) {
-            ptr->handle_item_child(child.get_node());
+            ptr->handle_item_child(child);
 
-            if (child.first == "identifier") {
+            if (child.get_tag_name() == "identifier") {
               auto raw_identifier = boost::trim_copy(child.second.data());
-              if (xml_compiler_.valid_identifier_(raw_identifier, it.first)) {
+              if (xml_compiler_.valid_identifier_(raw_identifier, it.get_tag_name())) {
                 auto identifier = raw_identifier;
                 normalize_identifier_(identifier);
 

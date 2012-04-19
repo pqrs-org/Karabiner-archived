@@ -14,8 +14,8 @@ namespace pqrs {
   {
     for (auto& it : pt) {
       try {
-        if (it.first != "identifier") {
-          traverse_identifier_(it.children_extracted_ptree(), it.first);
+        if (it.get_tag_name() != "identifier") {
+          traverse_identifier_(it.children_extracted_ptree(), it.get_tag_name());
 
         } else {
           auto attr_essential = it.second.get_optional<std::string>("<xmlattr>.essential");
@@ -83,7 +83,7 @@ namespace pqrs {
     // ----------------------------------------
     for (auto& it : pt) {
       try {
-        if (it.first != "autogen") {
+        if (it.get_tag_name() != "autogen") {
           traverse_autogen_(it.children_extracted_ptree(), identifier, fv, initialize_vector);
 
         } else {
