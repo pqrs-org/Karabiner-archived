@@ -26,6 +26,11 @@ public:
     const boost::property_tree::ptree& second;
 
     const std::string& get_tag_name(void) const { return node_.first; }
+    const std::string& get_data(void) const { return node_.second.data(); }
+    boost::optional<std::string> get_optional(const std::string& path) const {
+      return node_.second.get_optional<std::string>(path);
+    }
+
     bool children_empty(void) const { return node_.second.empty(); }
 
     const boost::property_tree::ptree::value_type& get_node(void) const { return node_; }

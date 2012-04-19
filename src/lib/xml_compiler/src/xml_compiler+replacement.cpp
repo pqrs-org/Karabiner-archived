@@ -15,9 +15,9 @@ namespace pqrs {
         boost::optional<std::string> value;
         for (auto& child : it.children_extracted_ptree()) {
           if (child.get_tag_name() == "replacementname") {
-            name = child.second.data();
+            name = child.get_data();
           } else if (child.get_tag_name() == "replacementvalue") {
-            value = child.second.data();
+            value = child.get_data();
           }
         }
 

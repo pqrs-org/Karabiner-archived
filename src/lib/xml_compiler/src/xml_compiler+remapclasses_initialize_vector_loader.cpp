@@ -18,20 +18,20 @@ namespace pqrs {
           traverse_identifier_(it.children_extracted_ptree(), it.get_tag_name());
 
         } else {
-          auto attr_essential = it.second.get_optional<std::string>("<xmlattr>.essential");
+          auto attr_essential = it.get_optional("<xmlattr>.essential");
           if (attr_essential) {
             continue;
           }
 
           std::vector<uint32_t> initialize_vector;
-          auto raw_identifier = boost::trim_copy(it.second.data());
+          auto raw_identifier = boost::trim_copy(it.get_data());
           if (! valid_identifier_(raw_identifier, parent_tag_name)) {
             continue;
           }
           auto identifier = raw_identifier;
           normalize_identifier_(identifier);
 
-          auto attr_vk_config = it.second.get_optional<std::string>("<xmlattr>.vk_config");
+          auto attr_vk_config = it.get_optional("<xmlattr>.vk_config");
           if (attr_vk_config) {
             initialize_vector.push_back(5); // count
             initialize_vector.push_back(BRIDGE_VK_CONFIG);
@@ -87,7 +87,7 @@ namespace pqrs {
           traverse_autogen_(it.children_extracted_ptree(), identifier, fv, initialize_vector);
 
         } else {
-          std::string raw_autogen = boost::trim_copy(it.second.data());
+          std::string raw_autogen = boost::trim_copy(it.get_data());
 
           // drop whitespaces for preprocessor. (for FROMKEYCODE_HOME, etc)
           // Note: preserve space when --ShowStatusMessage--.

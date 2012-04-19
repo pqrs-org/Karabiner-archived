@@ -102,7 +102,7 @@ namespace pqrs {
         for (auto& attr : attrs) {
           const char* attrname = attr + strlen("<xmlattr>.");
 
-          auto v = it.second.get_optional<std::string>(attr);
+          auto v = it.get_optional(attr);
           if (! v) {
             xml_compiler_.error_information_.set(std::string("No '") + attrname + "' Attribute within <symbol_map>.");
             break;
