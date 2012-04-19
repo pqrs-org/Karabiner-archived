@@ -3,7 +3,7 @@
 
 namespace pqrs {
   bool
-  xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_ptree::extracted_ptree_node& it)
+  xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_ptree::node& it)
   {
     if (it.get_tag_name() == "name") {
       if (! name_.empty()) {
@@ -29,7 +29,7 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::preferences_checkbox_node::handle_item_child(const extracted_ptree::extracted_ptree_node& it)
+  xml_compiler::preferences_checkbox_node::handle_item_child(const extracted_ptree::node& it)
   {
     if (preferences_node::handle_name_and_appendix_(it)) {
       name_for_filter_ += boost::algorithm::to_lower_copy(boost::trim_copy(it.second.data()));
@@ -41,7 +41,7 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::preferences_number_node::handle_item_child(const extracted_ptree::extracted_ptree_node& it)
+  xml_compiler::preferences_number_node::handle_item_child(const extracted_ptree::node& it)
   {
     if (preferences_node::handle_name_and_appendix_(it)) {
       return;

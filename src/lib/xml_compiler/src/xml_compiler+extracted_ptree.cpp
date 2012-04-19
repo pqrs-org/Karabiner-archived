@@ -14,7 +14,7 @@ namespace pqrs {
     extract_include_();
   }
 
-  const xml_compiler::extracted_ptree::extracted_ptree_node
+  const xml_compiler::extracted_ptree::node
   xml_compiler::extracted_ptree::extracted_ptree_iterator::dereference(void) const
   {
     if (stack_.empty()) {
@@ -26,7 +26,7 @@ namespace pqrs {
       throw xml_compiler_logic_error("it == end in extracted_ptree_iterator.");
     }
 
-    return extracted_ptree_node(*(top.it), xml_compiler_, top.parent_replacement);
+    return node(*(top.it), xml_compiler_, top.parent_replacement);
   }
 
   bool
