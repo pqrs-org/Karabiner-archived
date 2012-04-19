@@ -52,7 +52,7 @@ public:
             ptr->handle_item_child(child);
 
             if (child.get_tag_name() == "identifier") {
-              auto raw_identifier = boost::trim_copy(child.second.data());
+              auto raw_identifier = boost::trim_copy(child.get_data());
               if (xml_compiler_.valid_identifier_(raw_identifier, it.get_tag_name())) {
                 auto identifier = raw_identifier;
                 normalize_identifier_(identifier);
