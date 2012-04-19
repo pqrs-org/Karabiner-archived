@@ -7,7 +7,7 @@ namespace pqrs {
   {
     for (auto& it : pt) {
       if (it.get_tag_name() != "replacementdef") {
-        if (! it.second.empty()) {
+        if (! it.children_empty()) {
           traverse(it.children_extracted_ptree());
         }
       } else {

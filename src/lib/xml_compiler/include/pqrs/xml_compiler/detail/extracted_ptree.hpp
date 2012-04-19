@@ -26,6 +26,7 @@ public:
     const boost::property_tree::ptree& second;
 
     const std::string& get_tag_name(void) const { return node_.first; }
+    bool children_empty(void) const { return node_.second.empty(); }
 
     const boost::property_tree::ptree::value_type& get_node(void) const { return node_; }
     extracted_ptree children_extracted_ptree(void) const {
