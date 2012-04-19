@@ -8,29 +8,29 @@ namespace pqrs {
                                              const extracted_ptree& pt)
   {
     for (auto& it : pt) {
-      /*  */ if (it.first == "not") {
+      /*  */ if (it.get_tag_name() == "not") {
         add(symbol_map, BRIDGE_FILTERTYPE_APPLICATION_NOT,  "ApplicationType::", it.second.data());
-      } else if (it.first == "only") {
+      } else if (it.get_tag_name() == "only") {
         add(symbol_map, BRIDGE_FILTERTYPE_APPLICATION_ONLY, "ApplicationType::", it.second.data());
-      } else if (it.first == "device_not") {
+      } else if (it.get_tag_name() == "device_not") {
         add(symbol_map, BRIDGE_FILTERTYPE_DEVICE_NOT,  "", it.second.data());
-      } else if (it.first == "device_only") {
+      } else if (it.get_tag_name() == "device_only") {
         add(symbol_map, BRIDGE_FILTERTYPE_DEVICE_ONLY, "", it.second.data());
-      } else if (it.first == "config_not") {
+      } else if (it.get_tag_name() == "config_not") {
         add(symbol_map, BRIDGE_FILTERTYPE_CONFIG_NOT,  "ConfigIndex::", it.second.data());
-      } else if (it.first == "config_only") {
+      } else if (it.get_tag_name() == "config_only") {
         add(symbol_map, BRIDGE_FILTERTYPE_CONFIG_ONLY, "ConfigIndex::", it.second.data());
-      } else if (it.first == "modifier_not") {
+      } else if (it.get_tag_name() == "modifier_not") {
         add(symbol_map, BRIDGE_FILTERTYPE_MODIFIER_NOT,  "", it.second.data());
-      } else if (it.first == "modifier_only") {
+      } else if (it.get_tag_name() == "modifier_only") {
         add(symbol_map, BRIDGE_FILTERTYPE_MODIFIER_ONLY, "", it.second.data());
-      } else if (it.first == "inputmode_not") {
+      } else if (it.get_tag_name() == "inputmode_not") {
         add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODE_NOT,  "InputMode::", it.second.data());
-      } else if (it.first == "inputmode_only") {
+      } else if (it.get_tag_name() == "inputmode_only") {
         add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODE_ONLY, "InputMode::", it.second.data());
-      } else if (it.first == "inputmodedetail_not") {
+      } else if (it.get_tag_name() == "inputmodedetail_not") {
         add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT,  "InputModeDetail::", it.second.data());
-      } else if (it.first == "inputmodedetail_only") {
+      } else if (it.get_tag_name() == "inputmodedetail_only") {
         add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY, "InputModeDetail::", it.second.data());
       }
     }

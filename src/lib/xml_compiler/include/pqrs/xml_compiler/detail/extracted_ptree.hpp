@@ -17,15 +17,15 @@ public:
     extracted_ptree_node(const boost::property_tree::ptree::value_type& node,
                          const xml_compiler& xml_compiler,
                          const pqrs::string::replacement& replacement) :
-      first(node.first),
       second(node.second),
       node_(node),
       xml_compiler_(xml_compiler),
       replacement_(replacement)
     {}
 
-    const std::string& first;
     const boost::property_tree::ptree& second;
+
+    const std::string& get_tag_name(void) const { return node_.first; }
 
     const boost::property_tree::ptree::value_type& get_node(void) const { return node_; }
     extracted_ptree children_extracted_ptree(void) const {

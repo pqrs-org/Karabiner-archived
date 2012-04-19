@@ -87,7 +87,7 @@ namespace pqrs {
   xml_compiler::symbol_map_loader::traverse(const extracted_ptree& pt) const
   {
     for (auto& it : pt) {
-      if (it.first != "symbol_map") {
+      if (it.get_tag_name() != "symbol_map") {
         if (! it.second.empty()) {
           traverse(it.children_extracted_ptree());
         }

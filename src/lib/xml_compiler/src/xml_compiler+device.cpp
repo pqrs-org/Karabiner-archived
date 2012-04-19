@@ -7,8 +7,8 @@ namespace pqrs {
   xml_compiler::device_loader::traverse(const extracted_ptree& pt) const
   {
     for (auto& it : pt) {
-      if (it.first != "devicevendordef" &&
-          it.first != "deviceproductdef") {
+      if (it.get_tag_name() != "devicevendordef" &&
+          it.get_tag_name() != "deviceproductdef") {
         if (! it.second.empty()) {
           traverse(it.children_extracted_ptree());
         }
@@ -20,12 +20,12 @@ namespace pqrs {
         boost::optional<std::string> value;
 
         // ----------------------------------------
-        if (it.first == "devicevendordef") {
+        if (it.get_tag_name() == "devicevendordef") {
           type           = "DeviceVendor";
           name_tag_name  = "vendorname";
           value_tag_name = "vendorid";
 
-        } else if (it.first == "deviceproductdef") {
+        } else if (it.get_tag_name() == "deviceproductdef") {
           type           = "DeviceProduct";
           name_tag_name  = "productname";
           value_tag_name = "productid";
@@ -36,9 +36,9 @@ namespace pqrs {
 
         // ----------------------------------------
         for (auto& child : it.children_extracted_ptree()) {
-          if (child.first == name_tag_name) {
+          if (child.get_tag_name() == name_tag_name) {
             name = boost::trim_copy(child.second.data());
-          } else if (child.first == value_tag_name) {
+          } else if (child.get_tag_name() == value_tag_name) {
             value = boost::trim_copy(child.second.data());
           }
         }
@@ -46,29 +46,41 @@ namespace pqrs {
         // ----------------------------------------
         // Validation
         if (! name) {
-          xml_compiler_.error_information_.set(std::string("No <") + name_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(boost::format("No <%1%> within <%2%>.") %
+                                               name_tag_name %
+                                               it.get_tag_name());
           continue;
         }
 
         if (name->empty()) {
-          xml_compiler_.error_information_.set(std::string("Empty <") + name_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(boost::format("Empty <%1%> within <%2%>.") %
+                                               name_tag_name %
+                                               it.get_tag_name());
           continue;
         }
 
         if (! value) {
-          xml_compiler_.error_information_.set(std::string("No <") + value_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(boost::format("No <%1%> within <%2%>.") %
+                                               value_tag_name %
+                                               it.get_tag_name());
           continue;
         }
 
         if (value->empty()) {
-          xml_compiler_.error_information_.set(std::string("Empty <") + value_tag_name + "> within <" + it.first + ">.");
+          xml_compiler_.error_information_.set(boost::format("Empty <%1%> within <%2%>.") %
+                                               value_tag_name %
+                                               it.get_tag_name());
           continue;
         }
 
         auto v = pqrs::string::to_uint32_t(value);
         if (! v) {
-          xml_compiler_.error_information_.set(std::string("Invalid <") + value_tag_name + "> within <" + it.first + ">:\n\n<" +
-                                               value_tag_name + ">" + *value + "</" + value_tag_name + ">");
+          xml_compiler_.error_information_.set(boost::format("Invalid <%1%> within <%2%>:\n\n<%3%>%4%</%5%>") %
+                                               value_tag_name %
+                                               it.get_tag_name() %
+                                               value_tag_name %
+                                               *value %
+                                               value_tag_name);
           continue;
         }
 
