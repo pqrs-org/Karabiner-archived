@@ -2,24 +2,61 @@
 <root>
   <block>
     <modifier_only>ModifierFlag::EXTRA1</modifier_only>
-    <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::ESCAPE, KeyCode::RETURN</autogen>
-    <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ESCAPE, KeyCode::BACKSLASH</autogen>
-    <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::ESCAPE, KeyCode::TAB</autogen>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::ESCAPE, KeyCode::SPACE</autogen>
-    <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
-    <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::ESCAPE, KeyCode::DELETE</autogen>
-    <autogen>--KeyToKey-- KeyCode::ENTER_POWERBOOK, KeyCode::ESCAPE, KeyCode::ENTER_POWERBOOK</autogen>
-    <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::ESCAPE</autogen>
-    <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::ESCAPE, KeyCode::ENTER</autogen>
 
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::ESCAPE, KeyCode::KEYPAD_DOT</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::ESCAPE, KeyCode::KEYPAD_MULTIPLY</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::ESCAPE, KeyCode::KEYPAD_PLUS</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::ESCAPE, KeyCode::KEYPAD_CLEAR</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH, KeyCode::ESCAPE, KeyCode::KEYPAD_SLASH</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS, KeyCode::ESCAPE, KeyCode::KEYPAD_MINUS</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_EQUAL, KeyCode::ESCAPE, KeyCode::KEYPAD_EQUAL</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::ESCAPE, KeyCode::KEYPAD_COMMA</autogen>
+    <!-- alphabet -->
+    <autogen>--KeyToKey-- KeyCode::A, KeyCode::ESCAPE, KeyCode::A</autogen>
+    <autogen>--KeyToKey-- KeyCode::B, KeyCode::ESCAPE, KeyCode::B</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, KeyCode::ESCAPE, KeyCode::C</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, KeyCode::ESCAPE, KeyCode::D</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, KeyCode::ESCAPE, KeyCode::E</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, KeyCode::ESCAPE, KeyCode::F</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, KeyCode::ESCAPE, KeyCode::G</autogen>
+    <autogen>--KeyToKey-- KeyCode::H, KeyCode::ESCAPE, KeyCode::H</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, KeyCode::ESCAPE, KeyCode::I</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, KeyCode::ESCAPE, KeyCode::J</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, KeyCode::ESCAPE, KeyCode::K</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, KeyCode::ESCAPE, KeyCode::L</autogen>
+    <autogen>--KeyToKey-- KeyCode::M, KeyCode::ESCAPE, KeyCode::M</autogen>
+    <autogen>--KeyToKey-- KeyCode::N, KeyCode::ESCAPE, KeyCode::N</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, KeyCode::ESCAPE, KeyCode::O</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, KeyCode::ESCAPE, KeyCode::P</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, KeyCode::ESCAPE, KeyCode::Q</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, KeyCode::ESCAPE, KeyCode::R</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, KeyCode::ESCAPE, KeyCode::S</autogen>
+    <autogen>--KeyToKey-- KeyCode::T, KeyCode::ESCAPE, KeyCode::T</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, KeyCode::ESCAPE, KeyCode::U</autogen>
+    <autogen>--KeyToKey-- KeyCode::V, KeyCode::ESCAPE, KeyCode::V</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, KeyCode::ESCAPE, KeyCode::W</autogen>
+    <autogen>--KeyToKey-- KeyCode::X, KeyCode::ESCAPE, KeyCode::X</autogen>
+    <autogen>--KeyToKey-- KeyCode::Y, KeyCode::ESCAPE, KeyCode::Y</autogen>
+    <autogen>--KeyToKey-- KeyCode::Z, KeyCode::ESCAPE, KeyCode::Z</autogen>
+
+    <!-- number -->
+    <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::ESCAPE, KeyCode::KEY_0</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::ESCAPE, KeyCode::KEY_1</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::ESCAPE, KeyCode::KEY_2</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::ESCAPE, KeyCode::KEY_3</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::ESCAPE, KeyCode::KEY_4</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::ESCAPE, KeyCode::KEY_5</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::ESCAPE, KeyCode::KEY_6</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::ESCAPE, KeyCode::KEY_7</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::ESCAPE, KeyCode::KEY_8</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::ESCAPE, KeyCode::KEY_9</autogen>
+
+    <!-- symbol -->
+    <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
+    <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::ESCAPE, KeyCode::BACKSLASH</autogen>
+    <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::ESCAPE, KeyCode::BRACKET_LEFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::ESCAPE, KeyCode::BRACKET_RIGHT</autogen>
+    <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::ESCAPE, KeyCode::COMMA</autogen>
+    <autogen>--KeyToKey-- KeyCode::DOT, KeyCode::ESCAPE, KeyCode::DOT</autogen>
+    <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::ESCAPE, KeyCode::EQUAL</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::ESCAPE, KeyCode::MINUS</autogen>
+    <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::ESCAPE, KeyCode::QUOTE</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::ESCAPE, KeyCode::SEMICOLON</autogen>
+    <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::ESCAPE, KeyCode::SLASH</autogen>
+
+    <!-- keypad -->
     <autogen>--KeyToKey-- KeyCode::KEYPAD_0, KeyCode::ESCAPE, KeyCode::KEYPAD_0</autogen>
     <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::ESCAPE, KeyCode::KEYPAD_1</autogen>
     <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::ESCAPE, KeyCode::KEYPAD_2</autogen>
@@ -30,54 +67,28 @@
     <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::ESCAPE, KeyCode::KEYPAD_7</autogen>
     <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::ESCAPE, KeyCode::KEYPAD_8</autogen>
     <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::ESCAPE, KeyCode::KEYPAD_9</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA, KeyCode::ESCAPE, KeyCode::KEYPAD_COMMA</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::ESCAPE, KeyCode::KEYPAD_DOT</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_EQUAL, KeyCode::ESCAPE, KeyCode::KEYPAD_EQUAL</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS, KeyCode::ESCAPE, KeyCode::KEYPAD_MINUS</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::ESCAPE, KeyCode::KEYPAD_MULTIPLY</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS, KeyCode::ESCAPE, KeyCode::KEYPAD_PLUS</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH, KeyCode::ESCAPE, KeyCode::KEYPAD_SLASH</autogen>
 
-    <autogen>--KeyToKey-- KeyCode::A, KeyCode::ESCAPE, KeyCode::A</autogen>
-    <autogen>--KeyToKey-- KeyCode::S, KeyCode::ESCAPE, KeyCode::S</autogen>
-    <autogen>--KeyToKey-- KeyCode::D, KeyCode::ESCAPE, KeyCode::D</autogen>
-    <autogen>--KeyToKey-- KeyCode::F, KeyCode::ESCAPE, KeyCode::F</autogen>
-    <autogen>--KeyToKey-- KeyCode::H, KeyCode::ESCAPE, KeyCode::H</autogen>
-    <autogen>--KeyToKey-- KeyCode::G, KeyCode::ESCAPE, KeyCode::G</autogen>
-    <autogen>--KeyToKey-- KeyCode::Z, KeyCode::ESCAPE, KeyCode::Z</autogen>
-    <autogen>--KeyToKey-- KeyCode::X, KeyCode::ESCAPE, KeyCode::X</autogen>
-    <autogen>--KeyToKey-- KeyCode::C, KeyCode::ESCAPE, KeyCode::C</autogen>
-    <autogen>--KeyToKey-- KeyCode::V, KeyCode::ESCAPE, KeyCode::V</autogen>
-    <autogen>--KeyToKey-- KeyCode::B, KeyCode::ESCAPE, KeyCode::B</autogen>
-    <autogen>--KeyToKey-- KeyCode::Q, KeyCode::ESCAPE, KeyCode::Q</autogen>
-    <autogen>--KeyToKey-- KeyCode::W, KeyCode::ESCAPE, KeyCode::W</autogen>
-    <autogen>--KeyToKey-- KeyCode::E, KeyCode::ESCAPE, KeyCode::E</autogen>
-    <autogen>--KeyToKey-- KeyCode::R, KeyCode::ESCAPE, KeyCode::R</autogen>
-    <autogen>--KeyToKey-- KeyCode::Y, KeyCode::ESCAPE, KeyCode::Y</autogen>
-    <autogen>--KeyToKey-- KeyCode::T, KeyCode::ESCAPE, KeyCode::T</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::ESCAPE, KeyCode::KEY_1</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::ESCAPE, KeyCode::KEY_2</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::ESCAPE, KeyCode::KEY_3</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::ESCAPE, KeyCode::KEY_4</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::ESCAPE, KeyCode::KEY_6</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::ESCAPE, KeyCode::KEY_5</autogen>
-    <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::ESCAPE, KeyCode::EQUAL</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::ESCAPE, KeyCode::KEY_9</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::ESCAPE, KeyCode::KEY_7</autogen>
-    <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::ESCAPE, KeyCode::MINUS</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::ESCAPE, KeyCode::KEY_8</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::ESCAPE, KeyCode::KEY_0</autogen>
-    <autogen>--KeyToKey-- KeyCode::O, KeyCode::ESCAPE, KeyCode::O</autogen>
-    <autogen>--KeyToKey-- KeyCode::U, KeyCode::ESCAPE, KeyCode::U</autogen>
-    <autogen>--KeyToKey-- KeyCode::I, KeyCode::ESCAPE, KeyCode::I</autogen>
-    <autogen>--KeyToKey-- KeyCode::P, KeyCode::ESCAPE, KeyCode::P</autogen>
-    <autogen>--KeyToKey-- KeyCode::L, KeyCode::ESCAPE, KeyCode::L</autogen>
-    <autogen>--KeyToKey-- KeyCode::J, KeyCode::ESCAPE, KeyCode::J</autogen>
-    <autogen>--KeyToKey-- KeyCode::K, KeyCode::ESCAPE, KeyCode::K</autogen>
-    <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::ESCAPE, KeyCode::SLASH</autogen>
-    <autogen>--KeyToKey-- KeyCode::N, KeyCode::ESCAPE, KeyCode::N</autogen>
-    <autogen>--KeyToKey-- KeyCode::M, KeyCode::ESCAPE, KeyCode::M</autogen>
-    <autogen>--KeyToKey-- KeyCode::DOT, KeyCode::ESCAPE, KeyCode::DOT</autogen>
+    <!-- special -->
+    <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::ESCAPE, KeyCode::DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::ESCAPE, KeyCode::ENTER</autogen>
+    <autogen>--KeyToKey-- KeyCode::ENTER_POWERBOOK, KeyCode::ESCAPE, KeyCode::ENTER_POWERBOOK</autogen>
+    <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::ESCAPE</autogen>
+    <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::ESCAPE, KeyCode::FORWARD_DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::ESCAPE, KeyCode::PC_INSERT</autogen>
+    <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::ESCAPE, KeyCode::RETURN</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::ESCAPE, KeyCode::SPACE</autogen>
+    <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::ESCAPE, KeyCode::TAB</autogen>
 
-    <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::ESCAPE, KeyCode::SEMICOLON</autogen>
-    <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::ESCAPE, KeyCode::COMMA</autogen>
-    <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::ESCAPE, KeyCode::BRACKET_LEFT</autogen>
-    <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::ESCAPE, KeyCode::BRACKET_RIGHT</autogen>
-    <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::ESCAPE, KeyCode::QUOTE</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::ESCAPE, KeyCode::KEYPAD_CLEAR</autogen>
 
+    <!-- function -->
     <autogen>--KeyToKey-- KeyCode::F1, KeyCode::ESCAPE, KeyCode::F1</autogen>
     <autogen>--KeyToKey-- KeyCode::F2, KeyCode::ESCAPE, KeyCode::F2</autogen>
     <autogen>--KeyToKey-- KeyCode::F3, KeyCode::ESCAPE, KeyCode::F3</autogen>
@@ -98,22 +109,18 @@
     <autogen>--KeyToKey-- KeyCode::F18, KeyCode::ESCAPE, KeyCode::F18</autogen>
     <autogen>--KeyToKey-- KeyCode::F19, KeyCode::ESCAPE, KeyCode::F19</autogen>
 
-    <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::ESCAPE, KeyCode::PC_INSERT</autogen>
-    <autogen>--KeyToKey-- KeyCode::PC_BS, KeyCode::ESCAPE, KeyCode::PC_BS</autogen>
-    <autogen>--KeyToKey-- KeyCode::PC_DEL, KeyCode::ESCAPE, KeyCode::PC_DEL</autogen>
-
-    <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, KeyCode::ESCAPE, KeyCode::FORWARD_DELETE</autogen>
-
+    <!-- cursor -->
+    <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::ESCAPE, KeyCode::CURSOR_UP</autogen>
+    <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::ESCAPE, KeyCode::CURSOR_DOWN</autogen>
     <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::ESCAPE, KeyCode::CURSOR_LEFT</autogen>
     <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::ESCAPE, KeyCode::CURSOR_RIGHT</autogen>
-    <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::ESCAPE, KeyCode::CURSOR_DOWN</autogen>
-    <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::ESCAPE, KeyCode::CURSOR_UP</autogen>
 
     <autogen>--KeyToKey-- KeyCode::PAGEUP, KeyCode::ESCAPE, KeyCode::PAGEUP</autogen>
     <autogen>--KeyToKey-- KeyCode::PAGEDOWN, KeyCode::ESCAPE, KeyCode::PAGEDOWN</autogen>
-    <autogen>--KeyToKey-- KeyCode::END, KeyCode::ESCAPE, KeyCode::END</autogen>
     <autogen>--KeyToKey-- KeyCode::HOME, KeyCode::ESCAPE, KeyCode::HOME</autogen>
+    <autogen>--KeyToKey-- KeyCode::END, KeyCode::ESCAPE, KeyCode::END</autogen>
 
+    <!-- others -->
     <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::ESCAPE, KeyCode::UK_SECTION</autogen>
     <autogen>--KeyToKey-- KeyCode::GERMAN_PC_LESS_THAN, KeyCode::ESCAPE, KeyCode::GERMAN_PC_LESS_THAN</autogen>
   </block>
