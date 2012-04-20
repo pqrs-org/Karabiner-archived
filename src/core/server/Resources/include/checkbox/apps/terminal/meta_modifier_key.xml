@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root>
+  <block>
+    <modifier_only>ModifierFlag::EXTRA1</modifier_only>
+
+    <include system_xml_path="include/checkbox/commons/wrap_keys/alphabet.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/number.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/symbol.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/keypad.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/special.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/function.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/cursor.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/international.xml" />
+  </block>
+</root>

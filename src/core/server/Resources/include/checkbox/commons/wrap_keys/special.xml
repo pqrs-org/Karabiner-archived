@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+    <autogen>--KeyToKey-- KeyCode::DELETE,          {{ BEFORE }}, KeyCode::DELETE,          {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::ENTER,           {{ BEFORE }}, KeyCode::ENTER,           {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::ENTER_POWERBOOK, {{ BEFORE }}, KeyCode::ENTER_POWERBOOK, {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::ESCAPE,          {{ BEFORE }}, KeyCode::ESCAPE,          {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE,  {{ BEFORE }}, KeyCode::FORWARD_DELETE,  {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::HELP,            {{ BEFORE }}, KeyCode::PC_INSERT,       {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::RETURN,          {{ BEFORE }}, KeyCode::RETURN,          {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE,           {{ BEFORE }}, KeyCode::SPACE,           {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::TAB,             {{ BEFORE }}, KeyCode::TAB,             {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR,    {{ BEFORE }}, KeyCode::KEYPAD_CLEAR,    {{ AFTER }}</autogen>
+</root>

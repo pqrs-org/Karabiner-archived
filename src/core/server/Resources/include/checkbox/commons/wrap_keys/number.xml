@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <autogen>--KeyToKey-- KeyCode::KEY_0, {{ BEFORE }}, KeyCode::KEY_0, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_1, {{ BEFORE }}, KeyCode::KEY_1, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_2, {{ BEFORE }}, KeyCode::KEY_2, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_3, {{ BEFORE }}, KeyCode::KEY_3, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_4, {{ BEFORE }}, KeyCode::KEY_4, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_5, {{ BEFORE }}, KeyCode::KEY_5, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_6, {{ BEFORE }}, KeyCode::KEY_6, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_7, {{ BEFORE }}, KeyCode::KEY_7, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_8, {{ BEFORE }}, KeyCode::KEY_8, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEY_9, {{ BEFORE }}, KeyCode::KEY_9, {{ AFTER }}</autogen>
+</root>

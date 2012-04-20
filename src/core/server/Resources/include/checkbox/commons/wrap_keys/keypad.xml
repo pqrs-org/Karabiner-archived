@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<root>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_0,        {{ BEFORE }}, KeyCode::KEYPAD_0,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_1,        {{ BEFORE }}, KeyCode::KEYPAD_1,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_2,        {{ BEFORE }}, KeyCode::KEYPAD_2,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_3,        {{ BEFORE }}, KeyCode::KEYPAD_3,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_4,        {{ BEFORE }}, KeyCode::KEYPAD_4,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_5,        {{ BEFORE }}, KeyCode::KEYPAD_5,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_6,        {{ BEFORE }}, KeyCode::KEYPAD_6,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_7,        {{ BEFORE }}, KeyCode::KEYPAD_7,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_8,        {{ BEFORE }}, KeyCode::KEYPAD_8,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_9,        {{ BEFORE }}, KeyCode::KEYPAD_9,        {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_COMMA,    {{ BEFORE }}, KeyCode::KEYPAD_COMMA,    {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT,      {{ BEFORE }}, KeyCode::KEYPAD_DOT,      {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_EQUAL,    {{ BEFORE }}, KeyCode::KEYPAD_EQUAL,    {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS,    {{ BEFORE }}, KeyCode::KEYPAD_MINUS,    {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, {{ BEFORE }}, KeyCode::KEYPAD_MULTIPLY, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS,     {{ BEFORE }}, KeyCode::KEYPAD_PLUS,     {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    {{ BEFORE }}, KeyCode::KEYPAD_SLASH,    {{ AFTER }}</autogen>
+</root>

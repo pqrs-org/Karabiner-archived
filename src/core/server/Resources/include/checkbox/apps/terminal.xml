@@ -169,7 +169,16 @@
             <only>TERMINAL</only>
             <identifier>remap.app_term_append_escape_for_keys</identifier>
             <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-            <include system_xml_path="include/checkbox/snippets/append_escape_for_keys.xml" />
+            <include system_xml_path="include/checkbox/apps/terminal/meta_modifier_key.xml">
+              <replacementdef>
+                <replacementname>BEFORE</replacementname>
+                <replacementvalue>KeyCode::ESCAPE</replacementvalue>
+              </replacementdef>
+              <replacementdef>
+                <replacementname>AFTER</replacementname>
+                <replacementvalue></replacementvalue>
+              </replacementdef>
+            </include>
           </item>
         </list>
       </item>
