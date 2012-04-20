@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<root>
+  <autogen>--KeyToKey-- KeyCode::A, {{ BEFORE }}, KeyCode::A, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::B, {{ BEFORE }}, KeyCode::B, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::C, {{ BEFORE }}, KeyCode::C, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::D, {{ BEFORE }}, KeyCode::D, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::E, {{ BEFORE }}, KeyCode::E, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::F, {{ BEFORE }}, KeyCode::F, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::G, {{ BEFORE }}, KeyCode::G, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::H, {{ BEFORE }}, KeyCode::H, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::I, {{ BEFORE }}, KeyCode::I, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::J, {{ BEFORE }}, KeyCode::J, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::K, {{ BEFORE }}, KeyCode::K, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::L, {{ BEFORE }}, KeyCode::L, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::M, {{ BEFORE }}, KeyCode::M, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::N, {{ BEFORE }}, KeyCode::N, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::O, {{ BEFORE }}, KeyCode::O, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::P, {{ BEFORE }}, KeyCode::P, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::Q, {{ BEFORE }}, KeyCode::Q, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::R, {{ BEFORE }}, KeyCode::R, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::S, {{ BEFORE }}, KeyCode::S, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::T, {{ BEFORE }}, KeyCode::T, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::U, {{ BEFORE }}, KeyCode::U, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::V, {{ BEFORE }}, KeyCode::V, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::W, {{ BEFORE }}, KeyCode::W, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::X, {{ BEFORE }}, KeyCode::X, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::Y, {{ BEFORE }}, KeyCode::Y, {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::Z, {{ BEFORE }}, KeyCode::Z, {{ AFTER }}</autogen>
+</root>

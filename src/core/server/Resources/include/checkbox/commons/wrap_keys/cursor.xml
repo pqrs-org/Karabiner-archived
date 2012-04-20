@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root>
+  <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    {{ BEFORE }}, KeyCode::CURSOR_UP,    {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  {{ BEFORE }}, KeyCode::CURSOR_DOWN,  {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  {{ BEFORE }}, KeyCode::CURSOR_LEFT,  {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, {{ BEFORE }}, KeyCode::CURSOR_RIGHT, {{ AFTER }}</autogen>
+
+  <autogen>--KeyToKey-- KeyCode::PAGEUP,       {{ BEFORE }}, KeyCode::PAGEUP,       {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::PAGEDOWN,     {{ BEFORE }}, KeyCode::PAGEDOWN,     {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::HOME,         {{ BEFORE }}, KeyCode::HOME,         {{ AFTER }}</autogen>
+  <autogen>--KeyToKey-- KeyCode::END,          {{ BEFORE }}, KeyCode::END,          {{ AFTER }}</autogen>
+</root>
