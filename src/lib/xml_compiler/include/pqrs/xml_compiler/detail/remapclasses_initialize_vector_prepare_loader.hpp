@@ -58,7 +58,7 @@ public:
                 normalize_identifier_(identifier);
 
                 // ----------------------------------------
-                auto attr_essential = child.second.get_optional<std::string>("<xmlattr>.essential");
+                auto attr_essential = child.get_optional("<xmlattr>.essential");
                 if (attr_essential) {
                   essential_configurations_.push_back(std::tr1::shared_ptr<essential_configuration>(new essential_configuration(ptr->get_node())));
                   // Do not treat essentials anymore.
@@ -66,7 +66,7 @@ public:
                 }
 
                 // ----------------------------------------
-                auto attr_vk_config = child.second.get_optional<std::string>("<xmlattr>.vk_config");
+                auto attr_vk_config = child.get_optional("<xmlattr>.vk_config");
                 if (attr_vk_config) {
                   const char* names[] = {
                     "VK_CONFIG_TOGGLE_",

@@ -17,13 +17,10 @@ public:
     node(const boost::property_tree::ptree::value_type& node,
          const xml_compiler& xml_compiler,
          const pqrs::string::replacement& replacement) :
-      second(node.second),
       node_(node),
       xml_compiler_(xml_compiler),
       replacement_(replacement)
     {}
-
-    const boost::property_tree::ptree& second;
 
     const std::string& get_tag_name(void) const { return node_.first; }
     const std::string& get_data(void) const { return node_.second.data(); }
@@ -32,10 +29,8 @@ public:
     }
 
     bool children_empty(void) const { return node_.second.empty(); }
-
-    const boost::property_tree::ptree::value_type& get_node(void) const { return node_; }
     extracted_ptree children_extracted_ptree(void) const {
-      return extracted_ptree(xml_compiler_, replacement_, second);
+      return extracted_ptree(xml_compiler_, replacement_, node_.second);
     }
 
   private:
