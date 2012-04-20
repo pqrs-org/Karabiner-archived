@@ -55,6 +55,8 @@
             <appendix>dw: Delete word</appendix>
             <appendix>d$: Delete to end of line</appendix>
             <appendix>D: Delete to end of line (Command_L+Shift_L+Right, Delete)</appendix>
+            <appendix>r: Replace character</appendix>
+            <appendix>R: Replace text</appendix>
             <appendix>H: Current line to top (Option_L+PageDown, Down, Up)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
             <appendix>L: Current line to bottom (Option_L+PageUp, Up, Down)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
             <appendix>M: Current line to middle (Option_L+PageDown, Option+PageUp)</appendix> <!-- TODO: Can't navigate in visible area, so doing something with a somewhat similar effect. -->
@@ -288,10 +290,48 @@
               </block>
             </block>
 
+            <!-- ============================================================ -->
+            <!-- r operator pending -->
+            <block>
+              <config_only>notsave.r_operator_pending</config_only>
+
+              <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_r_operator_pending</autogen>
+
+              <include system_xml_path="include/checkbox/ubiquitous_vim_bindings/r_operator.xml">
+                <replacementdef>
+                  <replacementname>BEFORE</replacementname>
+                  <replacementvalue>KeyCode::FORWARD_DELETE</replacementvalue>
+                </replacementdef>
+                <replacementdef>
+                  <replacementname>AFTER</replacementname>
+                  <replacementvalue>
+                    KeyCode::VK_CONFIG_FORCE_OFF_notsave_r_operator_pending,
+                  </replacementvalue>
+                </replacementdef>
+              </include>
+            </block>
+
+            <!-- ============================================================ -->
+            <!-- R operator pending -->
+            <block>
+              <config_only>notsave.R_operator_pending</config_only>
+
+              <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_R_operator_pending</autogen>
+
+              <include system_xml_path="include/checkbox/ubiquitous_vim_bindings/r_operator.xml">
+                <replacementdef>
+                  <replacementname>BEFORE</replacementname>
+                  <replacementvalue>KeyCode::FORWARD_DELETE</replacementvalue>
+                </replacementdef>
+                <replacementdef>
+                  <replacementname>AFTER</replacementname>
+                  <replacementvalue></replacementvalue>
+                </replacementdef>
+              </include>
+            </block>
+
             <block>
               <!-- Unimplemented dead keys in Normal Mode -->
-              <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-              <autogen>--KeyToKey-- KeyCode::R, VK_SHIFT, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
               <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT, KeyCode::VK_NONE</autogen>
@@ -823,6 +863,26 @@
                 --KeyToKey--
                 KeyCode::G, ModifierFlag::NONE,
                 KeyCode::VK_CONFIG_FORCE_ON_notsave_g_operator_pending
+              </autogen>
+            </block>
+
+            <!-- Enter r operator pending mode. -->
+            <block>
+              <config_not>notsave.r_operator_pending</config_not>
+              <autogen>
+                --KeyToKey--
+                KeyCode::R, ModifierFlag::NONE,
+                KeyCode::VK_CONFIG_FORCE_ON_notsave_r_operator_pending
+              </autogen>
+            </block>
+
+            <!-- Enter R operator pending mode. -->
+            <block>
+              <config_not>notsave.R_operator_pending</config_not>
+              <autogen>
+                --KeyToKey--
+                KeyCode::R, VK_SHIFT | ModifierFlag::NONE,
+                KeyCode::VK_CONFIG_FORCE_ON_notsave_R_operator_pending
               </autogen>
             </block>
 
@@ -1374,6 +1434,16 @@
             <name></name>
             <identifier vk_config="true">notsave.g_operator_pending</identifier>
             <autogen>--ShowStatusMessage-- [g]</autogen>
+          </item>
+          <item>
+            <name></name>
+            <identifier vk_config="true">notsave.r_operator_pending</identifier>
+            <autogen>--ShowStatusMessage-- [r]</autogen>
+          </item>
+          <item>
+            <name></name>
+            <identifier vk_config="true">notsave.R_operator_pending</identifier>
+            <autogen>--ShowStatusMessage-- [R]</autogen>
           </item>
           <item>
             <name></name>
