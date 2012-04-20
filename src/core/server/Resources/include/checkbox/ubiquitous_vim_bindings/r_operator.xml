@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<root>
+  <block>
+    <modifier_not>
+      ModifierFlag::COMMAND_L,
+      ModifierFlag::COMMAND_R,
+      ModifierFlag::CONTROL_L,
+      ModifierFlag::CONTROL_R,
+    </modifier_not>
+    <include system_xml_path="include/checkbox/commons/wrap_keys/alphabet.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/number.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/symbol.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/keypad.xml" />
+    <include system_xml_path="include/checkbox/commons/wrap_keys/international.xml" />
+
+    <!-- pickup from special.xml -->
+    <autogen>--KeyToKey-- KeyCode::ENTER,           {{ BEFORE }}, KeyCode::ENTER,           {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::ENTER_POWERBOOK, {{ BEFORE }}, KeyCode::ENTER_POWERBOOK, {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::RETURN,          {{ BEFORE }}, KeyCode::RETURN,          {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::SPACE,           {{ BEFORE }}, KeyCode::SPACE,           {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::TAB,             {{ BEFORE }}, KeyCode::TAB,             {{ AFTER }}</autogen>
+  </block>
+</root>
