@@ -132,10 +132,10 @@ CURSOR_DOWN 125
 CURSOR_LEFT 123
 CURSOR_RIGHT 124
 
-HOME 115
-END 119
 PAGEUP 116
 PAGEDOWN 121
+HOME 115
+END 119
 
 // ----------------------------------------
 // modifiers
