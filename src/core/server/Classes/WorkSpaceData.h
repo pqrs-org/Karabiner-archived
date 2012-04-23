@@ -10,6 +10,8 @@
 
 
 @interface WorkSpaceData (InputSource)
++ (void) refreshEnabledInputSources;
+
 + (NSString*) getTISPropertyInputSourceID;
 + (NSString*) getTISPropertyInputModeID;
 + (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;

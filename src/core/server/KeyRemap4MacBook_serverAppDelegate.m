@@ -51,6 +51,11 @@
   }
 }
 
+- (void) distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:(NSNotification*)notification
+{
+  [WorkSpaceData refreshEnabledInputSources];
+}
+
 - (void) distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
 {
   // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
@@ -340,6 +345,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                            object:nil];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
+                                                                selector:@selector(distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:)
+                                                                    name:(NSString*)(kTISNotifyEnabledKeyboardInputSourcesChanged)
+                                                                  object:nil];
+
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
                                                                 selector:@selector(distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:)
                                                                     name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
                                                                   object:nil];
@@ -373,6 +383,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
+  [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
   [self checkForUpdates:YES];
 }

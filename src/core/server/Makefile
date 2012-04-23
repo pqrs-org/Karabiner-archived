@@ -7,6 +7,9 @@ all:
 	$(MAKE) -C ../../lib/xml_compiler
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
+buildonly:
+	xcodebuild -alltargets -configuration $(CONFIGURATION) build
+
 clean:
 	rm -rf build
 	rm -f Info.plist
