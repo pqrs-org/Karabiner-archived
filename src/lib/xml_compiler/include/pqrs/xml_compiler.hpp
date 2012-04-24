@@ -20,7 +20,6 @@ namespace pqrs {
     typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
 #include "pqrs/xml_compiler/detail/exception.hpp"
 #include "pqrs/xml_compiler/detail/error_information.hpp"
-#include "pqrs/xml_compiler/detail/xml_file_path.hpp"
 #include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
@@ -72,15 +71,18 @@ namespace pqrs {
 
   private:
     void read_xml_(ptree_ptr& out,
-                   const std::string& base_diretory,
-                   const std::string& relative_file_path,
+                   const std::string& file_path,
                    const pqrs::string::replacement& replacement) const;
     void read_xml_(ptree_ptr& out,
-                   const xml_file_path& xml_file_path,
-                   const pqrs::string::replacement& replacement) const;
-    void read_xml_(ptree_ptr& out,
-                   const xml_file_path& xml_file_path) const {
-      read_xml_(out, xml_file_path, replacement_);
+                   const std::string& file_path) const {
+      read_xml_(out, file_path, replacement_);
+    }
+
+    std::string make_file_path(const std::string& base_directory, const std::string& path) const {
+      if (! boost::starts_with(path, "/")) {
+        return base_directory + "/" + path;
+      }
+      return path;
     }
 
     extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt) const {

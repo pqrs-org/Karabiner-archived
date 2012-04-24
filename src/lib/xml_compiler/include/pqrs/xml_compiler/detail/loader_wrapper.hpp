@@ -8,7 +8,7 @@ public:
                                   const char* xml_file_name) {
     ptree_ptr ptree_ptr;
     xml_compiler.read_xml_(ptree_ptr,
-                           xml_file_path(xml_file_path::base_directory::system_xml, xml_file_name));
+                           xml_compiler.make_file_path(xml_compiler.system_xml_directory_, xml_file_name));
     if (ptree_ptr) {
       loader.traverse(xml_compiler.make_extracted_ptree(*ptree_ptr));
     }
