@@ -2,48 +2,46 @@
 <root>
   <item>
     <name>Change Semicolon(;) Key</name>
-    <list>
-      <item>
-        <name>Semicolon to Minus</name>
-        <identifier>remap.semicolon2minus</identifier>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::MINUS</autogen>
-      </item>
-      <item>
-        <name>Semicolon to Return</name>
-        <identifier>remap.semicolon2return</identifier>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
-      </item>
-      <item>
-        <name>Semicolon to Return</name>
-        <appendix>(+ Control+Semicolon to Semicolon)</appendix>
-        <identifier>remap.semicolon2return_controlsemicolon2semicolon</identifier>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL, KeyCode::SEMICOLON</autogen>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
-      </item>
-      <item>
-        <name>Semicolon to Return (when there are not any modifiers)</name>
-        <appendix>(+ Control+Semicolon to Semicolon)</appendix>
-        <identifier>remap.semicolon2return_nomod</identifier>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL | ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::RETURN</autogen>
-      </item>
-      <item>
-        <name>Semicolon to Return (Only on WebIDE)</name>
-        <identifier>remap.semicolon2return_onlywebide</identifier>
-        <only>WEBIDE</only>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
-      </item>
-      <item>
-        <name>Semicolon to Sticky Shift_L</name>
-        <identifier>remap.semicolon2stickyshiftL</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
-      </item>
-      <item>
-        <name>Swap Semicolon and Colon</name>
-        <identifier>remap.swapcolons</identifier>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::SEMICOLON</autogen>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Semicolon to Minus</name>
+      <identifier>remap.semicolon2minus</identifier>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::MINUS</autogen>
+    </item>
+    <item>
+      <name>Semicolon to Return</name>
+      <identifier>remap.semicolon2return</identifier>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Semicolon to Return</name>
+      <appendix>(+ Control+Semicolon to Semicolon)</appendix>
+      <identifier>remap.semicolon2return_controlsemicolon2semicolon</identifier>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL, KeyCode::SEMICOLON</autogen>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Semicolon to Return (when there are not any modifiers)</name>
+      <appendix>(+ Control+Semicolon to Semicolon)</appendix>
+      <identifier>remap.semicolon2return_nomod</identifier>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL | ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Semicolon to Return (Only on WebIDE)</name>
+      <identifier>remap.semicolon2return_onlywebide</identifier>
+      <only>WEBIDE</only>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Semicolon to Sticky Shift_L</name>
+      <identifier>remap.semicolon2stickyshiftL</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Swap Semicolon and Colon</name>
+      <identifier>remap.swapcolons</identifier>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::SEMICOLON</autogen>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
+    </item>
   </item>
 </root>

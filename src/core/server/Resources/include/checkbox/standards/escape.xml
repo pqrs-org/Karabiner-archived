@@ -2,67 +2,65 @@
 <root>
   <item>
     <name>Change Escape Key</name>
-    <list>
-      <item>
-        <name>Escape to CapsLock</name>
-        <identifier>remap.escape2capslock</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::CAPSLOCK</autogen>
-      </item>
-      <item>
-        <name>Shift+Escape to CapsLock</name>
-        <identifier>remap.shiftEscape2capslock</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_SHIFT, KeyCode::CAPSLOCK</autogen>
-      </item>
-      <item>
-        <name>Escape to Command_L</name>
-        <identifier>remap.escape2commandL</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Escape to Command_R Lock</name>
-        <identifier>remap.escape2commandR_lock</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_R</autogen>
-      </item>
-      <item>
-        <name>Escape to Option_L</name>
-        <identifier>remap.escape2optionL</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>Escape to Backquote(`)</name>
-        <identifier>remap.escape2backquote</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
-      </item>
-      <item>
-        <name>Escape to Eject</name>
-        <identifier>remap.escape2eject</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ConsumerKeyCode::EJECT</autogen>
-      </item>
-      <item>
-        <name>Control+Escape to Control_L+F3</name>
-        <identifier>remap.escape2controlLf3</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_CONTROL | ModifierFlag::NONE, KeyCode::F3, ModifierFlag::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Fn+Escape to Power</name>
-        <identifier>remap.fnEscape2power</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-      </item>
-      <item>
-        <name>Shift+Escape to Tilde(~)</name>
-        <identifier>remap.shiftEscape2tilde</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
-      </item>
-      <item>
-        <name>Escape to RightClick</name>
-        <identifier>remap.escape2rightclick</identifier>
-        <autogen>--KeyToPointingButton-- KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
-      </item>
-      <item>
-        <name>Disable Escape</name>
-        <identifier>remap.drop_escape</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_NONE</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Escape to CapsLock</name>
+      <identifier>remap.escape2capslock</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::CAPSLOCK</autogen>
+    </item>
+    <item>
+      <name>Shift+Escape to CapsLock</name>
+      <identifier>remap.shiftEscape2capslock</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_SHIFT, KeyCode::CAPSLOCK</autogen>
+    </item>
+    <item>
+      <name>Escape to Command_L</name>
+      <identifier>remap.escape2commandL</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Escape to Command_R Lock</name>
+      <identifier>remap.escape2commandR_lock</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_R</autogen>
+    </item>
+    <item>
+      <name>Escape to Option_L</name>
+      <identifier>remap.escape2optionL</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Escape to Backquote(`)</name>
+      <identifier>remap.escape2backquote</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::BACKQUOTE</autogen>
+    </item>
+    <item>
+      <name>Escape to Eject</name>
+      <identifier>remap.escape2eject</identifier>
+      <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ConsumerKeyCode::EJECT</autogen>
+    </item>
+    <item>
+      <name>Control+Escape to Control_L+F3</name>
+      <identifier>remap.escape2controlLf3</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_CONTROL | ModifierFlag::NONE, KeyCode::F3, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Fn+Escape to Power</name>
+      <identifier>remap.fnEscape2power</identifier>
+      <autogen>--KeyToConsumer-- KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+    </item>
+    <item>
+      <name>Shift+Escape to Tilde(~)</name>
+      <identifier>remap.shiftEscape2tilde</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Escape to RightClick</name>
+      <identifier>remap.escape2rightclick</identifier>
+      <autogen>--KeyToPointingButton-- KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
+    </item>
+    <item>
+      <name>Disable Escape</name>
+      <identifier>remap.drop_escape</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_NONE</autogen>
+    </item>
   </item>
 </root>

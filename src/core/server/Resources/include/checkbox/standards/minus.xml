@@ -2,12 +2,10 @@
 <root>
   <item>
     <name>Change Minus Key</name>
-    <list>
-      <item>
-        <name>Change Minus to Semicolon</name>
-        <identifier>remap.minus2semicolon</identifier>
-        <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::SEMICOLON</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Change Minus to Semicolon</name>
+      <identifier>remap.minus2semicolon</identifier>
+      <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::SEMICOLON</autogen>
+    </item>
   </item>
 </root>

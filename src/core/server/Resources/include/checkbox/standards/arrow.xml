@@ -2,177 +2,173 @@
 <root>
   <item>
     <name>Change Arrow(Up/Down/Left/Right) Key</name>
-    <list>
-      <item>
-        <name>Arrow(Down/Left/Right) to Command_L</name>
-        <appendix>Disable Up-Arrow</appendix>
-        <identifier>remap.arrow2commandL</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Arrow(Down/Left/Right) to Fn</name>
-        <appendix>Disable Up-Arrow</appendix>
-        <identifier>remap.arrow2fn</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::FN</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::FN</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::FN</autogen>
-      </item>
-      <item>
-        <name>Arrow(Down/Left/Right) to Option_L</name>
-        <appendix>Disable Up-Arrow</appendix>
-        <identifier>remap.arrow2optionL</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>Command+Arrow to Option_L+Arrow</name>
-        <identifier>remap.commandArrow2optionLarrow</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_COMMAND, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, VK_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>Control+Arrow to Option_L+Arrow</name>
-        <identifier>remap.controlArrow2optionLarrow</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>Option+Arrow to Command_L+Arrow</name>
-        <identifier>remap.optionArrow2commandLarrow</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    VK_OPTION, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  VK_OPTION, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_OPTION, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_OPTION, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Command_R+Arrow to PageUp/PageDown/Home/End</name>
-        <identifier>remap.commandR_arrow2PgUpDnHomeEnd</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_R, KeyCode::HOME</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_R, KeyCode::END</autogen>
-      </item>
-      <item>
-        <name>Option_R+Arrow to PageUp/PageDown/Home/End</name>
-        <identifier>remap.optionR_arrow2PgUpDnHomeEnd</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP, ModifierFlag::OPTION_R, KeyCode::PAGEUP</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R, KeyCode::PAGEDOWN</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_R, KeyCode::HOME</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R, KeyCode::END</autogen>
-      </item>
-      <item>
-        <name>Left-Arrow to Control_L</name>
-        <identifier>remap.leftarrow2controlL</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Command+Left-Arrow to Shift_L+Home,Command_L+X</name>
-        <appendix>(only in virtual machine, RDC)</appendix>
-        <identifier>remap.commandLeftarrow2beginningofline_cut_vm</identifier>
-        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Command+Left-Arrow to Shift_L+Home,Control_L+X</name>
-        <appendix>(only in virtual machine, RDC)</appendix>
-        <identifier>remap.commandLeftarrow2beginningofline_cut2_vm</identifier>
-        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Command+Left-Arrow to Command_L+Shift_L+Left-Arrow,Command_L+X</name>
-        <appendix>(except virtual machine, RDC)</appendix>
-        <identifier>remap.commandLeftarrow2beginningofline_cut</identifier>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Command+Left-Arrow to Command_L+Shift_L+Left-Arrow,Control_L+X</name>
-        <appendix>(except virtual machine, RDC)</appendix>
-        <identifier>remap.commandLeftarrow2beginningofline_cut2</identifier>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Command+Right-Arrow to Shift_L+End,Command_L+X</name>
-        <appendix>(only in virtual machine, RDC)</appendix>
-        <identifier>remap.commandRightarrow2endofline_cut_vm</identifier>
-        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Command+Right-Arrow to Shift_L+End,Control_L+X</name>
-        <appendix>(only in virtual machine, RDC)</appendix>
-        <identifier>remap.commandRightarrow2endofline_cut2_vm</identifier>
-        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Command+Right-Arrow to Command_L+Shift_L+Right-Arrow,Command_L+X</name>
-        <appendix>(except virtual machine, RDC)</appendix>
-        <identifier>remap.commandRightarrow2endofline_cut</identifier>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Command+Right-Arrow to Command_L+Shift_L+Right-Arrow,Control_L+X</name>
-        <appendix>(except virtual machine, RDC)</appendix>
-        <identifier>remap.commandRightarrow2endofline_cut2</identifier>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Use FN+Up/Down to adjust brightness</name>
-        <appendix>FN+Up-Arrow to Brightness Up (Consumer)</appendix>
-        <appendix>FN+Down-Arrow to Brightness Down (Consumer)</appendix>
-        <identifier>remap.fnupdown_to_brightness_consumer</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::CURSOR_UP,   ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-        <autogen>--KeyToConsumer-- KeyCode::CURSOR_DOWN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
-      </item>
-      <item>
-        <name>Use FN+Up/Down to adjust brightness (Alternative)</name>
-        <appendix>FN+Up-Arrow to Brightness Up (F15)</appendix>
-        <appendix>FN+Down-Arrow to Brightness Down (F14)</appendix>
-        <identifier>remap.fnupdown_to_brightness</identifier>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::F15</autogen>
-        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::F14</autogen>
-      </item>
+    <item>
+      <name>Arrow(Down/Left/Right) to Command_L</name>
+      <appendix>Disable Up-Arrow</appendix>
+      <identifier>remap.arrow2commandL</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Arrow(Down/Left/Right) to Fn</name>
+      <appendix>Disable Up-Arrow</appendix>
+      <identifier>remap.arrow2fn</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::FN</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::FN</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::FN</autogen>
+    </item>
+    <item>
+      <name>Arrow(Down/Left/Right) to Option_L</name>
+      <appendix>Disable Up-Arrow</appendix>
+      <identifier>remap.arrow2optionL</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Command+Arrow to Option_L+Arrow</name>
+      <identifier>remap.commandArrow2optionLarrow</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_COMMAND, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, VK_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Control+Arrow to Option_L+Arrow</name>
+      <identifier>remap.controlArrow2optionLarrow</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Option+Arrow to Command_L+Arrow</name>
+      <identifier>remap.optionArrow2commandLarrow</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    VK_OPTION, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  VK_OPTION, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  VK_OPTION, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_OPTION, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Command_R+Arrow to PageUp/PageDown/Home/End</name>
+      <identifier>remap.commandR_arrow2PgUpDnHomeEnd</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_R, KeyCode::PAGEUP</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_R, KeyCode::HOME</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_R, KeyCode::END</autogen>
+    </item>
+    <item>
+      <name>Option_R+Arrow to PageUp/PageDown/Home/End</name>
+      <identifier>remap.optionR_arrow2PgUpDnHomeEnd</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP, ModifierFlag::OPTION_R, KeyCode::PAGEUP</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R, KeyCode::PAGEDOWN</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_R, KeyCode::HOME</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R, KeyCode::END</autogen>
+    </item>
+    <item>
+      <name>Left-Arrow to Control_L</name>
+      <identifier>remap.leftarrow2controlL</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Command+Left-Arrow to Shift_L+Home,Command_L+X</name>
+      <appendix>(only in virtual machine, RDC)</appendix>
+      <identifier>remap.commandLeftarrow2beginningofline_cut_vm</identifier>
+      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Command+Left-Arrow to Shift_L+Home,Control_L+X</name>
+      <appendix>(only in virtual machine, RDC)</appendix>
+      <identifier>remap.commandLeftarrow2beginningofline_cut2_vm</identifier>
+      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::HOME, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Command+Left-Arrow to Command_L+Shift_L+Left-Arrow,Command_L+X</name>
+      <appendix>(except virtual machine, RDC)</appendix>
+      <identifier>remap.commandLeftarrow2beginningofline_cut</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Command+Left-Arrow to Command_L+Shift_L+Left-Arrow,Control_L+X</name>
+      <appendix>(except virtual machine, RDC)</appendix>
+      <identifier>remap.commandLeftarrow2beginningofline_cut2</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Command+Right-Arrow to Shift_L+End,Command_L+X</name>
+      <appendix>(only in virtual machine, RDC)</appendix>
+      <identifier>remap.commandRightarrow2endofline_cut_vm</identifier>
+      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Command+Right-Arrow to Shift_L+End,Control_L+X</name>
+      <appendix>(only in virtual machine, RDC)</appendix>
+      <identifier>remap.commandRightarrow2endofline_cut2_vm</identifier>
+      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Command+Right-Arrow to Command_L+Shift_L+Right-Arrow,Command_L+X</name>
+      <appendix>(except virtual machine, RDC)</appendix>
+      <identifier>remap.commandRightarrow2endofline_cut</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Command+Right-Arrow to Command_L+Shift_L+Right-Arrow,Control_L+X</name>
+      <appendix>(except virtual machine, RDC)</appendix>
+      <identifier>remap.commandRightarrow2endofline_cut2</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Use FN+Up/Down to adjust brightness</name>
+      <appendix>FN+Up-Arrow to Brightness Up (Consumer)</appendix>
+      <appendix>FN+Down-Arrow to Brightness Down (Consumer)</appendix>
+      <identifier>remap.fnupdown_to_brightness_consumer</identifier>
+      <autogen>--KeyToConsumer-- KeyCode::CURSOR_UP,   ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      <autogen>--KeyToConsumer-- KeyCode::CURSOR_DOWN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+    </item>
+    <item>
+      <name>Use FN+Up/Down to adjust brightness (Alternative)</name>
+      <appendix>FN+Up-Arrow to Brightness Up (F15)</appendix>
+      <appendix>FN+Down-Arrow to Brightness Down (F14)</appendix>
+      <identifier>remap.fnupdown_to_brightness</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,   KeyCode::F15</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, KeyCode::F14</autogen>
+    </item>
 
+    <item>
+      <name>The workaround for broken up and down keys</name>
       <item>
-        <name>The workaround for broken up and down keys</name>
-        <list>
-          <item>
-            <name>Change Shift+Cursor Left to Cursor Up</name>
-            <identifier>remap.shiftleft2up</identifier>
-            <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
-          </item>
-          <item>
-            <name>Change Shift+Cursor Right to Cursor Down</name>
-            <identifier>remap.shiftright2down</identifier>
-            <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
-          </item>
-          <item>
-            <name>Change Command+Cursor Left to PageUp</name>
-            <identifier>remap.commandleft2pageup</identifier>
-            <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::PAGEUP</autogen>
-          </item>
-          <item>
-            <name>Change Command+Cursor Right to PageDown</name>
-            <identifier>remap.commandright2pagedown</identifier>
-            <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::PAGEDOWN</autogen>
-          </item>
-        </list>
+        <name>Change Shift+Cursor Left to Cursor Up</name>
+        <identifier>remap.shiftleft2up</identifier>
+        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
       </item>
-    </list>
+      <item>
+        <name>Change Shift+Cursor Right to Cursor Down</name>
+        <identifier>remap.shiftright2down</identifier>
+        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+      </item>
+      <item>
+        <name>Change Command+Cursor Left to PageUp</name>
+        <identifier>remap.commandleft2pageup</identifier>
+        <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, VK_COMMAND, KeyCode::PAGEUP</autogen>
+      </item>
+      <item>
+        <name>Change Command+Cursor Right to PageDown</name>
+        <identifier>remap.commandright2pagedown</identifier>
+        <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::PAGEDOWN</autogen>
+      </item>
+    </item>
   </item>
 </root>

@@ -2,311 +2,305 @@
 <root>
   <item>
     <name>Change Shift_L Key (Left Shift)</name>
-    <list>
-      <item>
-        <name>Shift_L to CapsLock</name>
-        <identifier>remap.shiftL2capslock</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-      </item>
-      <item>
-        <name>Shift_L to turn off CapsLock</name>
-        <appendix>(+ Retain Shift_L movement)</appendix>
-        <identifier>remap.shiftL2turnoffcapslock</identifier>
-        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::SHIFT_L</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Command_L</name>
-        <identifier>remap.shiftL2commandL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Control_L</name>
-        <identifier>remap.shiftL2controlL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Fn+Shift_L to Control_R</name>
-        <identifier>remap.fnshiftL2controlR</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Fn</name>
-        <identifier>remap.shiftL2fn</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::FN</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type Shift_L only, release CapsLock)</appendix>
-        <identifier>remap.shiftL2releasecapslock</identifier>
-        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type shift_L only without other modifiers, send Escape)</appendix>
-        <identifier>remap.shiftL2shiftL_escape</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type shiftL only, send Space)</appendix>
-        <identifier>remap.shiftL2shiftL_space</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type shiftL only, send CapsLock)</appendix>
-        <identifier>remap.shiftL2shiftL_capslock</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type shiftL only, send Space) + [KeyRepeat]</appendix>
-        <identifier>remap.shiftL2shiftL_space_keyrepeat</identifier>
-        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Lazy_Shift_L</name>
-        <identifier>remap.shiftL2lazy_shiftL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_LAZY_SHIFT_L</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Option_L</name>
-        <identifier>remap.shiftL2optionL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Sticky Shift_L</name>
-        <identifier>remap.sticky_shiftL</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Escape</name>
-        <identifier>remap.shiftL2escape</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
-      </item>
-      <item>
-        <name>Shift_L x2 to F18</name>
-        <identifier>remap.shiftL_x2_to_f18</identifier>
-        <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::F18</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Space</name>
-        <identifier>remap.shiftL2space</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_R+Shift_L to Space</name>
-        <appendix>(Shift_R+Shift_L to Space, Shift_L+Shift_R to Shift+Space)</appendix>
-        <identifier>remap.shiftRshiftL2space</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE, ModifierFlag::SHIFT_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Tab</name>
-        <identifier>remap.shiftL2tab</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB</autogen>
-      </item>
-      <item>
-        <name>Disable Shift_L</name>
-        <identifier>remap.drop_shiftL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_NONE</autogen>
-      </item>
-      <item>
-        <name>Disable Shift_L</name>
-        <appendix>(+ When you type Shift_L only, send Fn_Lock)</appendix>
-        <identifier>remap.drop_shiftL_fn</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
-      </item>
-      <item>
-        <name></name>
-        <identifier vk_config="true">notsave.shiftl_capslocktrick</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
-      </item>
-      <item>
-        <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type Shift_L only, Sticky Shift_L)</appendix>
-        <appendix>(+ When you type Shift_L twice, Capslock)</appendix>
-        <identifier>remap.shiftl_to_sticky_shiftl</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA3, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L, KeyCode::VK_STICKY_EXTRA3</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Shift_L to CapsLock</name>
+      <identifier>remap.shiftL2capslock</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+    </item>
+    <item>
+      <name>Shift_L to turn off CapsLock</name>
+      <appendix>(+ Retain Shift_L movement)</appendix>
+      <identifier>remap.shiftL2turnoffcapslock</identifier>
+      <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Command_L</name>
+      <identifier>remap.shiftL2commandL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Control_L</name>
+      <identifier>remap.shiftL2controlL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Fn+Shift_L to Control_R</name>
+      <identifier>remap.fnshiftL2controlR</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::FN, KeyCode::CONTROL_R</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Fn</name>
+      <identifier>remap.shiftL2fn</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::FN</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Shift_L</name>
+      <appendix>(+ When you type Shift_L only, release CapsLock)</appendix>
+      <identifier>remap.shiftL2releasecapslock</identifier>
+      <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Shift_L</name>
+      <appendix>(+ When you type shift_L only without other modifiers, send Escape)</appendix>
+      <identifier>remap.shiftL2shiftL_escape</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Shift_L</name>
+      <appendix>(+ When you type shiftL only, send Space)</appendix>
+      <identifier>remap.shiftL2shiftL_space</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Shift_L</name>
+      <appendix>(+ When you type shiftL only, send CapsLock)</appendix>
+      <identifier>remap.shiftL2shiftL_capslock</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Shift_L</name>
+      <appendix>(+ When you type shiftL only, send Space) + [KeyRepeat]</appendix>
+      <identifier>remap.shiftL2shiftL_space_keyrepeat</identifier>
+      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Lazy_Shift_L</name>
+      <identifier>remap.shiftL2lazy_shiftL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_LAZY_SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Option_L</name>
+      <identifier>remap.shiftL2optionL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Sticky Shift_L</name>
+      <identifier>remap.sticky_shiftL</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Escape</name>
+      <identifier>remap.shiftL2escape</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>Shift_L x2 to F18</name>
+      <identifier>remap.shiftL_x2_to_f18</identifier>
+      <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::F18</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Space</name>
+      <identifier>remap.shiftL2space</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_R+Shift_L to Space</name>
+      <appendix>(Shift_R+Shift_L to Space, Shift_L+Shift_R to Shift+Space)</appendix>
+      <identifier>remap.shiftRshiftL2space</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE, ModifierFlag::SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Tab</name>
+      <identifier>remap.shiftL2tab</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB</autogen>
+    </item>
+    <item>
+      <name>Disable Shift_L</name>
+      <identifier>remap.drop_shiftL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+      <name>Disable Shift_L</name>
+      <appendix>(+ When you type Shift_L only, send Fn_Lock)</appendix>
+      <identifier>remap.drop_shiftL_fn</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_LOCK_FN</autogen>
+    </item>
+    <item>
+      <name></name>
+      <identifier vk_config="true">notsave.shiftl_capslocktrick</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+    </item>
+    <item>
+      <name>Shift_L to Shift_L</name>
+      <appendix>(+ When you type Shift_L only, Sticky Shift_L)</appendix>
+      <appendix>(+ When you type Shift_L twice, Capslock)</appendix>
+      <identifier>remap.shiftl_to_sticky_shiftl</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::EXTRA3, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L, KeyCode::VK_STICKY_EXTRA3</autogen>
+    </item>
   </item>
 
   <item>
     <name>Change Shift_R Key (Right Shift)</name>
-    <list>
-      <item>
-        <name>Shift_R to turn off CapsLock</name>
-        <appendix>(+ Retain Shift_R movement)</appendix>
-        <identifier>remap.shiftR2turnoffcapslock</identifier>
-        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Command_L</name>
-        <identifier>remap.shiftR2commandL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Control_L</name>
-        <identifier>remap.shiftR2controlL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CONTROL_L</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Fn</name>
-        <identifier>remap.shiftR2fn</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::FN</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Option_L</name>
-        <identifier>remap.shiftR2optionL</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, release CapsLock)</appendix>
-        <identifier>remap.shiftR2releasecapslock</identifier>
-        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
-        <identifier>remap.shiftR2shiftR_backslash</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, send CapsLock)</appendix>
-        <identifier>remap.shiftR2shiftR_capslock</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, send Enter)</appendix>
-        <identifier>remap.shiftR2shiftR_enter</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, send Escape)</appendix>
-        <identifier>remap.shiftR2shiftR_escape</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ESCAPE</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type shiftR only, send Space)</appendix>
-        <identifier>remap.shiftR2shiftR_space</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type shiftR only, send Space) + [KeyRepeat]</appendix>
-        <identifier>remap.shiftR2shiftR_space_keyrepeat</identifier>
-        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Lazy_Shift_R</name>
-        <identifier>remap.shiftR2lazy_shiftR</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::VK_LAZY_SHIFT_R</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Sticky Shift_R</name>
-        <identifier>remap.sticky_shiftR</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R</autogen>
-      </item>
-      <item>
-        <name>Shift_R to ^ (Shift+6)</name>
-        <appendix>Shift_L+Shift_R to &amp; (Shift+7)</appendix>
-        <identifier>remap.right_shift_to_hat_amp</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::KEY_7, ModifierFlag::SHIFT_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::KEY_6, ModifierFlag::SHIFT_R</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Enter</name>
-        <identifier>remap.shiftR2enter</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Escape</name>
-        <identifier>remap.shiftR2escape</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::ESCAPE</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Forward Delete</name>
-        <identifier>remap.shiftR2forwarddelete</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::FORWARD_DELETE</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Return</name>
-        <identifier>remap.shiftR2return</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::RETURN</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Right-Arrow</name>
-        <identifier>remap.shiftR2rightarrow</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CURSOR_RIGHT</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Space</name>
-        <identifier>remap.shiftR2space</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_L+Shift_R to Space</name>
-        <appendix>(Shift_L+Shift_R to Space, Shift_R+Shift_L to Shift+Space)</appendix>
-        <identifier>remap.shiftLshiftR2space</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE, ModifierFlag::SHIFT_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Tab</name>
-        <identifier>remap.shiftR2tab</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::TAB</autogen>
-      </item>
-      <item>
-        <name>Shift_R to Up-Arrow</name>
-        <identifier>remap.shiftR2uparrow</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CURSOR_UP</autogen>
-      </item>
-      <item>
-        <name>Disable Shift_R</name>
-        <identifier>remap.drop_shiftR</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::VK_NONE</autogen>
-      </item>
-      <item>
-        <name>Back/Forward in Finder, Safari, etc. Left/Right Shift in mi.</name>
-        <list>
-          <item>
-            <name>Shift_R to Shift_R</name>
-            <appendix>(+ When you type shift_R only without other modifiers, send Command+[ )</appendix>
-            <identifier>remap.shiftR2shiftR_backward_nomod</identifier>
-            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_R</autogen>
-          </item>
-          <item>
-            <name>Option_R+Shift_R to Command+]</name>
-            <appendix>(only without other modifiers)</appendix>
-            <identifier>remap.optionRshiftR2forward</identifier>
-            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::SHIFT_R, ModifierFlag::OPTION_R, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_R</autogen>
-          </item>
-        </list>
-      </item>
-      <item>
-        <name></name>
-        <identifier vk_config="true">notsave.shiftr_capslocktrick</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
-      </item>
+    <item>
+      <name>Shift_R to turn off CapsLock</name>
+      <appendix>(+ Retain Shift_R movement)</appendix>
+      <identifier>remap.shiftR2turnoffcapslock</identifier>
+      <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Command_L</name>
+      <identifier>remap.shiftR2commandL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Control_L</name>
+      <identifier>remap.shiftR2controlL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Fn</name>
+      <identifier>remap.shiftR2fn</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::FN</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Option_L</name>
+      <identifier>remap.shiftR2optionL</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type Shift_R only, release CapsLock)</appendix>
+      <identifier>remap.shiftR2releasecapslock</identifier>
+      <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
+      <identifier>remap.shiftR2shiftR_backslash</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type Shift_R only, send CapsLock)</appendix>
+      <identifier>remap.shiftR2shiftR_capslock</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type Shift_R only, send Enter)</appendix>
+      <identifier>remap.shiftR2shiftR_enter</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type Shift_R only, send Escape)</appendix>
+      <identifier>remap.shiftR2shiftR_escape</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type shiftR only, send Space)</appendix>
+      <identifier>remap.shiftR2shiftR_space</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type shiftR only, send Space) + [KeyRepeat]</appendix>
+      <identifier>remap.shiftR2shiftR_space_keyrepeat</identifier>
+      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Lazy_Shift_R</name>
+      <identifier>remap.shiftR2lazy_shiftR</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::VK_LAZY_SHIFT_R</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Sticky Shift_R</name>
+      <identifier>remap.sticky_shiftR</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R</autogen>
+    </item>
+    <item>
+      <name>Shift_R to ^ (Shift+6)</name>
+      <appendix>Shift_L+Shift_R to &amp; (Shift+7)</appendix>
+      <identifier>remap.right_shift_to_hat_amp</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::KEY_7, ModifierFlag::SHIFT_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::KEY_6, ModifierFlag::SHIFT_R</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Enter</name>
+      <identifier>remap.shiftR2enter</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::ENTER</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Escape</name>
+      <identifier>remap.shiftR2escape</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Forward Delete</name>
+      <identifier>remap.shiftR2forwarddelete</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::FORWARD_DELETE</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Return</name>
+      <identifier>remap.shiftR2return</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Right-Arrow</name>
+      <identifier>remap.shiftR2rightarrow</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CURSOR_RIGHT</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Space</name>
+      <identifier>remap.shiftR2space</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_L+Shift_R to Space</name>
+      <appendix>(Shift_L+Shift_R to Space, Shift_R+Shift_L to Shift+Space)</appendix>
+      <identifier>remap.shiftLshiftR2space</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::SPACE, ModifierFlag::SHIFT_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Tab</name>
+      <identifier>remap.shiftR2tab</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::TAB</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Up-Arrow</name>
+      <identifier>remap.shiftR2uparrow</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CURSOR_UP</autogen>
+    </item>
+    <item>
+      <name>Disable Shift_R</name>
+      <identifier>remap.drop_shiftR</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+      <name>Back/Forward in Finder, Safari, etc. Left/Right Shift in mi.</name>
       <item>
         <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
-        <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
-        <identifier>remap.shiftr_to_sticky_shiftr</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA3, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R, KeyCode::VK_STICKY_EXTRA3</autogen>
+        <appendix>(+ When you type shift_R only without other modifiers, send Command+[ )</appendix>
+        <identifier>remap.shiftR2shiftR_backward_nomod</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_R</autogen>
       </item>
-    </list>
+      <item>
+        <name>Option_R+Shift_R to Command+]</name>
+        <appendix>(only without other modifiers)</appendix>
+        <identifier>remap.optionRshiftR2forward</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::SHIFT_R, ModifierFlag::OPTION_R, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_R</autogen>
+      </item>
+    </item>
+    <item>
+      <name></name>
+      <identifier vk_config="true">notsave.shiftr_capslocktrick</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+    </item>
+    <item>
+      <name>Shift_R to Shift_R</name>
+      <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
+      <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
+      <identifier>remap.shiftr_to_sticky_shiftr</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::EXTRA3, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R, KeyCode::VK_STICKY_EXTRA3</autogen>
+    </item>
   </item>
 </root>
