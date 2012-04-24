@@ -1,29 +1,25 @@
 <?xml version="1.0"?>
 <root>
-  <list>
+  <item>
+    <name>Pass Through Mode (Disable all settings temporarily)</name>
     <item>
-      <name>Pass Through Mode (Disable all settings temporarily)</name>
-      <list>
-        <item>
-          <!-- Pass Through Mode Core -->
-          <name>What is Pass Through Mode?</name>
-          <appendix>You can disable all settings temporarily.</appendix>
-          <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
-          <identifier vk_config="true">notsave.passthrough</identifier>
-          <autogen>--ShowStatusMessage-- Pass Through</autogen>
-        </item>
-      </list>
+      <!-- Pass Through Mode Core -->
+      <name>What is Pass Through Mode?</name>
+      <appendix>You can disable all settings temporarily.</appendix>
+      <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
+      <identifier vk_config="true">notsave.passthrough</identifier>
+      <autogen>--ShowStatusMessage-- Pass Through</autogen>
     </item>
-    <item>
-      <name>Return to Tab</name>
-      <identifier>remap.return2tab</identifier>
-      <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::TAB</autogen>
-    </item>
+  </item>
+  <item>
+    <name>Return to Tab</name>
+    <identifier>remap.return2tab</identifier>
+    <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::TAB</autogen>
+  </item>
 
-    <item>
-      <name>notsave</name>
-      <identifier>notsave.remap_sample</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
-    </item>
-  </list>
+  <item>
+    <name>notsave</name>
+    <identifier>notsave.remap_sample</identifier>
+    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
+  </item>
 </root>
