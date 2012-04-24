@@ -14,7 +14,6 @@
     <include system_xml_path="include/checkbox/standards/control.xml" />
     <include system_xml_path="include/checkbox/standards/delete.xml" />
     <include system_xml_path="include/checkbox/standards/eject.xml" />
-    <include system_xml_path="include/checkbox/standards/enter.xml" />
     <include system_xml_path="include/checkbox/standards/escape.xml" />
     <include system_xml_path="include/checkbox/standards/expose.xml" />
     <include system_xml_path="include/checkbox/standards/fn.xml" />
