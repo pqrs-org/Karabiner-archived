@@ -72,13 +72,21 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/broken_xml");
     xml_compiler.reload();
-    EXPECT_EQ("<private.xml>(4): expected element name", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ("<data/invalid_xml/broken_xml/private.xml>(4): expected element name",
+              xml_compiler.get_error_information().get_message());
     EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/broken_include");
     xml_compiler.reload();
-    EXPECT_EQ("<include.xml>(4): expected element name", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ("<data/invalid_xml/broken_include/include.xml>(4): expected element name",
+              xml_compiler.get_error_information().get_message());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/missing_include");
+    xml_compiler.reload();
+    EXPECT_EQ("data/invalid_xml/missing_include/include.xml is not found.",
+              xml_compiler.get_error_information().get_message());
   }
 
   // ------------------------------------------------------------

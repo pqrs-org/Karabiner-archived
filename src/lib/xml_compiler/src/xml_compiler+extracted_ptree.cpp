@@ -70,31 +70,37 @@ namespace pqrs {
     }
 
     // ----------------------------------------
-    ptree_ptr pt_ptr;
+    std::string xml_file_path;
     {
       auto path = it.second.get_optional<std::string>("<xmlattr>.path");
       if (path) {
-        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.private_xml_directory_, *path, *replacement_ptr);
+        xml_file_path = xml_compiler_.make_file_path(xml_compiler_.private_xml_directory_, *path);
       }
     }
     {
       auto path = it.second.get_optional<std::string>("<xmlattr>.system_xml_path");
       if (path) {
-        xml_compiler_.read_xml_(pt_ptr, xml_compiler_.system_xml_directory_, *path, *replacement_ptr);
+        xml_file_path = xml_compiler_.make_file_path(xml_compiler_.system_xml_directory_, *path);
       }
     }
 
-    // ----------------------------------------
-    if (pt_ptr) {
-      ++(top.it);
-      collapse_();
+    if (! xml_file_path.empty()) {
+      ptree_ptr pt_ptr;
+      xml_compiler_.read_xml_(pt_ptr,
+                              xml_file_path,
+                              *replacement_ptr);
 
-      if (! pt_ptr->empty()) {
-        auto root_node = pt_ptr->begin();
-        auto& root_children = root_node->second;
-        if (! root_children.empty()) {
-          stack_.push(stack_data(pt_ptr, replacement_ptr, root_children));
-          extract_include_();
+      if (pt_ptr) {
+        ++(top.it);
+        collapse_();
+
+        if (! pt_ptr->empty()) {
+          auto root_node = pt_ptr->begin();
+          auto& root_children = root_node->second;
+          if (! root_children.empty()) {
+            stack_.push(stack_data(pt_ptr, replacement_ptr, root_children));
+            extract_include_();
+          }
         }
       }
     }

@@ -32,7 +32,7 @@ namespace pqrs {
           ptree_ptr ptree_ptr;
           pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
           read_xml_(ptree_ptr,
-                    xml_file_path(xml_file_path::base_directory::private_xml, "private.xml"),
+                    make_file_path(private_xml_directory_, "private.xml"),
                     dummy);
           if (ptree_ptr) {
             loader.traverse(make_extracted_ptree(*ptree_ptr));
@@ -43,7 +43,7 @@ namespace pqrs {
           ptree_ptr ptree_ptr;
           pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
           read_xml_(ptree_ptr,
-                    xml_file_path(xml_file_path::base_directory::system_xml,  "replacementdef.xml"),
+                    make_file_path(system_xml_directory_,  "replacementdef.xml"),
                     dummy);
           if (ptree_ptr) {
             loader.traverse(make_extracted_ptree(*ptree_ptr));
@@ -56,7 +56,7 @@ namespace pqrs {
 
       ptree_ptr private_xml_ptree_ptr;
       read_xml_(private_xml_ptree_ptr,
-                xml_file_path(xml_file_path::base_directory::private_xml, "private.xml"));
+                make_file_path(private_xml_directory_, "private.xml"));
       if (private_xml_ptree_ptr && private_xml_ptree_ptr->empty()) {
         private_xml_ptree_ptr.reset();
       }
@@ -99,11 +99,11 @@ namespace pqrs {
       {
         ptree_ptr checkbox_xml_ptree_ptr;
         read_xml_(checkbox_xml_ptree_ptr,
-                  xml_file_path(xml_file_path::base_directory::system_xml, "checkbox.xml"));
+                  make_file_path(system_xml_directory_, "checkbox.xml"));
 
         ptree_ptr number_xml_ptree_ptr;
         read_xml_(number_xml_ptree_ptr,
-                  xml_file_path(xml_file_path::base_directory::system_xml, "number.xml"));
+                  make_file_path(system_xml_directory_, "number.xml"));
 
         // remapclasses_initialize_vector
         {
@@ -150,28 +150,20 @@ namespace pqrs {
 
   void
   xml_compiler::read_xml_(ptree_ptr& out,
-                          const std::string& base_diretory,
-                          const std::string& relative_file_path,
+                          const std::string& file_path,
                           const pqrs::string::replacement& replacement) const
   {
     try {
       out.reset(new boost::property_tree::ptree());
 
-      std::string path;
-      if (boost::starts_with(relative_file_path, "/")) {
-        path = relative_file_path;
-      } else {
-        path = base_diretory + "/" + relative_file_path;
-      }
-
       std::string xml;
       if (replacement.empty()) {
-        pqrs::string::string_from_file(xml, path.c_str());
+        pqrs::string::string_from_file(xml, file_path.c_str());
       } else {
-        pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, path.c_str(), replacement);
+        pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, file_path.c_str(), replacement);
       }
       if (xml.empty()) {
-        error_information_.set(path + " is not found.");
+        error_information_.set(file_path + " is not found.");
         return;
       }
 
@@ -191,31 +183,9 @@ namespace pqrs {
       // <unspecified file>(4): expected element name
       //
       // So, we change "unspecified file" to file name by ourself.
-      boost::replace_first(what, "<unspecified file>", std::string("<") + relative_file_path + ">");
+      boost::replace_first(what, "<unspecified file>", std::string("<") + file_path + ">");
 
       error_information_.set(what);
-    }
-  }
-
-  void
-  xml_compiler::read_xml_(ptree_ptr& out,
-                          const xml_file_path& xml_file_path,
-                          const pqrs::string::replacement& replacement) const
-  {
-    switch (xml_file_path.get_base_directory()) {
-      case xml_file_path::base_directory::system_xml:
-        read_xml_(out,
-                  system_xml_directory_,
-                  xml_file_path.get_relative_path(),
-                  replacement);
-        break;
-
-      case xml_file_path::base_directory::private_xml:
-        read_xml_(out,
-                  private_xml_directory_,
-                  xml_file_path.get_relative_path(),
-                  replacement);
-        break;
     }
   }
 
