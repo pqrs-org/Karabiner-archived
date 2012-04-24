@@ -2,55 +2,53 @@
 <root>
   <item>
     <name>For Czech</name>
-    <list>
-      <item>
-        <name>Remap keyboard (symbol) shortcuts to standard Windows/Linux style</name>
-        <appendix></appendix>
-        <appendix>Remap keyboard shortcuts on czech keyboard layout to behave like in Windows with AltGr.</appendix>
-        <appendix>Recommended: remap your modifier keys under System Preferences-Keyboard-Modifier Keys</appendix>
-        <appendix>under Keyboard Tab</appendix>
-        <appendix>Notice: Disabled for X11 - you have to use xmodmap (use xev to get kb codes) under</appendix>
-        <appendix>xterm in X11</appendix>
-        <appendix></appendix>
-        <appendix>Control_R (AltGr) + V = @ ... Control_R (AltGr) + C = &amp;</appendix>
-        <appendix>Control_R (AltGr) + W = | ... Control_R (AltGr) + E = €</appendix>
-        <appendix>Control_R (AltGr) + B = { ... Control_R (AltGr) + N = }</appendix>
-        <appendix>Control_R (AltGr) + F = [ ... Control_R (AltGr) + G = ]</appendix>
-        <appendix>Control_R (AltGr) + ů = $ ... Control_R (AltGr) + X = #</appendix>
-        <appendix>Control_R (AltGr) + A = ~ ... Control_R (AltGr) + Q = \</appendix>
-        <appendix>Control_R (AltGr) + , = &lt; ... Control_R (AltGr) + . = &gt;</appendix>
-        <appendix>Control_R (AltGr) + - = * ... "key under esc" to ;</appendix>
-        <identifier>remap.czech_win_shortcuts</identifier>
-        <not>X11</not>
-        <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::CONTROL_R, KeyCode::DOT, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::CONTROL_R, KeyCode::COMMA, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::CONTROL_R, KeyCode::KEY_2, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::CONTROL_R, KeyCode::KEY_4, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::CONTROL_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::CONTROL_R, KeyCode::KEY_7, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::CONTROL_R, KeyCode::KEY_3, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_R, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::R, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::KEY_9, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::KEY_0, ModifierFlag::OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::CONTROL_R, KeyCode::RUSSIAN_TILDE, ModifierFlag::SHIFT_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::CONTROL_R, KeyCode::RUSSIAN_TILDE</autogen>
-        <!-- only on Internal Apple keyboard -->
-        <!-- because on Apple internal is swapped keycode with "key in front of Shift_L" and "key under escape" -->
-        <block>
-          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0237</device_only>
-          <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
-          <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
-        </block>
-        <!-- only on external keyboard -->
-        <block>
-          <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0237</device_not>
-          <autogen>--KeyToKey-- KeyCode::RUSSIAN_TILDE, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
-          <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::RUSSIAN_TILDE</autogen>
-        </block>
-      </item>
-    </list>
+    <item>
+      <name>Remap keyboard (symbol) shortcuts to standard Windows/Linux style</name>
+      <appendix></appendix>
+      <appendix>Remap keyboard shortcuts on czech keyboard layout to behave like in Windows with AltGr.</appendix>
+      <appendix>Recommended: remap your modifier keys under System Preferences-Keyboard-Modifier Keys</appendix>
+      <appendix>under Keyboard Tab</appendix>
+      <appendix>Notice: Disabled for X11 - you have to use xmodmap (use xev to get kb codes) under</appendix>
+      <appendix>xterm in X11</appendix>
+      <appendix></appendix>
+      <appendix>Control_R (AltGr) + V = @ ... Control_R (AltGr) + C = &amp;</appendix>
+      <appendix>Control_R (AltGr) + W = | ... Control_R (AltGr) + E = €</appendix>
+      <appendix>Control_R (AltGr) + B = { ... Control_R (AltGr) + N = }</appendix>
+      <appendix>Control_R (AltGr) + F = [ ... Control_R (AltGr) + G = ]</appendix>
+      <appendix>Control_R (AltGr) + ů = $ ... Control_R (AltGr) + X = #</appendix>
+      <appendix>Control_R (AltGr) + A = ~ ... Control_R (AltGr) + Q = \</appendix>
+      <appendix>Control_R (AltGr) + , = &lt; ... Control_R (AltGr) + . = &gt;</appendix>
+      <appendix>Control_R (AltGr) + - = * ... "key under esc" to ;</appendix>
+      <identifier>remap.czech_win_shortcuts</identifier>
+      <not>X11</not>
+      <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::CONTROL_R, KeyCode::DOT, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::CONTROL_R, KeyCode::COMMA, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::CONTROL_R, KeyCode::KEY_2, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::CONTROL_R, KeyCode::KEY_4, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::CONTROL_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::CONTROL_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::CONTROL_R, KeyCode::KEY_7, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::CONTROL_R, KeyCode::KEY_3, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::CONTROL_R, KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::CONTROL_R, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::CONTROL_R, KeyCode::R, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::CONTROL_R, KeyCode::KEY_9, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_R, KeyCode::KEY_0, ModifierFlag::OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::CONTROL_R, KeyCode::RUSSIAN_TILDE, ModifierFlag::SHIFT_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::CONTROL_R, KeyCode::RUSSIAN_TILDE</autogen>
+      <!-- only on Internal Apple keyboard -->
+      <!-- because on Apple internal is swapped keycode with "key in front of Shift_L" and "key under escape" -->
+      <block>
+        <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0237</device_only>
+        <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+        <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
+      </block>
+      <!-- only on external keyboard -->
+      <block>
+        <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0237</device_not>
+        <autogen>--KeyToKey-- KeyCode::RUSSIAN_TILDE, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
+        <autogen>--KeyToKey-- KeyCode::RUSSIAN_PARAGRAPH, KeyCode::RUSSIAN_TILDE</autogen>
+      </block>
+    </item>
   </item>
 </root>

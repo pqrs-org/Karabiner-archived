@@ -2,30 +2,28 @@
 <root>
   <item>
     <name>Pass Through Mode (Disable all settings temporarily)</name>
-    <list>
-      <item>
-        <!-- Pass Through Mode Core -->
-        <name>What is Pass Through Mode?</name>
-        <appendix>You can disable all settings temporarily.</appendix>
-        <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
-        <identifier vk_config="true">notsave.passthrough</identifier>
-        <autogen>--ShowStatusMessage-- Pass Through</autogen>
-      </item>
-      <item>
-        <name>Change Fn+Escape to toggle "Pass Through Mode"</name>
-        <identifier>passthrough.fnescape</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
-      </item>
-      <item>
-        <name>Simultaneous Key Presses [Escape+Tab] to toggle "Pass Through Mode"</name>
-        <identifier>passthrough.escapetab</identifier>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
-      </item>
-      <item>
-        <name>Holding Escape to toggle "Pass Through Mode"</name>
-        <identifier>passthrough.holding_escape</identifier>
-        <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::ESCAPE, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
-      </item>
-    </list>
+    <item>
+      <!-- Pass Through Mode Core -->
+      <name>What is Pass Through Mode?</name>
+      <appendix>You can disable all settings temporarily.</appendix>
+      <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
+      <identifier vk_config="true">notsave.passthrough</identifier>
+      <autogen>--ShowStatusMessage-- Pass Through</autogen>
+    </item>
+    <item>
+      <name>Change Fn+Escape to toggle "Pass Through Mode"</name>
+      <identifier>passthrough.fnescape</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+    </item>
+    <item>
+      <name>Simultaneous Key Presses [Escape+Tab] to toggle "Pass Through Mode"</name>
+      <identifier>passthrough.escapetab</identifier>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+    </item>
+    <item>
+      <name>Holding Escape to toggle "Pass Through Mode"</name>
+      <identifier>passthrough.holding_escape</identifier>
+      <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::ESCAPE, KeyCode::VK_NONE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+    </item>
   </item>
 </root>

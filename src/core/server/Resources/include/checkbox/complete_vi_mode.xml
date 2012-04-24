@@ -2,207 +2,203 @@
 <root>
   <item>
     <name>Complete Vi Mode</name>
-    <list>
+    <item>
+      <name>What's Complete Vi Mode?</name>
+      <appendix>You can use Vi style navigation on any applications when "Complete Vi Mode" is on.</appendix>
+      <appendix>Turn on a setting below, and toggle "Complete Vi Mode".</appendix>
+      <appendix></appendix>
+      <appendix>It is a list of the operation.</appendix>
+      <appendix>- hjkl to Left/Down/Up/Right</appendix>
+      <appendix>- b to Option_L+Left</appendix>
+      <appendix>- e to Option_L+Right</appendix>
+      <appendix>- w to Option_L+Right,Option_L+Right,Option_L+Left</appendix>
+      <appendix>- Control+F to PageDown</appendix>
+      <appendix>- Control+B to PageUp</appendix>
+      <appendix>- g to Home</appendix>
+      <appendix>- Shift+g to End</appendix>
+      <appendix>- 0 to Command_L+Left</appendix>
+      <appendix>- $ to Command_L+Right ($ == Shift+4)</appendix>
+      <appendix>- / to Command_L+F (+ turn off Vi Mode)</appendix>
+      <appendix>- n to Command_L+G</appendix>
+      <appendix>- x to Forward Delete</appendix>
+      <appendix>- Shift+x to Delete</appendix>
+      <appendix>- f to Fn</appendix>
+      <appendix>- i to turn off Vi Mode</appendix>
+      <identifier vk_config="true">notsave.complete_vimode</identifier>
+      <autogen>--ShowStatusMessage-- Vi Mode</autogen>
+      <block>
+        <config_not>option.complete_vimode_dvorak</config_not>
+        <!-- HJKL -->
+        <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+
+        <!-- 0, Shift+4 -->
+        <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- C-f, C-b -->
+        <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::PAGEUP</autogen>
+
+        <!-- B, E -->
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+
+        <!-- W -->
+        <autogen>--KeyToKey-- KeyCode::W, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+
+        <!-- G, Shift+G -->
+        <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::END</autogen>
+        <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
+
+        <!-- SLASH, N -->
+        <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
+        <autogen>--KeyToKey-- KeyCode::N, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- X -->
+        <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+
+        <!-- F, I -->
+        <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+      </block>
+      <block>
+        <config_only>option.complete_vimode_dvorak</config_only>
+        <!-- HJKL -->
+        <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::V, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::P, KeyCode::CURSOR_RIGHT</autogen>
+
+        <!-- 0, Shift+4 -->
+        <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- C-f, C-b -->
+        <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::PAGEUP</autogen>
+
+        <!-- B, E -->
+        <autogen>--KeyToKey-- KeyCode::N, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+
+        <!-- W -->
+        <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+
+        <!-- G, Shift+G -->
+        <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT, KeyCode::END</autogen>
+        <autogen>--KeyToKey-- KeyCode::U, KeyCode::HOME</autogen>
+
+        <!-- SLASH, N -->
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::Y, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
+
+        <!-- X -->
+        <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+
+        <!-- F, I -->
+        <autogen>--KeyToKey-- KeyCode::Y, KeyCode::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::G, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>Option</name>
       <item>
-        <name>What's Complete Vi Mode?</name>
-        <appendix>You can use Vi style navigation on any applications when "Complete Vi Mode" is on.</appendix>
-        <appendix>Turn on a setting below, and toggle "Complete Vi Mode".</appendix>
-        <appendix></appendix>
-        <appendix>It is a list of the operation.</appendix>
-        <appendix>- hjkl to Left/Down/Up/Right</appendix>
-        <appendix>- b to Option_L+Left</appendix>
-        <appendix>- e to Option_L+Right</appendix>
-        <appendix>- w to Option_L+Right,Option_L+Right,Option_L+Left</appendix>
-        <appendix>- Control+F to PageDown</appendix>
-        <appendix>- Control+B to PageUp</appendix>
-        <appendix>- g to Home</appendix>
-        <appendix>- Shift+g to End</appendix>
-        <appendix>- 0 to Command_L+Left</appendix>
-        <appendix>- $ to Command_L+Right ($ == Shift+4)</appendix>
-        <appendix>- / to Command_L+F (+ turn off Vi Mode)</appendix>
-        <appendix>- n to Command_L+G</appendix>
-        <appendix>- x to Forward Delete</appendix>
-        <appendix>- Shift+x to Delete</appendix>
-        <appendix>- f to Fn</appendix>
-        <appendix>- i to turn off Vi Mode</appendix>
-        <identifier vk_config="true">notsave.complete_vimode</identifier>
-        <autogen>--ShowStatusMessage-- Vi Mode</autogen>
-        <block>
-          <config_not>option.complete_vimode_dvorak</config_not>
-          <!-- HJKL -->
-          <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
-
-          <!-- 0, Shift+4 -->
-          <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-
-          <!-- C-f, C-b -->
-          <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::PAGEUP</autogen>
-
-          <!-- B, E -->
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::E, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
-
-          <!-- W -->
-          <autogen>--KeyToKey-- KeyCode::W, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-
-          <!-- G, Shift+G -->
-          <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::END</autogen>
-          <autogen>--KeyToKey-- KeyCode::G, KeyCode::HOME</autogen>
-
-          <!-- SLASH, N -->
-          <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
-
-          <!-- X -->
-          <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
-
-          <!-- F, I -->
-          <autogen>--KeyToKey-- KeyCode::F, KeyCode::FN</autogen>
-          <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        </block>
-        <block>
-          <config_only>option.complete_vimode_dvorak</config_only>
-          <!-- HJKL -->
-          <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::CURSOR_DOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::V, KeyCode::CURSOR_UP</autogen>
-          <autogen>--KeyToKey-- KeyCode::P, KeyCode::CURSOR_RIGHT</autogen>
-
-          <!-- 0, Shift+4 -->
-          <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
-
-          <!-- C-f, C-b -->
-          <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::PAGEUP</autogen>
-
-          <!-- B, E -->
-          <autogen>--KeyToKey-- KeyCode::N, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::D, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
-
-          <!-- W -->
-          <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-
-          <!-- G, Shift+G -->
-          <autogen>--KeyToKey-- KeyCode::U, VK_SHIFT, KeyCode::END</autogen>
-          <autogen>--KeyToKey-- KeyCode::U, KeyCode::HOME</autogen>
-
-          <!-- SLASH, N -->
-          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::Y, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
-          <autogen>--KeyToKey-- KeyCode::L, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
-
-          <!-- X -->
-          <autogen>--KeyToKey-- KeyCode::B, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
-
-          <!-- F, I -->
-          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::FN</autogen>
-          <autogen>--KeyToKey-- KeyCode::G, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        </block>
+        <name>Dvorak logical HJKL to navigate</name>
+        <identifier>option.complete_vimode_dvorak</identifier>
       </item>
+    </item>
 
-      <item>
-        <name>Option</name>
-        <list>
-          <item>
-            <name>Dvorak logical HJKL to navigate</name>
-            <identifier>option.complete_vimode_dvorak</identifier>
-          </item>
-        </list>
-      </item>
-
-      <item>
-        <name>Simultaneous Key Presses [Command_L+Command_R] to toggle Vi Mode</name>
-        <identifier>remap.vimode_toggle_commandLR</identifier>
-        <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Holding "V" Key to toggle Vi Mode</name>
-        <identifier>remap.vimode_holding_v</identifier>
-        <autogen>--HoldingKeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::V, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Arrow(Down/Left/Right) to Option_L</name>
-        <appendix>Disable Up-Arrow</appendix>
-        <appendix>(+ When you type Arrow only, toggle Vi Mode)</appendix>
-        <identifier>remap.vimode_toggle_arrow2optionL</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Backquote(`) to toggle Vi Mode (if no modifiers pressed)</name>
-        <identifier>option.vimode_turnoff_backquote</identifier>
-        <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Command_L to Command_L</name>
-        <appendix>(+ When you type Command_L only, toggle Vi Mode)</appendix>
-        <identifier>remap.vimode_toggle_commandL</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Command_R to Command_R</name>
-        <appendix>(+ When you type Command_R only, toggle Vi Mode)</appendix>
-        <identifier>remap.vimode_toggle_commandR</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Control_R to Control_R</name>
-        <appendix>(+ When you type Control_R only, toggle Vi Mode)</appendix>
-        <identifier>remap.vimode_toggle_controlR</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Escape to turn on Vi Mode</name>
-        <appendix>(except in Vim)</appendix>
-        <identifier>remap.vimode_turnon_escape</identifier>
-        <not>VI</not>
-        <config_not>notsave.complete_vimode</config_not>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Escape to turn off Vi Mode</name>
-        <appendix>(+ turn off Modifier Lock)</appendix>
-        <identifier>option.vimode_turnoff_escape</identifier>
-        <config_only>notsave.complete_vimode</config_only>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Return to Command_L+Control_L</name>
-        <appendix>(+ When you type Return only, toggle Vi Mode)</appendix>
-        <identifier>remap.vimode_toggle_return</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Fn to Fn</name>
-        <appendix>(+ When you type Fn only, toggle Vi Mode)</appendix>
-        <identifier>remap.vimode_toggle_fn2fn</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Option+V to toggle Vi Mode</name>
-        <identifier>option.vimode_toggle_optionV</identifier>
-        <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Option+V to turn on Vi Mode</name>
-        <identifier>option.vimode_turnon_optionV</identifier>
-        <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
-      </item>
-      <item>
-        <name>Disable Shift_L</name>
-        <appendix>(+ When you type Shift_L only, toggle Vi Mode)</appendix>
-        <identifier>remap.vimode_toggle_drop_shiftL</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Simultaneous Key Presses [Command_L+Command_R] to toggle Vi Mode</name>
+      <identifier>remap.vimode_toggle_commandLR</identifier>
+      <autogen>--SimultaneousKeyPresses-- KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Holding "V" Key to toggle Vi Mode</name>
+      <identifier>remap.vimode_holding_v</identifier>
+      <autogen>--HoldingKeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::V, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Arrow(Down/Left/Right) to Option_L</name>
+      <appendix>Disable Up-Arrow</appendix>
+      <appendix>(+ When you type Arrow only, toggle Vi Mode)</appendix>
+      <identifier>remap.vimode_toggle_arrow2optionL</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_UP,    KeyCode::VK_NONE,  KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_DOWN,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_LEFT,  KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Backquote(`) to toggle Vi Mode (if no modifiers pressed)</name>
+      <identifier>option.vimode_turnoff_backquote</identifier>
+      <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Command_L to Command_L</name>
+      <appendix>(+ When you type Command_L only, toggle Vi Mode)</appendix>
+      <identifier>remap.vimode_toggle_commandL</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Command_R to Command_R</name>
+      <appendix>(+ When you type Command_R only, toggle Vi Mode)</appendix>
+      <identifier>remap.vimode_toggle_commandR</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Control_R to Control_R</name>
+      <appendix>(+ When you type Control_R only, toggle Vi Mode)</appendix>
+      <identifier>remap.vimode_toggle_controlR</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Escape to turn on Vi Mode</name>
+      <appendix>(except in Vim)</appendix>
+      <identifier>remap.vimode_turnon_escape</identifier>
+      <not>VI</not>
+      <config_not>notsave.complete_vimode</config_not>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Escape to turn off Vi Mode</name>
+      <appendix>(+ turn off Modifier Lock)</appendix>
+      <identifier>option.vimode_turnoff_escape</identifier>
+      <config_only>notsave.complete_vimode</config_only>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Return to Command_L+Control_L</name>
+      <appendix>(+ When you type Return only, toggle Vi Mode)</appendix>
+      <identifier>remap.vimode_toggle_return</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::RETURN, KeyCode::CONTROL_L, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Fn to Fn</name>
+      <appendix>(+ When you type Fn only, toggle Vi Mode)</appendix>
+      <identifier>remap.vimode_toggle_fn2fn</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Option+V to toggle Vi Mode</name>
+      <identifier>option.vimode_toggle_optionV</identifier>
+      <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Option+V to turn on Vi Mode</name>
+      <identifier>option.vimode_turnon_optionV</identifier>
+      <autogen>--KeyToKey-- KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
+    </item>
+    <item>
+      <name>Disable Shift_L</name>
+      <appendix>(+ When you type Shift_L only, toggle Vi Mode)</appendix>
+      <identifier>remap.vimode_toggle_drop_shiftL</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
   </item>
 </root>

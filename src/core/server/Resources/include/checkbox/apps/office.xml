@@ -2,82 +2,76 @@
 <root>
   <item>
     <name>Enable at only Excel</name>
-    <list>
+    <item>
+      <name>Emacs bindings for Excel</name>
+      <identifier>remap.app_excel_emacs_bindings</identifier>
+      <only>EXCEL</only>
+      <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+      <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
+      <autogen>--KeyToKey-- KeyCode::RETURN, VK_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Windows-like operation</name>
+      <item><name>F2 key to Edit a cell --------------------------------------------</name></item>
       <item>
-        <name>Emacs bindings for Excel</name>
-        <identifier>remap.app_excel_emacs_bindings</identifier>
+        <name>Change Brightness Up to Ctrl+U</name>
+        <identifier>remap.app_excel_brightnessup_to_ctrlu</identifier>
         <only>EXCEL</only>
-        <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-        <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-        <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-        <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-        <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
-        <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
-        <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
-        <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
-        <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
-        <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
-        <autogen>--KeyToKey-- KeyCode::RETURN, VK_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
       </item>
       <item>
-        <name>Windows-like operation</name>
-        <list>
-          <item><name>F2 key to Edit a cell --------------------------------------------</name></item>
-          <item>
-            <name>Change Brightness Up to Ctrl+U</name>
-            <identifier>remap.app_excel_brightnessup_to_ctrlu</identifier>
-            <only>EXCEL</only>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-          </item>
-          <item>
-            <name>Change F2 to Ctrl+U</name>
-            <identifier>remap.app_excel_f2_to_ctrlu</identifier>
-            <only>EXCEL</only>
-            <autogen>--KeyToKey-- KeyCode::F2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::F2,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-          </item>
-          <item><name>F4 key to Repeat -------------------------------------------------</name></item>
-          <item>
-            <name>Change Launchpad to Command+Y</name>
-            <appendix>(+ Change Dashboard to Command+Y)</appendix>
-            <identifier>remap.app_excel_launchpad_to_commandLt</identifier>
-            <only>EXCEL</only>
-            <autogen>--KeyToKey-- KeyCode::LAUNCHPAD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::LAUNCHPAD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::DASHBOARD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::DASHBOARD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>Change F4 to Command+Y</name>
-            <identifier>remap.app_excel_f4_to_commandLt</identifier>
-            <only>EXCEL</only>
-            <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::F4,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item><name>Others------------------------------------------------------------</name></item>
-          <item>
-            <name>Control+Shift+Plus (Insert Row)</name>
-            <appendix>(Change Control+Shift+Plus to Control+i)</appendix>
-            <identifier>remap.app_excel_control_shift_plus</identifier>
-            <only>EXCEL</only>
-            <autogen>--KeyToKey-- KeyCode::EQUAL, VK_CONTROL | VK_SHIFT | ModifierFlag::NONE, KeyCode::I, VK_CONTROL</autogen>
-          </item>
-        </list>
+        <name>Change F2 to Ctrl+U</name>
+        <identifier>remap.app_excel_f2_to_ctrlu</identifier>
+        <only>EXCEL</only>
+        <autogen>--KeyToKey-- KeyCode::F2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F2,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
       </item>
-    </list>
+      <item><name>F4 key to Repeat -------------------------------------------------</name></item>
+      <item>
+        <name>Change Launchpad to Command+Y</name>
+        <appendix>(+ Change Dashboard to Command+Y)</appendix>
+        <identifier>remap.app_excel_launchpad_to_commandLt</identifier>
+        <only>EXCEL</only>
+        <autogen>--KeyToKey-- KeyCode::LAUNCHPAD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::LAUNCHPAD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::DASHBOARD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::DASHBOARD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Change F4 to Command+Y</name>
+        <identifier>remap.app_excel_f4_to_commandLt</identifier>
+        <only>EXCEL</only>
+        <autogen>--KeyToKey-- KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F4,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item><name>Others------------------------------------------------------------</name></item>
+      <item>
+        <name>Control+Shift+Plus (Insert Row)</name>
+        <appendix>(Change Control+Shift+Plus to Control+i)</appendix>
+        <identifier>remap.app_excel_control_shift_plus</identifier>
+        <only>EXCEL</only>
+        <autogen>--KeyToKey-- KeyCode::EQUAL, VK_CONTROL | VK_SHIFT | ModifierFlag::NONE, KeyCode::I, VK_CONTROL</autogen>
+      </item>
+    </item>
   </item>
   <item>
     <name>Enable at only Entourage</name>
-    <list>
-      <item>
-        <name>Change PageUp/PageDown to Option+Up/Down</name>
-        <identifier>remap.app_entourage_pageupdown_to_optionupdown</identifier>
-        <only>ENTOURAGE</only>
-        <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Change PageUp/PageDown to Option+Up/Down</name>
+      <identifier>remap.app_entourage_pageupdown_to_optionupdown</identifier>
+      <only>ENTOURAGE</only>
+      <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
+    </item>
   </item>
 </root>

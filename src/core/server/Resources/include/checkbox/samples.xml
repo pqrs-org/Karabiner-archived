@@ -2,981 +2,927 @@
 <root>
   <item>
     <name>Samples for KeyRemap4MacBook Developer</name>
-    <list>
+    <item>
+      <name>SetKeyboardType</name>
       <item>
-        <name>SetKeyboardType</name>
-        <list>
-          <item>
-            <name>Set keyboardType = KeyboardType::MACBOOK</name>
-            <identifier>remap.samples_setkeyboardtype_macbook</identifier>
-            <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
-          </item>
-          <item>
-            <name>Set keyboardType = KeyboardType::MACBOOK_3_1</name>
-            <identifier>remap.samples_setkeyboardtype_macbook_3_1</identifier>
-            <autogen>--SetKeyboardType-- KeyboardType::MACBOOK_3_1</autogen>
-          </item>
-          <item>
-            <name>Set keyboardType = KeyboardType::JIS_MACBOOK_2008</name>
-            <identifier>remap.samples_setkeyboardtype_jis_macbook_2008</identifier>
-            <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
-          </item>
-        </list>
+        <name>Set keyboardType = KeyboardType::MACBOOK</name>
+        <identifier>remap.samples_setkeyboardtype_macbook</identifier>
+        <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
       </item>
       <item>
-        <name>Pass Through Mode</name>
-        <list>
-          <item>
-            <name>Core</name>
-            <appendix>Change A to toggle "Pass Through Mode"</appendix>
-            <identifier>passthrough.samples</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
-          </item>
-          <item>
-            <name>Samples</name>
-            <appendix>B to C</appendix>
-            <appendix>Volume Mute to A</appendix>
-            <appendix>RightClick+CursorMove to ScrollWheel</appendix>
-            <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
-            <identifier>remap.samples_passthrough</identifier>
-            <autogen>--ShowStatusMessage-- Samples</autogen>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::C</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
-            <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
-          </item>
-        </list>
+        <name>Set keyboardType = KeyboardType::MACBOOK_3_1</name>
+        <identifier>remap.samples_setkeyboardtype_macbook_3_1</identifier>
+        <autogen>--SetKeyboardType-- KeyboardType::MACBOOK_3_1</autogen>
+      </item>
+      <item>
+        <name>Set keyboardType = KeyboardType::JIS_MACBOOK_2008</name>
+        <identifier>remap.samples_setkeyboardtype_jis_macbook_2008</identifier>
+        <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
+      </item>
+    </item>
+    <item>
+      <name>Pass Through Mode</name>
+      <item>
+        <name>Core</name>
+        <appendix>Change A to toggle "Pass Through Mode"</appendix>
+        <identifier>passthrough.samples</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+      </item>
+      <item>
+        <name>Samples</name>
+        <appendix>B to C</appendix>
+        <appendix>Volume Mute to A</appendix>
+        <appendix>RightClick+CursorMove to ScrollWheel</appendix>
+        <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
+        <identifier>remap.samples_passthrough</identifier>
+        <autogen>--ShowStatusMessage-- Samples</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::C</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
+        <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>ShowStatusMessage</name>
+      <item>
+        <name>Sample1</name>
+        <identifier>remap.samples_showstatusmessage_sample1</identifier>
+        <autogen>--ShowStatusMessage-- Sample1</autogen>
+      </item>
+      <item>
+        <name>Sample2</name>
+        <identifier>remap.samples_showstatusmessage_sample2</identifier>
+        <autogen>--ShowStatusMessage-- Sample2</autogen>
+      </item>
+      <item>
+        <name>(Empty)</name>
+        <identifier>remap.samples_showstatusmessage_empty</identifier>
+        <autogen>--ShowStatusMessage--</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>KeyToKey</name>
+      <item>
+        <name>Standard</name>
+        <appendix>A to B (KeyToKey)</appendix>
+        <appendix>S to SHIFT_L (KeyToModifier)</appendix>
+        <appendix>SHIFT_L to Return (ModifierToKey)</appendix>
+        <appendix>Option_L to Command_L</appendix>
+        <identifier>remap.samples_keytokey_standard</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
+        <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
       </item>
 
       <item>
-        <name>ShowStatusMessage</name>
-        <list>
-          <item>
-            <name>Sample1</name>
-            <identifier>remap.samples_showstatusmessage_sample1</identifier>
-            <autogen>--ShowStatusMessage-- Sample1</autogen>
-          </item>
-          <item>
-            <name>Sample2</name>
-            <identifier>remap.samples_showstatusmessage_sample2</identifier>
-            <autogen>--ShowStatusMessage-- Sample2</autogen>
-          </item>
-          <item>
-            <name>(Empty)</name>
-            <identifier>remap.samples_showstatusmessage_empty</identifier>
-            <autogen>--ShowStatusMessage--</autogen>
-          </item>
-        </list>
+        <name>VK_SHIFT is alias to ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R</name>
+        <appendix>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</appendix>
+        <appendix>==&gt; --KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</appendix>
+        <appendix>==&gt; --KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::B</appendix>
+        <appendix></appendix>
+        <appendix>Multiple VK_* in one definition are replaced same value.</appendix>
+        <appendix>--KeyToKey-- KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</appendix>
+        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L</appendix>
+        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_R</appendix>
+        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_L</appendix>
+        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_R</appendix>
+        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L</appendix>
+        <appendix>==&gt; ...</appendix>
+        <identifier>remap.samples_keytokey_vk_modifier</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</autogen>
       </item>
 
+      <item>
+        <name>Key To XXX</name>
+        <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
+        <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
+        <appendix>S to Shift_L+Shift_R</appendix>
+        <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
+        <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
+        <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
+        <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
+        <appendix>G to CapsLock (To CapsLock)</appendix>
+        <appendix>Shift+Control+H to Option_L+Space</appendix>
+        <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
+        <appendix>1 to A (only if no Modifiers)</appendix>
+        <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
+        <identifier>remap.samples_keytokey_key2xxx</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_R, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::SPACE</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK</autogen>
+        <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL | VK_SHIFT, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::A</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
+      </item>
+
+      <item>
+        <name>Key To XXX(2)</name>
+        <appendix>Option+A to Command_L+Shift_L+Tab</appendix>
+        <appendix>Option+S to Command_L+Tab</appendix>
+        <identifier>remap.samples_keytokey_key2xxx_2</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+      </item>
+
+      <item>
+        <name>Key To XXX(3)</name>
+        <appendix>A to CapsLock</appendix>
+        <appendix>CapsLock+S to Shift_L+1</appendix>
+        <appendix>CapsLock+O to Option_L+2</appendix>
+        <appendix>CapsLock+C to Command_L+3</appendix>
+        <appendix></appendix>
+        <appendix>Change Shift_L key to turning CapsLock off</appendix>
+        <appendix>(Retain Shift_L movement when CapsLock is off)</appendix>
+        <appendix></appendix>
+        <appendix>Change Shift_R key to turning CapsLock off</appendix>
+        <appendix>(Retain Shift_R movement at all times)</appendix>
+        <identifier>remap.samples_keytokey_key2xxx_3</identifier>
+        <autogen>--KeyToKey-- KeyCode::A,                               KeyCode::CAPSLOCK</autogen>
+        <autogen>--KeyToKey-- KeyCode::S,       ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::O,       ModifierFlag::CAPSLOCK, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C,       ModifierFlag::CAPSLOCK, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::CAPSLOCK, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
+        <block>
+          <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
+        </block>
+      </item>
+
+      <item>
+        <name>Key To XXX(4)</name>
+        <appendix>A to Shift_L</appendix>
+        <appendix>Shift_L+A to B</appendix>
+        <identifier>remap.samples_keytokey_key2xxx_4</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::A,                        KeyCode::SHIFT_L</autogen>
+      </item>
+
+      <item>
+        <name>Modifier To XXX</name>
+        <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
+        <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
+        <identifier>remap.samples_keytokey_modifier2xxx</identifier>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
+      </item>
+
+      <item>
+        <name>Modifier To XXX(2)</name>
+        <appendix>Shift_L to Shift_L (if no other modifiers pressed)</appendix>
+        <appendix>Shift_L to Command_L</appendix>
+        <appendix>Shift+A to B</appendix>
+        <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
+        <appendix>Command_L+Command_R to Command_L+Command_R (if no other modifiers pressed)</appendix>
+        <appendix>Command_L+Command_R+A to B</appendix>
+        <appendix>Command_R to Option_R</appendix>
+        <identifier>remap.samples_keytokey_modifier2xxx_2</identifier>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+      </item>
+
+      <item>
+        <name>Modifier To XXX(3)</name>
+        <appendix>Shift_R to A</appendix>
+        <appendix>Shift_L+Shift_R to B</appendix>
+        <appendix>Command_R to A</appendix>
+        <appendix>Command_L+Command_R to B</appendix>
+        <identifier>remap.samples_keytokey_modifier2xxx_3</identifier>
+        <!-- including self modifier (ModifierFlag::SHIFT_R) -->
+        <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::A</autogen>
+        <!-- excluding self modifier (ModifierFlag::COMMAND_R) -->
+        <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::B</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::A</autogen>
+      </item>
+
+      <item>
+        <name>Combination</name>
+        <appendix>A to B,C (Standard)</appendix>
+        <appendix>B to A,B,Shift_L+C,D,Control_L+P (Key To)</appendix>
+        <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
+        <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
+        <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
+        <appendix>E to Type "http://pqrs.org/macosx/keyremap4macbook/"</appendix>
+        <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
+        <appendix>G to Option_L,Shift_L,A,S</appendix>
+        <appendix></appendix>
+        <appendix>H to A,KeyCode::VK_NONE</appendix>
+        <appendix>(KeyDown and KeyUp will be fired at the same time when H key is pressed)</appendix>
+        <identifier>remap.samples_keytokey_combination</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::H, KeyCode::T, KeyCode::T, KeyCode::P, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L, KeyCode::SLASH, KeyCode::SLASH, KeyCode::P, KeyCode::Q, KeyCode::R, KeyCode::S, KeyCode::DOT, KeyCode::O, KeyCode::R, KeyCode::G, KeyCode::SLASH, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::O, KeyCode::S, KeyCode::X, KeyCode::SLASH, KeyCode::K, KeyCode::E, KeyCode::Y, KeyCode::R, KeyCode::E, KeyCode::M, KeyCode::A, KeyCode::P, KeyCode::KEY_4, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::B, KeyCode::O, KeyCode::O, KeyCode::K, KeyCode::SLASH</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::CAPSLOCK</autogen>
+        <autogen>--KeyToKey-- KeyCode::G, KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::A, KeyCode::S</autogen>
+        <autogen>--KeyToKey-- KeyCode::H, KeyCode::A, KeyCode::VK_NONE</autogen>
+      </item>
+
+      <item>
+        <name>Combination (2)</name>
+        <appendix>A to A,S,Shift_L (Shift_L is active while we're pressing A key)</appendix>
+        <appendix>Shift_R to A,S,Control_L (Control_L is active while we're pressing Shift_R key)</appendix>
+        <appendix>Command+B to A,S,Shift_L (Shift_L is active while we're pressing B key)</appendix>
+        <appendix>Control_L+Option_L to A,S,Shift_L (Shift_L is active while we're pressing Option_L key)</appendix>
+        <identifier>remap.samples_keytokey_combination1</identifier>
+        <autogen>--KeyToKey-- KeyCode::A,                                 KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_R,                           KeyCode::A, KeyCode::S, KeyCode::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::B,        VK_COMMAND,              KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
+      </item>
+
+      <item>
+        <name>Combination(3)</name>
+        <appendix>Shift_L to A,Shift_L+S,D (if no other modifiers pressed)</appendix>
+        <identifier>remap.samples_keytokey_combination_3</identifier>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+      </item>
+
+      <item>
+        <name>Combination(4)</name>
+        <appendix>A to CapsLock,A,S</appendix>
+        <appendix>// This has a issue with key repeat.</appendix>
+        <appendix>// In key repeat, CapsLock status is not changed.</appendix>
+        <identifier>remap.samples_keytokey_combination_4</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S</autogen>
+      </item>
+
+      <item>
+        <name>NoRepeat</name>
+        <appendix>1 to A (with Option::NOREPEAT)</appendix>
+        <appendix>2 to A,B,C (with Option::NOREPEAT)</appendix>
+        <appendix>3 to Shift_L (with Option::NOREPEAT)</appendix>
+        <identifier>remap.samples_keytokey_norepeat</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, Option::NOREPEAT</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::B, KeyCode::C, Option::NOREPEAT</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::SHIFT_L, Option::NOREPEAT</autogen>
+      </item>
+
+      <item>
+        <name>BeforeKeyDown, AfterKeyUp</name>
+        <appendix>1 to A (BeforeKeyDown Return, AfterKeyUp Tab)</appendix>
+        <appendix>Shift_R to A (BeforeKeyDown Control+B,C AfterKeyUp Option+D,E)</appendix>
+        <appendix></appendix>
+        <appendix>Control_L+2 to Control+Option+A</appendix>
+        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,E,Control+F)</appendix>
+        <appendix></appendix>
+        <appendix>Control_L+Shift_L to A,B</appendix>
+        <appendix>(BeforeKeyDown C AfterKeyUp D)</appendix>
+        <appendix></appendix>
+        <appendix>Change Input Source while pressing right option key.</appendix>
+        <appendix>(Sending Command+Space when pressing/releasing right option key.)</appendix>
+        <identifier>remap.samples_keytokey_beforekeydown</identifier>
+        <autogen>--KeyToKey--
+          KeyCode::KEY_1, KeyCode::A,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::RETURN,
+          Option::KEYTOKEY_AFTER_KEYUP, KeyCode::TAB
+        </autogen>
+        <autogen>--KeyToKey--
+          KeyCode::SHIFT_R, KeyCode::A,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C,
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L,  KeyCode::E
+        </autogen>
+        <autogen>--KeyToKey--
+          KeyCode::KEY_2, ModifierFlag::CONTROL_L, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::SHIFT_R,  KeyCode::C,
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L
+        </autogen>
+        <autogen>--KeyToKey--
+          KeyCode::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::B,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D
+        </autogen>
+        <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
+        <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::VK_NONE,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
+        </autogen>
+      </item>
+
+      <item>
+        <name>Apply from the top sequentially.</name>
+        <appendix>1 to A</appendix>
+        <appendix>1 to B (skipped)</appendix>
+        <appendix>2 to B </appendix>
+        <appendix>2 to C (skipped)</appendix>
+        <identifier>remap.samples_keytokey_apply_from_to_top</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A</autogen>
+        <block>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::B</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::B</autogen>
+        </block>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::C</autogen>
+      </item>
+
+      <item>
+        <name>Apply from the top sequentially (&lt;list&gt; and &lt;item&gt;)</name>
+        <appendix>(Turn on all settings. The settings labeled "skipped" will be ignored.)</appendix>
+        <item>
+          <name>1 to A</name>
+          <identifier>remap.samples_keytokey_apply_from_to_top_item1</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A</autogen>
+        </item>
+        <item>
+          <name>list</name>
+          <item>
+            <name>1 to B (skipped)</name>
+            <identifier>remap.samples_keytokey_apply_from_to_top_item2</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::B</autogen>
+          </item>
+          <item>
+            <name>2 to B</name>
+            <identifier>remap.samples_keytokey_apply_from_to_top_item3</identifier>
+            <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::B</autogen>
+          </item>
+        </item>
+        <item>
+          <name>2 to C (skipped)</name>
+          <identifier>remap.samples_keytokey_apply_from_to_top_item4</identifier>
+          <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::C</autogen>
+        </item>
+      </item>
+    </item>
+
+    <item>
+      <name>KeyToConsumer</name>
+      <item>
+        <name>Standard</name>
+        <appendix>A to Volume Mute</appendix>
+        <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
+        <appendix>Shift_L to Volume Mute (Modifier To)</appendix>
+        <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
+        <appendix>D to Volume Up, Brightness Up</appendix>
+        <identifier>remap.samples_keytoconsumer</identifier>
+        <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>--KeyToConsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>--KeyToConsumer-- KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>--KeyToConsumer-- KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
+        <autogen>--KeyToConsumer-- KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      </item>
+      <item>
+        <name>NoRepeat</name>
+        <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
+        <appendix>S to Volume Up</appendix>
+        <identifier>remap.samples_keytoconsumer_norepeat</identifier>
+        <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
+        <autogen>--KeyToConsumer-- KeyCode::S, ConsumerKeyCode::VOLUME_UP</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>ConsumerToKey</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Command+Volume Down to A,S,Shift_L+D,Control_L+F,G</appendix>
+        <appendix>Volume Down to A</appendix>
+        <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
+        <appendix>Shift+Volume Up to B (with Modifier)</appendix>
+        <appendix>Volume Up to Control_L (to Modifier)</appendix>
+        <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
+        <appendix>NumLock to A</appendix>
+        <!-- Note: -->
+        <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
+        <!-- Therefore we cannot change NumLock to Modifier -->
+        <identifier>remap.samples_consumertokey</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+      </item>
+      <item>
+        <name>NoRepeat</name>
+        <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
+        <identifier>remap.samples_consumertokey_norepeat</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>ConsumerToConsumer</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Volume Down to Volume Mute</appendix>
+        <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
+        <appendix>NumLock to Volume Mute</appendix>
+        <identifier>remap.samples_consumertoconsumer</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      </item>
+      <item>
+        <name>Standard(2)</name>
+        <appendix>Volume Mute to Volume Up</appendix>
+        <identifier>remap.samples_consumertoconsumer_2</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
+      </item>
+      <item>
+        <name>Combination</name>
+        <appendix>Volume Mute to Volume Up,Brightness Up</appendix>
+        <identifier>remap.samples_consumertoconsumer_combination</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      </item>
+      <item>
+        <name>NoRepeat</name>
+        <appendix>Volume Mute to Volume Down (with NoRepeat)</appendix>
+        <appendix>Volume Down to Volume Up,Brightness Up (with NoRepeat)</appendix>
+        <identifier>remap.samples_consumertoconsumer_norepeat</identifier>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP, Option::NOREPEAT</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>KeyOverlaidModifier</name>
+      <item>
+        <name>Standard</name>
+        <appendix>A to Shift_L (When type only, send Space) (Standard)</appendix>
+        <appendix>Option_L to Shift_L (When type only, send Space) (Modifier)</appendix>
+        <appendix>Control+B to Shift_L (When type only, send Space) (Key+Modifier)</appendix>
+        <appendix>C to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
+        <appendix>Command+D to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
+        <appendix>E to KeyCode::VK_NONE</appendix>
+        <appendix>F to Shift_L (When type only, send CapsLock)</appendix>
+        <appendix>G to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B)</appendix>
+        <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
+        <appendix>I to Shift_L (When type only, send Option_L)</appendix>
+        <appendix>J to Shift_L+Option_L (When type only, send Space)</appendix>
+        <appendix>Command_R to Shift_L (When type only without other modifiers, send Space)</appendix>
+        <identifier>remap.samples_keyoverlaidmodifier</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::B, VK_CONTROL, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::C, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::D, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+        <autogen>--KeyOverlaidModifier--           KeyCode::G, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::H, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::I, KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::J, KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      </item>
+      <item>
+        <name>Standard2</name>
+        <appendix>A to Shift_L (Without other modifiers) (When type only, send Space)</appendix>
+        <appendix>Command_R to Command_R (When type only without other modifiers, send Space)</appendix>
+        <identifier>remap.samples_keyoverlaidmodifier2</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::A, ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, KeyCode::SPACE</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>HoldingKeyToKey</name>
+      <item>
+        <name>Standard</name>
+        <identifier>remap.samples_holdingkeytokey</identifier>
+        <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
+        <appendix>Tab to A,S,Control_L+D,F (+ Holding Tab to Q,W,Shift_L+E,R)</appendix>
+        <appendix>Option+Shift_R to Return (+ Holding Option+Shift_R to Space)</appendix>
+        <appendix>Shift+A to Option_L+B (+ Holding Shift+A to Command_L+Return)</appendix>
+        <appendix>Control+B to Option_L+B,C (+ Holding Control+B to Space)</appendix>
+        <appendix>C to Space (+ Holding C to Shift_L)</appendix>
+        <appendix>D to Shift_L (+ Holding D to Option_L)</appendix>
+        <appendix>Shift+E to Control_L (+ Holding Shift+E to Option_L)</appendix>
+        <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
+        <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::VK_NONE, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::C, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::SHIFT_L</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::D, KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::CONTROL_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>with ModifierFlag::NONE</name>
+        <appendix>Escape to Tab (without any modifiers) (+ Holding Escape to Space)</appendix>
+        <appendix>Shift_R to Return (without other modifiers) (+ Holding Shift_R to Space)</appendix>
+        <identifier>remap.samples_holdingkeytokey_modifierflag_none</identifier>
+        <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+      </item>
+      <item>
+        <name>NoRepeat</name>
+        <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
+        <identifier>remap.samples_holdingkeytokey_norepeat</identifier>
+        <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE, Option::NOREPEAT</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>DoublePressModifier</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Shift_L x2 to RETURN</appendix>
+        <appendix>(A to Control_L) + (A x2 to Shift_L+RETURN)</appendix>
+        <appendix>(Shift+B to Control_L+Option_L) + (Shift+B x2 to A,S,Command_L+D)</appendix>
+        <appendix>(C to KeyCode::VK_NONE) + (C x2 to SPACE)</appendix>
+        <identifier>remap.samples_doublepressmodifier</identifier>
+        <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::A, KeyCode::CONTROL_L, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::B, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+      </item>
+      <item>
+        <name>Extra</name>
+        <appendix>KEY_0 x3 to Equal(=)</appendix>
+        <appendix>(retain KEY_0)</appendix>
+        <identifier>remap.samples_doublepressmodifier_extra</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::EXTRA1, KeyCode::EQUAL</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::KEY_0, KeyCode::KEY_0, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>DropKeyAfterRemap</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Drop Tab</appendix>
+        <appendix>Drop Shift+Return</appendix>
+        <appendix>Change A to Tab (== dropped)</appendix>
+        <appendix>Change B to Shift_L+Return (== dropped)</appendix>
+        <identifier>remap.samples_dropkeyafterremap</identifier>
+        <autogen>--DropKeyAfterRemap-- KeyCode::TAB</autogen>
+        <autogen>--DropKeyAfterRemap-- KeyCode::RETURN, VK_SHIFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::TAB</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>DropPointingRelativeCursorMove</name>
+      <item>
+        <name>Standard</name>
+        <appendix>A to toggle DropPointingRelativeCursorMove</appendix>
+        <identifier>remap.samples_droppointingrelativecursormove_config</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_remap_samples_droppointingrelativecursormove</autogen>
+      </item>
+      <item>
+        <name>Core</name>
+        <appendix>(You need enable above setting.)</appendix>
+        <identifier vk_config="true">remap.samples_droppointingrelativecursormove</identifier>
+        <config_only>remap.samples_droppointingrelativecursormove_config</config_only>
+        <autogen>--ShowStatusMessage-- DropCursorMove</autogen>
+        <autogen>--DropPointingRelativeCursorMove--</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>DropScrollWheel</name>
+      <item>
+        <appendix>Drop ScrollWheel at Emacs</appendix>
+        <identifier>remap.samples_dropscrollwheel</identifier>
+        <only>EMACS</only>
+        <autogen>--DropScrollWheel--</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>IgnoreMultipleSameKeyPress</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Ignore the multiple press of 'A'</appendix>
+        <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
+        <appendix>Ignore the multiple press of 'Shift+Option+C' (with Modifier)</appendix>
+        <identifier>remap.samples_ignoremultiplesamekeypress</identifier>
+        <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A</autogen>
+        <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::B, VK_SHIFT</autogen>
+        <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::C, VK_SHIFT | VK_OPTION</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>StripModifierFromScrollWheel</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Shift_L+ScrollWheel to ScrollWheel (strip Shift)</appendix>
+        <appendix>Option+ScrollWheel to ScrollWheel (strip Option)</appendix>
+        <identifier>remap.samples_stripmodifierfromscrollwheel</identifier>
+        <autogen>--StripModifierFromScrollWheel-- ModifierFlag::SHIFT_L</autogen>
+        <autogen>--StripModifierFromScrollWheel-- VK_OPTION</autogen>
+      </item>
+      <item>
+        <name>VK_MOD_ANY</name>
+        <appendix>Any Modifiers+ScrollWheel to ScrollWheel (strip Any Modifiers)</appendix>
+        <identifier>remap.samples_stripmodifierfromscrollwheel_any</identifier>
+        <autogen>--StripModifierFromScrollWheel-- VK_MOD_ANY</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>ScrollWheelToScrollWheel</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Shift_L+ScrollWheel to Control_L+ScrollWheel</appendix>
+        <identifier>remap.samples_ScrollWheelToScrollWheel</identifier>
+        <autogen>--ScrollWheelToScrollWheel-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>ScrollWheelToKey</name>
+      <item>
+        <name>Standard</name>
+        <appendix>ScrollWheel to Left/Right</appendix>
+        <appendix>Shift+ScrollWheel to Option+Up/Down/Left/Right</appendix>
+        <identifier>remap.samples_ScrollWheelToKey</identifier>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+
+        <autogen>--ScrollWheelToKey-- ScrollWheel::UP,    VK_SHIFT, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN,  VK_SHIFT, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  VK_SHIFT, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>SimultaneousKeyPresses</name>
       <item>
         <name>KeyToKey</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>A to B (KeyToKey)</appendix>
-            <appendix>S to SHIFT_L (KeyToModifier)</appendix>
-            <appendix>SHIFT_L to Return (ModifierToKey)</appendix>
-            <appendix>Option_L to Command_L</appendix>
-            <identifier>remap.samples_keytokey_standard</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
-            <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-          </item>
-
-          <item>
-            <name>VK_SHIFT is alias to ModifierFlag::SHIFT_L, ModifierFlag::SHIFT_R</name>
-            <appendix>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</appendix>
-            <appendix>==&gt; --KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</appendix>
-            <appendix>==&gt; --KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::B</appendix>
-            <appendix></appendix>
-            <appendix>Multiple VK_* in one definition are replaced same value.</appendix>
-            <appendix>--KeyToKey-- KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</appendix>
-            <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L</appendix>
-            <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_R</appendix>
-            <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_L</appendix>
-            <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_R</appendix>
-            <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L</appendix>
-            <appendix>==&gt; ...</appendix>
-            <identifier>remap.samples_keytokey_vk_modifier</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</autogen>
-            <autogen>--KeyToKey-- KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</autogen>
-          </item>
-
-          <item>
-            <name>Key To XXX</name>
-            <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
-            <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
-            <appendix>S to Shift_L+Shift_R</appendix>
-            <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
-            <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
-            <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
-            <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
-            <appendix>G to CapsLock (To CapsLock)</appendix>
-            <appendix>Shift+Control+H to Option_L+Space</appendix>
-            <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
-            <appendix>1 to A (only if no Modifiers)</appendix>
-            <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
-            <identifier>remap.samples_keytokey_key2xxx</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, KeyCode::SHIFT_R, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::SPACE</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::G, KeyCode::CAPSLOCK</autogen>
-            <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL | VK_SHIFT, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
-            <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
-            <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::A</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
-          </item>
-
-          <item>
-            <name>Key To XXX(2)</name>
-            <appendix>Option+A to Command_L+Shift_L+Tab</appendix>
-            <appendix>Option+S to Command_L+Tab</appendix>
-            <identifier>remap.samples_keytokey_key2xxx_2</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-          </item>
-
-          <item>
-            <name>Key To XXX(3)</name>
-            <appendix>A to CapsLock</appendix>
-            <appendix>CapsLock+S to Shift_L+1</appendix>
-            <appendix>CapsLock+O to Option_L+2</appendix>
-            <appendix>CapsLock+C to Command_L+3</appendix>
-            <appendix></appendix>
-            <appendix>Change Shift_L key to turning CapsLock off</appendix>
-            <appendix>(Retain Shift_L movement when CapsLock is off)</appendix>
-            <appendix></appendix>
-            <appendix>Change Shift_R key to turning CapsLock off</appendix>
-            <appendix>(Retain Shift_R movement at all times)</appendix>
-            <identifier>remap.samples_keytokey_key2xxx_3</identifier>
-            <autogen>--KeyToKey-- KeyCode::A,                               KeyCode::CAPSLOCK</autogen>
-            <autogen>--KeyToKey-- KeyCode::S,       ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::O,       ModifierFlag::CAPSLOCK, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C,       ModifierFlag::CAPSLOCK, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::CAPSLOCK, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
-            <block>
-              <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
-              <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
-            </block>
-          </item>
-
-          <item>
-            <name>Key To XXX(4)</name>
-            <appendix>A to Shift_L</appendix>
-            <appendix>Shift_L+A to B</appendix>
-            <identifier>remap.samples_keytokey_key2xxx_4</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</autogen>
-            <autogen>--KeyToKey-- KeyCode::A,                        KeyCode::SHIFT_L</autogen>
-          </item>
-
-          <item>
-            <name>Modifier To XXX</name>
-            <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
-            <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
-            <identifier>remap.samples_keytokey_modifier2xxx</identifier>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::FN, KeyCode::COMMAND_L</autogen>
-          </item>
-
-          <item>
-            <name>Modifier To XXX(2)</name>
-            <appendix>Shift_L to Shift_L (if no other modifiers pressed)</appendix>
-            <appendix>Shift_L to Command_L</appendix>
-            <appendix>Shift+A to B</appendix>
-            <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
-            <appendix>Command_L+Command_R to Command_L+Command_R (if no other modifiers pressed)</appendix>
-            <appendix>Command_L+Command_R+A to B</appendix>
-            <appendix>Command_R to Option_R</appendix>
-            <identifier>remap.samples_keytokey_modifier2xxx_2</identifier>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R</autogen>
-            <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::B</autogen>
-            <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
-          </item>
-
-          <item>
-            <name>Modifier To XXX(3)</name>
-            <appendix>Shift_R to A</appendix>
-            <appendix>Shift_L+Shift_R to B</appendix>
-            <appendix>Command_R to A</appendix>
-            <appendix>Command_L+Command_R to B</appendix>
-            <identifier>remap.samples_keytokey_modifier2xxx_3</identifier>
-            <!-- including self modifier (ModifierFlag::SHIFT_R) -->
-            <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::B</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::A</autogen>
-            <!-- excluding self modifier (ModifierFlag::COMMAND_R) -->
-            <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::B</autogen>
-            <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::A</autogen>
-          </item>
-
-          <item>
-            <name>Combination</name>
-            <appendix>A to B,C (Standard)</appendix>
-            <appendix>B to A,B,Shift_L+C,D,Control_L+P (Key To)</appendix>
-            <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
-            <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
-            <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
-            <appendix>E to Type "http://pqrs.org/macosx/keyremap4macbook/"</appendix>
-            <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
-            <appendix>G to Option_L,Shift_L,A,S</appendix>
-            <appendix></appendix>
-            <appendix>H to A,KeyCode::VK_NONE</appendix>
-            <appendix>(KeyDown and KeyUp will be fired at the same time when H key is pressed)</appendix>
-            <identifier>remap.samples_keytokey_combination</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::B, KeyCode::C</autogen>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C, KeyCode::JIS_KANA, KeyCode::A, KeyCode::I, KeyCode::JIS_EISUU, KeyCode::U</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::H, KeyCode::T, KeyCode::T, KeyCode::P, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L, KeyCode::SLASH, KeyCode::SLASH, KeyCode::P, KeyCode::Q, KeyCode::R, KeyCode::S, KeyCode::DOT, KeyCode::O, KeyCode::R, KeyCode::G, KeyCode::SLASH, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::O, KeyCode::S, KeyCode::X, KeyCode::SLASH, KeyCode::K, KeyCode::E, KeyCode::Y, KeyCode::R, KeyCode::E, KeyCode::M, KeyCode::A, KeyCode::P, KeyCode::KEY_4, KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::B, KeyCode::O, KeyCode::O, KeyCode::K, KeyCode::SLASH</autogen>
-            <autogen>--KeyToKey-- KeyCode::F, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::CAPSLOCK</autogen>
-            <autogen>--KeyToKey-- KeyCode::G, KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::A, KeyCode::S</autogen>
-            <autogen>--KeyToKey-- KeyCode::H, KeyCode::A, KeyCode::VK_NONE</autogen>
-          </item>
-
-          <item>
-            <name>Combination (2)</name>
-            <appendix>A to A,S,Shift_L (Shift_L is active while we're pressing A key)</appendix>
-            <appendix>Shift_R to A,S,Control_L (Control_L is active while we're pressing Shift_R key)</appendix>
-            <appendix>Command+B to A,S,Shift_L (Shift_L is active while we're pressing B key)</appendix>
-            <appendix>Control_L+Option_L to A,S,Shift_L (Shift_L is active while we're pressing Option_L key)</appendix>
-            <identifier>remap.samples_keytokey_combination1</identifier>
-            <autogen>--KeyToKey-- KeyCode::A,                                 KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_R,                           KeyCode::A, KeyCode::S, KeyCode::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::B,        VK_COMMAND,              KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::S, KeyCode::SHIFT_L</autogen>
-          </item>
-
-          <item>
-            <name>Combination(3)</name>
-            <appendix>Shift_L to A,Shift_L+S,D (if no other modifiers pressed)</appendix>
-            <identifier>remap.samples_keytokey_combination_3</identifier>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
-          </item>
-
-          <item>
-            <name>Combination(4)</name>
-            <appendix>A to CapsLock,A,S</appendix>
-            <appendix>// This has a issue with key repeat.</appendix>
-            <appendix>// In key repeat, CapsLock status is not changed.</appendix>
-            <identifier>remap.samples_keytokey_combination_4</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S</autogen>
-          </item>
-
-          <item>
-            <name>NoRepeat</name>
-            <appendix>1 to A (with Option::NOREPEAT)</appendix>
-            <appendix>2 to A,B,C (with Option::NOREPEAT)</appendix>
-            <appendix>3 to Shift_L (with Option::NOREPEAT)</appendix>
-            <identifier>remap.samples_keytokey_norepeat</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, Option::NOREPEAT</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::B, KeyCode::C, Option::NOREPEAT</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::SHIFT_L, Option::NOREPEAT</autogen>
-          </item>
-
-          <item>
-            <name>BeforeKeyDown, AfterKeyUp</name>
-            <appendix>1 to A (BeforeKeyDown Return, AfterKeyUp Tab)</appendix>
-            <appendix>Shift_R to A (BeforeKeyDown Control+B,C AfterKeyUp Option+D,E)</appendix>
-            <appendix></appendix>
-            <appendix>Control_L+2 to Control+Option+A</appendix>
-            <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,E,Control+F)</appendix>
-            <appendix></appendix>
-            <appendix>Control_L+Shift_L to A,B</appendix>
-            <appendix>(BeforeKeyDown C AfterKeyUp D)</appendix>
-            <appendix></appendix>
-            <appendix>Change Input Source while pressing right option key.</appendix>
-            <appendix>(Sending Command+Space when pressing/releasing right option key.)</appendix>
-            <identifier>remap.samples_keytokey_beforekeydown</identifier>
-            <autogen>--KeyToKey--
-              KeyCode::KEY_1, KeyCode::A,
-              Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::RETURN,
-              Option::KEYTOKEY_AFTER_KEYUP, KeyCode::TAB
-            </autogen>
-            <autogen>--KeyToKey--
-              KeyCode::SHIFT_R, KeyCode::A,
-              Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C,
-              Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L,  KeyCode::E
-            </autogen>
-            <autogen>--KeyToKey--
-              KeyCode::KEY_2, ModifierFlag::CONTROL_L, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
-              Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::SHIFT_R,  KeyCode::C,
-              Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L
-            </autogen>
-            <autogen>--KeyToKey--
-              KeyCode::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::B,
-              Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
-              Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D
-            </autogen>
-            <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
-            <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::VK_NONE,
-              Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
-              Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
-            </autogen>
-          </item>
-
-          <item>
-            <name>Apply from the top sequentially.</name>
-            <appendix>1 to A</appendix>
-            <appendix>1 to B (skipped)</appendix>
-            <appendix>2 to B </appendix>
-            <appendix>2 to C (skipped)</appendix>
-            <identifier>remap.samples_keytokey_apply_from_to_top</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A</autogen>
-            <block>
-              <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::B</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::B</autogen>
-            </block>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::C</autogen>
-          </item>
-
-          <item>
-            <name>Apply from the top sequentially (&lt;list&gt; and &lt;item&gt;)</name>
-            <appendix>(Turn on all settings. The settings labeled "skipped" will be ignored.)</appendix>
-            <list>
-              <item>
-                <name>1 to A</name>
-                <identifier>remap.samples_keytokey_apply_from_to_top_item1</identifier>
-                <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A</autogen>
-              </item>
-              <item>
-                <name>list</name>
-                <list>
-                  <item>
-                    <name>1 to B (skipped)</name>
-                    <identifier>remap.samples_keytokey_apply_from_to_top_item2</identifier>
-                    <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::B</autogen>
-                  </item>
-                  <item>
-                    <name>2 to B</name>
-                    <identifier>remap.samples_keytokey_apply_from_to_top_item3</identifier>
-                    <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::B</autogen>
-                  </item>
-                </list>
-              </item>
-              <item>
-                <name>2 to C (skipped)</name>
-                <identifier>remap.samples_keytokey_apply_from_to_top_item4</identifier>
-                <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::C</autogen>
-              </item>
-            </list>
-          </item>
-        </list>
+        <appendix>(A+J to Down)</appendix>
+        <appendix>(A+K to Up)</appendix>
+        <appendix>(A+S to A,S,A,J)</appendix>
+        <appendix>(A+D to A,Shift_L+S,Control_L+D,F)</appendix>
+        <appendix>(A+G to Shift_L)</appendix>
+        <appendix>(Command_R+[E+R] to Space)</appendix>
+        <appendix>(Command_R+[R+T] to Space)</appendix>
+        <appendix>(Control_L+[R+T] to Shift_L)</appendix>
+        <appendix>(R+T to Delete)</appendix>
+        <appendix>(Fn+[K+L] to Space)</appendix>
+        <appendix>(Shift_L+Shift_R to Space)</appendix>
+        <appendix>(Control_L+Option_L to Fn)</appendix>
+        <appendix>Return to Space</appendix>
+        <appendix>(Z+X to Return (== to Return))</appendix>
+        <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
+        <appendix>(W+E to Escape if application == TERMINAL)</appendix>
+        <appendix>(Q+W to Escape if inputmode == ROMAN)</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_keytokey</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, KeyCode::A, KeyCode::S, KeyCode::A, KeyCode::J</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::CONTROL_L, KeyCode::SHIFT_L</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, KeyCode::DELETE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::K, ModifierFlag::FN, KeyCode::SPACE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::CONTROL_L, KeyCode::OPTION_L, KeyCode::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SPACE</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::Z, KeyCode::RETURN</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+        <block>
+          <only>TERMINAL</only>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>
+        </block>
+        <block>
+          <inputmode_only>ROMAN</inputmode_only>
+          <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Q, KeyCode::ESCAPE</autogen>
+        </block>
       </item>
-
       <item>
-        <name>KeyToConsumer</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>A to Volume Mute</appendix>
-            <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
-            <appendix>Shift_L to Volume Mute (Modifier To)</appendix>
-            <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
-            <appendix>D to Volume Up, Brightness Up</appendix>
-            <identifier>remap.samples_keytoconsumer</identifier>
-            <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
-            <autogen>--KeyToConsumer-- KeyCode::B, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-            <autogen>--KeyToConsumer-- KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
-            <autogen>--KeyToConsumer-- KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
-            <autogen>--KeyToConsumer-- KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-          </item>
-          <item>
-            <name>NoRepeat</name>
-            <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
-            <appendix>S to Volume Up</appendix>
-            <identifier>remap.samples_keytoconsumer_norepeat</identifier>
-            <autogen>--KeyToConsumer-- KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
-            <autogen>--KeyToConsumer-- KeyCode::S, ConsumerKeyCode::VOLUME_UP</autogen>
-          </item>
-        </list>
+        <name>ButtonToButton</name>
+        <appendix>Shift+LeftClick+RightClick to Button4</appendix>
+        <appendix>LeftClick+RightClick to MiddleClick</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_buttontobutton</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, VK_SHIFT, PointingButton::BUTTON4</autogen>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
       </item>
-
       <item>
-        <name>ConsumerToKey</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>Command+Volume Down to A,S,Shift_L+D,Control_L+F,G</appendix>
-            <appendix>Volume Down to A</appendix>
-            <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
-            <appendix>Shift+Volume Up to B (with Modifier)</appendix>
-            <appendix>Volume Up to Control_L (to Modifier)</appendix>
-            <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
-            <appendix>NumLock to A</appendix>
-            <!-- Note: -->
-            <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
-            <!-- Therefore we cannot change NumLock to Modifier -->
-            <identifier>remap.samples_consumertokey</identifier>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
-          </item>
-          <item>
-            <name>NoRepeat</name>
-            <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
-            <identifier>remap.samples_consumertokey_norepeat</identifier>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
-          </item>
-        </list>
+        <name>KeyToButton</name>
+        <appendix>[A+S] to RightClick</appendix>
+        <appendix>Shift+[S+D] to MiddleClick</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_keytobutton</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, PointingButton::RIGHT</autogen>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_SHIFT, PointingButton::MIDDLE</autogen>
       </item>
-
       <item>
-        <name>ConsumerToConsumer</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>Volume Down to Volume Mute</appendix>
-            <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
-            <appendix>NumLock to Volume Mute</appendix>
-            <identifier>remap.samples_consumertoconsumer</identifier>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, VK_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
-          </item>
-          <item>
-            <name>Standard(2)</name>
-            <appendix>Volume Mute to Volume Up</appendix>
-            <identifier>remap.samples_consumertoconsumer_2</identifier>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
-          </item>
-          <item>
-            <name>Combination</name>
-            <appendix>Volume Mute to Volume Up,Brightness Up</appendix>
-            <identifier>remap.samples_consumertoconsumer_combination</identifier>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-          </item>
-          <item>
-            <name>NoRepeat</name>
-            <appendix>Volume Mute to Volume Down (with NoRepeat)</appendix>
-            <appendix>Volume Down to Volume Up,Brightness Up (with NoRepeat)</appendix>
-            <identifier>remap.samples_consumertoconsumer_norepeat</identifier>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP, Option::NOREPEAT</autogen>
-          </item>
-        </list>
+        <name>ButtonToKey</name>
+        <appendix>Shift+LeftClick+RightClick to Space</appendix>
+        <appendix>LeftClick+RightClick to Return</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_buttontokey</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, VK_SHIFT, KeyCode::SPACE</autogen>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN</autogen>
       </item>
-
       <item>
-        <name>KeyOverlaidModifier</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>A to Shift_L (When type only, send Space) (Standard)</appendix>
-            <appendix>Option_L to Shift_L (When type only, send Space) (Modifier)</appendix>
-            <appendix>Control+B to Shift_L (When type only, send Space) (Key+Modifier)</appendix>
-            <appendix>C to Shift_L (When type only, send Space) + [KeyRepeat]</appendix>
-            <appendix>Command+D to Shift_L (When type only, send Control_L+F) + [KeyRepeat]</appendix>
-            <appendix>E to KeyCode::VK_NONE</appendix>
-            <appendix>F to Shift_L (When type only, send CapsLock)</appendix>
-            <appendix>G to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B)</appendix>
-            <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
-            <appendix>I to Shift_L (When type only, send Option_L)</appendix>
-            <appendix>J to Shift_L+Option_L (When type only, send Space)</appendix>
-            <appendix>Command_R to Shift_L (When type only without other modifiers, send Space)</appendix>
-            <identifier>remap.samples_keyoverlaidmodifier</identifier>
-            <autogen>--KeyOverlaidModifier-- KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-            <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-            <autogen>--KeyOverlaidModifier-- KeyCode::B, VK_CONTROL, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-            <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::C, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-            <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::D, VK_COMMAND, KeyCode::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_NONE</autogen>
-            <autogen>--KeyOverlaidModifier-- KeyCode::F, KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-            <autogen>--KeyOverlaidModifier--           KeyCode::G, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::H, KeyCode::SHIFT_L, KeyCode::A, KeyCode::B, KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyOverlaidModifier-- KeyCode::I, KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
-            <autogen>--KeyOverlaidModifier-- KeyCode::J, KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE</autogen>
-            <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-          </item>
-          <item>
-            <name>Standard2</name>
-            <appendix>A to Shift_L (Without other modifiers) (When type only, send Space)</appendix>
-            <appendix>Command_R to Command_R (When type only without other modifiers, send Space)</appendix>
-            <identifier>remap.samples_keyoverlaidmodifier2</identifier>
-            <autogen>--KeyOverlaidModifier-- KeyCode::A, ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-            <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, KeyCode::SPACE</autogen>
-          </item>
-        </list>
+        <name>NoRepeat</name>
+        <appendix>(A+J to Down)</appendix>
+        <appendix>LeftClick+RightClick to Return</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_norepeat</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN, Option::NOREPEAT</autogen>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN, Option::NOREPEAT</autogen>
       </item>
+    </item>
 
+    <item>
+      <name>KeyToPointingButton</name>
       <item>
-        <name>HoldingKeyToKey</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <identifier>remap.samples_holdingkeytokey</identifier>
-            <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
-            <appendix>Tab to A,S,Control_L+D,F (+ Holding Tab to Q,W,Shift_L+E,R)</appendix>
-            <appendix>Option+Shift_R to Return (+ Holding Option+Shift_R to Space)</appendix>
-            <appendix>Shift+A to Option_L+B (+ Holding Shift+A to Command_L+Return)</appendix>
-            <appendix>Control+B to Option_L+B,C (+ Holding Control+B to Space)</appendix>
-            <appendix>C to Space (+ Holding C to Shift_L)</appendix>
-            <appendix>D to Shift_L (+ Holding D to Option_L)</appendix>
-            <appendix>Shift+E to Control_L (+ Holding Shift+E to Option_L)</appendix>
-            <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
-            <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::A, VK_SHIFT, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::VK_NONE, KeyCode::RETURN, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::B, ModifierFlag::OPTION_L, KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::C, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::SHIFT_L</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::D, KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT, KeyCode::CONTROL_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
-          </item>
-          <item>
-            <name>with ModifierFlag::NONE</name>
-            <appendix>Escape to Tab (without any modifiers) (+ Holding Escape to Space)</appendix>
-            <appendix>Shift_R to Return (without other modifiers) (+ Holding Shift_R to Space)</appendix>
-            <identifier>remap.samples_holdingkeytokey_modifierflag_none</identifier>
-            <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::RETURN, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-          </item>
-          <item>
-            <name>NoRepeat</name>
-            <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
-            <identifier>remap.samples_holdingkeytokey_norepeat</identifier>
-            <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE, Option::NOREPEAT</autogen>
-          </item>
-        </list>
+        <name>Standard</name>
+        <appendix>A to LeftClick (Standard)</appendix>
+        <appendix>S to Double-LeftClick</appendix>
+        <appendix>D to Shift_L+LeftClick,RightClick</appendix>
+        <appendix>Option_L to LeftClick (Modifier)</appendix>
+        <appendix>Shift_R to LeftClick,RightClick (Modifier)</appendix>
+        <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
+        <appendix>Shift+F to RightClick,MiddleClick (Key+Modifier)</appendix>
+        <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
+        <appendix>Shift+Command_L to RightClick,MiddleClick (Modifier+Modifier)</appendix>
+        <appendix>1 to LeftClick</appendix>
+        <appendix>2 to MiddleClick</appendix>
+        <appendix>3 to RightClick</appendix>
+        <appendix>4 to Button4</appendix>
+        <appendix>5 to Button5</appendix>
+        <appendix>6 to Button6</appendix>
+        <appendix>7 to Button7</appendix>
+        <appendix>8 to Button8</appendix>
+        <appendix>Q to Button9</appendix>
+        <appendix>W to Button10</appendix>
+        <appendix>E to Button11</appendix>
+        <appendix>R to Button12</appendix>
+        <appendix>T to Button13</appendix>
+        <appendix>Y to Button14</appendix>
+        <appendix>U to Button15</appendix>
+        <appendix>I to Button16</appendix>
+        <identifier>remap.samples_keytopointingbutton</identifier>
+        <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::F, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, VK_SHIFT, PointingButton::RIGHT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::COMMAND_L, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_1, PointingButton::LEFT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_2, PointingButton::MIDDLE</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_3, PointingButton::RIGHT</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_4, PointingButton::BUTTON4</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_5, PointingButton::BUTTON5</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_6, PointingButton::BUTTON6</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_7, PointingButton::BUTTON7</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::KEY_8, PointingButton::BUTTON8</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::Q,     PointingButton::BUTTON9</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::W,     PointingButton::BUTTON10</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::E,     PointingButton::BUTTON11</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::R,     PointingButton::BUTTON12</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::T,     PointingButton::BUTTON13</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::Y,     PointingButton::BUTTON14</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::U,     PointingButton::BUTTON15</autogen>
+        <autogen>--KeyToPointingButton-- KeyCode::I,     PointingButton::BUTTON16</autogen>
       </item>
+    </item>
 
+    <item>
+      <name>PointingRelativeToScroll</name>
       <item>
-        <name>DoublePressModifier</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>Shift_L x2 to RETURN</appendix>
-            <appendix>(A to Control_L) + (A x2 to Shift_L+RETURN)</appendix>
-            <appendix>(Shift+B to Control_L+Option_L) + (Shift+B x2 to A,S,Command_L+D)</appendix>
-            <appendix>(C to KeyCode::VK_NONE) + (C x2 to SPACE)</appendix>
-            <identifier>remap.samples_doublepressmodifier</identifier>
-            <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
-            <autogen>--DoublePressModifier-- KeyCode::A, KeyCode::CONTROL_L, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--DoublePressModifier-- KeyCode::B, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--DoublePressModifier-- KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
-          </item>
-          <item>
-            <name>Extra</name>
-            <appendix>KEY_0 x3 to Equal(=)</appendix>
-            <appendix>(retain KEY_0)</appendix>
-            <identifier>remap.samples_doublepressmodifier_extra</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::EXTRA1, KeyCode::EQUAL</autogen>
-            <autogen>--DoublePressModifier-- KeyCode::KEY_0, KeyCode::KEY_0, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
-          </item>
-        </list>
+        <name>Standard</name>
+        <appendix>MiddleClick+CursorMove to ScrollWheel (One Button)</appendix>
+        <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
+        <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
+        <identifier>remap.samples_pointingrelativetoscroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
+        <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+        <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
       </item>
-
-      <item>
-        <name>DropKeyAfterRemap</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>Drop Tab</appendix>
-            <appendix>Drop Shift+Return</appendix>
-            <appendix>Change A to Tab (== dropped)</appendix>
-            <appendix>Change B to Shift_L+Return (== dropped)</appendix>
-            <identifier>remap.samples_dropkeyafterremap</identifier>
-            <autogen>--DropKeyAfterRemap-- KeyCode::TAB</autogen>
-            <autogen>--DropKeyAfterRemap-- KeyCode::RETURN, VK_SHIFT</autogen>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::TAB</autogen>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
-          </item>
-        </list>
-      </item>
-
-      <item>
-        <name>DropPointingRelativeCursorMove</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>A to toggle DropPointingRelativeCursorMove</appendix>
-            <identifier>remap.samples_droppointingrelativecursormove_config</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_remap_samples_droppointingrelativecursormove</autogen>
-          </item>
-          <item>
-            <name>Core</name>
-            <appendix>(You need enable above setting.)</appendix>
-            <identifier vk_config="true">remap.samples_droppointingrelativecursormove</identifier>
-            <config_only>remap.samples_droppointingrelativecursormove_config</config_only>
-            <autogen>--ShowStatusMessage-- DropCursorMove</autogen>
-            <autogen>--DropPointingRelativeCursorMove--</autogen>
-          </item>
-        </list>
-      </item>
-
-      <item>
-        <name>DropScrollWheel</name>
-        <list>
-          <item>
-            <appendix>Drop ScrollWheel at Emacs</appendix>
-            <identifier>remap.samples_dropscrollwheel</identifier>
-            <only>EMACS</only>
-            <autogen>--DropScrollWheel--</autogen>
-          </item>
-        </list>
-      </item>
-
-      <item>
-        <name>IgnoreMultipleSameKeyPress</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>Ignore the multiple press of 'A'</appendix>
-            <appendix>Ignore the multiple press of 'Shift+B' (with Modifier)</appendix>
-            <appendix>Ignore the multiple press of 'Shift+Option+C' (with Modifier)</appendix>
-            <identifier>remap.samples_ignoremultiplesamekeypress</identifier>
-            <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::A</autogen>
-            <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::B, VK_SHIFT</autogen>
-            <autogen>--IgnoreMultipleSameKeyPress-- KeyCode::C, VK_SHIFT | VK_OPTION</autogen>
-          </item>
-        </list>
-      </item>
-
-      <item>
-        <name>StripModifierFromScrollWheel</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>Shift_L+ScrollWheel to ScrollWheel (strip Shift)</appendix>
-            <appendix>Option+ScrollWheel to ScrollWheel (strip Option)</appendix>
-            <identifier>remap.samples_stripmodifierfromscrollwheel</identifier>
-            <autogen>--StripModifierFromScrollWheel-- ModifierFlag::SHIFT_L</autogen>
-            <autogen>--StripModifierFromScrollWheel-- VK_OPTION</autogen>
-          </item>
-          <item>
-            <name>VK_MOD_ANY</name>
-            <appendix>Any Modifiers+ScrollWheel to ScrollWheel (strip Any Modifiers)</appendix>
-            <identifier>remap.samples_stripmodifierfromscrollwheel_any</identifier>
-            <autogen>--StripModifierFromScrollWheel-- VK_MOD_ANY</autogen>
-          </item>
-        </list>
-      </item>
-
-      <item>
-        <name>ScrollWheelToScrollWheel</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>Shift_L+ScrollWheel to Control_L+ScrollWheel</appendix>
-            <identifier>remap.samples_ScrollWheelToScrollWheel</identifier>
-            <autogen>--ScrollWheelToScrollWheel-- ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</autogen>
-          </item>
-        </list>
-      </item>
-
-      <item>
-        <name>ScrollWheelToKey</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>ScrollWheel to Left/Right</appendix>
-            <appendix>Shift+ScrollWheel to Option+Up/Down/Left/Right</appendix>
-            <identifier>remap.samples_ScrollWheelToKey</identifier>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
-
-            <autogen>--ScrollWheelToKey-- ScrollWheel::UP,    VK_SHIFT, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN,  VK_SHIFT, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  VK_SHIFT, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
-          </item>
-        </list>
-      </item>
-
       <item>
         <name>SimultaneousKeyPresses</name>
-        <list>
-          <item>
-            <name>KeyToKey</name>
-            <appendix>(A+J to Down)</appendix>
-            <appendix>(A+K to Up)</appendix>
-            <appendix>(A+S to A,S,A,J)</appendix>
-            <appendix>(A+D to A,Shift_L+S,Control_L+D,F)</appendix>
-            <appendix>(A+G to Shift_L)</appendix>
-            <appendix>(Command_R+[E+R] to Space)</appendix>
-            <appendix>(Command_R+[R+T] to Space)</appendix>
-            <appendix>(Control_L+[R+T] to Shift_L)</appendix>
-            <appendix>(R+T to Delete)</appendix>
-            <appendix>(Fn+[K+L] to Space)</appendix>
-            <appendix>(Shift_L+Shift_R to Space)</appendix>
-            <appendix>(Control_L+Option_L to Fn)</appendix>
-            <appendix>Return to Space</appendix>
-            <appendix>(Z+X to Return (== to Return))</appendix>
-            <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
-            <appendix>(W+E to Escape if application == TERMINAL)</appendix>
-            <appendix>(Q+W to Escape if inputmode == ROMAN)</appendix>
-            <identifier>remap.samples_simultaneouskeypresses_keytokey</identifier>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, KeyCode::A, KeyCode::S, KeyCode::A, KeyCode::J</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::R, KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, ModifierFlag::CONTROL_L, KeyCode::SHIFT_L</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::T, KeyCode::R, KeyCode::DELETE</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::L, KeyCode::K, ModifierFlag::FN, KeyCode::SPACE</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::SHIFT_L, KeyCode::SHIFT_R, KeyCode::SPACE</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::CONTROL_L, KeyCode::OPTION_L, KeyCode::FN</autogen>
-            <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::SPACE</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::X, KeyCode::Z, KeyCode::RETURN</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::C, KeyCode::X, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
-            <block>
-              <only>TERMINAL</only>
-              <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>
-            </block>
-            <block>
-              <inputmode_only>ROMAN</inputmode_only>
-              <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Q, KeyCode::ESCAPE</autogen>
-            </block>
-          </item>
-          <item>
-            <name>ButtonToButton</name>
-            <appendix>Shift+LeftClick+RightClick to Button4</appendix>
-            <appendix>LeftClick+RightClick to MiddleClick</appendix>
-            <identifier>remap.samples_simultaneouskeypresses_buttontobutton</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, VK_SHIFT, PointingButton::BUTTON4</autogen>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>KeyToButton</name>
-            <appendix>[A+S] to RightClick</appendix>
-            <appendix>Shift+[S+D] to MiddleClick</appendix>
-            <identifier>remap.samples_simultaneouskeypresses_keytobutton</identifier>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::S, KeyCode::A, PointingButton::RIGHT</autogen>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, VK_SHIFT, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>ButtonToKey</name>
-            <appendix>Shift+LeftClick+RightClick to Space</appendix>
-            <appendix>LeftClick+RightClick to Return</appendix>
-            <identifier>remap.samples_simultaneouskeypresses_buttontokey</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, VK_SHIFT, KeyCode::SPACE</autogen>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN</autogen>
-          </item>
-          <item>
-            <name>NoRepeat</name>
-            <appendix>(A+J to Down)</appendix>
-            <appendix>LeftClick+RightClick to Return</appendix>
-            <identifier>remap.samples_simultaneouskeypresses_norepeat</identifier>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN, Option::NOREPEAT</autogen>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN, Option::NOREPEAT</autogen>
-          </item>
-        </list>
+        <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
+        <identifier>remap.samples_pointingrelativetoscroll_simultaneouskeypresses</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
       </item>
+    </item>
 
+    <item>
+      <name>PointingButtonToPointingButton</name>
       <item>
-        <name>KeyToPointingButton</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>A to LeftClick (Standard)</appendix>
-            <appendix>S to Double-LeftClick</appendix>
-            <appendix>D to Shift_L+LeftClick,RightClick</appendix>
-            <appendix>Option_L to LeftClick (Modifier)</appendix>
-            <appendix>Shift_R to LeftClick,RightClick (Modifier)</appendix>
-            <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
-            <appendix>Shift+F to RightClick,MiddleClick (Key+Modifier)</appendix>
-            <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
-            <appendix>Shift+Command_L to RightClick,MiddleClick (Modifier+Modifier)</appendix>
-            <appendix>1 to LeftClick</appendix>
-            <appendix>2 to MiddleClick</appendix>
-            <appendix>3 to RightClick</appendix>
-            <appendix>4 to Button4</appendix>
-            <appendix>5 to Button5</appendix>
-            <appendix>6 to Button6</appendix>
-            <appendix>7 to Button7</appendix>
-            <appendix>8 to Button8</appendix>
-            <appendix>Q to Button9</appendix>
-            <appendix>W to Button10</appendix>
-            <appendix>E to Button11</appendix>
-            <appendix>R to Button12</appendix>
-            <appendix>T to Button13</appendix>
-            <appendix>Y to Button14</appendix>
-            <appendix>U to Button15</appendix>
-            <appendix>I to Button16</appendix>
-            <identifier>remap.samples_keytopointingbutton</identifier>
-            <autogen>--KeyToPointingButton-- KeyCode::A, PointingButton::LEFT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::OPTION_L, PointingButton::LEFT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::B, VK_SHIFT, PointingButton::RIGHT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::F, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::CONTROL_L, VK_SHIFT, PointingButton::RIGHT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::COMMAND_L, VK_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_1, PointingButton::LEFT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_2, PointingButton::MIDDLE</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_3, PointingButton::RIGHT</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_4, PointingButton::BUTTON4</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_5, PointingButton::BUTTON5</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_6, PointingButton::BUTTON6</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_7, PointingButton::BUTTON7</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::KEY_8, PointingButton::BUTTON8</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::Q,     PointingButton::BUTTON9</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::W,     PointingButton::BUTTON10</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::E,     PointingButton::BUTTON11</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::R,     PointingButton::BUTTON12</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::T,     PointingButton::BUTTON13</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::Y,     PointingButton::BUTTON14</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::U,     PointingButton::BUTTON15</autogen>
-            <autogen>--KeyToPointingButton-- KeyCode::I,     PointingButton::BUTTON16</autogen>
-          </item>
-        </list>
+        <name>RightClick to MiddleClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2m</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
       </item>
-
       <item>
-        <name>PointingRelativeToScroll</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>MiddleClick+CursorMove to ScrollWheel (One Button)</appendix>
-            <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
-            <appendix>Shift+LeftClick+CursorMove to ScrollWheel (Button+Modifier)</appendix>
-            <identifier>remap.samples_pointingrelativetoscroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
-            <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
-            <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
-          </item>
-          <item>
-            <name>SimultaneousKeyPresses</name>
-            <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
-            <identifier>remap.samples_pointingrelativetoscroll_simultaneouskeypresses</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
-          </item>
-        </list>
+        <name>Option+LeftClick to MiddleClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_ol2m</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
       </item>
-
       <item>
-        <name>PointingButtonToPointingButton</name>
-        <list>
-          <item>
-            <name>RightClick to MiddleClick</name>
-            <identifier>remap.samples_pointingbuttontopointingbutton_r2m</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>Option+LeftClick to MiddleClick</name>
-            <identifier>remap.samples_pointingbuttontopointingbutton_ol2m</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>Fn+LeftClick to Option_L+LeftClick</name>
-            <identifier>remap.samples_pointingbuttontopointingbutton_fl2ol</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
-          </item>
-          <item>
-            <name>RightClick to Double-LeftClick</name>
-            <identifier>remap.samples_pointingbuttontopointingbutton_r2dl</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, PointingButton::LEFT</autogen>
-          </item>
-          <item>
-            <name>RightClick to Shift_L+LeftClick, LeftClick</name>
-            <identifier>remap.samples_pointingbuttontopointingbutton_r2sll</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::LEFT</autogen>
-          </item>
-          <item>
-            <name>RightClick to Shift_L+LeftClick, RightClick</name>
-            <identifier>remap.samples_pointingbuttontopointingbutton_r2slr</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
-          </item>
-          <item>
-            <name>Control+RightClick to Double-LeftClick</name>
-            <identifier>remap.samples_pointingbuttontopointingbutton_cr2dl</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
-          </item>
-        </list>
+        <name>Fn+LeftClick to Option_L+LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_fl2ol</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
       </item>
-
       <item>
-        <name>PointingButtonToKey</name>
-        <list>
-          <item>
-            <name>Standard</name>
-            <appendix>MiddleClick to Return</appendix>
-            <appendix>Option_L+RightClick to Shift_L</appendix>
-            <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
-            <appendix>RightClick to Control_L</appendix>
-            <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
-            <appendix>Control_L+LeftClick to Space</appendix>
-            <identifier>remap.samples_pointingbuttontokey</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::RETURN</autogen>
-            <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
-            <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-            <block>
-              <only>TERMINAL</only>
-              <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::TAB</autogen>
-            </block>
-            <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
-            <autogen>--PointingButtonToKey-- PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
-          </item>
-          <item>
-            <name>Standard2</name>
-            <appendix>RightClick to CapsLock,A</appendix>
-            <identifier>remap.samples_pointingbuttontokey2</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CAPSLOCK, KeyCode::A</autogen>
-          </item>
-          <item>
-            <name>NoRepeat</name>
-            <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
-            <identifier>remap.samples_pointingbuttontokey_norepeat</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
-          </item>
-        </list>
+        <name>RightClick to Double-LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2dl</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, PointingButton::LEFT</autogen>
       </item>
-
       <item>
-        <name>ForceNumLockOn</name>
-        <list>
-          <item>
-            <name>Force turn NumLock on at Apple Internal Keyboard (0x05ac,0x021a)</name>
-            <identifier>remap.samples_forcenumlockon</identifier>
-            <autogen>--ForceNumLockOn-- DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</autogen>
-          </item>
-        </list>
+        <name>RightClick to Shift_L+LeftClick, LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2sll</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::LEFT</autogen>
       </item>
-
       <item>
-        <name>"NotSave" keymap overwriting</name>
-        <list>
-          <item>
-            <name>base mapping</name>
-            <appendix>A to toggle notsave.sample</appendix>
-            <appendix>B to C</appendix>
-            <appendix>(B becomes D when notsave.sample is active)</appendix>
-            <identifier>remap.samples_notsave</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_sample</autogen>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::C</autogen>
-          </item>
-          <item>
-            <name>notsave.sample</name>
-            <appendix>B to D</appendix>
-            <identifier vk_config="true">notsave.sample</identifier>
-            <autogen>--ShowStatusMessage-- notsave.sample</autogen>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
-          </item>
-        </list>
+        <name>RightClick to Shift_L+LeftClick, RightClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2slr</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
       </item>
+      <item>
+        <name>Control+RightClick to Double-LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_cr2dl</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
+      </item>
+    </item>
 
-      <include system_xml_path="include/checkbox/samples/filters.xml" />
-      <include system_xml_path="include/checkbox/samples/virtual_keycodes.xml" />
+    <item>
+      <name>PointingButtonToKey</name>
+      <item>
+        <name>Standard</name>
+        <appendix>MiddleClick to Return</appendix>
+        <appendix>Option_L+RightClick to Shift_L</appendix>
+        <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
+        <appendix>RightClick to Control_L</appendix>
+        <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
+        <appendix>Control_L+LeftClick to Space</appendix>
+        <identifier>remap.samples_pointingbuttontokey</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::RETURN</autogen>
+        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
+        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <only>TERMINAL</only>
+          <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::TAB</autogen>
+        </block>
+        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
+        <autogen>--PointingButtonToKey-- PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
+      </item>
+      <item>
+        <name>Standard2</name>
+        <appendix>RightClick to CapsLock,A</appendix>
+        <identifier>remap.samples_pointingbuttontokey2</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::CAPSLOCK, KeyCode::A</autogen>
+      </item>
+      <item>
+        <name>NoRepeat</name>
+        <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
+        <identifier>remap.samples_pointingbuttontokey_norepeat</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
+      </item>
+    </item>
 
-    </list>
+    <item>
+      <name>ForceNumLockOn</name>
+      <item>
+        <name>Force turn NumLock on at Apple Internal Keyboard (0x05ac,0x021a)</name>
+        <identifier>remap.samples_forcenumlockon</identifier>
+        <autogen>--ForceNumLockOn-- DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>"NotSave" keymap overwriting</name>
+      <item>
+        <name>base mapping</name>
+        <appendix>A to toggle notsave.sample</appendix>
+        <appendix>B to C</appendix>
+        <appendix>(B becomes D when notsave.sample is active)</appendix>
+        <identifier>remap.samples_notsave</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_sample</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::C</autogen>
+      </item>
+      <item>
+        <name>notsave.sample</name>
+        <appendix>B to D</appendix>
+        <identifier vk_config="true">notsave.sample</identifier>
+        <autogen>--ShowStatusMessage-- notsave.sample</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+      </item>
+    </item>
+
+    <include system_xml_path="include/checkbox/samples/filters.xml" />
+    <include system_xml_path="include/checkbox/samples/virtual_keycodes.xml" />
+
   </item>
 </root>

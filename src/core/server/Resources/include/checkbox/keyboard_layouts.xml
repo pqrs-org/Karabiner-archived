@@ -2,16 +2,14 @@
 <root>
   <item>
     <name>Change Keyboard Layout</name>
-    <list>
-      <include system_xml_path="include/checkbox/keyboard_layouts/colemak.xml" />
-      <include system_xml_path="include/checkbox/keyboard_layouts/qwerf.xml" />
-      <include system_xml_path="include/checkbox/keyboard_layouts/workman.xml" />
-      <include system_xml_path="include/checkbox/keyboard_layouts/abcdef.xml" />
-      <item>
-        <name>Use US Keyboard Layout</name>
-        <identifier>remap.layout2us</identifier>
-        <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
-      </item>
-    </list>
+    <include system_xml_path="include/checkbox/keyboard_layouts/colemak.xml" />
+    <include system_xml_path="include/checkbox/keyboard_layouts/qwerf.xml" />
+    <include system_xml_path="include/checkbox/keyboard_layouts/workman.xml" />
+    <include system_xml_path="include/checkbox/keyboard_layouts/abcdef.xml" />
+    <item>
+      <name>Use US Keyboard Layout</name>
+      <identifier>remap.layout2us</identifier>
+      <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+    </item>
   </item>
 </root>

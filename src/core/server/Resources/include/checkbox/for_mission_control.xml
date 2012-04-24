@@ -2,461 +2,453 @@
 <root>
   <item>
     <name>For Mission Control, Dashboard</name>
-    <list>
+    <item>
+      <name>Disable Slow-Expose (Disable Shift+Expose, Shift+Dashboard, Shift+F8,...,Shift+F12)</name>
+      <identifier>option.drop_slowexpose</identifier>
+      <autogen>--DropKeyAfterRemap-- KeyCode::EXPOSE_ALL, VK_SHIFT</autogen>
+      <autogen>--DropKeyAfterRemap-- KeyCode::DASHBOARD,  VK_SHIFT</autogen>
+      <autogen>--DropKeyAfterRemap-- KeyCode::F8,         VK_SHIFT</autogen>
+      <autogen>--DropKeyAfterRemap-- KeyCode::F9,         VK_SHIFT</autogen>
+      <autogen>--DropKeyAfterRemap-- KeyCode::F10,        VK_SHIFT</autogen>
+      <autogen>--DropKeyAfterRemap-- KeyCode::F11,        VK_SHIFT</autogen>
+      <autogen>--DropKeyAfterRemap-- KeyCode::F12,        VK_SHIFT</autogen>
+    </item>
+    <item>
+      <name>Holding "E" Key to Mission Control (Expose)</name>
+      <identifier>remap.holding_e_to_expose</identifier>
+      <autogen>--HoldingKeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::E, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
+    </item>
+    <item>
+      <name>Holding "D" Key to Dashboard</name>
+      <identifier>remap.holding_d_to_dashboard</identifier>
+      <autogen>--HoldingKeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
+    </item>
+    <item>
+      <name>Holding Shift+"E" Key to Mission Control (Expose)</name>
+      <identifier>remap.holding_shift_e_to_expose</identifier>
+      <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, VK_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
+    </item>
+    <item>
+      <name>Holding Shift+"D" Key to Dashboard</name>
+      <identifier>remap.holding_shift_d_to_dashboard</identifier>
+      <autogen>--HoldingKeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
+    </item>
+    <item>
+      <name>Control+Scroll (Left/Right) to Move a space</name>
+      <appendix>(Change Control+Left Scroll to Control+Left Arrow)</appendix>
+      <appendix>(Change Control+Right Scroll to Control+Right Arrow)</appendix>
+      <identifier>remap.controlscroll_to_controlarrow</identifier>
+      <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  VK_CONTROL | ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT,  VK_CONTROL</autogen>
+      <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, VK_CONTROL | ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, VK_CONTROL</autogen>
+    </item>
+    <item>
+      <name>Expose Mode</name>
       <item>
-        <name>Disable Slow-Expose (Disable Shift+Expose, Shift+Dashboard, Shift+F8,...,Shift+F12)</name>
-        <identifier>option.drop_slowexpose</identifier>
-        <autogen>--DropKeyAfterRemap-- KeyCode::EXPOSE_ALL, VK_SHIFT</autogen>
-        <autogen>--DropKeyAfterRemap-- KeyCode::DASHBOARD,  VK_SHIFT</autogen>
-        <autogen>--DropKeyAfterRemap-- KeyCode::F8,         VK_SHIFT</autogen>
-        <autogen>--DropKeyAfterRemap-- KeyCode::F9,         VK_SHIFT</autogen>
-        <autogen>--DropKeyAfterRemap-- KeyCode::F10,        VK_SHIFT</autogen>
-        <autogen>--DropKeyAfterRemap-- KeyCode::F11,        VK_SHIFT</autogen>
-        <autogen>--DropKeyAfterRemap-- KeyCode::F12,        VK_SHIFT</autogen>
-      </item>
-      <item>
-        <name>Holding "E" Key to Mission Control (Expose)</name>
-        <identifier>remap.holding_e_to_expose</identifier>
-        <autogen>--HoldingKeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::E, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>Holding "D" Key to Dashboard</name>
-        <identifier>remap.holding_d_to_dashboard</identifier>
-        <autogen>--HoldingKeyToKey-- KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>Holding Shift+"E" Key to Mission Control (Expose)</name>
-        <identifier>remap.holding_shift_e_to_expose</identifier>
-        <autogen>--HoldingKeyToKey-- KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, VK_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>Holding Shift+"D" Key to Dashboard</name>
-        <identifier>remap.holding_shift_d_to_dashboard</identifier>
-        <autogen>--HoldingKeyToKey-- KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>Control+Scroll (Left/Right) to Move a space</name>
-        <appendix>(Change Control+Left Scroll to Control+Left Arrow)</appendix>
-        <appendix>(Change Control+Right Scroll to Control+Right Arrow)</appendix>
-        <identifier>remap.controlscroll_to_controlarrow</identifier>
-        <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT,  VK_CONTROL | ModifierFlag::NONE,
-          KeyCode::CURSOR_LEFT,  VK_CONTROL</autogen>
-        <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, VK_CONTROL | ModifierFlag::NONE,
-          KeyCode::CURSOR_RIGHT, VK_CONTROL</autogen>
-      </item>
-      <item>
-        <name>Expose Mode</name>
-        <list>
-          <item>
-            <name>What's Expose Mode?</name>
-            <appendix>This makes it easy to use Expose.</appendix>
-            <appendix>You can do Expose by an alphabet key instead of F8,F9,..,F12 keys.</appendix>
-            <appendix></appendix>
-            <appendix>- S to Spaces (F8)</appendix>
-            <appendix>- E to Expose</appendix>
-            <appendix>- D to Desktop</appendix>
-            <appendix>- A to Application windows</appendix>
-            <appendix>- B to Dashboard</appendix>
-            <appendix>- F to Move focus to active or next window (Control+F4)</appendix>
-            <identifier vk_config="true">notsave.expose_mode</identifier>
-            <autogen>--ShowStatusMessage-- Expose Mode</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, KeyCode::F8</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, KeyCode::EXPOSE_ALL</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, KeyCode::EXPOSE_ALL, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A, KeyCode::EXPOSE_ALL, ModifierFlag::CONTROL_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::B, KeyCode::DASHBOARD</autogen>
+        <name>What's Expose Mode?</name>
+        <appendix>This makes it easy to use Expose.</appendix>
+        <appendix>You can do Expose by an alphabet key instead of F8,F9,..,F12 keys.</appendix>
+        <appendix></appendix>
+        <appendix>- S to Spaces (F8)</appendix>
+        <appendix>- E to Expose</appendix>
+        <appendix>- D to Desktop</appendix>
+        <appendix>- A to Application windows</appendix>
+        <appendix>- B to Dashboard</appendix>
+        <appendix>- F to Move focus to active or next window (Control+F4)</appendix>
+        <identifier vk_config="true">notsave.expose_mode</identifier>
+        <autogen>--ShowStatusMessage-- Expose Mode</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, KeyCode::F8</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, KeyCode::EXPOSE_ALL</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, KeyCode::EXPOSE_ALL, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A, KeyCode::EXPOSE_ALL, ModifierFlag::CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, KeyCode::DASHBOARD</autogen>
 
-            <block>
-              <config_only>option.expose_mode_f_to_optiontab</config_only>
-              <autogen>--KeyToKey-- KeyCode::F, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
-            </block>
-            <block>
-              <config_not>option.expose_mode_f_to_optiontab</config_not>
-              <autogen>--KeyToKey-- KeyCode::F, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Simultaneous Key Presses [K+L] to toggle Expose Mode</name>
-            <identifier>remap.simultaneouskeypresses_expose_kl</identifier>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode</autogen>
-          </item>
-          <item>
-            <name>[Option] Change "F" key behavior to "Option+Tab"</name>
-            <appendix>(Changing the shortcut of "Move focus" to "Option+Tab" from "Control+F4" is</appendix>
-            <appendix>a well workaround for a problem that Emacs.app grabs Control+F4 from system.)</appendix>
-            <identifier>option.expose_mode_f_to_optiontab</identifier>
-          </item>
-        </list>
+        <block>
+          <config_only>option.expose_mode_f_to_optiontab</config_only>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+        </block>
+        <block>
+          <config_not>option.expose_mode_f_to_optiontab</config_not>
+          <autogen>--KeyToKey-- KeyCode::F, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+        </block>
       </item>
       <item>
-        <name>Cmd+Tab Mode</name>
-        <list>
-          <item>
-            <name>What's Cmd+Tab Mode?</name>
-            <appendix>This makes it easy to use Command+Tab.</appendix>
-            <appendix></appendix>
-            <appendix>- Return: decide an application.</appendix>
-            <appendix>- Escape: cancel.</appendix>
-            <appendix>- Tab: Switch application--cycle forward.</appendix>
-            <appendix>- Shift: Switch application--cycle backward.</appendix>
-            <appendix>- Arrow keys: move a selection.</appendix>
-            <identifier vk_config="true">notsave.cmdtab_mode</identifier>
-            <autogen>--ShowStatusMessage-- Cmd+Tab</autogen>
-            <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
-            <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
-            <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::TAB</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::TAB, ModifierFlag::SHIFT_R</autogen>
-            <block>
-              <config_only>remap.cmdtab_mode_controlM</config_only>
-              <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
-            </block>
-            <block>
-              <config_only>remap.cmdtab_mode_control_bracket_left</config_only>
-              <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
-            </block>
-            <block>
-              <config_only>remap.cmdtab_mode_hjkl</config_only>
-              <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
-              <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
-              <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
-              <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
-            </block>
-            <block>
-              <config_only>remap.cmdtab_mode_jkil</config_only>
-              <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
-              <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
-              <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_UP</autogen>
-              <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Simultaneous Key Presses [Tab+Q] to toggle Cmd+Tab</name>
-            <identifier>remap.simultaneouskeypresses_cmdtab_tabq</identifier>
-            <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, KeyCode::TAB</autogen>
-          </item>
-          <item>
-            <name>[Option] Control+M to Return</name>
-            <identifier>remap.cmdtab_mode_controlM</identifier>
-          </item>
-          <item>
-            <name>[Option] Control+[ to Escape</name>
-            <identifier>remap.cmdtab_mode_control_bracket_left</identifier>
-          </item>
-          <item>
-            <name>[Option] HJKL to Arrow Keys</name>
-            <identifier>remap.cmdtab_mode_hjkl</identifier>
-          </item>
-          <item>
-            <name>[Option] JKIL to Arrow Keys</name>
-            <identifier>remap.cmdtab_mode_jkil</identifier>
-          </item>
-        </list>
+        <name>Simultaneous Key Presses [K+L] to toggle Expose Mode</name>
+        <identifier>remap.simultaneouskeypresses_expose_kl</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode</autogen>
       </item>
       <item>
-        <name>For Spaces</name>
-        <list>
-          <item>
-            <name>Holding "S" Key to Spaces (F8)</name>
-            <identifier>remap.holding_s_to_spaces</identifier>
-            <autogen>--HoldingKeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
-          </item>
-          <item>
-            <name>Holding Shift+"S" Key to Spaces (F8)</name>
-            <identifier>remap.holding_shift_s_to_spaces</identifier>
-            <autogen>--HoldingKeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
-          </item>
-          <item>
-            <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
-            <appendix>To switch a space, Hold "1234"</appendix>
-            <appendix>To switch a space, Hold "QWER"</appendix>
-            <appendix>To switch a space, Hold "ASDF"</appendix>
-            <appendix>To switch a space, Hold "ZXCV"</appendix>
-            <appendix></appendix>
-            <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
-            <appendix>(1) Open "Spaces Preferences".</appendix>
-            <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
-            <appendix>    "Command+Control+Shift+Number Keys".</appendix>
-            <identifier>remap.spaces_special_holding_1234qwerasdfzxcv</identifier>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,     KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,     KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,     KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,     KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,     KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,     KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,     KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,     KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-          </item>
-
-          <item>
-            <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
-            <appendix>To switch a space, Hold "1234"</appendix>
-            <appendix>To switch a space, Hold "QWER"</appendix>
-            <appendix>To switch a space, Hold "ASDF"</appendix>
-            <appendix>To switch a space, Hold "ZXCV"</appendix>
-            <appendix></appendix>
-            <appendix>(+ 1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890)</appendix>
-            <appendix></appendix>
-            <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
-            <appendix>(1) Open "Spaces Preferences".</appendix>
-            <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
-            <appendix>    "Command+Control+Shift+Number Keys".</appendix>
-            <identifier>remap.spaces_special_holding_1234qwerasdfzxcv_swap_number_and_symbol</identifier>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,                            KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,                            KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,                            KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,                            KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,                            KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,                            KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,                            KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,                            KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-            <!-- KEY_1 - KEY_4 is already defined in above. -->
-            <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_5, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
-          </item>
-
-          <item>
-            <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
-            <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
-            <identifier>remap.spaces_special</identifier>
-            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Command_R+[123 QWE ASD] for Spaces (3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
-            <identifier>remap.spaces_special_123qweasd</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Command_R+[123 QWE ASD] for Spaces (4x4)</name>
-            <appendix>(Cmd+Ctrl+Shift+[123 567 90], Cmd+Ctrl+Option+Shift[1])</appendix>
-            <identifier>remap.spaces_special_123qweasd_4x4</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
-            <identifier>remap.spaces_special_qweasdzxc</identifier>
-            <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
-            <appendix>(Command+Control+Option+[123 456 789])</appendix>
-            <identifier>remap.spaces_special_qweasdzxc_without_shift</identifier>
-            <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCO_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCO_L</autogen>
-          </item>
-          <item>
-            <name>Use Fn+[123456789] for Spaces</name>
-            <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
-            <identifier>remap.spaces_special_fn</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use FN+[WER SDF XCV] for Spaces (3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
-            <identifier>remap.spaces_special_fn_wersdfxcv</identifier>
-            <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Fn+[1234 QWER ASDF ZXCV] for Spaces (4x4)</name>
-            <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
-            <identifier>remap.spaces_special_1234qwerasdfzxcv</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::R,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::F,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::Z,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::X,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::V,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Fn+[7890 UIOP JKL; M,./] for Spaces (4x4)</name>
-            <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
-            <identifier>remap.spaces_special_7890uiopjklm</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::COMMA,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Option_R+[WER SDF XCV] for Spaces (3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
-            <identifier>remap.spaces_special_optionr_wersdfxcv</identifier>
-            <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use KeyPad numbers for Spaces(3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
-            <identifier>remap.spaces_special_keypad</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Command+KeyPad numbers for Spaces(3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
-            <identifier>option.keypad2spaces_modifier_command</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_COMMAND, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_COMMAND, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_COMMAND, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_COMMAND, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_COMMAND, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_COMMAND, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_COMMAND, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_COMMAND, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_COMMAND, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Control+KeyPad numbers for Spaces(3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
-            <identifier>option.keypad2spaces_modifier_control</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_CONTROL, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_CONTROL, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_CONTROL, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_CONTROL, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_CONTROL, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_CONTROL, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_CONTROL, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_CONTROL, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_CONTROL, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-          </item>
-          <item>
-            <name>Use Option+KeyPad numbers for Spaces(3x3)</name>
-            <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
-            <identifier>option.keypad2spaces_modifier_option</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_OPTION, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_OPTION, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_OPTION, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_OPTION, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_OPTION, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_OPTION, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_OPTION, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_OPTION, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_OPTION, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-          </item>
-        </list>
+        <name>[Option] Change "F" key behavior to "Option+Tab"</name>
+        <appendix>(Changing the shortcut of "Move focus" to "Option+Tab" from "Control+F4" is</appendix>
+        <appendix>a well workaround for a problem that Emacs.app grabs Control+F4 from system.)</appendix>
+        <identifier>option.expose_mode_f_to_optiontab</identifier>
       </item>
-    </list>
+    </item>
+    <item>
+      <name>Cmd+Tab Mode</name>
+      <item>
+        <name>What's Cmd+Tab Mode?</name>
+        <appendix>This makes it easy to use Command+Tab.</appendix>
+        <appendix></appendix>
+        <appendix>- Return: decide an application.</appendix>
+        <appendix>- Escape: cancel.</appendix>
+        <appendix>- Tab: Switch application--cycle forward.</appendix>
+        <appendix>- Shift: Switch application--cycle backward.</appendix>
+        <appendix>- Arrow keys: move a selection.</appendix>
+        <identifier vk_config="true">notsave.cmdtab_mode</identifier>
+        <autogen>--ShowStatusMessage-- Cmd+Tab</autogen>
+        <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+        <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::TAB</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::TAB, ModifierFlag::SHIFT_R</autogen>
+        <block>
+          <config_only>remap.cmdtab_mode_controlM</config_only>
+          <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+        </block>
+        <block>
+          <config_only>remap.cmdtab_mode_control_bracket_left</config_only>
+          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+        </block>
+        <block>
+          <config_only>remap.cmdtab_mode_hjkl</config_only>
+          <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+        </block>
+        <block>
+          <config_only>remap.cmdtab_mode_jkil</config_only>
+          <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
+          <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_UP</autogen>
+          <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Simultaneous Key Presses [Tab+Q] to toggle Cmd+Tab</name>
+        <identifier>remap.simultaneouskeypresses_cmdtab_tabq</identifier>
+        <autogen>--SimultaneousKeyPresses-- KeyCode::TAB, KeyCode::Q, KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, KeyCode::TAB</autogen>
+      </item>
+      <item>
+        <name>[Option] Control+M to Return</name>
+        <identifier>remap.cmdtab_mode_controlM</identifier>
+      </item>
+      <item>
+        <name>[Option] Control+[ to Escape</name>
+        <identifier>remap.cmdtab_mode_control_bracket_left</identifier>
+      </item>
+      <item>
+        <name>[Option] HJKL to Arrow Keys</name>
+        <identifier>remap.cmdtab_mode_hjkl</identifier>
+      </item>
+      <item>
+        <name>[Option] JKIL to Arrow Keys</name>
+        <identifier>remap.cmdtab_mode_jkil</identifier>
+      </item>
+    </item>
+    <item>
+      <name>For Spaces</name>
+      <item>
+        <name>Holding "S" Key to Spaces (F8)</name>
+        <identifier>remap.holding_s_to_spaces</identifier>
+        <autogen>--HoldingKeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>Holding Shift+"S" Key to Spaces (F8)</name>
+        <identifier>remap.holding_shift_s_to_spaces</identifier>
+        <autogen>--HoldingKeyToKey-- KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
+        <appendix>To switch a space, Hold "1234"</appendix>
+        <appendix>To switch a space, Hold "QWER"</appendix>
+        <appendix>To switch a space, Hold "ASDF"</appendix>
+        <appendix>To switch a space, Hold "ZXCV"</appendix>
+        <appendix></appendix>
+        <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
+        <appendix>(1) Open "Spaces Preferences".</appendix>
+        <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
+        <appendix>    "Command+Control+Shift+Number Keys".</appendix>
+        <identifier>remap.spaces_special_holding_1234qwerasdfzxcv</identifier>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,     KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,     KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,     KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,     KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,     KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,     KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,     KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,     KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+      </item>
+
+      <item>
+        <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
+        <appendix>To switch a space, Hold "1234"</appendix>
+        <appendix>To switch a space, Hold "QWER"</appendix>
+        <appendix>To switch a space, Hold "ASDF"</appendix>
+        <appendix>To switch a space, Hold "ZXCV"</appendix>
+        <appendix></appendix>
+        <appendix>(+ 1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890)</appendix>
+        <appendix></appendix>
+        <appendix>*** Change the configuration of Spaces to use this setting. ***</appendix>
+        <appendix>(1) Open "Spaces Preferences".</appendix>
+        <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
+        <appendix>    "Command+Control+Shift+Number Keys".</appendix>
+        <identifier>remap.spaces_special_holding_1234qwerasdfzxcv_swap_number_and_symbol</identifier>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::W,     ModifierFlag::NONE, KeyCode::W,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::E,     ModifierFlag::NONE, KeyCode::E,                            KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::R,     ModifierFlag::NONE, KeyCode::R,                            KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::A,     ModifierFlag::NONE, KeyCode::A,                            KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::S,     ModifierFlag::NONE, KeyCode::S,                            KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::D,     ModifierFlag::NONE, KeyCode::D,                            KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::F,     ModifierFlag::NONE, KeyCode::F,                            KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,                            KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::X,     ModifierFlag::NONE, KeyCode::X,                            KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::C,     ModifierFlag::NONE, KeyCode::C,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::V,     ModifierFlag::NONE, KeyCode::V,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <!-- KEY_1 - KEY_4 is already defined in above. -->
+        <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
+      </item>
+
+      <item>
+        <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
+        <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
+        <identifier>remap.spaces_special</identifier>
+        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Command_R+[123 QWE ASD] for Spaces (3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
+        <identifier>remap.spaces_special_123qweasd</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Command_R+[123 QWE ASD] for Spaces (4x4)</name>
+        <appendix>(Cmd+Ctrl+Shift+[123 567 90], Cmd+Ctrl+Option+Shift[1])</appendix>
+        <identifier>remap.spaces_special_123qweasd_4x4</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
+        <identifier>remap.spaces_special_qweasdzxc</identifier>
+        <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
+        <appendix>(Command+Control+Option+[123 456 789])</appendix>
+        <identifier>remap.spaces_special_qweasdzxc_without_shift</identifier>
+        <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCO_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCO_L</autogen>
+      </item>
+      <item>
+        <name>Use Fn+[123456789] for Spaces</name>
+        <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+        <identifier>remap.spaces_special_fn</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use FN+[WER SDF XCV] for Spaces (3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+        <identifier>remap.spaces_special_fn_wersdfxcv</identifier>
+        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Fn+[1234 QWER ASDF ZXCV] for Spaces (4x4)</name>
+        <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
+        <identifier>remap.spaces_special_1234qwerasdfzxcv</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::Q,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::R,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::A,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::Z,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::X,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::V,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Fn+[7890 UIOP JKL; M,./] for Spaces (4x4)</name>
+        <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
+        <identifier>remap.spaces_special_7890uiopjklm</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMA,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Option_R+[WER SDF XCV] for Spaces (3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+        <identifier>remap.spaces_special_optionr_wersdfxcv</identifier>
+        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use KeyPad numbers for Spaces(3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+        <identifier>remap.spaces_special_keypad</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_2, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_3, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_5, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_6, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_7, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_8, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_9, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Command+KeyPad numbers for Spaces(3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+        <identifier>option.keypad2spaces_modifier_command</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_COMMAND, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_COMMAND, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_COMMAND, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_COMMAND, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_COMMAND, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_COMMAND, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_COMMAND, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_COMMAND, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_COMMAND, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Control+KeyPad numbers for Spaces(3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+        <identifier>option.keypad2spaces_modifier_control</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_CONTROL, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_CONTROL, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_CONTROL, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_CONTROL, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_CONTROL, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_CONTROL, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_CONTROL, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_CONTROL, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_CONTROL, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+      </item>
+      <item>
+        <name>Use Option+KeyPad numbers for Spaces(3x3)</name>
+        <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
+        <identifier>option.keypad2spaces_modifier_option</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_OPTION, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_2, VK_OPTION, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_3, VK_OPTION, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_4, VK_OPTION, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_5, VK_OPTION, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_6, VK_OPTION, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_OPTION, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_8, VK_OPTION, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_9, VK_OPTION, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+      </item>
+    </item>
   </item>
 </root>

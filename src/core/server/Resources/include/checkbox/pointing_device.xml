@@ -2,287 +2,271 @@
 <root>
   <item>
     <name>Pointing Device</name>
-    <list>
+    <item>
+      <name>CursorMove to ScrollWheel</name>
       <item>
-        <name>CursorMove to ScrollWheel</name>
-        <list>
-          <item>
-            <name>We can scroll pages by moving the mouse pointer.</name>
-            <appendix>(Also, you can generate a click event if you click without moving)</appendix>
-            <identifier vk_config="true">notsave.pointing_relative_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
-          </item>
-          <item>
-            <name>RightClick+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_rightclick_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
-          </item>
-          <item>
-            <name>MiddleClick+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_middleclick_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>MouseButton4+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_mousebutton4_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::BUTTON4</autogen>
-          </item>
-          <item>
-            <name>Control+RightClick+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_controlRightClick_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
-          </item>
-          <item>
-            <name>Shift+RightClick+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_shiftRightClick_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
-          </item>
-          <item>
-            <name>Command+Control+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_commandControl_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND | VK_CONTROL</autogen>
-          </item>
-          <item>
-            <name>Command+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_Control_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND</autogen>
-          </item>
-          <item>
-            <name>Fn+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_fn_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
-          </item>
-          <item>
-            <name>Option+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_option_to_scroll</identifier>
-            <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
-          </item>
-          <item>
-            <name>(Simultaneous) LeftClick+RightClick+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_LRClick_to_scroll</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
-          </item>
-          <item>
-            <name>Space+CursorMove to ScrollWheel</name>
-            <identifier>remap.pointing_relative_space_to_scroll</identifier>
-            <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll, KeyCode::SPACE</autogen>
-          </item>
-          <item>
-            <name>CursorMove to ScrollWheel Option</name>
-            <list>
-              <item>
-                <name>Reverse Vertical Scrolling</name>
-                <identifier essential="true">option.pointing_reverse_vertical_scrolling</identifier>
-              </item>
-              <item>
-                <name>Reverse Horizontal Scrolling</name>
-                <identifier essential="true">option.pointing_reverse_horizontal_scrolling</identifier>
-              </item>
-              <item>
-                <name>Enable dynamic scrollwheel direction fixation (Horizontal/Vertical)</name>
-                <identifier essential="true">option.pointing_enable_scrollwheel_fixation</identifier>
-              </item>
-              <item>
-                <name>Disable Horizontal Scroll</name>
-                <identifier essential="true">option.pointing_disable_horizontal_scroll</identifier>
-              </item>
-              <item>
-                <name>Disable Vertical Scroll</name>
-                <identifier essential="true">option.pointing_disable_vertical_scroll</identifier>
-              </item>
-              <item>
-                <name>Disable Momentum Scroll</name>
-                <identifier essential="true">option.pointing_disable_momentum_scroll</identifier>
-              </item>
-            </list>
-          </item>
-        </list>
+        <name>We can scroll pages by moving the mouse pointer.</name>
+        <appendix>(Also, you can generate a click event if you click without moving)</appendix>
+        <identifier vk_config="true">notsave.pointing_relative_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::NONE</autogen>
       </item>
       <item>
-        <name>Button to Button</name>
-        <list>
-          <item>
-            <name>Command+LeftClick to Mouse Button 4</name>
-            <identifier>remap.pointing_cmdLeftclick2button4</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_COMMAND, PointingButton::BUTTON4</autogen>
-          </item>
-          <item>
-            <name>Control+LeftClick to MiddleClick</name>
-            <identifier>remap.pointing_controlLeftclick2middleclick</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>Fn+LeftClick to MiddleClick</name>
-            <identifier>remap.pointing_fnLeftclick2middleclick</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>Fn+LeftClick to Option_L+LeftClick</name>
-            <identifier>remap.pointing_fnLeftclick2optionLeftclick</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
-          </item>
-          <item>
-            <name>Option+LeftClick to MiddleClick</name>
-            <identifier>remap.pointing_optionLeftclick2middleclick</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>RightClick to LeftClick</name>
-            <identifier>remap.pointing_rightclick2leftclick</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT</autogen>
-          </item>
-          <item>
-            <name>Control+RightClick to Double-LeftClick</name>
-            <identifier>remap.pointing_controlrightclick2doubleleftclick</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
-          </item>
-          <item>
-            <name>Fn+RightClick to Mouse Button 5</name>
-            <identifier>remap.pointing_fnRightclick2button5</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, ModifierFlag::FN, PointingButton::BUTTON5</autogen>
-          </item>
-          <item>
-            <name>MiddleClick to Command+LeftClick</name>
-            <identifier>remap.pointing_middleclick2commandLeftclick</identifier>
-            <autogen>--PointingButtonToPointingButton-- PointingButton::MIDDLE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>(Simultaneous) LeftClick+RightClick to MiddleClick</name>
-            <identifier>remap.pointing_leftrightclick2middleclick</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-          </item>
-          <item>
-            <name>(Simultaneous) LeftClick+RightClick to Button4</name>
-            <identifier>remap.pointing_leftrightclick2button4</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON4</autogen>
-          </item>
-          <item>
-            <name>(Simultaneous) LeftClick+RightClick to Button5</name>
-            <identifier>remap.pointing_leftrightclick2button5</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON5</autogen>
-          </item>
-        </list>
+        <name>RightClick+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_rightclick_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT</autogen>
       </item>
       <item>
-        <name>Button to Key</name>
-        <list>
-          <item>
-            <name>MiddleClick to Dashboard</name>
-            <identifier>remap.pointing_middleclick2dashboard</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::DASHBOARD</autogen>
-          </item>
-          <item>
-            <name>MiddleClick to Expose</name>
-            <identifier>remap.pointing_middleclick2expose</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::EXPOSE_ALL</autogen>
-          </item>
-          <item>
-            <name>MiddleClick to F8</name>
-            <identifier>remap.pointing_middleclick2f8</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::F8</autogen>
-          </item>
-          <item>
-            <name>MiddleClick to Control+F4 (= Move focus to active or next window)</name>
-            <identifier>remap.pointing_middleclick2controlF4</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
-          </item>
-          <item>
-            <name>Set 1: Button4 to Command+[ (Back)</name>
-            <identifier>remap.pointing_button4_to_command_bracket_left</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::BUTTON4, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>Set 1: Button5 to Command+] (Forward)</name>
-            <identifier>remap.pointing_button5_to_command_bracket_right</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>Set 2: Button4 to Command+] (Forward)</name>
-            <identifier>remap.pointing_button4_to_command_bracket_right</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::BUTTON4, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>Set 2: Button5 to Command+[ (Back)</name>
-            <identifier>remap.pointing_button5_to_command_bracket_left</identifier>
-            <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>(Simultaneous) LeftClick+RightClick to Dashboard</name>
-            <identifier>remap.pointing_leftrightclick2dashboard</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::DASHBOARD</autogen>
-          </item>
-          <item>
-            <name>(Simultaneous) LeftClick+RightClick to Expose</name>
-            <identifier>remap.pointing_leftrightclick2expose</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::EXPOSE_ALL</autogen>
-          </item>
-          <item>
-            <name>(Simultaneous) LeftClick+RightClick to F8</name>
-            <identifier>remap.pointing_leftrightclick2f8</identifier>
-            <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::F8</autogen>
-          </item>
-        </list>
+        <name>MiddleClick+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_middleclick_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::MIDDLE</autogen>
       </item>
       <item>
-        <name>Change ScrollWheel</name>
-        <list>
-          <item>
-            <name>Fn+ScrollWheel to Brightness Control</name>
-            <appendix>(Fn+ScrollWheel Up to Brightness Up</appendix>
-            <appendix>(Fn+ScrollWheel Down to Brightness Down</appendix>
-            <identifier>remap.fn_scroll_to_brightness_control</identifier>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::UP, ModifierFlag::FN | ModifierFlag::NONE,
-              KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN, ModifierFlag::FN | ModifierFlag::NONE,
-              KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
-          </item>
-        </list>
+        <name>MouseButton4+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_mousebutton4_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::BUTTON4</autogen>
       </item>
       <item>
-        <name>Change Modifiers on ScrollWheel</name>
-        <list>
-          <item>
-            <name>Change Control+ScrollWheel to Command+ScrollWheel</name>
-            <identifier>remap.pointing_control_scrollwheel_to_command_scrollwheel</identifier>
-            <autogen>--ScrollWheelToScrollWheel-- VK_CONTROL, ModifierFlag::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>Change Command+ScrollWheel to Control+ScrollWheel</name>
-            <identifier>remap.pointing_command_scrollwheel_to_control_scrollwheel</identifier>
-            <autogen>--ScrollWheelToScrollWheel-- VK_COMMAND, ModifierFlag::CONTROL_L</autogen>
-          </item>
-          <item>
-            <name>Strip Modifiers</name>
-            <list>
-              <item>
-                <name>Command+ScrollWheel to ScrollWheel (strip Command)</name>
-                <identifier>remap.pointing_strip_command</identifier>
-                <autogen>--StripModifierFromScrollWheel-- VK_COMMAND</autogen>
-              </item>
-              <item>
-                <name>Control+ScrollWheel to ScrollWheel (strip Control)</name>
-                <identifier>remap.pointing_strip_control</identifier>
-                <autogen>--StripModifierFromScrollWheel-- VK_CONTROL</autogen>
-              </item>
-              <item>
-                <name>Option+ScrollWheel to ScrollWheel (strip Option)</name>
-                <identifier>remap.pointing_strip_option</identifier>
-                <autogen>--StripModifierFromScrollWheel-- VK_OPTION</autogen>
-              </item>
-              <item>
-                <name>Shift+ScrollWheel to ScrollWheel (strip Shift)</name>
-                <identifier>remap.pointing_strip_shift</identifier>
-                <autogen>--StripModifierFromScrollWheel-- VK_SHIFT</autogen>
-              </item>
-              <item>
-                <name>Strip any modifiers from ScrollWheel</name>
-                <identifier>remap.pointing_strip_any</identifier>
-                <autogen>--StripModifierFromScrollWheel-- VK_MOD_ANY</autogen>
-              </item>
-            </list>
-          </item>
-        </list>
+        <name>Control+RightClick+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_controlRightClick_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_CONTROL</autogen>
       </item>
-    </list>
+      <item>
+        <name>Shift+RightClick+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_shiftRightClick_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::RIGHT, VK_SHIFT</autogen>
+      </item>
+      <item>
+        <name>Command+Control+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_commandControl_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND | VK_CONTROL</autogen>
+      </item>
+      <item>
+        <name>Command+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_Control_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_COMMAND</autogen>
+      </item>
+      <item>
+        <name>Fn+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_fn_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::NONE, ModifierFlag::FN</autogen>
+      </item>
+      <item>
+        <name>Option+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_option_to_scroll</identifier>
+        <autogen>--PointingRelativeToScroll-- PointingButton::NONE, VK_OPTION</autogen>
+      </item>
+      <item>
+        <name>(Simultaneous) LeftClick+RightClick+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_LRClick_to_scroll</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
+      </item>
+      <item>
+        <name>Space+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_space_to_scroll</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll, KeyCode::SPACE</autogen>
+      </item>
+      <item>
+        <name>CursorMove to ScrollWheel Option</name>
+        <item>
+          <name>Reverse Vertical Scrolling</name>
+          <identifier essential="true">option.pointing_reverse_vertical_scrolling</identifier>
+        </item>
+        <item>
+          <name>Reverse Horizontal Scrolling</name>
+          <identifier essential="true">option.pointing_reverse_horizontal_scrolling</identifier>
+        </item>
+        <item>
+          <name>Enable dynamic scrollwheel direction fixation (Horizontal/Vertical)</name>
+          <identifier essential="true">option.pointing_enable_scrollwheel_fixation</identifier>
+        </item>
+        <item>
+          <name>Disable Horizontal Scroll</name>
+          <identifier essential="true">option.pointing_disable_horizontal_scroll</identifier>
+        </item>
+        <item>
+          <name>Disable Vertical Scroll</name>
+          <identifier essential="true">option.pointing_disable_vertical_scroll</identifier>
+        </item>
+        <item>
+          <name>Disable Momentum Scroll</name>
+          <identifier essential="true">option.pointing_disable_momentum_scroll</identifier>
+        </item>
+      </item>
+    </item>
+    <item>
+      <name>Button to Button</name>
+      <item>
+        <name>Command+LeftClick to Mouse Button 4</name>
+        <identifier>remap.pointing_cmdLeftclick2button4</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_COMMAND, PointingButton::BUTTON4</autogen>
+      </item>
+      <item>
+        <name>Control+LeftClick to MiddleClick</name>
+        <identifier>remap.pointing_controlLeftclick2middleclick</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
+      </item>
+      <item>
+        <name>Fn+LeftClick to MiddleClick</name>
+        <identifier>remap.pointing_fnLeftclick2middleclick</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
+      </item>
+      <item>
+        <name>Fn+LeftClick to Option_L+LeftClick</name>
+        <identifier>remap.pointing_fnLeftclick2optionLeftclick</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>Option+LeftClick to MiddleClick</name>
+        <identifier>remap.pointing_optionLeftclick2middleclick</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
+      </item>
+      <item>
+        <name>RightClick to LeftClick</name>
+        <identifier>remap.pointing_rightclick2leftclick</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, PointingButton::LEFT</autogen>
+      </item>
+      <item>
+        <name>Control+RightClick to Double-LeftClick</name>
+        <identifier>remap.pointing_controlrightclick2doubleleftclick</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
+      </item>
+      <item>
+        <name>Fn+RightClick to Mouse Button 5</name>
+        <identifier>remap.pointing_fnRightclick2button5</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::RIGHT, ModifierFlag::FN, PointingButton::BUTTON5</autogen>
+      </item>
+      <item>
+        <name>MiddleClick to Command+LeftClick</name>
+        <identifier>remap.pointing_middleclick2commandLeftclick</identifier>
+        <autogen>--PointingButtonToPointingButton-- PointingButton::MIDDLE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>(Simultaneous) LeftClick+RightClick to MiddleClick</name>
+        <identifier>remap.pointing_leftrightclick2middleclick</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+      </item>
+      <item>
+        <name>(Simultaneous) LeftClick+RightClick to Button4</name>
+        <identifier>remap.pointing_leftrightclick2button4</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON4</autogen>
+      </item>
+      <item>
+        <name>(Simultaneous) LeftClick+RightClick to Button5</name>
+        <identifier>remap.pointing_leftrightclick2button5</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, PointingButton::BUTTON5</autogen>
+      </item>
+    </item>
+    <item>
+      <name>Button to Key</name>
+      <item>
+        <name>MiddleClick to Dashboard</name>
+        <identifier>remap.pointing_middleclick2dashboard</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::DASHBOARD</autogen>
+      </item>
+      <item>
+        <name>MiddleClick to Expose</name>
+        <identifier>remap.pointing_middleclick2expose</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::EXPOSE_ALL</autogen>
+      </item>
+      <item>
+        <name>MiddleClick to F8</name>
+        <identifier>remap.pointing_middleclick2f8</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::F8</autogen>
+      </item>
+      <item>
+        <name>MiddleClick to Control+F4 (= Move focus to active or next window)</name>
+        <identifier>remap.pointing_middleclick2controlF4</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::MIDDLE, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Set 1: Button4 to Command+[ (Back)</name>
+        <identifier>remap.pointing_button4_to_command_bracket_left</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::BUTTON4, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Set 1: Button5 to Command+] (Forward)</name>
+        <identifier>remap.pointing_button5_to_command_bracket_right</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Set 2: Button4 to Command+] (Forward)</name>
+        <identifier>remap.pointing_button4_to_command_bracket_right</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::BUTTON4, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Set 2: Button5 to Command+[ (Back)</name>
+        <identifier>remap.pointing_button5_to_command_bracket_left</identifier>
+        <autogen>--PointingButtonToKey-- PointingButton::BUTTON5, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>(Simultaneous) LeftClick+RightClick to Dashboard</name>
+        <identifier>remap.pointing_leftrightclick2dashboard</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::DASHBOARD</autogen>
+      </item>
+      <item>
+        <name>(Simultaneous) LeftClick+RightClick to Expose</name>
+        <identifier>remap.pointing_leftrightclick2expose</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::EXPOSE_ALL</autogen>
+      </item>
+      <item>
+        <name>(Simultaneous) LeftClick+RightClick to F8</name>
+        <identifier>remap.pointing_leftrightclick2f8</identifier>
+        <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::F8</autogen>
+      </item>
+    </item>
+    <item>
+      <name>Change ScrollWheel</name>
+      <item>
+        <name>Fn+ScrollWheel to Brightness Control</name>
+        <appendix>(Fn+ScrollWheel Up to Brightness Up</appendix>
+        <appendix>(Fn+ScrollWheel Down to Brightness Down</appendix>
+        <identifier>remap.fn_scroll_to_brightness_control</identifier>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::UP, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::DOWN, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+      </item>
+    </item>
+    <item>
+      <name>Change Modifiers on ScrollWheel</name>
+      <item>
+        <name>Change Control+ScrollWheel to Command+ScrollWheel</name>
+        <identifier>remap.pointing_control_scrollwheel_to_command_scrollwheel</identifier>
+        <autogen>--ScrollWheelToScrollWheel-- VK_CONTROL, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Change Command+ScrollWheel to Control+ScrollWheel</name>
+        <identifier>remap.pointing_command_scrollwheel_to_control_scrollwheel</identifier>
+        <autogen>--ScrollWheelToScrollWheel-- VK_COMMAND, ModifierFlag::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Strip Modifiers</name>
+        <item>
+          <name>Command+ScrollWheel to ScrollWheel (strip Command)</name>
+          <identifier>remap.pointing_strip_command</identifier>
+          <autogen>--StripModifierFromScrollWheel-- VK_COMMAND</autogen>
+        </item>
+        <item>
+          <name>Control+ScrollWheel to ScrollWheel (strip Control)</name>
+          <identifier>remap.pointing_strip_control</identifier>
+          <autogen>--StripModifierFromScrollWheel-- VK_CONTROL</autogen>
+        </item>
+        <item>
+          <name>Option+ScrollWheel to ScrollWheel (strip Option)</name>
+          <identifier>remap.pointing_strip_option</identifier>
+          <autogen>--StripModifierFromScrollWheel-- VK_OPTION</autogen>
+        </item>
+        <item>
+          <name>Shift+ScrollWheel to ScrollWheel (strip Shift)</name>
+          <identifier>remap.pointing_strip_shift</identifier>
+          <autogen>--StripModifierFromScrollWheel-- VK_SHIFT</autogen>
+        </item>
+        <item>
+          <name>Strip any modifiers from ScrollWheel</name>
+          <identifier>remap.pointing_strip_any</identifier>
+          <autogen>--StripModifierFromScrollWheel-- VK_MOD_ANY</autogen>
+        </item>
+      </item>
+    </item>
   </item>
 </root>

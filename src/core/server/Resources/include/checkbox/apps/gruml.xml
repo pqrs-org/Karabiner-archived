@@ -2,13 +2,11 @@
 <root>
   <item>
     <name>Enable at only Gruml</name>
-    <list>
-      <item>
-        <name>Change Option_R to Return</name>
-        <identifier>remap.app_gruml_optionR2return</identifier>
-        <only>GRUML</only>
-        <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::RETURN</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Change Option_R to Return</name>
+      <identifier>remap.app_gruml_optionR2return</identifier>
+      <only>GRUML</only>
+      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::RETURN</autogen>
+    </item>
   </item>
 </root>
