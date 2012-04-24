@@ -13,7 +13,7 @@
 + (void) refreshEnabledInputSources;
 
 + (NSString*) getTISPropertyInputSourceID;
-+ (NSString*) getTISPropertyInputModeID;
++ (NSString*) getTISPropertyInputModeID:(NSString*)inputSourceID;
 + (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
 + (void) selectInputSource:(unsigned int)vk_keycode;
 @end

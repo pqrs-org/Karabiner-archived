@@ -83,9 +83,8 @@ static NSMutableArray* enabledInputSources_ = nil;
   return retval;
 }
 
-+ (NSString*) getTISPropertyInputModeID
++ (NSString*) getTISPropertyInputModeID:(NSString*)inputSourceID
 {
-  NSString* inputSourceID = [self getTISPropertyInputSourceID];
   if (! inputSourceID) return nil;
 
   @synchronized (self) {
