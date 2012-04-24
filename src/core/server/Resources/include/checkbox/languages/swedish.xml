@@ -2,33 +2,31 @@
 <root>
   <item>
     <name>For Swedish</name>
-    <list>
-      <item>
-        <name>Space to Option_L (when inputmode == swedish)</name>
-        <identifier>remap.swedish_space2optionL_swedish</identifier>
-        <inputmode_only>SWEDISH</inputmode_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>Command_L to Command_L</name>
-        <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
-        <identifier>remap.swedish_commandL2commandL_english</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
-      </item>
-      <item>
-        <name>Command_R to Command_R</name>
-        <appendix>(+ When you type Command_R only, change inputmode to swedish)</appendix>
-        <identifier>remap.swedish_commandR2commandR_swedish</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
-      </item>
-      <item>
-        <name>Swap Section(§) and Less-Than(&lt;)</name>
-        <appendix>(only in virtual machine)</appendix>
-        <identifier>remap.swedish_swap_section_lessthan_vm</identifier>
-        <only>VIRTUALMACHINE</only>
-        <autogen>--KeyToKey-- KeyCode::SWEDISH_SECTION, KeyCode::SWEDISH_LESS_THAN</autogen>
-        <autogen>--KeyToKey-- KeyCode::SWEDISH_LESS_THAN, KeyCode::SWEDISH_SECTION</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Space to Option_L (when inputmode == swedish)</name>
+      <identifier>remap.swedish_space2optionL_swedish</identifier>
+      <inputmode_only>SWEDISH</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
+    </item>
+    <item>
+      <name>Command_L to Command_L</name>
+      <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
+      <identifier>remap.swedish_commandL2commandL_english</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+    </item>
+    <item>
+      <name>Command_R to Command_R</name>
+      <appendix>(+ When you type Command_R only, change inputmode to swedish)</appendix>
+      <identifier>remap.swedish_commandR2commandR_swedish</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
+    </item>
+    <item>
+      <name>Swap Section(§) and Less-Than(&lt;)</name>
+      <appendix>(only in virtual machine)</appendix>
+      <identifier>remap.swedish_swap_section_lessthan_vm</identifier>
+      <only>VIRTUALMACHINE</only>
+      <autogen>--KeyToKey-- KeyCode::SWEDISH_SECTION, KeyCode::SWEDISH_LESS_THAN</autogen>
+      <autogen>--KeyToKey-- KeyCode::SWEDISH_LESS_THAN, KeyCode::SWEDISH_SECTION</autogen>
+    </item>
   </item>
 </root>

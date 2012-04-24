@@ -1,99 +1,95 @@
 <?xml version="1.0"?>
 <root>
-  <list>
-    <include system_xml_path="include/checkbox/general.xml" />
-    <include system_xml_path="include/checkbox/pass_through_mode.xml" />
-    <include system_xml_path="include/checkbox/pointing_device.xml" />
+  <include system_xml_path="include/checkbox/general.xml" />
+  <include system_xml_path="include/checkbox/pass_through_mode.xml" />
+  <include system_xml_path="include/checkbox/pointing_device.xml" />
 
-    <include system_xml_path="include/checkbox/standards/arrow.xml" />
-    <include system_xml_path="include/checkbox/standards/backquote.xml" />
-    <include system_xml_path="include/checkbox/standards/backslash.xml" />
-    <include system_xml_path="include/checkbox/standards/bracket.xml" />
-    <include system_xml_path="include/checkbox/standards/capslock.xml" />
-    <include system_xml_path="include/checkbox/standards/command.xml" />
-    <include system_xml_path="include/checkbox/standards/control.xml" />
-    <include system_xml_path="include/checkbox/standards/delete.xml" />
-    <include system_xml_path="include/checkbox/standards/eject.xml" />
-    <include system_xml_path="include/checkbox/standards/escape.xml" />
-    <include system_xml_path="include/checkbox/standards/expose.xml" />
-    <include system_xml_path="include/checkbox/standards/fn.xml" />
-    <include system_xml_path="include/checkbox/standards/forward_delete.xml" />
-    <include system_xml_path="include/checkbox/standards/function.xml" />
-    <include system_xml_path="include/checkbox/standards/help.xml" />
-    <include system_xml_path="include/checkbox/standards/keypad.xml" />
-    <include system_xml_path="include/checkbox/standards/minus.xml" />
-    <include system_xml_path="include/checkbox/standards/number.xml" />
-    <include system_xml_path="include/checkbox/standards/option.xml" />
-    <include system_xml_path="include/checkbox/standards/pageup_pagedown.xml" />
-    <include system_xml_path="include/checkbox/standards/return.xml" />
-    <include system_xml_path="include/checkbox/standards/quote.xml" />
-    <include system_xml_path="include/checkbox/standards/semicolon.xml" />
-    <include system_xml_path="include/checkbox/standards/shift.xml" />
-    <include system_xml_path="include/checkbox/standards/slash.xml" />
-    <include system_xml_path="include/checkbox/standards/space.xml" />
-    <include system_xml_path="include/checkbox/standards/tab.xml" />
+  <include system_xml_path="include/checkbox/standards/arrow.xml" />
+  <include system_xml_path="include/checkbox/standards/backquote.xml" />
+  <include system_xml_path="include/checkbox/standards/backslash.xml" />
+  <include system_xml_path="include/checkbox/standards/bracket.xml" />
+  <include system_xml_path="include/checkbox/standards/capslock.xml" />
+  <include system_xml_path="include/checkbox/standards/command.xml" />
+  <include system_xml_path="include/checkbox/standards/control.xml" />
+  <include system_xml_path="include/checkbox/standards/delete.xml" />
+  <include system_xml_path="include/checkbox/standards/eject.xml" />
+  <include system_xml_path="include/checkbox/standards/escape.xml" />
+  <include system_xml_path="include/checkbox/standards/expose.xml" />
+  <include system_xml_path="include/checkbox/standards/fn.xml" />
+  <include system_xml_path="include/checkbox/standards/forward_delete.xml" />
+  <include system_xml_path="include/checkbox/standards/function.xml" />
+  <include system_xml_path="include/checkbox/standards/help.xml" />
+  <include system_xml_path="include/checkbox/standards/keypad.xml" />
+  <include system_xml_path="include/checkbox/standards/minus.xml" />
+  <include system_xml_path="include/checkbox/standards/number.xml" />
+  <include system_xml_path="include/checkbox/standards/option.xml" />
+  <include system_xml_path="include/checkbox/standards/pageup_pagedown.xml" />
+  <include system_xml_path="include/checkbox/standards/return.xml" />
+  <include system_xml_path="include/checkbox/standards/quote.xml" />
+  <include system_xml_path="include/checkbox/standards/semicolon.xml" />
+  <include system_xml_path="include/checkbox/standards/shift.xml" />
+  <include system_xml_path="include/checkbox/standards/slash.xml" />
+  <include system_xml_path="include/checkbox/standards/space.xml" />
+  <include system_xml_path="include/checkbox/standards/tab.xml" />
 
-    <include system_xml_path="include/checkbox/custom_shortcuts.xml" />
-    <include system_xml_path="include/checkbox/diamond_cursor.xml" />
-    <include system_xml_path="include/checkbox/browsing_mode.xml" />
-    <include system_xml_path="include/checkbox/emacs_mode.xml" />
-    <include system_xml_path="include/checkbox/mouse_keys.xml" />
-    <include system_xml_path="include/checkbox/vi_mode.xml" />
-    <include system_xml_path="include/checkbox/ubiquitous_vim_bindings.xml" />
-    <include system_xml_path="include/checkbox/complete_vi_mode.xml" />
-    <include system_xml_path="include/checkbox/simultaneouskeypresses_vi_mode.xml" />
-    <include system_xml_path="include/checkbox/homerow_mode.xml" />
-    <include system_xml_path="include/checkbox/simultaneouskeypresses.xml" />
-    <include system_xml_path="include/checkbox/thumbsense.xml" />
-    <include system_xml_path="include/checkbox/for_mission_control.xml" />
+  <include system_xml_path="include/checkbox/custom_shortcuts.xml" />
+  <include system_xml_path="include/checkbox/diamond_cursor.xml" />
+  <include system_xml_path="include/checkbox/browsing_mode.xml" />
+  <include system_xml_path="include/checkbox/emacs_mode.xml" />
+  <include system_xml_path="include/checkbox/mouse_keys.xml" />
+  <include system_xml_path="include/checkbox/vi_mode.xml" />
+  <include system_xml_path="include/checkbox/ubiquitous_vim_bindings.xml" />
+  <include system_xml_path="include/checkbox/complete_vi_mode.xml" />
+  <include system_xml_path="include/checkbox/simultaneouskeypresses_vi_mode.xml" />
+  <include system_xml_path="include/checkbox/homerow_mode.xml" />
+  <include system_xml_path="include/checkbox/simultaneouskeypresses.xml" />
+  <include system_xml_path="include/checkbox/thumbsense.xml" />
+  <include system_xml_path="include/checkbox/for_mission_control.xml" />
 
-    <item>
-      <name>For Applications</name>
-      <list>
-        <include system_xml_path="include/checkbox/apps/virtual_machine.xml" />
-        <include system_xml_path="include/checkbox/apps/finder.xml" />
-        <include system_xml_path="include/checkbox/apps/terminal.xml" />
-        <include system_xml_path="include/checkbox/apps/adobe.xml" />
-        <include system_xml_path="include/checkbox/apps/safari.xml" />
-        <include system_xml_path="include/checkbox/apps/firefox.xml" />
-        <include system_xml_path="include/checkbox/apps/office.xml" />
-        <include system_xml_path="include/checkbox/apps/macsoup.xml" />
-        <include system_xml_path="include/checkbox/apps/vienna.xml" />
-        <include system_xml_path="include/checkbox/apps/gruml.xml" />
-        <include system_xml_path="include/checkbox/apps/launchbar.xml" />
-        <include system_xml_path="include/checkbox/apps/remote_desktop_client.xml" />
-        <include system_xml_path="include/checkbox/apps/world_of_warcraft.xml" />
-        <include system_xml_path="include/checkbox/apps/starcraft2.xml" />
-        <include system_xml_path="include/checkbox/apps/skype.xml" />
-        <include system_xml_path="include/checkbox/apps/dictionary.xml" />
-        <include system_xml_path="include/checkbox/apps/tweetdeck.xml" />
-        <include system_xml_path="include/checkbox/apps/quicksilver.xml" />
-      </list>
-    </item>
+  <item>
+    <name>For Applications</name>
+    <include system_xml_path="include/checkbox/apps/virtual_machine.xml" />
+    <include system_xml_path="include/checkbox/apps/finder.xml" />
+    <include system_xml_path="include/checkbox/apps/terminal.xml" />
+    <include system_xml_path="include/checkbox/apps/adobe.xml" />
+    <include system_xml_path="include/checkbox/apps/safari.xml" />
+    <include system_xml_path="include/checkbox/apps/firefox.xml" />
+    <include system_xml_path="include/checkbox/apps/office.xml" />
+    <include system_xml_path="include/checkbox/apps/macsoup.xml" />
+    <include system_xml_path="include/checkbox/apps/vienna.xml" />
+    <include system_xml_path="include/checkbox/apps/gruml.xml" />
+    <include system_xml_path="include/checkbox/apps/launchbar.xml" />
+    <include system_xml_path="include/checkbox/apps/remote_desktop_client.xml" />
+    <include system_xml_path="include/checkbox/apps/world_of_warcraft.xml" />
+    <include system_xml_path="include/checkbox/apps/starcraft2.xml" />
+    <include system_xml_path="include/checkbox/apps/skype.xml" />
+    <include system_xml_path="include/checkbox/apps/dictionary.xml" />
+    <include system_xml_path="include/checkbox/apps/tweetdeck.xml" />
+    <include system_xml_path="include/checkbox/apps/quicksilver.xml" />
+  </item>
 
-    <include system_xml_path="include/checkbox/keyboard_layouts.xml" />
-    <include system_xml_path="include/checkbox/for_pc_users.xml" />
-    <include system_xml_path="include/checkbox/for_dvorak_users.xml" />
+  <include system_xml_path="include/checkbox/keyboard_layouts.xml" />
+  <include system_xml_path="include/checkbox/for_pc_users.xml" />
+  <include system_xml_path="include/checkbox/for_dvorak_users.xml" />
 
-    <include system_xml_path="include/checkbox/device_specific.xml" />
+  <include system_xml_path="include/checkbox/device_specific.xml" />
 
-    <include system_xml_path="include/checkbox/languages/iso_keyboard.xml" />
-    <include system_xml_path="include/checkbox/languages/belgian.xml" />
-    <include system_xml_path="include/checkbox/languages/bulgarian.xml" />
-    <include system_xml_path="include/checkbox/languages/canadian.xml" />
-    <include system_xml_path="include/checkbox/languages/czech.xml" />
-    <include system_xml_path="include/checkbox/languages/finnish.xml" />
-    <include system_xml_path="include/checkbox/languages/french.xml" />
-    <include system_xml_path="include/checkbox/languages/german.xml" />
-    <include system_xml_path="include/checkbox/languages/italian.xml" />
-    <include system_xml_path="include/checkbox/languages/japanese.xml" />
-    <include system_xml_path="include/checkbox/languages/korean.xml" />
-    <include system_xml_path="include/checkbox/languages/russian.xml" />
-    <include system_xml_path="include/checkbox/languages/slovenian.xml" />
-    <include system_xml_path="include/checkbox/languages/spanish.xml" />
-    <include system_xml_path="include/checkbox/languages/swedish.xml" />
-    <include system_xml_path="include/checkbox/languages/swiss.xml" />
+  <include system_xml_path="include/checkbox/languages/iso_keyboard.xml" />
+  <include system_xml_path="include/checkbox/languages/belgian.xml" />
+  <include system_xml_path="include/checkbox/languages/bulgarian.xml" />
+  <include system_xml_path="include/checkbox/languages/canadian.xml" />
+  <include system_xml_path="include/checkbox/languages/czech.xml" />
+  <include system_xml_path="include/checkbox/languages/finnish.xml" />
+  <include system_xml_path="include/checkbox/languages/french.xml" />
+  <include system_xml_path="include/checkbox/languages/german.xml" />
+  <include system_xml_path="include/checkbox/languages/italian.xml" />
+  <include system_xml_path="include/checkbox/languages/japanese.xml" />
+  <include system_xml_path="include/checkbox/languages/korean.xml" />
+  <include system_xml_path="include/checkbox/languages/russian.xml" />
+  <include system_xml_path="include/checkbox/languages/slovenian.xml" />
+  <include system_xml_path="include/checkbox/languages/spanish.xml" />
+  <include system_xml_path="include/checkbox/languages/swedish.xml" />
+  <include system_xml_path="include/checkbox/languages/swiss.xml" />
 
-    <include system_xml_path="include/checkbox/samples.xml" />
-  </list>
+  <include system_xml_path="include/checkbox/samples.xml" />
 </root>

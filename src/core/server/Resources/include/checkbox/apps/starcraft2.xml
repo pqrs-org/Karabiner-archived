@@ -2,21 +2,19 @@
 <root>
   <item>
     <name>Enable at only StarCraft II</name>
-    <list>
-      <item>
-        <name>Swap Space and Shift_L</name>
-        <only>STARCRAFT2</only>
-        <identifier>remap.app_starcraft2_swap_SPACE_SHIFT_L</identifier>
-        <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::SHIFT_L</autogen>
-      </item>
-      <item>
-        <name>Swap Command_L and Control_L</name>
-        <only>STARCRAFT2</only>
-        <identifier>remap.app_starcraft2_COMMAND_L_CONTROL_L</identifier>
-        <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Swap Space and Shift_L</name>
+      <only>STARCRAFT2</only>
+      <identifier>remap.app_starcraft2_swap_SPACE_SHIFT_L</identifier>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Swap Command_L and Control_L</name>
+      <only>STARCRAFT2</only>
+      <identifier>remap.app_starcraft2_COMMAND_L_CONTROL_L</identifier>
+      <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+    </item>
   </item>
 </root>

@@ -2,116 +2,114 @@
 <root>
   <item>
     <name>VK_STICKY</name>
-    <list>
-      <item>
-        <name>Toggle</name>
-        <appendix>Use 1 to Sticky Command_L</appendix>
-        <appendix>Use 2 to Sticky Command_R</appendix>
-        <appendix>Use 3 to Sticky Control_L</appendix>
-        <appendix>Use 4 to Sticky Control_R</appendix>
-        <appendix>Use 5 to Sticky Fn</appendix>
-        <appendix>Use 6 to Sticky Option_L</appendix>
-        <appendix>Use 7 to Sticky Option_R</appendix>
-        <appendix>Use 8 to Sticky Shift_L</appendix>
-        <appendix>Use 9 to Sticky Shift_R</appendix>
-        <appendix>Use Q to Sticky ModifierFlag::EXTRA1</appendix>
-        <appendix>Use W to Sticky ModifierFlag::EXTRA2</appendix>
-        <appendix>Use E to Sticky ModifierFlag::EXTRA3</appendix>
-        <appendix>Use R to Sticky ModifierFlag::EXTRA4</appendix>
-        <appendix>Use T to Sticky ModifierFlag::EXTRA5</appendix>
-        <appendix>Use Y to Y,Sticky Shift_L</appendix>
-        <appendix>Use L to Shift_L (+ Sticky Shift_L)</appendix>
-        <appendix></appendix>
-        <appendix>EXTRA1+A to 1</appendix>
-        <appendix>EXTRA2+A to 2</appendix>
-        <appendix>EXTRA3+A to 3</appendix>
-        <appendix>EXTRA4+A to 4</appendix>
-        <appendix>EXTRA5+A to 5</appendix>
-        <identifier>remap.samples_vk_sticky</identifier>
-        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_STICKY_FN</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R</autogen>
-        <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_STICKY_EXTRA1</autogen>
-        <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_STICKY_EXTRA2</autogen>
-        <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3</autogen>
-        <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4</autogen>
-        <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
-        <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Y, KeyCode::VK_STICKY_SHIFT_L</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
-        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
-        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA3, KeyCode::KEY_3</autogen>
-        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA4, KeyCode::KEY_4</autogen>
-        <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA5, KeyCode::KEY_5</autogen>
-      </item>
-      <item>
-        <name>Force On/Off</name>
-        <appendix>Use 1 to Sticky Command_L Force On</appendix>
-        <appendix>Use 2 to Sticky Command_R Force On</appendix>
-        <appendix>Use 3 to Sticky Control_L Force On</appendix>
-        <appendix>Use 4 to Sticky Control_R Force On</appendix>
-        <appendix>Use 5 to Sticky Fn Force On</appendix>
-        <appendix>Use 6 to Sticky Option_L Force On</appendix>
-        <appendix>Use 7 to Sticky Option_R Force On</appendix>
-        <appendix>Use 8 to Sticky Shift_L Force On</appendix>
-        <appendix>Use 9 to Sticky Shift_R Force On</appendix>
-        <appendix>Use Q to Sticky ModifierFlag::EXTRA1 Force On</appendix>
-        <appendix>Use W to Sticky ModifierFlag::EXTRA2 Force On</appendix>
-        <appendix>Use E to Sticky ModifierFlag::EXTRA3 Force On</appendix>
-        <appendix>Use R to Sticky ModifierFlag::EXTRA4 Force On</appendix>
-        <appendix>Use T to Sticky ModifierFlag::EXTRA5 Force On</appendix>
+    <item>
+      <name>Toggle</name>
+      <appendix>Use 1 to Sticky Command_L</appendix>
+      <appendix>Use 2 to Sticky Command_R</appendix>
+      <appendix>Use 3 to Sticky Control_L</appendix>
+      <appendix>Use 4 to Sticky Control_R</appendix>
+      <appendix>Use 5 to Sticky Fn</appendix>
+      <appendix>Use 6 to Sticky Option_L</appendix>
+      <appendix>Use 7 to Sticky Option_R</appendix>
+      <appendix>Use 8 to Sticky Shift_L</appendix>
+      <appendix>Use 9 to Sticky Shift_R</appendix>
+      <appendix>Use Q to Sticky ModifierFlag::EXTRA1</appendix>
+      <appendix>Use W to Sticky ModifierFlag::EXTRA2</appendix>
+      <appendix>Use E to Sticky ModifierFlag::EXTRA3</appendix>
+      <appendix>Use R to Sticky ModifierFlag::EXTRA4</appendix>
+      <appendix>Use T to Sticky ModifierFlag::EXTRA5</appendix>
+      <appendix>Use Y to Y,Sticky Shift_L</appendix>
+      <appendix>Use L to Shift_L (+ Sticky Shift_L)</appendix>
+      <appendix></appendix>
+      <appendix>EXTRA1+A to 1</appendix>
+      <appendix>EXTRA2+A to 2</appendix>
+      <appendix>EXTRA3+A to 3</appendix>
+      <appendix>EXTRA4+A to 4</appendix>
+      <appendix>EXTRA5+A to 5</appendix>
+      <identifier>remap.samples_vk_sticky</identifier>
+      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_STICKY_FN</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R</autogen>
+      <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_STICKY_EXTRA1</autogen>
+      <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_STICKY_EXTRA2</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3</autogen>
+      <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4</autogen>
+      <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
+      <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Y, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA3, KeyCode::KEY_3</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA4, KeyCode::KEY_4</autogen>
+      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA5, KeyCode::KEY_5</autogen>
+    </item>
+    <item>
+      <name>Force On/Off</name>
+      <appendix>Use 1 to Sticky Command_L Force On</appendix>
+      <appendix>Use 2 to Sticky Command_R Force On</appendix>
+      <appendix>Use 3 to Sticky Control_L Force On</appendix>
+      <appendix>Use 4 to Sticky Control_R Force On</appendix>
+      <appendix>Use 5 to Sticky Fn Force On</appendix>
+      <appendix>Use 6 to Sticky Option_L Force On</appendix>
+      <appendix>Use 7 to Sticky Option_R Force On</appendix>
+      <appendix>Use 8 to Sticky Shift_L Force On</appendix>
+      <appendix>Use 9 to Sticky Shift_R Force On</appendix>
+      <appendix>Use Q to Sticky ModifierFlag::EXTRA1 Force On</appendix>
+      <appendix>Use W to Sticky ModifierFlag::EXTRA2 Force On</appendix>
+      <appendix>Use E to Sticky ModifierFlag::EXTRA3 Force On</appendix>
+      <appendix>Use R to Sticky ModifierFlag::EXTRA4 Force On</appendix>
+      <appendix>Use T to Sticky ModifierFlag::EXTRA5 Force On</appendix>
 
-        <appendix>Use A to Sticky Command_L Force Off</appendix>
-        <appendix>Use S to Sticky Command_R Force Off</appendix>
-        <appendix>Use D to Sticky Control_L Force Off</appendix>
-        <appendix>Use F to Sticky Control_R Force Off</appendix>
-        <appendix>Use G to Sticky Fn Force Off</appendix>
-        <appendix>Use H to Sticky Option_L Force Off</appendix>
-        <appendix>Use J to Sticky Option_R Force Off</appendix>
-        <appendix>Use K to Sticky Shift_L Force Off</appendix>
-        <appendix>Use L to Sticky Shift_R Force Off</appendix>
-        <appendix>Use Z to Sticky ModifierFlag::EXTRA1 Force Off</appendix>
-        <appendix>Use X to Sticky ModifierFlag::EXTRA2 Force Off</appendix>
-        <appendix>Use C to Sticky ModifierFlag::EXTRA3 Force Off</appendix>
-        <appendix>Use V to Sticky ModifierFlag::EXTRA4 Force Off</appendix>
-        <appendix>Use B to Sticky ModifierFlag::EXTRA5 Force Off</appendix>
-        <identifier>remap.samples_vk_sticky_force_on_off</identifier>
-        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_STICKY_FN_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_STICKY_EXTRA1_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_STICKY_EXTRA2_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4_FORCE_ON</autogen>
-        <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5_FORCE_ON</autogen>
+      <appendix>Use A to Sticky Command_L Force Off</appendix>
+      <appendix>Use S to Sticky Command_R Force Off</appendix>
+      <appendix>Use D to Sticky Control_L Force Off</appendix>
+      <appendix>Use F to Sticky Control_R Force Off</appendix>
+      <appendix>Use G to Sticky Fn Force Off</appendix>
+      <appendix>Use H to Sticky Option_L Force Off</appendix>
+      <appendix>Use J to Sticky Option_R Force Off</appendix>
+      <appendix>Use K to Sticky Shift_L Force Off</appendix>
+      <appendix>Use L to Sticky Shift_R Force Off</appendix>
+      <appendix>Use Z to Sticky ModifierFlag::EXTRA1 Force Off</appendix>
+      <appendix>Use X to Sticky ModifierFlag::EXTRA2 Force Off</appendix>
+      <appendix>Use C to Sticky ModifierFlag::EXTRA3 Force Off</appendix>
+      <appendix>Use V to Sticky ModifierFlag::EXTRA4 Force Off</appendix>
+      <appendix>Use B to Sticky ModifierFlag::EXTRA5 Force Off</appendix>
+      <identifier>remap.samples_vk_sticky_force_on_off</identifier>
+      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_STICKY_FN_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_STICKY_EXTRA1_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_STICKY_EXTRA2_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4_FORCE_ON</autogen>
+      <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5_FORCE_ON</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_STICKY_COMMAND_L_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_STICKY_COMMAND_R_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_STICKY_CONTROL_L_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_STICKY_CONTROL_R_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::G, KeyCode::VK_STICKY_FN_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::H, KeyCode::VK_STICKY_OPTION_L_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_STICKY_SHIFT_R_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::Z, KeyCode::VK_STICKY_EXTRA1_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::X, KeyCode::VK_STICKY_EXTRA2_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::C, KeyCode::VK_STICKY_EXTRA3_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::V, KeyCode::VK_STICKY_EXTRA4_FORCE_OFF</autogen>
-        <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_STICKY_EXTRA5_FORCE_OFF</autogen>
-      </item>
-    </list>
+      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_STICKY_COMMAND_L_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_STICKY_COMMAND_R_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_STICKY_CONTROL_L_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_STICKY_CONTROL_R_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, KeyCode::VK_STICKY_FN_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::H, KeyCode::VK_STICKY_OPTION_L_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_STICKY_SHIFT_R_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::Z, KeyCode::VK_STICKY_EXTRA1_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::X, KeyCode::VK_STICKY_EXTRA2_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, KeyCode::VK_STICKY_EXTRA3_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::V, KeyCode::VK_STICKY_EXTRA4_FORCE_OFF</autogen>
+      <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_STICKY_EXTRA5_FORCE_OFF</autogen>
+    </item>
   </item>
 </root>

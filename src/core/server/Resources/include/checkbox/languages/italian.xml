@@ -2,37 +2,35 @@
 <root>
   <item>
     <name>For Italian</name>
-    <list>
-      <item>
-        <name>Exchange Backslash(\) and Less-Than(&lt;)</name>
-        <identifier>remap.italian_exchange_backslash_less_than</identifier>
-        <autogen>--KeyToKey-- KeyCode::ITALIAN_BACKSLASH, KeyCode::ITALIAN_LESS_THAN</autogen>
-        <autogen>--KeyToKey-- KeyCode::ITALIAN_LESS_THAN, KeyCode::ITALIAN_BACKSLASH</autogen>
-      </item>
-      <item>
-        <name>Option+AEIUO to àèìùò on "Italian Input Source"</name>
-        <identifier>remap.italian_optionAEIUO_grave_italian</identifier>
-        <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::A</autogen>
-        <autogen>--KeyToKey-- KeyCode::E, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::E</autogen>
-        <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::I</autogen>
-        <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::U</autogen>
-        <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::O</autogen>
-      </item>
-      <item>
-        <name>Option+AEIUO to àèìùò on "U.S. Input Source"</name>
-        <identifier>remap.italian_optionAEIUO_grave_us</identifier>
-        <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::A</autogen>
-        <autogen>--KeyToKey-- KeyCode::E, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::E</autogen>
-        <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::I</autogen>
-        <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::U</autogen>
-        <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::O</autogen>
-      </item>
-      <item>
-        <name>KeyPad Comma(,) to Dot(.) on "Italian Pro Input Source"</name>
-        <identifier>remap.italian_keypadcomma2dot</identifier>
-        <!-- ITALIAN_KEYPAD_COMMA is 0x41 (== KEYPAD_DOT) -->
-        <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Exchange Backslash(\) and Less-Than(&lt;)</name>
+      <identifier>remap.italian_exchange_backslash_less_than</identifier>
+      <autogen>--KeyToKey-- KeyCode::ITALIAN_BACKSLASH, KeyCode::ITALIAN_LESS_THAN</autogen>
+      <autogen>--KeyToKey-- KeyCode::ITALIAN_LESS_THAN, KeyCode::ITALIAN_BACKSLASH</autogen>
+    </item>
+    <item>
+      <name>Option+AEIUO to àèìùò on "Italian Input Source"</name>
+      <identifier>remap.italian_optionAEIUO_grave_italian</identifier>
+      <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::O</autogen>
+    </item>
+    <item>
+      <name>Option+AEIUO to àèìùò on "U.S. Input Source"</name>
+      <identifier>remap.italian_optionAEIUO_grave_us</identifier>
+      <autogen>--KeyToKey-- KeyCode::A, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::A</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::I, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::I</autogen>
+      <autogen>--KeyToKey-- KeyCode::U, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::U</autogen>
+      <autogen>--KeyToKey-- KeyCode::O, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::O</autogen>
+    </item>
+    <item>
+      <name>KeyPad Comma(,) to Dot(.) on "Italian Pro Input Source"</name>
+      <identifier>remap.italian_keypadcomma2dot</identifier>
+      <!-- ITALIAN_KEYPAD_COMMA is 0x41 (== KEYPAD_DOT) -->
+      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
+    </item>
   </item>
 </root>

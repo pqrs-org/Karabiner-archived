@@ -2,18 +2,16 @@
 <root>
   <item>
     <name>For Spanish</name>
-    <list>
-      <item>
-        <name>Change Option_R+4 to Ñ (Option_R+;)</name>
-        <identifier>remap.pc_applicationoption4n</identifier>
-        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
-      </item>
-      <item>
-        <name>Swap Ordinal-indicator(º) and Less-Than(&lt;)</name>
-        <identifier>remap.spanish_swap_ordinal_indicator_lessthan</identifier>
-        <autogen>--KeyToKey-- KeyCode::SPANISH_ORDINAL_INDICATOR, KeyCode::SPANISH_LESS_THAN</autogen>
-        <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Change Option_R+4 to Ñ (Option_R+;)</name>
+      <identifier>remap.pc_applicationoption4n</identifier>
+      <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
+    </item>
+    <item>
+      <name>Swap Ordinal-indicator(º) and Less-Than(&lt;)</name>
+      <identifier>remap.spanish_swap_ordinal_indicator_lessthan</identifier>
+      <autogen>--KeyToKey-- KeyCode::SPANISH_ORDINAL_INDICATOR, KeyCode::SPANISH_LESS_THAN</autogen>
+      <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
+    </item>
   </item>
 </root>

@@ -2,65 +2,63 @@
 <root>
   <item>
     <name>For Slovenian</name>
-    <list>
-      <item>
-        <name>Remap keyboard (symbol) shortcuts to standard Windows/Linux style</name>
-        <appendix>(important characters only)</appendix>
-        <appendix></appendix>
-        <identifier>remap.slovenian_win_style_shortcuts</identifier>
+    <item>
+      <name>Remap keyboard (symbol) shortcuts to standard Windows/Linux style</name>
+      <appendix>(important characters only)</appendix>
+      <appendix></appendix>
+      <identifier>remap.slovenian_win_style_shortcuts</identifier>
 
-        <inputmode_only>SLOVENIAN</inputmode_only>
+      <inputmode_only>SLOVENIAN</inputmode_only>
 
-        <appendix>Option_R (AltGr) + 1 = ~</appendix>
-        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_R,
-          KeyCode::N, ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + 1 = ~</appendix>
+      <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_R,
+        KeyCode::N, ModifierFlag::OPTION_L</autogen>
 
-        <appendix>Option_R (AltGr) + 5 = °</appendix>
-        <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_R,
-          KeyCode::KEY_8, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + 5 = °</appendix>
+      <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_R,
+        KeyCode::KEY_8, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
 
-        <appendix>Shift_L + 7 = / and / = ' (plus hack for ? - second line)</appendix>
-        <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT,
-          KeyCode::MINUS</autogen>
-        <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT,
-          KeyCode::MINUS, VK_SHIFT</autogen>
-        <autogen>--KeyToKey-- KeyCode::MINUS,
-          KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+      <appendix>Shift_L + 7 = / and / = ' (plus hack for ? - second line)</appendix>
+      <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT,
+        KeyCode::MINUS</autogen>
+      <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT,
+        KeyCode::MINUS, VK_SHIFT</autogen>
+      <autogen>--KeyToKey-- KeyCode::MINUS,
+        KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
 
-        <appendix>Key between Y and Shift_L = &lt; &gt;</appendix>
-        <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT,
-          KeyCode::RUSSIAN_TILDE, ModifierFlag::SHIFT_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::RUSSIAN_TILDE</autogen>
+      <appendix>Key between Y and Shift_L = &lt; &gt;</appendix>
+      <autogen>--KeyToKey-- KeyCode::UK_SECTION, VK_SHIFT,
+        KeyCode::RUSSIAN_TILDE, ModifierFlag::SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::UK_SECTION, KeyCode::RUSSIAN_TILDE</autogen>
 
-        <appendix>Option_R (AltGr) + Q = \</appendix>
-        <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::OPTION_R,
-          KeyCode::BACKSLASH, ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + Q = \</appendix>
+      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::OPTION_R,
+        KeyCode::BACKSLASH, ModifierFlag::OPTION_L</autogen>
 
-        <appendix>Option_R (AltGr) + W = |</appendix>
-        <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_R,
-          KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + W = |</appendix>
+      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::OPTION_R,
+        KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
 
-        <appendix>Option_R (AltGr) + E = €</appendix>
-        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::OPTION_R,
-          KeyCode::KEY_5, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + E = €</appendix>
+      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::OPTION_R,
+        KeyCode::KEY_5, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
 
-        <appendix>Option_R (AltGr) + F = [ ... Option_R (AltGr) + G = ]</appendix>
-        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_R,
-          KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::OPTION_R,
-          KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + F = [ ... Option_R (AltGr) + G = ]</appendix>
+      <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::OPTION_R,
+        KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::OPTION_R,
+        KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
 
-        <appendix>Option_R (AltGr) + V = @</appendix>
-        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_R,
-          KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + V = @</appendix>
+      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::OPTION_R,
+        KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
 
-        <appendix>Option_R (AltGr) + B = { ... Option_R (AltGr) + N = }</appendix>
-        <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::OPTION_R,
-          KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+      <appendix>Option_R (AltGr) + B = { ... Option_R (AltGr) + N = }</appendix>
+      <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::OPTION_R,
+        KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
 
-        <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::OPTION_R,
-          KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
-      </item>
-    </list>
+      <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::OPTION_R,
+        KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+    </item>
   </item>
 </root>

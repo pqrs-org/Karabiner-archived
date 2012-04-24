@@ -2,14 +2,12 @@
 <root>
   <item>
     <name>For Bulgarian</name>
-    <list>
-      <item>
-        <name>Change underscore(_) on Japanese keyboard to ч</name>
-        <appendix>(For Bulgarian-Phonetic)</appendix>
-        <identifier>remap.bulgarian_jis_underscore_to_backquote</identifier>
-        <inputmode_only>BULGARIAN</inputmode_only>
-        <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Change underscore(_) on Japanese keyboard to ч</name>
+      <appendix>(For Bulgarian-Phonetic)</appendix>
+      <identifier>remap.bulgarian_jis_underscore_to_backquote</identifier>
+      <inputmode_only>BULGARIAN</inputmode_only>
+      <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
+    </item>
   </item>
 </root>

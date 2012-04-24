@@ -2,13 +2,11 @@
 <root>
   <item>
     <name>Enable at only Vienna</name>
-    <list>
-      <item>
-        <name>Change Option_R to Enter</name>
-        <identifier>remap.app_vienna_optionR2enter</identifier>
-        <only>VIENNA</only>
-        <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
-      </item>
-    </list>
+    <item>
+      <name>Change Option_R to Enter</name>
+      <identifier>remap.app_vienna_optionR2enter</identifier>
+      <only>VIENNA</only>
+      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+    </item>
   </item>
 </root>

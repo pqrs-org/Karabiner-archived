@@ -2,418 +2,392 @@
 <root>
   <item>
     <name>Device Specific Mixed Settings</name>
-    <list>
+    <item>
+      <name>For MacBook series (vid/pid: 0x05ac,0x0236)</name>
       <item>
-        <name>For MacBook series (vid/pid: 0x05ac,0x0236)</name>
-        <list>
-          <item>
-            <name>Swap Command_L and Option_L on MacBook pro (vid/pid: 0x05ac,0x0236)</name>
-            <identifier>remap.swap_commandL_and_optionL_mac_book_pro_0x0236</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0236</device_only>
-              <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-            </block>
-          </item>
-        </list>
+        <name>Swap Command_L and Option_L on MacBook pro (vid/pid: 0x05ac,0x0236)</name>
+        <identifier>remap.swap_commandL_and_optionL_mac_book_pro_0x0236</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0236</device_only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+        </block>
+      </item>
+    </item>
+
+    <item>
+      <name>For MacBook series (vid/pid: 0x05ac,0x021a)</name>
+      <item>
+        <name>Backslash to R Bracket</name>
+        <identifier>remap.backslash_to_bracket_r_0x05ac_0x021a</identifier>
+        <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::BRACKET_RIGHT</autogen>
+        <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
       </item>
 
       <item>
-        <name>For MacBook series (vid/pid: 0x05ac,0x021a)</name>
-        <list>
-          <item>
-            <name>Backslash to R Bracket</name>
-            <identifier>remap.backslash_to_bracket_r_0x05ac_0x021a</identifier>
-            <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::BRACKET_RIGHT</autogen>
-            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
-          </item>
+        <name>Fix Keyboard Upgrade!</name>
+        <identifier>remap.fix_keyboard_upgrade_0x05ac_0x021a</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::EXPOSE_ALL</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::DASHBOARD</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PREV</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, ConsumerKeyCode::MUSIC_NEXT</autogen>
+        <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+        <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
+      </item>
+    </item>
 
-          <item>
-            <name>Fix Keyboard Upgrade!</name>
-            <identifier>remap.fix_keyboard_upgrade_0x05ac_0x021a</identifier>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::EXPOSE_ALL</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::DASHBOARD</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PREV</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_OFF, ConsumerKeyCode::MUSIC_PLAY</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW, ConsumerKeyCode::MUSIC_NEXT</autogen>
-            <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ConsumerKeyCode::VOLUME_MUTE</autogen>
-            <autogen>--KeyToConsumer-- KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
-            <autogen>--KeyToConsumer-- KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
-            <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
-          </item>
-        </list>
+    <item>
+      <name>For MacBook series (vid/pid: 0x05ac,0x0218)</name>
+      <item>
+        <name>Swap Shift_L and CapsLock on the Mac's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
+        <appendix>(ExposeAll to Shift_L and Shift_L to CapsLock on the MacBook's internal keyboard)</appendix>
+        <appendix>(ExposeAll back to CapsLock on other devices)</appendix>
+        <identifier>remap.swap_shiftLcapslock_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::SHIFT_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+        </block>
+        <block>
+          <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_not>
+          <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Revert CapsLock to normal on every kbds</name>
+        <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
+        <identifier>remap.restorecapslock_AllKeyboards</identifier>
+        <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
       </item>
 
       <item>
-        <name>For MacBook series (vid/pid: 0x05ac,0x0218)</name>
-        <list>
-          <item>
-            <name>Swap Shift_L and CapsLock on the Mac's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
-            <appendix>(ExposeAll to Shift_L and Shift_L to CapsLock on the MacBook's internal keyboard)</appendix>
-            <appendix>(ExposeAll back to CapsLock on other devices)</appendix>
-            <identifier>remap.swap_shiftLcapslock_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::SHIFT_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-            </block>
-            <block>
-              <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_not>
-              <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Revert CapsLock to normal on every kbds</name>
-            <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
-            <identifier>remap.restorecapslock_AllKeyboards</identifier>
-            <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
-          </item>
+        <name>Command_R to Option_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <identifier>remap.commandR2optionR_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Enter to Control_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <identifier>remap.enter2controlR_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_R</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Swap Shift_R and Backslash (\) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <identifier>remap.swap_shiftRpipes_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
+          <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::SHIFT_R</autogen>
+        </block>
+      </item>
+      <item>
+        <name>‘last row left-shift’ on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <appendix>(Backquote,Z,X,C,V to Z,X,C,V,B)</appendix>
+        <identifier>remap.backquote2z_zxcv2xcvb_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::Z</autogen>
+          <autogen>--KeyToKey-- KeyCode::Z, KeyCode::X</autogen>
+          <autogen>--KeyToKey-- KeyCode::X, KeyCode::C</autogen>
+          <autogen>--KeyToKey-- KeyCode::C, KeyCode::V</autogen>
+          <autogen>--KeyToKey-- KeyCode::V, KeyCode::B</autogen>
+        </block>
+      </item>
+      <item>
+        <name>‘Central-Return’ (B to Return) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <identifier>remap.b2return_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN</autogen>
+        </block>
+      </item>
+      <item>
+        <name>‘first row right-shift’ on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <appendix>(7,8,9,0,-,=,delete to 6,7,8,9,0,-,=)</appendix>
+        <identifier>remap.firstrowshift_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::KEY_6</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::KEY_7</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::KEY_8</autogen>
+          <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::KEY_9</autogen>
+          <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::KEY_0</autogen>
+          <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::MINUS</autogen>
+          <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::EQUAL</autogen>
+        </block>
+      </item>
+      <item>
+        <name>‘Central-Delete’ (6 to Delete) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
+        <identifier>remap.six2delete_MacBookOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
+          <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::DELETE</autogen>
+        </block>
+      </item>
+    </item>
 
-          <item>
-            <name>Command_R to Option_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <identifier>remap.commandR2optionR_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Enter to Control_R on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <identifier>remap.enter2controlR_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::ENTER, KeyCode::CONTROL_R</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Swap Shift_R and Backslash (\) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <identifier>remap.swap_shiftRpipes_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::BACKSLASH</autogen>
-              <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::SHIFT_R</autogen>
-            </block>
-          </item>
-          <item>
-            <name>‘last row left-shift’ on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <appendix>(Backquote,Z,X,C,V to Z,X,C,V,B)</appendix>
-            <identifier>remap.backquote2z_zxcv2xcvb_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::Z</autogen>
-              <autogen>--KeyToKey-- KeyCode::Z, KeyCode::X</autogen>
-              <autogen>--KeyToKey-- KeyCode::X, KeyCode::C</autogen>
-              <autogen>--KeyToKey-- KeyCode::C, KeyCode::V</autogen>
-              <autogen>--KeyToKey-- KeyCode::V, KeyCode::B</autogen>
-            </block>
-          </item>
-          <item>
-            <name>‘Central-Return’ (B to Return) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <identifier>remap.b2return_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::B, KeyCode::RETURN</autogen>
-            </block>
-          </item>
-          <item>
-            <name>‘first row right-shift’ on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <appendix>(7,8,9,0,-,=,delete to 6,7,8,9,0,-,=)</appendix>
-            <identifier>remap.firstrowshift_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::KEY_6</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::KEY_7</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::KEY_8</autogen>
-              <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::KEY_9</autogen>
-              <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::KEY_0</autogen>
-              <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::MINUS</autogen>
-              <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::EQUAL</autogen>
-            </block>
-          </item>
-          <item>
-            <name>‘Central-Delete’ (6 to Delete) on the MacBook's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-            <identifier>remap.six2delete_MacBookOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</device_only>
-              <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::DELETE</autogen>
-            </block>
-          </item>
-        </list>
+    <item>
+      <name>For Magic Mouse (vid/pid: 0x05ac,0x030d)</name>
+      <item>
+        <name>Disable ScrollWheel</name>
+        <identifier>remap.dropscrollwheel_0x05ac_0x030d</identifier>
+        <block>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_MOUSE</device_only>
+          <autogen>--DropScrollWheel--</autogen>
+        </block>
+      </item>
+    </item>
+
+    <item>
+      <name>For Logitech Devices</name>
+      <item>
+        <name>Tilt Wheel to Back/Forward (Command+[, Command+]) on Logitech MX620</name>
+        <identifier>remap.tilt_to_back_forward</identifier>
+        <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_MX620</device_only>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
+          KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
+          KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>For TypeMatrix 2030</name>
+      <item>
+        <name>Swap Command_L and Option_L on TypeMatrix 2030 kbd</name>
+        <identifier>remap.swap_commandLoptionL_TypeMatrixOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Option+Tab to Command+Tab on TypeMatrix 2030 kbd</name>
+        <identifier>remap.optionTab2commandTab_TypeMatrixOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+          <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+        </block>
       </item>
 
       <item>
-        <name>For Magic Mouse (vid/pid: 0x05ac,0x030d)</name>
-        <list>
-          <item>
-            <name>Disable ScrollWheel</name>
-            <identifier>remap.dropscrollwheel_0x05ac_0x030d</identifier>
-            <block>
-              <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_MOUSE</device_only>
-              <autogen>--DropScrollWheel--</autogen>
-            </block>
-          </item>
-        </list>
+        <name>Application Key to Command_L+Backquote on TypeMatrix 2030 kbd</name>
+        <identifier>remap.pc_application2commandLbackquote_TypeMatrixOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+          <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+        </block>
       </item>
 
       <item>
-        <name>For Logitech Devices</name>
-        <list>
-          <item>
-            <name>Tilt Wheel to Back/Forward (Command+[, Command+]) on Logitech MX620</name>
-            <identifier>remap.tilt_to_back_forward</identifier>
-            <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_MX620</device_only>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
-              KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
-              KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
-          </item>
-        </list>
+        <name>Use PC Style Copy/Paste #3 on TypeMatrix 2030 kbd</name>
+        <appendix>(Control+Insert to Command_L+C)</appendix>
+        <appendix>(Shift+Insert to Command_L+V)</appendix>
+        <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
+        <identifier>remap.copy_paste_winstyle3_TypeMatrixOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Use PC Style Copy/Paste #3bis (for bépo / french dvorak) on TypeMatrix 2030 kbd</name>
+        <appendix>(Control+Insert to Command_L+C)</appendix>
+        <appendix>(Shift+Insert to Command_L+V)</appendix>
+        <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
+        <identifier>remap.copy_paste_winstyle3b_TypeMatrixOnly</identifier>
+        <block>
+          <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::H, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        </block>
       </item>
 
       <item>
-        <name>For TypeMatrix 2030</name>
-        <list>
-          <item>
-            <name>Swap Command_L and Option_L on TypeMatrix 2030 kbd</name>
-            <identifier>remap.swap_commandLoptionL_TypeMatrixOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-              <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Option+Tab to Command+Tab on TypeMatrix 2030 kbd</name>
-            <identifier>remap.optionTab2commandTab_TypeMatrixOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-              <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-            </block>
-          </item>
-
-          <item>
-            <name>Application Key to Command_L+Backquote on TypeMatrix 2030 kbd</name>
-            <identifier>remap.pc_application2commandLbackquote_TypeMatrixOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
-            </block>
-          </item>
-
-          <item>
-            <name>Use PC Style Copy/Paste #3 on TypeMatrix 2030 kbd</name>
-            <appendix>(Control+Insert to Command_L+C)</appendix>
-            <appendix>(Shift+Insert to Command_L+V)</appendix>
-            <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
-            <identifier>remap.copy_paste_winstyle3_TypeMatrixOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-              <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Use PC Style Copy/Paste #3bis (for bépo / french dvorak) on TypeMatrix 2030 kbd</name>
-            <appendix>(Control+Insert to Command_L+C)</appendix>
-            <appendix>(Shift+Insert to Command_L+V)</appendix>
-            <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
-            <identifier>remap.copy_paste_winstyle3b_TypeMatrixOnly</identifier>
-            <block>
-              <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-              <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::H, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-            </block>
-          </item>
-
-          <item>
-            <name>Make Cut, Copy, Paste work on TypeMatrix 2030 using Dvorak layout in MacOS X</name>
-            <appendix>Change Shift+Delete to Command_L+B (X in DV - i.e. Cut)</appendix>
-            <appendix>Change Control+Insert to Command_L+I (C in DV - i.e. Copy) </appendix>
-            <appendix>Change Shift+Insert to Command_L+. (V in DV - i.e. Paste) </appendix>
-            <identifier>remap.typematrix_winstyle_zxc_dvorak</identifier>
-            <block>
-              <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-              <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT   | ModifierFlag::NONE, KeyCode::B,   ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
-            </block>
-          </item>
-        </list>
+        <name>Make Cut, Copy, Paste work on TypeMatrix 2030 using Dvorak layout in MacOS X</name>
+        <appendix>Change Shift+Delete to Command_L+B (X in DV - i.e. Cut)</appendix>
+        <appendix>Change Control+Insert to Command_L+I (C in DV - i.e. Copy) </appendix>
+        <appendix>Change Shift+Insert to Command_L+. (V in DV - i.e. Paste) </appendix>
+        <identifier>remap.typematrix_winstyle_zxc_dvorak</identifier>
+        <block>
+          <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
+          <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT   | ModifierFlag::NONE, KeyCode::B,   ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::PC_INSERT,      VK_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
+        </block>
       </item>
+    </item>
 
+    <item>
+      <name>For IBM Model M Keyboard</name>
       <item>
-        <name>For IBM Model M Keyboard</name>
-        <list>
-          <item>
-            <name>Change IBM Model M Keyboard</name>
-            <appendix>(with PS2-to-USB adapters (Chesen Electronics Corp))</appendix>
-            <appendix>Bottom row of Model M keyboard:</appendix>
-            <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
-            <appendix>   Remapped: Ctrl Cmd [space bar] Cmd Alt</appendix>
-            <identifier>remap.modelMkeyboard</identifier>
-            <device_only>DeviceVendor::CHESEN,DeviceProduct::CHESEN_PS2_TO_USB</device_only>
-            <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
-            <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
-          </item>
-          <item>
-            <name>Swap Start (aka Command) and Alt keys on Windows keyboard</name>
-            <identifier>remap.windows4mac</identifier>
-            <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
-            <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
-          </item>
-        </list>
+        <name>Change IBM Model M Keyboard</name>
+        <appendix>(with PS2-to-USB adapters (Chesen Electronics Corp))</appendix>
+        <appendix>Bottom row of Model M keyboard:</appendix>
+        <appendix>   Original: Ctrl Alt [space bar] Alt Ctrl</appendix>
+        <appendix>   Remapped: Ctrl Cmd [space bar] Cmd Alt</appendix>
+        <identifier>remap.modelMkeyboard</identifier>
+        <device_only>DeviceVendor::CHESEN,DeviceProduct::CHESEN_PS2_TO_USB</device_only>
+        <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+        <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
       </item>
-
       <item>
-        <name>For Unicomp SpaceSaver M</name>
-        <list>
-          <item>
-            <name>Change Fn+F1..F12 keys to F1..F12 (only in Emacs)</name>
-            <identifier>remap.SpaceSaverM.function_key_mapping_emacs</identifier>
-            <only>EMACS</only>
-            <device_only>DeviceVendor::Unicomp_Inc, DeviceProduct::Unicomp_SpaceSaver_M_Keyboard</device_only>
-            <autogen>--KeyToKey-- KeyCode::F14, KeyCode::F1</autogen>
-            <autogen>--KeyToKey-- KeyCode::F15, KeyCode::F2</autogen>
-            <autogen>--KeyToKey-- KeyCode::F9,  KeyCode::F3</autogen>
-            <autogen>--KeyToKey-- KeyCode::F12, KeyCode::F4</autogen>
-            <!-- F5 and F6 are mapped correctly as-is: No remapping needed -->
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV_18, KeyCode::F7</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT_17, KeyCode::F9</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::F10</autogen>
-            <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
-          </item>
-        </list>
+        <name>Swap Start (aka Command) and Alt keys on Windows keyboard</name>
+        <identifier>remap.windows4mac</identifier>
+        <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
       </item>
+    </item>
 
+    <item>
+      <name>For Unicomp SpaceSaver M</name>
       <item>
-        <name>For HHK (Happy Hacking Keyboard) Users</name>
-        <list>
-          <item>
-            <name>Enable HHK compatible Arrow Key Mode</name>
-            <identifier>remap.hhkmode</identifier>
-            <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- KeyCode::SEMICOLON,    ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
-            <autogen>--KeyToKey-- KeyCode::QUOTE,        ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
-            <autogen>--KeyToKey-- KeyCode::SLASH,        ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
-            <autogen>--KeyToKey-- KeyCode::L,            ModifierFlag::FN, KeyCode::PAGEUP</autogen>
-            <autogen>--KeyToKey-- KeyCode::DOT,          ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
-            <autogen>--KeyToKey-- KeyCode::K,            ModifierFlag::FN, KeyCode::HOME</autogen>
-            <autogen>--KeyToKey-- KeyCode::COMMA,        ModifierFlag::FN, KeyCode::END</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_1,        ModifierFlag::FN, KeyCode::F1</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2,        ModifierFlag::FN, KeyCode::F2</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3,        ModifierFlag::FN, KeyCode::F3</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_4,        ModifierFlag::FN, KeyCode::F4</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_5,        ModifierFlag::FN, KeyCode::F5</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_6,        ModifierFlag::FN, KeyCode::F6</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_7,        ModifierFlag::FN, KeyCode::F7</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_8,        ModifierFlag::FN, KeyCode::F8</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_9,        ModifierFlag::FN, KeyCode::F9</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_0,        ModifierFlag::FN, KeyCode::F10</autogen>
-            <autogen>--KeyToKey-- KeyCode::MINUS,        ModifierFlag::FN, KeyCode::F11</autogen>
-            <autogen>--KeyToKey-- KeyCode::EQUAL,        ModifierFlag::FN, KeyCode::F12</autogen>
-          </item>
-          <item>
-            <name>Enable Fn+hjkl at HHK to Left/Down/Up/Right</name>
-            <identifier>remap.hhkmode_vi_cursor</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::CURSOR_DOWN</autogen>
-            <autogen>--KeyToKey-- KeyCode::HOME,            KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- KeyCode::PAGEUP,          KeyCode::CURSOR_RIGHT</autogen>
-          </item>
-          <item>
-            <name>Change Option_L+1...= to F1...F12 Keys</name>
-            <identifier>remap.hhkmode_opt1_optEqual_to_f1_f12</identifier>
-            <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_L,     KeyCode::F1</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::OPTION_L,     KeyCode::F2</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::OPTION_L,     KeyCode::F3</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_L,     KeyCode::F4</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_L,     KeyCode::F5</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::OPTION_L,     KeyCode::F6</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_L,     KeyCode::F7</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_L,     KeyCode::F8</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_L,     KeyCode::F9</autogen>
-            <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_L,     KeyCode::F10</autogen>
-            <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::OPTION_L,     KeyCode::F11</autogen>
-            <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::OPTION_L,     KeyCode::F12</autogen>
-          </item>
-        </list>
+        <name>Change Fn+F1..F12 keys to F1..F12 (only in Emacs)</name>
+        <identifier>remap.SpaceSaverM.function_key_mapping_emacs</identifier>
+        <only>EMACS</only>
+        <device_only>DeviceVendor::Unicomp_Inc, DeviceProduct::Unicomp_SpaceSaver_M_Keyboard</device_only>
+        <autogen>--KeyToKey-- KeyCode::F14, KeyCode::F1</autogen>
+        <autogen>--KeyToKey-- KeyCode::F15, KeyCode::F2</autogen>
+        <autogen>--KeyToKey-- KeyCode::F9,  KeyCode::F3</autogen>
+        <autogen>--KeyToKey-- KeyCode::F12, KeyCode::F4</autogen>
+        <!-- F5 and F6 are mapped correctly as-is: No remapping needed -->
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PREV_18, KeyCode::F7</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::MUSIC_NEXT_17, KeyCode::F9</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::F10</autogen>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
       </item>
+    </item>
 
+    <item>
+      <name>For HHK (Happy Hacking Keyboard) Users</name>
       <item>
-        <name>For Targus Bluetooth Presenter</name>
-        <list>
-          <item>
-            <name>Fix Targus Bluetooth Presenter</name>
-            <appendix>Map shift-up to up and shift-down to down</appendix>
-            <identifier>remap.targus_bluetooth_presenter_fix</identifier>
-            <device_only>DeviceVendor::TARGUS,DeviceProduct::TARGUS_BLUETOOTH_PRESENTER</device_only>
-            <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
-          </item>
-        </list>
+        <name>Enable HHK compatible Arrow Key Mode</name>
+        <identifier>remap.hhkmode</identifier>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::SEMICOLON,    ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::QUOTE,        ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>--KeyToKey-- KeyCode::SLASH,        ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::L,            ModifierFlag::FN, KeyCode::PAGEUP</autogen>
+        <autogen>--KeyToKey-- KeyCode::DOT,          ModifierFlag::FN, KeyCode::PAGEDOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K,            ModifierFlag::FN, KeyCode::HOME</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMA,        ModifierFlag::FN, KeyCode::END</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_1,        ModifierFlag::FN, KeyCode::F1</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2,        ModifierFlag::FN, KeyCode::F2</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3,        ModifierFlag::FN, KeyCode::F3</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4,        ModifierFlag::FN, KeyCode::F4</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5,        ModifierFlag::FN, KeyCode::F5</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6,        ModifierFlag::FN, KeyCode::F6</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7,        ModifierFlag::FN, KeyCode::F7</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8,        ModifierFlag::FN, KeyCode::F8</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9,        ModifierFlag::FN, KeyCode::F9</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0,        ModifierFlag::FN, KeyCode::F10</autogen>
+        <autogen>--KeyToKey-- KeyCode::MINUS,        ModifierFlag::FN, KeyCode::F11</autogen>
+        <autogen>--KeyToKey-- KeyCode::EQUAL,        ModifierFlag::FN, KeyCode::F12</autogen>
       </item>
-
       <item>
-        <name>For FILCO FKBN91ML/NB</name>
-        <list>
-          <item>
-            <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
-            <appendix>// We perform it through PC Application Key.</appendix>
-            <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
-            <identifier>remap.swap_capslock_and_control_FKBN91ML</identifier>
-            <block>
-              <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
-              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
-            </block>
-            <block>
-              <device_not>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_not>
-              <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
-            </block>
-          </item>
-          <item>
-            <name>Swap Command_L and Option_L on FILCO FKBN91ML/NB</name>
-            <identifier>remap.swap_commandL_and_optionL_FKBN91ML</identifier>
-            <block>
-              <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
-              <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-              <autogen>--KeyToKey-- KeyCode::OPTION_L,  KeyCode::COMMAND_L</autogen>
-            </block>
-          </item>
-        </list>
+        <name>Enable Fn+hjkl at HHK to Left/Down/Up/Right</name>
+        <identifier>remap.hhkmode_vi_cursor</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::HOME,            KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::PAGEUP,          KeyCode::CURSOR_RIGHT</autogen>
       </item>
-
       <item>
-        <name>For Sun Type6 keyboard</name>
-        <list>
-          <item>
-            <name>Exchange ^ and greater key on Sun Type6 keyboard </name>
-            <identifier>remap.sun.greaterkey</identifier>
-            <device_only>DeviceVendor::FUJITSU, DeviceProduct::SUN_TYPE_6_KEYBOARD</device_only>
-            <!-- The order is important -->
-            <autogen>--KeyToKey--
-              KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-              KeyCode::KEY_7, ModifierFlag::OPTION_R
-            </autogen>
-            <autogen>--KeyToKey--
-              KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_L | ModifierFlag::NONE,
-              KeyCode::KEY_7, ModifierFlag::OPTION_L
-            </autogen>
-
-            <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
-            <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
-          </item>
-        </list>
+        <name>Change Option_L+1...= to F1...F12 Keys</name>
+        <identifier>remap.hhkmode_opt1_optEqual_to_f1_f12</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_L,     KeyCode::F1</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::OPTION_L,     KeyCode::F2</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::OPTION_L,     KeyCode::F3</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_L,     KeyCode::F4</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_L,     KeyCode::F5</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::OPTION_L,     KeyCode::F6</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_L,     KeyCode::F7</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_L,     KeyCode::F8</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_L,     KeyCode::F9</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_L,     KeyCode::F10</autogen>
+        <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::OPTION_L,     KeyCode::F11</autogen>
+        <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::OPTION_L,     KeyCode::F12</autogen>
       </item>
-    </list>
+    </item>
+
+    <item>
+      <name>For Targus Bluetooth Presenter</name>
+      <item>
+        <name>Fix Targus Bluetooth Presenter</name>
+        <appendix>Map shift-up to up and shift-down to down</appendix>
+        <identifier>remap.targus_bluetooth_presenter_fix</identifier>
+        <device_only>DeviceVendor::TARGUS,DeviceProduct::TARGUS_BLUETOOTH_PRESENTER</device_only>
+        <autogen>--KeyToKey-- KeyCode::CURSOR_UP, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>For FILCO FKBN91ML/NB</name>
+      <item>
+        <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
+        <appendix>// We perform it through PC Application Key.</appendix>
+        <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
+        <identifier>remap.swap_capslock_and_control_FKBN91ML</identifier>
+        <block>
+          <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
+          <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
+        </block>
+        <block>
+          <device_not>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_not>
+          <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
+        </block>
+      </item>
+      <item>
+        <name>Swap Command_L and Option_L on FILCO FKBN91ML/NB</name>
+        <identifier>remap.swap_commandL_and_optionL_FKBN91ML</identifier>
+        <block>
+          <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
+          <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+          <autogen>--KeyToKey-- KeyCode::OPTION_L,  KeyCode::COMMAND_L</autogen>
+        </block>
+      </item>
+    </item>
+
+    <item>
+      <name>For Sun Type6 keyboard</name>
+      <item>
+        <name>Exchange ^ and greater key on Sun Type6 keyboard </name>
+        <identifier>remap.sun.greaterkey</identifier>
+        <device_only>DeviceVendor::FUJITSU, DeviceProduct::SUN_TYPE_6_KEYBOARD</device_only>
+        <!-- The order is important -->
+        <autogen>--KeyToKey--
+          KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_7, ModifierFlag::OPTION_R
+        </autogen>
+        <autogen>--KeyToKey--
+          KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+          KeyCode::KEY_7, ModifierFlag::OPTION_L
+        </autogen>
+
+        <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
+      </item>
+    </item>
   </item>
 </root>

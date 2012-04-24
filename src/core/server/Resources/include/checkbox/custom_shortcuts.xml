@@ -2,29 +2,27 @@
 <root>
   <item>
     <name>Custom Shortcuts</name>
-    <list>
-      <item>
-        <name>Change Command+Q to Command+Shift+W</name>
-        <appendix>Change Command+Shift_L+Q to Command+Q</appendix>
-        <identifier>remap.commandQ2commandW_commandshiftQ2commandQ</identifier>
-        <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, VK_COMMAND | ModifierFlag::NONE</autogen>
-        <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,    KeyCode::W, VK_COMMAND | ModifierFlag::SHIFT_L</autogen>
-      </item>
-      <item>
-        <name>Hold Command+Q to Quit Application</name>
-        <appendix>(You can adjust the threshold time of holding by</appendix>
-        <appendix>"[Holding Key to Key] Holding Threshold" in Key Repeat tab.)</appendix>
-        <identifier>remap.holdcommandQ</identifier>
-        <autogen>--HoldingKeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>Press Command+Q twice to Quit Application</name>
-        <identifier>remap.doublepresscommandQ</identifier>
-        <autogen>--DoublePressModifier-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,
-          KeyCode::VK_NONE,
-          KeyCode::Q, VK_COMMAND
-        </autogen>
-      </item>
-    </list>
+    <item>
+      <name>Change Command+Q to Command+Shift+W</name>
+      <appendix>Change Command+Shift_L+Q to Command+Q</appendix>
+      <identifier>remap.commandQ2commandW_commandshiftQ2commandQ</identifier>
+      <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, VK_COMMAND | ModifierFlag::NONE</autogen>
+      <autogen>--KeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,    KeyCode::W, VK_COMMAND | ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Hold Command+Q to Quit Application</name>
+      <appendix>(You can adjust the threshold time of holding by</appendix>
+      <appendix>"[Holding Key to Key] Holding Threshold" in Key Repeat tab.)</appendix>
+      <identifier>remap.holdcommandQ</identifier>
+      <autogen>--HoldingKeyToKey-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND, Option::NOREPEAT</autogen>
+    </item>
+    <item>
+      <name>Press Command+Q twice to Quit Application</name>
+      <identifier>remap.doublepresscommandQ</identifier>
+      <autogen>--DoublePressModifier-- KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+        KeyCode::Q, VK_COMMAND
+      </autogen>
+    </item>
   </item>
 </root>
