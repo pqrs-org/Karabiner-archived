@@ -76,6 +76,7 @@
           </item>
         </list>
       </item>
+      <include system_xml_path="include/checkbox/standards/enter.xml" />
       <item>
         <name>Change KeyPad-Minus(-) Key</name>
         <list>
