@@ -19,6 +19,7 @@ TEST(pqrs_xml_compiler, reload)
 
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
   EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_456"));
+  EXPECT_EQ(boost::optional<uint32_t>(654), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_654"));
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
 
   EXPECT_EQ(boost::optional<uint32_t>(1191),
@@ -86,6 +87,18 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/missing_include");
     xml_compiler.reload();
     EXPECT_EQ("data/invalid_xml/missing_include/include.xml is not found.",
+              xml_compiler.get_error_information().get_message());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/infinite_include_loop");
+    xml_compiler.reload();
+    EXPECT_EQ("An infinite include loop is detected: data/invalid_xml/infinite_include_loop/private.xml",
+              xml_compiler.get_error_information().get_message());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/infinite_include_loop2");
+    xml_compiler.reload();
+    EXPECT_EQ("An infinite include loop is detected: data/invalid_xml/infinite_include_loop2/include.xml",
               xml_compiler.get_error_information().get_message());
   }
 
@@ -436,7 +449,7 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   pqrs::string::replacement replacement;
 
   for (auto& it : pt) {
-    pqrs::xml_compiler::filter_vector fv(s, pqrs::xml_compiler::extracted_ptree(xml_compiler, replacement, it.second));
+    pqrs::xml_compiler::filter_vector fv(s, pqrs::xml_compiler::extracted_ptree(xml_compiler, replacement, it.second, ""));
 
     std::vector<uint32_t> expected;
 

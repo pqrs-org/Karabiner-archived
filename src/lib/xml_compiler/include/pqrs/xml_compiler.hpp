@@ -85,8 +85,9 @@ namespace pqrs {
       return path;
     }
 
-    extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt) const {
-      return extracted_ptree(*this, replacement_, pt);
+    extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt,
+                                         const std::string& xml_file_path) const {
+      return extracted_ptree(*this, replacement_, pt, xml_file_path);
     }
 
     static void normalize_identifier_(std::string& identifier);

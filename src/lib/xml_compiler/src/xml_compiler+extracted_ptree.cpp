@@ -26,7 +26,7 @@ namespace pqrs {
       throw xml_compiler_logic_error("it == end in extracted_ptree_iterator.");
     }
 
-    return node(*(top.it), xml_compiler_, top.parent_replacement);
+    return node(*(top.it), extracted_ptree_, top.parent_replacement);
   }
 
   bool
@@ -49,6 +49,8 @@ namespace pqrs {
   {
     if (stack_.empty()) return;
 
+    auto& xml_compiler = extracted_ptree_.xml_compiler_;
+
     auto& top = stack_.top();
     auto& it = *(top.it);
 
@@ -58,8 +60,8 @@ namespace pqrs {
     // replacement
     std::tr1::shared_ptr<pqrs::string::replacement> replacement_ptr(new pqrs::string::replacement);
     if (! it.second.empty()) {
-      replacement_loader loader(xml_compiler_, *replacement_ptr);
-      loader.traverse(extracted_ptree(xml_compiler_, top.parent_replacement, it.second));
+      replacement_loader loader(xml_compiler, *replacement_ptr);
+      loader.traverse(extracted_ptree(extracted_ptree_, top.parent_replacement, it.second));
     }
 
     auto end = replacement_ptr->end();
@@ -74,34 +76,46 @@ namespace pqrs {
     {
       auto path = it.second.get_optional<std::string>("<xmlattr>.path");
       if (path) {
-        xml_file_path = xml_compiler_.make_file_path(xml_compiler_.private_xml_directory_, *path);
+        xml_file_path = xml_compiler.make_file_path(xml_compiler.private_xml_directory_, *path);
       }
     }
     {
       auto path = it.second.get_optional<std::string>("<xmlattr>.system_xml_path");
       if (path) {
-        xml_file_path = xml_compiler_.make_file_path(xml_compiler_.system_xml_directory_, *path);
+        xml_file_path = xml_compiler.make_file_path(xml_compiler.system_xml_directory_, *path);
       }
     }
 
     if (! xml_file_path.empty()) {
+      for (auto& i : extracted_ptree_.included_files_) {
+        if (i == xml_file_path) {
+          xml_compiler.error_information_.set("An infinite include loop is detected: " + xml_file_path);
+          return;
+        }
+      }
+
       ptree_ptr pt_ptr;
-      xml_compiler_.read_xml_(pt_ptr,
-                              xml_file_path,
-                              *replacement_ptr);
+      xml_compiler.read_xml_(pt_ptr,
+                             xml_file_path,
+                             *replacement_ptr);
 
       if (pt_ptr) {
+        // Skip <include> next time.
         ++(top.it);
-        collapse_();
+        // Do not call collapse_ here.
+        // (Keep included_files_ to detect an infinite include loop.)
 
         if (! pt_ptr->empty()) {
           auto root_node = pt_ptr->begin();
           auto& root_children = root_node->second;
           if (! root_children.empty()) {
             stack_.push(stack_data(pt_ptr, replacement_ptr, root_children));
+            extracted_ptree_.included_files_.push_back(xml_file_path);
             extract_include_();
           }
         }
+
+        collapse_();
       }
     }
   }
@@ -117,6 +131,12 @@ namespace pqrs {
         break;
       }
 
+      if (top.extracted()) {
+        if (extracted_ptree_.included_files_.empty()) {
+          throw xml_compiler_logic_error("extracted_ptree_.included_files_.empty() in extracted_ptree_iterator::collapse_.");
+        }
+        extracted_ptree_.included_files_.pop_back();
+      }
       stack_.pop();
     }
   }

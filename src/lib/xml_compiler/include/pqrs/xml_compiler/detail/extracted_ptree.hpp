@@ -5,20 +5,25 @@ class extracted_ptree
 public:
   extracted_ptree(const xml_compiler& xml_compiler,
                   const pqrs::string::replacement& replacement,
-                  const boost::property_tree::ptree& pt) :
+                  const boost::property_tree::ptree& pt,
+                  const std::string& xml_file_path) :
     xml_compiler_(xml_compiler),
     replacement_(replacement),
-    pt_(pt)
-  {}
+    pt_(pt),
+    included_files_ptr_(new std::deque<std::string>),
+    included_files_(*included_files_ptr_)
+  {
+    included_files_.push_back(xml_file_path);
+  }
 
   class node
   {
   public:
     node(const boost::property_tree::ptree::value_type& node,
-         const xml_compiler& xml_compiler,
+         const extracted_ptree& extracted_ptree,
          const pqrs::string::replacement& replacement) :
       node_(node),
-      xml_compiler_(xml_compiler),
+      extracted_ptree_(extracted_ptree),
       replacement_(replacement)
     {}
 
@@ -30,12 +35,12 @@ public:
 
     bool children_empty(void) const { return node_.second.empty(); }
     extracted_ptree children_extracted_ptree(void) const {
-      return extracted_ptree(xml_compiler_, replacement_, node_.second);
+      return extracted_ptree(extracted_ptree_, replacement_, node_.second);
     }
 
   private:
     const boost::property_tree::ptree::value_type& node_;
-    const xml_compiler& xml_compiler_;
+    const extracted_ptree& extracted_ptree_;
     const pqrs::string::replacement& replacement_;
   };
 
@@ -44,14 +49,14 @@ public:
                                                                  boost::forward_traversal_tag>
   {
   public:
-    extracted_ptree_iterator(const xml_compiler& xml_compiler) :
-      xml_compiler_(xml_compiler)
+    extracted_ptree_iterator(const extracted_ptree& extracted_ptree) :
+      extracted_ptree_(extracted_ptree)
     {}
 
-    extracted_ptree_iterator(const xml_compiler& xml_compiler,
+    extracted_ptree_iterator(const extracted_ptree& extracted_ptree,
                              const pqrs::string::replacement& replacement,
                              const boost::property_tree::ptree& pt) :
-      xml_compiler_(xml_compiler)
+      extracted_ptree_(extracted_ptree)
     {
       if (! pt.empty()) {
         stack_.push(stack_data(pt, replacement));
@@ -93,26 +98,41 @@ public:
       boost::property_tree::ptree::const_iterator end;
       const pqrs::string::replacement& parent_replacement;
 
+      bool extracted(void) const { return pt_ptr_; }
+
     private:
       // Keep extracted ptree_ptr, replacement_ptr until we finish traversing.
       const ptree_ptr pt_ptr_;
       const std::tr1::shared_ptr<pqrs::string::replacement> replacement_ptr_;
     };
 
-    const xml_compiler& xml_compiler_;
+    const extracted_ptree& extracted_ptree_;
     std::stack<stack_data> stack_;
   };
 
   extracted_ptree_iterator begin(void) const {
-    return extracted_ptree_iterator(xml_compiler_, replacement_, pt_);
+    return extracted_ptree_iterator(*this, replacement_, pt_);
   }
 
   extracted_ptree_iterator end(void) const {
-    return extracted_ptree_iterator(xml_compiler_);
+    return extracted_ptree_iterator(*this);
   }
 
 private:
+  extracted_ptree(const extracted_ptree& extracted_ptree,
+                  const pqrs::string::replacement& replacement,
+                  const boost::property_tree::ptree& pt) :
+    xml_compiler_(extracted_ptree.xml_compiler_),
+    replacement_(replacement),
+    pt_(pt),
+    included_files_(extracted_ptree.included_files_)
+  {}
+
   const xml_compiler& xml_compiler_;
   const pqrs::string::replacement& replacement_;
   const boost::property_tree::ptree& pt_;
+
+  // shared_ptr for included_files_.
+  std::tr1::shared_ptr<std::deque<std::string> > included_files_ptr_;
+  mutable std::deque<std::string> included_files_;
 };
