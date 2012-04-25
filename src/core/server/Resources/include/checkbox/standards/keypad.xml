@@ -164,7 +164,24 @@
       <appendix>(Enable equal, parentheses)</appendix>
       <appendix>(Disable NumLock key)</appendix>
       <identifier>remap.logitech_n305_hack</identifier>
-      <include system_xml_path="include/checkbox/devices/logitech_n305.xml" />
+      <block>
+        <!-- Parentheses is Shift+8,9 in some Input Sources. -->
+        <inputmode_only>HUNGARIAN</inputmode_only>
+        <include system_xml_path="include/checkbox/devices/logitech_n305.xml">
+          <replacementdef>
+            <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
+            <replacementvalue>KeyCode::KEY_8, ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+
+          <replacementdef>
+            <replacementname>LOGITECH_N305_RIGHT_PARENTHES</replacementname>
+            <replacementvalue>KeyCode::KEY_9, ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+        </include>
+      </block>
+      <block>
+        <include system_xml_path="include/checkbox/devices/logitech_n305.xml" />
+      </block>
     </item>
     <item>
       <name>Logitech Number Pad Hack</name>
