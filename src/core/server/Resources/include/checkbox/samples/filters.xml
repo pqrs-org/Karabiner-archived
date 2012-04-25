@@ -443,6 +443,13 @@
         <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
+        <name>inputmode_only (Hungarian)</name>
+        <appendix>Space to Tab</appendix>
+        <identifier>remap.samples_inputmode_hungarian</identifier>
+        <inputmode_only>HUNGARIAN</inputmode_only>
+        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+      </item>
+      <item>
         <name>inputmode_only (Unknown == User Defined keylayout)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputmode_unknown</identifier>

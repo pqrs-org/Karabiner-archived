@@ -336,6 +336,12 @@ static NSMutableArray* enabledInputSources_ = nil;
     return;
   }
 
+  if ([name hasPrefix:@"org.pqrs.inputmode.hu."]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::HUNGARIAN"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::HUNGARIAN"];
+    return;
+  }
+
   if ([name isEqualToString:@"com.apple.kotoeri.Ainu"]) {
     *output_inputmode       = [xml_compiler keycode:@"InputMode::AINU"];
     *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::AINU"];
