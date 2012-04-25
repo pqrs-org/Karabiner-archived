@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<root>
+  <include path="include2.xml" />
+  <include path="include3.xml" />
+
+  <symbol_map type="KeyCode" name="MY_INCLUDE_TEST_654" value="654" />
+</root>
