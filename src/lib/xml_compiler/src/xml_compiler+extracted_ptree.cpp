@@ -89,7 +89,7 @@ namespace pqrs {
     if (! xml_file_path.empty()) {
       for (auto& i : extracted_ptree_.included_files_) {
         if (i == xml_file_path) {
-          xml_compiler.error_information_.set("An infinite include loop is detected: " + xml_file_path);
+          xml_compiler.error_information_.set("An infinite include loop is detected:\n" + xml_file_path);
           return;
         }
       }

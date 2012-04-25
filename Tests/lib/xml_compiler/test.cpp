@@ -92,13 +92,15 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/infinite_include_loop");
     xml_compiler.reload();
-    EXPECT_EQ("An infinite include loop is detected: data/invalid_xml/infinite_include_loop/private.xml",
+    EXPECT_EQ("An infinite include loop is detected:\n"
+              "data/invalid_xml/infinite_include_loop/private.xml",
               xml_compiler.get_error_information().get_message());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/infinite_include_loop2");
     xml_compiler.reload();
-    EXPECT_EQ("An infinite include loop is detected: data/invalid_xml/infinite_include_loop2/include.xml",
+    EXPECT_EQ("An infinite include loop is detected:\n"
+              "data/invalid_xml/infinite_include_loop2/include.xml",
               xml_compiler.get_error_information().get_message());
   }
 
