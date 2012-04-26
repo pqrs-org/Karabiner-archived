@@ -4,13 +4,6 @@
 
 namespace pqrs {
   namespace file_path {
-    std::string
-    combine(const std::string& path1,
-            const std::string& path2)
-    {
-      return path1 + "/" + path2;
-    }
-
     namespace {
       size_t
       get_dirname_position(const std::string& path, size_t pos = std::string::npos)
