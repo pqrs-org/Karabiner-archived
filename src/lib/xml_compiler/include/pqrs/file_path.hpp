@@ -5,9 +5,6 @@
 
 namespace pqrs {
   namespace file_path {
-    std::string combine(const std::string& path1,
-                        const std::string& path2);
-
     std::string dirname(const std::string& path);
 
     // For example: /foo//bar/../baz -> /foo/baz

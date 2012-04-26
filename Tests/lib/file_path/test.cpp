@@ -2,12 +2,6 @@
 #include <gtest/gtest.h>
 #include "pqrs/file_path.hpp"
 
-TEST(pqrs_file_path, combine)
-{
-  EXPECT_EQ("/usr/bin", pqrs::file_path::combine("/usr", "bin"));
-  EXPECT_EQ("/usr//bin", pqrs::file_path::combine("/usr/", "bin"));
-}
-
 TEST(pqrs_file_path, dirname)
 {
   EXPECT_EQ("/usr/bin", pqrs::file_path::dirname("/usr/bin/ls"));
