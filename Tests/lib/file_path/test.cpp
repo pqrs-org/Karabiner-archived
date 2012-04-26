@@ -35,15 +35,15 @@ TEST(pqrs_file_path, normalize)
 
   file_path = "..";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ(".", file_path);
+  EXPECT_EQ("..", file_path);
 
   file_path = "../";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ(".", file_path);
+  EXPECT_EQ("../", file_path);
 
   file_path = "..//foo";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("foo", file_path);
+  EXPECT_EQ("../foo", file_path);
 
   file_path = "abcde";
   pqrs::file_path::normalize(file_path);
@@ -95,11 +95,11 @@ TEST(pqrs_file_path, normalize)
 
   file_path = "../foo/bar";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("foo/bar", file_path);
+  EXPECT_EQ("../foo/bar", file_path);
 
   file_path = "../../../foo/bar";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("foo/bar", file_path);
+  EXPECT_EQ("../../../foo/bar", file_path);
 
   file_path = "./foo/bar";
   pqrs::file_path::normalize(file_path);
@@ -107,13 +107,13 @@ TEST(pqrs_file_path, normalize)
 
   file_path = "../foo/bar/..";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("foo", file_path);
+  EXPECT_EQ("../foo", file_path);
 
   file_path = "../foo/bar///...";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("foo/bar/...", file_path);
+  EXPECT_EQ("../foo/bar/...", file_path);
 
   file_path = "../a/b/../c/../d///..";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("a", file_path);
+  EXPECT_EQ("../a", file_path);
 }

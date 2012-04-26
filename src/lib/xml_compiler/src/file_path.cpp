@@ -70,6 +70,16 @@ namespace pqrs {
       size_t
       process_dotdot(const std::string& path, size_t pos)
       {
+        // Ignore ../../
+        if (pos > 4 &&
+            path[pos - 5] == '.' &&
+            path[pos - 4] == '.' &&
+            path[pos - 3] == '/' &&
+            path[pos - 2] == '.' &&
+            path[pos - 1] == '.') {
+          return pos;
+        }
+
         // foo/bar/../
         //           ^
         //          pos
@@ -85,16 +95,6 @@ namespace pqrs {
           //   pos
 
           return pos;
-        }
-
-        // ../foo/bar
-        //   ^
-        //  pos
-        //
-        if (pos == 2 &&
-            path[0] == '.' &&
-            path[1] == '.') {
-          return 0;
         }
 
         return pos;
