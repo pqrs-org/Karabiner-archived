@@ -123,25 +123,18 @@ namespace pqrs {
       size_t end = path.size();
       size_t dest = 1;
       for (size_t src = 1; src < end; ++src) {
-        // skip //
+        // Skip multiple slashes.
         if (path[dest - 1] == '/' && path[src] == '/') {
           continue;
         }
 
-        // handling . and ..
+        // Handling . and ..
         if (path[src] == '/') {
-          for (int i = 0; i < 2; ++i) {
-            size_t d = dest;
-            switch (i) {
-              case 0: d = process_dot(path, d);    break;
-              case 1: d = process_dotdot(path, d); break;
-            }
-            if (dest != d) {
-              dest = d;
-            }
-          }
+          dest = process_dot(path, dest);
+          dest = process_dotdot(path, dest);
+
           if (dest == 0) {
-            if (path[dest] != '/') {
+            if (path[0] != '/') {
               continue;
             }
           } else {
