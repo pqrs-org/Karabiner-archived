@@ -116,4 +116,8 @@ TEST(pqrs_file_path, normalize)
   file_path = "../a/b/../c/../d///..";
   pqrs::file_path::normalize(file_path);
   EXPECT_EQ("../a", file_path);
+
+  file_path = "a/../..////../b/c";
+  pqrs::file_path::normalize(file_path);
+  EXPECT_EQ("../../b/c", file_path);
 }
