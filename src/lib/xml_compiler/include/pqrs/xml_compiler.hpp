@@ -12,6 +12,7 @@
 #include <boost/iterator_adaptors.hpp>
 #include <boost/optional.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include "pqrs/file_path.hpp"
 #include "pqrs/string.hpp"
 
 namespace pqrs {
@@ -79,10 +80,14 @@ namespace pqrs {
     }
 
     std::string make_file_path(const std::string& base_directory, const std::string& path) const {
+      std::string p;
       if (! boost::starts_with(path, "/")) {
-        return base_directory + "/" + path;
+        p = base_directory + "/" + path;
+      } else {
+        p = path;
       }
-      return path;
+      pqrs::file_path::normalize(p);
+      return p;
     }
 
     extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt,
