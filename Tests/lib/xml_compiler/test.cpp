@@ -20,6 +20,9 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
   EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_456"));
   EXPECT_EQ(boost::optional<uint32_t>(654), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_654"));
+  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT1"));
+  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT2"));
+  EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT3"));
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
 
   EXPECT_EQ(boost::optional<uint32_t>(1191),

@@ -15,6 +15,7 @@
   </replacementdef>
 
   <include path="include1.xml" />
+  <include path="include/child.xml" />
 
   <symbol_map type="KeyCode" name="MY_INCLUDE_TEST_456" value="{{ MY_INCLUDE_TEST }}" />
 

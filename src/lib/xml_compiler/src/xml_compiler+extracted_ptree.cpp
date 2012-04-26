@@ -76,7 +76,11 @@ namespace pqrs {
     {
       auto path = it.second.get_optional<std::string>("<xmlattr>.path");
       if (path) {
-        xml_file_path = xml_compiler.make_file_path(xml_compiler.private_xml_directory_, *path);
+        if (extracted_ptree_.included_files_.empty()) {
+          throw xml_compiler_logic_error("included_files_.empty() in extracted_ptree_iterator::extract_include_.");
+        }
+        xml_file_path = xml_compiler.make_file_path(pqrs::file_path::dirname(extracted_ptree_.included_files_.back()),
+                                                    *path);
       }
     }
     {
@@ -133,7 +137,7 @@ namespace pqrs {
 
       if (top.extracted()) {
         if (extracted_ptree_.included_files_.empty()) {
-          throw xml_compiler_logic_error("extracted_ptree_.included_files_.empty() in extracted_ptree_iterator::collapse_.");
+          throw xml_compiler_logic_error("included_files_.empty() in extracted_ptree_iterator::collapse_.");
         }
         extracted_ptree_.included_files_.pop_back();
       }

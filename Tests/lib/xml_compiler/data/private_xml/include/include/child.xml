@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<root>
+  <!-- depth 2 -->
+  <include path="../parent.xml" />
+  <include path="include/child.xml" />
+</root>
