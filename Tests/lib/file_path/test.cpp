@@ -18,8 +18,9 @@ TEST(pqrs_file_path, dirname)
   EXPECT_EQ("/", pqrs::file_path::dirname("/"));
   EXPECT_EQ("usr/bin", pqrs::file_path::dirname("usr/bin/ls"));
   EXPECT_EQ("usr", pqrs::file_path::dirname("usr/bin/"));
-  EXPECT_EQ("", pqrs::file_path::dirname("usr"));
-  EXPECT_EQ("", pqrs::file_path::dirname("usr/"));
+  EXPECT_EQ(".", pqrs::file_path::dirname("usr"));
+  EXPECT_EQ(".", pqrs::file_path::dirname("usr/"));
+  EXPECT_EQ(".", pqrs::file_path::dirname(""));
 }
 
 TEST(pqrs_file_path, normalize)
@@ -28,23 +29,23 @@ TEST(pqrs_file_path, normalize)
 
   file_path = "";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("", file_path);
+  EXPECT_EQ(".", file_path);
 
   file_path = ".";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("", file_path);
+  EXPECT_EQ(".", file_path);
 
   file_path = "./";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("", file_path);
+  EXPECT_EQ(".", file_path);
 
   file_path = "..";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("", file_path);
+  EXPECT_EQ(".", file_path);
 
   file_path = "../";
   pqrs::file_path::normalize(file_path);
-  EXPECT_EQ("", file_path);
+  EXPECT_EQ(".", file_path);
 
   file_path = "..//foo";
   pqrs::file_path::normalize(file_path);

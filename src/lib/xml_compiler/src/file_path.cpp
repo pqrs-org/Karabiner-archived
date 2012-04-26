@@ -112,13 +112,19 @@ namespace pqrs {
     dirname(const std::string& path)
     {
       size_t pos = get_dirname_position(path);
+      if (pos == 0) {
+        return ".";
+      }
       return path.substr(0, pos);
     }
 
     void
     normalize(std::string& path)
     {
-      if (path.empty()) return;
+      if (path.empty()) {
+        path += '.';
+        return;
+      }
 
       size_t end = path.size();
       size_t dest = 1;
@@ -153,6 +159,11 @@ namespace pqrs {
 
       dest = process_dot(path, dest);
       dest = process_dotdot(path, dest);
+
+      if (dest == 0) {
+        path[0] = '.';
+        dest = 1;
+      }
 
       path.resize(dest);
     }
