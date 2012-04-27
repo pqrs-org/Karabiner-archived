@@ -11,14 +11,14 @@
 //   - essential_configurations
 //   - preferences_node_tree
 //
-template <class T_preferences_node_tree>
+template <class preferences_node_tree_t>
 class remapclasses_initialize_vector_prepare_loader {
 public:
   remapclasses_initialize_vector_prepare_loader(const xml_compiler& xml_compiler,
                                                 symbol_map& symbol_map,
                                                 std::tr1::unordered_map<uint32_t, std::string>& identifier_map,
                                                 std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations,
-                                                T_preferences_node_tree* preferences_node_tree) :
+                                                preferences_node_tree_t* preferences_node_tree) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
     identifier_map_(identifier_map),
@@ -46,7 +46,7 @@ public:
           if (! preferences_node_tree_) {
             throw xml_compiler_logic_error("preferences_node_tree_ is nullptr.");
           }
-          std::tr1::shared_ptr<T_preferences_node_tree> ptr(new T_preferences_node_tree(preferences_node_tree_->get_node()));
+          std::tr1::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
 
           for (auto& child : it.children_extracted_ptree()) {
             ptr->handle_item_child(child);
@@ -130,8 +130,8 @@ private:
   symbol_map& symbol_map_;
   std::tr1::unordered_map<uint32_t, std::string>& identifier_map_;
   std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations_;
-  T_preferences_node_tree* preferences_node_tree_;
-  T_preferences_node_tree* const root_preferences_node_tree_;
+  preferences_node_tree_t* preferences_node_tree_;
+  preferences_node_tree_t* const root_preferences_node_tree_;
 
   std::vector<std::string> identifiers_notsave_;
   std::vector<std::string> identifiers_except_notsave_;
