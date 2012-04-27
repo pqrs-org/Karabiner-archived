@@ -19,6 +19,8 @@ namespace pqrs {
 
     max_config_index_ = 0;
     freezed_ = false;
+    start_index_ = 0;
+    ended_ = true;
   }
 
   const std::vector<uint32_t>&
@@ -40,9 +42,27 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::remapclasses_initialize_vector::add(const std::vector<uint32_t>& v,
-                                                    uint32_t config_index,
-                                                    const std::string& raw_identifier)
+  xml_compiler::remapclasses_initialize_vector::freeze(void)
+  {
+    if (freezed_) {
+      throw xml_compiler_logic_error("remapclasses_initialize_vector is already freezed.");
+    }
+
+    cleanup_();
+
+    for (uint32_t i = 0; i < max_config_index_; ++i) {
+      if (is_config_index_added_.find(i) == is_config_index_added_.end()) {
+        start(i, "");
+        end();
+      }
+    }
+
+    freezed_ = true;
+  }
+
+  void
+  xml_compiler::remapclasses_initialize_vector::start(uint32_t config_index,
+                                                      const std::string& raw_identifier)
   {
     if (freezed_) {
       throw xml_compiler_logic_error("remapclasses_initialize_vector is freezed.");
@@ -54,15 +74,29 @@ namespace pqrs {
                                        raw_identifier);
     }
 
+    if (! ended_) {
+      cleanup_();
+    }
+
+    start_index_ = data_.size();
+    ended_ = false;
+
     // size
-    data_.push_back(v.size() + 1); // +1 == config_index
+    data_.push_back(1); // 1 == count of config_index
     // config_index
     data_.push_back(config_index);
-    // data
-    pqrs::vector::push_back(data_, v);
+  }
 
+  void
+  xml_compiler::remapclasses_initialize_vector::end(void)
+  {
+    ended_ = true;
+
+    // ----------------------------------------
     ++(data_[INDEX_OF_CONFIG_COUNT]);
 
+    // ----------------------------------------
+    uint32_t config_index = data_[start_index_ + 1];
     if (config_index > max_config_index_) {
       max_config_index_ = config_index;
     }
@@ -70,19 +104,11 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::remapclasses_initialize_vector::freeze(void)
+  xml_compiler::remapclasses_initialize_vector::cleanup_(void)
   {
-    if (freezed_) {
-      throw xml_compiler_logic_error("remapclasses_initialize_vector is already freezed.");
-    }
+    if (ended_) return;
 
-    for (uint32_t i = 0; i < max_config_index_; ++i) {
-      if (is_config_index_added_.find(i) == is_config_index_added_.end()) {
-        std::vector<uint32_t> v;
-        add(v, i, "");
-      }
-    }
-
-    freezed_ = true;
+    data_.resize(start_index_);
+    ended_ = true;
   }
 }

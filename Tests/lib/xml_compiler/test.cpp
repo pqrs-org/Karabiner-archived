@@ -375,13 +375,14 @@ TEST(pqrs_xml_compiler_symbol_map, add)
 TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
 {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
-  std::vector<uint32_t> v1;
-  v.add(v1, 1, "remap.empty");
+  v.start(1, "remap.empty");
+  v.end();
 
-  v1.push_back(1);
-  v1.push_back(2);
-  v1.push_back(3);
-  v.add(v1, 3, "remap.three_items");
+  v.start(3, "remap.three_items");
+  v.push_back(1);
+  v.push_back(2);
+  v.push_back(3);
+  v.end();
 
   v.freeze();
 
@@ -403,6 +404,49 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
 
   expected.push_back(1); // configindex:2
   expected.push_back(2);
+
+  EXPECT_EQ(expected, v.get());
+}
+
+TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial)
+{
+  pqrs::xml_compiler::remapclasses_initialize_vector v;
+  v.start(1, "remap.empty");
+  v.end();
+
+  v.start(3, "remap.three_items");
+  v.push_back(1);
+  v.push_back(2);
+  v.push_back(3);
+  //v.end();
+
+  v.start(4, "remap.two_items");
+  v.push_back(1);
+  v.push_back(2);
+  v.end();
+
+  v.freeze();
+
+  std::vector<uint32_t> expected;
+  expected.push_back(BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION);
+  expected.push_back(5); // count is {0,1,2,3,4}
+
+  expected.push_back(1); // configindex:1
+  expected.push_back(1);
+
+  expected.push_back(3); // configindex:4
+  expected.push_back(4);
+  expected.push_back(1);
+  expected.push_back(2);
+
+  expected.push_back(1); // configindex:0
+  expected.push_back(0);
+
+  expected.push_back(1); // configindex:2
+  expected.push_back(2);
+
+  expected.push_back(1); // configindex:3
+  expected.push_back(3);
 
   EXPECT_EQ(expected, v.get());
 }

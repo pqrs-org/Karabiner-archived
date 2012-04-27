@@ -106,7 +106,7 @@ namespace pqrs {
         {
           // prepare
           {
-            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_number_node> > loader(*this, symbol_map_, identifier_map_, essential_configurations_, &preferences_number_node_tree_);
+            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_number_node> > loader(*this, symbol_map_, essential_configurations_, &preferences_number_node_tree_);
 
             if (number_xml_ptree_ptr) {
               loader.traverse(make_extracted_ptree(*number_xml_ptree_ptr, number_xml_file_path));
@@ -115,7 +115,7 @@ namespace pqrs {
             loader.cleanup();
           }
           {
-            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_checkbox_node> > loader(*this, symbol_map_, identifier_map_, essential_configurations_, &preferences_checkbox_node_tree_);
+            remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_checkbox_node> > loader(*this, symbol_map_, essential_configurations_, &preferences_checkbox_node_tree_);
 
             if (private_xml_ptree_ptr) {
               loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));

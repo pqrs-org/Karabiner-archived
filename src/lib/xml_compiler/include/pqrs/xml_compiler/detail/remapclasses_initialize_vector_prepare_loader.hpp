@@ -6,7 +6,6 @@
 //
 // Targets:
 //   - ConfigIndex (for <only>,<not> filter)
-//   - identifier_map_
 //   - KeyCode::VK_CONFIG_*
 //   - essential_configurations
 //   - preferences_node_tree
@@ -16,12 +15,10 @@ class remapclasses_initialize_vector_prepare_loader {
 public:
   remapclasses_initialize_vector_prepare_loader(const xml_compiler& xml_compiler,
                                                 symbol_map& symbol_map,
-                                                std::tr1::unordered_map<uint32_t, std::string>& identifier_map,
                                                 std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations,
                                                 preferences_node_tree_t* preferences_node_tree) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
-    identifier_map_(identifier_map),
     essential_configurations_(essential_configurations),
     preferences_node_tree_(preferences_node_tree),
     root_preferences_node_tree_(preferences_node_tree)
@@ -128,7 +125,6 @@ public:
 private:
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
-  std::tr1::unordered_map<uint32_t, std::string>& identifier_map_;
   std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations_;
   preferences_node_tree_t* preferences_node_tree_;
   preferences_node_tree_t* const root_preferences_node_tree_;
