@@ -3,7 +3,7 @@
   <item>
     <name>Use Colemak Keyboard Layout</name>
     <identifier>remap.qwerty2colemak</identifier>
-    <include system_xml_path="include/checkbox/keyboard_layouts/common/keypad_redefinition.xml" />
+    <include path="common/keypad_redefinition.xml" />
     <autogen>--KeyToKey-- KeyCode::E, KeyCode::F</autogen>
     <autogen>--KeyToKey-- KeyCode::R, KeyCode::P</autogen>
     <autogen>--KeyToKey-- KeyCode::T, KeyCode::G</autogen>

@@ -2,10 +2,10 @@
 <root>
   <item>
     <name>Change Keyboard Layout</name>
-    <include system_xml_path="include/checkbox/keyboard_layouts/colemak.xml" />
-    <include system_xml_path="include/checkbox/keyboard_layouts/qwerf.xml" />
-    <include system_xml_path="include/checkbox/keyboard_layouts/workman.xml" />
-    <include system_xml_path="include/checkbox/keyboard_layouts/abcdef.xml" />
+    <include path="keyboard_layouts/colemak.xml" />
+    <include path="keyboard_layouts/qwerf.xml" />
+    <include path="keyboard_layouts/workman.xml" />
+    <include path="keyboard_layouts/abcdef.xml" />
     <item>
       <name>Use US Keyboard Layout</name>
       <identifier>remap.layout2us</identifier>

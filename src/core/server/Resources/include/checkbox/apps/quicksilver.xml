@@ -35,14 +35,14 @@
     </item>
     <item>
       <name>Double Command to Quicksilver Mode</name>
-      <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
+      <include path="../snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
       <identifier>remap.doublecommand_to_quicksilver_mode</identifier>
       <autogen>--DoublePressModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
       <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
     </item>
     <item>
       <name>Double Control to Quicksilver Mode</name>
-      <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
+      <include path="../snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
       <identifier>remap.doublecontrol_to_quicksilver_mode</identifier>
       <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
       <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>

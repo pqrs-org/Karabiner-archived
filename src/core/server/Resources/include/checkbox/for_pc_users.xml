@@ -227,12 +227,12 @@
         <identifier vk_config="true">remap.keypadnumlock</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <include system_xml_path="include/checkbox/snippets/keypadnumlock.xml" />
+          <include path="snippets/keypadnumlock.xml" />
         </block>
         <block>
           <config_only>option.keypadnumlock_vm</config_only>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <include system_xml_path="include/checkbox/snippets/keypadnumlock.xml" />
+          <include path="snippets/keypadnumlock.xml" />
         </block>
       </item>
       <item>
@@ -260,13 +260,13 @@
         <identifier vk_config="true">remap.keypadnumlock_pclikehomeend</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <include system_xml_path="include/checkbox/snippets/keypadnumlock_pclikehomeend.xml" />
+          <include path="snippets/keypadnumlock_pclikehomeend.xml" />
         </block>
         <block>
           <config_only>option.keypadnumlock_vm</config_only>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <!-- We use normal Home/End/PageUp/PageDown in VM -->
-          <include system_xml_path="include/checkbox/snippets/keypadnumlock.xml" />
+          <include path="snippets/keypadnumlock.xml" />
         </block>
       </item>
       <item>
@@ -308,7 +308,7 @@
       <appendix>(Change End to Control+E)</appendix>
       <identifier>remap.pclikehomeend_emacs</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <include system_xml_path="include/checkbox/snippets/pcstyle_homeend_ignore_apps.xml" />
+      <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
       <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
       <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
@@ -332,7 +332,7 @@
       <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
       <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
       <identifier>remap.pclikehomeend</identifier>
-      <include system_xml_path="include/checkbox/snippets/pcstyle_homeend_ignore_apps.xml" />
+      <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <block>
         <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
         <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>

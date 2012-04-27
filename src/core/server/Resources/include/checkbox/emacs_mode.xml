@@ -55,14 +55,14 @@
       <name>Control+PNBF to Up/Down/Left/Right</name>
       <identifier>option.emacsmode_controlPNBF</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+      <include path="snippets/emacsmode_controlPNBF.xml" />
     </item>
     <item>
       <name>Control+PNBF to Up/Down/Left/Right</name>
       <appendix>(when there are no other modifiers)</appendix>
       <identifier>option.emacsmode_controlPNBF_nomodifiers</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_nomodifiers.xml" />
+      <include path="snippets/emacsmode_controlPNBF_nomodifiers.xml" />
     </item>
     <item>
       <name>Control+PNBF to Up/Down/Left/Right</name>
@@ -73,7 +73,7 @@
       <appendix>(+ retain Control+Shift+AE)</appendix>
       <identifier>option.emacsmode_controlPNBF_ex</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+      <include path="snippets/emacsmode_controlPNBF_ex.xml" />
     </item>
     <item>
       <name>Control+V to PageDown</name>
@@ -491,25 +491,25 @@
           <name>In Emacs, Terminal</name>
           <identifier>option.emacsmode_force_controlPNBF_term</identifier>
           <only>EMACS, TERMINAL</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+          <include path="snippets/emacsmode_controlPNBF.xml" />
         </item>
         <item>
           <name>In X11</name>
           <identifier>option.emacsmode_force_controlPNBF_x11</identifier>
           <only>X11</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+          <include path="snippets/emacsmode_controlPNBF.xml" />
         </item>
         <item>
           <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
           <identifier>option.emacsmode_force_controlPNBF_vm</identifier>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+          <include path="snippets/emacsmode_controlPNBF.xml" />
         </item>
         <item>
           <name>In Eclipse</name>
           <identifier>option.emacsmode_force_controlPNBF_eclipse</identifier>
           <only>ECLIPSE</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF.xml" />
+          <include path="snippets/emacsmode_controlPNBF.xml" />
         </item>
       </item>
       <item>
@@ -523,25 +523,25 @@
           <name>In Emacs, Terminal</name>
           <identifier>option.emacsmode_force_controlPNBF_ex_term</identifier>
           <only>EMACS, TERMINAL</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+          <include path="snippets/emacsmode_controlPNBF_ex.xml" />
         </item>
         <item>
           <name>In X11</name>
           <identifier>option.emacsmode_force_controlPNBF_ex_x11</identifier>
           <only>X11</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+          <include path="snippets/emacsmode_controlPNBF_ex.xml" />
         </item>
         <item>
           <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
           <identifier>option.emacsmode_force_controlPNBF_ex_vm</identifier>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+          <include path="snippets/emacsmode_controlPNBF_ex.xml" />
         </item>
         <item>
           <name>In Eclipse</name>
           <identifier>option.emacsmode_force_controlPNBF_ex_eclipse</identifier>
           <only>ECLIPSE</only>
-          <include system_xml_path="include/checkbox/snippets/emacsmode_controlPNBF_ex.xml" />
+          <include path="snippets/emacsmode_controlPNBF_ex.xml" />
         </item>
       </item>
       <item>

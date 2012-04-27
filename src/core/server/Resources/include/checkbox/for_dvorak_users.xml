@@ -89,7 +89,7 @@
       <name>Use Dvorak Keyboard Layout</name>
       <appendix>(QWERTY to Dvorak)</appendix>
       <identifier>remap.qwerty2dvorak</identifier>
-      <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
+      <include path="snippets/dvorak.xml" />
     </item>
 
     <item>
@@ -101,7 +101,7 @@
         ModifierFlag::COMMAND_L,
         ModifierFlag::COMMAND_R
       </modifier_not>
-      <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
+      <include path="snippets/dvorak.xml" />
     </item>
 
     <item>
@@ -117,7 +117,7 @@
         ModifierFlag::OPTION_L,
         ModifierFlag::OPTION_R
       </modifier_not>
-      <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
+      <include path="snippets/dvorak.xml" />
     </item>
 
     <item>
@@ -125,7 +125,7 @@
       <appendix>(QWERTY to Dvorak, except in password dialogue boxes)</appendix>
       <identifier>remap.qwerty2dvorak_ex_password</identifier>
       <not>PASSWORD</not>
-      <include system_xml_path="include/checkbox/snippets/dvorak.xml" />
+      <include path="snippets/dvorak.xml" />
     </item>
 
     <item>

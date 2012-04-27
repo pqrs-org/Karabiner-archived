@@ -6,7 +6,7 @@
     <appendix>asdfghjkl &#8594; klmnopqrs</appendix>
     <appendix>zxcvbnm &#8594; tuvwxyz</appendix>
     <identifier>remap.qwerty2abcdef</identifier>
-    <include system_xml_path="include/checkbox/keyboard_layouts/common/keypad_redefinition.xml" />
+    <include path="common/keypad_redefinition.xml" />
     <autogen>--KeyToKey-- KeyCode::Q, KeyCode::A</autogen>
     <autogen>--KeyToKey-- KeyCode::W, KeyCode::B</autogen>
     <autogen>--KeyToKey-- KeyCode::E, KeyCode::C</autogen>

@@ -3,7 +3,7 @@
   <item>
     <name>Use Workman Keyboard Layout</name>
     <identifier>remap.qwerty2workman</identifier>
-    <include system_xml_path="include/checkbox/keyboard_layouts/common/keypad_redefinition.xml" />
+    <include path="common/keypad_redefinition.xml" />
     <autogen>--KeyToKey-- KeyCode::W, KeyCode::D</autogen>
     <autogen>--KeyToKey-- KeyCode::E, KeyCode::R</autogen>
     <autogen>--KeyToKey-- KeyCode::R, KeyCode::W</autogen>

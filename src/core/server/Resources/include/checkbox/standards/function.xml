@@ -1086,7 +1086,7 @@
           <appendix>(ex. F10 to Volume Mute, F11 to Volume Down)</appendix>
           <identifier>remap.f1_f12_to_functional</identifier>
           <not>TERMINAL</not>
-          <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional_withfn.xml" />
+          <include path="../snippets/f1_f12_to_functional_withfn.xml" />
         </item>
 
         <item>
@@ -1141,7 +1141,7 @@
         <item>
           <name>Macbook series: Keyboard Preferences Configured to Standard Function Keys</name>
           <appendix>(Except in Virtual Machine, RDC)</appendix>
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <item>
             <name>F1,F2 to Brightness Adjust (except in Parallels/RDP)</name>
             <appendix>F1 to Brightness Down</appendix>
@@ -1195,7 +1195,7 @@
           <name>For MacbookAir3,1 (Macbook Air Late 2010)</name>
           <appendix>Keyboard Preferences Configured to Standard Function Keys</appendix>
           <appendix>(Except in Virtual Machine, RDC)</appendix>
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <item>
             <name>F1,F2 to Brightness Adjust (except in Parallels/RDP)</name>
             <appendix>F1 to Brightness Down</appendix>
@@ -1255,38 +1255,38 @@
 
         <item>
           <name>F1..F12 to Functional</name>
-          <include system_xml_path="include/checkbox/snippets/appendix_f1_f12_to_functional.xml" />
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/appendix_f1_f12_to_functional.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <identifier>remap.f1_f12_to_functional_all</identifier>
-          <include system_xml_path="include/checkbox/snippets/fnF1_F12_to_function.xml" />
-          <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional.xml" />
+          <include path="../snippets/fnF1_F12_to_function.xml" />
+          <include path="../snippets/f1_f12_to_functional.xml" />
         </item>
         <item>
           <name>F5,F6 to Functional</name>
-          <include system_xml_path="include/checkbox/snippets/appendix_f5_f6_to_functional.xml" />
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/appendix_f5_f6_to_functional.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <identifier>remap.f5_f6_to_functional_all</identifier>
-          <include system_xml_path="include/checkbox/snippets/fnF5_F6_to_function.xml" />
-          <include system_xml_path="include/checkbox/snippets/f5_f6_to_functional.xml" />
+          <include path="../snippets/fnF5_F6_to_function.xml" />
+          <include path="../snippets/f5_f6_to_functional.xml" />
         </item>
 
         <item>
           <name>F1..F12 to Functional (except virtual machine, RDC)</name>
-          <include system_xml_path="include/checkbox/snippets/appendix_f1_f12_to_functional.xml" />
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/appendix_f1_f12_to_functional.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <identifier>remap.f1_f12_to_functional_ex_vm</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <include system_xml_path="include/checkbox/snippets/fnF1_F12_to_function.xml" />
-          <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional.xml" />
+          <include path="../snippets/fnF1_F12_to_function.xml" />
+          <include path="../snippets/f1_f12_to_functional.xml" />
         </item>
         <item>
           <name>F5,F6 to Functional (except virtual machine, RDC)</name>
-          <include system_xml_path="include/checkbox/snippets/appendix_f5_f6_to_functional.xml" />
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/appendix_f5_f6_to_functional.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <identifier>remap.f5_f6_to_functional_ex_vm</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <include system_xml_path="include/checkbox/snippets/fnF5_F6_to_function.xml" />
-          <include system_xml_path="include/checkbox/snippets/f5_f6_to_functional.xml" />
+          <include path="../snippets/fnF5_F6_to_function.xml" />
+          <include path="../snippets/f5_f6_to_functional.xml" />
         </item>
 
         <item>
@@ -1305,9 +1305,9 @@
           <appendix>Fn+F10 to Volume Mute</appendix>
           <appendix>Fn+F11 to Volume Down</appendix>
           <appendix>Fn+F12 to Volume Up</appendix>
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <identifier>remap.fnF1_F12_to_functional</identifier>
-          <include system_xml_path="include/checkbox/snippets/f1_f12_to_functional_withfn.xml" />
+          <include path="../snippets/f1_f12_to_functional_withfn.xml" />
         </item>
 
         <item>
@@ -1325,7 +1325,7 @@
           <appendix>Fn+F10 to Keyboard Light HIGH</appendix>
           <appendix>Fn+F11 to F11</appendix>
           <appendix>Fn+F12 to F12</appendix>
-          <include system_xml_path="include/checkbox/snippets/caution_functionkey.xml" />
+          <include path="../snippets/caution_functionkey.xml" />
           <identifier>remap.fnF1_F12_to_functional_mbp31</identifier>
           <autogen>--KeyToConsumer--      KeyCode::EXPOSE_ALL, ConsumerKeyCode::VOLUME_MUTE</autogen>
           <autogen>--KeyToConsumer--      KeyCode::DASHBOARD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
