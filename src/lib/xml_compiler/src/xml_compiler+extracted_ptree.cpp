@@ -83,12 +83,6 @@ namespace pqrs {
                                                     *path);
       }
     }
-    {
-      auto path = it.second.get_optional<std::string>("<xmlattr>.system_xml_path");
-      if (path) {
-        xml_file_path = xml_compiler.make_file_path(xml_compiler.system_xml_directory_, *path);
-      }
-    }
 
     if (! xml_file_path.empty()) {
       for (auto& i : extracted_ptree_.included_files_) {
