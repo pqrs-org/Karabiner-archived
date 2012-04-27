@@ -25,7 +25,7 @@ namespace pqrs {
             continue;
           }
 
-          std::vector<uint32_t> initialize_vector;
+          // ----------------------------------------
           auto raw_identifier = boost::trim_copy(it.get_data());
           if (! xml_compiler_.valid_identifier_(raw_identifier, parent_tag_name)) {
             continue;
@@ -33,28 +33,33 @@ namespace pqrs {
           auto identifier = raw_identifier;
           normalize_identifier_(identifier);
 
-          auto attr_vk_config = it.get_optional("<xmlattr>.vk_config");
-          if (attr_vk_config) {
-            initialize_vector.push_back(5); // count
-            initialize_vector.push_back(BRIDGE_VK_CONFIG);
-
-            static const std::string names[] = {
-              "VK_CONFIG_TOGGLE_",
-              "VK_CONFIG_FORCE_ON_",
-              "VK_CONFIG_FORCE_OFF_",
-              "VK_CONFIG_SYNC_KEYDOWNUP_",
-            };
-            for (auto& n : names) {
-              initialize_vector.push_back(symbol_map_.get("KeyCode", n + identifier));
-            }
-          }
-
-          filter_vector fv;
-          traverse_autogen_(pt, identifier, fv, initialize_vector);
-
+          // ----------------------------------------
           uint32_t config_index = symbol_map_.get("ConfigIndex", identifier);
-          remapclasses_initialize_vector_.add(initialize_vector, config_index, raw_identifier);
           identifier_map_[config_index] = raw_identifier;
+
+          // ----------------------------------------
+          remapclasses_initialize_vector_.start(config_index, raw_identifier);
+          {
+            auto attr_vk_config = it.get_optional("<xmlattr>.vk_config");
+            if (attr_vk_config) {
+              remapclasses_initialize_vector_.push_back(5);
+              remapclasses_initialize_vector_.push_back(BRIDGE_VK_CONFIG);
+
+              static const std::string names[] = {
+                "VK_CONFIG_TOGGLE_",
+                "VK_CONFIG_FORCE_ON_",
+                "VK_CONFIG_FORCE_OFF_",
+                "VK_CONFIG_SYNC_KEYDOWNUP_",
+              };
+              for (auto& n : names) {
+                remapclasses_initialize_vector_.push_back(symbol_map_.get("KeyCode", n + identifier));
+              }
+            }
+
+            filter_vector fv;
+            traverse_autogen_(pt, identifier, fv);
+          }
+          remapclasses_initialize_vector_.end();
         }
 
       } catch (std::exception& e) {
@@ -66,8 +71,7 @@ namespace pqrs {
   void
   xml_compiler::remapclasses_initialize_vector_loader::traverse_autogen_(const extracted_ptree& pt,
                                                                          const std::string& identifier,
-                                                                         const filter_vector& parent_filter_vector,
-                                                                         std::vector<uint32_t>& initialize_vector)
+                                                                         const filter_vector& parent_filter_vector)
   {
     filter_vector fv(symbol_map_, pt);
 
@@ -86,7 +90,7 @@ namespace pqrs {
     for (auto& it : pt) {
       try {
         if (it.get_tag_name() != "autogen") {
-          traverse_autogen_(it.children_extracted_ptree(), identifier, fv, initialize_vector);
+          traverse_autogen_(it.children_extracted_ptree(), identifier, fv);
 
         } else {
           std::string raw_autogen = boost::trim_copy(it.get_data());
@@ -98,7 +102,7 @@ namespace pqrs {
             pqrs::string::remove_whitespaces(autogen);
           }
 
-          handle_autogen(autogen, raw_autogen, fv, initialize_vector);
+          handle_autogen(autogen, raw_autogen, fv);
         }
 
       } catch (std::exception& e) {
@@ -110,8 +114,7 @@ namespace pqrs {
   void
   xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::string& autogen,
                                                                       const std::string& raw_autogen,
-                                                                      const filter_vector& filter_vector,
-                                                                      std::vector<uint32_t>& initialize_vector)
+                                                                      const filter_vector& filter_vector)
   {
     // ------------------------------------------------------------
     // preprocess
@@ -133,7 +136,7 @@ namespace pqrs {
         if (autogen.find(it.vk) != std::string::npos) {
           for (auto& f : it.flags) {
             handle_autogen(boost::replace_all_copy(autogen, it.vk, f),
-                           raw_autogen, filter_vector, initialize_vector);
+                           raw_autogen, filter_vector);
           }
           return;
         }
@@ -153,7 +156,7 @@ namespace pqrs {
       for (auto& it : info) {
         if (autogen.find(it.vk) != std::string::npos) {
           handle_autogen(boost::replace_all_copy(autogen, it.vk, it.flag),
-                         raw_autogen, filter_vector, initialize_vector);
+                         raw_autogen, filter_vector);
           return;
         }
       }
@@ -171,7 +174,7 @@ namespace pqrs {
 
       for (auto& v : combination) {
         handle_autogen(boost::replace_all_copy(autogen, "VK_MOD_ANY", boost::join(*v, "|") + "|ModifierFlag::NONE"),
-                       raw_autogen, filter_vector, initialize_vector);
+                       raw_autogen, filter_vector);
       }
       return;
     }
@@ -213,20 +216,20 @@ namespace pqrs {
         if (autogen.find(it.fromkeycode_with_modifierflag) != std::string::npos) {
           // FROMKEYCODE_HOME -> KeyCode::HOME
           handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode, it.keycode),
-                         raw_autogen, filter_vector, initialize_vector);
+                         raw_autogen, filter_vector);
           // FROMKEYCODE_HOME, -> KeyCode::CURSOR_LEFT,ModifierFlag::FN|
           handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode_with_comma, it.other_keycode_with_fn_pipe),
-                         raw_autogen, filter_vector, initialize_vector);
+                         raw_autogen, filter_vector);
           return;
         }
         // FROMKEYCODE_HOME (without ModifierFlag)
         if (autogen.find(it.fromkeycode) != std::string::npos) {
           // FROMKEYCODE_HOME -> KeyCode::HOME
           handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode, it.keycode),
-                         raw_autogen, filter_vector, initialize_vector);
+                         raw_autogen, filter_vector);
           // FROMKEYCODE_HOME -> KeyCode::CURSOR_LEFT,ModifierFlag::FN
           handle_autogen(boost::replace_all_copy(autogen, it.fromkeycode, it.other_keycode_with_fn),
-                         raw_autogen, filter_vector, initialize_vector);
+                         raw_autogen, filter_vector);
           return;
         }
       }
@@ -237,7 +240,7 @@ namespace pqrs {
       handle_autogen(boost::replace_first_copy(autogen,
                                                "--KeyOverlaidModifierWithRepeat--",
                                                "--KeyOverlaidModifier--Option::KEYOVERLAIDMODIFIER_REPEAT,"),
-                     raw_autogen, filter_vector, initialize_vector);
+                     raw_autogen, filter_vector);
       return;
     }
 
@@ -245,7 +248,7 @@ namespace pqrs {
       handle_autogen(boost::replace_first_copy(autogen,
                                                "--StripModifierFromScrollWheel--",
                                                "--ScrollWheelToScrollWheel--") + ",ModifierFlag::NONE",
-                     raw_autogen, filter_vector, initialize_vector);
+                     raw_autogen, filter_vector);
       return;
     }
 
@@ -253,12 +256,12 @@ namespace pqrs {
       handle_autogen(boost::replace_all_copy(autogen,
                                              "SimultaneousKeyPresses::Option::RAW",
                                              "Option::SIMULTANEOUSKEYPRESSES_RAW"),
-                     raw_autogen, filter_vector, initialize_vector);
+                     raw_autogen, filter_vector);
       return;
     }
 
     // ------------------------------------------------------------
-    // add to initialize_vector
+    // add to remapclasses_initialize_vector_
     //
 
     {
@@ -268,10 +271,12 @@ namespace pqrs {
         boost::trim(params);
 
         size_t length = params.size();
-        initialize_vector.push_back(length + 1);
-        initialize_vector.push_back(BRIDGE_STATUSMESSAGE);
+        remapclasses_initialize_vector_.push_back(length + 1);
+        remapclasses_initialize_vector_.push_back(BRIDGE_STATUSMESSAGE);
 
-        std::copy(params.begin(), params.end(), std::back_inserter(initialize_vector));
+        for (auto& c : params) {
+          remapclasses_initialize_vector_.push_back(c);
+        }
         // no need filter_vector
         return;
       }
@@ -289,7 +294,7 @@ namespace pqrs {
         ++simultaneous_keycode_index_;
 
         params = std::string("KeyCode::") + newkeycode + "," + params;
-        add_to_initialize_vector(params, BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES, filter_vector, initialize_vector);
+        add_to_initialize_vector(params, BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES, filter_vector);
         return;
       }
     }
@@ -323,7 +328,7 @@ namespace pqrs {
         std::string params = autogen.substr(it.symbol.length());
         boost::trim(params);
 
-        add_to_initialize_vector(params, it.type, filter_vector, initialize_vector);
+        add_to_initialize_vector(params, it.type, filter_vector);
         return;
       }
     }
@@ -337,8 +342,7 @@ namespace pqrs {
   void
   xml_compiler::remapclasses_initialize_vector_loader::add_to_initialize_vector(const std::string& params,
                                                                                 uint32_t type,
-                                                                                const filter_vector& filter_vector,
-                                                                                std::vector<uint32_t>& initialize_vector) const
+                                                                                const filter_vector& filter_vector) const
   {
     std::vector<uint32_t> vector;
     vector.push_back(type);
@@ -403,8 +407,12 @@ namespace pqrs {
       vector.push_back(newvalue);
     }
 
-    initialize_vector.push_back(vector.size());
-    pqrs::vector::push_back(initialize_vector, vector);
-    pqrs::vector::push_back(initialize_vector, filter_vector.get());
+    remapclasses_initialize_vector_.push_back(vector.size());
+    for (auto& i : vector) {
+      remapclasses_initialize_vector_.push_back(i);
+    }
+    for (auto& i : filter_vector.get()) {
+      remapclasses_initialize_vector_.push_back(i);
+    }
   }
 }
