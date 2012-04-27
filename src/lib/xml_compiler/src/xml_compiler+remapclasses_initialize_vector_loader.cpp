@@ -9,13 +9,15 @@
 
 namespace pqrs {
   void
-  xml_compiler::traverse_identifier_(const extracted_ptree& pt,
-                                     const std::string& parent_tag_name)
+  xml_compiler::remapclasses_initialize_vector_loader::traverse(const extracted_ptree& pt,
+                                                                const std::string& parent_tag_name)
   {
     for (auto& it : pt) {
       try {
         if (it.get_tag_name() != "identifier") {
-          traverse_identifier_(it.children_extracted_ptree(), it.get_tag_name());
+          if (! it.children_empty()) {
+            traverse(it.children_extracted_ptree(), it.get_tag_name());
+          }
 
         } else {
           auto attr_essential = it.get_optional("<xmlattr>.essential");
@@ -25,7 +27,7 @@ namespace pqrs {
 
           std::vector<uint32_t> initialize_vector;
           auto raw_identifier = boost::trim_copy(it.get_data());
-          if (! valid_identifier_(raw_identifier, parent_tag_name)) {
+          if (! xml_compiler_.valid_identifier_(raw_identifier, parent_tag_name)) {
             continue;
           }
           auto identifier = raw_identifier;
@@ -56,16 +58,16 @@ namespace pqrs {
         }
 
       } catch (std::exception& e) {
-        error_information_.set(e.what());
+        xml_compiler_.error_information_.set(e.what());
       }
     }
   }
 
   void
-  xml_compiler::traverse_autogen_(const extracted_ptree& pt,
-                                  const std::string& identifier,
-                                  const filter_vector& parent_filter_vector,
-                                  std::vector<uint32_t>& initialize_vector)
+  xml_compiler::remapclasses_initialize_vector_loader::traverse_autogen_(const extracted_ptree& pt,
+                                                                         const std::string& identifier,
+                                                                         const filter_vector& parent_filter_vector,
+                                                                         std::vector<uint32_t>& initialize_vector)
   {
     filter_vector fv(symbol_map_, pt);
 
@@ -100,16 +102,16 @@ namespace pqrs {
         }
 
       } catch (std::exception& e) {
-        error_information_.set(e.what());
+        xml_compiler_.error_information_.set(e.what());
       }
     }
   }
 
   void
-  xml_compiler::handle_autogen(const std::string& autogen,
-                               const std::string& raw_autogen,
-                               const filter_vector& filter_vector,
-                               std::vector<uint32_t>& initialize_vector)
+  xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::string& autogen,
+                                                                      const std::string& raw_autogen,
+                                                                      const filter_vector& filter_vector,
+                                                                      std::vector<uint32_t>& initialize_vector)
   {
     // ------------------------------------------------------------
     // preprocess
@@ -333,10 +335,10 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::add_to_initialize_vector(const std::string& params,
-                                         uint32_t type,
-                                         const filter_vector& filter_vector,
-                                         std::vector<uint32_t>& initialize_vector) const
+  xml_compiler::remapclasses_initialize_vector_loader::add_to_initialize_vector(const std::string& params,
+                                                                                uint32_t type,
+                                                                                const filter_vector& filter_vector,
+                                                                                std::vector<uint32_t>& initialize_vector) const
   {
     std::vector<uint32_t> vector;
     vector.push_back(type);

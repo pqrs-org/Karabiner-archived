@@ -98,23 +98,6 @@ namespace pqrs {
     static void normalize_identifier_(std::string& identifier);
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
 
-    void traverse_identifier_(const extracted_ptree& pt,
-                              const std::string& parent_tag_name);
-
-    void traverse_autogen_(const extracted_ptree& pt,
-                           const std::string& identifier,
-                           const filter_vector& filter_vector,
-                           std::vector<uint32_t>& initialize_vector);
-
-    void handle_autogen(const std::string& autogen,
-                        const std::string& raw_autogen,
-                        const filter_vector& filter_vector,
-                        std::vector<uint32_t>& initialize_vector);
-    void add_to_initialize_vector(const std::string& params,
-                                  uint32_t type,
-                                  const filter_vector& filter_vector,
-                                  std::vector<uint32_t>& initialize_vector) const;
-
     const std::string system_xml_directory_;
     const std::string private_xml_directory_;
 
@@ -126,7 +109,6 @@ namespace pqrs {
     std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
     std::vector<std::tr1::shared_ptr<essential_configuration> > essential_configurations_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
-    uint32_t simultaneous_keycode_index_;
 
     preferences_node_tree<preferences_checkbox_node> preferences_checkbox_node_tree_;
     preferences_node_tree<preferences_number_node> preferences_number_node_tree_;
