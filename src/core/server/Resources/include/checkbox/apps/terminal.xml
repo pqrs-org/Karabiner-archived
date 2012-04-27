@@ -18,7 +18,7 @@
     <item>
       <name>Change Command_L to Option_L</name>
       <appendix>(Pass-Through Tab and Backquote)</appendix>
-      <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
+      <include path="../snippets/lazy_recommendation.xml" />
       <identifier>remap.app_term_commandL2optionL_except_tab</identifier>
       <only>TERMINAL</only>
       <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
@@ -163,7 +163,7 @@
         <only>TERMINAL</only>
         <identifier>remap.app_term_append_escape_for_keys</identifier>
         <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-        <include system_xml_path="include/checkbox/apps/terminal/meta_modifier_key.xml">
+        <include path="terminal/meta_modifier_key.xml">
           <replacementdef>
             <replacementname>BEFORE</replacementname>
             <replacementvalue>KeyCode::ESCAPE</replacementvalue>
@@ -184,7 +184,7 @@
         <appendix>(Change Option_L+Arrow to Control+Arrow)</appendix>
         <appendix></appendix>
         <appendix>This setting is useful when you exchange Control+Tab and Command+Tab.</appendix>
-        <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
+        <include path="../snippets/lazy_recommendation.xml" />
         <identifier>remap.app_term_controlL2optionL_except_tab</identifier>
         <only>TERMINAL</only>
         <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>

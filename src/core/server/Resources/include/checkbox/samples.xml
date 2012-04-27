@@ -921,8 +921,8 @@
       </item>
     </item>
 
-    <include system_xml_path="include/checkbox/samples/filters.xml" />
-    <include system_xml_path="include/checkbox/samples/virtual_keycodes.xml" />
+    <include path="samples/filters.xml" />
+    <include path="samples/virtual_keycodes.xml" />
 
   </item>
 </root>

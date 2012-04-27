@@ -1020,7 +1020,7 @@
         </item>
         <item>
           <name>Double Control to Quicksilver Mode (&amp; 入力ソースを英字にする)</name>
-          <include system_xml_path="include/checkbox/snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
+          <include path="../snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
           <identifier>remap.jis_doublecontrol_to_quicksilver_mode_eisuu</identifier>
           <block>
             <inputmode_only>JAPANESE</inputmode_only>
@@ -1048,7 +1048,7 @@
       </item>
     </item>
 
-    <include system_xml_path="include/checkbox/languages/japanese/keyboard_layouts.xml" />
+    <include path="japanese/keyboard_layouts.xml" />
 
     <item>
       <name>Simultaneous Key Presses</name>

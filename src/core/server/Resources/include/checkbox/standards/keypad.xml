@@ -69,7 +69,7 @@
         <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
       </item>
     </item>
-    <include system_xml_path="include/checkbox/standards/enter.xml" />
+    <include path="enter.xml" />
     <item>
       <name>Change KeyPad-Minus(-) Key</name>
       <item>
@@ -167,7 +167,7 @@
       <block>
         <!-- Parentheses is Shift+8,9 in some Input Sources. -->
         <inputmode_only>HUNGARIAN</inputmode_only>
-        <include system_xml_path="include/checkbox/devices/logitech_n305.xml">
+        <include path="../devices/logitech_n305.xml">
           <replacementdef>
             <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
             <replacementvalue>KeyCode::KEY_8, ModifierFlag::SHIFT_L</replacementvalue>
@@ -180,7 +180,7 @@
         </include>
       </block>
       <block>
-        <include system_xml_path="include/checkbox/devices/logitech_n305.xml" />
+        <include path="../devices/logitech_n305.xml" />
       </block>
     </item>
     <item>

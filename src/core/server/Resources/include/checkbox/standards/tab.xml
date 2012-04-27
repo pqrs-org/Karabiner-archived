@@ -69,7 +69,7 @@
     </item>
     <item>
       <name>Control+Tab to Command+Tab</name>
-      <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
+      <include path="../snippets/lazy_recommendation.xml" />
       <identifier>remap.controlTab2commandTab</identifier>
       <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
     </item>
@@ -80,7 +80,7 @@
     </item>
     <item>
       <name>Option+Tab to Command+Tab</name>
-      <include system_xml_path="include/checkbox/snippets/lazy_recommendation.xml" />
+      <include path="../snippets/lazy_recommendation.xml" />
       <identifier>remap.optionTab2commandTab</identifier>
       <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
     </item>

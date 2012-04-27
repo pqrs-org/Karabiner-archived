@@ -295,7 +295,7 @@
 
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_r_operator_pending</autogen>
 
-          <include system_xml_path="include/checkbox/ubiquitous_vim_bindings/r_operator.xml">
+          <include path="r_operator.xml">
             <replacementdef>
               <replacementname>BEFORE</replacementname>
               <replacementvalue>KeyCode::FORWARD_DELETE</replacementvalue>
@@ -316,7 +316,7 @@
 
           <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_R_operator_pending</autogen>
 
-          <include system_xml_path="include/checkbox/ubiquitous_vim_bindings/r_operator.xml">
+          <include path="r_operator.xml">
             <replacementdef>
               <replacementname>BEFORE</replacementname>
               <replacementvalue>KeyCode::FORWARD_DELETE</replacementvalue>

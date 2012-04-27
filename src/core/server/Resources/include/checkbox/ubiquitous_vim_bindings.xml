@@ -4,7 +4,7 @@
   <!-- Author: Seth Milliken          -->
   <!-- Date:  2010-09-26 21:51:17 PDT -->
 
-  <include system_xml_path="include/checkbox/ubiquitous_vim_bindings/core.xml">
+  <include path="ubiquitous_vim_bindings/core.xml">
     <replacementdef>
       <replacementname>UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING</replacementname>
       <replacementvalue>
@@ -19,4 +19,3 @@
   </include>
 
 </root>
-

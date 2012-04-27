@@ -27,10 +27,10 @@
       <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::B, KeyCode::VK_WAIT_100MS, KeyCode::C</autogen>
     </item>
 
-    <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_lock.xml" />
-    <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_sticky.xml" />
-    <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_lazy.xml" />
-    <include system_xml_path="include/checkbox/samples/virtual_keycodes/vk_mousekey.xml" />
+    <include path="virtual_keycodes/vk_lock.xml" />
+    <include path="virtual_keycodes/vk_sticky.xml" />
+    <include path="virtual_keycodes/vk_lazy.xml" />
+    <include path="virtual_keycodes/vk_mousekey.xml" />
 
     <item>
       <name>VK_CHANGE_INPUTMODE_*</name>

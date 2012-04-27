@@ -3,7 +3,7 @@
   <item>
     <name>Use QWERF Keyboard Layout</name>
     <identifier>remap.qwerty2qwerf</identifier>
-    <include system_xml_path="include/checkbox/keyboard_layouts/common/keypad_redefinition.xml" />
+    <include path="common/keypad_redefinition.xml" />
     <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
     <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
     <autogen>--KeyToKey-- KeyCode::U, KeyCode::Y</autogen>
