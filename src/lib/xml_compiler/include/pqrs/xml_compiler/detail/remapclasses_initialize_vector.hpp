@@ -34,9 +34,25 @@ public:
     simultaneous_keycode_index_(0)
   {}
 
-  void reload(void) const;
+  void traverse(const extracted_ptree& pt,
+                const std::string& parent_tag_name);
 
 private:
+  void traverse_autogen_(const extracted_ptree& pt,
+                         const std::string& identifier,
+                         const filter_vector& filter_vector,
+                         std::vector<uint32_t>& initialize_vector);
+
+  void handle_autogen(const std::string& autogen,
+                      const std::string& raw_autogen,
+                      const filter_vector& filter_vector,
+                      std::vector<uint32_t>& initialize_vector);
+
+  void add_to_initialize_vector(const std::string& params,
+                                uint32_t type,
+                                const filter_vector& filter_vector,
+                                std::vector<uint32_t>& initialize_vector) const;
+
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
   remapclasses_initialize_vector& remapclasses_initialize_vector_;

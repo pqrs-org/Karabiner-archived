@@ -17,7 +17,6 @@ namespace pqrs {
     identifier_map_.clear();
     essential_configurations_.clear();
     remapclasses_initialize_vector_.clear();
-    simultaneous_keycode_index_ = 0;
     preferences_checkbox_node_tree_.clear();
     preferences_number_node_tree_.clear();
 
@@ -130,11 +129,17 @@ namespace pqrs {
           }
 
           // ----------------------------------------
-          if (private_xml_ptree_ptr) {
-            traverse_identifier_(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path), "");
-          }
-          if (checkbox_xml_ptree_ptr) {
-            traverse_identifier_(make_extracted_ptree(*checkbox_xml_ptree_ptr, checkbox_xml_file_path), "");
+          {
+            remapclasses_initialize_vector_loader loader(*this,
+                                                         symbol_map_,
+                                                         remapclasses_initialize_vector_,
+                                                         identifier_map_);
+            if (private_xml_ptree_ptr) {
+              loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path), "");
+            }
+            if (checkbox_xml_ptree_ptr) {
+              loader.traverse(make_extracted_ptree(*checkbox_xml_ptree_ptr, checkbox_xml_file_path), "");
+            }
           }
 
           remapclasses_initialize_vector_.freeze();
