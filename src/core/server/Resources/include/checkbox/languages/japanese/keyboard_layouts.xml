@@ -614,7 +614,8 @@
     <item>
       <name>キーボード天地逆Dvorak配列（USキーボード向け）</name>
       <appendix>http://pi200k.blog35.fc2.com/?no=70</appendix>
-      <include path="updown_dvorak.xml" />
+      <include path="keyboard_layouts/updown_dvorak.xml" />
+      <include path="keyboard_layouts/homemoved_dvorak.xml" />
     </item>
     <item>
       <name>AIU配列</name>
