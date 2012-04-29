@@ -46,7 +46,8 @@ public:
     symbol_map_(symbol_map),
     remapclasses_initialize_vector_(remapclasses_initialize_vector),
     identifier_map_(identifier_map),
-    simultaneous_keycode_index_(0)
+    simultaneous_keycode_index_(0),
+    filter_vector_(symbol_map)
   {}
 
   void traverse(const extracted_ptree& pt,
@@ -54,20 +55,19 @@ public:
 
 private:
   void traverse_autogen_(const extracted_ptree& pt,
-                         const std::string& identifier,
-                         const filter_vector& filter_vector);
+                         const std::string& identifier);
 
   void handle_autogen(const std::string& autogen,
-                      const std::string& raw_autogen,
-                      const filter_vector& filter_vector);
+                      const std::string& raw_autogen);
 
   void add_to_initialize_vector(const std::string& params,
-                                uint32_t type,
-                                const filter_vector& filter_vector) const;
+                                uint32_t type) const;
 
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
   remapclasses_initialize_vector& remapclasses_initialize_vector_;
   std::tr1::unordered_map<uint32_t, std::string>& identifier_map_;
+
   uint32_t simultaneous_keycode_index_;
+  filter_vector filter_vector_;
 };
