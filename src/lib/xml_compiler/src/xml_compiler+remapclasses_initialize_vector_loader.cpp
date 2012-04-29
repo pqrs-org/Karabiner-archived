@@ -73,7 +73,8 @@ namespace pqrs {
                                                                          const std::string& identifier,
                                                                          const filter_vector& parent_filter_vector)
   {
-    filter_vector fv(symbol_map_, pt);
+    filter_vector fv;
+    fv.traverse(symbol_map_, pt);
 
     // Add passthrough filter.
     if (parent_filter_vector.empty() &&
