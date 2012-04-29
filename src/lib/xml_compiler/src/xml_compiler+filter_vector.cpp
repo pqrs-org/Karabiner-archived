@@ -4,43 +4,44 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-  xml_compiler::filter_vector::filter_vector(const symbol_map& symbol_map,
-                                             const extracted_ptree& pt)
+  void
+  xml_compiler::filter_vector::traverse(const symbol_map& symbol_map,
+                                        const extracted_ptree& pt)
   {
     for (auto& it : pt) {
       /*  */ if (it.get_tag_name() == "not") {
-        add(symbol_map, BRIDGE_FILTERTYPE_APPLICATION_NOT,  "ApplicationType::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_APPLICATION_NOT,  "ApplicationType::", it.get_data());
       } else if (it.get_tag_name() == "only") {
-        add(symbol_map, BRIDGE_FILTERTYPE_APPLICATION_ONLY, "ApplicationType::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_APPLICATION_ONLY, "ApplicationType::", it.get_data());
       } else if (it.get_tag_name() == "device_not") {
-        add(symbol_map, BRIDGE_FILTERTYPE_DEVICE_NOT,  "", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_DEVICE_NOT,  "", it.get_data());
       } else if (it.get_tag_name() == "device_only") {
-        add(symbol_map, BRIDGE_FILTERTYPE_DEVICE_ONLY, "", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_DEVICE_ONLY, "", it.get_data());
       } else if (it.get_tag_name() == "config_not") {
-        add(symbol_map, BRIDGE_FILTERTYPE_CONFIG_NOT,  "ConfigIndex::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_CONFIG_NOT,  "ConfigIndex::", it.get_data());
       } else if (it.get_tag_name() == "config_only") {
-        add(symbol_map, BRIDGE_FILTERTYPE_CONFIG_ONLY, "ConfigIndex::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_CONFIG_ONLY, "ConfigIndex::", it.get_data());
       } else if (it.get_tag_name() == "modifier_not") {
-        add(symbol_map, BRIDGE_FILTERTYPE_MODIFIER_NOT,  "", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_MODIFIER_NOT,  "", it.get_data());
       } else if (it.get_tag_name() == "modifier_only") {
-        add(symbol_map, BRIDGE_FILTERTYPE_MODIFIER_ONLY, "", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_MODIFIER_ONLY, "", it.get_data());
       } else if (it.get_tag_name() == "inputmode_not") {
-        add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODE_NOT,  "InputMode::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_INPUTMODE_NOT,  "InputMode::", it.get_data());
       } else if (it.get_tag_name() == "inputmode_only") {
-        add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODE_ONLY, "InputMode::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_INPUTMODE_ONLY, "InputMode::", it.get_data());
       } else if (it.get_tag_name() == "inputmodedetail_not") {
-        add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT,  "InputModeDetail::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT,  "InputModeDetail::", it.get_data());
       } else if (it.get_tag_name() == "inputmodedetail_only") {
-        add(symbol_map, BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY, "InputModeDetail::", it.get_data());
+        add_(symbol_map, BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY, "InputModeDetail::", it.get_data());
       }
     }
   }
 
   void
-  xml_compiler::filter_vector::add(const symbol_map& symbol_map,
-                                   uint32_t filter_type,
-                                   const std::string& prefix,
-                                   const std::string& string)
+  xml_compiler::filter_vector::add_(const symbol_map& symbol_map,
+                                    uint32_t filter_type,
+                                    const std::string& prefix,
+                                    const std::string& string)
   {
     std::vector<std::string> values;
     pqrs::string::split_by_comma(values, string);
