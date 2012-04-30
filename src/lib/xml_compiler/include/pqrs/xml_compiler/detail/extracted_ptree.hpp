@@ -12,7 +12,7 @@ public:
     pt_(pt),
     included_files_ptr_(new std::deque<std::string>),
     included_files_(*included_files_ptr_),
-    stack_ptr_(new std::stack<extracted_ptree_iterator::stack_data>),
+    stack_ptr_(new std::stack<stack_data>),
     stack_(*stack_ptr_)
   {
     included_files_.push_back(xml_file_path);
@@ -46,6 +46,38 @@ public:
     const pqrs::string::replacement& replacement_;
   };
 
+  class stack_data {
+  public:
+    stack_data(const boost::property_tree::ptree& pt,
+               const pqrs::string::replacement& r) :
+      it(pt.begin()),
+      end(pt.end()),
+      parent_replacement(r)
+    {}
+
+    // For extracted ptree.
+    stack_data(const ptree_ptr& p,
+               const std::tr1::shared_ptr<pqrs::string::replacement>& r,
+               const boost::property_tree::ptree& root_children) :
+      it(root_children.begin()),
+      end(root_children.end()),
+      parent_replacement(*r),
+      pt_ptr_(p),
+      replacement_ptr_(r)
+    {}
+
+    boost::property_tree::ptree::const_iterator it;
+    boost::property_tree::ptree::const_iterator end;
+    const pqrs::string::replacement& parent_replacement;
+
+    bool extracted(void) const { return pt_ptr_; }
+
+  private:
+    // Keep extracted ptree_ptr, replacement_ptr until we finish traversing.
+    const ptree_ptr pt_ptr_;
+    const std::tr1::shared_ptr<pqrs::string::replacement> replacement_ptr_;
+  };
+
   class extracted_ptree_iterator : public boost::iterator_facade<extracted_ptree_iterator,
                                                                  const node,
                                                                  boost::forward_traversal_tag>
@@ -67,38 +99,6 @@ public:
         extract_include_();
       }
     }
-
-    class stack_data {
-    public:
-      stack_data(const boost::property_tree::ptree& pt,
-                 const pqrs::string::replacement& r) :
-        it(pt.begin()),
-        end(pt.end()),
-        parent_replacement(r)
-      {}
-
-      // For extracted ptree.
-      stack_data(const ptree_ptr& p,
-                 const std::tr1::shared_ptr<pqrs::string::replacement>& r,
-                 const boost::property_tree::ptree& root_children) :
-        it(root_children.begin()),
-        end(root_children.end()),
-        parent_replacement(*r),
-        pt_ptr_(p),
-        replacement_ptr_(r)
-      {}
-
-      boost::property_tree::ptree::const_iterator it;
-      boost::property_tree::ptree::const_iterator end;
-      const pqrs::string::replacement& parent_replacement;
-
-      bool extracted(void) const { return pt_ptr_; }
-
-    private:
-      // Keep extracted ptree_ptr, replacement_ptr until we finish traversing.
-      const ptree_ptr pt_ptr_;
-      const std::tr1::shared_ptr<pqrs::string::replacement> replacement_ptr_;
-    };
 
   private:
     friend class boost::iterator_core_access;
@@ -165,6 +165,6 @@ private:
   std::deque<std::string>& included_files_;
 
   // shared_ptr for stack_.
-  std::tr1::shared_ptr<std::stack<extracted_ptree_iterator::stack_data> > stack_ptr_;
-  std::stack<extracted_ptree_iterator::stack_data>& stack_;
+  std::tr1::shared_ptr<std::stack<stack_data> > stack_ptr_;
+  std::stack<stack_data>& stack_;
 };
