@@ -498,7 +498,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   pqrs::string::replacement replacement;
 
   for (auto& it : pt) {
-    pqrs::xml_compiler::filter_vector fv(s, pqrs::xml_compiler::extracted_ptree(xml_compiler, replacement, it.second, ""));
+    pqrs::xml_compiler::filter_vector fv(s);
+    fv.traverse(pqrs::xml_compiler::extracted_ptree(xml_compiler, replacement, it.second, ""));
 
     std::vector<uint32_t> expected;
 
