@@ -11,7 +11,9 @@ public:
     replacement_(replacement),
     pt_(pt),
     included_files_ptr_(new std::deque<std::string>),
-    included_files_(*included_files_ptr_)
+    included_files_(*included_files_ptr_),
+    stack_ptr_(new std::stack<extracted_ptree_iterator::stack_data>),
+    stack_(*stack_ptr_)
   {
     included_files_.push_back(xml_file_path);
   }
@@ -50,29 +52,21 @@ public:
   {
   public:
     extracted_ptree_iterator(const extracted_ptree& extracted_ptree) :
-      extracted_ptree_(extracted_ptree)
+      extracted_ptree_(extracted_ptree),
+      stack_size_(0)
     {}
 
     extracted_ptree_iterator(const extracted_ptree& extracted_ptree,
                              const pqrs::string::replacement& replacement,
                              const boost::property_tree::ptree& pt) :
-      extracted_ptree_(extracted_ptree)
+      extracted_ptree_(extracted_ptree),
+      stack_size_(extracted_ptree.stack_.size() + 1)
     {
       if (! pt.empty()) {
-        stack_.push(stack_data(pt, replacement));
+        extracted_ptree_.stack_.push(stack_data(pt, replacement));
         extract_include_();
       }
     }
-
-  private:
-    friend class boost::iterator_core_access;
-
-    void increment(void);
-    const node dereference(void) const;
-    bool equal(const extracted_ptree_iterator const& other) const;
-
-    void extract_include_(void);
-    void collapse_(void);
 
     class stack_data {
     public:
@@ -106,8 +100,41 @@ public:
       const std::tr1::shared_ptr<pqrs::string::replacement> replacement_ptr_;
     };
 
+  private:
+    friend class boost::iterator_core_access;
+
+    void increment(void);
+    const node dereference(void) const;
+
+    bool equal(const extracted_ptree_iterator const& other) const {
+      if (is_end_() && other.is_end_()) {
+        return true;
+      }
+      if (! is_end_() && ! other.is_end_()) {
+        throw xml_compiler_logic_error("extracted_ptree_iterator::equal supports only it == end().");
+      }
+
+      // ----------------------------------------
+      if (is_end_()) {
+        other.equal(*this);
+      }
+
+      // ----------------------------------------
+      if (ended_()) {
+        return true;
+      }
+
+      return false;
+    }
+
+    void extract_include_(void);
+    void collapse_(void);
+
+    bool is_end_(void) const { return stack_size_ == 0; }
+    bool ended_(void) const { return extracted_ptree_.stack_.size() < stack_size_; }
+
     const extracted_ptree& extracted_ptree_;
-    std::stack<stack_data> stack_;
+    size_t stack_size_;
   };
 
   extracted_ptree_iterator begin(void) const {
@@ -125,7 +152,8 @@ private:
     xml_compiler_(extracted_ptree.xml_compiler_),
     replacement_(replacement),
     pt_(pt),
-    included_files_(extracted_ptree.included_files_)
+    included_files_(extracted_ptree.included_files_),
+    stack_(extracted_ptree.stack_)
   {}
 
   const xml_compiler& xml_compiler_;
@@ -135,4 +163,8 @@ private:
   // shared_ptr for included_files_.
   std::tr1::shared_ptr<std::deque<std::string> > included_files_ptr_;
   std::deque<std::string>& included_files_;
+
+  // shared_ptr for stack_.
+  std::tr1::shared_ptr<std::stack<extracted_ptree_iterator::stack_data> > stack_ptr_;
+  std::stack<extracted_ptree_iterator::stack_data>& stack_;
 };
