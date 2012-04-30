@@ -134,5 +134,5 @@ private:
 
   // shared_ptr for included_files_.
   std::tr1::shared_ptr<std::deque<std::string> > included_files_ptr_;
-  mutable std::deque<std::string> included_files_;
+  std::deque<std::string>& included_files_;
 };
