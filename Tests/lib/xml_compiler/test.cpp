@@ -153,6 +153,78 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
                           "<autogen>--KeyToKey2-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+
+    {
+      std::vector<uint32_t> actual;
+      EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "private.swap_space_and_tab"));
+
+      std::vector<uint32_t> expected;
+      EXPECT_EQ(expected, actual);
+    }
+    {
+      std::vector<uint32_t> actual;
+      EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "private.swap_space_and_tab2"));
+
+      std::vector<uint32_t> expected;
+
+      // ------------------------------------------------------------
+      // <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
+      expected.push_back(7);      // count
+      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(49);     // KeyCode::SPACE
+      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(131074); // ModifierFlag::SHIFT_L
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(48);     // KeyCode::TAB
+
+      expected.push_back(2);      // count
+      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(0);      // ConfigIndex::notsave_passthrough
+
+      expected.push_back(7);      // count
+      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(49);     // KeyCode::SPACE
+      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(131076); // ModifierFlag::SHIFT_R
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(48);     // KeyCode::TAB
+
+      expected.push_back(2);      // count
+      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(0);      // ConfigIndex::notsave_passthrough
+
+      // ------------------------------------------------------------
+      // <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::SPACE</autogen>
+      expected.push_back(7);      // count
+      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(48);     // KeyCode::TAB
+      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(131074); // ModifierFlag::SHIFT_L
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(49);     // KeyCode::SPACE
+
+      expected.push_back(2);      // count
+      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(0);      // ConfigIndex::notsave_passthrough
+
+      expected.push_back(7);      // count
+      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(48);     // KeyCode::TAB
+      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(131076); // ModifierFlag::SHIFT_R
+      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(49);     // KeyCode::SPACE
+
+      expected.push_back(2);      // count
+      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(0);      // ConfigIndex::notsave_passthrough
+
+      EXPECT_EQ(expected, actual);
+    }
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_type");
@@ -418,7 +490,7 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial)
   v.push_back(1);
   v.push_back(2);
   v.push_back(3);
-  //v.end();
+  // v.end();
 
   v.start(4, "remap.two_items");
   v.push_back(1);
