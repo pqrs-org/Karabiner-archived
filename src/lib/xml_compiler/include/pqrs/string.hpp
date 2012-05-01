@@ -29,9 +29,9 @@ namespace pqrs {
     class split_option {
     public:
       enum value {
-        none,
-        trim,
-        remove_empty_strings,
+        none                 = 0,
+        trim                 = 1 << 0,
+        remove_empty_strings = 1 << 1,
       };
     };
     void split_by_comma(std::vector<std::string>& v,
