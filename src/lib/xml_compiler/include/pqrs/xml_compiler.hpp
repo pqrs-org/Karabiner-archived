@@ -51,9 +51,6 @@ namespace pqrs {
     boost::optional<uint32_t> get_symbol_map_value(const std::string& name) const {
       return symbol_map_.get_optional(name);
     }
-    void dump_symbol_map(void) const {
-      symbol_map_.dump();
-    }
 
     boost::optional<const std::string&> get_identifier(int config_index) const;
     uint32_t get_appid(const std::string& application_identifier) const;
@@ -69,6 +66,12 @@ namespace pqrs {
     const preferences_node_tree<preferences_number_node>& get_preferences_number_node_tree(void) const {
       return preferences_number_node_tree_;
     }
+
+    // ----------------------------------------
+    void debug_dump_symbol_map(void) const {
+      symbol_map_.dump();
+    }
+    bool debug_get_initialize_vector(std::vector<uint32_t>& out, const std::string& raw_identifier) const;
 
   private:
     void read_xml_(ptree_ptr& out,

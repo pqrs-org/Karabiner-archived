@@ -152,12 +152,13 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
                           "\n"
                           "<autogen>--KeyToKey2-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
 
     {
       std::vector<uint32_t> actual;
       EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "private.swap_space_and_tab"));
 
+      // empty if error
       std::vector<uint32_t> expected;
       EXPECT_EQ(expected, actual);
     }
@@ -233,7 +234,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
                           "\n"
                           "KeyCode::SPACE|KeyCode::TAB";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_different_type");
@@ -242,7 +243,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
                           "\n"
                           "ModifierFlag::SHIFT_L|PointingButton::LEFT";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -251,7 +252,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_symbol_map");
     xml_compiler.reload();
     EXPECT_EQ("Unknown symbol:\n\nKeyCode::MY_UNKNOWN_KEY", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
@@ -260,7 +261,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_data_type");
     xml_compiler.reload();
     EXPECT_EQ("Unknown symbol:\n\nKeyCode2::SPACE", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 
   // ------------------------------------------------------------
