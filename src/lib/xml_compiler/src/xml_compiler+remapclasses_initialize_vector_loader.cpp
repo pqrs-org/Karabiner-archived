@@ -84,27 +84,22 @@ namespace pqrs {
 
     // ----------------------------------------
     for (auto& it : pt) {
-      try {
-        if (it.get_tag_name() != "autogen") {
-          size_t s = filter_vector_.size();
-          traverse_autogen_(it.children_extracted_ptree(), identifier);
-          filter_vector_.resize(s);
+      if (it.get_tag_name() != "autogen") {
+        size_t s = filter_vector_.size();
+        traverse_autogen_(it.children_extracted_ptree(), identifier);
+        filter_vector_.resize(s);
 
-        } else {
-          std::string raw_autogen = boost::trim_copy(it.get_data());
+      } else {
+        std::string raw_autogen = boost::trim_copy(it.get_data());
 
-          // drop whitespaces for preprocessor. (for FROMKEYCODE_HOME, etc)
-          // Note: preserve space when --ShowStatusMessage--.
-          std::string autogen(raw_autogen);
-          if (! boost::starts_with(autogen, "--ShowStatusMessage--")) {
-            pqrs::string::remove_whitespaces(autogen);
-          }
-
-          handle_autogen(autogen, raw_autogen);
+        // drop whitespaces for preprocessor. (for FROMKEYCODE_HOME, etc)
+        // Note: preserve space when --ShowStatusMessage--.
+        std::string autogen(raw_autogen);
+        if (! boost::starts_with(autogen, "--ShowStatusMessage--")) {
+          pqrs::string::remove_whitespaces(autogen);
         }
 
-      } catch (std::exception& e) {
-        xml_compiler_.error_information_.set(e.what());
+        handle_autogen(autogen, raw_autogen);
       }
     }
   }

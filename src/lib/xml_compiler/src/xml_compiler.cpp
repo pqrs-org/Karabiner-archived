@@ -248,4 +248,42 @@ namespace pqrs {
 
     return true;
   }
+
+  bool
+  xml_compiler::debug_get_initialize_vector(std::vector<uint32_t>& out, const std::string& raw_identifier) const
+  {
+    std::string identifier = raw_identifier;
+    normalize_identifier_(identifier);
+
+    uint32_t target_config_index = symbol_map_.get("ConfigIndex", identifier);
+
+    auto& initialize_vector = remapclasses_initialize_vector_.get();
+
+    size_t i = 2;
+    for (;;) {
+      if (i >= initialize_vector.size()) return false;
+
+      uint32_t count = initialize_vector.at(i);
+      ++i;
+      if (count == 0) return false;
+
+      uint32_t config_index = initialize_vector.at(i);
+      if (target_config_index != config_index) {
+        i += count;
+        continue;
+      }
+
+      out.clear();
+      ++i;
+      --count;
+      while (count > 0) {
+        out.push_back(initialize_vector.at(i));
+        ++i;
+        --count;
+      }
+      return true;
+    }
+
+    return false;
+  }
 }

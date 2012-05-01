@@ -100,6 +100,14 @@ public:
       }
     }
 
+    ~extracted_ptree_iterator(void) {
+      while (! ended_()) {
+        auto& top = extracted_ptree_.stack_.top();
+        top.it = top.end;
+        collapse_();
+      }
+    }
+
   private:
     friend class boost::iterator_core_access;
 
@@ -240,7 +248,10 @@ public:
     }
 
     bool is_end_(void) const { return stack_size_ == 0; }
-    bool ended_(void) const { return extracted_ptree_.stack_.size() < stack_size_; }
+    bool ended_(void) const {
+      return (stack_size_ == 0) ||
+             (extracted_ptree_.stack_.size() < stack_size_);
+    }
 
     const extracted_ptree& extracted_ptree_;
     size_t stack_size_;
