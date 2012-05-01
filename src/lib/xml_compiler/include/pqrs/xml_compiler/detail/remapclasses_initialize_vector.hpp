@@ -16,6 +16,9 @@ public:
   }
   void end(void);
 
+  size_t size(void) const { return data_.size(); }
+  void update(size_t index, uint32_t v) { data_[index] = v; }
+
   void freeze(void);
 
 private:

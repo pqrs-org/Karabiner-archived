@@ -335,18 +335,23 @@ namespace pqrs {
   xml_compiler::remapclasses_initialize_vector_loader::add_to_initialize_vector(const std::string& params,
                                                                                 uint32_t type) const
   {
-    std::vector<uint32_t> vector;
-    vector.push_back(type);
+    size_t count_index = remapclasses_initialize_vector_.size();
+    uint32_t count = 0;
+
+    remapclasses_initialize_vector_.push_back(0); // count
+
+    remapclasses_initialize_vector_.push_back(type);
+    ++count;
 
     std::vector<std::string> args;
     std::vector<std::string> values;
-    pqrs::string::split_by_comma(args, params);
+    pqrs::string::split_by_comma(args, params, pqrs::string::split_option::remove_empty_strings);
     for (auto& a : args) {
       unsigned int datatype = 0;
       unsigned int newvalue = 0;
 
       values.clear();
-      pqrs::string::split_by_pipe(values, a);
+      pqrs::string::split_by_pipe(values, a, pqrs::string::split_option::remove_empty_strings);
 
       for (auto& v : values) {
         unsigned int newdatatype = BRIDGE_DATATYPE_NONE;
@@ -394,14 +399,14 @@ namespace pqrs {
         newvalue |= symbol_map_.get(v);
       }
 
-      vector.push_back(datatype);
-      vector.push_back(newvalue);
+      remapclasses_initialize_vector_.push_back(datatype);
+      ++count;
+      remapclasses_initialize_vector_.push_back(newvalue);
+      ++count;
     }
 
-    remapclasses_initialize_vector_.push_back(vector.size());
-    for (auto& i : vector) {
-      remapclasses_initialize_vector_.push_back(i);
-    }
+    remapclasses_initialize_vector_.update(count_index, count);
+
     for (auto& i : filter_vector_.get()) {
       remapclasses_initialize_vector_.push_back(i);
     }
