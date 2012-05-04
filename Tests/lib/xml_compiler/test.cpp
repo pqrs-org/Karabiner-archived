@@ -16,6 +16,7 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_remap_sample"));
   EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map_value("ConfigIndex::private_include_test"));
   EXPECT_EQ(boost::optional<uint32_t>(4), xml_compiler.get_symbol_map_value("ConfigIndex::private_replacement"));
+  EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map_value("ConfigIndex::private_space_is_ignored"));
 
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
   EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_456"));
@@ -24,6 +25,7 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT2"));
   EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT3"));
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
+  EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map_value("KeyCode::SPACE_IS_IGNORED"));
 
   EXPECT_EQ(boost::optional<uint32_t>(1191),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));
@@ -40,6 +42,8 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::VI"),
             xml_compiler.get_appid("org.vim.MacVim"));
 
+  EXPECT_EQ(boost::optional<uint32_t>(7), xml_compiler.get_symbol_map_value("ApplicationType::SPACE_IS_IGNORED"));
+
   // com.apple.Terminal is overwritten by private.xml.
   EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::TERMINAL_APPLE"),
             xml_compiler.get_appid("com.apple.Terminal"));
@@ -53,7 +57,9 @@ TEST(pqrs_xml_compiler, reload)
             xml_compiler.get_appid("org.gnu.AquamacsEmacs"));
 
   EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map_value("DeviceVendor::HEWLETT_PACKARD"));
+  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map_value("DeviceVendor::SPACE_IS_IGNORED"));
   EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map_value("DeviceProduct::MY_HP_KEYBOARD"));
+  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map_value("DeviceProduct::SPACE_IS_IGNORED"));
 
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());

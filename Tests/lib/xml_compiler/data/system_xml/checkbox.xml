@@ -20,7 +20,7 @@
   <item>
     <name>notsave</name>
     <identifier>notsave.remap_sample</identifier>
-    <only>Activity Monitor</only>
+    <only>SPACE_ IS_ IGNORED</only>
     <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
   </item>
 </root>

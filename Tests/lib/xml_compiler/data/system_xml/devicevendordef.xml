@@ -12,4 +12,9 @@
     <vendorid>0x1e54</vendorid>
   </devicevendordef>
 
+  <devicevendordef>
+    <vendorname>SPACE_   IS_   IGNORED</vendorname>
+    <vendorid>0x9999</vendorid>
+  </devicevendordef>
+
 </root>
