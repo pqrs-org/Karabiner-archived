@@ -3,27 +3,29 @@
 
 #include <string>
 #include <vector>
+#include <boost/algorithm/string.hpp>
 #include <boost/optional.hpp>
 #include <tr1/cstdint>
 #include <tr1/unordered_map>
 
 namespace pqrs {
-  namespace string {
-    int string_from_file(std::string& string, const char* filename);
+  class string {
+  public:
+    static int string_from_file(std::string& out, const char* filename);
 
     typedef std::tr1::unordered_map<std::string, std::string> replacement;
 
-    int string_by_replacing_double_curly_braces_from_file(std::string& string,
-                                                          const char* filename,
-                                                          replacement replacement);
-    int string_by_replacing_double_curly_braces_from_string(std::string& string,
-                                                            const std::string& source,
-                                                            replacement replacement);
+    static int string_by_replacing_double_curly_braces_from_file(std::string& out,
+                                                                 const char* filename,
+                                                                 replacement replacement);
+    static int string_by_replacing_double_curly_braces_from_string(std::string& out,
+                                                                   const std::string& source,
+                                                                   replacement replacement);
 
     // octal,decimal,hex is supported.
-    boost::optional<uint32_t> to_uint32_t(const char* string);
-    boost::optional<uint32_t> to_uint32_t(const std::string& string);
-    boost::optional<uint32_t> to_uint32_t(const boost::optional<std::string>& string);
+    static boost::optional<uint32_t> to_uint32_t(const char* string);
+    static boost::optional<uint32_t> to_uint32_t(const std::string& string);
+    static boost::optional<uint32_t> to_uint32_t(const boost::optional<std::string>& string);
 
     // tokenizer
     class tokenizer {
@@ -63,8 +65,23 @@ namespace pqrs {
     };
 
     // others
-    void remove_whitespaces(std::string& string);
-  }
+    static void remove_whitespaces(std::string& string) {
+      auto it = std::remove_if(string.begin(), string.end(), boost::is_any_of(" \n\r\t"));
+      string.erase(it, string.end());
+    }
+
+    static std::string remove_whitespaces_copy(const std::string& string) {
+      std::string s;
+      std::back_insert_iterator<std::string> it(s);
+      std::remove_copy_if(string.begin(), string.end(), it, boost::is_any_of(" \n\r\t"));
+      return s;
+    }
+
+  private:
+    static int string_by_replacing_double_curly_braces_(std::string& out,
+                                                        std::istream& istream,
+                                                        replacement replacement);
+  };
 }
 
 #endif
