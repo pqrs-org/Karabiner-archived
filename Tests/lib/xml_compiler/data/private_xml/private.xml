@@ -115,6 +115,14 @@
     {{MY_XML}}
   </item>
 
+  <item>
+    <name>{{MY_REPLACEMENT}}</name>
+    <identifier>
+      private.space_ is_ ignored
+    </identifier>
+    {{MY_XML}}
+  </item>
+
   <!-- ============================================================ -->
   <item>
     <name>Swap Space and Tab</name>

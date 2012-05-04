@@ -3,5 +3,6 @@
   <!-- ============================================================ -->
   <!-- symbol_map -->
   <symbol_map type="KeyCode" name="MY_LANG_KEY" value="123" />
+  <symbol_map type="KeyCode" name="SPACE_   IS_   IGNORED" value="999" />
   <symbol_map type="KeyCode" name="SEMICOLON" value="41" />
 </root>

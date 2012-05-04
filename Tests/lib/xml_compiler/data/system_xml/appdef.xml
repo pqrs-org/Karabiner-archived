@@ -25,10 +25,10 @@
 
   <appdef>
     <appname>
-      Activity Monitor
+      SPACE_   IS_   IGNORED
     </appname>
     <equal>
-      com.apple.ActivityMonitor
+      keep space
     </equal>
   </appdef>
 </root>
