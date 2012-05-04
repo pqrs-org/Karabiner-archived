@@ -124,34 +124,56 @@ TEST(pqrs_string, to_uint32_t)
   EXPECT_EQ(static_cast<uint32_t>(123), *actual);
 }
 
-TEST(pqrs_string, split_by_comma)
+TEST(pqrs_string, tokenizer)
 {
-  std::vector<std::string> actual;
-  pqrs::string::split_by_comma(actual, ", A, , B,C,D, E,  F,,,,G,");
+  {
+    std::string string = "A,B,,C";
+    pqrs::string::tokenizer tokenizer(string, ',');
+    std::string actual;
 
-  std::vector<std::string> expected;
-  expected.push_back("A");
-  expected.push_back("B");
-  expected.push_back("C");
-  expected.push_back("D");
-  expected.push_back("E");
-  expected.push_back("F");
-  expected.push_back("G");
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("A", actual);
 
-  EXPECT_EQ(expected, actual);
-}
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("B", actual);
 
-TEST(pqrs_string, split_by_pipe)
-{
-  std::vector<std::string> actual;
-  pqrs::string::split_by_pipe(actual, "A||B|C|");
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("C", actual);
 
-  std::vector<std::string> expected;
-  expected.push_back("A");
-  expected.push_back("B");
-  expected.push_back("C");
+    EXPECT_FALSE(tokenizer.split_removing_empty(actual));
+  }
+  {
+    std::string string = ",";
+    pqrs::string::tokenizer tokenizer(string, ',');
+    std::string actual;
 
-  EXPECT_EQ(expected, actual);
+    EXPECT_FALSE(tokenizer.split_removing_empty(actual));
+  }
+  {
+    std::string string = ",,,A,B,,C,D, ,  E E  ,,";
+    pqrs::string::tokenizer tokenizer(string, ',');
+    std::string actual;
+
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("A", actual);
+
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("B", actual);
+
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("C", actual);
+
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("D", actual);
+
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ(" ", actual);
+
+    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
+    EXPECT_EQ("  E E  ", actual);
+
+    EXPECT_FALSE(tokenizer.split_removing_empty(actual));
+  }
 }
 
 TEST(pqrs_string, remove_whitespaces)

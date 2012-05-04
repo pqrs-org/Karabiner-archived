@@ -25,21 +25,42 @@ namespace pqrs {
     boost::optional<uint32_t> to_uint32_t(const std::string& string);
     boost::optional<uint32_t> to_uint32_t(const boost::optional<std::string>& string);
 
-    // split
-    class split_option {
+    // tokenizer
+    class tokenizer {
     public:
-      enum value {
-        none                 = 0,
-        trim                 = 1 << 0,
-        remove_empty_strings = 1 << 1,
-      };
+      tokenizer(const std::string& string, char c) :
+        string_(string),
+        c_(c),
+        pos_(0)
+      {}
+
+      bool split_removing_empty(std::string& out) {
+        auto size = string_.size();
+        for (size_t i = pos_; i < size; ++i) {
+          if (string_[i] == c_) {
+            if (i == pos_) {
+              ++pos_;
+              continue;
+            }
+
+            out = string_.substr(pos_, i - pos_);
+            pos_ = i + 1;
+            return true;
+          }
+        }
+        if (pos_ < size) {
+          out = string_.substr(pos_);
+          pos_ = size;
+          return true;
+        }
+        return false;
+      }
+
+    private:
+      const std::string& string_;
+      const char c_;
+      size_t pos_;
     };
-    void split_by_comma(std::vector<std::string>& v,
-                        const std::string& string,
-                        int flags = split_option::trim | split_option::remove_empty_strings);
-    void split_by_pipe(std::vector<std::string>& v,
-                       const std::string& string,
-                       int flags = split_option::trim | split_option::remove_empty_strings);
 
     // others
     void remove_whitespaces(std::string& string);
