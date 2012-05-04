@@ -16,6 +16,11 @@
     <identifier>remap.return2tab</identifier>
     <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::TAB</autogen>
   </item>
+  <item>
+    <name>ShowStatusMessage</name>
+    <identifier>remap.showstatusmessage</identifier>
+    <autogen>--ShowStatusMessage-- A B C D E F G </autogen>
+  </item>
 
   <item>
     <name>notsave</name>
