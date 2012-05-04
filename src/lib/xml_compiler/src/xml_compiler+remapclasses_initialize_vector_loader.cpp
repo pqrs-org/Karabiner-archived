@@ -26,7 +26,7 @@ namespace pqrs {
           }
 
           // ----------------------------------------
-          auto raw_identifier = boost::trim_copy(it.get_data());
+          auto raw_identifier = pqrs::string::remove_whitespaces_copy(it.get_data());
           if (! xml_compiler_.valid_identifier_(raw_identifier, parent_tag_name)) {
             continue;
           }
@@ -90,7 +90,7 @@ namespace pqrs {
         filter_vector_.resize(s);
 
       } else {
-        std::string raw_autogen = boost::trim_copy(it.get_data());
+        std::string raw_autogen = boost::trim_left_copy(it.get_data());
 
         // drop whitespaces for preprocessor. (for FROMKEYCODE_HOME, etc)
         // Note: preserve space when --ShowStatusMessage--.
@@ -278,8 +278,6 @@ namespace pqrs {
       static const std::string symbol("--SimultaneousKeyPresses--");
       if (boost::starts_with(autogen, symbol)) {
         std::string params = autogen.substr(symbol.length());
-        boost::trim(params);
-
         std::string newkeycode = std::string("VK_SIMULTANEOUSKEYPRESSES_") +
                                  boost::lexical_cast<std::string>(simultaneous_keycode_index_);
         symbol_map_.add("KeyCode", newkeycode);
@@ -318,8 +316,6 @@ namespace pqrs {
     for (auto& it : info) {
       if (boost::starts_with(autogen, it.symbol)) {
         std::string params = autogen.substr(it.symbol.length());
-        boost::trim(params);
-
         add_to_initialize_vector(params, it.type);
         return;
       }
@@ -343,17 +339,16 @@ namespace pqrs {
     remapclasses_initialize_vector_.push_back(type);
     ++count;
 
-    std::vector<std::string> args;
-    std::vector<std::string> values;
-    pqrs::string::split_by_comma(args, params, pqrs::string::split_option::remove_empty_strings);
-    for (auto& a : args) {
+    pqrs::string::tokenizer tokenizer_comma(params, ',');
+    std::string arg;
+    std::string value;
+    while (tokenizer_comma.split_removing_empty(arg)) {
+      //for (auto& a : args) {
       unsigned int datatype = 0;
       unsigned int newvalue = 0;
 
-      values.clear();
-      pqrs::string::split_by_pipe(values, a, pqrs::string::split_option::remove_empty_strings);
-
-      for (auto& v : values) {
+      pqrs::string::tokenizer tokenizer_pipe(arg, '|');
+      while (tokenizer_pipe.split_removing_empty(value)) {
         unsigned int newdatatype = BRIDGE_DATATYPE_NONE;
 
         static const struct {
@@ -371,13 +366,13 @@ namespace pqrs {
           { "Option::",          BRIDGE_DATATYPE_OPTION          },
         };
         for (auto& it : info) {
-          if (boost::starts_with(v, it.type)) {
+          if (boost::starts_with(value, it.type)) {
             newdatatype = it.datatype;
             break;
           }
         }
         if (newdatatype == BRIDGE_DATATYPE_NONE) {
-          throw xml_compiler_runtime_error("Unknown symbol:\n\n" + v);
+          throw xml_compiler_runtime_error("Unknown symbol:\n\n" + value);
         }
 
         if (datatype) {
@@ -386,17 +381,17 @@ namespace pqrs {
           if (newdatatype != BRIDGE_DATATYPE_FLAGS &&
               newdatatype != BRIDGE_DATATYPE_POINTINGBUTTON) {
             // Don't connect no-flags. (Example: KeyCode::A | KeyCode::B)
-            throw xml_compiler_runtime_error("Cannot connect(|) except ModifierFlag and PointingButton:\n\n" + a);
+            throw xml_compiler_runtime_error("Cannot connect(|) except ModifierFlag and PointingButton:\n\n" + arg);
           }
 
           if (newdatatype != datatype) {
             // Don't connect different data type. (Example: PointingButton::A | ModifierFlag::SHIFT_L)
-            throw xml_compiler_runtime_error("Cannot connect(|) between different types:\n\n" + a);
+            throw xml_compiler_runtime_error("Cannot connect(|) between different types:\n\n" + arg);
           }
         }
 
         datatype = newdatatype;
-        newvalue |= symbol_map_.get(v);
+        newvalue |= symbol_map_.get(value);
       }
 
       remapclasses_initialize_vector_.push_back(datatype);

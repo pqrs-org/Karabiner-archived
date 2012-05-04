@@ -107,11 +107,14 @@ namespace pqrs {
             xml_compiler_.error_information_.set(std::string("No '") + attrname + "' Attribute within <symbol_map>.");
             break;
           }
-          if (v->empty()) {
+
+          std::string value = pqrs::string::remove_whitespaces_copy(*v);
+          if (value.empty()) {
             xml_compiler_.error_information_.set(std::string("Empty '") + attrname + "' Attribute within <symbol_map>.");
             continue;
           }
-          vector.push_back(v);
+
+          vector.push_back(value);
         }
         // An error has occured when vector.size != attrs.size.
         if (vector.size() != sizeof(attrs) / sizeof(attrs[0])) {

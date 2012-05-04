@@ -41,26 +41,40 @@ namespace pqrs {
                                     const std::string& prefix,
                                     const std::string& string)
   {
-    std::vector<std::string> values;
-    pqrs::string::split_by_comma(values, string);
-    if (values.empty()) return;
+    std::string string_no_whitespaces(string);
+    pqrs::string::remove_whitespaces(string_no_whitespaces);
 
-    data_.push_back(values.size() + 1); // +1 == filter_type
+    size_t count_index = data_.size();
+    uint32_t count = 0;
+
+    data_.push_back(count);
+
     data_.push_back(filter_type);
+    ++count;
 
-    for (auto& v : values) {
+    pqrs::string::tokenizer tokenizer_comma(string_no_whitespaces, ',');
+    std::string arg;
+    std::string value;
+    while (tokenizer_comma.split_removing_empty(arg)) {
       // support '|' for <modifier_only>.
       // For example: <modifier_only>ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L|ModifierFlag::OPTION_L</modifier_only>
-      std::vector<std::string> items;
-      pqrs::string::split_by_pipe(items, v);
+      pqrs::string::tokenizer tokenizer_pipe(arg, '|');
 
       uint32_t filter_value = 0;
-      for (auto& i : items) {
-        std::string key = prefix + i;
+      while (tokenizer_pipe.split_removing_empty(value)) {
+        std::string key = prefix + value;
         normalize_identifier_(key);
         filter_value |= symbol_map_.get(key);
       }
       data_.push_back(filter_value);
+      ++count;
+    }
+
+    if (count == 1) {
+      // Rollback if filter is empty.
+      data_.resize(count_index);
+    } else {
+      data_[count_index] = count;
     }
   }
 }
