@@ -65,6 +65,33 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_TRUE(node_tree.get_children());
   auto node_ptr = (*(node_tree.get_children()))[0];
   EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
+
+  {
+    std::vector<uint32_t> actual;
+    EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "remap.showstatusmessage"));
+
+    std::vector<uint32_t> expected;
+
+    // <autogen>--ShowStatusMessage-- A B C D E F G </autogen>
+
+    expected.push_back(14); // count
+    expected.push_back(47); // BRIDGE_STATUSMESSAGE
+    expected.push_back(65); // A
+    expected.push_back(32); // space
+    expected.push_back(66); // B
+    expected.push_back(32); // space
+    expected.push_back(67); // C
+    expected.push_back(32); // space
+    expected.push_back(68); // D
+    expected.push_back(32); // space
+    expected.push_back(69); // E
+    expected.push_back(32); // space
+    expected.push_back(70); // F
+    expected.push_back(32); // space
+    expected.push_back(71); // G
+
+    EXPECT_EQ(expected, actual);
+  }
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang)
