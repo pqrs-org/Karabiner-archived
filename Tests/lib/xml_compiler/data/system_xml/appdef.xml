@@ -22,4 +22,13 @@
     <equal>net.sourceforge.iTerm</equal>
     <equal>com.googlecode.iterm2</equal>
   </appdef>
+
+  <appdef>
+    <appname>
+      Activity Monitor
+    </appname>
+    <equal>
+      com.apple.ActivityMonitor
+    </equal>
+  </appdef>
 </root>
