@@ -52,7 +52,7 @@ namespace pqrs {
 
         for (auto& child : it.children_extracted_ptree()) {
           if (child.get_tag_name() == "appname") {
-            newapp->set_name(boost::trim_copy(child.get_data()));
+            newapp->set_name(pqrs::string::remove_whitespaces_copy(child.get_data()));
           } else if (child.get_tag_name() == "equal") {
             newapp->add_rule_equal(boost::trim_copy(child.get_data()));
           } else if (child.get_tag_name() == "prefix") {
