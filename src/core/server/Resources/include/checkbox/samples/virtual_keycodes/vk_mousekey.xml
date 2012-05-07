@@ -9,7 +9,7 @@
       <appendix>Change O to VK_MOUSEKEY_DIAGONAL_NE</appendix>
       <appendix>Change J to VK_MOUSEKEY_DIAGONAL_SW</appendix>
       <appendix>Change L to VK_MOUSEKEY_DIAGONAL_SE</appendix>
-      <appendix>Change IJKL to VK_MOUSEKEY_SCROLL_UP/LEFT/DOWN/RIGHT</appendix>
+      <appendix>Change Arrows to VK_MOUSEKEY_SCROLL_UP/LEFT/DOWN/RIGHT</appendix>
       <appendix>Change F to VK_MOUSEKEY_HIGHSPEED (WASD and IJKL operations become high speed)</appendix>
       <appendix>Change 1 to VK_MOUSEKEY_BUTTON_LEFT</appendix>
       <appendix>Change 2 to VK_MOUSEKEY_BUTTON_MIDDLE</appendix>
@@ -38,10 +38,10 @@
       <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_DIAGONAL_SW</autogen>
       <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_DIAGONAL_SE</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_SCROLL_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_SCROLL_LEFT</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT</autogen>
 
       <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
 
