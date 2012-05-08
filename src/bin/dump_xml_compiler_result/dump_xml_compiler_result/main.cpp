@@ -21,14 +21,20 @@ namespace {
     if (children_ptr) {
       auto& children = *children_ptr;
 
-      std::cout << "<ul>" << std::endl;
+      static bool first_ul = true;
+      if (first_ul) {
+        std::cout << "<ul id=\"collapser\">";
+        first_ul = false;
+      } else {
+        std::cout << "<ul>";
+      }
 
       for (auto& it : children) {
         auto& node = it->get_node();
 
         std::string name = node.get_name();
         escapeHTML(name);
-        std::cout << "<li>" << name << "</li>" << std::endl;
+        std::cout << "<li>" << name;
 
         if (dump_all) {
           std::cout << "<identifier>" << node.get_identifier() << "</identifier>" << std::endl;
@@ -37,13 +43,15 @@ namespace {
 
         dump_tree(*it, dump_all);
 
+        std::cout << "</li>";
+
         auto& identifier = node.get_identifier();
         if (! identifier.empty()) {
           ++total_identifier_count_;
         }
       }
 
-      std::cout << "</ul>" << std::endl;
+      std::cout << "</ul>";
     }
   }
 
@@ -100,10 +108,14 @@ main(int argc, const char* argv[])
 
   } else if (command == "dump_tree") {
     dump_tree(xml_compiler.get_preferences_checkbox_node_tree(), false);
+    std::cout << std::endl;
+    std::cout << std::endl;
     std::cout << "Total items: " << total_identifier_count_ << std::endl;
 
   } else if (command == "dump_tree_all") {
     dump_tree(xml_compiler.get_preferences_checkbox_node_tree(), true);
+    std::cout << std::endl;
+    std::cout << std::endl;
     std::cout << "Total items: " << total_identifier_count_ << std::endl;
 
   } else if (command == "dump_number") {
