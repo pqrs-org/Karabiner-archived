@@ -53,7 +53,11 @@
 
 - (void) distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:(NSNotification*)notification
 {
-  [WorkSpaceData refreshEnabledInputSources];
+  NSAutoreleasePool* pool = [NSAutoreleasePool new];
+  {
+    [WorkSpaceData refreshEnabledInputSources];
+  }
+  [pool drain];
 }
 
 - (void) distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification

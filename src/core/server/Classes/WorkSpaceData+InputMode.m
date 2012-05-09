@@ -46,7 +46,12 @@ static NSMutableArray* enabledInputSources_ = nil;
       NSString* sourceID = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
       if (sourceID) {
         if ([sourceID hasPrefix:@"com.apple."] &&
-            ! [sourceID hasPrefix:@"com.apple.keylayout."]) {
+            // com.apple.keylayout.French
+            ! [sourceID hasPrefix:@"com.apple.keylayout."] &&
+            // com.apple.inputmethod.Kotoeri.Roman
+            ! [sourceID hasPrefix:@"com.apple.inputmethod."] &&
+            // com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak
+            ! [sourceID hasPrefix:@"com.apple.keyboardlayout."]) {
           continue;
         }
       }
