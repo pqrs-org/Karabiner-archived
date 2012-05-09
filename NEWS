@@ -1,4 +1,8 @@
-Changes since 7.6.0
+Changes since 7.7.0
+
+----------------------------------------------------------------------
+= version 7.7.0 =
+    - Fixed a bug introduced in version 7.6.0 that detecting of Input Sources does not work properly in Japanese and some other languages.
 
 ----------------------------------------------------------------------
 = version 7.6.0 =
