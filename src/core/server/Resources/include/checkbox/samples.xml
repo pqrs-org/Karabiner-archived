@@ -528,8 +528,10 @@
       <item>
         <name>NoRepeat</name>
         <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
+        <appendix>Tab to VK_NONE (+ Holding Tab to Escape)</appendix>
         <identifier>remap.samples_holdingkeytokey_norepeat</identifier>
         <autogen>--HoldingKeyToKey-- KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE, Option::NOREPEAT</autogen>
+        <autogen>--HoldingKeyToKey-- KeyCode::TAB, KeyCode::VK_NONE, KeyCode::ESCAPE, Option::NOREPEAT</autogen>
       </item>
     </item>
 
