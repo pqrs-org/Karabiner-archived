@@ -17,6 +17,10 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map_value("ConfigIndex::private_include_test"));
   EXPECT_EQ(boost::optional<uint32_t>(4), xml_compiler.get_symbol_map_value("ConfigIndex::private_replacement"));
   EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map_value("ConfigIndex::private_space_is_ignored"));
+  {
+    std::string expected = "private.space_is_ignored";
+    EXPECT_EQ(boost::optional<const std::string&>(expected), xml_compiler.get_identifier(5));
+  }
 
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
   EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_456"));
