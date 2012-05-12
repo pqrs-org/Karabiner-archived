@@ -48,6 +48,19 @@
       </item>
       <item>
         <name>KeyPad-Dot(.) to Comma(,)</name>
+        <appendix>(+ Holding KeyPad-Dot to KeyPad-Dot)</appendix>
+        <identifier>remap.keypaddot2comma_retain_holding</identifier>
+        <autogen>
+          --HoldingKeyToKey--
+          KeyCode::KEYPAD_DOT,
+          KeyCode::COMMA,
+          KeyCode::VK_NONE,
+          KeyCode::KEYPAD_DOT,
+          Option::NOREPEAT
+        </autogen>
+      </item>
+      <item>
+        <name>KeyPad-Dot(.) to Keypad-Comma(,)</name>
         <identifier>remap.keypaddot2comma</identifier>
         <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_COMMA</autogen>
       </item>
