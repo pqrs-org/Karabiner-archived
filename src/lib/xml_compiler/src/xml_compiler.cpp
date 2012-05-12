@@ -224,12 +224,6 @@ namespace pqrs {
     return 0;
   }
 
-  void
-  xml_compiler::normalize_identifier_(std::string& identifier)
-  {
-    boost::replace_all(identifier, ".", "_");
-  }
-
   bool
   xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const
   {
