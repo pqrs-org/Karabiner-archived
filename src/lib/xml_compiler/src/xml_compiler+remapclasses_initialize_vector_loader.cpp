@@ -26,7 +26,7 @@ namespace pqrs {
           }
 
           // ----------------------------------------
-          auto raw_identifier = pqrs::string::remove_whitespaces_copy(it.get_data());
+          auto raw_identifier = boost::trim_copy(it.get_data());
           if (! xml_compiler_.valid_identifier_(raw_identifier, parent_tag_name)) {
             continue;
           }

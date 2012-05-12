@@ -98,7 +98,11 @@ namespace pqrs {
       return extracted_ptree(*this, replacement_, pt, xml_file_path);
     }
 
-    static void normalize_identifier_(std::string& identifier);
+    static void normalize_identifier_(std::string& identifier) {
+      pqrs::string::remove_whitespaces(identifier);
+      boost::replace_all(identifier, ".", "_");
+    }
+
     bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
 
     const std::string system_xml_directory_;

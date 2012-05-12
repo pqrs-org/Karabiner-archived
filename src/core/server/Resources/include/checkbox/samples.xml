@@ -20,6 +20,7 @@
         <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
       </item>
     </item>
+
     <item>
       <name>Pass Through Mode</name>
       <item>
@@ -920,6 +921,17 @@
         <identifier vk_config="true">notsave.sample</identifier>
         <autogen>--ShowStatusMessage-- notsave.sample</autogen>
         <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>&lt;identifier&gt; which contains white space</name>
+      <item>
+        <name>Change Tab to Space</name>
+        <identifier>
+          remap.sample change tab to space
+        </identifier>
+        <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
       </item>
     </item>
 
