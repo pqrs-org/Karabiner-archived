@@ -927,11 +927,29 @@
     <item>
       <name>&lt;identifier&gt; which contains white space</name>
       <item>
-        <name>Change Tab to Space</name>
+        <name>Standard: &lt;identifier&gt; is "remap.sample change tab to space"</name>
+        <appendix>Change Tab to Space</appendix>
         <identifier>
           remap.sample change tab to space
         </identifier>
         <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+      </item>
+      <item>
+        <name>Filter</name>
+        <item>
+          <name>Core</name>
+          <identifier>
+            remap.sample filter core
+          </identifier>
+        </item>
+        <item>
+          <name>Change Tab to Space when the above setting is activated.</name>
+          <identifier>
+            remap.sample change tab to space filter core
+          </identifier>
+          <config_only>remap.sample filter core</config_only>
+          <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+        </item>
       </item>
     </item>
 
