@@ -951,6 +951,24 @@
           <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
         </item>
       </item>
+      <item>
+        <name>VK_CONFIG</name>
+        <item>
+          <name>Change Tab to Space</name>
+          <identifier vk_config="true">
+            remap.sample change tab to space vk config
+          </identifier>
+          <autogen>--ShowStatusMessage-- Change Tab to Space</autogen>
+          <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+        </item>
+        <item>
+          <name>Change A to toggle above setting.</name>
+          <identifier>
+            remap.sample change a to toggle vk config
+          </identifier>
+          <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_remap_sample change tab to space vk config</autogen>
+        </item>
+      </item>
     </item>
 
     <include path="samples/filters.xml" />
