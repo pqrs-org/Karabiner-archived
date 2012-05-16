@@ -288,23 +288,26 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // Handle afterKeys_
       if (! remapParams.params.ex_iskeydown) {
-        // clear temporary flags.
-        FlagStatus::set();
+        // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
+        if (afterKeys_->size() > 0) {
+          // clear temporary flags.
+          FlagStatus::set();
 
-        FlagStatus::temporary_decrease(fromFlags);
+          FlagStatus::temporary_decrease(fromFlags);
 
-        for (size_t i = 0; i < afterKeys_->size(); ++i) {
-          FlagStatus::temporary_increase((*afterKeys_)[i].flags);
+          for (size_t i = 0; i < afterKeys_->size(); ++i) {
+            FlagStatus::temporary_increase((*afterKeys_)[i].flags);
 
-          Flags f = FlagStatus::makeFlags();
-          KeyboardType keyboardType = remapParams.params.keyboardType;
+            Flags f = FlagStatus::makeFlags();
+            KeyboardType keyboardType = remapParams.params.keyboardType;
 
-          EventOutputQueue::FireKey::fire_downup(f, (*afterKeys_)[i].key, keyboardType);
+            EventOutputQueue::FireKey::fire_downup(f, (*afterKeys_)[i].key, keyboardType);
 
-          FlagStatus::temporary_decrease((*afterKeys_)[i].flags);
+            FlagStatus::temporary_decrease((*afterKeys_)[i].flags);
+          }
+
+          FlagStatus::temporary_increase(fromFlags);
         }
-
-        FlagStatus::temporary_increase(fromFlags);
       }
 
       return true;
