@@ -86,6 +86,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (pressCount_ >= 2) {
           pressCount_ = 0;
 
+          // clear temporary flags.
+          FlagStatus::set();
           keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
         }
