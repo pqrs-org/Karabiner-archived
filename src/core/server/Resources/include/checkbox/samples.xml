@@ -381,6 +381,12 @@
         <autogen>--KeyToConsumer-- KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
       </item>
       <item>
+        <name>with ModifierFlag::NONE</name>
+        <appendix>Command+A to Volume Mute</appendix>
+        <identifier>remap.samples_keytoconsumer_modifierflag_none</identifier>
+        <autogen>--KeyToConsumer-- KeyCode::A, VK_COMMAND | ModifierFlag::NONE, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      </item>
+      <item>
         <name>NoRepeat</name>
         <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
         <appendix>S to Volume Up</appendix>
@@ -412,6 +418,12 @@
         <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
         <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
         <autogen>--ConsumerToKey-- ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+      </item>
+      <item>
+        <name>with ModifierFlag::NONE</name>
+        <appendix>Command+Volume Down to Space</appendix>
+        <identifier>remap.samples_consumertokey_modifierflag_none</identifier>
+        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE</autogen>
       </item>
       <item>
         <name>NoRepeat</name>
@@ -544,11 +556,13 @@
         <appendix>(A to Control_L) + (A x2 to Shift_L+RETURN)</appendix>
         <appendix>(Shift+B to Control_L+Option_L) + (Shift+B x2 to A,S,Command_L+D)</appendix>
         <appendix>(C to KeyCode::VK_NONE) + (C x2 to SPACE)</appendix>
+        <appendix>(Shift+Z to KeyCode::VK_NONE) + (Shift+Z x2 to SPACE)</appendix>
         <identifier>remap.samples_doublepressmodifier</identifier>
         <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::RETURN</autogen>
         <autogen>--DoublePressModifier-- KeyCode::A, KeyCode::CONTROL_L, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
         <autogen>--DoublePressModifier-- KeyCode::B, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::COMMAND_L</autogen>
         <autogen>--DoublePressModifier-- KeyCode::C, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::Z, VK_SHIFT, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
       </item>
       <item>
         <name>Extra</name>
