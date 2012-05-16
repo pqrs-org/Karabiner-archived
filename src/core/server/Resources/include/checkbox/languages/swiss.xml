@@ -63,8 +63,8 @@
       <inputmode_only>SWISS</inputmode_only>
       <identifier>remap.swiss_altgr_ae_to_left_brace</identifier>
       <autogen>
-        --KeyToKey-- 
-        KeyCode::QUOTE, VK_OPTION | ModifierFlag::NONE, 
+        --KeyToKey--
+        KeyCode::QUOTE, VK_OPTION | ModifierFlag::NONE,
         KeyCode::KEY_8, VK_OPTION
       </autogen>
     </item>
@@ -74,8 +74,8 @@
       <inputmode_only>SWISS</inputmode_only>
       <identifier>remap.swiss_altgr_dollar_to_right_brace</identifier>
       <autogen>
-          --KeyToKey-- 
-          KeyCode::BACKSLASH, VK_OPTION | ModifierFlag::NONE, 
+          --KeyToKey--
+          KeyCode::BACKSLASH, VK_OPTION | ModifierFlag::NONE,
           KeyCode::KEY_9, VK_OPTION
         </autogen>
     </item>
@@ -85,8 +85,8 @@
       <inputmode_only>SWISS</inputmode_only>
       <identifier>remap.swiss_altgr_dach_to_home</identifier>
       <autogen>
-        --KeyToKey-- 
-        KeyCode::EQUAL, VK_OPTION | ModifierFlag::NONE, 
+        --KeyToKey--
+        KeyCode::EQUAL, VK_OPTION | ModifierFlag::NONE,
         KeyCode::N, VK_OPTION
       </autogen>
     </item>
@@ -96,8 +96,8 @@
       <inputmode_only>SWISS</inputmode_only>
       <identifier>remap.swiss_altgr_lessthan_to_backslash</identifier>
       <autogen>
-        --KeyToKey-- 
-        KeyCode::SWISS_LESS_THAN, VK_OPTION | ModifierFlag::NONE, 
+        --KeyToKey--
+        KeyCode::SWISS_LESS_THAN, VK_OPTION | ModifierFlag::NONE,
         KeyCode::KEY_7, VK_OPTION | ModifierFlag::SHIFT_L
       </autogen>
     </item>
