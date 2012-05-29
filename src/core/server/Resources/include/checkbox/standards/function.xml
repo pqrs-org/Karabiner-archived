@@ -1127,6 +1127,11 @@
           </item>
         </item>
         <item>
+          <name>F1 to Escape</name>
+          <identifier>remap.f1_to_escape</identifier>
+          <autogen>--KeyToKey-- KeyCode::F1, KeyCode::ESCAPE</autogen>
+        </item>
+        <item>
           <name>Control+F1 to F16</name>
           <identifier>remap.controlF1toF16</identifier>
           <autogen>--KeyToKey-- KeyCode::F1, VK_CONTROL, KeyCode::F16</autogen>
