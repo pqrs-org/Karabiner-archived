@@ -35,9 +35,36 @@ static int current_status_[MAX_FINGERS];
 }
 
 // ------------------------------------------------------------
-struct Finger;
+typedef struct {
+  float x;
+  float y;
+} mtPoint;
+
+typedef struct {
+  mtPoint position;
+  mtPoint velocity;
+} mtReadout;
+
+typedef struct {
+  int frame;
+  double timestamp;
+  int identifier;
+  int state;
+  int unknown1;
+  int unknown2;
+  mtReadout normalized;
+  float size;
+  int unknown3;
+  float angle;
+  float majorAxis;
+  float minorAxis;
+  mtReadout unknown4;
+  int unknown5[2];
+  float unknown6;
+} Finger;
+
 typedef void* MTDeviceRef;
-typedef int (* MTContactCallbackFunction)(int, struct Finger*, int, double, int);
+typedef int (* MTContactCallbackFunction)(int, Finger*, int, double, int);
 
 CFMutableArrayRef MTDeviceCreateList(void);
 void MTRegisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
@@ -67,9 +94,26 @@ static void setPreference(int fingers, int newvalue) {
 
 // ------------------------------------------------------------
 // Multitouch callback
-static int callback(int device, struct Finger* data, int fingers, double timestamp, int frame) {
+static int callback(int device, Finger* data, int fingers, double timestamp, int frame) {
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
+#if 0
+    // ignore edge
+    {
+      int valid_fingers = 0;
+      for (int i = 0; i < fingers; ++i) {
+        double x = data[i].normalized.position.x;
+        double y = data[i].normalized.position.y;
+        double threshold = 0.1;
+        if (threshold < x && x < 1.0 - threshold &&
+            threshold < y && y < 1.0 - threshold) {
+          ++valid_fingers;
+        }
+      }
+      fingers = valid_fingers;
+    }
+#endif
+
     // deactivating settings first.
     for (int i = 0; i < MAX_FINGERS; ++i) {
       if (current_status_[i] && fingers != i + 1) {
