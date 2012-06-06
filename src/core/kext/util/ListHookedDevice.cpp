@@ -1,4 +1,5 @@
 #include <IOKit/hid/IOHIDKeys.h>
+#include "CommonData.hpp"
 #include "Config.hpp"
 #include "ListHookedDevice.hpp"
 #include "NumHeldDownKeys.hpp"
@@ -228,10 +229,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! list_) return NULL;
 
     // ----------------------------------------------------------------------
-    // Search a replaced device first.
+    // Consumer keys have a different behavior
+    // whether they are in an internal keyboard or external keyboard.
+    //
+    // For example:
+    //   Brightness Down Key
+    //     * Change brightness of MacBook display by Brightness Down Key on MacBook.
+    //     * Change brightness of Cinema display by Brightness Down Key on an external keyboard.
+    //
+    // Therefore, if user is using MacBook in lid-closed-mode,
+    // we need to send Consumer Key event from external keyboard even if last_ is internal keyboard.
+    //
+    // IOHIDKeyboard and IOHIDConsumer share VendorID and ProductID at the moment.
+    // So, we scan connected devices by last VendorID and ProductID which are shared by all devices.
+    // If a device is found, we use it as last device.
+
+    // We give higher priority to the last_ device when multiple same devices are connected.
     ListHookedDevice::Item* p = get(last_);
+
+    if (p) {
+      // Scanning devices if the last_ device has different VendorID and ProductID.
+      if (! CommonData::isEqualVendorProduct(p->vendor_, p->product_)) {
+        for (p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+          if (p->isReplaced()) {
+            if (CommonData::isEqualVendorProduct(p->vendor_, p->product_)) {
+              IOLOG_DEVEL("ListHookedDevice last_ is changed to 0x%x,0x%x,%p\n",
+                          p->vendor_.get(), p->product_.get(), p->device_);
+              last_ = p->device_;
+              break;
+            }
+          }
+        }
+      }
+    }
+
     if (p && p->isReplaced()) return p;
 
+    // ----------------------------------------------------------------------
+    // Using a first matched device.
     for (p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->isReplaced()) return p;
     }
