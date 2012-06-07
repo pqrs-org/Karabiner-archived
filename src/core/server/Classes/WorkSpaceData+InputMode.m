@@ -113,6 +113,31 @@ static NSMutableArray* enabledInputSources_ = nil;
   if (! inputSourceID) return NO;
 
   @synchronized(self) {
+    // Note:
+    //   InputSourceID is not unique.
+    //   For example, AquaSKK has 6 Input Sources.
+    //   But all of them have same InputSourceID.
+    //
+    //   Therefore, use this method carefully.
+    //
+    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese
+    //
+    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.HalfWidthKana
+    //
+    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Roman
+    //
+    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.FullWidthRoman
+    //
+    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.Hiragana
+    //
+    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.Katakana
+
     for (InputSource* inputSource in enabledInputSources_) {
       if (! inputSource.inputSourceID) continue;
 
