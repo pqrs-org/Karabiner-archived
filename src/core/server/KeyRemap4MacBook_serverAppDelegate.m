@@ -68,17 +68,17 @@
   // Therefore, we need to make own NSAutoreleasePool.
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-    NSString* inputSourceID = [WorkSpaceData getTISPropertyInputSourceID];
-    NSString* inputModeID   = [WorkSpaceData getTISPropertyInputModeID:inputSourceID];
-    if (inputSourceID && inputModeID) {
-      [WorkSpaceData getInputMode:inputModeID
+    InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
+    if ([inputSource inputSourceID] &&
+        [inputSource inputModeID]) {
+      [WorkSpaceData getInputMode:[inputSource inputModeID]
                  output_inputmode:(&(bridgeworkspacedata_.inputmode))
            output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
       [self send_workspacedata_to_kext];
 
       NSMutableDictionary* userInfo = [[NSMutableDictionary new] autorelease];
-      [userInfo setObject:inputSourceID forKey:@"inputSourceID"];
-      [userInfo setObject:inputModeID forKey:@"inputModeID"];
+      [userInfo setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
+      [userInfo setObject:[inputSource inputModeID] forKey:@"inputModeID"];
       [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
     }
   }

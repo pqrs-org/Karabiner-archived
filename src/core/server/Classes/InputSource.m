@@ -65,7 +65,31 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
 
     bcp47         = [InputSource getBcp47:inputSource_];
     inputSourceID = TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID);
+
+    // ----------------------------------------
+    // Setting inputModeID
     inputModeID   = TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID);
+    if (! inputModeID) {
+      // get detail string
+      NSString* detail = @"";
+
+      if (inputSourceID) {
+        // Examples:
+        //   name == com.apple.keylayout.US
+        //   name == com.apple.keylayout.Dvorak
+        NSRange dotrange = [inputSourceID rangeOfString:@"." options:NSBackwardsSearch];
+        if (dotrange.location != NSNotFound) {
+          detail = [inputSourceID substringFromIndex:dotrange.location];
+        }
+      }
+
+      // ----------------------------------------
+      if (bcp47 && [bcp47 length] > 0) {
+        inputModeID = [NSString stringWithFormat:@"org.pqrs.inputmode.%@%@", bcp47, detail];
+      } else {
+        inputModeID = [NSString stringWithFormat:@"org.pqrs.inputmode.unknown%@", detail];
+      }
+    }
   }
 
   return self;
