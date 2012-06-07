@@ -8,7 +8,7 @@ static NSMutableArray* enabledInputSources_ = nil;
 
 + (void) refreshEnabledInputSources
 {
-  @synchronized (self) {
+  @synchronized(self) {
     CFDictionaryRef filter = NULL;
     CFArrayRef list = NULL;
 
@@ -73,62 +73,16 @@ static NSMutableArray* enabledInputSources_ = nil;
   }
 }
 
-+ (NSString*) getTISPropertyInputSourceID
++ (InputSource*) getCurrentInputSource
 {
   TISInputSourceRef ref = TISCopyCurrentKeyboardInputSource();
   if (! ref) return nil;
 
-  NSString* retval = nil;
-  NSString* inputsourceid = TISGetInputSourceProperty(ref, kTISPropertyInputSourceID);
-  if (inputsourceid) {
-    retval = [NSString stringWithString:inputsourceid];
-  }
+  InputSource* inputSource = [[[InputSource alloc] initWithTISInputSourceRef:ref] autorelease];
 
   CFRelease(ref);
-  return retval;
-}
 
-+ (NSString*) getTISPropertyInputModeID:(NSString*)inputSourceID
-{
-  if (! inputSourceID) return nil;
-
-  @synchronized (self) {
-    for (InputSource* inputSource in enabledInputSources_) {
-      if (! inputSource.inputSourceID) continue;
-
-      if ([inputSourceID isEqualToString:inputSource.inputSourceID]) {
-        if (inputSource.inputModeID) {
-          return inputSource.inputModeID;
-
-        } else {
-          // ----------------------------------------
-          // get detail string
-          NSString* detail = @"";
-
-          NSString* name = inputSourceID;
-          if (name) {
-            // Examples:
-            //   name == com.apple.keylayout.US
-            //   name == com.apple.keylayout.Dvorak
-            NSRange dotrange = [name rangeOfString:@"." options:NSBackwardsSearch];
-            if (dotrange.location != NSNotFound) {
-              detail = [name substringFromIndex:dotrange.location];
-            }
-          }
-
-          // ----------------------------------------
-          NSString* lang = inputSource.bcp47;
-          if (lang && [lang length] > 0) {
-            return [NSString stringWithFormat:@"org.pqrs.inputmode.%@%@", lang, detail];
-          } else {
-            return [NSString stringWithFormat:@"org.pqrs.inputmode.unknown%@", detail];
-          }
-        }
-      }
-    }
-  }
-
-  return nil;
+  return inputSource;
 }
 
 // ----------------------------------------------------------------------
@@ -139,7 +93,7 @@ static NSMutableArray* enabledInputSources_ = nil;
 {
   if (! bcp47) return NO;
 
-  @synchronized (self) {
+  @synchronized(self) {
     for (InputSource* inputSource in enabledInputSources_) {
       if (! inputSource.bcp47) continue;
 
@@ -158,7 +112,7 @@ static NSMutableArray* enabledInputSources_ = nil;
 {
   if (! inputSourceID) return NO;
 
-  @synchronized (self) {
+  @synchronized(self) {
     for (InputSource* inputSource in enabledInputSources_) {
       if (! inputSource.inputSourceID) continue;
 
