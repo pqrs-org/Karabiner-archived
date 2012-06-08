@@ -45,7 +45,7 @@ static NSString* kInputSourceLanguage_traditional_chinese_yahoo_keykey = @"zh-Ha
   }
 
   NSArray* languages = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages);
-  if (languages && [languages count] > 0) {
+  if ([languages count] > 0) {
     // U.S. InputSource has many languages (en, de, fr, ...),
     // so we check the first language only to detect real InputSource for French, German, etc.
     NSString* lang = [languages objectAtIndex:0];
