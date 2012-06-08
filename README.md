@@ -50,5 +50,5 @@ cd KeyRemap4MacBook
 make
 </pre>
 
-Then, KeyRemap4MacBook-VERSION.pkg.zip has been created in the current directory.
+Then, KeyRemap4MacBook-VERSION.dmg has been created in the current directory.
 It's a distributable package.
