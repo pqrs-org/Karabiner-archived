@@ -1019,7 +1019,25 @@
             KeyCode::F4, ModifierFlag::CONTROL_L
           </autogen>
         </item>
-        <item><name>------------------------------------------------------------</name></item>
+
+        <item>
+          <name>F12 to Move focus to active or next window (Control+F4)</name>
+          <appendix>(+ F12 to Control_L if you held down F12 key)</appendix>
+          <identifier>remap.F12forctrlF4_holding_control_l</identifier>
+          <autogen>
+            --HoldingKeyToKey--
+            KeyCode::F12,
+            KeyCode::F4, ModifierFlag::CONTROL_L,
+            KeyCode::VK_NONE,
+            KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_F12forctrlF4_holding_control_l_indicator, ModifierFlag::CONTROL_L
+          </autogen>
+        </item>
+        <item>
+          <name>------------------------------------------------------------</name>
+          <identifier vk_config="true">notsave.F12forctrlF4_holding_control_l_indicator</identifier>
+          <autogen>--ShowStatusMessage-- Control</autogen>
+        </item>
+
         <item>
           <name>Fn+F1 to Brightness Down</name>
           <identifier>remap.fnF1_to_brightnessdown</identifier>
