@@ -75,14 +75,14 @@ static NSMutableArray* enabledInputSources_ = nil;
 
 + (InputSource*) getCurrentInputSource
 {
-  TISInputSourceRef ref = TISCopyCurrentKeyboardInputSource();
-  if (! ref) return nil;
-
-  InputSource* inputSource = [[[InputSource alloc] initWithTISInputSourceRef:ref] autorelease];
-
-  CFRelease(ref);
-
-  return inputSource;
+  @synchronized(self) {
+    for (InputSource* inputSource in enabledInputSources_) {
+      if ([inputSource selected]) {
+        return [[inputSource retain] autorelease];
+      }
+    }
+  }
+  return nil;
 }
 
 // ----------------------------------------------------------------------
