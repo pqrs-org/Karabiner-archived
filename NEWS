@@ -2,6 +2,7 @@ Changes since 7.7.0
 
     - Fixed a bug that private.xml does not work properly if <identifier> contains white space.
     - Fixed a bug that "General > Don't restore modifiers in the mouse event" does not work properly.
+    - Some minor improvements.
 
 ----------------------------------------------------------------------
 = version 7.7.0 =
