@@ -10,11 +10,12 @@
   TISInputSourceRef inputSource_;
 }
 
-@property (assign, readwrite) NSString* bcp47;
-@property (assign, readwrite) NSString* inputSourceID;
-@property (assign, readwrite) NSString* inputModeID;
+@property (copy, readonly) NSString* bcp47;
+@property (copy, readonly) NSString* inputSourceID;
+@property (copy, readonly) NSString* inputModeID;
 
 - (id) initWithTISInputSourceRef:(TISInputSourceRef)ref;
+- (Boolean) selected;
 - (void) select;
 
 @end
