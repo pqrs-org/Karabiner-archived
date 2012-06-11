@@ -36,6 +36,11 @@
     </replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>EMACS_MODE_C_X_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS</replacementname>
