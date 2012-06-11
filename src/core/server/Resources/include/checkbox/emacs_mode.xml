@@ -311,6 +311,7 @@
         <appendix>C-x C-c to Command_L+Q</appendix>
         <appendix>C-x C-g to turn off Control+X Mode</appendix>
         <identifier vk_config="true">notsave.emacsmode_ex_controlX_core</identifier>
+        {{ EMACS_MODE_C_X_EXTRA }}
         <autogen>--ShowStatusMessage-- C-x Mode</autogen>
         <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL | ModifierFlag::NONE, KeyCode::S, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
         <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL | ModifierFlag::NONE, KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlX_core</autogen>
