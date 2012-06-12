@@ -700,20 +700,17 @@
         <item><name>------------------------------------------------------------</name></item>
         <item>
           <name>F5/F6 to Volume Down/Up 1/4</name>
-          <appendix>(This option does not work properly since Mac OS X 10.7.)</appendix>
           <identifier>remap.f5f6_to_volumedownup_quarter</identifier>
           <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
           <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>F5 to Volume Down 1/4</name>
-          <appendix>(This option does not work properly since Mac OS X 10.7.)</appendix>
           <identifier>remap.f5_to_volumedown_quarter</identifier>
           <autogen>--KeyToConsumer-- KeyCode::F5, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
         </item>
         <item>
           <name>F6 to Volume Up 1/4</name>
-          <appendix>(This option does not work properly since Mac OS X 10.7.)</appendix>
           <identifier>remap.f6_to_volumeup_quarter</identifier>
           <autogen>--KeyToConsumer-- KeyCode::F6, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
         </item>
