@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root>
+  <block>
+    <include path="../commons/wrap_keys/alphabet.xml" />
+    <include path="../commons/wrap_keys/number.xml" />
+    <include path="../commons/wrap_keys/symbol.xml" />
+    <include path="../commons/wrap_keys/keypad.xml" />
+    <!--
+        apply partially.
+        <include path="../commons/wrap_keys/special.xml" />
+        -->
+    <autogen>--KeyToKey-- KeyCode::SPACE,           {{ BEFORE }}, KeyCode::SPACE,           {{ AFTER }}</autogen>
+    <autogen>--KeyToKey-- KeyCode::TAB,             {{ BEFORE }}, KeyCode::TAB,             {{ AFTER }}</autogen>
+
+     <!--
+        Do not apply to function, cursor.
+        <include path="../commons/wrap_keys/function.xml" />
+        <include path="../commons/wrap_keys/cursor.xml" />
+        -->
+    <include path="../commons/wrap_keys/international.xml" />
+  </block>
+</root>
