@@ -47,6 +47,15 @@
       <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::F1, VK_COMMAND</autogen>
     </item>
     <item>
+      <name>Command+Tab to switch apps within the same Space</name>
+      <appendix>(Change Command+Tab to Control+F4)</appendix>
+      <appendix>(System Preferences -> Keyboard ->  ^F4 Move focus to active or next window)</appendix>
+      <appendix>In Emacs, you need to modify .emacs by mapping Ctrl+F4 to (other-frame))</appendix>
+      <identifier>remap.command_tab_to_control_f4</identifier>
+      <not>REMOTEDESKTOPCONNECTION,VIRTUALMACHINE</not>
+      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
       <name>Command+Tab to F5</name>
       <identifier>remap.commandTab2f5</identifier>
       <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
