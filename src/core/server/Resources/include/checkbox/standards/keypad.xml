@@ -193,6 +193,26 @@
         </include>
       </block>
       <block>
+        <!-- Parentheses is Shift+8,9 in some Input Sources. -->
+        <inputmode_only>GERMAN</inputmode_only>
+        <include path="../devices/logitech_n305.xml">
+          <replacementdef>
+            <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
+            <replacementvalue>KeyCode::KEY_8, ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+
+          <replacementdef>
+            <replacementname>LOGITECH_N305_RIGHT_PARENTHES</replacementname>
+            <replacementvalue>KeyCode::KEY_9, ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+
+          <replacementdef>
+            <replacementname>LOGITECH_N305_EQUAL</replacementname>
+            <replacementvalue>KeyCode::KEY_0, ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+        </include>
+      </block>
+      <block>
         <include path="../devices/logitech_n305.xml" />
       </block>
     </item>
