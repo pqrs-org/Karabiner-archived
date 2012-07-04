@@ -6,7 +6,7 @@
       <name>Eject to Forward Delete</name>
       <appendix>(Fn+Eject to Eject)</appendix>
       <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
       <identifier>remap.app_vm_eject2forwarddelete</identifier>
       <only>VIRTUALMACHINE</only>
       <autogen>--ConsumerToConsumer-- ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
