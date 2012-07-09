@@ -45,6 +45,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_wait);
       return getvalue(v, 10);
     }
+    static unsigned int get_wait_between_sequential_keys(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_wait_between_sequential_keys);
+      return getvalue(v, 1, 50);
+    }
     static unsigned int get_keyoverlaidmodifier_initial_modifier_wait(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_initial_modifier_wait);
       return getvalue(v, 1);

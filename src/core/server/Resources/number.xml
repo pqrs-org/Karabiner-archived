@@ -19,6 +19,11 @@
   </item>
 
   <item>
+    <name>[Generic] Wait between sequential key events</name>
+    <identifier essential="true" default="1" step="1" baseunit="ms">parameter.wait_between_sequential_keys</identifier>
+  </item>
+
+  <item>
     <name>[Key Overlaid Modifier] Initial Modifier Wait</name>
     <identifier essential="true" default="0" step="10" baseunit="ms">parameter.keyoverlaidmodifier_initial_modifier_wait</identifier>
   </item>

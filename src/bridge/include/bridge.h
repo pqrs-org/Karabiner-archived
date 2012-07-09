@@ -31,8 +31,9 @@ enum {
   // Version 23: Removed KeyCode::VK_WAIT_500MS
   // Version 24: Added KeyCode::VK_CHANGE_INPUTMODE_*.
   // Version 25: Added KeyCode::VK_MOUSEKEY_LOCK_BUTTON_*.
+  // Version 26: Added parameter.wait_between_sequential_keys.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 25,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 26,
 };
 
 enum {
