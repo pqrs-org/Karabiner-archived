@@ -348,7 +348,34 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy)
   {
-    FireModifiers::fire();
+    // When changing space to command+left click,
+    //   --KeyToPointingButton-- KeyCode::SPACE, PointingButton::LEFT, ModifierFlag::COMMAND_L
+    //
+    // We need to release command key after left click was released as follows.
+    //   (1) KeyDown   Command_L
+    //   (2) MouseDown Left
+    //   (3) MouseUp   Left
+    //   (4) KeyUp     Command_L
+    //
+    // For mouse drag support, command modifier is increased as normal (not temporary_increase).
+    // Therefore, command modifier is decreased when space key is released.
+    // If we call FireModifiers::fire() at the begining of this function,
+    // input events are fired as follows order.
+    //   (1) KeyDown   Command_L
+    //   (2) MouseDown Left
+    //   (3) KeyUp     Command_L
+    //   (4) MouseUp   Left
+    //
+    // It's not desired order.
+    // So, we call FireModifiers::fire() at the end of this function when button is released.
+
+    Buttons releasedButtons = lastButtons_;
+    releasedButtons.remove(toButtons);
+    bool isButtonReleased = ! releasedButtons.isNONE();
+
+    if (! isButtonReleased) {
+      FireModifiers::fire();
+    }
 
     // Sending button event
     if (lastButtons_ != toButtons) {
@@ -368,6 +395,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_RelativePointerEventCallback& params = *ptr;
 
       EventOutputQueue::push(params);
+    }
+
+    if (isButtonReleased) {
+      FireModifiers::fire();
     }
   }
 
