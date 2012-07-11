@@ -813,6 +813,19 @@
         <autogen>--KeyToPointingButton-- KeyCode::U,     PointingButton::BUTTON15</autogen>
         <autogen>--KeyToPointingButton-- KeyCode::I,     PointingButton::BUTTON16</autogen>
       </item>
+      <item>
+        <name>Key to Modifier+PointingButton</name>
+        <appendix>Escape to Command_L+LeftClick</appendix>
+        <appendix></appendix>
+        <appendix>Events should be following order.</appendix>
+        <appendix></appendix>
+        <appendix>eventType:keyMod    name:Command_L flags:Cmd</appendix>
+        <appendix>eventType:mouseDown name:left      flags:Cmd</appendix>
+        <appendix>eventType:mouseUp   name:left      flags:Cmd</appendix>
+        <appendix>eventType:keyMod    name:Command_L flags:</appendix>
+        <identifier>remap.samples_keytopointingbutton_modifier</identifier>
+        <autogen>--KeyToPointingButton-- KeyCode::ESCAPE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
+      </item>
     </item>
 
     <item>
