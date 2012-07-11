@@ -14,9 +14,9 @@
       <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
     </item>
     <item>
-      <name>Change KeyPad Comma(,) to Dot(.) on "Spanish - ISO" Input Source</name>
+      <name>Change KeyPad Comma(,) to Dot(.) on "Spanish" and "Spanish - ISO" Input Source</name>
       <identifier>remap.spanish_keypad_comma_to_dot</identifier>
-      <inputmodedetail_only>SPANISH_ISO</inputmodedetail_only>
+      <inputmode_only>SPANISH</inputmode_only>
       <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
     </item>
   </item>
