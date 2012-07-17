@@ -14,6 +14,18 @@
       <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
     </item>
     <item>
+      <name>Change Option_R+Less_than(≤) to Backslash(\) Key for Spanish</name>
+      <appendix>Gives you the missing key combo with Alt-Gr without the ordinals</appendix>
+      <identifier>remap.spanish_option_r_as_backslash</identifier>
+      <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, ModifierFlag::OPTION_R, KeyCode::SPANISH_ORDINAL_INDICATOR, ModifierFlag::OPTION_R</autogen>
+    </item>
+    <item>
+      <name>Add ordinals with Command+Less_than for Spanish</name>
+      <appendix>Gives you the missing Spanish ordinals using any of the Command keys</appendix>
+      <identifier>remap.spanish_command_less_for_ordinals</identifier>
+      <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, VK_COMMAND, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
+    </item>
+    <item>
       <name>Change KeyPad Comma(,) to Dot(.) on "Spanish" and "Spanish - ISO" Input Source</name>
       <identifier>remap.spanish_keypad_comma_to_dot</identifier>
       <inputmode_only>SPANISH</inputmode_only>
