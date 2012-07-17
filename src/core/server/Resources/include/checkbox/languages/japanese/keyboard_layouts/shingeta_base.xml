@@ -8,7 +8,7 @@
       キーが離されるまでそのキーが解放されない。
 
       そのため KeyCode::VK_NONE を最後に加える。
-      （詳しい説明は jis_asuka_roman.xml にて）
+      （詳しい説明は asuka_roman.xml にて）
 
     -->
 
