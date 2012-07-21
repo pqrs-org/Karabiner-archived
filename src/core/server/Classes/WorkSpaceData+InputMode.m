@@ -339,13 +339,13 @@ static NSMutableArray* enabledInputSources_ = nil;
     return;
   }
 
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.Russian-IlyaBirmanTypography"]) {
+  if ([name isEqualToString:@"org.pqrs.inputmode.ru-Typographic.Russian-IlyaBirmanTypography"]) {
     *output_inputmode       = [xml_compiler keycode:@"InputMode::RUSSIAN_TYPOGRAPHIC"];
     *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::RUSSIAN_TYPOGRAPHIC"];
     return;
   }
 
-  if ([name isEqualToString:@"org.pqrs.inputmode.unknown.English-IlyaBirmanTypography"]) {
+  if ([name isEqualToString:@"org.pqrs.inputmode.en-Typographic.English-IlyaBirmanTypography"]) {
     *output_inputmode       = [xml_compiler keycode:@"InputMode::ENGLISH_TYPOGRAPHIC"];
     *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::ENGLISH_TYPOGRAPHIC"];
     return;
