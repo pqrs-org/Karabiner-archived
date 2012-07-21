@@ -4,6 +4,11 @@
     <name>Change Tab Key</name>
     <item>
       <name>Tab to Command_L</name>
+      <identifier>remap.tab_to_command_l</identifier>
+      <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Tab to Command_L</name>
       <appendix>(+ When you type Tab only, send Expose All)</appendix>
       <identifier>remap.tab2commandL_exposeAll</identifier>
       <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::EXPOSE_ALL</autogen>
