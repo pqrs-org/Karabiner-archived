@@ -55,6 +55,7 @@
     <include path="include/checkbox/apps/adobe.xml" />
     <include path="include/checkbox/apps/safari.xml" />
     <include path="include/checkbox/apps/firefox.xml" />
+    <include path="include/checkbox/apps/chrome.xml" />
     <include path="include/checkbox/apps/office.xml" />
     <include path="include/checkbox/apps/macsoup.xml" />
     <include path="include/checkbox/apps/vienna.xml" />

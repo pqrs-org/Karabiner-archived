@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only Google Chrome</name>
+    <item>
+      <name>Tilt Wheel to Back/Forward (Command+[, Command+])</name>
+      <identifier>remap.app_google_chrome_tilt_to_back_forward</identifier>
+      <only>GOOGLE_CHROME</only>
+      <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
+        KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
+        KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+    </item>
+  </item>
+</root>
