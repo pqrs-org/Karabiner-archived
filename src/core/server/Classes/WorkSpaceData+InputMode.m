@@ -326,6 +326,24 @@ static NSMutableArray* enabledInputSources_ = nil;
     return;
   }
 
+  if ([name isEqualToString:@"org.pqrs.inputmode.nb.NorwegianExtended"]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::NORWEGIAN"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::NORWEGIAN_EXTENDED"];
+    return;
+  }
+
+  if ([name isEqualToString:@"org.pqrs.inputmode.nb.NorwegianSami-PC"]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::NORWEGIAN"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::NORWEGIAN_SAMI_PC"];
+    return;
+  }
+
+  if ([name hasPrefix:@"org.pqrs.inputmode.nb."]) {
+    *output_inputmode       = [xml_compiler keycode:@"InputMode::NORWEGIAN"];
+    *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::NORWEGIAN"];
+    return;
+  }
+
   if ([name isEqualToString:@"com.apple.kotoeri.Ainu"]) {
     *output_inputmode       = [xml_compiler keycode:@"InputMode::AINU"];
     *output_inputmodedetail = [xml_compiler keycode:@"InputModeDetail::AINU"];
