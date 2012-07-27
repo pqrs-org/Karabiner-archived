@@ -20,6 +20,15 @@
       <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
       <only>FIREFOX</only>
     </item>
+    <item>
+      <name>Tilt Wheel to Back/Forward (Command+[, Command+])</name>
+      <identifier>remap.app_firefox_tilt_to_back_forward</identifier>
+      <only>FIREFOX</only>
+      <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
+        KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
+        KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+    </item>
   </item>
 
   <item>
