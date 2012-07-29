@@ -97,6 +97,23 @@
         <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::CONTROL_L, KeyCode::MINUS, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
       </item>
     </item>
+
+    <item>
+      <name>Command Arrows to line ends in Terminal</name>
+      <identifier>remap.terminalarrows.appdef</identifier>
+      <only>TERMINAL</only>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::A, ModifierFlag::CONTROL_L
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::E, ModifierFlag::CONTROL_L
+      </autogen>
+    </item>
+
     <item>
       <name>Change Functional Keys to F1...F12</name>
       <appendix>(For keyboards of F10 == Volume Mute)</appendix>
