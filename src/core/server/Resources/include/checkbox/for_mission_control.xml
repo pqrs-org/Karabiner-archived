@@ -3,6 +3,21 @@
   <item>
     <name>For Mission Control, Dashboard</name>
     <item>
+      <name>Option_R+Left,Right to Control+Left,Right</name>
+      <appendix>(You can switch Desktop by right option+arrows.)</appendix>
+      <identifier>remap.mission_control_option_r_left_right_to_control_left_right</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_R | ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT,  ModifierFlag::CONTROL_R
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_R
+      </autogen>
+    </item>
+    <item>
       <name>Disable Slow-Expose (Disable Shift+Expose, Shift+Dashboard, Shift+F8,...,Shift+F12)</name>
       <identifier>option.drop_slowexpose</identifier>
       <autogen>--DropKeyAfterRemap-- KeyCode::EXPOSE_ALL, VK_SHIFT</autogen>
