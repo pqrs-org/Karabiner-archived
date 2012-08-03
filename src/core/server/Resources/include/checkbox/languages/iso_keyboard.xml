@@ -57,6 +57,13 @@
       <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
+      <name>Backslash(\) to Hash # (Alt+3)</name>
+      <appendix>(+Alt+Backslash to Backslash)</appendix>
+      <identifier>remap.iso_backslash_to_hash_option_backslash_to_backslash</identifier>
+      <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_OPTION, KeyCode::BACKSLASH</autogen>
+      <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
+    </item>
+    <item>
       <name>Forward Delete to Section(§)</name>
       <identifier>remap.uk_forwarddelete2section</identifier>
       <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::UK_SECTION</autogen>
