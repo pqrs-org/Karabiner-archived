@@ -194,7 +194,7 @@
       </block>
       <block>
         <!-- Parentheses is Shift+8,9 in some Input Sources. -->
-        <inputmode_only>GERMAN, NORWEGIAN</inputmode_only>
+        <inputmode_only>GERMAN, NORWEGIAN, SWEDISH</inputmode_only>
         <include path="../devices/logitech_n305.xml">
           <replacementdef>
             <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
