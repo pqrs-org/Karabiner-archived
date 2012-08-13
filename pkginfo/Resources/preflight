@@ -30,6 +30,9 @@ rm -rf /Library/PreferencePanes/KeyRemap4MacBook.prefPane
 rm -f /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*
 rm -f /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.*
 
-rm -rf /tmp/KeyRemap4MacBook_uninstaller.*
+# Don't remove uninstaller because
+# this script is also called from uninstaller and
+# we need to keep KeyRemap4MacBookUninstaller.icns while uninstaller is running.
+# rm -rf /tmp/KeyRemap4MacBook_uninstaller.*
 
 exit 0
