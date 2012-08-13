@@ -11,6 +11,7 @@ for f in \
     ; do
     echo "set file permissions: $f"
     sh /Library/org.pqrs/KeyRemap4MacBook/extra/setpermissions.sh "$f"
+    chown -Rh root:wheel "$f"
 done
 
 # ------------------------------------------------------------
