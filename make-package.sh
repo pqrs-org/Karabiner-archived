@@ -80,6 +80,10 @@ $packagemaker \
     --out $archiveName/$pkgName
 
 # --------------------------------------------------
+echo "Fix Archive.bom"
+ruby pkginfo/fixbom.rb $archiveName/$pkgName/Contents/Archive.bom pkgroot/
+
+# --------------------------------------------------
 echo "Make Archive"
 
 # Note:
