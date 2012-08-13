@@ -23,12 +23,17 @@ test_mach_o() {
 }
 
 # ------------------------------------------------------------
-find "$1" -type d -print0 | xargs -0 chmod 755
-find "$1" -type f -print0 | xargs -0 chmod 644
-find "$1" -name '*.sh' -print0 | xargs -0 chmod 755
-find "$1" -type f -print0 | while read -d $'\0' file; do
-    if `test_mach_o "$file"`; then
-        chmod 755 "$file"
+find "$1" -print0 | while read -d $'\0' filepath; do
+    if [ -d "$filepath" ]; then
+        chmod -h 755 "$filepath"
+    else
+        extension=${filepath##*.}
+        if [ "$extension" = 'sh' ]; then
+            chmod -h 755 "$filepath"
+        elif `test_mach_o "$filepath"`; then
+            chmod -h 755 "$filepath"
+        else
+            chmod -h 644 "$filepath"
+        fi
     fi
 done
-chown -R root:wheel "$1"
