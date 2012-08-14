@@ -77,6 +77,7 @@ $packagemaker \
     --resources pkginfo/Resources \
     --title "KeyRemap4MacBook $version" \
     --no-relocate \
+    --discard-forks \
     --out $archiveName/$pkgName
 
 # --------------------------------------------------
