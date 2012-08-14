@@ -39,7 +39,7 @@ cp -R "src/core/server/build/Release/KeyRemap4MacBook.app"                      
 cp -R "src/util/KeyDump/build/Release/KeyDump.app"                                          "pkgroot/$basedir/app"
 cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
 cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app"                                 "pkgroot/$basedir/app"
-cp -R "src/util/uninstaller/build/Release/uninstaller.app"                                  "pkgroot/$basedir/app"
+cp -R "src/util/uninstaller/automator/KeyRemap4MacBookUninstaller.app"                      "pkgroot/$basedir/app"
 
 mkdir -p                                                          "pkgroot/Library/PreferencePanes"
 cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
