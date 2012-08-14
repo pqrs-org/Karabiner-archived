@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Use CarpalxQ layout</name>
+    <item>
+      <name>CarpalxQ step 1 (E/K)</name>
+      <identifier>remap.carpalxq1</identifier>
+      <autogen>--KeyToKey-- KeyCode::K, KeyCode::E</autogen>
+      <autogen>--KeyToKey-- KeyCode::E, KeyCode::K</autogen>
+    </item>
+    <item>
+      <name>CarpalxQ step 2 (T/F)</name>
+      <identifier>remap.carpalxq2</identifier>
+      <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
+      <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
+    </item>
+    <item>
+      <name>CarpalxQ step 3 (N/J, I/L)</name>
+      <identifier>remap.carpalxq3</identifier>
+      <autogen>--KeyToKey-- KeyCode::N, KeyCode::J</autogen>
+      <autogen>--KeyToKey-- KeyCode::J, KeyCode::N</autogen>
+      <autogen>--KeyToKey-- KeyCode::I, KeyCode::L</autogen>
+      <autogen>--KeyToKey-- KeyCode::L, KeyCode::I</autogen>
+    </item>
+    <item>
+      <name>CarpalxQ step 4 (O/P/;)</name>
+      <identifier>remap.carpalxq4</identifier>
+      <autogen>--KeyToKey-- KeyCode::O, KeyCode::P</autogen>
+      <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
+      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::O</autogen>
+    </item>
+  </item>
+</root>
