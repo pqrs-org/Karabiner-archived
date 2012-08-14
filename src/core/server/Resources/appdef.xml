@@ -64,6 +64,7 @@
   <appdef>
     <appname>FIREFOX</appname>
     <equal>org.mozilla.firefox</equal>
+    <equal>org.mozilla.aurora</equal>
   </appdef>
 
   <appdef>
@@ -174,6 +175,7 @@
   <appdef>
     <appname>GOOGLE_CHROME</appname>
     <equal>com.google.Chrome</equal>
+    <equal>com.google.Chrome.canary</equal>
   </appdef>
 
   <appdef>
