@@ -5,6 +5,7 @@
     <include path="keyboard_layouts/colemak.xml" />
     <include path="keyboard_layouts/qwerf.xml" />
     <include path="keyboard_layouts/qwkrfy.xml" />
+    <include path="keyboard_layouts/carpalxq.xml" />
     <include path="keyboard_layouts/workman.xml" />
     <include path="keyboard_layouts/abcdef.xml" />
     <item>
