@@ -47,6 +47,16 @@
       <autogen>--SimultaneousKeyPresses-- KeyCode::D, KeyCode::S, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode</autogen>
     </item>
     <item>
+      <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
+      <appendix>// Strict Simultaneous Key Order. You need to press S key before D key.</appendix>
+      <identifier>remap.simultaneouskeypresses_vimode_sd_strict_key_order</identifier>
+      <autogen>--SimultaneousKeyPresses--
+        KeyCode::S, KeyCode::D, ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simultaneouskeypresses_vimode,
+        Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+      </autogen>
+    </item>
+    <item>
       <name>---- Options ------------------------------------------------------------</name>
     </item>
     <item>
