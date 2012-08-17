@@ -111,7 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       value_ &= ~flags;
 
       for (unsigned int i = 0;; ++i) {
-        ModifierFlag f = Flags::getModifierFlagByIndex(i);
+        ModifierFlag f = getModifierFlagByIndex(i);
 
         if (! flags.isOn(f) && old.isOn(f)) {
           value_ |= f.get();

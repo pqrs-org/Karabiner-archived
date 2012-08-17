@@ -11,7 +11,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       friend class ButtonStatus;
 
     public:
-      Item(void) : button_(0) {}
+      Item(void) :
+        button_(0),
+        count_(0),
+        lock_count_(0)
+      {}
 
     private:
       void initialize(PointingButton b) {
