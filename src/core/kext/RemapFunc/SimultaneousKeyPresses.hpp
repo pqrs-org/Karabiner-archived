@@ -34,7 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       class FromInfo {
       public:
-        FromInfo(void) : active_(false) {}
+        FromInfo(void) : type_(FROMTYPE_KEY), active_(false) {}
 
         enum FromType {
           FROMTYPE_KEY,
@@ -73,6 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } toType_;
 
       bool isToRaw_;
+      bool isStrictKeyOrder_;
       KeyCode toKey_raw_;
 
       KeyToKey keytokey_;

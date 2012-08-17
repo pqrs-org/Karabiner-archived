@@ -755,6 +755,38 @@
         <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN, Option::NOREPEAT</autogen>
         <autogen>--SimultaneousKeyPresses-- PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN, Option::NOREPEAT</autogen>
       </item>
+      <item>
+        <name>Strict Key Order</name>
+        <appendix>[Strict] S+D to Right</appendix>
+        <appendix>[Strict] D+S to Left</appendix>
+        <appendix>[Strict] D+F to Up</appendix>
+        <appendix>[Normal] J+K to Space)</appendix>
+        <appendix>[Normal] K+J to Space)</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_strict_key_order</identifier>
+        <autogen>
+          --SimultaneousKeyPresses--
+          KeyCode::S, KeyCode::D,
+          KeyCode::CURSOR_RIGHT,
+          Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+        </autogen>
+        <autogen>
+          --SimultaneousKeyPresses--
+          KeyCode::D, KeyCode::S,
+          KeyCode::CURSOR_LEFT,
+          Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+        </autogen>
+        <autogen>
+          --SimultaneousKeyPresses--
+          KeyCode::D, KeyCode::F,
+          KeyCode::CURSOR_UP,
+          Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+        </autogen>
+        <autogen>
+          --SimultaneousKeyPresses--
+          KeyCode::J, KeyCode::K,
+          KeyCode::SPACE,
+        </autogen>
+      </item>
     </item>
 
     <item>

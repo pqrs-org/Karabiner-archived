@@ -4,10 +4,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    SimultaneousKeyPresses::SimultaneousKeyPresses(void) : index_(0)
-    {
-      toType_ = TOTYPE_NONE;
-    }
+    SimultaneousKeyPresses::SimultaneousKeyPresses(void) :
+      index_(0),
+      toType_(TOTYPE_NONE),
+      isToRaw_(false),
+      isStrictKeyOrder_(false)
+    {}
 
     SimultaneousKeyPresses::~SimultaneousKeyPresses(void)
     {}
@@ -125,6 +127,9 @@ namespace org_pqrs_KeyRemap4MacBook {
             } else {
               isToRaw_ = true;
             }
+          } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == newval) {
+            isStrictKeyOrder_ = true;
+
           } else if (Option::NOREPEAT == newval) {
             if (toType_ != TOTYPE_KEY) {
               IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
@@ -266,8 +271,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         frontFromInfo  = fromInfo_ + 0;
         pairedFromInfo = fromInfo_ + 1;
       } else if (fromInfo_[1].isTargetKeyDown(*front)) {
-        frontFromInfo  = fromInfo_ + 1;
-        pairedFromInfo = fromInfo_ + 0;
+        if (! isStrictKeyOrder_) {
+          frontFromInfo  = fromInfo_ + 1;
+          pairedFromInfo = fromInfo_ + 0;
+        }
       }
 
       if (! frontFromInfo || ! pairedFromInfo) return false;
