@@ -36,7 +36,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    PointingRelativeToScroll::PointingRelativeToScroll(void) : index_(0)
+    PointingRelativeToScroll::PointingRelativeToScroll(void) :
+      index_(0),
+      absolute_distance_(0),
+      chained_delta1_(0),
+      chained_delta2_(0),
+      fixation_delta1_(0),
+      fixation_delta2_(0)
     {}
 
     PointingRelativeToScroll::~PointingRelativeToScroll(void)

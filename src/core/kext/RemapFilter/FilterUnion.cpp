@@ -20,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       // check parameters.
       //
-      if (! vec || length <= 0) {
+      if (! vec || length == 0) {
         IOLOG_ERROR("FilterUnion::initialize invalid parameter.\n");
         goto error;
       }

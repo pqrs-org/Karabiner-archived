@@ -11,7 +11,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       friend class FlagStatus;
 
     public:
-      Item(void) : flag_(ModifierFlag::NONE) {}
+      Item(void) :
+        flag_(ModifierFlag::NONE),
+        count_(0),
+        temporary_count_(0),
+        lock_count_(0),
+        sticky_count_(0)
+      {}
 
     private:
       void initialize(ModifierFlag f);

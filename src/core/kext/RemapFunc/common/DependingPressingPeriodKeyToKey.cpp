@@ -97,7 +97,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) :
-      active_(false), periodtype_(PeriodType::NONE), keyboardRepeatID_(0)
+      active_(false),
+      periodtype_(PeriodType::NONE),
+      isAnyEventHappen_(false),
+      keyboardRepeatID_(0)
     {}
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)

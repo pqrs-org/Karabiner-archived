@@ -23,7 +23,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       struct Item {
-        Item(void) {};
+        Item(void) :
+          remapclass(NULL),
+          keycode_toggle(0),
+          keycode_force_on(0),
+          keycode_force_off(0),
+          keycode_sync_keydownup(0)
+        {};
         Item(RemapClass* p, unsigned int kc_toggle, unsigned int kc_force_on, unsigned int kc_force_off, unsigned int kc_sync) :
           remapclass(p), keycode_toggle(kc_toggle), keycode_force_on(kc_force_on), keycode_force_off(kc_force_off), keycode_sync_keydownup(kc_sync) {}
         RemapClass* remapclass;
