@@ -48,7 +48,7 @@
     </item>
     <item>
       <name>Simultaneous Key Presses [S+D] turns on "Simultaneous Vi Mode"</name>
-      <appendix>// Strict Simultaneous Key Order. You need to press S key before D key.</appendix>
+      <appendix>(Strict Simultaneous Key Order version. You need to press S key before D key.)</appendix>
       <identifier>remap.simultaneouskeypresses_vimode_sd_strict_key_order</identifier>
       <autogen>--SimultaneousKeyPresses--
         KeyCode::S, KeyCode::D, ModifierFlag::NONE,
