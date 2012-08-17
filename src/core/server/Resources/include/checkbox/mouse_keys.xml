@@ -104,6 +104,23 @@
         </block>
       </item>
       <item>
+        <name>Simultaneous Key Presses [D+S] to turn on Mouse Keys Mode</name>
+        <appendix>// Strict Simultaneous Key Order. You need to press D key before S key.</appendix>
+        <appendix></appendix>
+        <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+        <appendix>// F+HJKL to scroll wheel</appendix>
+        <appendix></appendix>
+        <appendix>+ A turns on "High Speed Mode"</appendix>
+        <appendix>// A+HJKL to high-speed movement</appendix>
+        <identifier>remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order</identifier>
+        <autogen>
+          --SimultaneousKeyPresses--
+          KeyCode::D, KeyCode::S, ModifierFlag::NONE,
+          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode,
+          Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+        </autogen>
+      </item>
+      <item>
         <name>Simultaneous Key Presses Shift+[S+D] to turn on Mouse Keys Mode</name>
         <appendix>// Press S,D keys simultaneously while pressing Shift_L or Shift_R.</appendix>
         <appendix>// You can release Shift key while pressing S,D keys.</appendix>
