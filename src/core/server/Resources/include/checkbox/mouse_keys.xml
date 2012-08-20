@@ -119,7 +119,7 @@
         <identifier>remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order</identifier>
         <autogen>
           --SimultaneousKeyPresses--
-          KeyCode::D, KeyCode::S, ModifierFlag::NONE,
+          KeyCode::D, KeyCode::S,
           KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode,
           Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
         </autogen>
