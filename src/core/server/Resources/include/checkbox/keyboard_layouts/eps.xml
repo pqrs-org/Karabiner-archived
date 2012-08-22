@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<root>
+  <include path="eps_core.xml">
+    <replacementdef>    <replacementname>kom</replacementname>              <replacementvalue>-- KeyOverlaidModifier--</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>k2k</replacementname>              <replacementvalue>-- KeyToKey--</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>skp</replacementname>              <replacementvalue>--SimultaneousKeyPresses--</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mex1</replacementname>             <replacementvalue>ModifierFlag::EXTRA1</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mex2</replacementname>             <replacementvalue>ModifierFlag::EXTRA2</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mex3</replacementname>             <replacementvalue>ModifierFlag::EXTRA3</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mex4</replacementname>             <replacementvalue>ModifierFlag::EXTRA4</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mex5</replacementname>             <replacementvalue>ModifierFlag::EXTRA5</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mctl</replacementname>             <replacementvalue>ModifierFlag::CONTROL_L</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mctr</replacementname>             <replacementvalue>ModifierFlag::CONTROL_R</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mstl</replacementname>             <replacementvalue>ModifierFlag::SHIFT_L</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mstr</replacementname>             <replacementvalue>ModifierFlag::SHIFT_R</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>mnon</replacementname>             <replacementvalue>ModifierFlag::NONE</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>kex1</replacementname>             <replacementvalue>KeyCode::VK_MODIFIER_EXTRA1</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>kex2</replacementname>             <replacementvalue>KeyCode::VK_MODIFIER_EXTRA2</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>kex3</replacementname>             <replacementvalue>KeyCode::VK_MODIFIER_EXTRA3</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>kex4</replacementname>             <replacementvalue>KeyCode::VK_MODIFIER_EXTRA4</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>kex5</replacementname>             <replacementvalue>KeyCode::VK_MODIFIER_EXTRA5</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>a</replacementname>                <replacementvalue>KeyCode::A</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>b</replacementname>                <replacementvalue>KeyCode::B</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>c</replacementname>                <replacementvalue>KeyCode::C</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>d</replacementname>                <replacementvalue>KeyCode::D</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>e</replacementname>                <replacementvalue>KeyCode::E</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>f</replacementname>                <replacementvalue>KeyCode::F</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>g</replacementname>                <replacementvalue>KeyCode::G</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>h</replacementname>                <replacementvalue>KeyCode::H</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>i</replacementname>                <replacementvalue>KeyCode::I</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>j</replacementname>                <replacementvalue>KeyCode::J</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>k</replacementname>                <replacementvalue>KeyCode::K</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>l</replacementname>                <replacementvalue>KeyCode::L</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>m</replacementname>                <replacementvalue>KeyCode::M</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>n</replacementname>                <replacementvalue>KeyCode::N</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>o</replacementname>                <replacementvalue>KeyCode::O</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>p</replacementname>                <replacementvalue>KeyCode::P</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>q</replacementname>                <replacementvalue>KeyCode::Q</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>r</replacementname>                <replacementvalue>KeyCode::R</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>s</replacementname>                <replacementvalue>KeyCode::S</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>t</replacementname>                <replacementvalue>KeyCode::T</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>u</replacementname>                <replacementvalue>KeyCode::U</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>v</replacementname>                <replacementvalue>KeyCode::V</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>w</replacementname>                <replacementvalue>KeyCode::W</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>x</replacementname>                <replacementvalue>KeyCode::X</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>y</replacementname>                <replacementvalue>KeyCode::Y</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>z</replacementname>                <replacementvalue>KeyCode::Z</replacementvalue> </replacementdef>
+  </include>
+</root>
