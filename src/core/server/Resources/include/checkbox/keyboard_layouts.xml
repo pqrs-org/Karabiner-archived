@@ -8,6 +8,7 @@
     <include path="keyboard_layouts/carpalxq.xml" />
     <include path="keyboard_layouts/workman.xml" />
     <include path="keyboard_layouts/abcdef.xml" />
+    <include path="keyboard_layouts/eps.xml" />
     <item>
       <name>Use US Keyboard Layout</name>
       <identifier>remap.layout2us</identifier>
