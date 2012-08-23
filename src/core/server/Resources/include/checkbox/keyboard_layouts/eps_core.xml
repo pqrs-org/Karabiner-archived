@@ -34,7 +34,7 @@
         <appendix></appendix>
         <appendix>http://pqrs.org/macosx/keyremap4macbook/contrib/eps_keymap3.ods</appendix>
 
-        <identifier>remap3.eps</identifier>
+        <identifier>remap3.prepared_eps</identifier>
 
         <autogen>{{kom}} {{c}}, {{mex1}},                          {{kex4}}, {{mex1}},               {{d}}, {{r}}</autogen>
         <autogen>{{kom}} {{c}}, {{mex2}},                          {{kex4}}, {{mex2}},               {{s}}LASH</autogen>
@@ -203,7 +203,7 @@
         <autogen>{{k2k}} {{f}}, {{mex1}}|VK_CONTROL|{{mnon}},      {{m}}, {{mnon}}, {{m}}, {{i}}, {{n}}, {{g}}</autogen>
         <autogen>{{k2k}} {{f}}, {{mex1}}|VK_CONTROL|VK_SHIFT,      {{m}}, {{mstl}}, {{m}}, {{i}}, {{n}}, {{g}}</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}}|{{mstl}},                 {{e}}SCAPE, {{v}}K_STICKY_SHIFT_L, {{k}}EY_5, VK_SHIFT</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex3}}|{{mstr}},                 {{v}}K_CONFIG_TOGGLE_notsave_edit_eps3, {{mnon}}</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex3}}|{{mstr}},                 {{v}}K_CONFIG_TOGGLE_notsave_prepared_edit_eps3, {{mnon}}</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}}|{{mctl}},                 {{e}}SCAPE, {{x}}</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}}|{{mctr}},                 {{x}}, {{mctr}}, {{e}}SCAPE, {{e}}SCAPE</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}},                          {{e}}SCAPE</autogen>
@@ -317,7 +317,7 @@
         <autogen>{{k2k}} {{n}}, {{mex5}},                          {{a}}, {{n}}, {{d}}</autogen>
 
         <autogen>{{k2k}} {{o}}, {{mex1}}|{{mstl}},                 {{l}}, {{mctl}}</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex1}}|{{mstr}},                 {{v}}K_CONFIG_TOGGLE_notsave_ss_eps3</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex1}}|{{mstr}},                 {{v}}K_CONFIG_TOGGLE_notsave_prepared_ss_eps3</autogen>
         <autogen>{{k2k}} {{o}}, {{mex1}},                          {{r}}ETURN</autogen>
         <autogen>{{k2k}} {{o}}, {{mex2}},                          {{t}}, {{h}}, {{e}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mex3}}|{{mstl}},                 {{o}}, {{mstl}}, {{f}}</autogen>
@@ -334,12 +334,12 @@
         <autogen>{{k2k}} {{o}}, {{mex5}}|VK_CONTROL|{{mnon}},      {{b}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mex5}}|ModifierFlag::CAPSLOCK|{{mnon}},      {{b}}, {{mstl}}</autogen>
 
-        <autogen>{{k2k}} {{t}}, {{mnon}},                          {{v}}K_CONFIG_TOGGLE_notsave_virtual_numlock_eps3</autogen>
+        <autogen>{{k2k}} {{t}}, {{mnon}},                          {{v}}K_CONFIG_TOGGLE_notsave_prepared_virtual_numlock_eps3</autogen>
         <autogen>{{k2k}} {{t}}, {{mex1}},                          {{e}}, {{n}}, {{c}}, {{e}}</autogen>
         <autogen>{{k2k}} {{t}}, {{mex2}},                          {{a}}, {{n}}, {{c}}, {{e}}</autogen>
         <autogen>{{k2k}} {{t}}, {{mex3}},                          {{o}}, {{r}}, {{t}}</autogen>
 
-        <autogen>{{k2k}} {{y}}, {{mnon}},                          {{v}}K_CONFIG_TOGGLE_notsave_virtual_numlock_eps3</autogen>
+        <autogen>{{k2k}} {{y}}, {{mnon}},                          {{v}}K_CONFIG_TOGGLE_notsave_prepared_virtual_numlock_eps3</autogen>
 
         <autogen>{{k2k}} {{u}}, {{mex1}},                          {{s}}PACE</autogen>
         <autogen>{{k2k}} {{u}}, {{mex2}},                          {{s}}PACE</autogen>
@@ -372,7 +372,7 @@
         <autogen>{{k2k}} {{w}}, {{mex3}}|{{mnon}},                 {{i}}, {{f}}, {{s}}PACE</autogen>
         <autogen>{{k2k}} {{w}}, {{mex3}}|VK_SHIFT|{{mnon}},        {{i}}, VK_SHIFT, {{f}}, {{s}}PACE</autogen>
         <autogen>{{k2k}} {{w}}, {{mex4}}|{{mnon}},                 {{l}}, {{y}}</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex5}}|{{mnon}},                 {{v}}K_CONFIG_TOGGLE_notsave_xt_eps3</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex5}}|{{mnon}},                 {{v}}K_CONFIG_TOGGLE_notsave_prepared_xt_eps3</autogen>
 
         <autogen>{{skp}} {{b}}, {{m}},                             {{s}}, {{h}}</autogen>
         <autogen>{{skp}} {{b}}, {{n}},                                {{t}}, {{h}}</autogen>
@@ -387,9 +387,9 @@
         <autogen>{{skp}} {{c}}, {{f}}, {{mex3}}|VK_SHIFT|{{mnon}}, {{a}}, VK_SHIFT, {{f}}, {{t}}, {{e}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{f}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{m}}, VK_SHIFT, {{u}}, {{s}}, {{t}}</autogen>
         <autogen>{{skp}} {{c}}, {{f}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{m}}, VK_SHIFT, {{a}}, {{d}}, {{e}}</autogen>
-        <autogen>{{skp}} {{c}}, {{f}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_CF3</autogen>
+        <autogen>{{skp}} {{c}}, {{f}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CF3</autogen>
 
-        <autogen>{{skp}} {{c}}, {{r}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_CR3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{c}}, {{r}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CR3, VK_SHIFT</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex1}}|{{mnon}},          {{l}}, {{e}}, {{s}}, {{s}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex2}}|{{mnon}},          {{u}}, {{p}}, {{o}}, {{n}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex3}}|{{mnon}},          {{e}}, {{v}}, {{e}}, {{r}}</autogen>
@@ -400,36 +400,36 @@
         <autogen>{{skp}} {{c}}, {{r}}, {{mex3}}|VK_SHIFT|{{mnon}}, {{e}}, VK_SHIFT, {{v}}, {{e}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{w}}, VK_SHIFT, {{e}}, {{r}}, {{e}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{d}}, VK_SHIFT, {{o}}, {{w}}, {{n}}</autogen>
-        <autogen>{{skp}} {{c}}, {{r}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_CR3</autogen>
+        <autogen>{{skp}} {{c}}, {{r}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CR3</autogen>
 
-        <autogen>{{skp}} {{c}}, {{v}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_CV3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{c}}, {{v}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CV3, VK_SHIFT</autogen>
         <autogen>{{skp}} {{c}}, {{v}}, {{mex1}}|{{mnon}},          {{e}}, {{v}}, {{e}}</autogen>
         <autogen>{{skp}} {{c}}, {{v}}, {{mex2}}|{{mnon}},          {{o}}, {{u}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{v}}, {{mex4}}|{{mnon}},          {{m}}, {{u}}, {{s}}, {{t}}</autogen>
         <autogen>{{skp}} {{c}}, {{v}}, {{mex5}}|{{mnon}},          {{m}}, {{a}}, {{d}}, {{e}}</autogen>
-        <autogen>{{skp}} {{c}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_CV3</autogen>
+        <autogen>{{skp}} {{c}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CV3</autogen>
 
         <autogen>{{skp}} {{c}}, {{w}}, {{mex1}},                   {{a}}, {{n}}, {{o}}, {{t}}, {{h}}, {{e}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{w}}, {{mex2}},                   {{y}}, {{o}}, {{u}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{w}}, {{mex3}},                   {{t}}, {{h}}, {{e}}, {{r}}, {{e}}</autogen>
         <autogen>{{skp}} {{c}}, {{w}}, {{mex4}},                   {{s}}, {{a}}, {{m}}, {{e}}</autogen>
         <autogen>{{skp}} {{c}}, {{w}}, {{mex5}},                   {{t}}, {{h}}, {{e}}, {{r}}, {{e}}</autogen>
-        <autogen>{{skp}} {{c}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_CW3</autogen>
+        <autogen>{{skp}} {{c}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CW3</autogen>
 
-        <autogen>{{skp}} {{e}}, {{f}}, {{mstl}}|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EF3, {{mstl}}</autogen>
-        <autogen>{{skp}} {{e}}, {{f}}, {{mctl}}|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EF3, {{mctl}}</autogen>
-        <autogen>{{skp}} {{e}}, {{f}}, ModifierFlag::COMMAND_L|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EF3, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{skp}} {{e}}, {{f}}, {{mstl}}|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EF3, {{mstl}}</autogen>
+        <autogen>{{skp}} {{e}}, {{f}}, {{mctl}}|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EF3, {{mctl}}</autogen>
+        <autogen>{{skp}} {{e}}, {{f}}, ModifierFlag::COMMAND_L|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EF3, ModifierFlag::COMMAND_L</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex1}},                   {{e}}, {{x}}</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex2}},                   {{e}}QUAL, {{e}}QUAL</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex3}},                   {{h}}, {{a}}, {{v}}</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex4}},                   {{c}}, {{k}}</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex5}}|{{mnon}},          {{t}}, {{h}}, {{i}}, {{s}}</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{t}}, VK_SHIFT, {{h}}, {{i}}, {{s}}</autogen>
-        <autogen>{{skp}} {{e}}, {{f}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EF3</autogen>
+        <autogen>{{skp}} {{e}}, {{f}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EF3</autogen>
 
-        <autogen>{{skp}} {{e}}, {{r}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_ER3</autogen>
+        <autogen>{{skp}} {{e}}, {{r}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_ER3</autogen>
 
-        <autogen>{{skp}} {{e}}, {{v}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EV3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{e}}, {{v}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EV3, VK_SHIFT</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex1}}|{{mnon}},          {{l}}, {{e}}, {{t}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex2}}|{{mnon}},          {{m}}, {{a}}, {{n}}, {{y}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex3}}|{{mnon}},          {{t}}, {{h}}, {{e}}, {{m}}</autogen>
@@ -440,23 +440,23 @@
         <autogen>{{skp}} {{e}}, {{v}}, {{mex3}}|VK_SHIFT|{{mnon}}, {{t}}, VK_SHIFT, {{h}}, {{e}}, {{m}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{w}}, VK_SHIFT, {{h}}, {{e}}, {{n}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{a}}, VK_SHIFT, {{l}}, {{l}}</autogen>
-        <autogen>{{skp}} {{e}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EV3</autogen>
+        <autogen>{{skp}} {{e}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EV3</autogen>
 
-        <autogen>{{skp}} {{e}}, {{w}}, ModifierFlag::CAPSLOCK|{{mnon}},           {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EW3</autogen>
+        <autogen>{{skp}} {{e}}, {{w}}, ModifierFlag::CAPSLOCK|{{mnon}},           {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EW3</autogen>
         <autogen>{{skp}} {{e}}, {{w}}, {{mex1}},                   {{k}}EY_5</autogen>
         <autogen>{{skp}} {{e}}, {{w}}, {{mex2}},                   {{k}}EY_6</autogen>
         <autogen>{{skp}} {{e}}, {{w}}, {{mex3}},                   {{k}}EY_7</autogen>
         <autogen>{{skp}} {{e}}, {{w}}, {{mex4}},                   {{k}}EY_8</autogen>
         <autogen>{{skp}} {{e}}, {{w}}, {{mex5}},                   {{k}}EY_9</autogen>
-        <autogen>{{skp}} {{e}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_EW3</autogen>
+        <autogen>{{skp}} {{e}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EW3</autogen>
 
         <autogen>{{skp}} {{f}}, {{g}}, VK_SHIFT,                   {{p}}AGEUP</autogen>
         <autogen>{{skp}} {{f}}, {{g}}, VK_CONTROL,                 {{d}}ELETE, {{d}}ELETE</autogen>
         <autogen>{{skp}} {{f}}, {{g}},                             {{c}}URSOR_UP</autogen>
 
-        <autogen>{{skp}} {{f}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_FV3</autogen>
+        <autogen>{{skp}} {{f}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_FV3</autogen>
 
-        <autogen>{{skp}} {{f}}, {{w}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_FW3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_FW3, VK_SHIFT</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex1}}|{{mnon}},          {{f}}, {{r}}, {{o}}, {{m}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex2}}|{{mnon}},          {{w}}, {{a}}, {{s}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex3}}|{{mnon}},          {{h}}, {{a}}, {{d}}</autogen>
@@ -468,12 +468,12 @@
         <autogen>{{skp}} {{f}}, {{w}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{w}}, VK_SHIFT, {{h}}, {{i}}, {{c}}, {{h}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{b}}, VK_SHIFT, {{y}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex1}}|ModifierFlag::CAPSLOCK|{{mnon}},    {{f}}, VK_SHIFT, {{r}}, VK_SHIFT, {{o}}, VK_SHIFT, {{m}}, VK_SHIFT</autogen>
-        <autogen>{{skp}} {{f}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_FW3</autogen>
+        <autogen>{{skp}} {{f}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_FW3</autogen>
 
         <autogen>{{skp}} {{g}}, {{r}}, VK_SHIFT,                   {{c}}URSOR_LEFT, ModifierFlag::OPTION_L|VK_SHIFT</autogen>
         <autogen>{{skp}} {{g}}, {{r}},                             {{c}}URSOR_LEFT, ModifierFlag::OPTION_L</autogen>
 
-        <autogen>{{skp}} {{g}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_GV3</autogen>
+        <autogen>{{skp}} {{g}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_GV3</autogen>
 
         <autogen>{{skp}} {{h}}, {{j}}, VK_SHIFT,                   {{p}}AGEDOWN</autogen>
         <autogen>{{skp}} {{h}}, {{j}},                             {{c}}URSOR_DOWN</autogen>
@@ -486,21 +486,21 @@
         <autogen>{{skp}} {{i}}, {{j}}, {{mex3}},                   {{z}}</autogen>
         <autogen>{{skp}} {{i}}, {{j}}, {{mex4}},                   {{q}}</autogen>
         <autogen>{{skp}} {{i}}, {{j}}, {{mex5}},                   {{j}}</autogen>
-        <autogen>{{skp}} {{i}}, {{j}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_IJ3</autogen>
+        <autogen>{{skp}} {{i}}, {{j}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_IJ3</autogen>
 
         <autogen>{{skp}} {{i}}, {{m}}, {{mex1}},                   {{w}}, {{a}}, {{y}}</autogen>
         <autogen>{{skp}} {{i}}, {{m}}, {{mex4}},                   {{k}}, {{n}}, {{o}}, {{w}}</autogen>
         <autogen>{{skp}} {{i}}, {{m}}, {{mex5}},                   {{c}}, {{o}}, {{m}}, {{e}}</autogen>
         <autogen>{{skp}} {{i}}, {{m}}, {{mex2}},                   {{l}}, {{o}}, {{n}}, {{g}}</autogen>
         <autogen>{{skp}} {{i}}, {{m}}, {{mex3}},                   {{a}}, {{b}}, {{o}}, {{u}}, {{t}}</autogen>
-        <autogen>{{skp}} {{i}}, {{m}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_IM3</autogen>
+        <autogen>{{skp}} {{i}}, {{m}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_IM3</autogen>
 
         <autogen>{{skp}} {{i}}, {{o}}, {{mex1}},                   {{k}}EY_7, {{mstl}}</autogen>
         <autogen>{{skp}} {{i}}, {{o}}, {{mex4}},                   {{s}}LASH, {{mstl}}</autogen>
         <autogen>{{skp}} {{i}}, {{o}}, {{mex5}},                   {{k}}EY_8, {{mstl}}</autogen>
         <autogen>{{skp}} {{i}}, {{o}}, {{mex3}},                   {{b}}RACKET_LEFT</autogen>
         <autogen>{{skp}} {{i}}, {{o}}, {{mex2}},                   {{b}}RACKET_RIGHT</autogen>
-        <autogen>{{skp}} {{i}}, {{o}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_IO3</autogen>
+        <autogen>{{skp}} {{i}}, {{o}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_IO3</autogen>
 
         <autogen>{{skp}} {{i}}, {{u}},                             {{a}}, {{i}}</autogen>
 
@@ -511,9 +511,9 @@
         <autogen>{{skp}} {{j}}, {{o}}, {{mex5}},                   {{e}}QUAL, {{mstl}}</autogen>
         <autogen>{{skp}} {{j}}, {{o}}, {{mex2}},                   {{k}}EY_0, {{mstl}}</autogen>
         <autogen>{{skp}} {{j}}, {{o}}, {{mex3}},                   {{k}}EY_9, {{mstl}}</autogen>
-        <autogen>{{skp}} {{j}}, {{o}}, {{mctl}},                   {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_JO3, {{mctl}}</autogen>
-        <autogen>{{skp}} {{j}}, {{o}}, {{mstl}},                   {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_JO3, {{mstl}}</autogen>
-        <autogen>{{skp}} {{j}}, {{o}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_JO3</autogen>
+        <autogen>{{skp}} {{j}}, {{o}}, {{mctl}},                   {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_JO3, {{mctl}}</autogen>
+        <autogen>{{skp}} {{j}}, {{o}}, {{mstl}},                   {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_JO3, {{mstl}}</autogen>
+        <autogen>{{skp}} {{j}}, {{o}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_JO3</autogen>
 
         <autogen>{{skp}} {{m}}, {{n}}, {{mex4}},                   {{s}}EMICOLON, {{r}}ETURN</autogen>
 
@@ -522,22 +522,22 @@
         <autogen>{{skp}} {{o}}, {{m}}, {{mex5}},                   {{m}}, {{u}}, {{c}}, {{h}}</autogen>
         <autogen>{{skp}} {{o}}, {{m}}, {{mex2}},                   {{f}}, {{i}}, {{r}}, {{s}}, {{t}}</autogen>
         <autogen>{{skp}} {{o}}, {{m}}, {{mex3}},                   {{o}}, {{v}}, {{e}}, {{r}}</autogen>
-        <autogen>{{skp}} {{o}}, {{m}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_OM3</autogen>
+        <autogen>{{skp}} {{o}}, {{m}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_OM3</autogen>
 
         <autogen>{{skp}} {{o}}, {{n}}, {{mex4}},                   {{i}}, {{g}}, {{h}}</autogen>
 
-        <autogen>{{skp}} {{t}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_TV3</autogen>
+        <autogen>{{skp}} {{t}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_TV3</autogen>
 
         <autogen>{{skp}} {{v}}, {{w}}, {{mex1}},                   {{m}}, {{a}}, {{y}}</autogen>
         <autogen>{{skp}} {{v}}, {{w}}, {{mex2}},                   {{g}}, {{r}}, {{e}}, {{a}}, {{t}}</autogen>
         <autogen>{{skp}} {{v}}, {{w}}, {{mex3}},                   {{t}}, {{h}}, {{a}}, {{n}}</autogen>
         <autogen>{{skp}} {{v}}, {{w}}, {{mex4}},                   {{w}}, {{i}}, {{l}}, {{l}}</autogen>
         <autogen>{{skp}} {{v}}, {{w}}, {{mex5}},                   {{t}}, {{h}}, {{r}}, {{e}}, {{e}}</autogen>
-        <autogen>{{skp}} {{v}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_VW3</autogen>
+        <autogen>{{skp}} {{v}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_VW3</autogen>
       </item>
       <item>
         <name>Virtual NumLock</name>
-        <identifier vk_config="true">notsave.virtual_numlock_eps3</identifier>
+        <identifier vk_config="true">notsave.prepared_virtual_numlock_eps3</identifier>
         <autogen>--ShowStatusMessage-- NumLock</autogen>
         <autogen>{{k2k}} {{c}}, {{mnon}},                      {{k}}EYPAD_3</autogen>
         <autogen>{{k2k}} {{e}}, {{mnon}},                          {{k}}EYPAD_1</autogen>
@@ -566,20 +566,20 @@
       </item>
       <item>
         <name>EPS keymap, edit submap</name>
-        <identifier vk_config="true">notsave.edit_eps3</identifier>
+        <identifier vk_config="true">notsave.prepared_edit_eps3</identifier>
       </item>
       <item>
         <name>EPS keymap, ss submap</name>
-        <identifier vk_config="true">notsave.ss_eps3</identifier>
+        <identifier vk_config="true">notsave.prepared_ss_eps3</identifier>
       </item>
       <item>
         <name>EPS keymap, XT submap</name>
-        <identifier vk_config="true">notsave.xt_eps3</identifier>
-        <autogen>{{k2k}} {{i}}, {{mnon}},                          {{t}}, {{e}}, {{s}}, {{t}}, {{v}}K_CONFIG_TOGGLE_notsave_xt_eps3</autogen>
+        <identifier vk_config="true">notsave.prepared_xt_eps3</identifier>
+        <autogen>{{k2k}} {{i}}, {{mnon}},                          {{t}}, {{e}}, {{s}}, {{t}}, {{v}}K_CONFIG_TOGGLE_notsave_prepared_xt_eps3</autogen>
       </item>
       <item>
         <name>EPS keymap, CF3 submap</name>
-        <identifier vk_config="true">notsave.CF3</identifier>
+        <identifier vk_config="true">notsave.prepared_CF3</identifier>
         <autogen>{{k2k}} {{i}},                                    {{o}}, {{w}}, {{n}}</autogen>
         <autogen>{{k2k}} {{j}},                                    {{e}}, {{v}}, {{e}}</autogen>
         <autogen>{{k2k}} {{m}},                                    {{s}}, {{h}}, {{o}}, {{u}}, {{l}}, {{d}}</autogen>
@@ -589,7 +589,7 @@
       </item>
       <item>
         <name>EPS keymap, CR3 submap</name>
-        <identifier vk_config="true">notsave.CR3</identifier>
+        <identifier vk_config="true">notsave.prepared_CR3</identifier>
         <autogen>{{k2k}} {{i}}, {{mnon}},                          {{i}}, {{n}}, {{t}}, {{o}}</autogen>
         <autogen>{{k2k}} {{i}}, VK_SHIFT|{{mnon}},                 {{i}}, VK_SHIFT, {{n}}, {{t}}, {{o}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mnon}},                          {{m}}, {{o}}, {{r}}, {{e}}</autogen>
@@ -608,7 +608,7 @@
       </item>
       <item>
         <name>EPS keymap, CV3 submap</name>
-        <identifier vk_config="true">notsave.CV3</identifier>
+        <identifier vk_config="true">notsave.prepared_CV3</identifier>
         <autogen>{{k2k}} {{j}}, {{mnon}},                          {{o}}, {{v}}, {{e}}</autogen>
         <autogen>{{k2k}} {{j}}, VK_SHIFT|{{mnon}},                 {{o}}, VK_SHIFT, {{v}}, {{e}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mnon}},                          {{s}}, {{h}}, {{o}}, {{u}}, {{l}}, {{d}}</autogen>
@@ -620,7 +620,7 @@
       </item>
       <item>
         <name>EPS keymap, CW3 submap</name>
-        <identifier vk_config="true">notsave.CW3</identifier>
+        <identifier vk_config="true">notsave.prepared_CW3</identifier>
         <autogen>{{k2k}} {{i}}, {{mnon}},                          {{e}}, {{a}}, {{c}}, {{h}}</autogen>
         <autogen>{{k2k}} {{i}}, VK_SHIFT|{{mnon}},                 {{e}}, VK_SHIFT, {{a}}, {{c}}, {{h}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mnon}},                          {{o}}, {{n}}, {{l}}, {{y}}</autogen>
@@ -643,7 +643,7 @@
       </item>
       <item>
         <name>EPS keymap, EF3 submap</name>
-        <identifier vk_config="true">notsave.EF3</identifier>
+        <identifier vk_config="true">notsave.prepared_EF3</identifier>
         <autogen>{{k2k}} {{i}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{e}}QUAL</autogen>
         <autogen>{{k2k}} {{i}}, {{mnon}},                          {{e}}QUAL</autogen>
         <autogen>{{k2k}} {{i}}, VK_COMMAND|{{mnon}},               {{e}}QUAL, VK_COMMAND</autogen>
@@ -667,7 +667,7 @@
       </item>
       <item>
         <name>EPS keymap, ER3 submap</name>
-        <identifier vk_config="true">notsave.ER3</identifier>
+        <identifier vk_config="true">notsave.prepared_ER3</identifier>
         <autogen>{{k2k}} {{i}},                                    {{n}}, {{e}}, {{w}}</autogen>
         <autogen>{{k2k}} {{j}},                                    {{c}}, {{a}}, {{n}}</autogen>
         <autogen>{{k2k}} {{m}},                                    {{t}}, {{a}}, {{k}}, {{e}}</autogen>
@@ -677,7 +677,7 @@
       </item>
       <item>
         <name>EPS keymap, EV3 submap</name>
-        <identifier vk_config="true">notsave.EV3</identifier>
+        <identifier vk_config="true">notsave.prepared_EV3</identifier>
         <autogen>{{k2k}} {{i}},                                    {{m}}, {{o}}, {{s}}, {{t}}</autogen>
         <autogen>{{k2k}} {{j}},                                    {{v}}, {{e}}, {{r}}, {{y}}</autogen>
         <autogen>{{k2k}} {{m}},                                    {{t}}, {{i}}, {{m}}, {{e}}</autogen>
@@ -688,7 +688,7 @@
       </item>
       <item>
         <name>EPS keymap, EW3 submap</name>
-        <identifier vk_config="true">notsave.EW3</identifier>
+        <identifier vk_config="true">notsave.prepared_EW3</identifier>
         <autogen>{{k2k}} {{f}},                                    {{a}}, {{t}}, {{i}}, {{o}}, {{n}}</autogen>
         <autogen>{{k2k}} {{g}},                                    {{t}}, {{i}}, {{o}}, {{n}}</autogen>
         <autogen>{{k2k}} {{h}},                                    {{s}}, {{i}}, {{o}}, {{n}}</autogen>
@@ -702,7 +702,7 @@
       </item>
       <item>
         <name>EPS keymap, FV3 submap</name>
-        <identifier vk_config="true">notsave.FV3</identifier>
+        <identifier vk_config="true">notsave.prepared_FV3</identifier>
         <autogen>{{k2k}} {{i}},                                    {{f}}, {{i}}, {{r}}, {{s}}, {{t}}</autogen>
         <autogen>{{k2k}} {{j}},                                    {{w}}, {{a}}, {{r}}, {{d}}</autogen>
         <autogen>{{k2k}} {{m}},                                    {{h}}, {{e}}, {{r}}, {{e}}</autogen>
@@ -712,7 +712,7 @@
       </item>
       <item>
         <name>EPS keymap, FW3 submap</name>
-        <identifier vk_config="true">notsave.FW3</identifier>
+        <identifier vk_config="true">notsave.prepared_FW3</identifier>
         <autogen>{{k2k}} {{g}},                                    {{i}}, {{n}}</autogen>
         <autogen>{{k2k}} {{h}},                                    {{o}}, {{n}}</autogen>
         <autogen>{{k2k}} {{i}},                                    {{w}}, {{i}}, {{t}}, {{h}}</autogen>
@@ -732,7 +732,7 @@
       </item>
       <item>
         <name>EPS keymap, GV3 submap</name>
-        <identifier vk_config="true">notsave.GV3</identifier>
+        <identifier vk_config="true">notsave.prepared_GV3</identifier>
         <autogen>{{k2k}} {{i}},                                    {{l}}, {{o}}, {{n}}, {{g}}</autogen>
         <autogen>{{k2k}} {{j}},                                    {{w}}, {{a}}, {{y}}</autogen>
         <autogen>{{k2k}} {{m}},                                    {{k}}, {{n}}, {{o}}, {{w}}</autogen>
@@ -742,7 +742,7 @@
       </item>
       <item>
         <name>EPS keymap, IJ3 submap</name>
-        <identifier vk_config="true">notsave.IJ3</identifier>
+        <identifier vk_config="true">notsave.prepared_IJ3</identifier>
         <autogen>{{k2k}} {{c}},                                    {{q}}, {{u}}</autogen>
         <autogen>{{k2k}} {{e}},                                    {{k}}EY_3, {{mstl}}</autogen>
         <autogen>{{k2k}} {{f}},                                    {{m}}INUS</autogen>
@@ -757,7 +757,7 @@
       </item>
       <item>
         <name>EPS keymap, IM3 submap</name>
-        <identifier vk_config="true">notsave.IM3</identifier>
+        <identifier vk_config="true">notsave.prepared_IM3</identifier>
         <autogen>{{k2k}} {{c}},                                    {{k}}, {{n}}, {{e}}, {{w}}</autogen>
         <autogen>{{k2k}} {{e}},                                    {{s}}, {{h}}, {{o}}, {{r}}, {{t}}</autogen>
         <autogen>{{k2k}} {{f}},                                    {{s}}, {{a}}, {{y}}</autogen>
@@ -766,7 +766,7 @@
       </item>
       <item>
         <name>EPS keymap, IO3 submap</name>
-        <identifier vk_config="true">notsave.IO3</identifier>
+        <identifier vk_config="true">notsave.prepared_IO3</identifier>
         <autogen>{{k2k}} {{c}},                                    {{b}}ACKQUOTE</autogen>
         <autogen>{{k2k}} {{e}},                                    {{d}}OT, {{mstl}}</autogen>
         <autogen>{{k2k}} {{f}},                                    {{b}}ACKSLASH, {{mstl}}</autogen>
@@ -776,7 +776,7 @@
       </item>
       <item>
         <name>EPS keymap, JO3 submap</name>
-        <identifier vk_config="true">notsave.JO3</identifier>
+        <identifier vk_config="true">notsave.prepared_JO3</identifier>
         <autogen>{{k2k}} {{c}}, {{mnon}},                          {{e}}QUAL, {{b}}ACKQUOTE, {{mstl}}</autogen>
         <autogen>{{k2k}} {{c}}, {{mstl}},                          {{e}}QUAL, {{b}}ACKQUOTE, {{mstr}}, {{s}}PACE, {{s}}LASH</autogen>
         <autogen>{{k2k}} {{c}}, {{mctl}},                          {{e}}QUAL, {{b}}ACKQUOTE, {{mstl}}, {{s}}PACE, {{s}}, {{s}}LASH</autogen>
@@ -792,7 +792,7 @@
       </item>
       <item>
         <name>EPS keymap, OM3 submap</name>
-        <identifier vk_config="true">notsave.OM3</identifier>
+        <identifier vk_config="true">notsave.prepared_OM3</identifier>
         <autogen>{{k2k}} {{c}},                                    {{w}}, {{h}}, {{e}}, {{r}}, {{e}}</autogen>
         <autogen>{{k2k}} {{e}},                                    {{l}}, {{a}}, {{s}}, {{t}}</autogen>
         <autogen>{{k2k}} {{f}},                                    {{s}}, {{e}}, {{l}}, {{f}}</autogen>
@@ -801,7 +801,7 @@
       </item>
       <item>
         <name>EPS keymap, TV3 submap</name>
-        <identifier vk_config="true">notsave.TV3</identifier>
+        <identifier vk_config="true">notsave.prepared_TV3</identifier>
         <autogen>{{k2k}} {{i}},                                    {{l}}, {{o}}, {{n}}, {{g}}</autogen>
         <autogen>{{k2k}} {{j}},                                    {{w}}, {{a}}, {{y}}</autogen>
         <autogen>{{k2k}} {{m}},                                    {{k}}, {{n}}, {{o}}, {{w}}</autogen>
@@ -811,7 +811,7 @@
       </item>
       <item>
         <name>EPS keymap, VW3 submap</name>
-        <identifier vk_config="true">notsave.VW3</identifier>
+        <identifier vk_config="true">notsave.prepared_VW3</identifier>
         <autogen>{{k2k}} {{i}},                                    {{g}}, {{o}}, {{o}}, {{d}}</autogen>
         <autogen>{{k2k}} {{j}},                                    {{c}}, {{o}}, {{u}}, {{l}}, {{d}}</autogen>
         <autogen>{{k2k}} {{m}},                                    {{w}}, {{o}}, {{u}}, {{l}}, {{d}}</autogen>
