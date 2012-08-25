@@ -438,7 +438,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::set();
       }
 
-      CommonData::setcurrent_vendorProduct((front->deviceIdentifier).getVendor(), (front->deviceIdentifier).getProduct());
+      CommonData::setcurrent_deviceIdentifier(front->deviceIdentifier);
 
     } while (RemapClassManager::remap_simultaneouskeypresses());
 
