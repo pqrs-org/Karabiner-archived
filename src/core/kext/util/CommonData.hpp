@@ -18,19 +18,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setcurrent_keyboardType(KeyboardType keyboardType) { current_keyboardType_ = keyboardType; }
     static KeyboardType getcurrent_keyboardType(void) { return current_keyboardType_; }
 
-    static void setcurrent_vendorProduct(DeviceVendor vendor, DeviceProduct product) {
-      current_deviceVendor_ = vendor;
-      current_deviceProduct_ = product;
+    static void setcurrent_deviceIdentifier(const DeviceIdentifier& deviceIdentifier) {
+      current_deviceIdentifier_ = deviceIdentifier;
     }
-    static bool isEqualVendor(DeviceVendor vendor) {
-      if (current_deviceVendor_  != vendor) return false;
-      return true;
-    }
-    static bool isEqualVendorProduct(DeviceVendor vendor, DeviceProduct product) {
-      if (current_deviceVendor_  != vendor) return false;
-      if (current_deviceProduct_ != product) return false;
-      return true;
-    }
+    static const DeviceIdentifier& getcurrent_deviceIdentifier(void) { return current_deviceIdentifier_; }
 
     static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) { current_workspacedata_ = newval; }
     static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
@@ -47,8 +38,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     static AbsoluteTime current_ts_;
     static KeyboardType current_keyboardType_;
-    static DeviceVendor current_deviceVendor_;
-    static DeviceProduct current_deviceProduct_;
+    static DeviceIdentifier current_deviceIdentifier_;
     static BridgeWorkSpaceData current_workspacedata_;
 
     static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];

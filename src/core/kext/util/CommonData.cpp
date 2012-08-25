@@ -5,8 +5,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   AbsoluteTime CommonData::current_ts_;
   KeyboardType CommonData::current_keyboardType_;
-  DeviceVendor CommonData::current_deviceVendor_;
-  DeviceProduct CommonData::current_deviceProduct_;
+  DeviceIdentifier CommonData::current_deviceIdentifier_;
   BridgeWorkSpaceData CommonData::current_workspacedata_;
   char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 

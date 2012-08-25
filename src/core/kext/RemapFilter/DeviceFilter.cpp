@@ -39,11 +39,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           for (size_t i = 0; i < targets_->size(); ++i) {
             DeviceFilterValue& v = (*targets_)[i];
             if (DeviceProduct::ANY == v.productID) {
-              if (CommonData::isEqualVendor(v.vendorID)) {
+              if (CommonData::getcurrent_deviceIdentifier().isEqualVendor(v.vendorID)) {
                 return isnot ? true : false;
               }
             } else {
-              if (CommonData::isEqualVendorProduct(v.vendorID, v.productID)) {
+              if (CommonData::getcurrent_deviceIdentifier().isEqualVendorProduct(v.vendorID, v.productID)) {
                 return isnot ? true : false;
               }
             }
