@@ -17,22 +17,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       virtual bool isReplaced(void) const = 0;
 
-      IOHIDevice* get(void) const { return device_; }
-      bool isEqualVendorProduct(DeviceVendor vendor, DeviceProduct product) const;
-      bool isEqualVendor(DeviceVendor vendor) const;
-      DeviceVendor getVendor(void) const { return vendor_; }
-      DeviceProduct getProduct(void) const { return product_; }
-      DeviceType::DeviceType getDeviceType(void) { return deviceType_; }
+      const IOHIDevice* get(void) const { return device_; }
+      const DeviceIdentifier& getDeviceIdentifier(void) const { return deviceIdentifier_; }
+      DeviceType::DeviceType getDeviceType(void) const { return deviceType_; }
 
     protected:
       IOHIDevice* device_;
-      DeviceVendor vendor_;
-      DeviceProduct product_;
+      DeviceIdentifier deviceIdentifier_;
       DeviceType::DeviceType deviceType_;
 
       virtual bool refresh(void) = 0;
 
-      void setVendorProduct(void);
+      void setDeviceIdentifier(void);
       void setDeviceType(void);
       static bool isConsumer(const char* name);
     };

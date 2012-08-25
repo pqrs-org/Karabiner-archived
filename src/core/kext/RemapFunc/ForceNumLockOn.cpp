@@ -49,7 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! item) return false;
       if (index_ != 2) return false;
 
-      if (! item->isEqualVendorProduct(vendorID_, productID_)) return false;
+      if (! (item->getDeviceIdentifier()).isEqualVendorProduct(vendorID_, productID_)) return false;
 
       // NumLock Hacks
       //

@@ -48,17 +48,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_apple_pointing) &&
-        isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
+        getDeviceIdentifier().isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_non_apple_pointing) &&
-        ! isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
+        ! getDeviceIdentifier().isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
 
     // Logitech Cordless Presenter
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_logitech_cordless_presenter) &&
-        isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
+        getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }
 
