@@ -77,7 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 7:  return ModifierFlag::COMMAND_L;
         case 8:  return ModifierFlag::COMMAND_R;
         case 9:  return ModifierFlag::CURSOR;
-        //ModifierFlag::KEYPAD, // skip KEYPAD because CURSOR == KEYPAD.
+        // ModifierFlag::KEYPAD, // skip KEYPAD because CURSOR == KEYPAD.
         case 10: return ModifierFlag::FN;
         case 11: return ModifierFlag::EXTRA1;
         case 12: return ModifierFlag::EXTRA2;
@@ -453,6 +453,58 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     unsigned int value_;
+  };
+
+  // ======================================================================
+  // DeviceLocation is an identifier used to distinguish between
+  // multiple devices which have same DeviceVendor and DeviceProduct.
+  //
+  // -----------------------------------------------------------------------------
+  // From IOUSBDevice.cpp:
+  // LocationID is used to uniquely identify a device or interface and it's
+  // suppose to remain constant across reboots as long as the USB topology doesn't
+  // change.  It is a 32-bit word.  The top 2 nibbles (bits 31:24) represent the
+  // USB Bus Number.  Each nibble after that (e.g. bits 23:20 or 19:16) correspond
+  // to the port number of the hub that the device is connected to.
+  // -----------------------------------------------------------------------------
+  //
+  // LocationID for Bluetooth devices:
+  //   Device Address: 00-25-bc-f9-8f-34
+  //   LocationID:     0x3cf98f34
+  //
+  //   Device Address: 00-26-bb-7e-95-74
+  //   LocationID:     0x3b7e9574
+  //
+  class DeviceLocation {
+  public:
+    DeviceLocation(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(DeviceLocation other) const { return value_ == other.get(); }
+    bool operator!=(DeviceLocation other) const { return ! (*this == other); }
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
+  class DeviceIdentifier {
+  public:
+    DeviceVendor getVendor(void) const { return vendor_; }
+    DeviceProduct getProduct(void) const { return product_; }
+    DeviceLocation getLocation(void) const { return location_; }
+
+    void setVendor(DeviceVendor v) { vendor_ = v; }
+    void setProduct(DeviceProduct v) { product_ = v; }
+    void setLocation(DeviceLocation v) { location_ = v; }
+
+    bool isEqualVendorProduct(DeviceVendor v, DeviceProduct p) const { return vendor_ == v && product_ == p; }
+    bool isEqualVendor(DeviceVendor v) const { return vendor_ == v; }
+    bool isEqualLocation(DeviceLocation l) const { return location_ == l; }
+
+  private:
+    DeviceVendor vendor_;
+    DeviceProduct product_;
+    DeviceLocation location_;
   };
 
   // ======================================================================
