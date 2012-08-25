@@ -62,7 +62,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
                             bool retainFlagStatusTemporaryCount,
-                            DeviceVendor deviceVendor, DeviceProduct deviceProduct, bool push_back)
+                            const DeviceIdentifier& deviceIdentifier,
+                            bool push_back)
   {
     if (! queue_) return;
 
@@ -71,7 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay);
+    Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay);
     if (push_back) {
       queue_->push_back(item);
     } else {
@@ -82,7 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p,
                             bool retainFlagStatusTemporaryCount,
-                            DeviceVendor deviceVendor, DeviceProduct deviceProduct)
+                            const DeviceIdentifier& deviceIdentifier)
   {
     if (! queue_) return;
 
@@ -91,31 +92,31 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
   }
 
   void
   EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p,
                             bool retainFlagStatusTemporaryCount,
-                            DeviceVendor deviceVendor, DeviceProduct deviceProduct)
+                            const DeviceIdentifier& deviceIdentifier)
   {
     if (! queue_) return;
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
   }
 
   void
   EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p,
                             bool retainFlagStatusTemporaryCount,
-                            DeviceVendor deviceVendor, DeviceProduct deviceProduct)
+                            const DeviceIdentifier& deviceIdentifier)
   {
     if (! queue_) return;
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, delay));
+    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
   }
 
   void
@@ -172,9 +173,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack& params = *ptr;
 
     // ------------------------------------------------------------
-    DeviceVendor deviceVendor(0);
-    DeviceProduct deviceProduct(0);
-
     IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
     if (! device) return;
 
@@ -214,8 +212,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Therefore, we can set current ts and keyboardType here.
     CommonData::setcurrent_ts(ts);
     CommonData::setcurrent_keyboardType(params.keyboardType);
-    deviceVendor = (item->getDeviceIdentifier()).getVendor();
-    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     // Because we handle the key repeat ourself, drop the key repeat by hardware.
@@ -224,7 +220,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     bool retainFlagStatusTemporaryCount = false;
     bool push_back = true;
-    enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, push_back);
+    enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), push_back);
 
     setTimer();
   }
@@ -276,9 +272,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardSpecialEventCallback& params = *ptr;
 
     // ------------------------------------------------------------
-    DeviceVendor deviceVendor(0);
-    DeviceProduct deviceProduct(0);
-
     IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
     if (! device) return;
 
@@ -286,8 +279,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
-    deviceVendor = (item->getDeviceIdentifier()).getVendor();
-    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     // Because we handle the key repeat ourself, drop the key repeat by hardware.
@@ -295,7 +286,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     bool retainFlagStatusTemporaryCount = false;
-    enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
+    enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
 
     setTimer();
   }
@@ -320,9 +311,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Buttons justPressed;
     Buttons justReleased;
 
-    DeviceVendor deviceVendor(0);
-    DeviceProduct deviceProduct(0);
-
     IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
     if (! device) return;
 
@@ -331,8 +319,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
-    deviceVendor = (item->getDeviceIdentifier()).getVendor();
-    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     justPressed = buttons.justPressed(item->get_previousbuttons());
@@ -347,13 +333,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, true));
         if (! ptr) return;
         bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-        enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
+        enqueue_(*ptr, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
       }
       if (justReleased.isOn(btn)) {
         Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, false));
         if (! ptr) return;
         bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-        enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
+        enqueue_(*ptr, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
       }
     }
     // If (dx == 0 && dy == 0), the event is either needless event or just pressing/releasing buttons event.
@@ -363,7 +349,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
       if (! ptr) return;
       bool retainFlagStatusTemporaryCount = true;
-      enqueue_(*ptr, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
+      enqueue_(*ptr, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
     }
 
     setTimer();
@@ -409,9 +395,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_ScrollWheelEventCallback& params = *ptr;
 
     // ------------------------------------------------------------
-    DeviceVendor deviceVendor(0);
-    DeviceProduct deviceProduct(0);
-
     IOHIPointing* device = OSDynamicCast(IOHIPointing, sender);
     if (! device) return;
 
@@ -420,12 +403,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
-    deviceVendor = (item->getDeviceIdentifier()).getVendor();
-    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-    enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct);
+    enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
 
     setTimer();
   }
@@ -436,7 +417,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! queue_) return;
 
-    //IOLOG_DEVEL("EventInputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
+    // IOLOG_DEVEL("EventInputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
 
     // ------------------------------------------------------------
     // handle SimultaneousKeyPresses
@@ -457,7 +438,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::set();
       }
 
-      CommonData::setcurrent_vendorProduct(front->deviceVendor, front->deviceProduct);
+      CommonData::setcurrent_vendorProduct((front->deviceIdentifier).getVendor(), (front->deviceIdentifier).getProduct());
 
     } while (RemapClassManager::remap_simultaneouskeypresses());
 

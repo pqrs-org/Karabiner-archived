@@ -232,8 +232,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! front) return false;
 
       // backup device information.
-      DeviceVendor deviceVendor = front->deviceVendor;
-      DeviceProduct deviceProduct = front->deviceProduct;
+      DeviceIdentifier deviceIdentifier(front->deviceIdentifier);
 
       // ------------------------------------------------------------
       // fire KeyUp event if needed.
@@ -254,7 +253,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
         }
         if (isAllDeactived) {
-          push_remapped(false, deviceVendor, deviceProduct);
+          push_remapped(false, deviceIdentifier);
         }
 
         return true;
@@ -313,13 +312,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       fromInfo_[1].activate();
 
       EventInputQueue::queue_->pop_front();
-      push_remapped(true, deviceVendor, deviceProduct);
+      push_remapped(true, deviceIdentifier);
 
       return true;
     }
 
     void
-    SimultaneousKeyPresses::push_remapped(bool isKeyDown, DeviceVendor deviceVendor, DeviceProduct deviceProduct)
+    SimultaneousKeyPresses::push_remapped(bool isKeyDown, DeviceIdentifier deviceIdentifier)
     {
       EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
 
@@ -342,7 +341,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack& params = *ptr;
       bool retainFlagStatusTemporaryCount = false;
       bool push_back = false;
-      EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceVendor, deviceProduct, push_back);
+      EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceIdentifier, push_back);
     }
 
     bool
