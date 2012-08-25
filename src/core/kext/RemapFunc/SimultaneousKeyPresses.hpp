@@ -30,7 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
-      void push_remapped(bool isKeyDown, DeviceIdentifier deviceIdentifier);
+      void push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier);
 
       class FromInfo {
       public:

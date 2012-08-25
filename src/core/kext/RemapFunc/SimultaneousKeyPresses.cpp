@@ -318,7 +318,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    SimultaneousKeyPresses::push_remapped(bool isKeyDown, DeviceIdentifier deviceIdentifier)
+    SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier)
     {
       EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
 
