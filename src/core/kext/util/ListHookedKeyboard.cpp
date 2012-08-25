@@ -75,25 +75,25 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_apple_keyboard) &&
-        isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
+        getDeviceIdentifier().isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_non_apple_keyboard) &&
-        ! isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
+        ! getDeviceIdentifier().isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
       goto restore;
     }
 
     // Logitech USB Headset
-    if (isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_HEADSET)) {
+    if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_HEADSET)) {
       goto restore;
     }
     // Logitech Cordless Presenter
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_logitech_cordless_presenter) &&
-        isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
+        getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       goto restore;
     }
     // Kensington Virtual Device (0x0, 0x0)
-    if (isEqualVendorProduct(DeviceVendor::PSEUDO, DeviceProduct::PSEUDO)) {
+    if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::PSEUDO, DeviceProduct::PSEUDO)) {
       // Note: USB Overdrive also use 0x0,0x0.
       // We allow to use USB Overdrive.
       if (deviceType_ != DeviceType::USB_OVERDRIVE) {
@@ -103,12 +103,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
 #if 0
     // Apple Internal Keyboard
-    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a)) {
+    if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER,
+                                                   DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a)) {
       goto restore;
     }
 
     // Apple External Keyboard
-    if (isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS)) {
+    if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER,
+                                                   DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS)) {
       goto restore;
     }
 #endif

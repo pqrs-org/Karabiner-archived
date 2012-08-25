@@ -196,7 +196,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
     // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
-    if (item->isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
+    if ((item->getDeviceIdentifier()).isEqualVendorProduct(DeviceVendor::LOGITECH,
+                                                           DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
       if (params.key == KeyCode::CONTROL_L) return;
       if (params.key == KeyCode::SHIFT_L) return;
     }
@@ -213,8 +214,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Therefore, we can set current ts and keyboardType here.
     CommonData::setcurrent_ts(ts);
     CommonData::setcurrent_keyboardType(params.keyboardType);
-    deviceVendor = item->getVendor();
-    deviceProduct = item->getProduct();
+    deviceVendor = (item->getDeviceIdentifier()).getVendor();
+    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     // Because we handle the key repeat ourself, drop the key repeat by hardware.
@@ -285,8 +286,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
-    deviceVendor = item->getVendor();
-    deviceProduct = item->getProduct();
+    deviceVendor = (item->getDeviceIdentifier()).getVendor();
+    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     // Because we handle the key repeat ourself, drop the key repeat by hardware.
@@ -330,8 +331,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
-    deviceVendor = item->getVendor();
-    deviceProduct = item->getProduct();
+    deviceVendor = (item->getDeviceIdentifier()).getVendor();
+    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     justPressed = buttons.justPressed(item->get_previousbuttons());
@@ -419,8 +420,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
-    deviceVendor = item->getVendor();
-    deviceProduct = item->getProduct();
+    deviceVendor = (item->getDeviceIdentifier()).getVendor();
+    deviceProduct = (item->getDeviceIdentifier()).getProduct();
 
     // ------------------------------------------------------------
     bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);

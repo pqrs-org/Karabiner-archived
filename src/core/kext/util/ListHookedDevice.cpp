@@ -5,25 +5,16 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
-  ListHookedDevice::Item::Item(IOHIDevice* d) : device_(d), vendor_(0), product_(0), deviceType_(DeviceType::UNKNOWN) {
-    setVendorProduct();
+  ListHookedDevice::Item::Item(IOHIDevice* d) :
+    device_(d),
+    deviceType_(DeviceType::UNKNOWN)
+  {
+    setDeviceIdentifier();
     setDeviceType();
   }
 
-  bool
-  ListHookedDevice::Item::isEqualVendorProduct(DeviceVendor vendor, DeviceProduct product) const
-  {
-    return vendor_ == vendor && product_ == product;
-  }
-
-  bool
-  ListHookedDevice::Item::isEqualVendor(DeviceVendor vendor) const
-  {
-    return vendor_ == vendor;
-  }
-
   void
-  ListHookedDevice::Item::setVendorProduct(void)
+  ListHookedDevice::Item::setDeviceIdentifier(void)
   {
     if (! device_) return;
 
@@ -37,8 +28,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       pid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
 
       if (vid && pid) {
-        vendor_ = vid->unsigned32BitValue();
-        product_ = pid->unsigned32BitValue();
+        deviceIdentifier_.setVendor(vid->unsigned32BitValue());
+        deviceIdentifier_.setProduct(pid->unsigned32BitValue());
 
         goto finish;
 
@@ -56,8 +47,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (manufacturer && product) {
             if (manufacturer->isEqualTo("Apple") &&
                 product->isEqualTo("Keyboard")) {
-              vendor_ = DeviceVendor::APPLE_COMPUTER;
-              product_ = DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218;
+              deviceIdentifier_.setVendor(DeviceVendor::APPLE_COMPUTER);
+              deviceIdentifier_.setProduct(DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218);
               goto finish;
             }
           }
@@ -69,7 +60,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   finish:
-    IOLOG_DEBUG("HookedDevice::setVendorProduct device_:%p, vendor_:0x%04x, product_:0x%04x\n", device_, vendor_.get(), product_.get());
+    // Set LocationID
+    if (dev) {
+      const OSNumber* locationid = NULL;
+      locationid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDLocationIDKey));
+      if (locationid) {
+        deviceIdentifier_.setLocation(locationid->unsigned32BitValue());
+      }
+    }
+
+    IOLOG_DEBUG("HookedDevice::setVendorProductLocation device_:%p, vendor:0x%04x, product:0x%04x location:0x%04x\n",
+                device_,
+                deviceIdentifier_.getVendor().get(),
+                deviceIdentifier_.getProduct().get(),
+                deviceIdentifier_.getLocation().get());
   }
 
   void
