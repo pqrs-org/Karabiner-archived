@@ -8,7 +8,8 @@ namespace pqrs {
   {
     for (auto& it : pt) {
       if (it.get_tag_name() != "devicevendordef" &&
-          it.get_tag_name() != "deviceproductdef") {
+          it.get_tag_name() != "deviceproductdef" &&
+          it.get_tag_name() != "devicelocationdef") {
         if (! it.children_empty()) {
           traverse(it.children_extracted_ptree());
         }
@@ -29,6 +30,11 @@ namespace pqrs {
           type           = "DeviceProduct";
           name_tag_name  = "productname";
           value_tag_name = "productid";
+
+        } else if (it.get_tag_name() == "devicelocationdef") {
+          type           = "DeviceLocation";
+          name_tag_name  = "locationname";
+          value_tag_name = "locationid";
 
         } else {
           throw xml_compiler_logic_error("unknown type in device_loader::traverse");

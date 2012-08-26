@@ -576,9 +576,14 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   s.add("DeviceVendor", "VENDOR1", 10);
   s.add("DeviceVendor", "VENDOR2", 20);
   s.add("DeviceVendor", "VENDOR3", 30);
+  s.add("DeviceProduct", "ANY", 0);
   s.add("DeviceProduct", "PRODUCT1", 100);
   s.add("DeviceProduct", "PRODUCT2", 200);
   s.add("DeviceProduct", "PRODUCT3", 300);
+  s.add("DeviceLocation", "ANY", 0);
+  s.add("DeviceLocation", "LOCATION1", 400);
+  s.add("DeviceLocation", "LOCATION2", 500);
+  s.add("DeviceLocation", "LOCATION3", 600);
   s.add("ConfigIndex", "config1", 1000);
   s.add("ConfigIndex", "config2", 2000);
   s.add("ConfigIndex", "config3", 3000);
@@ -593,11 +598,13 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "  <only>,,</only>"
                   "  <not><!-- XXX --->APP2</not>"
                   "  <identifier>sample</identifier>"
-                  "  <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, </device_only>"
+                  "  <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</device_only>"
                   "  <device_not>"
                   "    DeviceVendor::VENDOR3,,,,"
                   "    DeviceProduct::PRODUCT3,"
+                  "    DeviceVendor::VENDOR3,"
                   "  </device_not>"
+                  "  <device_not></device_not>"
                   "  <config_only>config1,config2</config_only>"
                   "  <config_not>config3</config_not>"
                   "  <modifier_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifier_only>"
@@ -634,17 +641,25 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     expected.push_back(BRIDGE_FILTERTYPE_APPLICATION_NOT);
     expected.push_back(2); // APP2
 
-    // <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, </device_only>
-    expected.push_back(3); // count
+    // <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</device_only>
+    expected.push_back(4); // count
     expected.push_back(BRIDGE_FILTERTYPE_DEVICE_ONLY);
     expected.push_back(10);
     expected.push_back(100);
+    expected.push_back(400);
 
-    // <device_not>DeviceVendor::VENDOR3, DeviceProduct::PRODUCT3, </device_not>
-    expected.push_back(3); // count
+    // <device_not>DeviceVendor::VENDOR3, DeviceProduct::PRODUCT3, DeviceVendor::VENDOR3</device_not>
+    expected.push_back(7); // count
     expected.push_back(BRIDGE_FILTERTYPE_DEVICE_NOT);
     expected.push_back(30);
     expected.push_back(300);
+    expected.push_back(0); // DeviceLocation::ANY
+    expected.push_back(30);
+    expected.push_back(0); // DeviceProduct::ANY
+    expected.push_back(0); // DeviceLocation::ANY
+
+    // <device_not></device_not>
+    // ***IGNORED***
 
     // <config_only>config1,config2</config_only>
     expected.push_back(3); // count
