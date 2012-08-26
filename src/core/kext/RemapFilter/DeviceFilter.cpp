@@ -18,11 +18,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    DeviceFilter::add(unsigned int vendorID, unsigned int productID)
+    DeviceFilter::add(unsigned int vendorID, unsigned int productID, unsigned int locationID)
     {
       if (! targets_) return;
 
-      targets_->push_back(DeviceFilterValue(vendorID, productID));
+      targets_->push_back(DeviceFilterValue(vendorID, productID, locationID));
     }
 
     bool
@@ -38,14 +38,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           for (size_t i = 0; i < targets_->size(); ++i) {
             DeviceFilterValue& v = (*targets_)[i];
-            if (DeviceProduct::ANY == v.productID) {
-              if (CommonData::getcurrent_deviceIdentifier().isEqualVendor(v.vendorID)) {
-                return isnot ? true : false;
-              }
-            } else {
-              if (CommonData::getcurrent_deviceIdentifier().isEqualVendorProduct(v.vendorID, v.productID)) {
-                return isnot ? true : false;
-              }
+            if (CommonData::getcurrent_deviceIdentifier().isEqual(v.vendorID, v.productID, v.locationID)) {
+              return isnot ? true : false;
             }
           }
           return isnot ? false : true;

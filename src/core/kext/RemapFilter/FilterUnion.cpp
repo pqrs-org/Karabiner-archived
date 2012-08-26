@@ -65,8 +65,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
           p_.deviceFilter = new DeviceFilter(type_);
           if (p_.deviceFilter) {
-            for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.deviceFilter)->add(vec[i], vec[i + 1]);
+            for (size_t i = 1; i < length - 2; i += 3) {
+              (p_.deviceFilter)->add(vec[i], vec[i + 1], vec[i + 2]);
+            }
+            if ((length - 1) % 3 > 0) {
+              IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_DEVICE_*\n", static_cast<int>(length));
             }
           }
           break;
