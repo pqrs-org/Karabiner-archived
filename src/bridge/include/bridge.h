@@ -33,8 +33,9 @@ enum {
   // Version 25: Added KeyCode::VK_MOUSEKEY_LOCK_BUTTON_*.
   // Version 26: Added parameter.wait_between_sequential_keys.
   // Version 27: Added Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+  // Version 28: Added DeviceLocation
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 27,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 28,
 };
 
 enum {
