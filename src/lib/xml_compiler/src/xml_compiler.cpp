@@ -90,6 +90,7 @@ namespace pqrs {
 
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicevendordef.xml");
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "deviceproductdef.xml");
+        loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicelocationdef.xml");
       }
 
       // config_index, remapclasses_initialize_vector, preferences_node

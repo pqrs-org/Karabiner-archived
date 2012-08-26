@@ -54,27 +54,95 @@ namespace pqrs {
 
     pqrs::string::tokenizer tokenizer_comma(string_no_whitespaces, ',');
     std::string arg;
-    std::string value;
     while (tokenizer_comma.split_removing_empty(arg)) {
-      // support '|' for <modifier_only>.
-      // For example: <modifier_only>ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L|ModifierFlag::OPTION_L</modifier_only>
-      pqrs::string::tokenizer tokenizer_pipe(arg, '|');
-
       uint32_t filter_value = 0;
-      while (tokenizer_pipe.split_removing_empty(value)) {
-        std::string key = prefix + value;
-        normalize_identifier_(key);
-        filter_value |= symbol_map_.get(key);
+
+      switch (filter_type) {
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+        {
+          // support '|' for <modifier_only>.
+          // For example: <modifier_only>ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L|ModifierFlag::OPTION_L</modifier_only>
+          pqrs::string::tokenizer tokenizer_pipe(arg, '|');
+          std::string value;
+          while (tokenizer_pipe.split_removing_empty(value)) {
+            std::string key = prefix + value;
+            normalize_identifier_(key);
+            filter_value |= symbol_map_.get(key);
+          }
+          break;
+        }
+
+        case BRIDGE_FILTERTYPE_DEVICE_NOT:
+        case BRIDGE_FILTERTYPE_DEVICE_ONLY:
+        {
+          if (boost::starts_with(arg, "DeviceVendor")) {
+            fill_omitted_device_specifying(count);
+          }
+          // pass-through (== no break)
+        }
+
+        default:
+        {
+          std::string key = prefix + arg;
+          normalize_identifier_(key);
+          filter_value = symbol_map_.get(key);
+          break;
+        }
       }
+
       data_.push_back(filter_value);
       ++count;
     }
 
+    // ------------------------------------------------------------
+    // Fill DeviceProduct, DeviceLocation if needed.
+    if (filter_type == BRIDGE_FILTERTYPE_DEVICE_NOT ||
+        filter_type == BRIDGE_FILTERTYPE_DEVICE_ONLY) {
+      fill_omitted_device_specifying(count);
+    }
+
+    // ------------------------------------------------------------
     if (count == 1) {
       // Rollback if filter is empty.
       data_.resize(count_index);
     } else {
       data_[count_index] = count;
+    }
+  }
+
+  void
+  xml_compiler::filter_vector::fill_omitted_device_specifying(uint32_t& count)
+  {
+    // <device_not> and <device_only> require a strict arguments order.
+    // 1st: DeviceVendor
+    // 2nd: DeviceProduct
+    // 3rd: DeviceLocation
+    //
+    // For example:
+    // <device_not>DeviceVendor::XXX, DeviceProduct::YYY, DeviceLocation::ZZZ</device_not>
+    //
+    // However, for compatibility,
+    // we need to append DeviceLocation automatically if it is not given.
+    //
+    // We need to convert
+    //   <device_not>DeviceVendor::XXX, DeviceProduct::YYY</device_not>
+    // to
+    //   <device_not>DeviceVendor::XXX, DeviceProduct::YYY, DeviceLocation::ANY</device_not>
+    //
+
+    switch ((count - 1) % 3) {
+      case 0:
+        break;
+
+      case 1:
+        // pass-through (== no break)
+        data_.push_back(symbol_map_.get("DeviceProduct::ANY"));
+        ++count;
+
+      case 2:
+        data_.push_back(symbol_map_.get("DeviceLocation::ANY"));
+        ++count;
     }
   }
 }

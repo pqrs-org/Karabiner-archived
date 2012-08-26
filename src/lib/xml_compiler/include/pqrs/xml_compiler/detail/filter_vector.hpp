@@ -29,6 +29,7 @@ public:
 
 private:
   void add_(uint32_t filter_type, const std::string& type, const std::string& string);
+  void fill_omitted_device_specifying(uint32_t& count);
 
   const symbol_map& symbol_map_;
   std::vector<uint32_t> data_;
