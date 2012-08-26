@@ -28,6 +28,7 @@
 		34848263152F527100A9A3BE /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34848262152F527100A9A3BE /* libstdc++.dylib */; };
 		34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34848265152F54B700A9A3BE /* XMLCompiler.m */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
+		348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 348F120015EA8ADA008A2BDA /* devicelocationdef.xml */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
 		34A611931531707E0003894B /* checkbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A611921531707E0003894B /* checkbox.xml */; };
@@ -93,6 +94,7 @@
 		34848265152F54B700A9A3BE /* XMLCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLCompiler.m; path = Classes/XMLCompiler.m; sourceTree = "<group>"; };
 		348C6A2C128E4504005F516D /* StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBar.h; path = Classes/StatusBar.h; sourceTree = "<group>"; };
 		348C6A2D128E4504005F516D /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBar.m; path = Classes/StatusBar.m; sourceTree = "<group>"; };
+		348F120015EA8ADA008A2BDA /* devicelocationdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicelocationdef.xml; path = Resources/devicelocationdef.xml; sourceTree = "<group>"; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
 		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = Resources/checkbox.xml; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				348F120015EA8ADA008A2BDA /* devicelocationdef.xml */,
 				343B2458153DCC7C0023BA6E /* include */,
 				34D590261531983100160DFC /* number.xml */,
 				34A611921531707E0003894B /* checkbox.xml */,
@@ -316,6 +319,7 @@
 				343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */,
 				34A611931531707E0003894B /* checkbox.xml in Resources */,
 				34D590271531983100160DFC /* number.xml in Resources */,
+				348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

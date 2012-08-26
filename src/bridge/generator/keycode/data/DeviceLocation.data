@@ -1,0 +1,4 @@
+// These items are needed in kernel extension.
+// Please define DeviceLocation by devicelocationdef.xml if it is not needed in kext.
+
+ANY                                     0x0000

@@ -482,6 +482,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool operator==(DeviceLocation other) const { return value_ == other.get(); }
     bool operator!=(DeviceLocation other) const { return ! (*this == other); }
 
+#include "../../../src/bridge/output/include.kext.DeviceLocation.hpp"
+
   private:
     unsigned int value_;
   };
@@ -500,6 +502,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isEqualVendorProduct(DeviceVendor v, DeviceProduct p) const { return vendor_ == v && product_ == p; }
     bool isEqualVendor(DeviceVendor v) const { return vendor_ == v; }
     bool isEqualLocation(DeviceLocation l) const { return location_ == l; }
+    bool isEqual(DeviceVendor v, DeviceProduct p = DeviceProduct::ANY, DeviceLocation l = DeviceLocation::ANY) const {
+      if (vendor_ != v) return false;
+      if (DeviceProduct::ANY != p && product_ != p) return false;
+      if (DeviceLocation::ANY != l && location_ != l) return false;
+      return true;
+    }
 
   private:
     DeviceVendor vendor_;
