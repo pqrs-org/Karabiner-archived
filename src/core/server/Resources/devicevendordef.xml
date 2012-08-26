@@ -89,4 +89,9 @@
     <vendorname>Megawin_Technology_Co_Ltd</vendorname>
     <vendorid>0x0e6a</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Pixart_Imaging_Inc</vendorname>
+    <vendorid>0x093a</vendorid>
+  </devicevendordef>
 </root>

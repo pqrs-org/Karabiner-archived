@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <root>
   <devicelocationdef>
+    <locationname>EXAMPLE_USB_BUS_1</locationname>
+    <locationid>0xfa130000</locationid>
+  </devicelocationdef>
+
+  <devicelocationdef>
     <locationname>ANY</locationname>
     <locationid>0x0000</locationid>
   </devicelocationdef>
