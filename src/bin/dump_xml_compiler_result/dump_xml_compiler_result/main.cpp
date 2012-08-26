@@ -129,6 +129,9 @@ main(int argc, const char* argv[])
       std::cout << *identifier << std::endl;
     }
 
+  } else if (command == "dump_symbol_map") {
+    xml_compiler.debug_dump_symbol_map();
+
   } else if (command == "output_bridge_essential_configuration_enum_h") {
     std::cout << "enum {" << std::endl;
 

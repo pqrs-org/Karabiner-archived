@@ -22,41 +22,47 @@ xcode:
 dump_data:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
-	/noexistspath \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	dump_data
 
 dump_tree:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
-	/noexistspath \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	dump_tree
 
 dump_number:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
-	/noexistspath \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	dump_number
 
 dump_identifier_except_essential:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
-	/noexistspath \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	dump_identifier_except_essential
+
+dump_symbol_map:
+	@./build/Release/dump_xml_compiler_result \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
+	dump_symbol_map
 
 output_bridge_essential_configuration_enum_h:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
-	/noexistspath \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	output_bridge_essential_configuration_enum_h
 
 output_bridge_essential_configuration_default_values_c:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
-	/noexistspath \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	output_bridge_essential_configuration_default_values_c
 
 output_bridge_essential_configuration_identifiers_m:
 	@./build/Release/dump_xml_compiler_result \
 	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
-	/noexistspath \
+	/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources \
 	output_bridge_essential_configuration_identifiers_m
