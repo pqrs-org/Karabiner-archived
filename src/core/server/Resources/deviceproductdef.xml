@@ -196,6 +196,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Pixart_Imaging_Inc_Optical_Mouse_0x2510</productname>
+    <productid>0x2510</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>PSEUDO</productname>
     <productid>0x0000</productid>
   </deviceproductdef>
