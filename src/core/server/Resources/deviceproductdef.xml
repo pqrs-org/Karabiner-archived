@@ -156,7 +156,7 @@
   </deviceproductdef>
 
   <deviceproductdef>
-    <productname>FMV-KB232</productname>
+    <productname>FMV_KB232</productname>
     <productid>0x00ab</productid>
   </deviceproductdef>
 

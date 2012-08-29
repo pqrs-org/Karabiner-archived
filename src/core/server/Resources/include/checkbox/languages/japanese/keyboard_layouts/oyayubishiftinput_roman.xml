@@ -15,6 +15,21 @@
   {{JAPANESE_OYAYUBISHIFT_EXTRA}}
 
   <inputmode_only>JAPANESE</inputmode_only>
+
+  <!-- FKB7628-801、FMV-KB232ではハードウェア的に特殊なレイアウトになっているため、
+       以下のようにする必要がある。
+       ・@キーを押した時「：」が入力されるようにする
+       ・コロンキーを押した時「、」が入力されるようにする）
+    -->
+  <block>
+    <device_only>
+      DeviceVendor::FUJITSU, DeviceProduct::FKB7628_801,
+      DeviceVendor::FUJITSU, DeviceProduct::FMV_KB232,
+    </device_only>
+    <autogen>--KeyToKey-- KeyCode::JIS_ATMARK, ModifierFlag::NONE, KeyCode::JIS_COLON, KeyCode::VK_NONE</autogen>
+    <autogen>--KeyToKey-- KeyCode::JIS_COLON,  ModifierFlag::NONE, KeyCode::COMMA,     KeyCode::VK_NONE</autogen>
+  </block>
+
   <!-- 左手 中段 -->
   <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::U,             KeyCode::VK_NONE</autogen>
   <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::I, KeyCode::VK_NONE</autogen>
