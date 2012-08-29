@@ -151,6 +151,16 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>FKB7628_801</productname>
+    <productid>0x0020</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>FMV-KB232</productname>
+    <productid>0x00ab</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>SUN_TYPE_6_KEYBOARD</productname>
     <productid>0x0005</productid>
   </deviceproductdef>
