@@ -112,6 +112,7 @@
       <appendix>親指シフト (NICOLA)</appendix>
       <item>
         <name>＜ローマ字モード＞</name>
+        <appendix>（ことえりやATOKなどを「ローマ字入力」に設定してください。）</appendix>
         <item>
           <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝かな</name>
           <identifier>remap.oyayubi_shift_roman_space_kana</identifier>
@@ -219,6 +220,7 @@
       </item>
       <item>
         <name>＜かなモード＞</name>
+        <appendix>（ことえりやかわせみなどを「かな入力」に設定してください。）</appendix>
         <item>
           <name>＜かなモード＞ 左シフト＝スペース, 右シフト＝かな</name>
           <identifier>remap.oyayubi_shift_kana_space_kana</identifier>
@@ -272,6 +274,7 @@
       </item>
       <item>
         <name>＜かなモード for ATOK＞</name>
+        <appendix>（ATOKを「かな入力」に設定してください。）</appendix>
         <item>
           <name>＜かなモード for ATOK＞ 左シフト＝スペース, 右シフト＝かな</name>
           <identifier>remap.oyayubi_shift_kana_atok_space_kana</identifier>
