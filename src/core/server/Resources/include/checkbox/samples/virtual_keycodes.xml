@@ -34,37 +34,56 @@
 
     <item>
       <name>VK_CHANGE_INPUTMODE_*</name>
-      <appendix>Use 1 to VK_CHANGE_INPUTMODE_ENGLISH</appendix>
-      <appendix>Use 2 to VK_CHANGE_INPUTMODE_FRENCH</appendix>
-      <appendix>Use 3 to VK_CHANGE_INPUTMODE_GERMAN</appendix>
-      <appendix>Use 4 to VK_CHANGE_INPUTMODE_JAPANESE</appendix>
-      <appendix>Use 5 to VK_CHANGE_INPUTMODE_SWEDISH</appendix>
-      <appendix>Use 6 to VK_CHANGE_INPUTMODE_CANADIAN</appendix>
-      <appendix>Use 7 to VK_CHANGE_INPUTMODE_RUSSIAN</appendix>
-      <appendix>Use 8 to VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</appendix>
-      <appendix>Use 9 to VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</appendix>
-      <appendix>Use 0 to VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</appendix>
-      <appendix>Use Q to VK_CHANGE_INPUTMODE_ESTONIAN</appendix>
-      <appendix>Use W to VK_CHANGE_INPUTMODE_FINNISH</appendix>
-      <appendix>Use E to VK_CHANGE_INPUTMODE_THAI</appendix>
-      <appendix>Use R to VK_CHANGE_INPUTSOURCE_DVORAK</appendix>
-      <appendix>Use T to VK_CHANGE_INPUTSOURCE_COLEMAK</appendix>
-      <identifier>remap.samples_vk_change_inputmode</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTMODE_GERMAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTMODE_CANADIAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</autogen>
-      <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
-      <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_CHANGE_INPUTMODE_THAI</autogen>
-      <autogen>--KeyToKey-- KeyCode::R,     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
-      <autogen>--KeyToKey-- KeyCode::T,     KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</autogen>
+      <item>
+        <name>Standard</name>
+        <appendix>Use 1 to VK_CHANGE_INPUTMODE_ENGLISH</appendix>
+        <appendix>Use 2 to VK_CHANGE_INPUTMODE_FRENCH</appendix>
+        <appendix>Use 3 to VK_CHANGE_INPUTMODE_GERMAN</appendix>
+        <appendix>Use 4 to VK_CHANGE_INPUTMODE_JAPANESE</appendix>
+        <appendix>Use 5 to VK_CHANGE_INPUTMODE_SWEDISH</appendix>
+        <appendix>Use 6 to VK_CHANGE_INPUTMODE_CANADIAN</appendix>
+        <appendix>Use 7 to VK_CHANGE_INPUTMODE_RUSSIAN</appendix>
+        <appendix>Use 8 to VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</appendix>
+        <appendix>Use 9 to VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</appendix>
+        <appendix>Use 0 to VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</appendix>
+        <appendix>Use Q to VK_CHANGE_INPUTMODE_ESTONIAN</appendix>
+        <appendix>Use W to VK_CHANGE_INPUTMODE_FINNISH</appendix>
+        <appendix>Use E to VK_CHANGE_INPUTMODE_THAI</appendix>
+        <appendix>Use R to VK_CHANGE_INPUTSOURCE_DVORAK</appendix>
+        <appendix>Use T to VK_CHANGE_INPUTSOURCE_COLEMAK</appendix>
+        <identifier>remap.samples_vk_change_inputmode</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTMODE_GERMAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTMODE_CANADIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</autogen>
+        <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_CHANGE_INPUTMODE_THAI</autogen>
+        <autogen>--KeyToKey-- KeyCode::R,     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
+        <autogen>--KeyToKey-- KeyCode::T,     KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</autogen>
+      </item>
+      <item>
+        <name>With VK_WAIT</name>
+        <appendix>Change S to Dvorak:S, Qwerty:S ("os" will be input).</appendix>
+        <identifier>remap.samples_vk_change_inputmode_with_vk_wait</identifier>
+        <autogen>
+          --KeyToKey-- KeyCode::S,
+          KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
+          KeyCode::VK_WAIT_10MS,
+          KeyCode::VK_WAIT_10MS,
+          KeyCode::S,
+          KeyCode::VK_CHANGE_INPUTMODE_ENGLISH,
+          KeyCode::VK_WAIT_10MS,
+          KeyCode::VK_WAIT_10MS,
+          KeyCode::S,
+        </autogen>
+      </item>
     </item>
     <item>
       <name>VK_CONFIG</name>
