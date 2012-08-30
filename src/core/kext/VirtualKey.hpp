@@ -10,6 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void terminate(void);
     void reset(void);
     bool handle(const Params_KeyboardEventCallBack& params);
+    bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 
     bool isKeyLikeModifier(KeyCode keycode);
   };
