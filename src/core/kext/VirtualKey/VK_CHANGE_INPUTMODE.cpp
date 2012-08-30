@@ -8,6 +8,59 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::VK_CHANGE_INPUTMODE::handle(const Params_KeyboardEventCallBack& params)
   {
+    // VK_CHANGE_INPUTMODE uses UserClient which is effective immediately.
+    // Considering KeyCode::VK_WAIT, we should not send notification via UserClient at here.
+    //
+    // For example:
+    // ----------------------------------------
+    //   <autogen>
+    //     --KeyToKey--
+    //     KeyCode::A,
+    //
+    //     KeyCode::VK_CHANGE_INPUTMODE_FRENCH,
+    //     <!-- Waiting Input Source switching. -->
+    //     KeyCode::VK_WAIT_10MS,
+    //     KeyCode::A,
+    //
+    //     KeyCode::VK_CHANGE_INPUTMODE_ENGLISH,
+    //     <!-- Waiting Input Source switching. -->
+    //     KeyCode::VK_WAIT_10MS,
+    //     KeyCode::A,
+    //   </autogen>
+    // ----------------------------------------
+    //
+    // VK_WAIT_10MS modifies wait of EventOutputQueue.
+    // It is not wait at VirtualKey::handle.
+    //
+    // Therefore, if we send notification at here,
+    // the order of sending keys is follows.
+    //
+    // 1. KeyCode::VK_CHANGE_INPUTMODE_FRENCH
+    // 2. KeyCode::VK_CHANGE_INPUTMODE_ENGLISH
+    // 3. <wait 10ms>
+    // 4. KeyCode::A
+    // 5. <wait 10ms>
+    // 6. KeyCode::A
+    //
+    // This order is not intended.
+    // The intended order is follows.
+    //
+    // 1. KeyCode::VK_CHANGE_INPUTMODE_FRENCH
+    // 2. <wait 10ms>
+    // 3. KeyCode::A
+    // 4. KeyCode::VK_CHANGE_INPUTMODE_ENGLISH
+    // 5. <wait 10ms>
+    // 6. KeyCode::A
+    //
+    // In order to achieve this behavior,
+    // we need to send notification at handleAfterEnqueued.
+
+    return false;
+  }
+
+  bool
+  VirtualKey::VK_CHANGE_INPUTMODE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
+  {
     if (params.key == KeyCode::VK_CHANGE_INPUTMODE_ENGLISH ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_FRENCH ||
         params.key == KeyCode::VK_CHANGE_INPUTMODE_GERMAN ||

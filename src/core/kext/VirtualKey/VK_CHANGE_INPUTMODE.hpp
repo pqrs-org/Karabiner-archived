@@ -6,6 +6,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     class VK_CHANGE_INPUTMODE {
     public:
       static bool handle(const Params_KeyboardEventCallBack& params);
+      static bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
     };
   }
 }

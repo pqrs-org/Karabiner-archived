@@ -61,6 +61,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
+  VirtualKey::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
+  {
+    if (VirtualKey::VK_CHANGE_INPUTMODE::handleAfterEnqueued(params)) { return true; }
+    return false;
+  }
+
+  bool
   VirtualKey::isKeyLikeModifier(KeyCode keycode)
   {
     if (VirtualKey::VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;

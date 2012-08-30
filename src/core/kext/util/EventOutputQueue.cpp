@@ -84,7 +84,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
         if (params) {
-          ListHookedKeyboard::instance().apply(*params);
+          bool handled = VirtualKey::handleAfterEnqueued(*params);
+          if (! handled) {
+            ListHookedKeyboard::instance().apply(*params);
+          }
           delay = Config::get_wait_between_sequential_keys();
         }
         break;
