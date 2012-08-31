@@ -44,6 +44,11 @@
         <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
       </item>
       <item>
+        <name>Application Key to Control+Option</name>
+        <identifier>remap.pc_application_to_control_option</identifier>
+        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
+      </item>
+      <item>
         <name>Application Key to Fn</name>
         <identifier>remap.pc_application2fn</identifier>
         <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::FN</autogen>
