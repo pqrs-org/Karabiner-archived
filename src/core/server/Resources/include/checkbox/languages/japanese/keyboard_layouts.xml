@@ -341,6 +341,20 @@
       </item>
       <item><name>------------------------------------------------------------</name></item>
       <item>
+        <name>かなキーとスペースキーの位置を交換する。</name>
+        <appendix>・親指シフトキー、空白キーの位置をFKB7628-801やFMV-KB232と同じ、</appendix>
+        <appendix>「左シフト、右シフト、スペースキー」という順番にします。</appendix>
+        <appendix></appendix>
+        <appendix>・「英数キー」と「かなキー」の機能はシフトキーの2度押しで有効になります。</appendix>
+        <appendix></appendix>
+        <appendix>・親指シフトの設定は、「左シフト＝英数, 右シフト＝スペース」を指定してください。</appendix>
+        <identifier>remap.jis_oyayubi_physical_keyboard</identifier>
+        <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::SPACE,     KeyCode::VK_NONE, KeyCode::JIS_KANA</autogen>
+        <autogen>--DoublePressModifier-- KeyCode::JIS_KANA,  KeyCode::SPACE</autogen>
+      </item>
+      <item><name>------------------------------------------------------------</name></item>
+      <item>
         <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
         <identifier>remap.jis_eisuu2extra5_x2eisuu</identifier>
         <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
