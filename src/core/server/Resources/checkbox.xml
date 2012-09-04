@@ -73,6 +73,7 @@
   <include path="include/checkbox/keyboard_layouts.xml" />
   <include path="include/checkbox/for_pc_users.xml" />
   <include path="include/checkbox/for_dvorak_users.xml" />
+  <include path="include/checkbox/for_blind_users.xml" />
 
   <include path="include/checkbox/device_specific.xml" />
 

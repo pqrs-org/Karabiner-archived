@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Blind Users</name>
+    <item>
+      <name>Use Caps Lock as Voice Over key.</name>
+      <appendix>Important: Please change the key code of Caps Lock to 110 on PCKeyboardHack Prefs,</appendix>
+      <appendix>when you use this setting.</appendix>
+      <appendix></appendix>
+      <appendix>This setting changes Caps Lock to Control+Option.</appendix>
+      <appendix>On Virtual Machine, Caps Lock becomes Help key.</appendix>
+      <identifier>remap.blind_application_key_to_control_option</identifier>
+      <block>
+        <only>VIRTUALMACHINE,REMOTEDESKTOPCONNECTION</only>
+        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::HELP</autogen>
+      </block>
+      <block>
+        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
+      </block>
+    </item>
+  </item>
+</root>
