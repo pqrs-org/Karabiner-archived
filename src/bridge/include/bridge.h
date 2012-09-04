@@ -115,6 +115,8 @@ enum {
 
   BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE,
   BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA,
+
+  BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION,
 };
 
 enum {
@@ -135,6 +137,13 @@ enum {
   BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN = 128,
 };
 
+enum {
+  BRIDGE_USERCLIENT_DEVICE_INFORMATION_NONE,
+  BRIDGE_USERCLIENT_DEVICE_INFORMATION_KEYBOARD,
+  BRIDGE_USERCLIENT_DEVICE_INFORMATION_CONSUMER,
+  BRIDGE_USERCLIENT_DEVICE_INFORMATION_POINTING,
+};
+
 // 64bit alignment.
 struct BridgeUserClientStruct {
   uint32_t type;
@@ -152,6 +161,14 @@ struct BridgeWorkSpaceData {
   uint32_t inputmodedetail;
 };
 enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 12) };
+
+struct BridgeDeviceInformation {
+  char name[128];
+  uint32_t vendorID;
+  uint32_t productID;
+  uint32_t locationID;
+};
+enum { STATIC_ASSERT__sizeof_BridgeDeviceInformation = 1 / (sizeof(struct BridgeDeviceInformation) == 128 + 12) };
 
 // remapclasses_initialize_vector format:
 //
