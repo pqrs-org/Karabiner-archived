@@ -44,6 +44,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedDevice::Item* get(const IOHIDevice* device);
     ListHookedDevice::Item* get_replaced(void);
 
+    void getDeviceInformation(BridgeDeviceInformation& out, size_t index);
+
   protected:
     ListHookedDevice(void) : last_(NULL), list_(NULL) {}
     virtual ~ListHookedDevice(void) {}
