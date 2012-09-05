@@ -3,6 +3,9 @@
 #include "Config.hpp"
 #include "RemapClass.hpp"
 #include "util/GlobalLock.hpp"
+#include "util/ListHookedKeyboard.hpp"
+#include "util/ListHookedConsumer.hpp"
+#include "util/ListHookedPointing.hpp"
 
 #define super IOUserClient
 
@@ -396,6 +399,33 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
+      break;
+    }
+
+    case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:
+    case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER:
+    case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING:
+    {
+      if (size != sizeof(BridgeDeviceInformation)) {
+        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_* wrong 'size' parameter\n");
+      } else {
+        BridgeDeviceInformation* p = reinterpret_cast<BridgeDeviceInformation*>(address);
+        if (p) {
+          switch (type) {
+            case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:
+              org_pqrs_KeyRemap4MacBook::ListHookedKeyboard::instance().getDeviceInformation(*p, option);
+              break;
+            case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER:
+              org_pqrs_KeyRemap4MacBook::ListHookedConsumer::instance().getDeviceInformation(*p, option);
+              break;
+            case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING:
+              org_pqrs_KeyRemap4MacBook::ListHookedPointing::instance().getDeviceInformation(*p, option);
+              break;
+          }
+          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+        }
+      }
+
       break;
     }
   }

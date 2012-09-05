@@ -257,4 +257,35 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
   }
+
+  void
+  ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) {
+    out.name[0] = '\0';
+    out.vendorID = 0;
+    out.productID = 0;
+    out.locationID = 0;
+
+    if (! list_) return;
+
+    Item* p = static_cast<Item*>(list_->front());
+
+    while (index > 0) {
+      if (! p) return;
+      p = static_cast<Item*>(p->getnext());
+      --index;
+    }
+
+    if (! p) return;
+
+    if (p->device_) {
+      const OSString* productname = OSDynamicCast(OSString, p->device_->getProperty(kIOHIDProductKey));
+      if (productname) {
+        const char* pname = productname->getCStringNoCopy();
+        strlcpy(out.name, pname, sizeof(out.name));
+      }
+    }
+    out.vendorID   = (p->deviceIdentifier_).getVendor().get();
+    out.productID  = (p->deviceIdentifier_).getProduct().get();
+    out.locationID = (p->deviceIdentifier_).getLocation().get();
+  }
 }
