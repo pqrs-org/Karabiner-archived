@@ -2,7 +2,9 @@
 #import "XMLCompiler.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
+#import "UserClient_userspace.h"
 #include <sys/time.h>
+#include "bridge.h"
 
 static PreferencesManager* global_instance = nil;
 
@@ -464,6 +466,42 @@ static PreferencesManager* global_instance = nil;
 - (NSString*) preferencepane_version
 {
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (NSArray*) device_information
+{
+  NSMutableArray* information = [[NSMutableArray new] autorelease];
+
+  int types[] = {
+    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD,
+    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER,
+    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING,
+  };
+  for (size_t typeindex = 0; typeindex < sizeof(types) / sizeof(types[0]); ++typeindex) {
+    for (size_t i = 0;; ++i) {
+      struct BridgeDeviceInformation deviceInformation;
+
+      struct BridgeUserClientStruct bridgestruct;
+      bridgestruct.type   = types[typeindex];
+      bridgestruct.option = i;
+      bridgestruct.data   = (uintptr_t)(&deviceInformation);
+      bridgestruct.size   = sizeof(deviceInformation);
+
+      if (! [UserClient_userspace synchronized_communication:&bridgestruct]) break;
+
+      if (! deviceInformation.isFound) break;
+
+      NSDictionary* d = [NSDictionary dictionaryWithObjectsAndKeys:
+                         [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
+                         [NSString stringWithUTF8String:deviceInformation.product], @"product",
+                         [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
+                         [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
+                         [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
+                         nil];
+      [information addObject:d];
+    }
+  }
+  return information;
 }
 
 @end

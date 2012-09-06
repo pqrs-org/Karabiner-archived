@@ -40,6 +40,8 @@
 - (NSString*) preferencepane_get_private_xml_path;
 - (NSString*) preferencepane_version;
 
+- (NSArray*) device_information;
+
 @end
 
 @interface org_pqrs_KeyRemap4MacBook_Client : NSObject {
