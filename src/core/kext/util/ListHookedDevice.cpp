@@ -260,7 +260,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) {
-    out.name[0] = '\0';
+    out.isFound = 0;
+    out.manufacturer[0] = '\0';
+    out.product[0] = '\0';
     out.vendorID = 0;
     out.productID = 0;
     out.locationID = 0;
@@ -278,14 +280,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! p) return;
 
     if (p->device_) {
-      const OSString* productname = OSDynamicCast(OSString, p->device_->getProperty(kIOHIDProductKey));
-      if (productname) {
-        const char* pname = productname->getCStringNoCopy();
-        strlcpy(out.name, pname, sizeof(out.name));
+      const OSString* manufacturer = OSDynamicCast(OSString, p->device_->getProperty(kIOHIDManufacturerKey));
+      if (manufacturer) {
+        const char* cstr = manufacturer->getCStringNoCopy();
+        if (cstr) {
+          strlcpy(out.manufacturer, cstr, sizeof(out.manufacturer));
+        }
+      }
+
+      const OSString* product = OSDynamicCast(OSString, p->device_->getProperty(kIOHIDProductKey));
+      if (product) {
+        const char* cstr = product->getCStringNoCopy();
+        if (cstr) {
+          strlcpy(out.product, cstr, sizeof(out.product));
+        }
       }
     }
     out.vendorID   = (p->deviceIdentifier_).getVendor().get();
     out.productID  = (p->deviceIdentifier_).getProduct().get();
     out.locationID = (p->deviceIdentifier_).getLocation().get();
+    out.isFound = 1;
   }
 }
