@@ -280,6 +280,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! p) return;
 
     if (p->device_) {
+      const char* className = p->device_->getName();
+      if (className) {
+        strlcpy(out.className, className, sizeof(out.className));
+      }
+
       const OSString* manufacturer = OSDynamicCast(OSString, p->device_->getProperty(kIOHIDManufacturerKey));
       if (manufacturer) {
         const char* cstr = manufacturer->getCStringNoCopy();
