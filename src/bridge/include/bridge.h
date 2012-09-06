@@ -158,12 +158,14 @@ struct BridgeWorkSpaceData {
 enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 12) };
 
 struct BridgeDeviceInformation {
-  char name[128];
+  uint32_t isFound;
+  char manufacturer[128];
+  char product[128];
   uint32_t vendorID;
   uint32_t productID;
   uint32_t locationID;
 };
-enum { STATIC_ASSERT__sizeof_BridgeDeviceInformation = 1 / (sizeof(struct BridgeDeviceInformation) == 128 + 12) };
+enum { STATIC_ASSERT__sizeof_BridgeDeviceInformation = 1 / (sizeof(struct BridgeDeviceInformation) == 4 + 128 + 128 + 12) };
 
 // remapclasses_initialize_vector format:
 //
