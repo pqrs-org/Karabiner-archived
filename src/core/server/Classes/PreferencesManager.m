@@ -491,14 +491,25 @@ static PreferencesManager* global_instance = nil;
 
       if (! deviceInformation.isFound) break;
 
-      NSDictionary* d = [NSDictionary dictionaryWithObjectsAndKeys:
-                         [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
-                         [NSString stringWithUTF8String:deviceInformation.product], @"product",
-                         [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
-                         [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
-                         [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
-                         nil];
-      [information addObject:d];
+      NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSString stringWithUTF8String:deviceInformation.className], @"className",
+                               [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
+                               [NSString stringWithUTF8String:deviceInformation.product], @"product",
+                               [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
+                               [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
+                               [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
+                               nil];
+
+      // skip if newdict is already exists.
+      BOOL found = NO;
+      for (NSDictionary* d in information) {
+        if ([newdict isEqualToDictionary:d]) {
+          found = YES;
+        }
+      }
+      if (! found) {
+        [information addObject:newdict];
+      }
     }
   }
   return information;
