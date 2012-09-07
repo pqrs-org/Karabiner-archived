@@ -21,7 +21,6 @@
 - (void) setApplicationName:(NSString*)name;
 - (void) setInputSourceName:(NSString*)name;
 - (void) setInputModeName:(NSString*)name;
-- (void) setDeviceInformation;
 
 - (IBAction) copy:(id)sender;
 

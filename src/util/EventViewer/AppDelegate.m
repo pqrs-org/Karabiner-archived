@@ -49,7 +49,6 @@
   [otherinformationstore_ setApplicationName:nil];
   [otherinformationstore_ setInputSourceName:nil];
   [otherinformationstore_ setInputModeName:nil];
-  [otherinformationstore_ setDeviceInformation];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
                                                                 selector:@selector(distributedObserver_applicationChanged:)
@@ -75,6 +74,8 @@
 {
   if ([[tabViewItem identifier] isEqualToString:@"Main"]) {
     [self setKeyResponder];
+  } else if ([[tabViewItem identifier] isEqualToString:@"Devices"]) {
+    [devices_ refresh:nil];
   }
 }
 

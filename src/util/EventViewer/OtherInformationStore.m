@@ -1,7 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "OtherInformationStore.h"
-#include "bridge.h"
 
 @implementation OtherInformationStore
 
@@ -56,27 +55,6 @@
 
   inputmodename_ = name;
   [label_inputmodename_ setStringValue:name];
-}
-
-- (void) setDeviceInformation
-{
-  NSInteger types[] = {
-    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD,
-    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER,
-    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING,
-  };
-  for (size_t i = 0; i < sizeof(types) / sizeof(types[0]); ++i) {
-    NSArray* information = [[client_ proxy] device_information:types[i]];
-    for (NSDictionary* d in information) {
-      NSLog(@"%@ %@ %@ %@ %@",
-            [d objectForKey:@"manufacturer"],
-            [d objectForKey:@"product"],
-            [d objectForKey:@"vendorID"],
-            [d objectForKey:@"productID"],
-            [d objectForKey:@"locationID"]);
-
-    }
-  }
 }
 
 @end
