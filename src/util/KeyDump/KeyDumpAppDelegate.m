@@ -47,6 +47,7 @@
   [otherinformationstore_ setApplicationName:nil];
   [otherinformationstore_ setInputSourceName:nil];
   [otherinformationstore_ setInputModeName:nil];
+  [otherinformationstore_ setDeviceInformation];
 
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
                                                                 selector:@selector(distributedObserver_applicationChanged:)
