@@ -6,6 +6,7 @@
 #include "util/ListHookedKeyboard.hpp"
 #include "util/ListHookedConsumer.hpp"
 #include "util/ListHookedPointing.hpp"
+#include "strlcpy_utf8.hpp"
 
 #define super IOUserClient
 
@@ -382,7 +383,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       char* p = reinterpret_cast<char*>(address);
 
       if (statusmessage && p) {
-        strlcpy(p, statusmessage, static_cast<size_t>(size));
+        pqrs::strlcpy_utf8::strlcpy(p, statusmessage, static_cast<size_t>(size));
         *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
       break;

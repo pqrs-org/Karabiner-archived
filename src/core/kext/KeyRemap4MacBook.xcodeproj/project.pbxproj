@@ -40,6 +40,7 @@
 		3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */; };
 		344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */; };
 		344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */; };
+		344CF51715F9A2EA00966FB9 /* strlcpy_utf8.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 344CF51615F9A2EA00966FB9 /* strlcpy_utf8.hpp */; };
 		345004AD0E7CE48F0075324B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004A80E7CE48F0075324B /* Core.cpp */; };
 		345004AE0E7CE48F0075324B /* Core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004A90E7CE48F0075324B /* Core.hpp */; };
 		345004AF0E7CE48F0075324B /* Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345004AA0E7CE48F0075324B /* Driver.cpp */; };
@@ -184,6 +185,7 @@
 		3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DoublePressModifier.hpp; path = RemapFunc/DoublePressModifier.hpp; sourceTree = "<group>"; };
 		344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropPointingRelativeCursorMove.cpp; path = RemapFunc/DropPointingRelativeCursorMove.cpp; sourceTree = "<group>"; };
 		344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropPointingRelativeCursorMove.hpp; path = RemapFunc/DropPointingRelativeCursorMove.hpp; sourceTree = "<group>"; };
+		344CF51615F9A2EA00966FB9 /* strlcpy_utf8.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = strlcpy_utf8.hpp; path = ../../lib/strlcpy_utf8/strlcpy_utf8.hpp; sourceTree = "<group>"; };
 		345004A80E7CE48F0075324B /* Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		345004A90E7CE48F0075324B /* Core.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
 		345004AA0E7CE48F0075324B /* Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Driver.cpp; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 		247142CAFF3F8F9811CA285C /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				344CF51615F9A2EA00966FB9 /* strlcpy_utf8.hpp */,
 				34B464CC13A6513700470265 /* VirtualKey */,
 				349E3C9713371CD700E7A81C /* UserClient_kext.cpp */,
 				349E3C9813371CD700E7A81C /* UserClient_kext.hpp */,
@@ -597,6 +600,7 @@
 				34FFF079149867D800A1348A /* ScrollWheelToScrollWheel.hpp in Headers */,
 				34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */,
 				3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */,
+				344CF51715F9A2EA00966FB9 /* strlcpy_utf8.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
