@@ -76,11 +76,6 @@
             [d objectForKey:@"locationID"]);
 
     }
-
-    char string[] = {
-      0xe3, 0x81, 0xb5, 0xe3, 0x81, 0x8c, 0xe3, 0x81, 0xb5, // 0xe3, 0x81, 0x8c, 0x0a
-    };
-    NSLog(@"%@", [NSString stringWithUTF8String:string]);
   }
 }
 
