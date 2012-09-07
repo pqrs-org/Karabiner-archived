@@ -93,7 +93,7 @@
 
 - (IBAction) launchEventViewer:(id)sender
 {
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyDump.app"];
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/EventViewer.app"];
 }
 
 - (IBAction) checkForUpdates:(id)sender

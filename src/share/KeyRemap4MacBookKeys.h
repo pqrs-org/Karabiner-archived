@@ -8,7 +8,7 @@
 #define kKeyRemap4MacBookConfigXMLReloadedNotification  @"configXMLReloaded"
 #define kKeyRemap4MacBookCheckForUpdatesNotification    @"checkForUpdates"
 
-// for KeyDump.app
+// for EventViewer.app
 #define kKeyRemap4MacBookApplicationChangedNotification @"applicationChanged"
 #define kKeyRemap4MacBookInputSourceChangedNotification @"inputSourceChanged"
 

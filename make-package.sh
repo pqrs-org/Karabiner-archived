@@ -36,7 +36,7 @@ cp -R "src/bin/dump_xml_compiler_result/build/Release/dump_xml_compiler_result" 
 
 mkdir -p                                                                                    "pkgroot/$basedir/app"
 cp -R "src/core/server/build/Release/KeyRemap4MacBook.app"                                  "pkgroot/$basedir/app"
-cp -R "src/util/KeyDump/build/Release/KeyDump.app"                                          "pkgroot/$basedir/app"
+cp -R "src/util/EventViewer/build/Release/EventViewer.app"                                  "pkgroot/$basedir/app"
 cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
 cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app"                                 "pkgroot/$basedir/app"
 cp -R "src/util/uninstaller/automator/KeyRemap4MacBookUninstaller.app"                      "pkgroot/$basedir/app"

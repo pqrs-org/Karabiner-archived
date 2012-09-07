@@ -219,7 +219,7 @@ static NSMutableArray* enabledInputSources_ = nil;
 {
   if (! name || ! output_inputmode || ! output_inputmodedetail) return;
 
-  // get data from KeyDump.app
+  // get data from EventViewer.app
   XMLCompiler* xml_compiler = [XMLCompiler getInstance];
 
   if ([name isEqualToString:@"com.apple.inputmethod.Japanese.Hiragana"]) {
