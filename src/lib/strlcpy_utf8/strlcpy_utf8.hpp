@@ -7,6 +7,10 @@ namespace pqrs {
     static void
     strlcpy(char* dst, const char* src, size_t size)
     {
+      if (dst == NULL) return;
+      if (src == NULL) return;
+      if (size == 0) return;
+
       ::strlcpy(dst, src, size);
 
       size_t len = strlen(dst);
