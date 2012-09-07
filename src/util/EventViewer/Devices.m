@@ -50,6 +50,23 @@
 }
 
 - (IBAction) copy:(id)sender
-{}
+{
+  NSPasteboard* pboard = [NSPasteboard generalPasteboard];
+  NSMutableString* string = [[NSMutableString new] autorelease];
+
+  for (NSDictionary* d in devices_) {
+    [string appendFormat:@"Vendor ID:%@\tProduct ID:%@\tManufacturer:%@\tDevice Name:%@\tLocation ID:%@\n",
+     [d objectForKey:@"vendorID"],
+     [d objectForKey:@"productID"],
+     [d objectForKey:@"manufacturer"],
+     [d objectForKey:@"product"],
+     [d objectForKey:@"locationID"]];
+  }
+
+  if ([string length] > 0) {
+    [pboard clearContents];
+    [pboard writeObjects:[NSArray arrayWithObject:string]];
+  }
+}
 
 @end
