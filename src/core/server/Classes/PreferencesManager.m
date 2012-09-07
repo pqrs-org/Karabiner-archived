@@ -4,7 +4,6 @@
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "UserClient_userspace.h"
 #include <sys/time.h>
-#include "bridge.h"
 
 static PreferencesManager* global_instance = nil;
 
@@ -468,50 +467,43 @@ static PreferencesManager* global_instance = nil;
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
-- (NSArray*) device_information
+- (NSArray*) device_information:(NSInteger)type
 {
   NSMutableArray* information = [[NSMutableArray new] autorelease];
 
-  int types[] = {
-    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD,
-    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER,
-    BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING,
-  };
-  for (size_t typeindex = 0; typeindex < sizeof(types) / sizeof(types[0]); ++typeindex) {
-    for (size_t i = 0;; ++i) {
-      struct BridgeDeviceInformation deviceInformation;
+  for (size_t i = 0;; ++i) {
+    struct BridgeDeviceInformation deviceInformation;
 
-      struct BridgeUserClientStruct bridgestruct;
-      bridgestruct.type   = types[typeindex];
-      bridgestruct.option = i;
-      bridgestruct.data   = (uintptr_t)(&deviceInformation);
-      bridgestruct.size   = sizeof(deviceInformation);
+    struct BridgeUserClientStruct bridgestruct;
+    bridgestruct.type   = (uint32_t)(type);
+    bridgestruct.option = i;
+    bridgestruct.data   = (uintptr_t)(&deviceInformation);
+    bridgestruct.size   = sizeof(deviceInformation);
 
-      if (! [UserClient_userspace synchronized_communication:&bridgestruct]) break;
+    if (! [UserClient_userspace synchronized_communication:&bridgestruct]) break;
 
-      if (! deviceInformation.isFound) break;
+    if (! deviceInformation.isFound) break;
 
-      NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSString stringWithUTF8String:deviceInformation.className], @"className",
-                               [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
-                               [NSString stringWithUTF8String:deviceInformation.product], @"product",
-                               [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
-                               [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
-                               [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
-                               nil];
+    NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
+                             [NSString stringWithUTF8String:deviceInformation.product], @"product",
+                             [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
+                             [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
+                             [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
+                             nil];
 
-      // skip if newdict is already exists.
-      BOOL found = NO;
-      for (NSDictionary* d in information) {
-        if ([newdict isEqualToDictionary:d]) {
-          found = YES;
-        }
-      }
-      if (! found) {
-        [information addObject:newdict];
+    // skip if newdict is already exists.
+    BOOL found = NO;
+    for (NSDictionary* d in information) {
+      if ([newdict isEqualToDictionary:d]) {
+        found = YES;
       }
     }
+    if (! found) {
+      [information addObject:newdict];
+    }
   }
+
   return information;
 }
 
