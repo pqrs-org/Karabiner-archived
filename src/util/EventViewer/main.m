@@ -1,9 +1,6 @@
 //
 //  main.m
-//  KeyDump
-//
-//  Created by Takayama Fumihiko on 09/10/25.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  EventViewer
 //
 
 #import <Cocoa/Cocoa.h>

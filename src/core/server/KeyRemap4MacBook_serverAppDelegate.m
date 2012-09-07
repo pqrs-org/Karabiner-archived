@@ -40,7 +40,7 @@
   NSString* name = [WorkSpaceData getActiveApplicationName];
   if (name) {
     // We ignore our investigation application.
-    if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.KeyDump"]) {
+    if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) {
       bridgeworkspacedata_.applicationtype = [WorkSpaceData getApplicationType:name];
       [self send_workspacedata_to_kext];
 
