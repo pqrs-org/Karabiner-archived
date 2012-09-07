@@ -1,6 +1,7 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "Devices.h"
+#include "bridge.h"
 
 @implementation Devices
 
@@ -9,11 +10,7 @@
   self = [super init];
 
   if (self) {
-    devices_ = [[NSDictionary alloc] initWithObjectsAndKeys:
-                [[NSMutableArray new] autorelease], @"keyboard",
-                [[NSMutableArray new] autorelease], @"consumer",
-                [[NSMutableArray new] autorelease], @"pointing",
-                nil];
+    devices_ = [NSArray new];
   }
 
   return self;
@@ -26,30 +23,29 @@
   [super dealloc];
 }
 
-- (NSArray*) getDevicesFromSegmentedControl
-{
-  NSString* key = @"keyboard";
-  switch ([segment_ selectedSegment]) {
-    case 1: key = @"consumer"; break;
-    case 2: key = @"pointing"; break;
-  }
-  return [devices_ objectForKey:key];
-}
-
 - (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView
 {
-  return [[self getDevicesFromSegmentedControl] count];
+  return [devices_ count];
 }
 
 - (id) tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex
 {
-  NSDictionary* dict = [[self getDevicesFromSegmentedControl] objectAtIndex:rowIndex];
+  NSDictionary* dict = [devices_ objectAtIndex:rowIndex];
   return [dict objectForKey:[aTableColumn identifier]];
 }
 
 - (IBAction) refresh:(id)sender
 {
-  NSLog(@"refresh");
+  NSInteger type = BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD;
+
+  switch ([segment_ selectedSegment]) {
+    case 1: type = BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER; break;
+    case 2: type = BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING; break;
+  }
+
+  [devices_ release];
+  devices_ = [[[client_ proxy] device_information:type] retain];
+
   [view_ reloadData];
 }
 

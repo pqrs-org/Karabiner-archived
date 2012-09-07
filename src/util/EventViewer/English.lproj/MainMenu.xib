@@ -1199,6 +1199,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">devices_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="645198334"/>
+					</object>
+					<int key="connectionID">810</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">eventqueue_</string>
 						<reference key="source" ref="71996852"/>
 						<reference key="destination" ref="957826969"/>
@@ -1348,6 +1356,14 @@
 						<reference key="destination" ref="934536098"/>
 					</object>
 					<int key="connectionID">793</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">client_</string>
+						<reference key="source" ref="645198334"/>
+						<reference key="destination" ref="330518459"/>
+					</object>
+					<int key="connectionID">809</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2184,7 +2200,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">808</int>
+			<int key="maxID">810</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2196,12 +2212,14 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>devices_</string>
 							<string>keyResponder_</string>
 							<string>otherinformationstore_</string>
 							<string>window</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>Devices</string>
 							<string>id</string>
 							<string>OtherInformationStore</string>
 							<string>NSWindow</string>
@@ -2211,12 +2229,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>devices_</string>
 							<string>keyResponder_</string>
 							<string>otherinformationstore_</string>
 							<string>window</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">devices_</string>
+								<string key="candidateClassName">Devices</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">keyResponder_</string>
 								<string key="candidateClassName">id</string>
@@ -2275,12 +2298,14 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>client_</string>
 							<string>segment_</string>
 							<string>view_</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
+							<string>org_pqrs_KeyRemap4MacBook_Client</string>
+							<string>NSSegmentedControl</string>
 							<string>id</string>
 						</object>
 					</object>
@@ -2288,14 +2313,19 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>client_</string>
 							<string>segment_</string>
 							<string>view_</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
+								<string key="name">client_</string>
+								<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">segment_</string>
-								<string key="candidateClassName">id</string>
+								<string key="candidateClassName">NSSegmentedControl</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">view_</string>
