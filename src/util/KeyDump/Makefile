@@ -19,4 +19,4 @@ xcode:
 	open *.xcodeproj
 
 run: all
-	./build/Release/KeyDump.app/Contents/MacOS/KeyDump
+	./build/Release/EventViewer.app/Contents/MacOS/EventViewer
