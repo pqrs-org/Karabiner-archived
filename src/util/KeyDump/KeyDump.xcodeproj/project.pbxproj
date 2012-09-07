@@ -33,6 +33,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3404DAC115F98D9A00275F34 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = "<group>"; };
 		340B191A11237DAB00E2EF02 /* OtherInformationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInformationStore.h; sourceTree = "<group>"; };
 		340B191B11237DAB00E2EF02 /* OtherInformationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInformationStore.m; sourceTree = "<group>"; };
 		34412BCD10946AEF00F66D0F /* KeyDump.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = KeyDump.icns; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3404DAC115F98D9A00275F34 /* bridge.h */,
 				256AC3F00F4B6AF500CF3369 /* KeyDump_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
