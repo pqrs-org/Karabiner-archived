@@ -14,6 +14,11 @@
 
 @synthesize window;
 
+- (void) setKeyResponder
+{
+  [window makeFirstResponder:keyResponder_];
+}
+
 // ------------------------------------------------------------
 - (void) distributedObserver_applicationChanged:(NSNotification*)notification
 {
@@ -41,7 +46,7 @@
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
-  [window makeFirstResponder:keyResponder_];
+  [self setKeyResponder];
 
   [otherinformationstore_ setVersion];
   [otherinformationstore_ setApplicationName:nil];
@@ -67,6 +72,13 @@
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
 
   [super dealloc];
+}
+
+- (void) tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem
+{
+  if ([[tabViewItem identifier] isEqualToString:@"Main"]) {
+    [self setKeyResponder];
+  }
 }
 
 @end
