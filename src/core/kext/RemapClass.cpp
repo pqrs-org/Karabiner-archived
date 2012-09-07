@@ -4,6 +4,7 @@
 #include "VirtualKey/VK_CONFIG.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
+#include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::Item(const uint32_t* vec, size_t length)
@@ -674,7 +675,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       if (strcmp(statusmessage_, lastmessage_) != 0) {
-        strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
+        pqrs::strlcpy_utf8::strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
 
         int index = BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA;
         CommonData::clear_statusmessage(index);

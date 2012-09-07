@@ -2,6 +2,7 @@
 #include "Config.hpp"
 #include "ListHookedDevice.hpp"
 #include "NumHeldDownKeys.hpp"
+#include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
@@ -284,7 +285,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (manufacturer) {
         const char* cstr = manufacturer->getCStringNoCopy();
         if (cstr) {
-          strlcpy(out.manufacturer, cstr, sizeof(out.manufacturer));
+          pqrs::strlcpy_utf8::strlcpy(out.manufacturer, cstr, sizeof(out.manufacturer));
         }
       }
 
@@ -292,7 +293,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (product) {
         const char* cstr = product->getCStringNoCopy();
         if (cstr) {
-          strlcpy(out.product, cstr, sizeof(out.product));
+          pqrs::strlcpy_utf8::strlcpy(out.product, cstr, sizeof(out.product));
         }
       }
     }
