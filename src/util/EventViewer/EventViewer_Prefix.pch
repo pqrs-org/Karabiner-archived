@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'KeyDump' target in the 'KeyDump' project
+// Prefix header for all source files of the 'EventViewer' target in the 'EventViewer' project
 //
 
 #ifdef __OBJC__
