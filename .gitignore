@@ -16,7 +16,7 @@ src/core/server/Resources/symbol_map.xml
 pkginfo/Info.plist
 src/core/kext/Info.plist
 src/core/server/Info.plist
-src/util/KeyDump/Info.plist
+src/util/EventViewer/Info.plist
 src/util/cli/Info.plist
 src/util/multitouchextension/Info.plist
 src/util/prefpane/Info.plist
