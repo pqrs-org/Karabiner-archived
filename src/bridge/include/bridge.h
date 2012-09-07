@@ -34,8 +34,9 @@ enum {
   // Version 26: Added parameter.wait_between_sequential_keys.
   // Version 27: Added Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
   // Version 28: Added DeviceLocation
+  // Version 29: Added BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_*
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 28,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 29,
 };
 
 enum {
