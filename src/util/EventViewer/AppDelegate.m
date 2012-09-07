@@ -1,16 +1,13 @@
 //
-//  KeyDumpAppDelegate.m
-//  KeyDump
-//
-//  Created by Takayama Fumihiko on 09/10/25.
+//  AppDelegate.m
 //
 
-#import "KeyDumpAppDelegate.h"
+#import "AppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import <Carbon/Carbon.h>
 
-@implementation KeyDumpAppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 
