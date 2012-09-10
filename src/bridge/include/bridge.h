@@ -92,6 +92,7 @@ enum {
 
   BRIDGE_STATUSMESSAGE,
   BRIDGE_VK_CONFIG,
+  BRIDGE_VK_CHANGE_INPUTSOURCE,
 };
 
 // ------------------------------------------------------------
