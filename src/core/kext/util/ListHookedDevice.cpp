@@ -272,10 +272,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Item* p = static_cast<Item*>(list_->front());
 
-    while (index > 0) {
+    for (;;) {
       if (! p) return;
+
+      if (p->isReplaced()) {
+        if (index == 0) {
+          break;
+        } else {
+          --index;
+        }
+      }
+
       p = static_cast<Item*>(p->getnext());
-      --index;
     }
 
     if (! p) return;
