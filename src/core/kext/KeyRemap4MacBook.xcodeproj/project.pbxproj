@@ -21,6 +21,8 @@
 		340800D813BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340800D613BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp */; };
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
+		342B5B2515FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342B5B2315FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.cpp */; };
+		342B5B2615FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342B5B2415FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.hpp */; };
 		342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */; };
 		342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342C80521261B379007F15DA /* DeviceFilter.cpp */; };
 		342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342C80531261B379007F15DA /* DeviceFilter.hpp */; };
@@ -166,6 +168,8 @@
 		340800D613BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DependingPressingPeriodKeyToKey.hpp; path = RemapFunc/common/DependingPressingPeriodKeyToKey.hpp; sourceTree = "<group>"; };
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
+		342B5B2315FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_CHANGE_INPUTSOURCE.cpp; path = VirtualKey/VK_CHANGE_INPUTSOURCE.cpp; sourceTree = "<group>"; };
+		342B5B2415FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_CHANGE_INPUTSOURCE.hpp; path = VirtualKey/VK_CHANGE_INPUTSOURCE.hpp; sourceTree = "<group>"; };
 		342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncClasses.hpp; path = RemapFunc/common/RemapFuncClasses.hpp; sourceTree = "<group>"; };
 		342C80521261B379007F15DA /* DeviceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceFilter.cpp; path = RemapFilter/DeviceFilter.cpp; sourceTree = "<group>"; };
 		342C80531261B379007F15DA /* DeviceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceFilter.hpp; path = RemapFilter/DeviceFilter.hpp; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 		34B464CC13A6513700470265 /* VirtualKey */ = {
 			isa = PBXGroup;
 			children = (
+				342B5B2315FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.cpp */,
+				342B5B2415FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.hpp */,
 				34B464E513A6563B00470265 /* VK_CONFIG.cpp */,
 				34B464E613A6563B00470265 /* VK_CONFIG.hpp */,
 				34B464E113A654E600470265 /* VK_CHANGE_INPUTMODE.cpp */,
@@ -601,6 +607,7 @@
 				34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */,
 				3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */,
 				344CF51715F9A2EA00966FB9 /* strlcpy_utf8.hpp in Headers */,
+				342B5B2615FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +752,7 @@
 				34FFF078149867D800A1348A /* ScrollWheelToScrollWheel.cpp in Sources */,
 				34379D4614B7794B0004B0F4 /* ScrollWheelToKey.cpp in Sources */,
 				3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */,
+				342B5B2515FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
