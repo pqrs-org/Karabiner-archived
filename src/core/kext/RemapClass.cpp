@@ -2,6 +2,7 @@
 #include "RemapClass.hpp"
 #include "KeyboardRepeat.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
+#include "VirtualKey/VK_CHANGE_INPUTSOURCE.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
 #include "strlcpy_utf8.hpp"
@@ -469,6 +470,16 @@ namespace org_pqrs_KeyRemap4MacBook {
                                             keycode_force_on,
                                             keycode_force_off,
                                             keycode_sync_keydownup);
+          }
+
+        } else if (type == BRIDGE_VK_CHANGE_INPUTSOURCE) {
+          if (size != 2) {
+            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_CHANGE_INPUTSOURCE. (%d)\n", size);
+            return;
+
+          } else {
+            unsigned int keycode = p[1];
+            VirtualKey::VK_CHANGE_INPUTSOURCE::add_item(this, keycode);
           }
 
         } else {
