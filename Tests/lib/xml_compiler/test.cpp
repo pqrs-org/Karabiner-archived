@@ -31,13 +31,18 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
   EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map_value("KeyCode::SPACE_IS_IGNORED"));
 
-  EXPECT_EQ(boost::optional<uint32_t>(1191),
+  uint32_t vk_change_inputsource_base = 1191;
+  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base++),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE"));
+
+  uint32_t vk_config_base = vk_change_inputsource_base;
+  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));
-  EXPECT_EQ(boost::optional<uint32_t>(1192),
+  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_FORCE_ON_notsave_passthrough"));
-  EXPECT_EQ(boost::optional<uint32_t>(1193),
+  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_FORCE_OFF_notsave_passthrough"));
-  EXPECT_EQ(boost::optional<uint32_t>(1194),
+  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_passthrough"));
 
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
