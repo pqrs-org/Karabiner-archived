@@ -383,4 +383,9 @@
     <appname>BLUEFISH</appname>
     <equal>nl.openoffice.bluefish</equal>
   </appdef>
+
+  <appdef>
+    <appname>REEDER</appname>
+    <equal>com.reederapp.mac</equal>
+  </appdef>
 </root>
