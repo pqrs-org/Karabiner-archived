@@ -7,6 +7,16 @@
     <bcp47>ja</bcp47>
   </vkchangeinputsourcedef>
 
+  <vkchangeinputsourcedef>
+    <name>VK_CHANGE_INPUTSOURCE_DVORAK</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>VK_CHANGE_INPUTSOURCE_SWISS</name>
+    <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
+  </vkchangeinputsourcedef>
+
   <!-- ============================================================ -->
   <!-- kTISPropertyInputSourceID -->
 

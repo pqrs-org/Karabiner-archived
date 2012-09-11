@@ -34,6 +34,10 @@ TEST(pqrs_xml_compiler, reload)
   uint32_t vk_change_inputsource_base = 1191;
   EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE"));
+  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base++),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"));
+  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base++),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_SWISS"));
 
   uint32_t vk_config_base = vk_change_inputsource_base;
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
