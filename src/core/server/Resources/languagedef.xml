@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <root>
   <!-- ============================================================ -->
+  <!-- For VK_CHANGE_INPUTSOURCE_* -->
+  <vkchangeinputsourcedef>
+    <name>VK_CHANGE_INPUTSOURCE_JAPANESE</name>
+    <bcp47>ja</bcp47>
+  </vkchangeinputsourcedef>
+
+  <!-- ============================================================ -->
   <!-- kTISPropertyInputSourceID -->
 
   <languagedef>
