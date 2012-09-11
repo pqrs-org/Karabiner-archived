@@ -14,6 +14,7 @@ namespace pqrs {
     replacement_.clear();
     symbol_map_.clear();
     app_vector_.clear();
+    language_vector_.clear();
     identifier_map_.clear();
     essential_configurations_.clear();
     remapclasses_initialize_vector_.clear();
@@ -91,6 +92,17 @@ namespace pqrs {
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicevendordef.xml");
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "deviceproductdef.xml");
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicelocationdef.xml");
+      }
+
+      // language
+      {
+        language_loader loader(*this, remapclasses_initialize_vector_, symbol_map_, language_vector_);
+
+        if (private_xml_ptree_ptr) {
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
+        }
+
+        loader_wrapper<language_loader>::traverse_system_xml(*this, loader, "languagedef.xml");
       }
 
       // config_index, remapclasses_initialize_vector, preferences_node
