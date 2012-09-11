@@ -4,11 +4,13 @@
 
 namespace pqrs {
   bool
-  xml_compiler::language::is_rules_matched(const std::string& bcp47,
+  xml_compiler::language::is_rules_matched(uint32_t keycode,
+                                           const std::string& bcp47,
                                            const std::string& inputsourceid,
                                            const std::string& inputmodeid) const
   {
     if (! value_) return false;
+    if (keycode != keycode_) return false;
 
     switch (value_type_) {
       case value_type::none:
@@ -17,16 +19,16 @@ namespace pqrs {
       case value_type::bcp47:
         return bcp47 == *value_;
 
-      case value_type::input_source_equal:
+      case value_type::inputsourceid_equal:
         return inputsourceid == *value_;
 
-      case value_type::input_source_prefix:
+      case value_type::inputsourceid_prefix:
         return boost::starts_with(inputsourceid, *value_);
 
-      case value_type::input_mode_equal:
+      case value_type::inputmodeid_equal:
         return inputmodeid == *value_;
 
-      case value_type::input_mode_prefix:
+      case value_type::inputmodeid_prefix:
         return boost::starts_with(inputmodeid, *value_);
     }
 
@@ -58,17 +60,20 @@ namespace pqrs {
                                                    *(newlanguage->get_name()));
             }
 
-          } else if (child.get_tag_name() == "bcp47") {
-            bool value_is_not_none = newlanguage->get_value();
-            newlanguage->set_type(language::value_type::bcp47);
-            newlanguage->set_value(boost::trim_copy(child.get_data()));
+          } else {
+            language::value_type::type value_type = language::value_type::get_type_from_string(child.get_tag_name());
+            if (value_type != language::value_type::none) {
+              bool value_is_not_none = newlanguage->get_value();
+              newlanguage->set_type(value_type);
+              newlanguage->set_value(boost::trim_copy(child.get_data()));
 
-            if (value_is_not_none) {
-              error = true;
-              xml_compiler_.error_information_.set(boost::format("<vkchangeinputsourcedef> must not have multiple values.\n\n<%1%>%2%</%3%>") %
-                                                   child.get_tag_name() %
-                                                   *(newlanguage->get_value()) %
-                                                   child.get_tag_name());
+              if (value_is_not_none) {
+                error = true;
+                xml_compiler_.error_information_.set(boost::format("<vkchangeinputsourcedef> must not have multiple values.\n\n<%1%>%2%</%3%>") %
+                                                     child.get_tag_name() %
+                                                     *(newlanguage->get_value()) %
+                                                     child.get_tag_name());
+              }
             }
           }
         }
@@ -106,7 +111,7 @@ namespace pqrs {
 
         if (it.get_tag_name() == "vkchangeinputsourcedef") {
           if (! symbol_map_.get_optional(std::string("KeyCode::") + *(newlanguage->get_name()))) {
-            symbol_map_.add("KeyCode", *(newlanguage->get_name()));
+            newlanguage->set_keycode(symbol_map_.add("KeyCode", *(newlanguage->get_name())));
             language_vector_.push_back(newlanguage);
           }
         }
