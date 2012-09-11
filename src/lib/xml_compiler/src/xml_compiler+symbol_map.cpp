@@ -54,7 +54,7 @@ namespace pqrs {
     return get_optional(type + "::" + name);
   }
 
-  void
+  uint32_t
   xml_compiler::symbol_map::add(const std::string& type, const std::string& name, uint32_t value)
   {
     if (type.empty()) {
@@ -71,9 +71,11 @@ namespace pqrs {
     if (it == symbol_map_.end()) {
       symbol_map_[n] = value;
     }
+
+    return value;
   }
 
-  void
+  uint32_t
   xml_compiler::symbol_map::add(const std::string& type, const std::string& name)
   {
     auto n = type + "::VK__AUTOINDEX__BEGIN__";
