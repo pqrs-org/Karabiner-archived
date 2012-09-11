@@ -20,6 +20,7 @@
 		340D31CB152CB8EF00C88AC5 /* xml_compiler+replacement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */; };
 		340D31CC152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */; };
 		342984CF1548473200406438 /* file_path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342984CE1548473200406438 /* file_path.cpp */; };
+		3453732A15FDEFAD00B9C459 /* xml_compiler+language.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3453732915FDEFAD00B9C459 /* xml_compiler+language.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+replacement.cpp"; path = "src/xml_compiler+replacement.cpp"; sourceTree = "<group>"; };
 		340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+symbol_map.cpp"; path = "src/xml_compiler+symbol_map.cpp"; sourceTree = "<group>"; };
 		342984CE1548473200406438 /* file_path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file_path.cpp; path = src/file_path.cpp; sourceTree = "<group>"; };
+		3453732915FDEFAD00B9C459 /* xml_compiler+language.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+language.cpp"; path = "src/xml_compiler+language.cpp"; sourceTree = "<group>"; };
 		34F271B3152CB80700BD77AB /* libxml_compiler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxml_compiler.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -53,6 +55,7 @@
 		340D31B4152CB8D800C88AC5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3453732915FDEFAD00B9C459 /* xml_compiler+language.cpp */,
 				342984CE1548473200406438 /* file_path.cpp */,
 				340D31B5152CB8EF00C88AC5 /* string.cpp */,
 				340D31B6152CB8EF00C88AC5 /* vector.cpp */,
@@ -159,6 +162,7 @@
 				340D31CB152CB8EF00C88AC5 /* xml_compiler+replacement.cpp in Sources */,
 				340D31CC152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp in Sources */,
 				342984CF1548473200406438 /* file_path.cpp in Sources */,
+				3453732A15FDEFAD00B9C459 /* xml_compiler+language.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
