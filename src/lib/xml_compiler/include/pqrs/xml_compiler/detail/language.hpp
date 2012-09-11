@@ -23,6 +23,10 @@ public:
   value_type::type get_type(void) const { return value_type_; }
   void set_type(value_type::type v) { value_type_ = v; }
 
+  bool is_rules_matched(const std::string& bcp47,
+                        const std::string& inputsourceid,
+                        const std::string& inputmodeid) const;
+
 private:
   boost::optional<std::string> name_;
   boost::optional<std::string> value_;

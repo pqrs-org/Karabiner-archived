@@ -3,6 +3,36 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
+  bool
+  xml_compiler::language::is_rules_matched(const std::string& bcp47,
+                                           const std::string& inputsourceid,
+                                           const std::string& inputmodeid) const
+  {
+    if (! value_) return false;
+
+    switch (value_type_) {
+      case value_type::none:
+        throw xml_compiler_logic_error("language::is_rules_matched is called with value_type::none.");
+
+      case value_type::bcp47:
+        return bcp47 == *value_;
+
+      case value_type::input_source_equal:
+        return inputsourceid == *value_;
+
+      case value_type::input_source_prefix:
+        return boost::starts_with(inputsourceid, *value_);
+
+      case value_type::input_mode_equal:
+        return inputmodeid == *value_;
+
+      case value_type::input_mode_prefix:
+        return boost::starts_with(inputmodeid, *value_);
+    }
+
+    return false;
+  }
+
   void
   xml_compiler::language_loader::traverse(const extracted_ptree& pt) const
   {
