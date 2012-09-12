@@ -157,6 +157,26 @@ static NSMutableArray* enabledInputSources_ = nil;
   XMLCompiler* xml_compiler = [XMLCompiler getInstance];
 
   // ------------------------------------------------------------
+  {
+    InputSource* matched = nil;
+    @synchronized(self) {
+      for (InputSource* inputSource in enabledInputSources_) {
+        if ([xml_compiler is_vk_change_inputsource_matched:vk_keycode
+                                                     bcp47:inputSource.bcp47
+                                             inputSourceID:inputSource.inputSourceID
+                                               inputModeID:inputSource.inputModeID]) {
+          matched = [[inputSource retain] autorelease];
+          break;
+        }
+      }
+    }
+    if (matched) {
+      [matched select];
+      return;
+    }
+  }
+
+  // ------------------------------------------------------------
   // Select from Language
   {
     NSString* language = nil;

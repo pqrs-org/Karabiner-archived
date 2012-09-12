@@ -22,6 +22,10 @@
 - (uint32_t) keycode:(NSString*)name;
 - (NSString*) identifier:(uint32_t)config_index;
 - (uint32_t) appid:(NSString*)bundleIdentifier;
+- (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
+ bcp47:(NSString*)bcp47
+ inputSourceID:(NSString*)inputSourceID
+ inputModeID:(NSString*)inputModeID;
 
 - (NSArray*) preferencepane_checkbox;
 - (NSArray*) preferencepane_number;
