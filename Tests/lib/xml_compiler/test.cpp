@@ -31,14 +31,62 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
   EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map_value("KeyCode::SPACE_IS_IGNORED"));
 
+  // ------------------------------------------------------------
   uint32_t vk_change_inputsource_base = 1191;
-  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base++),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE"));
-  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base++),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"));
-  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base++),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_SWISS"));
 
+  // JAPANESE
+  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE"));
+  EXPECT_EQ(true,
+            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                          "ja",
+                                                          "com.apple.inputmethod.Kotoeri.Japanese",
+                                                          "com.apple.inputmethod.Japanese"));
+  EXPECT_EQ(false,
+            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                          "en",
+                                                          "com.apple.keylayout.US",
+                                                          ""));
+  ++vk_change_inputsource_base;
+
+  // DVORAK
+  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"));
+  EXPECT_EQ(true,
+            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                          "en",
+                                                          "com.apple.keylayout.Dvorak",
+                                                          ""));
+  EXPECT_EQ(false,
+            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                          "en",
+                                                          "com.apple.keylayout.US",
+                                                          ""));
+  ++vk_change_inputsource_base;
+
+  // SWISS
+  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
+            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_SWISS"));
+  EXPECT_EQ(true,
+            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                          "en",
+                                                          "com.apple.keylayout.SwissFrench",
+                                                          ""));
+  EXPECT_EQ(false,
+            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                          "en",
+                                                          "com.apple.keylayout.US",
+                                                          ""));
+  ++vk_change_inputsource_base;
+
+  // Invalid keycode
+  EXPECT_EQ(false,
+            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                          "en",
+                                                          "com.apple.keylayout.US",
+                                                          ""));
+
+  // ------------------------------------------------------------
   uint32_t vk_config_base = vk_change_inputsource_base;
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));

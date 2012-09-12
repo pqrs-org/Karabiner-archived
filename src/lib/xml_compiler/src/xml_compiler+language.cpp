@@ -4,13 +4,11 @@
 
 namespace pqrs {
   bool
-  xml_compiler::language::is_rules_matched(uint32_t keycode,
-                                           const std::string& bcp47,
+  xml_compiler::language::is_rules_matched(const std::string& bcp47,
                                            const std::string& inputsourceid,
                                            const std::string& inputmodeid) const
   {
     if (! value_) return false;
-    if (keycode != keycode_) return false;
 
     switch (value_type_) {
       case value_type::none:
@@ -111,8 +109,8 @@ namespace pqrs {
 
         if (it.get_tag_name() == "vkchangeinputsourcedef") {
           if (! symbol_map_.get_optional(std::string("KeyCode::") + *(newlanguage->get_name()))) {
-            newlanguage->set_keycode(symbol_map_.add("KeyCode", *(newlanguage->get_name())));
-            language_vector_.push_back(newlanguage);
+            uint32_t keycode = symbol_map_.add("KeyCode", *(newlanguage->get_name()));
+            vk_change_inputsource_map_[keycode] = newlanguage;
           }
         }
       }
