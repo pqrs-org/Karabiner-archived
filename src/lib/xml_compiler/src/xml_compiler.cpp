@@ -14,7 +14,7 @@ namespace pqrs {
     replacement_.clear();
     symbol_map_.clear();
     app_vector_.clear();
-    language_vector_.clear();
+    vk_change_inputsource_map_.clear();
     identifier_map_.clear();
     essential_configurations_.clear();
     remapclasses_initialize_vector_.clear();
@@ -96,7 +96,7 @@ namespace pqrs {
 
       // language
       {
-        language_loader loader(*this, remapclasses_initialize_vector_, symbol_map_, language_vector_);
+        language_loader loader(*this, remapclasses_initialize_vector_, symbol_map_, vk_change_inputsource_map_);
 
         if (private_xml_ptree_ptr) {
           loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
@@ -235,6 +235,20 @@ namespace pqrs {
   notfound:
     // return ApplicationType::UNKNOWN (== 0)
     return 0;
+  }
+
+  bool
+  xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
+                                                 const std::string& bcp47,
+                                                 const std::string& inputsourceid,
+                                                 const std::string& inputmodeid) const
+  {
+    auto it = vk_change_inputsource_map_.find(keycode);
+    if (it == vk_change_inputsource_map_.end()) {
+      return false;
+    }
+
+    return it->second->is_rules_matched(bcp47, inputsourceid, inputmodeid);
   }
 
   bool
