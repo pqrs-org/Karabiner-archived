@@ -88,6 +88,22 @@ pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_
   return xml_compiler->get_appid(application_identifier);
 }
 
+uint32_t
+pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
+                                                   uint32_t keycode,
+                                                   const char* bcp47,
+                                                   const char* inputsourceid,
+                                                   const char* inputmodeid)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
+
+  return xml_compiler->is_vk_change_inputsource_matched(keycode,
+                                                        bcp47         != nullptr ? bcp47         : "",
+                                                        inputsourceid != nullptr ? inputsourceid : "",
+                                                        inputmodeid   != nullptr ? inputmodeid   : "");
+}
+
 // ------------------------------------------------------------
 const uint32_t*
 pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p)

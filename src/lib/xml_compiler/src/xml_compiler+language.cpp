@@ -1,6 +1,7 @@
 #include <exception>
 #include <boost/algorithm/string.hpp>
 #include "pqrs/xml_compiler.hpp"
+#include "bridge.h"
 
 namespace pqrs {
   bool
@@ -31,6 +32,26 @@ namespace pqrs {
     }
 
     return false;
+  }
+
+  xml_compiler::language_loader::~language_loader(void)
+  {
+    std::string raw_identifier("system.vk_change_inputsource_definition");
+    auto identifier = raw_identifier;
+    normalize_identifier_(identifier);
+
+    uint32_t config_index = symbol_map_.add("ConfigIndex", identifier);
+    identifier_map_[config_index] = raw_identifier;
+
+    remapclasses_initialize_vector_.start(config_index, raw_identifier);
+    {
+      for (auto& it : vk_change_inputsource_map_) {
+        remapclasses_initialize_vector_.push_back(2);
+        remapclasses_initialize_vector_.push_back(BRIDGE_VK_CHANGE_INPUTSOURCE);
+        remapclasses_initialize_vector_.push_back(it.first);
+      }
+    }
+    remapclasses_initialize_vector_.end();
   }
 
   void
@@ -109,7 +130,7 @@ namespace pqrs {
 
         if (it.get_tag_name() == "vkchangeinputsourcedef") {
           if (! symbol_map_.get_optional(std::string("KeyCode::") + *(newlanguage->get_name()))) {
-            uint32_t keycode = symbol_map_.add("KeyCode", *(newlanguage->get_name()));
+            auto keycode = symbol_map_.add("KeyCode", *(newlanguage->get_name()));
             vk_change_inputsource_map_[keycode] = newlanguage;
           }
         }
