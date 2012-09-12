@@ -96,7 +96,11 @@ namespace pqrs {
 
       // language
       {
-        language_loader loader(*this, remapclasses_initialize_vector_, symbol_map_, vk_change_inputsource_map_);
+        language_loader loader(*this,
+                               symbol_map_,
+                               remapclasses_initialize_vector_,
+                               identifier_map_,
+                               vk_change_inputsource_map_);
 
         if (private_xml_ptree_ptr) {
           loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));

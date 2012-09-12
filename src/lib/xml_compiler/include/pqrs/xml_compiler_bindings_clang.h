@@ -26,6 +26,11 @@ size_t pqrs_xml_compiler_get_error_count(const pqrs_xml_compiler* p);
 uint32_t pqrs_xml_compiler_get_symbol_map_value(const pqrs_xml_compiler* p, const char* name);
 const char* pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index);
 uint32_t pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier);
+uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
+                                                            uint32_t keycode,
+                                                            const char* bcp47,
+                                                            const char* inputsourceid,
+                                                            const char* inputmodeid);
 
 // ------------------------------------------------------------
 const uint32_t* pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p);
