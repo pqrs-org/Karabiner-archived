@@ -292,6 +292,20 @@ static XMLCompiler* global_instance = nil;
   }
 }
 
+- (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
+ bcp47:(NSString*)bcp47
+ inputSourceID:(NSString*)inputSourceID
+ inputModeID:(NSString*)inputModeID;
+{
+  @synchronized(self) {
+    return pqrs_xml_compiler_is_vk_change_inputsource_matched(pqrs_xml_compiler_,
+                                                              keycode,
+                                                              [bcp47 UTF8String],
+                                                              [inputSourceID UTF8String],
+                                                              [inputModeID UTF8String]);
+  }
+}
+
 - (NSArray*) preferencepane_checkbox
 {
   @synchronized(self) {
