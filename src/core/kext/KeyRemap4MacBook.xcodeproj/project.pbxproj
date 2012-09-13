@@ -95,8 +95,6 @@
 		34B464DB13A652CF00470265 /* VK_STICKY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464D913A652CF00470265 /* VK_STICKY.hpp */; };
 		34B464DF13A6538A00470265 /* VK_LAZY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464DD13A6538A00470265 /* VK_LAZY.cpp */; };
 		34B464E013A6538A00470265 /* VK_LAZY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464DE13A6538A00470265 /* VK_LAZY.hpp */; };
-		34B464E313A654E600470265 /* VK_CHANGE_INPUTMODE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464E113A654E600470265 /* VK_CHANGE_INPUTMODE.cpp */; };
-		34B464E413A654E600470265 /* VK_CHANGE_INPUTMODE.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464E213A654E600470265 /* VK_CHANGE_INPUTMODE.hpp */; };
 		34B464E713A6563B00470265 /* VK_CONFIG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464E513A6563B00470265 /* VK_CONFIG.cpp */; };
 		34B464E813A6563B00470265 /* VK_CONFIG.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464E613A6563B00470265 /* VK_CONFIG.hpp */; };
 		34B464EB13A6587400470265 /* VK_MOUSEKEY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464E913A6587400470265 /* VK_MOUSEKEY.cpp */; };
@@ -242,8 +240,6 @@
 		34B464D913A652CF00470265 /* VK_STICKY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_STICKY.hpp; path = VirtualKey/VK_STICKY.hpp; sourceTree = "<group>"; };
 		34B464DD13A6538A00470265 /* VK_LAZY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_LAZY.cpp; path = VirtualKey/VK_LAZY.cpp; sourceTree = "<group>"; };
 		34B464DE13A6538A00470265 /* VK_LAZY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_LAZY.hpp; path = VirtualKey/VK_LAZY.hpp; sourceTree = "<group>"; };
-		34B464E113A654E600470265 /* VK_CHANGE_INPUTMODE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_CHANGE_INPUTMODE.cpp; path = VirtualKey/VK_CHANGE_INPUTMODE.cpp; sourceTree = "<group>"; };
-		34B464E213A654E600470265 /* VK_CHANGE_INPUTMODE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_CHANGE_INPUTMODE.hpp; path = VirtualKey/VK_CHANGE_INPUTMODE.hpp; sourceTree = "<group>"; };
 		34B464E513A6563B00470265 /* VK_CONFIG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_CONFIG.cpp; path = VirtualKey/VK_CONFIG.cpp; sourceTree = "<group>"; };
 		34B464E613A6563B00470265 /* VK_CONFIG.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_CONFIG.hpp; path = VirtualKey/VK_CONFIG.hpp; sourceTree = "<group>"; };
 		34B464E913A6587400470265 /* VK_MOUSEKEY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_MOUSEKEY.cpp; path = VirtualKey/VK_MOUSEKEY.cpp; sourceTree = "<group>"; };
@@ -480,8 +476,6 @@
 				342B5B2415FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.hpp */,
 				34B464E513A6563B00470265 /* VK_CONFIG.cpp */,
 				34B464E613A6563B00470265 /* VK_CONFIG.hpp */,
-				34B464E113A654E600470265 /* VK_CHANGE_INPUTMODE.cpp */,
-				34B464E213A654E600470265 /* VK_CHANGE_INPUTMODE.hpp */,
 				34799525140A70B600B85E42 /* VK_CONSUMERKEY.cpp */,
 				34799526140A70B600B85E42 /* VK_CONSUMERKEY.hpp */,
 				34B464DD13A6538A00470265 /* VK_LAZY.cpp */,
@@ -592,7 +586,6 @@
 				34B464D113A6515200470265 /* VK_LOCK.hpp in Headers */,
 				34B464DB13A652CF00470265 /* VK_STICKY.hpp in Headers */,
 				34B464E013A6538A00470265 /* VK_LAZY.hpp in Headers */,
-				34B464E413A654E600470265 /* VK_CHANGE_INPUTMODE.hpp in Headers */,
 				34B464E813A6563B00470265 /* VK_CONFIG.hpp in Headers */,
 				34B464EC13A6587400470265 /* VK_MOUSEKEY.hpp in Headers */,
 				34B464F013A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp in Headers */,
@@ -739,7 +732,6 @@
 				34B464D013A6515200470265 /* VK_LOCK.cpp in Sources */,
 				34B464DA13A652CF00470265 /* VK_STICKY.cpp in Sources */,
 				34B464DF13A6538A00470265 /* VK_LAZY.cpp in Sources */,
-				34B464E313A654E600470265 /* VK_CHANGE_INPUTMODE.cpp in Sources */,
 				34B464E713A6563B00470265 /* VK_CONFIG.cpp in Sources */,
 				34B464EB13A6587400470265 /* VK_MOUSEKEY.cpp in Sources */,
 				34B464EF13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp in Sources */,

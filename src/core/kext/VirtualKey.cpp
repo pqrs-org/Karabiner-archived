@@ -4,7 +4,6 @@
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "VirtualKey.hpp"
-#include "VirtualKey/VK_CHANGE_INPUTMODE.hpp"
 #include "VirtualKey/VK_CHANGE_INPUTSOURCE.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
 #include "VirtualKey/VK_CONSUMERKEY.hpp"
@@ -48,7 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::handle(const Params_KeyboardEventCallBack& params)
   {
-    if (VirtualKey::VK_CHANGE_INPUTMODE::handle(params))      { return true; }
     if (VirtualKey::VK_CHANGE_INPUTSOURCE::handle(params))    { return true; }
     if (VirtualKey::VK_CONFIG::handle(params))                { return true; }
     if (VirtualKey::VK_CONSUMERKEY::handle(params))           { return true; }
@@ -67,7 +65,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
   {
-    if (VirtualKey::VK_CHANGE_INPUTMODE::handleAfterEnqueued(params))   { return true; }
     if (VirtualKey::VK_CHANGE_INPUTSOURCE::handleAfterEnqueued(params)) { return true; }
     return false;
   }
