@@ -252,6 +252,14 @@ namespace pqrs {
       return;
     }
 
+    if (autogen.find("KeyCode::VK_CHANGE_INPUTMODE_") != std::string::npos) {
+      handle_autogen(boost::replace_all_copy(autogen,
+                                             "KeyCode::VK_CHANGE_INPUTMODE_",
+                                             "KeyCode::VK_CHANGE_INPUTSOURCE_"),
+                     raw_autogen);
+      return;
+    }
+
     // ------------------------------------------------------------
     // add to remapclasses_initialize_vector_
     //

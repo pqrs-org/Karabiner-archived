@@ -10925,16 +10925,16 @@
       <appendix>(+ When you type Command_L+Shift_L only, change inputmode to english)</appendix>
       <inputmode_only>FINNISH</inputmode_only>
       <identifier>remap.finnish_shiftcommandL2shiftLcommandL_english</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
     </item>
     <item>
       <name>Command_L+Shift_L to Command_L+Shift_L</name>
       <appendix>(+ When you type Command_L+Shift_L only, change inputmode to finnish)</appendix>
       <!-- <inputmode_only>ENGLISH</inputmode_only> -->
       <identifier>remap.finnish_shiftcommandL2shiftLcommandL_finnish</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
     </item>
   </item>
   <item>
@@ -20048,7 +20048,7 @@
         <name>Command_L to Command_L</name>
         <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
         <identifier>remap.russian_commandL2commandL_english</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
       </item>
     </item>
     <item>
@@ -20057,7 +20057,7 @@
         <name>Command_R to Command_R</name>
         <appendix>(+ When you type Command_R only, change inputmode to russian)</appendix>
         <identifier>remap.russian_commandR2commandR_russian</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
       </item>
     </item>
     <item>
@@ -20089,7 +20089,7 @@
         <name>Shift_L to Shift_L</name>
         <appendix>(+ When you type Shift_L only, change inputmode to english)</appendix>
         <identifier>remap.russian_shiftL2shiftL_english</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
       </item>
       <item>
         <name>Shift_L to Shift_L</name>
@@ -20098,8 +20098,8 @@
         <appendix>(+ When you type Command+Shift_L only,</appendix>
         <appendix>change inputmode to "English - Ilya Birman Typography".)</appendix>
         <identifier>remap.russian_shiftL2shiftL_english_typography</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L,             KeyCode::SHIFT_L,                          KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L,             KeyCode::SHIFT_L,                          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
       </item>
     </item>
     <item>
@@ -20108,7 +20108,7 @@
         <name>Shift_R to Shift_R</name>
         <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
         <identifier>remap.russian_shiftR2shiftR_russian</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
       </item>
       <item>
         <name>Shift_R to Shift_R</name>
@@ -20117,8 +20117,8 @@
         <appendix>(+ When you type Command+Shift_R only,</appendix>
         <appendix>change inputmode to "Russian - Ilya Birman Typography".)</appendix>
         <identifier>remap.russian_shiftR2shiftR_russian_typography</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, VK_COMMAND, KeyCode::SHIFT_R, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
-        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R,             KeyCode::SHIFT_R,                          KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, VK_COMMAND, KeyCode::SHIFT_R, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</autogen>
+        <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R,             KeyCode::SHIFT_R,                          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
       </item>
     </item>
     <item>
@@ -20231,13 +20231,13 @@
       <name>Command_L to Command_L</name>
       <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
       <identifier>remap.swedish_commandL2commandL_english</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
     </item>
     <item>
       <name>Command_R to Command_R</name>
       <appendix>(+ When you type Command_R only, change inputmode to swedish)</appendix>
       <identifier>remap.swedish_commandR2commandR_swedish</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</autogen>
     </item>
     <item>
       <name>Swap Section(§) and Less-Than(&lt;)</name>
@@ -22137,36 +22137,36 @@
         </item>
       </item>
       <item>
-        <name>VK_CHANGE_INPUTMODE_*</name>
-        <appendix>Use 1 to VK_CHANGE_INPUTMODE_ENGLISH</appendix>
-        <appendix>Use 2 to VK_CHANGE_INPUTMODE_FRENCH</appendix>
-        <appendix>Use 3 to VK_CHANGE_INPUTMODE_GERMAN</appendix>
-        <appendix>Use 4 to VK_CHANGE_INPUTMODE_JAPANESE</appendix>
-        <appendix>Use 5 to VK_CHANGE_INPUTMODE_SWEDISH</appendix>
-        <appendix>Use 6 to VK_CHANGE_INPUTMODE_CANADIAN</appendix>
-        <appendix>Use 7 to VK_CHANGE_INPUTMODE_RUSSIAN</appendix>
-        <appendix>Use 8 to VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</appendix>
-        <appendix>Use 9 to VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</appendix>
-        <appendix>Use 0 to VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</appendix>
-        <appendix>Use Q to VK_CHANGE_INPUTMODE_ESTONIAN</appendix>
-        <appendix>Use W to VK_CHANGE_INPUTMODE_FINNISH</appendix>
-        <appendix>Use E to VK_CHANGE_INPUTMODE_THAI</appendix>
+        <name>VK_CHANGE_INPUTSOURCE_*</name>
+        <appendix>Use 1 to VK_CHANGE_INPUTSOURCE_ENGLISH</appendix>
+        <appendix>Use 2 to VK_CHANGE_INPUTSOURCE_FRENCH</appendix>
+        <appendix>Use 3 to VK_CHANGE_INPUTSOURCE_GERMAN</appendix>
+        <appendix>Use 4 to VK_CHANGE_INPUTSOURCE_JAPANESE</appendix>
+        <appendix>Use 5 to VK_CHANGE_INPUTSOURCE_SWEDISH</appendix>
+        <appendix>Use 6 to VK_CHANGE_INPUTSOURCE_CANADIAN</appendix>
+        <appendix>Use 7 to VK_CHANGE_INPUTSOURCE_RUSSIAN</appendix>
+        <appendix>Use 8 to VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</appendix>
+        <appendix>Use 9 to VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</appendix>
+        <appendix>Use 0 to VK_CHANGE_INPUTSOURCE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</appendix>
+        <appendix>Use Q to VK_CHANGE_INPUTSOURCE_ESTONIAN</appendix>
+        <appendix>Use W to VK_CHANGE_INPUTSOURCE_FINNISH</appendix>
+        <appendix>Use E to VK_CHANGE_INPUTSOURCE_THAI</appendix>
         <appendix>Use R to VK_CHANGE_INPUTSOURCE_DVORAK</appendix>
         <appendix>Use T to VK_CHANGE_INPUTSOURCE_COLEMAK</appendix>
         <identifier>remap.samples_vk_change_inputmode</identifier>
-        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTMODE_FRENCH</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTMODE_GERMAN</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTMODE_JAPANESE</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTMODE_CANADIAN</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</autogen>
-        <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN</autogen>
-        <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CHANGE_INPUTMODE_FINNISH</autogen>
-        <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_CHANGE_INPUTMODE_THAI</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTSOURCE_GERMAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_CHANGE_INPUTSOURCE_CANADIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_0, KeyCode::VK_CHANGE_INPUTSOURCE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</autogen>
+        <autogen>--KeyToKey-- KeyCode::Q,     KeyCode::VK_CHANGE_INPUTSOURCE_ESTONIAN</autogen>
+        <autogen>--KeyToKey-- KeyCode::W,     KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
+        <autogen>--KeyToKey-- KeyCode::E,     KeyCode::VK_CHANGE_INPUTSOURCE_THAI</autogen>
         <autogen>--KeyToKey-- KeyCode::R,     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
         <autogen>--KeyToKey-- KeyCode::T,     KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</autogen>
       </item>

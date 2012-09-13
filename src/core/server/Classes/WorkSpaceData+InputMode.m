@@ -86,152 +86,54 @@ static NSMutableArray* enabledInputSources_ = nil;
 }
 
 // ----------------------------------------------------------------------
-// Note:
-// TISCopyInputSourceForLanguage returns unselectable InputSource.
-// Therefore we get InputSource by ourself.
-+ (BOOL) selectInputSourceByBcp47:(NSString*)bcp47
-{
-  if (! bcp47) return NO;
-
-  @synchronized(self) {
-    for (InputSource* inputSource in enabledInputSources_) {
-      if (! inputSource.bcp47) continue;
-
-      if ([bcp47 isEqualToString:inputSource.bcp47]) {
-        [inputSource select];
-        return YES;
-      }
-    }
-  }
-
-  return NO;
-}
-
-// ----------------------------------------------------------------------
-+ (BOOL) selectInputSourceByInputSourceID:(NSString*)inputSourceID
-{
-  if (! inputSourceID) return NO;
-
-  @synchronized(self) {
-    // Note:
-    //   InputSourceID is not unique.
-    //   For example, AquaSKK has 6 Input Sources.
-    //   But all of them have same InputSourceID.
-    //
-    //   Therefore, use this method carefully.
-    //
-    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
-    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese
-    //
-    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
-    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.HalfWidthKana
-    //
-    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
-    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Roman
-    //
-    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
-    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.FullWidthRoman
-    //
-    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
-    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.Hiragana
-    //
-    //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
-    //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.Katakana
-
-    for (InputSource* inputSource in enabledInputSources_) {
-      if (! inputSource.inputSourceID) continue;
-
-      if ([inputSourceID isEqualToString:inputSource.inputSourceID]) {
-        [inputSource select];
-        return YES;
-      }
-    }
-  }
-
-  return NO;
-}
-
-// ----------------------------------------------------------------------
 + (void) selectInputSource:(unsigned int)vk_keycode
 {
   XMLCompiler* xml_compiler = [XMLCompiler getInstance];
 
-  // ------------------------------------------------------------
-  {
-    InputSource* matched = nil;
-    @synchronized(self) {
-      for (InputSource* inputSource in enabledInputSources_) {
-        if ([xml_compiler is_vk_change_inputsource_matched:vk_keycode
-                                                     bcp47:inputSource.bcp47
-                                             inputSourceID:inputSource.inputSourceID
-                                               inputModeID:inputSource.inputModeID]) {
-          matched = [[inputSource retain] autorelease];
-          break;
-        }
+  // ----------------------------------------------------------------------
+  // Note for bcp47
+  // TISCopyInputSourceForLanguage returns unselectable InputSource.
+  // Therefore we get InputSource by ourself.
+
+  // Note for inputSourceID
+  //   InputSourceID is not unique.
+  //   For example, AquaSKK has 6 Input Sources.
+  //   But all of them have same InputSourceID.
+  //
+  //   Therefore, we need to treat it carefully.
+  //
+  //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+  //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese
+  //
+  //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+  //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.HalfWidthKana
+  //
+  //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+  //     * kTISPropertyInputModeID:   com.apple.inputmethod.Roman
+  //
+  //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+  //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.FullWidthRoman
+  //
+  //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+  //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.Hiragana
+  //
+  //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
+  //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.Katakana
+
+  InputSource* matched = nil;
+  @synchronized(self) {
+    for (InputSource* inputSource in enabledInputSources_) {
+      if ([xml_compiler is_vk_change_inputsource_matched:vk_keycode
+                                                   bcp47:inputSource.bcp47
+                                           inputSourceID:inputSource.inputSourceID
+                                             inputModeID:inputSource.inputModeID]) {
+        matched = [[inputSource retain] autorelease];
+        break;
       }
     }
-    if (matched) {
-      [matched select];
-      return;
-    }
   }
-
-  // ------------------------------------------------------------
-  // Select from Language
-  {
-    NSString* language = nil;
-
-    /*  */ if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_CANADIAN"]) {
-      language = @"ca";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH"]) {
-      language = @"en";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FRENCH"]) {
-      language = @"fr";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_GERMAN"]) {
-      language = @"de";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_JAPANESE"]) {
-      language = @"ja";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_SWEDISH"]) {
-      language = @"sv";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN"]) {
-      language = @"ru";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN_TYPOGRAPHIC"]) {
-      language = @"ru-Typographic";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ENGLISH_TYPOGRAPHIC"]) {
-      language = @"en-Typographic";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_TRADITIONAL_CHINESE_YAHOO_KEYKEY"]) {
-      language = @"zh-Hant.KeyKey";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_ESTONIAN"]) {
-      language = @"et";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_FINNISH"]) {
-      language = @"fi";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTMODE_THAI"]) {
-      language = @"th";
-    }
-
-    if (language) {
-      [self selectInputSourceByBcp47:language];
-    }
-  }
-
-  // ------------------------------------------------------------
-  // Select from InputSourceID
-  {
-    NSString* inputSourceID = nil;
-
-    /*  */ if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"]) {
-      inputSourceID = @"com.apple.keylayout.Dvorak";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_DEVANAGARI_PAUL"]) {
-      inputSourceID = @"org.unknown.keylayout.DvorakDevanagariPaul";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_TRANSLIT_NEW"]) {
-      inputSourceID = @"org.unknown.keylayout.DvorakTranslitNew";
-    } else if (vk_keycode == [xml_compiler keycode:@"KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK"]) {
-      inputSourceID = @"com.apple.keylayout.Colemak";
-    }
-
-    if (inputSourceID) {
-      [self selectInputSourceByInputSourceID:inputSourceID];
-    }
+  if (matched) {
+    [matched select];
   }
 }
 
