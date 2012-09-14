@@ -26,11 +26,14 @@ public:
   const boost::optional<std::string>& get_name(void) const { return name_; }
   void set_name(const std::string& v) { name_ = v; }
 
+  const boost::optional<std::string>& get_detail(void) const { return detail_; }
+  void set_detail(const std::string& v) { detail_ = v; }
+
   const boost::optional<std::string>& get_value(void) const { return value_; }
   void set_value(const std::string& v) { value_ = v; }
 
-  value_type::type get_type(void) const { return value_type_; }
-  void set_type(value_type::type v) { value_type_ = v; }
+  value_type::type get_value_type(void) const { return value_type_; }
+  void set_value_type(value_type::type v) { value_type_ = v; }
 
   bool is_rules_matched(const std::string& bcp47,
                         const std::string& inputsourceid,
@@ -38,6 +41,7 @@ public:
 
 private:
   boost::optional<std::string> name_;
+  boost::optional<std::string> detail_;
   boost::optional<std::string> value_;
   value_type::type value_type_;
 };

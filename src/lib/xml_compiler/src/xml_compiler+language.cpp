@@ -88,11 +88,14 @@ namespace pqrs {
               }
             }
 
+          } else if (child.get_tag_name() == "detail") {
+            newlanguage->set_detail(pqrs::string::remove_whitespaces_copy(child.get_data()));
+
           } else {
             language::value_type::type value_type = language::value_type::get_type_from_string(child.get_tag_name());
             if (value_type != language::value_type::none) {
               bool value_is_not_none = newlanguage->get_value();
-              newlanguage->set_type(value_type);
+              newlanguage->set_value_type(value_type);
               newlanguage->set_value(boost::trim_copy(child.get_data()));
 
               if (value_is_not_none) {
@@ -113,6 +116,8 @@ namespace pqrs {
 
         // ----------------------------------------
         // Validation
+
+        // name
         if (! newlanguage->get_name()) {
           xml_compiler_.error_information_.set(boost::format("No <name> within <%1%>.") %
                                                it.get_tag_name());
@@ -125,7 +130,10 @@ namespace pqrs {
           continue;
         }
 
-        if (newlanguage->get_type() == language::value_type::none ||
+        // detail_ can be empty.
+
+        // values and value_type
+        if (newlanguage->get_value_type() == language::value_type::none ||
             ! newlanguage->get_value()) {
           xml_compiler_.error_information_.set(boost::format("No value definition within <%1%>.") %
                                                it.get_tag_name());
