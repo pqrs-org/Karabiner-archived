@@ -94,6 +94,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // We must cancel Option_L in both (1), (2).
       //
       // Attention: We need fire MiddleClick only at (1).
+
+      // The temporary flags is not changed at pointing move events.
+      // Therefore, we need to clear temporary flags here to avoid infinity decreasing of fromButton_.flags.
+      FlagStatus::set();
+
       FlagStatus::temporary_decrease(fromButton_.flags);
 
       if (isFromButton) {
