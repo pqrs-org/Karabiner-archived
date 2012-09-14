@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>LANGUAGEDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <vkchangeinputsourcedef>
+          <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name>
+          <bcp47>en</bcp47>
+          <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
+        </vkchangeinputsourcedef>
+        ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>
