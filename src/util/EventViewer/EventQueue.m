@@ -74,12 +74,19 @@ enum {
 
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - i)];
-    [string appendFormat:@"eventType:%@\tcode:%@\tname:%@\tflags:%@\tmisc:%@\n",
-     [dict objectForKey:@"eventType"],
-     [dict objectForKey:@"code"],
-     [dict objectForKey:@"name"],
-     [dict objectForKey:@"flags"],
-     [dict objectForKey:@"misc"]];
+
+    NSString* eventType = [NSString stringWithFormat:@"eventType:%@", [dict objectForKey:@"eventType"]];
+    NSString* code      = [NSString stringWithFormat:@"code:%@",      [dict objectForKey:@"code"]];
+    NSString* name      = [NSString stringWithFormat:@"name:%@",      [dict objectForKey:@"name"]];
+    NSString* flags     = [NSString stringWithFormat:@"flags:%@",     [dict objectForKey:@"flags"]];
+    NSString* misc      = [NSString stringWithFormat:@"misc:%@",      [dict objectForKey:@"misc"]];
+
+    [string appendFormat:@"%@ %@ %@ %@ %@\n",
+     [eventType stringByPaddingToLength:25 withString:@" " startingAtIndex:0],
+     [code stringByPaddingToLength:15 withString:@" " startingAtIndex:0],
+     [name stringByPaddingToLength:20 withString:@" " startingAtIndex:0],
+     [flags stringByPaddingToLength:40 withString:@" " startingAtIndex:0],
+     misc];
   }
 
   if ([string length] > 0) {
