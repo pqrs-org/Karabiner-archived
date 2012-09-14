@@ -428,6 +428,34 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
+  class Language {
+  public:
+    Language(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(Language other) const { return value_ == other.get(); }
+    bool operator!=(Language other) const { return ! (*this == other); }
+
+#include "../../../src/bridge/output/include.kext.Language.hpp"
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
+  class LanguageDetail {
+  public:
+    LanguageDetail(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(LanguageDetail other) const { return value_ == other.get(); }
+    bool operator!=(LanguageDetail other) const { return ! (*this == other); }
+
+#include "../../../src/bridge/output/include.kext.LanguageDetail.hpp"
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
   class DeviceVendor {
   public:
     DeviceVendor(unsigned int v = 0) : value_(v) {}
