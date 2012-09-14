@@ -15,6 +15,7 @@ namespace pqrs {
     symbol_map_.clear();
     app_vector_.clear();
     vk_change_inputsource_map_.clear();
+    language_vector_.clear();
     identifier_map_.clear();
     essential_configurations_.clear();
     remapclasses_initialize_vector_.clear();
@@ -100,7 +101,8 @@ namespace pqrs {
                                symbol_map_,
                                remapclasses_initialize_vector_,
                                identifier_map_,
-                               vk_change_inputsource_map_);
+                               vk_change_inputsource_map_,
+                               language_vector_);
 
         if (private_xml_ptree_ptr) {
           loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
@@ -253,6 +255,35 @@ namespace pqrs {
     }
 
     return it->second->is_rules_matched(bcp47, inputsourceid, inputmodeid);
+  }
+
+  void
+  xml_compiler::get_languageid(uint32_t& language, uint32_t& language_detail,
+                               const std::string& bcp47,
+                               const std::string& inputsourceid,
+                               const std::string& inputmodeid) const
+  {
+    language        = 0; // Language::NONE
+    language_detail = 0; // LanguageDetail::NONE
+
+    for (auto& it : language_vector_) {
+      if (! it) continue;
+
+      if (it->is_rules_matched(bcp47, inputsourceid, inputmodeid)) {
+        {
+          auto v = symbol_map_.get_optional(std::string("Language::") + *(it->get_name()));
+          if (! v) return;
+          language = *v;
+        }
+        {
+          if (it->get_detail()) {
+            auto v = symbol_map_.get_optional(std::string("LanguageDetail::") + *(it->get_detail()));
+            if (! v) return;
+            language_detail = *v;
+          }
+        }
+      }
+    }
   }
 
   bool

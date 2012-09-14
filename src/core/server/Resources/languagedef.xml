@@ -61,14 +61,14 @@
 
   <languagedef>
     <name>BEPO</name>
-    <detail>BEPO_NORMAL</detail>
-    <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak</inputsourceid_equal>
+    <detail>BEPO</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
     <name>BEPO</name>
     <detail>BEPO_AZERTYCMD</detail>
-    <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
   </languagedef>
 
   <!-- ============================================================ -->
@@ -101,6 +101,7 @@
 
   <languagedef>
     <name>JAPANESE</name>
+    <detail>JAPANESE</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
   </languagedef>
 

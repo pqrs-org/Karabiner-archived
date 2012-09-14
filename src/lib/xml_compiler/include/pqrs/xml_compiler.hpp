@@ -59,6 +59,10 @@ namespace pqrs {
                                           const std::string& bcp47,
                                           const std::string& inputsourceid,
                                           const std::string& inputmodeid) const;
+    void get_languageid(uint32_t& language, uint32_t& language_detail,
+                        const std::string& bcp47,
+                        const std::string& inputsourceid,
+                        const std::string& inputmodeid) const;
 
     boost::optional<const essential_configuration&> get_essential_configuration(size_t index) const {
       if (index >= essential_configurations_.size()) return boost::none;
@@ -119,6 +123,7 @@ namespace pqrs {
     symbol_map symbol_map_;
     std::vector<std::tr1::shared_ptr<app> > app_vector_;
     std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<language> > vk_change_inputsource_map_;
+    std::vector<std::tr1::shared_ptr<language> > language_vector_;
     std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
     std::vector<std::tr1::shared_ptr<essential_configuration> > essential_configurations_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;

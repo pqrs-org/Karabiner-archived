@@ -39,6 +39,10 @@
   <symbol_map type="KeyCode" name="TAB" value="48" />
   <symbol_map type="KeyCode" name="SPACE" value="49" />
   <symbol_map type="KeyCode" name="VK__AUTOINDEX__BEGIN__" value="1191" />
+  <symbol_map type="Language" name="NONE" value="0" />
+  <symbol_map type="Language" name="VK__AUTOINDEX__BEGIN__" value="1" />
+  <symbol_map type="LanguageDetail" name="NONE" value="0" />
+  <symbol_map type="LanguageDetail" name="VK__AUTOINDEX__BEGIN__" value="1" />
   <symbol_map type="ModifierFlag" name="CAPSLOCK" value="0x10000" />
   <symbol_map type="ModifierFlag" name="SHIFT_L" value="0x20002" />
   <symbol_map type="ModifierFlag" name="SHIFT_R" value="0x20004" />
