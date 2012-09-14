@@ -897,6 +897,15 @@
         </autogen>
       </item>
       <item>
+        <name>Option+LeftClick to Option+RightClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_ol2or</identifier>
+        <autogen>
+          --PointingButtonToPointingButton--
+          PointingButton::LEFT, VK_OPTION,
+          PointingButton::RIGHT, VK_OPTION
+        </autogen>
+      </item>
+      <item>
         <name>Option+LeftClick to MiddleClick</name>
         <identifier>remap.samples_pointingbuttontopointingbutton_ol2m</identifier>
         <autogen>--PointingButtonToPointingButton-- PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
