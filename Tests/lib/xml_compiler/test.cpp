@@ -88,6 +88,62 @@ TEST(pqrs_xml_compiler, reload)
                                                           ""));
 
   // ------------------------------------------------------------
+  // languagedef
+  EXPECT_EQ(boost::optional<uint32_t>(1),
+            xml_compiler.get_symbol_map_value("Language::CANADIAN"));
+  {
+    uint32_t language;
+    uint32_t language_detail;
+    xml_compiler.get_languageid(language, language_detail,
+                                "en",
+                                "com.apple.keylayout.Canadian",
+                                "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::CANADIAN"), language);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::NONE"), language_detail);
+  }
+
+  EXPECT_EQ(boost::optional<uint32_t>(2),
+            xml_compiler.get_symbol_map_value("Language::BEPO"));
+  EXPECT_EQ(boost::optional<uint32_t>(1),
+            xml_compiler.get_symbol_map_value("LanguageDetail::BEPO"));
+  {
+    uint32_t language;
+    uint32_t language_detail;
+    xml_compiler.get_languageid(language, language_detail,
+                                "",
+                                "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak",
+                                "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::BEPO"), language);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::BEPO"), language_detail);
+  }
+
+  EXPECT_EQ(boost::optional<uint32_t>(2),
+            xml_compiler.get_symbol_map_value("LanguageDetail::BEPO_AZERTYCMD"));
+  {
+    uint32_t language;
+    uint32_t language_detail;
+    xml_compiler.get_languageid(language, language_detail,
+                                "",
+                                "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd",
+                                "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::BEPO"), language);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::BEPO_AZERTYCMD"), language_detail);
+  }
+
+  EXPECT_EQ(boost::optional<uint32_t>(4),
+            xml_compiler.get_symbol_map_value("Language::JAPANESE"));
+  {
+    uint32_t language;
+    uint32_t language_detail;
+    xml_compiler.get_languageid(language, language_detail,
+                                "ja",
+                                "com.apple.inputmethod.Kotoeri.Japanese",
+                                "com.apple.inputmethod.Japanese");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::JAPANESE"), language);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::JAPANESE"), language_detail);
+  }
+
+  // ------------------------------------------------------------
   uint32_t vk_config_base = vk_change_inputsource_base;
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));

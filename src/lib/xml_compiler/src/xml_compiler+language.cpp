@@ -146,12 +146,28 @@ namespace pqrs {
           continue;
         }
 
-        if (it.get_tag_name() == "vkchangeinputsourcedef") {
-          if (! symbol_map_.get_optional(*(newlanguage->get_name()))) {
-            auto keycode = symbol_map_.add("KeyCode",
-                                           boost::replace_first_copy(*(newlanguage->get_name()), "KeyCode::", ""));
-            vk_change_inputsource_map_[keycode] = newlanguage;
-          }
+        // ----------------------------------------
+        // register to symbol_map_.
+        switch (definition_type) {
+          case definition_type::none:
+            throw xml_compiler_logic_error("invalid definition_type at language_loader::traverse.");
+
+          case definition_type::vkchangeinputsourcedef:
+            if (! symbol_map_.get_optional(*(newlanguage->get_name()))) {
+              auto keycode = symbol_map_.add("KeyCode",
+                                             boost::replace_first_copy(*(newlanguage->get_name()), "KeyCode::", ""));
+              vk_change_inputsource_map_[keycode] = newlanguage;
+            }
+            break;
+
+          case definition_type::languagedef:
+            symbol_map_.add("Language", *(newlanguage->get_name()));
+            if (newlanguage->get_detail()) {
+              symbol_map_.add("LanguageDetail", *(newlanguage->get_detail()));
+            }
+            language_vector_.push_back(newlanguage);
+
+            break;
         }
       }
     }
