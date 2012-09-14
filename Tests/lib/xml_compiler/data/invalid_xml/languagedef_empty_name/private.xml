@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>LANGUAGEDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <languagedef>
+          <name></name>
+          <bcp47>en</bcp47>
+        </languagedef>
+        ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>
