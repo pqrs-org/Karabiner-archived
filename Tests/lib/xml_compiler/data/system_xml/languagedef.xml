@@ -3,17 +3,17 @@
   <!-- ============================================================ -->
   <!-- For VK_CHANGE_INPUTSOURCE_* -->
   <vkchangeinputsourcedef>
-    <name>VK_CHANGE_INPUTSOURCE_JAPANESE</name>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</name>
     <bcp47>ja</bcp47>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
-    <name>VK_CHANGE_INPUTSOURCE_DVORAK</name>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</name>
     <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
-    <name>VK_CHANGE_INPUTSOURCE_SWISS</name>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWISS</name>
     <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
   </vkchangeinputsourcedef>
 
@@ -21,18 +21,19 @@
   <!-- kTISPropertyInputSourceID -->
 
   <languagedef>
-    <languagename>CANADIAN</languagename>
+    <name>CANADIAN</name>
     <inputsourceid_equal>com.apple.keylayout.Canadian</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
-    <languagename>BEPO</languagename>
+    <name>BEPO</name>
+    <detail>BEPO_NORMAL</detail>
     <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
-    <languagename>BEPO</languagename>
-    <languagedetail>BEPO_AZERTYCMD</languagedetail>
+    <name>BEPO</name>
+    <detail>BEPO_AZERTYCMD</detail>
     <inputsourceid_equal>org.pqrs.inputmode.unknown.FrenchDvorak-AzertyCmd</inputsourceid_equal>
   </languagedef>
 
@@ -41,38 +42,38 @@
 
   <!-- Japanese -->
   <languagedef>
-    <languagename>JAPANESE</languagename>
-    <languagedetail>JAPANESE_HIRAGANA</languagedetail>
+    <name>JAPANESE</name>
+    <detail>JAPANESE_HIRAGANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
   </languagedef>
 
   <languagedef>
-    <languagename>JAPANESE</languagename>
-    <languagedetail>JAPANESE_KATAKANA</languagedetail>
+    <name>JAPANESE</name>
+    <detail>JAPANESE_KATAKANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
   </languagedef>
 
   <languagedef>
-    <languagename>JAPANESE</languagename>
-    <languagedetail>JAPANESE_FULLWIDTH_ROMAN</languagedetail>
+    <name>JAPANESE</name>
+    <detail>JAPANESE_FULLWIDTH_ROMAN</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
   </languagedef>
 
   <languagedef>
-    <languagename>JAPANESE</languagename>
-    <languagedetail>JAPANESE_HALFWIDTH_KANA</languagedetail>
+    <name>JAPANESE</name>
+    <detail>JAPANESE_HALFWIDTH_KANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
   </languagedef>
 
   <languagedef>
-    <languagename>JAPANESE</languagename>
+    <name>JAPANESE</name>
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
   </languagedef>
 
   <!-- ============================================================ -->
   <!-- BCP 47 -->
   <languagedef>
-    <languagename>FRENCH</languagename>
+    <name>FRENCH</name>
     <bcp47>fr</bcp47>
   </languagedef>
 
