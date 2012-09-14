@@ -532,6 +532,47 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
+
+  // ------------------------------------------------------------
+  // languagedef.xml
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_no_name");
+    xml_compiler.reload();
+    EXPECT_EQ("No <name> within <vkchangeinputsourcedef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_empty_name");
+    xml_compiler.reload();
+    EXPECT_EQ("<name> within <vkchangeinputsourcedef> must start with \"KeyCode::VK_CHANGE_INPUTSOURCE_\":\n"
+              "\n"
+              "<name></name>",
+              std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_no_value");
+    xml_compiler.reload();
+    EXPECT_EQ("No value definition within <vkchangeinputsourcedef>.",
+              std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_empty_value");
+    xml_compiler.reload();
+    EXPECT_EQ("Empty value definition within <vkchangeinputsourcedef>.",
+              std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_multiple_values");
+    xml_compiler.reload();
+    EXPECT_EQ("<vkchangeinputsourcedef> must not have multiple values:\n"
+              "\n"
+              "<inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>",
+              std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
 }
 
 TEST(pqrs_xml_compiler_symbol_map, add)

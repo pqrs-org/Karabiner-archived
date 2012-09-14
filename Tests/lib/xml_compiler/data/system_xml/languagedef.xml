@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <root>
+  {{ LANGUAGEDEF_REPLACEMENT }}
+
   <!-- ============================================================ -->
   <!-- For VK_CHANGE_INPUTSOURCE_* -->
   <vkchangeinputsourcedef>

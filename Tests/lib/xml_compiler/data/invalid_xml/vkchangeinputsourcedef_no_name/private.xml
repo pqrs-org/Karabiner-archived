@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>LANGUAGEDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <vkchangeinputsourcedef>
+          <bcp47>en</bcp47>
+        </vkchangeinputsourcedef>
+        ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>

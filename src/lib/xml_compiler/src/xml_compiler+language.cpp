@@ -83,7 +83,7 @@ namespace pqrs {
             if (definition_type == definition_type::vkchangeinputsourcedef) {
               if (! boost::starts_with(*(newlanguage->get_name()), "KeyCode::VK_CHANGE_INPUTSOURCE_")) {
                 error = true;
-                xml_compiler_.error_information_.set(boost::format("<name> within <vkchangeinputsourcedef> must start with \"KeyCode::VK_CHANGE_INPUTSOURCE_\"\n\n<name>%1%</name>") %
+                xml_compiler_.error_information_.set(boost::format("<name> within <vkchangeinputsourcedef> must start with \"KeyCode::VK_CHANGE_INPUTSOURCE_\":\n\n<name>%1%</name>") %
                                                      *(newlanguage->get_name()));
               }
             }
@@ -97,7 +97,7 @@ namespace pqrs {
 
               if (value_is_not_none) {
                 error = true;
-                xml_compiler_.error_information_.set(boost::format("<%1%> must not have multiple values.\n\n<%2%>%3%</%4%>") %
+                xml_compiler_.error_information_.set(boost::format("<%1%> must not have multiple values:\n\n<%2%>%3%</%4%>") %
                                                      it.get_tag_name() %
                                                      child.get_tag_name() %
                                                      *(newlanguage->get_value()) %
