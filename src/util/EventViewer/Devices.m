@@ -54,13 +54,13 @@
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [[NSMutableString new] autorelease];
 
-  for (NSDictionary* d in devices_) {
-    [string appendFormat:@"Vendor ID:%@\tProduct ID:%@\tManufacturer:%@\tDevice Name:%@\tLocation ID:%@\n",
-     [d objectForKey:@"vendorID"],
-     [d objectForKey:@"productID"],
-     [d objectForKey:@"manufacturer"],
-     [d objectForKey:@"product"],
-     [d objectForKey:@"locationID"]];
+  for (NSDictionary* dict in devices_) {
+    [string appendFormat:@"%@ (%@)\n    Vendor ID:%@\n    Product ID:%@\n    Location ID:%@\n\n",
+      [dict objectForKey:@"product"],
+      [dict objectForKey:@"manufacturer"],
+      [dict objectForKey:@"vendorID"],
+      [dict objectForKey:@"productID"],
+      [dict objectForKey:@"locationID"]];
   }
 
   if ([string length] > 0) {
