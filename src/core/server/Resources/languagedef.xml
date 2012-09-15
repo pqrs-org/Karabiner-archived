@@ -58,16 +58,11 @@
   <!-- ============================================================ -->
   <!-- languagedef -->
 
-  <!-- inputsourceid -->
+  <!-- inputsourceid_equal -->
   <languagedef>
     <name>CHINESE_TRADITIONAL</name>
     <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
     <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
-  </languagedef>
-
-  <languagedef>
-    <name>CANADIAN</name>
-    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
   </languagedef>
 
   <languagedef>
@@ -82,7 +77,30 @@
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
   </languagedef>
 
-  <!-- inputmodeid -->
+  <languagedef>
+    <name>SWISS</name>
+    <detail>SWISS_FRENCH</detail>
+    <inputsourceid_equal>com.apple.keylayout.SwissFrench</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>SWISS</name>
+    <detail>SWISS_GERMAN</detail>
+    <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
+  </languagedef>
+
+  <!-- inputsourceid_prefix -->
+  <languagedef>
+    <name>CANADIAN</name>
+    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
+  </languagedef>
+
+  <languagedef>
+    <name>SWISS</name>
+    <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
+  </languagedef>
+
+  <!-- inputmodeid_equal -->
   <languagedef>
     <name>CHINESE_TRADITIONAL</name>
     <detail>CHINESE_TRADITIONAL</detail>
@@ -131,10 +149,32 @@
     <inputmodeid_equal>com.apple.inputmethod.Korean</inputmodeid_equal>
   </languagedef>
 
+  <!-- inputmodeid_prefix -->
+
   <!-- bcp47 -->
+  <languagedef>
+    <name>CROATIAN</name>
+    <bcp47>hr</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>FINNISH</name>
+    <bcp47>fi</bcp47>
+  </languagedef>
+
   <languagedef>
     <name>FRENCH</name>
     <bcp47>fr</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>HUNGARIAN</name>
+    <bcp47>hu</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>SWEDISH</name>
+    <bcp47>sv</bcp47>
   </languagedef>
 
 </root>
