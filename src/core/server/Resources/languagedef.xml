@@ -4,7 +4,6 @@
   <!-- For VK_CHANGE_INPUTSOURCE_* -->
 
   <!-- bcp47 -->
-  <vkchangeinputsourcedef><name>KeyCode::VK_CHANGE_INPUTSOURCE_CANADIAN</name><bcp47>ca</bcp47></vkchangeinputsourcedef>
   <vkchangeinputsourcedef><name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name><bcp47>en</bcp47></vkchangeinputsourcedef>
   <vkchangeinputsourcedef><name>KeyCode::VK_CHANGE_INPUTSOURCE_ESTONIAN</name><bcp47>et</bcp47></vkchangeinputsourcedef>
   <vkchangeinputsourcedef><name>KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</name><bcp47>fi</bcp47></vkchangeinputsourcedef>
@@ -16,6 +15,11 @@
   <vkchangeinputsourcedef><name>KeyCode::VK_CHANGE_INPUTSOURCE_THAI</name><bcp47>th</bcp47></vkchangeinputsourcedef>
 
   <!-- inputsourceid -->
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CANADIAN</name>
+    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
+  </vkchangeinputsourcedef>
+
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</name>
     <inputsourceid_equal>com.apple.keylayout.Colemak</inputsourceid_equal>
@@ -56,7 +60,7 @@
 
   <languagedef>
     <name>CANADIAN</name>
-    <inputsourceid_equal>com.apple.keylayout.Canadian</inputsourceid_equal>
+    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
   </languagedef>
 
   <languagedef>
