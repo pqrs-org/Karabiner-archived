@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <root>
   <devicevendordef>
+    <vendorname>APPLE_INC</vendorname>
+    <vendorid>0x05ac</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
     <vendorname>APPLE_COMPUTER</vendorname>
     <vendorid>0x05ac</vendorid>
   </devicevendordef>
