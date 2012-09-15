@@ -78,6 +78,18 @@
   </languagedef>
 
   <languagedef>
+    <name>NORWEGIAN</name>
+    <detail>NORWEGIAN_EXTENDED</detail>
+    <inputsourceid_equal>com.apple.keylayout.NorwegianExtended</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>NORWEGIAN</name>
+    <detail>NORWEGIAN_SAMI_PC</detail>
+    <inputsourceid_equal>com.apple.keylayout.NorwegianSami-PC</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
     <name>SWISS</name>
     <detail>SWISS_FRENCH</detail>
     <inputsourceid_equal>com.apple.keylayout.SwissFrench</inputsourceid_equal>
@@ -170,6 +182,11 @@
   <languagedef>
     <name>HUNGARIAN</name>
     <bcp47>hu</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>NORWEGIAN</name>
+    <bcp47>nb</bcp47>
   </languagedef>
 
   <languagedef>
