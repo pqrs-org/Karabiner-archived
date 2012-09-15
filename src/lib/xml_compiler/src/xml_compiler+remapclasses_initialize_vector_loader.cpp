@@ -371,6 +371,7 @@ namespace pqrs {
           { "KeyboardType::",    BRIDGE_DATATYPE_KEYBOARDTYPE    },
           { "DeviceVendor::",    BRIDGE_DATATYPE_DEVICEVENDOR    },
           { "DeviceProduct::",   BRIDGE_DATATYPE_DEVICEPRODUCT   },
+          { "DeviceLocation::",  BRIDGE_DATATYPE_DEVICELOCATION  },
           { "Option::",          BRIDGE_DATATYPE_OPTION          },
         };
         for (auto& it : info) {
