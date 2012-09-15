@@ -7,6 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     List* PointingRelativeToScroll::queue_ = NULL;
     Flags PointingRelativeToScroll::currentFromFlags_ = NULL;
+    Flags PointingRelativeToScroll::currentToFlags_ = NULL;
     TimerWrapper PointingRelativeToScroll::timer_;
 
     void
@@ -38,6 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     PointingRelativeToScroll::PointingRelativeToScroll(void) :
       index_(0),
+      index_is_toflags_(false),
       absolute_distance_(0),
       chained_delta1_(0),
       chained_delta2_(0),
@@ -54,7 +56,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_FLAGS:
         {
-          fromFlags_ = newval;
+          if (index_is_toflags_) {
+            toFlags_ = newval;
+          } else {
+            fromFlags_ = newval;
+          }
           break;
         }
 
@@ -62,6 +68,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           fromButton_ = newval;
           break;
+        }
+
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::POINTINGRELATIVETOSCROLL_TOFLAGS == newval) {
+            index_is_toflags_ = true;
+          }
         }
 
         default:
@@ -211,6 +224,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       queue_->push_back(new Item(chained_delta1_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE, chained_delta2_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE));
 
       currentFromFlags_ = fromFlags_;
+      currentToFlags_ = toFlags_;
       timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
     }
 
@@ -234,6 +248,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       FlagStatus::temporary_decrease(currentFromFlags_);
+      FlagStatus::temporary_increase(currentToFlags_);
       {
         int d1 = delta1;
         int d2 = delta2;
@@ -245,9 +260,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         EventOutputQueue::FireScrollWheel::fire(d1, d2);
       }
-      // We need to call temporary_increase.
+      // We need to restore temporary flags.
       // Because normal cursor move event don't restore temporary_count_.
       // (See EventInputQueue::push_RelativePointerEventCallback.)
+      FlagStatus::temporary_decrease(currentToFlags_);
       FlagStatus::temporary_increase(currentFromFlags_);
 
       // ----------------------------------------

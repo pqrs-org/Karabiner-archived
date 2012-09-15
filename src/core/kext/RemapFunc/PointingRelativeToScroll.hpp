@@ -23,6 +23,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // [0] => fromFlags_
       // [0] => fromButtons_
+      //
+      // [1] => Option::POINTINGRELATIVETOSCROLL_TOFLAGS
+      // [2] => toFlags_
       void add(unsigned int datatype, unsigned int newval);
 
     private:
@@ -54,9 +57,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------
       size_t index_;
+      bool index_is_toflags_;
       FromKeyChecker fromkeychecker_;
       Flags fromFlags_;
       PointingButton fromButton_;
+      Flags toFlags_;
 
       // ----------
       unsigned int absolute_distance_;
@@ -74,6 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------
       static List* queue_;
       static Flags currentFromFlags_;
+      static Flags currentToFlags_;
       static TimerWrapper timer_;
     };
   }

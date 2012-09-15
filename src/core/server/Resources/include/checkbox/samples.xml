@@ -873,6 +873,31 @@
         <autogen>--PointingRelativeToScroll-- PointingButton::LEFT, VK_SHIFT</autogen>
       </item>
       <item>
+        <name>With ToFlags</name>
+        <appendix>Command+CursorMove to Command+ScrollWheel</appendix>
+        <appendix>Option+CursorMove to Control+ScrollWheel</appendix>
+        <appendix>RightClick+CursorMove to Control+ScrollWheel</appendix>
+        <identifier>remap.samples_pointingrelativetoscroll_with_toflags</identifier>
+        <autogen>
+          --PointingRelativeToScroll--
+          VK_COMMAND,
+          Option::POINTINGRELATIVETOSCROLL_TOFLAGS,
+          VK_COMMAND
+        </autogen>
+        <autogen>
+          --PointingRelativeToScroll--
+          VK_OPTION,
+          Option::POINTINGRELATIVETOSCROLL_TOFLAGS,
+          ModifierFlag::CONTROL_L
+        </autogen>
+        <autogen>
+          --PointingRelativeToScroll--
+          PointingButton::RIGHT,
+          Option::POINTINGRELATIVETOSCROLL_TOFLAGS,
+          ModifierFlag::CONTROL_L
+        </autogen>
+      </item>
+      <item>
         <name>SimultaneousKeyPresses</name>
         <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
         <identifier>remap.samples_pointingrelativetoscroll_simultaneouskeypresses</identifier>
