@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_DEVICEVENDOR:
           switch (index_) {
             case 0:
-              vendorID_ = newval;
+              deviceIdentifier_.setVendor(newval);
               ++index_;
               break;
             default:
@@ -28,7 +28,19 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_DEVICEPRODUCT:
           switch (index_) {
             case 1:
-              productID_ = newval;
+              deviceIdentifier_.setProduct(newval);
+              ++index_;
+              break;
+            default:
+              IOLOG_ERROR("Invalid ForceNumLockOn::add\n");
+              break;
+          }
+          break;
+
+        case BRIDGE_DATATYPE_DEVICELOCATION:
+          switch (index_) {
+            case 2:
+              deviceIdentifier_.setLocation(newval);
               ++index_;
               break;
             default:
@@ -49,7 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! item) return false;
       if (index_ != 2) return false;
 
-      if (! (item->getDeviceIdentifier()).isEqualVendorProduct(vendorID_, productID_)) return false;
+      if (! (item->getDeviceIdentifier()).isEqual(deviceIdentifier_)) return false;
 
       // NumLock Hacks
       //
