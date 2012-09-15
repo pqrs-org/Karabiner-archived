@@ -7,7 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
     DeviceFilter::DeviceFilter(unsigned int t) : type_(t)
     {
-      targets_ = new Vector_DeviceFilterValue();
+      targets_ = new Vector_DeviceIdentifier();
     }
 
     DeviceFilter::~DeviceFilter(void)
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (! targets_) return;
 
-      targets_->push_back(DeviceFilterValue(vendorID, productID, locationID));
+      targets_->push_back(DeviceIdentifier(vendorID, productID, locationID));
     }
 
     bool
@@ -37,8 +37,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           bool isnot = (type_ == BRIDGE_FILTERTYPE_DEVICE_NOT);
 
           for (size_t i = 0; i < targets_->size(); ++i) {
-            DeviceFilterValue& v = (*targets_)[i];
-            if (CommonData::getcurrent_deviceIdentifier().isEqual(v.vendorID, v.productID, v.locationID)) {
+            DeviceIdentifier& v = (*targets_)[i];
+            if (CommonData::getcurrent_deviceIdentifier().isEqual(v)) {
               return isnot ? true : false;
             }
           }
