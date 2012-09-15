@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <!-- ============================================================ -->
-  <!-- For VK_CHANGE_INPUTSOURCE_* -->
+  <!-- vkchangeinputsourcedef -->
 
   <!-- bcp47 -->
   <vkchangeinputsourcedef><name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name><bcp47>en</bcp47></vkchangeinputsourcedef>
@@ -56,7 +56,14 @@
   </vkchangeinputsourcedef>
 
   <!-- ============================================================ -->
-  <!-- kTISPropertyInputSourceID -->
+  <!-- languagedef -->
+
+  <!-- inputsourceid -->
+  <languagedef>
+    <name>CHINESE_TRADITIONAL</name>
+    <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
+    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
+  </languagedef>
 
   <languagedef>
     <name>CANADIAN</name>
@@ -75,10 +82,13 @@
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
   </languagedef>
 
-  <!-- ============================================================ -->
-  <!-- kTISPropertyInputModeID -->
+  <!-- inputmodeid -->
+  <languagedef>
+    <name>CHINESE_TRADITIONAL</name>
+    <detail>CHINESE_TRADITIONAL</detail>
+    <inputmodeid_equal>com.apple.inputmethod.TCIM</inputmodeid_equal>
+  </languagedef>
 
-  <!-- Japanese -->
   <languagedef>
     <name>JAPANESE</name>
     <detail>JAPANESE_HIRAGANA</detail>
@@ -109,8 +119,7 @@
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
   </languagedef>
 
-  <!-- ============================================================ -->
-  <!-- BCP 47 -->
+  <!-- bcp47 -->
   <languagedef>
     <name>FRENCH</name>
     <bcp47>fr</bcp47>
