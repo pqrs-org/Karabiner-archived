@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       unsigned int type_;
-      Vector_DeviceFilterValue* targets_;
+      Vector_DeviceIdentifier* targets_;
     };
   }
 }
