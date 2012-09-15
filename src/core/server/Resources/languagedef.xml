@@ -115,13 +115,11 @@
   <!-- inputmodeid_equal -->
   <languagedef>
     <name>CHINESE_TRADITIONAL</name>
-    <detail>CHINESE_TRADITIONAL</detail>
     <inputmodeid_equal>com.apple.inputmethod.TCIM</inputmodeid_equal>
   </languagedef>
 
   <languagedef>
     <name>CHINESE_SIMPLIFIED</name>
-    <detail>CHINESE_SIMPLIFIED</detail>
     <inputmodeid_equal>com.apple.inputmethod.SCIM</inputmodeid_equal>
   </languagedef>
 
@@ -151,13 +149,11 @@
 
   <languagedef>
     <name>JAPANESE</name>
-    <detail>JAPANESE</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
   </languagedef>
 
   <languagedef>
     <name>KOREAN</name>
-    <detail>KOREAN</detail>
     <inputmodeid_equal>com.apple.inputmethod.Korean</inputmodeid_equal>
   </languagedef>
 
