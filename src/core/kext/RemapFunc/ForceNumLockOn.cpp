@@ -59,7 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ForceNumLockOn::remap(ListHookedKeyboard::Item* item)
     {
       if (! item) return false;
-      if (index_ != 2) return false;
+      if (index_ < 2) return false;
 
       if (! (item->getDeviceIdentifier()).isEqual(deviceIdentifier_)) return false;
 
