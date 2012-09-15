@@ -9,26 +9,22 @@ namespace pqrs {
                                            const std::string& inputsourceid,
                                            const std::string& inputmodeid) const
   {
-    if (! value_) return false;
+    for (auto& r : rules_bcp47_) {
+      if (bcp47 == r) return true;
+    }
 
-    switch (value_type_) {
-      case value_type::none:
-        throw xml_compiler_logic_error("language::is_rules_matched is called with value_type::none.");
+    for (auto& r : rules_inputsourceid_equal_) {
+      if (inputsourceid == r) return true;
+    }
+    for (auto& r : rules_inputsourceid_prefix_) {
+      if (boost::starts_with(inputsourceid, r)) return true;
+    }
 
-      case value_type::bcp47:
-        return bcp47 == *value_;
-
-      case value_type::inputsourceid_equal:
-        return inputsourceid == *value_;
-
-      case value_type::inputsourceid_prefix:
-        return boost::starts_with(inputsourceid, *value_);
-
-      case value_type::inputmodeid_equal:
-        return inputmodeid == *value_;
-
-      case value_type::inputmodeid_prefix:
-        return boost::starts_with(inputmodeid, *value_);
+    for (auto& r : rules_inputmodeid_equal_) {
+      if (inputmodeid == r) return true;
+    }
+    for (auto& r : rules_inputmodeid_prefix_) {
+      if (boost::starts_with(inputmodeid, r)) return true;
     }
 
     return false;
@@ -92,20 +88,16 @@ namespace pqrs {
             newlanguage->set_detail(pqrs::string::remove_whitespaces_copy(child.get_data()));
 
           } else {
-            language::value_type::type value_type = language::value_type::get_type_from_string(child.get_tag_name());
-            if (value_type != language::value_type::none) {
-              bool value_is_not_none = newlanguage->get_value();
-              newlanguage->set_value_type(value_type);
-              newlanguage->set_value(boost::trim_copy(child.get_data()));
-
-              if (value_is_not_none) {
-                error = true;
-                xml_compiler_.error_information_.set(boost::format("<%1%> must not have multiple values:\n\n<%2%>%3%</%4%>") %
-                                                     it.get_tag_name() %
-                                                     child.get_tag_name() %
-                                                     *(newlanguage->get_value()) %
-                                                     child.get_tag_name());
-              }
+            if (child.get_tag_name() == "bcp47") {
+              newlanguage->add_rule_bcp47(boost::trim_copy(child.get_data()));
+            } else if (child.get_tag_name() == "inputsourceid_equal") {
+              newlanguage->add_rule_inputsourceid_equal(boost::trim_copy(child.get_data()));
+            } else if (child.get_tag_name() == "inputsourceid_prefix") {
+              newlanguage->add_rule_inputsourceid_prefix(boost::trim_copy(child.get_data()));
+            } else if (child.get_tag_name() == "inputmodeid_equal") {
+              newlanguage->add_rule_inputmodeid_equal(boost::trim_copy(child.get_data()));
+            } else if (child.get_tag_name() == "inputmodeid_prefix") {
+              newlanguage->add_rule_inputmodeid_prefix(boost::trim_copy(child.get_data()));
             }
           }
         }
@@ -131,20 +123,6 @@ namespace pqrs {
         }
 
         // detail_ can be empty.
-
-        // values and value_type
-        if (newlanguage->get_value_type() == language::value_type::none ||
-            ! newlanguage->get_value()) {
-          xml_compiler_.error_information_.set(boost::format("No value definition within <%1%>.") %
-                                               it.get_tag_name());
-          continue;
-        }
-
-        if (newlanguage->get_value() && newlanguage->get_value()->empty()) {
-          xml_compiler_.error_information_.set(boost::format("Empty value definition within <%1%>.") %
-                                               it.get_tag_name());
-          continue;
-        }
 
         // ----------------------------------------
         // register to symbol_map_.
