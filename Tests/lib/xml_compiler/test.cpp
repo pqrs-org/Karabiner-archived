@@ -193,7 +193,7 @@ TEST(pqrs_xml_compiler, reload)
     // <autogen>--ShowStatusMessage-- A B C D E F G </autogen>
 
     expected.push_back(14); // count
-    expected.push_back(47); // BRIDGE_STATUSMESSAGE
+    expected.push_back(BRIDGE_STATUSMESSAGE);
     expected.push_back(65); // A
     expected.push_back(32); // space
     expected.push_back(66); // B
@@ -328,57 +328,57 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       // ------------------------------------------------------------
       // <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
       expected.push_back(7);      // count
-      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
-      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(BRIDGE_DATATYPE_FLAGS);
       expected.push_back(131074); // ModifierFlag::SHIFT_L
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
 
       expected.push_back(2);      // count
-      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
       expected.push_back(1);      // ConfigIndex::notsave_passthrough
 
       expected.push_back(7);      // count
-      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
-      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(BRIDGE_DATATYPE_FLAGS);
       expected.push_back(131076); // ModifierFlag::SHIFT_R
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
 
       expected.push_back(2);      // count
-      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
       expected.push_back(1);      // ConfigIndex::notsave_passthrough
 
       // ------------------------------------------------------------
       // <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::SPACE</autogen>
       expected.push_back(7);      // count
-      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
-      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(BRIDGE_DATATYPE_FLAGS);
       expected.push_back(131074); // ModifierFlag::SHIFT_L
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
 
       expected.push_back(2);      // count
-      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
       expected.push_back(1);      // ConfigIndex::notsave_passthrough
 
       expected.push_back(7);      // count
-      expected.push_back(12);     // BRIDGE_REMAPTYPE_KEYTOKEY
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
-      expected.push_back(3);      // BRIDGE_DATATYPE_FLAGS
+      expected.push_back(BRIDGE_DATATYPE_FLAGS);
       expected.push_back(131076); // ModifierFlag::SHIFT_R
-      expected.push_back(1);      // BRIDGE_DATATYPE_KEYCODE
+      expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
 
       expected.push_back(2);      // count
-      expected.push_back(36);     // BRIDGE_FILTERTYPE_CONFIG_NOT
+      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
       expected.push_back(1);      // ConfigIndex::notsave_passthrough
 
       EXPECT_EQ(expected, actual);
@@ -606,29 +606,6 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
               std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
-  {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_no_value");
-    xml_compiler.reload();
-    EXPECT_EQ("No value definition within <vkchangeinputsourcedef>.",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
-  }
-  {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_empty_value");
-    xml_compiler.reload();
-    EXPECT_EQ("Empty value definition within <vkchangeinputsourcedef>.",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
-  }
-  {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_multiple_values");
-    xml_compiler.reload();
-    EXPECT_EQ("<vkchangeinputsourcedef> must not have multiple values:\n"
-              "\n"
-              "<inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
-  }
 
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/languagedef_no_name");
@@ -640,29 +617,6 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/languagedef_empty_name");
     xml_compiler.reload();
     EXPECT_EQ("Empty <name> within <languagedef>.",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
-  }
-  {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/languagedef_no_value");
-    xml_compiler.reload();
-    EXPECT_EQ("No value definition within <languagedef>.",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
-  }
-  {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/languagedef_empty_value");
-    xml_compiler.reload();
-    EXPECT_EQ("Empty value definition within <languagedef>.",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
-  }
-  {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/languagedef_multiple_values");
-    xml_compiler.reload();
-    EXPECT_EQ("<languagedef> must not have multiple values:\n"
-              "\n"
-              "<inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>",
               std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
