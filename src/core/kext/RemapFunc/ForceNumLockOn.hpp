@@ -20,8 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       size_t index_;
-      DeviceVendor vendorID_;
-      DeviceProduct productID_;
+      DeviceIdentifier deviceIdentifier_;
     };
   }
 }

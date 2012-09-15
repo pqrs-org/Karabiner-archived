@@ -519,6 +519,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class DeviceIdentifier {
   public:
+    DeviceIdentifier(void) : vendor_(0), product_(0), location_(0) {}
+    DeviceIdentifier(DeviceVendor v, DeviceProduct p, DeviceLocation l) : vendor_(v), product_(p), location_(l) {}
+
     DeviceVendor getVendor(void) const { return vendor_; }
     DeviceProduct getProduct(void) const { return product_; }
     DeviceLocation getLocation(void) const { return location_; }
@@ -535,6 +538,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (DeviceProduct::ANY != p && product_ != p) return false;
       if (DeviceLocation::ANY != l && location_ != l) return false;
       return true;
+    }
+    bool isEqual(const DeviceIdentifier& v) const {
+      return isEqual(v.vendor_, v.product_, v.location_);
     }
 
   private:
