@@ -280,6 +280,10 @@ namespace pqrs {
             auto v = symbol_map_.get_optional(std::string("LanguageDetail::") + *(it->get_detail()));
             if (! v) return;
             language_detail = *v;
+          } else {
+            auto v = symbol_map_.get_optional(std::string("LanguageDetail::") + *(it->get_name()));
+            if (! v) return;
+            language_detail = *v;
           }
         }
       }

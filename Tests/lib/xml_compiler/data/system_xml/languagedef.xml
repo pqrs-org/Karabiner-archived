@@ -29,7 +29,6 @@
 
   <languagedef>
     <name>BEPO</name>
-    <detail>BEPO</detail>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
   </languagedef>
 
@@ -69,7 +68,6 @@
 
   <languagedef>
     <name>JAPANESE</name>
-    <detail>JAPANESE</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
   </languagedef>
 
