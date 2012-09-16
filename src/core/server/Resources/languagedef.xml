@@ -67,7 +67,6 @@
 
   <languagedef>
     <name>BEPO</name>
-    <detail>BEPO</detail>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
   </languagedef>
 
@@ -75,6 +74,11 @@
     <name>BEPO</name>
     <detail>BEPO_AZERTYCMD</detail>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>ENGLISH_TYPOGRAPHIC</name>
+    <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
@@ -87,6 +91,16 @@
     <name>NORWEGIAN</name>
     <detail>NORWEGIAN_SAMI_PC</detail>
     <inputsourceid_equal>com.apple.keylayout.NorwegianSami-PC</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>RUSSIAN</name>
+    <inputsourceid_equal>org.pqrs.inputmode.unknown.RussianWin</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>RUSSIAN_TYPOGRAPHIC</name>
+    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
@@ -113,6 +127,11 @@
   </languagedef>
 
   <!-- inputmodeid_equal -->
+  <languagedef>
+    <name>AINU</name>
+    <inputmodeid_equal>com.apple.kotoeri.Ainu</inputmodeid_equal>
+  </languagedef>
+
   <languagedef>
     <name>CHINESE_TRADITIONAL</name>
     <inputmodeid_equal>com.apple.inputmethod.TCIM</inputmodeid_equal>
@@ -183,6 +202,11 @@
   <languagedef>
     <name>NORWEGIAN</name>
     <bcp47>nb</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>RUSSIAN</name>
+    <bcp47>ru</bcp47>
   </languagedef>
 
   <languagedef>
