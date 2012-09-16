@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <root>
   <replacementdef>
-    <replacementname>LANGUAGEDEF_REPLACEMENT</replacementname>
+    <replacementname>INPUTSOURCEDEF_REPLACEMENT</replacementname>
     <replacementvalue>
       <![CDATA[
-        <languagedef>
+        <inputsourcedef>
+          <name></name>
           <bcp47>en</bcp47>
-        </languagedef>
+        </inputsourcedef>
         ]]>
     </replacementvalue>
   </replacementdef>

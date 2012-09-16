@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <replacementdef>
-    <replacementname>LANGUAGEDEF_REPLACEMENT</replacementname>
+    <replacementname>INPUTSOURCEDEF_REPLACEMENT</replacementname>
     <replacementvalue>
       <![CDATA[
         <vkchangeinputsourcedef>
