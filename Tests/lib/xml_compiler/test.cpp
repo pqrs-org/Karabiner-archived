@@ -88,63 +88,64 @@ TEST(pqrs_xml_compiler, reload)
                                                           ""));
 
   // ------------------------------------------------------------
-  // languagedef
+  // inputsourcedef
   {
-    uint32_t language;
-    uint32_t language_detail;
-    xml_compiler.get_languageid(language, language_detail,
-                                "en",
-                                "com.apple.keylayout.Canadian",
-                                "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::CANADIAN"), language);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::CANADIAN"), language_detail);
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+    xml_compiler.get_inputsourceid(inputsource,
+                                   inputsource_detail,
+                                   "en",
+                                   "com.apple.keylayout.Canadian",
+                                   "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::CANADIAN"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::CANADIAN"), inputsource_detail);
 
-    EXPECT_TRUE(xml_compiler.get_symbol_map_value("Language::FRENCH") != language);
-    EXPECT_TRUE(xml_compiler.get_symbol_map_value("LanguageDetail::FRENCH") != language_detail);
+    EXPECT_TRUE(xml_compiler.get_symbol_map_value("InputSource::FRENCH") != inputsource);
+    EXPECT_TRUE(xml_compiler.get_symbol_map_value("InputSourceDetail::FRENCH") != inputsource_detail);
   }
 
   {
-    uint32_t language;
-    uint32_t language_detail;
-    xml_compiler.get_languageid(language, language_detail,
-                                "",
-                                "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak",
-                                "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::BEPO"), language);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::BEPO"), language_detail);
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+                                   "",
+                                   "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak",
+                                   "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::BEPO"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::BEPO"), inputsource_detail);
   }
 
   {
-    uint32_t language;
-    uint32_t language_detail;
-    xml_compiler.get_languageid(language, language_detail,
-                                "",
-                                "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd",
-                                "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::BEPO"), language);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::BEPO_AZERTYCMD"), language_detail);
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+                                   "",
+                                   "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd",
+                                   "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::BEPO"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::BEPO_AZERTYCMD"), inputsource_detail);
   }
 
   {
-    uint32_t language;
-    uint32_t language_detail;
-    xml_compiler.get_languageid(language, language_detail,
-                                "ja",
-                                "com.apple.inputmethod.Kotoeri.Japanese",
-                                "com.apple.inputmethod.Japanese");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::JAPANESE"), language);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::JAPANESE"), language_detail);
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+                                   "ja",
+                                   "com.apple.inputmethod.Kotoeri.Japanese",
+                                   "com.apple.inputmethod.Japanese");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::JAPANESE"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::JAPANESE"), inputsource_detail);
   }
 
   {
-    uint32_t language;
-    uint32_t language_detail;
-    xml_compiler.get_languageid(language, language_detail,
-                                "fr",
-                                "com.apple.keylayout.French",
-                                "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::FRENCH"), language);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::FRENCH"), language_detail);
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+                                   "fr",
+                                   "com.apple.keylayout.French",
+                                   "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::FRENCH"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::FRENCH"), inputsource_detail);
   }
 
   // ------------------------------------------------------------
@@ -594,7 +595,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   }
 
   // ------------------------------------------------------------
-  // languagedef.xml
+  // inputsourcedef.xml
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_no_name");
     xml_compiler.reload();
@@ -612,15 +613,15 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   }
 
   {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/languagedef_no_name");
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/inputsourcedef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <name> within <languagedef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ("No <name> within <inputsourcedef>.", std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/languagedef_empty_name");
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/inputsourcedef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <name> within <languagedef>.",
+    EXPECT_EQ("Empty <name> within <inputsourcedef>.",
               std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }

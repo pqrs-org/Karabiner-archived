@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  {{ LANGUAGEDEF_REPLACEMENT }}
+  {{ INPUTSOURCEDEF_REPLACEMENT }}
 
   <!-- ============================================================ -->
   <!-- For VK_CHANGE_INPUTSOURCE_* -->
@@ -22,60 +22,60 @@
   <!-- ============================================================ -->
   <!-- kTISPropertyInputSourceID -->
 
-  <languagedef>
+  <inputsourcedef>
     <name>CANADIAN</name>
     <inputsourceid_equal>com.apple.keylayout.Canadian</inputsourceid_equal>
-  </languagedef>
+  </inputsourcedef>
 
-  <languagedef>
+  <inputsourcedef>
     <name>BEPO</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
-  </languagedef>
+  </inputsourcedef>
 
-  <languagedef>
+  <inputsourcedef>
     <name>BEPO</name>
     <detail>BEPO_AZERTYCMD</detail>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
-  </languagedef>
+  </inputsourcedef>
 
   <!-- ============================================================ -->
   <!-- kTISPropertyInputModeID -->
 
   <!-- Japanese -->
-  <languagedef>
+  <inputsourcedef>
     <name>JAPANESE</name>
     <detail>JAPANESE_HIRAGANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
-  </languagedef>
+  </inputsourcedef>
 
-  <languagedef>
+  <inputsourcedef>
     <name>JAPANESE</name>
     <detail>JAPANESE_KATAKANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
-  </languagedef>
+  </inputsourcedef>
 
-  <languagedef>
+  <inputsourcedef>
     <name>JAPANESE</name>
     <detail>JAPANESE_FULLWIDTH_ROMAN</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
-  </languagedef>
+  </inputsourcedef>
 
-  <languagedef>
+  <inputsourcedef>
     <name>JAPANESE</name>
     <detail>JAPANESE_HALFWIDTH_KANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
-  </languagedef>
+  </inputsourcedef>
 
-  <languagedef>
+  <inputsourcedef>
     <name>JAPANESE</name>
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
-  </languagedef>
+  </inputsourcedef>
 
   <!-- ============================================================ -->
   <!-- BCP 47 -->
-  <languagedef>
+  <inputsourcedef>
     <name>FRENCH</name>
     <bcp47>fr</bcp47>
-  </languagedef>
+  </inputsourcedef>
 
 </root>
