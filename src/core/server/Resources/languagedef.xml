@@ -197,6 +197,11 @@
   </languagedef>
 
   <languagedef>
+    <name>CZECH</name>
+    <bcp47>cs</bcp47>
+  </languagedef>
+
+  <languagedef>
     <name>FINNISH</name>
     <bcp47>fi</bcp47>
   </languagedef>
@@ -204,6 +209,11 @@
   <languagedef>
     <name>FRENCH</name>
     <bcp47>fr</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>GERMAN</name>
+    <bcp47>de</bcp47>
   </languagedef>
 
   <languagedef>
@@ -224,6 +234,11 @@
   <languagedef>
     <name>RUSSIAN</name>
     <bcp47>ru</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>SLOVENIAN</name>
+    <bcp47>sl</bcp47>
   </languagedef>
 
   <languagedef>
