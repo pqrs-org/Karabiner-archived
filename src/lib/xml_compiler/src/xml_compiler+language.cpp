@@ -142,6 +142,8 @@ namespace pqrs {
             symbol_map_.add("Language", *(newlanguage->get_name()));
             if (newlanguage->get_detail()) {
               symbol_map_.add("LanguageDetail", *(newlanguage->get_detail()));
+            } else {
+              symbol_map_.add("LanguageDetail", *(newlanguage->get_name()));
             }
             language_vector_.push_back(newlanguage);
 

@@ -89,8 +89,6 @@ TEST(pqrs_xml_compiler, reload)
 
   // ------------------------------------------------------------
   // languagedef
-  EXPECT_EQ(boost::optional<uint32_t>(1),
-            xml_compiler.get_symbol_map_value("Language::CANADIAN"));
   {
     uint32_t language;
     uint32_t language_detail;
@@ -99,13 +97,12 @@ TEST(pqrs_xml_compiler, reload)
                                 "com.apple.keylayout.Canadian",
                                 "");
     EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::CANADIAN"), language);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::NONE"), language_detail);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::CANADIAN"), language_detail);
+
+    EXPECT_TRUE(xml_compiler.get_symbol_map_value("Language::FRENCH") != language);
+    EXPECT_TRUE(xml_compiler.get_symbol_map_value("LanguageDetail::FRENCH") != language_detail);
   }
 
-  EXPECT_EQ(boost::optional<uint32_t>(2),
-            xml_compiler.get_symbol_map_value("Language::BEPO"));
-  EXPECT_EQ(boost::optional<uint32_t>(1),
-            xml_compiler.get_symbol_map_value("LanguageDetail::BEPO"));
   {
     uint32_t language;
     uint32_t language_detail;
@@ -117,8 +114,6 @@ TEST(pqrs_xml_compiler, reload)
     EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::BEPO"), language_detail);
   }
 
-  EXPECT_EQ(boost::optional<uint32_t>(2),
-            xml_compiler.get_symbol_map_value("LanguageDetail::BEPO_AZERTYCMD"));
   {
     uint32_t language;
     uint32_t language_detail;
@@ -130,8 +125,6 @@ TEST(pqrs_xml_compiler, reload)
     EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::BEPO_AZERTYCMD"), language_detail);
   }
 
-  EXPECT_EQ(boost::optional<uint32_t>(4),
-            xml_compiler.get_symbol_map_value("Language::JAPANESE"));
   {
     uint32_t language;
     uint32_t language_detail;
@@ -141,6 +134,17 @@ TEST(pqrs_xml_compiler, reload)
                                 "com.apple.inputmethod.Japanese");
     EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::JAPANESE"), language);
     EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::JAPANESE"), language_detail);
+  }
+
+  {
+    uint32_t language;
+    uint32_t language_detail;
+    xml_compiler.get_languageid(language, language_detail,
+                                "fr",
+                                "com.apple.keylayout.French",
+                                "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("Language::FRENCH"), language);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("LanguageDetail::FRENCH"), language_detail);
   }
 
   // ------------------------------------------------------------
