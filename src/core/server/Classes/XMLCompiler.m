@@ -306,6 +306,22 @@ static XMLCompiler* global_instance = nil;
   }
 }
 
+- (void) languageid:(uint32_t*)language
+ languageDetail:(uint32_t*)languageDetail
+ bcp47:(NSString*)bcp47
+ inputSourceID:(NSString*)inputSourceID
+ inputModeID:(NSString*)inputModeID
+{
+  @synchronized(self) {
+    pqrs_xml_compiler_get_languageid(pqrs_xml_compiler_,
+                                     language,
+                                     languageDetail,
+                                     [bcp47 UTF8String],
+                                     [inputSourceID UTF8String],
+                                     [inputModeID UTF8String]);
+  }
+}
+
 - (NSArray*) preferencepane_checkbox
 {
   @synchronized(self) {
