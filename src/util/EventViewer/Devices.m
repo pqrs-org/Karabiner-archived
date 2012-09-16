@@ -56,11 +56,11 @@
 
   for (NSDictionary* dict in devices_) {
     [string appendFormat:@"%@ (%@)\n    Vendor ID:%@\n    Product ID:%@\n    Location ID:%@\n\n",
-      [dict objectForKey:@"product"],
-      [dict objectForKey:@"manufacturer"],
-      [dict objectForKey:@"vendorID"],
-      [dict objectForKey:@"productID"],
-      [dict objectForKey:@"locationID"]];
+     [dict objectForKey:@"product"],
+     [dict objectForKey:@"manufacturer"],
+     [dict objectForKey:@"vendorID"],
+     [dict objectForKey:@"productID"],
+     [dict objectForKey:@"locationID"]];
   }
 
   if ([string length] > 0) {
