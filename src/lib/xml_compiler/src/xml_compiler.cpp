@@ -15,7 +15,7 @@ namespace pqrs {
     symbol_map_.clear();
     app_vector_.clear();
     vk_change_inputsource_map_.clear();
-    language_vector_.clear();
+    inputsource_vector_.clear();
     identifier_map_.clear();
     essential_configurations_.clear();
     remapclasses_initialize_vector_.clear();
@@ -95,20 +95,20 @@ namespace pqrs {
         loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicelocationdef.xml");
       }
 
-      // language
+      // inputsource
       {
-        language_loader loader(*this,
-                               symbol_map_,
-                               remapclasses_initialize_vector_,
-                               identifier_map_,
-                               vk_change_inputsource_map_,
-                               language_vector_);
+        inputsource_loader loader(*this,
+                                  symbol_map_,
+                                  remapclasses_initialize_vector_,
+                                  identifier_map_,
+                                  vk_change_inputsource_map_,
+                                  inputsource_vector_);
 
         if (private_xml_ptree_ptr) {
           loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
         }
 
-        loader_wrapper<language_loader>::traverse_system_xml(*this, loader, "languagedef.xml");
+        loader_wrapper<inputsource_loader>::traverse_system_xml(*this, loader, "inputsourcedef.xml");
       }
 
       // config_index, remapclasses_initialize_vector, preferences_node
@@ -258,33 +258,33 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::get_languageid(uint32_t& language,
-                               uint32_t& language_detail,
-                               const std::string& bcp47,
-                               const std::string& inputsourceid,
-                               const std::string& inputmodeid) const
+  xml_compiler::get_inputsourceid(uint32_t& inputsource,
+                                  uint32_t& inputsource_detail,
+                                  const std::string& bcp47,
+                                  const std::string& inputsourceid,
+                                  const std::string& inputmodeid) const
   {
-    language        = 0; // Language::NONE
-    language_detail = 0; // LanguageDetail::NONE
+    inputsource        = 0; // InputSource::NONE
+    inputsource_detail = 0; // InputSourceDetail::NONE
 
-    for (auto& it : language_vector_) {
+    for (auto& it : inputsource_vector_) {
       if (! it) continue;
 
       if (it->is_rules_matched(bcp47, inputsourceid, inputmodeid)) {
         {
-          auto v = symbol_map_.get_optional(std::string("Language::") + *(it->get_name()));
+          auto v = symbol_map_.get_optional(std::string("InputSource::") + *(it->get_name()));
           if (! v) return;
-          language = *v;
+          inputsource = *v;
         }
         {
           if (it->get_detail()) {
-            auto v = symbol_map_.get_optional(std::string("LanguageDetail::") + *(it->get_detail()));
+            auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *(it->get_detail()));
             if (! v) return;
-            language_detail = *v;
+            inputsource_detail = *v;
           } else {
-            auto v = symbol_map_.get_optional(std::string("LanguageDetail::") + *(it->get_name()));
+            auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *(it->get_name()));
             if (! v) return;
-            language_detail = *v;
+            inputsource_detail = *v;
           }
         }
       }

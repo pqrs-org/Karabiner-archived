@@ -31,12 +31,12 @@ uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compi
                                                             const char* bcp47,
                                                             const char* inputsourceid,
                                                             const char* inputmodeid);
-void pqrs_xml_compiler_get_languageid(const pqrs_xml_compiler* p,
-                                      uint32_t* language,
-                                      uint32_t* language_detail,
-                                      const char* bcp47,
-                                      const char* inputsourceid,
-                                      const char* inputmodeid);
+void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
+                                         uint32_t* inputsource,
+                                         uint32_t* inputsource_detail,
+                                         const char* bcp47,
+                                         const char* inputsourceid,
+                                         const char* inputmodeid);
 
 // ------------------------------------------------------------
 const uint32_t* pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p);

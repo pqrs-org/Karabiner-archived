@@ -5,9 +5,9 @@
 
 namespace pqrs {
   bool
-  xml_compiler::language::is_rules_matched(const std::string& bcp47,
-                                           const std::string& inputsourceid,
-                                           const std::string& inputmodeid) const
+  xml_compiler::inputsource::is_rules_matched(const std::string& bcp47,
+                                              const std::string& inputsourceid,
+                                              const std::string& inputmodeid) const
   {
     for (auto& r : rules_bcp47_) {
       if (bcp47 == r) return true;
@@ -30,7 +30,7 @@ namespace pqrs {
     return false;
   }
 
-  xml_compiler::language_loader::~language_loader(void)
+  xml_compiler::inputsource_loader::~inputsource_loader(void)
   {
     std::string raw_identifier("system.vk_change_inputsource_definition");
     auto identifier = raw_identifier;
@@ -51,14 +51,14 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::language_loader::traverse(const extracted_ptree& pt) const
+  xml_compiler::inputsource_loader::traverse(const extracted_ptree& pt) const
   {
     for (auto& it : pt) {
       definition_type::type definition_type = definition_type::none;
       if (it.get_tag_name() == "vkchangeinputsourcedef") {
         definition_type = definition_type::vkchangeinputsourcedef;
-      } else if (it.get_tag_name() == "languagedef") {
-        definition_type = definition_type::languagedef;
+      } else if (it.get_tag_name() == "inputsourcedef") {
+        definition_type = definition_type::inputsourcedef;
       }
 
       if (definition_type == definition_type::none) {
@@ -66,38 +66,38 @@ namespace pqrs {
           traverse(it.children_extracted_ptree());
         }
       } else {
-        std::tr1::shared_ptr<language> newlanguage(new language());
-        if (! newlanguage) continue;
+        std::tr1::shared_ptr<inputsource> newinputsource(new inputsource());
+        if (! newinputsource) continue;
 
         // ----------------------------------------
         bool error = false;
 
         for (auto& child : it.children_extracted_ptree()) {
           if (child.get_tag_name() == "name") {
-            newlanguage->set_name(pqrs::string::remove_whitespaces_copy(child.get_data()));
+            newinputsource->set_name(pqrs::string::remove_whitespaces_copy(child.get_data()));
 
             if (definition_type == definition_type::vkchangeinputsourcedef) {
-              if (! boost::starts_with(*(newlanguage->get_name()), "KeyCode::VK_CHANGE_INPUTSOURCE_")) {
+              if (! boost::starts_with(*(newinputsource->get_name()), "KeyCode::VK_CHANGE_INPUTSOURCE_")) {
                 error = true;
                 xml_compiler_.error_information_.set(boost::format("<name> within <vkchangeinputsourcedef> must start with \"KeyCode::VK_CHANGE_INPUTSOURCE_\":\n\n<name>%1%</name>") %
-                                                     *(newlanguage->get_name()));
+                                                     *(newinputsource->get_name()));
               }
             }
 
           } else if (child.get_tag_name() == "detail") {
-            newlanguage->set_detail(pqrs::string::remove_whitespaces_copy(child.get_data()));
+            newinputsource->set_detail(pqrs::string::remove_whitespaces_copy(child.get_data()));
 
           } else {
             if (child.get_tag_name() == "bcp47") {
-              newlanguage->add_rule_bcp47(boost::trim_copy(child.get_data()));
+              newinputsource->add_rule_bcp47(boost::trim_copy(child.get_data()));
             } else if (child.get_tag_name() == "inputsourceid_equal") {
-              newlanguage->add_rule_inputsourceid_equal(boost::trim_copy(child.get_data()));
+              newinputsource->add_rule_inputsourceid_equal(boost::trim_copy(child.get_data()));
             } else if (child.get_tag_name() == "inputsourceid_prefix") {
-              newlanguage->add_rule_inputsourceid_prefix(boost::trim_copy(child.get_data()));
+              newinputsource->add_rule_inputsourceid_prefix(boost::trim_copy(child.get_data()));
             } else if (child.get_tag_name() == "inputmodeid_equal") {
-              newlanguage->add_rule_inputmodeid_equal(boost::trim_copy(child.get_data()));
+              newinputsource->add_rule_inputmodeid_equal(boost::trim_copy(child.get_data()));
             } else if (child.get_tag_name() == "inputmodeid_prefix") {
-              newlanguage->add_rule_inputmodeid_prefix(boost::trim_copy(child.get_data()));
+              newinputsource->add_rule_inputmodeid_prefix(boost::trim_copy(child.get_data()));
             }
           }
         }
@@ -110,13 +110,13 @@ namespace pqrs {
         // Validation
 
         // name
-        if (! newlanguage->get_name()) {
+        if (! newinputsource->get_name()) {
           xml_compiler_.error_information_.set(boost::format("No <name> within <%1%>.") %
                                                it.get_tag_name());
           continue;
         }
 
-        if (newlanguage->get_name()->empty()) {
+        if (newinputsource->get_name()->empty()) {
           xml_compiler_.error_information_.set(boost::format("Empty <name> within <%1%>.") %
                                                it.get_tag_name());
           continue;
@@ -128,24 +128,24 @@ namespace pqrs {
         // register to symbol_map_.
         switch (definition_type) {
           case definition_type::none:
-            throw xml_compiler_logic_error("invalid definition_type at language_loader::traverse.");
+            throw xml_compiler_logic_error("invalid definition_type at inputsource_loader::traverse.");
 
           case definition_type::vkchangeinputsourcedef:
-            if (! symbol_map_.get_optional(*(newlanguage->get_name()))) {
+            if (! symbol_map_.get_optional(*(newinputsource->get_name()))) {
               auto keycode = symbol_map_.add("KeyCode",
-                                             boost::replace_first_copy(*(newlanguage->get_name()), "KeyCode::", ""));
-              vk_change_inputsource_map_[keycode] = newlanguage;
+                                             boost::replace_first_copy(*(newinputsource->get_name()), "KeyCode::", ""));
+              vk_change_inputsource_map_[keycode] = newinputsource;
             }
             break;
 
-          case definition_type::languagedef:
-            symbol_map_.add("Language", *(newlanguage->get_name()));
-            if (newlanguage->get_detail()) {
-              symbol_map_.add("LanguageDetail", *(newlanguage->get_detail()));
+          case definition_type::inputsourcedef:
+            symbol_map_.add("InputSource", *(newinputsource->get_name()));
+            if (newinputsource->get_detail()) {
+              symbol_map_.add("InputSourceDetail", *(newinputsource->get_detail()));
             } else {
-              symbol_map_.add("LanguageDetail", *(newlanguage->get_name()));
+              symbol_map_.add("InputSourceDetail", *(newinputsource->get_name()));
             }
-            language_vector_.push_back(newlanguage);
+            inputsource_vector_.push_back(newinputsource);
 
             break;
         }

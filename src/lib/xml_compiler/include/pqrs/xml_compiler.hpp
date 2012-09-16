@@ -32,7 +32,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector_prepare_loader.hpp"
 #include "pqrs/xml_compiler/detail/loader_wrapper.hpp"
-#include "pqrs/xml_compiler/detail/language.hpp"
+#include "pqrs/xml_compiler/detail/inputsource.hpp"
 
     xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
       system_xml_directory_(system_xml_directory),
@@ -59,11 +59,11 @@ namespace pqrs {
                                           const std::string& bcp47,
                                           const std::string& inputsourceid,
                                           const std::string& inputmodeid) const;
-    void get_languageid(uint32_t& language,
-                        uint32_t& language_detail,
-                        const std::string& bcp47,
-                        const std::string& inputsourceid,
-                        const std::string& inputmodeid) const;
+    void get_inputsourceid(uint32_t& inputsource,
+                           uint32_t& inputsource_detail,
+                           const std::string& bcp47,
+                           const std::string& inputsourceid,
+                           const std::string& inputmodeid) const;
 
     boost::optional<const essential_configuration&> get_essential_configuration(size_t index) const {
       if (index >= essential_configurations_.size()) return boost::none;
@@ -123,8 +123,8 @@ namespace pqrs {
     pqrs::string::replacement replacement_;
     symbol_map symbol_map_;
     std::vector<std::tr1::shared_ptr<app> > app_vector_;
-    std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<language> > vk_change_inputsource_map_;
-    std::vector<std::tr1::shared_ptr<language> > language_vector_;
+    std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> > vk_change_inputsource_map_;
+    std::vector<std::tr1::shared_ptr<inputsource> > inputsource_vector_;
     std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
     std::vector<std::tr1::shared_ptr<essential_configuration> > essential_configurations_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
