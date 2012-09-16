@@ -59,7 +59,8 @@ namespace pqrs {
                                           const std::string& bcp47,
                                           const std::string& inputsourceid,
                                           const std::string& inputmodeid) const;
-    void get_languageid(uint32_t& language, uint32_t& language_detail,
+    void get_languageid(uint32_t& language,
+                        uint32_t& language_detail,
                         const std::string& bcp47,
                         const std::string& inputsourceid,
                         const std::string& inputmodeid) const;
