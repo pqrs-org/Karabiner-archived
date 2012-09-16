@@ -60,12 +60,6 @@
 
   <!-- inputsourceid_equal -->
   <languagedef>
-    <name>CHINESE_TRADITIONAL</name>
-    <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
-    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
-  </languagedef>
-
-  <languagedef>
     <name>BEPO</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
   </languagedef>
@@ -74,6 +68,36 @@
     <name>BEPO</name>
     <detail>BEPO_AZERTYCMD</detail>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>BEPO</name>
+    <detail>BEPO_QWERTYCMD</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmd</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>BEPO</name>
+    <detail>BEPO_QWERTYCMDROMAN</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmdRoman</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>BEPO</name>
+    <detail>BEPO_QWERTZCMD</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmd</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>BEPO</name>
+    <detail>BEPO_QWERTZCMDROMAN</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmdRoman</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>CHINESE_TRADITIONAL</name>
+    <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
+    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
@@ -128,6 +152,11 @@
   </languagedef>
 
   <!-- inputsourceid_prefix -->
+  <languagedef>
+    <name>BRITISH</name>
+    <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
+  </languagedef>
+
   <languagedef>
     <name>CANADIAN</name>
     <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
@@ -191,6 +220,11 @@
   <!-- inputmodeid_prefix -->
 
   <!-- bcp47 -->
+  <languagedef>
+    <name>BULGARIAN</name>
+    <bcp47>bg</bcp47>
+  </languagedef>
+
   <languagedef>
     <name>CROATIAN</name>
     <bcp47>hr</bcp47>
