@@ -137,6 +137,21 @@ static NSMutableArray* enabledInputSources_ = nil;
   }
 }
 
++ (void) getLanguage:(InputSource*)inputSource
+ output_language:(uint32_t*)output_language
+ output_languageDetail:(uint32_t*)output_languageDetail
+{
+  if (output_language)       { output_language = 0; }
+  if (output_languageDetail) { output_languageDetail = 0; }
+
+  XMLCompiler* xml_compiler = [XMLCompiler getInstance];
+  [xml_compiler languageid:output_language
+            languageDetail:output_languageDetail
+                     bcp47:inputSource.bcp47
+             inputSourceID:inputSource.inputSourceID
+               inputModeID:inputSource.inputModeID];
+}
+
 + (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail
 {
   if (! name || ! output_inputmode || ! output_inputmodedetail) return;
