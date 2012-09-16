@@ -24,14 +24,22 @@ namespace pqrs {
         add_(BRIDGE_FILTERTYPE_MODIFIER_NOT,  "", it.get_data());
       } else if (it.get_tag_name() == "modifier_only") {
         add_(BRIDGE_FILTERTYPE_MODIFIER_ONLY, "", it.get_data());
-      } else if (it.get_tag_name() == "inputmode_not") {
-        add_(BRIDGE_FILTERTYPE_INPUTMODE_NOT,  "InputMode::", it.get_data());
-      } else if (it.get_tag_name() == "inputmode_only") {
-        add_(BRIDGE_FILTERTYPE_INPUTMODE_ONLY, "InputMode::", it.get_data());
-      } else if (it.get_tag_name() == "inputmodedetail_not") {
-        add_(BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT,  "InputModeDetail::", it.get_data());
-      } else if (it.get_tag_name() == "inputmodedetail_only") {
-        add_(BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY, "InputModeDetail::", it.get_data());
+      } else if (it.get_tag_name() == "inputsource_not" ||
+                 it.get_tag_name() == "inputmode_not") {
+        // We allow "inputmode_*" for compatibility.
+        add_(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT,  "InputSource::", it.get_data());
+      } else if (it.get_tag_name() == "inputsource_only" ||
+                 it.get_tag_name() == "inputmode_only") {
+        // We allow "inputmode_*" for compatibility.
+        add_(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY, "InputSource::", it.get_data());
+      } else if (it.get_tag_name() == "inputsourcedetail_not" ||
+                 it.get_tag_name() == "inputmodedetail_not") {
+        // We allow "inputmode_*" for compatibility.
+        add_(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT,  "InputSourceDetail::", it.get_data());
+      } else if (it.get_tag_name() == "inputsourcedetail_only" ||
+                 it.get_tag_name() == "inputmodedetail_only") {
+        // We allow "inputmode_*" for compatibility.
+        add_(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY, "InputSourceDetail::", it.get_data());
       }
     }
   }

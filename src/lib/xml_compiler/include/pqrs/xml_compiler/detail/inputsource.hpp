@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class language {
+class inputsource {
 public:
   const boost::optional<std::string>& get_name(void) const { return name_; }
   void set_name(const std::string& v) { name_ = v; }
@@ -28,22 +28,22 @@ private:
   std::vector<std::string> rules_inputmodeid_prefix_;
 };
 
-class language_loader {
+class inputsource_loader {
 public:
-  language_loader(const xml_compiler& xml_compiler,
-                  symbol_map& symbol_map,
-                  remapclasses_initialize_vector& remapclasses_initialize_vector,
-                  std::tr1::unordered_map<uint32_t, std::string>& identifier_map,
-                  std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<language> >& vk_change_inputsource_map,
-                  std::vector<std::tr1::shared_ptr<language> >& language_vector) :
+  inputsource_loader(const xml_compiler& xml_compiler,
+                     symbol_map& symbol_map,
+                     remapclasses_initialize_vector& remapclasses_initialize_vector,
+                     std::tr1::unordered_map<uint32_t, std::string>& identifier_map,
+                     std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> >& vk_change_inputsource_map,
+                     std::vector<std::tr1::shared_ptr<inputsource> >& inputsource_vector) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
     remapclasses_initialize_vector_(remapclasses_initialize_vector),
     identifier_map_(identifier_map),
     vk_change_inputsource_map_(vk_change_inputsource_map),
-    language_vector_(language_vector)
+    inputsource_vector_(inputsource_vector)
   {}
-  ~language_loader(void);
+  ~inputsource_loader(void);
 
   void traverse(const extracted_ptree& pt) const;
 
@@ -53,7 +53,7 @@ private:
     enum type {
       none,
       vkchangeinputsourcedef,
-      languagedef,
+      inputsourcedef,
     };
   };
 
@@ -62,6 +62,6 @@ private:
   remapclasses_initialize_vector& remapclasses_initialize_vector_;
   std::tr1::unordered_map<uint32_t, std::string>& identifier_map_;
 
-  std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<language> >& vk_change_inputsource_map_;
-  std::vector<std::tr1::shared_ptr<language> >& language_vector_;
+  std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> >& vk_change_inputsource_map_;
+  std::vector<std::tr1::shared_ptr<inputsource> >& inputsource_vector_;
 };

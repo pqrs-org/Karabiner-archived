@@ -105,24 +105,24 @@ pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
 }
 
 void
-pqrs_xml_compiler_get_languageid(const pqrs_xml_compiler* p,
-                                 uint32_t* language,
-                                 uint32_t* language_detail,
-                                 const char* bcp47,
-                                 const char* inputsourceid,
-                                 const char* inputmodeid)
+pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
+                                    uint32_t* inputsource,
+                                    uint32_t* inputsource_detail,
+                                    const char* bcp47,
+                                    const char* inputsourceid,
+                                    const char* inputmodeid)
 {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (! xml_compiler) return;
 
-  if (! language) return;
-  if (! language_detail) return;
+  if (! inputsource) return;
+  if (! inputsource_detail) return;
 
-  return xml_compiler->get_languageid(*language,
-                                      *language_detail,
-                                      bcp47         != nullptr ? bcp47         : "",
-                                      inputsourceid != nullptr ? inputsourceid : "",
-                                      inputmodeid   != nullptr ? inputmodeid   : "");
+  return xml_compiler->get_inputsourceid(*inputsource,
+                                         *inputsource_detail,
+                                         bcp47         != nullptr ? bcp47         : "",
+                                         inputsourceid != nullptr ? inputsourceid : "",
+                                         inputmodeid   != nullptr ? inputmodeid   : "");
 }
 
 // ------------------------------------------------------------
