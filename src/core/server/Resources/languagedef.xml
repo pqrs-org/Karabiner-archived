@@ -61,11 +61,6 @@
   <!-- inputsourceid_equal -->
   <languagedef>
     <name>BEPO</name>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
-  </languagedef>
-
-  <languagedef>
-    <name>BEPO</name>
     <detail>BEPO_AZERTYCMD</detail>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
   </languagedef>
@@ -95,9 +90,33 @@
   </languagedef>
 
   <languagedef>
+    <name>BEPO</name>
+    <detail>BEPO_ROMAN</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorakRoman</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
     <name>CHINESE_TRADITIONAL</name>
     <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
     <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>DVORAK</name>
+    <detail>DVORAK_LEFT</detail>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak-Left</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>DVORAK</name>
+    <detail>DVORAK_QWERTYCMD</detail>
+    <inputsourceid_equal>com.apple.keylayout.DVORAK-QWERTYCMD</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>DVORAK</name>
+    <detail>DVORAK_RIGHT</detail>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak-Right</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
@@ -153,6 +172,11 @@
 
   <!-- inputsourceid_prefix -->
   <languagedef>
+    <name>BEPO</name>
+    <inputsourceid_prefix>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_prefix>
+  </languagedef>
+
+  <languagedef>
     <name>BRITISH</name>
     <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
   </languagedef>
@@ -160,6 +184,11 @@
   <languagedef>
     <name>CANADIAN</name>
     <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
+  </languagedef>
+
+  <languagedef>
+    <name>DVORAK</name>
+    <inputsourceid_prefix>com.apple.keylayout.Dvorak</inputsourceid_prefix>
   </languagedef>
 
   <languagedef>
