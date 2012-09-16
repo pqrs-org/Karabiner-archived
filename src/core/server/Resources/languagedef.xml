@@ -94,6 +94,12 @@
   </languagedef>
 
   <languagedef>
+    <name>POLISH</name>
+    <detail>POLISH_PRO</detail>
+    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
     <name>RUSSIAN</name>
     <inputsourceid_equal>org.pqrs.inputmode.unknown.RussianWin</inputsourceid_equal>
   </languagedef>
@@ -101,6 +107,12 @@
   <languagedef>
     <name>RUSSIAN_TYPOGRAPHIC</name>
     <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
+    <name>SPANISH</name>
+    <detail>SPANISH_ISO</detail>
+    <inputsourceid_equal>com.apple.keylayout.Spanish-ISO</inputsourceid_equal>
   </languagedef>
 
   <languagedef>
@@ -205,13 +217,28 @@
   </languagedef>
 
   <languagedef>
+    <name>POLISH</name>
+    <bcp47>pl</bcp47>
+  </languagedef>
+
+  <languagedef>
     <name>RUSSIAN</name>
     <bcp47>ru</bcp47>
   </languagedef>
 
   <languagedef>
+    <name>SPANISH</name>
+    <bcp47>es</bcp47>
+  </languagedef>
+
+  <languagedef>
     <name>SWEDISH</name>
     <bcp47>sv</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>THAI</name>
+    <bcp47>th</bcp47>
   </languagedef>
 
 </root>
