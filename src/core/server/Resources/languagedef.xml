@@ -125,6 +125,12 @@
   </languagedef>
 
   <languagedef>
+    <name>ENGLISH</name>
+    <name>JANSI</name>
+    <inputsourceid_equal>org.unknown.keylayout.JANSI</inputsourceid_equal>
+  </languagedef>
+
+  <languagedef>
     <name>NORWEGIAN</name>
     <detail>NORWEGIAN_EXTENDED</detail>
     <inputsourceid_equal>com.apple.keylayout.NorwegianExtended</inputsourceid_equal>
@@ -262,6 +268,11 @@
   <languagedef>
     <name>CZECH</name>
     <bcp47>cs</bcp47>
+  </languagedef>
+
+  <languagedef>
+    <name>ENGLISH</name>
+    <bcp47>en</bcp47>
   </languagedef>
 
   <languagedef>
