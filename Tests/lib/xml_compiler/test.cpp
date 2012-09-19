@@ -735,6 +735,14 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   s.add("DeviceLocation", "LOCATION1", 400);
   s.add("DeviceLocation", "LOCATION2", 500);
   s.add("DeviceLocation", "LOCATION3", 600);
+  s.add("InputSource", "NONE", 0);
+  s.add("InputSource", "INPUTSOURCE1", 110);
+  s.add("InputSource", "INPUTSOURCE2", 111);
+  s.add("InputSource", "INPUTSOURCE3", 112);
+  s.add("InputSourceDetail", "NONE", 0);
+  s.add("InputSourceDetail", "INPUTSOURCEDETAIL1", 120);
+  s.add("InputSourceDetail", "INPUTSOURCEDETAIL2", 121);
+  s.add("InputSourceDetail", "INPUTSOURCEDETAIL3", 122);
   s.add("ConfigIndex", "config1", 1000);
   s.add("ConfigIndex", "config2", 2000);
   s.add("ConfigIndex", "config3", 3000);
@@ -756,6 +764,14 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "    DeviceVendor::VENDOR3,"
                   "  </device_not>"
                   "  <device_not></device_not>"
+                  "  <inputsource_only>INPUTSOURCE1</inputsource_only>"
+                  "  <inputsource_not>INPUTSOURCE2, INPUTSOURCE3</inputsource_not>"
+                  "  <inputmode_only>INPUTSOURCE1</inputmode_only>"
+                  "  <inputmode_not>INPUTSOURCE2, INPUTSOURCE3</inputmode_not>"
+                  "  <inputsourcedetail_only>INPUTSOURCEDETAIL1</inputsourcedetail_only>"
+                  "  <inputsourcedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputsourcedetail_not>"
+                  "  <inputmodedetail_only>INPUTSOURCEDETAIL1</inputmodedetail_only>"
+                  "  <inputmodedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputmodedetail_not>"
                   "  <config_only>config1,config2</config_only>"
                   "  <config_not>config3</config_not>"
                   "  <modifier_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifier_only>"
@@ -811,6 +827,50 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
 
     // <device_not></device_not>
     // ***IGNORED***
+
+    // <inputsource_only>InputSource::INPUTSOURCE1</inputsource_only>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY);
+    expected.push_back(110);
+
+    // <inputsource_not>InputSource::INPUTSOURCE2, InputSource::INPUTSOURCE3</inputsource_not>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT);
+    expected.push_back(111);
+    expected.push_back(112);
+
+    // <inputmode_only>INPUTSOURCE1</inputmode_only>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY);
+    expected.push_back(110);
+
+    // <inputmode_not>INPUTSOURCE2, INPUTSOURCE3</inputmode_not>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT);
+    expected.push_back(111);
+    expected.push_back(112);
+
+    // <inputsourcedetail_only>INPUTSOURCEDETAIL1</inputsourcedetail_only>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY);
+    expected.push_back(120);
+
+    // <inputsourcedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputsourcedetail_not>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT);
+    expected.push_back(121);
+    expected.push_back(122);
+
+    // <inputmodedetail_only>INPUTSOURCEDETAIL1</inputmodedetail_only>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY);
+    expected.push_back(120);
+
+    // <inputmodedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputmodedetail_not>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT);
+    expected.push_back(121);
+    expected.push_back(122);
 
     // <config_only>config1,config2</config_only>
     expected.push_back(3); // count
