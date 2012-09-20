@@ -1,1 +1,9 @@
+// These items are needed in kernel extension.
+// Please define others by inputsource.xml.
+
 NONE 0
+ENGLISH           --AUTO--
+AINU              --AUTO--
+JAPANESE          --AUTO--
+JAPANESE_HIRAGANA --AUTO--
+JAPANESE_KATAKANA --AUTO--
