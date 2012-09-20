@@ -251,6 +251,13 @@
         </item>
       </item>
       <item>
+        <name>inputmode_only (English)</name>
+        <appendix>Space to Tab</appendix>
+        <identifier>remap.samples_inputmode_roman</identifier>
+        <inputmode_only>ENGLISH</inputmode_only>
+        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+      </item>
+      <item>
         <name>inputmode_only (Finnish)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputmode_finnish</identifier>
@@ -318,6 +325,13 @@
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
+          <name>inputmodedetail_only (JANSI)</name>
+          <appendix>Space to Tab</appendix>
+          <identifier>remap.samples_inputmodedetail_roman_jansi</identifier>
+          <inputmodedetail_only>JANSI</inputmodedetail_only>
+          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        </item>
+        <item>
           <name>Enforce roman input at semicolon(;).</name>
           <identifier>remap.samples_inputmode_semicolon</identifier>
           <inputmode_only>JAPANESE</inputmode_only>
@@ -364,30 +378,6 @@
         <identifier>remap.samples_inputmode_swedish</identifier>
         <inputmode_only>SWEDISH</inputmode_only>
         <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-      </item>
-      <item>
-        <name>Roman</name>
-        <item>
-          <name>inputmode_only (Roman-*)</name>
-          <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_roman</identifier>
-          <inputmode_only>ROMAN</inputmode_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-        </item>
-        <item>
-          <name>inputmodedetail_only (Roman-JANSI)</name>
-          <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmodedetail_roman_jansi</identifier>
-          <inputmodedetail_only>ROMAN_JANSI</inputmodedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-        </item>
-        <item>
-          <name>inputmodedetail_only (Roman others)</name>
-          <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmodedetail_roman</identifier>
-          <inputmodedetail_only>ROMAN</inputmodedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-        </item>
       </item>
       <item>
         <name>inputmode_only (Russian)</name>
@@ -464,13 +454,6 @@
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputmode_norwegian</identifier>
         <inputmode_only>NORWEGIAN</inputmode_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-      </item>
-      <item>
-        <name>inputmode_only (Unknown == User Defined keylayout)</name>
-        <appendix>Space to Tab</appendix>
-        <identifier>remap.samples_inputmode_unknown</identifier>
-        <inputmode_only>UNKNOWN</inputmode_only>
         <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
     </item>

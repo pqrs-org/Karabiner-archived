@@ -13,7 +13,7 @@
         <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
         <appendix>(英数入力のときだけDvorak配列にする)</appendix>
         <identifier>remap.jis_qwerty2dvorak_roman_only</identifier>
-        <inputmode_only>ROMAN</inputmode_only>
+        <inputmode_only>ENGLISH</inputmode_only>
         <include path="keyboard_layouts/dvorak.xml" />
       </item>
       <item>
@@ -21,7 +21,7 @@
         <appendix>(英数入力のときだけDvorak配列にする)</appendix>
         <appendix>(Command,Control,Optionを押したときはQwerty配列のまま)</appendix>
         <identifier>remap.jis_qwerty2dvorak_roman_only_qwerty</identifier>
-        <inputmode_only>ROMAN</inputmode_only>
+        <inputmode_only>ENGLISH</inputmode_only>
         <modifier_not>
           ModifierFlag::COMMAND_L,
           ModifierFlag::COMMAND_R,
@@ -617,7 +617,11 @@
     </item>
     <item>
       <name>Use Windows Kana-Input Layout on US Keyboard</name>
-      <inputmode_not>ROMAN</inputmode_not>
+      <inputmodedetail_only>
+        JAPANESE_HIRAGANA,
+        JAPANESE_KATAKANA,
+        JAPANESE_HALFWIDTH_KANA,
+      </inputmodedetail_only>
       <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
       <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
       <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
