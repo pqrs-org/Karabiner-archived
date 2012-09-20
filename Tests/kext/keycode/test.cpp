@@ -29,8 +29,8 @@ TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(ScrollWheel));
   EXPECT_EQ(sizeof(unsigned int), sizeof(Option));
   EXPECT_EQ(sizeof(unsigned int), sizeof(ApplicationType));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(InputMode));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(InputModeDetail));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(InputSource));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(InputSourceDetail));
   EXPECT_EQ(sizeof(unsigned int), sizeof(DeviceVendor));
   EXPECT_EQ(sizeof(unsigned int), sizeof(DeviceProduct));
 }
