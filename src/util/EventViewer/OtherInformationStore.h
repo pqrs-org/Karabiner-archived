@@ -6,21 +6,24 @@
 {
   @private
   NSString* version_;
-  NSString* applicationname_;
-  NSString* inputsourcename_;
-  NSString* inputmodename_;
+  NSString* applicationbundleidentifier_;
+  NSString* languagecode_;
+  NSString* inputsourceid_;
+  NSString* inputmodeid_;
 
   IBOutlet id label_version_;
-  IBOutlet id label_applicationname_;
-  IBOutlet id label_inputsourcename_;
-  IBOutlet id label_inputmodename_;
+  IBOutlet id label_applicationbundleidentifier_;
+  IBOutlet id label_languagecode_;
+  IBOutlet id label_inputsourceid_;
+  IBOutlet id label_inputmodeid_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
 
 - (void) setVersion;
-- (void) setApplicationName:(NSString*)name;
-- (void) setInputSourceName:(NSString*)name;
-- (void) setInputModeName:(NSString*)name;
+- (void) setApplicationBundleIdentifier:(NSString*)value;
+- (void) setLanguageCode:(NSString*)value;
+- (void) setInputSourceID:(NSString*)value;
+- (void) setInputModeID:(NSString*)value;
 
 - (IBAction) copy:(id)sender;
 
