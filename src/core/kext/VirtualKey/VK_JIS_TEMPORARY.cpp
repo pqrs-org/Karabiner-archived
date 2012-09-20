@@ -4,8 +4,8 @@
 #include "VK_JIS_TEMPORARY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  InputModeDetail VirtualKey::VK_JIS_TEMPORARY::savedinputmodedetail_(0);
-  InputModeDetail VirtualKey::VK_JIS_TEMPORARY::currentinputmodedetail_(0);
+  InputSourceDetail VirtualKey::VK_JIS_TEMPORARY::savedinputsourcedetail_(0);
+  InputSourceDetail VirtualKey::VK_JIS_TEMPORARY::currentinputsourcedetail_(0);
   VirtualKey::VK_JIS_TEMPORARY::FireKeyInfo VirtualKey::VK_JIS_TEMPORARY::fireKeyInfo_;
   TimerWrapper VirtualKey::VK_JIS_TEMPORARY::fire_timer_;
 
@@ -25,16 +25,16 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::VK_JIS_TEMPORARY::handle_core(const Params_KeyboardEventCallBack& params,
                                             KeyCode key,
-                                            InputModeDetail inputmodedetail)
+                                            InputSourceDetail inputsourcedetail)
   {
     if (params.key != key) return false;
 
     if (params.ex_iskeydown) {
-      if (savedinputmodedetail_ == InputModeDetail::NONE) {
-        savedinputmodedetail_ = CommonData::getcurrent_workspacedata().inputmodedetail;
-        currentinputmodedetail_ = CommonData::getcurrent_workspacedata().inputmodedetail;
+      if (savedinputsourcedetail_ == InputSourceDetail::NONE) {
+        savedinputsourcedetail_ = CommonData::getcurrent_workspacedata().inputsourcedetail;
+        currentinputsourcedetail_ = CommonData::getcurrent_workspacedata().inputsourcedetail;
       }
-      firekeytoinputdetail(params, inputmodedetail);
+      firekeytoinputdetail(params, inputsourcedetail);
     }
 
     return true;
@@ -46,10 +46,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.key != KeyCode::VK_JIS_TEMPORARY_RESTORE) return false;
 
     if (params.ex_iskeydown) {
-      if (savedinputmodedetail_ != InputModeDetail::NONE) {
-        firekeytoinputdetail(params, savedinputmodedetail_);
-        savedinputmodedetail_ = InputModeDetail::NONE;
-        currentinputmodedetail_ = InputModeDetail::NONE;
+      if (savedinputsourcedetail_ != InputSourceDetail::NONE) {
+        firekeytoinputdetail(params, savedinputsourcedetail_);
+        savedinputsourcedetail_ = InputSourceDetail::NONE;
+        currentinputsourcedetail_ = InputSourceDetail::NONE;
       }
     }
 
@@ -62,21 +62,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     if (handle_core(params,
                     KeyCode::VK_JIS_TEMPORARY_ROMAN,
-                    InputModeDetail::ROMAN)) return true;
+                    InputSourceDetail::ENGLISH)) return true;
 
     if (handle_core(params,
                     KeyCode::VK_JIS_TEMPORARY_HIRAGANA,
-                    InputModeDetail::JAPANESE_HIRAGANA)) return true;
+                    InputSourceDetail::JAPANESE_HIRAGANA)) return true;
 
     if (handle_core(params,
                     KeyCode::VK_JIS_TEMPORARY_KATAKANA,
-                    InputModeDetail::JAPANESE_KATAKANA)) return true;
+                    InputSourceDetail::JAPANESE_KATAKANA)) return true;
 
     // OK, Ainu is not Japanese.
     // But the input source of Ainu is Kotoeri, we need to handle it here.
     if (handle_core(params,
                     KeyCode::VK_JIS_TEMPORARY_AINU,
-                    InputModeDetail::AINU)) return true;
+                    InputSourceDetail::AINU)) return true;
 
     // ------------------------------------------------------------
     if (handle_RESTORE(params)) return true;
@@ -93,31 +93,31 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   VirtualKey::VK_JIS_TEMPORARY::firekeytoinputdetail(const Params_KeyboardEventCallBack& params,
-                                                     InputModeDetail inputmodedetail)
+                                                     InputSourceDetail inputsourcedetail)
   {
-    inputmodedetail = normalize(inputmodedetail);
-    currentinputmodedetail_ = normalize(currentinputmodedetail_);
+    inputsourcedetail = normalize(inputsourcedetail);
+    currentinputsourcedetail_ = normalize(currentinputsourcedetail_);
 
     // ------------------------------------------------------------
-    if (inputmodedetail == currentinputmodedetail_) return;
-    if (inputmodedetail == InputModeDetail::NONE) return;
+    if (inputsourcedetail == currentinputsourcedetail_) return;
+    if (inputsourcedetail == InputSourceDetail::NONE) return;
 
-    currentinputmodedetail_ = inputmodedetail;
+    currentinputsourcedetail_ = inputsourcedetail;
 
     // ------------------------------------------------------------
-    if (inputmodedetail == InputModeDetail::ROMAN) {
+    if (inputsourcedetail == InputSourceDetail::ENGLISH) {
       fireKeyInfo_.flags = Flags(0);
       fireKeyInfo_.key = KeyCode::JIS_EISUU;
 
-    } else if (inputmodedetail == InputModeDetail::JAPANESE_HIRAGANA) {
+    } else if (inputsourcedetail == InputSourceDetail::JAPANESE_HIRAGANA) {
       fireKeyInfo_.flags = Flags(0);
       fireKeyInfo_.key = KeyCode::JIS_KANA;
 
-    } else if (inputmodedetail == InputModeDetail::JAPANESE_KATAKANA) {
+    } else if (inputsourcedetail == InputSourceDetail::JAPANESE_KATAKANA) {
       fireKeyInfo_.flags = ModifierFlag::SHIFT_L;
       fireKeyInfo_.key = KeyCode::JIS_KANA;
 
-    } else if (inputmodedetail == InputModeDetail::AINU) {
+    } else if (inputsourcedetail == InputSourceDetail::AINU) {
       fireKeyInfo_.flags = ModifierFlag::OPTION_L;
       fireKeyInfo_.key = KeyCode::JIS_KANA;
 
@@ -131,11 +131,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     fire_timer_.setTimeoutMS(KEYEVENT_DELAY_MS);
   }
 
-  InputModeDetail
-  VirtualKey::VK_JIS_TEMPORARY::normalize(InputModeDetail imd)
+  InputSourceDetail
+  VirtualKey::VK_JIS_TEMPORARY::normalize(InputSourceDetail imd)
   {
-    if (imd == InputModeDetail::JAPANESE) {
-      return InputModeDetail::JAPANESE_HIRAGANA;
+    if (imd == InputSourceDetail::JAPANESE) {
+      return InputSourceDetail::JAPANESE_HIRAGANA;
     }
     return imd;
   }

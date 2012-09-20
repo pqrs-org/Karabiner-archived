@@ -400,56 +400,28 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
-  class InputMode {
+  class InputSource {
   public:
-    InputMode(unsigned int v = 0) : value_(v) {}
+    InputSource(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(InputMode other) const { return value_ == other.get(); }
-    bool operator!=(InputMode other) const { return ! (*this == other); }
+    bool operator==(InputSource other) const { return value_ == other.get(); }
+    bool operator!=(InputSource other) const { return ! (*this == other); }
 
-#include "../../../src/bridge/output/include.kext.InputMode.hpp"
+#include "../../../src/bridge/output/include.kext.InputSource.hpp"
 
   private:
     unsigned int value_;
   };
 
   // ======================================================================
-  class InputModeDetail {
+  class InputSourceDetail {
   public:
-    InputModeDetail(unsigned int v = 0) : value_(v) {}
+    InputSourceDetail(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
-    bool operator==(InputModeDetail other) const { return value_ == other.get(); }
-    bool operator!=(InputModeDetail other) const { return ! (*this == other); }
+    bool operator==(InputSourceDetail other) const { return value_ == other.get(); }
+    bool operator!=(InputSourceDetail other) const { return ! (*this == other); }
 
-#include "../../../src/bridge/output/include.kext.InputModeDetail.hpp"
-
-  private:
-    unsigned int value_;
-  };
-
-  // ======================================================================
-  class Language {
-  public:
-    Language(unsigned int v = 0) : value_(v) {}
-    unsigned int get(void) const { return value_; }
-    bool operator==(Language other) const { return value_ == other.get(); }
-    bool operator!=(Language other) const { return ! (*this == other); }
-
-#include "../../../src/bridge/output/include.kext.Language.hpp"
-
-  private:
-    unsigned int value_;
-  };
-
-  // ======================================================================
-  class LanguageDetail {
-  public:
-    LanguageDetail(unsigned int v = 0) : value_(v) {}
-    unsigned int get(void) const { return value_; }
-    bool operator==(LanguageDetail other) const { return value_ == other.get(); }
-    bool operator!=(LanguageDetail other) const { return ! (*this == other); }
-
-#include "../../../src/bridge/output/include.kext.LanguageDetail.hpp"
+#include "../../../src/bridge/output/include.kext.InputSourceDetail.hpp"
 
   private:
     unsigned int value_;
