@@ -5,7 +5,7 @@
     <replacementvalue>
       <![CDATA[
         <vkchangeinputsourcedef>
-          <bcp47>en</bcp47>
+          <languagecode>en</languagecode>
         </vkchangeinputsourcedef>
         ]]>
     </replacementvalue>

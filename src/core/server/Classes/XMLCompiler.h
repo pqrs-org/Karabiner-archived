@@ -23,12 +23,12 @@
 - (NSString*) identifier:(uint32_t)config_index;
 - (uint32_t) appid:(NSString*)bundleIdentifier;
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
- bcp47:(NSString*)bcp47
+ languagecode:(NSString*)languagecode
  inputSourceID:(NSString*)inputSourceID
  inputModeID:(NSString*)inputModeID;
 - (void) inputsourceid:(uint32_t*)inputSource
  inputSourceDetail:(uint32_t*)inputSourceDetail
- bcp47:(NSString*)bcp47
+ languagecode:(NSString*)languagecode
  inputSourceID:(NSString*)inputSourceID
  inputModeID:(NSString*)inputModeID;
 

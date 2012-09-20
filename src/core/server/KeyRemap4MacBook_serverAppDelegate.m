@@ -75,8 +75,8 @@
     [self send_workspacedata_to_kext];
 
     NSMutableDictionary* userInfo = [[NSMutableDictionary new] autorelease];
-    if ([inputSource bcp47]) {
-      [userInfo setObject:[inputSource bcp47] forKey:@"bcp47"];
+    if ([inputSource languagecode]) {
+      [userInfo setObject:[inputSource languagecode] forKey:@"languageCode"];
     }
     if ([inputSource inputSourceID]) {
       [userInfo setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];

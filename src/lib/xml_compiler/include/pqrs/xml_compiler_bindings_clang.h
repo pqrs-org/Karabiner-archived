@@ -28,13 +28,13 @@ const char* pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int con
 uint32_t pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier);
 uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
                                                             uint32_t keycode,
-                                                            const char* bcp47,
+                                                            const char* languagecode,
                                                             const char* inputsourceid,
                                                             const char* inputmodeid);
 void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
                                          uint32_t* inputsource,
                                          uint32_t* inputsource_detail,
-                                         const char* bcp47,
+                                         const char* languagecode,
                                          const char* inputsourceid,
                                          const char* inputmodeid);
 

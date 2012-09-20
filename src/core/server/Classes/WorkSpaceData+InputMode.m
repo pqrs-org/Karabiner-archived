@@ -91,7 +91,7 @@ static NSMutableArray* enabledInputSources_ = nil;
   XMLCompiler* xml_compiler = [XMLCompiler getInstance];
 
   // ----------------------------------------------------------------------
-  // Note for bcp47
+  // Note for languagecode
   // TISCopyInputSourceForLanguage returns unselectable InputSource.
   // Therefore we get InputSource by ourself.
 
@@ -124,7 +124,7 @@ static NSMutableArray* enabledInputSources_ = nil;
   @synchronized(self) {
     for (InputSource* inputSource in enabledInputSources_) {
       if ([xml_compiler is_vk_change_inputsource_matched:vk_keycode
-                                                   bcp47:inputSource.bcp47
+                                            languagecode:inputSource.languagecode
                                            inputSourceID:inputSource.inputSourceID
                                              inputModeID:inputSource.inputModeID]) {
         matched = [[inputSource retain] autorelease];
@@ -147,7 +147,7 @@ static NSMutableArray* enabledInputSources_ = nil;
   XMLCompiler* xml_compiler = [XMLCompiler getInstance];
   [xml_compiler inputsourceid:output_inputSource
             inputSourceDetail:output_inputSourceDetail
-                        bcp47:inputSource.bcp47
+                 languagecode:inputSource.languagecode
                 inputSourceID:inputSource.inputSourceID
                   inputModeID:inputSource.inputModeID];
 }

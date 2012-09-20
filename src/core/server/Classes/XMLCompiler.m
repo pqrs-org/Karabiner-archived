@@ -293,14 +293,14 @@ static XMLCompiler* global_instance = nil;
 }
 
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
- bcp47:(NSString*)bcp47
+ languagecode:(NSString*)languagecode
  inputSourceID:(NSString*)inputSourceID
  inputModeID:(NSString*)inputModeID;
 {
   @synchronized(self) {
     return pqrs_xml_compiler_is_vk_change_inputsource_matched(pqrs_xml_compiler_,
                                                               keycode,
-                                                              [bcp47 UTF8String],
+                                                              [languagecode UTF8String],
                                                               [inputSourceID UTF8String],
                                                               [inputModeID UTF8String]);
   }
@@ -308,7 +308,7 @@ static XMLCompiler* global_instance = nil;
 
 - (void) inputsourceid:(uint32_t*)inputSource
  inputSourceDetail:(uint32_t*)inputSourceDetail
- bcp47:(NSString*)bcp47
+ languagecode:(NSString*)languagecode
  inputSourceID:(NSString*)inputSourceID
  inputModeID:(NSString*)inputModeID
 {
@@ -316,7 +316,7 @@ static XMLCompiler* global_instance = nil;
     pqrs_xml_compiler_get_inputsourceid(pqrs_xml_compiler_,
                                         inputSource,
                                         inputSourceDetail,
-                                        [bcp47 UTF8String],
+                                        [languagecode UTF8String],
                                         [inputSourceID UTF8String],
                                         [inputModeID UTF8String]);
   }

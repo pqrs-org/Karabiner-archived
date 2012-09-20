@@ -245,7 +245,7 @@ namespace pqrs {
 
   bool
   xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
-                                                 const std::string& bcp47,
+                                                 const std::string& languagecode,
                                                  const std::string& inputsourceid,
                                                  const std::string& inputmodeid) const
   {
@@ -254,13 +254,13 @@ namespace pqrs {
       return false;
     }
 
-    return it->second->is_rules_matched(bcp47, inputsourceid, inputmodeid);
+    return it->second->is_rules_matched(languagecode, inputsourceid, inputmodeid);
   }
 
   void
   xml_compiler::get_inputsourceid(uint32_t& inputsource,
                                   uint32_t& inputsource_detail,
-                                  const std::string& bcp47,
+                                  const std::string& languagecode,
                                   const std::string& inputsourceid,
                                   const std::string& inputmodeid) const
   {
@@ -270,7 +270,7 @@ namespace pqrs {
     for (auto& it : inputsource_vector_) {
       if (! it) continue;
 
-      if (it->is_rules_matched(bcp47, inputsourceid, inputmodeid)) {
+      if (it->is_rules_matched(languagecode, inputsourceid, inputmodeid)) {
         {
           auto v = symbol_map_.get_optional(std::string("InputSource::") + *(it->get_name()));
           if (! v) return;

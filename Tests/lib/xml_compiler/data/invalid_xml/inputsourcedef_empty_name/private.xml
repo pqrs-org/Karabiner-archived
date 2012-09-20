@@ -6,7 +6,7 @@
       <![CDATA[
         <inputsourcedef>
           <name></name>
-          <bcp47>en</bcp47>
+          <languagecode>en</languagecode>
         </inputsourcedef>
         ]]>
     </replacementvalue>

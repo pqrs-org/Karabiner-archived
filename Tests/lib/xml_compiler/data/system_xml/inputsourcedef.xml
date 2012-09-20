@@ -6,7 +6,7 @@
   <!-- For VK_CHANGE_INPUTSOURCE_* -->
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</name>
-    <bcp47>ja</bcp47>
+    <languagecode>ja</languagecode>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -75,7 +75,7 @@
   <!-- BCP 47 -->
   <inputsourcedef>
     <name>FRENCH</name>
-    <bcp47>fr</bcp47>
+    <languagecode>fr</languagecode>
   </inputsourcedef>
 
 </root>
