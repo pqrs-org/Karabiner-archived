@@ -28,7 +28,7 @@
     <item>
       <name>Change KeyPad Comma(,) to Dot(.) on "Spanish" and "Spanish - ISO" Input Source</name>
       <identifier>remap.spanish_keypad_comma_to_dot</identifier>
-      <inputmode_only>SPANISH</inputmode_only>
+      <inputsource_only>SPANISH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
     </item>
   </item>
