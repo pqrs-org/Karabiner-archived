@@ -27,7 +27,7 @@
       <name>Change AltGr+2 to @</name>
       <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
       <identifier>remap.altgr_2_to_atmark</identifier>
-      <inputmode_only>SWISS</inputmode_only>
+      <inputsource_only>SWISS</inputsource_only>
       <autogen>
         --KeyToKey--
         KeyCode::KEY_2, VK_OPTION | ModifierFlag::NONE,
@@ -39,7 +39,7 @@
       <name>Change AltGr+ü to [</name>
       <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
       <identifier>remap.swiss_altgr_ue_to_left_bracket</identifier>
-      <inputmode_only>SWISS</inputmode_only>
+      <inputsource_only>SWISS</inputsource_only>
       <autogen>
         --KeyToKey--
         KeyCode::BRACKET_LEFT, VK_OPTION | ModifierFlag::NONE,
@@ -50,7 +50,7 @@
       <name>Change AltGr+! to ]</name>
       <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
       <identifier>remap.swiss_altgr_exclamation_to_right_bracket</identifier>
-      <inputmode_only>SWISS</inputmode_only>
+      <inputsource_only>SWISS</inputsource_only>
       <autogen>
         --KeyToKey--
         KeyCode::BRACKET_RIGHT, VK_OPTION | ModifierFlag::NONE,
@@ -60,7 +60,7 @@
     <item>
       <name>Change AltGr+ä to {</name>
       <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
-      <inputmode_only>SWISS</inputmode_only>
+      <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_ae_to_left_brace</identifier>
       <autogen>
         --KeyToKey--
@@ -71,7 +71,7 @@
     <item>
       <name>Change AltGr+$ to }</name>
       <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
-      <inputmode_only>SWISS</inputmode_only>
+      <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_dollar_to_right_brace</identifier>
       <autogen>
           --KeyToKey--
@@ -82,7 +82,7 @@
     <item>
       <name>Change AltGr+^ to ~</name>
       <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
-      <inputmode_only>SWISS</inputmode_only>
+      <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_dach_to_home</identifier>
       <autogen>
         --KeyToKey--
@@ -93,7 +93,7 @@
     <item>
       <name>Change AltGr+&lt; to \</name>
       <appendix>(When Input Source is Swiss French or Swiss German)</appendix>
-      <inputmode_only>SWISS</inputmode_only>
+      <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_lessthan_to_backslash</identifier>
       <autogen>
         --KeyToKey--

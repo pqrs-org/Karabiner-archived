@@ -297,13 +297,13 @@
         <name>Semicolon to Sticky Shift_L</name>
         <appendix>(effective only when input source is Japanese)</appendix>
         <identifier>remap.jis_semicolon2stickyshiftL</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <autogen>--KeyOverlaidModifier-- KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
       </item>
       <item>
         <name>セミコロン(;)は常に半角</name>
         <identifier>remap.jis_semicolon_roman</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
           Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
@@ -339,7 +339,7 @@
         <name>Shift+Space to Equal</name>
         <appendix>(日本語入力時には無効)</appendix>
         <identifier>remap.jis_shiftSpace2equal</identifier>
-        <inputmode_not>JAPANESE</inputmode_not>
+        <inputsource_not>JAPANESE</inputsource_not>
         <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::EQUAL</autogen>
       </item>
     </item>
@@ -445,7 +445,7 @@
       <item>
         <name>EISUU to Escape （入力ソースが日本語以外の場合のみ）</name>
         <identifier>remap.jis_eisuu2escape_onlyroman</identifier>
-        <inputmode_not>JAPANESE</inputmode_not>
+        <inputsource_not>JAPANESE</inputsource_not>
         <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
       </item>
       <item>
@@ -1023,14 +1023,14 @@
           <include path="../snippets/quicksilver_mode_doublepressmodifier_appendix.xml" />
           <identifier>remap.jis_doublecontrol_to_quicksilver_mode_eisuu</identifier>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
           </block>
           <block>
-            <inputmode_not>JAPANESE</inputmode_not>
+            <inputsource_not>JAPANESE</inputsource_not>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman</autogen>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R,
@@ -1112,7 +1112,7 @@
         <name>Control+I to Control+K (Control+I でカタカナ変換)</name>
         <appendix>(Except in Virtual Machine, RDC)</appendix>
         <identifier>remap.jis_controlItocontrolK</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
       </item>
@@ -1120,7 +1120,7 @@
         <name>Control+I to F7 (Control+I でカタカナ変換)</name>
         <appendix>(Except in Virtual Machine, RDC)</appendix>
         <identifier>remap.jis_controlItof7</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::F7</autogen>
       </item>

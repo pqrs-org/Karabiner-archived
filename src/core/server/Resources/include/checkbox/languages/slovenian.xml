@@ -8,7 +8,7 @@
       <appendix></appendix>
       <identifier>remap.slovenian_win_style_shortcuts</identifier>
 
-      <inputmode_only>SLOVENIAN</inputmode_only>
+      <inputsource_only>SLOVENIAN</inputsource_only>
 
       <appendix>Option_R (AltGr) + 1 = ~</appendix>
       <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_R,

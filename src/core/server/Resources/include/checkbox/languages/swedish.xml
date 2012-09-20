@@ -3,22 +3,22 @@
   <item>
     <name>For Swedish</name>
     <item>
-      <name>Space to Option_L (when inputmode == swedish)</name>
+      <name>Space to Option_L (when Input Source == Swedish)</name>
       <identifier>remap.swedish_space2optionL_swedish</identifier>
-      <inputmode_only>SWEDISH</inputmode_only>
+      <inputsource_only>SWEDISH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Command_L to Command_L</name>
-      <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
+      <appendix>(+ When you type Command_L only, change Input Source to English)</appendix>
       <identifier>remap.swedish_commandL2commandL_english</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
     </item>
     <item>
       <name>Command_R to Command_R</name>
-      <appendix>(+ When you type Command_R only, change inputmode to swedish)</appendix>
+      <appendix>(+ When you type Command_R only, change Input Source to Swedish)</appendix>
       <identifier>remap.swedish_commandR2commandR_swedish</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTMODE_SWEDISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</autogen>
     </item>
     <item>
       <name>Swap Section(§) and Less-Than(&lt;)</name>
