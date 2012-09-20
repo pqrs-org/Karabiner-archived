@@ -3,16 +3,16 @@
   <item>
     <name>For Canadian</name>
     <item>
-      <name>Space to Option_L (when inputmode == canadian)</name>
+      <name>Space to Option_L (when Input Source == Canadian)</name>
       <identifier>remap.canadian_space2optionL</identifier>
-      <inputmode_only>CANADIAN</inputmode_only>
+      <inputsource_only>CANADIAN</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
     </item>
     <item>
-      <name>Space to Option_L (when inputmode == canadian)</name>
+      <name>Space to Option_L (when Input Source == Canadian)</name>
       <appendix>(+ When you type Space only, send Space)</appendix>
       <identifier>remap.canadian_space2optionL_space</identifier>
-      <inputmode_only>CANADIAN</inputmode_only>
+      <inputsource_only>CANADIAN</inputsource_only>
       <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
     </item>
     <item>

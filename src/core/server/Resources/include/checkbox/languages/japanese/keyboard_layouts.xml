@@ -13,7 +13,7 @@
         <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
         <appendix>(英数入力のときだけDvorak配列にする)</appendix>
         <identifier>remap.jis_qwerty2dvorak_roman_only</identifier>
-        <inputmode_only>ENGLISH</inputmode_only>
+        <inputsource_only>ENGLISH</inputsource_only>
         <include path="keyboard_layouts/dvorak.xml" />
       </item>
       <item>
@@ -21,7 +21,7 @@
         <appendix>(英数入力のときだけDvorak配列にする)</appendix>
         <appendix>(Command,Control,Optionを押したときはQwerty配列のまま)</appendix>
         <identifier>remap.jis_qwerty2dvorak_roman_only_qwerty</identifier>
-        <inputmode_only>ENGLISH</inputmode_only>
+        <inputsource_only>ENGLISH</inputsource_only>
         <modifier_not>
           ModifierFlag::COMMAND_L,
           ModifierFlag::COMMAND_R,
@@ -98,13 +98,23 @@
     <item>
       <name>Use JIS X 6004</name>
       <identifier>remap.jis_layout_jisx6004</identifier>
-      <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+      <inputsourcedetail_only>
+        JAPANESE,
+        JAPANESE_HIRAGANA,
+        JAPANESE_KATAKANA,
+        JAPANESE_HALFWIDTH_KANA
+      </inputsourcedetail_only>
       <include path="keyboard_layouts/jisx6004.xml" />
     </item>
     <item>
       <name>Use JIS X 6004 for US Keyboard</name>
       <identifier>remap.jis_layout_jisx6004_us</identifier>
-      <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+      <inputsourcedetail_only>
+        JAPANESE,
+        JAPANESE_HIRAGANA,
+        JAPANESE_KATAKANA,
+        JAPANESE_HALFWIDTH_KANA
+      </inputsourcedetail_only>
       <include path="keyboard_layouts/jisx6004_us.xml" />
     </item>
     <item>
@@ -330,13 +340,13 @@
       <item>
         <name>：キーをDeleteキーにする（後退キー）</name>
         <identifier>remap.jis_oyayubishiftinput_backspace</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::JIS_COLON, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>］キーをEscapeキーにする（取消キー）</name>
         <identifier>remap.jis_oyayubishiftinput_escape</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, KeyCode::ESCAPE</autogen>
       </item>
       <item><name>------------------------------------------------------------</name></item>
@@ -411,14 +421,14 @@
       <item>
         <name>新下駄配列（ことえり向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <include path="keyboard_layouts/shingeta_base.xml" />
         <include path="keyboard_layouts/shingeta_kotoeri.xml" />
       </item>
       <item>
         <name>新下駄配列（ATOK向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <include path="keyboard_layouts/shingeta_base.xml" />
         <include path="keyboard_layouts/shingeta_atok.xml" />
       </item>
@@ -432,12 +442,12 @@
         <appendix>・日本語入力: 新下駄配列</appendix>
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_dvorak</identifier>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <include path="keyboard_layouts/shingeta_base.xml" />
           <include path="keyboard_layouts/shingeta_kotoeri.xml" />
         </block>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -449,7 +459,7 @@
           <include path="keyboard_layouts/dvorak.xml" />
         </block>
         <block>
-          <inputmode_not>JAPANESE</inputmode_not>
+          <inputsource_not>JAPANESE</inputsource_not>
           <include path="keyboard_layouts/dvorak.xml" />
         </block>
       </item>
@@ -460,12 +470,12 @@
         <appendix>・日本語入力: 新下駄配列</appendix>
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_dvorak</identifier>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <include path="keyboard_layouts/shingeta_base.xml" />
           <include path="keyboard_layouts/shingeta_atok.xml" />
         </block>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -477,7 +487,7 @@
           <include path="keyboard_layouts/dvorak.xml" />
         </block>
         <block>
-          <inputmode_not>JAPANESE</inputmode_not>
+          <inputsource_not>JAPANESE</inputsource_not>
           <include path="keyboard_layouts/dvorak.xml" />
         </block>
       </item>
@@ -487,14 +497,14 @@
       <item>
         <name>新下駄配列 US Keyboard 向け（ことえり向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_us</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <include path="keyboard_layouts/shingeta_base_for_us.xml" />
         <include path="keyboard_layouts/shingeta_kotoeri.xml" />
       </item>
       <item>
         <name>新下駄配列 US Keyboard 向け（ATOK向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_us</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <include path="keyboard_layouts/shingeta_base_for_us.xml" />
         <include path="keyboard_layouts/shingeta_atok.xml" />
       </item>
@@ -508,12 +518,12 @@
         <appendix>・日本語入力: 新下駄配列</appendix>
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_dvorak_for_us</identifier>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <include path="keyboard_layouts/shingeta_base_for_us.xml" />
           <include path="keyboard_layouts/shingeta_kotoeri.xml" />
         </block>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -525,7 +535,7 @@
           <include path="../../snippets/dvorak.xml" />
         </block>
         <block>
-          <inputmode_not>JAPANESE</inputmode_not>
+          <inputsource_not>JAPANESE</inputsource_not>
           <include path="../../snippets/dvorak.xml" />
         </block>
       </item>
@@ -536,12 +546,12 @@
         <appendix>・日本語入力: 新下駄配列</appendix>
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_dvorak_for_us</identifier>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <include path="keyboard_layouts/shingeta_base_for_us.xml" />
           <include path="keyboard_layouts/shingeta_atok.xml" />
         </block>
         <block>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -553,7 +563,7 @@
           <include path="../../snippets/dvorak.xml" />
         </block>
         <block>
-          <inputmode_not>JAPANESE</inputmode_not>
+          <inputsource_not>JAPANESE</inputsource_not>
           <include path="../../snippets/dvorak.xml" />
         </block>
       </item>
@@ -565,7 +575,7 @@
         <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝かな</name>
         <appendix>数字段のシフト面は未定義</appendix>
         <identifier>remap.jis_asuka_roman_space_kana</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
 
         <include path="keyboard_layouts/asuka_roman.xml">
           <replacementdef>
@@ -583,7 +593,7 @@
         <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
         <appendix>数字段のシフト面は未定義</appendix>
         <identifier>remap.jis_asuka_roman_eisuu_space</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
 
         <include path="keyboard_layouts/asuka_roman.xml">
           <replacementdef>
@@ -617,11 +627,12 @@
     </item>
     <item>
       <name>Use Windows Kana-Input Layout on US Keyboard</name>
-      <inputmodedetail_only>
+      <inputsourcedetail_only>
+        JAPANESE,
         JAPANESE_HIRAGANA,
         JAPANESE_KATAKANA,
         JAPANESE_HALFWIDTH_KANA,
-      </inputmodedetail_only>
+      </inputsourcedetail_only>
       <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
       <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
       <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
@@ -647,13 +658,13 @@
         <name>日本語入力のときだけAIU配列にする</name>
         <appendix>（Command+CなどのショートカットはQWERTY配列のまま）</appendix>
         <identifier>remap.jis_layout_aiu</identifier>
-        <inputmodedetail_only>
+        <inputsourcedetail_only>
           JAPANESE,
           JAPANESE_HIRAGANA,
           JAPANESE_KATAKANA,
           JAPANESE_HALFWIDTH_KANA,
           AINU
-        </inputmodedetail_only>
+        </inputsourcedetail_only>
         <modifier_not>
           ModifierFlag::COMMAND_L,
           ModifierFlag::COMMAND_R,

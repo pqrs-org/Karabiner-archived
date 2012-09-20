@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <inputmode_only>JAPANESE</inputmode_only>
+  <inputsource_only>JAPANESE</inputsource_only>
   <!-- 左手 中段 -->
   <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
   <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>

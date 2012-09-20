@@ -10,7 +10,7 @@
   <item>
     <name>UpDown.DvorakJP</name>
     <identifier>remap.jis_UpDown_DvorakJP</identifier>
-    <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputmodedetail_only>
+    <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputsourcedetail_only>
     <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::K, ModifierFlag::NONE</autogen>
     <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::I, ModifierFlag::NONE</autogen>
     <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::U, ModifierFlag::NONE</autogen>

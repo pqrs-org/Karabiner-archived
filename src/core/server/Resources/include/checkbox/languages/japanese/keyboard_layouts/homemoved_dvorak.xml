@@ -10,7 +10,7 @@
   <item>
     <name>HomeMoved.DvorakJP</name>
     <identifier>remap.jis_HomeMoved_DvorakJP</identifier>
-    <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputmodedetail_only>
+    <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputsourcedetail_only>
     <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::K, ModifierFlag::NONE</autogen>
     <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::I, ModifierFlag::NONE</autogen>
     <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::U, ModifierFlag::NONE</autogen>

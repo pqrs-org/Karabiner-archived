@@ -5,13 +5,13 @@
     <item>
       <name>Change KeyPad Comma(,) to Dot(.)</name>
       <identifier>remap.french_keypad_comma_to_dot</identifier>
-      <inputmode_only>FRENCH</inputmode_only>
+      <inputsource_only>FRENCH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Swap $ and € on French</name>
       <identifier>remap.french_swap_dollar_and_euro</identifier>
-      <inputmode_only>FRENCH</inputmode_only>
+      <inputsource_only>FRENCH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, ModifierFlag::NONE,
         KeyCode::FRENCH_DOLLAR, ModifierFlag::OPTION_R</autogen>
       <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, VK_OPTION | ModifierFlag::NONE,
@@ -79,7 +79,7 @@
     <item>
       <name>Dvorak and bépo: Command_R to Option_R</name>
       <identifier>remap.french_inputmode_dvorak_bepo_command_r_to_option_r</identifier>
-      <inputmode_only>DVORAK,BEPO</inputmode_only>
+      <inputsource_only>DVORAK,BEPO</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
     </item>
     <item>
