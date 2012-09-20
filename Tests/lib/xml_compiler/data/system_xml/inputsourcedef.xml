@@ -24,7 +24,7 @@
 
   <inputsourcedef>
     <name>CANADIAN</name>
-    <inputsourceid_equal>com.apple.keylayout.Canadian</inputsourceid_equal>
+    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
   </inputsourcedef>
 
   <inputsourcedef>
