@@ -1,6 +1,7 @@
 Changes since 7.8.0
 
     - Dynamic VK_CHANGE_INPUTSOURCE definition feature has been added.
+    - Dynamic <inputsource_only> definition feature has been added.
     - Added Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER.
     - Added DeviceLocation into <device_only>, <device_not> filters.
 

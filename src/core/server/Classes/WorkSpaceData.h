@@ -14,9 +14,8 @@
 + (void) refreshEnabledInputSources;
 
 + (InputSource*) getCurrentInputSource;
-+ (void) getLanguage:(InputSource*)inputSource
- output_language:(uint32_t*)output_language
- output_languageDetail:(uint32_t*)output_languageDetail;
-+ (void) getInputMode:(NSString*)name output_inputmode:(unsigned int*)output_inputmode output_inputmodedetail:(unsigned int*)output_inputmodedetail;
++ (void) getInputSourceID:(InputSource*)inputSource
+ output_inputSource:(uint32_t*)output_inputSource
+ output_inputSourceDetail:(uint32_t*)output_inputSourceDetail;
 + (void) selectInputSource:(unsigned int)vk_keycode;
 @end

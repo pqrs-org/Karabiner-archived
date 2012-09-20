@@ -69,18 +69,22 @@
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
-    if ([inputSource inputSourceID] &&
-        [inputSource inputModeID]) {
-      [WorkSpaceData getInputMode:[inputSource inputModeID]
-                 output_inputmode:(&(bridgeworkspacedata_.inputmode))
-           output_inputmodedetail:(&(bridgeworkspacedata_.inputmodedetail))];
-      [self send_workspacedata_to_kext];
+    [WorkSpaceData getInputSourceID:inputSource
+                 output_inputSource:(&(bridgeworkspacedata_.inputsource))
+           output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
+    [self send_workspacedata_to_kext];
 
-      NSMutableDictionary* userInfo = [[NSMutableDictionary new] autorelease];
-      [userInfo setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
-      [userInfo setObject:[inputSource inputModeID] forKey:@"inputModeID"];
-      [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
+    NSMutableDictionary* userInfo = [[NSMutableDictionary new] autorelease];
+    if ([inputSource bcp47]) {
+      [userInfo setObject:[inputSource bcp47] forKey:@"bcp47"];
     }
+    if ([inputSource inputSourceID]) {
+      [userInfo setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
+    }
+    if ([inputSource inputModeID]) {
+      [userInfo setObject:[inputSource inputModeID] forKey:@"inputModeID"];
+    }
+    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
   }
   [pool drain];
 }
