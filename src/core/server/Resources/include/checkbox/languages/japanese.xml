@@ -337,9 +337,9 @@
       </item>
       <item>
         <name>Shift+Space to Equal</name>
-        <appendix>(Disable when KANA mode)</appendix>
+        <appendix>(日本語入力時には無効)</appendix>
         <identifier>remap.jis_shiftSpace2equal</identifier>
-        <inputmode_only>ROMAN</inputmode_only>
+        <inputmode_not>JAPANESE</inputmode_not>
         <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::EQUAL</autogen>
       </item>
     </item>
@@ -443,9 +443,9 @@
         <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
       </item>
       <item>
-        <name>EISUU to Escape (only when inputmode == roman)</name>
+        <name>EISUU to Escape （入力ソースが日本語以外の場合のみ）</name>
         <identifier>remap.jis_eisuu2escape_onlyroman</identifier>
-        <inputmode_only>ROMAN</inputmode_only>
+        <inputmode_not>JAPANESE</inputmode_not>
         <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
       </item>
       <item>
