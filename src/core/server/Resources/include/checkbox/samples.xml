@@ -697,7 +697,7 @@
         <appendix>(Z+X to Return (== to Return))</appendix>
         <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
         <appendix>(W+E to Escape if application == TERMINAL)</appendix>
-        <appendix>(Q+W to Escape if inputmode == ENGLISH)</appendix>
+        <appendix>(Q+W to Escape if Input Source == English)</appendix>
         <identifier>remap.samples_simultaneouskeypresses_keytokey</identifier>
         <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
         <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
@@ -719,7 +719,7 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>
         </block>
         <block>
-          <inputmode_only>ENGLISH</inputmode_only>
+          <inputsource_only>ENGLISH</inputsource_only>
           <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Q, KeyCode::ESCAPE</autogen>
         </block>
       </item>
