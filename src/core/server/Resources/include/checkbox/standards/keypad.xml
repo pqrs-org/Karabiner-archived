@@ -179,7 +179,7 @@
       <identifier>remap.logitech_n305_hack</identifier>
       <block>
         <!-- Parentheses is Shift+8,9 in some Input Sources. -->
-        <inputmode_only>HUNGARIAN</inputmode_only>
+        <inputsource_only>HUNGARIAN</inputsource_only>
         <include path="../devices/logitech_n305.xml">
           <replacementdef>
             <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
@@ -194,7 +194,7 @@
       </block>
       <block>
         <!-- Parentheses is Shift+8,9 in some Input Sources. -->
-        <inputmode_only>GERMAN, NORWEGIAN, SWEDISH</inputmode_only>
+        <inputsource_only>GERMAN, NORWEGIAN, SWEDISH</inputsource_only>
         <include path="../devices/logitech_n305.xml">
           <replacementdef>
             <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
@@ -214,7 +214,7 @@
       </block>
       <block>
         <!-- Parentheses is Shift+8,9 in some Input Sources. -->
-        <inputmodedetail_only>SPANISH_ISO</inputmodedetail_only>
+        <inputsourcedetail_only>SPANISH_ISO</inputsourcedetail_only>
         <include path="../devices/logitech_n305.xml">
           <replacementdef>
             <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
