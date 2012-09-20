@@ -222,6 +222,35 @@ TEST(pqrs_xml_compiler, reload_bindings_clang)
   pqrs_xml_compiler* p = NULL;
   EXPECT_EQ(0, pqrs_xml_compiler_initialize(&p, "data/system_xml", "data/private_xml"));
   pqrs_xml_compiler_reload(p);
+
+  {
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+
+    pqrs_xml_compiler_get_inputsourceid(p,
+                                        &inputsource,
+                                        &inputsource_detail,
+                                        "fr",
+                                        "com.apple.keylayout.French",
+                                        NULL);
+    EXPECT_TRUE(inputsource != 0);
+    EXPECT_TRUE(inputsource_detail != 0);
+  }
+
+  {
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+
+    pqrs_xml_compiler_get_inputsourceid(p,
+                                        &inputsource,
+                                        &inputsource_detail,
+                                        NULL,
+                                        NULL,
+                                        NULL);
+    EXPECT_TRUE(inputsource == 0);
+    EXPECT_TRUE(inputsource_detail == 0);
+  }
+
   pqrs_xml_compiler_terminate(&p);
 }
 
