@@ -4,7 +4,7 @@
 
 static NSMutableArray* enabledInputSources_ = nil;
 
-@implementation WorkSpaceData (InputMode)
+@implementation WorkSpaceData (InputSource)
 
 + (void) refreshEnabledInputSources
 {
