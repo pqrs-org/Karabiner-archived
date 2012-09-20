@@ -109,8 +109,8 @@
 		34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */; };
 		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
-		34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */; };
-		34B5E8B61261960700DCFB0D /* InputModeFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */; };
+		34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */; };
+		34B5E8B61261960700DCFB0D /* InputSourceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */; };
 		34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */; };
 		34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */; };
 		34B8CEC611E5E05C00EE89E3 /* List.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8CEC411E5E05C00EE89E3 /* List.cpp */; };
@@ -254,8 +254,8 @@
 		34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_TEMPORARY.hpp; path = VirtualKey/VK_JIS_TEMPORARY.hpp; sourceTree = "<group>"; };
 		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
-		34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputModeFilter.cpp; path = RemapFilter/InputModeFilter.cpp; sourceTree = "<group>"; };
-		34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = InputModeFilter.hpp; path = RemapFilter/InputModeFilter.hpp; sourceTree = "<group>"; };
+		34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputSourceFilter.cpp; path = RemapFilter/InputSourceFilter.cpp; sourceTree = "<group>"; };
+		34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = InputSourceFilter.hpp; path = RemapFilter/InputSourceFilter.hpp; sourceTree = "<group>"; };
 		34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropKeyAfterRemap.cpp; path = RemapFunc/DropKeyAfterRemap.cpp; sourceTree = "<group>"; };
 		34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropKeyAfterRemap.hpp; path = RemapFunc/DropKeyAfterRemap.hpp; sourceTree = "<group>"; };
 		34B8CEC411E5E05C00EE89E3 /* List.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = List.cpp; path = util/List.cpp; sourceTree = "<group>"; };
@@ -509,8 +509,8 @@
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
-				34B5E8B31261960700DCFB0D /* InputModeFilter.cpp */,
-				34B5E8B41261960700DCFB0D /* InputModeFilter.hpp */,
+				34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */,
+				34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */,
 				34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */,
 				34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */,
 				34CAB8521261195200C3FFCB /* ConfigFilter.cpp */,
@@ -574,7 +574,7 @@
 				34CAB8561261195200C3FFCB /* ConfigFilter.hpp in Headers */,
 				34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */,
 				34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */,
-				34B5E8B61261960700DCFB0D /* InputModeFilter.hpp in Headers */,
+				34B5E8B61261960700DCFB0D /* InputSourceFilter.hpp in Headers */,
 				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
 				34DC263812629E0000354378 /* FilterUnion.hpp in Headers */,
 				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
@@ -720,7 +720,7 @@
 				34B8CEC611E5E05C00EE89E3 /* List.cpp in Sources */,
 				34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */,
 				34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */,
-				34B5E8B51261960700DCFB0D /* InputModeFilter.cpp in Sources */,
+				34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */,
 				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
 				34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */,
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,

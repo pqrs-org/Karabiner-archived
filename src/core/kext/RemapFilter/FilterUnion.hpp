@@ -6,7 +6,7 @@
 #include "ConfigFilter.hpp"
 #include "ModifierFilter.hpp"
 #include "DeviceFilter.hpp"
-#include "InputModeFilter.hpp"
+#include "InputSourceFilter.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ConfigFilter* configFilter;
         ModifierFilter* modifierFilter;
         DeviceFilter* deviceFilter;
-        InputModeFilter* inputModeFilter;
+        InputSourceFilter* inputSourceFilter;
       } p_;
     };
 

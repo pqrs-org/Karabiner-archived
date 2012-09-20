@@ -16,19 +16,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
       static bool handle_core(const Params_KeyboardEventCallBack& params,
                               KeyCode key,
-                              InputModeDetail inputmodedetail);
+                              InputSourceDetail inputsourcedetail);
       static bool handle_RESTORE(const Params_KeyboardEventCallBack& params);
 
       static void firekeytoinputdetail(const Params_KeyboardEventCallBack& params,
-                                       InputModeDetail inputmodedetail);
+                                       InputSourceDetail inputsourcedetail);
 
-      static InputModeDetail normalize(InputModeDetail imd);
+      static InputSourceDetail normalize(InputSourceDetail imd);
 
       static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
       static void fire(void);
 
-      static InputModeDetail savedinputmodedetail_;
-      static InputModeDetail currentinputmodedetail_;
+      static InputSourceDetail savedinputsourcedetail_;
+      static InputSourceDetail currentinputsourcedetail_;
 
       struct FireKeyInfo {
         Flags flags;

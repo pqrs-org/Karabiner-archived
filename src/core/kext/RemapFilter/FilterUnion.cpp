@@ -74,14 +74,14 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_INPUTMODE_NOT:
-        case BRIDGE_FILTERTYPE_INPUTMODE_ONLY:
-        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT:
-        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY:
-          p_.inputModeFilter = new InputModeFilter(type_);
-          if (p_.inputModeFilter) {
+        case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
+        case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
+        case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT:
+        case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
+          p_.inputSourceFilter = new InputSourceFilter(type_);
+          if (p_.inputSourceFilter) {
             for (size_t i = 1; i < length; ++i) {
-              (p_.inputModeFilter)->add(vec[i]);
+              (p_.inputSourceFilter)->add(vec[i]);
             }
           }
           break;
@@ -129,12 +129,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_INPUTMODE_NOT:
-        case BRIDGE_FILTERTYPE_INPUTMODE_ONLY:
-        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT:
-        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY:
-          if (p_.inputModeFilter) {
-            delete p_.inputModeFilter;
+        case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
+        case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
+        case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT:
+        case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
+          if (p_.inputSourceFilter) {
+            delete p_.inputSourceFilter;
           }
           break;
       }
@@ -174,12 +174,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_INPUTMODE_NOT:
-        case BRIDGE_FILTERTYPE_INPUTMODE_ONLY:
-        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_NOT:
-        case BRIDGE_FILTERTYPE_INPUTMODEDETAIL_ONLY:
-          if (p_.inputModeFilter) {
-            return (p_.inputModeFilter)->isblocked();
+        case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
+        case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
+        case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT:
+        case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
+          if (p_.inputSourceFilter) {
+            return (p_.inputSourceFilter)->isblocked();
           }
           break;
       }
