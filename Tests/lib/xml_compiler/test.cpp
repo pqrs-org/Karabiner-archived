@@ -83,8 +83,8 @@ TEST(pqrs_xml_compiler, reload)
   // Invalid keycode
   EXPECT_EQ(false,
             xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "en",
-                                                          "com.apple.keylayout.US",
+                                                          "",
+                                                          "",
                                                           ""));
 
   // ------------------------------------------------------------
@@ -102,17 +102,6 @@ TEST(pqrs_xml_compiler, reload)
 
     EXPECT_TRUE(xml_compiler.get_symbol_map_value("InputSource::FRENCH") != inputsource);
     EXPECT_TRUE(xml_compiler.get_symbol_map_value("InputSourceDetail::FRENCH") != inputsource_detail);
-  }
-
-  {
-    uint32_t inputsource;
-    uint32_t inputsource_detail;
-    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
-                                   "en",
-                                   "com.apple.keylayout.Canadian",
-                                   "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::CANADIAN"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::CANADIAN"), inputsource_detail);
   }
 
   {
