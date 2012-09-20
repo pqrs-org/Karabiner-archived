@@ -10761,7 +10761,7 @@
       <name>Change underscore(_) on Japanese keyboard to ч</name>
       <appendix>(For Bulgarian-Phonetic)</appendix>
       <identifier>remap.bulgarian_jis_underscore_to_backquote</identifier>
-      <inputmode_only>BULGARIAN</inputmode_only>
+      <inputsource_only>BULGARIAN</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
     </item>
   </item>
@@ -10769,16 +10769,16 @@
   <item>
     <name>For Canadian</name>
     <item>
-      <name>Space to Option_L (when inputmode == canadian)</name>
+      <name>Space to Option_L (when inputsource == canadian)</name>
       <identifier>remap.canadian_space2optionL</identifier>
-      <inputmode_only>CANADIAN</inputmode_only>
+      <inputsource_only>CANADIAN</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
     </item>
     <item>
-      <name>Space to Option_L (when inputmode == canadian)</name>
+      <name>Space to Option_L (when inputsource == canadian)</name>
       <appendix>(+ When you type Space only, send Space)</appendix>
       <identifier>remap.canadian_space2optionL_space</identifier>
-      <inputmode_only>CANADIAN</inputmode_only>
+      <inputsource_only>CANADIAN</inputsource_only>
       <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
     </item>
     <item>
@@ -10921,17 +10921,17 @@
   <item>
     <name>For Finnish</name>
     <item>
-      <name>Command_L+Shift_L to Command_L+Shift_L (when inputmode == finnish)</name>
-      <appendix>(+ When you type Command_L+Shift_L only, change inputmode to english)</appendix>
-      <inputmode_only>FINNISH</inputmode_only>
+      <name>Command_L+Shift_L to Command_L+Shift_L (when inputsource == finnish)</name>
+      <appendix>(+ When you type Command_L+Shift_L only, change inputsource to english)</appendix>
+      <inputsource_only>FINNISH</inputsource_only>
       <identifier>remap.finnish_shiftcommandL2shiftLcommandL_english</identifier>
       <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
     </item>
     <item>
       <name>Command_L+Shift_L to Command_L+Shift_L</name>
-      <appendix>(+ When you type Command_L+Shift_L only, change inputmode to finnish)</appendix>
-      <!-- <inputmode_only>ENGLISH</inputmode_only> -->
+      <appendix>(+ When you type Command_L+Shift_L only, change inputsource to finnish)</appendix>
+      <!-- <inputsource_only>ENGLISH</inputsource_only> -->
       <identifier>remap.finnish_shiftcommandL2shiftLcommandL_finnish</identifier>
       <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
@@ -10942,13 +10942,13 @@
     <item>
       <name>Change KeyPad Comma(,) to Dot(.)</name>
       <identifier>remap.french_keypad_comma_to_dot</identifier>
-      <inputmode_only>FRENCH</inputmode_only>
+      <inputsource_only>FRENCH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Swap $ and € on French</name>
       <identifier>remap.french_swap_dollar_and_euro</identifier>
-      <inputmode_only>FRENCH</inputmode_only>
+      <inputsource_only>FRENCH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, ModifierFlag::NONE,
         KeyCode::FRENCH_DOLLAR, ModifierFlag::OPTION_R</autogen>
       <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, VK_OPTION | ModifierFlag::NONE,
@@ -11015,8 +11015,8 @@
     </item>
     <item>
       <name>Dvorak and bépo: Command_R to Option_R</name>
-      <identifier>remap.french_inputmode_dvorak_bepo_command_r_to_option_r</identifier>
-      <inputmode_only>DVORAK,BEPO</inputmode_only>
+      <identifier>remap.french_inputsource_dvorak_bepo_command_r_to_option_r</identifier>
+      <inputsource_only>DVORAK,BEPO</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
     </item>
   </item>
@@ -11584,13 +11584,13 @@
         <name>Semicolon to Sticky Shift_L</name>
         <appendix>(effective only when input source is Japanese)</appendix>
         <identifier>remap.jis_semicolon2stickyshiftL</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <autogen>--KeyOverlaidModifier-- KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
       </item>
       <item>
         <name>セミコロン(;)は常に半角</name>
         <identifier>remap.jis_semicolon_roman</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
           Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
@@ -11626,7 +11626,7 @@
         <name>Shift+Space to Equal</name>
         <appendix>(Disable when KANA mode)</appendix>
         <identifier>remap.jis_shiftSpace2equal</identifier>
-        <inputmode_only>ROMAN</inputmode_only>
+        <inputsource_only>ROMAN</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::EQUAL</autogen>
       </item>
     </item>
@@ -11730,9 +11730,9 @@
         <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
       </item>
       <item>
-        <name>EISUU to Escape (only when inputmode == roman)</name>
+        <name>EISUU to Escape (only when inputsource == roman)</name>
         <identifier>remap.jis_eisuu2escape_onlyroman</identifier>
-        <inputmode_only>ROMAN</inputmode_only>
+        <inputsource_only>ROMAN</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::JIS_EISUU, KeyCode::ESCAPE</autogen>
       </item>
       <item>
@@ -12311,14 +12311,14 @@
           <appendix>"[Double Press Modifier] Recognition Threshold" in "Key Repeat" tab.)</appendix>
           <identifier>remap.jis_doublecontrol_to_quicksilver_mode_eisuu</identifier>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
           </block>
           <block>
-            <inputmode_not>JAPANESE</inputmode_not>
+            <inputsource_not>JAPANESE</inputsource_not>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_L, KeyCode::CONTROL_L,
               KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman</autogen>
             <autogen>--DoublePressModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R,
@@ -12406,7 +12406,7 @@
           <name>Use Dvorak Keyboard Layout on Japanese Keyboard</name>
           <appendix>(英数入力のときだけDvorak配列にする)</appendix>
           <identifier>remap.jis_qwerty2dvorak_roman_only</identifier>
-          <inputmode_only>ROMAN</inputmode_only>
+          <inputsource_only>ROMAN</inputsource_only>
           <modifier_not>ModifierFlag::FN</modifier_not>
 
           <autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
@@ -12472,7 +12472,7 @@
           <appendix>(英数入力のときだけDvorak配列にする)</appendix>
           <appendix>(Command,Control,Optionを押したときはQwerty配列のまま)</appendix>
           <identifier>remap.jis_qwerty2dvorak_roman_only_qwerty</identifier>
-          <inputmode_only>ROMAN</inputmode_only>
+          <inputsource_only>ROMAN</inputsource_only>
           <modifier_not>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -12607,7 +12607,7 @@
       <item>
         <name>Use JIS X 6004</name>
         <identifier>remap.jis_layout_jisx6004</identifier>
-        <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+        <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputsourcedetail_only>
 
         <!-- ====================================================================== -->
         <!-- Shift+Q -> small A (Shift+3) -->
@@ -12777,7 +12777,7 @@
       <item>
         <name>Use JIS X 6004 for US Keyboard</name>
         <identifier>remap.jis_layout_jisx6004_us</identifier>
-        <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+        <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_HALFWIDTH_KANA</inputsourcedetail_only>
 
         <!-- ====================================================================== -->
         <!-- Shift+Q -> small A (Shift+3) -->
@@ -12970,7 +12970,7 @@
           <item>
             <name>＜かなモード＞ 左シフト＝スペース, 右シフト＝かな</name>
             <identifier>remap.oyayubi_shift_kana_space_kana</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
@@ -13159,7 +13159,7 @@
             <name>＜かなモード＞ 左シフト＝英数, 右シフト＝スペース</name>
             <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
             <identifier>remap.oyayubi_shift_kana_eisuu_space</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
@@ -13348,7 +13348,7 @@
             <name>＜かなモード＞ 左シフト＝英数, 右シフト＝かな</name>
             <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
             <identifier>remap.oyayubi_shift_kana_eisuu_kana</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
@@ -13539,7 +13539,7 @@
           <item>
             <name>＜かなモード for ATOK＞ 左シフト＝スペース, 右シフト＝かな</name>
             <identifier>remap.oyayubi_shift_kana_atok_space_kana</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
@@ -13728,7 +13728,7 @@
             <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝スペース</name>
             <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
             <identifier>remap.oyayubi_shift_kana_atok_eisuu_space</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
@@ -13917,7 +13917,7 @@
             <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝かな</name>
             <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
             <identifier>remap.oyayubi_shift_kana_atok_eisuu_kana</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>
@@ -14122,7 +14122,7 @@
 
             {{JAPANESE_OYAYUBISHIFT_EXTRA}}
 
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::U,             KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::I, KeyCode::VK_NONE</autogen>
@@ -14293,7 +14293,7 @@
 
             {{JAPANESE_OYAYUBISHIFT_EXTRA}}
 
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::U,             KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::I, KeyCode::VK_NONE</autogen>
@@ -14464,7 +14464,7 @@
 
             {{JAPANESE_OYAYUBISHIFT_EXTRA}}
 
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!-- 左手 中段 -->
             <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::NONE, KeyCode::U,             KeyCode::VK_NONE</autogen>
             <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::I, KeyCode::VK_NONE</autogen>
@@ -14628,13 +14628,13 @@
         <item>
           <name>：キーをDeleteキーにする（後退キー）</name>
           <identifier>remap.jis_oyayubishiftinput_backspace</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::JIS_COLON, KeyCode::DELETE</autogen>
         </item>
         <item>
           <name>］キーをEscapeキーにする（取消キー）</name>
           <identifier>remap.jis_oyayubishiftinput_escape</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, KeyCode::ESCAPE</autogen>
         </item>
         <item><name>------------------------------------------------------------</name></item>
@@ -14736,7 +14736,7 @@
         <item>
           <name>Enable Nicola on Kinesis (Kana-Kawasemi)</name>
           <identifier>enable_nicola_on_kinesis_kana_kawasemi</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <config_not>enable_nicola_on_kinesis_romaji</config_not>
 
           <block>
@@ -15047,7 +15047,7 @@
         <item>
           <name>Enable Nicola on Kinesis (Romaji)</name>
           <identifier>enable_nicola_on_kinesis_romaji</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <config_not>enable_nicola_on_kinesis_kana_kawasemi</config_not>
 
           <block>
@@ -15316,7 +15316,7 @@
             -->
 
           <!-- 下駄入力(qwerty,ATOK版) -->
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
 
           <!-- 左手 -->
           <!-- 単打 -->
@@ -15631,7 +15631,7 @@
         <item>
           <name>新下駄配列（ことえり向け・ローマ字入力）</name>
           <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <!--
               ======================================================================
               全体的な注意点
@@ -15875,7 +15875,7 @@
         <item>
           <name>新下駄配列（ATOK向け・ローマ字入力）</name>
           <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <!--
               ======================================================================
               全体的な注意点
@@ -16126,7 +16126,7 @@
           <appendix>・日本語入力: 新下駄配列</appendix>
           <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_dvorak</identifier>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!--
                 ======================================================================
                 全体的な注意点
@@ -16368,7 +16368,7 @@
             <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::SLASH,                         KeyCode::VK_NONE</autogen>
           </block>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <modifier_only>
               ModifierFlag::COMMAND_L,
               ModifierFlag::COMMAND_R,
@@ -16438,7 +16438,7 @@
             <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
           </block>
           <block>
-            <inputmode_not>JAPANESE</inputmode_not>
+            <inputsource_not>JAPANESE</inputsource_not>
             <modifier_not>ModifierFlag::FN</modifier_not>
 
             <autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
@@ -16507,7 +16507,7 @@
           <appendix>・日本語入力: 新下駄配列</appendix>
           <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_dvorak</identifier>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!--
                 ======================================================================
                 全体的な注意点
@@ -16749,7 +16749,7 @@
             <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::SLASH, ModifierFlag::OPTION_L, KeyCode::VK_NONE</autogen>
           </block>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <modifier_only>
               ModifierFlag::COMMAND_L,
               ModifierFlag::COMMAND_R,
@@ -16819,7 +16819,7 @@
             <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
           </block>
           <block>
-            <inputmode_not>JAPANESE</inputmode_not>
+            <inputsource_not>JAPANESE</inputsource_not>
             <modifier_not>ModifierFlag::FN</modifier_not>
 
             <autogen>--KeyToKey-- KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
@@ -16887,7 +16887,7 @@
         <item>
           <name>新下駄配列 US Keyboard 向け（ことえり向け・ローマ字入力）</name>
           <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_us</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <!--
               ======================================================================
               全体的な注意点
@@ -17130,7 +17130,7 @@
         <item>
           <name>新下駄配列 US Keyboard 向け（ATOK向け・ローマ字入力）</name>
           <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_us</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <!--
               ======================================================================
               全体的な注意点
@@ -17380,7 +17380,7 @@
           <appendix>・日本語入力: 新下駄配列</appendix>
           <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_dvorak_for_us</identifier>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!--
                 ======================================================================
                 全体的な注意点
@@ -17621,7 +17621,7 @@
             <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::SLASH,                         KeyCode::VK_NONE</autogen>
           </block>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <modifier_only>
               ModifierFlag::COMMAND_L,
               ModifierFlag::COMMAND_R,
@@ -17668,7 +17668,7 @@
             <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::BRACKET_RIGHT</autogen>
           </block>
           <block>
-            <inputmode_not>JAPANESE</inputmode_not>
+            <inputsource_not>JAPANESE</inputsource_not>
             <!-- If ModifierFlag::FN is pressed, retain keys to convert Fn+jkl to 123 (numpad) -->
             <modifier_not>ModifierFlag::FN</modifier_not>
 
@@ -17714,7 +17714,7 @@
           <appendix>・日本語入力: 新下駄配列</appendix>
           <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_dvorak_for_us</identifier>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <!--
                 ======================================================================
                 全体的な注意点
@@ -17955,7 +17955,7 @@
             <autogen>--SimultaneousKeyPresses-- KeyCode::H, KeyCode::U, KeyCode::SLASH, ModifierFlag::OPTION_L, KeyCode::VK_NONE</autogen>
           </block>
           <block>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <inputsource_only>JAPANESE</inputsource_only>
             <modifier_only>
               ModifierFlag::COMMAND_L,
               ModifierFlag::COMMAND_R,
@@ -18002,7 +18002,7 @@
             <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::BRACKET_RIGHT</autogen>
           </block>
           <block>
-            <inputmode_not>JAPANESE</inputmode_not>
+            <inputsource_not>JAPANESE</inputsource_not>
             <!-- If ModifierFlag::FN is pressed, retain keys to convert Fn+jkl to 123 (numpad) -->
             <modifier_not>ModifierFlag::FN</modifier_not>
 
@@ -18049,7 +18049,7 @@
           <name>＜ローマ字モード＞ 左シフト＝スペース, 右シフト＝かな</name>
           <appendix>数字段のシフト面は未定義</appendix>
           <identifier>remap.jis_asuka_roman_space_kana</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <!--
               ======================================================================
               全体的な注意点
@@ -18285,7 +18285,7 @@
           <name>＜ローマ字モード＞ 左シフト＝英数, 右シフト＝スペース</name>
           <appendix>数字段のシフト面は未定義</appendix>
           <identifier>remap.jis_asuka_roman_eisuu_space</identifier>
-          <inputmode_only>JAPANESE</inputmode_only>
+          <inputsource_only>JAPANESE</inputsource_only>
           <!--
               ======================================================================
               全体的な注意点
@@ -18755,7 +18755,7 @@
       </item>
       <item>
         <name>Use Windows Kana-Input Layout on US Keyboard</name>
-        <inputmode_not>ROMAN</inputmode_not>
+        <inputsource_not>ROMAN</inputsource_not>
         <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
@@ -18779,7 +18779,7 @@
         <item>
           <name>UpDown.DvorakJP</name>
           <identifier>remap.jis_UpDown_DvorakJP</identifier>
-          <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputmodedetail_only>
+          <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputsourcedetail_only>
           <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::K, ModifierFlag::NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::I, ModifierFlag::NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::U, ModifierFlag::NONE</autogen>
@@ -19248,7 +19248,7 @@
         <item>
           <name>HomeMoved.DvorakJP</name>
           <identifier>remap.jis_HomeMoved_DvorakJP</identifier>
-          <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputmodedetail_only>
+          <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE, JAPANESE_KATAKANA, JAPANESE_FULLWIDTH_ROMAN</inputsourcedetail_only>
           <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::K, ModifierFlag::NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::I, ModifierFlag::NONE</autogen>
           <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::NONE, KeyCode::U, ModifierFlag::NONE</autogen>
@@ -19860,13 +19860,13 @@
           <name>日本語入力のときだけAIU配列にする</name>
           <appendix>（Command+CなどのショートカットはQWERTY配列のまま）</appendix>
           <identifier>remap.jis_layout_aiu</identifier>
-          <inputmodedetail_only>
+          <inputsourcedetail_only>
             JAPANESE,
             JAPANESE_HIRAGANA,
             JAPANESE_KATAKANA,
             JAPANESE_HALFWIDTH_KANA,
             AINU
-          </inputmodedetail_only>
+          </inputsourcedetail_only>
           <modifier_not>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -19981,7 +19981,7 @@
         <name>Control+I to Control+K (Control+I でカタカナ変換)</name>
         <appendix>(Except in Virtual Machine, RDC)</appendix>
         <identifier>remap.jis_controlItocontrolK</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
       </item>
@@ -19989,7 +19989,7 @@
         <name>Control+I to F7 (Control+I でカタカナ変換)</name>
         <appendix>(Except in Virtual Machine, RDC)</appendix>
         <identifier>remap.jis_controlItof7</identifier>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <autogen>--KeyToKey-- KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::F7</autogen>
       </item>
@@ -20046,7 +20046,7 @@
       <name>Change Command_L Key</name>
       <item>
         <name>Command_L to Command_L</name>
-        <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
+        <appendix>(+ When you type Command_L only, change inputsource to english)</appendix>
         <identifier>remap.russian_commandL2commandL_english</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
       </item>
@@ -20055,7 +20055,7 @@
       <name>Change Command_R Key</name>
       <item>
         <name>Command_R to Command_R</name>
-        <appendix>(+ When you type Command_R only, change inputmode to russian)</appendix>
+        <appendix>(+ When you type Command_R only, change inputsource to russian)</appendix>
         <identifier>remap.russian_commandR2commandR_russian</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
       </item>
@@ -20087,16 +20087,16 @@
       <name>Change Shift_L Key</name>
       <item>
         <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type Shift_L only, change inputmode to english)</appendix>
+        <appendix>(+ When you type Shift_L only, change inputsource to english)</appendix>
         <identifier>remap.russian_shiftL2shiftL_english</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
       </item>
       <item>
         <name>Shift_L to Shift_L</name>
-        <appendix>(+ When you type Shift_L only, change inputmode to english)</appendix>
+        <appendix>(+ When you type Shift_L only, change inputsource to english)</appendix>
         <appendix></appendix>
         <appendix>(+ When you type Command+Shift_L only,</appendix>
-        <appendix>change inputmode to "English - Ilya Birman Typography".)</appendix>
+        <appendix>change inputsource to "English - Ilya Birman Typography".)</appendix>
         <identifier>remap.russian_shiftL2shiftL_english_typography</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</autogen>
         <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L,             KeyCode::SHIFT_L,                          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
@@ -20106,16 +20106,16 @@
       <name>Change Shift_R Key</name>
       <item>
         <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
+        <appendix>(+ When you type Shift_R only, change inputsource to russian)</appendix>
         <identifier>remap.russian_shiftR2shiftR_russian</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
       </item>
       <item>
         <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, change inputmode to russian)</appendix>
+        <appendix>(+ When you type Shift_R only, change inputsource to russian)</appendix>
         <appendix></appendix>
         <appendix>(+ When you type Command+Shift_R only,</appendix>
-        <appendix>change inputmode to "Russian - Ilya Birman Typography".)</appendix>
+        <appendix>change inputsource to "Russian - Ilya Birman Typography".)</appendix>
         <identifier>remap.russian_shiftR2shiftR_russian_typography</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, VK_COMMAND, KeyCode::SHIFT_R, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</autogen>
         <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R,             KeyCode::SHIFT_R,                          KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
@@ -20151,7 +20151,7 @@
       <appendix></appendix>
       <identifier>remap.slovenian_win_style_shortcuts</identifier>
 
-      <inputmode_only>SLOVENIAN</inputmode_only>
+      <inputsource_only>SLOVENIAN</inputsource_only>
 
       <appendix>Option_R (AltGr) + 1 = ~</appendix>
       <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::OPTION_R,
@@ -20222,20 +20222,20 @@
   <item>
     <name>For Swedish</name>
     <item>
-      <name>Space to Option_L (when inputmode == swedish)</name>
+      <name>Space to Option_L (when inputsource == swedish)</name>
       <identifier>remap.swedish_space2optionL_swedish</identifier>
-      <inputmode_only>SWEDISH</inputmode_only>
+      <inputsource_only>SWEDISH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Command_L to Command_L</name>
-      <appendix>(+ When you type Command_L only, change inputmode to english)</appendix>
+      <appendix>(+ When you type Command_L only, change inputsource to english)</appendix>
       <identifier>remap.swedish_commandL2commandL_english</identifier>
       <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
     </item>
     <item>
       <name>Command_R to Command_R</name>
-      <appendix>(+ When you type Command_R only, change inputmode to swedish)</appendix>
+      <appendix>(+ When you type Command_R only, change inputsource to swedish)</appendix>
       <identifier>remap.swedish_commandR2commandR_swedish</identifier>
       <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</autogen>
     </item>
@@ -20953,7 +20953,7 @@
         <appendix>(Z+X to Return (== to Return))</appendix>
         <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
         <appendix>(W+E to Escape if application == TERMINAL)</appendix>
-        <appendix>(Q+W to Escape if inputmode == ROMAN)</appendix>
+        <appendix>(Q+W to Escape if inputsource == ROMAN)</appendix>
         <identifier>remap.samples_simultaneouskeypresses_keytokey</identifier>
         <autogen>--SimultaneousKeyPresses-- KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN</autogen>
         <autogen>--SimultaneousKeyPresses-- KeyCode::K, KeyCode::A, KeyCode::CURSOR_UP</autogen>
@@ -20975,7 +20975,7 @@
           <autogen>--SimultaneousKeyPresses-- KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>
         </block>
         <block>
-          <inputmode_only>ROMAN</inputmode_only>
+          <inputsource_only>ROMAN</inputsource_only>
           <autogen>--SimultaneousKeyPresses-- KeyCode::W, KeyCode::Q, KeyCode::ESCAPE</autogen>
         </block>
       </item>
@@ -21298,213 +21298,213 @@
         </item>
       </item>
 
-      <!-- inputmode only -->
-      <!-- inputmode not -->
+      <!-- inputsource only -->
+      <!-- inputsource not -->
       <item>
-        <name>InputMode</name>
+        <name>Inputsource</name>
         <item>
           <name>bépo</name>
           <item>
-            <name>inputmode_only (bépo-*)</name>
+            <name>inputsource_only (bépo-*)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmode_bepo</identifier>
-            <inputmode_only>BEPO</inputmode_only>
+            <identifier>remap.samples_inputsource_bepo</identifier>
+            <inputsource_only>BEPO</inputsource_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-normal)</name>
+            <name>inputsourcedetail_only (bépo-normal)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo</identifier>
-            <inputmodedetail_only>BEPO</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo</identifier>
+            <inputsourcedetail_only>BEPO</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-AzertyCmd)</name>
+            <name>inputsourcedetail_only (bépo-AzertyCmd)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo_azertycmd</identifier>
-            <inputmodedetail_only>BEPO_AZERTYCMD</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo_azertycmd</identifier>
+            <inputsourcedetail_only>BEPO_AZERTYCMD</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-AzertyCmdRoman)</name>
+            <name>inputsourcedetail_only (bépo-AzertyCmdRoman)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo_azertycmdroman</identifier>
-            <inputmodedetail_only>BEPO_AZERTYCMDROMAN</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo_azertycmdroman</identifier>
+            <inputsourcedetail_only>BEPO_AZERTYCMDROMAN</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-QwertyCmd)</name>
+            <name>inputsourcedetail_only (bépo-QwertyCmd)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo_qwertycmd</identifier>
-            <inputmodedetail_only>BEPO_QWERTYCMD</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo_qwertycmd</identifier>
+            <inputsourcedetail_only>BEPO_QWERTYCMD</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-QwertyCmdRoman)</name>
+            <name>inputsourcedetail_only (bépo-QwertyCmdRoman)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo_qwertycmdroman</identifier>
-            <inputmodedetail_only>BEPO_QWERTYCMDROMAN</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo_qwertycmdroman</identifier>
+            <inputsourcedetail_only>BEPO_QWERTYCMDROMAN</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-QwertzCmd)</name>
+            <name>inputsourcedetail_only (bépo-QwertzCmd)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo_qwertzcmd</identifier>
-            <inputmodedetail_only>BEPO_QWERTZCMD</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo_qwertzcmd</identifier>
+            <inputsourcedetail_only>BEPO_QWERTZCMD</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-QwertzCmdRoman)</name>
+            <name>inputsourcedetail_only (bépo-QwertzCmdRoman)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo_qwertzcmdroman</identifier>
-            <inputmodedetail_only>BEPO_QWERTZCMDROMAN</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo_qwertzcmdroman</identifier>
+            <inputsourcedetail_only>BEPO_QWERTZCMDROMAN</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (bépo-Roman)</name>
+            <name>inputsourcedetail_only (bépo-Roman)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_bepo_roman</identifier>
-            <inputmodedetail_only>BEPO_ROMAN</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_bepo_roman</identifier>
+            <inputsourcedetail_only>BEPO_ROMAN</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
         </item>
         <item>
-          <name>inputmode_only (Chinese Traditional-*)</name>
+          <name>inputsource_only (Chinese Traditional-*)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_tradchinese</identifier>
-          <inputmode_only>CHINESE_TRADITIONAL</inputmode_only>
+          <identifier>remap.samples_inputsource_tradchinese</identifier>
+          <inputsource_only>CHINESE_TRADITIONAL</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmodedetail_only (Chinese Traditional Yahoo! KeyKey)</name>
+          <name>inputsourcedetail_only (Chinese Traditional Yahoo! KeyKey)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_tradchinese_yahoo_keykey</identifier>
-          <inputmodedetail_only>CHINESE_TRADITIONAL_YAHOO_KEYKEY</inputmodedetail_only>
+          <identifier>remap.samples_inputsource_tradchinese_yahoo_keykey</identifier>
+          <inputsourcedetail_only>CHINESE_TRADITIONAL_YAHOO_KEYKEY</inputsourcedetail_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (Chinese Simplified-*)</name>
+          <name>inputsource_only (Chinese Simplified-*)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_simpchinese</identifier>
-          <inputmode_only>CHINESE_SIMPLIFIED</inputmode_only>
+          <identifier>remap.samples_inputsource_simpchinese</identifier>
+          <inputsource_only>CHINESE_SIMPLIFIED</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (Canadian)</name>
+          <name>inputsource_only (Canadian)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_canadian</identifier>
-          <inputmode_only>CANADIAN</inputmode_only>
+          <identifier>remap.samples_inputsource_canadian</identifier>
+          <inputsource_only>CANADIAN</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Dvorak</name>
           <item>
-            <name>inputmode_only (Dvorak-*)</name>
+            <name>inputsource_only (Dvorak-*)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmode_dvorak</identifier>
-            <inputmode_only>DVORAK</inputmode_only>
+            <identifier>remap.samples_inputsource_dvorak</identifier>
+            <inputsource_only>DVORAK</inputsource_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Dvorak-normal)</name>
+            <name>inputsourcedetail_only (Dvorak-normal)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_dvorak</identifier>
-            <inputmodedetail_only>DVORAK</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_dvorak</identifier>
+            <inputsourcedetail_only>DVORAK</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Dvorak-Left)</name>
+            <name>inputsourcedetail_only (Dvorak-Left)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_dvorak_left</identifier>
-            <inputmodedetail_only>DVORAK_LEFT</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_dvorak_left</identifier>
+            <inputsourcedetail_only>DVORAK_LEFT</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Dvorak-QwertyCmd)</name>
+            <name>inputsourcedetail_only (Dvorak-QwertyCmd)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_dvorak_qwertycmd</identifier>
-            <inputmodedetail_only>DVORAK_QWERTYCMD</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_dvorak_qwertycmd</identifier>
+            <inputsourcedetail_only>DVORAK_QWERTYCMD</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Dvorak-Right)</name>
+            <name>inputsourcedetail_only (Dvorak-Right)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_dvorak_right</identifier>
-            <inputmodedetail_only>DVORAK_RIGHT</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_dvorak_right</identifier>
+            <inputsourcedetail_only>DVORAK_RIGHT</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
         </item>
         <item>
-          <name>inputmode_only (Finnish)</name>
+          <name>inputsource_only (Finnish)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_finnish</identifier>
-          <inputmode_only>FINNISH</inputmode_only>
+          <identifier>remap.samples_inputsource_finnish</identifier>
+          <inputsource_only>FINNISH</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (French-*)</name>
+          <name>inputsource_only (French-*)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_french</identifier>
-          <inputmode_only>FRENCH</inputmode_only>
+          <identifier>remap.samples_inputsource_french</identifier>
+          <inputsource_only>FRENCH</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Japanese</name>
           <item>
-            <name>inputmode_only (Japanese-*)</name>
+            <name>inputsource_only (Japanese-*)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmode_japanese</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <identifier>remap.samples_inputsource_japanese</identifier>
+            <inputsource_only>JAPANESE</inputsource_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmode_not (Japanese-*)</name>
+            <name>inputsource_not (Japanese-*)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmode_not_japanese</identifier>
-            <inputmode_not>JAPANESE</inputmode_not>
+            <identifier>remap.samples_inputsource_not_japanese</identifier>
+            <inputsource_not>JAPANESE</inputsource_not>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Japanese-Hiragana)</name>
+            <name>inputsourcedetail_only (Japanese-Hiragana)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_japanese_hiragana</identifier>
+            <identifier>remap.samples_inputsourcedetail_japanese_hiragana</identifier>
             <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
-            <inputmodedetail_only>JAPANESE_HIRAGANA, JAPANESE</inputmodedetail_only>
+            <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_not (Japanese-Hiragana)</name>
+            <name>inputsourcedetail_not (Japanese-Hiragana)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_not_japanese_hiragana</identifier>
+            <identifier>remap.samples_inputsourcedetail_not_japanese_hiragana</identifier>
             <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
-            <inputmodedetail_not>JAPANESE_HIRAGANA, JAPANESE</inputmodedetail_not>
+            <inputsourcedetail_not>JAPANESE_HIRAGANA, JAPANESE</inputsourcedetail_not>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Japanese-Katakana)</name>
+            <name>inputsourcedetail_only (Japanese-Katakana)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_japanese_katakana</identifier>
-            <inputmodedetail_only>JAPANESE_KATAKANA</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_japanese_katakana</identifier>
+            <inputsourcedetail_only>JAPANESE_KATAKANA</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Japanese-Full-width Roman)</name>
+            <name>inputsourcedetail_only (Japanese-Full-width Roman)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_japanese_fullwidth_roman</identifier>
-            <inputmodedetail_only>JAPANESE_FULLWIDTH_ROMAN</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_japanese_fullwidth_roman</identifier>
+            <inputsourcedetail_only>JAPANESE_FULLWIDTH_ROMAN</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Japanese-Half-width Katakana)</name>
+            <name>inputsourcedetail_only (Japanese-Half-width Katakana)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_japanese_halfwidth_kana</identifier>
-            <inputmodedetail_only>JAPANESE_HALFWIDTH_KANA</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_japanese_halfwidth_kana</identifier>
+            <inputsourcedetail_only>JAPANESE_HALFWIDTH_KANA</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
             <name>Enforce roman input at semicolon(;).</name>
-            <identifier>remap.samples_inputmode_semicolon</identifier>
-            <inputmode_only>JAPANESE</inputmode_only>
+            <identifier>remap.samples_inputsource_semicolon</identifier>
+            <inputsource_only>JAPANESE</inputsource_only>
             <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
               Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
               Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
@@ -21512,121 +21512,121 @@
           </item>
         </item>
         <item>
-          <name>inputmode_only (Korean-*)</name>
+          <name>inputsource_only (Korean-*)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_korean</identifier>
-          <inputmode_only>KOREAN</inputmode_only>
+          <identifier>remap.samples_inputsource_korean</identifier>
+          <inputsource_only>KOREAN</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Polish</name>
           <item>
-            <name>inputmode_only (Polish-*)</name>
+            <name>inputsource_only (Polish-*)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmode_polish</identifier>
-            <inputmode_only>POLISH</inputmode_only>
+            <identifier>remap.samples_inputsource_polish</identifier>
+            <inputsource_only>POLISH</inputsource_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Polish)</name>
+            <name>inputsourcedetail_only (Polish)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_polish</identifier>
-            <inputmodedetail_only>POLISH</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_polish</identifier>
+            <inputsourcedetail_only>POLISH</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Polish Pro)</name>
+            <name>inputsourcedetail_only (Polish Pro)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_polishpro</identifier>
-            <inputmodedetail_only>POLISH_PRO</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_polishpro</identifier>
+            <inputsourcedetail_only>POLISH_PRO</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
         </item>
         <item>
-          <name>inputmode_only (Swedish)</name>
+          <name>inputsource_only (Swedish)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_swedish</identifier>
-          <inputmode_only>SWEDISH</inputmode_only>
+          <identifier>remap.samples_inputsource_swedish</identifier>
+          <inputsource_only>SWEDISH</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Roman</name>
           <item>
-            <name>inputmode_only (Roman-*)</name>
+            <name>inputsource_only (Roman-*)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmode_roman</identifier>
-            <inputmode_only>ROMAN</inputmode_only>
+            <identifier>remap.samples_inputsource_roman</identifier>
+            <inputsource_only>ROMAN</inputsource_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Roman-JANSI)</name>
+            <name>inputsourcedetail_only (Roman-JANSI)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_roman_jansi</identifier>
-            <inputmodedetail_only>ROMAN_JANSI</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_roman_jansi</identifier>
+            <inputsourcedetail_only>ROMAN_JANSI</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
           <item>
-            <name>inputmodedetail_only (Roman others)</name>
+            <name>inputsourcedetail_only (Roman others)</name>
             <appendix>Space to Tab</appendix>
-            <identifier>remap.samples_inputmodedetail_roman</identifier>
-            <inputmodedetail_only>ROMAN</inputmodedetail_only>
+            <identifier>remap.samples_inputsourcedetail_roman</identifier>
+            <inputsourcedetail_only>ROMAN</inputsourcedetail_only>
             <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
           </item>
         </item>
         <item>
-          <name>inputmode_only (Russian)</name>
+          <name>inputsource_only (Russian)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_russian</identifier>
-          <inputmode_only>RUSSIAN</inputmode_only>
+          <identifier>remap.samples_inputsource_russian</identifier>
+          <inputsource_only>RUSSIAN</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (Thai)</name>
+          <name>inputsource_only (Thai)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_thai</identifier>
-          <inputmode_only>THAI</inputmode_only>
+          <identifier>remap.samples_inputsource_thai</identifier>
+          <inputsource_only>THAI</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (German)</name>
+          <name>inputsource_only (German)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_german</identifier>
-          <inputmode_only>GERMAN</inputmode_only>
+          <identifier>remap.samples_inputsource_german</identifier>
+          <inputsource_only>GERMAN</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (Slovenian)</name>
+          <name>inputsource_only (Slovenian)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_slovenian</identifier>
-          <inputmode_only>SLOVENIAN</inputmode_only>
+          <identifier>remap.samples_inputsource_slovenian</identifier>
+          <inputsource_only>SLOVENIAN</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (Czech)</name>
+          <name>inputsource_only (Czech)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_czech</identifier>
-          <inputmode_only>CZECH</inputmode_only>
+          <identifier>remap.samples_inputsource_czech</identifier>
+          <inputsource_only>CZECH</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (British)</name>
+          <name>inputsource_only (British)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_british</identifier>
-          <inputmode_only>BRITISH</inputmode_only>
+          <identifier>remap.samples_inputsource_british</identifier>
+          <inputsource_only>BRITISH</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (Bulgarian)</name>
+          <name>inputsource_only (Bulgarian)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_bulgarian</identifier>
-          <inputmode_only>BULGARIAN</inputmode_only>
+          <identifier>remap.samples_inputsource_bulgarian</identifier>
+          <inputsource_only>BULGARIAN</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
-          <name>inputmode_only (Unknown == User Defined keylayout)</name>
+          <name>inputsource_only (Unknown == User Defined keylayout)</name>
           <appendix>Space to Tab</appendix>
-          <identifier>remap.samples_inputmode_unknown</identifier>
-          <inputmode_only>UNKNOWN</inputmode_only>
+          <identifier>remap.samples_inputsource_unknown</identifier>
+          <inputsource_only>UNKNOWN</inputsource_only>
           <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
       </item>
@@ -22153,7 +22153,7 @@
         <appendix>Use E to VK_CHANGE_INPUTSOURCE_THAI</appendix>
         <appendix>Use R to VK_CHANGE_INPUTSOURCE_DVORAK</appendix>
         <appendix>Use T to VK_CHANGE_INPUTSOURCE_COLEMAK</appendix>
-        <identifier>remap.samples_vk_change_inputmode</identifier>
+        <identifier>remap.samples_vk_change_inputsource</identifier>
         <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
         <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH</autogen>
         <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTSOURCE_GERMAN</autogen>

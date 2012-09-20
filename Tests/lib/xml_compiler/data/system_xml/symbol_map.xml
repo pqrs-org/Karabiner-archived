@@ -22,14 +22,6 @@
   <symbol_map type="EventType" name="UP" value="11" />
   <symbol_map type="EventType" name="MODIFY" value="12" />
   <symbol_map type="EventType" name="VK__AUTOINDEX__BEGIN__" value="13" />
-  <symbol_map type="InputMode" name="NONE" value="0" />
-  <symbol_map type="InputMode" name="ROMAN" value="1" />
-  <symbol_map type="InputMode" name="UNKNOWN" value="24" />
-  <symbol_map type="InputMode" name="VK__AUTOINDEX__BEGIN__" value="25" />
-  <symbol_map type="InputModeDetail" name="NONE" value="0" />
-  <symbol_map type="InputModeDetail" name="ROMAN" value="1" />
-  <symbol_map type="InputModeDetail" name="UNKNOWN" value="42" />
-  <symbol_map type="InputModeDetail" name="VK__AUTOINDEX__BEGIN__" value="43" />
   <symbol_map type="KeyboardType" name="MACBOOK" value="37" />
   <symbol_map type="KeyboardType" name="MACBOOK_COREDUO" value="38" />
   <symbol_map type="KeyboardType" name="MACBOOK_3_1" value="44" />
