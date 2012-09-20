@@ -156,7 +156,7 @@
 
   <inputsourcedef>
     <name>RUSSIAN</name>
-    <inputsourceid_equal>org.pqrs.inputmode.unknown.RussianWin</inputsourceid_equal>
+    <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
