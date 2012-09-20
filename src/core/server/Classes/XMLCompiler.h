@@ -26,8 +26,8 @@
  bcp47:(NSString*)bcp47
  inputSourceID:(NSString*)inputSourceID
  inputModeID:(NSString*)inputModeID;
-- (void) languageid:(uint32_t*)language
- languageDetail:(uint32_t*)languageDetail
+- (void) inputsourceid:(uint32_t*)inputSource
+ inputSourceDetail:(uint32_t*)inputSourceDetail
  bcp47:(NSString*)bcp47
  inputSourceID:(NSString*)inputSourceID
  inputModeID:(NSString*)inputModeID;

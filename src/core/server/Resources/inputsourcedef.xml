@@ -67,6 +67,12 @@
 
   <inputsourcedef>
     <name>BEPO</name>
+    <detail>BEPO_AZERTYCMDROMAN</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmdRoman</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO</name>
     <detail>BEPO_QWERTYCMD</detail>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmd</inputsourceid_equal>
   </inputsourcedef>
