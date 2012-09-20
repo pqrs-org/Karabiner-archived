@@ -14,7 +14,7 @@
 
   {{JAPANESE_OYAYUBISHIFT_EXTRA}}
 
-  <inputmode_only>JAPANESE</inputmode_only>
+  <inputsource_only>JAPANESE</inputsource_only>
 
   <!-- FKB7628-801、FMV-KB232ではハードウェア的に特殊なレイアウトになっているため、
        以下のようにする必要がある。

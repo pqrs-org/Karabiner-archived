@@ -13,7 +13,7 @@
     -->
 
   <!-- 下駄入力(qwerty,ATOK版) -->
-  <inputmode_only>JAPANESE</inputmode_only>
+  <inputsource_only>JAPANESE</inputsource_only>
 
   <!-- 左手 -->
   <!-- 単打 -->

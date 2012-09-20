@@ -8,7 +8,7 @@
     <item>
       <name>Enable Nicola on Kinesis (Kana-Kawasemi)</name>
       <identifier>enable_nicola_on_kinesis_kana_kawasemi</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
+      <inputsource_only>JAPANESE</inputsource_only>
       <config_not>enable_nicola_on_kinesis_romaji</config_not>
 
       <block>
@@ -319,7 +319,7 @@
     <item>
       <name>Enable Nicola on Kinesis (Romaji)</name>
       <identifier>enable_nicola_on_kinesis_romaji</identifier>
-      <inputmode_only>JAPANESE</inputmode_only>
+      <inputsource_only>JAPANESE</inputsource_only>
       <config_not>enable_nicola_on_kinesis_kana_kawasemi</config_not>
 
       <block>
@@ -597,7 +597,7 @@
       <identifier>remap.kinesis_holding_back_space_to_option</identifier>
       <config_not>remap.kinesis_holding_back_space_to_control</config_not>
       <block>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <block>
           <config_only>nicola_kinesis_quote_to_back_space</config_only>
           <block>
@@ -614,7 +614,7 @@
       <identifier>remap.kinesis_holding_back_space_to_control</identifier>
       <config_not>remap.kinesis_holding_back_space_to_option</config_not>
       <block>
-        <inputmode_only>JAPANESE</inputmode_only>
+        <inputsource_only>JAPANESE</inputsource_only>
         <block>
           <config_only>nicola_kinesis_quote_to_back_space</config_only>
           <block>
