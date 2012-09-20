@@ -9,10 +9,11 @@
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [[NSMutableString new] autorelease];
 
-  [string appendFormat:@"version: %@\n", version_];
-  [string appendFormat:@"applicationName: %@\n", applicationname_];
-  [string appendFormat:@"inputsourceName: %@\n", inputsourcename_];
-  [string appendFormat:@"inputmodeName: %@\n", inputmodename_];
+  [string appendFormat:@"KeyRemap4MacBook Version: %@\n", version_];
+  [string appendFormat:@"Application Bundle Identifier: %@\n", applicationbundleidentifier_];
+  [string appendFormat:@"Language Code: %@\n", languagecode_];
+  [string appendFormat:@"Input Source ID: %@\n", inputsourceid_];
+  [string appendFormat:@"Input Mode ID: %@\n", inputmodeid_];
 
   [pboard clearContents];
   [pboard writeObjects:[NSArray arrayWithObject:string]];
@@ -27,34 +28,44 @@
   [label_version_ setStringValue:version_];
 }
 
-- (void) setApplicationName:(NSString*)name
+- (void) setApplicationBundleIdentifier:(NSString*)value
 {
-  if (! name) {
-    name = @"---";
+  if (! value) {
+    value = @"---";
   }
 
-  applicationname_ = name;
-  [label_applicationname_ setStringValue:name];
+  applicationbundleidentifier_ = value;
+  [label_applicationbundleidentifier_ setStringValue:value];
 }
 
-- (void) setInputSourceName:(NSString*)name
+- (void) setLanguageCode:(NSString*)value
 {
-  if (! name) {
-    name = @"---";
+  if (! value) {
+    value = @"---";
   }
 
-  inputsourcename_ = name;
-  [label_inputsourcename_ setStringValue:name];
+  languagecode_ = value;
+  [label_languagecode_ setStringValue:value];
 }
 
-- (void) setInputModeName:(NSString*)name
+- (void) setInputSourceID:(NSString*)value
 {
-  if (! name) {
-    name = @"---";
+  if (! value) {
+    value = @"---";
   }
 
-  inputmodename_ = name;
-  [label_inputmodename_ setStringValue:name];
+  inputsourceid_ = value;
+  [label_inputsourceid_ setStringValue:value];
+}
+
+- (void) setInputModeID:(NSString*)value
+{
+  if (! value) {
+    value = @"---";
+  }
+
+  inputmodeid_ = value;
+  [label_inputmodeid_ setStringValue:value];
 }
 
 @end
