@@ -5,12 +5,12 @@
 
 namespace pqrs {
   bool
-  xml_compiler::inputsource::is_rules_matched(const std::string& bcp47,
+  xml_compiler::inputsource::is_rules_matched(const std::string& languagecode,
                                               const std::string& inputsourceid,
                                               const std::string& inputmodeid) const
   {
-    for (auto& r : rules_bcp47_) {
-      if (bcp47 == r) return true;
+    for (auto& r : rules_languagecode_) {
+      if (languagecode == r) return true;
     }
 
     for (auto& r : rules_inputsourceid_equal_) {
@@ -88,8 +88,8 @@ namespace pqrs {
             newinputsource->set_detail(pqrs::string::remove_whitespaces_copy(child.get_data()));
 
           } else {
-            if (child.get_tag_name() == "bcp47") {
-              newinputsource->add_rule_bcp47(boost::trim_copy(child.get_data()));
+            if (child.get_tag_name() == "languagecode") {
+              newinputsource->add_rule_languagecode(boost::trim_copy(child.get_data()));
             } else if (child.get_tag_name() == "inputsourceid_equal") {
               newinputsource->add_rule_inputsourceid_equal(boost::trim_copy(child.get_data()));
             } else if (child.get_tag_name() == "inputsourceid_prefix") {

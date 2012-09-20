@@ -2,11 +2,11 @@
 
 @implementation InputSource
 
-@synthesize bcp47;
+@synthesize languagecode;
 @synthesize inputSourceID;
 @synthesize inputModeID;
 
-+ (NSString*) getBcp47:(TISInputSourceRef)source
++ (NSString*) getLanguageCode:(TISInputSourceRef)source
 {
   NSArray* languages = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages);
   if ([languages count] > 0) {
@@ -28,7 +28,7 @@
       inputSource_ = ref;
       CFRetain(inputSource_);
 
-      bcp47         = [[InputSource getBcp47:inputSource_] retain];
+      languagecode = [[InputSource getLanguageCode:inputSource_] retain];
 
       inputSourceID = TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID);
       [inputSourceID retain];
@@ -43,7 +43,7 @@
 
 - (void) dealloc
 {
-  [bcp47 release];
+  [languagecode release];
   [inputSourceID release];
   [inputModeID release];
 

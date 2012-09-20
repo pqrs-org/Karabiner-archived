@@ -3,14 +3,14 @@
 #import <Carbon/Carbon.h>
 
 @interface InputSource : NSObject {
-  NSString* bcp47;
+  NSString* languagecode;
   NSString* inputSourceID;
   NSString* inputModeID;
 
   TISInputSourceRef inputSource_;
 }
 
-@property (copy, readonly) NSString* bcp47;
+@property (copy, readonly) NSString* languagecode;
 @property (copy, readonly) NSString* inputSourceID;
 @property (copy, readonly) NSString* inputModeID;
 

@@ -91,7 +91,7 @@ pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_
 uint32_t
 pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
                                                    uint32_t keycode,
-                                                   const char* bcp47,
+                                                   const char* languagecode,
                                                    const char* inputsourceid,
                                                    const char* inputmodeid)
 {
@@ -99,7 +99,7 @@ pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
   if (! xml_compiler) return 0;
 
   return xml_compiler->is_vk_change_inputsource_matched(keycode,
-                                                        bcp47         != nullptr ? bcp47         : "",
+                                                        languagecode  != nullptr ? languagecode  : "",
                                                         inputsourceid != nullptr ? inputsourceid : "",
                                                         inputmodeid   != nullptr ? inputmodeid   : "");
 }
@@ -108,7 +108,7 @@ void
 pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
                                     uint32_t* inputsource,
                                     uint32_t* inputsource_detail,
-                                    const char* bcp47,
+                                    const char* languagecode,
                                     const char* inputsourceid,
                                     const char* inputmodeid)
 {
@@ -120,7 +120,7 @@ pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
 
   return xml_compiler->get_inputsourceid(*inputsource,
                                          *inputsource_detail,
-                                         bcp47         != nullptr ? bcp47         : "",
+                                         languagecode  != nullptr ? languagecode  : "",
                                          inputsourceid != nullptr ? inputsourceid : "",
                                          inputmodeid   != nullptr ? inputmodeid   : "");
 }

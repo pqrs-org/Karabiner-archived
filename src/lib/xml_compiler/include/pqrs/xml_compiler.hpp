@@ -56,12 +56,12 @@ namespace pqrs {
     boost::optional<const std::string&> get_identifier(int config_index) const;
     uint32_t get_appid(const std::string& application_identifier) const;
     bool is_vk_change_inputsource_matched(uint32_t keycode,
-                                          const std::string& bcp47,
+                                          const std::string& languagecode,
                                           const std::string& inputsourceid,
                                           const std::string& inputmodeid) const;
     void get_inputsourceid(uint32_t& inputsource,
                            uint32_t& inputsource_detail,
-                           const std::string& bcp47,
+                           const std::string& languagecode,
                            const std::string& inputsourceid,
                            const std::string& inputmodeid) const;
 
