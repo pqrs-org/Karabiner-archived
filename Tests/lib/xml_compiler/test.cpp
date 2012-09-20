@@ -108,6 +108,17 @@ TEST(pqrs_xml_compiler, reload)
     uint32_t inputsource;
     uint32_t inputsource_detail;
     xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+                                   "en",
+                                   "com.apple.keylayout.Canadian",
+                                   "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::CANADIAN"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::CANADIAN"), inputsource_detail);
+  }
+
+  {
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
                                    "",
                                    "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak",
                                    "");
