@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root>
+
+  <block>
+    <config_only>option.jis_oyayubishiftinput_ignore_apps_reeder</config_only>
+    <only>REEDER</only>
+
+    <include path="../../../commons/wrap_keys/alphabet.xml">
+      <replacementdef><replacementname>BEFORE</replacementname><replacementvalue></replacementvalue></replacementdef>
+      <replacementdef><replacementname>AFTER</replacementname><replacementvalue></replacementvalue></replacementdef>
+    </include>
+  </block>
+
+</root>

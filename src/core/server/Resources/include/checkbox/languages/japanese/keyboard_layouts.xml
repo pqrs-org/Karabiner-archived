@@ -382,6 +382,12 @@
       </item>
       <item><name>------------------------------------------------------------</name></item>
       <item>
+        <name>Reederでは親指シフトを無効にする。</name>
+        <appendix>（Reederでキーボードショートカットを使いたい人向け）</appendix>
+        <identifier>option.jis_oyayubishiftinput_ignore_apps_reeder</identifier>
+      </item>
+      <item><name>------------------------------------------------------------</name></item>
+      <item>
         <name>親指シフト入力のときにショートカットをDvorakレイアウトにする</name>
         <appendix>（Command、Control、Optionを押しているときはDvorak配列にする）</appendix>
         <identifier>remap.jis_oyayubishiftinput_dvorak</identifier>
