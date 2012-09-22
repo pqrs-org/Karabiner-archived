@@ -129,6 +129,25 @@
     </item>
 
     <item>
+      <name>Use Dvorak - Qwerty Keyboard Layout</name>
+      <appendix>(QWERTY to Dvorak)</appendix>
+      <appendix>(+ Command,Control,Option+Keys to Qwerty)</appendix>
+      <appendix>(Except in password dialogue boxes)</appendix>
+      <identifier>remap.qwerty2dvorak_qwerty_ex_password</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L,
+        ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_R,
+        ModifierFlag::FN
+      </modifier_not>
+      <not>PASSWORD</not>
+      <include path="snippets/dvorak.xml" />
+    </item>
+
+    <item>
       <name>Use Dvorak Keyboard Layout</name>
       <appendix>(QWERTY to Dvorak)</appendix>
       <appendix>(+ Swap U and I)</appendix>
