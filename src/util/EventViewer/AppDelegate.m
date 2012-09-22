@@ -23,7 +23,7 @@
   // Therefore, we need to make own NSAutoreleasePool.
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-    [otherinformationstore_ setApplicationBundleIdentifier:[[notification userInfo] objectForKey:@"name"]];
+    [appQueue_ push:[[notification userInfo] objectForKey:@"name"]];
   }
   [pool drain];
 }
@@ -46,8 +46,6 @@
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [self setKeyResponder];
 
-  [otherinformationstore_ setVersion];
-  [otherinformationstore_ setApplicationBundleIdentifier:nil];
   [otherinformationstore_ setLanguageCode:nil];
   [otherinformationstore_ setInputSourceID:nil];
   [otherinformationstore_ setInputModeID:nil];

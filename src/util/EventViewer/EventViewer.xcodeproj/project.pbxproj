@@ -14,6 +14,7 @@
 		34412BCE10946AEF00F66D0F /* EventViewer.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34412BCD10946AEF00F66D0F /* EventViewer.icns */; };
 		34412BEA10946CDB00F66D0F /* KeyResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34412BE910946CDB00F66D0F /* KeyResponder.m */; };
 		347450D41121467A00C3F0CF /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 347450D31121467A00C3F0CF /* EventQueue.m */; };
+		34B77399160D308A000F292E /* AppQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B77398160D308A000F292E /* AppQueue.m */; };
 		34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C92D211122EDA100B0B4ED /* Carbon.framework */; };
 		34CC23E413E9A2B600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23E313E9A2B600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		34EB801312C5DD9E0071889D /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EB801212C5DD9E0071889D /* KeyRemap4MacBookClient.m */; };
@@ -45,6 +46,8 @@
 		347450D21121467A00C3F0CF /* EventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventQueue.h; sourceTree = "<group>"; };
 		347450D31121467A00C3F0CF /* EventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventQueue.m; sourceTree = "<group>"; };
 		34B2A6771374625E00694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
+		34B77397160D308A000F292E /* AppQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppQueue.h; sourceTree = "<group>"; };
+		34B77398160D308A000F292E /* AppQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppQueue.m; sourceTree = "<group>"; };
 		34C92D211122EDA100B0B4ED /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34CC23E213E9A2B600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookNSDistributedNotificationCenter.h; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.h; sourceTree = "<group>"; };
 		34CC23E313E9A2B600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookNSDistributedNotificationCenter.m; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.m; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34B77397160D308A000F292E /* AppQueue.h */,
+				34B77398160D308A000F292E /* AppQueue.m */,
 				343DFDA515F9FE33003A9FFB /* Devices.h */,
 				343DFDA615F9FE33003A9FFB /* Devices.m */,
 				34B2A6771374625E00694134 /* KeyRemap4MacBookKeys.h */,
@@ -235,6 +240,7 @@
 				34EB801312C5DD9E0071889D /* KeyRemap4MacBookClient.m in Sources */,
 				34CC23E413E9A2B600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */,
 				343DFDA715F9FE33003A9FFB /* Devices.m in Sources */,
+				34B77399160D308A000F292E /* AppQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
