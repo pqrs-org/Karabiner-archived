@@ -250,16 +250,6 @@
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>CHINESE_TRADITIONAL</name>
-    <inputmodeid_equal>com.apple.inputmethod.TCIM</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>CHINESE_SIMPLIFIED</name>
-    <inputmodeid_equal>com.apple.inputmethod.SCIM</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
     <name>JAPANESE</name>
     <detail>JAPANESE_HIRAGANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
@@ -294,6 +284,15 @@
   </inputsourcedef>
 
   <!-- inputmodeid_prefix -->
+  <inputsourcedef>
+    <name>CHINESE_TRADITIONAL</name>
+    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>CHINESE_SIMPLIFIED</name>
+    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
+  </inputsourcedef>
 
   <!-- languagecode -->
   <inputsourcedef>
