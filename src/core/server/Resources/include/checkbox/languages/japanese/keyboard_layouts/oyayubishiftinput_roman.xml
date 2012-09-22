@@ -14,6 +14,8 @@
 
   {{JAPANESE_OYAYUBISHIFT_EXTRA}}
 
+  <include path="oyayubishiftinput_ignore_apps.xml" />
+
   <inputsource_only>JAPANESE</inputsource_only>
 
   <!-- FKB7628-801、FMV-KB232ではハードウェア的に特殊なレイアウトになっているため、
