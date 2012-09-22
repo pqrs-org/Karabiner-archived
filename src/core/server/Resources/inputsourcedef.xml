@@ -278,11 +278,6 @@
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
   </inputsourcedef>
 
-  <inputsourcedef>
-    <name>KOREAN</name>
-    <inputmodeid_equal>com.apple.inputmethod.Korean</inputmodeid_equal>
-  </inputsourcedef>
-
   <!-- inputmodeid_prefix -->
   <inputsourcedef>
     <name>CHINESE_TRADITIONAL</name>
@@ -292,6 +287,11 @@
   <inputsourcedef>
     <name>CHINESE_SIMPLIFIED</name>
     <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>KOREAN</name>
+    <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
   </inputsourcedef>
 
   <!-- languagecode -->
