@@ -191,6 +191,7 @@
   <appdef>
     <appname>PASSWORD</appname>
     <equal>com.apple.securityagent</equal>
+    <equal>com.apple.loginwindow</equal>
   </appdef>
 
   <appdef>
