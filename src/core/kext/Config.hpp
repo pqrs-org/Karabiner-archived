@@ -73,6 +73,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_holdingkeytokey_wait);
       return getvalue(v, 10);
     }
+    static unsigned int get_fixed_distance_magnification(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_fixed_distance_magnification);
+      return getvalue(v, 0);
+    }
 
   private:
     static unsigned int getvalue(int value, int minval) {

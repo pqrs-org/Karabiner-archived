@@ -23,6 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       static bool handle_button(const Params_KeyboardEventCallBack& params);
       static bool handle_move(const Params_KeyboardEventCallBack& params);
+      static bool handle_fixeddistancemove(const Params_KeyboardEventCallBack& params);
       static bool handle_lock_button(const Params_KeyboardEventCallBack& params);
       static PointingButton getPointingButton(KeyCode keycode);
       static PointingButton getPointingButtonFromLockKey(KeyCode keycode);
