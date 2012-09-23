@@ -115,6 +115,30 @@
         <autogen>--ShowStatusMessage-- Cmd+Tab</autogen>
         <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
         <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+        <autogen>
+          --PointingButtonToKey--
+          PointingButton::LEFT,
+
+          KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
+          KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode
+        </autogen>
+        <autogen>
+          --PointingButtonToKey--
+          PointingButton::RIGHT,
+
+          KeyCode::VK_MOUSEKEY_BUTTON_RIGHT,
+          KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode
+        </autogen>
+        <autogen>
+          --PointingButtonToKey--
+          PointingButton::MIDDLE,
+
+          KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE,
+          KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode
+        </autogen>
         <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::TAB</autogen>
         <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::TAB, ModifierFlag::SHIFT_L</autogen>
         <autogen>--KeyToKey-- KeyCode::SHIFT_R, KeyCode::TAB, ModifierFlag::SHIFT_R</autogen>
