@@ -35,6 +35,7 @@
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34CC23DC13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
+		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
@@ -104,6 +105,7 @@
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
 		34CC23DA13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookNSDistributedNotificationCenter.h; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.h; sourceTree = "<group>"; };
 		34CC23DB13E99C3800CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookNSDistributedNotificationCenter.m; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.m; sourceTree = "<group>"; };
+		34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkchangeinputsourcedef.xml; path = Resources/vkchangeinputsourcedef.xml; sourceTree = "<group>"; };
 		34D4F82612C4463B001819AA /* StatusWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusWindow.h; path = Classes/StatusWindow.h; sourceTree = "<group>"; };
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputSource.m"; path = "Classes/WorkSpaceData+InputSource.m"; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */,
 				348F120015EA8ADA008A2BDA /* devicelocationdef.xml */,
 				343B2458153DCC7C0023BA6E /* include */,
 				34D590261531983100160DFC /* number.xml */,
@@ -320,6 +323,7 @@
 				34A611931531707E0003894B /* checkbox.xml in Resources */,
 				34D590271531983100160DFC /* number.xml in Resources */,
 				348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */,
+				34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -108,6 +108,7 @@ namespace pqrs {
           loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
         }
 
+        loader_wrapper<inputsource_loader>::traverse_system_xml(*this, loader, "vkchangeinputsourcedef.xml");
         loader_wrapper<inputsource_loader>::traverse_system_xml(*this, loader, "inputsourcedef.xml");
       }
 

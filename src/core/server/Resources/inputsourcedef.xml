@@ -1,98 +1,6 @@
 <?xml version="1.0"?>
 <root>
   <!-- ============================================================ -->
-  <!-- vkchangeinputsourcedef -->
-
-  <!-- languagecode -->
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name>
-    <languagecode>en</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ESTONIAN</name>
-    <languagecode>et</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</name>
-    <languagecode>fi</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH</name>
-    <languagecode>fr</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_GERMAN</name>
-    <languagecode>de</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</name>
-    <languagecode>ja</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</name>
-    <languagecode>ru</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</name>
-    <languagecode>sv</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_THAI</name>
-    <languagecode>th</languagecode>
-  </vkchangeinputsourcedef>
-
-  <!-- inputsourceid -->
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CANADIAN</name>
-    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</name>
-    <inputsourceid_equal>com.apple.keylayout.Colemak</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</name>
-    <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_DEVANAGARI_PAUL</name>
-    <inputsourceid_equal>org.unknown.keylayout.DvorakDevanagariPaul</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_TRANSLIT_NEW</name>
-    <inputsourceid_equal>org.unknown.keylayout.DvorakTranslitNew</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</name>
-    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <!-- ============================================================ -->
-  <!-- inputsourcedef -->
-
   <!-- inputsourceid_equal -->
   <inputsourcedef>
     <name>BEPO</name>
@@ -217,6 +125,7 @@
     <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
   </inputsourcedef>
 
+  <!-- ============================================================ -->
   <!-- inputsourceid_prefix -->
   <inputsourcedef>
     <name>BEPO</name>
@@ -243,6 +152,7 @@
     <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
   </inputsourcedef>
 
+  <!-- ============================================================ -->
   <!-- inputmodeid_equal -->
   <inputsourcedef>
     <name>AINU</name>
@@ -278,6 +188,7 @@
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
   </inputsourcedef>
 
+  <!-- ============================================================ -->
   <!-- inputmodeid_prefix -->
   <inputsourcedef>
     <name>CHINESE_TRADITIONAL</name>
@@ -294,6 +205,7 @@
     <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
   </inputsourcedef>
 
+  <!-- ============================================================ -->
   <!-- languagecode -->
   <inputsourcedef>
     <name>BULGARIAN</name>
