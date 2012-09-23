@@ -63,6 +63,15 @@
       <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON16</autogen>
     </item>
     <item>
+      <name>Fixed Distance Move</name>
+      <appendix>Change Arrows to VK_MOUSEKEY_FIXED_DISTANCE_UP/DOWN/LEFT/RIGHT</appendix>
+      <identifier>remap.samples_vk_mousekeys_fixed_distance_move</identifier>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT</autogen>
+      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT</autogen>
+    </item>
+    <item>
       <name>Lock</name>
       <appendix>Change 1 to VK_MOUSEKEY_LOCK_BUTTON_LEFT</appendix>
       <appendix>Change 2 to VK_MOUSEKEY_LOCK_BUTTON_MIDDLE</appendix>
