@@ -1,4 +1,5 @@
 #include "base.hpp"
+#include "Config.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "VK_MOUSEKEY.hpp"
@@ -46,6 +47,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (handle_button(params)) return true;
     if (handle_move(params)) return true;
+    if (handle_fixeddistancemove(params)) return true;
     if (handle_lock_button(params)) return true;
     return false;
   }
@@ -112,6 +114,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (keycode == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) { return true; }
     if (keycode == KeyCode::VK_MOUSEKEY_HIGHSPEED)    { return true; }
 
+    // VK_MOUSEKEY_FIXED_DISTANCE_* is not like modifier;
     // VK_MOUSEKEY_LOCK_BUTTON_* is not like modifier.
 
     return false;
@@ -214,6 +217,33 @@ namespace org_pqrs_KeyRemap4MacBook {
       // In the above case, we need to keep scrollmode_, highspeed_ value.
 
       fire_timer_.cancelTimeout();
+    }
+
+    return true;
+  }
+
+  bool
+  VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEventCallBack& params)
+  {
+    int fdx = 0;
+    int fdy = 0;
+
+    /*  */ if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP) {
+      --fdy;
+    } else if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN) {
+      ++fdy;
+    } else if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT) {
+      --fdx;
+    } else if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT) {
+      ++fdx;
+    } else {
+      return false;
+    }
+
+    if (params.ex_iskeydown) {
+      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(),
+                                                  fdx * Config::get_fixed_distance_magnification(),
+                                                  fdy * Config::get_fixed_distance_magnification());
     }
 
     return true;

@@ -65,4 +65,9 @@
     <name>[ScrollWheelToKey] Key Repeat Wait</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">parameter.scrollwheeltokey_keyrepeat_wait</identifier>
   </item>
+
+  <item>
+    <name>[MouseKey] Magnification of "Fixed Distance Move"</name>
+    <identifier essential="true" default="10" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
+  </item>
 </root>
