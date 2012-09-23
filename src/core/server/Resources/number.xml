@@ -68,6 +68,6 @@
 
   <item>
     <name>[MouseKey] Magnification of "Fixed Distance Move"</name>
-    <identifier essential="true" default="10" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
+    <identifier essential="true" default="50" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
   </item>
 </root>
