@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<root>
+  {{ VKCHANGEINPUTSOURCEDEF_REPLACEMENT }}
+
+  <!-- ============================================================ -->
+  <!-- vkchangeinputsourcedef -->
+
+  <!-- languagecode -->
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</name>
+    <languagecode>ja</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWISS</name>
+    <inputsourceid_equal>com.apple.keylayout.SwissFrench</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+</root>
