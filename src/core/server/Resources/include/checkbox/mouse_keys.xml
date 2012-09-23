@@ -236,47 +236,99 @@
 
     <item>
       <name>Mouse Keys with Left-Hand</name>
-      <appendix>Clicks:</appendix>
-      <appendix>fn+x = mouse left click</appendix>
-      <appendix>fn+v = mouse right click</appendix>
-      <appendix>fn+x+e = hold/release left mouse</appendix>
-      <appendix>fn+v+e = hold/release right mouse</appendix>
-      <appendix></appendix>
-      <appendix>Moving:</appendix>
-      <appendix>fn+w = move mouse left</appendix>
-      <appendix>fn+r = move mouse right</appendix>
-      <appendix>fn+d = move mouse down</appendix>
-      <appendix>fn+3 = move mouse up</appendix>
-      <appendix>fn+2 = move mouse to up left diagonally</appendix>
-      <appendix>fn+4 = move mouse up right diagonally</appendix>
-      <appendix>fn+s = move mouse down left diagonally</appendix>
-      <appendix>fn+f = move mouse down right diagonally</appendix>
-      <identifier>remap.mousekeys_with_lefthand</identifier>
-      <!-- Retain ModifierFlag::FN to enable moving pointer while clicking. -->
+      <item>
+        <name>Base Operation</name>
+        <appendix>Clicks:</appendix>
+        <appendix>fn+x = mouse left click</appendix>
+        <appendix>fn+v = mouse right click</appendix>
+        <appendix>fn+x+e = hold/release left mouse</appendix>
+        <appendix>fn+v+e = hold/release right mouse</appendix>
+        <appendix></appendix>
+        <appendix>Moving:</appendix>
+        <appendix>fn+w = move mouse left</appendix>
+        <appendix>fn+r = move mouse right</appendix>
+        <appendix>fn+d = move mouse down</appendix>
+        <appendix>fn+3 = move mouse up</appendix>
+        <appendix>fn+2 = move mouse to up left diagonally</appendix>
+        <appendix>fn+4 = move mouse up right diagonally</appendix>
+        <appendix>fn+s = move mouse down left diagonally</appendix>
+        <appendix>fn+f = move mouse down right diagonally</appendix>
+        <identifier>remap.mousekeys_with_lefthand</identifier>
+        <!-- Retain ModifierFlag::FN to enable moving pointer while clicking. -->
 
-      <!-- use ModifierFlag::EXTRA1 to detect lock -->
-      <!-- use ModifierFlag::EXTRA2 to detect lock -->
-      <!-- use ModifierFlag::EXTRA3 to detect lock -->
-      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA1, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA2, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
-      <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
+        <!-- use ModifierFlag::EXTRA1 to detect lock -->
+        <!-- use ModifierFlag::EXTRA2 to detect lock -->
+        <!-- use ModifierFlag::EXTRA3 to detect lock -->
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA1, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA2, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::FN,
-        KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::FN | ModifierFlag::EXTRA1</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::FN,
-        KeyCode::VK_MOUSEKEY_BUTTON_RIGHT, ModifierFlag::FN | ModifierFlag::EXTRA2</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::FN, KeyCode::VK_MODIFIER_EXTRA3, ModifierFlag::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::FN,
+          KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::FN | ModifierFlag::EXTRA1</autogen>
+        <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::FN,
+          KeyCode::VK_MOUSEKEY_BUTTON_RIGHT, ModifierFlag::FN | ModifierFlag::EXTRA2</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::FN, KeyCode::VK_MODIFIER_EXTRA3, ModifierFlag::FN</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::R,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::FN</autogen>
+        <block>
+          <config_only>option.mousekeys_with_lefthand_fixed_distance_with_control_fn</config_only>
+          <autogen>
+            --KeyToKey--
+            KeyCode::W,
+            VK_CONTROL | ModifierFlag::FN,
 
-      <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NW, ModifierFlag::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NE, ModifierFlag::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SW, ModifierFlag::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::F,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SE, ModifierFlag::FN</autogen>
+            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT,
+            VK_CONTROL | ModifierFlag::FN,
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            --KeyToKey--
+            KeyCode::R,
+            VK_CONTROL | ModifierFlag::FN,
+
+            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT,
+            VK_CONTROL | ModifierFlag::FN,
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            --KeyToKey--
+            KeyCode::D,
+            VK_CONTROL | ModifierFlag::FN,
+
+            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN,
+            VK_CONTROL | ModifierFlag::FN,
+            Option::NOREPEAT,
+          </autogen>
+          <autogen>
+            --KeyToKey--
+            KeyCode::KEY_3,
+            VK_CONTROL | ModifierFlag::FN,
+
+            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP,
+            VK_CONTROL | ModifierFlag::FN,
+            Option::NOREPEAT,
+          </autogen>
+        </block>
+
+        <autogen>--KeyToKey-- KeyCode::W,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::R,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::D,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::FN</autogen>
+
+        <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NW, ModifierFlag::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NE, ModifierFlag::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::S,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SW, ModifierFlag::FN</autogen>
+        <autogen>--KeyToKey-- KeyCode::F,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SE, ModifierFlag::FN</autogen>
+      </item>
+
+      <item>
+        <name>Optional Operation</name>
+        <appendix>control+fn+w = move mouse fixed distance left</appendix>
+        <appendix>control+fn+r = move mouse fixed distance right</appendix>
+        <appendix>control+fn+d = move mouse fixed distance down</appendix>
+        <appendix>control+fn+3 = move mouse fixed distance up</appendix>
+        <identifier>option.mousekeys_with_lefthand_fixed_distance_with_control_fn</identifier>
+      </item>
     </item>
   </item>
 </root>
