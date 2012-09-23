@@ -191,13 +191,13 @@
   <!-- ============================================================ -->
   <!-- inputmodeid_prefix -->
   <inputsourcedef>
-    <name>CHINESE_TRADITIONAL</name>
-    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
+    <name>CHINESE_SIMPLIFIED</name>
+    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>CHINESE_SIMPLIFIED</name>
-    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
+    <name>CHINESE_TRADITIONAL</name>
+    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
   </inputsourcedef>
 
   <inputsourcedef>

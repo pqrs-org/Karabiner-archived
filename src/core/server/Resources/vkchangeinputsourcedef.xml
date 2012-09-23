@@ -3,6 +3,51 @@
   <!-- ============================================================ -->
   <!-- inputsourceid -->
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO_AZERTYCMD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO_AZERTYCMDROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmdRoman</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO_ROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorakRoman</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO_QWERTYCMD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmd</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO_QWERTYCMDROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmdRoman</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO_QWERTZCMD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmd</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO_QWERTZCMDROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmdRoman</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BRITISH_PC</name>
+    <inputsourceid_equal>com.apple.keylayout.British-PC</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_CANADIAN</name>
     <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
   </vkchangeinputsourcedef>
@@ -23,6 +68,21 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_LEFT</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak-Left</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_QWERTYCMD</name>
+    <inputsourceid_equal>com.apple.keylayout.DVORAK-QWERTYCMD</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_RIGHT</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak-Right</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK_TRANSLIT_NEW</name>
     <inputsourceid_equal>org.unknown.keylayout.DvorakTranslitNew</inputsourceid_equal>
   </vkchangeinputsourcedef>
@@ -30,6 +90,16 @@
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</name>
     <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH_NUMERICAL</name>
+    <inputsourceid_equal>com.apple.keylayout.French-numerical</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_POLISH_PRO</name>
+    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -43,7 +113,44 @@
   </vkchangeinputsourcedef>
 
   <!-- ============================================================ -->
+  <!-- inputmodeid_prefix -->
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CHINESE_SIMPLIFIED</name>
+    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CHINESE_TRADITIONAL</name>
+    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_KOREAN</name>
+    <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
+  </vkchangeinputsourcedef>
+
+  <!-- ============================================================ -->
   <!-- languagecode -->
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BRITISH</name>
+    <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BULGARIAN</name>
+    <languagecode>bg</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CROATIAN</name>
+    <languagecode>hr</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CZECH</name>
+    <languagecode>cs</languagecode>
+  </vkchangeinputsourcedef>
+
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name>
     <languagecode>en</languagecode>
@@ -70,8 +177,23 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN</name>
+    <languagecode>hu</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</name>
     <languagecode>ja</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_NORWEGIAN</name>
+    <languagecode>nb</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_POLISH</name>
+    <languagecode>pl</languagecode>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -80,8 +202,18 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SLOVENIAN</name>
+    <languagecode>sl</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</name>
     <languagecode>sv</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWISS</name>
+    <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
