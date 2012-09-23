@@ -160,6 +160,11 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>ENGLISH</name>
+    <inputmodeid_equal>com.apple.inputmethod.Roman</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>JAPANESE</name>
     <detail>JAPANESE_HIRAGANA</detail>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
