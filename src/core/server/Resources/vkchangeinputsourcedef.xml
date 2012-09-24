@@ -108,6 +108,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH_PRO</name>
+    <inputsourceid_equal>com.apple.keylayout.Swedish-Pro</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</name>
     <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
   </vkchangeinputsourcedef>
