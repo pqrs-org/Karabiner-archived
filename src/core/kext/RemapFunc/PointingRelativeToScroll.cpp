@@ -75,6 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (Option::POINTINGRELATIVETOSCROLL_TOFLAGS == newval) {
             index_is_toflags_ = true;
           }
+          break;
         }
 
         default:
