@@ -58,6 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     else if (params.key == KeyCode::VK_LOCK_ALL_FORCE_OFF) {
       FlagStatus::lock_clear();
+      EventOutputQueue::FireModifiers::fire();
       return true;
     } else {
       return false;
