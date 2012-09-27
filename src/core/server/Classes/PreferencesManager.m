@@ -99,7 +99,13 @@ static PreferencesManager* global_instance = nil;
     // ------------------------------------------------------------
     serverconnection_ = [NSConnection new];
     [serverconnection_ setRootObject:self];
-    [serverconnection_ registerName:kKeyRemap4MacBookConnectionName];
+    if (! [serverconnection_ registerName:kKeyRemap4MacBookConnectionName]) {
+      // Quit when registerName is failed.
+      // We wait 2 second before quit to avoid consecutive restarting from launchd.
+      NSLog(@"[NSConnection registerName] is failed. Restarting process.");
+      [NSThread sleepForTimeInterval:2];
+      [NSApp terminate: nil];
+    }
 
     [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
   }
