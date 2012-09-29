@@ -96,5 +96,19 @@
       <autogen>--KeyToKey-- KeyCode::F,     KeyCode::VK_LOCK_EXTRA4_FORCE_OFF</autogen>
       <autogen>--KeyToKey-- KeyCode::G,     KeyCode::VK_LOCK_EXTRA5_FORCE_OFF</autogen>
     </item>
+    <item>
+      <name>Sequential</name>
+      <appendix>Escape to A, Command+B, C</appendix>
+      <identifier>remap.samples_vk_lock_sequential</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::ESCAPE,
+        KeyCode::A,
+        KeyCode::VK_LOCK_COMMAND_L_FORCE_ON,
+        KeyCode::B,
+        KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+        KeyCode::C
+      </autogen>
+    </item>
   </item>
 </root>
