@@ -29,7 +29,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
 
+      void disabled_callback(void);
+
     private:
+      void retractInput(void);
+      void restoreInput(void);
+
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairKeyFlags fromKey_;
