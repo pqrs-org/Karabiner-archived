@@ -56,6 +56,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       bool isblocked(void);
 
+      Item(const Item& rhs);
+      Item& operator=(const Item& rhs);
+
       uint32_t type_;
 
       // true if remapped at KeyDown.
@@ -111,6 +114,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void reset_allocation_count(void);
 
   private:
+    RemapClass(const RemapClass& rhs);
+    RemapClass& operator=(const RemapClass& rhs);
+
     Vector_ItemPointer items_;
     char* statusmessage_;
     bool enabled_;
