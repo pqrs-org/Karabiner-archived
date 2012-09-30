@@ -4,22 +4,14 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     PointingButtonToPointingButton::PointingButtonToPointingButton(void) : index_(0)
-    {
-      toButtons_ = new Vector_PairPointingButtonFlags();
-    }
+    {}
 
     PointingButtonToPointingButton::~PointingButtonToPointingButton(void)
-    {
-      if (toButtons_) {
-        delete toButtons_;
-      }
-    }
+    {}
 
     void
     PointingButtonToPointingButton::add(unsigned int datatype, unsigned int newval)
     {
-      if (! toButtons_) return;
-
       switch (datatype) {
         case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
@@ -28,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromButton_.button = newval;
               break;
             default:
-              toButtons_->push_back(PairPointingButtonFlags(newval));
+              toButtons_.push_back(PairPointingButtonFlags(newval));
               break;
           }
           ++index_;
@@ -46,8 +38,8 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromButton_.flags = newval;
               break;
             default:
-              if (! toButtons_->empty()) {
-                (toButtons_->back()).flags = newval;
+              if (! toButtons_.empty()) {
+                toButtons_.back().flags = newval;
               }
               break;
           }
@@ -63,8 +55,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     PointingButtonToPointingButton::remap(RemapPointingParams_relative& remapParams)
     {
-      if (! toButtons_) return false;
-
       // Considering mouse drag, we need temporary_decrease fromButton_.flags each event.
       //
       // Note:
@@ -104,27 +94,27 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (isFromButton) {
         if (remapParams.params.ex_isbuttondown) {
           ButtonStatus::decrease(fromButton_.button);
-          if (toButtons_->size() == 1) {
-            ButtonStatus::increase((*toButtons_)[0].button);
+          if (toButtons_.size() == 1) {
+            ButtonStatus::increase(toButtons_[0].button);
           }
 
         } else {
           ButtonStatus::increase(fromButton_.button);
-          if (toButtons_->size() == 1) {
-            ButtonStatus::decrease((*toButtons_)[0].button);
+          if (toButtons_.size() == 1) {
+            ButtonStatus::decrease(toButtons_[0].button);
           }
         }
       }
 
       // ----------------------------------------
-      switch (toButtons_->size()) {
+      switch (toButtons_.size()) {
         case 0:
           break;
 
         case 1:
-          FlagStatus::temporary_increase((*toButtons_)[0].flags);
+          FlagStatus::temporary_increase(toButtons_[0].flags);
           EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
-          FlagStatus::temporary_decrease((*toButtons_)[0].flags);
+          FlagStatus::temporary_decrease(toButtons_[0].flags);
           break;
 
         case 2:
@@ -132,15 +122,15 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (! remapParams.params.ex_isbuttondown) {
             EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
           } else {
-            for (size_t i = 0; i < toButtons_->size(); ++i) {
-              FlagStatus::temporary_increase((*toButtons_)[i].flags);
+            for (size_t i = 0; i < toButtons_.size(); ++i) {
+              FlagStatus::temporary_increase(toButtons_[i].flags);
 
-              ButtonStatus::increase((*toButtons_)[i].button);
+              ButtonStatus::increase(toButtons_[i].button);
               EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
-              ButtonStatus::decrease((*toButtons_)[i].button);
+              ButtonStatus::decrease(toButtons_[i].button);
               EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
 
-              FlagStatus::temporary_decrease((*toButtons_)[i].flags);
+              FlagStatus::temporary_decrease(toButtons_[i].flags);
             }
           }
           break;
