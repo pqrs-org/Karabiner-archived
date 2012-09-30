@@ -4,10 +4,13 @@
 
 class TestItem {
 public:
-  TestItem(void) : value_(0) {}
-  TestItem(size_t v) : value_(v) {}
+  static int counter;
+
+  TestItem(void) : value_(0) { ++counter; }
+  TestItem(size_t v) : value_(v) { ++counter; }
   ~TestItem(void) {
-    //std::cout << "~TestItem: " << value_ << std::endl;
+    --counter;
+    // std::cout << "~TestItem: " << value_ << std::endl;
   }
 
   size_t v(void) { return value_; }
@@ -15,10 +18,13 @@ public:
 private:
   size_t value_;
 };
+int TestItem::counter = 0;
 
 DECLARE_VECTOR(TestItem);
 
 TEST(Vector, push_back) {
+  EXPECT_EQ(0, TestItem::counter);
+
   Vector_TestItem v;
   const size_t MAXITEM = 10;
 
@@ -32,6 +38,7 @@ TEST(Vector, push_back) {
     v.push_back(TestItem(i)).push_back(TestItem(i));
     EXPECT_EQ(i * 2 + 2, v.size());
     EXPECT_EQ(i * 2 + 2, v.capacity());
+    EXPECT_EQ(i * 2 + 2, TestItem::counter);
   }
 
   for (size_t i = 0; i < MAXITEM; ++i) {
@@ -43,6 +50,8 @@ TEST(Vector, push_back) {
 }
 
 TEST(Vector, frontback) {
+  EXPECT_EQ(0, TestItem::counter);
+
   Vector_TestItem v;
 
   const size_t MAXITEM = 10;
@@ -55,6 +64,8 @@ TEST(Vector, frontback) {
 }
 
 TEST(Vector, reserve) {
+  EXPECT_EQ(0, TestItem::counter);
+
   Vector_TestItem v;
   const size_t MAXITEM = 10;
 
@@ -81,6 +92,8 @@ TEST(Vector, reserve) {
 }
 
 TEST(Vector, clear) {
+  EXPECT_EQ(0, TestItem::counter);
+
   Vector_TestItem v;
   v.reserve(1000);
   EXPECT_EQ(static_cast<size_t>(1000), v.capacity());
