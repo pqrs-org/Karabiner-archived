@@ -21,6 +21,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [3] => ...
       void add(unsigned int datatype, unsigned int newval);
 
+      void disabled_callback(void);
+
     private:
       void retractInput(void);
       void restoreInput(void);

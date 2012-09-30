@@ -25,6 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       return isFromKey(params.ex_isbuttondown, FlagStatus::makeFlags(), fromFlags);
     }
     bool isactive(void) const { return active_; }
+    void deactivate(void) { active_ = false; }
 
   private:
     bool isFromKey(bool isKeyDown, Flags flags, Flags fromFlags) {
