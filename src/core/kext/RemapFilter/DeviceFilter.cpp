@@ -6,38 +6,28 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
     DeviceFilter::DeviceFilter(unsigned int t) : type_(t)
-    {
-      targets_ = new Vector_DeviceIdentifier();
-    }
+    {}
 
     DeviceFilter::~DeviceFilter(void)
-    {
-      if (targets_) {
-        delete targets_;
-      }
-    }
+    {}
 
     void
     DeviceFilter::add(unsigned int vendorID, unsigned int productID, unsigned int locationID)
     {
-      if (! targets_) return;
-
-      targets_->push_back(DeviceIdentifier(vendorID, productID, locationID));
+      targets_.push_back(DeviceIdentifier(vendorID, productID, locationID));
     }
 
     bool
     DeviceFilter::isblocked(void)
     {
-      if (! targets_) return false;
-
       switch (type_) {
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
         {
           bool isnot = (type_ == BRIDGE_FILTERTYPE_DEVICE_NOT);
 
-          for (size_t i = 0; i < targets_->size(); ++i) {
-            DeviceIdentifier& v = (*targets_)[i];
+          for (size_t i = 0; i < targets_.size(); ++i) {
+            DeviceIdentifier& v = targets_[i];
             if (CommonData::getcurrent_deviceIdentifier().isEqual(v)) {
               return isnot ? true : false;
             }
