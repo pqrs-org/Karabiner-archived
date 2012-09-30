@@ -8,31 +8,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     KeyToKey::KeyToKey(void) : index_(0), keyboardRepeatID_(-1), isRepeatEnabled_(true)
     {
-      toKeys_     = new Vector_PairKeyFlags();
-      beforeKeys_ = new Vector_PairKeyFlags();
-      afterKeys_  = new Vector_PairKeyFlags();
-      currentVectorPointer_ = toKeys_;
+      currentVectorPointer_ = &toKeys_;
     }
 
     KeyToKey::~KeyToKey(void)
-    {
-      if (toKeys_) {
-        delete toKeys_;
-      }
-      if (beforeKeys_) {
-        delete beforeKeys_;
-      }
-      if (afterKeys_) {
-        delete afterKeys_;
-      }
-    }
+    {}
 
     void
     KeyToKey::add(unsigned int datatype, unsigned int newval)
     {
-      if (! toKeys_)               { return; }
-      if (! beforeKeys_)           { return; }
-      if (! afterKeys_)            { return; }
       if (! currentVectorPointer_) { return; }
 
       switch (datatype) {
@@ -74,9 +58,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (Option::NOREPEAT == newval) {
             isRepeatEnabled_ = false;
           } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == newval) {
-            currentVectorPointer_ = beforeKeys_;
+            currentVectorPointer_ = &beforeKeys_;
           } else if (Option::KEYTOKEY_AFTER_KEYUP == newval) {
-            currentVectorPointer_ = afterKeys_;
+            currentVectorPointer_ = &afterKeys_;
           } else {
             IOLOG_ERROR("KeyToKey::add unknown option:%d\n", newval);
           }
@@ -92,10 +76,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToKey::remap(RemapParams& remapParams)
     {
-      if (! toKeys_)     { return false; }
-      if (! beforeKeys_) { return false; }
-      if (! afterKeys_)  { return false; }
-
       if (remapParams.isremapped) return false;
       if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
@@ -132,15 +112,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (remapParams.params.ex_iskeydown) {
         FlagStatus::temporary_decrease(fromFlags);
 
-        for (size_t i = 0; i < beforeKeys_->size(); ++i) {
-          FlagStatus::temporary_increase((*beforeKeys_)[i].flags);
+        for (size_t i = 0; i < beforeKeys_.size(); ++i) {
+          FlagStatus::temporary_increase(beforeKeys_[i].flags);
 
           Flags f = FlagStatus::makeFlags();
           KeyboardType keyboardType = remapParams.params.keyboardType;
 
-          EventOutputQueue::FireKey::fire_downup(f, (*beforeKeys_)[i].key, keyboardType);
+          EventOutputQueue::FireKey::fire_downup(f, beforeKeys_[i].key, keyboardType);
 
-          FlagStatus::temporary_decrease((*beforeKeys_)[i].flags);
+          FlagStatus::temporary_decrease(beforeKeys_[i].flags);
         }
 
         FlagStatus::temporary_increase(fromFlags);
@@ -148,20 +128,20 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // Handle toKeys_
-      switch (toKeys_->size()) {
+      switch (toKeys_.size()) {
         case 0:
           break;
 
         case 1:
         {
           EventType newEventType = remapParams.params.ex_iskeydown ? EventType::DOWN : EventType::UP;
-          KeyCode toKey = (*toKeys_)[0].key;
+          KeyCode toKey = toKeys_[0].key;
           ModifierFlag toModifierFlag = toKey.getModifierFlag();
 
           if (toModifierFlag == ModifierFlag::NONE && ! VirtualKey::isKeyLikeModifier(toKey)) {
             // toKey
             FlagStatus::temporary_decrease(fromFlags);
-            FlagStatus::temporary_increase((*toKeys_)[0].flags);
+            FlagStatus::temporary_increase(toKeys_[0].flags);
 
           } else {
             // toModifier or VirtualKey::isKeyLikeModifier
@@ -170,10 +150,10 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             if (remapParams.params.ex_iskeydown) {
-              FlagStatus::increase((*toKeys_)[0].flags | toModifierFlag);
+              FlagStatus::increase(toKeys_[0].flags | toModifierFlag);
               FlagStatus::decrease(fromFlags);
             } else {
-              FlagStatus::decrease((*toKeys_)[0].flags | toModifierFlag);
+              FlagStatus::decrease(toKeys_[0].flags | toModifierFlag);
               FlagStatus::increase(fromFlags);
             }
           }
@@ -198,8 +178,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          KeyCode lastKey                  = (*toKeys_)[toKeys_->size() - 1].key;
-          Flags lastKeyFlags               = (*toKeys_)[toKeys_->size() - 1].flags;
+          KeyCode lastKey                  = toKeys_[toKeys_.size() - 1].key;
+          Flags lastKeyFlags               = toKeys_[toKeys_.size() - 1].flags;
           ModifierFlag lastKeyModifierFlag = lastKey.getModifierFlag();
           bool isLastKeyModifier           = (lastKeyModifierFlag != ModifierFlag::NONE);
           bool isLastKeyLikeModifier       = VirtualKey::isKeyLikeModifier(lastKey);
@@ -209,7 +189,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             FlagStatus::temporary_decrease(fromFlags);
 
-            size_t size = toKeys_->size();
+            size_t size = toKeys_.size();
             // If the last key is modifier, we give it special treatment.
             // - Don't fire key repeat.
             // - Synchronous the key press status and the last modifier status.
@@ -218,15 +198,15 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             for (size_t i = 0; i < size; ++i) {
-              FlagStatus::temporary_increase((*toKeys_)[i].flags);
+              FlagStatus::temporary_increase(toKeys_[i].flags);
 
               Flags f = FlagStatus::makeFlags();
               KeyboardType keyboardType = remapParams.params.keyboardType;
 
-              EventOutputQueue::FireKey::fire_downup(f, (*toKeys_)[i].key, keyboardType);
-              KeyboardRepeat::primitive_add_downup(f, (*toKeys_)[i].key, keyboardType);
+              EventOutputQueue::FireKey::fire_downup(f, toKeys_[i].key, keyboardType);
+              KeyboardRepeat::primitive_add_downup(f, toKeys_[i].key, keyboardType);
 
-              FlagStatus::temporary_decrease((*toKeys_)[i].flags);
+              FlagStatus::temporary_decrease(toKeys_[i].flags);
             }
 
             if (isLastKeyModifier || isLastKeyLikeModifier) {
@@ -289,21 +269,21 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Handle afterKeys_
       if (! remapParams.params.ex_iskeydown) {
         // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
-        if (afterKeys_->size() > 0) {
+        if (afterKeys_.size() > 0) {
           // clear temporary flags.
           FlagStatus::set();
 
           FlagStatus::temporary_decrease(fromFlags);
 
-          for (size_t i = 0; i < afterKeys_->size(); ++i) {
-            FlagStatus::temporary_increase((*afterKeys_)[i].flags);
+          for (size_t i = 0; i < afterKeys_.size(); ++i) {
+            FlagStatus::temporary_increase(afterKeys_[i].flags);
 
             Flags f = FlagStatus::makeFlags();
             KeyboardType keyboardType = remapParams.params.keyboardType;
 
-            EventOutputQueue::FireKey::fire_downup(f, (*afterKeys_)[i].key, keyboardType);
+            EventOutputQueue::FireKey::fire_downup(f, afterKeys_[i].key, keyboardType);
 
-            FlagStatus::temporary_decrease((*afterKeys_)[i].flags);
+            FlagStatus::temporary_decrease(afterKeys_[i].flags);
           }
 
           FlagStatus::temporary_increase(fromFlags);
