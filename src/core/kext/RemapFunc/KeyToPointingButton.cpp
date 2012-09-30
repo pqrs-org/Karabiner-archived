@@ -4,22 +4,14 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     KeyToPointingButton::KeyToPointingButton(void) : index_(0)
-    {
-      toButtons_ = new Vector_PairPointingButtonFlags();
-    }
+    {}
 
     KeyToPointingButton::~KeyToPointingButton(void)
-    {
-      if (toButtons_) {
-        delete toButtons_;
-      }
-    }
+    {}
 
     void
     KeyToPointingButton::add(unsigned int datatype, unsigned int newval)
     {
-      if (! toButtons_) return;
-
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
         {
@@ -45,7 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             default:
-              toButtons_->push_back(PairPointingButtonFlags(newval));
+              toButtons_.push_back(PairPointingButtonFlags(newval));
               break;
           }
           ++index_;
@@ -65,8 +57,8 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             default:
-              if (! toButtons_->empty()) {
-                (toButtons_->back()).flags = newval;
+              if (! toButtons_.empty()) {
+                toButtons_.back().flags = newval;
               }
               break;
           }
@@ -82,8 +74,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToPointingButton::remap(RemapParams& remapParams)
     {
-      if (! toButtons_) return false;
-
       if (remapParams.isremapped) return false;
       if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
@@ -114,32 +104,32 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // OmniGraffle has a function which pull a line by mouse click with pressing "C" key.
       // If you stop key-repeat, this function fails.
-      switch (toButtons_->size()) {
+      switch (toButtons_.size()) {
         case 0:
           break;
 
         case 1:
           if (remapParams.params.ex_iskeydown) {
-            FlagStatus::increase((*toButtons_)[0].flags);
-            ButtonStatus::increase((*toButtons_)[0].button);
+            FlagStatus::increase(toButtons_[0].flags);
+            ButtonStatus::increase(toButtons_[0].button);
           } else {
-            FlagStatus::decrease((*toButtons_)[0].flags);
-            ButtonStatus::decrease((*toButtons_)[0].button);
+            FlagStatus::decrease(toButtons_[0].flags);
+            ButtonStatus::decrease(toButtons_[0].button);
           }
           EventOutputQueue::FireRelativePointer::fire();
           break;
 
         case 2:
           if (remapParams.params.ex_iskeydown) {
-            for (size_t i = 0; i < toButtons_->size(); ++i) {
-              FlagStatus::temporary_increase((*toButtons_)[i].flags);
+            for (size_t i = 0; i < toButtons_.size(); ++i) {
+              FlagStatus::temporary_increase(toButtons_[i].flags);
 
-              ButtonStatus::increase((*toButtons_)[i].button);
+              ButtonStatus::increase(toButtons_[i].button);
               EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
-              ButtonStatus::decrease((*toButtons_)[i].button);
+              ButtonStatus::decrease(toButtons_[i].button);
               EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
 
-              FlagStatus::temporary_decrease((*toButtons_)[i].flags);
+              FlagStatus::temporary_decrease(toButtons_[i].flags);
             }
           }
           break;

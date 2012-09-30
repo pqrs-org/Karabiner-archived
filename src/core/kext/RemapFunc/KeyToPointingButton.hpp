@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairKeyFlags fromKey_;
-      Vector_PairPointingButtonFlags* toButtons_;
+      Vector_PairPointingButtonFlags toButtons_;
     };
   }
 }
