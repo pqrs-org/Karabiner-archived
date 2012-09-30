@@ -53,6 +53,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       void remap_forcenumlockon(ListHookedKeyboard::Item* item);
 
+      void call_disabled_callback(void);
+
     private:
       bool isblocked(void);
 
@@ -104,6 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void remap_pointing_scroll(RemapPointingParams_scroll& remapParams);
     bool remap_simultaneouskeypresses(void);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
+    void call_disabled_callback(void);
     const char* get_statusmessage(void);
     bool enabled(void) const { return enabled_; }
     void setEnabled(bool newval) { enabled_ = newval; }

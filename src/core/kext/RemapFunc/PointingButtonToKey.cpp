@@ -7,9 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     PointingButtonToKey::~PointingButtonToKey(void)
     {
-      if (fromkeychecker_.isactive()) {
-        restoreInput();
-      }
+      disabled_callback();
     }
 
     void
@@ -97,6 +95,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       return keytokey_.call_remap_with_VK_PSEUDO_KEY(remapParams.params.ex_isbuttondown ? EventType::DOWN : EventType::UP);
+    }
+
+    void
+    PointingButtonToKey::disabled_callback(void)
+    {
+      if (fromkeychecker_.isactive()) {
+        fromkeychecker_.deactivate();
+        restoreInput();
+      }
     }
 
     void
