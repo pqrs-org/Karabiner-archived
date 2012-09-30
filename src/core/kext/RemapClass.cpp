@@ -362,6 +362,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 }
 
     switch (type_) {
+      case BRIDGE_REMAPTYPE_KEYTOKEY:            CALL_UNION_FUNCTION(p_.keyToKey);            break;
       case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY: CALL_UNION_FUNCTION(p_.pointingButtonToKey); break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)

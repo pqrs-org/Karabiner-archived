@@ -12,7 +12,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     KeyToKey::~KeyToKey(void)
-    {}
+    {
+      disabled_callback();
+    }
 
     void
     KeyToKey::add(unsigned int datatype, unsigned int newval)
@@ -102,9 +104,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       fromFlags.remove(fromKey_.key.getModifierFlag());
 
       if (remapParams.params.ex_iskeydown) {
-        FlagStatus::decrease(fromKey_.key.getModifierFlag());
+        retractInput();
       } else {
-        FlagStatus::increase(fromKey_.key.getModifierFlag());
+        restoreInput();
       }
 
       // ----------------------------------------
@@ -306,6 +308,27 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       RemapParams rp(params);
       return remap(rp);
+    }
+
+    void
+    KeyToKey::disabled_callback(void)
+    {
+      if (fromkeychecker_.isactive()) {
+        fromkeychecker_.deactivate();
+        restoreInput();
+      }
+    }
+
+    void
+    KeyToKey::retractInput(void)
+    {
+      FlagStatus::decrease(fromKey_.key.getModifierFlag());
+    }
+
+    void
+    KeyToKey::restoreInput(void)
+    {
+      FlagStatus::increase(fromKey_.key.getModifierFlag());
     }
   }
 }
