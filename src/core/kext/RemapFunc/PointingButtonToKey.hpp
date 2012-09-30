@@ -22,6 +22,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
+      void retractInput(void);
+      void restoreInput(void);
+
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairPointingButtonFlags fromButton_;
