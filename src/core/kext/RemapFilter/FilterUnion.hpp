@@ -21,6 +21,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void initialize(const unsigned int* vec, size_t length);
       void terminate(void);
 
+      FilterUnion(const FilterUnion& rhs);
+      FilterUnion& operator=(const FilterUnion& rhs);
+
       unsigned int type_;
 
       union {

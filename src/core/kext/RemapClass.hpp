@@ -84,7 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::ScrollWheelToKey* scrollWheelToKey;
       } p_;
 
-      RemapFilter::Vector_FilterUnionPointer* filters_;
+      RemapFilter::Vector_FilterUnionPointer filters_;
     };
     typedef Item* ItemPointer;
     DECLARE_VECTOR(ItemPointer);
