@@ -76,7 +76,7 @@
     TYPENAME& back(void) { return vector_[size_ - 1]; }                  \
                                                                          \
   private:                                                               \
-    Vector_ ## TYPENAME(const Vector_ ## TYPENAME & obj) {}              \
+    Vector_ ## TYPENAME(const Vector_ ## TYPENAME & rhs) {}              \
                                                                          \
     TYPENAME* vector_;                                                   \
     size_t capacity_;                                                    \

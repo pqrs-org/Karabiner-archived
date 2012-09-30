@@ -55,6 +55,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void pop_front(void) { erase(front_); }
 
   private:
+    List(const List& rhs) {}
+
     Item* front_;
     Item* back_;
     size_t size_;
