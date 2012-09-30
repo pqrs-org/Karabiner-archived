@@ -6,7 +6,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     PointingButtonToKey::~PointingButtonToKey(void)
-    {}
+    {
+      if (fromkeychecker_.isactive()) {
+        restoreInput();
+      }
+    }
 
     void
     PointingButtonToKey::add(unsigned int datatype, unsigned int newval)
@@ -87,12 +91,24 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapParams.isremapped = true;
 
       if (remapParams.params.ex_isbuttondown) {
-        ButtonStatus::decrease(fromButton_.button);
+        retractInput();
       } else {
-        ButtonStatus::increase(fromButton_.button);
+        restoreInput();
       }
 
       return keytokey_.call_remap_with_VK_PSEUDO_KEY(remapParams.params.ex_isbuttondown ? EventType::DOWN : EventType::UP);
+    }
+
+    void
+    PointingButtonToKey::retractInput(void)
+    {
+      ButtonStatus::decrease(fromButton_.button);
+    }
+
+    void
+    PointingButtonToKey::restoreInput(void)
+    {
+      ButtonStatus::increase(fromButton_.button);
     }
   }
 }
