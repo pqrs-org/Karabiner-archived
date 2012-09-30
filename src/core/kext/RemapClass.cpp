@@ -12,7 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     type_ = BRIDGE_REMAPTYPE_NONE;
     active_ = false;
-    filters_ = NULL;
 
     // ------------------------------------------------------------
     // check parameters.
@@ -110,14 +109,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 #undef DELETE_UNLESS_NULL
 
     // ------------------------------------------------------------
-    if (filters_) {
-      for (size_t i = 0; i < filters_->size(); ++i) {
-        RemapFilter::FilterUnion* p = (*filters_)[i];
-        if (p) {
-          delete p;
-        }
+    for (size_t i = 0; i < filters_.size(); ++i) {
+      RemapFilter::FilterUnion* p = filters_[i];
+      if (p) {
+        delete p;
       }
-      delete filters_;
     }
   }
 
@@ -135,22 +131,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     // append to filters_.
     //
-    if (! filters_) {
-      filters_ = new RemapFilter::Vector_FilterUnionPointer();
-
-      if (! filters_) {
-        IOLOG_ERROR("RemapClass::Item::append_filter failed to allocate.\n");
-        return;
-      }
-    }
-
     RemapFilter::FilterUnion* newp = new RemapFilter::FilterUnion(vec, length);
     if (! newp) {
       IOLOG_ERROR("RemapClass::Item::append_filter failed to allocate.\n");
       return;
     }
 
-    filters_->push_back(newp);
+    filters_.push_back(newp);
   }
 
   void
@@ -370,10 +357,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::isblocked(void)
   {
-    if (! filters_) return false;
-
-    for (size_t i = 0; i < filters_->size(); ++i) {
-      RemapFilter::FilterUnion* p = (*filters_)[i];
+    for (size_t i = 0; i < filters_.size(); ++i) {
+      RemapFilter::FilterUnion* p = filters_[i];
       if (p && p->isblocked()) return true;
     }
 
