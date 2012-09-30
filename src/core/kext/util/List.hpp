@@ -56,6 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     List(const List& rhs) {}
+    List& operator=(const List& rhs) { return *this; }
 
     Item* front_;
     Item* back_;
