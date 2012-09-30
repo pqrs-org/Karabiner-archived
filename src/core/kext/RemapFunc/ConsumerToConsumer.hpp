@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       FromKeyChecker fromkeychecker_;
       PairConsumerKeyFlags fromKey_;
-      Vector_PairConsumerKeyFlags* toKeys_;
+      Vector_PairConsumerKeyFlags toKeys_;
       int keyboardRepeatID_;
       bool isRepeatEnabled_;
     };
