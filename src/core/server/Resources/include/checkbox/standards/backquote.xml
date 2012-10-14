@@ -68,6 +68,12 @@
       <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::F8</autogen>
     </item>
     <item>
+      <name>Backquote(`) to Hashtag(#)</name>
+      <appendix>(Change Backquote to Shift+3)</appendix>
+      <identifier>remap.backquote_to_hashtag</identifier>
+      <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
       <name>Backquote(`) to Cmd+Option+L</name>
       <identifier>remap.backquote2cmdoptionl</identifier>
       <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
