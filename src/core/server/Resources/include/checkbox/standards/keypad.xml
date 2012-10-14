@@ -10,6 +10,11 @@
         <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::DELETE</autogen>
       </item>
       <item>
+        <name>Clear to Command+Delete (Move to Trash)</name>
+        <identifier>remap.clear_to_command_and_delete</identifier>
+        <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
         <name>Clear to Equal</name>
         <identifier>remap.clear2equal</identifier>
         <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::EQUAL</autogen>
