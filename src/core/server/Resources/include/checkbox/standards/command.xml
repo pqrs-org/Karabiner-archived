@@ -274,6 +274,12 @@
       <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
+      <name>Command_R to Hashtag(#)</name>
+      <appendix>(Change Command_R to Shift+3)</appendix>
+      <identifier>remap.command_r_to_hashtag</identifier>
+      <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
       <name>Command_R to Home</name>
       <identifier>remap.commandR2home</identifier>
       <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::HOME</autogen>
