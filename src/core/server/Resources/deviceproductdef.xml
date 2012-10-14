@@ -46,6 +46,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262</productname>
+    <productid>0x0262</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>APPLE_EXTERNAL_KEYBOARD_0x0221</productname>
     <productid>0x0221</productid>
   </deviceproductdef>
@@ -123,6 +128,11 @@
   <deviceproductdef>
     <productname>LOGITECH_G700</productname>
     <productid>0xc06b</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>LOGITECH_K400</productname>
+    <productid>0xc52b</productid>
   </deviceproductdef>
 
   <deviceproductdef>
