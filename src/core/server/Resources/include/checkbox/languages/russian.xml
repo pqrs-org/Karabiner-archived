@@ -110,5 +110,35 @@
       <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::OPTION_R,
         KeyCode::KEY_7, VK_SHIFT</autogen>
     </item>
+    <item>
+      <name>Command_L+Shift_L to Command_L+Shift_L (when inputmode == russian)</name>
+      <appendix>(+ When you type Command_L+Shift_L only, change inputmode to english)</appendix>
+      <inputmode_only>RUSSIAN</inputmode_only>
+      <identifier>remap.russian_shiftcommandL2shiftLcommandL_english</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+    </item>
+    <item>
+      <name>Command_L+Shift_L to Command_L+Shift_L</name>
+      <appendix>(+ When you type Command_L+Shift_L only, change inputmode to Russian)</appendix>
+      <identifier>remap.russian_shiftcommandL2shiftLcommandL_russian</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+    </item>
+    <item>
+      <name>Control_L+Shift_L to Control_L+Shift_L (when inputmode == russian)</name>
+      <appendix>(+ When you type Control_L+Shift_L only, change inputmode to english)</appendix>
+      <inputmode_only>RUSSIAN</inputmode_only>
+      <identifier>remap.russian_shiftcontrolL2shiftLcontrolL_english</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_CONTROL, KeyCode::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_ENGLISH</autogen>
+    </item>
+    <item>
+      <name>Control_L+Shift_L to Control_L+Shift_L</name>
+      <appendix>(+ When you type Control_L+Shift_L only, change inputmode to Russian)</appendix>
+      <identifier>remap.russian_shiftcontrolL2shiftLcontrolL_russian</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, VK_CONTROL, KeyCode::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+      <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTMODE_RUSSIAN</autogen>
+    </item>
   </item>
 </root>
