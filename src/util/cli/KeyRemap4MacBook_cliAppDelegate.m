@@ -16,6 +16,7 @@
   [self output:@"  KeyRemap4MacBook_cli list\n"];
   [self output:@"  KeyRemap4MacBook_cli selected\n"];
   [self output:@"  KeyRemap4MacBook_cli changed\n"];
+  [self output:@"  KeyRemap4MacBook_cli reloadxml\n"];
   [self output:@"  KeyRemap4MacBook_cli select INDEX\n"];
   [self output:@"  KeyRemap4MacBook_cli enable IDENTIFIER\n"];
   [self output:@"  KeyRemap4MacBook_cli disable IDENTIFIER\n"];
@@ -24,6 +25,7 @@
   [self output:@"  KeyRemap4MacBook_cli list\n"];
   [self output:@"  KeyRemap4MacBook_cli selected\n"];
   [self output:@"  KeyRemap4MacBook_cli changed\n"];
+  [self output:@"  KeyRemap4MacBook_cli reloadxml\n"];
   [self output:@"  KeyRemap4MacBook_cli select 1\n"];
   [self output:@"  KeyRemap4MacBook_cli enable remap.shiftL2commandL\n"];
   [self output:@"  KeyRemap4MacBook_cli disable remap.shiftL2commandL\n"];
@@ -58,6 +60,9 @@
           [self output:[NSString stringWithFormat:@"%@=%@\n", key, [dict objectForKey:key]]];
         }
       }
+
+    } else if ([command isEqualToString:@"reloadxml"]) {
+      [[client_ proxy] configxml_reload];
 
     } else if ([command isEqualToString:@"select"]) {
       if ([arguments count] != 3) {
