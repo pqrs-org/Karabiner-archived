@@ -790,20 +790,86 @@
     <item>
       <name>enthumble (http://www.enthumble.com/)</name>
       <item>
-        <name>enthumble</name>
-        <appendix>・英数キーを左コマンドキーに変更。（英数キーの空打ちで英数キーとして動作）</appendix>
-        <appendix>・英数キー（左コマンドキー）を押しながら「スペースキー」で「リターン」</appendix>
-        <appendix>・英数キー（左コマンドキー）を押しながら「かなキー」で「エスケープ」</appendix>
-        <appendix>・英数キー（左コマンドキー）を押しながら「右コマンドキー」で「エスケープ」</appendix>
-        <identifier>remap.jis_enthumble</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU,
-          KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
-        <autogen>--KeyToKey--KeyCode::SPACE,ModifierFlag::COMMAND_L,
+        <name>英数+「スペース/かなキー」で「Return/ESC」</name>
+        <identifier>remap.jis_enthumble_default</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey--KeyCode::SPACE,ModifierFlag::EXTRA1,
           KeyCode::RETURN</autogen>
-        <autogen>--KeyToKey--KeyCode::JIS_KANA,ModifierFlag::COMMAND_L,
+        <autogen>--KeyToKey--KeyCode::JIS_KANA,ModifierFlag::EXTRA1,
           KeyCode::ESCAPE</autogen>
-        <autogen>--KeyToKey--KeyCode::COMMAND_R,ModifierFlag::COMMAND_L,
-          KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>英数+「N,M/",","."」で「BackSpace/Delete」</name>
+        <identifier>remap.jis_enthumble_NC</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey--KeyCode::N,ModifierFlag::EXTRA1,
+          KeyCode::DELETE</autogen>
+        <autogen>--KeyToKey--KeyCode::M,ModifierFlag::EXTRA1,
+          KeyCode::DELETE</autogen>
+        <autogen>--KeyToKey--KeyCode::DOT,ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE</autogen>
+        <autogen>--KeyToKey--KeyCode::COMMA,ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>英数+「Y,U/I,O」で「BackSpace/Delete」</name>
+        <identifier>remap.jis_enthumble_YI</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey--KeyCode::Y,ModifierFlag::EXTRA1,
+          KeyCode::DELETE</autogen>
+        <autogen>--KeyToKey--KeyCode::U,ModifierFlag::EXTRA1,
+          KeyCode::DELETE</autogen>
+        <autogen>--KeyToKey--KeyCode::I,ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE</autogen>
+        <autogen>--KeyToKey--KeyCode::O,ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
+        <name>英数+IJKLを移動キーへ</name>
+        <identifier>remap.jis_enthumble_IJKL</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>英数+HJKLを移動キーへ</name>
+        <identifier>remap.jis_enthumble_HJKL</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>英数+FBNPを移動キーへ</name>
+        <identifier>remap.jis_enthumble_FBNP</identifier>
+        <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::EXTRA1, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA1, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+      <item>
+        <name>英数キーボード対応版（＋英数キーをコマンドキーに変更）</name>
+        <item>
+          <name>この設定を使用するときは、上のenthumble関連の設定はオフにしてください。</name>
+          <appendix></appendix>
+          <appendix>・英数キーを左コマンドキーに変更。（英数キーの空打ちで英数キーとして動作）</appendix>
+          <appendix>・英数キー（左コマンドキー）を押しながら「スペースキー」で「リターン」</appendix>
+          <appendix>・英数キー（左コマンドキー）を押しながら「かなキー」で「エスケープ」</appendix>
+          <appendix>・英数キー（左コマンドキー）を押しながら「右コマンドキー」で「エスケープ」</appendix>
+          <identifier>remap.jis_enthumble</identifier>
+          <autogen>--KeyOverlaidModifier-- KeyCode::JIS_EISUU,
+            KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+          <autogen>--KeyToKey--KeyCode::SPACE,ModifierFlag::COMMAND_L,
+            KeyCode::RETURN</autogen>
+          <autogen>--KeyToKey--KeyCode::JIS_KANA,ModifierFlag::COMMAND_L,
+            KeyCode::ESCAPE</autogen>
+          <autogen>--KeyToKey--KeyCode::COMMAND_R,ModifierFlag::COMMAND_L,
+            KeyCode::ESCAPE</autogen>
+        </item>
       </item>
     </item>
 
