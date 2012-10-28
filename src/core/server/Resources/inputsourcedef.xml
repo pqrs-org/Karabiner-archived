@@ -228,6 +228,11 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>DANISH</name>
+    <languagecode>da</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>ENGLISH</name>
     <languagecode>en</languagecode>
   </inputsourcedef>

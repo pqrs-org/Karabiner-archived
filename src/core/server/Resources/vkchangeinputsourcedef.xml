@@ -157,6 +157,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DANISH</name>
+    <languagecode>da</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name>
     <languagecode>en</languagecode>
   </vkchangeinputsourcedef>
