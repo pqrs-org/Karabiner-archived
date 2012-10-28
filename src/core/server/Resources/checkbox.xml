@@ -43,6 +43,7 @@
   <include path="include/checkbox/complete_vi_mode.xml" />
   <include path="include/checkbox/simultaneouskeypresses_vi_mode.xml" />
   <include path="include/checkbox/homerow_mode.xml" />
+  <include path="include/checkbox/touchcursor.xml" />
   <include path="include/checkbox/simultaneouskeypresses.xml" />
   <include path="include/checkbox/thumbsense.xml" />
   <include path="include/checkbox/for_mission_control.xml" />
