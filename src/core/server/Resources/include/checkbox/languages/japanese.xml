@@ -1130,6 +1130,17 @@
         <autogen>--SimultaneousKeyPresses-- KeyCode::JIS_EISUU, KeyCode::JIS_KANA, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
       </item>
       <item>
+        <name>日本語入力時にF、Jキーの同時押しをSticky Shiftにする</name>
+        <appendix>（SKKと一緒に使うと便利です。）</appendix>
+        <identifier>remap.japanese_FJ_to_sticky_shift_l</identifier>
+        <inputsource_only>JAPANESE</inputsource_only>
+        <autogen>
+          --SimultaneousKeyPresses--
+          KeyCode::F, KeyCode::J,
+          KeyCode::VK_STICKY_SHIFT_L
+        </autogen>
+      </item>
+      <item>
         <name>(7), 8, 9, 0 for IME</name>
         <item>
           <name>8+9 for Shift+Left</name>
