@@ -97,22 +97,29 @@ static void setPreference(int fingers, int newvalue) {
 static int callback(int device, Finger* data, int fingers, double timestamp, int frame) {
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-#if 0
+
     // ignore edge
     {
+
+      const double topThreshold = 0.05;
+      const double rightThreshold = 0.15;
+      const double bottomThreshold = 0;
+      const double leftThreshold = 0;
+
       int valid_fingers = 0;
       for (int i = 0; i < fingers; ++i) {
         double x = data[i].normalized.position.x;
         double y = data[i].normalized.position.y;
-        double threshold = 0.1;
-        if (threshold < x && x < 1.0 - threshold &&
-            threshold < y && y < 1.0 - threshold) {
+
+        if ((leftThreshold < x && x < 1.0 - rightThreshold &&
+             bottomThreshold < y && y < 1.0 - topThreshold) ||
+             current_status_[i]) { //don't ignore edge if touch has already been validated
           ++valid_fingers;
         }
       }
       fingers = valid_fingers;
+
     }
-#endif
 
     // deactivating settings first.
     for (int i = 0; i < MAX_FINGERS; ++i) {
