@@ -1,13 +1,7 @@
 // -*- Mode: objc -*-
-//
-//  KeyRemap4MacBook_multitouchextensionAppDelegate.h
-//  KeyRemap4MacBook_multitouchextension
-//
-//  Created by Takayama Fumihiko on 09/11/24.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
 
 #import <Cocoa/Cocoa.h>
+#import "IgnoredAreaView.h"
 #import "KeyRemap4MacBookClient.h"
 #import "PreferencesController.h"
 
@@ -17,6 +11,7 @@
   CFRunLoopSourceRef loopsource_;
 
   IBOutlet PreferencesController* preferences_;
+  IBOutlet IgnoredAreaView* ignoredAreaView_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 }
 

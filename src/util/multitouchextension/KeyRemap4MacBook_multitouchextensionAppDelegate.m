@@ -72,6 +72,7 @@ void MTUnregisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
 void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
+IgnoredAreaView* global_ignoredAreaView_ = nil;
 org_pqrs_KeyRemap4MacBook_Client* global_client_ = nil;
 
 static void setPreference(int fingers, int newvalue) {
@@ -97,22 +98,22 @@ static void setPreference(int fingers, int newvalue) {
 static int callback(int device, Finger* data, int fingers, double timestamp, int frame) {
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-#if 0
-    // ignore edge
-    {
-      int valid_fingers = 0;
-      for (int i = 0; i < fingers; ++i) {
-        double x = data[i].normalized.position.x;
-        double y = data[i].normalized.position.y;
-        double threshold = 0.1;
-        if (threshold < x && x < 1.0 - threshold &&
-            threshold < y && y < 1.0 - threshold) {
-          ++valid_fingers;
-        }
+    [global_ignoredAreaView_ clearFingers];
+
+    int valid_fingers = 0;
+    for (int i = 0; i < fingers; ++i) {
+      double x = data[i].normalized.position.x;
+      double y = data[i].normalized.position.y;
+
+      NSPoint point = NSMakePoint(x, y);
+
+      [global_ignoredAreaView_ addFinger:point];
+
+      if (! [IgnoredAreaView isIgnoredArea:point]) {
+        ++valid_fingers;
       }
-      fingers = valid_fingers;
     }
-#endif
+    fingers = valid_fingers;
 
     // deactivating settings first.
     for (int i = 0; i < MAX_FINGERS; ++i) {
@@ -326,6 +327,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
   }
 
+  global_ignoredAreaView_ = ignoredAreaView_;
   global_client_ = client_;
 
   [self registerIONotification];
