@@ -28,6 +28,18 @@ NSDictionary* defaults_dictionary = nil;
                          @"notsave.pointing_relative_to_scroll",
                          @"targetSetting3",
 
+                         @"0",
+                         @"ignoredAreaTop",
+
+                         @"0",
+                         @"ignoredAreaBottom",
+
+                         @"0",
+                         @"ignoredAreaLeft",
+
+                         @"0",
+                         @"ignoredAreaRight",
+
                          nil];
   [defaults_dictionary retain];
 

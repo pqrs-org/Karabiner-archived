@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.m */; };
+		3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3417234016481E9A004A996E /* IgnoredAreaView.m */; };
 		343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343CFC86130A8C7C00BA28B9 /* PreferencesController.m */; };
 		343CFC92130A8E2500BA28B9 /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343CFC91130A8E2500BA28B9 /* StartAtLoginController.m */; };
 		343EE7A113098F2E00953F8F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343EE7A013098F2E00953F8F /* IOKit.framework */; };
@@ -32,6 +33,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3417233F16481E9A004A996E /* IgnoredAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; name = IgnoredAreaView.h; path = Classes/IgnoredAreaView.h; sourceTree = "<group>"; };
+		3417234016481E9A004A996E /* IgnoredAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IgnoredAreaView.m; path = Classes/IgnoredAreaView.m; sourceTree = "<group>"; };
 		343CFC85130A8C7C00BA28B9 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = Classes/PreferencesController.h; sourceTree = "<group>"; };
 		343CFC86130A8C7C00BA28B9 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = Classes/PreferencesController.m; sourceTree = "<group>"; };
 		343CFC90130A8E2500BA28B9 /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginController.h; path = Classes/StartAtLoginController.h; sourceTree = "<group>"; };
@@ -65,6 +68,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3417233F16481E9A004A996E /* IgnoredAreaView.h */,
+				3417234016481E9A004A996E /* IgnoredAreaView.m */,
 				34B2A68B1374629A00694134 /* KeyRemap4MacBookKeys.h */,
 				349AD34F13098DD400474EFD /* KeyRemap4MacBookClient.h */,
 				349AD35013098DD400474EFD /* KeyRemap4MacBookClient.m */,
@@ -221,6 +226,7 @@
 				343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */,
 				343CFC92130A8E2500BA28B9 /* StartAtLoginController.m in Sources */,
 				34CC240413E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */,
+				3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
