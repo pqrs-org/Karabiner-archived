@@ -37,21 +37,23 @@ static NSMutableArray* enabledInputSources_ = nil;
       if (! source) continue;
 
       // ----------------------------------------
-      // Skip if sourceID is follows.
-      // - com.apple.PressAndHold
-      // - com.apple.CharacterPaletteIM
-      // - com.apple.KeyboardViewer
-      // - or others which have "com.apple." prefix and
-      //      don't have "com.apple.keylayout." prefix.
+      // Skip inappropriate input sources.
+      //
+      // - kTISPropertyInputSourceCategory != kTISCategoryKeyboardInputSource
+      // - com.apple.inputmethod.ironwood
+
+      NSString* category = TISGetInputSourceProperty(source, kTISPropertyInputSourceCategory);
+      if (! category) {
+        continue;
+      } else {
+        if (! [category isEqualToString:(NSString*)(kTISCategoryKeyboardInputSource)]) {
+          continue;
+        }
+      }
+
       NSString* sourceID = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
       if (sourceID) {
-        if ([sourceID hasPrefix:@"com.apple."] &&
-            // com.apple.keylayout.French
-            ! [sourceID hasPrefix:@"com.apple.keylayout."] &&
-            // com.apple.inputmethod.Kotoeri.Roman
-            ! [sourceID hasPrefix:@"com.apple.inputmethod."] &&
-            // com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak
-            ! [sourceID hasPrefix:@"com.apple.keyboardlayout."]) {
+        if ([sourceID isEqualToString:@"com.apple.inputmethod.ironwood"]) {
           continue;
         }
       }
