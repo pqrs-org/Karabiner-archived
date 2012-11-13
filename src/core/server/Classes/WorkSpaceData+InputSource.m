@@ -40,7 +40,7 @@ static NSMutableArray* enabledInputSources_ = nil;
       // Skip inappropriate input sources.
       //
       // - kTISPropertyInputSourceCategory != kTISCategoryKeyboardInputSource
-      // - com.apple.inputmethod.ironwood
+      // - com.apple.inputmethod.ironwood (Voice Input)
 
       NSString* category = TISGetInputSourceProperty(source, kTISPropertyInputSourceCategory);
       if (! category) {
