@@ -283,6 +283,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
 {
   NSLog(@"observer_NSWorkspaceDidWakeNotification");
+
+  // sleep until devices are settled.
+  [NSThread sleepForTimeInterval:1.0];
+
   [self setcallback:YES];
 }
 
@@ -307,6 +311,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
   [self registerIONotification];
   [self registerWakeNotification];
+
+  // sleep until devices are settled.
+  [NSThread sleepForTimeInterval:1.0];
+
   [self setcallback:YES];
 }
 
