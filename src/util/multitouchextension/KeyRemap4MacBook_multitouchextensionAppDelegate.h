@@ -2,6 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "IgnoredAreaView.h"
+#import "FingerStatus.h"
 #import "KeyRemap4MacBookClient.h"
 #import "PreferencesController.h"
 

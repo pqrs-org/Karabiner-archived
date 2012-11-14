@@ -44,13 +44,13 @@
         DIAMETER = 10,
       };
 
-      if ([IgnoredAreaView isIgnoredArea:fingers_[i]]) {
+      if (fingers_[i].ignored) {
         [[NSColor blueColor] set];
       } else {
         [[NSColor redColor] set];
       }
-      NSRect rect = NSMakeRect(bounds.size.width  * fingers_[i].x - DIAMETER / 2,
-                               bounds.size.height * fingers_[i].y - DIAMETER / 2,
+      NSRect rect = NSMakeRect(bounds.size.width  * fingers_[i].point.x - DIAMETER / 2,
+                               bounds.size.height * fingers_[i].point.y - DIAMETER / 2,
                                DIAMETER,
                                DIAMETER);
       NSBezierPath* path = [NSBezierPath bezierPathWithOvalInRect:rect];
@@ -67,9 +67,10 @@
   [self setNeedsDisplay:YES];
 }
 
-- (void) addFinger:(NSPoint)point
+- (void) addFinger:(NSPoint)point ignored:(BOOL)ignored
 {
-  fingers_[nfingers_] = point;
+  fingers_[nfingers_].point = point;
+  fingers_[nfingers_].ignored = ignored;
 
   if (nfingers_ < IGNORE_AREA_VIEW_MAX_FINGERS - 1) {
     ++nfingers_;

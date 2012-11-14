@@ -1,16 +1,9 @@
-//
-//  KeyRemap4MacBook_multitouchextensionAppDelegate.m
-//  KeyRemap4MacBook_multitouchextension
-//
-//  Created by Takayama Fumihiko on 09/11/24.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
-
 #include <IOKit/IOKitLib.h>
 #import "KeyRemap4MacBook_multitouchextensionAppDelegate.h"
 
 enum { MAX_FINGERS = 3 };
 static int current_status_[MAX_FINGERS];
+static FingerStatus* lastFingerStatus_ = nil;
 
 @implementation KeyRemap4MacBook_multitouchextensionAppDelegate
 
@@ -19,6 +12,8 @@ static int current_status_[MAX_FINGERS];
   self = [super init];
 
   if (self) {
+    lastFingerStatus_ = [FingerStatus new];
+
     for (int i = 0; i < MAX_FINGERS; ++i) {
       current_status_[i] = 0;
     }
@@ -30,6 +25,7 @@ static int current_status_[MAX_FINGERS];
 - (void) dealloc
 {
   [mtdevices_ release];
+  [lastFingerStatus_ release];
 
   [super dealloc];
 }
@@ -101,18 +97,47 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
     [global_ignoredAreaView_ clearFingers];
 
     int valid_fingers = 0;
+
+    FingerStatus* fingerStatus = [FingerStatus new];
+
     for (int i = 0; i < fingers; ++i) {
-      double x = data[i].normalized.position.x;
-      double y = data[i].normalized.position.y;
+      // state values:
+      //   4: touched
+      //   1-3,5-7: near
+      if (data[i].state != 4) {
+        continue;
+      }
 
-      NSPoint point = NSMakePoint(x, y);
+      int identifier = data[i].identifier;
+      NSPoint point = NSMakePoint(data[i].normalized.position.x, data[i].normalized.position.y);
 
-      [global_ignoredAreaView_ addFinger:point];
+      BOOL ignored = NO;
+      if ([IgnoredAreaView isIgnoredArea:point]) {
+        ignored = YES;
 
-      if (! [IgnoredAreaView isIgnoredArea:point]) {
+        // Finding FingerStatus by identifier.
+        for (int j = 0; j < MAX_FINGERS; ++j) {
+          if ([lastFingerStatus_ isActive:identifier]) {
+            // If a finger is already active, we should not ignore this finger.
+            // (This finger has been moved into ignored area from active area.)
+            ignored = NO;
+          }
+        }
+      }
+
+      [fingerStatus add:identifier active:(! ignored)];
+
+      if (! ignored) {
         ++valid_fingers;
       }
+
+      [global_ignoredAreaView_ addFinger:point ignored:ignored];
     }
+
+    FingerStatus* l = lastFingerStatus_;
+    lastFingerStatus_ = fingerStatus;
+    [l release];
+
     fingers = valid_fingers;
 
     // deactivating settings first.
