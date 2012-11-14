@@ -4,29 +4,20 @@
 #import "KeyRemap4MacBookClient.h"
 
 @interface PreferencesController : NSObject {
+  NSMutableArray* oldSettings_;
+
   IBOutlet NSWindow* preferencesWindow_;
   IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
 
   IBOutlet NSButton* startAtLogin_;
-  IBOutlet NSButton* hideIconInDock_;
-
-  IBOutlet NSButton* targetSettingIsEnabled1_;
-  IBOutlet NSButton* targetSettingIsEnabled2_;
-  IBOutlet NSButton* targetSettingIsEnabled3_;
-
-  IBOutlet NSTextField* targetSetting1_;
-  IBOutlet NSTextField* targetSetting2_;
-  IBOutlet NSTextField* targetSetting3_;
 }
 
 - (void) load;
 - (void) show;
-+ (BOOL) isHideIconInDock;
 + (BOOL) isSettingEnabled:(NSInteger)fingers;
 + (NSString*) getSettingName:(NSInteger)fingers;
 
 - (IBAction) setStartAtLogin:(id)sender;
-- (IBAction) setHideIconInDock:(id)sender;
 - (IBAction) set:(id)sender;
 
 @end
