@@ -1,7 +1,7 @@
 #include <IOKit/IOKitLib.h>
 #import "KeyRemap4MacBook_multitouchextensionAppDelegate.h"
 
-enum { MAX_FINGERS = 3 };
+enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
 static FingerStatus* lastFingerStatus_ = nil;
 
@@ -116,12 +116,10 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
         ignored = YES;
 
         // Finding FingerStatus by identifier.
-        for (int j = 0; j < MAX_FINGERS; ++j) {
-          if ([lastFingerStatus_ isActive:identifier]) {
-            // If a finger is already active, we should not ignore this finger.
-            // (This finger has been moved into ignored area from active area.)
-            ignored = NO;
-          }
+        if ([lastFingerStatus_ isActive:identifier]) {
+          // If a finger is already active, we should not ignore this finger.
+          // (This finger has been moved into ignored area from active area.)
+          ignored = NO;
         }
       }
 
@@ -355,7 +353,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [preferences_ load];
 
-  if (! [PreferencesController isHideIconInDock]) {
+  if (! [[NSUserDefaults standardUserDefaults] boolForKey:@"hideIconInDock"]) {
     ProcessSerialNumber psn = { 0, kCurrentProcess };
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
   }

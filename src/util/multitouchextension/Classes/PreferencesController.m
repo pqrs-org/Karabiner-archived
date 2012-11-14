@@ -10,14 +10,20 @@ NSDictionary* defaults_dictionary = nil;
 + (void) initialize
 {
   defaults_dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                         @"YES",
+                         [NSNumber numberWithBool:NO],
+                         @"hideIconInDock",
+
+                         [NSNumber numberWithBool:YES],
                          @"targetSettingIsEnabled1",
 
-                         @"NO",
+                         [NSNumber numberWithBool:NO],
                          @"targetSettingIsEnabled2",
 
-                         @"NO",
+                         [NSNumber numberWithBool:NO],
                          @"targetSettingIsEnabled3",
+
+                         [NSNumber numberWithBool:NO],
+                         @"targetSettingIsEnabled4",
 
                          @"notsave.thumbsense",
                          @"targetSetting1",
@@ -27,6 +33,9 @@ NSDictionary* defaults_dictionary = nil;
 
                          @"notsave.pointing_relative_to_scroll",
                          @"targetSetting3",
+
+                         @"notsave.pointing_relative_to_scroll",
+                         @"targetSetting4",
 
                          @"0",
                          @"ignoredAreaTop",
@@ -46,45 +55,30 @@ NSDictionary* defaults_dictionary = nil;
   [[NSUserDefaults standardUserDefaults] registerDefaults:defaults_dictionary];
 }
 
-- (void) load
+- (id) init
 {
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+  self = [super init];
 
-  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                        targetSettingIsEnabled1_, @"targetSettingIsEnabled1",
-                        targetSettingIsEnabled2_, @"targetSettingIsEnabled2",
-                        targetSettingIsEnabled3_, @"targetSettingIsEnabled3",
-                        targetSetting1_, @"targetSetting1",
-                        targetSetting2_, @"targetSetting2",
-                        targetSetting3_, @"targetSetting3",
-                        nil];
-  for (NSString* key in dict) {
-    id object = [dict objectForKey:key];
-
-    if ([object isKindOfClass:[NSButton class]]) {
-      NSButton* button = object;
-      if ([[defaults stringForKey:key] isEqualToString:@"YES"]) {
-        [button setState:NSOnState];
-      } else {
-        [button setState:NSOffState];
-      }
-
-    } else if ([object isKindOfClass:[NSTextField class]]) {
-      NSTextField* text = object;
-      [text setStringValue:[defaults stringForKey:key]];
-    }
+  if (self) {
+    oldSettings_ = [NSMutableArray new];
   }
 
+  return self;
+}
+
+- (void) dealloc
+{
+  [oldSettings_ release];
+
+  [super dealloc];
+}
+
+- (void) load
+{
   if ([StartAtLoginController isStartAtLogin]) {
     [startAtLogin_ setState:NSOnState];
   } else {
     [startAtLogin_ setState:NSOffState];
-  }
-
-  if ([PreferencesController isHideIconInDock]) {
-    [hideIconInDock_ setState:NSOnState];
-  } else {
-    [hideIconInDock_ setState:NSOffState];
   }
 }
 
@@ -103,27 +97,9 @@ NSDictionary* defaults_dictionary = nil;
   }
 }
 
-- (IBAction) setHideIconInDock:(id)sender
-{
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  NSString* key = @"hideIconInDock";
-
-  if ([hideIconInDock_ state] == NSOnState) {
-    [defaults setBool:YES forKey:key];
-  } else {
-    [defaults setBool:NO forKey:key];
-  }
-}
-
-+ (BOOL) isHideIconInDock
-{
-  // Default value is NO.
-  return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideIconInDock"];
-}
-
 + (BOOL) isSettingEnabled:(NSInteger)fingers
 {
-  return [[[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", fingers]] isEqualToString:@"YES"];
+  return [[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", fingers]];
 }
 
 + (NSString*) getSettingName:(NSInteger)fingers
@@ -133,38 +109,17 @@ NSDictionary* defaults_dictionary = nil;
 
 - (IBAction) set:(id)sender
 {
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  NSMutableArray* oldsetting = [[NSMutableArray new] autorelease];
-
   // ------------------------------------------------------------
-  // backup old setting
-  if ([PreferencesController isSettingEnabled:1]) [oldsetting addObject:[PreferencesController getSettingName:1]];
-  if ([PreferencesController isSettingEnabled:2]) [oldsetting addObject:[PreferencesController getSettingName:2]];
-  if ([PreferencesController isSettingEnabled:3]) [oldsetting addObject:[PreferencesController getSettingName:3]];
-
-  // ------------------------------------------------------------
-  // restore default value if setting is empty.
-  if ([[targetSetting1_ stringValue] length] == 0) {
-    [targetSetting1_ setStringValue:[defaults_dictionary objectForKey:@"targetSetting1"]];
-  }
-  if ([[targetSetting2_ stringValue] length] == 0) {
-    [targetSetting2_ setStringValue:[defaults_dictionary objectForKey:@"targetSetting2"]];
-  }
-  if ([[targetSetting3_ stringValue] length] == 0) {
-    [targetSetting3_ setStringValue:[defaults_dictionary objectForKey:@"targetSetting3"]];
-  }
-
-  // ------------------------------------------------------------
-  [defaults setObject:([targetSettingIsEnabled1_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled1"];
-  [defaults setObject:([targetSettingIsEnabled2_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled2"];
-  [defaults setObject:([targetSettingIsEnabled3_ state] == NSOnState ? @"YES":@"NO") forKey:@"targetSettingIsEnabled3"];
-  [defaults setObject:[targetSetting1_ stringValue] forKey:@"targetSetting1"];
-  [defaults setObject:[targetSetting2_ stringValue] forKey:@"targetSetting2"];
-  [defaults setObject:[targetSetting3_ stringValue] forKey:@"targetSetting3"];
-
-  // ------------------------------------------------------------
-  for (NSString* name in oldsetting) {
+  // disable old settings
+  for (NSString* name in oldSettings_) {
     [[client_ proxy] setValueForName:0 forName:name];
+  }
+
+  [oldSettings_ removeAllObjects];
+  for (int i = 1; i <= 4; ++i) {
+    if ([PreferencesController isSettingEnabled:i]) {
+      [oldSettings_ addObject:[PreferencesController getSettingName:i]];
+    }
   }
 }
 
