@@ -7,7 +7,7 @@
 #import "WorkSpaceData.h"
 #include "bridge.h"
 
-@interface KeyRemap4MacBook_serverAppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
 
   // for IONotification
