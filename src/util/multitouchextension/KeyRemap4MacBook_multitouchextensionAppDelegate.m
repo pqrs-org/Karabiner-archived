@@ -310,6 +310,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // sleep until devices are settled.
   [NSThread sleepForTimeInterval:1.0];
 
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relaunchAfterWakeUpFromSleep"]) {
+    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+    [NSApp terminate:self];
+  }
+
   [self setcallback:YES];
 }
 
