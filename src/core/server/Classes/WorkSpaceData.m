@@ -1,7 +1,6 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "WorkSpaceData.h"
-#import "XMLCompiler.h"
 
 @implementation WorkSpaceData
 
@@ -38,12 +37,11 @@
   return nil;
 }
 
-+ (unsigned int) getApplicationType:(NSString*)name
+- (unsigned int) getApplicationType:(NSString*)name
 {
   if (! name) return 0;
 
-  XMLCompiler* xml_compiler = [XMLCompiler getInstance];
-  return [xml_compiler appid:name];
+  return [xmlCompiler_ appid:name];
 }
 
 @end

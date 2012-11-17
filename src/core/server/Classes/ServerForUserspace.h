@@ -1,6 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 #import <Cocoa/Cocoa.h>
 #import "PreferencesManager.h"
+#import "UserClient_userspace.h"
 #import "XMLCompiler.h"
 
 @interface ServerForUserspace : NSObject {
@@ -8,6 +9,7 @@
 
   IBOutlet XMLCompiler* xmlCompiler_;
   IBOutlet PreferencesManager* preferencesManager_;
+  IBOutlet UserClient_userspace* userClient_userspace_;
 }
 
 - (int) value:(NSString*)name;

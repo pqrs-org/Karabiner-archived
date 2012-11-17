@@ -3,19 +3,7 @@
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #include <sys/time.h>
 
-static PreferencesManager* global_instance = nil;
-
 @implementation PreferencesManager
-
-+ (PreferencesManager*) getInstance
-{
-  @synchronized(self) {
-    if (! global_instance) {
-      global_instance = [PreferencesManager new];
-    }
-  }
-  return global_instance;
-}
 
 // ----------------------------------------
 - (void) addToDefault:(NSXMLElement*)element

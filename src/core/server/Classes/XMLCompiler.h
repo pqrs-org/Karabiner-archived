@@ -1,4 +1,5 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+
 #import <Cocoa/Cocoa.h>
 #include "pqrs/xml_compiler_bindings_clang.h"
 
@@ -10,7 +11,6 @@
   NSMutableArray* preferencepane_number_;
 }
 
-+ (XMLCompiler*) getInstance;
 + (NSString*) get_private_xml_path;
 
 - (void) reload;

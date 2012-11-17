@@ -1,23 +1,14 @@
-//
-//  KeyRemap4MacBook_serverAppDelegate.m
-//  KeyRemap4MacBook_server
-//
-//  Created by Takayama Fumihiko on 09/11/01.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
-
 #import <Carbon/Carbon.h>
 #import "KeyRemap4MacBook_serverAppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "StatusWindow.h"
-#import "UserClient_userspace.h"
-#import "XMLCompiler.h"
 #include <stdlib.h>
 
 @implementation KeyRemap4MacBook_serverAppDelegate
 
 @synthesize window;
+@synthesize userClient_userspace;
 
 // ----------------------------------------
 - (void) statusBarItemSelected:(id)sender {
@@ -32,7 +23,7 @@
   bridgestruct.data   = (uintptr_t)(&bridgeworkspacedata_);
   bridgestruct.size   = sizeof(bridgeworkspacedata_);
 
-  [UserClient_userspace synchronized_communication:&bridgestruct];
+  [userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
@@ -41,7 +32,7 @@
   if (name) {
     // We ignore our investigation application.
     if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) {
-      bridgeworkspacedata_.applicationtype = [WorkSpaceData getApplicationType:name];
+      bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
       [self send_workspacedata_to_kext];
 
       NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
@@ -69,9 +60,9 @@
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
-    [WorkSpaceData getInputSourceID:inputSource
-                 output_inputSource:(&(bridgeworkspacedata_.inputsource))
-           output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
+    [workSpaceData_ getInputSourceID:inputSource
+                  output_inputSource:(&(bridgeworkspacedata_.inputsource))
+            output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
     [self send_workspacedata_to_kext];
 
     NSMutableDictionary* userInfo = [[NSMutableDictionary new] autorelease];
@@ -91,8 +82,8 @@
 
 // ------------------------------------------------------------
 - (void) send_remapclasses_initialize_vector_to_kext {
-  const uint32_t* p = [[XMLCompiler getInstance] remapclasses_initialize_vector_data];
-  size_t size = [[XMLCompiler getInstance] remapclasses_initialize_vector_size] * sizeof(uint32_t);
+  const uint32_t* p = [xmlCompiler_ remapclasses_initialize_vector_data];
+  size_t size = [xmlCompiler_ remapclasses_initialize_vector_size] * sizeof(uint32_t);
 
   // --------------------
   struct BridgeUserClientStruct bridgestruct;
@@ -101,14 +92,11 @@
   bridgestruct.data   = (uintptr_t)(p);
   bridgestruct.size   = size;
 
-  [UserClient_userspace synchronized_communication:&bridgestruct];
+  [userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void) send_config_to_kext {
-  PreferencesManager* preferencesmanager = [PreferencesManager getInstance];
-  XMLCompiler*        xml_compiler       = [XMLCompiler        getInstance];
-
-  NSArray* essential_config = [preferencesmanager essential_config];
+  NSArray* essential_config = [preferencesManager_ essential_config];
   if (! essential_config) {
     NSLog(@"[WARNING] essential_config == nil.");
     return;
@@ -116,7 +104,7 @@
 
   // ------------------------------------------------------------
   NSUInteger essential_config_count = [essential_config count];
-  NSUInteger remapclasses_count     = [xml_compiler remapclasses_initialize_vector_config_count];
+  NSUInteger remapclasses_count     = [xmlCompiler_ remapclasses_initialize_vector_config_count];
   size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
   int32_t* data = (int32_t*)(malloc(size));
   if (! data) {
@@ -135,12 +123,12 @@
     // --------------------
     // remapclasses config
     for (NSUInteger i = 0; i < remapclasses_count; ++i) {
-      NSString* name = [xml_compiler identifier:(int)(i)];
+      NSString* name = [xmlCompiler_ identifier:(int)(i)];
       if (! name) {
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
       } else {
-        *p++ = [preferencesmanager value:name];
+        *p++ = [preferencesManager_ value:name];
       }
     }
 
@@ -151,7 +139,7 @@
     bridgestruct.data   = (uintptr_t)(data);
     bridgestruct.size   = size;
 
-    [UserClient_userspace synchronized_communication:&bridgestruct];
+    [userClient_userspace synchronized_communication:&bridgestruct];
 
     free(data);
   }
@@ -187,8 +175,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // when NSWorkspaceSessionDidBecomeActiveNotification.
   // So, we retry the connection some times.
   for (int retrycount = 0; retrycount < 10; ++retrycount) {
-    [UserClient_userspace refresh_connection];
-    if ([UserClient_userspace connected]) break;
+    [[self userClient_userspace] refresh_connection];
+    if ([[self userClient_userspace] connected]) break;
 
     [NSThread sleepForTimeInterval:0.5];
   }
@@ -274,7 +262,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 {
   NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
 
-  [[StatusWindow getInstance] resetStatusMessage];
+  [statusWindow_ resetStatusMessage];
 
   [self registerIONotification];
 }
@@ -283,16 +271,16 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 {
   NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
 
-  [[StatusWindow getInstance] resetStatusMessage];
+  [statusWindow_ resetStatusMessage];
 
   [self unregisterIONotification];
-  [UserClient_userspace disconnect_from_kext];
+  [userClient_userspace disconnect_from_kext];
 }
 
 // ------------------------------------------------------------
 - (NSString*) getFeedURL
 {
-  NSInteger checkupdate = [[PreferencesManager getInstance] checkForUpdatesMode];
+  NSInteger checkupdate = [preferencesManager_ checkForUpdatesMode];
 
   // ----------------------------------------
   // check nothing.
@@ -343,7 +331,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
-  [[StatusWindow getInstance] resetStatusMessage];
+  [statusWindow_ resetStatusMessage];
 
   [statusbar_ refresh];
 

@@ -3,8 +3,6 @@
 #import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
-static XMLCompiler* global_instance = nil;
-
 @implementation XMLCompiler
 
 // ------------------------------------------------------------
@@ -136,16 +134,6 @@ static XMLCompiler* global_instance = nil;
 }
 
 // ------------------------------------------------------------
-+ (XMLCompiler*) getInstance
-{
-  @synchronized(self) {
-    if (! global_instance) {
-      global_instance = [XMLCompiler new];
-    }
-  }
-  return global_instance;
-}
-
 + (void) prepare_private_xml
 {
   [XMLCompiler get_private_xml_path];

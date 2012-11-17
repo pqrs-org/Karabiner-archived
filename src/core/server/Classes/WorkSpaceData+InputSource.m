@@ -1,5 +1,4 @@
 #import "WorkSpaceData.h"
-#import "XMLCompiler.h"
 #import "InputSource.h"
 
 static NSMutableArray* enabledInputSources_ = nil;
@@ -88,10 +87,8 @@ static NSMutableArray* enabledInputSources_ = nil;
 }
 
 // ----------------------------------------------------------------------
-+ (void) selectInputSource:(unsigned int)vk_keycode
+- (void) selectInputSource:(unsigned int)vk_keycode
 {
-  XMLCompiler* xml_compiler = [XMLCompiler getInstance];
-
   // ----------------------------------------------------------------------
   // Note for languagecode
   // TISCopyInputSourceForLanguage returns unselectable InputSource.
@@ -125,7 +122,7 @@ static NSMutableArray* enabledInputSources_ = nil;
   InputSource* matched = nil;
   @synchronized(self) {
     for (InputSource* inputSource in enabledInputSources_) {
-      if ([xml_compiler is_vk_change_inputsource_matched:vk_keycode
+      if ([xmlCompiler_ is_vk_change_inputsource_matched:vk_keycode
                                             languagecode:inputSource.languagecode
                                            inputSourceID:inputSource.inputSourceID
                                              inputModeID:inputSource.inputModeID]) {
@@ -139,15 +136,14 @@ static NSMutableArray* enabledInputSources_ = nil;
   }
 }
 
-+ (void) getInputSourceID:(InputSource*)inputSource
+- (void) getInputSourceID:(InputSource*)inputSource
  output_inputSource:(uint32_t*)output_inputSource
  output_inputSourceDetail:(uint32_t*)output_inputSourceDetail
 {
   if (output_inputSource)       { *output_inputSource = 0; }
   if (output_inputSourceDetail) { *output_inputSourceDetail = 0; }
 
-  XMLCompiler* xml_compiler = [XMLCompiler getInstance];
-  [xml_compiler inputsourceid:output_inputSource
+  [xmlCompiler_ inputsourceid:output_inputSource
             inputSourceDetail:output_inputSourceDetail
                  languagecode:inputSource.languagecode
                 inputSourceID:inputSource.inputSourceID
