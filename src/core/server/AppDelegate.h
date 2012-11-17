@@ -1,9 +1,10 @@
 // -*- Mode: objc -*-
 
 #import <Cocoa/Cocoa.h>
+#import "ClientForKernelspace.h"
 #import "StatusBar.h"
+#import "StatusWindow.h"
 #import "Updater.h"
-#import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
 #include "bridge.h"
 
@@ -20,12 +21,12 @@
   IBOutlet StatusBar* statusbar_;
   IBOutlet StatusWindow* statusWindow_;
   IBOutlet Updater* updater_;
-  IBOutlet UserClient_userspace* userClient_userspace;
+  IBOutlet ClientForKernelspace* clientForKernelspace;
   IBOutlet WorkSpaceData* workSpaceData_;
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
 @property (assign) IBOutlet NSWindow* window;
-@property (assign) UserClient_userspace* userClient_userspace;
+@property (assign) ClientForKernelspace* clientForKernelspace;
 
 @end

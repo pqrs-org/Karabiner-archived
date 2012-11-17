@@ -8,24 +8,15 @@
 @implementation AppDelegate
 
 @synthesize window;
-@synthesize userClient_userspace;
+@synthesize clientForKernelspace;
 
 // ----------------------------------------
-- (void) statusBarItemSelected:(id)sender {
-  [statusbar_ statusBarItemSelected:sender];
+- (void) send_workspacedata_to_kext
+{
+  [clientForKernelspace send_workspacedata_to_kext:&bridgeworkspacedata_];
 }
 
 // ------------------------------------------------------------
-- (void) send_workspacedata_to_kext {
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
-  bridgestruct.option = 0;
-  bridgestruct.data   = (uintptr_t)(&bridgeworkspacedata_);
-  bridgestruct.size   = sizeof(bridgeworkspacedata_);
-
-  [userClient_userspace synchronized_communication:&bridgestruct];
-}
-
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
   NSString* name = [WorkSpaceData getActiveApplicationName];
@@ -81,71 +72,6 @@
 }
 
 // ------------------------------------------------------------
-- (void) send_remapclasses_initialize_vector_to_kext {
-  const uint32_t* p = [xmlCompiler_ remapclasses_initialize_vector_data];
-  size_t size = [xmlCompiler_ remapclasses_initialize_vector_size] * sizeof(uint32_t);
-
-  // --------------------
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
-  bridgestruct.option = 0;
-  bridgestruct.data   = (uintptr_t)(p);
-  bridgestruct.size   = size;
-
-  [userClient_userspace synchronized_communication:&bridgestruct];
-}
-
-- (void) send_config_to_kext {
-  NSArray* essential_config = [preferencesManager_ essential_config];
-  if (! essential_config) {
-    NSLog(@"[WARNING] essential_config == nil.");
-    return;
-  }
-
-  // ------------------------------------------------------------
-  NSUInteger essential_config_count = [essential_config count];
-  NSUInteger remapclasses_count     = [xmlCompiler_ remapclasses_initialize_vector_config_count];
-  size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
-  int32_t* data = (int32_t*)(malloc(size));
-  if (! data) {
-    NSLog(@"[WARNING] malloc failed.");
-    return;
-
-  } else {
-    int32_t* p = data;
-
-    // --------------------
-    // essential_config
-    for (NSNumber* number in essential_config) {
-      *p++ = [number intValue];
-    }
-
-    // --------------------
-    // remapclasses config
-    for (NSUInteger i = 0; i < remapclasses_count; ++i) {
-      NSString* name = [xmlCompiler_ identifier:(int)(i)];
-      if (! name) {
-        NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
-        *p++ = 0;
-      } else {
-        *p++ = [preferencesManager_ value:name];
-      }
-    }
-
-    // --------------------
-    struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG;
-    bridgestruct.option = 0;
-    bridgestruct.data   = (uintptr_t)(data);
-    bridgestruct.size   = size;
-
-    [userClient_userspace synchronized_communication:&bridgestruct];
-
-    free(data);
-  }
-}
-
-// ------------------------------------------------------------
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   NSLog(@"observer_IONotification");
 
@@ -174,15 +100,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // [UserClient_userspace refresh_connection] may fail by kIOReturnExclusiveAccess
   // when NSWorkspaceSessionDidBecomeActiveNotification.
   // So, we retry the connection some times.
-  for (int retrycount = 0; retrycount < 10; ++retrycount) {
-    [[self userClient_userspace] refresh_connection];
-    if ([[self userClient_userspace] connected]) break;
+  [[self clientForKernelspace] refresh_connection_with_retry];
 
-    [NSThread sleepForTimeInterval:0.5];
-  }
-
-  [self send_remapclasses_initialize_vector_to_kext];
-  [self send_config_to_kext];
+  [[self clientForKernelspace] send_remapclasses_initialize_vector_to_kext];
+  [[self clientForKernelspace] send_config_to_kext];
   [self send_workspacedata_to_kext];
 }
 
@@ -237,8 +158,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // Therefore, we need to make own NSAutoreleasePool.
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-    [self send_remapclasses_initialize_vector_to_kext];
-    [self send_config_to_kext];
+    [clientForKernelspace send_remapclasses_initialize_vector_to_kext];
+    [clientForKernelspace send_config_to_kext];
   }
   [pool drain];
 }
@@ -252,7 +173,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // Therefore, we need to make own NSAutoreleasePool.
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-    [self send_config_to_kext];
+    [clientForKernelspace send_config_to_kext];
   }
   [pool drain];
 }
@@ -274,7 +195,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [statusWindow_ resetStatusMessage];
 
   [self unregisterIONotification];
-  [userClient_userspace disconnect_from_kext];
+  [clientForKernelspace disconnect_from_kext];
 }
 
 // ------------------------------------------------------------
