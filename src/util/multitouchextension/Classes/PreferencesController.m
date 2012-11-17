@@ -13,6 +13,9 @@ NSDictionary* defaults_dictionary = nil;
                          [NSNumber numberWithBool:NO],
                          @"hideIconInDock",
 
+                         [NSNumber numberWithBool:NO],
+                         @"relaunchAfterWakeUpFromSleep",
+
                          [NSNumber numberWithBool:YES],
                          @"targetSettingIsEnabled1",
 
