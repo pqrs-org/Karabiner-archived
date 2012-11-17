@@ -1,15 +1,17 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 #import <Cocoa/Cocoa.h>
 #import "PreferencesManager.h"
+#import "Updater.h"
 #import "UserClient_userspace.h"
 #import "XMLCompiler.h"
 
 @interface ServerForUserspace : NSObject {
   NSConnection* connection_;
 
-  IBOutlet XMLCompiler* xmlCompiler_;
   IBOutlet PreferencesManager* preferencesManager_;
+  IBOutlet Updater* updater_;
   IBOutlet UserClient_userspace* userClient_userspace_;
+  IBOutlet XMLCompiler* xmlCompiler_;
 }
 
 - (int) value:(NSString*)name;
@@ -50,6 +52,8 @@
 - (NSString*) preferencepane_error_message;
 - (NSString*) preferencepane_get_private_xml_path;
 - (NSString*) preferencepane_version;
+
+- (void) checkForUpdates;
 
 - (NSArray*) device_information:(NSInteger)type;
 

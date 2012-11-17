@@ -40,6 +40,8 @@
 - (NSString*) preferencepane_get_private_xml_path;
 - (NSString*) preferencepane_version;
 
+- (void) checkForUpdates;
+
 - (NSArray*) device_information:(NSInteger)type;
 
 @end

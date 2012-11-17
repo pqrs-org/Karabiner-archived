@@ -205,6 +205,11 @@
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
+- (void) checkForUpdates
+{
+  [updater_ checkForUpdates:nil];
+}
+
 - (NSArray*) device_information:(NSInteger)type
 {
   NSMutableArray* information = [[NSMutableArray new] autorelease];
