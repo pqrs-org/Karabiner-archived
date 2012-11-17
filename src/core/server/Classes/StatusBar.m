@@ -6,6 +6,30 @@
 
 @implementation StatusBar
 
+- (void) observer_ConfigListChanged:(NSNotification*)notification {
+  [self refresh];
+}
+
+- (id) init
+{
+  self = [super init];
+
+  if (self) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_ConfigListChanged:)
+                                                 name:@"ConfigListChanged" object:nil];
+  }
+
+  return self;
+}
+
+- (void) dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+  [super dealloc];
+}
+
 - (void) refresh
 {
   if (! [preferencesManager_ isStatusbarEnable]) {

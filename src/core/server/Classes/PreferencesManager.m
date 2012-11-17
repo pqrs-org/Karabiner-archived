@@ -1,3 +1,4 @@
+#import "ClientForKernelspace.h"
 #import "PreferencesManager.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
@@ -158,6 +159,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   // [[NSUserDefaults standardUserDefaults] synchronize];
 
+  [clientForKernelspace_ preferencesChanged];
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification userInfo:nil];
 }
 
@@ -248,6 +250,7 @@
 
   [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
 
+  [clientForKernelspace_ preferencesChanged];
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification userInfo:nil];
 }
 

@@ -102,8 +102,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // So, we retry the connection some times.
   [[self clientForKernelspace] refresh_connection_with_retry];
 
-  [[self clientForKernelspace] send_remapclasses_initialize_vector_to_kext];
-  [[self clientForKernelspace] send_config_to_kext];
+  [[self clientForKernelspace] configXMLReloaded];
   [self send_workspacedata_to_kext];
 }
 
@@ -150,32 +149,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     return;
   }
   CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
-}
-
-// ------------------------------------------------------------
-- (void) distributedObserver_ConfigXMLReloaded:(NSNotification*)notification {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [clientForKernelspace send_remapclasses_initialize_vector_to_kext];
-    [clientForKernelspace send_config_to_kext];
-  }
-  [pool drain];
-}
-
-- (void) observer_ConfigListChanged:(NSNotification*)notification {
-  [statusbar_ refresh];
-}
-
-- (void) distributedObserver_PreferencesChanged:(NSNotification*)notification {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [clientForKernelspace send_config_to_kext];
-  }
-  [pool drain];
 }
 
 // ------------------------------------------------------------
@@ -232,17 +205,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                          selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
                                                              name:NSWorkspaceSessionDidResignActiveNotification
                                                            object:nil];
-
-  // ------------------------------
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observer_ConfigListChanged:) name:@"ConfigListChanged" object:nil];
-
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(distributedObserver_ConfigXMLReloaded:)
-                                                                    name:kKeyRemap4MacBookConfigXMLReloadedNotification];
-
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(distributedObserver_PreferencesChanged:)
-                                                                    name:kKeyRemap4MacBookPreferencesChangedNotification];
 
   // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
