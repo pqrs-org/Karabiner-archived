@@ -13,7 +13,7 @@ NSDictionary* defaults_dictionary = nil;
                          [NSNumber numberWithBool:NO],
                          @"hideIconInDock",
 
-                         [NSNumber numberWithBool:NO],
+                         [NSNumber numberWithBool:YES],
                          @"relaunchAfterWakeUpFromSleep",
 
                          [NSNumber numberWithBool:YES],
