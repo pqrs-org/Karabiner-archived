@@ -1,24 +1,12 @@
 #import "StatusWindow.h"
 #include "bridge.h"
 
-static StatusWindow* global_instance = nil;
-
 @implementation StatusWindow
 
 NSString* notificationName_extra                = @"Extra Message";
 NSString* notificationName_modifier_lock        = @"Locked Modifier Keys";
 NSString* notificationName_modifier_sticky      = @"Sticky Modifier Keys";
 NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
-
-+ (StatusWindow*) getInstance
-{
-  @synchronized(self) {
-    if (! global_instance) {
-      global_instance = [StatusWindow new];
-    }
-  }
-  return global_instance;
-}
 
 // ------------------------------------------------------------
 - (id) init
@@ -91,7 +79,7 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
 
   NSString* message3 = @"(Activate \"General > Suppress Growl warning\" in System Preference to hide this message.)";
 
-  if ([[PreferencesManager getInstance] value:@"general.suppress_growl_warning"]) return YES;
+  if ([preferencesManager_ value:@"general.suppress_growl_warning"]) return YES;
 
   @synchronized(self) {
     if (! isGrowlNotRunningWarningDisplayed_) {

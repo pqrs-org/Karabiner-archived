@@ -8,7 +8,7 @@
 
 - (void) refresh
 {
-  if (! [[PreferencesManager getInstance] isStatusbarEnable]) {
+  if (! [preferencesManager_ isStatusbarEnable]) {
     if (statusItem_) {
       [[NSStatusBar systemStatusBar] removeStatusItem:statusItem_];
       [statusItem_ release];
@@ -30,12 +30,12 @@
     }
 
     // setTitle
-    if (! [[PreferencesManager getInstance] isShowSettingNameInStatusBar]) {
+    if (! [preferencesManager_ isShowSettingNameInStatusBar]) {
       [statusItem_ setTitle:@""];
       [statusItem_ setLength:24];
 
     } else {
-      NSString* title = [[PreferencesManager getInstance] configlist_selectedName];
+      NSString* title = [preferencesManager_ configlist_selectedName];
       if (title) {
         NSAttributedString* attributedtitle = [[[NSAttributedString alloc] initWithString:title attributes:nil] autorelease];
         [statusItem_ setAttributedTitle:attributedtitle];
@@ -48,7 +48,7 @@
 - (void) statusBarItemSelected:(id)sender
 {
   NSNumber* idx = [sender representedObject];
-  [[PreferencesManager getInstance] configlist_select:[idx intValue]];
+  [preferencesManager_ configlist_select:[idx intValue]];
   [self refresh];
 }
 
@@ -65,9 +65,9 @@
 
   // --------------------
   // append
-  NSArray* list = [[PreferencesManager getInstance] configlist_getConfigList];
+  NSArray* list = [preferencesManager_ configlist_getConfigList];
   int i = 0;
-  NSInteger selectedIndex = [[PreferencesManager getInstance] configlist_selectedIndex];
+  NSInteger selectedIndex = [preferencesManager_ configlist_selectedIndex];
   for (NSDictionary* dict in list) {
     if (! dict) continue;
 

@@ -6,8 +6,6 @@
   NSArray* essential_configuration_identifiers_;
 }
 
-+ (PreferencesManager*) getInstance;
-
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;

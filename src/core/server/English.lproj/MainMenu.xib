@@ -116,14 +116,23 @@
 			<object class="NSCustomObject" id="209217491">
 				<string key="NSClassName">SUUpdater</string>
 			</object>
-			<object class="NSCustomObject" id="984840788">
+			<object class="NSCustomObject" id="369574608">
 				<string key="NSClassName">XMLCompiler</string>
 			</object>
-			<object class="NSCustomObject" id="425178694">
+			<object class="NSCustomObject" id="821432513">
 				<string key="NSClassName">PreferencesManager</string>
 			</object>
-			<object class="NSCustomObject" id="245947887">
+			<object class="NSCustomObject" id="882194352">
 				<string key="NSClassName">ServerForUserspace</string>
+			</object>
+			<object class="NSCustomObject" id="523684072">
+				<string key="NSClassName">WorkSpaceData</string>
+			</object>
+			<object class="NSCustomObject" id="121596189">
+				<string key="NSClassName">UserClient_userspace</string>
+			</object>
+			<object class="NSCustomObject" id="917936302">
+				<string key="NSClassName">StatusWindow</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -163,6 +172,46 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">workSpaceData_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="523684072"/>
+					</object>
+					<int key="connectionID">598</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">xmlCompiler_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="369574608"/>
+					</object>
+					<int key="connectionID">599</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">userClient_userspace</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="121596189"/>
+					</object>
+					<int key="connectionID">605</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusWindow_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="917936302"/>
+					</object>
+					<int key="connectionID">607</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">preferencesManager_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="821432513"/>
+					</object>
+					<int key="connectionID">608</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">menu_</string>
 						<reference key="source" ref="882968974"/>
 						<reference key="destination" ref="269225066"/>
@@ -195,6 +244,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">preferencesManager_</string>
+						<reference key="source" ref="882968974"/>
+						<reference key="destination" ref="821432513"/>
+					</object>
+					<int key="connectionID">611</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="269225066"/>
 						<reference key="destination" ref="882968974"/>
@@ -204,18 +261,58 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
-						<reference key="source" ref="245947887"/>
-						<reference key="destination" ref="425178694"/>
+						<reference key="source" ref="882194352"/>
+						<reference key="destination" ref="821432513"/>
 					</object>
 					<int key="connectionID">594</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">xmlCompiler_</string>
-						<reference key="source" ref="245947887"/>
-						<reference key="destination" ref="984840788"/>
+						<reference key="source" ref="882194352"/>
+						<reference key="destination" ref="369574608"/>
 					</object>
 					<int key="connectionID">595</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">userClient_userspace_</string>
+						<reference key="source" ref="882194352"/>
+						<reference key="destination" ref="121596189"/>
+					</object>
+					<int key="connectionID">601</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">xmlCompiler_</string>
+						<reference key="source" ref="523684072"/>
+						<reference key="destination" ref="369574608"/>
+					</object>
+					<int key="connectionID">597</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workSpaceData</string>
+						<reference key="source" ref="121596189"/>
+						<reference key="destination" ref="523684072"/>
+					</object>
+					<int key="connectionID">604</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusWindow</string>
+						<reference key="source" ref="121596189"/>
+						<reference key="destination" ref="917936302"/>
+					</object>
+					<int key="connectionID">609</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">preferencesManager_</string>
+						<reference key="source" ref="917936302"/>
+						<reference key="destination" ref="821432513"/>
+					</object>
+					<int key="connectionID">610</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -318,17 +415,32 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">591</int>
-						<reference key="object" ref="984840788"/>
+						<reference key="object" ref="369574608"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">592</int>
-						<reference key="object" ref="425178694"/>
+						<reference key="object" ref="821432513"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">593</int>
-						<reference key="object" ref="245947887"/>
+						<reference key="object" ref="882194352"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">596</int>
+						<reference key="object" ref="523684072"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">600</int>
+						<reference key="object" ref="121596189"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">606</int>
+						<reference key="object" ref="917936302"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -356,6 +468,9 @@
 					<string>591.IBPluginDependency</string>
 					<string>592.IBPluginDependency</string>
 					<string>593.IBPluginDependency</string>
+					<string>596.IBPluginDependency</string>
+					<string>600.IBPluginDependency</string>
+					<string>606.IBPluginDependency</string>
 				</object>
 				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -365,6 +480,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{449, 352}, {552, 168}}</string>
 					<boolean value="NO"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -392,7 +510,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">595</int>
+			<int key="maxID">611</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -404,27 +522,50 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>preferencesManager_</string>
+							<string>statusWindow_</string>
 							<string>statusbar_</string>
 							<string>suupdater_</string>
+							<string>userClient_userspace</string>
 							<string>window</string>
+							<string>workSpaceData_</string>
+							<string>xmlCompiler_</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>PreferencesManager</string>
+							<string>StatusWindow</string>
 							<string>StatusBar</string>
 							<string>SUUpdater</string>
+							<string>UserClient_userspace</string>
 							<string>NSWindow</string>
+							<string>WorkSpaceData</string>
+							<string>XMLCompiler</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>preferencesManager_</string>
+							<string>statusWindow_</string>
 							<string>statusbar_</string>
 							<string>suupdater_</string>
+							<string>userClient_userspace</string>
 							<string>window</string>
+							<string>workSpaceData_</string>
+							<string>xmlCompiler_</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">preferencesManager_</string>
+								<string key="candidateClassName">PreferencesManager</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">statusWindow_</string>
+								<string key="candidateClassName">StatusWindow</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">statusbar_</string>
 								<string key="candidateClassName">StatusBar</string>
@@ -434,8 +575,20 @@
 								<string key="candidateClassName">SUUpdater</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">userClient_userspace</string>
+								<string key="candidateClassName">UserClient_userspace</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>
 								<string key="candidateClassName">NSWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">workSpaceData_</string>
+								<string key="candidateClassName">WorkSpaceData</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">xmlCompiler_</string>
+								<string key="candidateClassName">XMLCompiler</string>
 							</object>
 						</object>
 					</object>
@@ -490,11 +643,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>preferencesManager_</string>
+							<string>userClient_userspace_</string>
 							<string>xmlCompiler_</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>PreferencesManager</string>
+							<string>UserClient_userspace</string>
 							<string>XMLCompiler</string>
 						</object>
 					</object>
@@ -503,6 +658,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>preferencesManager_</string>
+							<string>userClient_userspace_</string>
 							<string>xmlCompiler_</string>
 						</object>
 						<object class="NSArray" key="dict.values">
@@ -510,6 +666,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">preferencesManager_</string>
 								<string key="candidateClassName">PreferencesManager</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">userClient_userspace_</string>
+								<string key="candidateClassName">UserClient_userspace</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">xmlCompiler_</string>
@@ -565,19 +725,118 @@
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">menu_</string>
-						<string key="NS.object.0">NSMenu</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>menu_</string>
+							<string>preferencesManager_</string>
+						</object>
+						<object class="NSArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSMenu</string>
+							<string>PreferencesManager</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">menu_</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">menu_</string>
-							<string key="candidateClassName">NSMenu</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>menu_</string>
+							<string>preferencesManager_</string>
+						</object>
+						<object class="NSArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">menu_</string>
+								<string key="candidateClassName">NSMenu</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">preferencesManager_</string>
+								<string key="candidateClassName">PreferencesManager</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/StatusBar.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">StatusWindow</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">preferencesManager_</string>
+						<string key="NS.object.0">PreferencesManager</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">preferencesManager_</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">preferencesManager_</string>
+							<string key="candidateClassName">PreferencesManager</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/StatusWindow.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UserClient_userspace</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>statusWindow</string>
+							<string>workSpaceData</string>
+						</object>
+						<object class="NSArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>StatusWindow</string>
+							<string>WorkSpaceData</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>statusWindow</string>
+							<string>workSpaceData</string>
+						</object>
+						<object class="NSArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">statusWindow</string>
+								<string key="candidateClassName">StatusWindow</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">workSpaceData</string>
+								<string key="candidateClassName">WorkSpaceData</string>
+							</object>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/UserClient_userspace.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">WorkSpaceData</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">xmlCompiler_</string>
+						<string key="NS.object.0">XMLCompiler</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">xmlCompiler_</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">xmlCompiler_</string>
+							<string key="candidateClassName">XMLCompiler</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/WorkSpaceData.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

@@ -1,16 +1,17 @@
 #import "UserClient_userspace.h"
-#import "StatusWindow.h"
 #import "WorkSpaceData.h"
 #include "bridge.h"
-
-static UserClient_userspace* global_instance = nil;
 
 @implementation UserClient_userspace
 
 @synthesize connected;
+@synthesize statusWindow;
+@synthesize workSpaceData;
 
 static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
 {
+  UserClient_userspace* self = (UserClient_userspace*)(refcon);
+
   switch (type) {
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
     {
@@ -22,14 +23,14 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
       bridgestruct.data   = (uintptr_t)(buf);
       bridgestruct.size   = sizeof(buf);
 
-      if (! [UserClient_userspace synchronized_communication:&bridgestruct]) return;
+      if (! [self synchronized_communication:&bridgestruct]) return;
 
-      [[StatusWindow getInstance] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
+      [[self statusWindow] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
       break;
     }
 
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-      [WorkSpaceData selectInputSource:option];
+      [[self workSpaceData] selectInputSource:option];
       break;
   }
 }
@@ -102,7 +103,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     if (notifyport_) {
       io_async_ref64_t asyncRef;
       asyncRef[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(callback_NotificationFromKext);
-      asyncRef[kIOAsyncCalloutRefconIndex] = IO_OBJECT_NULL;
+      asyncRef[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
 
       kernResult = IOConnectCallAsyncScalarMethod(connect_,
                                                   BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT,
@@ -133,6 +134,23 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
     connected = NO;
+  }
+
+  return self;
+}
+
+- (void) dealloc
+{
+  [super dealloc];
+}
+
+// ======================================================================
+- (void) connect_to_kext
+{
+  @synchronized(self) {
+    service_ = IO_OBJECT_NULL;
+    connect_ = IO_OBJECT_NULL;
+    connected = NO;
 
     // ----------------------------------------
     // setup IONotification
@@ -155,45 +173,25 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
       [self closeUserClient];
     }
   }
-
-  return self;
 }
 
-- (void) dealloc
-{
-  [self closeUserClient];
-
-  if (notifyport_) {
-    if (loopsource_) {
-      CFRunLoopSourceInvalidate(loopsource_);
-    }
-    IONotificationPortDestroy(notifyport_);
-  }
-
-  [super dealloc];
-}
-
-// ======================================================================
-+ (void) connect_to_kext
+- (void) disconnect_from_kext
 {
   @synchronized(self) {
-    if (! global_instance) {
-      global_instance = [self new];
+    [self closeUserClient];
+
+    if (notifyport_) {
+      if (loopsource_) {
+        CFRunLoopSourceInvalidate(loopsource_);
+        loopsource_ = nil;
+      }
+      IONotificationPortDestroy(notifyport_);
+      notifyport_ = nil;
     }
   }
 }
 
-+ (void) disconnect_from_kext
-{
-  @synchronized(self) {
-    if (global_instance) {
-      [global_instance release];
-      global_instance = nil;
-    }
-  }
-}
-
-+ (void) refresh_connection
+- (void) refresh_connection
 {
   [self disconnect_from_kext];
   [self connect_to_kext];
@@ -224,22 +222,17 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   return YES;
 }
 
-+ (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
+- (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
 {
   BOOL retval = NO;
 
   @synchronized(self) {
-    if ([global_instance do_synchronized_communication:bridgestruct]) {
+    if ([self do_synchronized_communication:bridgestruct]) {
       retval = YES;
     }
   }
 
   return retval;
-}
-
-+ (BOOL) connected
-{
-  return [global_instance connected];
 }
 
 @end

@@ -1,6 +1,5 @@
 #import "KeyRemap4MacBookKeys.h"
 #import "ServerForUserspace.h"
-#import "UserClient_userspace.h"
 
 @implementation ServerForUserspace
 
@@ -219,7 +218,7 @@
     bridgestruct.data   = (uintptr_t)(&deviceInformation);
     bridgestruct.size   = sizeof(deviceInformation);
 
-    if (! [UserClient_userspace synchronized_communication:&bridgestruct]) break;
+    if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) break;
 
     if (! deviceInformation.isFound) break;
 

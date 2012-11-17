@@ -4,7 +4,9 @@
 
 @interface StatusBar : NSObject {
   NSStatusItem* statusItem_;
+
   IBOutlet NSMenu* menu_;
+  IBOutlet PreferencesManager* preferencesManager_;
 }
 
 - (void) refresh;
