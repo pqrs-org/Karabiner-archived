@@ -5,35 +5,6 @@
 @implementation UserClient_userspace
 
 @synthesize connected;
-@synthesize statusWindow;
-@synthesize workSpaceData;
-
-static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
-{
-  UserClient_userspace* self = (UserClient_userspace*)(refcon);
-
-  switch (type) {
-    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
-    {
-      char buf[512];
-
-      struct BridgeUserClientStruct bridgestruct;
-      bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
-      bridgestruct.option = option;
-      bridgestruct.data   = (uintptr_t)(buf);
-      bridgestruct.size   = sizeof(buf);
-
-      if (! [self synchronized_communication:&bridgestruct]) return;
-
-      [[self statusWindow] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
-      break;
-    }
-
-    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-      [[self workSpaceData] selectInputSource:option];
-      break;
-  }
-}
 
 - (void) closeUserClient
 {
@@ -101,14 +72,10 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     // ----------------------------------------
     // set notification
     if (notifyport_) {
-      io_async_ref64_t asyncRef;
-      asyncRef[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(callback_NotificationFromKext);
-      asyncRef[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
-
       kernResult = IOConnectCallAsyncScalarMethod(connect_,
                                                   BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT,
                                                   IONotificationPortGetMachPort(notifyport_),
-                                                  asyncRef,
+                                                  *asyncref_,
                                                   kOSAsyncRef64Count,
                                                   NULL,                // input
                                                   0,                   // inputCnt
@@ -126,7 +93,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   IOObjectRelease(iterator);
 }
 
-- (id) init
+- (id) init:(io_async_ref64_t*)asyncref;
 {
   self = [super init];
 
@@ -134,6 +101,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
     connected = NO;
+    asyncref_ = asyncref;
   }
 
   return self;
@@ -191,10 +159,16 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   }
 }
 
-- (void) refresh_connection
+- (void) refresh_connection_with_retry:(int)retrycount wait:(NSTimeInterval)wait
 {
-  [self disconnect_from_kext];
-  [self connect_to_kext];
+  for (int i = 0; i < retrycount; ++i) {
+    [self disconnect_from_kext];
+    [self connect_to_kext];
+
+    if (connected) break;
+
+    [NSThread sleepForTimeInterval:wait];
+  }
 }
 
 - (BOOL) do_synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
