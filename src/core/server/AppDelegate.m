@@ -1,11 +1,11 @@
 #import <Carbon/Carbon.h>
-#import "KeyRemap4MacBook_serverAppDelegate.h"
+#import "AppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "StatusWindow.h"
 #include <stdlib.h>
 
-@implementation KeyRemap4MacBook_serverAppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 @synthesize userClient_userspace;
@@ -149,7 +149,7 @@
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   NSLog(@"observer_IONotification");
 
-  KeyRemap4MacBook_serverAppDelegate* self = refcon;
+  AppDelegate* self = refcon;
   if (! self) {
     NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
     return;
