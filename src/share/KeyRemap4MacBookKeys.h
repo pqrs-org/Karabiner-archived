@@ -6,7 +6,6 @@
 #define kKeyRemap4MacBookServerLaunchedNotification     @"serverLaunched"
 #define kKeyRemap4MacBookPreferencesChangedNotification @"preferencesChanged"
 #define kKeyRemap4MacBookConfigXMLReloadedNotification  @"configXMLReloaded"
-#define kKeyRemap4MacBookCheckForUpdatesNotification    @"checkForUpdates"
 
 // for EventViewer.app
 #define kKeyRemap4MacBookApplicationChangedNotification @"applicationChanged"

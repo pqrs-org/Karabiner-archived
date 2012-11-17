@@ -278,58 +278,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
-- (NSString*) getFeedURL
-{
-  NSInteger checkupdate = [preferencesManager_ checkForUpdatesMode];
-
-  // ----------------------------------------
-  // check nothing.
-  if (checkupdate == 0) {
-    return nil;
-  }
-
-  // ----------------------------------------
-  // check beta & stable releases.
-
-  // Once we check appcast.xml, SUFeedURL is stored in a user's preference file.
-  // So that Sparkle gives priority to a preference over Info.plist,
-  // we overwrite SUFeedURL here.
-  if (checkupdate == 2) {
-    return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
-  }
-
-  return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast.xml";
-}
-
-- (void) checkForUpdates:(BOOL)isBackground
-{
-  NSString* url = [self getFeedURL];
-  if (! url) {
-    NSLog(@"skip checkForUpdates");
-    return;
-  }
-  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
-
-  NSLog(@"checkForUpdates %@", url);
-  if (isBackground) {
-    [suupdater_ checkForUpdatesInBackground];
-  } else {
-    [suupdater_ checkForUpdates:nil];
-  }
-}
-
-- (void) distributedObserver_checkForUpdates:(NSNotification*)aNotification
-{
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [self checkForUpdates:NO];
-  }
-  [pool drain];
-}
-
-// ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [statusWindow_ resetStatusMessage];
 
@@ -376,15 +324,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                                     name:kKeyRemap4MacBookPreferencesChangedNotification];
 
   // ------------------------------------------------------------
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(distributedObserver_checkForUpdates:)
-                                                                    name:kKeyRemap4MacBookCheckForUpdatesNotification];
-
-  // ------------------------------------------------------------
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
-  [self checkForUpdates:YES];
+  [updater_ checkForUpdatesInBackground:nil];
 
   // ------------------------------------------------------------
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];

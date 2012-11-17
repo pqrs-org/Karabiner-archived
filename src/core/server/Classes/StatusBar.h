@@ -1,4 +1,5 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
+
 #import <Cocoa/Cocoa.h>
 #import "PreferencesManager.h"
 
@@ -14,6 +15,5 @@
 
 - (IBAction) openPreferencePane:(id)sender;
 - (IBAction) launchEventViewer:(id)sender;
-- (IBAction) checkForUpdates:(id)sender;
 
 @end

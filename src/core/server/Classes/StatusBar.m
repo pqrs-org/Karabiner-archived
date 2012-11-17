@@ -96,9 +96,4 @@
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/EventViewer.app"];
 }
 
-- (IBAction) checkForUpdates:(id)sender
-{
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification userInfo:nil];
-}
-
 @end

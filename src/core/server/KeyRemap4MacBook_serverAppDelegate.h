@@ -1,8 +1,8 @@
 // -*- Mode: objc -*-
 
 #import <Cocoa/Cocoa.h>
-#import "Sparkle/SUUpdater.h"
 #import "StatusBar.h"
+#import "Updater.h"
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
 #include "bridge.h"
@@ -17,9 +17,9 @@
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
   IBOutlet PreferencesManager* preferencesManager_;
-  IBOutlet SUUpdater* suupdater_;
   IBOutlet StatusBar* statusbar_;
   IBOutlet StatusWindow* statusWindow_;
+  IBOutlet Updater* updater_;
   IBOutlet UserClient_userspace* userClient_userspace;
   IBOutlet WorkSpaceData* workSpaceData_;
   IBOutlet XMLCompiler* xmlCompiler_;

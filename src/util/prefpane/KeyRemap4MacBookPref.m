@@ -90,7 +90,7 @@
 
 - (IBAction) checkUpdateNow:(id)sender
 {
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookCheckForUpdatesNotification userInfo:nil];
+  [[client_ proxy] checkForUpdates];
 }
 
 /* ---------------------------------------------------------------------- */
