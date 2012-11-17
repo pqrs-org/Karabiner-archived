@@ -1,12 +1,14 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 #import <Cocoa/Cocoa.h>
+#import "PreferencesManager.h"
+#import "XMLCompiler.h"
 
-@interface PreferencesManager : NSObject {
-  NSMutableDictionary* default_;
-  NSArray* essential_configuration_identifiers_;
+@interface ServerForUserspace : NSObject {
+  NSConnection* connection_;
+
+  IBOutlet XMLCompiler* xmlCompiler_;
+  IBOutlet PreferencesManager* preferencesManager_;
 }
-
-+ (PreferencesManager*) getInstance;
 
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
@@ -36,5 +38,17 @@
 
 - (NSInteger) checkForUpdatesMode;
 - (void) setCheckForUpdatesMode:(NSInteger)newval;
+
+// --------------------------------------------------
+- (void) configxml_reload;
+
+- (NSArray*) preferencepane_checkbox;
+- (NSArray*) preferencepane_number;
+- (int) preferencepane_enabled_count;
+- (NSString*) preferencepane_error_message;
+- (NSString*) preferencepane_get_private_xml_path;
+- (NSString*) preferencepane_version;
+
+- (NSArray*) device_information:(NSInteger)type;
 
 @end

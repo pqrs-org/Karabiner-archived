@@ -1,8 +1,6 @@
 #import "PreferencesManager.h"
-#import "XMLCompiler.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
-#import "UserClient_userspace.h"
 #include <sys/time.h>
 
 static PreferencesManager* global_instance = nil;
@@ -95,19 +93,6 @@ static PreferencesManager* global_instance = nil;
 
       [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
     }
-
-    // ------------------------------------------------------------
-    serverconnection_ = [NSConnection new];
-    [serverconnection_ setRootObject:self];
-    if (! [serverconnection_ registerName:kKeyRemap4MacBookConnectionName]) {
-      // Quit when registerName is failed.
-      // We wait 2 second before quit to avoid consecutive restarting from launchd.
-      NSLog(@"[NSConnection registerName] is failed. Restarting process.");
-      [NSThread sleepForTimeInterval:2];
-      [NSApp terminate: nil];
-    }
-
-    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
   }
 
   return self;
@@ -117,7 +102,6 @@ static PreferencesManager* global_instance = nil;
 {
   [default_ release];
   [essential_configuration_identifiers_ release];
-  [serverconnection_ release];
 
   [super dealloc];
 }
@@ -413,104 +397,6 @@ static PreferencesManager* global_instance = nil;
 {
   [[NSUserDefaults standardUserDefaults] setInteger:newval forKey:@"isCheckUpdate"];
   // [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-// ----------------------------------------------------------------------
-- (void) configxml_reload
-{
-  [[XMLCompiler getInstance] reload];
-}
-
-- (NSArray*) preferencepane_checkbox
-{
-  return [[XMLCompiler getInstance] preferencepane_checkbox];
-}
-
-- (NSArray*) preferencepane_number
-{
-  return [[XMLCompiler getInstance] preferencepane_number];
-}
-
-- (int) enabled_count:(NSArray*)checkbox changed:(NSDictionary*)changed
-{
-  int count = 0;
-
-  if (checkbox) {
-    for (NSDictionary* dict in checkbox) {
-      NSString* identifier = [dict objectForKey:@"identifier"];
-      if (identifier) {
-        if ([[changed objectForKey:identifier] intValue] != 0) {
-          ++count;
-        }
-      }
-
-      count += [self enabled_count:[dict objectForKey:@"children"] changed:changed];
-    }
-  }
-
-  return count;
-}
-
-- (int) preferencepane_enabled_count
-{
-  NSArray* checkbox = [[XMLCompiler getInstance] preferencepane_checkbox];
-  NSDictionary* changed = [self changed];
-  return [self enabled_count:checkbox changed:changed];
-}
-
-- (NSString*) preferencepane_error_message
-{
-  return [[XMLCompiler getInstance] preferencepane_error_message];
-}
-
-- (NSString*) preferencepane_get_private_xml_path
-{
-  return [XMLCompiler get_private_xml_path];
-}
-
-- (NSString*) preferencepane_version
-{
-  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-}
-
-- (NSArray*) device_information:(NSInteger)type
-{
-  NSMutableArray* information = [[NSMutableArray new] autorelease];
-
-  for (size_t i = 0;; ++i) {
-    struct BridgeDeviceInformation deviceInformation;
-
-    struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type   = (uint32_t)(type);
-    bridgestruct.option = i;
-    bridgestruct.data   = (uintptr_t)(&deviceInformation);
-    bridgestruct.size   = sizeof(deviceInformation);
-
-    if (! [UserClient_userspace synchronized_communication:&bridgestruct]) break;
-
-    if (! deviceInformation.isFound) break;
-
-    NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
-                             [NSString stringWithUTF8String:deviceInformation.product], @"product",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
-                             nil];
-
-    // skip if newdict is already exists.
-    BOOL found = NO;
-    for (NSDictionary* d in information) {
-      if ([newdict isEqualToDictionary:d]) {
-        found = YES;
-      }
-    }
-    if (! found) {
-      [information addObject:newdict];
-    }
-  }
-
-  return information;
 }
 
 @end
