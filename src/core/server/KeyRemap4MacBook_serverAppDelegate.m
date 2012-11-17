@@ -397,6 +397,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
   [self checkForUpdates:YES];
+
+  // ------------------------------------------------------------
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
 }
 
 - (void) dealloc
