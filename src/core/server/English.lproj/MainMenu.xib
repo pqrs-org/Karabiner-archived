@@ -116,22 +116,22 @@
 			<object class="NSCustomObject" id="209217491">
 				<string key="NSClassName">Updater</string>
 			</object>
-			<object class="NSCustomObject" id="837184020">
+			<object class="NSCustomObject" id="318979840">
 				<string key="NSClassName">XMLCompiler</string>
 			</object>
-			<object class="NSCustomObject" id="872407505">
+			<object class="NSCustomObject" id="422767925">
 				<string key="NSClassName">PreferencesManager</string>
 			</object>
-			<object class="NSCustomObject" id="442750595">
+			<object class="NSCustomObject" id="26237525">
 				<string key="NSClassName">ServerForUserspace</string>
 			</object>
-			<object class="NSCustomObject" id="5169682">
+			<object class="NSCustomObject" id="12307336">
 				<string key="NSClassName">WorkSpaceData</string>
 			</object>
-			<object class="NSCustomObject" id="930367271">
+			<object class="NSCustomObject" id="1017926276">
 				<string key="NSClassName">ClientForKernelspace</string>
 			</object>
-			<object class="NSCustomObject" id="368148710">
+			<object class="NSCustomObject" id="767014507">
 				<string key="NSClassName">StatusWindow</string>
 			</object>
 		</object>
@@ -166,7 +166,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">workSpaceData_</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="5169682"/>
+						<reference key="destination" ref="12307336"/>
 					</object>
 					<int key="connectionID">598</int>
 				</object>
@@ -174,7 +174,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">xmlCompiler_</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="837184020"/>
+						<reference key="destination" ref="318979840"/>
 					</object>
 					<int key="connectionID">599</int>
 				</object>
@@ -182,7 +182,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusWindow_</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="368148710"/>
+						<reference key="destination" ref="767014507"/>
 					</object>
 					<int key="connectionID">607</int>
 				</object>
@@ -190,7 +190,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="872407505"/>
+						<reference key="destination" ref="422767925"/>
 					</object>
 					<int key="connectionID">608</int>
 				</object>
@@ -206,7 +206,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">clientForKernelspace</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="930367271"/>
+						<reference key="destination" ref="1017926276"/>
 					</object>
 					<int key="connectionID">621</int>
 				</object>
@@ -238,7 +238,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
 						<reference key="source" ref="882968974"/>
-						<reference key="destination" ref="872407505"/>
+						<reference key="destination" ref="422767925"/>
 					</object>
 					<int key="connectionID">611</int>
 				</object>
@@ -254,7 +254,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
 						<reference key="source" ref="209217491"/>
-						<reference key="destination" ref="872407505"/>
+						<reference key="destination" ref="422767925"/>
 					</object>
 					<int key="connectionID">615</int>
 				</object>
@@ -268,32 +268,48 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientForKernelspace_</string>
+						<reference key="source" ref="318979840"/>
+						<reference key="destination" ref="1017926276"/>
+					</object>
+					<int key="connectionID">622</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">clientForKernelspace_</string>
+						<reference key="source" ref="422767925"/>
+						<reference key="destination" ref="1017926276"/>
+					</object>
+					<int key="connectionID">623</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
-						<reference key="source" ref="442750595"/>
-						<reference key="destination" ref="872407505"/>
+						<reference key="source" ref="26237525"/>
+						<reference key="destination" ref="422767925"/>
 					</object>
 					<int key="connectionID">594</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">xmlCompiler_</string>
-						<reference key="source" ref="442750595"/>
-						<reference key="destination" ref="837184020"/>
+						<reference key="source" ref="26237525"/>
+						<reference key="destination" ref="318979840"/>
 					</object>
 					<int key="connectionID">595</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">userClient_userspace_</string>
-						<reference key="source" ref="442750595"/>
-						<reference key="destination" ref="930367271"/>
+						<reference key="source" ref="26237525"/>
+						<reference key="destination" ref="1017926276"/>
 					</object>
 					<int key="connectionID">601</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">updater_</string>
-						<reference key="source" ref="442750595"/>
+						<reference key="source" ref="26237525"/>
 						<reference key="destination" ref="209217491"/>
 					</object>
 					<int key="connectionID">613</int>
@@ -301,48 +317,48 @@
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">xmlCompiler_</string>
-						<reference key="source" ref="5169682"/>
-						<reference key="destination" ref="837184020"/>
+						<reference key="source" ref="12307336"/>
+						<reference key="destination" ref="318979840"/>
 					</object>
 					<int key="connectionID">597</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">workSpaceData</string>
-						<reference key="source" ref="930367271"/>
-						<reference key="destination" ref="5169682"/>
+						<reference key="source" ref="1017926276"/>
+						<reference key="destination" ref="12307336"/>
 					</object>
 					<int key="connectionID">604</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusWindow</string>
-						<reference key="source" ref="930367271"/>
-						<reference key="destination" ref="368148710"/>
+						<reference key="source" ref="1017926276"/>
+						<reference key="destination" ref="767014507"/>
 					</object>
 					<int key="connectionID">609</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
-						<reference key="source" ref="930367271"/>
-						<reference key="destination" ref="872407505"/>
+						<reference key="source" ref="1017926276"/>
+						<reference key="destination" ref="422767925"/>
 					</object>
 					<int key="connectionID">617</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">xmlCompiler_</string>
-						<reference key="source" ref="930367271"/>
-						<reference key="destination" ref="837184020"/>
+						<reference key="source" ref="1017926276"/>
+						<reference key="destination" ref="318979840"/>
 					</object>
 					<int key="connectionID">618</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
-						<reference key="source" ref="368148710"/>
-						<reference key="destination" ref="872407505"/>
+						<reference key="source" ref="767014507"/>
+						<reference key="destination" ref="422767925"/>
 					</object>
 					<int key="connectionID">610</int>
 				</object>
@@ -447,32 +463,32 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">591</int>
-						<reference key="object" ref="837184020"/>
+						<reference key="object" ref="318979840"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">592</int>
-						<reference key="object" ref="872407505"/>
+						<reference key="object" ref="422767925"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">593</int>
-						<reference key="object" ref="442750595"/>
+						<reference key="object" ref="26237525"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">596</int>
-						<reference key="object" ref="5169682"/>
+						<reference key="object" ref="12307336"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">600</int>
-						<reference key="object" ref="930367271"/>
+						<reference key="object" ref="1017926276"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">606</int>
-						<reference key="object" ref="368148710"/>
+						<reference key="object" ref="767014507"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -542,7 +558,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">621</int>
+			<int key="maxID">623</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -686,6 +702,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PreferencesManager</string>
 					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">clientForKernelspace_</string>
+						<string key="NS.object.0">ClientForKernelspace</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">clientForKernelspace_</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">clientForKernelspace_</string>
+							<string key="candidateClassName">ClientForKernelspace</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/PreferencesManager.h</string>
@@ -917,6 +944,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">XMLCompiler</string>
 					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">clientForKernelspace_</string>
+						<string key="NS.object.0">ClientForKernelspace</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">clientForKernelspace_</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">clientForKernelspace_</string>
+							<string key="candidateClassName">ClientForKernelspace</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/XMLCompiler.h</string>

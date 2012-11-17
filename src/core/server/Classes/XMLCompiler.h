@@ -3,12 +3,16 @@
 #import <Cocoa/Cocoa.h>
 #include "pqrs/xml_compiler_bindings_clang.h"
 
+@class ClientForKernelspace;
+
 @interface XMLCompiler : NSObject
 {
   pqrs_xml_compiler* pqrs_xml_compiler_;
 
   NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
+
+  IBOutlet ClientForKernelspace* clientForKernelspace_;
 }
 
 + (NSString*) get_private_xml_path;

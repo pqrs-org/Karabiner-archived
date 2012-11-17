@@ -2,9 +2,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ClientForKernelspace;
+
 @interface PreferencesManager : NSObject {
   NSMutableDictionary* default_;
   NSArray* essential_configuration_identifiers_;
+
+  IBOutlet ClientForKernelspace* clientForKernelspace_;
 }
 
 - (int) value:(NSString*)name;

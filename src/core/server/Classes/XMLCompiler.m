@@ -1,3 +1,4 @@
+#import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "XMLCompiler.h"
@@ -223,6 +224,8 @@
       preferencepane_number_ = [XMLCompiler build_preferencepane_number:node_tree];
       [preferencepane_number_ retain];
     }
+
+    [clientForKernelspace_ configXMLReloaded];
   }
 
   if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {

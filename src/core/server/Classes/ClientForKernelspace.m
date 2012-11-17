@@ -141,4 +141,15 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   [userClient_userspace synchronized_communication:&bridgestruct];
 }
 
+- (void) configXMLReloaded
+{
+  [self send_remapclasses_initialize_vector_to_kext];
+  [self send_config_to_kext];
+}
+
+- (void) preferencesChanged
+{
+  [self send_config_to_kext];
+}
+
 @end
