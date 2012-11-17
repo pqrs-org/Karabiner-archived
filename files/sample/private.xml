@@ -60,5 +60,13 @@
     <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
   </item>
 
+  <item>
+	        <name>Simulate Windows Copy Paste keys. Command+Fn to Command+C, Shift+Fn to Command+V</name>
+	        <identifier>private.remap.command_Fn_2_Command_C_and_shift_Fn_2_Command_V</identifier>
+	        <autogen>--KeyToKey-- KeyCode::FN , ModifierFlag::FN | ModifierFlag::COMMAND_L , KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+	        <autogen>--KeyToKey-- KeyCode::FN , ModifierFlag::FN | ModifierFlag::SHIFT_L , KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+	</item>
+
+
   <!-- ============================================================ -->
 </root>
