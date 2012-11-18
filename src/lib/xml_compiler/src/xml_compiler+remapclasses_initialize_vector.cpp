@@ -6,6 +6,7 @@ namespace pqrs {
   xml_compiler::remapclasses_initialize_vector::remapclasses_initialize_vector(void)
   {
     clear();
+    freeze();
   }
 
   void

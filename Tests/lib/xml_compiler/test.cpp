@@ -668,9 +668,16 @@ TEST(pqrs_xml_compiler_symbol_map, add)
   EXPECT_EQ(static_cast<uint32_t>(1025), s.get("KeyCode::VK_NEW2"));
 }
 
+TEST(pqrs_xml_compiler_remapclasses_initialize_vector, get)
+{
+  pqrs::xml_compiler::remapclasses_initialize_vector v;
+  EXPECT_EQ(2, v.get().size());
+}
+
 TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
 {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
+  v.clear();
   v.start(1, "remap.empty");
   v.end();
 
@@ -707,6 +714,7 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
 TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial)
 {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
+  v.clear();
   v.start(1, "remap.empty");
   v.end();
 
