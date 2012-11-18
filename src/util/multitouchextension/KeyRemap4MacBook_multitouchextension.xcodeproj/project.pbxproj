@@ -34,6 +34,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3401D0E316586C5100CF962F /* KeyRemap4MacBookProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookProtocol.h; path = ../../share/KeyRemap4MacBookProtocol.h; sourceTree = "<group>"; };
 		3417233F16481E9A004A996E /* IgnoredAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IgnoredAreaView.h; path = Classes/IgnoredAreaView.h; sourceTree = "<group>"; };
 		3417234016481E9A004A996E /* IgnoredAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IgnoredAreaView.m; path = Classes/IgnoredAreaView.m; sourceTree = "<group>"; };
 		342DF86D1653548700C832FE /* FingerStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FingerStatus.h; path = Classes/FingerStatus.h; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3401D0E316586C5100CF962F /* KeyRemap4MacBookProtocol.h */,
 				342DF86D1653548700C832FE /* FingerStatus.h */,
 				342DF86E1653548700C832FE /* FingerStatus.m */,
 				3417233F16481E9A004A996E /* IgnoredAreaView.h */,

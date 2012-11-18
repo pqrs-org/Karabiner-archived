@@ -35,6 +35,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3401D0E916586F0300CF962F /* KeyRemap4MacBookProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookProtocol.h; path = ../../share/KeyRemap4MacBookProtocol.h; sourceTree = "<group>"; };
 		3404DAC115F98D9A00275F34 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = "<group>"; };
 		340B191A11237DAB00E2EF02 /* OtherInformationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherInformationStore.h; sourceTree = "<group>"; };
 		340B191B11237DAB00E2EF02 /* OtherInformationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherInformationStore.m; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3401D0E916586F0300CF962F /* KeyRemap4MacBookProtocol.h */,
 				34B77397160D308A000F292E /* AppQueue.h */,
 				34B77398160D308A000F292E /* AppQueue.m */,
 				343DFDA515F9FE33003A9FFB /* Devices.h */,
