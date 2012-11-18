@@ -171,11 +171,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
-  [xmlCompiler_ reload];
+  [self registerIONotification];
+
   [statusWindow_ resetStatusMessage];
   [statusbar_ refresh];
-
-  [self registerIONotification];
+  [xmlCompiler_ reload];
 
   // ------------------------------------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
