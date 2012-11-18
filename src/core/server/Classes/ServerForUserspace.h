@@ -1,17 +1,19 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import <Cocoa/Cocoa.h>
-#import "PreferencesManager.h"
-#import "Updater.h"
-#import "UserClient_userspace.h"
-#import "XMLCompiler.h"
+#import "KeyRemap4MacBookProtocol.h"
 
-@interface ServerForUserspace : NSObject {
+@class ClientForKernelspace;
+@class PreferencesManager;
+@class Updater;
+@class XMLCompiler;
+
+@interface ServerForUserspace : NSObject<org_pqrs_KeyRemap4MacBook_Protocol> {
   NSConnection* connection_;
 
+  IBOutlet ClientForKernelspace* clientForKernelspace_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet Updater* updater_;
-  IBOutlet UserClient_userspace* userClient_userspace_;
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 

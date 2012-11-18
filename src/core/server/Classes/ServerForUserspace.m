@@ -1,5 +1,10 @@
+#import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "PreferencesManager.h"
 #import "ServerForUserspace.h"
+#import "Updater.h"
+#import "UserClient_userspace.h"
+#import "XMLCompiler.h"
 
 @implementation ServerForUserspace
 
@@ -212,42 +217,7 @@
 
 - (NSArray*) device_information:(NSInteger)type
 {
-  NSMutableArray* information = [[NSMutableArray new] autorelease];
-
-  for (size_t i = 0;; ++i) {
-    struct BridgeDeviceInformation deviceInformation;
-
-    struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type   = (uint32_t)(type);
-    bridgestruct.option = i;
-    bridgestruct.data   = (uintptr_t)(&deviceInformation);
-    bridgestruct.size   = sizeof(deviceInformation);
-
-    if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) break;
-
-    if (! deviceInformation.isFound) break;
-
-    NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
-                             [NSString stringWithUTF8String:deviceInformation.product], @"product",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
-                             nil];
-
-    // skip if newdict is already exists.
-    BOOL found = NO;
-    for (NSDictionary* d in information) {
-      if ([newdict isEqualToDictionary:d]) {
-        found = YES;
-      }
-    }
-    if (! found) {
-      [information addObject:newdict];
-    }
-  }
-
-  return information;
+  return [clientForKernelspace_ device_information:type];
 }
 
 @end

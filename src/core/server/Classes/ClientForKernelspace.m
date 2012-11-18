@@ -1,4 +1,7 @@
 #import "ClientForKernelspace.h"
+#import "StatusWindow.h"
+#import "UserClient_userspace.h"
+#import "WorkSpaceData.h"
 
 @implementation ClientForKernelspace
 
@@ -130,6 +133,17 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   }
 }
 
+- (void) configXMLReloaded
+{
+  [self send_remapclasses_initialize_vector_to_kext];
+  [self send_config_to_kext];
+}
+
+- (void) preferencesChanged
+{
+  [self send_config_to_kext];
+}
+
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata
 {
   struct BridgeUserClientStruct bridgestruct;
@@ -141,15 +155,44 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   [userClient_userspace synchronized_communication:&bridgestruct];
 }
 
-- (void) configXMLReloaded
+- (NSArray*) device_information:(NSInteger)type
 {
-  [self send_remapclasses_initialize_vector_to_kext];
-  [self send_config_to_kext];
-}
+  NSMutableArray* information = [[NSMutableArray new] autorelease];
 
-- (void) preferencesChanged
-{
-  [self send_config_to_kext];
+  for (size_t i = 0;; ++i) {
+    struct BridgeDeviceInformation deviceInformation;
+
+    struct BridgeUserClientStruct bridgestruct;
+    bridgestruct.type   = (uint32_t)(type);
+    bridgestruct.option = i;
+    bridgestruct.data   = (uintptr_t)(&deviceInformation);
+    bridgestruct.size   = sizeof(deviceInformation);
+
+    if (! [userClient_userspace synchronized_communication:&bridgestruct]) break;
+
+    if (! deviceInformation.isFound) break;
+
+    NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
+                             [NSString stringWithUTF8String:deviceInformation.product], @"product",
+                             [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
+                             [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
+                             [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
+                             nil];
+
+    // skip if newdict is already exists.
+    BOOL found = NO;
+    for (NSDictionary* d in information) {
+      if ([newdict isEqualToDictionary:d]) {
+        found = YES;
+      }
+    }
+    if (! found) {
+      [information addObject:newdict];
+    }
+  }
+
+  return information;
 }
 
 @end

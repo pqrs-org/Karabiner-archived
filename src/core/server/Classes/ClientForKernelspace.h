@@ -1,9 +1,13 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import <Cocoa/Cocoa.h>
-#import "UserClient_userspace.h"
-#import "StatusWindow.h"
-#import "WorkSpaceData.h"
+#include "bridge.h"
+
+@class PreferencesManager;
+@class StatusWindow;
+@class UserClient_userspace;
+@class WorkSpaceData;
+@class XMLCompiler;
 
 @interface ClientForKernelspace : NSObject {
   io_async_ref64_t asyncref_;
@@ -25,5 +29,6 @@
 - (void) configXMLReloaded;
 - (void) preferencesChanged;
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata;
+- (NSArray*) device_information:(NSInteger)type;
 
 @end
