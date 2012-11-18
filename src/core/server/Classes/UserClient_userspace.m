@@ -1,5 +1,4 @@
 #import "UserClient_userspace.h"
-#import "WorkSpaceData.h"
 #include "bridge.h"
 
 @implementation UserClient_userspace
@@ -168,42 +167,34 @@
   }
 }
 
-- (BOOL) do_synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
-{
-  if (connect_ == IO_OBJECT_NULL) return NO;
-  if (! bridgestruct) return NO;
-
-  uint64_t output = 0;
-  uint32_t outputCnt = 1;
-  kern_return_t kernResult = IOConnectCallMethod(connect_,
-                                                 BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
-                                                 NULL, 0,                             // scalar input
-                                                 bridgestruct, sizeof(*bridgestruct), // struct input
-                                                 &output, &outputCnt,                 // scalar output
-                                                 NULL, NULL);                         // struct output
-  if (kernResult != KERN_SUCCESS) {
-    NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
-    return NO;
-  }
-  if (output != BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS) {
-    NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output is not SUCCESS (%lld)\n", output);
-    return NO;
-  }
-
-  return YES;
-}
-
 - (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
 {
-  BOOL retval = NO;
-
   @synchronized(self) {
-    if ([self do_synchronized_communication:bridgestruct]) {
-      retval = YES;
+    if (connect_ == IO_OBJECT_NULL) {
+      NSLog(@"[WARNING] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION connection is null");
+      return NO;
     }
-  }
+    if (! bridgestruct) return NO;
 
-  return retval;
+    uint64_t output = 0;
+    uint32_t outputCnt = 1;
+    kern_return_t kernResult = IOConnectCallMethod(connect_,
+                                                   BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
+                                                   NULL, 0,                             // scalar input
+                                                   bridgestruct, sizeof(*bridgestruct), // struct input
+                                                   &output, &outputCnt,                 // scalar output
+                                                   NULL, NULL);                         // struct output
+    if (kernResult != KERN_SUCCESS) {
+      NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
+      return NO;
+    }
+    if (output != BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS) {
+      NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output is not SUCCESS (%lld)\n", output);
+      return NO;
+    }
+
+    return YES;
+  }
 }
 
 @end
