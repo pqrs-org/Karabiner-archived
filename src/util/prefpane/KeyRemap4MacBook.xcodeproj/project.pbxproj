@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3401D0F516586F2E00CF962F /* KeyRemap4MacBookProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 3401D0F416586F2E00CF962F /* KeyRemap4MacBookProtocol.h */; };
 		3428689411244C7D0063E730 /* TableView_configlist.h in Headers */ = {isa = PBXBuildFile; fileRef = 3428689211244C7D0063E730 /* TableView_configlist.h */; };
 		3428689511244C7D0063E730 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 3428689311244C7D0063E730 /* TableView_configlist.m */; };
 		343BB0D713E056FC0037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0D613E056FC0037A81F /* app.icns */; };
@@ -37,6 +38,7 @@
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCFA20370C41700C91783 /* KeyRemap4MacBook_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_Prefix.pch; sourceTree = "<group>"; };
+		3401D0F416586F2E00CF962F /* KeyRemap4MacBookProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookProtocol.h; path = ../../share/KeyRemap4MacBookProtocol.h; sourceTree = "<group>"; };
 		3428689211244C7D0063E730 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_configlist.h; sourceTree = "<group>"; };
 		3428689311244C7D0063E730 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView_configlist.m; sourceTree = "<group>"; };
 		343BB0D613E056FC0037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3401D0F416586F2E00CF962F /* KeyRemap4MacBookProtocol.h */,
 				34B2A66C1374623000694134 /* KeyRemap4MacBookKeys.h */,
 				34EB7FDC12C59DF30071889D /* KeyRemap4MacBookClient.h */,
 				34EB7FDD12C59DF30071889D /* KeyRemap4MacBookClient.m */,
@@ -179,6 +182,7 @@
 				34EB7FDE12C59DF30071889D /* KeyRemap4MacBookClient.h in Headers */,
 				34B2A66D1374623000694134 /* KeyRemap4MacBookKeys.h in Headers */,
 				34CC23F313E9A3E600CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h in Headers */,
+				3401D0F516586F2E00CF962F /* KeyRemap4MacBookProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
