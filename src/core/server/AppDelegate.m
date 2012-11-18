@@ -171,8 +171,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [xmlCompiler_ reload];
   [statusWindow_ resetStatusMessage];
-
   [statusbar_ refresh];
 
   [self registerIONotification];
@@ -208,6 +208,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
+
   [updater_ checkForUpdatesInBackground:nil];
 
   // ------------------------------------------------------------
