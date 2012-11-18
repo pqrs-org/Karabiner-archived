@@ -1,4 +1,5 @@
 #import "ClientForKernelspace.h"
+#import "NotificationKeys.h"
 #import "StatusWindow.h"
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
@@ -36,6 +37,17 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   }
 }
 
+- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
+{
+  [self send_remapclasses_initialize_vector_to_kext];
+  [self send_config_to_kext];
+}
+
+- (void) observer_PreferencesChanged:(NSNotification*)notification
+{
+  [self send_config_to_kext];
+}
+
 - (id) init
 {
   self = [super init];
@@ -45,6 +57,13 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     asyncref_[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
 
     userClient_userspace = [[UserClient_userspace alloc] init:&asyncref_];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_ConfigXMLReloaded:)
+                                                 name:kConfigXMLReloadedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_PreferencesChanged:)
+                                                 name:kPreferencesChangedNotification object:nil];
   }
 
   return self;
@@ -52,6 +71,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 - (void) dealloc
 {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
   [userClient_userspace release];
 
   [super dealloc];
@@ -60,6 +80,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 - (void) refresh_connection_with_retry
 {
   [userClient_userspace refresh_connection_with_retry:10 wait:0.5];
+  [self observer_ConfigXMLReloaded:nil];
 }
 
 - (void) disconnect_from_kext
@@ -131,17 +152,6 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
     free(data);
   }
-}
-
-- (void) configXMLReloaded
-{
-  [self send_remapclasses_initialize_vector_to_kext];
-  [self send_config_to_kext];
-}
-
-- (void) preferencesChanged
-{
-  [self send_config_to_kext];
 }
 
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata

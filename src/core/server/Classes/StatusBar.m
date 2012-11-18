@@ -1,12 +1,12 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
+#import "NotificationKeys.h"
 #import "StatusBar.h"
-#import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 
 @implementation StatusBar
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification {
+- (void) observer_ConfigListChanged:(NSNotification*)notification
+{
   [self refresh];
 }
 
@@ -17,7 +17,7 @@
   if (self) {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigListChanged:)
-                                                 name:@"ConfigListChanged" object:nil];
+                                                 name:kConfigListChangedNotification object:nil];
   }
 
   return self;

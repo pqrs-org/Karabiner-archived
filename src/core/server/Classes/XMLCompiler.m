@@ -1,6 +1,5 @@
 #import "ClientForKernelspace.h"
-#import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
+#import "NotificationKeys.h"
 #import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
@@ -224,8 +223,6 @@
       preferencepane_number_ = [XMLCompiler build_preferencepane_number:node_tree];
       [preferencepane_number_ retain];
     }
-
-    [clientForKernelspace_ configXMLReloaded];
   }
 
   if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {
@@ -235,7 +232,7 @@
   }
 
   // We need to send a notification outside synchronized block to prevent lock.
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification userInfo:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
 }
 
 - (size_t) remapclasses_initialize_vector_size
