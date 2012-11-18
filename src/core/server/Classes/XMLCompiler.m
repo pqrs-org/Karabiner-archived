@@ -183,7 +183,6 @@
     pqrs_xml_compiler_initialize(&pqrs_xml_compiler_,
                                  [[[NSBundle mainBundle] resourcePath] UTF8String],
                                  [[[XMLCompiler get_private_xml_path] stringByDeletingLastPathComponent] UTF8String]);
-    [self reload];
   }
 
   return self;
