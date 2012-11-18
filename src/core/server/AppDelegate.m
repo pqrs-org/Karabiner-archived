@@ -101,8 +101,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // when NSWorkspaceSessionDidBecomeActiveNotification.
   // So, we retry the connection some times.
   [[self clientForKernelspace] refresh_connection_with_retry];
-
-  [[self clientForKernelspace] configXMLReloaded];
   [self send_workspacedata_to_kext];
 }
 

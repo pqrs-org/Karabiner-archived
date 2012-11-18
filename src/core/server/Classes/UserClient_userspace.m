@@ -107,15 +107,12 @@
   return self;
 }
 
-- (void) dealloc
-{
-  [super dealloc];
-}
-
 // ======================================================================
 - (void) connect_to_kext
 {
   @synchronized(self) {
+    [self disconnect_from_kext];
+
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
     connected = NO;
@@ -165,7 +162,7 @@
     [self disconnect_from_kext];
     [self connect_to_kext];
 
-    if (connected) break;
+    if (connected) return;
 
     [NSThread sleepForTimeInterval:wait];
   }

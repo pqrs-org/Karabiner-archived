@@ -12,6 +12,7 @@
 		3401D0D61657A18C00CF962F /* ServerForUserspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0D51657A18C00CF962F /* ServerForUserspace.m */; };
 		3401D0DA1657CE6A00CF962F /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0D91657CE6A00CF962F /* Updater.m */; };
 		3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */; };
+		3401D0FF1658826200CF962F /* DistributedNotificationSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0FE1658826200CF962F /* DistributedNotificationSender.m */; };
 		340A058F1302CE8B00B7E1B1 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		340B7E3F1545090D00FB3237 /* InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 340B7E3E1545090D00FB3237 /* InputSource.m */; };
 		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
@@ -83,6 +84,9 @@
 		3401D0DB1657DD4800CF962F /* ClientForKernelspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientForKernelspace.h; path = Classes/ClientForKernelspace.h; sourceTree = "<group>"; };
 		3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientForKernelspace.m; path = Classes/ClientForKernelspace.m; sourceTree = "<group>"; };
 		3401D0DE16586C0700CF962F /* KeyRemap4MacBookProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookProtocol.h; path = ../../share/KeyRemap4MacBookProtocol.h; sourceTree = "<group>"; };
+		3401D0FB1658718100CF962F /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationKeys.h; path = Classes/NotificationKeys.h; sourceTree = "<group>"; };
+		3401D0FD1658826200CF962F /* DistributedNotificationSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistributedNotificationSender.h; path = Classes/DistributedNotificationSender.h; sourceTree = "<group>"; };
+		3401D0FE1658826200CF962F /* DistributedNotificationSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DistributedNotificationSender.m; path = Classes/DistributedNotificationSender.m; sourceTree = "<group>"; };
 		340B7E3D1545090D00FB3237 /* InputSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputSource.h; path = Classes/InputSource.h; sourceTree = "<group>"; };
 		340B7E3E1545090D00FB3237 /* InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputSource.m; path = Classes/InputSource.m; sourceTree = "<group>"; };
 		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
@@ -149,6 +153,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3401D0FD1658826200CF962F /* DistributedNotificationSender.h */,
+				3401D0FE1658826200CF962F /* DistributedNotificationSender.m */,
+				3401D0FB1658718100CF962F /* NotificationKeys.h */,
 				3401D0DE16586C0700CF962F /* KeyRemap4MacBookProtocol.h */,
 				3401D0DB1657DD4800CF962F /* ClientForKernelspace.h */,
 				3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */,
@@ -365,6 +372,7 @@
 				3401D0D61657A18C00CF962F /* ServerForUserspace.m in Sources */,
 				3401D0DA1657CE6A00CF962F /* Updater.m in Sources */,
 				3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */,
+				3401D0FF1658826200CF962F /* DistributedNotificationSender.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

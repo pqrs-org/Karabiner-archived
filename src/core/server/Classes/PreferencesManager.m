@@ -1,7 +1,6 @@
 #import "ClientForKernelspace.h"
+#import "NotificationKeys.h"
 #import "PreferencesManager.h"
-#import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #include <sys/time.h>
 
 @implementation PreferencesManager
@@ -159,8 +158,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   // [[NSUserDefaults standardUserDefaults] synchronize];
 
-  [clientForKernelspace_ preferencesChanged];
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification userInfo:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
 }
 
 - (NSArray*) essential_config
@@ -248,10 +246,8 @@
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
-
-  [clientForKernelspace_ preferencesChanged];
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification userInfo:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
 }
 
 - (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
@@ -275,7 +271,7 @@
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (void) configlist_append
@@ -302,7 +298,7 @@
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (void) configlist_delete:(NSInteger)rowIndex
@@ -333,7 +329,7 @@
     [self configlist_select:(selectedIndex - 1)];
   }
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (BOOL) isStatusbarEnable
@@ -360,7 +356,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isStatusbarEnable"];
   }
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (void) toggleShowSettingNameInStatusBar
@@ -371,7 +367,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isShowSettingNameInStatusBar"];
   }
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:@"ConfigListChanged" object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 // ----------------------------------------------------------------------

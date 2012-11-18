@@ -26,8 +26,6 @@
 - (void) refresh_connection_with_retry;
 - (void) disconnect_from_kext;
 
-- (void) configXMLReloaded;
-- (void) preferencesChanged;
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata;
 - (NSArray*) device_information:(NSInteger)type;
 
