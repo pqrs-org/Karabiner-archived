@@ -1,8 +1,13 @@
 #import <Carbon/Carbon.h>
 #import "AppDelegate.h"
+#import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
+#import "ServerForUserspace.h"
+#import "StatusBar.h"
 #import "StatusWindow.h"
+#import "Updater.h"
+#import "WorkSpaceData.h"
 #include <stdlib.h>
 
 @implementation AppDelegate
@@ -97,9 +102,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
   // ------------------------------------------------------------
-  // [UserClient_userspace refresh_connection] may fail by kIOReturnExclusiveAccess
-  // when NSWorkspaceSessionDidBecomeActiveNotification.
-  // So, we retry the connection some times.
   [[self clientForKernelspace] refresh_connection_with_retry];
   [self send_workspacedata_to_kext];
 }
@@ -171,6 +173,18 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+  if (! [serverForUserspace_ register]) {
+    // Quit when register is failed.
+    // We wait 2 second before quit to avoid consecutive restarting from launchd.
+    NSLog(@"[ServerForUserspace register] is failed. Restarting process.");
+    [NSThread sleepForTimeInterval:2];
+    [NSApp terminate:nil];
+  }
+  // Wait until other apps connect to me.
+  [NSThread sleepForTimeInterval:1];
+
+  [preferencesManager_ load];
+
   [self registerIONotification];
 
   [statusWindow_ resetStatusMessage];

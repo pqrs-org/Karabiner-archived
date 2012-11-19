@@ -44,43 +44,6 @@
     essential_configuration_identifiers_ = [[NSArray arrayWithObjects:
 #include "../../../bridge/output/include.bridge_essential_configuration_identifiers.m"
                                             ] retain];
-
-    // ------------------------------------------------------------
-    // initialize
-    if (! [self configlist_selectedIdentifier]) {
-      [self configlist_select:0];
-
-      if (! [self configlist_selectedIdentifier]) {
-        NSLog(@"initialize configlist");
-        // add new item
-
-        [self configlist_append];
-        [self configlist_setName:0 name:@"Default"];
-        [self configlist_select:0];
-      }
-    }
-
-    // ------------------------------------------------------------
-    // scan config_* and detech notsave.*
-    for (NSDictionary* dict in [self configlist_getConfigList]) {
-      if (! dict) continue;
-
-      NSString* identifier = [dict objectForKey:@"identify"];
-      if (! identifier) continue;
-
-      NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-      if (! d) continue;
-
-      NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
-
-      for (NSString* name in [md allKeys]) {
-        if ([name hasPrefix:@"notsave."]) {
-          [md removeObjectForKey:name];
-        }
-      }
-
-      [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
-    }
   }
 
   return self;
@@ -92,6 +55,46 @@
   [essential_configuration_identifiers_ release];
 
   [super dealloc];
+}
+
+- (void) load
+{
+  // ------------------------------------------------------------
+  // initialize
+  if (! [self configlist_selectedIdentifier]) {
+    [self configlist_select:0];
+
+    if (! [self configlist_selectedIdentifier]) {
+      NSLog(@"initialize configlist");
+
+      // add new item
+      [self configlist_append];
+      [self configlist_setName:0 name:@"Default"];
+      [self configlist_select:0];
+    }
+  }
+
+  // ------------------------------------------------------------
+  // scan config_* and detech notsave.*
+  for (NSDictionary* dict in [self configlist_getConfigList]) {
+    if (! dict) continue;
+
+    NSString* identifier = [dict objectForKey:@"identify"];
+    if (! identifier) continue;
+
+    NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+    if (! d) continue;
+
+    NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
+
+    for (NSString* name in [md allKeys]) {
+      if ([name hasPrefix:@"notsave."]) {
+        [md removeObjectForKey:name];
+      }
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
+  }
 }
 
 // ----------------------------------------------------------------------

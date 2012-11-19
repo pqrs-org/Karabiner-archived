@@ -157,6 +157,10 @@
 
 - (void) refresh_connection_with_retry:(int)retrycount wait:(NSTimeInterval)wait
 {
+  // "connect_to_kext" may fail by kIOReturnExclusiveAccess
+  // when connect_to_kext is called in NSWorkspaceSessionDidBecomeActiveNotification.
+  // So, we retry the connection some times.
+
   for (int i = 0; i < retrycount; ++i) {
     [self disconnect_from_kext];
     [self connect_to_kext];

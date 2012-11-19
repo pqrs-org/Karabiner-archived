@@ -15,18 +15,6 @@
 
   if (self) {
     connection_ = [NSConnection new];
-    [connection_ setRootObject:self];
-    if (! [connection_ registerName:kKeyRemap4MacBookConnectionName]) {
-      // Quit when registerName is failed.
-      // We wait 2 second before quit to avoid consecutive restarting from launchd.
-      NSLog(@"[NSConnection registerName] is failed. Restarting process.");
-      [NSThread sleepForTimeInterval:2];
-      [NSApp terminate:nil];
-    }
-
-    // Other apps which are connected to KeyRemap4MacBook (Prefs, EventViewer, ...) should reconnect.
-    // So, sending notification as soon as possible.
-    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
   }
 
   return self;
@@ -37,6 +25,20 @@
   [connection_ release];
 
   [super dealloc];
+}
+
+// ----------------------------------------------------------------------
+- (BOOL) register
+{
+  [connection_ setRootObject:self];
+  if (! [connection_ registerName:kKeyRemap4MacBookConnectionName]) {
+    return NO;
+  }
+
+  // Other apps which are connected to KeyRemap4MacBook (Prefs, EventViewer, ...) should reconnect.
+  // So, sending notification as soon as possible.
+  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
+  return YES;
 }
 
 // ----------------------------------------------------------------------
