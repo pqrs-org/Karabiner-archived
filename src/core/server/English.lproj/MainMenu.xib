@@ -215,6 +215,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">serverForUserspace_</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="597312338"/>
+					</object>
+					<int key="connectionID">627</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">menu_</string>
 						<reference key="source" ref="882968974"/>
 						<reference key="destination" ref="269225066"/>
@@ -568,7 +576,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">625</int>
+			<int key="maxID">627</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -582,6 +590,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>clientForKernelspace</string>
 							<string>preferencesManager_</string>
+							<string>serverForUserspace_</string>
 							<string>statusWindow_</string>
 							<string>statusbar_</string>
 							<string>updater_</string>
@@ -593,6 +602,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ClientForKernelspace</string>
 							<string>PreferencesManager</string>
+							<string>ServerForUserspace</string>
 							<string>StatusWindow</string>
 							<string>StatusBar</string>
 							<string>Updater</string>
@@ -607,6 +617,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>clientForKernelspace</string>
 							<string>preferencesManager_</string>
+							<string>serverForUserspace_</string>
 							<string>statusWindow_</string>
 							<string>statusbar_</string>
 							<string>updater_</string>
@@ -623,6 +634,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">preferencesManager_</string>
 								<string key="candidateClassName">PreferencesManager</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">serverForUserspace_</string>
+								<string key="candidateClassName">ServerForUserspace</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">statusWindow_</string>

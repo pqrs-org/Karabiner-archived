@@ -11,6 +11,8 @@
   IBOutlet ClientForKernelspace* clientForKernelspace_;
 }
 
+- (void) load;
+
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;

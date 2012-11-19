@@ -17,6 +17,8 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
+- (BOOL) register;
+
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;

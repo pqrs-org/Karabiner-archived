@@ -1,12 +1,16 @@
 // -*- Mode: objc -*-
 
 #import <Cocoa/Cocoa.h>
-#import "ClientForKernelspace.h"
-#import "StatusBar.h"
-#import "StatusWindow.h"
-#import "Updater.h"
-#import "WorkSpaceData.h"
 #include "bridge.h"
+
+@class ClientForKernelspace;
+@class PreferencesManager;
+@class ServerForUserspace;
+@class StatusBar;
+@class StatusWindow;
+@class Updater;
+@class WorkSpaceData;
+@class XMLCompiler;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
@@ -17,11 +21,12 @@
 
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
+  IBOutlet ClientForKernelspace* clientForKernelspace;
   IBOutlet PreferencesManager* preferencesManager_;
+  IBOutlet ServerForUserspace* serverForUserspace_;
   IBOutlet StatusBar* statusbar_;
   IBOutlet StatusWindow* statusWindow_;
   IBOutlet Updater* updater_;
-  IBOutlet ClientForKernelspace* clientForKernelspace;
   IBOutlet WorkSpaceData* workSpaceData_;
   IBOutlet XMLCompiler* xmlCompiler_;
 }
