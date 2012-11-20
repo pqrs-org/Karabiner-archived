@@ -4,9 +4,9 @@
 #import "KeyRemap4MacBookProtocol.h"
 
 @interface org_pqrs_KeyRemap4MacBook_Client : NSObject {
-  id proxy;
+  id proxy_;
 }
 
-@property (assign) id<org_pqrs_KeyRemap4MacBook_Protocol> proxy;
+- (id<org_pqrs_KeyRemap4MacBook_Protocol>) proxy;
 
 @end

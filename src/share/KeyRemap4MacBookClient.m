@@ -4,17 +4,24 @@
 
 @implementation org_pqrs_KeyRemap4MacBook_Client
 
-@synthesize proxy;
+- (id<org_pqrs_KeyRemap4MacBook_Protocol>) proxy
+{
+  if (! proxy_) {
+    [self refresh_connection];
+  }
+  return [[proxy_ retain] autorelease];
+}
 
 - (void) refresh_connection
 {
-  [proxy release];
-  proxy = [[NSConnection rootProxyForConnectionWithRegisteredName:kKeyRemap4MacBookConnectionName host:nil] retain];
-  [proxy setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
+  [proxy_ release];
+  proxy_ = [[NSConnection rootProxyForConnectionWithRegisteredName:kKeyRemap4MacBookConnectionName host:nil] retain];
+  [proxy_ setProtocolForProxy:@protocol(org_pqrs_KeyRemap4MacBook_Protocol)];
 }
 
 - (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
 {
+  NSLog(@"observer_NSConnectionDidDieNotification is called");
   [self refresh_connection];
 }
 
@@ -24,7 +31,7 @@
   // Therefore, we need to make own NSAutoreleasePool.
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
-    NSLog(@"distributedObserver_serverLaunched called");
+    NSLog(@"distributedObserver_serverLaunched is called");
     [self refresh_connection];
   }
   [pool drain];
@@ -56,7 +63,7 @@
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  [proxy release];
+  [proxy_ release];
 
   [super dealloc];
 }
