@@ -637,7 +637,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::log_allocation_count(void)
   {
-    IOLOG_INFO("RemapClass::allocation_count_ %d/%d (capacity %d%%)\n", allocation_count_, MAX_ALLOCATION_COUNT, allocation_count_ * 100 / MAX_ALLOCATION_COUNT);
+    IOLOG_INFO("RemapClass::allocation_count_ %d/%d (memory usage: %d%% of %dKB)\n",
+               allocation_count_,
+               MAX_ALLOCATION_COUNT,
+               allocation_count_ * 100 / MAX_ALLOCATION_COUNT,
+               static_cast<int>(MAX_ALLOCATION_COUNT * sizeof(uint32_t) / 1024));
   }
 
   void
