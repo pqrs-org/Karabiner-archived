@@ -1,13 +1,16 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "NotificationKeys.h"
+#import "PreferencesManager.h"
 #import "StatusBar.h"
 
 @implementation StatusBar
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
-  [self refresh];
+  [self performSelectorOnMainThread:@selector(refresh)
+                         withObject:nil
+                      waitUntilDone:NO];
 }
 
 - (id) init
@@ -98,6 +101,7 @@
     NSString* title = [dict objectForKey:@"name"];
     NSMenuItem* newItem = [[[NSMenuItem alloc] initWithTitle:title action:@selector(statusBarItemSelected:) keyEquivalent:@""] autorelease];
 
+    [newItem setTarget:self];
     [newItem setRepresentedObject:[NSNumber numberWithInt:i]];
 
     if (selectedIndex == i) {
