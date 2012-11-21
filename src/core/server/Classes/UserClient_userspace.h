@@ -13,8 +13,6 @@
   BOOL connected;
 }
 
-@property (assign) BOOL connected;
-
 - (id) init:(io_async_ref64_t*)asyncref;
 
 - (void) refresh_connection_with_retry:(int)retrycount wait:(NSTimeInterval)wait;
