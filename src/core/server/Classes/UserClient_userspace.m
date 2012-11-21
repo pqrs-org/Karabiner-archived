@@ -3,8 +3,6 @@
 
 @implementation UserClient_userspace
 
-@synthesize connected;
-
 - (void) closeUserClient
 {
   // ----------------------------------------
@@ -85,10 +83,15 @@
         continue;
       }
 
-      connected = YES;
+      // succeed
+      goto finish;
     }
   }
 
+  // failed to open connection.
+  [self closeUserClient];
+
+finish:
   IOObjectRelease(iterator);
 }
 
@@ -99,7 +102,6 @@
   if (self) {
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
-    connected = NO;
     asyncref_ = asyncref;
   }
 
@@ -114,7 +116,6 @@
 
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
-    connected = NO;
 
     // ----------------------------------------
     // setup IONotification
@@ -131,10 +132,6 @@
         CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
         [self openUserClient];
       }
-    }
-
-    if (! connected) {
-      [self closeUserClient];
     }
   }
 }
@@ -161,13 +158,18 @@
   // when connect_to_kext is called in NSWorkspaceSessionDidBecomeActiveNotification.
   // So, we retry the connection some times.
 
-  for (int i = 0; i < retrycount; ++i) {
-    [self disconnect_from_kext];
-    [self connect_to_kext];
+  @synchronized(self) {
+    for (int i = 0; i < retrycount; ++i) {
+      [self disconnect_from_kext];
+      [self connect_to_kext];
 
-    if (connected) return;
+      if (connect_ != IO_OBJECT_NULL) {
+        // succeed
+        return;
+      }
 
-    [NSThread sleepForTimeInterval:wait];
+      [NSThread sleepForTimeInterval:wait];
+    }
   }
 }
 
@@ -175,29 +177,41 @@
 {
   @synchronized(self) {
     if (connect_ == IO_OBJECT_NULL) {
-      NSLog(@"[WARNING] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION connection is null");
+      NSLog(@"[INFO] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION connection is null");
       return NO;
     }
     if (! bridgestruct) return NO;
 
-    uint64_t output = 0;
-    uint32_t outputCnt = 1;
-    kern_return_t kernResult = IOConnectCallMethod(connect_,
-                                                   BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
-                                                   NULL, 0,                             // scalar input
-                                                   bridgestruct, sizeof(*bridgestruct), // struct input
-                                                   &output, &outputCnt,                 // scalar output
-                                                   NULL, NULL);                         // struct output
-    if (kernResult != KERN_SUCCESS) {
-      NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
-      return NO;
-    }
-    if (output != BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS) {
-      NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output is not SUCCESS (%lld)\n", output);
-      return NO;
+    for (int retrycount = 0; retrycount < 1; ++retrycount) {
+      uint64_t output = 0;
+      uint32_t outputCnt = 1;
+      kern_return_t kernResult = IOConnectCallMethod(connect_,
+                                                     BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
+                                                     NULL, 0,                             // scalar input
+                                                     bridgestruct, sizeof(*bridgestruct), // struct input
+                                                     &output, &outputCnt,                 // scalar output
+                                                     NULL, NULL);                         // struct output
+      if (kernResult != KERN_SUCCESS) {
+        NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION returned 0x%08x\n", kernResult);
+
+        // IOConnectCallMethod may fail by an error of IOMemoryDescriptor::prepare in kernel.
+        // So, we call IOConnectCallMethod once more.
+        [self disconnect_from_kext];
+        [self connect_to_kext];
+        continue;
+      }
+      if (output != BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS) {
+        NSLog(@"[ERROR] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION output is not SUCCESS (%lld)\n", output);
+        // We do not retry this case because this error caused by logic error.
+        // (version mismatch, invalid bridgestruct data, etc.)
+        return NO;
+      }
+
+      // succeed
+      return YES;
     }
 
-    return YES;
+    return NO;
   }
 }
 
