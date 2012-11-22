@@ -1,3 +1,5 @@
+#include <sys/types.h>
+#include <sys/systm.h>
 #include "UserClient_kext.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
@@ -237,65 +239,31 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communic
   if (! lk) return kIOReturnCannotLock;
 
   IOReturn result = kIOReturnSuccess;
-  IOMemoryDescriptor* memorydescriptor = NULL;
+  uint8_t* buffer = NULL;
+  size_t size = static_cast<size_t>(inputdata->size);
 
-  if (! inputdata || ! outputdata) {
-    result = kIOReturnBadArgument;
-    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnBadArgument\n");
+  buffer = new uint8_t[size];
+  if (! buffer) {
+    result = kIOReturnError;
     goto finish;
   }
 
-  if (provider_ == NULL || isInactive()) {
-    // Return an error if we don't have a provider. This could happen if the user process
-    // called callback_synchronized_communication without calling IOServiceOpen first.
-    // Or, the user client could be in the process of being terminated and is thus inactive.
-    result = kIOReturnNotAttached;
-    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnNotAttached\n");
+  if (copyin(inputdata->data, buffer, size) != 0) {
+    result = kIOReturnError;
     goto finish;
   }
 
-  if (! provider_->isOpen(this)) {
-    // Return an error if we do not have the driver open. This could happen if the user process
-    // did not call callback_open before calling this function.
-    result = kIOReturnNotOpen;
-    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnNotOpen\n");
+  handle_synchronized_communication(inputdata->type, inputdata->option, buffer, size, outputdata);
+
+  if (copyout(buffer, inputdata->data, size) != 0) {
+    result = kIOReturnError;
     goto finish;
   }
-
-  memorydescriptor = IOMemoryDescriptor::withAddressRange(inputdata->data, inputdata->size, kIODirectionNone, task_);
-  if (! memorydescriptor) {
-    result = kIOReturnVMError;
-    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnVMError\n");
-    goto finish;
-  }
-
-  // wire it and make sure we can write it
-  result = memorydescriptor->prepare(kIODirectionOutIn);
-  if (kIOReturnSuccess != result) {
-    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication IOMemoryDescriptor::prepare failed(0x%x)\n", result);
-    goto finish;
-  }
-
-  {
-    // this map() will create a mapping in the users (the client of this IOUserClient) address space.
-    IOMemoryMap* memorymap = memorydescriptor->map();
-    if (! memorymap) {
-      result = kIOReturnVMError;
-      IOLOG_ERROR("UserClient_kext::callback_synchronized_communication IOMemoryDescriptor::map failed\n");
-
-    } else {
-      mach_vm_address_t address = memorymap->getAddress();
-      handle_synchronized_communication(inputdata->type, inputdata->option, address, inputdata->size, outputdata);
-      memorymap->release();
-    }
-  }
-
-  // Done with the I/O now.
-  memorydescriptor->complete(kIODirectionOutIn);
 
 finish:
-  if (memorydescriptor) {
-    memorydescriptor->release();
+  if (buffer) {
+    delete[] buffer;
+    buffer = NULL;
   }
 
   return result;
@@ -347,7 +315,11 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace
 
 // ------------------------------------------------------------
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint32_t type, uint32_t option, mach_vm_address_t address, mach_vm_size_t size, uint64_t* outputdata)
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint32_t type,
+                                                                                    uint32_t option,
+                                                                                    uint8_t* buffer,
+                                                                                    size_t size,
+                                                                                    uint64_t* outputdata)
 {
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
@@ -356,7 +328,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
     {
       org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
 
-      const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(address);
+      const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(buffer);
       if (initialize_vector) {
         if (org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
@@ -367,7 +339,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 
     case BRIDGE_USERCLIENT_TYPE_SET_CONFIG:
     {
-      const int32_t* config = reinterpret_cast<int32_t*>(address);
+      const int32_t* config = reinterpret_cast<int32_t*>(buffer);
       if (config) {
         if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
           org_pqrs_KeyRemap4MacBook::Config::set_initialized(true);
@@ -380,7 +352,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE:
     {
       const char* statusmessage = org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage(option);
-      char* p = reinterpret_cast<char*>(address);
+      char* p = reinterpret_cast<char*>(buffer);
 
       if (statusmessage && p) {
         pqrs::strlcpy_utf8::strlcpy(p, statusmessage, static_cast<size_t>(size));
@@ -394,7 +366,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       if (size != sizeof(BridgeWorkSpaceData)) {
         IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG wrong 'size' parameter\n");
       } else {
-        const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(address);
+        const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(buffer);
         if (p) {
           org_pqrs_KeyRemap4MacBook::CommonData::setcurrent_workspacedata(*p);
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
@@ -410,7 +382,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       if (size != sizeof(BridgeDeviceInformation)) {
         IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_* wrong 'size' parameter\n");
       } else {
-        BridgeDeviceInformation* p = reinterpret_cast<BridgeDeviceInformation*>(address);
+        BridgeDeviceInformation* p = reinterpret_cast<BridgeDeviceInformation*>(buffer);
         if (p) {
           switch (type) {
             case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:

@@ -22,7 +22,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
       struct BridgeUserClientStruct bridgestruct;
       bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
       bridgestruct.option = option;
-      bridgestruct.data   = (uintptr_t)(buf);
+      bridgestruct.data   = (user_addr_t)(buf);
       bridgestruct.size   = sizeof(buf);
 
       if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
@@ -97,7 +97,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   struct BridgeUserClientStruct bridgestruct;
   bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
   bridgestruct.option = 0;
-  bridgestruct.data   = (uintptr_t)(p);
+  bridgestruct.data   = (user_addr_t)(p);
   bridgestruct.size   = size;
 
   [userClient_userspace synchronized_communication:&bridgestruct];
@@ -145,7 +145,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     struct BridgeUserClientStruct bridgestruct;
     bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG;
     bridgestruct.option = 0;
-    bridgestruct.data   = (uintptr_t)(data);
+    bridgestruct.data   = (user_addr_t)(data);
     bridgestruct.size   = size;
 
     [userClient_userspace synchronized_communication:&bridgestruct];
@@ -159,7 +159,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   struct BridgeUserClientStruct bridgestruct;
   bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
   bridgestruct.option = 0;
-  bridgestruct.data   = (uintptr_t)(bridgeworkspacedata);
+  bridgestruct.data   = (user_addr_t)(bridgeworkspacedata);
   bridgestruct.size   = sizeof(*bridgeworkspacedata);
 
   [userClient_userspace synchronized_communication:&bridgestruct];
@@ -175,7 +175,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     struct BridgeUserClientStruct bridgestruct;
     bridgestruct.type   = (uint32_t)(type);
     bridgestruct.option = i;
-    bridgestruct.data   = (uintptr_t)(&deviceInformation);
+    bridgestruct.data   = (user_addr_t)(&deviceInformation);
     bridgestruct.size   = sizeof(deviceInformation);
 
     if (! [userClient_userspace synchronized_communication:&bridgestruct]) break;

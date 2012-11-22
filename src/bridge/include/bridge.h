@@ -151,8 +151,8 @@ enum {
 struct BridgeUserClientStruct {
   uint32_t type;
   uint32_t option;
-  mach_vm_address_t data;
-  mach_vm_size_t size; // size of data
+  user_addr_t data;
+  user_size_t size;
 };
 // STATIC_ASSERT for sizeof(struct BridgeUserClientStruct).
 // We need to make this value same in kext and userspace.
