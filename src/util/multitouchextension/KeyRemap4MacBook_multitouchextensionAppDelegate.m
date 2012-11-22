@@ -4,6 +4,8 @@
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
 static FingerStatus* lastFingerStatus_ = nil;
+static BOOL has_last_device = NO;
+static int last_device = 0;
 
 @implementation KeyRemap4MacBook_multitouchextensionAppDelegate
 
@@ -92,6 +94,24 @@ static void setPreference(int fingers, int newvalue) {
 // ------------------------------------------------------------
 // Multitouch callback
 static int callback(int device, Finger* data, int fingers, double timestamp, int frame) {
+  // ------------------------------------------------------------
+  // If there are multiple devices (For example, Trackpad and Magic Mouse),
+  // we handle only one device at the same time.
+  if (has_last_device) {
+    // ignore other devices.
+    if (device != last_device) {
+      return 0;
+    }
+  }
+
+  if (fingers == 0) {
+    has_last_device = NO;
+  } else {
+    has_last_device = YES;
+    last_device = device;
+  }
+
+  // ------------------------------------------------------------
   NSAutoreleasePool* pool = [NSAutoreleasePool new];
   {
     [global_ignoredAreaView_ clearFingers];
@@ -314,6 +334,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
     [NSApp terminate:self];
   }
+
+  has_last_device = NO;
 
   [self setcallback:YES];
 }
