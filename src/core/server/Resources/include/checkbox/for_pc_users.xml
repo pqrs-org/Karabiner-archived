@@ -525,5 +525,21 @@
       <autogen>--KeyToKey-- KeyCode::F4, VK_OPTION,  KeyCode::Q, VK_COMMAND</autogen>
       <autogen>--KeyToKey-- KeyCode::Q,  VK_COMMAND, KeyCode::VK_NONE</autogen>
     </item>
+    <item>
+      <name>Simulate Windows Copy Paste keys.</name>
+      <appendix>(Change Command+Fn to Command+C)</appendix>
+      <appendix>(Change Shift+Fn to Command+V)</appendix>
+      <identifier>remap.pcstyle_command_Fn_shift_Fn</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::FN, VK_COMMAND,
+        KeyCode::C, VK_COMMAND,
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::FN, VK_SHIFT,
+        KeyCode::V, ModifierFlag::COMMAND_L
+      </autogen>
+    </item>
   </item>
 </root>
