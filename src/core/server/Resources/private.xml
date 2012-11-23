@@ -8,7 +8,24 @@
     <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::VK_STICKY_SHIFT_L</autogen>
     <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::SPACE</autogen> <!-- Green key -->
     <autogen>--KeyToKey-- KeyCode::C, KeyCode::VK_STICKY_EXTRA3</autogen> <!-- Symbol key -->
-    <autogen>--KeyToKey-- KeyCode::V, KeyCode::VK_LOCK_EXTRA4</autogen> <!-- Number key -->
+    <autogen>--KeyOverlaidModifier-- KeyCode::V, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::VK_STICKY_EXTRA4</autogen> <!-- Number key -->
+
+    <!-- Orange functions -->
+    <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::EXTRA5, KeyCode::PAGEUP</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::EXTRA5, KeyCode::VK_STICKY_CONTROL_L</autogen> <!-- Originally Pause, but that's not useful on Mac OS. -->
+    <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::EXTRA5, KeyCode::END</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::EXTRA5, KeyCode::HOME</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::EXTRA5, KeyCode::ESCAPE</autogen>
+    <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::EXTRA5, KeyCode::PAGEDOWN</autogen>
+    <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::EXTRA5, KeyCode::CURSOR_UP</autogen>
+    <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::EXTRA5, KeyCode::VK_STICKY_OPTION_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::EXTRA5, KeyCode::VK_STICKY_COMMAND_L</autogen> <!-- Originally Ctrl, but Command is more useful on Mac OS. -->
+    <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::EXTRA5, KeyCode::INSERT</autogen>
+    <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA5, KeyCode::CURSOR_LEFT</autogen>
+    <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::EXTRA5, KeyCode::CURSOR_DOWN</autogen>
+    <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::EXTRA5, KeyCode::CURSOR_RIGHT</autogen>
+    <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::EXTRA5, KeyCode::DELETE</autogen>
+    <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::EXTRA5, KeyCode::FORWARD_DELETE</autogen>
 
     <!-- Numbers -->
     <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::EXTRA4, KeyCode::KEYPAD_MINUS</autogen>
