@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Use CarpalxQ layout</name>
+    <name>Change QWERTY to CarpalxQ layout</name>
     <item>
       <name>CarpalxQ step 1 (E/K)</name>
       <identifier>remap.carpalxq1</identifier>

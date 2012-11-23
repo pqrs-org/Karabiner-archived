@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Use Colemak Keyboard Layout</name>
+    <name>Change QWERTY to Colemak layout</name>
     <identifier>remap.qwerty2colemak</identifier>
     <include path="common/keypad_redefinition.xml" />
     <autogen>--KeyToKey-- KeyCode::E, KeyCode::F</autogen>

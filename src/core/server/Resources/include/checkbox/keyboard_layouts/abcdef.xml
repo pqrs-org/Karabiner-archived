@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Use ABCDEF Keyboard Layout</name>
+    <name>Change QWERTY to ABCDEF layout</name>
     <appendix>qwertyuiop &#8594; abcdefghij</appendix>
     <appendix>asdfghjkl &#8594; klmnopqrs</appendix>
     <appendix>zxcvbnm &#8594; tuvwxyz</appendix>
