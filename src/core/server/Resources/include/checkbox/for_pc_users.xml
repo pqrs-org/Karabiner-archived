@@ -554,5 +554,16 @@
       <autogen>--KeyToKey-- KeyCode::KEYPAD_0,   VK_SHIFT,   KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT,   KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
+    <item>
+      <name>KeyPad beginning or end of document for PC Users who swapped Control and Command</name>
+      <appendix>(except in Virtual Machine, RDC)</appendix>
+      <appendix></appendix>
+      <appendix>(Command+KeyPad_7 to Command+Up)</appendix>
+      <appendix>(Command+KeyPad_1 to Command+Down)</appendix>
+      <identifier>remap.pcstyle_keypad_beg_end_document</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_COMMAND, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+    </item>
   </item>
 </root>
