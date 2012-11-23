@@ -7,8 +7,8 @@
     <item>
       <name>Left-handed</name>
       <identifier>grenouille.left</identifier>
-      <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::VK_LOCK_SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::EXTRA1, KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF, KeyCode::VK_LOCK_SHIFT_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF, KeyCode::VK_STICKY_SHIFT_L</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::SPACE</autogen> <!-- Green key -->
       <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA3</autogen> <!-- Symbol key -->
       <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::SHIFT_L, KeyCode::VK_STICKY_EXTRA3</autogen> <!-- Symbol key -->
