@@ -63,6 +63,7 @@ check_value('GCC_WARN_UNUSED_FUNCTION', 'YES')
 check_value('GCC_WARN_UNUSED_LABEL', 'YES')
 check_value('GCC_WARN_UNUSED_VALUE', 'YES')
 check_value('GCC_WARN_UNUSED_VARIABLE', 'YES')
+check_value('MACOSX_DEPLOYMENT_TARGET', '10.6')
 check_value('RUN_CLANG_STATIC_ANALYZER', 'YES')
 check_value('SDKROOT', 'macosx10.6')
 
