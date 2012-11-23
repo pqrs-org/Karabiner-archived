@@ -4,13 +4,14 @@
     <name>Change Keyboard Layout</name>
     <include path="keyboard_layouts/colemak.xml" />
     <include path="keyboard_layouts/qwerf.xml" />
+    <include path="keyboard_layouts/qwertz.xml" />
     <include path="keyboard_layouts/qwkrfy.xml" />
     <include path="keyboard_layouts/carpalxq.xml" />
     <include path="keyboard_layouts/workman.xml" />
     <include path="keyboard_layouts/abcdef.xml" />
     <include path="keyboard_layouts/eps.xml" />
     <item>
-      <name>Use US Keyboard Layout</name>
+      <name>Set a keyboard type to ANSI on JIS and ISO keyboard</name>
       <identifier>remap.layout2us</identifier>
       <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
     </item>

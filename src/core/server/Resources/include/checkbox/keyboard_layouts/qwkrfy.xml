@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Use QWKRFY layout</name>
+    <name>Change QWERTY to QWKRFY layout</name>
     <item>
       <name>Basic QWKRFY layout</name>
       <identifier>remap.qwerty2qwkrfy</identifier>

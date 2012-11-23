@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Use Workman Keyboard Layout</name>
+    <name>Change QWERTY to Workman layout</name>
     <identifier>remap.qwerty2workman</identifier>
     <include path="common/keypad_redefinition.xml" />
     <autogen>--KeyToKey-- KeyCode::W, KeyCode::D</autogen>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Use QWERF Keyboard Layout</name>
+    <name>Change QWERTY to QWERF layout</name>
     <identifier>remap.qwerty2qwerf</identifier>
     <include path="common/keypad_redefinition.xml" />
     <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
