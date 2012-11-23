@@ -11,6 +11,7 @@
       <autogen>--KeyToKey-- KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
       <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::SPACE</autogen> <!-- Green key -->
       <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA3</autogen> <!-- Symbol key -->
+      <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::EXTRA3, KeyCode::VK_LOCK_EXTRA3</autogen> <!-- Symbol key -->
       <autogen>--KeyOverlaidModifier-- KeyCode::V, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::VK_STICKY_EXTRA4</autogen> <!-- Number key -->
 
       <!-- Orange functions -->
@@ -120,6 +121,7 @@
 
       <autogen>--KeyToKey-- KeyCode::X, KeyCode::RETURN</autogen>
 
+      <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::COMMAND_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen> <!-- Don't break Cmd-Tab application switching. -->
       <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::DELETE</autogen>
     </item>
   </item>
