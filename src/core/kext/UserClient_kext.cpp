@@ -238,27 +238,34 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communic
   org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
   if (! lk) return kIOReturnCannotLock;
 
-  IOReturn result = kIOReturnSuccess;
+  IOReturn result = kIOReturnError;
   uint8_t* buffer = NULL;
   size_t size = static_cast<size_t>(inputdata->size);
 
+  if (size == 0) {
+    IOLOG_ERROR("callback_synchronized_communication size == 0\n");
+    goto finish;
+  }
+
   buffer = new uint8_t[size];
   if (! buffer) {
-    result = kIOReturnError;
+    IOLOG_ERROR("callback_synchronized_communication buffer is null\n");
     goto finish;
   }
 
   if (copyin(inputdata->data, buffer, size) != 0) {
-    result = kIOReturnError;
+    IOLOG_ERROR("callback_synchronized_communication copyin is failed.\n");
     goto finish;
   }
 
   handle_synchronized_communication(inputdata->type, inputdata->option, buffer, size, outputdata);
 
   if (copyout(buffer, inputdata->data, size) != 0) {
-    result = kIOReturnError;
+    IOLOG_ERROR("callback_synchronized_communication copyout is failed.\n");
     goto finish;
   }
+
+  result = kIOReturnSuccess;
 
 finish:
   if (buffer) {
