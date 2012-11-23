@@ -541,5 +541,18 @@
         KeyCode::V, ModifierFlag::COMMAND_L
       </autogen>
     </item>
+    <item>
+      <name>KeyPad copy and paste for PC Users who swapped Control and Command</name>
+      <appendix>(except in Virtual Machine, RDC)</appendix>
+      <appendix></appendix>
+      <appendix>(Command+KeyPad_0 to Command+C)</appendix>
+      <appendix>(Shift+KeyPad_0 to Command+V)</appendix>
+      <appendix>(Shift+KeyPad_Dot(.) to Command+X)</appendix>
+      <identifier>remap.pcstyle_keypad_copy_and_paste</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <autogen>--KeyToKey-- KeyCode::KEYPAD_0,   VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEYPAD_0,   VK_SHIFT,   KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT,   KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+    </item>
   </item>
 </root>
