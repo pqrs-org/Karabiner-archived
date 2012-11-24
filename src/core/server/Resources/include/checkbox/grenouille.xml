@@ -4,5 +4,6 @@
     <name>Grenouille</name>
     <appendix>FrogPad-compatible layout</appendix>
     <include path="grenouille/left.xml" />
+    <include path="grenouille/right.xml" />
   </item>
 </root>
