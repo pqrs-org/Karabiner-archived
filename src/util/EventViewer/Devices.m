@@ -10,7 +10,7 @@
   self = [super init];
 
   if (self) {
-    devices_ = [NSArray new];
+    devices_ = [NSMutableArray new];
   }
 
   return self;
@@ -36,15 +36,20 @@
 
 - (IBAction) refresh:(id)sender
 {
-  NSInteger type = BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD;
+  @synchronized(self) {
+    [devices_ removeAllObjects];
 
-  switch ([segment_ selectedSegment]) {
-    case 1: type = BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER; break;
-    case 2: type = BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING; break;
+    for (NSArray* a in @[@[@"Keyboard", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD]],
+                         @[@"Consumer", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER]],
+                         @[@"Pointing", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING]]]) {
+      NSInteger type = [[a objectAtIndex:1] integerValue];
+      for (NSDictionary* d in [[client_ proxy] device_information : type]) {
+        NSMutableDictionary* newdict = [NSMutableDictionary dictionaryWithDictionary:d];
+        [newdict setObject:[a objectAtIndex:0] forKey:@"deviceType"];
+        [devices_ addObject:newdict];
+      }
+    }
   }
-
-  [devices_ release];
-  devices_ = [[[client_ proxy] device_information:type] retain];
 
   [view_ reloadData];
 }
@@ -55,7 +60,8 @@
   NSMutableString* string = [[NSMutableString new] autorelease];
 
   for (NSDictionary* dict in devices_) {
-    [string appendFormat:@"%@ (%@)\n    Vendor ID:%@\n    Product ID:%@\n    Location ID:%@\n\n",
+    [string appendFormat:@"%@\n    %@ (%@)\n    Vendor ID:%@\n    Product ID:%@\n    Location ID:%@\n\n",
+     [dict objectForKey:@"deviceType"],
      [dict objectForKey:@"product"],
      [dict objectForKey:@"manufacturer"],
      [dict objectForKey:@"vendorID"],
