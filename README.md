@@ -22,11 +22,11 @@ How to build
 
 Requirements:
 
-* OS X 10.7
-* Xcode 4.3+ (Don't use Xcode 4.5. It makes invalid 32-bit binaries. http://openradar.appspot.com/12353507)
+* OS X 10.8
+* Xcode 4.4+ (Don't use Xcode 4.5. It makes invalid 32-bit binaries. http://openradar.appspot.com/12353507)
 * Command Line Tools for Xcode
 * Auxiliary Tools for Xcode
-* Boost 1.49.0+ (header-only) http://www.boost.org/
+* Boost 1.52.0+ (header-only) http://www.boost.org/
 
 Please install PackageMaker.app into /Applications/Utilities.
 (PackageMaker.app is included in Auxiliary Tools for Xcode.)
