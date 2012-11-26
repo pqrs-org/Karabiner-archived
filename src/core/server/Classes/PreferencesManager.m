@@ -291,7 +291,7 @@
 
   struct timeval tm;
   gettimeofday(&tm, NULL);
-  NSString* identifier = [NSString stringWithFormat:@"config_%d_%d", tm.tv_sec, tm.tv_usec];
+  NSString* identifier = [NSString stringWithFormat:@"config_%d_%d", (int)(tm.tv_sec), (int)(tm.tv_usec)];
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithCapacity:0];
   [md setObject:@"NewItem" forKey:@"name"];
