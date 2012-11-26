@@ -82,7 +82,7 @@ namespace pqrs {
     // ----------------------------------------
     // Get length of file and call string.reserve with file length.
     istream.seekg(0, std::ios::end);
-    out.reserve(istream.tellg());
+    out.reserve(static_cast<size_t>(istream.tellg()));
     istream.seekg(0, std::ios::beg);
 
     for (;;) {
@@ -117,7 +117,7 @@ namespace pqrs {
     // ----------------------------------------
     // Get length of file and call string.reserve with file length.
     istream.seekg(0, std::ios::end);
-    out.reserve(istream.tellg());
+    out.reserve(static_cast<size_t>(istream.tellg()));
     istream.seekg(0, std::ios::beg);
 
     // ----------------------------------------
