@@ -416,7 +416,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../lib/xml_compiler/build/Release\"",
-					"\"$(SDKROOT)/usr/lib/gcc/i686-apple-darwin10/4.0.1\"",
 				);
 				PRODUCT_NAME = KeyRemap4MacBook;
 			};
