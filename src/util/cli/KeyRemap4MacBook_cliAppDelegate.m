@@ -51,7 +51,7 @@
       }
 
     } else if ([command isEqualToString:@"selected"]) {
-      [self output:[NSString stringWithFormat:@"%d\n", [[client_ proxy] configlist_selectedIndex]]];
+      [self output:[NSString stringWithFormat:@"%d\n", (int)([[client_ proxy] configlist_selectedIndex])]];
 
     } else if ([command isEqualToString:@"changed"]) {
       NSDictionary* dict = [[client_ proxy] changed];

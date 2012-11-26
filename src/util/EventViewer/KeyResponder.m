@@ -1,7 +1,4 @@
 // -*- Mode: objc -*-
-//
-// KeyResponder.m
-//
 
 #import "KeyResponder.h"
 
@@ -197,13 +194,13 @@
   if (number == 1) return @"right";
   if (number == 2) return @"middle";
 
-  return [NSString stringWithFormat:@"button%d", number + 1];
+  return [NSString stringWithFormat:@"button%d", (int)(number + 1)];
 }
 
 - (void) outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType
 {
   [eventqueue_ push:eventType
-               code:[NSString stringWithFormat:@"0x%x", [event keyCode]]
+               code:[NSString stringWithFormat:@"0x%x", (int)([event keyCode])]
                name:[self keycodeToString:event]
               flags:[self modifierFlagsToString:[event modifierFlags]]
                misc:[NSString stringWithFormat:@"characters:%@", [self charactersToString:event]]];
@@ -212,10 +209,10 @@
 - (void) outputMouseEvent:(NSEvent*)event eventType:(NSString*)eventType
 {
   [eventqueue_ push:eventType
-               code:[NSString stringWithFormat:@"0x%x", [event buttonNumber]]
+               code:[NSString stringWithFormat:@"0x%x", (int)([event buttonNumber])]
                name:[self buttonToString:event]
               flags:[self modifierFlagsToString:[event modifierFlags]]
-               misc:[NSString stringWithFormat:@"%@ %d", NSStringFromPoint([event locationInWindow]), [event clickCount]]];
+               misc:[NSString stringWithFormat:@"%@ %d", NSStringFromPoint([event locationInWindow]), (int)([event clickCount])]];
 }
 
 - (void) keyDown:(NSEvent*)event
