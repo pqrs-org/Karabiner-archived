@@ -45,7 +45,7 @@ public:
           }
           std::tr1::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
 
-          for (auto& child : it.children_extracted_ptree()) {
+          for (const auto& child : it.children_extracted_ptree()) {
             ptr->handle_item_child(child);
 
             if (child.get_tag_name() == "identifier") {
@@ -71,7 +71,7 @@ public:
                     "VK_CONFIG_FORCE_OFF_",
                     "VK_CONFIG_SYNC_KEYDOWNUP_",
                   };
-                  for (auto& n : names) {
+                  for (const auto& n : names) {
                     symbol_map_.add("KeyCode", std::string(n) + identifier);
                   }
                 }
@@ -111,12 +111,12 @@ public:
     fixup();
 
     // "notsave" has higher priority.
-    for (auto& it : identifiers_notsave_) {
+    for (const auto& it : identifiers_notsave_) {
       symbol_map_.add("ConfigIndex", it);
     }
     identifiers_notsave_.clear();
 
-    for (auto& it : identifiers_except_notsave_) {
+    for (const auto& it : identifiers_except_notsave_) {
       symbol_map_.add("ConfigIndex", it);
     }
     identifiers_except_notsave_.clear();
