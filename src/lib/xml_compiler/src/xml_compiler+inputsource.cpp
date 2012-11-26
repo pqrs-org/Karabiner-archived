@@ -1,5 +1,4 @@
 #include <exception>
-#include <boost/algorithm/string.hpp>
 #include "pqrs/xml_compiler.hpp"
 #include "bridge.h"
 
@@ -9,21 +8,21 @@ namespace pqrs {
                                               const std::string& inputsourceid,
                                               const std::string& inputmodeid) const
   {
-    for (auto& r : rules_languagecode_) {
+    for (const auto& r : rules_languagecode_) {
       if (languagecode == r) return true;
     }
 
-    for (auto& r : rules_inputsourceid_equal_) {
+    for (const auto& r : rules_inputsourceid_equal_) {
       if (inputsourceid == r) return true;
     }
-    for (auto& r : rules_inputsourceid_prefix_) {
+    for (const auto& r : rules_inputsourceid_prefix_) {
       if (boost::starts_with(inputsourceid, r)) return true;
     }
 
-    for (auto& r : rules_inputmodeid_equal_) {
+    for (const auto& r : rules_inputmodeid_equal_) {
       if (inputmodeid == r) return true;
     }
-    for (auto& r : rules_inputmodeid_prefix_) {
+    for (const auto& r : rules_inputmodeid_prefix_) {
       if (boost::starts_with(inputmodeid, r)) return true;
     }
 
@@ -41,7 +40,7 @@ namespace pqrs {
 
     remapclasses_initialize_vector_.start(config_index, raw_identifier);
     {
-      for (auto& it : vk_change_inputsource_map_) {
+      for (const auto& it : vk_change_inputsource_map_) {
         remapclasses_initialize_vector_.push_back(2);
         remapclasses_initialize_vector_.push_back(BRIDGE_VK_CHANGE_INPUTSOURCE);
         remapclasses_initialize_vector_.push_back(it.first);
@@ -53,7 +52,7 @@ namespace pqrs {
   void
   xml_compiler::inputsource_loader::traverse(const extracted_ptree& pt) const
   {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       definition_type::type definition_type = definition_type::none;
       if (it.get_tag_name() == "vkchangeinputsourcedef") {
         definition_type = definition_type::vkchangeinputsourcedef;
@@ -72,7 +71,7 @@ namespace pqrs {
         // ----------------------------------------
         bool error = false;
 
-        for (auto& child : it.children_extracted_ptree()) {
+        for (const auto& child : it.children_extracted_ptree()) {
           if (child.get_tag_name() == "name") {
             newinputsource->set_name(pqrs::string::remove_whitespaces_copy(child.get_data()));
 

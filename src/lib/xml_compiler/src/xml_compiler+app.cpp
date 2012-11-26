@@ -1,5 +1,4 @@
 #include <exception>
-#include <boost/algorithm/string.hpp>
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
@@ -23,12 +22,12 @@ namespace pqrs {
   bool
   xml_compiler::app::is_rules_matched(const std::string& identifier) const
   {
-    for (auto& r : rules_equal_) {
+    for (const auto& r : rules_equal_) {
       if (identifier == r) {
         return true;
       }
     }
-    for (auto& r : rules_prefix_) {
+    for (const auto& r : rules_prefix_) {
       if (boost::starts_with(identifier, r)) {
         return true;
       }
@@ -41,7 +40,7 @@ namespace pqrs {
   void
   xml_compiler::app_loader::traverse(const extracted_ptree& pt) const
   {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       if (it.get_tag_name() != "appdef") {
         if (! it.children_empty()) {
           traverse(it.children_extracted_ptree());
@@ -50,7 +49,7 @@ namespace pqrs {
         std::tr1::shared_ptr<app> newapp(new app());
         if (! newapp) continue;
 
-        for (auto& child : it.children_extracted_ptree()) {
+        for (const auto& child : it.children_extracted_ptree()) {
           if (child.get_tag_name() == "appname") {
             newapp->set_name(pqrs::string::remove_whitespaces_copy(child.get_data()));
           } else if (child.get_tag_name() == "equal") {

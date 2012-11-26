@@ -1,7 +1,5 @@
 #include <algorithm>
 #include <exception>
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
 #include "bridge.h"
 #include "pqrs/xml_compiler.hpp"
 #include "pqrs/string.hpp"
@@ -12,7 +10,7 @@ namespace pqrs {
   xml_compiler::remapclasses_initialize_vector_loader::traverse(const extracted_ptree& pt,
                                                                 const std::string& parent_tag_name)
   {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       try {
         if (it.get_tag_name() != "identifier") {
           if (! it.children_empty()) {
@@ -51,7 +49,7 @@ namespace pqrs {
                 "VK_CONFIG_FORCE_OFF_",
                 "VK_CONFIG_SYNC_KEYDOWNUP_",
               };
-              for (auto& n : names) {
+              for (const auto& n : names) {
                 remapclasses_initialize_vector_.push_back(symbol_map_.get("KeyCode", n + identifier));
               }
             }
@@ -83,7 +81,7 @@ namespace pqrs {
     filter_vector_.traverse(pt);
 
     // ----------------------------------------
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       if (it.get_tag_name() != "autogen") {
         size_t s = filter_vector_.size();
         traverse_autogen_(it.children_extracted_ptree(), identifier);
@@ -124,9 +122,9 @@ namespace pqrs {
         { "VK_OPTION",  { "ModifierFlag::OPTION_L",  "ModifierFlag::OPTION_R"  } },
       };
 
-      for (auto& it : info) {
+      for (const auto& it : info) {
         if (autogen.find(it.vk) != std::string::npos) {
-          for (auto& f : it.flags) {
+          for (const auto& f : it.flags) {
             handle_autogen(boost::replace_all_copy(autogen, it.vk, f),
                            raw_autogen);
           }
@@ -145,7 +143,7 @@ namespace pqrs {
         { "VK_MOD_CCS_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
         { "VK_MOD_CCO_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
       };
-      for (auto& it : info) {
+      for (const auto& it : info) {
         if (autogen.find(it.vk) != std::string::npos) {
           handle_autogen(boost::replace_all_copy(autogen, it.vk, it.flag),
                          raw_autogen);
@@ -164,7 +162,7 @@ namespace pqrs {
         pqrs::vector::make_combination(combination, seeds, sizeof(seeds) / sizeof(seeds[0]));
       }
 
-      for (auto& v : combination) {
+      for (const auto& v : combination) {
         handle_autogen(boost::replace_all_copy(autogen, "VK_MOD_ANY", boost::join(*v, "|") + "|ModifierFlag::NONE"),
                        raw_autogen);
       }
@@ -191,7 +189,7 @@ namespace pqrs {
           { "PAGEDOWN",       "CURSOR_DOWN"  },
           { "FORWARD_DELETE", "DELETE"       },
         };
-        for (auto& k : keys) {
+        for (const auto& k : keys) {
           preprocess_info i;
           i.fromkeycode                   = std::string("FROMKEYCODE_") + k[0];
           i.fromkeycode_with_modifierflag = std::string("FROMKEYCODE_") + k[0] + ",ModifierFlag::";
@@ -203,7 +201,7 @@ namespace pqrs {
         }
       }
 
-      for (auto& it : info) {
+      for (const auto& it : info) {
         // FROMKEYCODE_HOME,ModifierFlag::
         if (autogen.find(it.fromkeycode_with_modifierflag) != std::string::npos) {
           // FROMKEYCODE_HOME -> KeyCode::HOME
@@ -271,10 +269,10 @@ namespace pqrs {
         boost::trim(params);
 
         size_t length = params.size();
-        remapclasses_initialize_vector_.push_back(length + 1);
+        remapclasses_initialize_vector_.push_back(static_cast<uint32_t>(length + 1));
         remapclasses_initialize_vector_.push_back(BRIDGE_STATUSMESSAGE);
 
-        for (auto& c : params) {
+        for (const auto& c : params) {
           remapclasses_initialize_vector_.push_back(c);
         }
         // no need filter_vector
@@ -321,7 +319,7 @@ namespace pqrs {
       { "--ScrollWheelToScrollWheel--",       BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL },
       { "--ScrollWheelToKey--",               BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY },
     };
-    for (auto& it : info) {
+    for (const auto& it : info) {
       if (boost::starts_with(autogen, it.symbol)) {
         std::string params = autogen.substr(it.symbol.length());
         add_to_initialize_vector(params, it.type);
@@ -351,7 +349,6 @@ namespace pqrs {
     std::string arg;
     std::string value;
     while (tokenizer_comma.split_removing_empty(arg)) {
-      //for (auto& a : args) {
       unsigned int datatype = 0;
       unsigned int newvalue = 0;
 
@@ -374,7 +371,7 @@ namespace pqrs {
           { "DeviceLocation::",  BRIDGE_DATATYPE_DEVICELOCATION  },
           { "Option::",          BRIDGE_DATATYPE_OPTION          },
         };
-        for (auto& it : info) {
+        for (const auto& it : info) {
           if (boost::starts_with(value, it.type)) {
             newdatatype = it.datatype;
             break;
@@ -411,7 +408,7 @@ namespace pqrs {
 
     remapclasses_initialize_vector_.update(count_index, count);
 
-    for (auto& i : filter_vector_.get()) {
+    for (const auto& i : filter_vector_.get()) {
       remapclasses_initialize_vector_.push_back(i);
     }
   }

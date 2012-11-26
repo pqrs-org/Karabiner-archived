@@ -25,7 +25,7 @@ public:
   {}
 
   void traverse(const extracted_ptree& pt) {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       // Hack for speed improvement.
       // We can stop traversing when we met <autogen>.
       if (it.get_tag_name() == "autogen") {

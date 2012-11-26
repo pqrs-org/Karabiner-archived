@@ -1,8 +1,6 @@
 #include <exception>
 #include <iostream>
 #include <sstream>
-#include <boost/algorithm/string.hpp>
-#include <boost/property_tree/xml_parser.hpp>
 #include "pqrs/string.hpp"
 #include "pqrs/xml_compiler.hpp"
 
@@ -225,7 +223,7 @@ namespace pqrs {
   uint32_t
   xml_compiler::get_appid(const std::string& application_identifier) const
   {
-    for (auto& it : app_vector_) {
+    for (const auto& it : app_vector_) {
       if (! it) continue;
 
       if (it->is_rules_matched(application_identifier)) {
@@ -268,7 +266,7 @@ namespace pqrs {
     inputsource        = 0; // InputSource::NONE
     inputsource_detail = 0; // InputSourceDetail::NONE
 
-    for (auto& it : inputsource_vector_) {
+    for (const auto& it : inputsource_vector_) {
       if (! it) continue;
 
       if (it->is_rules_matched(languagecode, inputsourceid, inputmodeid)) {
@@ -320,7 +318,7 @@ namespace pqrs {
 
     uint32_t target_config_index = symbol_map_.get("ConfigIndex", identifier);
 
-    auto& initialize_vector = remapclasses_initialize_vector_.get();
+    const auto& initialize_vector = remapclasses_initialize_vector_.get();
 
     size_t i = 2;
     for (;;) {
