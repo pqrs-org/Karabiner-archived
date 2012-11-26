@@ -16,7 +16,7 @@ namespace pqrs {
   void
   xml_compiler::symbol_map::dump(void) const
   {
-    for (auto& it : symbol_map_) {
+    for (const auto& it : symbol_map_) {
       std::cout << it.first << " " << it.second << std::endl;
     }
   }
@@ -88,7 +88,7 @@ namespace pqrs {
   void
   xml_compiler::symbol_map_loader::traverse(const extracted_ptree& pt) const
   {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       if (it.get_tag_name() != "symbol_map") {
         if (! it.children_empty()) {
           traverse(it.children_extracted_ptree());
@@ -101,7 +101,7 @@ namespace pqrs {
           "<xmlattr>.name",
           "<xmlattr>.value",
         };
-        for (auto& attr : attrs) {
+        for (const auto& attr : attrs) {
           const char* attrname = attr + strlen("<xmlattr>.");
 
           auto v = it.get_optional(attr);

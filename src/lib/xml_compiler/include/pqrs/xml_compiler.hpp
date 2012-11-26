@@ -7,11 +7,18 @@
 #include <vector>
 #include <tr1/memory>
 #include <tr1/unordered_map>
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshadow"
 #include <boost/algorithm/string.hpp>
 #include <boost/format.hpp>
 #include <boost/iterator_adaptors.hpp>
+#include <boost/lexical_cast.hpp>
 #include <boost/optional.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#pragma clang diagnostic pop
+
 #include "pqrs/file_path.hpp"
 #include "pqrs/string.hpp"
 

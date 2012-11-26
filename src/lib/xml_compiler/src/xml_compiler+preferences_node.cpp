@@ -1,4 +1,3 @@
-#include <boost/algorithm/string.hpp>
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {

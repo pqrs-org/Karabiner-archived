@@ -1,12 +1,11 @@
 #include <exception>
-#include <boost/algorithm/string.hpp>
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
   void
   xml_compiler::device_loader::traverse(const extracted_ptree& pt) const
   {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       if (it.get_tag_name() != "devicevendordef" &&
           it.get_tag_name() != "deviceproductdef" &&
           it.get_tag_name() != "devicelocationdef") {
@@ -41,7 +40,7 @@ namespace pqrs {
         }
 
         // ----------------------------------------
-        for (auto& child : it.children_extracted_ptree()) {
+        for (const auto& child : it.children_extracted_ptree()) {
           if (child.get_tag_name() == name_tag_name) {
             name = pqrs::string::remove_whitespaces_copy(child.get_data());
           } else if (child.get_tag_name() == value_tag_name) {

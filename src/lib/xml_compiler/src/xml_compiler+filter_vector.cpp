@@ -1,4 +1,3 @@
-#include <boost/algorithm/string.hpp>
 #include "bridge.h"
 #include "pqrs/vector.hpp"
 #include "pqrs/xml_compiler.hpp"
@@ -7,7 +6,7 @@ namespace pqrs {
   void
   xml_compiler::filter_vector::traverse(const extracted_ptree& pt)
   {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       /*  */ if (it.get_tag_name() == "not") {
         add_(BRIDGE_FILTERTYPE_APPLICATION_NOT,  "ApplicationType::", it.get_data());
       } else if (it.get_tag_name() == "only") {

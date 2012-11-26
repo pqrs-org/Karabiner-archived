@@ -5,7 +5,7 @@ namespace pqrs {
   void
   xml_compiler::replacement_loader::traverse(const extracted_ptree& pt) const
   {
-    for (auto& it : pt) {
+    for (const auto& it : pt) {
       if (it.get_tag_name() != "replacementdef") {
         if (! it.children_empty()) {
           traverse(it.children_extracted_ptree());
@@ -13,7 +13,7 @@ namespace pqrs {
       } else {
         boost::optional<std::string> name;
         boost::optional<std::string> value;
-        for (auto& child : it.children_extracted_ptree()) {
+        for (const auto& child : it.children_extracted_ptree()) {
           if (child.get_tag_name() == "replacementname") {
             name = child.get_data();
           } else if (child.get_tag_name() == "replacementvalue") {

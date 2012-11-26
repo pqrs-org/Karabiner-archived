@@ -230,7 +230,7 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_c
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
   if (! node_tree) return nullptr;
 
-  auto& identifier = (node_tree->get_node()).get_identifier();
+  const auto& identifier = (node_tree->get_node()).get_identifier();
   if (identifier.empty()) return nullptr;
 
   return identifier.c_str();
@@ -302,7 +302,7 @@ pqrs_xml_compiler_get_preferences_number_node_tree_identifier(const pqrs_xml_com
   auto node_tree = cast_to_preferences_number_node_tree(p);
   if (! node_tree) return nullptr;
 
-  auto& identifier = (node_tree->get_node()).get_identifier();
+  const auto& identifier = (node_tree->get_node()).get_identifier();
   if (identifier.empty()) return nullptr;
 
   return identifier.c_str();
@@ -332,7 +332,7 @@ pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const pqrs_xml_comp
   auto node_tree = cast_to_preferences_number_node_tree(p);
   if (! node_tree) return nullptr;
 
-  auto& base_unit = (node_tree->get_node()).get_base_unit();
+  const auto& base_unit = (node_tree->get_node()).get_base_unit();
   if (base_unit.empty()) return nullptr;
 
   return base_unit.c_str();
