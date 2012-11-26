@@ -174,7 +174,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
     struct BridgeUserClientStruct bridgestruct;
     bridgestruct.type   = (uint32_t)(type);
-    bridgestruct.option = i;
+    bridgestruct.option = (uint32_t)(i);
     bridgestruct.data   = (user_addr_t)(&deviceInformation);
     bridgestruct.size   = sizeof(deviceInformation);
 
