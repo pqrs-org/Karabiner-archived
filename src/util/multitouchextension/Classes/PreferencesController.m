@@ -102,12 +102,12 @@ NSDictionary* defaults_dictionary = nil;
 
 + (BOOL) isSettingEnabled:(NSInteger)fingers
 {
-  return [[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", fingers]];
+  return [[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", (int)(fingers)]];
 }
 
 + (NSString*) getSettingName:(NSInteger)fingers
 {
-  return [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSetting%d", fingers]];
+  return [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSetting%d", (int)(fingers)]];
 }
 
 - (IBAction) set:(id)sender

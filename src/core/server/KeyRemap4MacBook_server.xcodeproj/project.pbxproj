@@ -446,7 +446,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
-				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
 		};
