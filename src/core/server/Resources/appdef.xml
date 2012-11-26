@@ -65,6 +65,8 @@
     <appname>FIREFOX</appname>
     <equal>org.mozilla.firefox</equal>
     <equal>org.mozilla.aurora</equal>
+    <!-- Firefox Nightly Builds -->
+    <equal>org.mozilla.nightly</equal>
   </appdef>
 
   <appdef>
