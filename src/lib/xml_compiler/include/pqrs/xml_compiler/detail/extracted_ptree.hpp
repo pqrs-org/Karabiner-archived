@@ -85,22 +85,32 @@ public:
   public:
     extracted_ptree_iterator(const extracted_ptree& extracted_ptree) :
       extracted_ptree_(extracted_ptree),
-      stack_size_(0)
-    {}
+      stack_size_(0),
+      node_(nullptr)
+    {
+      set_node_();
+    }
 
     extracted_ptree_iterator(const extracted_ptree& extracted_ptree,
                              const pqrs::string::replacement& replacement,
                              const boost::property_tree::ptree& pt) :
       extracted_ptree_(extracted_ptree),
-      stack_size_(extracted_ptree.stack_.size() + 1)
+      stack_size_(extracted_ptree.stack_.size() + 1),
+      node_(nullptr)
     {
       if (! pt.empty()) {
         extracted_ptree_.stack_.push(stack_data(pt, replacement));
         extract_include_();
       }
+      set_node_();
     }
 
     ~extracted_ptree_iterator(void) {
+      if (node_) {
+        delete node_;
+        node_ = nullptr;
+      }
+
       while (! ended_()) {
         auto& top = extracted_ptree_.stack_.top();
         top.it = top.end;
@@ -120,19 +130,15 @@ public:
       ++(top.it);
       collapse_();
       extract_include_();
+
+      set_node_();
     }
 
-    const node dereference(void) const {
-      if (ended_()) {
-        throw xml_compiler_logic_error("extracted_ptree_iterator::dereference is called with invalid iterator.");
+    const node& dereference(void) const {
+      if (! node_) {
+        throw xml_compiler_logic_error("node_ == nullptr in extracted_ptree_iterator::dereference.");
       }
-
-      auto& top = extracted_ptree_.stack_.top();
-      if (top.it == top.end) {
-        throw xml_compiler_logic_error("it == end in extracted_ptree_iterator::dereference.");
-      }
-
-      return node(*(top.it), extracted_ptree_, top.parent_replacement);
+      return *node_;
     }
 
     bool equal(const extracted_ptree_iterator const& other) const {
@@ -156,13 +162,31 @@ public:
       return false;
     }
 
-    void extract_include_(void) {
+    void set_node_(void) {
+      if (node_) {
+        delete node_;
+      }
+      node_ = nullptr;
+
+      if (ended_()) {
+        return;
+      }
+
+      const auto& top = extracted_ptree_.stack_.top();
+      if (top.it == top.end) {
+        return;
+      }
+
+      node_ = new node(*(top.it), extracted_ptree_, top.parent_replacement);
+    }
+
+    void extract_include_(void) const {
       if (ended_()) return;
 
-      auto& xml_compiler = extracted_ptree_.xml_compiler_;
+      const auto& xml_compiler = extracted_ptree_.xml_compiler_;
 
       auto& top = extracted_ptree_.stack_.top();
-      auto& it = *(top.it);
+      const auto& it = *(top.it);
 
       if (it.first != "include") return;
 
@@ -175,7 +199,7 @@ public:
       }
 
       auto end = replacement_ptr->end();
-      for (auto& i : top.parent_replacement) {
+      for (const auto& i : top.parent_replacement) {
         if (replacement_ptr->find(i.first) == end) {
           (*replacement_ptr)[i.first] = i.second;
         }
@@ -195,7 +219,7 @@ public:
       }
 
       if (! xml_file_path.empty()) {
-        for (auto& i : extracted_ptree_.included_files_) {
+        for (const auto& i : extracted_ptree_.included_files_) {
           if (i == xml_file_path) {
             xml_compiler.error_information_.set("An infinite include loop is detected:\n" + xml_file_path);
             return;
@@ -215,7 +239,7 @@ public:
 
           if (! pt_ptr->empty()) {
             auto root_node = pt_ptr->begin();
-            auto& root_children = root_node->second;
+            const auto& root_children = root_node->second;
             if (! root_children.empty()) {
               extracted_ptree_.stack_.push(stack_data(pt_ptr, replacement_ptr, root_children));
               extracted_ptree_.included_files_.push_back(xml_file_path);
@@ -228,11 +252,11 @@ public:
       }
     }
 
-    void collapse_(void) {
+    void collapse_(void) const {
       for (;;) {
         if (ended_()) break;
 
-        auto& top = extracted_ptree_.stack_.top();
+        const auto& top = extracted_ptree_.stack_.top();
         if (top.it != top.end) {
           break;
         }
@@ -254,7 +278,8 @@ public:
     }
 
     const extracted_ptree& extracted_ptree_;
-    size_t stack_size_;
+    const size_t stack_size_;
+    node* node_;
   };
 
   extracted_ptree_iterator begin(void) const {
