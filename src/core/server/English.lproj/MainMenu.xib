@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
+<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">11G63</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
-		<string key="IBDocument.AppKitVersion">1138.51</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2182</string>
+			<string key="NS.object.0">2549</string>
 		</object>
-		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>NSWindowTemplate</string>
-			<string>NSView</string>
-			<string>NSMenu</string>
+		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
+			<string>NSMenu</string>
 			<string>NSMenuItem</string>
-		</object>
-		<object class="NSArray" key="IBDocument.PluginDependencies">
-			<bool key="EncodedWithXMLCoder">YES</bool>
+			<string>NSView</string>
+			<string>NSWindowTemplate</string>
+		</array>
+		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-		</object>
+		</array>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
 			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
 			<integer value="1" key="NS.object.0"/>
 		</object>
-		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1048">
-			<bool key="EncodedWithXMLCoder">YES</bool>
+		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1048">
 			<object class="NSCustomObject" id="1021">
 				<string key="NSClassName">NSApplication</string>
 			</object>
@@ -52,7 +49,6 @@
 					<string key="NSFrameSize">{552, 168}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
@@ -69,8 +65,7 @@
 			</object>
 			<object class="NSMenu" id="269225066">
 				<string key="NSTitle"/>
-				<object class="NSMutableArray" key="NSMenuItems">
-					<bool key="EncodedWithXMLCoder">YES</bool>
+				<array class="NSMutableArray" key="NSMenuItems">
 					<object class="NSMenuItem" id="412271973">
 						<reference key="NSMenu" ref="269225066"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -111,7 +106,7 @@
 						<reference key="NSOnImage" ref="394260601"/>
 						<reference key="NSMixedImage" ref="345409186"/>
 					</object>
-				</object>
+				</array>
 			</object>
 			<object class="NSCustomObject" id="209217491">
 				<string key="NSClassName">Updater</string>
@@ -137,10 +132,9 @@
 			<object class="NSCustomObject" id="617719507">
 				<string key="NSClassName">DistributedNotificationSender</string>
 			</object>
-		</object>
+		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<object class="NSMutableArray" key="connectionRecords">
-				<bool key="EncodedWithXMLCoder">YES</bool>
+			<array class="NSMutableArray" key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
@@ -373,15 +367,12 @@
 					</object>
 					<int key="connectionID">610</int>
 				</object>
-			</object>
+			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
-				<object class="NSArray" key="orderedObjects">
-					<bool key="EncodedWithXMLCoder">YES</bool>
+				<array key="orderedObjects">
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<object class="NSArray" key="object" id="0">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
+						<array key="object" id="0"/>
 						<reference key="children" ref="1048"/>
 						<nil key="parent"/>
 					</object>
@@ -406,18 +397,15 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">371</int>
 						<reference key="object" ref="972006081"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
+						<array class="NSMutableArray" key="children">
 							<reference ref="439893737"/>
-						</object>
+						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">372</int>
 						<reference key="object" ref="439893737"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="972006081"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -438,13 +426,12 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">553</int>
 						<reference key="object" ref="269225066"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
+						<array class="NSMutableArray" key="children">
 							<reference ref="612725256"/>
 							<reference ref="668839771"/>
 							<reference ref="412271973"/>
 							<reference ref="974598314"/>
-						</object>
+						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -507,164 +494,93 @@
 						<reference key="object" ref="617719507"/>
 						<reference key="parent" ref="0"/>
 					</object>
-				</object>
+				</array>
 			</object>
-			<object class="NSMutableDictionary" key="flattenedProperties">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="NSArray" key="dict.sortedKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>-1.IBPluginDependency</string>
-					<string>-2.IBPluginDependency</string>
-					<string>-3.IBPluginDependency</string>
-					<string>371.IBPluginDependency</string>
-					<string>371.IBWindowTemplateEditedContentRect</string>
-					<string>371.NSWindowTemplate.visibleAtLaunch</string>
-					<string>372.IBPluginDependency</string>
-					<string>420.IBPluginDependency</string>
-					<string>494.IBPluginDependency</string>
-					<string>552.IBPluginDependency</string>
-					<string>553.IBPluginDependency</string>
-					<string>554.IBPluginDependency</string>
-					<string>555.IBPluginDependency</string>
-					<string>558.IBPluginDependency</string>
-					<string>586.IBPluginDependency</string>
-					<string>588.IBPluginDependency</string>
-					<string>591.IBPluginDependency</string>
-					<string>592.IBPluginDependency</string>
-					<string>593.IBPluginDependency</string>
-					<string>596.IBPluginDependency</string>
-					<string>600.IBPluginDependency</string>
-					<string>606.IBPluginDependency</string>
-					<string>625.IBPluginDependency</string>
-				</object>
-				<object class="NSArray" key="dict.values">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{449, 352}, {552, 168}}</string>
-					<boolean value="NO"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-				</object>
-			</object>
-			<object class="NSMutableDictionary" key="unlocalizedProperties">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<reference key="dict.sortedKeys" ref="0"/>
-				<reference key="dict.values" ref="0"/>
-			</object>
+			<dictionary class="NSMutableDictionary" key="flattenedProperties">
+				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="371.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="371.IBWindowTemplateEditedContentRect">{{449, 352}, {552, 168}}</string>
+				<boolean value="NO" key="371.NSWindowTemplate.visibleAtLaunch"/>
+				<string key="372.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="420.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="494.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="552.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="553.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="554.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="555.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="558.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="586.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="588.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="591.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="592.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="593.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="596.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="600.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="606.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="625.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+			</dictionary>
+			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
-			<object class="NSMutableDictionary" key="localizations">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<reference key="dict.sortedKeys" ref="0"/>
-				<reference key="dict.values" ref="0"/>
-			</object>
+			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
 			<int key="maxID">627</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<bool key="EncodedWithXMLCoder">YES</bool>
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">AppDelegate</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>clientForKernelspace</string>
-							<string>preferencesManager_</string>
-							<string>serverForUserspace_</string>
-							<string>statusWindow_</string>
-							<string>statusbar_</string>
-							<string>updater_</string>
-							<string>window</string>
-							<string>workSpaceData_</string>
-							<string>xmlCompiler_</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="clientForKernelspace">ClientForKernelspace</string>
+						<string key="preferencesManager_">PreferencesManager</string>
+						<string key="serverForUserspace_">ServerForUserspace</string>
+						<string key="statusWindow_">StatusWindow</string>
+						<string key="statusbar_">StatusBar</string>
+						<string key="updater_">Updater</string>
+						<string key="window">NSWindow</string>
+						<string key="workSpaceData_">WorkSpaceData</string>
+						<string key="xmlCompiler_">XMLCompiler</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="clientForKernelspace">
+							<string key="name">clientForKernelspace</string>
+							<string key="candidateClassName">ClientForKernelspace</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>ClientForKernelspace</string>
-							<string>PreferencesManager</string>
-							<string>ServerForUserspace</string>
-							<string>StatusWindow</string>
-							<string>StatusBar</string>
-							<string>Updater</string>
-							<string>NSWindow</string>
-							<string>WorkSpaceData</string>
-							<string>XMLCompiler</string>
+						<object class="IBToOneOutletInfo" key="preferencesManager_">
+							<string key="name">preferencesManager_</string>
+							<string key="candidateClassName">PreferencesManager</string>
 						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>clientForKernelspace</string>
-							<string>preferencesManager_</string>
-							<string>serverForUserspace_</string>
-							<string>statusWindow_</string>
-							<string>statusbar_</string>
-							<string>updater_</string>
-							<string>window</string>
-							<string>workSpaceData_</string>
-							<string>xmlCompiler_</string>
+						<object class="IBToOneOutletInfo" key="serverForUserspace_">
+							<string key="name">serverForUserspace_</string>
+							<string key="candidateClassName">ServerForUserspace</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">clientForKernelspace</string>
-								<string key="candidateClassName">ClientForKernelspace</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">preferencesManager_</string>
-								<string key="candidateClassName">PreferencesManager</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">serverForUserspace_</string>
-								<string key="candidateClassName">ServerForUserspace</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">statusWindow_</string>
-								<string key="candidateClassName">StatusWindow</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">statusbar_</string>
-								<string key="candidateClassName">StatusBar</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">updater_</string>
-								<string key="candidateClassName">Updater</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">window</string>
-								<string key="candidateClassName">NSWindow</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">workSpaceData_</string>
-								<string key="candidateClassName">WorkSpaceData</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">xmlCompiler_</string>
-								<string key="candidateClassName">XMLCompiler</string>
-							</object>
+						<object class="IBToOneOutletInfo" key="statusWindow_">
+							<string key="name">statusWindow_</string>
+							<string key="candidateClassName">StatusWindow</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="statusbar_">
+							<string key="name">statusbar_</string>
+							<string key="candidateClassName">StatusBar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="updater_">
+							<string key="name">updater_</string>
+							<string key="candidateClassName">Updater</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="window">
+							<string key="name">window</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workSpaceData_">
+							<string key="name">workSpaceData_</string>
+							<string key="candidateClassName">WorkSpaceData</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="xmlCompiler_">
+							<string key="name">xmlCompiler_</string>
+							<string key="candidateClassName">XMLCompiler</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/AppDelegate.h</string>
@@ -673,52 +589,30 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">ClientForKernelspace</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>preferencesManager_</string>
-							<string>statusWindow</string>
-							<string>workSpaceData</string>
-							<string>xmlCompiler_</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="preferencesManager_">PreferencesManager</string>
+						<string key="statusWindow">StatusWindow</string>
+						<string key="workSpaceData">WorkSpaceData</string>
+						<string key="xmlCompiler_">XMLCompiler</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="preferencesManager_">
+							<string key="name">preferencesManager_</string>
+							<string key="candidateClassName">PreferencesManager</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>PreferencesManager</string>
-							<string>StatusWindow</string>
-							<string>WorkSpaceData</string>
-							<string>XMLCompiler</string>
+						<object class="IBToOneOutletInfo" key="statusWindow">
+							<string key="name">statusWindow</string>
+							<string key="candidateClassName">StatusWindow</string>
 						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>preferencesManager_</string>
-							<string>statusWindow</string>
-							<string>workSpaceData</string>
-							<string>xmlCompiler_</string>
+						<object class="IBToOneOutletInfo" key="workSpaceData">
+							<string key="name">workSpaceData</string>
+							<string key="candidateClassName">WorkSpaceData</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">preferencesManager_</string>
-								<string key="candidateClassName">PreferencesManager</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">statusWindow</string>
-								<string key="candidateClassName">StatusWindow</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">workSpaceData</string>
-								<string key="candidateClassName">WorkSpaceData</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">xmlCompiler_</string>
-								<string key="candidateClassName">XMLCompiler</string>
-							</object>
+						<object class="IBToOneOutletInfo" key="xmlCompiler_">
+							<string key="name">xmlCompiler_</string>
+							<string key="candidateClassName">XMLCompiler</string>
 						</object>
-					</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/ClientForKernelspace.h</string>
@@ -754,52 +648,30 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">ServerForUserspace</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>clientForKernelspace_</string>
-							<string>preferencesManager_</string>
-							<string>updater_</string>
-							<string>xmlCompiler_</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="clientForKernelspace_">ClientForKernelspace</string>
+						<string key="preferencesManager_">PreferencesManager</string>
+						<string key="updater_">Updater</string>
+						<string key="xmlCompiler_">XMLCompiler</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="clientForKernelspace_">
+							<string key="name">clientForKernelspace_</string>
+							<string key="candidateClassName">ClientForKernelspace</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>ClientForKernelspace</string>
-							<string>PreferencesManager</string>
-							<string>Updater</string>
-							<string>XMLCompiler</string>
+						<object class="IBToOneOutletInfo" key="preferencesManager_">
+							<string key="name">preferencesManager_</string>
+							<string key="candidateClassName">PreferencesManager</string>
 						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>clientForKernelspace_</string>
-							<string>preferencesManager_</string>
-							<string>updater_</string>
-							<string>xmlCompiler_</string>
+						<object class="IBToOneOutletInfo" key="updater_">
+							<string key="name">updater_</string>
+							<string key="candidateClassName">Updater</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">clientForKernelspace_</string>
-								<string key="candidateClassName">ClientForKernelspace</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">preferencesManager_</string>
-								<string key="candidateClassName">PreferencesManager</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">updater_</string>
-								<string key="candidateClassName">Updater</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">xmlCompiler_</string>
-								<string key="candidateClassName">XMLCompiler</string>
-							</object>
+						<object class="IBToOneOutletInfo" key="xmlCompiler_">
+							<string key="name">xmlCompiler_</string>
+							<string key="candidateClassName">XMLCompiler</string>
 						</object>
-					</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/ServerForUserspace.h</string>
@@ -808,70 +680,34 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">StatusBar</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>launchEventViewer:</string>
-							<string>openPreferencePane:</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="launchEventViewer:">id</string>
+						<string key="openPreferencePane:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="launchEventViewer:">
+							<string key="name">launchEventViewer:</string>
+							<string key="candidateClassName">id</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
+						<object class="IBActionInfo" key="openPreferencePane:">
+							<string key="name">openPreferencePane:</string>
+							<string key="candidateClassName">id</string>
 						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>launchEventViewer:</string>
-							<string>openPreferencePane:</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="menu_">NSMenu</string>
+						<string key="preferencesManager_">PreferencesManager</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="menu_">
+							<string key="name">menu_</string>
+							<string key="candidateClassName">NSMenu</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">launchEventViewer:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">openPreferencePane:</string>
-								<string key="candidateClassName">id</string>
-							</object>
+						<object class="IBToOneOutletInfo" key="preferencesManager_">
+							<string key="name">preferencesManager_</string>
+							<string key="candidateClassName">PreferencesManager</string>
 						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>menu_</string>
-							<string>preferencesManager_</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSMenu</string>
-							<string>PreferencesManager</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>menu_</string>
-							<string>preferencesManager_</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">menu_</string>
-								<string key="candidateClassName">NSMenu</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">preferencesManager_</string>
-								<string key="candidateClassName">PreferencesManager</string>
-							</object>
-						</object>
-					</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/StatusBar.h</string>
@@ -899,38 +735,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">Updater</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>checkForUpdates:</string>
-							<string>checkForUpdatesInBackground:</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="checkForUpdates:">id</string>
+						<string key="checkForUpdatesInBackground:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="checkForUpdates:">
+							<string key="name">checkForUpdates:</string>
+							<string key="candidateClassName">id</string>
 						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
+						<object class="IBActionInfo" key="checkForUpdatesInBackground:">
+							<string key="name">checkForUpdatesInBackground:</string>
+							<string key="candidateClassName">id</string>
 						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>checkForUpdates:</string>
-							<string>checkForUpdatesInBackground:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">checkForUpdates:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">checkForUpdatesInBackground:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
+					</dictionary>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">preferencesManager_</string>
 						<string key="NS.object.0">PreferencesManager</string>
@@ -985,32 +803,23 @@
 						<string key="minorKey">./Classes/XMLCompiler.h</string>
 					</object>
 				</object>
-			</object>
+			</array>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1060" key="NS.object.0"/>
+			<real value="1060" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
-			<integer value="3000" key="NS.object.0"/>
+			<real value="4400" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>NSMenuCheckmark</string>
-				<string>NSMenuMixedState</string>
-			</object>
-			<object class="NSArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{11, 11}</string>
-				<string>{10, 3}</string>
-			</object>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NSMenuCheckmark">{11, 11}</string>
+			<string key="NSMenuMixedState">{10, 3}</string>
+		</dictionary>
 	</data>
 </archive>
