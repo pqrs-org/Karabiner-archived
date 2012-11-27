@@ -34,21 +34,21 @@
     <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::EXTRA5, KeyCode::ENTER</autogen> <!-- Different from Return on Mac OS. -->
 
     <!-- Numbers -->
-    <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::EXTRA4, KeyCode::KEYPAD_MINUS</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::EXTRA4, KeyCode::KEYPAD_9</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::EXTRA4, KeyCode::KEYPAD_8</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::EXTRA4, KeyCode::KEYPAD_7</autogen>
-    <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::EXTRA4, KeyCode::KEYPAD_MULTIPLY</autogen>
-    <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::EXTRA4, KeyCode::KEYPAD_PLUS</autogen>
-    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA4, KeyCode::KEYPAD_6</autogen>
-    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA4, KeyCode::KEYPAD_5</autogen>
-    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA4, KeyCode::KEYPAD_4</autogen>
-    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA4, KeyCode::KEYPAD_SLASH</autogen>
-    <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::EXTRA4, KeyCode::KEYPAD_DOT</autogen>
-    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA4, KeyCode::KEYPAD_3</autogen>
-    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA4, KeyCode::KEYPAD_2</autogen>
-    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA4, KeyCode::KEYPAD_1</autogen>
-    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA4, KeyCode::KEYPAD_0</autogen>
+    <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::EXTRA4, KeyCode::MINUS</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::EXTRA4, KeyCode::KEY_9</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::EXTRA4, KeyCode::KEY_8</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::EXTRA4, KeyCode::KEY_7</autogen>
+    <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::EXTRA4, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::EXTRA4, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
+    <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::EXTRA4, KeyCode::KEY_6</autogen>
+    <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::EXTRA4, KeyCode::KEY_5</autogen>
+    <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::EXTRA4, KeyCode::KEY_4</autogen>
+    <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::EXTRA4, KeyCode::SLASH</autogen>
+    <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::EXTRA4, KeyCode::DOT</autogen>
+    <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::EXTRA4, KeyCode::KEY_3</autogen>
+    <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA4, KeyCode::KEY_2</autogen>
+    <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::EXTRA4, KeyCode::KEY_1</autogen>
+    <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA4, KeyCode::KEY_0</autogen>
 
     <!-- Green symbols -->
     <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::EXTRA3 | ModifierFlag::EXTRA1, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
