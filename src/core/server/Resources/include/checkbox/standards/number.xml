@@ -18,15 +18,15 @@
         <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::KEY_0</autogen>
       </item>
       <item>
-	<name>Hold Space+ASDFGHJKL; to 1234567890</name>
-	<identifier>remap.space_to_homerow_numbers</identifier>
+        <name>Hold Space+ASDFGHJKL; to 1234567890</name>
+        <identifier>remap.space_to_homerow_numbers</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers, KeyCode::SPACE</autogen>
       </item>
       <item>
-	<name>Hold CMD_L+CMD_R+ASDFGHJKL; to 1234567890</name>
-	<identifier>remap.cmdcmd_to_homerow_numbers</identifier>
-	<autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
-	<autogen>--KeyToKey-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
+        <name>Hold CMD_L+CMD_R+ASDFGHJKL; to 1234567890</name>
+        <identifier>remap.cmdcmd_to_homerow_numbers</identifier>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
+        <autogen>--KeyToKey-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
       </item>
   </item>
   <item>
