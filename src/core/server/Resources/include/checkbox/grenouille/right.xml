@@ -9,8 +9,8 @@
     <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::VK_STICKY_EXTRA3</autogen> <!-- Symbol key -->
     <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::SHIFT_L, KeyCode::VK_STICKY_EXTRA3</autogen> <!-- Symbol key -->
     <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::EXTRA3, KeyCode::VK_LOCK_EXTRA3</autogen> <!-- Symbol key -->
-    <autogen>--KeyOverlaidModifier-- KeyCode::M, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::VK_STICKY_EXTRA4</autogen> <!-- Number key -->
-    <autogen>--KeyOverlaidModifier-- KeyCode::COMMA, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::VK_STICKY_EXTRA4</autogen> <!-- Number key -->
+    <autogen>--KeyOverlaidModifier-- KeyCode::M, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::VK_LOCK_EXTRA4</autogen> <!-- Number key -->
+    <autogen>--KeyOverlaidModifier-- KeyCode::COMMA, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::VK_LOCK_EXTRA4</autogen> <!-- Number key -->
     <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_STICKY_COMMAND_L </autogen>
     <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::VK_NONE</autogen> <!-- so we don't hit it by accident -->
 
