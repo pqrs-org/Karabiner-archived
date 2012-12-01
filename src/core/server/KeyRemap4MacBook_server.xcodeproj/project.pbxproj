@@ -13,8 +13,13 @@
 		3401D0DA1657CE6A00CF962F /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0D91657CE6A00CF962F /* Updater.m */; };
 		3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */; };
 		3401D0FF1658826200CF962F /* DistributedNotificationSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0FE1658826200CF962F /* DistributedNotificationSender.m */; };
+		3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3406F7101668ED7B00FE1E80 /* PreferencesController.m */; };
 		340A058F1302CE8B00B7E1B1 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		340B7E3F1545090D00FB3237 /* InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 340B7E3E1545090D00FB3237 /* InputSource.m */; };
+		34207C051666209F00E7FD08 /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207BFE1666209F00E7FD08 /* OutlineView_checkbox.m */; };
+		34207C061666209F00E7FD08 /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C001666209F00E7FD08 /* OutlineView_number.m */; };
+		34207C071666209F00E7FD08 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C021666209F00E7FD08 /* OutlineView.m */; };
+		34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C041666209F00E7FD08 /* TableView_configlist.m */; };
 		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
@@ -87,8 +92,19 @@
 		3401D0FB1658718100CF962F /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationKeys.h; path = Classes/NotificationKeys.h; sourceTree = "<group>"; };
 		3401D0FD1658826200CF962F /* DistributedNotificationSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistributedNotificationSender.h; path = Classes/DistributedNotificationSender.h; sourceTree = "<group>"; };
 		3401D0FE1658826200CF962F /* DistributedNotificationSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DistributedNotificationSender.m; path = Classes/DistributedNotificationSender.m; sourceTree = "<group>"; };
+		3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
+		3406F70F1668ED7B00FE1E80 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = Classes/Preferences/PreferencesController.h; sourceTree = "<group>"; };
+		3406F7101668ED7B00FE1E80 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = Classes/Preferences/PreferencesController.m; sourceTree = "<group>"; };
 		340B7E3D1545090D00FB3237 /* InputSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputSource.h; path = Classes/InputSource.h; sourceTree = "<group>"; };
 		340B7E3E1545090D00FB3237 /* InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputSource.m; path = Classes/InputSource.m; sourceTree = "<group>"; };
+		34207BFD1666209F00E7FD08 /* OutlineView_checkbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineView_checkbox.h; path = Classes/Preferences/OutlineView_checkbox.h; sourceTree = "<group>"; };
+		34207BFE1666209F00E7FD08 /* OutlineView_checkbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineView_checkbox.m; path = Classes/Preferences/OutlineView_checkbox.m; sourceTree = "<group>"; };
+		34207BFF1666209F00E7FD08 /* OutlineView_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineView_number.h; path = Classes/Preferences/OutlineView_number.h; sourceTree = "<group>"; };
+		34207C001666209F00E7FD08 /* OutlineView_number.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineView_number.m; path = Classes/Preferences/OutlineView_number.m; sourceTree = "<group>"; };
+		34207C011666209F00E7FD08 /* OutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineView.h; path = Classes/Preferences/OutlineView.h; sourceTree = "<group>"; };
+		34207C021666209F00E7FD08 /* OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineView.m; path = Classes/Preferences/OutlineView.m; sourceTree = "<group>"; };
+		34207C031666209F00E7FD08 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableView_configlist.h; path = Classes/Preferences/TableView_configlist.h; sourceTree = "<group>"; };
+		34207C041666209F00E7FD08 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableView_configlist.m; path = Classes/Preferences/TableView_configlist.m; sourceTree = "<group>"; };
 		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
 		343B2458153DCC7C0023BA6E /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = Resources/include; sourceTree = "<group>"; };
@@ -153,6 +169,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */,
+				34207BFB1666209100E7FD08 /* Preferences */,
 				3401D0FD1658826200CF962F /* DistributedNotificationSender.h */,
 				3401D0FE1658826200CF962F /* DistributedNotificationSender.m */,
 				3401D0FB1658718100CF962F /* NotificationKeys.h */,
@@ -276,6 +294,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		34207BFB1666209100E7FD08 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				3406F70F1668ED7B00FE1E80 /* PreferencesController.h */,
+				3406F7101668ED7B00FE1E80 /* PreferencesController.m */,
+				34207BFD1666209F00E7FD08 /* OutlineView_checkbox.h */,
+				34207BFE1666209F00E7FD08 /* OutlineView_checkbox.m */,
+				34207BFF1666209F00E7FD08 /* OutlineView_number.h */,
+				34207C001666209F00E7FD08 /* OutlineView_number.m */,
+				34207C011666209F00E7FD08 /* OutlineView.h */,
+				34207C021666209F00E7FD08 /* OutlineView.m */,
+				34207C031666209F00E7FD08 /* TableView_configlist.h */,
+				34207C041666209F00E7FD08 /* TableView_configlist.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -373,6 +408,11 @@
 				3401D0DA1657CE6A00CF962F /* Updater.m in Sources */,
 				3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */,
 				3401D0FF1658826200CF962F /* DistributedNotificationSender.m in Sources */,
+				34207C051666209F00E7FD08 /* OutlineView_checkbox.m in Sources */,
+				34207C061666209F00E7FD08 /* OutlineView_number.m in Sources */,
+				34207C071666209F00E7FD08 /* OutlineView.m in Sources */,
+				34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */,
+				3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

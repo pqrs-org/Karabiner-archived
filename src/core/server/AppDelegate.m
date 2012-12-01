@@ -234,4 +234,34 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [super dealloc];
 }
 
+// ------------------------------------------------------------
+- (IBAction) launchEventViewer:(id)sender
+{
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/EventViewer.app"];
+}
+
+- (IBAction) launchMultiTouchExtension:(id)sender
+{
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_multitouchextension.app"];
+}
+
+- (IBAction) launchUninstaller:(id)sender
+{
+  system("/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh");
+}
+
+- (IBAction) openPreferences:(id)sender
+{
+  [preferencesWindow_ makeKeyAndOrderFront:nil];
+}
+
+- (IBAction) openPrivateXML:(id)sender
+{
+  // Open a directory which contains private.xml.
+  NSString* path = [XMLCompiler get_private_xml_path];
+  if ([path length] > 0) {
+    [[NSWorkspace sharedWorkspace] openFile:[path stringByDeletingLastPathComponent]];
+  }
+}
+
 @end

@@ -20,7 +20,8 @@
   if (self) {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigListChanged:)
-                                                 name:kConfigListChangedNotification object:nil];
+                                                 name:kConfigListChangedNotification
+                                               object:nil];
   }
 
   return self;
@@ -112,16 +113,6 @@
     [menu insertItem:newItem atIndex:i];
     ++i;
   }
-}
-
-- (IBAction) openPreferencePane:(id)sender
-{
-  [[NSWorkspace sharedWorkspace] openFile:@"/Library/PreferencePanes/KeyRemap4MacBook.prefPane"];
-}
-
-- (IBAction) launchEventViewer:(id)sender
-{
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/EventViewer.app"];
 }
 
 @end

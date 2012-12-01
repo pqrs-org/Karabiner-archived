@@ -1,30 +1,19 @@
+#import "NotificationKeys.h"
 #import "OutlineView.h"
-#import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
+#import "PreferencesManager.h"
+#import "XMLCompiler.h"
 
-@implementation org_pqrs_KeyRemap4MacBook_OutlineView
+@implementation OutlineView
 
-- (void) distributedObserver_preferencesChanged:(NSNotification*)notification
+- (void) observer_PreferencesChanged:(NSNotification*)notification
 {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [outlineview_ reloadData];
-  }
-  [pool drain];
+  [outlineview_ reloadData];
 }
 
-- (void) distributedObserver_configXMLReloaded:(NSNotification*)notification
+- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [self load:YES];
-    [outlineview_ reloadData];
-  }
-  [pool drain];
+  [self load:YES];
+  [outlineview_ reloadData];
 }
 
 - (id) init
@@ -32,13 +21,15 @@
   self = [super init];
 
   if (self) {
-    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                  selector:@selector(distributedObserver_preferencesChanged:)
-                                                                      name:kKeyRemap4MacBookPreferencesChangedNotification];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_PreferencesChanged:)
+                                                 name:kPreferencesChangedNotification
+                                               object:nil];
 
-    [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                  selector:@selector(distributedObserver_configXMLReloaded:)
-                                                                      name:kKeyRemap4MacBookConfigXMLReloadedNotification];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_ConfigXMLReloaded:)
+                                                 name:kConfigXMLReloadedNotification
+                                               object:nil];
   }
 
   return self;
@@ -46,7 +37,7 @@
 
 - (void) dealloc
 {
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   [datasource_ release];
   [error_message_ release];
@@ -70,15 +61,15 @@
   if (datasource_) return;
 
   if (ischeckbox_) {
-    datasource_ = [[client_ proxy] preferencepane_checkbox];
+    datasource_ = [xmlCompiler_ preferencepane_checkbox];
   } else {
-    datasource_ = [[client_ proxy] preferencepane_number];
+    datasource_ = [xmlCompiler_ preferencepane_number];
   }
   if (datasource_) {
     [datasource_ retain];
   }
 
-  error_message_ = [[client_ proxy] preferencepane_error_message];
+  error_message_ = [xmlCompiler_ preferencepane_error_message];
   if (error_message_) {
     [error_message_ retain];
   }
@@ -175,7 +166,7 @@
 
     } else {
       [cell setImagePosition:NSImageLeft];
-      return [NSNumber numberWithInt:[[client_ proxy] value:identifier]];
+      return [NSNumber numberWithInt:[preferencesManager_ value:identifier]];
     }
 
   } else {
@@ -200,7 +191,7 @@
         return nil;
       } else {
         [cell setEditable:YES];
-        return [NSNumber numberWithInt:[[client_ proxy] value:identifier]];
+        return [NSNumber numberWithInt:[preferencesManager_ value:identifier]];
       }
     }
   }
@@ -215,10 +206,7 @@
   }
 
   // ----------------------------------------
-  NSNumber* number = [item objectForKey:@"cached_height"];
-  if (number) return [number floatValue];
-
-  number = [item objectForKey:@"height"];
+  NSNumber* number = [item objectForKey:@"height"];
   if (! number || [number intValue] == 0) {
     number = [NSNumber numberWithDouble:[outlineView rowHeight]];
   } else {
@@ -239,9 +227,9 @@
   if (ischeckbox_) {
     if (identifier) {
       if (! [identifier hasPrefix:@"notsave."]) {
-        int value = [[client_ proxy] value:identifier];
+        int value = [preferencesManager_ value:identifier];
         value = ! value;
-        [[client_ proxy] setValueForName:value forName:identifier];
+        [preferencesManager_ setValueForName:value forName:identifier];
       }
     } else {
       // expand/collapse tree
@@ -258,10 +246,10 @@
     if (identifier) {
       NSString* columnIdentifier = [tableColumn identifier];
       if ([columnIdentifier isEqualToString:@"value"]) {
-        [[client_ proxy] setValueForName:[object intValue] forName:identifier];
+        [preferencesManager_ setValueForName:[object intValue] forName:identifier];
 
       } else if ([columnIdentifier isEqualToString:@"stepper"]) {
-        int newvalue = [[client_ proxy] value:identifier];
+        int newvalue = [preferencesManager_ value:identifier];
         NSNumber* step = [item objectForKey:@"step"];
         newvalue += ([object intValue] * [step intValue]);
 
@@ -272,7 +260,7 @@
           newvalue = 1073741824;
         }
 
-        [[client_ proxy] setValueForName:newvalue forName:identifier];
+        [preferencesManager_ setValueForName:newvalue forName:identifier];
 
         [outlineView reloadItem:item];
       }
@@ -309,7 +297,7 @@
     if (! identifier) {
       return nil;
     }
-    if (! [[client_ proxy] value:identifier]) {
+    if (! [preferencesManager_ value:identifier]) {
       return nil;
     }
   }

@@ -2,7 +2,7 @@
 
 #import "OutlineView_number.h"
 
-@implementation org_pqrs_KeyRemap4MacBook_OutlineView_number
+@implementation OutlineView_number
 
 - (id) init
 {

@@ -22,6 +22,7 @@
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
   IBOutlet ClientForKernelspace* clientForKernelspace;
+  IBOutlet NSWindow* preferencesWindow_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet ServerForUserspace* serverForUserspace_;
   IBOutlet StatusBar* statusbar_;
@@ -33,5 +34,11 @@
 
 @property (assign) IBOutlet NSWindow* window;
 @property (assign) ClientForKernelspace* clientForKernelspace;
+
+- (IBAction) launchEventViewer:(id)sender;
+- (IBAction) launchMultiTouchExtension:(id)sender;
+- (IBAction) launchUninstaller:(id)sender;
+- (IBAction) openPreferences:(id)sender;
+- (IBAction) openPrivateXML:(id)sender;
 
 @end

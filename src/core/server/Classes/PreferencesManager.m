@@ -389,4 +389,10 @@
   // [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+// ----------------------------------------------------------------------
+- (IBAction) sendConfigListChangedNotification:(id)sender
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
+}
+
 @end
