@@ -4,14 +4,14 @@
 
 @class PreferencesManager;
 
-@interface StatusBar : NSObject {
-  NSStatusItem* statusItem_;
-
-  IBOutlet NSMenu* menu_;
+@interface TableView_configlist : NSObject
+{
+  @private
+  IBOutlet NSTableView* view_;
   IBOutlet PreferencesManager* preferencesManager_;
 }
 
-- (void) refresh;
-- (void) statusBarItemSelected:(id)sender;
+- (IBAction) add:(id)sender;
+- (IBAction) delete:(id)sender;
 
 @end

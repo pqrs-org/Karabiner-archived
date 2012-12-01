@@ -42,4 +42,6 @@
 - (NSInteger) checkForUpdatesMode;
 - (void) setCheckForUpdatesMode:(NSInteger)newval;
 
+- (IBAction) sendConfigListChangedNotification:(id)sender;
+
 @end
