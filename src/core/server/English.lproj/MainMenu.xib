@@ -254,7 +254,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{398, 285}, {668, 600}}</string>
 				<int key="NSWTFlags">1886912512</int>
-				<string key="NSWindowTitle">Preferences</string>
+				<string key="NSWindowTitle">KeyRemap4MacBook</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<object class="NSMutableString" key="NSViewClass">
 					<characters key="NS.bytes">View</characters>
@@ -270,6 +270,7 @@
 							<string key="NSFrame">{{13, 10}, {642, 584}}</string>
 							<reference key="NSSuperview" ref="1032999380"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="797821386"/>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="749391062">
 									<string key="NSIdentifier">1</string>
@@ -396,7 +397,7 @@
 																<string key="NSFrameSize">{571, 473}</string>
 																<reference key="NSSuperview" ref="551102552"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="348401601"/>
+																<reference key="NSNextKeyView" ref="70039424"/>
 																<bool key="NSEnabled">YES</bool>
 																<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 																<bool key="NSControlAllowsExpansionToolTips">YES</bool>
@@ -508,6 +509,7 @@
 														<string key="NSFrame">{{572, 17}, {15, 473}}</string>
 														<reference key="NSSuperview" ref="245622156"/>
 														<reference key="NSWindow"/>
+														<reference key="NSNextKeyView"/>
 														<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 														<reference key="NSTarget" ref="245622156"/>
 														<string key="NSAction">_doScroller:</string>
@@ -546,7 +548,7 @@
 												<string key="NSFrame">{{17, 17}, {588, 491}}</string>
 												<reference key="NSSuperview" ref="797821386"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="551102552"/>
+												<reference key="NSNextKeyView" ref="348401601"/>
 												<int key="NSsFlags">133138</int>
 												<reference key="NSVScroller" ref="70039424"/>
 												<reference key="NSHScroller" ref="348401601"/>
