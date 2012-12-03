@@ -15,6 +15,9 @@ echo "Copy Files"
 rm -rf pkgroot
 mkdir -p pkgroot
 
+mkdir -p "pkgroot/Applications"
+cp -R "src/core/server/build/Release/KeyRemap4MacBook.app" "pkgroot/Applications"
+
 basedir="/Library/org.pqrs/KeyRemap4MacBook"
 
 mkdir -p                                                "pkgroot/$basedir"
@@ -35,14 +38,10 @@ mkdir -p                                                                        
 cp -R "src/bin/dump_xml_compiler_result/build/Release/dump_xml_compiler_result" "pkgroot/$basedir/bin"
 
 mkdir -p                                                                                    "pkgroot/$basedir/app"
-cp -R "src/core/server/build/Release/KeyRemap4MacBook.app"                                  "pkgroot/$basedir/app"
 cp -R "src/util/EventViewer/build/Release/EventViewer.app"                                  "pkgroot/$basedir/app"
 cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
 cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app"                                 "pkgroot/$basedir/app"
 cp -R "src/util/uninstaller/automator/KeyRemap4MacBookUninstaller.app"                      "pkgroot/$basedir/app"
-
-mkdir -p                                                          "pkgroot/Library/PreferencePanes"
-cp -R "src/util/prefpane/build/Release/KeyRemap4MacBook.prefPane" "pkgroot/Library/PreferencePanes"
 
 # Setting file permissions.
 #

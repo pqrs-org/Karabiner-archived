@@ -84,7 +84,7 @@ main(int argc, const char* argv[])
     std::cerr << "Usage: " << argv[0] << " system_xml_directory private_xml_directory command" << std::endl
               << std::endl
               << "Example: " << argv[0]
-              << " /Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook.app/Contents/Resources"
+              << " /Applications/KeyRemap4MacBook.app/Contents/Resources"
               << " ~/Library/Application\\ Support/KeyRemap4MacBook"
               << " dump_data"
               << std::endl;

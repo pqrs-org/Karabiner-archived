@@ -6,7 +6,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 for f in \
     /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist \
     /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.load.plist \
-    /Library/PreferencePanes/KeyRemap4MacBook.prefPane \
+    /Applications/KeyRemap4MacBook.app \
     /Library/org.pqrs \
     ; do
     echo "set file permissions: $f"

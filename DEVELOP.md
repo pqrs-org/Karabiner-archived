@@ -27,11 +27,6 @@ Main components
 * KeyRemap4MacBook.app (Userspace Application)
 
 
-Sub components
---------------
-* KeyRemap4MacBook.prefPane (PreferencePane)
-
-
 Source code dependencies
 ------------------------
 <pre>
