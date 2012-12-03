@@ -227,6 +227,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [updater_ checkForUpdatesInBackground:nil];
 }
 
+- (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
+{
+  [preferencesController_ show];
+  return YES;
+}
+
 - (void) dealloc
 {
   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
