@@ -89,7 +89,9 @@
 /* ---------------------------------------------------------------------- */
 - (void) show
 {
-  [preferencesWindow_ makeKeyAndOrderFront:nil];
+  [preferencesWindow_ performSelectorOnMainThread:@selector(makeKeyAndOrderFront:)
+                                       withObject:nil
+                                    waitUntilDone:YES];
 }
 
 @end
