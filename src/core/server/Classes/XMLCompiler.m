@@ -12,7 +12,7 @@
   NSAlert* alert = [[NSAlert new] autorelease];
   [alert setMessageText:@"KeyRemap4MacBook Error"];
   [alert addButtonWithTitle:@"Close"];
-  [alert addButtonWithTitle:@"Open PreferencePane"];
+  [alert addButtonWithTitle:@"Preferences..."];
   [alert setInformativeText:[self preferencepane_error_message]];
 
   NSInteger response = [alert runModal];

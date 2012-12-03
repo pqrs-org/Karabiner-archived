@@ -3,6 +3,7 @@
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
+#import "PreferencesController.h"
 #import "ServerForUserspace.h"
 #import "StatusBar.h"
 #import "StatusWindow.h"
@@ -252,7 +253,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (IBAction) openPreferences:(id)sender
 {
-  [preferencesWindow_ makeKeyAndOrderFront:nil];
+  [preferencesController_ show];
 }
 
 - (IBAction) openPrivateXML:(id)sender

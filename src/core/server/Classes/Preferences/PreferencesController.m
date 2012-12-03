@@ -80,12 +80,16 @@
 }
 
 /* ---------------------------------------------------------------------- */
-#if 0
-- (void) mainViewDidLoad
+- (void) windowDidBecomeMain:(NSNotification*)notification
 {
   [self drawVersion];
   [self drawEnabledCount];
 }
-#endif
+
+/* ---------------------------------------------------------------------- */
+- (void) show
+{
+  [preferencesWindow_ makeKeyAndOrderFront:nil];
+}
 
 @end

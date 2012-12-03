@@ -4,6 +4,7 @@
 #include "bridge.h"
 
 @class ClientForKernelspace;
+@class PreferencesController;
 @class PreferencesManager;
 @class ServerForUserspace;
 @class StatusBar;
@@ -22,7 +23,7 @@
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
   IBOutlet ClientForKernelspace* clientForKernelspace;
-  IBOutlet NSWindow* preferencesWindow_;
+  IBOutlet PreferencesController* preferencesController_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet ServerForUserspace* serverForUserspace_;
   IBOutlet StatusBar* statusbar_;
