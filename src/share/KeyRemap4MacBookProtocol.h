@@ -24,11 +24,6 @@
 - (void)          configlist_append;
 - (void)          configlist_delete:(NSInteger)rowIndex;
 
-- (BOOL) isStatusbarEnable;
-- (BOOL) isShowSettingNameInStatusBar;
-- (void) toggleStatusbarEnable;
-- (void) toggleShowSettingNameInStatusBar;
-
 - (void) configxml_reload;
 
 - (NSArray*) device_information:(NSInteger)type;
