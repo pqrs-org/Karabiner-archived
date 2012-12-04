@@ -12,6 +12,11 @@
   [self drawEnabledCount];
 }
 
+- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
+{
+  [self drawEnabledCount];
+}
+
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
   [self drawEnabledCount];
@@ -25,6 +30,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigListChanged:)
                                                  name:kConfigListChangedNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_ConfigXMLReloaded:)
+                                                 name:kConfigXMLReloadedNotification
                                                object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -92,6 +102,7 @@
   [preferencesWindow_ performSelectorOnMainThread:@selector(makeKeyAndOrderFront:)
                                        withObject:nil
                                     waitUntilDone:YES];
+  [NSApp activateIgnoringOtherApps:YES];
 }
 
 @end
