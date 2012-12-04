@@ -5,57 +5,25 @@
 
 @implementation PreferencesController
 
-NSDictionary* defaults_dictionary = nil;
-
 + (void) initialize
 {
-  defaults_dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                         [NSNumber numberWithBool:NO],
-                         @"hideIconInDock",
-
-                         [NSNumber numberWithBool:YES],
-                         @"relaunchAfterWakeUpFromSleep",
-
-                         [NSNumber numberWithBool:YES],
-                         @"targetSettingIsEnabled1",
-
-                         [NSNumber numberWithBool:NO],
-                         @"targetSettingIsEnabled2",
-
-                         [NSNumber numberWithBool:NO],
-                         @"targetSettingIsEnabled3",
-
-                         [NSNumber numberWithBool:NO],
-                         @"targetSettingIsEnabled4",
-
-                         @"notsave.thumbsense",
-                         @"targetSetting1",
-
-                         @"notsave.enhanced_copyandpaste",
-                         @"targetSetting2",
-
-                         @"notsave.pointing_relative_to_scroll",
-                         @"targetSetting3",
-
-                         @"notsave.pointing_relative_to_scroll",
-                         @"targetSetting4",
-
-                         @"0",
-                         @"ignoredAreaTop",
-
-                         @"0",
-                         @"ignoredAreaBottom",
-
-                         @"0",
-                         @"ignoredAreaLeft",
-
-                         @"0",
-                         @"ignoredAreaRight",
-
-                         nil];
-  [defaults_dictionary retain];
-
-  [[NSUserDefaults standardUserDefaults] registerDefaults:defaults_dictionary];
+  NSDictionary* dict = @ {
+    @"hideIconInDock" : @NO,
+    @"relaunchAfterWakeUpFromSleep" : @YES,
+    @"targetSettingIsEnabled1" : @YES,
+    @"targetSettingIsEnabled2" : @NO,
+    @"targetSettingIsEnabled3" : @NO,
+    @"targetSettingIsEnabled4" : @NO,
+    @"targetSetting1" : @"notsave.thumbsense",
+    @"targetSetting2" : @"notsave.enhanced_copyandpaste",
+    @"targetSetting3" : @"notsave.pointing_relative_to_scroll",
+    @"targetSetting4" : @"notsave.pointing_relative_to_scroll",
+    @"ignoredAreaTop"    : @"0",
+    @"ignoredAreaBottom" : @"0",
+    @"ignoredAreaLeft"   : @"0",
+    @"ignoredAreaRight"  : @"0",
+  };
+  [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
 - (id) init
