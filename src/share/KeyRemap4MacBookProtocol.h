@@ -31,15 +31,6 @@
 
 - (void) configxml_reload;
 
-- (NSArray*) preferencepane_checkbox;
-- (NSArray*) preferencepane_number;
-- (int) preferencepane_enabled_count;
-- (NSString*) preferencepane_error_message;
-- (NSString*) preferencepane_get_private_xml_path;
-- (NSString*) preferencepane_version;
-
-- (void) checkForUpdates;
-
 - (NSArray*) device_information:(NSInteger)type;
 
 @end
