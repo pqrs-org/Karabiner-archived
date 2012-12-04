@@ -244,7 +244,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (IBAction) launchEventViewer:(id)sender
 {
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/EventViewer.app"];
+  NSString* path = @"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app";
+  [[NSWorkspace sharedWorkspace] launchApplication:path];
 }
 
 - (IBAction) launchMultiTouchExtension:(id)sender

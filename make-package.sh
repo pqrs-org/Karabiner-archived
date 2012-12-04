@@ -18,8 +18,11 @@ mkdir -p pkgroot
 mkdir -p "pkgroot/Applications"
 cp -R "src/core/server/build/Release/KeyRemap4MacBook.app" "pkgroot/Applications"
 
-basedir="/Library/org.pqrs/KeyRemap4MacBook"
+basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Applications"
+mkdir -p "$basedir"
+cp -R "src/util/EventViewer/build/Release/EventViewer.app" "$basedir"
 
+basedir="/Library/org.pqrs/KeyRemap4MacBook"
 mkdir -p                                                "pkgroot/$basedir"
 cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
 cp -R files/scripts                                     "pkgroot/$basedir"
@@ -38,7 +41,6 @@ mkdir -p                                                                        
 cp -R "src/bin/dump_xml_compiler_result/build/Release/dump_xml_compiler_result" "pkgroot/$basedir/bin"
 
 mkdir -p                                                                                    "pkgroot/$basedir/app"
-cp -R "src/util/EventViewer/build/Release/EventViewer.app"                                  "pkgroot/$basedir/app"
 cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
 cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app"                                 "pkgroot/$basedir/app"
 cp -R "src/util/uninstaller/automator/KeyRemap4MacBookUninstaller.app"                      "pkgroot/$basedir/app"
