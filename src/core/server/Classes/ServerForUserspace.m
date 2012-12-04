@@ -57,11 +57,6 @@
   [preferencesManager_ setValueForName:newval forName:name];
 }
 
-- (NSArray*) essential_config
-{
-  return [preferencesManager_ essential_config];
-}
-
 - (NSDictionary*) changed
 {
   return [preferencesManager_ changed];
@@ -73,59 +68,14 @@
   return [preferencesManager_ configlist_selectedIndex];
 }
 
-- (NSString*) configlist_selectedName
-{
-  return [preferencesManager_ configlist_selectedName];
-}
-
-- (NSString*) configlist_selectedIdentifier
-{
-  return [preferencesManager_ configlist_selectedIdentifier];
-}
-
 - (NSArray*) configlist_getConfigList
 {
   return [preferencesManager_ configlist_getConfigList];
 }
 
-- (NSUInteger) configlist_count
-{
-  return [preferencesManager_ configlist_count];
-}
-
-- (NSDictionary*) configlist_dictionary:(NSInteger)rowIndex
-{
-  return [preferencesManager_ configlist_dictionary:rowIndex];
-}
-
-- (NSString*) configlist_name:(NSInteger)rowIndex
-{
-  return [preferencesManager_ configlist_name:rowIndex];
-}
-
-- (NSString*) configlist_identifier:(NSInteger)rowIndex
-{
-  return [preferencesManager_ configlist_identifier:rowIndex];
-}
-
 - (void) configlist_select:(NSInteger)newIndex
 {
   [preferencesManager_ configlist_select:newIndex];
-}
-
-- (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
-{
-  [preferencesManager_ configlist_setName:rowIndex name:name];
-}
-
-- (void) configlist_append
-{
-  [preferencesManager_ configlist_append];
-}
-
-- (void) configlist_delete:(NSInteger)rowIndex
-{
-  [preferencesManager_ configlist_delete:rowIndex];
 }
 
 // ----------------------------------------------------------------------
