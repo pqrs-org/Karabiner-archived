@@ -29,9 +29,6 @@
 - (void) toggleStatusbarEnable;
 - (void) toggleShowSettingNameInStatusBar;
 
-- (NSInteger) checkForUpdatesMode;
-- (void) setCheckForUpdatesMode:(NSInteger)newval;
-
 - (void) configxml_reload;
 
 - (NSArray*) preferencepane_checkbox;

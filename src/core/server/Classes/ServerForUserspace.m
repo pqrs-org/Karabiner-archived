@@ -149,17 +149,6 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSInteger) checkForUpdatesMode
-{
-  return [preferencesManager_ checkForUpdatesMode];
-}
-
-- (void) setCheckForUpdatesMode:(NSInteger)newval
-{
-  return [preferencesManager_ setCheckForUpdatesMode:newval];
-}
-
-// ----------------------------------------------------------------------
 - (void) configxml_reload
 {
   [xmlCompiler_ reload];
