@@ -345,44 +345,6 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
-- (BOOL) isStatusbarEnable
-{
-  // If the key does not exist, treat as YES.
-  id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"isStatusbarEnable"];
-  if (! object) return YES;
-
-  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isStatusbarEnable"];
-  return value ? YES : NO;
-}
-
-- (BOOL) isShowSettingNameInStatusBar
-{
-  NSInteger value = [[NSUserDefaults standardUserDefaults] integerForKey:@"isShowSettingNameInStatusBar"];
-  return value ? YES : NO;
-}
-
-- (void) toggleStatusbarEnable
-{
-  if ([self isStatusbarEnable]) {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isStatusbarEnable"];
-  } else {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isStatusbarEnable"];
-  }
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
-}
-
-- (void) toggleShowSettingNameInStatusBar
-{
-  if ([self isShowSettingNameInStatusBar]) {
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isShowSettingNameInStatusBar"];
-  } else {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isShowSettingNameInStatusBar"];
-  }
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
-}
-
 // ----------------------------------------------------------------------
 - (NSInteger) checkForUpdatesMode
 {

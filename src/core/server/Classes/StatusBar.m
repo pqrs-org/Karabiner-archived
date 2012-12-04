@@ -1,6 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import "NotificationKeys.h"
+#import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "StatusBar.h"
 
@@ -36,7 +37,7 @@
 
 - (void) refresh
 {
-  if (! [preferencesManager_ isStatusbarEnable]) {
+  if (! [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled]) {
     if (statusItem_) {
       [[NSStatusBar systemStatusBar] removeStatusItem:statusItem_];
       [statusItem_ release];
@@ -58,7 +59,7 @@
     }
 
     // setTitle
-    if (! [preferencesManager_ isShowSettingNameInStatusBar]) {
+    if (! [[NSUserDefaults standardUserDefaults] boolForKey:kIsShowSettingNameInStatusBar]) {
       [statusItem_ setTitle:@""];
       [statusItem_ setLength:24];
 

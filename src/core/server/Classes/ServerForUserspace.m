@@ -128,26 +128,6 @@
   [preferencesManager_ configlist_delete:rowIndex];
 }
 
-- (BOOL) isStatusbarEnable
-{
-  return [preferencesManager_ isStatusbarEnable];
-}
-
-- (BOOL) isShowSettingNameInStatusBar
-{
-  return [preferencesManager_ isShowSettingNameInStatusBar];
-}
-
-- (void) toggleStatusbarEnable
-{
-  return [preferencesManager_ toggleStatusbarEnable];
-}
-
-- (void) toggleShowSettingNameInStatusBar
-{
-  return [preferencesManager_ toggleShowSettingNameInStatusBar];
-}
-
 // ----------------------------------------------------------------------
 - (void) configxml_reload
 {
