@@ -1,9 +1,19 @@
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
+#import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #include <sys/time.h>
 
 @implementation PreferencesManager
+
+// ----------------------------------------
++ (void) initialize
+{
+  NSDictionary* dict = @ { kIsStatusBarEnabled : @YES,
+                           kIsShowSettingNameInStatusBar : @NO,
+                           kCheckForUpdates : @1, };
+  [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+}
 
 // ----------------------------------------
 - (void) addToDefault:(NSXMLElement*)element
@@ -376,17 +386,7 @@
 // ----------------------------------------------------------------------
 - (NSInteger) checkForUpdatesMode
 {
-  // If the key does not exist, treat as "The stable release only".
-  if (! [[NSUserDefaults standardUserDefaults] objectForKey:@"isCheckUpdate"]) {
-    return 1;
-  }
-  return [[NSUserDefaults standardUserDefaults] integerForKey:@"isCheckUpdate"];
-}
-
-- (void) setCheckForUpdatesMode:(NSInteger)newval
-{
-  [[NSUserDefaults standardUserDefaults] setInteger:newval forKey:@"isCheckUpdate"];
-  // [[NSUserDefaults standardUserDefaults] synchronize];
+  return [[NSUserDefaults standardUserDefaults] integerForKey:kCheckForUpdates];
 }
 
 // ----------------------------------------------------------------------

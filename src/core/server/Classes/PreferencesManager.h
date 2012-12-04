@@ -40,7 +40,6 @@
 - (void) toggleShowSettingNameInStatusBar;
 
 - (NSInteger) checkForUpdatesMode;
-- (void) setCheckForUpdatesMode:(NSInteger)newval;
 
 - (IBAction) sendConfigListChangedNotification:(id)sender;
 
