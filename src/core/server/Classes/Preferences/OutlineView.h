@@ -19,6 +19,7 @@
 - (void) load:(BOOL)force;
 - (void) filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 
+- (void) observer_ConfigListChanged:(NSNotification*)notification;
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification;
 
 @end
