@@ -10,6 +10,11 @@
   [outlineview_ reloadData];
 }
 
+- (void) observer_ConfigListChanged:(NSNotification*)notification
+{
+  [outlineview_ reloadData];
+}
+
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
   [self load:YES];
@@ -24,6 +29,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_PreferencesChanged:)
                                                  name:kPreferencesChangedNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_ConfigListChanged:)
+                                                 name:kConfigListChangedNotification
                                                object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self

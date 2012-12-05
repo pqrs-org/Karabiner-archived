@@ -16,6 +16,12 @@
   return self;
 }
 
+- (void) observer_ConfigListChanged:(NSNotification*)notification
+{
+  [super observer_ConfigListChanged:notification];
+  [self filter:nil];
+}
+
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
   [super observer_ConfigXMLReloaded:notification];
