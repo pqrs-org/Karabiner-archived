@@ -250,7 +250,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (IBAction) launchMultiTouchExtension:(id)sender
 {
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Library/org.pqrs/KeyRemap4MacBook/app/KeyRemap4MacBook_multitouchextension.app"];
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"];
 }
 
 - (IBAction) launchUninstaller:(id)sender
