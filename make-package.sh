@@ -20,7 +20,15 @@ cp -R "src/core/server/build/Release/KeyRemap4MacBook.app" "pkgroot/Applications
 
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Applications"
 mkdir -p "$basedir"
-cp -R "src/util/EventViewer/build/Release/EventViewer.app" "$basedir"
+for d in \
+    src/util/EventViewer/build/Release/EventViewer.app \
+    src/util/cli/build/Release/KeyRemap4MacBook_cli.app \
+    src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app \
+    src/util/uninstaller/automator/KeyRemap4MacBookUninstaller.app \
+    ;
+do
+    cp -R "$d" "$basedir"
+done
 
 basedir="/Library/org.pqrs/KeyRemap4MacBook"
 mkdir -p                                                "pkgroot/$basedir"
@@ -36,11 +44,6 @@ cp -R files/extra/uninstall.sh         "pkgroot/$basedir/extra/"
 mkdir -p                  "pkgroot/Library"
 cp -R files/LaunchDaemons "pkgroot/Library"
 cp -R files/LaunchAgents  "pkgroot/Library"
-
-mkdir -p                                                                                    "pkgroot/$basedir/app"
-cp -R "src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app" "pkgroot/$basedir/app"
-cp -R "src/util/cli/build/Release/KeyRemap4MacBook_cli.app"                                 "pkgroot/$basedir/app"
-cp -R "src/util/uninstaller/automator/KeyRemap4MacBookUninstaller.app"                      "pkgroot/$basedir/app"
 
 # Setting file permissions.
 #
