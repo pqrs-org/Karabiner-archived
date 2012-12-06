@@ -1,7 +1,7 @@
 #!/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
-basedir="/Library/org.pqrs/KeyRemap4MacBook"
+basedir="/Applications/KeyRemap4MacBook.app/Contents/Library/scripts"
 
 argument="$1"
 [ -z "$argument" ] && argument=start
@@ -9,17 +9,17 @@ case "$argument" in
     start)
         echo "Starting KeyRemap4MacBook"
         sleep 10 # wait for avoid kext loading collision.
-        $basedir/scripts/load.sh
+        $basedir/load.sh
         ;;
 
     quickstart)
         echo "Starting KeyRemap4MacBook"
-        $basedir/scripts/load.sh
+        $basedir/load.sh
         ;;
 
     stop)
         echo "Stopping KeyRemap4MacBook"
-        $basedir/scripts/unload.sh
+        $basedir/unload.sh
         ;;
 
     *)

@@ -30,20 +30,37 @@ do
     cp -R "$d" "$basedir"
 done
 
-basedir="/Library/org.pqrs/KeyRemap4MacBook"
-mkdir -p                                                "pkgroot/$basedir"
-cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "pkgroot/$basedir"
-cp -R files/scripts                                     "pkgroot/$basedir"
+basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library"
+mkdir -p "$basedir"
+for d in \
+    src/core/kext/build/Release/KeyRemap4MacBook.kext \
+    files/scripts \
+    ;
+do
+    cp -R "$d" "$basedir"
+done
 
-mkdir -p                               "pkgroot/$basedir/extra"
-cp -R pkginfo/Resources/preflight      "pkgroot/$basedir/extra/uninstall_core.sh"
-cp -R files/extra/launchUninstaller.sh "pkgroot/$basedir/extra/"
-cp -R files/extra/setpermissions.sh    "pkgroot/$basedir/extra/"
-cp -R files/extra/uninstall.sh         "pkgroot/$basedir/extra/"
+basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/extra"
+mkdir -p "$basedir"
+for f in \
+    pkginfo/Resources/preflight \
+    files/extra/launchUninstaller.sh \
+    files/extra/setpermissions.sh \
+    files/extra/uninstall.sh \
+    ;
+do
+    cp -R "$f" "$basedir"
+done
 
-mkdir -p                  "pkgroot/Library"
-cp -R files/LaunchDaemons "pkgroot/Library"
-cp -R files/LaunchAgents  "pkgroot/Library"
+basedir="pkgroot/Library"
+mkdir -p "$basedir"
+for d in \
+    files/LaunchDaemons \
+    files/LaunchAgents \
+    ;
+do
+    cp -R "$d" "$basedir"
+done
 
 # Setting file permissions.
 #

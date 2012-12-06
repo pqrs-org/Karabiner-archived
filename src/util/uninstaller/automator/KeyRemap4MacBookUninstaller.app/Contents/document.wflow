@@ -55,9 +55,9 @@
 	display dialog "Are you sure you want to remove KeyRemap4MacBook?" buttons {"Cancel", "OK"}
 	if the button returned of the result is "OK" then
 		try
-			do shell script "test -f /Library/org.pqrs/KeyRemap4MacBook/extra/uninstall.sh"
+			do shell script "test -f /Applications/KeyRemap4MacBook.app/Contents/Library/extra/uninstall.sh"
 			try
-				do shell script "/Library/org.pqrs/KeyRemap4MacBook/extra/uninstall.sh" with administrator privileges
+				do shell script "/Applications/KeyRemap4MacBook.app/Contents/Library/extra/uninstall.sh" with administrator privileges
 				display alert "KeyRemap4MacBook has been uninstalled.
 Please restart OS X."
 			on error
