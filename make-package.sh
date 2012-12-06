@@ -69,7 +69,7 @@ done
 #   PackageMaker uses their permissions.
 #
 #   For example:
-#     If /Library/org.pqrs permission is 0777 by accidental reasons,
+#     If /Applications/KeyRemap4MacBook.app permission is 0777 by accidental reasons,
 #     the directory permission will be 0777 in Archive.bom
 #     even if we set this directory permission to 0755 by setpermissions.sh.
 #
