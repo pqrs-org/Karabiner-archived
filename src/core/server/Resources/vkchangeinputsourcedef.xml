@@ -192,6 +192,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ITALIAN</name>
+    <languagecode>it</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</name>
     <languagecode>ja</languagecode>
   </vkchangeinputsourcedef>
