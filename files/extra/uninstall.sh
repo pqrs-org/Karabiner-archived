@@ -1,6 +1,6 @@
 #!/bin/sh
 
-/Library/org.pqrs/KeyRemap4MacBook/extra/uninstall_core.sh
+/Applications/KeyRemap4MacBook.app/Contents/Library/extra/uninstall_core.sh
 
 # remove receipts
 rm -f /var/db/receipts/org.pqrs.driver.KeyRemap4MacBook.*

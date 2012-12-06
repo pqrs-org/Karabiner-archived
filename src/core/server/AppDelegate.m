@@ -255,7 +255,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (IBAction) launchUninstaller:(id)sender
 {
-  system("/Library/org.pqrs/KeyRemap4MacBook/extra/launchUninstaller.sh");
+  system("/Applications/KeyRemap4MacBook.app/Contents/Library/extra/launchUninstaller.sh");
 }
 
 - (IBAction) openPreferences:(id)sender

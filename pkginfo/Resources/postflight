@@ -10,13 +10,13 @@ for f in \
     /Library/org.pqrs \
     ; do
     echo "set file permissions: $f"
-    sh /Library/org.pqrs/KeyRemap4MacBook/extra/setpermissions.sh "$f"
+    sh /Applications/KeyRemap4MacBook.app/Contents/Library/extra/setpermissions.sh "$f"
     chown -Rh root:wheel "$f"
 done
 
 # ------------------------------------------------------------
 # load kext
-startup="/Library/org.pqrs/KeyRemap4MacBook/scripts/startup.sh"
+startup="/Applications/KeyRemap4MacBook.app/Contents/Library/scripts/startup.sh"
 [ -f "$startup" ] && "$startup" quickstart
 
 exit 0
