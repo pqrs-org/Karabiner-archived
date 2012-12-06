@@ -258,6 +258,11 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>ITALIAN</name>
+    <languagecode>it</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>NORWEGIAN</name>
     <languagecode>nb</languagecode>
   </inputsourcedef>
