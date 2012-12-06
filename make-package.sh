@@ -42,8 +42,8 @@ done
 
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/extra"
 mkdir -p "$basedir"
+cp -R pkginfo/Resources/preflight "$basedir/uninstall_core.sh"
 for f in \
-    pkginfo/Resources/preflight \
     files/extra/launchUninstaller.sh \
     files/extra/setpermissions.sh \
     files/extra/uninstall.sh \
