@@ -62,6 +62,10 @@
 
 - (void) drawEnabledCount
 {
+  // Calculating enabled_count is a bit heavy.
+  // So, we skip this calculation if the preferences window was invisible.
+  if (! [preferencesWindow_ isVisible]) return;
+
   int count = [self enabled_count:[xmlCompiler_ preferencepane_checkbox]
                           changed:[preferencesManager_ changed]];
 
