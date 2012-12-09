@@ -45,6 +45,12 @@
       <autogen>--KeyToKey-- KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
+      <name>Command_R+Delete to Forward Delete</name>
+      <appendix>(Right Command+Delete to Forward Delete)</appendix>
+      <identifier>remap.command_r_delete_to_forward_delete</identifier>
+      <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::COMMAND_R, KeyCode::FORWARD_DELETE</autogen>
+    </item>
+    <item>
       <name>Control+Delete to Forward Delete</name>
       <identifier>remap.controlDelete2forwarddelete</identifier>
       <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
