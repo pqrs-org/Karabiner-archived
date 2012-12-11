@@ -12,29 +12,31 @@
 
 static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
 {
-  ClientForKernelspace* self = (ClientForKernelspace*)(refcon);
+  dispatch_async(dispatch_get_main_queue(), ^{
+      ClientForKernelspace* self = (ClientForKernelspace*)(refcon);
 
-  switch (type) {
-    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
-    {
-      char buf[512];
+      switch (type) {
+      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
+        {
+          char buf[512];
 
-      struct BridgeUserClientStruct bridgestruct;
-      bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
-      bridgestruct.option = option;
-      bridgestruct.data   = (user_addr_t)(buf);
-      bridgestruct.size   = sizeof(buf);
+          struct BridgeUserClientStruct bridgestruct;
+          bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
+          bridgestruct.option = option;
+          bridgestruct.data   = (user_addr_t)(buf);
+          bridgestruct.size   = sizeof(buf);
 
-      if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
+          if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
 
-      [[self statusWindow] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
-      break;
-    }
+          [[self statusWindow] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
+          break;
+        }
 
-    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-      [[self workSpaceData] selectInputSource:option];
-      break;
-  }
+      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
+        [[self workSpaceData] selectInputSource:option];
+        break;
+      }
+    });
 }
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
@@ -183,12 +185,12 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     if (! deviceInformation.isFound) break;
 
     NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
-                             [NSString stringWithUTF8String:deviceInformation.product], @"product",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
-                             [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
-                             nil];
+                                        [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
+                                        [NSString stringWithUTF8String:deviceInformation.product], @"product",
+                                            [NSString stringWithFormat:@"0x%x", deviceInformation.vendorID], @"vendorID",
+                                            [NSString stringWithFormat:@"0x%x", deviceInformation.productID], @"productID",
+                                            [NSString stringWithFormat:@"0x%x", deviceInformation.locationID], @"locationID",
+                                          nil];
 
     // skip if newdict is already exists.
     BOOL found = NO;
