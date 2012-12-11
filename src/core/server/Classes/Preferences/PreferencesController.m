@@ -103,9 +103,7 @@
 /* ---------------------------------------------------------------------- */
 - (void) show
 {
-  [preferencesWindow_ performSelectorOnMainThread:@selector(makeKeyAndOrderFront:)
-                                       withObject:nil
-                                    waitUntilDone:YES];
+  [preferencesWindow_ makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
 }
 
