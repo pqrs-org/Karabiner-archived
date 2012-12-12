@@ -2,14 +2,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@protocol org_pqrs_KeyRemap4MacBook_Protocol
+@protocol KeyRemap4MacBookProtocol
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;
 
 - (NSDictionary*) changed;
 
-// --------------------------------------------------
 - (NSInteger)     configlist_selectedIndex;
 - (NSArray*)      configlist_getConfigList;
 - (void)          configlist_select:(NSInteger)newindex;

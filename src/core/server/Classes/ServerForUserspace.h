@@ -8,7 +8,7 @@
 @class Updater;
 @class XMLCompiler;
 
-@interface ServerForUserspace : NSObject<org_pqrs_KeyRemap4MacBook_Protocol> {
+@interface ServerForUserspace : NSObject<KeyRemap4MacBookProtocol> {
   NSConnection* connection_;
 
   IBOutlet ClientForKernelspace* clientForKernelspace_;
@@ -19,18 +19,18 @@
 
 - (BOOL) register;
 
+// --------------------------------------------------
+// KeyRemap4MacBookProtocol
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;
 
 - (NSDictionary*) changed;
 
-// --------------------------------------------------
 - (NSInteger)     configlist_selectedIndex;
 - (NSArray*)      configlist_getConfigList;
 - (void)          configlist_select:(NSInteger)newindex;
 
-// --------------------------------------------------
 - (void) configxml_reload;
 
 - (NSArray*) device_information:(NSInteger)type;
