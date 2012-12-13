@@ -57,8 +57,8 @@ enum {
 {
   NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
                         applicationBundleIdentifier, @"applicationBundleIdentifier",
-                                     [[NSDate date] description], @"date",
-                                     nil];
+                        [[NSDate date] description], @"date",
+                        nil];
 
   [queue_ insertObject:dict atIndex:0];
   if ([queue_ count] > MAXNUM) {

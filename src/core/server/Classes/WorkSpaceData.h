@@ -20,6 +20,6 @@
 + (InputSource*) getCurrentInputSource;
 - (void) selectInputSource:(unsigned int)vk_keycode;
 - (void) getInputSourceID:(InputSource*)inputSource
- output_inputSource:(uint32_t*)output_inputSource
- output_inputSourceDetail:(uint32_t*)output_inputSourceDetail;
+  output_inputSource:(uint32_t*)output_inputSource
+  output_inputSourceDetail:(uint32_t*)output_inputSourceDetail;
 @end

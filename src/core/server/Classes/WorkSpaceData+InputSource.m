@@ -137,8 +137,8 @@ static NSMutableArray* enabledInputSources_ = nil;
 }
 
 - (void) getInputSourceID:(InputSource*)inputSource
- output_inputSource:(uint32_t*)output_inputSource
- output_inputSourceDetail:(uint32_t*)output_inputSourceDetail
+  output_inputSource:(uint32_t*)output_inputSource
+  output_inputSourceDetail:(uint32_t*)output_inputSourceDetail
 {
   if (output_inputSource)       { *output_inputSource = 0; }
   if (output_inputSourceDetail) { *output_inputSourceDetail = 0; }

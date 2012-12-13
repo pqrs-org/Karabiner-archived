@@ -9,17 +9,23 @@
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
-  [self drawEnabledCount];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [self drawEnabledCount];
+                 });
 }
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
-  [self drawEnabledCount];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [self drawEnabledCount];
+                 });
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
-  [self drawEnabledCount];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [self drawEnabledCount];
+                 });
 }
 
 - (id) init

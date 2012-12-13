@@ -27,14 +27,14 @@
 - (NSString*) identifier:(uint32_t)config_index;
 - (uint32_t) appid:(NSString*)bundleIdentifier;
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
- languagecode:(NSString*)languagecode
- inputSourceID:(NSString*)inputSourceID
- inputModeID:(NSString*)inputModeID;
+  languagecode:(NSString*)languagecode
+  inputSourceID:(NSString*)inputSourceID
+  inputModeID:(NSString*)inputModeID;
 - (void) inputsourceid:(uint32_t*)inputSource
- inputSourceDetail:(uint32_t*)inputSourceDetail
- languagecode:(NSString*)languagecode
- inputSourceID:(NSString*)inputSourceID
- inputModeID:(NSString*)inputModeID;
+  inputSourceDetail:(uint32_t*)inputSourceDetail
+  languagecode:(NSString*)languagecode
+  inputSourceID:(NSString*)inputSourceID
+  inputModeID:(NSString*)inputModeID;
 
 - (NSArray*) preferencepane_checkbox;
 - (NSArray*) preferencepane_number;

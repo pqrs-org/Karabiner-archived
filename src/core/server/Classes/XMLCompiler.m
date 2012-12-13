@@ -276,9 +276,9 @@
 }
 
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
- languagecode:(NSString*)languagecode
- inputSourceID:(NSString*)inputSourceID
- inputModeID:(NSString*)inputModeID;
+  languagecode:(NSString*)languagecode
+  inputSourceID:(NSString*)inputSourceID
+  inputModeID:(NSString*)inputModeID;
 {
   @synchronized(self) {
     return pqrs_xml_compiler_is_vk_change_inputsource_matched(pqrs_xml_compiler_,
@@ -290,10 +290,10 @@
 }
 
 - (void) inputsourceid:(uint32_t*)inputSource
- inputSourceDetail:(uint32_t*)inputSourceDetail
- languagecode:(NSString*)languagecode
- inputSourceID:(NSString*)inputSourceID
- inputModeID:(NSString*)inputModeID
+  inputSourceDetail:(uint32_t*)inputSourceDetail
+  languagecode:(NSString*)languagecode
+  inputSourceID:(NSString*)inputSourceID
+  inputModeID:(NSString*)inputModeID
 {
   @synchronized(self) {
     pqrs_xml_compiler_get_inputsourceid(pqrs_xml_compiler_,

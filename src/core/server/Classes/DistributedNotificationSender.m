@@ -8,15 +8,15 @@
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-      [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification userInfo:nil];
-    });
+                   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookConfigXMLReloadedNotification userInfo:nil];
+                 });
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-      [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification userInfo:nil];
-    });
+                   [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookPreferencesChangedNotification userInfo:nil];
+                 });
 }
 
 - (id) init
