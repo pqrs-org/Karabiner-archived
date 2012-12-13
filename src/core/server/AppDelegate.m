@@ -188,7 +188,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   [self registerIONotification];
 
-  [statusWindow_ resetStatusMessage];
+  [statusWindow_ setupStatusWindow];
   [statusbar_ refresh];
   [xmlCompiler_ reload];
 
