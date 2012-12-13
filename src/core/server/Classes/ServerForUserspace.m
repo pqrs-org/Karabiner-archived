@@ -37,7 +37,7 @@
 
   // Other apps which are connected to KeyRemap4MacBook (Prefs, EventViewer, ...) should reconnect.
   // So, sending notification as soon as possible.
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
+  [KeyRemap4MacBookNSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
   return YES;
 }
 

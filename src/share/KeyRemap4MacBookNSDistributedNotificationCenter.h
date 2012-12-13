@@ -1,6 +1,6 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-@interface org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter : NSObject
+@interface KeyRemap4MacBookNSDistributedNotificationCenter : NSObject
 
 + (void) addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString*)notificationName;
 + (void) addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString*)notificationName object:(NSString*)notificationSender;

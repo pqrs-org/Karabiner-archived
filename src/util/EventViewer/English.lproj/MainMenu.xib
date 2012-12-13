@@ -1359,7 +1359,7 @@
 				<string key="NSClassName">OtherInformationStore</string>
 			</object>
 			<object class="NSCustomObject" id="330518459">
-				<string key="NSClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+				<string key="NSClassName">KeyRemap4MacBookClient</string>
 			</object>
 			<object class="NSCustomObject" id="645198334">
 				<string key="NSClassName">Devices</string>
@@ -2484,13 +2484,13 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
+						<string key="client_">KeyRemap4MacBookClient</string>
 						<string key="view_">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="client_">
 							<string key="name">client_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+							<string key="candidateClassName">KeyRemap4MacBookClient</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="view_">
 							<string key="name">view_</string>
@@ -2569,7 +2569,7 @@
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
+						<string key="client_">KeyRemap4MacBookClient</string>
 						<string key="label_inputmodeid_">id</string>
 						<string key="label_inputsourceid_">id</string>
 						<string key="label_languagecode_">id</string>
@@ -2577,7 +2577,7 @@
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="client_">
 							<string key="name">client_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+							<string key="candidateClassName">KeyRemap4MacBookClient</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="label_inputmodeid_">
 							<string key="name">label_inputmodeid_</string>
@@ -2598,11 +2598,11 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">org_pqrs_KeyRemap4MacBook_Client</string>
+					<string key="className">KeyRemap4MacBookClient</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/org_pqrs_KeyRemap4MacBook_Client.h</string>
+						<string key="minorKey">./Classes/KeyRemap4MacBookClient.h</string>
 					</object>
 				</object>
 			</array>

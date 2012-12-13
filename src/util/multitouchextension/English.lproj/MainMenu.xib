@@ -1238,7 +1238,7 @@ ZSB0aGlzIG9wdGlvbi4pA</string>
 				<string key="NSClassName">PreferencesController</string>
 			</object>
 			<object class="NSCustomObject" id="631265820">
-				<string key="NSClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+				<string key="NSClassName">KeyRemap4MacBookClient</string>
 			</object>
 			<object class="NSUserDefaultsController" id="499395776">
 				<bool key="NSSharedInstance">YES</bool>
@@ -2661,14 +2661,14 @@ ZSB0aGlzIG9wdGlvbi4pA</string>
 					<string key="className">KeyRemap4MacBook_multitouchextensionAppDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
+						<string key="client_">KeyRemap4MacBookClient</string>
 						<string key="ignoredAreaView_">IgnoredAreaView</string>
 						<string key="preferences_">PreferencesController</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="client_">
 							<string key="name">client_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+							<string key="candidateClassName">KeyRemap4MacBookClient</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="ignoredAreaView_">
 							<string key="name">ignoredAreaView_</string>
@@ -2702,14 +2702,14 @@ ZSB0aGlzIG9wdGlvbi4pA</string>
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="client_">org_pqrs_KeyRemap4MacBook_Client</string>
+						<string key="client_">KeyRemap4MacBookClient</string>
 						<string key="preferencesWindow_">NSWindow</string>
 						<string key="startAtLogin_">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="client_">
 							<string key="name">client_</string>
-							<string key="candidateClassName">org_pqrs_KeyRemap4MacBook_Client</string>
+							<string key="candidateClassName">KeyRemap4MacBookClient</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="preferencesWindow_">
 							<string key="name">preferencesWindow_</string>
@@ -2726,11 +2726,11 @@ ZSB0aGlzIG9wdGlvbi4pA</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">org_pqrs_KeyRemap4MacBook_Client</string>
+					<string key="className">KeyRemap4MacBookClient</string>
 					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/org_pqrs_KeyRemap4MacBook_Client.h</string>
+						<string key="minorKey">./Classes/KeyRemap4MacBookClient.h</string>
 					</object>
 				</object>
 			</array>
