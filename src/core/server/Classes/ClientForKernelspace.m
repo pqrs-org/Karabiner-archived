@@ -1,5 +1,6 @@
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
+#import "PreferencesManager.h"
 #import "StatusWindow.h"
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"

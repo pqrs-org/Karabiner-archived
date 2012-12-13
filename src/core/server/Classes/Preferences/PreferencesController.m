@@ -94,10 +94,32 @@
 }
 
 /* ---------------------------------------------------------------------- */
+- (void) sendStatusWindowPreferencesNotification:(NSString*)identifier
+{
+  if ([identifier isEqualToString:@"StatusMessage"]) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kStatusWindowPreferencesOpenedNotification object:nil];
+  } else {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kStatusWindowPreferencesClosedNotification object:nil];
+  }
+}
+
+/* ---------------------------------------------------------------------- */
 - (void) windowDidBecomeMain:(NSNotification*)notification
 {
   [self drawVersion];
   [self drawEnabledCount];
+  [self sendStatusWindowPreferencesNotification:[[tabView_ selectedTabViewItem] identifier]];
+}
+
+- (void) windowWillClose:(NSNotification*)notification
+{
+  [self sendStatusWindowPreferencesNotification:nil];
+}
+
+/* ---------------------------------------------------------------------- */
+- (void) tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem
+{
+  [self sendStatusWindowPreferencesNotification:[tabViewItem identifier]];
 }
 
 /* ---------------------------------------------------------------------- */

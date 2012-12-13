@@ -3,9 +3,10 @@
 @class PreferencesManager;
 @class XMLCompiler;
 
-@interface PreferencesController : NSObject <NSWindowDelegate>
+@interface PreferencesController : NSObject <NSWindowDelegate, NSTabViewDelegate>
 {
   IBOutlet NSButton* checkbox_showEnabledOnly_;
+  IBOutlet NSTabView* tabView_;
   IBOutlet NSTextField* versionText_;
   IBOutlet NSWindow* preferencesWindow_;
   IBOutlet PreferencesManager* preferencesManager_;

@@ -11,7 +11,12 @@
 {
   NSDictionary* dict = @ { kIsStatusBarEnabled : @YES,
                            kIsShowSettingNameInStatusBar : @NO,
-                           kCheckForUpdates : @1, };
+                           kCheckForUpdates : @1,
+                           kIsStatusWindowEnabled : @YES,
+                           kStatusWindowTheme : @0, // White
+                           kStatusWindowOpacity : @80,
+                           kStatusWindowPosition : @3, // Bottom left
+  };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
