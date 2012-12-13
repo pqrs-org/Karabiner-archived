@@ -241,13 +241,15 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
 }
 
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
-  NSLog(@"observer_IONotification");
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"observer_IONotification");
 
-  KeyRemap4MacBook_multitouchextensionAppDelegate* self = refcon;
+                   KeyRemap4MacBook_multitouchextensionAppDelegate* self = refcon;
 
-  [self release_iterator:iterator];
+                   [self release_iterator:iterator];
 
-  [self setcallback:YES];
+                   [self setcallback:YES];
+                 });
 }
 
 - (void) unregisterIONotification {
@@ -325,19 +327,21 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
 {
-  NSLog(@"observer_NSWorkspaceDidWakeNotification");
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"observer_NSWorkspaceDidWakeNotification");
 
-  // sleep until devices are settled.
-  [NSThread sleepForTimeInterval:1.0];
+                   // sleep until devices are settled.
+                   [NSThread sleepForTimeInterval:1.0];
 
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relaunchAfterWakeUpFromSleep"]) {
-    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
-    [NSApp terminate:self];
-  }
+                   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relaunchAfterWakeUpFromSleep"]) {
+                     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+                     [NSApp terminate:self];
+                   }
 
-  has_last_device = NO;
+                   has_last_device = NO;
 
-  [self setcallback:YES];
+                   [self setcallback:YES];
+                 });
 }
 
 - (void) registerWakeNotification
@@ -358,22 +362,26 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 // ----------------------------------------
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
-  NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
-  [self registerIONotification];
-  [self registerWakeNotification];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
+                   [self registerIONotification];
+                   [self registerWakeNotification];
 
-  // sleep until devices are settled.
-  [NSThread sleepForTimeInterval:1.0];
+                   // sleep until devices are settled.
+                   [NSThread sleepForTimeInterval:1.0];
 
-  [self setcallback:YES];
+                   [self setcallback:YES];
+                 });
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
 {
-  NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
-  [self unregisterIONotification];
-  [self unregisterWakeNotification];
-  [self setcallback:NO];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"observer_NSWorkspaceSessionDidResignActiveNotification");
+                   [self unregisterIONotification];
+                   [self unregisterWakeNotification];
+                   [self setcallback:NO];
+                 });
 }
 
 // ------------------------------------------------------------

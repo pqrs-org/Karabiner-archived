@@ -21,20 +21,18 @@
 
 - (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
 {
-  NSLog(@"observer_NSConnectionDidDieNotification is called");
-  [self refresh_connection];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"observer_NSConnectionDidDieNotification is called");
+                   [self refresh_connection];
+                 });
 }
 
 - (void) distributedObserver_serverLaunched:(NSNotification*)notification
 {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    NSLog(@"distributedObserver_serverLaunched is called");
-    [self refresh_connection];
-  }
-  [pool drain];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"distributedObserver_serverLaunched is called");
+                   [self refresh_connection];
+                 });
 }
 
 - (id) init
