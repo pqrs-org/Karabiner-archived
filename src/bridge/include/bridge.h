@@ -40,8 +40,9 @@ enum {
   // Version 32: Added BRIDGE_DATATYPE_DEVICELOCATION
   // Version 33: Changed BRIDGE_FILTERTYPE_INPUTMODE_NOT to BRIDGE_FILTERTYPE_INPUTSOURCE_NOT.
   // Version 34: Added KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_*.
+  // Version 35: Removed an essential configuration. (general.suppress_growl_warning)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 34,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 35,
 };
 
 enum {
