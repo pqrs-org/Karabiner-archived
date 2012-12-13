@@ -77,11 +77,13 @@
       NSString* name = nil;
       switch (idx) {
         case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
-        case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK:
           name = @"Lock";
           break;
         case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY:
           name = @"Sticky";
+          break;
+        case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK:
+          name = @"Click Lock";
           break;
       }
       if (name) {
