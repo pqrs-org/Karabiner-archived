@@ -61,6 +61,16 @@
         <identifier>remap.samples_showstatusmessage_empty</identifier>
         <autogen>--ShowStatusMessage--</autogen>
       </item>
+      <item>
+        <name>Lock, Sticky</name>
+        <appendix>Q to Lock Control_L</appendix>
+        <appendix>W to Lock Left Button</appendix>
+        <appendix>E to Sticky Shift_L</appendix>
+        <identifier>remap.samples_showstatusmessage_lock_sticky</identifier>
+        <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_LOCK_CONTROL_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      </item>
     </item>
 
     <item>
