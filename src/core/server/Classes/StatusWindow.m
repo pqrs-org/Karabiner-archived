@@ -3,11 +3,6 @@
 
 @implementation StatusWindow
 
-NSString* notificationName_extra                = @"Extra Message";
-NSString* notificationName_modifier_lock        = @"Locked Modifier Keys";
-NSString* notificationName_modifier_sticky      = @"Sticky Modifier Keys";
-NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
-
 // ------------------------------------------------------------
 - (id) init
 {
@@ -50,7 +45,7 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
   [window_ orderFront:self];
 
   // ------------------------------------------------------------
-  //[statusMessageView_ setAlphaValue:(CGFloat)(0.8)];
+  // [statusMessageView_ setAlphaValue:(CGFloat)(0.8)];
   [statusMessageView_ setMessage:@""];
 }
 
@@ -81,9 +76,13 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
     if ([message length] > 0) {
       NSString* name = nil;
       switch (idx) {
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:   name = notificationName_modifier_lock;   break;
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY: name = notificationName_modifier_sticky; break;
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK: name = notificationName_pointing_button_lock; break;
+        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
+        case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK:
+          name = @"Lock";
+          break;
+        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY:
+          name = @"Sticky";
+          break;
       }
       if (name) {
         [statusMessage appendFormat:@"%@: %@\n", name, message];
@@ -118,26 +117,19 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
   }
 }
 
-- (void) callUpdateStatusMessage
-{
-  [self performSelectorOnMainThread:@selector(updateStatusMessage)
-                         withObject:nil
-                      waitUntilDone:NO];
-}
-
 - (void) resetStatusMessage
 {
   for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
     [lines_ replaceObjectAtIndex:i withObject:@""];
   }
 
-  [self callUpdateStatusMessage];
+  [self updateStatusMessage];
 }
 
 - (void) setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message
 {
   [lines_ replaceObjectAtIndex:lineIndex withObject:message];
-  [self callUpdateStatusMessage];
+  [self updateStatusMessage];
 }
 
 @end
