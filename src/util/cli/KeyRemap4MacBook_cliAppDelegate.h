@@ -4,7 +4,7 @@
 
 @interface KeyRemap4MacBook_cliAppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
-  IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
+  IBOutlet KeyRemap4MacBookClient* client_;
 }
 
 @property (assign) IBOutlet NSWindow* window;

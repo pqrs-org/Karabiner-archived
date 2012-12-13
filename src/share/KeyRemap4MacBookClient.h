@@ -3,10 +3,10 @@
 #import <Cocoa/Cocoa.h>
 #import "KeyRemap4MacBookProtocol.h"
 
-@interface org_pqrs_KeyRemap4MacBook_Client : NSObject {
+@interface KeyRemap4MacBookClient : NSObject {
   id proxy_;
 }
 
-- (id<org_pqrs_KeyRemap4MacBook_Protocol>) proxy;
+- (id<KeyRemap4MacBookProtocol>) proxy;
 
 @end

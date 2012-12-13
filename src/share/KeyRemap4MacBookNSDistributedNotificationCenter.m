@@ -1,14 +1,14 @@
 #import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "KeyRemap4MacBookKeys.h"
 
-@implementation org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter
+@implementation KeyRemap4MacBookNSDistributedNotificationCenter
 
 + (void) addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString*)notificationName
 {
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:notificationObserver
-                                                                selector:notificationSelector
-                                                                    name:notificationName
-                                                                  object:kKeyRemap4MacBookNotificationKey];
+  [KeyRemap4MacBookNSDistributedNotificationCenter addObserver:notificationObserver
+                                                      selector:notificationSelector
+                                                          name:notificationName
+                                                        object:kKeyRemap4MacBookNotificationKey];
 }
 
 + (void) addObserver:(id)notificationObserver selector:(SEL)notificationSelector name:(NSString*)notificationName object:(NSString*)notificationSender
@@ -30,9 +30,9 @@
 
 + (void) removeObserver:(id)notificationObserver name:(NSString*)notificationName
 {
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:notificationObserver
-                                                                       name:notificationName
-                                                                     object:kKeyRemap4MacBookNotificationKey];
+  [KeyRemap4MacBookNSDistributedNotificationCenter removeObserver:notificationObserver
+                                                             name:notificationName
+                                                           object:kKeyRemap4MacBookNotificationKey];
 }
 
 + (void) removeObserver:(id)notificationObserver name:(NSString*)notificationName object:(NSString*)notificationSender

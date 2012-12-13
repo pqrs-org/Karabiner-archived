@@ -42,13 +42,13 @@
   [otherinformationstore_ setInputSourceID:nil];
   [otherinformationstore_ setInputModeID:nil];
 
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(distributedObserver_applicationChanged:)
-                                                                    name:kKeyRemap4MacBookApplicationChangedNotification];
+  [KeyRemap4MacBookNSDistributedNotificationCenter addObserver:self
+                                                      selector:@selector(distributedObserver_applicationChanged:)
+                                                          name:kKeyRemap4MacBookApplicationChangedNotification];
 
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter addObserver:self
-                                                                selector:@selector(distributedObserver_inputSourceChanged:)
-                                                                    name:kKeyRemap4MacBookInputSourceChangedNotification];
+  [KeyRemap4MacBookNSDistributedNotificationCenter addObserver:self
+                                                      selector:@selector(distributedObserver_inputSourceChanged:)
+                                                          name:kKeyRemap4MacBookInputSourceChangedNotification];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
@@ -57,7 +57,7 @@
 
 - (void) dealloc
 {
-  [org_pqrs_KeyRemap4MacBook_NSDistributedNotificationCenter removeObserver:self];
+  [KeyRemap4MacBookNSDistributedNotificationCenter removeObserver:self];
 
   [super dealloc];
 }

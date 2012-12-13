@@ -8,7 +8,7 @@
   @private
   NSMutableArray* devices_;
   IBOutlet id view_;
-  IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
+  IBOutlet KeyRemap4MacBookClient* client_;
 }
 
 - (IBAction) refresh:(id)sender;

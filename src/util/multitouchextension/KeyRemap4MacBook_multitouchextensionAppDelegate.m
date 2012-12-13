@@ -71,7 +71,7 @@ void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
 IgnoredAreaView* global_ignoredAreaView_ = nil;
-org_pqrs_KeyRemap4MacBook_Client* global_client_ = nil;
+KeyRemap4MacBookClient* global_client_ = nil;
 
 static void setPreference(int fingers, int newvalue) {
   NSAutoreleasePool* pool = [NSAutoreleasePool new];

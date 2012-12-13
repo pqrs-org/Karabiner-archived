@@ -7,7 +7,7 @@
   NSMutableArray* oldSettings_;
 
   IBOutlet NSWindow* preferencesWindow_;
-  IBOutlet org_pqrs_KeyRemap4MacBook_Client* client_;
+  IBOutlet KeyRemap4MacBookClient* client_;
 
   IBOutlet NSButton* startAtLogin_;
 }
