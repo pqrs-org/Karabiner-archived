@@ -42,13 +42,17 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
-  [self send_remapclasses_initialize_vector_to_kext];
-  [self send_config_to_kext];
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [self send_remapclasses_initialize_vector_to_kext];
+      [self send_config_to_kext];
+    });
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
-  [self send_config_to_kext];
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [self send_config_to_kext];
+    });
 }
 
 - (id) init
