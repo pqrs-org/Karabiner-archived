@@ -14,13 +14,11 @@
 		3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */; };
 		3401D0FF1658826200CF962F /* DistributedNotificationSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0FE1658826200CF962F /* DistributedNotificationSender.m */; };
 		3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3406F7101668ED7B00FE1E80 /* PreferencesController.m */; };
-		340A058F1302CE8B00B7E1B1 /* Growl.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		340B7E3F1545090D00FB3237 /* InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 340B7E3E1545090D00FB3237 /* InputSource.m */; };
 		34207C051666209F00E7FD08 /* OutlineView_checkbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207BFE1666209F00E7FD08 /* OutlineView_checkbox.m */; };
 		34207C061666209F00E7FD08 /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C001666209F00E7FD08 /* OutlineView_number.m */; };
 		34207C071666209F00E7FD08 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C021666209F00E7FD08 /* OutlineView.m */; };
 		34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C041666209F00E7FD08 /* TableView_configlist.m */; };
-		342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342FD2B81302CD8A00491C16 /* Growl.framework */; };
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
 		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
@@ -48,6 +46,7 @@
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
+		34E1E0C21675D1E10020FB44 /* StatusMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E1E0C11675D1E10020FB44 /* StatusMessageView.m */; };
 		34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* inputsourcedef.xml */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34FEAE4C148695AE0042D507 /* replacementdef.xml */; };
@@ -63,7 +62,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				340A058F1302CE8B00B7E1B1 /* Growl.framework in Copy Files */,
 				347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */,
 			);
 			name = "Copy Files";
@@ -105,7 +103,6 @@
 		34207C021666209F00E7FD08 /* OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineView.m; path = Classes/Preferences/OutlineView.m; sourceTree = "<group>"; };
 		34207C031666209F00E7FD08 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableView_configlist.h; path = Classes/Preferences/TableView_configlist.h; sourceTree = "<group>"; };
 		34207C041666209F00E7FD08 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableView_configlist.m; path = Classes/Preferences/TableView_configlist.m; sourceTree = "<group>"; };
-		342FD2B81302CD8A00491C16 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
 		343B2458153DCC7C0023BA6E /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = Resources/include; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
@@ -140,6 +137,8 @@
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputSource.m"; path = "Classes/WorkSpaceData+InputSource.m"; sourceTree = "<group>"; };
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
+		34E1E0C01675D1E10020FB44 /* StatusMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView.h; path = Classes/StatusMessageView.h; sourceTree = "<group>"; };
+		34E1E0C11675D1E10020FB44 /* StatusMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView.m; path = Classes/StatusMessageView.m; sourceTree = "<group>"; };
 		34F37D53149A2E7800D4694B /* inputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = inputsourcedef.xml; path = Resources/inputsourcedef.xml; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
@@ -157,7 +156,6 @@
 				34848260152F526B00A9A3BE /* libxml_compiler.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				34568415109F350100125F91 /* Carbon.framework in Frameworks */,
-				342FD2B91302CD8A00491C16 /* Growl.framework in Frameworks */,
 				345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */,
 				347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */,
 			);
@@ -169,6 +167,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				34E1E0C01675D1E10020FB44 /* StatusMessageView.h */,
+				34E1E0C11675D1E10020FB44 /* StatusMessageView.m */,
 				3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */,
 				34207BFB1666209100E7FD08 /* Preferences */,
 				3401D0FD1658826200CF962F /* DistributedNotificationSender.h */,
@@ -285,7 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				347828F813EE5F6500D50AB1 /* Sparkle.framework */,
-				342FD2B81302CD8A00491C16 /* Growl.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				34568414109F350100125F91 /* Carbon.framework */,
@@ -413,6 +412,7 @@
 				34207C071666209F00E7FD08 /* OutlineView.m in Sources */,
 				34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */,
 				3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */,
+				34E1E0C21675D1E10020FB44 /* StatusMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

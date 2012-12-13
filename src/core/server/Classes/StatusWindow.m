@@ -20,29 +20,6 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
       [lines_ addObject:@""];
       [lastMessages_ addObject:@""];
     }
-
-    [GrowlApplicationBridge setGrowlDelegate:self];
-
-    // Workaround for Growl problem.
-    //
-    // In the following case, the notification is not displayed after Growl started either.
-    // (1) KeyRemap4MacBook is not registered with Growl.
-    // (2) Growl is not running when we call setGrowlDelegate.
-    //
-    // We need to call setWillRegisterWhenGrowlIsReady:YES to prevent the above problem.
-    // reregisterGrowlNotifications solves this problem.
-    //
-    // Note:
-    // To reproduce this problem, do the following procedures.
-    // (You need to comment out setWillRegisterWhenGrowlIsReady:YES below.)
-    //
-    // (1) Stop Growl.
-    // (2) Delete KeyRemap4MacBook entry from Growl Preferences.
-    // (3) Stop KeyRemap4MacBook server process.
-    // (4) Start KeyRemap4MacBook server process.
-    // (5) Start Growl.
-    // (6) call notifyWithTitle in KeyRemap4MacBook server process.
-    [GrowlApplicationBridge setWillRegisterWhenGrowlIsReady:YES];
   }
 
   return self;
@@ -57,51 +34,38 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
 }
 
 // ------------------------------------------------------------
-// return YES if Growl is not running.
-- (BOOL) displayGrowlNotRunningWarning
-{
-  NSString* message1 = @"KeyRemap4MacBook uses Growl to display extra messages.";
+- (void) setupStatusWindow {
+  NSWindowCollectionBehavior behavior = NSWindowCollectionBehaviorCanJoinAllSpaces |
+                                        NSWindowCollectionBehaviorStationary |
+                                        NSWindowCollectionBehaviorIgnoresCycle;
 
-  NSString* message2 = nil;
+  [window_ setBackgroundColor:[NSColor clearColor]];
+  [window_ setOpaque:NO];
+  [window_ setStyleMask:NSBorderlessWindowMask];
+  [window_ setLevel:NSStatusWindowLevel];
+  [window_ setIgnoresMouseEvents:YES];
+  [window_ setCollectionBehavior:behavior];
+  [self updateFrameOrigin];
+  [window_ setAlphaValue:0.0];
+  [window_ orderFront:self];
 
-  // If user uses Growl-1.3 and we use Growl SDK 1.2.2,
-  // isGrowlInstalled returns NO even if Growl is installed.
-  // Therefore, *DO NOT* call isGrowlInstalled here.
-
-  if (! [GrowlApplicationBridge isGrowlRunning]) {
-    message2 = @"* Growl is not running.\n* Please install or start Growl.";
-  }
-  if (! message2) {
-    // clear isGrowlNotRunningWarningDisplayed_
-    isGrowlNotRunningWarningDisplayed_ = NO;
-    return NO;
-  }
-
-  NSString* message3 = @"(Activate \"General > Suppress Growl warning\" in System Preference to hide this message.)";
-
-  if ([preferencesManager_ value:@"general.suppress_growl_warning"]) return YES;
-
-  @synchronized(self) {
-    if (! isGrowlNotRunningWarningDisplayed_) {
-      isGrowlNotRunningWarningDisplayed_ = YES;
-
-      NSAlert* alert = [[NSAlert new] autorelease];
-      [alert setMessageText:@"KeyRemap4MacBook Warning"];
-      [alert addButtonWithTitle:@"Close"];
-      [alert setInformativeText:[NSString stringWithFormat:@"%@\n\n%@\n\n%@", message1, message2, message3]];
-
-      [alert performSelectorOnMainThread:@selector(runModal)
-                              withObject:nil
-                           waitUntilDone:YES];
-    }
-  }
-
-  return YES;
+  // ------------------------------------------------------------
+  //[statusMessageView_ setAlphaValue:(CGFloat)(0.8)];
+  [statusMessageView_ setMessage:@""];
 }
 
+- (void) updateFrameOrigin {
+  NSRect screenFrame = [[NSScreen mainScreen] visibleFrame];
+  NSRect windowFrame = [window_ frame];
+  int margin = 10;
+  [window_ setFrameOrigin:NSMakePoint(screenFrame.size.width - windowFrame.size.width - margin,
+                                      screenFrame.origin.y + margin)];
+}
+
+// ------------------------------------------------------------
 - (void) updateStatusMessage
 {
-  NSString* message = nil;
+  NSMutableString* statusMessage = [NSMutableString string];
 
   // ------------------------------------------------------------
   // Modifier Message
@@ -112,70 +76,45 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
   };
   for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
     int idx = indexes[i];
-    message = [lines_ objectAtIndex:idx];
+    NSString* message = [lines_ objectAtIndex:idx];
 
-    BOOL isSticky = ([message length] > 0);
-
-    if (! [message isEqualToString:[lastMessages_ objectAtIndex:idx]]) {
-      [lastMessages_ replaceObjectAtIndex:idx withObject:message];
-
-      if (! [self displayGrowlNotRunningWarning]) {
-        NSString* name = nil;
-        switch (idx) {
-          case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:   name = notificationName_modifier_lock;   break;
-          case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY: name = notificationName_modifier_sticky; break;
-          case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK: name = notificationName_pointing_button_lock; break;
-        }
-
-        [GrowlApplicationBridge
-          notifyWithTitle:name
-              description:message
-         notificationName:name
-                 iconData:nil
-                 priority:0
-                 isSticky:isSticky
-             clickContext:nil
-               identifier:[NSString stringWithFormat:@"org_pqrs_KeyRemap4MacBook_modifier_%d", idx]];
+    if ([message length] > 0) {
+      NSString* name = nil;
+      switch (idx) {
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:   name = notificationName_modifier_lock;   break;
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY: name = notificationName_modifier_sticky; break;
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK: name = notificationName_pointing_button_lock; break;
+      }
+      if (name) {
+        [statusMessage appendFormat:@"%@: %@\n", name, message];
       }
     }
   }
 
   // ------------------------------------------------------------
   // Extra Message
-  message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
+  NSString* message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
 
-  if ([message length] > 0) {
-    [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA withObject:message];
+  [statusMessage appendString:message];
+  [statusMessageView_ setMessage:statusMessage];
 
-    if (! [self displayGrowlNotRunningWarning]) {
-      [GrowlApplicationBridge
-        notifyWithTitle:@"Enabling"
-            description:message
-       notificationName:notificationName_extra
-               iconData:nil
-               priority:0
-               isSticky:YES
-           clickContext:nil
-             identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
-    }
+  // ------------------------------------------------------------
+  NSViewAnimation* animation = [[NSViewAnimation new] autorelease];
+  [animation setAnimationBlockingMode:NSAnimationNonblocking];
+  [animation setAnimationCurve:NSAnimationEaseIn];
+  [animation setDuration:0.1];
+
+  if ([statusMessage length] > 0) {
+    NSDictionary* dict = @ { NSViewAnimationTargetKey : window_,
+                             NSViewAnimationEffectKey : NSViewAnimationFadeInEffect, };
+    [animation setViewAnimations:@[dict]];
+    [animation startAnimation];
 
   } else {
-    message = [lastMessages_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
-    if ([message length] > 0) {
-      if (! [self displayGrowlNotRunningWarning]) {
-        [GrowlApplicationBridge
-          notifyWithTitle:@"Disabling"
-              description:message
-         notificationName:notificationName_extra
-                 iconData:nil
-                 priority:0
-                 isSticky:NO
-             clickContext:nil
-               identifier:@"org_pqrs_KeyRemap4MacBook_extra"];
-
-        [lastMessages_ replaceObjectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA withObject:@""];
-      }
-    }
+    NSDictionary* dict = @ { NSViewAnimationTargetKey : window_,
+                             NSViewAnimationEffectKey : NSViewAnimationFadeOutEffect, };
+    [animation setViewAnimations:@[dict]];
+    [animation startAnimation];
   }
 }
 
@@ -199,39 +138,6 @@ NSString* notificationName_pointing_button_lock = @"Locked Pointing Buttons";
 {
   [lines_ replaceObjectAtIndex:lineIndex withObject:message];
   [self callUpdateStatusMessage];
-}
-
-// ============================================================
-// Growl delegate
-- (NSDictionary*) registrationDictionaryForGrowl
-{
-  NSArray* array = [NSArray arrayWithObjects:notificationName_modifier_lock,
-                    notificationName_modifier_sticky,
-                    notificationName_pointing_button_lock,
-                    notificationName_extra, nil];
-  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-
-                        [NSNumber numberWithInt:1],
-                        @"TicketVersion",
-
-                        array,
-                        @"AllNotifications",
-
-                        array,
-                        @"DefaultNotifications",
-
-                        nil];
-  return dict;
-}
-
-- (NSString*) applicationNameForGrowl
-{
-  return @"KeyRemap4MacBook";
-}
-
-- (NSData*) applicationIconDataForGrowl
-{
-  return [NSImage imageNamed:@"app.icon"];
 }
 
 @end
