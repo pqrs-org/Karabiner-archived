@@ -3,17 +3,6 @@
   <item>
     <name>General</name>
     <item>
-      <name>Suppress Growl warning</name>
-      <appendix>This option suppresses the warning: "Growl is not running"</appendix>
-      <appendix></appendix>
-      <appendix>If you want to suppress the Growl notification itself,</appendix>
-      <appendix>disable the notification of KeyRemap4MacBook from Growl Preferences.</appendix>
-      <identifier essential="true">general.suppress_growl_warning</identifier>
-    </item>
-    <item>
-      <name>------------------------------------------------------------</name>
-    </item>
-    <item>
       <name>Don't remap an internal keyboard</name>
       <identifier essential="true">general.dont_remap_internal</identifier>
     </item>
