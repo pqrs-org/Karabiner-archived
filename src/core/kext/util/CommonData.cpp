@@ -68,13 +68,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (alloccount_ > 1024) {
       IOLOG_WARN("alloccount_ > 1024\n");
     }
-    //IOLOG_DEVEL("CommonData::increase_alloccount alloccount_:%d\n", alloccount_);
+    // IOLOG_DEVEL("CommonData::increase_alloccount alloccount_:%d\n", alloccount_);
   }
 
   void
   CommonData::decrease_alloccount(void)
   {
     --alloccount_;
-    //IOLOG_DEVEL("CommonData::decrease_alloccount alloccount_:%d\n", alloccount_);
+    // IOLOG_DEVEL("CommonData::decrease_alloccount alloccount_:%d\n", alloccount_);
   }
 }
