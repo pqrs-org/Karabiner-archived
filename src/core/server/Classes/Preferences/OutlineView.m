@@ -7,18 +7,24 @@
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
-  [outlineview_ reloadData];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [outlineview_ reloadData];
+                 });
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
-  [outlineview_ reloadData];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [outlineview_ reloadData];
+                 });
 }
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
-  [self load:YES];
-  [outlineview_ reloadData];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [self load:YES];
+                   [outlineview_ reloadData];
+                 });
 }
 
 - (id) init
@@ -261,7 +267,7 @@
       } else if ([columnIdentifier isEqualToString:@"stepper"]) {
         int newvalue = [preferencesManager_ value:identifier];
         NSNumber* step = [item objectForKey:@"step"];
-        newvalue += ([object intValue] * [step intValue]);
+        newvalue += ([object intValue]* [step intValue]);
 
         // confirm range
         if (newvalue < 0) {
