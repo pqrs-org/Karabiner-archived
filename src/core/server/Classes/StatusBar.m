@@ -9,9 +9,9 @@
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
-  [self performSelectorOnMainThread:@selector(refresh)
-                         withObject:nil
-                      waitUntilDone:NO];
+  dispatch_async(dispatch_get_main_queue(), ^{
+      [self refresh];
+    });
 }
 
 - (id) init
