@@ -3,3 +3,5 @@
 #define kConfigXMLReloadedNotification  @"ConfigXMLReloaded"
 #define kConfigListChangedNotification  @"ConfigListChanged"
 #define kPreferencesChangedNotification @"PreferencesChanged"
+#define kStatusWindowPreferencesOpenedNotification @"StatusWindowPreferencesOpenedNotification"
+#define kStatusWindowPreferencesClosedNotification @"StatusWindowPreferencesClosedNotification"

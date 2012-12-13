@@ -4,3 +4,7 @@
 #define kIsShowSettingNameInStatusBar @"isShowSettingNameInStatusBar"
 #define kConfigListSelectedIndex      @"selectedIndex"
 #define kCheckForUpdates              @"isCheckUpdate"
+#define kIsStatusWindowEnabled        @"isStatusWindowEnabled"
+#define kStatusWindowTheme            @"statusWindowTheme"
+#define kStatusWindowOpacity          @"statusWindowOpacity"
+#define kStatusWindowPosition         @"statusWindowPosition"
