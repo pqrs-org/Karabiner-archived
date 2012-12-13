@@ -19,27 +19,19 @@
 // ------------------------------------------------------------
 - (void) distributedObserver_applicationChanged:(NSNotification*)notification
 {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [appQueue_ push:[[notification userInfo] objectForKey:@"name"]];
-  }
-  [pool drain];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [appQueue_ push:[[notification userInfo] objectForKey:@"name"]];
+                 });
 }
 
 // ------------------------------------------------------------
 - (void) distributedObserver_inputSourceChanged:(NSNotification*)notification
 {
-  // [NSAutoreleasePool drain] is never called from NSDistributedNotificationCenter.
-  // Therefore, we need to make own NSAutoreleasePool.
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [otherinformationstore_ setLanguageCode:[[notification userInfo] objectForKey:@"languageCode"]];
-    [otherinformationstore_ setInputSourceID:[[notification userInfo] objectForKey:@"inputSourceID"]];
-    [otherinformationstore_ setInputModeID:[[notification userInfo] objectForKey:@"inputModeID"]];
-  }
-  [pool drain];
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [otherinformationstore_ setLanguageCode:[[notification userInfo] objectForKey:@"languageCode"]];
+                   [otherinformationstore_ setInputSourceID:[[notification userInfo] objectForKey:@"inputSourceID"]];
+                   [otherinformationstore_ setInputModeID:[[notification userInfo] objectForKey:@"inputModeID"]];
+                 });
 }
 
 // ------------------------------------------------------------
