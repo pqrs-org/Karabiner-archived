@@ -7,4 +7,5 @@
 #define kIsStatusWindowEnabled        @"isStatusWindowEnabled"
 #define kStatusWindowTheme            @"statusWindowTheme"
 #define kStatusWindowOpacity          @"statusWindowOpacity"
+#define kStatusWindowFontSize         @"statusWindowFontSize"
 #define kStatusWindowPosition         @"statusWindowPosition"
