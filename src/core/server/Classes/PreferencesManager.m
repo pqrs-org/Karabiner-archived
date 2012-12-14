@@ -15,6 +15,7 @@
                            kIsStatusWindowEnabled : @YES,
                            kStatusWindowTheme : @0, // White
                            kStatusWindowOpacity : @80,
+                           kStatusWindowFontSize : @0, // Small
                            kStatusWindowPosition : @3, // Bottom left
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
