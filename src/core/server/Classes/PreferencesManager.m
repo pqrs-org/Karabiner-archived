@@ -11,6 +11,7 @@
 {
   NSDictionary* dict = @ { kIsStatusBarEnabled : @YES,
                            kIsShowSettingNameInStatusBar : @NO,
+                           kConfigListSelectedIndex : @0,
                            kCheckForUpdates : @1,
                            kIsStatusWindowEnabled : @YES,
                            kStatusWindowTheme : @0, // White
