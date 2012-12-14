@@ -94,138 +94,130 @@ static void setPreference(int fingers, int newvalue) {
 // ------------------------------------------------------------
 // Multitouch callback
 static int callback(int device, Finger* data, int fingers, double timestamp, int frame) {
-  // ------------------------------------------------------------
-  // If there are multiple devices (For example, Trackpad and Magic Mouse),
-  // we handle only one device at the same time.
-  if (has_last_device) {
-    // ignore other devices.
-    if (device != last_device) {
-      return 0;
-    }
-  }
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   // ------------------------------------------------------------
+                   // If there are multiple devices (For example, Trackpad and Magic Mouse),
+                   // we handle only one device at the same time.
+                   if (has_last_device) {
+                     // ignore other devices.
+                     if (device != last_device) {
+                       return;
+                     }
+                   }
 
-  if (fingers == 0) {
-    has_last_device = NO;
-  } else {
-    has_last_device = YES;
-    last_device = device;
-  }
+                   if (fingers == 0) {
+                     has_last_device = NO;
+                   } else {
+                     has_last_device = YES;
+                     last_device = device;
+                   }
 
-  // ------------------------------------------------------------
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    [global_ignoredAreaView_ clearFingers];
+                   // ------------------------------------------------------------
+                   [global_ignoredAreaView_ clearFingers];
 
-    int valid_fingers = 0;
+                   int valid_fingers = 0;
 
-    FingerStatus* fingerStatus = [FingerStatus new];
+                   FingerStatus* fingerStatus = [FingerStatus new];
 
-    for (int i = 0; i < fingers; ++i) {
-      // state values:
-      //   4: touched
-      //   1-3,5-7: near
-      if (data[i].state != 4) {
-        continue;
-      }
+                   for (int i = 0; i < fingers; ++i) {
+                     // state values:
+                     //   4: touched
+                     //   1-3,5-7: near
+                     if (data[i].state != 4) {
+                       continue;
+                     }
 
-      int identifier = data[i].identifier;
-      NSPoint point = NSMakePoint(data[i].normalized.position.x, data[i].normalized.position.y);
+                     int identifier = data[i].identifier;
+                     NSPoint point = NSMakePoint (data[i].normalized.position.x, data[i].normalized.position.y);
 
-      BOOL ignored = NO;
-      if ([IgnoredAreaView isIgnoredArea:point]) {
-        ignored = YES;
+                     BOOL ignored = NO;
+                     if ([IgnoredAreaView isIgnoredArea:point]) {
+                       ignored = YES;
 
-        // Finding FingerStatus by identifier.
-        if ([lastFingerStatus_ isActive:identifier]) {
-          // If a finger is already active, we should not ignore this finger.
-          // (This finger has been moved into ignored area from active area.)
-          ignored = NO;
-        }
-      }
+                       // Finding FingerStatus by identifier.
+                       if ([lastFingerStatus_ isActive:identifier]) {
+                         // If a finger is already active, we should not ignore this finger.
+                         // (This finger has been moved into ignored area from active area.)
+                         ignored = NO;
+                       }
+                     }
 
-      [fingerStatus add:identifier active:(! ignored)];
+                     [fingerStatus add:identifier active:(! ignored)];
 
-      if (! ignored) {
-        ++valid_fingers;
-      }
+                     if (! ignored) {
+                       ++valid_fingers;
+                     }
 
-      [global_ignoredAreaView_ addFinger:point ignored:ignored];
-    }
+                     [global_ignoredAreaView_ addFinger:point ignored:ignored];
+                   }
 
-    FingerStatus* l = lastFingerStatus_;
-    lastFingerStatus_ = fingerStatus;
-    [l release];
+                   FingerStatus* l = lastFingerStatus_;
+                   lastFingerStatus_ = fingerStatus;
+                   [l release];
 
-    fingers = valid_fingers;
+                   // ----------------------------------------
+                   // deactivating settings first.
+                   for (int i = 0; i < MAX_FINGERS; ++i) {
+                     if (current_status_[i] && valid_fingers != i + 1) {
+                       current_status_[i] = 0;
+                       setPreference (i + 1, 0);
+                     }
+                   }
 
-    // deactivating settings first.
-    for (int i = 0; i < MAX_FINGERS; ++i) {
-      if (current_status_[i] && fingers != i + 1) {
-        current_status_[i] = 0;
-        setPreference(i + 1, 0);
-      }
-    }
-
-    // activating setting.
-    //
-    // Note: Set current_status_ only if the targeted setting is enabled.
-    // If not, unintentional deactivation is called in above.
-    //
-    // - one finger: disabled
-    // - two fingers: enabled
-    //
-    // In this case,
-    // we must not call "setPreference" if only one finger is touched/released on multi-touch device.
-    // If we don't check [PreferencesController isSettingEnabled],
-    // setPreference is called in above when we release one finger from device.
-    //
-    if (fingers > 0 && current_status_[fingers - 1] == 0 &&
-        [PreferencesController isSettingEnabled:fingers]) {
-      current_status_[fingers - 1] = 1;
-      setPreference(fingers, 1);
-    }
-  }
-  [pool drain];
-
+                   // activating setting.
+                   //
+                   // Note: Set current_status_ only if the targeted setting is enabled.
+                   // If not, unintentional deactivation is called in above.
+                   //
+                   // - one finger: disabled
+                   // - two fingers: enabled
+                   //
+                   // In this case,
+                   // we must not call "setPreference" if only one finger is touched/released on multi-touch device.
+                   // If we don't check [PreferencesController isSettingEnabled],
+                   // setPreference is called in above when we release one finger from device.
+                   //
+                   if (valid_fingers > 0 && current_status_[valid_fingers - 1] == 0 &&
+                       [PreferencesController isSettingEnabled:valid_fingers]) {
+                     current_status_[valid_fingers - 1] = 1;
+                     setPreference (valid_fingers, 1);
+                   }
+                 });
   return 0;
 }
 
 - (void) setcallback:(BOOL)isset {
   @synchronized(self) {
-    NSAutoreleasePool* pool = [NSAutoreleasePool new];
-    {
-      // ------------------------------------------------------------
-      // unset callback (even if isset is YES.)
+    // ------------------------------------------------------------
+    // unset callback (even if isset is YES.)
+    if (mtdevices_) {
+      for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
+        MTDeviceRef device = [mtdevices_ objectAtIndex:i];
+        if (! device) continue;
+
+        MTDeviceStop(device, 0);
+        MTUnregisterContactFrameCallback(device, callback);
+      }
+      [mtdevices_ release];
+      mtdevices_ = nil;
+    }
+
+    // ------------------------------------------------------------
+    // set callback if needed
+    if (isset) {
+      mtdevices_ = (NSArray*)(MTDeviceCreateList());
       if (mtdevices_) {
         for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
           MTDeviceRef device = [mtdevices_ objectAtIndex:i];
           if (! device) continue;
 
-          MTDeviceStop(device, 0);
-          MTUnregisterContactFrameCallback(device, callback);
-        }
-        [mtdevices_ release];
-        mtdevices_ = nil;
-      }
-
-      // ------------------------------------------------------------
-      // set callback if needed
-      if (isset) {
-        mtdevices_ = (NSArray*)(MTDeviceCreateList());
-        if (mtdevices_) {
-          for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
-            MTDeviceRef device = [mtdevices_ objectAtIndex:i];
-            if (! device) continue;
-
-            MTRegisterContactFrameCallback(device, callback);
-            MTDeviceStart(device, 0);
-          }
+          MTRegisterContactFrameCallback(device, callback);
+          MTDeviceStart(device, 0);
         }
       }
-
-      [self resetPreferences];
     }
-    [pool drain];
+
+    [self resetPreferences];
   }
 }
 
@@ -247,6 +239,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                    KeyRemap4MacBook_multitouchextensionAppDelegate* self = refcon;
 
                    [self release_iterator:iterator];
+
+                   // sleep until devices are settled.
+                   [NSThread sleepForTimeInterval:1.0];
 
                    [self setcallback:YES];
                  });
