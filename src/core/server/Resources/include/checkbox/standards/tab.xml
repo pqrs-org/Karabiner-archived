@@ -92,12 +92,51 @@
       <identifier>remap.controlTab2optionTab</identifier>
       <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
+
     <item>
-      <name>Option+Tab to Command+Tab</name>
-      <include path="../snippets/lazy_recommendation.xml" />
-      <identifier>remap.optionTab2commandTab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+      <name>Use Option+Tab as "Switch application" (Command+Tab)</name>
+      <identifier>remap.option_tab_to_switch_application</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::OPTION_L,
+        KeyCode::OPTION_L,
+        Option::KEYTOKEY_AFTER_KEYUP,
+        KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+        KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::OPTION_R,
+        KeyCode::OPTION_R,
+        Option::KEYTOKEY_AFTER_KEYUP,
+        KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+        KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+      </autogen>
+
+      <autogen>
+        --KeyToKey--
+        KeyCode::Q, ModifierFlag::COMMAND_L | VK_OPTION | ModifierFlag::EXTRA1,
+        KeyCode::Q, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        --KeyToKey--
+        KeyCode::H, ModifierFlag::COMMAND_L | VK_OPTION | ModifierFlag::EXTRA1,
+        KeyCode::H, ModifierFlag::COMMAND_L,
+      </autogen>
+
+      <!-- Lock Command for Option+Shift+Tab.
+           (We need to hold command key while option key is pressed.)
+           And we use extra1 as command+tab mode flag
+           for q and h key in command+tab. -->
+      <autogen>
+        --KeyToKey--
+        KeyCode::TAB, VK_OPTION,
+        KeyCode::TAB, ModifierFlag::COMMAND_L,
+        KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,
+        KeyCode::VK_LOCK_EXTRA1_FORCE_ON, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
+
     <item>
       <name>Option+Tab to Control+Tab</name>
       <identifier>remap.optionTab2controlTab</identifier>
@@ -114,12 +153,6 @@
         Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_WAIT_100MS, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
       <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::COMMAND_R,
         Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_WAIT_100MS, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
-    </item>
-    <item>
-      <name>Swap Command+Tab and Option+Tab</name>
-      <identifier>remap.swap_commandtaboptiontab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Swap Command+Tab and Control+Tab</name>
@@ -296,5 +329,22 @@
         <identifier>option.tabmode_g_j_l_to_changespaces</identifier>
       </item>
     </item>
+
+    <item>
+      <name>Items for backwards compatibility</name>
+      <item>
+        <name>Option+Tab to Command+Tab</name>
+        <include path="../snippets/lazy_recommendation.xml" />
+        <identifier>remap.optionTab2commandTab</identifier>
+        <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Swap Command+Tab and Option+Tab</name>
+        <identifier>remap.swap_commandtaboptiontab</identifier>
+        <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+        <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+      </item>
+    </item>
+
   </item>
 </root>
