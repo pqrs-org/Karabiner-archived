@@ -10,12 +10,14 @@
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSInteger theme = [defaults integerForKey:kStatusWindowTheme];
   double opacity = [defaults doubleForKey:kStatusWindowOpacity];
+  NSInteger fontsize = [defaults integerForKey:kStatusWindowFontSize];
 
+  // Opacity
   [self setAlphaValue:(opacity / 100)];
 
+  // Background
   [NSGraphicsContext saveGraphicsState];
   {
-    // Draw bounds
     NSRect bounds = [self bounds];
     switch (theme) {
       case 1:
@@ -31,6 +33,25 @@
     [[NSBezierPath bezierPathWithRoundedRect:bounds xRadius:10 yRadius:10] fill];
   }
   [NSGraphicsContext restoreGraphicsState];
+
+  // Font Size
+  switch (fontsize) {
+    case 1: // Regular
+      [message_ setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
+      break;
+
+    case 2: // Large
+      [message_ setFont:[NSFont systemFontOfSize:([NSFont smallSystemFontSize] * 3)]];
+      break;
+
+    case 3: // Huge
+      [message_ setFont:[NSFont systemFontOfSize:([NSFont smallSystemFontSize] * 4)]];
+      break;
+
+    default: // Small
+      [message_ setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+      break;
+  }
 }
 
 - (void) setMessage:(NSString*)message
