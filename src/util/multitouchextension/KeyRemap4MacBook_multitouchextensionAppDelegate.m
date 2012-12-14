@@ -234,16 +234,10 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
 
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_async(dispatch_get_main_queue(), ^{
+                   // Relaunch when devices are plugged/unplugged.
                    NSLog (@"observer_IONotification");
-
-                   KeyRemap4MacBook_multitouchextensionAppDelegate* self = refcon;
-
-                   [self release_iterator:iterator];
-
-                   // sleep until devices are settled.
-                   [NSThread sleepForTimeInterval:1.0];
-
-                   [self setcallback:YES];
+                   [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+                   [NSApp terminate:nil];
                  });
 }
 
