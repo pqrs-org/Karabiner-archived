@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<root>
+
+  <!--
+      FROM_MODIFIER: OPTION_L, OPTION_R, SHIFT_L, SHIFT_R, ...
+    -->
+
+  <autogen>
+    --KeyToKey--
+    KeyCode::{{ FROM_MODIFIER }},
+    KeyCode::{{ FROM_MODIFIER }},
+    Option::KEYTOKEY_AFTER_KEYUP,
+    KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+    KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+  </autogen>
+  <autogen>
+    --KeyToKey--
+    KeyCode::{{ FROM_MODIFIER }},
+    KeyCode::{{ FROM_MODIFIER }},
+    Option::KEYTOKEY_AFTER_KEYUP,
+    KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+    KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+  </autogen>
+
+  <include path="../commons/wrap_keys.xml">
+    <replacementdef>
+      <replacementname>BEFORE</replacementname>
+      <replacementvalue>ModifierFlag::COMMAND_L | ModifierFlag::{{ FROM_MODIFIER }} | ModifierFlag::EXTRA1</replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>AFTER</replacementname>
+      <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+    </replacementdef>
+  </include>
+
+  <autogen>
+    --KeyToKey--
+    KeyCode::TAB, ModifierFlag::{{ FROM_MODIFIER }},
+    KeyCode::TAB, ModifierFlag::COMMAND_L,
+    KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,
+    KeyCode::VK_LOCK_EXTRA1_FORCE_ON, ModifierFlag::COMMAND_L,
+  </autogen>
+
+</root>
