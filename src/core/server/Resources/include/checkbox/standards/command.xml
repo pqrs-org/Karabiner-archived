@@ -84,6 +84,21 @@
       <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
     </item>
     <item>
+      <name>Command_L to Option_L</name>
+      <appendix>(Pass-Through Command+Tab)</appendix>
+      <identifier>remap.command_l_to_option_l_except_command_tab</identifier>
+      <include path="../snippets/command_to_option_except_command_tab.xml">
+        <replacementdef>
+          <replacementname>COMMAND</replacementname>
+          <replacementvalue>COMMAND_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>OPTION</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+      </include>
+    </item>
+    <item>
       <name>Command_L to Shift_L</name>
       <identifier>remap.commandL2shiftL</identifier>
       <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::SHIFT_L</autogen>
