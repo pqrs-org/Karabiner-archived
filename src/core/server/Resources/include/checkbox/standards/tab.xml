@@ -96,45 +96,18 @@
     <item>
       <name>Use Option+Tab as "Switch application" (Command+Tab)</name>
       <identifier>remap.option_tab_to_switch_application</identifier>
-      <autogen>
-        --KeyToKey--
-        KeyCode::OPTION_L,
-        KeyCode::OPTION_L,
-        Option::KEYTOKEY_AFTER_KEYUP,
-        KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
-        KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
-      </autogen>
-      <autogen>
-        --KeyToKey--
-        KeyCode::OPTION_R,
-        KeyCode::OPTION_R,
-        Option::KEYTOKEY_AFTER_KEYUP,
-        KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
-        KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
-      </autogen>
-
-      <include path="../commons/wrap_keys.xml">
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
         <replacementdef>
-          <replacementname>BEFORE</replacementname>
-          <replacementvalue>ModifierFlag::COMMAND_L | VK_OPTION | ModifierFlag::EXTRA1</replacementvalue>
-        </replacementdef>
-        <replacementdef>
-          <replacementname>AFTER</replacementname>
-          <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
         </replacementdef>
       </include>
-
-      <!-- Lock Command for Option+Shift+Tab.
-           (We need to hold command key while option key is pressed.)
-           And we use extra1 as command+tab mode flag
-           for q and h key in command+tab. -->
-      <autogen>
-        --KeyToKey--
-        KeyCode::TAB, VK_OPTION,
-        KeyCode::TAB, ModifierFlag::COMMAND_L,
-        KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,
-        KeyCode::VK_LOCK_EXTRA1_FORCE_ON, ModifierFlag::COMMAND_L,
-      </autogen>
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
 
     <item>
@@ -334,7 +307,6 @@
       <name>Items for backwards compatibility</name>
       <item>
         <name>Option+Tab to Command+Tab</name>
-        <include path="../snippets/lazy_recommendation.xml" />
         <identifier>remap.optionTab2commandTab</identifier>
         <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
       </item>
