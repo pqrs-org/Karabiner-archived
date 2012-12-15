@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root>
+
+  <autogen>
+    --KeyToKey--
+    KeyCode::{{ COMMAND }},
+    KeyCode::{{ OPTION }},
+    Option::KEYTOKEY_AFTER_KEYUP,
+    KeyCode::VK_LOCK_{{ COMMAND }}_FORCE_OFF,
+    KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+  </autogen>
+
+  <autogen>
+    --KeyToKey--
+    KeyCode::Q, ModifierFlag::{{ COMMAND }} | ModifierFlag::{{ OPTION }} | ModifierFlag::EXTRA1,
+    KeyCode::Q, ModifierFlag::{{ COMMAND }},
+  </autogen>
+  <autogen>
+    --KeyToKey--
+    KeyCode::H, ModifierFlag::{{ COMMAND }} | ModifierFlag::{{ OPTION }} | ModifierFlag::EXTRA1,
+    KeyCode::H, ModifierFlag::{{ COMMAND }},
+  </autogen>
+
+  <autogen>
+    --KeyToKey--
+    KeyCode::TAB, ModifierFlag::{{ OPTION }},
+    KeyCode::TAB, ModifierFlag::{{ COMMAND }},
+    KeyCode::VK_LOCK_{{ COMMAND }}_FORCE_ON, ModifierFlag::{{ COMMAND }},
+    KeyCode::VK_LOCK_EXTRA1_FORCE_ON, ModifierFlag::{{ COMMAND }},
+  </autogen>
+
+</root>

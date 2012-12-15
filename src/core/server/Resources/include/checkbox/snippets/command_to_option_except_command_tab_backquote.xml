@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root>
+
+  <include path="command_to_option_except_command_tab.xml" />
+
+  <autogen>
+    --KeyToKey--
+    KeyCode::BACKQUOTE, ModifierFlag::{{ OPTION }},
+    KeyCode::BACKQUOTE, ModifierFlag::{{ COMMAND }},
+    KeyCode::VK_LOCK_{{ COMMAND }}_FORCE_ON, ModifierFlag::{{ COMMAND }},
+    KeyCode::VK_LOCK_EXTRA1_FORCE_ON, ModifierFlag::{{ COMMAND }},
+  </autogen>
+
+</root>
