@@ -143,6 +143,11 @@
       <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
     </item>
     <item>
+      <name>Control_L to Forward Delete</name>
+      <identifier>remap.control_l_to_forward_delete</identifier>
+      <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
+    </item>
+    <item>
       <name>Control_L to Return</name>
       <identifier>remap.controlL2return</identifier>
       <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
