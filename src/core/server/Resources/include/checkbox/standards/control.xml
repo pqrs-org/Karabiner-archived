@@ -183,6 +183,11 @@
       <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
     </item>
     <item>
+      <name>Control_R to Fn</name>
+      <identifier>remap.controlR2fn</identifier>
+      <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::FN</autogen>
+    </item>
+    <item>
       <name>Control_R to Option_R</name>
       <identifier>remap.controlR2optionR</identifier>
       <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
@@ -204,6 +209,11 @@
       <autogen>--KeyOverlaidModifier-- KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_STICKY_CONTROL_R</autogen>
     </item>
     <item>
+      <name>Control_R to Delete</name>
+      <identifier>remap.control_r_to_delete</identifier>
+      <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::DELETE</autogen>
+    </item>
+    <item>
       <name>Control_R to Enter</name>
       <identifier>remap.controlR_to_enter</identifier>
       <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ENTER</autogen>
@@ -219,9 +229,9 @@
       <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::ESCAPE</autogen>
     </item>
     <item>
-      <name>Control_R to Fn</name>
-      <identifier>remap.controlR2fn</identifier>
-      <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::FN</autogen>
+      <name>Control_R to Forward Delete</name>
+      <identifier>remap.control_r_to_forward_delete</identifier>
+      <autogen>--KeyToKey-- KeyCode::CONTROL_R, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Control_R to RightClick</name>
