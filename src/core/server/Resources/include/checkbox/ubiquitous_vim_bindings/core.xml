@@ -1103,6 +1103,19 @@
       </item>
 
       <item>
+        <name>Ctrl_L toggles Normal Mode</name>
+        <identifier>remap.vimnormal_ctrll_toggle</identifier>
+        <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
+        <autogen>
+          --KeyToKey--
+          KeyCode::L, VK_CONTROL,
+          KeyCode::VK_LOCK_ALL_FORCE_OFF,
+          KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+          {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
+        </autogen>
+      </item>
+
+      <item>
         <name>Command_L tap toggles Normal Mode</name>
         <identifier>remap.vimnormal_commandl_toggle</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
