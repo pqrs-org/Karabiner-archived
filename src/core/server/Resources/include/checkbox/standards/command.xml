@@ -87,6 +87,7 @@
       <name>Command_L to Option_L</name>
       <appendix>(Pass-Through Command+Tab)</appendix>
       <identifier>remap.command_l_to_option_l_except_command_tab</identifier>
+      {{ COMMAND_L_TO_OPTION_L_EXCEPT_TAB_EXTRA }}
       <include path="../snippets/command_to_option_except_command_tab.xml">
         <replacementdef>
           <replacementname>COMMAND</replacementname>

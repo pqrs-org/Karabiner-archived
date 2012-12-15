@@ -18,12 +18,18 @@
     <item>
       <name>Change Command_L to Option_L</name>
       <appendix>(Pass-Through Tab and Backquote)</appendix>
-      <include path="../snippets/lazy_recommendation.xml" />
       <identifier>remap.app_term_commandL2optionL_except_tab</identifier>
       <only>TERMINAL</only>
-      <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::OPTION_L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+      <include path="../snippets/command_to_option_except_command_tab_backquote.xml">
+        <replacementdef>
+          <replacementname>COMMAND</replacementname>
+          <replacementvalue>COMMAND_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>OPTION</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Change Delete Key</name>

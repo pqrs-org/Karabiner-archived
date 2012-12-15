@@ -113,16 +113,16 @@
         KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
       </autogen>
 
-      <autogen>
-        --KeyToKey--
-        KeyCode::Q, ModifierFlag::COMMAND_L | VK_OPTION | ModifierFlag::EXTRA1,
-        KeyCode::Q, ModifierFlag::COMMAND_L,
-      </autogen>
-      <autogen>
-        --KeyToKey--
-        KeyCode::H, ModifierFlag::COMMAND_L | VK_OPTION | ModifierFlag::EXTRA1,
-        KeyCode::H, ModifierFlag::COMMAND_L,
-      </autogen>
+      <include path="../commons/wrap_keys.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::COMMAND_L | VK_OPTION | ModifierFlag::EXTRA1</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+        </replacementdef>
+      </include>
 
       <!-- Lock Command for Option+Shift+Tab.
            (We need to hold command key while option key is pressed.)

@@ -24,6 +24,12 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>COMMAND_L_TO_OPTION_L_EXCEPT_TAB_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>EMACS_MODE_IGNORE_APPS</replacementname>
     <replacementvalue>
       ECLIPSE,
