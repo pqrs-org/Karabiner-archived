@@ -16,31 +16,9 @@
   return self;
 }
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-                   [super observer_ConfigListChanged:notification];
-                   [self filter:nil];
-                 });
-}
-
-- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-                   [super observer_ConfigXMLReloaded:notification];
-                   [self filter:nil];
-                 });
-}
-
 - (IBAction) reloadXML:(id)sender
 {
   [xmlCompiler_ reload];
-}
-
-- (IBAction) filter:(id)sender
-{
-  BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
-  [self filterDataSource:isEnabledOnly string:[searchText_ stringValue]];
 }
 
 @end

@@ -16,6 +16,7 @@
 {
   dispatch_async(dispatch_get_main_queue(), ^{
                    [outlineview_ reloadData];
+                   [self filter:self];
                  });
 }
 
@@ -24,6 +25,7 @@
   dispatch_async(dispatch_get_main_queue(), ^{
                    [self load:YES];
                    [outlineview_ reloadData];
+                   [self filter:self];
                  });
 }
 
@@ -363,6 +365,14 @@
     [outlineview_ collapseItem:nil collapseChildren:YES];
   } else {
     [outlineview_ expandItem:nil expandChildren:YES];
+  }
+}
+
+- (IBAction) filter:(id)sender
+{
+  if (ischeckbox_) {
+    BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
+    [self filterDataSource:isEnabledOnly string:[searchText_ stringValue]];
   }
 }
 

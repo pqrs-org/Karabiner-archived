@@ -14,12 +14,15 @@
   IBOutlet NSOutlineView* outlineview_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet XMLCompiler* xmlCompiler_;
+
+  // for OutlineView_checkbox
+  IBOutlet NSSearchField* searchText_;
+  IBOutlet NSButton* showEnabledOnly_;
 }
 
 - (void) load:(BOOL)force;
 - (void) filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification;
-- (void) observer_ConfigXMLReloaded:(NSNotification*)notification;
+- (IBAction) filter:(id)sender;
 
 @end
