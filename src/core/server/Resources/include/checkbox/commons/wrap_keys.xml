@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+  <include path="wrap_keys/alphabet.xml" />
+  <include path="wrap_keys/number.xml" />
+  <include path="wrap_keys/symbol.xml" />
+  <include path="wrap_keys/keypad.xml" />
+  <include path="wrap_keys/special.xml" />
+  <include path="wrap_keys/function.xml" />
+  <include path="wrap_keys/cursor.xml" />
+  <include path="wrap_keys/international.xml" />
+</root>
