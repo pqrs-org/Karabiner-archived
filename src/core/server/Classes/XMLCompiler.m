@@ -8,15 +8,6 @@
 // ------------------------------------------------------------
 // private methods
 
-- (void) showAlert {
-  NSAlert* alert = [[NSAlert new] autorelease];
-  [alert setMessageText:@"KeyRemap4MacBook Error"];
-  [alert addButtonWithTitle:@"Close"];
-  [alert setInformativeText:[self preferencepane_error_message]];
-
-  [alert runModal];
-}
-
 + (NSMutableArray*) build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree
 {
   if (! node_tree) return nil;
@@ -221,9 +212,12 @@
   }
 
   if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {
-    [self performSelectorOnMainThread:@selector(showAlert)
-                           withObject:nil
-                        waitUntilDone:NO];
+    NSAlert* alert = [[NSAlert new] autorelease];
+    [alert setMessageText:@"KeyRemap4MacBook Error"];
+    [alert addButtonWithTitle:@"Close"];
+    [alert setInformativeText:[self preferencepane_error_message]];
+
+    [alert runModal];
   }
 
   // We need to send a notification outside synchronized block to prevent lock.
