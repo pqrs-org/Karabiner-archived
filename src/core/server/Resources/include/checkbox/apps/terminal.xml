@@ -207,7 +207,6 @@
         <appendix>(Change Option_L+Arrow to Control+Arrow)</appendix>
         <appendix></appendix>
         <appendix>This setting is useful when you exchange Control+Tab and Command+Tab.</appendix>
-        <include path="../snippets/lazy_recommendation.xml" />
         <identifier>remap.app_term_controlL2optionL_except_tab</identifier>
         <only>TERMINAL</only>
         <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::OPTION_L</autogen>

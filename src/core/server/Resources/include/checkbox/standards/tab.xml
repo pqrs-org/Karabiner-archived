@@ -82,15 +82,26 @@
       <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
-      <name>Control+Tab to Command+Tab</name>
-      <include path="../snippets/lazy_recommendation.xml" />
-      <identifier>remap.controlTab2commandTab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-    </item>
-    <item>
       <name>Control+Tab to Option+Tab</name>
       <identifier>remap.controlTab2optionTab</identifier>
       <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+    </item>
+
+    <item>
+      <name>Use Control+Tab as "Switch application" (Command+Tab)</name>
+      <identifier>remap.controlTab2commandTab</identifier>
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
 
     <item>
@@ -130,8 +141,36 @@
     <item>
       <name>Swap Command+Tab and Control+Tab</name>
       <identifier>remap.swap_commandtabcontroltab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+      </include>
       <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Swap Command+Tab and Option+Tab</name>
+      <identifier>remap.swap_commandtaboptiontab</identifier>
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+      </include>
+      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Disable Tab</name>
@@ -308,13 +347,18 @@
       <item>
         <name>Option+Tab to Command+Tab</name>
         <identifier>remap.optionTab2commandTab</identifier>
-        <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-      </item>
-      <item>
-        <name>Swap Command+Tab and Option+Tab</name>
-        <identifier>remap.swap_commandtaboptiontab</identifier>
-        <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+        <include path="../snippets/modifier_tab_to_command_tab.xml">
+          <replacementdef>
+            <replacementname>FROM_MODIFIER</replacementname>
+            <replacementvalue>OPTION_L</replacementvalue>
+          </replacementdef>
+        </include>
+        <include path="../snippets/modifier_tab_to_command_tab.xml">
+          <replacementdef>
+            <replacementname>FROM_MODIFIER</replacementname>
+            <replacementvalue>OPTION_R</replacementvalue>
+          </replacementdef>
+        </include>
       </item>
     </item>
 
