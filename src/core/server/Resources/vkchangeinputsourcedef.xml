@@ -222,6 +222,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SPANISH</name>
+    <languagecode>es</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</name>
     <languagecode>sv</languagecode>
   </vkchangeinputsourcedef>
