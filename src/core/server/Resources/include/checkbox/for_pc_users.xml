@@ -542,6 +542,17 @@
       </autogen>
     </item>
     <item>
+      <name>Command+Y sends Command+Shift+Z (Windows-style Redo)</name>
+      <appendix>(except for Microsoft applications which already have this built-in)</appendix>
+      <identifier>remap.winstyle_redo</identifier>
+      <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</not>
+      <autogen>
+        --KeyToKey--
+        KeyCode::Y, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::Z, VK_COMMAND | ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+    <item>
       <name>KeyPad copy and paste for PC Users who swapped Control and Command</name>
       <appendix>(except in Virtual Machine, RDC)</appendix>
       <appendix></appendix>
