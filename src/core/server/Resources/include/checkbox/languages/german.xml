@@ -234,6 +234,17 @@
       </autogen>
     </item>
     <item>
+      <name>Command+Y sends Command+Shift+Z (Windows-style Undo)</name>
+      <identifier>remap.german_command_y_to_command_shift_z</identifier>
+      <appendix>(except for Microsoft applications which already have this built-in)</appendix>
+      <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</not>
+      <autogen>
+        --KeyToKey--
+        KeyCode::Z, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::Y, VK_COMMAND | ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
+    <item>
       <name>Command+Tab sends Command+Shift+Backquote</name>
       <identifier>remap.german_command_tab_to_command_shift_backquote</identifier>
       <autogen>
