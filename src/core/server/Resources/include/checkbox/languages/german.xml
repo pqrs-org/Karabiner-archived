@@ -233,5 +233,14 @@
         KeyCode::S, ModifierFlag::OPTION_R
       </autogen>
     </item>
+    <item>
+      <name>Command+Tab sends Command+Shift+Backquote</name>
+      <identifier>remap.german_command_tab_to_command_shift_backquote</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::TAB, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::EQUAL, VK_COMMAND | ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
   </item>
 </root>
