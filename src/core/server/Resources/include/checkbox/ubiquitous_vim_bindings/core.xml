@@ -1076,6 +1076,19 @@
       </item>
 
       <item>
+        <name>Simultaneous jk toggles Normal Mode</name>
+        <identifier>remap.vimnormal_jk_toggle</identifier>
+        <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
+        <autogen>
+          --SimultaneousKeyPresses--
+          KeyCode::J, KeyCode::K,
+          KeyCode::VK_LOCK_ALL_FORCE_OFF,
+          KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
+          {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
+        </autogen>
+      </item>
+
+      <item>
         <name>Ctrl-[ toggles Normal Mode</name>
         <identifier>remap.vimnormal_ctrlbracketleft_toggle</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
