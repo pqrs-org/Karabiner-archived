@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <item>
+    <item>
     <name>Change Control_L Key (Left Control)</name>
     <item>
       <name>Control_L to Command_L</name>
@@ -242,6 +242,15 @@
       <name>Control_R to RightClick</name>
       <identifier>remap.controlR2rightclick</identifier>
       <autogen>--KeyToPointingButton-- KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
+    </item>
+    <item>
+      <name>Control-j to Enter</name>
+      <identifier>remap.controlj_return</identifier>
+      <autogen>
+        --KeyToKey--
+        KeyCode::J, VK_CONTROL,
+        KeyCode::ENTER
+      </autogen>
     </item>
   </item>
 </root>
