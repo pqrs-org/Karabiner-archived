@@ -3,9 +3,12 @@
   <item>
     <name>For Spanish</name>
     <item>
-      <name>Change Option_R+4 to Ñ (Option_R+;)</name>
+      <name>Change Option_R+4 to ~ (Option_R+;)</name>
       <identifier>remap.pc_applicationoption4n</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
+      <block>
+        <inputsource_only>SPANISH</inputsource_only>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
+      </block>
     </item>
     <item>
       <name>Swap Ordinal-indicator(º) and Less-Than(&lt;)</name>
