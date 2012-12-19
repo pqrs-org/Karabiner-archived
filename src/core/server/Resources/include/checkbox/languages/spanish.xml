@@ -3,7 +3,7 @@
   <item>
     <name>For Spanish</name>
     <item>
-      <name>Change Option_R+4 to ~ on Spanish input source</name>
+      <name>Change right option key+4 to ~ on Spanish input source</name>
       <identifier>remap.pc_applicationoption4n</identifier>
       <block>
         <inputsource_only>SPANISH</inputsource_only>
@@ -11,7 +11,7 @@
       </block>
     </item>
     <item>
-      <name>Change Option_R+4 to ~ on U.S. input source</name>
+      <name>Change right option key+4 to ~ on U.S. input source</name>
       <identifier>remap.option_r_4_to_tilda</identifier>
       <block>
         <inputsource_only>ENGLISH</inputsource_only>
@@ -19,25 +19,25 @@
       </block>
     </item>
     <item>
-      <name>Swap Ordinal-indicator(º) and Less-Than(&lt;)</name>
+      <name>Swap ordinal-indicator(º) and less-than(&lt;)</name>
       <identifier>remap.spanish_swap_ordinal_indicator_lessthan</identifier>
       <autogen>--KeyToKey-- KeyCode::SPANISH_ORDINAL_INDICATOR, KeyCode::SPANISH_LESS_THAN</autogen>
       <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
     </item>
     <item>
-      <name>Change Option_R+Less_than(≤) to Backslash(\) Key for Spanish</name>
+      <name>Change right option key+less-than(≤) to backslash(\) key for Spanish</name>
       <appendix>Gives you the missing key combo with Alt-Gr without the ordinals</appendix>
       <identifier>remap.spanish_option_r_as_backslash</identifier>
       <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, ModifierFlag::OPTION_R, KeyCode::SPANISH_ORDINAL_INDICATOR, ModifierFlag::OPTION_R</autogen>
     </item>
     <item>
-      <name>Add ordinals with Command+Less_than for Spanish</name>
-      <appendix>Gives you the missing Spanish ordinals using any of the Command keys</appendix>
+      <name>Add ordinals with command key+less_than for Spanish</name>
+      <appendix>Gives you the missing Spanish ordinals using any of the command keys</appendix>
       <identifier>remap.spanish_command_less_for_ordinals</identifier>
       <autogen>--KeyToKey-- KeyCode::SPANISH_LESS_THAN, VK_COMMAND, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
     </item>
     <item>
-      <name>Change KeyPad Comma(,) to Dot(.) on "Spanish" and "Spanish - ISO" Input Source</name>
+      <name>Change keypad comma(,) to dot(.) on "Spanish" and "Spanish - ISO" Input Source</name>
       <identifier>remap.spanish_keypad_comma_to_dot</identifier>
       <inputsource_only>SPANISH</inputsource_only>
       <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
