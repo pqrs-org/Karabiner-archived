@@ -3,11 +3,19 @@
   <item>
     <name>For Spanish</name>
     <item>
-      <name>Change Option_R+4 to ~ (Option_R+;)</name>
+      <name>Change Option_R+4 to ~ on Spanish input source</name>
       <identifier>remap.pc_applicationoption4n</identifier>
       <block>
         <inputsource_only>SPANISH</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
+      </block>
+    </item>
+    <item>
+      <name>Change Option_R+4 to ~ on U.S. input source</name>
+      <identifier>remap.option_r_4_to_tilda</identifier>
+      <block>
+        <inputsource_only>ENGLISH</inputsource_only>
+        <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
       </block>
     </item>
     <item>
