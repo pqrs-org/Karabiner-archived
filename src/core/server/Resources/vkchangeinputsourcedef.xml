@@ -98,6 +98,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN_PRO</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPRO</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_POLISH_PRO</name>
     <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
   </vkchangeinputsourcedef>
