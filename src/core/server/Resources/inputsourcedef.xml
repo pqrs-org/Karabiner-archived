@@ -75,8 +75,20 @@
 
   <inputsourcedef>
     <name>ENGLISH</name>
-    <name>JANSI</name>
+    <detail>JANSI</detail>
     <inputsourceid_equal>org.unknown.keylayout.JANSI</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>HUNGARIAN</name>
+    <detail>HUNGARIAN_PRO</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPRO</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>HUNGARIAN</name>
+    <detail>HUNGARIAN_PRO_PC</detail>
+    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPROPC</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
