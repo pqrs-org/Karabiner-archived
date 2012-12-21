@@ -1430,8 +1430,7 @@
     </item>
 
     <!-- Putting these here since items must have names, so we can't hide them completely. -->
-    <item>
-      <name>Operator Pending Mode Placeholders (No Settings)</name>
+    <item hidden="true">
       <item>
         <name></name>
         <identifier vk_config="true">notsave.c_operator_pending</identifier>
