@@ -4,29 +4,39 @@
   <autogen>
     --KeyToKey--
     KeyCode::{{ COMMAND }},
+
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_command_to_option_except_command_tab,
     KeyCode::{{ OPTION }},
+
     Option::KEYTOKEY_AFTER_KEYUP,
     KeyCode::VK_LOCK_{{ COMMAND }}_FORCE_OFF,
-    KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+    KeyCode::VK_CONFIG_FORCE_OFF_notsave_command_to_option_except_command_tab,
+    KeyCode::VK_CONFIG_FORCE_OFF_notsave_command_to_option_except_command_tab_tab_mode,
   </autogen>
 
-  <include path="../commons/wrap_keys.xml">
-    <replacementdef>
-      <replacementname>BEFORE</replacementname>
-      <replacementvalue>ModifierFlag::{{ COMMAND }} | ModifierFlag::{{ OPTION }} | ModifierFlag::EXTRA1</replacementvalue>
-    </replacementdef>
-    <replacementdef>
-      <replacementname>AFTER</replacementname>
-      <replacementvalue>ModifierFlag::{{ COMMAND }}</replacementvalue>
-    </replacementdef>
-  </include>
+  <block>
+    <config_only>notsave.command_to_option_except_command_tab_tab_mode</config_only>
+    <include path="../commons/wrap_keys.xml">
+      <replacementdef>
+        <replacementname>BEFORE</replacementname>
+        <replacementvalue>ModifierFlag::{{ COMMAND }} | ModifierFlag::{{ OPTION }}</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>AFTER</replacementname>
+        <replacementvalue>ModifierFlag::{{ COMMAND }}</replacementvalue>
+      </replacementdef>
+    </include>
+  </block>
 
-  <autogen>
-    --KeyToKey--
-    KeyCode::TAB, ModifierFlag::{{ OPTION }},
-    KeyCode::TAB, ModifierFlag::{{ COMMAND }},
-    KeyCode::VK_LOCK_{{ COMMAND }}_FORCE_ON, ModifierFlag::{{ COMMAND }},
-    KeyCode::VK_LOCK_EXTRA1_FORCE_ON, ModifierFlag::{{ COMMAND }},
-  </autogen>
+  <block>
+    <config_only>notsave.command_to_option_except_command_tab</config_only>
+    <autogen>
+      --KeyToKey--
+      KeyCode::TAB, ModifierFlag::{{ OPTION }},
+      KeyCode::TAB, ModifierFlag::{{ COMMAND }},
+      KeyCode::VK_LOCK_{{ COMMAND }}_FORCE_ON, ModifierFlag::{{ COMMAND }},
+      KeyCode::VK_CONFIG_FORCE_ON_notsave_command_to_option_except_command_tab_tab_mode, ModifierFlag::{{ COMMAND }},
+    </autogen>
+  </block>
 
 </root>
