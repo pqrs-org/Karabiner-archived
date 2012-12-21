@@ -8,37 +8,39 @@
   <autogen>
     --KeyToKey--
     KeyCode::{{ FROM_MODIFIER }},
-    KeyCode::{{ FROM_MODIFIER }},
+
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_modifier_tab_to_command_tab,
+    KeyCode::{{ TO_MODIFIER }},
+
     Option::KEYTOKEY_AFTER_KEYUP,
     KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
-    KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
-  </autogen>
-  <autogen>
-    --KeyToKey--
-    KeyCode::{{ FROM_MODIFIER }},
-    KeyCode::{{ FROM_MODIFIER }},
-    Option::KEYTOKEY_AFTER_KEYUP,
-    KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
-    KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+    KeyCode::VK_CONFIG_FORCE_OFF_notsave_modifier_tab_to_command_tab,
+    KeyCode::VK_CONFIG_FORCE_OFF_notsave_modifier_tab_to_command_tab_tab_mode,
   </autogen>
 
-  <include path="../commons/wrap_keys.xml">
-    <replacementdef>
-      <replacementname>BEFORE</replacementname>
-      <replacementvalue>ModifierFlag::COMMAND_L | ModifierFlag::{{ FROM_MODIFIER }} | ModifierFlag::EXTRA1</replacementvalue>
-    </replacementdef>
-    <replacementdef>
-      <replacementname>AFTER</replacementname>
-      <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
-    </replacementdef>
-  </include>
+  <block>
+    <config_only>notsave.modifier_tab_to_command_tab_tab_mode</config_only>
+    <include path="../commons/wrap_keys.xml">
+      <replacementdef>
+        <replacementname>BEFORE</replacementname>
+        <replacementvalue>ModifierFlag::COMMAND_L | ModifierFlag::{{ TO_MODIFIER }}</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>AFTER</replacementname>
+        <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+      </replacementdef>
+    </include>
+  </block>
 
-  <autogen>
-    --KeyToKey--
-    KeyCode::TAB, ModifierFlag::{{ FROM_MODIFIER }},
-    KeyCode::TAB, ModifierFlag::COMMAND_L,
-    KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,
-    KeyCode::VK_LOCK_EXTRA1_FORCE_ON, ModifierFlag::COMMAND_L,
-  </autogen>
+  <block>
+    <config_only>notsave.modifier_tab_to_command_tab</config_only>
+    <autogen>
+      --KeyToKey--
+      KeyCode::TAB, ModifierFlag::{{ TO_MODIFIER }},
+      KeyCode::TAB, ModifierFlag::COMMAND_L,
+      KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,
+      KeyCode::VK_CONFIG_FORCE_ON_notsave_modifier_tab_to_command_tab_tab_mode, ModifierFlag::COMMAND_L,
+    </autogen>
+  </block>
 
 </root>

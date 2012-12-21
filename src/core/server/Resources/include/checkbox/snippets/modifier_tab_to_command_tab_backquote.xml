@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+
+  <include path="modifier_tab_to_command_tab.xml" />
+
+  <block>
+    <config_only>notsave.modifier_tab_to_command_tab</config_only>
+    <autogen>
+      --KeyToKey--
+      KeyCode::BACKQUOTE, ModifierFlag::{{ FROM_MODIFIER }},
+      KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L,
+      KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,
+      KeyCode::VK_CONFIG_FORCE_ON_notsave_modifier_tab_to_command_tab_tab_mode, ModifierFlag::COMMAND_L,
+    </autogen>
+  </block>
+
+</root>
