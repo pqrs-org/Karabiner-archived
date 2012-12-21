@@ -97,7 +97,7 @@
         <identifier>remap.RBracket_to_RArrow</identifier>
         <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CURSOR_RIGHT</autogen>
       </item>
-      <item>
+      <item hidden="true">
         <name></name>
         <identifier vk_config="true">notsave.app_finder_return_accepts_rename</identifier>
         <only>FINDER</only>

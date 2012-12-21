@@ -1103,7 +1103,7 @@
               KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman</autogen>
           </block>
         </item>
-        <item>
+        <item hidden="true">
           <name></name>
           <identifier vk_config="true">notsave.jis_quicksilver_mode_back_to_roman</identifier>
         </item>
