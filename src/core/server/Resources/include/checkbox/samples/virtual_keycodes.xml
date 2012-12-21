@@ -107,7 +107,7 @@
           <autogen>--KeyToKey-- KeyCode::H, KeyCode::A, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config</autogen>
           <autogen>--KeyToKey-- KeyCode::J, KeyCode::A, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config, ModifierFlag::SHIFT_L</autogen>
         </item>
-        <item>
+        <item hidden="true">
           <name></name>
           <identifier vk_config="true">notsave.samples_vk_config</identifier>
           <autogen>--ShowStatusMessage-- VK_CONFIG</autogen>
