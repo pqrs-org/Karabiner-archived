@@ -95,7 +95,10 @@ public:
           }
           preferences_node_tree_ = saved_preferences_node_tree;
 
-          preferences_node_tree_->push_back(ptr);
+          auto attr_hidden = it.get_optional("<xmlattr>.hidden");
+          if (! attr_hidden) {
+            preferences_node_tree_->push_back(ptr);
+          }
         }
       }
     }
