@@ -20,13 +20,13 @@
       <appendix>(Pass-Through Tab and Backquote)</appendix>
       <identifier>remap.app_term_commandL2optionL_except_tab</identifier>
       <only>TERMINAL</only>
-      <include path="../snippets/command_to_option_except_command_tab_backquote.xml">
+      <include path="../snippets/modifier_tab_to_command_tab_backquote.xml">
         <replacementdef>
-          <replacementname>COMMAND</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
           <replacementvalue>COMMAND_L</replacementvalue>
         </replacementdef>
         <replacementdef>
-          <replacementname>OPTION</replacementname>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>OPTION_L</replacementvalue>
         </replacementdef>
       </include>

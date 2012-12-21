@@ -95,10 +95,18 @@
           <replacementname>FROM_MODIFIER</replacementname>
           <replacementvalue>CONTROL_L</replacementvalue>
         </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
       </include>
       <include path="../snippets/modifier_tab_to_command_tab.xml">
         <replacementdef>
           <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>CONTROL_R</replacementvalue>
         </replacementdef>
       </include>
@@ -112,10 +120,18 @@
           <replacementname>FROM_MODIFIER</replacementname>
           <replacementvalue>OPTION_L</replacementvalue>
         </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
       </include>
       <include path="../snippets/modifier_tab_to_command_tab.xml">
         <replacementdef>
           <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>OPTION_R</replacementvalue>
         </replacementdef>
       </include>
@@ -146,10 +162,18 @@
           <replacementname>FROM_MODIFIER</replacementname>
           <replacementvalue>CONTROL_L</replacementvalue>
         </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
       </include>
       <include path="../snippets/modifier_tab_to_command_tab.xml">
         <replacementdef>
           <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>CONTROL_R</replacementvalue>
         </replacementdef>
       </include>
@@ -163,10 +187,18 @@
           <replacementname>FROM_MODIFIER</replacementname>
           <replacementvalue>OPTION_L</replacementvalue>
         </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
       </include>
       <include path="../snippets/modifier_tab_to_command_tab.xml">
         <replacementdef>
           <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>OPTION_R</replacementvalue>
         </replacementdef>
       </include>
@@ -352,10 +384,18 @@
             <replacementname>FROM_MODIFIER</replacementname>
             <replacementvalue>OPTION_L</replacementvalue>
           </replacementdef>
+          <replacementdef>
+            <replacementname>TO_MODIFIER</replacementname>
+            <replacementvalue>OPTION_L</replacementvalue>
+          </replacementdef>
         </include>
         <include path="../snippets/modifier_tab_to_command_tab.xml">
           <replacementdef>
             <replacementname>FROM_MODIFIER</replacementname>
+            <replacementvalue>OPTION_R</replacementvalue>
+          </replacementdef>
+          <replacementdef>
+            <replacementname>TO_MODIFIER</replacementname>
             <replacementvalue>OPTION_R</replacementvalue>
           </replacementdef>
         </include>
