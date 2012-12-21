@@ -238,6 +238,26 @@
         </include>
       </block>
       <block>
+        <!-- Parentheses is 5,- in some Input Sources. -->
+        <inputsource_only>FRENCH</inputsource_only>
+        <include path="../devices/logitech_n305.xml">
+          <replacementdef>
+            <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
+            <replacementvalue>KeyCode::KEY_5</replacementvalue>
+          </replacementdef>
+
+          <replacementdef>
+            <replacementname>LOGITECH_N305_RIGHT_PARENTHES</replacementname>
+            <replacementvalue>KeyCode::MINUS</replacementvalue>
+          </replacementdef>
+
+          <replacementdef>
+            <replacementname>LOGITECH_N305_EQUAL</replacementname>
+            <replacementvalue>KeyCode::SLASH</replacementvalue>
+          </replacementdef>
+        </include>
+      </block>
+      <block>
         <include path="../devices/logitech_n305.xml" />
       </block>
     </item>
