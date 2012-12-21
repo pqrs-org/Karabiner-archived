@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root>
+  <item hidden="true">
+    <item>
+      <identifier vk_config="true">notsave.command_to_option_except_command_tab</identifier>
+    </item>
+    <item>
+      <identifier vk_config="true">notsave.command_to_option_except_command_tab_tab_mode</identifier>
+      <autogen>--ShowStatusMessage-- Command-Tab</autogen>
+    </item>
+  </item>
+</root>
