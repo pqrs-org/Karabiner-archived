@@ -19,6 +19,14 @@ namespace pqrs {
     }
   }
 
+  void
+  xml_compiler::app::add_rule_suffix(const std::string& v)
+  {
+    if (! v.empty()) {
+      rules_suffix_.push_back(v);
+    }
+  }
+
   bool
   xml_compiler::app::is_rules_matched(const std::string& identifier) const
   {
@@ -29,6 +37,11 @@ namespace pqrs {
     }
     for (const auto& r : rules_prefix_) {
       if (boost::starts_with(identifier, r)) {
+        return true;
+      }
+    }
+    for (const auto& r : rules_suffix_) {
+      if (boost::ends_with(identifier, r)) {
         return true;
       }
     }
@@ -56,6 +69,8 @@ namespace pqrs {
             newapp->add_rule_equal(boost::trim_copy(child.get_data()));
           } else if (child.get_tag_name() == "prefix") {
             newapp->add_rule_prefix(boost::trim_copy(child.get_data()));
+          } else if (child.get_tag_name() == "suffix") {
+            newapp->add_rule_suffix(boost::trim_copy(child.get_data()));
           }
         }
 

@@ -6,12 +6,14 @@ public:
   void set_name(const std::string& v) { name_ = v; }
   void add_rule_equal(const std::string& v);
   void add_rule_prefix(const std::string& v);
+  void add_rule_suffix(const std::string& v);
   bool is_rules_matched(const std::string& identifier) const;
 
 private:
   boost::optional<std::string> name_;
   std::vector<std::string> rules_equal_;
   std::vector<std::string> rules_prefix_;
+  std::vector<std::string> rules_suffix_;
 };
 
 class app_loader {

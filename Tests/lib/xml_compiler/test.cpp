@@ -179,6 +179,16 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::EMACS"),
             xml_compiler.get_appid("org.gnu.AquamacsEmacs"));
 
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::PREFIX_TEST"),
+            xml_compiler.get_appid("org.pqrs.prefix.test"));
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::PREFIX_TEST"),
+            xml_compiler.get_appid("org.pqrs.prefix.test1111"));
+
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::SUFFIX_TEST"),
+            xml_compiler.get_appid("test.suffix.pqrs.org"));
+  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::SUFFIX_TEST"),
+            xml_compiler.get_appid("1111test.suffix.pqrs.org"));
+
   EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map_value("DeviceVendor::HEWLETT_PACKARD"));
   EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map_value("DeviceVendor::SPACE_IS_IGNORED"));
   EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map_value("DeviceProduct::MY_HP_KEYBOARD"));
