@@ -399,4 +399,9 @@
     <appname>REEDER</appname>
     <equal>com.reederapp.mac</equal>
   </appdef>
+
+  <appdef>
+    <appdef>WINESKIN</appdef>
+    <suffix>.Wineskin.prefs</suffix>
+  </appdef>
 </root>
