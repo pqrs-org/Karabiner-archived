@@ -31,4 +31,14 @@
       keep space
     </equal>
   </appdef>
+
+  <appdef>
+    <appname>PREFIX_TEST</appname>
+    <prefix>org.pqrs.prefix.test</prefix>
+  </appdef>
+
+  <appdef>
+    <appname>SUFFIX_TEST</appname>
+    <suffix>test.suffix.pqrs.org</suffix>
+  </appdef>
 </root>
