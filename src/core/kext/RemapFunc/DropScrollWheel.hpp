@@ -13,6 +13,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool remap(RemapPointingParams_scroll& remapParams);
 
       void add(unsigned int datatype, unsigned int newval);
+
+    private:
+      bool dropHorizontalScroll_;
     };
   }
 }

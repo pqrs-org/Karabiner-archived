@@ -621,10 +621,15 @@
     <item>
       <name>DropScrollWheel</name>
       <item>
-        <appendix>Drop ScrollWheel at Emacs</appendix>
+        <name>Drop ScrollWheel at Emacs</name>
         <identifier>remap.samples_dropscrollwheel</identifier>
         <only>EMACS</only>
         <autogen>--DropScrollWheel--</autogen>
+      </item>
+      <item>
+        <name>Drop Horizontal Scroll</name>
+        <identifier>remap.samples_dropscrollwheel_horizontal_scroll</identifier>
+        <autogen>--DropScrollWheel-- Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL</autogen>
       </item>
     </item>
 
