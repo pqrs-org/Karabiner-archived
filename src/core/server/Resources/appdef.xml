@@ -401,7 +401,7 @@
   </appdef>
 
   <appdef>
-    <appdef>WINESKIN</appdef>
+    <appname>WINESKIN</appname>
     <suffix>.Wineskin.prefs</suffix>
   </appdef>
 </root>
