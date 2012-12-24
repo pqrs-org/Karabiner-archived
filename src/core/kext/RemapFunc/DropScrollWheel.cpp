@@ -1,8 +1,9 @@
 #include "DropScrollWheel.hpp"
+#include "EventOutputQueue.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    DropScrollWheel::DropScrollWheel(void)
+    DropScrollWheel::DropScrollWheel(void) : dropHorizontalScroll_(false)
     {}
 
     DropScrollWheel::~DropScrollWheel(void)
@@ -10,12 +11,50 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void
     DropScrollWheel::add(unsigned int datatype, unsigned int newval)
-    {}
+    {
+      switch (datatype) {
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL == newval) {
+            dropHorizontalScroll_ = true;
+          } else {
+            IOLOG_ERROR("DropScrollWheel::add unknown option:%d\n", newval);
+          }
+          break;
+        }
+
+        default:
+          IOLOG_ERROR("DropScrollWheel::add invalid datatype:%d\n", datatype);
+          break;
+      }
+    }
 
     bool
     DropScrollWheel::remap(RemapPointingParams_scroll& remapParams)
     {
       remapParams.isremapped = true;
+
+      if (dropHorizontalScroll_) {
+        // fire vertical scroll.
+        if (remapParams.params.deltaAxis1 != 0 ||
+            remapParams.params.fixedDelta1 != 0 ||
+            remapParams.params.pointDelta1 != 0) {
+          Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(remapParams.params.deltaAxis1,
+                                                                                               0,
+                                                                                               0,
+                                                                                               remapParams.params.fixedDelta1,
+                                                                                               0,
+                                                                                               0,
+                                                                                               remapParams.params.pointDelta1,
+                                                                                               0,
+                                                                                               0,
+                                                                                               remapParams.params.options));
+          if (ptr) {
+            EventOutputQueue::FireScrollWheel::fire(*ptr);
+          }
+        }
+      }
+
       return true;
     }
   }
