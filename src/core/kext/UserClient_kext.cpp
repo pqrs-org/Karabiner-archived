@@ -63,7 +63,6 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::initWithTask(task_t owningTask
     return false;
   }
 
-  task_     = owningTask;
   provider_ = NULL;
 
   // Don't change static values here. (For example, notification_enabled_)
