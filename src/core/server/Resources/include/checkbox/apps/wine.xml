@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only Wineskin</name>
+    <item>
+      <name>Swap left command key and left control key in Wineskin</name>
+      <identifier>remap.wine_swap_command_control</identifier>
+      <only>WINESKIN</only>
+      <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+    </item>
+  </item>
+</root>
