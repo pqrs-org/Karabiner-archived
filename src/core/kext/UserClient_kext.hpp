@@ -46,7 +46,6 @@ private:
 
   // ------------------------------------------------------------
   org_pqrs_driver_KeyRemap4MacBook* provider_;
-  task_t task_;
   static IOExternalMethodDispatch methods_[BRIDGE_USERCLIENT__END__];
   static OSAsyncReference64 asyncref_;
   static bool notification_enabled_;
