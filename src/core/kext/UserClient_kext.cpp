@@ -240,8 +240,32 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communic
 
   IOReturn result = kIOReturnError;
   uint8_t* buffer = NULL;
-  size_t size = static_cast<size_t>(inputdata->size);
+  size_t size = 0;
 
+  if (! inputdata || ! outputdata) {
+    result = kIOReturnBadArgument;
+    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnBadArgument\n");
+    goto finish;
+  }
+
+  if (provider_ == NULL || isInactive()) {
+    // Return an error if we don't have a provider. This could happen if the user process
+    // called callback_synchronized_communication without calling IOServiceOpen first.
+    // Or, the user client could be in the process of being terminated and is thus inactive.
+    result = kIOReturnNotAttached;
+    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnNotAttached\n");
+    goto finish;
+  }
+
+  if (! provider_->isOpen(this)) {
+    // Return an error if we do not have the driver open. This could happen if the user process
+    // did not call callback_open before calling this function.
+    result = kIOReturnNotOpen;
+    IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnNotOpen\n");
+    goto finish;
+  }
+
+  size = static_cast<size_t>(inputdata->size);
   if (size == 0) {
     IOLOG_ERROR("callback_synchronized_communication size == 0\n");
     goto finish;
