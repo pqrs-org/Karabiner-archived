@@ -3,6 +3,47 @@
   <item>
     <name>Change Fn Key</name>
     <item>
+      <name>Fn+letter to Control+letter</name>
+      <appendix>Fn+Escape,Space,Tab to Control+Escape,Space,Tab</name>
+      <appendix></appendix>
+      <appendix>Makes Fn key behave as a Control_L key, but only when pressed in combination with</appendix>
+      <appendix>a letter or escape,space,tab. Fn behaves as a normal Fn key otherwise.</appendix>
+      <identifier>remap.fnletter_to_ctrlletter</identifier>
+      <include path="../commons/wrap_keys/alphabet.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../commons/wrap_keys/number.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../commons/wrap_keys/symbol.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::ESCAPE, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::SPACE,  ModifierFlag::FN, KeyCode::SPACE,  ModifierFlag::CONTROL_L</autogen>
+      <autogen>--KeyToKey-- KeyCode::TAB,    ModifierFlag::FN, KeyCode::TAB,    ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
       <name>Fn to Command_L</name>
       <identifier>remap.fn2commandL</identifier>
       <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L</autogen>
@@ -44,38 +85,6 @@
       <identifier>remap.fn2controlL_optionL2fn</identifier>
       <autogen>--KeyToKey-- KeyCode::FN, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
       <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Fn+letter to Control_L+letter</name>
-      <appendix>Makes Fn key behave as a Control_L key, but only when pressed in combination with a letter</appendix>
-      <appendix>Fn behaves as a normal Fn key otherwise</appendix>
-      <identifier>remap.fnletter_to_ctrlletter</identifier>
-      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::FN, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::FN, KeyCode::B, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::FN, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::FN, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::FN, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::FN, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, ModifierFlag::FN, KeyCode::G, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::FN, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::I, ModifierFlag::FN, KeyCode::I, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::FN, KeyCode::J, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, ModifierFlag::FN, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::FN, KeyCode::L, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::FN, KeyCode::M, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::N, ModifierFlag::FN, KeyCode::N, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::O, ModifierFlag::FN, KeyCode::O, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::P, ModifierFlag::FN, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::FN, KeyCode::Q, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::R, ModifierFlag::FN, KeyCode::R, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::FN, KeyCode::S, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::FN, KeyCode::T, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::U, ModifierFlag::FN, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::FN, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::W, ModifierFlag::FN, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::FN, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::Y, ModifierFlag::FN, KeyCode::Y, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::FN, KeyCode::Z, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Fn to Control_R</name>
