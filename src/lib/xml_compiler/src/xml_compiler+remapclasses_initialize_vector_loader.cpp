@@ -90,9 +90,16 @@ namespace pqrs {
       } else {
         std::string raw_autogen = boost::trim_left_copy(it.get_data());
 
+        // ----------------------------------------
+        std::string autogen(raw_autogen);
+
+        // Replacing -- with __ for compatibility.
+        // * --KeyToKey-- before version 8.0.0.
+        // * __KeyToKey__ since version 8.0.0.
+        boost::replace_all(autogen, "--", "__");
+
         // drop whitespaces for preprocessor. (for FROMKEYCODE_HOME, etc)
         // Note: preserve space when __ShowStatusMessage__.
-        std::string autogen(raw_autogen);
         if (! boost::starts_with(autogen, "__ShowStatusMessage__")) {
           pqrs::string::remove_whitespaces(autogen);
         }
@@ -254,14 +261,6 @@ namespace pqrs {
       handle_autogen(boost::replace_all_copy(autogen,
                                              "KeyCode::VK_CHANGE_INPUTMODE_",
                                              "KeyCode::VK_CHANGE_INPUTSOURCE_"),
-                     raw_autogen);
-      return;
-    }
-
-    if (autogen.find("--") != std::string::npos) {
-      handle_autogen(boost::replace_all_copy(autogen,
-                                             "--",
-                                             "__"),
                      raw_autogen);
       return;
     }
