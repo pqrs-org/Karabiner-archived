@@ -49,17 +49,13 @@
         <identifier essential="true">general.dont_remap_logitech_cordless_presenter</identifier>
       </item>
     </item>
-    <item>
-      <name>============================================================</name>
-    </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Pass-Through CapsLock LED status</name>
       <appendix>(Don't enable this when you use "XXX to CapsLock")</appendix>
       <identifier essential="true">general.passthrough_capslock_led_status</identifier>
     </item>
-    <item>
-      <name>============================================================</name>
-    </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Don't restore modifiers in the mouse event</name>
       <appendix></appendix>
@@ -69,9 +65,7 @@
       <appendix>"Option+Click" should be output, but this option changes this behavior.</appendix>
       <identifier essential="true">general.lazy_modifiers_with_mouse_event</identifier>
     </item>
-    <item>
-      <name>============================================================</name>
-    </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Disable NumPad Hack</name>
       <appendix>(Don't change Fn+JKL.. to NumPad, and other Fn+key combinations)</appendix>

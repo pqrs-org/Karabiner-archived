@@ -542,9 +542,7 @@
       </block>
     </item>
 
-    <item>
-      <name>========================================</name>
-    </item>
+    <item><name>──────────────────────────────</name></item>
 
     <item>
       <name>Quote to Back Space</name>
@@ -587,7 +585,7 @@
     </item>
 
     <item>
-      <name>========================================</name>
+      <name>──────────────────────────────</name>
       <identifier vk_config="true">notsave.kinesis_holding_back_space_to_control</identifier>
       <autogen>__ShowStatusMessage__ Back Space to Control</autogen>
     </item>
@@ -627,7 +625,7 @@
     </item>
 
     <item>
-      <name>========================================</name>
+      <name>──────────────────────────────</name>
       <identifier vk_config="true">notsave.kinesis_holding_space_to_option</identifier>
       <autogen>__ShowStatusMessage__ Space to Option</autogen>
     </item>
@@ -647,7 +645,7 @@
     </item>
 
     <item>
-      <name>========================================</name>
+      <name>──────────────────────────────</name>
       <identifier vk_config="true">notsave.kinesis_holding_space_to_control</identifier>
       <autogen>__ShowStatusMessage__ Space to Control</autogen>
     </item>
