@@ -11,7 +11,7 @@
         <only>FINDER</only>
         <autogen>--KeyToKey-- KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
       </item>
-      <item><name>F2 key------------------------------------------------------------</name></item>
+      <item><name>F2 key============================================================</name></item>
       <item>
         <name>Use Brightness Up to Rename (Use Tab to complete Rename)</name>
         <appendix>(Change Brightness Up to Return)</appendix>
@@ -26,7 +26,7 @@
         <only>FINDER</only>
         <autogen>--KeyToKey-- KeyCode::F2, KeyCode::RETURN</autogen>
       </item>
-      <item><name>------------------------------------------------------------------</name></item>
+      <item><name>==================================================================</name></item>
       <item>
         <name>Use Forward Delete as Delete Files</name>
         <appendix>(Change Forward Delete to Command_L+Delete)</appendix>

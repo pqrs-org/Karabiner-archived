@@ -305,7 +305,7 @@
         <identifier>remap.tabmode</identifier>
         <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_tabmode , KeyCode::TAB</autogen>
       </item>
-      <item><name>------------------------------------------------------------</name></item>
+      <item><name>============================================================</name></item>
       <item>
         <name>[Option] Switch apps with J/L</name>
         <appendix>For people who like jkli configuration</appendix>

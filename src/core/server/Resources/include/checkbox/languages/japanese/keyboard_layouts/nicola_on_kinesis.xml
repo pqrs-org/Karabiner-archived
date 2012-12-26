@@ -543,7 +543,7 @@
     </item>
 
     <item>
-      <name>----------------------------------------</name>
+      <name>========================================</name>
     </item>
 
     <item>
@@ -587,7 +587,7 @@
     </item>
 
     <item>
-      <name>----------------------------------------</name>
+      <name>========================================</name>
       <identifier vk_config="true">notsave.kinesis_holding_back_space_to_control</identifier>
       <autogen>--ShowStatusMessage-- Back Space to Control</autogen>
     </item>
@@ -627,7 +627,7 @@
     </item>
 
     <item>
-      <name>----------------------------------------</name>
+      <name>========================================</name>
       <identifier vk_config="true">notsave.kinesis_holding_space_to_option</identifier>
       <autogen>--ShowStatusMessage-- Space to Option</autogen>
     </item>
@@ -647,7 +647,7 @@
     </item>
 
     <item>
-      <name>----------------------------------------</name>
+      <name>========================================</name>
       <identifier vk_config="true">notsave.kinesis_holding_space_to_control</identifier>
       <autogen>--ShowStatusMessage-- Space to Control</autogen>
     </item>
