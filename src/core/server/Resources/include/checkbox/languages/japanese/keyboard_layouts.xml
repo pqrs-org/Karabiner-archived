@@ -221,7 +221,7 @@
           </include>
 
         </item>
-        <item><name>------------------------------------------------------------</name></item>
+        <item><name>============================================================</name></item>
         <item>
           <name>スラッシュキー（/）を素通しする</name>
           <appendix>（スラッシュキーで÷や／が入力される場合に有効にしてください）</appendix>
@@ -336,7 +336,7 @@
 
         </item>
       </item>
-      <item><name>------------------------------------------------------------</name></item>
+      <item><name>============================================================</name></item>
       <item>
         <name>：キーをDeleteキーにする（後退キー）</name>
         <identifier>remap.jis_oyayubishiftinput_backspace</identifier>
@@ -349,7 +349,7 @@
         <inputsource_only>JAPANESE</inputsource_only>
         <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, KeyCode::ESCAPE</autogen>
       </item>
-      <item><name>------------------------------------------------------------</name></item>
+      <item><name>============================================================</name></item>
       <item>
         <name>かなキーとスペースキーの位置を交換する。</name>
         <appendix>・親指シフトキー、空白キーの位置をFKB7628-801やFMV-KB232と同じ、</appendix>
@@ -363,7 +363,7 @@
         <autogen>--DoublePressModifier-- KeyCode::SPACE,     KeyCode::VK_NONE, KeyCode::JIS_KANA</autogen>
         <autogen>--DoublePressModifier-- KeyCode::JIS_KANA,  KeyCode::SPACE</autogen>
       </item>
-      <item><name>------------------------------------------------------------</name></item>
+      <item><name>============================================================</name></item>
       <item>
         <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
         <identifier>remap.jis_eisuu2extra5_x2eisuu</identifier>
@@ -380,13 +380,13 @@
         <identifier>remap.jis_kana2extra5_x2kana_controlL</identifier>
         <autogen>--DoublePressModifier-- KeyCode::JIS_KANA, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
       </item>
-      <item><name>------------------------------------------------------------</name></item>
+      <item><name>============================================================</name></item>
       <item>
         <name>Reederでは親指シフトを無効にする。</name>
         <appendix>（Reederでキーボードショートカットを使いたい人向け）</appendix>
         <identifier>option.jis_oyayubishiftinput_ignore_apps_reeder</identifier>
       </item>
-      <item><name>------------------------------------------------------------</name></item>
+      <item><name>============================================================</name></item>
       <item>
         <name>親指シフト入力のときにショートカットをDvorakレイアウトにする</name>
         <appendix>（Command、Control、Optionを押しているときはDvorak配列にする）</appendix>
@@ -439,7 +439,7 @@
         <include path="keyboard_layouts/shingeta_atok.xml" />
       </item>
       <item>
-        <name>------------------------------------------------------------</name>
+        <name>============================================================</name>
       </item>
       <item>
         <name>新下駄配列（ことえり向け・ローマ字入力）</name>
@@ -498,7 +498,7 @@
         </block>
       </item>
       <item>
-        <name>------------------------------------------------------------</name>
+        <name>============================================================</name>
       </item>
       <item>
         <name>新下駄配列 US Keyboard 向け（ことえり向け・ローマ字入力）</name>
@@ -515,7 +515,7 @@
         <include path="keyboard_layouts/shingeta_atok.xml" />
       </item>
       <item>
-        <name>------------------------------------------------------------</name>
+        <name>============================================================</name>
       </item>
       <item>
         <name>新下駄配列 US Keyboard 向け（ことえり向け・ローマ字入力）</name>

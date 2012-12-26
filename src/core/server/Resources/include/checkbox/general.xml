@@ -50,7 +50,7 @@
       </item>
     </item>
     <item>
-      <name>------------------------------------------------------------</name>
+      <name>============================================================</name>
     </item>
     <item>
       <name>Pass-Through CapsLock LED status</name>
@@ -58,7 +58,7 @@
       <identifier essential="true">general.passthrough_capslock_led_status</identifier>
     </item>
     <item>
-      <name>------------------------------------------------------------</name>
+      <name>============================================================</name>
     </item>
     <item>
       <name>Don't restore modifiers in the mouse event</name>
@@ -70,7 +70,7 @@
       <identifier essential="true">general.lazy_modifiers_with_mouse_event</identifier>
     </item>
     <item>
-      <name>------------------------------------------------------------</name>
+      <name>============================================================</name>
     </item>
     <item>
       <name>Disable NumPad Hack</name>
