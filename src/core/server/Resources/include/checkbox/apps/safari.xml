@@ -6,18 +6,18 @@
       <name>Firefox-like hotkey (Control+PgUp/PgDown) to switch tabs in Safari</name>
       <identifier>remap.firefox_style_tab_switching_in_safari</identifier>
       <only>SAFARI</only>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, VK_CONTROL | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, VK_CONTROL | ModifierFlag::NONE,
         KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   VK_CONTROL | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   VK_CONTROL | ModifierFlag::NONE,
         KeyCode::TAB, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Tilt Wheel to Back/Forward (Command+[, Command+])</name>
       <identifier>remap.app_safari_tilt_to_back_forward</identifier>
       <only>SAFARI</only>
-      <autogen>--ScrollWheelToKey-- ScrollWheel::LEFT, ModifierFlag::NONE,
+      <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT, ModifierFlag::NONE,
         KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--ScrollWheelToKey-- ScrollWheel::RIGHT, ModifierFlag::NONE,
+      <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ModifierFlag::NONE,
         KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
   </item>

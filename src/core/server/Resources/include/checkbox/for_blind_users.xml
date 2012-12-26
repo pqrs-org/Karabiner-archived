@@ -12,10 +12,10 @@
       <identifier>remap.blind_application_key_to_control_option</identifier>
       <block>
         <only>VIRTUALMACHINE,REMOTEDESKTOPCONNECTION</only>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::HELP</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::HELP</autogen>
       </block>
       <block>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
       </block>
     </item>
   </item>

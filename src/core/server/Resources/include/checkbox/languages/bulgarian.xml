@@ -7,7 +7,7 @@
       <appendix>(For Bulgarian-Phonetic)</appendix>
       <identifier>remap.bulgarian_jis_underscore_to_backquote</identifier>
       <inputsource_only>BULGARIAN</inputsource_only>
-      <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
     </item>
   </item>
 </root>

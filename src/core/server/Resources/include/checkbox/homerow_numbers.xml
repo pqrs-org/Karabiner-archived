@@ -6,27 +6,27 @@
       <name>Home Row Numbers</name>
       <appendix>Overlay 1234567890 onto the home row (ASDFGHJKL;)</appendix>
       <identifier vk_config="true">notsave.homerow_numbers</identifier>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_1</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::KEY_2</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::KEY_3</autogen>
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::KEY_4</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::KEY_5</autogen>
-      <autogen>--KeyToKey-- KeyCode::H, KeyCode::KEY_6</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::KEY_7</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::KEY_8</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::KEY_9</autogen>
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::KEY_0</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::KEY_1</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::KEY_2</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::KEY_3</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::KEY_4</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, KeyCode::KEY_5</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::KEY_6</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::KEY_7</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::KEY_8</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::KEY_9</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::KEY_0</autogen>
     </item>
     <item>
       <name>Hold Space+ASDFGHJKL; to 1234567890</name>
       <identifier>remap.space_to_homerow_numbers</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Hold CMD_L+CMD_R+ASDFGHJKL; to 1234567890</name>
       <identifier>remap.cmdcmd_to_homerow_numbers</identifier>
-      <autogen>--KeyToKey-- KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
-      <autogen>--KeyToKey-- KeyCode::COMMAND_L, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_numbers</autogen>
     </item>
   </item>
 </root>

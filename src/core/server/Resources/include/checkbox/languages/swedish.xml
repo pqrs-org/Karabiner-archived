@@ -6,27 +6,27 @@
       <name>Space to Option_L (when Input Source == Swedish)</name>
       <identifier>remap.swedish_space2optionL_swedish</identifier>
       <inputsource_only>SWEDISH</inputsource_only>
-      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Command_L to Command_L</name>
       <appendix>(+ When you type Command_L only, change Input Source to English)</appendix>
       <identifier>remap.swedish_commandL2commandL_english</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
     </item>
     <item>
       <name>Command_R to Command_R</name>
       <appendix>(+ When you type Command_R only, change Input Source to Swedish)</appendix>
       <identifier>remap.swedish_commandR2commandR_swedish</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH</autogen>
     </item>
     <item>
       <name>Swap Section(§) and Less-Than(&lt;)</name>
       <appendix>(only in virtual machine)</appendix>
       <identifier>remap.swedish_swap_section_lessthan_vm</identifier>
       <only>VIRTUALMACHINE</only>
-      <autogen>--KeyToKey-- KeyCode::SWEDISH_SECTION, KeyCode::SWEDISH_LESS_THAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::SWEDISH_LESS_THAN, KeyCode::SWEDISH_SECTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::SWEDISH_SECTION, KeyCode::SWEDISH_LESS_THAN</autogen>
+      <autogen>__KeyToKey__ KeyCode::SWEDISH_LESS_THAN, KeyCode::SWEDISH_SECTION</autogen>
     </item>
   </item>
 </root>

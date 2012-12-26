@@ -36,44 +36,44 @@
     <item>
       <name>Use Japanese Keyboard as US Keyboard</name>
       <identifier>remap.jis_jansi</identifier>
-      <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
-      <autogen>--KeyToKey-- KeyCode::JIS_YEN, KeyCode::BACKQUOTE</autogen>
-      <autogen>--KeyToKey-- KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
+      <autogen>__SetKeyboardType__ KeyboardType::MACBOOK</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_YEN, KeyCode::BACKQUOTE</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
     </item>
     <item>
       <name>Use US Keyboard as Japanese Keyboard</name>
       <item>
         <name>Use US Keyboard as Japanese Keyboard</name>
         <identifier>remap.jis_layout_us2japanese</identifier>
-        <autogen>--SetKeyboardType-- KeyboardType::JIS_MACBOOK_2008</autogen>
+        <autogen>__SetKeyboardType__ KeyboardType::JIS_MACBOOK_2008</autogen>
       </item>
       <item>
         <name>Options</name>
         <item>
           <name>Backquote(`) to JIS Yen(¥)</name>
           <identifier>option.jis_layout_us2japanese_backquote2yen</identifier>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::JIS_YEN</autogen>
+          <autogen>__KeyToKey__ KeyCode::BACKQUOTE, KeyCode::JIS_YEN</autogen>
         </item>
         <item>
           <name>Backquote(`) to Backslash</name>
           <identifier>option.jis_layout_us2japanese_backquote2backslash</identifier>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, KeyCode::VK_JIS_BACKSLASH</autogen>
+          <autogen>__KeyToKey__ KeyCode::BACKQUOTE, KeyCode::VK_JIS_BACKSLASH</autogen>
         </item>
         <item>
           <name>Shift+Delete to Pipe(|)</name>
           <identifier>option.jis_layout_us2japanese_shiftDelete2pipe</identifier>
-          <autogen>--KeyToKey-- KeyCode::DELETE, VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH, VK_SHIFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH, VK_SHIFT</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
           <appendix>(+ When you type Shift_R only, send Underscore)</appendix>
           <identifier>option.jis_layout_us2japanese_shiftR2shiftR_underscore</identifier>
-          <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::JIS_UNDERSCORE</autogen>
+          <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::JIS_UNDERSCORE</autogen>
         </item>
         <item>
           <name>(Shift_L+Shift_R to Underscore)</name>
           <identifier>option.jis_layout_us2japanese_shiftR2shiftR_shiftLshiftR2underscore</identifier>
-          <autogen>--KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::JIS_UNDERSCORE</autogen>
+          <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::JIS_UNDERSCORE</autogen>
         </item>
       </item>
     </item>
@@ -85,15 +85,15 @@
       <appendix>Change Shift+2 to plus(+)</appendix>
       <appendix>Change Shift+7 to asterisk(*)</appendix>
       <identifier>remap.jis_layout_semiascii</identifier>
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT,           KeyCode::JIS_COLON</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_SHIFT,           KeyCode::JIS_COLON</autogen>
       <!-- double quote(") == Shift+2 -->
-      <autogen>--KeyToKey-- KeyCode::JIS_COLON, VK_SHIFT,           KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_COLON, VK_SHIFT,           KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
       <!-- apostrophe(') == Shift+7 -->
-      <autogen>--KeyToKey-- KeyCode::JIS_COLON,                     KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_COLON,                     KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
       <!-- plus(+) == Shift+; -->
-      <autogen>--KeyToKey-- KeyCode::KEY_2,     VK_SHIFT,           KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2,     VK_SHIFT,           KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
       <!-- asterisk(*) == Shift+: -->
-      <autogen>--KeyToKey-- KeyCode::KEY_7,     VK_SHIFT,           KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7,     VK_SHIFT,           KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Use JIS X 6004</name>
@@ -341,13 +341,13 @@
         <name>：キーをDeleteキーにする（後退キー）</name>
         <identifier>remap.jis_oyayubishiftinput_backspace</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::JIS_COLON, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_COLON, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>］キーをEscapeキーにする（取消キー）</name>
         <identifier>remap.jis_oyayubishiftinput_escape</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_RIGHT, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, KeyCode::ESCAPE</autogen>
       </item>
       <item><name>============================================================</name></item>
       <item>
@@ -359,26 +359,26 @@
         <appendix></appendix>
         <appendix>・親指シフトの設定は、「左シフト＝英数, 右シフト＝スペース」を指定してください。</appendix>
         <identifier>remap.jis_oyayubi_physical_keyboard</identifier>
-        <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
-        <autogen>--DoublePressModifier-- KeyCode::SPACE,     KeyCode::VK_NONE, KeyCode::JIS_KANA</autogen>
-        <autogen>--DoublePressModifier-- KeyCode::JIS_KANA,  KeyCode::SPACE</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::SPACE,     KeyCode::VK_NONE, KeyCode::JIS_KANA</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::JIS_KANA,  KeyCode::SPACE</autogen>
       </item>
       <item><name>============================================================</name></item>
       <item>
         <name>EISUU x2 to EISUU (単発での英数キーは無視する)</name>
         <identifier>remap.jis_eisuu2extra5_x2eisuu</identifier>
-        <autogen>--DoublePressModifier-- KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::JIS_EISUU, KeyCode::VK_NONE, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
         <name>KANA x2 to KANA (単発でのかなキーは無視する)</name>
         <identifier>remap.jis_kana2extra5_x2kana</identifier>
-        <autogen>--DoublePressModifier-- KeyCode::JIS_KANA, KeyCode::VK_NONE, KeyCode::JIS_KANA</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::JIS_KANA, KeyCode::VK_NONE, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
         <name>KANA x2 to KANA</name>
         <appendix>(+ When you type KANA only, send CONTROL_L)</appendix>
         <identifier>remap.jis_kana2extra5_x2kana_controlL</identifier>
-        <autogen>--DoublePressModifier-- KeyCode::JIS_KANA, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::JIS_KANA, KeyCode::CONTROL_L, KeyCode::JIS_KANA</autogen>
       </item>
       <item><name>============================================================</name></item>
       <item>
@@ -639,14 +639,14 @@
         JAPANESE_KATAKANA,
         JAPANESE_HALFWIDTH_KANA,
       </inputsourcedetail_only>
-      <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, VK_SHIFT, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::EQUAL</autogen>
-      <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::BACKSLASH</autogen>
-      <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::BRACKET_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::EQUAL</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::BACKSLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::BRACKET_RIGHT</autogen>
       <identifier>remap.jis_layout_windowskanainput</identifier>
     </item>
     <item>

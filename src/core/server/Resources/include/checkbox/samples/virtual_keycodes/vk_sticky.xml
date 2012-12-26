@@ -27,27 +27,27 @@
       <appendix>EXTRA4+A to 4</appendix>
       <appendix>EXTRA5+A to 5</appendix>
       <identifier>remap.samples_vk_sticky</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_STICKY_FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_STICKY_EXTRA1</autogen>
-      <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_STICKY_EXTRA2</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3</autogen>
-      <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4</autogen>
-      <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
-      <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Y, KeyCode::VK_STICKY_SHIFT_L</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA3, KeyCode::KEY_3</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA4, KeyCode::KEY_4</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, ModifierFlag::EXTRA5, KeyCode::KEY_5</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_STICKY_FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, KeyCode::VK_STICKY_EXTRA1</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, KeyCode::VK_STICKY_EXTRA2</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, KeyCode::VK_STICKY_EXTRA3</autogen>
+      <autogen>__KeyToKey__ KeyCode::R, KeyCode::VK_STICKY_EXTRA4</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, KeyCode::Y, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA3, KeyCode::KEY_3</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA4, KeyCode::KEY_4</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA5, KeyCode::KEY_5</autogen>
     </item>
     <item>
       <name>Force On/Off</name>
@@ -81,35 +81,35 @@
       <appendix>Use V to Sticky ModifierFlag::EXTRA4 Force Off</appendix>
       <appendix>Use B to Sticky ModifierFlag::EXTRA5 Force Off</appendix>
       <identifier>remap.samples_vk_sticky_force_on_off</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_STICKY_FN_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::Q, KeyCode::VK_STICKY_EXTRA1_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_STICKY_EXTRA2_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, KeyCode::VK_STICKY_EXTRA3_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::R, KeyCode::VK_STICKY_EXTRA4_FORCE_ON</autogen>
-      <autogen>--KeyToKey-- KeyCode::T, KeyCode::VK_STICKY_EXTRA5_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_STICKY_COMMAND_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_STICKY_COMMAND_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_STICKY_CONTROL_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_STICKY_CONTROL_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_STICKY_FN_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_STICKY_OPTION_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_STICKY_OPTION_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_STICKY_SHIFT_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::VK_STICKY_SHIFT_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, KeyCode::VK_STICKY_EXTRA1_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, KeyCode::VK_STICKY_EXTRA2_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, KeyCode::VK_STICKY_EXTRA3_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::R, KeyCode::VK_STICKY_EXTRA4_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, KeyCode::VK_STICKY_EXTRA5_FORCE_ON</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_STICKY_COMMAND_L_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_STICKY_COMMAND_R_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_STICKY_CONTROL_L_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_STICKY_CONTROL_R_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::VK_STICKY_FN_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::H, KeyCode::VK_STICKY_OPTION_L_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_STICKY_SHIFT_R_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::Z, KeyCode::VK_STICKY_EXTRA1_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::X, KeyCode::VK_STICKY_EXTRA2_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::C, KeyCode::VK_STICKY_EXTRA3_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, KeyCode::VK_STICKY_EXTRA4_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::B, KeyCode::VK_STICKY_EXTRA5_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_STICKY_COMMAND_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_STICKY_COMMAND_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::VK_STICKY_CONTROL_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_STICKY_CONTROL_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, KeyCode::VK_STICKY_FN_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::VK_STICKY_OPTION_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::VK_STICKY_SHIFT_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, KeyCode::VK_STICKY_EXTRA1_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, KeyCode::VK_STICKY_EXTRA2_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, KeyCode::VK_STICKY_EXTRA3_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, KeyCode::VK_STICKY_EXTRA4_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, KeyCode::VK_STICKY_EXTRA5_FORCE_OFF</autogen>
     </item>
   </item>
 </root>

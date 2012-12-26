@@ -10,10 +10,10 @@
       <appendix>Change Option_R+8 to [</appendix>
       <appendix>Change Option_R+9 to ]</appendix>
       <appendix>Change Option_R+0 to }</appendix>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::OPTION_R, KeyCode::KEY_6, ModifierFlag::OPTION_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::KEY_9, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::OPTION_R, KeyCode::KEY_6, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::KEY_9, ModifierFlag::OPTION_R</autogen>
       <appendix>=======================================</appendix>
     </item>
     <item>
@@ -21,137 +21,137 @@
       <identifier>remap.german_adapt_option_r_to_pcs_altgr_2</identifier>
       <appendix>Change Option_R+'Q' to Option_R+'L' ( '@' )</appendix>
       <appendix>Change Option_R+'+' to Option_R+'N' ( '~' )</appendix>
-      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
     </item>
     <item><name>============================================================</name></item>
     <item>
       <name>Option+7 to {</name>
       <identifier>remap.german_option7_to_left_brace</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, VK_OPTION, KeyCode::KEY_8, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, VK_OPTION, KeyCode::KEY_8, VK_OPTION</autogen>
     </item>
     <item>
       <name>Option+8 to [</name>
       <identifier>remap.german_option8_to_left_bracket</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, VK_OPTION, KeyCode::KEY_5, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, VK_OPTION, KeyCode::KEY_5, VK_OPTION</autogen>
     </item>
     <item>
       <name>Option+9 to ]</name>
       <identifier>remap.german_option9_to_right_bracket</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_9, VK_OPTION, KeyCode::KEY_6, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, VK_OPTION, KeyCode::KEY_6, VK_OPTION</autogen>
     </item>
     <item>
       <name>Option+0 to }</name>
       <identifier>remap.german_option0_to_right_brace</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_0, VK_OPTION, KeyCode::KEY_9, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, VK_OPTION, KeyCode::KEY_9, VK_OPTION</autogen>
     </item>
     <item><name>============================================================</name></item>
     <item>
       <name>Control+Ö to {</name>
       <identifier>remap.german_controlO_to_left_brace</identifier>
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_CONTROL, KeyCode::KEY_8, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_CONTROL, KeyCode::KEY_8, VK_OPTION</autogen>
     </item>
     <item>
       <name>Command+Ö to [</name>
       <identifier>remap.german_commandO_to_left_bracket</identifier>
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_COMMAND, KeyCode::KEY_5, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_COMMAND, KeyCode::KEY_5, VK_OPTION</autogen>
     </item>
     <item>
       <name>Command+Ä to ]</name>
       <identifier>remap.german_commandA_to_right_bracket</identifier>
-      <autogen>--KeyToKey-- KeyCode::QUOTE, VK_COMMAND, KeyCode::KEY_6, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, VK_COMMAND, KeyCode::KEY_6, VK_OPTION</autogen>
     </item>
     <item>
       <name>Control+Ä to }</name>
       <identifier>remap.german_controlA_to_left_brace</identifier>
-      <autogen>--KeyToKey-- KeyCode::QUOTE, VK_CONTROL, KeyCode::KEY_9, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, VK_CONTROL, KeyCode::KEY_9, VK_OPTION</autogen>
     </item>
     <item><name>============================================================</name></item>
     <item>
       <name>Control+PLUS to ~</name>
       <identifier>remap.german_controlPlus_to_tilde</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_CONTROL, KeyCode::N, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_CONTROL, KeyCode::N, VK_OPTION</autogen>
     </item>
     <item>
       <name>Option+PLUS to ~</name>
       <identifier>remap.german_optionPlus_to_tilde</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_OPTION, KeyCode::N, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_OPTION, KeyCode::N, VK_OPTION</autogen>
     </item>
     <item>
       <name>Command+MINUS to Backslash(\)</name>
       <identifier>remap.german_commandMinus_to_backslash</identifier>
-      <autogen>--KeyToKey-- KeyCode::SLASH, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SLASH, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Control+MINUS to Slash(/)</name>
       <identifier>remap.german_controlMinus_to_slash</identifier>
-      <autogen>--KeyToKey-- KeyCode::SLASH, VK_CONTROL, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SLASH, VK_CONTROL, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Option+ß to Backslash(\)</name>
       <identifier>remap.german_optionbeta2backslash</identifier>
-      <autogen>--KeyToKey-- KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, VK_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | VK_OPTION</autogen>
     </item>
     <item>
       <name>Option+Q to @</name>
       <identifier>remap.german_optionQ2atmark</identifier>
-      <autogen>--KeyToKey-- KeyCode::Q, VK_OPTION, KeyCode::L, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, VK_OPTION, KeyCode::L, VK_OPTION</autogen>
     </item>
     <item>
       <name>Quote(´) to Forward Delete</name>
       <identifier>remap.german_quote2forwarddelete</identifier>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_QUOTE, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_QUOTE, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Command+Ü to |</name>
       <identifier>remap.german_commandU2pipe</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Control+Ü to @</name>
       <identifier>remap.german_controlU2atmark</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::L, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Option+Less-Than(&lt;) to |</name>
       <identifier>remap.german_optionLessthan_to_pipe</identifier>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, VK_OPTION, KeyCode::KEY_7, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN, VK_OPTION, KeyCode::KEY_7, VK_OPTION</autogen>
     </item>
     <item>
       <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
       <identifier>remap.german_swap_circumflex_lessthan</identifier>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
     </item>
     <item>
       <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
       <appendix>(only in virtual machine)</appendix>
       <identifier>remap.german_swap_circumflex_lessthan_vm</identifier>
       <only>VIRTUALMACHINE</only>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
     </item>
     <item>
       <name>Swap Circumflex(^) and Less-Than(&lt;) on PC Keyboard</name>
       <appendix>(+ Option+Less-Than(&lt;) to Pipe(|))</appendix>
       <identifier>remap.german_swap_circumflex_lessthan_pckeyboard</identifier>
       <not>VIRTUALMACHINE</not>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_PC_LESS_THAN, VK_OPTION | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::GERMAN_PC_LESS_THAN, VK_OPTION | ModifierFlag::NONE,
         KeyCode::KEY_7, VK_OPTION</autogen>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_PC_LESS_THAN, KeyCode::GERMAN_LESS_THAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::GERMAN_LESS_THAN,    KeyCode::GERMAN_CIRCUMFLEX</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_PC_LESS_THAN, KeyCode::GERMAN_LESS_THAN</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN,    KeyCode::GERMAN_CIRCUMFLEX</autogen>
     </item>
     <item>
       <name>Change Command+Q to @ (Option_L+L)</name>
       <item>
         <name>Command_L+Q to @</name>
         <identifier>remap.german_commandLQ2optionLL</identifier>
-        <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::L, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>
         <name>Command_R+Q to @</name>
         <identifier>remap.german_commandRQ2optionLL</identifier>
-        <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::L, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::L, ModifierFlag::OPTION_L</autogen>
       </item>
     </item>
     <item>
@@ -161,8 +161,8 @@
         <appendix>move Command_R + 8 to Option_L + 5</appendix>
         <appendix>move Command_R + 9 to Option_L + 6</appendix>
         <identifier>remap.german_map_square_bracket</identifier>
-        <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::OPTION_L</autogen>
       </item>
     </item>
     <item>
@@ -172,7 +172,7 @@
       <appendix>// To change CAPSLOCK to OPTION_L,</appendix>
       <appendix>// install PCKeyboardHack and change CapsLock keycode to 58.</appendix>
       <identifier>remap.german_neo</identifier>
-      <autogen>--KeyToKey-- KeyCode::BACKSLASH, KeyCode::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::OPTION_R</autogen>
     </item>
     <item>
       <name>Umlaute 4 Programmierung umschreiben</name>
@@ -181,17 +181,17 @@
       <appendix>ü to ue</appendix>
       <identifier>remap.german_a_to_ae</identifier>
       <!-- ä to ae -->
-      <autogen>--KeyToKey-- KeyCode::QUOTE,           KeyCode::A,           KeyCode::E</autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE,           KeyCode::A,           KeyCode::E</autogen>
       <!-- Ä to AE -->
-      <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::A, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, VK_SHIFT, KeyCode::A, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
       <!-- ö to oe -->
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON,           KeyCode::O,           KeyCode::E</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON,           KeyCode::O,           KeyCode::E</autogen>
       <!-- Ö to OE -->
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::O, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_SHIFT, KeyCode::O, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
       <!-- ü to ue -->
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT,           KeyCode::U,           KeyCode::E</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT,           KeyCode::U,           KeyCode::E</autogen>
       <!-- Ü to UE -->
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::U, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::U, VK_SHIFT, KeyCode::E, VK_SHIFT</autogen>
     </item>
     <item>
       <name>German Umlaute on US Keyboard Layout</name>
@@ -201,34 +201,34 @@
       <appendix>Change Option_R+- to ß</appendix>
       <identifier>remap.org.openhort.german_umlaute_on_en_US</identifier>
 
-      <autogen>--KeyToKey--
+      <autogen>__KeyToKey__
         KeyCode::SEMICOLON, ModifierFlag::OPTION_R | VK_SHIFT | ModifierFlag::NONE,
         KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O, VK_SHIFT
       </autogen>
-      <autogen>--KeyToKey--
+      <autogen>__KeyToKey__
         KeyCode::SEMICOLON, ModifierFlag::OPTION_R | ModifierFlag::NONE,
         KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O
       </autogen>
 
-      <autogen>--KeyToKey--
+      <autogen>__KeyToKey__
         KeyCode::QUOTE, ModifierFlag::OPTION_R | VK_SHIFT | ModifierFlag::NONE,
         KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A, VK_SHIFT
       </autogen>
-      <autogen>--KeyToKey--
+      <autogen>__KeyToKey__
         KeyCode::QUOTE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
         KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A
       </autogen>
 
-      <autogen>--KeyToKey--
+      <autogen>__KeyToKey__
         KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R | VK_SHIFT | ModifierFlag::NONE,
         KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U, VK_SHIFT
       </autogen>
-      <autogen>--KeyToKey--
+      <autogen>__KeyToKey__
         KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R | ModifierFlag::NONE,
         KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U
       </autogen>
 
-      <autogen>--KeyToKey--
+      <autogen>__KeyToKey__
         KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::NONE,
         KeyCode::S, ModifierFlag::OPTION_R
       </autogen>
@@ -239,7 +239,7 @@
       <appendix>(except for Microsoft applications which already have this built-in)</appendix>
       <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</not>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::Z, VK_COMMAND | ModifierFlag::NONE,
         KeyCode::Y, VK_COMMAND | ModifierFlag::SHIFT_L
       </autogen>
@@ -248,7 +248,7 @@
       <name>Command+Tab sends Command+Shift+Backquote</name>
       <identifier>remap.german_command_tab_to_command_shift_backquote</identifier>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::TAB, VK_COMMAND | ModifierFlag::NONE,
         KeyCode::EQUAL, VK_COMMAND | ModifierFlag::SHIFT_L
       </autogen>

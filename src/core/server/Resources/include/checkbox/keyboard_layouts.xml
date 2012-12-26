@@ -13,7 +13,7 @@
     <item>
       <name>Set a keyboard type to ANSI on JIS and ISO keyboard</name>
       <identifier>remap.layout2us</identifier>
-      <autogen>--SetKeyboardType-- KeyboardType::MACBOOK</autogen>
+      <autogen>__SetKeyboardType__ KeyboardType::MACBOOK</autogen>
     </item>
   </item>
 </root>

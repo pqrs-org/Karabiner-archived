@@ -6,7 +6,7 @@
     -->
 
   <autogen>
-    --KeyToKey--
+    __KeyToKey__
     KeyCode::{{ FROM_MODIFIER }},
 
     KeyCode::VK_CONFIG_FORCE_ON_notsave_modifier_tab_to_command_tab,
@@ -35,7 +35,7 @@
   <block>
     <config_only>notsave.modifier_tab_to_command_tab</config_only>
     <autogen>
-      --KeyToKey--
+      __KeyToKey__
       KeyCode::TAB, ModifierFlag::{{ TO_MODIFIER }},
       KeyCode::TAB, ModifierFlag::COMMAND_L,
       KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,

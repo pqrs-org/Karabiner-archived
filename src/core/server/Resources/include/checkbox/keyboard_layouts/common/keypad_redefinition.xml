@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <root>
   <!-- number -->
-  <autogen>--KeyToKey-- KeyCode::M,         ModifierFlag::FN, KeyCode::KEYPAD_0</autogen>
-  <autogen>--KeyToKey-- KeyCode::J,         ModifierFlag::FN, KeyCode::KEYPAD_1</autogen>
-  <autogen>--KeyToKey-- KeyCode::K,         ModifierFlag::FN, KeyCode::KEYPAD_2</autogen>
-  <autogen>--KeyToKey-- KeyCode::L,         ModifierFlag::FN, KeyCode::KEYPAD_3</autogen>
-  <autogen>--KeyToKey-- KeyCode::U,         ModifierFlag::FN, KeyCode::KEYPAD_4</autogen>
-  <autogen>--KeyToKey-- KeyCode::I,         ModifierFlag::FN, KeyCode::KEYPAD_5</autogen>
-  <autogen>--KeyToKey-- KeyCode::O,         ModifierFlag::FN, KeyCode::KEYPAD_6</autogen>
-  <autogen>--KeyToKey-- KeyCode::KEY_7,     ModifierFlag::FN, KeyCode::KEYPAD_7</autogen>
-  <autogen>--KeyToKey-- KeyCode::KEY_8,     ModifierFlag::FN, KeyCode::KEYPAD_8</autogen>
-  <autogen>--KeyToKey-- KeyCode::KEY_9,     ModifierFlag::FN, KeyCode::KEYPAD_9</autogen>
+  <autogen>__KeyToKey__ KeyCode::M,         ModifierFlag::FN, KeyCode::KEYPAD_0</autogen>
+  <autogen>__KeyToKey__ KeyCode::J,         ModifierFlag::FN, KeyCode::KEYPAD_1</autogen>
+  <autogen>__KeyToKey__ KeyCode::K,         ModifierFlag::FN, KeyCode::KEYPAD_2</autogen>
+  <autogen>__KeyToKey__ KeyCode::L,         ModifierFlag::FN, KeyCode::KEYPAD_3</autogen>
+  <autogen>__KeyToKey__ KeyCode::U,         ModifierFlag::FN, KeyCode::KEYPAD_4</autogen>
+  <autogen>__KeyToKey__ KeyCode::I,         ModifierFlag::FN, KeyCode::KEYPAD_5</autogen>
+  <autogen>__KeyToKey__ KeyCode::O,         ModifierFlag::FN, KeyCode::KEYPAD_6</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_7,     ModifierFlag::FN, KeyCode::KEYPAD_7</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_8,     ModifierFlag::FN, KeyCode::KEYPAD_8</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_9,     ModifierFlag::FN, KeyCode::KEYPAD_9</autogen>
 
   <!-- symbol -->
-  <autogen>--KeyToKey-- KeyCode::KEY_6,     ModifierFlag::FN, KeyCode::KEYPAD_CLEAR</autogen>
-  <autogen>--KeyToKey-- KeyCode::SLASH,     ModifierFlag::FN, KeyCode::KEYPAD_PLUS</autogen>
-  <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::FN, KeyCode::KEYPAD_MINUS</autogen>
-  <autogen>--KeyToKey-- KeyCode::P,         ModifierFlag::FN, KeyCode::KEYPAD_MULTIPLY</autogen>
-  <autogen>--KeyToKey-- KeyCode::KEY_0,     ModifierFlag::FN, KeyCode::KEYPAD_SLASH</autogen>
-  <autogen>--KeyToKey-- KeyCode::MINUS,     ModifierFlag::FN, KeyCode::KEYPAD_EQUAL</autogen>
-  <autogen>--KeyToKey-- KeyCode::DOT,       ModifierFlag::FN, KeyCode::KEYPAD_DOT</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_6,     ModifierFlag::FN, KeyCode::KEYPAD_CLEAR</autogen>
+  <autogen>__KeyToKey__ KeyCode::SLASH,     ModifierFlag::FN, KeyCode::KEYPAD_PLUS</autogen>
+  <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::FN, KeyCode::KEYPAD_MINUS</autogen>
+  <autogen>__KeyToKey__ KeyCode::P,         ModifierFlag::FN, KeyCode::KEYPAD_MULTIPLY</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_0,     ModifierFlag::FN, KeyCode::KEYPAD_SLASH</autogen>
+  <autogen>__KeyToKey__ KeyCode::MINUS,     ModifierFlag::FN, KeyCode::KEYPAD_EQUAL</autogen>
+  <autogen>__KeyToKey__ KeyCode::DOT,       ModifierFlag::FN, KeyCode::KEYPAD_DOT</autogen>
 </root>

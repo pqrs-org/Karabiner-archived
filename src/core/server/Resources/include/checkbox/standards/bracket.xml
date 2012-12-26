@@ -5,33 +5,33 @@
     <item>
       <name>Swap Bracket([]) and Shift+Bracket({})</name>
       <identifier>remap.swap_bracket_and_shiftbracket</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::NONE,
         KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE,
         KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT | ModifierFlag::NONE,
         KeyCode::BRACKET_LEFT
       </autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_SHIFT | ModifierFlag::NONE,
         KeyCode::BRACKET_RIGHT
       </autogen>
     </item>
     <item>
       <name>Left Bracket([) to L</name>
       <identifier>remap.leftbracket2l</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, KeyCode::L</autogen>
     </item>
     <item>
       <name>Right Bracket(]) to CapsLock</name>
       <identifier>remap.rightbracket2capslock</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::CAPSLOCK</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, KeyCode::CAPSLOCK</autogen>
     </item>
     <item>
       <name>Fn+Right Bracket(]) to Backslash(\)</name>
       <identifier>remap.fnrightbracket2backslash</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
     </item>
   </item>
 </root>

@@ -5,7 +5,7 @@
     <item>
       <name>Change Minus to Semicolon</name>
       <identifier>remap.minus2semicolon</identifier>
-      <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::SEMICOLON</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, KeyCode::SEMICOLON</autogen>
     </item>
   </item>
 </root>

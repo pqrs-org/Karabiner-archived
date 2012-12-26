@@ -5,72 +5,72 @@
     <item>
       <name>Space to Control_L</name>
       <identifier>remap.space2controlL</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Space to Control_L</name>
       <appendix>(+ When you type Space only, send Space)</appendix>
       <identifier>remap.space2controlL_space</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Space to Control_L</name>
       <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
       <identifier>remap.space2controlL_space_keyrepeat</identifier>
-      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Space to Option_L</name>
       <identifier>remap.space2optionL</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Space to Option_L</name>
       <appendix>(+ When you type Space only, send Space)</appendix>
       <identifier>remap.space2optionL_space</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::OPTION_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Control+Space to Option_L</name>
       <identifier>remap.controlSpace2optionL</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, VK_CONTROL, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Space to Shift_L</name>
       <identifier>remap.space2shiftL</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
       <name>Space to Shift_L</name>
       <appendix>(+ When you type Space only, send Space)</appendix>
       <identifier>remap.space2shiftL_space</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Space to Shift_L</name>
       <appendix>(+ When you type Space only, send Space) + [KeyRepeat]</appendix>
       <identifier>remap.space2shiftL_space_keyrepeat</identifier>
-      <autogen>--KeyOverlaidModifierWithRepeat-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Space to Shift_L</name>
       <appendix>(+ When you type Space only, send Space) (Disable on Adobe Softwares)</appendix>
       <not>ADOBE, PHOTOSHOP, ILLUSTRATOR</not>
       <identifier>remap.space2shiftL_space_not_adobe</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Space to Shift_L</name>
       <appendix>(+ When you type Space only, send Space)</appendix>
       <appendix>Fn+Space to Space</appendix>
       <identifier>remap.space2shiftL_space_fnspace</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::SPACE</autogen>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::FN, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Control+Space to Shift_L_Lock</name>
       <identifier>remap.controlSpace2shiftL_lock</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::VK_LOCK_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, VK_CONTROL, KeyCode::VK_LOCK_SHIFT_L</autogen>
     </item>
     <item>
       <name>Swap Space and Option+Space</name>
@@ -79,54 +79,54 @@
         <name>You can swap Space and Option+Space temporarily.</name>
         <appendix>Turn on a setting below, and toggle "Swap Mode".</appendix>
         <identifier vk_config="true">notsave.swap_space_optionspace</identifier>
-        <autogen>--ShowStatusMessage-- Swap Mode</autogen>
-        <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
-        <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
+        <autogen>__ShowStatusMessage__ Swap Mode</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>
         <name>Fn+Escape to toggle "Swap Space and Option+Space" Mode</name>
         <identifier>remap.swap_space_optionspace_toggle_fnescape</identifier>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
+        <autogen>__KeyToKey__ KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
       </item>
       <item>
         <name>Fn+Space to toggle "Swap Space and Option+Space" Mode</name>
         <identifier>remap.swap_space_optionspace_toggle_fnspace</identifier>
-        <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::FN, KeyCode::VK_CONFIG_TOGGLE_notsave_swap_space_optionspace</autogen>
       </item>
     </item>
     <item>
       <name>Space to Return</name>
       <identifier>remap.space2return</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::RETURN</autogen>
     </item>
     <item>
       <name>Command+Space to Command+Shift+Space</name>
       <identifier>remap.commandSpace2commandLshiftLspace</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Shift+Space to Command_L+Space</name>
       <identifier>remap.shiftSpace2commandLSpace</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Control+Space to Option_L+Enter (except Emacs)</name>
       <not>EMACS</not>
       <identifier>remap.controlSpace2optionLEnter</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, VK_CONTROL, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, VK_CONTROL, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Non-Breaking Space to Normal Space</name>
       <appendix>(Option+Space to Space)</appendix>
       <appendix>(Option+Shift+Space to Space)</appendix>
       <identifier>remap.option_space_to_space</identifier>
-      <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
-      <autogen>--KeyToKey-- KeyCode::SPACE, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Fn+Space to LeftClick</name>
       <identifier>remap.fn_space_to_left_click</identifier>
-      <autogen>--KeyToPointingButton-- KeyCode::SPACE, ModifierFlag::FN, PointingButton::LEFT</autogen>
+      <autogen>__KeyToPointingButton__ KeyCode::SPACE, ModifierFlag::FN, PointingButton::LEFT</autogen>
     </item>
   </item>
 </root>

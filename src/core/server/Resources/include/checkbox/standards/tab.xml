@@ -5,51 +5,51 @@
     <item>
       <name>Tab to Command_L</name>
       <identifier>remap.tab_to_command_l</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::COMMAND_L</autogen>
     </item>
     <item>
       <name>Tab to Command_L</name>
       <appendix>(+ When you type Tab only, send Expose All)</appendix>
       <identifier>remap.tab2commandL_exposeAll</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::EXPOSE_ALL</autogen>
     </item>
     <item>
       <name>Tab to Command_L</name>
       <appendix>(+ When you type Tab only, send Tab)</appendix>
       <identifier>remap.tab2commandL_tab</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::TAB</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::TAB, KeyCode::COMMAND_L, KeyCode::TAB</autogen>
     </item>
     <item>
       <name>Tab to Option_L when you held down Control_L</name>
       <appendix>(+ When you type Control_L+Tab, send Control_L+Tab)</appendix>
       <identifier>remap.tab2option_withControlL</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::TAB, ModifierFlag::CONTROL_L, KeyCode::OPTION_L, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::TAB, ModifierFlag::CONTROL_L, KeyCode::OPTION_L, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Tab to Shift_L</name>
       <identifier>remap.tab2shiftL</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
       <name>Tab to Delete</name>
       <identifier>remap.tab2delete</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::DELETE</autogen>
     </item>
     <item>
       <name>Tab to Expose All</name>
       <identifier>remap.tab2exposeALL</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::EXPOSE_ALL</autogen>
     </item>
     <item>
       <name>Command+Tab to Expose</name>
       <identifier>remap.commandTab2expose</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND | ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND | ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
     </item>
     <item>
       <name>Control+tab to Command+F1 (only in Terminal)</name>
       <only>TERMINAL</only>
       <identifier>remap.ctrltab2cmdf1_onlyterminal</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::F1, VK_COMMAND</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_CONTROL, KeyCode::F1, VK_COMMAND</autogen>
     </item>
     <item>
       <name>Command+Tab to switch apps within the same Space</name>
@@ -58,33 +58,33 @@
       <appendix>In Emacs, you need to modify .emacs by mapping Ctrl+F4 to (other-frame))</appendix>
       <identifier>remap.command_tab_to_control_f4</identifier>
       <not>REMOTEDESKTOPCONNECTION,VIRTUALMACHINE</not>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Command+Tab to F5</name>
       <identifier>remap.commandTab2f5</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
     </item>
     <item>
       <name>Option+Tab to F5</name>
       <identifier>remap.optionTab2f5</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::F5</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_OPTION, KeyCode::F5</autogen>
     </item>
     <item>
       <name>Command+Tab to Control+Tab (only in Firefox, Google Chrome, Opera, Safari)</name>
       <identifier>remap.commandTab2controlTab_browser</identifier>
       <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Command+Tab to Option+Tab</name>
       <identifier>remap.commandTab2optionTab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Control+Tab to Option+Tab</name>
       <identifier>remap.controlTab2optionTab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
 
     <item>
@@ -140,18 +140,18 @@
     <item>
       <name>Option+Tab to Control+Tab</name>
       <identifier>remap.optionTab2controlTab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Change Command+Tab to Command+Tab+Option</name>
       <appendix>(Bring app to foreground when you've switched app by Command+Tab.)</appendix>
       <identifier>remap.command_tab_to_command_tab_option</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND,
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND,
         KeyCode::TAB, VK_COMMAND,
         KeyCode::VK_STICKY_OPTION_R_FORCE_ON, VK_COMMAND</autogen>
-      <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::COMMAND_L,
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::COMMAND_L,
         Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_WAIT_100MS, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
-      <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::COMMAND_R,
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::COMMAND_R,
         Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_WAIT_100MS, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
     </item>
     <item>
@@ -177,7 +177,7 @@
           <replacementvalue>CONTROL_R</replacementvalue>
         </replacementdef>
       </include>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Swap Command+Tab and Option+Tab</name>
@@ -202,12 +202,12 @@
           <replacementvalue>OPTION_R</replacementvalue>
         </replacementdef>
       </include>
-      <autogen>--KeyToKey-- KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Disable Tab</name>
       <identifier>remap.drop_tab</identifier>
-      <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::VK_NONE</autogen>
     </item>
 
     <item>
@@ -219,83 +219,83 @@
         <appendix>It has evolved into a window manager shortcut, capable of managing windows, tabs,</appendix>
         <appendix>spaces and split views.</appendix>
         <identifier vk_config="true">notsave.tabmode</identifier>
-        <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MODIFIER_EXTRA1</autogen>
         <block>
           <name>[Option] ; to Command+Option+L</name>
-          <autogen>--KeyToKey-- KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::EXTRA1, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::EXTRA1, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L| ModifierFlag::CONTROL_L</autogen>
           <config_only>option.tabmode_g_j_l_to_changespaces</config_only>
         </block>
         <block>
           <config_only>option.tabmode_jl</config_only>
-          <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::J, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::J, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </block>
         <block>
           <config_only>option.tabmode_hl</config_only>
-          <autogen>--KeyToKey-- KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::H, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </block>
         <block>
           <config_only>option.tabmode_leftright</config_only>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </block>
         <block>
           <config_only>option.tabmode_ik</config_only>
           <block>
             <only>VIRTUALMACHINE</only>
             <config_only>option.tabmode_ikvm</config_only>
-            <autogen>--KeyToKey-- KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
-            <autogen>--KeyToKey-- KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::I, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::K, KeyCode::UK_SECTION, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
           </block>
-          <autogen>--KeyToKey-- KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::I, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::K, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </block>
         <block>
           <config_only>option.tabmode_uo</config_only>
           <block>
             <only>TERMINAL</only>
             <config_only>remap.app_term_screen_switch</config_only>
-            <autogen>--KeyToKey-- KeyCode::U, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
-            <autogen>--KeyToKey-- KeyCode::O, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
+            <autogen>__KeyToKey__ KeyCode::U, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::P</autogen>
+            <autogen>__KeyToKey__ KeyCode::O, KeyCode::A, ModifierFlag::CONTROL_L, KeyCode::N</autogen>
           </block>
-          <autogen>--KeyToKey-- KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
         </block>
         <block>
           <config_only>option.tabmode_q</config_only>
-          <autogen>--KeyToKey-- KeyCode::Q, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::Q, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
         </block>
         <block>
           <config_only>option.tabmode_w</config_only>
-          <autogen>--KeyToKey-- KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::W, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
         </block>
         <block>
           <config_only>option.tabmode_switchviews</config_only>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::N, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::M, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::H, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::N, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::M, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
         </block>
         <block>
           <name>[Option] Y to Command+W</name>
-          <autogen>--KeyToKey-- KeyCode::Y, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::Y, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
           <config_only>option.tabmode_y_to_w</config_only>
         </block>
         <block>
           <name>[Option] P to Command+T</name>
-          <autogen>--KeyToKey-- KeyCode::P, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::P, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
           <config_only>option.tabmode_p_to_t</config_only>
         </block>
         <block>
           <name>[Option] ' to Command+Q</name>
-          <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::QUOTE, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
           <config_only>option.tabmode_quote_to_q</config_only>
         </block>
         <block>
           <name>[Option] ; to Command+Option+L</name>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
           <config_only>option.tabmode_semicolon_to_launchbar</config_only>
         </block>
       </item>
@@ -303,7 +303,7 @@
         <name>Keeping tab pressed turns on "Tab Mode"</name>
         <appendix>(+ When you type Tab only, send Tab)</appendix>
         <identifier>remap.tabmode</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::TAB, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_tabmode , KeyCode::TAB</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::TAB, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_tabmode , KeyCode::TAB</autogen>
       </item>
       <item><name>============================================================</name></item>
       <item>

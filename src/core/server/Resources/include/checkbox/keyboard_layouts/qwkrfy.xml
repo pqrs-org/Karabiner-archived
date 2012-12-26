@@ -9,26 +9,26 @@
 
       <block>
         <config_only>option.qwkrfy_p_and_semicolon</config_only>
-        <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
-        <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::P</autogen>
+        <autogen>__KeyToKey__ KeyCode::P, KeyCode::SEMICOLON</autogen>
+        <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::P</autogen>
       </block>
 
       <block>
         <config_only>option.qwkrfy_u_and_g</config_only>
-        <autogen>--KeyToKey-- KeyCode::N, KeyCode::U</autogen>
-        <autogen>--KeyToKey-- KeyCode::U, KeyCode::G</autogen>
+        <autogen>__KeyToKey__ KeyCode::N, KeyCode::U</autogen>
+        <autogen>__KeyToKey__ KeyCode::U, KeyCode::G</autogen>
       </block>
 
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::E</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, KeyCode::K</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::O</autogen>
-      <autogen>--KeyToKey-- KeyCode::O, KeyCode::J</autogen>
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
-      <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::A</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::D</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::N</autogen>
-      <autogen>--KeyToKey-- KeyCode::N, KeyCode::G</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::E</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, KeyCode::K</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::O</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, KeyCode::J</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::T</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, KeyCode::F</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::A</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::D</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, KeyCode::N</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, KeyCode::G</autogen>
     </item>
     <item>
       <name>Swap P and ;</name>

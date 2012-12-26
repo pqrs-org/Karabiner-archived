@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <root>
-  <autogen>--KeyToKey-- KeyCode::BACKQUOTE,     {{ BEFORE }}, KeyCode::BACKQUOTE,     {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::BACKSLASH,     {{ BEFORE }}, KeyCode::BACKSLASH,     {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT,  {{ BEFORE }}, KeyCode::BRACKET_LEFT,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, {{ BEFORE }}, KeyCode::BRACKET_RIGHT, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::COMMA,         {{ BEFORE }}, KeyCode::COMMA,         {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::DOT,           {{ BEFORE }}, KeyCode::DOT,           {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::EQUAL,         {{ BEFORE }}, KeyCode::EQUAL,         {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::MINUS,         {{ BEFORE }}, KeyCode::MINUS,         {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::QUOTE,         {{ BEFORE }}, KeyCode::QUOTE,         {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::SEMICOLON,     {{ BEFORE }}, KeyCode::SEMICOLON,     {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::SLASH,         {{ BEFORE }}, KeyCode::SLASH,         {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::BACKQUOTE,     {{ BEFORE }}, KeyCode::BACKQUOTE,     {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::BACKSLASH,     {{ BEFORE }}, KeyCode::BACKSLASH,     {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT,  {{ BEFORE }}, KeyCode::BRACKET_LEFT,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, {{ BEFORE }}, KeyCode::BRACKET_RIGHT, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::COMMA,         {{ BEFORE }}, KeyCode::COMMA,         {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::DOT,           {{ BEFORE }}, KeyCode::DOT,           {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::EQUAL,         {{ BEFORE }}, KeyCode::EQUAL,         {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::MINUS,         {{ BEFORE }}, KeyCode::MINUS,         {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::QUOTE,         {{ BEFORE }}, KeyCode::QUOTE,         {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::SEMICOLON,     {{ BEFORE }}, KeyCode::SEMICOLON,     {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::SLASH,         {{ BEFORE }}, KeyCode::SLASH,         {{ AFTER }}</autogen>
 </root>

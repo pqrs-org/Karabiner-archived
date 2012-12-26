@@ -9,8 +9,8 @@
       <identifier>remap.app_world_of_warcraft_option_command_swap</identifier>
       <block>
         <only>WORLD_OF_WARCRAFT</only>
-        <autogen>--KeyToKey-- KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
       </block>
     </item>
   </item>

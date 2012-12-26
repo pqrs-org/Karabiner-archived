@@ -6,81 +6,81 @@
       <name>Change KeyPad Comma(,) to Dot(.)</name>
       <identifier>remap.french_keypad_comma_to_dot</identifier>
       <inputsource_only>FRENCH</inputsource_only>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Swap $ and € on French</name>
       <identifier>remap.french_swap_dollar_and_euro</identifier>
       <inputsource_only>FRENCH</inputsource_only>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::FRENCH_DOLLAR, ModifierFlag::NONE,
         KeyCode::FRENCH_DOLLAR, ModifierFlag::OPTION_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_DOLLAR, VK_OPTION | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::FRENCH_DOLLAR, VK_OPTION | ModifierFlag::NONE,
         KeyCode::FRENCH_DOLLAR</autogen>
     </item>
     <item>
       <name>Shift_L to Shift_L</name>
       <appendix>(+ When you type Shift_L only, send Backslash)</appendix>
       <identifier>remap.french_shiftL2shiftL_backslash</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Shift_R to Shift_R</name>
       <appendix>(+ When you type Shift_R only, send Backslash)</appendix>
       <identifier>remap.french_shiftR2shiftR_backslash</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::DOT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Option+Shift+4 to Left Brace, Option+Shift+Minus to Right Brace</name>
       <appendix>Option+5 to Quote, Option+Right Paren to Minus</appendix>
       <identifier>remap.french_swap_brackets_and_braces</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_4,        VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_MINUS, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::FRENCH_RIGHT_PAREN, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4,        VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_MINUS, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::FRENCH_RIGHT_PAREN, ModifierFlag::OPTION_L</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::KEY_5,              VK_OPTION | ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_RIGHT_PAREN, VK_OPTION | ModifierFlag::NONE, KeyCode::FRENCH_MINUS, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5,              VK_OPTION | ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_RIGHT_PAREN, VK_OPTION | ModifierFlag::NONE, KeyCode::FRENCH_MINUS, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Make MacBook AZERTY closer to the standard latin-9 mapping</name>
       <appendix>(For "French - Numerical" users)</appendix>
       <identifier>remap.french_azerty_to_latin9</identifier>
       <!-- - the key -/_ (where you put the brace), I would like to be =/+, that is, = on normal and + on SHIFT; -->
-      <autogen>--KeyToKey-- KeyCode::FRENCH_MINUS, ModifierFlag::NONE, KeyCode::FRENCH_EQUAL</autogen>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_MINUS, VK_SHIFT | ModifierFlag::NONE, KeyCode::FRENCH_EQUAL, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_MINUS, ModifierFlag::NONE, KeyCode::FRENCH_EQUAL</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_MINUS, VK_SHIFT | ModifierFlag::NONE, KeyCode::FRENCH_EQUAL, ModifierFlag::SHIFT_L</autogen>
       <!-- - the key 6, I would like to do -/6/|  (normal -, SHIFT 6, ALT+SHIFT |) -->
-      <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::FRENCH_MINUS</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_6, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::FRENCH_MINUS</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
       <!-- - the key =/+ I would like to be §/! -->
-      <autogen>--KeyToKey-- KeyCode::FRENCH_EQUAL, ModifierFlag::NONE, KeyCode::KEY_6</autogen>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_EQUAL, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_EQUAL, ModifierFlag::NONE, KeyCode::KEY_6</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_EQUAL, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
       <!-- - ALT+SHIFT+2 gives ~ -->
-      <autogen>--KeyToKey-- KeyCode::KEY_2, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::N, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::N, ModifierFlag::OPTION_L</autogen>
       <!-- - ALT+SHIFT+3 gives # -->
-      <autogen>--KeyToKey-- KeyCode::KEY_3, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::BACKSLASH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::BACKSLASH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Forgiving open brackets binding.</name>
       <appendix>Command+4 to Left Brace, Command+5 to Left Bracket</appendix>
       <identifier>remap.french_brackets_hack</identifier>
       <!-- command+4 to { -->
-      <autogen>--KeyToKey-- KeyCode::KEY_4, VK_COMMAND | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, VK_COMMAND | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
       <!-- command+5 to [ -->
-      <autogen>--KeyToKey-- KeyCode::KEY_5, VK_COMMAND | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, VK_COMMAND | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Command_L+Circonflexe(^) to ´(Option+Shift+1)</name>
       <identifier>remap.french_commandLhat2optionshift1</identifier>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_HAT, ModifierFlag::COMMAND_L | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_HAT, ModifierFlag::COMMAND_L | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Command_R+Circonflexe(^) to ´(Option+Shift+1)</name>
       <identifier>remap.french_commandRhat2optionshift1</identifier>
-      <autogen>--KeyToKey-- KeyCode::FRENCH_HAT, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FRENCH_HAT, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Dvorak and bépo: Command_R to Option_R</name>
       <identifier>remap.french_inputmode_dvorak_bepo_command_r_to_option_r</identifier>
       <inputsource_only>DVORAK,BEPO</inputsource_only>
-      <autogen>--KeyToKey-- KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
     </item>
     <item>
       <name>French PC keyboard layout</name>
@@ -89,39 +89,39 @@
       <appendix>...</appendix>
       <identifier>remap.pc_french_keyboard_layout</identifier>
       <!-- KEY_6 to '-' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::EQUAL</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::EQUAL</autogen>
       <!-- KEY_8 to '_' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_R</autogen>
       <!-- EQUAL to '=' -->
-      <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::NONE</autogen>
       <!-- EQUAL + Right Shift to '+' -->
-      <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::SHIFT_R, KeyCode::SLASH, ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::SHIFT_R, KeyCode::SLASH, ModifierFlag::SHIFT_R</autogen>
       <!-- ExclamationMark(SLASH) to '!' -->
-      <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::NONE</autogen>
       <!-- MultiplySign(BackSlash) to '*' -->
-      <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::KEYPAD_MULTIPLY, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::KEYPAD_MULTIPLY, ModifierFlag::NONE</autogen>
       <!-- KEY_2 + AltGr to '~' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
       <!-- KEY_3 + AltGr to '#' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::OPTION_R, KeyCode::UK_SECTION, ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::OPTION_R, KeyCode::UK_SECTION, ModifierFlag::SHIFT_R</autogen>
       <!-- KEY_4 + AltGr to '{' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
       <!-- KEY_5 + AltGr to '[' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
       <!-- KEY_6 + AltGr to '|' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
       <!-- KEY_7 + AltGr to '`' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::BACKSLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::BACKSLASH</autogen>
       <!-- KEY_8 + AltGr to '\' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::DOT, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::DOT, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
       <!-- KEY_0 + AltGr to '@' -->
-      <autogen>--KeyToKey-- KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::UK_SECTION, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::UK_SECTION, ModifierFlag::NONE</autogen>
       <!-- MINUS + AltGr to ']' -->
-      <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::OPTION_R, KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::OPTION_R, KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
       <!-- EQUAL + AltGr to '}' -->
-      <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::OPTION_R, KeyCode::MINUS, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::OPTION_R, KeyCode::MINUS, ModifierFlag::OPTION_R</autogen>
       <!-- KEYPAD_DOT to '.' -->
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::SHIFT_R</autogen>
     </item>
   </item>
 </root>

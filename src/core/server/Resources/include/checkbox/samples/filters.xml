@@ -12,13 +12,13 @@
       <identifier>remap.samples_application</identifier>
       <block>
         <only>TERMINAL</only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
+        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
       </block>
       <block>
         <not>TERMINAL</not>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-        <autogen>--ConsumerToKey-- ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
+        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
       </block>
     </item>
 
@@ -36,19 +36,19 @@
       <identifier>remap.samples_device</identifier>
       <block>
         <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
       </block>
       <block>
         <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
       </block>
       <block>
         <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::ANY</device_only>
-        <autogen>--KeyToKey-- KeyCode::S, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::S, KeyCode::TAB</autogen>
       </block>
       <block>
         <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::ANY</device_not>
-        <autogen>--KeyToKey-- KeyCode::S, KeyCode::SPACE</autogen>
+        <autogen>__KeyToKey__ KeyCode::S, KeyCode::SPACE</autogen>
       </block>
       <block>
         <device_only>
@@ -56,7 +56,7 @@
           DeviceProduct::Pixart_Imaging_Inc_Optical_Mouse_0x2510,
           DeviceLocation::EXAMPLE_USB_BUS_1
         </device_only>
-        <autogen>--DropScrollWheel--</autogen>
+        <autogen>__DropScrollWheel__</autogen>
       </block>
     </item>
 
@@ -73,22 +73,22 @@
         <appendix>C to 5</appendix>
         <block>
           <config_only>option.samples_config_mode1</config_only>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_1</autogen>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::KEY_1</autogen>
         </block>
         <block>
           <config_only>option.samples_config_mode1, option.samples_config_mode2</config_only>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_2</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, KeyCode::KEY_2</autogen>
         </block>
         <block>
           <config_not>option.samples_config_mode1</config_not>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::KEY_3</autogen>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::KEY_3</autogen>
         </block>
         <block>
           <config_not>option.samples_config_mode1, option.samples_config_mode2</config_not>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::KEY_4</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, KeyCode::KEY_4</autogen>
         </block>
         <block>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_5</autogen>
+          <autogen>__KeyToKey__ KeyCode::C, KeyCode::KEY_5</autogen>
         </block>
       </item>
       <item>
@@ -107,7 +107,7 @@
         <identifier>remap.samples_config_before_keydown</identifier>
 
         <config_not>option.samples_config_mode1</config_not>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB,
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CONFIG_FORCE_ON_option_samples_config_mode1, KeyCode::A,
           Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_CONFIG_FORCE_OFF_option_samples_config_mode1, KeyCode::B
         </autogen>
@@ -125,63 +125,63 @@
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsource_bepo</identifier>
           <inputsource_only>BEPO</inputsource_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-normal)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo</identifier>
           <inputsourcedetail_only>BEPO</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-AzertyCmd)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo_azertycmd</identifier>
           <inputsourcedetail_only>BEPO_AZERTYCMD</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-AzertyCmdRoman)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo_azertycmdroman</identifier>
           <inputsourcedetail_only>BEPO_AZERTYCMDROMAN</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-QwertyCmd)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo_qwertycmd</identifier>
           <inputsourcedetail_only>BEPO_QWERTYCMD</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-QwertyCmdRoman)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo_qwertycmdroman</identifier>
           <inputsourcedetail_only>BEPO_QWERTYCMDROMAN</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-QwertzCmd)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo_qwertzcmd</identifier>
           <inputsourcedetail_only>BEPO_QWERTZCMD</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-QwertzCmdRoman)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo_qwertzcmdroman</identifier>
           <inputsourcedetail_only>BEPO_QWERTZCMDROMAN</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (bépo-Roman)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_bepo_roman</identifier>
           <inputsourcedetail_only>BEPO_ROMAN</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
       </item>
       <item>
@@ -189,28 +189,28 @@
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_tradchinese</identifier>
         <inputsource_only>CHINESE_TRADITIONAL</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsourcedetail_only (Chinese Traditional Yahoo! KeyKey)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_tradchinese_yahoo_keykey</identifier>
         <inputsourcedetail_only>CHINESE_TRADITIONAL_YAHOO_KEYKEY</inputsourcedetail_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Chinese Simplified-*)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_simpchinese</identifier>
         <inputsource_only>CHINESE_SIMPLIFIED</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Canadian)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_canadian</identifier>
         <inputsource_only>CANADIAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>Dvorak</name>
@@ -219,35 +219,35 @@
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsource_dvorak</identifier>
           <inputsource_only>DVORAK</inputsource_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Dvorak-normal)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_dvorak</identifier>
           <inputsourcedetail_only>DVORAK</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Dvorak-Left)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_dvorak_left</identifier>
           <inputsourcedetail_only>DVORAK_LEFT</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Dvorak-QwertyCmd)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_dvorak_qwertycmd</identifier>
           <inputsourcedetail_only>DVORAK_QWERTYCMD</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Dvorak-Right)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_dvorak_right</identifier>
           <inputsourcedetail_only>DVORAK_RIGHT</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
       </item>
       <item>
@@ -255,21 +255,21 @@
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_roman</identifier>
         <inputsource_only>ENGLISH</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Finnish)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_finnish</identifier>
         <inputsource_only>FINNISH</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (French-*)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_french</identifier>
         <inputsource_only>FRENCH</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>Japanese</name>
@@ -278,14 +278,14 @@
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsource_japanese</identifier>
           <inputsource_only>JAPANESE</inputsource_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsource_not (Japanese-*)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsource_not_japanese</identifier>
           <inputsource_not>JAPANESE</inputsource_not>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Japanese-Hiragana)</name>
@@ -293,7 +293,7 @@
           <identifier>remap.samples_inputsourcedetail_japanese_hiragana</identifier>
           <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
           <inputsourcedetail_only>JAPANESE_HIRAGANA, JAPANESE</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_not (Japanese-Hiragana)</name>
@@ -301,41 +301,41 @@
           <identifier>remap.samples_inputsourcedetail_not_japanese_hiragana</identifier>
           <!-- We need to set both JAPANESE_HIRAGANA and JAPANESE -->
           <inputsourcedetail_not>JAPANESE_HIRAGANA, JAPANESE</inputsourcedetail_not>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Japanese-Katakana)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_japanese_katakana</identifier>
           <inputsourcedetail_only>JAPANESE_KATAKANA</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Japanese-Full-width Roman)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_japanese_fullwidth_roman</identifier>
           <inputsourcedetail_only>JAPANESE_FULLWIDTH_ROMAN</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Japanese-Half-width Katakana)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_japanese_halfwidth_kana</identifier>
           <inputsourcedetail_only>JAPANESE_HALFWIDTH_KANA</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (JANSI)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_roman_jansi</identifier>
           <inputsourcedetail_only>JANSI</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>Enforce roman input at semicolon(;).</name>
           <identifier>remap.samples_inputsource_semicolon</identifier>
           <inputsource_only>JAPANESE</inputsource_only>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
+          <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
             Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
             Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
           </autogen>
@@ -346,7 +346,7 @@
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_korean</identifier>
         <inputsource_only>KOREAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>Polish</name>
@@ -355,21 +355,21 @@
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsource_polish</identifier>
           <inputsource_only>POLISH</inputsource_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Polish)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_polish</identifier>
           <inputsourcedetail_only>POLISH</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
         <item>
           <name>inputsourcedetail_only (Polish Pro)</name>
           <appendix>Space to Tab</appendix>
           <identifier>remap.samples_inputsourcedetail_polishpro</identifier>
           <inputsourcedetail_only>POLISH_PRO</inputsourcedetail_only>
-          <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
         </item>
       </item>
       <item>
@@ -377,84 +377,84 @@
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_swedish</identifier>
         <inputsource_only>SWEDISH</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Russian)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_russian</identifier>
         <inputsource_only>RUSSIAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Thai)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_thai</identifier>
         <inputsource_only>THAI</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (German)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_german</identifier>
         <inputsource_only>GERMAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Slovenian)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_slovenian</identifier>
         <inputsource_only>SLOVENIAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Czech)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_czech</identifier>
         <inputsource_only>CZECH</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (British)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_british</identifier>
         <inputsource_only>BRITISH</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Bulgarian)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_bulgarian</identifier>
         <inputsource_only>BULGARIAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Swiss)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_swiss</identifier>
         <inputsource_only>SWISS</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Croatian)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_croatian</identifier>
         <inputsource_only>CROATIAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Hungarian)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_hungarian</identifier>
         <inputsource_only>HUNGARIAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
       <item>
         <name>inputsource_only (Norwegian)</name>
         <appendix>Space to Tab</appendix>
         <identifier>remap.samples_inputsource_norwegian</identifier>
         <inputsource_only>NORWEGIAN</inputsource_only>
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
     </item>
 
@@ -485,11 +485,11 @@
         <identifier>remap.samples_modifier_standard</identifier>
         <block>
           <modifier_only>ModifierFlag::COMMAND_L, ModifierFlag::OPTION_L</modifier_only>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
         </block>
         <block>
           <modifier_not>ModifierFlag::SHIFT_L, ModifierFlag::CONTROL_L</modifier_not>
-          <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
         </block>
       </item>
       <item>
@@ -507,11 +507,11 @@
         <identifier>remap.samples_modifier_combination</identifier>
         <block>
           <modifier_only>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</modifier_only>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, KeyCode::D</autogen>
         </block>
         <block>
           <modifier_not>ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R</modifier_not>
-          <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, KeyCode::E</autogen>
         </block>
       </item>
       <item>
@@ -523,7 +523,7 @@
         <identifier>remap.samples_modifier_with_none</identifier>
         <block>
           <modifier_only>ModifierFlag::SHIFT_L | ModifierFlag::NONE</modifier_only>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::F</autogen>
+          <autogen>__KeyToKey__ KeyCode::C, KeyCode::F</autogen>
         </block>
       </item>
     </item>
@@ -549,36 +549,36 @@
       <identifier>remap.samples_block</identifier>
       <block>
         <only>TERMINAL</only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::B</autogen>
-        <autogen>--KeyToKey-- KeyCode::B, KeyCode::D</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, KeyCode::D</autogen>
       </block>
       <block>
         <only>SAFARI</only>
-        <autogen>--KeyToKey-- KeyCode::A, KeyCode::C</autogen>
-        <autogen>--KeyToKey-- KeyCode::B, KeyCode::E</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, KeyCode::E</autogen>
       </block>
-      <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::Y</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, VK_SHIFT, KeyCode::Z</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, VK_SHIFT, KeyCode::Y</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, VK_SHIFT, KeyCode::Z</autogen>
       <block>
         <only>TERMINAL</only>
         <block>
           <modifier_only>ModifierFlag::OPTION_L, ModifierFlag::OPTION_R</modifier_only>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_1</autogen>
+          <autogen>__KeyToKey__ KeyCode::C, KeyCode::KEY_1</autogen>
         </block>
         <block>
           <modifier_only>ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R</modifier_only>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_2</autogen>
+          <autogen>__KeyToKey__ KeyCode::C, KeyCode::KEY_2</autogen>
         </block>
       </block>
       <block>
         <only>SAFARI</only>
         <block>
           <modifier_only>ModifierFlag::OPTION_L, ModifierFlag::OPTION_R</modifier_only>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_3</autogen>
+          <autogen>__KeyToKey__ KeyCode::C, KeyCode::KEY_3</autogen>
         </block>
         <block>
           <modifier_only>ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R</modifier_only>
-          <autogen>--KeyToKey-- KeyCode::C, KeyCode::KEY_4</autogen>
+          <autogen>__KeyToKey__ KeyCode::C, KeyCode::KEY_4</autogen>
         </block>
       </block>
     </item>

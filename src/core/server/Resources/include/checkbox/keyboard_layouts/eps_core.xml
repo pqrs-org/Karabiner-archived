@@ -538,7 +538,7 @@
       <item>
         <name>Virtual NumLock</name>
         <identifier vk_config="true">notsave.prepared_virtual_numlock_eps3</identifier>
-        <autogen>--ShowStatusMessage-- NumLock</autogen>
+        <autogen>__ShowStatusMessage__ NumLock</autogen>
         <autogen>{{k2k}} {{c}}, {{mnon}},                      {{k}}EYPAD_3</autogen>
         <autogen>{{k2k}} {{e}}, {{mnon}},                          {{k}}EYPAD_1</autogen>
         <autogen>{{k2k}} {{f}}, {{mnon}},                          {{k}}EYPAD_2</autogen>

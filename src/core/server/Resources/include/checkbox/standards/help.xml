@@ -5,27 +5,27 @@
     <item>
       <name>Change Help to Command_L</name>
       <identifier>remap.help2commandL</identifier>
-      <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::COMMAND_L</autogen>
     </item>
     <item>
       <name>Change Help to Control_L</name>
       <identifier>remap.help2controlL</identifier>
-      <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Change Help to Option_L</name>
       <identifier>remap.help2optionL</identifier>
-      <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Change Help to Shift_L</name>
       <identifier>remap.help2shiftL</identifier>
-      <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
       <name>Change Help to F13</name>
       <identifier>remap.help2f13</identifier>
-      <autogen>--KeyToKey-- KeyCode::HELP, KeyCode::F13</autogen>
+      <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::F13</autogen>
     </item>
   </item>
 </root>
