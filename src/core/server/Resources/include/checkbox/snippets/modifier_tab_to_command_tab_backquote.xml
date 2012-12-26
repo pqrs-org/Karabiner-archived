@@ -6,7 +6,7 @@
   <block>
     <config_only>notsave.modifier_tab_to_command_tab</config_only>
     <autogen>
-      --KeyToKey--
+      __KeyToKey__
       KeyCode::BACKQUOTE, ModifierFlag::{{ FROM_MODIFIER }},
       KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L,
       KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, ModifierFlag::COMMAND_L,

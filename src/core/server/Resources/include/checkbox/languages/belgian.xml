@@ -5,7 +5,7 @@
     <item>
       <name>Change KeyPad Comma(,) to Dot(.)</name>
       <identifier>remap.belgian_keypad_comma_to_dot</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
     </item>
   </item>
 </root>

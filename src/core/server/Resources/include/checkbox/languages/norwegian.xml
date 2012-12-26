@@ -7,8 +7,8 @@
       <name>+ Shift+KeyPad Comma(,) to Comma(,)</name>
       <identifier>remap.norwegian_keypad_comma_to_dot</identifier>
       <inputsource_only>NORWEGIAN</inputsource_only>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT, KeyCode::KEYPAD_DOT</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, VK_SHIFT, KeyCode::KEYPAD_DOT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
     </item>
   </item>
 </root>

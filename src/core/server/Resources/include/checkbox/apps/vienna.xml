@@ -6,7 +6,7 @@
       <name>Change Option_R to Enter</name>
       <identifier>remap.app_vienna_optionR2enter</identifier>
       <only>VIENNA</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER</autogen>
     </item>
   </item>
 </root>

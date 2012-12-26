@@ -14,15 +14,15 @@
       <appendix>Use 8 to Lazy Shift_L</appendix>
       <appendix>Use 9 to Lazy Shift_R</appendix>
       <identifier>remap.samples_vk_lazy</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_LAZY_COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_LAZY_COMMAND_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_LAZY_CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_LAZY_CONTROL_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_LAZY_FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_LAZY_OPTION_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_LAZY_OPTION_R</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_LAZY_SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_9, KeyCode::VK_LAZY_SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_LAZY_COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_LAZY_COMMAND_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_LAZY_CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_LAZY_CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_LAZY_FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_LAZY_OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_LAZY_OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_LAZY_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::VK_LAZY_SHIFT_R</autogen>
     </item>
     <item>
       <name>KeyToKey</name>
@@ -30,21 +30,21 @@
       <appendix>Change 2 to Control_L+VK_LAZY_SHIFT_L</appendix>
       <appendix>Change 3 to A,Control_L+VK_LAZY_SHIFT_L</appendix>
       <identifier>remap.samples_vk_lazy_keytokey</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::A, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>KeyOverlaidModifier</name>
       <appendix>Change 1 to VK_LAZY_SHIFT_L (When type only, send Space)</appendix>
       <identifier>remap.samples_vk_lazy_keyoverlaidmodifier</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>DoublePressModifier</name>
       <appendix>Change 1 to VK_LAZY_SHIFT_L, KEY_1 x2 to Return</appendix>
       <identifier>remap.samples_vk_lazy_doublepressmodifier</identifier>
-      <autogen>--DoublePressModifier-- KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::RETURN</autogen>
+      <autogen>__DoublePressModifier__ KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::RETURN</autogen>
     </item>
   </item>
 </root>

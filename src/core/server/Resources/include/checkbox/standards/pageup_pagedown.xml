@@ -5,12 +5,12 @@
     <item>
       <name>PageUp to PC Insert Key</name>
       <identifier>remap.pageup2pcinsert</identifier>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP, KeyCode::PC_INSERT</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP, KeyCode::PC_INSERT</autogen>
     </item>
     <item>
       <name>PageDown to PageUp</name>
       <identifier>remap.pagedown2pageup</identifier>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::PAGEUP</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, KeyCode::PAGEUP</autogen>
     </item>
     <item>
       <name>PageUp/PageDown to Left/Right (only in iPhoto)</name>
@@ -20,8 +20,8 @@
       <!-- Kensington K33374 Hardware VendorID,ProductID == 0x047d,0x2012 -->
       <!-- Kensington Hack 0x0,0x0 -->
       <device_only>DeviceVendor::KENSINGTON,DeviceProduct::K33374, DeviceVendor::PSEUDO,DeviceProduct::PSEUDO</device_only>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   KeyCode::CURSOR_LEFT</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, KeyCode::CURSOR_RIGHT</autogen>
     </item>
   </item>
 </root>

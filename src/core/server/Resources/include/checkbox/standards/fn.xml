@@ -39,14 +39,14 @@
           <replacementvalue>ModifierFlag::CONTROL_L</replacementvalue>
         </replacementdef>
       </include>
-      <autogen>--KeyToKey-- KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::ESCAPE, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::SPACE,  ModifierFlag::FN, KeyCode::SPACE,  ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::TAB,    ModifierFlag::FN, KeyCode::TAB,    ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::ESCAPE, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE,  ModifierFlag::FN, KeyCode::SPACE,  ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB,    ModifierFlag::FN, KeyCode::TAB,    ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Fn to Command_L</name>
       <identifier>remap.fn2commandL</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::COMMAND_L</autogen>
     </item>
     <item>
       <name>Fn to Command_L (except virtual machine, RDC)</name>
@@ -54,58 +54,58 @@
       <identifier>remap.fn2commandL_fn2controlL_vm</identifier>
       <block>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::FN, KeyCode::COMMAND_L</autogen>
       </block>
       <block>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::FN, KeyCode::CONTROL_L</autogen>
       </block>
     </item>
     <item>
       <name>Fn to Control_L</name>
       <identifier>remap.fn2controlL</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Fn to Control_L (only in virtual machine, RDC)</name>
       <identifier>remap.fn2controlL_vm</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Fn to Control_L</name>
       <appendix>(+ Command_R+Fn to Fn)</appendix>
       <identifier>remap.fn2controlL_commandR2fn</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Fn to Control_L</name>
       <appendix>(+ Option_L+Fn to Fn)</appendix>
       <identifier>remap.fn2controlL_optionL2fn</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, ModifierFlag::OPTION_L, KeyCode::FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Fn to Control_R</name>
       <identifier>remap.fn2controlR</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::CONTROL_R</autogen>
     </item>
     <item>
       <name>Fn to Fn</name>
       <appendix>(+ When you type Fn only, send Fn_Lock)</appendix>
       <identifier>remap.fn2fn_fnlock</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::FN, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
     </item>
     <item>
       <name>Fn to Fn_Lock</name>
       <identifier>remap.fn2fnlock</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
     </item>
     <item>
       <name>Fn to Option_L</name>
       <identifier>remap.fn2optionL</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Fn to Option_L</name>
@@ -113,90 +113,90 @@
       <appendix>(retain Fn+F1...Fn+F12)</appendix>
       <identifier>remap.fn2optionL_illphoche</identifier>
       <only>ILLUSTRATOR, PHOTOSHOP, CHEETAH_3D</only>
-      <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_DOWN,                      ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::BRIGHTNESS_UP,                        ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_UP</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_DOWN,    ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::BRIGHTNESS_UP,      ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::EXPOSE_ALL,                           ModifierFlag::OPTION_L, KeyCode::EXPOSE_ALL</autogen>
-      <autogen>--KeyToKey-- KeyCode::DASHBOARD,                            ModifierFlag::OPTION_L, KeyCode::DASHBOARD</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PREV,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PREV</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_PLAY,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PLAY</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::MUSIC_NEXT,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_NEXT</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_MUTE,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_DOWN,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_DOWN</autogen>
-      <autogen>--ConsumerToConsumer-- ConsumerKeyCode::VOLUME_UP,          ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_DOWN,                      ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_UP,                        ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_UP</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_DOWN,    ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_UP,      ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::EXPOSE_ALL,                           ModifierFlag::OPTION_L, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ KeyCode::DASHBOARD,                            ModifierFlag::OPTION_L, KeyCode::DASHBOARD</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PREV,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PREV</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PLAY,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PLAY</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_NEXT,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_NEXT</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_DOWN,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_DOWN</autogen>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_UP,          ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Fn to Control_L+Option_L</name>
       <identifier>remap.fn2controlLoptionL</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Fn to All Modifiers Mode</name>
       <item>
         <name>FN to Shift+Control+Option+Command</name>
         <identifier vk_config="true">notsave.fn2allmods</identifier>
-        <autogen>--ShowStatusMessage-- Fn as All Mods Enabled</autogen>
-        <autogen>--KeyToKey-- KeyCode::FN, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        <autogen>__ShowStatusMessage__ Fn as All Mods Enabled</autogen>
+        <autogen>__KeyToKey__ KeyCode::FN, KeyCode::COMMAND_L, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
       </item>
       <item>
         <name>Doubletap Left Shift to Enable Fn as Shift+Control+Option+Command</name>
         <identifier>remap.enable_fn2allmods</identifier>
-        <autogen>--DoublePressModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_fn2allmods</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_fn2allmods</autogen>
       </item>
     </item>
     <item>
       <name>Fn to Shift_L</name>
       <identifier>remap.fn2shiftL</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
       <name>Fn to Delete</name>
       <identifier>remap.fn2delete</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::DELETE</autogen>
     </item>
     <item>
       <name>Fn to Enter</name>
       <identifier>remap.fn2enter</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::ENTER</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::ENTER</autogen>
     </item>
     <item>
       <name>Fn to Eject</name>
       <identifier>remap.fn2eject</identifier>
-      <autogen>--KeyToConsumer-- KeyCode::FN, ConsumerKeyCode::EJECT</autogen>
+      <autogen>__KeyToConsumer__ KeyCode::FN, ConsumerKeyCode::EJECT</autogen>
     </item>
     <item>
       <name>Fn to Forward Delete</name>
       <identifier>remap.fn2forwarddelete</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Fn to F14</name>
       <identifier>remap.fn2f14</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::F14</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::F14</autogen>
     </item>
     <item>
       <name>Fn x2 to F19</name>
       <identifier>remap.fn_x2_to_f19</identifier>
-      <autogen>--DoublePressModifier-- KeyCode::FN, KeyCode::FN, KeyCode::F19</autogen>
+      <autogen>__DoublePressModifier__ KeyCode::FN, KeyCode::FN, KeyCode::F19</autogen>
     </item>
     <item>
       <name>Fn to Help</name>
       <identifier>remap.fn2help</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::HELP</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::HELP</autogen>
     </item>
     <item>
       <name>Fn to Tab</name>
       <identifier>remap.fn2tab</identifier>
-      <autogen>--KeyToKey-- KeyCode::FN, KeyCode::TAB</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::TAB</autogen>
     </item>
     <item>
       <name>Fn to LeftClick</name>
       <identifier>remap.fn2leftclick</identifier>
-      <autogen>--KeyToPointingButton-- KeyCode::FN, PointingButton::LEFT</autogen>
+      <autogen>__KeyToPointingButton__ KeyCode::FN, PointingButton::LEFT</autogen>
     </item>
   </item>
 </root>

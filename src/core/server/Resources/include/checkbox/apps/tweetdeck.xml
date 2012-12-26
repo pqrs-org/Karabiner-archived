@@ -6,18 +6,18 @@
       <name>Emacs bindings for TweetDeck</name>
       <identifier>remap.app_tweetdeck_emacs_bindings</identifier>
       <only>TWEETDECK</only>
-      <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-      <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
-      <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, VK_CONTROL, KeyCode::ENTER</autogen>
-      <autogen>--KeyToKey-- KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
-      <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, VK_CONTROL, KeyCode::ENTER</autogen>
+      <autogen>__KeyToKey__ KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
     </item>
   </item>
 </root>

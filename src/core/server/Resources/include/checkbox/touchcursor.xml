@@ -9,25 +9,25 @@
       <identifier vk_config="true">notsave.touchcursor</identifier>
 
       <!-- IKJL -->
-      <autogen>--KeyToKey-- KeyCode::I, KeyCode::CURSOR_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
 
       <!-- U: beginning-of-line -->
-      <autogen>--KeyToKey-- KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::U, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
       <!-- O: end-of-line -->
-      <autogen>--KeyToKey-- KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
 
       <!-- P: delete -->
-      <autogen>--KeyToKey-- KeyCode::P, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::P, KeyCode::DELETE</autogen>
       <!-- M: forward delete -->
-      <autogen>--KeyToKey-- KeyCode::M, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::M, KeyCode::FORWARD_DELETE</autogen>
 
       <!-- H: page up -->
-      <autogen>--KeyToKey-- KeyCode::H, KeyCode::PAGEUP</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::PAGEUP</autogen>
       <!-- N: page down -->
-      <autogen>--KeyToKey-- KeyCode::N, KeyCode::PAGEDOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, KeyCode::PAGEDOWN</autogen>
     </item>
 
     <item>
@@ -36,7 +36,7 @@
       <appendix>in order to avoid mis-detection of space key if your typing speed is fast.)</appendix>
       <identifier>remap.touchcursor</identifier>
       <autogen>
-        --KeyOverlaidModifier--
+        __KeyOverlaidModifier__
         KeyCode::SPACE,
         KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_touchcursor,
         KeyCode::SPACE

@@ -14,10 +14,10 @@
     <include path="../commons/wrap_keys/international.xml" />
 
     <!-- pickup from special.xml -->
-    <autogen>--KeyToKey-- KeyCode::ENTER,           {{ BEFORE }}, KeyCode::ENTER,           {{ AFTER }}</autogen>
-    <autogen>--KeyToKey-- KeyCode::ENTER_POWERBOOK, {{ BEFORE }}, KeyCode::ENTER_POWERBOOK, {{ AFTER }}</autogen>
-    <autogen>--KeyToKey-- KeyCode::RETURN,          {{ BEFORE }}, KeyCode::RETURN,          {{ AFTER }}</autogen>
-    <autogen>--KeyToKey-- KeyCode::SPACE,           {{ BEFORE }}, KeyCode::SPACE,           {{ AFTER }}</autogen>
-    <autogen>--KeyToKey-- KeyCode::TAB,             {{ BEFORE }}, KeyCode::TAB,             {{ AFTER }}</autogen>
+    <autogen>__KeyToKey__ KeyCode::ENTER,           {{ BEFORE }}, KeyCode::ENTER,           {{ AFTER }}</autogen>
+    <autogen>__KeyToKey__ KeyCode::ENTER_POWERBOOK, {{ BEFORE }}, KeyCode::ENTER_POWERBOOK, {{ AFTER }}</autogen>
+    <autogen>__KeyToKey__ KeyCode::RETURN,          {{ BEFORE }}, KeyCode::RETURN,          {{ AFTER }}</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE,           {{ BEFORE }}, KeyCode::SPACE,           {{ AFTER }}</autogen>
+    <autogen>__KeyToKey__ KeyCode::TAB,             {{ BEFORE }}, KeyCode::TAB,             {{ AFTER }}</autogen>
   </block>
 </root>

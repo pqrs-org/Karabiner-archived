@@ -5,87 +5,87 @@
     <item>
       <name>Option_L to CapsLock</name>
       <identifier>remap.optionL2capslock</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CAPSLOCK</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::CAPSLOCK</autogen>
     </item>
     <item>
       <name>Option_L to Command_L</name>
       <identifier>remap.optionL2commandL</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_L to Command_L (only in virtual machine, RDC)</name>
       <identifier>remap.optionL2commandL_vm</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_L to Control_L</name>
       <identifier>remap.optionL2controlL</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Option_L to Control_L (only in virtual machine, RDC)</name>
       <identifier>remap.optionL2controlL_vm</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Option_L to Fn</name>
       <identifier>remap.optionL2fn</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::FN</autogen>
     </item>
     <item>
       <name>Control_L+Option_L to Fn</name>
       <identifier>remap.controlLoptionL2fn</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, ModifierFlag::CONTROL_L, KeyCode::FN</autogen>
     </item>
     <item>
       <name>Option_L to Option_L</name>
       <appendix>(+ When you type Option_L only, send Command+Space)</appendix>
       <identifier>remap.optionL2optionL_commandSpace</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_L to Option_L</name>
       <appendix>(+ When you type Option_L only, send End)</appendix>
       <identifier>remap.optionL2optionL_End</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::END</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::END</autogen>
     </item>
     <item>
       <name>Option_L to Option_L</name>
       <appendix>(+ When you type Option_L only, send Control+F2 (Move focus to the menu bar))</appendix>
       <identifier>remap.optionL2optionL_controlF2</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Option_L to Option_R</name>
       <identifier>remap.optionL2optionR</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::OPTION_R</autogen>
     </item>
     <item>
       <name>Option_L to Shift_L</name>
       <identifier>remap.optionL2shiftL</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
       <name>Option_L to Sticky Option_L</name>
       <identifier>remap.sticky_optionL</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_STICKY_OPTION_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_STICKY_OPTION_L</autogen>
     </item>
     <item>
       <name>Option_L to Escape</name>
       <identifier>remap.optionL2escape</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::ESCAPE</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::ESCAPE</autogen>
     </item>
     <item>
       <name>Option_L to Command+Control+Option+Shift+F1</name>
       <identifier>remap.optionL2allF1</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Option_L to Space</name>
       <identifier>remap.optionL2space</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::SPACE</autogen>
     </item>
   </item>
 
@@ -94,66 +94,66 @@
     <item>
       <name>Option_R to CapsLock</name>
       <identifier>remap.optionR2capslock</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CAPSLOCK</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CAPSLOCK</autogen>
     </item>
     <item>
       <name>Option_R to Command_L</name>
       <identifier>remap.optionR2commandL</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_R to Command_R</name>
       <identifier>remap.optionrcommandr</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
     </item>
     <item>
       <name>Option_R to Control_L</name>
       <identifier>remap.optionR2controlL</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Option_R to Control_L (only in virtual machine)</name>
       <identifier>remap.optionR2controlL_vm</identifier>
       <only>VIRTUALMACHINE</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
       <name>Option_R to Control_L+Option_R</name>
       <identifier>remap.optionR2controlLoptionR</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_L, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_L, ModifierFlag::OPTION_R</autogen>
     </item>
     <item>
       <name>Option_R to Control_R</name>
       <identifier>remap.optionR2controlR</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
     </item>
     <item>
       <name>Option_R to Control_R (only in Emacs, Terminal, X11)</name>
       <identifier>remap.optionR2controlR_etx</identifier>
       <only>EMACS, TERMINAL, X11</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
     </item>
     <item>
       <name>Option_R to Control_R (only in virtual machine, RDC)</name>
       <identifier>remap.optionR2controlR_vm</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_R</autogen>
     </item>
     <item>
       <name>Option_R to Fn</name>
       <identifier>remap.optionR2fn</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::FN</autogen>
     </item>
     <item>
       <name>Command_R+Option_R to Fn</name>
       <identifier>remap.commandRoptionR2fn</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, ModifierFlag::COMMAND_R, KeyCode::FN</autogen>
     </item>
     <item>
       <name>Option_R to Option_R</name>
       <appendix>(+ When you type Option_R only, send Control+F2 (Move focus to the menu bar))</appendix>
       <identifier>remap.optionR2optionR_controlF2</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Option_R to Option_R</name>
@@ -163,119 +163,119 @@
         <appendix>(except virtual machine, RDC)</appendix>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <identifier>remap.optionR2optionR_commandSpace</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>When you type Option_R only, send Option+Backquote</name>
         <appendix>(only in virtual machine, RDC)</appendix>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
         <identifier>remap.optionR2optionR_optionBackquote_vm</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::VK_LAZY_OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_R</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::VK_LAZY_OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_R</autogen>
       </item>
     </item>
     <item>
       <name>Option_R to Option_R+Shift_L</name>
       <identifier>remap.optionR2optionRshiftL</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::OPTION_R, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::OPTION_R, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Option_R to Sticky Option_R</name>
       <identifier>remap.sticky_optionR</identifier>
-      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_STICKY_OPTION_R</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_STICKY_OPTION_R</autogen>
     </item>
     <item>
       <name>Option_R to Delete</name>
       <identifier>remap.optionR2delete</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::DELETE</autogen>
     </item>
     <item>
       <name>Option_R to End</name>
       <identifier>remap.optionR2end</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::END</autogen>
     </item>
     <item>
       <name>Option_R to End (only in virtual machine, RDC)</name>
       <identifier>remap.optionR2end_vm</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::END</autogen>
     </item>
     <item>
       <name>Option_R to End (only in virtual machine, RDC)</name>
       <appendix>(+ Shift+Option_R to Shift+End,Control_L+C)</appendix>
       <identifier>remap.optionR2end_vm_ex</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, VK_SHIFT, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::END</autogen>
     </item>
     <item>
       <name>Option_R to End (only in virtual machine, RDC)</name>
       <appendix>(+ Shift+Option_R to Shift+End,Command_L+C)</appendix>
       <identifier>remap.optionR2end_vm_ex2</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, VK_SHIFT, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::END</autogen>
     </item>
     <item>
       <name>Option_R to Enter</name>
       <identifier>remap.optionR2enter</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER</autogen>
     </item>
     <item>
       <name>Option_R to Forward Delete</name>
       <identifier>remap.optionR2forwarddelete</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Option_R to Left-Arrow</name>
       <identifier>remap.optionR2leftarrow</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_LEFT</autogen>
     </item>
     <item>
       <name>Option_R to PageDown</name>
       <identifier>remap.optionR2pagedown</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::PAGEDOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::PAGEDOWN</autogen>
     </item>
     <item>
       <name>Option_R to Command_L+Right-Arrow (except virtual machine, RDC)</name>
       <identifier>remap.optionR2commandLrightarrow</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_R to Command_L+Right-Arrow (except virtual machine, RDC)</name>
       <appendix>(+ Shift+Option_R to Command_L+Shift_L+Right-Arrow,Command_L+C)</appendix>
       <identifier>remap.optionR2commandLrightarrow_ex</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_R to Command_L+Right-Arrow (except virtual machine, RDC)</name>
       <appendix>(+ Shift+Option_R to Command_L+Shift_L+Right-Arrow,Control_L+C)</appendix>
       <identifier>remap.optionR2commandLrightarrow_ex2</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_R to Command_L+Right-Arrow</name>
       <identifier>remap.optionR2commandLrightarrow_all</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_R to Semicolon</name>
       <identifier>remap.optionR2semicolon</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::SEMICOLON</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SEMICOLON</autogen>
     </item>
     <item>
       <name>Option_R to Space</name>
       <identifier>remap.optionR2space</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::SPACE</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>Option_R to Command+Control+Option+Shift+F1</name>
       <identifier>remap.optionR2allF1</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
 
     <item>
@@ -283,7 +283,7 @@
       <appendix>(Sending Command+Space when pressing/releasing right option key.)</appendix>
       <identifier>remap.option_r_language_switch</identifier>
       <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::VK_NONE,
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_NONE,
         Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
         Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
       </autogen>
@@ -294,19 +294,19 @@
       <appendix>Option_R+Up/Down/Left/Right Arrow Keys to PageUp/PageDown/Home/End</appendix>
       <appendix>Option_R+Delete to Forward Delete</appendix>
       <identifier>remap.modified_optionR_behaviours</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  ModifierFlag::EXTRA1, KeyCode::HOME</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, ModifierFlag::EXTRA1, KeyCode::END</autogen>
-      <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    ModifierFlag::EXTRA1, KeyCode::PAGEUP</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  ModifierFlag::EXTRA1, KeyCode::PAGEDOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  ModifierFlag::EXTRA1, KeyCode::HOME</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, ModifierFlag::EXTRA1, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::DELETE, ModifierFlag::EXTRA1, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Option_R to RightClick</name>
       <appendix>Fn+Option_R preserves Right Option</appendix>
       <identifier>remap.option_r_to_right_click</identifier>
-      <autogen>--KeyToKey-- KeyCode::OPTION_R, ModifierFlag::FN, KeyCode::OPTION_R</autogen>
-      <autogen>--KeyToPointingButton-- KeyCode::OPTION_R, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, ModifierFlag::FN, KeyCode::OPTION_R</autogen>
+      <autogen>__KeyToPointingButton__ KeyCode::OPTION_R, PointingButton::RIGHT</autogen>
     </item>
   </item>
 </root>

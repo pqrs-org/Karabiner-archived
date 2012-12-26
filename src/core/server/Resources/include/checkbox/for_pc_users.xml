@@ -7,12 +7,12 @@
       <item>
         <name>Application Key to CapsLock</name>
         <identifier>remap.pc_application2capslock</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::CAPSLOCK</autogen>
       </item>
       <item>
         <name>Application Key to Command_L</name>
         <identifier>remap.pc_application2commandL</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
       </item>
       <item>
         <name>Application Key to Command_L</name>
@@ -21,127 +21,127 @@
         <identifier>remap.pc_application2commandL_controlL</identifier>
         <block>
           <only>TERMINAL,SCREEN_SHARING, VI, REMOTEDESKTOPCONNECTION, EMACS, X11, VNC</only>
-          <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
         </block>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::COMMAND_L</autogen>
       </item>
       <item>
         <name>Application Key to Command_R</name>
         <identifier>remap.pc_application2commandR_comamndLspace</identifier>
         <appendix>(+ When you type Application only, send Command_L+Space)</appendix>
-        <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::PC_APPLICATION, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Application Key to Control_L</name>
         <identifier>remap.pc_application2controlL</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::CONTROL_L</autogen>
       </item>
       <item>
         <name>Application Key to Control_L</name>
         <appendix>(+ When you type Application Key only, send CapsLock)</appendix>
         <!-- Note: identifier has "jis_" prefix for compatibility. -->
         <identifier>remap.jis_pc_application2controlL_capslock</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::PC_APPLICATION, KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
       </item>
       <item>
         <name>Application Key to Control+Option</name>
         <identifier>remap.pc_application_to_control_option</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
       </item>
       <item>
         <name>Application Key to Fn</name>
         <identifier>remap.pc_application2fn</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::FN</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::FN</autogen>
       </item>
       <item>
         <name>Application Key to Fn</name>
         <appendix>(+ When you type Application only, send Fn_Lock)</appendix>
         <identifier>remap.pc_application2fn_fnlock</identifier>
-        <autogen>--KeyOverlaidModifier-- KeyCode::PC_APPLICATION, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::PC_APPLICATION, KeyCode::FN, KeyCode::VK_LOCK_FN</autogen>
       </item>
       <item>
         <name>Application Key to Option_L</name>
         <identifier>remap.pc_application2optionL</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_L</autogen>
       </item>
       <item>
         <name>Application Key to Shift_L</name>
         <identifier>remap.pc_application2shiftL</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::SHIFT_L</autogen>
       </item>
       <item>
         <name>Application Key to Command_L+Backquote</name>
         <identifier>remap.pc_application2commandLbackquote</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Application Key to Delete</name>
         <identifier>remap.pc_application2delete</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>Application Key to Delete</name>
         <appendix>(+ Command+Application Key to CapsLock)</appendix>
         <identifier>remap.pc_application2delete_capslock</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, VK_COMMAND, KeyCode::CAPSLOCK</autogen>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, VK_COMMAND, KeyCode::CAPSLOCK</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>Application Key to Escape</name>
         <identifier>remap.pc_application2escape</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::ESCAPE</autogen>
       </item>
       <item>
         <name>Application Key to Escape</name>
         <appendix>(+ Shift+Application Key to CapsLock)</appendix>
         <identifier>remap.pc_application2escape_capslock</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, VK_SHIFT, KeyCode::CAPSLOCK</autogen>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, VK_SHIFT, KeyCode::CAPSLOCK</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::ESCAPE</autogen>
       </item>
       <item>
         <name>Application Key to Eject</name>
         <identifier>remap.pc_application2eject</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::PC_APPLICATION, ConsumerKeyCode::EJECT</autogen>
+        <autogen>__KeyToConsumer__ KeyCode::PC_APPLICATION, ConsumerKeyCode::EJECT</autogen>
       </item>
       <item>
         <name>Application Key to Expose All</name>
         <identifier>remap.pc_application2exposeALL</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::EXPOSE_ALL</autogen>
       </item>
       <item>
         <name>Application Key to F9</name>
         <identifier>remap.pc_application2f9</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::F9</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::F9</autogen>
       </item>
       <item>
         <name>Application Key to F11</name>
         <identifier>remap.pc_application2f11</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::F11</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::F11</autogen>
       </item>
       <item>
         <name>Application Key to Command_L+Space</name>
         <identifier>remap.pc_application2commandLspace</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Application Key to Option_L+Space</name>
         <identifier>remap.pc_application2optionLspace</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>
         <name>Application Key to Underscore(Shift_L+Minus)</name>
         <identifier>remap.pc_application2underscore</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
       </item>
       <item>
         <name>Application Key to LeftClick</name>
         <identifier>remap.pc_application2leftclick</identifier>
-        <autogen>--KeyToPointingButton-- KeyCode::PC_APPLICATION, PointingButton::LEFT</autogen>
+        <autogen>__KeyToPointingButton__ KeyCode::PC_APPLICATION, PointingButton::LEFT</autogen>
       </item>
       <item>
         <name>Application Key to RightClick</name>
         <identifier>remap.pc_application2rightclick</identifier>
-        <autogen>--KeyToPointingButton-- KeyCode::PC_APPLICATION, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToPointingButton__ KeyCode::PC_APPLICATION, PointingButton::RIGHT</autogen>
       </item>
     </item>
     <item>
@@ -149,22 +149,22 @@
       <item>
         <name>Insert Key to Control_R</name>
         <identifier>remap.pc_insert2controlR</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::CONTROL_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_INSERT, KeyCode::CONTROL_R</autogen>
       </item>
       <item>
         <name>Insert Key to Option_L+Insert</name>
         <identifier>remap.pc_insert2optionLinsert</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::PC_INSERT, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_INSERT, KeyCode::PC_INSERT, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>
         <name>Insert Key to PageDown</name>
         <identifier>remap.pc_insert2pagedown</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::PAGEDOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_INSERT, KeyCode::PAGEDOWN</autogen>
       </item>
       <item>
         <name>Insert Key to Tab</name>
         <identifier>remap.pc_insert2tab</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_INSERT, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_INSERT, KeyCode::TAB</autogen>
       </item>
     </item>
     <item>
@@ -172,18 +172,18 @@
       <item>
         <name>NumLock Key to F11</name>
         <identifier>remap.pc_numlock2f11</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
       </item>
       <item>
         <name>Disable NumLock Key</name>
         <identifier>remap.drop_numlock</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
       </item>
       <item>
         <name>Disable NumLock Key (except in TeamViewer.app)</name>
         <not>TEAMVIEWER</not>
         <identifier>remap.drop_numlock_ex_teamviewer</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
       </item>
     </item>
     <item>
@@ -194,34 +194,34 @@
         <appendix>* ScrollLock to Volume Up</appendix>
         <appendix>* Pause/Break to Volume Mute</appendix>
         <identifier>remap.pc_printscreen_scrolllock_pause_to_volume_controls</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        <autogen>--KeyToConsumer-- KeyCode::PC_SCROLLLOCK,  ConsumerKeyCode::VOLUME_UP</autogen>
-        <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE,       ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToConsumer__ KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        <autogen>__KeyToConsumer__ KeyCode::PC_SCROLLLOCK,  ConsumerKeyCode::VOLUME_UP</autogen>
+        <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE,       ConsumerKeyCode::VOLUME_MUTE</autogen>
       </item>
       <item>
         <name>PrintScreen Key to Eject</name>
         <identifier>remap.pc_printscreen2eject</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::EJECT</autogen>
+        <autogen>__KeyToConsumer__ KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::EJECT</autogen>
       </item>
       <item>
         <name>PrintScreen Key to F12</name>
         <identifier>remap.pc_printscreen2f12</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_PRINTSCREEN, KeyCode::F12</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_PRINTSCREEN, KeyCode::F12</autogen>
       </item>
       <item>
         <name>ScrollLock Key to F13</name>
         <identifier>remap.pc_scrolllock2f13</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_SCROLLLOCK, KeyCode::F13</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_SCROLLLOCK, KeyCode::F13</autogen>
       </item>
       <item>
         <name>Pause/Break Key to Eject</name>
         <identifier>remap.pc_pause2eject</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
+        <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
       </item>
       <item>
         <name>Pause/Break Key to Power</name>
         <identifier>remap.pc_pause2power</identifier>
-        <autogen>--KeyToConsumer-- KeyCode::PC_PAUSE, ConsumerKeyCode::POWER</autogen>
+        <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE, ConsumerKeyCode::POWER</autogen>
       </item>
     </item>
     <item>
@@ -246,12 +246,12 @@
         <identifier>option.keypadnumlock_togglekey_clear</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock</autogen>
         </block>
         <block>
           <config_only>option.keypadnumlock_vm</config_only>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock</autogen>
         </block>
       </item>
       <item>
@@ -280,12 +280,12 @@
         <identifier>option.keypadnumlock_pclikehomeend_togglekey_clear</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock_pclikehomeend</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock_pclikehomeend</autogen>
         </block>
         <block>
           <config_only>option.keypadnumlock_vm</config_only>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>--KeyToKey-- KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock_pclikehomeend</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR, KeyCode::VK_CONFIG_TOGGLE_remap_keypadnumlock_pclikehomeend</autogen>
         </block>
       </item>
       <item>
@@ -301,11 +301,11 @@
       <appendix>(Change - to +)</appendix>
       <appendix>(Change + to =)</appendix>
       <identifier>remap.pc_style_keypad</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_EQUAL,    KeyCode::KEYPAD_SLASH</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_SLASH,    KeyCode::KEYPAD_MULTIPLY</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_MULTIPLY, KeyCode::KEYPAD_MINUS</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_MINUS,    KeyCode::KEYPAD_PLUS</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_PLUS,     KeyCode::KEYPAD_EQUAL</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_EQUAL,    KeyCode::KEYPAD_SLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_SLASH,    KeyCode::KEYPAD_MULTIPLY</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_MULTIPLY, KeyCode::KEYPAD_MINUS</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_MINUS,    KeyCode::KEYPAD_PLUS</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_PLUS,     KeyCode::KEYPAD_EQUAL</autogen>
     </item>
     <item>
       <name>Use PC Style Home/End (except in Virtual Machine,RDC)</name>
@@ -314,21 +314,21 @@
       <identifier>remap.pclikehomeend_emacs</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
-      <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
       <block>
         <!-- Control+Shift+A/E do not work in springpadit.com. -->
         <!-- Therefore we need to change Shift+Home/End to Command+Shift+Left/Right. -->
         <only>SAFARI,FIREFOX,THUNDERBIRD,GOOGLE_CHROME,OPERA</only>
-        <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_SHIFT | ModifierFlag::NONE,
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME, VK_SHIFT | ModifierFlag::NONE,
           KeyCode::CURSOR_LEFT,   ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_SHIFT | ModifierFlag::NONE,
+        <autogen>__KeyToKey__ FROMKEYCODE_END,  VK_SHIFT | ModifierFlag::NONE,
           KeyCode::CURSOR_RIGHT,  ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
       </block>
-      <autogen>--KeyToKey-- FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Use PC Style Home/End (except in Virtual Machine,RDC)</name>
@@ -340,17 +340,17 @@
       <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <block>
         <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-        <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_HOME,             KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_END,              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME, VK_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME, VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,  VK_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,  VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>
         <only>EMACS, TERMINAL, X11, ECLIPSE</only>
-        <autogen>--KeyToKey-- FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-        <autogen>--KeyToKey-- FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
       </block>
     </item>
     <item>
@@ -358,16 +358,16 @@
       <appendix>(behave like Option+PageUp/PageDown)</appendix>
       <identifier>remap.pclikepageupdown</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP,   ModifierFlag::OPTION_L</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP,   ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Use PC Style PageUp/PageDown (except in Microsoft Office,Emacs,Virtual Machine,RDC)</name>
       <appendix>(behave like Option+PageUp/PageDown)</appendix>
       <identifier>remap.pclikepageupdown_except_emacs</identifier>
       <not>WORD, EXCEL, POWERPOINT, OUTLOOK, EMACS, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-      <autogen>--KeyToKey-- FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Use PC Style Control+Up/Down/Left/Right</name>
@@ -375,10 +375,10 @@
       <appendix>(except in Virtual Machine,RDC)</appendix>
       <identifier>remap.pclikecontrolarrow_except_vm</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,     VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,   VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,   VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT,  VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,     VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,   VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,   VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT,  VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Use PC Style Copy/Paste</name>
@@ -386,9 +386,9 @@
       <appendix>(Control+V to Command_L+V)</appendix>
       <appendix>(Control+X to Command_L+X)</appendix>
       <identifier>remap.copy_paste_winstyle</identifier>
-      <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Copy/Paste</name>
@@ -398,9 +398,9 @@
       <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
       <identifier>remap.copy_paste_winstyle_no_term</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Copy/Paste #2</name>
@@ -408,10 +408,10 @@
       <appendix>(Control+V to Command_L+V)</appendix>
       <appendix>(Control+X to Command_L+X)</appendix>
       <identifier>remap.copy_paste_winstyle2</identifier>
-      <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, VK_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Use PC Style Copy/Paste #3</name>
@@ -420,15 +420,15 @@
       <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
       <!-- Note: identifier name (*_2) is valid for compatibility. -->
       <identifier>remap.copy_paste_winstyle_2</identifier>
-      <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Copy-Paste #4</name>
       <appendix>Change Command+Insert to Command+C</appendix>
       <identifier>remap.copy_paste_winstyle_4</identifier>
-      <autogen>--KeyToKey-- KeyCode::PC_INSERT, VK_COMMAND, KeyCode::C, VK_COMMAND</autogen>
+      <autogen>__KeyToKey__ KeyCode::PC_INSERT, VK_COMMAND, KeyCode::C, VK_COMMAND</autogen>
     </item>
     <item>
       <name>Use PC Style Undo</name>
@@ -436,7 +436,7 @@
       <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
       <identifier>remap.undo_winstyle_no_term</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::Z, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, VK_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Select All</name>
@@ -444,7 +444,7 @@
       <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
       <identifier>remap.select_all_winstyle_no_term</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, VK_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Save</name>
@@ -452,7 +452,7 @@
       <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
       <identifier>remap.save_winstyle_no_term</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::S, VK_CONTROL, KeyCode::S, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, VK_CONTROL, KeyCode::S, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style New</name>
@@ -460,7 +460,7 @@
       <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
       <identifier>remap.new_winstyle_no_term</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style New Tab In Browser</name>
@@ -468,7 +468,7 @@
       <appendix>(only in Firefox, Google Chrome, Opera, Safari)</appendix>
       <identifier>remap.copy_paste_winstyle_new_browser_tab</identifier>
       <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
-      <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style New Tab</name>
@@ -476,7 +476,7 @@
       <appendix>(Except in VM, RDC, Emacs, X11, Eclipse)</appendix>
       <identifier>remap.copy_paste_winstyle_new_tab</identifier>
       <not>EMACS, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, VK_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Find</name>
@@ -487,17 +487,17 @@
       <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
       <identifier>remap.find_winstyle_no_term</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::F3, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::F3, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F3, VK_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F3, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Delete-Last-Word</name>
       <name>(Control+Delete to Option+Delete)</name>
       <identifier>remap.control_delete_to_option_delete_winstyle</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Use PC Style "Change Input Method" #1</name>
@@ -505,7 +505,7 @@
       <appendix>(Option_L+Shift_L to Command+Space)</appendix>
       <appendix>If you want to use Option_L+Shift_L as modifier, press Shift_L first. (then press Option_L.)</appendix>
       <identifier>remap.pcstyle_changeinputmethod1</identifier>
-      <autogen>--KeyToKey-- KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style "Change Input Method" #2</name>
@@ -514,16 +514,16 @@
       <appendix>(Option+Shift_R to Command+Shift+Space)</appendix>
       <appendix>If you want to use Option+Shift as modifier, press Shift first. (then press Option.)</appendix>
       <identifier>remap.pcstyle_changeinputmethod2</identifier>
-      <autogen>--KeyToKey-- KeyCode::SHIFT_L, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::SHIFT_R, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_L, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_R, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Use PC Style Alt+F4</name>
       <appendix>Disable Cmd+Q, remap Alt/Cmd+F4 to Cmd+Q</appendix>
       <identifier>remap.pcstyle_altf4</identifier>
-      <autogen>--KeyToKey-- KeyCode::F4, VK_COMMAND, KeyCode::Q, VK_COMMAND</autogen>
-      <autogen>--KeyToKey-- KeyCode::F4, VK_OPTION,  KeyCode::Q, VK_COMMAND</autogen>
-      <autogen>--KeyToKey-- KeyCode::Q,  VK_COMMAND, KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::F4, VK_COMMAND, KeyCode::Q, VK_COMMAND</autogen>
+      <autogen>__KeyToKey__ KeyCode::F4, VK_OPTION,  KeyCode::Q, VK_COMMAND</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q,  VK_COMMAND, KeyCode::VK_NONE</autogen>
     </item>
     <item>
       <name>Simulate Windows Copy Paste keys.</name>
@@ -531,12 +531,12 @@
       <appendix>(Change Shift+Fn to Command+V)</appendix>
       <identifier>remap.pcstyle_command_Fn_shift_Fn</identifier>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::FN, VK_COMMAND,
         KeyCode::C, VK_COMMAND,
       </autogen>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::FN, VK_SHIFT,
         KeyCode::V, ModifierFlag::COMMAND_L
       </autogen>
@@ -547,7 +547,7 @@
       <identifier>remap.winstyle_redo</identifier>
       <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</not>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::Y, VK_COMMAND | ModifierFlag::NONE,
         KeyCode::Z, VK_COMMAND | ModifierFlag::SHIFT_L
       </autogen>
@@ -561,9 +561,9 @@
       <appendix>(Shift+KeyPad_Dot(.) to Command+X)</appendix>
       <identifier>remap.pcstyle_keypad_copy_and_paste</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_0,   VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_0,   VK_SHIFT,   KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_DOT, VK_SHIFT,   KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_0,   VK_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_0,   VK_SHIFT,   KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, VK_SHIFT,   KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>KeyPad beginning or end of document for PC Users who swapped Control and Command</name>
@@ -573,8 +573,8 @@
       <appendix>(Command+KeyPad_1 to Command+Down)</appendix>
       <identifier>remap.pcstyle_keypad_beg_end_document</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_7, VK_COMMAND, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEYPAD_1, VK_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_7, VK_COMMAND, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_1, VK_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
     </item>
   </item>
 </root>

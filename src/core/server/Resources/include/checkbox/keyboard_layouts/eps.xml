@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <root>
   <include path="eps_core.xml">
-    <replacementdef>    <replacementname>kom</replacementname>              <replacementvalue>-- KeyOverlaidModifier--</replacementvalue> </replacementdef>
-    <replacementdef>    <replacementname>k2k</replacementname>              <replacementvalue>-- KeyToKey--</replacementvalue> </replacementdef>
-    <replacementdef>    <replacementname>skp</replacementname>              <replacementvalue>--SimultaneousKeyPresses--</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>kom</replacementname>              <replacementvalue>__ KeyOverlaidModifier__</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>k2k</replacementname>              <replacementvalue>__ KeyToKey__</replacementvalue> </replacementdef>
+    <replacementdef>    <replacementname>skp</replacementname>              <replacementvalue>__SimultaneousKeyPresses__</replacementvalue> </replacementdef>
     <replacementdef>    <replacementname>mex1</replacementname>             <replacementvalue>ModifierFlag::EXTRA1</replacementvalue> </replacementdef>
     <replacementdef>    <replacementname>mex2</replacementname>             <replacementvalue>ModifierFlag::EXTRA2</replacementvalue> </replacementdef>
     <replacementdef>    <replacementname>mex3</replacementname>             <replacementvalue>ModifierFlag::EXTRA3</replacementvalue> </replacementdef>

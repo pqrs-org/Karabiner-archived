@@ -28,48 +28,48 @@
       <appendix>Change M to VK_MOUSEKEY_BUTTON_BUTTON15</appendix>
       <appendix>Change , to VK_MOUSEKEY_BUTTON_BUTTON16</appendix>
       <identifier>remap.samples_vk_mousekeys_standard</identifier>
-      <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_MOUSEKEY_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_MOUSEKEY_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, KeyCode::VK_MOUSEKEY_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MOUSEKEY_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::U, KeyCode::VK_MOUSEKEY_DIAGONAL_NW</autogen>
-      <autogen>--KeyToKey-- KeyCode::O, KeyCode::VK_MOUSEKEY_DIAGONAL_NE</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_DIAGONAL_SW</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_DIAGONAL_SE</autogen>
+      <autogen>__KeyToKey__ KeyCode::U, KeyCode::VK_MOUSEKEY_DIAGONAL_NW</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, KeyCode::VK_MOUSEKEY_DIAGONAL_NE</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::VK_MOUSEKEY_DIAGONAL_SW</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::VK_MOUSEKEY_DIAGONAL_SE</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_SCROLL_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_SCROLL_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_BUTTON_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_MOUSEKEY_BUTTON_RIGHT</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8</autogen>
-      <autogen>--KeyToKey-- KeyCode::Z,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON9</autogen>
-      <autogen>--KeyToKey-- KeyCode::X,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON10</autogen>
-      <autogen>--KeyToKey-- KeyCode::C,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON11</autogen>
-      <autogen>--KeyToKey-- KeyCode::V,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON12</autogen>
-      <autogen>--KeyToKey-- KeyCode::B,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON13</autogen>
-      <autogen>--KeyToKey-- KeyCode::N,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON14</autogen>
-      <autogen>--KeyToKey-- KeyCode::M,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON15</autogen>
-      <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON16</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_BUTTON_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_MOUSEKEY_BUTTON_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON4</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON5</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON6</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON7</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON8</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON9</autogen>
+      <autogen>__KeyToKey__ KeyCode::X,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON10</autogen>
+      <autogen>__KeyToKey__ KeyCode::C,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON11</autogen>
+      <autogen>__KeyToKey__ KeyCode::V,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON12</autogen>
+      <autogen>__KeyToKey__ KeyCode::B,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON13</autogen>
+      <autogen>__KeyToKey__ KeyCode::N,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON14</autogen>
+      <autogen>__KeyToKey__ KeyCode::M,     KeyCode::VK_MOUSEKEY_BUTTON_BUTTON15</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::VK_MOUSEKEY_BUTTON_BUTTON16</autogen>
     </item>
     <item>
       <name>Fixed Distance Move</name>
       <appendix>Change Arrows to VK_MOUSEKEY_FIXED_DISTANCE_UP/DOWN/LEFT/RIGHT</appendix>
       <identifier>remap.samples_vk_mousekeys_fixed_distance_move</identifier>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT</autogen>
     </item>
     <item>
       <name>Lock</name>
@@ -91,23 +91,23 @@
       <appendix>Change , to VK_MOUSEKEY_LOCK_BUTTON_BUTTON16</appendix>
       <appendix>Change . to VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF</appendix>
       <identifier>remap.samples_vk_mousekeys_lock</identifier>
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_MIDDLE</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_4, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON4</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_5, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON5</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_6, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON6</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_7, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON7</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_8, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON8</autogen>
-      <autogen>--KeyToKey-- KeyCode::Z,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON9</autogen>
-      <autogen>--KeyToKey-- KeyCode::X,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON10</autogen>
-      <autogen>--KeyToKey-- KeyCode::C,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON11</autogen>
-      <autogen>--KeyToKey-- KeyCode::V,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON12</autogen>
-      <autogen>--KeyToKey-- KeyCode::B,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON13</autogen>
-      <autogen>--KeyToKey-- KeyCode::N,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON14</autogen>
-      <autogen>--KeyToKey-- KeyCode::M,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON15</autogen>
-      <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON16</autogen>
-      <autogen>--KeyToKey-- KeyCode::DOT,   KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_MIDDLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON4</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON5</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON6</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON7</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON8</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON9</autogen>
+      <autogen>__KeyToKey__ KeyCode::X,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON10</autogen>
+      <autogen>__KeyToKey__ KeyCode::C,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON11</autogen>
+      <autogen>__KeyToKey__ KeyCode::V,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON12</autogen>
+      <autogen>__KeyToKey__ KeyCode::B,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON13</autogen>
+      <autogen>__KeyToKey__ KeyCode::N,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON14</autogen>
+      <autogen>__KeyToKey__ KeyCode::M,     KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON15</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_BUTTON16</autogen>
+      <autogen>__KeyToKey__ KeyCode::DOT,   KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF</autogen>
     </item>
     <item>
       <name>Extra</name>
@@ -118,21 +118,21 @@
       <appendix>Change 2 to A,VK_MOUSEKEY_BUTTON_LEFT</appendix>
       <appendix>Change 3 to A,Shift_L+VK_MOUSEKEY_BUTTON_LEFT</appendix>
       <identifier>remap.samples_vk_mousekeys_extra</identifier>
-      <autogen>--KeyToKey-- KeyCode::W, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::SHIFT_L</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::I, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::SHIFT_L</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED, ModifierFlag::SHIFT_L</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_2, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::KEY_3, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::A, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Extra2</name>
@@ -140,17 +140,17 @@
       <appendix>Change IJKL to A,Shift_L+VK_MOUSEKEY_SCROLL_UP/LEFT/DOWN/RIGHT</appendix>
       <appendix>Change F to A,Shift_L+VK_MOUSEKEY_HIGHSPEED</appendix>
       <identifier>remap.samples_vk_mousekeys_extra2</identifier>
-      <autogen>--KeyToKey-- KeyCode::W, KeyCode::A, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::A, KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::A, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::A, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, KeyCode::A, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::A, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::A, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::A, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::SHIFT_L</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::I, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::SHIFT_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::A, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::SHIFT_L</autogen>
 
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED, ModifierFlag::SHIFT_L</autogen>
     </item>
   </item>
 </root>

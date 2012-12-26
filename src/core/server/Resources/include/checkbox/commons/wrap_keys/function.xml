@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <root>
-  <autogen>--KeyToKey-- KeyCode::F1,  {{ BEFORE }}, KeyCode::F1,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F2,  {{ BEFORE }}, KeyCode::F2,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F3,  {{ BEFORE }}, KeyCode::F3,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F4,  {{ BEFORE }}, KeyCode::F4,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F5,  {{ BEFORE }}, KeyCode::F5,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F6,  {{ BEFORE }}, KeyCode::F6,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F7,  {{ BEFORE }}, KeyCode::F7,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F8,  {{ BEFORE }}, KeyCode::F8,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F9,  {{ BEFORE }}, KeyCode::F9,  {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F10, {{ BEFORE }}, KeyCode::F10, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F11, {{ BEFORE }}, KeyCode::F11, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F12, {{ BEFORE }}, KeyCode::F12, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F13, {{ BEFORE }}, KeyCode::F13, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F14, {{ BEFORE }}, KeyCode::F14, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F15, {{ BEFORE }}, KeyCode::F15, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F16, {{ BEFORE }}, KeyCode::F16, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F17, {{ BEFORE }}, KeyCode::F17, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F18, {{ BEFORE }}, KeyCode::F18, {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::F19, {{ BEFORE }}, KeyCode::F19, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F1,  {{ BEFORE }}, KeyCode::F1,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F2,  {{ BEFORE }}, KeyCode::F2,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F3,  {{ BEFORE }}, KeyCode::F3,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F4,  {{ BEFORE }}, KeyCode::F4,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F5,  {{ BEFORE }}, KeyCode::F5,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F6,  {{ BEFORE }}, KeyCode::F6,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F7,  {{ BEFORE }}, KeyCode::F7,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F8,  {{ BEFORE }}, KeyCode::F8,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F9,  {{ BEFORE }}, KeyCode::F9,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F10, {{ BEFORE }}, KeyCode::F10, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F11, {{ BEFORE }}, KeyCode::F11, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F12, {{ BEFORE }}, KeyCode::F12, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F13, {{ BEFORE }}, KeyCode::F13, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F14, {{ BEFORE }}, KeyCode::F14, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F15, {{ BEFORE }}, KeyCode::F15, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F16, {{ BEFORE }}, KeyCode::F16, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F17, {{ BEFORE }}, KeyCode::F17, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F18, {{ BEFORE }}, KeyCode::F18, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::F19, {{ BEFORE }}, KeyCode::F19, {{ AFTER }}</autogen>
 </root>

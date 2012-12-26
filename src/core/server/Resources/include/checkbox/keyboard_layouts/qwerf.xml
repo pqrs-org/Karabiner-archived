@@ -4,16 +4,16 @@
     <name>Change QWERTY to QWERF layout</name>
     <identifier>remap.qwerty2qwerf</identifier>
     <include path="common/keypad_redefinition.xml" />
-    <autogen>--KeyToKey-- KeyCode::T, KeyCode::F</autogen>
-    <autogen>--KeyToKey-- KeyCode::Y, KeyCode::J</autogen>
-    <autogen>--KeyToKey-- KeyCode::U, KeyCode::Y</autogen>
-    <autogen>--KeyToKey-- KeyCode::I, KeyCode::K</autogen>
-    <autogen>--KeyToKey-- KeyCode::O, KeyCode::L</autogen>
-    <autogen>--KeyToKey-- KeyCode::P, KeyCode::SEMICOLON</autogen>
-    <autogen>--KeyToKey-- KeyCode::F, KeyCode::T</autogen>
-    <autogen>--KeyToKey-- KeyCode::J, KeyCode::U</autogen>
-    <autogen>--KeyToKey-- KeyCode::K, KeyCode::I</autogen>
-    <autogen>--KeyToKey-- KeyCode::L, KeyCode::O</autogen>
-    <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::P</autogen>
+    <autogen>__KeyToKey__ KeyCode::T, KeyCode::F</autogen>
+    <autogen>__KeyToKey__ KeyCode::Y, KeyCode::J</autogen>
+    <autogen>__KeyToKey__ KeyCode::U, KeyCode::Y</autogen>
+    <autogen>__KeyToKey__ KeyCode::I, KeyCode::K</autogen>
+    <autogen>__KeyToKey__ KeyCode::O, KeyCode::L</autogen>
+    <autogen>__KeyToKey__ KeyCode::P, KeyCode::SEMICOLON</autogen>
+    <autogen>__KeyToKey__ KeyCode::F, KeyCode::T</autogen>
+    <autogen>__KeyToKey__ KeyCode::J, KeyCode::U</autogen>
+    <autogen>__KeyToKey__ KeyCode::K, KeyCode::I</autogen>
+    <autogen>__KeyToKey__ KeyCode::L, KeyCode::O</autogen>
+    <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::P</autogen>
   </item>
 </root>

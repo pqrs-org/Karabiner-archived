@@ -4,7 +4,7 @@
     <name>Change QWERTY to QWERTZ layout</name>
     <appendix>(Swap Z and Y)</appendix>
     <identifier>remap.qwerty_to_qwertz</identifier>
-    <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Y</autogen>
-    <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Z</autogen>
+    <autogen>__KeyToKey__ KeyCode::Z, KeyCode::Y</autogen>
+    <autogen>__KeyToKey__ KeyCode::Y, KeyCode::Z</autogen>
   </item>
 </root>

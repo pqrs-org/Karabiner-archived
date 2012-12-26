@@ -5,10 +5,10 @@
     <item>
       <name>Swap Slash and Shift+Slash</name>
       <identifier>remap.swap_slash_and_shiftslash</identifier>
-      <autogen>--KeyToKey-- KeyCode::SLASH, ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::NONE,
         KeyCode::SLASH, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>--KeyToKey-- KeyCode::SLASH, VK_SHIFT | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ KeyCode::SLASH, VK_SHIFT | ModifierFlag::NONE,
         KeyCode::SLASH
       </autogen>
     </item>

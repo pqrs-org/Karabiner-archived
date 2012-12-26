@@ -5,22 +5,22 @@
     <item>
       <name>Forward Delete to Delete</name>
       <identifier>remap.forwarddelete2delete</identifier>
-      <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE</autogen>
     </item>
     <item>
       <name>Command+Forward Delete to Option_L+Forward Delete</name>
       <identifier>remap.commandForwardDelete2optionLforwarddelete</identifier>
-      <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, VK_COMMAND, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_FORWARD_DELETE, VK_COMMAND, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Control+Forward Delete to Command_L+Forward Delete</name>
       <identifier>remap.controlForwardDelete2commandLforwarddelete</identifier>
-      <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, VK_CONTROL, KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_FORWARD_DELETE, VK_CONTROL, KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option+Forward Delete to Command_L+Forward Delete</name>
       <identifier>remap.optionForwardDelete2commandLforwarddelete</identifier>
-      <autogen>--KeyToKey-- FROMKEYCODE_FORWARD_DELETE, VK_OPTION, KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ FROMKEYCODE_FORWARD_DELETE, VK_OPTION, KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L</autogen>
     </item>
   </item>
 </root>

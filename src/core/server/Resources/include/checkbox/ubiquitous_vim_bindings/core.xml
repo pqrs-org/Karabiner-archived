@@ -90,7 +90,7 @@
 
         <identifier vk_config="true">notsave.ubiq_vimnormal</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
-        <autogen>--ShowStatusMessage-- Normal Mode</autogen>
+        <autogen>__ShowStatusMessage__ Normal Mode</autogen>
 
         <!-- ============================================================ -->
         <!-- c operator pending -->
@@ -100,7 +100,7 @@
 
           <!-- cc -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::C, ModifierFlag::NONE,
             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
             KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
@@ -111,7 +111,7 @@
 
           <!-- cb -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::B, ModifierFlag::NONE,
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
@@ -121,7 +121,7 @@
 
           <!-- ce -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::E, ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
@@ -131,7 +131,7 @@
 
           <!-- cw -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::W, ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
@@ -143,7 +143,7 @@
 
           <!-- c$ -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
@@ -159,7 +159,7 @@
 
           <!-- dd -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::D, ModifierFlag::NONE,
             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
             KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
@@ -169,7 +169,7 @@
 
           <!-- db -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::B, ModifierFlag::NONE,
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
@@ -178,7 +178,7 @@
 
           <!-- de -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::E, ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
@@ -187,7 +187,7 @@
 
           <!-- dw -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::W, ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
@@ -198,7 +198,7 @@
 
           <!-- d$ -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
@@ -213,7 +213,7 @@
 
           <!-- Default gg behavior -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::G, ModifierFlag::NONE,
             KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
@@ -223,13 +223,13 @@
           <block>
             <not>SAFARI, SKYPE, GOOGLE_CHROME</not>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, ModifierFlag::NONE,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
@@ -240,13 +240,13 @@
           <block>
             <only>SKYPE</only>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, ModifierFlag::NONE,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
@@ -257,13 +257,13 @@
           <block>
             <only>SAFARI</only>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, ModifierFlag::NONE,
               KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, VK_SHIFT,
               KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
@@ -274,13 +274,13 @@
           <block>
             <only>GOOGLE_CHROME</only>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, ModifierFlag::NONE,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::T, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
@@ -293,7 +293,7 @@
         <block>
           <config_only>notsave.r_operator_pending</config_only>
 
-          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_r_operator_pending</autogen>
+          <autogen>__KeyToKey__ KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_r_operator_pending</autogen>
 
           <include path="r_operator.xml">
             <replacementdef>
@@ -314,7 +314,7 @@
         <block>
           <config_only>notsave.R_operator_pending</config_only>
 
-          <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_R_operator_pending</autogen>
+          <autogen>__KeyToKey__ KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_R_operator_pending</autogen>
 
           <include path="r_operator.xml">
             <replacementdef>
@@ -330,120 +330,120 @@
 
         <block>
           <!-- Unimplemented dead keys in Normal Mode -->
-          <autogen>--KeyToKey-- KeyCode::C, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::V, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::M, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::F, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::EQUAL, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::DOT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::DOT, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BACKQUOTE, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::BACKSLASH, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::C, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::V, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::Z, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::F, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::EQUAL, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::DOT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::DOT, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::BACKQUOTE, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::BACKSLASH, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_SHIFT, KeyCode::VK_NONE</autogen>
           <block>
             <config_not>option.vimnormal_turnoff_backquote</config_not>
-            <autogen>--KeyToKey-- KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+            <autogen>__KeyToKey__ KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
           </block>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_1, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_2, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_3, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_5, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_7, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_8, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_9, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::KEY_0, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::Q, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::QUOTE, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::COMMA, VK_SHIFT, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::MINUS, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-          <autogen>--KeyToKey-- KeyCode::MINUS, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_1, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_2, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_3, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_5, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_7, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_8, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_9, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_0, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::Q, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::QUOTE, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::QUOTE, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::COMMA, VK_SHIFT, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+          <autogen>__KeyToKey__ KeyCode::MINUS, VK_SHIFT, KeyCode::VK_NONE</autogen>
           <block>
             <config_not>option.ubiquitous_vim_bindings_enable_tab</config_not>
-            <autogen>--KeyToKey-- KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-            <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::VK_NONE</autogen>
+            <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+            <autogen>__KeyToKey__ KeyCode::TAB, VK_SHIFT, KeyCode::VK_NONE</autogen>
           </block>
           <block>
             <config_not>notsave.g_operator_pending</config_not>
-            <autogen>--KeyToKey-- KeyCode::T, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
-            <autogen>--KeyToKey-- KeyCode::T, VK_SHIFT, KeyCode::VK_NONE</autogen>
+            <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+            <autogen>__KeyToKey__ KeyCode::T, VK_SHIFT, KeyCode::VK_NONE</autogen>
           </block>
 
           <!-- hjkl -->
           <block>
             <config_not>notsave.c_w_operator_pending</config_not>
-            <autogen>--KeyToKey-- {{VI_H}}, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
-            <autogen>--KeyToKey-- {{VI_J}}, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
-            <autogen>--KeyToKey-- {{VI_K}}, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
-            <autogen>--KeyToKey-- {{VI_L}}, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
+            <autogen>__KeyToKey__ {{VI_H}}, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+            <autogen>__KeyToKey__ {{VI_J}}, ModifierFlag::NONE, KeyCode::CURSOR_DOWN</autogen>
+            <autogen>__KeyToKey__ {{VI_K}}, ModifierFlag::NONE, KeyCode::CURSOR_UP</autogen>
+            <autogen>__KeyToKey__ {{VI_L}}, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT</autogen>
           </block>
 
           <!-- DELETE -->
-          <autogen>--KeyToKey-- KeyCode::DELETE, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::DELETE, ModifierFlag::NONE, KeyCode::CURSOR_LEFT</autogen>
 
           <!-- FN + hjkl -->
-          <autogen>--KeyToKey-- {{VI_H}}, ModifierFlag::FN, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- {{VI_J}}, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- {{VI_K}}, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- {{VI_L}}, ModifierFlag::FN, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ {{VI_H}}, ModifierFlag::FN, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ {{VI_J}}, ModifierFlag::FN, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ {{VI_K}}, ModifierFlag::FN, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ {{VI_L}}, ModifierFlag::FN, KeyCode::END, ModifierFlag::OPTION_L</autogen>
 
           <!-- H, M, L --> <!-- TODO: H and L are questionable. May be no good way to implement. -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             {{VI_H}}, VK_SHIFT,
             KeyCode::PAGEDOWN, ModifierFlag::NONE,
             KeyCode::CURSOR_DOWN,
             KeyCode::CURSOR_UP
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             {{VI_L}}, VK_SHIFT,
             KeyCode::PAGEUP, ModifierFlag::NONE,
             KeyCode::CURSOR_UP,
             KeyCode::CURSOR_DOWN
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::M, VK_SHIFT,
             KeyCode::PAGEDOWN, ModifierFlag::OPTION_L,
             KeyCode::PAGEUP, ModifierFlag::OPTION_L
           </autogen>
 
           <!-- C-f, C-b -->
-          <autogen>--KeyToKey-- KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::B, VK_CONTROL, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, VK_CONTROL, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
 
           <!-- b, e, w, B, E, W -->
-          <autogen>--KeyToKey-- KeyCode::B, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-          <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::B, VK_SHIFT,
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::E, VK_SHIFT,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L
@@ -451,14 +451,14 @@
           <block>
             <config_not>notsave.c_w_operator_pending</config_not>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::W, ModifierFlag::NONE,
               KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
               KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
               KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::W, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
               KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
@@ -469,7 +469,7 @@
 
           <!-- /, n, N -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::SLASH, ModifierFlag::NONE,
             KeyCode::F, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -478,84 +478,84 @@
           <block>
             <config_not>notsave.c_w_operator_pending</config_not>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::N, ModifierFlag::NONE,
               KeyCode::G, ModifierFlag::COMMAND_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::N, VK_SHIFT,
               KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L
             </autogen>
           </block>
 
           <!-- G -->
-          <autogen>--KeyToKey-- KeyCode::G, VK_SHIFT, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::G, VK_SHIFT, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
 
           <!-- x, X -->
           <block>
             <config_not>notsave.c_w_operator_pending</config_not>
-            <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+            <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
           </block>
-          <autogen>--KeyToKey-- KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
+          <autogen>__KeyToKey__ KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
 
           <!-- u, C-r -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::U, ModifierFlag::NONE,
             KeyCode::Z, ModifierFlag::COMMAND_L,
             KeyCode::CURSOR_LEFT,
             KeyCode::CURSOR_RIGHT
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::U, VK_SHIFT,
             KeyCode::Z, ModifierFlag::COMMAND_L,
             KeyCode::CURSOR_LEFT,
             KeyCode::CURSOR_RIGHT
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::R, VK_CONTROL,
             KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L
           </autogen>
 
           <!-- ZZ -->
           <autogen>
-            --DoublePressModifier--
+            __DoublePressModifier__
             KeyCode::Z, VK_SHIFT,
             KeyCode::CONTROL_L,
             KeyCode::W, ModifierFlag::COMMAND_L
           </autogen>
 
           <!-- f -->
-          <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::NONE, KeyCode::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::NONE, KeyCode::FN</autogen>
 
           <block>
             <not>ADIUMX</not>
 
             <!-- 0, ^, $ -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::KEY_0, ModifierFlag::NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::KEY_6, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
               KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::KEY_4, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L
             </autogen>
 
             <!-- o, O -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::O, ModifierFlag::NONE,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
               KeyCode::RETURN, ModifierFlag::SHIFT_L,
@@ -563,7 +563,7 @@
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::O, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::RETURN, ModifierFlag::SHIFT_L,
@@ -574,13 +574,13 @@
 
             <!-- a, A -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::A, ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::A, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -589,7 +589,7 @@
 
             <!-- J -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::J, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::NONE,
               KeyCode::SPACE,
@@ -598,13 +598,13 @@
 
             <!-- i, I -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::I, ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::I, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -613,7 +613,7 @@
 
             <!-- s -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::S, ModifierFlag::NONE,
               <!-- select one char -->
               KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L,
@@ -626,7 +626,7 @@
 
             <!-- S -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::S, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
@@ -637,7 +637,7 @@
 
             <!-- yy, Y -->
             <autogen>
-              --DoublePressModifier--
+              __DoublePressModifier__
               KeyCode::Y, ModifierFlag::NONE,
               KeyCode::VK_NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
@@ -645,7 +645,7 @@
               KeyCode::C, ModifierFlag::COMMAND_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::Y, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
@@ -654,14 +654,14 @@
 
             <!-- p, P -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::P, ModifierFlag::NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::CURSOR_DOWN,
               KeyCode::V, ModifierFlag::COMMAND_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::P, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::V, ModifierFlag::COMMAND_L
@@ -669,7 +669,7 @@
 
             <!-- D -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::D, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::X, ModifierFlag::COMMAND_L
@@ -677,12 +677,12 @@
 
             <!-- C-n, C-p -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::N, VK_CONTROL,
               KeyCode::CURSOR_DOWN
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::P, VK_CONTROL,
               KeyCode::CURSOR_UP
             </autogen>
@@ -695,24 +695,24 @@
 
             <!-- 0, ^, $ -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::KEY_0, ModifierFlag::NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::KEY_6, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::KEY_4, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L
             </autogen>
 
             <!-- o, O -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::O, ModifierFlag::NONE,
               KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L,
               KeyCode::RETURN, ModifierFlag::OPTION_L,
@@ -720,7 +720,7 @@
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::O, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
               KeyCode::RETURN, ModifierFlag::OPTION_L,
@@ -731,13 +731,13 @@
 
             <!-- a, A -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::A, ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::A, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -746,7 +746,7 @@
 
             <!-- J -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::J, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::NONE,
               KeyCode::SPACE,
@@ -755,13 +755,13 @@
 
             <!-- i, I -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::I, ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::I, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L | ModifierFlag::NONE,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -770,7 +770,7 @@
 
             <!-- S -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::S, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
@@ -781,7 +781,7 @@
 
             <!-- yy, Y -->
             <autogen>
-              --DoublePressModifier--
+              __DoublePressModifier__
               KeyCode::Y, ModifierFlag::NONE,
               KeyCode::VK_NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
@@ -789,7 +789,7 @@
               KeyCode::C, ModifierFlag::COMMAND_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::Y, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
@@ -798,14 +798,14 @@
 
             <!-- p, P -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::P, ModifierFlag::NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
               KeyCode::CURSOR_DOWN,
               KeyCode::V, ModifierFlag::COMMAND_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::P, VK_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
               KeyCode::V, ModifierFlag::COMMAND_L
@@ -813,7 +813,7 @@
 
             <!-- D -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::D, VK_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L,
               KeyCode::DELETE
@@ -821,12 +821,12 @@
 
             <!-- C-n, C-p -->
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::N, VK_CONTROL,
               KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L
             </autogen>
             <autogen>
-              --KeyToKey--
+              __KeyToKey__
               KeyCode::P, VK_CONTROL,
               KeyCode::CURSOR_UP, ModifierFlag::OPTION_L
             </autogen>
@@ -838,7 +838,7 @@
         <block>
           <config_not>notsave.c_operator_pending</config_not>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::C, ModifierFlag::NONE,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_c_operator_pending
           </autogen>
@@ -848,7 +848,7 @@
         <block>
           <config_not>notsave.d_operator_pending</config_not>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::D, ModifierFlag::NONE,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_d_operator_pending
           </autogen>
@@ -858,7 +858,7 @@
         <block>
           <config_not>notsave.g_operator_pending</config_not>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::G, ModifierFlag::NONE,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_g_operator_pending
           </autogen>
@@ -868,7 +868,7 @@
         <block>
           <config_not>notsave.r_operator_pending</config_not>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::R, ModifierFlag::NONE,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_r_operator_pending
           </autogen>
@@ -878,7 +878,7 @@
         <block>
           <config_not>notsave.R_operator_pending</config_not>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::R, VK_SHIFT | ModifierFlag::NONE,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_R_operator_pending
           </autogen>
@@ -888,7 +888,7 @@
         <block>
           <config_not>notsave.c_w_operator_pending</config_not>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::W, VK_CONTROL,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_c_w_operator_pending
           </autogen>
@@ -899,14 +899,14 @@
           <config_only>notsave.c_w_operator_pending</config_only>
           <!-- New window with C-w, n -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::N,
             KeyCode::N, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
           <!-- Close window with C-w, x -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::X,
             KeyCode::W, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
@@ -914,31 +914,31 @@
 
           <!-- Switch windows with C-w, w/h/j/k/l -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::W,
             KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::H,
             KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::J,
             KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::K,
             KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
           </autogen>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::L,
             KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending
@@ -967,7 +967,7 @@
 
           <!-- Ctrl-w -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::W, VK_CONTROL,
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::DELETE
@@ -975,7 +975,7 @@
 
           <!-- Ctrl-u -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::U, VK_CONTROL,
             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::DELETE
@@ -983,14 +983,14 @@
 
           <!-- Ctrl-d -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::D, VK_CONTROL,
             KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L
           </autogen>
 
           <!-- Ctrl-t -->
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::T, VK_CONTROL,
             KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L
           </autogen>
@@ -1018,7 +1018,7 @@
           <config_not>option.vimnormal_escape_enters_only</config_not>
           <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
-            --HoldingKeyToKey--
+            __HoldingKeyToKey__
             KeyCode::ESCAPE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -1032,7 +1032,7 @@
           <config_only>notsave.ubiq_vimnormal, option.vimnormal_escape_enters_only</config_only>
           <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
-            --HoldingKeyToKey--
+            __HoldingKeyToKey__
             KeyCode::ESCAPE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
@@ -1046,7 +1046,7 @@
           <config_not>notsave.ubiq_vimnormal</config_not>
           <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
           <autogen>
-            --HoldingKeyToKey--
+            __HoldingKeyToKey__
             KeyCode::ESCAPE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
@@ -1060,7 +1060,7 @@
           <config_only>notsave.ubiq_vimnormal</config_only>
           <only>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</only>
           <autogen>
-            --KeyToKey--
+            __KeyToKey__
             KeyCode::ESCAPE,
             KeyCode::VK_LOCK_ALL_FORCE_OFF,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -1080,7 +1080,7 @@
         <identifier>remap.vimnormal_jk_toggle</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --SimultaneousKeyPresses--
+          __SimultaneousKeyPresses__
           KeyCode::J, KeyCode::K,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
@@ -1093,7 +1093,7 @@
         <identifier>remap.vimnormal_ctrlbracketleft_toggle</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::BRACKET_LEFT, VK_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
@@ -1106,7 +1106,7 @@
         <identifier>remap.vimnormal_ctrll_toggle</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::L, VK_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
@@ -1119,7 +1119,7 @@
         <identifier>remap.vimnormal_commandr_toggle</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::COMMAND_R,
           KeyCode::COMMAND_R,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1133,7 +1133,7 @@
         <identifier>remap.vimnormal_commandl_toggle</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::COMMAND_L,
           KeyCode::COMMAND_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1153,7 +1153,7 @@
         <identifier>remap.vimnormal_toggle_commandLR</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --SimultaneousKeyPresses--
+          __SimultaneousKeyPresses__
           KeyCode::COMMAND_R,
           KeyCode::COMMAND_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1168,7 +1168,7 @@
         <identifier>remap.vimnormal_toggle_arrow2optionL</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::CURSOR_UP,
           KeyCode::VK_NONE,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1176,7 +1176,7 @@
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
         </autogen>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::CURSOR_DOWN,
           KeyCode::OPTION_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1184,7 +1184,7 @@
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
         </autogen>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::CURSOR_LEFT,
           KeyCode::OPTION_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1192,7 +1192,7 @@
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
         </autogen>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::CURSOR_RIGHT,
           KeyCode::OPTION_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1205,7 +1205,7 @@
         <identifier>option.vimnormal_turnoff_backquote</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::BACKQUOTE, ModifierFlag::NONE,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
@@ -1218,7 +1218,7 @@
         <identifier>remap.vimnormal_toggle_commandL</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::COMMAND_L,
           KeyCode::COMMAND_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1232,7 +1232,7 @@
         <identifier>remap.vimnormal_toggle_commandR</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::COMMAND_R,
           KeyCode::COMMAND_R,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1246,7 +1246,7 @@
         <identifier>remap.vimnormal_toggle_controlR</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::CONTROL_R,
           KeyCode::CONTROL_R,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1261,7 +1261,7 @@
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <config_not>notsave.ubiq_vimnormal</config_not>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::ESCAPE,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
@@ -1275,7 +1275,7 @@
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <config_only>notsave.ubiq_vimnormal</config_only>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::ESCAPE,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1289,7 +1289,7 @@
         <identifier>remap.vimnormal_toggle_return</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::RETURN,
           KeyCode::CONTROL_L, ModifierFlag::COMMAND_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1303,7 +1303,7 @@
         <identifier>remap.vimnormal_toggle_fn2fn</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::FN,
           KeyCode::FN,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1316,7 +1316,7 @@
         <identifier>option.vimnormal_toggle_optionV</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::V, VK_OPTION,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
@@ -1328,7 +1328,7 @@
         <identifier>option.vimnormal_turnon_optionV</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::V, VK_OPTION,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
@@ -1341,7 +1341,7 @@
         <identifier>remap.vimnormal_toggle_drop_shiftL</identifier>
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
-          --KeyOverlaidModifier--
+          __KeyOverlaidModifier__
           KeyCode::SHIFT_L,
           KeyCode::VK_NONE,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
@@ -1362,7 +1362,7 @@
         <identifier>remap.vimnormal_autodeactivate_ctrl_shift</identifier>
         <config_only>notsave.ubiq_vimnormal</config_only>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::SHIFT_L, VK_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -1371,7 +1371,7 @@
           KeyCode::VK_STICKY_SHIFT_L
         </autogen>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::CONTROL_L, VK_SHIFT,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -1386,7 +1386,7 @@
         <identifier>remap.vimnormal_autodeactivate_ctrl_command</identifier>
         <config_only>notsave.ubiq_vimnormal</config_only>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::COMMAND_L, VK_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -1395,7 +1395,7 @@
           KeyCode::VK_STICKY_COMMAND_L
         </autogen>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::CONTROL_L, VK_COMMAND,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -1410,7 +1410,7 @@
         <identifier>remap.vimnormal_autodeactivate_command</identifier>
         <config_only>notsave.ubiq_vimnormal</config_only>
         <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::COMMAND_L, ModifierFlag::COMMAND_L,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
@@ -1434,32 +1434,32 @@
       <item>
         <name></name>
         <identifier vk_config="true">notsave.c_operator_pending</identifier>
-        <autogen>--ShowStatusMessage-- [c]</autogen>
+        <autogen>__ShowStatusMessage__ [c]</autogen>
       </item>
       <item>
         <name></name>
         <identifier vk_config="true">notsave.d_operator_pending</identifier>
-        <autogen>--ShowStatusMessage-- [d]</autogen>
+        <autogen>__ShowStatusMessage__ [d]</autogen>
       </item>
       <item>
         <name></name>
         <identifier vk_config="true">notsave.g_operator_pending</identifier>
-        <autogen>--ShowStatusMessage-- [g]</autogen>
+        <autogen>__ShowStatusMessage__ [g]</autogen>
       </item>
       <item>
         <name></name>
         <identifier vk_config="true">notsave.r_operator_pending</identifier>
-        <autogen>--ShowStatusMessage-- [r]</autogen>
+        <autogen>__ShowStatusMessage__ [r]</autogen>
       </item>
       <item>
         <name></name>
         <identifier vk_config="true">notsave.R_operator_pending</identifier>
-        <autogen>--ShowStatusMessage-- [R]</autogen>
+        <autogen>__ShowStatusMessage__ [R]</autogen>
       </item>
       <item>
         <name></name>
         <identifier vk_config="true">notsave.c_w_operator_pending</identifier>
-        <autogen>--ShowStatusMessage-- [w]</autogen>
+        <autogen>__ShowStatusMessage__ [w]</autogen>
       </item>
     </item>
 

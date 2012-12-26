@@ -11,35 +11,35 @@
       <appendix>(except Emacs, Terminal, Virtual, RDC, X11, Eclipse)</appendix>
       <identifier>option.dvorak_emacsmode_controlPNBF</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::R, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-      <autogen>--KeyToKey-- KeyCode::Y, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>--KeyToKey-- KeyCode::N, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::R, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
     </item>
     <item>
       <name>Dvorak's Control+H to Delete</name>
       <identifier>remap.dvorak_controlJ</identifier>
-      <autogen>--KeyToKey-- KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::CONTROL_L, KeyCode::DELETE</autogen>
     </item>
     <item>
       <name>Dvorak's Control+D to Forward Delete</name>
       <identifier>remap.dvorak_controlH</identifier>
-      <autogen>--KeyToKey-- KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::CONTROL_L, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Dvorak's Control+W to Option+Delete</name>
       <appendix>(except Emacs, Terminal, X11, virtual machine, RDC, Eclipse)</appendix>
       <identifier>option.dvorak_emacsmode_ex_controlW</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>--KeyToKey-- KeyCode::COMMA, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
 
     <item>
       <name>Swap U and I (== Swap Qwerty::F and Qwerty::G)</name>
       <identifier>remap.dvorak_u2i</identifier>
       <!-- Dvorak:U == Qwerty:F, Dvorak:I == Qwerty:G -->
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::G</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::F</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::G</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, KeyCode::F</autogen>
     </item>
 
     <item>
@@ -48,15 +48,15 @@
       <appendix>Change Command_L+' to Command_L+Q (Q in DV - i.e. Quit) </appendix>
       <identifier>remap.cut_quit_dvorak_as_QWERTY</identifier>
 
-      <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::B, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::B, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
 
     <item>
       <name>Make Undo work on Mac OS X using Dvorak layout in the same position as on QWERTY (;)</name>
       <appendix>Change Command_L+; to Command_L+Z (Z in DV - i.e. Undo) </appendix>
       <identifier>remap.undo_dvorak_as_QWERTY</identifier>
-      <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
     </item>
 
     <item>
@@ -71,11 +71,11 @@
 
       <identifier>remap.cut_copy_paste_quit_undo_dvorak_as_QWERTY</identifier>
 
-      <autogen>--KeyToKey-- KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::B, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::I, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-      <autogen>--KeyToKey-- KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::COMMAND_L, KeyCode::B, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::COMMAND_L, KeyCode::I, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::COMMAND_L, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, ModifierFlag::COMMAND_L, KeyCode::SLASH, ModifierFlag::COMMAND_L</autogen>
     </item>
 
     <item>
@@ -152,39 +152,39 @@
       <appendix>(QWERTY to Dvorak)</appendix>
       <appendix>(+ Swap U and I)</appendix>
       <identifier>remap.qwerty2dvorak_swap_ui</identifier>
-      <autogen>--KeyToKey-- KeyCode::Q, KeyCode::QUOTE</autogen>
-      <autogen>--KeyToKey-- KeyCode::W, KeyCode::COMMA</autogen>
-      <autogen>--KeyToKey-- KeyCode::E, KeyCode::DOT</autogen>
-      <autogen>--KeyToKey-- KeyCode::R, KeyCode::P</autogen>
-      <autogen>--KeyToKey-- KeyCode::T, KeyCode::Y</autogen>
-      <autogen>--KeyToKey-- KeyCode::Y, KeyCode::F</autogen>
-      <autogen>--KeyToKey-- KeyCode::U, KeyCode::G</autogen>
-      <autogen>--KeyToKey-- KeyCode::I, KeyCode::C</autogen>
-      <autogen>--KeyToKey-- KeyCode::O, KeyCode::R</autogen>
-      <autogen>--KeyToKey-- KeyCode::P, KeyCode::L</autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, KeyCode::SLASH</autogen>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, KeyCode::EQUAL</autogen>
-      <autogen>--KeyToKey-- KeyCode::S, KeyCode::O</autogen>
-      <autogen>--KeyToKey-- KeyCode::D, KeyCode::E</autogen>
-      <autogen>--KeyToKey-- KeyCode::F, KeyCode::I</autogen>
-      <autogen>--KeyToKey-- KeyCode::G, KeyCode::U</autogen>
-      <autogen>--KeyToKey-- KeyCode::H, KeyCode::D</autogen>
-      <autogen>--KeyToKey-- KeyCode::J, KeyCode::H</autogen>
-      <autogen>--KeyToKey-- KeyCode::K, KeyCode::T</autogen>
-      <autogen>--KeyToKey-- KeyCode::L, KeyCode::N</autogen>
-      <autogen>--KeyToKey-- KeyCode::SEMICOLON, KeyCode::S</autogen>
-      <autogen>--KeyToKey-- KeyCode::QUOTE, KeyCode::MINUS</autogen>
-      <autogen>--KeyToKey-- KeyCode::Z, KeyCode::SEMICOLON</autogen>
-      <autogen>--KeyToKey-- KeyCode::X, KeyCode::Q</autogen>
-      <autogen>--KeyToKey-- KeyCode::C, KeyCode::J</autogen>
-      <autogen>--KeyToKey-- KeyCode::V, KeyCode::K</autogen>
-      <autogen>--KeyToKey-- KeyCode::B, KeyCode::X</autogen>
-      <autogen>--KeyToKey-- KeyCode::N, KeyCode::B</autogen>
-      <autogen>--KeyToKey-- KeyCode::COMMA, KeyCode::W</autogen>
-      <autogen>--KeyToKey-- KeyCode::DOT, KeyCode::V</autogen>
-      <autogen>--KeyToKey-- KeyCode::SLASH, KeyCode::Z</autogen>
-      <autogen>--KeyToKey-- KeyCode::MINUS, KeyCode::BRACKET_LEFT</autogen>
-      <autogen>--KeyToKey-- KeyCode::EQUAL, KeyCode::BRACKET_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, KeyCode::QUOTE</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, KeyCode::COMMA</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, KeyCode::DOT</autogen>
+      <autogen>__KeyToKey__ KeyCode::R, KeyCode::P</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, KeyCode::Y</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, KeyCode::F</autogen>
+      <autogen>__KeyToKey__ KeyCode::U, KeyCode::G</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, KeyCode::C</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, KeyCode::R</autogen>
+      <autogen>__KeyToKey__ KeyCode::P, KeyCode::L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, KeyCode::SLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, KeyCode::EQUAL</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::O</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::E</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::I</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, KeyCode::U</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::D</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::H</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::T</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::N</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::S</autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, KeyCode::MINUS</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, KeyCode::SEMICOLON</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, KeyCode::Q</autogen>
+      <autogen>__KeyToKey__ KeyCode::C, KeyCode::J</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, KeyCode::K</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, KeyCode::X</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, KeyCode::B</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::W</autogen>
+      <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::V</autogen>
+      <autogen>__KeyToKey__ KeyCode::SLASH, KeyCode::Z</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, KeyCode::BRACKET_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, KeyCode::BRACKET_RIGHT</autogen>
     </item>
   </item>
 </root>

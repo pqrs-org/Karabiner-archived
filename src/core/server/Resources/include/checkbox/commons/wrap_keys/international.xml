@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <root>
-  <autogen>--KeyToKey-- KeyCode::UK_SECTION,          {{ BEFORE }}, KeyCode::UK_SECTION,          {{ AFTER }}</autogen>
-  <autogen>--KeyToKey-- KeyCode::GERMAN_PC_LESS_THAN, {{ BEFORE }}, KeyCode::GERMAN_PC_LESS_THAN, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::UK_SECTION,          {{ BEFORE }}, KeyCode::UK_SECTION,          {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ KeyCode::GERMAN_PC_LESS_THAN, {{ BEFORE }}, KeyCode::GERMAN_PC_LESS_THAN, {{ AFTER }}</autogen>
 </root>

@@ -9,8 +9,8 @@
         apply partially.
         <include path="../commons/wrap_keys/special.xml" />
         -->
-    <autogen>--KeyToKey-- KeyCode::SPACE,           {{ BEFORE }}, KeyCode::SPACE,           {{ AFTER }}</autogen>
-    <autogen>--KeyToKey-- KeyCode::TAB,             {{ BEFORE }}, KeyCode::TAB,             {{ AFTER }}</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE,           {{ BEFORE }}, KeyCode::SPACE,           {{ AFTER }}</autogen>
+    <autogen>__KeyToKey__ KeyCode::TAB,             {{ BEFORE }}, KeyCode::TAB,             {{ AFTER }}</autogen>
 
      <!--
         Do not apply to function, cursor.

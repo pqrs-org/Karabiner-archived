@@ -5,23 +5,23 @@
     <item>
       <name>Swap Y and Z</name>
       <identifier>remap.swiss_swap_y_z</identifier>
-      <autogen>--KeyToKey-- KeyCode::Y, KeyCode::Z</autogen>
-      <autogen>--KeyToKey-- KeyCode::Z, KeyCode::Y</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, KeyCode::Z</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, KeyCode::Y</autogen>
     </item>
     <item>
       <name>Swap Section(§) and Less-Than(&lt;)</name>
       <appendix>(only in virtual machine)</appendix>
       <identifier>remap.swiss_swap_section_lessthan_vm</identifier>
       <only>VIRTUALMACHINE</only>
-      <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::SWISS_LESS_THAN</autogen>
-      <autogen>--KeyToKey-- KeyCode::SWISS_LESS_THAN, KeyCode::SWISS_SECTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::SWISS_SECTION, KeyCode::SWISS_LESS_THAN</autogen>
+      <autogen>__KeyToKey__ KeyCode::SWISS_LESS_THAN, KeyCode::SWISS_SECTION</autogen>
     </item>
     <item>
       <name>Change Section(§) to SHIFT+PC_INSERT</name>
       <appendix>(only in Citrix Online Plug-in for Mac)</appendix>
       <identifier>remap.swiss_section_insert_citrix</identifier>
       <only>CITRIX_ONLINE_PLUG_IN</only>
-      <autogen>--KeyToKey-- KeyCode::SWISS_SECTION, KeyCode::PC_INSERT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SWISS_SECTION, KeyCode::PC_INSERT, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Change AltGr+2 to @</name>
@@ -29,7 +29,7 @@
       <identifier>remap.altgr_2_to_atmark</identifier>
       <inputsource_only>SWISS</inputsource_only>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::KEY_2, VK_OPTION | ModifierFlag::NONE,
         <!-- @ == option+g -->
         KeyCode::G, VK_OPTION
@@ -41,7 +41,7 @@
       <identifier>remap.swiss_altgr_ue_to_left_bracket</identifier>
       <inputsource_only>SWISS</inputsource_only>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::BRACKET_LEFT, VK_OPTION | ModifierFlag::NONE,
         KeyCode::KEY_5, VK_OPTION
       </autogen>
@@ -52,7 +52,7 @@
       <identifier>remap.swiss_altgr_exclamation_to_right_bracket</identifier>
       <inputsource_only>SWISS</inputsource_only>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::BRACKET_RIGHT, VK_OPTION | ModifierFlag::NONE,
         KeyCode::KEY_6, VK_OPTION
       </autogen>
@@ -63,7 +63,7 @@
       <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_ae_to_left_brace</identifier>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::QUOTE, VK_OPTION | ModifierFlag::NONE,
         KeyCode::KEY_8, VK_OPTION
       </autogen>
@@ -74,7 +74,7 @@
       <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_dollar_to_right_brace</identifier>
       <autogen>
-          --KeyToKey--
+          __KeyToKey__
           KeyCode::BACKSLASH, VK_OPTION | ModifierFlag::NONE,
           KeyCode::KEY_9, VK_OPTION
         </autogen>
@@ -85,7 +85,7 @@
       <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_dach_to_home</identifier>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::EQUAL, VK_OPTION | ModifierFlag::NONE,
         KeyCode::N, VK_OPTION
       </autogen>
@@ -96,7 +96,7 @@
       <inputsource_only>SWISS</inputsource_only>
       <identifier>remap.swiss_altgr_lessthan_to_backslash</identifier>
       <autogen>
-        --KeyToKey--
+        __KeyToKey__
         KeyCode::SWISS_LESS_THAN, VK_OPTION | ModifierFlag::NONE,
         KeyCode::KEY_7, VK_OPTION | ModifierFlag::SHIFT_L
       </autogen>
