@@ -88,7 +88,7 @@
 
   <replacementdef>
     <replacementname>MY_REPLACEMENT</replacementname>
-    <replacementvalue>----------sample replacement----------------------------------------</replacementvalue>
+    <replacementvalue>__________sample replacement________________________________________</replacementvalue>
   </replacementdef>
 
   <replacementdef>
@@ -104,7 +104,7 @@
     <replacementname>MY_XML</replacementname>
     <replacementvalue>
       <![CDATA[
-        <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       ]]>
     </replacementvalue>
   </replacementdef>
@@ -128,13 +128,13 @@
     <name>Swap Space and Tab</name>
     <identifier>private.swap_space_and_tab</identifier>
     <only>APPSTORE</only>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-    <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
+    <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::SPACE</autogen>
   </item>
 
   <item>
     <name>notsave</name>
     <identifier>notsave.private_sample</identifier>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::RETURN</autogen>
   </item>
 </root>

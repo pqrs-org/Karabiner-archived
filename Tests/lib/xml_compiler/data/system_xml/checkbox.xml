@@ -8,17 +8,22 @@
       <appendix>You can disable all settings temporarily.</appendix>
       <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
       <identifier vk_config="true">notsave.passthrough</identifier>
-      <autogen>--ShowStatusMessage-- Pass Through</autogen>
+      <autogen>__ShowStatusMessage__ Pass Through</autogen>
     </item>
   </item>
   <item>
     <name>Return to Tab</name>
     <identifier>remap.return2tab</identifier>
-    <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::TAB</autogen>
+    <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::TAB</autogen>
   </item>
   <item>
     <name>ShowStatusMessage</name>
     <identifier>remap.showstatusmessage</identifier>
+    <autogen>__ShowStatusMessage__ A B C D E F G </autogen>
+  </item>
+  <item>
+    <name>ShowStatusMessage</name>
+    <identifier>remap.showstatusmessage_old_style</identifier>
     <autogen>--ShowStatusMessage-- A B C D E F G </autogen>
   </item>
 
@@ -26,6 +31,6 @@
     <name>notsave</name>
     <identifier>notsave.remap_sample</identifier>
     <only>SPACE_ IS_ IGNORED</only>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::RETURN</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::RETURN</autogen>
   </item>
 </root>
