@@ -2,6 +2,7 @@
 CONFIGURATION = Release
 
 all:
+	$(MAKE) -C Resources
 	$(MAKE) -C ../../../pkginfo
 	$(MAKE) -C ../../bridge/generator/config
 	$(MAKE) -C ../../lib/xml_compiler
