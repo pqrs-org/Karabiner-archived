@@ -4,7 +4,7 @@
     <name>Change Fn Key</name>
     <item>
       <name>Fn+letter to Control+letter</name>
-      <appendix>Fn+Escape,Space,Tab to Control+Escape,Space,Tab</name>
+      <appendix>Fn+Escape,Space,Tab to Control+Escape,Space,Tab</appendix>
       <appendix></appendix>
       <appendix>Makes Fn key behave as a Control_L key, but only when pressed in combination with</appendix>
       <appendix>a letter or escape,space,tab. Fn behaves as a normal Fn key otherwise.</appendix>
