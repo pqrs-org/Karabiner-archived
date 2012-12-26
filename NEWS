@@ -7,6 +7,7 @@ Changes since 7.8.0
     - Integrated a status message indicator. (Removed Growl support.)
     - Dynamic VK_CHANGE_INPUTSOURCE definition feature has been added.
     - Dynamic <inputsource_only> definition feature has been added.
+    - Changed --KeyToKey-- to __KeyToKey__ at <autogen>.
     - Added a preference of ignored area into "multi-touch extension".
     - Added Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER.
     - Added DeviceLocation into <device_only>, <device_not> filters.
