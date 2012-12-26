@@ -69,6 +69,11 @@
     <replacementvalue>KeyCode::KEY_0, ModifierFlag::SHIFT_L</replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>LOGITECH_N305_EXTRA_MODIFIERS</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>JAPANESE_OYAYUBISHIFT_EXTRA</replacementname>

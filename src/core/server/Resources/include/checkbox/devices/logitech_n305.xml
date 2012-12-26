@@ -60,88 +60,88 @@
   <!-- to Equal -->
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_1, ModifierFlag::EXTRA1 | ModifierFlag::OPTION_L,
+    KeyCode::KEYPAD_1, ModifierFlag::EXTRA1 | ModifierFlag::OPTION_L {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_EQUAL }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_1, ModifierFlag::EXTRA1,
+    KeyCode::KEYPAD_1, ModifierFlag::EXTRA1 {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_EQUAL }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_6, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L,
+    KeyCode::KEYPAD_6, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_EQUAL }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_6, ModifierFlag::EXTRA3,
+    KeyCode::KEYPAD_6, ModifierFlag::EXTRA3 {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_EQUAL }}
   </autogen>
 
   <!-- to Left Parenthesis -->
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_0, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L,
+    KeyCode::KEYPAD_0, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_LEFT_PARENTHES }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_0, ModifierFlag::EXTRA2,
+    KeyCode::KEYPAD_0, ModifierFlag::EXTRA2 {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_LEFT_PARENTHES }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_4, ModifierFlag::EXTRA4 | ModifierFlag::OPTION_L,
+    KeyCode::KEYPAD_4, ModifierFlag::EXTRA4 | ModifierFlag::OPTION_L {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_LEFT_PARENTHES }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_4, ModifierFlag::EXTRA4,
+    KeyCode::KEYPAD_4, ModifierFlag::EXTRA4 {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_LEFT_PARENTHES }}
   </autogen>
 
   <!-- to Right Parenthesis -->
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_1, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L,
+    KeyCode::KEYPAD_1, ModifierFlag::EXTRA2 | ModifierFlag::OPTION_L {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_RIGHT_PARENTHES }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_1, ModifierFlag::EXTRA2,
+    KeyCode::KEYPAD_1, ModifierFlag::EXTRA2 {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_RIGHT_PARENTHES }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_4, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L,
+    KeyCode::KEYPAD_4, ModifierFlag::EXTRA3 | ModifierFlag::OPTION_L {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_RIGHT_PARENTHES }}
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_4, ModifierFlag::EXTRA3,
+    KeyCode::KEYPAD_4, ModifierFlag::EXTRA3 {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     {{ LOGITECH_N305_RIGHT_PARENTHES }}
   </autogen>
 
   <!-- to Sticky Modifier -->
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_6, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+    KeyCode::KEYPAD_6, ModifierFlag::OPTION_L | ModifierFlag::NONE {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     KeyCode::VK_STICKY_EXTRA1
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_4, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+    KeyCode::KEYPAD_4, ModifierFlag::OPTION_L | ModifierFlag::NONE {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     KeyCode::VK_STICKY_EXTRA2
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_1, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+    KeyCode::KEYPAD_1, ModifierFlag::OPTION_L | ModifierFlag::NONE {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     KeyCode::VK_STICKY_EXTRA3
   </autogen>
   <autogen>
     --KeyToKey--
-    KeyCode::KEYPAD_0, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+    KeyCode::KEYPAD_0, ModifierFlag::OPTION_L | ModifierFlag::NONE {{ LOGITECH_N305_EXTRA_MODIFIERS }},
     KeyCode::VK_STICKY_EXTRA4
   </autogen>
 
