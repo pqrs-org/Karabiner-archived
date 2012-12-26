@@ -3,7 +3,7 @@
   <item>
     <name>Swap Space and Tab</name>
     <identifier></identifier>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-    <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
+    <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::SPACE</autogen>
   </item>
 </root>

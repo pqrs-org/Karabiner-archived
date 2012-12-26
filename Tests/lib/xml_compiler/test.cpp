@@ -209,6 +209,33 @@ TEST(pqrs_xml_compiler, reload)
 
     std::vector<uint32_t> expected;
 
+    // <autogen>__ShowStatusMessage__ A B C D E F G </autogen>
+
+    expected.push_back(14); // count
+    expected.push_back(BRIDGE_STATUSMESSAGE);
+    expected.push_back(65); // A
+    expected.push_back(32); // space
+    expected.push_back(66); // B
+    expected.push_back(32); // space
+    expected.push_back(67); // C
+    expected.push_back(32); // space
+    expected.push_back(68); // D
+    expected.push_back(32); // space
+    expected.push_back(69); // E
+    expected.push_back(32); // space
+    expected.push_back(70); // F
+    expected.push_back(32); // space
+    expected.push_back(71); // G
+
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    std::vector<uint32_t> actual;
+    EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "remap.showstatusmessage_old_style"));
+
+    std::vector<uint32_t> expected;
+
     // <autogen>--ShowStatusMessage-- A B C D E F G </autogen>
 
     expected.push_back(14); // count
@@ -355,7 +382,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     xml_compiler.reload();
     const char* message = "Invalid <autogen>:\n"
                           "\n"
-                          "<autogen>--KeyToKey2-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
+                          "<autogen>__KeyToKey2__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
 
@@ -374,7 +401,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       std::vector<uint32_t> expected;
 
       // ------------------------------------------------------------
-      // <autogen>--KeyToKey-- KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
+      // <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
       expected.push_back(7);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
