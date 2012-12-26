@@ -131,7 +131,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // About trick of KeyToKeyType::FROM's ModifierFlag.
       // Let's consider the following KeyOverlaidModifier.
       //
-      // --KeyOverlaidModifier-- KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, KeyCode::SPACE
+      // __KeyOverlaidModifier__ KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, KeyCode::SPACE
       //
       // We separate the keys to KeyToKeyType::*.
       //

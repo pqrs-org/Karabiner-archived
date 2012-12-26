@@ -44,7 +44,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // For example:
     // ----------------------------------------
     //   <autogen>
-    //     --KeyToKey--
+    //     __KeyToKey__
     //     KeyCode::A,
     //
     //     KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH,
