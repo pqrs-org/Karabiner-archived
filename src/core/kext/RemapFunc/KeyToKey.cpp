@@ -86,7 +86,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // handle EventType & Modifiers
 
       // Let's consider the following setting.
-      //   --KeyToKey-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R
+      //   __KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R
       // In this setting, we need decrease SHIFT_R only once.
       // So, we transform values of fromKey_.
       //

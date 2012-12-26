@@ -3,8 +3,8 @@
   <item>
     <name>Swap Space and Tab</name>
     <identifier>private.swap_space_and_tab</identifier>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
-    <autogen>--KeyToKey-- KeyCode::TAB, KeyCode::SPACE</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
+    <autogen>__KeyToKey__ KeyCode::TAB, KeyCode::SPACE</autogen>
   </item>
 
   <item>
@@ -14,9 +14,9 @@
     <appendix>Change Control+E to End</appendix>
     <identifier>private.app_excel_command2_to_ctrlu</identifier>
     <only>EXCEL</only>
-    <autogen>--KeyToKey-- KeyCode::KEY_2, VK_COMMAND, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-    <autogen>--KeyToKey-- KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
-    <autogen>--KeyToKey-- KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_2, VK_COMMAND, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+    <autogen>__KeyToKey__ KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
+    <autogen>__KeyToKey__ KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
   </item>
 
   <item>
@@ -24,7 +24,7 @@
     <appendix>Command+LeftClick to F12 (only on MacBookPro2,1 Trackpad)</appendix>
     <identifier>private.pointing_leftclick2f12_trackpad</identifier>
     <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
-    <autogen>--PointingButtonToKey-- PointingButton::LEFT, VK_COMMAND, KeyCode::F12</autogen>
+    <autogen>__PointingButtonToKey__ PointingButton::LEFT, VK_COMMAND, KeyCode::F12</autogen>
   </item>
 
   <!-- ============================================================ -->
@@ -38,7 +38,7 @@
     <name>Space to Tab on App Store.app</name>
     <identifier>private.appdef</identifier>
     <only>APPSTORE</only>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
   </item>
 
   <!-- ============================================================ -->
@@ -57,7 +57,7 @@
     <name>Space to Tab on MY_HP_KEYBOARD</name>
     <identifier>private.deviceproductdef</identifier>
     <device_only>DeviceVendor::HEWLETT_PACKARD, DeviceProduct::MY_HP_KEYBOARD</device_only>
-    <autogen>--KeyToKey-- KeyCode::SPACE, KeyCode::TAB</autogen>
+    <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
   </item>
 
   <!-- ============================================================ -->
