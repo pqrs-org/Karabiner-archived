@@ -1,9 +1,14 @@
 all:
 	@for f in `find * -name '*.xml'`; do \
 		echo "check $$f"; \
-		tidy -qe -xml -raw $$f 2>&1; \
+		/usr/bin/tidy -qe -xml -raw $$f 2>&1; \
 		if [ $$? != 0 ]; then \
-			exit 2; \
+			exit 1; \
+		fi; \
+		/usr/bin/grep 'private\.' $$f; \
+		if [ $$? != 1 ]; then \
+			echo '"private." is matched.'; \
+			exit 1; \
 		fi; \
 	done
 
