@@ -91,9 +91,9 @@ namespace pqrs {
         std::string raw_autogen = boost::trim_left_copy(it.get_data());
 
         // drop whitespaces for preprocessor. (for FROMKEYCODE_HOME, etc)
-        // Note: preserve space when --ShowStatusMessage--.
+        // Note: preserve space when __ShowStatusMessage__.
         std::string autogen(raw_autogen);
-        if (! boost::starts_with(autogen, "--ShowStatusMessage--")) {
+        if (! boost::starts_with(autogen, "__ShowStatusMessage__")) {
           pqrs::string::remove_whitespaces(autogen);
         }
 
@@ -226,18 +226,18 @@ namespace pqrs {
     }
 
     // For compatibility
-    if (boost::starts_with(autogen, "--KeyOverlaidModifierWithRepeat--")) {
+    if (boost::starts_with(autogen, "__KeyOverlaidModifierWithRepeat__")) {
       handle_autogen(boost::replace_first_copy(autogen,
-                                               "--KeyOverlaidModifierWithRepeat--",
-                                               "--KeyOverlaidModifier--Option::KEYOVERLAIDMODIFIER_REPEAT,"),
+                                               "__KeyOverlaidModifierWithRepeat__",
+                                               "__KeyOverlaidModifier__Option::KEYOVERLAIDMODIFIER_REPEAT,"),
                      raw_autogen);
       return;
     }
 
-    if (boost::starts_with(autogen, "--StripModifierFromScrollWheel--")) {
+    if (boost::starts_with(autogen, "__StripModifierFromScrollWheel__")) {
       handle_autogen(boost::replace_first_copy(autogen,
-                                               "--StripModifierFromScrollWheel--",
-                                               "--ScrollWheelToScrollWheel--") + ",ModifierFlag::NONE",
+                                               "__StripModifierFromScrollWheel__",
+                                               "__ScrollWheelToScrollWheel__") + ",ModifierFlag::NONE",
                      raw_autogen);
       return;
     }
@@ -258,12 +258,20 @@ namespace pqrs {
       return;
     }
 
+    if (autogen.find("--") != std::string::npos) {
+      handle_autogen(boost::replace_all_copy(autogen,
+                                             "--",
+                                             "__"),
+                     raw_autogen);
+      return;
+    }
+
     // ------------------------------------------------------------
     // add to remapclasses_initialize_vector_
     //
 
     {
-      static const std::string symbol("--ShowStatusMessage--");
+      static const std::string symbol("__ShowStatusMessage__");
       if (boost::starts_with(autogen, symbol)) {
         std::string params = autogen.substr(symbol.length());
         boost::trim(params);
@@ -281,7 +289,7 @@ namespace pqrs {
     }
 
     {
-      static const std::string symbol("--SimultaneousKeyPresses--");
+      static const std::string symbol("__SimultaneousKeyPresses__");
       if (boost::starts_with(autogen, symbol)) {
         std::string params = autogen.substr(symbol.length());
         std::string newkeycode = std::string("VK_SIMULTANEOUSKEYPRESSES_") +
@@ -299,25 +307,25 @@ namespace pqrs {
       const std::string symbol;
       uint32_t type;
     } info[] = {
-      { "--KeyToKey--",                       BRIDGE_REMAPTYPE_KEYTOKEY },
-      { "--KeyToConsumer--",                  BRIDGE_REMAPTYPE_KEYTOCONSUMER },
-      { "--KeyToPointingButton--",            BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON },
-      { "--DoublePressModifier--",            BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER },
-      { "--HoldingKeyToKey--",                BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY },
-      { "--IgnoreMultipleSameKeyPress--",     BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS },
-      { "--KeyOverlaidModifier--",            BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER },
-      { "--ConsumerToConsumer--",             BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER },
-      { "--ConsumerToKey--",                  BRIDGE_REMAPTYPE_CONSUMERTOKEY },
-      { "--PointingButtonToPointingButton--", BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON },
-      { "--PointingButtonToKey--",            BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY },
-      { "--PointingRelativeToScroll--",       BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL },
-      { "--DropKeyAfterRemap--",              BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP },
-      { "--SetKeyboardType--",                BRIDGE_REMAPTYPE_SETKEYBOARDTYPE },
-      { "--ForceNumLockOn--",                 BRIDGE_REMAPTYPE_FORCENUMLOCKON },
-      { "--DropPointingRelativeCursorMove--", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE },
-      { "--DropScrollWheel--",                BRIDGE_REMAPTYPE_DROPSCROLLWHEEL },
-      { "--ScrollWheelToScrollWheel--",       BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL },
-      { "--ScrollWheelToKey--",               BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY },
+      { "__KeyToKey__",                       BRIDGE_REMAPTYPE_KEYTOKEY },
+      { "__KeyToConsumer__",                  BRIDGE_REMAPTYPE_KEYTOCONSUMER },
+      { "__KeyToPointingButton__",            BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON },
+      { "__DoublePressModifier__",            BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER },
+      { "__HoldingKeyToKey__",                BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY },
+      { "__IgnoreMultipleSameKeyPress__",     BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS },
+      { "__KeyOverlaidModifier__",            BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER },
+      { "__ConsumerToConsumer__",             BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER },
+      { "__ConsumerToKey__",                  BRIDGE_REMAPTYPE_CONSUMERTOKEY },
+      { "__PointingButtonToPointingButton__", BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON },
+      { "__PointingButtonToKey__",            BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY },
+      { "__PointingRelativeToScroll__",       BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL },
+      { "__DropKeyAfterRemap__",              BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP },
+      { "__SetKeyboardType__",                BRIDGE_REMAPTYPE_SETKEYBOARDTYPE },
+      { "__ForceNumLockOn__",                 BRIDGE_REMAPTYPE_FORCENUMLOCKON },
+      { "__DropPointingRelativeCursorMove__", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE },
+      { "__DropScrollWheel__",                BRIDGE_REMAPTYPE_DROPSCROLLWHEEL },
+      { "__ScrollWheelToScrollWheel__",       BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL },
+      { "__ScrollWheelToKey__",               BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY },
     };
     for (const auto& it : info) {
       if (boost::starts_with(autogen, it.symbol)) {
