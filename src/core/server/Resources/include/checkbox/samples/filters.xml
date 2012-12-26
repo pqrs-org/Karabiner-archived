@@ -99,7 +99,7 @@
         <name>Config only mode2</name>
         <identifier>option.samples_config_mode2</identifier>
       </item>
-      <item><name>========================================</name></item>
+      <item><name>──────────────────────────────</name></item>
       <item>
         <name>With KEYTOKEY_BEFORE_KEYDOWN, KEYTOKEY_AFTER_KEYUP</name>
         <appendix>Space to Tab (And Before A, After B)</appendix>
@@ -536,13 +536,13 @@
       <appendix>A to C if application == Safari (KeyToKey)</appendix>
       <appendix>B to E if application == Safari (KeyToKey)</appendix>
       <appendix>(Keep A and B on other apps.)</appendix>
-      <appendix>========================================</appendix>
+      <appendix>──────────────────────────────</appendix>
       <appendix>Shift+C to Y</appendix>
       <appendix>Shift+D to Z</appendix>
-      <appendix>========================================</appendix>
+      <appendix>──────────────────────────────</appendix>
       <appendix>Option+C to Option+1 if application == Terminal</appendix>
       <appendix>Command+C to Command+3 if application == Terminal</appendix>
-      <appendix>========================================</appendix>
+      <appendix>──────────────────────────────</appendix>
       <appendix>Option+C to Option+2 if application == Safari</appendix>
       <appendix>Command+C to Command+4 if application == Safari</appendix>
       <appendix>(Keep Option+C and Command+C on other apps.)</appendix>

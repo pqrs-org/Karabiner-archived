@@ -5,7 +5,7 @@
     <item>
       <name>Adapt Option_R to PC's AltGr (1)</name>
       <identifier>remap.german_adapt_option_r_to_pcs_altgr_1</identifier>
-      <appendix>=======================================</appendix>
+      <appendix>──────────────────────────────</appendix>
       <appendix>Change Option_R+7 to {</appendix>
       <appendix>Change Option_R+8 to [</appendix>
       <appendix>Change Option_R+9 to ]</appendix>
@@ -14,7 +14,7 @@
       <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::OPTION_R, KeyCode::KEY_6, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::KEY_9, ModifierFlag::OPTION_R</autogen>
-      <appendix>=======================================</appendix>
+      <appendix>──────────────────────────────</appendix>
     </item>
     <item>
       <name>Adapt Option_R to PC's AltGr (2)</name>
@@ -24,7 +24,7 @@
       <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
     </item>
-    <item><name>============================================================</name></item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Option+7 to {</name>
       <identifier>remap.german_option7_to_left_brace</identifier>
@@ -45,7 +45,7 @@
       <identifier>remap.german_option0_to_right_brace</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_0, VK_OPTION, KeyCode::KEY_9, VK_OPTION</autogen>
     </item>
-    <item><name>============================================================</name></item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Control+Ö to {</name>
       <identifier>remap.german_controlO_to_left_brace</identifier>
@@ -66,7 +66,7 @@
       <identifier>remap.german_controlA_to_left_brace</identifier>
       <autogen>__KeyToKey__ KeyCode::QUOTE, VK_CONTROL, KeyCode::KEY_9, VK_OPTION</autogen>
     </item>
-    <item><name>============================================================</name></item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Control+PLUS to ~</name>
       <identifier>remap.german_controlPlus_to_tilde</identifier>

@@ -15,7 +15,7 @@
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
-        <name>============================================================</name>
+        <name>──────────────────────────────</name>
         <identifier vk_config="true">notsave.jis_command2eisuukana_prefer_eisuukana</identifier>
         <autogen>__ShowStatusMessage__ Command</autogen>
       </item>
