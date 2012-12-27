@@ -239,23 +239,23 @@ TEST(pqrs_xml_compiler, reload)
 
     std::vector<uint32_t> expected;
 
-    // <autogen>--ShowStatusMessage-- A B C D E F G -- </autogen>
+    // <autogen>--ShowStatusMessage-- O L D 1 2 3 4 -- </autogen>
 
     expected.push_back(17); // count
     expected.push_back(BRIDGE_STATUSMESSAGE);
-    expected.push_back(65); // A
+    expected.push_back(79); // O
     expected.push_back(32); // space
-    expected.push_back(66); // B
-    expected.push_back(32); // space
-    expected.push_back(67); // C
+    expected.push_back(76); // L
     expected.push_back(32); // space
     expected.push_back(68); // D
     expected.push_back(32); // space
-    expected.push_back(69); // E
+    expected.push_back(49); // 1
     expected.push_back(32); // space
-    expected.push_back(70); // F
+    expected.push_back(50); // 2
     expected.push_back(32); // space
-    expected.push_back(71); // G
+    expected.push_back(51); // 3
+    expected.push_back(32); // space
+    expected.push_back(52); // 4
     expected.push_back(32); // space
     expected.push_back(45); // -
     expected.push_back(45); // -
