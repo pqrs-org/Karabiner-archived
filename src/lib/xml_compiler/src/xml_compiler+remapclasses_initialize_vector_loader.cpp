@@ -96,7 +96,11 @@ namespace pqrs {
         // Replacing -- with __ for compatibility.
         // * --KeyToKey-- before version 8.0.0.
         // * __KeyToKey__ since version 8.0.0.
-        boost::replace_all(autogen, "--", "__");
+        if (boost::starts_with(autogen, "--")) {
+          autogen[0] = '_';
+          autogen[1] = '_';
+          boost::replace_first(autogen, "--", "__");
+        }
 
         // drop whitespaces for preprocessor. (for FROMKEYCODE_HOME, etc)
         // Note: preserve space when __ShowStatusMessage__.

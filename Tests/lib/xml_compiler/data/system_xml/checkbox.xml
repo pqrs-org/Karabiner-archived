@@ -19,12 +19,12 @@
   <item>
     <name>ShowStatusMessage</name>
     <identifier>remap.showstatusmessage</identifier>
-    <autogen>__ShowStatusMessage__ A B C D E F G </autogen>
+    <autogen>__ShowStatusMessage__ A B C D E F G -- </autogen>
   </item>
   <item>
     <name>ShowStatusMessage</name>
     <identifier>remap.showstatusmessage_old_style</identifier>
-    <autogen>--ShowStatusMessage-- A B C D E F G </autogen>
+    <autogen>--ShowStatusMessage-- A B C D E F G -- </autogen>
   </item>
 
   <item>
@@ -32,5 +32,29 @@
     <identifier>notsave.remap_sample</identifier>
     <only>SPACE_ IS_ IGNORED</only>
     <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::RETURN</autogen>
+  </item>
+
+  <item>
+    <name>backward compatibility</name>
+    <identifier>remap.backward_compatibility</identifier>
+    <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::TAB</autogen>
+    <autogen>--KeyToConsumer-- KeyCode::RETURN, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+    <autogen>--KeyToPointingButton-- KeyCode::RETURN, PointingButton::LEFT</autogen>
+    <autogen>--DoublePressModifier-- KeyCode::RETURN</autogen>
+    <autogen>--HoldingKeyToKey--</autogen>
+    <autogen>--IgnoreMultipleSameKeyPress--</autogen>
+    <autogen>--KeyOverlaidModifier--</autogen>
+    <autogen>--ConsumerToConsumer--</autogen>
+    <autogen>--ConsumerToKey--</autogen>
+    <autogen>--PointingButtonToPointingButton--</autogen>
+    <autogen>--PointingButtonToKey--</autogen>
+    <autogen>--PointingRelativeToScroll--</autogen>
+    <autogen>--DropKeyAfterRemap--</autogen>
+    <autogen>--SetKeyboardType--</autogen>
+    <autogen>--ForceNumLockOn--</autogen>
+    <autogen>--DropPointingRelativeCursorMove--</autogen>
+    <autogen>--DropScrollWheel--</autogen>
+    <autogen>--ScrollWheelToScrollWheel--</autogen>
+    <autogen>--ScrollWheelToKey--</autogen>
   </item>
 </root>

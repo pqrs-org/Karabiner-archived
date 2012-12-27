@@ -209,9 +209,9 @@ TEST(pqrs_xml_compiler, reload)
 
     std::vector<uint32_t> expected;
 
-    // <autogen>__ShowStatusMessage__ A B C D E F G </autogen>
+    // <autogen>__ShowStatusMessage__ A B C D E F G -- </autogen>
 
-    expected.push_back(14); // count
+    expected.push_back(17); // count
     expected.push_back(BRIDGE_STATUSMESSAGE);
     expected.push_back(65); // A
     expected.push_back(32); // space
@@ -226,6 +226,9 @@ TEST(pqrs_xml_compiler, reload)
     expected.push_back(70); // F
     expected.push_back(32); // space
     expected.push_back(71); // G
+    expected.push_back(32); // space
+    expected.push_back(45); // -
+    expected.push_back(45); // -
 
     EXPECT_EQ(expected, actual);
   }
@@ -236,9 +239,9 @@ TEST(pqrs_xml_compiler, reload)
 
     std::vector<uint32_t> expected;
 
-    // <autogen>--ShowStatusMessage-- A B C D E F G </autogen>
+    // <autogen>--ShowStatusMessage-- A B C D E F G -- </autogen>
 
-    expected.push_back(14); // count
+    expected.push_back(17); // count
     expected.push_back(BRIDGE_STATUSMESSAGE);
     expected.push_back(65); // A
     expected.push_back(32); // space
@@ -253,6 +256,9 @@ TEST(pqrs_xml_compiler, reload)
     expected.push_back(70); // F
     expected.push_back(32); // space
     expected.push_back(71); // G
+    expected.push_back(32); // space
+    expected.push_back(45); // -
+    expected.push_back(45); // -
 
     EXPECT_EQ(expected, actual);
   }
