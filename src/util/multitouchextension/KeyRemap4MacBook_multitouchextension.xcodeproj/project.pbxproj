@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.m */; };
+		256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */; };
 		3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3417234016481E9A004A996E /* IgnoredAreaView.m */; };
 		342DF86F1653548700C832FE /* FingerStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 342DF86E1653548700C832FE /* FingerStatus.m */; };
 		343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343CFC86130A8C7C00BA28B9 /* PreferencesController.m */; };
@@ -17,7 +17,6 @@
 		3491D60013098C1B0060C12B /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3491D5FF13098C1B0060C12B /* app.icns */; };
 		349AD35113098DD400474EFD /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 349AD35013098DD400474EFD /* KeyRemap4MacBookClient.m */; };
 		349AD37613098E7A00474EFD /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349AD37513098E7A00474EFD /* MultitouchSupport.framework */; };
-		34CC240413E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CC240313E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -28,8 +27,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		256AC3D80F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_multitouchextensionAppDelegate.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyRemap4MacBook_multitouchextensionAppDelegate.m; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* KeyRemap4MacBook_multitouchextension_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyRemap4MacBook_multitouchextension_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -49,8 +48,6 @@
 		349AD35013098DD400474EFD /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../share/KeyRemap4MacBookClient.m; sourceTree = SOURCE_ROOT; };
 		349AD37513098E7A00474EFD /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = SDKROOT; };
 		34B2A68B1374629A00694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
-		34CC240213E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookNSDistributedNotificationCenter.h; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.h; sourceTree = "<group>"; };
-		34CC240313E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookNSDistributedNotificationCenter.m; path = ../../share/KeyRemap4MacBookNSDistributedNotificationCenter.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* KeyRemap4MacBook_multitouchextension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook_multitouchextension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,14 +77,12 @@
 				34B2A68B1374629A00694134 /* KeyRemap4MacBookKeys.h */,
 				349AD34F13098DD400474EFD /* KeyRemap4MacBookClient.h */,
 				349AD35013098DD400474EFD /* KeyRemap4MacBookClient.m */,
-				34CC240213E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.h */,
-				34CC240313E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m */,
 				343CFC90130A8E2500BA28B9 /* StartAtLoginController.h */,
 				343CFC91130A8E2500BA28B9 /* StartAtLoginController.m */,
 				343CFC85130A8C7C00BA28B9 /* PreferencesController.h */,
 				343CFC86130A8C7C00BA28B9 /* PreferencesController.m */,
-				256AC3D80F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.h */,
-				256AC3D90F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.m */,
+				256AC3D80F4B6AC300CF3369 /* AppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* AppDelegate.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -228,11 +223,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				256AC3DA0F4B6AC300CF3369 /* KeyRemap4MacBook_multitouchextensionAppDelegate.m in Sources */,
+				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
 				349AD35113098DD400474EFD /* KeyRemap4MacBookClient.m in Sources */,
 				343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */,
 				343CFC92130A8E2500BA28B9 /* StartAtLoginController.m in Sources */,
-				34CC240413E9A5D000CD69A6 /* KeyRemap4MacBookNSDistributedNotificationCenter.m in Sources */,
 				3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */,
 				342DF86F1653548700C832FE /* FingerStatus.m in Sources */,
 			);

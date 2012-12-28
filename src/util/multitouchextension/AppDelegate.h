@@ -6,7 +6,7 @@
 #import "KeyRemap4MacBookClient.h"
 #import "PreferencesController.h"
 
-@interface KeyRemap4MacBook_multitouchextensionAppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
   NSArray* mtdevices_;
   IONotificationPortRef notifyport_;
   CFRunLoopSourceRef loopsource_;
