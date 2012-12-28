@@ -34,7 +34,7 @@
 
                        NSDictionary* userInfo = @ { @"name" : name };
                        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
-                                                                                      object:kKeyRemap4MacBookNotificationKey
+                                                                                      object:nil
                                                                                     userInfo:userInfo];
                      }
                    }
@@ -69,7 +69,7 @@
                    }
 
                    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
-                                                                                  object:kKeyRemap4MacBookNotificationKey
+                                                                                  object:nil
                                                                                 userInfo:userInfo];
                  });
 }

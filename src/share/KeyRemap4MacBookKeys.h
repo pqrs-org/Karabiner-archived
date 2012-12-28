@@ -1,13 +1,10 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-// Keys for userspace applications of KeyRemap4MacBook.
-
-#define kKeyRemap4MacBookNotificationKey                @"org.pqrs.KeyRemap4MacBook.notification"
-
-// for EventViewer.app
-#define kKeyRemap4MacBookApplicationChangedNotification @"applicationChanged"
-#define kKeyRemap4MacBookInputSourceChangedNotification @"inputSourceChanged"
+// ------------------------------------------------------------
+// NSDistributedNotificationCenter for EventViewer.app
+#define kKeyRemap4MacBookApplicationChangedNotification @"org.pqrs.KeyRemap4MacBook.notification.applicationChanged"
+#define kKeyRemap4MacBookInputSourceChangedNotification @"org.pqrs.KeyRemap4MacBook.notification.inputSourceChanged"
 
 // ------------------------------------------------------------
-// for NSConnection
+// NSConnection
 #define kKeyRemap4MacBookConnectionName                 @"org.pqrs.KeyRemap4MacBook.server"
