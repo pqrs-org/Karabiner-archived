@@ -81,18 +81,16 @@
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="439893737">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{480, 360}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSCustomObject" id="976324537">
-				<string key="NSClassName">KeyRemap4MacBook_cliAppDelegate</string>
+				<string key="NSClassName">AppDelegate</string>
 			</object>
 			<object class="NSCustomObject" id="755631768">
 				<string key="NSClassName">NSFontManager</string>
@@ -246,7 +244,7 @@
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">KeyRemap4MacBook_cliAppDelegate</string>
+					<string key="className">AppDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="client_">KeyRemap4MacBookClient</string>
@@ -264,7 +262,7 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/KeyRemap4MacBook_cliAppDelegate.h</string>
+						<string key="minorKey">./Classes/AppDelegate.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
