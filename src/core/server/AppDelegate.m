@@ -2,7 +2,6 @@
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "PreferencesController.h"
 #import "ServerForUserspace.h"
 #import "StatusBar.h"
@@ -33,9 +32,10 @@
                        bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
                        [self send_workspacedata_to_kext];
 
-                       NSDictionary* userInfo = [NSDictionary dictionaryWithObject:name forKey:@"name"];
-
-                       [KeyRemap4MacBookNSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookApplicationChangedNotification userInfo:userInfo];
+                       NSDictionary* userInfo = @ { @"name" : name };
+                       [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
+                                                                                      object:kKeyRemap4MacBookNotificationKey
+                                                                                    userInfo:userInfo];
                      }
                    }
                  });
@@ -67,7 +67,10 @@
                    if ([inputSource inputModeID]) {
                      [userInfo setObject:[inputSource inputModeID] forKey:@"inputModeID"];
                    }
-                   [KeyRemap4MacBookNSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification userInfo:userInfo];
+
+                   [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
+                                                                                  object:kKeyRemap4MacBookNotificationKey
+                                                                                userInfo:userInfo];
                  });
 }
 
@@ -198,12 +201,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                              name:NSWorkspaceDidActivateApplicationNotification
                                                            object:nil];
 
-  [KeyRemap4MacBookNSDistributedNotificationCenter addObserver:self
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:)
                                                           name:(NSString*)(kTISNotifyEnabledKeyboardInputSourcesChanged)
                                                         object:nil];
 
-  [KeyRemap4MacBookNSDistributedNotificationCenter addObserver:self
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:)
                                                           name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
                                                         object:nil];
@@ -235,7 +238,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void) dealloc
 {
-  [KeyRemap4MacBookNSDistributedNotificationCenter removeObserver:self];
+  [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   [super dealloc];

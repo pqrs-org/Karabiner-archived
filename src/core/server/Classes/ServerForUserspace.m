@@ -1,6 +1,5 @@
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import "PreferencesManager.h"
 #import "ServerForUserspace.h"
 #import "Updater.h"
@@ -34,10 +33,6 @@
   if (! [connection_ registerName:kKeyRemap4MacBookConnectionName]) {
     return NO;
   }
-
-  // Other apps which are connected to KeyRemap4MacBook (Prefs, EventViewer, ...) should reconnect.
-  // So, sending notification as soon as possible.
-  [KeyRemap4MacBookNSDistributedNotificationCenter postNotificationName:kKeyRemap4MacBookServerLaunchedNotification userInfo:nil];
   return YES;
 }
 
