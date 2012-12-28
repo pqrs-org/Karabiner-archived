@@ -19,6 +19,12 @@
         <identifier>remap.samples_setkeyboardtype_jis_macbook_2008</identifier>
         <autogen>__SetKeyboardType__ KeyboardType::JIS_MACBOOK_2008</autogen>
       </item>
+      <item>
+        <name>Set keyboardType = KeyboardType::JIS_MACBOOK_2008 on Terminal.app</name>
+        <identifier>remap.samples_setkeyboardtype_jis_macbook_2008_terminal</identifier>
+        <only>TERMINAL</only>
+        <autogen>__SetKeyboardType__ KeyboardType::JIS_MACBOOK_2008</autogen>
+      </item>
     </item>
 
     <item>
