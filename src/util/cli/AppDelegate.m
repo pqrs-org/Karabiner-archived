@@ -1,6 +1,6 @@
-#import "KeyRemap4MacBook_cliAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation KeyRemap4MacBook_cliAppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 

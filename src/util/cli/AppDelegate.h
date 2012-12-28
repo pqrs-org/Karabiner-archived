@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 #import "KeyRemap4MacBookClient.h"
 
-@interface KeyRemap4MacBook_cliAppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
   IBOutlet KeyRemap4MacBookClient* client_;
 }
