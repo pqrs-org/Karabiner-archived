@@ -4,7 +4,6 @@
 
 #import "AppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookNSDistributedNotificationCenter.h"
 #import <Carbon/Carbon.h>
 
 @implementation AppDelegate
@@ -42,13 +41,15 @@
   [otherinformationstore_ setInputSourceID:nil];
   [otherinformationstore_ setInputModeID:nil];
 
-  [KeyRemap4MacBookNSDistributedNotificationCenter addObserver:self
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_applicationChanged:)
-                                                          name:kKeyRemap4MacBookApplicationChangedNotification];
+                                                          name:kKeyRemap4MacBookApplicationChangedNotification
+                                                        object:nil];
 
-  [KeyRemap4MacBookNSDistributedNotificationCenter addObserver:self
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_inputSourceChanged:)
-                                                          name:kKeyRemap4MacBookInputSourceChangedNotification];
+                                                          name:kKeyRemap4MacBookInputSourceChangedNotification
+                                                        object:nil];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
@@ -57,7 +58,7 @@
 
 - (void) dealloc
 {
-  [KeyRemap4MacBookNSDistributedNotificationCenter removeObserver:self];
+  [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 
   [super dealloc];
 }
