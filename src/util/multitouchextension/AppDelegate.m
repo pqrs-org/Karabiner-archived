@@ -1,5 +1,5 @@
 #include <IOKit/IOKitLib.h>
-#import "KeyRemap4MacBook_multitouchextensionAppDelegate.h"
+#import "AppDelegate.h"
 
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
@@ -7,7 +7,7 @@ static FingerStatus* lastFingerStatus_ = nil;
 static BOOL has_last_device = NO;
 static int last_device = 0;
 
-@implementation KeyRemap4MacBook_multitouchextensionAppDelegate
+@implementation AppDelegate
 
 - (id) init
 {
