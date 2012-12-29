@@ -2506,6 +2506,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">appDelegate_</string>
+						<reference key="source" ref="597312338"/>
+						<reference key="destination" ref="976324537"/>
+					</object>
+					<int key="connectionID">1314</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">xmlCompiler_</string>
 						<reference key="source" ref="601766303"/>
 						<reference key="destination" ref="894692340"/>
@@ -4341,7 +4349,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1313</int>
+			<int key="maxID">1314</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4619,12 +4627,17 @@
 					<string key="className">ServerForUserspace</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="appDelegate_">AppDelegate</string>
 						<string key="clientForKernelspace_">ClientForKernelspace</string>
 						<string key="preferencesManager_">PreferencesManager</string>
 						<string key="updater_">Updater</string>
 						<string key="xmlCompiler_">XMLCompiler</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="appDelegate_">
+							<string key="name">appDelegate_</string>
+							<string key="candidateClassName">AppDelegate</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="clientForKernelspace_">
 							<string key="name">clientForKernelspace_</string>
 							<string key="candidateClassName">ClientForKernelspace</string>

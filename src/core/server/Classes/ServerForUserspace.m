@@ -1,3 +1,4 @@
+#import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "PreferencesManager.h"
@@ -82,6 +83,16 @@
 - (NSArray*) device_information:(NSInteger)type
 {
   return [clientForKernelspace_ device_information:type];
+}
+
+- (NSDictionary*) application_information
+{
+  return [appDelegate_ getApplicationInformation];
+}
+
+- (NSDictionary*) inputsource_information
+{
+  return [appDelegate_ getInputSourceInformation];
 }
 
 @end

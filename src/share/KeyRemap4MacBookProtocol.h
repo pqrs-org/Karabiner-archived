@@ -15,6 +15,9 @@
 
 - (void) configxml_reload;
 
+// For EventViewer.
 - (NSArray*) device_information:(NSInteger)type;
+- (NSDictionary*) application_information;
+- (NSDictionary*) inputsource_information;
 
 @end
