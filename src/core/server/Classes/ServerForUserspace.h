@@ -3,6 +3,7 @@
 #import <Cocoa/Cocoa.h>
 #import "KeyRemap4MacBookProtocol.h"
 
+@class AppDelegate;
 @class ClientForKernelspace;
 @class PreferencesManager;
 @class Updater;
@@ -11,6 +12,7 @@
 @interface ServerForUserspace : NSObject<KeyRemap4MacBookProtocol> {
   NSConnection* connection_;
 
+  IBOutlet AppDelegate* appDelegate_;
   IBOutlet ClientForKernelspace* clientForKernelspace_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet Updater* updater_;
@@ -34,5 +36,7 @@
 - (void) configxml_reload;
 
 - (NSArray*) device_information:(NSInteger)type;
+- (NSDictionary*) application_information;
+- (NSDictionary*) inputsource_information;
 
 @end

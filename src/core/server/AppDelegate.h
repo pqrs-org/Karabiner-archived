@@ -15,6 +15,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* window;
+  NSDictionary* applicationInformation_;
+  NSMutableDictionary* inputSourceInformation_;
 
   // for IONotification
   IONotificationPortRef notifyport_;
@@ -35,6 +37,9 @@
 
 @property (assign) IBOutlet NSWindow* window;
 @property (assign) ClientForKernelspace* clientForKernelspace;
+
+- (NSDictionary*) getApplicationInformation;
+- (NSDictionary*) getInputSourceInformation;
 
 - (IBAction) launchEventViewer:(id)sender;
 - (IBAction) launchMultiTouchExtension:(id)sender;

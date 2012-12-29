@@ -32,10 +32,13 @@
                        bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
                        [self send_workspacedata_to_kext];
 
-                       NSDictionary* userInfo = @ { @"name" : name };
+                       @synchronized (self) {
+                         [applicationInformation_ release];
+                         applicationInformation_ = [@ { @"name":name } retain];
+                       }
+
                        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
-                                                                                      object:nil
-                                                                                    userInfo:userInfo];
+                                                                                      object:nil];
                      }
                    }
                  });
@@ -57,20 +60,22 @@
                            output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
                    [self send_workspacedata_to_kext];
 
-                   NSMutableDictionary* userInfo = [[NSMutableDictionary new] autorelease];
-                   if ([inputSource languagecode]) {
-                     [userInfo setObject:[inputSource languagecode] forKey:@"languageCode"];
-                   }
-                   if ([inputSource inputSourceID]) {
-                     [userInfo setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
-                   }
-                   if ([inputSource inputModeID]) {
-                     [userInfo setObject:[inputSource inputModeID] forKey:@"inputModeID"];
+                   @synchronized (self) {
+                     [inputSourceInformation_ release];
+                     inputSourceInformation_ = [NSMutableDictionary new];
+                     if ([inputSource languagecode]) {
+                       [inputSourceInformation_ setObject:[inputSource languagecode] forKey:@"languageCode"];
+                     }
+                     if ([inputSource inputSourceID]) {
+                       [inputSourceInformation_ setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
+                     }
+                     if ([inputSource inputModeID]) {
+                       [inputSourceInformation_ setObject:[inputSource inputModeID] forKey:@"inputModeID"];
+                     }
                    }
 
                    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
-                                                                                  object:nil
-                                                                                userInfo:userInfo];
+                                                                                  object:nil];
                  });
 }
 
@@ -245,7 +250,20 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+  [applicationInformation_ release];
+  [inputSourceInformation_ release];
+
   [super dealloc];
+}
+
+// ------------------------------------------------------------
+- (NSDictionary*) getApplicationInformation
+{
+  return [[applicationInformation_ retain] autorelease];
+}
+- (NSDictionary*) getInputSourceInformation
+{
+  return [[inputSourceInformation_ retain] autorelease];
 }
 
 // ------------------------------------------------------------
