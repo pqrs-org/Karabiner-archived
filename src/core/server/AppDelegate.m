@@ -201,15 +201,19 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                              name:NSWorkspaceDidActivateApplicationNotification
                                                            object:nil];
 
+  // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
+  // because kTISNotify* will be dropped sometimes without this.
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:)
                                                           name:(NSString*)(kTISNotifyEnabledKeyboardInputSourcesChanged)
-                                                        object:nil];
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:)
                                                           name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
-                                                        object:nil];
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
   // ------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
