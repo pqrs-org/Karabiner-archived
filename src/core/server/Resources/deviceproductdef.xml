@@ -221,6 +221,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Ideazon_Fang</productname>
+    <productid>0x0310</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>PSEUDO</productname>
     <productid>0x0000</productid>
   </deviceproductdef>
