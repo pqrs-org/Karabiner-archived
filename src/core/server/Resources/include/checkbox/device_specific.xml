@@ -389,5 +389,18 @@
         <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
       </item>
     </item>
+
+    <item>
+      <name>For Ideazon Fang</name>
+      <item>
+        <name>Set keyboard type to ANSI on Ideazon Fang</name>
+        <identifier>remap.ideazon_fang_hack</identifier>
+        <device_only>
+          DeviceVendor::Ideazon,
+          DeviceProduct::Ideazon_Fang,
+        </device_only>
+        <autogen>__SetKeyboardType__ KeyboardType::MACBOOK</autogen>
+      </item>
+    </item>
   </item>
 </root>

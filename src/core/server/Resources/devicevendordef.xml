@@ -99,4 +99,9 @@
     <vendorname>Pixart_Imaging_Inc</vendorname>
     <vendorid>0x093a</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Ideazon</vendorname>
+    <vendorid>0x1038</vendorid>
+  </devicevendordef>
 </root>
