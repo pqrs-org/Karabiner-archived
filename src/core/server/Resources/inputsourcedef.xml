@@ -137,6 +137,12 @@
     <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
   </inputsourcedef>
 
+  <inputsourcedef>
+    <name>UKRAINIAN</name>
+    <detail>UKRAINIAN_PC</detail>
+    <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
+  </inputsourcedef>
+
   <!-- ============================================================ -->
   <!-- inputsourceid_prefix -->
   <inputsourcedef>
@@ -307,6 +313,11 @@
   <inputsourcedef>
     <name>THAI</name>
     <languagecode>th</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>UKRAINIAN</name>
+    <languagecode>uk</languagecode>
   </inputsourcedef>
 
 </root>
