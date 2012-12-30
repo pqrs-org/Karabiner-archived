@@ -113,6 +113,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN_PC</name>
+    <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</name>
     <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
   </vkchangeinputsourcedef>
@@ -249,6 +254,11 @@
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_THAI</name>
     <languagecode>th</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN</name>
+    <languagecode>uk</languagecode>
   </vkchangeinputsourcedef>
 
 </root>
