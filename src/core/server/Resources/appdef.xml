@@ -197,9 +197,9 @@
     <!--
         Note:
         com.apple.loginwindow is displayed when screen saver requires password.
-        However, we cannot get a NSWorkspaceDidActivateApplicationNotification for com.apple.loginwindow.
+        If OS X version <= 10.7, we cannot get a NSWorkspaceDidActivateApplicationNotification for com.apple.loginwindow.
         Therefore, we cannot use <only> and <not> filter on com.apple.loginwindow.
-        Unfortunately, this <equal> entry of com.apple.loginwindow is "dummy".
+        Unfortunately, this <equal> entry of com.apple.loginwindow is "dummy" at OS X version <= 10.7.
       -->
     <equal>com.apple.loginwindow</equal>
   </appdef>
