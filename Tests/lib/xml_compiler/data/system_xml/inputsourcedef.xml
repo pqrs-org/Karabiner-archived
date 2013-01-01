@@ -283,4 +283,9 @@
     <languagecode>th</languagecode>
   </inputsourcedef>
 
+  <inputsourcedef>
+    <name>UKRAINIAN</name>
+    <languagecode>uk</languagecode>
+  </inputsourcedef>
+
 </root>
