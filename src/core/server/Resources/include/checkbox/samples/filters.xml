@@ -456,6 +456,13 @@
         <inputsource_only>NORWEGIAN</inputsource_only>
         <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
       </item>
+      <item>
+        <name>inputsource_only (Ukrainian)</name>
+        <appendix>Space to Tab</appendix>
+        <identifier>remap.samples_inputsource_ukrainian</identifier>
+        <inputsource_only>UKRAINIAN</inputsource_only>
+        <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
+      </item>
     </item>
 
     <item>
