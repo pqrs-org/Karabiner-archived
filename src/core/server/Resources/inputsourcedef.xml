@@ -137,6 +137,7 @@
     <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
   </inputsourcedef>
 
+  <!-- A popular UKRAINIAN PC layout from http://bluezbox.com/uapc.html -->
   <inputsourcedef>
     <name>UKRAINIAN</name>
     <detail>UKRAINIAN_PC</detail>
