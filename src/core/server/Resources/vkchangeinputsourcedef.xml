@@ -112,6 +112,7 @@
     <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
+  <!-- A popular UKRAINIAN PC layout from http://bluezbox.com/uapc.html -->
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN_PC</name>
     <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
