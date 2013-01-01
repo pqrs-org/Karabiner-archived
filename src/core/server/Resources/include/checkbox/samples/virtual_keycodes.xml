@@ -51,6 +51,8 @@
         <appendix>Use E to VK_CHANGE_INPUTSOURCE_THAI</appendix>
         <appendix>Use R to VK_CHANGE_INPUTSOURCE_DVORAK</appendix>
         <appendix>Use T to VK_CHANGE_INPUTSOURCE_COLEMAK</appendix>
+        <appendix>Use Y to VK_CHANGE_INPUTSOURCE_UKRAINIAN</appendix>
+        <appendix>Use U to VK_CHANGE_INPUTSOURCE_UKRAINIAN_PC</appendix>
         <identifier>remap.samples_vk_change_inputsource</identifier>
         <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH</autogen>
@@ -67,6 +69,8 @@
         <autogen>__KeyToKey__ KeyCode::E,     KeyCode::VK_CHANGE_INPUTSOURCE_THAI</autogen>
         <autogen>__KeyToKey__ KeyCode::R,     KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</autogen>
         <autogen>__KeyToKey__ KeyCode::T,     KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</autogen>
+        <autogen>__KeyToKey__ KeyCode::Y,     KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN</autogen>
+        <autogen>__KeyToKey__ KeyCode::U,     KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN_PC</autogen>
       </item>
       <item>
         <name>With VK_WAIT</name>
