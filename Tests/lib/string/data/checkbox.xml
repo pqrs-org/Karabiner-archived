@@ -20276,6 +20276,12 @@
   <item>
     <name>For Ukrainian</name>
     <item>
+      <name>Swap и and і</name>
+      <identifier>remap.ukrainian_swap_s_b</identifier>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::B</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, KeyCode::S</autogen>
+    </item>
+    <item>
       <name>Command_L+Shift_L to Command_L+Shift_L (when inputsource == ukrainian)</name>
       <appendix>(+ When you type Command_L+Shift_L only, change inputsource to english)</appendix>
       <inputsource_only>UKRAINIAN</inputsource_only>
