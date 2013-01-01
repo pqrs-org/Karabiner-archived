@@ -20274,6 +20274,26 @@
   </item>
 
   <item>
+    <name>For Ukrainian</name>
+    <item>
+      <name>Command_L+Shift_L to Command_L+Shift_L (when inputsource == ukrainian)</name>
+      <appendix>(+ When you type Command_L+Shift_L only, change inputsource to english)</appendix>
+      <inputsource_only>UKRAINIAN</inputsource_only>
+      <identifier>remap.ukrainian_shiftcommandL2shiftLcommandL_english</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+    </item>
+    <item>
+      <name>Command_L+Shift_L to Command_L+Shift_L</name>
+      <appendix>(+ When you type Command_L+Shift_L only, change inputsource to ukrainian)</appendix>
+      <!-- <inputsource_only>ENGLISH</inputsource_only> -->
+      <identifier>remap.ukrainian_shiftcommandL2shiftLcommandL_ukrainian</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN</autogen>
+    </item>
+  </item>
+
+  <item>
     <name>Samples for KeyRemap4MacBook Developer</name>
     <item>
       <name>SetKeyboardType</name>
