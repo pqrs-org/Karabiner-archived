@@ -49,6 +49,14 @@
       <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
+      <name>Disable a tapping feature of the Windows key.</name>
+      <appendix>(Change command keys to lazy modifiers.)</appendix>
+      <identifier>remap.app_vm_command_to_lazy</identifier>
+      <only>VIRTUALMACHINE</only>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::VK_LAZY_COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::VK_LAZY_COMMAND_R</autogen>
+    </item>
+    <item>
       <name>Change Command_L Keys</name>
       <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
       <item>
