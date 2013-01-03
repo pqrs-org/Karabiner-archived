@@ -103,6 +103,7 @@
     <appname>PHOTOSHOP</appname>
     <equal>com.adobe.Photoshop</equal>
     <equal>com.adobe.Photoshop.Elements</equal>
+    <equal>com.adobe.PhotoshopElements</equal>
   </appdef>
 
   <appdef>
@@ -183,6 +184,7 @@
   <appdef>
     <appname>TEAMVIEWER</appname>
     <equal>com.TeamViewer.TeamViewer</equal>
+    <equal>com.teamviewer.TeamViewer</equal>
   </appdef>
 
   <appdef>
