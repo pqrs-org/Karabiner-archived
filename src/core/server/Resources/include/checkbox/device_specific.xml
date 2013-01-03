@@ -152,9 +152,12 @@
     <item>
       <name>For Logitech Devices</name>
       <item>
-        <name>Tilt Wheel to Back/Forward (Command+[, Command+]) on Logitech MX620</name>
+        <name>Tilt Wheel to Back/Forward (Command+[, Command+]) on Logitech MX620 and G9X</name>
         <identifier>remap.tilt_to_back_forward</identifier>
-        <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_MX620</device_only>
+        <device_only>
+          DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_MX620,
+          DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_G9X,
+        </device_only>
         <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT, ModifierFlag::NONE,
           KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
         <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ModifierFlag::NONE,
