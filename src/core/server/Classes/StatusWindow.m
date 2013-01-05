@@ -108,8 +108,15 @@
   };
   for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
     int idx = indexes[i];
-    NSString* message = [lines_ objectAtIndex:idx];
 
+    // Skip message if configured as hide.
+    if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY) {
+      if (! [defaults boolForKey:kIsStatusWindowShowStickyModifier]) {
+        continue;
+      }
+    }
+
+    NSString* message = [lines_ objectAtIndex:idx];
     if ([message length] > 0) {
       NSString* name = nil;
       switch (idx) {

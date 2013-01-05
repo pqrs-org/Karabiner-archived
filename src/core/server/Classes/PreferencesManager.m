@@ -14,6 +14,7 @@
                            kConfigListSelectedIndex : @0,
                            kCheckForUpdates : @1,
                            kIsStatusWindowEnabled : @YES,
+                           kIsStatusWindowShowStickyModifier : @NO,
                            kStatusWindowTheme : @0, // White
                            kStatusWindowOpacity : @80,
                            kStatusWindowFontSize : @0, // Small
