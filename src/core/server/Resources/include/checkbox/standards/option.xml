@@ -242,6 +242,20 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
+      <name>Option_R to Command_L+Right-Arrow (end-of-line)</name>
+      <appendix>(+ Control+Option_R to Command_L+Down-Arrow) (end-of-buffer)</appendix>
+      <identifier>remap.right_option_to_end_of_line</identifier>
+      <block>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      </block>
+      <block>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::END</autogen>
+      </block>
+    </item>
+    <item>
       <name>Option_R to Command_L+Right-Arrow (except virtual machine, RDC)</name>
       <appendix>(+ Shift+Option_R to Command_L+Shift_L+Right-Arrow,Command_L+C)</appendix>
       <identifier>remap.optionR2commandLrightarrow_ex</identifier>
