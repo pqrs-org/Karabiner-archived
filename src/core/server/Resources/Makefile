@@ -10,6 +10,11 @@ all:
 			echo '"private." is matched.'; \
 			exit 1; \
 		fi; \
+		/usr/bin/grep -e '--[A-Z]' $$f; \
+		if [ $$? != 1 ]; then \
+			echo 'Using --KeyToKey-- style autogen. Replace --KeyToKey-- with __KeyToKey__.'; \
+			exit 1; \
+		fi; \
 	done
 
 install: all
