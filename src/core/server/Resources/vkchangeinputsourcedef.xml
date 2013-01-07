@@ -133,6 +133,11 @@
     <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_US</name>
+    <inputsourceid_equal>com.apple.keylayout.US</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
   <!-- ============================================================ -->
   <!-- inputmodeid_prefix -->
   <vkchangeinputsourcedef>
