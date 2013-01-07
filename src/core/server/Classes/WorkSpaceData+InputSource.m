@@ -18,11 +18,13 @@ static NSMutableArray* enabledInputSources_ = nil;
     // Making filter
     const void* keys[] = {
       kTISPropertyInputSourceIsSelectCapable,
+      kTISPropertyInputSourceCategory,
     };
     const void* values[] = {
       kCFBooleanTrue,
+      kTISCategoryKeyboardInputSource,
     };
-    filter = CFDictionaryCreate(NULL, keys, values, 1, NULL, NULL);
+    filter = CFDictionaryCreate(NULL, keys, values, sizeof(keys) / sizeof(keys[0]), NULL, NULL);
     if (! filter) goto finish;
 
     // ----------------------------------------
@@ -38,17 +40,7 @@ static NSMutableArray* enabledInputSources_ = nil;
       // ----------------------------------------
       // Skip inappropriate input sources.
       //
-      // - kTISPropertyInputSourceCategory != kTISCategoryKeyboardInputSource
       // - com.apple.inputmethod.ironwood (Voice Input)
-
-      NSString* category = TISGetInputSourceProperty(source, kTISPropertyInputSourceCategory);
-      if (! category) {
-        continue;
-      } else {
-        if (! [category isEqualToString:(NSString*)(kTISCategoryKeyboardInputSource)]) {
-          continue;
-        }
-      }
 
       NSString* sourceID = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
       if (sourceID) {
