@@ -51,6 +51,7 @@
   <include path="include/checkbox/for_mission_control.xml" />
 
   <include path="include/checkbox/grenouille.xml" />
+  <include path="include/checkbox/asetniop.xml" />
 
   <item>
     <name>For Applications</name>

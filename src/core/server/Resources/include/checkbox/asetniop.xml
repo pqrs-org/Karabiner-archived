@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>asetniop</name>
+    <item>
+      <name>Note:</name>
+      <appendix>To make typing a little easier you should increased the [Simultaneous Keypresses]</appendix>
+      <appendix>Delay Threshold in the “Key Repeat” tab to 300 ms.</appendix>
+      <appendix>This means you don’t have to press the keys at exactly the same moment.</appendix>
+      <appendix>It also means you can’t type too fast or things will get messed up.</appendix>
+      <appendix>See what fits you and change it when you get used to asetniop typing.</appendix>
+    </item>
+    <item>
+      <name>Chords</name>
+      <appendix>This enables the chords of the qwert-uiop keys.</appendix>
+      <identifier>remap.asetniop.chords</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Q, KeyCode::W, KeyCode::W</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Q, KeyCode::E, KeyCode::X</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Q, KeyCode::R, KeyCode::F</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Q, KeyCode::U, KeyCode::Q</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Q, KeyCode::I, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Q, KeyCode::O, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Q, KeyCode::P, KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::W, KeyCode::E, KeyCode::D</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::W, KeyCode::R, KeyCode::C</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::W, KeyCode::U, KeyCode::J</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::W, KeyCode::I, KeyCode::Z</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::W, KeyCode::O, KeyCode::DOT</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::W, KeyCode::P, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::R, KeyCode::R</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::U, KeyCode::Y</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::I, KeyCode::COMMA</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::O, KeyCode::MINUS</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::P, KeyCode::QUOTE</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::R, KeyCode::U, KeyCode::B</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::R, KeyCode::I, KeyCode::V</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::R, KeyCode::O, KeyCode::G</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::R, KeyCode::P, KeyCode::DELETE</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::U, KeyCode::I, KeyCode::H</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::U, KeyCode::O, KeyCode::U</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::U, KeyCode::P, KeyCode::M</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::I, KeyCode::O, KeyCode::L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::I, KeyCode::P, KeyCode::K</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::O, KeyCode::P, KeyCode::SEMICOLON</autogen>
+    </item>
+    <item>
+      <name>Qwer-uiop-to-aset-niop</name>
+      <appendix>This does exactly what it says, it makes the top row of letters into the asetniop keyboard.</appendix>
+      <appendix>This also changes the t,y, f,g,h and j keys into some missing interpunction signs for easy</appendix>
+      <appendix>reaching.</appendix>
+      <identifier>remap.asetniop.qweruiop</identifier>
+      <block>
+        <autogen>__KeyToKey__ KeyCode::Q, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ KeyCode::W, KeyCode::S</autogen>
+        <autogen>__KeyToKey__ KeyCode::R, KeyCode::T</autogen>
+        <autogen>__KeyToKey__ KeyCode::U, KeyCode::N</autogen>
+        <autogen>__KeyToKey__ KeyCode::T, KeyCode::SLASH</autogen>
+        <autogen>__KeyToKey__ KeyCode::Y, KeyCode::BACKSLASH</autogen>
+        <autogen>__KeyToKey__ KeyCode::F, KeyCode::BRACKET_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::BRACKET_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::G, KeyCode::MINUS</autogen>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::EQUAL</autogen>
+      </block>
+    </item>
+    <item>
+      <name>Cmd to Shift</name>
+      <appendix>This changes around a few of the functional keys on the left side of your keyboard.</appendix>
+      <appendix>* Change left cmd key to sticky shift key.</appendix>
+      <appendix>* Change fn key to option key.</appendix>
+      <appendix>* Change left option key to cmd key.</appendix>
+      <appendix>It also makes the space bar &amp; left cmd key into an enter key when pressed simultaneously.</appendix>
+      <identifier>remap.asetniop.cmd-to-shift</identifier>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::COMMAND_L, KeyCode::SPACE, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Cmd to C</name>
+      <appendix>This is here purely for practicing with the asetniop web version.</appendix>
+      <appendix>* Change left cmd key to "C" key.</appendix>
+      <appendix>* Change fn key to option key.</appendix>
+      <appendix>* Change left option key to cmd key.</appendix>
+      <appendix>It also makes the space bar &amp; "C" key into an enter key when pressed simultaneously.</appendix>
+      <identifier>remap.asetniop.cmd-to-c</identifier>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::C</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::C, KeyCode::SPACE, KeyCode::ENTER</autogen>
+    </item>
+  </item>
+</root>
