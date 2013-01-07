@@ -406,4 +406,9 @@
     <appname>WINESKIN</appname>
     <suffix>.wineskin.prefs</suffix>
   </appdef>
+
+  <appdef>
+    <appname>MAYA</appname>
+    <equal>com.autodesk.Maya.2010</equal>
+  </appdef>
 </root>
