@@ -6381,7 +6381,7 @@
       <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::COMMAND_R, KeyCode::PAGEDOWN</autogen>
     </item>
     <item>
-      <name>Coltrol_L+bf to PageUp/PageDown</name>
+      <name>Control_L+bf to PageUp/PageDown</name>
       <identifier>option.vimode_control_bf</identifier>
       <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::PAGEUP</autogen>
       <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::PAGEDOWN</autogen>
