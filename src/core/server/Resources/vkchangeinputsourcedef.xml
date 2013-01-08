@@ -217,6 +217,32 @@
     <languagecode>it</languagecode>
   </vkchangeinputsourcedef>
 
+  <!--
+      Note:
+      Sometimes the input source switching API (TISSelectInputSource) does not work properly for some input sources.
+      It changes an indicator (statusbar), but behavior of input source is not changed.
+
+      For example, when we change input source to Japanese from U.S.,
+      the indicator is changed to Japanese.
+      But we cannot input Japanese. Our typing is interpreted as U.S.
+
+      This issue is occurred on the input sources which has complex behavior such as Japanese.
+      If you faced this issue, use command-option-space (Select next source in Input menu)
+      instead of KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE like this.
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::SHIFT_R,
+        KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+      </autogen>
+
+      This autogen changes input source to english (previous item of Japanese) and
+      waits until input source was changed to english.
+      Then send command-option-space in order to change input source to Japanese.
+
+      -->
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</name>
     <languagecode>ja</languagecode>
