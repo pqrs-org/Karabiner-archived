@@ -11,6 +11,7 @@ Changes since 7.8.0
     - Added a preference of ignored area into "multi-touch extension".
     - Added Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER.
     - Added DeviceLocation into <device_only>, <device_not> filters.
+    - Some minor improvements.
 
 ----------------------------------------------------------------------
 = version 7.8.0 =
