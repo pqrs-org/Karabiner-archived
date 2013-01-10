@@ -125,6 +125,18 @@
         </autogen>
       </item>
       <item>
+        <name>[Option] Command_L to LeftClick</name>
+        <identifier>option.mousekeys_mode_commandL2leftclick</identifier>
+      </item>
+      <item>
+        <name>[Option] Space to MiddleClick</name>
+        <identifier>option.mousekeys_mode_space2middleclick</identifier>
+      </item>
+      <item>
+        <name>[Option] Command_R to RightClick</name>
+        <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
+      </item>
+      <item>
         <name>Simultaneous Key Presses Shift+[S+D] to turn on Mouse Keys Mode</name>
         <appendix>// Press S,D keys simultaneously while pressing Shift_L or Shift_R.</appendix>
         <appendix>// You can release Shift key while pressing S,D keys.</appendix>
@@ -183,18 +195,6 @@
         <autogen>__HoldingKeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
       </item>
       <item>
-        <name>[Option] Command_L to LeftClick</name>
-        <identifier>option.mousekeys_mode_commandL2leftclick</identifier>
-      </item>
-      <item>
-        <name>[Option] Space to MiddleClick</name>
-        <identifier>option.mousekeys_mode_space2middleclick</identifier>
-      </item>
-      <item>
-        <name>[Option] Command_R to RightClick</name>
-        <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
-      </item>
-      <item>
         <name>[Option] WER to Click</name>
         <appendix>- W to LeftClick</appendix>
         <appendix>- E to MiddleClick</appendix>
@@ -223,7 +223,13 @@
       <item>
         <name>[Option] Ignore Hardware CursorMove Events</name>
         <identifier>option.mousekeys_mode_droppointingrelativecursormove</identifier>
-        <config_only>remap.simultaneouskeypresses_mouse_keys_mode_commandSD, remap.simultaneouskeypresses_mouse_keys_mode_shiftSD, remap.simultaneouskeypresses_mouse_keys_mode_df, remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
+        <config_only>
+          remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order,
+          remap.simultaneouskeypresses_mouse_keys_mode_shiftSD,
+          remap.simultaneouskeypresses_mouse_keys_mode_commandSD,
+          remap.simultaneouskeypresses_mouse_keys_mode_df,
+          remap.simultaneouskeypresses_mouse_keys_mode_cx,
+        </config_only>
         <autogen>__DropPointingRelativeCursorMove__</autogen>
       </item>
     </item>
