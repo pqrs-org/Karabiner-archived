@@ -136,6 +136,7 @@
         <name>[Option] Change right command key to right click in Mouse Keys Mode</name>
         <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
       </item>
+      <item><name>──────────────────────────────</name></item>
       <item>
         <name>Simultaneous Key Presses Shift+[S+D] to turn on Mouse Keys Mode</name>
         <appendix>// Press S,D keys simultaneously while pressing Shift_L or Shift_R.</appendix>
