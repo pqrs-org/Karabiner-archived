@@ -411,4 +411,15 @@
     <appname>MAYA</appname>
     <equal>com.autodesk.Maya.2010</equal>
   </appdef>
+
+  <appdef>
+    <appname>CALCULATOR</appname>
+    <equal>com.apple.calculator</equal>
+  </appdef>
+
+  <appdef>
+    <appname>MI</appname>
+    <equal>net.mimikaki.mi</equal>
+  </appdef>
+
 </root>
