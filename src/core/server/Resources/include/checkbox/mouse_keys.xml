@@ -125,15 +125,15 @@
         </autogen>
       </item>
       <item>
-        <name>[Option] Command_L to LeftClick</name>
+        <name>[Option] Change left command key to left click in Mouse Keys Mode</name>
         <identifier>option.mousekeys_mode_commandL2leftclick</identifier>
       </item>
       <item>
-        <name>[Option] Space to MiddleClick</name>
+        <name>[Option] Change space key to middle click in Mouse Keys Mode</name>
         <identifier>option.mousekeys_mode_space2middleclick</identifier>
       </item>
       <item>
-        <name>[Option] Command_R to RightClick</name>
+        <name>[Option] Change right command key to right click in Mouse Keys Mode</name>
         <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
       </item>
       <item>
