@@ -422,4 +422,9 @@
     <equal>net.mimikaki.mi</equal>
   </appdef>
 
+  <appdef>
+    <appname>EGWORD</appname>
+    <equal>jp.co.ergo.egword_universal</equal>
+  </appdef>
+
 </root>
