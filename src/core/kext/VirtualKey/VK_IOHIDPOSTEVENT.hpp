@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       static bool handle(const Params_KeyboardEventCallBack& params);
       static bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 
-      static void post(ConsumerKeyCode keycode);
+      static void post(const Params_KeyboardSpecialEventCallback& params);
     };
   }
 }
