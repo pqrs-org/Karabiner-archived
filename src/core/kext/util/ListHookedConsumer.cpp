@@ -176,13 +176,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
+  bool
   ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params)
   {
     ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced());
     if (p) {
       p->apply(params);
+      return true;
     }
+    return false;
   }
 
   void

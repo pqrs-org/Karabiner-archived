@@ -187,6 +187,44 @@
       </item>
     </item>
     <item>
+      <name>VK_IOHIDPOSTEVENT</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Note:</appendix>
+        <appendix>You don't need to speficy VK_IOHIDPOSTEVENT_*.</appendix>
+        <appendix></appendix>
+        <appendix>These key code are used automatically at </appendix>
+        <appendix>ConsumerKeyCode::* or KeyCode::VK_CONSUMERKEY_*</appendix>
+        <appendix>when no consumer device is found.</appendix>
+        <appendix></appendix>
+        <appendix>We provide this setting only for test.</appendix>
+        <appendix></appendix>
+        <appendix>Use 1 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_SOUND_UP</appendix>
+        <appendix>Use 2 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_SOUND_DOWN</appendix>
+        <appendix>Use 3 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_UP</appendix>
+        <appendix>Use 4 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_DOWN</appendix>
+        <appendix>Use 5 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_MUTE</appendix>
+        <appendix>Use 6 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_PLAY</appendix>
+        <appendix>Use 7 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_NEXT</appendix>
+        <appendix>Use 8 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_PREVIOUS</appendix>
+        <appendix>Use 9 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_UP</appendix>
+        <appendix>Use 0 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_DOWN</appendix>
+        <appendix>Use Q to VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_TOGGLE</appendix>
+        <identifier>remap.samples_vk_iohidpostevent</identifier>
+        <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_SOUND_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_SOUND_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_PLAY</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_NEXT</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_PREVIOUS</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::Q,     KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_TOGGLE</autogen>
+      </item>
+    </item>
+    <item>
       <name>VK_JIS_TOGGLE_EISUU_KANA</name>
       <appendix>A to KANA/EISUU (toggle)</appendix>
       <appendix>Command_L to KANA/EISUU (toggle)</appendix>

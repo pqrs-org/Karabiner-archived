@@ -7,6 +7,7 @@
 #include "VirtualKey/VK_CHANGE_INPUTSOURCE.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
 #include "VirtualKey/VK_CONSUMERKEY.hpp"
+#include "VirtualKey/VK_IOHIDPOSTEVENT.hpp"
 #include "VirtualKey/VK_LAZY.hpp"
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
@@ -50,6 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (VirtualKey::VK_CHANGE_INPUTSOURCE::handle(params))    { return true; }
     if (VirtualKey::VK_CONFIG::handle(params))                { return true; }
     if (VirtualKey::VK_CONSUMERKEY::handle(params))           { return true; }
+    if (VirtualKey::VK_IOHIDPOSTEVENT::handle(params))        { return true; }
     if (VirtualKey::VK_LAZY::handle(params))                  { return true; }
     if (VirtualKey::VK_LOCK::handle(params))                  { return true; }
     if (VirtualKey::VK_MOUSEKEY::handle(params))              { return true; }
@@ -66,6 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
   {
     if (VirtualKey::VK_CHANGE_INPUTSOURCE::handleAfterEnqueued(params)) { return true; }
+    if (VirtualKey::VK_IOHIDPOSTEVENT::handleAfterEnqueued(params))     { return true; }
     return false;
   }
 

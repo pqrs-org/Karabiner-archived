@@ -3,6 +3,7 @@
 #import <Cocoa/Cocoa.h>
 #include "bridge.h"
 
+@class IOHIDPostEventWrapper;
 @class PreferencesManager;
 @class StatusWindow;
 @class UserClient_userspace;
@@ -13,12 +14,14 @@
   io_async_ref64_t asyncref_;
   UserClient_userspace* userClient_userspace;
 
+  IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet StatusWindow* statusWindow;
   IBOutlet WorkSpaceData* workSpaceData;
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
+@property (assign) IOHIDPostEventWrapper* iohidPostEventWrapper;
 @property (assign) UserClient_userspace* userClient_userspace;
 @property (assign) StatusWindow* statusWindow;
 @property (assign) WorkSpaceData* workSpaceData;
