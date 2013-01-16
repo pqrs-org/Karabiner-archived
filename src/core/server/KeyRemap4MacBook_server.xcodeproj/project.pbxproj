@@ -18,6 +18,7 @@
 		34207C061666209F00E7FD08 /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C001666209F00E7FD08 /* OutlineView_number.m */; };
 		34207C071666209F00E7FD08 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C021666209F00E7FD08 /* OutlineView.m */; };
 		34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C041666209F00E7FD08 /* TableView_configlist.m */; };
+		342D245E16A68C4E00EF070F /* IOHIDPostEventWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 342D245D16A68C4E00EF070F /* IOHIDPostEventWrapper.m */; };
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
 		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
@@ -99,6 +100,8 @@
 		34207C021666209F00E7FD08 /* OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineView.m; path = Classes/Preferences/OutlineView.m; sourceTree = "<group>"; };
 		34207C031666209F00E7FD08 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableView_configlist.h; path = Classes/Preferences/TableView_configlist.h; sourceTree = "<group>"; };
 		34207C041666209F00E7FD08 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableView_configlist.m; path = Classes/Preferences/TableView_configlist.m; sourceTree = "<group>"; };
+		342D245C16A68C4E00EF070F /* IOHIDPostEventWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOHIDPostEventWrapper.h; path = Classes/IOHIDPostEventWrapper.h; sourceTree = "<group>"; };
+		342D245D16A68C4E00EF070F /* IOHIDPostEventWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOHIDPostEventWrapper.m; path = Classes/IOHIDPostEventWrapper.m; sourceTree = "<group>"; };
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
 		343B2458153DCC7C0023BA6E /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = Resources/include; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				3401D0D51657A18C00CF962F /* ServerForUserspace.m */,
 				340B7E3D1545090D00FB3237 /* InputSource.h */,
 				340B7E3E1545090D00FB3237 /* InputSource.m */,
+				342D245C16A68C4E00EF070F /* IOHIDPostEventWrapper.h */,
+				342D245D16A68C4E00EF070F /* IOHIDPostEventWrapper.m */,
 				34848265152F54B700A9A3BE /* XMLCompiler.m */,
 				34848264152F533500A9A3BE /* XMLCompiler.h */,
 				34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */,
@@ -401,6 +406,7 @@
 				34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */,
 				3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */,
 				34E1E0C21675D1E10020FB44 /* StatusMessageView.m in Sources */,
+				342D245E16A68C4E00EF070F /* IOHIDPostEventWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

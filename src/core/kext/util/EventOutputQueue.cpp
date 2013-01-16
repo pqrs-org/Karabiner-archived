@@ -6,6 +6,7 @@
 #include "PressDownKeys.hpp"
 #include "RemapClass.hpp"
 #include "VirtualKey.hpp"
+#include "VK_IOHIDPOSTEVENT.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   List* EventOutputQueue::queue_ = NULL;
@@ -104,7 +105,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
         if (params) {
-          ListHookedConsumer::instance().apply(*params);
+          if (! ListHookedConsumer::instance().apply(*params)) {
+            // If there is no consumer device, we send software key.
+            VirtualKey::VK_IOHIDPOSTEVENT::post(params->key);
+          }
         }
         break;
       }

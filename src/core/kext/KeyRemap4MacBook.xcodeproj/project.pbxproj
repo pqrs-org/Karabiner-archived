@@ -26,6 +26,8 @@
 		342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */; };
 		342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342C80521261B379007F15DA /* DeviceFilter.cpp */; };
 		342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342C80531261B379007F15DA /* DeviceFilter.hpp */; };
+		342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */; };
+		342D245616A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */; };
 		3430E93310C558CA00FC2D64 /* EventWatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3430E93110C558CA00FC2D64 /* EventWatcher.cpp */; };
 		3430E93410C558CA00FC2D64 /* EventWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3430E93210C558CA00FC2D64 /* EventWatcher.hpp */; };
 		34379D0E11DB958900CD588D /* PointingButtonToPointingButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */; };
@@ -171,6 +173,8 @@
 		342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncClasses.hpp; path = RemapFunc/common/RemapFuncClasses.hpp; sourceTree = "<group>"; };
 		342C80521261B379007F15DA /* DeviceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceFilter.cpp; path = RemapFilter/DeviceFilter.cpp; sourceTree = "<group>"; };
 		342C80531261B379007F15DA /* DeviceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceFilter.hpp; path = RemapFilter/DeviceFilter.hpp; sourceTree = "<group>"; };
+		342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_IOHIDPOSTEVENT.cpp; path = VirtualKey/VK_IOHIDPOSTEVENT.cpp; sourceTree = "<group>"; };
+		342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_IOHIDPOSTEVENT.hpp; path = VirtualKey/VK_IOHIDPOSTEVENT.hpp; sourceTree = "<group>"; };
 		3430E93110C558CA00FC2D64 /* EventWatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventWatcher.cpp; path = util/EventWatcher.cpp; sourceTree = "<group>"; };
 		3430E93210C558CA00FC2D64 /* EventWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventWatcher.hpp; path = util/EventWatcher.hpp; sourceTree = "<group>"; };
 		34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonToPointingButton.cpp; path = RemapFunc/PointingButtonToPointingButton.cpp; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 				34B464E613A6563B00470265 /* VK_CONFIG.hpp */,
 				34799525140A70B600B85E42 /* VK_CONSUMERKEY.cpp */,
 				34799526140A70B600B85E42 /* VK_CONSUMERKEY.hpp */,
+				342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */,
+				342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */,
 				34B464DD13A6538A00470265 /* VK_LAZY.cpp */,
 				34B464DE13A6538A00470265 /* VK_LAZY.hpp */,
 				34B464CE13A6515200470265 /* VK_LOCK.cpp */,
@@ -601,6 +607,7 @@
 				3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */,
 				344CF51715F9A2EA00966FB9 /* strlcpy_utf8.hpp in Headers */,
 				342B5B2615FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.hpp in Headers */,
+				342D245616A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +752,7 @@
 				34379D4614B7794B0004B0F4 /* ScrollWheelToKey.cpp in Sources */,
 				3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */,
 				342B5B2515FE34B3003B4986 /* VK_CHANGE_INPUTSOURCE.cpp in Sources */,
+				342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

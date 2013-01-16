@@ -1,4 +1,5 @@
 #import "ClientForKernelspace.h"
+#import "IOHIDPostEventWrapper.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
 #import "StatusWindow.h"
@@ -7,6 +8,7 @@
 
 @implementation ClientForKernelspace
 
+@synthesize iohidPostEventWrapper;
 @synthesize userClient_userspace;
 @synthesize statusWindow;
 @synthesize workSpaceData;
@@ -35,6 +37,10 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
                      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
                        [[self workSpaceData] selectInputSource:option];
+                       break;
+
+                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
+                       [[self iohidPostEventWrapper] postAuxKey:option];
                        break;
                    }
                  });
