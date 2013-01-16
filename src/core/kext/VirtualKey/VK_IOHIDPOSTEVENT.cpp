@@ -41,31 +41,33 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
-    if (params.ex_iskeydown && params.repeat == false) {
+    if (params.ex_iskeydown) {
       org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT, keytype);
     }
     return true;
   }
 
   void
-  VirtualKey::VK_IOHIDPOSTEVENT::post(ConsumerKeyCode keycode)
+  VirtualKey::VK_IOHIDPOSTEVENT::post(const Params_KeyboardSpecialEventCallback& params)
   {
     uint32_t keytype = 0;
-    /**/ if (keycode == ConsumerKeyCode::BRIGHTNESS_DOWN)    { keytype = NX_KEYTYPE_BRIGHTNESS_DOWN;     }
-    else if (keycode == ConsumerKeyCode::BRIGHTNESS_UP)      { keytype = NX_KEYTYPE_BRIGHTNESS_UP;       }
-    else if (keycode == ConsumerKeyCode::KEYBOARDLIGHT_OFF)  { keytype = NX_KEYTYPE_ILLUMINATION_TOGGLE; }
-    else if (keycode == ConsumerKeyCode::KEYBOARDLIGHT_LOW)  { keytype = NX_KEYTYPE_ILLUMINATION_DOWN;   }
-    else if (keycode == ConsumerKeyCode::KEYBOARDLIGHT_HIGH) { keytype = NX_KEYTYPE_ILLUMINATION_UP;     }
-    else if (keycode == ConsumerKeyCode::MUSIC_PREV)         { keytype = NX_KEYTYPE_PREVIOUS;            }
-    else if (keycode == ConsumerKeyCode::MUSIC_PLAY)         { keytype = NX_KEYTYPE_PLAY;                }
-    else if (keycode == ConsumerKeyCode::MUSIC_NEXT)         { keytype = NX_KEYTYPE_NEXT;                }
-    else if (keycode == ConsumerKeyCode::VOLUME_MUTE)        { keytype = NX_KEYTYPE_MUTE;                }
-    else if (keycode == ConsumerKeyCode::VOLUME_DOWN)        { keytype = NX_KEYTYPE_SOUND_DOWN;          }
-    else if (keycode == ConsumerKeyCode::VOLUME_UP)          { keytype = NX_KEYTYPE_SOUND_UP;            }
+    /**/ if (params.key == ConsumerKeyCode::BRIGHTNESS_DOWN)    { keytype = NX_KEYTYPE_BRIGHTNESS_DOWN;     }
+    else if (params.key == ConsumerKeyCode::BRIGHTNESS_UP)      { keytype = NX_KEYTYPE_BRIGHTNESS_UP;       }
+    else if (params.key == ConsumerKeyCode::KEYBOARDLIGHT_OFF)  { keytype = NX_KEYTYPE_ILLUMINATION_TOGGLE; }
+    else if (params.key == ConsumerKeyCode::KEYBOARDLIGHT_LOW)  { keytype = NX_KEYTYPE_ILLUMINATION_DOWN;   }
+    else if (params.key == ConsumerKeyCode::KEYBOARDLIGHT_HIGH) { keytype = NX_KEYTYPE_ILLUMINATION_UP;     }
+    else if (params.key == ConsumerKeyCode::MUSIC_PREV)         { keytype = NX_KEYTYPE_PREVIOUS;            }
+    else if (params.key == ConsumerKeyCode::MUSIC_PLAY)         { keytype = NX_KEYTYPE_PLAY;                }
+    else if (params.key == ConsumerKeyCode::MUSIC_NEXT)         { keytype = NX_KEYTYPE_NEXT;                }
+    else if (params.key == ConsumerKeyCode::VOLUME_MUTE)        { keytype = NX_KEYTYPE_MUTE;                }
+    else if (params.key == ConsumerKeyCode::VOLUME_DOWN)        { keytype = NX_KEYTYPE_SOUND_DOWN;          }
+    else if (params.key == ConsumerKeyCode::VOLUME_UP)          { keytype = NX_KEYTYPE_SOUND_UP;            }
     else {
       return;
     }
 
-    org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT, keytype);
+    if (params.ex_iskeydown) {
+      org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT, keytype);
+    }
   }
 }

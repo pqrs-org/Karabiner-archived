@@ -107,7 +107,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (params) {
           if (! ListHookedConsumer::instance().apply(*params)) {
             // If there is no consumer device, we send software key.
-            VirtualKey::VK_IOHIDPOSTEVENT::post(params->key);
+            VirtualKey::VK_IOHIDPOSTEVENT::post(*params);
           }
         }
         break;
