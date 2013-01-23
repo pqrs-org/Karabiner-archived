@@ -42,5 +42,25 @@
       <inputsource_only>SPANISH</inputsource_only>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
     </item>
+    <item>
+      <name>Change Command_R+n to ñ</name>
+      <appendix>For Spanish in international US keyboard</appendix>
+      <identifier>remap.us_intl.ES.OptionR_n</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+        KeyCode::N, ModifierFlag::OPTION_R, KeyCode::N
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+        KeyCode::N, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::SHIFT_R
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+        KeyCode::N, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
   </item>
 </root>
