@@ -808,6 +808,29 @@
           KeyCode::SPACE,
         </autogen>
       </item>
+      <item>
+        <name>Note:</name>
+        <appendix>Basically, a sending key will not be modified by other manipulators such as __KeyToKey__.</appendix>
+        <appendix>Option::SIMULTANEOUSKEYPRESSES_RAW removes this restriction.</appendix>
+        <appendix>This option allows you to modify a sending key once more by __KeyToKey__.</appendix>
+        <appendix></appendix>
+        <name>──────────────────────────────</name>
+        <appendix>For example:</appendix>
+        <appendix>A space key event is sent when you press Q and W keys simultaneously with following rules.</appendix>
+        <appendix></appendix>
+        <appendix>- Simultaneous [Q+W] to Return with Option::SIMULTANEOUSKEYPRESSES_RAW</appendix>
+        <appendix>- Return to Space</appendix>
+        <appendix></appendix>
+        <appendix>__SimultaneousKeyPresses__ changes Q+W to Return and</appendix>
+        <appendix>__KeyToKey__ changes Return to Space. So, Q+W becomes a space key event.</appendix>
+        <name>──────────────────────────────</name>
+        <appendix></appendix>
+        <appendix>There is a limitation of Option::SIMULTANEOUSKEYPRESSES_RAW.</appendix>
+        <appendix>This option strips modifiers from a sending key.</appendix>
+        <appendix>For example, when you use Option::SIMULTANEOUSKEYPRESSES_RAW,</appendix>
+        <appendix>"[Q+W] to Shift+Return" acts as "[Q+W] to Return".</appendix>
+        <appendix>Please append modifiers to a sending key by __KeyToKey__ or other manipulators.</appendix>
+      </item>
     </item>
 
     <item>
