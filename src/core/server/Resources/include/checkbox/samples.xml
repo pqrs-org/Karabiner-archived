@@ -708,7 +708,7 @@
         <appendix>(A+D to A,Shift_L+S,Control_L+D,F)</appendix>
         <appendix>(A+G to Shift_L)</appendix>
         <appendix>(Command_R+[E+R] to Space)</appendix>
-        <appendix>(Command_R+[R+T] to Space)</appendix>
+        <appendix>(Command_R+[R+T] to Option+Space)</appendix>
         <appendix>(Control_L+[R+T] to Shift_L)</appendix>
         <appendix>(R+T to Delete)</appendix>
         <appendix>(Fn+[K+L] to Space)</appendix>
@@ -716,7 +716,7 @@
         <appendix>(Control_L+Option_L to Fn)</appendix>
         <appendix>Return to Space</appendix>
         <appendix>(Z+X to Return (== to Return))</appendix>
-        <appendix>(X+C to Return with Option::RAW (== to Space))</appendix>
+        <appendix>(X+C to Return with Option::SIMULTANEOUSKEYPRESSES_RAW (== to Space))</appendix>
         <appendix>(W+E to Escape if application == TERMINAL)</appendix>
         <appendix>(Q+W to Escape if Input Source == English)</appendix>
         <identifier>remap.samples_simultaneouskeypresses_keytokey</identifier>
@@ -726,7 +726,7 @@
         <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::A, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::G, KeyCode::A, KeyCode::SHIFT_L</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::R, KeyCode::E, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::T, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::SPACE</autogen>
+        <autogen>__SimultaneousKeyPresses__ KeyCode::T, KeyCode::R, ModifierFlag::COMMAND_R, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::T, KeyCode::R, ModifierFlag::CONTROL_L, KeyCode::SHIFT_L</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::T, KeyCode::R, KeyCode::DELETE</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::L, KeyCode::K, ModifierFlag::FN, KeyCode::SPACE</autogen>
@@ -734,7 +734,7 @@
         <autogen>__SimultaneousKeyPresses__ KeyCode::CONTROL_L, KeyCode::OPTION_L, KeyCode::FN</autogen>
         <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::SPACE</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::X, KeyCode::Z, KeyCode::RETURN</autogen>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::C, KeyCode::X, KeyCode::RETURN, SimultaneousKeyPresses::Option::RAW</autogen>
+        <autogen>__SimultaneousKeyPresses__ KeyCode::C, KeyCode::X, KeyCode::RETURN, Option::SIMULTANEOUSKEYPRESSES_RAW</autogen>
         <block>
           <only>TERMINAL</only>
           <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::W, KeyCode::ESCAPE</autogen>
