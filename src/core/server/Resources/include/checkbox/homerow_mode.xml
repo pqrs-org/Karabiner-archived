@@ -248,5 +248,11 @@
       <name>[Option] Y to Command + Delete</name>
       <identifier>option.homerow_mode_y_to_command_delete</identifier>
     </item>
+    <item>
+      <name>[Option] Delete to Forword Delete</name>
+      <identifier>option.homerow_mode_delete_to_forward_delete</identifier>
+      <config_only>notsave.homerow_mode</config_only>
+      <autogen>__KeyToKey__ KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
+    </item>
   </item>
 </root>
