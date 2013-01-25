@@ -825,11 +825,19 @@
         <appendix>__KeyToKey__ changes Return to Space. So, Q+W becomes a space key event.</appendix>
         <name>──────────────────────────────</name>
         <appendix></appendix>
-        <appendix>There is a limitation of Option::SIMULTANEOUSKEYPRESSES_RAW.</appendix>
+        <appendix>There are two limitations of Option::SIMULTANEOUSKEYPRESSES_RAW.</appendix>
+        <appendix></appendix>
+        <appendix>Limitation 1:</appendix>
         <appendix>This option strips modifiers from a sending key.</appendix>
         <appendix>For example, when you use Option::SIMULTANEOUSKEYPRESSES_RAW,</appendix>
         <appendix>"[Q+W] to Shift+Return" acts as "[Q+W] to Return".</appendix>
         <appendix>Please append modifiers to a sending key by __KeyToKey__ or other manipulators.</appendix>
+        <appendix></appendix>
+        <appendix>Limitation 2:</appendix>
+        <appendix>This option does not send multiple keys. Only the first key will be sent.</appendix>
+        <appendix>For example, when you use Option::SIMULTANEOUSKEYPRESSES_RAW,</appendix>
+        <appendix>"[Q+W] to A,S,D,F" acts as "[Q+W] to A".</appendix>
+        <appendix>Please send multiple keys by __KeyToKey__ or other manipulators.</appendix>
       </item>
     </item>
 
