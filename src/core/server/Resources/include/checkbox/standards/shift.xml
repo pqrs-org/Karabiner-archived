@@ -5,7 +5,7 @@
     <item>
       <name>Shift to Shift</name>
       <appendix>(+ When you type Shift only, send the appropriate parenthesis)</appendix>
-      <identifier>private.shiftparens</identifier>
+      <identifier>remap.shiftparens</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::KEY_0, ModifierFlag::SHIFT_R</autogen>
     </item>
