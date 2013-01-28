@@ -402,6 +402,58 @@
         <include path="keyboard_layouts/dvorak.xml" />
       </item>
     </item>
+
+    <item>
+      <name>Oyayubi R 1 line Shift</name>
+      <appendix>右手1行ずらし 親指シフト (NICOLA)</appendix>
+      <item>
+        <name>＜ローマ字モード＞ 右手1行ずらし 左シフト＝スペース, 右シフト＝かな</name>
+        <identifier>remap.oyayubi_shift_roman_space_kana_migi_shift</identifier>
+
+        <include path="keyboard_layouts/r_oyayubishiftinput_roman.xml">
+          <replacementdef>
+            <replacementname>LEFT_THUMB</replacementname>
+            <replacementvalue>KeyCode::SPACE</replacementvalue>
+          </replacementdef>
+          <replacementdef>
+            <replacementname>RIGHT_THUMB</replacementname>
+            <replacementvalue>KeyCode::JIS_KANA</replacementvalue>
+          </replacementdef>
+        </include>
+      </item>
+
+      <item>
+        <name>］キーをDeleteキーにする（後退キー）</name>
+        <identifier>remap.jis_oyayubishiftinput_Bracket_right_2_backspace</identifier>
+        <inputmode_only>JAPANESE</inputmode_only>
+        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, KeyCode::DELETE</autogen>
+      </item>
+      <item><name>─ ATOK 設定 ────────────────────────</name></item>
+
+      <item>
+        <name>Yキーを全角カタカナ変換(”Ctrl + I”)にする。</name>
+        <identifier>remap.jis_oyayubishiftinput_Y_key_2_Ctrl+I</identifier>
+        <inputmode_only>JAPANESE</inputmode_only>
+        <autogen>__KeyToKey__ KeyCode::Y, ModifierFlag::NONE, KeyCode::I, ModifierFlag::CONTROL_L,  KeyCode::VK_NONE</autogen>
+      </item>
+
+      <item>
+        <name>Hキーを半角英数 変換(”Ctrl + @”)にする。</name>
+        <identifier>remap.jis_oyayubishiftinput_H_key_2_Ctrl+@</identifier>
+        <inputmode_only>JAPANESE</inputmode_only>
+        <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::NONE, KeyCode::JIS_ATMARK, ModifierFlag::CONTROL_L,  KeyCode::VK_NONE</autogen>
+      </item>
+
+      <item>
+        <name>Nキーを再変換(”Ctrl + Shift + Y”)にする。</name>
+        <identifier>remap.jis_oyayubishiftinput_N_key_2_Ctrl+SHIFT+Y</identifier>
+        <inputmode_only>JAPANESE</inputmode_only>
+        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::NONE, KeyCode::Y, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,  KeyCode::VK_NONE</autogen>
+      </item>
+
+      <item><name>──────────────────────────────</name></item>
+    </item>
+
     <item>
       <name>NICOLA on Kinesis</name>
 
