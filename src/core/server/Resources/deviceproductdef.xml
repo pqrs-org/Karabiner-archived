@@ -51,6 +51,21 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>APPLE_EXTERNAL_KEYBOARD_0x0203</productname>
+    <productid>0x0203</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_EXTERNAL_KEYBOARD_0x021d</productname>
+    <productid>0x021d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_EXTERNAL_KEYBOARD_0x0220</productname>
+    <productid>0x0220</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>APPLE_EXTERNAL_KEYBOARD_0x0221</productname>
     <productid>0x0221</productid>
   </deviceproductdef>
@@ -66,8 +81,18 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>APPLE_WIRELESS_KEYBOARD_0x022c</productname>
+    <productid>0x022c</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>APPLE_WIRELESS_KEYBOARD_0x022d</productname>
     <productid>0x022d</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>APPLE_WIRELESS_KEYBOARD_0x0255</productname>
+    <productid>0x0255</productid>
   </deviceproductdef>
 
   <deviceproductdef>
