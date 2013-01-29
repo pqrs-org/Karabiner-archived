@@ -36,7 +36,7 @@
       <name>VK_CHANGE_INPUTSOURCE_*</name>
       <item>
         <name>Standard</name>
-        <appendix>Use 1 to VK_CHANGE_INPUTSOURCE_ENGLISH</appendix>
+        <appendix>Use 1 to VK_CHANGE_INPUTSOURCE_US</appendix>
         <appendix>Use 2 to VK_CHANGE_INPUTSOURCE_FRENCH</appendix>
         <appendix>Use 3 to VK_CHANGE_INPUTSOURCE_GERMAN</appendix>
         <appendix>Use 4 to VK_CHANGE_INPUTSOURCE_JAPANESE</appendix>
@@ -54,7 +54,7 @@
         <appendix>Use Y to VK_CHANGE_INPUTSOURCE_UKRAINIAN</appendix>
         <appendix>Use U to VK_CHANGE_INPUTSOURCE_UKRAINIAN_PC</appendix>
         <identifier>remap.samples_vk_change_inputsource</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_CHANGE_INPUTSOURCE_US</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_CHANGE_INPUTSOURCE_GERMAN</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE</autogen>
@@ -74,15 +74,19 @@
       </item>
       <item>
         <name>With VK_WAIT</name>
-        <appendix>Change S to Dvorak:S, Qwerty:S ("os" will be input).</appendix>
+        <appendix>Change S to Dvorak:S, US:S ("os" will be input).</appendix>
         <identifier>remap.samples_vk_change_inputsource_with_vk_wait</identifier>
         <autogen>
           __KeyToKey__ KeyCode::S,
           KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK,
           KeyCode::VK_WAIT_10MS,
           KeyCode::VK_WAIT_10MS,
+          KeyCode::VK_WAIT_10MS,
+          KeyCode::VK_WAIT_10MS,
           KeyCode::S,
-          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          KeyCode::VK_CHANGE_INPUTSOURCE_US,
+          KeyCode::VK_WAIT_10MS,
+          KeyCode::VK_WAIT_10MS,
           KeyCode::VK_WAIT_10MS,
           KeyCode::VK_WAIT_10MS,
           KeyCode::S,
