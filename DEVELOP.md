@@ -10,9 +10,7 @@ The functions of KeyRemap4MacBook by Developer's perspective.
 * The key repeat function.
 * Add private setting dynamically by private.xml.
 * Filtering by application or input source or specific device, etc.
-* Send Growl notification. (The status of Modifier Lock and extra messages.)
 * Support to "Fast User Switching".
-* PreferencePane in System Preferences.
 * Check software updates automatically
 
 
