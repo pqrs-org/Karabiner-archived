@@ -141,7 +141,7 @@ public:
       return *node_;
     }
 
-    bool equal(const extracted_ptree_iterator const& other) const {
+    bool equal(const extracted_ptree_iterator& other) const {
       if (is_end_() && other.is_end_()) {
         return true;
       }
