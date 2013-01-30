@@ -1,4 +1,7 @@
-Changes since 7.8.0
+Changes since 8.0.0
+
+----------------------------------------------------------------------
+= version 8.0.0 =
 
     - Changed Preferences location.
       http://pqrs.org/macosx/keyremap4macbook/document.html
