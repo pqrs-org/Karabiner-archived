@@ -77,6 +77,12 @@ done
 #   Please also see postflight.
 #
 sh "files/extra/setpermissions.sh" pkgroot
+sh "files/extra/setpermissions.sh" pkginfo
+chmod 755 \
+    pkginfo/Resources/InstallationCheck \
+    pkginfo/Resources/postflight \
+    pkginfo/Resources/preflight \
+    pkginfo/fixbom.rb
 
 # --------------------------------------------------
 echo "Exec PackageMaker"
