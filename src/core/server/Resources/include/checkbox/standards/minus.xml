@@ -7,5 +7,15 @@
       <identifier>remap.minus2semicolon</identifier>
       <autogen>__KeyToKey__ KeyCode::MINUS, KeyCode::SEMICOLON</autogen>
     </item>
+    <item>
+      <name>Swap Minus and Underscore</name>
+      <identifier>private.swap_minus_and_underscore</identifier>
+      <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::NONE,
+        KeyCode::MINUS, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, VK_SHIFT | ModifierFlag::NONE,
+        KeyCode::MINUS
+      </autogen>
+    </item>
   </item>
 </root>
