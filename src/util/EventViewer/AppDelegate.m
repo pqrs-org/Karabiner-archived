@@ -51,15 +51,19 @@
   [self setKeyResponder];
   [self updateOtherInformationStore];
 
+  // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
+  // in order to get notifications when this app is not active.
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_applicationChanged:)
                                                           name:kKeyRemap4MacBookApplicationChangedNotification
-                                                        object:nil];
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_inputSourceChanged:)
                                                           name:kKeyRemap4MacBookInputSourceChangedNotification
-                                                        object:nil];
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
