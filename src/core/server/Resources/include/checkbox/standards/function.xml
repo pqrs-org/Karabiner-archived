@@ -876,6 +876,30 @@
         </item>
         <item><name>──────────────────────────────</name></item>
         <item>
+          <name>F10,F11,F12 to speaker control.</name>
+          <appendix>F10 to mute</appendix>
+          <appendix>F11,F12 to volume control by 1/4-notch intervals.</appendix>
+          <appendix>Holding F10 key to open sound preferences.</appendix>
+          <appendix>Holding F11,F12 key to volume control by normal intervals.</appendix>
+          <identifier>remap.f10_f11_f12_to_volume_control_holding</identifier>
+          <autogen>__HoldingKeyToKey__
+            KeyCode::F10, ModifierFlag::NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_MUTE, KeyCode::VK_NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_MUTE, VK_OPTION
+          </autogen>
+          <autogen>__HoldingKeyToKey__
+            KeyCode::F11, ModifierFlag::NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_DOWN, VK_SHIFT | VK_OPTION, KeyCode::VK_NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_DOWN
+          </autogen>
+          <autogen>__HoldingKeyToKey__
+            KeyCode::F12, ModifierFlag::NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_UP, VK_SHIFT | VK_OPTION, KeyCode::VK_NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_UP
+          </autogen>
+        </item>
+        <item><name>──────────────────────────────</name></item>
+        <item>
           <name>F13 to Volume Mute</name>
           <identifier>remap.f13_to_volumemute_all</identifier>
           <autogen>__KeyToConsumer__ KeyCode::F13, ConsumerKeyCode::VOLUME_MUTE</autogen>
