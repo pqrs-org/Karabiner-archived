@@ -9,7 +9,7 @@
     </item>
     <item>
       <name>Swap Minus and Underscore</name>
-      <identifier>private.swap_minus_and_underscore</identifier>
+      <identifier>remap.swap_minus_and_underscore</identifier>
       <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::NONE,
         KeyCode::MINUS, ModifierFlag::SHIFT_L
       </autogen>
