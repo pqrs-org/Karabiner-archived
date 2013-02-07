@@ -185,6 +185,7 @@
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name>
     <languagecode>en</languagecode>
+    <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -262,6 +263,7 @@
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</name>
     <languagecode>ru</languagecode>
     <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
+    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
