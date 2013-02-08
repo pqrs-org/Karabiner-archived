@@ -292,6 +292,11 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>PORTUGUESE</name>
+    <languagecode>pt</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>RUSSIAN</name>
     <languagecode>ru</languagecode>
   </inputsourcedef>
