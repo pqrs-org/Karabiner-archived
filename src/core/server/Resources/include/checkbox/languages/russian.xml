@@ -74,12 +74,6 @@
         <identifier>remap.russian_shiftR2shiftR_russian</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</autogen>
       </item>
-      <item>
-        <name>Shift_R to Shift_R</name>
-        <appendix>(+ When you type Shift_R only, change Input Source to "Russian - Ilya Birman Typography".)</appendix>
-        <identifier>remap.russian_shiftR2shiftR_russian_typography</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</autogen>
-      </item>
     </item>
     <item>
       <name>Change Tilde(~) Key</name>
