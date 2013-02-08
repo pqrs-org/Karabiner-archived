@@ -260,6 +260,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_PORTUGUESE</name>
+    <languagecode>pt</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN</name>
     <languagecode>ru</languagecode>
     <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
