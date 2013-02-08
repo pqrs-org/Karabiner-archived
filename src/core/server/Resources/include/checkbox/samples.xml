@@ -308,6 +308,15 @@
         <appendix></appendix>
         <appendix>Change Input Source while pressing right option key.</appendix>
         <appendix>(Sending Command+Space when pressing/releasing right option key.)</appendix>
+        <appendix></appendix>
+        <appendix>SimultaneousKeyPresses S+D to B.</appendix>
+        <appendix>(BeforeKeyDown C, AfterKeyUp D)</appendix>
+        <appendix></appendix>
+        <appendix>Volume Mute to B.</appendix>
+        <appendix>(BeforeKeyDown C, AfterKeyUp D)</appendix>
+        <appendix></appendix>
+        <appendix>Right Click to B.</appendix>
+        <appendix>(BeforeKeyDown C, AfterKeyUp D)</appendix>
         <identifier>remap.samples_keytokey_beforekeydown</identifier>
         <autogen>__KeyToKey__
           KeyCode::KEY_1, KeyCode::A,
@@ -333,6 +342,24 @@
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_NONE,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
+        </autogen>
+        <autogen>__SimultaneousKeyPresses__
+          KeyCode::S, KeyCode::D,
+          KeyCode::B,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D,
+        </autogen>
+        <autogen>__ConsumerToKey__
+          ConsumerKeyCode::VOLUME_MUTE,
+          KeyCode::B,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D,
+        </autogen>
+        <autogen>__PointingButtonToKey__
+          PointingButton::RIGHT,
+          KeyCode::B,
+          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D,
         </autogen>
       </item>
 
