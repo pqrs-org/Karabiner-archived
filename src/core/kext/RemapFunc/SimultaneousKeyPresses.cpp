@@ -130,7 +130,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == newval) {
             isStrictKeyOrder_ = true;
 
-          } else if (Option::NOREPEAT == newval) {
+          } else if (Option::NOREPEAT == newval ||
+                     Option::KEYTOKEY_BEFORE_KEYDOWN == newval ||
+                     Option::KEYTOKEY_AFTER_KEYUP == newval) {
             if (toType_ != TOTYPE_KEY) {
               IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
             } else {

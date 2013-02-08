@@ -66,7 +66,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::NOREPEAT == newval) {
+          if (Option::NOREPEAT == newval ||
+              Option::KEYTOKEY_BEFORE_KEYDOWN == newval ||
+              Option::KEYTOKEY_AFTER_KEYUP == newval) {
             keytokey_.add(Option(newval));
           } else {
             IOLOG_ERROR("ConsumerToKey::add unknown option:%d\n", newval);
