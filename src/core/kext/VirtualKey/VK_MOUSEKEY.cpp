@@ -254,6 +254,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (params.key == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF) {
       ButtonStatus::lock_clear();
+      EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
       return true;
     }
 
