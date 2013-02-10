@@ -5,7 +5,11 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace VirtualKey {
-    class VK_CHANGE_INPUTSOURCE {
+    // This class implements these keycodes.
+    // - KeyCode::VK_CHANGE_INPUTSOURCE_*
+    // - KeyCode::VK_OPEN_URL_*
+
+    class VK_DEFINED_IN_USERSPACE {
     public:
       static void initialize(void);
       static void terminate(void);

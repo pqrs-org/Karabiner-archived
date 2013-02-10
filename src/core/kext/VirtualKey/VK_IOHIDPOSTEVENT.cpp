@@ -8,7 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::VK_IOHIDPOSTEVENT::handle(const Params_KeyboardEventCallBack& params)
   {
     // We need to send events at handleAfterEnqueued.
-    // See VK_CHANGE_INPUTSOURCE::handle.
+    // See VK_DEFINED_IN_USERSPACE::handle.
 
     return false;
   }

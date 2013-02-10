@@ -482,7 +482,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           } else {
             unsigned int keycode = p[1];
-            VirtualKey::VK_CHANGE_INPUTSOURCE::add_item(this, keycode);
+            VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(this, keycode);
           }
 
         } else {
