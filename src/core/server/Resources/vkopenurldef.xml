@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<root>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WEB_FACEBOOK</name>
+    <url>https://www.facebook.com/</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WEB_GOOGLE</name>
+    <url>https://www.google.com/</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WEB_PQRS_ORG</name>
+    <url>http://pqrs.org/</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WEB_TWITTER</name>
+    <url>https://twitter.com/</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_FINDER</name>
+    <url>file:///System/Library/CoreServices/Finder.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_SAFARI</name>
+    <url>file:///Applications/Safari.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_TEXTEDIT</name>
+    <url>file:///Applications/TextEdit.app</url>
+  </vkopenurldef>
+</root>
