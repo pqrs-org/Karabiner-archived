@@ -40,6 +40,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector_prepare_loader.hpp"
 #include "pqrs/xml_compiler/detail/loader_wrapper.hpp"
 #include "pqrs/xml_compiler/detail/inputsource.hpp"
+#include "pqrs/xml_compiler/detail/url.hpp"
 
     xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
       system_xml_directory_(system_xml_directory),
@@ -132,6 +133,7 @@ namespace pqrs {
     std::vector<std::tr1::shared_ptr<app> > app_vector_;
     std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> > vk_change_inputsource_map_;
     std::vector<std::tr1::shared_ptr<inputsource> > inputsource_vector_;
+    std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<url> > vk_open_url_map_;
     std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
     std::vector<std::tr1::shared_ptr<essential_configuration> > essential_configurations_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
