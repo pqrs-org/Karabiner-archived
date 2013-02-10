@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>VKOPENURLDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <vkopenurldef>
+          <name>KeyCode::VK_OPEN_URL_HTTP_PQRS_ORG</name>
+        </vkopenurldef>
+        ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>

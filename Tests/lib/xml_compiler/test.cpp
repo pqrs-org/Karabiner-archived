@@ -11,16 +11,22 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
   EXPECT_EQ("", xml_compiler.get_error_information().get_message());
 
-  EXPECT_EQ(boost::optional<uint32_t>(0), xml_compiler.get_symbol_map_value("ConfigIndex::system_vk_change_inputsource_definition"));
-  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_private_sample"));
-  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_passthrough"));
-  EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_remap_sample"));
-  EXPECT_EQ(boost::optional<uint32_t>(4), xml_compiler.get_symbol_map_value("ConfigIndex::private_include_test"));
-  EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map_value("ConfigIndex::private_replacement"));
-  EXPECT_EQ(boost::optional<uint32_t>(6), xml_compiler.get_symbol_map_value("ConfigIndex::private_space_is_ignored"));
   {
+    int v = 0;
+    int space_is_ignored = 0;
+
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::system_vk_change_inputsource_definition"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::system_vk_open_url_definition"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_private_sample"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_passthrough"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_remap_sample"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_include_test"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_replacement"));
+    space_is_ignored = v;
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_space_is_ignored"));
+
     std::string expected = "private.space_ is_ ignored";
-    EXPECT_EQ(boost::optional<const std::string&>(expected), xml_compiler.get_identifier(6));
+    EXPECT_EQ(boost::optional<const std::string&>(expected), xml_compiler.get_identifier(space_is_ignored));
   }
 
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
@@ -149,7 +155,23 @@ TEST(pqrs_xml_compiler, reload)
   }
 
   // ------------------------------------------------------------
-  uint32_t vk_config_base = vk_change_inputsource_base;
+  // vkopenurldef
+  uint32_t vk_open_url_base = vk_change_inputsource_base;
+
+  {
+    EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
+              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_HTTP_PQRS_ORG"));
+    ++vk_open_url_base;
+  }
+
+  {
+    EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
+              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TEXTEDIT"));
+    ++vk_open_url_base;
+  }
+
+  // ------------------------------------------------------------
+  uint32_t vk_config_base = vk_open_url_base;
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
             xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
@@ -406,6 +428,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       std::vector<uint32_t> expected;
 
+      int config_index_notsave_passthrough = 2;
+
       // ------------------------------------------------------------
       // <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
       expected.push_back(7);      // count
@@ -419,7 +443,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       expected.push_back(2);      // count
       expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(1);      // ConfigIndex::notsave_passthrough
+      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
 
       expected.push_back(7);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
@@ -432,7 +456,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       expected.push_back(2);      // count
       expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(1);      // ConfigIndex::notsave_passthrough
+      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
 
       // ------------------------------------------------------------
       // <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::SPACE</autogen>
@@ -447,7 +471,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       expected.push_back(2);      // count
       expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(1);      // ConfigIndex::notsave_passthrough
+      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
 
       expected.push_back(7);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
@@ -460,7 +484,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       expected.push_back(2);      // count
       expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(1);      // ConfigIndex::notsave_passthrough
+      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
 
       EXPECT_EQ(expected, actual);
     }

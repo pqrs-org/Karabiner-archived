@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>VKOPENURLDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <vkopenurldef>
+          <name></name>
+          <url>http://pqrs.org/</url>
+        </vkopenurldef>
+        ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<root>
+  {{ VKOPENURLDEF_REPLACEMENT }}
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_HTTP_PQRS_ORG</name>
+    <url>http://pqrs.org/</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_TEXTEDIT</name>
+    <url>file:///Applications/TextEdit.app</url>
+  </vkopenurldef>
+
+</root>
