@@ -5,16 +5,16 @@
 #include "VK_DEFINED_IN_USERSPACE.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  VirtualKey::VK_CHANGE_INPUTSOURCE::Vector_Item* VirtualKey::VK_CHANGE_INPUTSOURCE::items_ = NULL;
+  VirtualKey::VK_DEFINED_IN_USERSPACE::Vector_Item* VirtualKey::VK_DEFINED_IN_USERSPACE::items_ = NULL;
 
   void
-  VirtualKey::VK_CHANGE_INPUTSOURCE::initialize(void)
+  VirtualKey::VK_DEFINED_IN_USERSPACE::initialize(void)
   {
     items_ = new Vector_Item();
   }
 
   void
-  VirtualKey::VK_CHANGE_INPUTSOURCE::terminate(void)
+  VirtualKey::VK_DEFINED_IN_USERSPACE::terminate(void)
   {
     if (items_) {
       delete items_;
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  VirtualKey::VK_CHANGE_INPUTSOURCE::add_item(RemapClass* remapclass, unsigned int keycode)
+  VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode)
   {
     if (! items_) return;
 
@@ -30,15 +30,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  VirtualKey::VK_CHANGE_INPUTSOURCE::clear_items(void)
+  VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items(void)
   {
+    if (! items_) return;
+
     items_->clear();
   }
 
   bool
-  VirtualKey::VK_CHANGE_INPUTSOURCE::handle(const Params_KeyboardEventCallBack& params)
+  VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& params)
   {
-    // VK_CHANGE_INPUTSOURCE uses UserClient which is effective immediately.
+    // VK_DEFINED_IN_USERSPACE uses UserClient which is effective immediately.
     // Considering KeyCode::VK_WAIT, we should not send notification via UserClient at here.
     //
     // For example:
@@ -89,7 +91,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  VirtualKey::VK_CHANGE_INPUTSOURCE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
+  VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
   {
     if (! items_) return false;
 

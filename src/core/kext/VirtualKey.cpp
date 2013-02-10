@@ -25,8 +25,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     VirtualKey::VK_MOUSEKEY::initialize(workloop);
     VirtualKey::VK_JIS_TEMPORARY::initialize(workloop);
 
-    VirtualKey::VK_CHANGE_INPUTSOURCE::initialize();
     VirtualKey::VK_CONFIG::initialize();
+    VirtualKey::VK_DEFINED_IN_USERSPACE::initialize();
   }
 
   void
@@ -35,8 +35,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     VirtualKey::VK_MOUSEKEY::terminate();
     VirtualKey::VK_JIS_TEMPORARY::terminate();
 
-    VirtualKey::VK_CHANGE_INPUTSOURCE::terminate();
     VirtualKey::VK_CONFIG::terminate();
+    VirtualKey::VK_DEFINED_IN_USERSPACE::terminate();
   }
 
   void
@@ -48,9 +48,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::handle(const Params_KeyboardEventCallBack& params)
   {
-    if (VirtualKey::VK_CHANGE_INPUTSOURCE::handle(params))    { return true; }
     if (VirtualKey::VK_CONFIG::handle(params))                { return true; }
     if (VirtualKey::VK_CONSUMERKEY::handle(params))           { return true; }
+    if (VirtualKey::VK_DEFINED_IN_USERSPACE::handle(params))  { return true; }
     if (VirtualKey::VK_IOHIDPOSTEVENT::handle(params))        { return true; }
     if (VirtualKey::VK_LAZY::handle(params))                  { return true; }
     if (VirtualKey::VK_LOCK::handle(params))                  { return true; }
@@ -67,8 +67,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
   {
-    if (VirtualKey::VK_CHANGE_INPUTSOURCE::handleAfterEnqueued(params)) { return true; }
-    if (VirtualKey::VK_IOHIDPOSTEVENT::handleAfterEnqueued(params))     { return true; }
+    if (VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(params)) { return true; }
+    if (VirtualKey::VK_IOHIDPOSTEVENT::handleAfterEnqueued(params))       { return true; }
     return false;
   }
 
