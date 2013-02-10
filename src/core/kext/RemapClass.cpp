@@ -2,7 +2,7 @@
 #include "RemapClass.hpp"
 #include "KeyboardRepeat.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
-#include "VirtualKey/VK_CHANGE_INPUTSOURCE.hpp"
+#include "VirtualKey/VK_DEFINED_IN_USERSPACE.hpp"
 #include "util/CommonData.hpp"
 #include "util/EventInputQueue.hpp"
 #include "strlcpy_utf8.hpp"

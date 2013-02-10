@@ -2,7 +2,7 @@
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "UserClient_kext.hpp"
-#include "VK_CHANGE_INPUTSOURCE.hpp"
+#include "VK_DEFINED_IN_USERSPACE.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::VK_CHANGE_INPUTSOURCE::Vector_Item* VirtualKey::VK_CHANGE_INPUTSOURCE::items_ = NULL;
