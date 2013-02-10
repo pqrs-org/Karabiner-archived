@@ -5,7 +5,7 @@
     <replacementvalue>
       <![CDATA[
         <vkopenurldef>
-          <name>KeyCode::VK_OPEN_URL_HTTP_PQRS_ORG</name>
+          <name>KeyCode::VK_OPEN_URL_WEB_PQRS_ORG</name>
         </vkopenurldef>
         ]]>
     </replacementvalue>

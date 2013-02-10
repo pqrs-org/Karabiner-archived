@@ -160,7 +160,7 @@ TEST(pqrs_xml_compiler, reload)
 
   {
     EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_HTTP_PQRS_ORG"));
+              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_PQRS_ORG"));
     ++vk_open_url_base;
   }
 
