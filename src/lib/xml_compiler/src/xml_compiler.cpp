@@ -14,6 +14,7 @@ namespace pqrs {
     app_vector_.clear();
     vk_change_inputsource_map_.clear();
     inputsource_vector_.clear();
+    vk_open_url_map_.clear();
     identifier_map_.clear();
     essential_configurations_.clear();
     remapclasses_initialize_vector_.clear();
@@ -108,6 +109,21 @@ namespace pqrs {
 
         loader_wrapper<inputsource_loader>::traverse_system_xml(*this, loader, "vkchangeinputsourcedef.xml");
         loader_wrapper<inputsource_loader>::traverse_system_xml(*this, loader, "inputsourcedef.xml");
+      }
+
+      // url
+      {
+        url_loader loader(*this,
+                          symbol_map_,
+                          remapclasses_initialize_vector_,
+                          identifier_map_,
+                          vk_open_url_map_);
+
+        if (private_xml_ptree_ptr) {
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
+        }
+
+        loader_wrapper<url_loader>::traverse_system_xml(*this, loader, "vkopenurldef.xml");
       }
 
       // config_index, remapclasses_initialize_vector, preferences_node

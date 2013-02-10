@@ -43,8 +43,9 @@ enum {
   // Version 35: Removed an essential configuration. (general.suppress_growl_warning)
   // Version 36: Added Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL
   // Version 37: Added KeyCode::VK_IOHIDPOSTEVENT_*.
+  // Version 38: Added BRIDGE_VK_OPEN_URL
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 37,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 38,
 };
 
 enum {
@@ -102,6 +103,7 @@ enum {
   BRIDGE_STATUSMESSAGE,
   BRIDGE_VK_CONFIG,
   BRIDGE_VK_CHANGE_INPUTSOURCE,
+  BRIDGE_VK_OPEN_URL,
 };
 
 // ------------------------------------------------------------
