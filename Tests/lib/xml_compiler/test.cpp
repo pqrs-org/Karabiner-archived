@@ -160,13 +160,13 @@ TEST(pqrs_xml_compiler, reload)
 
   {
     EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_PQRS_ORG"));
+              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_pqrs_org"));
     ++vk_open_url_base;
   }
 
   {
     EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TEXTEDIT"));
+              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TextEdit"));
     ++vk_open_url_base;
   }
 
@@ -223,10 +223,10 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::none, xml_compiler.get_url(0));
 
   EXPECT_EQ("http://pqrs.org/",
-            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_PQRS_ORG")))));
+            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_pqrs_org")))));
 
   EXPECT_EQ("file:///Applications/TextEdit.app",
-            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TEXTEDIT")))));
+            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TextEdit")))));
 
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());

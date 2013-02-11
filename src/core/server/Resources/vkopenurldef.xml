@@ -1,37 +1,72 @@
 <?xml version="1.0"?>
 <root>
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_WEB_FACEBOOK</name>
+    <name>KeyCode::VK_OPEN_URL_WEB_facebook</name>
     <url>https://www.facebook.com/</url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_WEB_GOOGLE</name>
+    <name>KeyCode::VK_OPEN_URL_WEB_google</name>
     <url>https://www.google.com/</url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_WEB_PQRS_ORG</name>
+    <name>KeyCode::VK_OPEN_URL_WEB_pqrs_org</name>
     <url>http://pqrs.org/</url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_WEB_TWITTER</name>
+    <name>KeyCode::VK_OPEN_URL_WEB_twitter</name>
     <url>https://twitter.com/</url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_APP_FINDER</name>
+    <name>KeyCode::VK_OPEN_URL_APP_Dictionary</name>
+    <url>file:///Applications/Dictionary.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Finder</name>
     <url>file:///System/Library/CoreServices/Finder.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_APP_SAFARI</name>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook</name>
+    <url>file:///Applications/KeyRemap4MacBook.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Mail</name>
+    <url>file:///Applications/Mail.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_iTunes</name>
+    <url>file:///Applications/iTunes.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Safari</name>
     <url>file:///Applications/Safari.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_APP_TEXTEDIT</name>
+    <name>KeyCode::VK_OPEN_URL_APP_Terminal</name>
+    <url>file:///Applications/Utilities/Terminal.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_TextEdit</name>
     <url>file:///Applications/TextEdit.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_VirtualBox</name>
+    <url>file:///Applications/VirtualBox.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Xcode</name>
+    <url>file:///Applications/Xcode.app</url>
   </vkopenurldef>
 </root>

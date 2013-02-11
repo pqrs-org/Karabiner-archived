@@ -102,14 +102,14 @@
       <identifier>remap.samples_vk_open_url</identifier>
       <autogen>__KeyToKey__
         KeyCode::F, ModifierFlag::COMMAND_R,
-        KeyCode::VK_OPEN_URL_APP_FINDER,
+        KeyCode::VK_OPEN_URL_APP_Finder,
         KeyCode::VK_WAIT_100MS,
         KeyCode::N, ModifierFlag::COMMAND_R,
         Option::NOREPEAT
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_WEB_GOOGLE</autogen>
-      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_SAFARI</autogen>
-      <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_TEXTEDIT</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_WEB_google</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
     </item>
     <item>
       <name>VK_CONFIG</name>
