@@ -94,6 +94,24 @@
       </item>
     </item>
     <item>
+      <name>VK_OPEN_URL</name>
+      <appendix>Command_R+F to Launch Finder and Open New Window</appendix>
+      <appendix>Command_R+G to Open Google</appendix>
+      <appendix>Command_R+S to Launch Safari</appendix>
+      <appendix>Command_R+T to Launch TextEdit</appendix>
+      <identifier>remap.samples_vk_open_url</identifier>
+      <autogen>__KeyToKey__
+        KeyCode::F, ModifierFlag::COMMAND_R,
+        KeyCode::VK_OPEN_URL_APP_FINDER,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::N, ModifierFlag::COMMAND_R,
+        Option::NOREPEAT
+      </autogen>
+      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_WEB_GOOGLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_SAFARI</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_TEXTEDIT</autogen>
+    </item>
+    <item>
       <name>VK_CONFIG</name>
       <item>
         <name>Standard</name>
