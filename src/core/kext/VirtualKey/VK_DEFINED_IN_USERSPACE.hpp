@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void initialize(void);
       static void terminate(void);
 
-      static void add_item(RemapClass* remapclass, unsigned int keycode);
+      static void add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type);
       static void clear_items(void);
 
       static bool handle(const Params_KeyboardEventCallBack& params);
@@ -24,11 +24,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       struct Item {
         Item(void) :
           remapclass(NULL),
-          keycode(0)
+          keycode(0),
+          notification_type(0)
         {};
-        Item(RemapClass* p, unsigned int kc) : remapclass(p), keycode(kc) {}
+        Item(RemapClass* p, unsigned int kc, uint32_t nt) : remapclass(p), keycode(kc), notification_type(nt) {}
         RemapClass* remapclass;
         unsigned int keycode;
+        uint32_t notification_type;
       };
       DECLARE_VECTOR(Item);
       static Vector_Item* items_;

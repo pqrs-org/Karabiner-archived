@@ -475,14 +475,26 @@ namespace org_pqrs_KeyRemap4MacBook {
                                             keycode_sync_keydownup);
           }
 
-        } else if (type == BRIDGE_VK_CHANGE_INPUTSOURCE) {
+        } else if (type == BRIDGE_VK_CHANGE_INPUTSOURCE || type == BRIDGE_VK_OPEN_URL) {
           if (size != 2) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_CHANGE_INPUTSOURCE. (%d)\n", size);
+            IOLOG_ERROR("RemapClass::RemapClass invalid size for VK_DEFINED_IN_USERSPACE (type:%d, %d)\n", type, size);
             return;
 
           } else {
             unsigned int keycode = p[1];
-            VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(this, keycode);
+            uint32_t notification_type = 0;
+            switch (type) {
+              case BRIDGE_VK_CHANGE_INPUTSOURCE:
+                notification_type = BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE;
+                break;
+              case BRIDGE_VK_OPEN_URL:
+                notification_type = BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL;
+                break;
+              default:
+                IOLOG_ERROR("RemapClass::RemapClass invalid type for VK_DEFINED_IN_USERSPACE (type:%d)\n", type);
+                return;
+            }
+            VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(this, keycode, notification_type);
           }
 
         } else {
