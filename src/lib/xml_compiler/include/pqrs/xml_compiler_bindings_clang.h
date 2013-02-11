@@ -37,6 +37,7 @@ void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
                                          const char* languagecode,
                                          const char* inputsourceid,
                                          const char* inputmodeid);
+const char* pqrs_xml_compiler_get_url(const pqrs_xml_compiler* p, uint32_t keycode);
 
 // ------------------------------------------------------------
 const uint32_t* pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p);
