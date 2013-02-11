@@ -3,12 +3,12 @@
   {{ VKOPENURLDEF_REPLACEMENT }}
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_WEB_PQRS_ORG</name>
+    <name>KeyCode::VK_OPEN_URL_WEB_pqrs_org</name>
     <url>http://pqrs.org/</url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_APP_TEXTEDIT</name>
+    <name>KeyCode::VK_OPEN_URL_APP_TextEdit</name>
     <url>file:///Applications/TextEdit.app</url>
   </vkopenurldef>
 
