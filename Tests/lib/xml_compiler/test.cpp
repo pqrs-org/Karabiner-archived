@@ -220,6 +220,14 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map_value("DeviceProduct::MY_HP_KEYBOARD"));
   EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map_value("DeviceProduct::SPACE_IS_IGNORED"));
 
+  EXPECT_EQ(boost::none, xml_compiler.get_url(0));
+
+  EXPECT_EQ("http://pqrs.org/",
+            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_PQRS_ORG")))));
+
+  EXPECT_EQ("file:///Applications/TextEdit.app",
+            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TEXTEDIT")))));
+
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());
   auto node_ptr = (*(node_tree.get_children()))[0];
