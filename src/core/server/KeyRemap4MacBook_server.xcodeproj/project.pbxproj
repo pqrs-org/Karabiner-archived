@@ -31,6 +31,7 @@
 		347828F613EE5F3400D50AB1 /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */; };
 		347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
+		3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */; };
 		34848260152F526B00A9A3BE /* libxml_compiler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3484825F152F526B00A9A3BE /* libxml_compiler.a */; };
 		34848263152F527100A9A3BE /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34848262152F527100A9A3BE /* libstdc++.dylib */; };
 		34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34848265152F54B700A9A3BE /* XMLCompiler.m */; };
@@ -115,6 +116,7 @@
 		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
 		347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kr4mb_pub.pem; path = Resources/kr4mb_pub.pem; sourceTree = "<group>"; };
 		347828F813EE5F6500D50AB1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkopenurldef.xml; path = Resources/vkopenurldef.xml; sourceTree = "<group>"; };
 		3484825F152F526B00A9A3BE /* libxml_compiler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml_compiler.a; path = ../../lib/xml_compiler/build/Release/libxml_compiler.a; sourceTree = "<group>"; };
 		34848262152F527100A9A3BE /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/i686-apple-darwin10/4.0.1/libstdc++.dylib"; sourceTree = SDKROOT; };
 		34848264152F533500A9A3BE /* XMLCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLCompiler.h; path = Classes/XMLCompiler.h; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */,
+				3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */,
 				348F120015EA8ADA008A2BDA /* devicelocationdef.xml */,
 				343B2458153DCC7C0023BA6E /* include */,
 				34D590261531983100160DFC /* number.xml */,
@@ -377,6 +380,7 @@
 				34D590271531983100160DFC /* number.xml in Resources */,
 				348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */,
 				34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */,
+				3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
