@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2549</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSBox</string>
@@ -2574,19 +2574,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">xmlCompiler_</string>
-						<reference key="source" ref="662601051"/>
-						<reference key="destination" ref="894692340"/>
-					</object>
-					<int key="connectionID">618</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">iohidPostEventWrapper</string>
 						<reference key="source" ref="662601051"/>
 						<reference key="destination" ref="71414339"/>
 					</object>
 					<int key="connectionID">1321</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">xmlCompiler</string>
+						<reference key="source" ref="662601051"/>
+						<reference key="destination" ref="894692340"/>
+					</object>
+					<int key="connectionID">1322</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -4434,7 +4434,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1321</int>
+			<int key="maxID">1322</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4533,12 +4533,17 @@
 					<string key="className">ClientForKernelspace</string>
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="iohidPostEventWrapper">IOHIDPostEventWrapper</string>
 						<string key="preferencesManager_">PreferencesManager</string>
 						<string key="statusWindow">StatusWindow</string>
 						<string key="workSpaceData">WorkSpaceData</string>
-						<string key="xmlCompiler_">XMLCompiler</string>
+						<string key="xmlCompiler">XMLCompiler</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="iohidPostEventWrapper">
+							<string key="name">iohidPostEventWrapper</string>
+							<string key="candidateClassName">IOHIDPostEventWrapper</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="preferencesManager_">
 							<string key="name">preferencesManager_</string>
 							<string key="candidateClassName">PreferencesManager</string>
@@ -4551,8 +4556,8 @@
 							<string key="name">workSpaceData</string>
 							<string key="candidateClassName">WorkSpaceData</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="xmlCompiler_">
-							<string key="name">xmlCompiler_</string>
+						<object class="IBToOneOutletInfo" key="xmlCompiler">
+							<string key="name">xmlCompiler</string>
 							<string key="candidateClassName">XMLCompiler</string>
 						</object>
 					</dictionary>

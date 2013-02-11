@@ -35,6 +35,7 @@
   languagecode:(NSString*)languagecode
   inputSourceID:(NSString*)inputSourceID
   inputModeID:(NSString*)inputModeID;
+- (NSURL*) url:(uint32_t)keycode;
 
 - (NSArray*) preferencepane_checkbox;
 - (NSArray*) preferencepane_number;
