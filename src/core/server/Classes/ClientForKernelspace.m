@@ -12,6 +12,7 @@
 @synthesize userClient_userspace;
 @synthesize statusWindow;
 @synthesize workSpaceData;
+@synthesize xmlCompiler;
 
 static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
 {
@@ -38,6 +39,15 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
                        [[self workSpaceData] selectInputSource:option];
                        break;
+
+                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL:
+                       {
+                         NSURL* url = [[self xmlCompiler] url:option];
+                         if (url) {
+                           [[NSWorkspace sharedWorkspace] openURL:url];
+                         }
+                         break;
+                       }
 
                      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
                        [[self iohidPostEventWrapper] postAuxKey:option];
@@ -103,8 +113,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 - (void) send_remapclasses_initialize_vector_to_kext
 {
-  const uint32_t* p = [xmlCompiler_ remapclasses_initialize_vector_data];
-  size_t size = [xmlCompiler_ remapclasses_initialize_vector_size] * sizeof(uint32_t);
+  const uint32_t* p = [xmlCompiler remapclasses_initialize_vector_data];
+  size_t size = [xmlCompiler remapclasses_initialize_vector_size] * sizeof(uint32_t);
 
   // --------------------
   struct BridgeUserClientStruct bridgestruct;
@@ -126,7 +136,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
   // ------------------------------------------------------------
   NSUInteger essential_config_count = [essential_config count];
-  NSUInteger remapclasses_count     = [xmlCompiler_ remapclasses_initialize_vector_config_count];
+  NSUInteger remapclasses_count     = [xmlCompiler remapclasses_initialize_vector_config_count];
   size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
   int32_t* data = (int32_t*)(malloc(size));
   if (! data) {
@@ -145,7 +155,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     // --------------------
     // remapclasses config
     for (NSUInteger i = 0; i < remapclasses_count; ++i) {
-      NSString* name = [xmlCompiler_ identifier:(int)(i)];
+      NSString* name = [xmlCompiler identifier:(int)(i)];
       if (! name) {
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;

@@ -299,6 +299,16 @@
   }
 }
 
+- (NSURL*) url:(uint32_t)keycode
+{
+  @synchronized(self) {
+    const char* p = pqrs_xml_compiler_get_url(pqrs_xml_compiler_, keycode);
+    if (! p) return nil;
+
+    return [NSURL URLWithString:[NSString stringWithUTF8String:p]];
+  }
+}
+
 - (NSArray*) preferencepane_checkbox
 {
   @synchronized(self) {
