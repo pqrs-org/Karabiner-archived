@@ -269,6 +269,9 @@ namespace pqrs {
       return false;
     }
 
+    if (! it->second) {
+      return false;
+    }
     return it->second->is_rules_matched(languagecode, inputsourceid, inputmodeid);
   }
 
@@ -305,6 +308,20 @@ namespace pqrs {
         return;
       }
     }
+  }
+
+  boost::optional<const std::string&>
+  xml_compiler::get_url(int keycode) const
+  {
+    auto it = vk_open_url_map_.find(keycode);
+    if (it == vk_open_url_map_.end()) {
+      return boost::none;
+    }
+
+    if (! it->second) {
+      return boost::none;
+    }
+    return it->second->get_url();
   }
 
   bool

@@ -2,10 +2,16 @@
 
 class url {
 public:
-  const boost::optional<std::string>& get_name(void) const { return name_; }
+  boost::optional<const std::string&> get_name(void) const {
+    if (! name_) return boost::none;
+    return *name_;
+  }
   void set_name(const std::string& v) { name_ = v; }
 
-  const boost::optional<std::string>& get_url(void) const { return url_; }
+  boost::optional<const std::string&> get_url(void) const {
+    if (! url_) return boost::none;
+    return *url_;
+  }
   void set_url(const std::string& v) { url_ = v; }
 
 private:

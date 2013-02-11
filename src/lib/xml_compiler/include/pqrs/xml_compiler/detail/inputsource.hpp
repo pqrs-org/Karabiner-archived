@@ -2,10 +2,16 @@
 
 class inputsource {
 public:
-  const boost::optional<std::string>& get_name(void) const { return name_; }
+  boost::optional<const std::string&> get_name(void) const {
+    if (! name_) return boost::none;
+    return *name_;
+  }
   void set_name(const std::string& v) { name_ = v; }
 
-  const boost::optional<std::string>& get_detail(void) const { return detail_; }
+  boost::optional<const std::string&> get_detail(void) const {
+    if (! detail_) return boost::none;
+    return *detail_;
+  }
   void set_detail(const std::string& v) { detail_ = v; }
 
   void add_rule_languagecode(const std::string& v)         { if (! v.empty()) { rules_languagecode_.push_back(v); } }
