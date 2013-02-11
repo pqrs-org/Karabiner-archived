@@ -22,11 +22,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode)
+  VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type)
   {
     if (! items_) return;
 
-    items_->push_back(Item(remapclass, keycode));
+    items_->push_back(Item(remapclass, keycode, notification_type));
   }
 
   void
@@ -96,14 +96,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! items_) return false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
-      RemapClass* remapclass = (*items_)[i].remapclass;
-      unsigned int keycode   = (*items_)[i].keycode;
+      RemapClass* remapclass     = (*items_)[i].remapclass;
+      unsigned int keycode       = (*items_)[i].keycode;
+      uint32_t notification_type = (*items_)[i].notification_type;
 
       if (! remapclass) return false;
 
       if (params.key == keycode) {
         if (params.ex_iskeydown && params.repeat == false) {
-          org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE, params.key.get());
+          org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(notification_type, params.key.get());
         }
         return true;
       }
