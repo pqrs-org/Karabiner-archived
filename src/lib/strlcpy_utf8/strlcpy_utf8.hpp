@@ -7,8 +7,9 @@ namespace pqrs {
     static void
     strlcpy(char* dst, const char* src, size_t size)
     {
-      if (dst == nullptr) return;
-      if (src == nullptr) return;
+      // Do not use nullptr because kext build environment does not support it.
+      if (dst == NULL) return;
+      if (src == NULL) return;
       if (size == 0) return;
 
       ::strlcpy(dst, src, size);
