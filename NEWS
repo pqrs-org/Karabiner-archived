@@ -1,5 +1,8 @@
 Changes since 8.0.0
 
+    - Added KeyCode::VK_OPEN_URL_*.
+    - Some minor improvements.
+
 ----------------------------------------------------------------------
 = version 8.0.0 =
 
