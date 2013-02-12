@@ -1,5 +1,13 @@
 <?xml version="1.0"?>
 <root>
+  <!--
+      You need to percent-encode in <url>.
+      For example, we need to encode space to %20 in the following case.
+
+      Correct: <url>file:///Applications/Utilities/Activity%20Monitor.app</url>
+      Wrong:   <url>file:///Applications/Utilities/Activity Monitor.app</url>
+    -->
+
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_WEB_facebook</name>
     <url>https://www.facebook.com/</url>
@@ -21,6 +29,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Activity_Monitor</name>
+    <url>file:///Applications/Utilities/Activity%20Monitor.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Dictionary</name>
     <url>file:///Applications/Dictionary.app</url>
   </vkopenurldef>
@@ -38,6 +51,21 @@
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Mail</name>
     <url>file:///Applications/Mail.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Microsoft_Excel_2011</name>
+    <url>file:///Applications/Microsoft%20Office%202011/Microsoft%20Excel.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Microsoft_PowerPoint_2011</name>
+    <url>file:///Applications/Microsoft%20Office%202011/Microsoft%20PowerPoint.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Microsoft_Word_2011</name>
+    <url>file:///Applications/Microsoft%20Office%202011/Microsoft%20Word.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
