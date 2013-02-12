@@ -95,11 +95,13 @@
     </item>
     <item>
       <name>VK_OPEN_URL</name>
+      <appendix>Command_R+A to Launch Activity Monitor</appendix>
       <appendix>Command_R+F to Launch Finder and Open New Window</appendix>
       <appendix>Command_R+G to Open Google</appendix>
       <appendix>Command_R+S to Launch Safari</appendix>
       <appendix>Command_R+T to Launch TextEdit</appendix>
       <identifier>remap.samples_vk_open_url</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
       <autogen>__KeyToKey__
         KeyCode::F, ModifierFlag::COMMAND_R,
         KeyCode::VK_OPEN_URL_APP_Finder,
