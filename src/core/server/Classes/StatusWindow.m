@@ -115,6 +115,11 @@
         continue;
       }
     }
+    if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK) {
+      if (! [defaults boolForKey:kIsStatusWindowShowPointingButtonLock]) {
+        continue;
+      }
+    }
 
     NSString* message = [lines_ objectAtIndex:idx];
     if ([message length] > 0) {
