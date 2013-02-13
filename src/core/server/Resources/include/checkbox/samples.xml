@@ -977,6 +977,31 @@
         </autogen>
       </item>
       <item>
+        <name>With ToButtons</name>
+        <appendix>Change RightClick to MiddleClick</appendix>
+        <appendix>+ (RightClick+CursorMove to ScrollWheel)</appendix>
+        <appendix></appendix>
+        <appendix>Change Shift+LeftClick to Option+A,B</appendix>
+        <appendix>+ (Shift+LeftClick+CursorMove to ScrollWheel)</appendix>
+        <appendix></appendix>
+        <identifier>remap.samples_pointingrelativetoscroll_with_tokeys</identifier>
+        <autogen>
+          __PointingRelativeToScroll__
+          PointingButton::RIGHT,
+
+          Option::POINTINGRELATIVETOSCROLL_TOKEYS,
+          KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE,
+        </autogen>
+        <autogen>
+          __PointingRelativeToScroll__
+          PointingButton::LEFT, VK_SHIFT,
+
+          Option::POINTINGRELATIVETOSCROLL_TOKEYS,
+          KeyCode::A, ModifierFlag::OPTION_L,
+          KeyCode::B,
+        </autogen>
+      </item>
+      <item>
         <name>SimultaneousKeyPresses</name>
         <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
         <identifier>remap.samples_pointingrelativetoscroll_simultaneouskeypresses</identifier>

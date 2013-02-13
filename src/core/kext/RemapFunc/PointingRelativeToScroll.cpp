@@ -39,7 +39,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     PointingRelativeToScroll::PointingRelativeToScroll(void) :
       index_(0),
-      index_is_toflags_(false),
+      index_type_(INDEX_TYPE_DEFAULT),
+      isToKeysDefined_(false),
       absolute_distance_(0),
       chained_delta1_(0),
       chained_delta2_(0),
@@ -56,24 +57,56 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_FLAGS:
         {
-          if (index_is_toflags_) {
-            toFlags_ = newval;
-          } else {
-            fromFlags_ = newval;
+          switch (index_type_) {
+            case INDEX_TYPE_DEFAULT:
+              fromFlags_ = newval;
+              break;
+            case INDEX_TYPE_TOFLAGS:
+              toFlags_ = newval;
+              break;
+            case INDEX_TYPE_TOKEYS:
+              keytokey_.add(datatype, newval);
+              break;
           }
           break;
         }
 
         case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
-          fromButton_ = newval;
+          switch (index_type_) {
+            case INDEX_TYPE_DEFAULT:
+              fromButton_ = newval;
+              break;
+            default:
+              IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
+              break;
+          }
+          break;
+        }
+
+        case BRIDGE_DATATYPE_KEYCODE:
+        {
+          switch (index_type_) {
+            case INDEX_TYPE_TOKEYS:
+              keytokey_.add(datatype, newval);
+              break;
+            default:
+              IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
+              break;
+          }
           break;
         }
 
         case BRIDGE_DATATYPE_OPTION:
         {
           if (Option::POINTINGRELATIVETOSCROLL_TOFLAGS == newval) {
-            index_is_toflags_ = true;
+            index_type_ = INDEX_TYPE_TOFLAGS;
+          }
+          if (Option::POINTINGRELATIVETOSCROLL_TOKEYS == newval) {
+            index_type_ = INDEX_TYPE_TOKEYS;
+            isToKeysDefined_ = true;
+            keytokey_.add(KeyCode::VK_PSEUDO_KEY);
+            keytokey_.add(fromFlags_);
           }
           break;
         }
@@ -127,10 +160,16 @@ namespace org_pqrs_KeyRemap4MacBook {
         const uint32_t TIME_THRESHOLD = 300;
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           // Fire by a click event.
-          ButtonStatus::increase(fromButton_);
-          EventOutputQueue::FireRelativePointer::fire();
-          ButtonStatus::decrease(fromButton_);
-          EventOutputQueue::FireRelativePointer::fire();
+          if (isToKeysDefined_) {
+            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+
+          } else {
+            ButtonStatus::increase(fromButton_);
+            EventOutputQueue::FireRelativePointer::fire();
+            ButtonStatus::decrease(fromButton_);
+            EventOutputQueue::FireRelativePointer::fire();
+          }
         }
         return true;
       }

@@ -1,10 +1,11 @@
 #ifndef POINTINGRELATIVETOSCROLL_HPP
 #define POINTINGRELATIVETOSCROLL_HPP
 
-#include "RemapFuncClasses.hpp"
 #include "FromKeyChecker.hpp"
 #include "IntervalChecker.hpp"
+#include "KeyToKey.hpp"
 #include "List.hpp"
+#include "RemapFuncClasses.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -57,11 +58,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------
       size_t index_;
-      bool index_is_toflags_;
+      enum {
+        INDEX_TYPE_DEFAULT,
+        INDEX_TYPE_TOFLAGS,
+        INDEX_TYPE_TOKEYS,
+      } index_type_;
       FromKeyChecker fromkeychecker_;
       Flags fromFlags_;
       PointingButton fromButton_;
       Flags toFlags_;
+      KeyToKey keytokey_;
+      bool isToKeysDefined_;
 
       // ----------
       unsigned int absolute_distance_;
