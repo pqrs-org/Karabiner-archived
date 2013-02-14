@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <root>
-  <!-- ============================================================ -->
-  <!-- inputsourceid -->
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_BEPO</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
@@ -138,8 +136,6 @@
     <inputsourceid_equal>com.apple.keylayout.US</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
-  <!-- ============================================================ -->
-  <!-- inputmodeid_prefix -->
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_CHINESE_SIMPLIFIED</name>
     <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
@@ -155,8 +151,6 @@
     <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
   </vkchangeinputsourcedef>
 
-  <!-- ============================================================ -->
-  <!-- languagecode -->
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_BRITISH</name>
     <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
@@ -289,6 +283,11 @@
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWISS</name>
     <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWISS_GERMAN</name>
+    <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
