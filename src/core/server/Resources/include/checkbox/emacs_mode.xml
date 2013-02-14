@@ -212,6 +212,16 @@
       <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
       <identifier>option.emacsmode_ex_controlU</identifier>
       <block>
+        <only>EXCEL</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, VK_CONTROL | ModifierFlag::NONE,
+          KeyCode::HOME, ModifierFlag::SHIFT_L,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+          Option::NOREPEAT
+        </autogen>
+      </block>
+      <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
         <autogen>__KeyToKey__ KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
       </block>
@@ -224,6 +234,16 @@
       <name>[ex] Control+U to Command+Shift+Left,Delete</name>
       <identifier>option.emacsmode_ex_controlU_delete</identifier>
       <block>
+        <only>EXCEL</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, VK_CONTROL | ModifierFlag::NONE,
+          KeyCode::HOME, ModifierFlag::SHIFT_L,
+          KeyCode::DELETE,
+          Option::NOREPEAT
+        </autogen>
+      </block>
+      <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
         <autogen>__KeyToKey__ KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE, Option::NOREPEAT</autogen>
       </block>
@@ -235,6 +255,16 @@
     <item>
       <name>[ex] Control+U to Command+Shift+Left,Forward Delete</name>
       <identifier>option.emacsmode_ex_controlU_forwarddelete</identifier>
+      <block>
+        <only>EXCEL</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, VK_CONTROL | ModifierFlag::NONE,
+          KeyCode::HOME, ModifierFlag::SHIFT_L,
+          KeyCode::FORWARD_DELETE,
+          Option::NOREPEAT
+        </autogen>
+      </block>
       <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
         <autogen>__KeyToKey__ KeyCode::U, VK_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, Option::NOREPEAT</autogen>
