@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>[Key Repeat] Initial Wait</name>
+    <name>Delay Until Repeat</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">repeat.initial_wait</identifier>
   </item>
   <item>
-    <name>[Key Repeat] Wait</name>
+    <name>Key Repeat</name>
     <identifier essential="true" default="83" step="10" baseunit="ms">repeat.wait</identifier>
   </item>
 
   <item>
-    <name>[Functional Key Repeat] Initial Wait</name>
+    <name>[Functional Key Repeat] Delay Until Repeat</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">repeat.consumer_initial_wait</identifier>
   </item>
   <item>
-    <name>[Functional Key Repeat] Wait</name>
+    <name>[Functional Key Repeat] Key Repeat</name>
     <identifier essential="true" default="100" step="10" baseunit="ms">repeat.consumer_wait</identifier>
   </item>
 
