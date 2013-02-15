@@ -46,5 +46,6 @@
 - (IBAction) launchUninstaller:(id)sender;
 - (IBAction) openPreferences:(id)sender;
 - (IBAction) openPrivateXML:(id)sender;
+- (IBAction) quit:(id)sender;
 
 @end

@@ -80,7 +80,8 @@
 }
 
 // ------------------------------------------------------------
-static void observer_IONotification(void* refcon, io_iterator_t iterator) {
+static void observer_IONotification(void* refcon, io_iterator_t iterator)
+{
   dispatch_async(dispatch_get_main_queue(), ^{
                    NSLog (@"observer_IONotification");
 
@@ -111,7 +112,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                  });
 }
 
-- (void) unregisterIONotification {
+- (void) unregisterIONotification
+{
   if (notifyport_) {
     if (loopsource_) {
       CFRunLoopSourceInvalidate(loopsource_);
@@ -122,7 +124,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 }
 
-- (void) registerIONotification {
+- (void) registerIONotification
+{
   [self unregisterIONotification];
 
   notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
@@ -181,7 +184,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
+{
+  [self launchctl_load];
+
   if (! [serverForUserspace_ register]) {
     // Quit when register is failed.
     // We wait 2 second before quit to avoid consecutive restarting from launchd.
@@ -257,6 +263,17 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
+- (void) launchctl_load
+{
+  system("launchctl load /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
+}
+
+- (void) launchctl_unload
+{
+  system("launchctl unload /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
+}
+
+// ------------------------------------------------------------
 - (NSDictionary*) getApplicationInformation
 {
   return [[applicationInformation_ retain] autorelease];
@@ -295,6 +312,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   if ([path length] > 0) {
     [[NSWorkspace sharedWorkspace] openFile:[path stringByDeletingLastPathComponent]];
   }
+}
+
+- (IBAction) quit:(id)sender
+{
+  [self launchctl_unload];
+  [NSApp terminate:nil];
 }
 
 @end
