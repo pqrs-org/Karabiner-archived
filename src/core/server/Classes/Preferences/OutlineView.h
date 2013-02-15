@@ -24,5 +24,7 @@
 - (void) filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 
 - (IBAction) filter:(id)sender;
+- (IBAction) expand:(id)sender;
+- (IBAction) collapse:(id)sender;
 
 @end

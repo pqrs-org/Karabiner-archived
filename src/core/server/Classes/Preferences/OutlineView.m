@@ -8,14 +8,14 @@
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [outlineview_ reloadData];
+                   [outlineview_ setNeedsDisplay:YES];
                  });
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [outlineview_ reloadData];
+                   [outlineview_ setNeedsDisplay:YES];
                    [self filter:self];
                  });
 }
@@ -374,6 +374,18 @@
     BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
     [self filterDataSource:isEnabledOnly string:[searchText_ stringValue]];
   }
+}
+
+- (IBAction) expand:(id)sender
+{
+  [outlineview_ expandItem:nil expandChildren:YES];
+  [outlineview_ setNeedsDisplay:YES];
+}
+
+- (IBAction) collapse:(id)sender
+{
+  [outlineview_ collapseItem:nil collapseChildren:YES];
+  [outlineview_ setNeedsDisplay:YES];
 }
 
 @end
