@@ -265,12 +265,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (void) launchctl_load
 {
-  system("launchctl load /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
+  system("launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
 }
 
 - (void) launchctl_unload
 {
-  system("launchctl unload /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
+  system("launchctl unload -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
 }
 
 // ------------------------------------------------------------
