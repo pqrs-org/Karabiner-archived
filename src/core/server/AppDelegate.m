@@ -4,6 +4,7 @@
 #import "KeyRemap4MacBookKeys.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
+#import "PreferencesManager.h"
 #import "ServerForUserspace.h"
 #import "StatusBar.h"
 #import "StatusWindow.h"
@@ -194,8 +195,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
       }
     }
   }
-  [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:kIsQuitByHand];
-  [[NSUserDefaults standardUserDefaults] synchronize];
+  [PreferencesManager setIsQuitByHand:@NO];
   [self launchctl_load];
 
   // ------------------------------------------------------------
@@ -327,7 +327,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
 - (IBAction) quit:(id)sender
 {
-  [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsQuitByHand];
+  [PreferencesManager setIsQuitByHand:@YES];
+
   [self launchctl_unload];
   [NSApp terminate:nil];
 }
