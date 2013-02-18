@@ -9,7 +9,8 @@
 // ----------------------------------------
 + (void) initialize
 {
-  NSDictionary* dict = @ { kIsStatusBarEnabled : @YES,
+  NSDictionary* dict = @ { kIsQuitByHand : @NO,
+                           kIsStatusBarEnabled : @YES,
                            kIsShowSettingNameInStatusBar : @NO,
                            kConfigListSelectedIndex : @0,
                            kCheckForUpdates : @1,
