@@ -11,6 +11,9 @@
   IBOutlet ClientForKernelspace* clientForKernelspace_;
 }
 
++ (void) setIsQuitByHand:(NSNumber*)newvalue;
+
+// --------------------------------------------------
 - (void) load;
 
 - (int) value:(NSString*)name;

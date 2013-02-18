@@ -26,6 +26,21 @@
 }
 
 // ----------------------------------------
++ (void) setIsQuitByHand:(NSNumber*)newvalue
+{
+  [[NSUserDefaults standardUserDefaults] setObject:newvalue forKey:kIsQuitByHand];
+
+  int RETRY = 5;
+  for (int i = 0; i < RETRY; ++i) {
+    // Call "synchronize" in order to ensure saving changes.
+    if ([[NSUserDefaults standardUserDefaults] synchronize]) {
+      break;
+    }
+    [NSThread sleepForTimeInterval:0.1];
+  }
+}
+
+// ----------------------------------------
 - (void) addToDefault:(NSXMLElement*)element
 {
   for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
