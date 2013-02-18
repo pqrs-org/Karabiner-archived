@@ -1,5 +1,6 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
+#define kIsQuitByHand                         @"isQuitByHand"
 #define kIsStatusBarEnabled                   @"isStatusbarEnable"
 #define kIsShowSettingNameInStatusBar         @"isShowSettingNameInStatusBar"
 #define kConfigListSelectedIndex              @"selectedIndex"

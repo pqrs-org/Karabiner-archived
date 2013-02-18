@@ -7,6 +7,7 @@
     <key>ProgramArguments</key>
     <array>
       <string>/Applications/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook</string>
+      <string>--fromLaunchAgents</string>
     </array>
     <key>KeepAlive</key>
     <true/>

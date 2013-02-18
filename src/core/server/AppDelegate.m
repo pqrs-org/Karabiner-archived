@@ -3,6 +3,7 @@
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "PreferencesController.h"
+#import "PreferencesKeys.h"
 #import "ServerForUserspace.h"
 #import "StatusBar.h"
 #import "StatusWindow.h"
@@ -186,8 +187,18 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
+  for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
+    if ([argument isEqualToString:@"--fromLaunchAgents"]) {
+      if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
+        [self quit:self];
+      }
+    }
+  }
+  [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:kIsQuitByHand];
+  [[NSUserDefaults standardUserDefaults] synchronize];
   [self launchctl_load];
 
+  // ------------------------------------------------------------
   if (! [serverForUserspace_ register]) {
     // Quit when register is failed.
     // We wait 2 second before quit to avoid consecutive restarting from launchd.
@@ -265,12 +276,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (void) launchctl_load
 {
-  system("launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
+  system("launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist >/dev/null 2>&1");
 }
 
 - (void) launchctl_unload
 {
-  system("launchctl unload -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist");
+  system("launchctl unload -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist >/dev/null 2>&1");
 }
 
 // ------------------------------------------------------------
@@ -316,6 +327,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
 - (IBAction) quit:(id)sender
 {
+  [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsQuitByHand];
   [self launchctl_unload];
   [NSApp terminate:nil];
 }
