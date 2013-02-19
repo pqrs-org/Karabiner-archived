@@ -154,6 +154,17 @@ TEST(pqrs_xml_compiler, reload)
     EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::FRENCH"), inputsource_detail);
   }
 
+  {
+    uint32_t inputsource;
+    uint32_t inputsource_detail;
+    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+                                   "en",
+                                   "com.apple.keylayout.US",
+                                   "");
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::MY_ENGLISH"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::MY_ENGLISH"), inputsource_detail);
+  }
+
   // ------------------------------------------------------------
   // vkopenurldef
   uint32_t vk_open_url_base = vk_change_inputsource_base;

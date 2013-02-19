@@ -84,6 +84,15 @@
   </deviceproductdef>
 
   <!-- ============================================================ -->
+  <!-- inputsourcedef -->
+
+  <!-- overwrite -->
+  <inputsourcedef>
+    <name>MY_ENGLISH</name>
+    <inputsourceid_equal>com.apple.keylayout.US</inputsourceid_equal>
+  </deviceproductdef>
+
+  <!-- ============================================================ -->
   <!-- replacementdef -->
 
   <replacementdef>
