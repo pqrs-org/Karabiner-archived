@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "NotificationKeys.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
@@ -78,6 +79,23 @@
 
                    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
                                                                                   object:nil];
+                 });
+}
+
+- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   // If <appdef> or <inputsourcedef> is updated,
+                   // the following values might be changed.
+                   // Therefore, we need to resend values to kext.
+                   //
+                   // - bridgeworkspacedata_.applicationtype
+                   // - bridgeworkspacedata_.inputsource
+                   // - bridgeworkspacedata_.inputsourcedetail
+
+                   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
+                   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
+                   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
                  });
 }
 
@@ -188,15 +206,24 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
+  BOOL isFromLaunchAgents = NO;
+
   for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
     if ([argument isEqualToString:@"--fromLaunchAgents"]) {
-      if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
-        [self quit:self];
-      }
+      isFromLaunchAgents = YES;
     }
   }
-  [PreferencesManager setIsQuitByHand:@NO];
-  [self launchctl_load];
+
+  if (! isFromLaunchAgents) {
+    // If app is launched by hand, activate LaunchAgents and quit.
+    [PreferencesManager setIsQuitByHand:@NO];
+    [self launchctl_load];
+    [NSApp terminate:nil];
+  }
+
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
+    [self quit:self];
+  }
 
   // ------------------------------------------------------------
   if (! [serverForUserspace_ register]) {
@@ -236,6 +263,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
                                                           name:(NSString*)(kTISNotifySelectedKeyboardInputSourceChanged)
                                                         object:nil
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(observer_ConfigXMLReloaded:)
+                                               name:kConfigXMLReloadedNotification
+                                             object:nil];
 
   // ------------------------------
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
