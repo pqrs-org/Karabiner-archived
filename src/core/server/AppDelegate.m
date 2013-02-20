@@ -206,33 +206,24 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
-  BOOL isFromLaunchAgents = NO;
-
   for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
     if ([argument isEqualToString:@"--fromLaunchAgents"]) {
-      isFromLaunchAgents = YES;
+      if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
+        [self quit:self];
+      }
     }
   }
-
-  if (! isFromLaunchAgents) {
-    // If app is launched by hand, activate LaunchAgents and quit.
-    [PreferencesManager setIsQuitByHand:@NO];
-    [self launchctl_load];
-    [NSApp terminate:nil];
-  }
-
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
-    [self quit:self];
-  }
+  [PreferencesManager setIsQuitByHand:@NO];
 
   // ------------------------------------------------------------
   if (! [serverForUserspace_ register]) {
-    // Quit when register is failed.
-    // We wait 2 second before quit to avoid consecutive restarting from launchd.
+    // Relaunch when register is failed.
     NSLog(@"[ServerForUserspace register] is failed. Restarting process.");
     [NSThread sleepForTimeInterval:2];
-    [NSApp terminate:nil];
+    [self relaunch];
   }
+  [self setRelaunchedCount:0];
+
   // Wait until other apps connect to me.
   [NSThread sleepForTimeInterval:1];
 
@@ -306,14 +297,34 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
-- (void) launchctl_load
+#define kRelaunchedCount @"org.pqrs.KeyRemap4MacBook.RelaunchedCount"
+
+- (void) setRelaunchedCount:(int)newvalue
 {
-  system("launchctl load -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist >/dev/null 2>&1");
+  setenv([kRelaunchedCount UTF8String],
+         [[NSString stringWithFormat:@"%d", newvalue] UTF8String],
+         1);
 }
 
-- (void) launchctl_unload
+- (NSInteger) getRelaunchedCount
 {
-  system("launchctl unload -w /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist >/dev/null 2>&1");
+  return [[[[NSProcessInfo processInfo] environment] objectForKey:kRelaunchedCount] integerValue];
+}
+
+- (void) relaunch
+{
+  const int RETRY_COUNT = 5;
+
+  NSInteger count = [self getRelaunchedCount];
+  if (count < RETRY_COUNT) {
+    NSLog(@"Relaunching (count:%d)", (int)(count));
+    [self setRelaunchedCount:(int)(count + 1)];
+    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+  } else {
+    NSLog(@"Give up relaunching.");
+  }
+
+  [NSApp terminate:self];
 }
 
 // ------------------------------------------------------------
@@ -360,8 +371,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 - (IBAction) quit:(id)sender
 {
   [PreferencesManager setIsQuitByHand:@YES];
-
-  [self launchctl_unload];
   [NSApp terminate:nil];
 }
 
