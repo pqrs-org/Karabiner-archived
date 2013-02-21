@@ -9,6 +9,7 @@
       <autogen>__KeyToKey__ KeyCode::Q, VK_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, VK_COMMAND | ModifierFlag::NONE</autogen>
       <autogen>__KeyToKey__ KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,    KeyCode::W, VK_COMMAND | ModifierFlag::SHIFT_L</autogen>
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Hold Command+Q to Quit Application</name>
       <appendix>(You can adjust the threshold time of holding by</appendix>
@@ -22,6 +23,17 @@
       <autogen>__DoublePressModifier__ KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,
         KeyCode::VK_NONE,
         KeyCode::Q, VK_COMMAND
+      </autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Change "right option key + equal key" to "move focus to next window in application".</name>
+      <appendix>(You need to enable command-backquote (⌘`) shortcut from System Preferences.)</appendix>
+      <identifier>remap.option_equal_to_command_backquote</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::EQUAL, ModifierFlag::OPTION_R,
+        KeyCode::BACKQUOTE, ModifierFlag::COMMAND_L
       </autogen>
     </item>
   </item>
