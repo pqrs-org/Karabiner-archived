@@ -34,6 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     FlipScrollWheel::remap(RemapPointingParams_scroll& remapParams)
     {
+      if (remapParams.isremapped) return false;
       remapParams.isremapped = true;
 
       short da1   = remapParams.params.deltaAxis1;
@@ -47,14 +48,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       SInt32 pd3  = remapParams.params.pointDelta3;
 
       if (flipHorizontalScroll_) {
-        da1 = -da1;
-        fd1 = -fd1;
-        pd1 = -pd1;
-      }
-      if (flipVerticalScroll_) {
         da2 = -da2;
         fd2 = -fd2;
         pd2 = -pd2;
+      }
+      if (flipVerticalScroll_) {
+        da1 = -da1;
+        fd1 = -fd1;
+        pd1 = -pd1;
       }
 
       Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(da1, da2, da3,
