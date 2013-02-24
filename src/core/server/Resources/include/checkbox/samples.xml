@@ -674,8 +674,8 @@
         <only>SAFARI</only>
         <autogen>
           __FlipScrollWheel__
-          Option::FLIPSCROLLWHEEL_HORIZONTAL_SCROLL,
-          Option::FLIPSCROLLWHEEL_VERTICAL_SCROLL,
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
+          Option::FLIPSCROLLWHEEL_VERTICAL,
         </autogen>
       </item>
       <item>
@@ -684,7 +684,7 @@
         <only>SAFARI</only>
         <autogen>
           __FlipScrollWheel__
-          Option::FLIPSCROLLWHEEL_HORIZONTAL_SCROLL,
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
         </autogen>
       </item>
       <item>
@@ -693,7 +693,7 @@
         <only>SAFARI</only>
         <autogen>
           __FlipScrollWheel__
-          Option::FLIPSCROLLWHEEL_VERTICAL_SCROLL,
+          Option::FLIPSCROLLWHEEL_VERTICAL,
         </autogen>
       </item>
     </item>
