@@ -53,6 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              INITIALIZE_UNION_VALUE(p_.dropKeyAfterRemap,              RemapFunc::DropKeyAfterRemap);              break;
       case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: INITIALIZE_UNION_VALUE(p_.dropPointingRelativeCursorMove, RemapFunc::DropPointingRelativeCursorMove); break;
       case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                INITIALIZE_UNION_VALUE(p_.dropScrollWheel,                RemapFunc::DropScrollWheel); break;
+      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                INITIALIZE_UNION_VALUE(p_.flipScrollWheel,                RemapFunc::FlipScrollWheel); break;
       case BRIDGE_REMAPTYPE_FORCENUMLOCKON:                 INITIALIZE_UNION_VALUE(p_.forceNumLockOn,                 RemapFunc::ForceNumLockOn);                 break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                INITIALIZE_UNION_VALUE(p_.holdingKeyToKey,                RemapFunc::HoldingKeyToKey);                break;
       case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     INITIALIZE_UNION_VALUE(p_.ignoreMultipleSameKeyPress,     RemapFunc::IgnoreMultipleSameKeyPress);     break;
@@ -90,6 +91,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              DELETE_UNLESS_NULL(p_.dropKeyAfterRemap);              break;
       case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: DELETE_UNLESS_NULL(p_.dropPointingRelativeCursorMove); break;
       case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                DELETE_UNLESS_NULL(p_.dropScrollWheel);                break;
+      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                DELETE_UNLESS_NULL(p_.flipScrollWheel);                break;
       case BRIDGE_REMAPTYPE_FORCENUMLOCKON:                 DELETE_UNLESS_NULL(p_.forceNumLockOn);                 break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                DELETE_UNLESS_NULL(p_.holdingKeyToKey);                break;
       case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     DELETE_UNLESS_NULL(p_.ignoreMultipleSameKeyPress);     break;
@@ -262,6 +264,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     switch (type_) {
       case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:          CALL_UNION_FUNCTION(p_.dropScrollWheel);          break;
+      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:          CALL_UNION_FUNCTION(p_.flipScrollWheel);          break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL: CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel); break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:         CALL_UNION_FUNCTION(p_.scrollWheelToKey);         break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:          CALL_UNION_FUNCTION(p_.holdingKeyToKey);          break;

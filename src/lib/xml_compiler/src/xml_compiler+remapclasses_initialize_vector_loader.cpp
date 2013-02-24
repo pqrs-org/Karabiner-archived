@@ -327,6 +327,7 @@ namespace pqrs {
       { "__ForceNumLockOn__",                 BRIDGE_REMAPTYPE_FORCENUMLOCKON },
       { "__DropPointingRelativeCursorMove__", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE },
       { "__DropScrollWheel__",                BRIDGE_REMAPTYPE_DROPSCROLLWHEEL },
+      { "__FlipScrollWheel__",                BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL },
       { "__ScrollWheelToScrollWheel__",       BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL },
       { "__ScrollWheelToKey__",               BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY },
     };
