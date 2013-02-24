@@ -15,9 +15,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_OPTION:
         {
-          /*  */ if (Option::FLIPSCROLLWHEEL_HORIZONTAL_SCROLL == newval) {
+          /*  */ if (Option::FLIPSCROLLWHEEL_HORIZONTAL == newval) {
             flipHorizontalScroll_ = true;
-          } else if (Option::FLIPSCROLLWHEEL_VERTICAL_SCROLL == newval) {
+          } else if (Option::FLIPSCROLLWHEEL_VERTICAL == newval) {
             flipVerticalScroll_ = true;
           } else {
             IOLOG_ERROR("FlipScrollWheel::add unknown option:%d\n", newval);
