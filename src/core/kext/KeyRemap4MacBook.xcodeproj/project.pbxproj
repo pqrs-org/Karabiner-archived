@@ -93,6 +93,8 @@
 		34AA1F361065B1EE00E9A418 /* ListHookedDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */; };
 		34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */; };
 		34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */; };
+		34B3663716DA5E0D0081C5D7 /* FlipPointingRelative.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B3663516DA5E0D0081C5D7 /* FlipPointingRelative.cpp */; };
+		34B3663816DA5E0D0081C5D7 /* FlipPointingRelative.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B3663616DA5E0D0081C5D7 /* FlipPointingRelative.hpp */; };
 		34B464D013A6515200470265 /* VK_LOCK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464CE13A6515200470265 /* VK_LOCK.cpp */; };
 		34B464D113A6515200470265 /* VK_LOCK.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464CF13A6515200470265 /* VK_LOCK.hpp */; };
 		34B464DA13A652CF00470265 /* VK_STICKY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464D813A652CF00470265 /* VK_STICKY.cpp */; };
@@ -242,6 +244,8 @@
 		34AA1F341065B1EE00E9A418 /* ListHookedDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedDevice.hpp; path = util/ListHookedDevice.hpp; sourceTree = "<group>"; };
 		34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyOverlaidModifier.cpp; path = RemapFunc/KeyOverlaidModifier.cpp; sourceTree = "<group>"; };
 		34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyOverlaidModifier.hpp; path = RemapFunc/KeyOverlaidModifier.hpp; sourceTree = "<group>"; };
+		34B3663516DA5E0D0081C5D7 /* FlipPointingRelative.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlipPointingRelative.cpp; path = RemapFunc/FlipPointingRelative.cpp; sourceTree = "<group>"; };
+		34B3663616DA5E0D0081C5D7 /* FlipPointingRelative.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlipPointingRelative.hpp; path = RemapFunc/FlipPointingRelative.hpp; sourceTree = "<group>"; };
 		34B464CE13A6515200470265 /* VK_LOCK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_LOCK.cpp; path = VirtualKey/VK_LOCK.cpp; sourceTree = "<group>"; };
 		34B464CF13A6515200470265 /* VK_LOCK.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_LOCK.hpp; path = VirtualKey/VK_LOCK.hpp; sourceTree = "<group>"; };
 		34B464D813A652CF00470265 /* VK_STICKY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_STICKY.cpp; path = VirtualKey/VK_STICKY.cpp; sourceTree = "<group>"; };
@@ -393,6 +397,8 @@
 				344BB4ED12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp */,
 				3405382013E6ED7E009DF83F /* DropScrollWheel.cpp */,
 				3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */,
+				34B3663516DA5E0D0081C5D7 /* FlipPointingRelative.cpp */,
+				34B3663616DA5E0D0081C5D7 /* FlipPointingRelative.hpp */,
 				347A6DA916DA54C4000DD15D /* FlipScrollWheel.cpp */,
 				347A6DAA16DA54C4000DD15D /* FlipScrollWheel.hpp */,
 				34794D51126F32E700655ADB /* SetKeyboardType.cpp */,
@@ -615,6 +621,7 @@
 				342D245616A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp in Headers */,
 				34997E3716C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp in Headers */,
 				347A6DAC16DA54C4000DD15D /* FlipScrollWheel.hpp in Headers */,
+				34B3663816DA5E0D0081C5D7 /* FlipPointingRelative.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +768,7 @@
 				342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */,
 				34997E3616C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp in Sources */,
 				347A6DAB16DA54C4000DD15D /* FlipScrollWheel.cpp in Sources */,
+				34B3663716DA5E0D0081C5D7 /* FlipPointingRelative.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

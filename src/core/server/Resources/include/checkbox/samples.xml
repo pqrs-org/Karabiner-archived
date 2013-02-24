@@ -667,6 +667,38 @@
     </item>
 
     <item>
+      <name>FlipPointingRelative</name>
+      <item>
+        <name>Flip Horizontal and Vertical PointingRelative at Safari</name>
+        <identifier>remap.samples_flippointingrelative</identifier>
+        <only>SAFARI</only>
+        <autogen>
+          __FlipPointingRelative__
+          Option::FLIPPOINTINGRELATIVE_HORIZONTAL,
+          Option::FLIPPOINTINGRELATIVE_VERTICAL,
+        </autogen>
+      </item>
+      <item>
+        <name>Flip Horizontal PointingRelative at Safari</name>
+        <identifier>remap.samples_flippointingrelative_horizontal</identifier>
+        <only>SAFARI</only>
+        <autogen>
+          __FlipPointingRelative__
+          Option::FLIPPOINTINGRELATIVE_HORIZONTAL,
+        </autogen>
+      </item>
+      <item>
+        <name>Flip Vertical PointingRelative at Safari</name>
+        <identifier>remap.samples_flippointingrelative_vertical</identifier>
+        <only>SAFARI</only>
+        <autogen>
+          __FlipPointingRelative__
+          Option::FLIPPOINTINGRELATIVE_VERTICAL,
+        </autogen>
+      </item>
+    </item>
+
+    <item>
       <name>FlipScrollWheel</name>
       <item>
         <name>Flip Horizontal and Vertical ScrollWheel at Safari</name>

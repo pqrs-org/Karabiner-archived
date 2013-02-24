@@ -12,6 +12,7 @@
 #include "RemapFunc/DropKeyAfterRemap.hpp"
 #include "RemapFunc/DropPointingRelativeCursorMove.hpp"
 #include "RemapFunc/DropScrollWheel.hpp"
+#include "RemapFunc/FlipPointingRelative.hpp"
 #include "RemapFunc/FlipScrollWheel.hpp"
 #include "RemapFunc/ForceNumLockOn.hpp"
 #include "RemapFunc/HoldingKeyToKey.hpp"
@@ -77,6 +78,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::DropKeyAfterRemap* dropKeyAfterRemap;
         RemapFunc::DropPointingRelativeCursorMove* dropPointingRelativeCursorMove;
         RemapFunc::DropScrollWheel* dropScrollWheel;
+        RemapFunc::FlipPointingRelative* flipPointingRelative;
         RemapFunc::FlipScrollWheel* flipScrollWheel;
         RemapFunc::ForceNumLockOn* forceNumLockOn;
         RemapFunc::HoldingKeyToKey* holdingKeyToKey;
