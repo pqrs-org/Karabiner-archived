@@ -32,6 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DropScrollWheel::remap(RemapPointingParams_scroll& remapParams)
     {
+      if (remapParams.isremapped) return false;
       remapParams.isremapped = true;
 
       if (dropHorizontalScroll_) {
