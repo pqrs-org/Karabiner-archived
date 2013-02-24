@@ -667,6 +667,38 @@
     </item>
 
     <item>
+      <name>FlipScrollWheel</name>
+      <item>
+        <name>Flip Horizontal and Vertical ScrollWheel at Safari</name>
+        <identifier>remap.samples_flipscrollwheel</identifier>
+        <only>SAFARI</only>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL_SCROLL,
+          Option::FLIPSCROLLWHEEL_VERTICAL_SCROLL,
+        </autogen>
+      </item>
+      <item>
+        <name>Flip Horizontal ScrollWheel at Safari</name>
+        <identifier>remap.samples_flipscrollwheel_horizontal</identifier>
+        <only>SAFARI</only>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL_SCROLL,
+        </autogen>
+      </item>
+      <item>
+        <name>Flip Vertical ScrollWheel at Safari</name>
+        <identifier>remap.samples_flipscrollwheel_vertical</identifier>
+        <only>SAFARI</only>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_VERTICAL_SCROLL,
+        </autogen>
+      </item>
+    </item>
+
+    <item>
       <name>IgnoreMultipleSameKeyPress</name>
       <item>
         <name>Standard</name>
