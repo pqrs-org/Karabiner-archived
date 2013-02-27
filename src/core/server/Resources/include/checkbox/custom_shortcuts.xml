@@ -42,13 +42,13 @@
       <identifier>remap.option_brackets_to_command_shift_brackets</identifier>
       <autogen>
         __KeyToKey__
-        KeyCode:: BRACKET_LEFT, ModifierFlag::OPTION_R,
-        KeyCode:: BRACKET_LEFT, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R
+        KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R,
+        KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R
       </autogen>
       <autogen>
         __KeyToKey__
-        KeyCode:: BRACKET_RIGHT, ModifierFlag::OPTION_R,
-        KeyCode:: BRACKET_RIGHT, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R
+        KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R,
+        KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R
       </autogen>
     </item>
   </item>
