@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only ProPresenter</name>
+    <item>
+      <name>ProPresenter Advance and Back using Targus AMP11 Remote</name>
+      <appendix>Shift_L+Down-Arrow to Right-Arrow (Only in ProPresenter 5)</appendix>
+      <appendix>Shift_L+Up-Arrow to Left-Arrow (Only in ProPresenter 5)</appendix>
+      <identifier>remap.propresenter_shift_down_to_right</identifier>
+      <only>ProPresenter5</only>
+      <autogen>
+        __SimultaneousKeyPresses__
+        KeyCode::SHIFT_L, KeyCode::CURSOR_DOWN,
+        KeyCode::CURSOR_RIGHT,
+        Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+      </autogen>
+      <autogen>
+        __SimultaneousKeyPresses__
+        KeyCode::SHIFT_L, KeyCode::CURSOR_UP,
+        KeyCode::CURSOR_LEFT,
+        Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+      </autogen>
+    </item>
+  </item>
+</root>
