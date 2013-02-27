@@ -427,4 +427,8 @@
     <equal>jp.co.ergo.egword_universal</equal>
   </appdef>
 
+  <appdef>
+    <appname>ProPresenter5</appname>
+    <equal>com.renewedvision.ProPresenter5</equal>
+  </appdef>
 </root>
