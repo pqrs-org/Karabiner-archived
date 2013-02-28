@@ -1,6 +1,7 @@
 #include "base.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
+#include "UserClient_kext.hpp"
 #include "VK_CONFIG.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -43,8 +44,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! items_) return false;
 
+    RemapClass* remapclass = NULL;
+
     for (size_t i = 0; i < items_->size(); ++i) {
-      RemapClass* remapclass              = (*items_)[i].remapclass;
+      remapclass                          = (*items_)[i].remapclass;
       unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
       unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
       unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
@@ -88,6 +91,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   refresh:
     RemapClassManager::refresh();
+
+    // Tell remapclass status is changed to userspace.
+    if (remapclass) {
+      org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED, remapclass->get_configindex());
+    }
 
   finish:
     EventOutputQueue::FireModifiers::fire();
