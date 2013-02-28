@@ -25,4 +25,4 @@ xcode:
 	open *.xcodeproj
 
 run: all
-	./build/Release/KeyRemap4MacBook.app/Contents/MacOS/KeyRemap4MacBook
+	open ./build/Release/KeyRemap4MacBook.app
