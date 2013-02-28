@@ -209,7 +209,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
     if ([argument isEqualToString:@"--fromLaunchAgents"]) {
       if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
-        [self quit:self];
+        [NSApp terminate:nil];
       }
     }
   }
@@ -370,6 +370,13 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
 - (IBAction) quit:(id)sender
 {
+  NSAlert* alert = [NSAlert alertWithMessageText:@"Quit KeyRemap4MacBook?"
+                                   defaultButton:@"Quit"
+                                 alternateButton:@"Cancel"
+                                     otherButton:nil
+                       informativeTextWithFormat:@"Are you sure you want to quit KeyRemap4MacBook?"];
+  if ([alert runModal] != NSAlertDefaultReturn) return;
+
   [PreferencesManager setIsQuitByHand:@YES];
   [NSApp terminate:nil];
 }
