@@ -40,11 +40,20 @@
           (7) Release S
 
           So, we use ModifierFlag::EXTRA1 instead of KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_*.
-          Because KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_* will be canceled when we turn ThumbSense off.
+          Because KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_* will not be canceled when we turn ThumbSense off.
         -->
-      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-      <autogen>__KeyToKey__ KeyCode::L, KeyCode::VK_MODIFIER_EXTRA1</autogen>
-      <autogen>__PointingRelativeToScroll__ PointingButton::NONE, ModifierFlag::EXTRA1</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::S,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_thumbsense_scroll,
+        KeyCode::VK_MODIFIER_EXTRA1
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_thumbsense_scroll,
+        KeyCode::VK_MODIFIER_EXTRA1
+      </autogen>
 
       <!-- ============================================================ -->
       <!-- no E definition -->
@@ -58,6 +67,11 @@
       <!-- no I definition -->
       <!-- no O definition -->
       <!-- no M definition -->
+    </item>
+    <item hidden="true">
+      <name>ThumbSense Scroll Helper</name>
+      <identifier vk_config="true">notsave.thumbsense_scroll</identifier>
+      <autogen>__PointingRelativeToScroll__ PointingButton::NONE, ModifierFlag::EXTRA1</autogen>
     </item>
     <item>
       <name>How to use</name>
