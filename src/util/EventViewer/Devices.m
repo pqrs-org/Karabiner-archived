@@ -43,10 +43,14 @@
                          @[@"Consumer", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER]],
                          @[@"Pointing", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING]]]) {
       NSInteger type = [[a objectAtIndex:1] integerValue];
-      for (NSDictionary* d in [[client_ proxy] device_information : type]) {
-        NSMutableDictionary* newdict = [NSMutableDictionary dictionaryWithDictionary:d];
-        [newdict setObject:[a objectAtIndex:0] forKey:@"deviceType"];
-        [devices_ addObject:newdict];
+      @try {
+        for (NSDictionary* d in [[client_ proxy] device_information : type]) {
+          NSMutableDictionary* newdict = [NSMutableDictionary dictionaryWithDictionary:d];
+          [newdict setObject:[a objectAtIndex:0] forKey:@"deviceType"];
+          [devices_ addObject:newdict];
+        }
+      } @catch (NSException* exception) {
+        NSLog(@"%@", exception);
       }
     }
   }

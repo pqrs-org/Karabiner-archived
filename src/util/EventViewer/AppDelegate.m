@@ -1,7 +1,3 @@
-//
-//  AppDelegate.m
-//
-
 #import "AppDelegate.h"
 #import "KeyRemap4MacBookClient.h"
 #import "KeyRemap4MacBookKeys.h"
@@ -19,15 +15,23 @@
 
 - (void) addToAppQueue
 {
-  [appQueue_ push:[[[client_ proxy] application_information] objectForKey:@"name"]];
+  @try {
+    [appQueue_ push:[[[client_ proxy] application_information] objectForKey:@"name"]];
+  } @catch (NSException* exception) {
+    NSLog(@"%@", exception);
+  }
 }
 
 - (void) updateOtherInformationStore
 {
-  NSDictionary* d = [[client_ proxy] inputsource_information];
-  [otherinformationstore_ setLanguageCode:[d objectForKey:@"languageCode"]];
-  [otherinformationstore_ setInputSourceID:[d objectForKey:@"inputSourceID"]];
-  [otherinformationstore_ setInputModeID:[d objectForKey:@"inputModeID"]];
+  @try {
+    NSDictionary* d = [[client_ proxy] inputsource_information];
+    [otherinformationstore_ setLanguageCode:[d objectForKey:@"languageCode"]];
+    [otherinformationstore_ setInputSourceID:[d objectForKey:@"inputSourceID"]];
+    [otherinformationstore_ setInputModeID:[d objectForKey:@"inputModeID"]];
+  } @catch (NSException* exception) {
+    NSLog(@"%@", exception);
+  }
 }
 
 // ------------------------------------------------------------
