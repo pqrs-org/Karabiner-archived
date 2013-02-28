@@ -99,7 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     DECLARE_VECTOR(ItemPointer);
 
     // ----------------------------------------------------------------------
-    RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size);
+    RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex);
     ~RemapClass(void);
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
@@ -111,11 +111,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool remap_simultaneouskeypresses(void);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
     void call_disabled_callback(void);
-    const char* get_statusmessage(void);
+    const char* get_statusmessage(void) const { return statusmessage_; }
     bool enabled(void) const { return enabled_; }
     void setEnabled(bool newval) { enabled_ = newval; }
-    void toggleEnabled(void) { enabled_ = ! enabled_; }
-    bool is_simultaneouskeypresses(void);
+    void toggleEnabled(void) { setEnabled(! enabled_); }
+    bool is_simultaneouskeypresses(void) const { return is_simultaneouskeypresses_; }
+    uint32_t get_configindex(void) const { return configindex_; }
 
     static void log_allocation_count(void);
     static void reset_allocation_count(void);
@@ -128,6 +129,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     char* statusmessage_;
     bool enabled_;
     bool is_simultaneouskeypresses_;
+    uint32_t configindex_;
 
     static int allocation_count_;
   };

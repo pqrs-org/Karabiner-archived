@@ -392,10 +392,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   int RemapClass::allocation_count_ = 0;
 
-  RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size) :
+  RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex) :
     statusmessage_(NULL),
     enabled_(false),
-    is_simultaneouskeypresses_(false)
+    is_simultaneouskeypresses_(false),
+    configindex_(configindex)
   {
     if (! initialize_vector) {
       IOLOG_ERROR("RemapClass::RemapClass invalid parameter.\n");
@@ -640,18 +641,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  const char*
-  RemapClass::get_statusmessage(void)
-  {
-    return statusmessage_;
-  }
-
-  bool
-  RemapClass::is_simultaneouskeypresses(void)
-  {
-    return is_simultaneouskeypresses_;
-  }
-
   void
   RemapClass::log_allocation_count(void)
   {
@@ -864,7 +853,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           uint32_t configindex = *p++;
           --size;
 
-          RemapClass* newp = new RemapClass(p, size);
+          RemapClass* newp = new RemapClass(p, size, configindex);
           if (! newp) {
             IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
             goto error;
