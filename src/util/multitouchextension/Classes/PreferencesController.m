@@ -83,7 +83,11 @@
   // ------------------------------------------------------------
   // disable old settings
   for (NSString* name in oldSettings_) {
-    [[client_ proxy] setValueForName:0 forName:name];
+    @try {
+      [[client_ proxy] setValueForName:0 forName:name];
+    } @catch (NSException* exception) {
+      NSLog(@"%@", exception);
+    }
   }
 
   [oldSettings_ removeAllObjects];

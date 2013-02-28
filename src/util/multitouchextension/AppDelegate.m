@@ -78,7 +78,11 @@ static void setPreference(int fingers, int newvalue) {
   {
     NSString* name = [PreferencesController getSettingName:fingers];
     if ([name length] > 0) {
-      [[global_client_ proxy] setValueForName:newvalue forName:name];
+      @try {
+        [[global_client_ proxy] setValueForName:newvalue forName:name];
+      } @catch (NSException* exception) {
+        NSLog(@"%@", exception);
+      }
     }
   }
   [pool drain];
