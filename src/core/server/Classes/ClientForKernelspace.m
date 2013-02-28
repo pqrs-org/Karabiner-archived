@@ -9,6 +9,7 @@
 @implementation ClientForKernelspace
 
 @synthesize iohidPostEventWrapper;
+@synthesize preferencesManager;
 @synthesize userClient_userspace;
 @synthesize statusWindow;
 @synthesize workSpaceData;
@@ -20,6 +21,26 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                    ClientForKernelspace* self = (ClientForKernelspace*)(refcon);
 
                    switch (type) {
+                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED:
+                       {
+                         uint32_t enabled = 0;
+
+                         struct BridgeUserClientStruct bridgestruct;
+                         bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED;
+                         bridgestruct.option = option;
+                         bridgestruct.data   = (user_addr_t)(&enabled);
+                         bridgestruct.size   = sizeof (enabled);
+
+                         if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
+
+                         uint32_t configindex = option;
+                         NSString* name = [[self xmlCompiler] identifier:(int)(configindex)];
+                         if (name) {
+                           [[self preferencesManager] setValueForName:enabled forName:name];
+                         }
+                         break;
+                       }
+
                      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
                        {
                          char buf[512];
@@ -60,6 +81,15 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 {
   dispatch_async(dispatch_get_main_queue(), ^{
                    [self send_remapclasses_initialize_vector_to_kext];
+                   [preferencesManager clearNotSave];
+                   [self send_config_to_kext];
+                 });
+}
+
+- (void) observer_ConfigListChanged:(NSNotification*)notification
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   [preferencesManager clearNotSave];
                    [self send_config_to_kext];
                  });
 }
@@ -84,6 +114,9 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigXMLReloaded:)
                                                  name:kConfigXMLReloadedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_ConfigListChanged:)
+                                                 name:kConfigListChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_PreferencesChanged:)
                                                  name:kPreferencesChangedNotification object:nil];
@@ -128,7 +161,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 - (void) send_config_to_kext
 {
-  NSArray* essential_config = [preferencesManager_ essential_config];
+  NSArray* essential_config = [preferencesManager essential_config];
   if (! essential_config) {
     NSLog(@"[WARNING] essential_config == nil.");
     return;
@@ -160,7 +193,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
       } else {
-        *p++ = [preferencesManager_ value:name];
+        *p++ = [preferencesManager value:name];
       }
     }
 
