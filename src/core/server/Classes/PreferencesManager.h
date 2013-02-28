@@ -2,13 +2,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class ClientForKernelspace;
-
 @interface PreferencesManager : NSObject {
   NSMutableDictionary* default_;
   NSArray* essential_configuration_identifiers_;
-
-  IBOutlet ClientForKernelspace* clientForKernelspace_;
 }
 
 + (void) setIsQuitByHand:(NSNumber*)newvalue;
@@ -19,6 +15,7 @@
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;
+- (void) clearNotSave;
 
 - (NSArray*) essential_config;
 - (NSDictionary*) changed;

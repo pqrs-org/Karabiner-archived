@@ -1,4 +1,3 @@
-#import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
@@ -197,6 +196,28 @@
   // [[NSUserDefaults standardUserDefaults] synchronize];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+}
+
+- (void) clearNotSave
+{
+  // user setting
+  NSString* identifier = [self configlist_selectedIdentifier];
+  if (identifier) {
+    NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+    if (dict) {
+      NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
+
+      for (NSString* key in dict) {
+        if ([key hasPrefix:@"notsave."]) {
+          [md removeObjectForKey:key];
+        }
+      }
+
+      [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
+
+      [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+    }
+  }
 }
 
 - (NSArray*) essential_config

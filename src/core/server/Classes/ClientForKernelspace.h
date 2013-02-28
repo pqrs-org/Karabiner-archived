@@ -15,13 +15,14 @@
   UserClient_userspace* userClient_userspace;
 
   IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper;
-  IBOutlet PreferencesManager* preferencesManager_;
+  IBOutlet PreferencesManager* preferencesManager;
   IBOutlet StatusWindow* statusWindow;
   IBOutlet WorkSpaceData* workSpaceData;
   IBOutlet XMLCompiler* xmlCompiler;
 }
 
 @property (assign) IOHIDPostEventWrapper* iohidPostEventWrapper;
+@property (assign) PreferencesManager* preferencesManager;
 @property (assign) UserClient_userspace* userClient_userspace;
 @property (assign) StatusWindow* statusWindow;
 @property (assign) WorkSpaceData* workSpaceData;
