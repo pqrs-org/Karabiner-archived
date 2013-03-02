@@ -150,6 +150,26 @@
     </item>
 
     <item>
+      <name>For Magic Trackpad</name>
+      <item>
+        <name>Flip Magic Trackpad</name>
+        <appendix>You can rotate Magic Trackpad 180 degrees.</appendix>
+        <identifier>remap.flip_magic_trackpad</identifier>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_TRACKPAD</device_only>
+        <autogen>
+          __FlipPointingRelative__
+          Option::FLIPPOINTINGRELATIVE_HORIZONTAL,
+          Option::FLIPPOINTINGRELATIVE_VERTICAL,
+        </autogen>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
+          Option::FLIPSCROLLWHEEL_VERTICAL,
+        </autogen>
+      </item>
+    </item>
+
+    <item>
       <name>For Logitech Devices</name>
       <item>
         <name>Tilt Wheel to Back/Forward (Command+[, Command+]) on Logitech MX620 and G9X</name>
