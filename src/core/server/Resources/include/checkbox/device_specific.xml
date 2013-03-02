@@ -154,6 +154,8 @@
       <item>
         <name>Flip Magic Trackpad</name>
         <appendix>You can rotate Magic Trackpad 180 degrees.</appendix>
+        <appendix>(This setting flips only pointer and scroll. So, gestures do not work properly.</appendix>
+        <appendix>Please disable gestures from System Preferences.)</appendix>
         <identifier>remap.flip_magic_trackpad</identifier>
         <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_TRACKPAD</device_only>
         <autogen>
