@@ -759,8 +759,15 @@
       <item>
         <name>Control+[ to Escape at Japanese Keyboard</name>
         <identifier>option.jis_emacsmode_controlLeftbracket</identifier>
-        <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11</not>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
         <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+      </item>
+      <item>
+        <name>[ex] Option+{|} to Command+{|}</name>
+        <identifier>option.jis_emacsmode_ex_option_tab_change</identifier>
+        <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, VK_OPTION | VK_SHIFT, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_OPTION | VK_SHIFT, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
       </item>
       <item>
         <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>

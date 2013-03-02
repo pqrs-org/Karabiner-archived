@@ -344,13 +344,6 @@
       <autogen>__KeyToKey__ KeyCode::T, VK_OPTION, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
-      <name>[ex] Option+{|} to Command+{|}</name>
-      <identifier>option.emacsmode_ex_option_tab_change</identifier>
-      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, VK_OPTION | VK_SHIFT, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_OPTION | VK_SHIFT, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
-    </item>
-    <item>
       <name>[ex] Use Control+X as prefix key</name>
       <item>
         <!-- C-x Mode Core -->
