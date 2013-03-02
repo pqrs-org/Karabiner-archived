@@ -138,7 +138,7 @@
     </item>
 
     <item>
-      <name>For Magic Mouse (vid/pid: 0x05ac,0x030d)</name>
+      <name>For Magic Mouse</name>
       <item>
         <name>Disable ScrollWheel</name>
         <identifier>remap.dropscrollwheel_0x05ac_0x030d</identifier>
