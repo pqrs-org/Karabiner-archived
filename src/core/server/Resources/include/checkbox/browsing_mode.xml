@@ -14,14 +14,22 @@
       <appendix>- Change K to Option_L+Up</appendix>
       <appendix>- Change L to End</appendix>
       <identifier vk_config="true">notsave.browsingmode</identifier>
+      {{ BROWSING_MODE_EXTRA }}
       <autogen>__ShowStatusMessage__ Browsing Mode</autogen>
       <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::PAGEUP</autogen>
       <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::PAGEDOWN</autogen>
       <autogen>__KeyToKey__ KeyCode::B, KeyCode::PAGEUP</autogen>
       <autogen>__KeyToKey__ KeyCode::H, KeyCode::HOME</autogen>
       <autogen>__KeyToKey__ KeyCode::L, KeyCode::END</autogen>
+      <!-- ============================================================ -->
+      <block>
+        <config_only>option.browsingmode_jk_scrollwheel</config_only>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::VK_MOUSEKEY_SCROLL_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::VK_MOUSEKEY_SCROLL_UP</autogen>
+      </block>
       <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP,   ModifierFlag::OPTION_L</autogen>
+      <!-- ============================================================ -->
     </item>
     <item>
       <name>Eject to toggle Browsing Mode</name>
@@ -46,6 +54,11 @@
       <name>RightClick to toggle Browsing Mode</name>
       <identifier>remap.rightclick_to_browsing</identifier>
       <autogen>__PointingButtonToKey__ PointingButton::RIGHT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>[Option] Use J/K as Scroll Wheel</name>
+      <identifier>option.browsingmode_jk_scrollwheel</identifier>
     </item>
   </item>
 </root>
