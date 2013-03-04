@@ -41,6 +41,7 @@
     <appname>REMOTEDESKTOPCONNECTION</appname>
     <equal>com.microsoft.rdc</equal>
     <equal>net.sf.cord</equal>
+    <equal>com.thinomenon.RemoteDesktopConnection</equal>
   </appdef>
 
   <appdef>
