@@ -125,5 +125,10 @@
       <identifier>remap.eject2pagedown</identifier>
       <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
     </item>
+    <item>
+      <name>Disable Eject</name>
+      <identifier>remap.drop_eject</identifier>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::VK_NONE</autogen>
+    </item>
   </item>
 </root>
