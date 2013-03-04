@@ -100,6 +100,31 @@
 }
 
 // ------------------------------------------------------------
+- (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"observer_NSWorkspaceDidWakeNotification");
+
+                   [preferencesManager_ clearNotSave];
+                 });
+}
+
+- (void) registerWakeNotification
+{
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceDidWakeNotification:)
+                                                             name:NSWorkspaceDidWakeNotification
+                                                           object:nil];
+}
+
+- (void) unregisterWakeNotification
+{
+  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
+                                                                name:NSWorkspaceDidWakeNotification
+                                                              object:nil];
+}
+
+// ------------------------------------------------------------
 static void observer_IONotification(void* refcon, io_iterator_t iterator)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -188,6 +213,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
                    [statusWindow_ resetStatusMessage];
 
                    [self registerIONotification];
+                   [self registerWakeNotification];
                  });
 }
 
@@ -199,6 +225,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
                    [statusWindow_ resetStatusMessage];
 
                    [self unregisterIONotification];
+                   [self unregisterWakeNotification];
                    [clientForKernelspace disconnect_from_kext];
                  });
 }
@@ -230,6 +257,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [preferencesManager_ load];
 
   [self registerIONotification];
+  [self registerWakeNotification];
 
   [statusWindow_ setupStatusWindow];
   [statusbar_ refresh];
