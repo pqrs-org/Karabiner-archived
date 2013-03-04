@@ -49,6 +49,24 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventOutputQueue::FireScrollWheel::fire(remapParams.params);
       RemapFunc::PointingRelativeToScroll::cancelScroll();
 
+      // We need to restore temporary flags.
+      // Because normal cursor move event don't restore temporary_count_.
+      // (See EventInputQueue::push_RelativePointerEventCallback.)
+      //
+      // ------------------------------------------------------------
+      // For example:
+      // This autogen changes option+scroll to scroll. (strip option modifier.)
+      //   <autogen>__ScrollWheelToScrollWheel__ ModifierFlag::OPTION_L, ModifierFlag::NONE</autogen>
+      //
+      // Considering the following operation with this autogen, we need to restore temporary flags at (3).
+      // (1) option+left click
+      // (2) drag mouse (option+left drag)
+      // (3) scroll (strip option)
+      // (4) drag mouse (option+left drag)
+      // ------------------------------------------------------------
+      FlagStatus::temporary_decrease(toFlags_);
+      FlagStatus::temporary_increase(fromFlags_);
+
       return true;
     }
   }
