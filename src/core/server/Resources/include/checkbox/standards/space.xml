@@ -124,6 +124,17 @@
       <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::SPACE</autogen>
     </item>
     <item>
+      <name>Holding Space to LeftClick</name>
+      <identifier>remap.holding_space_to_left_click</identifier>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::SPACE,
+        KeyCode::SPACE,
+        KeyCode::VK_NONE,
+        KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
+      </autogen>
+    </item>
+    <item>
       <name>Fn+Space to LeftClick</name>
       <identifier>remap.fn_space_to_left_click</identifier>
       <autogen>__KeyToPointingButton__ KeyCode::SPACE, ModifierFlag::FN, PointingButton::LEFT</autogen>
