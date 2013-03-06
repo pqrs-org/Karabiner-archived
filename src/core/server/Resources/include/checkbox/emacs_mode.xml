@@ -380,6 +380,7 @@
         <appendix>Control+Space to turn off MarkSet</appendix>
         <identifier vk_config="true">notsave.emacsmode_ex_controlSpace_core</identifier>
         <autogen>__ShowStatusMessage__ MarkSet</autogen>
+        {{ EMACS_MODE_MARKSET_EXTRA }}
         <autogen>
           __KeyToKey__
           KeyCode::W, VK_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE,

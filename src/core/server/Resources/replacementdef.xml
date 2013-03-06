@@ -53,6 +53,11 @@
     <replacementvalue></replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>EMACS_MODE_MARKSET_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS</replacementname>
