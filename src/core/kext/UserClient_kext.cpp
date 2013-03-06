@@ -372,7 +372,20 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       const int32_t* config = reinterpret_cast<int32_t*>(buffer);
       if (config) {
         if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
-          org_pqrs_KeyRemap4MacBook::Config::set_initialized(true);
+          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+        }
+      }
+      break;
+    }
+
+    case BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED:
+    {
+      if (size != sizeof(uint32_t)) {
+        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED wrong 'size' parameter\n");
+      } else {
+        uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
+        if (p) {
+          org_pqrs_KeyRemap4MacBook::Config::set_initialized(*p);
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
