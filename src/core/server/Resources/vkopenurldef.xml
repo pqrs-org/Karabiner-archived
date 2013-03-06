@@ -84,6 +84,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Stickies</name>
+    <url>file:///Applications/Stickies.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Terminal</name>
     <url>file:///Applications/Utilities/Terminal.app</url>
   </vkopenurldef>
