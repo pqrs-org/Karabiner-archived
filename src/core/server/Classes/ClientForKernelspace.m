@@ -82,7 +82,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   dispatch_async(dispatch_get_main_queue(), ^{
                    [self send_remapclasses_initialize_vector_to_kext];
                    [preferencesManager clearNotSave];
-                   [self send_config_to_kext:YES];
+                   [self send_config_to_kext];
+                   [self set_initialized];
                  });
 }
 
@@ -90,14 +91,20 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 {
   dispatch_async(dispatch_get_main_queue(), ^{
                    [preferencesManager clearNotSave];
-                   [self send_config_to_kext:YES];
+                   [self send_config_to_kext];
+                   [self set_initialized];
                  });
 }
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [self send_config_to_kext:NO];
+                   [self send_config_to_kext];
+                   // Do not call [self set_initialized] here
+                   // because set_initialized will clear modifier lock.
+                   //
+                   // We need to preserve modifier lock here for
+                   // notsave.emacsmode_ex_controlSpace_core (and other settings).
                  });
 }
 
@@ -159,7 +166,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   [userClient_userspace synchronized_communication:&bridgestruct];
 }
 
-- (void) send_config_to_kext:(BOOL)set_initialized
+- (void) send_config_to_kext
 {
   NSArray* essential_config = [preferencesManager essential_config];
   if (! essential_config) {
@@ -207,17 +214,19 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     [userClient_userspace synchronized_communication:&bridgestruct];
 
     free(data);
-
-    if (set_initialized) {
-      uint32_t value = 1;
-      bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED;
-      bridgestruct.option = 0;
-      bridgestruct.data   = &value;
-      bridgestruct.size   = sizeof(value);
-
-      [userClient_userspace synchronized_communication:&bridgestruct];
-    }
   }
+}
+
+- (void) set_initialized
+{
+  uint32_t value = 1;
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED;
+  bridgestruct.option = 0;
+  bridgestruct.data   = &value;
+  bridgestruct.size   = sizeof(value);
+
+  [userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata
