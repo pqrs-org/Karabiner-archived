@@ -94,6 +94,7 @@
   if ([windows_ count] == 0) {
     [windows_ addObject:statusMessage_normal_];
     [windows_ addObject:statusMessage_nano_];
+    [windows_ addObject:statusMessage_edge_];
   }
 
   for (NSWindow* window in windows_) {
@@ -212,45 +213,9 @@
   }
 }
 
-- (void) updateFrameOrigin:(NSWindow*)window {
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  NSInteger position = [defaults integerForKey:kStatusWindowPosition];
-
-  NSRect screenFrame = [[NSScreen mainScreen] visibleFrame];
-  NSRect windowFrame = [window frame];
-  int margin = 10;
-  NSPoint point;
-
-  switch (position) {
-    case 0:
-      // Top left
-      point.x = screenFrame.origin.x + margin;
-      point.y = screenFrame.origin.y + screenFrame.size.height - windowFrame.size.height - margin;
-      break;
-    case 1:
-      // Top right
-      point.x = screenFrame.origin.x + screenFrame.size.width  - windowFrame.size.width - margin,
-      point.y = screenFrame.origin.y + screenFrame.size.height - windowFrame.size.height - margin;
-      break;
-    case 2:
-      // Bottom left
-      point.x = screenFrame.origin.x + margin;
-      point.y = screenFrame.origin.y + margin;
-      break;
-    case 3:
-    default:
-      // Bottom right
-      point.x = screenFrame.origin.x + screenFrame.size.width  - windowFrame.size.width - margin,
-      point.y = screenFrame.origin.y + margin;
-      break;
-  }
-
-  [window setFrameOrigin:point];
-}
-
 - (void) updateFrameOrigin {
   for (NSWindow* window in windows_) {
-    [self updateFrameOrigin:window];
+    [[window contentView] updateWindowFrame];
   }
 }
 

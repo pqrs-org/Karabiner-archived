@@ -2,5 +2,5 @@
 
 #import "StatusMessageView.h"
 
-@interface StatusMessageView_nano : StatusMessageView
+@interface StatusMessageView_edge : StatusMessageView
 @end
