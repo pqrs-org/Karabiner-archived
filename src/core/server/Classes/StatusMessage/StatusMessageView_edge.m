@@ -9,8 +9,22 @@
 {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSInteger position = [defaults integerForKey:kStatusWindowPosition];
+  NSInteger fontsize = [defaults integerForKey:kStatusWindowFontSize];
 
-  CGFloat width = [[NSApp mainMenu] menuBarHeight] / 4;
+  CGFloat width = [[NSApp mainMenu] menuBarHeight] / 8;
+  switch (fontsize) {
+    case 1: // Regular
+      width *= 2;
+      break;
+    case 2: // Large
+      width *= 3;
+      break;
+    case 3: // Huge
+      width *= 4;
+      break;
+    default: // Small
+      break;
+  }
 
   NSRect rect = [[NSScreen mainScreen] frame];
   switch (position) {
