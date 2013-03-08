@@ -1,9 +1,9 @@
 // -*- Mode: objc -*-
 
 #import "PreferencesKeys.h"
-#import "StatusMessageView.h"
+#import "StatusMessageView_normal.h"
 
-@implementation StatusMessageView
+@implementation StatusMessageView_normal
 
 - (void) drawRect:(NSRect)dirtyRect
 {

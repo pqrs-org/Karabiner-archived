@@ -1,6 +1,6 @@
 // -*- Mode: objc -*-
 
-@interface StatusMessageView : NSView
+@interface StatusMessageView_normal : NSView
 {
   IBOutlet NSTextField* message_;
 }

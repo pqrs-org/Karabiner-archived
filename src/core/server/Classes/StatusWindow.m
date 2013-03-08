@@ -1,6 +1,6 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
-#import "StatusMessageView.h"
+#import "StatusMessageView_normal.h"
 #import "StatusWindow.h"
 #include "bridge.h"
 
@@ -84,7 +84,7 @@
   [self updateFrameOrigin];
 
   // ------------------------------------------------------------
-  [statusMessageView_ setMessage:@""];
+  [statusMessageView_normal_ setMessage:@""];
 }
 
 // ------------------------------------------------------------
@@ -155,12 +155,12 @@
   }
 
   // ------------------------------------------------------------
-  [statusMessageView_ setMessage:statusMessage];
+  [statusMessageView_normal_ setMessage:statusMessage];
 
   if ([statusMessage length] > 0) {
     [self updateFrameOrigin];
     [window_ orderFront:self];
-    [statusMessageView_ setNeedsDisplay:YES];
+    [statusMessageView_normal_ setNeedsDisplay:YES];
   } else {
     [window_ orderOut:self];
   }

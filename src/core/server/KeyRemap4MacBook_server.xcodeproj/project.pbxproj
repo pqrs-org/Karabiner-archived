@@ -39,7 +39,7 @@
 		348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 348F120015EA8ADA008A2BDA /* devicelocationdef.xml */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
-		34A5572816EA03CF000E5399 /* StatusMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5572716EA03CF000E5399 /* StatusMessageView.m */; };
+		34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */; };
 		34A611931531707E0003894B /* checkbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A611921531707E0003894B /* checkbox.xml */; };
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
@@ -126,8 +126,8 @@
 		348F120015EA8ADA008A2BDA /* devicelocationdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicelocationdef.xml; path = Resources/devicelocationdef.xml; sourceTree = "<group>"; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
-		34A5572616EA03CF000E5399 /* StatusMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView.h; path = Classes/StatusMessage/StatusMessageView.h; sourceTree = "<group>"; };
-		34A5572716EA03CF000E5399 /* StatusMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView.m; path = Classes/StatusMessage/StatusMessageView.m; sourceTree = "<group>"; };
+		34A5572916EA04D6000E5399 /* StatusMessageView_normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView_normal.h; path = Classes/StatusMessage/StatusMessageView_normal.h; sourceTree = "<group>"; };
+		34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView_normal.m; path = Classes/StatusMessage/StatusMessageView_normal.m; sourceTree = "<group>"; };
 		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = Resources/checkbox.xml; sourceTree = "<group>"; };
 		34A83BCE144B1EAA00AE5687 /* appdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = appdef.xml; path = Resources/appdef.xml; sourceTree = "<group>"; };
 		34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
@@ -310,8 +310,8 @@
 		34A5572516EA03B3000E5399 /* StatusMessage */ = {
 			isa = PBXGroup;
 			children = (
-				34A5572616EA03CF000E5399 /* StatusMessageView.h */,
-				34A5572716EA03CF000E5399 /* StatusMessageView.m */,
+				34A5572916EA04D6000E5399 /* StatusMessageView_normal.h */,
+				34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */,
 			);
 			name = StatusMessage;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 				34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */,
 				3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */,
 				342D245E16A68C4E00EF070F /* IOHIDPostEventWrapper.m in Sources */,
-				34A5572816EA03CF000E5399 /* StatusMessageView.m in Sources */,
+				34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

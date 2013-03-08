@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class StatusMessageView;
+@class StatusMessageView_normal;
 
 @interface StatusWindow : NSObject {
   BOOL statusWindowPreferencesOpened_;
@@ -10,7 +10,7 @@
   NSMutableArray* lastMessages_;
 
   IBOutlet NSWindow* window_;
-  IBOutlet StatusMessageView* statusMessageView_;
+  IBOutlet StatusMessageView_normal* statusMessageView_normal_;
 }
 
 - (void) setupStatusWindow;
