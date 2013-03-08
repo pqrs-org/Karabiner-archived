@@ -16,6 +16,7 @@
                            kIsStatusWindowEnabled : @YES,
                            kIsStatusWindowShowStickyModifier : @NO,
                            kIsStatusWindowShowPointingButtonLock : @YES,
+                           kStatusWindowType : @0, // Normal
                            kStatusWindowTheme : @0, // White
                            kStatusWindowOpacity : @80,
                            kStatusWindowFontSize : @0, // Small
