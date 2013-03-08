@@ -8,6 +8,7 @@
 #define kIsStatusWindowEnabled                @"isStatusWindowEnabled"
 #define kIsStatusWindowShowStickyModifier     @"isStatusWindowShowStickyModifier"
 #define kIsStatusWindowShowPointingButtonLock @"isStatusWindowShowPointingButtonLock"
+#define kStatusWindowType                     @"statusWindowType"
 #define kStatusWindowTheme                    @"statusWindowTheme"
 #define kStatusWindowOpacity                  @"statusWindowOpacity"
 #define kStatusWindowFontSize                 @"statusWindowFontSize"

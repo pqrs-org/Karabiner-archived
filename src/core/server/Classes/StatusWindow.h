@@ -6,11 +6,12 @@
 
 @interface StatusWindow : NSObject {
   BOOL statusWindowPreferencesOpened_;
+  NSMutableArray* windows_;
   NSMutableArray* lines_;
   NSMutableArray* lastMessages_;
 
-  IBOutlet NSWindow* window_;
-  IBOutlet StatusMessageView_normal* statusMessageView_normal_;
+  IBOutlet NSWindow* statusMessage_normal_;
+  IBOutlet NSWindow* statusMessage_nano_;
 }
 
 - (void) setupStatusWindow;

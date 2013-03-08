@@ -2,7 +2,7 @@
 
 #import "StatusMessageView.h"
 
-@interface StatusMessageView_normal : StatusMessageView
+@interface StatusMessageView_nano : StatusMessageView
 {
   IBOutlet NSTextField* message_;
 }

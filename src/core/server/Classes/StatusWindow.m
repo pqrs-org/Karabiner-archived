@@ -36,6 +36,8 @@
 
   if (self) {
     statusWindowPreferencesOpened_ = NO;
+
+    windows_ = [NSMutableArray new];
     lines_ = [NSMutableArray new];
     lastMessages_ = [NSMutableArray new];
     for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
@@ -62,6 +64,7 @@
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+  [windows_ release];
   [lines_ release];
   [lastMessages_ release];
 
@@ -69,30 +72,50 @@
 }
 
 // ------------------------------------------------------------
-- (void) setupStatusWindow {
+- (void) setupStatusWindow:(NSWindow*)window
+{
   NSWindowCollectionBehavior behavior = NSWindowCollectionBehaviorCanJoinAllSpaces |
                                         NSWindowCollectionBehaviorStationary |
                                         NSWindowCollectionBehaviorIgnoresCycle;
 
-  [window_ orderOut:self];
-  [window_ setBackgroundColor:[NSColor clearColor]];
-  [window_ setOpaque:NO];
-  [window_ setStyleMask:NSBorderlessWindowMask];
-  [window_ setLevel:NSStatusWindowLevel];
-  [window_ setIgnoresMouseEvents:YES];
-  [window_ setCollectionBehavior:behavior];
-  [self updateFrameOrigin];
+  [window orderOut:self];
+  [window setBackgroundColor:[NSColor clearColor]];
+  [window setOpaque:NO];
+  [window setStyleMask:NSBorderlessWindowMask];
+  [window setLevel:NSStatusWindowLevel];
+  [window setIgnoresMouseEvents:YES];
+  [window setCollectionBehavior:behavior];
 
-  // ------------------------------------------------------------
-  [statusMessageView_normal_ setMessage:@""];
+  [[window contentView] setMessage:@""];
+}
+
+- (void) setupStatusWindow
+{
+  if ([windows_ count] == 0) {
+    [windows_ addObject:statusMessage_normal_];
+    [windows_ addObject:statusMessage_nano_];
+  }
+
+  for (NSWindow* window in windows_) {
+    [self setupStatusWindow:window];
+  }
+  [self updateFrameOrigin];
 }
 
 // ------------------------------------------------------------
 - (IBAction) refresh:(id)sender;
 {
+  NSWindow* window = [self currentWindow];
+  // Hide windows which have an unselected type.
+  for (NSWindow* w in windows_) {
+    if (w != window) {
+      [w orderOut:self];
+    }
+  }
+
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   if (! [defaults boolForKey:kIsStatusWindowEnabled]) {
-    [window_ orderOut:self];
+    [window orderOut:self];
     return;
   }
 
@@ -155,14 +178,14 @@
   }
 
   // ------------------------------------------------------------
-  [statusMessageView_normal_ setMessage:statusMessage];
+  [[[self currentWindow] contentView] setMessage:statusMessage];
 
   if ([statusMessage length] > 0) {
     [self updateFrameOrigin];
-    [window_ orderFront:self];
-    [statusMessageView_normal_ setNeedsDisplay:YES];
+    [window orderFront:self];
+    [[[self currentWindow] contentView] setNeedsDisplay:YES];
   } else {
-    [window_ orderOut:self];
+    [window orderOut:self];
   }
 }
 
@@ -181,12 +204,20 @@
   [self refresh:self];
 }
 
-- (void) updateFrameOrigin {
+- (NSWindow*) currentWindow {
+  @try {
+    return [windows_ objectAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType]];
+  } @catch (NSException* exception) {
+    return nil;
+  }
+}
+
+- (void) updateFrameOrigin:(NSWindow*)window {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSInteger position = [defaults integerForKey:kStatusWindowPosition];
 
   NSRect screenFrame = [[NSScreen mainScreen] visibleFrame];
-  NSRect windowFrame = [window_ frame];
+  NSRect windowFrame = [window frame];
   int margin = 10;
   NSPoint point;
 
@@ -214,7 +245,13 @@
       break;
   }
 
-  [window_ setFrameOrigin:point];
+  [window setFrameOrigin:point];
+}
+
+- (void) updateFrameOrigin {
+  for (NSWindow* window in windows_) {
+    [self updateFrameOrigin:window];
+  }
 }
 
 @end
