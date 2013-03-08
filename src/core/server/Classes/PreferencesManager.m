@@ -20,7 +20,7 @@
                            kStatusWindowTheme : @0, // White
                            kStatusWindowOpacity : @80,
                            kStatusWindowFontSize : @0, // Small
-                           kStatusWindowPosition : @3, // Bottom left
+                           kStatusWindowPosition : @3, // Bottom right
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }

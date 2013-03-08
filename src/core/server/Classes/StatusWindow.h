@@ -12,6 +12,7 @@
 
   IBOutlet NSWindow* statusMessage_normal_;
   IBOutlet NSWindow* statusMessage_nano_;
+  IBOutlet NSWindow* statusMessage_edge_;
 }
 
 - (void) setupStatusWindow;

@@ -7,34 +7,10 @@
 
 - (void) drawRect:(NSRect)dirtyRect
 {
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  NSInteger theme = [defaults integerForKey:kStatusWindowTheme];
-  double opacity = [defaults doubleForKey:kStatusWindowOpacity];
-  NSInteger fontsize = [defaults integerForKey:kStatusWindowFontSize];
-
-  // Opacity
-  [self setAlphaValue:(opacity / 100)];
-
-  // Background
-  [NSGraphicsContext saveGraphicsState];
-  {
-    NSRect bounds = [self bounds];
-    switch (theme) {
-      case 1:
-        [message_ setTextColor:[NSColor whiteColor]];
-        [[NSColor blackColor] set];
-        break;
-
-      default:
-        [message_ setTextColor:[NSColor blackColor]];
-        [[NSColor whiteColor] set];
-        break;
-    }
-    [[NSBezierPath bezierPathWithRoundedRect:bounds xRadius:10 yRadius:10] fill];
-  }
-  [NSGraphicsContext restoreGraphicsState];
+  [super drawRect:dirtyRect];
 
   // Font Size
+  NSInteger fontsize = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowFontSize];
   switch (fontsize) {
     case 1: // Regular
       [message_ setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
@@ -52,12 +28,6 @@
       [message_ setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
       break;
   }
-}
-
-- (void) setMessage:(NSString*)message
-{
-  [message_ setStringValue:message];
-  [self setNeedsDisplay:YES];
 }
 
 @end

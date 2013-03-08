@@ -42,6 +42,7 @@
 		34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */; };
 		34A5572F16EA075E000E5399 /* StatusMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5572E16EA075E000E5399 /* StatusMessageView.m */; };
 		34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5573016EA10B4000E5399 /* StatusMessageView_nano.m */; };
+		34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5573316EA1923000E5399 /* StatusMessageView_edge.m */; };
 		34A611931531707E0003894B /* checkbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A611921531707E0003894B /* checkbox.xml */; };
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
@@ -134,6 +135,8 @@
 		34A5572D16EA075E000E5399 /* StatusMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView.h; path = Classes/StatusMessage/StatusMessageView.h; sourceTree = "<group>"; };
 		34A5572E16EA075E000E5399 /* StatusMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView.m; path = Classes/StatusMessage/StatusMessageView.m; sourceTree = "<group>"; };
 		34A5573016EA10B4000E5399 /* StatusMessageView_nano.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView_nano.m; path = Classes/StatusMessage/StatusMessageView_nano.m; sourceTree = "<group>"; };
+		34A5573216EA1923000E5399 /* StatusMessageView_edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView_edge.h; path = Classes/StatusMessage/StatusMessageView_edge.h; sourceTree = "<group>"; };
+		34A5573316EA1923000E5399 /* StatusMessageView_edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView_edge.m; path = Classes/StatusMessage/StatusMessageView_edge.m; sourceTree = "<group>"; };
 		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = Resources/checkbox.xml; sourceTree = "<group>"; };
 		34A83BCE144B1EAA00AE5687 /* appdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = appdef.xml; path = Resources/appdef.xml; sourceTree = "<group>"; };
 		34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
@@ -316,10 +319,12 @@
 		34A5572516EA03B3000E5399 /* StatusMessage */ = {
 			isa = PBXGroup;
 			children = (
-				34A5573016EA10B4000E5399 /* StatusMessageView_nano.m */,
-				34A5572C16EA075E000E5399 /* StatusMessageView_nano.h */,
 				34A5572D16EA075E000E5399 /* StatusMessageView.h */,
 				34A5572E16EA075E000E5399 /* StatusMessageView.m */,
+				34A5573216EA1923000E5399 /* StatusMessageView_edge.h */,
+				34A5573316EA1923000E5399 /* StatusMessageView_edge.m */,
+				34A5572C16EA075E000E5399 /* StatusMessageView_nano.h */,
+				34A5573016EA10B4000E5399 /* StatusMessageView_nano.m */,
 				34A5572916EA04D6000E5399 /* StatusMessageView_normal.h */,
 				34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */,
 			);
@@ -431,6 +436,7 @@
 				34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */,
 				34A5572F16EA075E000E5399 /* StatusMessageView.m in Sources */,
 				34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */,
+				34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
