@@ -26,11 +26,67 @@
     NSRect bounds = [self bounds];
     switch (theme) {
       case 1:
+        // Black
         [message_ setTextColor:[NSColor whiteColor]];
         [[NSColor blackColor] set];
         break;
 
+      case 3:
+        // Blue
+        [message_ setTextColor:[NSColor whiteColor]];
+        [[NSColor blueColor] set];
+        break;
+
+      case 4:
+        // Brown
+        [message_ setTextColor:[NSColor whiteColor]];
+        [[NSColor brownColor] set];
+        break;
+
+      case 5:
+        // Cyan
+        [message_ setTextColor:[NSColor blackColor]];
+        [[NSColor cyanColor] set];
+        break;
+
+      case 6:
+        // Green
+        [message_ setTextColor:[NSColor blackColor]];
+        [[NSColor greenColor] set];
+        break;
+
+      case 7:
+        // Magenta
+        [message_ setTextColor:[NSColor whiteColor]];
+        [[NSColor magentaColor] set];
+        break;
+
+      case 8:
+        // Orange
+        [message_ setTextColor:[NSColor blackColor]];
+        [[NSColor orangeColor] set];
+        break;
+
+      case 9:
+        // Purple
+        [message_ setTextColor:[NSColor whiteColor]];
+        [[NSColor purpleColor] set];
+        break;
+
+      case 10:
+        // Red
+        [message_ setTextColor:[NSColor whiteColor]];
+        [[NSColor redColor] set];
+        break;
+
+      case 11:
+        // Yellow
+        [message_ setTextColor:[NSColor blackColor]];
+        [[NSColor yellowColor] set];
+        break;
+
       default:
+        // White
         [message_ setTextColor:[NSColor blackColor]];
         [[NSColor whiteColor] set];
         break;
