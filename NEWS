@@ -1,6 +1,7 @@
 Changes since 8.0.0
 
     - Added "Quit KeyRemap4MacBook" into menu bar.
+    - Added some styles into status message indicator.
     - Added KeyCode::VK_OPEN_URL_*.
     - Added Option::POINTINGRELATIVETOSCROLL_TOKEYS.
     - Added __FlipPointingRelative__.
