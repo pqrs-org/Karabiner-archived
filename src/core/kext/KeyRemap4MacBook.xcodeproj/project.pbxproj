@@ -32,6 +32,8 @@
 		34379D0F11DB958900CD588D /* PointingButtonToPointingButton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */; };
 		34379D4614B7794B0004B0F4 /* ScrollWheelToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */; };
 		34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */; };
+		3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */; };
+		3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */; };
 		343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343BE53711D8347100C7C701 /* ConsumerToKey.cpp */; };
 		343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343BE53811D8347100C7C701 /* ConsumerToKey.hpp */; };
 		344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */; };
@@ -183,6 +185,8 @@
 		34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonToPointingButton.hpp; path = RemapFunc/PointingButtonToPointingButton.hpp; sourceTree = "<group>"; };
 		34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollWheelToKey.cpp; path = RemapFunc/ScrollWheelToKey.cpp; sourceTree = "<group>"; };
 		34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToKey.hpp; path = RemapFunc/ScrollWheelToKey.hpp; sourceTree = "<group>"; };
+		3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_PARTIAL.cpp; path = VirtualKey/VK_PARTIAL.cpp; sourceTree = "<group>"; };
+		3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_PARTIAL.hpp; path = VirtualKey/VK_PARTIAL.hpp; sourceTree = "<group>"; };
 		343BE53711D8347100C7C701 /* ConsumerToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToKey.cpp; path = RemapFunc/ConsumerToKey.cpp; sourceTree = "<group>"; };
 		343BE53811D8347100C7C701 /* ConsumerToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToKey.hpp; path = RemapFunc/ConsumerToKey.hpp; sourceTree = "<group>"; };
 		344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonToKey.cpp; path = RemapFunc/PointingButtonToKey.cpp; sourceTree = "<group>"; };
@@ -502,6 +506,8 @@
 				34B464CF13A6515200470265 /* VK_LOCK.hpp */,
 				34B464E913A6587400470265 /* VK_MOUSEKEY.cpp */,
 				34B464EA13A6587400470265 /* VK_MOUSEKEY.hpp */,
+				3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */,
+				3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */,
 				34B464D813A652CF00470265 /* VK_STICKY.cpp */,
 				34B464D913A652CF00470265 /* VK_STICKY.hpp */,
 				3472914014CEFC64006586F5 /* VK_WAIT.cpp */,
@@ -622,6 +628,7 @@
 				34997E3716C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp in Headers */,
 				347A6DAC16DA54C4000DD15D /* FlipScrollWheel.hpp in Headers */,
 				34B3663816DA5E0D0081C5D7 /* FlipPointingRelative.hpp in Headers */,
+				3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +776,7 @@
 				34997E3616C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp in Sources */,
 				347A6DAB16DA54C4000DD15D /* FlipScrollWheel.cpp in Sources */,
 				34B3663716DA5E0D0081C5D7 /* FlipPointingRelative.cpp in Sources */,
+				3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
