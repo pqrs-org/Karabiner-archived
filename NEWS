@@ -3,6 +3,7 @@ Changes since 8.0.0
     - Added "Quit KeyRemap4MacBook" into menu bar.
     - Added some styles into status message indicator.
     - Added KeyCode::VK_OPEN_URL_*.
+    - Added KeyCode::VK_PARTIAL_KEYDOWN and KeyCode::VK_PARTIAL_KEYUP.
     - Added Option::POINTINGRELATIVETOSCROLL_TOKEYS.
     - Added __FlipPointingRelative__.
     - Added __FlipScrollWheel__.
