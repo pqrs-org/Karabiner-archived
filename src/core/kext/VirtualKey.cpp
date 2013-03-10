@@ -12,6 +12,7 @@
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
 #include "VirtualKey/VK_STICKY.hpp"
+#include "VirtualKey/VK_PARTIAL.hpp"
 #include "VirtualKey/VK_WAIT.hpp"
 #include "VirtualKey/VK_JIS_BACKSLASH.hpp"
 #include "VirtualKey/VK_JIS_TEMPORARY.hpp"
@@ -27,6 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     VirtualKey::VK_CONFIG::initialize();
     VirtualKey::VK_DEFINED_IN_USERSPACE::initialize();
+    VirtualKey::VK_PARTIAL::initialize();
   }
 
   void
@@ -37,6 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     VirtualKey::VK_CONFIG::terminate();
     VirtualKey::VK_DEFINED_IN_USERSPACE::terminate();
+    VirtualKey::VK_PARTIAL::terminate();
   }
 
   void
@@ -55,6 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (VirtualKey::VK_LAZY::handle(params))                  { return true; }
     if (VirtualKey::VK_LOCK::handle(params))                  { return true; }
     if (VirtualKey::VK_MOUSEKEY::handle(params))              { return true; }
+    if (VirtualKey::VK_PARTIAL::handle(params))               { return true; }
     if (VirtualKey::VK_STICKY::handle(params))                { return true; }
     if (VirtualKey::VK_WAIT::handle(params))                  { return true; }
     if (VirtualKey::VK_JIS_BACKSLASH::handle(params))         { return true; }
