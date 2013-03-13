@@ -300,4 +300,8 @@
     <languagecode>uk</languagecode>
   </vkchangeinputsourcedef>
 
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_UNICODEHEXINPUT</name>
+    <inputsourceid_equal>com.apple.keylayout.UnicodeHexInput</inputsourceid_equal>
+  </vkchangeinputsourcedef>
 </root>
