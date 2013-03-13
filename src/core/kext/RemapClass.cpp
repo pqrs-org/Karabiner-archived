@@ -745,6 +745,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     clear_remapclasses(void)
     {
       VirtualKey::VK_CONFIG::clear_items();
+      VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items();
 
       if (enabled_remapclasses_) {
         delete enabled_remapclasses_;
