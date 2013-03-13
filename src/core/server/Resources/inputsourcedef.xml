@@ -144,6 +144,11 @@
     <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
   </inputsourcedef>
 
+  <inputsourcedef>
+    <name>UNICODEHEXINPUT</name>
+    <inputsourceid_equal>com.apple.keylayout.UnicodeHexInput</inputsourceid_equal>
+  </inputsourcedef>
+
   <!-- ============================================================ -->
   <!-- inputsourceid_prefix -->
   <inputsourcedef>
