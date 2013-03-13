@@ -40,11 +40,16 @@
         <appendix>by KeyCode::VK_PARTIAL_KEYDOWN/KeyCode::VK_PARTIAL_KEYUP.</appendix>
         <appendix></appendix>
         <appendix>It's useful for some apps which use a key as modifier.</appendix>
-        <appendix>For example, OmniGraffle changes the current tool to connecter during you press C key.</appendix>
-        <appendix>You can send the following events using KeyCode::VK_PARTIAL_*.</appendix>
+        <appendix>For example, OmniGraffle changes the current tool to connecter tool</appendix>
+        <appendix>while you are holding down the C key.</appendix>
+        <appendix></appendix>
+        <appendix>You can send following events using KeyCode::VK_PARTIAL_*.</appendix>
         <appendix>(1) keyDown C</appendix>
         <appendix>(2) Left click</appendix>
         <appendix>(3) keyUp C</appendix>
+        <appendix></appendix>
+        <appendix>Don't forget use KeyCode::VK_PARTIAL_KEYUP after you use</appendix>
+        <appendix>KeyCode::VK_PARTIAL_KEYDOWN.</appendix>
       </item>
       <item>
         <name>Standard</name>
