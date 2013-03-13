@@ -35,8 +35,21 @@
     <item>
       <name>VK_PARTIAL_*</name>
       <item>
+        <name>Description:</name>
+        <appendix>You can send only one of keyDown or keyUp event</appendix>
+        <appendix>by KeyCode::VK_PARTIAL_KEYDOWN/KeyCode::VK_PARTIAL_KEYUP.</appendix>
+        <appendix></appendix>
+        <appendix>It's useful for some apps which use a key as modifier.</appendix>
+        <appendix>For example, OmniGraffle changes the current tool to connecter during you press C key.</appendix>
+        <appendix>You can send the following events using KeyCode::VK_PARTIAL_*.</appendix>
+        <appendix>(1) keyDown C</appendix>
+        <appendix>(2) Left click</appendix>
+        <appendix>(3) keyUp C</appendix>
+      </item>
+      <item>
         <name>Standard</name>
         <appendix>Change Q to A(down), B(down), C(down), Space, A(up), B(up), C(up)</appendix>
+        <appendix>Change C to C(down), Left Click, C(up)</appendix>
         <identifier>remap.samples_vk_partial</identifier>
         <autogen>
           __KeyToKey__
@@ -47,6 +60,13 @@
           KeyCode::SPACE,
           KeyCode::VK_PARTIAL_KEYUP, KeyCode::A,
           KeyCode::VK_PARTIAL_KEYUP, KeyCode::B,
+          KeyCode::VK_PARTIAL_KEYUP, KeyCode::C,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::C,
+          KeyCode::VK_PARTIAL_KEYDOWN, KeyCode::C,
+          KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
           KeyCode::VK_PARTIAL_KEYUP, KeyCode::C,
         </autogen>
       </item>
