@@ -111,5 +111,23 @@
       <autogen>__KeyToKey__ KeyCode::V, KeyCode::VK_STICKY_EXTRA4_FORCE_OFF</autogen>
       <autogen>__KeyToKey__ KeyCode::B, KeyCode::VK_STICKY_EXTRA5_FORCE_OFF</autogen>
     </item>
+    <item>
+      <name>Without lock</name>
+      <identifier>remap.samples_vk_sticky_without_lock</identifier>
+      <autogen>__KeyOverlaidModifierWithRepeat__
+      KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_STICKY_COMMAND_L</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__
+      KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_STICKY_COMMAND_R</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__
+      KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_STICKY_OPTION_L</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__
+      KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_STICKY_OPTION_R</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__
+      KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__
+      KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R</autogen>
+      <autogen>__KeyOverlaidModifierWithRepeat__
+      KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_STICKY_CONTROL_L</autogen>
+    </item>
   </item>
 </root>
