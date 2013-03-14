@@ -42,6 +42,7 @@
     <equal>com.microsoft.rdc</equal>
     <equal>net.sf.cord</equal>
     <equal>com.thinomenon.RemoteDesktopConnection</equal>
+    <equal>com.itap-mobile.qmote</equal>
   </appdef>
 
   <appdef>
