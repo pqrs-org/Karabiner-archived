@@ -6,7 +6,7 @@
     <item>
       <name>Enable Sticky Modifier Keys (without lock feature)</name>
       <appendix>You should turn on "Show sticky modifiers state" in Status Message tab on Preferences.</appendix>
-      <identifier>remap.samples_vk_sticky_without_lock</identifier>
+      <identifier>remap.sticky_without_lock</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_STICKY_COMMAND_L</autogen>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_STICKY_COMMAND_R</autogen>
       <autogen>__KeyOverlaidModifier__ KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_STICKY_CONTROL_L</autogen>
