@@ -34,6 +34,7 @@
   <include path="include/checkbox/standards/tab.xml" />
 
   <include path="include/checkbox/custom_shortcuts.xml" />
+  <include path="include/checkbox/sticky_modifier.xml" />
   <include path="include/checkbox/diamond_cursor.xml" />
   <include path="include/checkbox/browsing_mode.xml" />
   <include path="include/checkbox/overtype_mode.xml" />
