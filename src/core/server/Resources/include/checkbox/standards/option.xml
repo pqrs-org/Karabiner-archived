@@ -70,7 +70,7 @@
     <item>
       <name>Option_L to Sticky Option_L</name>
       <identifier>remap.sticky_optionL</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::VK_STICKY_OPTION_L</autogen>
+      <include path="../commons/sticky_modifiers/OPTION_L.xml" />
     </item>
     <item>
       <name>Option_L to Escape</name>
@@ -181,7 +181,7 @@
     <item>
       <name>Option_R to Sticky Option_R</name>
       <identifier>remap.sticky_optionR</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_STICKY_OPTION_R</autogen>
+      <include path="../commons/sticky_modifiers/OPTION_R.xml" />
     </item>
     <item>
       <name>Option_R to Delete</name>

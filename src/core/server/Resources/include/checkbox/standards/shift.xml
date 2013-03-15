@@ -99,7 +99,7 @@
     <item>
       <name>Shift_L to Sticky Shift_L</name>
       <identifier>remap.sticky_shiftL</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <include path="../commons/sticky_modifiers/SHIFT_L.xml" />
     </item>
     <item>
       <name>Shift_L to Escape</name>
@@ -244,7 +244,7 @@
     <item>
       <name>Shift_R to Sticky Shift_R</name>
       <identifier>remap.sticky_shiftR</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R</autogen>
+      <include path="../commons/sticky_modifiers/SHIFT_R.xml" />
     </item>
     <item>
       <name>Shift_R to ^ (Shift+6)</name>

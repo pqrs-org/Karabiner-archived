@@ -113,7 +113,7 @@
     <item>
       <name>Control_L to Sticky Control_L</name>
       <identifier>remap.sticky_controlL</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::CONTROL_L, KeyCode::CONTROL_L, KeyCode::VK_STICKY_CONTROL_L</autogen>
+      <include path="../commons/sticky_modifiers/CONTROL_L.xml" />
     </item>
     <item>
       <name>Control_L to Backquote(`)</name>
@@ -211,7 +211,7 @@
     <item>
       <name>Control_R to Sticky Control_R</name>
       <identifier>remap.sticky_controlR</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::CONTROL_R, KeyCode::CONTROL_R, KeyCode::VK_STICKY_CONTROL_R</autogen>
+      <include path="../commons/sticky_modifiers/CONTROL_R.xml" />
     </item>
     <item>
       <name>Control_R to Delete</name>
