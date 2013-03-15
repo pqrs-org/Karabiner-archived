@@ -51,8 +51,17 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
-      <name>Pass-Through CapsLock LED status</name>
-      <appendix>(Don't enable this when you use "XXX to CapsLock")</appendix>
+      <name>Pass-Through caps lock LED status</name>
+      <appendix></appendix>
+      <appendix>KeyRemap4MacBook manipulates caps lock LED according to internal caps lock state.</appendix>
+      <appendix>(For example, if you changed right option key to caps lock,</appendix>
+      <appendix>LED will be toggled each time the right option key is pressed.)</appendix>
+      <appendix></appendix>
+      <appendix>However, some devices may become unstable by this LED manipulation.</appendix>
+      <appendix>Therefore, we provide an option to suppress this behavior.</appendix>
+      <appendix></appendix>
+      <appendix>Please turn on this option if your device does not work properly</appendix>
+      <appendix>when you changed a key to caps lock.</appendix>
       <identifier essential="true">general.passthrough_capslock_led_status</identifier>
     </item>
     <item><name>──────────────────────────────</name></item>
