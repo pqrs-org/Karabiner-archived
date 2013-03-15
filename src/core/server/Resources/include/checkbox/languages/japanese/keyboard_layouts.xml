@@ -120,6 +120,8 @@
     <item>
       <name>Oyayubi Shift Input</name>
       <appendix>親指シフト (NICOLA)</appendix>
+      <appendix></appendix>
+      <include path="keyboard_layouts/appendix_oyayubi_shift.xml" />
       <item>
         <name>＜ローマ字モード＞</name>
         <appendix>（ことえりやATOKなどを「ローマ字入力」に設定してください。）</appendix>
@@ -406,6 +408,8 @@
     <item>
       <name>Oyayubi R 1 line Shift</name>
       <appendix>右手1行ずらし 親指シフト (NICOLA)</appendix>
+      <appendix></appendix>
+      <include path="keyboard_layouts/appendix_oyayubi_shift.xml" />
       <item>
         <name>＜ローマ字モード＞ 右手1行ずらし 左シフト＝スペース, 右シフト＝かな</name>
         <identifier>remap.oyayubi_shift_roman_space_kana_migi_shift</identifier>
