@@ -153,6 +153,18 @@
         </autogen>
       </item>
       <item>
+        <name>MouseButton4 to Back (command-[)</name>
+        <appendix>(+ MouseButton4+CursorMove to ScrollWheel)</appendix>
+        <identifier>remap.pointing_mousebutton4_to_back_scrollwheel</identifier>
+        <autogen>
+          __PointingRelativeToScroll__
+          PointingButton::BUTTON4,
+
+          Option::POINTINGRELATIVETOSCROLL_TOKEYS,
+          KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L,
+        </autogen>
+      </item>
+      <item>
         <name>(Simultaneous) LeftClick+RightClick to MiddleClick</name>
         <identifier>remap.pointing_leftrightclick2middleclick</identifier>
         <autogen>__SimultaneousKeyPresses__ PointingButton::LEFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
