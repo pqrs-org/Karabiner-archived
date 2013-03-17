@@ -693,8 +693,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! enabled_remapclasses_) return;
 
       // ----------------------------------------
-      KeyboardRepeat::cancel();
-
       statusmessage_[0] = '\0';
 
       isEventInputQueueDelayEnabled_ = false;
