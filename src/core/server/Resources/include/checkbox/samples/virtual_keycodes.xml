@@ -185,6 +185,17 @@
           <identifier vk_config="true">notsave.samples_vk_config</identifier>
           <autogen>__ShowStatusMessage__ VK_CONFIG</autogen>
         </item>
+        <item>
+          <name>With __KeyOverlaidModifierWithRepeat__</name>
+          <appendix>Use A to VK_CONFIG_SYNC_KEYDOWNUP (Send space if type only A key + key repeat.)</appendix>
+          <identifier>remap.samples_vk_config_keyoverlaidmodifierwithrepeat</identifier>
+          <autogen>
+            __KeyOverlaidModifierWithRepeat__
+            KeyCode::A,
+            KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config,
+            KeyCode::A
+          </autogen>
+        </item>
       </item>
       <item>
         <name>Disable Self</name>
