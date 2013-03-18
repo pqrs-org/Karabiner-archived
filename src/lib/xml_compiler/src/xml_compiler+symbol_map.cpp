@@ -57,12 +57,8 @@ namespace pqrs {
   uint32_t
   xml_compiler::symbol_map::add(const std::string& type, const std::string& name, uint32_t value)
   {
-    if (type.empty()) {
-      throw xml_compiler_logic_error("Empty type:\n\n::" + name);
-    }
-    if (name.empty()) {
-      throw xml_compiler_logic_error("Empty name:\n\n" + type + "::");
-    }
+    assert(! type.empty());
+    assert(! name.empty());
 
     auto n = type + "::" + name;
 
@@ -79,9 +75,13 @@ namespace pqrs {
   xml_compiler::symbol_map::add(const std::string& type, const std::string& name)
   {
     auto n = type + "::VK__AUTOINDEX__BEGIN__";
-    auto v = get(n);
-    symbol_map_[n] = v + 1;
-    return add(type, name, v);
+    auto v = get_optional(n);
+
+    assert(v);
+    assert(*v + 1 != 0);
+
+    symbol_map_[n] = *v + 1;
+    return add(type, name, *v);
   }
 
   // ============================================================

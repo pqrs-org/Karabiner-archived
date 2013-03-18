@@ -211,7 +211,10 @@ UK_SECTION 0xa
 // ----------------------------------------
 // Virtual KeyCode
 
-VK__BEGIN__ 1024
+// TiVo Slide remote sends key codes in 0x000c00xx.
+// Therefore, we use bigger numbers as virtual key codes.
+
+VK__BEGIN__ 0x10000000
 VK_NONE --AUTO--
 // For ConsumerToKey, PointingButtonToKey
 VK_PSEUDO_KEY --AUTO--
