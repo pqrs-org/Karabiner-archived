@@ -135,9 +135,7 @@ public:
     }
 
     const node& dereference(void) const {
-      if (! node_) {
-        throw xml_compiler_logic_error("node_ == nullptr in extracted_ptree_iterator::dereference.");
-      }
+      assert(node_);
       return *node_;
     }
 
@@ -145,9 +143,8 @@ public:
       if (is_end_() && other.is_end_()) {
         return true;
       }
-      if (! is_end_() && ! other.is_end_()) {
-        throw xml_compiler_logic_error("extracted_ptree_iterator::equal supports only it == end().");
-      }
+      // extracted_ptree_iterator::equal supports only it == end().
+      assert(is_end_() || other.is_end_());
 
       // ----------------------------------------
       if (is_end_()) {
@@ -210,9 +207,7 @@ public:
       {
         auto path = it.second.get_optional<std::string>("<xmlattr>.path");
         if (path) {
-          if (extracted_ptree_.included_files_.empty()) {
-            throw xml_compiler_logic_error("included_files_.empty() in extracted_ptree_iterator::extract_include_.");
-          }
+          assert(! extracted_ptree_.included_files_.empty());
           xml_file_path = xml_compiler.make_file_path(pqrs::file_path::dirname(extracted_ptree_.included_files_.back()),
                                                       *path);
         }
@@ -262,9 +257,7 @@ public:
         }
 
         if (top.extracted()) {
-          if (extracted_ptree_.included_files_.empty()) {
-            throw xml_compiler_logic_error("included_files_.empty() in extracted_ptree_iterator::collapse_.");
-          }
+          assert(! extracted_ptree_.included_files_.empty());
           extracted_ptree_.included_files_.pop_back();
         }
         extracted_ptree_.stack_.pop();

@@ -78,7 +78,7 @@ namespace pqrs {
     auto v = get_optional(n);
 
     assert(v);
-    assert(*v + 1 != 0);
+    assert(*v != std::numeric_limits<uint32_t>::max());
 
     symbol_map_[n] = *v + 1;
     return add(type, name, *v);
