@@ -203,6 +203,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_GREEK</name>
+    <inputsourceid_equal>com.apple.keylayout.Greek</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN</name>
     <languagecode>hu</languagecode>
   </vkchangeinputsourcedef>
