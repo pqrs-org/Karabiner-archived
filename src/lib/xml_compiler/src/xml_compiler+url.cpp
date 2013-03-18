@@ -12,15 +12,19 @@ namespace pqrs {
     uint32_t config_index = symbol_map_.add("ConfigIndex", identifier);
     identifier_map_[config_index] = raw_identifier;
 
-    remapclasses_initialize_vector_.start(config_index, raw_identifier);
-    {
-      for (const auto& it : vk_open_url_map_) {
-        remapclasses_initialize_vector_.push_back(2);
-        remapclasses_initialize_vector_.push_back(BRIDGE_VK_OPEN_URL);
-        remapclasses_initialize_vector_.push_back(it.first);
+    try {
+      remapclasses_initialize_vector_.start(config_index, raw_identifier);
+      {
+        for (const auto& it : vk_open_url_map_) {
+          remapclasses_initialize_vector_.push_back(2);
+          remapclasses_initialize_vector_.push_back(BRIDGE_VK_OPEN_URL);
+          remapclasses_initialize_vector_.push_back(it.first);
+        }
       }
+      remapclasses_initialize_vector_.end();
+    } catch (std::exception& e) {
+      assert(! "exception in ~url_loader");
     }
-    remapclasses_initialize_vector_.end();
   }
 
   void

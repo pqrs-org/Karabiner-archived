@@ -38,15 +38,19 @@ namespace pqrs {
     uint32_t config_index = symbol_map_.add("ConfigIndex", identifier);
     identifier_map_[config_index] = raw_identifier;
 
-    remapclasses_initialize_vector_.start(config_index, raw_identifier);
-    {
-      for (const auto& it : vk_change_inputsource_map_) {
-        remapclasses_initialize_vector_.push_back(2);
-        remapclasses_initialize_vector_.push_back(BRIDGE_VK_CHANGE_INPUTSOURCE);
-        remapclasses_initialize_vector_.push_back(it.first);
+    try {
+      remapclasses_initialize_vector_.start(config_index, raw_identifier);
+      {
+        for (const auto& it : vk_change_inputsource_map_) {
+          remapclasses_initialize_vector_.push_back(2);
+          remapclasses_initialize_vector_.push_back(BRIDGE_VK_CHANGE_INPUTSOURCE);
+          remapclasses_initialize_vector_.push_back(it.first);
+        }
       }
+      remapclasses_initialize_vector_.end();
+    } catch (std::exception& e) {
+      assert(! "exception in ~inputsource_loader");
     }
-    remapclasses_initialize_vector_.end();
   }
 
   void
@@ -127,7 +131,8 @@ namespace pqrs {
         // register to symbol_map_.
         switch (definition_type) {
           case definition_type::none:
-            throw xml_compiler_logic_error("invalid definition_type at inputsource_loader::traverse.");
+            assert(! "invalid definition_type at inputsource_loader::traverse.");
+            break;
 
           case definition_type::vkchangeinputsourcedef:
             if (! symbol_map_.get_optional(*(newinputsource->get_name()))) {

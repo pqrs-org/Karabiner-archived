@@ -27,27 +27,21 @@ namespace pqrs {
   const std::vector<uint32_t>&
   xml_compiler::remapclasses_initialize_vector::get(void) const
   {
-    if (! freezed_) {
-      throw xml_compiler_logic_error("remapclasses_initialize_vector is not freezed.");
-    }
+    assert(freezed_);
     return data_;
   }
 
   uint32_t
   xml_compiler::remapclasses_initialize_vector::get_config_count(void) const
   {
-    if (! freezed_) {
-      throw xml_compiler_logic_error("remapclasses_initialize_vector is not freezed.");
-    }
+    assert(freezed_);
     return data_[INDEX_OF_CONFIG_COUNT];
   }
 
   void
   xml_compiler::remapclasses_initialize_vector::freeze(void)
   {
-    if (freezed_) {
-      throw xml_compiler_logic_error("remapclasses_initialize_vector is already freezed.");
-    }
+    assert(! freezed_);
 
     cleanup_();
 
@@ -65,9 +59,8 @@ namespace pqrs {
   xml_compiler::remapclasses_initialize_vector::start(uint32_t config_index,
                                                       const std::string& raw_identifier)
   {
-    if (freezed_) {
-      throw xml_compiler_logic_error("remapclasses_initialize_vector is freezed.");
-    }
+    assert( ! freezed_);
+
     if (is_config_index_added_.find(config_index) != is_config_index_added_.end()) {
       throw xml_compiler_runtime_error(boost::format("Duplicated identifier:\n"
                                                      "\n"

@@ -40,9 +40,7 @@ public:
           }
         } else {
           // preferences_node_tree
-          if (! preferences_node_tree_) {
-            throw xml_compiler_logic_error("preferences_node_tree_ is nullptr.");
-          }
+          assert(preferences_node_tree_);
           std::tr1::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
 
           for (const auto& child : it.children_extracted_ptree()) {
