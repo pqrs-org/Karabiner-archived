@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change input source temporary</name>
+    <item>
+      <name>Change input source to Greek while you are holding down right option key.</name>
+      <identifier>remap.change_input_source_temporary_greek_option_r</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R,
+        KeyCode::VK_NONE,
+        Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CHANGE_INPUTSOURCE_GREEK, KeyCode::VK_WAIT_100MS,
+        Option::KEYTOKEY_AFTER_KEYUP, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::VK_WAIT_100MS,
+      </autogen>
+    </item>
+  </item>
+</root>

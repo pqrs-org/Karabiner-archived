@@ -86,6 +86,8 @@
 
   <include path="include/checkbox/device_specific.xml" />
 
+  <include path="include/checkbox/change_input_source_temporary.xml" />
+
   <include path="include/checkbox/languages/iso_keyboard.xml" />
   <include path="include/checkbox/languages/belgian.xml" />
   <include path="include/checkbox/languages/bulgarian.xml" />
