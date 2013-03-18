@@ -13,5 +13,16 @@
         Option::KEYTOKEY_AFTER_KEYUP, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::VK_WAIT_100MS,
       </autogen>
     </item>
+    <item>
+      <name>Change input source to Unicode Hex Input while you are holding down right option key.</name>
+      <identifier>remap.change_input_source_temporary_unicode_hex_input_option_r</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R,
+        KeyCode::OPTION_R,
+        Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CHANGE_INPUTSOURCE_UNICODEHEXINPUT, KeyCode::VK_WAIT_100MS,
+        Option::KEYTOKEY_AFTER_KEYUP, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::VK_WAIT_100MS,
+      </autogen>
+    </item>
   </item>
 </root>
