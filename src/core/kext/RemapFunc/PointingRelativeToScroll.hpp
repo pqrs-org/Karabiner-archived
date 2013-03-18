@@ -57,6 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
       // ----------
+      bool error_;
       size_t index_;
       enum {
         INDEX_TYPE_DEFAULT,
