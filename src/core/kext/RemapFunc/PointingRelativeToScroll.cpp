@@ -38,6 +38,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     PointingRelativeToScroll::PointingRelativeToScroll(void) :
+      error_(false),
       index_(0),
       index_type_(INDEX_TYPE_DEFAULT),
       isToKeysDefined_(false),
@@ -79,6 +80,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
             default:
               IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
+              error_ = true;
               break;
           }
           break;
@@ -92,6 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
             default:
               IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
+              error_ = true;
               break;
           }
           break;
@@ -113,6 +116,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         default:
           IOLOG_ERROR("PointingRelativeToScroll::add invalid datatype:%d\n", datatype);
+          error_ = true;
           break;
       }
     }
@@ -120,6 +124,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams)
     {
+      // PointingRelativeToScroll grabs all pointing movement events.
+      // Therefore, if user write inappropriate <autogen> (empty flags and empty buttons),
+      // user cannot control pointing device at all.
+      //
+      // For example:
+      //   <autogen>__PointingRelativeToScroll__ KeyCode::FN</autogen>
+      //
+      // (KeyCode::FN will be ignored. So, this autogen is interpreted as
+      // <autogen>__PointingRelativeToScroll__</autogen>.)
+      //
+      // Skip on error in order to avoid this situation.
+      if (error_) return false;
+
       bool active = fromkeychecker_.isactive();
 
       if (remapParams.isremapped) return false;
