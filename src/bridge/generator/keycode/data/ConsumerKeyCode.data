@@ -24,7 +24,7 @@ NUMLOCK 10
 VIDEO_MIRROR 15
 
 // Virtual KeyCode
-VK__BEGIN__ 1024
+VK__BEGIN__ 0x10000000
 // For KeyToConsumer
 VK_PSEUDO_KEY --AUTO--
 VK_NONE --AUTO--
