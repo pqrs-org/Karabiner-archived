@@ -5,7 +5,9 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     SimultaneousKeyPresses::SimultaneousKeyPresses(void) :
+      isUseSeparator_(false),
       index_(0),
+      isFromInfoFull_(false),
       toType_(TOTYPE_NONE),
       isToRaw_(false),
       isStrictKeyOrder_(false)
@@ -19,69 +21,93 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
-        {
-          switch (index_) {
-            case 0:
-              virtualkey_ = newval;
-              break;
-
-            case 1:
-              fromInfo_[0].set(KeyCode(newval));
-              break;
-
-            case 2:
-              fromInfo_[1].set(KeyCode(newval));
-              break;
-
-            case 3:
-              // pass-through (== no break)
-              keytokey_.add(virtualkey_);
-              keytokey_.add(fromFlags_);
-              toKey_raw_ = newval;
-            default:
-              if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_KEY) {
-                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-                break;
-              }
-              toType_ = TOTYPE_KEY;
-
-              keytokey_.add(KeyCode(newval));
-              break;
-          }
-          ++index_;
-
-          break;
-        }
-
         case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
-          switch (index_) {
-            case 0:
+          // ----------------------------------------
+          // The first data is virtualkey_.
+          if (index_ == 0) {
+            if (datatype != BRIDGE_DATATYPE_KEYCODE) {
               IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-              break;
-
-            case 1:
-              fromInfo_[0].set(PointingButton(newval));
-              break;
-
-            case 2:
-              fromInfo_[1].set(PointingButton(newval));
-              break;
-
-            case 3:
-              // pass-through (== no break)
-              keytopointingbutton_.add(virtualkey_);
-              keytopointingbutton_.add(fromFlags_);
-            default:
-              if (toType_ != TOTYPE_NONE && toType_ != TOTYPE_BUTTON) {
-                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-                break;
-              }
-              toType_ = TOTYPE_BUTTON;
-
-              keytopointingbutton_.add(PointingButton(newval));
-              break;
+              return;
+            }
+            virtualkey_ = newval;
+            goto finish;
           }
+
+          // ----------------------------------------
+          // From keys
+          if (! isFromInfoFull_) {
+            FromInfo fi;
+            switch (datatype) {
+              case BRIDGE_DATATYPE_KEYCODE:        fi.set(KeyCode(newval));        break;
+              case BRIDGE_DATATYPE_POINTINGBUTTON: fi.set(PointingButton(newval)); break;
+              default:
+                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
+                return;
+            }
+            fromInfo_.push_back(fi);
+
+            if (isUseSeparator_ == false) {
+              if (index_ == 2) {
+                isFromInfoFull_ = true;
+              }
+            }
+            goto finish;
+          }
+
+          // ----------------------------------------
+          // To keys
+          {
+            ToType type = TOTYPE_NONE;
+            switch (datatype) {
+              case BRIDGE_DATATYPE_KEYCODE:        type = TOTYPE_KEY;    break;
+              case BRIDGE_DATATYPE_POINTINGBUTTON: type = TOTYPE_BUTTON; break;
+              default:
+                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
+                return;
+            }
+
+            if (toType_ == TOTYPE_NONE) {
+              toType_ = type;
+              switch (datatype) {
+                case BRIDGE_DATATYPE_KEYCODE:
+                  keytokey_.add(virtualkey_);
+                  keytokey_.add(fromFlags_);
+                  toKey_raw_ = newval;
+                  break;
+
+                case BRIDGE_DATATYPE_POINTINGBUTTON:
+                  keytopointingbutton_.add(virtualkey_);
+                  keytopointingbutton_.add(fromFlags_);
+                  break;
+
+                default:
+                  IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
+                  return;
+              }
+            }
+
+            if (toType_ != type) {
+              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+              return;
+            }
+
+            switch (datatype) {
+              case BRIDGE_DATATYPE_KEYCODE:
+                keytokey_.add(KeyCode(newval));
+                break;
+
+              case BRIDGE_DATATYPE_POINTINGBUTTON:
+                keytopointingbutton_.add(PointingButton(newval));
+                break;
+
+              default:
+                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
+                return;
+            }
+          }
+
+        finish:
           ++index_;
 
           break;
@@ -89,32 +115,25 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_FLAGS:
         {
-          switch (index_) {
-            case 0:
-            case 1:
-              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-              break;
+          if (index_ < 2) {
+            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+            return;
+          } else if (toType_ == TOTYPE_NONE) {
+            fromFlags_ = newval;
+          } else {
+            switch (toType_) {
+              case TOTYPE_KEY:
+                keytokey_.add(Flags(newval));
+                break;
 
-            case 2:
-            case 3:
-              fromFlags_ = newval;
-              break;
+              case TOTYPE_BUTTON:
+                keytopointingbutton_.add(Flags(newval));
+                break;
 
-            default:
-              switch (toType_) {
-                case TOTYPE_NONE:
-                  IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-                  break;
-
-                case TOTYPE_KEY:
-                  keytokey_.add(Flags(newval));
-                  break;
-
-                case TOTYPE_BUTTON:
-                  keytopointingbutton_.add(Flags(newval));
-                  break;
-              }
-              break;
+              default:
+                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
+                return;
+            }
           }
           break;
         }
@@ -129,6 +148,12 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
           } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == newval) {
             isStrictKeyOrder_ = true;
+
+          } else if (Option::USE_SEPARATOR == newval) {
+            isUseSeparator_ = true;
+
+          } else if (Option::SEPARATOR == newval) {
+            isFromInfoFull_ = true;
 
           } else if (Option::NOREPEAT == newval ||
                      Option::KEYTOKEY_BEFORE_KEYDOWN == newval ||
@@ -204,9 +229,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     SimultaneousKeyPresses::remap(void)
     {
-      // ----------------------------------------
-      // we change queue_->front() only.
-      //
       if (! EventInputQueue::queue_) return false;
 
       // We consider "Shift_L+Shift_R to Space".
@@ -238,7 +260,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // fire KeyUp event if needed.
-      for (size_t i = 0; i < sizeof(fromInfo_) / sizeof(fromInfo_[0]); ++i) {
+      for (size_t i = 0; i < fromInfo_.size(); ++i) {
         if (! fromInfo_[i].isActive()) continue;
         if (! fromInfo_[i].isTargetKeyUp(*front)) continue;
 
@@ -249,7 +271,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         // --------------------
         // if all keys are released, fire KeyUp event.
         bool isAllDeactived = true;
-        for (size_t j = 0; j < sizeof(fromInfo_) / sizeof(fromInfo_[0]); ++j) {
+        for (size_t j = 0; j < fromInfo_.size(); ++j) {
           if (fromInfo_[j].isActive()) {
             isAllDeactived = false;
           }
@@ -265,27 +287,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       // handle KeyDown event.
       if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
 
-      FromInfo* frontFromInfo = NULL;
-      FromInfo* pairedFromInfo = NULL;
-
-      /*  */ if (fromInfo_[0].isTargetKeyDown(*front)) {
-        frontFromInfo  = fromInfo_ + 0;
-        pairedFromInfo = fromInfo_ + 1;
-      } else if (fromInfo_[1].isTargetKeyDown(*front)) {
-        if (! isStrictKeyOrder_) {
-          frontFromInfo  = fromInfo_ + 1;
-          pairedFromInfo = fromInfo_ + 0;
-        }
-      }
-
-      if (! frontFromInfo || ! pairedFromInfo) return false;
-
       // --------------------
       // scan items in queue_.
-      for (;;) {
-        front = static_cast<EventInputQueue::Item*>(front->getnext());
-        if (! front) return false;
+      while (downKeys_.size() < fromInfo_.size()) {
+        downKeys_.push_back(NULL);
+      }
+      // Then, downKeys_.size() >= fromInfo_.size()
 
+      for (size_t i = 0; i < fromInfo_.size(); ++i) {
+        downKeys_[i].item = NULL;
+      }
+
+      for (;;) {
         // We consider "Shift_L+Shift_R to Space".
         // When we press keys by the following order.
         //
@@ -294,29 +307,53 @@ namespace org_pqrs_KeyRemap4MacBook {
         // (3) Shift_R Down
         // (4) Shift_R Up
         //
-        // frontFromInfo == Shift_L
-        // pairedFromInfo == Shift_R
-        //
-        // If frontFromInfo is appeared before pairedFromInfo,
+        // If fromKey was released before all keys are pressed,
         // we must not handle these keys as SimultaneousKeyPresses.
         //
-        if (frontFromInfo->isTargetKeyDown(*front)) return false;
-        if (frontFromInfo->isTargetKeyUp(*front)) return false;
-
-        if (pairedFromInfo->isTargetKeyDown(*front)) {
-          // SimultaneousKeyPresses!
-          EventInputQueue::queue_->erase(front);
-          break;
+        for (size_t i = 0; i < fromInfo_.size(); ++i) {
+          if (fromInfo_[i].isTargetKeyDown(*front)) {
+            downKeys_[i].item = front;
+            break;
+          } else if (fromInfo_[i].isTargetKeyUp(*front)) {
+            return false;
+          }
         }
+
+        // ----------------------------------------
+        bool isAllKeysDown = true;
+        for (size_t i = 0; i < fromInfo_.size(); ++i) {
+          if (! downKeys_[i].item) {
+            isAllKeysDown = false;
+          } else {
+            // Checking strict key order.
+            //
+            // If isStrictKeyOrder_ == true,
+            // we must not handle the following state as SimultaneousKeyPresses.
+            //
+            // - downKeys_[0] == NULL
+            // - downKeys_[1] != NULL
+            //
+            if (! isAllKeysDown && isStrictKeyOrder_) {
+              return false;
+            }
+          }
+        }
+
+        if (isAllKeysDown) {
+          for (size_t i = 0; i < fromInfo_.size(); ++i) {
+            fromInfo_[i].activate();
+            EventInputQueue::queue_->erase(downKeys_[i].item);
+          }
+          push_remapped(true, deviceIdentifier);
+          return true;
+        }
+
+        // ----------------------------------------
+        front = static_cast<EventInputQueue::Item*>(front->getnext());
+        if (! front) return false;
       }
 
-      fromInfo_[0].activate();
-      fromInfo_[1].activate();
-
-      EventInputQueue::queue_->pop_front();
-      push_remapped(true, deviceIdentifier);
-
-      return true;
+      return false;
     }
 
     void

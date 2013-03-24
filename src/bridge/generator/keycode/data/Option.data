@@ -1,3 +1,5 @@
+USE_SEPARATOR                           --AUTO--
+SEPARATOR                               --AUTO--
 KEYOVERLAIDMODIFIER_REPEAT              --AUTO--
 SIMULTANEOUSKEYPRESSES_RAW              --AUTO--
 SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER --AUTO--

@@ -57,12 +57,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         PointingButton button_;
         bool active_;
       };
+      DECLARE_VECTOR(FromInfo);
+
+      class DownKeys {
+      public:
+        DownKeys(void) : item(NULL) {}
+        DownKeys(EventInputQueue::Item* i) : item(i) {}
+        EventInputQueue::Item* item;
+      };
+      DECLARE_VECTOR(DownKeys);
 
       // --------------------
+      bool isUseSeparator_;
       size_t index_;
       KeyCode virtualkey_;
 
-      FromInfo fromInfo_[2];
+      Vector_FromInfo fromInfo_;
+      bool isFromInfoFull_;
       Flags fromFlags_;
 
       // --------------------
@@ -78,6 +89,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       KeyToKey keytokey_;
       KeyToPointingButton keytopointingbutton_;
+
+      Vector_DownKeys downKeys_;
     };
   }
 }
