@@ -900,6 +900,36 @@
         </autogen>
       </item>
       <item>
+        <name>Using more than three keys</name>
+        <appendix>(S+D+F to Expose)</appendix>
+        <appendix>(Q+W+E+R to Space)</appendix>
+        <appendix>(J+K+L to Escape) (Strict Key Order)</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_separator</identifier>
+        <autogen>
+          __SimultaneousKeyPresses__
+          <!-- You should specify Option::USE_SEPARATOR at first in order to use more than three keys. -->
+          Option::USE_SEPARATOR,
+          KeyCode::S, KeyCode::D, KeyCode::F,
+          Option::SEPARATOR,
+          KeyCode::EXPOSE_ALL,
+        </autogen>
+        <autogen>
+          __SimultaneousKeyPresses__
+          Option::USE_SEPARATOR,
+          KeyCode::Q, KeyCode::W, KeyCode::E, KeyCode::R,
+          Option::SEPARATOR,
+          KeyCode::SPACE,
+        </autogen>
+        <autogen>
+          __SimultaneousKeyPresses__
+          Option::USE_SEPARATOR,
+          KeyCode::J, KeyCode::K, KeyCode::L,
+          Option::SEPARATOR,
+          KeyCode::ESCAPE,
+          Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER,
+        </autogen>
+      </item>
+      <item>
         <name>Note:</name>
         <appendix>Basically, a sending key will not be modified by other manipulators such as __KeyToKey__.</appendix>
         <appendix>Option::SIMULTANEOUSKEYPRESSES_RAW removes this restriction.</appendix>

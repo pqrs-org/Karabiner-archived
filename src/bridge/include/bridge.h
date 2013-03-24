@@ -52,8 +52,9 @@ enum {
   // Version 44: Added KeyCode::VK_PARTIAL_*.
   // Version 45: Update KeyCode::VK__BEGIN__.
   // Version 46: Update ConsumerKeyCode::VK__BEGIN__.
+  // Version 47: Added Option::USE_SEPARATOR, Option::SEPARATOR.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 46,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 47,
 };
 
 enum {
