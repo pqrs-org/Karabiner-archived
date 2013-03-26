@@ -54,6 +54,31 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile0</name>
+    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile0.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile1</name>
+    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile1.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile2</name>
+    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile2.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile3</name>
+    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile3.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_ReloadXML</name>
+    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/ReloadXML.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Mail</name>
     <url>file:///Applications/Mail.app</url>
   </vkopenurldef>
