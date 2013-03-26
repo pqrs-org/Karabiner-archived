@@ -142,15 +142,44 @@
     <item hidden="true">
       <name></name>
       <identifier vk_config="true">notsave.shiftl_capslocktrick</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::SHIFT_L,
+        <!-- to -->
+        KeyCode::SHIFT_L,
+        <!-- overlaid -->
+        KeyCode::CAPSLOCK,
+        KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick,
+      </autogen>
     </item>
     <item>
       <name>Shift_L to Shift_L</name>
       <appendix>(+ When you type Shift_L only, Sticky Shift_L)</appendix>
       <appendix>(+ When you type Shift_L twice, Capslock)</appendix>
       <identifier>remap.shiftl_to_sticky_shiftl</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, ModifierFlag::EXTRA3, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick</autogen>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L, KeyCode::VK_STICKY_EXTRA3</autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::SHIFT_L, ModifierFlag::EXTRA3,
+        <!-- to -->
+        KeyCode::SHIFT_L,
+        <!-- overlaid -->
+        KeyCode::CAPSLOCK,
+        KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF,
+        KeyCode::VK_STICKY_EXTRA3_FORCE_OFF,
+        KeyCode::VK_CONFIG_TOGGLE_notsave_shiftl_capslocktrick,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::SHIFT_L,
+        <!-- to -->
+        KeyCode::SHIFT_L,
+        <!-- overlaid -->
+        KeyCode::VK_STICKY_SHIFT_L,
+        KeyCode::VK_STICKY_EXTRA3,
+      </autogen>
     </item>
   </item>
 
@@ -323,15 +352,44 @@
     <item hidden="true">
       <name></name>
       <identifier vk_config="true">notsave.shiftr_capslocktrick</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::SHIFT_R,
+        <!-- to -->
+        KeyCode::SHIFT_R,
+        <!-- overlaid -->
+        KeyCode::CAPSLOCK,
+        KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick,
+      </autogen>
     </item>
     <item>
       <name>Shift_R to Shift_R</name>
       <appendix>(+ When you type Shift_R only, Sticky Shift_R)</appendix>
       <appendix>(+ When you type Shift_R twice, Capslock)</appendix>
       <identifier>remap.shiftr_to_sticky_shiftr</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, ModifierFlag::EXTRA3, KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick</autogen>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::VK_STICKY_SHIFT_R, KeyCode::VK_STICKY_EXTRA3</autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::SHIFT_R, ModifierFlag::EXTRA3,
+        <!-- to -->
+        KeyCode::SHIFT_R,
+        <!-- overlaid -->
+        KeyCode::CAPSLOCK,
+        KeyCode::VK_STICKY_SHIFT_R_FORCE_OFF,
+        KeyCode::VK_STICKY_EXTRA3_FORCE_OFF,
+        KeyCode::VK_CONFIG_TOGGLE_notsave_shiftr_capslocktrick,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::SHIFT_R,
+        <!-- to -->
+        KeyCode::SHIFT_R,
+        <!-- overlaid -->
+        KeyCode::VK_STICKY_SHIFT_R,
+        KeyCode::VK_STICKY_EXTRA3,
+      </autogen>
     </item>
   </item>
 </root>
