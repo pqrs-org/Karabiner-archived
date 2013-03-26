@@ -4,7 +4,7 @@ all:
 build:
 	$(MAKE) -C pkginfo
 	$(MAKE) -C src
-	mkdir -p files/share
+	$(MAKE) -C files/Utilities
 
 clean:
 	git clean -f -x -d
