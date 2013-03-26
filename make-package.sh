@@ -30,6 +30,10 @@ do
     cp -R "$d" "$basedir"
 done
 
+basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities"
+mkdir -p "$basedir"
+cp -R files/Utilities/*.app "$basedir"
+
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library"
 mkdir -p "$basedir"
 for d in \
