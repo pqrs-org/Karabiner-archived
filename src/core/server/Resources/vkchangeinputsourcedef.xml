@@ -204,7 +204,7 @@
 
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_GREEK</name>
-    <inputsourceid_equal>com.apple.keylayout.Greek</inputsourceid_equal>
+    <languagecode>el</languagecode>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
