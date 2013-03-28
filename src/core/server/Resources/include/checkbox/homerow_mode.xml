@@ -38,16 +38,20 @@
       </block>
       <!-- End UO Mechanics -->
     </item>
+    <item hidden="true">
+      <name>flags</name>
+      <identifier vk_config="true">notsave.homerow_arrows</identifier>
+    </item>
     <item>
       <name>Single Key Press Space turns on "Home Row Arrow and Modifier Mode"</name>
       <identifier>remap.homerow_mode_space_no_repeat</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_homerow_mode, KeyCode::SPACE</autogen>
       <block>
         <config_only>notsave.homerow_mode</config_only>
-        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_DOWN</autogen>
-        <autogen>__KeyToKey__ KeyCode::I, KeyCode::CURSOR_UP</autogen>
-        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_LEFT,   Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CONFIG_FORCE_ON_notsave_homerow_arrows, Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_CONFIG_FORCE_OFF_notsave_homerow_arrows, </autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_DOWN,   Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CONFIG_FORCE_ON_notsave_homerow_arrows, Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_CONFIG_FORCE_OFF_notsave_homerow_arrows, </autogen>
+        <autogen>__KeyToKey__ KeyCode::I, KeyCode::CURSOR_UP,     Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CONFIG_FORCE_ON_notsave_homerow_arrows, Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_CONFIG_FORCE_OFF_notsave_homerow_arrows, </autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT,  Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CONFIG_FORCE_ON_notsave_homerow_arrows, Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_CONFIG_FORCE_OFF_notsave_homerow_arrows, </autogen>
       </block>
     </item>
     <item>
@@ -55,6 +59,10 @@
       <appendix>(+ When you press A only send Control+S)</appendix>
       <identifier>option.homerow_mode_a_to_shift_select</identifier>
       <config_only>notsave.homerow_mode</config_only>
+      <block>
+        <config_only>notsave.homerow_arrows</config_only>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::SHIFT_L</autogen>
+      </block>
       <autogen>__KeyOverlaidModifier__ KeyCode::A, KeyCode::VK_LAZY_SHIFT_L, KeyCode::S, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
@@ -62,6 +70,10 @@
       <appendix>(+ When you press S only send Command+X)</appendix>
       <identifier>option.homerow_mode_s_to_control</identifier>
       <config_only>notsave.homerow_mode</config_only>
+      <block>
+        <config_only>notsave.homerow_arrows</config_only>
+        <autogen>__KeyToKey__ KeyCode::S, KeyCode::CONTROL_L</autogen>
+      </block>
       <autogen>__KeyOverlaidModifier__ KeyCode::S, KeyCode::VK_LAZY_CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -69,6 +81,10 @@
       <appendix>(+ When you press D only send Command+C)</appendix>
       <identifier>option.homerow_mode_d_to_option</identifier>
       <config_only>notsave.homerow_mode</config_only>
+      <block>
+        <config_only>notsave.homerow_arrows</config_only>
+        <autogen>__KeyToKey__ KeyCode::D, KeyCode::OPTION_L</autogen>
+      </block>
       <autogen>__KeyOverlaidModifier__ KeyCode::D, KeyCode::VK_LAZY_OPTION_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -76,6 +92,10 @@
       <appendix>(+ When you press F only send Command+V)</appendix>
       <identifier>option.homerow_mode_f_to_command</identifier>
       <config_only>notsave.homerow_mode</config_only>
+      <block>
+        <config_only>notsave.homerow_arrows</config_only>
+        <autogen>__KeyToKey__ KeyCode::F, KeyCode::COMMAND_L</autogen>
+      </block>
       <autogen>__KeyOverlaidModifier__ KeyCode::F, KeyCode::VK_LAZY_COMMAND_L, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
