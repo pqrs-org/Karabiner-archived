@@ -51,5 +51,16 @@
         KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R
       </autogen>
     </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Switch current setting profile by fn+1,fn+2,fn+3, and fn+4.</name>
+      <appendix>(You can make multiple profiles by MenuBar tab on Preferences.</appendix>
+      <appendix>This setting changes current profile by shortcut.)</appendix>
+      <identifier>remap.switch_profile_fn1_fn4</identifier>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile0</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile1</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile2</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile3</autogen>
+    </item>
   </item>
 </root>
