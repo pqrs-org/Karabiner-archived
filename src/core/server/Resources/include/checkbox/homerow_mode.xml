@@ -122,6 +122,7 @@
     <item>
       <name>[Option] ; to Return</name>
       <identifier>option.homerow_mode_return</identifier>
+      <config_only>notsave.homerow_mode</config_only>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
     </item>
     <item>
