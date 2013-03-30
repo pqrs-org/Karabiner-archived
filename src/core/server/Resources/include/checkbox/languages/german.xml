@@ -132,6 +132,17 @@
       <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
     </item>
     <item>
+      <name>Swap Circumflex(^) and Less-Than(&lt;) on Mac Keyboard</name>
+      <appendix>(+ Option+Less-Than(&lt;) to Pipe(|))</appendix>
+      <identifier>remap.german_swap_circumflex_lessthan_pipe</identifier>
+      <not>VIRTUALMACHINE</not>
+      <inputsource_only>GERMAN</inputsource_only>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, VK_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_7, VK_OPTION</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
+      <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN,  KeyCode::GERMAN_CIRCUMFLEX</autogen>
+    </item>
+    <item>
       <name>Swap Circumflex(^) and Less-Than(&lt;) on PC Keyboard</name>
       <appendix>(+ Option+Less-Than(&lt;) to Pipe(|))</appendix>
       <identifier>remap.german_swap_circumflex_lessthan_pckeyboard</identifier>
