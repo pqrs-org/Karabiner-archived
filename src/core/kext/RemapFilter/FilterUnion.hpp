@@ -7,6 +7,7 @@
 #include "ModifierFilter.hpp"
 #include "DeviceFilter.hpp"
 #include "InputSourceFilter.hpp"
+#include "LastPressedPhysicalKeyFilter.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
@@ -32,6 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ModifierFilter* modifierFilter;
         DeviceFilter* deviceFilter;
         InputSourceFilter* inputSourceFilter;
+        LastPressedPhysicalKeyFilter* lastPressedPhysicalKeyFilter;
       } p_;
     };
 
