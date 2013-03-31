@@ -439,6 +439,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       CommonData::setcurrent_deviceIdentifier(front->deviceIdentifier);
+      CommonData::setcurrent_lastpressedphysicalkey(front->params);
 
     } while (RemapClassManager::remap_simultaneouskeypresses());
 

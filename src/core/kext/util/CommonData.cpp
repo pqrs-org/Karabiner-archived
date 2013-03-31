@@ -7,6 +7,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   KeyboardType CommonData::current_keyboardType_;
   DeviceIdentifier CommonData::current_deviceIdentifier_;
   BridgeWorkSpaceData CommonData::current_workspacedata_;
+  LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
   char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
   int CommonData::alloccount_;

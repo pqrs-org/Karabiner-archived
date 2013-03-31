@@ -3,10 +3,13 @@
 
 #include "base.hpp"
 #include "KeyCode.hpp"
+#include "LastPressedPhysicalKey.hpp"
 #include "bridge.h"
 #include <string.h>
 
 namespace org_pqrs_KeyRemap4MacBook {
+  class ParamsUnion;
+
   class CommonData {
   public:
     static bool initialize(void);
@@ -26,6 +29,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) { current_workspacedata_ = newval; }
     static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
+    static void setcurrent_lastpressedphysicalkey(const ParamsUnion& newval) {
+      current_lastpressedphysicalkey_.update(newval);
+    }
+    static const LastPressedPhysicalKey& getcurrent_lastpressedphysicalkey(void) {
+      return current_lastpressedphysicalkey_;
+    }
+
     static void clear_statusmessage(int index);
     static void append_statusmessage(int index, const char* message);
     static void send_notification_statusmessage(int index);
@@ -40,6 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static KeyboardType current_keyboardType_;
     static DeviceIdentifier current_deviceIdentifier_;
     static BridgeWorkSpaceData current_workspacedata_;
+    static LastPressedPhysicalKey current_lastpressedphysicalkey_;
 
     static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
