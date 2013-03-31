@@ -439,7 +439,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       CommonData::setcurrent_deviceIdentifier(front->deviceIdentifier);
-      CommonData::setcurrent_lastpressedphysicalkey(front->params);
 
     } while (RemapClassManager::remap_simultaneouskeypresses());
 
@@ -567,6 +566,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         IOLOG_ERROR("%s unkown type\n", __PRETTY_FUNCTION__);
         break;
     }
+
+    CommonData::setcurrent_lastpressedphysicalkey(p->params);
 
     queue_->pop_front();
 

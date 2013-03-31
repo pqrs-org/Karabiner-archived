@@ -86,6 +86,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
+          p_.lastPressedPhysicalKeyFilter = new LastPressedPhysicalKeyFilter(type_);
+          if (p_.lastPressedPhysicalKeyFilter) {
+            for (size_t i = 1; i < length - 1; i += 2) {
+              (p_.lastPressedPhysicalKeyFilter)->add(vec[i], vec[i + 1]);
+            }
+          }
+          break;
+
         default:
           IOLOG_ERROR("FilterUnion::initialize unknown type_:%d.\n", type_);
           goto error;
@@ -137,6 +147,13 @@ namespace org_pqrs_KeyRemap4MacBook {
             delete p_.inputSourceFilter;
           }
           break;
+
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
+          if (p_.lastPressedPhysicalKeyFilter) {
+            delete p_.lastPressedPhysicalKeyFilter;
+          }
+          break;
       }
 
       type_ = BRIDGE_FILTERTYPE_NONE;
@@ -180,6 +197,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
           if (p_.inputSourceFilter) {
             return (p_.inputSourceFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
+          if (p_.lastPressedPhysicalKeyFilter) {
+            return (p_.lastPressedPhysicalKeyFilter)->isblocked();
           }
           break;
       }
