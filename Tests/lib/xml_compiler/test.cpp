@@ -876,6 +876,9 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   s.add("ModifierFlag", "MOD1", 0x1000);
   s.add("ModifierFlag", "MOD2", 0x2000);
   s.add("ModifierFlag", "MOD3", 0x4000);
+  s.add("KeyCode", "KC1", 4000);
+  s.add("KeyCode", "KC2", 5000);
+  s.add("KeyCode", "KC3", 6000);
 
   std::string xml("<?xml version=\"1.0\"?>"
                   "<item>"
@@ -903,6 +906,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "  <config_not>config3</config_not>"
                   "  <modifier_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifier_only>"
                   "  <modifier_not> ModifierFlag::MOD2 </modifier_not>"
+                  "  <lastpressedphysicalkey_not>KeyCode::KC1</lastpressedphysicalkey_not>"
+                  "  <lastpressedphysicalkey_only>KeyCode::KC2</lastpressedphysicalkey_only>"
                   "</item>");
   std::stringstream istream(xml, std::stringstream::in);
 
@@ -1019,6 +1024,18 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     expected.push_back(2);
     expected.push_back(BRIDGE_FILTERTYPE_MODIFIER_NOT);
     expected.push_back(0x2000);
+
+    // <lastpressedphysicalkey_not>KeyCode::KC1</lastpressedphysicalkey_not>
+    expected.push_back(3);
+    expected.push_back(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT);
+    expected.push_back(BRIDGE_DATATYPE_KEYCODE);
+    expected.push_back(4000);
+
+    // <lastpressedphysicalkey_only>KeyCode::KC2</lastpressedphysicalkey_only>
+    expected.push_back(3);
+    expected.push_back(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY);
+    expected.push_back(BRIDGE_DATATYPE_KEYCODE);
+    expected.push_back(5000);
 
     EXPECT_EQ(expected, fv.get());
   }

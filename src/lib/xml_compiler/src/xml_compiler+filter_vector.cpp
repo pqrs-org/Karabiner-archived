@@ -1,6 +1,7 @@
 #include "bridge.h"
 #include "pqrs/vector.hpp"
 #include "pqrs/xml_compiler.hpp"
+#include "pqrs/xml_compiler/utilities.hpp"
 
 namespace pqrs {
   void
@@ -39,6 +40,10 @@ namespace pqrs {
                  it.get_tag_name() == "inputmodedetail_only") {
         // We allow "inputmode_*" for compatibility.
         add_(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY, "InputSourceDetail::", it.get_data());
+      } else if (it.get_tag_name() == "lastpressedphysicalkey_not") {
+        add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT,  "", it.get_data());
+      } else if (it.get_tag_name() == "lastpressedphysicalkey_only") {
+        add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY, "", it.get_data());
       }
     }
   }
@@ -77,6 +82,16 @@ namespace pqrs {
             normalize_identifier_(key);
             filter_value |= symbol_map_.get(key);
           }
+          break;
+        }
+
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
+        case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
+        {
+          normalize_identifier_(arg);
+          data_.push_back(xml_compiler_utilities::get_datatype(arg));
+          ++count;
+          filter_value = symbol_map_.get(arg);
           break;
         }
 

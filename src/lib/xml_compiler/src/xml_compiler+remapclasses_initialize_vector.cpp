@@ -59,7 +59,7 @@ namespace pqrs {
   xml_compiler::remapclasses_initialize_vector::start(uint32_t config_index,
                                                       const std::string& raw_identifier)
   {
-    assert( ! freezed_);
+    assert(! freezed_);
 
     if (is_config_index_added_.find(config_index) != is_config_index_added_.end()) {
       throw xml_compiler_runtime_error(boost::format("Duplicated identifier:\n"
