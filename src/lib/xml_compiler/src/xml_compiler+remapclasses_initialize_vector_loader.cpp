@@ -2,6 +2,7 @@
 #include <exception>
 #include "bridge.h"
 #include "pqrs/xml_compiler.hpp"
+#include "pqrs/xml_compiler/utilities.hpp"
 #include "pqrs/string.hpp"
 #include "pqrs/vector.hpp"
 
@@ -367,29 +368,7 @@ namespace pqrs {
 
       pqrs::string::tokenizer tokenizer_pipe(arg, '|');
       while (tokenizer_pipe.split_removing_empty(value)) {
-        unsigned int newdatatype = BRIDGE_DATATYPE_NONE;
-
-        static const struct {
-          const std::string type;
-          unsigned int datatype;
-        } info[] = {
-          { "KeyCode::",         BRIDGE_DATATYPE_KEYCODE         },
-          { "ModifierFlag::",    BRIDGE_DATATYPE_FLAGS           },
-          { "ConsumerKeyCode::", BRIDGE_DATATYPE_CONSUMERKEYCODE },
-          { "PointingButton::",  BRIDGE_DATATYPE_POINTINGBUTTON  },
-          { "ScrollWheel::",     BRIDGE_DATATYPE_SCROLLWHEEL     },
-          { "KeyboardType::",    BRIDGE_DATATYPE_KEYBOARDTYPE    },
-          { "DeviceVendor::",    BRIDGE_DATATYPE_DEVICEVENDOR    },
-          { "DeviceProduct::",   BRIDGE_DATATYPE_DEVICEPRODUCT   },
-          { "DeviceLocation::",  BRIDGE_DATATYPE_DEVICELOCATION  },
-          { "Option::",          BRIDGE_DATATYPE_OPTION          },
-        };
-        for (const auto& it : info) {
-          if (boost::starts_with(value, it.type)) {
-            newdatatype = it.datatype;
-            break;
-          }
-        }
+        unsigned int newdatatype = xml_compiler_utilities::get_datatype(value);
         if (newdatatype == BRIDGE_DATATYPE_NONE) {
           throw xml_compiler_runtime_error("Unknown symbol:\n\n" + value);
         }
