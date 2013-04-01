@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       LastPressedPhysicalKeyFilter(unsigned int t);
       ~LastPressedPhysicalKeyFilter(void);
 
-      void add(uint32_t datatype, uint32_t value);
+      void add(unsigned int datatype, unsigned int value);
 
       bool isblocked(void);
 

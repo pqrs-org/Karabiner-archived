@@ -13,9 +13,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     class FilterValueWithDataType {
     public:
       FilterValueWithDataType(void) : datatype(BRIDGE_DATATYPE_NONE), value(0) {}
-      FilterValueWithDataType(uint32_t d, uint32_t v) : datatype(d), value(v) {}
-      uint32_t datatype;
-      uint32_t value;
+      FilterValueWithDataType(unsigned int d, unsigned int v) : datatype(d), value(v) {}
+      unsigned int datatype;
+      unsigned int value;
     };
     DECLARE_VECTOR(FilterValueWithDataType);
 
