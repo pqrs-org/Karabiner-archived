@@ -62,6 +62,8 @@
 		346B753F0E72C0BA00F9A79F /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */; };
 		346EB2E411D5CDC100BBDF0E /* EventInputQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346EB2E211D5CDC100BBDF0E /* EventInputQueue.cpp */; };
 		346EB2E511D5CDC100BBDF0E /* EventInputQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346EB2E311D5CDC100BBDF0E /* EventInputQueue.hpp */; };
+		346EE06B1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346EE0691709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp */; };
+		346EE06C1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */; };
 		3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3472914014CEFC64006586F5 /* VK_WAIT.cpp */; };
 		3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3472914114CEFC64006586F5 /* VK_WAIT.hpp */; };
 		3475BBFF11CEDC5F007BC76A /* FromKeyChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */; };
@@ -219,6 +221,8 @@
 		346B753D0E72C0BA00F9A79F /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = util/FlagStatus.hpp; sourceTree = "<group>"; };
 		346EB2E211D5CDC100BBDF0E /* EventInputQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventInputQueue.cpp; path = util/EventInputQueue.cpp; sourceTree = "<group>"; };
 		346EB2E311D5CDC100BBDF0E /* EventInputQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventInputQueue.hpp; path = util/EventInputQueue.hpp; sourceTree = "<group>"; };
+		346EE0691709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ElapsedTimeSinceLastPressedFilter.cpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.cpp; sourceTree = "<group>"; };
+		346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ElapsedTimeSinceLastPressedFilter.hpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.hpp; sourceTree = "<group>"; };
 		3472914014CEFC64006586F5 /* VK_WAIT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_WAIT.cpp; path = VirtualKey/VK_WAIT.cpp; sourceTree = "<group>"; };
 		3472914114CEFC64006586F5 /* VK_WAIT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_WAIT.hpp; path = VirtualKey/VK_WAIT.hpp; sourceTree = "<group>"; };
 		3475BBFE11CEDC5F007BC76A /* FromKeyChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FromKeyChecker.hpp; path = util/FromKeyChecker.hpp; sourceTree = "<group>"; };
@@ -543,15 +547,17 @@
 				34CAB8531261195200C3FFCB /* ConfigFilter.hpp */,
 				342C80521261B379007F15DA /* DeviceFilter.cpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
+				346EE0691709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp */,
+				346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */,
 				34DC263B1262A5A500354378 /* FilterUnion.cpp */,
 				34DC263712629E0000354378 /* FilterUnion.hpp */,
-				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
-				05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */,
 				34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */,
 				34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */,
-				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 				3496DB861707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp */,
 				3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */,
+				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
+				05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */,
+				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 			);
 			name = RemapFilter;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */,
 				3496DB891707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp in Headers */,
 				347D8061170800C8003F3A48 /* LastPressedPhysicalKey.hpp in Headers */,
+				346EE06C1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +800,7 @@
 				3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */,
 				3496DB881707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp in Sources */,
 				347D8060170800C8003F3A48 /* LastPressedPhysicalKey.cpp in Sources */,
+				346EE06B1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

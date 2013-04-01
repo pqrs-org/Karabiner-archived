@@ -51,16 +51,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
-        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
-          p_.modifierFilter = new ModifierFilter(type_);
-          if (p_.modifierFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.modifierFilter)->add(vec[i]);
-            }
-          }
-          break;
-
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
           p_.deviceFilter = new DeviceFilter(type_);
@@ -70,6 +60,16 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
             if ((length - 1) % 3 > 0) {
               IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_DEVICE_*\n", static_cast<int>(length));
+            }
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
+        case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
+          p_.elapsedTimeSinceLastPressedFilter = new ElapsedTimeSinceLastPressedFilter(type_);
+          if (p_.elapsedTimeSinceLastPressedFilter) {
+            for (size_t i = 1; i < length; ++i) {
+              (p_.elapsedTimeSinceLastPressedFilter)->add(vec[i]);
             }
           }
           break;
@@ -92,6 +92,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (p_.lastPressedPhysicalKeyFilter) {
             for (size_t i = 1; i < length - 1; i += 2) {
               (p_.lastPressedPhysicalKeyFilter)->add(vec[i], vec[i + 1]);
+            }
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+          p_.modifierFilter = new ModifierFilter(type_);
+          if (p_.modifierFilter) {
+            for (size_t i = 1; i < length; ++i) {
+              (p_.modifierFilter)->add(vec[i]);
             }
           }
           break;
@@ -125,17 +135,17 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
-        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
-          if (p_.modifierFilter) {
-            delete p_.modifierFilter;
-          }
-          break;
-
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
           if (p_.deviceFilter) {
             delete p_.deviceFilter;
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
+        case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
+          if (p_.elapsedTimeSinceLastPressedFilter) {
+            delete p_.elapsedTimeSinceLastPressedFilter;
           }
           break;
 
@@ -152,6 +162,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
           if (p_.lastPressedPhysicalKeyFilter) {
             delete p_.lastPressedPhysicalKeyFilter;
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+          if (p_.modifierFilter) {
+            delete p_.modifierFilter;
           }
           break;
       }
@@ -177,17 +194,17 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
-        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
-        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
-          if (p_.modifierFilter) {
-            return (p_.modifierFilter)->isblocked();
-          }
-          break;
-
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
           if (p_.deviceFilter) {
             return (p_.deviceFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
+        case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
+          if (p_.elapsedTimeSinceLastPressedFilter) {
+            return (p_.elapsedTimeSinceLastPressedFilter)->isblocked();
           }
           break;
 
@@ -204,6 +221,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
           if (p_.lastPressedPhysicalKeyFilter) {
             return (p_.lastPressedPhysicalKeyFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+          if (p_.modifierFilter) {
+            return (p_.modifierFilter)->isblocked();
           }
           break;
       }
