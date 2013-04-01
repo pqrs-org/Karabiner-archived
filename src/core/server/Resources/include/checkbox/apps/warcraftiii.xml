@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Enable at only Warcraft III</name>
+    <item>
+      <name>Custom keys for Dota items</name>
+      <appendix>- Change space key to keypad 7</appendix>
+      <appendix>- Change 3 key to keypad 8</appendix>
+      <appendix>- Change 4 key to keypad 4</appendix>
+      <appendix>- Change 5 key to keypad 5</appendix>
+      <only>WARCRAFTIII</only>
+      <identifier>remap.dota_keyboard_remap</identifier>
+      <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::KEYPAD_7</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::KEYPAD_8</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::KEYPAD_4</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::KEYPAD_5</autogen>
+    </item>
+  </item>
+
+</root>
