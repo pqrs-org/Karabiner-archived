@@ -8,6 +8,8 @@ Changes since 8.0.0
     - Added Option::POINTINGRELATIVETOSCROLL_TOKEYS.
     - Added __FlipPointingRelative__.
     - Added __FlipScrollWheel__.
+    - Added <lastpressedphysicalkey_not>, <lastpressedphysicalkey_only> filters.
+    - Added <elapsedtimesincelastpressed_greaterthan>, <elapsedtimesincelastpressed_lessthan> filters.
     - Some minor improvements.
 
 ----------------------------------------------------------------------
