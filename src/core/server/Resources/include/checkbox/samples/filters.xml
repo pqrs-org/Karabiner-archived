@@ -535,6 +535,44 @@
       </item>
     </item>
 
+    <item>
+      <name>Last Pressed Physical Key</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Change A to 1 if last pressed physical key is return key.</appendix>
+        <appendix>Change Q to 1 unless last pressed physical key is return key.</appendix>
+        <appendix>Change S to 2 if last pressed physical key is mute.</appendix>
+        <appendix>Change W to 2 unless last pressed physical key is mute.</appendix>
+        <appendix>Change D to 3 if last pressed physical key is left click.</appendix>
+        <appendix>Change E to 3 unless last pressed physical key is left click.</appendix>
+        <identifier>remap.samples_lastpressedphysicalkey</identifier>
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::RETURN</lastpressedphysicalkey_only>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::KEY_1</autogen>
+        </block>
+        <block>
+          <lastpressedphysicalkey_not>KeyCode::RETURN</lastpressedphysicalkey_not>
+          <autogen>__KeyToKey__ KeyCode::Q, KeyCode::KEY_1</autogen>
+        </block>
+        <block>
+          <lastpressedphysicalkey_only>ConsumerKeyCode::VOLUME_MUTE</lastpressedphysicalkey_only>
+          <autogen>__KeyToKey__ KeyCode::S, KeyCode::KEY_2</autogen>
+        </block>
+        <block>
+          <lastpressedphysicalkey_not>ConsumerKeyCode::VOLUME_MUTE</lastpressedphysicalkey_not>
+          <autogen>__KeyToKey__ KeyCode::W, KeyCode::KEY_2</autogen>
+        </block>
+        <block>
+          <lastpressedphysicalkey_only>PointingButton::LEFT</lastpressedphysicalkey_only>
+          <autogen>__KeyToKey__ KeyCode::D, KeyCode::KEY_3</autogen>
+        </block>
+        <block>
+          <lastpressedphysicalkey_not>PointingButton::LEFT</lastpressedphysicalkey_not>
+          <autogen>__KeyToKey__ KeyCode::E, KeyCode::KEY_3</autogen>
+        </block>
+      </item>
+    </item>
+
     <!-- block -->
     <item>
       <name>block sample</name>
