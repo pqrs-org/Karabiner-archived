@@ -4,10 +4,11 @@
 #include "bridge.h"
 #include "ApplicationFilter.hpp"
 #include "ConfigFilter.hpp"
-#include "ModifierFilter.hpp"
 #include "DeviceFilter.hpp"
+#include "ElapsedTimeSinceLastPressedFilter.hpp"
 #include "InputSourceFilter.hpp"
 #include "LastPressedPhysicalKeyFilter.hpp"
+#include "ModifierFilter.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
@@ -30,10 +31,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       union {
         ApplicationFilter* applicationFilter;
         ConfigFilter* configFilter;
-        ModifierFilter* modifierFilter;
         DeviceFilter* deviceFilter;
+        ElapsedTimeSinceLastPressedFilter* elapsedTimeSinceLastPressedFilter;
         InputSourceFilter* inputSourceFilter;
         LastPressedPhysicalKeyFilter* lastPressedPhysicalKeyFilter;
+        ModifierFilter* modifierFilter;
       } p_;
     };
 
