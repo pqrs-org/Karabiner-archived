@@ -573,6 +573,24 @@
       </item>
     </item>
 
+    <item>
+      <name>Elapsed Time Since Last Pressed</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Change A to 1 if time elapsed since last pressed is greater than 1000ms.</appendix>
+        <appendix>Change S to 2 if time elapsed since last pressed is less than 1000ms.</appendix>
+        <identifier>remap.samples_elapsedtimesincelastpressed</identifier>
+        <block>
+          <elapsedtimesincelastpressed_greaterthan>Millisecond::RawValue::1000</elapsedtimesincelastpressed_greaterthan>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::KEY_1</autogen>
+        </block>
+        <block>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::1000</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::S, KeyCode::KEY_2</autogen>
+        </block>
+      </item>
+    </item>
+
     <!-- block -->
     <item>
       <name>block sample</name>
