@@ -17,6 +17,7 @@ namespace pqrs {
       if (boost::starts_with(s, "DeviceProduct::"))   { return BRIDGE_DATATYPE_DEVICEPRODUCT;   }
       if (boost::starts_with(s, "DeviceLocation::"))  { return BRIDGE_DATATYPE_DEVICELOCATION;  }
       if (boost::starts_with(s, "Option::"))          { return BRIDGE_DATATYPE_OPTION;          }
+      if (boost::starts_with(s, "Millisecond::"))     { return BRIDGE_DATATYPE_MILLISECOND;     }
       return BRIDGE_DATATYPE_NONE;
     }
   };

@@ -12,14 +12,18 @@ namespace pqrs {
         add_(BRIDGE_FILTERTYPE_APPLICATION_NOT,  "ApplicationType::", it.get_data());
       } else if (it.get_tag_name() == "only") {
         add_(BRIDGE_FILTERTYPE_APPLICATION_ONLY, "ApplicationType::", it.get_data());
-      } else if (it.get_tag_name() == "device_not") {
-        add_(BRIDGE_FILTERTYPE_DEVICE_NOT,  "", it.get_data());
-      } else if (it.get_tag_name() == "device_only") {
-        add_(BRIDGE_FILTERTYPE_DEVICE_ONLY, "", it.get_data());
       } else if (it.get_tag_name() == "config_not") {
         add_(BRIDGE_FILTERTYPE_CONFIG_NOT,  "ConfigIndex::", it.get_data());
       } else if (it.get_tag_name() == "config_only") {
         add_(BRIDGE_FILTERTYPE_CONFIG_ONLY, "ConfigIndex::", it.get_data());
+      } else if (it.get_tag_name() == "device_not") {
+        add_(BRIDGE_FILTERTYPE_DEVICE_NOT,  "", it.get_data());
+      } else if (it.get_tag_name() == "device_only") {
+        add_(BRIDGE_FILTERTYPE_DEVICE_ONLY, "", it.get_data());
+      } else if (it.get_tag_name() == "elapsedtimesincelastpressed_greaterthan") {
+        add_(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN,  "", it.get_data());
+      } else if (it.get_tag_name() == "elapsedtimesincelastpressed_lessthan") {
+        add_(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN, "", it.get_data());
       } else if (it.get_tag_name() == "modifier_not") {
         add_(BRIDGE_FILTERTYPE_MODIFIER_NOT,  "", it.get_data());
       } else if (it.get_tag_name() == "modifier_only") {
