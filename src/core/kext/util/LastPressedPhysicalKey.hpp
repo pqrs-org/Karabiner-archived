@@ -3,6 +3,7 @@
 
 #include "base.hpp"
 #include "bridge.h"
+#include "IntervalChecker.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class ParamsUnion;
@@ -18,14 +19,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     uint32_t get_datatype(void) const { return datatype_; }
     uint32_t get_value(void) const { return value_; }
+    uint32_t get_milliseconds(void) const { return ic_.getmillisec(); }
 
   private:
-    void update_time(void);
-
     uint32_t datatype_;
     uint32_t value_;
-    clock_sec_t secs_;
-    clock_usec_t microsecs_;
+    IntervalChecker ic_;
   };
 }
 

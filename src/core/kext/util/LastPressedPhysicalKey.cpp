@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (p && p->ex_iskeydown) {
           datatype_ = BRIDGE_DATATYPE_KEYCODE;
           value_ = (p->key).get();
-          update_time();
+          ic_.begin();
         }
         break;
       }
@@ -25,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (p && p->ex_iskeydown) {
           datatype_ = BRIDGE_DATATYPE_CONSUMERKEYCODE;
           value_ = (p->key).get();
-          update_time();
+          ic_.begin();
         }
         break;
       }
@@ -37,7 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (p && p->ex_button != PointingButton::NONE && p->ex_isbuttondown) {
           datatype_ = BRIDGE_DATATYPE_POINTINGBUTTON;
           value_ = (p->ex_button).get();
-          update_time();
+          ic_.begin();
         }
         break;
       }
@@ -48,11 +48,5 @@ namespace org_pqrs_KeyRemap4MacBook {
         // Do nothing
         break;
     }
-  }
-
-  void
-  LastPressedPhysicalKey::update_time(void)
-  {
-    clock_get_system_microtime(&secs_, &microsecs_);
   }
 }
