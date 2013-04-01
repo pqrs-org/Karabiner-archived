@@ -27,6 +27,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
         {
+          uint32_t milliseconds = current.get_milliseconds();
+
           for (size_t i = 0; i < targets_.size(); ++i) {
             switch (type_) {
               case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
