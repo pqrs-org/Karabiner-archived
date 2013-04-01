@@ -275,6 +275,11 @@
   </appdef>
 
   <appdef>
+    <appname>WARCRAFTIII</appname>
+    <equal>com.blizzard.WarcraftIII</equal>
+  </appdef>
+
+  <appdef>
     <appname>FOXTROT</appname>
     <prefix>com.ctmdev.FoxTrot</prefix>
   </appdef>

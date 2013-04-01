@@ -71,6 +71,7 @@
     <include path="include/checkbox/apps/remote_desktop_client.xml" />
     <include path="include/checkbox/apps/world_of_warcraft.xml" />
     <include path="include/checkbox/apps/starcraft2.xml" />
+    <include path="include/checkbox/apps/warcraftiii.xml" />
     <include path="include/checkbox/apps/skype.xml" />
     <include path="include/checkbox/apps/dictionary.xml" />
     <include path="include/checkbox/apps/tweetdeck.xml" />
