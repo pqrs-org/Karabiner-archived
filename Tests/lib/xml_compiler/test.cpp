@@ -908,6 +908,12 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "  <modifier_not> ModifierFlag::MOD2 </modifier_not>"
                   "  <lastpressedphysicalkey_not>KeyCode::KC1</lastpressedphysicalkey_not>"
                   "  <lastpressedphysicalkey_only>KeyCode::KC2</lastpressedphysicalkey_only>"
+                  "  <elapsedtimesincelastpressed_greaterthan>"
+                  "    Millisecond::RawValue::1000"
+                  "  </elapsedtimesincelastpressed_greaterthan>"
+                  "  <elapsedtimesincelastpressed_lessthan>"
+                  "    Millisecond::RawValue::500"
+                  "  </elapsedtimesincelastpressed_lessthan>"
                   "</item>");
   std::stringstream istream(xml, std::stringstream::in);
 
@@ -1036,6 +1042,20 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     expected.push_back(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY);
     expected.push_back(BRIDGE_DATATYPE_KEYCODE);
     expected.push_back(5000);
+
+    // <elapsedtimesincelastpressed_greaterthan>
+    //   Millisecond::RawValue::1000
+    // </elapsedtimesincelastpressed_greaterthan>
+    expected.push_back(2);
+    expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN);
+    expected.push_back(1000);
+
+    // <elapsedtimesincelastpressed_lessthan>
+    //   Millisecond::RawValue::500
+    // </elapsedtimesincelastpressed_lessthan>
+    expected.push_back(2);
+    expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN);
+    expected.push_back(500);
 
     EXPECT_EQ(expected, fv.get());
   }

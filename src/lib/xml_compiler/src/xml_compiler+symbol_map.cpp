@@ -42,6 +42,14 @@ namespace pqrs {
   {
     auto it = symbol_map_.find(name);
     if (it == symbol_map_.end()) {
+      // XXX::RawValue::YYY does not appear frequently.
+      // Therefore, we don't check "XXX::RawValue::" prefix at first in order to improve performance.
+      // Treat XXX::RawValue::XXX at here.
+      auto found = name.find("::RawValue::");
+      if (found != std::string::npos) {
+        return pqrs::string::to_uint32_t(name.c_str() + found + strlen("::RawValue::"));
+      }
+
       return boost::none;
     }
 
