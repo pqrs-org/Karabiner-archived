@@ -10,13 +10,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       ElapsedTimeSinceLastPressedFilter(unsigned int t);
       ~ElapsedTimeSinceLastPressedFilter(void);
 
-      void add(unsigned int newval);
+      void add(unsigned int datatype, unsigned int value);
 
       bool isblocked(void);
 
     private:
       unsigned int type_;
-      Vector_FilterValue targets_;
+      Vector_FilterValueWithDataType targets_;
     };
   }
 }

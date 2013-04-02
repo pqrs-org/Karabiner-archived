@@ -1046,15 +1046,17 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     // <elapsedtimesincelastpressed_greaterthan>
     //   Millisecond::RawValue::1000
     // </elapsedtimesincelastpressed_greaterthan>
-    expected.push_back(2);
+    expected.push_back(3);
     expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN);
+    expected.push_back(BRIDGE_DATATYPE_MILLISECOND);
     expected.push_back(1000);
 
     // <elapsedtimesincelastpressed_lessthan>
     //   Millisecond::RawValue::500
     // </elapsedtimesincelastpressed_lessthan>
-    expected.push_back(2);
+    expected.push_back(3);
     expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN);
+    expected.push_back(BRIDGE_DATATYPE_MILLISECOND);
     expected.push_back(500);
 
     EXPECT_EQ(expected, fv.get());

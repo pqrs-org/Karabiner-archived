@@ -12,9 +12,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    ElapsedTimeSinceLastPressedFilter::add(unsigned int newval)
+    ElapsedTimeSinceLastPressedFilter::add(unsigned int datatype, unsigned int value)
     {
-      targets_.push_back(newval);
+      targets_.push_back(FilterValueWithDataType(datatype, value));
     }
 
     bool
@@ -27,15 +27,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
         {
-          uint32_t milliseconds = current.get_milliseconds();
+          uint32_t current_ms = current.get_milliseconds();
 
           for (size_t i = 0; i < targets_.size(); ++i) {
+            uint32_t filter_ms = 0;
+            if (targets_[i].datatype == BRIDGE_DATATYPE_MILLISECOND) {
+              filter_ms = targets_[i].value;
+            } else {
+              IOLOG_ERROR("ElapsedTimeSinceLastPressedFilter::isblocked unknown datatype(%d)\n", targets_[i].datatype);
+              continue;
+            }
+
             switch (type_) {
               case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
-                if (targets_[i] > milliseconds) return true;
+                if (filter_ms > current_ms) return true;
                 break;
               case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
-                if (targets_[i] < milliseconds) return true;
+                if (filter_ms < current_ms) return true;
                 break;
             }
           }
