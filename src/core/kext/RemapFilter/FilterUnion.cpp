@@ -68,8 +68,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
           p_.elapsedTimeSinceLastPressedFilter = new ElapsedTimeSinceLastPressedFilter(type_);
           if (p_.elapsedTimeSinceLastPressedFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.elapsedTimeSinceLastPressedFilter)->add(vec[i]);
+            for (size_t i = 1; i < length - 1; i += 2) {
+              (p_.elapsedTimeSinceLastPressedFilter)->add(vec[i], vec[i + 1]);
             }
           }
           break;
