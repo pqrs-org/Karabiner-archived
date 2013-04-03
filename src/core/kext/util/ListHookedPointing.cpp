@@ -78,34 +78,35 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool result = false;
 
-    // ----------------------------------------
-    {
-      RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
+    // ------------------------------------------------------------
+    // Do not replace _relativePointerEventAction if it is already replaced
+    // (orig_relativePointerEventAction_ != NULL) to avoid replacing competition
+    // between other kernel extensions.
 
-      if (callback != EventInputQueue::push_RelativePointerEventCallback) {
-        IOLOG_DEBUG("ListHookedPointing::Item::replaceEventAction (RelativePointerEventCallback) device_:%p\n", device_);
+    if (! orig_relativePointerEventAction_) {
+      IOLOG_DEBUG("ListHookedPointing::Item::replaceEventAction (RelativePointerEventCallback) device_:%p\n", device_);
 
-        orig_relativePointerEventAction_ = callback;
-        orig_relativePointerEventTarget_ = pointing->_relativePointerEventTarget;
+      orig_relativePointerEventAction_ = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
+      orig_relativePointerEventTarget_ = pointing->_relativePointerEventTarget;
 
-        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(EventInputQueue::push_RelativePointerEventCallback);
+      pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(EventInputQueue::push_RelativePointerEventCallback);
 
-        result = true;
-      }
+      result = true;
     }
-    {
-      ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
 
-      if (callback != EventInputQueue::push_ScrollWheelEventCallback) {
-        IOLOG_DEBUG("ListHookedPointing::Item::replaceEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
+    // Do not replace _scrollWheelEventAction if it is already replaced
+    // (orig_scrollWheelEventAction_ != NULL) to avoid replacing competition
+    // between other kernel extensions.
 
-        orig_scrollWheelEventAction_ = callback;
-        orig_scrollWheelEventTarget_ = pointing->_scrollWheelEventTarget;
+    if (! orig_scrollWheelEventAction_) {
+      IOLOG_DEBUG("ListHookedPointing::Item::replaceEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
 
-        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(EventInputQueue::push_ScrollWheelEventCallback);
+      orig_scrollWheelEventAction_ = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
+      orig_scrollWheelEventTarget_ = pointing->_scrollWheelEventTarget;
 
-        result = true;
-      }
+      pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(EventInputQueue::push_ScrollWheelEventCallback);
+
+      result = true;
     }
 
     return result;
@@ -122,27 +123,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = false;
 
     // ----------------------------------------
-    {
-      RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
+    if (orig_relativePointerEventAction_) {
+      IOLOG_DEBUG("HookedPointing::restoreEventAction (RelativePointerEventCallback) device_:%p\n", device_);
 
-      if (callback == EventInputQueue::push_RelativePointerEventCallback) {
-        IOLOG_DEBUG("HookedPointing::restoreEventAction (RelativePointerEventCallback) device_:%p\n", device_);
+      pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction_);
 
-        pointing->_relativePointerEventAction = reinterpret_cast<RelativePointerEventAction>(orig_relativePointerEventAction_);
-
-        result = true;
-      }
+      result = true;
     }
-    {
-      ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
+    if (orig_scrollWheelEventAction_) {
+      IOLOG_DEBUG("HookedPointing::restoreEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
 
-      if (callback == EventInputQueue::push_ScrollWheelEventCallback) {
-        IOLOG_DEBUG("HookedPointing::restoreEventAction (ScrollWheelEventCallback) device_:%p\n", device_);
+      pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction_);
 
-        pointing->_scrollWheelEventAction = reinterpret_cast<ScrollWheelEventAction>(orig_scrollWheelEventAction_);
-
-        result = true;
-      }
+      result = true;
     }
 
     orig_relativePointerEventAction_ = NULL;

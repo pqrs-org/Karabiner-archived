@@ -133,31 +133,34 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = false;
 
     // ------------------------------------------------------------
-    {
-      KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-      if (callback != EventInputQueue::push_KeyboardEventCallback) {
-        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (KeyboardEventCallback) device_:%p\n", device_);
+    // Do not replace _keyboardEventAction if it is already replaced
+    // (orig_keyboardEventAction_ != NULL) to avoid replacing competition
+    // between other kernel extensions.
 
-        orig_keyboardEventAction_ = callback;
-        orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
+    if (! orig_keyboardEventAction_) {
+      IOLOG_DEBUG("HookedKeyboard::replaceEventAction (KeyboardEventCallback) device_:%p\n", device_);
 
-        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(EventInputQueue::push_KeyboardEventCallback);
+      orig_keyboardEventAction_ = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
+      orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
 
-        result = true;
-      }
+      kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(EventInputQueue::push_KeyboardEventCallback);
+
+      result = true;
     }
-    {
-      UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
-      if (callback != EventInputQueue::push_UpdateEventFlagsCallback) {
-        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
 
-        orig_updateEventFlagsAction_ = callback;
-        orig_updateEventFlagsTarget_ = kbd->_updateEventFlagsTarget;
+    // Do not replace _updateEventFlagsAction if it is already replaced
+    // (orig_updateEventFlagsAction_ != NULL) to avoid replacing competition
+    // between other kernel extensions.
 
-        kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(EventInputQueue::push_UpdateEventFlagsCallback);
+    if (! orig_updateEventFlagsAction_) {
+      IOLOG_DEBUG("HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
 
-        result = true;
-      }
+      orig_updateEventFlagsAction_ = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
+      orig_updateEventFlagsTarget_ = kbd->_updateEventFlagsTarget;
+
+      kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(EventInputQueue::push_UpdateEventFlagsCallback);
+
+      result = true;
     }
 
     return result;
@@ -174,25 +177,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = false;
 
     // ----------------------------------------
-    {
-      KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-      if (callback == EventInputQueue::push_KeyboardEventCallback) {
-        IOLOG_DEBUG("HookedKeyboard::restoreEventAction (KeyboardEventCallback) device_:%p\n", device_);
+    if (orig_keyboardEventAction_) {
+      IOLOG_DEBUG("HookedKeyboard::restoreEventAction (KeyboardEventCallback) device_:%p\n", device_);
 
-        kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
+      kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
 
-        result = true;
-      }
+      result = true;
     }
-    {
-      UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
-      if (callback == EventInputQueue::push_UpdateEventFlagsCallback) {
-        IOLOG_DEBUG("HookedKeyboard::restoreEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
+    if (orig_updateEventFlagsAction_) {
+      IOLOG_DEBUG("HookedKeyboard::restoreEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
 
-        kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(orig_updateEventFlagsAction_);
+      kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(orig_updateEventFlagsAction_);
 
-        result = true;
-      }
+      result = true;
     }
 
     orig_keyboardEventAction_ = NULL;
