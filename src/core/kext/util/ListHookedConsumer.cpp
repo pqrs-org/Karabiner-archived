@@ -90,18 +90,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return false;
 
-    KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
-    if (callback == EventInputQueue::push_KeyboardSpecialEventCallback) return false;
+    bool result = false;
 
     // ------------------------------------------------------------
-    IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p\n", device_);
+    // Do not replace _keyboardSpecialEventAction if it is already replaced
+    // (orig_keyboardSpecialEventAction_ != NULL) to avoid replacing competition
+    // between other kernel extensions.
 
-    orig_keyboardSpecialEventAction_ = callback;
-    orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
+    if (! orig_keyboardSpecialEventAction_) {
+      IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p\n", device_);
 
-    kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(EventInputQueue::push_KeyboardSpecialEventCallback);
+      orig_keyboardSpecialEventAction_ = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
+      orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
 
-    return true;
+      kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(EventInputQueue::push_KeyboardSpecialEventCallback);
+
+      result = true;
+    }
+
+    return result;
   }
 
   bool
@@ -112,18 +119,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
     if (! kbd) return false;
 
-    KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
-    if (callback != EventInputQueue::push_KeyboardSpecialEventCallback) return false;
+    bool result = false;
 
     // ----------------------------------------
-    IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p\n", device_);
+    if (orig_keyboardSpecialEventAction_) {
+      IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p\n", device_);
 
-    kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction_);
+      kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction_);
+
+      result = true;
+    }
 
     orig_keyboardSpecialEventAction_ = NULL;
     orig_keyboardSpecialEventTarget_ = NULL;
 
-    return true;
+    return result;
   }
 
   // ======================================================================
