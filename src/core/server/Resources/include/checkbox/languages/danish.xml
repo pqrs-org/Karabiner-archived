@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Danish</name>
+    <item>
+      <name>Swap Dollar($) and Less-Than(&lt;)</name>
+      <identifier>remap.danish_swap_dollar_and_lessthan</identifier>
+      <inputsource_only>DANISH</inputsource_only>
+      <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::DANISH_LESS_THAN</autogen>
+      <autogen>__KeyToKey__ KeyCode::DANISH_LESS_THAN, KeyCode::DANISH_DOLLAR</autogen>
+    </item>
+  </item>
+</root>
