@@ -166,6 +166,9 @@ PC_SCROLLLOCK     0x6b
 // ----------------------------------------
 // international
 
+DANISH_DOLLAR 0xa
+DANISH_LESS_THAN 0x32
+
 FRENCH_DOLLAR      0x1e
 FRENCH_EQUAL       0x2c
 FRENCH_HAT         0x21
