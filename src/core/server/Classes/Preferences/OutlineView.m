@@ -176,7 +176,13 @@
     NSButtonCell* cell = [tableColumn dataCell];
     if (! cell) return nil;
 
-    [cell setTitle:[item objectForKey:@"name"]];
+    if ([[item objectForKey:@"style"] isEqualToString:@"caution"]) {
+      NSDictionary* attributes = @ { NSForegroundColorAttributeName :[NSColor redColor] };
+      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[item objectForKey:@"name"]
+                                                                attributes:attributes] autorelease]];
+    } else {
+      [cell setTitle:[item objectForKey:@"name"]];
+    }
 
     if (! identifier || [identifier hasPrefix:@"notsave."]) {
       [cell setImagePosition:NSNoImage];
