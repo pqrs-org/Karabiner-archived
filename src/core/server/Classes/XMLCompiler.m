@@ -60,6 +60,18 @@
   return array;
 }
 
+- (void) insert_caution_into_preferencepane_checkbox:(NSString*)message
+{
+  NSUInteger height = [[message componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] count];
+  NSDictionary* dict = @ {
+    @"name" : message,
+    @"height" :[NSNumber numberWithInteger:height],
+    @"string_for_filter" :[message lowercaseString],
+    @"style" : @"caution",
+  };
+  [preferencepane_checkbox_ insertObject:dict atIndex:0];
+}
+
 + (NSMutableArray*) build_preferencepane_number:(const pqrs_xml_compiler_preferences_number_node_tree*)node_tree
 {
   if (! node_tree) return nil;
@@ -212,10 +224,13 @@
   }
 
   if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {
+    NSString* message = [self preferencepane_error_message];
+    [self insert_caution_into_preferencepane_checkbox:message];
+
     NSAlert* alert = [[NSAlert new] autorelease];
     [alert setMessageText:@"KeyRemap4MacBook Error"];
     [alert addButtonWithTitle:@"Close"];
-    [alert setInformativeText:[self preferencepane_error_message]];
+    [alert setInformativeText:message];
 
     [alert runModal];
   }
