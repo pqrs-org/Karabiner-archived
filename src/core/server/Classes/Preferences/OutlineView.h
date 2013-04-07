@@ -8,7 +8,6 @@
 @interface OutlineView : NSObject {
   @protected
   NSArray* datasource_;
-  NSString* error_message_;
   BOOL ischeckbox_;
 
   IBOutlet NSOutlineView* outlineview_;
