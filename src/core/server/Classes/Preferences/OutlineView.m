@@ -58,7 +58,6 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   [datasource_ release];
-  [error_message_ release];
 
   [super dealloc];
 }
@@ -69,10 +68,6 @@
     if (datasource_) {
       [datasource_ release];
       datasource_ = nil;
-    }
-    if (error_message_) {
-      [error_message_ release];
-      error_message_ = nil;
     }
   }
 
@@ -86,25 +81,12 @@
   if (datasource_) {
     [datasource_ retain];
   }
-
-  error_message_ = [xmlCompiler_ preferencepane_error_message];
-  if (error_message_) {
-    [error_message_ retain];
-  }
 }
 
 /* ---------------------------------------------------------------------- */
 - (NSUInteger) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
 {
   [self load:NO];
-
-  // ----------------------------------------
-  if (error_message_ && ischeckbox_) {
-    if (! item) {
-      return 1;
-    }
-    return 0;
-  }
 
   // ----------------------------------------
   NSArray* a = nil;
@@ -126,14 +108,6 @@
   [self load:NO];
 
   // ----------------------------------------
-  if (error_message_ && ischeckbox_) {
-    if (! item && idx == 0) {
-      return error_message_;
-    }
-    return nil;
-  }
-
-  // ----------------------------------------
   NSArray* a = nil;
 
   // root object
@@ -151,25 +125,12 @@
 
 - (BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item
 {
-  if (error_message_ && ischeckbox_) {
-    return NO;
-  }
-
-  // ----------------------------------------
   NSArray* a = [item objectForKey:@"children"];
   return a ? YES : NO;
 }
 
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  if (error_message_ && ischeckbox_) {
-    NSButtonCell* cell = [tableColumn dataCell];
-    [cell setTitle:error_message_];
-    [cell setImagePosition:NSNoImage];
-    return nil;
-  }
-
-  // ----------------------------------------
   NSString* identifier = [item objectForKey:@"identifier"];
 
   if (ischeckbox_) {
@@ -225,11 +186,6 @@
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
-  if (error_message_ && ischeckbox_) {
-    return [outlineView rowHeight] * 20;
-  }
-
-  // ----------------------------------------
   NSNumber* number = [item objectForKey:@"height"];
   if (! number || [number intValue] == 0) {
     number = [NSNumber numberWithDouble:[outlineView rowHeight]];
@@ -241,11 +197,6 @@
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  if (error_message_ && ischeckbox_) {
-    return;
-  }
-
-  // ----------------------------------------
   NSString* identifier = [item objectForKey:@"identifier"];
 
   if (ischeckbox_) {
