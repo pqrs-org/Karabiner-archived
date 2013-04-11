@@ -46,6 +46,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void getDeviceInformation(BridgeDeviceInformation& out, size_t index);
 
+    static void initializeAll(void);
+    static void terminateAll(void);
+    static void refreshAll(void);
+
   protected:
     ListHookedDevice(void) : last_(NULL), list_(NULL) {}
     virtual ~ListHookedDevice(void) {}
