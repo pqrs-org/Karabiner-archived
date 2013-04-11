@@ -93,19 +93,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = false;
 
     // ------------------------------------------------------------
-    // Do not replace _keyboardSpecialEventAction if it is already replaced
-    // (orig_keyboardSpecialEventAction_ != NULL) to avoid replacing competition
-    // between other kernel extensions.
+    {
+      // We need to replace _keyboardSpecialEventAction until it points KeyRemap4MacBook's callback function.
+      // (A reason is described at ListHookedKeyboard::replaceEventAction.)
+      KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
+      if (callback != EventInputQueue::push_KeyboardSpecialEventCallback) {
+        IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p\n", device_);
 
-    if (! orig_keyboardSpecialEventAction_) {
-      IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p\n", device_);
+        orig_keyboardSpecialEventAction_ = callback;
+        orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
 
-      orig_keyboardSpecialEventAction_ = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
-      orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
+        kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(EventInputQueue::push_KeyboardSpecialEventCallback);
 
-      kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(EventInputQueue::push_KeyboardSpecialEventCallback);
-
-      result = true;
+        result = true;
+      }
     }
 
     return result;
@@ -122,7 +123,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool result = false;
 
     {
-      // Compare callback. (See ListHookedKeyboard::restoreEventAction for reason.)
       KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
       if (callback == EventInputQueue::push_KeyboardSpecialEventCallback) {
         IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p\n", device_);
