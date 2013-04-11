@@ -41,9 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::initialize();
       ButtonStatus::initialize();
 
-      ListHookedKeyboard::instance().initialize();
-      ListHookedConsumer::instance().initialize();
-      ListHookedPointing::instance().initialize();
+      ListHookedDevice::initializeAll();
 
       workLoop = IOWorkLoop::workLoop();
       if (! workLoop) {
@@ -70,9 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       GlobalLock::terminate();
 
       // ------------------------------------------------------------
-      ListHookedKeyboard::instance().terminate();
-      ListHookedConsumer::instance().terminate();
-      ListHookedPointing::instance().terminate();
+      ListHookedDevice::terminateAll();
 
       // ------------------------------------------------------------
       // call terminate

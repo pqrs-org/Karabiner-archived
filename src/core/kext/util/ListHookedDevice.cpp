@@ -1,6 +1,9 @@
 #include <IOKit/hid/IOHIDKeys.h>
 #include "Config.hpp"
 #include "ListHookedDevice.hpp"
+#include "ListHookedKeyboard.hpp"
+#include "ListHookedConsumer.hpp"
+#include "ListHookedPointing.hpp"
 #include "NumHeldDownKeys.hpp"
 #include "strlcpy_utf8.hpp"
 
@@ -309,5 +312,29 @@ namespace org_pqrs_KeyRemap4MacBook {
     out.productID  = (p->deviceIdentifier_).getProduct().get();
     out.locationID = (p->deviceIdentifier_).getLocation().get();
     out.isFound = 1;
+  }
+
+  void
+  ListHookedDevice::initializeAll(void)
+  {
+    ListHookedKeyboard::instance().initialize();
+    ListHookedConsumer::instance().initialize();
+    ListHookedPointing::instance().initialize();
+  }
+
+  void
+  ListHookedDevice::terminateAll(void)
+  {
+    ListHookedKeyboard::instance().terminate();
+    ListHookedConsumer::instance().terminate();
+    ListHookedPointing::instance().terminate();
+  }
+
+  void
+  ListHookedDevice::refreshAll(void)
+  {
+    ListHookedKeyboard::instance().refresh();
+    ListHookedConsumer::instance().refresh();
+    ListHookedPointing::instance().refresh();
   }
 }

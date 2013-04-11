@@ -373,6 +373,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       if (config) {
         if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+
+          org_pqrs_KeyRemap4MacBook::ListHookedDevice::refreshAll();
         }
       }
       break;
