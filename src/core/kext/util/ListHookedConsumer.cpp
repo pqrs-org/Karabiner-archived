@@ -121,13 +121,16 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool result = false;
 
-    // ----------------------------------------
-    if (orig_keyboardSpecialEventAction_) {
-      IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p\n", device_);
+    {
+      // Compare callback. (See ListHookedKeyboard::restoreEventAction for reason.)
+      KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
+      if (callback == EventInputQueue::push_KeyboardSpecialEventCallback) {
+        IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p\n", device_);
 
-      kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction_);
+        kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction_);
 
-      result = true;
+        result = true;
+      }
     }
 
     orig_keyboardSpecialEventAction_ = NULL;
