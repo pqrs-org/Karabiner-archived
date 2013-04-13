@@ -248,6 +248,15 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_c
   return identifier.c_str();
 }
 
+const char*
+pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(const pqrs_xml_compiler_preferences_checkbox_node_tree* p)
+{
+  auto node_tree = cast_to_preferences_checkbox_node_tree(p);
+  if (! node_tree) return nullptr;
+
+  return (node_tree->get_node()).get_style().c_str();
+}
+
 // ------------------------------------------------------------
 const pqrs_xml_compiler_preferences_number_node_tree*
 pqrs_xml_compiler_get_preferences_number_node_tree_root(const pqrs_xml_compiler* p)

@@ -11,6 +11,15 @@ namespace pqrs {
       }
       name_ += boost::trim_copy(it.get_data());
 
+      // style attribute
+      {
+        auto attr_style = it.get_optional("<xmlattr>.style");
+        if (attr_style) {
+          style_ = *attr_style;
+          boost::trim(style_);
+        }
+      }
+
       return true;
 
     } else if (it.get_tag_name() == "appendix") {

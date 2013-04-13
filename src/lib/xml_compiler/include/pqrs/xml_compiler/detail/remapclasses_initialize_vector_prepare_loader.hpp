@@ -42,6 +42,7 @@ public:
           // preferences_node_tree
           assert(preferences_node_tree_);
           std::tr1::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
+          assert(ptr);
 
           for (const auto& child : it.children_extracted_ptree()) {
             ptr->handle_item_child(child);

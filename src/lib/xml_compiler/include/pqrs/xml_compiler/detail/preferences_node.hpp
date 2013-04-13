@@ -12,6 +12,7 @@ public:
   int get_name_line_count(void) const { return name_line_count_; }
   const std::string& get_identifier(void) const { return identifier_; }
   int get_default_value(void) const { return default_value_; }
+  const std::string& get_style(void) const { return style_; }
 
 protected:
   bool handle_name_and_appendix_(const extracted_ptree::node& it);
@@ -20,6 +21,7 @@ protected:
   int name_line_count_;
   std::string identifier_;
   int default_value_;
+  std::string style_;
 };
 
 class preferences_checkbox_node : public preferences_node {
