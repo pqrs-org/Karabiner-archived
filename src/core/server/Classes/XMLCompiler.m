@@ -48,6 +48,12 @@
         [dict setObject:[NSString stringWithUTF8String:name_for_filter] forKey:@"string_for_filter"];
       }
     }
+    {
+      const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(child);
+      if (style) {
+        [dict setObject:[NSString stringWithUTF8String:style] forKey:@"style"];
+      }
+    }
 
     NSMutableArray* a = [self build_preferencepane_checkbox:child];
     if (a) {
