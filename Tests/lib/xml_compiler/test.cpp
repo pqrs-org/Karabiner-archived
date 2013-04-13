@@ -21,6 +21,8 @@ TEST(pqrs_xml_compiler, reload)
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_passthrough"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_remap_sample"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_include_test"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_style_test_important"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_style_test_caution"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_replacement"));
     space_is_ignored = v;
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_space_is_ignored"));
@@ -241,8 +243,20 @@ TEST(pqrs_xml_compiler, reload)
 
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());
-  auto node_ptr = (*(node_tree.get_children()))[0];
-  EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
+  {
+    auto node_ptr = (*(node_tree.get_children()))[0];
+    EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
+  }
+  {
+    auto node_ptr = (*(node_tree.get_children()))[1];
+    EXPECT_EQ("style test: important", node_ptr->get_node().get_name());
+    EXPECT_EQ("important", node_ptr->get_node().get_style());
+  }
+  {
+    auto node_ptr = (*(node_tree.get_children()))[2];
+    EXPECT_EQ("style test: caution", node_ptr->get_node().get_name());
+    EXPECT_EQ("caution", node_ptr->get_node().get_style());
+  }
 
   {
     std::vector<uint32_t> actual;

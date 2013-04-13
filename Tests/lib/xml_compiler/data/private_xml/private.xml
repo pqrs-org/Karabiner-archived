@@ -20,6 +20,18 @@
   <symbol_map type="KeyCode" name="MY_INCLUDE_TEST_456" value="{{ MY_INCLUDE_TEST }}" />
 
   <!-- ============================================================ -->
+  <!-- style -->
+  <item>
+    <name style="important">style test: important</name>
+    <identifier>private.style_test_important</identifier>
+  </item>
+
+  <item>
+    <name style="caution">style test: caution</name>
+    <identifier>private.style_test_caution</identifier>
+  </item>
+
+  <!-- ============================================================ -->
   <!-- symbol_map -->
 
   <include path="symbol_map.xml" />
