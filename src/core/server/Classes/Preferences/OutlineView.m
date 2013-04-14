@@ -137,14 +137,14 @@
     NSButtonCell* cell = [tableColumn dataCell];
     if (! cell) return nil;
 
-    NSColor* color = nil;
+    NSDictionary* attributes = nil;
     if ([[item objectForKey:@"style"] isEqualToString:@"caution"]) {
-      color = [NSColor redColor];
+      attributes = @ { NSForegroundColorAttributeName : [NSColor whiteColor],
+                       NSBackgroundColorAttributeName : [NSColor redColor], };
     } else if ([[item objectForKey:@"style"] isEqualToString:@"important"]) {
-      color = [NSColor magentaColor];
+      attributes = @ { NSForegroundColorAttributeName : [NSColor redColor] };
     }
-    if (color) {
-      NSDictionary* attributes = @ { NSForegroundColorAttributeName : color };
+    if (attributes) {
       [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[item objectForKey:@"name"]
                                                                 attributes:attributes] autorelease]];
     } else {
