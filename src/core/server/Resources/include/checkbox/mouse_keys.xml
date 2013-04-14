@@ -3,6 +3,12 @@
   <item>
     <name>Mouse Keys</name>
     <item>
+      <name style="important">Important:</name>
+      <appendix>You need at least one pointing device that has been remapped in order to use Mouse Keys feature.</appendix>
+      <appendix>Therefore, Mouse Keys does not work with "General > Don't remap any pointing devices".</appendix>
+    </item>
+
+    <item>
       <name>Arrow(Up/Down/Left/Right) Keys to Mouse Keys</name>
       <identifier>remap.mousekeys_arrow</identifier>
       <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
