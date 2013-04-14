@@ -3,7 +3,7 @@
   <item>
     <name>Change Eject Key</name>
     <item>
-      <name>Note:</name>
+      <name style="important">Important:</name>
       <appendix>Eject key has a delay.</appendix>
       <appendix>You need to press eject key for a few seconds.</appendix>
       <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
