@@ -18,6 +18,7 @@
 		34207C061666209F00E7FD08 /* OutlineView_number.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C001666209F00E7FD08 /* OutlineView_number.m */; };
 		34207C071666209F00E7FD08 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C021666209F00E7FD08 /* OutlineView.m */; };
 		34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C041666209F00E7FD08 /* TableView_configlist.m */; };
+		3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3429B705171A990000C7DB64 /* EnvironmentChecker.m */; };
 		342D245E16A68C4E00EF070F /* IOHIDPostEventWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 342D245D16A68C4E00EF070F /* IOHIDPostEventWrapper.m */; };
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
@@ -104,6 +105,8 @@
 		34207C021666209F00E7FD08 /* OutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineView.m; path = Classes/Preferences/OutlineView.m; sourceTree = "<group>"; };
 		34207C031666209F00E7FD08 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableView_configlist.h; path = Classes/Preferences/TableView_configlist.h; sourceTree = "<group>"; };
 		34207C041666209F00E7FD08 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableView_configlist.m; path = Classes/Preferences/TableView_configlist.m; sourceTree = "<group>"; };
+		3429B704171A990000C7DB64 /* EnvironmentChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvironmentChecker.h; path = Classes/EnvironmentChecker.h; sourceTree = "<group>"; };
+		3429B705171A990000C7DB64 /* EnvironmentChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvironmentChecker.m; path = Classes/EnvironmentChecker.m; sourceTree = "<group>"; };
 		342D245C16A68C4E00EF070F /* IOHIDPostEventWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOHIDPostEventWrapper.h; path = Classes/IOHIDPostEventWrapper.h; sourceTree = "<group>"; };
 		342D245D16A68C4E00EF070F /* IOHIDPostEventWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOHIDPostEventWrapper.m; path = Classes/IOHIDPostEventWrapper.m; sourceTree = "<group>"; };
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 				3401D0DE16586C0700CF962F /* KeyRemap4MacBookProtocol.h */,
 				3401D0DB1657DD4800CF962F /* ClientForKernelspace.h */,
 				3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */,
+				3429B704171A990000C7DB64 /* EnvironmentChecker.h */,
+				3429B705171A990000C7DB64 /* EnvironmentChecker.m */,
 				3401D0D81657CE6A00CF962F /* Updater.h */,
 				3401D0D91657CE6A00CF962F /* Updater.m */,
 				3401D0D41657A18C00CF962F /* ServerForUserspace.h */,
@@ -437,6 +442,7 @@
 				34A5572F16EA075E000E5399 /* StatusMessageView.m in Sources */,
 				34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */,
 				34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */,
+				3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
