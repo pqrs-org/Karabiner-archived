@@ -139,10 +139,10 @@
 
     NSDictionary* attributes = nil;
     if ([[item objectForKey:@"style"] isEqualToString:@"caution"]) {
-      attributes = @ { NSForegroundColorAttributeName : [NSColor whiteColor],
-                       NSBackgroundColorAttributeName : [NSColor redColor], };
+      attributes = @ { NSForegroundColorAttributeName :[NSColor blackColor],
+                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.4f], };
     } else if ([[item objectForKey:@"style"] isEqualToString:@"important"]) {
-      attributes = @ { NSForegroundColorAttributeName : [NSColor redColor] };
+      attributes = @ { NSForegroundColorAttributeName :[NSColor redColor] };
     }
     if (attributes) {
       [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[item objectForKey:@"name"]
