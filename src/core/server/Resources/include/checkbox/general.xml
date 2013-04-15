@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <root>
+  <item hidden="true">
+    <name>Conflicted applications are detected: keyboard device</name>
+    <identifier essential="true">notsave.automatically_ignore_keyboard_device</identifier>
+  </item>
+  <item hidden="true">
+    <name>Conflicted applications are detected: pointing device</name>
+    <identifier essential="true">notsave.automatically_ignore_pointing_device</identifier>
+  </item>
+
   <item>
     <name>General</name>
     <item>
