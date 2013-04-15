@@ -162,6 +162,8 @@
 
 - (void) setValueForName:(int)newval forName:(NSString*)name
 {
+  int oldval = [self value:name];
+
   NSString* identifier = [self configlist_selectedIdentifier];
   if (! identifier) {
     NSLog(@"[ERROR] %s identifier == nil", __FUNCTION__);
@@ -196,7 +198,9 @@
   [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   // [[NSUserDefaults standardUserDefaults] synchronize];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+  if (oldval != newval) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+  }
 }
 
 - (void) clearNotSave
@@ -208,15 +212,20 @@
     if (dict) {
       NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
 
+      BOOL changed = NO;
+
       for (NSString* key in dict) {
         if ([key hasPrefix:@"notsave."]) {
           [md removeObjectForKey:key];
+          changed = YES;
         }
       }
 
       [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
 
-      [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+      if (changed) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+      }
     }
   }
 }

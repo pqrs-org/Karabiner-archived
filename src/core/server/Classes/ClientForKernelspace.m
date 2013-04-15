@@ -1,4 +1,5 @@
 #import "ClientForKernelspace.h"
+#import "EnvironmentChecker.h"
 #import "IOHIDPostEventWrapper.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
@@ -168,6 +169,16 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 - (void) send_config_to_kext
 {
+  // ------------------------------------------------------------
+  // Set notsave.automatically_ignore_* before sending config into kext.
+  if ([EnvironmentChecker checkDoubleCommand]) {
+    [preferencesManager setValueForName:1 forName:@"notsave.automatically_ignore_keyboard_device"];
+  }
+  if ([EnvironmentChecker checkSmoothMouse]) {
+    [preferencesManager setValueForName:1 forName:@"notsave.automatically_ignore_pointing_device"];
+  }
+
+  // ------------------------------------------------------------
   NSArray* essential_config = [preferencesManager essential_config];
   if (! essential_config) {
     NSLog(@"[WARNING] essential_config == nil.");
