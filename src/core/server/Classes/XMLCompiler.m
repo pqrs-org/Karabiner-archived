@@ -245,10 +245,10 @@
 
   // ------------------------------------------------------------
   if ([EnvironmentChecker checkDoubleCommand]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\nKeyRemap4MacBook does not modify keyboard device events.\n"];
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\n\nKeyRemap4MacBook ignores keyboard devices.\n(You can use KeyRemap4MacBook as a pointing device remapper.)\n"];
   }
   if ([EnvironmentChecker checkSmoothMouse]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\nKeyRemap4MacBook does not modify pointing device events.\n"];
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKeyRemap4MacBook ignores pointing devices.\n(You can use KeyRemap4MacBook as a keyboard device remapper.)\n"];
   }
 
   // ------------------------------------------------------------
