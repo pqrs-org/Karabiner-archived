@@ -1,4 +1,5 @@
 #import "ClientForKernelspace.h"
+#import "EnvironmentChecker.h"
 #import "NotificationKeys.h"
 #import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
@@ -229,8 +230,9 @@
     }
   }
 
+  // ------------------------------------------------------------
   if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {
-    NSString* message = [self preferencepane_error_message];
+    NSString* message = [NSString stringWithFormat:@"%@\n", [self preferencepane_error_message]];
     [self insert_caution_into_preferencepane_checkbox:message];
 
     NSAlert* alert = [[NSAlert new] autorelease];
@@ -241,6 +243,15 @@
     [alert runModal];
   }
 
+  // ------------------------------------------------------------
+  if ([EnvironmentChecker checkDoubleCommand]) {
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\nKeyRemap4MacBook does not modify keyboard device events.\n"];
+  }
+  if ([EnvironmentChecker checkSmoothMouse]) {
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\nKeyRemap4MacBook does not modify pointing device events.\n"];
+  }
+
+  // ------------------------------------------------------------
   // We need to send a notification outside synchronized block to prevent lock.
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
 }
