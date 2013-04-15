@@ -232,7 +232,7 @@
 
   // ------------------------------------------------------------
   if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {
-    NSString* message = [NSString stringWithFormat:@"%@\n", [self preferencepane_error_message]];
+    NSString* message = [self preferencepane_error_message];
     [self insert_caution_into_preferencepane_checkbox:message];
 
     NSAlert* alert = [[NSAlert new] autorelease];
@@ -245,10 +245,10 @@
 
   // ------------------------------------------------------------
   if ([EnvironmentChecker checkDoubleCommand]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\n\nKeyRemap4MacBook ignores keyboard devices.\n(You can use KeyRemap4MacBook as a pointing device remapper.)\n"];
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\n\nKeyRemap4MacBook ignores keyboard devices.\n(You can use KeyRemap4MacBook as a pointing device remapper.)"];
   }
   if ([EnvironmentChecker checkSmoothMouse]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKeyRemap4MacBook ignores pointing devices.\n(You can use KeyRemap4MacBook as a keyboard device remapper.)\n"];
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKeyRemap4MacBook ignores pointing devices.\n(You can use KeyRemap4MacBook as a keyboard device remapper.)"];
   }
 
   // ------------------------------------------------------------

@@ -142,10 +142,12 @@
       attributes = @ { NSForegroundColorAttributeName :[NSColor blackColor],
                        NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.4f], };
     } else if ([[item objectForKey:@"style"] isEqualToString:@"important"]) {
-      attributes = @ { NSForegroundColorAttributeName :[NSColor redColor] };
+      attributes = @ { NSForegroundColorAttributeName :[NSColor blackColor],
+                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.4f], };
     }
     if (attributes) {
-      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[item objectForKey:@"name"]
+      // append "\n" for background color.
+      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", [item objectForKey:@"name"]]
                                                                 attributes:attributes] autorelease]];
     } else {
       [cell setTitle:[item objectForKey:@"name"]];
@@ -198,7 +200,14 @@
   } else {
     number = [NSNumber numberWithDouble:([number intValue] * (CGFloat)([outlineView rowHeight]))];
   }
-  return [number floatValue];
+
+  CGFloat suppliment = 0;
+  if ([[item objectForKey:@"style"] length] > 0) {
+    // for appended "\n"
+    suppliment = [outlineView rowHeight] * 1;
+  }
+
+  return [number floatValue] + suppliment;
 }
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
