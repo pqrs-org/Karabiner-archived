@@ -576,7 +576,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name1", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("Do not use '{{' and '}}' within <replacementname>:\n\nVI{{_J", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(10): unexpected end of data",
+              xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
   {
