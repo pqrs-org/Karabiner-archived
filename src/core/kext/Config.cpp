@@ -78,11 +78,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedDevice::refreshAll();
 
     // ----------------------------------------
-    // reset sysctl_debug*
+    // reset sysctl_debug* and essential_config_.
     if (newvalue == false) {
       sysctl_debug          = 0;
       sysctl_debug_devel    = 0;
       sysctl_debug_pointing = 0;
+
+      load_essential_config_default();
     }
   }
 
