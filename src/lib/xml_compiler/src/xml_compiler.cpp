@@ -5,6 +5,13 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
+  static void
+  append_environments_to_replacement(pqrs::string::replacement& r) {
+    if (r.find("ENV_HOME") == r.end()) {
+      r["ENV_HOME"] = std::getenv("HOME");
+    }
+  }
+
   void
   xml_compiler::reload(void)
   {
@@ -29,10 +36,12 @@ namespace pqrs {
       {
         replacement_loader loader(*this, replacement_);
 
+        pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
+        append_environments_to_replacement(dummy);
+
         // private.xml
         {
           ptree_ptr ptree_ptr;
-          pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
           read_xml_(ptree_ptr, private_xml_file_path, dummy);
           if (ptree_ptr) {
             loader.traverse(make_extracted_ptree(*ptree_ptr, private_xml_file_path));
@@ -41,13 +50,14 @@ namespace pqrs {
         // replacementdef.xml
         {
           ptree_ptr ptree_ptr;
-          pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
           std::string xml_file_path = make_file_path(system_xml_directory_,  "replacementdef.xml");
           read_xml_(ptree_ptr, xml_file_path, dummy);
           if (ptree_ptr) {
             loader.traverse(make_extracted_ptree(*ptree_ptr, xml_file_path));
           }
         }
+
+        append_environments_to_replacement(replacement_);
       }
 
       // ------------------------------------------------------------

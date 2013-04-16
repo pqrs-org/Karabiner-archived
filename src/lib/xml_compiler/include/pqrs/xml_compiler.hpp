@@ -1,6 +1,7 @@
 #ifndef PQRS_XML_COMPILER_HPP
 #define PQRS_XML_COMPILER_HPP
 
+#include <cstdlib>
 #include <stack>
 #include <string>
 #include <stdexcept>
