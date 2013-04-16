@@ -29,6 +29,16 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_FILE_Desktop</name>
+    <url>file://{{ ENV_HOME }}/Desktop</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_FILE_Documents</name>
+    <url>file://{{ ENV_HOME }}/Documents</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Activity_Monitor</name>
     <url>file:///Applications/Utilities/Activity%20Monitor.app</url>
   </vkopenurldef>
