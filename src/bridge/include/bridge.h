@@ -59,7 +59,7 @@ enum {
   //             - BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN
   //             - BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN
   // Version 50: Changed interface of ElapsedTimeSinceLastPressedFilter::add.
-  // Version 51: Added an essential configurations. (general.automatically_ignore_*)
+  // Version 51: Added an essential configurations. (general.automatically_enable_*)
 
   BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 51,
 };
