@@ -61,7 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! Config::get_initialized()) {
       goto restore;
     }
-    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_notsave_automatically_ignore_keyboard_device)) {
+    if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_notsave_automatically_enable_keyboard_device)) {
       goto restore;
     }
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_thirdvendor_keyboard) &&

@@ -2,11 +2,14 @@
 <root>
   <item hidden="true">
     <name>Conflicted applications are detected: keyboard device</name>
-    <identifier essential="true">notsave.automatically_ignore_keyboard_device</identifier>
+    <!-- Ignore devices unless notsave.automatically_enable_* is set. -->
+    <!-- (We need to ignore devices when set_essential_config is failed.) -->
+    <identifier essential="true">notsave.automatically_enable_keyboard_device</identifier>
   </item>
   <item hidden="true">
     <name>Conflicted applications are detected: pointing device</name>
-    <identifier essential="true">notsave.automatically_ignore_pointing_device</identifier>
+    <!-- See description of notsave.automatically_enable_keyboard_device -->
+    <identifier essential="true">notsave.automatically_enable_pointing_device</identifier>
   </item>
 
   <item>

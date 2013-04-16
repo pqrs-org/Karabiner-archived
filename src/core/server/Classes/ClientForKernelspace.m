@@ -170,12 +170,22 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 - (void) send_config_to_kext
 {
   // ------------------------------------------------------------
-  // Set notsave.automatically_ignore_* before sending config into kext.
-  if ([EnvironmentChecker checkDoubleCommand]) {
-    [preferencesManager setValueForName:1 forName:@"notsave.automatically_ignore_keyboard_device"];
+  // Set notsave.automatically_enable_* before sending config into kext.
+  {
+    // set automatically_enable_keyboard_device
+    int newvalue = 1;
+    if ([EnvironmentChecker checkDoubleCommand]) {
+      newvalue = 0;
+    }
+    [preferencesManager setValueForName:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
   }
-  if ([EnvironmentChecker checkSmoothMouse]) {
-    [preferencesManager setValueForName:1 forName:@"notsave.automatically_ignore_pointing_device"];
+  {
+    // set automatically_enable_pointing_device
+    int newvalue = 1;
+    if ([EnvironmentChecker checkSmoothMouse]) {
+      newvalue = 0;
+    }
+    [preferencesManager setValueForName:newvalue forName:@"notsave.automatically_enable_pointing_device"];
   }
 
   // ------------------------------------------------------------
