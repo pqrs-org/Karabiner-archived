@@ -8,7 +8,11 @@ namespace pqrs {
   static void
   append_environments_to_replacement(pqrs::string::replacement& r) {
     if (r.find("ENV_HOME") == r.end()) {
-      r["ENV_HOME"] = std::getenv("HOME");
+      const char* p = std::getenv("HOME");
+      if (! p) {
+        p = "";
+      }
+      r["ENV_HOME"] = p;
     }
   }
 
