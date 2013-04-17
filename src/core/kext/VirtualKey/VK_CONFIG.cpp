@@ -55,35 +55,42 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (! remapclass) return false;
 
-      if (params.ex_iskeydown && params.repeat == false) {
-        /*  */ if (params.key == keycode_toggle) {
+      if (params.key == keycode_toggle) {
+        if (params.repeat) goto finish;
+
+        if (params.ex_iskeydown) {
           remapclass->toggleEnabled();
           goto refresh;
+        }
+        goto finish;
 
-        } else if (params.key == keycode_force_on) {
-          remapclass->setEnabled(true);
-          goto refresh;
+      } else if (params.key == keycode_force_on) {
+        if (params.repeat) goto finish;
 
-        } else if (params.key == keycode_force_off) {
-          remapclass->setEnabled(false);
-          goto refresh;
-
-        } else if (params.key == keycode_sync_keydownup) {
+        if (params.ex_iskeydown) {
           remapclass->setEnabled(true);
           goto refresh;
         }
+        goto finish;
 
-      } else if (params.eventType == EventType::UP) {
-        if (params.key == keycode_toggle ||
-            params.key == keycode_force_on ||
-            params.key == keycode_force_off) {
-          goto finish;
-        }
+      } else if (params.key == keycode_force_off) {
+        if (params.repeat) goto finish;
 
-        if (params.key == keycode_sync_keydownup) {
+        if (params.ex_iskeydown) {
           remapclass->setEnabled(false);
           goto refresh;
         }
+        goto finish;
+
+      } else if (params.key == keycode_sync_keydownup) {
+        if (params.repeat) goto finish;
+
+        if (params.ex_iskeydown) {
+          remapclass->setEnabled(true);
+        } else {
+          remapclass->setEnabled(false);
+        }
+        goto refresh;
       }
     }
 
