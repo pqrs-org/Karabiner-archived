@@ -193,7 +193,7 @@
             __KeyOverlaidModifierWithRepeat__
             KeyCode::A,
             KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config,
-            KeyCode::A
+            KeyCode::SPACE,
           </autogen>
         </item>
       </item>
