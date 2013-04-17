@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <root>
   <!-- ============================================================ -->
+  <!--
+      Environment variables which you can use without replacementdef:
+
+      - You can use {{ ENV_HOME }} to specify home directory.
+    -->
+
+  <!-- ============================================================ -->
   <!-- Common -->
   <replacementdef>
     <replacementname>VI_H</replacementname>
