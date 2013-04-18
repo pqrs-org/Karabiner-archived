@@ -140,10 +140,10 @@
     NSDictionary* attributes = nil;
     if ([[item objectForKey:@"style"] isEqualToString:@"caution"]) {
       attributes = @ { NSForegroundColorAttributeName :[NSColor blackColor],
-                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.4f], };
+                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f], };
     } else if ([[item objectForKey:@"style"] isEqualToString:@"important"]) {
       attributes = @ { NSForegroundColorAttributeName :[NSColor blackColor],
-                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.4f], };
+                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f], };
     }
     if (attributes) {
       // append "\n" for background color.
