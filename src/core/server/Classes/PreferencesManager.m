@@ -1,3 +1,4 @@
+#import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
@@ -162,6 +163,11 @@
 
 - (void) setValueForName:(int)newval forName:(NSString*)name
 {
+  [self setValueForName:newval forName:name sendConfigToKext:YES];
+}
+
+- (void) setValueForName:(int)newval forName:(NSString*)name sendConfigToKext:(BOOL)sendConfigToKext
+{
   int oldval = [self value:name];
 
   NSString* identifier = [self configlist_selectedIdentifier];
@@ -200,6 +206,9 @@
 
   if (oldval != newval) {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+    if (sendConfigToKext) {
+      [clientForKernelspace_ send_config_to_kext];
+    }
   }
 }
 
@@ -225,6 +234,7 @@
 
       if (changed) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+        [clientForKernelspace_ send_config_to_kext];
       }
     }
   }
@@ -317,6 +327,7 @@
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
   [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+  [clientForKernelspace_ send_config_to_kext];
 }
 
 - (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
