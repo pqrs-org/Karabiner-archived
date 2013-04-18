@@ -37,7 +37,14 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                          uint32_t configindex = option;
                          NSString* name = [[self xmlCompiler] identifier:(int)(configindex)];
                          if (name) {
-                           [[self preferencesManager] setValueForName:enabled forName:name];
+                           // Do not call send_config_to_kext here.
+                           //
+                           // When two settings are changed by KeyCode::VK_CONFIG simultaneously,
+                           // KeyCode::VK_CONFIG sends a user client notification and this code will be executed.
+                           // If we call send_config_to_kext at the first notification,
+                           // we overwrite the second setting state in kernel extension by user space state.
+
+                           [[self preferencesManager] setValueForName:enabled forName:name sendConfigToKext:NO];
                          }
                          break;
                        }
@@ -97,18 +104,6 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                  });
 }
 
-- (void) observer_PreferencesChanged:(NSNotification*)notification
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-                   [self send_config_to_kext];
-                   // Do not call [self set_initialized] here
-                   // because set_initialized will clear modifier lock.
-                   //
-                   // We need to preserve modifier lock here for
-                   // notsave.emacsmode_ex_controlSpace_core (and other settings).
-                 });
-}
-
 - (id) init
 {
   self = [super init];
@@ -125,9 +120,6 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigListChanged:)
                                                  name:kConfigListChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_PreferencesChanged:)
-                                                 name:kPreferencesChangedNotification object:nil];
   }
 
   return self;
