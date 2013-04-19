@@ -438,4 +438,9 @@
     <appname>ProPresenter5</appname>
     <equal>com.renewedvision.ProPresenter5</equal>
   </appdef>
+
+  <appdef>
+    <appname>muCommander</appname>
+    <equal>com.mucommander.muCommander</equal>
+  </appdef>
 </root>
