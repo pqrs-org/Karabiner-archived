@@ -500,7 +500,7 @@
       <autogen>__KeyToKey__ KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
-      <name>Use PC Style "Change Input Method" #1</name>
+      <name>Use PC Style "Change Input Source" #1</name>
       <appendix>Flip between input modes</appendix>
       <appendix>(Option_L+Shift_L to Command+Space)</appendix>
       <appendix>If you want to use Option_L+Shift_L as modifier, press Shift_L first. (then press Option_L.)</appendix>
@@ -508,7 +508,7 @@
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
-      <name>Use PC Style "Change Input Method" #2</name>
+      <name>Use PC Style "Change Input Source" #2</name>
       <appendix>Flip between input modes</appendix>
       <appendix>(Option+Shift_L to Command+Space)</appendix>
       <appendix>(Option+Shift_R to Command+Shift+Space)</appendix>
@@ -518,7 +518,7 @@
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
-      <name>Use PC Style "Change Input Method" #3</name>
+      <name>Use PC Style "Change Input Source" #3</name>
       <appendix>(Change control-shift to command-space)</appendix>
       <identifier>remap.pcstyle_changeinputmethod3</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
