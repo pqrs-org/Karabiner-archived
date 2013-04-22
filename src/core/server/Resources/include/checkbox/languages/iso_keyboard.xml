@@ -24,7 +24,7 @@
       <autogen>__KeyToKey__ KeyCode::QUOTE, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
-      <name>Swap the Tilda(~) key with Section (§)</name>
+      <name>Swap the Tilde(~) key with Section (§)</name>
       <identifier>remap.iso_swap_tilda_section</identifier>
       <autogen>__KeyToKey__ KeyCode::BACKQUOTE,  KeyCode::UK_SECTION</autogen>
       <autogen>__KeyToKey__ KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
