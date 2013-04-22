@@ -518,6 +518,14 @@
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, VK_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
+      <name>Use PC Style "Change Input Method" #3</name>
+      <appendix>(Change control-shift to command-space)</appendix>
+      <identifier>remap.pcstyle_changeinputmethod3</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_L, VK_CONTROL, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_R, VK_CONTROL, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
       <name>Use PC Style Alt+F4</name>
       <appendix>Disable Cmd+Q, remap Alt/Cmd+F4 to Cmd+Q</appendix>
       <identifier>remap.pcstyle_altf4</identifier>
