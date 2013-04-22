@@ -287,6 +287,25 @@ namespace org_pqrs_KeyRemap4MacBook {
       // handle KeyDown event.
       if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
 
+      // Check the first item in queue_ is target.
+      //
+      // We need to skip when the first item is not target.
+      // In this case:
+      //   - shift+[a+s] to space
+      //   - [a+s] to return
+      // When queue_ is [shift, a, s], we need to change these events to space.
+      // If we do not check the first item is target,
+      // [shift, a, s] will be changed to [shift, return].
+      // It's not intended.
+      for (size_t i = 0; i < fromInfo_.size(); ++i) {
+        if (fromInfo_[i].isTargetKeyDown(*front)) {
+          goto scan;
+        }
+      }
+      // skip
+      return false;
+
+    scan:
       // --------------------
       // scan items in queue_.
       while (downKeys_.size() < fromInfo_.size()) {
