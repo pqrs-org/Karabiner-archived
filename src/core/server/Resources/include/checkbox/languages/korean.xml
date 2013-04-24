@@ -3,21 +3,67 @@
   <item>
     <name>For Korean</name>
     <item>
-      <name>Change HanEng And Hanja Key</name>
+      <name>Make Command_R, Option_R as HanEng, Hanja keys (except virtual machine, RDC)</name>
       <item>
-        <name>Toggle HanEng Key(to Command_L(R)+Space)</name>
-        <identifier>remap.ksc_haneng2commandLSpace</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, KeyCode::COMMAND_L, KeyCode::SPACE, ModifierFlag::COMMAND_R</autogen>
+        <name>Command_R to Command+Space</name>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <identifier>remap.commandR2commandSpace</identifier>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
       </item>
       <item>
-        <name>Toggle Hanja Key(to Option_L(R)+Return)</name>
-        <identifier>remap.ksc_hanja2optionLreturn</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_R</autogen>
+        <name>Shift+Space to Command+Space</name>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <identifier>remap.shiftSpace2commandSpace</identifier>
+        <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
-        <name>Toggle Option_R(Alt_R) Key(to Option_L(R)+Enter)</name>
-        <identifier>remap.ksc_optionR2optionLreturn</identifier>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
+        <name>Option_R to Option+Return</name>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <identifier>remap.optionR2optionReturn</identifier>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
+      </item>
+    </item>
+    <item>
+      <name>Make Command_R, Option_R as HanEng, Hanja keys (only in virtual machine, RDC)</name>
+      <item>
+        <name>see https://github.com/niceview/KoreanKeyboard4MacBook</name>
+      </item>
+      <item>
+        <name>Command_R to HanEng / Option_R to Hanja</name>
+        <appendix>(it works with Key remapping in virtual machine.)</appendix>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <identifier>remap.commandR2ksc_haneng_optionR2ksc_hanja</identifier>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::JIS_KANA, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::JIS_EISUU, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>Command_R to Alt_R / Option_R to Ctrl_R</name>
+        <appendix>(it works with Korean Keyboard Type 1)</appendix>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <identifier>remap.commandR2optionR_optionR2commandR</identifier>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_R, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>Command_R to Shift+Space / Option_R to Ctrl+Space</name>
+        <appendix>(it works with Korean Keyboard Type 3)</appendix>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <identifier>remap.commandR2shiftSpace_optionR2commandSpace</identifier>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, VK_SHIFT, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SPACE, VK_CONTROL, Option::NOREPEAT</autogen>
+      </item>
+    </item>
+    <item>
+      <name>Make external keyboard HanEng, Hanja keys work in mac (except virtual machine, RDC)</name>
+      <item>
+        <name>HanEng Key to Command+Space</name>
+        <identifier>remap.ksc_haneng2commandSpace</identifier>
+        <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>Hanja Key to Option+Return</name>
+        <identifier>remap.ksc_hanja2optionReturn</identifier>
+        <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
       </item>
     </item>
   </item>
