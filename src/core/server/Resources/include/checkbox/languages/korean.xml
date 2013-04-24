@@ -7,19 +7,19 @@
       <item>
         <name>Command_R to Command+Space</name>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <identifier>remap.commandR2commandSpace</identifier>
+        <identifier>remap.ksc_commandR2commandSpace</identifier>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
       </item>
       <item>
         <name>Shift+Space to Command+Space</name>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <identifier>remap.shiftSpace2commandSpace</identifier>
+        <identifier>remap.ksc_shiftSpace2commandSpace</identifier>
         <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Option_R to Option+Return</name>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <identifier>remap.optionR2optionReturn</identifier>
+        <identifier>remap.ksc_optionR2optionReturn</identifier>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
       </item>
     </item>
@@ -32,7 +32,7 @@
         <name>Command_R to HanEng / Option_R to Hanja</name>
         <appendix>(it works with Key remapping in virtual machine.)</appendix>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <identifier>remap.commandR2ksc_haneng_optionR2ksc_hanja</identifier>
+        <identifier>remap.ksc_commandR2ksc_haneng_optionR2ksc_hanja</identifier>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::JIS_KANA, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::JIS_EISUU, Option::NOREPEAT</autogen>
       </item>
@@ -40,7 +40,7 @@
         <name>Command_R to Alt_R / Option_R to Ctrl_R</name>
         <appendix>(it works with Korean Keyboard Type 1)</appendix>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <identifier>remap.commandR2optionR_optionR2commandR</identifier>
+        <identifier>remap.ksc_commandR2optionR_optionR2commandR</identifier>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_R, Option::NOREPEAT</autogen>
       </item>
@@ -48,7 +48,7 @@
         <name>Command_R to Shift+Space / Option_R to Ctrl+Space</name>
         <appendix>(it works with Korean Keyboard Type 3)</appendix>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <identifier>remap.commandR2shiftSpace_optionR2commandSpace</identifier>
+        <identifier>remap.ksc_commandR2shiftSpace_optionR2commandSpace</identifier>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, VK_SHIFT, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SPACE, VK_CONTROL, Option::NOREPEAT</autogen>
       </item>
