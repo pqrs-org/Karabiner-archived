@@ -202,6 +202,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       RemapClassManager::remap_consumer(remapParams);
 
+      if (params.key == ConsumerKeyCode::POWER) {
+        CommonData::set_isPowerKeyChanged(remapParams.isremapped);
+      }
+
       // ----------------------------------------
       if (! remapParams.isremapped) {
         Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType, FlagStatus::makeFlags(), params.key,
