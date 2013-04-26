@@ -75,16 +75,14 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
 
           // This event show a shutdown dialog.
           if (! self.enqueued) {
-            NSLog(@"enqueue");
             self.enqueued = YES;
+
             self.shouldBlockPowerKeyKeyCode = YES;
             [[self clientForKernelspace] enqueue_power_key];
             event = NULL;
 
           } else {
             self.enqueued = NO;
-
-            NSLog(@"is_power_key_changed:%d", [[self clientForKernelspace] is_power_key_changed]);
 
             if ([[self clientForKernelspace] is_power_key_changed]) {
               self.shouldBlockPowerKeyKeyCode = YES;
@@ -96,8 +94,6 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
           break;
 
         case POWER_KEY_TYPE_KEYCODE:
-          NSLog(@"POWER_KEY_TYPE_KEYCODE");
-
           if (self.shouldBlockPowerKeyKeyCode) {
             event = NULL;
           }
