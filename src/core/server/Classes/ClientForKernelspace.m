@@ -293,4 +293,29 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   return information;
 }
 
+- (void) enqueue_power_key
+{
+  uint32_t dummy = 0;
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY;
+  bridgestruct.option = 0;
+  bridgestruct.data   = &dummy;
+  bridgestruct.size   = sizeof(dummy);
+
+  [userClient_userspace synchronized_communication:&bridgestruct];
+}
+
+- (BOOL) is_power_key_changed
+{
+  uint32_t changed = 0;
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED;
+  bridgestruct.option = 0;
+  bridgestruct.data   = &changed;
+  bridgestruct.size   = sizeof(changed);
+
+  [userClient_userspace synchronized_communication:&bridgestruct];
+  return changed;
+}
+
 @end
