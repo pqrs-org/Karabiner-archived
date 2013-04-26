@@ -464,10 +464,10 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 
     case BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY:
     {
-      org_pqrs_KeyRemap4MacBook::EventInputQueue::enqueue(org_pqrs_KeyRemap4MacBook::ConsumerKeyCode::POWER,
-                                                          org_pqrs_KeyRemap4MacBook::EventType::DOWN);
-      org_pqrs_KeyRemap4MacBook::EventInputQueue::enqueue(org_pqrs_KeyRemap4MacBook::ConsumerKeyCode::POWER,
-                                                          org_pqrs_KeyRemap4MacBook::EventType::UP);
+      org_pqrs_KeyRemap4MacBook::EventInputQueue::enqueueFromUserSpace(org_pqrs_KeyRemap4MacBook::ConsumerKeyCode::POWER,
+                                                                       org_pqrs_KeyRemap4MacBook::EventType::DOWN);
+      org_pqrs_KeyRemap4MacBook::EventInputQueue::enqueueFromUserSpace(org_pqrs_KeyRemap4MacBook::ConsumerKeyCode::POWER,
+                                                                       org_pqrs_KeyRemap4MacBook::EventType::UP);
       *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       break;
     }
