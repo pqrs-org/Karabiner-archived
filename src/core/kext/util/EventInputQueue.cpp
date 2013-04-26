@@ -299,7 +299,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Params_KeyboardSpecialEventCallback& params = *ptr;
     bool retainFlagStatusTemporaryCount = false;
-    EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, CommonData::getcurrent_deviceIdentifier());
+    enqueue_(params, retainFlagStatusTemporaryCount, CommonData::getcurrent_deviceIdentifier());
+
+    setTimer();
   }
 
   // ----------------------------------------------------------------------
