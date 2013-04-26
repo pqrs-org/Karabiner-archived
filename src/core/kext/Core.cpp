@@ -204,6 +204,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (params.key == ConsumerKeyCode::POWER) {
         CommonData::set_isPowerKeyChanged(remapParams.isremapped);
+        // We need to send power key event even if it is changed.
+        remapParams.isremapped = false;
       }
 
       // ----------------------------------------
