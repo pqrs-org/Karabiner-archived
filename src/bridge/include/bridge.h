@@ -61,8 +61,9 @@ enum {
   // Version 50: Changed interface of ElapsedTimeSinceLastPressedFilter::add.
   // Version 51: Added an essential configurations. (general.automatically_enable_*)
   // Version 52: Added BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY.
+  // Version 53: Added BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 52,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 53,
 };
 
 enum {
@@ -160,6 +161,7 @@ enum {
 
   // For power key remapping.
   BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY,
+  BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED,
 };
 
 enum {

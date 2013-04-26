@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   BridgeWorkSpaceData CommonData::current_workspacedata_;
   LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
   char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
-
+  bool CommonData::isPowerKeyChanged_;
   int CommonData::alloccount_;
 
   bool

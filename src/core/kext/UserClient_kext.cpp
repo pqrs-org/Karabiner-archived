@@ -471,5 +471,19 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       break;
     }
+
+    case BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED:
+    {
+      if (size != sizeof(uint32_t)) {
+        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED wrong 'size' parameter\n");
+      } else {
+        uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
+        if (p) {
+          *p = org_pqrs_KeyRemap4MacBook::CommonData::get_isPowerKeyChanged();
+          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+        }
+      }
+      break;
+    }
   }
 }
