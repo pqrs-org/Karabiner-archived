@@ -77,6 +77,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                                               OSObject* sender,
                                               void* refcon);
 
+    static void enqueue(ConsumerKeyCode keyCode, EventType eventType);
+
     // ------------------------------------------------------------
     class Item : public List::Item {
     public:
