@@ -34,5 +34,7 @@
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata;
 - (void) send_config_to_kext;
 - (NSArray*) device_information:(NSInteger)type;
+- (void) enqueue_power_key;
+- (BOOL) is_power_key_changed;
 
 @end
