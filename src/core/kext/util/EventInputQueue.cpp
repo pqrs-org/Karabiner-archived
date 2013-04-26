@@ -291,6 +291,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     setTimer();
   }
 
+  void
+  EventInputQueue::enqueue(ConsumerKeyCode keyCode, EventType eventType)
+  {
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType, 0, keyCode, false));
+    if (! ptr) return;
+
+    Params_KeyboardSpecialEventCallback& params = *ptr;
+    bool retainFlagStatusTemporaryCount = false;
+    EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, CommonData::getcurrent_deviceIdentifier());
+  }
+
   // ----------------------------------------------------------------------
   void
   EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
