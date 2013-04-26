@@ -294,7 +294,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventInputQueue::enqueueFromUserSpace(ConsumerKeyCode keyCode, EventType eventType)
   {
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType, 0, keyCode, false));
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType, 0, keyCode, false, EventOrigin::USERSPACE));
     if (! ptr) return;
 
     Params_KeyboardSpecialEventCallback& params = *ptr;
