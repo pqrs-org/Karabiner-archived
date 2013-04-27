@@ -508,6 +508,14 @@
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP, Option::NOREPEAT</autogen>
       </item>
+      <item>
+        <name>To power key</name>
+        <appendix>KeyRemap4MacBook does not allow to change a key to power key.</appendix>
+        <appendix></appendix>
+        <appendix>Volume Mute to Power (== do nothing.)</appendix>
+        <identifier>remap.samples_consumertoconsumer_power</identifier>
+        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::POWER</autogen>
+      </item>
     </item>
 
     <item>
