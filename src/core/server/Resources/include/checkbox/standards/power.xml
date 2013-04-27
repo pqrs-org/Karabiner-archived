@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Change Power Button/Power Key</name>
+    <item>
+      <name style="caution">Caution:</name>
+      <appendix>These settings do not change the behavior of the press and hold the power button.</appendix>
+      <appendix>System will shutdown when you press and hold the power button.</appendix>
+      <appendix></appendix>
+      <appendix>These settings also do not change command-control-power button shortcut.</appendix>
+      <appendix>System will restart when you press command-control-power button.</appendix>
+    </item>
+    <item>
+      <name style="important">Limitation:</name>
+      <appendix>You cannot change the power button to a modifier key,</appendix>
+      <appendix>and the power key does not support the key repeat.</appendix>
+    </item>
+    <item>
+      <name>Power to Delete</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power2delete</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::DELETE</autogen>
+    </item>
+    <item>
+      <name>Power to Eject</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power2eject_fnpower2power</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ConsumerKeyCode::EJECT</autogen>
+    </item>
+    <item>
+      <name>Power to Escape</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_escape</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>Power to Forward Delete</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power2forwarddelete</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FORWARD_DELETE</autogen>
+    </item>
+    <item>
+      <name>Power to Return</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_return</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Power to Tab</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_tab</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::TAB</autogen>
+    </item>
+    <item>
+      <name>Disable Power Key</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.drop_power</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::VK_NONE</autogen>
+    </item>
+
+    <item>
+      <name>For Power Key on old ADB keyboard</name>
+      <item>
+        <name>Power Key to Command_L</name>
+        <identifier>remap.power2commandL</identifier>
+        <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Power Key to Fn</name>
+        <appendix>(+ Fn+Power to Power)</appendix>
+        <identifier>remap.power2fn</identifier>
+        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+        <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FN</autogen>
+      </item>
+    </item>
+  </item>
+
+</root>
