@@ -66,5 +66,24 @@
         <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
       </item>
     </item>
+
+    <item>
+      <name>Items for backwards compatibility</name>
+      <item>
+        <name>Toggle HanEng Key(to Command_L(R)+Space)</name>
+        <identifier>remap.ksc_haneng2commandLSpace</identifier>
+        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, KeyCode::COMMAND_L, KeyCode::SPACE, ModifierFlag::COMMAND_R</autogen>
+      </item>
+      <item>
+        <name>Toggle Hanja Key(to Option_L(R)+Return)</name>
+        <identifier>remap.ksc_hanja2optionLreturn</identifier>
+        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_R</autogen>
+      </item>
+      <item>
+        <name>Toggle Option_R(Alt_R) Key(to Option_L(R)+Enter)</name>
+        <identifier>remap.ksc_optionR2optionLreturn</identifier>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
+      </item>
+    </item>
   </item>
 </root>
