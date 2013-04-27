@@ -96,6 +96,14 @@
     </item>
 
     <item>
+      <name>Power to launch Disk Utility</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_launch_disk_utility</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::VK_OPEN_URL_APP_Disk_Utility</autogen>
+    </item>
+
+    <item>
       <name>For Power Key on old ADB keyboard</name>
       <item>
         <name>Power Key to Command_L</name>
