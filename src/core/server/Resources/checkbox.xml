@@ -25,6 +25,7 @@
   <include path="include/checkbox/standards/number.xml" />
   <include path="include/checkbox/standards/option.xml" />
   <include path="include/checkbox/standards/pageup_pagedown.xml" />
+  <include path="include/checkbox/standards/power.xml" />
   <include path="include/checkbox/standards/return.xml" />
   <include path="include/checkbox/standards/quote.xml" />
   <include path="include/checkbox/standards/semicolon.xml" />

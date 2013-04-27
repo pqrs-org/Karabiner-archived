@@ -337,51 +337,6 @@
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_UP, VK_COMMAND, ConsumerKeyCode::VOLUME_UP</autogen>
         </item>
         <item>
-          <name>Change Power Key</name>
-          <appendix>*** This setting does not work with MacBook Air 2010 or later.</appendix>
-          <appendix>*** This "Power Key" is the key on the old ADB keyboard.</appendix>
-          <item>
-            <name>Power to Command_L</name>
-            <identifier>remap.power2commandL</identifier>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
-          </item>
-          <item>
-            <name>Power to Delete</name>
-            <appendix>(+ Fn+Power to Power)</appendix>
-            <identifier>remap.power2delete</identifier>
-            <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::DELETE</autogen>
-          </item>
-          <item>
-            <name>Power to Eject</name>
-            <appendix>(+ Fn+Power to Power)</appendix>
-            <identifier>remap.power2eject_fnpower2power</identifier>
-            <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ConsumerKeyCode::EJECT</autogen>
-          </item>
-          <item>
-            <name>Power to Fn</name>
-            <appendix>(+ Fn+Power to Power)</appendix>
-            <identifier>remap.power2fn</identifier>
-            <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FN</autogen>
-          </item>
-          <item>
-            <name>Power to Forward Delete</name>
-            <appendix>(+ Fn+Power to Power)</appendix>
-            <identifier>remap.power2forwarddelete</identifier>
-            <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FORWARD_DELETE</autogen>
-          </item>
-          <item>
-            <name>Disable Power Key</name>
-            <appendix>(+ Fn+Power to Power)</appendix>
-            <identifier>remap.drop_power</identifier>
-            <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::VK_NONE</autogen>
-          </item>
-        </item>
-        <item>
           <name>Functional Keys to F1..F12</name>
           <appendix>Brightness Down to F1</appendix>
           <appendix>Brightness Up to F2</appendix>
