@@ -205,7 +205,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params.key == ConsumerKeyCode::POWER) {
         CommonData::set_isPowerKeyChanged(remapParams.isremapped);
         if (params.ex_eventOrigin == EventOrigin::USERSPACE) {
-          // We need to send power key event even if it is changed.
+          // We need to send a power key event even if it is changed.
           remapParams.isremapped = false;
         }
       }
@@ -216,7 +216,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                                      params.flavor, params.guid, false));
         if (ptr) {
           KeyboardRepeat::set(*ptr);
-          EventOutputQueue::FireConsumer::fire(*ptr);
+          EventOutputQueue::FireConsumer::fire(*ptr, true);
         }
       }
 

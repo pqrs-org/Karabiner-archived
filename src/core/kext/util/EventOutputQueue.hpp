@@ -35,7 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class FireConsumer {
     public:
-      static void fire(const Params_KeyboardSpecialEventCallback& params);
+      static void fire(const Params_KeyboardSpecialEventCallback& params, bool allowPowerKey = false);
     };
 
     class FireRelativePointer {

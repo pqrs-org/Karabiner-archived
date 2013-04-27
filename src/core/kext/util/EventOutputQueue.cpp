@@ -329,7 +329,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ======================================================================
   void
-  EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params)
+  EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params, bool allowPowerKey)
   {
     Flags newflags = params.flags;
     newflags.stripEXTRA();
@@ -338,6 +338,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Note: check before FireModifiers to avoid meaningless modifier event.
     if (params.key == ConsumerKeyCode::VK_NONE ||
         params.key == ConsumerKeyCode::VK_PSEUDO_KEY) {
+      return;
+    }
+    if (! allowPowerKey && params.key == ConsumerKeyCode::POWER) {
+      IOLOG_WARN("KeyRemap4MacBook does not allow to change a key to the power key.\n");
       return;
     }
 
