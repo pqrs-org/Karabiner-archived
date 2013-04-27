@@ -17,6 +17,13 @@
       <appendix>and the power key does not support the key repeat.</appendix>
     </item>
     <item>
+      <name>Power to Dashboard</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_dashboard</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::DASHBOARD</autogen>
+    </item>
+    <item>
       <name>Power to Delete</name>
       <appendix>(+ Fn+Power to Power)</appendix>
       <identifier>remap.power2delete</identifier>
@@ -45,6 +52,20 @@
       <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
+      <name>Power to Launchpad</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_launchpad</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::LAUNCHPAD</autogen>
+    </item>
+    <item>
+      <name>Power to Mission Control</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_mission_control</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::MISSION_CONTROL</autogen>
+    </item>
+    <item>
       <name>Power to Return</name>
       <appendix>(+ Fn+Power to Power)</appendix>
       <identifier>remap.power_to_return</identifier>
@@ -64,6 +85,14 @@
       <identifier>remap.drop_power</identifier>
       <modifier_not>ModifierFlag::FN</modifier_not>
       <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::VK_NONE</autogen>
+    </item>
+
+    <item>
+      <name>Power to launch Activity Monitor</name>
+      <appendix>(+ Fn+Power to Power)</appendix>
+      <identifier>remap.power_to_launch_activity_monitor</identifier>
+      <modifier_not>ModifierFlag::FN</modifier_not>
+      <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
     </item>
 
     <item>
