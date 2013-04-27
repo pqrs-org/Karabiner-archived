@@ -1,5 +1,6 @@
 Changes since 8.0.0
 
+    - Power button remapping has been supported.
     - Added "Quit KeyRemap4MacBook" into menu bar.
     - Added some styles into status message indicator.
     - Supported more than three keys at __SimultaneousKeyPresses__.
