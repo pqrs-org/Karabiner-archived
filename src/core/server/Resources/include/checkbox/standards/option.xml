@@ -204,7 +204,12 @@
       <appendix>(+ Shift+Option_R to Shift+End,Control_L+C)</appendix>
       <identifier>remap.optionR2end_vm_ex</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::END, ModifierFlag::SHIFT_L,
+        KeyCode::C, ModifierFlag::CONTROL_L,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::END</autogen>
     </item>
     <item>
@@ -212,7 +217,12 @@
       <appendix>(+ Shift+Option_R to Shift+End,Command_L+C)</appendix>
       <identifier>remap.optionR2end_vm_ex2</identifier>
       <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::END, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::END, ModifierFlag::SHIFT_L,
+        KeyCode::C, ModifierFlag::COMMAND_L,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::END</autogen>
     </item>
     <item>
@@ -260,7 +270,12 @@
       <appendix>(+ Shift+Option_R to Command_L+Shift_L+Right-Arrow,Command_L+C)</appendix>
       <identifier>remap.optionR2commandLrightarrow_ex</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+        KeyCode::C, ModifierFlag::COMMAND_L,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -268,7 +283,12 @@
       <appendix>(+ Shift+Option_R to Command_L+Shift_L+Right-Arrow,Control_L+C)</appendix>
       <identifier>remap.optionR2commandLrightarrow_ex2</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+        KeyCode::C, ModifierFlag::CONTROL_L,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>

@@ -152,12 +152,20 @@
       <item>
         <name>Change Shift+Cursor Left to Cursor Up</name>
         <identifier>remap.shiftleft2up</identifier>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::CURSOR_UP,
+        </autogen>
       </item>
       <item>
         <name>Change Shift+Cursor Right to Cursor Down</name>
         <identifier>remap.shiftright2down</identifier>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::CURSOR_DOWN,
+        </autogen>
       </item>
       <item>
         <name>Change Command+Cursor Left to PageUp</name>

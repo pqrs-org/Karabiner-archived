@@ -11,11 +11,15 @@
       <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE,
         KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT | ModifierFlag::NONE,
-        KeyCode::BRACKET_LEFT
+      <autogen>
+        __KeyToKey__
+        KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BRACKET_LEFT,
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_SHIFT | ModifierFlag::NONE,
-        KeyCode::BRACKET_RIGHT
+      <autogen>
+        __KeyToKey__
+        KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BRACKET_RIGHT,
       </autogen>
     </item>
     <item>

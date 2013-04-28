@@ -8,8 +8,10 @@
       <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::NONE,
         KeyCode::SLASH, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::SLASH, VK_SHIFT | ModifierFlag::NONE,
-        KeyCode::SLASH
+      <autogen>
+        __KeyToKey__
+        KeyCode::SLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::SLASH,
       </autogen>
     </item>
   </item>

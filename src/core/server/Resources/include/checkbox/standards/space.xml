@@ -107,7 +107,11 @@
     <item>
       <name>Shift+Space to Command_L+Space</name>
       <identifier>remap.shiftSpace2commandLSpace</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::SPACE, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Control+Space to Option_L+Enter (except Emacs)</name>
@@ -121,7 +125,11 @@
       <appendix>(Option+Shift+Space to Space)</appendix>
       <identifier>remap.option_space_to_space</identifier>
       <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | VK_SHIFT | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SPACE, VK_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::SPACE,
+      </autogen>
     </item>
     <item>
       <name>Holding Space to LeftClick</name>

@@ -18,8 +18,10 @@
       <autogen>__KeyToKey__ KeyCode::QUOTE, ModifierFlag::NONE,
         KeyCode::QUOTE, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::QUOTE, VK_SHIFT | ModifierFlag::NONE,
-        KeyCode::QUOTE
+      <autogen>
+        __KeyToKey__
+        KeyCode::QUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::QUOTE,
       </autogen>
     </item>
   </item>

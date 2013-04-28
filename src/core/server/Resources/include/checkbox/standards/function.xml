@@ -844,13 +844,15 @@
           </autogen>
           <autogen>__HoldingKeyToKey__
             KeyCode::F11, ModifierFlag::NONE,
-            KeyCode::VK_CONSUMERKEY_VOLUME_DOWN, VK_SHIFT | VK_OPTION, KeyCode::VK_NONE,
-            KeyCode::VK_CONSUMERKEY_VOLUME_DOWN
+            KeyCode::VK_CONSUMERKEY_VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | VK_OPTION,
+            KeyCode::VK_NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_DOWN,
           </autogen>
           <autogen>__HoldingKeyToKey__
             KeyCode::F12, ModifierFlag::NONE,
-            KeyCode::VK_CONSUMERKEY_VOLUME_UP, VK_SHIFT | VK_OPTION, KeyCode::VK_NONE,
-            KeyCode::VK_CONSUMERKEY_VOLUME_UP
+            KeyCode::VK_CONSUMERKEY_VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | VK_OPTION,
+            KeyCode::VK_NONE,
+            KeyCode::VK_CONSUMERKEY_VOLUME_UP,
           </autogen>
         </item>
         <item><name>──────────────────────────────</name></item>

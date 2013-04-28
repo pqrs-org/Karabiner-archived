@@ -20,7 +20,11 @@
       <appendix>(+ retain Shift+Backslash(\))</appendix>
       <identifier>remap.backslash2delete_retain_shiftbackslash</identifier>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
-      <autogen>__KeyToKey__ KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::BACKSLASH, ModifierFlag::SHIFT_L,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::DELETE</autogen>
     </item>
     <item>
@@ -41,7 +45,11 @@
       <appendix>(+ retain Shift+Backslash(\))</appendix>
       <identifier>remap.backslash2forwarddelete_retain_shiftbackslash</identifier>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
-      <autogen>__KeyToKey__ KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::BACKSLASH, ModifierFlag::SHIFT_L,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
