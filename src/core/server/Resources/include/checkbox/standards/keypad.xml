@@ -48,8 +48,16 @@
       <item>
         <name>Swap Dot and Shift+Dot</name>
         <identifier>remap.swap_dot_and_shiftdot</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEYPAD_DOT</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT,            ModifierFlag::NONE, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEYPAD_DOT,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_DOT,            ModifierFlag::NONE,
+          KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L
+        </autogen>
       </item>
       <item>
         <name>KeyPad-Dot(.) to Comma(,)</name>
@@ -79,7 +87,11 @@
       <item>
         <name>Shift+KeyPad-Dot(.) to Comma</name>
         <identifier>remap.shift_keypad_dot2comma</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, VK_SHIFT, KeyCode::KEYPAD_COMMA</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::KEYPAD_COMMA,
+        </autogen>
       </item>
       <item>
         <name>Control+KeyPad-Dot(.) to Command+X (Cut)</name>
@@ -148,7 +160,11 @@
     <item>
       <name>Shift+Keypad_0 to Command+V (Paste)</name>
       <identifier>remap.shiftkeypad0_to_commandV</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEYPAD_0, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEYPAD_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::V, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Control+Keypad_1 to Command+Down Arrow</name>
@@ -163,7 +179,11 @@
     <item>
       <name>Shift+Enter to Equal</name>
       <identifier>remap.shift_enter2equal</identifier>
-      <autogen>__KeyToKey__ KeyCode::ENTER, VK_SHIFT, KeyCode::KEYPAD_EQUAL</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::ENTER, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::KEYPAD_EQUAL,
+      </autogen>
     </item>
     <item>
       <name>Keypad_0 x3 to Equal</name>

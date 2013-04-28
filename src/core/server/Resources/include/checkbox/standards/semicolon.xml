@@ -40,8 +40,16 @@
     <item>
       <name>Swap Semicolon and Colon</name>
       <identifier>remap.swapcolons</identifier>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_SHIFT, KeyCode::SEMICOLON</autogen>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::SEMICOLON,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SEMICOLON,
+        KeyCode::SEMICOLON, ModifierFlag::SHIFT_L,
+      </autogen>
     </item>
   </item>
 </root>

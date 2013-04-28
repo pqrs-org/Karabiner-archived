@@ -13,8 +13,10 @@
       <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::NONE,
         KeyCode::MINUS, ModifierFlag::SHIFT_L
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::MINUS, VK_SHIFT | ModifierFlag::NONE,
-        KeyCode::MINUS
+      <autogen>
+        __KeyToKey__
+        KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::MINUS,
       </autogen>
     </item>
   </item>

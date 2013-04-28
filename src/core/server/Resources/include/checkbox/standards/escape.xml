@@ -10,7 +10,11 @@
     <item>
       <name>Shift+Escape to CapsLock</name>
       <identifier>remap.shiftEscape2capslock</identifier>
-      <autogen>__KeyToKey__ KeyCode::ESCAPE, VK_SHIFT, KeyCode::CAPSLOCK</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::ESCAPE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::CAPSLOCK,
+      </autogen>
     </item>
     <item>
       <name>Escape to Command_L</name>
@@ -55,7 +59,11 @@
     <item>
       <name>Shift+Escape to Tilde(~)</name>
       <identifier>remap.shiftEscape2tilde</identifier>
-      <autogen>__KeyToKey__ KeyCode::ESCAPE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::ESCAPE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L,
+      </autogen>
     </item>
     <item>
       <name>Escape to RightClick</name>

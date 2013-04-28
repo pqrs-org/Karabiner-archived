@@ -63,22 +63,38 @@
     <item>
       <name>Shift+Delete to Forward Delete</name>
       <identifier>remap.shiftDelete2forwarddelete</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::FORWARD_DELETE,
+      </autogen>
     </item>
     <item>
       <name>Shift+Delete to Forward Delete (if no other modifiers pressed)</name>
       <identifier>remap.shiftDelete2forwarddelete_nomodifiers</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::FORWARD_DELETE,
+      </autogen>
     </item>
     <item>
       <name>Shift+Delete to Help</name>
       <identifier>remap.shiftdelete2help</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT, KeyCode::HELP</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::HELP,
+      </autogen>
     </item>
     <item>
       <name>Shift+Delete to Pipe(|)</name>
       <identifier>remap.shiftDelete2pipe</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::BACKSLASH, ModifierFlag::SHIFT_L,
+      </autogen>
     </item>
     <item>
       <name>Delete to Quote(')</name>
@@ -98,7 +114,11 @@
     <item>
       <name>Shift+Delete to Tilde(~)</name>
       <identifier>remap.shiftDelete2tilde</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L,
+      </autogen>
     </item>
     <item>
       <name>Disable Delete</name>
