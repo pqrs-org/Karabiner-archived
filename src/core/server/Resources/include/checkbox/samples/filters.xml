@@ -469,7 +469,7 @@
       <name>Modifier</name>
       <item>
         <name>Note:</name>
-        <appendix>We cannot use VK_COMMAND,VK_CONTROL,VK_OPTION,VK_SHIFT in</appendix>
+        <appendix>We cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_* in</appendix>
         <appendix>&lt;modifier_only&gt;, &lt;modifier_not&gt;.</appendix>
         <appendix></appendix>
         <appendix>Expand these to ModifierFlags.</appendix>
@@ -620,8 +620,16 @@
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::E</autogen>
       </block>
-      <autogen>__KeyToKey__ KeyCode::C, VK_SHIFT, KeyCode::Y</autogen>
-      <autogen>__KeyToKey__ KeyCode::D, VK_SHIFT, KeyCode::Z</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::Y
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::Z
+      </autogen>
       <block>
         <only>TERMINAL</only>
         <block>
