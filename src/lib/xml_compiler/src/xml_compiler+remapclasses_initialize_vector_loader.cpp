@@ -122,12 +122,17 @@ namespace pqrs {
     // preprocess
     //
 
-    // VK_COMMAND, VK_CONTROL, VK_SHIFT, VK_OPTION
+    // MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_*
+    // (VK_COMMAND, VK_CONTROL, VK_SHIFT, VK_OPTION for backwards compatibility)
     {
       static const struct {
         const std::string vk;
         const std::string flags[2];
       } info[] = {
+        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
+        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
+        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT",   { "ModifierFlag::SHIFT_L", "ModifierFlag::SHIFT_R"     } },
+        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",  { "ModifierFlag::OPTION_L", "ModifierFlag::OPTION_R"   } },
         { "VK_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
         { "VK_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
         { "VK_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },
