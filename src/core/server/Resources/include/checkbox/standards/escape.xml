@@ -54,7 +54,7 @@
     <item>
       <name>Control+Escape to Control_L+F3</name>
       <identifier>remap.escape2controlLf3</identifier>
-      <autogen>__KeyToKey__ KeyCode::ESCAPE, VK_CONTROL | ModifierFlag::NONE, KeyCode::F3, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::ESCAPE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::F3, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Shift+Escape to Tilde(~)</name>

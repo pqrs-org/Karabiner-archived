@@ -16,7 +16,7 @@
       <identifier vk_config="true">notsave.browsingmode</identifier>
       {{ BROWSING_MODE_EXTRA }}
       <autogen>__ShowStatusMessage__ Browsing Mode</autogen>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::PAGEUP</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::PAGEUP</autogen>
       <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::PAGEDOWN</autogen>
       <autogen>__KeyToKey__ KeyCode::B, KeyCode::PAGEUP</autogen>
       <autogen>__KeyToKey__ KeyCode::H, KeyCode::HOME</autogen>

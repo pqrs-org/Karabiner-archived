@@ -34,7 +34,7 @@
       <name>Add ordinals with command key+less_than for Spanish</name>
       <appendix>Gives you the missing Spanish ordinals using any of the command keys</appendix>
       <identifier>remap.spanish_command_less_for_ordinals</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPANISH_LESS_THAN, VK_COMMAND, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPANISH_LESS_THAN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::SPANISH_ORDINAL_INDICATOR</autogen>
     </item>
     <item>
       <name>Change keypad comma(,) to dot(.) on "Spanish" and "Spanish - ISO" Input Source</name>

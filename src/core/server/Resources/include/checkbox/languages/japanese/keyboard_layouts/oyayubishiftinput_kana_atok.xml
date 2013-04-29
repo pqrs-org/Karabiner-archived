@@ -17,19 +17,19 @@
   <autogen>__KeyToKey__ KeyCode::JIS_HAT, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_HAT, KeyCode::CAPSLOCK</autogen>
   <autogen>__KeyToKey__ KeyCode::JIS_YEN, ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_YEN, KeyCode::CAPSLOCK</autogen>
 
-  <autogen>__KeyToKey__ KeyCode::KEY_1,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_1,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_2,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_2,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_3,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_3,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_4,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_4,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_5,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_5,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_6,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_6,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_7,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_7,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_8,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_8,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_9,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_9,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_0,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_0,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::MINUS,   VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::MINUS,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::JIS_HAT, VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
-  <autogen>__KeyToKey__ KeyCode::JIS_YEN, VK_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_YEN, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_1,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_1,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_2,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_2,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_3,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_3,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_4,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_4,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_5,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_5,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_6,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_6,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_7,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_7,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_8,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_8,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_9,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_9,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_0,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::KEY_0,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::MINUS,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::MINUS,   ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_HAT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_HAT, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_YEN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::CAPSLOCK, KeyCode::JIS_YEN, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
 
   <autogen>__SimultaneousKeyPresses__ {{RIGHT_THUMB}}, KeyCode::KEY_1, KeyCode::CAPSLOCK, KeyCode::SLASH, ModifierFlag::SHIFT_L, KeyCode::CAPSLOCK</autogen>
   <autogen>__SimultaneousKeyPresses__ {{RIGHT_THUMB}}, KeyCode::KEY_2, KeyCode::CAPSLOCK, KeyCode::SLASH, KeyCode::CAPSLOCK</autogen>

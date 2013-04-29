@@ -654,8 +654,8 @@
           </autogen>
 
           <!-- C-f, C-b -->
-          <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::B, VK_CONTROL, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
 
           <!-- b, e, w, B, E, W -->
           <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
@@ -748,7 +748,7 @@
           </autogen>
           <autogen>
             __KeyToKey__
-            KeyCode::R, VK_CONTROL,
+            KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
             KeyCode::Z, ModifierFlag::SHIFT_L | ModifierFlag::COMMAND_L
           </autogen>
 
@@ -910,12 +910,12 @@
             <!-- C-n, C-p -->
             <autogen>
               __KeyToKey__
-              KeyCode::N, VK_CONTROL,
+              KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
               KeyCode::CURSOR_DOWN
             </autogen>
             <autogen>
               __KeyToKey__
-              KeyCode::P, VK_CONTROL,
+              KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
               KeyCode::CURSOR_UP
             </autogen>
 
@@ -1054,12 +1054,12 @@
             <!-- C-n, C-p -->
             <autogen>
               __KeyToKey__
-              KeyCode::N, VK_CONTROL,
+              KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
               KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L
             </autogen>
             <autogen>
               __KeyToKey__
-              KeyCode::P, VK_CONTROL,
+              KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
               KeyCode::CURSOR_UP, ModifierFlag::OPTION_L
             </autogen>
 
@@ -1121,7 +1121,7 @@
           <config_not>notsave.c_w_operator_pending</config_not>
           <autogen>
             __KeyToKey__
-            KeyCode::W, VK_CONTROL,
+            KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
             KeyCode::VK_CONFIG_FORCE_ON_notsave_c_w_operator_pending
           </autogen>
         </block>
@@ -1200,7 +1200,7 @@
           <!-- Ctrl-w -->
           <autogen>
             __KeyToKey__
-            KeyCode::W, VK_CONTROL,
+            KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::DELETE
           </autogen>
@@ -1208,7 +1208,7 @@
           <!-- Ctrl-u -->
           <autogen>
             __KeyToKey__
-            KeyCode::U, VK_CONTROL,
+            KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::DELETE
           </autogen>
@@ -1216,14 +1216,14 @@
           <!-- Ctrl-d -->
           <autogen>
             __KeyToKey__
-            KeyCode::D, VK_CONTROL,
+            KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
             KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L
           </autogen>
 
           <!-- Ctrl-t -->
           <autogen>
             __KeyToKey__
-            KeyCode::T, VK_CONTROL,
+            KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
             KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L
           </autogen>
 
@@ -1326,7 +1326,7 @@
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
           __KeyToKey__
-          KeyCode::BRACKET_LEFT, VK_CONTROL,
+          KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
@@ -1339,7 +1339,7 @@
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
           __KeyToKey__
-          KeyCode::L, VK_CONTROL,
+          KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
@@ -1549,7 +1549,7 @@
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
           __KeyToKey__
-          KeyCode::V, VK_OPTION,
+          KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_TOGGLE_notsave_ubiq_vimnormal,
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
@@ -1561,7 +1561,7 @@
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>
           __KeyToKey__
-          KeyCode::V, VK_OPTION,
+          KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_vimnormal,
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
@@ -1595,7 +1595,7 @@
         <config_only>notsave.ubiq_vimnormal</config_only>
         <autogen>
           __KeyToKey__
-          KeyCode::SHIFT_L, VK_CONTROL,
+          KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }},
@@ -1619,7 +1619,7 @@
         <config_only>notsave.ubiq_vimnormal</config_only>
         <autogen>
           __KeyToKey__
-          KeyCode::COMMAND_L, VK_CONTROL,
+          KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }},
@@ -1628,7 +1628,7 @@
         </autogen>
         <autogen>
           __KeyToKey__
-          KeyCode::CONTROL_L, VK_COMMAND,
+          KeyCode::CONTROL_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
           KeyCode::VK_LOCK_ALL_FORCE_OFF,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
           {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }},

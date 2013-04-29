@@ -7,8 +7,8 @@
       <appendix>(Ignore Command+W and require Command+Shift+W to send Command+W)</appendix>
       <identifier>remap.app_skype_command_shift_w_to_close</identifier>
       <only>SKYPE</only>
-      <autogen>__KeyToKey__ KeyCode::W, VK_COMMAND | VK_SHIFT, KeyCode::W, VK_COMMAND</autogen>
-      <autogen>__KeyToKey__ KeyCode::W, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
     </item>
     <item>
       <name>Hold Command+W to Close Conversation</name>
@@ -16,7 +16,7 @@
       <appendix>"[Holding Key to Key] Holding Threshold" in Key Repeat tab.)</appendix>
       <only>SKYPE</only>
       <identifier>remap.app_skype_holdcommandW</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::W, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::W, VK_COMMAND, Option::NOREPEAT</autogen>
+      <autogen>__HoldingKeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, Option::NOREPEAT</autogen>
     </item>
   </item>
 </root>

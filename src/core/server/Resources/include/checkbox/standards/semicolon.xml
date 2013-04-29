@@ -16,14 +16,14 @@
       <name>Semicolon to Return</name>
       <appendix>(+ Control+Semicolon to Semicolon)</appendix>
       <identifier>remap.semicolon2return_controlsemicolon2semicolon</identifier>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_CONTROL, KeyCode::SEMICOLON</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::SEMICOLON</autogen>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
     </item>
     <item>
       <name>Semicolon to Return (when there are not any modifiers)</name>
       <appendix>(+ Control+Semicolon to Semicolon)</appendix>
       <identifier>remap.semicolon2return_nomod</identifier>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_CONTROL | ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::SEMICOLON</autogen>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::RETURN</autogen>
     </item>
     <item>

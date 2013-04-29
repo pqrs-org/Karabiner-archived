@@ -33,7 +33,7 @@
     <item>
       <name>Control+Space to Option_L</name>
       <identifier>remap.controlSpace2optionL</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_CONTROL, KeyCode::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::OPTION_L</autogen>
     </item>
     <item>
       <name>Space to Shift_L</name>
@@ -70,7 +70,7 @@
     <item>
       <name>Control+Space to Shift_L_Lock</name>
       <identifier>remap.controlSpace2shiftL_lock</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_CONTROL, KeyCode::VK_LOCK_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::VK_LOCK_SHIFT_L</autogen>
     </item>
     <item>
       <name>Swap Space and Option+Space</name>
@@ -80,7 +80,7 @@
         <appendix>Turn on a setting below, and toggle "Swap Mode".</appendix>
         <identifier vk_config="true">notsave.swap_space_optionspace</identifier>
         <autogen>__ShowStatusMessage__ Swap Mode</autogen>
-        <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
         <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>
@@ -102,7 +102,7 @@
     <item>
       <name>Command+Space to Command+Shift+Space</name>
       <identifier>remap.commandSpace2commandLshiftLspace</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Shift+Space to Command_L+Space</name>
@@ -117,17 +117,17 @@
       <name>Control+Space to Option_L+Enter (except Emacs)</name>
       <not>EMACS</not>
       <identifier>remap.controlSpace2optionLEnter</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_CONTROL, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Non-Breaking Space to Normal Space</name>
       <appendix>(Option+Space to Space)</appendix>
       <appendix>(Option+Shift+Space to Space)</appendix>
       <identifier>remap.option_space_to_space</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::SPACE</autogen>
       <autogen>
         __KeyToKey__
-        KeyCode::SPACE, VK_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
         KeyCode::SPACE,
       </autogen>
     </item>

@@ -55,18 +55,18 @@
         <appendix>Holding Command+- to F11</appendix>
         <appendix>Holding Command+= to F12</appendix>
         <identifier>remap.holding_command_num_to_function</identifier>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_1, VK_COMMAND, KeyCode::KEY_1, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F1</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_2, VK_COMMAND, KeyCode::KEY_2, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F2</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_3, VK_COMMAND, KeyCode::KEY_3, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F3</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_4, VK_COMMAND, KeyCode::KEY_4, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F4</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_5, VK_COMMAND, KeyCode::KEY_5, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F5</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_6, VK_COMMAND, KeyCode::KEY_6, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F6</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_7, VK_COMMAND, KeyCode::KEY_7, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F7</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_8, VK_COMMAND, KeyCode::KEY_8, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F8</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_9, VK_COMMAND, KeyCode::KEY_9, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F9</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_0, VK_COMMAND, KeyCode::KEY_0, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F10</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::MINUS, VK_COMMAND, KeyCode::MINUS, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F11</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::EQUAL, VK_COMMAND, KeyCode::EQUAL, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F12</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_1, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F1</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_2, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F2</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_3, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F3</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_4, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F4</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_5, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F5</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_6, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F6</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_7, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F7</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_8, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F8</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_9, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F9</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_0, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F10</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::MINUS, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F11</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::EQUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::EQUAL, ModifierFlag::COMMAND_L, KeyCode::VK_NONE, KeyCode::F12</autogen>
       </item>
 
       <item>

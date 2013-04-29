@@ -373,7 +373,7 @@
       <appendix>(Except in Virtual Machine, RDC)</appendix>
       <identifier>remap.commandR2fnleftarrow</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_R, VK_CONTROL, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMAND_R,             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>

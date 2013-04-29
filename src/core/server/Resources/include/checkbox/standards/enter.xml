@@ -154,7 +154,7 @@
       <appendix>(Except in Virtual Machine, RDC)</appendix>
       <identifier>remap.enter2fnrightarrow</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::ENTER, VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::ENTER, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::ENTER,             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>

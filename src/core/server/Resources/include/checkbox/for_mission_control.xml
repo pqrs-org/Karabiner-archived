@@ -20,13 +20,13 @@
     <item>
       <name>Disable Slow-Expose (Disable Shift+Expose, Shift+Dashboard, Shift+F8,...,Shift+F12)</name>
       <identifier>option.drop_slowexpose</identifier>
-      <autogen>__DropKeyAfterRemap__ KeyCode::EXPOSE_ALL, VK_SHIFT</autogen>
-      <autogen>__DropKeyAfterRemap__ KeyCode::DASHBOARD,  VK_SHIFT</autogen>
-      <autogen>__DropKeyAfterRemap__ KeyCode::F8,         VK_SHIFT</autogen>
-      <autogen>__DropKeyAfterRemap__ KeyCode::F9,         VK_SHIFT</autogen>
-      <autogen>__DropKeyAfterRemap__ KeyCode::F10,        VK_SHIFT</autogen>
-      <autogen>__DropKeyAfterRemap__ KeyCode::F11,        VK_SHIFT</autogen>
-      <autogen>__DropKeyAfterRemap__ KeyCode::F12,        VK_SHIFT</autogen>
+      <autogen>__DropKeyAfterRemap__ KeyCode::EXPOSE_ALL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      <autogen>__DropKeyAfterRemap__ KeyCode::DASHBOARD,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      <autogen>__DropKeyAfterRemap__ KeyCode::F8,         MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      <autogen>__DropKeyAfterRemap__ KeyCode::F9,         MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      <autogen>__DropKeyAfterRemap__ KeyCode::F10,        MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      <autogen>__DropKeyAfterRemap__ KeyCode::F11,        MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      <autogen>__DropKeyAfterRemap__ KeyCode::F12,        MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
     </item>
     <item>
       <name>Holding "E" Key to Mission Control (Expose)</name>
@@ -41,22 +41,22 @@
     <item>
       <name>Holding Shift+"E" Key to Mission Control (Expose)</name>
       <identifier>remap.holding_shift_e_to_expose</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::E, VK_SHIFT | ModifierFlag::NONE, KeyCode::E, VK_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
+      <autogen>__HoldingKeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
     </item>
     <item>
       <name>Holding Shift+"D" Key to Dashboard</name>
       <identifier>remap.holding_shift_d_to_dashboard</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::D, VK_SHIFT | ModifierFlag::NONE, KeyCode::D, VK_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
+      <autogen>__HoldingKeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
     </item>
     <item>
       <name>Control+Scroll (Left/Right) to Move a space</name>
       <appendix>(Change Control+Left Scroll to Control+Left Arrow)</appendix>
       <appendix>(Change Control+Right Scroll to Control+Right Arrow)</appendix>
       <identifier>remap.controlscroll_to_controlarrow</identifier>
-      <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT,  VK_CONTROL | ModifierFlag::NONE,
-        KeyCode::CURSOR_LEFT,  VK_CONTROL</autogen>
-      <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, VK_CONTROL | ModifierFlag::NONE,
-        KeyCode::CURSOR_RIGHT, VK_CONTROL</autogen>
+      <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+      <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
     </item>
     <item>
       <name>Expose Mode</name>
@@ -144,7 +144,7 @@
         <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::TAB, ModifierFlag::SHIFT_R</autogen>
         <block>
           <config_only>remap.cmdtab_mode_controlM</config_only>
-          <autogen>__KeyToKey__ KeyCode::M, VK_CONTROL, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+          <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
         </block>
         <block>
           <config_only>remap.cmdtab_mode_control_bracket_left</config_only>
@@ -197,7 +197,7 @@
       <item>
         <name>Holding Shift+"S" Key to Spaces (F8)</name>
         <identifier>remap.holding_shift_s_to_spaces</identifier>
-        <autogen>__HoldingKeyToKey__ KeyCode::S, VK_SHIFT | ModifierFlag::NONE, KeyCode::S, VK_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
+        <autogen>__HoldingKeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
       </item>
       <item>
         <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
@@ -266,16 +266,16 @@
         <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_5, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_6, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_7, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_8, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_9, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_0, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
       </item>
 
       <item>
@@ -450,43 +450,43 @@
         <name>Use Command+KeyPad numbers for Spaces(3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>option.keypad2spaces_modifier_command</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, VK_COMMAND, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, VK_COMMAND, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, VK_COMMAND, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, VK_COMMAND, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, VK_COMMAND, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, VK_COMMAND, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, VK_COMMAND, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, VK_COMMAND, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, VK_COMMAND, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
       </item>
       <item>
         <name>Use Control+KeyPad numbers for Spaces(3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>option.keypad2spaces_modifier_control</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, VK_CONTROL, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, VK_CONTROL, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, VK_CONTROL, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, VK_CONTROL, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, VK_CONTROL, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, VK_CONTROL, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, VK_CONTROL, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, VK_CONTROL, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, VK_CONTROL, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
       </item>
       <item>
         <name>Use Option+KeyPad numbers for Spaces(3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>option.keypad2spaces_modifier_option</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, VK_OPTION, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, VK_OPTION, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, VK_OPTION, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, VK_OPTION, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, VK_OPTION, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, VK_OPTION, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, VK_OPTION, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, VK_OPTION, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, VK_OPTION, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
       </item>
     </item>
   </item>

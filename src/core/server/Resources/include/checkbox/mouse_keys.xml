@@ -154,7 +154,7 @@
         <appendix>+ A turns on "High Speed Mode"</appendix>
         <appendix>// A+HJKL to high-speed movement</appendix>
         <identifier>remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, VK_SHIFT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+        <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
       </item>
       <item>
         <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
@@ -167,7 +167,7 @@
         <appendix>+ A turns on "High Speed Mode"</appendix>
         <appendix>// A+HJKL to high-speed movement</appendix>
         <identifier>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, VK_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+        <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
       </item>
       <item>
         <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
@@ -244,7 +244,7 @@
     <item>
       <name>Control+L to RightClick</name>
       <identifier>remap.control_l2rightclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::L, VK_CONTROL, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToPointingButton__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::RIGHT</autogen>
     </item>
 
     <item>
@@ -288,37 +288,37 @@
           <autogen>
             __KeyToKey__
             KeyCode::W,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
 
             KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
             Option::NOREPEAT,
           </autogen>
           <autogen>
             __KeyToKey__
             KeyCode::R,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
 
             KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
             Option::NOREPEAT,
           </autogen>
           <autogen>
             __KeyToKey__
             KeyCode::D,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
 
             KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
             Option::NOREPEAT,
           </autogen>
           <autogen>
             __KeyToKey__
             KeyCode::KEY_3,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
 
             KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP,
-            VK_CONTROL | ModifierFlag::FN,
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
             Option::NOREPEAT,
           </autogen>
         </block>

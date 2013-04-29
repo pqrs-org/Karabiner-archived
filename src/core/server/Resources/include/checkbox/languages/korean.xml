@@ -14,7 +14,7 @@
         <name>Shift+Space to Command+Space</name>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <identifier>remap.ksc_shiftSpace2commandSpace</identifier>
-        <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Option_R to Option+Return</name>
@@ -49,8 +49,8 @@
         <appendix>(it works with Korean Keyboard Type 3)</appendix>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
         <identifier>remap.ksc_commandR2shiftSpace_optionR2commandSpace</identifier>
-        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, VK_SHIFT, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SPACE, VK_CONTROL, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, Option::NOREPEAT</autogen>
       </item>
     </item>
     <item>

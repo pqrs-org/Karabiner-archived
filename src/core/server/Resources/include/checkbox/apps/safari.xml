@@ -6,9 +6,9 @@
       <name>Firefox-like hotkey (Control+PgUp/PgDown) to switch tabs in Safari</name>
       <identifier>remap.firefox_style_tab_switching_in_safari</identifier>
       <only>SAFARI</only>
-      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, VK_CONTROL | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
         KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
-      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   VK_CONTROL | ModifierFlag::NONE,
+      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
         KeyCode::TAB, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>

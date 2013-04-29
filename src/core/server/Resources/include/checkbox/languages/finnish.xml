@@ -7,16 +7,16 @@
       <appendix>(+ When you type Command_L+Shift_L only, change Input Source to English)</appendix>
       <inputsource_only>FINNISH</inputsource_only>
       <identifier>remap.finnish_shiftcommandL2shiftLcommandL_english</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
-      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
     </item>
     <item>
       <name>Command_L+Shift_L to Command_L+Shift_L</name>
       <appendix>(+ When you type Command_L+Shift_L only, change Input Source to Finnish)</appendix>
       <!-- <inputsource_only>ENGLISH</inputsource_only> -->
       <identifier>remap.finnish_shiftcommandL2shiftLcommandL_finnish</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
-      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, VK_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::SHIFT_L, ModifierFlag::COMMAND_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::VK_CHANGE_INPUTSOURCE_FINNISH</autogen>
     </item>
   </item>
 </root>

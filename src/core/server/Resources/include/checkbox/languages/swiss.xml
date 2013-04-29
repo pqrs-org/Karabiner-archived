@@ -30,9 +30,9 @@
       <inputsource_only>SWISS</inputsource_only>
       <autogen>
         __KeyToKey__
-        KeyCode::KEY_2, VK_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
         <!-- @ == option+g -->
-        KeyCode::G, VK_OPTION
+        KeyCode::G, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
       </autogen>
     </item>
     <item>
@@ -42,8 +42,8 @@
       <inputsource_only>SWISS</inputsource_only>
       <autogen>
         __KeyToKey__
-        KeyCode::BRACKET_LEFT, VK_OPTION | ModifierFlag::NONE,
-        KeyCode::KEY_5, VK_OPTION
+        KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
       </autogen>
     </item>
     <item>
@@ -53,8 +53,8 @@
       <inputsource_only>SWISS</inputsource_only>
       <autogen>
         __KeyToKey__
-        KeyCode::BRACKET_RIGHT, VK_OPTION | ModifierFlag::NONE,
-        KeyCode::KEY_6, VK_OPTION
+        KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
       </autogen>
     </item>
     <item>
@@ -64,8 +64,8 @@
       <identifier>remap.swiss_altgr_ae_to_left_brace</identifier>
       <autogen>
         __KeyToKey__
-        KeyCode::QUOTE, VK_OPTION | ModifierFlag::NONE,
-        KeyCode::KEY_8, VK_OPTION
+        KeyCode::QUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
       </autogen>
     </item>
     <item>
@@ -75,8 +75,8 @@
       <identifier>remap.swiss_altgr_dollar_to_right_brace</identifier>
       <autogen>
           __KeyToKey__
-          KeyCode::BACKSLASH, VK_OPTION | ModifierFlag::NONE,
-          KeyCode::KEY_9, VK_OPTION
+          KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
         </autogen>
     </item>
     <item>
@@ -86,8 +86,8 @@
       <identifier>remap.swiss_altgr_dach_to_home</identifier>
       <autogen>
         __KeyToKey__
-        KeyCode::EQUAL, VK_OPTION | ModifierFlag::NONE,
-        KeyCode::N, VK_OPTION
+        KeyCode::EQUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
       </autogen>
     </item>
     <item>
@@ -97,8 +97,8 @@
       <identifier>remap.swiss_altgr_lessthan_to_backslash</identifier>
       <autogen>
         __KeyToKey__
-        KeyCode::SWISS_LESS_THAN, VK_OPTION | ModifierFlag::NONE,
-        KeyCode::KEY_7, VK_OPTION | ModifierFlag::SHIFT_L
+        KeyCode::SWISS_LESS_THAN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::SHIFT_L
       </autogen>
     </item>
   </item>

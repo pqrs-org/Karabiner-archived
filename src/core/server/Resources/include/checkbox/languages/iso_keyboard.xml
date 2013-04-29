@@ -20,8 +20,8 @@
     <item>
       <name>Swap @ and double-quote(")</name>
       <identifier>remap.uk_swap_at_doublequote</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEY_2, VK_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::QUOTE, VK_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Swap the Tilde(~) key with Section (§)</name>
@@ -53,14 +53,14 @@
     <item>
       <name>Backslash(\) to Option_L+3 (Hash #), Shift+Backslash(\) to Tilde(~)</name>
       <identifier>remap.uk_backslash2hash</identifier>
-      <autogen>__KeyToKey__ KeyCode::BACKSLASH, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Backslash(\) to Hash # (Alt+3)</name>
       <appendix>(+Alt+Backslash to Backslash)</appendix>
       <identifier>remap.iso_backslash_to_hash_option_backslash_to_backslash</identifier>
-      <autogen>__KeyToKey__ KeyCode::BACKSLASH, VK_OPTION, KeyCode::BACKSLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKSLASH</autogen>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
@@ -73,7 +73,7 @@
       <item>
         <name>Section(§) to Option_L+3 (Hash #), Shift+Section(§) to Tilde(~)</name>
         <identifier>remap.uk_section2hash</identifier>
-        <autogen>__KeyToKey__ KeyCode::UK_SECTION, VK_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::UK_SECTION, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyToKey__ KeyCode::UK_SECTION, KeyCode::KEY_3, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>

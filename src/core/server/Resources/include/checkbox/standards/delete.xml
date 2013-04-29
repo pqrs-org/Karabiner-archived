@@ -20,17 +20,17 @@
     <item>
       <name>Command+Delete to Option_L+Delete</name>
       <identifier>remap.commandDelete2optionLdelete</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_COMMAND, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Control+Delete to Command_L+Delete</name>
       <identifier>remap.controlDelete2commandLdelete</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option+Delete to Command_L+Delete</name>
       <identifier>remap.optionDelete2commandLdelete</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_OPTION, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Delete to Forward Delete</name>
@@ -53,12 +53,12 @@
     <item>
       <name>Control+Delete to Forward Delete</name>
       <identifier>remap.controlDelete2forwarddelete</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Option+Delete to Forward Delete</name>
       <identifier>remap.optionDelete2forwarddelete</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, VK_OPTION, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Shift+Delete to Forward Delete</name>

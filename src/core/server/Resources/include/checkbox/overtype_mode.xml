@@ -17,11 +17,11 @@
           <replacementvalue></replacementvalue>
         </replacementdef>
       </include>
-      <!-- VK_SHIFT | ModifierFlag::NONE -->
+      <!-- MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE -->
       <include path="overtype_mode/core.xml">
         <replacementdef>
           <replacementname>BEFORE</replacementname>
-          <replacementvalue>VK_SHIFT | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</replacementvalue>
+          <replacementvalue>MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</replacementvalue>
         </replacementdef>
         <replacementdef>
           <replacementname>AFTER</replacementname>
@@ -43,7 +43,7 @@
       <identifier>remap.comamnd_option_o_to_toggle_overtype</identifier>
       <autogen>
         __KeyToKey__
-        KeyCode::O, VK_COMMAND | VK_OPTION | ModifierFlag::NONE,
+        KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
         KeyCode::VK_CONFIG_TOGGLE_notsave_pseudo_overtype_mode
       </autogen>
     </item>

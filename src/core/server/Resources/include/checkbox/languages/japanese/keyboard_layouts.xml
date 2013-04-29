@@ -62,7 +62,7 @@
         <item>
           <name>Shift+Delete to Pipe(|)</name>
           <identifier>option.jis_layout_us2japanese_shiftDelete2pipe</identifier>
-          <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH, VK_SHIFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_JIS_BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         </item>
         <item>
           <name>Shift_R to Shift_R</name>
@@ -85,15 +85,15 @@
       <appendix>Change Shift+2 to plus(+)</appendix>
       <appendix>Change Shift+7 to asterisk(*)</appendix>
       <identifier>remap.jis_layout_semiascii</identifier>
-      <autogen>__KeyToKey__ KeyCode::SEMICOLON, VK_SHIFT,           KeyCode::JIS_COLON</autogen>
+      <autogen>__KeyToKey__ KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,           KeyCode::JIS_COLON</autogen>
       <!-- double quote(") == Shift+2 -->
-      <autogen>__KeyToKey__ KeyCode::JIS_COLON, VK_SHIFT,           KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_COLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,           KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
       <!-- apostrophe(') == Shift+7 -->
       <autogen>__KeyToKey__ KeyCode::JIS_COLON,                     KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
       <!-- plus(+) == Shift+; -->
-      <autogen>__KeyToKey__ KeyCode::KEY_2,     VK_SHIFT,           KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2,     MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,           KeyCode::SEMICOLON, ModifierFlag::SHIFT_L</autogen>
       <!-- asterisk(*) == Shift+: -->
-      <autogen>__KeyToKey__ KeyCode::KEY_7,     VK_SHIFT,           KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7,     MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,           KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Use JIS X 6004</name>
@@ -689,10 +689,10 @@
         JAPANESE_KATAKANA,
         JAPANESE_HALFWIDTH_KANA,
       </inputsourcedetail_only>
-      <autogen>__KeyToKey__ KeyCode::MINUS, VK_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::EQUAL, VK_SHIFT, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
 
       <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::EQUAL</autogen>
       <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::BACKSLASH</autogen>

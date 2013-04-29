@@ -6,8 +6,8 @@
       <name>Change Command+Q to Command+Shift+W</name>
       <appendix>Change Command+Shift_L+Q to Command+Q</appendix>
       <identifier>remap.commandQ2commandW_commandshiftQ2commandQ</identifier>
-      <autogen>__KeyToKey__ KeyCode::Q, VK_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, VK_COMMAND | ModifierFlag::NONE</autogen>
-      <autogen>__KeyToKey__ KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,    KeyCode::W, VK_COMMAND | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,    KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
@@ -15,14 +15,14 @@
       <appendix>(You can adjust the threshold time of holding by</appendix>
       <appendix>"[Holding Key to Key] Holding Threshold" in Key Repeat tab.)</appendix>
       <identifier>remap.holdcommandQ</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::Q, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, VK_COMMAND, Option::NOREPEAT</autogen>
+      <autogen>__HoldingKeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, Option::NOREPEAT</autogen>
     </item>
     <item>
       <name>Press Command+Q twice to Quit Application</name>
       <identifier>remap.doublepresscommandQ</identifier>
-      <autogen>__DoublePressModifier__ KeyCode::Q, VK_COMMAND | ModifierFlag::NONE,
+      <autogen>__DoublePressModifier__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
         KeyCode::VK_NONE,
-        KeyCode::Q, VK_COMMAND
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND
       </autogen>
     </item>
     <item><name>──────────────────────────────</name></item>

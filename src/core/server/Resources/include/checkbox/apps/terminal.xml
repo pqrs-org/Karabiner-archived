@@ -43,37 +43,37 @@
         <name>Control+Delete to Control_L+H</name>
         <identifier>remap.app_term_controldelete2controlLh</identifier>
         <only>TERMINAL</only>
-        <autogen>__KeyToKey__ KeyCode::DELETE, VK_CONTROL, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
       </item>
       <item>
         <name>Option+Delete to Control_L+H</name>
         <identifier>remap.app_term_optiondelete2controlLh</identifier>
         <only>TERMINAL</only>
-        <autogen>__KeyToKey__ KeyCode::DELETE, VK_OPTION, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
       </item>
       <item>
         <name>Shift+Delete to Control_L+H</name>
         <identifier>remap.app_term_shiftdelete2controlLh</identifier>
         <only>TERMINAL</only>
-        <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::H, ModifierFlag::CONTROL_L</autogen>
       </item>
       <item>
         <name>Control+Delete to Delete</name>
         <identifier>remap.app_term_controldelete2delete</identifier>
         <only>TERMINAL</only>
-        <autogen>__KeyToKey__ KeyCode::DELETE, VK_CONTROL, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>Option+Delete to Delete</name>
         <identifier>remap.app_term_optiondelete2delete</identifier>
         <only>TERMINAL</only>
-        <autogen>__KeyToKey__ KeyCode::DELETE, VK_OPTION, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>Shift+Delete to Delete</name>
         <identifier>remap.app_term_shiftdelete2delete</identifier>
         <only>TERMINAL</only>
-        <autogen>__KeyToKey__ KeyCode::DELETE, VK_SHIFT, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::DELETE</autogen>
       </item>
     </item>
     <item>
@@ -94,7 +94,7 @@
         <name>Control+Shift+Slash(/) to Delete</name>
         <identifier>remap.app_term_controlshiftslash2delete</identifier>
         <only>TERMINAL</only>
-        <autogen>__KeyToKey__ KeyCode::SLASH, VK_CONTROL | VK_SHIFT, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::SLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>Control+Slash(/) to Control+Underscore(_)</name>
@@ -110,12 +110,12 @@
       <only>TERMINAL</only>
       <autogen>
         __KeyToKey__
-        KeyCode::CURSOR_LEFT, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
         KeyCode::A, ModifierFlag::CONTROL_L
       </autogen>
       <autogen>
         __KeyToKey__
-        KeyCode::CURSOR_RIGHT, VK_COMMAND | ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
         KeyCode::E, ModifierFlag::CONTROL_L
       </autogen>
     </item>
@@ -144,15 +144,15 @@
       <name>Change Option+y to F18</name>
       <only>TERMINAL</only>
       <identifier>remap.app_term_optionY2f18</identifier>
-      <autogen>__KeyToKey__ KeyCode::Y, VK_OPTION, KeyCode::F18</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::F18</autogen>
     </item>
     <item>
       <name>Switch next and prev tab in terminal with shift and arrows (like Gnome term)</name>
       <appendix>(Shift+left|right to Command+{|})</appendix>
       <identifier>remap.app_term_shift_arrow_terminal_tab_change</identifier>
       <only>TERMINAL</only>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  VK_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_LEFT,  ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::BRACKET_LEFT,  ModifierFlag::COMMAND_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
     </item>
     <item>
       <name>Enable meta keys movement (command/option + left,right,delete,backspace)</name>

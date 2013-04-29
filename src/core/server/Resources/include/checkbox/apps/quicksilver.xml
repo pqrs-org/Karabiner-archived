@@ -13,9 +13,9 @@
       <appendix></appendix>
       <identifier vk_config="true">notsave.quicksilver_mode</identifier>
       <autogen>__ShowStatusMessage__ Quicksilver</autogen>
-      <autogen>__KeyToKey__ KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
-      <autogen>__KeyToKey__ KeyCode::I,            VK_CONTROL, KeyCode::TAB</autogen>
-      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+      <autogen>__KeyToKey__ KeyCode::M,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+      <autogen>__KeyToKey__ KeyCode::I,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
       <autogen>__KeyToKey__ KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
       <autogen>__KeyToKey__ KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
       <block>
@@ -30,7 +30,7 @@
       </block>
       <block>
         <config_only>remap.commandspace_to_quicksilver_mode</config_only>
-        <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, VK_COMMAND, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_CONFIG_FORCE_OFF_notsave_quicksilver_mode</autogen>
       </block>
     </item>
     <item>
@@ -50,7 +50,7 @@
     <item>
       <name>Command+Space to Quicksilver Mode</name>
       <identifier>remap.commandspace_to_quicksilver_mode</identifier>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, VK_COMMAND, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_CONFIG_FORCE_ON_notsave_quicksilver_mode</autogen>
     </item>
   </item>
 </root>

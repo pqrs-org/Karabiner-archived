@@ -1,24 +1,48 @@
 <?xml version="1.0"?>
 <root>
   <!-- retain -->
-  <autogen>__KeyToKey__ KeyCode::P, VK_CONTROL | VK_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL | VK_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::B, VK_CONTROL | VK_SHIFT, KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL | VK_SHIFT, KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::A, VK_CONTROL | VK_SHIFT, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::E, VK_CONTROL | VK_SHIFT, KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::P, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::N, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::B, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::F, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::E, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+  </autogen>
 
-  <autogen>__KeyToKey__ KeyCode::P, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::N, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::B, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::F, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::A, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::E, VK_COMMAND | VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
 
-  <autogen>__KeyToKey__ KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-  <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-  <autogen>__KeyToKey__ KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-  <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-  <autogen>__KeyToKey__ KeyCode::A, VK_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::E, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP</autogen>
+  <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+  <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+  <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+  <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
 </root>

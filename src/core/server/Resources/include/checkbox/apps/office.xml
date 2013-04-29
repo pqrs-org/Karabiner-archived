@@ -6,18 +6,18 @@
       <name>Emacs bindings for Excel</name>
       <identifier>remap.app_excel_emacs_bindings</identifier>
       <only>EXCEL</only>
-      <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-      <autogen>__KeyToKey__ KeyCode::B, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>__KeyToKey__ KeyCode::P, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-      <autogen>__KeyToKey__ KeyCode::A, VK_CONTROL, KeyCode::HOME</autogen>
-      <autogen>__KeyToKey__ KeyCode::E, VK_CONTROL, KeyCode::END</autogen>
-      <autogen>__KeyToKey__ KeyCode::D, VK_CONTROL, KeyCode::FORWARD_DELETE</autogen>
-      <autogen>__KeyToKey__ KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
-      <autogen>__KeyToKey__ KeyCode::K, VK_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
-      <autogen>__KeyToKey__ KeyCode::J, VK_CONTROL, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::M, VK_CONTROL, KeyCode::RETURN</autogen>
-      <autogen>__KeyToKey__ KeyCode::RETURN, VK_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::HOME</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::H, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
+      <autogen>__KeyToKey__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::RETURN, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Windows-like operation</name>
@@ -88,7 +88,7 @@
           <appendix>(Change Control+Shift+Plus to Control+i)</appendix>
           <identifier>remap.app_excel_control_shift_plus</identifier>
           <only>EXCEL</only>
-          <autogen>__KeyToKey__ KeyCode::EQUAL, VK_CONTROL | VK_SHIFT | ModifierFlag::NONE, KeyCode::I, VK_CONTROL</autogen>
+          <autogen>__KeyToKey__ KeyCode::EQUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
         </item>
       </item>
     </item>
