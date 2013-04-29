@@ -56,7 +56,7 @@
         <appendix>(+ When you type Command_L only, send EISUU)</appendix>
         <appendix>(+ When you type Any modifiers+Command_L only, send EISUU)</appendix>
         <identifier>remap.jis_commandL2commandL_eisuu_ex</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, VK_MOD_ANY, KeyCode::COMMAND_L, VK_MOD_ANY, KeyCode::JIS_EISUU</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAGS_ANY, KeyCode::COMMAND_L, MODIFIERFLAGS_ANY, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
         <name>Command_L to Command_L</name>
@@ -141,7 +141,7 @@
         <name>Command_R to KANA</name>
         <appendix>(+ Any modifiers+Command_R to KANA)</appendix>
         <identifier>remap.jis_commandR2kana_ex</identifier>
-        <autogen>__KeyToKey__ KeyCode::COMMAND_R, VK_MOD_ANY, KeyCode::JIS_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_R, MODIFIERFLAGS_ANY, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
         <name>Command_R to Shift_L+KANA</name>

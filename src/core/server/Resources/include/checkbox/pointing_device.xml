@@ -291,7 +291,7 @@
         <item>
           <name>Strip any modifiers from ScrollWheel</name>
           <identifier>remap.pointing_strip_any</identifier>
-          <autogen>__StripModifierFromScrollWheel__ VK_MOD_ANY</autogen>
+          <autogen>__StripModifierFromScrollWheel__ MODIFIERFLAGS_ANY</autogen>
         </item>
       </item>
     </item>
