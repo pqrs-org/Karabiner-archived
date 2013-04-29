@@ -11,20 +11,20 @@
     <item>
       <name>Option+AEIUO to àèìùò on "Italian Input Source"</name>
       <identifier>remap.italian_optionAEIUO_grave_italian</identifier>
-      <autogen>__KeyToKey__ KeyCode::A, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::A</autogen>
-      <autogen>__KeyToKey__ KeyCode::E, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::E</autogen>
-      <autogen>__KeyToKey__ KeyCode::I, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::I</autogen>
-      <autogen>__KeyToKey__ KeyCode::U, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::U</autogen>
-      <autogen>__KeyToKey__ KeyCode::O, VK_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::O</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::A</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::E</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::I</autogen>
+      <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::U</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::O</autogen>
     </item>
     <item>
       <name>Option+AEIUO to àèìùò on "U.S. Input Source"</name>
       <identifier>remap.italian_optionAEIUO_grave_us</identifier>
-      <autogen>__KeyToKey__ KeyCode::A, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::A</autogen>
-      <autogen>__KeyToKey__ KeyCode::E, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::E</autogen>
-      <autogen>__KeyToKey__ KeyCode::I, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::I</autogen>
-      <autogen>__KeyToKey__ KeyCode::U, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::U</autogen>
-      <autogen>__KeyToKey__ KeyCode::O, VK_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::O</autogen>
+      <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::A</autogen>
+      <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::E</autogen>
+      <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::I</autogen>
+      <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::U</autogen>
+      <autogen>__KeyToKey__ KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::O</autogen>
     </item>
     <item>
       <name>KeyPad Comma(,) to Dot(.) on "Italian Pro Input Source"</name>

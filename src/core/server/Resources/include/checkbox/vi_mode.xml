@@ -46,13 +46,13 @@
       <name>Command_R+g/G to Home/End</name>
       <identifier>option.vimode_gG</identifier>
       <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::HOME</autogen>
-      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R | VK_SHIFT, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::END</autogen>
     </item>
     <item>
       <name>Control_L+g/G to Home/End</name>
       <identifier>option.vimode_control_gG</identifier>
       <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::CONTROL_L | ModifierFlag::NONE, KeyCode::HOME</autogen>
-      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::CONTROL_L | VK_SHIFT, KeyCode::END</autogen>
+      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::CONTROL_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::END</autogen>
     </item>
     <item>
       <name>Command_R+bf to PageUp/PageDown</name>
@@ -70,13 +70,13 @@
       <name>Command_R+0$ to Command+Left/Right</name>
       <identifier>option.vimode_0dollar</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::COMMAND_R, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::COMMAND_R | VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::COMMAND_R | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Control_L+0$ to Command+Left/Right</name>
       <identifier>option.vimode_control_0dollar</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::CONTROL_L, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::CONTROL_L | VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::CONTROL_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_L+hjkl to Option+Left/Down/Up/Right</name>

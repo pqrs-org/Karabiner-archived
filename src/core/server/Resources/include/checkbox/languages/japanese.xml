@@ -90,7 +90,7 @@
         <appendix>(+ When you type Command_L only, send EISUU)</appendix>
         <appendix>(+ When you type Shift+Command_L only, send ESCAPE)</appendix>
         <identifier>remap.jis_commandL2controlL_eisuu_escape</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
@@ -99,7 +99,7 @@
         <appendix>(+ When you type Command_R+Command_L only, toggle Complete Vi Mode)</appendix>
         <appendix>(+ When you type Shift+Command_L only, send ESCAPE)</appendix>
         <identifier>remap.jis_commandL2controlL_eisuu_vimode_escape</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
       </item>
@@ -173,7 +173,7 @@
         <appendix>(+ When you type Command_R only, send KANA)</appendix>
         <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
         <identifier>remap.jis_commandR2commandR_kana_return</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
@@ -182,8 +182,8 @@
         <appendix>(+ When you type Control+Command_R only, toggle Complete Vi Mode)</appendix>
         <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
         <identifier>remap.jis_commandR2commandR_kana_vimode_return</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, VK_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
@@ -197,7 +197,7 @@
         <appendix>(+ When you type Command_R only, send KANA)</appendix>
         <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
         <identifier>remap.jis_commandR2optionR_kana_return</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, VK_SHIFT, KeyCode::OPTION_R, VK_SHIFT, KeyCode::RETURN</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::RETURN</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::OPTION_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
@@ -315,7 +315,7 @@
       <item>
         <name>Command+Space to KANA/EISUU (toggle)</name>
         <identifier>remap.jis_commandSpace2toggle_kana_eisuu</identifier>
-        <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
       </item>
       <item>
         <name>「左コマンド+スペース」を「英数」、「右コマンド+スペース」を「かな」</name>
@@ -327,20 +327,20 @@
       <item>
         <name>Shift+Space to KANA/EISUU (toggle)</name>
         <identifier>remap.jis_shiftSpace2toggle_kana_eisuu</identifier>
-        <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
       </item>
       <item>
         <name>Shift+Space to KANA/EISUU (toggle) (except Emacs.app)</name>
         <identifier>remap.jis_shiftSpace2toggle_kana_eisuu_ex_emacs</identifier>
         <not>EMACS</not>
-        <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
       </item>
       <item>
         <name>Shift+Space to Equal</name>
         <appendix>(日本語入力時には無効)</appendix>
         <identifier>remap.jis_shiftSpace2equal</identifier>
         <inputsource_not>JAPANESE</inputsource_not>
-        <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::EQUAL</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::EQUAL</autogen>
       </item>
     </item>
     <item>
@@ -387,7 +387,7 @@
         <appendix>(+ When you type Shift+EISUU only, send Escape)</appendix>
         <appendix>(+ When you type EISUU only, send EISUU)</appendix>
         <identifier>remap.jis_eisuu2controlL_eisuu_escape</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
@@ -396,7 +396,7 @@
         <appendix>(+ When you type Command_R+EISUU only, toggle Complete Vi Mode)</appendix>
         <appendix>(+ When you type EISUU only, send EISUU)</appendix>
         <identifier>remap.jis_eisuu2controlL_eisuu_vimode_escape</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, VK_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
       </item>
@@ -435,7 +435,7 @@
       <item>
         <name>Command+EISUU to EISUU</name>
         <identifier>remap.jis_commandEisuu2eisuu</identifier>
-        <autogen>__KeyToKey__ KeyCode::JIS_EISUU, VK_COMMAND, KeyCode::JIS_EISUU</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
         <name>EISUU to Escape</name>
@@ -556,7 +556,7 @@
         <appendix>(+ When you type Shift+KANA only, send Return)</appendix>
         <appendix>(+ When you type KANA only, send KANA)</appendix>
         <identifier>remap.jis_kana2commandR_kana_return</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
@@ -565,8 +565,8 @@
         <appendix>(+ When you type Control+KANA only, toggle Complete Vi Mode)</appendix>
         <appendix>(+ When you type KANA only, send KANA)</appendix>
         <identifier>remap.jis_kana2commandR_kana_vimode_return</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, VK_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, VK_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
@@ -621,7 +621,7 @@
       <item>
         <name>Command+KANA to KANA</name>
         <identifier>remap.jis_commandKana2kana</identifier>
-        <autogen>__KeyToKey__ KeyCode::JIS_KANA, VK_COMMAND, KeyCode::JIS_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
         <name>KANA to Return</name>
@@ -646,7 +646,7 @@
       <item>
         <name>Shift+KANA to EISUU</name>
         <identifier>remap.jis_shiftKana2eisuu</identifier>
-        <autogen>__KeyToKey__ KeyCode::JIS_KANA, VK_SHIFT, KeyCode::JIS_EISUU</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
         <name>Use KANA as KANA/EISUU (toggle)</name>
@@ -732,7 +732,7 @@
         <name>JIS Yen(¥) to Forward Delete</name>
         <appendix>(+ Shift+JIS Yen to Pipe(|))</appendix>
         <identifier>remap.jis_yen2forwarddelete_pipe</identifier>
-        <autogen>__KeyToKey__ KeyCode::JIS_YEN, VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_YEN, VK_SHIFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_YEN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::JIS_YEN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>__KeyToKey__ KeyCode::JIS_YEN, KeyCode::FORWARD_DELETE</autogen>
       </item>
     </item>
@@ -741,17 +741,17 @@
       <item>
         <name>Shift+0 to Backslash(\)</name>
         <identifier>remap.jis_shift0_to_backslash</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_0, VK_SHIFT, KeyCode::VK_JIS_BACKSLASH</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_JIS_BACKSLASH</autogen>
       </item>
       <item>
         <name>Shift+0 to JIS Yen(¥)</name>
         <identifier>remap.jis_shift0_to_yen</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_0, VK_SHIFT, KeyCode::JIS_YEN</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_YEN</autogen>
       </item>
       <item>
         <name>Shift+0 to Underscore(Ro)</name>
         <identifier>remap.jis_shift0_to_underscore</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_0, VK_SHIFT, KeyCode::JIS_UNDERSCORE</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_UNDERSCORE</autogen>
       </item>
     </item>
     <item>
@@ -760,14 +760,14 @@
         <name>Control+[ to Escape at Japanese Keyboard</name>
         <identifier>option.jis_emacsmode_controlLeftbracket</identifier>
         <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE</autogen>
       </item>
       <item>
         <name>[ex] Option+{|} to Command+{|}</name>
         <identifier>option.jis_emacsmode_ex_option_tab_change</identifier>
         <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, VK_OPTION | VK_SHIFT, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_OPTION | VK_SHIFT, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::COMMAND_L | VK_SHIFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_BRACKET_RIGHT, ModifierFlag::COMMAND_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_BRACKET_LEFT, ModifierFlag::COMMAND_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
       </item>
       <item>
         <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
@@ -777,19 +777,19 @@
             <name>In Emacs, Terminal</name>
             <identifier>option.jis_emacsmode_force_controlLeftbracket_term</identifier>
             <only>EMACS, TERMINAL</only>
-            <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+            <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE</autogen>
           </item>
           <item>
             <name>In X11</name>
             <identifier>option.jis_emacsmode_force_controlLeftbracket_x11</identifier>
             <only>X11</only>
-            <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+            <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE</autogen>
           </item>
           <item>
             <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
             <identifier>option.jis_emacsmode_force_controlLeftbracket_vm</identifier>
             <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-            <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE</autogen>
+            <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE</autogen>
           </item>
         </item>
       </item>
@@ -887,21 +887,21 @@
         <appendix>(Except in Virtual Machine, RDC)</appendix>
         <identifier>remap.jis_controlO2kanaeisuu</identifier>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>__KeyToKey__ KeyCode::O, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
       </item>
       <item>
         <name>Control+Backslash(\) to KANA/EISUU (toggle)</name>
         <appendix>(Except in Virtual Machine, RDC)</appendix>
         <identifier>remap.jis_controlbackslash2kanaeisuu</identifier>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>__KeyToKey__ KeyCode::BACKSLASH, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
       </item>
       <item>
         <name>Control+JIS_YEN(¥) to KANA/EISUU (toggle)</name>
         <appendix>(Except in Virtual Machine, RDC)</appendix>
         <identifier>remap.jis_controljisyen2kanaeisuu</identifier>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>__KeyToKey__ KeyCode::JIS_YEN, VK_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_YEN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
       </item>
     </item>
     <item>
@@ -950,11 +950,11 @@
           <identifier>remap.jis_app_term_shift0_to_f18</identifier>
           <block>
             <only>TERMINAL</only>
-            <autogen>__KeyToKey__ KeyCode::KEY_0, VK_SHIFT, KeyCode::F18</autogen>
+            <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::F18</autogen>
           </block>
           <block>
             <not>TERMINAL</not>
-            <autogen>__KeyToKey__ KeyCode::KEY_0, VK_SHIFT, KeyCode::JIS_YEN</autogen>
+            <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_YEN</autogen>
           </block>
         </item>
         <item>
@@ -1042,11 +1042,11 @@
           <identifier vk_config="true">notsave.jis_quicksilver_mode</identifier>
           <autogen>__ShowStatusMessage__ Quicksilver(J)</autogen>
           <block>
-            <autogen>__KeyToKey__ KeyCode::I,            VK_CONTROL, KeyCode::TAB</autogen>
+            <autogen>__KeyToKey__ KeyCode::I,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
             <!-- ================================================== -->
             <block>
               <config_not>option.jis_quicksilver_mode_recovery_input_source</config_not>
-              <autogen>__KeyToKey__ KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
+              <autogen>__KeyToKey__ KeyCode::M,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
               <autogen>__KeyToKey__ KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
               <autogen>__KeyToKey__ KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode</autogen>
             </block>
@@ -1054,13 +1054,13 @@
               <config_only>option.jis_quicksilver_mode_recovery_input_source</config_only>
               <block>
                 <config_only>notsave.jis_quicksilver_mode_back_to_roman</config_only>
-                <autogen>__KeyToKey__ KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
+                <autogen>__KeyToKey__ KeyCode::M,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
                 <autogen>__KeyToKey__ KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
                 <autogen>__KeyToKey__ KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU</autogen>
               </block>
               <block>
                 <config_not>notsave.jis_quicksilver_mode_back_to_roman</config_not>
-                <autogen>__KeyToKey__ KeyCode::M,            VK_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
+                <autogen>__KeyToKey__ KeyCode::M,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
                 <autogen>__KeyToKey__ KeyCode::ESCAPE,                   KeyCode::ESCAPE, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
                 <autogen>__KeyToKey__ KeyCode::RETURN,                   KeyCode::RETURN, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode, KeyCode::JIS_KANA</autogen>
               </block>
@@ -1198,7 +1198,7 @@
         <identifier>remap.jis_controlItocontrolK</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>__KeyToKey__ KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
       </item>
       <item>
         <name>Control+I to F7 (Control+I でカタカナ変換)</name>
@@ -1206,7 +1206,7 @@
         <identifier>remap.jis_controlItof7</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>__KeyToKey__ KeyCode::I, VK_CONTROL | ModifierFlag::NONE, KeyCode::F7</autogen>
+        <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::F7</autogen>
       </item>
     </item>
     <item>
@@ -1215,14 +1215,14 @@
         <name>Disable Command/Control/Option/Shift+EISUU, Command/Control/Option/Shift+KANA</name>
         <appendix>(to prevent the system hangup at Snow Leopard)</appendix>
         <identifier>option.jis_drop_eisuukana_with_modifiers</identifier>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, VK_COMMAND</autogen>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  VK_COMMAND</autogen>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, VK_CONTROL</autogen>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  VK_CONTROL</autogen>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, VK_OPTION</autogen>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  VK_OPTION</autogen>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, VK_SHIFT</autogen>
-        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  VK_SHIFT</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
       </item>
     </item>
   </item>

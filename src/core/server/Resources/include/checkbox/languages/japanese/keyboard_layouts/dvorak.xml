@@ -3,18 +3,18 @@
   <!-- If ModifierFlag::FN is pressed, retain keys to convert Fn+jkl to 123 (numpad) -->
   <modifier_not>ModifierFlag::FN</modifier_not>
 
-  <autogen>__KeyToKey__ KeyCode::KEY_2,   VK_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_6,   VK_SHIFT, KeyCode::JIS_HAT                    </autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_7,   VK_SHIFT, KeyCode::KEY_6,            VK_SHIFT </autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_8,   VK_SHIFT, KeyCode::JIS_COLON,        VK_SHIFT </autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_9,   VK_SHIFT, KeyCode::KEY_8,            VK_SHIFT </autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_0,   VK_SHIFT, KeyCode::KEY_9,            VK_SHIFT </autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_2,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_ATMARK                 </autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_6,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_HAT                    </autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_7,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_6,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT </autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_8,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_COLON,        MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT </autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_9,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_8,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT </autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_0,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_9,            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT </autogen>
   <autogen>__KeyToKey__ KeyCode::MINUS,             KeyCode::JIS_BRACKET_LEFT           </autogen>
   <autogen>__KeyToKey__ KeyCode::JIS_HAT,           KeyCode::JIS_BRACKET_RIGHT          </autogen>
 
   <!-- ============================================================ -->
   <!-- Q to ' " -->
-  <autogen>__KeyToKey__ KeyCode::Q,                VK_SHIFT, KeyCode::KEY_2,     VK_SHIFT              </autogen>
+  <autogen>__KeyToKey__ KeyCode::Q,                MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_2,     MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT              </autogen>
   <autogen>__KeyToKey__ KeyCode::Q,                          KeyCode::KEY_7,     ModifierFlag::SHIFT_L </autogen>
   <autogen>__KeyToKey__ KeyCode::W,                          KeyCode::COMMA                            </autogen>
   <autogen>__KeyToKey__ KeyCode::E,                          KeyCode::DOT                              </autogen>
@@ -28,7 +28,7 @@
   <!-- @ to / ? -->
   <autogen>__KeyToKey__ KeyCode::JIS_ATMARK,                 KeyCode::SLASH                            </autogen>
   <!-- [ to = + -->
-  <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, VK_SHIFT, KeyCode::SEMICOLON, VK_SHIFT              </autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT              </autogen>
   <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_LEFT,           KeyCode::MINUS,     ModifierFlag::SHIFT_L </autogen>
 
   <!-- ============================================================ -->
@@ -41,14 +41,14 @@
   <autogen>__KeyToKey__ KeyCode::K,                           KeyCode::T                         </autogen>
   <autogen>__KeyToKey__ KeyCode::L,                           KeyCode::N                         </autogen>
   <autogen>__KeyToKey__ KeyCode::SEMICOLON,                   KeyCode::S                         </autogen>
-  <autogen>__KeyToKey__ KeyCode::JIS_COLON,         VK_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_COLON,         MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_UNDERSCORE            </autogen>
   <autogen>__KeyToKey__ KeyCode::JIS_COLON,                   KeyCode::MINUS                     </autogen>
-  <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, VK_SHIFT, KeyCode::JIS_YEN,         VK_SHIFT </autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_YEN,         MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT </autogen>
   <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT,           KeyCode::VK_JIS_BACKSLASH          </autogen>
 
   <!-- ============================================================ -->
   <!-- Z to ; : -->
-  <autogen>__KeyToKey__ KeyCode::Z,              VK_SHIFT, KeyCode::JIS_COLON                         </autogen>
+  <autogen>__KeyToKey__ KeyCode::Z,              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_COLON                         </autogen>
   <autogen>__KeyToKey__ KeyCode::Z,                        KeyCode::SEMICOLON                         </autogen>
   <autogen>__KeyToKey__ KeyCode::X,                        KeyCode::Q                                 </autogen>
   <autogen>__KeyToKey__ KeyCode::C,                        KeyCode::J                                 </autogen>
@@ -58,6 +58,6 @@
   <autogen>__KeyToKey__ KeyCode::COMMA,                    KeyCode::W                                 </autogen>
   <autogen>__KeyToKey__ KeyCode::DOT,                      KeyCode::V                                 </autogen>
   <autogen>__KeyToKey__ KeyCode::SLASH,                    KeyCode::Z                                 </autogen>
-  <autogen>__KeyToKey__ KeyCode::JIS_UNDERSCORE, VK_SHIFT, KeyCode::JIS_HAT,    VK_SHIFT              </autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_UNDERSCORE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::JIS_HAT,    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT              </autogen>
   <autogen>__KeyToKey__ KeyCode::JIS_UNDERSCORE,           KeyCode::JIS_ATMARK, ModifierFlag::SHIFT_L </autogen>
 </root>

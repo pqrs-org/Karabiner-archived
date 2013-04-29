@@ -11,10 +11,10 @@
       <appendix>(except Emacs, Terminal, Virtual, RDC, X11, Eclipse)</appendix>
       <identifier>option.dvorak_emacsmode_controlPNBF</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>__KeyToKey__ KeyCode::R, VK_CONTROL, KeyCode::CURSOR_UP</autogen>
-      <autogen>__KeyToKey__ KeyCode::Y, VK_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
-      <autogen>__KeyToKey__ KeyCode::L, VK_CONTROL, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT</autogen>
     </item>
     <item>
       <name>Dvorak's Control+H to Delete</name>
@@ -31,7 +31,7 @@
       <appendix>(except Emacs, Terminal, X11, virtual machine, RDC, Eclipse)</appendix>
       <identifier>option.dvorak_emacsmode_ex_controlW</identifier>
       <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>__KeyToKey__ KeyCode::COMMA, VK_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
 
     <item>

@@ -45,7 +45,7 @@
     <item>
       <name>Control+Backquote(`) to Escape</name>
       <identifier>remap.controlbackquote_to_escape</identifier>
-      <autogen>__KeyToKey__ KeyCode::BACKQUOTE, VK_CONTROL, KeyCode::ESCAPE</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKQUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE</autogen>
     </item>
     <item>
       <name>Fn+Backquote(`) to Fn+Enter</name>

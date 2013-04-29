@@ -17,19 +17,19 @@
   <autogen>__KeyToKey__ KeyCode::JIS_HAT, ModifierFlag::NONE, KeyCode::JIS_HAT, ModifierFlag::OPTION_L</autogen>
   <autogen>__KeyToKey__ KeyCode::JIS_YEN, ModifierFlag::NONE, KeyCode::JIS_YEN, ModifierFlag::OPTION_L</autogen>
 
-  <autogen>__KeyToKey__ KeyCode::KEY_1,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_2,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_3,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_4,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_5,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_6,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_7,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_8,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_9,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::KEY_0,   VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::MINUS,   VK_SHIFT | ModifierFlag::NONE, KeyCode::MINUS,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::JIS_HAT, VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_HAT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  <autogen>__KeyToKey__ KeyCode::JIS_YEN, VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_YEN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_1,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_2,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_3,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_4,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_5,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_6,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_7,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_8,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_9,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEY_0,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::MINUS,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::MINUS,   ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_HAT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::JIS_HAT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  <autogen>__KeyToKey__ KeyCode::JIS_YEN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::JIS_YEN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
 
   <autogen>__SimultaneousKeyPresses__ {{RIGHT_THUMB}}, KeyCode::KEY_1, KeyCode::SLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
   <autogen>__SimultaneousKeyPresses__ {{RIGHT_THUMB}}, KeyCode::KEY_2, KeyCode::SLASH, ModifierFlag::OPTION_L</autogen>

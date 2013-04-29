@@ -34,19 +34,19 @@
       <name>Change Ctrl+Q to Alt+F4</name>
       <only>VIRTUALMACHINE</only>
       <identifier>remap.Ctrl_Q_to_Alt_F4</identifier>
-      <autogen>__KeyToKey__ KeyCode::Q, VK_CONTROL, KeyCode::F4, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::F4, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Change Command+Space to Option+Backquote(`)</name>
       <identifier>remap.app_vm_commandspace2optionbackquote</identifier>
       <only>VIRTUALMACHINE</only>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Change Command+Space to Option_L+Shift_L</name>
       <identifier>remap.app_vm_commandspace2optionLshiftL</identifier>
       <only>VIRTUALMACHINE</only>
-      <autogen>__KeyToKey__ KeyCode::SPACE, VK_COMMAND, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Disable a tapping feature of the Windows key.</name>

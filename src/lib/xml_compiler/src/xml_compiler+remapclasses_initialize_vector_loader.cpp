@@ -131,8 +131,8 @@ namespace pqrs {
       } info[] = {
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
-        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT",   { "ModifierFlag::SHIFT_L", "ModifierFlag::SHIFT_R"     } },
-        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",  { "ModifierFlag::OPTION_L", "ModifierFlag::OPTION_R"   } },
+        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },
+        { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",  { "ModifierFlag::OPTION_L",  "ModifierFlag::OPTION_R"  } },
         { "VK_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
         { "VK_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
         { "VK_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },

@@ -44,12 +44,12 @@
   <!-- 左手 下段 -->
   <autogen>__KeyToKey__ KeyCode::Z, ModifierFlag::NONE,            KeyCode::DOT, ModifierFlag::OPTION_L</autogen>
   <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE,            KeyCode::V</autogen>
-  <autogen>__KeyToKey__ KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::V, KeyCode::JIS_BRACKET_LEFT</autogen>
+  <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::V, KeyCode::JIS_BRACKET_LEFT</autogen>
   <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::NONE,            KeyCode::R</autogen>
   <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::NONE,            KeyCode::KEY_2</autogen>
-  <autogen>__KeyToKey__ KeyCode::V, VK_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::JIS_BRACKET_LEFT</autogen>
+  <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::JIS_BRACKET_LEFT</autogen>
   <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::NONE,            KeyCode::JIS_HAT</autogen>
-  <autogen>__KeyToKey__ KeyCode::B, VK_SHIFT | ModifierFlag::NONE, KeyCode::JIS_HAT, KeyCode::JIS_BRACKET_LEFT</autogen>
+  <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::JIS_HAT, KeyCode::JIS_BRACKET_LEFT</autogen>
   <!-- 左手 下段 (順親指シフト) -->
   <autogen>__SimultaneousKeyPresses__ {{LEFT_THUMB}}, KeyCode::Z, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
   <autogen>__SimultaneousKeyPresses__ {{LEFT_THUMB}}, KeyCode::X, KeyCode::JIS_YEN</autogen>
@@ -66,7 +66,7 @@
 
   <!-- 右手 中段 -->
   <autogen>__KeyToKey__ KeyCode::H,         ModifierFlag::NONE,            KeyCode::F</autogen>
-  <autogen>__KeyToKey__ KeyCode::H,         VK_SHIFT | ModifierFlag::NONE, KeyCode::F, KeyCode::JIS_BRACKET_LEFT</autogen>
+  <autogen>__KeyToKey__ KeyCode::H,         MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::F, KeyCode::JIS_BRACKET_LEFT</autogen>
   <autogen>__KeyToKey__ KeyCode::J,         ModifierFlag::NONE,            KeyCode::S</autogen>
   <autogen>__KeyToKey__ KeyCode::K,         ModifierFlag::NONE,            KeyCode::G</autogen>
   <autogen>__KeyToKey__ KeyCode::L,         ModifierFlag::NONE,            KeyCode::E</autogen>
@@ -117,7 +117,7 @@
   <autogen>__KeyToKey__ KeyCode::M,     ModifierFlag::NONE,            KeyCode::C</autogen>
   <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::NONE,            KeyCode::COMMA</autogen>
   <autogen>__KeyToKey__ KeyCode::DOT,   ModifierFlag::NONE,            KeyCode::MINUS</autogen>
-  <autogen>__KeyToKey__ KeyCode::DOT,   VK_SHIFT | ModifierFlag::NONE, KeyCode::MINUS, KeyCode::JIS_BRACKET_LEFT</autogen>
+  <autogen>__KeyToKey__ KeyCode::DOT,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::MINUS, KeyCode::JIS_BRACKET_LEFT</autogen>
   <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::NONE,            KeyCode::SLASH, ModifierFlag::SHIFT_L</autogen>
   <!-- _ - 対応キーなし -->
   <!-- 右手 下段 (順親指シフト) -->

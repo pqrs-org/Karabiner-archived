@@ -36,11 +36,11 @@
 
         <!-- 0, Shift+4 -->
         <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
 
         <!-- C-f, C-b -->
-        <autogen>__KeyToKey__ KeyCode::F, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
-        <autogen>__KeyToKey__ KeyCode::B, VK_CONTROL, KeyCode::PAGEUP</autogen>
+        <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEDOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEUP</autogen>
 
         <!-- B, E -->
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
@@ -50,7 +50,7 @@
         <autogen>__KeyToKey__ KeyCode::W, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
 
         <!-- G, Shift+G -->
-        <autogen>__KeyToKey__ KeyCode::G, VK_SHIFT, KeyCode::END</autogen>
+        <autogen>__KeyToKey__ KeyCode::G, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::END</autogen>
         <autogen>__KeyToKey__ KeyCode::G, KeyCode::HOME</autogen>
 
         <!-- SLASH, N -->
@@ -58,7 +58,7 @@
         <autogen>__KeyToKey__ KeyCode::N, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
 
         <!-- X -->
-        <autogen>__KeyToKey__ KeyCode::X, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
         <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
 
         <!-- F, I -->
@@ -75,11 +75,11 @@
 
         <!-- 0, Shift+4 -->
         <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, VK_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
 
         <!-- C-f, C-b -->
-        <autogen>__KeyToKey__ KeyCode::Y, VK_CONTROL, KeyCode::PAGEDOWN</autogen>
-        <autogen>__KeyToKey__ KeyCode::N, VK_CONTROL, KeyCode::PAGEUP</autogen>
+        <autogen>__KeyToKey__ KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEDOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEUP</autogen>
 
         <!-- B, E -->
         <autogen>__KeyToKey__ KeyCode::N, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
@@ -89,7 +89,7 @@
         <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
 
         <!-- G, Shift+G -->
-        <autogen>__KeyToKey__ KeyCode::U, VK_SHIFT, KeyCode::END</autogen>
+        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::END</autogen>
         <autogen>__KeyToKey__ KeyCode::U, KeyCode::HOME</autogen>
 
         <!-- SLASH, N -->
@@ -97,7 +97,7 @@
         <autogen>__KeyToKey__ KeyCode::L, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
 
         <!-- X -->
-        <autogen>__KeyToKey__ KeyCode::B, VK_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
         <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
 
         <!-- F, I -->
@@ -187,12 +187,12 @@
     <item>
       <name>Option+V to toggle Vi Mode</name>
       <identifier>option.vimode_toggle_optionV</identifier>
-      <autogen>__KeyToKey__ KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
     </item>
     <item>
       <name>Option+V to turn on Vi Mode</name>
       <identifier>option.vimode_turnon_optionV</identifier>
-      <autogen>__KeyToKey__ KeyCode::V, VK_OPTION, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_CONFIG_FORCE_ON_notsave_complete_vimode</autogen>
     </item>
     <item>
       <name>Disable Shift_L</name>

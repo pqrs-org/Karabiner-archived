@@ -28,22 +28,22 @@
       <item>
         <name>Control+RightClick+CursorMove to ScrollWheel</name>
         <identifier>remap.pointing_relative_controlRightClick_to_scroll</identifier>
-        <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT, VK_CONTROL</autogen>
+        <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
       </item>
       <item>
         <name>Shift+RightClick+CursorMove to ScrollWheel</name>
         <identifier>remap.pointing_relative_shiftRightClick_to_scroll</identifier>
-        <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT, VK_SHIFT</autogen>
+        <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
       </item>
       <item>
         <name>Command+Control+CursorMove to ScrollWheel</name>
         <identifier>remap.pointing_relative_commandControl_to_scroll</identifier>
-        <autogen>__PointingRelativeToScroll__ PointingButton::NONE, VK_COMMAND | VK_CONTROL</autogen>
+        <autogen>__PointingRelativeToScroll__ PointingButton::NONE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
       </item>
       <item>
         <name>Command+CursorMove to ScrollWheel</name>
         <identifier>remap.pointing_relative_Control_to_scroll</identifier>
-        <autogen>__PointingRelativeToScroll__ PointingButton::NONE, VK_COMMAND</autogen>
+        <autogen>__PointingRelativeToScroll__ PointingButton::NONE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
       </item>
       <item>
         <name>Fn+CursorMove to ScrollWheel</name>
@@ -53,7 +53,7 @@
       <item>
         <name>Option+CursorMove to ScrollWheel</name>
         <identifier>remap.pointing_relative_option_to_scroll</identifier>
-        <autogen>__PointingRelativeToScroll__ PointingButton::NONE, VK_OPTION</autogen>
+        <autogen>__PointingRelativeToScroll__ PointingButton::NONE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
       </item>
       <item>
         <name>(Simultaneous) LeftClick+RightClick+CursorMove to ScrollWheel</name>
@@ -98,12 +98,12 @@
       <item>
         <name>Command+LeftClick to Mouse Button 4</name>
         <identifier>remap.pointing_cmdLeftclick2button4</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, VK_COMMAND, PointingButton::BUTTON4</autogen>
+        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, PointingButton::BUTTON4</autogen>
       </item>
       <item>
         <name>Control+LeftClick to MiddleClick</name>
         <identifier>remap.pointing_controlLeftclick2middleclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, VK_CONTROL, PointingButton::MIDDLE</autogen>
+        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::MIDDLE</autogen>
       </item>
       <item>
         <name>Fn+LeftClick to MiddleClick</name>
@@ -118,7 +118,7 @@
       <item>
         <name>Option+LeftClick to MiddleClick</name>
         <identifier>remap.pointing_optionLeftclick2middleclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, VK_OPTION, PointingButton::MIDDLE</autogen>
+        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, PointingButton::MIDDLE</autogen>
       </item>
       <item>
         <name>RightClick to LeftClick</name>
@@ -128,7 +128,7 @@
       <item>
         <name>Control+RightClick to Double-LeftClick</name>
         <identifier>remap.pointing_controlrightclick2doubleleftclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::RIGHT, VK_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
+        <autogen>__PointingButtonToPointingButton__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
       </item>
       <item>
         <name>Fn+RightClick to Mouse Button 5</name>
@@ -259,34 +259,34 @@
       <item>
         <name>Change Control+ScrollWheel to Command+ScrollWheel</name>
         <identifier>remap.pointing_control_scrollwheel_to_command_scrollwheel</identifier>
-        <autogen>__ScrollWheelToScrollWheel__ VK_CONTROL, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__ScrollWheelToScrollWheel__ MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Change Command+ScrollWheel to Control+ScrollWheel</name>
         <identifier>remap.pointing_command_scrollwheel_to_control_scrollwheel</identifier>
-        <autogen>__ScrollWheelToScrollWheel__ VK_COMMAND, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__ScrollWheelToScrollWheel__ MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::CONTROL_L</autogen>
       </item>
       <item>
         <name>Strip Modifiers</name>
         <item>
           <name>Command+ScrollWheel to ScrollWheel (strip Command)</name>
           <identifier>remap.pointing_strip_command</identifier>
-          <autogen>__StripModifierFromScrollWheel__ VK_COMMAND</autogen>
+          <autogen>__StripModifierFromScrollWheel__ MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
         </item>
         <item>
           <name>Control+ScrollWheel to ScrollWheel (strip Control)</name>
           <identifier>remap.pointing_strip_control</identifier>
-          <autogen>__StripModifierFromScrollWheel__ VK_CONTROL</autogen>
+          <autogen>__StripModifierFromScrollWheel__ MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
         </item>
         <item>
           <name>Option+ScrollWheel to ScrollWheel (strip Option)</name>
           <identifier>remap.pointing_strip_option</identifier>
-          <autogen>__StripModifierFromScrollWheel__ VK_OPTION</autogen>
+          <autogen>__StripModifierFromScrollWheel__ MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
         </item>
         <item>
           <name>Shift+ScrollWheel to ScrollWheel (strip Shift)</name>
           <identifier>remap.pointing_strip_shift</identifier>
-          <autogen>__StripModifierFromScrollWheel__ VK_SHIFT</autogen>
+          <autogen>__StripModifierFromScrollWheel__ MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         </item>
         <item>
           <name>Strip any modifiers from ScrollWheel</name>

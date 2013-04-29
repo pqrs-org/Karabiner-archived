@@ -203,7 +203,7 @@
         <identifier>remap.optionTab2commandTab_TypeMatrixOnly</identifier>
         <block>
           <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-          <autogen>__KeyToKey__ KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
         </block>
       </item>
 
@@ -224,9 +224,9 @@
         <identifier>remap.copy_paste_winstyle3_TypeMatrixOnly</identifier>
         <block>
           <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-          <autogen>__KeyToKey__ KeyCode::PC_INSERT, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::PC_INSERT, VK_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
         </block>
       </item>
       <item>
@@ -237,9 +237,9 @@
         <identifier>remap.copy_paste_winstyle3b_TypeMatrixOnly</identifier>
         <block>
           <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-          <autogen>__KeyToKey__ KeyCode::PC_INSERT, VK_CONTROL, KeyCode::H, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::PC_INSERT, VK_SHIFT, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, VK_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::H, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::U, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
         </block>
       </item>
 
@@ -251,9 +251,9 @@
         <identifier>remap.typematrix_winstyle_zxc_dvorak</identifier>
         <block>
           <device_only>DeviceVendor::TYPEMATRIX,DeviceProduct::TYPEMATRIX_KEYBOARD_0x2030</device_only>
-          <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, VK_SHIFT   | ModifierFlag::NONE, KeyCode::B,   ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::PC_INSERT,      VK_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::PC_INSERT,      VK_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT   | ModifierFlag::NONE, KeyCode::B,   ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::PC_INSERT,      MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::I,   ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::PC_INSERT,      MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT   | ModifierFlag::NONE, KeyCode::DOT, ModifierFlag::COMMAND_L</autogen>
         </block>
       </item>
     </item>
@@ -361,8 +361,8 @@
         <appendix>Map shift-up to up and shift-down to down</appendix>
         <identifier>remap.targus_bluetooth_presenter_fix</identifier>
         <device_only>DeviceVendor::TARGUS,DeviceProduct::TARGUS_BLUETOOTH_PRESENTER</device_only>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_UP, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_DOWN</autogen>
       </item>
     </item>
 

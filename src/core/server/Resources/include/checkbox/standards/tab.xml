@@ -43,13 +43,13 @@
     <item>
       <name>Command+Tab to Expose</name>
       <identifier>remap.commandTab2expose</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND | ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
     </item>
     <item>
       <name>Control+tab to Command+F1 (only in Terminal)</name>
       <only>TERMINAL</only>
       <identifier>remap.ctrltab2cmdf1_onlyterminal</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_CONTROL, KeyCode::F1, VK_COMMAND</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::F1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
     </item>
     <item>
       <name>Command+Tab to switch apps within the same Space</name>
@@ -58,33 +58,33 @@
       <appendix>In Emacs, you need to modify .emacs by mapping Ctrl+F4 to (other-frame))</appendix>
       <identifier>remap.command_tab_to_control_f4</identifier>
       <not>REMOTEDESKTOPCONNECTION,VIRTUALMACHINE</not>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::F4, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Command+Tab to F5</name>
       <identifier>remap.commandTab2f5</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::F5</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::F5</autogen>
     </item>
     <item>
       <name>Option+Tab to F5</name>
       <identifier>remap.optionTab2f5</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_OPTION, KeyCode::F5</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::F5</autogen>
     </item>
     <item>
       <name>Command+Tab to Control+Tab (only in Firefox, Google Chrome, Opera, Safari)</name>
       <identifier>remap.commandTab2controlTab_browser</identifier>
       <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Command+Tab to Option+Tab</name>
       <identifier>remap.commandTab2optionTab</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Control+Tab to Option+Tab</name>
       <identifier>remap.controlTab2optionTab</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_CONTROL, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
 
     <item>
@@ -140,15 +140,15 @@
     <item>
       <name>Option+Tab to Control+Tab</name>
       <identifier>remap.optionTab2controlTab</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_OPTION, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Change Command+Tab to Command+Tab+Option</name>
       <appendix>(Bring app to foreground when you've switched app by Command+Tab.)</appendix>
       <identifier>remap.command_tab_to_command_tab_option</identifier>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND,
-        KeyCode::TAB, VK_COMMAND,
-        KeyCode::VK_STICKY_OPTION_R_FORCE_ON, VK_COMMAND</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::VK_STICKY_OPTION_R_FORCE_ON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::COMMAND_L,
         Option::KEYTOKEY_AFTER_KEYUP, KeyCode::VK_WAIT_100MS, KeyCode::VK_STICKY_OPTION_R_FORCE_OFF</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::COMMAND_R,
@@ -177,7 +177,7 @@
           <replacementvalue>CONTROL_R</replacementvalue>
         </replacementdef>
       </include>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Swap Command+Tab and Option+Tab</name>
@@ -202,7 +202,7 @@
           <replacementvalue>OPTION_R</replacementvalue>
         </replacementdef>
       </include>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Disable Tab</name>

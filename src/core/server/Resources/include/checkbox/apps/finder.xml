@@ -9,7 +9,7 @@
         <appendix>(Change Command+R to Return)</appendix>
         <identifier>remap.app_finder_command_R_to_return</identifier>
         <only>FINDER</only>
-        <autogen>__KeyToKey__ KeyCode::R, VK_COMMAND, KeyCode::RETURN</autogen>
+        <autogen>__KeyToKey__ KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::RETURN</autogen>
       </item>
       <item><name>F2 key ──────────────────────────</name></item>
       <item>
@@ -77,13 +77,13 @@
         <name>Use { to select next file (i.e. up arrow key) ({ to Up-Arrow)</name>
         <only>FINDER</only>
         <identifier>remap.CurlyLBracket_to_UpArrow</identifier>
-        <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_UP</autogen>
       </item>
       <item>
         <name>Use } to select previous file (i.e. down arrow key) (} to Down-Arrow)</name>
         <only>FINDER</only>
         <identifier>remap.CurlyRBracket_to_DArrow</identifier>
-        <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, VK_SHIFT, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_DOWN</autogen>
       </item>
       <item>
         <name>Use [ to collapse folder (i.e. left key) ([ to Left-Arrow)</name>
@@ -120,7 +120,7 @@
         <appendix>  instead of opening.</appendix>
         <identifier>remap.app_finder_switch_open_rename</identifier>
         <only>FINDER</only>
-        <autogen>__KeyToKey__ KeyCode::R, VK_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+        <autogen>__KeyToKey__ KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
         <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
         <autogen>__KeyToKey__ KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
@@ -132,19 +132,19 @@
       <name>Disable Command+D (Duplicate)</name>
       <identifier>remap.app_finder_disable_command_d</identifier>
       <only>FINDER</only>
-      <autogen>__KeyToKey__ KeyCode::D, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
     </item>
     <item>
       <name>Disable Command+L (Make Alias)</name>
       <identifier>remap.app_finder_disable_command_l</identifier>
       <only>FINDER</only>
-      <autogen>__KeyToKey__ KeyCode::L, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
     </item>
     <item>
       <name>Disable Command+T (Add To Sidebar)</name>
       <identifier>remap.app_finder_disable_command_t</identifier>
       <only>FINDER</only>
-      <autogen>__KeyToKey__ KeyCode::T, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
     </item>
   </item>
 </root>

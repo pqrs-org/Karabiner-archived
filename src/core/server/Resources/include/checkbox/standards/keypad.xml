@@ -96,7 +96,7 @@
       <item>
         <name>Control+KeyPad-Dot(.) to Command+X (Cut)</name>
         <identifier>remap.controlDot2commandX</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, VK_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
       </item>
     </item>
     <include path="enter.xml" />
@@ -155,7 +155,7 @@
     <item>
       <name>Control+Keypad_0 to Command+C (Copy)</name>
       <identifier>remap.controlkeypad0_to_commandC</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEYPAD_0, VK_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Shift+Keypad_0 to Command+V (Paste)</name>
@@ -169,12 +169,12 @@
     <item>
       <name>Control+Keypad_1 to Command+Down Arrow</name>
       <identifier>remap.controlkeypad1_to_commandDown</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEYPAD_1, VK_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Control+Keypad_7 to Command+Up Arrow</name>
       <identifier>remap.controlkeypad7_to_commandUp</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEYPAD_7, VK_CONTROL, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Shift+Enter to Equal</name>

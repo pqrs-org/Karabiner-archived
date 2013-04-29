@@ -257,7 +257,7 @@
       <identifier>remap.right_option_to_end_of_line</identifier>
       <block>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, VK_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
       </block>
       <block>

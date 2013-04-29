@@ -40,7 +40,7 @@
         <autogen>{{kom}} {{c}}, {{mex2}},                          {{kex4}}, {{mex2}},               {{s}}LASH</autogen>
         <autogen>{{kom}} {{c}}, {{mex3}},                          {{kex4}}, {{mex3}},               {{g}}, {{h}}</autogen>
         <autogen>{{kom}} {{c}}, {{mex4}},                          {{kex4}}, {{mex4}},               {{w}}, {{h}}</autogen>
-        <autogen>{{kom}} {{c}}, {{mex5}},                          {{kex4}}, {{mex5}},               {{s}}EMICOLON, VK_SHIFT</autogen>
+        <autogen>{{kom}} {{c}}, {{mex5}},                          {{kex4}}, {{mex5}},               {{s}}EMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{kom}} {{c}},                                    {{kex4}},                         {{o}}</autogen>
 
         <autogen>{{kom}} {{d}},                                    {{c}}ONTROL_L,                    {{v}}K_STICKY_CONTROL_L</autogen>
@@ -62,32 +62,32 @@
         <autogen>{{kom}} {{f}}, {{mstl}}|{{mnon}},                 {{kex1}}, {{mstl}},               {{t}}AB</autogen>
         <autogen>{{kom}} {{f}}, {{mstr}},                          {{kex1}}, {{mstr}},               {{f}}ORWARD_DELETE</autogen>
         <autogen>{{kom}} {{f}}, {{mctl}},                          {{kex1}}, {{mctl}},               {{d}}ELETE</autogen>
-        <autogen>{{kom}} {{f}}, {{mctr}}|{{mnon}},                 {{kex1}}, {{mctr}},               {{s}}PACE, VK_CONTROL</autogen>
-        <autogen>{{kom}} {{f}}, {{mex5}}|VK_CONTROL,               {{kex1}},                         {{w}}, {{a}}, {{n}}, {{t}}</autogen>
+        <autogen>{{kom}} {{f}}, {{mctr}}|{{mnon}},                 {{kex1}}, {{mctr}},               {{s}}PACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{kom}} {{f}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{kex1}},                         {{w}}, {{a}}, {{n}}, {{t}}</autogen>
         <autogen>{{kom}} {{f}}, {{mex1}},                          {{kex1}},                         {{m}}, {{m}}</autogen>
         <autogen>{{kom}} {{f}}, {{mex2}},                          {{kex1}}, {{mex2}},               {{o}}, {{u}}</autogen>
-        <autogen>{{kom}} {{f}}, {{mex3}}|{{mstl}},                 {{kex1}}, {{mstl}},               {{e}}SCAPE, {{v}}K_STICKY_SHIFT_L, {{k}}EY_5, VK_SHIFT</autogen>
+        <autogen>{{kom}} {{f}}, {{mex3}}|{{mstl}},                 {{kex1}}, {{mstl}},               {{e}}SCAPE, {{v}}K_STICKY_SHIFT_L, {{k}}EY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{kom}} {{f}}, {{mex3}}|{{mctl}},                 {{kex1}}, {{mctl}},               {{e}}SCAPE, {{x}}</autogen>
-        <autogen>{{kom}} {{f}}, {{mex3}}|{{mctr}},                 {{kex1}}, {{mctr}},               {{x}}, VK_SHIFT, {{e}}SCAPE, {{e}}SCAPE</autogen>
+        <autogen>{{kom}} {{f}}, {{mex3}}|{{mctr}},                 {{kex1}}, {{mctr}},               {{x}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{e}}SCAPE, {{e}}SCAPE</autogen>
         <autogen>{{kom}} {{f}}, {{mex3}},                          {{kex1}},                         {{e}}SCAPE</autogen>
         <autogen>{{kom}} {{f}}, {{mex4}},                          {{kex1}},                         {{u}}, {{n}}</autogen>
         <autogen>{{kom}} {{f}}, {{mex5}},                          {{kex1}},                         {{a}}, {{n}}, {{t}}</autogen>
         <autogen>{{kom}} {{f}},                                    {{kex1}},                         {{s}}PACE</autogen>
 
-        <autogen>{{kom}} {{i}}, {{mstl}}|{{mnon}},                 {{kex2}}, {{mstl}},               {{a}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{i}}, {{mstr}}|{{mnon}},                 {{kex2}}, {{mstr}},               {{a}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{i}}, {{mctl}}|{{mnon}},                 {{kex2}}, {{mctl}},               {{a}}, VK_CONTROL</autogen>
-        <autogen>{{kom}} {{i}}, {{mctr}}|{{mnon}},                 {{kex2}}, {{mctr}},               {{a}}, VK_CONTROL</autogen>
-        <autogen>{{kom}} {{i}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{kex2}}, ModifierFlag::CAPSLOCK, {{a}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{i}}, VK_SHIFT|{{mnon}},                 {{kex2}}, VK_SHIFT,               {{a}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{i}}, VK_CONTROL|{{mnon}},               {{kex2}}, VK_CONTROL,             {{a}}, VK_CONTROL</autogen>
-        <autogen>{{kom}} {{i}}, VK_COMMAND|{{mnon}},               {{kex2}}, VK_COMMAND,             {{a}}, VK_COMMAND</autogen>
-        <autogen>{{kom}} {{i}}, VK_OPTION|{{mnon}},                {{kex2}}, VK_OPTION,              {{a}}, VK_OPTION</autogen>
+        <autogen>{{kom}} {{i}}, {{mstl}}|{{mnon}},                 {{kex2}}, {{mstl}},               {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{i}}, {{mstr}}|{{mnon}},                 {{kex2}}, {{mstr}},               {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{i}}, {{mctl}}|{{mnon}},                 {{kex2}}, {{mctl}},               {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{kom}} {{i}}, {{mctr}}|{{mnon}},                 {{kex2}}, {{mctr}},               {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{kom}} {{i}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{kex2}}, ModifierFlag::CAPSLOCK, {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{kex2}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,               {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|{{mnon}},               {{kex2}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,             {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{kom}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},               {{kex2}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,             {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>{{kom}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION|{{mnon}},                {{kex2}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,              {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
         <autogen>{{kom}} {{i}}, {{mex1}}|{{mex2}},                 {{kex2}},                         {{e}}QUAL, {{e}}QUAL</autogen>
         <autogen>{{kom}} {{i}}, {{mex1}},                          {{kex2}},                         {{a}}, {{u}}</autogen>
         <autogen>{{kom}} {{i}}, {{mex2}},                          {{kex2}},                         {{f}}</autogen>
         <autogen>{{kom}} {{i}}, {{mex3}},                          {{kex2}},                         {{b}}, {{e}}</autogen>
-        <autogen>{{kom}} {{i}}, {{mex4}},                          {{kex2}},                         {{k}}EY_4, VK_SHIFT</autogen>
+        <autogen>{{kom}} {{i}}, {{mex4}},                          {{kex2}},                         {{k}}EY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{kom}} {{i}}, {{mex5}},                          {{kex2}},                         {{c}}OMMA</autogen>
         <autogen>{{kom}} {{i}},                                    {{kex2}},                         {{a}}</autogen>
 
@@ -111,208 +111,208 @@
 
         <autogen>{{kom}} {{n}}, {{mex1}},                          {{kex5}},                         {{e}}, {{n}}, {{t}}</autogen>
         <autogen>{{kom}} {{n}}, {{mex2}},                          {{kex5}},                         {{e}}, {{d}}</autogen>
-        <autogen>{{kom}} {{n}}, {{mex3}}|VK_CONTROL,               {{kex5}}, VK_CONTROL,             {{i}}, {{t}}, {{y}}</autogen>
+        <autogen>{{kom}} {{n}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{kex5}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,             {{i}}, {{t}}, {{y}}</autogen>
         <autogen>{{kom}} {{n}}, {{mex3}},                          {{kex5}},                         {{i}}, {{o}}, {{n}}</autogen>
         <autogen>{{kom}} {{n}}, {{mex4}},                          {{kex5}},                         {{s}}EMICOLON</autogen>
-        <autogen>{{kom}} {{n}}, {{mex5}}, VK_CONTROL,              {{kex5}}, VK_CONTROL,             {{c}}OMMA, {{s}}PACE, {{a}}, {{n}}, {{d}}</autogen>
+        <autogen>{{kom}} {{n}}, {{mex5}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,              {{kex5}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,             {{c}}OMMA, {{s}}PACE, {{a}}, {{n}}, {{d}}</autogen>
         <autogen>{{kom}} {{n}}, {{mex5}},                          {{kex5}},                         {{a}}, {{n}}, {{d}}</autogen>
-        <autogen>{{kom}} {{n}}, VK_CONTROL,                        {{kex5}}, VK_CONTROL,             {{h}}, VK_CONTROL</autogen>
+        <autogen>{{kom}} {{n}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,                        {{kex5}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,             {{h}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
         <autogen>{{kom}} {{n}},                                    {{kex5}},                         {{h}}</autogen>
 
         <autogen>{{kom}} {{o}}, {{mex1}},                          {{kex3}},                         {{r}}ETURN</autogen>
         <autogen>{{kom}} {{o}}, {{mex2}},                          {{kex3}}, {{mex2}},               {{t}}, {{h}}, {{e}}</autogen>
-        <autogen>{{kom}} {{o}}, {{mex3}}|VK_CONTROL,               {{kex3}}, VK_CONTROL,             {{o}}, {{f}}, {{f}}</autogen>
+        <autogen>{{kom}} {{o}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{kex3}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,             {{o}}, {{f}}, {{f}}</autogen>
         <autogen>{{kom}} {{o}}, {{mex3}},                          {{kex3}},                         {{o}}, {{f}}</autogen>
         <autogen>{{kom}} {{o}}, {{mex4}},                          {{kex3}},                         {{g}}</autogen>
         <autogen>{{kom}} {{o}}, {{mex5}},                          {{kex3}},                         {{b}}</autogen>
-        <autogen>{{kom}} {{o}}, {{mstl}},                          {{kex3}}, {{mstl}},               {{i}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{o}}, {{mstr}},                          {{kex3}}, {{mstr}},               {{i}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{o}}, {{mctl}},                          {{kex3}}, {{mctl}},               {{i}}, VK_CONTROL</autogen>
-        <autogen>{{kom}} {{o}}, {{mctr}},                          {{kex3}}, {{mctr}},               {{i}}, VK_CONTROL</autogen>
+        <autogen>{{kom}} {{o}}, {{mstl}},                          {{kex3}}, {{mstl}},               {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{o}}, {{mstr}},                          {{kex3}}, {{mstr}},               {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{o}}, {{mctl}},                          {{kex3}}, {{mctl}},               {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{kom}} {{o}}, {{mctr}},                          {{kex3}}, {{mctr}},               {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
         <autogen>{{kom}} {{o}},                                    {{kex3}},                         {{i}}</autogen>
 
         <autogen>{{kom}} {{r}},                                    {{c}}OMMAND_L,                    {{v}}K_STICKY_COMMAND_L</autogen>
         <autogen>{{kom}} {{s}},                                    {{s}}HIFT_L,                      {{v}}K_STICKY_SHIFT_L</autogen>
         <autogen>{{kom}} {{u}},                                    {{c}}OMMAND_R,                    {{v}}K_STICKY_COMMAND_R</autogen>
 
-        <autogen>{{kom}} {{v}}, {{mstl}}|{{mnon}},                 {{kex5}}, {{mstl}},               {{r}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{v}}, {{mstr}}|{{mnon}},                 {{kex5}}, {{mstr}},               {{r}}, VK_SHIFT</autogen>
-        <autogen>{{kom}} {{v}}, {{mctl}}|{{mnon}},                 {{kex5}}, {{mctl}},               {{r}}, VK_CONTROL</autogen>
-        <autogen>{{kom}} {{v}}, {{mctr}}|{{mnon}},                 {{kex5}}, {{mctr}},               {{r}}, VK_CONTROL</autogen>
-        <autogen>{{kom}} {{v}}, VK_COMMAND|{{mnon}},               {{kex5}}, VK_COMMAND,             {{r}}, VK_COMMAND</autogen>
-        <autogen>{{kom}} {{v}}, VK_OPTION|{{mnon}},                {{kex5}}, VK_OPTION,              {{r}}, VK_OPTION</autogen>
+        <autogen>{{kom}} {{v}}, {{mstl}}|{{mnon}},                 {{kex5}}, {{mstl}},               {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{v}}, {{mstr}}|{{mnon}},                 {{kex5}}, {{mstr}},               {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{kom}} {{v}}, {{mctl}}|{{mnon}},                 {{kex5}}, {{mctl}},               {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{kom}} {{v}}, {{mctr}}|{{mnon}},                 {{kex5}}, {{mctr}},               {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{kom}} {{v}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},               {{kex5}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,             {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>{{kom}} {{v}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION|{{mnon}},                {{kex5}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,              {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
         <autogen>{{kom}} {{v}}, {{mex1}},                          {{kex5}},                         {{e}}, {{r}}</autogen>
         <autogen>{{kom}} {{v}}, {{mex2}},                          {{kex5}},                         {{d}}OT</autogen>
         <autogen>{{kom}} {{v}}, {{mex3}},                          {{kex5}},                         {{b}}, {{l}}</autogen>
-        <autogen>{{kom}} {{v}}, {{mex4}},                          {{kex5}},                         {{q}}UOTE, VK_SHIFT</autogen>
+        <autogen>{{kom}} {{v}}, {{mex4}},                          {{kex5}},                         {{q}}UOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{kom}} {{v}}, {{mex5}},                          {{kex5}},                         {{b}}, {{u}}, {{t}}</autogen>
         <autogen>{{kom}} {{v}},                                    {{kex5}},                         {{r}}</autogen>
 
-        <autogen>{{kom}} {{w}}, {{mex1}}|VK_CONTROL,               {{kex3}}, {{mex1}},               {{c}}, {{l}}</autogen>
+        <autogen>{{kom}} {{w}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{kex3}}, {{mex1}},               {{c}}, {{l}}</autogen>
         <autogen>{{kom}} {{w}}, {{mex1}},                          {{kex3}}, {{mex1}},               {{c}}, {{h}}</autogen>
         <autogen>{{kom}} {{w}}, {{mex2}},                          {{kex3}}, {{mex2}},               {{y}}, {{o}}, {{u}}</autogen>
         <autogen>{{kom}} {{w}}, {{mex3}},                          {{kex3}}, {{mex3}},               {{i}}, {{f}}</autogen>
         <autogen>{{kom}} {{w}}, {{mex4}},                          {{kex3}}, {{mex4}},               {{l}}, {{y}}</autogen>
         <autogen>{{kom}} {{w}}, {{mex5}},                          {{kex3}}, {{mex5}},               {{x}}, {{t}}</autogen>
-        <autogen>{{kom}} {{w}}, VK_CONTROL,                        {{kex3}}, VK_CONTROL,             {{n}}, VK_CONTROL</autogen>
+        <autogen>{{kom}} {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,                        {{kex3}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,             {{n}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
         <autogen>{{kom}} {{w}},                                    {{kex3}},                         {{n}}</autogen>
 
-        <autogen>{{k2k}} {{b}}, {{mnon}},                          {{k}}, VK_CONTROL</autogen>
-        <autogen>{{k2k}} {{b}}, VK_CONTROL,                        {{y}}, VK_CONTROL</autogen>
-        <autogen>{{k2k}} {{b}}, VK_SHIFT,                          {{k}}, VK_CONTROL</autogen>
+        <autogen>{{k2k}} {{b}}, {{mnon}},                          {{k}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{k2k}} {{b}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,                        {{y}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{k2k}} {{b}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                          {{k}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
 
-        <autogen>{{k2k}} {{c}}, {{mex1}}|VK_SHIFT,                 {{d}}, {{mstl}}, {{d}}</autogen>
+        <autogen>{{k2k}} {{c}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{d}}, {{mstl}}, {{d}}</autogen>
         <autogen>{{k2k}} {{c}}, {{mex1}},                          {{d}}, {{d}}</autogen>
         <autogen>{{k2k}} {{c}}, {{mex2}}|{{mnon}},                 {{s}}LASH</autogen>
         <autogen>{{k2k}} {{c}}, {{mex2}}|{{mstl}}|{{mnon}},        {{b}}ACKSLASH</autogen>
         <autogen>{{k2k}} {{c}}, {{mex3}}|{{mnon}},                 {{g}}, {{h}}</autogen>
-        <autogen>{{k2k}} {{c}}, {{mex3}}|VK_SHIFT,                 {{g}}, {{g}}</autogen>
+        <autogen>{{k2k}} {{c}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{g}}, {{g}}</autogen>
         <autogen>{{k2k}} {{c}}, {{mex3}}|{{mctl}}|{{mnon}},        {{g}}, {{y}}</autogen>
         <autogen>{{k2k}} {{c}}, {{mex3}}|{{mctr}}|{{mnon}},        {{g}}, {{l}}</autogen>
-        <autogen>{{k2k}} {{c}}, {{mex3}}|{{mctl}}|VK_SHIFT,        {{g}}, {{mstl}}, {{y}}</autogen>
-        <autogen>{{k2k}} {{c}}, {{mex3}}|{{mctr}}|VK_SHIFT,        {{g}}, {{mstl}}, {{l}}</autogen>
+        <autogen>{{k2k}} {{c}}, {{mex3}}|{{mctl}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,        {{g}}, {{mstl}}, {{y}}</autogen>
+        <autogen>{{k2k}} {{c}}, {{mex3}}|{{mctr}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,        {{g}}, {{mstl}}, {{l}}</autogen>
         <autogen>{{k2k}} {{c}}, {{mex4}}|{{mnon}},                 {{w}}, {{h}}</autogen>
-        <autogen>{{k2k}} {{c}}, {{mex4}}|VK_SHIFT,                 {{w}}, {{mstl}}, {{h}}</autogen>
+        <autogen>{{k2k}} {{c}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{w}}, {{mstl}}, {{h}}</autogen>
         <autogen>{{k2k}} {{c}}, {{mex5}}|{{mnon}},                 {{s}}EMICOLON, {{mstl}}</autogen>
 
         <autogen>{{k2k}} {{e}}, {{mex1}}|{{mnon}},                 {{l}}, {{d}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex1}}|VK_SHIFT|{{mnon}},        {{l}}, {{mstl}}, {{d}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{l}}, {{mstl}}, {{d}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex1}}|{{mctl}}|{{mnon}},        {{l}}, {{k}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex1}}|{{mctl}}|VK_SHIFT,        {{l}}, VK_SHIFT, {{k}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex1}}|{{mctr}}|{{mnon}},        {{l}}, VK_CONTROL</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex1}}|{{mctr}}|VK_SHIFT|{{mnon}},  {{l}}, VK_SHIFT|VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex1}}|{{mctl}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,        {{l}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{k}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex1}}|{{mctr}}|{{mnon}},        {{l}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex1}}|{{mctr}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},  {{l}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{e}}, {{mex2}}|{{mnon}},                 {{f}}, {{r}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex2}}|VK_SHIFT|{{mnon}},        {{f}}, {{mstl}}, {{r}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{f}}, {{mstl}}, {{r}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex2}}|{{mctl}}|{{mnon}},        {{f}}, {{l}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex2}}|{{mctl}}|VK_SHIFT,        {{f}}, VK_SHIFT, {{l}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex2}}|{{mctl}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,        {{f}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{l}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex2}}|{{mctr}}|{{mnon}},        {{f}}, {{l}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex2}}|{{mctr}}|VK_SHIFT,        {{f}}, VK_SHIFT, {{l}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex2}}|{{mctr}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,        {{f}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{l}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex3}}|{{mnon}},                 {{i}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex3}}|VK_SHIFT,                 {{i}}, {{mstl}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{i}}, {{mstl}}, {{t}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex4}}|{{mnon}},                 {{p}}, {{h}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex4}}|VK_SHIFT|{{mnon}},        {{p}}, {{mstl}}, {{h}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{p}}, {{mstl}}, {{h}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex4}}|{{mctl}}|{{mnon}},        {{p}}, {{y}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex4}}|{{mctl}}|VK_SHIFT|{{mnon}},  {{p}}, VK_SHIFT, {{y}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex4}}|{{mctl}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},  {{p}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{y}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex4}}|{{mctr}}|{{mnon}},        {{p}}, {{l}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex4}}|{{mctr}}|VK_SHIFT|{{mnon}},  {{p}}, VK_SHIFT, {{l}}</autogen>
-        <autogen>{{k2k}} {{e}}, {{mex5}}|VK_SHIFT,                 {{i}}, {{mstl}}, {{n}}, {{g}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex4}}|{{mctr}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},  {{p}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{l}}</autogen>
+        <autogen>{{k2k}} {{e}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{i}}, {{mstl}}, {{n}}, {{g}}</autogen>
         <autogen>{{k2k}} {{e}}, {{mex5}},                          {{i}}, {{n}}, {{g}}</autogen>
 
         <autogen>{{k2k}} {{f}}, {{mex1}}|{{mnon}},                 {{m}}, {{m}}</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex1}}|VK_SHIFT|{{mnon}},        {{m}}, {{mstl}}, {{m}}</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex1}}|VK_CONTROL|{{mnon}},      {{m}}, {{mnon}}, {{m}}, {{i}}, {{n}}, {{g}}</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex1}}|VK_CONTROL|VK_SHIFT,      {{m}}, {{mstl}}, {{m}}, {{i}}, {{n}}, {{g}}</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex3}}|{{mstl}},                 {{e}}SCAPE, {{v}}K_STICKY_SHIFT_L, {{k}}EY_5, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{m}}, {{mstl}}, {{m}}</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|{{mnon}},      {{m}}, {{mnon}}, {{m}}, {{i}}, {{n}}, {{g}}</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,      {{m}}, {{mstl}}, {{m}}, {{i}}, {{n}}, {{g}}</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex3}}|{{mstl}},                 {{e}}SCAPE, {{v}}K_STICKY_SHIFT_L, {{k}}EY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}}|{{mstr}},                 {{v}}K_CONFIG_TOGGLE_notsave_prepared_edit_eps3, {{mnon}}</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}}|{{mctl}},                 {{e}}SCAPE, {{x}}</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}}|{{mctr}},                 {{x}}, {{mctr}}, {{e}}SCAPE, {{e}}SCAPE</autogen>
         <autogen>{{k2k}} {{f}}, {{mex3}},                          {{e}}SCAPE</autogen>
         <autogen>{{k2k}} {{f}}, {{mex5}}|{{mnon}},                 {{a}}, {{n}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex5}}|VK_SHIFT|{{mnon}},        {{a}}, {{mstl}}, {{n}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex5}}|VK_CONTROL|{{mnon}},      {{w}}, {{mnon}}, {{a}}, {{n}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{f}}, {{mex5}}|VK_CONTROL|VK_SHIFT,      {{w}}, {{mstl}}, {{a}}, {{n}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{a}}, {{mstl}}, {{n}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|{{mnon}},      {{w}}, {{mnon}}, {{a}}, {{n}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{f}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,      {{w}}, {{mstl}}, {{a}}, {{n}}, {{t}}</autogen>
 
         <autogen>{{k2k}} {{f}}, {{mex2}},                          {{o}}, {{u}}</autogen>
 
         <autogen>{{k2k}} {{g}}, {{mnon}},                          {{c}}URSOR_LEFT</autogen>
         <autogen>{{k2k}} {{g}}, ModifierFlag::CAPSLOCK,            {{c}}URSOR_LEFT</autogen>
-        <autogen>{{k2k}} {{g}}, VK_SHIFT,                          {{c}}URSOR_LEFT, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{g}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                          {{c}}URSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{g}}, {{mex1}},                          {{o}}, {{n}}, {{e}}</autogen>
         <autogen>{{k2k}} {{g}}, {{mex2}},                          {{t}}, {{o}}, {{s}}PACE</autogen>
         <autogen>{{k2k}} {{g}}, {{mex3}},                          {{i}}, {{t}}, {{s}}PACE</autogen>
 
         <autogen>{{k2k}} {{h}}, {{mnon}},                          {{c}}URSOR_RIGHT</autogen>
         <autogen>{{k2k}} {{h}}, ModifierFlag::CAPSLOCK,            {{c}}URSOR_RIGHT</autogen>
-        <autogen>{{k2k}} {{h}}, VK_SHIFT,                          {{c}}URSOR_RIGHT, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{h}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                          {{c}}URSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{h}}, {{mex1}},                          {{n}}, {{o}}, {{t}}</autogen>
         <autogen>{{k2k}} {{h}}, {{mex2}},                          {{i}}, {{n}}, {{s}}PACE</autogen>
         <autogen>{{k2k}} {{h}}, {{mex3}},                          {{i}}, {{s}}, {{s}}PACE</autogen>
         <autogen>{{k2k}} {{h}}, {{mex4}},                          {{u}}, {{n}}</autogen>
 
         <autogen>{{k2k}} {{i}}, {{mex1}}|{{mnon}},                 {{a}}, {{u}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex1}}|VK_SHIFT,                 {{a}}, {{mstl}}, {{u}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{a}}, {{mstl}}, {{u}}</autogen>
         <autogen>{{k2k}} {{i}}, {{mex2}}|{{mnon}},                 {{f}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex2}}|VK_SHIFT|{{mnon}},        {{f}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex2}}|VK_COMMAND|{{mnon}},      {{f}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex2}}|VK_OPTION|{{mnon}},       {{f}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex2}}|VK_CONTROL|{{mnon}},      {{f}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{f}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},      {{f}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION|{{mnon}},       {{f}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|{{mnon}},      {{f}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{i}}, {{mex2}}|ModifierFlag::CAPSLOCK,   {{f}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{i}}, {{mex3}}|{{mnon}},                 {{b}}, {{e}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex3}}|VK_SHIFT,                 {{b}}, {{mstl}}, {{e}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex4}}|{{mnon}},                 {{k}}EY_4, VK_SHIFT</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex4}}|VK_SHIFT,                 {{k}}EY_4, VK_SHIFT, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex4}}|VK_COMMAND,               {{k}}EY_4, VK_SHIFT, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex4}}|VK_OPTION,                {{k}}EY_4, VK_SHIFT, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex4}}|VK_CONTROL,               {{k}}EY_4, VK_SHIFT, {{mctl}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex4}}|ModifierFlag::CAPSLOCK,   {{k}}EY_4, VK_SHIFT, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{b}}, {{mstl}}, {{e}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex4}}|{{mnon}},                 {{k}}EY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{k}}EY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{k}}EY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{k}}EY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{k}}EY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex4}}|ModifierFlag::CAPSLOCK,   {{k}}EY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{mstl}}</autogen>
         <autogen>{{k2k}} {{i}}, {{mex5}}|{{mnon}},                 {{c}}OMMA</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex5}}|VK_SHIFT,                 {{c}}OMMA, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex5}}|VK_COMMAND,               {{c}}OMMA, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex5}}|VK_OPTION,                {{c}}OMMA, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{i}}, {{mex5}}|VK_CONTROL,               {{c}}OMMA, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{c}}OMMA, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{c}}OMMA, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{c}}OMMA, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{i}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{c}}OMMA, {{mctl}}</autogen>
         <autogen>{{k2k}} {{i}}, {{mex5}}|ModifierFlag::CAPSLOCK,   {{c}}OMMA, {{mstl}}</autogen>
 
         <autogen>{{k2k}} {{j}}, {{mex1}}|{{mnon}},                 {{m}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex1}}|VK_SHIFT,                 {{m}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex1}}|VK_COMMAND,               {{m}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex1}}|VK_OPTION,                {{m}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex1}}|VK_CONTROL,               {{m}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{m}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{m}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{m}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{m}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex1}}|ModifierFlag::CAPSLOCK,   {{m}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex2}}|{{mnon}},                 {{l}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex2}}|VK_SHIFT,                 {{l}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex2}}|VK_COMMAND,               {{l}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex2}}|VK_OPTION,                {{l}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex2}}|VK_CONTROL,               {{l}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{l}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{l}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{l}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{l}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex2}}|ModifierFlag::CAPSLOCK,   {{l}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex3}}|{{mnon}},                 {{c}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex3}}|VK_SHIFT,                 {{c}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex3}}|VK_COMMAND,               {{c}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex3}}|VK_OPTION,                {{c}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex3}}|VK_CONTROL,               {{c}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{c}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{c}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{c}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{c}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex3}}|ModifierFlag::CAPSLOCK,   {{c}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex4}}|{{mnon}},                 {{d}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex4}}|VK_SHIFT,                 {{d}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex4}}|VK_COMMAND,               {{d}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex4}}|VK_OPTION,                {{d}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex4}}|VK_CONTROL,               {{d}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{d}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{d}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{d}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{d}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex4}}|ModifierFlag::CAPSLOCK,   {{d}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mex5}}|{{mnon}},                 {{e}}, {{s}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{j}}, {{mex5}}|VK_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{s}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{j}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{s}}, {{t}}</autogen>
 
         <autogen>{{k2k}} {{m}}, {{mex1}}|{{mnon}},                 {{u}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex1}}|VK_SHIFT,                 {{u}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex1}}|VK_COMMAND,               {{u}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex1}}|VK_OPTION,                {{u}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex1}}|VK_CONTROL,               {{u}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{u}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{u}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{u}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{u}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex1}}|ModifierFlag::CAPSLOCK,   {{u}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex2}}|{{mnon}},                 {{p}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex2}}|VK_SHIFT,                 {{p}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex2}}|VK_COMMAND,               {{p}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex2}}|VK_OPTION,                {{p}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex2}}|VK_CONTROL,               {{p}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{p}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{p}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{p}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{p}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex2}}|ModifierFlag::CAPSLOCK,   {{p}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex3}}|{{mnon}},                 {{y}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex3}}|VK_SHIFT,                 {{y}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex3}}|VK_COMMAND,               {{y}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex3}}|VK_OPTION,                {{y}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex3}}|VK_CONTROL,               {{y}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{y}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{y}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{y}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{y}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex3}}|ModifierFlag::CAPSLOCK,   {{y}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex4}}|{{mnon}},                 {{w}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex4}}|VK_SHIFT,                 {{w}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex4}}|VK_COMMAND,               {{w}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex4}}|VK_OPTION,                {{w}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{m}}, {{mex4}}|VK_CONTROL,               {{w}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{w}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{w}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{w}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{m}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{w}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex4}}|ModifierFlag::CAPSLOCK,   {{w}}, {{mstl}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mex5}}|{{mnon}},                 {{q}}UOTE</autogen>
 
         <autogen>{{k2k}} {{n}}, {{mex1}}|{{mnon}},                 {{e}}, {{n}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{n}}, {{mex1}}|VK_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{n}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{n}}, {{mex1}}|VK_CONTROL|{{mnon}},      {{w}}, {{mnon}}, {{e}}, {{n}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{n}}, {{mex1}}|VK_CONTROL|VK_SHIFT,      {{w}}, {{mstl}}, {{e}}, {{n}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{n}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{n}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{n}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|{{mnon}},      {{w}}, {{mnon}}, {{e}}, {{n}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{n}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,      {{w}}, {{mstl}}, {{e}}, {{n}}, {{t}}</autogen>
         <autogen>{{k2k}} {{n}}, {{mex2}}|{{mnon}},                 {{e}}, {{d}}</autogen>
-        <autogen>{{k2k}} {{n}}, {{mex2}}|VK_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{d}}</autogen>
+        <autogen>{{k2k}} {{n}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{d}}</autogen>
         <autogen>{{k2k}} {{n}}, {{mex3}}|{{mnon}},                 {{i}}, {{o}}, {{n}}</autogen>
-        <autogen>{{k2k}} {{n}}, {{mex3}}|VK_SHIFT|{{mnon}},        {{i}}, {{mstl}}, {{i}}, {{o}}</autogen>
+        <autogen>{{k2k}} {{n}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{i}}, {{mstl}}, {{i}}, {{o}}</autogen>
         <autogen>{{k2k}} {{n}}, {{mex4}}|{{mnon}},                 {{s}}EMICOLON</autogen>
         <autogen>{{k2k}} {{n}}, {{mex5}},                          {{a}}, {{n}}, {{d}}</autogen>
 
@@ -322,16 +322,16 @@
         <autogen>{{k2k}} {{o}}, {{mex2}},                          {{t}}, {{h}}, {{e}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mex3}}|{{mstl}},                 {{o}}, {{mstl}}, {{f}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mex3}},                          {{o}}, {{f}}</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex4}}|VK_SHIFT,                 {{g}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex4}}|VK_COMMAND,               {{g}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex4}}|VK_OPTION,                {{g}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex4}}|VK_CONTROL,               {{g}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{g}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,               {{g}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,                {{g}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,               {{g}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mex4}},                          {{g}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mex5}}|{{mnon}},                 {{b}}</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex5}}|VK_SHIFT|{{mnon}},        {{b}}, {{mstl}}</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex5}}|VK_COMMAND|{{mnon}},      {{b}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex5}}|VK_OPTION|{{mnon}},       {{b}}, ModifierFlag::OPTION_L</autogen>
-        <autogen>{{k2k}} {{o}}, {{mex5}}|VK_CONTROL|{{mnon}},      {{b}}, {{mctl}}</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{b}}, {{mstl}}</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},      {{b}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION|{{mnon}},       {{b}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{o}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|{{mnon}},      {{b}}, {{mctl}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mex5}}|ModifierFlag::CAPSLOCK|{{mnon}},      {{b}}, {{mstl}}</autogen>
 
         <autogen>{{k2k}} {{t}}, {{mnon}},                          {{v}}K_CONFIG_TOGGLE_notsave_prepared_virtual_numlock_eps3</autogen>
@@ -348,29 +348,29 @@
         <autogen>{{k2k}} {{u}}, {{mex5}},                          {{s}}PACE</autogen>
 
         <autogen>{{k2k}} {{v}}, {{mex1}}|{{mnon}},                 {{e}}, {{r}}</autogen>
-        <autogen>{{k2k}} {{v}}, {{mex1}}|VK_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{r}}</autogen>
+        <autogen>{{k2k}} {{v}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{e}}, {{mstl}}, {{r}}</autogen>
         <autogen>{{k2k}} {{v}}, {{mex2}},                          {{d}}OT</autogen>
         <autogen>{{k2k}} {{v}}, {{mex3}}|{{mnon}},                 {{b}}, {{l}}</autogen>
-        <autogen>{{k2k}} {{v}}, {{mex3}}|VK_SHIFT,                 {{b}}, {{mstl}}, {{l}}</autogen>
+        <autogen>{{k2k}} {{v}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                 {{b}}, {{mstl}}, {{l}}</autogen>
         <autogen>{{k2k}} {{v}}, {{mex3}}|{{mctl}}|{{mnon}},        {{m}}, {{b}}</autogen>
-        <autogen>{{k2k}} {{v}}, {{mex3}}|{{mctl}}|VK_SHIFT,        {{m}}, {{mstl}}, {{b}}</autogen>
+        <autogen>{{k2k}} {{v}}, {{mex3}}|{{mctl}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,        {{m}}, {{mstl}}, {{b}}</autogen>
         <autogen>{{k2k}} {{v}}, {{mex4}}|{{mnon}},                 {{q}}UOTE, {{mstl}}</autogen>
         <autogen>{{k2k}} {{v}}, {{mex5}}|{{mnon}},                 {{b}}, {{u}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{v}}, {{mex5}}|VK_SHIFT|{{mnon}},        {{b}}, {{mstl}}, {{u}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{v}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{b}}, {{mstl}}, {{u}}, {{t}}</autogen>
 
         <autogen>{{k2k}} {{w}}, {{mex1}}|{{mnon}},                 {{c}}, {{h}}</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex1}}|ModifierFlag::CAPSLOCK|{{mnon}},                {{c}}, VK_SHIFT, {{h}}, VK_SHIFT</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex1}}|VK_SHIFT|{{mnon}},        {{c}}, VK_SHIFT, {{h}}</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex1}}|ModifierFlag::CAPSLOCK|{{mnon}},                {{c}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{c}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}</autogen>
         <autogen>{{k2k}} {{w}}, {{mex1}}|{{mctl}}|{{mnon}},        {{c}}, {{y}}</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex1}}|{{mctl}}|VK_SHIFT|{{mnon}},      {{c}}, VK_SHIFT, {{y}}</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex1}}|{{mctl}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},      {{c}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{y}}</autogen>
         <autogen>{{k2k}} {{w}}, {{mex1}}|{{mctr}}|{{mnon}},        {{c}}, {{l}}</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex1}}|{{mctr}}|VK_SHIFT|{{mnon}},      {{c}}, VK_SHIFT, {{l}}</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex1}}|VK_COMMAND|{{mnon}},      {{c}}, ModifierFlag::COMMAND_L</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex1}}|VK_OPTION|{{mnon}},       {{c}}, ModifierFlag::OPTION_L</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex1}}|{{mctr}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},      {{c}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{l}}</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},      {{c}}, ModifierFlag::COMMAND_L</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION|{{mnon}},       {{c}}, ModifierFlag::OPTION_L</autogen>
         <autogen>{{k2k}} {{w}}, {{mex2}}|{{mnon}},                 {{y}}, {{o}}, {{u}}</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex2}}|VK_SHIFT|{{mnon}},        {{y}}, VK_SHIFT, {{o}}, {{u}}</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{y}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{o}}, {{u}}</autogen>
         <autogen>{{k2k}} {{w}}, {{mex3}}|{{mnon}},                 {{i}}, {{f}}, {{s}}PACE</autogen>
-        <autogen>{{k2k}} {{w}}, {{mex3}}|VK_SHIFT|{{mnon}},        {{i}}, VK_SHIFT, {{f}}, {{s}}PACE</autogen>
+        <autogen>{{k2k}} {{w}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},        {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{f}}, {{s}}PACE</autogen>
         <autogen>{{k2k}} {{w}}, {{mex4}}|{{mnon}},                 {{l}}, {{y}}</autogen>
         <autogen>{{k2k}} {{w}}, {{mex5}}|{{mnon}},                 {{v}}K_CONFIG_TOGGLE_notsave_prepared_xt_eps3</autogen>
 
@@ -382,27 +382,27 @@
         <autogen>{{skp}} {{c}}, {{f}}, {{mex3}}|{{mnon}},          {{a}}, {{f}}, {{t}}, {{e}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{f}}, {{mex4}}|{{mnon}},          {{m}}, {{u}}, {{s}}, {{t}}</autogen>
         <autogen>{{skp}} {{c}}, {{f}}, {{mex5}}|{{mnon}},          {{m}}, {{a}}, {{d}}, {{e}}</autogen>
-        <autogen>{{skp}} {{c}}, {{f}}, {{mex1}}|VK_SHIFT|{{mnon}}, {{o}}, VK_SHIFT, {{v}}, {{e}}</autogen>
-        <autogen>{{skp}} {{c}}, {{f}}, {{mex2}}|VK_SHIFT|{{mnon}}, {{o}}, VK_SHIFT, {{u}}, {{r}}</autogen>
-        <autogen>{{skp}} {{c}}, {{f}}, {{mex3}}|VK_SHIFT|{{mnon}}, {{a}}, VK_SHIFT, {{f}}, {{t}}, {{e}}, {{r}}</autogen>
-        <autogen>{{skp}} {{c}}, {{f}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{m}}, VK_SHIFT, {{u}}, {{s}}, {{t}}</autogen>
-        <autogen>{{skp}} {{c}}, {{f}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{m}}, VK_SHIFT, {{a}}, {{d}}, {{e}}</autogen>
+        <autogen>{{skp}} {{c}}, {{f}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{v}}, {{e}}</autogen>
+        <autogen>{{skp}} {{c}}, {{f}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{u}}, {{r}}</autogen>
+        <autogen>{{skp}} {{c}}, {{f}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{f}}, {{t}}, {{e}}, {{r}}</autogen>
+        <autogen>{{skp}} {{c}}, {{f}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{u}}, {{s}}, {{t}}</autogen>
+        <autogen>{{skp}} {{c}}, {{f}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{a}}, {{d}}, {{e}}</autogen>
         <autogen>{{skp}} {{c}}, {{f}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CF3</autogen>
 
-        <autogen>{{skp}} {{c}}, {{r}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CR3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{c}}, {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CR3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex1}}|{{mnon}},          {{l}}, {{e}}, {{s}}, {{s}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex2}}|{{mnon}},          {{u}}, {{p}}, {{o}}, {{n}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex3}}|{{mnon}},          {{e}}, {{v}}, {{e}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex4}}|{{mnon}},          {{w}}, {{e}}, {{r}}, {{e}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}}, {{mex5}}|{{mnon}},          {{d}}, {{o}}, {{w}}, {{n}}</autogen>
-        <autogen>{{skp}} {{c}}, {{r}}, {{mex1}}|VK_SHIFT|{{mnon}}, {{l}}, VK_SHIFT, {{e}}, {{s}}, {{s}}</autogen>
-        <autogen>{{skp}} {{c}}, {{r}}, {{mex2}}|VK_SHIFT|{{mnon}}, {{u}}, VK_SHIFT, {{p}}, {{o}}, {{n}}</autogen>
-        <autogen>{{skp}} {{c}}, {{r}}, {{mex3}}|VK_SHIFT|{{mnon}}, {{e}}, VK_SHIFT, {{v}}, {{e}}, {{r}}</autogen>
-        <autogen>{{skp}} {{c}}, {{r}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{w}}, VK_SHIFT, {{e}}, {{r}}, {{e}}</autogen>
-        <autogen>{{skp}} {{c}}, {{r}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{d}}, VK_SHIFT, {{o}}, {{w}}, {{n}}</autogen>
+        <autogen>{{skp}} {{c}}, {{r}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{l}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{e}}, {{s}}, {{s}}</autogen>
+        <autogen>{{skp}} {{c}}, {{r}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{u}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{p}}, {{o}}, {{n}}</autogen>
+        <autogen>{{skp}} {{c}}, {{r}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{e}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{v}}, {{e}}, {{r}}</autogen>
+        <autogen>{{skp}} {{c}}, {{r}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{e}}, {{r}}, {{e}}</autogen>
+        <autogen>{{skp}} {{c}}, {{r}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{d}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{o}}, {{w}}, {{n}}</autogen>
         <autogen>{{skp}} {{c}}, {{r}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CR3</autogen>
 
-        <autogen>{{skp}} {{c}}, {{v}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CV3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{c}}, {{v}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_CV3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{c}}, {{v}}, {{mex1}}|{{mnon}},          {{e}}, {{v}}, {{e}}</autogen>
         <autogen>{{skp}} {{c}}, {{v}}, {{mex2}}|{{mnon}},          {{o}}, {{u}}, {{r}}</autogen>
         <autogen>{{skp}} {{c}}, {{v}}, {{mex4}}|{{mnon}},          {{m}}, {{u}}, {{s}}, {{t}}</autogen>
@@ -424,22 +424,22 @@
         <autogen>{{skp}} {{e}}, {{f}}, {{mex3}},                   {{h}}, {{a}}, {{v}}</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex4}},                   {{c}}, {{k}}</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mex5}}|{{mnon}},          {{t}}, {{h}}, {{i}}, {{s}}</autogen>
-        <autogen>{{skp}} {{e}}, {{f}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{t}}, VK_SHIFT, {{h}}, {{i}}, {{s}}</autogen>
+        <autogen>{{skp}} {{e}}, {{f}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{i}}, {{s}}</autogen>
         <autogen>{{skp}} {{e}}, {{f}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EF3</autogen>
 
         <autogen>{{skp}} {{e}}, {{r}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_ER3</autogen>
 
-        <autogen>{{skp}} {{e}}, {{v}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EV3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{e}}, {{v}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EV3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex1}}|{{mnon}},          {{l}}, {{e}}, {{t}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex2}}|{{mnon}},          {{m}}, {{a}}, {{n}}, {{y}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex3}}|{{mnon}},          {{t}}, {{h}}, {{e}}, {{m}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex4}}|{{mnon}},          {{w}}, {{h}}, {{e}}, {{n}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}}, {{mex5}}|{{mnon}},          {{a}}, {{l}}, {{l}}</autogen>
-        <autogen>{{skp}} {{e}}, {{v}}, {{mex1}}|VK_SHIFT|{{mnon}}, {{l}}, VK_SHIFT, {{e}}, {{t}}</autogen>
-        <autogen>{{skp}} {{e}}, {{v}}, {{mex2}}|VK_SHIFT|{{mnon}}, {{m}}, VK_SHIFT, {{a}}, {{n}}, {{y}}</autogen>
-        <autogen>{{skp}} {{e}}, {{v}}, {{mex3}}|VK_SHIFT|{{mnon}}, {{t}}, VK_SHIFT, {{h}}, {{e}}, {{m}}</autogen>
-        <autogen>{{skp}} {{e}}, {{v}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{w}}, VK_SHIFT, {{h}}, {{e}}, {{n}}</autogen>
-        <autogen>{{skp}} {{e}}, {{v}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{a}}, VK_SHIFT, {{l}}, {{l}}</autogen>
+        <autogen>{{skp}} {{e}}, {{v}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{l}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{e}}, {{t}}</autogen>
+        <autogen>{{skp}} {{e}}, {{v}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{a}}, {{n}}, {{y}}</autogen>
+        <autogen>{{skp}} {{e}}, {{v}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{e}}, {{m}}</autogen>
+        <autogen>{{skp}} {{e}}, {{v}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{e}}, {{n}}</autogen>
+        <autogen>{{skp}} {{e}}, {{v}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{l}}, {{l}}</autogen>
         <autogen>{{skp}} {{e}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EV3</autogen>
 
         <autogen>{{skp}} {{e}}, {{w}}, ModifierFlag::CAPSLOCK|{{mnon}},           {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EW3</autogen>
@@ -450,35 +450,35 @@
         <autogen>{{skp}} {{e}}, {{w}}, {{mex5}},                   {{k}}EY_9</autogen>
         <autogen>{{skp}} {{e}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_EW3</autogen>
 
-        <autogen>{{skp}} {{f}}, {{g}}, VK_SHIFT,                   {{p}}AGEUP</autogen>
-        <autogen>{{skp}} {{f}}, {{g}}, VK_CONTROL,                 {{d}}ELETE, {{d}}ELETE</autogen>
+        <autogen>{{skp}} {{f}}, {{g}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                   {{p}}AGEUP</autogen>
+        <autogen>{{skp}} {{f}}, {{g}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,                 {{d}}ELETE, {{d}}ELETE</autogen>
         <autogen>{{skp}} {{f}}, {{g}},                             {{c}}URSOR_UP</autogen>
 
         <autogen>{{skp}} {{f}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_FV3</autogen>
 
-        <autogen>{{skp}} {{f}}, {{w}}, VK_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_FW3, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},          {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_FW3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex1}}|{{mnon}},          {{f}}, {{r}}, {{o}}, {{m}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex2}}|{{mnon}},          {{w}}, {{a}}, {{s}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex3}}|{{mnon}},          {{h}}, {{a}}, {{d}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex4}}|{{mnon}},          {{w}}, {{h}}, {{i}}, {{c}}, {{h}}</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mex5}}|{{mnon}},          {{b}}, {{y}}</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, {{mex1}}|VK_SHIFT|{{mnon}}, {{f}}, VK_SHIFT, {{r}}, {{o}}, {{m}}</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, {{mex2}}|VK_SHIFT|{{mnon}}, {{w}}, VK_SHIFT, {{a}}, {{s}}</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, {{mex3}}|VK_SHIFT|{{mnon}}, {{h}}, VK_SHIFT, {{a}}, {{d}}</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, {{mex4}}|VK_SHIFT|{{mnon}}, {{w}}, VK_SHIFT, {{h}}, {{i}}, {{c}}, {{h}}</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, {{mex5}}|VK_SHIFT|{{mnon}}, {{b}}, VK_SHIFT, {{y}}</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, {{mex1}}|ModifierFlag::CAPSLOCK|{{mnon}},    {{f}}, VK_SHIFT, {{r}}, VK_SHIFT, {{o}}, VK_SHIFT, {{m}}, VK_SHIFT</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, {{mex1}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{f}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{r}}, {{o}}, {{m}}</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, {{mex2}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{a}}, {{s}}</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, {{mex3}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{h}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{a}}, {{d}}</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, {{mex4}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{i}}, {{c}}, {{h}}</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, {{mex5}}|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}}, {{b}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{y}}</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, {{mex1}}|ModifierFlag::CAPSLOCK|{{mnon}},    {{f}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{f}}, {{w}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_FW3</autogen>
 
-        <autogen>{{skp}} {{g}}, {{r}}, VK_SHIFT,                   {{c}}URSOR_LEFT, ModifierFlag::OPTION_L|VK_SHIFT</autogen>
+        <autogen>{{skp}} {{g}}, {{r}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                   {{c}}URSOR_LEFT, ModifierFlag::OPTION_L|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{g}}, {{r}},                             {{c}}URSOR_LEFT, ModifierFlag::OPTION_L</autogen>
 
         <autogen>{{skp}} {{g}}, {{v}},                             {{v}}K_CONFIG_SYNC_KEYDOWNUP_notsave_prepared_GV3</autogen>
 
-        <autogen>{{skp}} {{h}}, {{j}}, VK_SHIFT,                   {{p}}AGEDOWN</autogen>
+        <autogen>{{skp}} {{h}}, {{j}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                   {{p}}AGEDOWN</autogen>
         <autogen>{{skp}} {{h}}, {{j}},                             {{c}}URSOR_DOWN</autogen>
 
-        <autogen>{{skp}} {{h}}, {{u}}, VK_SHIFT,                   {{c}}URSOR_RIGHT, ModifierFlag::OPTION_R|VK_SHIFT</autogen>
+        <autogen>{{skp}} {{h}}, {{u}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                   {{c}}URSOR_RIGHT, ModifierFlag::OPTION_R|MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{h}}, {{u}},                             {{c}}URSOR_RIGHT, ModifierFlag::OPTION_R</autogen>
 
         <autogen>{{skp}} {{i}}, {{j}}, {{mex1}},                   {{m}}INUS, {{mstl}}</autogen>
@@ -547,12 +547,12 @@
         <autogen>{{k2k}} {{m}}, {{mnon}},                          {{k}}EYPAD_6</autogen>
         <autogen>{{k2k}} {{n}}, {{mnon}},                          {{k}}EYPAD_5</autogen>
         <autogen>{{k2k}} {{o}}, {{mnon}},                          {{k}}EYPAD_9</autogen>
-        <autogen>{{k2k}} {{o}}, VK_SHIFT|{{mnon}},                 {{k}}EY_9, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{k}}EY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{r}}, {{mnon}},                          {{d}}OT</autogen>
         <autogen>{{k2k}} {{u}}, {{mnon}},                          {{c}}OMMA</autogen>
         <autogen>{{k2k}} {{v}}, {{mnon}},                          {{k}}EYPAD_4</autogen>
         <autogen>{{k2k}} {{w}}, {{mnon}},                          {{k}}EYPAD_0</autogen>
-        <autogen>{{k2k}} {{w}}, VK_SHIFT,                          {{k}}EY_0, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                          {{k}}EY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{skp}} {{e}}, {{f}}, {{mnon}},                   {{k}}EY_9, {{mstl}}</autogen>
         <autogen>{{skp}} {{e}}, {{r}}, {{mnon}},                   {{s}}EMICOLON</autogen>
         <autogen>{{skp}} {{e}}, {{w}}, {{mnon}},                   {{s}}PACE</autogen>
@@ -560,7 +560,7 @@
         <autogen>{{skp}} {{f}}, {{w}}, {{mnon}},                   {{b}}RACKET_LEFT</autogen>
         <autogen>{{skp}} {{i}}, {{j}}, {{mnon}},                   {{k}}EY_0, {{mstl}}</autogen>
         <autogen>{{skp}} {{i}}, {{o}}, {{mnon}},                   {{r}}ETURN</autogen>
-        <autogen>{{skp}} {{i}}, {{o}}, VK_SHIFT,                   {{e}}SCAPE</autogen>
+        <autogen>{{skp}} {{i}}, {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                   {{e}}SCAPE</autogen>
         <autogen>{{skp}} {{i}}, {{u}}, {{mnon}},                   {{s}}EMICOLON, {{mstl}}</autogen>
         <autogen>{{skp}} {{j}}, {{o}}, {{mnon}},                   {{b}}RACKET_RIGHT</autogen>
       </item>
@@ -591,17 +591,17 @@
         <name>EPS keymap, CR3 submap</name>
         <identifier vk_config="true">notsave.prepared_CR3</identifier>
         <autogen>{{k2k}} {{i}}, {{mnon}},                          {{i}}, {{n}}, {{t}}, {{o}}</autogen>
-        <autogen>{{k2k}} {{i}}, VK_SHIFT|{{mnon}},                 {{i}}, VK_SHIFT, {{n}}, {{t}}, {{o}}</autogen>
+        <autogen>{{k2k}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{n}}, {{t}}, {{o}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mnon}},                          {{m}}, {{o}}, {{r}}, {{e}}</autogen>
-        <autogen>{{k2k}} {{j}}, VK_SHIFT|{{mnon}},                 {{m}}, VK_SHIFT, {{o}}, {{r}}, {{e}}</autogen>
+        <autogen>{{k2k}} {{j}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{o}}, {{r}}, {{e}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mnon}},                          {{d}}, {{i}}, {{d}}</autogen>
-        <autogen>{{k2k}} {{m}}, VK_SHIFT|{{mnon}},                 {{d}}, VK_SHIFT, {{i}}, {{d}}</autogen>
+        <autogen>{{k2k}} {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{d}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{i}}, {{d}}</autogen>
         <autogen>{{k2k}} {{n}}, {{mnon}},                          {{u}}, {{p}}</autogen>
-        <autogen>{{k2k}} {{n}}, VK_SHIFT|{{mnon}},                 {{u}}, VK_SHIFT, {{p}}</autogen>
+        <autogen>{{k2k}} {{n}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{u}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{p}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mnon}},                          {{n}}, {{o}}, {{w}}</autogen>
-        <autogen>{{k2k}} {{o}}, VK_SHIFT|{{mnon}},                 {{n}}, VK_SHIFT, {{o}}, {{w}}</autogen>
+        <autogen>{{k2k}} {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{n}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{o}}, {{w}}</autogen>
         <autogen>{{k2k}} {{u}}, {{mnon}},                          {{s}}PACE</autogen>
-        <autogen>{{k2k}} {{u}}, VK_SHIFT|{{mnon}},                 {{s}}PACE</autogen>
+        <autogen>{{k2k}} {{u}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{s}}PACE</autogen>
         <autogen>{{skp}} {{i}}, {{j}},                             {{n}}, {{e}}, {{v}}, {{e}}, {{r}}</autogen>
         <autogen>{{skp}} {{i}}, {{m}},                             {{w}}, {{o}}, {{r}}, {{k}}</autogen>
         <autogen>{{skp}} {{j}}, {{o}},                             {{o}}, {{n}}, {{c}}, {{e}}</autogen>
@@ -610,27 +610,27 @@
         <name>EPS keymap, CV3 submap</name>
         <identifier vk_config="true">notsave.prepared_CV3</identifier>
         <autogen>{{k2k}} {{j}}, {{mnon}},                          {{o}}, {{v}}, {{e}}</autogen>
-        <autogen>{{k2k}} {{j}}, VK_SHIFT|{{mnon}},                 {{o}}, VK_SHIFT, {{v}}, {{e}}</autogen>
+        <autogen>{{k2k}} {{j}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{v}}, {{e}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mnon}},                          {{s}}, {{h}}, {{o}}, {{u}}, {{l}}, {{d}}</autogen>
-        <autogen>{{k2k}} {{m}}, VK_SHIFT|{{mnon}},                 {{s}}, VK_SHIFT, {{h}}, {{o}}, {{u}}, {{l}}, {{d}}</autogen>
+        <autogen>{{k2k}} {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{s}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{o}}, {{u}}, {{l}}, {{d}}</autogen>
         <autogen>{{k2k}} {{n}}, {{mnon}},                          {{m}}, {{a}}, {{k}}, {{e}}</autogen>
-        <autogen>{{k2k}} {{n}}, VK_SHIFT|{{mnon}},                 {{m}}, VK_SHIFT, {{a}}, {{k}}, {{e}}</autogen>
+        <autogen>{{k2k}} {{n}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{a}}, {{k}}, {{e}}</autogen>
         <autogen>{{k2k}} {{i}}, {{mnon}},                          {{o}}, {{w}}, {{n}}</autogen>
-        <autogen>{{k2k}} {{i}}, VK_SHIFT|{{mnon}},                 {{o}}, VK_SHIFT, {{w}}, {{n}}</autogen>
+        <autogen>{{k2k}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{w}}, {{n}}</autogen>
       </item>
       <item>
         <name>EPS keymap, CW3 submap</name>
         <identifier vk_config="true">notsave.prepared_CW3</identifier>
         <autogen>{{k2k}} {{i}}, {{mnon}},                          {{e}}, {{a}}, {{c}}, {{h}}</autogen>
-        <autogen>{{k2k}} {{i}}, VK_SHIFT|{{mnon}},                 {{e}}, VK_SHIFT, {{a}}, {{c}}, {{h}}</autogen>
+        <autogen>{{k2k}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{e}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{a}}, {{c}}, {{h}}</autogen>
         <autogen>{{k2k}} {{j}}, {{mnon}},                          {{o}}, {{n}}, {{l}}, {{y}}</autogen>
-        <autogen>{{k2k}} {{j}}, VK_SHIFT|{{mnon}},                 {{o}}, VK_SHIFT, {{n}}, {{l}}, {{y}}</autogen>
+        <autogen>{{k2k}} {{j}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{n}}, {{l}}, {{y}}</autogen>
         <autogen>{{k2k}} {{m}}, {{mnon}},                          {{l}}, {{i}}, {{k}}, {{e}}</autogen>
-        <autogen>{{k2k}} {{m}}, VK_SHIFT|{{mnon}},                 {{l}}, VK_SHIFT, {{i}}, {{k}}, {{e}}</autogen>
+        <autogen>{{k2k}} {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{l}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{i}}, {{k}}, {{e}}</autogen>
         <autogen>{{k2k}} {{n}}, {{mnon}},                          {{a}}, {{n}}, {{y}}</autogen>
-        <autogen>{{k2k}} {{n}}, VK_SHIFT|{{mnon}},                 {{a}}, VK_SHIFT, {{n}}, {{y}}</autogen>
+        <autogen>{{k2k}} {{n}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{n}}, {{y}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mnon}},                          {{t}}, {{h}}, {{e}}, {{i}}, {{r}}</autogen>
-        <autogen>{{k2k}} {{o}}, VK_SHIFT|{{mnon}},                 {{t}}, VK_SHIFT, {{h}}, {{e}}, {{i}}, {{r}}</autogen>
+        <autogen>{{k2k}} {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{e}}, {{i}}, {{r}}</autogen>
         <autogen>{{k2k}} {{u}},                                    {{s}}PACE</autogen>
         <autogen>{{skp}} {{i}}, {{j}}, {{mnon}},                   {{g}}, {{o}}, {{o}}, {{d}}</autogen>
         <autogen>{{skp}} {{i}}, {{m}}, {{mnon}},                   {{b}}, {{o}}, {{d}}, {{y}}</autogen>
@@ -646,23 +646,23 @@
         <identifier vk_config="true">notsave.prepared_EF3</identifier>
         <autogen>{{k2k}} {{i}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{e}}QUAL</autogen>
         <autogen>{{k2k}} {{i}}, {{mnon}},                          {{e}}QUAL</autogen>
-        <autogen>{{k2k}} {{i}}, VK_COMMAND|{{mnon}},               {{e}}QUAL, VK_COMMAND</autogen>
-        <autogen>{{k2k}} {{i}}, VK_SHIFT|{{mnon}},                 {{e}}QUAL</autogen>
-        <autogen>{{k2k}} {{j}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{x}}, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},               {{e}}QUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>{{k2k}} {{i}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{e}}QUAL</autogen>
+        <autogen>{{k2k}} {{j}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{x}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{j}}, {{mnon}},                          {{x}}</autogen>
-        <autogen>{{k2k}} {{j}}, VK_COMMAND|{{mnon}},               {{x}}, VK_COMMAND</autogen>
-        <autogen>{{k2k}} {{j}}, VK_SHIFT|{{mnon}},                 {{x}}, VK_SHIFT</autogen>
-        <autogen>{{k2k}} {{m}}, ModifierFlag::CAPSLOCK,            {{k}}, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{j}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},               {{x}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>{{k2k}} {{j}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{x}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{k2k}} {{m}}, ModifierFlag::CAPSLOCK,            {{k}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{m}}, {{mnon}},                          {{k}}</autogen>
-        <autogen>{{k2k}} {{m}}, VK_COMMAND|{{mnon}},               {{k}}, VK_COMMAND</autogen>
-        <autogen>{{k2k}} {{m}}, VK_SHIFT|{{mnon}},                 {{k}}, VK_SHIFT</autogen>
-        <autogen>{{k2k}} {{n}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{t}}, VK_SHIFT, {{h}}, VK_SHIFT, {{a}}, VK_SHIFT, {{t}}, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},               {{k}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>{{k2k}} {{m}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{k}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>{{k2k}} {{n}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{a}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{n}}, {{mnon}},                          {{t}}, {{h}}, {{a}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{n}}, VK_SHIFT|{{mnon}},                 {{t}}, VK_SHIFT, {{h}}, {{a}}, {{t}}</autogen>
-        <autogen>{{k2k}} {{o}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{v}}, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{n}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{a}}, {{t}}</autogen>
+        <autogen>{{k2k}} {{o}}, ModifierFlag::CAPSLOCK|{{mnon}},   {{v}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{o}}, {{mnon}},                          {{v}}</autogen>
-        <autogen>{{k2k}} {{o}}, VK_COMMAND|{{mnon}},               {{v}}, VK_COMMAND</autogen>
-        <autogen>{{k2k}} {{o}}, VK_SHIFT|{{mnon}},                 {{v}}, VK_SHIFT</autogen>
+        <autogen>{{k2k}} {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND|{{mnon}},               {{v}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>{{k2k}} {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},                 {{v}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
         <autogen>{{k2k}} {{u}},                                    {{s}}PACE</autogen>M
       </item>
       <item>
@@ -683,7 +683,7 @@
         <autogen>{{k2k}} {{m}},                                    {{t}}, {{i}}, {{m}}, {{e}}</autogen>
         <autogen>{{k2k}} {{n}},                                    {{s}}, {{o}}, {{m}}, {{e}}</autogen>
         <autogen>{{k2k}} {{o}}, {{mnon}},                          {{t}}, {{h}}, {{e}}, {{y}}</autogen>
-        <autogen>{{k2k}} {{o}}, VK_SHIFT,                          {{t}}, VK_SHIFT, {{h}}, {{e}}, {{y}}</autogen>
+        <autogen>{{k2k}} {{o}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,                          {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{e}}, {{y}}</autogen>
         <autogen>{{k2k}} {{u}},                                    {{s}}PACE</autogen>
       </item>
       <item>
@@ -725,7 +725,7 @@
         <autogen>{{skp}} {{i}}, {{m}},                             {{b}}, {{a}}, {{c}}, {{k}}</autogen>
         <autogen>{{skp}} {{i}}, {{n}},                             {{s}}, {{e}}, {{l}}, {{f}}</autogen>
         <autogen>{{skp}} {{i}}, {{o}},                             {{y}}, {{o}}, {{u}}, {{r}}</autogen>
-        <autogen>{{skp}} {{j}}, {{o}},                             {{k}}EY_9, VK_SHIFT, {{k}}EY_0, VK_SHIFT, {{c}}URSOR_LEFT</autogen>
+        <autogen>{{skp}} {{j}}, {{o}},                             {{k}}EY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{k}}EY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{c}}URSOR_LEFT</autogen>
         <autogen>{{skp}} {{m}}, {{o}},                             {{w}}, {{a}}, {{r}}, {{d}}</autogen>
         <autogen>{{skp}} {{n}}, {{o}},                             {{o}}, {{u}}, {{t}}</autogen>
         <autogen>{{skp}} {{n}}, {{u}},                             {{a}}, {{f}}, {{t}}, {{e}}, {{r}}</autogen>
@@ -749,10 +749,10 @@
         <autogen>{{k2k}} {{t}},                                    {{s}}PACE</autogen>
         <autogen>{{k2k}} {{v}},                                    {{j}}, {{u}}, {{s}}, {{t}}</autogen>
         <autogen>{{k2k}} {{w}},                                    {{z}}, {{z}}</autogen>
-        <autogen>{{skp}} {{e}}, {{f}}, {{mnon}},                   {{m}}INUS, {{d}}OT, VK_SHIFT, {{b}}RACKET_LEFT, VK_SHIFT, {{b}}RACKET_RIGHT,
-          VK_SHIFT, {{c}}URSOR_LEFT</autogen>
+        <autogen>{{skp}} {{e}}, {{f}}, {{mnon}},                   {{m}}INUS, {{d}}OT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{b}}RACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{b}}RACKET_RIGHT,
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{c}}URSOR_LEFT</autogen>
         <autogen>{{skp}} {{f}}, {{w}}, {{mnon}},                   {{t}}, {{h}}, {{o}}, {{u}}, {{g}}, {{h}}</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, VK_SHIFT|{{mnon}},          {{t}}, VK_SHIFT, {{h}}, {{o}}, {{u}}, {{g}}, {{h}}</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|{{mnon}},          {{t}}, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{h}}, {{o}}, {{u}}, {{g}}, {{h}}</autogen>
         <!-- IJ-FG works on Mac but not Dell keyboards -->
       </item>
       <item>
@@ -788,7 +788,7 @@
 
         <autogen>{{skp}} {{e}}, {{f}}, {{mnon}},                   {{m}}INUS, {{d}}OT, {{mstl}}</autogen>
         <autogen>{{skp}} {{e}}, {{w}}, {{mnon}},                   {{b}}RACKET_LEFT, {{b}}RACKET_RIGHT, {{c}}URSOR_LEFT</autogen>
-        <autogen>{{skp}} {{f}}, {{w}}, {{mnon}},                   {{b}}RACKET_LEFT, VK_SHIFT, {{b}}RACKET_RIGHT, VK_SHIFT, {{c}}URSOR_LEFT</autogen>
+        <autogen>{{skp}} {{f}}, {{w}}, {{mnon}},                   {{b}}RACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{b}}RACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{c}}URSOR_LEFT</autogen>
       </item>
       <item>
         <name>EPS keymap, OM3 submap</name>

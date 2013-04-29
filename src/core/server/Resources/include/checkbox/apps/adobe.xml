@@ -6,7 +6,7 @@
       <name>Change Command+Tab to Control_L+Tab</name>
       <identifier>remap.app_adobe_commandTab2controlLTab</identifier>
       <only>ADOBE, PHOTOSHOP, ILLUSTRATOR</only>
-      <autogen>__KeyToKey__ KeyCode::TAB, VK_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::TAB, ModifierFlag::CONTROL_L</autogen>
     </item>
   </item>
 </root>

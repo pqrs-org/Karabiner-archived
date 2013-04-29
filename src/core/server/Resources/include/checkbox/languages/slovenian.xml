@@ -19,15 +19,15 @@
         KeyCode::KEY_8, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
 
       <appendix>Shift_L + 7 = / and / = ' (plus hack for ? - second line)</appendix>
-      <autogen>__KeyToKey__ KeyCode::KEY_7, VK_SHIFT,
+      <autogen>__KeyToKey__ KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
         KeyCode::MINUS</autogen>
-      <autogen>__KeyToKey__ KeyCode::MINUS, VK_SHIFT,
-        KeyCode::MINUS, VK_SHIFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
       <autogen>__KeyToKey__ KeyCode::MINUS,
         KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
 
       <appendix>Key between Y and Shift_L = &lt; &gt;</appendix>
-      <autogen>__KeyToKey__ KeyCode::UK_SECTION, VK_SHIFT,
+      <autogen>__KeyToKey__ KeyCode::UK_SECTION, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
         KeyCode::RUSSIAN_TILDE, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::UK_SECTION, KeyCode::RUSSIAN_TILDE</autogen>
 
