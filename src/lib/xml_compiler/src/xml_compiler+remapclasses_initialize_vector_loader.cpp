@@ -125,19 +125,25 @@ namespace pqrs {
     // MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_*
     {
       static const struct {
-        const std::string vk;
+        const std::string name;
         const std::string flags[2];
       } info[] = {
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",  { "ModifierFlag::OPTION_L",  "ModifierFlag::OPTION_R"  } },
+
+        // for backwards compatibility
+        { "VK_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
+        { "VK_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
+        { "VK_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },
+        { "VK_OPTION",  { "ModifierFlag::OPTION_L",  "ModifierFlag::OPTION_R"  } },
       };
 
       for (const auto& it : info) {
-        if (autogen.find(it.vk) != std::string::npos) {
+        if (autogen.find(it.name) != std::string::npos) {
           for (const auto& f : it.flags) {
-            handle_autogen(boost::replace_all_copy(autogen, it.vk, f),
+            handle_autogen(boost::replace_all_copy(autogen, it.name, f),
                            raw_autogen);
           }
           return;
@@ -148,7 +154,7 @@ namespace pqrs {
     // MODIFIERFLAGS_*
     {
       static const struct {
-        const std::string vk;
+        const std::string name;
         const std::string flag;
       } info[] = {
         { "MODIFIERFLAGS_CCOS_L",
@@ -157,10 +163,15 @@ namespace pqrs {
           "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
         { "MODIFIERFLAGS_CCO_L",
           "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
+
+        // for backwards compatibility
+        { "VK_MOD_CCOS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L" },
+        { "VK_MOD_CCS_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
+        { "VK_MOD_CCO_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
       };
       for (const auto& it : info) {
-        if (autogen.find(it.vk) != std::string::npos) {
-          handle_autogen(boost::replace_all_copy(autogen, it.vk, it.flag),
+        if (autogen.find(it.name) != std::string::npos) {
+          handle_autogen(boost::replace_all_copy(autogen, it.name, it.flag),
                          raw_autogen);
           return;
         }
@@ -168,24 +179,36 @@ namespace pqrs {
     }
 
     // MODIFIERFLAGS_ANY
-    if (autogen.find("MODIFIERFLAGS_ANY") != std::string::npos) {
-      // Making combination at the first time. (reuse it since 2nd time.)
-      static std::vector<std::tr1::shared_ptr<std::vector<std::string> > > combination;
-      if (combination.empty()) {
-        // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
-        const char* seeds[] = { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND",
-                                "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL",
-                                "ModifierFlag::FN",
-                                "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",
-                                "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT" };
-        pqrs::vector::make_combination(combination, seeds, sizeof(seeds) / sizeof(seeds[0]));
-      }
+    {
+      static const struct {
+        const std::string name;
+      } info[] = {
+        "MODIFIERFLAGS_ANY",
 
-      for (const auto& v : combination) {
-        handle_autogen(boost::replace_all_copy(autogen, "MODIFIERFLAGS_ANY", boost::join(*v, "|") + "|ModifierFlag::NONE"),
-                       raw_autogen);
+        // for backwards compatibility
+        "VK_MOD_ANY",
+      };
+      for (const auto& it : info) {
+        if (autogen.find(it.name) != std::string::npos) {
+          // Making combination at the first time. (reuse it since 2nd time.)
+          static std::vector<std::tr1::shared_ptr<std::vector<std::string> > > combination;
+          if (combination.empty()) {
+            // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
+            const char* seeds[] = { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND",
+                                    "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL",
+                                    "ModifierFlag::FN",
+                                    "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",
+                                    "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT" };
+            pqrs::vector::make_combination(combination, seeds, sizeof(seeds) / sizeof(seeds[0]));
+          }
+
+          for (const auto& v : combination) {
+            handle_autogen(boost::replace_all_copy(autogen, it.name, boost::join(*v, "|") + "|ModifierFlag::NONE"),
+                           raw_autogen);
+          }
+          return;
+        }
       }
-      return;
     }
 
     // FROMKEYCODE_HOME, FROMKEYCODE_END, ...
@@ -269,17 +292,6 @@ namespace pqrs {
       } info[] = {
         { "SimultaneousKeyPresses::Option::RAW", "Option::SIMULTANEOUSKEYPRESSES_RAW" },
         { "KeyCode::VK_CHANGE_INPUTMODE_", "KeyCode::VK_CHANGE_INPUTSOURCE_" },
-
-        { "VK_COMMAND", "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND" },
-        { "VK_CONTROL", "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL" },
-        { "VK_OPTION",  "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION"  },
-        { "VK_SHIFT",   "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT"   },
-
-        { "VK_MOD_CCOS_L", "MODIFIERFLAGS_CCOS_L" },
-        { "VK_MOD_CCS_L",  "MODIFIERFLAGS_CCS_L"  },
-        { "VK_MOD_CCO_L",  "MODIFIERFLAGS_CCO_L"  },
-
-        { "VK_MOD_ANY", "MODIFIERFLAGS_ANY" },
       };
       for (const auto& it : info) {
         if (autogen.find(it.oldstring) != std::string::npos) {
