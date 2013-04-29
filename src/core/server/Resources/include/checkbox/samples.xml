@@ -101,16 +101,16 @@
         <appendix>==&gt; __KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::B</appendix>
         <appendix></appendix>
         <appendix>Multiple MODIFIERFLAG_* in one definition are replaced same value.</appendix>
-        <appendix>__KeyToKey__ KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</appendix>
-        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L</appendix>
-        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_R</appendix>
-        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_L</appendix>
-        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::CONTROL_R</appendix>
-        <appendix>==&gt; 2 VK_MOD_ANYs are replaced to ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L</appendix>
+        <appendix>__KeyToKey__ KeyCode::C, MODIFIERFLAGS_ANY, KeyCode::D, MODIFIERFLAGS_ANY, KeyCode::E</appendix>
+        <appendix>==&gt; 2 MODIFIERFLAGS_ANYs are replaced to ModifierFlag::COMMAND_L</appendix>
+        <appendix>==&gt; 2 MODIFIERFLAGS_ANYs are replaced to ModifierFlag::COMMAND_R</appendix>
+        <appendix>==&gt; 2 MODIFIERFLAGS_ANYs are replaced to ModifierFlag::CONTROL_L</appendix>
+        <appendix>==&gt; 2 MODIFIERFLAGS_ANYs are replaced to ModifierFlag::CONTROL_R</appendix>
+        <appendix>==&gt; 2 MODIFIERFLAGS_ANYs are replaced to ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L</appendix>
         <appendix>==&gt; ...</appendix>
         <identifier>remap.samples_keytokey_vk_modifier</identifier>
         <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
-        <autogen>__KeyToKey__ KeyCode::C, VK_MOD_ANY, KeyCode::D, VK_MOD_ANY, KeyCode::E</autogen>
+        <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAGS_ANY, KeyCode::D, MODIFIERFLAGS_ANY, KeyCode::E</autogen>
       </item>
 
       <item>
@@ -763,10 +763,10 @@
         <autogen>__StripModifierFromScrollWheel__ MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
       </item>
       <item>
-        <name>VK_MOD_ANY</name>
+        <name>MODIFIERFLAGS_ANY</name>
         <appendix>Any Modifiers+ScrollWheel to ScrollWheel (strip Any Modifiers)</appendix>
         <identifier>remap.samples_stripmodifierfromscrollwheel_any</identifier>
-        <autogen>__StripModifierFromScrollWheel__ VK_MOD_ANY</autogen>
+        <autogen>__StripModifierFromScrollWheel__ MODIFIERFLAGS_ANY</autogen>
       </item>
     </item>
 
