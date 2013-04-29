@@ -123,7 +123,7 @@ namespace pqrs {
     //
 
     // MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_*
-    // (VK_COMMAND, VK_CONTROL, VK_SHIFT, VK_OPTION for backwards compatibility)
+    // (VK_COMMAND, VK_CONTROL, VK_SHIFT, VK_OPTION for backwards compatibility.)
     {
       static const struct {
         const std::string vk;
@@ -150,12 +150,19 @@ namespace pqrs {
       }
     }
 
-    // VK_MOD_*
+    // MODIFIERFLAGS_*
+    // (VK_MOD_* for backwards compatibility.)
     {
       static const struct {
         const std::string vk;
         const std::string flag;
       } info[] = {
+        { "MODIFIERFLAGS_CCOS_L",
+          "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L" },
+        { "MODIFIERFLAGS_CCS_L",
+          "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
+        { "MODIFIERFLAGS_CCO_L",
+          "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
         { "VK_MOD_CCOS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L" },
         { "VK_MOD_CCS_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
         { "VK_MOD_CCO_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
