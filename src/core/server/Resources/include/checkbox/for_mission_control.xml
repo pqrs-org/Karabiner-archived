@@ -31,32 +31,64 @@
     <item>
       <name>Holding "E" Key to Mission Control (Expose)</name>
       <identifier>remap.holding_e_to_expose</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::E, ModifierFlag::NONE, KeyCode::E, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::E, ModifierFlag::NONE,
+        KeyCode::E,
+        KeyCode::VK_NONE,
+        KeyCode::EXPOSE_ALL,
+        Option::NOREPEAT,
+      </autogen>
     </item>
     <item>
       <name>Holding "D" Key to Dashboard</name>
       <identifier>remap.holding_d_to_dashboard</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::D, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::D, ModifierFlag::NONE,
+        KeyCode::D,
+        KeyCode::VK_NONE,
+        KeyCode::DASHBOARD,
+        Option::NOREPEAT,
+      </autogen>
     </item>
     <item>
       <name>Holding Shift+"E" Key to Mission Control (Expose)</name>
       <identifier>remap.holding_shift_e_to_expose</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::EXPOSE_ALL, Option::NOREPEAT</autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::VK_NONE,
+        KeyCode::EXPOSE_ALL, Option::NOREPEAT,
+      </autogen>
     </item>
     <item>
       <name>Holding Shift+"D" Key to Dashboard</name>
       <identifier>remap.holding_shift_d_to_dashboard</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::DASHBOARD, Option::NOREPEAT</autogen>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::VK_NONE,
+        KeyCode::DASHBOARD, Option::NOREPEAT,
+      </autogen>
     </item>
     <item>
       <name>Control+Scroll (Left/Right) to Move a space</name>
       <appendix>(Change Control+Left Scroll to Control+Left Arrow)</appendix>
       <appendix>(Change Control+Right Scroll to Control+Right Arrow)</appendix>
       <identifier>remap.controlscroll_to_controlarrow</identifier>
-      <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
-        KeyCode::CURSOR_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
-      <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
-        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      </autogen>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      </autogen>
     </item>
     <item>
       <name>Expose Mode</name>
@@ -91,7 +123,11 @@
       <item>
         <name>Simultaneous Key Presses [K+L] to toggle Expose Mode</name>
         <identifier>remap.simultaneouskeypresses_expose_kl</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::K, KeyCode::L, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode</autogen>
+        <autogen>
+          __SimultaneousKeyPresses__
+          KeyCode::K, KeyCode::L,
+          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode,
+        </autogen>
       </item>
       <item>
         <name>[Option] Change "F" key behavior to "Option+Tab"</name>
@@ -113,8 +149,20 @@
         <appendix>- Arrow keys: move a selection.</appendix>
         <identifier vk_config="true">notsave.cmdtab_mode</identifier>
         <autogen>__ShowStatusMessage__ Cmd+Tab</autogen>
-        <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
-        <autogen>__KeyToKey__ KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::RETURN,
+          KeyCode::RETURN,
+          KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::ESCAPE,
+          KeyCode::ESCAPE,
+          KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode,
+        </autogen>
         <autogen>
           __PointingButtonToKey__
           PointingButton::LEFT,
@@ -144,11 +192,23 @@
         <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::TAB, ModifierFlag::SHIFT_R</autogen>
         <block>
           <config_only>remap.cmdtab_mode_controlM</config_only>
-          <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+            KeyCode::RETURN,
+            KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode,
+          </autogen>
         </block>
         <block>
           <config_only>remap.cmdtab_mode_control_bracket_left</config_only>
-          <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, KeyCode::ESCAPE, KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF, KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode</autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::BRACKET_LEFT,
+            KeyCode::ESCAPE,
+            KeyCode::VK_LOCK_COMMAND_L_FORCE_OFF,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode,
+          </autogen>
         </block>
         <block>
           <config_only>remap.cmdtab_mode_hjkl</config_only>
@@ -168,7 +228,13 @@
       <item>
         <name>Simultaneous Key Presses [Tab+Q] to toggle Cmd+Tab</name>
         <identifier>remap.simultaneouskeypresses_cmdtab_tabq</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::TAB, KeyCode::Q, KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode, KeyCode::VK_LOCK_COMMAND_L_FORCE_ON, KeyCode::TAB</autogen>
+        <autogen>
+          __SimultaneousKeyPresses__
+          KeyCode::TAB, KeyCode::Q,
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode,
+          KeyCode::VK_LOCK_COMMAND_L_FORCE_ON,
+          KeyCode::TAB,
+        </autogen>
       </item>
       <item>
         <name>[Option] Control+M to Return</name>
@@ -192,12 +258,24 @@
       <item>
         <name>Holding "S" Key to Spaces (F8)</name>
         <identifier>remap.holding_s_to_spaces</identifier>
-        <autogen>__HoldingKeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::S, ModifierFlag::NONE,
+          KeyCode::S,
+          KeyCode::VK_NONE,
+          KeyCode::F8, Option::NOREPEAT,
+        </autogen>
       </item>
       <item>
         <name>Holding Shift+"S" Key to Spaces (F8)</name>
         <identifier>remap.holding_shift_s_to_spaces</identifier>
-        <autogen>__HoldingKeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::F8, Option::NOREPEAT</autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::VK_NONE,
+          KeyCode::F8, Option::NOREPEAT,
+        </autogen>
       </item>
       <item>
         <name>Holding "1234 QWER ASDF ZXCV" to switch a space (4x4)</name>
@@ -211,22 +289,134 @@
         <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
         <appendix>    "Command+Control+Shift+Number Keys".</appendix>
         <identifier>remap.spaces_special_holding_1234qwerasdfzxcv</identifier>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::W,     ModifierFlag::NONE, KeyCode::W,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::E,     ModifierFlag::NONE, KeyCode::E,     KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::R,     ModifierFlag::NONE, KeyCode::R,     KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::A,     ModifierFlag::NONE, KeyCode::A,     KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::S,     ModifierFlag::NONE, KeyCode::S,     KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::D,     ModifierFlag::NONE, KeyCode::D,     KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::F,     ModifierFlag::NONE, KeyCode::F,     KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,     KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::X,     ModifierFlag::NONE, KeyCode::X,     KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::C,     ModifierFlag::NONE, KeyCode::C,     KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::V,     ModifierFlag::NONE, KeyCode::V,     KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_1, ModifierFlag::NONE,
+          KeyCode::KEY_1,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_2, ModifierFlag::NONE,
+          KeyCode::KEY_2,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_3, ModifierFlag::NONE,
+          KeyCode::KEY_3,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_4, ModifierFlag::NONE,
+          KeyCode::KEY_4,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::Q, ModifierFlag::NONE,
+          KeyCode::Q,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::W, ModifierFlag::NONE,
+          KeyCode::W,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::E, ModifierFlag::NONE,
+          KeyCode::E,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::R, ModifierFlag::NONE,
+          KeyCode::R,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::A, ModifierFlag::NONE,
+          KeyCode::A,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::S, ModifierFlag::NONE,
+          KeyCode::S,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_0, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::D, ModifierFlag::NONE,
+          KeyCode::D,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::F, ModifierFlag::NONE,
+          KeyCode::F,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::Z, ModifierFlag::NONE,
+          KeyCode::Z,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::X, ModifierFlag::NONE,
+          KeyCode::X,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::C, ModifierFlag::NONE,
+          KeyCode::C,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::V, ModifierFlag::NONE,
+          KeyCode::V,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
       </item>
 
       <item>
@@ -243,250 +433,950 @@
         <appendix>(2) Change "To switch directly to a space" configuration to</appendix>
         <appendix>    "Command+Control+Shift+Number Keys".</appendix>
         <identifier>remap.spaces_special_holding_1234qwerasdfzxcv_swap_number_and_symbol</identifier>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L, KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::Q,     ModifierFlag::NONE, KeyCode::Q,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::W,     ModifierFlag::NONE, KeyCode::W,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::E,     ModifierFlag::NONE, KeyCode::E,                            KeyCode::VK_NONE, KeyCode::KEY_7, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::R,     ModifierFlag::NONE, KeyCode::R,                            KeyCode::VK_NONE, KeyCode::KEY_8, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::A,     ModifierFlag::NONE, KeyCode::A,                            KeyCode::VK_NONE, KeyCode::KEY_9, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::S,     ModifierFlag::NONE, KeyCode::S,                            KeyCode::VK_NONE, KeyCode::KEY_0, VK_MOD_CCS_L,  Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::D,     ModifierFlag::NONE, KeyCode::D,                            KeyCode::VK_NONE, KeyCode::KEY_1, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::F,     ModifierFlag::NONE, KeyCode::F,                            KeyCode::VK_NONE, KeyCode::KEY_2, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::Z,     ModifierFlag::NONE, KeyCode::Z,                            KeyCode::VK_NONE, KeyCode::KEY_3, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::X,     ModifierFlag::NONE, KeyCode::X,                            KeyCode::VK_NONE, KeyCode::KEY_4, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::C,     ModifierFlag::NONE, KeyCode::C,                            KeyCode::VK_NONE, KeyCode::KEY_5, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
-        <autogen>__HoldingKeyToKey__ KeyCode::V,     ModifierFlag::NONE, KeyCode::V,                            KeyCode::VK_NONE, KeyCode::KEY_6, VK_MOD_CCOS_L, Option::NOREPEAT</autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_1, ModifierFlag::NONE,
+          KeyCode::KEY_1, ModifierFlag::SHIFT_L,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_2, ModifierFlag::NONE,
+          KeyCode::KEY_2, ModifierFlag::SHIFT_L,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_3, ModifierFlag::NONE,
+          KeyCode::KEY_3, ModifierFlag::SHIFT_L,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::KEY_4, ModifierFlag::NONE,
+          KeyCode::KEY_4, ModifierFlag::SHIFT_L,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::Q, ModifierFlag::NONE,
+          KeyCode::Q,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::W, ModifierFlag::NONE,
+          KeyCode::W,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::E, ModifierFlag::NONE,
+          KeyCode::E,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::R, ModifierFlag::NONE,
+          KeyCode::R,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::A, ModifierFlag::NONE,
+          KeyCode::A,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::S, ModifierFlag::NONE,
+          KeyCode::S,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_0, MODIFIERFLAGS_CCS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::D, ModifierFlag::NONE,
+          KeyCode::D,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::F, ModifierFlag::NONE,
+          KeyCode::F,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::Z, ModifierFlag::NONE,
+          KeyCode::Z,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::X, ModifierFlag::NONE,
+          KeyCode::X,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::C, ModifierFlag::NONE,
+          KeyCode::C,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::V, ModifierFlag::NONE,
+          KeyCode::V,
+          KeyCode::VK_NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L,
+          Option::NOREPEAT,
+        </autogen>
         <!-- KEY_1 - KEY_4 is already defined in above. -->
-        <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_1</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_2</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_4</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_7</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_9</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_0</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_5, ModifierFlag::NONE,
+          KeyCode::KEY_5, ModifierFlag::SHIFT_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_6, ModifierFlag::NONE,
+          KeyCode::KEY_6, ModifierFlag::SHIFT_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_7, ModifierFlag::NONE,
+          KeyCode::KEY_7, ModifierFlag::SHIFT_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_8, ModifierFlag::NONE,
+          KeyCode::KEY_8, ModifierFlag::SHIFT_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_9, ModifierFlag::NONE,
+          KeyCode::KEY_9, ModifierFlag::SHIFT_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_0, ModifierFlag::NONE,
+          KeyCode::KEY_0, ModifierFlag::SHIFT_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_1
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_2
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_3
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_4
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_5
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_6
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_7
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_8
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_9
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::KEY_0
+        </autogen>
       </item>
 
       <item>
         <name>Use Command_R+[ASD FGH JKL] for Spaces</name>
         <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
         <identifier>remap.spaces_special</identifier>
-        <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::F, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::G, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::H, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::J, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::L, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Command_R+[123 QWE ASD] for Spaces (3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
         <identifier>remap.spaces_special_123qweasd</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Command_R+[123 QWE ASD] for Spaces (4x4)</name>
         <appendix>(Cmd+Ctrl+Shift+[123 567 90], Cmd+Ctrl+Option+Shift[1])</appendix>
         <identifier>remap.spaces_special_123qweasd_4x4</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_1, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_2, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_3, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Q,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::E,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_0, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D,     ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123 456 789])</appendix>
         <identifier>remap.spaces_special_qweasdzxc</identifier>
-        <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Command_R+[QWE ASD ZXC] for Spaces (3x3)</name>
         <appendix>(Command+Control+Option+[123 456 789])</appendix>
         <identifier>remap.spaces_special_qweasdzxc_without_shift</identifier>
-        <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCO_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCO_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Q, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::E, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Z, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::X, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCO_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::C, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCO_L
+        </autogen>
       </item>
       <item>
         <name>Use Fn+[123456789] for Spaces</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>remap.spaces_special_fn</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_5, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_6, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_7, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_8, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_9, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use FN+[WER SDF XCV] for Spaces (3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>remap.spaces_special_fn_wersdfxcv</identifier>
-        <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::E, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::R, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::F, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::X, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::C, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::V, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Fn+[1234 QWER ASDF ZXCV] for Spaces (4x4)</name>
         <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
         <identifier>remap.spaces_special_1234qwerasdfzxcv</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::Q,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::W,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::R,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::A,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::F,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::Z,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::X,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::C,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::V,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_1, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_2, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_3, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_4, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Q,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::E,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::R,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_0, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::F,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Z,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::X,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::C,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::V,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Fn+[7890 UIOP JKL; M,./] for Spaces (4x4)</name>
         <appendix>(Cmd+Ctrl+Shift+[1234 5678 90], Cmd+Ctrl+Option+Shift[12 3456])</appendix>
         <identifier>remap.spaces_special_7890uiopjklm</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_7,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_8,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_9,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_0,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::U,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::I,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::O,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::P,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::J,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::K,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_0, VK_MOD_CCS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::L,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::M,         ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::COMMA,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::DOT,       ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::SLASH,     ModifierFlag::FN | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_7,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_8,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_9,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_0,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::I,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::O,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::P,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::J,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_0, MODIFIERFLAGS_CCS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::L,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SEMICOLON, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::M,         ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::COMMA,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::DOT,       ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SLASH,     ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Option_R+[WER SDF XCV] for Spaces (3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>remap.spaces_special_optionr_wersdfxcv</identifier>
-        <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::OPTION_R | ModifierFlag::NONE, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::E, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::R, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::D, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::F, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::X, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::C, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::V, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use KeyPad numbers for Spaces(3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>remap.spaces_special_keypad</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L</autogen>
       </item>
       <item>
         <name>Use Command+KeyPad numbers for Spaces(3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>option.keypad2spaces_modifier_command</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Control+KeyPad numbers for Spaces(3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>option.keypad2spaces_modifier_control</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
       <item>
         <name>Use Option+KeyPad numbers for Spaces(3x3)</name>
         <appendix>(Command+Control+Option+Shift+[123456789])</appendix>
         <identifier>option.keypad2spaces_modifier_option</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_7, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_8, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_9, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_4, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_5, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_6, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_1, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_2, VK_MOD_CCOS_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_3, VK_MOD_CCOS_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_7, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_8, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_9, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_4, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_5, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_6, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_1, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_2, MODIFIERFLAGS_CCOS_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEYPAD_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::KEY_3, MODIFIERFLAGS_CCOS_L
+        </autogen>
       </item>
     </item>
   </item>
