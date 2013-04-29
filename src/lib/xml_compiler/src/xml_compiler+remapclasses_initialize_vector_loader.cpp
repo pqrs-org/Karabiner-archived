@@ -123,7 +123,6 @@ namespace pqrs {
     //
 
     // MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_*
-    // (VK_COMMAND, VK_CONTROL, VK_SHIFT, VK_OPTION for backwards compatibility.)
     {
       static const struct {
         const std::string vk;
@@ -133,10 +132,6 @@ namespace pqrs {
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },
         { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",  { "ModifierFlag::OPTION_L",  "ModifierFlag::OPTION_R"  } },
-        { "VK_COMMAND", { "ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R" } },
-        { "VK_CONTROL", { "ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R" } },
-        { "VK_SHIFT",   { "ModifierFlag::SHIFT_L",   "ModifierFlag::SHIFT_R"   } },
-        { "VK_OPTION",  { "ModifierFlag::OPTION_L",  "ModifierFlag::OPTION_R"  } },
       };
 
       for (const auto& it : info) {
@@ -151,7 +146,6 @@ namespace pqrs {
     }
 
     // MODIFIERFLAGS_*
-    // (VK_MOD_* for backwards compatibility.)
     {
       static const struct {
         const std::string vk;
@@ -163,9 +157,6 @@ namespace pqrs {
           "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
         { "MODIFIERFLAGS_CCO_L",
           "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
-        { "VK_MOD_CCOS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L" },
-        { "VK_MOD_CCS_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L" },
-        { "VK_MOD_CCO_L",  "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L" },
       };
       for (const auto& it : info) {
         if (autogen.find(it.vk) != std::string::npos) {
@@ -176,18 +167,22 @@ namespace pqrs {
       }
     }
 
-    // VK_MOD_ANY
-    if (autogen.find("VK_MOD_ANY") != std::string::npos) {
+    // MODIFIERFLAGS_ANY
+    if (autogen.find("MODIFIERFLAGS_ANY") != std::string::npos) {
       // Making combination at the first time. (reuse it since 2nd time.)
       static std::vector<std::tr1::shared_ptr<std::vector<std::string> > > combination;
       if (combination.empty()) {
         // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
-        const char* seeds[] = { "VK_COMMAND", "VK_CONTROL", "ModifierFlag::FN", "VK_OPTION", "VK_SHIFT" };
+        const char* seeds[] = { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND",
+                                "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL",
+                                "ModifierFlag::FN",
+                                "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION",
+                                "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT" };
         pqrs::vector::make_combination(combination, seeds, sizeof(seeds) / sizeof(seeds[0]));
       }
 
       for (const auto& v : combination) {
-        handle_autogen(boost::replace_all_copy(autogen, "VK_MOD_ANY", boost::join(*v, "|") + "|ModifierFlag::NONE"),
+        handle_autogen(boost::replace_all_copy(autogen, "MODIFIERFLAGS_ANY", boost::join(*v, "|") + "|ModifierFlag::NONE"),
                        raw_autogen);
       }
       return;
@@ -249,6 +244,7 @@ namespace pqrs {
       }
     }
 
+    // ------------------------------------------------------------
     // For compatibility
     if (boost::starts_with(autogen, "__KeyOverlaidModifierWithRepeat__")) {
       handle_autogen(boost::replace_first_copy(autogen,
@@ -266,20 +262,31 @@ namespace pqrs {
       return;
     }
 
-    if (autogen.find("SimultaneousKeyPresses::Option::RAW") != std::string::npos) {
-      handle_autogen(boost::replace_all_copy(autogen,
-                                             "SimultaneousKeyPresses::Option::RAW",
-                                             "Option::SIMULTANEOUSKEYPRESSES_RAW"),
-                     raw_autogen);
-      return;
-    }
+    {
+      static const struct {
+        const std::string oldstring;
+        const std::string newstring;
+      } info[] = {
+        { "SimultaneousKeyPresses::Option::RAW", "Option::SIMULTANEOUSKEYPRESSES_RAW" },
+        { "KeyCode::VK_CHANGE_INPUTMODE_", "KeyCode::VK_CHANGE_INPUTSOURCE_" },
 
-    if (autogen.find("KeyCode::VK_CHANGE_INPUTMODE_") != std::string::npos) {
-      handle_autogen(boost::replace_all_copy(autogen,
-                                             "KeyCode::VK_CHANGE_INPUTMODE_",
-                                             "KeyCode::VK_CHANGE_INPUTSOURCE_"),
-                     raw_autogen);
-      return;
+        { "VK_COMMAND", "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND" },
+        { "VK_CONTROL", "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL" },
+        { "VK_OPTION",  "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION"  },
+        { "VK_SHIFT",   "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT"   },
+
+        { "VK_MOD_CCOS_L", "MODIFIERFLAGS_CCOS_L" },
+        { "VK_MOD_CCS_L",  "MODIFIERFLAGS_CCS_L"  },
+        { "VK_MOD_CCO_L",  "MODIFIERFLAGS_CCO_L"  },
+
+        { "VK_MOD_ANY", "MODIFIERFLAGS_ANY" },
+      };
+      for (const auto& it : info) {
+        if (autogen.find(it.oldstring) != std::string::npos) {
+          handle_autogen(boost::replace_all_copy(autogen, it.oldstring, it.newstring), raw_autogen);
+          return;
+        }
+      }
     }
 
     // ------------------------------------------------------------
