@@ -79,6 +79,18 @@ pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index)
   return v->c_str();
 }
 
+int
+pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* identifier)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return -1;
+
+  auto v = xml_compiler->get_config_index(identifier);
+  if (! v) return -1;
+
+  return *v;
+}
+
 uint32_t
 pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier)
 {

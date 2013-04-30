@@ -29,6 +29,7 @@ TEST(pqrs_xml_compiler, reload)
 
     std::string expected = "private.space_ is_ ignored";
     EXPECT_EQ(boost::optional<const std::string&>(expected), xml_compiler.get_identifier(space_is_ignored));
+    EXPECT_EQ(boost::optional<int>(space_is_ignored), xml_compiler.get_config_index(expected));
   }
 
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
