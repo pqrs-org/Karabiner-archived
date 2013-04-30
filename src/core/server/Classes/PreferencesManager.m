@@ -168,73 +168,77 @@
 
 - (void) setValueForName:(int)newval forName:(NSString*)name sendConfigToKext:(BOOL)sendConfigToKext
 {
-  int oldval = [self value:name];
+  @synchronized(self) {
+    int oldval = [self value:name];
 
-  NSString* identifier = [self configlist_selectedIdentifier];
-  if (! identifier) {
-    NSLog(@"[ERROR] %s identifier == nil", __FUNCTION__);
-    return;
-  }
+    NSString* identifier = [self configlist_selectedIdentifier];
+    if (! identifier) {
+      NSLog(@"[ERROR] %s identifier == nil", __FUNCTION__);
+      return;
+    }
 
-  NSMutableDictionary* md = nil;
+    NSMutableDictionary* md = nil;
 
-  NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-  if (dict) {
-    md = [NSMutableDictionary dictionaryWithDictionary:dict];
-  } else {
-    md = [[NSMutableDictionary new] autorelease];
-  }
-  if (! md) {
-    NSLog(@"[ERROR] %s md == nil", __FUNCTION__);
-    return;
-  }
+    NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+    if (dict) {
+      md = [NSMutableDictionary dictionaryWithDictionary:dict];
+    } else {
+      md = [[NSMutableDictionary new] autorelease];
+    }
+    if (! md) {
+      NSLog(@"[ERROR] %s md == nil", __FUNCTION__);
+      return;
+    }
 
-  int defaultvalue = 0;
-  NSNumber* defaultnumber = [default_ objectForKey:name];
-  if (defaultnumber) {
-    defaultvalue = [defaultnumber intValue];
-  }
+    int defaultvalue = 0;
+    NSNumber* defaultnumber = [default_ objectForKey:name];
+    if (defaultnumber) {
+      defaultvalue = [defaultnumber intValue];
+    }
 
-  if (newval == defaultvalue) {
-    [md removeObjectForKey:name];
-  } else {
-    [md setObject:[NSNumber numberWithInt:newval] forKey:name];
-  }
+    if (newval == defaultvalue) {
+      [md removeObjectForKey:name];
+    } else {
+      [md setObject:[NSNumber numberWithInt:newval] forKey:name];
+    }
 
-  [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
-  // [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
+    // [[NSUserDefaults standardUserDefaults] synchronize];
 
-  if (oldval != newval) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
-    if (sendConfigToKext) {
-      [clientForKernelspace_ send_config_to_kext];
+    if (oldval != newval) {
+      [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+      if (sendConfigToKext) {
+        [clientForKernelspace_ send_config_to_kext];
+      }
     }
   }
 }
 
 - (void) clearNotSave
 {
-  // user setting
-  NSString* identifier = [self configlist_selectedIdentifier];
-  if (identifier) {
-    NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-    if (dict) {
-      NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
+  @synchronized(self) {
+    // user setting
+    NSString* identifier = [self configlist_selectedIdentifier];
+    if (identifier) {
+      NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+      if (dict) {
+        NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:dict];
 
-      BOOL changed = NO;
+        BOOL changed = NO;
 
-      for (NSString* key in dict) {
-        if ([key hasPrefix:@"notsave."]) {
-          [md removeObjectForKey:key];
-          changed = YES;
+        for (NSString* key in dict) {
+          if ([key hasPrefix:@"notsave."]) {
+            [md removeObjectForKey:key];
+            changed = YES;
+          }
         }
-      }
 
-      [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
+        [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
 
-      if (changed) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
-        [clientForKernelspace_ send_config_to_kext];
+        if (changed) {
+          [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+          [clientForKernelspace_ send_config_to_kext];
+        }
       }
     }
   }
