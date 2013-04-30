@@ -37,14 +37,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                          uint32_t configindex = option;
                          NSString* name = [[self xmlCompiler] identifier:(int)(configindex)];
                          if (name) {
-                           // Do not call send_config_to_kext here.
-                           //
-                           // When two settings are changed by KeyCode::VK_CONFIG simultaneously,
-                           // KeyCode::VK_CONFIG sends a user client notification and this code will be executed.
-                           // If we call send_config_to_kext at the first notification,
-                           // we overwrite the second setting state in kernel extension by user space state.
-
-                           [[self preferencesManager] setValueForName:enabled forName:name sendConfigToKext:NO];
+                           // Do not call set_config_one here. (== Call setValueForName with tellToKext:NO.)
+                           [[self preferencesManager] setValueForName:enabled forName:name tellToKext:NO];
                          }
                          break;
                        }
@@ -228,6 +222,17 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
     free(data);
   }
+}
+
+- (void) set_config_one:(struct BridgeSetConfigOne*)bridgeSetConfigOne
+{
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE;
+  bridgestruct.option = 0;
+  bridgestruct.data   = (user_addr_t)(bridgeSetConfigOne);
+  bridgestruct.size   = sizeof(*bridgeSetConfigOne);
+
+  [userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void) set_initialized

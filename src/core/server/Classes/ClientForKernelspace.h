@@ -33,6 +33,7 @@
 
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata;
 - (void) send_config_to_kext;
+- (void) set_config_one:(struct BridgeSetConfigOne*)bridgeSetConfigOne;
 - (NSArray*) device_information:(NSInteger)type;
 - (void) enqueue_power_key;
 - (BOOL) is_power_key_changed;

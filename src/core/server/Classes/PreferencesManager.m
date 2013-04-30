@@ -2,6 +2,7 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "XMLCompiler.h"
 #include <sys/time.h>
 
 @implementation PreferencesManager
@@ -163,10 +164,10 @@
 
 - (void) setValueForName:(int)newval forName:(NSString*)name
 {
-  [self setValueForName:newval forName:name sendConfigToKext:YES];
+  [self setValueForName:newval forName:name tellToKext:YES];
 }
 
-- (void) setValueForName:(int)newval forName:(NSString*)name sendConfigToKext:(BOOL)sendConfigToKext
+- (void) setValueForName:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext
 {
   @synchronized(self) {
     int oldval = [self value:name];
@@ -207,10 +208,33 @@
 
     if (oldval != newval) {
       [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
-      if (sendConfigToKext) {
-        [clientForKernelspace_ send_config_to_kext];
+      if (tellToKext) {
+        [self callSetConfigOne:name value:newval];
       }
     }
+  }
+}
+
+- (void) callSetConfigOne:(NSString*)name value:(int)value {
+  struct BridgeSetConfigOne bridgeSetConfigOne;
+
+  for (NSUInteger i = 0, count = [essential_configuration_identifiers_ count]; i < count; ++i) {
+    if ([[essential_configuration_identifiers_ objectAtIndex:i] isEqualToString:name]) {
+      bridgeSetConfigOne.isEssentialConfig = 1;
+      bridgeSetConfigOne.index = (uint32_t)(i);
+      bridgeSetConfigOne.value = (int32_t)(value);
+      [clientForKernelspace_ set_config_one:&bridgeSetConfigOne];
+      return;
+    }
+  }
+
+  int config_index = [xmlCompiler_ config_index:name];
+  if (config_index >= 0) {
+    bridgeSetConfigOne.isEssentialConfig = 0;
+    bridgeSetConfigOne.index = (uint32_t)(config_index);
+    bridgeSetConfigOne.value = (int32_t)(value);
+    [clientForKernelspace_ set_config_one:&bridgeSetConfigOne];
+    return;
   }
 }
 

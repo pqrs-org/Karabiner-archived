@@ -3,12 +3,14 @@
 #import <Cocoa/Cocoa.h>
 
 @class ClientForKernelspace;
+@class XMLCompiler;
 
 @interface PreferencesManager : NSObject {
   NSMutableDictionary* default_;
   NSArray* essential_configuration_identifiers_;
 
   IBOutlet ClientForKernelspace* clientForKernelspace_;
+  IBOutlet XMLCompiler* xmlCompiler_;
 }
 
 + (void) setIsQuitByHand:(NSNumber*)newvalue;
@@ -19,7 +21,7 @@
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValueForName:(int)newval forName:(NSString*)name;
-- (void) setValueForName:(int)newval forName:(NSString*)name sendConfigToKext:(BOOL)sendConfigToKext;
+- (void) setValueForName:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext;
 - (void) clearNotSave;
 
 - (NSArray*) essential_config;
