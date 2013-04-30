@@ -219,7 +219,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
     // --------------------
     struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG;
+    bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ALL;
     bridgestruct.option = 0;
     bridgestruct.data   = (user_addr_t)(data);
     bridgestruct.size   = size;

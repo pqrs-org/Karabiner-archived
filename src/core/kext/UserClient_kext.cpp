@@ -368,7 +368,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       break;
     }
 
-    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG:
+    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ALL:
     {
       const int32_t* config = reinterpret_cast<int32_t*>(buffer);
       if (config) {
