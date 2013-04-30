@@ -256,6 +256,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Kensington_Wireless_Presenter</productname>
+    <productid>0x2011</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>Ideazon_Fang</productname>
     <productid>0x0310</productid>
   </deviceproductdef>
