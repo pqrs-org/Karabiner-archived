@@ -114,4 +114,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
   }
+
+  bool
+  Config::set_essential_config_one(uint32_t index, int32_t value)
+  {
+    if (index >= BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
+      IOLOG_ERROR("Config::set_essential_config_one wrong 'index' parameter. (%d)\n", static_cast<int>(index));
+      return false;
+    }
+
+    essential_config_[index] = value;
+    return true;
+  }
 }

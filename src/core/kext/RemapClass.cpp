@@ -920,6 +920,32 @@ namespace org_pqrs_KeyRemap4MacBook {
       return true;
     }
 
+    bool
+    set_config_one(bool isEssentialConfig, uint32_t index, int32_t value)
+    {
+      bool succeed = false;
+
+      if (isEssentialConfig) {
+        succeed = Config::set_essential_config_one(index, value);
+      } else {
+        if (index >= remapclasses_->size()) {
+          IOLOG_ERROR("%s index is invalid.\n", __FUNCTION__);
+        } else {
+          RemapClass* rc = (*remapclasses_)[index];
+          if (! rc) {
+            IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
+          } else {
+            rc->setEnabled(value);
+            succeed = true;
+          }
+        }
+      }
+
+      refresh();
+
+      return succeed;
+    }
+
     void
     refresh(void)
     {

@@ -143,6 +143,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size);
     bool set_config(const int32_t* const config_vector, mach_vm_size_t config_size);
+    bool set_config_one(bool isEssentialConfig, uint32_t index, int32_t value);
 
     // call after setting enable/disable status is changed.
     // (PreferencesPane, VK_CONFIG)

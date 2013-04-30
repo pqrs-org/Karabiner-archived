@@ -62,8 +62,9 @@ enum {
   // Version 51: Added an essential configurations. (general.automatically_enable_*)
   // Version 52: Added BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY.
   // Version 53: Added BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED.
+  // Version 54: Added BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 53,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 54,
 };
 
 enum {
@@ -149,6 +150,7 @@ enum {
   BRIDGE_USERCLIENT_TYPE_NONE,
   BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR,
   BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ALL,
+  BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE,
   BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED,
 
   BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED,
@@ -195,6 +197,13 @@ struct BridgeUserClientStruct {
 // STATIC_ASSERT for sizeof(struct BridgeUserClientStruct).
 // We need to make this value same in kext and userspace.
 enum { STATIC_ASSERT__sizeof_BridgeUserClientStruct = 1 / (sizeof(struct BridgeUserClientStruct) == 24) };
+
+struct BridgeSetConfigOne {
+  uint32_t isEssentialConfig;
+  uint32_t index;
+  int32_t value;
+};
+enum { STATIC_ASSERT__sizeof_BridgeSetConfigOne = 1 / (sizeof(struct BridgeSetConfigOne) == 12) };
 
 struct BridgeWorkSpaceData {
   uint32_t applicationtype;
