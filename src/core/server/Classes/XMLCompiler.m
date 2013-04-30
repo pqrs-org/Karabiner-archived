@@ -294,6 +294,13 @@
   }
 }
 
+- (int) config_index:(NSString*)identifier
+{
+  @synchronized(self) {
+    return pqrs_xml_compiler_get_config_index(pqrs_xml_compiler_, [identifier UTF8String]);
+  }
+}
+
 - (uint32_t) appid:(NSString*)bundleIdentifier
 {
   @synchronized(self) {

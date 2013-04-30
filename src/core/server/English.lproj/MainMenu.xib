@@ -3087,6 +3087,14 @@ Y2Fubm90IGRlbGV0ZSBhIHByb2ZpbGUgdGhhdCBpcyBpbiB1c2UgKGluIHRoZSBtZW51IGJhcikuCg</
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">xmlCompiler_</string>
+						<reference key="source" ref="215909986"/>
+						<reference key="destination" ref="894692340"/>
+					</object>
+					<int key="connectionID">1434</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">preferencesManager_</string>
 						<reference key="source" ref="597312338"/>
 						<reference key="destination" ref="215909986"/>
@@ -5446,7 +5454,7 @@ Y2Fubm90IGRlbGV0ZSBhIHByb2ZpbGUgdGhhdCBpcyBpbiB1c2UgKGluIHRoZSBtZW51IGJhcikuCg</
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1433</int>
+			<int key="maxID">1434</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5754,17 +5762,20 @@ Y2Fubm90IGRlbGV0ZSBhIHByb2ZpbGUgdGhhdCBpcyBpbiB1c2UgKGluIHRoZSBtZW51IGJhcikuCg</
 							<string key="candidateClassName">id</string>
 						</object>
 					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">clientForKernelspace_</string>
-						<string key="NS.object.0">ClientForKernelspace</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">clientForKernelspace_</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="clientForKernelspace_">ClientForKernelspace</string>
+						<string key="xmlCompiler_">XMLCompiler</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="clientForKernelspace_">
 							<string key="name">clientForKernelspace_</string>
 							<string key="candidateClassName">ClientForKernelspace</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="xmlCompiler_">
+							<string key="name">xmlCompiler_</string>
+							<string key="candidateClassName">XMLCompiler</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/PreferencesManager.h</string>
