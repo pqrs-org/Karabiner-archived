@@ -250,6 +250,17 @@ namespace pqrs {
     return it->second;
   }
 
+  boost::optional<int>
+  xml_compiler::get_config_index(const std::string& identifier) const
+  {
+    for (const auto& it : identifier_map_) {
+      if (it.second == identifier) {
+        return it.first;
+      }
+    }
+    return boost::none;
+  }
+
   uint32_t
   xml_compiler::get_appid(const std::string& application_identifier) const
   {
