@@ -381,6 +381,21 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       break;
     }
 
+    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE:
+    {
+      if (size != sizeof(BridgeSetConfigOne)) {
+        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE wrong 'size' parameter\n");
+      } else {
+        const BridgeSetConfigOne* p = reinterpret_cast<const BridgeSetConfigOne*>(buffer);
+        if (p) {
+          if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config_one(p->isEssentialConfig, p->index, p->value)) {
+            *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+          }
+        }
+      }
+      break;
+    }
+
     case BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED:
     {
       if (size != sizeof(uint32_t)) {
@@ -424,7 +439,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
     case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA:
     {
       if (size != sizeof(BridgeWorkSpaceData)) {
-        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_ESSENTIAL_CONFIG wrong 'size' parameter\n");
+        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA wrong 'size' parameter\n");
       } else {
         const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(buffer);
         if (p) {
