@@ -20,10 +20,8 @@
   [super dealloc];
 }
 
-- (NSString*) getFeedURL
+- (NSString*) getFeedURL:(NSInteger)checkupdate
 {
-  NSInteger checkupdate = [preferencesManager_ checkForUpdatesMode];
-
   // ----------------------------------------
   // check nothing.
   if (checkupdate == 0) {
@@ -45,7 +43,9 @@
 
 - (void) check:(BOOL)isBackground
 {
-  NSString* url = [self getFeedURL];
+  NSInteger checkupdate = [preferencesManager_ checkForUpdatesMode];
+  NSString* url = [self getFeedURL:checkupdate];
+
   if (! url) {
     NSLog(@"skip checkForUpdates");
     return;
@@ -70,5 +70,20 @@
   [self check:YES];
 }
 
+- (IBAction) checkForUpdatesStableOnly:(id)sender
+{
+  NSString* url = [self getFeedURL:1];
+  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
+  NSLog(@"checkForUpdates %@", url);
+  [suupdater_ checkForUpdates:nil];
+}
+
+- (IBAction) checkForUpdatesWithBetaVersion:(id)sender
+{
+  NSString* url = [self getFeedURL:2];
+  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
+  NSLog(@"checkForUpdates %@", url);
+  [suupdater_ checkForUpdates:nil];
+}
 
 @end

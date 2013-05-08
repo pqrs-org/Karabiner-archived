@@ -13,4 +13,7 @@
 - (IBAction) checkForUpdates:(id)sender;
 - (IBAction) checkForUpdatesInBackground:(id)sender;
 
+- (IBAction) checkForUpdatesStableOnly:(id)sender;
+- (IBAction) checkForUpdatesWithBetaVersion:(id)sender;
+
 @end
