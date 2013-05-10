@@ -14,6 +14,7 @@
 - (void)          configlist_select:(NSInteger)newindex;
 
 - (void) configxml_reload;
+- (NSString*) symbolMapName:(NSString*)type value:(NSInteger)value;
 
 // For EventViewer.
 - (NSArray*) device_information:(NSInteger)type;
