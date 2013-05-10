@@ -7,7 +7,6 @@
 #include <stdexcept>
 #include <vector>
 #include <tr1/memory>
-#include <tr1/unordered_map>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshadow"
@@ -18,6 +17,7 @@
 #include <boost/optional.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
+#include <boost/unordered_map.hpp>
 #pragma clang diagnostic pop
 
 #include "pqrs/file_path.hpp"
@@ -58,9 +58,7 @@ namespace pqrs {
       return error_information_;
     }
 
-    boost::optional<uint32_t> get_symbol_map_value(const std::string& name) const {
-      return symbol_map_.get_optional(name);
-    }
+    const symbol_map& get_symbol_map(void) const { return symbol_map_; }
 
     boost::optional<const std::string&> get_identifier(int config_index) const;
     boost::optional<int> get_config_index(const std::string& identifier) const;
@@ -89,9 +87,6 @@ namespace pqrs {
     }
 
     // ----------------------------------------
-    void debug_dump_symbol_map(void) const {
-      symbol_map_.dump();
-    }
     bool debug_get_initialize_vector(std::vector<uint32_t>& out, const std::string& raw_identifier) const;
 
   private:
@@ -134,10 +129,10 @@ namespace pqrs {
     pqrs::string::replacement replacement_;
     symbol_map symbol_map_;
     std::vector<std::tr1::shared_ptr<app> > app_vector_;
-    std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> > vk_change_inputsource_map_;
+    boost::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> > vk_change_inputsource_map_;
     std::vector<std::tr1::shared_ptr<inputsource> > inputsource_vector_;
-    std::tr1::unordered_map<uint32_t, std::tr1::shared_ptr<url> > vk_open_url_map_;
-    std::tr1::unordered_map<uint32_t, std::string> identifier_map_;
+    boost::unordered_map<uint32_t, std::tr1::shared_ptr<url> > vk_open_url_map_;
+    boost::unordered_map<uint32_t, std::string> identifier_map_;
     std::vector<std::tr1::shared_ptr<essential_configuration> > essential_configurations_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
 

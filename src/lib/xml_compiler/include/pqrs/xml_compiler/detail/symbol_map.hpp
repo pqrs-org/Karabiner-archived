@@ -16,8 +16,12 @@ public:
   uint32_t add(const std::string& type, const std::string& name, uint32_t value);
   uint32_t add(const std::string& type, const std::string& name);
 
+  // get_name("KeyCode", 36) returns "KeyCode::RETURN".
+  boost::optional<const std::string&> get_name(const std::string& type, uint32_t value) const;
+
 private:
-  std::tr1::unordered_map<std::string, uint32_t> symbol_map_;
+  boost::unordered_map<std::string, uint32_t> symbol_map_;
+  boost::unordered_map<std::string, std::string> map_for_get_name_;
 };
 
 class symbol_map_loader {

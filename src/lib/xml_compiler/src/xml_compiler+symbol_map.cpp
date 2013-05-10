@@ -11,6 +11,8 @@ namespace pqrs {
   {
     symbol_map_.clear();
     symbol_map_["ConfigIndex::VK__AUTOINDEX__BEGIN__"] = 0;
+
+    map_for_get_name_.clear();
   }
 
   void
@@ -68,13 +70,10 @@ namespace pqrs {
     assert(! type.empty());
     assert(! name.empty());
 
-    auto n = type + "::" + name;
-
     // register value if the definition does not exists.
-    auto it = symbol_map_.find(n);
-    if (it == symbol_map_.end()) {
-      symbol_map_[n] = value;
-    }
+    auto n = type + "::" + name;
+    symbol_map_.emplace(n, value);
+    map_for_get_name_.emplace(type + "::" + boost::lexical_cast<std::string>(value), n);
 
     return value;
   }
@@ -90,6 +89,17 @@ namespace pqrs {
 
     symbol_map_[n] = *v + 1;
     return add(type, name, *v);
+  }
+
+  boost::optional<const std::string&>
+  xml_compiler::symbol_map::get_name(const std::string& type, uint32_t value) const
+  {
+    auto it = map_for_get_name_.find(type + "::" + boost::lexical_cast<std::string>(value));
+    if (it == map_for_get_name_.end()) {
+      return boost::none;
+    }
+
+    return it->second;
   }
 
   // ============================================================

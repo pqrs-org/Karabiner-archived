@@ -43,9 +43,7 @@ namespace pqrs {
 
         // --------------------------------------------------
         // Adding to replacement_ if name is not found.
-        if (replacement_.find(*name) == replacement_.end()) {
-          replacement_[*name] = *value;
-        }
+        replacement_.emplace(*name, *value);
       }
     }
   }

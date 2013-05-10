@@ -24,6 +24,7 @@ size_t pqrs_xml_compiler_get_error_count(const pqrs_xml_compiler* p);
 
 // ------------------------------------------------------------
 uint32_t pqrs_xml_compiler_get_symbol_map_value(const pqrs_xml_compiler* p, const char* name);
+const char* pqrs_xml_compiler_get_symbol_map_name(const pqrs_xml_compiler* p, const char* type, uint32_t value);
 const char* pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index);
 int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* identifier);
 uint32_t pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier);
