@@ -61,10 +61,22 @@ pqrs_xml_compiler_get_symbol_map_value(const pqrs_xml_compiler* p, const char* n
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (! xml_compiler) return 0;
 
-  auto v = xml_compiler->get_symbol_map_value(name);
+  auto v = (xml_compiler->get_symbol_map()).get_optional(name);
   if (! v) return 0;
 
   return *v;
+}
+
+const char*
+pqrs_xml_compiler_get_symbol_map_name(const pqrs_xml_compiler* p, const char* type, uint32_t value)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
+
+  auto v = (xml_compiler->get_symbol_map()).get_name(type, value);
+  if (! v) return nullptr;
+
+  return v->c_str();
 }
 
 const char*

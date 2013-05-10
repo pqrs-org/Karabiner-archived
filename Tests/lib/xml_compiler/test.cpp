@@ -15,38 +15,38 @@ TEST(pqrs_xml_compiler, reload)
     int v = 0;
     int space_is_ignored = 0;
 
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::system_vk_change_inputsource_definition"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::system_vk_open_url_definition"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_private_sample"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_passthrough"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::notsave_remap_sample"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_include_test"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_style_test_important"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_style_test_caution"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_replacement"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_change_inputsource_definition"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_open_url_definition"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_private_sample"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_passthrough"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_remap_sample"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_include_test"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_style_test_important"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_style_test_caution"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_replacement"));
     space_is_ignored = v;
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map_value("ConfigIndex::private_space_is_ignored"));
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_space_is_ignored"));
 
     std::string expected = "private.space_ is_ ignored";
     EXPECT_EQ(boost::optional<const std::string&>(expected), xml_compiler.get_identifier(space_is_ignored));
     EXPECT_EQ(boost::optional<int>(space_is_ignored), xml_compiler.get_config_index(expected));
   }
 
-  EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_123"));
-  EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_456"));
-  EXPECT_EQ(boost::optional<uint32_t>(654), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_654"));
-  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT1"));
-  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT2"));
-  EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map_value("KeyCode::MY_INCLUDE_TEST_PARENT3"));
-  EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map_value("KeyCode::MY_LANG_KEY"));
-  EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map_value("KeyCode::SPACE_IS_IGNORED"));
+  EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_123"));
+  EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_456"));
+  EXPECT_EQ(boost::optional<uint32_t>(654), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_654"));
+  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT1"));
+  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT2"));
+  EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT3"));
+  EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_LANG_KEY"));
+  EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map().get_optional("KeyCode::SPACE_IS_IGNORED"));
 
   // ------------------------------------------------------------
   uint32_t vk_change_inputsource_base = 1191;
 
   // JAPANESE
   EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE"));
+            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE"));
   EXPECT_EQ(true,
             xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
                                                           "ja",
@@ -61,7 +61,7 @@ TEST(pqrs_xml_compiler, reload)
 
   // DVORAK
   EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"));
+            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"));
   EXPECT_EQ(true,
             xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
                                                           "en",
@@ -76,7 +76,7 @@ TEST(pqrs_xml_compiler, reload)
 
   // SWISS
   EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CHANGE_INPUTSOURCE_SWISS"));
+            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_SWISS"));
   EXPECT_EQ(true,
             xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
                                                           "en",
@@ -106,11 +106,11 @@ TEST(pqrs_xml_compiler, reload)
                                    "en",
                                    "com.apple.keylayout.Canadian",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::CANADIAN"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::CANADIAN"), inputsource_detail);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::CANADIAN"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::CANADIAN"), inputsource_detail);
 
-    EXPECT_TRUE(xml_compiler.get_symbol_map_value("InputSource::FRENCH") != inputsource);
-    EXPECT_TRUE(xml_compiler.get_symbol_map_value("InputSourceDetail::FRENCH") != inputsource_detail);
+    EXPECT_TRUE(xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH") != inputsource);
+    EXPECT_TRUE(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::FRENCH") != inputsource_detail);
   }
 
   {
@@ -120,8 +120,8 @@ TEST(pqrs_xml_compiler, reload)
                                    "",
                                    "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::BEPO"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::BEPO"), inputsource_detail);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::BEPO"), inputsource_detail);
   }
 
   {
@@ -131,8 +131,8 @@ TEST(pqrs_xml_compiler, reload)
                                    "",
                                    "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::BEPO"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::BEPO_AZERTYCMD"), inputsource_detail);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::BEPO_AZERTYCMD"), inputsource_detail);
   }
 
   {
@@ -142,8 +142,8 @@ TEST(pqrs_xml_compiler, reload)
                                    "ja",
                                    "com.apple.inputmethod.Kotoeri.Japanese",
                                    "com.apple.inputmethod.Japanese");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::JAPANESE"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::JAPANESE"), inputsource_detail);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::JAPANESE"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::JAPANESE"), inputsource_detail);
   }
 
   {
@@ -153,8 +153,8 @@ TEST(pqrs_xml_compiler, reload)
                                    "fr",
                                    "com.apple.keylayout.French",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::FRENCH"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::FRENCH"), inputsource_detail);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::FRENCH"), inputsource_detail);
   }
 
   {
@@ -164,8 +164,8 @@ TEST(pqrs_xml_compiler, reload)
                                    "en",
                                    "com.apple.keylayout.US",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSource::MY_ENGLISH"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map_value("InputSourceDetail::MY_ENGLISH"), inputsource_detail);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH"), inputsource);
+    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::MY_ENGLISH"), inputsource_detail);
   }
 
   // ------------------------------------------------------------
@@ -174,73 +174,75 @@ TEST(pqrs_xml_compiler, reload)
 
   {
     EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_pqrs_org"));
+              xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"));
     ++vk_open_url_base;
   }
 
   {
     EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TextEdit"));
+              xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_APP_TextEdit"));
     ++vk_open_url_base;
   }
 
   // ------------------------------------------------------------
   uint32_t vk_config_base = vk_open_url_base;
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));
+            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_FORCE_ON_notsave_passthrough"));
+            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_FORCE_ON_notsave_passthrough"));
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_FORCE_OFF_notsave_passthrough"));
+            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_FORCE_OFF_notsave_passthrough"));
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map_value("KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_passthrough"));
+            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_passthrough"));
 
-  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
+  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("ConsumerKeyCode::BRIGHTNESS_UP"));
+  EXPECT_EQ("ConsumerKeyCode::BRIGHTNESS_UP", *(xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 2)));
+  EXPECT_EQ(boost::none, xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 12345));
 
-  EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map_value("ApplicationType::VI"));
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::VI"),
+  EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map().get_optional("ApplicationType::VI"));
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::VI"),
             xml_compiler.get_appid("org.vim.MacVim"));
 
-  EXPECT_EQ(boost::optional<uint32_t>(7), xml_compiler.get_symbol_map_value("ApplicationType::SPACE_IS_IGNORED"));
+  EXPECT_EQ(boost::optional<uint32_t>(7), xml_compiler.get_symbol_map().get_optional("ApplicationType::SPACE_IS_IGNORED"));
 
   // com.apple.Terminal is overwritten by private.xml.
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::TERMINAL_APPLE"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL_APPLE"),
             xml_compiler.get_appid("com.apple.Terminal"));
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::TERMINAL"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL"),
             xml_compiler.get_appid("com.googlecode.iterm2"));
 
   // org.gnu.Emacs is overwritten by private.xml.
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::EMACS"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::EMACS"),
             xml_compiler.get_appid("org.gnu.Emacs"));
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::EMACS"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::EMACS"),
             xml_compiler.get_appid("org.gnu.AquamacsEmacs"));
 
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::PREFIX_TEST"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::PREFIX_TEST"),
             xml_compiler.get_appid("org.pqrs.prefix.test"));
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::PREFIX_TEST"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::PREFIX_TEST"),
             xml_compiler.get_appid("org.pqrs.prefix.test1111"));
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::UNKNOWN"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
             xml_compiler.get_appid("dummy.org.pqrs.prefix.test"));
 
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::SUFFIX_TEST"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::SUFFIX_TEST"),
             xml_compiler.get_appid("test.suffix.pqrs.org"));
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::SUFFIX_TEST"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::SUFFIX_TEST"),
             xml_compiler.get_appid("1111test.suffix.pqrs.org"));
-  EXPECT_EQ(xml_compiler.get_symbol_map_value("ApplicationType::UNKNOWN"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
             xml_compiler.get_appid("test.suffix.pqrs.org.dummy"));
 
-  EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map_value("DeviceVendor::HEWLETT_PACKARD"));
-  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map_value("DeviceVendor::SPACE_IS_IGNORED"));
-  EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map_value("DeviceProduct::MY_HP_KEYBOARD"));
-  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map_value("DeviceProduct::SPACE_IS_IGNORED"));
+  EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map().get_optional("DeviceVendor::HEWLETT_PACKARD"));
+  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map().get_optional("DeviceVendor::SPACE_IS_IGNORED"));
+  EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map().get_optional("DeviceProduct::MY_HP_KEYBOARD"));
+  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map().get_optional("DeviceProduct::SPACE_IS_IGNORED"));
 
   EXPECT_EQ(boost::none, xml_compiler.get_url(0));
 
   EXPECT_EQ("http://pqrs.org/",
-            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_WEB_pqrs_org")))));
+            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org")))));
 
   EXPECT_EQ("file:///Applications/TextEdit.app",
-            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map_value("KeyCode::VK_OPEN_URL_APP_TextEdit")))));
+            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_APP_TextEdit")))));
 
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());
@@ -366,7 +368,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     xml_compiler.reload();
     EXPECT_EQ("<data/invalid_xml/broken_xml/private.xml>(4): expected element name",
               xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map_value("ConsumerKeyCode::BRIGHTNESS_UP"));
+    EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("ConsumerKeyCode::BRIGHTNESS_UP"));
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/broken_include");

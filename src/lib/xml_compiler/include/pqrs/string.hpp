@@ -6,15 +6,15 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/optional.hpp>
+#include <boost/unordered_map.hpp>
 #include <tr1/cstdint>
-#include <tr1/unordered_map>
 
 namespace pqrs {
   class string {
   public:
     static int string_from_file(std::string& out, const char* filename);
 
-    typedef std::tr1::unordered_map<std::string, std::string> replacement;
+    typedef boost::unordered_map<std::string, std::string> replacement;
 
     static int string_by_replacing_double_curly_braces_from_file(std::string& out,
                                                                  const char* filename,

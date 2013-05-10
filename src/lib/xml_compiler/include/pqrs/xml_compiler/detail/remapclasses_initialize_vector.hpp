@@ -30,7 +30,7 @@ private:
   };
 
   std::vector<uint32_t> data_;
-  std::tr1::unordered_map<uint32_t, bool> is_config_index_added_;
+  boost::unordered_map<uint32_t, bool> is_config_index_added_;
   uint32_t max_config_index_;
   bool freezed_;
 
@@ -44,7 +44,7 @@ public:
   remapclasses_initialize_vector_loader(const xml_compiler& xml_compiler,
                                         symbol_map& symbol_map,
                                         remapclasses_initialize_vector& remapclasses_initialize_vector,
-                                        std::tr1::unordered_map<uint32_t, std::string>& identifier_map) :
+                                        boost::unordered_map<uint32_t, std::string>& identifier_map) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
     remapclasses_initialize_vector_(remapclasses_initialize_vector),
@@ -69,7 +69,7 @@ private:
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
   remapclasses_initialize_vector& remapclasses_initialize_vector_;
-  std::tr1::unordered_map<uint32_t, std::string>& identifier_map_;
+  boost::unordered_map<uint32_t, std::string>& identifier_map_;
 
   uint32_t simultaneous_keycode_index_;
   filter_vector filter_vector_;
