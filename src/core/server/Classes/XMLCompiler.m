@@ -294,6 +294,16 @@
   }
 }
 
+- (NSString*) symbolMapName:(NSString*)type value:(uint32_t)value
+{
+  @synchronized(self) {
+    const char* p = pqrs_xml_compiler_get_symbol_map_name(pqrs_xml_compiler_, [type UTF8String], value);
+    if (! p) return nil;
+
+    return [NSString stringWithUTF8String:p];
+  }
+}
+
 - (int) config_index:(NSString*)identifier
 {
   @synchronized(self) {

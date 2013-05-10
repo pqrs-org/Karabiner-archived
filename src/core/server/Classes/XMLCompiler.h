@@ -25,6 +25,7 @@
 
 - (uint32_t) keycode:(NSString*)name;
 - (NSString*) identifier:(uint32_t)config_index;
+- (NSString*) symbolMapName:(NSString*)type value:(uint32_t)value;
 - (int) config_index:(NSString*)identifier;
 - (uint32_t) appid:(NSString*)bundleIdentifier;
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode

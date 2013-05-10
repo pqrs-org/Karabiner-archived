@@ -80,6 +80,11 @@
   [xmlCompiler_ reload];
 }
 
+- (NSString*) symbolMapName:(NSString*)type value:(NSInteger)value
+{
+  return [xmlCompiler_ symbolMapName:type value:(uint32_t)(value)];
+}
+
 - (NSArray*) device_information:(NSInteger)type
 {
   return [clientForKernelspace_ device_information:type];

@@ -1,5 +1,6 @@
 // -*- Mode: objc -*-
 
+#import "KeyRemap4MacBookClient.h"
 #import "KeyResponder.h"
 
 @implementation KeyResponder
@@ -199,11 +200,16 @@
 
 - (void) outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType
 {
+  NSString* keyCodeName = [[client_ proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
+  NSString* misc = [NSString stringWithFormat:@"characters:%@\t%@",
+                    [[self charactersToString:event] stringByPaddingToLength:4 withString:@" " startingAtIndex:0],
+                    keyCodeName ? keyCodeName:@""];
+
   [eventqueue_ push:eventType
                code:[NSString stringWithFormat:@"0x%x", (int)([event keyCode])]
                name:[self keycodeToString:event]
               flags:[self modifierFlagsToString:[event modifierFlags]]
-               misc:[NSString stringWithFormat:@"characters:%@", [self charactersToString:event]]];
+               misc:misc];
 }
 
 - (void) outputMouseEvent:(NSEvent*)event eventType:(NSString*)eventType
