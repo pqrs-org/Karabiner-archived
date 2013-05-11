@@ -342,6 +342,9 @@ VK_CONSUMERKEY_VOLUME_MUTE        --AUTO--
 VK_CONSUMERKEY_VOLUME_DOWN        --AUTO--
 VK_CONSUMERKEY_VOLUME_UP          --AUTO--
 VK_CONSUMERKEY_EJECT              --AUTO--
+// KeyRemap4MacBook does not allow to change a key to power key.
+// So, VK_CONSUMERKEY_POWER has no effect.
+// This key is defined for backwards compatibility.
 VK_CONSUMERKEY_POWER              --AUTO--
 //
 VK_MOUSEKEY_UP                   --AUTO--
