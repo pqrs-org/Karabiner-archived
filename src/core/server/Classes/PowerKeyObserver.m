@@ -71,8 +71,6 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
     {
       switch ([self getPowerKeyType:event]) {
         case POWER_KEY_TYPE_SUBTYPE:
-          NSLog(@"POWER_KEY_TYPE_SUBTYPE");
-
           // This event show a shutdown dialog.
           if (! self.enqueued) {
             self.enqueued = YES;
