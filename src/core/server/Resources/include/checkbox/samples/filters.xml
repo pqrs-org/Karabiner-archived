@@ -29,7 +29,8 @@
       <appendix>A to C unless (VendorID,ProductID) == (0x5ac,0x21a) or (0x5ac,0x222)</appendix>
       <appendix>S to Tab if VendorID == DeviceVendor::APPLE_COMPUTER (DeviceProduct::ANY)</appendix>
       <appendix>S to Space unless VendorID == DeviceVendor::APPLE_COMPUTER (DeviceProduct::ANY)</appendix>
-      <appendix>Disable ScrollWheel on Pixart_Imaging_Inc_Optical_Mouse_0x2510 with LocationID:EXAMPLE_USB_BUS_1</appendix>
+      <appendix>Disable ScrollWheel on Pixart_Imaging_Inc_Optical_Mouse_0x2510 with</appendix>
+      <appendix>LocationID:EXAMPLE_USB_BUS_1</appendix>
       <appendix></appendix>
       <appendix>* (0x5ac,0x21a) is MacBookPro2,1</appendix>
       <appendix>* (0x5ac,0x222) is Apple Aluminum Keyboard (JIS)</appendix>
