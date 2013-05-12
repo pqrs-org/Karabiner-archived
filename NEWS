@@ -1,4 +1,7 @@
-Changes since 8.0.0
+Changes since 8.1.0
+
+----------------------------------------------------------------------
+= version 8.1.0 =
 
     - Power button remapping has been supported.
     - Added "Quit KeyRemap4MacBook" into menu bar.
