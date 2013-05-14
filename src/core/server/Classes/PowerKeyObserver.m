@@ -128,7 +128,9 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
   CGEventTapEnable(eventTap, 1);
 
   CFRelease(runLoopSource);
-  CFRelease(eventTap);
+
+  // Do not release eventTap here.
+  // We use eventTap in eventTapCallBack.
 }
 
 @end
