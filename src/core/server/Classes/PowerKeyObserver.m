@@ -111,8 +111,6 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
 {
   if (eventTap) return;
 
-  // We need to grab NSSystemDefined events.
-  // So, we call CGEventCreate with kCGEventMaskForAllEvents.
   eventTap = CGEventTapCreate(kCGSessionEventTap,
                               kCGHeadInsertEventTap,
                               kCGEventTapOptionDefault,
