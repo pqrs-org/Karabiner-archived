@@ -1,5 +1,7 @@
 Changes since 8.1.0
 
+    - Fixed a bug that "General > Don't remap XXX" does not take effect immediately.
+
 ----------------------------------------------------------------------
 = version 8.1.0 =
 
