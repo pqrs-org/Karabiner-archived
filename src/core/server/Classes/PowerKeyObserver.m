@@ -69,38 +69,42 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
 
     case NSSystemDefined:
     {
-      switch ([self getPowerKeyType:event]) {
-        case POWER_KEY_TYPE_SUBTYPE:
-          // This event show a shutdown dialog.
-          if (! self.enqueued) {
-            self.enqueued = YES;
+      if ([[self clientForKernelspace] has_consumer]) {
+        switch ([self getPowerKeyType:event]) {
+          case POWER_KEY_TYPE_SUBTYPE:
+            // This event show a shutdown dialog.
+            if (! self.enqueued) {
+              self.enqueued = YES;
 
-            self.shouldBlockPowerKeyKeyCode = YES;
-            [[self clientForKernelspace] enqueue_power_key];
-            event = NULL;
-
-          } else {
-            self.enqueued = NO;
-
-            if ([[self clientForKernelspace] is_power_key_changed]) {
               self.shouldBlockPowerKeyKeyCode = YES;
+              [[self clientForKernelspace] enqueue_power_key];
               event = NULL;
+
             } else {
-              self.shouldBlockPowerKeyKeyCode = NO;
+              self.enqueued = NO;
+
+              if ([[self clientForKernelspace] is_power_key_changed]) {
+                self.shouldBlockPowerKeyKeyCode = YES;
+                event = NULL;
+              } else {
+                self.shouldBlockPowerKeyKeyCode = NO;
+              }
             }
-          }
-          break;
+            break;
 
-        case POWER_KEY_TYPE_KEYCODE:
-          if (self.shouldBlockPowerKeyKeyCode) {
-            event = NULL;
-          }
-          break;
+          case POWER_KEY_TYPE_KEYCODE:
+            if (self.shouldBlockPowerKeyKeyCode) {
+              event = NULL;
+            }
+            break;
 
-        case POWER_KEY_TYPE_NONE:
-          // do nothing
-          break;
+          case POWER_KEY_TYPE_NONE:
+            // do nothing
+            break;
+        }
       }
+
+      break;
     }
   }
 
