@@ -114,7 +114,14 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
   eventTap = CGEventTapCreate(kCGSessionEventTap,
                               kCGHeadInsertEventTap,
                               kCGEventTapOptionDefault,
-                              NSSystemDefinedMask,
+                              // We need to grab *only* NSSystemDefined events.
+                              //
+                              // But, if we specify NSSystemDefinedMask here,
+                              // we cannot select objects on Adobe Fireworks.
+                              // (It might be a bug of OS X or Fireworks...)
+                              //
+                              // Therefore, we need to grab all events.
+                              kCGEventMaskForAllEvents,
                               eventTapCallBack,
                               self);
   if (! eventTap) {
