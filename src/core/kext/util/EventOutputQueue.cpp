@@ -106,7 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
         if (params) {
           if (! ListHookedConsumer::instance().apply(*params)) {
-            // If there is no consumer device, we send software key.
+            // If there is no consumer device, we send an event as a software key.
             VirtualKey::VK_IOHIDPOSTEVENT::post(*params);
           }
         }

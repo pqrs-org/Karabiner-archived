@@ -1,4 +1,5 @@
 #import <IOKit/hidsystem/IOHIDLib.h>
+#import <IOKit/hidsystem/ev_keymap.h>
 #import "IOHIDPostEventWrapper.h"
 
 @implementation IOHIDPostEventWrapper
@@ -58,6 +59,30 @@
     if (KERN_SUCCESS != kr) {
       NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
     }
+  }
+}
+
+- (void) postPowerKey
+{
+  if (! eventDriver_) return;
+
+  NXEventData event;
+  bzero(&event, sizeof(event));
+  event.compound.subType = NX_SUBTYPE_POWER_KEY;
+
+  IOGPoint loc = { 0, 0 };
+  kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, 0, FALSE);
+  if (KERN_SUCCESS != kr) {
+    NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
+  }
+}
+
+- (void) postKey:(uint8_t)keyCode
+{
+  if (keyCode == NX_POWER_KEY) {
+    [self postPowerKey];
+  } else {
+    [self postAuxKey:keyCode];
   }
 }
 
