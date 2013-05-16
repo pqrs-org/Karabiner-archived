@@ -1,6 +1,8 @@
 Changes since 8.1.0
 
+    - Fixed a bug that object selection is disabled on Adobe Fireworks.
     - Fixed a bug that "General > Don't remap XXX" does not take effect immediately.
+    - Fixed a bug that control-eject shortcut does not work properly on OS X 10.7 and 10.6.
 
 ----------------------------------------------------------------------
 = version 8.1.0 =
