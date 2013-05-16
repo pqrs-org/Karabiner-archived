@@ -83,7 +83,11 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
               // For example, control-eject sends a power button event without any modifierflags.
               // But, enqueued power key sends a power button event with control modifierflags.
               // We need to send the original event when power button is not changed.
+              if (self.savedPowerButtonEvent) {
+                CFRelease(self.savedPowerButtonEvent);
+              }
               self.savedPowerButtonEvent = CGEventCreateCopy(event);
+
               self.shouldBlockPowerKeyKeyCode = YES;
               [[self clientForKernelspace] enqueue_power_key];
               event = NULL;
@@ -99,6 +103,8 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
 
                 if (self.savedPowerButtonEvent) {
                   event = self.savedPowerButtonEvent;
+                  // Do not call CFRelease for self.savedPowerButtonEvent.
+                  // It will be released by Quartz Event Services.
                   self.savedPowerButtonEvent = NULL;
                 }
               }
