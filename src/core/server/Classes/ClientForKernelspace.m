@@ -334,7 +334,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   bridgestruct.data   = &changed;
   bridgestruct.size   = sizeof(changed);
 
-  [userClient_userspace synchronized_communication:&bridgestruct];
+  if (! [userClient_userspace synchronized_communication:&bridgestruct]) return NO;
+
   return changed;
 }
 
