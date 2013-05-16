@@ -13,6 +13,7 @@
 @synthesize eventTap;
 @synthesize enqueued;
 @synthesize shouldBlockPowerKeyKeyCode;
+@synthesize savedPowerButtonEvent;
 @synthesize clientForKernelspace;
 
 enum {
@@ -76,6 +77,13 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
             if (! self.enqueued) {
               self.enqueued = YES;
 
+              // Save the original event from here because
+              // enqueued power key might have different modifierFlags.
+              //
+              // For example, control-eject sends a power button event without any modifierflags.
+              // But, enqueued power key sends a power button event with control modifierflags.
+              // We need to send the original event when power button is not changed.
+              self.savedPowerButtonEvent = CGEventCreateCopy(event);
               self.shouldBlockPowerKeyKeyCode = YES;
               [[self clientForKernelspace] enqueue_power_key];
               event = NULL;
@@ -88,6 +96,11 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
                 event = NULL;
               } else {
                 self.shouldBlockPowerKeyKeyCode = NO;
+
+                if (self.savedPowerButtonEvent) {
+                  event = self.savedPowerButtonEvent;
+                  self.savedPowerButtonEvent = NULL;
+                }
               }
             }
             break;
