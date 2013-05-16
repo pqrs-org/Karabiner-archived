@@ -15,6 +15,7 @@
 @synthesize shouldBlockPowerKeyKeyCode;
 @synthesize savedPowerButtonEvent;
 @synthesize clientForKernelspace;
+@synthesize ignoreNext_POWER_KEY_TYPE_SUBTYPE;
 
 enum {
   POWER_KEY_TYPE_NONE,
@@ -73,6 +74,11 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
       if ([[self clientForKernelspace] has_consumer]) {
         switch ([self getPowerKeyType:event]) {
           case POWER_KEY_TYPE_SUBTYPE:
+            if (self.ignoreNext_POWER_KEY_TYPE_SUBTYPE) {
+              self.ignoreNext_POWER_KEY_TYPE_SUBTYPE = NO;
+              return event;
+            }
+
             // This event show a shutdown dialog.
             if (! self.enqueued) {
               self.enqueued = YES;
