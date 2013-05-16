@@ -6,6 +6,6 @@
   mach_port_t eventDriver_;
 }
 
-- (void) postAuxKey:(uint8_t)auxKeyCode;
+- (void) postKey:(uint8_t)keyCode;
 
 @end

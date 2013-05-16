@@ -73,7 +73,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
                        }
 
                      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
-                       [[self iohidPostEventWrapper] postAuxKey:option];
+                       [[self iohidPostEventWrapper] postKey:option];
                        break;
                    }
                  });

@@ -290,6 +290,7 @@
         <appendix>Use 9 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_UP</appendix>
         <appendix>Use 0 to VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_DOWN</appendix>
         <appendix>Use Q to VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_TOGGLE</appendix>
+        <appendix>Use W to VK_IOHIDPOSTEVENT_NX_POWER_KEY</appendix>
         <identifier>remap.samples_vk_iohidpostevent</identifier>
         <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_SOUND_UP</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_SOUND_DOWN</autogen>
@@ -302,6 +303,7 @@
         <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_UP</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_DOWN</autogen>
         <autogen>__KeyToKey__ KeyCode::Q,     KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_ILLUMINATION_TOGGLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::W,     KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY</autogen>
       </item>
     </item>
     <item>
