@@ -59,7 +59,7 @@
     <item>
       <name>Fn+Escape to Power</name>
       <identifier>remap.fnEscape2power</identifier>
-      <autogen>__KeyToConsumer__ KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+      <autogen>__KeyToConsumer__ KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY</autogen>
     </item>
     <item>
       <name>Shift+Escape to Tilde(~)</name>
