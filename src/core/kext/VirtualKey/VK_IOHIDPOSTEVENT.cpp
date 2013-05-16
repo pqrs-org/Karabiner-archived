@@ -29,7 +29,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     SET_KEYTYPE(NX_KEYTYPE_SOUND_DOWN);
     SET_KEYTYPE(NX_KEYTYPE_BRIGHTNESS_UP);
     SET_KEYTYPE(NX_KEYTYPE_BRIGHTNESS_DOWN);
-    SET_KEYTYPE(NX_POWER_KEY);
     SET_KEYTYPE(NX_KEYTYPE_MUTE);
     SET_KEYTYPE(NX_KEYTYPE_PLAY);
     SET_KEYTYPE(NX_KEYTYPE_NEXT);
@@ -37,6 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     SET_KEYTYPE(NX_KEYTYPE_ILLUMINATION_UP);
     SET_KEYTYPE(NX_KEYTYPE_ILLUMINATION_DOWN);
     SET_KEYTYPE(NX_KEYTYPE_ILLUMINATION_TOGGLE);
+    SET_KEYTYPE(NX_POWER_KEY);
 
     if (! target) {
       return false;
@@ -60,10 +60,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     else if (params.key == ConsumerKeyCode::MUSIC_PREV)         { keytype = NX_KEYTYPE_PREVIOUS;            }
     else if (params.key == ConsumerKeyCode::MUSIC_PLAY)         { keytype = NX_KEYTYPE_PLAY;                }
     else if (params.key == ConsumerKeyCode::MUSIC_NEXT)         { keytype = NX_KEYTYPE_NEXT;                }
-    else if (params.key == ConsumerKeyCode::POWER)              { keytype = NX_POWER_KEY;                   }
     else if (params.key == ConsumerKeyCode::VOLUME_MUTE)        { keytype = NX_KEYTYPE_MUTE;                }
     else if (params.key == ConsumerKeyCode::VOLUME_DOWN)        { keytype = NX_KEYTYPE_SOUND_DOWN;          }
     else if (params.key == ConsumerKeyCode::VOLUME_UP)          { keytype = NX_KEYTYPE_SOUND_UP;            }
+    else if (params.key == ConsumerKeyCode::POWER)              { keytype = NX_POWER_KEY;                   }
     else {
       return;
     }

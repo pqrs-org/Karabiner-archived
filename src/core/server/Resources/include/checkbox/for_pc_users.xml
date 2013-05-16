@@ -221,7 +221,7 @@
       <item>
         <name>Pause/Break Key to Power</name>
         <identifier>remap.pc_pause2power</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE, ConsumerKeyCode::POWER</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_PAUSE, KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY</autogen>
       </item>
     </item>
     <item>
