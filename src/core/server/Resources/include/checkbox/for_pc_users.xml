@@ -218,6 +218,11 @@
         <identifier>remap.pc_pause2eject</identifier>
         <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
       </item>
+      <item>
+        <name>Pause/Break Key to Power</name>
+        <identifier>remap.pc_pause2power</identifier>
+        <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE, ConsumerKeyCode::POWER</autogen>
+      </item>
     </item>
     <item>
       <name>Use KeyPad as Arrow (PC Style NumLock)</name>

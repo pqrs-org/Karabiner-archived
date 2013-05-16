@@ -57,6 +57,11 @@
       <autogen>__KeyToKey__ KeyCode::ESCAPE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::F3, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
+      <name>Fn+Escape to Power</name>
+      <identifier>remap.fnEscape2power</identifier>
+      <autogen>__KeyToConsumer__ KeyCode::ESCAPE, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+    </item>
+    <item>
       <name>Shift+Escape to Tilde(~)</name>
       <identifier>remap.shiftEscape2tilde</identifier>
       <autogen>
