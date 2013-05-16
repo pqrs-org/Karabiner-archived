@@ -1,6 +1,7 @@
 #import <IOKit/hidsystem/IOHIDLib.h>
 #import <IOKit/hidsystem/ev_keymap.h>
 #import "IOHIDPostEventWrapper.h"
+#import "PowerKeyObserver.h"
 
 @implementation IOHIDPostEventWrapper
 
@@ -65,6 +66,8 @@
 - (void) postPowerKey
 {
   if (! eventDriver_) return;
+
+  powerKeyObserver_.ignoreNext_POWER_KEY_TYPE_SUBTYPE = YES;
 
   NXEventData event;
   bzero(&event, sizeof(event));

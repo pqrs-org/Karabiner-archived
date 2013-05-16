@@ -2,8 +2,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class PowerKeyObserver;
+
 @interface IOHIDPostEventWrapper : NSObject {
   mach_port_t eventDriver_;
+
+  IBOutlet PowerKeyObserver* powerKeyObserver_;
 }
 
 - (void) postKey:(uint8_t)keyCode;

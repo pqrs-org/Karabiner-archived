@@ -9,6 +9,7 @@
   BOOL enqueued;
   BOOL shouldBlockPowerKeyKeyCode;
   CGEventRef savedPowerButtonEvent;
+  BOOL ignoreNext_POWER_KEY_TYPE_SUBTYPE;
 
   IBOutlet ClientForKernelspace* clientForKernelspace;
 }
@@ -18,6 +19,7 @@
 @property (assign) BOOL shouldBlockPowerKeyKeyCode;
 @property (assign) ClientForKernelspace* clientForKernelspace;
 @property (assign) CGEventRef savedPowerButtonEvent;
+@property (assign) BOOL ignoreNext_POWER_KEY_TYPE_SUBTYPE;
 
 - (void) start;
 
