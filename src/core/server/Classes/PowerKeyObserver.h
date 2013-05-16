@@ -8,6 +8,7 @@
   CFMachPortRef eventTap;
   BOOL enqueued;
   BOOL shouldBlockPowerKeyKeyCode;
+  CGEventRef savedPowerButtonEvent;
 
   IBOutlet ClientForKernelspace* clientForKernelspace;
 }
@@ -16,6 +17,7 @@
 @property (assign) BOOL enqueued;
 @property (assign) BOOL shouldBlockPowerKeyKeyCode;
 @property (assign) ClientForKernelspace* clientForKernelspace;
+@property (assign) CGEventRef savedPowerButtonEvent;
 
 - (void) start;
 
