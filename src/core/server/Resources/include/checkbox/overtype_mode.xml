@@ -25,7 +25,7 @@
         </replacementdef>
         <replacementdef>
           <replacementname>AFTER</replacementname>
-          <replacementvalue></replacementvalue>
+          <replacementvalue>MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</replacementvalue>
         </replacementdef>
       </include>
     </item>
