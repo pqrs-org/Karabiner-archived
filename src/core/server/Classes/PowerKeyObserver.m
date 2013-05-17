@@ -140,7 +140,11 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
 {
   if (eventTap) return;
 
-  eventTap = CGEventTapCreate(kCGSessionEventTap,
+  // We need to specify kCGAnnotatedSessionEventTap.
+  // If we pass kCGSessionEventTap to CGEventCreateCopy,
+  // three-finger look up will be disabled for unknown reason.
+  // (a bug of OS X?)
+  eventTap = CGEventTapCreate(kCGAnnotatedSessionEventTap,
                               kCGHeadInsertEventTap,
                               kCGEventTapOptionDefault,
                               // We need to grab *only* NSSystemDefined events.
