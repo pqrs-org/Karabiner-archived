@@ -65,6 +65,11 @@
         <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_L</autogen>
       </item>
       <item>
+        <name>Application Key to Option_R (right option key)</name>
+        <identifier>remap.pc_application2optionR</identifier>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_R</autogen>
+      </item>
+      <item>
         <name>Application Key to Shift_L</name>
         <identifier>remap.pc_application2shiftL</identifier>
         <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::SHIFT_L</autogen>
