@@ -140,21 +140,32 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
 {
   if (eventTap) return;
 
+  // We need to grab *only* NSSystemDefined events.
+  //
+  // But, if we pass only NSSystemDefinedMask to CGEventTapCreate,
+  // we cannot select objects on Adobe Fireworks.
+  // (It might be a bug of OS X or Fireworks...)
+  //
+  // Therefore, we need to other events.
+  CGEventMask mask = 0;
+  // Do not grab NSEventTypeGesture - NSEventTypeEndGesture.
+  // If we grab these events, three-finger loop up will be disabled by unknown reason.
+  // (a bug of OS X?)
+  for (NSEventType type = NSLeftMouseDown; type < NSEventTypeGesture; ++type) {
+    if (type == NSKeyDown) continue;
+    if (type == NSKeyUp) continue;
+
+    mask |= NSEventMaskFromType(type);
+  }
+
   // We need to specify kCGSessionEventTap to CGEventTapCreate.
   // If we pass kCGAnnotatedSessionEventTap to CGEventTapCreate,
-  // media keys (brightness control, volume control, etc.) will be disabled for unknown reason.
+  // media keys (brightness control, volume control, etc.) will be disabled by unknown reason.
   // (a bug of OS X?)
   eventTap = CGEventTapCreate(kCGSessionEventTap,
                               kCGHeadInsertEventTap,
                               kCGEventTapOptionDefault,
-                              // We need to grab *only* NSSystemDefined events.
-                              //
-                              // But, if we specify NSSystemDefinedMask here,
-                              // we cannot select objects on Adobe Fireworks.
-                              // (It might be a bug of OS X or Fireworks...)
-                              //
-                              // Therefore, we need to grab all events.
-                              kCGEventMaskForAllEvents,
+                              mask,
                               eventTapCallBack,
                               self);
   if (! eventTap) {
