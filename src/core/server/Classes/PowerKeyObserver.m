@@ -146,7 +146,7 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
   // we cannot select objects on Adobe Fireworks.
   // (It might be a bug of OS X or Fireworks...)
   //
-  // Therefore, we need to other events.
+  // Therefore, we need to grab other events.
   CGEventMask mask = 0;
   // Do not grab NSEventTypeGesture - NSEventTypeEndGesture.
   // If we grab these events, three-finger loop up will be disabled by unknown reason.
