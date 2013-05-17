@@ -140,11 +140,11 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
 {
   if (eventTap) return;
 
-  // We need to specify kCGAnnotatedSessionEventTap.
-  // If we pass kCGSessionEventTap to CGEventCreateCopy,
-  // three-finger look up will be disabled for unknown reason.
+  // We need to specify kCGSessionEventTap to CGEventTapCreate.
+  // If we pass kCGAnnotatedSessionEventTap to CGEventTapCreate,
+  // media keys (brightness control, volume control, etc.) will be disabled for unknown reason.
   // (a bug of OS X?)
-  eventTap = CGEventTapCreate(kCGAnnotatedSessionEventTap,
+  eventTap = CGEventTapCreate(kCGSessionEventTap,
                               kCGHeadInsertEventTap,
                               kCGEventTapOptionDefault,
                               // We need to grab *only* NSSystemDefined events.
