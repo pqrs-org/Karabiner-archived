@@ -1,4 +1,7 @@
-Changes since 8.1.0
+Changes since 8.2.0
+
+----------------------------------------------------------------------
+= version 8.2.0 =
 
     - Fixed a bug that object selection is disabled on Adobe Fireworks.
     - Fixed a bug that "General > Don't remap XXX" does not take effect immediately.
