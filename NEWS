@@ -1,5 +1,7 @@
 Changes since 8.2.0
 
+    - Fixed a bug that "Look up" feature of OS X (tap trackpad with three fingers) does not work properly.
+
 ----------------------------------------------------------------------
 = version 8.2.0 =
 
