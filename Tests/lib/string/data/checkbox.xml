@@ -745,7 +745,7 @@
     <item>
       <name>CapsLock is an exceptional key.</name>
       <appendix>Use "PCKeyboardHack" to change CapsLock key.</appendix>
-      <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <appendix>&#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
     </item>
     <item>
       <name>Tips:</name>
@@ -1490,7 +1490,7 @@
       <appendix>Eject key has a delay.</appendix>
       <appendix>You need to press eject key for a few seconds.</appendix>
       <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
-      <appendix>&#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <appendix>&#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
     </item>
     <item>
       <name>Limitation:</name>
@@ -2521,7 +2521,7 @@
           <appendix>Eject(F12) to Volume Up</appendix>
           <appendix></appendix>
           <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+          <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
           <identifier>remap.functional2fn_air3_1_to_previous</identifier>
           <autogen>__ConsumerToKey__      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PLAY,  ConsumerKeyCode::MUSIC_PREV</autogen>
@@ -8300,7 +8300,7 @@
         <name>Eject to Forward Delete</name>
         <appendix>(Fn+Eject to Eject)</appendix>
         <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-        <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+        <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
         <identifier>remap.app_vm_eject2forwarddelete</identifier>
         <only>VIRTUALMACHINE</only>
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
@@ -11514,7 +11514,7 @@
     <item>
       <name>Change Eject Key</name>
       <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
       <item>
         <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
         <identifier>remap.jis_eject2eisuuf13_withoutmodifiers</identifier>
@@ -20519,7 +20519,7 @@
         <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
         <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
         <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
-        <appendix>E to Type "http://pqrs.org/macosx/keyremap4macbook/"</appendix>
+        <appendix>E to Type "https://pqrs.org/macosx/keyremap4macbook/"</appendix>
         <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
         <appendix>G to Option_L,Shift_L,A,S</appendix>
         <appendix></appendix>

@@ -238,7 +238,7 @@ TEST(pqrs_xml_compiler, reload)
 
   EXPECT_EQ(boost::none, xml_compiler.get_url(0));
 
-  EXPECT_EQ("http://pqrs.org/",
+  EXPECT_EQ("https://pqrs.org/",
             *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org")))));
 
   EXPECT_EQ("file:///Applications/TextEdit.app",
