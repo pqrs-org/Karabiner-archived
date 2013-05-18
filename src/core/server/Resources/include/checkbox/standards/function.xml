@@ -383,7 +383,7 @@
           <appendix>Eject(F12) to Volume Up</appendix>
           <appendix></appendix>
           <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-          <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+          <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
           <identifier>remap.functional2fn_air3_1_to_previous</identifier>
           <autogen>__ConsumerToKey__      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PLAY,  ConsumerKeyCode::MUSIC_PREV</autogen>

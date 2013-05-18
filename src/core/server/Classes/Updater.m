@@ -35,10 +35,10 @@
   // So that Sparkle gives priority to a preference over Info.plist,
   // we overwrite SUFeedURL here.
   if (checkupdate == 2) {
-    return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
+    return @"https://pqrs.org/macosx/keyremap4macbook/files/appcast-devel.xml";
   }
 
-  return @"http://pqrs.org/macosx/keyremap4macbook/files/appcast.xml";
+  return @"https://pqrs.org/macosx/keyremap4macbook/files/appcast.xml";
 }
 
 - (void) check:(BOOL)isBackground
