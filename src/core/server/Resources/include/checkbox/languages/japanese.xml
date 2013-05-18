@@ -227,7 +227,7 @@
     <item>
       <name>Change Eject Key</name>
       <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-      <appendix>*** &#8594; http://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+      <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
       <item>
         <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
         <identifier>remap.jis_eject2eisuuf13_withoutmodifiers</identifier>

@@ -20,7 +20,7 @@
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_WEB_pqrs_org</name>
-    <url>http://pqrs.org/</url>
+    <url>https://pqrs.org/</url>
   </vkopenurldef>
 
   <vkopenurldef>
