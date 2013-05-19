@@ -36,23 +36,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapParams.isremapped = true;
 
       if (dropHorizontalScroll_) {
-        // fire vertical scroll.
-        if (remapParams.params.deltaAxis1 != 0 ||
-            remapParams.params.fixedDelta1 != 0 ||
-            remapParams.params.pointDelta1 != 0) {
-          Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(remapParams.params.deltaAxis1,
-                                                                                               0,
-                                                                                               0,
-                                                                                               remapParams.params.fixedDelta1,
-                                                                                               0,
-                                                                                               0,
-                                                                                               remapParams.params.pointDelta1,
-                                                                                               0,
-                                                                                               0,
-                                                                                               remapParams.params.options));
-          if (ptr) {
-            EventOutputQueue::FireScrollWheel::fire(*ptr);
-          }
+        // Overwrite horizontal values with 0.
+        // We should not drop events which vertical values are 0
+        // because it might cause a vertical scroll stuck in some apps (Adobe Photoshop, Illustrator).
+
+        Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(remapParams.params.deltaAxis1,
+                                                                                             0,
+                                                                                             0,
+                                                                                             remapParams.params.fixedDelta1,
+                                                                                             0,
+                                                                                             0,
+                                                                                             remapParams.params.pointDelta1,
+                                                                                             0,
+                                                                                             0,
+                                                                                             remapParams.params.options));
+        if (ptr) {
+          EventOutputQueue::FireScrollWheel::fire(*ptr);
         }
       }
 
