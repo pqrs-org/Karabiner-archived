@@ -185,6 +185,16 @@
         <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ModifierFlag::NONE,
           KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
       </item>
+
+      <item>
+        <name>Logitech Wireless Presenter</name>
+        <appendix>Configure Logitech Wireless Presenter for use with Apple Keynote</appendix>
+        <identifier>remap.logitech_wireless_presenter_apple_keynote</identifier>
+        <only>IWORK_KEYNOTE</only>
+        <device_only>DeviceVendor::LOGITECH,DeviceProduct::LOGITECH_WIRELESS_PRESENTER</device_only>
+        <autogen>__KeyToKey__ KeyCode::F5, KeyCode::P, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::B</autogen>
+      </item>
     </item>
 
     <item>

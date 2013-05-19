@@ -136,6 +136,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>LOGITECH_WIRELESS_PRESENTER</productname>
+    <productid>0xc515</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>LOGITECH_USB_HEADSET</productname>
     <productid>0x0a0b</productid>
   </deviceproductdef>
