@@ -1,5 +1,5 @@
 all:
-	cp Resources/KeyRemap4MacBookUninstaller.icns \
+	cp ../../share/Resources/app.icns \
 		automator/KeyRemap4MacBookUninstaller.app/Contents/Resources/AutomatorApplet.icns
 
 clean:
