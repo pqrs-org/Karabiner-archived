@@ -1,5 +1,7 @@
 Changes since 8.3.0
 
+    - Icons have been refined.
+
 ----------------------------------------------------------------------
 = version 8.3.0 =
 
@@ -16,7 +18,7 @@ Changes since 8.3.0
 ----------------------------------------------------------------------
 = version 8.1.0 =
 
-    - Power button remapping has been supported.
+    - Power button remapping has been supported. (Thanks to Peter Kamb who is the author of PowerKey.)
     - Added "Quit KeyRemap4MacBook" into menu bar.
     - Added some styles into status message indicator.
     - Improved compatibility with SmoothMouse.
