@@ -271,6 +271,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>ThinkPad_USB_Keyboard_with_TrackPoint_US_English</productname>
+    <productid>0x6009</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>PSEUDO</productname>
     <productid>0x0000</productid>
   </deviceproductdef>
