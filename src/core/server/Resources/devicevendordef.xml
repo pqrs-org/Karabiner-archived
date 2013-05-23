@@ -104,4 +104,9 @@
     <vendorname>Ideazon</vendorname>
     <vendorid>0x1038</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Lite_On_Technology_Corp</vendorname>
+    <vendorid>0x17ef</vendorid>
+  </devicevendordef>
 </root>

@@ -184,6 +184,11 @@
   </appdef>
 
   <appdef>
+    <appname>Chromium</appname>
+    <prefix>org.chromium.Chromium</prefix>
+  </appdef>
+
+  <appdef>
     <appname>TEAMVIEWER</appname>
     <equal>com.TeamViewer.TeamViewer</equal>
     <equal>com.teamviewer.TeamViewer</equal>
@@ -442,5 +447,10 @@
   <appdef>
     <appname>muCommander</appname>
     <equal>com.mucommander.muCommander</equal>
+  </appdef>
+
+  <appdef>
+    <appname>JeditX</appname>
+    <prefix>jp.co.artman21.JeditX</prefix>
   </appdef>
 </root>
