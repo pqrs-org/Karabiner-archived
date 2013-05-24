@@ -17,7 +17,6 @@
 		34CA6980174FB72900EC8EFB /* KeyResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA697A174FB72900EC8EFB /* KeyResponder.m */; };
 		34CA6981174FB72900EC8EFB /* OtherInformationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA697C174FB72900EC8EFB /* OtherInformationStore.m */; };
 		34EB801312C5DD9E0071889D /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EB801212C5DD9E0071889D /* KeyRemap4MacBookClient.m */; };
-		34FBE7F010B2E8E500DD22E9 /* mousearea.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FBE7EF10B2E8E500DD22E9 /* mousearea.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -51,7 +50,6 @@
 		34CA697C174FB72900EC8EFB /* OtherInformationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherInformationStore.m; path = Classes/OtherInformationStore.m; sourceTree = "<group>"; };
 		34EB801112C5DD9E0071889D /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../share/KeyRemap4MacBookClient.h; sourceTree = SOURCE_ROOT; };
 		34EB801212C5DD9E0071889D /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../share/KeyRemap4MacBookClient.m; sourceTree = SOURCE_ROOT; };
-		34FBE7EF10B2E8E500DD22E9 /* mousearea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mousearea.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* EventViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				3488F175174FB64C00178158 /* app.icns */,
-				34FBE7EF10B2E8E500DD22E9 /* mousearea.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -225,7 +222,6 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				34FBE7F010B2E8E500DD22E9 /* mousearea.png in Resources */,
 				3488F176174FB64C00178158 /* app.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
