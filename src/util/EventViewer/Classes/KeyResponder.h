@@ -3,7 +3,7 @@
 #import <Cocoa/Cocoa.h>
 #import "EventQueue.h"
 
-@interface KeyResponder : NSImageView
+@interface KeyResponder : NSView
 {
   IBOutlet EventQueue* eventqueue_;
   IBOutlet KeyRemap4MacBookClient* client_;
