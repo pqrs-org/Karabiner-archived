@@ -19,6 +19,12 @@
   </appdef>
 
   <appdef>
+    <appname>SUBLIMETEXT</appname>
+    <equal>com.sublimetext.3</equal>
+    <equal>com.sublimetext.2</equal>
+  </appdef>
+
+  <appdef>
     <appname>TERMINAL</appname>
     <equal>com.apple.Terminal</equal>
     <equal>iTerm</equal>
