@@ -92,6 +92,18 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>ITALIAN</name>
+    <detail>ITALIAN</detail>
+    <inputsourceid_equal>com.apple.keylayout.Italian-Pro</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>ITALIAN</name>
+    <detail>ITALIAN_TYPEWRITER</detail>
+    <inputsourceid_equal>com.apple.keylayout.Italian</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>NORWEGIAN</name>
     <detail>NORWEGIAN_EXTENDED</detail>
     <inputsourceid_equal>com.apple.keylayout.NorwegianExtended</inputsourceid_equal>
