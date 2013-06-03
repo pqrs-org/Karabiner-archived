@@ -63,6 +63,17 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Don't leave any modes automatically when the machine wakes from sleep.</name>
+      <appendix>(Pass Through Mode, Browsing Mode, etc.)</appendix>
+      <appendix></appendix>
+      <appendix>KeyRemap4MacBook turns off these modes automatically because</appendix>
+      <appendix>these modes are not suitable for password input.</appendix>
+      <appendix></appendix>
+      <appendix>This setting allows you to keep these modes's states.</appendix>
+      <identifier>general.keep_notsave_at_wake</identifier>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Pass-Through caps lock LED status</name>
       <appendix></appendix>
       <appendix>KeyRemap4MacBook manipulates caps lock LED according to internal caps lock state.</appendix>

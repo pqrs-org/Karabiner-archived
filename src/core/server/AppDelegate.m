@@ -101,12 +101,29 @@
 }
 
 // ------------------------------------------------------------
+- (void) callClearNotSave
+{
+  if (! [preferencesManager_ value:@"general.keep_notsave_at_wake"]) {
+    // disable notsave.* in order to disable "Browsing Mode" and
+    // other modes which overwrite some keys
+    // because these modes annoy password input.
+    [preferencesManager_ clearNotSave];
+  }
+}
+
 - (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
                    NSLog (@"observer_NSWorkspaceDidWakeNotification");
+                   [self callClearNotSave];
+                 });
+}
 
-                   [preferencesManager_ clearNotSave];
+- (void) observer_NSWorkspaceScreensDidWakeNotification:(NSNotification*)notification
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+                   NSLog (@"observer_NSWorkspaceScreensDidWakeNotification");
+                   [self callClearNotSave];
                  });
 }
 
@@ -116,12 +133,19 @@
                                                          selector:@selector(observer_NSWorkspaceDidWakeNotification:)
                                                              name:NSWorkspaceDidWakeNotification
                                                            object:nil];
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceScreensDidWakeNotification:)
+                                                             name:NSWorkspaceScreensDidWakeNotification
+                                                           object:nil];
 }
 
 - (void) unregisterWakeNotification
 {
   [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
                                                                 name:NSWorkspaceDidWakeNotification
+                                                              object:nil];
+  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
+                                                                name:NSWorkspaceScreensDidWakeNotification
                                                               object:nil];
 }
 
