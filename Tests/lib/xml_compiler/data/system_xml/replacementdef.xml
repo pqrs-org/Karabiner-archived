@@ -1,6 +1,36 @@
 <?xml version="1.0"?>
 <root>
   <replacementdef>
+    <replacementname>APPDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>DEVICEPRODUCTDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>DEVICEVENDORDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>INPUTSOURCEDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VKCHANGEINPUTSOURCEDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VKOPENURLDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
     <replacementname>SYMBOL_MAP_REPLACEMENT</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
