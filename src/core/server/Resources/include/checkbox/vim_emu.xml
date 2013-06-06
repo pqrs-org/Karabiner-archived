@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <!-- vim_emu: vim like key binding             -->
+  <!--          for KeyRemap4MacBook             -->
+  <!--         https://github.com/rcmdnk/vim_emu -->
+  <!-- Author: rcmdnk (rcmdnk@gmail.com)         -->
+  <!--         https://rcmdnk.github.io/         -->
+  <item>
+    <name>VIM Emulation</name>
+    <include path="vim_emu/vim_emu_core.xml"></include>
+    <include path="vim_emu/vim_emu_core_settings.xml"></include>
+  </item>
+</root>

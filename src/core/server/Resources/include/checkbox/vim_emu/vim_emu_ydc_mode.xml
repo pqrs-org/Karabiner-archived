@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<root>
+  <block>
+    <config_only>notsave.vim_emu_normal</config_only>
+    <autogen> <!-- Shift-{{VIM_EMU_YDC_CHAR}} -->
+      __KeyToKey__ KeyCode::{{VIM_EMU_YDC_CHAR}},
+      MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
+      KeyCode::E, ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L,
+      {{VIM_EMU_AFTER_MOVE}}
+    </autogen>
+    <!-- Start {{VIM_EMU_YDC_CHAR}} command -->
+    <block>
+      <config_not>notsave.vim_emu_{{VIM_EMU_YDC_CHAR}}</config_not>
+      <autogen>
+        __KeyToKey__ KeyCode::{{VIM_EMU_YDC_CHAR}}, ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_{{VIM_EMU_YDC_CHAR}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_oneshot
+      </autogen>
+    </block>
+  </block>
+
+  <block> <!-- {{VIM_EMU_YDC_CHAR}} MODE -->
+    <config_only>notsave.vim_emu_oneshot</config_only>
+    <config_only>notsave.vim_emu_{{VIM_EMU_YDC_CHAR}}</config_only>
+    <autogen> <!-- {{VIM_EMU_YDC_CHAR}}{{VIM_EMU_YDC_CHAR}} -->
+      __KeyToKey__ KeyCode::{{VIM_EMU_YDC_CHAR}}, ModifierFlag::NONE,
+      KeyCode::A, ModifierFlag::CONTROL_L,
+      KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L|ModifierFlag::SHIFT_L,
+      {{VIM_EMU_AFTER_MOVE}},
+      KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy,
+    </autogen>
+    <include path="vim_emu_move.xml">
+      <replacementdef>
+        <replacementname>VIM_EMU_USE_SHIFT</replacementname>
+        <replacementvalue>
+          ModifierFlag::SHIFT_L|
+        </replacementvalue>
+      </replacementdef>
+    </include>
+  </block>
+</root>

@@ -43,6 +43,7 @@
   <include path="include/checkbox/mouse_keys.xml" />
   <include path="include/checkbox/vi_mode.xml" />
   <include path="include/checkbox/ubiquitous_vim_bindings.xml" />
+  <include path="include/checkbox/vim_emu.xml" />
   <include path="include/checkbox/complete_vi_mode.xml" />
   <include path="include/checkbox/simultaneouskeypresses_vi_mode.xml" />
   <include path="include/checkbox/homerow_mode.xml" />

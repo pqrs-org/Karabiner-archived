@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<root>
+  <block>
+    <config_only>notsave.vim_emu_oneshot</config_only>
+    <block>
+      <config_only>notsave.vim_emu_repeat</config_only>
+      <block>
+        <config_only>notsave.vim_emu_2</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+      <block>
+        <config_only>notsave.vim_emu_3</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+      <block>
+        <config_only>notsave.vim_emu_4</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+      <block>
+        <config_only>notsave.vim_emu_5</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+      <block>
+        <config_only>notsave.vim_emu_6</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+      <block>
+        <config_only>notsave.vim_emu_7</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+      <block>
+        <config_only>notsave.vim_emu_8</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+      <block>
+        <config_only>notsave.vim_emu_9</config_only>
+        <autogen>
+          __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_REPEAT_OUTPUT}}, {{VIM_EMU_REPEAT_OUTPUT}},
+          {{VIM_EMU_RESET_REPEAT}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </autogen>
+      </block>
+    </block>
+  </block>
+
+  <autogen>
+    __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
+    {{VIM_EMU_REPEAT_OUTPUT}},
+    {{VIM_EMU_RESET_REPEAT}},
+    {{VIM_EMU_AFTER_MOVE}}
+  </autogen>
+</root>
