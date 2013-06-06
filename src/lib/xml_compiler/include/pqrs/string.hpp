@@ -17,13 +17,13 @@ namespace pqrs {
     typedef boost::unordered_map<std::string, std::string> replacement;
 
     static int string_by_replacing_double_curly_braces_from_file(std::string& out,
+                                                                 std::string& replacement_warnings,
                                                                  const char* filename,
-                                                                 replacement replacement,
-                                                                 bool suppress_warning);
+                                                                 replacement replacement);
     static int string_by_replacing_double_curly_braces_from_string(std::string& out,
+                                                                   std::string& replacement_warnings,
                                                                    const std::string& source,
-                                                                   replacement replacement,
-                                                                   bool suppress_warning);
+                                                                   replacement replacement);
 
     // octal,decimal,hex is supported.
     static boost::optional<uint32_t> to_uint32_t(const char* string) {
@@ -142,9 +142,9 @@ namespace pqrs {
     };
 
     static int string_by_replacing_double_curly_braces_(std::string& out,
+                                                        std::string& replacement_warnings,
                                                         std::istream& istream,
-                                                        replacement replacement,
-                                                        bool suppress_warning);
+                                                        replacement replacement);
   };
 }
 
