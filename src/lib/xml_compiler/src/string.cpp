@@ -6,7 +6,10 @@
 
 namespace pqrs {
   int
-  string::string_by_replacing_double_curly_braces_(std::string& out, std::istream& istream, replacement replacement)
+  string::string_by_replacing_double_curly_braces_(std::string& out,
+                                                   std::istream& istream,
+                                                   replacement replacement,
+                                                   bool suppress_replacement_warnings)
   {
     int previous = '\0';
 
@@ -44,6 +47,10 @@ namespace pqrs {
             auto it = replacement.find(key);
             if (it != replacement.end()) {
               out += it->second;
+            } else {
+              if (! suppress_replacement_warnings) {
+                std::cerr << "Warning - \"" << key << "\" is not found in replacement." << std::endl;
+              }
             }
             break;
           }
@@ -98,7 +105,8 @@ namespace pqrs {
   int
   string::string_by_replacing_double_curly_braces_from_file(std::string& out,
                                                             const char* filename,
-                                                            replacement replacement)
+                                                            replacement replacement,
+                                                            bool suppress_replacement_warnings)
   {
     out.clear();
 
@@ -121,13 +129,14 @@ namespace pqrs {
     istream.seekg(0, std::ios::beg);
 
     // ----------------------------------------
-    return string_by_replacing_double_curly_braces_(out, istream, replacement);
+    return string_by_replacing_double_curly_braces_(out, istream, replacement, suppress_replacement_warnings);
   }
 
   int
   string::string_by_replacing_double_curly_braces_from_string(std::string& out,
                                                               const std::string& source,
-                                                              replacement replacement)
+                                                              replacement replacement,
+                                                              bool suppress_replacement_warnings)
   {
     out.clear();
 
@@ -147,6 +156,6 @@ namespace pqrs {
     out.reserve(source.length());
 
     // ----------------------------------------
-    return string_by_replacing_double_curly_braces_(out, istream, replacement);
+    return string_by_replacing_double_curly_braces_(out, istream, replacement, suppress_replacement_warnings);
   }
 }
