@@ -21,6 +21,8 @@ namespace pqrs {
   {
     error_information_.clear();
     replacement_.clear();
+    // suppress replacement warning while loading replacement.
+    suppress_replacement_warnings_ = true;
     symbol_map_.clear();
     app_vector_.clear();
     vk_change_inputsource_map_.clear();
@@ -63,6 +65,8 @@ namespace pqrs {
 
         append_environments_to_replacement(replacement_);
       }
+
+      suppress_replacement_warnings_ = false;
 
       // ------------------------------------------------------------
       // Then, we read private.xml with replacement and loaders share it.
@@ -211,7 +215,10 @@ namespace pqrs {
       if (replacement.empty()) {
         pqrs::string::string_from_file(xml, file_path.c_str());
       } else {
-        pqrs::string::string_by_replacing_double_curly_braces_from_file(xml, file_path.c_str(), replacement);
+        pqrs::string::string_by_replacing_double_curly_braces_from_file(xml,
+                                                                        file_path.c_str(),
+                                                                        replacement,
+                                                                        suppress_replacement_warnings_);
       }
       if (xml.empty()) {
         error_information_.set(file_path + " is not found.");

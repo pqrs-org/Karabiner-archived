@@ -18,10 +18,12 @@ namespace pqrs {
 
     static int string_by_replacing_double_curly_braces_from_file(std::string& out,
                                                                  const char* filename,
-                                                                 replacement replacement);
+                                                                 replacement replacement,
+                                                                 bool suppress_warning);
     static int string_by_replacing_double_curly_braces_from_string(std::string& out,
                                                                    const std::string& source,
-                                                                   replacement replacement);
+                                                                   replacement replacement,
+                                                                   bool suppress_warning);
 
     // octal,decimal,hex is supported.
     static boost::optional<uint32_t> to_uint32_t(const char* string) {
@@ -141,7 +143,8 @@ namespace pqrs {
 
     static int string_by_replacing_double_curly_braces_(std::string& out,
                                                         std::istream& istream,
-                                                        replacement replacement);
+                                                        replacement replacement,
+                                                        bool suppress_warning);
   };
 }
 
