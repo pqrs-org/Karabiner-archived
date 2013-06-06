@@ -122,13 +122,14 @@
       <name>Application choice</name>
       <item>
         <name></name>
+        <!-- Choose applications on which you want to enable vim emulation.-->
         <appendix>
-          <!-- Choose applications on which you want to enable vim emulation.-->
+          If you want to change applications, add the following lines into private.xml.
         </appendix>
         <appendix>
-          If you want to change applications, add replacement lines for VIM_EMU_ONLY_APPS and VIM_EMU_IGNORE_APPS at the top o of private.xml.
-e.  En  able only for MAIL.
+          For example, enable only for MAIL:
         </appendix>
+        <appendix></appendix>
         <appendix>&lt;replacementdef&gt;</appendix>
         <appendix>  &lt;replacementname&gt;VIM_EMU_ONLY_APPS&lt;/replacementname&gt;</appendix>
         <appendix>  &lt;replacementvalue&gt;MAIL&lt;/replacementvalue&gt;</appendix>
@@ -154,9 +155,8 @@ e.  En  able only for MAIL.
       <name>Normal Mode</name>
       <item>
         <name>Main Mode Change</name>
-        <appendix>
-          i/I/a/A/o/O: Enter Insert mode (OS standard state) at under the cursor/start of the line/next to the cursor/end of the line.
-        </appendix>
+        <appendix>i/I/a/A/o/O: Enter Insert mode (OS standard state) at under the cursor/start of the</appendix>
+        <appendix>line/next to the cursor/end of the line.</appendix>
         <appendix>
           v/V/Ctrl-v: Enter Visual/Visual Line/Visual Block mode.
         </appendix>
