@@ -73,6 +73,16 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>VIM_EMU_ONLY_APPS</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>VIM_EMU_IGNORE_APPS</replacementname>
+    <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>LOGITECH_N305_EQUAL</replacementname>
     <replacementvalue>KeyCode::KEYPAD_EQUAL</replacementvalue>
   </replacementdef>

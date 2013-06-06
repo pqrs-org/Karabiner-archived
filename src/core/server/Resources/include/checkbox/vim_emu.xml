@@ -9,14 +9,6 @@
     <name>VIM Emulation</name>
     <include path="vim_emu/vim_emu_core.xml">
       <replacementdef>
-        <replacementname>VIM_EMU_ONLY_APPS</replacementname>
-        <replacementvalue></replacementvalue>
-      </replacementdef>
-      <replacementdef>
-        <replacementname>VIM_EMU_IGNORE_APPS</replacementname>
-        <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
-      </replacementdef>
-      <replacementdef>
         <replacementname>VIM_EMU_RESET_REPEAT</replacementname>
         <replacementvalue>
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_oneshot,
@@ -160,6 +152,30 @@
           KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_line_copy,
         </replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_ADDITIONAL_MODIFIER</replacementname>
+        <replacementvalue></replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+        <replacementvalue></replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_APP_NAME</replacementname>
+        <replacementvalue></replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_BEFORE_COPY_CUT</replacementname>
+        <replacementvalue></replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_LINECOPY</replacementname>
+        <replacementvalue></replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_USE_SHIFT</replacementname>
+        <replacementvalue></replacementvalue>
       </replacementdef>
     </include>
 
