@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>DEVICEPRODUCTDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>DEVICEVENDORDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>INPUTSOURCEDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VKCHANGEINPUTSOURCEDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VKOPENURLDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>SYMBOL_MAP_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
+    <replacementname>VI_H</replacementname>
+    <replacementvalue>KeyCode::H</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VI_J</replacementname>
+    <replacementvalue>KeyCode::J</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VI_K</replacementname>
+    <replacementvalue>KeyCode::K</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>VI_L</replacementname>
+    <replacementvalue>KeyCode::L</replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
+    <replacementname>UBIQUITOUS_VIM_BINDINGS_EXCEPTION_APPS</replacementname>
+    <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>JAPANESE_OYAYUBISHIFT_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
+    <replacementname>JAPANESE_NICOLA_KINESIS_THUMB_LEFT</replacementname>
+    <replacementvalue>KeyCode::DELETE</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>JAPANESE_NICOLA_KINESIS_THUMB_RIGHT</replacementname>
+    <replacementvalue>KeyCode::SPACE</replacementvalue>
+  </replacementdef>
+</root>

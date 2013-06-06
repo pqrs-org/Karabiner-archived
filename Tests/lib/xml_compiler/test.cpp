@@ -595,6 +595,12 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     EXPECT_EQ("No <replacementvalue> within <replacementdef>:\n\nVI_J", xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
+  {
+    pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_not_found", "data/private_xml");
+    xml_compiler.reload();
+    EXPECT_EQ("Warning - \"APPDEF_REPLACEMENT\" is not found in replacement.\n", xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
 
   // ------------------------------------------------------------
   // symbol_map.xml
