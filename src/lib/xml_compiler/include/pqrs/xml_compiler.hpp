@@ -125,9 +125,9 @@ namespace pqrs {
     const std::string private_xml_directory_;
 
     mutable error_information error_information_;
+    mutable std::string replacement_warnings_;
 
     pqrs::string::replacement replacement_;
-    bool suppress_replacement_warnings_;
     symbol_map symbol_map_;
     std::vector<std::tr1::shared_ptr<app> > app_vector_;
     boost::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> > vk_change_inputsource_map_;
