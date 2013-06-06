@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<root>
+  <autogen> <!-- y -->
+    __KeyToKey__ KeyCode::Y, {{VIM_EMU_ADDITIONAL_MODIFIER}}ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::C, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    {{VIM_EMU_LINECOPY}}
+  </autogen>
+  <autogen> <!-- Y -->
+    __KeyToKey__ KeyCode::Y, {{VIM_EMU_ADDITIONAL_MODIFIER}}
+    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::E, ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L,
+    KeyCode::C, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy,
+  </autogen>
+  <autogen> <!-- d -->
+    __KeyToKey__ KeyCode::D, {{VIM_EMU_ADDITIONAL_MODIFIER}}ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::X, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    {{VIM_EMU_LINECOPY}}
+  </autogen>
+  <autogen> <!-- D -->
+    __KeyToKey__ KeyCode::D, {{VIM_EMU_ADDITIONAL_MODIFIER}}
+    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::E, ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L,
+    KeyCode::X, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy,
+  </autogen>
+  <autogen> <!-- x -->
+    __KeyToKey__ KeyCode::X, {{VIM_EMU_ADDITIONAL_MODIFIER}}ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::X, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    {{VIM_EMU_LINECOPY}}
+  </autogen>
+  <autogen> <!-- X -->
+    __KeyToKey__ KeyCode::X, {{VIM_EMU_ADDITIONAL_MODIFIER}}
+    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::E, ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L,
+    KeyCode::X, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy,
+  </autogen>
+  <autogen> <!-- c -->
+    __KeyToKey__ KeyCode::C, {{VIM_EMU_ADDITIONAL_MODIFIER}}ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::X, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    {{VIM_EMU_LINECOPY}}
+  </autogen>
+  <autogen> <!-- C -->
+    __KeyToKey__ KeyCode::C, {{VIM_EMU_ADDITIONAL_MODIFIER}}
+    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::E, ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L,
+    KeyCode::X, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy,
+  </autogen>
+  <autogen> <!-- * -->
+    __KeyToKey__ KeyCode::KEY_8, {{VIM_EMU_ADDITIONAL_MODIFIER}}
+    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::C, ModifierFlag::COMMAND_L,
+    KeyCode::F, ModifierFlag::COMMAND_L,
+    KeyCode::V, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search,
+  </autogen>
+  <autogen> <!-- * for JIS -->
+    __KeyToKey__ KeyCode::JIS_COLON, {{VIM_EMU_ADDITIONAL_MODIFIER}}
+    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_COPY_CUT}},
+    KeyCode::C, ModifierFlag::COMMAND_L,
+    KeyCode::F, ModifierFlag::COMMAND_L,
+    KeyCode::V, ModifierFlag::COMMAND_L,
+    {{VIM_EMU_FORCE_ON_NORMAL_WO_LINE}},
+    KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search,
+  </autogen>
+</root>
