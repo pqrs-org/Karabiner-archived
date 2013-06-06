@@ -7,9 +7,9 @@
 namespace pqrs {
   int
   string::string_by_replacing_double_curly_braces_(std::string& out,
+                                                   std::string& replacement_warnings,
                                                    std::istream& istream,
-                                                   replacement replacement,
-                                                   bool suppress_replacement_warnings)
+                                                   replacement replacement)
   {
     int previous = '\0';
 
@@ -48,9 +48,7 @@ namespace pqrs {
             if (it != replacement.end()) {
               out += it->second;
             } else {
-              if (! suppress_replacement_warnings) {
-                std::cerr << "Warning - \"" << key << "\" is not found in replacement." << std::endl;
-              }
+              replacement_warnings += "Warning - \"" + key + "\" is not found in replacement.\n";
             }
             break;
           }
@@ -104,9 +102,9 @@ namespace pqrs {
 
   int
   string::string_by_replacing_double_curly_braces_from_file(std::string& out,
+                                                            std::string& replacement_warnings,
                                                             const char* filename,
-                                                            replacement replacement,
-                                                            bool suppress_replacement_warnings)
+                                                            replacement replacement)
   {
     out.clear();
 
@@ -129,14 +127,14 @@ namespace pqrs {
     istream.seekg(0, std::ios::beg);
 
     // ----------------------------------------
-    return string_by_replacing_double_curly_braces_(out, istream, replacement, suppress_replacement_warnings);
+    return string_by_replacing_double_curly_braces_(out, replacement_warnings, istream, replacement);
   }
 
   int
   string::string_by_replacing_double_curly_braces_from_string(std::string& out,
+                                                              std::string& replacement_warnings,
                                                               const std::string& source,
-                                                              replacement replacement,
-                                                              bool suppress_replacement_warnings)
+                                                              replacement replacement)
   {
     out.clear();
 
@@ -156,6 +154,6 @@ namespace pqrs {
     out.reserve(source.length());
 
     // ----------------------------------------
-    return string_by_replacing_double_curly_braces_(out, istream, replacement, suppress_replacement_warnings);
+    return string_by_replacing_double_curly_braces_(out, replacement_warnings, istream, replacement);
   }
 }

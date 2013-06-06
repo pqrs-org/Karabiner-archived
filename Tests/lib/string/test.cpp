@@ -22,16 +22,18 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file)
   replacement["AAA"] = "1";
   replacement["BBB"] = "2222";
   replacement["CCC"] = "";
-  bool suppress_replacement_warnings = true;
+  std::string replacement_warnings;
 
   std::string actual;
   int error = 0;
-  error = pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, "data/sample", replacement, suppress_replacement_warnings);
+  error = pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, replacement_warnings, "data/sample", replacement);
   EXPECT_EQ("1 2222 \n", actual);
+  EXPECT_TRUE(replacement_warnings.empty());
   EXPECT_EQ(0, error);
 
-  error = pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, "data/noexists", replacement, suppress_replacement_warnings);
+  error = pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, replacement_warnings, "data/noexists", replacement);
   EXPECT_EQ("", actual);
+  EXPECT_TRUE(replacement_warnings.empty());
   EXPECT_EQ(-1, error);
 
   // performance test
@@ -41,7 +43,7 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file)
       replacement[key] = "REPLACEMENT";
     }
     const char* filepath = "data/checkbox.xml";
-    pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, filepath, replacement, true);
+    pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, replacement_warnings, filepath, replacement);
   }
 }
 
@@ -54,37 +56,46 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_string)
   replacement["DDD"] = "44444444444444444444";
   replacement["LOOP1"] = "{{ LOOP1 }}";
   replacement["LOOP2"] = "   {{ LOOP2 }}    ";
-  bool suppress_replacement_warnings = true;
+  std::string replacement_warnings;
 
   std::string actual;
 
   // no replacing
-  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, "abc", replacement, suppress_replacement_warnings);
+  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "abc", replacement);
   EXPECT_EQ("abc", actual);
+  EXPECT_TRUE(replacement_warnings.empty());
 
   // normal replacing
-  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, "{{AAA}} {{BBB}} !{{ CCC }}!{{ DDD }}", replacement, suppress_replacement_warnings);
+  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{AAA}} {{BBB}} !{{ CCC }}!{{ DDD }}", replacement);
   EXPECT_EQ("1 2222 !!44444444444444444444", actual);
+  EXPECT_TRUE(replacement_warnings.empty());
 
   // unknown replacing
-  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, "{{UNKNOWN}}", replacement, suppress_replacement_warnings);
+  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{UNKNOWN}}", replacement);
   EXPECT_EQ("", actual);
+  EXPECT_EQ("Warning - \"UNKNOWN\" is not found in replacement.\n", replacement_warnings);
+  replacement_warnings.clear();
 
   // "} }" is not end.
-  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, "{{AAA} } BBB}} XXX", replacement, suppress_replacement_warnings);
+  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{AAA} } BBB}} XXX", replacement);
   EXPECT_EQ(" XXX", actual);
+  EXPECT_EQ("Warning - \"AAA} } BBB\" is not found in replacement.\n", replacement_warnings);
+  replacement_warnings.clear();
 
   // no }}
-  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, "AAA {{AAA}", replacement, suppress_replacement_warnings);
+  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "AAA {{AAA}", replacement);
   EXPECT_EQ("AAA ", actual);
+  EXPECT_TRUE(replacement_warnings.empty());
 
   // no }}
-  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, "{{ AAA }", replacement, suppress_replacement_warnings);
+  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{ AAA }", replacement);
   EXPECT_EQ("", actual);
+  EXPECT_TRUE(replacement_warnings.empty());
 
   // looped replacing
-  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, "{{ LOOP1 }}{{ LOOP2 }}", replacement, suppress_replacement_warnings);
+  pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{ LOOP1 }}{{ LOOP2 }}", replacement);
   EXPECT_EQ("{{ LOOP1 }}   {{ LOOP2 }}    ", actual);
+  EXPECT_TRUE(replacement_warnings.empty());
 }
 
 TEST(pqrs_string, to_uint32_t)
