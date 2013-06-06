@@ -5,7 +5,7 @@ all:
 		if [ $$? != 0 ]; then \
 			exit 1; \
 		fi; \
-		/usr/bin/grep 'private\.' $$f; \
+		/usr/bin/grep -E '(>[[:space:]]*private\.)|(^[[:space:]]*private\.)' $$f; \
 		if [ $$? != 1 ]; then \
 			echo '"private." is matched.'; \
 			exit 1; \
