@@ -44,6 +44,47 @@
       <autogen>__KeyToKey__ KeyCode::TAB,    ModifierFlag::FN, KeyCode::TAB,    ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
+       <name>Fn+{letter,number,symbol} to `Hyper` (⇧⌃⌥⌘)+{letter,number,symbol}</name>
+       <appendix>Fn+Escape,Space,Tab to ⇧⌃⌥⌘+ Escape,Space,Tab</appendix>
+       <appendix/>
+       <appendix>Makes Fn key behave as a ⇧⌃⌥⌘ key, but only when pressed in combination with</appendix>
+       <appendix>a letter, number, symbol or escape,space,tab. Fn behaves as a normal Fn key otherwise.</appendix>
+       <identifier>remap.fnletter_to_ctrlletter2</identifier>
+       <include path="../commons/wrap_keys/alphabet.xml">
+          <replacementdef>
+             <replacementname>BEFORE</replacementname>
+             <replacementvalue>ModifierFlag::FN</replacementvalue>
+          </replacementdef>
+          <replacementdef>
+             <replacementname>AFTER</replacementname>
+             <replacementvalue>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+       </include>
+       <include path="../commons/wrap_keys/number.xml">
+          <replacementdef>
+             <replacementname>BEFORE</replacementname>
+             <replacementvalue>ModifierFlag::FN</replacementvalue>
+          </replacementdef>
+          <replacementdef>
+             <replacementname>AFTER</replacementname>
+             <replacementvalue>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+       </include>
+       <include path="../commons/wrap_keys/symbol.xml">
+          <replacementdef>
+             <replacementname>BEFORE</replacementname>
+             <replacementvalue>ModifierFlag::FN</replacementvalue>
+          </replacementdef>
+          <replacementdef>
+             <replacementname>AFTER</replacementname>
+             <replacementvalue>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+       </include>
+       <autogen>__KeyToKey__ KeyCode::ESCAPE, ModifierFlag::FN, KeyCode::ESCAPE, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+       <autogen>__KeyToKey__ KeyCode::SPACE,  ModifierFlag::FN, KeyCode::SPACE,  ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+       <autogen>__KeyToKey__ KeyCode::TAB,    ModifierFlag::FN, KeyCode::TAB,    ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
       <name>Fn to Command_L</name>
       <identifier>remap.fn2commandL</identifier>
       <autogen>__KeyToKey__ KeyCode::FN, KeyCode::COMMAND_L</autogen>
