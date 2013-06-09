@@ -10,6 +10,7 @@
   NSDictionary* dict = @ {
     @"hideIconInDock" : @NO,
     @"relaunchAfterWakeUpFromSleep" : @YES,
+    @"relaunchWait" : @"3",
     @"targetSettingIsEnabled1" : @YES,
     @"targetSettingIsEnabled2" : @NO,
     @"targetSettingIsEnabled3" : @NO,

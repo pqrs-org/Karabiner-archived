@@ -327,6 +327,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                    [NSThread sleepForTimeInterval:1.0];
 
                    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relaunchAfterWakeUpFromSleep"]) {
+                     double wait = [[[NSUserDefaults standardUserDefaults] stringForKey:@"relaunchWait"] doubleValue];
+                     if (wait > 0) {
+                       [NSThread sleepForTimeInterval:wait];
+                     }
+
                      [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
                      [NSApp terminate:self];
                    }
