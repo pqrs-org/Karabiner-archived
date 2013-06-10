@@ -131,6 +131,31 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>fn+JKLI to Arrow Keys</name>
+      <identifier>remap.fn_jkli_to_arrow_keys</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::J, ModifierFlag::FN,
+        KeyCode::CURSOR_LEFT
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::K, ModifierFlag::FN,
+        KeyCode::CURSOR_DOWN
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, ModifierFlag::FN,
+        KeyCode::CURSOR_RIGHT
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::I, ModifierFlag::FN,
+        KeyCode::CURSOR_UP
+      </autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Option_L+IKJL to Up/Down/Left/Right</name>
       <identifier>option.extra_cursor_optionL_jkil</identifier>
       <autogen>__KeyToKey__ KeyCode::I, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP</autogen>
