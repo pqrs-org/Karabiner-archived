@@ -59,13 +59,14 @@ enum {
   //             - BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN
   //             - BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN
   // Version 50: Changed interface of ElapsedTimeSinceLastPressedFilter::add.
-  // Version 51: Added an essential configurations. (general.automatically_enable_*)
+  // Version 51: Added an essential configuration. (general.automatically_enable_*)
   // Version 52: Added BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY.
   // Version 53: Added BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED.
   // Version 54: Added BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE.
   // Version 55: Added KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY.
+  // Version 56: Added essential configurations. (parameter.maximum_speed_of_*, parameter.acceleration_of_*)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 55,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 56,
 };
 
 enum {

@@ -291,8 +291,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
     }
 
-    if (scale_ < SCALE_MAX) {
-      ++scale_;
+    int max = scrollmode_ ?
+      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_scroll) :
+      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_pointer);
+
+    int acceleration = scrollmode_ ?
+      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_acceleration_of_scroll) :
+      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_acceleration_of_pointer);
+    if (acceleration < 0) {
+      acceleration = 0;
+    }
+
+    if (scale_ < max) {
+      scale_ += acceleration;
     }
 
     fire_timer_.setTimeoutMS(TIMER_INTERVAL);
