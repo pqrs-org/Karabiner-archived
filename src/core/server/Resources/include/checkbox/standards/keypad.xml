@@ -191,7 +191,7 @@
       <appendix></appendix>
       <appendix>// When you use this setting,</appendix>
       <appendix>// open "Key Repeat" tab, and</appendix>
-      <appendix>// change "[Double Press Modifier] Recognition Threshold" to a small number.</appendix>
+      <appendix>// change "Double Press Modifier &gt; Recognition Threshold" to a small number.</appendix>
       <appendix>// (For example, 50ms.)</appendix>
       <identifier>remap.keypad0_x3_to_equal</identifier>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_0, ModifierFlag::EXTRA1, KeyCode::KEYPAD_EQUAL</autogen>
