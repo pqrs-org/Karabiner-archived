@@ -127,6 +127,10 @@
         [dict setObject:[NSString stringWithUTF8String:base_unit] forKey:@"baseunit"];
       }
     }
+    {
+      int indent = pqrs_xml_compiler_get_preferences_number_node_tree_indent(child);
+      [dict setObject:[NSNumber numberWithUnsignedInteger:indent] forKey:@"indent"];
+    }
 
     NSMutableArray* a = [self build_preferencepane_number:child];
     if (a) {

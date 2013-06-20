@@ -166,7 +166,9 @@
     NSString* columnIdentifier = [tableColumn identifier];
 
     if ([columnIdentifier isEqualToString:@"name"]) {
-      return [item objectForKey:columnIdentifier];
+      return [NSString stringWithFormat:@"%*s%@",
+              [[item objectForKey:@"indent"] intValue] * 4, "",
+              [item objectForKey:columnIdentifier]];
 
     } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
                [columnIdentifier isEqualToString:@"default"]) {
@@ -186,6 +188,15 @@
         [cell setEditable:YES];
         return [NSNumber numberWithInt:[preferencesManager_ value:identifier]];
       }
+
+    } else if ([columnIdentifier isEqualToString:@"stepper"]) {
+      NSStepperCell* cell = [tableColumn dataCell];
+      if (! identifier) {
+        [cell setEnabled:NO];
+      } else {
+        [cell setEnabled:YES];
+      }
+      return nil;
     }
   }
 
