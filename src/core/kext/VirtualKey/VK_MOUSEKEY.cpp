@@ -292,12 +292,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     int max = scrollmode_ ?
-      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_scroll) :
-      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_pointer);
+              Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_scroll) :
+              Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_pointer);
 
     int acceleration = scrollmode_ ?
-      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_acceleration_of_scroll) :
-      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_acceleration_of_pointer);
+                       Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_acceleration_of_scroll) :
+                       Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_acceleration_of_pointer);
     if (acceleration < 0) {
       acceleration = 0;
     }
