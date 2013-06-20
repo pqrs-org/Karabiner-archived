@@ -1,89 +1,114 @@
 <?xml version="1.0"?>
 <root>
+  <!-- ============================================================ -->
+  <item><name>&gt; Key Repeat</name></item>
   <item>
-    <name>Delay Until Repeat</name>
+    <name indent="1">- Delay Until Repeat</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">repeat.initial_wait</identifier>
   </item>
   <item>
-    <name>Key Repeat</name>
+    <name indent="1">- Key Repeat</name>
     <identifier essential="true" default="83" step="10" baseunit="ms">repeat.wait</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; Functional Key Repeat</name></item>
   <item>
-    <name>[Functional Key Repeat] Delay Until Repeat</name>
+    <name indent="1">- Delay Until Repeat</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">repeat.consumer_initial_wait</identifier>
   </item>
   <item>
-    <name>[Functional Key Repeat] Key Repeat</name>
+    <name indent="1">- Key Repeat</name>
     <identifier essential="true" default="100" step="10" baseunit="ms">repeat.consumer_wait</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; Generic</name></item>
   <item>
-    <name>[Generic] Wait between sequential key events</name>
+    <name indent="1">- Wait between sequential key events</name>
     <identifier essential="true" default="1" step="1" baseunit="ms">parameter.wait_between_sequential_keys</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; Key Overlaid Modifier</name></item>
   <item>
-    <name>[Key Overlaid Modifier] Initial Modifier Wait</name>
+    <name indent="1">- Initial Modifier Wait</name>
     <identifier essential="true" default="0" step="10" baseunit="ms">parameter.keyoverlaidmodifier_initial_modifier_wait</identifier>
   </item>
   <item>
-    <name>[Key Overlaid Modifier] Timeout</name>
+    <name indent="1">- Timeout</name>
     <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.keyoverlaidmodifier_timeout</identifier>
   </item>
   <item>
-    <name>[Key Overlaid Modifier's Key Repeat] Initial Wait</name>
+    <name indent="1">- Delay Until Repeat</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">repeat.keyoverlaidmodifier_initial_wait</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; Simultaneous Key Presses</name></item>
   <item>
-    <name>[Simultaneous Key Presses] Delay Threshold</name>
+    <name indent="1">- Delay Threshold of Key</name>
     <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_delay</identifier>
   </item>
-
   <item>
-    <name>[Simultaneous PointingButton Presses] Delay Threshold</name>
+    <name indent="1">- Delay Threshold of PointingButton</name>
     <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_pointingbutton_delay</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; Double Press Modifier</name></item>
   <item>
-    <name>[Double Press Modifier] Recognition Threshold</name>
+    <name indent="1">- Recognition Threshold</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">parameter.doublepressmodifier_threshold</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; Holding Key to Key</name></item>
   <item>
-    <name>[Holding Key to Key] Holding Threshold</name>
+    <name indent="1">- Holding Threshold</name>
     <identifier essential="true" default="200" step="50" baseunit="ms">parameter.holdingkeytokey_wait</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; CursorMove to ScrollWheel</name></item>
   <item>
-    <name>[Pointing Device] CursorMove to ScrollWheel Rate</name>
+    <name indent="1">- Rate</name>
     <identifier essential="true" default="150" step="10" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; ScrollWheel to Key</name></item>
   <item>
-    <name>[ScrollWheelToKey] Key Repeat Wait</name>
+    <name indent="1">- Key Repeat Wait</name>
     <identifier essential="true" default="500" step="100" baseunit="ms">parameter.scrollwheeltokey_keyrepeat_wait</identifier>
   </item>
 
+  <!-- ============================================================ -->
+  <item><name>&gt; Mouse Key</name></item>
+
+  <item><name indent="1">&gt; Pointer</name></item>
   <item>
-    <name>[MouseKey] Acceleration of the pointer</name>
+    <name indent="2">Acceleration of the pointer</name>
     <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_pointer</identifier>
   </item>
   <item>
-    <name>[MouseKey] Maximum speed of the pointer</name>
+    <name indent="2">Maximum speed of the pointer</name>
     <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_pointer</identifier>
   </item>
+
+  <item><name indent="1">&gt; Scroll</name></item>
   <item>
-    <name>[MouseKey] Acceleration of the scroll</name>
+    <name indent="2">Acceleration of the scroll</name>
     <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_scroll</identifier>
   </item>
   <item>
-    <name>[MouseKey] Maximum speed of the scroll</name>
+    <name indent="2">Maximum speed of the scroll</name>
     <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_scroll</identifier>
   </item>
+
+  <item><name indent="1">&gt; Fixed Distance Move</name></item>
   <item>
-    <name>[MouseKey] Magnification of "Fixed Distance Move"</name>
+    <name indent="2">Magnification of "Fixed Distance Move"</name>
     <identifier essential="true" default="50" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
   </item>
 </root>
