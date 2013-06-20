@@ -167,7 +167,7 @@
 
     if ([columnIdentifier isEqualToString:@"name"]) {
       return [NSString stringWithFormat:@"%*s%@",
-              [[item objectForKey:@"indent"] intValue] * 4, "",
+              [[item objectForKey:@"indent"] intValue] * 8, "",
               [item objectForKey:columnIdentifier]];
 
     } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
