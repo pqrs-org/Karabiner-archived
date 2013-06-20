@@ -67,6 +67,22 @@
   </item>
 
   <item>
+    <name>[MouseKey] Acceleration of the pointer</name>
+    <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_pointer</identifier>
+  </item>
+  <item>
+    <name>[MouseKey] Maximum speed of the pointer</name>
+    <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_pointer</identifier>
+  </item>
+  <item>
+    <name>[MouseKey] Acceleration of the scroll</name>
+    <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_scroll</identifier>
+  </item>
+  <item>
+    <name>[MouseKey] Maximum speed of the scroll</name>
+    <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_scroll</identifier>
+  </item>
+  <item>
     <name>[MouseKey] Magnification of "Fixed Distance Move"</name>
     <identifier essential="true" default="50" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
   </item>

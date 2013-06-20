@@ -15,7 +15,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       enum {
         TIMER_INTERVAL = 20,
-        SCALE_MAX = 20,
         HIGHSPEED_RELATIVE_SCALE = 50,
         HIGHSPEED_SCROLL_SCALE = 50,
       };
