@@ -19,16 +19,6 @@ namespace pqrs {
           boost::trim(style_);
         }
       }
-      // indent
-      {
-        auto value = it.get_optional("<xmlattr>.indent");
-        if (value) {
-          auto v = pqrs::string::to_uint32_t(boost::trim_copy(*value));
-          if (v) {
-            indent_ = *v;
-          }
-        }
-      }
 
       return true;
 

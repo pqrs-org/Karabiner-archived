@@ -4,8 +4,7 @@ class preferences_node {
 public:
   preferences_node(void) :
     name_line_count_(1),
-    default_value_(0),
-    indent_(0)
+    default_value_(0)
   {}
   virtual ~preferences_node(void) {}
 
@@ -14,7 +13,6 @@ public:
   const std::string& get_identifier(void) const { return identifier_; }
   int get_default_value(void) const { return default_value_; }
   const std::string& get_style(void) const { return style_; }
-  int get_indent(void) const { return indent_; }
 
 protected:
   bool handle_name_and_appendix_(const extracted_ptree::node& it);
@@ -24,7 +22,6 @@ protected:
   std::string identifier_;
   int default_value_;
   std::string style_;
-  int indent_;
 };
 
 class preferences_checkbox_node : public preferences_node {

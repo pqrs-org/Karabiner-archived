@@ -101,9 +101,6 @@ pqrs_xml_compiler_get_preferences_number_node_tree_step(const pqrs_xml_compiler_
 const char*
 pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const pqrs_xml_compiler_preferences_number_node_tree* p);
 
-int
-pqrs_xml_compiler_get_preferences_number_node_tree_indent(const pqrs_xml_compiler_preferences_number_node_tree* p);
-
 #ifdef __cplusplus
 }
 #endif

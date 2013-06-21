@@ -382,12 +382,3 @@ pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const pqrs_xml_comp
 
   return base_unit.c_str();
 }
-
-int
-pqrs_xml_compiler_get_preferences_number_node_tree_indent(const pqrs_xml_compiler_preferences_number_node_tree* p)
-{
-  auto node_tree = cast_to_preferences_number_node_tree(p);
-  if (! node_tree) return 0;
-
-  return (node_tree->get_node()).get_indent();
-}
