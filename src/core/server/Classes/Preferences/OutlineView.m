@@ -26,6 +26,9 @@
                    [self load:YES];
                    [outlineview_ reloadData];
                    [self filter:self];
+                   if (! ischeckbox_) {
+                     [self expand:self];
+                   }
                  });
 }
 
@@ -223,26 +226,15 @@
 {
   NSString* identifier = [item objectForKey:@"identifier"];
 
-  if (ischeckbox_) {
-    if (identifier) {
+  if (identifier) {
+    if (ischeckbox_) {
       if (! [identifier hasPrefix:@"notsave."]) {
         int value = [preferencesManager_ value:identifier];
         value = ! value;
         [preferencesManager_ setValueForName:value forName:identifier];
       }
-    } else {
-      // expand/collapse tree
-      if ([outlineView isExpandable:item]) {
-        if ([outlineView isItemExpanded:item]) {
-          [outlineView collapseItem:item];
-        } else {
-          [outlineView expandItem:item];
-        }
-      }
-    }
 
-  } else {
-    if (identifier) {
+    } else {
       NSString* columnIdentifier = [tableColumn identifier];
       if ([columnIdentifier isEqualToString:@"value"]) {
         [preferencesManager_ setValueForName:[object intValue] forName:identifier];
@@ -262,6 +254,16 @@
         [preferencesManager_ setValueForName:newvalue forName:identifier];
 
         [outlineView reloadItem:item];
+      }
+    }
+
+  } else {
+    // expand/collapse tree
+    if ([outlineView isExpandable:item]) {
+      if ([outlineView isItemExpanded:item]) {
+        [outlineView collapseItem:item];
+      } else {
+        [outlineView expandItem:item];
       }
     }
   }
