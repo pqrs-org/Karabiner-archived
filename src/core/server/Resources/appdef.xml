@@ -459,4 +459,10 @@
     <appname>JeditX</appname>
     <prefix>jp.co.artman21.JeditX</prefix>
   </appdef>
+
+  <appdef>
+    <appname>SCHISMTRACKER</appname>
+    <equal>org.schismtracker.SchismTracker</equal>
+  </appdef>
+
 </root>
