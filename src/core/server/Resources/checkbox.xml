@@ -80,6 +80,7 @@
     <include path="include/checkbox/apps/quicksilver.xml" />
     <include path="include/checkbox/apps/wine.xml" />
     <include path="include/checkbox/apps/propresenter.xml" />
+    <include path="include/checkbox/apps/schismtracker.xml" />
   </item>
 
   <include path="include/checkbox/keyboard_layouts.xml" />

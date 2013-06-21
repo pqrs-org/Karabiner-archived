@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only Schism Tracker</name>
+    <item>
+      <name>Schism Tracker on UK MacBook Pro</name>
+      <appendix>- Change fn-§ to PC_INSERT key</appendix>
+      <appendix>- Change fn-minus to keypad /</appendix>
+      <appendix>- Change fn-equal to keypad *</appendix>
+      <identifier>remap.schism_tracker_on_uk_macbook_pro</identifier>
+      <only>SCHISMTRACKER</only>
+      <autogen>__KeyToKey__ KeyCode::UK_SECTION, ModifierFlag::FN, KeyCode::PC_INSERT</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::FN, KeyCode::KEYPAD_SLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::FN, KeyCode::KEYPAD_MULTIPLY</autogen>
+    </item>
+  </item>
+</root>
