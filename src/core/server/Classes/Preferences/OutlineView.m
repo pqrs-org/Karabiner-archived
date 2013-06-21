@@ -166,9 +166,7 @@
     NSString* columnIdentifier = [tableColumn identifier];
 
     if ([columnIdentifier isEqualToString:@"name"]) {
-      return [NSString stringWithFormat:@"%*s%@",
-              [[item objectForKey:@"indent"] intValue] * 8, "",
-              [item objectForKey:columnIdentifier]];
+      return [item objectForKey:columnIdentifier];
 
     } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
                [columnIdentifier isEqualToString:@"default"]) {
