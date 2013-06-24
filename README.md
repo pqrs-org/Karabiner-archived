@@ -9,6 +9,13 @@ KeyRemap4MacBook is a powerful utility for keyboard customization.
 * Features for more efficient operations. (Emacs Mode, Vi Mode, Mouse Keys Mode, ...)
 
 
+Web pages
+---------
+
+* master: https://pqrs.org/macosx/keyremap4macbook/
+* backup: http://tekezo.github.io/pqrs.org/
+
+
 System requirements
 -------------------
 
