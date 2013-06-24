@@ -60,7 +60,6 @@ make
 Then, KeyRemap4MacBook-VERSION.dmg has been created in the current directory.
 It's a distributable package.
 
-<strong>
+Note:<br />
 Build may be failed if you changed environment values or changed /usr/bin files.<br />
 Use clean environment (new account) if build was failed.
-</strong>
