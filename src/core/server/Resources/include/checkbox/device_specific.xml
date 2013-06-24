@@ -437,5 +437,7 @@
         <autogen>__SetKeyboardType__ KeyboardType::MACBOOK</autogen>
       </item>
     </item>
+
+    <include path="devices/lmp-bluetooth-keypad.xml" />
   </item>
 </root>
