@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>For LMP Bluetooth Keypad</name>
+
+    <item>
+      <name>(Keypad) ENTER to L_COMMAND</name>
+      <identifier>remap.lmp_bluetooth_keypad.ENTER_to_L_COMMAND</identifier>
+      <autogen>__KeyToKey__ KeyCode::ENTER, KeyCode::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>KeypadNums to Ctrl+KeypadNums</name>
+      <identifier>remap.lmp_bluetooth_keypad.KeypadNums_to_Ctrl_KeypadNums</identifier>
+      <appendix>Keypad_1 becomes Ctrl+ Keypad_1</appendix>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_1, KeyCode::KEYPAD_1, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_2, KeyCode::KEYPAD_2, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_3, KeyCode::KEYPAD_3, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_4, KeyCode::KEYPAD_4, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_5, KeyCode::KEYPAD_5, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_6, KeyCode::KEYPAD_6, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_7, KeyCode::KEYPAD_7, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_8, KeyCode::KEYPAD_8, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_9, KeyCode::KEYPAD_9, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_0, KeyCode::KEYPAD_0, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
+    <item>
+      <name>KeypadOperations Clear = / * - + to same keys with Ctrl </name>
+      <identifier>remap.lmp_bluetooth_keypad.KeypadOperations_to_KeypadOperations_Ctrl</identifier>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR,
+        KeyCode::KEYPAD_CLEAR, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_EQUAL,
+        KeyCode::KEYPAD_EQUAL, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_SLASH,
+        KeyCode::KEYPAD_SLASH, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_MULTIPLY,
+        KeyCode::KEYPAD_MULTIPLY, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_MINUS,
+        KeyCode::KEYPAD_MINUS, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_PLUS,
+        KeyCode::KEYPAD_PLUS, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
+    <item>
+      <name>Keypad Page Up, Page Down, Forward_Delete with Ctrl</name>
+      <identifier>remap.lmp_bluetooth_keypad.KeypadOthers_to_KeypadOthersCtrl</identifier>
+      <autogen>__KeyToKey__ KeyCode::PAGEUP,
+        KeyCode::PAGEUP, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::PAGEDOWN,
+        KeyCode::PAGEDOWN, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE,
+        KeyCode::FORWARD_DELETE, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
+    <item>
+      <name>F16, F17 to Ctrl+F14, Ctrl+F15</name>
+      <identifier>remap.lmp_bluetooth_keypad.f16_to_ctrl_f14</identifier>
+      <appendix>Because Adobe Apps do not support F16 and F17</appendix>
+      <autogen>__KeyToKey__ KeyCode::F16,
+        KeyCode::F14, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::F17,
+        KeyCode::F15, ModifierFlag::CONTROL_L</autogen>
+    </item>
+
+  </item>
+
+</root>
