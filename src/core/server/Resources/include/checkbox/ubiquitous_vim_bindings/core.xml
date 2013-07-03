@@ -27,6 +27,8 @@
         <appendix>0: Move to beginning of line (Command_L+Left)</appendix>
         <appendix>^: Move to beginning of line (Command_L+Left,Option_L+Right, Option-L+Left) [^ == Shift+6]</appendix> <!-- TODO: Best approximation of first non-whitespace character in the line. -->
         <appendix>$: Move to end of line (Command_L+Right) [$ == Shift+4]</appendix>
+        <appendix>(: Move to beginning of the current paragraph (Option-Up Arrow)</appendix>
+        <appendix>): Move to beginning of the current paragraph (Option-Down Arrow)</appendix>
         <appendix>/: Find (Command_L+f, Exit Normal Mode)</appendix>
         <appendix>n: Find next match (Command_L+g)</appendix>
         <appendix>N: Find previous match (Shift_L+Command_L+g)</appendix>
@@ -506,12 +508,12 @@
           <autogen>
             __KeyToKey__
             KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-            KeyCode::VK_NONE
+            KeyCode::CURSOR_UP, ModifierFlag::OPTION_L,
           </autogen>
           <autogen>
             __KeyToKey__
             KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-            KeyCode::VK_NONE
+            KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_L,
           </autogen>
           <autogen>
             __KeyToKey__
