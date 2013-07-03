@@ -71,6 +71,11 @@
     <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>UBIQUITOUS_VIM_BINDINGS_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>VIM_EMU_ONLY_APPS</replacementname>

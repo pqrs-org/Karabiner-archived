@@ -91,6 +91,9 @@
         </appendix>
 
         <identifier vk_config="true">notsave.ubiq_vimnormal</identifier>
+
+        {{ UBIQUITOUS_VIM_BINDINGS_EXTRA }}
+
         <not>{{UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS}}</not>
         <autogen>__ShowStatusMessage__ Normal Mode</autogen>
 
