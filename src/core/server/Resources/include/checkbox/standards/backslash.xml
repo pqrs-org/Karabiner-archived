@@ -67,5 +67,12 @@
       <identifier>remap.backslash2return</identifier>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::RETURN</autogen>
     </item>
+    <item>
+      <name>Backslash(\) to Return</name>
+      <appendix>(+ Fn+Backslash(\) to Backslash(\))</appendix>
+      <identifier>remap.backslash2return_fnbackslash</identifier>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::FN, KeyCode::BACKSLASH</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::RETURN</autogen>
+    </item>
   </item>
 </root>
