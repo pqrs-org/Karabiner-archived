@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
+
 version=$(cat version)
 
 packagemaker=/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
