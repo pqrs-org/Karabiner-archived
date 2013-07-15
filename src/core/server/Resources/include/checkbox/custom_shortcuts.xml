@@ -3,6 +3,21 @@
   <item>
     <name>Custom Shortcuts</name>
     <item>
+      <!--
+      Based off an idea from http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#controlescape
+      -->
+      <name>F19 to Escape and Control</name>
+      <appendix>Tap F19 for Escape, Hold F19 for Control</appendix>
+      <appendix>Works well with using PCKeyboardHack to remap CapsLock to F19(code 80).</appendix>
+      <identifier>bilalh.remap.f19_escape_control</identifier>
+      <autogen>
+        --KeyOverlaidModifier--
+        KeyCode::F19,
+        KeyCode::CONTROL_L,
+        KeyCode::ESCAPE
+      </autogen>
+    </item>
+    <item>
       <name>Change Command+Q to Command+Shift+W</name>
       <appendix>Change Command+Shift_L+Q to Command+Q</appendix>
       <identifier>remap.commandQ2commandW_commandshiftQ2commandQ</identifier>
