@@ -11,7 +11,7 @@
       <appendix>Works well with using PCKeyboardHack to remap CapsLock to F19(code 80).</appendix>
       <identifier>bilalh.remap.f19_escape_control</identifier>
       <autogen>
-        --KeyOverlaidModifier--
+        __KeyOverlaidModifier__
         KeyCode::F19,
         KeyCode::CONTROL_L,
         KeyCode::ESCAPE
