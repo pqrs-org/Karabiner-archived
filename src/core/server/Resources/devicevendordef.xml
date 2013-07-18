@@ -109,4 +109,9 @@
     <vendorname>Lite_On_Technology_Corp</vendorname>
     <vendorid>0x17ef</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Riitek</vendorname>
+    <vendorid>0x1997</vendorid>
+  </devicevendordef>
 </root>
