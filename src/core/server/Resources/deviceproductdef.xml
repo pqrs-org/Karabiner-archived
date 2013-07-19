@@ -284,4 +284,9 @@
     <productname>ANY</productname>
     <productid>0x0000</productid>
   </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>Riitek_Rii_Touch_N7_0x0409</productname>
+    <productid>0x0409</productid>
+  </deviceproductdef>
 </root>
