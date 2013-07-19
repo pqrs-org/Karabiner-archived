@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<!--
+    https://github.com/gabrielelana/engelbart/
+  -->
+
+<root>
+  <item>
+    <name>Engelbart</name>
+
+    <item>
+      <name>Visit https://github.com/gabrielelana/engelbart/ for more information.</name>
+    </item>
+
+    <item>
+      <name>CONTROL</name>
+      <appendix>Simultaneous home keys presses to CONTROL</appendix>
+      <appendix>(D+F to CONTROL_L)</appendix>
+      <appendix>(J+K to CONTROL_R)</appendix>
+      <identifier>remap.engelbart.home_row_to_control</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::F, KeyCode::CONTROL_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::K, KeyCode::CONTROL_R</autogen>
+    </item>
+    <item>
+      <name>OPTION</name>
+      <appendix>Simultaneous home keys presses to OPTION</appendix>
+      <appendix>(S+D to OPTION_L)</appendix>
+      <appendix>(K+L to OPTION_R)</appendix>
+      <identifier>remap.engelbart.home_row_to_option</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::S, KeyCode::D, KeyCode::OPTION_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::K, KeyCode::L, KeyCode::OPTION_R</autogen>
+    </item>
+    <item>
+      <name>ESCAPE</name>
+      <appendix>Simultaneous home keys presses to ESCAPE</appendix>
+      <appendix>(E+F to ESCAPE)</appendix>
+      <appendix>(J+I to ESCAPE)</appendix>
+      <identifier>remap.engelbart.home_row_to_ESCAPE</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::F, KeyCode::ESCAPE</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::I, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>META-1</name>
+      <appendix>Simultaneous home keys presses to META-1</appendix>
+      <appendix>(S+F to META-1)</appendix>
+      <appendix>(J+L to META-1)</appendix>
+      <identifier>remap.engelbart.home_row_to_meta_1</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::S, KeyCode::F, KeyCode::KEYPAD_1</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::L, KeyCode::KEYPAD_2</autogen>
+    </item>
+    <item>
+      <name>META-2</name>
+      <appendix>Simultaneous home keys presses to META-2</appendix>
+      <appendix>(A+F to META-2)</appendix>
+      <appendix>(J+; to META-2)</appendix>
+      <identifier>remap.engelbart.home_row_to_meta_2</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::A, KeyCode::F, KeyCode::KEYPAD_3</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::SEMICOLON, KeyCode::KEYPAD_4</autogen>
+    </item>
+  </item>
+</root>

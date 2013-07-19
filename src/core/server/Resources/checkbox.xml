@@ -55,6 +55,7 @@
 
   <include path="include/checkbox/grenouille.xml" />
   <include path="include/checkbox/asetniop.xml" />
+  <include path="include/checkbox/engelbart.xml" />
 
   <item>
     <name>For Applications</name>
