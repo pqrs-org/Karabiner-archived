@@ -253,6 +253,7 @@
     <appname>VNC</appname>
     <equal>com.geekspiff.chickenofthevnc</equal>
     <prefix>de.jinx.JollysFastVNC</prefix>
+    <prefix>com.realvnc.vncviewer</prefix>
   </appdef>
 
   <appdef>
