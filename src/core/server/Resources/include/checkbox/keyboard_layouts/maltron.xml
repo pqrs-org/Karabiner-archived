@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Change QWERTY to Maltron layout</name>
+    <identifier>remap.qwerty_to_maltron</identifier>
+
+    <!-- QPYCB VMZUL -->
+    <autogen>__KeyToKey__ KeyCode::Q, KeyCode::Q</autogen>
+    <autogen>__KeyToKey__ KeyCode::W, KeyCode::P</autogen>
+    <autogen>__KeyToKey__ KeyCode::E, KeyCode::Y</autogen>
+    <autogen>__KeyToKey__ KeyCode::R, KeyCode::C</autogen>
+    <autogen>__KeyToKey__ KeyCode::T, KeyCode::B</autogen>
+
+    <autogen>__KeyToKey__ KeyCode::Y, KeyCode::V</autogen>
+    <autogen>__KeyToKey__ KeyCode::U, KeyCode::M</autogen>
+    <autogen>__KeyToKey__ KeyCode::I, KeyCode::U</autogen>
+    <autogen>__KeyToKey__ KeyCode::O, KeyCode::Z</autogen>
+    <autogen>__KeyToKey__ KeyCode::P, KeyCode::L</autogen>
+
+    <!-- ANISF DTHOR -->
+    <autogen>__KeyToKey__ KeyCode::A, KeyCode::A</autogen>
+    <autogen>__KeyToKey__ KeyCode::S, KeyCode::N</autogen>
+    <autogen>__KeyToKey__ KeyCode::D, KeyCode::I</autogen>
+    <autogen>__KeyToKey__ KeyCode::F, KeyCode::S</autogen>
+    <autogen>__KeyToKey__ KeyCode::G, KeyCode::F</autogen>
+
+    <autogen>__KeyToKey__ KeyCode::H, KeyCode::D</autogen>
+    <autogen>__KeyToKey__ KeyCode::J, KeyCode::T</autogen>
+    <autogen>__KeyToKey__ KeyCode::K, KeyCode::H</autogen>
+    <autogen>__KeyToKey__ KeyCode::L, KeyCode::O</autogen>
+    <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::R</autogen>
+
+    <!-- ,.JG/ ;WK-X -->
+    <autogen>__KeyToKey__ KeyCode::Z, KeyCode::COMMA</autogen>
+    <autogen>__KeyToKey__ KeyCode::X, KeyCode::DOT</autogen>
+    <autogen>__KeyToKey__ KeyCode::C, KeyCode::J</autogen>
+    <autogen>__KeyToKey__ KeyCode::V, KeyCode::G</autogen>
+    <autogen>__KeyToKey__ KeyCode::B, KeyCode::SLASH</autogen>
+
+    <autogen>__KeyToKey__ KeyCode::N, KeyCode::SEMICOLON</autogen>
+    <autogen>__KeyToKey__ KeyCode::M, KeyCode::W</autogen>
+    <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::K</autogen>
+    <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::MINUS</autogen>
+    <autogen>__KeyToKey__ KeyCode::SLASH, KeyCode::X</autogen>
+
+    <!-- E -->
+    <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::E</autogen>
+  </item>
+
+</root>
