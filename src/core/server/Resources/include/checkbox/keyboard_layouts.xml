@@ -7,6 +7,7 @@
     <include path="keyboard_layouts/qwertz.xml" />
     <include path="keyboard_layouts/qwkrfy.xml" />
     <include path="keyboard_layouts/carpalxq.xml" />
+    <include path="keyboard_layouts/maltron.xml" />
     <include path="keyboard_layouts/workman.xml" />
     <include path="keyboard_layouts/abcdef.xml" />
     <include path="keyboard_layouts/eps.xml" />
