@@ -438,6 +438,14 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place3");
+    xml_compiler.reload();
+    const char* message = "You should not write <identifier> in <item> which has child <item> nodes.\n"
+                          "Remove <identifier>private.invalid_identifier_place3</identifier>.";
+    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
 
   // ------------------------------------------------------------
   // autogen

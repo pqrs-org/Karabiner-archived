@@ -58,7 +58,8 @@ public:
 
 private:
   void traverse_autogen_(const extracted_ptree& pt,
-                         const std::string& identifier);
+                         const std::string& identifier,
+                         const std::string& raw_identifier);
 
   void handle_autogen(const std::string& autogen,
                       const std::string& raw_autogen);
