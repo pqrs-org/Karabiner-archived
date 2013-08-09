@@ -56,7 +56,7 @@ namespace pqrs {
             }
 
             filter_vector_.clear();
-            traverse_autogen_(pt, identifier);
+            traverse_autogen_(pt, identifier, raw_identifier);
           }
           remapclasses_initialize_vector_.end();
         }
@@ -69,7 +69,8 @@ namespace pqrs {
 
   void
   xml_compiler::remapclasses_initialize_vector_loader::traverse_autogen_(const extracted_ptree& pt,
-                                                                         const std::string& identifier)
+                                                                         const std::string& identifier,
+                                                                         const std::string& raw_identifier)
   {
     // Add passthrough filter.
     if (filter_vector_.empty() &&
@@ -83,9 +84,12 @@ namespace pqrs {
 
     // ----------------------------------------
     for (const auto& it : pt) {
-      if (it.get_tag_name() != "autogen") {
+      if (it.get_tag_name() == "item") {
+        xml_compiler_.error_information_.set(boost::format("You should not write <identifier> in <item> which has child <item> nodes.\nRemove <identifier>%1%</identifier>.") % raw_identifier);
+
+      } else if (it.get_tag_name() != "autogen") {
         size_t s = filter_vector_.size();
-        traverse_autogen_(it.children_extracted_ptree(), identifier);
+        traverse_autogen_(it.children_extracted_ptree(), identifier, raw_identifier);
         filter_vector_.resize(s);
 
       } else {
