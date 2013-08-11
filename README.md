@@ -64,3 +64,15 @@ It's a distributable package.
 **Note:**<br />
 Build may be failed if you changed environment values or changed /usr/bin files.<br />
 Use clean environment (new account) if build was failed.
+
+
+Customized Sparkle
+------------------
+
+We're using Sparkle to provide a software update feature.<br />
+The Sparkle framework is located in "src/core/server/Frameworks/Sparkle.framework".
+
+This built-in binary is built with some patches.
+
+* Set MACOSX_DEPLOYMENT_TARGET 10.6: https://github.com/tekezo/Files/blob/master/patches/Sparkle/MACOSX_DEPLOYMENT_TARGET-10.6.diff
+* Adding ".Sparkle" to appSupportPath: https://github.com/andymatuschak/Sparkle/pull/290
