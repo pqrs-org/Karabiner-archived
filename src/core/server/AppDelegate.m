@@ -260,6 +260,18 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 {
   for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
     if ([argument isEqualToString:@"--fromLaunchAgents"]) {
+      // ------------------------------------------------------------
+      // Remove old pkg files and finish_installation.app in
+      // "~/Library/Application Support/KeyRemap4MacBook/.Sparkle".
+      NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+      NSString* sparkle = [paths objectAtIndex:0];
+      if (sparkle) {
+        sparkle = [sparkle stringByAppendingPathComponent:@"KeyRemap4MacBook"];
+        sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
+        [[NSFileManager defaultManager] removeItemAtPath:sparkle error:nil];
+      }
+
+      // ------------------------------------------------------------
       if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
         [NSApp terminate:nil];
       }
