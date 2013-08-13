@@ -268,7 +268,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
       if (sparkle) {
         sparkle = [sparkle stringByAppendingPathComponent:@"KeyRemap4MacBook"];
         sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
-        [[NSFileManager defaultManager] removeItemAtPath:sparkle error:nil];
+
+        NSFileManager* fm = [NSFileManager defaultManager];
+        if ([fm fileExistsAtPath:sparkle]) {
+          [fm removeItemAtPath:sparkle error:nil];
+        }
       }
 
       // ------------------------------------------------------------
