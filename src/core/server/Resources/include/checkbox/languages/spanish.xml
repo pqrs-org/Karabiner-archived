@@ -62,5 +62,19 @@
         KeyCode::N, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::SHIFT_L
       </autogen>
     </item>
+    <item>
+      <name>Change option-comma(,) and option-dot(.) to less-than(&lt;) and greater-than(&gt;).</name>
+      <appendix>(Enable on "Spanish" and "Spanish - ISO" Input Source.)</appendix>
+      <identifier>remap.spanish_option_comman_less_than</identifier>
+      <inputsource_only>SPANISH</inputsource_only>
+      <autogen>__KeyToKey__
+        KeyCode::COMMA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::NONE
+      </autogen>
+      <autogen>__KeyToKey__
+        KeyCode::DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L
+      </autogen>
+    </item>
   </item>
 </root>
