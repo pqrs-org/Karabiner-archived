@@ -10,8 +10,8 @@
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [self refresh];
-                 });
+    [self refresh];
+  });
 }
 
 - (id) init

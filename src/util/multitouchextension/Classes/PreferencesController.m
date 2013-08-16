@@ -7,7 +7,7 @@
 
 + (void) initialize
 {
-  NSDictionary* dict = @ {
+  NSDictionary* dict = @{
     @"hideIconInDock" : @NO,
     @"relaunchAfterWakeUpFromSleep" : @YES,
     @"relaunchWait" : @"3",

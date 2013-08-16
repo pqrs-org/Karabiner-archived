@@ -70,7 +70,7 @@
 - (void) insert_caution_into_preferencepane_checkbox:(NSString*)message
 {
   NSUInteger height = [[message componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] count];
-  NSDictionary* dict = @ {
+  NSDictionary* dict = @{
     @"name" : message,
     @"height" :[NSNumber numberWithInteger:height],
     @"string_for_filter" :[message lowercaseString],

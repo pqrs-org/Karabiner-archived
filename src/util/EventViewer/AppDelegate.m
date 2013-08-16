@@ -38,16 +38,16 @@
 - (void) distributedObserver_applicationChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [self addToAppQueue];
-                 });
+    [self addToAppQueue];
+  });
 }
 
 // ------------------------------------------------------------
 - (void) distributedObserver_inputSourceChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [self updateOtherInformationStore];
-                 });
+    [self updateOtherInformationStore];
+  });
 }
 
 // ------------------------------------------------------------

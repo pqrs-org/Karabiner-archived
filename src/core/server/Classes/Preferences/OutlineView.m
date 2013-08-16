@@ -8,28 +8,28 @@
 - (void) observer_PreferencesChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [outlineview_ setNeedsDisplay:YES];
-                 });
+    [outlineview_ setNeedsDisplay:YES];
+  });
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [outlineview_ setNeedsDisplay:YES];
-                   [self filter:self];
-                 });
+    [outlineview_ setNeedsDisplay:YES];
+    [self filter:self];
+  });
 }
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [self load:YES];
-                   [outlineview_ reloadData];
-                   [self filter:self];
-                   if (! ischeckbox_) {
-                     [self expand:self];
-                   }
-                 });
+    [self load:YES];
+    [outlineview_ reloadData];
+    [self filter:self];
+    if (! ischeckbox_) {
+      [self expand:self];
+    }
+  });
 }
 
 - (id) init
@@ -142,11 +142,11 @@
 
     NSDictionary* attributes = nil;
     if ([[item objectForKey:@"style"] isEqualToString:@"caution"]) {
-      attributes = @ { NSForegroundColorAttributeName :[NSColor blackColor],
-                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f], };
+      attributes = @{ NSForegroundColorAttributeName :[NSColor blackColor],
+                      NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f], };
     } else if ([[item objectForKey:@"style"] isEqualToString:@"important"]) {
-      attributes = @ { NSForegroundColorAttributeName :[NSColor blackColor],
-                       NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f], };
+      attributes = @{ NSForegroundColorAttributeName :[NSColor blackColor],
+                      NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f], };
     }
     if (attributes) {
       // append "\n" for background color.

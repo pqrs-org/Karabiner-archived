@@ -27,9 +27,9 @@
     [path stroke];
 
     // Draw texts
-    NSDictionary* attributes = @ { NSFontAttributeName :[NSFont boldSystemFontOfSize:(text.size.width / 10)],
-                                   NSForegroundColorAttributeName :[[NSColor blackColor] colorWithAlphaComponent:0.6], };
-    [@"Mouse Area" drawInRect:text withAttributes:attributes];
+    NSDictionary* attributes = @{ NSFontAttributeName :[NSFont boldSystemFontOfSize:(text.size.width / 10)],
+                                  NSForegroundColorAttributeName :[[NSColor blackColor] colorWithAlphaComponent:0.6], };
+    [@"Mouse Area" drawInRect : text withAttributes : attributes];
   }
   [NSGraphicsContext restoreGraphicsState];
 }
@@ -42,14 +42,14 @@
 - (NSString*) modifierFlagsToString:(NSUInteger)flags
 {
   return [NSString stringWithFormat:@"%s%s%s%s%s%s%s%s",
-          ((flags & NSAlphaShiftKeyMask) ? "Caps ":""),
-          ((flags & NSShiftKeyMask)      ? "Shift ":""),
-          ((flags & NSControlKeyMask)    ? "Ctrl ":""),
-          ((flags & NSAlternateKeyMask)  ? "Opt ":""),
-          ((flags & NSCommandKeyMask)    ? "Cmd ":""),
-          ((flags & NSNumericPadKeyMask) ? "NumPad ":""),
-          ((flags & NSHelpKeyMask)       ? "Help ":""),
-          ((flags & NSFunctionKeyMask)   ? "Fn ":"")];
+          ((flags & NSAlphaShiftKeyMask) ? "Caps " : ""),
+          ((flags & NSShiftKeyMask)      ? "Shift " : ""),
+          ((flags & NSControlKeyMask)    ? "Ctrl " : ""),
+          ((flags & NSAlternateKeyMask)  ? "Opt " : ""),
+          ((flags & NSCommandKeyMask)    ? "Cmd " : ""),
+          ((flags & NSNumericPadKeyMask) ? "NumPad " : ""),
+          ((flags & NSHelpKeyMask)       ? "Help " : ""),
+          ((flags & NSFunctionKeyMask)   ? "Fn " : "")];
 }
 
 - (NSString*) specialKeycodeToString:(NSEvent*)event

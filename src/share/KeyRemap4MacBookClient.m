@@ -18,12 +18,12 @@
 - (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   @synchronized (self) {
-                     NSLog (@"observer_NSConnectionDidDieNotification is called");
-                     [proxy_ release];
-                     proxy_ = nil;
-                   };
-                 });
+    @synchronized(self) {
+      NSLog(@"observer_NSConnectionDidDieNotification is called");
+      [proxy_ release];
+      proxy_ = nil;
+    };
+  });
 }
 
 - (id) init
