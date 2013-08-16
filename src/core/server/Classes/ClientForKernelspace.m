@@ -19,83 +19,83 @@
 static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   ClientForKernelspace* self = (ClientForKernelspace*)(refcon);
+    ClientForKernelspace* self = (ClientForKernelspace*)(refcon);
 
-                   switch (type) {
-                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED:
-                       {
-                         uint32_t enabled = 0;
+    switch (type) {
+      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED:
+        {
+          uint32_t enabled = 0;
 
-                         struct BridgeUserClientStruct bridgestruct;
-                         bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED;
-                         bridgestruct.option = option;
-                         bridgestruct.data   = (user_addr_t)(&enabled);
-                         bridgestruct.size   = sizeof (enabled);
+          struct BridgeUserClientStruct bridgestruct;
+          bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED;
+          bridgestruct.option = option;
+          bridgestruct.data   = (user_addr_t)(&enabled);
+          bridgestruct.size   = sizeof(enabled);
 
-                         if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
+          if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
 
-                         uint32_t configindex = option;
-                         NSString* name = [[self xmlCompiler] identifier:(int)(configindex)];
-                         if (name) {
-                           // Do not call set_config_one here. (== Call setValueForName with tellToKext:NO.)
-                           [[self preferencesManager] setValueForName:enabled forName:name tellToKext:NO];
-                         }
-                         break;
-                       }
+          uint32_t configindex = option;
+          NSString* name = [[self xmlCompiler] identifier:(int)(configindex)];
+          if (name) {
+            // Do not call set_config_one here. (== Call setValueForName with tellToKext:NO.)
+            [[self preferencesManager] setValueForName:enabled forName:name tellToKext:NO];
+          }
+          break;
+        }
 
-                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
-                       {
-                         char buf[512];
+      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
+        {
+          char buf[512];
 
-                         struct BridgeUserClientStruct bridgestruct;
-                         bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
-                         bridgestruct.option = option;
-                         bridgestruct.data   = (user_addr_t)(buf);
-                         bridgestruct.size   = sizeof (buf);
+          struct BridgeUserClientStruct bridgestruct;
+          bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
+          bridgestruct.option = option;
+          bridgestruct.data   = (user_addr_t)(buf);
+          bridgestruct.size   = sizeof(buf);
 
-                         if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
+          if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
 
-                         [[self statusWindow] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
-                         break;
-                       }
+          [[self statusWindow] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
+          break;
+        }
 
-                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-                       [[self workSpaceData] selectInputSource:option];
-                       break;
+      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
+        [[self workSpaceData] selectInputSource:option];
+        break;
 
-                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL:
-                       {
-                         NSURL* url = [[self xmlCompiler] url:option];
-                         if (url) {
-                           [[NSWorkspace sharedWorkspace] openURL:url];
-                         }
-                         break;
-                       }
+      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL:
+        {
+          NSURL* url = [[self xmlCompiler] url:option];
+          if (url) {
+            [[NSWorkspace sharedWorkspace] openURL:url];
+          }
+          break;
+        }
 
-                     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
-                       [[self iohidPostEventWrapper] postKey:option];
-                       break;
-                   }
-                 });
+      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
+        [[self iohidPostEventWrapper] postKey:option];
+        break;
+    }
+  });
 }
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [self send_remapclasses_initialize_vector_to_kext];
-                   [preferencesManager clearNotSave];
-                   [self send_config_to_kext];
-                   [self set_initialized];
-                 });
+    [self send_remapclasses_initialize_vector_to_kext];
+    [preferencesManager clearNotSave];
+    [self send_config_to_kext];
+    [self set_initialized];
+  });
 }
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [preferencesManager clearNotSave];
-                   [self send_config_to_kext];
-                   [self set_initialized];
-                 });
+    [preferencesManager clearNotSave];
+    [self send_config_to_kext];
+    [self set_initialized];
+  });
 }
 
 - (id) init

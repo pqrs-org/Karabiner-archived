@@ -29,75 +29,75 @@
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSString* name = [WorkSpaceData getActiveApplicationName];
-                   if (name) {
-                     // We ignore our investigation application.
-                     if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) {
-                       bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
-                       [self send_workspacedata_to_kext];
+    NSString* name = [WorkSpaceData getActiveApplicationName];
+    if (name) {
+      // We ignore our investigation application.
+      if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) {
+        bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
+        [self send_workspacedata_to_kext];
 
-                       @synchronized (self) {
-                         [applicationInformation_ release];
-                         applicationInformation_ = [@ { @"name":name } retain];
-                       }
+        @synchronized(self) {
+          [applicationInformation_ release];
+          applicationInformation_ = [@{ @"name":name } retain];
+        }
 
-                       [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
-                                                                                      object:nil];
-                     }
-                   }
-                 });
+        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
+                                                                       object:nil];
+      }
+    }
+  });
 }
 
 - (void) distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [WorkSpaceData refreshEnabledInputSources];
-                 });
+    [WorkSpaceData refreshEnabledInputSources];
+  });
 }
 
 - (void) distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
-                   [workSpaceData_ getInputSourceID:inputSource
-                                 output_inputSource:(&(bridgeworkspacedata_.inputsource))
-                           output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
-                   [self send_workspacedata_to_kext];
+    InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
+    [workSpaceData_ getInputSourceID:inputSource
+                          output_inputSource:(&(bridgeworkspacedata_.inputsource))
+                    output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
+    [self send_workspacedata_to_kext];
 
-                   @synchronized (self) {
-                     [inputSourceInformation_ release];
-                     inputSourceInformation_ = [NSMutableDictionary new];
-                     if ([inputSource languagecode]) {
-                       [inputSourceInformation_ setObject:[inputSource languagecode] forKey:@"languageCode"];
-                     }
-                     if ([inputSource inputSourceID]) {
-                       [inputSourceInformation_ setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
-                     }
-                     if ([inputSource inputModeID]) {
-                       [inputSourceInformation_ setObject:[inputSource inputModeID] forKey:@"inputModeID"];
-                     }
-                   }
+    @synchronized(self) {
+      [inputSourceInformation_ release];
+      inputSourceInformation_ = [NSMutableDictionary new];
+      if ([inputSource languagecode]) {
+        [inputSourceInformation_ setObject:[inputSource languagecode] forKey:@"languageCode"];
+      }
+      if ([inputSource inputSourceID]) {
+        [inputSourceInformation_ setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
+      }
+      if ([inputSource inputModeID]) {
+        [inputSourceInformation_ setObject:[inputSource inputModeID] forKey:@"inputModeID"];
+      }
+    }
 
-                   [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
-                                                                                  object:nil];
-                 });
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
+                                                                   object:nil];
+  });
 }
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   // If <appdef> or <inputsourcedef> is updated,
-                   // the following values might be changed.
-                   // Therefore, we need to resend values to kext.
-                   //
-                   // - bridgeworkspacedata_.applicationtype
-                   // - bridgeworkspacedata_.inputsource
-                   // - bridgeworkspacedata_.inputsourcedetail
+    // If <appdef> or <inputsourcedef> is updated,
+    // the following values might be changed.
+    // Therefore, we need to resend values to kext.
+    //
+    // - bridgeworkspacedata_.applicationtype
+    // - bridgeworkspacedata_.inputsource
+    // - bridgeworkspacedata_.inputsourcedetail
 
-                   [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
-                   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
-                   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
-                 });
+    [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
+    [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
+    [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
+  });
 }
 
 // ------------------------------------------------------------
@@ -114,17 +114,17 @@
 - (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_NSWorkspaceDidWakeNotification");
-                   [self callClearNotSave];
-                 });
+    NSLog(@"observer_NSWorkspaceDidWakeNotification");
+    [self callClearNotSave];
+  });
 }
 
 - (void) observer_NSWorkspaceScreensDidWakeNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_NSWorkspaceScreensDidWakeNotification");
-                   [self callClearNotSave];
-                 });
+    NSLog(@"observer_NSWorkspaceScreensDidWakeNotification");
+    [self callClearNotSave];
+  });
 }
 
 - (void) registerWakeNotification
@@ -153,33 +153,33 @@
 static void observer_IONotification(void* refcon, io_iterator_t iterator)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_IONotification");
+    NSLog(@"observer_IONotification");
 
-                   AppDelegate* self = refcon;
-                   if (! self) {
-                     NSLog (@"[ERROR] observer_IONotification refcon == nil\n");
-                     return;
-                   }
+    AppDelegate* self = refcon;
+    if (! self) {
+      NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
+      return;
+    }
 
-                   for (;; ) {
-                     io_object_t obj = IOIteratorNext (iterator);
-                     if (! obj) break;
+    for (;;) {
+      io_object_t obj = IOIteratorNext(iterator);
+      if (! obj) break;
 
-                     IOObjectRelease (obj);
-                   }
-                   // Do not release iterator.
+      IOObjectRelease(obj);
+    }
+    // Do not release iterator.
 
-                   // = Documentation of IOKit =
-                   // - Introduction to Accessing Hardware From Applications
-                   //   - Finding and Accessing Devices
-                   //
-                   // In the case of IOServiceAddMatchingNotification, make sure you release the iterator only if you’re also ready to stop receiving notifications:
-                   // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
+    // = Documentation of IOKit =
+    // - Introduction to Accessing Hardware From Applications
+    //   - Finding and Accessing Devices
+    //
+    // In the case of IOServiceAddMatchingNotification, make sure you release the iterator only if you’re also ready to stop receiving notifications:
+    // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
-                   // ------------------------------------------------------------
-                   [[self clientForKernelspace] refresh_connection_with_retry];
-                   [self send_workspacedata_to_kext];
-                 });
+    // ------------------------------------------------------------
+    [[self clientForKernelspace] refresh_connection_with_retry];
+    [self send_workspacedata_to_kext];
+  });
 }
 
 - (void) unregisterIONotification
@@ -233,26 +233,26 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
+    NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
 
-                   [statusWindow_ resetStatusMessage];
+    [statusWindow_ resetStatusMessage];
 
-                   [self registerIONotification];
-                   [self registerWakeNotification];
-                 });
+    [self registerIONotification];
+    [self registerWakeNotification];
+  });
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_NSWorkspaceSessionDidResignActiveNotification");
+    NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
 
-                   [statusWindow_ resetStatusMessage];
+    [statusWindow_ resetStatusMessage];
 
-                   [self unregisterIONotification];
-                   [self unregisterWakeNotification];
-                   [clientForKernelspace disconnect_from_kext];
-                 });
+    [self unregisterIONotification];
+    [self unregisterWakeNotification];
+    [clientForKernelspace disconnect_from_kext];
+  });
 }
 
 // ------------------------------------------------------------

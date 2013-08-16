@@ -10,19 +10,19 @@
 // ----------------------------------------
 + (void) initialize
 {
-  NSDictionary* dict = @ { kIsQuitByHand : @NO,
-                           kIsStatusBarEnabled : @YES,
-                           kIsShowSettingNameInStatusBar : @NO,
-                           kConfigListSelectedIndex : @0,
-                           kCheckForUpdates : @1,
-                           kIsStatusWindowEnabled : @YES,
-                           kIsStatusWindowShowStickyModifier : @NO,
-                           kIsStatusWindowShowPointingButtonLock : @YES,
-                           kStatusWindowType : @0, // Normal
-                           kStatusWindowTheme : @0, // White
-                           kStatusWindowOpacity : @80,
-                           kStatusWindowFontSize : @0, // Small
-                           kStatusWindowPosition : @3, // Bottom right
+  NSDictionary* dict = @{ kIsQuitByHand : @NO,
+                          kIsStatusBarEnabled : @YES,
+                          kIsShowSettingNameInStatusBar : @NO,
+                          kConfigListSelectedIndex : @0,
+                          kCheckForUpdates : @1,
+                          kIsStatusWindowEnabled : @YES,
+                          kIsStatusWindowShowStickyModifier : @NO,
+                          kIsStatusWindowShowPointingButtonLock : @YES,
+                          kStatusWindowType : @0,  // Normal
+                          kStatusWindowTheme : @0,  // White
+                          kStatusWindowOpacity : @80,
+                          kStatusWindowFontSize : @0,  // Small
+                          kStatusWindowPosition : @3,  // Bottom right
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }

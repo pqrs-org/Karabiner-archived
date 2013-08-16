@@ -15,7 +15,7 @@
   NSURL* appURL = [StartAtLoginController appURL];
 
   UInt32 seed = 0U;
-  NSArray* currentLoginItems = [NSMakeCollectable (LSSharedFileListCopySnapshot(loginItems, &seed))autorelease];
+  NSArray* currentLoginItems = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItems, &seed))autorelease];
   for (id itemObject in currentLoginItems) {
     LSSharedFileListItemRef item = (LSSharedFileListItemRef)itemObject;
 

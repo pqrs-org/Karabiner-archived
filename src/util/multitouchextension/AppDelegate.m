@@ -99,94 +99,94 @@ static void setPreference(int fingers, int newvalue) {
 // Multitouch callback
 static int callback(int device, Finger* data, int fingers, double timestamp, int frame) {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   // ------------------------------------------------------------
-                   // If there are multiple devices (For example, Trackpad and Magic Mouse),
-                   // we handle only one device at the same time.
-                   if (has_last_device) {
-                     // ignore other devices.
-                     if (device != last_device) {
-                       return;
-                     }
-                   }
+    // ------------------------------------------------------------
+    // If there are multiple devices (For example, Trackpad and Magic Mouse),
+    // we handle only one device at the same time.
+    if (has_last_device) {
+      // ignore other devices.
+      if (device != last_device) {
+        return;
+      }
+    }
 
-                   if (fingers == 0) {
-                     has_last_device = NO;
-                   } else {
-                     has_last_device = YES;
-                     last_device = device;
-                   }
+    if (fingers == 0) {
+      has_last_device = NO;
+    } else {
+      has_last_device = YES;
+      last_device = device;
+    }
 
-                   // ------------------------------------------------------------
-                   [global_ignoredAreaView_ clearFingers];
+    // ------------------------------------------------------------
+    [global_ignoredAreaView_ clearFingers];
 
-                   int valid_fingers = 0;
+    int valid_fingers = 0;
 
-                   FingerStatus* fingerStatus = [FingerStatus new];
+    FingerStatus* fingerStatus = [FingerStatus new];
 
-                   for (int i = 0; i < fingers; ++i) {
-                     // state values:
-                     //   4: touched
-                     //   1-3,5-7: near
-                     if (data[i].state != 4) {
-                       continue;
-                     }
+    for (int i = 0; i < fingers; ++i) {
+      // state values:
+      //   4: touched
+      //   1-3,5-7: near
+      if (data[i].state != 4) {
+        continue;
+      }
 
-                     int identifier = data[i].identifier;
-                     NSPoint point = NSMakePoint (data[i].normalized.position.x, data[i].normalized.position.y);
+      int identifier = data[i].identifier;
+      NSPoint point = NSMakePoint(data[i].normalized.position.x, data[i].normalized.position.y);
 
-                     BOOL ignored = NO;
-                     if ([IgnoredAreaView isIgnoredArea:point]) {
-                       ignored = YES;
+      BOOL ignored = NO;
+      if ([IgnoredAreaView isIgnoredArea:point]) {
+        ignored = YES;
 
-                       // Finding FingerStatus by identifier.
-                       if ([lastFingerStatus_ isActive:identifier]) {
-                         // If a finger is already active, we should not ignore this finger.
-                         // (This finger has been moved into ignored area from active area.)
-                         ignored = NO;
-                       }
-                     }
+        // Finding FingerStatus by identifier.
+        if ([lastFingerStatus_ isActive:identifier]) {
+          // If a finger is already active, we should not ignore this finger.
+          // (This finger has been moved into ignored area from active area.)
+          ignored = NO;
+        }
+      }
 
-                     [fingerStatus add:identifier active:(! ignored)];
+      [fingerStatus add:identifier active:(! ignored)];
 
-                     if (! ignored) {
-                       ++valid_fingers;
-                     }
+      if (! ignored) {
+        ++valid_fingers;
+      }
 
-                     [global_ignoredAreaView_ addFinger:point ignored:ignored];
-                   }
+      [global_ignoredAreaView_ addFinger:point ignored:ignored];
+    }
 
-                   FingerStatus* l = lastFingerStatus_;
-                   lastFingerStatus_ = fingerStatus;
-                   [l release];
+    FingerStatus* l = lastFingerStatus_;
+    lastFingerStatus_ = fingerStatus;
+    [l release];
 
-                   // ----------------------------------------
-                   // deactivating settings first.
-                   for (int i = 0; i < MAX_FINGERS; ++i) {
-                     if (current_status_[i] && valid_fingers != i + 1) {
-                       current_status_[i] = 0;
-                       setPreference (i + 1, 0);
-                     }
-                   }
+    // ----------------------------------------
+    // deactivating settings first.
+    for (int i = 0; i < MAX_FINGERS; ++i) {
+      if (current_status_[i] && valid_fingers != i + 1) {
+        current_status_[i] = 0;
+        setPreference(i + 1, 0);
+      }
+    }
 
-                   // activating setting.
-                   //
-                   // Note: Set current_status_ only if the targeted setting is enabled.
-                   // If not, unintentional deactivation is called in above.
-                   //
-                   // - one finger: disabled
-                   // - two fingers: enabled
-                   //
-                   // In this case,
-                   // we must not call "setPreference" if only one finger is touched/released on multi-touch device.
-                   // If we don't check [PreferencesController isSettingEnabled],
-                   // setPreference is called in above when we release one finger from device.
-                   //
-                   if (valid_fingers > 0 && current_status_[valid_fingers - 1] == 0 &&
-                       [PreferencesController isSettingEnabled:valid_fingers]) {
-                     current_status_[valid_fingers - 1] = 1;
-                     setPreference (valid_fingers, 1);
-                   }
-                 });
+    // activating setting.
+    //
+    // Note: Set current_status_ only if the targeted setting is enabled.
+    // If not, unintentional deactivation is called in above.
+    //
+    // - one finger: disabled
+    // - two fingers: enabled
+    //
+    // In this case,
+    // we must not call "setPreference" if only one finger is touched/released on multi-touch device.
+    // If we don't check [PreferencesController isSettingEnabled],
+    // setPreference is called in above when we release one finger from device.
+    //
+    if (valid_fingers > 0 && current_status_[valid_fingers - 1] == 0 &&
+        [PreferencesController isSettingEnabled:valid_fingers]) {
+      current_status_[valid_fingers - 1] = 1;
+      setPreference(valid_fingers, 1);
+    }
+  });
   return 0;
 }
 
@@ -238,11 +238,11 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
 
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   // Relaunch when devices are plugged/unplugged.
-                   NSLog (@"observer_IONotification");
-                   [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
-                   [NSApp terminate:nil];
-                 });
+    // Relaunch when devices are plugged/unplugged.
+    NSLog(@"observer_IONotification");
+    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+    [NSApp terminate:nil];
+  });
 }
 
 - (void) unregisterIONotification {
@@ -275,7 +275,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     }
 
     // ------------------------------------------------------------
-    NSMutableDictionary* match = [(NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice")) autorelease];
+    NSMutableDictionary* match = [(NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice"))autorelease];
 
     // ----------------------------------------------------------------------
     io_iterator_t it;
@@ -321,25 +321,25 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_NSWorkspaceDidWakeNotification");
+    NSLog(@"observer_NSWorkspaceDidWakeNotification");
 
-                   // sleep until devices are settled.
-                   [NSThread sleepForTimeInterval:1.0];
+    // sleep until devices are settled.
+    [NSThread sleepForTimeInterval:1.0];
 
-                   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relaunchAfterWakeUpFromSleep"]) {
-                     double wait = [[[NSUserDefaults standardUserDefaults] stringForKey:@"relaunchWait"] doubleValue];
-                     if (wait > 0) {
-                       [NSThread sleepForTimeInterval:wait];
-                     }
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relaunchAfterWakeUpFromSleep"]) {
+      double wait = [[[NSUserDefaults standardUserDefaults] stringForKey:@"relaunchWait"] doubleValue];
+      if (wait > 0) {
+        [NSThread sleepForTimeInterval:wait];
+      }
 
-                     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
-                     [NSApp terminate:self];
-                   }
+      [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+      [NSApp terminate:self];
+    }
 
-                   has_last_device = NO;
+    has_last_device = NO;
 
-                   [self setcallback:YES];
-                 });
+    [self setcallback:YES];
+  });
 }
 
 - (void) registerWakeNotification
@@ -361,25 +361,25 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
-                   [self registerIONotification];
-                   [self registerWakeNotification];
+    NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
+    [self registerIONotification];
+    [self registerWakeNotification];
 
-                   // sleep until devices are settled.
-                   [NSThread sleepForTimeInterval:1.0];
+    // sleep until devices are settled.
+    [NSThread sleepForTimeInterval:1.0];
 
-                   [self setcallback:YES];
-                 });
+    [self setcallback:YES];
+  });
 }
 
 - (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   NSLog (@"observer_NSWorkspaceSessionDidResignActiveNotification");
-                   [self unregisterIONotification];
-                   [self unregisterWakeNotification];
-                   [self setcallback:NO];
-                 });
+    NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
+    [self unregisterIONotification];
+    [self unregisterWakeNotification];
+    [self setcallback:NO];
+  });
 }
 
 // ------------------------------------------------------------

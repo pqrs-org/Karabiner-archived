@@ -10,24 +10,24 @@
 - (void) observer_NSApplicationDidChangeScreenParametersNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   [self updateFrameOrigin];
-                 });
+    [self updateFrameOrigin];
+  });
 }
 
 - (void) observer_StatusWindowPreferencesOpened:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   statusWindowPreferencesOpened_ = YES;
-                   [self refresh:self];
-                 });
+    statusWindowPreferencesOpened_ = YES;
+    [self refresh:self];
+  });
 }
 
 - (void) observer_StatusWindowPreferencesClosed:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-                   statusWindowPreferencesOpened_ = NO;
-                   [self refresh:self];
-                 });
+    statusWindowPreferencesOpened_ = NO;
+    [self refresh:self];
+  });
 }
 
 - (id) init
