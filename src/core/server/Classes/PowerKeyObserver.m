@@ -155,6 +155,10 @@ static CGEventRef eventTapCallBack(CGEventTapProxy proxy, CGEventType type, CGEv
     if (type == NSKeyDown) continue;
     if (type == NSKeyUp) continue;
 
+    if (type == NSEventTypeRotate) continue;
+    if (type == NSEventTypeBeginGesture) continue;
+    if (type == NSEventTypeEndGesture) continue;
+
     mask |= NSEventMaskFromType(type);
   }
 
