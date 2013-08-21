@@ -65,8 +65,9 @@ enum {
   // Version 54: Added BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE.
   // Version 55: Added KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY.
   // Version 56: Added essential configurations. (parameter.maximum_speed_of_*, parameter.acceleration_of_*)
+  // Version 57: Added an essential configuration. (parameter.mouse_key_scroll_natural_direction)
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 56,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 57,
 };
 
 enum {
