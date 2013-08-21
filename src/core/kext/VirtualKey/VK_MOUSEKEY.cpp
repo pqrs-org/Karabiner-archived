@@ -288,6 +288,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       int delta1 = -dy_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
       int delta2 = -dx_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+
+      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mouse_key_scroll_natural_direction)) {
+        delta1 = - delta1;
+      }
+
       EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
     }
 

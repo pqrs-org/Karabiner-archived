@@ -9,6 +9,12 @@
     </item>
 
     <item>
+      <name>Mouse Keys scroll direction: natural</name>
+      <appendix>(Enable this setting if your scroll direction of trackpad/mouse is natural.)</appendix>
+      <identifier essential="true">parameter.mouse_key_scroll_natural_direction</identifier>
+    </item>
+
+    <item>
       <name>Arrow(Up/Down/Left/Right) Keys to Mouse Keys</name>
       <identifier>remap.mousekeys_arrow</identifier>
       <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
