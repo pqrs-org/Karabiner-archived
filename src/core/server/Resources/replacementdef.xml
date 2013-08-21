@@ -88,6 +88,20 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>PC_STYLE_BINDINGS_IGNORE_APPS</replacementname>
+    <replacementvalue>
+      VIRTUALMACHINE,
+      REMOTEDESKTOPCONNECTION,
+      VNC,
+      TEAMVIEWER,
+      EMACS,
+      TERMINAL,
+      X11,
+    </replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>LOGITECH_N305_EQUAL</replacementname>
     <replacementvalue>KeyCode::KEYPAD_EQUAL</replacementvalue>
   </replacementdef>
