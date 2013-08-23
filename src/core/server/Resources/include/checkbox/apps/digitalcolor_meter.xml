@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only DigitalColor Meter</name>
+    <item>
+      <name>Use command-c as "Copy Color as Text".</name>
+      <appendix>(Change command-c to command-shift-c.)</appendix>
+      <identifier>remap.app_digitalcolor_meter_command_c_to_command_shift_c</identifier>
+      <only>DigitalColorMeter</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L,
+      </autogen>
+    </item>
+  </item>
+</root>

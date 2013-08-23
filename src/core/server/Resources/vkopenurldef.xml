@@ -49,6 +49,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</name>
+    <url>file:///Applications/Utilities/DigitalColor%20Meter.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Disk_Utility</name>
     <url>file:///Applications/Utilities/Disk%20Utility.app</url>
   </vkopenurldef>

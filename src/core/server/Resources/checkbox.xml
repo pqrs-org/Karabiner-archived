@@ -83,6 +83,7 @@
     <include path="include/checkbox/apps/propresenter.xml" />
     <include path="include/checkbox/apps/schismtracker.xml" />
     <include path="include/checkbox/apps/blender.xml" />
+    <include path="include/checkbox/apps/digitalcolor_meter.xml" />
   </item>
 
   <include path="include/checkbox/keyboard_layouts.xml" />
