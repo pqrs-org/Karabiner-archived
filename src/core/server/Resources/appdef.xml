@@ -466,4 +466,9 @@
     <equal>org.schismtracker.SchismTracker</equal>
   </appdef>
 
+  <appdef>
+    <appname>DigitalColorMeter</appname>
+    <equal>com.apple.DigitalColorMeter</equal>
+  </appdef>
+
 </root>
