@@ -60,8 +60,8 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
     [workSpaceData_ getInputSourceID:inputSource
-                          output_inputSource:(&(bridgeworkspacedata_.inputsource))
-                    output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
+                  output_inputSource:(&(bridgeworkspacedata_.inputsource))
+            output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
     [self send_workspacedata_to_kext];
 
     @synchronized(self) {
