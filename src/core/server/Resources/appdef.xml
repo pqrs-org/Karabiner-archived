@@ -159,6 +159,7 @@
     <appname>ECLIPSE</appname>
     <equal>org.eclipse.eclipse</equal>
     <equal>com.springsource.sts</equal>
+    <equal>org.springsource.sts.ide</equal>
   </appdef>
 
   <appdef>
