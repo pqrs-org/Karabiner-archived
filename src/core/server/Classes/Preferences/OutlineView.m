@@ -140,17 +140,9 @@
     NSButtonCell* cell = [tableColumn dataCell];
     if (! cell) return nil;
 
-    NSDictionary* attributes = nil;
-    if ([[item objectForKey:@"style"] isEqualToString:@"caution"]) {
-      attributes = @{ NSForegroundColorAttributeName :[NSColor blackColor],
-                      NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f], };
-    } else if ([[item objectForKey:@"style"] isEqualToString:@"important"]) {
-      attributes = @{ NSForegroundColorAttributeName :[NSColor blackColor],
-                      NSBackgroundColorAttributeName :[NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f], };
-    }
+    NSDictionary* attributes = [item objectForKey:@"stringAttributes"];
     if (attributes) {
-      // append "\n" for background color.
-      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", [item objectForKey:@"name"]]
+      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[item objectForKey:@"name"]
                                                                 attributes:attributes] autorelease]];
     } else {
       [cell setTitle:[item objectForKey:@"name"]];
@@ -213,13 +205,7 @@
     number = [NSNumber numberWithDouble:([number intValue] * (CGFloat)([outlineView rowHeight]))];
   }
 
-  CGFloat suppliment = 0;
-  if ([[item objectForKey:@"style"] length] > 0) {
-    // for appended "\n"
-    suppliment = [outlineView rowHeight] * 1;
-  }
-
-  return [number floatValue] + suppliment;
+  return [number floatValue];
 }
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item

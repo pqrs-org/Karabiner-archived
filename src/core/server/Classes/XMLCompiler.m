@@ -52,7 +52,31 @@
     {
       const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(child);
       if (style) {
-        [dict setObject:[NSString stringWithUTF8String:style] forKey:@"style"];
+        NSString* s = [NSString stringWithUTF8String:style];
+
+        if ([s isEqualToString:@"caution"]) {
+          [dict setObject:@{
+             NSForegroundColorAttributeName : [NSColor blackColor],
+             NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f],
+           } forKey:@"stringAttributes"];
+
+        } else if ([s isEqualToString:@"important"]) {
+          [dict setObject:@{
+             NSForegroundColorAttributeName : [NSColor blackColor],
+             NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f],
+           } forKey:@"stringAttributes"];
+
+        } else if ([s isEqualToString:@"slignt"]) {
+          [dict setObject:@{
+             NSForegroundColorAttributeName : [NSColor grayColor],
+           } forKey:@"stringAttributes"];
+        }
+
+        if ([[dict objectForKey:@"stringAttributes"] objectForKey:NSBackgroundColorAttributeName]) {
+          // append "\n" for background color.
+          [dict setObject:[NSString stringWithFormat:@"%@\n", [dict objectForKey:@"name"]] forKey:@"name"];
+          [dict setObject:[NSNumber numberWithUnsignedInteger:([[dict objectForKey:@"height"] unsignedIntValue] + 1)] forKey:@"height"];
+        }
       }
     }
 
