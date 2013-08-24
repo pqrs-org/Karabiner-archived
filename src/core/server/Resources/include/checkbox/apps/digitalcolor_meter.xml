@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Enable at only DigitalColor Meter</name>
+    <name>DigitalColor Meter</name>
     <item>
-      <name>Use command-c as "Copy Color as Text".</name>
+      <name>Use command-c as "Copy Color as Text" on DigitalColor Meter.</name>
       <appendix>(Change command-c to command-shift-c.)</appendix>
       <identifier>remap.app_digitalcolor_meter_command_c_to_command_shift_c</identifier>
       <only>DigitalColorMeter</only>
@@ -11,6 +11,17 @@
         __KeyToKey__
         KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
         KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L,
+      </autogen>
+    </item>
+    <item>
+      <name>Launch DigitalColor Meter by holding equal key.</name>
+      <identifier>remap.app_digitalcolor_meter_launch_by_equal</identifier>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::EQUAL, ModifierFlag::NONE,
+        KeyCode::EQUAL,
+        KeyCode::VK_NONE,
+        KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter,
       </autogen>
     </item>
   </item>
