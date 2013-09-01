@@ -32,6 +32,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(Option newval)  { add(BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
     private:
+      bool isUseSeparator_;
+      bool index_is_holding_;
       size_t index_;
       ModifierFlag fromKeyFlag_;
 

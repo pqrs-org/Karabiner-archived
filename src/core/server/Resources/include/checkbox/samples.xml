@@ -586,6 +586,71 @@
         <autogen>__KeyOverlaidModifier__ KeyCode::A, ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, KeyCode::SPACE</autogen>
       </item>
+
+      <!-- ============================================================ -->
+      <item>
+        <name>With USE_SEPARATOR (1)</name>
+        <appendix>Use "a" key to show status message "1" and "2" and left shift key.</appendix>
+        <appendix>(Send space if you press only "a" key.)</appendix>
+        <identifier>remap.samples_keyoverlaidmodifier_use_separator</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          Option::USE_SEPARATOR,
+          KeyCode::A, ModifierFlag::NONE,
+
+          <!-- hold 'a' -->
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_keyoverlaidmodifier_use_separator_1,
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_keyoverlaidmodifier_use_separator_2,
+          KeyCode::SHIFT_L,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_1,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_2,
+
+          <!-- separator -->
+          Option::SEPARATOR,
+
+          <!-- release 'a' -->
+          KeyCode::SPACE,
+        </autogen>
+      </item>
+      <item hidden="true">
+        <identifier vk_config="true">notsave.samples_keyoverlaidmodifier_use_separator_1</identifier>
+        <autogen>__ShowStatusMessage__ 1</autogen>
+      </item>
+      <item hidden="true">
+        <identifier vk_config="true">notsave.samples_keyoverlaidmodifier_use_separator_2</identifier>
+        <autogen>__ShowStatusMessage__ 2</autogen>
+      </item>
+      <!-- ============================================================ -->
+
+      <item>
+        <name>With USE_SEPARATOR (2)</name>
+        <appendix>Change "a" key "abc" (no repeat).</appendix>
+        <appendix>(Send "def" if you press only "a" key.)</appendix>
+        <identifier>remap.samples_keyoverlaidmodifier_use_separator_2</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          Option::USE_SEPARATOR,
+          KeyCode::A, ModifierFlag::NONE,
+
+          <!-- hold 'a' -->
+          KeyCode::A,
+          KeyCode::B,
+          KeyCode::C,
+
+          Option::NOREPEAT,
+
+          <!-- separator -->
+          Option::SEPARATOR,
+
+          <!-- release 'a' -->
+          KeyCode::D,
+          KeyCode::E,
+          KeyCode::F,
+        </autogen>
+      </item>
+
     </item>
 
     <item>
