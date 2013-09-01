@@ -666,6 +666,7 @@
         <appendix>C to Space (+ Holding C to Shift_L)</appendix>
         <appendix>D to Shift_L (+ Holding D to Option_L)</appendix>
         <appendix>Shift+E to Control_L (+ Holding Shift+E to Option_L)</appendix>
+        <appendix>Delete to Tab,Tab (+ Holding Escape to Space,Space)</appendix>
         <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
         <autogen>__HoldingKeyToKey__ KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
         <autogen>__HoldingKeyToKey__ KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
@@ -675,6 +676,19 @@
         <autogen>__HoldingKeyToKey__ KeyCode::C, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::SHIFT_L</autogen>
         <autogen>__HoldingKeyToKey__ KeyCode::D, KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
         <autogen>__HoldingKeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
+        <!-- You can use Option::SEPARATOR as a separator -->
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::DELETE,
+
+          KeyCode::TAB,
+          KeyCode::TAB,
+
+          Option::SEPARATOR,
+
+          KeyCode::SPACE,
+          KeyCode::SPACE,
+        </autogen>
       </item>
       <item>
         <name>with ModifierFlag::NONE</name>

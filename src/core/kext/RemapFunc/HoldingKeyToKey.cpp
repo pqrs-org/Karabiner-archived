@@ -76,7 +76,9 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             default:
-              if (index_is_holding_) {
+              if (datatype == BRIDGE_DATATYPE_OPTION && Option::SEPARATOR == newval) {
+                index_is_holding_ = true;
+              } else if (index_is_holding_) {
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
               } else {
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
