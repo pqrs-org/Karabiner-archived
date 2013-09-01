@@ -4,7 +4,11 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    KeyOverlaidModifier::KeyOverlaidModifier(void) : index_(0), fromKeyFlag_(ModifierFlag::NONE)
+    KeyOverlaidModifier::KeyOverlaidModifier(void) :
+      isUseSeparator_(false),
+      index_is_holding_(true),
+      index_(0),
+      fromKeyFlag_(ModifierFlag::NONE)
     {
       dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
     }
@@ -28,15 +32,19 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromKeyFlag_ = KeyCode(newval).getModifierFlag();
               break;
 
-            case 1:
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, KeyCode::VK_NONE);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
-              break;
-
             default:
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
+              if (! isUseSeparator_ && index_ >= 2) {
+                index_is_holding_ = false;
+              }
+
+              if (index_is_holding_) {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, KeyCode::VK_NONE);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+              } else {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
+              }
               break;
           }
           ++index_;
@@ -65,14 +73,14 @@ namespace org_pqrs_KeyRemap4MacBook {
               }
               break;
 
-            case 2:
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
-              break;
-
             default:
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
+              if (index_is_holding_) {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+              } else {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
+              }
               break;
           }
           break;
@@ -82,6 +90,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           if (Option::KEYOVERLAIDMODIFIER_REPEAT == newval) {
             dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT);
+          } else if (Option::USE_SEPARATOR == newval) {
+            isUseSeparator_ = true;
+          } else if (Option::SEPARATOR == newval) {
+            index_is_holding_ = false;
+          } else if (Option::NOREPEAT == newval ||
+                     Option::KEYTOKEY_BEFORE_KEYDOWN == newval ||
+                     Option::KEYTOKEY_AFTER_KEYUP == newval) {
+            dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
           } else {
             IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%d\n", newval);
           }
