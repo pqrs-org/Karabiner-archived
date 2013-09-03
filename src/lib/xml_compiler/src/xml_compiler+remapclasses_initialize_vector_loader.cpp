@@ -77,7 +77,7 @@ namespace pqrs {
         ! boost::starts_with(identifier, "passthrough_")) {
       filter_vector_.push_back(2); // count
       filter_vector_.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      filter_vector_.push_back(symbol_map_.get("ConfigIndex::notsave_passthrough"));
+      filter_vector_.push_back(symbol_map_cache_configindex_notsave_passthrough_);
     }
 
     filter_vector_.traverse(pt);
@@ -394,6 +394,8 @@ namespace pqrs {
     remapclasses_initialize_vector_.push_back(type);
     ++count;
 
+    size_t value_start_index = remapclasses_initialize_vector_.size();
+
     pqrs::string::tokenizer tokenizer_comma(params, ',');
     std::string arg;
     std::string value;
@@ -431,6 +433,15 @@ namespace pqrs {
       ++count;
       remapclasses_initialize_vector_.push_back(newvalue);
       ++count;
+
+      // Unshift Option::USE_SEPARATOR when Option::SEPARATOR is found.
+      if (datatype == BRIDGE_DATATYPE_OPTION &&
+          newvalue == symbol_map_cache_option_separator_) {
+        remapclasses_initialize_vector_.insert(value_start_index, symbol_map_cache_option_use_separator_);
+        ++count;
+        remapclasses_initialize_vector_.insert(value_start_index, BRIDGE_DATATYPE_OPTION);
+        ++count;
+      }
     }
 
     remapclasses_initialize_vector_.update(count_index, count);
