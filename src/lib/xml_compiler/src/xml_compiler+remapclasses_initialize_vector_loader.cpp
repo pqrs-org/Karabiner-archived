@@ -289,22 +289,6 @@ namespace pqrs {
       return;
     }
 
-    {
-      static const struct {
-        const std::string oldstring;
-        const std::string newstring;
-      } info[] = {
-        { "SimultaneousKeyPresses::Option::RAW", "Option::SIMULTANEOUSKEYPRESSES_RAW" },
-        { "KeyCode::VK_CHANGE_INPUTMODE_", "KeyCode::VK_CHANGE_INPUTSOURCE_" },
-      };
-      for (const auto& it : info) {
-        if (autogen.find(it.oldstring) != std::string::npos) {
-          handle_autogen(boost::replace_all_copy(autogen, it.oldstring, it.newstring), raw_autogen);
-          return;
-        }
-      }
-    }
-
     // ------------------------------------------------------------
     // add to remapclasses_initialize_vector_
     //
@@ -383,9 +367,15 @@ namespace pqrs {
   }
 
   void
-  xml_compiler::remapclasses_initialize_vector_loader::add_to_initialize_vector(const std::string& params,
+  xml_compiler::remapclasses_initialize_vector_loader::add_to_initialize_vector(std::string& params,
                                                                                 uint32_t type) const
   {
+    // ------------------------------------------------------------
+    // for backwards compatibility
+    boost::replace_all(params, "SimultaneousKeyPresses::Option::RAW", "Option::SIMULTANEOUSKEYPRESSES_RAW");
+    boost::replace_all(params, "KeyCode::VK_CHANGE_INPUTMODE_", "KeyCode::VK_CHANGE_INPUTSOURCE_");
+
+    // ------------------------------------------------------------
     size_t count_index = remapclasses_initialize_vector_.size();
     uint32_t count = 0;
 
