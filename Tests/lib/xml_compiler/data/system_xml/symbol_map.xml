@@ -40,12 +40,13 @@
   <symbol_map type="ModifierFlag" name="SHIFT_R" value="0x20004" />
   <symbol_map type="ModifierFlag" name="NONE" value="0x20000000" />
   <symbol_map type="ModifierFlag" name="VK__AUTOINDEX__BEGIN__" value="0x20000001" />
-  <symbol_map type="Option" name="KEYOVERLAIDMODIFIER_REPEAT" value="1" />
-  <symbol_map type="Option" name="SIMULTANEOUSKEYPRESSES_RAW" value="2" />
-  <symbol_map type="Option" name="NOREPEAT" value="3" />
-  <symbol_map type="Option" name="KEYTOKEY_BEFORE_KEYDOWN" value="4" />
-  <symbol_map type="Option" name="KEYTOKEY_AFTER_KEYUP" value="5" />
-  <symbol_map type="Option" name="VK__AUTOINDEX__BEGIN__" value="6" />
+  <symbol_map type="Option" name="USE_SEPARATOR" value="1" />
+  <symbol_map type="Option" name="SEPARATOR" value="2" />
+  <symbol_map type="Option" name="KEYOVERLAIDMODIFIER_REPEAT" value="3" />
+  <symbol_map type="Option" name="SIMULTANEOUSKEYPRESSES_RAW" value="4" />
+  <symbol_map type="Option" name="SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER" value="5" />
+  <symbol_map type="Option" name="NOREPEAT" value="6" />
+  <symbol_map type="Option" name="VK__AUTOINDEX__BEGIN__" value="16" />
   <symbol_map type="PointingButton" name="NONE" value="0x00000000" />
   <symbol_map type="PointingButton" name="RIGHT" value="0x00000001" />
   <symbol_map type="PointingButton" name="MIDDLE" value="0x00000002" />
