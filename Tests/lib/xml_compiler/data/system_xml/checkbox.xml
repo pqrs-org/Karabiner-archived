@@ -35,6 +35,34 @@
   </item>
 
   <item>
+    <name>separator</name>
+    <identifier>remap.use_separator</identifier>
+    <autogen>
+      __KeyOverlaidModifier__
+      KeyCode::SPACE,
+
+      KeyCode::RETURN, KeyCode::TAB,
+
+      Option::SEPARATOR,
+
+      KeyCode::SPACE,
+    </autogen>
+  </item>
+
+  <item>
+    <name>separator</name>
+    <identifier>remap.without_separator</identifier>
+    <autogen>
+      __KeyOverlaidModifier__
+      KeyCode::SPACE,
+
+      KeyCode::RETURN,
+
+      KeyCode::TAB, KeyCode::SPACE,
+    </autogen>
+  </item>
+
+  <item>
     <name>backward compatibility</name>
     <identifier>remap.backward_compatibility</identifier>
     <autogen>--KeyToKey-- KeyCode::RETURN, KeyCode::TAB</autogen>
