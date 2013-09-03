@@ -725,6 +725,25 @@
         <autogen>__DoublePressModifier__ KeyCode::Z, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
       </item>
       <item>
+        <name>Standard with USE_SEPARATOR</name>
+        <appendix>(A to A,B,C) + (A x2 to 1,2,3)</appendix>
+        <autogen>
+          __DoublePressModifier__
+          Option::USE_SEPARATOR,
+          KeyCode::A,
+
+          KeyCode::A,
+          KeyCode::B,
+          KeyCode::C,
+
+          Option::SEPARATOR,
+
+          KeyCode::KEY_1,
+          KeyCode::KEY_2,
+          KeyCode::KEY_3,
+        </autogen>
+      </item>
+      <item>
         <name>Extra</name>
         <appendix>KEY_0 x3 to Equal(=)</appendix>
         <appendix>(retain KEY_0)</appendix>

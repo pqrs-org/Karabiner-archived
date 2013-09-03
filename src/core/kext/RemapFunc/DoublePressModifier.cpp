@@ -3,7 +3,11 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    DoublePressModifier::DoublePressModifier(void) : index_(0), pressCount_(0)
+    DoublePressModifier::DoublePressModifier(void) :
+      isUseSeparator_(false),
+      index_is_double_pressed_(false),
+      index_(0),
+      pressCount_(0)
     {
       ic_.begin();
     }
@@ -19,18 +23,21 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              // pass-through (== no break)
               fromKey_.key = newval;
-            case 1:
               keytokey_.add(KeyCode(newval));
+              keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
               break;
 
-            case 2:
-              // pass-through (== no break)
-              keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
-              keytokey_fire_.add(fromKey_.flags);
             default:
-              keytokey_fire_.add(KeyCode(newval));
+              if (! isUseSeparator_ && index_ >= 2) {
+                index_is_double_pressed_ = true;
+              }
+
+              if (! index_is_double_pressed_) {
+                keytokey_.add(KeyCode(newval));
+              } else {
+                keytokey_fire_.add(KeyCode(newval));
+              }
               break;
           }
           ++index_;
@@ -46,16 +53,32 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              // pass-through (== no break)
               fromKey_.flags = newval;
-            case 2:
               keytokey_.add(Flags(newval));
+              keytokey_fire_.add(fromKey_.flags);
               break;
 
             default:
-              keytokey_fire_.add(Flags(newval));
+              if (! index_is_double_pressed_) {
+                keytokey_.add(Flags(newval));
+              } else {
+                keytokey_fire_.add(Flags(newval));
+              }
               break;
           }
+          break;
+        }
+
+        case BRIDGE_DATATYPE_OPTION:
+        {
+          if (Option::USE_SEPARATOR == newval) {
+            isUseSeparator_ = true;
+          } else if (Option::SEPARATOR == newval) {
+            index_is_double_pressed_ = true;
+          } else {
+            IOLOG_ERROR("DoublePressModifier::add unknown option:%d\n", newval);
+          }
+
           break;
         }
 
