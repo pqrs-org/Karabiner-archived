@@ -26,6 +26,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
+      bool isUseSeparator_;
+      bool index_is_double_pressed_;
       size_t index_;
       int pressCount_;
       IntervalChecker ic_;
