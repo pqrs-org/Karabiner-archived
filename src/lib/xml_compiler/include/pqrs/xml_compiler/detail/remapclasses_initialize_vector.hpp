@@ -73,7 +73,7 @@ private:
   void handle_autogen(const std::string& autogen,
                       const std::string& raw_autogen);
 
-  void add_to_initialize_vector(const std::string& params,
+  void add_to_initialize_vector(std::string& params,
                                 uint32_t type) const;
 
   const xml_compiler& xml_compiler_;
