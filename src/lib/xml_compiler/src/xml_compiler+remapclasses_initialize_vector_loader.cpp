@@ -374,6 +374,9 @@ namespace pqrs {
     // for backwards compatibility
     boost::replace_all(params, "SimultaneousKeyPresses::Option::RAW", "Option::SIMULTANEOUSKEYPRESSES_RAW");
     boost::replace_all(params, "KeyCode::VK_CHANGE_INPUTMODE_", "KeyCode::VK_CHANGE_INPUTSOURCE_");
+    // aliases
+    boost::replace_all(params, "@begin", ",");
+    boost::replace_all(params, "@end", ",Option::SEPARATOR,");
 
     // ------------------------------------------------------------
     size_t count_index = remapclasses_initialize_vector_.size();
