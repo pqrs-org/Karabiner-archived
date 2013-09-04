@@ -93,7 +93,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else if (Option::USE_SEPARATOR == newval) {
             isUseSeparator_ = true;
           } else if (Option::SEPARATOR == newval) {
-            index_is_holding_ = false;
+            if (index_ >= 2) {
+              index_is_holding_ = false;
+            }
           } else if (Option::NOREPEAT == newval ||
                      Option::KEYTOKEY_BEFORE_KEYDOWN == newval ||
                      Option::KEYTOKEY_AFTER_KEYUP == newval) {

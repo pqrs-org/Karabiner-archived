@@ -74,7 +74,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (Option::USE_SEPARATOR == newval) {
             isUseSeparator_ = true;
           } else if (Option::SEPARATOR == newval) {
-            index_is_double_pressed_ = true;
+            if (index_ >= 2) {
+              index_is_double_pressed_ = true;
+            }
           } else {
             IOLOG_ERROR("DoublePressModifier::add unknown option:%d\n", newval);
           }
