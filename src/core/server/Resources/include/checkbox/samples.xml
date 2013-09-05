@@ -595,7 +595,6 @@
         <identifier>remap.samples_keyoverlaidmodifier_use_separator</identifier>
         <autogen>
           __KeyOverlaidModifier__
-          Option::USE_SEPARATOR,
           KeyCode::A, ModifierFlag::NONE,
 
           <!-- hold 'a' -->
@@ -631,7 +630,6 @@
         <identifier>remap.samples_keyoverlaidmodifier_use_separator_2</identifier>
         <autogen>
           __KeyOverlaidModifier__
-          Option::USE_SEPARATOR,
           KeyCode::A, ModifierFlag::NONE,
 
           <!-- hold 'a' -->
@@ -729,7 +727,6 @@
         <appendix>(A to A,B,C) + (A x2 to 1,2,3)</appendix>
         <autogen>
           __DoublePressModifier__
-          Option::USE_SEPARATOR,
           KeyCode::A,
 
           KeyCode::A,
@@ -1043,22 +1040,18 @@
         <identifier>remap.samples_simultaneouskeypresses_separator</identifier>
         <autogen>
           __SimultaneousKeyPresses__
-          <!-- You should specify Option::USE_SEPARATOR at first in order to use more than three keys. -->
-          Option::USE_SEPARATOR,
           KeyCode::S, KeyCode::D, KeyCode::F,
           Option::SEPARATOR,
           KeyCode::EXPOSE_ALL,
         </autogen>
         <autogen>
           __SimultaneousKeyPresses__
-          Option::USE_SEPARATOR,
           KeyCode::Q, KeyCode::W, KeyCode::E, KeyCode::R,
           Option::SEPARATOR,
           KeyCode::SPACE,
         </autogen>
         <autogen>
           __SimultaneousKeyPresses__
-          Option::USE_SEPARATOR,
           KeyCode::J, KeyCode::K, KeyCode::L,
           Option::SEPARATOR,
           KeyCode::ESCAPE,

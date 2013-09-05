@@ -172,8 +172,6 @@
       <identifier>remap.simultaneouskeypresses_sdf_home</identifier>
       <autogen>
         __SimultaneousKeyPresses__
-        <!-- You should specify Option::USE_SEPARATOR at first in order to use more than three keys. -->
-        Option::USE_SEPARATOR,
         KeyCode::S, KeyCode::D, KeyCode::F,
         Option::SEPARATOR,
         KeyCode::END,
@@ -181,8 +179,6 @@
       </autogen>
       <autogen>
         __SimultaneousKeyPresses__
-        <!-- You should specify Option::USE_SEPARATOR at first in order to use more than three keys. -->
-        Option::USE_SEPARATOR,
         KeyCode::F, KeyCode::D, KeyCode::S,
         Option::SEPARATOR,
         KeyCode::HOME,
