@@ -589,7 +589,7 @@
 
       <!-- ============================================================ -->
       <item>
-        <name>With USE_SEPARATOR (1)</name>
+        <name>With @begin .. @end (1)</name>
         <appendix>Use "a" key to show status message "1" and "2" and left shift key.</appendix>
         <appendix>(Send space if you press only "a" key.)</appendix>
         <identifier>remap.samples_keyoverlaidmodifier_use_separator</identifier>
@@ -597,6 +597,11 @@
           __KeyOverlaidModifier__
           KeyCode::A, ModifierFlag::NONE,
 
+          <!--
+              You need to put "KeyCode"s between @begin and @end
+              when you want to specify multiple KeyCode.
+            -->
+          @begin
           <!-- hold 'a' -->
           KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_keyoverlaidmodifier_use_separator_1,
           KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_keyoverlaidmodifier_use_separator_2,
@@ -605,12 +610,12 @@
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_1,
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_2,
+          @end
 
-          <!-- separator -->
-          Option::SEPARATOR,
-
+          @begin
           <!-- release 'a' -->
           KeyCode::SPACE,
+          @end
         </autogen>
       </item>
       <item hidden="true">
@@ -624,7 +629,7 @@
       <!-- ============================================================ -->
 
       <item>
-        <name>With USE_SEPARATOR (2)</name>
+        <name>With @begin .. @end (2)</name>
         <appendix>Change "a" key "abc" (no repeat).</appendix>
         <appendix>(Send "def" if you press only "a" key.)</appendix>
         <identifier>remap.samples_keyoverlaidmodifier_use_separator_2</identifier>
@@ -632,20 +637,21 @@
           __KeyOverlaidModifier__
           KeyCode::A, ModifierFlag::NONE,
 
+          @begin
           <!-- hold 'a' -->
           KeyCode::A,
           KeyCode::B,
           KeyCode::C,
 
           Option::NOREPEAT,
+          @end
 
-          <!-- separator -->
-          Option::SEPARATOR,
-
+          @begin
           <!-- release 'a' -->
           KeyCode::D,
           KeyCode::E,
           KeyCode::F,
+          @end
         </autogen>
       </item>
 
@@ -674,18 +680,22 @@
         <autogen>__HoldingKeyToKey__ KeyCode::C, KeyCode::SPACE, KeyCode::VK_NONE, KeyCode::SHIFT_L</autogen>
         <autogen>__HoldingKeyToKey__ KeyCode::D, KeyCode::SHIFT_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
         <autogen>__HoldingKeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, KeyCode::VK_NONE, KeyCode::OPTION_L</autogen>
-        <!-- You can use Option::SEPARATOR as a separator -->
+
         <autogen>
           __HoldingKeyToKey__
           KeyCode::DELETE,
 
+          <!-- You can use @begin and @end as a separator of parameters -->
+
+          @begin
           KeyCode::TAB,
           KeyCode::TAB,
+          @end
 
-          Option::SEPARATOR,
-
+          @begin
           KeyCode::SPACE,
           KeyCode::SPACE,
+          @end
         </autogen>
       </item>
       <item>
@@ -723,21 +733,24 @@
         <autogen>__DoublePressModifier__ KeyCode::Z, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
       </item>
       <item>
-        <name>Standard with USE_SEPARATOR</name>
+        <name>Standard with @begin .. @end</name>
         <appendix>(A to A,B,C) + (A x2 to 1,2,3)</appendix>
+        <identifier>remap.samples_doublepressmodifier_separator</identifier>
         <autogen>
           __DoublePressModifier__
           KeyCode::A,
 
+          @begin
           KeyCode::A,
           KeyCode::B,
           KeyCode::C,
+          @end
 
-          Option::SEPARATOR,
-
+          @begin
           KeyCode::KEY_1,
           KeyCode::KEY_2,
           KeyCode::KEY_3,
+          @end
         </autogen>
       </item>
       <item>
@@ -1040,22 +1053,34 @@
         <identifier>remap.samples_simultaneouskeypresses_separator</identifier>
         <autogen>
           __SimultaneousKeyPresses__
+          @begin
           KeyCode::S, KeyCode::D, KeyCode::F,
-          Option::SEPARATOR,
+          @end
+
+          @begin
           KeyCode::EXPOSE_ALL,
+          @end
         </autogen>
         <autogen>
           __SimultaneousKeyPresses__
+          @begin
           KeyCode::Q, KeyCode::W, KeyCode::E, KeyCode::R,
-          Option::SEPARATOR,
+          @end
+
+          @begin
           KeyCode::SPACE,
+          @end
         </autogen>
         <autogen>
           __SimultaneousKeyPresses__
+          @begin
           KeyCode::J, KeyCode::K, KeyCode::L,
-          Option::SEPARATOR,
+          @end
+
+          @begin
           KeyCode::ESCAPE,
           Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER,
+          @end
         </autogen>
       </item>
       <item>
