@@ -172,17 +172,25 @@
       <identifier>remap.simultaneouskeypresses_sdf_home</identifier>
       <autogen>
         __SimultaneousKeyPresses__
+        @begin
         KeyCode::S, KeyCode::D, KeyCode::F,
-        Option::SEPARATOR,
+        @end
+
+        @begin
         KeyCode::END,
         Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER,
+        @end
       </autogen>
       <autogen>
         __SimultaneousKeyPresses__
+        @begin
         KeyCode::F, KeyCode::D, KeyCode::S,
-        Option::SEPARATOR,
+        @end
+
+        @begin
         KeyCode::HOME,
         Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER,
+        @end
       </autogen>
     </item>
   </item>
