@@ -1,6 +1,8 @@
 Changes since 8.3.0
 
     - Icons have been refined. (Thanks to Koji TAMURA.)
+    - Introduced @begin and @end in private.xml.
+      You can use more than one key at __KeyOverlaidModifier__, __DoublePressModifier__.
 
 ----------------------------------------------------------------------
 = version 8.3.0 =
