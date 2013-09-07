@@ -231,6 +231,11 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER</autogen>
     </item>
     <item>
+      <name>Option_R to Escape</name>
+      <identifier>remap.optionR2escape</identifier>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
       <name>Option_R to Forward Delete</name>
       <identifier>remap.optionR2forwarddelete</identifier>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::FORWARD_DELETE</autogen>
