@@ -4,18 +4,6 @@
   <!-- Author: Seth Milliken          -->
   <!-- Date:  2010-09-26 21:51:17 PDT -->
 
-  <include path="ubiquitous_vim_bindings/core.xml">
-    <replacementdef>
-      <replacementname>UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING</replacementname>
-      <replacementvalue>
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_operator_pending,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_r_operator_pending,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_R_operator_pending,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_c_w_operator_pending,
-      </replacementvalue>
-    </replacementdef>
-  </include>
+  <include path="ubiquitous_vim_bindings/core.xml" />
 
 </root>
