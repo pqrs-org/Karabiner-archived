@@ -131,6 +131,30 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>fn+WSAD to Arrow Keys</name>
+      <identifier>remap.fn_wsad_to_arrow_keys</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::A, ModifierFlag::FN,
+        KeyCode::CURSOR_LEFT
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::S, ModifierFlag::FN,
+        KeyCode::CURSOR_DOWN
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::D, ModifierFlag::FN,
+        KeyCode::CURSOR_RIGHT
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, ModifierFlag::FN,
+        KeyCode::CURSOR_UP
+      </autogen>
+    </item>
+    <item>
       <name>fn+JKLI to Arrow Keys</name>
       <identifier>remap.fn_jkli_to_arrow_keys</identifier>
       <autogen>
