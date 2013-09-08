@@ -120,6 +120,48 @@
         </item>
       </item>
       <item>
+        <name>Fine grained volume controls</name>
+        <appendix>Enables fine grained volume controls by default</appendix>
+        <identifier>remap.fine_grained_volume_controls</identifier>
+
+        <!-- Volume Up -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::VOLUME_UP, ModifierFlag::NONE,
+          ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <!-- For "Use all F1, F2, etc. keys as standard function keys". -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::VOLUME_UP, ModifierFlag::FN | ModifierFlag::NONE,
+          ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+
+        <!-- Volume Down -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::NONE,
+          ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <!-- For "Use all F1, F2, etc. keys as standard function keys". -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN | ModifierFlag::NONE,
+          ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
+          ConsumerKeyCode::VOLUME_UP
+        </autogen>
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
+          ConsumerKeyCode::VOLUME_DOWN
+        </autogen>
+      </item>
+      <item>
         <name>Separately settings</name>
         <item>
           <name>Brightness Down to F1</name>
