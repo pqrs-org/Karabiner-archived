@@ -30,5 +30,13 @@
       <only>REMOTEDESKTOPCONNECTION</only>
       <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
     </item>
+    <item>
+      <name>Use F12 as Insert</name>
+      <appendix>(Press F12 to simulate pressing Insert key.)</appendix>
+      <appendix>(Works well with CoRD.)</appendix>
+      <identifier>remap.app_rdc_f12_to_insert</identifier>
+      <only>REMOTEDESKTOPCONNECTION</only>
+      <autogen>__KeyToKey__ KeyCode::F12, KeyCode::PC_INSERT</autogen>
+    </item>
   </item>
 </root>
