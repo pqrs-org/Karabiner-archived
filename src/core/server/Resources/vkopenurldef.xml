@@ -164,4 +164,18 @@
       <![CDATA[    /bin/date | /usr/bin/pbcopy    ]]>
     </url>
   </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_kill_EventViewer</name>
+    <url type="shell">
+      <![CDATA[    /usr/bin/killall EventViewer    ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_save_ps</name>
+    <url type="shell">
+      <![CDATA[    /bin/ps -a -v -w -x > ~/Desktop/ps.`date '+%s'`.txt    ]]>
+    </url>
+  </vkopenurldef>
 </root>
