@@ -71,6 +71,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
             if ([urlType isEqualToString:@"shell"]) {
               [[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[@"-c", url]] waitUntilExit];
+            } else if ([urlType isEqualToString:@"file"]) {
+              [[NSWorkspace sharedWorkspace] openFile:url];
             } else {
               [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
             }
