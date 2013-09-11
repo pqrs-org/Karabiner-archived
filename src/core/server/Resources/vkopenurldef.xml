@@ -4,8 +4,13 @@
       You need to percent-encode in <url>.
       For example, we need to encode space to %20 in the following case.
 
-      Correct: <url>file:///Applications/Utilities/Activity%20Monitor.app</url>
-      Wrong:   <url>file:///Applications/Utilities/Activity Monitor.app</url>
+        Correct: <url>file:///Applications/Utilities/Activity%20Monitor.app</url>
+        Wrong:   <url>file:///Applications/Utilities/Activity Monitor.app</url>
+
+      Or use <url type="file">.
+
+        Example: <url type="file">/Applications/Utilities/Activity Monitor.app</url>
+
     -->
 
   <vkopenurldef>
@@ -30,127 +35,127 @@
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_FILE_Desktop</name>
-    <url>file://{{ ENV_HOME }}/Desktop</url>
+    <url type="file">{{ ENV_HOME }}/Desktop</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_FILE_Documents</name>
-    <url>file://{{ ENV_HOME }}/Documents</url>
+    <url type="file">{{ ENV_HOME }}/Documents</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Activity_Monitor</name>
-    <url>file:///Applications/Utilities/Activity%20Monitor.app</url>
+    <url type="file">/Applications/Utilities/Activity Monitor.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Dictionary</name>
-    <url>file:///Applications/Dictionary.app</url>
+    <url type="file">/Applications/Dictionary.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</name>
-    <url>file:///Applications/Utilities/DigitalColor%20Meter.app</url>
+    <url type="file">/Applications/Utilities/DigitalColor Meter.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Disk_Utility</name>
-    <url>file:///Applications/Utilities/Disk%20Utility.app</url>
+    <url type="file">/Applications/Utilities/Disk Utility.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Finder</name>
-    <url>file:///System/Library/CoreServices/Finder.app</url>
+    <url type="file">/System/Library/CoreServices/Finder.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook</name>
-    <url>file:///Applications/KeyRemap4MacBook.app</url>
+    <url type="file">/Applications/KeyRemap4MacBook.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_EventViewer</name>
-    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app</url>
+    <url type="file">/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile0</name>
-    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile0.app</url>
+    <url type="file">/Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile0.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile1</name>
-    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile1.app</url>
+    <url type="file">/Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile1.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile2</name>
-    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile2.app</url>
+    <url type="file">/Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile2.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile3</name>
-    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile3.app</url>
+    <url type="file">/Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/Profile3.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_ReloadXML</name>
-    <url>file:///Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/ReloadXML.app</url>
+    <url type="file">/Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities/ReloadXML.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Mail</name>
-    <url>file:///Applications/Mail.app</url>
+    <url type="file">/Applications/Mail.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Microsoft_Excel_2011</name>
-    <url>file:///Applications/Microsoft%20Office%202011/Microsoft%20Excel.app</url>
+    <url type="file">/Applications/Microsoft Office 2011/Microsoft Excel.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Microsoft_PowerPoint_2011</name>
-    <url>file:///Applications/Microsoft%20Office%202011/Microsoft%20PowerPoint.app</url>
+    <url type="file">/Applications/Microsoft Office 2011/Microsoft PowerPoint.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Microsoft_Word_2011</name>
-    <url>file:///Applications/Microsoft%20Office%202011/Microsoft%20Word.app</url>
+    <url type="file">/Applications/Microsoft Office 2011/Microsoft Word.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_iTunes</name>
-    <url>file:///Applications/iTunes.app</url>
+    <url type="file">/Applications/iTunes.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Safari</name>
-    <url>file:///Applications/Safari.app</url>
+    <url type="file">/Applications/Safari.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Stickies</name>
-    <url>file:///Applications/Stickies.app</url>
+    <url type="file">/Applications/Stickies.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Terminal</name>
-    <url>file:///Applications/Utilities/Terminal.app</url>
+    <url type="file">/Applications/Utilities/Terminal.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_TextEdit</name>
-    <url>file:///Applications/TextEdit.app</url>
+    <url type="file">/Applications/TextEdit.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_VirtualBox</name>
-    <url>file:///Applications/VirtualBox.app</url>
+    <url type="file">/Applications/VirtualBox.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Xcode</name>
-    <url>file:///Applications/Xcode.app</url>
+    <url type="file">/Applications/Xcode.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
