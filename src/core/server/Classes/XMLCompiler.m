@@ -9,6 +9,33 @@
 // ------------------------------------------------------------
 // private methods
 
++ (void) setStringAttributes:(NSMutableDictionary*)dict style:(NSString*)style
+{
+  if ([style isEqualToString:@"caution"]) {
+    [dict setObject:@{
+       NSForegroundColorAttributeName : [NSColor blackColor],
+       NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f],
+     } forKey:@"stringAttributes"];
+
+  } else if ([style isEqualToString:@"important"]) {
+    [dict setObject:@{
+       NSForegroundColorAttributeName : [NSColor blackColor],
+       NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f],
+     } forKey:@"stringAttributes"];
+
+  } else if ([style isEqualToString:@"slignt"]) {
+    [dict setObject:@{
+       NSForegroundColorAttributeName : [NSColor grayColor],
+     } forKey:@"stringAttributes"];
+  }
+
+  if ([[dict objectForKey:@"stringAttributes"] objectForKey:NSBackgroundColorAttributeName]) {
+    // append "\n" for background color.
+    [dict setObject:[NSString stringWithFormat:@"%@\n", [dict objectForKey:@"name"]] forKey:@"name"];
+    [dict setObject:[NSNumber numberWithUnsignedInteger:([[dict objectForKey:@"height"] unsignedIntValue] + 1)] forKey:@"height"];
+  }
+}
+
 + (NSMutableArray*) build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree
 {
   if (! node_tree) return nil;
@@ -52,31 +79,7 @@
     {
       const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(child);
       if (style) {
-        NSString* s = [NSString stringWithUTF8String:style];
-
-        if ([s isEqualToString:@"caution"]) {
-          [dict setObject:@{
-             NSForegroundColorAttributeName : [NSColor blackColor],
-             NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f],
-           } forKey:@"stringAttributes"];
-
-        } else if ([s isEqualToString:@"important"]) {
-          [dict setObject:@{
-             NSForegroundColorAttributeName : [NSColor blackColor],
-             NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f],
-           } forKey:@"stringAttributes"];
-
-        } else if ([s isEqualToString:@"slignt"]) {
-          [dict setObject:@{
-             NSForegroundColorAttributeName : [NSColor grayColor],
-           } forKey:@"stringAttributes"];
-        }
-
-        if ([[dict objectForKey:@"stringAttributes"] objectForKey:NSBackgroundColorAttributeName]) {
-          // append "\n" for background color.
-          [dict setObject:[NSString stringWithFormat:@"%@\n", [dict objectForKey:@"name"]] forKey:@"name"];
-          [dict setObject:[NSNumber numberWithUnsignedInteger:([[dict objectForKey:@"height"] unsignedIntValue] + 1)] forKey:@"height"];
-        }
+        [XMLCompiler setStringAttributes:dict style:[NSString stringWithUTF8String:style]];
       }
     }
 
@@ -94,12 +97,14 @@
 - (void) insert_caution_into_preferencepane_checkbox:(NSString*)message
 {
   NSUInteger height = [[message componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] count];
-  NSDictionary* dict = @{
-    @"name" : message,
-    @"height" :[NSNumber numberWithInteger:height],
-    @"string_for_filter" :[message lowercaseString],
-    @"style" : @"caution",
-  };
+
+  NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+  [dict setObject:message forKey:@"name"];
+  [dict setObject:[NSNumber numberWithInteger:height] forKey:@"height"];
+  [dict setObject:[message lowercaseString] forKey:@"string_for_filter"];
+
+  [XMLCompiler setStringAttributes:dict style:@"caution"];
+
   [preferencepane_checkbox_ insertObject:dict atIndex:0];
 }
 
