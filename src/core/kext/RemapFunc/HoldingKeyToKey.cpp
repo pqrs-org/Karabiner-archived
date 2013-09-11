@@ -49,7 +49,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              IOLOG_ERROR("Invalid HoldingKeyToKey::add\n");
+              if (datatype == BRIDGE_DATATYPE_OPTION && Option::USE_SEPARATOR == newval) {
+                // do nothing
+              } else {
+                IOLOG_ERROR("Invalid HoldingKeyToKey::add\n");
+              }
               break;
 
             case 1:
