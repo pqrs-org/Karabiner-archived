@@ -54,6 +54,11 @@ namespace pqrs {
 
           } else if (child.get_tag_name() == "url") {
             newurl->set_url(boost::trim_copy(child.get_data()));
+
+            auto type = child.get_optional("<xmlattr>.type");
+            if (type) {
+              newurl->set_type(boost::trim_copy(*type));
+            }
           }
         }
 

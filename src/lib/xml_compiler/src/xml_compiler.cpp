@@ -360,6 +360,20 @@ namespace pqrs {
     return it->second->get_url();
   }
 
+  boost::optional<const std::string&>
+  xml_compiler::get_url_type(int keycode) const
+  {
+    auto it = vk_open_url_map_.find(keycode);
+    if (it == vk_open_url_map_.end()) {
+      return boost::none;
+    }
+
+    if (! it->second) {
+      return boost::none;
+    }
+    return it->second->get_type();
+  }
+
   bool
   xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const
   {
