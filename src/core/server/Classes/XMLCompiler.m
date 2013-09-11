@@ -372,13 +372,23 @@
   }
 }
 
-- (NSURL*) url:(uint32_t)keycode
+- (NSString*) url:(uint32_t)keycode
 {
   @synchronized(self) {
     const char* p = pqrs_xml_compiler_get_url(pqrs_xml_compiler_, keycode);
     if (! p) return nil;
 
-    return [NSURL URLWithString:[NSString stringWithUTF8String:p]];
+    return [NSString stringWithUTF8String:p];
+  }
+}
+
+- (NSString*) urlType:(uint32_t)keycode
+{
+  @synchronized(self) {
+    const char* p = pqrs_xml_compiler_get_url_type(pqrs_xml_compiler_, keycode);
+    if (! p) return nil;
+
+    return [NSString stringWithUTF8String:p];
   }
 }
 

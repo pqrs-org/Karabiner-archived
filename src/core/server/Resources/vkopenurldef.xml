@@ -156,7 +156,7 @@
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_SHELL_date_pbcopy</name>
     <url type="shell">
-      /bin/date | /usr/bin/pbcopy
+      <![CDATA[    /bin/date | /usr/bin/pbcopy    ]]>
     </url>
   </vkopenurldef>
 </root>

@@ -65,9 +65,15 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
       case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL:
         {
-          NSURL* url = [[self xmlCompiler] url:option];
+          NSString* url = [[self xmlCompiler] url:option];
           if (url) {
-            [[NSWorkspace sharedWorkspace] openURL:url];
+            NSString* urlType = [[self xmlCompiler] urlType:option];
+
+            if ([urlType isEqualToString:@"shell"]) {
+              [[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[@"-c", url]] waitUntilExit];
+            } else {
+              [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+            }
           }
           break;
         }
