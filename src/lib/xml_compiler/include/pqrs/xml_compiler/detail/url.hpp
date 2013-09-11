@@ -14,9 +14,16 @@ public:
   }
   void set_url(const std::string& v) { url_ = v; }
 
+  boost::optional<const std::string&> get_type(void) const {
+    if (! type_) return boost::none;
+    return *type_;
+  }
+  void set_type(const std::string& v) { type_ = v; }
+
 private:
   boost::optional<std::string> name_;
   boost::optional<std::string> url_;
+  boost::optional<std::string> type_;
 };
 
 class url_loader {

@@ -187,6 +187,12 @@ TEST(pqrs_xml_compiler, reload)
     ++vk_open_url_base;
   }
 
+  {
+    EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
+              xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy"));
+    ++vk_open_url_base;
+  }
+
   // ------------------------------------------------------------
   uint32_t vk_config_base = vk_open_url_base;
   EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
@@ -243,9 +249,18 @@ TEST(pqrs_xml_compiler, reload)
 
   EXPECT_EQ("https://pqrs.org/",
             *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org")))));
+  EXPECT_EQ(boost::none,
+            xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"))));
 
   EXPECT_EQ("file:///Applications/TextEdit.app",
             *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_APP_TextEdit")))));
+  EXPECT_EQ(boost::none,
+            xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"))));
+
+  EXPECT_EQ("/bin/date | /usr/bin/pbcopy",
+            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy")))));
+  EXPECT_EQ("shell",
+            *(xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy")))));
 
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
   EXPECT_TRUE(node_tree.get_children());
