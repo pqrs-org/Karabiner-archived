@@ -9,7 +9,7 @@
 
       Or use <url type="file">.
 
-        Example: <url type="file">/Applications/Utilities/Activity Monitor.app</url>
+        Correct: <url type="file">/Applications/Utilities/Activity Monitor.app</url>
 
     -->
 
