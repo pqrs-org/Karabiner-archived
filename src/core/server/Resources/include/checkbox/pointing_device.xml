@@ -2,6 +2,43 @@
 <root>
   <item>
     <name>Pointing Device</name>
+
+    <item>
+      <name>Reverse scrolling direction</name>
+
+      <item>
+        <name style="important">Important:</name>
+        <appendix>Items are exclusive. Choose one item.</appendix>
+      </item>
+
+      <item>
+        <name>Reverse Vertical &amp; Horizontal Scrolling</name>
+        <identifier>remap.reverse_both_scrolling</identifier>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
+          Option::FLIPSCROLLWHEEL_VERTICAL,
+        </autogen>
+      </item>
+
+      <item>
+        <name>Reverse Vertical Scrolling</name>
+        <identifier>remap.reverse_vertical_scrolling</identifier>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_VERTICAL,
+        </autogen>
+      </item>
+      <item>
+        <name>Reverse Horizontal Scrolling</name>
+        <identifier>remap.reverse_horizontal_scrolling</identifier>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
+        </autogen>
+      </item>
+    </item>
+
     <item>
       <name>CursorMove to ScrollWheel</name>
       <item>
