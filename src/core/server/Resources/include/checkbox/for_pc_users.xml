@@ -313,11 +313,13 @@
       <autogen>__KeyToKey__ KeyCode::KEYPAD_PLUS,     KeyCode::KEYPAD_EQUAL</autogen>
     </item>
     <item>
-      <name>Use PC Style Home/End (except in Virtual Machine,RDC)</name>
+      <name>Use PC Style Home/End</name>
       <appendix>(Change Home to Control+A)</appendix>
       <appendix>(Change End to Control+E)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikehomeend_emacs</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
@@ -336,15 +338,22 @@
       <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
-      <name>Use PC Style Home/End (except in Virtual Machine,RDC)</name>
+      <name>Use PC Style Home/End #2</name>
       <appendix>(Change Home to Command+Left)</appendix>
       <appendix>(Change End to Command+Right)</appendix>
       <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
       <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikehomeend</identifier>
       <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <block>
-        <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+        <only>EMACS, TERMINAL, X11, ECLIPSE</only>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+      </block>
+      <block>
+        <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
         <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_END,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
@@ -352,34 +361,28 @@
         <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
       </block>
-      <block>
-        <only>EMACS, TERMINAL, X11, ECLIPSE</only>
-        <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-        <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
-      </block>
     </item>
     <item>
       <name>Use PC Style PageUp/PageDown</name>
       <appendix>(behave like Option+PageUp/PageDown)</appendix>
-      <identifier>remap.pclikepageupdown</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP,   ModifierFlag::OPTION_L</autogen>
-      <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
-    </item>
-    <item>
-      <name>Use PC Style PageUp/PageDown (except in Microsoft Office,Emacs,Virtual Machine,RDC)</name>
-      <appendix>(behave like Option+PageUp/PageDown)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikepageupdown_except_emacs</identifier>
-      <not>WORD, EXCEL, POWERPOINT, OUTLOOK, EMACS, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <not>
+        {{ PC_STYLE_BINDINGS_IGNORE_APPS }},
+        <!-- except for Microsoft applications which already have this built-in -->
+        WORD, EXCEL, POWERPOINT, OUTLOOK
+      </not>
       <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Use PC Style Control+Up/Down/Left/Right</name>
       <appendix>(Change Control+Arrow to Option+Arrow)</appendix>
-      <appendix>(except in Virtual Machine,RDC)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikecontrolarrow_except_vm</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::CURSOR_UP,     MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
@@ -655,6 +658,14 @@
         <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name style="slignt">Use PC Style PageUp/PageDown</name>
+        <appendix>(behave like Option+PageUp/PageDown)</appendix>
+        <identifier>remap.pclikepageupdown</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP,   ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
       </item>
     </item>
   </item>
