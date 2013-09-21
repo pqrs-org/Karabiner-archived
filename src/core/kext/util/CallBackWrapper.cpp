@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_KeyboardEventCallBack::log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat)
   {
-    IOLOG_DEBUG("KeyboardEventCallback [%7s]: eventType %2d, flags 0x%08x, key %4d, kbdType %3d, repeat = %d\n",
+    IOLOG_DEBUG("KeyboardEventCallback [%7s]: eventType %2d, flags 0x%08x, key 0x%04x, kbdType %3d, repeat = %d\n",
                 isCaught ? "caught" : "sending",
                 eventType.get(), flags.get(), key.get(), keyboardType.get(), repeat);
   }
@@ -29,7 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   Params_KeyboardSpecialEventCallback::log(bool isCaught, EventType eventType, Flags flags, ConsumerKeyCode key, unsigned int flavor, UInt64 guid, bool repeat)
   {
-    IOLOG_DEBUG("KeyboardSpecialEventCallBack [%7s]: eventType %2d, flags 0x%08x, key %4d, flavor %4d, guid %lld, repeat = %d\n",
+    IOLOG_DEBUG("KeyboardSpecialEventCallBack [%7s]: eventType %2d, flags 0x%08x, key 0x%04x, flavor %4d, guid %lld, repeat = %d\n",
                 isCaught ? "caught" : "sending",
                 eventType.get(), flags.get(), key.get(), flavor, guid, repeat);
   }
