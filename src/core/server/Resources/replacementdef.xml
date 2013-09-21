@@ -115,6 +115,13 @@
     </replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION</replacementname>
+    <replacementvalue>
+      (Except in Virtual Machine, RDC, VNC, TeamViewer, EMACS, TERMINAL, X11)
+    </replacementvalue>
+  </replacementdef>
+
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>LOGITECH_N305_EQUAL</replacementname>

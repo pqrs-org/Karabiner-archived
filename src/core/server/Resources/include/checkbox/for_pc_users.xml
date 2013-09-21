@@ -390,29 +390,35 @@
       <appendix>(Control+C to Command_L+C)</appendix>
       <appendix>(Control+V to Command_L+V)</appendix>
       <appendix>(Control+X to Command_L+X)</appendix>
-      <identifier>remap.copy_paste_winstyle</identifier>
-      <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Use PC Style Copy/Paste</name>
-      <appendix>(Control+C to Command_L+C)</appendix>
-      <appendix>(Control+V to Command_L+V)</appendix>
-      <appendix>(Control+X to Command_L+X)</appendix>
-      <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
-      <identifier>remap.copy_paste_winstyle_no_term</identifier>
-      <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
-      <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
+      <identifier>remap.pc_style_copy_paste</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::C, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::V, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::X, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Use PC Style Copy/Paste #2</name>
       <appendix>(Swap Control+C and Command_L+C)</appendix>
       <appendix>(Control+V to Command_L+V)</appendix>
       <appendix>(Control+X to Command_L+X)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.copy_paste_winstyle2</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
@@ -423,8 +429,11 @@
       <appendix>(Control+Insert to Command_L+C)</appendix>
       <appendix>(Shift+Insert to Command_L+V)</appendix>
       <appendix>(Shift+Delete to Command_L+X) (Note: "Delete" is Mac's Forward Delete)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <!-- Note: identifier name (*_2) is valid for compatibility. -->
       <identifier>remap.copy_paste_winstyle_2</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
@@ -432,55 +441,64 @@
     <item>
       <name>Use PC Style Copy-Paste #4</name>
       <appendix>Change Command+Insert to Command+C</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.copy_paste_winstyle_4</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
     </item>
     <item>
       <name>Use PC Style Undo</name>
       <appendix>(Control+Z to Command_L+Z)</appendix>
-      <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.undo_winstyle_no_term</identifier>
-      <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::Z, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Select All</name>
       <appendix>(Control+A to Command_L+A)</appendix>
-      <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.select_all_winstyle_no_term</identifier>
-      <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Save</name>
       <appendix>(Control+S to Command_L+S)</appendix>
-      <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.save_winstyle_no_term</identifier>
-      <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::S, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style New</name>
       <appendix>(Control+N to Command_L+N)</appendix>
-      <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.new_winstyle_no_term</identifier>
-      <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Use PC Style New Tab In Browser</name>
-      <appendix>(Control+T to Command_L+T)</appendix>
-      <appendix>(only in Firefox, Google Chrome, Opera, Safari)</appendix>
-      <identifier>remap.copy_paste_winstyle_new_browser_tab</identifier>
-      <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
-      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style New Tab</name>
       <appendix>(Control+T to Command_L+T)</appendix>
-      <appendix>(Except in VM, RDC, Emacs, X11, Eclipse)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.copy_paste_winstyle_new_tab</identifier>
-      <not>EMACS, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
+      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Use PC Style New Tab #2 (Browser only)</name>
+      <appendix>(Control+T to Command_L+T)</appendix>
+      <appendix></appendix>
+      <appendix>(Only in Firefox, Google Chrome, Opera, Safari)</appendix>
+      <identifier>remap.copy_paste_winstyle_new_browser_tab</identifier>
+      <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
       <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -489,9 +507,10 @@
       <appendix>(Control+G to Command_L+G)</appendix>
       <appendix>(F3 to Command_L+G)</appendix>
       <appendix>(Control+F3 to Shift+Command_L+G)</appendix>
-      <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.find_winstyle_no_term</identifier>
-      <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::G, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::F3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
@@ -500,8 +519,10 @@
     <item>
       <name>Use PC Style Delete-Last-Word</name>
       <name>(Control+Delete to Option+Delete)</name>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.control_delete_to_option_delete_winstyle</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
@@ -509,7 +530,10 @@
       <appendix>Flip between input modes</appendix>
       <appendix>(Option_L+Shift_L to Command+Space)</appendix>
       <appendix>If you want to use Option_L+Shift_L as modifier, press Shift_L first. (then press Option_L.)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_changeinputmethod1</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -518,22 +542,30 @@
       <appendix>(Option+Shift_L to Command+Space)</appendix>
       <appendix>(Option+Shift_R to Command+Shift+Space)</appendix>
       <appendix>If you want to use Option+Shift as modifier, press Shift first. (then press Option.)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_changeinputmethod2</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Use PC Style "Change Input Source" #3</name>
       <appendix>(Change control-shift to command-space)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_changeinputmethod3</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>Use PC Style Alt+F4</name>
       <appendix>Disable Cmd+Q, remap Alt/Cmd+F4 to Cmd+Q</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_altf4</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
       <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,  KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
       <autogen>__KeyToKey__ KeyCode::Q,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_NONE</autogen>
@@ -542,7 +574,10 @@
       <name>Simulate Windows Copy Paste keys.</name>
       <appendix>(Change Command+Fn to Command+C)</appendix>
       <appendix>(Change Shift+Fn to Command+V)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_command_Fn_shift_Fn</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::FN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
@@ -556,9 +591,14 @@
     </item>
     <item>
       <name>Command+Y sends Command+Shift+Z (Windows-style Redo)</name>
-      <appendix>(except for Microsoft applications which already have this built-in)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.winstyle_redo</identifier>
-      <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</not>
+      <not>
+        {{ PC_STYLE_BINDINGS_IGNORE_APPS }},
+        <!-- except for Microsoft applications which already have this built-in -->
+        WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE
+      </not>
       <autogen>
         __KeyToKey__
         KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
@@ -567,27 +607,56 @@
     </item>
     <item>
       <name>KeyPad copy and paste for PC Users who swapped Control and Command</name>
-      <appendix>(except in Virtual Machine, RDC)</appendix>
-      <appendix></appendix>
       <appendix>(Command+KeyPad_0 to Command+C)</appendix>
       <appendix>(Shift+KeyPad_0 to Command+V)</appendix>
       <appendix>(Shift+KeyPad_Dot(.) to Command+X)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_keypad_copy_and_paste</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_0,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_0,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,   KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,   KeyCode::X, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>KeyPad beginning or end of document for PC Users who swapped Control and Command</name>
-      <appendix>(except in Virtual Machine, RDC)</appendix>
-      <appendix></appendix>
       <appendix>(Command+KeyPad_7 to Command+Up)</appendix>
       <appendix>(Command+KeyPad_1 to Command+Down)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_keypad_beg_end_document</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
     </item>
+
+    <item>
+      <name style="slignt">Items for backwards compatibility</name>
+
+      <item>
+        <name style="slignt">Use PC Style Copy/Paste</name>
+        <appendix>(Control+C to Command_L+C)</appendix>
+        <appendix>(Control+V to Command_L+V)</appendix>
+        <appendix>(Control+X to Command_L+X)</appendix>
+        <identifier>remap.copy_paste_winstyle</identifier>
+        <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      </item>
+
+      <item>
+        <name style="slignt">Use PC Style Copy/Paste</name>
+        <appendix>(Control+C to Command_L+C)</appendix>
+        <appendix>(Control+V to Command_L+V)</appendix>
+        <appendix>(Control+X to Command_L+X)</appendix>
+        <appendix>(Except in Terminal, VM, RDC, Emacs, X11, Eclipse)</appendix>
+        <identifier>remap.copy_paste_winstyle_no_term</identifier>
+        <not>EMACS, TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION, X11, ECLIPSE</not>
+        <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      </item>
+    </item>
   </item>
+
 </root>
