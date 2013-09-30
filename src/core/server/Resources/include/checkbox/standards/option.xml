@@ -78,6 +78,19 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::ESCAPE</autogen>
     </item>
     <item>
+      <name>Send a forward delete key event when left option key pressed alone.</name>
+      <identifier>remap.left_option_to_option_forward_delete</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::OPTION_L,
+        <!-- to -->
+        KeyCode::OPTION_L,
+        <!-- alone -->
+        KeyCode::FORWARD_DELETE,
+      </autogen>
+    </item>
+    <item>
       <name>Option_L to Command+Control+Option+Shift+F1</name>
       <identifier>remap.optionL2allF1</identifier>
       <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::F1, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
@@ -239,6 +252,19 @@
       <name>Option_R to Forward Delete</name>
       <identifier>remap.optionR2forwarddelete</identifier>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::FORWARD_DELETE</autogen>
+    </item>
+    <item>
+      <name>Send a forward delete key event when right option key pressed alone.</name>
+      <identifier>remap.right_option_to_option_forward_delete</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        <!-- from -->
+        KeyCode::OPTION_R,
+        <!-- to -->
+        KeyCode::OPTION_R,
+        <!-- alone -->
+        KeyCode::FORWARD_DELETE,
+      </autogen>
     </item>
     <item>
       <name>Option_R to Left-Arrow</name>
