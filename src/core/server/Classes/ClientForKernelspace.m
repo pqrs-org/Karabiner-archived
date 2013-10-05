@@ -37,8 +37,8 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
           uint32_t configindex = option;
           NSString* name = [[self xmlCompiler] identifier:(int)(configindex)];
           if (name) {
-            // Do not call set_config_one here. (== Call setValueForName with tellToKext:NO.)
-            [[self preferencesManager] setValueForName:enabled forName:name tellToKext:NO];
+            // Do not call set_config_one here. (== Call setValue with tellToKext:NO.)
+            [[self preferencesManager] setValue:enabled forName:name tellToKext:NO];
           }
           break;
         }
@@ -171,7 +171,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     if ([EnvironmentChecker checkDoubleCommand]) {
       newvalue = 0;
     }
-    [preferencesManager setValueForName:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
+    [preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
   }
   {
     // set automatically_enable_pointing_device
@@ -179,7 +179,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     if ([EnvironmentChecker checkSmoothMouse]) {
       newvalue = 0;
     }
-    [preferencesManager setValueForName:newvalue forName:@"notsave.automatically_enable_pointing_device"];
+    [preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
   }
 
   // ------------------------------------------------------------

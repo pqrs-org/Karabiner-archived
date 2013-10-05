@@ -217,13 +217,13 @@
       if (! [identifier hasPrefix:@"notsave."]) {
         int value = [preferencesManager_ value:identifier];
         value = ! value;
-        [preferencesManager_ setValueForName:value forName:identifier];
+        [preferencesManager_ setValue:value forName:identifier];
       }
 
     } else {
       NSString* columnIdentifier = [tableColumn identifier];
       if ([columnIdentifier isEqualToString:@"value"]) {
-        [preferencesManager_ setValueForName:[object intValue] forName:identifier];
+        [preferencesManager_ setValue:[object intValue] forName:identifier];
 
       } else if ([columnIdentifier isEqualToString:@"stepper"]) {
         int newvalue = [preferencesManager_ value:identifier];
@@ -237,7 +237,7 @@
           newvalue = 1073741824;
         }
 
-        [preferencesManager_ setValueForName:newvalue forName:identifier];
+        [preferencesManager_ setValue:newvalue forName:identifier];
 
         [outlineView reloadItem:item];
       }

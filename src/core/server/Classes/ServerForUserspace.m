@@ -48,9 +48,9 @@
   return [preferencesManager_ defaultValue:name];
 }
 
-- (void) setValueForName:(int)newval forName:(NSString*)name
+- (void) setValue:(int)newval forName:(NSString*)name
 {
-  [preferencesManager_ setValueForName:newval forName:name];
+  [preferencesManager_ setValue:newval forName:name];
 }
 
 - (NSDictionary*) changed

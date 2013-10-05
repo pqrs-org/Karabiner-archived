@@ -97,21 +97,21 @@
         }
         NSString* identifier = [arguments objectAtIndex:2];
         NSString* value = [arguments objectAtIndex:3];
-        [[client_ proxy] setValueForName:[value intValue] forName:identifier];
+        [[client_ proxy] setValue:[value intValue] forName:identifier];
 
       } else if ([command isEqualToString:@"enable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* value = [arguments objectAtIndex:2];
-        [[client_ proxy] setValueForName:1 forName:value];
+        [[client_ proxy] setValue:1 forName:value];
 
       } else if ([command isEqualToString:@"disable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* value = [arguments objectAtIndex:2];
-        [[client_ proxy] setValueForName:0 forName:value];
+        [[client_ proxy] setValue:0 forName:value];
       }
     } @catch (NSException* exception) {
       NSLog(@"%@", exception);

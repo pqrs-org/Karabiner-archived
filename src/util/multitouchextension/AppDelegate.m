@@ -99,9 +99,9 @@ static void setPreference(int fingers, int newvalue) {
           }
 
           if (delay == 0) {
-            [client setValueForName:newvalue forName:name];
+            [client setValue:newvalue forName:name];
           } else {
-            SEL selector = @selector(setValueForName:forName:);
+            SEL selector = @selector(setValue:forName:);
             NSMethodSignature* signature = [client methodSignatureForSelector:selector];
             NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
             [invocation setSelector:selector];
