@@ -1,11 +1,13 @@
 #include <IOKit/IOKitLib.h>
 #import "AppDelegate.h"
+#import "PreferencesKeys.h"
 
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
 static FingerStatus* lastFingerStatus_ = nil;
 static BOOL has_last_device = NO;
 static int last_device = 0;
+static NSTimer* global_timer_[MAX_FINGERS];
 
 @implementation AppDelegate
 
@@ -18,6 +20,7 @@ static int last_device = 0;
 
     for (int i = 0; i < MAX_FINGERS; ++i) {
       current_status_[i] = 0;
+      global_timer_[i] = nil;
     }
   }
 
@@ -74,18 +77,48 @@ IgnoredAreaView* global_ignoredAreaView_ = nil;
 KeyRemap4MacBookClient* global_client_ = nil;
 
 static void setPreference(int fingers, int newvalue) {
-  NSAutoreleasePool* pool = [NSAutoreleasePool new];
-  {
-    NSString* name = [PreferencesController getSettingName:fingers];
-    if ([name length] > 0) {
-      @try {
-        [[global_client_ proxy] setValueForName:newvalue forName:name];
-      } @catch (NSException* exception) {
-        NSLog(@"%@", exception);
+  @synchronized(global_client_) {
+    NSAutoreleasePool* pool = [NSAutoreleasePool new];
+    {
+      NSString* name = [PreferencesController getSettingName:fingers];
+      if ([name length] > 0) {
+        @try {
+          id client = [global_client_ proxy];
+
+          if (global_timer_[fingers - 1]) {
+            [global_timer_[fingers - 1] invalidate];
+            [global_timer_[fingers - 1] release];
+            global_timer_[fingers - 1] = nil;
+          }
+
+          NSInteger delay = 0;
+          if (newvalue == 0) {
+            delay = [[NSUserDefaults standardUserDefaults] integerForKey:kDelayBeforeTurnOff];
+          } else {
+            delay = [[NSUserDefaults standardUserDefaults] integerForKey:kDelayBeforeTurnOn];
+          }
+
+          if (delay == 0) {
+            [client setValueForName:newvalue forName:name];
+          } else {
+            SEL selector = @selector(setValueForName:forName:);
+            NSMethodSignature* signature = [client methodSignatureForSelector:selector];
+            NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
+            [invocation setSelector:selector];
+            [invocation setTarget:client];
+            [invocation setArgument:&newvalue atIndex:2];
+            [invocation setArgument:&name atIndex:3];
+            global_timer_[fingers - 1] = [[NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
+                                                                       invocation:invocation
+                                                                          repeats:NO] retain];
+          }
+        } @catch (NSException* exception) {
+          NSLog(@"%@", exception);
+        }
       }
     }
+    [pool drain];
   }
-  [pool drain];
 }
 
 - (void) resetPreferences
