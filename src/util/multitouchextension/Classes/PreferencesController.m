@@ -1,6 +1,7 @@
 // -*- Mode: objc -*-
 
 #import "PreferencesController.h"
+#import "PreferencesKeys.h"
 #import "StartAtLoginController.h"
 
 @implementation PreferencesController
@@ -23,6 +24,8 @@
     @"ignoredAreaBottom" : @"0",
     @"ignoredAreaLeft"   : @"0",
     @"ignoredAreaRight"  : @"0",
+    kDelayBeforeTurnOff: @"0",
+    kDelayBeforeTurnOn:  @"0",
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
