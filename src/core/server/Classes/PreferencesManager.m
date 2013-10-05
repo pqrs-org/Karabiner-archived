@@ -162,12 +162,12 @@
   }
 }
 
-- (void) setValueForName:(int)newval forName:(NSString*)name
+- (void) setValue:(int)newval forName:(NSString*)name
 {
-  [self setValueForName:newval forName:name tellToKext:YES];
+  [self setValue:newval forName:name tellToKext:YES];
 }
 
-- (void) setValueForName:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext
+- (void) setValue:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext
 {
   @synchronized(self) {
     int oldval = [self value:name];
