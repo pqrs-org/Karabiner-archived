@@ -19,8 +19,9 @@ Web pages
 System requirements
 -------------------
 
-Mac OS X 10.6 or higher.
+Mac OS X 10.6 or higher with 64-bit kernel.
 
+If you require KeyRemap4MacBook for OS X 10.6 or 10.7 with 32-bit kernel, use KeyRemap4MacBook 8.4.0.
 If you require KeyRemap4MacBook for Mac OS X 10.4.x or 10.5.x, use KeyRemap4MacBook 5.1.0.
 
 
@@ -30,10 +31,10 @@ How to build
 Requirements:
 
 * OS X 10.8
-* Xcode 4.4+ (Don't use Xcode 4.5. It makes invalid 32-bit binaries. http://openradar.appspot.com/12353507)
+* Xcode 5.0+
 * Command Line Tools for Xcode
 * Auxiliary Tools for Xcode
-* Boost 1.52.0+ (header-only) http://www.boost.org/
+* Boost 1.54.0+ (header-only) http://www.boost.org/
 
 Please install PackageMaker.app into /Applications/Utilities.
 (PackageMaker.app is included in Auxiliary Tools for Xcode.)
