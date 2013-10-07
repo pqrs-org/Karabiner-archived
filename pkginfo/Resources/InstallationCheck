@@ -5,6 +5,8 @@ uname=`uname -r`
 osmajor="${uname%%.*}"
 [ $osmajor -lt 10 ] && exit 125
 
+[ `uname -v | grep -c /RELEASE_I386` -gt 0 ] && exit 124
+
 [ -d /Library/StartupItems/SetKeyboardLED ] && exit 126
 
 [ -d /Library/StartupItems/DoubleCommand ] && exit 127
