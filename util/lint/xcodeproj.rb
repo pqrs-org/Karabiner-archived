@@ -45,7 +45,6 @@ def check_noexist(name)
   end
 end
 
-check_value('ARCHS', '"$(ARCHS_STANDARD_32_64_BIT)"');
 check_value('objectVersion', '46')
 check_value('GCC_TREAT_WARNINGS_AS_ERRORS', 'YES')
 check_value('GCC_WARN_64_TO_32_BIT_CONVERSION', 'YES')
@@ -67,3 +66,4 @@ check_value('RUN_CLANG_STATIC_ANALYZER', 'YES')
 check_value('SDKROOT', 'macosx')
 
 check_noexist('GCC_WARN_PROTOTYPE_CONVERSION')
+check_noexist('ARCHS')
