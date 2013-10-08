@@ -49,7 +49,7 @@ namespace pqrs {
           ptree_ptr ptree_ptr;
           read_xml_(ptree_ptr, private_xml_file_path, dummy);
           if (ptree_ptr) {
-            loader.traverse(make_extracted_ptree(*ptree_ptr, private_xml_file_path));
+            loader.traverse(make_extracted_ptree(*ptree_ptr, private_xml_file_path, dummy));
           }
         }
         // replacementdef.xml
@@ -58,7 +58,7 @@ namespace pqrs {
           std::string xml_file_path = make_file_path(system_xml_directory_,  "replacementdef.xml");
           read_xml_(ptree_ptr, xml_file_path, dummy);
           if (ptree_ptr) {
-            loader.traverse(make_extracted_ptree(*ptree_ptr, xml_file_path));
+            loader.traverse(make_extracted_ptree(*ptree_ptr, xml_file_path, dummy));
           }
         }
 
