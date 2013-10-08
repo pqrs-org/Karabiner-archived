@@ -1,6 +1,8 @@
 Since version 8.4.0
 
     - Added delay configurations into multi-touch extension.
+    - Drop 32-bit kernel support.
+      KeyRemap4MacBook requires "OS X 10.8+" or "10.6 and 10.7 with 64-bit kernel".
 
 ----------------------------------------------------------------------
 = version 8.4.0 =
