@@ -21,8 +21,8 @@ System requirements
 
 Mac OS X 10.6 or higher with 64-bit kernel.
 
-If you require KeyRemap4MacBook for OS X 10.6 or 10.7 with 32-bit kernel, use KeyRemap4MacBook 8.4.0.
-If you require KeyRemap4MacBook for Mac OS X 10.4.x or 10.5.x, use KeyRemap4MacBook 5.1.0.
+* If you require KeyRemap4MacBook for OS X 10.6 or 10.7 with 32-bit kernel, use KeyRemap4MacBook 8.4.0.
+* If you require KeyRemap4MacBook for Mac OS X 10.4.x or 10.5.x, use KeyRemap4MacBook 5.1.0.
 
 
 How to build
