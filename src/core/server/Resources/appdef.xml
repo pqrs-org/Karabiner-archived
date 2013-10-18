@@ -46,6 +46,7 @@
   <appdef>
     <appname>REMOTEDESKTOPCONNECTION</appname>
     <equal>com.microsoft.rdc</equal>
+    <equal>com.microsoft.rdc.mac</equal>
     <equal>net.sf.cord</equal>
     <equal>com.thinomenon.RemoteDesktopConnection</equal>
     <equal>com.itap-mobile.qmote</equal>
