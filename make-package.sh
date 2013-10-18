@@ -116,6 +116,10 @@ echo "Fix Archive.bom"
 ruby pkginfo/fixbom.rb $archiveName/$pkgName/Contents/Archive.bom pkgroot/
 
 # --------------------------------------------------
+echo "Sign with Developer ID"
+bash files/extra/codesign-pkg.sh $archiveName/$pkgName
+
+# --------------------------------------------------
 echo "Make Archive"
 
 # Note:
