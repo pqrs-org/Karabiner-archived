@@ -45,6 +45,7 @@ for d in \
 do
     cp -R "$d" "$basedir"
 done
+cp -R "$basedir/KeyRemap4MacBook.kext" "$basedir/KeyRemap4MacBook.signed.kext"
 
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/extra"
 mkdir -p "$basedir"
@@ -67,6 +68,10 @@ for d in \
 do
     cp -R "$d" "$basedir"
 done
+
+# Sign with Developer ID
+bash files/extra/codesign.sh pkgroot
+bash files/extra/codesign-kext.sh pkgroot
 
 # Setting file permissions.
 #
