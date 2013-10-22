@@ -520,6 +520,19 @@
       <autogen>__KeyToKey__ KeyCode::F3, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
+      <name>Use PC Style Close</name>
+      <appendix>(Close window by control-w)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
+      <identifier>remap.pcstyle_close</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::W, ModifierFlag::COMMAND_L,
+      </autogen>
+    </item>
+    <item>
       <name>Use PC Style Delete-Last-Word</name>
       <name>(Control+Delete to Option+Delete)</name>
       <appendix></appendix>
