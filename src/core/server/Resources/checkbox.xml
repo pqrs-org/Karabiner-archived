@@ -99,6 +99,7 @@
   <include path="include/checkbox/languages/belgian.xml" />
   <include path="include/checkbox/languages/bulgarian.xml" />
   <include path="include/checkbox/languages/canadian.xml" />
+  <include path="include/checkbox/languages/croatian.xml" />
   <include path="include/checkbox/languages/czech.xml" />
   <include path="include/checkbox/languages/danish.xml" />
   <include path="include/checkbox/languages/finnish.xml" />
