@@ -13,6 +13,11 @@
       <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
+      <name>Change Help to Fn</name>
+      <identifier>remap.help_to_fn</identifier>
+      <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::FN</autogen>
+    </item>
+    <item>
       <name>Change Help to Option_L</name>
       <identifier>remap.help2optionL</identifier>
       <autogen>__KeyToKey__ KeyCode::HELP, KeyCode::OPTION_L</autogen>
