@@ -23,6 +23,7 @@ for f in \
     echo -ne '\033[31;40m'
     codesign \
         --force \
+        --deep \
         --sign "$CODESIGN_IDENTITY" \
         "$f"
     echo -ne '\033[0m'
@@ -33,6 +34,6 @@ for f in \
     `find "$1" -name '*.signed.kext'` \
     ; do
     echo -ne '\033[31;40m'
-    codesign --verify --deep-verify "$f"
+    codesign --verify --deep "$f"
     echo -ne '\033[0m'
 done

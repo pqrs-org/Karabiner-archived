@@ -30,7 +30,7 @@ How to build
 
 Requirements:
 
-* OS X 10.8
+* OS X 10.9
 * Xcode 5.0+
 * Command Line Tools for Xcode
 * Auxiliary Tools for Xcode

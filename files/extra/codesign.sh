@@ -13,8 +13,7 @@ fi
 # ------------------------------------------------------------
 # sign
 for f in \
-    `find "$1" -name '*.app'` \
-    `find "$1" -name '*.framework'` \
+    `find "$1" -name '*.app' | sort -r` \
     ; do
 
     echo -ne '\033[33;40m'
@@ -24,6 +23,7 @@ for f in \
     echo -ne '\033[31;40m'
     codesign \
         --force \
+        --deep \
         --sign "$CODESIGN_IDENTITY" \
         "$f"
     echo -ne '\033[0m'
@@ -34,6 +34,6 @@ for f in \
     `find "$1" -name '*.app'` \
     ; do
     echo -ne '\033[31;40m'
-    codesign --verify --deep-verify "$f"
+    codesign --verify --deep "$f"
     echo -ne '\033[0m'
 done

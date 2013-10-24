@@ -38,14 +38,8 @@ cp -R files/Utilities/*.app "$basedir"
 
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library"
 mkdir -p "$basedir"
-for d in \
-    src/core/kext/build/Release/KeyRemap4MacBook.kext \
-    files/scripts \
-    ;
-do
-    cp -R "$d" "$basedir"
-done
-cp -R "$basedir/KeyRemap4MacBook.kext" "$basedir/KeyRemap4MacBook.signed.kext"
+cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "$basedir/KeyRemap4MacBook.signed.kext"
+cp -R files/scripts "$basedir"
 
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/extra"
 mkdir -p "$basedir"
