@@ -231,31 +231,31 @@
       <name>VK_CONSUMERKEY</name>
       <item>
         <name>Standard</name>
-        <appendix>Use 1 to VK_CONSUMERKEY_BRIGHTNESS_DOWN</appendix>
-        <appendix>Use 2 to VK_CONSUMERKEY_BRIGHTNESS_UP</appendix>
-        <appendix>Use 3 to VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</appendix>
-        <appendix>Use 4 to VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</appendix>
-        <appendix>Use 5 to VK_CONSUMERKEY_MUSIC_PREV</appendix>
-        <appendix>Use 6 to VK_CONSUMERKEY_MUSIC_PLAY</appendix>
-        <appendix>Use 7 to VK_CONSUMERKEY_MUSIC_NEXT</appendix>
-        <appendix>Use 8 to VK_CONSUMERKEY_VOLUME_MUTE</appendix>
-        <appendix>Use 9 to VK_CONSUMERKEY_VOLUME_DOWN</appendix>
-        <appendix>Use 0 to VK_CONSUMERKEY_VOLUME_UP</appendix>
-        <appendix>Use q to VK_CONSUMERKEY_EJECT</appendix>
-        <appendix>Use w to VK_CONSUMERKEY_POWER</appendix>
+        <appendix>Use F1 to VK_CONSUMERKEY_BRIGHTNESS_DOWN</appendix>
+        <appendix>Use F2 to VK_CONSUMERKEY_BRIGHTNESS_UP</appendix>
+        <appendix>Use F3 to VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</appendix>
+        <appendix>Use F4 to VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</appendix>
+        <appendix>Use F5 to VK_CONSUMERKEY_MUSIC_PREV</appendix>
+        <appendix>Use F6 to VK_CONSUMERKEY_MUSIC_PLAY</appendix>
+        <appendix>Use F7 to VK_CONSUMERKEY_MUSIC_NEXT</appendix>
+        <appendix>Use F8 to VK_CONSUMERKEY_VOLUME_MUTE</appendix>
+        <appendix>Use F9 to VK_CONSUMERKEY_VOLUME_DOWN</appendix>
+        <appendix>Use F10 to VK_CONSUMERKEY_VOLUME_UP</appendix>
+        <appendix>Use F11 to VK_CONSUMERKEY_EJECT</appendix>
+        <appendix>Use F12 to VK_CONSUMERKEY_POWER</appendix>
         <identifier>remap.samples_vk_consumerkey</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_CONSUMERKEY_MUSIC_PREV</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_CONSUMERKEY_MUSIC_PLAY</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_CONSUMERKEY_MUSIC_NEXT</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_CONSUMERKEY_VOLUME_MUTE</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::VK_CONSUMERKEY_VOLUME_DOWN</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::VK_CONSUMERKEY_VOLUME_UP</autogen>
-        <autogen>__KeyToKey__ KeyCode::Q,     KeyCode::VK_CONSUMERKEY_EJECT</autogen>
-        <autogen>__KeyToKey__ KeyCode::W,     KeyCode::VK_CONSUMERKEY_POWER</autogen>
+        <autogen>__KeyToKey__ KeyCode::F1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::F2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::F3, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_LOW</autogen>
+        <autogen>__KeyToKey__ KeyCode::F4, KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_HIGH</autogen>
+        <autogen>__KeyToKey__ KeyCode::F5, KeyCode::VK_CONSUMERKEY_MUSIC_PREV</autogen>
+        <autogen>__KeyToKey__ KeyCode::F6, KeyCode::VK_CONSUMERKEY_MUSIC_PLAY</autogen>
+        <autogen>__KeyToKey__ KeyCode::F7, KeyCode::VK_CONSUMERKEY_MUSIC_NEXT</autogen>
+        <autogen>__KeyToKey__ KeyCode::F8, KeyCode::VK_CONSUMERKEY_VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::F9, KeyCode::VK_CONSUMERKEY_VOLUME_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::F10, KeyCode::VK_CONSUMERKEY_VOLUME_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::F11, KeyCode::VK_CONSUMERKEY_EJECT</autogen>
+        <autogen>__KeyToKey__ KeyCode::F12, KeyCode::VK_CONSUMERKEY_POWER</autogen>
       </item>
       <item>
         <name>Combination with key repeat</name>
