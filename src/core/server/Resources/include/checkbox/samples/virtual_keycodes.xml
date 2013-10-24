@@ -242,7 +242,7 @@
         <appendix>Use 9 to VK_CONSUMERKEY_VOLUME_DOWN</appendix>
         <appendix>Use 0 to VK_CONSUMERKEY_VOLUME_UP</appendix>
         <appendix>Use q to VK_CONSUMERKEY_EJECT</appendix>
-        <appendix>Use w to VK_CONSUMERKEY_POWER (== do nothing.)</appendix>
+        <appendix>Use w to VK_CONSUMERKEY_POWER</appendix>
         <identifier>remap.samples_vk_consumerkey</identifier>
         <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
