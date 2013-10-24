@@ -3,9 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 uname=`uname -r`
 osmajor="${uname%%.*}"
-[ $osmajor -lt 10 ] && exit 125
-
-[ `uname -v | grep -c /RELEASE_I386` -gt 0 ] && exit 124
+[ $osmajor -lt 13 ] && exit 125
 
 [ -d /Library/StartupItems/SetKeyboardLED ] && exit 126
 

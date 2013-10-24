@@ -859,7 +859,7 @@
 				OTHER_CPLUSPLUSFLAGS = "-no-cpp-precomp";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
