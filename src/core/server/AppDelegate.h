@@ -4,7 +4,6 @@
 #include "bridge.h"
 
 @class ClientForKernelspace;
-@class PowerKeyObserver;
 @class PreferencesController;
 @class PreferencesManager;
 @class ServerForUserspace;
@@ -26,7 +25,6 @@
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
   IBOutlet ClientForKernelspace* clientForKernelspace;
-  IBOutlet PowerKeyObserver* powerKeyObserver_;
   IBOutlet PreferencesController* preferencesController_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet ServerForUserspace* serverForUserspace_;

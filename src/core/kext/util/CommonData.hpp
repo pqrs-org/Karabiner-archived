@@ -41,9 +41,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void send_notification_statusmessage(int index);
     static const char* get_statusmessage(int index);
 
-    static void set_isPowerKeyChanged(bool newval) { isPowerKeyChanged_ = newval; }
-    static bool get_isPowerKeyChanged(void) { return isPowerKeyChanged_; }
-
     // for debug
     static void increase_alloccount(void);
     static void decrease_alloccount(void);
@@ -56,8 +53,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static LastPressedPhysicalKey current_lastpressedphysicalkey_;
 
     static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
-
-    static bool isPowerKeyChanged_;
 
     static int alloccount_;
   };

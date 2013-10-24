@@ -111,19 +111,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       return new Params_KeyboardSpecialEventCallback(et, fl, ckc, ckc.get(), static_cast<UInt64>(-1), r);
     }
 
-    static Params_KeyboardSpecialEventCallback* alloc(EventType et, Flags fl, ConsumerKeyCode ckc,
-                                                      bool r, EventOrigin::Value eventOrigin) {
-      return new Params_KeyboardSpecialEventCallback(et, fl, ckc, ckc.get(), static_cast<UInt64>(-1), r, eventOrigin);
-    }
-
     static Params_KeyboardSpecialEventCallback* alloc(const Params_KeyboardSpecialEventCallback& p) {
       return new Params_KeyboardSpecialEventCallback(p.eventType,
                                                      p.flags,
                                                      p.key,
                                                      p.flavor,
                                                      p.guid,
-                                                     p.repeat,
-                                                     p.ex_eventOrigin);
+                                                     p.repeat);
     }
 
     // ----------------------------------------
@@ -137,16 +131,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     const bool repeat;
 
     const bool ex_iskeydown;
-    const EventOrigin::Value ex_eventOrigin; // For power key remapping.
 
   private:
     Params_KeyboardSpecialEventCallback(EventType et, Flags fl, ConsumerKeyCode ckc,
                                         unsigned int fv, UInt64 g,
-                                        bool r,
-                                        EventOrigin::Value eventOrigin = EventOrigin::HARDWARE) :
+                                        bool r) :
       eventType(et), flags(fl), key(ckc),
       flavor(fv), guid(g),
-      repeat(r), ex_iskeydown(et == EventType::DOWN), ex_eventOrigin(eventOrigin) {
+      repeat(r), ex_iskeydown(et == EventType::DOWN) {
       CommonData::increase_alloccount();
     }
   };
