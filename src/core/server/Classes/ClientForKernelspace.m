@@ -306,45 +306,4 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   return information;
 }
 
-- (BOOL) has_consumer
-{
-  struct BridgeDeviceInformation deviceInformation;
-
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER;
-  bridgestruct.option = 0;
-  bridgestruct.data   = (user_addr_t)(&deviceInformation);
-  bridgestruct.size   = sizeof(deviceInformation);
-
-  if (! [userClient_userspace synchronized_communication:&bridgestruct]) return NO;
-
-  return deviceInformation.isFound;
-}
-
-- (void) enqueue_power_key
-{
-  uint32_t dummy = 0;
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY;
-  bridgestruct.option = 0;
-  bridgestruct.data   = &dummy;
-  bridgestruct.size   = sizeof(dummy);
-
-  [userClient_userspace synchronized_communication:&bridgestruct];
-}
-
-- (BOOL) is_power_key_changed
-{
-  uint32_t changed = 0;
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED;
-  bridgestruct.option = 0;
-  bridgestruct.data   = &changed;
-  bridgestruct.size   = sizeof(changed);
-
-  if (! [userClient_userspace synchronized_communication:&bridgestruct]) return NO;
-
-  return changed;
-}
-
 @end

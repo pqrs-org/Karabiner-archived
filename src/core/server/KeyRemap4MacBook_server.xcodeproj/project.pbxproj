@@ -51,7 +51,6 @@
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
-		34D5F825172A87B500C6BA23 /* PowerKeyObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D5F824172A87B500C6BA23 /* PowerKeyObserver.m */; };
 		34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* inputsourcedef.xml */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34FEAE4C148695AE0042D507 /* replacementdef.xml */; };
@@ -151,8 +150,6 @@
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputSource.m"; path = "Classes/WorkSpaceData+InputSource.m"; sourceTree = "<group>"; };
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
-		34D5F823172A87B500C6BA23 /* PowerKeyObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerKeyObserver.h; path = Classes/PowerKeyObserver.h; sourceTree = "<group>"; };
-		34D5F824172A87B500C6BA23 /* PowerKeyObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerKeyObserver.m; path = Classes/PowerKeyObserver.m; sourceTree = "<group>"; };
 		34F37D53149A2E7800D4694B /* inputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = inputsourcedef.xml; path = Resources/inputsourcedef.xml; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
@@ -181,42 +178,40 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				34D5F823172A87B500C6BA23 /* PowerKeyObserver.h */,
-				34D5F824172A87B500C6BA23 /* PowerKeyObserver.m */,
-				3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */,
-				34207BFB1666209100E7FD08 /* Preferences */,
-				34A5572516EA03B3000E5399 /* StatusMessage */,
-				3401D0FB1658718100CF962F /* NotificationKeys.h */,
-				3401D0DE16586C0700CF962F /* KeyRemap4MacBookProtocol.h */,
+				256AC3D80F4B6AC300CF3369 /* AppDelegate.h */,
+				256AC3D90F4B6AC300CF3369 /* AppDelegate.m */,
+				34597768128DBFAE003398BD /* bridge.h */,
 				3401D0DB1657DD4800CF962F /* ClientForKernelspace.h */,
 				3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */,
 				3429B704171A990000C7DB64 /* EnvironmentChecker.h */,
 				3429B705171A990000C7DB64 /* EnvironmentChecker.m */,
-				3401D0D81657CE6A00CF962F /* Updater.h */,
-				3401D0D91657CE6A00CF962F /* Updater.m */,
-				3401D0D41657A18C00CF962F /* ServerForUserspace.h */,
-				3401D0D51657A18C00CF962F /* ServerForUserspace.m */,
 				340B7E3D1545090D00FB3237 /* InputSource.h */,
 				340B7E3E1545090D00FB3237 /* InputSource.m */,
 				342D245C16A68C4E00EF070F /* IOHIDPostEventWrapper.h */,
 				342D245D16A68C4E00EF070F /* IOHIDPostEventWrapper.m */,
-				34848265152F54B700A9A3BE /* XMLCompiler.m */,
-				34848264152F533500A9A3BE /* XMLCompiler.h */,
 				34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */,
+				3401D0DE16586C0700CF962F /* KeyRemap4MacBookProtocol.h */,
+				3401D0FB1658718100CF962F /* NotificationKeys.h */,
+				34207BFB1666209100E7FD08 /* Preferences */,
+				3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */,
+				34FB9590128F98510088B235 /* PreferencesManager.h */,
+				34FB9591128F985A0088B235 /* PreferencesManager.m */,
+				3401D0D41657A18C00CF962F /* ServerForUserspace.h */,
+				3401D0D51657A18C00CF962F /* ServerForUserspace.m */,
+				348C6A2C128E4504005F516D /* StatusBar.h */,
+				348C6A2D128E4504005F516D /* StatusBar.m */,
+				34A5572516EA03B3000E5399 /* StatusMessage */,
+				34D4F82612C4463B001819AA /* StatusWindow.h */,
+				34D4F82712C4463B001819AA /* StatusWindow.m */,
+				3401D0D81657CE6A00CF962F /* Updater.h */,
+				3401D0D91657CE6A00CF962F /* Updater.m */,
 				345647341346A7AF00FD0C38 /* UserClient_userspace.h */,
 				345647351346A7AF00FD0C38 /* UserClient_userspace.m */,
 				34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */,
-				34D4F82612C4463B001819AA /* StatusWindow.h */,
-				34D4F82712C4463B001819AA /* StatusWindow.m */,
-				34FB9591128F985A0088B235 /* PreferencesManager.m */,
-				34FB9590128F98510088B235 /* PreferencesManager.h */,
-				348C6A2C128E4504005F516D /* StatusBar.h */,
-				348C6A2D128E4504005F516D /* StatusBar.m */,
 				34B893FB128E448C00BC955A /* WorkSpaceData.h */,
 				34B893FC128E448C00BC955A /* WorkSpaceData.m */,
-				34597768128DBFAE003398BD /* bridge.h */,
-				256AC3D80F4B6AC300CF3369 /* AppDelegate.h */,
-				256AC3D90F4B6AC300CF3369 /* AppDelegate.m */,
+				34848264152F533500A9A3BE /* XMLCompiler.h */,
+				34848265152F54B700A9A3BE /* XMLCompiler.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -448,7 +443,6 @@
 				34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */,
 				34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */,
 				3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */,
-				34D5F825172A87B500C6BA23 /* PowerKeyObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

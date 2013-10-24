@@ -532,14 +532,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       USB_OVERDRIVE,
     };
   }
-
-  namespace EventOrigin {
-    enum Value {
-      NONE,
-      HARDWARE,
-      USERSPACE,
-    };
-  }
 }
 
 #endif

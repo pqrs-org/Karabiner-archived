@@ -66,8 +66,9 @@ enum {
   // Version 55: Added KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY.
   // Version 56: Added essential configurations. (parameter.maximum_speed_of_*, parameter.acceleration_of_*)
   // Version 57: Added an essential configuration. (parameter.mouse_key_scroll_natural_direction)
+  // Version 58: Removed BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY, BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED.
 
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 57,
+  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 58,
 };
 
 enum {
@@ -163,10 +164,6 @@ enum {
   BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD,
   BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER,
   BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING,
-
-  // For power key remapping.
-  BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY,
-  BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED,
 };
 
 enum {

@@ -3,7 +3,6 @@
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "NotificationKeys.h"
-#import "PowerKeyObserver.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
@@ -300,7 +299,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [self registerIONotification];
   [self registerWakeNotification];
 
-  [powerKeyObserver_ start];
   [statusWindow_ setupStatusWindow];
   [statusbar_ refresh];
   [xmlCompiler_ reload];
