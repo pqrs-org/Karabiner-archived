@@ -138,6 +138,15 @@
         <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, PointingButton::BUTTON4</autogen>
       </item>
       <item>
+        <name>Control+LeftClick to LeftClick</name>
+        <identifier>remap.pointing_controlLeftclick2leftclick</identifier>
+        <autogen>
+          __PointingButtonToPointingButton__
+          PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          PointingButton::LEFT
+        </autogen>
+      </item>
+      <item>
         <name>Control+LeftClick to MiddleClick</name>
         <identifier>remap.pointing_controlLeftclick2middleclick</identifier>
         <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::MIDDLE</autogen>

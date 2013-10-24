@@ -121,6 +121,15 @@
       <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::F15</autogen>
     </item>
     <item>
+      <name>Eject to Launchpad</name>
+      <identifier>remap.eject_to_launchpad</identifier>
+      <autogen>
+        __ConsumerToKey__
+        ConsumerKeyCode::EJECT, ModifierFlag::NONE,
+        KeyCode::LAUNCHPAD,
+      </autogen>
+    </item>
+    <item>
       <name>Eject to PageDown</name>
       <identifier>remap.eject2pagedown</identifier>
       <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
