@@ -15,6 +15,7 @@ fi
 echo -ne '\033[31;40m'
 codesign \
     --force \
+    --deep \
     --sign "$CODESIGN_IDENTITY" \
     "$1"
 echo -ne '\033[0m'
