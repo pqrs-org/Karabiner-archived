@@ -64,8 +64,8 @@ do
 done
 
 # Sign with Developer ID
-bash files/extra/codesign.sh pkgroot
 bash files/extra/codesign-kext.sh pkgroot
+bash files/extra/codesign.sh pkgroot
 
 # Setting file permissions.
 #
