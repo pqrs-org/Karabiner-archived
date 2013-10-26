@@ -13,8 +13,8 @@
     </autogen>
     <autogen>
       __KeyToKey__
-      KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
       KeyCode::BRACKET_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
     </autogen>
   </item>
 
