@@ -5,7 +5,7 @@
 namespace pqrs {
   namespace vector {
     static bool
-    is_string_empty(std::string& s)
+    is_string_empty(const std::string& s)
     {
       // If we use std::mem_fun_ref(&std::string::empty),
       // we get this error:
