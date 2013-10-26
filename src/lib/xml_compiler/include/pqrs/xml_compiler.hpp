@@ -2,11 +2,11 @@
 #define PQRS_XML_COMPILER_HPP
 
 #include <cstdlib>
+#include <memory>
 #include <stack>
-#include <string>
 #include <stdexcept>
+#include <string>
 #include <vector>
-#include <tr1/memory>
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wshadow"
@@ -26,7 +26,7 @@
 namespace pqrs {
   class xml_compiler {
   public:
-    typedef std::tr1::shared_ptr<boost::property_tree::ptree> ptree_ptr;
+    typedef std::shared_ptr<boost::property_tree::ptree> ptree_ptr;
 #include "pqrs/xml_compiler/detail/exception.hpp"
 #include "pqrs/xml_compiler/detail/error_information.hpp"
 #include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
@@ -136,12 +136,12 @@ namespace pqrs {
 
     pqrs::string::replacement replacement_;
     symbol_map symbol_map_;
-    std::vector<std::tr1::shared_ptr<app> > app_vector_;
-    boost::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> > vk_change_inputsource_map_;
-    std::vector<std::tr1::shared_ptr<inputsource> > inputsource_vector_;
-    boost::unordered_map<uint32_t, std::tr1::shared_ptr<url> > vk_open_url_map_;
+    std::vector<std::shared_ptr<app> > app_vector_;
+    boost::unordered_map<uint32_t, std::shared_ptr<inputsource> > vk_change_inputsource_map_;
+    std::vector<std::shared_ptr<inputsource> > inputsource_vector_;
+    boost::unordered_map<uint32_t, std::shared_ptr<url> > vk_open_url_map_;
     boost::unordered_map<uint32_t, std::string> identifier_map_;
-    std::vector<std::tr1::shared_ptr<essential_configuration> > essential_configurations_;
+    std::vector<std::shared_ptr<essential_configuration> > essential_configurations_;
     remapclasses_initialize_vector remapclasses_initialize_vector_;
 
     preferences_node_tree<preferences_checkbox_node> preferences_checkbox_node_tree_;

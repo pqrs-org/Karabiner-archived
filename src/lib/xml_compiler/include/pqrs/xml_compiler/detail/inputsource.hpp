@@ -40,8 +40,8 @@ public:
                      symbol_map& symbol_map,
                      remapclasses_initialize_vector& remapclasses_initialize_vector,
                      boost::unordered_map<uint32_t, std::string>& identifier_map,
-                     boost::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> >& vk_change_inputsource_map,
-                     std::vector<std::tr1::shared_ptr<inputsource> >& inputsource_vector) :
+                     boost::unordered_map<uint32_t, std::shared_ptr<inputsource> >& vk_change_inputsource_map,
+                     std::vector<std::shared_ptr<inputsource> >& inputsource_vector) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
     remapclasses_initialize_vector_(remapclasses_initialize_vector),
@@ -68,6 +68,6 @@ private:
   remapclasses_initialize_vector& remapclasses_initialize_vector_;
   boost::unordered_map<uint32_t, std::string>& identifier_map_;
 
-  boost::unordered_map<uint32_t, std::tr1::shared_ptr<inputsource> >& vk_change_inputsource_map_;
-  std::vector<std::tr1::shared_ptr<inputsource> >& inputsource_vector_;
+  boost::unordered_map<uint32_t, std::shared_ptr<inputsource> >& vk_change_inputsource_map_;
+  std::vector<std::shared_ptr<inputsource> >& inputsource_vector_;
 };

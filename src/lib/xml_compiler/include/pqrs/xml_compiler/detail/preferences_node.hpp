@@ -61,9 +61,9 @@ private:
 template <class T>
 class preferences_node_tree {
 public:
-  typedef std::tr1::shared_ptr<const preferences_node_tree> preferences_node_tree_ptr;
+  typedef std::shared_ptr<const preferences_node_tree> preferences_node_tree_ptr;
   typedef std::vector<preferences_node_tree_ptr> preferences_node_tree_ptrs;
-  typedef std::tr1::shared_ptr<preferences_node_tree_ptrs> preferences_node_tree_ptrs_ptr;
+  typedef std::shared_ptr<preferences_node_tree_ptrs> preferences_node_tree_ptrs_ptr;
 
   preferences_node_tree(void) {}
   preferences_node_tree(const T& parent_node) : node_(parent_node) {}

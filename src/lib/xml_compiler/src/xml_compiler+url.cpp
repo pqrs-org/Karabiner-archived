@@ -36,7 +36,7 @@ namespace pqrs {
           traverse(it.children_extracted_ptree());
         }
       } else {
-        std::tr1::shared_ptr<url> newurl(new url());
+        std::shared_ptr<url> newurl(new url());
         if (! newurl) continue;
 
         // ----------------------------------------

@@ -59,7 +59,7 @@ namespace pqrs {
           traverse(it.children_extracted_ptree());
         }
       } else {
-        std::tr1::shared_ptr<app> newapp(new app());
+        std::shared_ptr<app> newapp(new app());
         if (! newapp) continue;
 
         for (const auto& child : it.children_extracted_ptree()) {

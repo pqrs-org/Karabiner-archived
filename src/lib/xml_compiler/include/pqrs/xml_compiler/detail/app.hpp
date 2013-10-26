@@ -23,7 +23,7 @@ class app_loader {
 public:
   app_loader(const xml_compiler& xml_compiler,
              symbol_map& symbol_map,
-             std::vector<std::tr1::shared_ptr<app> >& app_vector) :
+             std::vector<std::shared_ptr<app> >& app_vector) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
     app_vector_(app_vector)
@@ -34,5 +34,5 @@ public:
 private:
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
-  std::vector<std::tr1::shared_ptr<app> >& app_vector_;
+  std::vector<std::shared_ptr<app> >& app_vector_;
 };
