@@ -1,6 +1,7 @@
-CXXFLAGS = -I../../ -Wall -Werror -O2
-LDFLAGS =-F$(HOME)/Library/Frameworks -framework gtest \
+CXXFLAGS = -I../../ -I/usr/local/include -Wall -Werror -O2
+LDFLAGS = -F$(HOME)/Library/Frameworks -framework gtest \
 	-L$(HOME)/Library/Frameworks/gtest.Framework/Resources \
+	-stdlib=libc++ \
 	-lgtest_main
 
 SOURCES=$(wildcard *.cpp)

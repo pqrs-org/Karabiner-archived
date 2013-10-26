@@ -263,7 +263,7 @@ TEST(pqrs_xml_compiler, reload)
             *(xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy")))));
 
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
-  EXPECT_TRUE(node_tree.get_children());
+  EXPECT_TRUE(node_tree.get_children() != nullptr);
   {
     auto node_ptr = (*(node_tree.get_children()))[0];
     EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
