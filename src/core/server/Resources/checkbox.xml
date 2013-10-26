@@ -105,6 +105,7 @@
   <include path="include/checkbox/languages/finnish.xml" />
   <include path="include/checkbox/languages/french.xml" />
   <include path="include/checkbox/languages/german.xml" />
+  <include path="include/checkbox/languages/hebrew.xml" />
   <include path="include/checkbox/languages/italian.xml" />
   <include path="include/checkbox/languages/japanese.xml" />
   <include path="include/checkbox/languages/korean.xml" />
