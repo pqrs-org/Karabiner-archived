@@ -2,20 +2,25 @@
 <root>
 
   <item>
-    <name>Swap brackets([]) shortcut direction in Hebrew on Google Chrome</name>
-    <identifier>remap.hebrew_brackets_chrome</identifier>
-    <only>GOOGLE_CHROME</only>
-    <inputsource_only>HEBREW</inputsource_only>
-    <autogen>
-      __KeyToKey__
-      KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
-      KeyCode::BRACKET_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
-    </autogen>
-    <autogen>
-      __KeyToKey__
-      KeyCode::BRACKET_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
-      KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
-    </autogen>
+    <name>For Hebrew</name>
+
+    <item>
+      <name>Swap command-brackets([]) shortcut direction in Hebrew on Google Chrome</name>
+      <identifier>remap.hebrew_brackets_chrome</identifier>
+      <only>GOOGLE_CHROME</only>
+      <inputsource_only>HEBREW</inputsource_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::BRACKET_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BRACKET_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+    </item>
+
   </item>
 
 </root>
