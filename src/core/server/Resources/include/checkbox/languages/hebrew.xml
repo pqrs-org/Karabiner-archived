@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Swap brackets([]) shortcut direction in Hebrew on Google Chrome</name>
+    <identifier>remap.hebrew_brackets_chrome</identifier>
+    <only>GOOGLE_CHROME</only>
+    <inputsource_only>HEBREW</inputsource_only>
+    <autogen>
+      __KeyToKey__
+      KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      KeyCode::BRACKET_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+    </autogen>
+    <autogen>
+      __KeyToKey__
+      KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      KeyCode::BRACKET_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+    </autogen>
+  </item>
+
+</root>
