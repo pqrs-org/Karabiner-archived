@@ -41,12 +41,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::initialize();
       ButtonStatus::initialize();
 
-      ListHookedDevice::initializeAll();
-
       workLoop = IOWorkLoop::workLoop();
       if (! workLoop) {
         IOLOG_ERROR("IOWorkLoop::workLoop failed\n");
       } else {
+        ListHookedDevice::initializeAll(*workLoop);
+
         KeyboardRepeat::initialize(*workLoop);
         EventInputQueue::initialize(*workLoop);
         VirtualKey::initialize(*workLoop);

@@ -8,6 +8,7 @@ Since version 8.4.0
       You can no longer change the power button on MacBook.
     - Fixed issues:
         - ENV_HOME does not work properly in included xml.
+        - New plugged devices will not be recognized on OS X 10.9.
     - Signed with Developer ID.
 
 ----------------------------------------------------------------------

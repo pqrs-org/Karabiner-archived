@@ -8,6 +8,8 @@
 #include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  TimerWrapper ListHookedDevice::refreshAll_timer_;
+
   // ======================================================================
   ListHookedDevice::Item::Item(IOHIDevice* d) :
     device_(d),
@@ -315,16 +317,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListHookedDevice::initializeAll(void)
+  ListHookedDevice::initializeAll(IOWorkLoop& workloop)
   {
     ListHookedKeyboard::instance().initialize();
     ListHookedConsumer::instance().initialize();
     ListHookedPointing::instance().initialize();
+
+    // Since OS X 10.9, we need to call refreshAll periodical.
+    // Because new plugged device's event callback pointer will be restored to system's callback once
+    // after we replace pointer at device connection.
+    refreshAll_timer_.initialize(&workloop, NULL, ListHookedDevice::refreshAll_timer_callback);
+    refreshAll_timer_.setTimeoutMS(REFRESHALL_TIMER_INTERVAL);
   }
 
   void
   ListHookedDevice::terminateAll(void)
   {
+    refreshAll_timer_.terminate();
+
     ListHookedKeyboard::instance().terminate();
     ListHookedConsumer::instance().terminate();
     ListHookedPointing::instance().terminate();
@@ -336,5 +346,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedKeyboard::instance().refresh();
     ListHookedConsumer::instance().refresh();
     ListHookedPointing::instance().refresh();
+  }
+
+  void
+  ListHookedDevice::refreshAll_timer_callback(OSObject* owner, IOTimerEventSource* sender)
+  {
+    refreshAll();
+    refreshAll_timer_.setTimeoutMS(REFRESHALL_TIMER_INTERVAL);
   }
 }

@@ -4,6 +4,7 @@
 #include "base.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
+#include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class ListHookedDevice {
@@ -46,9 +47,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void getDeviceInformation(BridgeDeviceInformation& out, size_t index);
 
-    static void initializeAll(void);
+    static void initializeAll(IOWorkLoop& workloop);
     static void terminateAll(void);
     static void refreshAll(void);
+    static void refreshAll_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
   protected:
     ListHookedDevice(void) : last_(NULL), list_(NULL) {}
@@ -56,6 +58,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     const IOHIDevice* last_;
     List* list_;
+
+  private:
+    enum {
+      REFRESHALL_TIMER_INTERVAL = 1000,
+    };
+    static TimerWrapper refreshAll_timer_;
   };
 }
 
