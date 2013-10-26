@@ -69,7 +69,7 @@ namespace pqrs {
           traverse(it.children_extracted_ptree());
         }
       } else {
-        std::tr1::shared_ptr<inputsource> newinputsource(new inputsource());
+        std::shared_ptr<inputsource> newinputsource(new inputsource());
         if (! newinputsource) continue;
 
         // ----------------------------------------

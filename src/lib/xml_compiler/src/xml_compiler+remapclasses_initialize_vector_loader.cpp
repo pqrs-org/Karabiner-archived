@@ -195,7 +195,7 @@ namespace pqrs {
       for (const auto& it : info) {
         if (autogen.find(it.name) != std::string::npos) {
           // Making combination at the first time. (reuse it since 2nd time.)
-          static std::vector<std::tr1::shared_ptr<std::vector<std::string> > > combination;
+          static std::vector<std::shared_ptr<std::vector<std::string> > > combination;
           if (combination.empty()) {
             // to reduce combination, we ignore same modifier combination such as (COMMAND_L | COMMAND_R).
             const char* seeds[] = { "MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND",

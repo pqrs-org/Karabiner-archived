@@ -1,13 +1,29 @@
-#include <functional>
 #include <algorithm>
+#include <functional>
 #include "pqrs/vector.hpp"
 
 namespace pqrs {
   namespace vector {
+    static bool
+    is_string_empty(std::string& s)
+    {
+      // If we use std::mem_fun_ref(&std::string::empty),
+      // we get this error:
+      //
+      //   Undefined symbols for architecture x86_64:
+      //     "std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::empty() const"
+      //
+      // libc++ does not include std::string::empty
+      // because libc++ assumes that std::string::empty is always inline function.
+      //
+      // To avoid this error, we need to make this function.
+      return s.empty();
+    }
+
     void
     remove_empty_strings(std::vector<std::string>& v)
     {
-      auto it = std::remove_if(v.begin(), v.end(), mem_fun_ref(&std::string::empty));
+      auto it = std::remove_if(v.begin(), v.end(), is_string_empty);
       v.erase(it, v.end());
     }
 
@@ -19,10 +35,10 @@ namespace pqrs {
 
     // ============================================================
     void
-    make_combination(std::vector<std::tr1::shared_ptr<std::vector<std::string> > >& v,
+    make_combination(std::vector<std::shared_ptr<std::vector<std::string> > >& v,
                      const char* seeds[], size_t seeds_size)
     {
-      typedef std::tr1::shared_ptr<std::vector<std::string> > ptr;
+      typedef std::shared_ptr<std::vector<std::string> > ptr;
 
       if (seeds_size == 0) {
         ptr ptr(new std::vector<std::string>());

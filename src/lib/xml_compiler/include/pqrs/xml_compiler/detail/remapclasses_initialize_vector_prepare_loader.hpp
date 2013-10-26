@@ -15,7 +15,7 @@ class remapclasses_initialize_vector_prepare_loader {
 public:
   remapclasses_initialize_vector_prepare_loader(const xml_compiler& xml_compiler,
                                                 symbol_map& symbol_map,
-                                                std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations,
+                                                std::vector<std::shared_ptr<essential_configuration> >& essential_configurations,
                                                 preferences_node_tree_t* preferences_node_tree) :
     xml_compiler_(xml_compiler),
     symbol_map_(symbol_map),
@@ -41,7 +41,7 @@ public:
         } else {
           // preferences_node_tree
           assert(preferences_node_tree_);
-          std::tr1::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
+          std::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
           assert(ptr);
 
           for (const auto& child : it.children_extracted_ptree()) {
@@ -56,7 +56,7 @@ public:
                 // ----------------------------------------
                 auto attr_essential = child.get_optional("<xmlattr>.essential");
                 if (attr_essential) {
-                  essential_configurations_.push_back(std::tr1::shared_ptr<essential_configuration>(new essential_configuration(ptr->get_node())));
+                  essential_configurations_.push_back(std::shared_ptr<essential_configuration>(new essential_configuration(ptr->get_node())));
                   // Do not treat essentials anymore.
                   continue;
                 }
@@ -127,7 +127,7 @@ public:
 private:
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
-  std::vector<std::tr1::shared_ptr<essential_configuration> >& essential_configurations_;
+  std::vector<std::shared_ptr<essential_configuration> >& essential_configurations_;
   preferences_node_tree_t* preferences_node_tree_;
   preferences_node_tree_t* const root_preferences_node_tree_;
 
