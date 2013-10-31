@@ -44,6 +44,11 @@
         <autogen>__KeyOverlaidModifier__ KeyCode::PC_APPLICATION, KeyCode::CONTROL_L, KeyCode::CAPSLOCK</autogen>
       </item>
       <item>
+        <name>Application Key to Command+Option</name>
+        <identifier>remap.pc_application_to_command_option</identifier>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::COMMAND_L</autogen>
+      </item>
+      <item>
         <name>Application Key to Control+Option</name>
         <identifier>remap.pc_application_to_control_option</identifier>
         <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
