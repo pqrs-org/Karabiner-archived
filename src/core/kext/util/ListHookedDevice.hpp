@@ -61,7 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     enum {
-      REFRESHALL_TIMER_INTERVAL = 1000,
+      REFRESHALL_TIMER_INTERVAL = 3000,
     };
     static TimerWrapper refreshAll_timer_;
   };
