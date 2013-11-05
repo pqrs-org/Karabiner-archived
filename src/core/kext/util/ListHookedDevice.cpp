@@ -8,12 +8,13 @@
 #include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  TimerWrapper ListHookedDevice::refreshAll_timer_;
+  TimerWrapper ListHookedDevice::refreshInProgressDevices_timer_;
 
   // ======================================================================
   ListHookedDevice::Item::Item(IOHIDevice* d) :
     device_(d),
-    deviceType_(DeviceType::UNKNOWN)
+    deviceType_(DeviceType::UNKNOWN),
+    inProgress_(false)
   {
     setDeviceIdentifier();
     setDeviceType();
@@ -198,6 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLOG_DEVEL("ListHookedDevice::push_back list_->size = %d\n", static_cast<int>(list_->size()));
 
     refresh();
+    start_refreshInProgressDevices_timer();
   }
 
   void
@@ -264,6 +266,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  bool
+  ListHookedDevice::isInProgress(void)
+  {
+    if (! list_) return false;
+
+    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (p->inProgress_) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   void
   ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) {
     out.isFound = 0;
@@ -323,17 +339,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedConsumer::instance().initialize();
     ListHookedPointing::instance().initialize();
 
-    // Since OS X 10.9, we need to call refreshAll periodical.
-    // Because new plugged device's event callback pointer will be restored to system's callback once
-    // after we replace pointer at device connection.
-    refreshAll_timer_.initialize(&workloop, NULL, ListHookedDevice::refreshAll_timer_callback);
-    refreshAll_timer_.setTimeoutMS(REFRESHALL_TIMER_INTERVAL);
+    refreshInProgressDevices_timer_.initialize(&workloop, NULL, ListHookedDevice::refreshInProgressDevices_timer_callback);
   }
 
   void
   ListHookedDevice::terminateAll(void)
   {
-    refreshAll_timer_.terminate();
+    refreshInProgressDevices_timer_.terminate();
 
     ListHookedKeyboard::instance().terminate();
     ListHookedConsumer::instance().terminate();
@@ -349,9 +361,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ListHookedDevice::refreshAll_timer_callback(OSObject* owner, IOTimerEventSource* sender)
+  ListHookedDevice::start_refreshInProgressDevices_timer(void)
   {
-    refreshAll();
-    refreshAll_timer_.setTimeoutMS(REFRESHALL_TIMER_INTERVAL);
+    refreshInProgressDevices_timer_.setTimeoutMS(REFRESH_INPROGRESS_DEVICES_TIMER_INTERVAL);
+  }
+
+  void
+  ListHookedDevice::refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender)
+  {
+    IOLOG_DEBUG("refreshInProgressDevices_timer_callback\n");
+
+    if (ListHookedKeyboard::instance().isInProgress()) { ListHookedKeyboard::instance().refresh(); }
+    if (ListHookedConsumer::instance().isInProgress()) { ListHookedConsumer::instance().refresh(); }
+    if (ListHookedPointing::instance().isInProgress()) { ListHookedPointing::instance().refresh(); }
+
+    if (ListHookedKeyboard::instance().isInProgress() ||
+        ListHookedConsumer::instance().isInProgress() ||
+        ListHookedPointing::instance().isInProgress()) {
+      refreshInProgressDevices_timer_.setTimeoutMS(REFRESH_INPROGRESS_DEVICES_TIMER_INTERVAL); \
+    }
   }
 }

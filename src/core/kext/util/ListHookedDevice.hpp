@@ -27,6 +27,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       DeviceIdentifier deviceIdentifier_;
       DeviceType::DeviceType deviceType_;
 
+      // When immediately after a device has been connected,
+      // EventAction (eg. kbd->_keyboardEventAction) might be null.
+      // In that case, EventAction will be updated after few seconds.
+      //
+      // We mark such device by inProgress_ flag and run timer until inProgress_ is true.
+      bool inProgress_;
+
       virtual bool refresh(void) = 0;
 
       void setDeviceIdentifier(void);
@@ -41,6 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void erase(IOHIDevice* p);
 
     void refresh(void);
+    bool isInProgress(void);
 
     ListHookedDevice::Item* get(const IOHIDevice* device);
     ListHookedDevice::Item* get_replaced(void);
@@ -50,7 +58,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initializeAll(IOWorkLoop& workloop);
     static void terminateAll(void);
     static void refreshAll(void);
-    static void refreshAll_timer_callback(OSObject* owner, IOTimerEventSource* sender);
+
+    static void start_refreshInProgressDevices_timer(void);
+    static void refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
   protected:
     ListHookedDevice(void) : last_(NULL), list_(NULL) {}
@@ -61,9 +71,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     enum {
-      REFRESHALL_TIMER_INTERVAL = 3000,
+      REFRESH_INPROGRESS_DEVICES_TIMER_INTERVAL = 1000,
     };
-    static TimerWrapper refreshAll_timer_;
+    static TimerWrapper refreshInProgressDevices_timer_;
   };
 }
 

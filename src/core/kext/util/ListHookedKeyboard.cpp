@@ -140,8 +140,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Logitech's driver (LCC) modifies _keyboardEventAction after we changed it.
       // So, we need to replace _keyboardEventAction until it points KeyRemap4MacBook's callback function.
       KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
-      if (callback != EventInputQueue::push_KeyboardEventCallback) {
-        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (KeyboardEventCallback) device_:%p\n", device_);
+
+      if (! callback) {
+        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (KeyboardEventCallback) device_:%p callback is null.\n", device_);
+        inProgress_ = true;
+
+      } else if (callback != EventInputQueue::push_KeyboardEventCallback) {
+        inProgress_ = false;
+
+        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (KeyboardEventCallback) device_:%p (%p -> %p)\n",
+                    device_, callback, EventInputQueue::push_KeyboardEventCallback);
 
         orig_keyboardEventAction_ = callback;
         orig_keyboardEventTarget_ = kbd->_keyboardEventTarget;
@@ -155,8 +163,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       // We need to replace _updateEventFlagsAction until it points KeyRemap4MacBook's callback function.
       // (A reason is described at ListHookedKeyboard::replaceEventAction.)
       UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
-      if (callback != EventInputQueue::push_UpdateEventFlagsCallback) {
-        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
+      if (! callback) {
+        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) device_:%p callback is null.\n", device_);
+        inProgress_ = true;
+
+      } else if (callback != EventInputQueue::push_UpdateEventFlagsCallback) {
+        inProgress_ = false;
+
+        IOLOG_DEBUG("HookedKeyboard::replaceEventAction (UpdateEventFlagsCallback) device_:%p (%p -> %p)\n",
+                    device_, callback, EventInputQueue::push_UpdateEventFlagsCallback);
 
         orig_updateEventFlagsAction_ = callback;
         orig_updateEventFlagsTarget_ = kbd->_updateEventFlagsTarget;
@@ -184,7 +199,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
       if (callback == EventInputQueue::push_KeyboardEventCallback) {
-        IOLOG_DEBUG("HookedKeyboard::restoreEventAction (KeyboardEventCallback) device_:%p\n", device_);
+        IOLOG_DEBUG("HookedKeyboard::restoreEventAction (KeyboardEventCallback) device_:%p (%p -> %p)\n",
+                    device_, callback, orig_keyboardEventAction_);
 
         kbd->_keyboardEventAction = reinterpret_cast<KeyboardEventAction>(orig_keyboardEventAction_);
 
@@ -194,7 +210,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
       if (callback == EventInputQueue::push_UpdateEventFlagsCallback) {
-        IOLOG_DEBUG("HookedKeyboard::restoreEventAction (UpdateEventFlagsCallback) device_:%p\n", device_);
+        IOLOG_DEBUG("HookedKeyboard::restoreEventAction (UpdateEventFlagsCallback) device_:%p (%p -> %p)\n",
+                    device_, callback, orig_updateEventFlagsAction_);
 
         kbd->_updateEventFlagsAction = reinterpret_cast<UpdateEventFlagsAction>(orig_updateEventFlagsAction_);
 
