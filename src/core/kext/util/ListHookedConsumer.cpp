@@ -123,8 +123,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       // We need to replace _keyboardSpecialEventAction until it points KeyRemap4MacBook's callback function.
       // (A reason is described at ListHookedKeyboard::replaceEventAction.)
       KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
-      if (callback != EventInputQueue::push_KeyboardSpecialEventCallback) {
-        IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p\n", device_);
+      if (! callback) {
+        IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p callback is null.\n", device_);
+        inProgress_ = true;
+
+      } else if (callback != EventInputQueue::push_KeyboardSpecialEventCallback) {
+        inProgress_ = false;
+
+        IOLOG_DEBUG("HookedConsumer::replaceEventAction device_:%p (%p -> %p)\n",
+                    device_, callback, EventInputQueue::push_KeyboardSpecialEventCallback);
 
         orig_keyboardSpecialEventAction_ = callback;
         orig_keyboardSpecialEventTarget_ = kbd->_keyboardSpecialEventTarget;
@@ -151,7 +158,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
       if (callback == EventInputQueue::push_KeyboardSpecialEventCallback) {
-        IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p\n", device_);
+        IOLOG_DEBUG("HookedConsumer::restoreEventAction device_:%p (%p -> %p)\n",
+                    device_, callback, orig_keyboardSpecialEventAction_);
 
         kbd->_keyboardSpecialEventAction = reinterpret_cast<KeyboardSpecialEventAction>(orig_keyboardSpecialEventAction_);
 
