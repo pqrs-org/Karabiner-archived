@@ -378,7 +378,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (ListHookedKeyboard::instance().isInProgress() ||
         ListHookedConsumer::instance().isInProgress() ||
         ListHookedPointing::instance().isInProgress()) {
-      refreshInProgressDevices_timer_.setTimeoutMS(REFRESH_INPROGRESS_DEVICES_TIMER_INTERVAL); \
+      IOLOG_DEBUG("Restarting refreshInProgressDevices_timer because some devices are in progress.\n");
+      refreshInProgressDevices_timer_.setTimeoutMS(REFRESH_INPROGRESS_DEVICES_TIMER_INTERVAL);
     }
   }
 }
