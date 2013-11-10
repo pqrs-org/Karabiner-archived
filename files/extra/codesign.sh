@@ -12,10 +12,9 @@ fi
 
 # ------------------------------------------------------------
 # sign
-for f in \
-    `find "$1" -name '*.app' | sort -r` \
-    ; do
+targets=`find "$1" -name '*.app' -or -name '*.signed.kext' | sort -r`
 
+for f in $targets; do
     echo -ne '\033[33;40m'
     echo "code sign $f"
     echo -ne '\033[0m'
@@ -30,9 +29,7 @@ for f in \
 done
 
 # verify
-for f in \
-    `find "$1" -name '*.app'` \
-    ; do
+for f in $targets; do
     echo -ne '\033[31;40m'
     codesign --verify --deep "$f"
     echo -ne '\033[0m'

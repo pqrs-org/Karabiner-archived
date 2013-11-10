@@ -15,7 +15,14 @@ open("| lsbom #{bomfilepath}") do |lsbom|
       a = l.chomp.split(/\t/)
       (filepath, mode, owner) = a
 
-      stat = File.lstat(topdir + filepath)
+      stat = nil
+      if /\/\._/ =~ filepath then
+        # It's a resource fork. (For example, ._document.wflow).
+        # Use original file stat.
+        stat = File.lstat(topdir + filepath.gsub(/\/\._/, '/'))
+      else
+        stat = File.lstat(topdir + filepath)
+      end
       newmode = sprintf('%o', stat.mode)
 
       if newmode != mode then

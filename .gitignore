@@ -14,6 +14,7 @@ xcuserdata/
 src/bridge/output
 src/core/server/Resources/symbol_map.xml
 pkginfo/Info.plist
+pkginfo/Distribution.xml
 src/core/kext/Info.plist
 src/core/server/Info.plist
 src/util/EventViewer/Info.plist
