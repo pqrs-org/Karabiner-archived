@@ -4,10 +4,6 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 version=$(cat version)
 
-packagemaker=/Applications/Utilities/PackageMaker.app/Contents/MacOS/PackageMaker
-pkgName="KeyRemap4MacBook.pkg"
-archiveName="KeyRemap4MacBook-${version}"
-
 make clean build || exit $?
 
 # --------------------------------------------------
@@ -43,7 +39,7 @@ cp -R files/scripts "$basedir"
 
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/extra"
 mkdir -p "$basedir"
-cp -R pkginfo/Resources/preflight "$basedir/uninstall_core.sh"
+cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
 for f in \
     files/extra/launchUninstaller.sh \
     files/extra/setpermissions.sh \
@@ -64,7 +60,6 @@ do
 done
 
 # Sign with Developer ID
-bash files/extra/codesign-kext.sh pkgroot
 bash files/extra/codesign.sh pkgroot
 
 # Setting file permissions.
@@ -78,41 +73,48 @@ bash files/extra/codesign.sh pkgroot
 #     the directory permission will be 0777 in Archive.bom
 #     even if we set this directory permission to 0755 by setpermissions.sh.
 #
-#   Then, we need to repair file permissions in postflight script.
-#   Please also see postflight.
+#   Then, we need to repair file permissions in postinstall script.
+#   Please also see postinstall.
 #
 sh "files/extra/setpermissions.sh" pkgroot
 sh "files/extra/setpermissions.sh" pkginfo
 chmod 755 \
-    pkginfo/Resources/InstallationCheck \
-    pkginfo/Resources/postflight \
-    pkginfo/Resources/preflight \
+    pkginfo/Scripts/postinstall \
+    pkginfo/Scripts/preinstall \
     pkginfo/fixbom.rb
 
 # --------------------------------------------------
-echo "Exec PackageMaker"
+echo "Create pkg"
 
-rm -rf $archiveName/$pkgName
+pkgName="KeyRemap4MacBook.pkg"
+pkgIdentifier="org.pqrs.driver.KeyRemap4MacBook"
+archiveName="KeyRemap4MacBook-${version}"
+
+rm -rf $archiveName
 mkdir $archiveName
 
-# Note: Don't add --no-recommend option.
-# It might break /Library permission.
-# (It overwrites /Library permission with pkgroot/Library permission.)
-# - Mac OS X 10.6: /Library is 1775
-# - Mac OS X 10.7: /Library is 0755
-# - Mac OS X 10.8: /Library is 40755
-$packagemaker \
+pkgbuild \
     --root pkgroot \
-    --info pkginfo/Info.plist \
-    --resources pkginfo/Resources \
-    --title "KeyRemap4MacBook $version" \
-    --no-relocate \
-    --discard-forks \
-    --out $archiveName/$pkgName
+    --component-plist pkginfo/pkgbuild.plist \
+    --scripts pkginfo/Scripts \
+    --identifier $pkgIdentifier \
+    --version $version \
+    --install-location "/" \
+    $archiveName/Installer.pkg
 
-# --------------------------------------------------
 echo "Fix Archive.bom"
-ruby pkginfo/fixbom.rb $archiveName/$pkgName/Contents/Archive.bom pkgroot/
+pkgutil --expand $archiveName/Installer.pkg $archiveName/expanded
+ruby pkginfo/fixbom.rb $archiveName/expanded/Bom pkgroot/
+pkgutil --flatten $archiveName/expanded $archiveName/Installer.pkg
+rm -r $archiveName/expanded
+
+
+productbuild \
+    --distribution pkginfo/Distribution.xml \
+    --package-path $archiveName \
+    $archiveName/$pkgName
+
+rm -f $archiveName/Installer.pkg
 
 # --------------------------------------------------
 echo "Sign with Developer ID"

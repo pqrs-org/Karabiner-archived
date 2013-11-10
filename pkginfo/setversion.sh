@@ -3,7 +3,7 @@
 basedir=`dirname $0`
 version=$(cat "$basedir/../version")
 
-for f in `find $basedir/.. -name 'Info.plist.tmpl'`; do
+for f in `find $basedir/.. -name 'Info.plist.tmpl' -or -name 'Distribution.xml.tmpl'`; do
     if [ -f "$f" ]; then
         outputfile=`dirname $f`/`basename $f .tmpl`
         tmpfile=`mktemp /tmp/Info.plist.XXXXXX`
