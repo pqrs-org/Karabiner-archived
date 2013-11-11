@@ -152,6 +152,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     Params_KeyboardEventCallBack::log(true, EventType(eventType), Flags(flags), KeyCode(key), KeyboardType(keyboardType), repeat);
 
     // ------------------------------------------------------------
+    // Ignore unknown modifiers
+    //
+    // You can confirm an unknown modifier by setting key code to 255 on PCKeyboardHack.
+    // This event also will be sent by Fn key on Leopold FC660M.
+    //
+    //   KeyboardEventCallback [ caught]: eventType 12, flags 0x80000000, key 0x00ff, kbdType  43, repeat = 0
+    //
+    if (EventType::MODIFY == eventType) {
+      if (KeyCode(key).getModifierFlag() == ModifierFlag::NONE) {
+        IOLOG_DEBUG("An unknown modifier is pressed (KeyCode:0x%x, Flags:0x%x). Ignore it.\n", key, flags);
+        return;
+      }
+    }
+
+    // ------------------------------------------------------------
     KeyboardType newkeyboardtype(keyboardType);
     RemapClassManager::remap_setkeyboardtype(newkeyboardtype);
 
