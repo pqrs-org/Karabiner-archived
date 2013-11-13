@@ -45,6 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! items_) return false;
 
     RemapClass* remapclass = NULL;
+    bool value_old = false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
       remapclass                          = (*items_)[i].remapclass;
@@ -54,6 +55,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
 
       if (! remapclass) return false;
+
+      value_old = remapclass->enabled();
 
       if (params.key == keycode_toggle) {
         if (params.repeat) goto finish;
@@ -97,11 +100,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
 
   refresh:
-    RemapClassManager::refresh();
-
-    // Tell remapclass status is changed to userspace.
     if (remapclass) {
-      org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED, remapclass->get_configindex());
+      bool value_new = remapclass->enabled();
+
+      // * send_notification_to_userspace takes a time.
+      // * VK_CONFIG_FORCE_OFF_* might not change remapclass state.
+      // Therefore, we call send_notification_to_userspace only if needed.
+
+      if (value_old != value_new) {
+        RemapClassManager::refresh();
+
+        // Tell remapclass status is changed to userspace.
+        org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED, remapclass->get_configindex());
+      }
     }
 
   finish:
