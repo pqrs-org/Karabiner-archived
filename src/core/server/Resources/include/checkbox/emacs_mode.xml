@@ -386,27 +386,30 @@
           KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE,
           KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,
           KeyCode::X, ModifierFlag::COMMAND_L,
-          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core,
+          Option::NOREPEAT,
         </autogen>
         <autogen>
           __KeyToKey__
           KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION  | ModifierFlag::SHIFT_L | ModifierFlag::NONE,
           KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,
-          KeyCode::C,
-          ModifierFlag::COMMAND_L,
-          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core
+          KeyCode::C, ModifierFlag::COMMAND_L,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core,
+          Option::NOREPEAT,
         </autogen>
         <autogen>
           __KeyToKey__
           KeyCode::G, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE,
           KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,
-          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core,
+          Option::NOREPEAT,
         </autogen>
         <autogen>
           __KeyToKey__
           KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L | ModifierFlag::NONE,
           KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,
-          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_emacsmode_ex_controlSpace_core,
+          Option::NOREPEAT,
         </autogen>
       </item>
       <item>
