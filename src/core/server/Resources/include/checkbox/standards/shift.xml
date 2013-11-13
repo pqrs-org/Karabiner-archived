@@ -63,7 +63,7 @@
       <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
     </item>
     <item>
-      <name>Send a delete key event when left shift key pressed alone.</name>
+      <name>Send a delete key event when left shift key is pressed alone.</name>
       <identifier>remap.shift_l_to_shift_delete</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::DELETE</autogen>
     </item>
@@ -247,7 +247,7 @@
       <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CAPSLOCK</autogen>
     </item>
     <item>
-      <name>Send a delete key event when left shift key pressed alone.</name>
+      <name>Send a delete key event when left shift key is pressed alone.</name>
       <identifier>remap.shift_r_to_shift_delete</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::DELETE</autogen>
     </item>

@@ -78,7 +78,7 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::ESCAPE</autogen>
     </item>
     <item>
-      <name>Send a forward delete key event when left option key pressed alone.</name>
+      <name>Send a forward delete key event when left option key is pressed alone.</name>
       <identifier>remap.left_option_to_option_forward_delete</identifier>
       <autogen>
         __KeyOverlaidModifier__
@@ -254,7 +254,7 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
-      <name>Send a forward delete key event when right option key pressed alone.</name>
+      <name>Send a forward delete key event when right option key is pressed alone.</name>
       <identifier>remap.right_option_to_option_forward_delete</identifier>
       <autogen>
         __KeyOverlaidModifier__
