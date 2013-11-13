@@ -669,6 +669,7 @@
         <appendix>D to Shift_L (+ Holding D to Option_L)</appendix>
         <appendix>Shift+E to Control_L (+ Holding Shift+E to Option_L)</appendix>
         <appendix>Delete to Tab,Tab (+ Holding Escape to Space,Space)</appendix>
+        <appendix>Q to Space (+ Holding Q to double-click)</appendix>
         <!-- Note: Use KeyCode::VK_NONE as a separator of parameters -->
         <autogen>__HoldingKeyToKey__ KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE</autogen>
         <autogen>__HoldingKeyToKey__ KeyCode::TAB, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::CONTROL_L, KeyCode::F, KeyCode::VK_NONE, KeyCode::Q, KeyCode::W, KeyCode::E, ModifierFlag::SHIFT_L, KeyCode::R</autogen>
@@ -693,6 +694,22 @@
           @begin
           KeyCode::SPACE,
           KeyCode::SPACE,
+          @end
+        </autogen>
+
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::Q,
+
+          @begin
+          KeyCode::SPACE,
+          @end
+
+          @begin
+          KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
+          KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
+          KeyCode::VK_NONE,
+          Option::NOREPEAT,
           @end
         </autogen>
       </item>
