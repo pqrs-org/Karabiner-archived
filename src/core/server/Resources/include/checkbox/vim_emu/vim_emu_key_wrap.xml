@@ -54,9 +54,9 @@
   <autogen>__KeyToKey__ KeyCode::F17, {{ VIM_EMU_BEFORE }}, KeyCode::F17, {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::F18, {{ VIM_EMU_BEFORE }}, KeyCode::F18, {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::F19, {{ VIM_EMU_BEFORE }}, KeyCode::F19, {{ VIM_EMU_AFTER }}</autogen>
+  -->
   <autogen>__KeyToKey__ KeyCode::UK_SECTION,          {{ VIM_EMU_BEFORE }}, KeyCode::UK_SECTION,          {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::GERMAN_PC_LESS_THAN, {{ VIM_EMU_BEFORE }}, KeyCode::GERMAN_PC_LESS_THAN, {{ VIM_EMU_AFTER }}</autogen>
-  -->
   <autogen>__KeyToKey__ KeyCode::KEYPAD_0,        {{ VIM_EMU_BEFORE }}, KeyCode::KEYPAD_0,        {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::KEYPAD_1,        {{ VIM_EMU_BEFORE }}, KeyCode::KEYPAD_1,        {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::KEYPAD_2,        {{ VIM_EMU_BEFORE }}, KeyCode::KEYPAD_2,        {{ VIM_EMU_AFTER }}</autogen>
@@ -92,9 +92,7 @@
   <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE,  {{ VIM_EMU_BEFORE }}, KeyCode::FORWARD_DELETE,  {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::HELP,            {{ VIM_EMU_BEFORE }}, KeyCode::PC_INSERT,       {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::RETURN,          {{ VIM_EMU_BEFORE }}, KeyCode::RETURN,          {{ VIM_EMU_AFTER }}</autogen>
-  -->
   <autogen>__KeyToKey__ KeyCode::SPACE,           {{ VIM_EMU_BEFORE }}, KeyCode::SPACE,           {{ VIM_EMU_AFTER }}</autogen>
-  <!--
   <autogen>__KeyToKey__ KeyCode::TAB,             {{ VIM_EMU_BEFORE }}, KeyCode::TAB,             {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR,    {{ VIM_EMU_BEFORE }}, KeyCode::KEYPAD_CLEAR,    {{ VIM_EMU_AFTER }}</autogen>
   -->

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Control + [ to Esc for non-vim_emu apps</name>
+    <identifier>remap.vim_emu_ctl_[_to_Esc_non_vim_emu{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_IGNORE_APPS}}</only>
+    <not>{{VIM_EMU_ONLY_APPS}}</not>
+    <autogen>
+      __KeyToKey__ KeyCode::BRACKET_LEFT,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::ESCAPE
+    </autogen>
+  </item>
+  <item>
+    <name>Control + [ to Esc for Normal mode</name>
+    <identifier>remap.vim_emu_ctl_[_to_Esc_normal_mode{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <config_only>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_only>
+    <autogen>
+      __KeyToKey__ KeyCode::BRACKET_LEFT,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::ESCAPE
+    </autogen>
+  </item>
+</root>
