@@ -1,0 +1,785 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable Vim Emulation</name>
+    <identifier>remap.vim_emu_{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+
+    <block> <!-- Insert Mode (OS Normal State) Begin -->
+      <!-- Insert Mode: Complement Begin -->
+      <config_not>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_not>
+      <autogen>
+        __KeyToKey__ KeyCode::N,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::ESCAPE,
+        {{VIM_EMU_EMU_ON}}
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::P,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::ESCAPE,
+          {{VIM_EMU_EMU_ON}}
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Insert Mode: Complement End -->
+    </block> <!-- Insert Mode End -->
+
+    <block> <!-- Complement Mode Begin -->
+      <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen>
+        __KeyToKey__ KeyCode::N,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::CURSOR_DOWN,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::P,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::CURSOR_UP,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::H,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::ESCAPE,
+        {{VIM_EMU_EMU_ON}}
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::RETURN, ModifierFlag::NONE,
+        KeyCode::RETURN,
+        {{VIM_EMU_EMU_OFF}}
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block> <!-- Complement Mode End -->
+
+    <!-- Enter G Mode Begin -->
+    <block>
+      <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+      <config_not>notsave.vim_emu_G{{VIM_EMU_ALTCONFIG}}</config_not>
+      <autogen>
+        __KeyToKey__ KeyCode::G, ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_G{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block>
+    <!-- Enter G Mode End -->
+
+    <block> <!-- Normal Mode Begin -->
+      <config_only>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_only>
+
+      <!-- Normal Mode: Cursor Move Begin -->
+      <include path="vim_emu_move.xml"></include>
+      <!-- Normal Mode: Cursor Move End -->
+
+      <!-- Normal Mode: Cursor to Middle Begin -->
+      <autogen>
+        __KeyToKey__
+        KeyCode::M, VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::PAGEDOWN, VK_OPTION,
+        KeyCode::PAGEUP, VK_OPTION,
+      </autogen>
+      <!-- Normal Mode: Cursor to Middle End -->
+
+      <!-- Normal Mode: Enter INSERT Mode, i/I/a/A/o/O -->
+      <autogen>
+        __KeyToKey__ KeyCode::I, ModifierFlag::NONE,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::I,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT, VK_COMMAND,
+        KeyCode::CURSOR_RIGHT, VK_OPTION,
+        KeyCode::CURSOR_LEFT, VK_OPTION,
+        {{VIM_EMU_NORMAL_OFF}}
+        {{VIM_EMU_EMU_OFF}}
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::A, ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::A,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, VK_COMMAND,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::O, ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, VK_COMMAND, KeyCode::RETURN,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::O,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::CURSOR_UP, KeyCode::CURSOR_RIGHT, VK_COMMAND,
+        KeyCode::RETURN,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <!-- Normal Mode: Enter INSERT Mode End -->
+
+      <!-- Normal Mode: Enter Visual Mode -->
+      <autogen>
+        __KeyToKey__ KeyCode::V, ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_visual{{VIM_EMU_ALTCONFIG}},
+        KeyCode::CURSOR_RIGHT, VK_SHIFT,
+      </autogen>
+      <!-- Normal Mode: Enter Visual Mode End -->
+
+      <!-- Normal Mode: Enter Visual Line Mode Begin -->
+      <autogen>
+        __KeyToKey__ KeyCode::V,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_visual_line{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+        KeyCode::CURSOR_LEFT, VK_COMMAND,
+        KeyCode::CURSOR_DOWN, VK_SHIFT,
+      </autogen>
+      <!-- Normal Mode: Enter Visual Line Mode End -->
+
+      <!-- Normal Mode: Enter Command Mode Begin -->
+      <autogen>
+        __KeyToKey__ KeyCode::SEMICOLON,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::JIS_COLON,ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Normal Mode: Enter Command Mode End -->
+
+      <!-- Normal Mode: Save, Quit Begin -->
+      <autogen> <!-- Quit -->
+        __KeyToKey__ KeyCode::Z,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::VK_LOCK_EXTRA2_FORCE_ON
+      </autogen>
+      <autogen> <!-- Save and Quit -->
+        __KeyToKey__ KeyCode::Z, ModifierFlag::EXTRA2|
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::S, VK_COMMAND,
+        KeyCode::W, VK_COMMAND,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <autogen> <!-- Quit -->
+        __KeyToKey__ KeyCode::Q, ModifierFlag::EXTRA2|
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::W, VK_COMMAND,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <autogen> <!-- Escape from EXTRA2 -->
+        __KeyToKey__ KeyCode::ESCAPE, ModifierFlag::EXTRA2,
+        KeyCode::VK_LOCK_EXTRA2_FORCE_OFF
+      </autogen>
+      <autogen> <!-- Escape from EXTRA2 -->
+        __KeyToKey__ KeyCode::BRACKET_LEFT, VK_CONTROL|ModifierFlag::EXTRA2,
+        KeyCode::VK_LOCK_EXTRA2_FORCE_OFF
+      </autogen>
+      <!-- Normal Mode: Save, Quit End -->
+
+      <!-- Normal Mode: Search Begin -->
+      <autogen>
+        __KeyToKey__ KeyCode::SLASH, ModifierFlag::NONE,
+        KeyCode::F, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen> <!-- German keyboards' slash -->
+        __KeyToKey__ KeyCode::KEY_7,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::F, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::N, ModifierFlag::NONE,
+        KeyCode::F, VK_COMMAND,
+        KeyCode::G, VK_COMMAND,
+        KeyCode::G, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::N,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::F, VK_COMMAND,
+        KeyCode::G, VK_SHIFT|VK_COMMAND,
+        KeyCode::G, VK_SHIFT|VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::KEY_8,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT, VK_OPTION,
+        KeyCode::CURSOR_RIGHT, VK_OPTION|VK_SHIFT,
+        KeyCode::C, VK_COMMAND,
+        KeyCode::F, VK_COMMAND,
+        KeyCode::V, VK_COMMAND,
+        KeyCode::RETURN,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen> <!-- * for JIS -->
+        __KeyToKey__ KeyCode::JIS_COLON,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT, VK_OPTION,
+        KeyCode::CURSOR_RIGHT, VK_OPTION|VK_SHIFT,
+        KeyCode::C, VK_COMMAND,
+        KeyCode::F, VK_COMMAND,
+        KeyCode::V, VK_COMMAND,
+        KeyCode::RETURN,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen> <!-- * for GERMAN -->
+        __KeyToKey__ KeyCode::BRACKET_RIGHT,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT, VK_OPTION,
+        KeyCode::CURSOR_RIGHT, VK_OPTION|VK_SHIFT,
+        KeyCode::C, VK_COMMAND,
+        KeyCode::F, VK_COMMAND,
+        KeyCode::V, VK_COMMAND,
+        KeyCode::RETURN,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Normal Mode: Search End -->
+
+      <!-- Normal Mode: YANK Fix Begin -->
+      <autogen> <!-- Fix Y -->
+        __KeyToKey__ KeyCode::Y,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::A, VK_CONTROL|VK_SHIFT,
+        KeyCode::E, VK_CONTROL|VK_SHIFT,
+        KeyCode::C, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Normal Mode: YANK Fix End -->
+
+      <!-- Normal Mode: Delete Fix Begin -->
+      <autogen> <!-- Fix C -->
+        __KeyToKey__ KeyCode::C,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::E, VK_CONTROL|VK_SHIFT,
+        KeyCode::X, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Normal Mode: Delete Fix End -->
+
+      <!-- Normal Mode: Change Fix Begin -->
+      <autogen> <!-- Fix C -->
+        __KeyToKey__ KeyCode::C,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::E, VK_CONTROL|VK_SHIFT,
+        KeyCode::X, VK_COMMAND,
+        {{VIM_EMU_NORMAL_OFF}}
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Normal Mode: Change Fix End -->
+
+      <!-- Normal Mode: Cut One Character Begin -->
+      <autogen>
+        __KeyToKey__ KeyCode::X, ModifierFlag::NONE,
+        KeyCode::FORWARD_DELETE,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::X,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::DELETE,
+      </autogen>
+      <!-- s/S -->
+      <autogen>
+        __KeyToKey__ KeyCode::S, ModifierFlag::NONE,
+        KeyCode::FORWARD_DELETE,
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::S,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::A, VK_CONTROL,
+        KeyCode::E, VK_CONTROL|VK_SHIFT,
+        KeyCode::X, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+        {{VIM_EMU_NORMAL_OFF}}
+      </autogen>
+      <!-- Normal Mode: Cut One Character End -->
+
+      <block> <!-- Normal Mode: Paste Line Begin -->
+        <config_only>notsave.vim_emu_line_copy{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __KeyToKey__ KeyCode::P, ModifierFlag::NONE,
+          KeyCode::CURSOR_LEFT, VK_COMMAND,
+          KeyCode::CURSOR_DOWN,
+          KeyCode::V, VK_COMMAND,
+          KeyCode::RETURN, KeyCode::CURSOR_UP,
+        </autogen>
+        <autogen>
+          __KeyToKey__ KeyCode::P, VK_SHIFT,
+          KeyCode::CURSOR_LEFT, VK_COMMAND,
+          KeyCode::V, VK_COMMAND,
+          KeyCode::RETURN, KeyCode::CURSOR_UP,
+        </autogen>
+      </block> <!-- Normal Mode: Paste Line End -->
+
+      <block> <!-- Normal Mode: Paste Word Begin -->
+        <config_not>notsave.vim_emu_line_copy{{VIM_EMU_ALTCONFIG}}</config_not>
+        <autogen>
+          __KeyToKey__ KeyCode::P, ModifierFlag::NONE,
+          KeyCode::CURSOR_RIGHT, KeyCode::V, VK_COMMAND,KeyCode::CURSOR_LEFT
+        </autogen>
+        <autogen>
+          __KeyToKey__ KeyCode::P,
+          VK_SHIFT|ModifierFlag::NONE,
+          KeyCode::V, VK_COMMAND,KeyCode::CURSOR_LEFT
+        </autogen>
+      </block> <!-- Normal Mode: Paste Word End -->
+
+      <!-- Normal Mode: Undo/Redo Begin -->
+      <autogen> __KeyToKey__ KeyCode::U, ModifierFlag::NONE,
+        KeyCode::Z, VK_COMMAND,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::U,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::Z, VK_COMMAND,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::R,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::Z, VK_SHIFT|VK_COMMAND,
+      </autogen>
+      <!-- Normal Mode: Undo/Redo End -->
+
+      <!-- Normal Mode: Line Combining Begin -->
+      <autogen>
+        __KeyToKey__ KeyCode::J,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, VK_COMMAND,
+        KeyCode::SPACE, KeyCode::FORWARD_DELETE, VK_SHIFT,
+        KeyCode::CURSOR_LEFT,
+      </autogen>
+      <!-- Normal Mode: Line Combining End -->
+
+      <!-- Normal Mode: Period (DOT) Begin -->
+      <!-- Delete next word, paste  current clipboard -->
+      <autogen>
+        __KeyToKey__ KeyCode::DOT, ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, VK_SHIFT|VK_OPTION,
+        KeyCode::DELETE, KeyCode::V, VK_COMMAND
+      </autogen>
+      <!-- Normal Mode: Period (DOT) End -->
+
+      <!-- Normal Mode: Replace Begin -->
+      <autogen>
+        __KeyToKey__ KeyCode::R, ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_R{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::R,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_S_R{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Normal Mode: Replace End -->
+    </block> <!-- Normal Mode End -->
+
+    <!-- YANK Mode Begin -->
+    <block>
+      <config_only>notsave.vim_emu_Y{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen> <!-- Fix yy -->
+        __KeyToKey__ KeyCode::Y, ModifierFlag::NONE,
+        KeyCode::A, VK_CONTROL,
+        KeyCode::CURSOR_RIGHT, VK_COMMAND|VK_SHIFT,
+        KeyCode::C, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_Y{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block>
+    <include path="vim_emu_ydc_mode.xml">
+      <replacementdef>
+        <replacementname>VIM_EMU_YDC_CHAR</replacementname>
+        <replacementvalue>Y</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+        <replacementvalue>
+          KeyCode::C, VK_COMMAND,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_Y{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </replacementvalue>
+      </replacementdef>
+    </include>
+    <!-- YANK Mode End -->
+
+    <!-- DELETE Mode Begin -->
+    <block>
+      <config_only>notsave.vim_emu_D{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen> <!-- Fix dd -->
+        __KeyToKey__ KeyCode::D, ModifierFlag::NONE,
+        KeyCode::A, VK_CONTROL,
+        KeyCode::CURSOR_RIGHT, VK_COMMAND|VK_SHIFT,
+        KeyCode::X, VK_COMMAND,
+        KeyCode::FORWARD_DELETE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_D{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block>
+    <include path="vim_emu_ydc_mode.xml">
+      <replacementdef>
+        <replacementname>VIM_EMU_YDC_CHAR</replacementname>
+        <replacementvalue>D</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+        <replacementvalue>
+          KeyCode::X, VK_COMMAND,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_D{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </replacementvalue>
+      </replacementdef>
+    </include>
+    <!-- DELETE Mode End -->
+
+    <!-- CHANGE Mode Begin -->
+    <block>
+      <config_only>notsave.vim_emu_C{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen> <!-- Fix cc -->
+        __KeyToKey__ KeyCode::C, ModifierFlag::NONE,
+        KeyCode::A, VK_CONTROL,
+        KeyCode::CURSOR_RIGHT, VK_COMMAND|VK_SHIFT,
+        KeyCode::X, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_C{{VIM_EMU_ALTCONFIG}},
+        {{VIM_EMU_EMU_OFF}}
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block>
+    <include path="vim_emu_ydc_mode.xml">
+      <replacementdef>
+        <replacementname>VIM_EMU_YDC_CHAR</replacementname>
+        <replacementvalue>C</replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+        <replacementvalue>
+          KeyCode::X, VK_COMMAND,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_C{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_OFF}}
+        </replacementvalue>
+      </replacementdef>
+    </include>
+    <!-- CHANGE Mode End -->
+
+    <block> <!-- Visual Mode Begin -->
+      <config_only>notsave.vim_emu_visual{{VIM_EMU_ALTCONFIG}}</config_only>
+
+      <!-- Visual Mode: Copy and Paste Begin -->
+      <include path="vim_emu_copy_cut.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual{{VIM_EMU_ALTCONFIG}},
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <!-- Visual Mode: Copy and Paste End -->
+
+      <!-- Visual Mode: Move Fix PageUp/Down Begin -->
+      <include path="vim_emu_repeat.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::B, VK_CONTROL|ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+          <replacementvalue>
+            KeyCode::PAGEUP, VK_SHIFT,
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="vim_emu_repeat.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::F, VK_CONTROL|ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+          <replacementvalue>
+            KeyCode::PAGEDOWN, VK_SHIFT,
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <!-- Visual Mode: Move Fix PageUp/Down End -->
+
+      <!-- Visual Mode: Move Begin -->
+      <include path="vim_emu_move.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_USE_SHIFT</replacementname>
+          <replacementvalue>VK_SHIFT|</replacementvalue>
+        </replacementdef>
+      </include>
+      <!-- Visual Mode: Move End -->
+    </block> <!-- Visual Mode End -->
+
+    <block> <!-- Visual Line Mode (for first command) Begin -->
+      <config_only>notsave.vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}}</config_only>
+      <!-- Visual Line Mode: Fix PageUp Begin -->
+      <include path="vim_emu_repeat.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::B, VK_CONTROL|ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+          <replacementvalue>
+            KeyCode::PAGEUP, VK_SHIFT,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+            KeyCode::CURSOR_RIGHT, VK_COMMAND,
+            KeyCode::CURSOR_RIGHT,
+            KeyCode::CURSOR_UP, |VK_SHIFT,
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <!-- Visual Line Mode: Fix PageUp End -->
+      <!-- Visual Line Mode: Move Begin -->
+      <include path="vim_emu_move_up.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+            KeyCode::CURSOR_RIGHT, VK_COMMAND,
+            KeyCode::CURSOR_RIGHT,
+            KeyCode::CURSOR_UP, |VK_SHIFT,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_USE_SHIFT</replacementname>
+          <replacementvalue>VK_SHIFT|</replacementvalue>
+        </replacementdef>
+      </include>
+      <!-- Visual Line Mode: Move End -->
+    </block> <!-- Visual Line Mode (for first command) End -->
+    <block> <!-- Visual Line Mode Begin -->
+      <config_only>notsave.vim_emu_visual_line{{VIM_EMU_ALTCONFIG}}</config_only>
+      <!-- Visual Line Mode: Copy and Paste Begin -->
+      <include path="vim_emu_copy_cut.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_LINECOPY</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}}
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line{{VIM_EMU_ALTCONFIG}},
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <!-- Visual Line Mode: Copy and Paste End -->
+
+      <!-- Visual Line Mode: Fix PageUp/Down Begin -->
+      <include path="vim_emu_repeat.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::B, VK_CONTROL|ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+          <replacementvalue>
+            KeyCode::PAGEUP, VK_SHIFT,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="vim_emu_repeat.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::F, VK_CONTROL|ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+          <replacementvalue>
+            KeyCode::PAGEDOWN, VK_SHIFT,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <autogen>
+        __KeyToKey__
+        KeyCode::M, VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+        KeyCode::PAGEDOWN, VK_SHIFT,
+        KeyCode::PAGEUP, VK_SHIFT,
+      </autogen>
+      <!-- Visual Line Mode: Fix PageUp/Down End -->
+
+      <!-- Visual Line Mode: Move Begin -->
+      <include path="vim_emu_move_up.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_USE_SHIFT</replacementname>
+          <replacementvalue>VK_SHIFT|</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="vim_emu_move_down.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_USE_SHIFT</replacementname>
+          <replacementvalue>VK_SHIFT|</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE_MOVE</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}},
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <!-- Visual Line Mode: Move End -->
+    </block> <!-- Visual Line Mode End -->
+
+    <block> <!-- Command Mode Begin -->
+      <config_only>notsave.vim_emu_command{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen> <!-- w (Used with below: EXTRA1 Modifier) -->
+        __KeyToKey__ KeyCode::W, ModifierFlag::NONE,
+        KeyCode::VK_LOCK_EXTRA1_FORCE_ON
+      </autogen>
+      <autogen> <!-- Save -->
+        __KeyToKey__ KeyCode::RETURN, ModifierFlag::EXTRA1|ModifierFlag::NONE,
+        KeyCode::S, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen> <!-- Save As -->
+        __KeyToKey__ KeyCode::SPACE, ModifierFlag::EXTRA1|ModifierFlag::NONE,
+        KeyCode::S, VK_SHIFT|VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen> <!-- Save and Quit -->
+        __KeyToKey__ KeyCode::Q, ModifierFlag::EXTRA1|ModifierFlag::NONE,
+        KeyCode::S, VK_COMMAND,
+        KeyCode::W, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen> <!-- Quit -->
+        __KeyToKey__ KeyCode::Q, ModifierFlag::NONE,
+        KeyCode::W, VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen> <!-- Help -->
+        __KeyToKey__ KeyCode::H, ModifierFlag::NONE,
+        KeyCode::SLASH, VK_SHIFT|VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block> <!-- Command Mode End -->
+
+    <block> <!-- Search Input Mode Begin -->
+      <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen>
+        __KeyToKey__ KeyCode::RETURN, ModifierFlag::NONE,
+        KeyCode::RETURN,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block> <!-- Search Input End -->
+
+    <block> <!-- Search Mode Begin -->
+      <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+      <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen>
+        __KeyToKey__ KeyCode::N, ModifierFlag::NONE,
+        KeyCode::G, VK_COMMAND,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::N,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::G, VK_SHIFT|VK_COMMAND,
+      </autogen>
+    </block> <!-- Search Mode End -->
+
+    <block> <!-- Replace One Mode Begin -->
+      <config_only>notsave.vim_emu_R{{VIM_EMU_ALTCONFIG}}</config_only>
+      <include path="vim_emu_key_wrap.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE</replacementname>
+          <replacementvalue>
+            KeyCode::FORWARD_DELETE,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_AFTER</replacementname>
+          <replacementvalue>
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_R{{VIM_EMU_ALTCONFIG}},
+            KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          </replacementvalue>
+        </replacementdef>
+      </include>
+    </block> <!-- Replace One Mode End -->
+    <block> <!-- Replace Mode Begin -->
+      <config_only>notsave.vim_emu_S_R{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen>
+        __KeyToKey__ KeyCode::H,
+        VK_SHIFT|ModifierFlag::NONE,
+        KeyCode::Z, VK_COMMAND,
+      </autogen>
+      <include path="vim_emu_key_wrap.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_BEFORE</replacementname>
+          <replacementvalue>
+            KeyCode::FORWARD_DELETE,
+          </replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>VIM_EMU_AFTER</replacementname>
+          <replacementvalue>
+          </replacementvalue>
+        </replacementdef>
+      </include>
+    </block> <!-- Replace Mode End -->
+  </item> <!-- Enable Vim Emulation -->
+</root>

@@ -4,120 +4,94 @@
   <item hidden="true">
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu</identifier>
+      <identifier vk_config="true">notsave.vim_emu_using{{VIM_EMU_ALTCONFIG}}</identifier>
+    </item>
+    <item>
+      <name></name>
+      <identifier vk_config="true">notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ -- VIM </autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_normal</identifier>
+      <identifier vk_config="true">notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ -- </autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_visual</identifier>
+      <identifier vk_config="true">notsave.vim_emu_visual{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ VISUAL --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_visual_block</identifier>
-      <autogen>__ShowStatusMessage__ VISUAL BLOCK --</autogen>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_visual_line</identifier>
+      <identifier vk_config="true">notsave.vim_emu_visual_line_first{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ VISUAL LINE --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_command</identifier>
+      <identifier vk_config="true">notsave.vim_emu_visual_line{{VIM_EMU_ALTCONFIG}}</identifier>
+      <autogen>__ShowStatusMessage__ VISUAL LINE --</autogen>
+    </item>
+    <item>
+      <name></name>
+      <identifier vk_config="true">notsave.vim_emu_command{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ COMMAND -- </autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_oneshot</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_G</identifier>
+      <identifier vk_config="true">notsave.vim_emu_G{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ g</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_Y</identifier>
+      <identifier vk_config="true">notsave.vim_emu_Y{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ y --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_D</identifier>
+      <identifier vk_config="true">notsave.vim_emu_D{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ d --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_C</identifier>
+      <identifier vk_config="true">notsave.vim_emu_C{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ c --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_R</identifier>
+      <identifier vk_config="true">notsave.vim_emu_R{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ r --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_S_R</identifier>
+      <identifier vk_config="true">notsave.vim_emu_S_R{{VIM_EMU_ALTCONFIG}}</identifier>
       <autogen>__ShowStatusMessage__ R --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_line_copy</identifier>
+      <identifier vk_config="true">notsave.vim_emu_line_copy{{VIM_EMU_ALTCONFIG}}</identifier>
+      <!-- <autogen>__ShowStatusMessage__ lc</autogen> -->
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_complement</identifier>
+      <identifier vk_config="true">notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</identifier>
+      <autogen>__ShowStatusMessage__ COMP --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_search</identifier>
-      <autogen>__ShowStatusMessage__ Search --</autogen>
+      <identifier vk_config="true">notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</identifier>
+      <autogen>__ShowStatusMessage__ SEARCH --</autogen>
     </item>
     <item>
       <name></name>
-      <identifier vk_config="true">notsave.vim_emu_repeat</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_2</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_3</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_4</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_5</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_6</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_7</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_8</identifier>
-    </item>
-    <item>
-      <name></name>
-      <identifier vk_config="true">notsave.vim_emu_9</identifier>
+      <identifier vk_config="true">notsave.vim_emu_record{{VIM_EMU_ALTCONFIG}}</identifier>
+      <autogen>__ShowStatusMessage__ RECORD</autogen>
     </item>
   </item>
   <item>
     <name>Help</name>
+    <appendix>
+      Check https://github.com/rcmdnk/vim_emu for more details.
+    </appendix>
     <item>
       <name>Application choice</name>
       <item>
@@ -145,7 +119,7 @@
       <item>
         <name></name>
         <appendix>Starting from this mode</appendix>
-        <appendix>ESC/Ctrl-[: Enter VIM Normal mode</appendix>
+        <appendix>ESC/Ctrl-[ (or other ChangeKeys): Enter VIM Normal mode</appendix>
         <appendix>Ctrl-n/p: Enter Complement mode:</appendix>
         <appendix>* In Complement mode, use Ctrl-n/p to choose a candidate.</appendix>
         <appendix>* Ctrl-h to skip, ESC/Ctrl-[ to choose a candidate.</appendix>
@@ -158,7 +132,7 @@
         <appendix>i/I/a/A/o/O: Enter Insert mode (OS standard state) at under the cursor/start of the</appendix>
         <appendix>line/next to the cursor/end of the line.</appendix>
         <appendix>
-          v/V/Ctrl-v: Enter Visual/Visual Line/Visual Block mode.
+          v/V: Enter Visual/Visual Line Mode
         </appendix>
         <appendix>
           :(colon) : Enter Command mode.
@@ -168,26 +142,26 @@
         <name>Move</name>
         <appendix>h/j/k/l: Left/Down/Up/Right.</appendix>
         <appendix>
-          0/$ (C-a/C-e): Move to the beginning/end of the line.
+          0/$ : Move to the beginning/end of the line (Mac Cmd-left, Cmd-right).
+        </appendix>
+        <appendix>
+          {/} : Move to the beginning/end of the paragraph (Mac Ctrl-a, Ctrl-e. It works rather like "sentence". Sometime, it is actual sentence rather than 0/$).
         </appendix>
         <appendix>
           ^ : Move to the first non-blanck character of the line.
         </appendix>
         <appendix>
-          w/W/e/E: Move to the next word
-          (w/W: the beginning of the word, e/E: the end of the word).
+          w/e: Move to the next word
+          (w: the beginning of the word, e: the end of the word).
         </appendix>
         <appendix>
-          b/B: Move to the previous word (b/B: the beginning of the word).
+          b/ge: Move to the previous word
+          (b: the beginning of the word, ge: the end of the word).
         </appendix>
         <appendix>Ctrl-u/Ctrl-d: Go Up/Down 10 lines.</appendix>
         <appendix>Ctrl-b/Ctrl-f: PageUp/PageDown.</appendix>
         <appendix>Enter: Move to the first non-blanck character of the next line.</appendix>
         <appendix>gg/G: Go to top/bottom of the file.</appendix>
-        <appendix></appendix>
-        <appendix>In addition, "Repeat" is available for move commands.</appendix>
-        <appendix>e.g.) 4j: Down 4 lines. (only numbers of 2-9)</appendix>
-
       </item>
       <item>
         <name>Yank/Cut/Change/Paste</name>
@@ -199,9 +173,6 @@
         <appendix>x/X: Cut a character under/before the cursor.</appendix>
         <appendix>s/S: Delete/Cut a character/a line under the cursor and enter Insert mode.</appendix>
         <appendix>p/P: Paste to the next/current place.</appendix>
-        <appendix></appendix>
-        <appendix>y/d/c+Move Command can be used.</appendix>
-        <appendix>e.g.) yw -> copy next one word.</appendix>
       </item>
       <item>
         <name>Others</name>
@@ -209,7 +180,7 @@
         <appendix>u/C-r: Undo/Redo. U can be used as same as u, too.</appendix>
         <appendix>r/R: Replace one/multi character/s.</appendix>
         <appendix>J: Combine two lines.</appendix>
-        <appendix>H/L/M: To line from top/bottom/middle of window.</appendix>
+        <appendix>M: Move current line to the middle (need enough lines in above/blow).</appendix>
         <appendix>.(period): Replace a following word with a clipboard (different from normal vim).</appendix>
         <appendix>/: Search.</appendix>
         <appendix>n/N: Search next/previous.</appendix>
@@ -227,8 +198,6 @@
       <item>
         <name>Move</name>
         <appendix>Most of Move commands in Normal mode can be used.</appendix>
-        <appendix>For Visual Block mode, mouse key is used,</appendix>
-        <appendix>and it shows a bit different behavior.</appendix>
       </item>
       <item>
         <name>Yank/Cut/Change</name>
@@ -239,6 +208,10 @@
         <appendix>c: Change the selected region</appendix>
         <appendix>C: Change the selected region + to the end of the line</appendix>
         <appendix>*(asterisk): Search the selected word</appendix>
+        <appendix></appendix>
+        <appendix>Note: Currently, if you paste lines copied in visual line mode,</appendix>
+        <appendix>there will be one empty line below the content</appendix>
+        <appendix>if the content doesn't include the last line of the text.</appendix>
       </item>
     </item>
     <item>

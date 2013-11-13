@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Disable all other non-assigned keys in other than Inser Mode</name>
+    <appendix>Note: Keys with modifiers are not disabled.</appendix>
+    <identifier>remap.vim_emu_disable{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+      <!-- *************************************** -->
+      <!-- Disable all other keys -->
+      <include path="vim_emu_replace.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_REPLACE</replacementname>
+          <replacementvalue>KeyCode::VK_NONE</replacementvalue>
+        </replacementdef>
+      </include>
+    </block>
+  </item>
+</root>

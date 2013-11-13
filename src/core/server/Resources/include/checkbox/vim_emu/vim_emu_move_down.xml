@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<root>
+  <!-- j -->
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>KeyCode::J, ModifierFlag::NONE,</replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}ModifierFlag::NONE,
+      </replacementvalue>
+    </replacementdef>
+  </include>
+  <!-- Ctrl-d -->
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>
+        KeyCode::D, VK_CONTROL|ModifierFlag::NONE,
+      </replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+      </replacementvalue>
+    </replacementdef>
+  </include>
+  <!-- Ctrl-f -->
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>
+        KeyCode::F, VK_CONTROL|ModifierFlag::NONE,
+      </replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::PAGEDOWN, {{VIM_EMU_USE_SHIFT}}|VK_OPTION,
+      </replacementvalue>
+    </replacementdef>
+  </include>
+  <!-- G -->
+  <autogen>
+    __KeyToKey__ KeyCode::G,
+    VK_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
+    {{VIM_EMU_AFTER_MOVE}}
+  </autogen>
+</root>
