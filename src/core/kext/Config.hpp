@@ -74,6 +74,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_holdingkeytokey_wait);
       return getvalue(v, 10);
     }
+    static unsigned int get_mousekey_high_speed_of_pointer(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_high_speed_of_pointer);
+      return getvalue(v, 0);
+    }
+    static unsigned int get_mousekey_high_speed_of_scroll(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_high_speed_of_scroll);
+      return getvalue(v, 0);
+    }
     static unsigned int get_fixed_distance_magnification(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_fixed_distance_magnification);
       return getvalue(v, 0);

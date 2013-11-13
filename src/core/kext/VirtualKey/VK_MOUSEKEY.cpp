@@ -278,13 +278,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! scrollmode_) {
       int s = scale_;
-      if (highspeed_) s = HIGHSPEED_RELATIVE_SCALE;
+      if (highspeed_) s = Config::get_mousekey_high_speed_of_pointer();
 
       EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), dx_ * s, dy_ * s);
 
     } else {
       int s = scale_;
-      if (highspeed_) s = HIGHSPEED_SCROLL_SCALE;
+      if (highspeed_) s = Config::get_mousekey_high_speed_of_scroll();
 
       int delta1 = -dy_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
       int delta2 = -dx_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;

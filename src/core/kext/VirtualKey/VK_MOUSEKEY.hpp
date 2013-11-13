@@ -15,8 +15,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       enum {
         TIMER_INTERVAL = 20,
-        HIGHSPEED_RELATIVE_SCALE = 50,
-        HIGHSPEED_SCROLL_SCALE = 50,
       };
       static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
 
