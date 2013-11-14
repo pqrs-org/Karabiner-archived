@@ -10,6 +10,12 @@ Version 9.0.0
     * ENV\_HOME does not work properly in included xml.
     * New plugged devices will not be recognized on OS X 10.9.
     * KeyRemap4MacBook disables the shut down dialog.
+    * Fn key on Leopold FC660M cancels mouse dragging.
+* Updated prepared settings:
+    * "VIM Emulation" has been updated.
+    * Fixed "MarkSet" in Emacs Mode.
+* Updated installer.
+* Some minor improvements.
 * Signed with Developer ID.
 
 
