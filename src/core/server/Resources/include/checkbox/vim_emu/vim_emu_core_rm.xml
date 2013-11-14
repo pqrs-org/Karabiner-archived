@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable Vim Recording Macro</name>
+    <appendix>q in Normal mode to start recording key inputs.</appendix>
+    <appendix>q in Normal mode to stop recording key inputs.</appendix>
+    <appendix>@ to execute recorded key inputs.</appendix>
+    <appendix>n@ (n=2-9) to execute recorded key inputs n-times.</appendix>
+    <appendix>Need additional application like MadRuby.</appendix>
+    <appendix>MadRuby: http://www.wingsforpigs.com/MadRuby/MadRuby.html</appendix>
+    <appendix>Set Keyboard Shortcuts like:</appendix>
+    <appendix>    Start Recording: Ctrl-Shift-Cmd-6</appendix>
+    <appendix>     Stop Recording: Ctrl-Shift-Cmd-7</appendix>
+    <appendix>         Play Macro: Ctrl-Shift-Cmd-8</appendix>
+    <appendix>Multiple Play Macro: Ctrl-Shift-Cmd-9</appendix>
+    <identifier>remap.vim_emu_record{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <config_only>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_only>
+      <config_not>notsave.vim_emu_record{{VIM_EMU_ALTCONFIG}}</config_not>
+      <autogen>
+        __KeyToKey__ KeyCode::Q, ModifierFlag::NONE,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_record{{VIM_EMU_ALTCONFIG}},
+        KeyCode::KEY_6, VK_CONTROL|
+        VK_SHIFT|VK_COMMAND
+      </autogen>
+    </block>
+    <block>
+      <config_only>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_only>
+      <config_only>notsave.vim_emu_record{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen>
+        __KeyToKey__ KeyCode::Q, ModifierFlag::NONE,
+        KeyCode::KEY_7, VK_CONTROL|
+        VK_SHIFT|VK_COMMAND,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_record{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block>
+
+    <block>
+      <config_only>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_only>
+      <include path="vim_emu_repeat_macro.xml">
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::KEY_2, VK_SHIFT|ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="vim_emu_repeat_macro.xml"><!-- for JIS -->
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::JIS_ATMARK, ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="vim_emu_repeat_macro.xml"><!-- for German -->
+        <replacementdef>
+          <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+          <replacementvalue>
+            KeyCode::Q, VK_OPTION|ModifierFlag::NONE,
+          </replacementvalue>
+        </replacementdef>
+      </include>
+    </block>
+  </item>
+</root>

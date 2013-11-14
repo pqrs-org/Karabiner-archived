@@ -473,4 +473,14 @@
     <equal>com.apple.DigitalColorMeter</equal>
   </appdef>
 
+  <appdef>
+    <appname>FILEZILLA</appname>
+    <equal>de.filezilla </equal>
+  </appdef>
+
+  <appdef>
+    <appname>LOGMEIN</appname>
+    <equal>com.logmein.logmeinpluginhost</equal>
+  </appdef>
+
 </root>

@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>ChangeKey1: Escape to enter Normal Mode</name>
+    <appendix>Holding Esc emulate normal Esc.</appendix>
+    <identifier>remap.vim_emu_escape{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::ESCAPE,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::ESCAPE,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Turn Off also IME if enabled -->
+        <inputsource_only>JAPANESE</inputsource_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::ESCAPE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <!-- Others -->
+      <config_not>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_not>
+      <autogen>
+        __HoldingKeyToKey__ KeyCode::ESCAPE,
+        {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+        KeyCode::VK_NONE,
+        KeyCode::ESCAPE, Option::NOREPEAT
+      </autogen>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey2: Escape to back in Insert Mode from Normal Mode</name>
+    <appendix>Use with above, to toggle modes with Escape.</appendix>
+    <appendix>Holding Esc emulate normal Esc.</appendix>
+    <identifier>remap.vim_emu_escape_toggle{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Normal Mode --> 
+        <config_only>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::ESCAPE,
+          {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey3: Escape to back in Normal Mode in other than Insert Mode</name>
+    <appendix>All parts are overlapped with</appendix>
+    <appendix>"Escape to enter Normal Mode",</appendix>
+    <appendix>but it doesn't switch on Normal Mode in Insert Mode.</appendix>
+    <appendix>Useful to use with simultaneous keys.</appendix>
+    <appendix>Holding Esc emulate normal Esc.</appendix>
+    <identifier>remap.vim_emu_escape_not_insert{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::ESCAPE,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::ESCAPE,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Other than Insert Mode -->
+        <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::ESCAPE,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey4: Ctrl-[ to enter Normal Mode</name>
+    <appendix>Holding Ctrl-[ emulate normal Esc.</appendix>
+    <identifier>remap.vim_emu_ctrl_lb{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+          VK_CONTROL,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+          VK_CONTROL,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Turn Off also IME if enabled -->
+        <inputsource_only>JAPANESE</inputsource_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+          VK_CONTROL,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <!-- Others -->
+      <autogen>
+        __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+        VK_CONTROL,
+        {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+        KeyCode::VK_NONE,
+        KeyCode::ESCAPE, Option::NOREPEAT
+      </autogen>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey5: Ctrl-[ to back in Insert Mode from Normal Mode</name>
+    <appendix>Use with above, to toggle modes with Ctrl-[].</appendix>
+    <appendix>Holding Ctrl-[ emulate normal Esc.</appendix>
+    <identifier>remap.vim_emu_ctrl_lb_toggles{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Normal Mode --> 
+        <config_only>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+          VK_CONTROL,
+          {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey6: Ctrl-[ to back in Normal mode in other than Insert Mode.</name>
+    <appendix>All parts are overlapped with</appendix>
+    <appendix>"Ctrl-[ to enter Normal Mode",</appendix>
+    <appendix>but it doesn't switch on Normal Mode in Insert Mode.</appendix>
+    <appendix>Holding Ctrl-[ emulate normal Esc.</appendix>
+    <identifier>remap.vim_emu_ctrl_lb_not_insert{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+          VK_CONTROL,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+          VK_CONTROL,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Other than Insert Mode -->
+        <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::BRACKET_LEFT,
+          VK_CONTROL,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey7: Simultaneous jk toggles Insert Mode - Normal Mode</name>
+    <appendix>In Virtual or Command mode, nothing happens.</appendix>
+    <identifier>remap.vim_emu_jk_toggle{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <appendix>__SimultaneousKeyPresses__ makes a problem </appendix>
+    <appendix>if same combination is defined in different config state.</appendix>
+    <appendix>If it is set as "Enter Normal Mode" in Insert Mode (no config)</appendix>
+    <appendix>     and set as "Back in Insert Mode" in Normal Mode,</appendix>
+    <appendix>it shows repeat j/k when push j/k after entering Normal mode.</appendix>
+    <appendix>Therefore, for simultaneous keys,</appendix>
+    <appendix>only toggles are used only when Insert/Normal mode.</appendix>
+    <appendix>As two options have to be toggled,</appendix>
+    <appendix>it is not possible to support in such Viertual mode.</appendix>
+    <appendix>Hence, the combination set to do nothing in such Virtual mode.</appendix>
+    <block>
+      <block>
+        <config_not>{{VIM_EMU_NOT_NORMAL_MODE}}</config_not>
+        <autogen>
+          __SimultaneousKeyPresses__
+          KeyCode::J, KeyCode::K,
+          {{VIM_EMU_MODE_TOGGLE}}
+        </autogen>
+      </block>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey8: Simultaneous qw toggles Insert Mode - Normal Mode</name>
+    <appendix>In Virtual or Command mode, it changes to Insert Mode.</appendix>
+    <identifier>remap.vim_emu_qw_toggle{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block>
+        <config_not>{{VIM_EMU_NOT_NORMAL_MODE}}</config_not>
+        <autogen>
+          __SimultaneousKeyPresses__
+          KeyCode::Q, KeyCode::W,
+          {{VIM_EMU_MODE_TOGGLE}}
+        </autogen>
+      </block>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey9: Simultaneous sd toggles Insert Mode - Normal Mode</name>
+    <appendix>In Virtual or Command mode, nothing happens.</appendix>
+    <identifier>remap.vim_emu_sd_toggle{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block>
+        <config_not>{{VIM_EMU_NOT_NORMAL_MODE}}</config_not>
+        <autogen>
+          __SimultaneousKeyPresses__
+          KeyCode::S, KeyCode::D,
+          {{VIM_EMU_MODE_TOGGLE}}
+        </autogen>
+      </block>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey10: Ctrl-l toggles Insert Mode - Normal Mode</name>
+    <appendix>In Virtual or Command mode, nothing happens.</appendix>
+    <identifier>remap.vim_emu_ctrl_l_toggles{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Vim Mode --> 
+        <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen> <!-- Other case -->
+          __KeyToKey__ KeyCode::L,
+          VK_CONTROL,
+          {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}}
+        </autogen>
+      </block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __KeyToKey__ KeyCode::L,
+          VK_CONTROL,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __KeyToKey__ KeyCode::L,
+          VK_CONTROL,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </autogen>
+      </block>
+      <block> <!-- Turn Off also IME if enabled -->
+        <inputsource_only>JAPANESE</inputsource_only>
+        <autogen>
+          __KeyToKey__ KeyCode::L,
+          VK_CONTROL,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}}
+        </autogen>
+      </block>
+      <autogen> <!-- Other case -->
+        __KeyToKey__ KeyCode::L,
+        VK_CONTROL,
+        {{VIM_EMU_FORCE_ON_NORMAL_MODE}}
+      </autogen>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey11: Left Cmd toggles Insert Mode - Normal Mode</name>
+    <appendix>In Virtual or Command mode, it changes to Insert Mode.</appendix>
+    <identifier>remap.vim_emu_l_cmd_toggles{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Vim Mode --> 
+        <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen> <!-- Other case -->
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_L,
+          KeyCode::COMMAND_L, <!-- Need one key shot to use as modifier -->
+          {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}}
+        </autogen>
+      </block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_L,
+          KeyCode::COMMAND_L,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_L,
+          KeyCode::COMMAND_L,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </autogen>
+      </block>
+      <block> <!-- Turn Off also IME if enabled -->
+        <inputsource_only>JAPANESE</inputsource_only>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_L,
+          KeyCode::COMMAND_L,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}}
+        </autogen>
+      </block>
+      <autogen> <!-- Other case -->
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_L,
+        KeyCode::COMMAND_L,
+        {{VIM_EMU_FORCE_ON_NORMAL_MODE}}
+      </autogen>
+    </block>
+  </item>
+  <item>
+    <name>ChangeKey12: Rgiht Cmd toggles Insert Mode - Normal Mode</name>
+    <appendix>In Virtual or Command mode, it changes to Insert Mode.</appendix>
+    <identifier>remap.vim_emu_r_cmd_toggles{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Vim Mode --> 
+        <config_only>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen> <!-- Other case -->
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_R,
+          KeyCode::COMMAND_R,
+          {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}}
+        </autogen>
+      </block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_R,
+          KeyCode::COMMAND_R,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_R,
+          KeyCode::COMMAND_R,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+        </autogen>
+      </block>
+      <block> <!-- Turn Off also IME if enabled -->
+        <inputsource_only>JAPANESE</inputsource_only>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_R,
+          KeyCode::COMMAND_R,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}}
+        </autogen>
+      </block>
+      <autogen> <!-- Other case -->
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_R,
+        KeyCode::COMMAND_R,
+        {{VIM_EMU_FORCE_ON_NORMAL_MODE}}
+      </autogen>
+    </block>
+  </item>
+</root>

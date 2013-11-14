@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<root>
+  <!-- k -->
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>KeyCode::K, ModifierFlag::NONE,</replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}ModifierFlag::NONE,
+      </replacementvalue>
+    </replacementdef>
+  </include>
+  <!-- Ctrl-u -->
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>
+        KeyCode::U, VK_CONTROL|ModifierFlag::NONE,
+      </replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+      </replacementvalue>
+    </replacementdef>
+  </include>
+  <!-- Ctrl-b -->
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>
+        KeyCode::B, VK_CONTROL|ModifierFlag::NONE,
+      </replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::PAGEUP, {{VIM_EMU_USE_SHIFT}}|VK_OPTION,
+      </replacementvalue>
+    </replacementdef>
+  </include>
+  <block><!-- Command with g -->
+    <config_only>notsave.vim_emu_G{{VIM_EMU_ALTCONFIG}}</config_only>
+    <autogen> <!-- gg -->
+      __KeyToKey__ KeyCode::G, ModifierFlag::NONE,
+      {{VIM_EMU_BEFORE_MOVE}},
+      KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
+       KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_G{{VIM_EMU_ALTCONFIG}},
+      {{VIM_EMU_AFTER_MOVE}},
+    </autogen>
+  </block> <!-- Command with g -->
+</root>
