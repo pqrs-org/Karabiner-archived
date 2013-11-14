@@ -63,6 +63,9 @@ namespace org_pqrs_KeyRemap4MacBook {
             currentVectorPointer_ = &beforeKeys_;
           } else if (Option::KEYTOKEY_AFTER_KEYUP == newval) {
             currentVectorPointer_ = &afterKeys_;
+          } else if (Option::USE_SEPARATOR == newval ||
+                     Option::SEPARATOR == newval) {
+            // do nothing
           } else {
             IOLOG_ERROR("KeyToKey::add unknown option:%d\n", newval);
           }
