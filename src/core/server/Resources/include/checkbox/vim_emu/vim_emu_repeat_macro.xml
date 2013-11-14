@@ -2,8 +2,7 @@
 <root>
   <autogen>
     __KeyToKey__ {{VIM_EMU_REPEAT_INPUT}},
-    {{VIM_EMU_BEFORE_MOVE}},
-    {{VIM_EMU_REPEAT_OUTPUT}},
-    {{VIM_EMU_AFTER_MOVE}}
+    KeyCode::KEY_8, VK_CONTROL|
+    VK_SHIFT|VK_COMMAND,
   </autogen>
 </root>

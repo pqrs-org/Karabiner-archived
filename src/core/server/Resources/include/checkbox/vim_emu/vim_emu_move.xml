@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <root>
   <!-- Configuration for Up/Down (inc. j/k) -->
-  <include path="vim_emu_move_up_down.xml"></include>
+  <include path="vim_emu_move_up.xml"></include>
+  <include path="vim_emu_move_down.xml"></include>
 
   <!-- h/l -->
   <include path="vim_emu_repeat.xml">
@@ -32,46 +33,130 @@
   <!-- 0/$ -->
   <autogen>
     __KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE,
-    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::COMMAND_L,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
     {{VIM_EMU_AFTER_MOVE}}
   </autogen>
   <autogen>
     __KeyToKey__ KeyCode::KEY_4,
-    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
-    KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::COMMAND_L,
+    VK_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
     {{VIM_EMU_AFTER_MOVE}}
   </autogen>
 
   <!-- a/e same as 0/$ (don't disable) -->
+  <!--
   <autogen>
     __KeyToKey__ KeyCode::A,
-    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|ModifierFlag::NONE,
-    KeyCode::A, {{VIM_EMU_USE_SHIFT}}ModifierFlag::CONTROL_L,
+    VK_CONTROL|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::A, {{VIM_EMU_USE_SHIFT}}VK_CONTROL,
     {{VIM_EMU_AFTER_MOVE}}
   </autogen>
   <autogen>
     __KeyToKey__ KeyCode::E,
-    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL|ModifierFlag::NONE,
-    KeyCode::E, {{VIM_EMU_USE_SHIFT}}ModifierFlag::CONTROL_L,
+    VK_CONTROL|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::E, {{VIM_EMU_USE_SHIFT}}VK_CONTROL,
     {{VIM_EMU_AFTER_MOVE}}
   </autogen>
+  -->
 
   <!-- ^ -->
   <autogen>
     __KeyToKey__ KeyCode::KEY_6,
-    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE,
-    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::COMMAND_L,
-    KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
-    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
+    VK_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
+    KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
     {{VIM_EMU_AFTER_MOVE}}
   </autogen>
   <autogen>
     __KeyToKey__ KeyCode::JIS_HAT, ModifierFlag::NONE,
-    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::COMMAND_L,
-    KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
-    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
+    KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
     {{VIM_EMU_AFTER_MOVE}}
   </autogen>
+  <autogen>
+    __KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
+    KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+    KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+    {{VIM_EMU_AFTER_MOVE}}
+  </autogen>
+
+  <!-- {/} -->
+  <autogen>
+    __KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::A, {{VIM_EMU_USE_SHIFT}}VK_CONTROL,
+    {{VIM_EMU_AFTER_MOVE}}
+  </autogen>
+  <autogen>
+    __KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE,
+    VK_SHIFT|ModifierFlag::NONE,
+    {{VIM_EMU_BEFORE_MOVE}},
+    KeyCode::E, {{VIM_EMU_USE_SHIFT}}VK_CONTROL,
+    {{VIM_EMU_AFTER_MOVE}}
+  </autogen>
+
+  <!-- ge/gE-->
+  <block>
+    <config_only>notsave.vim_emu_G{{VIM_EMU_ALTCONFIG}}</config_only>
+    <include path="vim_emu_repeat.xml">
+      <replacementdef>
+        <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+        <replacementvalue>
+          KeyCode::E, ModifierFlag::NONE
+        </replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+        <replacementvalue>
+          KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+          KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+          KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        </replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+        <replacementvalue>
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_G{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </replacementvalue>
+      </replacementdef>
+    </include>
+    <!--
+    <include path="vim_emu_repeat.xml">
+      <replacementdef>
+        <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+        <replacementvalue>
+          KeyCode::E, VK_SHIFT|ModifierFlag::NONE
+        </replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+        <replacementvalue>
+          KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+          KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+          KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        </replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_AFTER_MOVE</replacementname>
+        <replacementvalue>
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_G{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_AFTER_MOVE}}
+        </replacementvalue>
+      </replacementdef>
+    </include>
+    -->
+  </block><!-- Command with g -->
 
   <!-- w/W/e/E/b/B -->
   <include path="vim_emu_repeat.xml">
@@ -82,28 +167,30 @@
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
       <replacementvalue>
-        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
-        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
-        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
       </replacementvalue>
     </replacementdef>
   </include>
+  <!--
   <include path="vim_emu_repeat.xml">
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
       <replacementvalue>
-        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE
+        KeyCode::W, VK_SHIFT|ModifierFlag::NONE
       </replacementvalue>
     </replacementdef>
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
       <replacementvalue>
-        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
-        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
-        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
       </replacementvalue>
     </replacementdef>
   </include>
+  -->
   <include path="vim_emu_repeat.xml">
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
@@ -112,24 +199,26 @@
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
       <replacementvalue>
-        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION
       </replacementvalue>
     </replacementdef>
   </include>
+  <!--
   <include path="vim_emu_repeat.xml">
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
       <replacementvalue>
-        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE
+        KeyCode::E, VK_SHIFT|ModifierFlag::NONE
       </replacementvalue>
     </replacementdef>
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
       <replacementvalue>
-        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION
       </replacementvalue>
     </replacementdef>
   </include>
+  -->
   <include path="vim_emu_repeat.xml">
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
@@ -138,26 +227,29 @@
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
       <replacementvalue>
-        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L
+        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION
       </replacementvalue>
     </replacementdef>
   </include>
+  <!--
   <include path="vim_emu_repeat.xml">
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
       <replacementvalue>
-        KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT|ModifierFlag::NONE
+        KeyCode::B, VK_SHIFT|ModifierFlag::NONE
       </replacementvalue>
     </replacementdef>
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
       <replacementvalue>
-        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L
+        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION
       </replacementvalue>
     </replacementdef>
   </include>
+  -->
 
   <!-- Return -->
+  <!--
   <include path="vim_emu_repeat.xml">
     <replacementdef>
       <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
@@ -169,10 +261,31 @@
       <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
       <replacementvalue>
         KeyCode::CURSOR_DOWN, {{VIM_EMU_USE_SHIFT}}ModifierFlag::NONE,
-        KeyCode::A, {{VIM_EMU_USE_SHIFT}}ModifierFlag::CONTROL_L,
-        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
-        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::OPTION_L,
+        KeyCode::A, {{VIM_EMU_USE_SHIFT}}VK_CONTROL,
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
       </replacementvalue>
     </replacementdef>
   </include>
+  -->
+
+  <!-- Space -->
+  <!--
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>
+        KeyCode::SPACE, ModifierFlag::NONE
+      </replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}ModifierFlag::NONE,
+      </replacementvalue>
+    </replacementdef>
+  </include>
+  -->
+
+
 </root>

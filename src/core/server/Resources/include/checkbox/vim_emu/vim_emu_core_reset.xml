@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Reset vim_emu at non-vim_emu apps</name>
+    <appendix>When any buttons are pushed at non-vim_emu apps,</appendix>
+    <appendix>it resets vim_emu (change to Insert Mode)</appendix>
+    <appendix>for vim_emu apps. (no effect on non-vim_emu apps.</appendix>
+    <identifier>remap.vim_emu_off_at_non_vim_emu_apps{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_IGNORE_APPS}}</only>
+    <not>{{VIM_EMU_ONLY_APPS}}</not>
+    <config_only>notsave.vim_emu_using{{VIM_EMU_ALTCONFIG}}</config_only>
+    <include path="vim_emu_key_click_wrap.xml">
+      <replacementdef>
+        <replacementname>VIM_EMU_BEFORE</replacementname>
+        <replacementvalue>
+          {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
+        </replacementvalue>
+      </replacementdef>
+      <replacementdef>
+        <replacementname>VIM_EMU_AFTER</replacementname>
+        <replacementvalue>
+        </replacementvalue>
+      </replacementdef>
+    </include>
+  </item>
+  <item>
+    <name>Reset vim_emu at left click in any case</name>
+    <identifier>remap.vim_emu_off_with_left_click{{VIM_EMU_ALTCONFIG}}</identifier>
+    <config_only>notsave.vim_emu_using{{VIM_EMU_ALTCONFIG}}</config_only>
+    <autogen>
+      __PointingButtonToKey__ PointingButton::LEFT,
+      {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
+      KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
+    </autogen>
+  </item>
+  <item>
+    <name>Reset vim_emu at Cmd-Tab in any case</name>
+    <identifier>remap.vim_emu_off_with_cmd_tab{{VIM_EMU_ALTCONFIG}}</identifier>
+    <config_only>notsave.vim_emu_using{{VIM_EMU_ALTCONFIG}}</config_only>
+    <autogen>
+      __KeyToKey__ KeyCode::TAB,
+      VK_COMMAND|ModifierFlag::NONE,
+      {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
+      KeyCode::TAB, VK_COMMAND,
+    </autogen>
+  </item>
+  <item>
+    <name>Reset at Spotlight (Ctrl-Space or Ctrl-Option-Space)</name>
+    <identifier>remap.vim_emu_off_at_spotlight{{VIM_EMU_ALTCONFIG}}</identifier>
+    <config_only>notsave.vim_emu_using{{VIM_EMU_ALTCONFIG}}</config_only>
+    <autogen>
+      __KeyToKey__ KeyCode::SPACE,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::A,
+      KeyCode::A,
+      KeyCode::A,
+      KeyCode::A,
+      {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
+      KeyCode::SPACE, VK_CONTROL
+    </autogen>
+    <autogen>
+      __KeyToKey__ KeyCode::SPACE,
+      VK_CONTROL|VK_OPTION|ModifierFlag::NONE,
+      {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
+      KeyCode::SPACE, VK_CONTROL|VK_OPTION
+    </autogen>
+  </item>
+</root>
