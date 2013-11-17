@@ -20,9 +20,9 @@ bool org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::notification_enabled_ = f
 IOExternalMethodDispatch org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::methods_[BRIDGE_USERCLIENT__END__] = {
   { // BRIDGE_USERCLIENT_OPEN
     reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
-    0,                                                               // No scalar input values.
+    1,                                                               // One scalar input value.
     0,                                                               // No struct input value.
-    0,                                                               // No scalar output values.
+    1,                                                               // One scalar output value.
     0                                                                // No struct output value.
   },
   { // BRIDGE_USERCLIENT_CLOSE
@@ -156,14 +156,22 @@ IOReturn
 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_open(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
-  return target->callback_open();
+
+  return target->callback_open(arguments->scalarInput[0], &(arguments->scalarOutput[0]));
 }
 
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_open(void)
+org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_open(uint64_t bridge_version_app, uint64_t* outputdata)
 {
   org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
   if (! lk) return kIOReturnCannotLock;
+
+  if (! outputdata) {
+    IOLOG_ERROR("UserClient_kext::callback_open kIOReturnBadArgument\n");
+    return kIOReturnBadArgument;
+  }
+
+  *outputdata = BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_GENERIC;
 
   if (provider_ == NULL || isInactive()) {
     // Return an error if we don't have a provider. This could happen if the user process
@@ -180,6 +188,26 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_open(void)
     return kIOReturnExclusiveAccess;
   }
 
+  // ------------------------------------------------------------
+  *outputdata = BRIDGE_USERCLIENT_OPEN_RETURN_SUCCESS;
+
+  // ----------------------------------------
+  // Checking bridge_versions:
+  //
+  // Note:
+  // We need to return kIOReturnSuccess in order to return outputdata to userspace.
+  // (If we return error such as kIOReturnError, outputdata in userspace will not be changed.)
+  uint64_t bridge_version_kext =
+#include "../../../src/bridge/output/include.bridge_version.h"
+  ;
+  if (bridge_version_kext != bridge_version_app) {
+    IOLOG_ERROR("UserClient_kext::callback_open BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH kext:0x%llx != app:0x%llx\n",
+                bridge_version_kext,
+                bridge_version_app);
+    *outputdata = BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH;
+  }
+
+  // ----------------------------------------
   return kIOReturnSuccess;
 }
 

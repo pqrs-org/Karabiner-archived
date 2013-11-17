@@ -30,7 +30,7 @@ protected:
 private:
   // ------------------------------------------------------------
   static IOReturn static_callback_open(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments);
-  IOReturn callback_open(void);
+  IOReturn callback_open(uint64_t bridge_version_app, uint64_t* outputdata);
 
   static IOReturn static_callback_close(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments);
   IOReturn callback_close(void);
