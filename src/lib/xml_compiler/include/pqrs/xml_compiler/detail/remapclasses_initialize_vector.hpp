@@ -31,8 +31,7 @@ private:
   void cleanup_(void);
 
   enum {
-    INDEX_OF_FORMAT_VERSION = 0,
-    INDEX_OF_CONFIG_COUNT = 1,
+    INDEX_OF_CONFIG_COUNT = 0,
   };
 
   std::vector<uint32_t> data_;

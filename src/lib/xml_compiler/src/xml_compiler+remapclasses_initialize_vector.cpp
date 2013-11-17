@@ -12,8 +12,7 @@ namespace pqrs {
   void
   xml_compiler::remapclasses_initialize_vector::clear(void)
   {
-    data_.resize(2);
-    data_[INDEX_OF_FORMAT_VERSION] = BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION;
+    data_.resize(1);
     data_[INDEX_OF_CONFIG_COUNT] = 0;
 
     is_config_index_added_.clear();

@@ -403,7 +403,7 @@ namespace pqrs {
 
     const auto& initialize_vector = remapclasses_initialize_vector_.get();
 
-    size_t i = 2;
+    size_t i = 1;
     for (;;) {
       if (i >= initialize_vector.size()) return false;
 

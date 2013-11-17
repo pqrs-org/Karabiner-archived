@@ -893,7 +893,7 @@ TEST(pqrs_xml_compiler_symbol_map, add)
 TEST(pqrs_xml_compiler_remapclasses_initialize_vector, get)
 {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
-  EXPECT_EQ(2, v.get().size());
+  EXPECT_EQ(1, v.get().size());
 }
 
 TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
@@ -912,7 +912,6 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
   v.freeze();
 
   std::vector<uint32_t> expected;
-  expected.push_back(BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION);
   expected.push_back(4); // count is {0,1,2,3}
 
   expected.push_back(1); // configindex:1
@@ -954,7 +953,6 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial)
   v.freeze();
 
   std::vector<uint32_t> expected;
-  expected.push_back(BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION);
   expected.push_back(5); // count is {0,1,2,3,4}
 
   expected.push_back(1); // configindex:1
