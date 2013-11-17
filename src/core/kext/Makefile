@@ -4,6 +4,7 @@ VERSION = `cat ../../../version`
 
 all:
 	$(MAKE) -C ../../../pkginfo
+	$(MAKE) -C ../../bridge/generator/bridge_version
 	$(MAKE) -C ../../bridge/generator/config
 	xcodebuild -alltargets -configuration $(CONFIGURATION) MODULE_VERSION=$(VERSION) CURRENT_PROJECT_VERSION=$(VERSION) build
 

@@ -1,6 +1,18 @@
 #import "UserClient_userspace.h"
 #include "bridge.h"
 
+@interface UserClient_userspace ()
+{
+  io_service_t service_;
+  io_connect_t connect_;
+  IONotificationPortRef notifyport_;
+  CFRunLoopSourceRef loopsource_;
+  io_async_ref64_t* asyncref_;
+
+  BOOL bridgeVersionMismatched_;
+}
+@end
+
 @implementation UserClient_userspace
 
 - (void) closeUserClient
@@ -27,6 +39,8 @@
 
 - (void) openUserClient
 {
+  bridgeVersionMismatched_ = NO;
+
   io_iterator_t iterator;
 
   kern_return_t kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("org_pqrs_driver_KeyRemap4MacBook"), &iterator);
@@ -60,10 +74,29 @@
 
     // ----------------------------------------
     // open
-    kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_OPEN, NULL, 0, NULL, NULL);
-    if (kernResult != KERN_SUCCESS) {
-      NSLog(@"[ERROR] BRIDGE_USERCLIENT_OPEN returned 0x%08x\n", kernResult);
-      continue;
+    {
+      uint64_t bridge_version =
+#include "../../../../src/bridge/output/include.bridge_version.h"
+      ;
+      uint64_t open_result = 0;
+      uint32_t count = 1;
+
+      kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_OPEN,
+                                             &bridge_version,
+                                             1,
+                                             &open_result,
+                                             &count);
+      if (kernResult != KERN_SUCCESS) {
+        NSLog(@"[ERROR] BRIDGE_USERCLIENT_OPEN returned 0x%08x\n", kernResult);
+        continue;
+
+      } else {
+        if (open_result == BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH) {
+          NSLog(@"[ERROR] BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH\n");
+          bridgeVersionMismatched_ = YES;
+          continue;
+        }
+      }
     }
 
     // ----------------------------------------
@@ -103,6 +136,7 @@ finish:
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
     asyncref_ = asyncref;
+    bridgeVersionMismatched_ = NO;
   }
 
   return self;
@@ -165,6 +199,22 @@ finish:
 
       if (connect_ != IO_OBJECT_NULL) {
         // succeed
+        return;
+      }
+
+      if (bridgeVersionMismatched_) {
+        // It is not a recoverable error. Give up immediately.
+        dispatch_async(dispatch_get_main_queue(), ^{
+          NSAlert* alert = [[NSAlert new] autorelease];
+          [alert setMessageText:@"KeyRemap4MacBook Error"];
+          [alert addButtonWithTitle:@"Close"];
+          [alert setInformativeText:
+           @"Kernel extension and app version is mismatched.\n"
+           @"Please restart your system in order to reload kernel extension.\n"
+          ];
+
+          [alert runModal];
+        });
         return;
       }
 

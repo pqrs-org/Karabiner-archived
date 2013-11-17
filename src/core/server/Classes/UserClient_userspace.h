@@ -4,14 +4,7 @@
 #import <IOKit/IOKitLib.h>
 #include "bridge.h"
 
-@interface UserClient_userspace : NSObject {
-  io_service_t service_;
-  io_connect_t connect_;
-  IONotificationPortRef notifyport_;
-  CFRunLoopSourceRef loopsource_;
-  io_async_ref64_t* asyncref_;
-  BOOL connected;
-}
+@interface UserClient_userspace : NSObject
 
 - (id) init:(io_async_ref64_t*)asyncref;
 
