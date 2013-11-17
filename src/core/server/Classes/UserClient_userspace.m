@@ -209,7 +209,7 @@ finish:
           [alert setMessageText:@"KeyRemap4MacBook Error"];
           [alert addButtonWithTitle:@"Close"];
           [alert setInformativeText:
-           @"Kernel extension and app version is mismatched.\n"
+           @"Kernel extension and app version are mismatched.\n"
            @"Please restart your system in order to reload kernel extension.\n"
           ];
 
