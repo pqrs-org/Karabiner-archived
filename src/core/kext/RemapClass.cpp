@@ -809,13 +809,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       {
         const uint32_t* p = remapclasses_initialize_vector;
-        uint32_t version = *p++;
         uint32_t count   = *p++;
 
-        if (version != BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION) {
-          IOLOG_ERROR("%s version mismatch.\n", __FUNCTION__);
-          goto error;
-        }
         if (count > RemapClass::MAX_CONFIG_COUNT) {
           IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
           goto error;

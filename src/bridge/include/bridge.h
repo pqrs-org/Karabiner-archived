@@ -5,74 +5,6 @@
 #include <mach/mach_types.h>
 
 enum {
-  // Version 1: initial version
-  // Version 2: Added BRIDGE_DATATYPE_DEVICEVENDOR,BRIDGE_DATATYPE_DEVICEPRODUCT,BRIDGE_REMAPTYPE_FORCENUMLOCKON
-  // Version 3: Removed some essential configurations. (parameter.statuswindow_alpha_font, ...)
-  // Version 4: Added an essential configuration. (general.suppress_growl_warning)
-  // Version 5: Changed initialize vector format
-  // Version 6: Added VK_MOUSEKEY_BUTTON_*
-  // Version 7: Added essential configurations. (option.pointing_reverse_*_scroll)
-  // Version 8: Removed an essential configuration. (general.show_sticky_modifier_status)
-  // Version 9: Added VK_STICKY_*_FORCE_ON, VK_STICKY_*_FORCE_OFF.
-  // Version 10: Added an essential configuration. (parameter.keyoverlaidmodifier_initial_modifier_wait)
-  // Version 11: Changed initialize vector format (added configindex)
-  // Version 12: Added BRIDGE_REMAPTYPE_DROPSCROLLWHEEL
-  // Version 13: Added an essential configuration. (general.dont_remap_non_apple_keyboard)
-  // Version 14: Removed an essential configuration. (general.capslock_led_hack)
-  // Version 15: Added VK_CONSUMERKEY_*.
-  // Version 16: Added BRIDGE_REMAPTYPE_STRIPMODIFIERFROMSCROLLWHEEL.
-  // Version 17: Added VK_MOUSEKEY_BUTTON_BUTTON9 - VK_MOUSEKEY_BUTTON_BUTTON16
-  // Version 18: Added an essential configuration. (general.dont_remap_any_pointing)
-  // Version 19: Added BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL.
-  //             (And removed BRIDGE_REMAPTYPE_STRIPMODIFIERFROMSCROLLWHEEL.)
-  // Version 20: Added an essential configuration. (general.dont_remap_non_apple_pointing)
-  // Version 21: Added ScrollWheel::*.
-  // Version 22: Added KeyCode::VK_WAIT_*.
-  // Version 23: Removed KeyCode::VK_WAIT_500MS
-  // Version 24: Added KeyCode::VK_CHANGE_INPUTMODE_*.
-  // Version 25: Added KeyCode::VK_MOUSEKEY_LOCK_BUTTON_*.
-  // Version 26: Added parameter.wait_between_sequential_keys.
-  // Version 27: Added Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
-  // Version 28: Added DeviceLocation
-  // Version 29: Added BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_*
-  // Version 30: Added BRIDGE_VK_CHANGE_INPUTSOURCE
-  // Version 31: Removed KeyCode::VK_CHANGE_INPUTMODE_*.
-  // Version 32: Added BRIDGE_DATATYPE_DEVICELOCATION
-  // Version 33: Changed BRIDGE_FILTERTYPE_INPUTMODE_NOT to BRIDGE_FILTERTYPE_INPUTSOURCE_NOT.
-  // Version 34: Added KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_*.
-  // Version 35: Removed an essential configuration. (general.suppress_growl_warning)
-  // Version 36: Added Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL
-  // Version 37: Added KeyCode::VK_IOHIDPOSTEVENT_*.
-  // Version 38: Added BRIDGE_VK_OPEN_URL
-  // Version 39: Added Option::POINTINGRELATIVETOSCROLL_TOKEYS
-  // Version 40: Added BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL
-  // Version 41: Added BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE
-  // Version 42: Added BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED, BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED.
-  // Version 43: Added BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED.
-  // Version 44: Added KeyCode::VK_PARTIAL_*.
-  // Version 45: Update KeyCode::VK__BEGIN__.
-  // Version 46: Update ConsumerKeyCode::VK__BEGIN__.
-  // Version 47: Added Option::USE_SEPARATOR, Option::SEPARATOR.
-  // Version 48: Added BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT, BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY.
-  // Version 49: Added items:
-  //             - BRIDGE_DATATYPE_MILLISECOND
-  //             - BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN
-  //             - BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN
-  // Version 50: Changed interface of ElapsedTimeSinceLastPressedFilter::add.
-  // Version 51: Added an essential configuration. (general.automatically_enable_*)
-  // Version 52: Added BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY.
-  // Version 53: Added BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED.
-  // Version 54: Added BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE.
-  // Version 55: Added KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY.
-  // Version 56: Added essential configurations. (parameter.maximum_speed_of_*, parameter.acceleration_of_*)
-  // Version 57: Added an essential configuration. (parameter.mouse_key_scroll_natural_direction)
-  // Version 58: Removed BRIDGE_USERCLIENT_TYPE_ENQUEUE_POWER_KEY, BRIDGE_USERCLIENT_TYPE_IS_POWER_KEY_CHANGED.
-  // Version 59: Added essential configurations. (parameter.mousekey_high_speed_of_*)
-
-  BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION = 59,
-};
-
-enum {
   BRIDGE_DATATYPE_NONE,
   BRIDGE_DATATYPE_KEYCODE,
   BRIDGE_DATATYPE_FLAGS,
@@ -232,7 +164,7 @@ enum { STATIC_ASSERT__sizeof_BridgeDeviceInformation = 1 / (sizeof(struct Bridge
 // remapclasses_initialize_vector format:
 //
 // base:
-// { BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION, the_count_of_initialize_vector, [<initialize_vector>] }
+// { the_count_of_initialize_vector, [<initialize_vector>] }
 //
 // <initialize_vector>
 //   { size, configindex, {[<remap>], {<filter>}} }
@@ -246,7 +178,7 @@ enum { STATIC_ASSERT__sizeof_BridgeDeviceInformation = 1 / (sizeof(struct Bridge
 // --------------------
 //
 // Example of <base>:
-//   { BRIDGE_REMAPCLASS_INITIALIZE_VECTOR_FORMAT_VERSION, 3, initialize_vector1, initialize_vector2, initialize_vector3 }
+//   { 3, initialize_vector1, initialize_vector2, initialize_vector3 }
 //
 // Example of <initialize_vector>:
 //   {
