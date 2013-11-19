@@ -1,6 +1,12 @@
 #import "UserClient_userspace.h"
 #include "bridge.h"
 
+typedef enum {
+  UNRECOVERABLE_ERROR_NONE,
+  UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH,
+  UNRECOVERABLE_ERROR_KEXT_NOT_FOUND,
+} UnrecoverableError;
+
 @interface UserClient_userspace ()
 {
   io_service_t service_;
@@ -9,7 +15,7 @@
   CFRunLoopSourceRef loopsource_;
   io_async_ref64_t* asyncref_;
 
-  BOOL bridgeVersionMismatched_;
+  UnrecoverableError unrecoverableError_;
 }
 @end
 
@@ -39,7 +45,7 @@
 
 - (void) openUserClient
 {
-  bridgeVersionMismatched_ = NO;
+  unrecoverableError_ = UNRECOVERABLE_ERROR_NONE;
 
   io_iterator_t iterator;
 
@@ -49,9 +55,13 @@
     return;
   }
 
+  BOOL kextFound = NO;
+
   for (;;) {
     io_service_t s = IOIteratorNext(iterator);
     if (s == IO_OBJECT_NULL) break;
+
+    kextFound = YES;
 
     [self closeUserClient];
 
@@ -93,7 +103,7 @@
       } else {
         if (open_result == BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH) {
           NSLog(@"[ERROR] BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH\n");
-          bridgeVersionMismatched_ = YES;
+          unrecoverableError_ = UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH;
           continue;
         }
       }
@@ -124,6 +134,10 @@
   // failed to open connection.
   [self closeUserClient];
 
+  if (! kextFound) {
+    unrecoverableError_ = UNRECOVERABLE_ERROR_KEXT_NOT_FOUND;
+  }
+
 finish:
   IOObjectRelease(iterator);
 }
@@ -136,7 +150,7 @@ finish:
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
     asyncref_ = asyncref;
-    bridgeVersionMismatched_ = NO;
+    unrecoverableError_ = UNRECOVERABLE_ERROR_NONE;
   }
 
   return self;
@@ -202,16 +216,31 @@ finish:
         return;
       }
 
-      if (bridgeVersionMismatched_) {
-        // It is not a recoverable error. Give up immediately.
+      // If a unrecoverable error is occured, give up immediately.
+      if (unrecoverableError_ != UNRECOVERABLE_ERROR_NONE) {
         dispatch_async(dispatch_get_main_queue(), ^{
           NSAlert* alert = [[NSAlert new] autorelease];
-          [alert setMessageText:@"KeyRemap4MacBook Error"];
+          [alert setMessageText:@"KeyRemap4MacBook Alert"];
           [alert addButtonWithTitle:@"Close"];
-          [alert setInformativeText:
-           @"Kernel extension and app version are mismatched.\n"
-           @"Please restart your system in order to reload kernel extension.\n"
-          ];
+
+          switch (unrecoverableError_) {
+            case UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH:
+              [alert setInformativeText:
+               @"Kernel extension and app version are mismatched.\n"
+               @"Please restart your system in order to reload kernel extension.\n"
+              ];
+              break;
+
+            case UNRECOVERABLE_ERROR_KEXT_NOT_FOUND:
+              [alert setInformativeText:
+               @"Kernel extension is not loaded.\n"
+               @"Please restart your system in order to load kernel extension.\n"
+              ];
+              break;
+
+            case UNRECOVERABLE_ERROR_NONE:
+              break;
+          }
 
           [alert runModal];
         });
