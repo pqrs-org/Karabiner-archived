@@ -8,12 +8,6 @@ argument="$1"
 case "$argument" in
     start)
         echo "Starting KeyRemap4MacBook"
-        sleep 10 # wait for avoid kext loading collision.
-        $basedir/load.sh
-        ;;
-
-    quickstart)
-        echo "Starting KeyRemap4MacBook"
         $basedir/load.sh
         ;;
 
