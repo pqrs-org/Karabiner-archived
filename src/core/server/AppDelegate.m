@@ -257,27 +257,33 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
+  BOOL fromLaunchAgents = NO;
+
   for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
     if ([argument isEqualToString:@"--fromLaunchAgents"]) {
-      // ------------------------------------------------------------
-      // Remove old pkg files and finish_installation.app in
-      // "~/Library/Application Support/KeyRemap4MacBook/.Sparkle".
-      NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-      NSString* sparkle = [paths objectAtIndex:0];
-      if (sparkle) {
-        sparkle = [sparkle stringByAppendingPathComponent:@"KeyRemap4MacBook"];
-        sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
+      fromLaunchAgents = YES;
+    }
+  }
 
-        NSFileManager* fm = [NSFileManager defaultManager];
-        if ([fm fileExistsAtPath:sparkle]) {
-          [fm removeItemAtPath:sparkle error:nil];
-        }
-      }
+  if (fromLaunchAgents) {
+    // ------------------------------------------------------------
+    // Remove old pkg files and finish_installation.app in
+    // "~/Library/Application Support/KeyRemap4MacBook/.Sparkle".
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString* sparkle = [paths objectAtIndex:0];
+    if (sparkle) {
+      sparkle = [sparkle stringByAppendingPathComponent:@"KeyRemap4MacBook"];
+      sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
 
-      // ------------------------------------------------------------
-      if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
-        [NSApp terminate:nil];
+      NSFileManager* fm = [NSFileManager defaultManager];
+      if ([fm fileExistsAtPath:sparkle]) {
+        [fm removeItemAtPath:sparkle error:nil];
       }
+    }
+
+    // ------------------------------------------------------------
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
+      [NSApp terminate:nil];
     }
   }
   [PreferencesManager setIsQuitByHand:@NO];
@@ -345,6 +351,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
   [updater_ checkForUpdatesInBackground:nil];
+
+  // ------------------------------------------------------------
+  // Open Preferences if KeyRemap4MacBook was launched by hand.
+  if (! fromLaunchAgents) {
+    [preferencesController_ show];
+  }
 }
 
 - (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
