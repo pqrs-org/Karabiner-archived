@@ -255,8 +255,14 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
+#define kDescendantProcess @"org_pqrs_KeyRemap4MacBook_DescendantProcess"
+
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
+  NSInteger isDescendantProcess = [[[[NSProcessInfo processInfo] environment] objectForKey:kDescendantProcess] integerValue];
+  setenv([kDescendantProcess UTF8String], "1", 1);
+
+  // ------------------------------------------------------------
   BOOL fromLaunchAgents = NO;
 
   for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
@@ -354,7 +360,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
   // ------------------------------------------------------------
   // Open Preferences if KeyRemap4MacBook was launched by hand.
-  if (! fromLaunchAgents) {
+  if (! fromLaunchAgents &&
+      ! isDescendantProcess) {
     [preferencesController_ show];
   }
 }
@@ -377,7 +384,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
-#define kRelaunchedCount @"org.pqrs.KeyRemap4MacBook.RelaunchedCount"
+#define kRelaunchedCount @"org_pqrs_KeyRemap4MacBook_RelaunchedCount"
 
 - (void) setRelaunchedCount:(int)newvalue
 {
