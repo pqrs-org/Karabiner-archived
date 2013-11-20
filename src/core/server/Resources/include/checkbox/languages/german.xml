@@ -248,6 +248,7 @@
       <name>Command+Y sends Command+Shift+Z (Windows-style Undo)</name>
       <identifier>remap.german_command_y_to_command_shift_z</identifier>
       <appendix>(except for Microsoft applications which already have this built-in)</appendix>
+      <inputsource_only>GERMAN</inputsource_only>
       <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</not>
       <autogen>
         __KeyToKey__
