@@ -10,14 +10,16 @@
 #include "util/ListHookedPointing.hpp"
 #include "strlcpy_utf8.hpp"
 
+#define KEXT_NAMESPACE org_pqrs_KeyRemap4MacBook
+
 #define super IOUserClient
 
-OSDefineMetaClassAndStructors(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext, IOUserClient)
+OSDefineMetaClassAndStructors(USERCLIENT_KEXT_CLASSNAME, IOUserClient)
 
-OSAsyncReference64 org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::asyncref_;
-bool org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::notification_enabled_ = false;
+OSAsyncReference64 USERCLIENT_KEXT_CLASSNAME::asyncref_;
+bool USERCLIENT_KEXT_CLASSNAME::notification_enabled_ = false;
 
-IOExternalMethodDispatch org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::methods_[BRIDGE_USERCLIENT__END__] = {
+IOExternalMethodDispatch USERCLIENT_KEXT_CLASSNAME::methods_[BRIDGE_USERCLIENT__END__] = {
   { // BRIDGE_USERCLIENT_OPEN
     reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
     1,                                                               // One scalar input value.
@@ -51,7 +53,7 @@ IOExternalMethodDispatch org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::metho
 // ============================================================
 // initWithTask is called as a result of the user process calling IOServiceOpen.
 bool
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::initWithTask(task_t owningTask, void* securityToken, UInt32 type)
+USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityToken, UInt32 type)
 {
   if (clientHasPrivilege(owningTask, kIOClientPrivilegeLocalUser) != KERN_SUCCESS) {
     IOLOG_ERROR("UserClient_kext::initWithTask clientHasPrivilege failed\n");
@@ -76,9 +78,9 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::initWithTask(task_t owningTask
 
 // start is called after initWithTask as a result of the user process calling IOServiceOpen.
 bool
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::start(IOService* provider)
+USERCLIENT_KEXT_CLASSNAME::start(IOService* provider)
 {
-  provider_ = OSDynamicCast(org_pqrs_driver_KeyRemap4MacBook, provider);
+  provider_ = OSDynamicCast(KEXT_CLASSNAME, provider);
   if (! provider_) {
     IOLOG_ERROR("UserClient_kext::start provider == NULL\n");
     return false;
@@ -96,7 +98,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::start(IOService* provider)
 }
 
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::stop(IOService* provider)
+USERCLIENT_KEXT_CLASSNAME::stop(IOService* provider)
 {
   super::stop(provider);
   provider_ = NULL;
@@ -104,7 +106,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::stop(IOService* provider)
 
 // clientClose is called as a result of the user process calling IOServiceClose.
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::clientClose(void)
+USERCLIENT_KEXT_CLASSNAME::clientClose(void)
 {
   // Defensive coding in case the user process called IOServiceClose
   // without calling BRIDGE_USERCLIENT_CLOSE first.
@@ -125,7 +127,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::clientClose(void)
 }
 
 bool
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::didTerminate(IOService* provider, IOOptionBits options, bool* defer)
+USERCLIENT_KEXT_CLASSNAME::didTerminate(IOService* provider, IOOptionBits options, bool* defer)
 {
   // If all pending I/O has been terminated, close our provider. If I/O is still outstanding, set defer to true
   // and the user client will not have stop called on it.
@@ -136,8 +138,8 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::didTerminate(IOService* provid
 }
 
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments,
-                                                                 IOExternalMethodDispatch* dispatch, OSObject* target, void* reference)
+USERCLIENT_KEXT_CLASSNAME::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments,
+                                          IOExternalMethodDispatch* dispatch, OSObject* target, void* reference)
 {
   if (selector < static_cast<uint32_t>(BRIDGE_USERCLIENT__END__)) {
     dispatch = &(methods_[selector]);
@@ -153,7 +155,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::externalMethod(uint32_t select
 
 // ======================================================================
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_open(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments)
+USERCLIENT_KEXT_CLASSNAME::static_callback_open(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
 
@@ -161,9 +163,9 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_open(org_pqrs_
 }
 
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_open(uint64_t bridge_version_app, uint64_t* outputdata)
+USERCLIENT_KEXT_CLASSNAME::callback_open(uint64_t bridge_version_app, uint64_t* outputdata)
 {
-  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
   if (! lk) return kIOReturnCannotLock;
 
   if (! outputdata) {
@@ -213,16 +215,16 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_open(uint64_t bridge_
 
 // ----------------------------------------------------------------------
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_close(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments)
+USERCLIENT_KEXT_CLASSNAME::static_callback_close(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
   return target->callback_close();
 }
 
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
+USERCLIENT_KEXT_CLASSNAME::callback_close(void)
 {
-  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
   if (! lk) return kIOReturnCannotLock;
 
   if (! provider_) {
@@ -243,7 +245,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
 
   notification_enabled_ = false;
 
-  org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
+  KEXT_NAMESPACE::Config::set_initialized(false);
 
   // Make sure we're the one who opened our provider before we tell it to close.
   provider_->close(this);
@@ -253,16 +255,16 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_close(void)
 
 // ----------------------------------------------------------------------
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_synchronized_communication(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments)
+USERCLIENT_KEXT_CLASSNAME::static_callback_synchronized_communication(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
   return target->callback_synchronized_communication(static_cast<const BridgeUserClientStruct*>(arguments->structureInput), &arguments->scalarOutput[0]);
 }
 
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_synchronized_communication(const BridgeUserClientStruct* inputdata, uint64_t* outputdata)
+USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserClientStruct* inputdata, uint64_t* outputdata)
 {
-  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
   if (! lk) return kIOReturnCannotLock;
 
   IOReturn result = kIOReturnError;
@@ -329,16 +331,16 @@ finish:
 
 // ------------------------------------------------------------
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::static_callback_notification_from_kext(org_pqrs_driver_KeyRemap4MacBook_UserClient_kext* target, void* reference, IOExternalMethodArguments* arguments)
+USERCLIENT_KEXT_CLASSNAME::static_callback_notification_from_kext(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
   return target->callback_notification_from_kext(arguments->asyncReference);
 }
 
 IOReturn
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_notification_from_kext(OSAsyncReference64 asyncReference)
+USERCLIENT_KEXT_CLASSNAME::callback_notification_from_kext(OSAsyncReference64 asyncReference)
 {
-  org_pqrs_KeyRemap4MacBook::GlobalLock::ScopedLock lk;
+  KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
   if (! lk) return kIOReturnCannotLock;
 
   if (provider_ == NULL || isInactive()) {
@@ -363,7 +365,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::callback_notification_from_kex
 }
 
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(uint32_t type, uint32_t option)
+USERCLIENT_KEXT_CLASSNAME::send_notification_to_userspace(uint32_t type, uint32_t option)
 {
   if (notification_enabled_) {
     io_user_reference_t args[] = { type, option };
@@ -373,22 +375,22 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace
 
 // ------------------------------------------------------------
 void
-org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communication(uint32_t type,
-                                                                                    uint32_t option,
-                                                                                    uint8_t* buffer,
-                                                                                    size_t size,
-                                                                                    uint64_t* outputdata)
+USERCLIENT_KEXT_CLASSNAME::handle_synchronized_communication(uint32_t type,
+                                                             uint32_t option,
+                                                             uint8_t* buffer,
+                                                             size_t size,
+                                                             uint64_t* outputdata)
 {
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {
     case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
     {
-      org_pqrs_KeyRemap4MacBook::Config::set_initialized(false);
+      KEXT_NAMESPACE::Config::set_initialized(false);
 
       const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(buffer);
       if (initialize_vector) {
-        if (org_pqrs_KeyRemap4MacBook::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
+        if (KEXT_NAMESPACE::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
@@ -399,10 +401,10 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
     {
       const int32_t* config = reinterpret_cast<int32_t*>(buffer);
       if (config) {
-        if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config(config, size)) {
+        if (KEXT_NAMESPACE::RemapClassManager::set_config(config, size)) {
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
 
-          org_pqrs_KeyRemap4MacBook::ListHookedDevice::refreshAll();
+          KEXT_NAMESPACE::ListHookedDevice::refreshAll();
         }
       }
       break;
@@ -415,10 +417,10 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       } else {
         const BridgeSetConfigOne* p = reinterpret_cast<const BridgeSetConfigOne*>(buffer);
         if (p) {
-          if (org_pqrs_KeyRemap4MacBook::RemapClassManager::set_config_one(p->isEssentialConfig, p->index, p->value)) {
+          if (KEXT_NAMESPACE::RemapClassManager::set_config_one(p->isEssentialConfig, p->index, p->value)) {
             *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
 
-            org_pqrs_KeyRemap4MacBook::ListHookedDevice::refreshAll();
+            KEXT_NAMESPACE::ListHookedDevice::refreshAll();
           }
         }
       }
@@ -432,7 +434,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       } else {
         uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
         if (p) {
-          org_pqrs_KeyRemap4MacBook::Config::set_initialized(*p);
+          KEXT_NAMESPACE::Config::set_initialized(*p);
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
@@ -446,7 +448,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       } else {
         uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
         if (p) {
-          *p = org_pqrs_KeyRemap4MacBook::RemapClassManager::isEnabled(option);
+          *p = KEXT_NAMESPACE::RemapClassManager::isEnabled(option);
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
@@ -455,7 +457,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
 
     case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE:
     {
-      const char* statusmessage = org_pqrs_KeyRemap4MacBook::CommonData::get_statusmessage(option);
+      const char* statusmessage = KEXT_NAMESPACE::CommonData::get_statusmessage(option);
       char* p = reinterpret_cast<char*>(buffer);
 
       if (statusmessage && p) {
@@ -472,7 +474,7 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
       } else {
         const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(buffer);
         if (p) {
-          org_pqrs_KeyRemap4MacBook::CommonData::setcurrent_workspacedata(*p);
+          KEXT_NAMESPACE::CommonData::setcurrent_workspacedata(*p);
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
         }
       }
@@ -490,13 +492,13 @@ org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::handle_synchronized_communicat
         if (p) {
           switch (type) {
             case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:
-              org_pqrs_KeyRemap4MacBook::ListHookedKeyboard::instance().getDeviceInformation(*p, option);
+              KEXT_NAMESPACE::ListHookedKeyboard::instance().getDeviceInformation(*p, option);
               break;
             case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER:
-              org_pqrs_KeyRemap4MacBook::ListHookedConsumer::instance().getDeviceInformation(*p, option);
+              KEXT_NAMESPACE::ListHookedConsumer::instance().getDeviceInformation(*p, option);
               break;
             case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING:
-              org_pqrs_KeyRemap4MacBook::ListHookedPointing::instance().getDeviceInformation(*p, option);
+              KEXT_NAMESPACE::ListHookedPointing::instance().getDeviceInformation(*p, option);
               break;
           }
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
