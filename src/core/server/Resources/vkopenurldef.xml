@@ -139,6 +139,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_ScreenSaverEngine</name>
+    <url type="file">/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Stickies</name>
     <url type="file">/Applications/Stickies.app</url>
   </vkopenurldef>
@@ -168,7 +173,7 @@
     <url type="shell">
       <![CDATA[
         /bin/date | /usr/bin/pbcopy;
-        osascript -e 'display notification "pasteboard has been updated." with title "KeyRemap4MacBook"';
+        /usr/bin/osascript -e 'display notification "pasteboard has been updated." with title "KeyRemap4MacBook"';
       ]]>
     </url>
   </vkopenurldef>
@@ -186,4 +191,14 @@
       <![CDATA[    /bin/ps -a -v -w -x > ~/Desktop/ps.`date '+%s'`.txt    ]]>
     </url>
   </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_sleep</name>
+    <url type="shell">
+      <![CDATA[
+        /usr/bin/osascript -e 'tell application "System Events" to sleep'
+      ]]>
+    </url>
+  </vkopenurldef>
+
 </root>
