@@ -216,7 +216,7 @@ finish:
         return;
       }
 
-      // If a unrecoverable error is occured, give up immediately.
+      // If an unrecoverable error is occured, give up immediately.
       if (unrecoverableError_ != UNRECOVERABLE_ERROR_NONE) {
         dispatch_async(dispatch_get_main_queue(), ^{
           NSAlert* alert = [[NSAlert new] autorelease];
