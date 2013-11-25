@@ -1,8 +1,17 @@
+#define protected public // A hack for access private member of IOHIKeyboard
+#define private public
+#include <IOKit/hidsystem/IOHIKeyboard.h>
+#undef protected
+#undef private
+#include <IOKit/IOLib.h>
+
+#include "CallbackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 #include "ListHookedConsumer.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

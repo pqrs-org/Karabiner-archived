@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 #include "TimerWrapper.hpp"
 
 #define super    OSObject

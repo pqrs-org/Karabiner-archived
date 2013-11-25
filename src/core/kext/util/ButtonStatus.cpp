@@ -1,8 +1,10 @@
-#include "ButtonStatus.hpp"
-
 #ifndef BUTTONSTATUS_TEST
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #endif
+
+#include "ButtonStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   ButtonStatus::Item ButtonStatus::item_[ButtonStatus::MAXNUM];

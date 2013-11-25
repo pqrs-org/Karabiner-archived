@@ -1,14 +1,17 @@
-#include <sys/types.h>
+#include <IOKit/IOLib.h>
 #include <sys/systm.h>
-#include "UserClient_kext.hpp"
+#include <sys/types.h>
+
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "IOLogWrapper.hpp"
 #include "RemapClass.hpp"
-#include "util/GlobalLock.hpp"
-#include "util/ListHookedKeyboard.hpp"
-#include "util/ListHookedConsumer.hpp"
-#include "util/ListHookedPointing.hpp"
+#include "UserClient_kext.hpp"
 #include "strlcpy_utf8.hpp"
+#include "util/GlobalLock.hpp"
+#include "util/ListHookedConsumer.hpp"
+#include "util/ListHookedKeyboard.hpp"
+#include "util/ListHookedPointing.hpp"
 
 #define KEXT_NAMESPACE org_pqrs_KeyRemap4MacBook
 

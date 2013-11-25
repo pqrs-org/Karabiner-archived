@@ -1,6 +1,9 @@
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
 #include "EventWatcher.hpp"
+#include "IOLogWrapper.hpp"
 #include "PointingRelativeToScroll.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

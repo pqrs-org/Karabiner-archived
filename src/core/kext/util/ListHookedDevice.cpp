@@ -1,8 +1,12 @@
+#include <IOKit/IOLib.h>
 #include <IOKit/hid/IOHIDKeys.h>
+
+#include "CallbackWrapper.hpp"
 #include "Config.hpp"
+#include "IOLogWrapper.hpp"
+#include "ListHookedConsumer.hpp"
 #include "ListHookedDevice.hpp"
 #include "ListHookedKeyboard.hpp"
-#include "ListHookedConsumer.hpp"
 #include "ListHookedPointing.hpp"
 #include "NumHeldDownKeys.hpp"
 #include "strlcpy_utf8.hpp"

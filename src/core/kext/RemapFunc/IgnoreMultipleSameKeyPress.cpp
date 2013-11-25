@@ -1,3 +1,6 @@
+#include <IOKit/IOLib.h>
+
+#include "IOLogWrapper.hpp"
 #include "IgnoreMultipleSameKeyPress.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

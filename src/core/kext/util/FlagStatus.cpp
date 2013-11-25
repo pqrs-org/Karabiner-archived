@@ -1,8 +1,11 @@
-#include "FlagStatus.hpp"
-
 #ifndef FLAGSTATUS_TEST
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
+#include "IOLogWrapper.hpp"
 #endif
+
+#include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus::Item FlagStatus::item_[FlagStatus::MAXNUM];

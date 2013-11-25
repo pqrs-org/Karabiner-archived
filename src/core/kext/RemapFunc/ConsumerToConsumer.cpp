@@ -1,5 +1,8 @@
-#include "EventOutputQueue.hpp"
+#include <IOKit/IOLib.h>
+
 #include "ConsumerToConsumer.hpp"
+#include "EventOutputQueue.hpp"
+#include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 #include "ListHookedConsumer.hpp"
 

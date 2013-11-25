@@ -1,7 +1,6 @@
 #ifndef USERCLIENT_KEXT_HPP
 #define USERCLIENT_KEXT_HPP
 
-#include "base.hpp"
 #include "Driver.hpp"
 #include "bridge.h"
 #include <IOKit/IOUserClient.h>

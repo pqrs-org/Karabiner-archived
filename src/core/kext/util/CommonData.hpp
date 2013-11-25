@@ -1,7 +1,6 @@
 #ifndef COMMONDATA_HPP
 #define COMMONDATA_HPP
 
-#include "base.hpp"
 #include "KeyCode.hpp"
 #include "LastPressedPhysicalKey.hpp"
 #include "bridge.h"

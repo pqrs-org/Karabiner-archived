@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "DropScrollWheel.hpp"
 #include "EventOutputQueue.hpp"
+#include "IOLogWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {

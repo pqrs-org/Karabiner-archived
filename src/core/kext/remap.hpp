@@ -1,7 +1,6 @@
 #ifndef REMAP_HPP
 #define REMAP_HPP
 
-#include "base.hpp"
 #include "KeyCode.hpp"
 #include "CallBackWrapper.hpp"
 

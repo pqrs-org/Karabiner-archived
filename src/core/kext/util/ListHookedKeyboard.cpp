@@ -1,9 +1,16 @@
-#include <IOKit/hid/IOHIDKeys.h>
+#define protected public // A hack for access private member of IOHIKeyboard
+#define private public
+#include <IOKit/hidsystem/IOHIKeyboard.h>
+#undef protected
+#undef private
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "RemapClass.hpp"
 

@@ -1,6 +1,9 @@
-#include "ScrollWheelToScrollWheel.hpp"
+#include <IOKit/IOLib.h>
+
 #include "EventOutputQueue.hpp"
+#include "IOLogWrapper.hpp"
 #include "PointingRelativeToScroll.hpp"
+#include "ScrollWheelToScrollWheel.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {

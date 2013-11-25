@@ -1,4 +1,7 @@
+#include <IOKit/IOLib.h>
+
 #include "FilterUnion.hpp"
+#include "IOLogWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {

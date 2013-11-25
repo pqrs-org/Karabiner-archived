@@ -1,4 +1,5 @@
-#include "base.hpp"
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"

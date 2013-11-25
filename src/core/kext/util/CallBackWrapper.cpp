@@ -1,8 +1,11 @@
+#include <IOKit/IOLib.h>
+
 #include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "FromKeyChecker.hpp"
+#include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"

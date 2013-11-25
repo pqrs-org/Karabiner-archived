@@ -1,3 +1,6 @@
+#include <IOKit/IOLib.h>
+
+#include "IOLogWrapper.hpp"
 #include "SetKeyboardType.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

@@ -1,8 +1,6 @@
 #ifndef NUMHELDDOWNKEYS_HPP
 #define NUMHELDDOWNKEYS_HPP
 
-#include "KeyCode.hpp"
-
 namespace org_pqrs_KeyRemap4MacBook {
   class NumHeldDownKeys {
   public:

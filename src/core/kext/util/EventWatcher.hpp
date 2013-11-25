@@ -1,7 +1,6 @@
 #ifndef EVENTWATCHER_HPP
 #define EVENTWATCHER_HPP
 
-#include "base.hpp"
 #include "List.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

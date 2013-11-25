@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "ForceNumLockOn.hpp"
 #include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {

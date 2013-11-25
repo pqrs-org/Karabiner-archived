@@ -1,4 +1,5 @@
-#include "base.hpp"
+#include <IOKit/IOLib.h>
+
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "VK_CONSUMERKEY.hpp"
