@@ -3,11 +3,13 @@
 
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 
-#include "CallBackWrapper.hpp"
 #include "ListHookedDevice.hpp"
-#include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  class Params_KeyboardEventCallBack;
+  class Params_UpdateEventFlagsCallback;
+  class TimerWrapper;
+
   class ListHookedKeyboard : public ListHookedDevice {
   public:
     class Item : public ListHookedDevice::Item {
