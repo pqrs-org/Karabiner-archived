@@ -3,11 +3,11 @@
 
 #include <IOKit/hidsystem/IOHIDevice.h>
 
-#include "KeyCode.hpp"
 #include "List.hpp"
-#include "TimerWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
+  class TimerWrapper;
+
   class ListHookedDevice {
   public:
     class Item : public List::Item {
