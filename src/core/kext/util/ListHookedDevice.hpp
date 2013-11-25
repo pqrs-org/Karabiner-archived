@@ -1,7 +1,8 @@
 #ifndef LISTHOOKEDDEVICE_HPP
 #define LISTHOOKEDDEVICE_HPP
 
-#include "base.hpp"
+#include <IOKit/hidsystem/IOHIDevice.h>
+
 #include "KeyCode.hpp"
 #include "List.hpp"
 #include "TimerWrapper.hpp"

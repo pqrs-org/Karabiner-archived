@@ -1,7 +1,9 @@
-#include "base.hpp"
-#include "bridge.h"
-#include "CommonData.hpp"
+#include <IOKit/IOLib.h>
+
 #include "ApplicationFilter.hpp"
+#include "CommonData.hpp"
+#include "IOLogWrapper.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {

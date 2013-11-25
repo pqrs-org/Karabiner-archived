@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #include "EventInputQueue.hpp"
+#include "IOLogWrapper.hpp"
 #include "SimultaneousKeyPresses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
 #include "EventWatcher.hpp"
+#include "IOLogWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   List* EventWatcher::list_;

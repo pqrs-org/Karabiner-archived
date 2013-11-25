@@ -1,8 +1,11 @@
 #ifndef LISTHOOKEDCONSUMER_HPP
 #define LISTHOOKEDCONSUMER_HPP
 
-#include "base.hpp"
+#include <IOKit/hidsystem/IOHIKeyboard.h>
+
 #include "ListHookedDevice.hpp"
+
+class Params_KeyboardSpecialEventCallback;
 
 namespace org_pqrs_KeyRemap4MacBook {
   class ListHookedConsumer : public ListHookedDevice {

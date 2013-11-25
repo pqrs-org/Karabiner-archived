@@ -1,5 +1,8 @@
-#include "FlipPointingRelative.hpp"
+#include <IOKit/IOLib.h>
+
 #include "EventOutputQueue.hpp"
+#include "FlipPointingRelative.hpp"
+#include "IOLogWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {

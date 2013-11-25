@@ -1,7 +1,10 @@
-#include "bridge.h"
-#include "ConfigFilter.hpp"
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
+#include "ConfigFilter.hpp"
+#include "IOLogWrapper.hpp"
 #include "RemapClass.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {

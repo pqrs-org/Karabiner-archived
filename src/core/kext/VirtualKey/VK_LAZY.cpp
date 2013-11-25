@@ -1,6 +1,9 @@
-#include "base.hpp"
+#include <IOKit/IOLib.h>
+
+#include "CallbackWrapper.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
+#include "IOLogWrapper.hpp"
 #include "VK_LAZY.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

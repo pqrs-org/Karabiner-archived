@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #include "EventOutputQueue.hpp"
+#include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "remap.hpp"

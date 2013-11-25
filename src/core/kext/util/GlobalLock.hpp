@@ -1,8 +1,6 @@
 #ifndef GLOBALLOCK_HPP
 #define GLOBALLOCK_HPP
 
-#include <base.hpp>
-
 namespace org_pqrs_KeyRemap4MacBook {
   class GlobalLock {
   public:

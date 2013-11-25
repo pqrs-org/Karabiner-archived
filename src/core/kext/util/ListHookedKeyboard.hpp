@@ -1,7 +1,8 @@
 #ifndef LISTHOOKEDKEYBOARD_HPP
 #define LISTHOOKEDKEYBOARD_HPP
 
-#include "base.hpp"
+#include <IOKit/hidsystem/IOHIKeyboard.h>
+
 #include "CallBackWrapper.hpp"
 #include "ListHookedDevice.hpp"
 #include "TimerWrapper.hpp"

@@ -2,7 +2,6 @@
 #define CALLBACKWRAPPER_HPP
 
 #include "auto_ptr.hpp"
-#include "base.hpp"
 #include "CommonData.hpp"
 #include "KeyCode.hpp"
 

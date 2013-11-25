@@ -1,3 +1,5 @@
+#include <IOKit/IOLib.h>
+
 #include "ButtonStatus.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
@@ -6,6 +8,7 @@
 #include "EventWatcher.hpp"
 #include "FlagStatus.hpp"
 #include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"

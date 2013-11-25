@@ -1,4 +1,7 @@
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
+#include "IOLogWrapper.hpp"
 #include "ScrollWheelToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

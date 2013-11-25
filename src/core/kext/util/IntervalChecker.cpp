@@ -1,5 +1,7 @@
-#include "IntervalChecker.hpp"
+#include <IOKit/IOLib.h>
 #include <sys/systm.h>
+
+#include "IntervalChecker.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   void

@@ -1,8 +1,16 @@
+#define protected public // A hack for access private member of IOHIPointing
+#define private public
+#include <IOKit/hidsystem/IOHIPointing.h>
+#undef protected
+#undef private
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 #include "ListHookedPointing.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

@@ -1,6 +1,9 @@
-#include "base.hpp"
-#include "NumHeldDownKeys.hpp"
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
+#include "IOLogWrapper.hpp"
+#include "KeyCode.hpp"
+#include "NumHeldDownKeys.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   int NumHeldDownKeys::num_ = 0;

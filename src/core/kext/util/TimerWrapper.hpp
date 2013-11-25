@@ -1,7 +1,7 @@
 #ifndef TIMERWRAPPER_HPP
 #define TIMERWRAPPER_HPP
 
-#include "base.hpp"
+#include <IOKit/IOTimerEventSource.h>
 
 class org_pqrs_KeyRemap4MacBook_TimerWrapperObject : public OSObject {
   OSDeclareDefaultStructors(org_pqrs_KeyRemap4MacBook_TimerWrapperObject);

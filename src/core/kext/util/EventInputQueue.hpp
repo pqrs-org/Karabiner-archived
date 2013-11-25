@@ -1,7 +1,6 @@
 #ifndef EVENTINPUTQUEUE_HPP
 #define EVENTINPUTQUEUE_HPP
 
-#include "base.hpp"
 #include "CallBackWrapper.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"

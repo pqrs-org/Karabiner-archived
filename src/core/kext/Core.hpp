@@ -3,6 +3,9 @@
 
 #include "CallBackWrapper.hpp"
 
+class IOService;
+class IONotifier;
+
 namespace org_pqrs_KeyRemap4MacBook {
   namespace Core {
     void start(void);

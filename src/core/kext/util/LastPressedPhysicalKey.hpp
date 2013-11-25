@@ -1,7 +1,6 @@
 #ifndef LASTPRESSEDPHYSICALKEY_HPP
 #define LASTPRESSEDPHYSICALKEY_HPP
 
-#include "base.hpp"
 #include "bridge.h"
 #include "IntervalChecker.hpp"
 

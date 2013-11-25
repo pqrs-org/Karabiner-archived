@@ -1,5 +1,8 @@
-#include "Driver.hpp"
+#include <IOKit/IOLib.h>
+
 #include "Core.hpp"
+#include "Driver.hpp"
+#include "IOLogWrapper.hpp"
 
 // ----------------------------------------------------------------------
 // http://developer.apple.com/documentation/DeviceDrivers/Conceptual/WritingDeviceDriver/CPluPlusRuntime/chapter_2_section_3.html

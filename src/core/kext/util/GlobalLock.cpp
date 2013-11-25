@@ -1,4 +1,7 @@
+#include <IOKit/IOLib.h>
+
 #include "GlobalLock.hpp"
+#include "IOLogWrapper.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   IOLock* GlobalLock::lock_ = NULL;

@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
 #include "FlagStatus.hpp"
+#include "IOLogWrapper.hpp"
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "util/CommonData.hpp"

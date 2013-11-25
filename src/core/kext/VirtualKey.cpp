@@ -1,4 +1,5 @@
-#include "base.hpp"
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"

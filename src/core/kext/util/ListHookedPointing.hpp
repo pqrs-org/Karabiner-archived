@@ -1,7 +1,8 @@
 #ifndef LISTHOOKEDPOINTING_HPP
 #define LISTHOOKEDPOINTING_HPP
 
-#include "base.hpp"
+#include <IOKit/hidsystem/IOHIPointing.h>
+
 #include "CallBackWrapper.hpp"
 #include "ListHookedDevice.hpp"
 

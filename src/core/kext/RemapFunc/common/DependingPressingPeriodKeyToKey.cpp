@@ -1,6 +1,9 @@
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
-#include "EventWatcher.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
+#include "EventWatcher.hpp"
+#include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

@@ -1,9 +1,15 @@
-#include "base.hpp"
+#include <IOKit/IOLib.h>
+#include <sys/errno.h>
+
 #include "ButtonStatus.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
+#include "IOLogWrapper.hpp"
 #include "RemapClass.hpp"
+#include "RemapFunc/PointingRelativeToScroll.hpp"
+#include "RemapFunc/common/DependingPressingPeriodKeyToKey.hpp"
+#include "VirtualKey.hpp"
 #include "remap.hpp"
 #include "util/CallBackWrapper.hpp"
 #include "util/EventInputQueue.hpp"
@@ -17,13 +23,6 @@
 #include "util/NumHeldDownKeys.hpp"
 #include "util/PressDownKeys.hpp"
 #include "util/TimerWrapper.hpp"
-#include "RemapFunc/common/DependingPressingPeriodKeyToKey.hpp"
-#include "RemapFunc/PointingRelativeToScroll.hpp"
-#include "VirtualKey.hpp"
-
-#include <sys/errno.h>
-#include <IOKit/IOWorkLoop.h>
-#include <IOKit/IOTimerEventSource.h>
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace Core {

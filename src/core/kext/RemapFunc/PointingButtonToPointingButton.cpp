@@ -1,4 +1,7 @@
+#include <IOKit/IOLib.h>
+
 #include "EventOutputQueue.hpp"
+#include "IOLogWrapper.hpp"
 #include "PointingButtonToPointingButton.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

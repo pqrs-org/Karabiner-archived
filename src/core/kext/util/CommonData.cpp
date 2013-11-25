@@ -1,5 +1,8 @@
+#include <IOKit/IOLib.h>
+
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "IOLogWrapper.hpp"
 #include "UserClient_kext.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
