@@ -49,6 +49,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     static bool suppressed(void) { return suppressed_; }
     static void suppress(bool v) { suppressed_ = v; }
 
+    class ScopedSuppress {
+    public:
+      ScopedSuppress(void) { original = suppressed(); suppress(true); }
+      ~ScopedSuppress(void) { suppress(original); }
+
+    private:
+      bool original;
+    };
+
   private:
     static bool suppressed_;
   };
