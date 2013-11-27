@@ -29,9 +29,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       back_ = p->prev_;
     }
 
-    delete p;
-
     --size_;
+
+    return next;
+  }
+
+  List::Item*
+  List::erase_and_delete(Item* p)
+  {
+    if (! p) return NULL;
+
+    Item* next = erase(p);
+    delete p;
     return next;
   }
 
@@ -39,7 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   List::clear(void)
   {
     while (front_) {
-      erase(front_);
+      erase_and_delete(front_);
     }
   }
 

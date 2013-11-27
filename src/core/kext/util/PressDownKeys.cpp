@@ -47,7 +47,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (p->key == key &&
           p->keyboardType == keyboardType) {
-        p = static_cast<Item*>(list_->erase(p));
+        p = static_cast<Item*>(list_->erase_and_delete(p));
       } else {
         p = static_cast<Item*>(p->getnext());
       }
@@ -73,7 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       EventOutputQueue::push(*ptr);
       IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", (p->key).get(), (p->keyboardType).get());
 
-      p = static_cast<Item*>(list_->erase(p));
+      p = static_cast<Item*>(list_->erase_and_delete(p));
     }
   }
 }

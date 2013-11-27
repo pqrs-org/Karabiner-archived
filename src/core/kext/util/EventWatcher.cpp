@@ -60,7 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! p) break;
 
       if (&(p->isAnyEventHappen) == &b) {
-        p = static_cast<Item*>(list_->erase(p));
+        p = static_cast<Item*>(list_->erase_and_delete(p));
       } else {
         p = static_cast<Item*>(p->getnext());
       }

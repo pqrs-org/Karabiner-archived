@@ -130,7 +130,7 @@ TEST(List, pop_front) {
   list.pop_front();
 }
 
-TEST(List, erase) {
+TEST(List, erase_and_delete) {
   const int MAXITEM = 10;
 
   // ------------------------------------------------------------
@@ -148,7 +148,7 @@ TEST(List, erase) {
       p = static_cast<TestItem*>(p->getnext());
     }
     TestItem* next = static_cast<TestItem*>(p->getnext());
-    EXPECT_EQ(next, list.erase(p));
+    EXPECT_EQ(next, list.erase_and_delete(p));
 
     // check
     p = static_cast<TestItem*>(list.front());

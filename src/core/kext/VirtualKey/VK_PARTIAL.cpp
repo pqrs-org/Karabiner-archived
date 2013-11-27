@@ -72,7 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       for (Item* p = static_cast<Item*>(changedKeyCodes_->front()); p; p = static_cast<Item*>(p->getnext())) {
         if (p->key == params.key) {
           if (! params.ex_iskeydown) {
-            changedKeyCodes_->erase(p);
+            changedKeyCodes_->erase_and_delete(p);
           }
           return true;
         }

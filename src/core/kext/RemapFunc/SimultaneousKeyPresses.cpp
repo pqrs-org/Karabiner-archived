@@ -364,7 +364,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (isAllKeysDown) {
           for (size_t i = 0; i < fromInfo_.size(); ++i) {
             fromInfo_[i].activate();
-            EventInputQueue::queue_->erase(downKeys_[i].item);
+            EventInputQueue::queue_->erase_and_delete(downKeys_[i].item);
           }
           push_remapped(true, deviceIdentifier);
           return true;

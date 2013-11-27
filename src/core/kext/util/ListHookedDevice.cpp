@@ -215,7 +215,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     ListHookedDevice::Item* item = get(p);
     if (! item) return;
 
-    list_->erase(item);
+    list_->erase_and_delete(item);
 
     // Call reset whenever the device status is changed.
     reset();
