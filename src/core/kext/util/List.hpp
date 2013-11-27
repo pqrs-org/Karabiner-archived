@@ -30,7 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool empty(void) const { return front_ == NULL; }
     size_t size(void) const { return size_; }
 
-    Item* erase(Item* p);
+    Item* erase_and_delete(Item* p);
     void clear(void);
 
     // We must call push_back with Item which allocated by "new".
@@ -52,11 +52,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------
     void push_back(Item* p);
     void push_front(Item* p);
-    void pop_front(void) { erase(front_); }
+    void pop_front(void) { erase_and_delete(front_); }
 
   private:
     List(const List& rhs) {}
     List& operator=(const List& rhs) { return *this; }
+    Item* erase(Item* p);
 
     Item* front_;
     Item* back_;
