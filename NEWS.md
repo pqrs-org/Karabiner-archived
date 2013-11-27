@@ -4,7 +4,8 @@ Since 9.0.0
 * v9.0.3: <br />
   KeyRemap4MacBook no longer requires system restart at installing or upgrading. <br />
   If you need to restart system for some reason, KeyRemap4MacBook will show an alert which urges you to restart.
-
+* Fixed issues:
+    * v9.0.6: System might crash when you disconnected a keyboard.
 
 Version 9.0.0
 -------------
