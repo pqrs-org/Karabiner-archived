@@ -298,6 +298,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! device) return;
 
     ListHookedConsumer::Item* item = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get(device));
+    if (! item) return;
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
