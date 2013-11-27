@@ -8,6 +8,7 @@
       <appendix>If the key is supposed to be typed with the right hand and requires a modifier use</appendix> 
       <appendix> left shift or left option, vice versa for the left hand.</appendix>
       <appendix>With this in mind, option left or option right are used as AltGr.</appendix>
+      <appendix>This layout assumes you are using the 'Spanish ISO' input source from OS X.</appendix>
       <identifier>private.curly_braces</identifier>
       <autogen>__KeyToKey__ 
                KeyCode::BACKSLASH, ModifierFlag::SHIFT_L,
