@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Latin American ISO Keyboard layout</name> 
+    <item>
+      <name>Latin American ISO Keyboard layout</name> 
+      <appendix>Unlike Windows and Linux, retarded OS X only comes with a Spain layout for spanish.</appendix>
+      <appendix>If the key is supposed to be typed with the right hand and requires a modifier use</appendix> 
+      <appendix> left shift or left option, vice versa for the left hand.</appendix>
+      <appendix>With this in mind, option left or option right are used as AltGr.</appendix>
+      <identifier>private.curly_braces</identifier>
+      <autogen>__KeyToKey__ 
+               KeyCode::BACKSLASH, ModifierFlag::SHIFT_L,
+               KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::BACKSLASH, ModifierFlag::OPTION_L,
+               KeyCode::BRACKET_LEFT
+      </autogen>
+       <autogen>__KeyToKey__ 
+               KeyCode::BACKSLASH, 
+               KeyCode::BACKSLASH, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::QUOTE, ModifierFlag::SHIFT_L,
+               KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::QUOTE, ModifierFlag::OPTION_L,
+               KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::QUOTE, 
+               KeyCode::QUOTE, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L,
+               KeyCode::QUOTE, ModifierFlag::SHIFT_L,
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::BRACKET_LEFT,
+               KeyCode::QUOTE 
+      </autogen>
+       <autogen>__KeyToKey__ 
+               KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L,
+               KeyCode::SEMICOLON, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::MINUS, ModifierFlag::OPTION_L,
+               KeyCode::DANISH_DOLLAR, ModifierFlag::OPTION_R
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::DANISH_DOLLAR,  ModifierFlag::SHIFT_R,
+               KeyCode::DANISH_DOLLAR, 
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::DANISH_DOLLAR,  ModifierFlag::OPTION_R,
+               KeyCode::KEY_6,  ModifierFlag::OPTION_R
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::DANISH_DOLLAR, 
+               KeyCode::KEY_1, ModifierFlag::OPTION_R
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::KEY_3, ModifierFlag::SHIFT_R,
+               KeyCode::KEY_3, ModifierFlag::OPTION_R
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::Q, ModifierFlag::OPTION_R,
+               KeyCode::KEY_2, ModifierFlag::OPTION_R
+      </autogen>
+      <autogen>__KeyToKey__ 
+               KeyCode::EQUAL, 
+               KeyCode::CONTROL_R
+      </autogen>
+    </item>
+  </item>
+</root>
