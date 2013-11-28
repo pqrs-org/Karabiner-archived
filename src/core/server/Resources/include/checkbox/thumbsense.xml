@@ -13,7 +13,9 @@
       <appendix>- G/H to History Back/Forward (Command+[/Command+])</appendix>
       <appendix>- W to Close Window (Command+W)</appendix>
       <identifier>notsave.thumbsense</identifier>
-      <autogen>__ShowStatusMessage__ ThumbSense</autogen>
+
+      {{ THUMBSENSE_EXTRA }}
+
       <!-- ============================================================ -->
       <!-- PointingButton -->
       <autogen>__KeyToPointingButton__ KeyCode::F,     PointingButton::LEFT</autogen>
