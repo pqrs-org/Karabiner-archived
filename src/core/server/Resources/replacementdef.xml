@@ -37,6 +37,16 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>THUMBSENSE_EXTRA</replacementname>
+    <replacementvalue>
+      <![CDATA[
+        <autogen>__ShowStatusMessage__ ThumbSense</autogen>
+        ]]>
+    </replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>COMMAND_L_TO_OPTION_L_EXCEPT_TAB_EXTRA</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
