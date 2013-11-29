@@ -206,6 +206,8 @@ finish:
   // when connect_to_kext is called in NSWorkspaceSessionDidBecomeActiveNotification.
   // So, we retry the connection some times.
 
+  NSString* errorMessage = nil;
+
   @synchronized(self) {
     for (int i = 0; i < retrycount; ++i) {
       [self disconnect_from_kext];
@@ -218,37 +220,44 @@ finish:
 
       // If an unrecoverable error occurred, give up immediately.
       if (unrecoverableError_ != UNRECOVERABLE_ERROR_NONE) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-          NSAlert* alert = [[NSAlert new] autorelease];
-          [alert setMessageText:@"KeyRemap4MacBook Alert"];
-          [alert addButtonWithTitle:@"Close"];
+        switch (unrecoverableError_) {
+          case UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH:
+            errorMessage = @"Kernel extension and app version are mismatched.\n"
+                           @"Please restart your system in order to reload kernel extension.\n";
+            break;
 
-          switch (unrecoverableError_) {
-            case UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH:
-              [alert setInformativeText:
-               @"Kernel extension and app version are mismatched.\n"
-               @"Please restart your system in order to reload kernel extension.\n"
-              ];
-              break;
+          case UNRECOVERABLE_ERROR_KEXT_NOT_FOUND:
+            errorMessage = @"Kernel extension is not loaded.\n"
+                           @"Please restart your system in order to load kernel extension.\n";
+            break;
 
-            case UNRECOVERABLE_ERROR_KEXT_NOT_FOUND:
-              [alert setInformativeText:
-               @"Kernel extension is not loaded.\n"
-               @"Please restart your system in order to load kernel extension.\n"
-              ];
-              break;
-
-            case UNRECOVERABLE_ERROR_NONE:
-              break;
-          }
-
-          [alert runModal];
-        });
-        return;
+          case UNRECOVERABLE_ERROR_NONE:
+            break;
+        }
+        goto error;
       }
 
       [NSThread sleepForTimeInterval:wait];
     }
+
+    if (connect_ == IO_OBJECT_NULL) {
+      errorMessage = @"KeyRemap4MacBook cannot connect with kernel extension.\n"
+                     @"Please restart your system in order to solve the problem.\n";
+      goto error;
+    }
+  }
+
+  return;
+
+error:
+  if (errorMessage) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      NSAlert* alert = [[NSAlert new] autorelease];
+      [alert setMessageText:@"KeyRemap4MacBook Alert"];
+      [alert addButtonWithTitle:@"Close"];
+      [alert setInformativeText:errorMessage];
+      [alert runModal];
+    });
   }
 }
 
