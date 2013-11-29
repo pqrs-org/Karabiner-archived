@@ -1,4 +1,5 @@
 #import "UserClient_userspace.h"
+#import "Relauncher.h"
 #include "bridge.h"
 
 typedef enum {
@@ -103,7 +104,12 @@ typedef enum {
       } else {
         if (open_result == BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH) {
           NSLog(@"[ERROR] BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH\n");
-          unrecoverableError_ = UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH;
+          if ([Relauncher isEqualPreviousProcessVersionAndCurrentProcessVersion]) {
+            unrecoverableError_ = UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH;
+          } else {
+            NSLog(@"KeyRemap4MacBook might have been upgraded.");
+            [Relauncher relaunch];
+          }
           continue;
         }
       }

@@ -45,6 +45,7 @@
 		34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5573316EA1923000E5399 /* StatusMessageView_edge.m */; };
 		34A611931531707E0003894B /* checkbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A611921531707E0003894B /* checkbox.xml */; };
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
+		34AE39041848E72300D413AD /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AE39031848E72300D413AD /* Relauncher.m */; };
 		34AFABF2181C354C00146896 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFABF1181C354C00146896 /* libc++.dylib */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
@@ -141,6 +142,8 @@
 		34A5573316EA1923000E5399 /* StatusMessageView_edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView_edge.m; path = Classes/StatusMessage/StatusMessageView_edge.m; sourceTree = "<group>"; };
 		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = Resources/checkbox.xml; sourceTree = "<group>"; };
 		34A83BCE144B1EAA00AE5687 /* appdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = appdef.xml; path = Resources/appdef.xml; sourceTree = "<group>"; };
+		34AE39021848E72300D413AD /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = Classes/Relauncher.h; sourceTree = "<group>"; };
+		34AE39031848E72300D413AD /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = Classes/Relauncher.m; sourceTree = "<group>"; };
 		34AFABF1181C354C00146896 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		34B2A65A13745B6000694134 /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */,
 				34FB9590128F98510088B235 /* PreferencesManager.h */,
 				34FB9591128F985A0088B235 /* PreferencesManager.m */,
+				34AE39021848E72300D413AD /* Relauncher.h */,
+				34AE39031848E72300D413AD /* Relauncher.m */,
 				3401D0D41657A18C00CF962F /* ServerForUserspace.h */,
 				3401D0D51657A18C00CF962F /* ServerForUserspace.m */,
 				348C6A2C128E4504005F516D /* StatusBar.h */,
@@ -425,6 +430,7 @@
 				348C6A2E128E4504005F516D /* StatusBar.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
 				34D4F82812C4463B001819AA /* StatusWindow.m in Sources */,
+				34AE39041848E72300D413AD /* Relauncher.m in Sources */,
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */,
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
 				34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */,
