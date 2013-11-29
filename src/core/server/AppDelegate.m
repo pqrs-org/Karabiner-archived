@@ -6,6 +6,7 @@
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "Relauncher.h"
 #import "ServerForUserspace.h"
 #import "StatusBar.h"
 #import "StatusWindow.h"
@@ -299,9 +300,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
     // Relaunch when register is failed.
     NSLog(@"[ServerForUserspace register] is failed. Restarting process.");
     [NSThread sleepForTimeInterval:2];
-    [self relaunch];
+    [Relauncher relaunch];
   }
-  [self setRelaunchedCount:0];
+  [Relauncher resetRelaunchedCount];
 
   // Wait until other apps connect to me.
   [NSThread sleepForTimeInterval:1];
@@ -381,37 +382,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [inputSourceInformation_ release];
 
   [super dealloc];
-}
-
-// ------------------------------------------------------------
-#define kRelaunchedCount @"org_pqrs_KeyRemap4MacBook_RelaunchedCount"
-
-- (void) setRelaunchedCount:(int)newvalue
-{
-  setenv([kRelaunchedCount UTF8String],
-         [[NSString stringWithFormat:@"%d", newvalue] UTF8String],
-         1);
-}
-
-- (NSInteger) getRelaunchedCount
-{
-  return [[[[NSProcessInfo processInfo] environment] objectForKey:kRelaunchedCount] integerValue];
-}
-
-- (void) relaunch
-{
-  const int RETRY_COUNT = 5;
-
-  NSInteger count = [self getRelaunchedCount];
-  if (count < RETRY_COUNT) {
-    NSLog(@"Relaunching (count:%d)", (int)(count));
-    [self setRelaunchedCount:(int)(count + 1)];
-    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
-  } else {
-    NSLog(@"Give up relaunching.");
-  }
-
-  [NSApp terminate:self];
 }
 
 // ------------------------------------------------------------
