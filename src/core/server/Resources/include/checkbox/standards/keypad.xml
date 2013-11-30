@@ -10,6 +10,11 @@
         <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR, KeyCode::DELETE</autogen>
       </item>
       <item>
+        <name>Clear to Forward Delete</name>
+        <identifier>remap.clear2forwarddelete</identifier>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR, KeyCode::FORWARD_DELETE</autogen>
+      </item>
+      <item>
         <name>Clear to Command+Delete (Move to Trash)</name>
         <identifier>remap.clear_to_command_and_delete</identifier>
         <autogen>__KeyToKey__ KeyCode::KEYPAD_CLEAR, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
