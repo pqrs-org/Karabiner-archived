@@ -1,4 +1,4 @@
-Version 9.1.0
+Version 9.2.0
 -------------
 
 * KeyRemap4MacBook no longer requires system restart at installing or upgrading. <br />
