@@ -1,3 +1,9 @@
+Since 9.2.0
+-----------
+
+* Fixed issues:
+    * v9.2.2: "Kernel extension is not loaded" alert might be shown when automagic login is enabled.
+
 Version 9.2.0
 -------------
 
