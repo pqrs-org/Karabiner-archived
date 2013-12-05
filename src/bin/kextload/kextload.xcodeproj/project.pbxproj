@@ -1,0 +1,196 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		341A1BE1184EBDBD00CF0341 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341A1BE0184EBDBD00CF0341 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		341A1BDB184EBDBD00CF0341 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		341A1BDD184EBDBD00CF0341 /* kextload */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = kextload; sourceTree = BUILT_PRODUCTS_DIR; };
+		341A1BE0184EBDBD00CF0341 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		341A1BDA184EBDBD00CF0341 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		341A1BD4184EBDBD00CF0341 = {
+			isa = PBXGroup;
+			children = (
+				341A1BDF184EBDBD00CF0341 /* kextload */,
+				341A1BDE184EBDBD00CF0341 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		341A1BDE184EBDBD00CF0341 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				341A1BDD184EBDBD00CF0341 /* kextload */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		341A1BDF184EBDBD00CF0341 /* kextload */ = {
+			isa = PBXGroup;
+			children = (
+				341A1BE0184EBDBD00CF0341 /* main.cpp */,
+			);
+			path = kextload;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		341A1BDC184EBDBD00CF0341 /* kextload */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 341A1BE6184EBDBD00CF0341 /* Build configuration list for PBXNativeTarget "kextload" */;
+			buildPhases = (
+				341A1BD9184EBDBD00CF0341 /* Sources */,
+				341A1BDA184EBDBD00CF0341 /* Frameworks */,
+				341A1BDB184EBDBD00CF0341 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kextload;
+			productName = kextload;
+			productReference = 341A1BDD184EBDBD00CF0341 /* kextload */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		341A1BD5184EBDBD00CF0341 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Takayama Fumihiko";
+			};
+			buildConfigurationList = 341A1BD8184EBDBD00CF0341 /* Build configuration list for PBXProject "kextload" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 341A1BD4184EBDBD00CF0341;
+			productRefGroup = 341A1BDE184EBDBD00CF0341 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				341A1BDC184EBDBD00CF0341 /* kextload */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		341A1BD9184EBDBD00CF0341 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341A1BE1184EBDBD00CF0341 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		341A1BE5184EBDBD00CF0341 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		341A1BE8184EBDBD00CF0341 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		341A1BD8184EBDBD00CF0341 /* Build configuration list for PBXProject "kextload" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				341A1BE5184EBDBD00CF0341 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		341A1BE6184EBDBD00CF0341 /* Build configuration list for PBXNativeTarget "kextload" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				341A1BE8184EBDBD00CF0341 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 341A1BD5184EBDBD00CF0341 /* Project object */;
+}
