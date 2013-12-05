@@ -158,7 +158,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
