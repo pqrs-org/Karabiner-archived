@@ -9,7 +9,7 @@ fi
 
 # ------------------------------------------------------------
 test_mach_o() {
-    if `file -b "$1" | grep -sq ^Mach-O`; then
+    if `file -b "$1" | grep 'executable ' | grep -sq 'Mach-O '`; then
         # This is Mach-O file.
 
         # except kext bundle
@@ -31,7 +31,8 @@ find "$1" -print0 | while read -d $'\0' filepath; do
         if [ "$extension" = 'sh' ]; then
             chmod -h 755 "$filepath"
         elif `test_mach_o "$filepath"`; then
-            chmod -h 755 "$filepath"
+            # preserve the set-user-ID-on-execution bits.
+            chmod -h u+rwx,go=rx "$filepath"
         else
             chmod -h 644 "$filepath"
         fi
