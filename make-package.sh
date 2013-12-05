@@ -37,6 +37,10 @@ mkdir -p "$basedir"
 cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "$basedir/KeyRemap4MacBook.signed.kext"
 cp -R files/scripts "$basedir"
 
+basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/bin"
+mkdir -p "$basedir"
+cp -R src/bin/kextload/build/Release/kextload "$basedir"
+
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/extra"
 mkdir -p "$basedir"
 cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
@@ -52,7 +56,6 @@ done
 basedir="pkgroot/Library"
 mkdir -p "$basedir"
 for d in \
-    files/LaunchDaemons \
     files/LaunchAgents \
     ;
 do
@@ -76,6 +79,7 @@ bash files/extra/codesign.sh pkgroot
 #   Then, we need to repair file permissions in postinstall script.
 #   Please also see postinstall.
 #
+chmod 4755 pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/bin/kextload
 sh "files/extra/setpermissions.sh" pkgroot
 sh "files/extra/setpermissions.sh" pkginfo
 chmod 755 \
