@@ -78,7 +78,6 @@
 {
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 
-  [super dealloc];
 }
 
 - (void) tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem

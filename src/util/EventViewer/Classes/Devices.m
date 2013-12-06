@@ -16,12 +16,6 @@
   return self;
 }
 
-- (void) dealloc
-{
-  [devices_ release];
-
-  [super dealloc];
-}
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView
 {
@@ -61,7 +55,7 @@
 - (IBAction) copy:(id)sender
 {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-  NSMutableString* string = [[NSMutableString new] autorelease];
+  NSMutableString* string = [NSMutableString new];
 
   for (NSDictionary* dict in devices_) {
     [string appendFormat:@"%@\n    %@ (%@)\n    Vendor ID:%@\n    Product ID:%@\n    Location ID:%@\n\n",

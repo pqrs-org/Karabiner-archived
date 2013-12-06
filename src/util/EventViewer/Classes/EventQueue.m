@@ -19,12 +19,6 @@ enum {
   return self;
 }
 
-- (void) dealloc
-{
-  [queue_ release];
-
-  [super dealloc];
-}
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView
 {
@@ -69,7 +63,7 @@ enum {
 - (IBAction) copy:(id)sender
 {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-  NSMutableString* string = [[NSMutableString new] autorelease];
+  NSMutableString* string = [NSMutableString new];
 
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = queue_[([queue_ count] - 1 - i)];

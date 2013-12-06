@@ -7,7 +7,7 @@
 - (IBAction) copy:(id)sender
 {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-  NSMutableString* string = [[NSMutableString new] autorelease];
+  NSMutableString* string = [NSMutableString new];
 
   [string appendFormat:@"Language Code: %@\n", languagecode_];
   [string appendFormat:@"Input Source ID: %@\n", inputsourceid_];
