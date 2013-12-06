@@ -37,8 +37,7 @@
         [self send_workspacedata_to_kext];
 
         @synchronized(self) {
-          [applicationInformation_ release];
-          applicationInformation_ = [@{ @"name":name } retain];
+          applicationInformation_ = @{ @"name":name };
         }
 
         [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
@@ -65,7 +64,6 @@
     [self send_workspacedata_to_kext];
 
     @synchronized(self) {
-      [inputSourceInformation_ release];
       inputSourceInformation_ = [NSMutableDictionary new];
       if ([inputSource languagecode]) {
         inputSourceInformation_[@"languageCode"] = [inputSource languagecode];
@@ -155,7 +153,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_IONotification");
 
-    AppDelegate* self = refcon;
+    AppDelegate* self = (__bridge AppDelegate*)(refcon);
     if (! self) {
       NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
       return;
@@ -212,13 +210,13 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
                                                 kIOMatchedNotification,
                                                 IOServiceNameMatching("org_pqrs_driver_KeyRemap4MacBook"),
                                                 &observer_IONotification,
-                                                self,
+                                                (__bridge void*)(self),
                                                 &it);
   if (kernResult != kIOReturnSuccess) {
     NSLog(@"[ERROR] IOServiceAddMatchingNotification failed");
     return;
   }
-  observer_IONotification(self, it);
+  observer_IONotification((__bridge void*)(self), it);
 
   // ----------------------------------------------------------------------
   loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
@@ -381,20 +379,17 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  [applicationInformation_ release];
-  [inputSourceInformation_ release];
 
-  [super dealloc];
 }
 
 // ------------------------------------------------------------
 - (NSDictionary*) getApplicationInformation
 {
-  return [[applicationInformation_ retain] autorelease];
+  return applicationInformation_;
 }
 - (NSDictionary*) getInputSourceInformation
 {
-  return [[inputSourceInformation_ retain] autorelease];
+  return inputSourceInformation_;
 }
 
 // ------------------------------------------------------------

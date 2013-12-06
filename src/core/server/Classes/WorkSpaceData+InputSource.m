@@ -11,7 +11,6 @@ static NSMutableArray* enabledInputSources_ = nil;
     CFDictionaryRef filter = NULL;
     CFArrayRef list = NULL;
 
-    [enabledInputSources_ release];
     enabledInputSources_ = [NSMutableArray new];
 
     // ----------------------------------------
@@ -42,7 +41,7 @@ static NSMutableArray* enabledInputSources_ = nil;
       //
       // - com.apple.inputmethod.ironwood (Voice Input)
 
-      NSString* sourceID = TISGetInputSourceProperty(source, kTISPropertyInputSourceID);
+      NSString* sourceID = (__bridge NSString*)(TISGetInputSourceProperty(source, kTISPropertyInputSourceID));
       if (sourceID) {
         if ([sourceID isEqualToString:@"com.apple.inputmethod.ironwood"]) {
           continue;
@@ -50,7 +49,7 @@ static NSMutableArray* enabledInputSources_ = nil;
       }
 
       // ----------------------------------------
-      InputSource* inputSource = [[[InputSource alloc] initWithTISInputSourceRef:source] autorelease];
+      InputSource* inputSource = [[InputSource alloc] initWithTISInputSourceRef:source];
       if (inputSource) {
         [enabledInputSources_ addObject:inputSource];
       }
@@ -71,7 +70,7 @@ static NSMutableArray* enabledInputSources_ = nil;
   @synchronized(self) {
     for (InputSource* inputSource in enabledInputSources_) {
       if ([inputSource selected]) {
-        return [[inputSource retain] autorelease];
+        return inputSource;
       }
     }
   }
@@ -118,7 +117,7 @@ static NSMutableArray* enabledInputSources_ = nil;
                                             languagecode:inputSource.languagecode
                                            inputSourceID:inputSource.inputSourceID
                                              inputModeID:inputSource.inputModeID]) {
-        matched = [[inputSource retain] autorelease];
+        matched = inputSource;
         break;
       }
     }

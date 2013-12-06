@@ -32,7 +32,6 @@
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  [super dealloc];
 }
 
 - (void) refresh
@@ -40,14 +39,12 @@
   if (! [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled]) {
     if (statusItem_) {
       [[NSStatusBar systemStatusBar] removeStatusItem:statusItem_];
-      [statusItem_ release];
       statusItem_ = nil;
     }
 
   } else {
     if (! statusItem_) {
       statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
-      [statusItem_ retain];
 
       [statusItem_ setTitle:@""];
       [statusItem_ setToolTip:@"KeyRemap4MacBook"];
@@ -66,7 +63,7 @@
     } else {
       NSString* title = [preferencesManager_ configlist_selectedName];
       if (title) {
-        NSAttributedString* attributedtitle = [[[NSAttributedString alloc] initWithString:title attributes:nil] autorelease];
+        NSAttributedString* attributedtitle = [[NSAttributedString alloc] initWithString:title attributes:nil];
         [statusItem_ setAttributedTitle:attributedtitle];
         [statusItem_ setLength:(24 + [attributedtitle size].width)];
       }
@@ -101,7 +98,7 @@
     if (! dict) continue;
 
     NSString* title = dict[@"name"];
-    NSMenuItem* newItem = [[[NSMenuItem alloc] initWithTitle:title action:@selector(statusBarItemSelected:) keyEquivalent:@""] autorelease];
+    NSMenuItem* newItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(statusBarItemSelected:) keyEquivalent:@""];
 
     [newItem setTarget:self];
     [newItem setRepresentedObject:@(i)];

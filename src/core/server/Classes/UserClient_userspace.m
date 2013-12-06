@@ -258,7 +258,7 @@ finish:
 error:
   if (errorMessage) {
     dispatch_async(dispatch_get_main_queue(), ^{
-      NSAlert* alert = [[NSAlert new] autorelease];
+      NSAlert* alert = [NSAlert new];
       [alert setMessageText:@"KeyRemap4MacBook Alert"];
       [alert addButtonWithTitle:@"Close"];
       [alert setInformativeText:errorMessage];

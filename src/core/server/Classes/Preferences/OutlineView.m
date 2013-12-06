@@ -60,16 +60,13 @@
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  [datasource_ release];
 
-  [super dealloc];
 }
 
 - (void) load:(BOOL)force
 {
   if (force) {
     if (datasource_) {
-      [datasource_ release];
       datasource_ = nil;
     }
   }
@@ -80,9 +77,6 @@
     datasource_ = [xmlCompiler_ preferencepane_checkbox];
   } else {
     datasource_ = [xmlCompiler_ preferencepane_number];
-  }
-  if (datasource_) {
-    [datasource_ retain];
   }
 }
 
@@ -142,8 +136,8 @@
 
     NSDictionary* attributes = item[@"stringAttributes"];
     if (attributes) {
-      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:item[@"name"]
-                                                                attributes:attributes] autorelease]];
+      [cell setAttributedTitle:[[NSAttributedString alloc] initWithString:item[@"name"]
+                                                               attributes:attributes]];
     } else {
       [cell setTitle:item[@"name"]];
     }
@@ -262,7 +256,7 @@
   // check children
   NSArray* children = dictionary[@"children"];
   if (children) {
-    NSMutableArray* newchildren = [[NSMutableArray new] autorelease];
+    NSMutableArray* newchildren = [NSMutableArray new];
     for (NSDictionary* dict in children) {
       NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
       if (d) {
@@ -309,9 +303,9 @@
   [self load:YES];
   if (! datasource_) return;
 
-  NSMutableArray* newdatasource = [[NSMutableArray new] autorelease];
+  NSMutableArray* newdatasource = [NSMutableArray new];
 
-  NSMutableArray* strings = [[NSMutableArray new] autorelease];
+  NSMutableArray* strings = [NSMutableArray new];
   if (string) {
     for (NSString* s in [string componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceCharacterSet]]) {
       if ([s length] == 0) continue;
@@ -326,8 +320,7 @@
     }
   }
 
-  [datasource_ release];
-  datasource_ = [newdatasource retain];
+  datasource_ = newdatasource;
   [outlineview_ reloadData];
 
   if ([string length] == 0 && isEnabledOnly == NO) {

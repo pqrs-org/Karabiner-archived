@@ -13,12 +13,6 @@
   return self;
 }
 
-- (void) dealloc
-{
-  [suupdater_ release];
-
-  [super dealloc];
-}
 
 - (NSString*) getFeedURL:(NSInteger)checkupdate
 {

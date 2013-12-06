@@ -64,11 +64,7 @@
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  [windows_ release];
-  [lines_ release];
-  [lastMessages_ release];
 
-  [super dealloc];
 }
 
 // ------------------------------------------------------------

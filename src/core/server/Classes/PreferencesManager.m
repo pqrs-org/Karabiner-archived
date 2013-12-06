@@ -63,7 +63,7 @@
 - (void) setDefault
 {
   NSURL* xmlurl = [[NSBundle mainBundle] URLForResource:@"number" withExtension:@"xml"];
-  NSXMLDocument* xmldocument = [[[NSXMLDocument alloc] initWithContentsOfURL:xmlurl options:0 error:NULL] autorelease];
+  NSXMLDocument* xmldocument = [[NSXMLDocument alloc] initWithContentsOfURL:xmlurl options:0 error:NULL];
   if (xmldocument) {
     [self addToDefault:[xmldocument rootElement]];
   }
@@ -78,21 +78,14 @@
     default_ = [NSMutableDictionary new];
     [self setDefault];
 
-    essential_configuration_identifiers_ = [[NSArray arrayWithObjects:
+    essential_configuration_identifiers_ = [NSArray arrayWithObjects:
 #include "../../../bridge/output/include.bridge_essential_configuration_identifiers.m"
-                                            ] retain];
+                                           ];
   }
 
   return self;
 }
 
-- (void) dealloc
-{
-  [default_ release];
-  [essential_configuration_identifiers_ release];
-
-  [super dealloc];
-}
 
 - (void) load
 {
@@ -184,7 +177,7 @@
     if (dict) {
       md = [NSMutableDictionary dictionaryWithDictionary:dict];
     } else {
-      md = [[NSMutableDictionary new] autorelease];
+      md = [NSMutableDictionary new];
     }
     if (! md) {
       NSLog(@"[ERROR] %s md == nil", __FUNCTION__);
@@ -270,7 +263,7 @@
 
 - (NSArray*) essential_config
 {
-  NSMutableArray* a = [[NSMutableArray new] autorelease];
+  NSMutableArray* a = [NSMutableArray new];
 
   if (essential_configuration_identifiers_) {
     for (NSString* identifier in essential_configuration_identifiers_) {
@@ -390,7 +383,7 @@
   if (a) {
     ma = [NSMutableArray arrayWithArray:a];
   } else {
-    ma = [[NSMutableArray new] autorelease];
+    ma = [NSMutableArray new];
   }
   if (! ma) return;
 
