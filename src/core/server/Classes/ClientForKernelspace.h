@@ -14,19 +14,19 @@
   io_async_ref64_t asyncref_;
   UserClient_userspace* userClient_userspace;
 
-  IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper;
-  IBOutlet PreferencesManager* preferencesManager;
-  IBOutlet StatusWindow* statusWindow;
-  IBOutlet WorkSpaceData* workSpaceData;
-  IBOutlet XMLCompiler* xmlCompiler;
+  IBOutlet IOHIDPostEventWrapper* __weak iohidPostEventWrapper;
+  IBOutlet PreferencesManager* __weak preferencesManager;
+  IBOutlet StatusWindow* __weak statusWindow;
+  IBOutlet WorkSpaceData* __weak workSpaceData;
+  IBOutlet XMLCompiler* __weak xmlCompiler;
 }
 
-@property (assign) IOHIDPostEventWrapper* iohidPostEventWrapper;
-@property (assign) PreferencesManager* preferencesManager;
-@property (assign) UserClient_userspace* userClient_userspace;
-@property (assign) StatusWindow* statusWindow;
-@property (assign) WorkSpaceData* workSpaceData;
-@property (assign) XMLCompiler* xmlCompiler;
+@property (weak) IOHIDPostEventWrapper* iohidPostEventWrapper;
+@property (weak) PreferencesManager* preferencesManager;
+@property  UserClient_userspace* userClient_userspace;
+@property (weak) StatusWindow* statusWindow;
+@property (weak) WorkSpaceData* workSpaceData;
+@property (weak) XMLCompiler* xmlCompiler;
 
 - (void) refresh_connection_with_retry;
 - (void) disconnect_from_kext;

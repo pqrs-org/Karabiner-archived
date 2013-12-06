@@ -43,7 +43,7 @@
   size_t size = pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(node_tree);
   if (size == 0) return nil;
 
-  NSMutableArray* array = [[NSMutableArray new] autorelease];
+  NSMutableArray* array = [NSMutableArray new];
 
   for (size_t i = 0; i < size; ++i) {
     const pqrs_xml_compiler_preferences_checkbox_node_tree* child =
@@ -52,7 +52,7 @@
 
     // ----------------------------------------
     // making dictionary
-    NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+    NSMutableDictionary* dict = [NSMutableDictionary new];
 
     {
       const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(child);
@@ -98,7 +98,7 @@
 {
   NSUInteger height = [[message componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] count];
 
-  NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+  NSMutableDictionary* dict = [NSMutableDictionary new];
   dict[@"name"] = message;
   dict[@"height"] = @(height);
   dict[@"string_for_filter"] = [message lowercaseString];
@@ -115,7 +115,7 @@
   size_t size = pqrs_xml_compiler_get_preferences_number_node_tree_children_count(node_tree);
   if (size == 0) return nil;
 
-  NSMutableArray* array = [[NSMutableArray new] autorelease];
+  NSMutableArray* array = [NSMutableArray new];
 
   for (size_t i = 0; i < size; ++i) {
     const pqrs_xml_compiler_preferences_number_node_tree* child =
@@ -124,7 +124,7 @@
 
     // ----------------------------------------
     // making dictionary
-    NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
+    NSMutableDictionary* dict = [NSMutableDictionary new];
 
     {
       const char* name = pqrs_xml_compiler_get_preferences_number_node_tree_name(child);
@@ -224,10 +224,7 @@
 - (void) dealloc
 {
   pqrs_xml_compiler_terminate(&pqrs_xml_compiler_);
-  [preferencepane_checkbox_ release];
-  [preferencepane_number_ release];
 
-  [super dealloc];
 }
 
 - (void) reload {
@@ -241,9 +238,7 @@
       const pqrs_xml_compiler_preferences_checkbox_node_tree* node_tree =
         pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(pqrs_xml_compiler_);
 
-      [preferencepane_checkbox_ release];
       preferencepane_checkbox_ = [XMLCompiler build_preferencepane_checkbox:node_tree];
-      [preferencepane_checkbox_ retain];
     }
 
     // build preferencepane_number_
@@ -251,9 +246,7 @@
       const pqrs_xml_compiler_preferences_number_node_tree* node_tree =
         pqrs_xml_compiler_get_preferences_number_node_tree_root(pqrs_xml_compiler_);
 
-      [preferencepane_number_ release];
       preferencepane_number_ = [XMLCompiler build_preferencepane_number:node_tree];
-      [preferencepane_number_ retain];
     }
   }
 
@@ -262,7 +255,7 @@
     NSString* message = [self preferencepane_error_message];
     [self insert_caution_into_preferencepane_checkbox:message];
 
-    NSAlert* alert = [[NSAlert new] autorelease];
+    NSAlert* alert = [NSAlert new];
     [alert setMessageText:@"KeyRemap4MacBook Error"];
     [alert addButtonWithTitle:@"Close"];
     [alert setInformativeText:message];

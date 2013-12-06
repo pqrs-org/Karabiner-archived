@@ -14,7 +14,7 @@
 @class XMLCompiler;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-  NSWindow* window;
+  NSWindow* __weak window;
   NSDictionary* applicationInformation_;
   NSMutableDictionary* inputSourceInformation_;
 
@@ -24,7 +24,7 @@
 
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
-  IBOutlet ClientForKernelspace* clientForKernelspace;
+  IBOutlet ClientForKernelspace* __weak clientForKernelspace;
   IBOutlet PreferencesController* preferencesController_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet ServerForUserspace* serverForUserspace_;
@@ -35,8 +35,8 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-@property (assign) IBOutlet NSWindow* window;
-@property (assign) ClientForKernelspace* clientForKernelspace;
+@property (weak) IBOutlet NSWindow* window;
+@property (weak) ClientForKernelspace* clientForKernelspace;
 
 - (NSDictionary*) getApplicationInformation;
 - (NSDictionary*) getInputSourceInformation;

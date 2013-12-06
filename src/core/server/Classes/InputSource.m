@@ -8,7 +8,7 @@
 
 + (NSString*) getLanguageCode:(TISInputSourceRef)source
 {
-  NSArray* languages = TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages);
+  NSArray* languages = (__bridge NSArray*)(TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages));
   if ([languages count] > 0) {
     // U.S. InputSource has many languages (en, de, fr, ...),
     // so we check the first language only to detect real InputSource for French, German, etc.
@@ -28,13 +28,11 @@
       inputSource_ = ref;
       CFRetain(inputSource_);
 
-      languagecode = [[InputSource getLanguageCode:inputSource_] retain];
+      languagecode = [InputSource getLanguageCode:inputSource_];
 
-      inputSourceID = TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID);
-      [inputSourceID retain];
+      inputSourceID = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID));
 
-      inputModeID = TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID);
-      [inputModeID retain];
+      inputModeID = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID));
     }
   }
 
@@ -43,15 +41,11 @@
 
 - (void) dealloc
 {
-  [languagecode release];
-  [inputSourceID release];
-  [inputModeID release];
 
   if (inputSource_) {
     CFRelease(inputSource_);
   }
 
-  [super dealloc];
 }
 
 - (void) select

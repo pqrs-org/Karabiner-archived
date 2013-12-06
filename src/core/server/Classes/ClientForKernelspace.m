@@ -19,7 +19,7 @@
 static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    ClientForKernelspace* self = (ClientForKernelspace*)(refcon);
+    ClientForKernelspace* self = (__bridge ClientForKernelspace*)(refcon);
 
     switch (type) {
       case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED:
@@ -130,9 +130,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 - (void) dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-  [userClient_userspace release];
 
-  [super dealloc];
 }
 
 - (void) refresh_connection_with_retry
@@ -269,7 +267,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
 - (NSArray*) device_information:(NSInteger)type
 {
-  NSMutableArray* information = [[NSMutableArray new] autorelease];
+  NSMutableArray* information = [NSMutableArray new];
 
   for (size_t i = 0;; ++i) {
     struct BridgeDeviceInformation deviceInformation;

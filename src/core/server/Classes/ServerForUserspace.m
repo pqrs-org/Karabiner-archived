@@ -20,12 +20,6 @@
   return self;
 }
 
-- (void) dealloc
-{
-  [connection_ release];
-
-  [super dealloc];
-}
 
 // ----------------------------------------------------------------------
 - (BOOL) register
