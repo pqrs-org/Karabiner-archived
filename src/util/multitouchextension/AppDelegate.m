@@ -229,7 +229,7 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
     // unset callback (even if isset is YES.)
     if (mtdevices_) {
       for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
-        MTDeviceRef device = [mtdevices_ objectAtIndex:i];
+        MTDeviceRef device = mtdevices_[i];
         if (! device) continue;
 
         MTDeviceStop(device, 0);
@@ -245,7 +245,7 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
       mtdevices_ = (NSArray*)(MTDeviceCreateList());
       if (mtdevices_) {
         for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
-          MTDeviceRef device = [mtdevices_ objectAtIndex:i];
+          MTDeviceRef device = mtdevices_[i];
           if (! device) continue;
 
           MTRegisterContactFrameCallback(device, callback);
@@ -273,7 +273,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_async(dispatch_get_main_queue(), ^{
     // Relaunch when devices are plugged/unplugged.
     NSLog(@"observer_IONotification");
-    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
     [NSApp terminate:nil];
   });
 }
@@ -365,7 +365,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
         [NSThread sleepForTimeInterval:wait];
       }
 
-      [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+      [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
       [NSApp terminate:self];
     }
 
