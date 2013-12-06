@@ -30,8 +30,8 @@
 
 - (id) tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex
 {
-  NSDictionary* dict = [devices_ objectAtIndex:rowIndex];
-  return [dict objectForKey:[aTableColumn identifier]];
+  NSDictionary* dict = devices_[rowIndex];
+  return dict[[aTableColumn identifier]];
 }
 
 - (IBAction) refresh:(id)sender
@@ -39,14 +39,14 @@
   @synchronized(self) {
     [devices_ removeAllObjects];
 
-    for (NSArray* a in @[@[@"Keyboard", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD]],
-                         @[@"Consumer", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER]],
-                         @[@"Pointing", [NSNumber numberWithInt:BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING]]]) {
-      NSInteger type = [[a objectAtIndex:1] integerValue];
+    for (NSArray* a in @[@[@"Keyboard", @(BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD)],
+                         @[@"Consumer", @(BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER)],
+                         @[@"Pointing", @(BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING)]]) {
+      NSInteger type = [a[1] integerValue];
       @try {
         for (NSDictionary* d in [[client_ proxy] device_information : type]) {
           NSMutableDictionary* newdict = [NSMutableDictionary dictionaryWithDictionary:d];
-          [newdict setObject:[a objectAtIndex:0] forKey:@"deviceType"];
+          newdict[@"deviceType"] = a[0];
           [devices_ addObject:newdict];
         }
       } @catch (NSException* exception) {
@@ -65,17 +65,17 @@
 
   for (NSDictionary* dict in devices_) {
     [string appendFormat:@"%@\n    %@ (%@)\n    Vendor ID:%@\n    Product ID:%@\n    Location ID:%@\n\n",
-     [dict objectForKey:@"deviceType"],
-     [dict objectForKey:@"product"],
-     [dict objectForKey:@"manufacturer"],
-     [dict objectForKey:@"vendorID"],
-     [dict objectForKey:@"productID"],
-     [dict objectForKey:@"locationID"]];
+     dict[@"deviceType"],
+     dict[@"product"],
+     dict[@"manufacturer"],
+     dict[@"vendorID"],
+     dict[@"productID"],
+     dict[@"locationID"]];
   }
 
   if ([string length] > 0) {
     [pboard clearContents];
-    [pboard writeObjects:[NSArray arrayWithObject:string]];
+    [pboard writeObjects:@[string]];
   }
 }
 

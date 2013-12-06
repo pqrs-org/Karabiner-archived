@@ -14,7 +14,7 @@
   [string appendFormat:@"Input Mode ID: %@\n", inputmodeid_];
 
   [pboard clearContents];
-  [pboard writeObjects:[NSArray arrayWithObject:string]];
+  [pboard writeObjects:@[string]];
 }
 
 - (void) setLanguageCode:(NSString*)value

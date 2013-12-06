@@ -35,8 +35,8 @@ enum {
 {
   id identifier = [aTableColumn identifier];
 
-  NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - rowIndex)];
-  return [dict objectForKey:identifier];
+  NSDictionary* dict = queue_[([queue_ count] - 1 - rowIndex)];
+  return dict[identifier];
 }
 
 - (void) refresh
@@ -47,12 +47,11 @@ enum {
 
 - (void) push:(NSString*)eventType code:(NSString*)code name:(NSString*)name flags:(NSString*)flags misc:(NSString*)misc;
 {
-  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:eventType, @"eventType",
-                        code, @"code",
-                        name, @"name",
-                        flags, @"flags",
-                        misc, @"misc",
-                        nil];
+  NSDictionary* dict = @{ @"eventType": eventType,
+                          @"code": code,
+                          @"name": name,
+                          @"flags": flags,
+                          @"misc": misc };
 
   [queue_ insertObject:dict atIndex:0];
   if ([queue_ count] > MAXNUM) {
@@ -73,13 +72,13 @@ enum {
   NSMutableString* string = [[NSMutableString new] autorelease];
 
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
-    NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - i)];
+    NSDictionary* dict = queue_[([queue_ count] - 1 - i)];
 
-    NSString* eventType = [NSString stringWithFormat:@"eventType:%@", [dict objectForKey:@"eventType"]];
-    NSString* code      = [NSString stringWithFormat:@"code:%@",      [dict objectForKey:@"code"]];
-    NSString* name      = [NSString stringWithFormat:@"name:%@",      [dict objectForKey:@"name"]];
-    NSString* flags     = [NSString stringWithFormat:@"flags:%@",     [dict objectForKey:@"flags"]];
-    NSString* misc      = [NSString stringWithFormat:@"misc:%@",      [dict objectForKey:@"misc"]];
+    NSString* eventType = [NSString stringWithFormat:@"eventType:%@", dict[@"eventType"]];
+    NSString* code      = [NSString stringWithFormat:@"code:%@",      dict[@"code"]];
+    NSString* name      = [NSString stringWithFormat:@"name:%@",      dict[@"name"]];
+    NSString* flags     = [NSString stringWithFormat:@"flags:%@",     dict[@"flags"]];
+    NSString* misc      = [NSString stringWithFormat:@"misc:%@",      dict[@"misc"]];
 
     [string appendFormat:@"%@ %@ %@ %@ %@\n",
      [eventType stringByPaddingToLength:25 withString:@" " startingAtIndex:0],
@@ -91,7 +90,7 @@ enum {
 
   if ([string length] > 0) {
     [pboard clearContents];
-    [pboard writeObjects:[NSArray arrayWithObject:string]];
+    [pboard writeObjects:@[string]];
   }
 }
 
