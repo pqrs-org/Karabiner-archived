@@ -100,11 +100,11 @@
   for (NSDictionary* dict in list) {
     if (! dict) continue;
 
-    NSString* title = [dict objectForKey:@"name"];
+    NSString* title = dict[@"name"];
     NSMenuItem* newItem = [[[NSMenuItem alloc] initWithTitle:title action:@selector(statusBarItemSelected:) keyEquivalent:@""] autorelease];
 
     [newItem setTarget:self];
-    [newItem setRepresentedObject:[NSNumber numberWithInt:i]];
+    [newItem setRepresentedObject:@(i)];
 
     if (selectedIndex == i) {
       [newItem setState:NSOnState];

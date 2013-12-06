@@ -62,7 +62,7 @@
 /* ---------------------------------------------------------------------- */
 - (void) drawVersion
 {
-  NSString* version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+  NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   [versionText_ setStringValue:version];
 }
 
@@ -85,14 +85,14 @@
 
   if (checkbox) {
     for (NSDictionary* dict in checkbox) {
-      NSString* identifier = [dict objectForKey:@"identifier"];
+      NSString* identifier = dict[@"identifier"];
       if (identifier) {
-        if ([[changed objectForKey:identifier] intValue] != 0) {
+        if ([changed[identifier] intValue] != 0) {
           ++count;
         }
       }
 
-      count += [self enabled_count:[dict objectForKey:@"children"] changed:changed];
+      count += [self enabled_count:dict[@"children"] changed:changed];
     }
   }
 

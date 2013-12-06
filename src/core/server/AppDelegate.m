@@ -68,13 +68,13 @@
       [inputSourceInformation_ release];
       inputSourceInformation_ = [NSMutableDictionary new];
       if ([inputSource languagecode]) {
-        [inputSourceInformation_ setObject:[inputSource languagecode] forKey:@"languageCode"];
+        inputSourceInformation_[@"languageCode"] = [inputSource languagecode];
       }
       if ([inputSource inputSourceID]) {
-        [inputSourceInformation_ setObject:[inputSource inputSourceID] forKey:@"inputSourceID"];
+        inputSourceInformation_[@"inputSourceID"] = [inputSource inputSourceID];
       }
       if ([inputSource inputModeID]) {
-        [inputSourceInformation_ setObject:[inputSource inputModeID] forKey:@"inputModeID"];
+        inputSourceInformation_[@"inputModeID"] = [inputSource inputModeID];
       }
     }
 
@@ -260,7 +260,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
-  NSInteger isDescendantProcess = [[[[NSProcessInfo processInfo] environment] objectForKey:kDescendantProcess] integerValue];
+  NSInteger isDescendantProcess = [[[NSProcessInfo processInfo] environment][kDescendantProcess] integerValue];
   setenv([kDescendantProcess UTF8String], "1", 1);
 
   // ------------------------------------------------------------
@@ -280,7 +280,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
     // Remove old pkg files and finish_installation.app in
     // "~/Library/Application Support/KeyRemap4MacBook/.Sparkle".
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString* sparkle = [paths objectAtIndex:0];
+    NSString* sparkle = paths[0];
     if (sparkle) {
       sparkle = [sparkle stringByAppendingPathComponent:@"KeyRemap4MacBook"];
       sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
