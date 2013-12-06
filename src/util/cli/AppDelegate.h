@@ -3,10 +3,10 @@
 #import "KeyRemap4MacBookClient.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-  NSWindow* window;
+  NSWindow* __weak window;
   IBOutlet KeyRemap4MacBookClient* client_;
 }
 
-@property (assign) IBOutlet NSWindow* window;
+@property (weak) IBOutlet NSWindow* window;
 
 @end
