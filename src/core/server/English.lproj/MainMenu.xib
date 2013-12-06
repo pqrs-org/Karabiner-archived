@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1060" defaultVersion="1060" identifier="macosx"/>
+        <deployment version="1060" defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
@@ -441,7 +441,7 @@ Use the first two settings below.</string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="Edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1410" id="1404">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" title="OtherViews" id="1405">
                                                                 <items>
                                                                     <menuItem title="Normal (Default)" id="1406">
@@ -473,12 +473,12 @@ Use the first two settings below.</string>
                                                     <popUpButton verticalHuggingPriority="750" id="1227" userLabel="Theme">
                                                         <rect key="frame" x="83" y="113" width="290" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="White (Default)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1228">
+                                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1228">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" title="OtherViews" id="1229">
                                                                 <items>
-                                                                    <menuItem title="White (Default)" state="on" id="1230"/>
+                                                                    <menuItem title="White (Default)" id="1230"/>
                                                                     <menuItem title="Black" id="1231"/>
                                                                     <menuItem isSeparatorItem="YES" id="1429"/>
                                                                     <menuItem title="Blue" id="1419"/>
@@ -557,7 +557,7 @@ Use the first two settings below.</string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="Huge" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1309" id="1304">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" title="OtherViews" id="1305">
                                                                 <items>
                                                                     <menuItem title="Small (Default)" id="1306"/>
@@ -598,7 +598,7 @@ Use the first two settings below.</string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <popUpButtonCell key="cell" type="push" title="Bottom right (Default)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1246" id="1236">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" title="OtherViews" id="1237">
                                                                 <items>
                                                                     <menuItem title="Top left" id="1243"/>
@@ -793,12 +793,12 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                     <popUpButton verticalHuggingPriority="750" id="646">
                                                         <rect key="frame" x="214" y="47" width="286" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <popUpButtonCell key="cell" type="push" title="Nothing" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="647">
+                                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="647">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
+                                                            <font key="font" metaFont="menu"/>
                                                             <menu key="menu" title="OtherViews" id="648">
                                                                 <items>
-                                                                    <menuItem title="Nothing" state="on" id="649"/>
+                                                                    <menuItem title="Nothing" id="649"/>
                                                                     <menuItem title="The stable release only (default)" id="650"/>
                                                                     <menuItem title="Beta &amp; stable releases" id="651"/>
                                                                 </items>
@@ -1053,7 +1053,6 @@ Label</string>
                 <outlet property="statusWindow_" destination="606" id="607"/>
                 <outlet property="statusbar_" destination="552" id="561"/>
                 <outlet property="updater_" destination="588" id="614"/>
-                <outlet property="window" destination="371" id="532"/>
                 <outlet property="workSpaceData_" destination="596" id="598"/>
                 <outlet property="xmlCompiler_" destination="591" id="599"/>
             </connections>

@@ -14,7 +14,6 @@
 @class XMLCompiler;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-  NSWindow* __weak window;
   NSDictionary* applicationInformation_;
   NSMutableDictionary* inputSourceInformation_;
 
@@ -35,7 +34,6 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-@property (weak) IBOutlet NSWindow* window;
 @property (weak) ClientForKernelspace* clientForKernelspace;
 
 - (NSDictionary*) getApplicationInformation;

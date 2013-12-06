@@ -271,26 +271,26 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */,
-				3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */,
-				348F120015EA8ADA008A2BDA /* devicelocationdef.xml */,
-				343B2458153DCC7C0023BA6E /* include */,
-				34D590261531983100160DFC /* number.xml */,
+				343BB0C913E055B10037A81F /* app.icns */,
+				34A83BCE144B1EAA00AE5687 /* appdef.xml */,
 				34A611921531707E0003894B /* checkbox.xml */,
-				343A17D81529A5B400F2E968 /* symbol_map.xml */,
-				34F37D53149A2E7800D4694B /* inputsourcedef.xml */,
-				34FEAE4C148695AE0042D507 /* replacementdef.xml */,
+				348F120015EA8ADA008A2BDA /* devicelocationdef.xml */,
 				3451A54F14532D400030EAD7 /* deviceproductdef.xml */,
 				3451A55014532D400030EAD7 /* devicevendordef.xml */,
-				34A83BCE144B1EAA00AE5687 /* appdef.xml */,
-				347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */,
-				343BB0C913E055B10037A81F /* app.icns */,
-				345248A21298F8A2005447DE /* private.xml */,
 				34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */,
 				34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */,
+				343B2458153DCC7C0023BA6E /* include */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				34F37D53149A2E7800D4694B /* inputsourcedef.xml */,
+				347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				34D590261531983100160DFC /* number.xml */,
+				345248A21298F8A2005447DE /* private.xml */,
+				34FEAE4C148695AE0042D507 /* replacementdef.xml */,
+				343A17D81529A5B400F2E968 /* symbol_map.xml */,
+				34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */,
+				3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
