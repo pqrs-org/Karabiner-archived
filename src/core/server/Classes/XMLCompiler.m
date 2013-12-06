@@ -62,7 +62,7 @@
     }
     {
       int name_line_count = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(child);
-      dict[@"height"] = [NSNumber numberWithUnsignedInteger:name_line_count];
+      dict[@"height"] = @(name_line_count);
     }
     {
       const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
@@ -100,7 +100,7 @@
 
   NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
   dict[@"name"] = message;
-  dict[@"height"] = [NSNumber numberWithInteger:height];
+  dict[@"height"] = @(height);
   dict[@"string_for_filter"] = [message lowercaseString];
 
   [XMLCompiler setStringAttributes:dict style:@"caution"];
@@ -134,7 +134,7 @@
     }
     {
       int name_line_count = pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(child);
-      dict[@"height"] = [NSNumber numberWithUnsignedInteger:name_line_count];
+      dict[@"height"] = @(name_line_count);
     }
     {
       const char* identifier = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(child);
@@ -144,11 +144,11 @@
     }
     {
       int default_value = pqrs_xml_compiler_get_preferences_number_node_tree_default_value(child);
-      dict[@"default"] = [NSNumber numberWithUnsignedInteger:default_value];
+      dict[@"default"] = @(default_value);
     }
     {
       int step = pqrs_xml_compiler_get_preferences_number_node_tree_step(child);
-      dict[@"step"] = [NSNumber numberWithUnsignedInteger:step];
+      dict[@"step"] = @(step);
     }
     {
       const char* base_unit = pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(child);
