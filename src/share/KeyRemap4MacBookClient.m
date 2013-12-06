@@ -7,11 +7,10 @@
 {
   @synchronized(self) {
     if (! proxy_) {
-      [proxy_ release];
-      proxy_ = [[NSConnection rootProxyForConnectionWithRegisteredName:kKeyRemap4MacBookConnectionName host:nil] retain];
+      proxy_ = [NSConnection rootProxyForConnectionWithRegisteredName:kKeyRemap4MacBookConnectionName host:nil];
       [proxy_ setProtocolForProxy:@protocol(KeyRemap4MacBookProtocol)];
     }
-    return [[proxy_ retain] autorelease];
+    return proxy_;
   }
 }
 
@@ -20,7 +19,6 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       NSLog(@"observer_NSConnectionDidDieNotification is called");
-      [proxy_ release];
       proxy_ = nil;
     };
   });
@@ -44,10 +42,6 @@
 {
   // Call removeObserver first because observer may refresh connection.
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-  [proxy_ release];
-
-  [super dealloc];
 }
 
 @end

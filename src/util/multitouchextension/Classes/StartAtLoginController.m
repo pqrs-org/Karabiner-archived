@@ -15,22 +15,27 @@
   NSURL* appURL = [StartAtLoginController appURL];
 
   UInt32 seed = 0U;
-  NSArray* currentLoginItems = [NSMakeCollectable(LSSharedFileListCopySnapshot(loginItems, &seed))autorelease];
+  CFArrayRef currentLoginItemsRef = LSSharedFileListCopySnapshot(loginItems, &seed);
+  NSArray* currentLoginItems = CFBridgingRelease(currentLoginItemsRef);
   for (id itemObject in currentLoginItems) {
-    LSSharedFileListItemRef item = (LSSharedFileListItemRef)itemObject;
+    LSSharedFileListItemRef item = (__bridge LSSharedFileListItemRef)itemObject;
 
     UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
-    CFURLRef url = NULL;
-    OSStatus err = LSSharedFileListItemResolve(item, resolutionFlags, &url, NULL);
+    CFURLRef urlRef = NULL;
+    OSStatus err = LSSharedFileListItemResolve(item, resolutionFlags, &urlRef, NULL);
     if (err == noErr) {
-      BOOL foundIt = CFEqual(url, appURL);
-      CFRelease(url);
+      NSURL* url = CFBridgingRelease(urlRef);
+      BOOL foundIt = [url isEqual:appURL];
 
       if (foundIt) {
         retval = item;
         break;
       }
     }
+  }
+
+  if (retval) {
+    CFRetain(retval);
   }
 
   return retval;
@@ -42,7 +47,7 @@
   if (! loginItems) return;
 
   NSURL* appURL = [StartAtLoginController appURL];
-  LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, (CFURLRef)(appURL), NULL, NULL);
+  LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)(appURL), NULL, NULL);
   if (item) {
     CFRelease(item);
   }

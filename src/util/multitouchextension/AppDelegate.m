@@ -27,13 +27,6 @@ static NSTimer* global_timer_[MAX_FINGERS];
   return self;
 }
 
-- (void) dealloc
-{
-  [mtdevices_ release];
-  [lastFingerStatus_ release];
-
-  [super dealloc];
-}
 
 // ------------------------------------------------------------
 typedef struct {
@@ -73,51 +66,51 @@ void MTUnregisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
 void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
+AppDelegate* global_self_ = nil;
 IgnoredAreaView* global_ignoredAreaView_ = nil;
 KeyRemap4MacBookClient* global_client_ = nil;
 
+- (void) setValueFromTimer:(NSTimer*)timer
+{
+  NSDictionary* dict = [timer userInfo];
+  [[global_client_ proxy] setValue:[dict[@"value"] intValue] forName:dict[@"name"]];
+}
+
 static void setPreference(int fingers, int newvalue) {
   @synchronized(global_client_) {
-    NSAutoreleasePool* pool = [NSAutoreleasePool new];
-    {
-      NSString* name = [PreferencesController getSettingName:fingers];
-      if ([name length] > 0) {
-        @try {
-          id client = [global_client_ proxy];
+    NSString* name = [PreferencesController getSettingName:fingers];
+    if ([name length] > 0) {
+      @try {
+        id client = [global_client_ proxy];
 
-          if (global_timer_[fingers - 1]) {
-            [global_timer_[fingers - 1] invalidate];
-            [global_timer_[fingers - 1] release];
-            global_timer_[fingers - 1] = nil;
-          }
-
-          NSInteger delay = 0;
-          if (newvalue == 0) {
-            delay = [[NSUserDefaults standardUserDefaults] integerForKey:kDelayBeforeTurnOff];
-          } else {
-            delay = [[NSUserDefaults standardUserDefaults] integerForKey:kDelayBeforeTurnOn];
-          }
-
-          if (delay == 0) {
-            [client setValue:newvalue forName:name];
-          } else {
-            SEL selector = @selector(setValue:forName:);
-            NSMethodSignature* signature = [client methodSignatureForSelector:selector];
-            NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:signature];
-            [invocation setSelector:selector];
-            [invocation setTarget:client];
-            [invocation setArgument:&newvalue atIndex:2];
-            [invocation setArgument:&name atIndex:3];
-            global_timer_[fingers - 1] = [[NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
-                                                                       invocation:invocation
-                                                                          repeats:NO] retain];
-          }
-        } @catch (NSException* exception) {
-          NSLog(@"%@", exception);
+        if (global_timer_[fingers - 1]) {
+          [global_timer_[fingers - 1] invalidate];
+          global_timer_[fingers - 1] = nil;
         }
+
+        NSInteger delay = 0;
+        if (newvalue == 0) {
+          delay = [[NSUserDefaults standardUserDefaults] integerForKey:kDelayBeforeTurnOff];
+        } else {
+          delay = [[NSUserDefaults standardUserDefaults] integerForKey:kDelayBeforeTurnOn];
+        }
+
+        if (delay == 0) {
+          [client setValue:newvalue forName:name];
+        } else {
+          global_timer_[fingers - 1] = [NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
+                                                                        target:global_self_
+                                                                      selector:@selector(setValueFromTimer:)
+                                                                      userInfo:@{
+                                          @"name": name,
+                                          @"value": @(newvalue),
+                                        }
+                                                                       repeats:NO];
+        }
+      } @catch (NSException* exception) {
+        NSLog(@"%@", exception);
       }
     }
-    [pool drain];
   }
 }
 
@@ -188,9 +181,7 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
       [global_ignoredAreaView_ addFinger:point ignored:ignored];
     }
 
-    FingerStatus* l = lastFingerStatus_;
     lastFingerStatus_ = fingerStatus;
-    [l release];
 
     // ----------------------------------------
     // deactivating settings first.
@@ -229,23 +220,22 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
     // unset callback (even if isset is YES.)
     if (mtdevices_) {
       for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
-        MTDeviceRef device = mtdevices_[i];
+        MTDeviceRef device = (__bridge MTDeviceRef)(mtdevices_[i]);
         if (! device) continue;
 
         MTDeviceStop(device, 0);
         MTUnregisterContactFrameCallback(device, callback);
       }
-      [mtdevices_ release];
       mtdevices_ = nil;
     }
 
     // ------------------------------------------------------------
     // set callback if needed
     if (isset) {
-      mtdevices_ = (NSArray*)(MTDeviceCreateList());
+      mtdevices_ = (NSArray*)CFBridgingRelease(MTDeviceCreateList());
       if (mtdevices_) {
         for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
-          MTDeviceRef device = mtdevices_[i];
+          MTDeviceRef device = (__bridge MTDeviceRef)(mtdevices_[i]);
           if (! device) continue;
 
           MTRegisterContactFrameCallback(device, callback);
@@ -307,38 +297,49 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       return;
     }
 
-    // ------------------------------------------------------------
-    NSMutableDictionary* match = [(NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice"))autorelease];
+    {
+      // ------------------------------------------------------------
+      NSMutableDictionary* match = (__bridge NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice"));
 
-    // ----------------------------------------------------------------------
-    io_iterator_t it;
-    kern_return_t kr;
+      // ----------------------------------------------------------------------
+      io_iterator_t it;
+      kern_return_t kr;
 
-    [match retain]; // for kIOTerminatedNotification
-    kr = IOServiceAddMatchingNotification(notifyport_,
-                                          kIOTerminatedNotification,
-                                          (CFMutableDictionaryRef)(match),
-                                          &observer_IONotification,
-                                          self,
-                                          &it);
-    if (kr != kIOReturnSuccess) {
-      NSLog(@"[ERROR] IOServiceAddMatchingNotification");
-      return;
+      // for kIOTerminatedNotification
+      kr = IOServiceAddMatchingNotification(notifyport_,
+                                            kIOTerminatedNotification,
+                                            (__bridge CFMutableDictionaryRef)(match),
+                                            &observer_IONotification,
+                                            (__bridge void*)(self),
+                                            &it);
+      if (kr != kIOReturnSuccess) {
+        NSLog(@"[ERROR] IOServiceAddMatchingNotification");
+        return;
+      }
+      [self release_iterator:it];
     }
-    [self release_iterator:it];
 
-    [match retain]; // for kIOMatchedNotification
-    kr = IOServiceAddMatchingNotification(notifyport_,
-                                          kIOMatchedNotification,
-                                          (CFMutableDictionaryRef)(match),
-                                          &observer_IONotification,
-                                          self,
-                                          &it);
-    if (kr != kIOReturnSuccess) {
-      NSLog(@"[ERROR] IOServiceAddMatchingNotification");
-      return;
+    {
+      // ------------------------------------------------------------
+      NSMutableDictionary* match = (__bridge NSMutableDictionary*)(IOServiceMatching("AppleMultitouchDevice"));
+
+      // ----------------------------------------------------------------------
+      io_iterator_t it;
+      kern_return_t kr;
+
+      // for kIOMatchedNotification
+      kr = IOServiceAddMatchingNotification(notifyport_,
+                                            kIOMatchedNotification,
+                                            (__bridge CFMutableDictionaryRef)(match),
+                                            &observer_IONotification,
+                                            (__bridge void*)(self),
+                                            &it);
+      if (kr != kIOReturnSuccess) {
+        NSLog(@"[ERROR] IOServiceAddMatchingNotification");
+        return;
+      }
+      [self release_iterator:it];
     }
-    [self release_iterator:it];
 
     // ----------------------------------------------------------------------
     loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
@@ -424,6 +425,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
   }
 
+  global_self_ = self;
   global_ignoredAreaView_ = ignoredAreaView_;
   global_client_ = client_;
 
