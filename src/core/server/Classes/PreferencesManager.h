@@ -5,10 +5,8 @@
 @class ClientForKernelspace;
 @class XMLCompiler;
 
-@interface PreferencesManager : NSObject {
-  NSMutableDictionary* default_;
-  NSArray* essential_configuration_identifiers_;
-
+@interface PreferencesManager : NSObject
+{
   IBOutlet ClientForKernelspace* clientForKernelspace_;
   IBOutlet XMLCompiler* xmlCompiler_;
 }

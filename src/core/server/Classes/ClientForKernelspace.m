@@ -134,7 +134,6 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 - (void) dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-
 }
 
 - (void) refresh_connection_with_retry

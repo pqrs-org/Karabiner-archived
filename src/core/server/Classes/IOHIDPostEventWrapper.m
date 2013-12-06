@@ -2,6 +2,12 @@
 #import <IOKit/hidsystem/ev_keymap.h>
 #import "IOHIDPostEventWrapper.h"
 
+@interface IOHIDPostEventWrapper ()
+{
+  mach_port_t eventDriver_;
+}
+@end
+
 @implementation IOHIDPostEventWrapper
 
 - (id) init

@@ -2,9 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface IOHIDPostEventWrapper : NSObject {
-  mach_port_t eventDriver_;
-}
+@interface IOHIDPostEventWrapper : NSObject
 
 - (void) postKey:(uint8_t)keyCode;
 
