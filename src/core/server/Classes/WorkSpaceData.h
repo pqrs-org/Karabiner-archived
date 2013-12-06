@@ -4,7 +4,8 @@
 #import "InputSource.h"
 #import "XMLCompiler.h"
 
-@interface WorkSpaceData : NSObject {
+@interface WorkSpaceData : NSObject
+{
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 

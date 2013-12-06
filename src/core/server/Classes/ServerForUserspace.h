@@ -9,9 +9,8 @@
 @class Updater;
 @class XMLCompiler;
 
-@interface ServerForUserspace : NSObject<KeyRemap4MacBookProtocol> {
-  NSConnection* connection_;
-
+@interface ServerForUserspace : NSObject<KeyRemap4MacBookProtocol>
+{
   IBOutlet AppDelegate* appDelegate_;
   IBOutlet ClientForKernelspace* clientForKernelspace_;
   IBOutlet PreferencesManager* preferencesManager_;

@@ -4,12 +4,8 @@
 
 @class StatusMessageView_normal;
 
-@interface StatusWindow : NSObject {
-  BOOL statusWindowPreferencesOpened_;
-  NSMutableArray* windows_;
-  NSMutableArray* lines_;
-  NSMutableArray* lastMessages_;
-
+@interface StatusWindow : NSObject
+{
   IBOutlet NSWindow* statusMessage_normal_;
   IBOutlet NSWindow* statusMessage_nano_;
   IBOutlet NSWindow* statusMessage_edge_;

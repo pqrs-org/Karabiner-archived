@@ -5,8 +5,6 @@
 @class PreferencesManager;
 
 @interface StatusBar : NSObject {
-  NSStatusItem* statusItem_;
-
   IBOutlet NSMenu* menu_;
   IBOutlet PreferencesManager* preferencesManager_;
 }

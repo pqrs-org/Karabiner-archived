@@ -5,6 +5,12 @@
 #import "PreferencesManager.h"
 #import "StatusBar.h"
 
+@interface StatusBar ()
+{
+  NSStatusItem* statusItem_;
+}
+@end
+
 @implementation StatusBar
 
 - (void) observer_ConfigListChanged:(NSNotification*)notification

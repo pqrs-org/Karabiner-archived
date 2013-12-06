@@ -4,6 +4,15 @@
 #import "StatusWindow.h"
 #include "bridge.h"
 
+@interface StatusWindow ()
+{
+  BOOL statusWindowPreferencesOpened_;
+  NSMutableArray* windows_;
+  NSMutableArray* lines_;
+  NSMutableArray* lastMessages_;
+}
+@end
+
 @implementation StatusWindow
 
 // ------------------------------------------------------------

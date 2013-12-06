@@ -7,6 +7,12 @@
 #import "UserClient_userspace.h"
 #import "XMLCompiler.h"
 
+@interface ServerForUserspace ()
+{
+  NSConnection* connection_;
+}
+@end
+
 @implementation ServerForUserspace
 
 - (id) init
