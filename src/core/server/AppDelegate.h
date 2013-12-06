@@ -14,15 +14,6 @@
 @class XMLCompiler;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-  NSDictionary* applicationInformation_;
-  NSMutableDictionary* inputSourceInformation_;
-
-  // for IONotification
-  IONotificationPortRef notifyport_;
-  CFRunLoopSourceRef loopsource_;
-
-  struct BridgeWorkSpaceData bridgeworkspacedata_;
-
   IBOutlet ClientForKernelspace* __weak clientForKernelspace;
   IBOutlet PreferencesController* preferencesController_;
   IBOutlet PreferencesManager* preferencesManager_;
