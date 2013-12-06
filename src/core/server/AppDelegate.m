@@ -16,7 +16,6 @@
 
 @implementation AppDelegate
 
-@synthesize window;
 @synthesize clientForKernelspace;
 
 // ----------------------------------------
