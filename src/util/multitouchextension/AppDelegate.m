@@ -101,10 +101,8 @@ static void setPreference(int fingers, int newvalue) {
           global_timer_[fingers - 1] = [NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
                                                                         target:global_self_
                                                                       selector:@selector(setValueFromTimer:)
-                                                                      userInfo:@{
-                                          @"name": name,
-                                          @"value": @(newvalue),
-                                        }
+                                                                      userInfo:@{ @"name": name,
+                                                                                  @"value": @(newvalue), }
                                                                        repeats:NO];
         }
       } @catch (NSException* exception) {
