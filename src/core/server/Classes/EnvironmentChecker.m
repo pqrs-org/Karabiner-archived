@@ -2,7 +2,7 @@
 
 @implementation EnvironmentChecker
 
-NSMutableDictionary* cache_;
+static NSMutableDictionary* cache_;
 
 + (void) initialize
 {

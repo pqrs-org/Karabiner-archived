@@ -1,12 +1,11 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import <Cocoa/Cocoa.h>
-#import "Sparkle/SUUpdater.h"
-#import "PreferencesManager.h"
 
-@interface Updater : NSObject {
-  SUUpdater* suupdater_;
+@class PreferencesManager;
 
+@interface Updater : NSObject
+{
   IBOutlet PreferencesManager* preferencesManager_;
 }
 

@@ -1,4 +1,12 @@
+#import "PreferencesManager.h"
+#import "Sparkle/SUUpdater.h"
 #import "Updater.h"
+
+@interface Updater ()
+{
+  SUUpdater* suupdater_;
+}
+@end
 
 @implementation Updater
 
