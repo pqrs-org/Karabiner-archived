@@ -46,12 +46,12 @@
 
   } else {
     @try {
-      NSString* command = [arguments objectAtIndex:1];
+      NSString* command = arguments[1];
 
       /*  */ if ([command isEqualToString:@"list"]) {
         NSArray* a = [[client_ proxy] configlist_getConfigList];
         for (NSDictionary* dict in a) {
-          [self output:[dict objectForKey:@"name"]];
+          [self output:dict[@"name"]];
           [self output:@"\n"];
         }
 
@@ -62,7 +62,7 @@
         NSDictionary* dict = [[client_ proxy] changed];
         if (dict) {
           for (NSString* key in [dict allKeys]) {
-            [self output:[NSString stringWithFormat:@"%@=%@\n", key, [dict objectForKey:key]]];
+            [self output:[NSString stringWithFormat:@"%@=%@\n", key, dict[key]]];
           }
         }
 
@@ -73,11 +73,11 @@
         NSDictionary* dict = [[client_ proxy] changed];
         if (dict) {
           [self output:@"#!/bin/sh\n\n"];
-          [self output:[NSString stringWithFormat:@"cli=%@\n\n", [arguments objectAtIndex:0]]];
+          [self output:[NSString stringWithFormat:@"cli=%@\n\n", arguments[0]]];
 
           for (NSString* key in [dict allKeys]) {
             if (! [key hasPrefix:@"notsave."]) {
-              [self output:[NSString stringWithFormat:@"$cli set %@ %@\n", key, [dict objectForKey:key]]];
+              [self output:[NSString stringWithFormat:@"$cli set %@ %@\n", key, dict[key]]];
               [self output:@"/bin/echo -n .\n"];
             }
           }
@@ -88,29 +88,29 @@
         if ([arguments count] != 3) {
           [self usage];
         }
-        NSString* value = [arguments objectAtIndex:2];
+        NSString* value = arguments[2];
         [[client_ proxy] configlist_select:[value intValue]];
 
       } else if ([command isEqualToString:@"set"]) {
         if ([arguments count] != 4) {
           [self usage];
         }
-        NSString* identifier = [arguments objectAtIndex:2];
-        NSString* value = [arguments objectAtIndex:3];
+        NSString* identifier = arguments[2];
+        NSString* value = arguments[3];
         [[client_ proxy] setValue:[value intValue] forName:identifier];
 
       } else if ([command isEqualToString:@"enable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
-        NSString* value = [arguments objectAtIndex:2];
+        NSString* value = arguments[2];
         [[client_ proxy] setValue:1 forName:value];
 
       } else if ([command isEqualToString:@"disable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
-        NSString* value = [arguments objectAtIndex:2];
+        NSString* value = arguments[2];
         [[client_ proxy] setValue:0 forName:value];
       }
     } @catch (NSException* exception) {
