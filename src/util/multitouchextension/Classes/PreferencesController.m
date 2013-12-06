@@ -41,12 +41,6 @@
   return self;
 }
 
-- (void) dealloc
-{
-  [oldSettings_ release];
-
-  [super dealloc];
-}
 
 - (void) load
 {
