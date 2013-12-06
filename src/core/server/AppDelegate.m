@@ -14,6 +14,19 @@
 #import "WorkSpaceData.h"
 #include <stdlib.h>
 
+@interface AppDelegate ()
+{
+  NSDictionary* applicationInformation_;
+  NSMutableDictionary* inputSourceInformation_;
+
+  // for IONotification
+  IONotificationPortRef notifyport_;
+  CFRunLoopSourceRef loopsource_;
+
+  struct BridgeWorkSpaceData bridgeworkspacedata_;
+}
+@end
+
 @implementation AppDelegate
 
 @synthesize clientForKernelspace;
