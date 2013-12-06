@@ -224,7 +224,6 @@
 - (void) dealloc
 {
   pqrs_xml_compiler_terminate(&pqrs_xml_compiler_);
-
 }
 
 - (void) reload {

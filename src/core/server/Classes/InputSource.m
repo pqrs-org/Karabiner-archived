@@ -1,10 +1,16 @@
 #import "InputSource.h"
 
+@interface InputSource ()
+{
+  TISInputSourceRef inputSource_;
+}
+@end
+
 @implementation InputSource
 
-@synthesize languagecode;
-@synthesize inputSourceID;
-@synthesize inputModeID;
+@synthesize languagecode = languagecode_;
+@synthesize inputSourceID = inputSourceID_;
+@synthesize inputModeID = inputModeID_;
 
 + (NSString*) getLanguageCode:(TISInputSourceRef)source
 {
@@ -28,11 +34,9 @@
       inputSource_ = ref;
       CFRetain(inputSource_);
 
-      languagecode = [InputSource getLanguageCode:inputSource_];
-
-      inputSourceID = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID));
-
-      inputModeID = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID));
+      languagecode_  = [InputSource getLanguageCode:inputSource_];
+      inputSourceID_ = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID));
+      inputModeID_   = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID));
     }
   }
 
@@ -41,11 +45,9 @@
 
 - (void) dealloc
 {
-
   if (inputSource_) {
     CFRelease(inputSource_);
   }
-
 }
 
 - (void) select

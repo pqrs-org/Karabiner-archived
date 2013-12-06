@@ -5,6 +5,13 @@
 #import "XMLCompiler.h"
 #include <sys/time.h>
 
+@interface PreferencesManager ()
+{
+  NSMutableDictionary* default_;
+  NSArray* essential_configuration_identifiers_;
+}
+@end
+
 @implementation PreferencesManager
 
 // ----------------------------------------

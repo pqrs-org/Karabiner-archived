@@ -390,8 +390,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 {
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-
 }
 
 // ------------------------------------------------------------

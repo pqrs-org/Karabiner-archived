@@ -3,13 +3,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
-@interface InputSource : NSObject {
-  NSString* languagecode;
-  NSString* inputSourceID;
-  NSString* inputModeID;
-
-  TISInputSourceRef inputSource_;
-}
+@interface InputSource : NSObject
 
 @property (copy, readonly) NSString* languagecode;
 @property (copy, readonly) NSString* inputSourceID;

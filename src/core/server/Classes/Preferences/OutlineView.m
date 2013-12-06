@@ -59,8 +59,6 @@
 - (void) dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-
 }
 
 - (void) load:(BOOL)force
