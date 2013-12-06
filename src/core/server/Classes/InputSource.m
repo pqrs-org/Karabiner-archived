@@ -12,7 +12,7 @@
   if ([languages count] > 0) {
     // U.S. InputSource has many languages (en, de, fr, ...),
     // so we check the first language only to detect real InputSource for French, German, etc.
-    NSString* lang = [languages objectAtIndex:0];
+    NSString* lang = languages[0];
     if (lang) return lang;
   }
 

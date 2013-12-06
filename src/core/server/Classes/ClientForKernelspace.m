@@ -55,7 +55,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
           if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
 
-          [[self statusWindow] setStatusMessage:option message:[NSString stringWithUTF8String:buf]];
+          [[self statusWindow] setStatusMessage:option message:@(buf)];
           break;
         }
 
@@ -284,13 +284,11 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
     if (! deviceInformation.isFound) break;
 
-    NSDictionary* newdict = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [NSString stringWithUTF8String:deviceInformation.manufacturer], @"manufacturer",
-                             [NSString stringWithUTF8String:deviceInformation.product], @"product",
-                             [NSString stringWithFormat:@"0x%04x", deviceInformation.vendorID], @"vendorID",
-                             [NSString stringWithFormat:@"0x%04x", deviceInformation.productID], @"productID",
-                             [NSString stringWithFormat:@"0x%04x", deviceInformation.locationID], @"locationID",
-                             nil];
+    NSDictionary* newdict = @{ @"manufacturer": @(deviceInformation.manufacturer),
+                               @"product": @(deviceInformation.product),
+                               @"vendorID": [NSString stringWithFormat:@"0x%04x", deviceInformation.vendorID],
+                               @"productID": [NSString stringWithFormat:@"0x%04x", deviceInformation.productID],
+                               @"locationID": [NSString stringWithFormat:@"0x%04x", deviceInformation.locationID] };
 
     // skip if newdict is already exists.
     BOOL found = NO;

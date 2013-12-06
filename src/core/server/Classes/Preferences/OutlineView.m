@@ -99,7 +99,7 @@
     a = datasource_;
 
   } else {
-    a = [item objectForKey:@"children"];
+    a = item[@"children"];
   }
 
   if (! a) return 0;
@@ -118,34 +118,34 @@
     a = datasource_;
 
   } else {
-    a = [item objectForKey:@"children"];
+    a = item[@"children"];
   }
 
   if (! a) return nil;
   if (idx >= [a count]) return nil;
-  return [a objectAtIndex:idx];
+  return a[idx];
 }
 
 - (BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item
 {
-  NSArray* a = [item objectForKey:@"children"];
+  NSArray* a = item[@"children"];
   return a ? YES : NO;
 }
 
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  NSString* identifier = [item objectForKey:@"identifier"];
+  NSString* identifier = item[@"identifier"];
 
   if (ischeckbox_) {
     NSButtonCell* cell = [tableColumn dataCell];
     if (! cell) return nil;
 
-    NSDictionary* attributes = [item objectForKey:@"stringAttributes"];
+    NSDictionary* attributes = item[@"stringAttributes"];
     if (attributes) {
-      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:[item objectForKey:@"name"]
+      [cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:item[@"name"]
                                                                 attributes:attributes] autorelease]];
     } else {
-      [cell setTitle:[item objectForKey:@"name"]];
+      [cell setTitle:item[@"name"]];
     }
 
     if (! identifier || [identifier hasPrefix:@"notsave."]) {
@@ -154,21 +154,21 @@
 
     } else {
       [cell setImagePosition:NSImageLeft];
-      return [NSNumber numberWithInt:[preferencesManager_ value:identifier]];
+      return @([preferencesManager_ value:identifier]);
     }
 
   } else {
     NSString* columnIdentifier = [tableColumn identifier];
 
     if ([columnIdentifier isEqualToString:@"name"]) {
-      return [item objectForKey:columnIdentifier];
+      return item[columnIdentifier];
 
     } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
                [columnIdentifier isEqualToString:@"default"]) {
       if (! identifier) {
         return nil;
       }
-      return [item objectForKey:columnIdentifier];
+      return item[columnIdentifier];
 
     } else if ([columnIdentifier isEqualToString:@"value"]) {
       NSTextFieldCell* cell = [tableColumn dataCell];
@@ -179,7 +179,7 @@
         return nil;
       } else {
         [cell setEditable:YES];
-        return [NSNumber numberWithInt:[preferencesManager_ value:identifier]];
+        return @([preferencesManager_ value:identifier]);
       }
 
     } else if ([columnIdentifier isEqualToString:@"stepper"]) {
@@ -198,11 +198,11 @@
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
-  NSNumber* number = [item objectForKey:@"height"];
+  NSNumber* number = item[@"height"];
   if (! number || [number intValue] == 0) {
-    number = [NSNumber numberWithDouble:[outlineView rowHeight]];
+    number = @([outlineView rowHeight]);
   } else {
-    number = [NSNumber numberWithDouble:([number intValue] * (CGFloat)([outlineView rowHeight]))];
+    number = @([number intValue] * (CGFloat)([outlineView rowHeight]));
   }
 
   return [number floatValue];
@@ -210,7 +210,7 @@
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
-  NSString* identifier = [item objectForKey:@"identifier"];
+  NSString* identifier = item[@"identifier"];
 
   if (identifier) {
     if (ischeckbox_) {
@@ -227,7 +227,7 @@
 
       } else if ([columnIdentifier isEqualToString:@"stepper"]) {
         int newvalue = [preferencesManager_ value:identifier];
-        NSNumber* step = [item objectForKey:@"step"];
+        NSNumber* step = item[@"step"];
         newvalue += ([object intValue]* [step intValue]);
 
         // confirm range
@@ -260,7 +260,7 @@
 {
   // ------------------------------------------------------------
   // check children
-  NSArray* children = [dictionary objectForKey:@"children"];
+  NSArray* children = dictionary[@"children"];
   if (children) {
     NSMutableArray* newchildren = [[NSMutableArray new] autorelease];
     for (NSDictionary* dict in children) {
@@ -272,7 +272,7 @@
 
     if ([newchildren count] > 0) {
       NSMutableDictionary* newdictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-      [newdictionary setObject:newchildren forKey:@"children"];
+      newdictionary[@"children"] = newchildren;
       return newdictionary;
     }
   }
@@ -280,7 +280,7 @@
   // ------------------------------------------------------------
   // filter by isEnabledOnly
   if (isEnabledOnly) {
-    NSString* identifier = [dictionary objectForKey:@"identifier"];
+    NSString* identifier = dictionary[@"identifier"];
     if (! identifier) {
       return nil;
     }
@@ -290,7 +290,7 @@
   }
 
   // check self name
-  NSString* string_for_filter = [dictionary objectForKey:@"string_for_filter"];
+  NSString* string_for_filter = dictionary[@"string_for_filter"];
   if (string_for_filter) {
     BOOL hit = YES;
     for (NSString* s in strings) {

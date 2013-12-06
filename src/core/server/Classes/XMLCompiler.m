@@ -12,27 +12,27 @@
 + (void) setStringAttributes:(NSMutableDictionary*)dict style:(NSString*)style
 {
   if ([style isEqualToString:@"caution"]) {
-    [dict setObject:@{
-       NSForegroundColorAttributeName : [NSColor blackColor],
-       NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f],
-     } forKey:@"stringAttributes"];
+    dict[@"stringAttributes"] = @{
+      NSForegroundColorAttributeName : [NSColor blackColor],
+      NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f],
+    };
 
   } else if ([style isEqualToString:@"important"]) {
-    [dict setObject:@{
-       NSForegroundColorAttributeName : [NSColor blackColor],
-       NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f],
-     } forKey:@"stringAttributes"];
+    dict[@"stringAttributes"] = @{
+      NSForegroundColorAttributeName : [NSColor blackColor],
+      NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f],
+    };
 
   } else if ([style isEqualToString:@"slignt"]) {
-    [dict setObject:@{
-       NSForegroundColorAttributeName : [NSColor grayColor],
-     } forKey:@"stringAttributes"];
+    dict[@"stringAttributes"] = @{
+      NSForegroundColorAttributeName : [NSColor grayColor],
+    };
   }
 
-  if ([[dict objectForKey:@"stringAttributes"] objectForKey:NSBackgroundColorAttributeName]) {
+  if (dict[@"stringAttributes"][NSBackgroundColorAttributeName]) {
     // append "\n" for background color.
-    [dict setObject:[NSString stringWithFormat:@"%@\n", [dict objectForKey:@"name"]] forKey:@"name"];
-    [dict setObject:[NSNumber numberWithUnsignedInteger:([[dict objectForKey:@"height"] unsignedIntValue] + 1)] forKey:@"height"];
+    dict[@"name"] = [NSString stringWithFormat:@"%@\n", dict[@"name"]];
+    dict[@"height"] = @([dict[@"height"] unsignedIntValue] + 1);
   }
 }
 
@@ -57,35 +57,35 @@
     {
       const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(child);
       if (name) {
-        [dict setObject:[NSString stringWithUTF8String:name] forKey:@"name"];
+        dict[@"name"] = @(name);
       }
     }
     {
       int name_line_count = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(child);
-      [dict setObject:[NSNumber numberWithUnsignedInteger:name_line_count] forKey:@"height"];
+      dict[@"height"] = [NSNumber numberWithUnsignedInteger:name_line_count];
     }
     {
       const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
       if (identifier) {
-        [dict setObject:[NSString stringWithUTF8String:identifier] forKey:@"identifier"];
+        dict[@"identifier"] = @(identifier);
       }
     }
     {
       const char* name_for_filter = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_for_filter(child);
       if (name_for_filter) {
-        [dict setObject:[NSString stringWithUTF8String:name_for_filter] forKey:@"string_for_filter"];
+        dict[@"string_for_filter"] = @(name_for_filter);
       }
     }
     {
       const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(child);
       if (style) {
-        [XMLCompiler setStringAttributes:dict style:[NSString stringWithUTF8String:style]];
+        [XMLCompiler setStringAttributes:dict style:@(style)];
       }
     }
 
     NSMutableArray* a = [self build_preferencepane_checkbox:child];
     if (a) {
-      [dict setObject:a forKey:@"children"];
+      dict[@"children"] = a;
     }
 
     [array addObject:dict];
@@ -99,9 +99,9 @@
   NSUInteger height = [[message componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] count];
 
   NSMutableDictionary* dict = [[NSMutableDictionary new] autorelease];
-  [dict setObject:message forKey:@"name"];
-  [dict setObject:[NSNumber numberWithInteger:height] forKey:@"height"];
-  [dict setObject:[message lowercaseString] forKey:@"string_for_filter"];
+  dict[@"name"] = message;
+  dict[@"height"] = [NSNumber numberWithInteger:height];
+  dict[@"string_for_filter"] = [message lowercaseString];
 
   [XMLCompiler setStringAttributes:dict style:@"caution"];
 
@@ -129,37 +129,37 @@
     {
       const char* name = pqrs_xml_compiler_get_preferences_number_node_tree_name(child);
       if (name) {
-        [dict setObject:[NSString stringWithUTF8String:name] forKey:@"name"];
+        dict[@"name"] = @(name);
       }
     }
     {
       int name_line_count = pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(child);
-      [dict setObject:[NSNumber numberWithUnsignedInteger:name_line_count] forKey:@"height"];
+      dict[@"height"] = [NSNumber numberWithUnsignedInteger:name_line_count];
     }
     {
       const char* identifier = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(child);
       if (identifier) {
-        [dict setObject:[NSString stringWithUTF8String:identifier] forKey:@"identifier"];
+        dict[@"identifier"] = @(identifier);
       }
     }
     {
       int default_value = pqrs_xml_compiler_get_preferences_number_node_tree_default_value(child);
-      [dict setObject:[NSNumber numberWithUnsignedInteger:default_value] forKey:@"default"];
+      dict[@"default"] = [NSNumber numberWithUnsignedInteger:default_value];
     }
     {
       int step = pqrs_xml_compiler_get_preferences_number_node_tree_step(child);
-      [dict setObject:[NSNumber numberWithUnsignedInteger:step] forKey:@"step"];
+      dict[@"step"] = [NSNumber numberWithUnsignedInteger:step];
     }
     {
       const char* base_unit = pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(child);
       if (base_unit) {
-        [dict setObject:[NSString stringWithUTF8String:base_unit] forKey:@"baseunit"];
+        dict[@"baseunit"] = @(base_unit);
       }
     }
 
     NSMutableArray* a = [self build_preferencepane_number:child];
     if (a) {
-      [dict setObject:a forKey:@"children"];
+      dict[@"children"] = a;
     }
 
     [array addObject:dict];
@@ -178,7 +178,7 @@
 {
   NSFileManager* filemanager = [NSFileManager defaultManager];
   NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-  NSString* path = [paths objectAtIndex:0];
+  NSString* path = paths[0];
   path = [path stringByAppendingPathComponent:@"KeyRemap4MacBook"];
   if (! [filemanager fileExistsAtPath:path]) {
     [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
@@ -194,10 +194,8 @@
     // copyItemAtPath does not change ctime and mtime of file.
     // (For example, mtime of destination file == mtime of source file.)
     // Therefore, we need to set mtime to current time.
-    NSDictionary* attr = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [NSDate date], NSFileCreationDate,
-                          [NSDate date], NSFileModificationDate,
-                          nil];
+    NSDictionary* attr = @{ NSFileCreationDate: [NSDate date],
+                            NSFileModificationDate: [NSDate date] };
     [filemanager setAttributes:attr ofItemAtPath:path error:NULL];
   }
 
@@ -319,7 +317,7 @@
     const char* p = pqrs_xml_compiler_get_identifier(pqrs_xml_compiler_, config_index);
     if (! p) return nil;
 
-    return [NSString stringWithUTF8String:p];
+    return @(p);
   }
 }
 
@@ -329,7 +327,7 @@
     const char* p = pqrs_xml_compiler_get_symbol_map_name(pqrs_xml_compiler_, [type UTF8String], value);
     if (! p) return nil;
 
-    return [NSString stringWithUTF8String:p];
+    return @(p);
   }
 }
 
@@ -383,7 +381,7 @@
     const char* p = pqrs_xml_compiler_get_url(pqrs_xml_compiler_, keycode);
     if (! p) return nil;
 
-    return [NSString stringWithUTF8String:p];
+    return @(p);
   }
 }
 
@@ -393,7 +391,7 @@
     const char* p = pqrs_xml_compiler_get_url_type(pqrs_xml_compiler_, keycode);
     if (! p) return nil;
 
-    return [NSString stringWithUTF8String:p];
+    return @(p);
   }
 }
 

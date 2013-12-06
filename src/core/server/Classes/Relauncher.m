@@ -15,7 +15,7 @@
 
 + (NSInteger) getRelaunchedCount
 {
-  return [[[[NSProcessInfo processInfo] environment] objectForKey:kRelaunchedCount] integerValue];
+  return [[[NSProcessInfo processInfo] environment][kRelaunchedCount] integerValue];
 }
 
 + (void) resetRelaunchedCount
@@ -26,7 +26,7 @@
 // ------------------------------------------------------------
 + (NSString*) currentProcessVersion
 {
-  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+  return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
 }
 
 + (void) setPreviousProcessVersion
@@ -38,7 +38,7 @@
 
 + (BOOL) isEqualPreviousProcessVersionAndCurrentProcessVersion
 {
-  NSString* previous = [[[NSProcessInfo processInfo] environment] objectForKey:kPreviousProcessVersion];
+  NSString* previous = [[NSProcessInfo processInfo] environment][kPreviousProcessVersion];
   if (! previous) return NO;
 
   NSString* current = [self currentProcessVersion];
@@ -56,7 +56,7 @@
     NSLog(@"Relaunching (count:%d)", (int)(count));
     [self setRelaunchedCount:(int)(count + 1)];
     [self setPreviousProcessVersion];
-    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:[NSArray array]];
+    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
   } else {
     NSLog(@"Give up relaunching.");
   }

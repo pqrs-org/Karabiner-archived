@@ -145,7 +145,7 @@
       }
     }
 
-    NSString* message = [lines_ objectAtIndex:idx];
+    NSString* message = lines_[idx];
     if ([message length] > 0) {
       NSString* name = nil;
       switch (idx) {
@@ -167,7 +167,7 @@
 
   // ------------------------------------------------------------
   // Extra Message
-  NSString* message = [lines_ objectAtIndex:BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
+  NSString* message = lines_[BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
 
   [statusMessage appendString:message];
 
@@ -193,7 +193,7 @@
 - (void) resetStatusMessage
 {
   for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
-    [lines_ replaceObjectAtIndex:i withObject:@""];
+    lines_[i] = @"";
   }
 
   [self refresh:self];
@@ -201,13 +201,13 @@
 
 - (void) setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message
 {
-  [lines_ replaceObjectAtIndex:lineIndex withObject:message];
+  lines_[lineIndex] = message;
   [self refresh:self];
 }
 
 - (NSWindow*) currentWindow {
   @try {
-    return [windows_ objectAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType]];
+    return windows_[[[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType]];
   } @catch (NSException* exception) {
     return nil;
   }

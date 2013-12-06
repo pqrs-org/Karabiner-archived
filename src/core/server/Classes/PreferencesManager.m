@@ -49,7 +49,7 @@
     NSXMLNode* attr_default = [e attributeForName:@"default"];
     if (! attr_default) continue;
 
-    [default_ setObject:[NSNumber numberWithInt:[[attr_default stringValue] intValue]] forKey:[e stringValue]];
+    default_[[e stringValue]] = @([[attr_default stringValue] intValue]);
   }
 
   for (NSXMLElement* e in [element elementsForName : @"list"]) {
@@ -116,7 +116,7 @@
   for (NSDictionary* dict in [self configlist_getConfigList]) {
     if (! dict) continue;
 
-    NSString* identifier = [dict objectForKey:@"identify"];
+    NSString* identifier = dict[@"identify"];
     if (! identifier) continue;
 
     NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
@@ -142,7 +142,7 @@
   if (identifier) {
     NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
     if (dict) {
-      NSNumber* number = [dict objectForKey:name];
+      NSNumber* number = dict[name];
       if (number) {
         return [number intValue];
       }
@@ -154,7 +154,7 @@
 
 - (int) defaultValue:(NSString*)name
 {
-  NSNumber* number = [default_ objectForKey:name];
+  NSNumber* number = default_[name];
   if (number) {
     return [number intValue];
   } else {
@@ -192,7 +192,7 @@
     }
 
     int defaultvalue = 0;
-    NSNumber* defaultnumber = [default_ objectForKey:name];
+    NSNumber* defaultnumber = default_[name];
     if (defaultnumber) {
       defaultvalue = [defaultnumber intValue];
     }
@@ -200,7 +200,7 @@
     if (newval == defaultvalue) {
       [md removeObjectForKey:name];
     } else {
-      [md setObject:[NSNumber numberWithInt:newval] forKey:name];
+      md[name] = @(newval);
     }
 
     [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
@@ -219,7 +219,7 @@
   struct BridgeSetConfigOne bridgeSetConfigOne;
 
   for (NSUInteger i = 0, count = [essential_configuration_identifiers_ count]; i < count; ++i) {
-    if ([[essential_configuration_identifiers_ objectAtIndex:i] isEqualToString:name]) {
+    if ([essential_configuration_identifiers_[i] isEqualToString:name]) {
       bridgeSetConfigOne.isEssentialConfig = 1;
       bridgeSetConfigOne.index = (uint32_t)(i);
       bridgeSetConfigOne.value = (int32_t)(value);
@@ -274,7 +274,7 @@
 
   if (essential_configuration_identifiers_) {
     for (NSString* identifier in essential_configuration_identifiers_) {
-      [a addObject:[NSNumber numberWithInt:[self value:identifier]]];
+      [a addObject:@([self value:identifier])];
     }
   }
 
@@ -324,21 +324,21 @@
 
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [list count]) return nil;
 
-  return [list objectAtIndex:rowIndex];
+  return list[rowIndex];
 }
 
 - (NSString*) configlist_name:(NSInteger)rowIndex
 {
   NSDictionary* dict = [self configlist_dictionary:rowIndex];
   if (! dict) return nil;
-  return [dict objectForKey:@"name"];
+  return dict[@"name"];
 }
 
 - (NSString*) configlist_identifier:(NSInteger)rowIndex
 {
   NSDictionary* dict = [self configlist_dictionary:rowIndex];
   if (! dict) return nil;
-  return [dict objectForKey:@"identify"];
+  return dict[@"identify"];
 }
 
 - (void) configlist_select:(NSInteger)newindex
@@ -366,16 +366,16 @@
   if (! a) return;
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
 
-  NSDictionary* d = [a objectAtIndex:rowIndex];
+  NSDictionary* d = a[rowIndex];
   if (! d) return;
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
   if (! md) return;
-  [md setObject:name forKey:@"name"];
+  md[@"name"] = name;
 
   NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
   if (! ma) return;
-  [ma replaceObjectAtIndex:rowIndex withObject:md];
+  ma[rowIndex] = md;
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
@@ -399,8 +399,8 @@
   NSString* identifier = [NSString stringWithFormat:@"config_%ld_%ld", (time_t)(tm.tv_sec), (time_t)(tm.tv_usec)];
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithCapacity:0];
-  [md setObject:@"NewItem" forKey:@"name"];
-  [md setObject:identifier forKey:@"identify"];
+  md[@"name"] = @"NewItem";
+  md[@"identify"] = identifier;
 
   [ma addObject:md];
 

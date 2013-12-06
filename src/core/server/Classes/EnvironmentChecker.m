@@ -13,7 +13,7 @@ NSMutableDictionary* cache_;
 {
   // If DoubleCommand was installed, return YES even if it removed.
   NSString* cachekey = @"DoubleCommand";
-  if ([cache_ objectForKey:cachekey]) {
+  if (cache_[cachekey]) {
     return YES;
   }
 
@@ -21,7 +21,7 @@ NSMutableDictionary* cache_;
     NSArray* paths = @[ @"/Library/StartupItems/DoubleCommand" ];
     for (NSString* path in paths) {
       if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        [cache_ setObject:[NSNumber numberWithBool:YES] forKey:cachekey];
+        cache_[cachekey] = @YES;
         return YES;
       }
     }
@@ -34,7 +34,7 @@ NSMutableDictionary* cache_;
 {
   // If SmoothMouse was installed, return YES even if it removed.
   NSString* cachekey = @"SmoothMouse";
-  if ([cache_ objectForKey:cachekey]) {
+  if (cache_[cachekey]) {
     return YES;
   }
 
@@ -43,7 +43,7 @@ NSMutableDictionary* cache_;
                         @"/Library/PreferencePanes/SmoothMouse.prefPane" ];
     for (NSString* path in paths) {
       if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        [cache_ setObject:[NSNumber numberWithBool:YES] forKey:cachekey];
+        cache_[cachekey] = @YES;
         return YES;
       }
     }
