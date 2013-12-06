@@ -16,7 +16,7 @@
 - (void) addToAppQueue
 {
   @try {
-    [appQueue_ push:[[[client_ proxy] application_information] objectForKey:@"name"]];
+    [appQueue_ push:[[client_ proxy] application_information][@"name"]];
   } @catch (NSException* exception) {
     NSLog(@"%@", exception);
   }
@@ -26,9 +26,9 @@
 {
   @try {
     NSDictionary* d = [[client_ proxy] inputsource_information];
-    [otherinformationstore_ setLanguageCode:[d objectForKey:@"languageCode"]];
-    [otherinformationstore_ setInputSourceID:[d objectForKey:@"inputSourceID"]];
-    [otherinformationstore_ setInputModeID:[d objectForKey:@"inputModeID"]];
+    [otherinformationstore_ setLanguageCode:d[@"languageCode"]];
+    [otherinformationstore_ setInputSourceID:d[@"inputSourceID"]];
+    [otherinformationstore_ setInputModeID:d[@"inputModeID"]];
   } @catch (NSException* exception) {
     NSLog(@"%@", exception);
   }

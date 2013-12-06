@@ -43,8 +43,8 @@ enum {
     return @"Please activate the other applications.";
   }
 
-  NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - rowIndex)];
-  return [dict objectForKey:identifier];
+  NSDictionary* dict = queue_[([queue_ count] - 1 - rowIndex)];
+  return dict[identifier];
 }
 
 - (void) refresh
@@ -55,10 +55,8 @@ enum {
 
 - (void) push:(NSString*)applicationBundleIdentifier
 {
-  NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                        applicationBundleIdentifier, @"applicationBundleIdentifier",
-                        [[NSDate date] description], @"date",
-                        nil];
+  NSDictionary* dict = @{ @"applicationBundleIdentifier": applicationBundleIdentifier,
+                          @"date": [[NSDate date] description] };
 
   [queue_ insertObject:dict atIndex:0];
   if ([queue_ count] > MAXNUM) {
@@ -79,14 +77,14 @@ enum {
   NSMutableString* string = [[NSMutableString new] autorelease];
 
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
-    NSDictionary* dict = [queue_ objectAtIndex:([queue_ count] - 1 - i)];
+    NSDictionary* dict = queue_[([queue_ count] - 1 - i)];
 
-    [string appendFormat:@"%@\n", [dict objectForKey:@"applicationBundleIdentifier"]];
+    [string appendFormat:@"%@\n", dict[@"applicationBundleIdentifier"]];
   }
 
   if ([string length] > 0) {
     [pboard clearContents];
-    [pboard writeObjects:[NSArray arrayWithObject:string]];
+    [pboard writeObjects:@[string]];
   }
 }
 
