@@ -1129,11 +1129,11 @@ Label</string>
         </customObject>
         <customObject id="600" customClass="ClientForKernelspace">
             <connections>
-                <outlet property="iohidPostEventWrapper" destination="1320" id="1321"/>
-                <outlet property="preferencesManager" destination="592" id="1392"/>
-                <outlet property="statusWindow" destination="606" id="609"/>
-                <outlet property="workSpaceData" destination="596" id="604"/>
-                <outlet property="xmlCompiler" destination="591" id="1322"/>
+                <outlet property="iohidPostEventWrapper_" destination="1320" id="uDb-nH-9ck"/>
+                <outlet property="preferencesManager_" destination="592" id="2bq-UB-2Ld"/>
+                <outlet property="statusWindow_" destination="606" id="Cyy-F3-fIz"/>
+                <outlet property="workSpaceData_" destination="596" id="aSv-UU-EmW"/>
+                <outlet property="xmlCompiler_" destination="591" id="81H-Ss-LEK"/>
             </connections>
         </customObject>
         <customObject id="1320" customClass="IOHIDPostEventWrapper"/>

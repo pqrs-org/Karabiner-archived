@@ -10,23 +10,14 @@
 @class WorkSpaceData;
 @class XMLCompiler;
 
-@interface ClientForKernelspace : NSObject {
-  io_async_ref64_t asyncref_;
-  UserClient_userspace* userClient_userspace;
-
-  IBOutlet IOHIDPostEventWrapper* __weak iohidPostEventWrapper;
-  IBOutlet PreferencesManager* __weak preferencesManager;
-  IBOutlet StatusWindow* __weak statusWindow;
-  IBOutlet WorkSpaceData* __weak workSpaceData;
-  IBOutlet XMLCompiler* __weak xmlCompiler;
+@interface ClientForKernelspace : NSObject
+{
+  IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper_;
+  IBOutlet PreferencesManager* preferencesManager_;
+  IBOutlet StatusWindow* statusWindow_;
+  IBOutlet WorkSpaceData* workSpaceData_;
+  IBOutlet XMLCompiler* xmlCompiler_;
 }
-
-@property (weak) IOHIDPostEventWrapper* iohidPostEventWrapper;
-@property (weak) PreferencesManager* preferencesManager;
-@property  UserClient_userspace* userClient_userspace;
-@property (weak) StatusWindow* statusWindow;
-@property (weak) WorkSpaceData* workSpaceData;
-@property (weak) XMLCompiler* xmlCompiler;
 
 - (void) refresh_connection_with_retry;
 - (void) disconnect_from_kext;

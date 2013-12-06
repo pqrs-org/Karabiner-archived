@@ -7,20 +7,18 @@
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
 
+@interface ClientForKernelspace ()
+{
+  io_async_ref64_t asyncref_;
+  UserClient_userspace* userClient_userspace_;
+}
+@end
+
 @implementation ClientForKernelspace
 
-@synthesize iohidPostEventWrapper;
-@synthesize preferencesManager;
-@synthesize userClient_userspace;
-@synthesize statusWindow;
-@synthesize workSpaceData;
-@synthesize xmlCompiler;
-
-static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
+- (void) callback_NotificationFromKext:(uint32_t)type option:(uint32_t)option
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    ClientForKernelspace* self = (__bridge ClientForKernelspace*)(refcon);
-
     switch (type) {
       case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED:
         {
@@ -32,13 +30,13 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
           bridgestruct.data   = (user_addr_t)(&enabled);
           bridgestruct.size   = sizeof(enabled);
 
-          if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
+          if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) return;
 
           uint32_t configindex = option;
-          NSString* name = [[self xmlCompiler] identifier:(int)(configindex)];
+          NSString* name = [xmlCompiler_ identifier:(int)(configindex)];
           if (name) {
             // Do not call set_config_one here. (== Call setValue with tellToKext:NO.)
-            [[self preferencesManager] setValue:enabled forName:name tellToKext:NO];
+            [preferencesManager_ setValue:enabled forName:name tellToKext:NO];
           }
           break;
         }
@@ -53,21 +51,21 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
           bridgestruct.data   = (user_addr_t)(buf);
           bridgestruct.size   = sizeof(buf);
 
-          if (! [[self userClient_userspace] synchronized_communication:&bridgestruct]) return;
+          if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) return;
 
-          [[self statusWindow] setStatusMessage:option message:@(buf)];
+          [statusWindow_ setStatusMessage:option message:@(buf)];
           break;
         }
 
       case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-        [[self workSpaceData] selectInputSource:option];
+        [workSpaceData_ selectInputSource:option];
         break;
 
       case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL:
         {
-          NSString* url = [[self xmlCompiler] url:option];
+          NSString* url = [xmlCompiler_ url:option];
           if (url) {
-            NSString* urlType = [[self xmlCompiler] urlType:option];
+            NSString* urlType = [xmlCompiler_ urlType:option];
 
             if ([urlType isEqualToString:@"shell"]) {
               [[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[@"-c", url]] waitUntilExit];
@@ -81,17 +79,23 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
         }
 
       case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
-        [[self iohidPostEventWrapper] postKey:option];
+        [iohidPostEventWrapper_ postKey:option];
         break;
     }
   });
+}
+
+static void static_callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
+{
+  ClientForKernelspace* self = (__bridge ClientForKernelspace*)(refcon);
+  [self callback_NotificationFromKext:type option:option];
 }
 
 - (void) observer_ConfigXMLReloaded:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self send_remapclasses_initialize_vector_to_kext];
-    [preferencesManager clearNotSave];
+    [preferencesManager_ clearNotSave];
     [self send_config_to_kext];
     [self set_initialized];
   });
@@ -100,7 +104,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 - (void) observer_ConfigListChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [preferencesManager clearNotSave];
+    [preferencesManager_ clearNotSave];
     [self send_config_to_kext];
     [self set_initialized];
   });
@@ -111,10 +115,10 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   self = [super init];
 
   if (self) {
-    asyncref_[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(callback_NotificationFromKext);
+    asyncref_[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(static_callback_NotificationFromKext);
     asyncref_[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
 
-    userClient_userspace = [[UserClient_userspace alloc] init:&asyncref_];
+    userClient_userspace_ = [[UserClient_userspace alloc] init:&asyncref_];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigXMLReloaded:)
@@ -136,19 +140,19 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 - (void) refresh_connection_with_retry
 {
   // Try one minute
-  [userClient_userspace refresh_connection_with_retry:120 wait:0.5];
+  [userClient_userspace_ refresh_connection_with_retry:120 wait:0.5];
   [self observer_ConfigXMLReloaded:nil];
 }
 
 - (void) disconnect_from_kext
 {
-  [userClient_userspace disconnect_from_kext];
+  [userClient_userspace_ disconnect_from_kext];
 }
 
 - (void) send_remapclasses_initialize_vector_to_kext
 {
-  const uint32_t* p = [xmlCompiler remapclasses_initialize_vector_data];
-  size_t size = [xmlCompiler remapclasses_initialize_vector_size] * sizeof(uint32_t);
+  const uint32_t* p = [xmlCompiler_ remapclasses_initialize_vector_data];
+  size_t size = [xmlCompiler_ remapclasses_initialize_vector_size] * sizeof(uint32_t);
 
   // --------------------
   struct BridgeUserClientStruct bridgestruct;
@@ -157,7 +161,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   bridgestruct.data   = (user_addr_t)(p);
   bridgestruct.size   = size;
 
-  [userClient_userspace synchronized_communication:&bridgestruct];
+  [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
 - (void) send_config_to_kext
@@ -170,7 +174,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     if ([EnvironmentChecker checkDoubleCommand]) {
       newvalue = 0;
     }
-    [preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
+    [preferencesManager_ setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
   }
   {
     // set automatically_enable_pointing_device
@@ -178,11 +182,11 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     if ([EnvironmentChecker checkSmoothMouse]) {
       newvalue = 0;
     }
-    [preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
+    [preferencesManager_ setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
   }
 
   // ------------------------------------------------------------
-  NSArray* essential_config = [preferencesManager essential_config];
+  NSArray* essential_config = [preferencesManager_ essential_config];
   if (! essential_config) {
     NSLog(@"[WARNING] essential_config == nil.");
     return;
@@ -190,7 +194,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
 
   // ------------------------------------------------------------
   NSUInteger essential_config_count = [essential_config count];
-  NSUInteger remapclasses_count     = [xmlCompiler remapclasses_initialize_vector_config_count];
+  NSUInteger remapclasses_count     = [xmlCompiler_ remapclasses_initialize_vector_config_count];
   size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
   int32_t* data = (int32_t*)(malloc(size));
   if (! data) {
@@ -209,12 +213,12 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     // --------------------
     // remapclasses config
     for (NSUInteger i = 0; i < remapclasses_count; ++i) {
-      NSString* name = [xmlCompiler identifier:(int)(i)];
+      NSString* name = [xmlCompiler_ identifier:(int)(i)];
       if (! name) {
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
       } else {
-        *p++ = [preferencesManager value:name];
+        *p++ = [preferencesManager_ value:name];
       }
     }
 
@@ -225,7 +229,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     bridgestruct.data   = (user_addr_t)(data);
     bridgestruct.size   = size;
 
-    [userClient_userspace synchronized_communication:&bridgestruct];
+    [userClient_userspace_ synchronized_communication:&bridgestruct];
 
     free(data);
   }
@@ -239,7 +243,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   bridgestruct.data   = (user_addr_t)(bridgeSetConfigOne);
   bridgestruct.size   = sizeof(*bridgeSetConfigOne);
 
-  [userClient_userspace synchronized_communication:&bridgestruct];
+  [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
 - (void) set_initialized
@@ -251,7 +255,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   bridgestruct.data   = &value;
   bridgestruct.size   = sizeof(value);
 
-  [userClient_userspace synchronized_communication:&bridgestruct];
+  [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
 - (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata
@@ -262,7 +266,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
   bridgestruct.data   = (user_addr_t)(bridgeworkspacedata);
   bridgestruct.size   = sizeof(*bridgeworkspacedata);
 
-  [userClient_userspace synchronized_communication:&bridgestruct];
+  [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
 - (NSArray*) device_information:(NSInteger)type
@@ -278,7 +282,7 @@ static void callback_NotificationFromKext(void* refcon, IOReturn result, uint32_
     bridgestruct.data   = (user_addr_t)(&deviceInformation);
     bridgestruct.size   = sizeof(deviceInformation);
 
-    if (! [userClient_userspace synchronized_communication:&bridgestruct]) break;
+    if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) break;
 
     if (! deviceInformation.isFound) break;
 
