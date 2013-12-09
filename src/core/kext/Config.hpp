@@ -32,11 +32,19 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static unsigned int get_repeat_initial_wait(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_initial_wait);
-      return getvalue(v, 200);
+      if (get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_unlimited_key_repeat_rate)) {
+        return getvalue(v, 1);
+      } else {
+        return getvalue(v, 200);
+      }
     }
     static unsigned int get_repeat_wait(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_wait);
-      return getvalue(v, 5);
+      if (get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_unlimited_key_repeat_rate)) {
+        return getvalue(v, 1);
+      } else {
+        return getvalue(v, 5);
+      }
     }
     static unsigned int get_repeat_consumer_initial_wait(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_initial_wait);
