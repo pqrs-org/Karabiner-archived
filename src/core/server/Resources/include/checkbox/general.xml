@@ -103,5 +103,12 @@
       <appendix>(Don't change Fn+JKL.. to NumPad, and other Fn+key combinations)</appendix>
       <identifier essential="true">general.disable_numpad_hack</identifier>
     </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Unlimited rapid key repeat rate</name>
+      <appendix>(KeyRemap4MacBook limits most rapid "Delay Until Repeat" to 200ms for safe.</appendix>
+      <appendix>This setting allows you unlimited "Delay Until Repeat".)</appendix>
+      <identifier essential="true">general.unlimited_key_repeat_rate</identifier>
+    </item>
   </item>
 </root>
