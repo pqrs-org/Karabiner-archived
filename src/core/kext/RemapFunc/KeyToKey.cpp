@@ -9,7 +9,12 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    KeyToKey::KeyToKey(void) : index_(0), keyboardRepeatID_(-1), isRepeatEnabled_(true)
+    KeyToKey::KeyToKey(void) :
+      index_(0),
+      keyboardRepeatID_(-1),
+      isRepeatEnabled_(true),
+      delayUntilRepeat_(-1),
+      keyRepeat_(-1)
     {
       currentVectorPointer_ = &toKeys_;
     }
@@ -72,6 +77,18 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else {
             IOLOG_ERROR("KeyToKey::add unknown option:%d\n", newval);
           }
+          break;
+        }
+
+        case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
+        {
+          delayUntilRepeat_ = newval;
+          break;
+        }
+
+        case BRIDGE_DATATYPE_KEYREPEAT:
+        {
+          keyRepeat_ = newval;
           break;
         }
 
@@ -178,7 +195,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (remapParams.params.ex_iskeydown && ! isRepeatEnabled_) {
             KeyboardRepeat::cancel();
           } else {
-            KeyboardRepeat::set(params);
+            KeyboardRepeat::set(params, getDelayUntilRepeat(), getKeyRepeat());
           }
           EventOutputQueue::FireKey::fire(params);
 
@@ -242,7 +259,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               KeyboardRepeat::cancel();
             } else {
               if (isRepeatEnabled_) {
-                keyboardRepeatID_ = KeyboardRepeat::primitive_start();
+                keyboardRepeatID_ = KeyboardRepeat::primitive_start(getDelayUntilRepeat(), getKeyRepeat());
               } else {
                 keyboardRepeatID_ = -1;
               }
@@ -335,6 +352,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyToKey::restoreInput(void)
     {
       FlagStatus::increase(fromKey_.key.getModifierFlag());
+    }
+
+    int
+    KeyToKey::getDelayUntilRepeat(void)
+    {
+      if (delayUntilRepeat_ >= 0) {
+        return delayUntilRepeat_;
+      } else {
+        return Config::get_repeat_initial_wait();
+      }
+    }
+
+    int
+    KeyToKey::getKeyRepeat(void)
+    {
+      if (keyRepeat_ >= 0) {
+        return keyRepeat_;
+      } else {
+        return Config::get_repeat_wait();
+      }
     }
   }
 }

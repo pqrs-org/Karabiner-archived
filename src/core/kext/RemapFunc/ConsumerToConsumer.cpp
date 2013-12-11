@@ -144,7 +144,8 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             if (isRepeatEnabled_) {
-              keyboardRepeatID_ = KeyboardRepeat::primitive_start();
+              keyboardRepeatID_ = KeyboardRepeat::primitive_start(Config::get_repeat_consumer_initial_wait(),
+                                                                  Config::get_repeat_consumer_wait());
             } else {
               keyboardRepeatID_ = -1;
             }

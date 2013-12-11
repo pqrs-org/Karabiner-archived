@@ -29,11 +29,13 @@ namespace org_pqrs_KeyRemap4MacBook {
                     Flags flags,
                     KeyCode key,
                     KeyboardType keyboardType,
-                    int wait);
+                    int delayUntilRepeat,
+                    int keyRepeat);
 
     static void set(const Params_KeyboardEventCallBack& p,
-                    int wait = Config::get_repeat_initial_wait()) {
-      set(p.eventType, p.flags, p.key, p.keyboardType, wait);
+                    int delayUntilRepeat = Config::get_repeat_initial_wait(),
+                    int keyRepeat = Config::get_repeat_wait()) {
+      set(p.eventType, p.flags, p.key, p.keyboardType, delayUntilRepeat, keyRepeat);
     }
 
     // for consumer
@@ -54,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                               Flags flags,
                               ConsumerKeyCode key);
 
-    static int primitive_start(int wait = Config::get_repeat_initial_wait());
+    static int primitive_start(int delayUntilRepeat, int keyRepeat);
 
   private:
     class Item : public List::Item {
@@ -90,6 +92,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static List* queue_;
     static TimerWrapper fire_timer_;
     static int id_;
+    static int keyRepeat_;
   };
 }
 

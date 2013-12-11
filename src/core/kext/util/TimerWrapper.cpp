@@ -97,6 +97,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       return kIOReturnSuccess;
     }
 
+    if (ms == 0) {
+      ms = 1;
+    }
+
     object_->setActive(true);
     IOReturn retval = timer_->setTimeoutMS(ms);
     if (retval != kIOReturnSuccess) {
