@@ -49,6 +49,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_FLAGS:
         case BRIDGE_DATATYPE_OPTION:
+        case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
+        case BRIDGE_DATATYPE_KEYREPEAT:
         {
           switch (index_) {
             case 0:
@@ -74,6 +76,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                   break;
                 }
                 case BRIDGE_DATATYPE_OPTION:
+                case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
+                case BRIDGE_DATATYPE_KEYREPEAT:
                 {
                   dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
                   dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
