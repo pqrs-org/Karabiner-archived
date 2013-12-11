@@ -173,6 +173,17 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
+        case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
+        case BRIDGE_DATATYPE_KEYREPEAT:
+        {
+          if (toType_ != TOTYPE_KEY) {
+            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
+          } else {
+            keytokey_.add(datatype, newval);
+          }
+          break;
+        }
+
         default:
           IOLOG_ERROR("SimultaneousKeyPresses::add invalid datatype:%d\n", datatype);
           break;

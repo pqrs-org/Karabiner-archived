@@ -79,6 +79,13 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
+        case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
+        case BRIDGE_DATATYPE_KEYREPEAT:
+        {
+          keytokey_.add(datatype, newval);
+          break;
+        }
+
         default:
           IOLOG_ERROR("ConsumerToKey::add invalid datatype:%d\n", datatype);
           break;
