@@ -326,6 +326,19 @@
       </item>
 
       <item>
+        <name>DelayUntilRepeat, KeyRepeat</name>
+        <appendix>1 to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <identifier>remap.samples_keytokey_delayuntilrepeat</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_1,
+          KeyCode::A,
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
+      </item>
+
+      <item>
         <name>BeforeKeyDown, AfterKeyUp</name>
         <appendix>1 to A (BeforeKeyDown Return, AfterKeyUp Tab)</appendix>
         <appendix>Shift_R to A (BeforeKeyDown Control+B,C AfterKeyUp Option+D,E)</appendix>
@@ -503,6 +516,18 @@
         <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
         <identifier>remap.samples_consumertokey_norepeat</identifier>
         <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>DelayUntilRepeat, KeyRepeat</name>
+        <appendix>Volume Down to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <identifier>remap.samples_consumertokey_delayuntilrepeat</identifier>
+        <autogen>
+          __ConsumerToKey__
+          ConsumerKeyCode::VOLUME_DOWN,
+          KeyCode::A,
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
       </item>
     </item>
 
@@ -728,6 +753,24 @@
         <identifier>remap.samples_holdingkeytokey_norepeat</identifier>
         <autogen>__HoldingKeyToKey__ KeyCode::ESCAPE, KeyCode::TAB, KeyCode::VK_NONE, KeyCode::SPACE, Option::NOREPEAT</autogen>
         <autogen>__HoldingKeyToKey__ KeyCode::TAB, KeyCode::VK_NONE, KeyCode::ESCAPE, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>DelayUntilRepeat, KeyRepeat</name>
+        <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
+        <appendix>(with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <identifier>remap.samples_holdingkeytokey_delayuntilrepeat</identifier>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::ESCAPE,
+          @begin
+          KeyCode::TAB,
+          @end
+          @begin
+          KeyCode::SPACE,
+          @end
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
       </item>
     </item>
 
@@ -1027,6 +1070,20 @@
         <identifier>remap.samples_simultaneouskeypresses_norepeat</identifier>
         <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::A, KeyCode::CURSOR_DOWN, Option::NOREPEAT</autogen>
         <autogen>__SimultaneousKeyPresses__ PointingButton::LEFT, PointingButton::RIGHT, KeyCode::RETURN, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>DelayUntilRepeat, KeyRepeat</name>
+        <appendix>A+J to Down (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <identifier>remap.samples_simultaneouskeypresses_delayuntilrepeat</identifier>
+        <autogen>
+          __SimultaneousKeyPresses__
+          @begin
+          KeyCode::J, KeyCode::A,
+          @end
+          KeyCode::CURSOR_DOWN,
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
       </item>
       <item>
         <name>Strict Key Order</name>
@@ -1361,6 +1418,18 @@
         <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
         <identifier>remap.samples_pointingbuttontokey_norepeat</identifier>
         <autogen>__PointingButtonToKey__ PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
+      </item>
+      <item>
+        <name>DelayUntilRepeat, KeyRepeat</name>
+        <appendix>RightClick to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <identifier>remap.samples_pointingbuttontokey_delayuntilrepeat</identifier>
+        <autogen>
+          __PointingButtonToKey__
+          PointingButton::RIGHT,
+          KeyCode::A,
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
       </item>
     </item>
 
