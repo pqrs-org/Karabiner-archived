@@ -109,6 +109,13 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
+        case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
+        case BRIDGE_DATATYPE_KEYREPEAT:
+        {
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+          break;
+        }
+
         default:
           IOLOG_ERROR("KeyOverlaidModifier::add invalid datatype:%d\n", datatype);
           break;
