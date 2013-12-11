@@ -34,6 +34,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       void retractInput(void);
       void restoreInput(void);
+      int getDelayUntilRepeat(void);
+      int getKeyRepeat(void);
 
       size_t index_;
       FromKeyChecker fromkeychecker_;
@@ -45,6 +47,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       Vector_PairKeyFlags* currentVectorPointer_;
       int keyboardRepeatID_;
       bool isRepeatEnabled_;
+
+      int delayUntilRepeat_;
+      int keyRepeat_;
     };
   }
 }

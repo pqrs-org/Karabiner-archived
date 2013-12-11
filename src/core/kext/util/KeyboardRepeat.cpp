@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   List* KeyboardRepeat::queue_ = NULL;
   TimerWrapper KeyboardRepeat::fire_timer_;
   int KeyboardRepeat::id_ = 0;
+  int KeyboardRepeat::keyRepeat_ = 0;
 
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
@@ -89,9 +90,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   int
-  KeyboardRepeat::primitive_start(int wait)
+  KeyboardRepeat::primitive_start(int delayUntilRepeat, int keyRepeat)
   {
-    fire_timer_.setTimeoutMS(wait);
+    keyRepeat_ = keyRepeat;
+    fire_timer_.setTimeoutMS(delayUntilRepeat);
 
     return succID();
   }
@@ -101,7 +103,8 @@ namespace org_pqrs_KeyRemap4MacBook {
                       Flags flags,
                       KeyCode key,
                       KeyboardType keyboardType,
-                      int wait)
+                      int delayUntilRepeat,
+                      int keyRepeat)
   {
     if (! queue_) return;
 
@@ -128,7 +131,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       cancel();
 
       primitive_add(eventType, flags, key, keyboardType, Item::TYPE_NORMAL);
-      primitive_start(wait);
+      primitive_start(delayUntilRepeat, keyRepeat);
 
       IOLOG_DEVEL("KeyboardRepeat::set key:%d flags:0x%x\n", key.get(), flags.get());
 
@@ -162,7 +165,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       cancel();
 
       primitive_add(eventType, flags, key);
-      primitive_start(Config::get_repeat_consumer_initial_wait());
+      primitive_start(Config::get_repeat_consumer_initial_wait(),
+                      Config::get_repeat_consumer_wait());
 
       IOLOG_DEVEL("KeyboardRepeat::set consumer key:%d flags:0x%x\n", key.get(), flags.get());
 
@@ -184,8 +188,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     IOLOG_DEVEL("KeyboardRepeat::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
 
     // ----------------------------------------
-    bool isconsumer = false;
-
     for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
       switch ((p->params).type) {
         case ParamsUnion::KEYBOARD:
@@ -230,7 +232,6 @@ namespace org_pqrs_KeyRemap4MacBook {
               EventOutputQueue::FireConsumer::fire(*ptr);
             }
           }
-          isconsumer = true;
           break;
         }
 
@@ -243,10 +244,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    if (isconsumer) {
-      fire_timer_.setTimeoutMS(Config::get_repeat_consumer_wait());
-    } else {
-      fire_timer_.setTimeoutMS(Config::get_repeat_wait());
-    }
+    fire_timer_.setTimeoutMS(keyRepeat_);
   }
 }
