@@ -1,6 +1,7 @@
 Since 9.2.0
 -----------
 
+* v9.2.6: Updated prepared settings.
 * v9.2.5: You can change the delay and speed of keyboard repeat per autogen. <br />
     For example, this autogen changes control-p to up arrow with:
     * delay until repeat: 100ms
@@ -15,7 +16,6 @@ Since 9.2.0
       KeyRepeat::RawValue::10,
     &lt;/autogen&gt;
     </pre>
-
 * Fixed issues:
     * v9.2.2: "Kernel extension is not loaded" alert might be shown when automagic login is enabled.
 
