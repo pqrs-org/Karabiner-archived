@@ -24,6 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
         case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
           // ----------------------------------------
@@ -40,15 +41,14 @@ namespace org_pqrs_KeyRemap4MacBook {
           // ----------------------------------------
           // From keys
           if (! isFromInfoFull_) {
-            FromInfo fi;
             switch (datatype) {
-              case BRIDGE_DATATYPE_KEYCODE:        fi.set(KeyCode(newval));        break;
-              case BRIDGE_DATATYPE_POINTINGBUTTON: fi.set(PointingButton(newval)); break;
+              case BRIDGE_DATATYPE_KEYCODE:         fromInfo_.push_back(FromInfo(KeyCode(newval)));         break;
+              case BRIDGE_DATATYPE_CONSUMERKEYCODE: fromInfo_.push_back(FromInfo(ConsumerKeyCode(newval))); break;
+              case BRIDGE_DATATYPE_POINTINGBUTTON:  fromInfo_.push_back(FromInfo(PointingButton(newval)));  break;
               default:
                 IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
                 return;
             }
-            fromInfo_.push_back(fi);
 
             if (isUseSeparator_ == false) {
               if (index_ == 2) {
@@ -191,56 +191,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    SimultaneousKeyPresses::FromInfo::isTarget(bool& isKeyDown, const EventInputQueue::Item& item) const
-    {
-      switch (type_) {
-        case FROMTYPE_KEY:
-        {
-          if (item.params.type != ParamsUnion::KEYBOARD) return false;
-
-          Params_KeyboardEventCallBack* params = item.params.params.params_KeyboardEventCallBack;
-          if (! params) return false;
-
-          if (params->key != key_) return false;
-
-          isKeyDown = params->ex_iskeydown;
-          return true;
-        }
-
-        case FROMTYPE_BUTTON:
-        {
-          if (item.params.type != ParamsUnion::RELATIVE_POINTER) return false;
-
-          Params_RelativePointerEventCallback* params = item.params.params.params_RelativePointerEventCallback;
-          if (! params) return false;
-
-          if (params->ex_button != button_) return false;
-
-          isKeyDown = params->ex_isbuttondown;
-          return true;
-        }
-      }
-
-      return false;
-    }
-
-    bool
-    SimultaneousKeyPresses::FromInfo::isTargetKeyDown(const EventInputQueue::Item& item) const
-    {
-      bool isKeyDown = false;
-      if (! isTarget(isKeyDown, item)) return false;
-      return isKeyDown;
-    }
-
-    bool
-    SimultaneousKeyPresses::FromInfo::isTargetKeyUp(const EventInputQueue::Item& item) const
-    {
-      bool isKeyDown = false;
-      if (! isTarget(isKeyDown, item)) return false;
-      return ! isKeyDown;
-    }
-
-    bool
     SimultaneousKeyPresses::remap(void)
     {
       if (! EventInputQueue::queue_) return false;
@@ -276,7 +226,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // fire KeyUp event if needed.
       for (size_t i = 0; i < fromInfo_.size(); ++i) {
         if (! fromInfo_[i].isActive()) continue;
-        if (! fromInfo_[i].isTargetKeyUp(*front)) continue;
+        if (! fromInfo_[i].fromEvent().isTargetUp(*front)) continue;
 
         // --------------------
         EventInputQueue::queue_->pop_front();
@@ -312,7 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [shift, a, s] will be changed to [shift, return].
       // It's not intended.
       for (size_t i = 0; i < fromInfo_.size(); ++i) {
-        if (fromInfo_[i].isTargetKeyDown(*front)) {
+        if (fromInfo_[i].fromEvent().isTargetDown(*front)) {
           goto scan;
         }
       }
@@ -344,10 +294,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         // we must not handle these keys as SimultaneousKeyPresses.
         //
         for (size_t i = 0; i < fromInfo_.size(); ++i) {
-          if (fromInfo_[i].isTargetKeyDown(*front)) {
+          if (fromInfo_[i].fromEvent().isTargetDown(*front)) {
             downKeys_[i].item = front;
             break;
-          } else if (fromInfo_[i].isTargetKeyUp(*front)) {
+          } else if (fromInfo_[i].fromEvent().isTargetUp(*front)) {
             return false;
           }
         }

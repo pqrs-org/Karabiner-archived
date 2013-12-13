@@ -1,11 +1,12 @@
 #ifndef SIMULTANEOUSKEYPRESSES_HPP
 #define SIMULTANEOUSKEYPRESSES_HPP
 
-#include "RemapFuncClasses.hpp"
 #include "EventInputQueue.hpp"
+#include "FromEvent.hpp"
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
 #include "KeyToPointingButton.hpp"
+#include "RemapFuncClasses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -34,27 +35,20 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       class FromInfo {
       public:
-        FromInfo(void) : type_(FROMTYPE_KEY), active_(false) {}
+        FromInfo(void)              : fromEvent_(),  active_(false) {}
+        FromInfo(KeyCode v)         : fromEvent_(v), active_(false) {}
+        FromInfo(ConsumerKeyCode v) : fromEvent_(v), active_(false) {}
+        FromInfo(PointingButton v)  : fromEvent_(v), active_(false) {}
 
-        enum FromType {
-          FROMTYPE_KEY,
-          FROMTYPE_BUTTON,
-        };
-        void set(KeyCode k)        { type_ = FROMTYPE_KEY;    key_ = k; }
-        void set(PointingButton b) { type_ = FROMTYPE_BUTTON; button_ = b; }
         void activate(void)        { active_ = true; }
         void deactivate(void)      { active_ = false; }
 
         bool isActive(void) const { return active_; }
-        bool isTargetKeyDown(const EventInputQueue::Item& item) const;
-        bool isTargetKeyUp(const EventInputQueue::Item& item) const;
+
+        const FromEvent& fromEvent(void) { return fromEvent_; }
 
       private:
-        bool isTarget(bool& isKeyDown, const EventInputQueue::Item& item) const;
-
-        FromType type_;
-        KeyCode key_;
-        PointingButton button_;
+        FromEvent fromEvent_;
         bool active_;
       };
       DECLARE_VECTOR(FromInfo);
