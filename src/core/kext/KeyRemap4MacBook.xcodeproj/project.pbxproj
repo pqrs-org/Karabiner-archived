@@ -97,6 +97,8 @@
 		34779380185B1FA800B3EF06 /* TimerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779353185B1FA800B3EF06 /* TimerWrapper.cpp */; };
 		34779381185B1FA800B3EF06 /* TimerWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779354185B1FA800B3EF06 /* TimerWrapper.hpp */; };
 		34779382185B1FA800B3EF06 /* Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779355185B1FA800B3EF06 /* Vector.hpp */; };
+		34779384185B236C00B3EF06 /* FromEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779383185B236C00B3EF06 /* FromEvent.hpp */; };
+		34779386185B271E00B3EF06 /* FromEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779385185B271E00B3EF06 /* FromEvent.cpp */; };
 		3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */; };
 		3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */; };
 		34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34794D51126F32E700655ADB /* SetKeyboardType.cpp */; };
@@ -257,6 +259,8 @@
 		34779353185B1FA800B3EF06 /* TimerWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerWrapper.cpp; path = Classes/TimerWrapper.cpp; sourceTree = "<group>"; };
 		34779354185B1FA800B3EF06 /* TimerWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = TimerWrapper.hpp; path = Classes/TimerWrapper.hpp; sourceTree = "<group>"; };
 		34779355185B1FA800B3EF06 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = Classes/Vector.hpp; sourceTree = "<group>"; };
+		34779383185B236C00B3EF06 /* FromEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FromEvent.hpp; path = Classes/FromEvent.hpp; sourceTree = "<group>"; };
+		34779385185B271E00B3EF06 /* FromEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FromEvent.cpp; path = Classes/FromEvent.cpp; sourceTree = "<group>"; };
 		3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapClass.cpp; sourceTree = "<group>"; };
 		3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapClass.hpp; sourceTree = "<group>"; };
 		34794D51126F32E700655ADB /* SetKeyboardType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetKeyboardType.cpp; path = RemapFunc/SetKeyboardType.cpp; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 				34779335185B1FA800B3EF06 /* EventWatcher.hpp */,
 				34779336185B1FA800B3EF06 /* FlagStatus.cpp */,
 				34779337185B1FA800B3EF06 /* FlagStatus.hpp */,
+				34779385185B271E00B3EF06 /* FromEvent.cpp */,
+				34779383185B236C00B3EF06 /* FromEvent.hpp */,
 				34779338185B1FA800B3EF06 /* FromKeyChecker.hpp */,
 				34779339185B1FA800B3EF06 /* GlobalLock.cpp */,
 				3477933A185B1FA800B3EF06 /* GlobalLock.hpp */,
@@ -585,6 +591,7 @@
 				34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */,
 				3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */,
 				3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */,
+				34779384185B236C00B3EF06 /* FromEvent.hpp in Headers */,
 				345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */,
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
 				345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */,
@@ -768,6 +775,7 @@
 				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
 				34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */,
 				3477936C185B1FA800B3EF06 /* KeyboardRepeat.cpp in Sources */,
+				34779386185B271E00B3EF06 /* FromEvent.cpp in Sources */,
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
 				34779366185B1FA800B3EF06 /* GlobalLock.cpp in Sources */,
 				344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */,
