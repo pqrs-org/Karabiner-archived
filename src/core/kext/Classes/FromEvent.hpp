@@ -1,6 +1,7 @@
 #ifndef FROMEVENT_HPP
 #define FROMEVENT_HPP
 
+#include "EventInputQueue.hpp"
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
