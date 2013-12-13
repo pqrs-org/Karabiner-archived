@@ -27,6 +27,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     bool isTarget(bool& isDown, const EventInputQueue::Item& item) const;
 
+    // Do not store Flags in FromEvent because SimultaneousKeyPresses uses multiple FromEvents.
+
     Type::Value type_;
     KeyCode key_;
     ConsumerKeyCode consumer_;
