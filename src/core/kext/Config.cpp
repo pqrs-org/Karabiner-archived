@@ -1,15 +1,15 @@
 #include <IOKit/IOLib.h>
 
+#include "CommonData.hpp"
 #include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
+#include "KeyboardRepeat.hpp"
+#include "ListHookedConsumer.hpp"
+#include "ListHookedKeyboard.hpp"
+#include "ListHookedPointing.hpp"
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
-#include "util/CommonData.hpp"
-#include "util/KeyboardRepeat.hpp"
-#include "util/ListHookedConsumer.hpp"
-#include "util/ListHookedKeyboard.hpp"
-#include "util/ListHookedPointing.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace {

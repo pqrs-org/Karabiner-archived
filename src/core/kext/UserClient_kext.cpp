@@ -4,14 +4,14 @@
 
 #include "CommonData.hpp"
 #include "Config.hpp"
+#include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
+#include "ListHookedConsumer.hpp"
+#include "ListHookedKeyboard.hpp"
+#include "ListHookedPointing.hpp"
 #include "RemapClass.hpp"
 #include "UserClient_kext.hpp"
 #include "strlcpy_utf8.hpp"
-#include "util/GlobalLock.hpp"
-#include "util/ListHookedConsumer.hpp"
-#include "util/ListHookedKeyboard.hpp"
-#include "util/ListHookedPointing.hpp"
 
 #define KEXT_NAMESPACE org_pqrs_KeyRemap4MacBook
 

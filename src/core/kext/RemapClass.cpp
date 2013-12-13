@@ -1,5 +1,7 @@
 #include <IOKit/IOLib.h>
 
+#include "CommonData.hpp"
+#include "EventInputQueue.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 #include "RemapClass.hpp"
@@ -7,8 +9,6 @@
 #include "VirtualKey/VK_DEFINED_IN_USERSPACE.hpp"
 #include "bridge.h"
 #include "strlcpy_utf8.hpp"
-#include "util/CommonData.hpp"
-#include "util/EventInputQueue.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::Item(const uint32_t* vec, size_t length)
