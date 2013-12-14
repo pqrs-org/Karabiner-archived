@@ -1,9 +1,10 @@
 #ifndef CALLBACKWRAPPER_HPP
 #define CALLBACKWRAPPER_HPP
 
-#include "auto_ptr.hpp"
 #include "CommonData.hpp"
+#include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
+#include "auto_ptr.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class Params_KeyboardEventCallBack {
@@ -35,7 +36,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    static void log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat);
+    static void log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat) {
+      IOLOG_DEBUG("KeyboardEventCallback [%7s]: eventType %2d, flags 0x%08x, key 0x%04x, kbdType %3d, repeat = %d\n",
+                  isCaught ? "caught" : "sending",
+                  eventType.get(), flags.get(), key.get(), keyboardType.get(), repeat);
+    }
 
     const EventType eventType;
     const Flags flags;
@@ -79,7 +84,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    static void log(bool isCaught, Flags flags);
+    static void log(bool isCaught, Flags flags) {
+      IOLOG_DEBUG("UpdateEventFlagsCallback [%7s]: flags 0x%08x\n",
+                  isCaught ? "caught" : "sending",
+                  flags.get());
+    }
+
     const Flags flags;
 
   private:
@@ -120,7 +130,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------
-    static void log(bool isCaught, EventType eventType, Flags flags, ConsumerKeyCode key, unsigned int flavor, UInt64 guid, bool repeat);
+    static void log(bool isCaught, EventType eventType, Flags flags, ConsumerKeyCode key, unsigned int flavor, UInt64 guid, bool repeat) {
+      IOLOG_DEBUG("KeyboardSpecialEventCallBack [%7s]: eventType %2d, flags 0x%08x, key 0x%04x, flavor %4d, guid %lld, repeat = %d\n",
+                  isCaught ? "caught" : "sending",
+                  eventType.get(), flags.get(), key.get(), flavor, guid, repeat);
+    }
 
     const EventType eventType;
     const Flags flags;
@@ -161,7 +175,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_button, p.ex_isbuttondown);
     }
 
-    static void log(bool isCaught, Buttons buttons, int dx, int dy);
+    static void log(bool isCaught, Buttons buttons, int dx, int dy) {
+      IOLOG_DEBUG_POINTING("RelativePointerEventCallBack [%7s]: buttons: 0x%08x, dx: %3d, dy: %3d\n",
+                           isCaught ? "caught" : "sending",
+                           buttons.get(), dx, dy);
+    }
 
     const Buttons buttons;
     const int dx;
@@ -224,7 +242,14 @@ namespace org_pqrs_KeyRemap4MacBook {
                     SInt32 pointDelta1,
                     SInt32 pointDelta2,
                     SInt32 pointDelta3,
-                    SInt32 options);
+                    SInt32 options) {
+      IOLOG_DEBUG_POINTING("ScrollWheelEventCallback [%7s]: deltaAxis(%d,%d,%d), fixedDelta(%d,%d,%d), pointDelta(%d,%d,%d), options: %d\n",
+                           isCaught ? "caught" : "sending",
+                           deltaAxis1, deltaAxis2, deltaAxis3,
+                           fixedDelta1, fixedDelta2, fixedDelta3,
+                           pointDelta1, pointDelta2, pointDelta3,
+                           options);
+    }
 
     const short deltaAxis1;
     const short deltaAxis2;
