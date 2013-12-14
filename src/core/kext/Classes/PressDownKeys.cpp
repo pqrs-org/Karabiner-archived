@@ -1,5 +1,3 @@
-#include <IOKit/IOLib.h>
-
 #include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"

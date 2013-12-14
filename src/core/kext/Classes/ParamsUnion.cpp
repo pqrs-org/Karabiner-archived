@@ -1,5 +1,3 @@
-#include <IOKit/IOLib.h>
-
 #include "IOLogWrapper.hpp"
 #include "ParamsUnion.hpp"
 

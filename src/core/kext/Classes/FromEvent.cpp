@@ -1,5 +1,3 @@
-#include <IOKit/IOLib.h>
-
 #include "FromEvent.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

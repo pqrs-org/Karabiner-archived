@@ -1,5 +1,3 @@
-#include <IOKit/IOLib.h>
-
 #include "CommonData.hpp"
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"

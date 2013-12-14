@@ -1,6 +1,8 @@
 #ifndef IOLOGWRAPPER_HPP
 #define IOLOGWRAPPER_HPP
 
+#include <IOKit/IOLib.h>
+
 #include "Config.hpp"
 
 #define IOLOG_DEBUG(...) {                                         \
