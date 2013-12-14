@@ -1,6 +1,8 @@
 #ifndef IOLOGWRAPPER_HPP
 #define IOLOGWRAPPER_HPP
 
+#include "Config.hpp"
+
 #define IOLOG_DEBUG(...) {                                         \
     if (! org_pqrs_KeyRemap4MacBook::IOLogWrapper::suppressed()) { \
       if (Config::get_debug()) {                                   \

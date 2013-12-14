@@ -55,7 +55,6 @@
 		34779356185B1FA800B3EF06 /* auto_ptr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779329185B1FA800B3EF06 /* auto_ptr.hpp */; };
 		34779357185B1FA800B3EF06 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477932A185B1FA800B3EF06 /* ButtonStatus.cpp */; };
 		34779358185B1FA800B3EF06 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477932B185B1FA800B3EF06 /* ButtonStatus.hpp */; };
-		34779359185B1FA800B3EF06 /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477932C185B1FA800B3EF06 /* CallBackWrapper.cpp */; };
 		3477935A185B1FA800B3EF06 /* CallBackWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477932D185B1FA800B3EF06 /* CallBackWrapper.hpp */; };
 		3477935B185B1FA800B3EF06 /* CommonData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477932E185B1FA800B3EF06 /* CommonData.cpp */; };
 		3477935C185B1FA800B3EF06 /* CommonData.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477932F185B1FA800B3EF06 /* CommonData.hpp */; };
@@ -217,7 +216,6 @@
 		34779329185B1FA800B3EF06 /* auto_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = auto_ptr.hpp; path = Classes/auto_ptr.hpp; sourceTree = "<group>"; };
 		3477932A185B1FA800B3EF06 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = Classes/ButtonStatus.cpp; sourceTree = "<group>"; };
 		3477932B185B1FA800B3EF06 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = Classes/ButtonStatus.hpp; sourceTree = "<group>"; };
-		3477932C185B1FA800B3EF06 /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CallBackWrapper.cpp; path = Classes/CallBackWrapper.cpp; sourceTree = "<group>"; };
 		3477932D185B1FA800B3EF06 /* CallBackWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CallBackWrapper.hpp; path = Classes/CallBackWrapper.hpp; sourceTree = "<group>"; };
 		3477932E185B1FA800B3EF06 /* CommonData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonData.cpp; path = Classes/CommonData.cpp; sourceTree = "<group>"; };
 		3477932F185B1FA800B3EF06 /* CommonData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CommonData.hpp; path = Classes/CommonData.hpp; sourceTree = "<group>"; };
@@ -464,7 +462,6 @@
 				34779329185B1FA800B3EF06 /* auto_ptr.hpp */,
 				3477932A185B1FA800B3EF06 /* ButtonStatus.cpp */,
 				3477932B185B1FA800B3EF06 /* ButtonStatus.hpp */,
-				3477932C185B1FA800B3EF06 /* CallBackWrapper.cpp */,
 				3477932D185B1FA800B3EF06 /* CallBackWrapper.hpp */,
 				3477932E185B1FA800B3EF06 /* CommonData.cpp */,
 				3477932F185B1FA800B3EF06 /* CommonData.hpp */,
@@ -762,7 +759,6 @@
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 				3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */,
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
-				34779359185B1FA800B3EF06 /* CallBackWrapper.cpp in Sources */,
 				34779368185B1FA800B3EF06 /* IntervalChecker.cpp in Sources */,
 				34779372185B1FA800B3EF06 /* ListHookedConsumer.cpp in Sources */,
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
