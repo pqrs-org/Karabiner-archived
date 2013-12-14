@@ -1,4 +1,4 @@
-CXXFLAGS = -I../../ -I/usr/local/include -Wall -Werror -O2
+CXXFLAGS = -I../../ -I/usr/local/include -Wall -Werror -O2 -std=c++11
 LDFLAGS = -F$(HOME)/Library/Frameworks -framework gtest \
 	-L$(HOME)/Library/Frameworks/gtest.Framework/Resources \
 	-stdlib=libc++ \
