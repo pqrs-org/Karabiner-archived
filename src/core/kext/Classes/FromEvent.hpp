@@ -25,6 +25,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isTargetDown(const EventInputQueue::Item& item) const;
     bool isTargetUp(const EventInputQueue::Item& item) const;
 
+    // Get ModifierFlag from KeyCode.
+    ModifierFlag getModifierFlag(void) const {
+      if (type_ != Type::KEY) return ModifierFlag::NONE;
+      return key_.getModifierFlag();
+    }
+
   private:
     bool isTarget(bool& isDown, const EventInputQueue::Item& item) const;
 
