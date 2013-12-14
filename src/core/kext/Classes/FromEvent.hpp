@@ -22,8 +22,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
     FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
-    bool isTargetDownEvent(const ParamsUnion& paramsUnion) const;
-    bool isTargetUpEvent(const ParamsUnion& paramsUnion) const;
+    bool isTargetDownEvent(const ParamsUnion& paramsUnion);
+    bool isTargetUpEvent(const ParamsUnion& paramsUnion);
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
