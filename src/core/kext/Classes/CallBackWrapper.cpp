@@ -4,12 +4,8 @@
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "FlagStatus.hpp"
-#include "FromKeyChecker.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
-#include "ListHookedConsumer.hpp"
-#include "ListHookedKeyboard.hpp"
-#include "ListHookedPointing.hpp"
 #include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

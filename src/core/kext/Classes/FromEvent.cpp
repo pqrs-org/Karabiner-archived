@@ -5,7 +5,7 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   bool
-  FromEvent::isTarget(bool& isDown, const EventInputQueue::Item& item) const
+  FromEvent::isTargetEvent(bool& isDown, const EventInputQueue::Item& item) const
   {
     switch (type_) {
       case Type::NONE:
@@ -57,18 +57,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  FromEvent::isTargetDown(const EventInputQueue::Item& item) const
+  FromEvent::isTargetDownEvent(const EventInputQueue::Item& item) const
   {
     bool isDown = false;
-    if (! isTarget(isDown, item)) return false;
+    if (! isTargetEvent(isDown, item)) return false;
     return isDown;
   }
 
   bool
-  FromEvent::isTargetUp(const EventInputQueue::Item& item) const
+  FromEvent::isTargetUpEvent(const EventInputQueue::Item& item) const
   {
     bool isDown = false;
-    if (! isTarget(isDown, item)) return false;
+    if (! isTargetEvent(isDown, item)) return false;
     return ! isDown;
   }
 }

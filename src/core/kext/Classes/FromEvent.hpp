@@ -17,13 +17,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
     };
 
-    FromEvent(void)              : type_(Type::NONE)                          {}
-    FromEvent(KeyCode v)         : type_(Type::KEY),             key_(v)      {}
-    FromEvent(ConsumerKeyCode v) : type_(Type::CONSUMER_KEY),    consumer_(v) {}
-    FromEvent(PointingButton v)  : type_(Type::POINTING_BUTTON), button_(v)   {}
+    FromEvent(void)              : isPressing_(false), type_(Type::NONE)                          {}
+    FromEvent(KeyCode v)         : isPressing_(false), type_(Type::KEY),             key_(v)      {}
+    FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
+    FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
-    bool isTargetDown(const EventInputQueue::Item& item) const;
-    bool isTargetUp(const EventInputQueue::Item& item) const;
+    bool isTargetDownEvent(const EventInputQueue::Item& item) const;
+    bool isTargetUpEvent(const EventInputQueue::Item& item) const;
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
@@ -32,7 +32,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   private:
-    bool isTarget(bool& isDown, const EventInputQueue::Item& item) const;
+    bool isTargetEvent(bool& isDown, const EventInputQueue::Item& item) const;
+
+    bool isPressing_;
 
     // Do not store Flags in FromEvent because SimultaneousKeyPresses uses multiple FromEvents.
 
