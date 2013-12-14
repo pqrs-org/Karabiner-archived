@@ -1,6 +1,8 @@
 #ifndef INTERVALCHECKER_HPP
 #define INTERVALCHECKER_HPP
 
+#include "Types.hpp"
+
 namespace org_pqrs_KeyRemap4MacBook {
   class IntervalChecker {
   public:

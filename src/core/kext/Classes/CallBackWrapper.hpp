@@ -4,6 +4,7 @@
 #include "CommonData.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
+#include "Types.hpp"
 #include "auto_ptr.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {

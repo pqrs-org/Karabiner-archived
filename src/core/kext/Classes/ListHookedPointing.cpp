@@ -3,7 +3,6 @@
 #include <IOKit/hidsystem/IOHIPointing.h>
 #undef protected
 #undef private
-#include <IOKit/IOLib.h>
 
 #include "CommonData.hpp"
 #include "Config.hpp"

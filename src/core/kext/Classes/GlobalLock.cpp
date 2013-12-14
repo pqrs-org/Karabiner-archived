@@ -1,5 +1,3 @@
-#include <IOKit/IOLib.h>
-
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
 

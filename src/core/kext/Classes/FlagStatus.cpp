@@ -1,6 +1,4 @@
 #ifndef FLAGSTATUS_TEST
-#include <IOKit/IOLib.h>
-
 #include "CommonData.hpp"
 #include "IOLogWrapper.hpp"
 #endif

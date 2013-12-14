@@ -3,7 +3,6 @@
 #include <IOKit/hidsystem/IOHIKeyboard.h>
 #undef protected
 #undef private
-#include <IOKit/IOLib.h>
 
 #include "CommonData.hpp"
 #include "Config.hpp"

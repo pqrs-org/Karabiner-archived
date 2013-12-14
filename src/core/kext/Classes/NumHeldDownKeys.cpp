@@ -1,5 +1,3 @@
-#include <IOKit/IOLib.h>
-
 #include "Config.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"

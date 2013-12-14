@@ -1,6 +1,3 @@
-#include <IOKit/IOLib.h>
-#include <sys/systm.h>
-
 #include "LastPressedPhysicalKey.hpp"
 #include "ParamsUnion.hpp"
 
