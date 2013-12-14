@@ -226,7 +226,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // fire KeyUp event if needed.
       for (size_t i = 0; i < fromInfo_.size(); ++i) {
         if (! fromInfo_[i].isActive()) continue;
-        if (! fromInfo_[i].fromEvent().isTargetUpEvent(*front)) continue;
+        if (! fromInfo_[i].fromEvent().isTargetUpEvent(front->params)) continue;
 
         // --------------------
         EventInputQueue::queue_->pop_front();
@@ -262,7 +262,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [shift, a, s] will be changed to [shift, return].
       // It's not intended.
       for (size_t i = 0; i < fromInfo_.size(); ++i) {
-        if (fromInfo_[i].fromEvent().isTargetDownEvent(*front)) {
+        if (fromInfo_[i].fromEvent().isTargetDownEvent(front->params)) {
           goto scan;
         }
       }
@@ -294,10 +294,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         // we must not handle these keys as SimultaneousKeyPresses.
         //
         for (size_t i = 0; i < fromInfo_.size(); ++i) {
-          if (fromInfo_[i].fromEvent().isTargetDownEvent(*front)) {
+          if (fromInfo_[i].fromEvent().isTargetDownEvent(front->params)) {
             downKeys_[i].item = front;
             break;
-          } else if (fromInfo_[i].fromEvent().isTargetUpEvent(*front)) {
+          } else if (fromInfo_[i].fromEvent().isTargetUpEvent(front->params)) {
             return false;
           }
         }

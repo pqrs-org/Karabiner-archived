@@ -1,7 +1,7 @@
 #ifndef FROMEVENT_HPP
 #define FROMEVENT_HPP
 
-#include "EventInputQueue.hpp"
+#include "ParamsUnion.hpp"
 #include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -22,8 +22,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
     FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
-    bool isTargetDownEvent(const EventInputQueue::Item& item) const;
-    bool isTargetUpEvent(const EventInputQueue::Item& item) const;
+    bool isTargetDownEvent(const ParamsUnion& paramsUnion) const;
+    bool isTargetUpEvent(const ParamsUnion& paramsUnion) const;
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
@@ -32,7 +32,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
   private:
-    bool isTargetEvent(bool& isDown, const EventInputQueue::Item& item) const;
+    bool isTargetEvent(bool& isDown, const ParamsUnion& paramsUnion) const;
 
     bool isPressing_;
 
