@@ -6,12 +6,12 @@
 namespace org_pqrs_KeyRemap4MacBook {
   class ParamsUnion {
   public:
-    ParamsUnion(const Params_KeyboardEventCallBack& p);
-    ParamsUnion(const Params_UpdateEventFlagsCallback& p);
-    ParamsUnion(const Params_KeyboardSpecialEventCallback& p);
-    ParamsUnion(const Params_RelativePointerEventCallback& p);
-    ParamsUnion(const Params_ScrollWheelEventCallback& p);
-    ParamsUnion(const Params_Wait& p);
+    explicit ParamsUnion(const Params_KeyboardEventCallBack& p);
+    explicit ParamsUnion(const Params_UpdateEventFlagsCallback& p);
+    explicit ParamsUnion(const Params_KeyboardSpecialEventCallback& p);
+    explicit ParamsUnion(const Params_RelativePointerEventCallback& p);
+    explicit ParamsUnion(const Params_ScrollWheelEventCallback& p);
+    explicit ParamsUnion(const Params_Wait& p);
     ~ParamsUnion(void);
 
     enum Type {
