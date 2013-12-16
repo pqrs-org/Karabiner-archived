@@ -1,9 +1,9 @@
 #ifndef KEYTOKEY_HPP
 #define KEYTOKEY_HPP
 
-#include "bridge.h"
+#include "FromEvent.hpp"
 #include "RemapFuncClasses.hpp"
-#include "FromKeyChecker.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -15,7 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
-      // [0] => fromKey_
+      // [0] => fromEvent_
       // [1] => toKeys_[0]
       // [2] => toKeys_[1]
       // [3] => ...
@@ -38,8 +38,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       int getKeyRepeat(void);
 
       size_t index_;
-      FromKeyChecker fromkeychecker_;
-      PairKeyFlags fromKey_;
+      FromEvent fromEvent_;
+      Flags fromFlags_;
       Vector_PairKeyFlags toKeys_;
       Vector_PairKeyFlags beforeKeys_;
       Vector_PairKeyFlags afterKeys_;
