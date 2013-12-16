@@ -1,8 +1,9 @@
 #ifndef FROMEVENT_HPP
 #define FROMEVENT_HPP
 
-#include "ParamsUnion.hpp"
 #include "KeyCode.hpp"
+#include "ParamsUnion.hpp"
+#include "Vector.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class FromEvent {
@@ -22,8 +23,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
     FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
-    bool isTargetDownEvent(const ParamsUnion& paramsUnion);
-    bool isTargetUpEvent(const ParamsUnion& paramsUnion);
+    // Return whether pressing state is changed.
+    bool changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags);
+    bool isPressing(void) const { return isPressing_; }
+
+    // Primitive functions:
+    // These functions do not treat Flags.
+    // Use changePressingState in general.
+    bool isTargetDownEvent(const ParamsUnion& paramsUnion) const;
+    bool isTargetUpEvent(const ParamsUnion& paramsUnion) const;
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
@@ -43,6 +51,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     ConsumerKeyCode consumer_;
     PointingButton button_;
   };
+
+  DECLARE_VECTOR(FromEvent);
 }
 
 #endif

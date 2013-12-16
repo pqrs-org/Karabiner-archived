@@ -54,24 +54,40 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  FromEvent::isTargetDownEvent(const ParamsUnion& paramsUnion)
+  FromEvent::changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags)
   {
     bool isDown = false;
     if (! isTargetEvent(isDown, paramsUnion)) return false;
-    if (! isDown) return false;
 
-    isPressing_ = true;
-    return true;
+    if (isDown) {
+      if (currentFlags.isOn(fromFlags)) {
+        isPressing_ = true;
+        return true;
+      }
+
+    } else {
+      if (isPressing_) {
+        isPressing_ = false;
+        return true;
+      }
+    }
+
+    return false;
   }
 
   bool
-  FromEvent::isTargetUpEvent(const ParamsUnion& paramsUnion)
+  FromEvent::isTargetDownEvent(const ParamsUnion& paramsUnion) const
   {
     bool isDown = false;
     if (! isTargetEvent(isDown, paramsUnion)) return false;
-    if (isDown) return false;
+    return isDown;
+  }
 
-    isPressing_ = false;
-    return true;
+  bool
+  FromEvent::isTargetUpEvent(const ParamsUnion& paramsUnion) const
+  {
+    bool isDown = false;
+    if (! isTargetEvent(isDown, paramsUnion)) return false;
+    return ! isDown;
   }
 }
