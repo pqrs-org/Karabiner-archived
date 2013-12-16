@@ -4,53 +4,58 @@
 
 using namespace org_pqrs_KeyRemap4MacBook;
 
-Params_KeyboardEventCallBack::auto_ptr down_return(
-  Params_KeyboardEventCallBack::alloc(
-    EventType::DOWN,
-    Flags(0),
-    KeyCode::RETURN,
-    CharCode(0),
-    CharSet(0),
-    OrigCharCode(0),
-    OrigCharSet(0),
-    KeyboardType(0),
-    false));
+ParamsUnion down_return(
+  *(Params_KeyboardEventCallBack::auto_ptr(
+      Params_KeyboardEventCallBack::alloc(
+        EventType::DOWN,
+        Flags(0),
+        KeyCode::RETURN,
+        CharCode(0),
+        CharSet(0),
+        OrigCharCode(0),
+        OrigCharSet(0),
+        KeyboardType(0),
+        false))));
 
-Params_KeyboardEventCallBack::auto_ptr up_return(
-  Params_KeyboardEventCallBack::alloc(
-    EventType::UP,
-    Flags(0),
-    KeyCode::RETURN,
-    CharCode(0),
-    CharSet(0),
-    OrigCharCode(0),
-    OrigCharSet(0),
-    KeyboardType(0),
-    false));
+ParamsUnion up_return(
+  *(Params_KeyboardEventCallBack::auto_ptr(
+      Params_KeyboardEventCallBack::alloc(
+        EventType::UP,
+        Flags(0),
+        KeyCode::RETURN,
+        CharCode(0),
+        CharSet(0),
+        OrigCharCode(0),
+        OrigCharSet(0),
+        KeyboardType(0),
+        false))));
 
-Params_KeyboardEventCallBack::auto_ptr down_shift(
-  Params_KeyboardEventCallBack::alloc(
-    EventType::MODIFY,
-    Flags(ModifierFlag::SHIFT_L),
-    KeyCode::SHIFT_L,
-    CharCode(0),
-    CharSet(0),
-    OrigCharCode(0),
-    OrigCharSet(0),
-    KeyboardType(0),
-    false));
+ParamsUnion down_shift(
+  *(Params_KeyboardEventCallBack::auto_ptr(
+      Params_KeyboardEventCallBack::alloc(
+        EventType::MODIFY,
+        Flags(ModifierFlag::SHIFT_L),
+        KeyCode::SHIFT_L,
+        CharCode(0),
+        CharSet(0),
+        OrigCharCode(0),
+        OrigCharSet(0),
+        KeyboardType(0),
+        false))));
 
-Params_KeyboardEventCallBack::auto_ptr up_shift(
-  Params_KeyboardEventCallBack::alloc(
-    EventType::MODIFY,
-    Flags(0),
-    KeyCode::SHIFT_L,
-    CharCode(0),
-    CharSet(0),
-    OrigCharCode(0),
-    OrigCharSet(0),
-    KeyboardType(0),
-    false));
+ParamsUnion up_shift(
+  *(Params_KeyboardEventCallBack::auto_ptr(
+      Params_KeyboardEventCallBack::alloc(
+        EventType::MODIFY,
+        Flags(0),
+        KeyCode::SHIFT_L,
+        CharCode(0),
+        CharSet(0),
+        OrigCharCode(0),
+        OrigCharSet(0),
+        KeyboardType(0),
+        false))));
+
 
 TEST(Generic, getModifierFlag) {
   {
@@ -83,16 +88,16 @@ TEST(Generic, changePressingState) {
     // Without Flags
     // (For example, "change return to tab".)
 
-    EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
     EXPECT_EQ(true,  fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
 
     // Another event does not modify state
-    EXPECT_EQ(false, fe.changePressingState(*down_shift, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(down_shift, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
-    EXPECT_EQ(false, fe.changePressingState(*up_shift, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(up_shift, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
 
     // ----------------------------------------
@@ -100,10 +105,10 @@ TEST(Generic, changePressingState) {
     // (For example, "change return to tab".)
 
     currentFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
     EXPECT_EQ(true,  fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
 
     // ----------------------------------------
@@ -113,25 +118,25 @@ TEST(Generic, changePressingState) {
     // Does not change state if currentFlags lacks flags.
     currentFlags = Flags(0);
     fromFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(false, fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(down_return, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
 
-    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
 
     // ----------
     currentFlags = Flags(ModifierFlag::SHIFT_L);
     fromFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
     EXPECT_EQ(true,  fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
 
     // ----------
     currentFlags = Flags(ModifierFlag::SHIFT_L);
     fromFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
     EXPECT_EQ(true,  fe.isPressing());
 
     // Change state even if currentFlags lacks flags when key is pressing.
@@ -141,22 +146,34 @@ TEST(Generic, changePressingState) {
     // - shift up
     // - return up (shift-return is released.)
     currentFlags = Flags(0);
-    EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
     // return false if call changePressingState once again.
-    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
   }
   {
     FromEvent fe(KeyCode::SPACE);
-    EXPECT_EQ(false, fe.changePressingState(*down_return, Flags(0), Flags(0)));
-    EXPECT_EQ(false, fe.changePressingState(*up_return, Flags(0), Flags(0)));
+    EXPECT_EQ(false, fe.changePressingState(down_return, Flags(0), Flags(0)));
+    EXPECT_EQ(false, fe.changePressingState(up_return, Flags(0), Flags(0)));
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(*down_shift, Flags(ModifierFlag::SHIFT_L), Flags(0)));
+    EXPECT_EQ(true,  fe.changePressingState(down_shift, Flags(ModifierFlag::SHIFT_L), Flags(0)));
     EXPECT_EQ(true,  fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(*up_shift, Flags(0), Flags(0)));
+    EXPECT_EQ(true,  fe.changePressingState(up_shift, Flags(0), Flags(0)));
+    EXPECT_EQ(false, fe.isPressing());
+  }
+}
+
+TEST(Generic, unsetPressingState) {
+  {
+    FromEvent fe(KeyCode::RETURN);
+
+    EXPECT_EQ(true,  fe.changePressingState(down_return, Flags(0), Flags(0)));
+    EXPECT_EQ(true,  fe.isPressing());
+
+    fe.unsetPressingState();
     EXPECT_EQ(false, fe.isPressing());
   }
 }
@@ -164,23 +181,23 @@ TEST(Generic, changePressingState) {
 TEST(Generic, isTargetDownEvent) {
   {
     FromEvent fe(KeyCode::RETURN);
-    EXPECT_EQ(true,  fe.isTargetDownEvent(*down_return));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*down_return));
+    EXPECT_EQ(true,  fe.isTargetDownEvent(down_return));
+    EXPECT_EQ(false, fe.isTargetUpEvent(down_return));
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(*up_return));
-    EXPECT_EQ(true,  fe.isTargetUpEvent(*up_return));
+    EXPECT_EQ(false, fe.isTargetDownEvent(up_return));
+    EXPECT_EQ(true,  fe.isTargetUpEvent(up_return));
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(*down_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*down_shift));
-    EXPECT_EQ(false, fe.isTargetDownEvent(*up_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*up_shift));
+    EXPECT_EQ(false, fe.isTargetDownEvent(down_shift));
+    EXPECT_EQ(false, fe.isTargetUpEvent(down_shift));
+    EXPECT_EQ(false, fe.isTargetDownEvent(up_shift));
+    EXPECT_EQ(false, fe.isTargetUpEvent(up_shift));
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
-    EXPECT_EQ(true,  fe.isTargetDownEvent(*down_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*down_shift));
+    EXPECT_EQ(true,  fe.isTargetDownEvent(down_shift));
+    EXPECT_EQ(false, fe.isTargetUpEvent(down_shift));
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(*up_shift));
-    EXPECT_EQ(true,  fe.isTargetUpEvent(*up_shift));
+    EXPECT_EQ(false, fe.isTargetDownEvent(up_shift));
+    EXPECT_EQ(true,  fe.isTargetUpEvent(up_shift));
   }
 }
