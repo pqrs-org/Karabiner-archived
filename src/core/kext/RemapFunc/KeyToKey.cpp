@@ -34,7 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromKey_.key = newval;
+              fromEvent_ = FromEvent(KeyCode(newval));
               break;
             default:
               currentVectorPointer_->push_back(PairKeyFlags(newval));
@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid KeyToKey::add\n");
               break;
             case 1:
-              fromKey_.flags = newval;
+              fromFlags_ = Flags(newval);
               break;
             default:
               if (! currentVectorPointer_->empty()) {
@@ -102,7 +102,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyToKey::remap(RemapParams& remapParams)
     {
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromEvent_.changePressingState(remapParams.paramsUnion, FlagStatus::makeFlags(), fromFlags_)) return false;
       remapParams.isremapped = true;
 
       // ------------------------------------------------------------
@@ -111,20 +111,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Let's consider the following setting.
       //   __KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R
       // In this setting, we need decrease SHIFT_R only once.
-      // So, we transform values of fromKey_.
+      // So, we transform values of fromFlags_.
       //
       // [before]
-      //   fromKey_.key   : KeyCode::SHIFT_R
-      //   fromKey_.flags : ModifierFlag::SHIFT_R | ModifierFlag::NONE
+      //   fromEvent_ : KeyCode::SHIFT_R
+      //   fromFlags_ : ModifierFlag::SHIFT_R | ModifierFlag::NONE
       //
       // [after]
-      //   fromKey_.key   : KeyCode::SHIFT_R
-      //   fromKey_.flags : ModifierFlag::NONE
+      //   fromEvent_ : KeyCode::SHIFT_R
+      //   fromFlags_ : ModifierFlag::NONE
       //
-      // Note: we need to apply this transformation after calling fromkeychecker_.isFromKey.
+      // Note: we need to apply this transformation after calling fromEvent_.changePressingState.
 
-      Flags fromFlags = fromKey_.flags;
-      fromFlags.remove(fromKey_.key.getModifierFlag());
+      Flags fromFlags = fromFlags_;
+      fromFlags.remove(fromEvent_.getModifierFlag());
 
       if (remapParams.params.ex_iskeydown) {
         retractInput();
@@ -329,15 +329,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return false;
       Params_KeyboardEventCallBack& params = *ptr;
 
-      RemapParams rp(params);
+      ParamsUnion paramsUnion(params);
+      RemapParams rp(paramsUnion);
       return remap(rp);
     }
 
     void
     KeyToKey::disabled_callback(void)
     {
-      if (fromkeychecker_.isactive()) {
-        fromkeychecker_.deactivate();
+      if (fromEvent_.isPressing()) {
+        fromEvent_.unsetPressingState();
         restoreInput();
       }
     }
@@ -345,13 +346,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     KeyToKey::retractInput(void)
     {
-      FlagStatus::decrease(fromKey_.key.getModifierFlag());
+      FlagStatus::decrease(fromEvent_.getModifierFlag());
     }
 
     void
     KeyToKey::restoreInput(void)
     {
-      FlagStatus::increase(fromKey_.key.getModifierFlag());
+      FlagStatus::increase(fromEvent_.getModifierFlag());
     }
 
     int

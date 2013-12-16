@@ -3,13 +3,16 @@
 
 #include "CallBackWrapper.hpp"
 #include "KeyCode.hpp"
+#include "ParamsUnion.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   struct RemapParams {
-    RemapParams(const Params_KeyboardEventCallBack& p) :
-      params(p), isremapped(false) {}
+    RemapParams(const ParamsUnion& p) :
+      paramsUnion(p), params(*(p.params.params_KeyboardEventCallBack)), isremapped(false) {}
 
+    const ParamsUnion& paramsUnion;
+    // XXX: Please remove params.
     const Params_KeyboardEventCallBack& params;
     bool isremapped;
   };

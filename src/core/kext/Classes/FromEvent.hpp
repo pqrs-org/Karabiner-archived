@@ -26,6 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Return whether pressing state is changed.
     bool changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags);
     bool isPressing(void) const { return isPressing_; }
+    void unsetPressingState(void) { isPressing_ = false; }
 
     // Primitive functions:
     // These functions do not treat Flags.
