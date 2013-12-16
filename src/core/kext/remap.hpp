@@ -1,8 +1,8 @@
 #ifndef REMAP_HPP
 #define REMAP_HPP
 
-#include "KeyCode.hpp"
 #include "CallBackWrapper.hpp"
+#include "KeyCode.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
