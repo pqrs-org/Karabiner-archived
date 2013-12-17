@@ -17,6 +17,7 @@
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
 		342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */; };
+		342BC69C18609F5D00578EC5 /* ToEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BC69B18609F5D00578EC5 /* ToEvent.hpp */; };
 		342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342C80521261B379007F15DA /* DeviceFilter.cpp */; };
 		342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342C80531261B379007F15DA /* DeviceFilter.hpp */; };
 		342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */; };
@@ -179,6 +180,7 @@
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
 		342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncClasses.hpp; path = RemapFunc/common/RemapFuncClasses.hpp; sourceTree = "<group>"; };
+		342BC69B18609F5D00578EC5 /* ToEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ToEvent.hpp; path = Classes/ToEvent.hpp; sourceTree = "<group>"; };
 		342C80521261B379007F15DA /* DeviceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceFilter.cpp; path = RemapFilter/DeviceFilter.cpp; sourceTree = "<group>"; };
 		342C80531261B379007F15DA /* DeviceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceFilter.hpp; path = RemapFilter/DeviceFilter.hpp; sourceTree = "<group>"; };
 		342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_IOHIDPOSTEVENT.cpp; path = VirtualKey/VK_IOHIDPOSTEVENT.cpp; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				34779352185B1FA800B3EF06 /* PressDownKeys.hpp */,
 				34779353185B1FA800B3EF06 /* TimerWrapper.cpp */,
 				34779354185B1FA800B3EF06 /* TimerWrapper.hpp */,
+				342BC69B18609F5D00578EC5 /* ToEvent.hpp */,
 				34779355185B1FA800B3EF06 /* Vector.hpp */,
 			);
 			name = Classes;
@@ -640,6 +643,7 @@
 				34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */,
 				34779369185B1FA800B3EF06 /* IntervalChecker.hpp in Headers */,
 				34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */,
+				342BC69C18609F5D00578EC5 /* ToEvent.hpp in Headers */,
 				34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */,
 				342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */,
 				340800D813BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp in Headers */,
