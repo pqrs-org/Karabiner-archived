@@ -3,6 +3,7 @@
 
 #include "FromEvent.hpp"
 #include "RemapFuncClasses.hpp"
+#include "ToEvent.hpp"
 #include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
