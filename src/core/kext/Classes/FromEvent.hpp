@@ -1,7 +1,6 @@
 #ifndef FROMEVENT_HPP
 #define FROMEVENT_HPP
 
-#include "KeyCode.hpp"
 #include "ParamsUnion.hpp"
 #include "Vector.hpp"
 
@@ -18,10 +17,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
     };
 
-    FromEvent(void)              : isPressing_(false), type_(Type::NONE)                          {}
-    FromEvent(KeyCode v)         : isPressing_(false), type_(Type::KEY),             key_(v)      {}
-    FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
-    FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
+    explicit FromEvent(void)              : isPressing_(false), type_(Type::NONE)                          {}
+    explicit FromEvent(KeyCode v)         : isPressing_(false), type_(Type::KEY),             key_(v)      {}
+    explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
+    explicit FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
     // Return whether pressing state is changed.
     bool changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags);
