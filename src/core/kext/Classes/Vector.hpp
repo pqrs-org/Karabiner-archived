@@ -1,6 +1,8 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
+#include "Types.hpp"
+
 #define DECLARE_VECTOR_WITH_CHUNKSIZE(TYPENAME, CHUNKSIZE)               \
   class Vector_ ## TYPENAME {                                            \
   public:                                                                \
