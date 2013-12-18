@@ -22,7 +22,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     explicit ToEvent(ConsumerKeyCode v) : type_(Type::CONSUMER_KEY),    consumer_(v) {}
     explicit ToEvent(PointingButton v)  : type_(Type::POINTING_BUTTON), button_(v)   {}
 
+    Flags getFlags(void) const { return flags_; }
     void setFlags(Flags v) { flags_ = v; }
+
+    // XXX: remove me
+    Type::Value getType(void) const { return type_; }
+    KeyCode getKeyCode(void) const { return key_; }
+
+    // Get ModifierFlag from KeyCode.
+    ModifierFlag getModifierFlag(void) const {
+      if (type_ != Type::KEY) return ModifierFlag::NONE;
+      return key_.getModifierFlag();
+    }
+    bool isEventLikeModifier(void) const;
 
   private:
     Type::Value type_;
