@@ -25,8 +25,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags getFlags(void) const { return flags_; }
     void setFlags(Flags v) { flags_ = v; }
 
-    // XXX: remove me
     Type::Value getType(void) const { return type_; }
+
+    // XXX: integrate into other functions such as "fire".
     KeyCode getKeyCode(void) const { return key_; }
 
     // Get ModifierFlag from KeyCode.
