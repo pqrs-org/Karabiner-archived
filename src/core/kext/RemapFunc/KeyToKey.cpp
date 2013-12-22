@@ -1,5 +1,3 @@
-#include <IOKit/IOLib.h>
-
 #include "CommonData.hpp"
 #include "EventOutputQueue.hpp"
 #include "IOLogWrapper.hpp"
@@ -11,13 +9,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     KeyToKey::KeyToKey(void) :
       index_(0),
+      currentVectorPointer_(&toKeys_),
       keyboardRepeatID_(-1),
       isRepeatEnabled_(true),
       delayUntilRepeat_(-1),
       keyRepeat_(-1)
-    {
-      currentVectorPointer_ = &toKeys_;
-    }
+    {}
 
     KeyToKey::~KeyToKey(void)
     {
@@ -37,7 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromEvent_ = FromEvent(KeyCode(newval));
               break;
             default:
-              currentVectorPointer_->push_back(PairKeyFlags(newval));
+              currentVectorPointer_->push_back(ToEvent(KeyCode(newval)));
               break;
           }
           ++index_;
@@ -56,7 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
             default:
               if (! currentVectorPointer_->empty()) {
-                (currentVectorPointer_->back()).flags = newval;
+                (currentVectorPointer_->back()).setFlags(Flags(newval));
               }
               break;
           }
@@ -138,14 +135,16 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::temporary_decrease(fromFlags);
 
         for (size_t i = 0; i < beforeKeys_.size(); ++i) {
-          FlagStatus::temporary_increase(beforeKeys_[i].flags);
+          FlagStatus::temporary_increase(beforeKeys_[i].getFlags());
 
           Flags f = FlagStatus::makeFlags();
           KeyboardType keyboardType = remapParams.params.keyboardType;
 
-          EventOutputQueue::FireKey::fire_downup(f, beforeKeys_[i].key, keyboardType);
+          if (beforeKeys_[i].getType() == ToEvent::Type::KEY) {
+            EventOutputQueue::FireKey::fire_downup(f, beforeKeys_[i].getKeyCode(), keyboardType);
+          }
 
-          FlagStatus::temporary_decrease(beforeKeys_[i].flags);
+          FlagStatus::temporary_decrease(beforeKeys_[i].getFlags());
         }
 
         FlagStatus::temporary_increase(fromFlags);
@@ -160,13 +159,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 1:
         {
           EventType newEventType = remapParams.params.ex_iskeydown ? EventType::DOWN : EventType::UP;
-          KeyCode toKey = toKeys_[0].key;
-          ModifierFlag toModifierFlag = toKey.getModifierFlag();
+          ModifierFlag toModifierFlag = toKeys_[0].getModifierFlag();
 
-          if (toModifierFlag == ModifierFlag::NONE && ! VirtualKey::isKeyLikeModifier(toKey)) {
+          if (toModifierFlag == ModifierFlag::NONE && ! toKeys_[0].isEventLikeModifier()) {
             // toKey
             FlagStatus::temporary_decrease(fromFlags);
-            FlagStatus::temporary_increase(toKeys_[0].flags);
+            FlagStatus::temporary_increase(toKeys_[0].getFlags());
 
           } else {
             // toModifier or VirtualKey::isKeyLikeModifier
@@ -175,39 +173,40 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             if (remapParams.params.ex_iskeydown) {
-              FlagStatus::increase(toKeys_[0].flags | toModifierFlag);
+              FlagStatus::increase(toKeys_[0].getFlags() | toModifierFlag);
               FlagStatus::decrease(fromFlags);
             } else {
-              FlagStatus::decrease(toKeys_[0].flags | toModifierFlag);
+              FlagStatus::decrease(toKeys_[0].getFlags() | toModifierFlag);
               FlagStatus::increase(fromFlags);
             }
           }
 
           // ----------------------------------------
-          Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(newEventType,
-                                                                                         FlagStatus::makeFlags(),
-                                                                                         toKey,
-                                                                                         remapParams.params.keyboardType,
-                                                                                         remapParams.params.repeat));
-          if (! ptr) return false;
-          Params_KeyboardEventCallBack& params = *ptr;
+          if (toKeys_[0].getType() == ToEvent::Type::KEY) {
+            Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(newEventType,
+                                                                                           FlagStatus::makeFlags(),
+                                                                                           toKeys_[0].getKeyCode(),
+                                                                                           remapParams.params.keyboardType,
+                                                                                           remapParams.params.repeat));
+            if (! ptr) return false;
+            Params_KeyboardEventCallBack& params = *ptr;
 
-          if (remapParams.params.ex_iskeydown && ! isRepeatEnabled_) {
-            KeyboardRepeat::cancel();
-          } else {
-            KeyboardRepeat::set(params, getDelayUntilRepeat(), getKeyRepeat());
+            if (remapParams.params.ex_iskeydown && ! isRepeatEnabled_) {
+              KeyboardRepeat::cancel();
+            } else {
+              KeyboardRepeat::set(params, getDelayUntilRepeat(), getKeyRepeat());
+            }
+            EventOutputQueue::FireKey::fire(params);
           }
-          EventOutputQueue::FireKey::fire(params);
 
           break;
         }
 
         default:
-          KeyCode lastKey                  = toKeys_[toKeys_.size() - 1].key;
-          Flags lastKeyFlags               = toKeys_[toKeys_.size() - 1].flags;
-          ModifierFlag lastKeyModifierFlag = lastKey.getModifierFlag();
-          bool isLastKeyModifier           = (lastKeyModifierFlag != ModifierFlag::NONE);
-          bool isLastKeyLikeModifier       = VirtualKey::isKeyLikeModifier(lastKey);
+          ToEvent& lastToEvent                 = toKeys_[toKeys_.size() - 1];
+          ModifierFlag lastToEventModifierFlag = lastToEvent.getModifierFlag();
+          bool isLastToEventModifierKey        = (lastToEventModifierFlag != ModifierFlag::NONE);
+          bool isLastToEventLikeModifier       = lastToEvent.isEventLikeModifier();
 
           if (remapParams.params.ex_iskeydown) {
             KeyboardRepeat::cancel();
@@ -218,44 +217,48 @@ namespace org_pqrs_KeyRemap4MacBook {
             // If the last key is modifier, we give it special treatment.
             // - Don't fire key repeat.
             // - Synchronous the key press status and the last modifier status.
-            if (isLastKeyModifier || isLastKeyLikeModifier) {
+            if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               --size;
             }
 
             for (size_t i = 0; i < size; ++i) {
-              FlagStatus::temporary_increase(toKeys_[i].flags);
+              FlagStatus::temporary_increase(toKeys_[i].getFlags());
 
               Flags f = FlagStatus::makeFlags();
               KeyboardType keyboardType = remapParams.params.keyboardType;
 
-              EventOutputQueue::FireKey::fire_downup(f, toKeys_[i].key, keyboardType);
-              KeyboardRepeat::primitive_add_downup(f, toKeys_[i].key, keyboardType);
+              if (toKeys_[i].getType() == ToEvent::Type::KEY) {
+                EventOutputQueue::FireKey::fire_downup(f, toKeys_[i].getKeyCode(), keyboardType);
+                KeyboardRepeat::primitive_add_downup(f, toKeys_[i].getKeyCode(), keyboardType);
+              }
 
-              FlagStatus::temporary_decrease(toKeys_[i].flags);
+              FlagStatus::temporary_decrease(toKeys_[i].getFlags());
             }
 
-            if (isLastKeyModifier || isLastKeyLikeModifier) {
+            if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               // restore temporary flag.
               FlagStatus::temporary_increase(fromFlags);
 
-              FlagStatus::increase(lastKeyFlags | lastKeyModifierFlag);
+              FlagStatus::increase(lastToEvent.getFlags() | lastToEventModifierFlag);
               FlagStatus::decrease(fromFlags);
 
-              if (isLastKeyLikeModifier) {
+              if (isLastToEventLikeModifier) {
                 // Don't call EventOutputQueue::FireModifiers::fire here.
                 //
                 // Intentionally VK_LAZY_* stop sending MODIFY events.
                 // EventOutputQueue::FireModifiers::fire destroys this behavior.
-                Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastKey, remapParams.params.keyboardType, false));
-                if (ptr) {
-                  EventOutputQueue::FireKey::fire(*ptr);
+                if (lastToEvent.getType() == ToEvent::Type::KEY) {
+                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), remapParams.params.keyboardType, false));
+                  if (ptr) {
+                    EventOutputQueue::FireKey::fire(*ptr);
+                  }
                 }
               } else {
                 EventOutputQueue::FireModifiers::fire();
               }
             }
 
-            if (isLastKeyModifier || isLastKeyLikeModifier) {
+            if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               KeyboardRepeat::cancel();
             } else {
               if (isRepeatEnabled_) {
@@ -266,18 +269,20 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
           } else {
-            if (isLastKeyModifier || isLastKeyLikeModifier) {
+            if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               // For Lazy-Modifiers (KeyCode::VK_LAZY_*),
               // we need to handle these keys before restoring fromFlags, lastKeyFlags and lastKeyModifierFlag.
               // The unnecessary modifier events occur unless we do it.
-              if (isLastKeyLikeModifier) {
-                Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastKey, remapParams.params.keyboardType, false));
-                if (ptr) {
-                  EventOutputQueue::FireKey::fire(*ptr);
+              if (isLastToEventLikeModifier) {
+                if (lastToEvent.getType() == ToEvent::Type::KEY) {
+                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), remapParams.params.keyboardType, false));
+                  if (ptr) {
+                    EventOutputQueue::FireKey::fire(*ptr);
+                  }
                 }
               }
 
-              FlagStatus::decrease(lastKeyFlags | lastKeyModifierFlag);
+              FlagStatus::decrease(lastToEvent.getFlags() | lastToEventModifierFlag);
               FlagStatus::increase(fromFlags);
               EventOutputQueue::FireModifiers::fire();
 
@@ -301,14 +306,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           FlagStatus::temporary_decrease(fromFlags);
 
           for (size_t i = 0; i < afterKeys_.size(); ++i) {
-            FlagStatus::temporary_increase(afterKeys_[i].flags);
+            FlagStatus::temporary_increase(afterKeys_[i].getFlags());
 
             Flags f = FlagStatus::makeFlags();
             KeyboardType keyboardType = remapParams.params.keyboardType;
 
-            EventOutputQueue::FireKey::fire_downup(f, afterKeys_[i].key, keyboardType);
+            if (afterKeys_[i].getType() == ToEvent::Type::KEY) {
+              EventOutputQueue::FireKey::fire_downup(f, afterKeys_[i].getKeyCode(), keyboardType);
+            }
 
-            FlagStatus::temporary_decrease(afterKeys_[i].flags);
+            FlagStatus::temporary_decrease(afterKeys_[i].getFlags());
           }
 
           FlagStatus::temporary_increase(fromFlags);
@@ -361,7 +368,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (delayUntilRepeat_ >= 0) {
         return delayUntilRepeat_;
       } else {
-        return Config::get_repeat_initial_wait();
+        // If all ToEvent is consumer, use repeat.consumer_initial_wait.
+        for (size_t i = 0; i < toKeys_.size(); ++i) {
+          if (toKeys_[i].getType() != ToEvent::Type::CONSUMER_KEY) {
+            return Config::get_repeat_initial_wait();
+          }
+        }
+
+        return Config::get_repeat_consumer_initial_wait();
       }
     }
 
@@ -371,6 +385,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (keyRepeat_ >= 0) {
         return keyRepeat_;
       } else {
+        // If all ToEvent is consumer, use repeat.consumer_wait.
+        for (size_t i = 0; i < toKeys_.size(); ++i) {
+          if (toKeys_[i].getType() != ToEvent::Type::CONSUMER_KEY) {
+            return Config::get_repeat_wait();
+          }
+        }
+
         return Config::get_repeat_wait();
       }
     }
