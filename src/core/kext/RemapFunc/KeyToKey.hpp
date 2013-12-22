@@ -39,13 +39,16 @@ namespace org_pqrs_KeyRemap4MacBook {
       int getKeyRepeat(void);
 
       size_t index_;
+
       FromEvent fromEvent_;
       Flags fromFlags_;
-      Vector_PairKeyFlags toKeys_;
-      Vector_PairKeyFlags beforeKeys_;
-      Vector_PairKeyFlags afterKeys_;
+
+      Vector_ToEvent toKeys_;
+      Vector_ToEvent beforeKeys_;
+      Vector_ToEvent afterKeys_;
       // Pointer to toKeys_ or beforeKeys_ or afterKeys_.
-      Vector_PairKeyFlags* currentVectorPointer_;
+      Vector_ToEvent* currentVectorPointer_;
+
       int keyboardRepeatID_;
       bool isRepeatEnabled_;
 
