@@ -245,6 +245,39 @@
       </autogen>
     </item>
     <item>
+      <name>German Umlaute with US keyboard</name>
+      <appendix>Change OptionLeft+U to Ü</appendix>
+      <appendix>Change OptionLeft+A to Ä</appendix>
+      <appendix>Change OptionLeft+O to Ö</appendix>
+      <identifier>remap.german_umlaute_with_us_keyboard</identifier>
+      <autogen>__KeyToKey__
+        KeyCode::O, ModifierFlag::OPTION_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+      </autogen>
+      <autogen>__KeyToKey__
+        KeyCode::O, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O
+      </autogen>
+
+      <autogen>__KeyToKey__
+        KeyCode::A, ModifierFlag::OPTION_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+      </autogen>
+      <autogen>__KeyToKey__
+        KeyCode::A, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A
+      </autogen>
+
+      <autogen>__KeyToKey__
+        KeyCode::U, ModifierFlag::OPTION_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+      </autogen>
+      <autogen>__KeyToKey__
+        KeyCode::U, ModifierFlag::OPTION_L | ModifierFlag::NONE,
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U
+      </autogen>
+    </item>
+    <item>
       <name>Command+Y sends Command+Shift+Z (Windows-style Undo)</name>
       <identifier>remap.german_command_y_to_command_shift_z</identifier>
       <appendix>(except for Microsoft applications which already have this built-in)</appendix>
