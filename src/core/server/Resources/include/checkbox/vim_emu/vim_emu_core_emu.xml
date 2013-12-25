@@ -261,18 +261,17 @@
         KeyCode::A, VK_CONTROL|VK_SHIFT,
         KeyCode::E, VK_CONTROL|VK_SHIFT,
         KeyCode::C, VK_COMMAND,
-        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
         KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
       </autogen>
       <!-- Normal Mode: YANK Fix End -->
 
       <!-- Normal Mode: Delete Fix Begin -->
-      <autogen> <!-- Fix C -->
-        __KeyToKey__ KeyCode::C,
+      <autogen> <!-- Fix D -->
+        __KeyToKey__ KeyCode::D,
         VK_SHIFT|ModifierFlag::NONE,
         KeyCode::E, VK_CONTROL|VK_SHIFT,
         KeyCode::X, VK_COMMAND,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_line_copy{{VIM_EMU_ALTCONFIG}},
       </autogen>
       <!-- Normal Mode: Delete Fix End -->
 
