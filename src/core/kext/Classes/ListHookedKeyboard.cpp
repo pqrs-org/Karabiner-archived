@@ -103,10 +103,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     // Kensington Virtual Device (0x0, 0x0)
     if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::PSEUDO, DeviceProduct::PSEUDO)) {
-      // Note: USB Overdrive also use 0x0,0x0.
-      // We allow to use USB Overdrive.
-      if (deviceType_ != DeviceType::USB_OVERDRIVE) {
-        goto restore;
+      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_allow_devices_vendor_id_product_id_are_zero)) {
+        // do nothing
+      } else {
+        // Note: USB Overdrive also use 0x0,0x0.
+        // We allow to use USB Overdrive.
+        if (deviceType_ != DeviceType::USB_OVERDRIVE) {
+          goto restore;
+        }
       }
     }
 

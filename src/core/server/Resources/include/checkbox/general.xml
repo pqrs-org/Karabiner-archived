@@ -110,5 +110,12 @@
       <appendix>This setting allows you unlimited "Delay Until Repeat".)</appendix>
       <identifier essential="true">general.unlimited_key_repeat_rate</identifier>
     </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Allow devices which Vendor ID and Product ID are zero.</name>
+      <appendix>(Be careful enabling this option.</appendix>
+      <appendix>These devices might cause system crash with KeyRemap4MacBook.)</appendix>
+      <identifier essential="true">general.allow_devices_vendor_id_product_id_are_zero</identifier>
+    </item>
   </item>
 </root>
