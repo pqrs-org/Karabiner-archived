@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Lithuanian</name>
+    <item>
+      <name>Change KeyPad Comma(,) to Dot(.)</name>
+      <identifier>remap.lithuanian_keypad_comma_to_dot</identifier>
+      <inputsource_only>LITHUANIAN</inputsource_only>
+      <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
+    </item>
+  </item>
+</root>

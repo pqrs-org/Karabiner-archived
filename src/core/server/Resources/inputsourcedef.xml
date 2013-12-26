@@ -104,6 +104,12 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>LITHUANIAN</name>
+    <detail>LITHUANIAN</detail>
+    <inputsourceid_equal>com.apple.keylayout.Lithuanian</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>NORWEGIAN</name>
     <detail>NORWEGIAN_EXTENDED</detail>
     <inputsourceid_equal>com.apple.keylayout.NorwegianExtended</inputsourceid_equal>
