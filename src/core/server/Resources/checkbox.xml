@@ -110,6 +110,7 @@
   <include path="include/checkbox/languages/italian.xml" />
   <include path="include/checkbox/languages/japanese.xml" />
   <include path="include/checkbox/languages/korean.xml" />
+  <include path="include/checkbox/languages/lithuanian.xml" />
   <include path="include/checkbox/languages/norwegian.xml" />
   <include path="include/checkbox/languages/russian.xml" />
   <include path="include/checkbox/languages/slovenian.xml" />
