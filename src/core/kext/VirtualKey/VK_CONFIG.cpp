@@ -49,11 +49,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool value_old = false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
-      remapclass                          = (*items_)[i].remapclass;
-      unsigned int keycode_toggle         = (*items_)[i].keycode_toggle;
-      unsigned int keycode_force_on       = (*items_)[i].keycode_force_on;
-      unsigned int keycode_force_off      = (*items_)[i].keycode_force_off;
-      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
+      remapclass = (*items_)[i].remapclass;
+      KeyCode keycode_toggle((*items_)[i].keycode_toggle);
+      KeyCode keycode_force_on((*items_)[i].keycode_force_on);
+      KeyCode keycode_force_off((*items_)[i].keycode_force_off);
+      KeyCode keycode_sync_keydownup((*items_)[i].keycode_sync_keydownup);
 
       if (! remapclass) return false;
 
@@ -127,7 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! items_) return false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
-      unsigned int keycode_sync_keydownup = (*items_)[i].keycode_sync_keydownup;
+      KeyCode keycode_sync_keydownup((*items_)[i].keycode_sync_keydownup);
       if (keycode == keycode_sync_keydownup) return true;
     }
 

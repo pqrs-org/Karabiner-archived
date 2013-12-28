@@ -17,7 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
         {
-          fromKey_.key = newval;
+          fromKey_.key = KeyCode(newval);
           break;
         }
 

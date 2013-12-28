@@ -97,8 +97,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! items_) return false;
 
     for (size_t i = 0; i < items_->size(); ++i) {
-      RemapClass* remapclass     = (*items_)[i].remapclass;
-      unsigned int keycode       = (*items_)[i].keycode;
+      RemapClass* remapclass = (*items_)[i].remapclass;
+      KeyCode keycode((*items_)[i].keycode);
       uint32_t notification_type = (*items_)[i].notification_type;
 
       if (! remapclass) return false;
