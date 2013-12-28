@@ -18,7 +18,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL == newval) {
+          Option option(newval);
+          if (Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL == option) {
             dropHorizontalScroll_ = true;
           } else {
             IOLOG_ERROR("DropScrollWheel::add unknown option:%d\n", newval);

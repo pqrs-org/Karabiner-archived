@@ -18,9 +18,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_OPTION:
         {
-          /*  */ if (Option::FLIPPOINTINGRELATIVE_HORIZONTAL == newval) {
+          Option option(newval);
+          /*  */ if (Option::FLIPPOINTINGRELATIVE_HORIZONTAL == option) {
             flipHorizontal_ = true;
-          } else if (Option::FLIPPOINTINGRELATIVE_VERTICAL == newval) {
+          } else if (Option::FLIPPOINTINGRELATIVE_VERTICAL == option) {
             flipVertical_ = true;
           } else {
             IOLOG_ERROR("FlipPointingRelative::add unknown option:%d\n", newval);
