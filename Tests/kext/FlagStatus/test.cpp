@@ -24,15 +24,15 @@ TEST(FlagStatus, makeFlags) {
   FlagStatus::set();
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 
-  FlagStatus::set(KeyCode::A, 0);
+  FlagStatus::set(KeyCode::A, Flags(0));
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 
   // down SHIFT_L
-  FlagStatus::set(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L);
+  FlagStatus::set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
 
   // no effect with ModifierFlag::NONE
-  FlagStatus::set(KeyCode::A, ModifierFlag::NONE);
+  FlagStatus::set(KeyCode::A, Flags(ModifierFlag::NONE));
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
 
   // down CONTROL_
@@ -44,55 +44,55 @@ TEST(FlagStatus, makeFlags) {
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
 
   // up SHIFT_L
-  FlagStatus::set(KeyCode::SHIFT_L, ModifierFlag::CONTROL_L);
+  FlagStatus::set(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L));
   EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
 
   // up CONTROL_L
-  FlagStatus::set(KeyCode::CONTROL_L, 0);
+  FlagStatus::set(KeyCode::CONTROL_L, Flags(0));
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 
   // All flags
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK);
+  FlagStatus::set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
-  FlagStatus::set(KeyCode::CAPSLOCK, 0);
+  FlagStatus::set(KeyCode::CAPSLOCK, Flags(0));
   EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L);
+  FlagStatus::set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::SHIFT_R, ModifierFlag::SHIFT_R);
+  FlagStatus::set(KeyCode::SHIFT_R, Flags(ModifierFlag::SHIFT_R));
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L);
+  FlagStatus::set(KeyCode::CONTROL_L, Flags(ModifierFlag::CONTROL_L));
   EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::CONTROL_R, ModifierFlag::CONTROL_R);
+  FlagStatus::set(KeyCode::CONTROL_R, Flags(ModifierFlag::CONTROL_R));
   EXPECT_EQ(Flags(ModifierFlag::CONTROL_R), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::OPTION_L, ModifierFlag::OPTION_L);
+  FlagStatus::set(KeyCode::OPTION_L, Flags(ModifierFlag::OPTION_L));
   EXPECT_EQ(Flags(ModifierFlag::OPTION_L), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::OPTION_R, ModifierFlag::OPTION_R);
+  FlagStatus::set(KeyCode::OPTION_R, Flags(ModifierFlag::OPTION_R));
   EXPECT_EQ(Flags(ModifierFlag::OPTION_R), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
+  FlagStatus::set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::COMMAND_R, ModifierFlag::COMMAND_R);
+  FlagStatus::set(KeyCode::COMMAND_R, Flags(ModifierFlag::COMMAND_R));
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_R), FlagStatus::makeFlags());
 
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::FN, ModifierFlag::FN);
+  FlagStatus::set(KeyCode::FN, Flags(ModifierFlag::FN));
   EXPECT_EQ(Flags(ModifierFlag::FN), FlagStatus::makeFlags());
 }
 
@@ -167,7 +167,7 @@ TEST(FlagStatus, temporary_increase) {
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), FlagStatus::makeFlags());
 
   // temporary_increase will reset by FlagStatus::set
-  FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
+  FlagStatus::set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
 }
 
@@ -181,53 +181,8 @@ TEST(FlagStatus, temporary_decrease) {
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
 
   // temporary_increase will reset by FlagStatus::set
-  FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
+  FlagStatus::set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
-}
-
-TEST(FlagStatus, temporary_strip) {
-  // ------------------------------------------------------------
-  ASSERT_TRUE(FlagStatus::initialize());
-
-  FlagStatus::decrease(ModifierFlag::COMMAND_L);
-  FlagStatus::temporary_strip(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
-
-  FlagStatus::increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
-}
-
-TEST(FlagStatus, temporary_strip_count) {
-  ASSERT_TRUE(FlagStatus::initialize());
-
-  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
-  FlagStatus::lock_increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
-  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
-
-  FlagStatus::temporary_strip(ModifierFlag::COMMAND_R | ModifierFlag::FN);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
-
-  // temporary_strip sets count == 0.
-  // Therefore, calling temporary_increase turns on modifier.
-  FlagStatus::temporary_increase(ModifierFlag::COMMAND_R);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
-}
-
-TEST(FlagStatus, temporary_strip_reset) {
-  ASSERT_TRUE(FlagStatus::initialize());
-
-  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
-  FlagStatus::lock_increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
-  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
-
-  FlagStatus::temporary_strip(ModifierFlag::COMMAND_R | ModifierFlag::FN);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
-
-  // temporary_increase will reset by FlagStatus::set
-  FlagStatus::set(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
 }
 
 TEST(FlagStatus, lock_increase) {
@@ -242,7 +197,7 @@ TEST(FlagStatus, lock_increase) {
 
   // lock don't cancel by reset & set.
   FlagStatus::reset();
-  FlagStatus::set(KeyCode::A, 0);
+  FlagStatus::set(KeyCode::A, Flags(0));
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
 
   FlagStatus::lock_decrease(ModifierFlag::COMMAND_L);
@@ -312,32 +267,32 @@ TEST(FlagStatus, sticky_clear) {
 TEST(FlagStatus, CapsLock) {
   ASSERT_TRUE(FlagStatus::initialize());
 
-  FlagStatus::set(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK);
+  FlagStatus::set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
   FlagStatus::reset();
 
-  FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
+  FlagStatus::set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
   // from other keyboard
-  FlagStatus::set(KeyCode::A, 0);
+  FlagStatus::set(KeyCode::A, Flags(0));
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
-  FlagStatus::set(KeyCode::A, ModifierFlag::CAPSLOCK);
+  FlagStatus::set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
   // reset
-  FlagStatus::set(KeyCode::CAPSLOCK, 0);
+  FlagStatus::set(KeyCode::CAPSLOCK, Flags(0));
   EXPECT_EQ(Flags(), FlagStatus::makeFlags());
 
   // soft caps
   FlagStatus::lock_increase(ModifierFlag::CAPSLOCK);
-  FlagStatus::set(KeyCode::A, 0);
+  FlagStatus::set(KeyCode::A, Flags(0));
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
 
   // soft caps will be canceled by hardware caps
-  FlagStatus::set(KeyCode::CAPSLOCK, 0);
+  FlagStatus::set(KeyCode::CAPSLOCK, Flags(0));
   EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 }
 
@@ -380,7 +335,8 @@ TEST(FlagStatus, ScopedTemporaryFlagsChanger) {
   FlagStatus::decrease(ModifierFlag::SHIFT_L);
 
   {
-    FlagStatus::ScopedTemporaryFlagsChanger stfc(ModifierFlag::SHIFT_R);
+    Flags flags(ModifierFlag::SHIFT_R);
+    FlagStatus::ScopedTemporaryFlagsChanger stfc(flags);
     EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), FlagStatus::makeFlags());
   }
 
