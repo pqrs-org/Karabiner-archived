@@ -335,7 +335,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class ScrollWheel {
   public:
-    ScrollWheel(unsigned int v = 0) : value_(v) {}
+    explicit ScrollWheel(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(ScrollWheel other) const { return value_ == other.get(); }
     bool operator!=(ScrollWheel other) const { return ! (*this == other); }
