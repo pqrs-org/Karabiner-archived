@@ -296,6 +296,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     unsigned int operator~(void) const { return ~value_; }
     Buttons operator|(Buttons other) const { return Buttons(value_ | other.get()); }
+    Buttons operator|(PointingButton other) const { return *this | Buttons(other); }
 
     Buttons& add(Buttons buttons) { value_ |= buttons.get(); return *this; }
     Buttons& add(PointingButton button) { return add(Buttons(button)); }
