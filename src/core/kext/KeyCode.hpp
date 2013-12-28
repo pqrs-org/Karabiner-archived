@@ -383,7 +383,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class Option {
   public:
-    Option(unsigned int v = 0) : value_(v) {}
+    explicit Option(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(Option other) const { return value_ == other.get(); }
     bool operator!=(Option other) const { return ! (*this == other); }

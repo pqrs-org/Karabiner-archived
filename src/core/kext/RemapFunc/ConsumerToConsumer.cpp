@@ -53,7 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::NOREPEAT == newval) {
+          if (Option::NOREPEAT == Option(newval)) {
             isRepeatEnabled_ = false;
           } else {
             IOLOG_ERROR("ConsumerToConsumer::add unknown option:%d\n", newval);

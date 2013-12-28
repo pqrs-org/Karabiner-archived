@@ -91,17 +91,18 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::KEYOVERLAIDMODIFIER_REPEAT == newval) {
+          Option option(newval);
+          if (Option::KEYOVERLAIDMODIFIER_REPEAT == option) {
             dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT);
-          } else if (Option::USE_SEPARATOR == newval) {
+          } else if (Option::USE_SEPARATOR == option) {
             isUseSeparator_ = true;
-          } else if (Option::SEPARATOR == newval) {
+          } else if (Option::SEPARATOR == option) {
             if (index_ >= 2) {
               index_is_holding_ = false;
             }
-          } else if (Option::NOREPEAT == newval ||
-                     Option::KEYTOKEY_BEFORE_KEYDOWN == newval ||
-                     Option::KEYTOKEY_AFTER_KEYUP == newval) {
+          } else if (Option::NOREPEAT == option ||
+                     Option::KEYTOKEY_BEFORE_KEYDOWN == option ||
+                     Option::KEYTOKEY_AFTER_KEYUP == option) {
             dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
           } else {
             IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%d\n", newval);

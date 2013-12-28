@@ -54,7 +54,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              if (datatype == BRIDGE_DATATYPE_OPTION && Option::USE_SEPARATOR == newval) {
+              if (datatype == BRIDGE_DATATYPE_OPTION && Option::USE_SEPARATOR == Option(newval)) {
                 // do nothing
               } else {
                 IOLOG_ERROR("Invalid HoldingKeyToKey::add\n");
@@ -87,7 +87,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             default:
-              if (datatype == BRIDGE_DATATYPE_OPTION && Option::SEPARATOR == newval) {
+              if (datatype == BRIDGE_DATATYPE_OPTION && Option::SEPARATOR == Option(newval)) {
                 if (index_ >= 2) {
                   index_is_holding_ = true;
                 }
