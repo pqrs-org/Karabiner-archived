@@ -25,7 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class KeyboardType {
   public:
-    KeyboardType(unsigned int v = 0) : value_(v) {}
+    explicit KeyboardType(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(KeyboardType other) const { return value_ == other.get(); }
     bool operator!=(KeyboardType other) const { return ! (*this == other); }
