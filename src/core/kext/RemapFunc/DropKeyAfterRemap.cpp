@@ -23,7 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_FLAGS:
         {
-          fromKey_.flags = newval;
+          fromKey_.flags = Flags(newval);
           break;
         }
 

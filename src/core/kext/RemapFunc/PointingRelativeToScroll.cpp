@@ -9,8 +9,8 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     List* PointingRelativeToScroll::queue_ = NULL;
-    Flags PointingRelativeToScroll::currentFromFlags_ = NULL;
-    Flags PointingRelativeToScroll::currentToFlags_ = NULL;
+    Flags PointingRelativeToScroll::currentFromFlags_ = Flags();
+    Flags PointingRelativeToScroll::currentToFlags_ = Flags();
     TimerWrapper PointingRelativeToScroll::timer_;
 
     void
@@ -63,10 +63,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_type_) {
             case INDEX_TYPE_DEFAULT:
-              fromFlags_ = newval;
+              fromFlags_ = Flags(newval);
               break;
             case INDEX_TYPE_TOFLAGS:
-              toFlags_ = newval;
+              toFlags_ = Flags(newval);
               break;
             case INDEX_TYPE_TOKEYS:
               keytokey_.add(datatype, newval);

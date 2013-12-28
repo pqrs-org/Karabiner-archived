@@ -38,11 +38,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid PointingButtonToPointingButton::add\n");
               break;
             case 1:
-              fromButton_.flags = newval;
+              fromButton_.flags = Flags(newval);
               break;
             default:
               if (! toButtons_.empty()) {
-                toButtons_.back().flags = newval;
+                toButtons_.back().flags = Flags(newval);
               }
               break;
           }

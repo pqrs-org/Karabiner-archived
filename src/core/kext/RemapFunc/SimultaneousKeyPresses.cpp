@@ -115,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
             return;
           } else if (toType_ == TOTYPE_NONE) {
-            fromFlags_ = newval;
+            fromFlags_ = Flags(newval);
           } else {
             switch (toType_) {
               case TOTYPE_KEY:

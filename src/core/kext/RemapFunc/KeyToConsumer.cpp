@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromKey_.key = newval;
+              fromKey_.key = KeyCode(newval);
               keytokey_.add(KeyCode(newval));
               keytokey_.add(KeyCode::VK_NONE);
               break;
@@ -59,7 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid KeyToConsumer::add\n");
               break;
             case 1:
-              fromKey_.flags = newval;
+              fromKey_.flags = Flags(newval);
               break;
             default:
               consumertoconsumer_.add(Flags(newval));
