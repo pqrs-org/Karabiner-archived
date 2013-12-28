@@ -41,14 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // ----------------------------------------
           // From keys
           if (! isFromInfoFull_) {
-            switch (datatype) {
-              case BRIDGE_DATATYPE_KEYCODE:         fromInfo_.push_back(FromInfo(KeyCode(newval)));         break;
-              case BRIDGE_DATATYPE_CONSUMERKEYCODE: fromInfo_.push_back(FromInfo(ConsumerKeyCode(newval))); break;
-              case BRIDGE_DATATYPE_POINTINGBUTTON:  fromInfo_.push_back(FromInfo(PointingButton(newval)));  break;
-              default:
-                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
-                return;
-            }
+            fromInfo_.push_back(FromInfo(datatype, newval));
 
             if (isUseSeparator_ == false) {
               if (index_ == 2) {

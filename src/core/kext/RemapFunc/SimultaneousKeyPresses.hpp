@@ -35,10 +35,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       class FromInfo {
       public:
-        FromInfo(void)              : fromEvent_(),  active_(false) {}
-        FromInfo(KeyCode v)         : fromEvent_(v), active_(false) {}
-        FromInfo(ConsumerKeyCode v) : fromEvent_(v), active_(false) {}
-        FromInfo(PointingButton v)  : fromEvent_(v), active_(false) {}
+        FromInfo(void)                                  : fromEvent_(),             active_(false) {}
+        FromInfo(unsigned int datatype, unsigned int v) : fromEvent_(datatype, v),  active_(false) {}
 
         void activate(void)        { active_ = true; }
         void deactivate(void)      { active_ = false; }
