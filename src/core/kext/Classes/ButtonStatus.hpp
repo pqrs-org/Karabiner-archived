@@ -72,10 +72,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     static Buttons getLockedButtons(void);
 
     static void increase(Buttons buttons);
+    static void increase(PointingButton button) { increase(Buttons(button)); }
     static void decrease(Buttons buttons);
+    static void decrease(PointingButton button) { decrease(Buttons(button)); }
     static void lock_increase(Buttons buttons);
     static void lock_decrease(Buttons buttons);
     static void lock_toggle(Buttons buttons);
+    static void lock_toggle(PointingButton button) { lock_toggle(Buttons(button)); }
     static void lock_clear(void) { lock_decrease(getLockedButtons()); }
 
   private:
