@@ -288,28 +288,31 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   class Buttons {
   public:
-    Buttons(unsigned int v = 0) : value_(v) {}
-    Buttons(PointingButton v) : value_(v.get()) {}
+    explicit Buttons(unsigned int v = 0) : value_(v) {}
+    explicit Buttons(PointingButton v) : value_(v.get()) {}
     unsigned int get(void) const { return value_; }
     bool operator==(Buttons other) const { return value_ == other.get(); }
     bool operator!=(Buttons other) const { return ! (*this == other); }
 
     unsigned int operator~(void) const { return ~value_; }
-    Buttons operator|(Buttons other) const { return value_ | other.get(); }
+    Buttons operator|(Buttons other) const { return Buttons(value_ | other.get()); }
 
-    Buttons& add(Buttons button) { value_ |= button.get(); return *this; }
-    Buttons& remove(Buttons button) { value_ &= ~button; return *this; }
+    Buttons& add(Buttons buttons) { value_ |= buttons.get(); return *this; }
+    Buttons& add(PointingButton button) { return add(Buttons(button)); }
+    Buttons& remove(Buttons buttons) { value_ &= ~(buttons.value_); return *this; }
+    Buttons& remove(PointingButton button) { return remove(Buttons(button)); }
 
     bool isNONE(void) const { return value_ == 0; }
     bool isOn(Buttons buttons) const {
       return (value_ & buttons.get()) == buttons.get();
     }
+    bool isOn(PointingButton button) const { return isOn(Buttons(button)); }
 
     Buttons justPressed(Buttons previous) const {
-      return value_ & ~(previous.get());
+      return Buttons(value_ & ~(previous.get()));
     }
     Buttons justReleased(Buttons previous) const {
-      return ~value_ & (previous.get());
+      return Buttons(~value_ & (previous.get()));
     }
 
     // population count
@@ -326,7 +329,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     unsigned int value_;
   };
-  inline Buttons operator|(PointingButton lhs, PointingButton rhs) { return lhs.get() | rhs.get(); }
+  inline Buttons operator|(PointingButton lhs, PointingButton rhs) { return Buttons(lhs.get() | rhs.get()); }
 
   // ======================================================================
   class ScrollWheel {
