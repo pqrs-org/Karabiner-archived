@@ -21,10 +21,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromFlags_ = newval;
+              fromFlags_ = Flags(newval);
               break;
             default:
-              toFlags_ = newval;
+              toFlags_ = Flags(newval);
               break;
           }
           ++index_;

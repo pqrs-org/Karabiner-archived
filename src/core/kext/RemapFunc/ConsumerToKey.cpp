@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromKey_.key = newval;
+              fromKey_.key = ConsumerKeyCode(newval);
               consumertoconsumer_.add(ConsumerKeyCode(newval));
               consumertoconsumer_.add(ConsumerKeyCode::VK_NONE);
               break;
@@ -58,7 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             case 0:
               break;
             case 1:
-              fromKey_.flags = newval;
+              fromKey_.flags = Flags(newval);
               break;
             default:
               keytokey_.add(Flags(newval));

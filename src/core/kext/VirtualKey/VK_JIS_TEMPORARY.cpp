@@ -115,11 +115,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       fireKeyInfo_.key = KeyCode::JIS_KANA;
 
     } else if (inputsourcedetail == InputSourceDetail::JAPANESE_KATAKANA) {
-      fireKeyInfo_.flags = ModifierFlag::SHIFT_L;
+      fireKeyInfo_.flags = Flags(ModifierFlag::SHIFT_L);
       fireKeyInfo_.key = KeyCode::JIS_KANA;
 
     } else if (inputsourcedetail == InputSourceDetail::AINU) {
-      fireKeyInfo_.flags = ModifierFlag::OPTION_L;
+      fireKeyInfo_.flags = Flags(ModifierFlag::OPTION_L);
       fireKeyInfo_.key = KeyCode::JIS_KANA;
 
     } else {

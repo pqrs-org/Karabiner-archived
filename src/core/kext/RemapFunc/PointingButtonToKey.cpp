@@ -59,7 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid PointingButtonToKey::add\n");
               break;
             case 1:
-              fromButton_.flags = newval;
+              fromButton_.flags = Flags(newval);
               break;
             default:
               keytokey_.add(Flags(newval));

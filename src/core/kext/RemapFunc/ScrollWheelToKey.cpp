@@ -64,7 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid ScrollWheelToKey::add\n");
               break;
             case 1:
-              fromFlags_ = newval;
+              fromFlags_ = Flags(newval);
               break;
             default:
               keytokey_.add(Flags(newval));

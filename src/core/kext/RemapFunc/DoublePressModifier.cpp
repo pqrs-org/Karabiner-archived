@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              fromKey_.flags = newval;
+              fromKey_.flags = Flags(newval);
               keytokey_.add(Flags(newval));
               keytokey_fire_.add(fromKey_.flags);
               break;

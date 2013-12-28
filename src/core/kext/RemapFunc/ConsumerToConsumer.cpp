@@ -40,11 +40,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid ConsumerToConsumer::add\n");
               break;
             case 1:
-              fromKey_.flags = newval;
+              fromKey_.flags = Flags(newval);
               break;
             default:
               if (! toKeys_.empty()) {
-                toKeys_.back().flags = newval;
+                toKeys_.back().flags = Flags(newval);
               }
               break;
           }

@@ -56,12 +56,12 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              fromKey_.flags = newval;
+              fromKey_.flags = Flags(newval);
               break;
 
             default:
               if (! toButtons_.empty()) {
-                toButtons_.back().flags = newval;
+                toButtons_.back().flags = Flags(newval);
               }
               break;
           }
