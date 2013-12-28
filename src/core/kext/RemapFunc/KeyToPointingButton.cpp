@@ -40,7 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             default:
-              toButtons_.push_back(PairPointingButtonFlags(newval));
+              toButtons_.push_back(PairPointingButtonFlags(PointingButton(newval)));
               break;
           }
           ++index_;

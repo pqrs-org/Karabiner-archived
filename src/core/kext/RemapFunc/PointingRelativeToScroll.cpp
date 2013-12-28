@@ -79,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_type_) {
             case INDEX_TYPE_DEFAULT:
-              fromButton_ = newval;
+              fromButton_ = PointingButton(newval);
               break;
             default:
               IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");

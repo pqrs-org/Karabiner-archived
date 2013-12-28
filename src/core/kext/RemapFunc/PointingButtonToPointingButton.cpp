@@ -20,10 +20,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromButton_.button = newval;
+              fromButton_.button = PointingButton(newval);
               break;
             default:
-              toButtons_.push_back(PairPointingButtonFlags(newval));
+              toButtons_.push_back(PairPointingButtonFlags(PointingButton(newval)));
               break;
           }
           ++index_;
