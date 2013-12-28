@@ -135,8 +135,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void temporary_increase(ModifierFlag flag) { temporary_increase(Flags(flag)); }
     static void temporary_decrease(ModifierFlag flag) { temporary_decrease(Flags(flag)); }
     static void lock_increase(Flags flags);
+    static void lock_increase(ModifierFlag flag) { lock_increase(Flags(flag)); }
     static void lock_decrease(Flags flags);
+    static void lock_decrease(ModifierFlag flag) { lock_decrease(Flags(flag)); }
     static void lock_toggle(Flags flags);
+    static void lock_toggle(ModifierFlag flag) { lock_toggle(Flags(flag)); }
 
     // lock_clear clears only Virtual locks (not hardware CapsLock).
     static void lock_clear(void) { lock_decrease(getLockedFlags()); }
