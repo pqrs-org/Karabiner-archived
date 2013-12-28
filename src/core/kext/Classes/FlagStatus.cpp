@@ -185,7 +185,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void FlagStatus::decrease(Flags flags)           { FOREACH_TO_FLAGS(decrease);                               }
   void FlagStatus::temporary_increase(Flags flags) { FOREACH_TO_FLAGS(temporary_increase);                     }
   void FlagStatus::temporary_decrease(Flags flags) { FOREACH_TO_FLAGS(temporary_decrease);                     }
-  void FlagStatus::temporary_strip(Flags flags)    { FOREACH_TO_FLAGS(temporary_strip);                        }
   void FlagStatus::lock_increase(Flags flags)      { FOREACH_TO_FLAGS(lock_increase);   updateStatusMessage(); }
   void FlagStatus::lock_decrease(Flags flags)      { FOREACH_TO_FLAGS(lock_decrease);   updateStatusMessage(); }
   void FlagStatus::lock_toggle(Flags flags)        { FOREACH_TO_FLAGS(lock_toggle);     updateStatusMessage(); }
