@@ -50,7 +50,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "../../../src/bridge/output/include.kext.ModifierFlag.hpp"
 
   private:
-    ModifierFlag(unsigned int v) : value_(v) {}
+    explicit ModifierFlag(unsigned int v) : value_(v) {}
     unsigned int value_;
   };
   class Flags {
