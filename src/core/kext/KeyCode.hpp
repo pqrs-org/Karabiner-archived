@@ -213,7 +213,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   class CharCode {
   public:
-    CharCode(unsigned int v = 0) : value_(v) {}
+    explicit CharCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(CharCode other) const { return value_ == other.get(); }
     bool operator!=(CharCode other) const { return ! (*this == other); }
@@ -223,7 +223,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   class CharSet {
   public:
-    CharSet(unsigned int v = 0) : value_(v) {}
+    explicit CharSet(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(CharSet other) const { return value_ == other.get(); }
     bool operator!=(CharSet other) const { return ! (*this == other); }
@@ -233,7 +233,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   class OrigCharCode {
   public:
-    OrigCharCode(unsigned int v = 0) : value_(v) {}
+    explicit OrigCharCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(OrigCharCode other) const { return value_ == other.get(); }
     bool operator!=(OrigCharCode other) const { return ! (*this == other); }
@@ -243,7 +243,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   class OrigCharSet {
   public:
-    OrigCharSet(unsigned int v = 0) : value_(v) {}
+    explicit OrigCharSet(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(OrigCharSet other) const { return value_ == other.get(); }
     bool operator!=(OrigCharSet other) const { return ! (*this == other); }
@@ -255,7 +255,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class ConsumerKeyCode {
   public:
-    ConsumerKeyCode(unsigned int v = 0) : value_(v) {}
+    explicit ConsumerKeyCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(ConsumerKeyCode other) const { return value_ == other.get(); }
     bool operator!=(ConsumerKeyCode other) const { return ! (*this == other); }
