@@ -164,7 +164,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Therefore, we cannot recognize whether key is pressed or key is released.
     // So, we have to ignore this key for NumHeldDownKeys.
     //
-    if (EventType::MODIFY == eventType) {
+    if (EventType::MODIFY == EventType(eventType)) {
       if (KeyCode(key).getModifierFlag() == ModifierFlag::NONE) {
         IOLOG_DEBUG("An unknown modifier is pressed (KeyCode:0x%x, Flags:0x%x). Ignore it.\n", key, flags);
         return;
