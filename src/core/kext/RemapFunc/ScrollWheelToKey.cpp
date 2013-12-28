@@ -26,7 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromScrollWheel_ = newval;
+              fromScrollWheel_ = ScrollWheel(newval);
               break;
             default:
               IOLOG_ERROR("Invalid ScrollWheelToKey::add\n");
