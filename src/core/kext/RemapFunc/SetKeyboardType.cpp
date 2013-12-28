@@ -17,7 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYBOARDTYPE:
         {
-          toKeyboardType_ = newval;
+          toKeyboardType_ = KeyboardType(newval);
           break;
         }
 
