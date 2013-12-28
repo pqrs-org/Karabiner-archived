@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class EventType {
   public:
-    EventType(unsigned int v = 0) : value_(v) {}
+    explicit EventType(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(EventType other) const { return value_ == other.get(); }
     bool operator!=(EventType other) const { return ! (*this == other); }
