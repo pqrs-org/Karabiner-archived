@@ -36,11 +36,11 @@ TEST(Generic, sizeof_) {
 }
 
 TEST(EventType, isKeyDownOrModifierDown) {
-  EXPECT_TRUE(EventType::DOWN.isKeyDownOrModifierDown(KeyCode::A, 0));
-  EXPECT_FALSE(EventType::UP.isKeyDownOrModifierDown(KeyCode::A, 0));
+  EXPECT_TRUE(EventType::DOWN.isKeyDownOrModifierDown(KeyCode::A, Flags(0)));
+  EXPECT_FALSE(EventType::UP.isKeyDownOrModifierDown(KeyCode::A, Flags(0)));
 
   EXPECT_TRUE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L));
-  EXPECT_FALSE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::CONTROL_L));
+  EXPECT_FALSE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L)));
 }
 
 TEST(ModifierFlag, get) {
@@ -73,10 +73,10 @@ TEST(Flags, remove) {
     removed = ModifierFlag::SHIFT_R | ModifierFlag::NONE;
     EXPECT_EQ(removed, flags.remove(ModifierFlag::CURSOR | ModifierFlag::EXTRA2));
 
-    removed = 0;
+    removed = Flags(0);
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_R | ModifierFlag::NONE));
 
-    removed = 0;
+    removed = Flags(0);
     EXPECT_EQ(removed, flags.remove(ModifierFlag::OPTION_L | ModifierFlag::COMMAND_R));
   }
   {
@@ -147,10 +147,10 @@ TEST(Flags, isOn) {
   EXPECT_TRUE(flags.isOn(ModifierFlag::SHIFT_L));
   EXPECT_FALSE(flags.isOn(ModifierFlag::SHIFT_R));
 
-  flags = ModifierFlag::NONE;
+  flags = Flags(ModifierFlag::NONE);
   EXPECT_TRUE(flags.isOn(ModifierFlag::NONE));
 
-  flags = 0;
+  flags = Flags(0);
   EXPECT_FALSE(flags.isOn(ModifierFlag::NONE));
   EXPECT_TRUE(flags.isOn(Flags(ModifierFlag::NONE)));
   EXPECT_TRUE(flags.isOn(Flags(0)));
@@ -166,7 +166,7 @@ TEST(Flags, isVirtualModifiersOn) {
   Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   EXPECT_FALSE(flags.isVirtualModifiersOn());
 
-  flags = 0;
+  flags = Flags(0);
   EXPECT_FALSE(flags.isVirtualModifiersOn());
 
   flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R | ModifierFlag::NONE;
@@ -303,8 +303,8 @@ TEST(KeyCode, normalizeKey) {
   std::vector<NormalizeItem> vec;
 
   // ENTER_POWERBOOK (without FN) -> ENTER
-  vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L,
-                              KeyCode::ENTER,           ModifierFlag::SHIFT_L, KeyboardType::POWERBOOK));
+  vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::ENTER,           Flags(ModifierFlag::SHIFT_L), KeyboardType::POWERBOOK));
 
   // ENTER_POWERBOOK(+FN) -> ENTER(+FN) -> RETURN
   vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L | ModifierFlag::FN,
@@ -312,28 +312,28 @@ TEST(KeyCode, normalizeKey) {
 
   // ----------------------------------------
   // normal key (without FN)
-  vec.push_back(NormalizeItem(KeyCode::A, ModifierFlag::SHIFT_L,
-                              KeyCode::A, ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+  vec.push_back(NormalizeItem(KeyCode::A, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::A, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
 
   // KEYPAD (without FN) -> Don't change key.
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    vec.push_back(NormalizeItem(keypads[i][0], ModifierFlag::SHIFT_L,
-                                keypads[i][0], ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+    vec.push_back(NormalizeItem(keypads[i][0], Flags(ModifierFlag::SHIFT_L),
+                                keypads[i][0], Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
   }
 
   // PAGEUP (without FN) -> Don't change key.
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
-    vec.push_back(NormalizeItem(cursors[i][0], ModifierFlag::SHIFT_L,
-                                cursors[i][0], ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+    vec.push_back(NormalizeItem(cursors[i][0], Flags(ModifierFlag::SHIFT_L),
+                                cursors[i][0], Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
   }
 
   // ENTER (without FN)
-  vec.push_back(NormalizeItem(KeyCode::ENTER, ModifierFlag::SHIFT_L,
-                              KeyCode::ENTER, ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+  vec.push_back(NormalizeItem(KeyCode::ENTER, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::ENTER, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
 
   // FORWARD_DELETE (without FN)
-  vec.push_back(NormalizeItem(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L,
-                              KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+  vec.push_back(NormalizeItem(KeyCode::FORWARD_DELETE, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::FORWARD_DELETE, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
 
   // ----------------------------------------
   // normal key(+FN)
@@ -392,10 +392,10 @@ TEST(KeyCode, normalizeKey) {
   // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 11, flags 0x0, key 119, kbdType 37
   {
     KeyCode key = KeyCode::END;
-    Flags flags = ModifierFlag::FN;
+    Flags flags = Flags(ModifierFlag::FN);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, ModifierFlag::FN);
+    EXPECT_EQ(flags, Flags(ModifierFlag::FN));
 
     key = KeyCode::END;
     flags = Flags(0);
@@ -424,7 +424,7 @@ TEST(KeyCode, normalizeKey) {
     flags = Flags(ModifierFlag::FN | ModifierFlag::CURSOR);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, ModifierFlag::FN);
+    EXPECT_EQ(flags, Flags(ModifierFlag::FN));
   }
 }
 
@@ -432,8 +432,8 @@ TEST(KeyCode, reverseNormalizeKey) {
   std::vector<NormalizeItem> vec;
 
   // ENTER_POWERBOOK
-  vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L,
-                              KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L, KeyboardType::POWERBOOK));
+  vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::ENTER_POWERBOOK, Flags(ModifierFlag::SHIFT_L), KeyboardType::POWERBOOK));
 
   // ENTER_POWERBOOK(+FN)
   vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L | ModifierFlag::FN,
@@ -441,13 +441,13 @@ TEST(KeyCode, reverseNormalizeKey) {
 
   // ----------------------------------------
   // normal key (without FN)
-  vec.push_back(NormalizeItem(KeyCode::A, ModifierFlag::SHIFT_L,
-                              KeyCode::A, ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+  vec.push_back(NormalizeItem(KeyCode::A, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::A, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
 
   // KEYPAD (without FN)
   for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
     KeyCode key = keypads[i][0];
-    Flags fromFlags = ModifierFlag::SHIFT_L;
+    Flags fromFlags = Flags(ModifierFlag::SHIFT_L);
     Flags toFlags = fromFlags;
     if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) toFlags.add(ModifierFlag::KEYPAD);
 
@@ -457,22 +457,22 @@ TEST(KeyCode, reverseNormalizeKey) {
 
   // PAGEUP (without FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
-    vec.push_back(NormalizeItem(cursors[i][0], ModifierFlag::SHIFT_L,
-                                cursors[i][0], ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+    vec.push_back(NormalizeItem(cursors[i][0], Flags(ModifierFlag::SHIFT_L),
+                                cursors[i][0], Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
   }
 
   // ENTER (without FN)
-  vec.push_back(NormalizeItem(KeyCode::ENTER, ModifierFlag::SHIFT_L,
-                              KeyCode::ENTER, ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+  vec.push_back(NormalizeItem(KeyCode::ENTER, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::ENTER, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
 
   // FORWARD_DELETE (without FN)
-  vec.push_back(NormalizeItem(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L,
-                              KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L, KeyboardType::MACBOOK));
+  vec.push_back(NormalizeItem(KeyCode::FORWARD_DELETE, Flags(ModifierFlag::SHIFT_L),
+                              KeyCode::FORWARD_DELETE, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
 
   // CURSOR (without FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
-    vec.push_back(NormalizeItem(cursors[i][1], ModifierFlag::CURSOR,
-                                cursors[i][1], ModifierFlag::CURSOR, KeyboardType::MACBOOK));
+    vec.push_back(NormalizeItem(cursors[i][1], Flags(ModifierFlag::CURSOR),
+                                cursors[i][1], Flags(ModifierFlag::CURSOR), KeyboardType::MACBOOK));
   }
 
   // ----------------------------------------
@@ -535,19 +535,19 @@ TEST(KeyCode, reverseNormalizeKey) {
   // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
   // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 11, flags 0x0, key 119, kbdType 37
   {
-    KeyCode key = KeyCode::END;
-    Flags flags = ModifierFlag::FN;
+    KeyCode key(KeyCode::END);
+    Flags flags(ModifierFlag::FN);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::END);
-    EXPECT_EQ(flags, ModifierFlag::FN);
+    EXPECT_EQ(flags, Flags(ModifierFlag::FN));
 
     key = KeyCode::END;
     flags = Flags(0);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::END);
-    EXPECT_EQ(flags, 0);
+    EXPECT_EQ(flags, Flags(0));
   }
 
   // Test case for the following key sequence.
@@ -565,7 +565,7 @@ TEST(KeyCode, reverseNormalizeKey) {
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, ModifierFlag::CURSOR);
+    EXPECT_EQ(flags, Flags(ModifierFlag::CURSOR));
 
     key = KeyCode::CURSOR_RIGHT;
     flags = Flags(ModifierFlag::FN | ModifierFlag::CURSOR);
@@ -659,7 +659,7 @@ TEST(Buttons, add) {
   buttons.add(PointingButton::LEFT);
   EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
 
-  buttons = 0;
+  buttons = Buttons(0);
   buttons.add(PointingButton::LEFT | PointingButton::MIDDLE);
   EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
 }

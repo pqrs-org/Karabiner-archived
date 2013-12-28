@@ -24,31 +24,31 @@ TEST(ButtonStatus, all) {
   // ------------------------------------------------------------
   // set
   {
-    ButtonStatus::set((1 << 3), true);
+    ButtonStatus::set(PointingButton(1 << 3), true);
     EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
 
-    ButtonStatus::set((1 << 11), false);
+    ButtonStatus::set(PointingButton(1 << 11), false);
     EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
 
-    ButtonStatus::set((1 << 11), true);
+    ButtonStatus::set(PointingButton(1 << 11), true);
     EXPECT_EQ(Buttons((1 << 3)), ButtonStatus::makeButtons());
 
-    ButtonStatus::set((1 << 11), true);
+    ButtonStatus::set(PointingButton(1 << 11), true);
     EXPECT_EQ(Buttons((1 << 3) | (1 << 11)), ButtonStatus::makeButtons());
 
-    ButtonStatus::set((1 << 3), false);
+    ButtonStatus::set(PointingButton(1 << 3), false);
     EXPECT_EQ(Buttons((1 << 11)), ButtonStatus::makeButtons());
 
-    ButtonStatus::set((1 << 1), true);
+    ButtonStatus::set(PointingButton(1 << 1), true);
     EXPECT_EQ(Buttons((1 << 1) | (1 << 11)), ButtonStatus::makeButtons());
   }
 
   // ------------------------------------------------------------
   // increase & decrease
-  ButtonStatus::increase(1 << 9);
+  ButtonStatus::increase(Buttons(1 << 9));
   EXPECT_EQ(Buttons((1 << 1) | (1 << 9) | (1 << 11)), ButtonStatus::makeButtons());
 
-  ButtonStatus::decrease((1 << 4) | (1 << 8));
+  ButtonStatus::decrease(Buttons((1 << 4) | (1 << 8)));
   EXPECT_EQ(Buttons((1 << 1) | (1 << 9) | (1 << 11)), ButtonStatus::makeButtons());
 
   // ------------------------------------------------------------
@@ -58,8 +58,8 @@ TEST(ButtonStatus, all) {
 
   // ------------------------------------------------------------
   // lock
-  ButtonStatus::lock_increase((1 << 1) | (1 << 3));
-  ButtonStatus::increase(1 << 5);
+  ButtonStatus::lock_increase(Buttons((1 << 1) | (1 << 3)));
+  ButtonStatus::increase(Buttons(1 << 5));
   EXPECT_EQ(Buttons((1 << 1) | (1 << 3) | (1 << 5)), ButtonStatus::makeButtons());
   ButtonStatus::reset();
   EXPECT_EQ(Buttons((1 << 1) | (1 << 3)), ButtonStatus::makeButtons());
