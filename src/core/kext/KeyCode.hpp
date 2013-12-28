@@ -168,7 +168,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class KeyCode {
   public:
-    KeyCode(unsigned int v = 0) : value_(v) {}
+    explicit KeyCode(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(KeyCode other) const { return value_ == other.get(); }
     bool operator!=(KeyCode other) const { return ! (*this == other); }

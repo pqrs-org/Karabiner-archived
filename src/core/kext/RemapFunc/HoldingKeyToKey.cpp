@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               // pass-through (== no break)
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, KeyCode::VK_NONE);
             default:
-              if (KeyCode::VK_NONE == newval && ! index_is_holding_) {
+              if (KeyCode::VK_NONE == KeyCode(newval) && ! index_is_holding_) {
                 index_is_holding_ = true;
               } else {
                 if (index_is_holding_) {

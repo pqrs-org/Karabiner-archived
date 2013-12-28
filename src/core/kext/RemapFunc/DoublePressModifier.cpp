@@ -26,7 +26,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromKey_.key = newval;
+              fromKey_.key = KeyCode(newval);
               keytokey_.add(KeyCode(newval));
               keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
               break;

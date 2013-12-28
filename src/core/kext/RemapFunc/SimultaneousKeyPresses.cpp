@@ -34,7 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
               return;
             }
-            virtualkey_ = newval;
+            virtualkey_ = KeyCode(newval);
             goto finish;
           }
 
@@ -69,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                 case BRIDGE_DATATYPE_KEYCODE:
                   keytokey_.add(virtualkey_);
                   keytokey_.add(fromFlags_);
-                  toKey_raw_ = newval;
+                  toKey_raw_ = KeyCode(newval);
                   break;
 
                 case BRIDGE_DATATYPE_POINTINGBUTTON:
