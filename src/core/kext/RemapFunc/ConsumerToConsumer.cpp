@@ -22,10 +22,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromKey_.key = newval;
+              fromKey_.key = ConsumerKeyCode(newval);
               break;
             default:
-              toKeys_.push_back(PairConsumerKeyFlags(newval));
+              toKeys_.push_back(PairConsumerKeyFlags(ConsumerKeyCode(newval)));
               break;
           }
           ++index_;
