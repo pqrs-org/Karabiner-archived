@@ -47,7 +47,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (count_ + lock_count_ > 0) {
           return button_;
         } else {
-          return 0;
+          return PointingButton();
         }
       }
 

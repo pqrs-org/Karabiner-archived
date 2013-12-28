@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromButton_.button = newval;
+              fromButton_.button = PointingButton(newval);
               break;
             default:
               IOLOG_ERROR("Invalid PointingButtonToKey::add\n");
