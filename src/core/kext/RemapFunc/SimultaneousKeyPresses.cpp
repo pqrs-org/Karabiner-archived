@@ -136,28 +136,29 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::SIMULTANEOUSKEYPRESSES_RAW == newval) {
+          Option option(newval);
+          if (Option::SIMULTANEOUSKEYPRESSES_RAW == option) {
             if (toType_ != TOTYPE_KEY) {
               IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
             } else {
               isToRaw_ = true;
             }
-          } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == newval) {
+          } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == option) {
             isStrictKeyOrder_ = true;
 
-          } else if (Option::USE_SEPARATOR == newval) {
+          } else if (Option::USE_SEPARATOR == option) {
             isUseSeparator_ = true;
 
-          } else if (Option::SEPARATOR == newval) {
+          } else if (Option::SEPARATOR == option) {
             isFromInfoFull_ = true;
 
-          } else if (Option::NOREPEAT == newval ||
-                     Option::KEYTOKEY_BEFORE_KEYDOWN == newval ||
-                     Option::KEYTOKEY_AFTER_KEYUP == newval) {
+          } else if (Option::NOREPEAT == option ||
+                     Option::KEYTOKEY_BEFORE_KEYDOWN == option ||
+                     Option::KEYTOKEY_AFTER_KEYUP == option) {
             if (toType_ != TOTYPE_KEY) {
               IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
             } else {
-              keytokey_.add(Option(newval));
+              keytokey_.add(option);
             }
 
           } else {

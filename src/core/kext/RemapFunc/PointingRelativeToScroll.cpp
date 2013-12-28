@@ -105,10 +105,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::POINTINGRELATIVETOSCROLL_TOFLAGS == newval) {
+          Option option(newval);
+          if (Option::POINTINGRELATIVETOSCROLL_TOFLAGS == option) {
             index_type_ = INDEX_TYPE_TOFLAGS;
           }
-          if (Option::POINTINGRELATIVETOSCROLL_TOKEYS == newval) {
+          if (Option::POINTINGRELATIVETOSCROLL_TOKEYS == option) {
             index_type_ = INDEX_TYPE_TOKEYS;
             isToKeysDefined_ = true;
             keytokey_.add(KeyCode::VK_PSEUDO_KEY);

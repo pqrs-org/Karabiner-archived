@@ -70,7 +70,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::NOREPEAT == newval) {
+          if (Option::NOREPEAT == Option(newval)) {
             consumertoconsumer_.add(Option(newval));
           } else {
             IOLOG_ERROR("KeyToConsumer::add unknown option:%d\n", newval);

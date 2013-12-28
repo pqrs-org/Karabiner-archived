@@ -62,14 +62,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::NOREPEAT == newval) {
+          Option option(newval);
+          if (Option::NOREPEAT == option) {
             isRepeatEnabled_ = false;
-          } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == newval) {
+          } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == option) {
             currentVectorPointer_ = &beforeKeys_;
-          } else if (Option::KEYTOKEY_AFTER_KEYUP == newval) {
+          } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
             currentVectorPointer_ = &afterKeys_;
-          } else if (Option::USE_SEPARATOR == newval ||
-                     Option::SEPARATOR == newval) {
+          } else if (Option::USE_SEPARATOR == option ||
+                     Option::SEPARATOR == option) {
             // do nothing
           } else {
             IOLOG_ERROR("KeyToKey::add unknown option:%d\n", newval);

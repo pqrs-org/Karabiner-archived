@@ -74,9 +74,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case BRIDGE_DATATYPE_OPTION:
         {
-          if (Option::USE_SEPARATOR == newval) {
+          Option option(newval);
+          if (Option::USE_SEPARATOR == option) {
             isUseSeparator_ = true;
-          } else if (Option::SEPARATOR == newval) {
+          } else if (Option::SEPARATOR == option) {
             if (index_ >= 2) {
               index_is_double_pressed_ = true;
             }
