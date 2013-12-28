@@ -55,15 +55,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
   class Flags {
   public:
-    Flags(unsigned int v = 0) : value_(v) {}
-    Flags(ModifierFlag v) : value_(v.get()) {}
+    explicit Flags(unsigned int v = 0) : value_(v) {}
+    explicit Flags(ModifierFlag v) : value_(v.get()) {}
     unsigned int get(void) const { return value_; }
     bool operator==(Flags other) const { return value_ == other.get(); }
     bool operator!=(Flags other) const { return ! (*this == other); }
 
     unsigned int operator~(void) const { return ~value_; }
-    Flags operator|(Flags other) const { return value_ | other.get(); }
-    Flags operator&(Flags other) const { return value_ & other.get(); }
+    Flags operator|(Flags other) const { return Flags(value_ | other.get()); }
+    Flags operator|(ModifierFlag other) const { return *this | Flags(other); }
+    Flags operator&(Flags other) const { return Flags(value_ & other.get()); }
+    Flags operator&(ModifierFlag other) const { return *this & Flags(other); }
 
     static ModifierFlag getModifierFlagByIndex(unsigned int index) {
       switch (index) {
@@ -90,6 +92,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
+    Flags& add(ModifierFlag flag) { return add(Flags(flag)); }
     Flags& remove(Flags flags) {
       // We consider the following case.
       //   (ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R).remove(ModifierFlag::SHIFT_L).
@@ -122,6 +125,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       return *this;
     }
+    Flags& remove(ModifierFlag flag) { return remove(Flags(flag)); }
+
     Flags& stripFN(void)     { return remove(ModifierFlag::FN); }
     Flags& stripCURSOR(void) { return remove(ModifierFlag::CURSOR); }
     Flags& stripKEYPAD(void) { return remove(ModifierFlag::KEYPAD); }
@@ -158,7 +163,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     unsigned int value_;
   };
-  inline Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return lhs.get() | rhs.get(); }
+  inline Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.get() | rhs.get()); }
 
   // ======================================================================
   class KeyCode {

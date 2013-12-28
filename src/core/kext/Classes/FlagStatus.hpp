@@ -28,9 +28,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       int sum(void) const { return count_ + temporary_count_ + lock_count_ + sticky_count_; }
       Flags makeFlag(void) const {
         if (sum() > 0) {
-          return flag_;
+          return Flags(flag_);
         } else {
-          return 0;
+          return Flags();
         }
       }
 
@@ -134,8 +134,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void increase(Flags flags);
     static void decrease(Flags flags);
+    static void increase(ModifierFlag flag) { increase(Flags(flag)); }
+    static void decrease(ModifierFlag flag) { decrease(Flags(flag)); }
     static void temporary_increase(Flags flags);
     static void temporary_decrease(Flags flags);
+    static void temporary_increase(ModifierFlag flag) { temporary_increase(Flags(flag)); }
+    static void temporary_decrease(ModifierFlag flag) { temporary_decrease(Flags(flag)); }
     static void temporary_strip(Flags flags);
     static void lock_increase(Flags flags);
     static void lock_decrease(Flags flags);
@@ -145,8 +149,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void lock_clear(void) { lock_decrease(getLockedFlags()); }
 
     static void sticky_increase(Flags flags);
+    static void sticky_increase(ModifierFlag flag) { sticky_increase(Flags(flag)); }
     static void sticky_decrease(Flags flags);
+    static void sticky_decrease(ModifierFlag flag) { sticky_decrease(Flags(flag)); }
     static void sticky_toggle(Flags flags);
+    static void sticky_toggle(ModifierFlag flag) { sticky_toggle(Flags(flag)); }
     static void sticky_clear(void);
 
   private:
