@@ -1,8 +1,10 @@
 #ifndef FROMEVENT_HPP
 #define FROMEVENT_HPP
 
+#include "IOLogWrapper.hpp"
 #include "ParamsUnion.hpp"
 #include "Vector.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class FromEvent {
@@ -17,10 +19,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
     };
 
-    explicit FromEvent(void)              : isPressing_(false), type_(Type::NONE)                          {}
+    FromEvent(void)                       : isPressing_(false), type_(Type::NONE)                          {}
     explicit FromEvent(KeyCode v)         : isPressing_(false), type_(Type::KEY),             key_(v)      {}
     explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
     explicit FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
+
+    FromEvent(unsigned int datatype, unsigned int v) : isPressing_(false) {
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:         type_ = Type::KEY;             key_      = KeyCode(v);         break;
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE: type_ = Type::CONSUMER_KEY;    consumer_ = ConsumerKeyCode(v); break;
+        case BRIDGE_DATATYPE_POINTINGBUTTON:  type_ = Type::POINTING_BUTTON; button_   = PointingButton(v);  break;
+        default:
+          IOLOG_ERROR("Unknown datatype: %d\n", datatype);
+          type_ = Type::NONE;
+          break;
+      }
+    }
 
     // Return whether pressing state is changed.
     bool changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags);
