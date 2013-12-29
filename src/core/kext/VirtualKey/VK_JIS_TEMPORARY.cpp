@@ -32,8 +32,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.ex_iskeydown) {
       if (savedinputsourcedetail_ == InputSourceDetail::NONE) {
-        savedinputsourcedetail_ = CommonData::getcurrent_workspacedata().inputsourcedetail;
-        currentinputsourcedetail_ = CommonData::getcurrent_workspacedata().inputsourcedetail;
+        savedinputsourcedetail_ = InputSourceDetail(CommonData::getcurrent_workspacedata().inputsourcedetail);
+        currentinputsourcedetail_ = InputSourceDetail(CommonData::getcurrent_workspacedata().inputsourcedetail);
       }
       firekeytoinputdetail(params, inputsourcedetail);
     }

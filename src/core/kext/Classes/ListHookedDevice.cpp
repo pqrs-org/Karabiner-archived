@@ -39,7 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       pid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
 
       if (vid && pid) {
-        deviceIdentifier_.setVendor(vid->unsigned32BitValue());
+        deviceIdentifier_.setVendor(DeviceVendor(vid->unsigned32BitValue()));
         deviceIdentifier_.setProduct(pid->unsigned32BitValue());
 
         goto finish;

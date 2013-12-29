@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_DEVICEVENDOR:
           switch (index_) {
             case 0:
-              deviceIdentifier_.setVendor(newval);
+              deviceIdentifier_.setVendor(DeviceVendor(newval));
               ++index_;
               break;
             default:

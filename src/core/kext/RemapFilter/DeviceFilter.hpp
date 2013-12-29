@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       DeviceFilter(unsigned int t);
       ~DeviceFilter(void);
 
-      void add(unsigned int vendorID, unsigned int productID, unsigned int locationID);
+      void add(DeviceVendor vendorID, unsigned int productID, unsigned int locationID);
 
       bool isblocked(void);
 
