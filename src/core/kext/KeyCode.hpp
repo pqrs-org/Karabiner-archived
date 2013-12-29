@@ -397,7 +397,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class ApplicationType {
   public:
-    ApplicationType(unsigned int v = 0) : value_(v) {}
+    explicit ApplicationType(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(ApplicationType other) const { return value_ == other.get(); }
     bool operator!=(ApplicationType other) const { return ! (*this == other); }
@@ -411,7 +411,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class InputSource {
   public:
-    InputSource(unsigned int v = 0) : value_(v) {}
+    explicit InputSource(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(InputSource other) const { return value_ == other.get(); }
     bool operator!=(InputSource other) const { return ! (*this == other); }
@@ -425,7 +425,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class InputSourceDetail {
   public:
-    InputSourceDetail(unsigned int v = 0) : value_(v) {}
+    explicit InputSourceDetail(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(InputSourceDetail other) const { return value_ == other.get(); }
     bool operator!=(InputSourceDetail other) const { return ! (*this == other); }
@@ -439,7 +439,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class DeviceVendor {
   public:
-    DeviceVendor(unsigned int v = 0) : value_(v) {}
+    explicit DeviceVendor(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(DeviceVendor other) const { return value_ == other.get(); }
     bool operator!=(DeviceVendor other) const { return ! (*this == other); }
