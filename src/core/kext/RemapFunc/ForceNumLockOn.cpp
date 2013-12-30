@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_DEVICEPRODUCT:
           switch (index_) {
             case 1:
-              deviceIdentifier_.setProduct(newval);
+              deviceIdentifier_.setProduct(DeviceProduct(newval));
               ++index_;
               break;
             default:

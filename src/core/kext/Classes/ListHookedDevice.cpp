@@ -40,7 +40,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (vid && pid) {
         deviceIdentifier_.setVendor(DeviceVendor(vid->unsigned32BitValue()));
-        deviceIdentifier_.setProduct(pid->unsigned32BitValue());
+        deviceIdentifier_.setProduct(DeviceProduct(pid->unsigned32BitValue()));
 
         goto finish;
 

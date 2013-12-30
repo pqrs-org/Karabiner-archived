@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    DeviceFilter::add(DeviceVendor vendorID, unsigned int productID, unsigned int locationID)
+    DeviceFilter::add(DeviceVendor vendorID, DeviceProduct productID, DeviceLocation locationID)
     {
       targets_.push_back(DeviceIdentifier(vendorID, productID, locationID));
     }
