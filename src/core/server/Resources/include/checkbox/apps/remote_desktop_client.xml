@@ -10,8 +10,8 @@
       <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
-      <name>Command+XCVSZWF to Ctrl+XCVSZWF</name>
-      <appendix>(only in RDC)</appendix>
+      <name>Command+XCVSZWF to Ctrl+XCVSZWF (only in RDC)</name>
+      <appendix>(Use the following "lazy command keys" together.)</appendix>
       <identifier>remap.app_rdc_commandXCVSZWF2controlXCVSZWF</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
       <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
@@ -24,11 +24,28 @@
       <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::F, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
-      <name>Command+SPACE to Ctrl+SPACE</name>
-      <appendix>(only in RDC)</appendix>
+      <name>Command+SPACE to Ctrl+SPACE (only in RDC)</name>
+      <appendix>(Use the following "lazy command keys" together.)</appendix>
       <identifier>remap.app_rdc_commandSpace2controlSpace</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
       <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Change command keys to lazy command keys.</name>
+      <identifier>remap.app_rdc_command_to_lazy</identifier>
+      <only>REMOTEDESKTOPCONNECTION</only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_L,
+        KeyCode::VK_LAZY_COMMAND_L,
+        KeyCode::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_R,
+        KeyCode::VK_LAZY_COMMAND_R,
+        KeyCode::COMMAND_R,
+      </autogen>
     </item>
     <item>
       <name>Use F12 as Insert</name>
