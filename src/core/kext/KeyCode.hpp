@@ -453,7 +453,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class DeviceProduct {
   public:
-    DeviceProduct(unsigned int v = 0) : value_(v) {}
+    explicit DeviceProduct(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(DeviceProduct other) const { return value_ == other.get(); }
     bool operator!=(DeviceProduct other) const { return ! (*this == other); }
