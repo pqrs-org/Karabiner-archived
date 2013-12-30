@@ -76,7 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       const OSNumber* locationid = NULL;
       locationid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDLocationIDKey));
       if (locationid) {
-        deviceIdentifier_.setLocation(locationid->unsigned32BitValue());
+        deviceIdentifier_.setLocation(DeviceLocation(locationid->unsigned32BitValue()));
       }
     }
 

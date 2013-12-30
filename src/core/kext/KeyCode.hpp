@@ -486,7 +486,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   //
   class DeviceLocation {
   public:
-    DeviceLocation(unsigned int v = 0) : value_(v) {}
+    explicit DeviceLocation(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(DeviceLocation other) const { return value_ == other.get(); }
     bool operator!=(DeviceLocation other) const { return ! (*this == other); }
