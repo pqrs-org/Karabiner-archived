@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_DEVICELOCATION:
           switch (index_) {
             case 2:
-              deviceIdentifier_.setLocation(newval);
+              deviceIdentifier_.setLocation(DeviceLocation(newval));
               ++index_;
               break;
             default:
