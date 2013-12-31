@@ -1,8 +1,10 @@
 #ifndef TOEVENT_HPP
 #define TOEVENT_HPP
 
+#include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
 #include "Vector.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class ToEvent {
@@ -17,10 +19,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
     };
 
-    explicit ToEvent(void)              : type_(Type::NONE)                          {}
+    ToEvent(void)                       : type_(Type::NONE)                          {}
     explicit ToEvent(KeyCode v)         : type_(Type::KEY),             key_(v)      {}
     explicit ToEvent(ConsumerKeyCode v) : type_(Type::CONSUMER_KEY),    consumer_(v) {}
     explicit ToEvent(PointingButton v)  : type_(Type::POINTING_BUTTON), button_(v)   {}
+
+    ToEvent(unsigned int datatype, unsigned int v) {
+      switch (datatype) {
+        case BRIDGE_DATATYPE_KEYCODE:         type_ = Type::KEY;             key_      = KeyCode(v);         break;
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE: type_ = Type::CONSUMER_KEY;    consumer_ = ConsumerKeyCode(v); break;
+        case BRIDGE_DATATYPE_POINTINGBUTTON:  type_ = Type::POINTING_BUTTON; button_   = PointingButton(v);  break;
+        default:
+          IOLOG_ERROR("Unknown datatype: %d\n", datatype);
+          type_ = Type::NONE;
+          break;
+      }
+    }
 
     Flags getFlags(void) const { return flags_; }
     void setFlags(Flags v) { flags_ = v; }
