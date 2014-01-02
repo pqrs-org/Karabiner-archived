@@ -242,9 +242,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params)
+    remap_ScrollWheelEventCallback(ParamsUnion& paramsUnion)
     {
-      RemapPointingParams_scroll remapParams(params);
+      if (paramsUnion.type != ParamsUnion::SCROLL_POINTER) return;
+      if (! paramsUnion.params.params_ScrollWheelEventCallback) return;
+
+      Params_ScrollWheelEventCallback params = *(paramsUnion.params.params_ScrollWheelEventCallback);
+      RemapPointingParams_scroll remapParams(paramsUnion);
 
       RemapClassManager::remap_pointing_scroll(remapParams);
 
