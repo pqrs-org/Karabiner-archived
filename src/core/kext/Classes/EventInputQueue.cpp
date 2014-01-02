@@ -563,7 +563,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
           }
 
-          Core::remap_RelativePointerEventCallback(*params);
+          Core::remap_RelativePointerEventCallback(p->params);
         }
         break;
       }

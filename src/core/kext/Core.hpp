@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ----------------------------------------------------------------------
     void remap_KeyboardEventCallback(ParamsUnion& paramsUnion);
     void remap_KeyboardSpecialEventCallback(ParamsUnion& paramsUnion);
-    void remap_RelativePointerEventCallback(Params_RelativePointerEventCallback& params);
+    void remap_RelativePointerEventCallback(ParamsUnion& paramsUnion);
     void remap_ScrollWheelEventCallback(Params_ScrollWheelEventCallback& params);
   };
 }
