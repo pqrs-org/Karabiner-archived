@@ -578,7 +578,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // So, we need to set EventWatcher::on here.
           EventWatcher::on();
 
-          Core::remap_ScrollWheelEventCallback(*params);
+          Core::remap_ScrollWheelEventCallback(p->params);
         }
         break;
       }
