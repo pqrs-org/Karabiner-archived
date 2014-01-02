@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     params.params_RelativePointerEventCallback = Params_RelativePointerEventCallback::alloc(p);
   }
 
-  ParamsUnion::ParamsUnion(const Params_ScrollWheelEventCallback& p) : type(SCROLL_POINTER)
+  ParamsUnion::ParamsUnion(const Params_ScrollWheelEventCallback& p) : type(SCROLL_WHEEL)
   {
     params.params_ScrollWheelEventCallback = Params_ScrollWheelEventCallback::alloc(p);
   }
@@ -53,7 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case RELATIVE_POINTER:
         DELETE_PARAMS(params.params_RelativePointerEventCallback);
         break;
-      case SCROLL_POINTER:
+      case SCROLL_WHEEL:
         DELETE_PARAMS(params.params_ScrollWheelEventCallback);
         break;
       case WAIT:

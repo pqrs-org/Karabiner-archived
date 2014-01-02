@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       UPDATE_FLAGS,
       KEYBOARD_SPECIAL,
       RELATIVE_POINTER,
-      SCROLL_POINTER,
+      SCROLL_WHEEL,
       WAIT,
     } type;
 

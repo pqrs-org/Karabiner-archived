@@ -120,7 +120,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         break;
       }
-      case ParamsUnion::SCROLL_POINTER:
+      case ParamsUnion::SCROLL_WHEEL:
       {
         Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
         if (params) {
