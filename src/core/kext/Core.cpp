@@ -198,9 +198,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    remap_KeyboardSpecialEventCallback(Params_KeyboardSpecialEventCallback& params)
+    remap_KeyboardSpecialEventCallback(ParamsUnion& paramsUnion)
     {
-      RemapConsumerParams remapParams(params);
+      if (paramsUnion.type != ParamsUnion::KEYBOARD_SPECIAL) return;
+      if (! paramsUnion.params.params_KeyboardSpecialEventCallback) return;
+
+      Params_KeyboardSpecialEventCallback params = *(paramsUnion.params.params_KeyboardSpecialEventCallback);
+      RemapConsumerParams remapParams(paramsUnion);
 
       // ------------------------------------------------------------
       RemapClassManager::remap_consumer(remapParams);

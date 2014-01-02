@@ -526,7 +526,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // ------------------------------------------------------------
           NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
 
-          Core::remap_KeyboardSpecialEventCallback(*params);
+          Core::remap_KeyboardSpecialEventCallback(p->params);
         }
         break;
       }
