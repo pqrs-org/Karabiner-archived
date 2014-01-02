@@ -28,13 +28,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
           switch (index_) {
             case 0:
-              fromEvent_ = FromEvent(KeyCode(newval));
+              fromEvent_ = FromEvent(datatype, newval);
               break;
             default:
-              currentVectorPointer_->push_back(ToEvent(KeyCode(newval)));
+              currentVectorPointer_->push_back(ToEvent(datatype, newval));
               break;
           }
           ++index_;
