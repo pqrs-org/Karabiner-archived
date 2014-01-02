@@ -42,7 +42,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       case ParamsUnion::UPDATE_FLAGS:
-      case ParamsUnion::SCROLL_POINTER:
+      case ParamsUnion::SCROLL_WHEEL:
       case ParamsUnion::WAIT:
         // Do nothing
         break;
