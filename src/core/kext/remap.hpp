@@ -30,9 +30,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // --------------------
   struct RemapPointingParams_relative {
-    RemapPointingParams_relative(const Params_RelativePointerEventCallback& p) :
-      params(p), isremapped(false) {}
+    RemapPointingParams_relative(const ParamsUnion& p) :
+      paramsUnion(p), params(*(p.params.params_RelativePointerEventCallback)), isremapped(false) {}
 
+    const ParamsUnion& paramsUnion;
+    // XXX: Please remove params.
     const Params_RelativePointerEventCallback& params;
     bool isremapped;
   };

@@ -223,9 +223,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    remap_RelativePointerEventCallback(Params_RelativePointerEventCallback& params)
+    remap_RelativePointerEventCallback(ParamsUnion& paramsUnion)
     {
-      RemapPointingParams_relative remapParams(params);
+      if (paramsUnion.type != ParamsUnion::RELATIVE_POINTER) return;
+      if (! paramsUnion.params.params_RelativePointerEventCallback) return;
+
+      Params_RelativePointerEventCallback params = *(paramsUnion.params.params_RelativePointerEventCallback);
+      RemapPointingParams_relative remapParams(paramsUnion);
 
       ButtonStatus::set(params.ex_button, params.ex_isbuttondown);
 
