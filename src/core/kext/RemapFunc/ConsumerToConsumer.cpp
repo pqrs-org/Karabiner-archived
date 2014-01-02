@@ -172,7 +172,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! ptr) return false;
       Params_KeyboardSpecialEventCallback& params = *ptr;
 
-      RemapConsumerParams rp(params);
+      ParamsUnion paramsUnion(params);
+      RemapConsumerParams rp(paramsUnion);
       return remap(rp);
     }
   }
