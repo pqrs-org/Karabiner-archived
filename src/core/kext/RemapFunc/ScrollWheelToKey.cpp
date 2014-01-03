@@ -82,6 +82,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     ScrollWheelToKey::remap(RemapPointingParams_scroll& remapParams)
     {
+      Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+      if (! params) return false;
+
       // ------------------------------------------------------------
       // We treat the first event of continuous events.
       // Ignore following events if the first event is remapped, otherwise pass through them.
@@ -103,8 +106,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // --------------------
       // Ignore first null event.
-      firstScrollWheelEvent_ = ScrollWheel::getScrollWheelFromDelta(remapParams.params.fixedDelta1,
-                                                                    remapParams.params.fixedDelta2);
+      firstScrollWheelEvent_ = ScrollWheel::getScrollWheelFromDelta(params->fixedDelta1,
+                                                                    params->fixedDelta2);
       if (firstScrollWheelEvent_ == ScrollWheel::NONE) {
         return false;
       }

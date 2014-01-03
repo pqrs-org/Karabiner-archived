@@ -38,18 +38,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     FlipScrollWheel::remap(RemapPointingParams_scroll& remapParams)
     {
+      Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
       remapParams.isremapped = true;
 
-      short da1   = remapParams.params.deltaAxis1;
-      short da2   = remapParams.params.deltaAxis2;
-      short da3   = remapParams.params.deltaAxis3;
-      IOFixed fd1 = remapParams.params.fixedDelta1;
-      IOFixed fd2 = remapParams.params.fixedDelta2;
-      IOFixed fd3 = remapParams.params.fixedDelta3;
-      SInt32 pd1  = remapParams.params.pointDelta1;
-      SInt32 pd2  = remapParams.params.pointDelta2;
-      SInt32 pd3  = remapParams.params.pointDelta3;
+      short da1   = params->deltaAxis1;
+      short da2   = params->deltaAxis2;
+      short da3   = params->deltaAxis3;
+      IOFixed fd1 = params->fixedDelta1;
+      IOFixed fd2 = params->fixedDelta2;
+      IOFixed fd3 = params->fixedDelta3;
+      SInt32 pd1  = params->pointDelta1;
+      SInt32 pd2  = params->pointDelta2;
+      SInt32 pd3  = params->pointDelta3;
 
       if (flipHorizontalScroll_) {
         da2 = -da2;
@@ -65,7 +68,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(da1, da2, da3,
                                                                                            fd1, fd2, fd3,
                                                                                            pd1, pd2, pd3,
-                                                                                           remapParams.params.options));
+                                                                                           params->options));
       if (ptr) {
         EventOutputQueue::FireScrollWheel::fire(*ptr);
       }
