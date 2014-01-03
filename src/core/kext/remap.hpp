@@ -42,11 +42,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   struct RemapPointingParams_scroll {
     RemapPointingParams_scroll(const ParamsUnion& p) :
-      paramsUnion(p), params(*(p.params.params_ScrollWheelEventCallback)), isremapped(false) {}
+      paramsUnion(p), isremapped(false) {}
 
     const ParamsUnion& paramsUnion;
-    // XXX: Please remove params.
-    const Params_ScrollWheelEventCallback& params;
     bool isremapped;
   };
 }

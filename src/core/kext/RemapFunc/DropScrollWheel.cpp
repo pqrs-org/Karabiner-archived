@@ -36,6 +36,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DropScrollWheel::remap(RemapPointingParams_scroll& remapParams)
     {
+      Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
       remapParams.isremapped = true;
 
@@ -44,16 +47,16 @@ namespace org_pqrs_KeyRemap4MacBook {
         // We should not drop events which vertical values are 0
         // because it might cause a vertical scroll stuck in some apps (Adobe Photoshop, Illustrator).
 
-        Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(remapParams.params.deltaAxis1,
+        Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(params->deltaAxis1,
                                                                                              0,
                                                                                              0,
-                                                                                             remapParams.params.fixedDelta1,
+                                                                                             params->fixedDelta1,
                                                                                              0,
                                                                                              0,
-                                                                                             remapParams.params.pointDelta1,
+                                                                                             params->pointDelta1,
                                                                                              0,
                                                                                              0,
-                                                                                             remapParams.params.options));
+                                                                                             params->options));
         if (ptr) {
           EventOutputQueue::FireScrollWheel::fire(*ptr);
         }

@@ -41,6 +41,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     ScrollWheelToScrollWheel::remap(RemapPointingParams_scroll& remapParams)
     {
+      Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
       if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
 
@@ -49,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::temporary_decrease(fromFlags_);
       FlagStatus::temporary_increase(toFlags_);
 
-      EventOutputQueue::FireScrollWheel::fire(remapParams.params);
+      EventOutputQueue::FireScrollWheel::fire(*params);
       RemapFunc::PointingRelativeToScroll::cancelScroll();
 
       // We need to restore temporary flags.
