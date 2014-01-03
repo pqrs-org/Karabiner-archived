@@ -31,6 +31,31 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_ScrollWheelEventCallback* params_ScrollWheelEventCallback;
       Params_Wait* params_Wait;
     } params;
+
+    Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const {
+      if (type != KEYBOARD) return NULL;
+      return params.params_KeyboardEventCallBack;
+    }
+    Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const {
+      if (type != UPDATE_FLAGS) return NULL;
+      return params.params_UpdateEventFlagsCallback;
+    }
+    Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const {
+      if (type != KEYBOARD_SPECIAL) return NULL;
+      return params.params_KeyboardSpecialEventCallback;
+    }
+    Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const {
+      if (type != RELATIVE_POINTER) return NULL;
+      return params.params_RelativePointerEventCallback;
+    }
+    Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const {
+      if (type != SCROLL_WHEEL) return NULL;
+      return params.params_ScrollWheelEventCallback;
+    }
+    Params_Wait* get_Params_Wait(void) const {
+      if (type != WAIT) return NULL;
+      return params.params_Wait;
+    }
   };
 }
 
