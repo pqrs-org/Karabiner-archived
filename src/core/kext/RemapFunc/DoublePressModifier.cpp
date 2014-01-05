@@ -97,6 +97,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DoublePressModifier::remap(RemapParams& remapParams)
     {
+      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+      if (! params) return false;
+
       bool result = keytokey_.remap(remapParams);
       if (! result) {
         pressCount_ = 0;
@@ -109,7 +112,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       ic_.begin();
 
-      if (remapParams.params.ex_iskeydown) {
+      if (params->ex_iskeydown) {
         ++pressCount_;
       } else {
         if (pressCount_ >= 2) {

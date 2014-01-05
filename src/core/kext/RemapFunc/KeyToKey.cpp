@@ -101,6 +101,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToKey::remap(RemapParams& remapParams)
     {
+      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
       if (! fromEvent_.changePressingState(remapParams.paramsUnion, FlagStatus::makeFlags(), fromFlags_)) return false;
       remapParams.isremapped = true;
@@ -126,7 +129,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags fromFlags = fromFlags_;
       fromFlags.remove(fromEvent_.getModifierFlag());
 
-      if (remapParams.params.ex_iskeydown) {
+      if (params->ex_iskeydown) {
         retractInput();
       } else {
         restoreInput();
@@ -134,14 +137,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // Handle beforeKeys_
-      if (remapParams.params.ex_iskeydown) {
+      if (params->ex_iskeydown) {
         FlagStatus::temporary_decrease(fromFlags);
 
         for (size_t i = 0; i < beforeKeys_.size(); ++i) {
           FlagStatus::temporary_increase(beforeKeys_[i].getFlags());
 
           Flags f = FlagStatus::makeFlags();
-          KeyboardType keyboardType = remapParams.params.keyboardType;
+          KeyboardType keyboardType = params->keyboardType;
 
           if (beforeKeys_[i].getType() == ToEvent::Type::KEY) {
             EventOutputQueue::FireKey::fire_downup(f, beforeKeys_[i].getKeyCode(), keyboardType);
@@ -161,7 +164,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case 1:
         {
-          EventType newEventType = remapParams.params.ex_iskeydown ? EventType::DOWN : EventType::UP;
+          EventType newEventType = params->ex_iskeydown ? EventType::DOWN : EventType::UP;
           ModifierFlag toModifierFlag = toKeys_[0].getModifierFlag();
 
           if (toModifierFlag == ModifierFlag::NONE && ! toKeys_[0].isEventLikeModifier()) {
@@ -175,7 +178,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               newEventType = EventType::MODIFY;
             }
 
-            if (remapParams.params.ex_iskeydown) {
+            if (params->ex_iskeydown) {
               FlagStatus::increase(toKeys_[0].getFlags() | toModifierFlag);
               FlagStatus::decrease(fromFlags);
             } else {
@@ -189,17 +192,16 @@ namespace org_pqrs_KeyRemap4MacBook {
             Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(newEventType,
                                                                                            FlagStatus::makeFlags(),
                                                                                            toKeys_[0].getKeyCode(),
-                                                                                           remapParams.params.keyboardType,
-                                                                                           remapParams.params.repeat));
+                                                                                           params->keyboardType,
+                                                                                           params->repeat));
             if (! ptr) return false;
-            Params_KeyboardEventCallBack& params = *ptr;
 
-            if (remapParams.params.ex_iskeydown && ! isRepeatEnabled_) {
+            if (params->ex_iskeydown && ! isRepeatEnabled_) {
               KeyboardRepeat::cancel();
             } else {
-              KeyboardRepeat::set(params, getDelayUntilRepeat(), getKeyRepeat());
+              KeyboardRepeat::set(*ptr, getDelayUntilRepeat(), getKeyRepeat());
             }
-            EventOutputQueue::FireKey::fire(params);
+            EventOutputQueue::FireKey::fire(*ptr);
           }
 
           break;
@@ -211,7 +213,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           bool isLastToEventModifierKey        = (lastToEventModifierFlag != ModifierFlag::NONE);
           bool isLastToEventLikeModifier       = lastToEvent.isEventLikeModifier();
 
-          if (remapParams.params.ex_iskeydown) {
+          if (params->ex_iskeydown) {
             KeyboardRepeat::cancel();
 
             FlagStatus::temporary_decrease(fromFlags);
@@ -228,7 +230,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               FlagStatus::temporary_increase(toKeys_[i].getFlags());
 
               Flags f = FlagStatus::makeFlags();
-              KeyboardType keyboardType = remapParams.params.keyboardType;
+              KeyboardType keyboardType = params->keyboardType;
 
               if (toKeys_[i].getType() == ToEvent::Type::KEY) {
                 EventOutputQueue::FireKey::fire_downup(f, toKeys_[i].getKeyCode(), keyboardType);
@@ -251,7 +253,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                 // Intentionally VK_LAZY_* stop sending MODIFY events.
                 // EventOutputQueue::FireModifiers::fire destroys this behavior.
                 if (lastToEvent.getType() == ToEvent::Type::KEY) {
-                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), remapParams.params.keyboardType, false));
+                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), params->keyboardType, false));
                   if (ptr) {
                     EventOutputQueue::FireKey::fire(*ptr);
                   }
@@ -278,7 +280,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               // The unnecessary modifier events occur unless we do it.
               if (isLastToEventLikeModifier) {
                 if (lastToEvent.getType() == ToEvent::Type::KEY) {
-                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), remapParams.params.keyboardType, false));
+                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), params->keyboardType, false));
                   if (ptr) {
                     EventOutputQueue::FireKey::fire(*ptr);
                   }
@@ -300,7 +302,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // Handle afterKeys_
-      if (! remapParams.params.ex_iskeydown) {
+      if (! params->ex_iskeydown) {
         // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
         if (afterKeys_.size() > 0) {
           // clear temporary flags.
@@ -312,7 +314,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             FlagStatus::temporary_increase(afterKeys_[i].getFlags());
 
             Flags f = FlagStatus::makeFlags();
-            KeyboardType keyboardType = remapParams.params.keyboardType;
+            KeyboardType keyboardType = params->keyboardType;
 
             if (afterKeys_[i].getType() == ToEvent::Type::KEY) {
               EventOutputQueue::FireKey::fire_downup(f, afterKeys_[i].getKeyCode(), keyboardType);

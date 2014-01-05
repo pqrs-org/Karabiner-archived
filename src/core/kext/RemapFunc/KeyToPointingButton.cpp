@@ -77,8 +77,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToPointingButton::remap(RemapParams& remapParams)
     {
+      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(params->ex_iskeydown, params->key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
 
       // ------------------------------------------------------------
@@ -99,7 +102,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // *** we need to use FlagStatus::decrease/increase.
       // *** (not temporary_decrease/temporary_increase).
 
-      if (remapParams.params.ex_iskeydown) {
+      if (params->ex_iskeydown) {
         FlagStatus::decrease(fromKey_.flags | fromKey_.key.getModifierFlag());
       }
       // Do not cancel KeyboardRepeat here.
@@ -112,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         case 1:
-          if (remapParams.params.ex_iskeydown) {
+          if (params->ex_iskeydown) {
             FlagStatus::increase(toButtons_[0].flags);
             ButtonStatus::increase(toButtons_[0].button);
           } else {
@@ -123,7 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         case 2:
-          if (remapParams.params.ex_iskeydown) {
+          if (params->ex_iskeydown) {
             for (size_t i = 0; i < toButtons_.size(); ++i) {
               FlagStatus::temporary_increase(toButtons_[i].flags);
 
@@ -138,7 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
       }
 
-      if (! remapParams.params.ex_iskeydown) {
+      if (! params->ex_iskeydown) {
         FlagStatus::increase(fromKey_.flags | fromKey_.key.getModifierFlag());
         EventOutputQueue::FireModifiers::fire();
       }

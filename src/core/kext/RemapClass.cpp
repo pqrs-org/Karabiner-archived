@@ -150,23 +150,26 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::remap(RemapParams& remapParams)
   {
-    if (remapParams.params.ex_iskeydown) {
+    Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+    if (! params) return;
+
+    if (params->ex_iskeydown) {
       if (isblocked()) return;
     } else {
       // We ignore filters_ if active_ is set at KeyDown.
       if (isblocked() && ! active_) return;
     }
 
-#define CALL_UNION_FUNCTION(POINTER) {         \
-    if (POINTER) {                             \
-      if ((POINTER)->remap(remapParams)) {     \
-        if (remapParams.params.ex_iskeydown) { \
-          active_ = true;                      \
-        } else {                               \
-          active_ = false;                     \
-        }                                      \
-      }                                        \
-    }                                          \
+#define CALL_UNION_FUNCTION(POINTER) {     \
+    if (POINTER) {                         \
+      if ((POINTER)->remap(remapParams)) { \
+        if (params->ex_iskeydown) {        \
+          active_ = true;                  \
+        } else {                           \
+          active_ = false;                 \
+        }                                  \
+      }                                    \
+    }                                      \
 }
 
     switch (type_) {

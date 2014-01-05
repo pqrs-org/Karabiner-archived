@@ -9,11 +9,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   struct RemapParams {
     RemapParams(const ParamsUnion& p) :
-      paramsUnion(p), params(*(p.params.params_KeyboardEventCallBack)), isremapped(false) {}
+      paramsUnion(p), isremapped(false) {}
 
     const ParamsUnion& paramsUnion;
-    // XXX: Please remove params.
-    const Params_KeyboardEventCallBack& params;
     bool isremapped;
   };
 
