@@ -38,12 +38,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     FlipPointingRelative::remap(RemapPointingParams_relative& remapParams)
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
-      if (remapParams.params.dx == 0 && remapParams.params.dy == 0) return false;
+      if (params->dx == 0 && params->dy == 0) return false;
       remapParams.isremapped = true;
 
-      int dx = remapParams.params.dx;
-      int dy = remapParams.params.dy;
+      int dx = params->dx;
+      int dy = params->dy;
 
       if (flipHorizontal_) {
         dx = -dx;

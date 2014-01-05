@@ -18,9 +18,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DropPointingRelativeCursorMove::remap(RemapPointingParams_relative& remapParams)
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
 
-      if (remapParams.params.dx != 0 || remapParams.params.dy != 0) {
+      if (params->dx != 0 || params->dy != 0) {
         remapParams.isremapped = true;
         return true;
       }

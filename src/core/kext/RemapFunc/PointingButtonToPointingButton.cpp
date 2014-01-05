@@ -58,6 +58,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     PointingButtonToPointingButton::remap(RemapPointingParams_relative& remapParams)
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (! params) return false;
+
       // Considering mouse drag, we need temporary_decrease fromButton_.flags each event.
       //
       // Note:
@@ -72,7 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // (6) Command_L up
 
       if (remapParams.isremapped) return false;
-      bool isFromButton = fromkeychecker_.isFromPointingButton(remapParams.params, fromButton_.button, fromButton_.flags);
+      bool isFromButton = fromkeychecker_.isFromPointingButton(*params, fromButton_.button, fromButton_.flags);
       if (! isFromButton && ! fromkeychecker_.isactive()) {
         return false;
       }
@@ -95,7 +98,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::temporary_decrease(fromButton_.flags);
 
       if (isFromButton) {
-        if (remapParams.params.ex_isbuttondown) {
+        if (params->ex_isbuttondown) {
           ButtonStatus::decrease(fromButton_.button);
           if (toButtons_.size() == 1) {
             ButtonStatus::increase(toButtons_[0].button);
@@ -116,14 +119,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case 1:
           FlagStatus::temporary_increase(toButtons_[0].flags);
-          EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
+          EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), params->dx, params->dy);
           FlagStatus::temporary_decrease(toButtons_[0].flags);
           break;
 
         case 2:
         {
-          if (! remapParams.params.ex_isbuttondown) {
-            EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), remapParams.params.dx, remapParams.params.dy);
+          if (! params->ex_isbuttondown) {
+            EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), params->dx, params->dy);
           } else {
             for (size_t i = 0; i < toButtons_.size(); ++i) {
               FlagStatus::temporary_increase(toButtons_[i].flags);
