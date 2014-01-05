@@ -20,11 +20,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   // --------------------
   struct RemapConsumerParams {
     RemapConsumerParams(const ParamsUnion& p) :
-      paramsUnion(p), params(*(p.params.params_KeyboardSpecialEventCallback)), isremapped(false) {}
+      paramsUnion(p), isremapped(false) {}
 
     const ParamsUnion& paramsUnion;
-    // XXX: Please remove params.
-    const Params_KeyboardSpecialEventCallback& params;
     bool isremapped;
   };
 

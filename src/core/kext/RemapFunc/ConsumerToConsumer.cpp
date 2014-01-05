@@ -70,8 +70,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     ConsumerToConsumer::remap(RemapConsumerParams& remapParams)
     {
+      Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      if (! fromkeychecker_.isFromKey(params->ex_iskeydown, params->key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
       remapParams.isremapped = true;
 
       // ------------------------------------------------------------
@@ -101,24 +104,23 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 1:
         {
           FlagStatus::temporary_increase(toKeys_[0].flags);
-          Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(remapParams.params.eventType,
+          Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params->eventType,
                                                                                                        FlagStatus::makeFlags(),
                                                                                                        toKeys_[0].key,
                                                                                                        false));
           if (! ptr) return false;
-          Params_KeyboardSpecialEventCallback& params = *ptr;
 
-          if (remapParams.params.ex_iskeydown && ! isRepeatEnabled_) {
+          if (params->ex_iskeydown && ! isRepeatEnabled_) {
             KeyboardRepeat::cancel();
           } else {
-            KeyboardRepeat::set(params);
+            KeyboardRepeat::set(*ptr);
           }
-          EventOutputQueue::FireConsumer::fire(params);
+          EventOutputQueue::FireConsumer::fire(*ptr);
           break;
         }
 
         default:
-          if (remapParams.params.ex_iskeydown) {
+          if (params->ex_iskeydown) {
             KeyboardRepeat::cancel();
 
             for (size_t i = 0; i < toKeys_.size(); ++i) {
