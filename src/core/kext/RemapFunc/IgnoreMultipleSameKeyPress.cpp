@@ -34,12 +34,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams)
     {
+      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+      if (! params) return false;
+
       if (remapParams.isremapped || ! FlagStatus::makeFlags().isOn(fromKey_.flags)) {
         lastkeycode_ = KeyCode::VK_NONE;
         return false;
       }
 
-      if (fromKey_.key == remapParams.params.key &&
+      if (fromKey_.key == params->key &&
           fromKey_.key == lastkeycode_) {
         // disable event.
         remapParams.isremapped = true;
@@ -47,8 +50,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // set lastkeycode_ if KeyUp.
-      if (! remapParams.params.ex_iskeydown) {
-        lastkeycode_ = remapParams.params.key;
+      if (! params->ex_iskeydown) {
+        lastkeycode_ = params->key;
       }
       return false;
     }

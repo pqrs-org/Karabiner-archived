@@ -124,16 +124,19 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams)
     {
+      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+      if (! params) return false;
+
       bool result = keytokey_[KeyToKeyType::FROM].remap(remapParams);
       if (! result) {
-        if (remapParams.params.ex_iskeydown) {
+        if (params->ex_iskeydown) {
           // another key is pressed.
           dokeydown();
         }
         return false;
       }
 
-      if (remapParams.params.ex_iskeydown) {
+      if (params->ex_iskeydown) {
         target_ = this;
         active_ = true;
         periodtype_ = PeriodType::NONE;
