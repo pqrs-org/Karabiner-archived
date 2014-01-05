@@ -96,17 +96,20 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     PointingButtonToKey::remap(RemapPointingParams_relative& remapParams)
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (! params) return false;
+
       if (remapParams.isremapped) return false;
-      if (! fromkeychecker_.isFromPointingButton(remapParams.params, fromButton_.button, fromButton_.flags)) return false;
+      if (! fromkeychecker_.isFromPointingButton(*params, fromButton_.button, fromButton_.flags)) return false;
       remapParams.isremapped = true;
 
-      if (remapParams.params.ex_isbuttondown) {
+      if (params->ex_isbuttondown) {
         retractInput();
       } else {
         restoreInput();
       }
 
-      return keytokey_.call_remap_with_VK_PSEUDO_KEY(remapParams.params.ex_isbuttondown ? EventType::DOWN : EventType::UP);
+      return keytokey_.call_remap_with_VK_PSEUDO_KEY(params->ex_isbuttondown ? EventType::DOWN : EventType::UP);
     }
 
     void

@@ -128,6 +128,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams)
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (! params) return false;
+
       // PointingRelativeToScroll grabs all pointing movement events.
       // Therefore, if user write inappropriate <autogen> (empty flags and empty buttons),
       // user cannot control pointing device at all.
@@ -147,7 +150,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (fromButton_ == PointingButton::NONE) {
         if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
       } else {
-        if (! fromkeychecker_.isFromPointingButton(remapParams.params, fromButton_, fromFlags_) && ! active) return false;
+        if (! fromkeychecker_.isFromPointingButton(*params, fromButton_, fromFlags_) && ! active) return false;
       }
       remapParams.isremapped = true;
 
@@ -207,6 +210,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     PointingRelativeToScroll::toscroll(RemapPointingParams_relative& remapParams)
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (! params) return;
+
       if (! queue_) return;
 
       // ----------------------------------------
@@ -217,8 +223,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         cancelScroll();
       }
 
-      int delta1 = -remapParams.params.dy;
-      int delta2 = -remapParams.params.dx;
+      int delta1 = -params->dy;
+      int delta2 = -params->dx;
 
       chained_ic_.begin();
 

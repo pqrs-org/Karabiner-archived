@@ -164,8 +164,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DependingPressingPeriodKeyToKey::remap(RemapPointingParams_relative& remapParams)
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (! params) return false;
+
       // We treat this event as another key has been pressed.
-      if (remapParams.params.ex_isbuttondown) {
+      if (params->ex_isbuttondown) {
         dokeydown();
       }
       return false;

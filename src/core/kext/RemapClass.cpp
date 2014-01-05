@@ -224,23 +224,26 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
   {
-    if (remapParams.params.ex_isbuttondown) {
+    Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+    if (! params) return;
+
+    if (params->ex_isbuttondown) {
       if (isblocked()) return;
     } else {
       // We ignore filters_ if active_ is set at ButtonDown.
       if (isblocked() && ! active_) return;
     }
 
-#define CALL_UNION_FUNCTION(POINTER) {            \
-    if (POINTER) {                                \
-      if ((POINTER)->remap(remapParams)) {        \
-        if (remapParams.params.ex_isbuttondown) { \
-          active_ = true;                         \
-        } else {                                  \
-          active_ = false;                        \
-        }                                         \
-      }                                           \
-    }                                             \
+#define CALL_UNION_FUNCTION(POINTER) {     \
+    if (POINTER) {                         \
+      if ((POINTER)->remap(remapParams)) { \
+        if (params->ex_isbuttondown) {     \
+          active_ = true;                  \
+        } else {                           \
+          active_ = false;                 \
+        }                                  \
+      }                                    \
+    }                                      \
 }
 
     switch (type_) {
