@@ -154,8 +154,11 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DependingPressingPeriodKeyToKey::remap(RemapConsumerParams& remapParams)
     {
+      Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
+      if (! params) return false;
+
       // We treat this event as another key has been pressed.
-      if (remapParams.params.ex_iskeydown) {
+      if (params->ex_iskeydown) {
         dokeydown();
       }
       return false;

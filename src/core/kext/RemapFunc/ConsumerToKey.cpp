@@ -95,12 +95,15 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     ConsumerToKey::remap(RemapConsumerParams& remapParams)
     {
-      if (! fromkeychecker_.isFromKey(remapParams.params.ex_iskeydown, remapParams.params.key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
+      Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
+      if (! params) return false;
+
+      if (! fromkeychecker_.isFromKey(params->ex_iskeydown, params->key, FlagStatus::makeFlags(), fromKey_.key, fromKey_.flags)) return false;
 
       bool result = consumertoconsumer_.remap(remapParams);
       if (! result) return false;
 
-      return keytokey_.call_remap_with_VK_PSEUDO_KEY(remapParams.params.eventType);
+      return keytokey_.call_remap_with_VK_PSEUDO_KEY(params->eventType);
     }
   }
 }
