@@ -150,10 +150,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   RemapClass::Item::remap(RemapParams& remapParams)
   {
-    Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
-    if (! params) return;
+    bool iskeydown = false;
 
-    if (params->ex_iskeydown) {
+    {
+      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+      if (params) {
+        iskeydown = params->ex_iskeydown;
+      }
+    }
+    {
+      Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+      if (params) {
+        iskeydown = false;
+      }
+    }
+
+    if (iskeydown) {
       if (isblocked()) return;
     } else {
       // We ignore filters_ if active_ is set at KeyDown.
@@ -163,7 +175,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #define CALL_UNION_FUNCTION(POINTER) {     \
     if (POINTER) {                         \
       if ((POINTER)->remap(remapParams)) { \
-        if (params->ex_iskeydown) {        \
+        if (iskeydown) {                   \
           active_ = true;                  \
         } else {                           \
           active_ = false;                 \
@@ -173,13 +185,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 }
 
     switch (type_) {
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_FUNCTION(p_.keyToKey);                   break;
-      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:              CALL_UNION_FUNCTION(p_.keyToConsumer);              break;
-      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:        CALL_UNION_FUNCTION(p_.keyToPointingButton);        break;
       case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:        CALL_UNION_FUNCTION(p_.doublePressModifier);        break;
+      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:            CALL_UNION_FUNCTION(p_.dropScrollWheel);            break;
+      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:            CALL_UNION_FUNCTION(p_.flipScrollWheel);            break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:            CALL_UNION_FUNCTION(p_.holdingKeyToKey);            break;
       case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS: CALL_UNION_FUNCTION(p_.ignoreMultipleSameKeyPress); break;
       case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_FUNCTION(p_.keyOverlaidModifier);        break;
+      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:              CALL_UNION_FUNCTION(p_.keyToConsumer);              break;
+      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_FUNCTION(p_.keyToKey);                   break;
+      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:        CALL_UNION_FUNCTION(p_.keyToPointingButton);        break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:           CALL_UNION_FUNCTION(p_.scrollWheelToKey);           break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:   CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel);   break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);     break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
@@ -260,30 +276,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_UNION_FUNCTION(p_.pointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                CALL_UNION_FUNCTION(p_.holdingKeyToKey);                break;
       case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
-    }
-
-#undef CALL_UNION_FUNCTION
-  }
-
-  void
-  RemapClass::Item::remap(RemapPointingParams_scroll& remapParams)
-  {
-    if (isblocked()) return;
-
-#define CALL_UNION_FUNCTION(POINTER) {              \
-    if (POINTER) { (POINTER)->remap(remapParams); } \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:          CALL_UNION_FUNCTION(p_.dropScrollWheel);          break;
-      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:          CALL_UNION_FUNCTION(p_.flipScrollWheel);          break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL: CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel); break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:         CALL_UNION_FUNCTION(p_.scrollWheelToKey);         break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:          CALL_UNION_FUNCTION(p_.holdingKeyToKey);          break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:      CALL_UNION_FUNCTION(p_.keyOverlaidModifier);      break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
@@ -562,7 +554,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapClass::remap_key(RemapParams& remapParams)
+  RemapClass::remap(RemapParams& remapParams)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
@@ -587,17 +579,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   RemapClass::remap_pointing(RemapPointingParams_relative& remapParams)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        p->remap(remapParams);
-      }
-    }
-  }
-
-  void
-  RemapClass::remap_pointing_scroll(RemapPointingParams_scroll& remapParams)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
@@ -956,7 +937,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     refresh(void)
     {
-      // We use timer to prevent deadlock of lock_. (refresh may be called in the remap_key, remap_consumer, *).
+      // We use timer to prevent deadlock of lock_. (refresh may be called in the "remap" method.)
       enum {
         DELAY = 1,
       };
@@ -986,9 +967,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    remap_key(RemapParams& remapParams)
+    remap(RemapParams& remapParams)
     {
-      CALL_REMAPCLASS_FUNC(remap_key, remapParams);
+      CALL_REMAPCLASS_FUNC(remap, remapParams);
     }
 
     void
@@ -1001,12 +982,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap_pointing(RemapPointingParams_relative& remapParams)
     {
       CALL_REMAPCLASS_FUNC(remap_pointing, remapParams);
-    }
-
-    void
-    remap_pointing_scroll(RemapPointingParams_scroll& remapParams)
-    {
-      CALL_REMAPCLASS_FUNC(remap_pointing_scroll, remapParams);
     }
 
 #undef CALL_REMAPCLASS_FUNC

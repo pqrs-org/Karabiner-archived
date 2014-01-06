@@ -80,7 +80,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    ScrollWheelToKey::remap(RemapPointingParams_scroll& remapParams)
+    ScrollWheelToKey::remap(RemapParams& remapParams)
     {
       Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
       if (! params) return false;

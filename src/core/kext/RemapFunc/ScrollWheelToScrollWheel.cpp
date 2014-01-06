@@ -39,7 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    ScrollWheelToScrollWheel::remap(RemapPointingParams_scroll& remapParams)
+    ScrollWheelToScrollWheel::remap(RemapParams& remapParams)
     {
       Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
       if (! params) return false;

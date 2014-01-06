@@ -169,7 +169,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       FlagStatus::set(params.key, params.flags);
 
-      RemapClassManager::remap_key(remapParams);
+      RemapClassManager::remap(remapParams);
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
@@ -247,8 +247,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_ScrollWheelEventCallback* params = paramsUnion.get_Params_ScrollWheelEventCallback();
       if (! params) return;
 
-      RemapPointingParams_scroll remapParams(paramsUnion);
-      RemapClassManager::remap_pointing_scroll(remapParams);
+      RemapParams remapParams(paramsUnion);
+      RemapClassManager::remap(remapParams);
 
       if (! remapParams.isremapped) {
         EventOutputQueue::FireScrollWheel::fire(*params);
