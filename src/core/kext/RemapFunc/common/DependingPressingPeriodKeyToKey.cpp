@@ -124,34 +124,48 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams)
     {
-      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
-      if (! params) return false;
+      // Params_KeyboardEventCallBack
+      {
+        Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+        if (params) {
+          bool result = keytokey_[KeyToKeyType::FROM].remap(remapParams);
+          if (! result) {
+            if (params->ex_iskeydown) {
+              // another key is pressed.
+              dokeydown();
+            }
+            return false;
+          }
 
-      bool result = keytokey_[KeyToKeyType::FROM].remap(remapParams);
-      if (! result) {
-        if (params->ex_iskeydown) {
-          // another key is pressed.
-          dokeydown();
+          if (params->ex_iskeydown) {
+            target_ = this;
+            active_ = true;
+            periodtype_ = PeriodType::NONE;
+
+            // clear temporary_flags (KeyToKeyType::FROM's flags)
+            FlagStatus::set();
+            savedflags_ = FlagStatus::makeFlags();
+
+            fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
+
+          } else {
+            dokeydown();
+            dokeyup();
+          }
+          return true;
         }
-        return false;
       }
 
-      if (params->ex_iskeydown) {
-        target_ = this;
-        active_ = true;
-        periodtype_ = PeriodType::NONE;
-
-        // clear temporary_flags (KeyToKeyType::FROM's flags)
-        FlagStatus::set();
-        savedflags_ = FlagStatus::makeFlags();
-
-        fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
-
-      } else {
-        dokeydown();
-        dokeyup();
+      // Params_ScrollWheelEventCallback
+      {
+        Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+        if (params) {
+          dokeydown();
+          return false;
+        }
       }
-      return true;
+
+      return false;
     }
 
     bool
@@ -177,14 +191,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (params->ex_isbuttondown) {
         dokeydown();
       }
-      return false;
-    }
-
-    bool
-    DependingPressingPeriodKeyToKey::remap(RemapPointingParams_scroll& remapParams)
-    {
-      // We treat this event as another key has been pressed.
-      dokeydown();
       return false;
     }
 

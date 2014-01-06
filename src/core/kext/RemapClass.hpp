@@ -45,7 +45,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       void remap(RemapParams& remapParams);
       void remap(RemapConsumerParams& remapParams);
       void remap(RemapPointingParams_relative& remapParams);
-      void remap(RemapPointingParams_scroll& remapParams);
       // for DropKeyAfterRemap
       bool drop(const Params_KeyboardEventCallBack& params);
       //
@@ -104,10 +103,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
     void remap_forcenumlockon(ListHookedKeyboard::Item* item);
-    void remap_key(RemapParams& remapParams);
+    void remap(RemapParams& remapParams);
     void remap_consumer(RemapConsumerParams& remapParams);
     void remap_pointing(RemapPointingParams_relative& remapParams);
-    void remap_pointing_scroll(RemapPointingParams_scroll& remapParams);
+
     bool remap_simultaneouskeypresses(void);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
     void call_disabled_callback(void);
@@ -151,10 +150,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void remap_setkeyboardtype(KeyboardType& keyboardType);
     void remap_forcenumlockon(ListHookedKeyboard::Item* item);
-    void remap_key(RemapParams& remapParams);
+    void remap(RemapParams& remapParams);
     void remap_consumer(RemapConsumerParams& remapParams);
     void remap_pointing(RemapPointingParams_relative& remapParams);
-    void remap_pointing_scroll(RemapPointingParams_scroll& remapParams);
 
     // return true if EventInputQueue::queue_ is changed.
     bool remap_simultaneouskeypresses(void);

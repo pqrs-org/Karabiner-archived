@@ -126,7 +126,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool remap(RemapParams& remapParams);
       bool remap(RemapConsumerParams& remapParams);
       bool remap(RemapPointingParams_relative& remapParams);
-      bool remap(RemapPointingParams_scroll& remapParams);
 
       // About trick of KeyToKeyType::FROM's ModifierFlag.
       // Let's consider the following KeyOverlaidModifier.

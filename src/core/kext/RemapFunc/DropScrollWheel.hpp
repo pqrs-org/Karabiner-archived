@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       DropScrollWheel(void);
       ~DropScrollWheel(void);
 
-      bool remap(RemapPointingParams_scroll& remapParams);
+      bool remap(RemapParams& remapParams);
 
       void add(unsigned int datatype, unsigned int newval);
 
