@@ -156,6 +156,17 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
+      // Params_RelativePointerEventCallback
+      {
+        Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+        if (params) {
+          if (params->ex_isbuttondown) {
+            dokeydown();
+          }
+          return false;
+        }
+      }
+
       // Params_ScrollWheelEventCallback
       {
         Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
@@ -176,19 +187,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // We treat this event as another key has been pressed.
       if (params->ex_iskeydown) {
-        dokeydown();
-      }
-      return false;
-    }
-
-    bool
-    DependingPressingPeriodKeyToKey::remap(RemapPointingParams_relative& remapParams)
-    {
-      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
-      if (! params) return false;
-
-      // We treat this event as another key has been pressed.
-      if (params->ex_isbuttondown) {
         dokeydown();
       }
       return false;

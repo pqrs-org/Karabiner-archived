@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    PointingButtonToPointingButton::remap(RemapPointingParams_relative& remapParams)
+    PointingButtonToPointingButton::remap(RemapParams& remapParams)
     {
       Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return false;

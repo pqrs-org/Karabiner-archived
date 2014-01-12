@@ -126,7 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    PointingRelativeToScroll::remap(RemapPointingParams_relative& remapParams)
+    PointingRelativeToScroll::remap(RemapParams& remapParams)
     {
       Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return false;
@@ -208,7 +208,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    PointingRelativeToScroll::toscroll(RemapPointingParams_relative& remapParams)
+    PointingRelativeToScroll::toscroll(RemapParams& remapParams)
     {
       Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return;

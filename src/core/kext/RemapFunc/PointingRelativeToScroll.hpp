@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PointingRelativeToScroll(void);
       ~PointingRelativeToScroll(void);
 
-      bool remap(RemapPointingParams_relative& remapParams);
+      bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
       // [0] => fromFlags_
@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         int delta2;
       };
 
-      void toscroll(RemapPointingParams_relative& remapParams);
+      void toscroll(RemapParams& remapParams);
       static unsigned int abs(int v) { return v > 0 ? v : -v; }
       static unsigned int absmax(int v1, int v2) {
         int a1 = abs(v1); int a2 = abs(v2);

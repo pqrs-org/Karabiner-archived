@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlipPointingRelative(void);
       ~FlipPointingRelative(void);
 
-      bool remap(RemapPointingParams_relative& remapParams);
+      bool remap(RemapParams& remapParams);
 
       void add(unsigned int datatype, unsigned int newval);
 
