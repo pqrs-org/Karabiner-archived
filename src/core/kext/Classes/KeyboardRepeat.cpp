@@ -3,7 +3,7 @@
 #include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 #include "ListHookedKeyboard.hpp"
-#include "remap.hpp"
+#include "RemapClass.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   List* KeyboardRepeat::queue_ = NULL;

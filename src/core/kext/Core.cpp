@@ -22,7 +22,6 @@
 #include "RemapFunc/common/DependingPressingPeriodKeyToKey.hpp"
 #include "TimerWrapper.hpp"
 #include "VirtualKey.hpp"
-#include "remap.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace Core {
