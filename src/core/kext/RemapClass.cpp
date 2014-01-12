@@ -159,6 +159,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
     {
+      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      if (params) {
+        iskeydown = params->ex_isbuttondown;
+      }
+    }
+    {
       Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
       if (params) {
         iskeydown = false;
@@ -185,18 +191,23 @@ namespace org_pqrs_KeyRemap4MacBook {
 }
 
     switch (type_) {
-      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:        CALL_UNION_FUNCTION(p_.doublePressModifier);        break;
-      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:            CALL_UNION_FUNCTION(p_.dropScrollWheel);            break;
-      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:            CALL_UNION_FUNCTION(p_.flipScrollWheel);            break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:            CALL_UNION_FUNCTION(p_.holdingKeyToKey);            break;
-      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS: CALL_UNION_FUNCTION(p_.ignoreMultipleSameKeyPress); break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_FUNCTION(p_.keyOverlaidModifier);        break;
-      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:              CALL_UNION_FUNCTION(p_.keyToConsumer);              break;
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_FUNCTION(p_.keyToKey);                   break;
-      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:        CALL_UNION_FUNCTION(p_.keyToPointingButton);        break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:           CALL_UNION_FUNCTION(p_.scrollWheelToKey);           break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:   CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel);   break;
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);     break;
+      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            CALL_UNION_FUNCTION(p_.doublePressModifier);            break;
+      case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: CALL_UNION_FUNCTION(p_.dropPointingRelativeCursorMove); break;
+      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                CALL_UNION_FUNCTION(p_.dropScrollWheel);                break;
+      case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           CALL_UNION_FUNCTION(p_.flipPointingRelative);           break;
+      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                CALL_UNION_FUNCTION(p_.flipScrollWheel);                break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                CALL_UNION_FUNCTION(p_.holdingKeyToKey);                break;
+      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     CALL_UNION_FUNCTION(p_.ignoreMultipleSameKeyPress);     break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
+      case BRIDGE_REMAPTYPE_KEYTOCONSUMER:                  CALL_UNION_FUNCTION(p_.keyToConsumer);                  break;
+      case BRIDGE_REMAPTYPE_KEYTOKEY:                       CALL_UNION_FUNCTION(p_.keyToKey);                       break;
+      case BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON:            CALL_UNION_FUNCTION(p_.keyToPointingButton);            break;
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            CALL_UNION_FUNCTION(p_.pointingButtonToKey);            break;
+      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: CALL_UNION_FUNCTION(p_.pointingButtonToPointingButton); break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_UNION_FUNCTION(p_.pointingRelativeToScroll);       break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               CALL_UNION_FUNCTION(p_.scrollWheelToKey);               break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel);       break;
+      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);         break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
@@ -235,47 +246,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_CONSUMERTOKEY:       CALL_UNION_FUNCTION(p_.consumerToKey);       break;
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:     CALL_UNION_FUNCTION(p_.holdingKeyToKey);     break;
       case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER: CALL_UNION_FUNCTION(p_.keyOverlaidModifier); break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
-    }
-
-#undef CALL_UNION_FUNCTION
-  }
-
-  void
-  RemapClass::Item::remap(RemapPointingParams_relative& remapParams)
-  {
-    Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
-    if (! params) return;
-
-    if (params->ex_isbuttondown) {
-      if (isblocked()) return;
-    } else {
-      // We ignore filters_ if active_ is set at ButtonDown.
-      if (isblocked() && ! active_) return;
-    }
-
-#define CALL_UNION_FUNCTION(POINTER) {     \
-    if (POINTER) {                         \
-      if ((POINTER)->remap(remapParams)) { \
-        if (params->ex_isbuttondown) {     \
-          active_ = true;                  \
-        } else {                           \
-          active_ = false;                 \
-        }                                  \
-      }                                    \
-    }                                      \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: CALL_UNION_FUNCTION(p_.dropPointingRelativeCursorMove); break;
-      case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           CALL_UNION_FUNCTION(p_.flipPointingRelative);           break;
-      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY:            CALL_UNION_FUNCTION(p_.pointingButtonToKey);            break;
-      case BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON: CALL_UNION_FUNCTION(p_.pointingButtonToPointingButton); break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_UNION_FUNCTION(p_.pointingRelativeToScroll);       break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                CALL_UNION_FUNCTION(p_.holdingKeyToKey);                break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
@@ -568,17 +538,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   void
   RemapClass::remap_consumer(RemapConsumerParams& remapParams)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        p->remap(remapParams);
-      }
-    }
-  }
-
-  void
-  RemapClass::remap_pointing(RemapPointingParams_relative& remapParams)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
@@ -976,12 +935,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap_consumer(RemapConsumerParams& remapParams)
     {
       CALL_REMAPCLASS_FUNC(remap_consumer, remapParams);
-    }
-
-    void
-    remap_pointing(RemapPointingParams_relative& remapParams)
-    {
-      CALL_REMAPCLASS_FUNC(remap_pointing, remapParams);
     }
 
 #undef CALL_REMAPCLASS_FUNC

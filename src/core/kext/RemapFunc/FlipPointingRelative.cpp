@@ -36,7 +36,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    FlipPointingRelative::remap(RemapPointingParams_relative& remapParams)
+    FlipPointingRelative::remap(RemapParams& remapParams)
     {
       Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return false;

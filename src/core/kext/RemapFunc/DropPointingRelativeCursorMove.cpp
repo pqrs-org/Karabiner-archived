@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     bool
-    DropPointingRelativeCursorMove::remap(RemapPointingParams_relative& remapParams)
+    DropPointingRelativeCursorMove::remap(RemapParams& remapParams)
     {
       Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return false;

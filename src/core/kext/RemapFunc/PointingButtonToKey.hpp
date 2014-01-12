@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PointingButtonToKey(void);
       ~PointingButtonToKey(void);
 
-      bool remap(RemapPointingParams_relative& remapParams);
+      bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
       // [0] => fromButton_
