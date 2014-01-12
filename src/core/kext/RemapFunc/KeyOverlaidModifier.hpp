@@ -13,7 +13,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       ~KeyOverlaidModifier(void);
 
       bool remap(RemapParams& remapParams);
-      bool remap(RemapConsumerParams& remapParams);
 
       // ----------------------------------------
       // [0]   => fromKey_

@@ -159,6 +159,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
     {
+      Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
+      if (params) {
+        iskeydown = params->ex_iskeydown;
+      }
+    }
+    {
       Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (params) {
         iskeydown = params->ex_isbuttondown;
@@ -191,6 +197,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 }
 
     switch (type_) {
+      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER:             CALL_UNION_FUNCTION(p_.consumerToConsumer);             break;
+      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:                  CALL_UNION_FUNCTION(p_.consumerToKey);                  break;
       case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            CALL_UNION_FUNCTION(p_.doublePressModifier);            break;
       case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: CALL_UNION_FUNCTION(p_.dropPointingRelativeCursorMove); break;
       case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                CALL_UNION_FUNCTION(p_.dropScrollWheel);                break;
@@ -208,44 +216,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               CALL_UNION_FUNCTION(p_.scrollWheelToKey);               break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);         break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
-    }
-
-#undef CALL_UNION_FUNCTION
-  }
-
-  void
-  RemapClass::Item::remap(RemapConsumerParams& remapParams)
-  {
-    Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
-    if (! params) return;
-
-    if (params->ex_iskeydown) {
-      if (isblocked()) return;
-    } else {
-      // We ignore filters_ if active_ is set at KeyDown.
-      if (isblocked() && ! active_) return;
-    }
-
-#define CALL_UNION_FUNCTION(POINTER) {     \
-    if (POINTER) {                         \
-      if ((POINTER)->remap(remapParams)) { \
-        if (params->ex_iskeydown) {        \
-          active_ = true;                  \
-        } else {                           \
-          active_ = false;                 \
-        }                                  \
-      }                                    \
-    }                                      \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER:  CALL_UNION_FUNCTION(p_.consumerToConsumer);  break;
-      case BRIDGE_REMAPTYPE_CONSUMERTOKEY:       CALL_UNION_FUNCTION(p_.consumerToKey);       break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:     CALL_UNION_FUNCTION(p_.holdingKeyToKey);     break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER: CALL_UNION_FUNCTION(p_.keyOverlaidModifier); break;
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
@@ -531,17 +501,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (p) {
         // DependingPressingPeriodKeyToKey watches another key status.
         // Therefore, we need to call 'p->remap(remapParams)' for all items.
-        p->remap(remapParams);
-      }
-    }
-  }
-
-  void
-  RemapClass::remap_consumer(RemapConsumerParams& remapParams)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
         p->remap(remapParams);
       }
     }
@@ -929,12 +888,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     remap(RemapParams& remapParams)
     {
       CALL_REMAPCLASS_FUNC(remap, remapParams);
-    }
-
-    void
-    remap_consumer(RemapConsumerParams& remapParams)
-    {
-      CALL_REMAPCLASS_FUNC(remap_consumer, remapParams);
     }
 
 #undef CALL_REMAPCLASS_FUNC

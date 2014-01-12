@@ -124,7 +124,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       ~DependingPressingPeriodKeyToKey(void);
 
       bool remap(RemapParams& remapParams);
-      bool remap(RemapConsumerParams& remapParams);
 
       // About trick of KeyToKeyType::FROM's ModifierFlag.
       // Let's consider the following KeyOverlaidModifier.

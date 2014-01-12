@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ConsumerToKey(void);
       ~ConsumerToKey(void);
 
-      bool remap(RemapConsumerParams& remapParams);
+      bool remap(RemapParams& remapParams);
 
       // [0] => fromKey
       // [1] => toKeys[0]

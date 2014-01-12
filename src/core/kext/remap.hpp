@@ -14,15 +14,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     const ParamsUnion& paramsUnion;
     bool isremapped;
   };
-
-  // --------------------
-  struct RemapConsumerParams {
-    RemapConsumerParams(const ParamsUnion& p) :
-      paramsUnion(p), isremapped(false) {}
-
-    const ParamsUnion& paramsUnion;
-    bool isremapped;
-  };
 }
 
 #endif

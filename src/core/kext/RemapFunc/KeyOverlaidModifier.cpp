@@ -124,6 +124,5 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool KeyOverlaidModifier::remap(RemapParams& remapParams)                  { return dppkeytokey_.remap(remapParams); }
-    bool KeyOverlaidModifier::remap(RemapConsumerParams& remapParams)          { return dppkeytokey_.remap(remapParams); }
   }
 }
