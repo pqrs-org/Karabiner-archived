@@ -2,7 +2,6 @@
 #define REMAPCLASS_HPP
 
 #include "bridge.h"
-#include "remap.hpp"
 #include "RemapFunc/KeyToKey.hpp"
 #include "RemapFunc/KeyToConsumer.hpp"
 #include "RemapFunc/KeyToPointingButton.hpp"
