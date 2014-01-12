@@ -12,7 +12,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       ~HoldingKeyToKey(void);
 
       bool remap(RemapParams& remapParams);
-      bool remap(RemapConsumerParams& remapParams);
 
       // ----------------------------------------
       // [0]   => fromKey_

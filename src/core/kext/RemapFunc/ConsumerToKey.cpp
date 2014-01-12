@@ -93,7 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    ConsumerToKey::remap(RemapConsumerParams& remapParams)
+    ConsumerToKey::remap(RemapParams& remapParams)
     {
       Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
       if (! params) return false;

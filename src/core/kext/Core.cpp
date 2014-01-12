@@ -200,19 +200,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardSpecialEventCallback(ParamsUnion& paramsUnion)
     {
-      if (paramsUnion.type != ParamsUnion::KEYBOARD_SPECIAL) return;
-      if (! paramsUnion.params.params_KeyboardSpecialEventCallback) return;
+      Params_KeyboardSpecialEventCallback* params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+      if (! params) return;
 
-      Params_KeyboardSpecialEventCallback params = *(paramsUnion.params.params_KeyboardSpecialEventCallback);
-      RemapConsumerParams remapParams(paramsUnion);
-
-      // ------------------------------------------------------------
-      RemapClassManager::remap_consumer(remapParams);
+      RemapParams remapParams(paramsUnion);
+      RemapClassManager::remap(remapParams);
 
       // ----------------------------------------
       if (! remapParams.isremapped) {
-        Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType, FlagStatus::makeFlags(), params.key,
-                                                                                                     params.flavor, params.guid, false));
+        Params_KeyboardSpecialEventCallback::auto_ptr ptr(
+          Params_KeyboardSpecialEventCallback::alloc(
+            params->eventType,
+            FlagStatus::makeFlags(),
+            params->key,
+            params->flavor,
+            params->guid,
+            false));
         if (ptr) {
           KeyboardRepeat::set(*ptr);
           EventOutputQueue::FireConsumer::fire(*ptr);
