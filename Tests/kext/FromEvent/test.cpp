@@ -76,6 +76,21 @@ TEST(Generic, getModifierFlag) {
   }
 }
 
+TEST(Generic, getPointingButton) {
+  {
+    FromEvent fe(KeyCode::RETURN);
+    EXPECT_EQ(PointingButton::NONE, fe.getPointingButton());
+  }
+  {
+    FromEvent fe(ConsumerKeyCode::VOLUME_MUTE);
+    EXPECT_EQ(PointingButton::NONE, fe.getPointingButton());
+  }
+  {
+    FromEvent fe(PointingButton::LEFT);
+    EXPECT_EQ(PointingButton::LEFT, fe.getPointingButton());
+  }
+}
+
 TEST(Generic, changePressingState) {
   {
     FromEvent fe(KeyCode::RETURN);
