@@ -56,6 +56,46 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (type != WAIT) return NULL;
       return params.params_Wait;
     }
+
+    bool iskeydown(bool& output) const {
+      output = false;
+
+      switch (type) {
+        case KEYBOARD: {
+          Params_KeyboardEventCallBack* p = get_Params_KeyboardEventCallBack();
+          if (p) {
+            output = p->ex_iskeydown;
+            return true;
+          }
+          break;
+        }
+
+        case KEYBOARD_SPECIAL: {
+          Params_KeyboardSpecialEventCallback* p = get_Params_KeyboardSpecialEventCallback();
+          if (p) {
+            output = p->ex_iskeydown;
+            return true;
+          }
+          break;
+        }
+
+        case RELATIVE_POINTER: {
+          Params_RelativePointerEventCallback* p = get_Params_RelativePointerEventCallback();
+          if (p) {
+            output = p->ex_isbuttondown;
+            return true;
+          }
+          break;
+        }
+
+        case UPDATE_FLAGS:
+        case SCROLL_WHEEL:
+        case WAIT:
+          break;
+      }
+
+      return false;
+    }
   };
 }
 
