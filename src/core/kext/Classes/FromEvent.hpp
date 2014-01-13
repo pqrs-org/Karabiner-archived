@@ -52,6 +52,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (type_ != Type::KEY) return ModifierFlag::NONE;
       return key_.getModifierFlag();
     }
+    PointingButton getPointingButton(void) const {
+      if (type_ != Type::POINTING_BUTTON) return PointingButton::NONE;
+      return button_;
+    }
 
   private:
     bool isTargetEvent(bool& isDown, const ParamsUnion& paramsUnion) const;
