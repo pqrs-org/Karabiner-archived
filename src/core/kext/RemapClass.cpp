@@ -151,30 +151,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::remap(RemapParams& remapParams)
   {
     bool iskeydown = false;
-
-    {
-      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
-      if (params) {
-        iskeydown = params->ex_iskeydown;
-      }
-    }
-    {
-      Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
-      if (params) {
-        iskeydown = params->ex_iskeydown;
-      }
-    }
-    {
-      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
-      if (params) {
-        iskeydown = params->ex_isbuttondown;
-      }
-    }
-    {
-      Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
-      if (params) {
-        iskeydown = false;
-      }
+    if (! remapParams.paramsUnion.iskeydown(iskeydown)) {
+      iskeydown = false;
     }
 
     if (iskeydown) {
