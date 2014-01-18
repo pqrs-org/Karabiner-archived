@@ -51,6 +51,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     bool isEventLikeModifier(void) const;
 
+    void fire_downup(Flags flags, bool add_to_keyrepeat = false);
+
   private:
     Type::Value type_;
     Flags flags_;
