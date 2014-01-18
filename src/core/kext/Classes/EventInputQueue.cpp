@@ -228,10 +228,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapClassManager::remap_forcenumlockon(item);
 
     // ------------------------------------------------------------
-    // "ts & keyboardType" are not used in filters like <not>/<only>.
-    // Therefore, we can set current ts and keyboardType here.
     CommonData::setcurrent_ts(ts);
-    CommonData::setcurrent_keyboardType(params.keyboardType);
 
     // ------------------------------------------------------------
     // Because we handle the key repeat ourself, drop the key repeat by hardware.
@@ -460,6 +457,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       CommonData::setcurrent_deviceIdentifier(front->deviceIdentifier);
+      {
+        Params_KeyboardEventCallBack* params = (front->params).get_Params_KeyboardEventCallBack();
+        if (params) {
+          CommonData::setcurrent_keyboardType(params->keyboardType);
+        }
+      }
 
     } while (RemapClassManager::remap_simultaneouskeypresses());
 
