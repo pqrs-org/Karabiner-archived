@@ -338,9 +338,9 @@ namespace pqrs {
       { "__IgnoreMultipleSameKeyPress__",     BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS },
       { "__KeyOverlaidModifier__",            BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER },
       { "__ConsumerToConsumer__",             BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER },
-      { "__ConsumerToKey__",                  BRIDGE_REMAPTYPE_CONSUMERTOKEY },
+      { "__ConsumerToKey__",                  BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__PointingButtonToPointingButton__", BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON },
-      { "__PointingButtonToKey__",            BRIDGE_REMAPTYPE_POINTINGBUTTONTOKEY },
+      { "__PointingButtonToKey__",            BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__PointingRelativeToScroll__",       BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL },
       { "__DropKeyAfterRemap__",              BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP },
       { "__SetKeyboardType__",                BRIDGE_REMAPTYPE_SETKEYBOARDTYPE },
