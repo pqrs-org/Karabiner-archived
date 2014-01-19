@@ -44,7 +44,7 @@
         <identifier>remap.samples_passthrough</identifier>
         <autogen>__ShowStatusMessage__ Samples</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::C</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
       </item>
@@ -392,7 +392,7 @@
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D,
         </autogen>
-        <autogen>__ConsumerToKey__
+        <autogen>__KeyToKey__
           ConsumerKeyCode::VOLUME_MUTE,
           KeyCode::B,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
@@ -497,32 +497,32 @@
         <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
         <!-- Therefore we cannot change NumLock to Modifier -->
         <identifier>remap.samples_consumertokey</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SHIFT_L</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
       </item>
       <item>
         <name>with ModifierFlag::NONE</name>
         <appendix>Command+Volume Down to Space</appendix>
         <identifier>remap.samples_consumertokey_modifierflag_none</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::SPACE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::SPACE</autogen>
       </item>
       <item>
         <name>NoRepeat</name>
         <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
         <identifier>remap.samples_consumertokey_norepeat</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
       </item>
       <item>
         <name>DelayUntilRepeat, KeyRepeat</name>
         <appendix>Volume Down to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
         <identifier>remap.samples_consumertokey_delayuntilrepeat</identifier>
         <autogen>
-          __ConsumerToKey__
+          __KeyToKey__
           ConsumerKeyCode::VOLUME_DOWN,
           KeyCode::A,
           DelayUntilRepeat::RawValue::0,

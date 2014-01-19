@@ -13,12 +13,12 @@
       <block>
         <only>TERMINAL</only>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
       </block>
       <block>
         <not>TERMINAL</not>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
       </block>
     </item>
 

@@ -14,14 +14,14 @@
       <item>
         <name>Power Key to Command_L</name>
         <identifier>remap.power2commandL</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
       </item>
       <item>
         <name>Power Key to Fn</name>
         <appendix>(+ Fn+Power to Power)</appendix>
         <identifier>remap.power2fn</identifier>
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FN</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::FN</autogen>
       </item>
     </item>
   </item>
