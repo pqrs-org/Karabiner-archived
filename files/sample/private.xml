@@ -24,7 +24,7 @@
     <appendix>Command+LeftClick to F12 (only on MacBookPro2,1 Trackpad)</appendix>
     <identifier>private.pointing_leftclick2f12_trackpad</identifier>
     <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</device_only>
-    <autogen>__PointingButtonToKey__ PointingButton::LEFT, VK_COMMAND, KeyCode::F12</autogen>
+    <autogen>__KeyToKey__ PointingButton::LEFT, VK_COMMAND, KeyCode::F12</autogen>
   </item>
 
   <!-- ============================================================ -->
