@@ -206,7 +206,7 @@
           <identifier vk_config="true">notsave.remap_samples_vk_config_disable_self</identifier>
           <autogen>__ShowStatusMessage__ VK_CONFIG</autogen>
           <autogen>
-            __PointingButtonToKey__
+            __KeyToKey__
             PointingButton::LEFT,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_remap_samples_vk_config_disable_self,
           </autogen>
