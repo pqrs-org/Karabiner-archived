@@ -38,6 +38,23 @@
       <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
+      <name>Command-left/right arrow to option-left/right arrow</name>
+      <identifier>remap.command_left_right_to_option_left_right</identifier>
+
+      <not>REMOTEDESKTOPCONNECTION, VIRTUALMACHINE</not>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
+      </autogen>
+    </item>
+    <item>
       <name>Control+Arrow to Option_L+Arrow</name>
       <identifier>remap.controlArrow2optionLarrow</identifier>
       <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
