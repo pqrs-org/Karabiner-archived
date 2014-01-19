@@ -17,7 +17,7 @@
         <appendix>(Change Brightness Up to Return)</appendix>
         <identifier>remap.app_finder_brightness_up_to_return</identifier>
         <only>FINDER</only>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::RETURN</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::RETURN</autogen>
       </item>
       <item>
         <name>Use F2 to Rename (Use Tab to complete Rename)</name>

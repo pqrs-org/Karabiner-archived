@@ -10,7 +10,7 @@
       <identifier>remap.app_vm_eject2forwarddelete</identifier>
       <only>VIRTUALMACHINE</only>
       <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Change Enter to Control_L</name>

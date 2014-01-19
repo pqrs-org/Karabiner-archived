@@ -1503,12 +1503,12 @@
     <item>
       <name>Eject to Option+Backquote(`)</name>
       <identifier>remap.eject_to_option_backquote</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Eject to Dashboard if no modifiers pressed</name>
       <identifier>remap.eject2dashboard_withoutmodifiers</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::DASHBOARD</autogen>
     </item>
     <item>
       <name>Eject to Control+Shift+Eject (Sleep displays)</name>
@@ -1518,34 +1518,34 @@
     <item>
       <name>Eject to Escape</name>
       <identifier>remap.eject2escape</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::ESCAPE</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::ESCAPE</autogen>
     </item>
     <item>
       <name>Eject to Expose if no modifiers pressed</name>
       <identifier>remap.eject2expose_withoutmodifiers</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
     </item>
     <item>
       <name>Eject to Expose</name>
       <identifier>remap.eject2expose</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::EXPOSE_ALL</autogen>
     </item>
     <item>
       <name>Eject to Forward Delete</name>
       <identifier>remap.eject2forwarddelete</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Eject to Forward Delete</name>
       <appendix>(Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2forwarddelete_retain_fnEject</identifier>
       <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Eject to Forward Delete if no modifiers pressed</name>
       <identifier>remap.eject2forwarddelete_withoutmodifiers</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Eject to Forward Delete</name>
@@ -1553,10 +1553,10 @@
       <identifier>remap.eject2forwarddelete_term_x11</identifier>
       <block>
         <only>TERMINAL, X11</only>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
       </block>
       <block>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
       </block>
     </item>
     <item>
@@ -1564,49 +1564,49 @@
       <appendix>(Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2optionaLdelete</identifier>
       <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Eject to Command+Control+Option+Shift+E</name>
       <identifier>remap.eject2fccosE</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Fn+Eject to Command+Control+Option+Shift+E</name>
       <identifier>remap.fneject2fccosE</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::E, ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Eject to F12</name>
       <identifier>remap.eject2f12</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::F12</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::F12</autogen>
     </item>
     <item>
       <name>Eject to F12 (if no modifiers pressed)</name>
       <identifier>remap.eject2f12_withoutmodifiers</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::F12</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::F12</autogen>
     </item>
     <item>
       <name>Eject to F13</name>
       <appendix>(Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2f13</identifier>
       <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::F13</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::F13</autogen>
     </item>
     <item>
       <name>Eject to F14</name>
       <identifier>remap.eject2f14</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::F14</autogen>
     </item>
     <item>
       <name>Eject to F15</name>
       <identifier>remap.eject2f15</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::F15</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::F15</autogen>
     </item>
     <item>
       <name>Eject to PageDown</name>
       <identifier>remap.eject2pagedown</identifier>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::PAGEDOWN</autogen>
     </item>
   </item>
 
@@ -2115,10 +2115,10 @@
           <appendix>* Brightness Up to F2</appendix>
           <identifier>remap.consumer_to_fkeys_f1</identifier>
           <!-- F1 -->
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
           <autogen>__KeyToKey__      KeyCode::BRIGHTNESS_DOWN,         KeyCode::F1</autogen>
           <!-- F2 -->
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP,   KeyCode::F2</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP,   KeyCode::F2</autogen>
           <autogen>__KeyToKey__      KeyCode::BRIGHTNESS_UP,           KeyCode::F2</autogen>
         </item>
         <item>
@@ -2135,8 +2135,8 @@
           <appendix>* Keyboard Backlit Low to F5</appendix>
           <appendix>* Keyboard Backlit High to F6</appendix>
           <identifier>remap.consumer_to_fkeys_f5</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
         </item>
         <item>
           <name>Music Controls to F7,F8,F9</name>
@@ -2144,9 +2144,9 @@
           <appendix>* Music Play/Pause to F8</appendix>
           <appendix>* Music Next to F9</appendix>
           <identifier>remap.consumer_to_fkeys_f7</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
         </item>
         <item>
           <name>Speaker Controls to F10,F11,F12</name>
@@ -2154,9 +2154,9 @@
           <appendix>* Volume Down to F11</appendix>
           <appendix>* Volume Up to F12</appendix>
           <identifier>remap.consumer_to_fkeys_f10</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
         </item>
       </item>
       <item>
@@ -2168,10 +2168,10 @@
           <appendix>* Fn+Brightness Up to F2</appendix>
           <identifier>remap.fn_consumer_to_fkeys_f1</identifier>
           <!-- F1 -->
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::FN, KeyCode::F1</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::FN, KeyCode::F1</autogen>
           <autogen>__KeyToKey__      KeyCode::BRIGHTNESS_DOWN,         ModifierFlag::FN, KeyCode::F1</autogen>
           <!-- F2 -->
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP,   ModifierFlag::FN, KeyCode::F2</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP,   ModifierFlag::FN, KeyCode::F2</autogen>
           <autogen>__KeyToKey__      KeyCode::BRIGHTNESS_UP,           ModifierFlag::FN, KeyCode::F2</autogen>
         </item>
         <item>
@@ -2188,8 +2188,8 @@
           <appendix>* Fn+Keyboard Backlit Low to F5</appendix>
           <appendix>* Fn+Keyboard Backlit High to F6</appendix>
           <identifier>remap.fn_consumer_to_fkeys_f5</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::FN, KeyCode::F5</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::FN, KeyCode::F6</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::FN, KeyCode::F5</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::FN, KeyCode::F6</autogen>
         </item>
         <item>
           <name>Fn+Music Controls to F7,F8,F9</name>
@@ -2197,9 +2197,9 @@
           <appendix>* Fn+Music Play/Pause to F8</appendix>
           <appendix>* Fn+Music Next to F9</appendix>
           <identifier>remap.fn_consumer_to_fkeys_f7</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV, ModifierFlag::FN, KeyCode::F7</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY, ModifierFlag::FN, KeyCode::F8</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT, ModifierFlag::FN, KeyCode::F9</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV, ModifierFlag::FN, KeyCode::F7</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, ModifierFlag::FN, KeyCode::F8</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT, ModifierFlag::FN, KeyCode::F9</autogen>
         </item>
         <item>
           <name>Fn+Speaker Controls to F10,F11,F12</name>
@@ -2207,9 +2207,9 @@
           <appendix>* Fn+Volume Down to F11</appendix>
           <appendix>* Fn+Volume Up to F12</appendix>
           <identifier>remap.fn_consumer_to_fkeys_f10</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F10</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F11</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP,   ModifierFlag::FN, KeyCode::F12</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F10</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F11</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP,   ModifierFlag::FN, KeyCode::F12</autogen>
         </item>
       </item>
       <item>
@@ -2217,13 +2217,13 @@
         <item>
           <name>Brightness Down to F1</name>
           <identifier>remap.brightnessdown2f1</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
           <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
         </item>
         <item>
           <name>Brightness Up to F2</name>
           <identifier>remap.brightnessup2f2</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
           <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
         </item>
         <item>
@@ -2250,77 +2250,77 @@
         <item>
           <name>Volume Mute to F3</name>
           <identifier>remap.volumemute2f3</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F3</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F3</autogen>
         </item>
         <item>
           <name>Volume Down to F4</name>
           <identifier>remap.volumedown2f4</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F4</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F4</autogen>
         </item>
         <item>
           <name>Volume Up to F5</name>
           <identifier>remap.volumeup2f5</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F5</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F5</autogen>
         </item>
         <item><name>____________________________________________________________</name></item>
         <item>
           <name>Volume Mute to F4</name>
           <identifier>remap.volumemute2f4</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F4</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F4</autogen>
         </item>
         <item>
           <name>Volume Down to F5</name>
           <identifier>remap.volumedown2f5</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F5</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F5</autogen>
         </item>
         <item>
           <name>Volume Up to F6</name>
           <identifier>remap.volumeup2f6</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F6</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F6</autogen>
         </item>
         <item><name>____________________________________________________________</name></item>
         <item>
           <name>Volume Mute to F10</name>
           <identifier>remap.volumemute2f10</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F10</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE,                   KeyCode::F10</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F10</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE,                   KeyCode::F10</autogen>
         </item>
         <item>
           <name>Volume Down to F11</name>
           <identifier>remap.volumedown2f11</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F11</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN,                   KeyCode::F11</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F11</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN,                   KeyCode::F11</autogen>
         </item>
         <item>
           <name>Volume Up to F12</name>
           <identifier>remap.volumeup2f12</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, ModifierFlag::FN, KeyCode::F12</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP,                   KeyCode::F12</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, ModifierFlag::FN, KeyCode::F12</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP,                   KeyCode::F12</autogen>
         </item>
         <item><name>____________________________________________________________</name></item>
         <item>
           <name>Volume Mute to F9</name>
           <identifier>remap.volumemute2f9</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F9</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE,                   KeyCode::F9</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::FN, KeyCode::F9</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE,                   KeyCode::F9</autogen>
         </item>
         <item>
           <name>Volume Down to F10</name>
           <identifier>remap.volumedown2f10</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F10</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN,                   KeyCode::F10</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::FN, KeyCode::F10</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN,                   KeyCode::F10</autogen>
         </item>
         <item>
           <name>Volume Up to F11</name>
           <identifier>remap.volumeup2f11</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, ModifierFlag::FN, KeyCode::F11</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP,                   KeyCode::F11</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, ModifierFlag::FN, KeyCode::F11</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP,                   KeyCode::F11</autogen>
         </item>
         <item><name>____________________________________________________________</name></item>
         <item>
           <name>NumLock to F6</name>
           <identifier>remap.numlock2f6</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::F6</autogen>
         </item>
         <item><name>____________________________________________________________</name></item>
         <item>
@@ -2374,19 +2374,19 @@
         <item>
           <name>Keyboard Light Low to Tab Left ( Command+{ )</name>
           <identifier>remap.light_low_to_tab_left</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item>
           <name>Keyboard Light High to Tab Right ( Command+} )</name>
           <identifier>remap.light_high_to_tab_right</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
         </item>
         <item><name>____________________________________________________________</name></item>
         <item>
           <name>"Rewind/Fast-Forward" to "beginning/end of line" (Command+Left/Right-Arrow)</name>
           <identifier>remap.musicprevnext_to_home_end</identifier>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
         </item>
         <item><name>____________________________________________________________</name></item>
         <item>
@@ -2436,14 +2436,14 @@
           <item>
             <name>Power to Command_L</name>
             <identifier>remap.power2commandL</identifier>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::COMMAND_L</autogen>
           </item>
           <item>
             <name>Power to Delete</name>
             <appendix>(+ Fn+Power to Power)</appendix>
             <identifier>remap.power2delete</identifier>
             <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::DELETE</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::DELETE</autogen>
           </item>
           <item>
             <name>Power to Eject</name>
@@ -2457,21 +2457,21 @@
             <appendix>(+ Fn+Power to Power)</appendix>
             <identifier>remap.power2fn</identifier>
             <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FN</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::FN</autogen>
           </item>
           <item>
             <name>Power to Forward Delete</name>
             <appendix>(+ Fn+Power to Power)</appendix>
             <identifier>remap.power2forwarddelete</identifier>
             <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::FORWARD_DELETE</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::FORWARD_DELETE</autogen>
           </item>
           <item>
             <name>Disable Power Key</name>
             <appendix>(+ Fn+Power to Power)</appendix>
             <identifier>remap.drop_power</identifier>
             <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::POWER, KeyCode::VK_NONE</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::VK_NONE</autogen>
           </item>
         </item>
         <item>
@@ -2492,23 +2492,23 @@
           <appendix>Volume Up to F12</appendix>
           <identifier>remap.functional2fn_2008</identifier>
           <!-- F1 -->
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN,    KeyCode::F1</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN,    KeyCode::F1</autogen>
           <autogen>__KeyToKey__      KeyCode::BRIGHTNESS_DOWN,            KeyCode::F1</autogen>
           <!-- F2 -->
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP,      KeyCode::F2</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP,      KeyCode::F2</autogen>
           <autogen>__KeyToKey__      KeyCode::BRIGHTNESS_UP,              KeyCode::F2</autogen>
           <!-- F3 - F12 -->
           <autogen>__KeyToKey__      KeyCode::EXPOSE_ALL,                 KeyCode::F3</autogen>
           <autogen>__KeyToKey__      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
           <autogen>__KeyToKey__      KeyCode::LAUNCHPAD,                  KeyCode::F4</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
         </item>
         <item>
           <name>MacBookAir3,1 (MacBook Air Late 2010) to Previous Model</name>
@@ -2523,7 +2523,7 @@
           <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
           <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
           <identifier>remap.functional2fn_air3_1_to_previous</identifier>
-          <autogen>__ConsumerToKey__      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
+          <autogen>__KeyToKey__      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PLAY,  ConsumerKeyCode::MUSIC_PREV</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_NEXT,  ConsumerKeyCode::MUSIC_PLAY</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::MUSIC_NEXT</autogen>
@@ -2540,9 +2540,9 @@
             <appendix>Music Next to F9</appendix>
             <identifier>remap.mediaKeysToFKeys</identifier>
             <!-- F7 - F9 -->
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
           </item>
           <item>
             <name>Media Keys to F6..F8</name>
@@ -2551,9 +2551,9 @@
             <appendix>Music Next to F8</appendix>
             <identifier>remap.mediaKeysToFKeys_f6f8</identifier>
             <!-- F6 - F8 -->
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV, KeyCode::F6</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::F7</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT, KeyCode::F8</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV, KeyCode::F6</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::F7</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT, KeyCode::F8</autogen>
           </item>
           <item>
             <name>Fn+Function Keys to Media Keys</name>
@@ -2579,18 +2579,18 @@
             <appendix>(Volume Up to F12)</appendix>
             <identifier vk_config="true">notsave.revert_fnkeys</identifier>
             <autogen>__ShowStatusMessage__ Fn Keys Enabled</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN,    KeyCode::F1</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP,      KeyCode::F2</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN,    KeyCode::F1</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP,      KeyCode::F2</autogen>
             <autogen>__KeyToKey__      KeyCode::EXPOSE_ALL,                 KeyCode::F3</autogen>
             <autogen>__KeyToKey__      KeyCode::DASHBOARD,                  KeyCode::F4</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F5</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV,         KeyCode::F7</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY,         KeyCode::F8</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT,         KeyCode::F9</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE,        KeyCode::F10</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN,        KeyCode::F11</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP,          KeyCode::F12</autogen>
           </item>
           <item>
             <name>Fn - Tap for Real FnLock</name>
@@ -2616,8 +2616,8 @@
               <config_not>notsave_revert_fnkeys</config_not>
               <autogen>__KeyToKey__      KeyCode::EXPOSE_ALL,                 KeyCode::F14</autogen>
               <autogen>__KeyToKey__      KeyCode::DASHBOARD,                  KeyCode::F15</autogen>
-              <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F16</autogen>
-              <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F17</autogen>
+              <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  KeyCode::F16</autogen>
+              <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F17</autogen>
             </block>
           </item>
         </item>
@@ -3355,7 +3355,7 @@
             <appendix>Fn+F12 to Insert</appendix>
             <identifier>remap.air_f12</identifier>
             <autogen>__KeyToKey__ KeyCode::F12, KeyCode::FORWARD_DELETE</autogen>
-            <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::PC_INSERT</autogen>
+            <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::PC_INSERT</autogen>
           </item>
         </item>
 
@@ -3517,13 +3517,13 @@
           <autogen>__KeyToConsumer__      KeyCode::EXPOSE_ALL, ConsumerKeyCode::VOLUME_MUTE</autogen>
           <autogen>__KeyToConsumer__      KeyCode::DASHBOARD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ConsumerKeyCode::VOLUME_UP</autogen>
-          <autogen>__ConsumerToKey__      ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::VK_LOCK_FN</autogen>
+          <autogen>__KeyToKey__      ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::VK_LOCK_FN</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PREV, ConsumerKeyCode::VIDEO_MIRROR</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PLAY, ConsumerKeyCode::KEYBOARDLIGHT_OFF</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_NEXT, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
-          <autogen>__ConsumerToKey__      ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
-          <autogen>__ConsumerToKey__      ConsumerKeyCode::VOLUME_UP,   KeyCode::F12</autogen>
+          <autogen>__KeyToKey__      ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
+          <autogen>__KeyToKey__      ConsumerKeyCode::VOLUME_UP,   KeyCode::F12</autogen>
         </item>
       </item>
     </item>
@@ -5403,7 +5403,7 @@
       <appendix>(+ Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2browsing</identifier>
       <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
     </item>
     <item>
       <name>Fn to Fn</name>
@@ -8304,7 +8304,7 @@
         <identifier>remap.app_vm_eject2forwarddelete</identifier>
         <only>VIRTUALMACHINE</only>
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
       </item>
       <item>
         <name>Change Enter to Control_L</name>
@@ -8468,7 +8468,7 @@
           <appendix>(Change Brightness Up to Return)</appendix>
           <identifier>remap.app_finder_brightness_up_to_return</identifier>
           <only>FINDER</only>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::RETURN</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::RETURN</autogen>
         </item>
         <item>
           <name>Use F2 to Rename (Use Tab to complete Rename)</name>
@@ -8704,20 +8704,20 @@
         <appendix>(For keyboards of F10 == Volume Mute)</appendix>
         <identifier>remap.app_term_functional2function</identifier>
         <only>TERMINAL</only>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
         <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
         <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
         <autogen>__KeyToKey__ KeyCode::EXPOSE_ALL, KeyCode::F3</autogen>
         <autogen>__KeyToKey__ KeyCode::DASHBOARD, KeyCode::F4</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::F5</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV, KeyCode::F7</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT, KeyCode::F9</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F10</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW, KeyCode::F5</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::F6</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV, KeyCode::F7</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT, KeyCode::F9</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F10</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
       </item>
       <item>
         <name>Change Option+y to F18</name>
@@ -8897,8 +8897,8 @@
           <name>Change Brightness Up to Ctrl+U</name>
           <identifier>remap.app_excel_brightnessup_to_ctrlu</identifier>
           <only>EXCEL</only>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
         </item>
         <item>
           <name>Change F2 to Ctrl+U</name>
@@ -10266,8 +10266,8 @@
       <item>
         <name>Fix Keyboard Upgrade!</name>
         <identifier>remap.fix_keyboard_upgrade_0x05ac_0x021a</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::EXPOSE_ALL</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::DASHBOARD</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::EXPOSE_ALL</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::DASHBOARD</autogen>
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
         <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VIDEO_MIRROR, ConsumerKeyCode::MUSIC_PREV</autogen>
@@ -10508,11 +10508,11 @@
         <autogen>__KeyToKey__ KeyCode::F9,  KeyCode::F3</autogen>
         <autogen>__KeyToKey__ KeyCode::F12, KeyCode::F4</autogen>
         <!-- F5 and F6 are mapped correctly as-is: No remapping needed -->
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PREV_18, KeyCode::F7</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::MUSIC_NEXT_17, KeyCode::F9</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F10</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV_18, KeyCode::F7</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::F8</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT_17, KeyCode::F9</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::F10</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
       </item>
     </item>
 
@@ -11518,7 +11518,7 @@
       <item>
         <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
         <identifier>remap.jis_eject2eisuuf13_withoutmodifiers</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::JIS_EISUU, KeyCode::F13</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::JIS_EISUU, KeyCode::F13</autogen>
       </item>
     </item>
     <item>
@@ -20336,7 +20336,7 @@
         <identifier>remap.samples_passthrough</identifier>
         <autogen>__ShowStatusMessage__ Samples</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::C</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
       </item>
@@ -20703,19 +20703,19 @@
         <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
         <!-- Therefore we cannot change NumLock to Modifier -->
         <identifier>remap.samples_consumertokey</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, VK_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, VK_OPTION, KeyCode::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, VK_SHIFT, KeyCode::B</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, VK_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
       </item>
       <item>
         <name>NoRepeat</name>
         <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
         <identifier>remap.samples_consumertokey_norepeat</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
       </item>
     </item>
 
@@ -21233,12 +21233,12 @@
         <block>
           <only>TERMINAL</only>
           <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::B</autogen>
         </block>
         <block>
           <not>TERMINAL</not>
           <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::C</autogen>
         </block>
       </item>
 

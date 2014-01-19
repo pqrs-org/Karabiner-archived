@@ -27,8 +27,8 @@
           <name>Change Brightness Up to Ctrl+U</name>
           <identifier>remap.app_excel_brightnessup_to_ctrlu</identifier>
           <only>EXCEL</only>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-          <autogen>__ConsumerToKey__ ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
           <!--  Brightness Up Key on external keyboard is KeyCode::BRIGHTNESS_UP -->
           <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
           <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_UP,                    ModifierFlag::NONE, KeyCode::U, ModifierFlag::CONTROL_L</autogen>

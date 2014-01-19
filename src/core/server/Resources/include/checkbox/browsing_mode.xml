@@ -36,7 +36,7 @@
       <appendix>(+ Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2browsing</identifier>
       <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
-      <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
     </item>
     <item>
       <name>Fn to Fn</name>

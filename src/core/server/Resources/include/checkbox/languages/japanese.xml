@@ -231,7 +231,7 @@
       <item>
         <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
         <identifier>remap.jis_eject2eisuuf13_withoutmodifiers</identifier>
-        <autogen>__ConsumerToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::JIS_EISUU, KeyCode::F13</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, KeyCode::JIS_EISUU, KeyCode::F13</autogen>
       </item>
     </item>
     <item>
