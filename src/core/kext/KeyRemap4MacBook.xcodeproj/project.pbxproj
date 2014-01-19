@@ -30,10 +30,6 @@
 		34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */; };
 		3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */; };
 		3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */; };
-		343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343BE53711D8347100C7C701 /* ConsumerToKey.cpp */; };
-		343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343BE53811D8347100C7C701 /* ConsumerToKey.hpp */; };
-		344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */; };
-		344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */; };
 		3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */; };
 		3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */; };
 		3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */; };
@@ -193,10 +189,6 @@
 		34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToKey.hpp; path = RemapFunc/ScrollWheelToKey.hpp; sourceTree = "<group>"; };
 		3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_PARTIAL.cpp; path = VirtualKey/VK_PARTIAL.cpp; sourceTree = "<group>"; };
 		3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_PARTIAL.hpp; path = VirtualKey/VK_PARTIAL.hpp; sourceTree = "<group>"; };
-		343BE53711D8347100C7C701 /* ConsumerToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToKey.cpp; path = RemapFunc/ConsumerToKey.cpp; sourceTree = "<group>"; };
-		343BE53811D8347100C7C701 /* ConsumerToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToKey.hpp; path = RemapFunc/ConsumerToKey.hpp; sourceTree = "<group>"; };
-		344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonToKey.cpp; path = RemapFunc/PointingButtonToKey.cpp; sourceTree = "<group>"; };
-		344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonToKey.hpp; path = RemapFunc/PointingButtonToKey.hpp; sourceTree = "<group>"; };
 		3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ForceNumLockOn.cpp; path = RemapFunc/ForceNumLockOn.cpp; sourceTree = "<group>"; };
 		3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ForceNumLockOn.hpp; path = RemapFunc/ForceNumLockOn.hpp; sourceTree = "<group>"; };
 		3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DoublePressModifier.cpp; path = RemapFunc/DoublePressModifier.cpp; sourceTree = "<group>"; };
@@ -414,8 +406,6 @@
 				342BB27A13BB6A7400E18FDD /* common */,
 				345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */,
 				345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */,
-				343BE53711D8347100C7C701 /* ConsumerToKey.cpp */,
-				343BE53811D8347100C7C701 /* ConsumerToKey.hpp */,
 				3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */,
 				3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */,
 				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
@@ -442,8 +432,6 @@
 				34D347E511D8106C00D70815 /* KeyToKey.hpp */,
 				3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */,
 				3484E04711DE10CE00426723 /* KeyToPointingButton.hpp */,
-				344034B111DD5ACA00386638 /* PointingButtonToKey.cpp */,
-				344034B211DD5ACA00386638 /* PointingButtonToKey.hpp */,
 				34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */,
 				34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
@@ -599,7 +587,6 @@
 				345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */,
 				347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */,
 				34340FB3185CA89800D72086 /* Types.hpp in Headers */,
-				343BE53A11D8347100C7C701 /* ConsumerToKey.hpp in Headers */,
 				3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */,
 				34779365185B1FA800B3EF06 /* FromKeyChecker.hpp in Headers */,
 				341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */,
@@ -607,7 +594,6 @@
 				34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */,
 				3477937F185B1FA800B3EF06 /* PressDownKeys.hpp in Headers */,
 				34379D0F11DB958900CD588D /* PointingButtonToPointingButton.hpp in Headers */,
-				344034B411DD5ACA00386638 /* PointingButtonToKey.hpp in Headers */,
 				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 				3477937D185B1FA800B3EF06 /* ParamsUnion.hpp in Headers */,
 				3477935E185B1FA800B3EF06 /* EventInputQueue.hpp in Headers */,
@@ -756,12 +742,10 @@
 				345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */,
 				347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */,
 				34779357185B1FA800B3EF06 /* ButtonStatus.cpp in Sources */,
-				343BE53911D8347100C7C701 /* ConsumerToKey.cpp in Sources */,
 				3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */,
 				341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */,
 				34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */,
 				34379D0E11DB958900CD588D /* PointingButtonToPointingButton.cpp in Sources */,
-				344034B311DD5ACA00386638 /* PointingButtonToKey.cpp in Sources */,
 				34779361185B1FA800B3EF06 /* EventWatcher.cpp in Sources */,
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 				3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */,
