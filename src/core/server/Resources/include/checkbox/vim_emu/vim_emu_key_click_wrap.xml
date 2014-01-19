@@ -103,7 +103,7 @@
   <autogen>__KeyToKey__ KeyCode::QUOTE, ModifierFlag::NONE,         {{ VIM_EMU_BEFORE }}, KeyCode::QUOTE,         {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE,     {{ VIM_EMU_BEFORE }}, KeyCode::SEMICOLON,     {{ VIM_EMU_AFTER }}</autogen>
   <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::NONE,         {{ VIM_EMU_BEFORE }}, KeyCode::SLASH,         {{ VIM_EMU_AFTER }}</autogen>
-  <autogen>__PointingButtonToKey__ PointingButton::LEFT, {{ VIM_EMU_BEFORE }}, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, {{ VIM_EMU_AFTER }}</autogen>
-  <autogen>__PointingButtonToKey__ PointingButton::RIGHT, {{ VIM_EMU_BEFORE }}, KeyCode::VK_MOUSEKEY_BUTTON_RIGHT, {{ VIM_EMU_AFTER }}</autogen>
-  <autogen>__PointingButtonToKey__ PointingButton::MIDDLE, {{ VIM_EMU_BEFORE }}, KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE, {{ VIM_EMU_AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::LEFT, {{ VIM_EMU_BEFORE }}, KeyCode::VK_MOUSEKEY_BUTTON_LEFT, {{ VIM_EMU_AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::RIGHT, {{ VIM_EMU_BEFORE }}, KeyCode::VK_MOUSEKEY_BUTTON_RIGHT, {{ VIM_EMU_AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::MIDDLE, {{ VIM_EMU_BEFORE }}, KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE, {{ VIM_EMU_AFTER }}</autogen>
 </root>

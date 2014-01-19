@@ -53,7 +53,7 @@
     <item>
       <name>RightClick to toggle Browsing Mode</name>
       <identifier>remap.rightclick_to_browsing</identifier>
-      <autogen>__PointingButtonToKey__ PointingButton::RIGHT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
+      <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::VK_CONFIG_TOGGLE_notsave_browsingmode</autogen>
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>

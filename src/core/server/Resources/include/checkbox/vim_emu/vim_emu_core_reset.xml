@@ -28,7 +28,7 @@
     <identifier>remap.vim_emu_off_with_left_click{{VIM_EMU_ALTCONFIG}}</identifier>
     <config_only>notsave.vim_emu_using{{VIM_EMU_ALTCONFIG}}</config_only>
     <autogen>
-      __PointingButtonToKey__ PointingButton::LEFT,
+      __KeyToKey__ PointingButton::LEFT,
       {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
       KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
     </autogen>

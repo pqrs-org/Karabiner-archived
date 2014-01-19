@@ -164,7 +164,7 @@
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode,
         </autogen>
         <autogen>
-          __PointingButtonToKey__
+          __KeyToKey__
           PointingButton::LEFT,
 
           KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
@@ -172,7 +172,7 @@
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode
         </autogen>
         <autogen>
-          __PointingButtonToKey__
+          __KeyToKey__
           PointingButton::RIGHT,
 
           KeyCode::VK_MOUSEKEY_BUTTON_RIGHT,
@@ -180,7 +180,7 @@
           KeyCode::VK_CONFIG_FORCE_OFF_notsave_cmdtab_mode
         </autogen>
         <autogen>
-          __PointingButtonToKey__
+          __KeyToKey__
           PointingButton::MIDDLE,
 
           KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE,

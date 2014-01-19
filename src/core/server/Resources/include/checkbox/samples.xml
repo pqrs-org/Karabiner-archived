@@ -398,7 +398,7 @@
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D,
         </autogen>
-        <autogen>__PointingButtonToKey__
+        <autogen>__KeyToKey__
           PointingButton::RIGHT,
           KeyCode::B,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
@@ -1397,34 +1397,34 @@
         <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
         <appendix>Control_L+LeftClick to Space</appendix>
         <identifier>remap.samples_pointingbuttontokey</identifier>
-        <autogen>__PointingButtonToKey__ PointingButton::MIDDLE, KeyCode::RETURN</autogen>
-        <autogen>__PointingButtonToKey__ PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
-        <autogen>__PointingButtonToKey__ PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ PointingButton::MIDDLE, KeyCode::RETURN</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
         <block>
           <only>TERMINAL</only>
-          <autogen>__PointingButtonToKey__ PointingButton::RIGHT, KeyCode::TAB</autogen>
+          <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::TAB</autogen>
         </block>
-        <autogen>__PointingButtonToKey__ PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
-        <autogen>__PointingButtonToKey__ PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
       </item>
       <item>
         <name>Standard2</name>
         <appendix>RightClick to CapsLock,A</appendix>
         <identifier>remap.samples_pointingbuttontokey2</identifier>
-        <autogen>__PointingButtonToKey__ PointingButton::RIGHT, KeyCode::CAPSLOCK, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::CAPSLOCK, KeyCode::A</autogen>
       </item>
       <item>
         <name>NoRepeat</name>
         <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
         <identifier>remap.samples_pointingbuttontokey_norepeat</identifier>
-        <autogen>__PointingButtonToKey__ PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
       </item>
       <item>
         <name>DelayUntilRepeat, KeyRepeat</name>
         <appendix>RightClick to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
         <identifier>remap.samples_pointingbuttontokey_delayuntilrepeat</identifier>
         <autogen>
-          __PointingButtonToKey__
+          __KeyToKey__
           PointingButton::RIGHT,
           KeyCode::A,
           DelayUntilRepeat::RawValue::0,
