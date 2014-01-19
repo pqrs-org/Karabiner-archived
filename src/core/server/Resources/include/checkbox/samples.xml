@@ -142,6 +142,8 @@
         <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
         <appendix>1 to A (only if no Modifiers)</appendix>
         <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
+        <appendix>Command+Volume Down to Space (if no other modifiers pressed)</appendix>
+        <appendix>RightClick to CapsLock,A</appendix>
         <identifier>remap.samples_keytokey_key2xxx</identifier>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
@@ -158,6 +160,19 @@
         <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::A</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+          KeyCode::SPACE,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          <!-- from -->
+          PointingButton::RIGHT,
+          <!-- to -->
+          KeyCode::CAPSLOCK,
+          KeyCode::A,
+        </autogen>
       </item>
 
       <item>
@@ -246,6 +261,48 @@
       </item>
 
       <item>
+        <name>ConsumerKeyCode to KeyCode</name>
+        <appendix>Command+Volume Down to A,S,Shift_L+D,Control_L+F,G</appendix>
+        <appendix>Volume Down to A</appendix>
+        <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
+        <appendix>Shift+Volume Up to B (with Modifier)</appendix>
+        <appendix>Volume Up to Control_L (to Modifier)</appendix>
+        <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
+        <appendix>NumLock to A</appendix>
+        <!-- Note: -->
+        <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
+        <!-- Therefore we cannot change NumLock to Modifier -->
+        <identifier>remap.samples_consumertokey</identifier>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
+      </item>
+
+      <item>
+        <name>PointingButton to KeyCode</name>
+        <appendix>MiddleClick to Return</appendix>
+        <appendix>Option_L+RightClick to Shift_L</appendix>
+        <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
+        <appendix>RightClick to Control_L</appendix>
+        <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
+        <appendix>Control_L+LeftClick to Space</appendix>
+        <identifier>remap.samples_pointingbuttontokey</identifier>
+        <autogen>__KeyToKey__ PointingButton::MIDDLE, KeyCode::RETURN</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
+        <block>
+          <only>TERMINAL</only>
+          <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::TAB</autogen>
+        </block>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
+      </item>
+
+      <item>
         <name>Combination</name>
         <appendix>A to B,C (Standard)</appendix>
         <appendix>B to A,B,Shift_L+C,D,Control_L+P (Key To)</appendix>
@@ -319,19 +376,39 @@
         <appendix>1 to A (with Option::NOREPEAT)</appendix>
         <appendix>2 to A,B,C (with Option::NOREPEAT)</appendix>
         <appendix>3 to Shift_L (with Option::NOREPEAT)</appendix>
+        <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
+        <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
         <identifier>remap.samples_keytokey_norepeat</identifier>
         <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::A, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::A, KeyCode::B, KeyCode::C, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::SHIFT_L, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
       </item>
 
       <item>
         <name>DelayUntilRepeat, KeyRepeat</name>
         <appendix>1 to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <appendix>Volume Down to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <appendix>RightClick to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
         <identifier>remap.samples_keytokey_delayuntilrepeat</identifier>
         <autogen>
           __KeyToKey__
           KeyCode::KEY_1,
+          KeyCode::A,
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::VOLUME_DOWN,
+          KeyCode::A,
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          PointingButton::RIGHT,
           KeyCode::A,
           DelayUntilRepeat::RawValue::0,
           KeyRepeat::RawValue::0,
@@ -479,55 +556,6 @@
         <identifier>remap.samples_keytoconsumer_norepeat</identifier>
         <autogen>__KeyToConsumer__ KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
         <autogen>__KeyToConsumer__ KeyCode::S, ConsumerKeyCode::VOLUME_UP</autogen>
-      </item>
-    </item>
-
-    <item>
-      <name>ConsumerToKey</name>
-      <item>
-        <name>Standard</name>
-        <appendix>Command+Volume Down to A,S,Shift_L+D,Control_L+F,G</appendix>
-        <appendix>Volume Down to A</appendix>
-        <appendix>Option+Volume Up to Shift_L (Key+Modifier to Modifier)</appendix>
-        <appendix>Shift+Volume Up to B (with Modifier)</appendix>
-        <appendix>Volume Up to Control_L (to Modifier)</appendix>
-        <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
-        <appendix>NumLock to A</appendix>
-        <!-- Note: -->
-        <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
-        <!-- Therefore we cannot change NumLock to Modifier -->
-        <identifier>remap.samples_consumertokey</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
-      </item>
-      <item>
-        <name>with ModifierFlag::NONE</name>
-        <appendix>Command+Volume Down to Space</appendix>
-        <identifier>remap.samples_consumertokey_modifierflag_none</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>NoRepeat</name>
-        <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
-        <identifier>remap.samples_consumertokey_norepeat</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>DelayUntilRepeat, KeyRepeat</name>
-        <appendix>Volume Down to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
-        <identifier>remap.samples_consumertokey_delayuntilrepeat</identifier>
-        <autogen>
-          __KeyToKey__
-          ConsumerKeyCode::VOLUME_DOWN,
-          KeyCode::A,
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
-        </autogen>
       </item>
     </item>
 
@@ -1383,53 +1411,6 @@
         <name>Control+RightClick to Double-LeftClick</name>
         <identifier>remap.samples_pointingbuttontopointingbutton_cr2dl</identifier>
         <autogen>__PointingButtonToPointingButton__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
-      </item>
-    </item>
-
-    <item>
-      <name>PointingButtonToKey</name>
-      <item>
-        <name>Standard</name>
-        <appendix>MiddleClick to Return</appendix>
-        <appendix>Option_L+RightClick to Shift_L</appendix>
-        <appendix>Command_L+RightClick to A, Shift_L+B, Control_L+C</appendix>
-        <appendix>RightClick to Control_L</appendix>
-        <appendix>RightClick to Tab (if application == TERMINAL)</appendix>
-        <appendix>Control_L+LeftClick to Space</appendix>
-        <identifier>remap.samples_pointingbuttontokey</identifier>
-        <autogen>__KeyToKey__ PointingButton::MIDDLE, KeyCode::RETURN</autogen>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, ModifierFlag::OPTION_L, KeyCode::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, ModifierFlag::COMMAND_L, KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
-        <block>
-          <only>TERMINAL</only>
-          <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::TAB</autogen>
-        </block>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::CONTROL_L</autogen>
-        <autogen>__KeyToKey__ PointingButton::LEFT, ModifierFlag::CONTROL_L, KeyCode::SPACE</autogen>
-      </item>
-      <item>
-        <name>Standard2</name>
-        <appendix>RightClick to CapsLock,A</appendix>
-        <identifier>remap.samples_pointingbuttontokey2</identifier>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::CAPSLOCK, KeyCode::A</autogen>
-      </item>
-      <item>
-        <name>NoRepeat</name>
-        <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
-        <identifier>remap.samples_pointingbuttontokey_norepeat</identifier>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>DelayUntilRepeat, KeyRepeat</name>
-        <appendix>RightClick to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
-        <identifier>remap.samples_pointingbuttontokey_delayuntilrepeat</identifier>
-        <autogen>
-          __KeyToKey__
-          PointingButton::RIGHT,
-          KeyCode::A,
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
-        </autogen>
       </item>
     </item>
 
