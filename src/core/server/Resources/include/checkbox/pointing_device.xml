@@ -272,6 +272,26 @@
         </item>
       </item>
       <item>
+        <name>Open Mission Control when you press and hold the right button</name>
+        <identifier>remap.open_mission_control_by_holding_right_button</identifier>
+        <autogen>
+          __HoldingKeyToKey__
+          PointingButton::RIGHT,
+
+          @begin
+          KeyCode::VK_MOUSEKEY_BUTTON_RIGHT,
+          @end
+
+          @begin
+          KeyCode::MISSION_CONTROL,
+          KeyCode::VK_NONE,
+          Option::NOREPEAT,
+          @end
+
+          Option::NOT_INTERRUPTIBLE_BY_SCROLL_WHEEL,
+        </autogen>
+      </item>
+      <item>
         <name>(Simultaneous) LeftClick+RightClick to Dashboard</name>
         <identifier>remap.pointing_leftrightclick2dashboard</identifier>
         <autogen>__SimultaneousKeyPresses__ PointingButton::LEFT, PointingButton::RIGHT, KeyCode::DASHBOARD</autogen>
