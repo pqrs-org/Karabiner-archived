@@ -1,6 +1,7 @@
 #ifndef HOLDINGKEYTOKEY_HPP
 #define HOLDINGKEYTOKEY_HPP
 
+#include "FromEvent.hpp"
 #include "RemapFuncClasses.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
 
@@ -27,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       size_t index_;
       bool index_is_holding_;
-      ModifierFlag fromKeyFlag_;
+      FromEvent fromEvent_;
 
       DependingPressingPeriodKeyToKey dppkeytokey_;
     };

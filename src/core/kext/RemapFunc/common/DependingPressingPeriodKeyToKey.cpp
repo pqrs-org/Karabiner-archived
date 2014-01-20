@@ -103,7 +103,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       active_(false),
       periodtype_(PeriodType::NONE),
       isAnyEventHappen_(false),
-      keyboardRepeatID_(0)
+      keyboardRepeatID_(0),
+      interruptibleByScrollWheel_(true)
     {}
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)
@@ -118,26 +119,43 @@ namespace org_pqrs_KeyRemap4MacBook {
     DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval)
     {
       if (type == KeyToKeyType::END_) return;
-      keytokey_[type].add(datatype, newval);
+
+      if (datatype == BRIDGE_DATATYPE_OPTION && Option::NOT_INTERRUPTIBLE_BY_SCROLL_WHEEL == Option(newval)) {
+        interruptibleByScrollWheel_ = false;
+      } else {
+        keytokey_[type].add(datatype, newval);
+      }
     }
 
     bool
     DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams)
     {
-      // Params_KeyboardEventCallBack
+      // Params_ScrollWheelEventCallback
       {
-        Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
+        Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
         if (params) {
+          if (interruptibleByScrollWheel_) {
+            dokeydown();
+          }
+          return false;
+        }
+      }
+
+      // Params_KeyboardEventCallBack, Params_KeyboardSpecialEventCallback, Params_RelativePointerEventCallback
+      {
+        bool iskeydown = false;
+        if (remapParams.paramsUnion.iskeydown(iskeydown)) {
           bool result = keytokey_[KeyToKeyType::FROM].remap(remapParams);
+
           if (! result) {
-            if (params->ex_iskeydown) {
+            if (iskeydown) {
               // another key is pressed.
               dokeydown();
             }
             return false;
           }
 
-          if (params->ex_iskeydown) {
+          if (iskeydown) {
             target_ = this;
             active_ = true;
             periodtype_ = PeriodType::NONE;
@@ -153,38 +171,6 @@ namespace org_pqrs_KeyRemap4MacBook {
             dokeyup();
           }
           return true;
-        }
-      }
-
-      // Params_KeyboardSpecialEventCallback
-      {
-        Params_KeyboardSpecialEventCallback* params = remapParams.paramsUnion.get_Params_KeyboardSpecialEventCallback();
-        if (params) {
-          // We treat this event as another key has been pressed.
-          if (params->ex_iskeydown) {
-            dokeydown();
-          }
-          return false;
-        }
-      }
-
-      // Params_RelativePointerEventCallback
-      {
-        Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
-        if (params) {
-          if (params->ex_isbuttondown) {
-            dokeydown();
-          }
-          return false;
-        }
-      }
-
-      // Params_ScrollWheelEventCallback
-      {
-        Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
-        if (params) {
-          dokeydown();
-          return false;
         }
       }
 
