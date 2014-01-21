@@ -15,4 +15,4 @@ FLIPSCROLLWHEEL_HORIZONTAL              --AUTO--
 FLIPSCROLLWHEEL_VERTICAL                --AUTO--
 
 // For __KeyOverlaidModifier__ and __HoldingKeyToKey__
-NOT_INTERRUPTIBLE_BY_SCROLL_WHEEL       --AUTO--
+UNINTERRUPTIBLE_BY_SCROLL_WHEEL         --AUTO--
