@@ -120,7 +120,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (type == KeyToKeyType::END_) return;
 
-      if (datatype == BRIDGE_DATATYPE_OPTION && Option::NOT_INTERRUPTIBLE_BY_SCROLL_WHEEL == Option(newval)) {
+      if (datatype == BRIDGE_DATATYPE_OPTION && Option::UNINTERRUPTIBLE_BY_SCROLL_WHEEL == Option(newval)) {
         interruptibleByScrollWheel_ = false;
       } else {
         keytokey_[type].add(datatype, newval);

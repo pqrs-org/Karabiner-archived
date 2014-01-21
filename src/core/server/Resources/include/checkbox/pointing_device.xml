@@ -288,7 +288,7 @@
           Option::NOREPEAT,
           @end
 
-          Option::NOT_INTERRUPTIBLE_BY_SCROLL_WHEEL,
+          Option::UNINTERRUPTIBLE_BY_SCROLL_WHEEL,
         </autogen>
       </item>
       <item>
