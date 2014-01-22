@@ -1381,6 +1381,7 @@
           <identifier>remap.fnF1_F12_to_functional_mbp31</identifier>
           <autogen>__KeyToConsumer__      KeyCode::EXPOSE_ALL, ConsumerKeyCode::VOLUME_MUTE</autogen>
           <autogen>__KeyToConsumer__      KeyCode::DASHBOARD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
+          <autogen>__KeyToConsumer__      KeyCode::LAUNCHPAD,  ConsumerKeyCode::VOLUME_DOWN</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ConsumerKeyCode::VOLUME_UP</autogen>
           <autogen>__KeyToKey__           ConsumerKeyCode::KEYBOARDLIGHT_HIGH, KeyCode::VK_LOCK_FN</autogen>
           <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PREV, ConsumerKeyCode::VIDEO_MIRROR</autogen>
