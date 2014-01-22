@@ -285,10 +285,14 @@
         </item>
       </item>
       <item>
-        <name>＜かなモード for ATOK＞</name>
+        <name>＜かなモード for ATOK＆かわせみ2＞</name>
         <appendix>（ATOKを「かな入力」に設定してください。）</appendix>
+        <appendix></appendix>
+        <appendix>（かわせみ2の場合、かわせみ2側で以下の2点の設定を行ってください。）</appendix>
+        <appendix>・「かな入力」に設定。</appendix>
+        <appendix>・「入力」＞「capslock動作」を「ONで全角英字入力」に設定。</appendix>
         <item>
-          <name>＜かなモード for ATOK＞ 左シフト＝スペース, 右シフト＝かな</name>
+          <name>＜かなモード for ATOK＆かわせみ2＞ 左シフト＝スペース, 右シフト＝かな</name>
           <identifier>remap.oyayubi_shift_kana_atok_space_kana</identifier>
 
           <include path="keyboard_layouts/oyayubishiftinput_kana_atok.xml">
@@ -304,7 +308,7 @@
 
         </item>
         <item>
-          <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝スペース</name>
+          <name>＜かなモード for ATOK＆かわせみ2＞ 左シフト＝英数, 右シフト＝スペース</name>
           <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
           <identifier>remap.oyayubi_shift_kana_atok_eisuu_space</identifier>
 
@@ -321,67 +325,11 @@
 
         </item>
         <item>
-          <name>＜かなモード for ATOK＞ 左シフト＝英数, 右シフト＝かな</name>
+          <name>＜かなモード for ATOK＆かわせみ2＞ 左シフト＝英数, 右シフト＝かな</name>
           <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
           <identifier>remap.oyayubi_shift_kana_atok_eisuu_kana</identifier>
 
           <include path="keyboard_layouts/oyayubishiftinput_kana_atok.xml">
-            <replacementdef>
-              <replacementname>LEFT_THUMB</replacementname>
-              <replacementvalue>KeyCode::JIS_EISUU</replacementvalue>
-            </replacementdef>
-            <replacementdef>
-              <replacementname>RIGHT_THUMB</replacementname>
-              <replacementvalue>KeyCode::JIS_KANA</replacementvalue>
-            </replacementdef>
-          </include>
-
-        </item>
-      </item>
-      <item><name>──────────────────────────────</name></item>
-      <item>
-        <name>＜かなモード for かわせみ2＞</name>
-        <appendix>（かわせみ2で「かな入力」に設定してください。）</appendix>
-        <appendix>（さらに、かわせみ2で「controlキーで英数字を入力する」を有効にしてください。）</appendix>
-        <item>
-          <name>＜かなモード for かわせみ＞ 左シフト＝スペース, 右シフト＝かな</name>
-          <identifier>remap.oyayubi_shift_kana_kawasemi2_space_kana</identifier>
-
-          <include path="keyboard_layouts/oyayubishiftinput_kana_kawasemi2.xml">
-            <replacementdef>
-              <replacementname>LEFT_THUMB</replacementname>
-              <replacementvalue>KeyCode::SPACE</replacementvalue>
-            </replacementdef>
-            <replacementdef>
-              <replacementname>RIGHT_THUMB</replacementname>
-              <replacementvalue>KeyCode::JIS_KANA</replacementvalue>
-            </replacementdef>
-          </include>
-
-        </item>
-        <item>
-          <name>＜かなモード for かわせみ2＞ 左シフト＝英数, 右シフト＝スペース</name>
-          <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-          <identifier>remap.oyayubi_shift_kana_kawasemi2_eisuu_space</identifier>
-
-          <include path="keyboard_layouts/oyayubishiftinput_kana_kawasemi2.xml">
-            <replacementdef>
-              <replacementname>LEFT_THUMB</replacementname>
-              <replacementvalue>KeyCode::JIS_EISUU</replacementvalue>
-            </replacementdef>
-            <replacementdef>
-              <replacementname>RIGHT_THUMB</replacementname>
-              <replacementvalue>KeyCode::SPACE</replacementvalue>
-            </replacementdef>
-          </include>
-
-        </item>
-        <item>
-          <name>＜かなモード for かわせみ2＞ 左シフト＝英数, 右シフト＝かな</name>
-          <appendix>※下の「EISUU x2 to EISUU」を同時に使うことをおすすめします</appendix>
-          <identifier>remap.oyayubi_shift_kana_kawasemi2_eisuu_kana</identifier>
-
-          <include path="keyboard_layouts/oyayubishiftinput_kana_kawasemi2.xml">
             <replacementdef>
               <replacementname>LEFT_THUMB</replacementname>
               <replacementvalue>KeyCode::JIS_EISUU</replacementvalue>
