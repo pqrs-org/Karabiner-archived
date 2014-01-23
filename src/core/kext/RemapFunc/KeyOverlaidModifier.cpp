@@ -10,8 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyOverlaidModifier::KeyOverlaidModifier(void) :
       isUseSeparator_(false),
       index_is_holding_(true),
-      index_(0),
-      fromKeyFlag_(ModifierFlag::NONE)
+      index_(0)
     {
       dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
     }
@@ -24,6 +23,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
           switch (index_) {
             case 0:
@@ -32,7 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,              KeyCode::VK_PSEUDO_KEY);
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         KeyCode::VK_PSEUDO_KEY);
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, KeyCode::VK_PSEUDO_KEY);
-              fromKeyFlag_ = KeyCode(newval).getModifierFlag();
+              fromEvent_ = FromEvent(datatype, newval);
               break;
 
             default:
@@ -63,11 +64,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM,                     datatype, newval);
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, datatype, newval);
               {
                 Flags flags(newval);
-                if (fromKeyFlag_ != ModifierFlag::NONE) {
-                  flags.remove(fromKeyFlag_);
+                if (fromEvent_.getModifierFlag() != ModifierFlag::NONE) {
+                  flags.remove(fromEvent_.getModifierFlag());
                 }
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             flags);
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,              flags);
@@ -123,6 +124,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    bool KeyOverlaidModifier::remap(RemapParams& remapParams)                  { return dppkeytokey_.remap(remapParams); }
+    bool KeyOverlaidModifier::remap(RemapParams& remapParams) { return dppkeytokey_.remap(remapParams); }
   }
 }

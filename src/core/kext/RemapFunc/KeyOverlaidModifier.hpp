@@ -1,6 +1,7 @@
 #ifndef KEYOVERLAIDMODIFIER_HPP
 #define KEYOVERLAIDMODIFIER_HPP
 
+#include "FromEvent.hpp"
 #include "RemapFuncClasses.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
 
@@ -32,7 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isUseSeparator_;
       bool index_is_holding_;
       size_t index_;
-      ModifierFlag fromKeyFlag_;
+      FromEvent fromEvent_;
 
       DependingPressingPeriodKeyToKey dppkeytokey_;
     };
