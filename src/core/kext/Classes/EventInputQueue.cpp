@@ -555,9 +555,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           // It's more terrible than above problem.
           //
           // Therefore, we call EventWatcher::on in PointingRelativeToScroll::remap.
-          // So we don't need to call EventWatcher::on unless just buttons are pressed or released.
+          // So we don't need to call EventWatcher::on unless just buttons are pressed.
 
-          if (params->ex_button != PointingButton::NONE) {
+          if (params->ex_button != PointingButton::NONE &&
+              params->ex_isbuttondown) {
             EventWatcher::on();
           }
 
