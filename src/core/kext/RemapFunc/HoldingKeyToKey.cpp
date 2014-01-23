@@ -111,6 +111,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    bool HoldingKeyToKey::remap(RemapParams& remapParams)                  { return dppkeytokey_.remap(remapParams); }
+    bool HoldingKeyToKey::remap(RemapParams& remapParams) { return dppkeytokey_.remap(remapParams); }
   }
 }
