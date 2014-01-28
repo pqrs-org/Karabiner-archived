@@ -107,6 +107,13 @@
       <autogen>__KeyOverlaidModifier__ KeyCode::G, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
+      <name>[Option] E to Command+F</name>
+      <appendix>(+ When you keep E pressed, send cmd+alt+ctrl)</appendix>
+      <identifier>option.homerow_mode_e_to_command_f</identifier>
+      <config_only>notsave.homerow_mode</config_only>
+      <autogen>__KeyOverlaidModifier__ KeyCode::E, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
       <name>[Option] H/N to Undo/Redo</name>
       <identifier>option.homerow_mode_h_to_undo</identifier>
       <config_only>notsave.homerow_mode</config_only>
@@ -196,12 +203,6 @@
       <identifier>option.homerow_mode_backslash</identifier>
       <config_only>notsave.homerow_mode</config_only>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::BACKSLASH, ModifierFlag::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>[Option] E to Command+F</name>
-      <identifier>option.homerow_mode_e_to_command_f</identifier>
-      <config_only>notsave.homerow_mode</config_only>
-      <autogen>__KeyToKey__ KeyCode::E, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>[Option] Option+O to Tab</name>
