@@ -32,6 +32,7 @@
         <config_only>option.homerow_mode_u_o_to_delete_space_newline</config_only>
       </block>
       <block>
+        <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::U, ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE, ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::U, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
         <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::O, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::SPACE</autogen>
         <config_only>option.homerow_mode_u_o_to_delete_space</config_only>
@@ -116,6 +117,7 @@
       <name>[Option] U/O to Backspace/Space</name>
       <appendix>+ when you keep U pressed and press O it sends Delete</appendix>
       <appendix>+ when you keep O pressed and press U it sends Spaceback(space+left)</appendix>
+      <appendix>+ Shift+U sends Delete+cmd+alt+ctrl+shift (i.e. to delete line)</appendix>
       <identifier>option.homerow_mode_u_o_to_delete_space</identifier>
       <config_only>notsave.homerow_mode</config_only>
     </item>
