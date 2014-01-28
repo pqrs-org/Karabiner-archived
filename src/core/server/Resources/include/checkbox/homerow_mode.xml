@@ -134,6 +134,14 @@
       <autogen>__KeyToKey__ KeyCode::QUOTE, KeyCode::ESCAPE</autogen>
     </item>
     <item>
+      <name>[Option] P to Forward_Delete</name>
+      <appendix>+ when you keep Shift pressed and press U it sends Forward_Delete+cmd+alt+ctrl+shift (i.e. to delete line)</appendix>
+      <identifier>option.homerow_mode_p_del</identifier>
+      <config_only>notsave.homerow_mode</config_only>
+      <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::P, KeyCode::FORWARD_DELETE</autogen>
+    </item>
+    <item>
       <name>[Option] Y to Command + Delete</name>
       <identifier>option.homerow_mode_y_to_command_delete</identifier>
       <config_only>notsave.homerow_mode</config_only>
