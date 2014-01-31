@@ -32,6 +32,7 @@
         <config_only>option.homerow_mode_u_o_to_delete_space_newline</config_only>
       </block>
       <block>
+        <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::U, ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE, ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::U, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::DELETE</autogen>
         <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::O, KeyCode::VK_MODIFIER_EXTRA5, KeyCode::SPACE</autogen>
         <config_only>option.homerow_mode_u_o_to_delete_space</config_only>
@@ -106,6 +107,13 @@
       <autogen>__KeyOverlaidModifier__ KeyCode::G, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, KeyCode::D, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
+      <name>[Option] E to Command+F</name>
+      <appendix>(+ When you keep E pressed, send cmd+alt+ctrl)</appendix>
+      <identifier>option.homerow_mode_e_to_command_f</identifier>
+      <config_only>notsave.homerow_mode</config_only>
+      <autogen>__KeyOverlaidModifier__ KeyCode::E, KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::OPTION_L | ModifierFlag::CONTROL_L, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
       <name>[Option] H/N to Undo/Redo</name>
       <identifier>option.homerow_mode_h_to_undo</identifier>
       <config_only>notsave.homerow_mode</config_only>
@@ -116,6 +124,7 @@
       <name>[Option] U/O to Backspace/Space</name>
       <appendix>+ when you keep U pressed and press O it sends Delete</appendix>
       <appendix>+ when you keep O pressed and press U it sends Spaceback(space+left)</appendix>
+      <appendix>+ Shift+U sends Delete+cmd+alt+ctrl+shift (i.e. to delete line)</appendix>
       <identifier>option.homerow_mode_u_o_to_delete_space</identifier>
       <config_only>notsave.homerow_mode</config_only>
     </item>
@@ -130,6 +139,14 @@
       <identifier>option.homerow_mode_quote_to_escape</identifier>
       <config_only>notsave.homerow_mode</config_only>
       <autogen>__KeyToKey__ KeyCode::QUOTE, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>[Option] P to Forward_Delete</name>
+      <appendix>+ when you keep Shift pressed and press U it sends Forward_Delete+cmd+alt+ctrl+shift (i.e. to delete line)</appendix>
+      <identifier>option.homerow_mode_p_del</identifier>
+      <config_only>notsave.homerow_mode</config_only>
+      <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::P, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>[Option] Y to Command + Delete</name>
@@ -186,12 +203,6 @@
       <identifier>option.homerow_mode_backslash</identifier>
       <config_only>notsave.homerow_mode</config_only>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::BACKSLASH, ModifierFlag::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>[Option] E to Command+F</name>
-      <identifier>option.homerow_mode_e_to_command_f</identifier>
-      <config_only>notsave.homerow_mode</config_only>
-      <autogen>__KeyToKey__ KeyCode::E, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
       <name>[Option] Option+O to Tab</name>
