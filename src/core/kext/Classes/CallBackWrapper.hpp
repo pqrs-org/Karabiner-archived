@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::decrease_alloccount();
     }
 
-    // Use auto_ptr instead allocating in kernel stack.
+    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_KeyboardEventCallBack);
 
     static Params_KeyboardEventCallBack* alloc(EventType et, Flags fl, KeyCode kc,
@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::decrease_alloccount();
     }
 
-    // Use auto_ptr instead allocating in kernel stack.
+    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_UpdateEventFlagsCallback);
 
     static Params_UpdateEventFlagsCallback* alloc(Flags fl) {
@@ -107,7 +107,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::decrease_alloccount();
     }
 
-    // Use auto_ptr instead allocating in kernel stack.
+    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_KeyboardSpecialEventCallback);
 
     static Params_KeyboardSpecialEventCallback* alloc(EventType et, Flags fl, ConsumerKeyCode ckc,
@@ -165,7 +165,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::decrease_alloccount();
     }
 
-    // Use auto_ptr instead allocating in kernel stack.
+    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
 
     static Params_RelativePointerEventCallback* alloc(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) {
@@ -207,7 +207,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::decrease_alloccount();
     }
 
-    // Use auto_ptr instead allocating in kernel stack.
+    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_ScrollWheelEventCallback);
 
     static Params_ScrollWheelEventCallback* alloc(short da1, short da2, short da3,
@@ -286,7 +286,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::decrease_alloccount();
     }
 
-    // Use auto_ptr instead allocating in kernel stack.
+    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_Wait);
 
     static Params_Wait* alloc(int ms) {
