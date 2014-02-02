@@ -41,9 +41,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     // for consumer
     static void set(EventType eventType,
                     Flags flags,
-                    ConsumerKeyCode key);
-    static void set(const Params_KeyboardSpecialEventCallback& p) {
-      set(p.eventType, p.flags, p.key);
+                    ConsumerKeyCode key,
+                    int delayUntilRepeat,
+                    int keyRepeat);
+    static void set(const Params_KeyboardSpecialEventCallback& p,
+                    int delayUntilRepeat = Config::get_repeat_consumer_initial_wait(),
+                    int keyRepeat = Config::get_repeat_consumer_wait()) {
+      set(p.eventType, p.flags, p.key, delayUntilRepeat, keyRepeat);
     }
 
     // --------------------------------------------------
@@ -51,6 +55,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_add_downup(Flags flags,
                                      KeyCode key,
                                      KeyboardType keyboardType);
+    static void primitive_add_downup(Flags flags,
+                                     ConsumerKeyCode key);
 
     static void primitive_add(EventType eventType,
                               Flags flags,
@@ -81,6 +87,11 @@ namespace org_pqrs_KeyRemap4MacBook {
                               Flags flags,
                               KeyCode key,
                               KeyboardType keyboardType,
+                              Item::Type type);
+
+    static void primitive_add(EventType eventType,
+                              Flags flags,
+                              ConsumerKeyCode key,
                               Item::Type type);
 
     static int succID(void) {
