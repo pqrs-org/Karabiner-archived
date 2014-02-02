@@ -195,6 +195,21 @@ namespace org_pqrs_KeyRemap4MacBook {
               KeyboardRepeat::set(*ptr, getDelayUntilRepeat(), getKeyRepeat());
             }
             EventOutputQueue::FireKey::fire(*ptr);
+
+          } else if (toKeys_[0].getType() == ToEvent::Type::CONSUMER_KEY) {
+            Params_KeyboardSpecialEventCallback::auto_ptr ptr(
+              Params_KeyboardSpecialEventCallback::alloc(newEventType,
+                                                         FlagStatus::makeFlags(),
+                                                         toKeys_[0].getConsumerKeyCode(),
+                                                         false));
+            if (! ptr) return false;
+
+            if (fromEvent_.isPressing() && ! isRepeatEnabled_) {
+              KeyboardRepeat::cancel();
+            } else {
+              KeyboardRepeat::set(*ptr, getDelayUntilRepeat(), getKeyRepeat());
+            }
+            EventOutputQueue::FireConsumer::fire(*ptr);
           }
 
           break;
@@ -246,7 +261,17 @@ namespace org_pqrs_KeyRemap4MacBook {
                   if (ptr) {
                     EventOutputQueue::FireKey::fire(*ptr);
                   }
+                } else if (lastToEvent.getType() == ToEvent::Type::CONSUMER_KEY) {
+                  Params_KeyboardSpecialEventCallback::auto_ptr ptr(
+                    Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
+                                                               FlagStatus::makeFlags(),
+                                                               lastToEvent.getConsumerKeyCode(),
+                                                               false));
+                  if (ptr) {
+                    EventOutputQueue::FireConsumer::fire(*ptr);
+                  }
                 }
+
               } else {
                 EventOutputQueue::FireModifiers::fire();
               }
@@ -272,6 +297,15 @@ namespace org_pqrs_KeyRemap4MacBook {
                   Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), CommonData::getcurrent_keyboardType(), false));
                   if (ptr) {
                     EventOutputQueue::FireKey::fire(*ptr);
+                  }
+                } else if (lastToEvent.getType() == ToEvent::Type::CONSUMER_KEY) {
+                  Params_KeyboardSpecialEventCallback::auto_ptr ptr(
+                    Params_KeyboardSpecialEventCallback::alloc(EventType::UP,
+                                                               FlagStatus::makeFlags(),
+                                                               lastToEvent.getConsumerKeyCode(),
+                                                               false));
+                  if (ptr) {
+                    EventOutputQueue::FireConsumer::fire(*ptr);
                   }
                 }
               }
