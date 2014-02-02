@@ -41,8 +41,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Type::Value getType(void) const { return type_; }
 
-    // XXX: integrate into other functions such as "fire".
     KeyCode getKeyCode(void) const { return key_; }
+    ConsumerKeyCode getConsumerKeyCode(void) const { return consumer_; }
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
