@@ -64,7 +64,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyboardRepeat::primitive_add(EventType eventType,
                                 Flags flags,
-                                ConsumerKeyCode key)
+                                ConsumerKeyCode key,
+                                Item::Type type)
   {
     if (! queue_) return;
     if (key == ConsumerKeyCode::VK_NONE) return;
@@ -76,7 +77,15 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                                                                  true));
     if (! ptr) return;
     Params_KeyboardSpecialEventCallback& params = *ptr;
-    queue_->push_back(new Item(params, Item::TYPE_NORMAL));
+    queue_->push_back(new Item(params, type));
+  }
+
+  void
+  KeyboardRepeat::primitive_add(EventType eventType,
+                                Flags flags,
+                                ConsumerKeyCode key)
+  {
+    primitive_add(eventType, flags, key, Item::TYPE_NORMAL);
   }
 
   void
@@ -85,6 +94,13 @@ namespace org_pqrs_KeyRemap4MacBook {
                                        KeyboardType keyboardType)
   {
     primitive_add(EventType::DOWN, flags, key, keyboardType, Item::TYPE_DOWNUP);
+  }
+
+  void
+  KeyboardRepeat::primitive_add_downup(Flags flags,
+                                       ConsumerKeyCode key)
+  {
+    primitive_add(EventType::DOWN, flags, key, Item::TYPE_DOWNUP);
   }
 
   int
@@ -146,7 +162,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyboardRepeat::set(EventType eventType,
                       Flags flags,
-                      ConsumerKeyCode key)
+                      ConsumerKeyCode key,
+                      int delayUntilRepeat,
+                      int keyRepeat)
   {
     if (! queue_) return;
 
@@ -162,9 +180,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       cancel();
 
-      primitive_add(eventType, flags, key);
-      primitive_start(Config::get_repeat_consumer_initial_wait(),
-                      Config::get_repeat_consumer_wait());
+      primitive_add(eventType, flags, key, Item::TYPE_NORMAL);
+      primitive_start(delayUntilRepeat, keyRepeat);
 
       IOLOG_DEVEL("KeyboardRepeat::set consumer key:%d flags:0x%x\n", key.get(), flags.get());
 
@@ -222,12 +239,25 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
           if (params) {
-            Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params->eventType,
-                                                                                                         params->flags,
-                                                                                                         params->key,
-                                                                                                         queue_->size() == 1 ? true : false));
-            if (ptr) {
-              EventOutputQueue::FireConsumer::fire(*ptr);
+            switch (p->type) {
+              case Item::TYPE_NORMAL:
+              {
+                Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params->eventType,
+                                                                                                             params->flags,
+                                                                                                             params->key,
+                                                                                                             queue_->size() == 1 ? true : false));
+                if (ptr) {
+                  EventOutputQueue::FireConsumer::fire(*ptr);
+                }
+                break;
+              }
+
+              case Item::TYPE_DOWNUP:
+              {
+                EventOutputQueue::FireConsumer::fire_downup(params->flags,
+                                                            params->key);
+                break;
+              }
             }
           }
           break;
