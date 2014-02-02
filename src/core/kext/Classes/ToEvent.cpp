@@ -36,23 +36,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case Type::CONSUMER_KEY:
       {
-        {
-          Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN, flags, consumer_, false));
-          if (ptr) {
-            EventOutputQueue::FireConsumer::fire(*ptr);
-          }
-        }
-        {
-          Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::UP, flags, consumer_, false));
-          if (ptr) {
-            EventOutputQueue::FireConsumer::fire(*ptr);
-          }
-        }
+        EventOutputQueue::FireConsumer::fire_downup(flags, consumer_);
         if (add_to_keyrepeat) {
           KeyboardRepeat::primitive_add(EventType::DOWN, flags, consumer_);
           KeyboardRepeat::primitive_add(EventType::UP,   flags, consumer_);
         }
-
         break;
       }
 
