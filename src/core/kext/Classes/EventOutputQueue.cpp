@@ -349,6 +349,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  void
+  EventOutputQueue::FireConsumer::fire_downup(Flags flags, ConsumerKeyCode key)
+  {
+    {
+      Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
+                                                                                                   flags,
+                                                                                                   key,
+                                                                                                   false));
+      if (! ptr) return;
+      FireConsumer::fire(*ptr);
+    }
+    {
+      Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType::UP,
+                                                                                                   flags,
+                                                                                                   key,
+                                                                                                   false));
+      if (! ptr) return;
+      FireConsumer::fire(*ptr);
+    }
+  }
+
   // ======================================================================
   Buttons EventOutputQueue::FireRelativePointer::lastButtons_(0);
 
