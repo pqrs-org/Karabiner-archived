@@ -151,6 +151,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // Handle toKeys_
+      bool add_to_keyrepeat = true;
+      if (fromEvent_.isPressing() && ! isRepeatEnabled_) {
+        add_to_keyrepeat = false;
+      }
+
       switch (toKeys_.size()) {
         case 0:
           break;
@@ -180,36 +185,11 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
           }
 
-          // ----------------------------------------
-          if (toKeys_[0].getType() == ToEvent::Type::KEY) {
-            Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(newEventType,
-                                                                                           FlagStatus::makeFlags(),
-                                                                                           toKeys_[0].getKeyCode(),
-                                                                                           CommonData::getcurrent_keyboardType(),
-                                                                                           false));
-            if (! ptr) return false;
+          toKeys_[0].fire(newEventType, FlagStatus::makeFlags(),
+                          add_to_keyrepeat, getDelayUntilRepeat(), getKeyRepeat());
 
-            if (fromEvent_.isPressing() && ! isRepeatEnabled_) {
-              KeyboardRepeat::cancel();
-            } else {
-              KeyboardRepeat::set(*ptr, getDelayUntilRepeat(), getKeyRepeat());
-            }
-            EventOutputQueue::FireKey::fire(*ptr);
-
-          } else if (toKeys_[0].getType() == ToEvent::Type::CONSUMER_KEY) {
-            Params_KeyboardSpecialEventCallback::auto_ptr ptr(
-              Params_KeyboardSpecialEventCallback::alloc(newEventType,
-                                                         FlagStatus::makeFlags(),
-                                                         toKeys_[0].getConsumerKeyCode(),
-                                                         false));
-            if (! ptr) return false;
-
-            if (fromEvent_.isPressing() && ! isRepeatEnabled_) {
-              KeyboardRepeat::cancel();
-            } else {
-              KeyboardRepeat::set(*ptr, getDelayUntilRepeat(), getKeyRepeat());
-            }
-            EventOutputQueue::FireConsumer::fire(*ptr);
+          if (! add_to_keyrepeat) {
+            KeyboardRepeat::cancel();
           }
 
           break;
@@ -256,21 +236,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                 //
                 // Intentionally VK_LAZY_* stop sending MODIFY events.
                 // EventOutputQueue::FireModifiers::fire destroys this behavior.
-                if (lastToEvent.getType() == ToEvent::Type::KEY) {
-                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), CommonData::getcurrent_keyboardType(), false));
-                  if (ptr) {
-                    EventOutputQueue::FireKey::fire(*ptr);
-                  }
-                } else if (lastToEvent.getType() == ToEvent::Type::CONSUMER_KEY) {
-                  Params_KeyboardSpecialEventCallback::auto_ptr ptr(
-                    Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN,
-                                                               FlagStatus::makeFlags(),
-                                                               lastToEvent.getConsumerKeyCode(),
-                                                               false));
-                  if (ptr) {
-                    EventOutputQueue::FireConsumer::fire(*ptr);
-                  }
-                }
+                lastToEvent.fire(EventType::DOWN, FlagStatus::makeFlags(), false);
 
               } else {
                 EventOutputQueue::FireModifiers::fire();
@@ -293,21 +259,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               // we need to handle these keys before restoring fromFlags, lastKeyFlags and lastKeyModifierFlag.
               // The unnecessary modifier events occur unless we do it.
               if (isLastToEventLikeModifier) {
-                if (lastToEvent.getType() == ToEvent::Type::KEY) {
-                  Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, FlagStatus::makeFlags(), lastToEvent.getKeyCode(), CommonData::getcurrent_keyboardType(), false));
-                  if (ptr) {
-                    EventOutputQueue::FireKey::fire(*ptr);
-                  }
-                } else if (lastToEvent.getType() == ToEvent::Type::CONSUMER_KEY) {
-                  Params_KeyboardSpecialEventCallback::auto_ptr ptr(
-                    Params_KeyboardSpecialEventCallback::alloc(EventType::UP,
-                                                               FlagStatus::makeFlags(),
-                                                               lastToEvent.getConsumerKeyCode(),
-                                                               false));
-                  if (ptr) {
-                    EventOutputQueue::FireConsumer::fire(*ptr);
-                  }
-                }
+                lastToEvent.fire(EventType::UP, FlagStatus::makeFlags(), false);
               }
 
               FlagStatus::decrease(lastToEvent.getFlags() | lastToEventModifierFlag);
