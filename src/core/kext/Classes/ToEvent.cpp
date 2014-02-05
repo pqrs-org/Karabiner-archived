@@ -17,6 +17,53 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  ToEvent::fire(EventType eventType, Flags flags,
+                bool add_to_keyrepeat, int delayUntilRepeat, int keyRepeat)
+  {
+    switch (type_) {
+      case Type::NONE:
+        break;
+
+      case Type::KEY:
+      {
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
+                                                                                       flags,
+                                                                                       key_,
+                                                                                       CommonData::getcurrent_keyboardType(),
+                                                                                       false));
+        if (ptr) {
+          EventOutputQueue::FireKey::fire(*ptr);
+          if (add_to_keyrepeat) {
+            KeyboardRepeat::set(*ptr, delayUntilRepeat, keyRepeat);
+          }
+        }
+        break;
+      }
+
+      case Type::CONSUMER_KEY:
+      {
+        Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
+                                                                                                     flags,
+                                                                                                     consumer_,
+                                                                                                     false));
+        if (ptr) {
+          EventOutputQueue::FireConsumer::fire(*ptr);
+          if (add_to_keyrepeat) {
+            KeyboardRepeat::set(*ptr, delayUntilRepeat, keyRepeat);
+          }
+        }
+        break;
+      }
+
+      case Type::POINTING_BUTTON:
+      {
+        // XXX
+        break;
+      }
+    }
+  }
+
+  void
   ToEvent::fire_downup(Flags flags, bool add_to_keyrepeat)
   {
     switch (type_) {

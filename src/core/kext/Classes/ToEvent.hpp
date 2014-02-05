@@ -41,9 +41,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Type::Value getType(void) const { return type_; }
 
-    KeyCode getKeyCode(void) const { return key_; }
-    ConsumerKeyCode getConsumerKeyCode(void) const { return consumer_; }
-
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
       if (type_ != Type::KEY) return ModifierFlag::NONE;
@@ -51,6 +48,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
     bool isEventLikeModifier(void) const;
 
+    void fire(EventType eventType, Flags flags,
+              bool add_to_keyrepeat, int delayUntilRepeat = 0, int keyRepeat = 0);
     void fire_downup(Flags flags, bool add_to_keyrepeat = false);
 
   private:
