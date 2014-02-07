@@ -24,8 +24,6 @@
 		342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */; };
 		342D245616A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */; };
 		34340FB3185CA89800D72086 /* Types.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34340FB2185CA89800D72086 /* Types.hpp */; };
-		34379D0E11DB958900CD588D /* PointingButtonToPointingButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */; };
-		34379D0F11DB958900CD588D /* PointingButtonToPointingButton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */; };
 		34379D4614B7794B0004B0F4 /* ScrollWheelToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */; };
 		34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */; };
 		3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */; };
@@ -45,8 +43,6 @@
 		3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3456837B10DA734200D7E2E6 /* VirtualKey.hpp */; };
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
-		345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */; };
-		345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */; };
 		346EE06B1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346EE0691709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp */; };
 		346EE06C1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */; };
 		3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3472914014CEFC64006586F5 /* VK_WAIT.cpp */; };
@@ -105,10 +101,6 @@
 		34799528140A70B600B85E42 /* VK_CONSUMERKEY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34799526140A70B600B85E42 /* VK_CONSUMERKEY.hpp */; };
 		347A6DAB16DA54C4000DD15D /* FlipScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347A6DA916DA54C4000DD15D /* FlipScrollWheel.cpp */; };
 		347A6DAC16DA54C4000DD15D /* FlipScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347A6DAA16DA54C4000DD15D /* FlipScrollWheel.hpp */; };
-		347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */; };
-		347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */; };
-		3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */; };
-		3484E04911DE10CE00426723 /* KeyToPointingButton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3484E04711DE10CE00426723 /* KeyToPointingButton.hpp */; };
 		3496DB881707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3496DB861707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp */; };
 		3496DB891707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */; };
 		34997E3616C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34997E3416C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp */; };
@@ -183,8 +175,6 @@
 		342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_IOHIDPOSTEVENT.cpp; path = VirtualKey/VK_IOHIDPOSTEVENT.cpp; sourceTree = "<group>"; };
 		342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_IOHIDPOSTEVENT.hpp; path = VirtualKey/VK_IOHIDPOSTEVENT.hpp; sourceTree = "<group>"; };
 		34340FB2185CA89800D72086 /* Types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
-		34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingButtonToPointingButton.cpp; path = RemapFunc/PointingButtonToPointingButton.cpp; sourceTree = "<group>"; };
-		34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingButtonToPointingButton.hpp; path = RemapFunc/PointingButtonToPointingButton.hpp; sourceTree = "<group>"; };
 		34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollWheelToKey.cpp; path = RemapFunc/ScrollWheelToKey.cpp; sourceTree = "<group>"; };
 		34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToKey.hpp; path = RemapFunc/ScrollWheelToKey.hpp; sourceTree = "<group>"; };
 		3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_PARTIAL.cpp; path = VirtualKey/VK_PARTIAL.cpp; sourceTree = "<group>"; };
@@ -204,8 +194,6 @@
 		3456837B10DA734200D7E2E6 /* VirtualKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualKey.hpp; sourceTree = "<group>"; };
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
-		345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsumerToConsumer.cpp; path = RemapFunc/ConsumerToConsumer.cpp; sourceTree = "<group>"; };
-		345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConsumerToConsumer.hpp; path = RemapFunc/ConsumerToConsumer.hpp; sourceTree = "<group>"; };
 		346EE0691709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ElapsedTimeSinceLastPressedFilter.cpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.cpp; sourceTree = "<group>"; };
 		346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ElapsedTimeSinceLastPressedFilter.hpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.hpp; sourceTree = "<group>"; };
 		3472914014CEFC64006586F5 /* VK_WAIT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_WAIT.cpp; path = VirtualKey/VK_WAIT.cpp; sourceTree = "<group>"; };
@@ -264,10 +252,6 @@
 		34799526140A70B600B85E42 /* VK_CONSUMERKEY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_CONSUMERKEY.hpp; path = VirtualKey/VK_CONSUMERKEY.hpp; sourceTree = "<group>"; };
 		347A6DA916DA54C4000DD15D /* FlipScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlipScrollWheel.cpp; path = RemapFunc/FlipScrollWheel.cpp; sourceTree = "<group>"; };
 		347A6DAA16DA54C4000DD15D /* FlipScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlipScrollWheel.hpp; path = RemapFunc/FlipScrollWheel.hpp; sourceTree = "<group>"; };
-		347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToConsumer.cpp; path = RemapFunc/KeyToConsumer.cpp; sourceTree = "<group>"; };
-		347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToConsumer.hpp; path = RemapFunc/KeyToConsumer.hpp; sourceTree = "<group>"; };
-		3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToPointingButton.cpp; path = RemapFunc/KeyToPointingButton.cpp; sourceTree = "<group>"; };
-		3484E04711DE10CE00426723 /* KeyToPointingButton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToPointingButton.hpp; path = RemapFunc/KeyToPointingButton.hpp; sourceTree = "<group>"; };
 		3496DB861707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LastPressedPhysicalKeyFilter.cpp; path = RemapFilter/LastPressedPhysicalKeyFilter.cpp; sourceTree = "<group>"; };
 		3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LastPressedPhysicalKeyFilter.hpp; path = RemapFilter/LastPressedPhysicalKeyFilter.hpp; sourceTree = "<group>"; };
 		34997E3416C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_DEFINED_IN_USERSPACE.cpp; path = VirtualKey/VK_DEFINED_IN_USERSPACE.cpp; sourceTree = "<group>"; };
@@ -404,8 +388,6 @@
 			isa = PBXGroup;
 			children = (
 				342BB27A13BB6A7400E18FDD /* common */,
-				345FD60611D819EA00FC1B86 /* ConsumerToConsumer.cpp */,
-				345FD60711D819EA00FC1B86 /* ConsumerToConsumer.hpp */,
 				3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */,
 				3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */,
 				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
@@ -426,14 +408,8 @@
 				345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */,
 				34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */,
 				34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */,
-				347CAD9E11D82FFE00F51978 /* KeyToConsumer.cpp */,
-				347CAD9F11D82FFE00F51978 /* KeyToConsumer.hpp */,
 				34D347E411D8106C00D70815 /* KeyToKey.cpp */,
 				34D347E511D8106C00D70815 /* KeyToKey.hpp */,
-				3484E04611DE10CE00426723 /* KeyToPointingButton.cpp */,
-				3484E04711DE10CE00426723 /* KeyToPointingButton.hpp */,
-				34379D0C11DB958900CD588D /* PointingButtonToPointingButton.cpp */,
-				34379D0D11DB958900CD588D /* PointingButtonToPointingButton.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
 				34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */,
 				34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */,
@@ -584,8 +560,6 @@
 				34779384185B236C00B3EF06 /* FromEvent.hpp in Headers */,
 				345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */,
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
-				345FD60911D819EA00FC1B86 /* ConsumerToConsumer.hpp in Headers */,
-				347CADA111D82FFE00F51978 /* KeyToConsumer.hpp in Headers */,
 				34340FB3185CA89800D72086 /* Types.hpp in Headers */,
 				3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */,
 				34779365185B1FA800B3EF06 /* FromKeyChecker.hpp in Headers */,
@@ -593,12 +567,10 @@
 				34779375185B1FA800B3EF06 /* ListHookedDevice.hpp in Headers */,
 				34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */,
 				3477937F185B1FA800B3EF06 /* PressDownKeys.hpp in Headers */,
-				34379D0F11DB958900CD588D /* PointingButtonToPointingButton.hpp in Headers */,
 				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 				3477937D185B1FA800B3EF06 /* ParamsUnion.hpp in Headers */,
 				3477935E185B1FA800B3EF06 /* EventInputQueue.hpp in Headers */,
 				34779377185B1FA800B3EF06 /* ListHookedKeyboard.hpp in Headers */,
-				3484E04911DE10CE00426723 /* KeyToPointingButton.hpp in Headers */,
 				34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */,
 				34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */,
 				34779362185B1FA800B3EF06 /* EventWatcher.hpp in Headers */,
@@ -739,16 +711,12 @@
 				3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */,
 				345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */,
 				34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */,
-				345FD60811D819EA00FC1B86 /* ConsumerToConsumer.cpp in Sources */,
-				347CADA011D82FFE00F51978 /* KeyToConsumer.cpp in Sources */,
 				34779357185B1FA800B3EF06 /* ButtonStatus.cpp in Sources */,
 				3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */,
 				341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */,
 				34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */,
-				34379D0E11DB958900CD588D /* PointingButtonToPointingButton.cpp in Sources */,
 				34779361185B1FA800B3EF06 /* EventWatcher.cpp in Sources */,
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
-				3484E04811DE10CE00426723 /* KeyToPointingButton.cpp in Sources */,
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
 				34779368185B1FA800B3EF06 /* IntervalChecker.cpp in Sources */,
 				34779372185B1FA800B3EF06 /* ListHookedConsumer.cpp in Sources */,
