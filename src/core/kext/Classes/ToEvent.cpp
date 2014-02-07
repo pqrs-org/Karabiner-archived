@@ -57,7 +57,17 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case Type::POINTING_BUTTON:
       {
-        // XXX
+        if (eventType == EventType::DOWN) {
+          ButtonStatus::increase(button_);
+        } else {
+          ButtonStatus::decrease(button_);
+        }
+
+        EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
+
+        if (add_to_keyrepeat) {
+          // Do nothing
+        }
         break;
       }
     }
@@ -95,13 +105,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         FlagStatus::ScopedTemporaryFlagsChanger stfc(flags);
 
-        ButtonStatus::increase(button_);
-        EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
-        ButtonStatus::decrease(button_);
-        EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
+        for (int i = 0; i < 2; ++i) {
+          if (i == 0) {
+            ButtonStatus::increase(button_);
+          } else {
+            ButtonStatus::decrease(button_);
+          }
 
-        // XXX: handle add_to_keyrepeat
-
+          Buttons buttons(ButtonStatus::makeButtons());
+          EventOutputQueue::FireRelativePointer::fire(buttons);
+          if (add_to_keyrepeat) {
+            KeyboardRepeat::primitive_add(buttons);
+          }
+        }
         break;
       }
     }

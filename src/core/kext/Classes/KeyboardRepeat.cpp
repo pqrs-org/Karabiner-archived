@@ -81,6 +81,22 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  KeyboardRepeat::primitive_add(Buttons button)
+  {
+    if (! queue_) return;
+
+    // ------------------------------------------------------------
+    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(button,
+                                                                                                 0,
+                                                                                                 0,
+                                                                                                 PointingButton::NONE,
+                                                                                                 false));
+    if (! ptr) return;
+    Params_RelativePointerEventCallback& params = *ptr;
+    queue_->push_back(new Item(params, Item::TYPE_NORMAL));
+  }
+
+  void
   KeyboardRepeat::primitive_add(EventType eventType,
                                 Flags flags,
                                 ConsumerKeyCode key)
@@ -263,8 +279,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case ParamsUnion::UPDATE_FLAGS:
         case ParamsUnion::RELATIVE_POINTER:
+        {
+          Params_RelativePointerEventCallback* params = (p->params).get_Params_RelativePointerEventCallback();
+          if (params) {
+            EventOutputQueue::FireRelativePointer::fire(params->buttons, params->dx, params->dy);
+          }
+          break;
+        }
+
+        case ParamsUnion::UPDATE_FLAGS:
         case ParamsUnion::SCROLL_WHEEL:
         case ParamsUnion::WAIT:
           // do nothing
