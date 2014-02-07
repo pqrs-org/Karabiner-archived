@@ -3,9 +3,6 @@
 
 #include "bridge.h"
 #include "RemapFunc/KeyToKey.hpp"
-#include "RemapFunc/KeyToConsumer.hpp"
-#include "RemapFunc/KeyToPointingButton.hpp"
-#include "RemapFunc/ConsumerToConsumer.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/DropKeyAfterRemap.hpp"
 #include "RemapFunc/DropPointingRelativeCursorMove.hpp"
@@ -16,7 +13,6 @@
 #include "RemapFunc/HoldingKeyToKey.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 #include "RemapFunc/KeyOverlaidModifier.hpp"
-#include "RemapFunc/PointingButtonToPointingButton.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/SimultaneousKeyPresses.hpp"
 #include "RemapFunc/SetKeyboardType.hpp"
@@ -64,9 +60,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       union {
         RemapFunc::KeyToKey* keyToKey;
-        RemapFunc::KeyToConsumer* keyToConsumer;
-        RemapFunc::KeyToPointingButton* keyToPointingButton;
-        RemapFunc::ConsumerToConsumer* consumerToConsumer;
         RemapFunc::DoublePressModifier* doublePressModifier;
         RemapFunc::DropKeyAfterRemap* dropKeyAfterRemap;
         RemapFunc::DropPointingRelativeCursorMove* dropPointingRelativeCursorMove;
@@ -77,7 +70,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::HoldingKeyToKey* holdingKeyToKey;
         RemapFunc::IgnoreMultipleSameKeyPress* ignoreMultipleSameKeyPress;
         RemapFunc::KeyOverlaidModifier* keyOverlaidModifier;
-        RemapFunc::PointingButtonToPointingButton* pointingButtonToPointingButton;
         RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
         RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
         RemapFunc::SetKeyboardType* setKeyboardType;

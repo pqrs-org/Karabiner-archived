@@ -11,9 +11,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       isUseSeparator_(false),
       index_(0),
       isFromInfoFull_(false),
-      toType_(TOTYPE_NONE),
       isToRaw_(false),
-      isStrictKeyOrder_(false)
+      isStrictKeyOrder_(false),
+      toKey_raw_(KeyCode::VK_NONE)
     {}
 
     SimultaneousKeyPresses::~SimultaneousKeyPresses(void)
@@ -35,6 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               return;
             }
             virtualkey_ = KeyCode(newval);
+            keytokey_.add(virtualkey_);
             goto finish;
           }
 
@@ -53,55 +54,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           // ----------------------------------------
           // To keys
-          {
-            ToType type = TOTYPE_NONE;
-            switch (datatype) {
-              case BRIDGE_DATATYPE_KEYCODE:        type = TOTYPE_KEY;    break;
-              case BRIDGE_DATATYPE_POINTINGBUTTON: type = TOTYPE_BUTTON; break;
-              default:
-                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
-                return;
-            }
+          if (keytokey_.toKeysSize() == 0) {
+            keytokey_.add(fromFlags_);
 
-            if (toType_ == TOTYPE_NONE) {
-              toType_ = type;
-              switch (datatype) {
-                case BRIDGE_DATATYPE_KEYCODE:
-                  keytokey_.add(virtualkey_);
-                  keytokey_.add(fromFlags_);
-                  toKey_raw_ = KeyCode(newval);
-                  break;
-
-                case BRIDGE_DATATYPE_POINTINGBUTTON:
-                  keytopointingbutton_.add(virtualkey_);
-                  keytopointingbutton_.add(fromFlags_);
-                  break;
-
-                default:
-                  IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
-                  return;
-              }
-            }
-
-            if (toType_ != type) {
-              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-              return;
-            }
-
-            switch (datatype) {
-              case BRIDGE_DATATYPE_KEYCODE:
-                keytokey_.add(KeyCode(newval));
-                break;
-
-              case BRIDGE_DATATYPE_POINTINGBUTTON:
-                keytopointingbutton_.add(PointingButton(newval));
-                break;
-
-              default:
-                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
-                return;
+            if (datatype == BRIDGE_DATATYPE_KEYCODE) {
+              toKey_raw_ = KeyCode(newval);
             }
           }
+          keytokey_.add(datatype, newval);
 
         finish:
           ++index_;
@@ -114,22 +74,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (index_ < 2) {
             IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
             return;
-          } else if (toType_ == TOTYPE_NONE) {
+          } else if (keytokey_.toKeysSize() == 0) {
             fromFlags_ = Flags(newval);
           } else {
-            switch (toType_) {
-              case TOTYPE_KEY:
-                keytokey_.add(Flags(newval));
-                break;
-
-              case TOTYPE_BUTTON:
-                keytopointingbutton_.add(Flags(newval));
-                break;
-
-              default:
-                IOLOG_ERROR("Invalid SimultaneousKeyPresses::add unknown datatype\n");
-                return;
-            }
+            keytokey_.add(datatype, newval);
           }
           break;
         }
@@ -138,11 +86,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           Option option(newval);
           if (Option::SIMULTANEOUSKEYPRESSES_RAW == option) {
-            if (toType_ != TOTYPE_KEY) {
-              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-            } else {
-              isToRaw_ = true;
-            }
+            isToRaw_ = true;
           } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == option) {
             isStrictKeyOrder_ = true;
 
@@ -155,11 +99,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else if (Option::NOREPEAT == option ||
                      Option::KEYTOKEY_BEFORE_KEYDOWN == option ||
                      Option::KEYTOKEY_AFTER_KEYUP == option) {
-            if (toType_ != TOTYPE_KEY) {
-              IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-            } else {
-              keytokey_.add(option);
-            }
+            keytokey_.add(option);
 
           } else {
             IOLOG_ERROR("SimultaneousKeyPresses::add unknown option:%d\n", newval);
@@ -170,11 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
         case BRIDGE_DATATYPE_KEYREPEAT:
         {
-          if (toType_ != TOTYPE_KEY) {
-            IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
-          } else {
-            keytokey_.add(datatype, newval);
-          }
+          keytokey_.add(datatype, newval);
           break;
         }
 
@@ -363,11 +299,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     SimultaneousKeyPresses::remap(RemapParams& remapParams)
     {
-      if (toType_ == TOTYPE_KEY) {
-        return keytokey_.remap(remapParams);
-      } else {
-        return keytopointingbutton_.remap(remapParams);
-      }
+      return keytokey_.remap(remapParams);
     }
   }
 }

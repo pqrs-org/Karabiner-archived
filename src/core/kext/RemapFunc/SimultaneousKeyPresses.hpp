@@ -5,7 +5,6 @@
 #include "FromEvent.hpp"
 #include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
-#include "KeyToPointingButton.hpp"
 #include "RemapFuncClasses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -69,18 +68,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags fromFlags_;
 
       // --------------------
-      enum ToType {
-        TOTYPE_NONE,
-        TOTYPE_KEY,
-        TOTYPE_BUTTON,
-      } toType_;
-
       bool isToRaw_;
       bool isStrictKeyOrder_;
       KeyCode toKey_raw_;
 
       KeyToKey keytokey_;
-      KeyToPointingButton keytopointingbutton_;
 
       Vector_DownKeys downKeys_;
     };
