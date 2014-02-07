@@ -61,6 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_add(EventType eventType,
                               Flags flags,
                               ConsumerKeyCode key);
+    static void primitive_add(Buttons button);
 
     static int primitive_start(int delayUntilRepeat, int keyRepeat);
 
@@ -74,6 +75,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Item(const Params_KeyboardEventCallBack& p, Type t)        : params(p), type(t) {}
       Item(const Params_KeyboardSpecialEventCallback& p, Type t) : params(p), type(t) {}
+      Item(const Params_RelativePointerEventCallback& p, Type t) : params(p), type(t) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
