@@ -331,15 +331,15 @@ namespace pqrs {
       uint32_t type;
     } info[] = {
       { "__KeyToKey__",                       BRIDGE_REMAPTYPE_KEYTOKEY },
-      { "__KeyToConsumer__",                  BRIDGE_REMAPTYPE_KEYTOCONSUMER },
-      { "__KeyToPointingButton__",            BRIDGE_REMAPTYPE_KEYTOPOINTINGBUTTON },
+      { "__KeyToConsumer__",                  BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
+      { "__KeyToPointingButton__",            BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__DoublePressModifier__",            BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER },
       { "__HoldingKeyToKey__",                BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY },
       { "__IgnoreMultipleSameKeyPress__",     BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS },
       { "__KeyOverlaidModifier__",            BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER },
-      { "__ConsumerToConsumer__",             BRIDGE_REMAPTYPE_CONSUMERTOCONSUMER },
+      { "__ConsumerToConsumer__",             BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__ConsumerToKey__",                  BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
-      { "__PointingButtonToPointingButton__", BRIDGE_REMAPTYPE_POINTINGBUTTONTOPOINTINGBUTTON },
+      { "__PointingButtonToPointingButton__", BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__PointingButtonToKey__",            BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__PointingRelativeToScroll__",       BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL },
       { "__DropKeyAfterRemap__",              BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP },
