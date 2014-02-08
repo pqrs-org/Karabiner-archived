@@ -31,7 +31,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
       int pressCount_;
       IntervalChecker ic_;
-      PairKeyFlags fromKey_;
 
       KeyToKey keytokey_;
       KeyToKey keytokey_fire_;

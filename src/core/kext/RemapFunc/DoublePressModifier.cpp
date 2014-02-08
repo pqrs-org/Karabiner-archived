@@ -23,11 +23,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
           switch (index_) {
             case 0:
-              fromKey_.key = KeyCode(newval);
-              keytokey_.add(KeyCode(newval));
+              keytokey_.add(datatype, newval);
               keytokey_fire_.add(KeyCode::VK_PSEUDO_KEY);
               break;
 
@@ -37,9 +38,9 @@ namespace org_pqrs_KeyRemap4MacBook {
               }
 
               if (! index_is_double_pressed_) {
-                keytokey_.add(KeyCode(newval));
+                keytokey_.add(datatype, newval);
               } else {
-                keytokey_fire_.add(KeyCode(newval));
+                keytokey_fire_.add(datatype, newval);
               }
               break;
           }
@@ -56,16 +57,15 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
-              fromKey_.flags = Flags(newval);
-              keytokey_.add(Flags(newval));
-              keytokey_fire_.add(fromKey_.flags);
+              keytokey_.add(datatype, newval);
+              keytokey_fire_.add(datatype, newval);
               break;
 
             default:
               if (! index_is_double_pressed_) {
-                keytokey_.add(Flags(newval));
+                keytokey_.add(datatype, newval);
               } else {
-                keytokey_fire_.add(Flags(newval));
+                keytokey_fire_.add(datatype, newval);
               }
               break;
           }
@@ -82,7 +82,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               index_is_double_pressed_ = true;
             }
           } else {
-            IOLOG_ERROR("DoublePressModifier::add unknown option:%d\n", newval);
+            if (! index_is_double_pressed_) {
+              keytokey_.add(datatype, newval);
+            } else {
+              keytokey_fire_.add(datatype, newval);
+            }
           }
 
           break;
@@ -97,8 +101,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DoublePressModifier::remap(RemapParams& remapParams)
     {
-      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
-      if (! params) return false;
+      bool iskeydown;
+      if (! remapParams.paramsUnion.iskeydown(iskeydown)) {
+        return false;
+      }
 
       bool result = keytokey_.remap(remapParams);
       if (! result) {
@@ -112,7 +118,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       ic_.begin();
 
-      if (params->ex_iskeydown) {
+      if (iskeydown) {
         ++pressCount_;
       } else {
         if (pressCount_ >= 2) {
