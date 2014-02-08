@@ -1,7 +1,7 @@
 Since 9.2.0
 -----------
 
-* v9.2.25: You can use KeyCode, ConsumerKeyCode and PointingButton in\_\_DoublePressModifier\_\_.
+* v9.2.25: You can use KeyCode, ConsumerKeyCode and PointingButton in \_\_DoublePressModifier\_\_.
 * v9.2.23: These manipulators have been integrated into \_\_KeyToKey\_\_. <br />
     You can change KeyCode, ConsumerKeyCode and PointingButton by \_\_KeyToKey\_\_.
     * \_\_KeyToConsumer\_\_
