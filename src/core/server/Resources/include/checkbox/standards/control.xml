@@ -165,12 +165,12 @@
     <item>
       <name>Control_L to LeftClick</name>
       <identifier>remap.controlL2lefttclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::CONTROL_L, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CONTROL_L, PointingButton::LEFT</autogen>
     </item>
     <item>
       <name>Control_L to RightClick</name>
       <identifier>remap.controlL2rightclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::CONTROL_L, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CONTROL_L, PointingButton::RIGHT</autogen>
     </item>
   </item>
 
@@ -241,7 +241,7 @@
     <item>
       <name>Control_R to RightClick</name>
       <identifier>remap.controlR2rightclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CONTROL_R, PointingButton::RIGHT</autogen>
     </item>
   </item>
 </root>

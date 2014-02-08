@@ -88,35 +88,35 @@
         <!-- ======================================== -->
         <block>
           <config_only>option.mousekeys_mode_commandL2leftclick</config_only>
-          <autogen>__KeyToPointingButton__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
         </block>
         <block>
           <config_only>option.mousekeys_mode_space2middleclick</config_only>
-          <autogen>__KeyToPointingButton__ KeyCode::SPACE, PointingButton::MIDDLE</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, PointingButton::MIDDLE</autogen>
         </block>
         <block>
           <config_only>option.mousekeys_mode_commandR2rightclick</config_only>
-          <autogen>__KeyToPointingButton__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
         </block>
         <block>
           <config_only>option.mousekeys_mode_wer2click</config_only>
-          <autogen>__KeyToPointingButton__ KeyCode::W, PointingButton::LEFT</autogen>
-          <autogen>__KeyToPointingButton__ KeyCode::E, PointingButton::MIDDLE</autogen>
-          <autogen>__KeyToPointingButton__ KeyCode::R, PointingButton::RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::W, PointingButton::LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::E, PointingButton::MIDDLE</autogen>
+          <autogen>__KeyToKey__ KeyCode::R, PointingButton::RIGHT</autogen>
         </block>
         <block>
           <config_only>option.mousekeys_mode_uio2click</config_only>
-          <autogen>__KeyToPointingButton__ KeyCode::U, PointingButton::LEFT</autogen>
-          <autogen>__KeyToPointingButton__ KeyCode::I, PointingButton::MIDDLE</autogen>
-          <autogen>__KeyToPointingButton__ KeyCode::O, PointingButton::RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::U, PointingButton::LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::I, PointingButton::MIDDLE</autogen>
+          <autogen>__KeyToKey__ KeyCode::O, PointingButton::RIGHT</autogen>
         </block>
         <block>
           <config_only>option.mousekeys_mode_jis_eisuu2leftclick</config_only>
-          <autogen>__KeyToPointingButton__ KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
         </block>
         <block>
           <config_only>option.mousekeys_mode_jis_kana2rightclick</config_only>
-          <autogen>__KeyToPointingButton__ KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
         </block>
       </item>
       <item>
@@ -250,7 +250,7 @@
     <item>
       <name>Control+L to RightClick</name>
       <identifier>remap.control_l2rightclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::RIGHT</autogen>
     </item>
 
     <item>

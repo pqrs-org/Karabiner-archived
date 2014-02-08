@@ -472,12 +472,12 @@
       <item>
         <name>EISUU to MiddleClick</name>
         <identifier>remap.jis_eisuu2middleclick</identifier>
-        <autogen>__KeyToPointingButton__ KeyCode::JIS_EISUU, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::MIDDLE</autogen>
       </item>
       <item>
         <name>EISUU to RightClick</name>
         <identifier>remap.jis_eisuu2rightclick</identifier>
-        <autogen>__KeyToPointingButton__ KeyCode::JIS_EISUU, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::RIGHT</autogen>
       </item>
       <item>
         <name>Use EISUU as KANA/EISUU (toggle)</name>
@@ -636,12 +636,12 @@
       <item>
         <name>KANA to MiddleClick</name>
         <identifier>remap.jis_kana2middleclick</identifier>
-        <autogen>__KeyToPointingButton__ KeyCode::JIS_KANA, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_KANA, PointingButton::MIDDLE</autogen>
       </item>
       <item>
         <name>KANA to RightClick</name>
         <identifier>remap.jis_kana2rightclick</identifier>
-        <autogen>__KeyToPointingButton__ KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
       </item>
       <item>
         <name>Shift+KANA to EISUU</name>

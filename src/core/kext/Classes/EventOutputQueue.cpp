@@ -377,7 +377,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy)
   {
     // When changing space to command+left click,
-    //   __KeyToPointingButton__ KeyCode::SPACE, PointingButton::LEFT, ModifierFlag::COMMAND_L
+    //   __KeyToKey__ KeyCode::SPACE, PointingButton::LEFT, ModifierFlag::COMMAND_L
     //
     // We need to release command key after left click was released as follows.
     //   (1) KeyDown   Command_L

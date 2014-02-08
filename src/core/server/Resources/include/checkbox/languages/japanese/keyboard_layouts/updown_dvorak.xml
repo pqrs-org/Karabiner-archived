@@ -3,8 +3,8 @@
   <item>
     <name>UpDown.EXTRA_Keys_mouse</name>
     <identifier>remap.jis_UpDown_EXTRA_Keys_mouse</identifier>
-    <autogen>__KeyToPointingButton__ KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::LEFT</autogen>
-    <autogen>__KeyToPointingButton__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::RIGHT</autogen>
+    <autogen>__KeyToKey__ KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::LEFT</autogen>
+    <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::RIGHT</autogen>
   </item>
 
   <item>

@@ -237,7 +237,7 @@
     <item>
       <name>Fn to LeftClick</name>
       <identifier>remap.fn2leftclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::FN, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, PointingButton::LEFT</autogen>
     </item>
   </item>
 </root>

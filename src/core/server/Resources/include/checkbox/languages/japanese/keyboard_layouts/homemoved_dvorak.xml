@@ -3,8 +3,8 @@
   <item>
     <name>HomeMoved.EXTRA_Keys_mouse</name>
     <identifier>remap.jis_HomeMoved_EXTRA_Keys_mouse</identifier>
-    <autogen>__KeyToPointingButton__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::LEFT</autogen>
-    <autogen>__KeyToPointingButton__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::RIGHT</autogen>
+    <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::LEFT</autogen>
+    <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, ModifierFlag::EXTRA5, PointingButton::RIGHT</autogen>
   </item>
 
   <item>

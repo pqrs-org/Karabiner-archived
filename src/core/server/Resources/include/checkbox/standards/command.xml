@@ -394,17 +394,17 @@
     <item>
       <name>Command_R to LeftClick</name>
       <identifier>remap.commandR2leftclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::COMMAND_R, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::LEFT</autogen>
     </item>
     <item>
       <name>Command_R to MiddleClick</name>
       <identifier>remap.commandR2middleclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::COMMAND_R, PointingButton::MIDDLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::MIDDLE</autogen>
     </item>
     <item>
       <name>Command_R to RightClick</name>
       <identifier>remap.commandR2rightclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
     </item>
     <item>
       <name>Command_L+Command_R to Return</name>
