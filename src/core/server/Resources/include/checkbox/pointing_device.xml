@@ -135,13 +135,13 @@
       <item>
         <name>Command+LeftClick to Mouse Button 4</name>
         <identifier>remap.pointing_cmdLeftclick2button4</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, PointingButton::BUTTON4</autogen>
+        <autogen>__KeyToKey__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, PointingButton::BUTTON4</autogen>
       </item>
       <item>
         <name>Control+LeftClick to LeftClick</name>
         <identifier>remap.pointing_controlLeftclick2leftclick</identifier>
         <autogen>
-          __PointingButtonToPointingButton__
+          __KeyToKey__
           PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           PointingButton::LEFT
         </autogen>
@@ -149,42 +149,42 @@
       <item>
         <name>Control+LeftClick to MiddleClick</name>
         <identifier>remap.pointing_controlLeftclick2middleclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::MIDDLE</autogen>
       </item>
       <item>
         <name>Fn+LeftClick to MiddleClick</name>
         <identifier>remap.pointing_fnLeftclick2middleclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ PointingButton::LEFT, ModifierFlag::FN, PointingButton::MIDDLE</autogen>
       </item>
       <item>
         <name>Fn+LeftClick to Option_L+LeftClick</name>
         <identifier>remap.pointing_fnLeftclick2optionLeftclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>
         <name>Option+LeftClick to MiddleClick</name>
         <identifier>remap.pointing_optionLeftclick2middleclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, PointingButton::MIDDLE</autogen>
       </item>
       <item>
         <name>RightClick to LeftClick</name>
         <identifier>remap.pointing_rightclick2leftclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::RIGHT, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::LEFT</autogen>
       </item>
       <item>
         <name>Control+RightClick to Double-LeftClick</name>
         <identifier>remap.pointing_controlrightclick2doubleleftclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
       </item>
       <item>
         <name>Fn+RightClick to Mouse Button 5</name>
         <identifier>remap.pointing_fnRightclick2button5</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::RIGHT, ModifierFlag::FN, PointingButton::BUTTON5</autogen>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, ModifierFlag::FN, PointingButton::BUTTON5</autogen>
       </item>
       <item>
         <name>MiddleClick to Command+LeftClick</name>
         <identifier>remap.pointing_middleclick2commandLeftclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::MIDDLE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ PointingButton::MIDDLE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>MouseButton4 to MiddleClick</name>
