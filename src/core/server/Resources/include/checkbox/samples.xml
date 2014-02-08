@@ -333,6 +333,134 @@
       </item>
 
       <item>
+        <name>KeyCode to PointingButton</name>
+        <appendix>A to LeftClick (Standard)</appendix>
+        <appendix>S to Double-LeftClick</appendix>
+        <appendix>D to Shift_L+LeftClick,RightClick</appendix>
+        <appendix>Option_L to LeftClick (Modifier)</appendix>
+        <appendix>Shift_R to LeftClick,RightClick (Modifier)</appendix>
+        <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
+        <appendix>Shift+F to RightClick,MiddleClick (Key+Modifier)</appendix>
+        <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
+        <appendix>Shift+Command_L to RightClick,MiddleClick (Modifier+Modifier)</appendix>
+        <appendix>1 to LeftClick</appendix>
+        <appendix>2 to MiddleClick</appendix>
+        <appendix>3 to RightClick</appendix>
+        <appendix>4 to Button4</appendix>
+        <appendix>5 to Button5</appendix>
+        <appendix>6 to Button6</appendix>
+        <appendix>7 to Button7</appendix>
+        <appendix>8 to Button8</appendix>
+        <appendix>Q to Button9</appendix>
+        <appendix>W to Button10</appendix>
+        <appendix>E to Button11</appendix>
+        <appendix>R to Button12</appendix>
+        <appendix>T to Button13</appendix>
+        <appendix>Y to Button14</appendix>
+        <appendix>U to Button15</appendix>
+        <appendix>I to Button16</appendix>
+        <identifier>remap.samples_keytopointingbutton</identifier>
+        <autogen>__KeyToKey__ KeyCode::A, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_L, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_1, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_2, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_3, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_4, PointingButton::BUTTON4</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_5, PointingButton::BUTTON5</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_6, PointingButton::BUTTON6</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_7, PointingButton::BUTTON7</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_8, PointingButton::BUTTON8</autogen>
+        <autogen>__KeyToKey__ KeyCode::Q,     PointingButton::BUTTON9</autogen>
+        <autogen>__KeyToKey__ KeyCode::W,     PointingButton::BUTTON10</autogen>
+        <autogen>__KeyToKey__ KeyCode::E,     PointingButton::BUTTON11</autogen>
+        <autogen>__KeyToKey__ KeyCode::R,     PointingButton::BUTTON12</autogen>
+        <autogen>__KeyToKey__ KeyCode::T,     PointingButton::BUTTON13</autogen>
+        <autogen>__KeyToKey__ KeyCode::Y,     PointingButton::BUTTON14</autogen>
+        <autogen>__KeyToKey__ KeyCode::U,     PointingButton::BUTTON15</autogen>
+        <autogen>__KeyToKey__ KeyCode::I,     PointingButton::BUTTON16</autogen>
+      </item>
+
+      <item>
+        <name>KeyCode to Modifier+PointingButton</name>
+        <appendix>Escape to Command_L+LeftClick</appendix>
+        <appendix></appendix>
+        <appendix>Events should be following order.</appendix>
+        <appendix></appendix>
+        <appendix>eventType:keyMod    name:Command_L flags:Cmd</appendix>
+        <appendix>eventType:mouseDown name:left      flags:Cmd</appendix>
+        <appendix>eventType:mouseUp   name:left      flags:Cmd</appendix>
+        <appendix>eventType:keyMod    name:Command_L flags:</appendix>
+        <identifier>remap.samples_keytopointingbutton_modifier</identifier>
+        <autogen>__KeyToKey__ KeyCode::ESCAPE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
+      </item>
+
+      <item><name>──────────────────────────────</name></item>
+      <item>
+        <name>PointingButton to PointingButton</name>
+      </item>
+      <item>
+        <name>RightClick to MiddleClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2m</identifier>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+      </item>
+      <item>
+        <name>RightClick to Command_L+LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2cl</identifier>
+        <autogen>
+          __KeyToKey__
+          PointingButton::RIGHT,
+          PointingButton::LEFT, ModifierFlag::COMMAND_L
+        </autogen>
+      </item>
+      <item>
+        <name>Option+LeftClick to Option+RightClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_ol2or</identifier>
+        <autogen>
+          __KeyToKey__
+          PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
+        </autogen>
+      </item>
+      <item>
+        <name>Option+LeftClick to MiddleClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_ol2m</identifier>
+        <autogen>__KeyToKey__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, PointingButton::MIDDLE</autogen>
+      </item>
+      <item>
+        <name>Fn+LeftClick to Option_L+LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_fl2ol</identifier>
+        <autogen>__KeyToKey__ PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
+      </item>
+      <item>
+        <name>RightClick to Double-LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2dl</identifier>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::LEFT, PointingButton::LEFT</autogen>
+      </item>
+      <item>
+        <name>RightClick to Shift_L+LeftClick, LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2sll</identifier>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::LEFT</autogen>
+      </item>
+      <item>
+        <name>RightClick to Shift_L+LeftClick, RightClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_r2slr</identifier>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
+      </item>
+      <item>
+        <name>Control+RightClick to Double-LeftClick</name>
+        <identifier>remap.samples_pointingbuttontopointingbutton_cr2dl</identifier>
+        <autogen>__KeyToKey__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
+      </item>
+      <item><name>──────────────────────────────</name></item>
+
+      <item>
         <name>Combination</name>
         <appendix>A to B,C (Standard)</appendix>
         <appendix>B to A,B,Shift_L+C,D,Control_L+P (Key To)</appendix>
@@ -1200,77 +1328,6 @@
     </item>
 
     <item>
-      <name>KeyToPointingButton</name>
-      <item>
-        <name>Standard</name>
-        <appendix>A to LeftClick (Standard)</appendix>
-        <appendix>S to Double-LeftClick</appendix>
-        <appendix>D to Shift_L+LeftClick,RightClick</appendix>
-        <appendix>Option_L to LeftClick (Modifier)</appendix>
-        <appendix>Shift_R to LeftClick,RightClick (Modifier)</appendix>
-        <appendix>Shift+B to RightClick (Key+Modifier)</appendix>
-        <appendix>Shift+F to RightClick,MiddleClick (Key+Modifier)</appendix>
-        <appendix>Shift+Control_L to RightClick (Modifier+Modifier)</appendix>
-        <appendix>Shift+Command_L to RightClick,MiddleClick (Modifier+Modifier)</appendix>
-        <appendix>1 to LeftClick</appendix>
-        <appendix>2 to MiddleClick</appendix>
-        <appendix>3 to RightClick</appendix>
-        <appendix>4 to Button4</appendix>
-        <appendix>5 to Button5</appendix>
-        <appendix>6 to Button6</appendix>
-        <appendix>7 to Button7</appendix>
-        <appendix>8 to Button8</appendix>
-        <appendix>Q to Button9</appendix>
-        <appendix>W to Button10</appendix>
-        <appendix>E to Button11</appendix>
-        <appendix>R to Button12</appendix>
-        <appendix>T to Button13</appendix>
-        <appendix>Y to Button14</appendix>
-        <appendix>U to Button15</appendix>
-        <appendix>I to Button16</appendix>
-        <identifier>remap.samples_keytopointingbutton</identifier>
-        <autogen>__KeyToKey__ KeyCode::A, PointingButton::LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToKey__ KeyCode::OPTION_L, PointingButton::LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-        <autogen>__KeyToKey__ KeyCode::CONTROL_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToKey__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_1, PointingButton::LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_2, PointingButton::MIDDLE</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, PointingButton::BUTTON4</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_5, PointingButton::BUTTON5</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_6, PointingButton::BUTTON6</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_7, PointingButton::BUTTON7</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_8, PointingButton::BUTTON8</autogen>
-        <autogen>__KeyToKey__ KeyCode::Q,     PointingButton::BUTTON9</autogen>
-        <autogen>__KeyToKey__ KeyCode::W,     PointingButton::BUTTON10</autogen>
-        <autogen>__KeyToKey__ KeyCode::E,     PointingButton::BUTTON11</autogen>
-        <autogen>__KeyToKey__ KeyCode::R,     PointingButton::BUTTON12</autogen>
-        <autogen>__KeyToKey__ KeyCode::T,     PointingButton::BUTTON13</autogen>
-        <autogen>__KeyToKey__ KeyCode::Y,     PointingButton::BUTTON14</autogen>
-        <autogen>__KeyToKey__ KeyCode::U,     PointingButton::BUTTON15</autogen>
-        <autogen>__KeyToKey__ KeyCode::I,     PointingButton::BUTTON16</autogen>
-      </item>
-      <item>
-        <name>Key to Modifier+PointingButton</name>
-        <appendix>Escape to Command_L+LeftClick</appendix>
-        <appendix></appendix>
-        <appendix>Events should be following order.</appendix>
-        <appendix></appendix>
-        <appendix>eventType:keyMod    name:Command_L flags:Cmd</appendix>
-        <appendix>eventType:mouseDown name:left      flags:Cmd</appendix>
-        <appendix>eventType:mouseUp   name:left      flags:Cmd</appendix>
-        <appendix>eventType:keyMod    name:Command_L flags:</appendix>
-        <identifier>remap.samples_keytopointingbutton_modifier</identifier>
-        <autogen>__KeyToKey__ KeyCode::ESCAPE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
-      </item>
-    </item>
-
-    <item>
       <name>PointingRelativeToScroll</name>
       <item>
         <name>Standard</name>
@@ -1337,63 +1394,6 @@
         <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
         <identifier>remap.samples_pointingrelativetoscroll_simultaneouskeypresses</identifier>
         <autogen>__SimultaneousKeyPresses__ PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
-      </item>
-    </item>
-
-    <item>
-      <name>PointingButtonToPointingButton</name>
-      <item>
-        <name>RightClick to MiddleClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_r2m</identifier>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-      </item>
-      <item>
-        <name>RightClick to Command_L+LeftClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_r2cl</identifier>
-        <autogen>
-          __KeyToKey__
-          PointingButton::RIGHT,
-          PointingButton::LEFT, ModifierFlag::COMMAND_L
-        </autogen>
-      </item>
-      <item>
-        <name>Option+LeftClick to Option+RightClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_ol2or</identifier>
-        <autogen>
-          __KeyToKey__
-          PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
-          PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
-        </autogen>
-      </item>
-      <item>
-        <name>Option+LeftClick to MiddleClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_ol2m</identifier>
-        <autogen>__KeyToKey__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, PointingButton::MIDDLE</autogen>
-      </item>
-      <item>
-        <name>Fn+LeftClick to Option_L+LeftClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_fl2ol</identifier>
-        <autogen>__KeyToKey__ PointingButton::LEFT, ModifierFlag::FN, PointingButton::LEFT, ModifierFlag::OPTION_L</autogen>
-      </item>
-      <item>
-        <name>RightClick to Double-LeftClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_r2dl</identifier>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::LEFT, PointingButton::LEFT</autogen>
-      </item>
-      <item>
-        <name>RightClick to Shift_L+LeftClick, LeftClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_r2sll</identifier>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::LEFT</autogen>
-      </item>
-      <item>
-        <name>RightClick to Shift_L+LeftClick, RightClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_r2slr</identifier>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
-      </item>
-      <item>
-        <name>Control+RightClick to Double-LeftClick</name>
-        <identifier>remap.samples_pointingbuttontopointingbutton_cr2dl</identifier>
-        <autogen>__KeyToKey__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::LEFT, PointingButton::LEFT</autogen>
       </item>
     </item>
 
