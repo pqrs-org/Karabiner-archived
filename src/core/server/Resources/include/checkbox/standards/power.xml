@@ -20,7 +20,7 @@
         <name>Power Key to Fn</name>
         <appendix>(+ Fn+Power to Power)</appendix>
         <identifier>remap.power2fn</identifier>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::POWER, ModifierFlag::FN, ConsumerKeyCode::POWER</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::POWER, KeyCode::FN</autogen>
       </item>
     </item>

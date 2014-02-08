@@ -30,7 +30,7 @@
     <item>
       <name>Eject to Control+Shift+Eject (Sleep displays)</name>
       <identifier>remap.eject2controlshifteject</identifier>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::NONE, ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Eject to Escape</name>
@@ -56,7 +56,7 @@
       <name>Eject to Forward Delete</name>
       <appendix>(Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2forwarddelete_retain_fnEject</identifier>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
       <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
@@ -80,7 +80,7 @@
       <name>Eject to Option_L+Delete</name>
       <appendix>(Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2optionaLdelete</identifier>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
       <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
@@ -107,7 +107,7 @@
       <name>Eject to F13</name>
       <appendix>(Fn+Eject to Eject)</appendix>
       <identifier>remap.eject2f13</identifier>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
       <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::F13</autogen>
     </item>
     <item>
