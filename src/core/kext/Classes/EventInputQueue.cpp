@@ -473,7 +473,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     switch (p->params.type) {
       case ParamsUnion::KEYBOARD:
       {
-        Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+        Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
         if (params) {
           if (params->ex_iskeydown) {
             EventWatcher::on();
@@ -520,7 +520,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case ParamsUnion::KEYBOARD_SPECIAL:
       {
-        Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
+        Params_KeyboardSpecialEventCallback* params = (p->params).get_Params_KeyboardSpecialEventCallback();
         if (params) {
           if (params->ex_iskeydown) {
             EventWatcher::on();
@@ -536,7 +536,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case ParamsUnion::RELATIVE_POINTER:
       {
-        Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
+        Params_RelativePointerEventCallback* params = (p->params).get_Params_RelativePointerEventCallback();
         if (params) {
           // ------------------------------------------------------------
           // We set EventWatcher::on only when Buttons pressed.
@@ -574,7 +574,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case ParamsUnion::SCROLL_WHEEL:
       {
-        Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
+        Params_ScrollWheelEventCallback* params = (p->params).get_Params_ScrollWheelEventCallback();
         if (params) {
           // When "Space to Command (+ When you type Space only, send Space)" is activated,
           // user press Space and scroll wheel to input Command+ScrollWheel.
