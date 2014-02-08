@@ -159,22 +159,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_KeyboardEventCallback(ParamsUnion& paramsUnion)
     {
-      if (paramsUnion.type != ParamsUnion::KEYBOARD) return;
-      if (! paramsUnion.params.params_KeyboardEventCallBack) return;
+      Params_KeyboardEventCallBack* params = paramsUnion.get_Params_KeyboardEventCallBack();
+      if (! params) return;
 
-      Params_KeyboardEventCallBack params = *(paramsUnion.params.params_KeyboardEventCallBack);
       RemapParams remapParams(paramsUnion);
 
       // ------------------------------------------------------------
-      FlagStatus::set(params.key, params.flags);
+      FlagStatus::set(params->key, params->flags);
 
       RemapClassManager::remap(remapParams);
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, FlagStatus::makeFlags(), params.key,
-                                                                                       params.charCode, params.charSet, params.origCharCode, params.origCharSet,
-                                                                                       params.keyboardType, false));
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params->eventType,
+                                                                                       FlagStatus::makeFlags(),
+                                                                                       params->key,
+                                                                                       params->charCode,
+                                                                                       params->charSet,
+                                                                                       params->origCharCode,
+                                                                                       params->origCharSet,
+                                                                                       params->keyboardType,
+                                                                                       false));
         if (ptr) {
           KeyboardRepeat::set(*ptr);
           EventOutputQueue::FireKey::fire(*ptr);
