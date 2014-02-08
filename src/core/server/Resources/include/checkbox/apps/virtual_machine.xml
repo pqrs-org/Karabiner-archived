@@ -9,7 +9,7 @@
       <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
       <identifier>remap.app_vm_eject2forwarddelete</identifier>
       <only>VIRTUALMACHINE</only>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
       <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>

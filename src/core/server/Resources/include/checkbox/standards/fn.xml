@@ -154,20 +154,20 @@
       <appendix>(retain Fn+F1...Fn+F12)</appendix>
       <identifier>remap.fn2optionL_illphoche</identifier>
       <only>ILLUSTRATOR, PHOTOSHOP, CHEETAH_3D</only>
-      <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_DOWN,                      ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_DOWN</autogen>
-      <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_UP,                        ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_UP</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_DOWN,    ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_UP,      ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-      <autogen>__KeyToKey__ KeyCode::EXPOSE_ALL,                           ModifierFlag::OPTION_L, KeyCode::EXPOSE_ALL</autogen>
-      <autogen>__KeyToKey__ KeyCode::DASHBOARD,                            ModifierFlag::OPTION_L, KeyCode::DASHBOARD</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PREV,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PREV</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_PLAY,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PLAY</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::MUSIC_NEXT,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_NEXT</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_DOWN,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_DOWN</autogen>
-      <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_UP,          ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_DOWN,            ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRIGHTNESS_UP,              ModifierFlag::OPTION_L, KeyCode::BRIGHTNESS_UP</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN,    ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP,      ModifierFlag::OPTION_L, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::EXPOSE_ALL,                 ModifierFlag::OPTION_L, KeyCode::EXPOSE_ALL</autogen>
+      <autogen>__KeyToKey__ KeyCode::DASHBOARD,                  ModifierFlag::OPTION_L, KeyCode::DASHBOARD</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_LOW,  ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::OPTION_L, ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PREV,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PREV</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_PLAY</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_NEXT,         ModifierFlag::OPTION_L, ConsumerKeyCode::MUSIC_NEXT</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN,        ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_DOWN</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP,          ModifierFlag::OPTION_L, ConsumerKeyCode::VOLUME_UP</autogen>
       <autogen>__KeyToKey__ KeyCode::FN, KeyCode::OPTION_L</autogen>
     </item>
     <item>

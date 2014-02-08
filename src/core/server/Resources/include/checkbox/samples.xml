@@ -567,35 +567,35 @@
         <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
         <appendix>NumLock to Volume Mute</appendix>
         <identifier>remap.samples_consumertoconsumer</identifier>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
       </item>
       <item>
         <name>Standard(2)</name>
         <appendix>Volume Mute to Volume Up</appendix>
         <identifier>remap.samples_consumertoconsumer_2</identifier>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
       </item>
       <item>
         <name>Combination</name>
         <appendix>Volume Mute to Volume Up,Brightness Up</appendix>
         <identifier>remap.samples_consumertoconsumer_combination</identifier>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
       </item>
       <item>
         <name>NoRepeat</name>
         <appendix>Volume Mute to Volume Down (with NoRepeat)</appendix>
         <appendix>Volume Down to Volume Up,Brightness Up (with NoRepeat)</appendix>
         <identifier>remap.samples_consumertoconsumer_norepeat</identifier>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP, Option::NOREPEAT</autogen>
       </item>
       <item>
         <name>To power key</name>
         <appendix>Volume Mute to Power</appendix>
         <identifier>remap.samples_consumertoconsumer_power</identifier>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::POWER</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::POWER</autogen>
       </item>
     </item>
 
