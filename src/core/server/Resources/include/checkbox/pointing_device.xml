@@ -279,7 +279,7 @@
           PointingButton::RIGHT,
 
           @begin
-          KeyCode::VK_MOUSEKEY_BUTTON_RIGHT,
+          PointingButton::RIGHT,
           @end
 
           @begin
