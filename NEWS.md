@@ -9,6 +9,7 @@ Since 9.2.0
     * \_\_KeyToPointingButton\_\_
     * \_\_PointingButtonToKey\_\_
     * \_\_PointingButtonToPointingButton\_\_
+* v9.2.23: \_\_KeyOverlaidModifier\_\_ and \_\_HoldingKeyToKey\_\_ allow KeyCode, ConsumerKeyCode and PointingButton.
 * v9.2.10: Updated prepared settings.
 * v9.2.7: Supported ConsumerKeyCode at from keys of \_\_SimultaneousKeyPresses\_\_.
 * v9.2.5: You can change the delay and speed of keyboard repeat per autogen. <br />
