@@ -283,6 +283,36 @@
       </item>
 
       <item>
+        <name>KeyCode to ConsumerKeyCode</name>
+        <appendix>A to Volume Mute</appendix>
+        <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
+        <appendix>Shift_L to Volume Mute (Modifier To)</appendix>
+        <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
+        <appendix>D to Volume Up, Brightness Up</appendix>
+        <identifier>remap.samples_keytoconsumer</identifier>
+        <autogen>__KeyToKey__ KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      </item>
+
+      <item>
+        <name>ConsumerKeyCode to ConsumerKeyCode</name>
+        <appendix>Volume Mute to Volume Up</appendix>
+        <appendix>Volume Down to Volume Mute</appendix>
+        <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
+        <appendix>Music Play to Power</appendix>
+        <appendix>NumLock to Volume Mute</appendix>
+        <identifier>remap.samples_consumertoconsumer</identifier>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, ConsumerKeyCode::POWER</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
+      </item>
+
+      <item>
         <name>PointingButton to KeyCode</name>
         <appendix>MiddleClick to Return</appendix>
         <appendix>Option_L+RightClick to Shift_L</appendix>
@@ -312,6 +342,7 @@
         <appendix>E to Type "https://pqrs.org/macosx/keyremap4macbook/"</appendix>
         <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
         <appendix>G to Option_L,Shift_L,A,S</appendix>
+        <appendix>Volume Mute to Volume Up,Brightness Up</appendix>
         <appendix></appendix>
         <appendix>H to A,KeyCode::VK_NONE</appendix>
         <appendix>(KeyDown and KeyUp will be fired at the same time when H key is pressed)</appendix>
@@ -339,6 +370,12 @@
         </autogen>
         <autogen>__KeyToKey__ KeyCode::F, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::CAPSLOCK</autogen>
         <autogen>__KeyToKey__ KeyCode::G, KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::A, KeyCode::S</autogen>
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::VOLUME_MUTE,
+          ConsumerKeyCode::VOLUME_UP,
+          ConsumerKeyCode::BRIGHTNESS_UP,
+        </autogen>
         <autogen>__KeyToKey__ KeyCode::H, KeyCode::A, KeyCode::VK_NONE</autogen>
       </item>
 
@@ -358,8 +395,14 @@
       <item>
         <name>Combination(3)</name>
         <appendix>Shift_L to A,Shift_L+S,D (if no other modifiers pressed)</appendix>
+        <appendix>Command+A to Volume Mute (if no other modifiers pressed)</appendix>
         <identifier>remap.samples_keytokey_combination_3</identifier>
         <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A, KeyCode::S, ModifierFlag::SHIFT_L, KeyCode::D</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+          ConsumerKeyCode::VOLUME_MUTE,
+        </autogen>
       </item>
 
       <item>
@@ -376,14 +419,26 @@
         <appendix>1 to A (with Option::NOREPEAT)</appendix>
         <appendix>2 to A,B,C (with Option::NOREPEAT)</appendix>
         <appendix>3 to Shift_L (with Option::NOREPEAT)</appendix>
+        <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
+        <appendix>Volume Mute to Volume Up,Brightness Up (with NoRepeat)</appendix>
         <appendix>Volume Down to A (with Option::NOREPEAT)</appendix>
+        <appendix>Volume Up to Volume Down (with NoRepeat)</appendix>
         <appendix>RightClick to A (with Option::NOREPEAT)</appendix>
         <identifier>remap.samples_keytokey_norepeat</identifier>
         <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::A, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::A, KeyCode::B, KeyCode::C, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::SHIFT_L, Option::NOREPEAT</autogen>
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::VOLUME_MUTE,
+          ConsumerKeyCode::VOLUME_UP,
+          ConsumerKeyCode::BRIGHTNESS_UP,
+          Option::NOREPEAT,
+        </autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
         <autogen>__KeyToKey__ PointingButton::RIGHT, KeyCode::A, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
       </item>
 
       <item>
@@ -524,78 +579,6 @@
           <identifier>remap.samples_keytokey_apply_from_to_top_item4</identifier>
           <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::C</autogen>
         </item>
-      </item>
-    </item>
-
-    <item>
-      <name>KeyToConsumer</name>
-      <item>
-        <name>Standard</name>
-        <appendix>A to Volume Mute</appendix>
-        <appendix>Shift+B to Volume Mute (With Modifier)</appendix>
-        <appendix>Shift_L to Volume Mute (Modifier To)</appendix>
-        <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
-        <appendix>D to Volume Up, Brightness Up</appendix>
-        <identifier>remap.samples_keytoconsumer</identifier>
-        <autogen>__KeyToKey__ KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToKey__ KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToKey__ KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-      </item>
-      <item>
-        <name>with ModifierFlag::NONE</name>
-        <appendix>Command+A to Volume Mute</appendix>
-        <identifier>remap.samples_keytoconsumer_modifierflag_none</identifier>
-        <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      </item>
-      <item>
-        <name>NoRepeat</name>
-        <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
-        <appendix>S to Volume Up</appendix>
-        <identifier>remap.samples_keytoconsumer_norepeat</identifier>
-        <autogen>__KeyToKey__ KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, ConsumerKeyCode::VOLUME_UP</autogen>
-      </item>
-    </item>
-
-    <item>
-      <name>ConsumerToConsumer</name>
-      <item>
-        <name>Standard</name>
-        <appendix>Volume Down to Volume Mute</appendix>
-        <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
-        <appendix>NumLock to Volume Mute</appendix>
-        <identifier>remap.samples_consumertoconsumer</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
-      </item>
-      <item>
-        <name>Standard(2)</name>
-        <appendix>Volume Mute to Volume Up</appendix>
-        <identifier>remap.samples_consumertoconsumer_2</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
-      </item>
-      <item>
-        <name>Combination</name>
-        <appendix>Volume Mute to Volume Up,Brightness Up</appendix>
-        <identifier>remap.samples_consumertoconsumer_combination</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-      </item>
-      <item>
-        <name>NoRepeat</name>
-        <appendix>Volume Mute to Volume Down (with NoRepeat)</appendix>
-        <appendix>Volume Down to Volume Up,Brightness Up (with NoRepeat)</appendix>
-        <identifier>remap.samples_consumertoconsumer_norepeat</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_DOWN, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP, Option::NOREPEAT</autogen>
-      </item>
-      <item>
-        <name>To power key</name>
-        <appendix>Volume Mute to Power</appendix>
-        <identifier>remap.samples_consumertoconsumer_power</identifier>
-        <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::POWER</autogen>
       </item>
     </item>
 
