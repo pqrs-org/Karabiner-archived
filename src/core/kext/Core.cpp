@@ -162,11 +162,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack* params = paramsUnion.get_Params_KeyboardEventCallBack();
       if (! params) return;
 
-      RemapParams remapParams(paramsUnion);
-
-      // ------------------------------------------------------------
       FlagStatus::set(params->key, params->flags);
 
+      RemapParams remapParams(paramsUnion);
       RemapClassManager::remap(remapParams);
 
       // ------------------------------------------------------------
