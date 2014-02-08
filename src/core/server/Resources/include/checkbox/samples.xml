@@ -1246,31 +1246,31 @@
         <appendix>U to Button15</appendix>
         <appendix>I to Button16</appendix>
         <identifier>remap.samples_keytopointingbutton</identifier>
-        <autogen>__KeyToPointingButton__ KeyCode::A, PointingButton::LEFT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::OPTION_L, PointingButton::LEFT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::CONTROL_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_1, PointingButton::LEFT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_2, PointingButton::MIDDLE</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_3, PointingButton::RIGHT</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_4, PointingButton::BUTTON4</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_5, PointingButton::BUTTON5</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_6, PointingButton::BUTTON6</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_7, PointingButton::BUTTON7</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::KEY_8, PointingButton::BUTTON8</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::Q,     PointingButton::BUTTON9</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::W,     PointingButton::BUTTON10</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::E,     PointingButton::BUTTON11</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::R,     PointingButton::BUTTON12</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::T,     PointingButton::BUTTON13</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::Y,     PointingButton::BUTTON14</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::U,     PointingButton::BUTTON15</autogen>
-        <autogen>__KeyToPointingButton__ KeyCode::I,     PointingButton::BUTTON16</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::S, PointingButton::LEFT, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::D, PointingButton::LEFT, ModifierFlag::SHIFT_L, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_L, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_R,  PointingButton::LEFT, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, PointingButton::RIGHT, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_1, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_2, PointingButton::MIDDLE</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_3, PointingButton::RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_4, PointingButton::BUTTON4</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_5, PointingButton::BUTTON5</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_6, PointingButton::BUTTON6</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_7, PointingButton::BUTTON7</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_8, PointingButton::BUTTON8</autogen>
+        <autogen>__KeyToKey__ KeyCode::Q,     PointingButton::BUTTON9</autogen>
+        <autogen>__KeyToKey__ KeyCode::W,     PointingButton::BUTTON10</autogen>
+        <autogen>__KeyToKey__ KeyCode::E,     PointingButton::BUTTON11</autogen>
+        <autogen>__KeyToKey__ KeyCode::R,     PointingButton::BUTTON12</autogen>
+        <autogen>__KeyToKey__ KeyCode::T,     PointingButton::BUTTON13</autogen>
+        <autogen>__KeyToKey__ KeyCode::Y,     PointingButton::BUTTON14</autogen>
+        <autogen>__KeyToKey__ KeyCode::U,     PointingButton::BUTTON15</autogen>
+        <autogen>__KeyToKey__ KeyCode::I,     PointingButton::BUTTON16</autogen>
       </item>
       <item>
         <name>Key to Modifier+PointingButton</name>
@@ -1283,7 +1283,7 @@
         <appendix>eventType:mouseUp   name:left      flags:Cmd</appendix>
         <appendix>eventType:keyMod    name:Command_L flags:</appendix>
         <identifier>remap.samples_keytopointingbutton_modifier</identifier>
-        <autogen>__KeyToPointingButton__ KeyCode::ESCAPE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::ESCAPE, PointingButton::LEFT, ModifierFlag::COMMAND_L</autogen>
       </item>
     </item>
 

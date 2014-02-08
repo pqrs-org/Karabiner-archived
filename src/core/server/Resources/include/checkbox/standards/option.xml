@@ -397,7 +397,7 @@
       <appendix>Fn+Option_R preserves Right Option</appendix>
       <identifier>remap.option_r_to_right_click</identifier>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, ModifierFlag::FN, KeyCode::OPTION_R</autogen>
-      <autogen>__KeyToPointingButton__ KeyCode::OPTION_R, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, PointingButton::RIGHT</autogen>
     </item>
   </item>
 </root>

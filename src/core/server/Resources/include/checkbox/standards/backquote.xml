@@ -86,7 +86,7 @@
     <item>
       <name>Backquote(`) to LeftClick</name>
       <identifier>remap.backquote2LeftClick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::BACKQUOTE, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKQUOTE, PointingButton::LEFT</autogen>
     </item>
     <item>
       <name>Swap Command+Backquote(`) and Option+Backquote(`)</name>

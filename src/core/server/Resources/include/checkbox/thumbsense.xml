@@ -18,15 +18,15 @@
 
       <!-- ============================================================ -->
       <!-- PointingButton -->
-      <autogen>__KeyToPointingButton__ KeyCode::F,     PointingButton::LEFT</autogen>
-      <autogen>__KeyToPointingButton__ KeyCode::J,     PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::F,     PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::J,     PointingButton::LEFT</autogen>
       <block>
         <config_only>option.thumbsense_space2leftclick</config_only>
-        <autogen>__KeyToPointingButton__ KeyCode::SPACE, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::SPACE, PointingButton::LEFT</autogen>
       </block>
 
-      <autogen>__KeyToPointingButton__ KeyCode::D,     PointingButton::RIGHT</autogen>
-      <autogen>__KeyToPointingButton__ KeyCode::K,     PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::D,     PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::K,     PointingButton::RIGHT</autogen>
 
       <!-- ============================================================ -->
       <!-- Scroll Mode -->
@@ -115,9 +115,9 @@
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::NONE, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::NONE, KeyCode::EXPOSE_ALL</autogen>
-      <autogen>__KeyToPointingButton__ KeyCode::KEY_1, ModifierFlag::NONE, PointingButton::LEFT</autogen>
-      <autogen>__KeyToPointingButton__ KeyCode::KEY_2, ModifierFlag::NONE, PointingButton::MIDDLE</autogen>
-      <autogen>__KeyToPointingButton__ KeyCode::KEY_3, ModifierFlag::NONE, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::NONE, PointingButton::MIDDLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::NONE, PointingButton::RIGHT</autogen>
     </item>
   </item>
 </root>

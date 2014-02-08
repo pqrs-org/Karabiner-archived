@@ -121,7 +121,7 @@
       <item>
         <name>Section(§) to LeftClick</name>
         <identifier>remap.strangekey_to_leftclick</identifier>
-        <autogen>__KeyToPointingButton__ KeyCode::UK_SECTION, PointingButton::LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::UK_SECTION, PointingButton::LEFT</autogen>
       </item>
     </item>
   </item>

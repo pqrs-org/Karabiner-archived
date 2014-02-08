@@ -145,7 +145,7 @@
     <item>
       <name>Fn+Space to LeftClick</name>
       <identifier>remap.fn_space_to_left_click</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::SPACE, ModifierFlag::FN, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::FN, PointingButton::LEFT</autogen>
     </item>
   </item>
 </root>

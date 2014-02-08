@@ -73,7 +73,7 @@
     <item>
       <name>Escape to RightClick</name>
       <identifier>remap.escape2rightclick</identifier>
-      <autogen>__KeyToPointingButton__ KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::ESCAPE, PointingButton::RIGHT</autogen>
     </item>
     <item>
       <name>Disable Escape</name>
