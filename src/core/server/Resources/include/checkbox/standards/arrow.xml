@@ -152,8 +152,8 @@
       <appendix>FN+Up-Arrow to Brightness Up (Consumer)</appendix>
       <appendix>FN+Down-Arrow to Brightness Down (Consumer)</appendix>
       <identifier>remap.fnupdown_to_brightness_consumer</identifier>
-      <autogen>__KeyToConsumer__ KeyCode::CURSOR_UP,   ConsumerKeyCode::BRIGHTNESS_UP</autogen>
-      <autogen>__KeyToConsumer__ KeyCode::CURSOR_DOWN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,   ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, ConsumerKeyCode::BRIGHTNESS_DOWN</autogen>
     </item>
     <item>
       <name>Use FN+Up/Down to adjust brightness (Alternative)</name>

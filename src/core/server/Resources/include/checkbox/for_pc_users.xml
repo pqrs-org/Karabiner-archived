@@ -111,7 +111,7 @@
       <item>
         <name>Application Key to Eject</name>
         <identifier>remap.pc_application2eject</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::PC_APPLICATION, ConsumerKeyCode::EJECT</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, ConsumerKeyCode::EJECT</autogen>
       </item>
       <item>
         <name>Application Key to Expose All</name>
@@ -204,14 +204,14 @@
         <appendix>* ScrollLock to Volume Up</appendix>
         <appendix>* Pause/Break to Volume Mute</appendix>
         <identifier>remap.pc_printscreen_scrolllock_pause_to_volume_controls</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::VOLUME_DOWN</autogen>
-        <autogen>__KeyToConsumer__ KeyCode::PC_SCROLLLOCK,  ConsumerKeyCode::VOLUME_UP</autogen>
-        <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE,       ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_SCROLLLOCK,  ConsumerKeyCode::VOLUME_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_PAUSE,       ConsumerKeyCode::VOLUME_MUTE</autogen>
       </item>
       <item>
         <name>PrintScreen Key to Eject</name>
         <identifier>remap.pc_printscreen2eject</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::EJECT</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_PRINTSCREEN, ConsumerKeyCode::EJECT</autogen>
       </item>
       <item>
         <name>PrintScreen Key to F12</name>
@@ -226,7 +226,7 @@
       <item>
         <name>Pause/Break Key to Eject</name>
         <identifier>remap.pc_pause2eject</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
+        <autogen>__KeyToKey__ KeyCode::PC_PAUSE, ConsumerKeyCode::EJECT</autogen>
       </item>
       <item>
         <name>Pause/Break Key to Power</name>
