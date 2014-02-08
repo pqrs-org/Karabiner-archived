@@ -8,7 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     switch (newval.type) {
       case ParamsUnion::KEYBOARD:
       {
-        Params_KeyboardEventCallBack* p = newval.params.params_KeyboardEventCallBack;
+        Params_KeyboardEventCallBack* p = newval.get_Params_KeyboardEventCallBack();
 
         if (p && p->ex_iskeydown) {
           datatype_ = BRIDGE_DATATYPE_KEYCODE;
@@ -20,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case ParamsUnion::KEYBOARD_SPECIAL:
       {
-        Params_KeyboardSpecialEventCallback* p = newval.params.params_KeyboardSpecialEventCallback;
+        Params_KeyboardSpecialEventCallback* p = newval.get_Params_KeyboardSpecialEventCallback();
         if (p && p->ex_iskeydown) {
           datatype_ = BRIDGE_DATATYPE_CONSUMERKEYCODE;
           value_ = (p->key).get();
@@ -31,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case ParamsUnion::RELATIVE_POINTER:
       {
-        Params_RelativePointerEventCallback* p = newval.params.params_RelativePointerEventCallback;
+        Params_RelativePointerEventCallback* p = newval.get_Params_RelativePointerEventCallback();
 
         if (p && p->ex_button != PointingButton::NONE && p->ex_isbuttondown) {
           datatype_ = BRIDGE_DATATYPE_POINTINGBUTTON;

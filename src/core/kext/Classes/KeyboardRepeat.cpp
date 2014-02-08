@@ -150,8 +150,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // We stop key repeat only when the repeating key is up.
       KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front());
-      if (p && (p->params).type == ParamsUnion::KEYBOARD) {
-        Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+      if (p) {
+        Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
         if (params && key == params->key) {
           goto cancel;
         }
@@ -223,7 +223,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch ((p->params).type) {
         case ParamsUnion::KEYBOARD:
         {
-          Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+          Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
           if (params) {
             switch (p->type) {
               case Item::TYPE_NORMAL:
@@ -253,7 +253,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case ParamsUnion::KEYBOARD_SPECIAL:
         {
-          Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
+          Params_KeyboardSpecialEventCallback* params = (p->params).get_Params_KeyboardSpecialEventCallback();
           if (params) {
             switch (p->type) {
               case Item::TYPE_NORMAL:

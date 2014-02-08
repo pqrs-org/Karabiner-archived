@@ -83,7 +83,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     switch ((p->params).type) {
       case ParamsUnion::KEYBOARD:
       {
-        Params_KeyboardEventCallBack* params = (p->params).params.params_KeyboardEventCallBack;
+        Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
         if (params) {
           bool handled = VirtualKey::handleAfterEnqueued(*params);
           if (! handled) {
@@ -95,7 +95,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       case ParamsUnion::UPDATE_FLAGS:
       {
-        Params_UpdateEventFlagsCallback* params = (p->params).params.params_UpdateEventFlagsCallback;
+        Params_UpdateEventFlagsCallback* params = (p->params).get_Params_UpdateEventFlagsCallback();
         if (params) {
           ListHookedKeyboard::instance().apply(*params);
         }
@@ -103,7 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       case ParamsUnion::KEYBOARD_SPECIAL:
       {
-        Params_KeyboardSpecialEventCallback* params = (p->params).params.params_KeyboardSpecialEventCallback;
+        Params_KeyboardSpecialEventCallback* params = (p->params).get_Params_KeyboardSpecialEventCallback();
         if (params) {
           if (! ListHookedConsumer::instance().apply(*params)) {
             // If there is no consumer device, we send an event as a software key.
@@ -114,7 +114,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       case ParamsUnion::RELATIVE_POINTER:
       {
-        Params_RelativePointerEventCallback* params = (p->params).params.params_RelativePointerEventCallback;
+        Params_RelativePointerEventCallback* params = (p->params).get_Params_RelativePointerEventCallback();
         if (params) {
           ListHookedPointing::instance().apply(*params);
         }
@@ -122,7 +122,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       case ParamsUnion::SCROLL_WHEEL:
       {
-        Params_ScrollWheelEventCallback* params = (p->params).params.params_ScrollWheelEventCallback;
+        Params_ScrollWheelEventCallback* params = (p->params).get_Params_ScrollWheelEventCallback();
         if (params) {
           ListHookedPointing::instance().apply(*params);
         }
@@ -130,7 +130,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       case ParamsUnion::WAIT:
       {
-        Params_Wait* params = (p->params).params.params_Wait;
+        Params_Wait* params = (p->params).get_Params_Wait();
         if (params) {
           delay = params->milliseconds;
         }

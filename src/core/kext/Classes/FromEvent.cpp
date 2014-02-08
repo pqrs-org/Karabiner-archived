@@ -12,9 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case Type::KEY:
       {
-        if (paramsUnion.type != ParamsUnion::KEYBOARD) return false;
-
-        Params_KeyboardEventCallBack* params = paramsUnion.params.params_KeyboardEventCallBack;
+        Params_KeyboardEventCallBack* params = paramsUnion.get_Params_KeyboardEventCallBack();
         if (! params) return false;
 
         if (params->key != key_) return false;
@@ -25,9 +23,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case Type::CONSUMER_KEY:
       {
-        if (paramsUnion.type != ParamsUnion::KEYBOARD_SPECIAL) return false;
-
-        Params_KeyboardSpecialEventCallback* params = paramsUnion.params.params_KeyboardSpecialEventCallback;
+        Params_KeyboardSpecialEventCallback* params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
         if (! params) return false;
 
         if (params->key != consumer_) return false;
@@ -38,9 +34,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case Type::POINTING_BUTTON:
       {
-        if (paramsUnion.type != ParamsUnion::RELATIVE_POINTER) return false;
-
-        Params_RelativePointerEventCallback* params = paramsUnion.params.params_RelativePointerEventCallback;
+        Params_RelativePointerEventCallback* params = paramsUnion.get_Params_RelativePointerEventCallback();
         if (! params) return false;
 
         if (params->ex_button != button_) return false;
