@@ -44,7 +44,7 @@
     <item>
       <name>Escape to Eject</name>
       <identifier>remap.escape2eject</identifier>
-      <autogen>__KeyToConsumer__ KeyCode::ESCAPE, ConsumerKeyCode::EJECT</autogen>
+      <autogen>__KeyToKey__ KeyCode::ESCAPE, ConsumerKeyCode::EJECT</autogen>
     </item>
     <item>
       <name>Escape to Forward Delete</name>

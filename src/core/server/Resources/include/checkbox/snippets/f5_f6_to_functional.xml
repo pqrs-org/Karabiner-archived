@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <root>
-  <autogen>__KeyToConsumer__ KeyCode::F5,  ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
-  <autogen>__KeyToConsumer__ KeyCode::F6,  ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
+  <autogen>__KeyToKey__ KeyCode::F5,  ConsumerKeyCode::KEYBOARDLIGHT_LOW</autogen>
+  <autogen>__KeyToKey__ KeyCode::F6,  ConsumerKeyCode::KEYBOARDLIGHT_HIGH</autogen>
 </root>

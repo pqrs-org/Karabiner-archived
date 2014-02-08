@@ -207,7 +207,7 @@
     <item>
       <name>Fn to Eject</name>
       <identifier>remap.fn2eject</identifier>
-      <autogen>__KeyToConsumer__ KeyCode::FN, ConsumerKeyCode::EJECT</autogen>
+      <autogen>__KeyToKey__ KeyCode::FN, ConsumerKeyCode::EJECT</autogen>
     </item>
     <item>
       <name>Fn to Forward Delete</name>

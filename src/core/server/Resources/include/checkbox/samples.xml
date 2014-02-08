@@ -537,25 +537,25 @@
         <appendix>C to Option_L+Volume Mute (To Key+Modifier)</appendix>
         <appendix>D to Volume Up, Brightness Up</appendix>
         <identifier>remap.samples_keytoconsumer</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToConsumer__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToConsumer__ KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
-        <autogen>__KeyToConsumer__ KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
-        <autogen>__KeyToConsumer__ KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_L, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::C, ConsumerKeyCode::VOLUME_MUTE, ModifierFlag::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::D, ConsumerKeyCode::VOLUME_UP, ConsumerKeyCode::BRIGHTNESS_UP</autogen>
       </item>
       <item>
         <name>with ModifierFlag::NONE</name>
         <appendix>Command+A to Volume Mute</appendix>
         <identifier>remap.samples_keytoconsumer_modifierflag_none</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, ConsumerKeyCode::VOLUME_MUTE</autogen>
       </item>
       <item>
         <name>NoRepeat</name>
         <appendix>A to Volume Up (with Option::NOREPEAT)</appendix>
         <appendix>S to Volume Up</appendix>
         <identifier>remap.samples_keytoconsumer_norepeat</identifier>
-        <autogen>__KeyToConsumer__ KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
-        <autogen>__KeyToConsumer__ KeyCode::S, ConsumerKeyCode::VOLUME_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::A, ConsumerKeyCode::VOLUME_UP, Option::NOREPEAT</autogen>
+        <autogen>__KeyToKey__ KeyCode::S, ConsumerKeyCode::VOLUME_UP</autogen>
       </item>
     </item>
 
