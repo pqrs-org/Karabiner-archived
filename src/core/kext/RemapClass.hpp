@@ -30,7 +30,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class Item {
     public:
-      Item(const uint32_t* vec, size_t length);
+      Item(const RemapClass& parent, const uint32_t* vec, size_t length);
       ~Item(void);
       void append_filter(const uint32_t* vec, size_t length);
 
@@ -47,11 +47,15 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void call_disabled_callback(void);
 
+      bool active(void) const { return active_; }
+
     private:
       bool isblocked(void);
 
       Item(const Item& rhs);
       Item& operator=(const Item& rhs);
+
+      const RemapClass& parent_;
 
       uint32_t type_;
 
@@ -99,6 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void toggleEnabled(void) { setEnabled(! enabled_); }
     bool is_simultaneouskeypresses(void) const { return is_simultaneouskeypresses_; }
     uint32_t get_configindex(void) const { return configindex_; }
+    bool hasActiveItem(void) const;
 
     static void log_allocation_count(void);
     static void reset_allocation_count(void);

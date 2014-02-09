@@ -11,7 +11,8 @@
 #include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  RemapClass::Item::Item(const uint32_t* vec, size_t length)
+  RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) :
+    parent_(parent)
   {
     type_ = BRIDGE_REMAPTYPE_NONE;
     active_ = false;
@@ -144,6 +145,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (iskeydown) {
+      if (! parent_.enabled()) return;
       if (isblocked()) return;
     } else {
       // We ignore filters_ if active_ is set at KeyDown.
@@ -335,7 +337,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         unsigned int type = p[0];
 
         if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
-          Item* newp = new Item(p, size);
+          Item* newp = new Item(*this, p, size);
           if (! newp) {
             IOLOG_ERROR("RemapClass::RemapClass newp == NULL.\n");
             return;
@@ -511,6 +513,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  bool
+  RemapClass::hasActiveItem(void) const
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p && p->active()) return true;
+    }
+    return false;
+  }
+
   void
   RemapClass::log_allocation_count(void)
   {
@@ -549,6 +561,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       if (enabled_remapclasses_) {
+#if 0
         // call disabled_callback
         for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
           RemapClass* p = (*enabled_remapclasses_)[i];
@@ -556,7 +569,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             p->call_disabled_callback();
           }
         }
-
+#endif
         delete enabled_remapclasses_;
       }
       enabled_remapclasses_ = new Vector_RemapClassPointer();
@@ -571,17 +584,19 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapClass* p = (*remapclasses_)[i];
         if (! p) continue;
 
-        if (p->enabled()) {
+        if (p->enabled() || p->hasActiveItem()) {
           enabled_remapclasses_->push_back(p);
 
-          const char* msg = p->get_statusmessage();
-          if (msg) {
-            strlcat(statusmessage_, msg, sizeof(statusmessage_));
-            strlcat(statusmessage_, " ", sizeof(statusmessage_));
-          }
+          if (p->enabled()) {
+            const char* msg = p->get_statusmessage();
+            if (msg) {
+              strlcat(statusmessage_, msg, sizeof(statusmessage_));
+              strlcat(statusmessage_, " ", sizeof(statusmessage_));
+            }
 
-          if (p->is_simultaneouskeypresses()) {
-            isEventInputQueueDelayEnabled_ = true;
+            if (p->is_simultaneouskeypresses()) {
+              isEventInputQueueDelayEnabled_ = true;
+            }
           }
         }
       }
