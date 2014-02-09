@@ -226,6 +226,23 @@
           </autogen>
         </item>
       </item>
+
+      <item hidden="true">
+        <identifier vk_config="true">notsave.remap_samples_vk_config_disable_self2</identifier>
+        <autogen>__ShowStatusMessage__ Disable Self(2)</autogen>
+      </item>
+      <item>
+        <name>Disable self (2)</name>
+        <appendix>Use A to disable myself.</appendix>
+        <identifier vk_config="true">remap.samples_vk_config_disable_self2</identifier>
+        <autogen>__ShowStatusMessage__ Disable Self(2)</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A,
+          KeyCode::VK_CONFIG_FORCE_OFF_remap_samples_vk_config_disable_self2,
+          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_remap_samples_vk_config_disable_self2,
+        </autogen>
+      </item>
     </item>
     <item>
       <name>VK_CONSUMERKEY</name>
