@@ -33,8 +33,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t toKeysSize(void) const { return toKeys_.size(); }
 
     private:
-      void retractInput(void);
-      void restoreInput(void);
       int getDelayUntilRepeat(void);
       int getKeyRepeat(void);
 
