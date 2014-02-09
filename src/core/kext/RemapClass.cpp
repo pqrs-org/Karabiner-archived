@@ -266,23 +266,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 #undef CALL_UNION_FUNCTION
   }
 
-  void
-  RemapClass::Item::call_disabled_callback(void)
-  {
-#define CALL_UNION_FUNCTION(POINTER) {               \
-    if (POINTER) { (POINTER)->disabled_callback(); } \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_KEYTOKEY:            CALL_UNION_FUNCTION(p_.keyToKey);            break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
-    }
-
-#undef CALL_UNION_FUNCTION
-  }
-
   bool
   RemapClass::Item::isblocked(void)
   {
@@ -502,17 +485,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     return dropped;
   }
 
-  void
-  RemapClass::call_disabled_callback(void)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        p->call_disabled_callback();
-      }
-    }
-  }
-
   bool
   RemapClass::hasActiveItem(void) const
   {
@@ -561,15 +533,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       if (enabled_remapclasses_) {
-#if 0
-        // call disabled_callback
-        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
-          RemapClass* p = (*enabled_remapclasses_)[i];
-          if (p && ! p->enabled()) {
-            p->call_disabled_callback();
-          }
-        }
-#endif
         delete enabled_remapclasses_;
       }
       enabled_remapclasses_ = new Vector_RemapClassPointer();

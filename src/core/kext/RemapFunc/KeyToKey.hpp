@@ -30,8 +30,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
 
-      void disabled_callback(void);
-
       size_t toKeysSize(void) const { return toKeys_.size(); }
 
     private:
