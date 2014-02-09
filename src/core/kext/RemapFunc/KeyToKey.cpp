@@ -17,9 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     KeyToKey::~KeyToKey(void)
-    {
-      disabled_callback();
-    }
+    {}
 
     void
     KeyToKey::add(unsigned int datatype, unsigned int newval)
@@ -127,9 +125,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       fromFlags.remove(fromEvent_.getModifierFlag());
 
       if (fromEvent_.isPressing()) {
-        retractInput();
+        FlagStatus::decrease(fromEvent_.getModifierFlag());
+        ButtonStatus::decrease(fromEvent_.getPointingButton());
       } else {
-        restoreInput();
+        FlagStatus::increase(fromEvent_.getModifierFlag());
+        ButtonStatus::increase(fromEvent_.getPointingButton());
       }
 
       // ----------------------------------------
@@ -315,29 +315,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       ParamsUnion paramsUnion(params);
       RemapParams rp(paramsUnion);
       return remap(rp);
-    }
-
-    void
-    KeyToKey::disabled_callback(void)
-    {
-      if (fromEvent_.isPressing()) {
-        fromEvent_.unsetPressingState();
-        restoreInput();
-      }
-    }
-
-    void
-    KeyToKey::retractInput(void)
-    {
-      FlagStatus::decrease(fromEvent_.getModifierFlag());
-      ButtonStatus::decrease(fromEvent_.getPointingButton());
-    }
-
-    void
-    KeyToKey::restoreInput(void)
-    {
-      FlagStatus::increase(fromEvent_.getModifierFlag());
-      ButtonStatus::increase(fromEvent_.getPointingButton());
     }
 
     int

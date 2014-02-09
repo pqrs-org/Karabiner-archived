@@ -45,8 +45,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       void remap_forcenumlockon(ListHookedKeyboard::Item* item);
 
-      void call_disabled_callback(void);
-
       bool active(void) const { return active_; }
 
     private:
@@ -96,7 +94,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool remap_simultaneouskeypresses(void);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
-    void call_disabled_callback(void);
     const char* get_statusmessage(void) const { return statusmessage_; }
     bool enabled(void) const { return enabled_; }
     void setEnabled(bool newval) { enabled_ = newval; }
