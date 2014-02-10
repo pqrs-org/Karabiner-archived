@@ -164,35 +164,60 @@ namespace org_pqrs_KeyRemap4MacBook {
     }                                      \
 }
 
+#define CALL_IF_ENABLED(POINTER) {  \
+    if (parent_.enabled()) {        \
+      CALL_UNION_FUNCTION(POINTER); \
+    }                               \
+}
+
     switch (type_) {
-      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            CALL_UNION_FUNCTION(p_.doublePressModifier);            break;
-      case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: CALL_UNION_FUNCTION(p_.dropPointingRelativeCursorMove); break;
-      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                CALL_UNION_FUNCTION(p_.dropScrollWheel);                break;
-      case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           CALL_UNION_FUNCTION(p_.flipPointingRelative);           break;
-      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                CALL_UNION_FUNCTION(p_.flipScrollWheel);                break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                CALL_UNION_FUNCTION(p_.holdingKeyToKey);                break;
-      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     CALL_UNION_FUNCTION(p_.ignoreMultipleSameKeyPress);     break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                       CALL_UNION_FUNCTION(p_.keyToKey);                       break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_UNION_FUNCTION(p_.pointingRelativeToScroll);       break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               CALL_UNION_FUNCTION(p_.scrollWheelToKey);               break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       CALL_UNION_FUNCTION(p_.scrollWheelToScrollWheel);       break;
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);         break;
+      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:        CALL_UNION_FUNCTION(p_.doublePressModifier);            break;
+      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:            CALL_UNION_FUNCTION(p_.holdingKeyToKey);                break;
+      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS: CALL_UNION_FUNCTION(p_.ignoreMultipleSameKeyPress);     break;
+      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
+      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_FUNCTION(p_.keyToKey);                       break;
+      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);         break;
+
+      // check parent_.enabled() for RelativePointerEvent and ScrollWheelEvent.
+      case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: CALL_IF_ENABLED(p_.dropPointingRelativeCursorMove); break;
+      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                CALL_IF_ENABLED(p_.dropScrollWheel);                break;
+      case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           CALL_IF_ENABLED(p_.flipPointingRelative);           break;
+      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                CALL_IF_ENABLED(p_.flipScrollWheel);                break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_IF_ENABLED(p_.pointingRelativeToScroll);       break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               CALL_IF_ENABLED(p_.scrollWheelToKey);               break;
+      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       CALL_IF_ENABLED(p_.scrollWheelToScrollWheel);       break;
+
       default:
         // do nothing. (Do not call IOLOG_ERROR)
         break;
     }
 
 #undef CALL_UNION_FUNCTION
+#undef CALL_IF_ENABLED
   }
 
   bool
   RemapClass::Item::drop(const Params_KeyboardEventCallBack& params)
   {
-    if (isblocked()) return false;
+    if (params.ex_iskeydown) {
+      if (! parent_.enabled()) return false;
+      if (isblocked()) return false;
+    } else {
+      // We ignore filters_ if active_ is set at KeyDown.
+      if (isblocked() && ! active_) return false;
+    }
 
-#define CALL_UNION_FUNCTION(POINTER) {               \
-    if (POINTER) { return (POINTER)->drop(params); } \
+#define CALL_UNION_FUNCTION(POINTER) { \
+    if (POINTER) {                     \
+      if ((POINTER)->drop(params)) {   \
+        if (params.ex_iskeydown) {     \
+          active_ = true;              \
+        } else {                       \
+          active_ = false;             \
+        }                              \
+        return true;                   \
+      }                                \
+    }                                  \
 }
 
     switch (type_) {
@@ -212,8 +237,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (isblocked()) return false;
 
-#define CALL_UNION_FUNCTION(POINTER) {          \
-    if (POINTER) { return (POINTER)->remap(); } \
+#define CALL_UNION_FUNCTION(POINTER) {                             \
+    if (POINTER) { return (POINTER)->remap(! parent_.enabled()); } \
 }
 
     switch (type_) {
@@ -232,6 +257,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType)
   {
     if (isblocked()) return;
+    if (! parent_.enabled()) return;
 
 #define CALL_UNION_FUNCTION(POINTER) {               \
     if (POINTER) { (POINTER)->remap(keyboardType); } \
@@ -251,6 +277,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item)
   {
     if (isblocked()) return;
+    if (! parent_.enabled()) return;
 
 #define CALL_UNION_FUNCTION(POINTER) {       \
     if (POINTER) { (POINTER)->remap(item); } \
@@ -277,7 +304,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     return false;
   }
 
-  // ----------------------------------------------------------------------
+// ----------------------------------------------------------------------
   int RemapClass::allocation_count_ = 0;
 
   RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex) :
@@ -471,13 +498,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     bool dropped = false;
 
-    if (enabled()) {
-      for (size_t i = 0; i < items_.size(); ++i) {
-        Item* p = items_[i];
-        if (p) {
-          if (p->drop(params)) {
-            dropped = true;
-          }
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (p->drop(params)) {
+          dropped = true;
         }
       }
     }
@@ -511,7 +536,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     allocation_count_ = 0;
   }
 
-  // ================================================================================
+// ================================================================================
   namespace RemapClassManager {
     TimerWrapper refresh_timer_;
 

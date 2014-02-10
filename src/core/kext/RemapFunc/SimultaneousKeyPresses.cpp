@@ -121,7 +121,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool
-    SimultaneousKeyPresses::remap(void)
+    SimultaneousKeyPresses::remap(bool keyuponly)
     {
       if (! EventInputQueue::queue_) return false;
 
@@ -176,6 +176,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         return true;
       }
+
+      // ------------------------------------------------------------
+      if (keyuponly) return false;
 
       // ------------------------------------------------------------
       // handle KeyDown event.
