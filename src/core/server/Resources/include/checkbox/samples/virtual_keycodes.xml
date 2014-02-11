@@ -243,6 +243,35 @@
           KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_remap_samples_vk_config_disable_self2,
         </autogen>
       </item>
+
+      <item>
+        <name>Disable self (3)</name>
+        <appendix>Use A to disable myself.</appendix>
+        <appendix>(+ Set keyboardType = KeyboardType::JIS_MACBOOK_2008)</appendix>
+        <appendix>(+ Change CursorMove to ScrollWheel)</appendix>
+        <appendix>(+ Simultaneous (A+S) to Volume Mute)</appendix>
+        <identifier vk_config="true">remap.samples_vk_config_disable_self3</identifier>
+        <autogen>__ShowStatusMessage__ Disable Self(3)</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A,
+          KeyCode::VK_CONFIG_FORCE_OFF_remap_samples_vk_config_disable_self3,
+        </autogen>
+
+        <autogen>__SetKeyboardType__ KeyboardType::JIS_MACBOOK_2008</autogen>
+        <autogen>__PointingRelativeToScroll__ PointingButton::NONE, VK_MOD_ANY</autogen>
+        <autogen>
+          __SimultaneousKeyPresses__
+
+          @begin
+          KeyCode::A, KeyCode::S,
+          @end
+
+          @begin
+          ConsumerKeyCode::VOLUME_MUTE,
+          @end
+        </autogen>
+      </item>
     </item>
     <item>
       <name>VK_CONSUMERKEY</name>
