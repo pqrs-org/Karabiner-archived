@@ -16,7 +16,9 @@
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     [outlineview_ setNeedsDisplay:YES];
-    [self filter:self];
+    if ([showEnabledOnly_ state] == NSOnState) {
+      [self filter:self];
+    }
   });
 }
 
