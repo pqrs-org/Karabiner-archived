@@ -725,7 +725,7 @@
         <appendix>H to Shift_L (When type only, send A,B,Shift_L+C,Control_L+B) + [KeyRepeat]</appendix>
         <appendix>I to Shift_L (When type only, send Option_L)</appendix>
         <appendix>J to Shift_L+Option_L (When type only, send Space)</appendix>
-        <appendix>Command_R to Shift_L (When type only without other modifiers, send Space)</appendix>
+        <appendix>Command_R to Shift_L (Without other modifiers) (When type only, send Space)</appendix>
         <identifier>remap.samples_keyoverlaidmodifier</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::A, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
@@ -743,7 +743,7 @@
       <item>
         <name>Standard2</name>
         <appendix>A to Shift_L (Without other modifiers) (When type only, send Space)</appendix>
-        <appendix>Command_R to Command_R (When type only without other modifiers, send Space)</appendix>
+        <appendix>Command_R to Command_R (Without other modifiers) (When type only, send Space)</appendix>
         <identifier>remap.samples_keyoverlaidmodifier2</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::A, ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, KeyCode::SPACE</autogen>
