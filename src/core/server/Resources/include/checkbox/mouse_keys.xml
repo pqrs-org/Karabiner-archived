@@ -99,6 +99,29 @@
           <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
         </block>
         <block>
+          <config_only>option.mousekeys_n_to_click_lock</config_only>
+          <autogen>
+            __HoldingKeyToKey__
+            KeyCode::N,
+
+            @begin
+            KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT,
+            @end
+
+            @begin
+            PointingButton::LEFT,
+            PointingButton::LEFT,
+            KeyCode::VK_NONE,
+            Option::NOREPEAT,
+            @end
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::DOT,
+            KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF,
+          </autogen>
+        </block>
+        <block>
           <config_only>option.mousekeys_mode_wer2click</config_only>
           <autogen>__KeyToKey__ KeyCode::W, PointingButton::LEFT</autogen>
           <autogen>__KeyToKey__ KeyCode::E, PointingButton::MIDDLE</autogen>
@@ -147,6 +170,12 @@
       <item>
         <name>[Option] Change right command key to right click in Mouse Keys Mode</name>
         <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
+      </item>
+      <item>
+        <name>[Option] Use N key to click lock in Mouse Keys Mode.</name>
+        <appendix>(+ Holding N key to double-click)</appendix>
+        <appendix>(Use . key to release click.)</appendix>
+        <identifier>option.mousekeys_n_to_click_lock</identifier>
       </item>
       <item><name>──────────────────────────────</name></item>
       <item>
@@ -207,6 +236,7 @@
         <identifier>remap.mouse_keys_mode_holding_m</identifier>
         <autogen>__HoldingKeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
       </item>
+      <item><name>──────────────────────────────</name></item>
       <item>
         <name>[Option] WER to Click</name>
         <appendix>- W to LeftClick</appendix>
