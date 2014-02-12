@@ -15,12 +15,89 @@
     </item>
 
     <item>
-      <name>Arrow(Up/Down/Left/Right) Keys to Mouse Keys</name>
-      <identifier>remap.mousekeys_arrow</identifier>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+      <name>"Right command key + j/k" to scroll down/up</name>
+      <identifier>remap.right_command_jk_to_scroll</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::J, ModifierFlag::COMMAND_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::K, ModifierFlag::COMMAND_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_UP,
+      </autogen>
+    </item>
+    <item>
+      <name>"Right command key + h/l" to scroll left/right</name>
+      <identifier>remap.right_command_hl_to_scroll</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::H, ModifierFlag::COMMAND_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, ModifierFlag::COMMAND_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+      </autogen>
+    </item>
+    <item>
+      <name>"Right option key + up down arrows" to scroll down/up</name>
+      <identifier>remap.right_command_arrow_to_scroll</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_UP, ModifierFlag::OPTION_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_UP,
+      </autogen>
+    </item>
+    <item>
+      <name>"Right option key + left right arrows" to scroll left/right</name>
+      <identifier>remap.right_command_leftrightarrow_to_scroll</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R,
+        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+      </autogen>
+    </item>
+
+    <item>
+      <name>"Left control key + qa" to scroll down/up</name>
+      <identifier>remap.left ctrl to scroll</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::A, ModifierFlag::CONTROL_L,
+        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::Q, ModifierFlag::CONTROL_L,
+        KeyCode::VK_MOUSEKEY_SCROLL_UP,
+      </autogen>
+    </item>
+    <item>
+      <name>"Left control key + ws to scroll left/right"</name>
+      <identifier>remap.left_ctrl_ws_to_scroll</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, ModifierFlag::CONTROL_L,
+        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::S, ModifierFlag::CONTROL_L,
+        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+      </autogen>
     </item>
 
     <item>
@@ -378,6 +455,15 @@
         <appendix>control+fn+3 = move mouse fixed distance up</appendix>
         <identifier>option.mousekeys_with_lefthand_fixed_distance_with_control_fn</identifier>
       </item>
+    </item>
+
+    <item>
+      <name>Arrow(Up/Down/Left/Right) Keys to Mouse Keys</name>
+      <identifier>remap.mousekeys_arrow</identifier>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
     </item>
   </item>
 </root>
