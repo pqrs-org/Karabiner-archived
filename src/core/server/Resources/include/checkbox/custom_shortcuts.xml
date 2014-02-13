@@ -68,6 +68,16 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Toggle Wi-Fi by fn-w</name>
+      <identifier>remap.toggle_wifi_by_fn_w</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, ModifierFlag::FN | ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_SHELL_toggle_wifi,
+      </autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Switch current setting profile by fn+1,fn+2,fn+3, and fn+4.</name>
       <appendix>(You can make multiple profiles by MenuBar tab on Preferences.</appendix>
       <appendix>This setting changes current profile by shortcut.)</appendix>
