@@ -1,7 +1,7 @@
 #ifndef POINTINGRELATIVETOSCROLL_HPP
 #define POINTINGRELATIVETOSCROLL_HPP
 
-#include "FromKeyChecker.hpp"
+#include "FromEvent.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
 #include "List.hpp"
@@ -64,9 +64,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         INDEX_TYPE_TOFLAGS,
         INDEX_TYPE_TOKEYS,
       } index_type_;
-      FromKeyChecker fromkeychecker_;
+      FromEvent fromEvent_;
       Flags fromFlags_;
-      PointingButton fromButton_;
       Flags toFlags_;
       KeyToKey keytokey_;
       bool isToKeysDefined_;
