@@ -1,8 +1,8 @@
 #ifndef DROPKEYAFTERREMAP_HPP
 #define DROPKEYAFTERREMAP_HPP
 
-#include "RemapFuncClasses.hpp"
 #include "FromEvent.hpp"
+#include "RemapFuncClasses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
