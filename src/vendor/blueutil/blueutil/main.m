@@ -30,6 +30,11 @@ static int BTPowerState(void)
 
 static int BTSetPowerState(int powerState)
 {
+  if (BTPowerState() == powerState) {
+    printf("Bluetooth is already %s\n", powerState ? "on" : "off");
+    return EXIT_SUCCESS;
+  }
+
   IOBluetoothPreferenceSetControllerPowerState(powerState);
 
   usleep(2000000);       // wait until BT has been set
@@ -59,8 +64,10 @@ int main(int argc, const char* argv[])
     result = BTSetPowerState(1);
   } else if (argc == 2 && strcmp(argv[1], "off") == 0) {
     result = BTSetPowerState(0);
+  } else if (argc == 2 && strcmp(argv[1], "toggle") == 0) {
+    result = BTSetPowerState(BTPowerState() == 0 ? 1 : 0);
   } else {
-    printf("Usage: %s [status|on|off]\n", argv[0]);
+    printf("Usage: %s [status|on|off|toggle]\n", argv[0]);
     result = EXIT_FAILURE;
   }
 
