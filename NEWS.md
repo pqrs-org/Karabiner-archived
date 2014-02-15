@@ -28,9 +28,9 @@ Version 9.3.0
 
         <pre>
         &lt;autogen&gt;
-          \_\_KeyToKey\_\_
-          KeyCode::P, MODIFIERFLAG\_EITHER\_LEFT\_OR\_RIGHT\_CONTROL,
-          KeyCode::CURSOR\_UP,
+          __KeyToKey__
+          KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::CURSOR_UP,
           DelayUntilRepeat::RawValue::100,
           KeyRepeat::RawValue::10,
         &lt;/autogen&gt;
