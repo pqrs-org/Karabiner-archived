@@ -8,27 +8,27 @@
  * and may be modified or used without attribution.
  *
  * Written by Frederik Seiffert <ego@frederikseiffert.de>
- * Last change: 2009-10-30
+ * Minor source code improvement by Takayama Fumihiko <tekezo@pqrs.org>
  */
 
 #import <Foundation/Foundation.h>
 // link against IOBluetooth.framework
 
 // private methods
-int IOBluetoothPreferencesAvailable();
+int IOBluetoothPreferencesAvailable(void);
 
-int IOBluetoothPreferenceGetControllerPowerState();
+int IOBluetoothPreferenceGetControllerPowerState(void);
 void IOBluetoothPreferenceSetControllerPowerState(int state);
 
-int IOBluetoothPreferenceGetDiscoverableState();
+int IOBluetoothPreferenceGetDiscoverableState(void);
 void IOBluetoothPreferenceSetDiscoverableState(int state);
 
-int BTPowerState()
+static int BTPowerState(void)
 {
   return IOBluetoothPreferenceGetControllerPowerState();
 }
 
-int BTSetPowerState(int powerState)
+static int BTSetPowerState(int powerState)
 {
   IOBluetoothPreferenceSetControllerPowerState(powerState);
 
@@ -41,7 +41,7 @@ int BTSetPowerState(int powerState)
   return EXIT_SUCCESS;
 }
 
-void BTStatus()
+static void BTStatus(void)
 {
   printf("Status: %s\n", BTPowerState() ? "on" : "off");
 }
