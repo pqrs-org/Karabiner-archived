@@ -1,34 +1,40 @@
-Since 9.2.0
------------
+Version 9.3.0
+-------------
 
-* v9.2.26: Improved KeyCode::VK_CONFIG_* behavior in the edge case.
-* v9.2.25: You can use KeyCode, ConsumerKeyCode and PointingButton in \_\_DoublePressModifier\_\_.
-* v9.2.23: These manipulators have been integrated into \_\_KeyToKey\_\_. <br />
-    You can change KeyCode, ConsumerKeyCode and PointingButton by \_\_KeyToKey\_\_.
-    * \_\_KeyToConsumer\_\_
-    * \_\_ConsumerToKey\_\_
-    * \_\_ConsumerToConsumer\_\_
-    * \_\_KeyToPointingButton\_\_
-    * \_\_PointingButtonToKey\_\_
-    * \_\_PointingButtonToPointingButton\_\_
-* v9.2.23: You can use KeyCode, ConsumerKeyCode and PointingButton in\_\_KeyOverlaidModifier\_\_, \_\_HoldingKeyToKey\_\_ and \_\_SimultaneousKeyPresses\_\_.
-* v9.2.10: Updated prepared settings.
-* v9.2.5: You can change the delay and speed of keyboard repeat per autogen. <br />
-    For example, this autogen changes control-p to up arrow with:
-    * delay until repeat: 100ms
-    * key repeat: 10ms
+* Fixed an issue:
+    * "Kernel extension is not loaded" alert might be shown on some machines when automatic login is enabled.
+* Updated prepared settings.
+* Updates for people who add new settings by oneself:
+    * These manipulators have been integrated into \_\_KeyToKey\_\_. <br />
+      You can change KeyCode, ConsumerKeyCode and PointingButton by \_\_KeyToKey\_\_.
+        * \_\_KeyToConsumer\_\_
+        * \_\_ConsumerToKey\_\_
+        * \_\_ConsumerToConsumer\_\_
+        * \_\_KeyToPointingButton\_\_
+        * \_\_PointingButtonToKey\_\_
+        * \_\_PointingButtonToPointingButton\_\_
+    * You can use KeyCode, ConsumerKeyCode and PointingButton in these manipulators:
+        * \_\_KeyOverlaidModifier\_\_
+        * \_\_HoldingKeyToKey\_\_
+        * \_\_SimultaneousKeyPresses\_\_
+        * \_\_DoublePressModifier\_\_
+        * \_\_ScrollWheelToKey\_\_
+        * \_\_PointingRelativeToScroll\_\_
+    * Improved KeyCode::VK_CONFIG_* behavior in the edge case.
+    * You can change the delay and speed of keyboard repeat per autogen. <br />
+      For example, this autogen changes control-p to up arrow with:
+        * delay until repeat: 100ms
+        * key repeat: 10ms
 
-    <pre>
-    &lt;autogen&gt;
-      __KeyToKey__
-      KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
-      KeyCode::CURSOR_UP,
-      DelayUntilRepeat::RawValue::100,
-      KeyRepeat::RawValue::10,
-    &lt;/autogen&gt;
-    </pre>
-* Fixed issues:
-    * v9.2.2: "Kernel extension is not loaded" alert might be shown on some machines when automatic login is enabled.
+        <pre>
+        &lt;autogen&gt;
+          \_\_KeyToKey\_\_
+          KeyCode::P, MODIFIERFLAG\_EITHER\_LEFT\_OR\_RIGHT\_CONTROL,
+          KeyCode::CURSOR\_UP,
+          DelayUntilRepeat::RawValue::100,
+          KeyRepeat::RawValue::10,
+        &lt;/autogen&gt;
+        </pre>
 
 Version 9.2.0
 -------------
