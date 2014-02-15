@@ -207,6 +207,16 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_toggle_bluetooth</name>
+    <url type="shell">
+      <![CDATA[
+        /usr/bin/osascript -e 'display notification "Toggle Bluetooth" with title "KeyRemap4MacBook"';
+        /Applications/KeyRemap4MacBook.app/Contents/Library/vendor/bin/blueutil toggle
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_SHELL_toggle_wifi</name>
     <url type="shell">
       <![CDATA[
