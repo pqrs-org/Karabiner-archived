@@ -2,7 +2,6 @@
 #define DOUBLEPRESSMODIFIER_HPP
 
 #include "RemapFuncClasses.hpp"
-#include "FromKeyChecker.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
 
