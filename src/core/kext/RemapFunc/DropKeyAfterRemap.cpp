@@ -17,13 +17,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
         {
-          fromKey_.key = KeyCode(newval);
+          fromEvent_ = FromEvent(datatype, newval);
           break;
         }
 
         case BRIDGE_DATATYPE_FLAGS:
         {
-          fromKey_.flags = Flags(newval);
+          fromFlags_ = Flags(newval);
           break;
         }
 
@@ -36,8 +36,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     DropKeyAfterRemap::drop(const Params_KeyboardEventCallBack& params)
     {
-      if (fromkeychecker_.isFromKey(params.ex_iskeydown, params.key, params.flags, fromKey_.key, fromKey_.flags)) return true;
-      return false;
+      ParamsUnion paramsUnion(params);
+      if (! fromEvent_.changePressingState(paramsUnion, params.flags, fromFlags_)) return false;
+      return true;
     }
   }
 }

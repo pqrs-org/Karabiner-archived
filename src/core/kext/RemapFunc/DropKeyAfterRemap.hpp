@@ -2,7 +2,7 @@
 #define DROPKEYAFTERREMAP_HPP
 
 #include "RemapFuncClasses.hpp"
-#include "FromKeyChecker.hpp"
+#include "FromEvent.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -18,8 +18,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
-      FromKeyChecker fromkeychecker_;
-      PairKeyFlags fromKey_;
+      FromEvent fromEvent_;
+      Flags fromFlags_;
     };
   }
 };
