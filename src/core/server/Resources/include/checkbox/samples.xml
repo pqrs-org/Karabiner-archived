@@ -1130,6 +1130,18 @@
         <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
         <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
       </item>
+      <item>
+        <name>Standard (2)</name>
+        <appendix>ScrollWheel(Left) to Volume Down</appendix>
+        <appendix>ScrollWheel(Right) to Volume Up</appendix>
+        <appendix>ScrollWheel(Down) to Left Click</appendix>
+        <appendix>ScrollWheel(Up) to Right Click</appendix>
+        <identifier>remap.samples_ScrollWheelToKey2</identifier>
+        <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT,  ConsumerKeyCode::VOLUME_DOWN</autogen>
+        <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ConsumerKeyCode::VOLUME_UP</autogen>
+        <autogen>__ScrollWheelToKey__ ScrollWheel::DOWN,  PointingButton::LEFT</autogen>
+        <autogen>__ScrollWheelToKey__ ScrollWheel::UP,    PointingButton::RIGHT</autogen>
+      </item>
     </item>
 
     <item>
