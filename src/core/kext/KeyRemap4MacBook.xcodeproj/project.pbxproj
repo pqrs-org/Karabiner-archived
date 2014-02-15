@@ -61,7 +61,6 @@
 		34779362185B1FA800B3EF06 /* EventWatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779335185B1FA800B3EF06 /* EventWatcher.hpp */; };
 		34779363185B1FA800B3EF06 /* FlagStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779336185B1FA800B3EF06 /* FlagStatus.cpp */; };
 		34779364185B1FA800B3EF06 /* FlagStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779337185B1FA800B3EF06 /* FlagStatus.hpp */; };
-		34779365185B1FA800B3EF06 /* FromKeyChecker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779338185B1FA800B3EF06 /* FromKeyChecker.hpp */; };
 		34779366185B1FA800B3EF06 /* GlobalLock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779339185B1FA800B3EF06 /* GlobalLock.cpp */; };
 		34779367185B1FA800B3EF06 /* GlobalLock.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477933A185B1FA800B3EF06 /* GlobalLock.hpp */; };
 		34779368185B1FA800B3EF06 /* IntervalChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477933B185B1FA800B3EF06 /* IntervalChecker.cpp */; };
@@ -212,7 +211,6 @@
 		34779335185B1FA800B3EF06 /* EventWatcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = EventWatcher.hpp; path = Classes/EventWatcher.hpp; sourceTree = "<group>"; };
 		34779336185B1FA800B3EF06 /* FlagStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlagStatus.cpp; path = Classes/FlagStatus.cpp; sourceTree = "<group>"; };
 		34779337185B1FA800B3EF06 /* FlagStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlagStatus.hpp; path = Classes/FlagStatus.hpp; sourceTree = "<group>"; };
-		34779338185B1FA800B3EF06 /* FromKeyChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FromKeyChecker.hpp; path = Classes/FromKeyChecker.hpp; sourceTree = "<group>"; };
 		34779339185B1FA800B3EF06 /* GlobalLock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GlobalLock.cpp; path = Classes/GlobalLock.cpp; sourceTree = "<group>"; };
 		3477933A185B1FA800B3EF06 /* GlobalLock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GlobalLock.hpp; path = Classes/GlobalLock.hpp; sourceTree = "<group>"; };
 		3477933B185B1FA800B3EF06 /* IntervalChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntervalChecker.cpp; path = Classes/IntervalChecker.cpp; sourceTree = "<group>"; };
@@ -443,7 +441,6 @@
 				34779337185B1FA800B3EF06 /* FlagStatus.hpp */,
 				34779385185B271E00B3EF06 /* FromEvent.cpp */,
 				34779383185B236C00B3EF06 /* FromEvent.hpp */,
-				34779338185B1FA800B3EF06 /* FromKeyChecker.hpp */,
 				34779339185B1FA800B3EF06 /* GlobalLock.cpp */,
 				3477933A185B1FA800B3EF06 /* GlobalLock.hpp */,
 				3477933B185B1FA800B3EF06 /* IntervalChecker.cpp */,
@@ -562,7 +559,6 @@
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
 				34340FB3185CA89800D72086 /* Types.hpp in Headers */,
 				3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */,
-				34779365185B1FA800B3EF06 /* FromKeyChecker.hpp in Headers */,
 				341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */,
 				34779375185B1FA800B3EF06 /* ListHookedDevice.hpp in Headers */,
 				34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */,
