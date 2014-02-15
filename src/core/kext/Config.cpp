@@ -1,5 +1,6 @@
 #include <IOKit/IOLib.h>
 
+#include "ButtonStatus.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "FlagStatus.hpp"
