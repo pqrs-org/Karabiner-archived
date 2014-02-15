@@ -38,6 +38,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         case BRIDGE_DATATYPE_KEYCODE:
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
           switch (index_) {
             case 0:
@@ -49,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               keytokey_.add(KeyCode::VK_PSEUDO_KEY);
               keytokey_.add(fromFlags_);
             default:
-              keytokey_.add(KeyCode(newval));
+              keytokey_.add(datatype, newval);
               break;
           }
           ++index_;
