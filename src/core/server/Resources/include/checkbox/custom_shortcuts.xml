@@ -68,6 +68,15 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Toggle Bluetooth by fn-b</name>
+      <identifier>remap.toggle_bluetooth_by_fn_b</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::B, ModifierFlag::FN | ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_SHELL_toggle_bluetooth,
+      </autogen>
+    </item>
+    <item>
       <name>Toggle Wi-Fi by fn-w</name>
       <identifier>remap.toggle_wifi_by_fn_w</identifier>
       <autogen>
