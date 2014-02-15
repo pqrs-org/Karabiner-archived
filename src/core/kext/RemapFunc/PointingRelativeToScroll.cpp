@@ -75,23 +75,19 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
+        case BRIDGE_DATATYPE_KEYCODE:
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
         case BRIDGE_DATATYPE_POINTINGBUTTON:
         {
           switch (index_type_) {
             case INDEX_TYPE_DEFAULT:
-              fromButton_ = PointingButton(newval);
+              if (datatype == BRIDGE_DATATYPE_POINTINGBUTTON) {
+                fromEvent_ = FromEvent(datatype, newval);
+              } else {
+                IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
+                error_ = true;
+              }
               break;
-            default:
-              IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
-              error_ = true;
-              break;
-          }
-          break;
-        }
-
-        case BRIDGE_DATATYPE_KEYCODE:
-        {
-          switch (index_type_) {
             case INDEX_TYPE_TOKEYS:
               keytokey_.add(datatype, newval);
               break;
@@ -144,17 +140,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Skip on error in order to avoid this situation.
       if (error_) return false;
 
-      bool active = fromkeychecker_.isactive();
+      bool active = fromEvent_.isPressing();
 
       if (remapParams.isremapped) return false;
-      if (fromButton_ == PointingButton::NONE) {
+      if (fromEvent_.getPointingButton() == PointingButton::NONE) {
         if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
       } else {
-        if (! fromkeychecker_.isFromPointingButton(*params, fromButton_, fromFlags_) && ! active) return false;
+        if (! fromEvent_.changePressingState(remapParams.paramsUnion, FlagStatus::makeFlags(), fromFlags_) &&
+            ! active) {
+          return false;
+        }
       }
       remapParams.isremapped = true;
 
-      if (fromButton_ == PointingButton::NONE) {
+      if (fromEvent_.getPointingButton() == PointingButton::NONE) {
         goto doremap;
       }
 
@@ -163,9 +162,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         // if the source buttons contains left button, we cancel left click for iPhoto, or some applications.
         // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
         // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
-        ButtonStatus::decrease(fromButton_);
+        ButtonStatus::decrease(fromEvent_.getPointingButton());
         EventOutputQueue::FireRelativePointer::fire();
-        ButtonStatus::increase(fromButton_);
+        ButtonStatus::increase(fromEvent_.getPointingButton());
 
         absolute_distance_ = 0;
         begin_ic_.begin();
@@ -177,7 +176,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // last time
-      if (! fromkeychecker_.isactive()) {
+      if (! fromEvent_.isPressing()) {
         cancelScroll();
 
         const uint32_t DISTANCE_THRESHOLD = 5;
@@ -189,9 +188,9 @@ namespace org_pqrs_KeyRemap4MacBook {
             keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
           } else {
-            ButtonStatus::increase(fromButton_);
+            ButtonStatus::increase(fromEvent_.getPointingButton());
             EventOutputQueue::FireRelativePointer::fire();
-            ButtonStatus::decrease(fromButton_);
+            ButtonStatus::decrease(fromEvent_.getPointingButton());
             EventOutputQueue::FireRelativePointer::fire();
           }
         }
