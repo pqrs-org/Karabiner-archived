@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>24BD6943-4CCB-4B0E-A8BD-331C88A682DC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>blueutil</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5D92B731-030D-4356-89E3-7FE2C862CFD5</key>
+		<string>ssh://github.com/tekezo/KeyRemap4MacBook.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>src/vendor/blueutil/blueutil.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5D92B731-030D-4356-89E3-7FE2C862CFD5</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/tekezo/KeyRemap4MacBook.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5D92B731-030D-4356-89E3-7FE2C862CFD5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5D92B731-030D-4356-89E3-7FE2C862CFD5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KeyRemap4MacBook</string>
+		</dict>
+	</array>
+</dict>
+</plist>
