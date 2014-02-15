@@ -3,7 +3,6 @@
 
 #include "EventInputQueue.hpp"
 #include "FromEvent.hpp"
-#include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
 #include "RemapFuncClasses.hpp"
 

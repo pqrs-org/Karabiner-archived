@@ -2,7 +2,6 @@
 #define DEPENDINGPRESSINGPERIODKEYTOKEY_HPP
 
 #include "RemapFuncClasses.hpp"
-#include "FromKeyChecker.hpp"
 #include "KeyToKey.hpp"
 #include "TimerWrapper.hpp"
 #include "IntervalChecker.hpp"
