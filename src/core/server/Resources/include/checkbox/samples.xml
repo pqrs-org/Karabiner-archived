@@ -1384,13 +1384,16 @@
         <appendix>Change Shift+LeftClick to Option+A,B</appendix>
         <appendix>+ (Shift+LeftClick+CursorMove to ScrollWheel)</appendix>
         <appendix></appendix>
+        <appendix>Change Option+LeftClick to Volume Mute</appendix>
+        <appendix>+ (Option+LeftClick+CursorMove to ScrollWheel)</appendix>
+        <appendix></appendix>
         <identifier>remap.samples_pointingrelativetoscroll_with_tokeys</identifier>
         <autogen>
           __PointingRelativeToScroll__
           PointingButton::RIGHT,
 
           Option::POINTINGRELATIVETOSCROLL_TOKEYS,
-          KeyCode::VK_MOUSEKEY_BUTTON_MIDDLE,
+          PointingButton::MIDDLE,
         </autogen>
         <autogen>
           __PointingRelativeToScroll__
@@ -1399,6 +1402,13 @@
           Option::POINTINGRELATIVETOSCROLL_TOKEYS,
           KeyCode::A, ModifierFlag::OPTION_L,
           KeyCode::B,
+        </autogen>
+        <autogen>
+          __PointingRelativeToScroll__
+          PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+          Option::POINTINGRELATIVETOSCROLL_TOKEYS,
+          ConsumerKeyCode::VOLUME_MUTE,
         </autogen>
       </item>
       <item>
