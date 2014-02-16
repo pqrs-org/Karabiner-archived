@@ -29,7 +29,7 @@
       <name>Space 키 옆 2개의 키를 '한/영'키와 '한자'키로 사용하기</name>
       <item>
         <name>맥 -> Command+Space가 한영 전환으로 설정되어 있어야 합니다.</name>
-        <name>윈도우 -> 한영전환을 위한 레지스트리가 등록되어야합니다.e</name>
+        <name>윈도우 -> 한영전환을 위한 레지스트리가 등록되어야 합니다.</name>
         <name>(참고 - https://github.com/niceview/KoreanKeyboard4MacBook)</name>
       </item>
 
