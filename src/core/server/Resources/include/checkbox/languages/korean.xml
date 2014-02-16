@@ -1,28 +1,5 @@
 <?xml version="1.0"?>
 <root>
-  <replacementdef>
-    <replacementname>HANENG_AT_MAC</replacementname>
-    <replacementvalue>KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</replacementvalue>
-  </replacementdef>
-  <replacementdef>
-    <replacementname>HANJA_AT_MAC</replacementname>
-    <replacementvalue>KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</replacementvalue>
-  </replacementdef>
-  <replacementdef>
-    <replacementname>HANENG_AT_WIN</replacementname>
-    <!-- <replacementvalue>KeyCode::SPACE, ModifierFlag::SHIFT_L, Option::NOREPEAT</replacementvalue> -->
-    <replacementvalue>KeyCode::JIS_KANA, Option::NOREPEAT</replacementvalue>
-  </replacementdef>
-  <replacementdef>
-    <replacementname>HANJA_AT_WIN</replacementname>
-    <!-- <replacementvalue>KeyCode::SPACE, ModifierFlag::CONTROL_L, Option::NOREPEAT</replacementvalue> -->
-    <replacementvalue>KeyCode::JIS_EISUU, Option::NOREPEAT</replacementvalue>
-  </replacementdef>
-  <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_WEB_koreankeyboard4macbook</name>
-    <url>https://github.com/niceview/KoreanKeyboard4MacBook</url>
-  </vkopenurldef>
-
   <item>
     <name>For Korean</name>
     <item>
@@ -214,7 +191,7 @@
           <identifier>remap.ksc_hanja2optionReturn</identifier>
           <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
         </item>
-      </item>      
+      </item>
     </item>
   </item>
 </root>

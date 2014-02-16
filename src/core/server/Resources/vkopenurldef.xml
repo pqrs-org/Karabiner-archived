@@ -24,6 +24,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WEB_koreankeyboard4macbook</name>
+    <url>https://github.com/niceview/KoreanKeyboard4MacBook</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_WEB_pqrs_org</name>
     <url>https://pqrs.org/</url>
   </vkopenurldef>
