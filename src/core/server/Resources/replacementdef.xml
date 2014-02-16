@@ -158,9 +158,31 @@
   </replacementdef>
 
   <!-- ============================================================ -->
+  <!-- Language/Japanese -->
   <replacementdef>
     <replacementname>JAPANESE_OYAYUBISHIFT_EXTRA</replacementname>
     <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <!-- Language/Korean -->
+  <replacementdef>
+    <replacementname>HANENG_AT_MAC</replacementname>
+    <replacementvalue>KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>HANJA_AT_MAC</replacementname>
+    <replacementvalue>KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>HANENG_AT_WIN</replacementname>
+    <!-- <replacementvalue>KeyCode::SPACE, ModifierFlag::SHIFT_L, Option::NOREPEAT</replacementvalue> -->
+    <replacementvalue>KeyCode::JIS_KANA, Option::NOREPEAT</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>HANJA_AT_WIN</replacementname>
+    <!-- <replacementvalue>KeyCode::SPACE, ModifierFlag::CONTROL_L, Option::NOREPEAT</replacementvalue> -->
+    <replacementvalue>KeyCode::JIS_EISUU, Option::NOREPEAT</replacementvalue>
   </replacementdef>
 
 </root>
