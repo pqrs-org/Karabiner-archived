@@ -1,69 +1,136 @@
 <?xml version="1.0"?>
 <root>
+  <replacementdef>
+    <replacementname>HANENG_AT_MAC</replacementname>
+    <replacementvalue>KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>HANJA_AT_MAC</replacementname>
+    <replacementvalue>KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>HANENG_AT_WIN</replacementname>
+    <!-- <replacementvalue>KeyCode::SPACE, ModifierFlag::SHIFT_L, Option::NOREPEAT</replacementvalue> -->
+    <replacementvalue>KeyCode::JIS_KANA, Option::NOREPEAT</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>HANJA_AT_WIN</replacementname>
+    <!-- <replacementvalue>KeyCode::SPACE, ModifierFlag::CONTROL_L, Option::NOREPEAT</replacementvalue> -->
+    <replacementvalue>KeyCode::JIS_EISUU, Option::NOREPEAT</replacementvalue>
+  </replacementdef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WEB_koreankeyboard4macbook</name>
+    <url>https://github.com/niceview/KoreanKeyboard4MacBook</url>
+  </vkopenurldef>
+
   <item>
     <name>For Korean</name>
     <item>
-      <name>Make Command_R, Option_R as HanEng, Hanja keys (except virtual machine, RDC)</name>
+      <name>Space 키 옆 2개의 키를 '한/영'키와 '한자'키로 사용하기</name>
       <item>
-        <name>Command_R to Command+Space</name>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <identifier>remap.ksc_commandR2commandSpace</identifier>
-        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        <name>맥 -> Command+Space가 한영 전환으로 설정되어 있어야 합니다.</name>
+        <name>윈도우 -> 한영전환을 위한 레지스트리가 등록되어야 합니다.</name>
+        <name>(참고 - https://github.com/niceview/KoreanKeyboard4MacBook)</name>
       </item>
+
       <item>
-        <name>Shift+Space to Command+Space</name>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <identifier>remap.ksc_shiftSpace2commandSpace</identifier>
-        <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <name>애플 키보드</name>
+        <device_only>DeviceVendor::APPLE_COMPUTER</device_only>
+        <identifier>remap.ksc_with_apple_keyboard</identifier>
+
+        <block>
+          <block>
+            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+            <autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANENG_AT_MAC }}</autogen>
+          </block>
+          <block>
+            <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+            <autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANENG_AT_WIN }}</autogen>
+          </block>
+        </block>
+
+        <block>
+          <config_not>option.no_optionR2hanja</config_not>
+          <block>
+            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+            <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANJA_AT_MAC }}</autogen>
+          </block>
+          <block>
+            <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+            <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANJA_AT_WIN }}</autogen>
+          </block>
+        </block>
       </item>
+
       <item>
-        <name>Option_R to Option+Return</name>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-        <identifier>remap.ksc_optionR2optionReturn</identifier>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
+        <name>한글 103/106키 키보드</name>
+        <device_not>DeviceVendor::APPLE_COMPUTER</device_not>
+        <identifier>remap.ksc_with_103_106_keyboard</identifier>
+        <block>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>__KeyToKey__ KeyCode::JIS_KANA, {{ HANENG_AT_MAC }}</autogen>
+          <autogen>__KeyToKey__ KeyCode::JIS_EISUU, {{ HANJA_AT_MAC }}</autogen>
+        </block>
+        <block>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>__KeyToKey__ KeyCode::JIS_KANA, {{ HANENG_AT_WIN }}</autogen>
+          <autogen>__KeyToKey__ KeyCode::JIS_EISUU, {{ HANJA_AT_WIN }}</autogen>
+        </block>
       </item>
-    </item>
-    <item>
-      <name>Make Command_R, Option_R as HanEng, Hanja keys (only in virtual machine, RDC)</name>
+
       <item>
-        <name>see https://github.com/niceview/KoreanKeyboard4MacBook</name>
+        <name>한글 101키 키보드 (오른쪽에 Alt, Ctrl키가 없는 키보드)</name>
+        <device_not>DeviceVendor::APPLE_COMPUTER</device_not>
+        <identifier>remap.ksc_with_101_keyboard</identifier>
+        <block>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_MAC }}</autogen>
+          <autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_MAC }}</autogen>
+        </block>
+        <block>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_WIN }}</autogen>
+          <autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_WIN }}</autogen>
+        </block>
       </item>
+
+      <item><name>──────────────────────────────</name></item>
+
       <item>
-        <name>Command_R to HanEng / Option_R to Hanja</name>
-        <appendix>(it works with Key remapping in virtual machine.)</appendix>
-        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <identifier>remap.ksc_commandR2ksc_haneng_optionR2ksc_hanja</identifier>
-        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::JIS_KANA, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::JIS_EISUU, Option::NOREPEAT</autogen>
+        <name>옵션</name>
       </item>
+
       <item>
-        <name>Command_R to Alt_R / Option_R to Ctrl_R</name>
-        <appendix>(it works with Korean Keyboard Type 1)</appendix>
-        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <identifier>remap.ksc_commandR2optionR_optionR2commandR</identifier>
-        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_R, Option::NOREPEAT</autogen>
+        <name>Shift+Space를 한/영키로 사용하기</name>
+        <identifier>remap.ksc_shiftSpace2haneng</identifier>
+        <block>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{ HANENG_AT_MAC }}</autogen>
+        </block>
       </item>
+
       <item>
-        <name>Command_R to Shift+Space / Option_R to Ctrl+Space</name>
-        <appendix>(it works with Korean Keyboard Type 3)</appendix>
-        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-        <identifier>remap.ksc_commandR2shiftSpace_optionR2commandSpace</identifier>
-        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, Option::NOREPEAT</autogen>
+        <name>Enter키를 한자키로 사용하기 (화이트 맥북)</name>
+        <identifier>remap.ksc_enter2hanja</identifier>
+        <block>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>__KeyToKey__ KeyCode::ENTER, {{ HANJA_AT_MAC }}</autogen>
+        </block>
+        <block>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <autogen>__KeyToKey__ KeyCode::ENTER, {{ HANJA_AT_WIN }}</autogen>
+        </block>
       </item>
-    </item>
-    <item>
-      <name>Make external keyboard HanEng, Hanja keys work in mac (except virtual machine, RDC)</name>
+
       <item>
-        <name>HanEng Key to Command+Space</name>
-        <identifier>remap.ksc_haneng2commandSpace</identifier>
-        <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        <name>Option_R키를 한자키로 할당하지 않기</name>
+        <identifier>option.no_optionR2hanja</identifier>
       </item>
+
       <item>
-        <name>Hanja Key to Option+Return</name>
-        <identifier>remap.ksc_hanja2optionReturn</identifier>
-        <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
+        <name>Fn키를 두번 누르면 설명 홈페이지를 띄움</name>
+        <identifier>remap.ksc_doubleFn2openReference</identifier>
+        <autogen>__DoublePressModifier__ KeyCode::FN, KeyCode::FN, KeyCode::VK_OPEN_URL_WEB_koreankeyboard4macbook</autogen>
       </item>
     </item>
 
@@ -84,6 +151,70 @@
         <identifier>remap.ksc_optionR2optionLreturn</identifier>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER, ModifierFlag::OPTION_L</autogen>
       </item>
+      <item>
+        <name style="slignt">Make Command_R, Option_R as HanEng, Hanja keys (except virtual machine, RDC)</name>
+        <item>
+          <name style="slignt">Command_R to Command+Space</name>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <identifier>remap.ksc_commandR2commandSpace</identifier>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        </item>
+        <item>
+          <name style="slignt">Shift+Space to Command+Space</name>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <identifier>remap.ksc_shiftSpace2commandSpace</identifier>
+          <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+          <name style="slignt">Option_R to Option+Return</name>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <identifier>remap.ksc_optionR2optionReturn</identifier>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
+        </item>
+      </item>
+      <item>
+        <name style="slignt">Make Command_R, Option_R as HanEng, Hanja keys (only in virtual machine, RDC)</name>
+        <item>
+          <name style="slignt">see https://github.com/niceview/KoreanKeyboard4MacBook</name>
+        </item>
+        <item>
+          <name style="slignt">Command_R to HanEng / Option_R to Hanja</name>
+          <appendix>(it works with Key remapping in virtual machine.)</appendix>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <identifier>remap.ksc_commandR2ksc_haneng_optionR2ksc_hanja</identifier>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::JIS_KANA, Option::NOREPEAT</autogen>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::JIS_EISUU, Option::NOREPEAT</autogen>
+        </item>
+        <item>
+          <name style="slignt">Command_R to Alt_R / Option_R to Ctrl_R</name>
+          <appendix>(it works with Korean Keyboard Type 1)</appendix>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <identifier>remap.ksc_commandR2optionR_optionR2commandR</identifier>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R, Option::NOREPEAT</autogen>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::CONTROL_R, Option::NOREPEAT</autogen>
+        </item>
+        <item>
+          <name style="slignt">Command_R to Shift+Space / Option_R to Ctrl+Space</name>
+          <appendix>(it works with Korean Keyboard Type 3)</appendix>
+          <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+          <identifier>remap.ksc_commandR2shiftSpace_optionR2commandSpace</identifier>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, Option::NOREPEAT</autogen>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, Option::NOREPEAT</autogen>
+        </item>
+      </item>
+      <item>
+        <name style="slignt">Make external keyboard HanEng, Hanja keys work in mac (except virtual machine, RDC)</name>
+        <item>
+          <name style="slignt">HanEng Key to Command+Space</name>
+          <identifier>remap.ksc_haneng2commandSpace</identifier>
+          <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        </item>
+        <item>
+          <name style="slignt">Hanja Key to Option+Return</name>
+          <identifier>remap.ksc_hanja2optionReturn</identifier>
+          <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::OPTION_L, KeyCode::RETURN, ModifierFlag::OPTION_L, Option::NOREPEAT</autogen>
+        </item>
+      </item>      
     </item>
   </item>
 </root>
