@@ -93,6 +93,15 @@
     </item>
 
     <item>
+      <name>Use Dvorak (No Yubikeys)</name>
+      <appendix>(QWERTY to Dvorak)</appendix>
+      <appendix>(ignores Yubikeys)</appendix>
+      <identifier>remap.dvorak2qwerty_qwerty2dvoraknoyubico</identifier>
+      <device_not>DeviceVendor::YUBICO</device_not>
+      <include path="snippets/dvorak.xml" />
+    </item>
+
+    <item>
       <name>Use Dvorak-Qwerty⌘</name>
       <appendix>(QWERTY to Dvorak)</appendix>
       <appendix>(+ Command+Keys to Qwerty)</appendix>
