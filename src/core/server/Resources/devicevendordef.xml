@@ -114,4 +114,9 @@
     <vendorname>Riitek</vendorname>
     <vendorid>0x1997</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>YUBICO</vendorname>
+    <vendorid>0x1050</vendorid>
+  </devicevendordef>
 </root>
