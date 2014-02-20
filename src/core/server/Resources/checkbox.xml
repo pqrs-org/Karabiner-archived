@@ -71,6 +71,7 @@
     <include path="include/checkbox/apps/vienna.xml" />
     <include path="include/checkbox/apps/gruml.xml" />
     <include path="include/checkbox/apps/launchbar.xml" />
+    <include path="include/checkbox/apps/league_of_legends.xml" />
     <include path="include/checkbox/apps/remote_desktop_client.xml" />
     <include path="include/checkbox/apps/world_of_warcraft.xml" />
     <include path="include/checkbox/apps/starcraft2.xml" />
