@@ -483,4 +483,9 @@
     <equal>com.logmein.logmeinpluginhost</equal>
   </appdef>
 
+  <appdef>
+    <appname>LeagueofLegends</appname>
+    <equal>com.riotgames.LeagueofLegends.GameClient</equal>
+  </appdef>
+
 </root>
