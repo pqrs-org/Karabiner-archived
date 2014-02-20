@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only League of Legends</name>
+    <item>
+      <name>Swap Command and Option for Alt Bindings</name>
+      <appendix>Command_L to Option_L</appendix>
+      <appendix>Option_L to Command_L</appendix>
+      <identifier>remap.app_league_of_legends_option_command_swap</identifier>
+      <block>
+        <only>LeagueofLegends</only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+      </block>
+    </item>
+  </item>
+</root>
