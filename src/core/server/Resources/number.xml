@@ -102,6 +102,14 @@
     </item>
 
     <item>
+      <name>PointingRelative to Key</name>
+      <item>
+        <name>Key Repeat Wait</name>
+        <identifier essential="true" default="500" step="100" baseunit="ms">parameter.pointingrelativetokey_keyrepeat_wait</identifier>
+      </item>
+    </item>
+
+    <item>
       <name>Mouse Key</name>
 
       <item>
