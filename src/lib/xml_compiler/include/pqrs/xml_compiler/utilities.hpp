@@ -12,6 +12,7 @@ namespace pqrs {
       if (boost::starts_with(s, "ConsumerKeyCode::"))  { return BRIDGE_DATATYPE_CONSUMERKEYCODE;  }
       if (boost::starts_with(s, "PointingButton::"))   { return BRIDGE_DATATYPE_POINTINGBUTTON;   }
       if (boost::starts_with(s, "ScrollWheel::"))      { return BRIDGE_DATATYPE_SCROLLWHEEL;      }
+      if (boost::starts_with(s, "PointingRelative::")) { return BRIDGE_DATATYPE_POINTINGRELATIVE; }
       if (boost::starts_with(s, "KeyboardType::"))     { return BRIDGE_DATATYPE_KEYBOARDTYPE;     }
       if (boost::starts_with(s, "DeviceVendor::"))     { return BRIDGE_DATATYPE_DEVICEVENDOR;     }
       if (boost::starts_with(s, "DeviceProduct::"))    { return BRIDGE_DATATYPE_DEVICEPRODUCT;    }
