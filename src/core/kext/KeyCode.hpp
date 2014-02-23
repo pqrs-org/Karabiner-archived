@@ -381,6 +381,52 @@ namespace org_pqrs_KeyRemap4MacBook {
   };
 
   // ======================================================================
+  class PointingRelative {
+  public:
+    explicit PointingRelative(unsigned int v = 0) : value_(v) {}
+    unsigned int get(void) const { return value_; }
+    bool operator==(PointingRelative other) const { return value_ == other.get(); }
+    bool operator!=(PointingRelative other) const { return ! (*this == other); }
+
+#include "../../../src/bridge/output/include.kext.PointingRelative.hpp"
+
+    static PointingRelative getPointingRelativeFromDelta(int dx, int dy) {
+      // Example of delta:
+      //   UP:    (dx:   4, dy: -25)
+      //   DOWN:  (dx:   5, dy:  78)
+      //   LEFT:  (dx: -36, dy:  -6)
+      //   RIGHT: (dx:  80, dy:  16)
+
+      if (dx == 0 && dy == 0) return PointingRelative::NONE;
+
+      int abs_dx = dx > 0 ? dx : -dx;
+      int abs_dy = dy > 0 ? dy : -dy;
+
+      if (abs_dx > abs_dy) {
+        // LEFT or RIGHT
+        if (dx < 0) {
+          return PointingRelative::LEFT;
+        } else {
+          return PointingRelative::RIGHT;
+        }
+      } else {
+        // UP or DOWN
+        if (dy < 0) {
+          return PointingRelative::UP;
+        } else {
+          return PointingRelative::DOWN;
+        }
+      }
+
+      // Never reach.
+      return PointingRelative::NONE;
+    }
+
+  private:
+    unsigned int value_;
+  };
+
+  // ======================================================================
   class Option {
   public:
     explicit Option(unsigned int v = 0) : value_(v) {}
