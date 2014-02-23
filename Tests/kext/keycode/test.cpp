@@ -16,6 +16,7 @@ std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os
 std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const ScrollWheel& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const PointingRelative& v) { return os << v.get(); }
 
 TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(EventType));
@@ -27,6 +28,7 @@ TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(PointingButton));
   EXPECT_EQ(sizeof(unsigned int), sizeof(Buttons));
   EXPECT_EQ(sizeof(unsigned int), sizeof(ScrollWheel));
+  EXPECT_EQ(sizeof(unsigned int), sizeof(PointingRelative));
   EXPECT_EQ(sizeof(unsigned int), sizeof(Option));
   EXPECT_EQ(sizeof(unsigned int), sizeof(ApplicationType));
   EXPECT_EQ(sizeof(unsigned int), sizeof(InputSource));
@@ -721,4 +723,21 @@ TEST(ScrollWheel, getScrollWheelFromDelta) {
 
   EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(10, 10));
   EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-10, -10));
+}
+
+TEST(PointingRelative, getPointingRelativeFromDelta) {
+  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(0, 0));
+
+  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(0, -1));
+  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(0, 1));
+  EXPECT_EQ(PointingRelative::LEFT,  PointingRelative::getPointingRelativeFromDelta(-1, 0));
+  EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(1, 0));
+
+  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(3, -10));
+  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(3, 10));
+  EXPECT_EQ(PointingRelative::LEFT,  PointingRelative::getPointingRelativeFromDelta(-10, 3));
+  EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(10, 3));
+
+  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(10, -10));
+  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(-10, 10));
 }
