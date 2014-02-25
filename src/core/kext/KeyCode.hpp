@@ -402,6 +402,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       int abs_dx = dx > 0 ? dx : -dx;
       int abs_dy = dy > 0 ? dy : -dy;
 
+      // Ignore diagonal direction.
+      if (abs_dx > abs_dy) {
+        if (abs_dy * 3 > abs_dx) return PointingRelative::NONE;
+      } else {
+        if (abs_dx * 3 > abs_dy) return PointingRelative::NONE;
+      }
+
       if (abs_dx > abs_dy) {
         // LEFT or RIGHT
         if (dx < 0) {

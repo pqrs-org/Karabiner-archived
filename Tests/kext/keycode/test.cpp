@@ -728,16 +728,23 @@ TEST(ScrollWheel, getScrollWheelFromDelta) {
 TEST(PointingRelative, getPointingRelativeFromDelta) {
   EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(0, 0));
 
-  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(0, -1));
-  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(0, 1));
-  EXPECT_EQ(PointingRelative::LEFT,  PointingRelative::getPointingRelativeFromDelta(-1, 0));
-  EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(1, 0));
+  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(0, -10));
+  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(0, 10));
+  EXPECT_EQ(PointingRelative::LEFT,  PointingRelative::getPointingRelativeFromDelta(-10, 0));
+  EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(10, 0));
 
   EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(3, -10));
   EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(3, 10));
   EXPECT_EQ(PointingRelative::LEFT,  PointingRelative::getPointingRelativeFromDelta(-10, 3));
   EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(10, 3));
 
-  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(10, -10));
-  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(-10, 10));
+  // diagonal direction
+  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(10, -10));
+  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(-10, 10));
+
+  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(10, 8));
+  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(8, 10));
+
+  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(10, 6));
+  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(6, 10));
 }
