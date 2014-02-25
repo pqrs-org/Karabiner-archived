@@ -382,16 +382,7 @@
         <identifier>remap.control_cursormove_to_pageup</identifier>
         <autogen>
           __PointingRelativeToKey__
-          ModifierFlag::CONTROL_L,
-
-          PointingRelative::UP,    KeyCode::PAGEUP,
-          PointingRelative::DOWN,  KeyCode::PAGEDOWN,
-          PointingRelative::LEFT,  KeyCode::HOME,
-          PointingRelative::RIGHT, KeyCode::END,
-        </autogen>
-        <autogen>
-          __PointingRelativeToKey__
-          ModifierFlag::CONTROL_R,
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
 
           PointingRelative::UP,    KeyCode::PAGEUP,
           PointingRelative::DOWN,  KeyCode::PAGEDOWN,
