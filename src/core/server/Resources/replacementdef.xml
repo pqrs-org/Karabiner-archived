@@ -126,13 +126,14 @@
       EMACS,
       TERMINAL,
       X11,
+      CITRIX_XEN_APP_VIEWER,
     </replacementvalue>
   </replacementdef>
 
   <replacementdef>
     <replacementname>PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION</replacementname>
     <replacementvalue>
-      (Except in Virtual Machine, RDC, VNC, TeamViewer, EMACS, TERMINAL, X11)
+      (Except in Virtual Machine, RDC, VNC, TeamViewer, EMACS, TERMINAL, X11, Citrix Viewer)
     </replacementvalue>
   </replacementdef>
 
