@@ -106,6 +106,8 @@
 		34997E3716C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34997E3516C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp */; };
 		349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349E3C9713371CD700E7A81C /* UserClient_kext.cpp */; };
 		349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349E3C9813371CD700E7A81C /* UserClient_kext.hpp */; };
+		34A6626F18B9DAF70010D8B9 /* PointingRelativeToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6626D18B9DAF70010D8B9 /* PointingRelativeToKey.cpp */; };
+		34A6627018B9DAF70010D8B9 /* PointingRelativeToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */; };
 		34A7883010CBD79100DF72FD /* KeyCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A7882E10CBD79100DF72FD /* KeyCode.cpp */; };
 		34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A7882F10CBD79100DF72FD /* KeyCode.hpp */; };
 		34A7F15812537F0D0012B982 /* bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A7F15712537F0D0012B982 /* bridge.h */; };
@@ -256,6 +258,8 @@
 		34997E3516C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_DEFINED_IN_USERSPACE.hpp; path = VirtualKey/VK_DEFINED_IN_USERSPACE.hpp; sourceTree = "<group>"; };
 		349E3C9713371CD700E7A81C /* UserClient_kext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserClient_kext.cpp; sourceTree = "<group>"; };
 		349E3C9813371CD700E7A81C /* UserClient_kext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UserClient_kext.hpp; sourceTree = "<group>"; };
+		34A6626D18B9DAF70010D8B9 /* PointingRelativeToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToKey.cpp; path = RemapFunc/PointingRelativeToKey.cpp; sourceTree = "<group>"; };
+		34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingRelativeToKey.hpp; path = RemapFunc/PointingRelativeToKey.hpp; sourceTree = "<group>"; };
 		34A7882E10CBD79100DF72FD /* KeyCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyCode.cpp; sourceTree = "<group>"; };
 		34A7882F10CBD79100DF72FD /* KeyCode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyCode.hpp; sourceTree = "<group>"; };
 		34A7F15712537F0D0012B982 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
@@ -408,6 +412,8 @@
 				34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */,
 				34D347E411D8106C00D70815 /* KeyToKey.cpp */,
 				34D347E511D8106C00D70815 /* KeyToKey.hpp */,
+				34A6626D18B9DAF70010D8B9 /* PointingRelativeToKey.cpp */,
+				34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
 				34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */,
 				34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */,
@@ -613,6 +619,7 @@
 				34779367185B1FA800B3EF06 /* GlobalLock.hpp in Headers */,
 				347A6DAC16DA54C4000DD15D /* FlipScrollWheel.hpp in Headers */,
 				34B3663816DA5E0D0081C5D7 /* FlipPointingRelative.hpp in Headers */,
+				34A6627018B9DAF70010D8B9 /* PointingRelativeToKey.hpp in Headers */,
 				3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */,
 				3496DB891707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp in Headers */,
 				34779360185B1FA800B3EF06 /* EventOutputQueue.hpp in Headers */,
@@ -719,6 +726,7 @@
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
 				3477937E185B1FA800B3EF06 /* PressDownKeys.cpp in Sources */,
 				34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */,
+				34A6626F18B9DAF70010D8B9 /* PointingRelativeToKey.cpp in Sources */,
 				34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */,
 				34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */,
 				3477937C185B1FA800B3EF06 /* ParamsUnion.cpp in Sources */,

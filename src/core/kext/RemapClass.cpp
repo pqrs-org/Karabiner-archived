@@ -59,6 +59,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                INITIALIZE_UNION_VALUE(p_.holdingKeyToKey,                RemapFunc::HoldingKeyToKey);                break;
       case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     INITIALIZE_UNION_VALUE(p_.ignoreMultipleSameKeyPress,     RemapFunc::IgnoreMultipleSameKeyPress);     break;
       case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            INITIALIZE_UNION_VALUE(p_.keyOverlaidModifier,            RemapFunc::KeyOverlaidModifier);            break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:          INITIALIZE_UNION_VALUE(p_.pointingRelativeToKey,          RemapFunc::PointingRelativeToKey);          break;
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       INITIALIZE_UNION_VALUE(p_.pointingRelativeToScroll,       RemapFunc::PointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(p_.simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                INITIALIZE_UNION_VALUE(p_.setKeyboardType,                RemapFunc::SetKeyboardType);                break;
@@ -92,6 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                DELETE_UNLESS_NULL(p_.holdingKeyToKey);                break;
       case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     DELETE_UNLESS_NULL(p_.ignoreMultipleSameKeyPress);     break;
       case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            DELETE_UNLESS_NULL(p_.keyOverlaidModifier);            break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:          DELETE_UNLESS_NULL(p_.pointingRelativeToKey);          break;
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       DELETE_UNLESS_NULL(p_.pointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         DELETE_UNLESS_NULL(p_.simultaneousKeyPresses);         break;
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                DELETE_UNLESS_NULL(p_.setKeyboardType);                break;
@@ -183,6 +185,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                CALL_IF_ENABLED(p_.dropScrollWheel);                break;
       case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           CALL_IF_ENABLED(p_.flipPointingRelative);           break;
       case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                CALL_IF_ENABLED(p_.flipScrollWheel);                break;
+      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:          CALL_IF_ENABLED(p_.pointingRelativeToKey);          break;
       case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_IF_ENABLED(p_.pointingRelativeToScroll);       break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               CALL_IF_ENABLED(p_.scrollWheelToKey);               break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       CALL_IF_ENABLED(p_.scrollWheelToScrollWheel);       break;
