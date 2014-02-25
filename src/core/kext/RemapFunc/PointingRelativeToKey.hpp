@@ -1,9 +1,10 @@
 #ifndef POINTINGRELATIVETOKEY_HPP
 #define POINTINGRELATIVETOKEY_HPP
 
-#include "RemapFuncClasses.hpp"
-#include "KeyToKey.hpp"
+#include "DeltaBuffer.hpp"
 #include "IntervalChecker.hpp"
+#include "KeyToKey.hpp"
+#include "RemapFuncClasses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -19,7 +20,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       Flags fromFlags_;
 
-      bool isFirstEvent;
+      DeltaBuffer deltaBuffer_dx_;
+      DeltaBuffer deltaBuffer_dy_;
       IntervalChecker keyrepeat_ic_;
 
       enum {
