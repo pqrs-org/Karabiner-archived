@@ -1420,6 +1420,59 @@
     </item>
 
     <item>
+      <name>PointingRelativeToKey</name>
+      <item>
+        <name>Standard</name>
+        <appendix>CursorMove without modifiers to Arrows</appendix>
+        <appendix>Option+CursorMove to Shift+Arrows</appendix>
+        <appendix>Shift+CursorMove to Launchpad</appendix>
+        <appendix>(You can move pointer by Command+CursorMove)</appendix>
+        <identifier>remap.samples_pointingrelativetokey</identifier>
+
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::NONE,
+
+          PointingRelative::UP,    KeyCode::CURSOR_UP,
+          PointingRelative::DOWN,  KeyCode::CURSOR_DOWN,
+          PointingRelative::LEFT,  KeyCode::CURSOR_LEFT,
+          PointingRelative::RIGHT, KeyCode::CURSOR_RIGHT,
+        </autogen>
+        <autogen>
+          __PointingRelativeToKey__
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+          PointingRelative::UP,    KeyCode::CURSOR_UP,    ModifierFlag::SHIFT_L,
+          PointingRelative::DOWN,  KeyCode::CURSOR_DOWN,  ModifierFlag::SHIFT_L,
+          PointingRelative::LEFT,  KeyCode::CURSOR_LEFT,  ModifierFlag::SHIFT_L,
+          PointingRelative::RIGHT, KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L,
+        </autogen>
+        <autogen>
+          __PointingRelativeToKey__
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+
+          PointingRelative::UP,    KeyCode::LAUNCHPAD,
+          PointingRelative::DOWN,  KeyCode::LAUNCHPAD,
+          PointingRelative::LEFT,  KeyCode::LAUNCHPAD,
+          PointingRelative::RIGHT, KeyCode::LAUNCHPAD,
+        </autogen>
+      </item>
+      <item>
+        <name>Standard (2)</name>
+        <appendix>CursorMove to Arrows</appendix>
+        <identifier>remap.samples_pointingrelativetokey2</identifier>
+
+        <autogen>
+          __PointingRelativeToKey__
+          PointingRelative::UP,    KeyCode::CURSOR_UP,
+          PointingRelative::DOWN,  KeyCode::CURSOR_DOWN,
+          PointingRelative::LEFT,  KeyCode::CURSOR_LEFT,
+          PointingRelative::RIGHT, KeyCode::CURSOR_RIGHT,
+        </autogen>
+      </item>
+    </item>
+
+    <item>
       <name>ForceNumLockOn</name>
       <item>
         <name>Force turn NumLock on at Apple Internal Keyboard (0x05ac,0x021a)</name>
