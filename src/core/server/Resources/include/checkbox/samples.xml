@@ -1460,8 +1460,14 @@
       <item>
         <name>Standard (2)</name>
         <appendix>CursorMove to Arrows</appendix>
-        <identifier>remap.samples_pointingrelativetokey2</identifier>
+        <appendix>(+ You can disable this setting by escape key.)</appendix>
+        <identifier vk_config="true">remap.samples_pointingrelativetokey2</identifier>
 
+        <autogen>
+          __KeyToKey__
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_remap_samples_pointingrelativetokey2,
+        </autogen>
         <autogen>
           __PointingRelativeToKey__
           PointingRelative::UP,    KeyCode::CURSOR_UP,
