@@ -14,6 +14,7 @@
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 #include "RemapFunc/KeyOverlaidModifier.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
+#include "RemapFunc/PointingRelativeToKey.hpp"
 #include "RemapFunc/SimultaneousKeyPresses.hpp"
 #include "RemapFunc/SetKeyboardType.hpp"
 #include "RemapFunc/ScrollWheelToScrollWheel.hpp"
@@ -72,6 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::HoldingKeyToKey* holdingKeyToKey;
         RemapFunc::IgnoreMultipleSameKeyPress* ignoreMultipleSameKeyPress;
         RemapFunc::KeyOverlaidModifier* keyOverlaidModifier;
+        RemapFunc::PointingRelativeToKey* pointingRelativeToKey;
         RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
         RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
         RemapFunc::SetKeyboardType* setKeyboardType;
