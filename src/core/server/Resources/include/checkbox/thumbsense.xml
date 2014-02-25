@@ -107,7 +107,7 @@
       <appendix>2 to MiddleClick</appendix>
       <appendix>3 to RightClick</appendix>
       <identifier>notsave.enhanced_copyandpaste</identifier>
-      <autogen>__ShowStatusMessage__ Copy&amp;Paste</autogen>
+      {{ THUMBSENSE_COPYANDPASTE_EXTRA }}
       <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::NONE, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::NONE, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
