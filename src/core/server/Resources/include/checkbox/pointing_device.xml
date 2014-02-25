@@ -361,5 +361,44 @@
         </item>
       </item>
     </item>
+
+    <item>
+      <name>Change CursorMove to Key</name>
+      <item>
+        <name>Change fn+CursorMove to PageUp/PageDown/Home/End</name>
+        <identifier>remap.fn_cursormove_to_pageup</identifier>
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::FN,
+
+          PointingRelative::UP,    KeyCode::PAGEUP,
+          PointingRelative::DOWN,  KeyCode::PAGEDOWN,
+          PointingRelative::LEFT,  KeyCode::HOME,
+          PointingRelative::RIGHT, KeyCode::END,
+        </autogen>
+      </item>
+      <item>
+        <name>Change Control+CursorMove to PageUp/PageDown/Home/End</name>
+        <identifier>remap.control_cursormove_to_pageup</identifier>
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::CONTROL_L,
+
+          PointingRelative::UP,    KeyCode::PAGEUP,
+          PointingRelative::DOWN,  KeyCode::PAGEDOWN,
+          PointingRelative::LEFT,  KeyCode::HOME,
+          PointingRelative::RIGHT, KeyCode::END,
+        </autogen>
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::CONTROL_R,
+
+          PointingRelative::UP,    KeyCode::PAGEUP,
+          PointingRelative::DOWN,  KeyCode::PAGEDOWN,
+          PointingRelative::LEFT,  KeyCode::HOME,
+          PointingRelative::RIGHT, KeyCode::END,
+        </autogen>
+      </item>
+    </item>
   </item>
 </root>
