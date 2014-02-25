@@ -1,6 +1,8 @@
 Since 9.3.0
 -----------
 
+* Updates for people who add new settings by oneself:
+    * v9.3.7: Added \_\_PointingRelativeToKey\_\_.
 * v9.3.1: Updated prepared settings.
 
 Version 9.3.0
