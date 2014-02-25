@@ -23,10 +23,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_POINTINGRELATIVE:
         {
           PointingRelative val(newval);
-          if (val == PointingRelative::UP)   { current_keytokey_ = &(keytokey_[KEYTOKEY_UP]);    }
-          if (val == PointingRelative::DOWN) { current_keytokey_ = &(keytokey_[KEYTOKEY_DOWN]);  }
-          if (val == PointingRelative::LEFT) { current_keytokey_ = &(keytokey_[KEYTOKEY_LEFT]);  }
-          if (val == PointingRelative::LEFT) { current_keytokey_ = &(keytokey_[KEYTOKEY_RIGHT]); }
+          if (val == PointingRelative::UP)    { current_keytokey_ = &(keytokey_[KEYTOKEY_UP]);    }
+          if (val == PointingRelative::DOWN)  { current_keytokey_ = &(keytokey_[KEYTOKEY_DOWN]);  }
+          if (val == PointingRelative::LEFT)  { current_keytokey_ = &(keytokey_[KEYTOKEY_LEFT]);  }
+          if (val == PointingRelative::RIGHT) { current_keytokey_ = &(keytokey_[KEYTOKEY_RIGHT]); }
+          break;
         }
 
         case BRIDGE_DATATYPE_KEYCODE:
