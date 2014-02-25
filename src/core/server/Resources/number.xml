@@ -105,7 +105,7 @@
       <name>PointingRelative to Key</name>
       <item>
         <name>Detection interval</name>
-        <identifier essential="true" default="500" step="100" baseunit="ms">parameter.pointingrelativetokey_detection_interval</identifier>
+        <identifier essential="true" default="200" step="100" baseunit="ms">parameter.pointingrelativetokey_detection_interval</identifier>
       </item>
     </item>
 
