@@ -378,6 +378,19 @@
         </autogen>
       </item>
       <item>
+        <name>Change fn+CursorMove to PageUp/PageDown/Home/End (direction: natural)</name>
+        <identifier>remap.fn_cursormove_to_pageup_natural</identifier>
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::FN,
+
+          PointingRelative::UP,    KeyCode::PAGEDOWN,
+          PointingRelative::DOWN,  KeyCode::PAGEUP,
+          PointingRelative::LEFT,  KeyCode::END,
+          PointingRelative::RIGHT, KeyCode::HOME,
+        </autogen>
+      </item>
+      <item>
         <name>Change Control+CursorMove to PageUp/PageDown/Home/End</name>
         <identifier>remap.control_cursormove_to_pageup</identifier>
         <autogen>
@@ -388,6 +401,19 @@
           PointingRelative::DOWN,  KeyCode::PAGEDOWN,
           PointingRelative::LEFT,  KeyCode::HOME,
           PointingRelative::RIGHT, KeyCode::END,
+        </autogen>
+      </item>
+      <item>
+        <name>Change Control+CursorMove to PageUp/PageDown/Home/End (direction: natural)</name>
+        <identifier>remap.control_cursormove_to_pageup_natural</identifier>
+        <autogen>
+          __PointingRelativeToKey__
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+
+          PointingRelative::UP,    KeyCode::PAGEDOWN,
+          PointingRelative::DOWN,  KeyCode::PAGEUP,
+          PointingRelative::LEFT,  KeyCode::END,
+          PointingRelative::RIGHT, KeyCode::HOME,
         </autogen>
       </item>
     </item>
