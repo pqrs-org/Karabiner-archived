@@ -652,6 +652,36 @@
     </item>
 
     <item>
+      <name>Ctrl+Alt+Delete or Ctrl+Alt+Del to show restart / sleep / shutdown dialog</name>
+      <identifier>remap.pcstyle_ctrl_alt_del</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L,
+      </autogen>
+    </item>
+    <item>
+      <name>Ctrl+Alt+Delete or Ctrl+Alt+Del to show restart / sleep / shutdown dialog</name>
+      <appendix>(for PC Users who swapped Control and Command)</appendix>
+      <identifier>remap.pcstyle_ctrl_alt_del_swapped</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L,
+      </autogen>
+    </item>
+
+    <item>
       <name style="slignt">Items for backwards compatibility</name>
 
       <item>
