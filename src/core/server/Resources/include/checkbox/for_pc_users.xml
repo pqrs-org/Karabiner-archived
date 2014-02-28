@@ -654,6 +654,7 @@
     <item>
       <name>Ctrl+Alt+Delete or Ctrl+Alt+Del to show restart / sleep / shutdown dialog</name>
       <identifier>remap.pcstyle_ctrl_alt_del</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
@@ -669,6 +670,7 @@
       <name>Ctrl+Alt+Delete or Ctrl+Alt+Del to show restart / sleep / shutdown dialog</name>
       <appendix>(for PC Users who swapped Control and Command)</appendix>
       <identifier>remap.pcstyle_ctrl_alt_del_swapped</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
