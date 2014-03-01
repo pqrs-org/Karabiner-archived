@@ -1,6 +1,7 @@
 #include <IOKit/IOLib.h>
 
 #include "Config.hpp"
+#include "EventWatcher.hpp"
 #include "IOLogWrapper.hpp"
 #include "PointingRelativeToKey.hpp"
 
@@ -100,6 +101,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           // clear temporary flags.
           FlagStatus::set();
+
+          // We need to call EventWatcher::on here.
+          // See the comments in EventInputQueue::fire_timer_callback.
+          EventWatcher::on();
 
           deltaBuffer_dx_.clear();
           deltaBuffer_dy_.clear();
