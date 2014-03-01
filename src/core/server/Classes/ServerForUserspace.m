@@ -2,6 +2,7 @@
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "PreferencesManager.h"
+#import "Relauncher.h"
 #import "ServerForUserspace.h"
 #import "Updater.h"
 #import "UserClient_userspace.h"
@@ -83,6 +84,17 @@
 - (NSString*) symbolMapName:(NSString*)type value:(NSInteger)value
 {
   return [xmlCompiler_ symbolMapName:type value:(uint32_t)(value)];
+}
+
+- (void) relaunch
+{
+  // Use dispatch_async in order to avoid "disconnected from server".
+  //
+  // Example error message of disconnection:
+  //   "KeyRemap4MacBook_cli: connection went invalid while waiting for a reply because a mach port died"
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [Relauncher relaunch];
+  });
 }
 
 - (NSArray*) device_information:(NSInteger)type
