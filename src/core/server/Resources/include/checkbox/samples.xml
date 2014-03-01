@@ -1476,6 +1476,34 @@
           PointingRelative::RIGHT, KeyCode::CURSOR_RIGHT,
         </autogen>
       </item>
+      <item>
+        <name>With __KeyOverlaidModifier__</name>
+        <appendix>RightClick+CursorMove to Arrows</appendix>
+        <identifier>remap.samples_pointingrelativetokey_KeyOverlaidModifier</identifier>
+
+        <autogen>
+          __KeyOverlaidModifier__
+          PointingButton::RIGHT,
+
+          @begin
+          KeyCode::VK_MODIFIER_EXTRA1,
+          @end
+
+          @begin
+          PointingButton::RIGHT,
+          @end
+        </autogen>
+
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::EXTRA1,
+
+          PointingRelative::UP,    KeyCode::CURSOR_UP,
+          PointingRelative::DOWN,  KeyCode::CURSOR_DOWN,
+          PointingRelative::LEFT,  KeyCode::CURSOR_LEFT,
+          PointingRelative::RIGHT, KeyCode::CURSOR_RIGHT,
+        </autogen>
+      </item>
     </item>
 
     <item>
