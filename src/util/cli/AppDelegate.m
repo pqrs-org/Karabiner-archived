@@ -18,6 +18,7 @@
   [self output:@"  KeyRemap4MacBook_cli changed\n"];
   [self output:@"  KeyRemap4MacBook_cli reloadxml\n"];
   [self output:@"  KeyRemap4MacBook_cli export\n"];
+  [self output:@"  KeyRemap4MacBook_cli relaunch\n"];
   [self output:@"  KeyRemap4MacBook_cli select INDEX\n"];
   [self output:@"  KeyRemap4MacBook_cli set IDENTIFIER VALUE\n"];
   [self output:@"  KeyRemap4MacBook_cli enable IDENTIFIER (alias of set IDENTIFIER 1)\n"];
@@ -29,6 +30,7 @@
   [self output:@"  KeyRemap4MacBook_cli changed\n"];
   [self output:@"  KeyRemap4MacBook_cli reloadxml\n"];
   [self output:@"  KeyRemap4MacBook_cli export\n"];
+  [self output:@"  KeyRemap4MacBook_cli relaunch\n"];
   [self output:@"  KeyRemap4MacBook_cli select 1\n"];
   [self output:@"  KeyRemap4MacBook_cli set repeat.wait 30\n"];
   [self output:@"  KeyRemap4MacBook_cli enable remap.shiftL2commandL\n"];
@@ -83,6 +85,9 @@
           }
           [self output:@"/bin/echo\n"];
         }
+
+      } else if ([command isEqualToString:@"relaunch"]) {
+        [[client_ proxy] relaunch];
 
       } else if ([command isEqualToString:@"select"]) {
         if ([arguments count] != 3) {

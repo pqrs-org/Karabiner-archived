@@ -16,6 +16,8 @@
 - (void) configxml_reload;
 - (NSString*) symbolMapName:(NSString*)type value:(NSInteger)value;
 
+- (void) relaunch;
+
 // For EventViewer.
 - (NSArray*) device_information:(NSInteger)type;
 - (NSDictionary*) application_information;
