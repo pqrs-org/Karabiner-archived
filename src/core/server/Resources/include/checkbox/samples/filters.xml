@@ -36,19 +36,35 @@
       <appendix>* (0x5ac,0x222) is Apple Aluminum Keyboard (JIS)</appendix>
       <identifier>remap.samples_device</identifier>
       <block>
-        <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_only>
+        <device_only>
+          <!-- 1st device -->
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a,
+
+          <!-- 2nd device -->
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS
+        </device_only>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
       </block>
       <block>
-        <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a, DeviceVendor::APPLE_COMPUTER,DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS</device_not>
+        <device_not>
+          <!-- 1st device -->
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a,
+
+          <!-- 2nd device -->
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS
+        </device_not>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::C</autogen>
       </block>
       <block>
-        <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::ANY</device_only>
+        <device_only>
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+        </device_only>
         <autogen>__KeyToKey__ KeyCode::S, KeyCode::TAB</autogen>
       </block>
       <block>
-        <device_not>DeviceVendor::APPLE_COMPUTER,DeviceProduct::ANY</device_not>
+        <device_not>
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+        </device_not>
         <autogen>__KeyToKey__ KeyCode::S, KeyCode::SPACE</autogen>
       </block>
       <block>
