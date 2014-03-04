@@ -239,5 +239,10 @@
       <identifier>remap.fn2leftclick</identifier>
       <autogen>__KeyToKey__ KeyCode::FN, PointingButton::LEFT</autogen>
     </item>
+    <item>
+      <name>Fn to RightClick</name>
+      <identifier>remap.fn2rightclick</identifier>
+      <autogen>__KeyToKey__ KeyCode::FN, PointingButton::RIGHT</autogen>
+    </item>
   </item>
 </root>
