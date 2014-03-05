@@ -2,7 +2,7 @@
 #define REMAPCLASS_HPP
 
 #include "bridge.h"
-#include "RemapFunc/KeyToKey.hpp"
+#include "RemapFilter/FilterUnion.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/DropKeyAfterRemap.hpp"
 #include "RemapFunc/DropPointingRelativeCursorMove.hpp"
@@ -13,13 +13,14 @@
 #include "RemapFunc/HoldingKeyToKey.hpp"
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 #include "RemapFunc/KeyOverlaidModifier.hpp"
-#include "RemapFunc/PointingRelativeToScroll.hpp"
+#include "RemapFunc/KeyToKey.hpp"
+#include "RemapFunc/PassThrough.hpp"
 #include "RemapFunc/PointingRelativeToKey.hpp"
-#include "RemapFunc/SimultaneousKeyPresses.hpp"
-#include "RemapFunc/SetKeyboardType.hpp"
-#include "RemapFunc/ScrollWheelToScrollWheel.hpp"
+#include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/ScrollWheelToKey.hpp"
-#include "RemapFilter/FilterUnion.hpp"
+#include "RemapFunc/ScrollWheelToScrollWheel.hpp"
+#include "RemapFunc/SetKeyboardType.hpp"
+#include "RemapFunc/SimultaneousKeyPresses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class RemapClass {
@@ -61,8 +62,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       // true if remapped at KeyDown.
       bool active_;
 
+      // true if the setting is effective in PassThrough Mode.
+      bool ignore_passthrough_;
+
       union {
-        RemapFunc::KeyToKey* keyToKey;
         RemapFunc::DoublePressModifier* doublePressModifier;
         RemapFunc::DropKeyAfterRemap* dropKeyAfterRemap;
         RemapFunc::DropPointingRelativeCursorMove* dropPointingRelativeCursorMove;
@@ -73,12 +76,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::HoldingKeyToKey* holdingKeyToKey;
         RemapFunc::IgnoreMultipleSameKeyPress* ignoreMultipleSameKeyPress;
         RemapFunc::KeyOverlaidModifier* keyOverlaidModifier;
+        RemapFunc::KeyToKey* keyToKey;
+        RemapFunc::PassThrough* passThrough;
         RemapFunc::PointingRelativeToKey* pointingRelativeToKey;
         RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
-        RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
-        RemapFunc::SetKeyboardType* setKeyboardType;
-        RemapFunc::ScrollWheelToScrollWheel* scrollWheelToScrollWheel;
         RemapFunc::ScrollWheelToKey* scrollWheelToKey;
+        RemapFunc::ScrollWheelToScrollWheel* scrollWheelToScrollWheel;
+        RemapFunc::SetKeyboardType* setKeyboardType;
+        RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
       } p_;
 
       RemapFilter::Vector_FilterUnionPointer filters_;
