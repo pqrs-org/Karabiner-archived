@@ -12,11 +12,11 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) :
-    parent_(parent)
+    parent_(parent),
+    type_(BRIDGE_REMAPTYPE_NONE),
+    active_(false),
+    ignore_passthrough_(false)
   {
-    type_ = BRIDGE_REMAPTYPE_NONE;
-    active_ = false;
-
     // ------------------------------------------------------------
     // check parameters.
     //
@@ -65,6 +65,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                INITIALIZE_UNION_VALUE(p_.setKeyboardType,                RemapFunc::SetKeyboardType);                break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       INITIALIZE_UNION_VALUE(p_.scrollWheelToScrollWheel,       RemapFunc::ScrollWheelToScrollWheel);       break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               INITIALIZE_UNION_VALUE(p_.scrollWheelToKey,               RemapFunc::ScrollWheelToKey);               break;
+      case BRIDGE_REMAPTYPE_PASSTHROUGH:                    INITIALIZE_UNION_VALUE(p_.passThrough,                    RemapFunc::PassThrough);                    break;
       default:
         IOLOG_ERROR("RemapClass::Item::Item unknown type_ (%d)\n", type_);
         type_ = BRIDGE_REMAPTYPE_NONE;
@@ -99,6 +100,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                DELETE_UNLESS_NULL(p_.setKeyboardType);                break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       DELETE_UNLESS_NULL(p_.scrollWheelToScrollWheel);       break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               DELETE_UNLESS_NULL(p_.scrollWheelToKey);               break;
+      case BRIDGE_REMAPTYPE_PASSTHROUGH:                    DELETE_UNLESS_NULL(p_.passThrough);                    break;
       default:
         IOLOG_ERROR("RemapClass::Item::terminate unknown type_ (%d)\n", type_);
         break;
