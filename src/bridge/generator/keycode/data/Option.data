@@ -1,18 +1,38 @@
-USE_SEPARATOR                           --AUTO--
-SEPARATOR                               --AUTO--
+// Allow a setting to work in PassThrough Mode.
+IGNORE_PASSTHROUGH                      --AUTO--
+
+// For __KeyOverlaidModifier__
 KEYOVERLAIDMODIFIER_REPEAT              --AUTO--
+
+// For __SimultaneousKeyPresses__
 SIMULTANEOUSKEYPRESSES_RAW              --AUTO--
 SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER --AUTO--
+
+// Suppress keyboard repeat
 NOREPEAT                                --AUTO--
+
+// Send a key sequence at keydown and keyup.
 KEYTOKEY_BEFORE_KEYDOWN                 --AUTO--
 KEYTOKEY_AFTER_KEYUP                    --AUTO--
+
+// For __PointingRelativeToScroll__
 POINTINGRELATIVETOSCROLL_TOFLAGS        --AUTO--
 POINTINGRELATIVETOSCROLL_TOKEYS         --AUTO--
+
+// For __DropScrollWheel__
 DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL  --AUTO--
+
+// For __FlipPointingRelative__
 FLIPPOINTINGRELATIVE_HORIZONTAL         --AUTO--
 FLIPPOINTINGRELATIVE_VERTICAL           --AUTO--
+
+// For __FlipScrollWheel__
 FLIPSCROLLWHEEL_HORIZONTAL              --AUTO--
 FLIPSCROLLWHEEL_VERTICAL                --AUTO--
 
 // For __KeyOverlaidModifier__ and __HoldingKeyToKey__
 UNINTERRUPTIBLE_BY_SCROLL_WHEEL         --AUTO--
+
+// Identities of @begin, @end.
+USE_SEPARATOR                           --AUTO--
+SEPARATOR                               --AUTO--
