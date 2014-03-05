@@ -330,6 +330,7 @@ namespace pqrs {
       const std::string symbol;
       uint32_t type;
     } info[] = {
+      { "__PassThrough__",                    BRIDGE_REMAPTYPE_PASSTHROUGH },
       { "__KeyToKey__",                       BRIDGE_REMAPTYPE_KEYTOKEY },
       { "__KeyToConsumer__",                  BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__KeyToPointingButton__",            BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
