@@ -56,7 +56,6 @@ public:
     identifier_map_(identifier_map),
     simultaneous_keycode_index_(0),
     filter_vector_(symbol_map),
-    symbol_map_cache_configindex_notsave_passthrough_(symbol_map_.get("ConfigIndex::notsave_passthrough")),
     symbol_map_cache_option_separator_(symbol_map_.get("Option::SEPARATOR")),
     symbol_map_cache_option_use_separator_(symbol_map_.get("Option::USE_SEPARATOR"))
   {}
@@ -83,7 +82,6 @@ private:
   uint32_t simultaneous_keycode_index_;
   filter_vector filter_vector_;
 
-  const uint32_t symbol_map_cache_configindex_notsave_passthrough_;
   const uint32_t symbol_map_cache_option_separator_;
   const uint32_t symbol_map_cache_option_use_separator_;
 };
