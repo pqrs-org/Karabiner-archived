@@ -9,6 +9,7 @@
       <appendix>Turn on a setting below, and toggle "Pass Through Mode".</appendix>
       <identifier vk_config="true">notsave.passthrough</identifier>
       <autogen>__ShowStatusMessage__ Pass Through</autogen>
+      <autogen>__PassThrough__</autogen>
     </item>
     <item>
       <name>Change Fn+Escape to toggle "Pass Through Mode"</name>
@@ -19,6 +20,7 @@
         KeyCode::VK_LOCK_ALL_FORCE_OFF,
         KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough,
         Option::NOREPEAT,
+        Option::IGNORE_PASSTHROUGH,
       </autogen>
     </item>
     <item>
@@ -30,6 +32,7 @@
         KeyCode::VK_LOCK_ALL_FORCE_OFF,
         KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough,
         Option::NOREPEAT,
+        Option::IGNORE_PASSTHROUGH,
       </autogen>
     </item>
     <item>
@@ -43,6 +46,7 @@
         KeyCode::VK_LOCK_ALL_FORCE_OFF,
         KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough,
         Option::NOREPEAT,
+        Option::IGNORE_PASSTHROUGH,
       </autogen>
     </item>
   </item>
