@@ -13,7 +13,7 @@ Since 9.3.0
           &lt;name&gt;Disable all settings while you are using virtual machine.&lt;/name&gt;
           &lt;identifier&gt;private.ignore_virtual_machine&lt;/identifier&gt;
           &lt;only&gt;VIRTUALMACHINE&lt;/only&gt;
-          &lt;autogen&gt;__PassThrough__&lt;/autogen&gt;
+          &lt;autogen&gt;\_\_PassThrough\_\_&lt;/autogen&gt;
         &lt;/item&gt;
       </pre>
 
