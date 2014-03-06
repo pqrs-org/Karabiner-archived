@@ -48,6 +48,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void remap_forcenumlockon(ListHookedKeyboard::Item* item);
 
       bool active(void) const { return active_; }
+      bool isPassThrough(void) const { return type_ == BRIDGE_REMAPTYPE_PASSTHROUGH; }
 
     private:
       bool isblocked(void);
