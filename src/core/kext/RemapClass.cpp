@@ -15,7 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     parent_(parent),
     type_(BRIDGE_REMAPTYPE_NONE),
     active_(false),
-    ignore_passthrough_(false)
+    ignorePassThrough_(false)
   {
     // ------------------------------------------------------------
     // check parameters.
@@ -41,7 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (value_index >= length) break;                             \
         if (vec[datatype_index] == BRIDGE_DATATYPE_OPTION &&          \
             Option(vec[value_index]) == Option::IGNORE_PASSTHROUGH) { \
-          ignore_passthrough_ = true;                                 \
+          ignorePassThrough_ = true;                                  \
         } else {                                                      \
           (POINTER)->add(vec[datatype_index], vec[value_index]);      \
         }                                                             \
@@ -304,6 +304,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
+  RemapClass::Item::isPassThroughEnabled(void) const
+  {
+    if (isblocked()) return false;
+    if (type_ != BRIDGE_REMAPTYPE_PASSTHROUGH) return false;
+
+    return true;
+  }
+
+  bool
   RemapClass::Item::isblocked(void) const
   {
     for (size_t i = 0; i < filters_.size(); ++i) {
@@ -453,33 +462,39 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType)
+  RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
+        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
+
         p->remap_setkeyboardtype(keyboardType);
       }
     }
   }
 
   void
-  RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item)
+  RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
+        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
+
         p->remap_forcenumlockon(item);
       }
     }
   }
 
   void
-  RemapClass::remap(RemapParams& remapParams)
+  RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled)
   {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
+        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
+
         // DependingPressingPeriodKeyToKey watches another key status.
         // Therefore, we need to call 'p->remap(remapParams)' for all items.
         p->remap(remapParams);
@@ -488,12 +503,14 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapClass::remap_simultaneouskeypresses(void)
+  RemapClass::remap_simultaneouskeypresses(bool passThroughEnabled)
   {
     bool queue_changed = false;
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
+        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
+
         if (p->remap_SimultaneousKeyPresses()) {
           queue_changed = true;
         }
@@ -504,13 +521,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
+  RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled)
   {
     bool dropped = false;
 
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p) {
+        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
+
         if (p->drop(params)) {
           dropped = true;
         }
@@ -526,6 +545,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < items_.size(); ++i) {
       Item* p = items_[i];
       if (p && p->active()) return true;
+    }
+    return false;
+  }
+
+  bool
+  RemapClass::isPassThroughEnabled(void) const
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p && p->isPassThroughEnabled()) return true;
     }
     return false;
   }
@@ -835,11 +864,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ----------------------------------------------------------------------
+    static bool
+    isPassThroughEnabled(void) {
+      if (enabled_remapclasses_) {
+        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
+          RemapClass* p = (*enabled_remapclasses_)[i];
+          if (p && p->isPassThroughEnabled()) return true;
+        }
+      }
+      return false;
+    }
+
 #define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                       \
     if (enabled_remapclasses_) {                                   \
       for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) { \
         RemapClass* p = (*enabled_remapclasses_)[i];               \
-        if (p) p->FUNC(PARAMS);                                    \
+        if (p) p->FUNC(PARAMS, passThroughEnabled);                \
       }                                                            \
     }                                                              \
 }
@@ -847,18 +887,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     remap_setkeyboardtype(KeyboardType& keyboardType)
     {
+      bool passThroughEnabled = isPassThroughEnabled();
       CALL_REMAPCLASS_FUNC(remap_setkeyboardtype, keyboardType);
     }
 
     void
     remap_forcenumlockon(ListHookedKeyboard::Item* item)
     {
+      bool passThroughEnabled = isPassThroughEnabled();
       CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
     }
 
     void
     remap(RemapParams& remapParams)
     {
+      bool passThroughEnabled = isPassThroughEnabled();
       CALL_REMAPCLASS_FUNC(remap, remapParams);
     }
 
@@ -867,13 +910,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     remap_simultaneouskeypresses(void)
     {
+      bool passThroughEnabled = isPassThroughEnabled();
       bool queue_changed = false;
 
       if (enabled_remapclasses_) {
         for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
           RemapClass* p = (*enabled_remapclasses_)[i];
           if (p) {
-            if (p->remap_simultaneouskeypresses()) {
+            if (p->remap_simultaneouskeypresses(passThroughEnabled)) {
               queue_changed = true;
             }
           }
@@ -886,13 +930,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
     {
+      bool passThroughEnabled = isPassThroughEnabled();
       bool dropped = false;
 
       if (enabled_remapclasses_) {
         for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
           RemapClass* p = (*enabled_remapclasses_)[i];
           if (p) {
-            if (p->remap_dropkeyafterremap(params)) dropped = true;
+            if (p->remap_dropkeyafterremap(params, passThroughEnabled)) dropped = true;
           }
         }
       }

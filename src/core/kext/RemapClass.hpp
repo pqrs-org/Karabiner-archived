@@ -48,7 +48,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void remap_forcenumlockon(ListHookedKeyboard::Item* item);
 
       bool active(void) const { return active_; }
-      bool isPassThrough(void) const { return type_ == BRIDGE_REMAPTYPE_PASSTHROUGH; }
+
+      bool isPassThroughEnabled(void) const;
+      bool isIgnorePassThrough(void) const { return ignorePassThrough_; }
 
     private:
       bool isblocked(void) const;
@@ -64,7 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool active_;
 
       // true if the setting is effective in PassThrough Mode.
-      bool ignore_passthrough_;
+      bool ignorePassThrough_;
 
       union {
         RemapFunc::DoublePressModifier* doublePressModifier;
@@ -96,12 +98,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex);
     ~RemapClass(void);
 
-    void remap_setkeyboardtype(KeyboardType& keyboardType);
-    void remap_forcenumlockon(ListHookedKeyboard::Item* item);
-    void remap(RemapParams& remapParams);
+    void remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled);
+    void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
+    void remap(RemapParams& remapParams, bool passThroughEnabled);
 
-    bool remap_simultaneouskeypresses(void);
-    bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
+    bool remap_simultaneouskeypresses(bool passThroughEnabled);
+    bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled);
     const char* get_statusmessage(void) const { return statusmessage_; }
     bool enabled(void) const { return enabled_; }
     void setEnabled(bool newval) { enabled_ = newval; }
@@ -109,6 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool is_simultaneouskeypresses(void) const { return is_simultaneouskeypresses_; }
     uint32_t get_configindex(void) const { return configindex_; }
     bool hasActiveItem(void) const;
+    bool isPassThroughEnabled(void) const;
 
     static void log_allocation_count(void);
     static void reset_allocation_count(void);
