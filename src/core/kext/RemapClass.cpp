@@ -304,7 +304,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  RemapClass::Item::isblocked(void)
+  RemapClass::Item::isblocked(void) const
   {
     for (size_t i = 0; i < filters_.size(); ++i) {
       RemapFilter::FilterUnion* p = filters_[i];

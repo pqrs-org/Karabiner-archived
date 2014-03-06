@@ -51,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool isPassThrough(void) const { return type_ == BRIDGE_REMAPTYPE_PASSTHROUGH; }
 
     private:
-      bool isblocked(void);
+      bool isblocked(void) const;
 
       Item(const Item& rhs);
       Item& operator=(const Item& rhs);
