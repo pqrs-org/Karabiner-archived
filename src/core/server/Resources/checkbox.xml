@@ -2,6 +2,7 @@
 <root>
   <include path="include/checkbox/general.xml" />
   <include path="include/checkbox/flags.xml" />
+  <include path="include/checkbox/ignore_apps.xml" />
   <include path="include/checkbox/pass_through_mode.xml" />
   <include path="include/checkbox/pointing_device.xml" />
 
