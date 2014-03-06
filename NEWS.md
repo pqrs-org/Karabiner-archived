@@ -2,9 +2,20 @@ Since 9.3.0
 -----------
 
 * v9.3.9: Added "relaunch" command into KeyRemap4MacBook_cli.
+* v9.3.1: Updated prepared settings.
 * Updates for people who add new settings by oneself:
     * v9.3.7: Added \_\_PointingRelativeToKey\_\_.
-* v9.3.1: Updated prepared settings.
+    * v9.3.15: Added \_\_PassThrough\_\_. You can disable all settings in specific situations.<br />
+      For example, this item allow you to disable all settings while you are using virtual machine.<br />
+      (This setting is already included in prepared settings.)
+      <pre>
+        &lt;item&gt;
+          &lt;name&gt;Disable all settings while you are using virtual machine.&lt;/name&gt;
+          &lt;identifier&gt;private.ignore_virtual_machine&lt;/identifier&gt;
+          &lt;only&gt;VIRTUALMACHINE&lt;/only&gt;
+          &lt;autogen&gt;__PassThrough__&lt;/autogen&gt;
+        &lt;/item&gt;
+      </pre>
 
 Version 9.3.0
 -------------
