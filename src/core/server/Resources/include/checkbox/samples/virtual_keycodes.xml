@@ -197,36 +197,34 @@
           </autogen>
         </item>
       </item>
+      <item><name>──────────────────────────────</name></item>
       <item>
-        <name>Disable Self</name>
-        <item>
-          <name>Disable this setting by Key or PointingButton.</name>
-          <appendix>Change Left Click to disable this setting.</appendix>
-          <appendix>Change Shift_L to disable this setting.</appendix>
-          <identifier vk_config="true">notsave.remap_samples_vk_config_disable_self</identifier>
-          <autogen>__ShowStatusMessage__ VK_CONFIG</autogen>
-          <autogen>
-            __KeyToKey__
-            PointingButton::LEFT,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_remap_samples_vk_config_disable_self,
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::SHIFT_L,
-            KeyCode::VK_CONFIG_FORCE_OFF_notsave_remap_samples_vk_config_disable_self,
-          </autogen>
-        </item>
-        <item>
-          <name>Sync Escape Key to above setting.</name>
-          <identifier>remap.samples_vk_config_disable_self_escape</identifier>
-          <autogen>
-            __KeyToKey__
-            KeyCode::ESCAPE,
-            KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_remap_samples_vk_config_disable_self,
-          </autogen>
-        </item>
+        <name>Disable this setting by Key or PointingButton.</name>
+        <appendix>Change Left Click to disable this setting.</appendix>
+        <appendix>Change Shift_L to disable this setting.</appendix>
+        <identifier vk_config="true">notsave.remap_samples_vk_config_disable_self</identifier>
+        <autogen>__ShowStatusMessage__ VK_CONFIG</autogen>
+        <autogen>
+          __KeyToKey__
+          PointingButton::LEFT,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_remap_samples_vk_config_disable_self,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SHIFT_L,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_remap_samples_vk_config_disable_self,
+        </autogen>
       </item>
-
+      <item>
+        <name>Change escape Key to VK_CONFIG_SYNC_KEYDOWNUP above setting.</name>
+        <identifier>remap.samples_vk_config_disable_self_escape</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_remap_samples_vk_config_disable_self,
+        </autogen>
+      </item>
+      <item><name>──────────────────────────────</name></item>
       <item hidden="true">
         <identifier vk_config="true">notsave.remap_samples_vk_config_disable_self2</identifier>
         <autogen>__ShowStatusMessage__ Disable Self(2)</autogen>
