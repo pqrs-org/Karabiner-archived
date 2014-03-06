@@ -33,7 +33,12 @@
         <name>Core</name>
         <appendix>Change A to toggle "Pass Through Mode"</appendix>
         <identifier>passthrough.samples</identifier>
-        <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A,
+          KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough,
+          Option::IGNORE_PASSTHROUGH,
+        </autogen>
       </item>
       <item>
         <name>Samples</name>
