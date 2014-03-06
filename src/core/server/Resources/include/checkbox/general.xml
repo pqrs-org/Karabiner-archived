@@ -54,6 +54,7 @@
       <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
       <identifier essential="true">general.dont_remap_thirdvendor_pointing</identifier>
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Excluding Devices</name>
       <item>

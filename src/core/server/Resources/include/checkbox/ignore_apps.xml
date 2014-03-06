@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Ignore apps</name>
+
+    <item>
+      <name>Disable all settings while you are using virtual machine.</name>
+      <identifier>ignore_apps.virtual_machine</identifier>
+      <only>VIRTUALMACHINE</only>
+      <autogen>__PassThrough__</autogen>
+    </item>
+
+    <item>
+      <name>Disable all settings while you are using Remote Desktop or VNC.</name>
+      <identifier>ignore_apps.remote_desktop</identifier>
+      <only>
+        REMOTEDESKTOPCONNECTION,
+        VNC,
+        TEAMVIEWER,
+        CITRIX_XEN_APP_VIEWER,
+      </only>
+      <autogen>__PassThrough__</autogen>
+    </item>
+
+  </item>
+</root>

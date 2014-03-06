@@ -53,6 +53,12 @@
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
       </item>
+      <item>
+        <name>Disable all settings while you are using Terminal.</name>
+        <identifier>remap.samples_passthrough_terminal</identifier>
+        <only>TERMINAL</only>
+        <autogen>__PassThrough__</autogen>
+      </item>
     </item>
 
     <item>
