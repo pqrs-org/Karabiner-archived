@@ -72,14 +72,6 @@ namespace pqrs {
                                                                          const std::string& identifier,
                                                                          const std::string& raw_identifier)
   {
-    // Add passthrough filter.
-    if (filter_vector_.empty() &&
-        ! boost::starts_with(identifier, "passthrough_")) {
-      filter_vector_.push_back(2); // count
-      filter_vector_.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      filter_vector_.push_back(symbol_map_cache_configindex_notsave_passthrough_);
-    }
-
     filter_vector_.traverse(pt);
 
     // ----------------------------------------
