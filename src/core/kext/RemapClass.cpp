@@ -307,6 +307,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   RemapClass::Item::isPassThroughEnabled(void) const
   {
     if (isblocked()) return false;
+    if (! parent_.enabled()) return false;
+
     if (type_ != BRIDGE_REMAPTYPE_PASSTHROUGH) return false;
 
     return true;
