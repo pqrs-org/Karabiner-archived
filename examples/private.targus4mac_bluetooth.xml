@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root>
+  <devicevendordef>
+    <vendorname>TARGUS</vendorname>
+    <vendorid>0x1048</vendorid>
+  </devicevendordef>
+  <deviceproductdef>
+    <productname>TARGUS_PRESENTER</productname>
+    <productid>0x07d1</productid>
+  </deviceproductdef>
+  <item>
+    <name>Remap Targus Presenter to work with Google Presentation</name>
+    <identifier>private.targus1</identifier>
+    <device_only>DeviceVendor::TARGUS, DeviceProduct::TARGUS_PRESENTER</device_only>
+    <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::CURSOR_RIGHT</autogen>
+    <autogen>__KeyToKey__ KeyCode::CURSOR_UP, ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT</autogen>
+  </item>
+</root>
