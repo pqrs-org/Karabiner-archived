@@ -14,6 +14,12 @@
       <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::CONTROL_L, KeyCode::RETURN</autogen>
     </item>
     <item>
+      <name>Return to Option_L</name>
+      <appendix>(+ When you type Return only, send Return)</appendix>
+      <identifier>remap.return2optionL_return</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::RETURN, KeyCode::OPTION_L, KeyCode::RETURN</autogen>
+    </item>
+    <item>
       <name>Return to Control_L</name>
       <appendix>(+ When you type Return only, send Return) + [KeyRepeat]</appendix>
       <identifier>remap.return2controlL_return_keyrepeat</identifier>
