@@ -205,6 +205,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
+    // normalize dx_,dy_.
+    if (dx_ > 0) dx_ = 1;
+    if (dx_ < 0) dx_ = -1;
+    if (dy_ > 0) dy_ = 1;
+    if (dy_ < 0) dy_ = -1;
+
     if (dx_ != 0 || dy_ != 0) {
       fire_timer_.setTimeoutMS(TIMER_INTERVAL, false);
     } else {
