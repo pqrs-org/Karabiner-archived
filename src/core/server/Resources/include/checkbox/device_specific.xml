@@ -374,6 +374,15 @@
         <autogen>__KeyToKey__ KeyCode::CURSOR_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_UP</autogen>
         <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_DOWN</autogen>
       </item>
+
+      <item>
+        <name>Remap Targus Presenter to work with Google Presentation</name>
+        <appendix>(Change shift-up/down to left/right arrow.)</appendix>
+        <identifier>remap.targus_google_presentation</identifier>
+        <device_only>DeviceVendor::TARGUS, DeviceProduct::TARGUS_BLUETOOTH_PRESENTER</device_only>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_UP,   ModifierFlag::SHIFT_L, KeyCode::CURSOR_LEFT</autogen>
+      </item>
     </item>
 
     <item>
