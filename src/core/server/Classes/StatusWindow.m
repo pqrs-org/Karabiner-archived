@@ -75,13 +75,37 @@
 }
 
 // ------------------------------------------------------------
+- (void) hideStatusWindow:(NSWindow*)window
+{
+  // On OS X 10.9.2 and multi display environment,
+  // if we call [window orderOut:self] here,
+  // the window becomes invisible when we call [window orderFront:self] in another screen.
+  // (maybe a bug of OS X.)
+  //
+  // So, we need to set alpha value zero in order to hide window.
+  //
+  // Note:
+  // Do not change NSWindow's alpha value.
+  // Change contentView's alpha value instead.
+  // Setting NSWindow's alpha value causes flickering when you move a space.
+
+  [[window contentView] setAlphaValue:0];
+}
+
+- (void) showStatusWindow:(NSWindow*)window
+{
+  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+  double opacity = [defaults doubleForKey:kStatusWindowOpacity];
+  [[window contentView] setAlphaValue:(opacity / 100)];
+}
+
 - (void) setupStatusWindow:(NSWindow*)window
 {
   NSWindowCollectionBehavior behavior = NSWindowCollectionBehaviorCanJoinAllSpaces |
                                         NSWindowCollectionBehaviorStationary |
                                         NSWindowCollectionBehaviorIgnoresCycle;
 
-  [window setAlphaValue:0];
+  [self hideStatusWindow:window];
   [window setBackgroundColor:[NSColor clearColor]];
   [window setOpaque:NO];
   [window setStyleMask:NSBorderlessWindowMask];
@@ -117,13 +141,13 @@
   // Hide windows which have an unselected type.
   for (NSWindow* w in windows_) {
     if (! [[w title] isEqualToString:[window title]]) {
-      [w setAlphaValue:0];
+      [self hideStatusWindow:w];
     }
   }
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   if (! [defaults boolForKey:kIsStatusWindowEnabled]) {
-    [window setAlphaValue:0];
+    [self hideStatusWindow:window];
     return;
   }
 
@@ -191,17 +215,10 @@
   if ([statusMessage length] > 0) {
     [self updateFrameOrigin];
     [window orderFront:self];
-    [window setAlphaValue:1.0f];
+    [self showStatusWindow:window];
     [[[self currentWindow] contentView] setNeedsDisplay:YES];
   } else {
-    // On OS X 10.9.2 and multi display environment,
-    // if we call [window orderOut:self] here,
-    // the window becomes invisible when we call [window orderFront:self] in another screen.
-    // (maybe a bug of OS X.)
-    //
-    // So, we need to set alpha value zero in order to hide window.
-    //
-    [window setAlphaValue:0];
+    [self hideStatusWindow:window];
   }
 }
 
