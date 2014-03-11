@@ -15,10 +15,6 @@
 {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSInteger theme = [defaults integerForKey:kStatusWindowTheme];
-  double opacity = [defaults doubleForKey:kStatusWindowOpacity];
-
-  // Opacity
-  [self setAlphaValue:(opacity / 100)];
 
   // Background
   [NSGraphicsContext saveGraphicsState];
