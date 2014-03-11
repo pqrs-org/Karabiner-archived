@@ -81,7 +81,7 @@
                                         NSWindowCollectionBehaviorStationary |
                                         NSWindowCollectionBehaviorIgnoresCycle;
 
-  [window orderOut:self];
+  [window setAlphaValue:0];
   [window setBackgroundColor:[NSColor clearColor]];
   [window setOpaque:NO];
   [window setStyleMask:NSBorderlessWindowMask];
@@ -95,6 +95,10 @@
 - (void) setupStatusWindow
 {
   if ([windows_ count] == 0) {
+    [statusMessage_normal_ setTitle:@"normal"];
+    [statusMessage_nano_ setTitle:@"nano"];
+    [statusMessage_edge_ setTitle:@"edge"];
+
     [windows_ addObject:statusMessage_normal_];
     [windows_ addObject:statusMessage_nano_];
     [windows_ addObject:statusMessage_edge_];
@@ -112,14 +116,14 @@
   NSWindow* window = [self currentWindow];
   // Hide windows which have an unselected type.
   for (NSWindow* w in windows_) {
-    if (w != window) {
-      [w orderOut:self];
+    if (! [[w title] isEqualToString:[window title]]) {
+      [w setAlphaValue:0];
     }
   }
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   if (! [defaults boolForKey:kIsStatusWindowEnabled]) {
-    [window orderOut:self];
+    [window setAlphaValue:0];
     return;
   }
 
@@ -187,9 +191,17 @@
   if ([statusMessage length] > 0) {
     [self updateFrameOrigin];
     [window orderFront:self];
+    [window setAlphaValue:1.0f];
     [[[self currentWindow] contentView] setNeedsDisplay:YES];
   } else {
-    [window orderOut:self];
+    // On OS X 10.9.2 and multi display environment,
+    // if we call [window orderOut:self] here,
+    // the window becomes invisible when we call [window orderFront:self] in another screen.
+    // (maybe a bug of OS X.)
+    //
+    // So, we need to set alpha value zero in order to hide window.
+    //
+    [window setAlphaValue:0];
   }
 }
 
