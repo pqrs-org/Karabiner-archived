@@ -1,6 +1,8 @@
 Since 9.3.0
 -----------
 
+* Fixed an issue:
+    * v9.3.18: Status Message is not shown properly in a multi displays environment.
 * v9.3.9: Added "relaunch" command into KeyRemap4MacBook_cli.
 * v9.3.1: Updated prepared settings.
 * Updates for people who add new settings by oneself:
