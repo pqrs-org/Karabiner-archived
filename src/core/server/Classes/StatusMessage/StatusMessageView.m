@@ -114,7 +114,7 @@
       break;
     case 1:
       // Top right
-      point.x = screenFrame.origin.x + screenFrame.size.width  - windowFrame.size.width - margin,
+      point.x = screenFrame.origin.x + screenFrame.size.width  - windowFrame.size.width - margin;
       point.y = screenFrame.origin.y + screenFrame.size.height - windowFrame.size.height - margin;
       break;
     case 2:
@@ -125,7 +125,7 @@
     case 3:
     default:
       // Bottom right
-      point.x = screenFrame.origin.x + screenFrame.size.width  - windowFrame.size.width - margin,
+      point.x = screenFrame.origin.x + screenFrame.size.width  - windowFrame.size.width - margin;
       point.y = screenFrame.origin.y + margin;
       break;
   }
