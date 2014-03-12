@@ -36,6 +36,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    Type::Value getType(void) const { return type_; }
+
     // Return whether pressing state is changed.
     bool changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags);
     bool isPressing(void) const { return isPressing_; }
