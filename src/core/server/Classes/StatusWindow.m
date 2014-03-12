@@ -84,7 +84,7 @@
   //
   //   1. [window orderOut]
   //   2. [window setFrameOrigin] (move window to another screen)
-  //   3. [window orderFront:self]
+  //   3. [window orderFront]
   //
   // So, we need to set alpha value zero in order to hide window.
   //
