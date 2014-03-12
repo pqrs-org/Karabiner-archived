@@ -78,9 +78,13 @@
 - (void) hideStatusWindow:(NSWindow*)window
 {
   // On OS X 10.9.2 and multi display environment,
-  // if we call [window orderOut:self] here,
-  // the window becomes invisible when we call [window orderFront:self] in another screen.
+  // if we set NSWindowCollectionBehaviorStationary to NSWindow,
+  // the window becomes invisible when we call methods by the following procedures.
   // (maybe a bug of OS X.)
+  //
+  //   1. [window orderOut]
+  //   2. [window setFrameOrigin] (move window to another screen)
+  //   3. [window orderFront:self]
   //
   // So, we need to set alpha value zero in order to hide window.
   //
