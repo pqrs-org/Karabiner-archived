@@ -18,6 +18,7 @@ Since 9.3.0
           &lt;autogen&gt;\_\_PassThrough\_\_&lt;/autogen&gt;
         &lt;/item&gt;
       </pre>
+    * v9.3.20: You can use KeyCode and ConsumerKeyCode in \_\_PointingRelativeToScroll\_\_.
 
 Version 9.3.0
 -------------
