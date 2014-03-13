@@ -7,6 +7,7 @@
 #include "List.hpp"
 #include "RemapFuncClasses.hpp"
 #include "TimerWrapper.hpp"
+#include "ToEvent.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
@@ -57,7 +58,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       static void timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
       // ----------
-      bool error_;
       size_t index_;
       enum {
         INDEX_TYPE_DEFAULT,
@@ -67,6 +67,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       FromEvent fromEvent_;
       Flags fromFlags_;
       Flags toFlags_;
+      ToEvent toEvent_;
       KeyToKey keytokey_;
       bool isToKeysDefined_;
 

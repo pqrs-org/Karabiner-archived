@@ -41,7 +41,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     PointingRelativeToScroll::PointingRelativeToScroll(void) :
-      error_(false),
       index_(0),
       index_type_(INDEX_TYPE_DEFAULT),
       isToKeysDefined_(false),
@@ -81,19 +80,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_type_) {
             case INDEX_TYPE_DEFAULT:
-              if (datatype == BRIDGE_DATATYPE_POINTINGBUTTON) {
-                fromEvent_ = FromEvent(datatype, newval);
-              } else {
-                IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
-                error_ = true;
-              }
+              fromEvent_ = FromEvent(datatype, newval);
+              toEvent_ = ToEvent(datatype, newval);
               break;
             case INDEX_TYPE_TOKEYS:
               keytokey_.add(datatype, newval);
               break;
             default:
               IOLOG_ERROR("PointingRelativeToScroll::add invalid BRIDGE_DATATYPE_POINTINGBUTTON\n");
-              error_ = true;
               break;
           }
           break;
@@ -116,7 +110,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         default:
           IOLOG_ERROR("PointingRelativeToScroll::add invalid datatype:%d\n", datatype);
-          error_ = true;
           break;
       }
     }
@@ -124,85 +117,105 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     PointingRelativeToScroll::remap(RemapParams& remapParams)
     {
-      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
-      if (! params) return false;
-
+      // ------------------------------------------------------------
       // PointingRelativeToScroll grabs all pointing movement events.
       // Therefore, if user write inappropriate <autogen> (empty flags and empty buttons),
       // user cannot control pointing device at all.
       //
       // For example:
-      //   <autogen>__PointingRelativeToScroll__ KeyCode::FN</autogen>
+      //   <autogen>__PointingRelativeToScroll__ PointingButton::LEFT | PointingButton::RIGHT</autogen>
       //
-      // (KeyCode::FN will be ignored. So, this autogen is interpreted as
+      // (Buttons(LEFT | RIGHT) will be ignored. So, this autogen is interpreted as
       // <autogen>__PointingRelativeToScroll__</autogen>.)
       //
       // Skip on error in order to avoid this situation.
-      if (error_) return false;
+      if (fromEvent_.getType() == FromEvent::Type::NONE &&
+          fromFlags_ == Flags(0)) {
+        IOLOG_WARN("Ignore __PointingRelativeToScroll__ with no option. "
+                   "Please use \"__PointingRelativeToScroll__ PointingButton::NONE\".\n");
+        return false;
+      }
 
-      bool active = fromEvent_.isPressing();
-
+      // ------------------------------------------------------------
       if (remapParams.isremapped) return false;
-      if (fromEvent_.getPointingButton() == PointingButton::NONE) {
+
+      bool useFromEvent = true;
+      if (fromEvent_.getType() == FromEvent::Type::NONE) {
+        useFromEvent = false;
+      }
+      if (fromEvent_.getType() == FromEvent::Type::POINTING_BUTTON &&
+          fromEvent_.getPointingButton() == PointingButton::NONE) {
+        useFromEvent = false;
+      }
+
+      if (! useFromEvent) {
         if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+        goto doremap;
+
       } else {
-        if (! fromEvent_.changePressingState(remapParams.paramsUnion, FlagStatus::makeFlags(), fromFlags_) &&
-            ! active) {
-          return false;
-        }
-      }
-      remapParams.isremapped = true;
+        // FromEvent == KeyCode or ConsumerKeyCode or PointingButton.
 
-      if (fromEvent_.getPointingButton() == PointingButton::NONE) {
-        goto doremap;
-      }
+        bool pressingStateChanged = fromEvent_.changePressingState(remapParams.paramsUnion,
+                                                                   FlagStatus::makeFlags(),
+                                                                   fromFlags_);
+        if (pressingStateChanged) {
+          if (fromEvent_.isPressing()) {
+            // down event
+            FlagStatus::decrease(fromEvent_.getModifierFlag());
+            ButtonStatus::decrease(fromEvent_.getPointingButton());
 
-      // first time
-      if (! active) {
-        // if the source buttons contains left button, we cancel left click for iPhoto, or some applications.
-        // iPhoto store the scroll events when left button is pressed, and restore events after left button is released.
-        // PointingRelativeToScroll doesn't aim it, we release the left button and do normal scroll event.
-        ButtonStatus::decrease(fromEvent_.getPointingButton());
-        EventOutputQueue::FireRelativePointer::fire();
-        ButtonStatus::increase(fromEvent_.getPointingButton());
-
-        absolute_distance_ = 0;
-        begin_ic_.begin();
-        chained_ic_.begin();
-        chained_delta1_ = 0;
-        chained_delta2_ = 0;
-
-        goto doremap;
-      }
-
-      // last time
-      if (! fromEvent_.isPressing()) {
-        cancelScroll();
-
-        const uint32_t DISTANCE_THRESHOLD = 5;
-        const uint32_t TIME_THRESHOLD = 300;
-        if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
-          // Fire by a click event.
-          if (isToKeysDefined_) {
-            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+            absolute_distance_ = 0;
+            begin_ic_.begin();
+            chained_ic_.begin();
+            chained_delta1_ = 0;
+            chained_delta2_ = 0;
 
           } else {
+            // up event
+            FlagStatus::increase(fromEvent_.getModifierFlag());
             ButtonStatus::increase(fromEvent_.getPointingButton());
-            EventOutputQueue::FireRelativePointer::fire();
-            ButtonStatus::decrease(fromEvent_.getPointingButton());
-            EventOutputQueue::FireRelativePointer::fire();
+
+            cancelScroll();
+
+            const uint32_t DISTANCE_THRESHOLD = 5;
+            const uint32_t TIME_THRESHOLD = 300;
+            if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
+              // Fire by a click event.
+              if (isToKeysDefined_) {
+                keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+                keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+
+              } else {
+                toEvent_.fire_downup(FlagStatus::makeFlags());
+              }
+            }
+          }
+
+          // ignore this event.
+          goto returntrue;
+
+        } else {
+          if (! fromEvent_.isPressing()) {
+            return false;
           }
         }
-        return true;
       }
 
     doremap:
+      // change only cursor move events.
+      {
+        Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+        if (! params) return false;
+        if (params->ex_button != PointingButton::NONE) return false;
+      }
+
       // We need to call EventWatcher::on here.
       // See the comments in EventInputQueue::fire_timer_callback.
       EventWatcher::on();
       toscroll(remapParams);
 
+    returntrue:
+      remapParams.isremapped = true;
       return true;
     }
 
