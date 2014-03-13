@@ -1363,6 +1363,24 @@
         <autogen>__PointingRelativeToScroll__ PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
       </item>
       <item>
+        <name>With KeyCode, ConsumerKeyCode</name>
+        <appendix>Space+CursorMove to ScrollWheel</appendix>
+        <appendix>Left Shift+CursorMove to ScrollWheel (Left Shift will not work as modifier.)</appendix>
+        <appendix>Option+Q+CursorMove to ScrollWheel</appendix>
+        <appendix>Volume Mute+CursorMove to ScrollWheel</appendix>
+        <appendix></appendix>
+        <appendix>Difference between KeyCode::SHIFT_L and ModifierFlag::SHIFT_L:</appendix>
+        <appendix>* __PointingRelativeToScroll__ KeyCode::SHIFT_L</appendix>
+        <appendix>===&gt; Left Shift will not work as modifier.</appendix>
+        <appendix>* __PointingRelativeToScroll__ ModifierFlag::SHIFT_L</appendix>
+        <appendix>===&gt; Left Shift will work as modifier.</appendix>
+        <identifier>remap.samples_pointingrelativetoscroll_keycode</identifier>
+        <autogen>__PointingRelativeToScroll__ KeyCode::SPACE</autogen>
+        <autogen>__PointingRelativeToScroll__ KeyCode::SHIFT_L</autogen>
+        <autogen>__PointingRelativeToScroll__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
+        <autogen>__PointingRelativeToScroll__ ConsumerKeyCode::VOLUME_MUTE</autogen>
+      </item>
+      <item>
         <name>With ToFlags</name>
         <appendix>Command+CursorMove to Command+ScrollWheel</appendix>
         <appendix>Option+CursorMove to Control+ScrollWheel</appendix>
