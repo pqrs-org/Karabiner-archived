@@ -52,6 +52,10 @@ do
     cp -R "$f" "$basedir"
 done
 
+basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin"
+mkdir -p "$basedir"
+cp -R src/util/warp-mouse-cursor-position/build/Release/warp-mouse-cursor-position "$basedir"
+
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/vendor/bin"
 mkdir -p "$basedir"
 cp -R src/vendor/blueutil/build/Release/blueutil "$basedir"
