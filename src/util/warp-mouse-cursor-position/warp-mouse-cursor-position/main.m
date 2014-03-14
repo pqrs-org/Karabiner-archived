@@ -18,9 +18,11 @@
 {
   [self output:@"Usage:\n"];
   [self output:@"  warp-mouse-cursor-position screen NUM TOP LEFT\n"];
+  [self output:@"  warp-mouse-cursor-position front_window TOP LEFT\n"];
   [self output:@"\n"];
   [self output:@"Example:\n"];
   [self output:@"  warp-mouse-cursor-position screen 0 300 400\n"];
+  [self output:@"  warp-mouse-cursor-position front_window 100 10\n"];
 
   [[NSApplication sharedApplication] terminate:nil];
 }
@@ -52,7 +54,30 @@
             return 1;
           }
         }
+
+      } else if ([command isEqualToString:@"front_window"]) {
+        if ([arguments count] != 4) {
+          [self usage];
+        } else {
+          CGFloat top  = [arguments[2] integerValue];
+          CGFloat left = [arguments[3] integerValue];
+
+          pid_t pid = [[[NSWorkspace sharedWorkspace] frontmostApplication] processIdentifier];
+
+          NSArray* windows = (__bridge NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly |
+                                                                            kCGWindowListExcludeDesktopElements,
+                                                                            kCGNullWindowID));
+          for (NSDictionary* window in windows) {
+            if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] integerValue] == pid) {
+              NSDictionary* rect = window[(__bridge NSString*)(kCGWindowBounds)];
+              CGWarpMouseCursorPosition(CGPointMake([rect[@"X"] floatValue] + top,
+                                                    [rect[@"Y"] floatValue] + left));
+              break;
+            }
+          }
+        }
       }
+
     } @catch (NSException* exception) {
       NSLog(@"%@", exception);
       return 1;
