@@ -73,6 +73,11 @@
               if ([window[(__bridge NSString*)(kCGWindowAlpha)] floatValue] < 0.001) {
                 continue;
               }
+              // Ignore system layer windows.
+              // (See /System/Library/Frameworks/CoreGraphics.framework/Versions/A/Headers/CGWindowLevel.h )
+              if ([window[(__bridge NSString*)(kCGWindowLayer)] integerValue] >= kCGDockWindowLevelKey) {
+                continue;
+              }
 
               NSDictionary* rect = window[(__bridge NSString*)(kCGWindowBounds)];
               CGWarpMouseCursorPosition(CGPointMake([rect[@"X"] floatValue] + top,
