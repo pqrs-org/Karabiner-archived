@@ -41,8 +41,8 @@
           [self usage];
         } else {
           NSUInteger number = [arguments[2] integerValue];
-          CGFloat top       = [arguments[3] integerValue];
-          CGFloat left      = [arguments[4] integerValue];
+          CGFloat top       = [arguments[3] floatValue];
+          CGFloat left      = [arguments[4] floatValue];
 
           NSArray* screens = [NSScreen screens];
           if (number <= [screens count] - 1) {
@@ -59,8 +59,8 @@
         if ([arguments count] != 4) {
           [self usage];
         } else {
-          CGFloat top  = [arguments[2] integerValue];
-          CGFloat left = [arguments[3] integerValue];
+          CGFloat top  = [arguments[2] floatValue];
+          CGFloat left = [arguments[3] floatValue];
 
           pid_t pid = [[[NSWorkspace sharedWorkspace] frontmostApplication] processIdentifier];
 
