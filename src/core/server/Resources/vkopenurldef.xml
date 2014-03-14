@@ -242,28 +242,55 @@
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window</name>
+    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center</name>
     <url type="shell">
       <![CDATA[
-        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position front_window 0 0
+        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position front_window middle 0 center 0
       ]]>
     </url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_0</name>
+    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_left</name>
     <url type="shell">
       <![CDATA[
-        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 0 0 0
+        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position front_window top 0 left 0
       ]]>
     </url>
   </vkopenurldef>
 
   <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_1</name>
+    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_0</name>
     <url type="shell">
       <![CDATA[
-        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 1 0 0
+        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 0 middle 0 center 0
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_center_1</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 1 middle 0 center 0
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_top_left_0</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 0 top 0 left 0
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_top_left_1</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position screen 1 top 0 left 0
       ]]>
     </url>
   </vkopenurldef>
