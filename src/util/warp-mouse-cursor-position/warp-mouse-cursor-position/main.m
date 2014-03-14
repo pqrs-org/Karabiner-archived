@@ -1,12 +1,12 @@
 @import Cocoa;
 
-@interface WarpMouseCursor : NSObject
+@interface WarpMouseCursorPosition : NSObject
 
 - (int) main;
 
 @end
 
-@implementation WarpMouseCursor
+@implementation WarpMouseCursorPosition
 
 - (void) output:(NSString*)string
 {
@@ -95,5 +95,5 @@
 int
 main(int argc, const char* argv[])
 {
-  return [[WarpMouseCursor new] main];
+  return [[WarpMouseCursorPosition new] main];
 }
