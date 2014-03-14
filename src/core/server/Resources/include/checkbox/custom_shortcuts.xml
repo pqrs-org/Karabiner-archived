@@ -87,6 +87,60 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Move mouse cursor to top-left side of the current application window:</name>
+      <item>
+        <name>By pressing fn key alone.</name>
+        <identifier>remap.move_mouse_cursor_fn_alone</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::FN,
+
+          @begin
+          KeyCode::FN,
+          @end
+
+          @begin
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window,
+          @end
+        </autogen>
+      </item>
+
+      <item>
+        <name>By holding quote(') key down</name>
+        <identifier>remap.move_mouse_cursor_holding_quote</identifier>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::QUOTE, ModifierFlag::NONE,
+
+          @begin
+          KeyCode::QUOTE,
+          @end
+
+          @begin
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window,
+          @end
+        </autogen>
+      </item>
+
+      <item>
+        <name>By holding slash(/) key down</name>
+        <identifier>remap.move_mouse_cursor_holding_slash</identifier>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::SLASH, ModifierFlag::NONE,
+
+          @begin
+          KeyCode::SLASH,
+          @end
+
+          @begin
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window,
+          @end
+        </autogen>
+      </item>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Switch current setting profile by fn+1,fn+2,fn+3, and fn+4.</name>
       <appendix>(You can make multiple profiles by MenuBar tab on Preferences.</appendix>
       <appendix>This setting changes current profile by shortcut.)</appendix>
