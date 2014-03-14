@@ -211,6 +211,24 @@
           <autogen>__KeyToKey__ KeyCode::O, PointingButton::RIGHT</autogen>
         </block>
         <block>
+          <config_only>option.mousekeys_mode_move_mouse_cursor_uio</config_only>
+          <autogen>
+            __KeyToKey__
+            KeyCode::U,
+            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_left,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::I,
+            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::O,
+            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_right,
+          </autogen>
+        </block>
+        <block>
           <config_only>option.mousekeys_mode_jis_eisuu2leftclick</config_only>
           <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
         </block>
@@ -247,6 +265,10 @@
       <item>
         <name>[Option] Change right command key to right click in Mouse Keys Mode</name>
         <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
+      </item>
+      <item>
+        <name>[Option] Move mouse cursor to top-left,middle-center,top-right by U,I,O</name>
+        <identifier>option.mousekeys_mode_move_mouse_cursor_uio</identifier>
       </item>
       <item>
         <name>[Option] Use N key to click lock in Mouse Keys Mode.</name>
