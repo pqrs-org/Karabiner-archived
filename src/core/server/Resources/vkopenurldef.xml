@@ -242,6 +242,15 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin/warp-mouse-cursor-position front_window 0 0
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_screen_0</name>
     <url type="shell">
       <![CDATA[
