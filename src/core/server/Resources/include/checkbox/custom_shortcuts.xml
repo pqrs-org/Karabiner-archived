@@ -87,6 +87,59 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Move mouse cursor to the center of the current application window:</name>
+      <item>
+        <name>By pressing fn key alone.</name>
+        <identifier>remap.move_mouse_cursor_center_fn_alone</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::FN,
+
+          @begin
+          KeyCode::FN,
+          @end
+
+          @begin
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+          @end
+        </autogen>
+      </item>
+
+      <item>
+        <name>By holding quote(') key down</name>
+        <identifier>remap.move_mouse_cursor_center_holding_quote</identifier>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::QUOTE, ModifierFlag::NONE,
+
+          @begin
+          KeyCode::QUOTE,
+          @end
+
+          @begin
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+          @end
+        </autogen>
+      </item>
+
+      <item>
+        <name>By holding slash(/) key down</name>
+        <identifier>remap.move_mouse_cursor_center_holding_slash</identifier>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::SLASH, ModifierFlag::NONE,
+
+          @begin
+          KeyCode::SLASH,
+          @end
+
+          @begin
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+          @end
+        </autogen>
+      </item>
+    </item>
+    <item>
       <name>Move mouse cursor to top-left side of the current application window:</name>
       <item>
         <name>By pressing fn key alone.</name>
@@ -100,7 +153,7 @@
           @end
 
           @begin
-          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window,
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_left,
           @end
         </autogen>
       </item>
@@ -117,7 +170,7 @@
           @end
 
           @begin
-          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window,
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_left,
           @end
         </autogen>
       </item>
@@ -134,7 +187,7 @@
           @end
 
           @begin
-          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window,
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_left,
           @end
         </autogen>
       </item>
