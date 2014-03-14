@@ -70,7 +70,7 @@
           for (NSDictionary* window in windows) {
             if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] integerValue] == pid) {
               // Ignore transparent windows.
-              if ([window[(__bridge NSString*)(kCGWindowAlpha)] floatValue] == 0) {
+              if ([window[(__bridge NSString*)(kCGWindowAlpha)] floatValue] < 0.001) {
                 continue;
               }
 
