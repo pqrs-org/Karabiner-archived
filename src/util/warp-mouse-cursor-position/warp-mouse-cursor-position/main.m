@@ -69,6 +69,11 @@
                                                                             kCGNullWindowID));
           for (NSDictionary* window in windows) {
             if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] integerValue] == pid) {
+              // Ignore transparent windows.
+              if ([window[(__bridge NSString*)(kCGWindowAlpha)] floatValue] == 0) {
+                continue;
+              }
+
               NSDictionary* rect = window[(__bridge NSString*)(kCGWindowBounds)];
               CGWarpMouseCursorPosition(CGPointMake([rect[@"X"] floatValue] + top,
                                                     [rect[@"Y"] floatValue] + left));
