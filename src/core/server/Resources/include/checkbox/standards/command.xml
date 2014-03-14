@@ -26,6 +26,12 @@
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
     </item>
     <item>
+      <name>Command_L to Control_L (only in Cathode)</name>
+      <identifier>remap.commandL2controlL_cathode</identifier>
+      <only>CATHODE</only>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+    </item>
+    <item>
       <name>Command_L to Control_L (only in X11)</name>
       <identifier>remap.commandL2controlL_x11</identifier>
       <only>X11</only>
