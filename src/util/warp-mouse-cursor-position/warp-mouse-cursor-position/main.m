@@ -19,6 +19,7 @@
   [self output:@"Usage:\n"];
   [self output:@"  warp-mouse-cursor-position screen NUM VERTICAL X_ADJUSTMENT HORIZONTAL Y_ADJUSTMENT\n"];
   [self output:@"  warp-mouse-cursor-position front_window VERTICAL X_ADJUSTMENT HORIZONTAL Y_ADJUSTMENT\n"];
+  [self output:@"  warp-mouse-cursor-position dump_windows\n"];
   [self output:@"\n"];
   [self output:@"Example:\n"];
   [self output:@"  warp-mouse-cursor-position screen 0 top +10 left +20\n"];
@@ -113,28 +114,30 @@
                                                                             kCGNullWindowID));
           for (NSDictionary* window in windows) {
             if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] integerValue] == pid) {
+              CGFloat windowAlpha   = [window[(__bridge NSString*)(kCGWindowAlpha)] floatValue];
+              NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
+              CGRect windowBounds;
+              CGRectMakeWithDictionaryRepresentation((__bridge CFDictionaryRef)(window[(__bridge NSString*)(kCGWindowBounds)]), &windowBounds);
+
               // Ignore transparent windows.
               CGFloat transparentThreshold = 0.001;
-              if ([window[(__bridge NSString*)(kCGWindowAlpha)] floatValue] < transparentThreshold) {
+              if (windowAlpha < transparentThreshold) {
                 continue;
               }
               // Ignore system layer windows.
               // (See /System/Library/Frameworks/CoreGraphics.framework/Versions/A/Headers/CGWindowLevel.h )
-              if ([window[(__bridge NSString*)(kCGWindowLayer)] integerValue] >= kCGDockWindowLevelKey) {
+              if (windowLayer >= kCGDockWindowLevelKey) {
                 continue;
               }
-
-              CGRect frame = CGRectZero;
-              CGRectMakeWithDictionaryRepresentation((__bridge CFDictionaryRef)(window[(__bridge NSString*)(kCGWindowBounds)]), &frame);
               // Ignore small windows. (For example, a status bar of Google Chrome.)
               CGFloat windowSizeThreshold = 40;
-              if (frame.size.width < windowSizeThreshold ||
-                  frame.size.height < windowSizeThreshold) {
+              if (windowBounds.size.width < windowSizeThreshold ||
+                  windowBounds.size.height < windowSizeThreshold) {
                 continue;
               }
 
               // ----------------------------------------
-              CGPoint position = [self position:frame
+              CGPoint position = [self position:windowBounds
                                        vertical:vertical
                                               x:x
                                      horizontal:horizontal
@@ -144,6 +147,11 @@
             }
           }
         }
+
+      } else if ([command isEqualToString:@"dump_windows"]) {
+        NSArray* windows = (__bridge NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListExcludeDesktopElements,
+                                                                          kCGNullWindowID));
+        NSLog(@"%@", windows);
       }
 
     } @catch (NSException* exception) {
