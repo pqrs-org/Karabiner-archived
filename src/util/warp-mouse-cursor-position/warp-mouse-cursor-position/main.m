@@ -107,13 +107,16 @@
           NSString* horizontal = arguments[4];
           CGFloat y            = [arguments[5] floatValue];
 
-          pid_t pid = [[[NSWorkspace sharedWorkspace] frontmostApplication] processIdentifier];
+          NSRunningApplication* frontmostApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
+
+          pid_t pid = [frontmostApplication processIdentifier];
+          NSString* bundleIdentifier = [frontmostApplication bundleIdentifier];
 
           NSArray* windows = (__bridge NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly |
                                                                             kCGWindowListExcludeDesktopElements,
                                                                             kCGNullWindowID));
           for (NSDictionary* window in windows) {
-            if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] integerValue] == pid) {
+            if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue] == pid) {
               CGFloat windowAlpha   = [window[(__bridge NSString*)(kCGWindowAlpha)] floatValue];
               NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
               CGRect windowBounds;
@@ -124,16 +127,19 @@
               if (windowAlpha < transparentThreshold) {
                 continue;
               }
-              // Ignore system layer windows.
-              // (See /System/Library/Frameworks/CoreGraphics.framework/Versions/A/Headers/CGWindowLevel.h )
-              if (windowLayer >= kCGDockWindowLevelKey) {
-                continue;
-              }
               // Ignore small windows. (For example, a status bar of Google Chrome.)
               CGFloat windowSizeThreshold = 40;
               if (windowBounds.size.width < windowSizeThreshold ||
                   windowBounds.size.height < windowSizeThreshold) {
                 continue;
+              }
+              // Ignore some app windows.
+              if ([bundleIdentifier isEqualToString:@"org.pqrs.KeyRemap4MacBook"]) {
+                // There is no reliable public specifications for kCGWindowLayer.
+                // So, we use magic number (25) that is confirmed by "dump_windows" option.
+                if (windowLayer == 25) {
+                  continue;
+                }
               }
 
               // ----------------------------------------
@@ -151,7 +157,15 @@
       } else if ([command isEqualToString:@"dump_windows"]) {
         NSArray* windows = (__bridge NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListExcludeDesktopElements,
                                                                           kCGNullWindowID));
-        NSLog(@"%@", windows);
+        for (NSDictionary* window in windows) {
+          pid_t pid = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
+          NSRunningApplication* runningApplication = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
+          [self output:[runningApplication bundleIdentifier]];
+          [self output:@"\n"];
+          [self output:[NSString stringWithFormat:@"%@", window]];
+          [self output:@"\n"];
+          [self output:@"\n"];
+        }
       }
 
     } @catch (NSException* exception) {
