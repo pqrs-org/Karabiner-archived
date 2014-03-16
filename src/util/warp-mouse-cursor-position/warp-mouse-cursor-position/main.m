@@ -17,9 +17,9 @@
 - (void) usage
 {
   [self output:@"Usage:\n"];
-  [self output:@"  warp-mouse-cursor-position screen NUM VERTICAL X_ADJUSTMENT HORIZONTAL Y_ADJUSTMENT\n"];
-  [self output:@"  warp-mouse-cursor-position front_window VERTICAL X_ADJUSTMENT HORIZONTAL Y_ADJUSTMENT\n"];
-  [self output:@"  warp-mouse-cursor-position dump_windows\n"];
+  [self output:@"  warp-mouse-cursor-position screen NUM VERTICAL X_OFFSET HORIZONTAL Y_OFFSET\n"];
+  [self output:@"  warp-mouse-cursor-position front_window VERTICAL X_OFFSET HORIZONTAL Y_OFFSET\n"];
+  [self output:@"  warp-mouse-cursor-position dump_windows (all|onscreen)\n"];
   [self output:@"\n"];
   [self output:@"Example:\n"];
   [self output:@"  warp-mouse-cursor-position screen 0 top +10 left +20\n"];
@@ -28,6 +28,8 @@
   [self output:@"  warp-mouse-cursor-position front_window top +10 left +20\n"];
   [self output:@"  warp-mouse-cursor-position front_window middle +0 center +0\n"];
   [self output:@"  warp-mouse-cursor-position front_window bottom -10 right -20\n"];
+  [self output:@"  warp-mouse-cursor-position dump_windows all\n"];
+  [self output:@"  warp-mouse-cursor-position dump_windows onscreen\n"];
   [self output:@"\n"];
   [self output:@"VERTICAL:\n"];
   [self output:@"  top middle bottom\n"];
@@ -61,6 +63,12 @@
   position.x += x;
 
   return position;
+}
+
+- (NSString*) bundleIdentifierFromPid:(pid_t)pid
+{
+  NSRunningApplication* runningApplication = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
+  return [runningApplication bundleIdentifier];
 }
 
 - (int) main
@@ -108,19 +116,46 @@
           CGFloat y            = [arguments[5] floatValue];
 
           NSRunningApplication* frontmostApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
-
-          pid_t pid = [frontmostApplication processIdentifier];
-          NSString* bundleIdentifier = [frontmostApplication bundleIdentifier];
+          pid_t frontmostApplicationPid = [frontmostApplication processIdentifier];
 
           NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly |
                                                                                      kCGWindowListExcludeDesktopElements,
                                                                                      kCGNullWindowID));
           for (NSDictionary* window in windows) {
-            if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue] == pid) {
+            // Target windows:
+            //   * frontmostApplication
+            //   * loginwindow (shutdown dialog)
+            //   * Launchpad
+            //
+            // Limitations:
+            //   * There is not reliable way to judge whether Dashboard is shown.
+            //
+            pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
+            NSString* bundleIdentifier = [self bundleIdentifierFromPid:windowOwnerPID];
+            NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
+
+            if ((windowOwnerPID == frontmostApplicationPid) ||
+                ([bundleIdentifier isEqualToString:@"com.apple.loginwindow"]) ||
+                ([bundleIdentifier isEqualToString:@"com.apple.dock"] &&
+                 [windowName isEqualToString:@"Launchpad"])) {
               CGFloat windowAlpha   = [window[(__bridge NSString*)(kCGWindowAlpha)] floatValue];
               NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
               CGRect windowBounds;
               CGRectMakeWithDictionaryRepresentation((__bridge CFDictionaryRef)(window[(__bridge NSString*)(kCGWindowBounds)]), &windowBounds);
+
+              // ----------------------------------------
+              // Ignore windows.
+              //
+              // There are well known windows that we need ignore:
+              //   * Google Chrome has some transparent windows.
+              //   * Google Chrome's status bar which is shown when mouse cursor is on links.
+              //   * KeyRemap4MacBook's status message windows.
+              //
+              // Do not forget to treat this situations:
+              //   * Do not ignore menubar.
+              //   * Do not ignore popup menu.
+              //   * Do not ignore alert window on web browsers.
+              //   * Do not ignore iTunes's preferences window which has some special behavior.
 
               // Ignore transparent windows.
               CGFloat transparentThreshold = 0.001;
@@ -136,7 +171,9 @@
               // Ignore some app windows.
               if ([bundleIdentifier isEqualToString:@"org.pqrs.KeyRemap4MacBook"]) {
                 // There is no reliable public specifications for kCGWindowLayer.
-                // So, we use magic number (25) that is confirmed by "dump_windows" option.
+                // So, we use magic numbers that are confirmed by "dump_windows" option.
+
+                // Status message windows.
                 if (windowLayer == 25) {
                   continue;
                 }
@@ -155,16 +192,24 @@
         }
 
       } else if ([command isEqualToString:@"dump_windows"]) {
-        NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListExcludeDesktopElements,
-                                                                                   kCGNullWindowID));
-        for (NSDictionary* window in windows) {
-          pid_t pid = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
-          NSRunningApplication* runningApplication = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
-          [self output:[runningApplication bundleIdentifier]];
-          [self output:@"\n"];
-          [self output:[NSString stringWithFormat:@"%@", window]];
-          [self output:@"\n"];
-          [self output:@"\n"];
+        if ([arguments count] != 3) {
+          [self usage];
+        } else {
+          NSString* filter = arguments[2];
+
+          CGWindowListOption option = kCGWindowListExcludeDesktopElements;
+          if ([filter isEqualToString:@"onscreen"]) {
+            option |= kCGWindowListOptionOnScreenOnly;
+          }
+          NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(option, kCGNullWindowID));
+          for (NSDictionary* window in windows) {
+            pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
+            [self output:[self bundleIdentifierFromPid:windowOwnerPID]];
+            [self output:@"\n"];
+            [self output:[NSString stringWithFormat:@"%@", window]];
+            [self output:@"\n"];
+            [self output:@"\n"];
+          }
         }
       }
 
