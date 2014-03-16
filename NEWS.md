@@ -1,6 +1,13 @@
 Since 9.3.0
 -----------
 
+* v9.3.24: A command line utility "warp-mouse-cursor-position" has been added.<br />
+  Settings which use this utility have been added, too.<br />
+  For example, this setting allows you to move mouse cursor by tapping fn key:
+
+    * Custom Shortcuts
+        * Move mouse cursor to the center of the current application window:
+            * By pressing fn key alone.
 * Fixed an issue:
     * v9.3.18: Status Message will not be shown properly when you are using multiple displays.
 * v9.3.9: Added "relaunch" command into KeyRemap4MacBook_cli.
