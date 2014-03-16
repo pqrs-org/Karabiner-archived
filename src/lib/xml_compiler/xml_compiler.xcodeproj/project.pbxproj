@@ -128,7 +128,7 @@
 		34F271AA152CB80700BD77AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 34F271AD152CB80700BD77AB /* Build configuration list for PBXProject "xml_compiler" */;
 			compatibilityVersion = "Xcode 3.2";

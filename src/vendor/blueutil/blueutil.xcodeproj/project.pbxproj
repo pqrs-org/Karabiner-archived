@@ -92,7 +92,7 @@
 		34EF78D718AEF7AF00C56B74 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Takayama Fumihiko";
 			};
 			buildConfigurationList = 34EF78DA18AEF7AF00C56B74 /* Build configuration list for PBXProject "blueutil" */;

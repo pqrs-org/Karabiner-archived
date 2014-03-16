@@ -88,7 +88,7 @@
 		341A1BD5184EBDBD00CF0341 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Takayama Fumihiko";
 			};
 			buildConfigurationList = 341A1BD8184EBDBD00CF0341 /* Build configuration list for PBXProject "kextload" */;
@@ -156,9 +156,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
