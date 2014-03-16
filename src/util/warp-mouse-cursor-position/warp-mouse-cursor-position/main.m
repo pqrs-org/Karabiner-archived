@@ -112,9 +112,9 @@
           pid_t pid = [frontmostApplication processIdentifier];
           NSString* bundleIdentifier = [frontmostApplication bundleIdentifier];
 
-          NSArray* windows = (__bridge NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly |
-                                                                            kCGWindowListExcludeDesktopElements,
-                                                                            kCGNullWindowID));
+          NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly |
+                                                                                     kCGWindowListExcludeDesktopElements,
+                                                                                     kCGNullWindowID));
           for (NSDictionary* window in windows) {
             if ([window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue] == pid) {
               CGFloat windowAlpha   = [window[(__bridge NSString*)(kCGWindowAlpha)] floatValue];
@@ -155,8 +155,8 @@
         }
 
       } else if ([command isEqualToString:@"dump_windows"]) {
-        NSArray* windows = (__bridge NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListExcludeDesktopElements,
-                                                                          kCGNullWindowID));
+        NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListExcludeDesktopElements,
+                                                                                   kCGNullWindowID));
         for (NSDictionary* window in windows) {
           pid_t pid = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
           NSRunningApplication* runningApplication = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
