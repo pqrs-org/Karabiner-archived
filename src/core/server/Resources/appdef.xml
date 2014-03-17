@@ -488,4 +488,9 @@
     <equal>com.riotgames.LeagueofLegends.GameClient</equal>
   </appdef>
 
+  <appdef>
+    <appname>WebKit_PluginProcess</appname>
+    <equal>com.apple.WebKit.PluginProcess</equal>
+  </appdef>
+
 </root>
