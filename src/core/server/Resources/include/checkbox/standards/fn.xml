@@ -3,6 +3,40 @@
   <item>
     <name>Change Fn Key</name>
     <item>
+      <name>Fn+letter to Command+letter</name>
+      <identifier>remap.fnletter_to_commandletter</identifier>
+      <include path="../commons/wrap_keys/alphabet.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../commons/wrap_keys/number.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../commons/wrap_keys/symbol.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+        </replacementdef>
+      </include>
+    </item>
+    <item>
       <name>Fn+letter to Control+letter</name>
       <appendix>Fn+Escape,Space,Tab to Control+Escape,Space,Tab</appendix>
       <appendix></appendix>
