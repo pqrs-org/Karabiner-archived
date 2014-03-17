@@ -87,7 +87,7 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
-      <name>Move mouse cursor to the center of the current application window:</name>
+      <name>Move mouse cursor to the center of the frontmost app's window:</name>
       <item>
         <name>By pressing fn key alone.</name>
         <identifier>remap.move_mouse_cursor_center_fn_alone</identifier>
@@ -140,7 +140,7 @@
       </item>
     </item>
     <item>
-      <name>Move mouse cursor to top-left side of the current application window:</name>
+      <name>Move mouse cursor to top-left side of the frontmost app's window:</name>
       <item>
         <name>By pressing fn key alone.</name>
         <identifier>remap.move_mouse_cursor_fn_alone</identifier>
