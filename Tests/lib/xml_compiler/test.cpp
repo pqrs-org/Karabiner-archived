@@ -11,8 +11,6 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
   EXPECT_EQ("", xml_compiler.get_error_information().get_message());
 
-  int config_index_notsave_passthrough = 0;
-
   {
     int v = 0;
     int space_is_ignored = 0;
@@ -20,7 +18,6 @@ TEST(pqrs_xml_compiler, reload)
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_change_inputsource_definition"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_open_url_definition"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_private_sample"));
-    config_index_notsave_passthrough = v;
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_passthrough"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_remap_sample"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_include_test"));
@@ -377,10 +374,6 @@ TEST(pqrs_xml_compiler, reload)
     expected.push_back(BRIDGE_DATATYPE_KEYCODE);
     expected.push_back(49); // space
 
-    expected.push_back(2); // count
-    expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-    expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
-
     EXPECT_EQ(expected, actual);
   }
 
@@ -413,10 +406,6 @@ TEST(pqrs_xml_compiler, reload)
 
     expected.push_back(BRIDGE_DATATYPE_KEYCODE);
     expected.push_back(49); // space
-
-    expected.push_back(2); // count
-    expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-    expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
 
     EXPECT_EQ(expected, actual);
   }
@@ -572,8 +561,6 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       std::vector<uint32_t> expected;
 
-      int config_index_notsave_passthrough = 2;
-
       // ------------------------------------------------------------
       // <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
       expected.push_back(7);      // count
@@ -585,10 +572,6 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
 
-      expected.push_back(2);      // count
-      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
-
       expected.push_back(7);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
@@ -597,10 +580,6 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(131076); // ModifierFlag::SHIFT_R
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
-
-      expected.push_back(2);      // count
-      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
 
       // ------------------------------------------------------------
       // <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::SPACE</autogen>
@@ -613,10 +592,6 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
 
-      expected.push_back(2);      // count
-      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
-
       expected.push_back(7);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
@@ -625,10 +600,6 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(131076); // ModifierFlag::SHIFT_R
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
-
-      expected.push_back(2);      // count
-      expected.push_back(BRIDGE_FILTERTYPE_CONFIG_NOT);
-      expected.push_back(config_index_notsave_passthrough); // ConfigIndex::notsave_passthrough
 
       EXPECT_EQ(expected, actual);
     }
