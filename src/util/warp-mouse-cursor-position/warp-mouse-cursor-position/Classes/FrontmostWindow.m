@@ -7,6 +7,8 @@
   self = [super init];
 
   if (self) {
+    _windowBounds = CGRectNull;
+
     NSRunningApplication* frontmostApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
     pid_t frontmostApplicationPid = [frontmostApplication processIdentifier];
 
@@ -72,10 +74,17 @@
         }
 
         // ----------------------------------------
-        _window = window;
-        _bundleIdentifier = bundleIdentifier;
         _windowBounds = windowBounds;
+        _bundleIdentifier = bundleIdentifier;
         break;
+      }
+    }
+
+    if (CGRectIsNull(_windowBounds)) {
+      if ([[frontmostApplication bundleIdentifier] isEqualToString:@"com.apple.finder"]) {
+        // Desktop
+        _windowBounds = [[NSScreen mainScreen] frame];
+        _bundleIdentifier = [frontmostApplication bundleIdentifier];
       }
     }
   }
