@@ -45,18 +45,37 @@
         <appendix>B to C</appendix>
         <appendix>Volume Mute to A</appendix>
         <appendix>RightClick+CursorMove to ScrollWheel</appendix>
+        <appendix>Holding LeftClick to Mission Control</appendix>
         <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
         <identifier>remap.samples_passthrough</identifier>
         <autogen>__ShowStatusMessage__ Samples</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::C</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
+        <autogen>
+          __HoldingKeyToKey__
+          PointingButton::LEFT,
+          @begin
+          PointingButton::LEFT,
+          @end
+          @begin
+          KeyCode::MISSION_CONTROL,
+          KeyCode::VK_NONE,
+          Option::NOREPEAT,
+          @end
+        </autogen>
         <autogen>__SimultaneousKeyPresses__ KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
       </item>
       <item>
         <name>Disable all settings while you are using Terminal.</name>
         <identifier>remap.samples_passthrough_terminal</identifier>
         <only>TERMINAL</only>
+        <autogen>__PassThrough__</autogen>
+      </item>
+      <item>
+        <name>Disable all settings on Magic Mouse.</name>
+        <identifier>remap.samples_passthrough_magic_mouse</identifier>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE</device_only>
         <autogen>__PassThrough__</autogen>
       </item>
     </item>
