@@ -6,7 +6,7 @@ Since 9.3.0
   For example, this setting allows you to move mouse cursor by tapping fn key:
 
     * Custom Shortcuts
-        * Move mouse cursor to the center of the current application window:
+        * Move mouse cursor to the center of the frontmost app's window:
             * By pressing fn key alone.
 * Fixed an issue:
     * v9.3.18: Status Message will not be shown properly when you are using multiple displays.
