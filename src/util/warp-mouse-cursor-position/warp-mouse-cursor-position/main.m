@@ -111,7 +111,7 @@
           CGFloat y            = [arguments[5] floatValue];
 
           FrontmostWindow* frontmostWindow = [FrontmostWindow new];
-          if (frontmostWindow.window) {
+          if (! CGRectIsNull(frontmostWindow.windowBounds)) {
             CGPoint position = [self position:frontmostWindow.windowBounds
                                      vertical:vertical
                                             x:x
