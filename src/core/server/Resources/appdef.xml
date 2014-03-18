@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <root>
+
   <appdef>
     <appname>EMACS</appname>
     <equal>org.gnu.Emacs</equal>
@@ -491,6 +492,16 @@
   <appdef>
     <appname>WebKit_PluginProcess</appname>
     <equal>com.apple.WebKit.PluginProcess</equal>
+  </appdef>
+
+  <appdef>
+    <appname>EYETV</appname>
+    <equal>com.elgato.eyetv</equal>
+  </appdef>
+
+  <appdef>
+    <appname>QUICKTIME</appname>
+    <equal>com.apple.QuickTimePlayerX</equal>
   </appdef>
 
 </root>
