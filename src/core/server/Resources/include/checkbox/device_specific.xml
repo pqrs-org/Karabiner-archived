@@ -448,5 +448,6 @@
     </item>
 
     <include path="devices/lmp-bluetooth-keypad.xml" />
+    <include path="devices/satechi_bluetooth_remote.xml" />
   </item>
 </root>
