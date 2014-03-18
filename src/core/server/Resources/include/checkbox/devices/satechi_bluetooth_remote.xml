@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>For Satechi Bluetooth Remote</name>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for EyeTV</name>
+      <identifier>remap.device_SatechiMediaKeysForEyeTV</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>EYETV</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::SPACE</autogen> <!-- Play button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x11, KeyCode::CURSOR_RIGHT</autogen><!-- Next button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x12, KeyCode::CURSOR_LEFT</autogen><!-- Previous button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::KEY_0, ModifierFlag::COMMAND_L</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for Safari</name>
+      <identifier>remap.device_SatechiMediaKeysForSafari</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>SAFARI</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::SPACE</autogen> <!-- Play button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x11, KeyCode::CURSOR_RIGHT</autogen><!-- Next button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x12, KeyCode::CURSOR_LEFT</autogen><!-- Previous button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for Safari Plugins</name>
+      <identifier>remap.device_SatechiMediaKeysForSafariPlugins</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>WebKit_PluginProcess</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::SPACE</autogen> <!-- Play button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x11, KeyCode::CURSOR_RIGHT</autogen><!-- Next button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x12, KeyCode::CURSOR_LEFT</autogen><!-- Previous button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::ESCAPE</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for Chrome</name>
+      <identifier>remap.device_SatechiMediaKeysForChrome</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>GOOGLE_CHROME</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::SPACE</autogen> <!-- Play button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x11, KeyCode::CURSOR_RIGHT</autogen><!-- Next button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x12, KeyCode::CURSOR_LEFT</autogen><!-- Previous button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for Firefox</name>
+      <identifier>remap.device_SatechiMediaKeysForFirefox</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>FIREFOX</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::SPACE</autogen> <!-- Play button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x11, KeyCode::CURSOR_RIGHT</autogen><!-- Next button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x12, KeyCode::CURSOR_LEFT</autogen><!-- Previous button -->
+      <autogen>__KeyToKey__ Consume rKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for iTunes</name>
+      <identifier>remap.device_SatechiMediaKeysForiTunes</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>ITUNES</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for QuickTime</name>
+      <identifier>remap.device_SatechiMediaKeysForQuickTime</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>QUICKTIME</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote for VLC</name>
+      <identifier>remap.device_SatechiMediaKeysForVLC</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <only>VLC</only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen><!-- Keyboard button -->
+    </item>
+    <item>
+      <name>Configure Satechi Bluetooth Remote (global settings)</name>
+      <identifier>remap.device_SatechiMediaKeysGlobally</identifier>
+      <device_only>DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote</device_only>
+      <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::SPACE</autogen> <!-- Play button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x11, KeyCode::CURSOR_RIGHT</autogen><!-- Next button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x12, KeyCode::CURSOR_LEFT</autogen><!-- Previous button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::ESCAPE</autogen><!-- Keyboard button -->
+      <!-- The following raw values are disabled, but can be used to modify the indicated keys, if desired. -->
+      <!-- <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x00, KeyCode::CURSOR_UP</autogen>--><!-- Volume Up button -->
+      <!-- <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x01, KeyCode::CURSOR_DOWN</autogen>--><!-- Volume Down button -->
+      <!-- <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x07, KeyCode::CURSOR_RIGHT</autogen>--><!-- Volume Mute button -->
+      <!--
+      Additionally, if you really want to go crazy... the following RawValues map to the number keys under the sleeve, which
+      would usually only be used for Bluetooth pairing.  (I don't recommend remapping the <Enter> key, as the enter key also
+      appears to cause a momentary disconnect/reconnect of the Bluetooth signal.)
+        0x12 = 1
+        0x13 = 2
+        0x14 = 3
+        0x15 = 4
+        0x17 = 5
+        0x16 = 6
+        0x1a = 7
+        0x1c = 8
+        0x19 = 9
+        0x1d = 0
+      -->
+    </item>
+  </item>
+
+</root>

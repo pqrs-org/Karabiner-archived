@@ -6,6 +6,7 @@
   <include path="include/checkbox/pass_through_mode.xml" />
   <include path="include/checkbox/pointing_device.xml" />
 
+  <item><name>──────────────────────────────</name></item>
   <include path="include/checkbox/standards/arrow.xml" />
   <include path="include/checkbox/standards/backquote.xml" />
   <include path="include/checkbox/standards/backslash.xml" />
@@ -35,6 +36,7 @@
   <include path="include/checkbox/standards/space.xml" />
   <include path="include/checkbox/standards/tab.xml" />
 
+  <item><name>──────────────────────────────</name></item>
   <include path="include/checkbox/custom_shortcuts.xml" />
   <include path="include/checkbox/sticky_modifier.xml" />
   <include path="include/checkbox/diamond_cursor.xml" />
@@ -97,6 +99,7 @@
 
   <include path="include/checkbox/change_input_source_temporary.xml" />
 
+  <item><name>──────────────────────────────</name></item>
   <include path="include/checkbox/languages/iso_keyboard.xml" />
   <include path="include/checkbox/latin_american_iso_keyboard_layout.xml" />
   <include path="include/checkbox/languages/belgian.xml" />
@@ -121,5 +124,6 @@
   <include path="include/checkbox/languages/swiss.xml" />
   <include path="include/checkbox/languages/ukrainian.xml" />
 
+  <item><name>──────────────────────────────</name></item>
   <include path="include/checkbox/samples.xml" />
 </root>

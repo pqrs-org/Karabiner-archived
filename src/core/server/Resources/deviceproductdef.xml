@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <root>
+
   <deviceproductdef>
     <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218</productname>
     <productid>0x0218</productid>
@@ -289,4 +290,10 @@
     <productname>Riitek_Rii_Touch_N7_0x0409</productname>
     <productid>0x0409</productid>
   </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>Satechi_Bluetooth_Remote</productname>
+    <productid>0x023C</productid>
+  </deviceproductdef>
+
 </root>

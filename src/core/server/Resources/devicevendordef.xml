@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <root>
+
   <devicevendordef>
     <vendorname>APPLE_INC</vendorname>
     <vendorid>0x05ac</vendorid>
@@ -119,4 +120,10 @@
     <vendorname>YUBICO</vendorname>
     <vendorid>0x1050</vendorid>
   </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Satechi</vendorname>
+    <vendorid>0x05AC</vendorid>
+  </devicevendordef>
+
 </root>
