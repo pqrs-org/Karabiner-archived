@@ -504,4 +504,9 @@
     <equal>com.apple.QuickTimePlayerX</equal>
   </appdef>
 
+  <appdef>
+    <appname>NetBeans</appname>
+    <prefix>org.netbeans.ide.baseide.</prefix>
+  </appdef>
+
 </root>
