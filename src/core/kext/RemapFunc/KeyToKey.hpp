@@ -50,6 +50,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Pointer to toKeys_ or beforeKeys_ or afterKeys_.
       Vector_ToEvent* currentVectorPointer_;
 
+      uint64_t lastEventInputQueueSerialNumber_;
+
       int keyboardRepeatID_;
       bool isRepeatEnabled_;
 

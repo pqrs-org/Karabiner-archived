@@ -11,6 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyToKey::KeyToKey(void) :
       index_(0),
       currentVectorPointer_(&toKeys_),
+      lastEventInputQueueSerialNumber_(0),
       keyboardRepeatID_(-1),
       isRepeatEnabled_(true),
       delayUntilRepeat_(-1),
@@ -107,6 +108,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (remapParams.isremapped) return false;
       if (! fromEvent_.changePressingState(remapParams.paramsUnion, FlagStatus::makeFlags(), fromFlags_)) return false;
       remapParams.isremapped = true;
+
+      // ------------------------------------------------------------
+      bool isTapped = false;
+      if (lastEventInputQueueSerialNumber_ + 1 == EventInputQueue::currentSerialNumber()) {
+        isTapped = true;
+      }
+      lastEventInputQueueSerialNumber_ = EventInputQueue::currentSerialNumber();
 
       // ------------------------------------------------------------
       // handle EventType & Modifiers
@@ -284,6 +292,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Handle afterKeys_
       if (! fromEvent_.isPressing()) {
         fire_afterKeys(&afterKeys_, fromFlags);
+
+        if (isTapped) {
+          fire_afterKeys(&afterKeysIfTapped_, fromFlags);
+        } else {
+          fire_afterKeys(&afterKeysUnlessTapped_, fromFlags);
+        }
       }
 
       return true;
