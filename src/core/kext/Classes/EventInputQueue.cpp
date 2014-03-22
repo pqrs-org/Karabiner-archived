@@ -17,6 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   List* EventInputQueue::queue_ = NULL;
   IntervalChecker EventInputQueue::ic_;
   TimerWrapper EventInputQueue::fire_timer_;
+  uint64_t EventInputQueue::serialNumber_;
 
   void
   EventInputQueue::initialize(IOWorkLoop& workloop)
@@ -24,6 +25,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     queue_ = new List();
     ic_.begin();
     fire_timer_.initialize(&workloop, NULL, EventInputQueue::fire_timer_callback);
+    serialNumber_ = 0;
   }
 
   void
@@ -595,6 +597,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     CommonData::setcurrent_lastpressedphysicalkey(p->params);
 
     queue_->pop_front();
+    ++serialNumber_;
 
     setTimer();
   }
