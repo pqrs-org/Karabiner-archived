@@ -14,6 +14,7 @@ Web pages
 
 * master: https://pqrs.org/macosx/keyremap4macbook/
 * backup: http://tekezo.github.io/pqrs.org/
+* Google Group:  https://groups.google.com/forum/#!forum/keyremap4macbook
 
 
 System requirements
