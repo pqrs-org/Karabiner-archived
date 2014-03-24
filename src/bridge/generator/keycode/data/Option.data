@@ -15,10 +15,6 @@ NOREPEAT                                --AUTO--
 KEYTOKEY_BEFORE_KEYDOWN                 --AUTO--
 KEYTOKEY_AFTER_KEYUP                    --AUTO--
 // Send a key sequence at keyup when a target key was tapped.
-//
-// tapped == the target key is pressed and released continually.
-// A down -> B down -> B up -> A up   == B is tapped.
-// A down -> B down -> A up -> B up   == A and B are not tapped.
 KEYTOKEY_AFTER_KEYUP_IF_TAPPED          --AUTO--
 KEYTOKEY_AFTER_KEYUP_UNLESS_TAPPED      --AUTO--
 
