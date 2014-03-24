@@ -69,10 +69,6 @@ namespace org_pqrs_KeyRemap4MacBook {
             currentVectorPointer_ = &beforeKeys_;
           } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
             currentVectorPointer_ = &afterKeys_;
-          } else if (Option::KEYTOKEY_AFTER_KEYUP_IF_TAPPED == option) {
-            currentVectorPointer_ = &afterKeysIfTapped_;
-          } else if (Option::KEYTOKEY_AFTER_KEYUP_UNLESS_TAPPED == option) {
-            currentVectorPointer_ = &afterKeysUnlessTapped_;
           } else if (Option::USE_SEPARATOR == option ||
                      Option::SEPARATOR == option) {
             // do nothing
@@ -282,35 +278,27 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // Handle afterKeys_
       if (! fromEvent_.isPressing()) {
-        fire_afterKeys(&afterKeys_, fromFlags);
+        // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
+        if (afterKeys_.size() > 0) {
+          // clear temporary flags.
+          FlagStatus::set();
+
+          FlagStatus::temporary_decrease(fromFlags);
+
+          for (size_t i = 0; i < afterKeys_.size(); ++i) {
+            FlagStatus::temporary_increase(afterKeys_[i].getFlags());
+
+            Flags f = FlagStatus::makeFlags();
+            afterKeys_[i].fire_downup(f);
+
+            FlagStatus::temporary_decrease(afterKeys_[i].getFlags());
+          }
+
+          FlagStatus::temporary_increase(fromFlags);
+        }
       }
 
       return true;
-    }
-
-    void
-    KeyToKey::fire_afterKeys(Vector_ToEvent* toEvents, Flags fromFlags)
-    {
-      if (! toEvents) return;
-
-      // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
-      if (toEvents->size() > 0) {
-        // clear temporary flags.
-        FlagStatus::set();
-
-        FlagStatus::temporary_decrease(fromFlags);
-
-        for (size_t i = 0; i < toEvents->size(); ++i) {
-          FlagStatus::temporary_increase((*toEvents)[i].getFlags());
-
-          Flags f = FlagStatus::makeFlags();
-          (*toEvents)[i].fire_downup(f);
-
-          FlagStatus::temporary_decrease((*toEvents)[i].getFlags());
-        }
-
-        FlagStatus::temporary_increase(fromFlags);
-      }
     }
 
     bool

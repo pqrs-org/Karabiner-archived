@@ -33,7 +33,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t toKeysSize(void) const { return toKeys_.size(); }
 
     private:
-      void fire_afterKeys(Vector_ToEvent* toEvents, Flags fromFlags);
       int getDelayUntilRepeat(void);
       int getKeyRepeat(void);
 
@@ -45,8 +44,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       Vector_ToEvent toKeys_;
       Vector_ToEvent beforeKeys_;
       Vector_ToEvent afterKeys_;
-      Vector_ToEvent afterKeysIfTapped_;
-      Vector_ToEvent afterKeysUnlessTapped_;
       // Pointer to toKeys_ or beforeKeys_ or afterKeys_.
       Vector_ToEvent* currentVectorPointer_;
 

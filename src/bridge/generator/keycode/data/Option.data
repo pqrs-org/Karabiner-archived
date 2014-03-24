@@ -14,9 +14,6 @@ NOREPEAT                                --AUTO--
 // Send a key sequence at keydown and keyup.
 KEYTOKEY_BEFORE_KEYDOWN                 --AUTO--
 KEYTOKEY_AFTER_KEYUP                    --AUTO--
-// Send a key sequence at keyup when a target key was tapped.
-KEYTOKEY_AFTER_KEYUP_IF_TAPPED          --AUTO--
-KEYTOKEY_AFTER_KEYUP_UNLESS_TAPPED      --AUTO--
 
 // For __PointingRelativeToScroll__
 POINTINGRELATIVETOSCROLL_TOFLAGS        --AUTO--
