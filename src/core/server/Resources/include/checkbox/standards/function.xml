@@ -542,17 +542,9 @@
         </item>
         <item>
           <name>F3,F4 to Mission Control/Launchpad</name>
-          <appendix>For Lion users</appendix>
           <identifier>remap.fkeys_to_consumer_f3_lion</identifier>
           <autogen>__KeyToKey__ KeyCode::F3, KeyCode::MISSION_CONTROL</autogen>
           <autogen>__KeyToKey__ KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
-        </item>
-        <item>
-          <name>F3,F4 to Expose/Dashboard</name>
-          <appendix>For Snow Leopard users</appendix>
-          <identifier>remap.fkeys_to_consumer_f3_snow</identifier>
-          <autogen>__KeyToKey__ KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
-          <autogen>__KeyToKey__ KeyCode::F4, KeyCode::DASHBOARD</autogen>
         </item>
         <item>
           <name>F5,F6 to Keyboard Backlit Adjust</name>
@@ -597,17 +589,9 @@
         </item>
         <item>
           <name>Fn+F3,F4 to Mission Control/Launchpad</name>
-          <appendix>For Lion users</appendix>
           <identifier>remap.fn_fkeys_to_consumer_f3_lion</identifier>
           <autogen>__KeyToKey__ KeyCode::F3, ModifierFlag::FN, KeyCode::MISSION_CONTROL</autogen>
           <autogen>__KeyToKey__ KeyCode::F4, ModifierFlag::FN, KeyCode::LAUNCHPAD</autogen>
-        </item>
-        <item>
-          <name>Fn+F3,F4 to Expose/Dashboard</name>
-          <appendix>For Snow Leopard users</appendix>
-          <identifier>remap.fn_fkeys_to_consumer_f3_snow</identifier>
-          <autogen>__KeyToKey__ KeyCode::F3, ModifierFlag::FN, KeyCode::EXPOSE_ALL</autogen>
-          <autogen>__KeyToKey__ KeyCode::F4, ModifierFlag::FN, KeyCode::DASHBOARD</autogen>
         </item>
         <item>
           <name>Fn+F5,F6 to Keyboard Backlit Adjust</name>
@@ -671,6 +655,33 @@
           <identifier>remap.f5_to_volumeup</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>__KeyToKey__ KeyCode::F5, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item><name>──────────────────────────────</name></item>
+        <item>
+          <name>F3,F4 to Expose/Dashboard</name>
+          <identifier>remap.fkeys_to_consumer_f3_snow</identifier>
+          <autogen>__KeyToKey__ KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>__KeyToKey__ KeyCode::F4, KeyCode::DASHBOARD</autogen>
+        </item>
+        <item>
+          <name>F3,F4 to Expose/Dashboard (except in Parallels/RDP)</name>
+          <identifier>remap.mbpro_f3f4</identifier>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>__KeyToKey__ KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>__KeyToKey__ KeyCode::F4, KeyCode::DASHBOARD</autogen>
+        </item>
+        <item>
+          <name>Fn+F3,F4 to Expose/Dashboard</name>
+          <identifier>remap.fn_fkeys_to_consumer_f3_snow</identifier>
+          <autogen>__KeyToKey__ KeyCode::F3, ModifierFlag::FN, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>__KeyToKey__ KeyCode::F4, ModifierFlag::FN, KeyCode::DASHBOARD</autogen>
+        </item>
+        <item>
+          <name>F3,F4 to Expose/Dashboard (except in Parallels/RDP)</name>
+          <identifier>remap.air_f3f4</identifier>
+          <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+          <autogen>__KeyToKey__      KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
+          <autogen>__KeyToKey__      KeyCode::F4, KeyCode::DASHBOARD</autogen>
         </item>
         <item><name>──────────────────────────────</name></item>
         <item>
@@ -1205,19 +1216,10 @@
           </item>
           <item>
             <name>F3,F4 to Mission Control/Launchpad (except in Parallels/RDP)</name>
-            <appendix>For Lion users</appendix>
             <identifier>remap.mbpro_f3f4_lion</identifier>
             <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
             <autogen>__KeyToKey__ KeyCode::F3, KeyCode::MISSION_CONTROL</autogen>
             <autogen>__KeyToKey__ KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
-          </item>
-          <item>
-            <name>F3,F4 to Expose/Dashboard (except in Parallels/RDP)</name>
-            <appendix>For Snow Leopard users</appendix>
-            <identifier>remap.mbpro_f3f4</identifier>
-            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-            <autogen>__KeyToKey__ KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
-            <autogen>__KeyToKey__ KeyCode::F4, KeyCode::DASHBOARD</autogen>
           </item>
           <item>
             <name>F7,F8,F9 to Music Controls (except in Parallels/RDP), Macbook Pro Version</name>
@@ -1259,19 +1261,10 @@
           </item>
           <item>
             <name>F3,F4 to Mission Control/Launchpad (except in Parallels/RDP)</name>
-            <appendix>For Lion users</appendix>
             <identifier>remap.air_f3f4_lion</identifier>
             <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
             <autogen>__KeyToKey__ KeyCode::F3, KeyCode::MISSION_CONTROL</autogen>
             <autogen>__KeyToKey__ KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
-          </item>
-          <item>
-            <name>F3,F4 to Expose/Dashboard (except in Parallels/RDP)</name>
-            <appendix>For Snow Leopard users</appendix>
-            <identifier>remap.air_f3f4</identifier>
-            <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-            <autogen>__KeyToKey__      KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
-            <autogen>__KeyToKey__      KeyCode::F4, KeyCode::DASHBOARD</autogen>
           </item>
           <item>
             <name>F6,F7,F8 to Music Controls (except in Parallels/RDP)</name>
