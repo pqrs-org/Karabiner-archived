@@ -375,9 +375,9 @@
     </item>
 
     <item>
-      <name style="slignt">Items for backwards compatibility</name>
+      <name style="slight">Items for backwards compatibility</name>
       <item>
-        <name style="slignt">Option+Tab to Command+Tab</name>
+        <name style="slight">Option+Tab to Command+Tab</name>
         <identifier>remap.optionTab2commandTab</identifier>
         <include path="../snippets/modifier_tab_to_command_tab.xml">
           <replacementdef>

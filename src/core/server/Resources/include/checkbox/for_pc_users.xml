@@ -684,10 +684,10 @@
     </item>
 
     <item>
-      <name style="slignt">Items for backwards compatibility</name>
+      <name style="slight">Items for backwards compatibility</name>
 
       <item>
-        <name style="slignt">Use PC Style Copy/Paste</name>
+        <name style="slight">Use PC Style Copy/Paste</name>
         <appendix>(Control+C to Command_L+C)</appendix>
         <appendix>(Control+V to Command_L+V)</appendix>
         <appendix>(Control+X to Command_L+X)</appendix>
@@ -698,7 +698,7 @@
       </item>
 
       <item>
-        <name style="slignt">Use PC Style Copy/Paste</name>
+        <name style="slight">Use PC Style Copy/Paste</name>
         <appendix>(Control+C to Command_L+C)</appendix>
         <appendix>(Control+V to Command_L+V)</appendix>
         <appendix>(Control+X to Command_L+X)</appendix>
@@ -710,7 +710,7 @@
         <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
-        <name style="slignt">Use PC Style PageUp/PageDown</name>
+        <name style="slight">Use PC Style PageUp/PageDown</name>
         <appendix>(behave like Option+PageUp/PageDown)</appendix>
         <identifier>remap.pclikepageupdown</identifier>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>

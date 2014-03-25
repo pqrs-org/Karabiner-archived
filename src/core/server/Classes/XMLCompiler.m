@@ -32,7 +32,7 @@
       NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f],
     };
 
-  } else if ([style isEqualToString:@"slignt"]) {
+  } else if ([style isEqualToString:@"slight"]) {
     dict[@"stringAttributes"] = @{
       NSForegroundColorAttributeName : [NSColor grayColor],
     };
