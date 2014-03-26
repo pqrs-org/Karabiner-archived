@@ -71,3 +71,22 @@ Threads:
 * hooked function (EventInputQueue::push_*)
 * gIOMatchedNotification and gIOTerminatedNotification callback of input devices (Core::*Notification_callback)
 * IOUserClient callback (UserClient_kext::callback_*)
+
+Files and Directories Overview
+------------------------------
+
+A selected list to orient you...
+
+* *make-package.sh*:  shell script to create a signed .dmg file.
+* *version*:  current version number string
+* *Tests/*:  tests based on gtest (Google C++ Testing Framework).
+* *files/*:  files and configurations for making OS/X applications
+  * *files/extra*:  shell scripts for packaging used by make-package.sh
+* *pkginfo/*:  more package tools, including setting the version number.
+* *src/*:
+  * *src/vendor/blueutil*:  command line control of Bluetooth
+  * *src/core/server/*:  main server code, what you see as the UI.
+    + *.../Frameworks/Sparkle.framework*:  modified Sparkle upgrader
+    + *.../Resources/include/checkbox*:  long ChangeKey list items
+  * *src/core/kext*:  main kernal extension magic
+* *util/uncrustify*:  code beautifier
