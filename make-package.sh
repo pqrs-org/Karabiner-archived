@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Package build into a signed .dmg file
+
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 version=$(cat version)
@@ -7,7 +9,7 @@ version=$(cat version)
 make clean build || exit $?
 
 # --------------------------------------------------
-# http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptPackaging/packaging_kext.html
+# https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptPackaging/packaging_tutorial.html
 echo "Copy Files"
 
 rm -rf pkgroot
