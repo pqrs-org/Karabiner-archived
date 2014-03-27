@@ -14,6 +14,7 @@
 #include "RemapFunc/IgnoreMultipleSameKeyPress.hpp"
 #include "RemapFunc/KeyOverlaidModifier.hpp"
 #include "RemapFunc/KeyToKey.hpp"
+#include "RemapFunc/KeyUpEventToKey.hpp"
 #include "RemapFunc/PassThrough.hpp"
 #include "RemapFunc/PointingRelativeToKey.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
@@ -78,6 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapFunc::ForceNumLockOn* forceNumLockOn;
         RemapFunc::HoldingKeyToKey* holdingKeyToKey;
         RemapFunc::IgnoreMultipleSameKeyPress* ignoreMultipleSameKeyPress;
+        RemapFunc::KeyUpEventToKey* keyUpEventToKey;
         RemapFunc::KeyOverlaidModifier* keyOverlaidModifier;
         RemapFunc::KeyToKey* keyToKey;
         RemapFunc::PassThrough* passThrough;
