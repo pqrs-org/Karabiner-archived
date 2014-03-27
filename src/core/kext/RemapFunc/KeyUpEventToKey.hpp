@@ -7,6 +7,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class KeyUpEventToKey {
     public:
+      KeyUpEventToKey(void);
+
       bool remap(RemapParams& remapParams);
 
       // ----------------------------------------
@@ -17,6 +19,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
+      FromEvent fromEvent_;
+      Flags fromFlags_;
+
       KeyToKey keytokey_;
     };
   }
