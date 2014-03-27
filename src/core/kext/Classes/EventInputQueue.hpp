@@ -22,6 +22,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
 
+    static uint64_t currentSerialNumber(void) { return serialNumber_; }
+
     // ------------------------------------------------------------
     static void push_KeyboardEventCallback(OSObject* target,
                                            unsigned int eventType,
@@ -124,6 +126,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     static List* queue_;
     static IntervalChecker ic_;
     static TimerWrapper fire_timer_;
+    // Increment at fire_timer_callback.
+    static uint64_t serialNumber_;
   };
 }
 

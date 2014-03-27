@@ -1,4 +1,5 @@
 #include "CommonData.hpp"
+#include "EventInputQueue.hpp"
 #include "EventOutputQueue.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyToKey.hpp"
