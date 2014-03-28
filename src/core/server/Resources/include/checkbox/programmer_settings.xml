@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Programmer Settings</name>
+    <item>
+      <name>Swap backtick ` and underscore _</name>
+      <appendix>Backtick is Shift+Hyphen, Underscore is unshifted tilde ~</appendix>
+      <identifier>remap.programmer.backtick_underscore</identifier>
+      <!-- Move _ to ` -->
+      <autogen>__KeyToKey__ KeyCode::BACKQUOTE, ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::SHIFT_L</autogen>
+      <!-- Move ` to SHIFT+- -->
+      <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::SHIFT_R, KeyCode::BACKQUOTE, ModifierFlag::NONE</autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Replace number keys with symbols.</name>
+      <appendix>(Use numpad in order to enter numbers.)</appendix>
+    </item>
+    <item>
+      <name>Change 1 to !</name>
+      <identifier>remap.programmer.one_exclamation</identifier>
+      <!-- Move ! to 1 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 2 to @</name>
+      <identifier>remap.programmer.two_at</identifier>
+      <!-- Move @ to 2 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 3 to #</name>
+      <identifier>remap.programmer.three_hash</identifier>
+      <!-- Move # to 3 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 4 to $</name>
+      <identifier>remap.programmer.four_dollar</identifier>
+      <!-- Move $ to 4 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 5 to pipe |</name>
+      <identifier>remap.programmer.five_pipe</identifier>
+      <!-- Move | to 5 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 6 to +</name>
+      <identifier>remap.programmer.six_plus</identifier>
+      <!-- Move + to 6 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 7 to &amp;</name>
+      <identifier>remap.programmer.seven_ampersand</identifier>
+      <!-- Move & to 7 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 8 to *</name>
+      <identifier>remap.programmer.eight_asterisk</identifier>
+      <!-- Move * to 8 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 9 to &lt; and &gt;</name>
+      <appendix>Both angle brackets on the same key</appendix>
+      <identifier>remap.programmer.nine_angle_brackets</identifier>
+      <!-- Move > to SHIFT+9 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::SHIFT_R, KeyCode::DOT, ModifierFlag::SHIFT_L</autogen>
+      <!-- Move < to 9 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::COMMA, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item>
+      <name>Change 0 to (</name>
+      <appendix>Left and right parens on the same key</appendix>
+      <identifier>remap.programmer.zero_parenthesis</identifier>
+      <!-- Move ( to 0 -->
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Swap brace { and bracket ]</name>
+      <appendix>Open and close on the same keys</appendix>
+      <identifier>remap.programmer.swap_brace_bracket</identifier>
+      <!-- Move { to [ -->
+      <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
+      <!-- Move ] to SHIFT+[ -->
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L, KeyCode::BRACKET_RIGHT, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_R, KeyCode::BRACKET_RIGHT, ModifierFlag::NONE</autogen>
+    </item>
+    <item>
+      <name>Change Shift+Equal = to 0</name>
+      <identifier>remap.programmer.shift_equal_zero</identifier>
+      <!-- Move 0 to SHIFT+= -->
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::SHIFT_L, KeyCode::KEY_0, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::SHIFT_R, KeyCode::KEY_0, ModifierFlag::NONE</autogen>
+    </item>
+    <item>
+      <name>Change Shift+Backslash \ to 1</name>
+      <identifier>remap.programmer.shift_backslash_one</identifier>
+      <!-- Move 1 to SHIFT+\ -->
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::SHIFT_L, KeyCode::KEY_1, ModifierFlag::NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::SHIFT_R, KeyCode::KEY_1, ModifierFlag::NONE</autogen>
+    </item>
+  </item>
+</root>
