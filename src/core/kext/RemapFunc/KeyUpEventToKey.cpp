@@ -3,40 +3,20 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    KeyUpEventToKey::KeyUpEventToKey(void)
-    {
-      keytokey_.add(KeyCode::VK_PSEUDO_KEY);
-    }
-
     void
     KeyUpEventToKey::add(unsigned int datatype, unsigned int newval)
     {
-      switch (datatype) {
-        case BRIDGE_DATATYPE_KEYCODE:
-        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
-        case BRIDGE_DATATYPE_POINTINGBUTTON:
-        {
-          if (fromEvent_.getType() == FromEvent::Type::NONE) {
-            fromEvent_ = FromEvent(datatype, newval);
-          } else {
-            keytokey_.add(datatype, newval);
-          }
-          break;
-        }
+      if (datatype == BRIDGE_DATATYPE_OPTION &&
+          Option(newval) == Option::SEPARATOR) {
+        toKeyToKeys_.push_back(KeyToKey());
+        toKeyToKeys_.back().add(KeyCode::VK_PSEUDO_KEY);
 
-        case BRIDGE_DATATYPE_FLAGS:
-        {
-          if (keytokey_.toKeysSize() == 0) {
-            fromFlags_ = Flags(newval);
-          } else {
-            keytokey_.add(datatype, newval);
-          }
-          break;
+      } else {
+        if (toKeyToKeys_.empty()) {
+          fromKeyToKey_.add(datatype, newval);
+        } else {
+          toKeyToKeys_.back().add(datatype, newval);
         }
-
-        default:
-          keytokey_.add(datatype, newval);
-          break;
       }
     }
 
@@ -44,27 +24,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyUpEventToKey::remap(RemapParams& remapParams)
     {
       if (remapParams.isremapped) return false;
+      if (! fromKeyToKey_.remap(remapParams)) return false;
 
-      if (fromEvent_.isTargetDownEvent(remapParams.paramsUnion)) {
-        remapParams.isremapped = true;
-        EventWatcher::undo();
-        return true;
+      bool iskeydown;
+      if (remapParams.paramsUnion.iskeydown(iskeydown)) {
+        if (iskeydown) {
+          EventWatcher::undo();
+        } else {
+          EventWatcher::on();
+
+          for (size_t i = 0; i < toKeyToKeys_.size(); ++i) {
+            if (toKeyToKeys_[i].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN)) {
+              toKeyToKeys_[i].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+              break;
+            }
+          }
+        }
       }
-
-      if (fromEvent_.isTargetUpEvent(remapParams.paramsUnion) &&
-          FlagStatus::makeFlags().isOn(fromFlags_)) {
-        remapParams.isremapped = true;
-        EventWatcher::on();
-
-        FlagStatus::decrease(fromFlags_);
-        keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-        keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-        FlagStatus::increase(fromFlags_);
-
-        return true;
-      }
-
-      return false;
+      return true;
     }
   }
 }
