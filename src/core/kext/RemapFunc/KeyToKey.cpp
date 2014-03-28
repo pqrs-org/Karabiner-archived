@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     KeyToKey::KeyToKey(void) :
       index_(0),
-      currentVectorPointer_(&toKeys_),
+      currentToEvent_(CurrentToEvent::TOKEYS),
       keyboardRepeatID_(-1),
       isRepeatEnabled_(true),
       delayUntilRepeat_(-1),
@@ -23,8 +23,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     void
     KeyToKey::add(unsigned int datatype, unsigned int newval)
     {
-      if (! currentVectorPointer_) { return; }
-
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
         case BRIDGE_DATATYPE_CONSUMERKEYCODE:
@@ -35,7 +33,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromEvent_ = FromEvent(datatype, newval);
               break;
             default:
-              currentVectorPointer_->push_back(ToEvent(datatype, newval));
+              getCurrentToEvent().push_back(ToEvent(datatype, newval));
               break;
           }
           ++index_;
@@ -53,8 +51,8 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromFlags_ = Flags(newval);
               break;
             default:
-              if (! currentVectorPointer_->empty()) {
-                (currentVectorPointer_->back()).setFlags(Flags(newval));
+              if (! getCurrentToEvent().empty()) {
+                getCurrentToEvent().back().setFlags(Flags(newval));
               }
               break;
           }
@@ -67,9 +65,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (Option::NOREPEAT == option) {
             isRepeatEnabled_ = false;
           } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == option) {
-            currentVectorPointer_ = &beforeKeys_;
+            currentToEvent_ = CurrentToEvent::BEFOREKEYS;
           } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
-            currentVectorPointer_ = &afterKeys_;
+            currentToEvent_ = CurrentToEvent::AFTERKEYS;
           } else if (Option::USE_SEPARATOR == option ||
                      Option::SEPARATOR == option) {
             // do nothing
