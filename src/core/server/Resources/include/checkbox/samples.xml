@@ -651,44 +651,53 @@
         <appendix>Right Click to B.</appendix>
         <appendix>(BeforeKeyDown C, AfterKeyUp D)</appendix>
         <identifier>remap.samples_keytokey_beforekeydown</identifier>
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           KeyCode::KEY_1, KeyCode::A,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::RETURN,
           Option::KEYTOKEY_AFTER_KEYUP, KeyCode::TAB
         </autogen>
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           KeyCode::SHIFT_R, KeyCode::A,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L,  KeyCode::E
         </autogen>
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           KeyCode::KEY_2, ModifierFlag::CONTROL_L, KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::SHIFT_R,  KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L, KeyCode::E, KeyCode::F, ModifierFlag::CONTROL_L
         </autogen>
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           KeyCode::SHIFT_L, ModifierFlag::CONTROL_L, KeyCode::A, KeyCode::B,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D
         </autogen>
         <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
-        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_NONE,
+        <autogen>
+          __KeyToKey__
+          KeyCode::OPTION_R, KeyCode::VK_NONE,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
         </autogen>
-        <autogen>__SimultaneousKeyPresses__
+        <autogen>
+          __SimultaneousKeyPresses__
           KeyCode::S, KeyCode::D,
           KeyCode::B,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D,
         </autogen>
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           ConsumerKeyCode::VOLUME_MUTE,
           KeyCode::B,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D,
         </autogen>
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           PointingButton::RIGHT,
           KeyCode::B,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
@@ -792,7 +801,7 @@
           <!--
               You need to put "KeyCode"s between @begin and @end
               when you want to specify multiple KeyCode.
-            -->
+          -->
           @begin
           <!-- hold 'a' -->
           KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_keyoverlaidmodifier_use_separator_1,
