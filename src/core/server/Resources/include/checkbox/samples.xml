@@ -1000,6 +1000,79 @@
     </item>
 
     <item>
+      <name>KeyUpEventToKey</name>
+      <!--
+          // ========================================
+          // __KeyUpEventToKey__ syntax
+          //
+          // <autogen>
+          //   __KeyUpEventToKey__
+          //   @begin
+          //   FromEvent, FromFlags,
+          //   @end
+          //
+          //   @begin
+          //   KeyUpFlags,
+          //   ToKeys,
+          //   @end
+          //
+          //   ...
+          //
+          //   @begin
+          //   KeyUpFlags,
+          //   ToKeys,
+          //   @end
+          //
+          // </autogen>
+          //
+          // ========================================
+          // Example:
+          //
+          // <autogen>
+          //   __KeyUpEventToKey__
+          //   @begin
+          //   KeyCode::A, ModifierFlag::SHIFT_L,    (effective when A key is pressed with left shift key.)
+          //   @end
+          //
+          //   @begin
+          //   ModifierFlag::SHIFT_L                 (when A key is released with left shift key.)
+          //   KeyCode::ESCAPE,                      (send escape key.)
+          //   @end
+          //
+          //   @begin
+          //   KeyCode::A                            (when A key is released, send A key.)
+          //   @end
+          // </autogen>
+          //
+      -->
+      <item>
+        <name>Standard</name>
+        <appendix>Enter A,S,D,F when key up</appendix>
+        <identifier>remap.sampes_KeyUpEventToKey</identifier>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::A @end
+          @begin KeyCode::A @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::S @end
+          @begin KeyCode::S @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::D @end
+          @begin KeyCode::D @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::F @end
+          @begin KeyCode::F @end
+        </autogen>
+      </item>
+    </item>
+
+    <item>
       <name>DropKeyAfterRemap</name>
       <item>
         <name>Standard</name>
