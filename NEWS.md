@@ -26,6 +26,7 @@ Since 9.3.0
         &lt;/item&gt;
       </pre>
     * v9.3.20: You can use KeyCode and ConsumerKeyCode in \_\_PointingRelativeToScroll\_\_.
+    * v9.3.32: Added \_\_KeyUpEventToKey\_\_.
 
 Version 9.3.0
 -------------
