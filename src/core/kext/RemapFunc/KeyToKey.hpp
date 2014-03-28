@@ -36,6 +36,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       int getDelayUntilRepeat(void);
       int getKeyRepeat(void);
 
+      class CurrentToEvent {
+      public:
+        enum Value {
+          TOKEYS,
+          BEFOREKEYS,
+          AFTERKEYS,
+        };
+      };
+
+      Vector_ToEvent& getCurrentToEvent(void) {
+        switch (currentToEvent_) {
+          case CurrentToEvent::TOKEYS:     return toKeys_;
+          case CurrentToEvent::BEFOREKEYS: return beforeKeys_;
+          case CurrentToEvent::AFTERKEYS:  return afterKeys_;
+        }
+      }
+
       size_t index_;
 
       FromEvent fromEvent_;
@@ -44,8 +61,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Vector_ToEvent toKeys_;
       Vector_ToEvent beforeKeys_;
       Vector_ToEvent afterKeys_;
-      // Pointer to toKeys_ or beforeKeys_ or afterKeys_.
-      Vector_ToEvent* currentVectorPointer_;
+      CurrentToEvent::Value currentToEvent_;
 
       int keyboardRepeatID_;
       bool isRepeatEnabled_;
@@ -53,6 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       int delayUntilRepeat_;
       int keyRepeat_;
     };
+    DECLARE_VECTOR(KeyToKey);
   }
 }
 
