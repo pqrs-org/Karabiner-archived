@@ -1,3 +1,4 @@
+#include "EventWatcher.hpp"
 #include "KeyUpEventToKey.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -46,12 +47,14 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (fromEvent_.isTargetDownEvent(remapParams.paramsUnion)) {
         remapParams.isremapped = true;
+        EventWatcher::undo();
         return true;
       }
 
       if (fromEvent_.isTargetUpEvent(remapParams.paramsUnion) &&
           FlagStatus::makeFlags().isOn(fromFlags_)) {
         remapParams.isremapped = true;
+        EventWatcher::on();
 
         FlagStatus::decrease(fromFlags_);
         keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
