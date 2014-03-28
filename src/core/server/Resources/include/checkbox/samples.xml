@@ -1047,7 +1047,7 @@
       -->
       <item>
         <name>Standard</name>
-        <appendix>Enter A,S,D,F when key up</appendix>
+        <appendix>Enter A,S,D,F when key up.</appendix>
         <identifier>remap.sampes_KeyUpEventToKey</identifier>
         <autogen>
           __KeyUpEventToKey__
@@ -1068,6 +1068,115 @@
           __KeyUpEventToKey__
           @begin KeyCode::F @end
           @begin KeyCode::F @end
+        </autogen>
+      </item>
+
+      <item>
+        <name>With FromFlags</name>
+        <appendix>Enter A,S,D,F when key up if you pressed A,S,D,F keys with shift modifier.</appendix>
+        <identifier>remap.sampes_KeyUpEventToKey_with_FromFlags</identifier>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT @end
+          @begin KeyCode::A @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT @end
+          @begin KeyCode::S @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT @end
+          @begin KeyCode::D @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT @end
+          @begin KeyCode::F @end
+        </autogen>
+      </item>
+
+      <item>
+        <name>With KeyUpFlags</name>
+        <appendix>Enter A,S,D,F when key up.</appendix>
+        <appendix>Shift+A,S,D,F to 1,2,3,4.</appendix>
+        <appendix></appendix>
+        <appendix>Note:</appendix>
+        <appendix>* You do not have to press shift key when key down in order to enter 1,2,3,4.</appendix>
+        <appendix>* You need to press shift key when key up in order to enter 1,2,3,4.</appendix>
+        <identifier>remap.sampes_KeyUpEventToKey_with_KeyUpFlags</identifier>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::A @end
+
+          @begin
+          ModifierFlag::SHIFT_L, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_1,
+          @end
+
+          @begin
+          ModifierFlag::SHIFT_R, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_1,
+          @end
+
+          @begin
+          KeyCode::A,
+          @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::S @end
+
+          @begin
+          ModifierFlag::SHIFT_L, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_2,
+          @end
+
+          @begin
+          ModifierFlag::SHIFT_R, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_2,
+          @end
+
+          @begin
+          KeyCode::S,
+          @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::D @end
+
+          @begin
+          ModifierFlag::SHIFT_L, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_3,
+          @end
+
+          @begin
+          ModifierFlag::SHIFT_R, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_3,
+          @end
+
+          @begin
+          KeyCode::D,
+          @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin KeyCode::F @end
+
+          @begin
+          ModifierFlag::SHIFT_L, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_4,
+          @end
+
+          @begin
+          ModifierFlag::SHIFT_R, <!-- You cannot use MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT at here. -->
+          KeyCode::KEY_4,
+          @end
+
+          @begin
+          KeyCode::F,
+          @end
         </autogen>
       </item>
     </item>
