@@ -1009,21 +1009,25 @@
           //   __KeyUpEventToKey__
           //   @begin
           //   FromEvent, FromFlags,
+          //   ToKeys_when_KeyDown,
           //   @end
           //
           //   @begin
           //   KeyUpFlags,
-          //   ToKeys,
+          //   ToKeys_when_KeyUp,
           //   @end
           //
           //   ...
           //
           //   @begin
           //   KeyUpFlags,
-          //   ToKeys,
+          //   ToKeys_when_KeyUp,
           //   @end
           //
           // </autogen>
+          //
+          //
+          // * You can omit FromFlags, ToKeys_when_KeyDown, KeyUpFlags.
           //
           // ========================================
           // Example:
@@ -1045,10 +1049,11 @@
           // </autogen>
           //
       -->
+
       <item>
         <name>Standard</name>
         <appendix>Enter A,S,D,F when key up.</appendix>
-        <identifier>remap.sampes_KeyUpEventToKey</identifier>
+        <identifier>remap.samples_KeyUpEventToKey</identifier>
         <autogen>
           __KeyUpEventToKey__
           @begin KeyCode::A @end
@@ -1074,7 +1079,7 @@
       <item>
         <name>With FromFlags</name>
         <appendix>Enter A,S,D,F when key up if you pressed A,S,D,F keys with shift modifier.</appendix>
-        <identifier>remap.sampes_KeyUpEventToKey_with_FromFlags</identifier>
+        <identifier>remap.samples_KeyUpEventToKey_with_FromFlags</identifier>
         <autogen>
           __KeyUpEventToKey__
           @begin KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT @end
@@ -1105,7 +1110,7 @@
         <appendix>Note:</appendix>
         <appendix>* You do not have to press shift key when key down in order to enter 1,2,3,4.</appendix>
         <appendix>* You need to press shift key when key up in order to enter 1,2,3,4.</appendix>
-        <identifier>remap.sampes_KeyUpEventToKey_with_KeyUpFlags</identifier>
+        <identifier>remap.samples_KeyUpEventToKey_with_KeyUpFlags</identifier>
         <autogen>
           __KeyUpEventToKey__
           @begin KeyCode::A @end
