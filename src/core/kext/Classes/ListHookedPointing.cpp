@@ -66,12 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       goto restore;
     }
 
-    // Logitech Cordless Presenter
-    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_logitech_cordless_presenter) &&
-        getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
-      goto restore;
-    }
-
+    // ------------------------------------------------------------
     return replaceEventAction();
 
   restore:

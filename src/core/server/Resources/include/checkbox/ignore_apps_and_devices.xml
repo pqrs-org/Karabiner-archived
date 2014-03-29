@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Ignore apps &amp; devices</name>
+
+    <item><name>──────────────────────────────</name></item>
+    <item><name>Ignore apps</name></item>
+
+    <item>
+      <name>Disable all settings while you are using virtual machine.</name>
+      <identifier>ignore_apps.virtual_machine</identifier>
+      <only>VIRTUALMACHINE</only>
+      <autogen>__PassThrough__</autogen>
+    </item>
+
+    <item>
+      <name>Disable all settings while you are using Remote Desktop or VNC.</name>
+      <identifier>ignore_apps.remote_desktop</identifier>
+      <only>
+        REMOTEDESKTOPCONNECTION,
+        VNC,
+        TEAMVIEWER,
+        CITRIX_XEN_APP_VIEWER,
+      </only>
+      <autogen>__PassThrough__</autogen>
+    </item>
+
+    <item><name>──────────────────────────────</name></item>
+    <item><name>Ignore devices</name></item>
+
+    <item>
+      <name>Disable all settings on Logitech Cordless Presenter.</name>
+      <identifier>general.dont_remap_logitech_cordless_presenter</identifier>
+      <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER</device_only>
+      <autogen>__PassThrough__</autogen>
+    </item>
+
+    <item>
+      <name>Disable all settings on Magic Mouse.</name>
+      <identifier>ignore_devices.magic_mouse</identifier>
+      <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE</device_only>
+      <autogen>__PassThrough__</autogen>
+    </item>
+
+    <item><name>──────────────────────────────</name></item>
+
+  </item>
+</root>

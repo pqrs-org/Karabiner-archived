@@ -56,14 +56,6 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
-      <name>Excluding Devices</name>
-      <item>
-        <name>Don't Remap Logitech Cordless Presenter</name>
-        <identifier essential="true">general.dont_remap_logitech_cordless_presenter</identifier>
-      </item>
-    </item>
-    <item><name>──────────────────────────────</name></item>
-    <item>
       <name>Don't leave any modes automatically when the machine wakes from sleep.</name>
       <appendix>(Pass Through Mode, Browsing Mode, etc.)</appendix>
       <appendix></appendix>

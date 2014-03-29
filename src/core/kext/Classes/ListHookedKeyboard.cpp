@@ -96,11 +96,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_HEADSET)) {
       goto restore;
     }
-    // Logitech Cordless Presenter
-    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_logitech_cordless_presenter) &&
-        getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
-      goto restore;
-    }
     // Kensington Virtual Device (0x0, 0x0)
     if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::PSEUDO, DeviceProduct::PSEUDO)) {
       if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_allow_devices_vendor_id_product_id_are_zero)) {
@@ -113,20 +108,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
     }
-
-#if 0
-    // Apple Internal Keyboard
-    if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER,
-                                                   DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a)) {
-      goto restore;
-    }
-
-    // Apple External Keyboard
-    if (getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::APPLE_COMPUTER,
-                                                   DeviceProduct::APPLE_ALUMINUM_KEYBOARD_JIS)) {
-      goto restore;
-    }
-#endif
 
     // ------------------------------------------------------------
     return replaceEventAction();
