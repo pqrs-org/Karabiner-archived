@@ -18,6 +18,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(unsigned int datatype, unsigned int newval);
 
     private:
+      PointingRelativeToKey(const PointingRelativeToKey& rhs); // Prevent copy-construction
+      PointingRelativeToKey& operator=(const PointingRelativeToKey& rhs); // Prevent assignment
+
       Flags fromFlags_;
 
       DeltaBuffer deltaBuffer_dx_;
