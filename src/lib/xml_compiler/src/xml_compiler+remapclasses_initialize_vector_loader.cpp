@@ -405,11 +405,6 @@ namespace pqrs {
             // Don't connect expect ModifierFlags. (Example: KeyCode::A | KeyCode::B)
             throw xml_compiler_runtime_error("Cannot connect(|) except ModifierFlag:\n\n" + arg);
           }
-
-          if (newdatatype != datatype) {
-            // Don't connect different data type. (Example: PointingButton::A | ModifierFlag::SHIFT_L)
-            throw xml_compiler_runtime_error("Cannot connect(|) between different types:\n\n" + arg);
-          }
         }
 
         datatype = newdatatype;
