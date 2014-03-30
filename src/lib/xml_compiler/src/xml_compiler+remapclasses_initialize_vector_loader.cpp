@@ -401,10 +401,9 @@ namespace pqrs {
         if (datatype) {
           // There are some connection(|).
 
-          if (newdatatype != BRIDGE_DATATYPE_FLAGS &&
-              newdatatype != BRIDGE_DATATYPE_POINTINGBUTTON) {
-            // Don't connect no-flags. (Example: KeyCode::A | KeyCode::B)
-            throw xml_compiler_runtime_error("Cannot connect(|) except ModifierFlag and PointingButton:\n\n" + arg);
+          if (newdatatype != BRIDGE_DATATYPE_FLAGS) {
+            // Don't connect expect ModifierFlags. (Example: KeyCode::A | KeyCode::B)
+            throw xml_compiler_runtime_error("Cannot connect(|) except ModifierFlag:\n\n" + arg);
           }
 
           if (newdatatype != datatype) {
