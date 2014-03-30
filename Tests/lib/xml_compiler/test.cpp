@@ -607,18 +607,9 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_type");
     xml_compiler.reload();
-    const char* message = "Cannot connect(|) except ModifierFlag and PointingButton:\n"
+    const char* message = "Cannot connect(|) except ModifierFlag:\n"
                           "\n"
                           "KeyCode::SPACE|KeyCode::TAB";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
-  }
-  {
-    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_different_type");
-    xml_compiler.reload();
-    const char* message = "Cannot connect(|) between different types:\n"
-                          "\n"
-                          "ModifierFlag::SHIFT_L|PointingButton::LEFT";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
