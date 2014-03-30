@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root>
-  <autogen>__KeyToKey__ KeyCode::KEYPAD_0, KeyCode::VK_NONE</autogen>
+  <autogen>__KeyToKey__ KeyCode::KEYPAD_0, KeyCode::PC_INSERT</autogen>
   <autogen>__KeyToKey__ KeyCode::KEYPAD_5, KeyCode::VK_NONE</autogen>
   <autogen>__KeyToKey__ KeyCode::KEYPAD_COMMA, KeyCode::VK_NONE</autogen>
   <autogen>__KeyToKey__ KeyCode::KEYPAD_2, KeyCode::CURSOR_DOWN</autogen>
