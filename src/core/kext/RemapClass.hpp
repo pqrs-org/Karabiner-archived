@@ -56,8 +56,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       bool isblocked(void) const;
 
-      Item(const Item& rhs);
-      Item& operator=(const Item& rhs);
+      Item(const Item& rhs); // Prevent copy-construction
+      Item& operator=(const Item& rhs); // Prevent assignment
 
       const RemapClass& parent_;
 
