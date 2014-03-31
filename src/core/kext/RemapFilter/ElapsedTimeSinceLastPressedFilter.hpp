@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ElapsedTimeSinceLastPressedFilter(unsigned int t);
       ~ElapsedTimeSinceLastPressedFilter(void);
 
-      void add(unsigned int datatype, unsigned int value);
+      void add(AddDataType datatype, AddValue value);
 
       bool isblocked(void);
 

@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    InputSourceFilter::add(unsigned int newval)
+    InputSourceFilter::add(AddValue newval)
     {
       targets_.push_back(newval);
     }
