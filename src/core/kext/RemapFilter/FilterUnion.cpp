@@ -39,7 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           p_.applicationFilter = new ApplicationFilter(type_);
           if (p_.applicationFilter) {
             for (size_t i = 1; i < length; ++i) {
-              (p_.applicationFilter)->add(vec[i]);
+              (p_.applicationFilter)->add(AddValue(vec[i]));
             }
           }
           break;
@@ -49,7 +49,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           p_.configFilter = new ConfigFilter(type_);
           if (p_.configFilter) {
             for (size_t i = 1; i < length; ++i) {
-              (p_.configFilter)->add(vec[i]);
+              (p_.configFilter)->add(AddValue(vec[i]));
             }
           }
           break;
@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           p_.elapsedTimeSinceLastPressedFilter = new ElapsedTimeSinceLastPressedFilter(type_);
           if (p_.elapsedTimeSinceLastPressedFilter) {
             for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.elapsedTimeSinceLastPressedFilter)->add(vec[i], vec[i + 1]);
+              (p_.elapsedTimeSinceLastPressedFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
             }
           }
           break;
@@ -86,7 +86,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           p_.inputSourceFilter = new InputSourceFilter(type_);
           if (p_.inputSourceFilter) {
             for (size_t i = 1; i < length; ++i) {
-              (p_.inputSourceFilter)->add(vec[i]);
+              (p_.inputSourceFilter)->add(AddValue(vec[i]));
             }
           }
           break;
@@ -96,7 +96,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           p_.lastPressedPhysicalKeyFilter = new LastPressedPhysicalKeyFilter(type_);
           if (p_.lastPressedPhysicalKeyFilter) {
             for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.lastPressedPhysicalKeyFilter)->add(vec[i], vec[i + 1]);
+              (p_.lastPressedPhysicalKeyFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
             }
           }
           break;
@@ -106,7 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           p_.modifierFilter = new ModifierFilter(type_);
           if (p_.modifierFilter) {
             for (size_t i = 1; i < length; ++i) {
-              (p_.modifierFilter)->add(vec[i]);
+              (p_.modifierFilter)->add(AddValue(vec[i]));
             }
           }
           break;

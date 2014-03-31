@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       ApplicationFilter(unsigned int t);
       ~ApplicationFilter(void);
 
-      void add(unsigned int newval);
+      void add(AddValue newval);
 
       bool isblocked(void);
 

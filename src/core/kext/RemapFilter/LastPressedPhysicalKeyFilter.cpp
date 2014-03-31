@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    LastPressedPhysicalKeyFilter::add(unsigned int datatype, unsigned int value)
+    LastPressedPhysicalKeyFilter::add(AddDataType datatype, AddValue value)
     {
       targets_.push_back(FilterValueWithDataType(datatype, value));
     }

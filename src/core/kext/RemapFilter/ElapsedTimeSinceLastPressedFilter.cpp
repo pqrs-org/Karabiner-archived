@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    ElapsedTimeSinceLastPressedFilter::add(unsigned int datatype, unsigned int value)
+    ElapsedTimeSinceLastPressedFilter::add(AddDataType datatype, AddValue value)
     {
       targets_.push_back(FilterValueWithDataType(datatype, value));
     }

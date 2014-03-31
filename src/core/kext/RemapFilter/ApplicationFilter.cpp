@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    ApplicationFilter::add(unsigned int newval)
+    ApplicationFilter::add(AddValue newval)
     {
       targets_.push_back(newval);
     }
