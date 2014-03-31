@@ -563,41 +563,49 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       // ------------------------------------------------------------
       // <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
-      expected.push_back(7);      // count
+      expected.push_back(9);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
-      expected.push_back(BRIDGE_DATATYPE_FLAGS);
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(131074); // ModifierFlag::SHIFT_L
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+      expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
 
-      expected.push_back(7);      // count
+      expected.push_back(9);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
-      expected.push_back(BRIDGE_DATATYPE_FLAGS);
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(131076); // ModifierFlag::SHIFT_R
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+      expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
 
       // ------------------------------------------------------------
       // <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::SPACE</autogen>
-      expected.push_back(7);      // count
+      expected.push_back(9);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
-      expected.push_back(BRIDGE_DATATYPE_FLAGS);
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(131074); // ModifierFlag::SHIFT_L
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+      expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
 
-      expected.push_back(7);      // count
+      expected.push_back(9);      // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
-      expected.push_back(BRIDGE_DATATYPE_FLAGS);
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(131076); // ModifierFlag::SHIFT_R
+      expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+      expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
 

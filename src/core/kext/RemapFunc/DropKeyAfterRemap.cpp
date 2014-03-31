@@ -21,9 +21,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
-          fromFlags_ = Flags(newval);
+          fromFlags_.add(datatype, newval);
           break;
         }
 

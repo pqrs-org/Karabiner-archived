@@ -49,7 +49,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
           switch (index_) {
             case 0:

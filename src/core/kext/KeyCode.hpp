@@ -1,6 +1,8 @@
 #ifndef KEYCODE_HPP
 #define KEYCODE_HPP
 
+#include "../../../src/bridge/include/bridge.h"
+
 namespace org_pqrs_KeyRemap4MacBook {
   class KeyCode;
   class Flags;
@@ -39,6 +41,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class ModifierFlag {
   public:
+    explicit ModifierFlag(unsigned int v) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(ModifierFlag other) const { return value_ == other.get(); }
     bool operator!=(ModifierFlag other) const { return ! (*this == other); }
@@ -50,7 +53,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "../../../src/bridge/output/include.kext.ModifierFlag.hpp"
 
   private:
-    explicit ModifierFlag(unsigned int v) : value_(v) {}
     unsigned int value_;
   };
   class Flags {
@@ -93,6 +95,12 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
     Flags& add(ModifierFlag flag) { return add(Flags(flag)); }
+    Flags& add(unsigned int datatype, unsigned int newval) {
+      if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG) {
+        value_ |= newval;
+      }
+      return *this;
+    }
     Flags& remove(Flags flags) {
       // We consider the following case.
       //   (ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R).remove(ModifierFlag::SHIFT_L).

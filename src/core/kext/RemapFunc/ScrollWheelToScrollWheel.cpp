@@ -17,20 +17,22 @@ namespace org_pqrs_KeyRemap4MacBook {
     ScrollWheelToScrollWheel::add(unsigned int datatype, unsigned int newval)
     {
       switch (datatype) {
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
         {
           switch (index_) {
             case 0:
-              fromFlags_ = Flags(newval);
+              fromFlags_.add(datatype, newval);
               break;
             default:
-              toFlags_ = Flags(newval);
+              toFlags_.add(datatype, newval);
               break;
           }
-          ++index_;
-
           break;
         }
+
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
+          ++index_;
+          break;
 
         default:
           IOLOG_ERROR("ScrollWheelToScrollWheel::add invalid datatype:%d\n", datatype);

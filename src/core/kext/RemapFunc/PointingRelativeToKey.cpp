@@ -48,10 +48,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
           if (! current_keytokey_) {
-            fromFlags_ = Flags(newval);
+            fromFlags_.add(datatype, newval);
 
             for (size_t i = 0; i < KEYTOKEY__END__; ++i) {
               keytokey_[i].add(datatype, newval);

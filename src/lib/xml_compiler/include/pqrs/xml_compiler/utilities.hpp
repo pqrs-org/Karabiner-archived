@@ -8,7 +8,7 @@ namespace pqrs {
   public:
     static uint32_t get_datatype(const std::string& s) {
       if (boost::starts_with(s, "KeyCode::"))          { return BRIDGE_DATATYPE_KEYCODE;          }
-      if (boost::starts_with(s, "ModifierFlag::"))     { return BRIDGE_DATATYPE_FLAGS;            }
+      if (boost::starts_with(s, "ModifierFlag::"))     { return BRIDGE_DATATYPE_MODIFIERFLAG;     }
       if (boost::starts_with(s, "ConsumerKeyCode::"))  { return BRIDGE_DATATYPE_CONSUMERKEYCODE;  }
       if (boost::starts_with(s, "PointingButton::"))   { return BRIDGE_DATATYPE_POINTINGBUTTON;   }
       if (boost::starts_with(s, "ScrollWheel::"))      { return BRIDGE_DATATYPE_SCROLLWHEEL;      }

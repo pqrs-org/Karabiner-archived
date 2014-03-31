@@ -37,7 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     Flags getFlags(void) const { return flags_; }
-    void setFlags(Flags v) { flags_ = v; }
+    void addModifierFlag(unsigned int datatype, unsigned int newval) { flags_.add(datatype, newval); }
 
     Type::Value getType(void) const { return type_; }
 

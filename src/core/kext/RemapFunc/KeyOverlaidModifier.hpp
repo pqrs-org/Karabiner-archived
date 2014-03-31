@@ -26,7 +26,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // utility
       void add(KeyCode newval) { add(BRIDGE_DATATYPE_KEYCODE, newval.get()); }
-      void add(Flags newval)   { add(BRIDGE_DATATYPE_FLAGS,   newval.get()); }
       void add(Option newval)  { add(BRIDGE_DATATYPE_OPTION,  newval.get()); }
 
     private:

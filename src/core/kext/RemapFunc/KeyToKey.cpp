@@ -41,18 +41,19 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
           switch (index_) {
             case 0:
               IOLOG_ERROR("Invalid KeyToKey::add\n");
               break;
             case 1:
-              fromFlags_ = Flags(newval);
+              fromFlags_.add(datatype, newval);
               break;
             default:
               if (! getCurrentToEvent().empty()) {
-                getCurrentToEvent().back().setFlags(Flags(newval));
+                getCurrentToEvent().back().addModifierFlag(datatype, newval);
               }
               break;
           }
