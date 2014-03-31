@@ -409,21 +409,21 @@ namespace pqrs {
 
         datatype = newdatatype;
         newvalue |= symbol_map_.get(value);
+
+        // Unshift Option::USE_SEPARATOR when Option::SEPARATOR is found.
+        if (datatype == BRIDGE_DATATYPE_OPTION &&
+            newvalue == symbol_map_cache_option_separator_) {
+          remapclasses_initialize_vector_.insert(value_start_index, symbol_map_cache_option_use_separator_);
+          ++count;
+          remapclasses_initialize_vector_.insert(value_start_index, BRIDGE_DATATYPE_OPTION);
+          ++count;
+        }
       }
 
       remapclasses_initialize_vector_.push_back(datatype);
       ++count;
       remapclasses_initialize_vector_.push_back(newvalue);
       ++count;
-
-      // Unshift Option::USE_SEPARATOR when Option::SEPARATOR is found.
-      if (datatype == BRIDGE_DATATYPE_OPTION &&
-          newvalue == symbol_map_cache_option_separator_) {
-        remapclasses_initialize_vector_.insert(value_start_index, symbol_map_cache_option_use_separator_);
-        ++count;
-        remapclasses_initialize_vector_.insert(value_start_index, BRIDGE_DATATYPE_OPTION);
-        ++count;
-      }
     }
 
     remapclasses_initialize_vector_.update(count_index, count);
