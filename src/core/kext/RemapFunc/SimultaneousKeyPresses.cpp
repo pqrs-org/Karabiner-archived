@@ -54,12 +54,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           // ----------------------------------------
           // To keys
-          if (keytokey_.toKeysSize() == 0) {
-            keytokey_.add(fromFlags_);
-
-            if (datatype == BRIDGE_DATATYPE_KEYCODE) {
-              toKey_raw_ = KeyCode(newval);
-            }
+          if (keytokey_.toKeysSize() == 0 &&
+              datatype == BRIDGE_DATATYPE_KEYCODE) {
+            toKey_raw_ = KeyCode(newval);
           }
           keytokey_.add(datatype, newval);
 
@@ -74,9 +71,10 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (index_ < 2) {
             IOLOG_ERROR("Invalid SimultaneousKeyPresses::add\n");
             return;
-          } else if (keytokey_.toKeysSize() == 0) {
-            fromFlags_ = Flags(newval);
           } else {
+            if (keytokey_.toKeysSize() == 0) {
+              fromFlags_ = Flags(newval);
+            }
             keytokey_.add(datatype, newval);
           }
           break;

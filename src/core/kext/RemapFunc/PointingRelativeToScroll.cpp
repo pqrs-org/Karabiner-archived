@@ -49,7 +49,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       chained_delta2_(0),
       fixation_delta1_(0),
       fixation_delta2_(0)
-    {}
+    {
+      keytokey_.add(KeyCode::VK_PSEUDO_KEY);
+    }
 
     PointingRelativeToScroll::~PointingRelativeToScroll(void)
     {}
@@ -63,6 +65,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           switch (index_type_) {
             case INDEX_TYPE_DEFAULT:
               fromFlags_ = Flags(newval);
+              keytokey_.add(datatype, newval);
               break;
             case INDEX_TYPE_TOFLAGS:
               toFlags_ = Flags(newval);
@@ -102,8 +105,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (Option::POINTINGRELATIVETOSCROLL_TOKEYS == option) {
             index_type_ = INDEX_TYPE_TOKEYS;
             isToKeysDefined_ = true;
-            keytokey_.add(KeyCode::VK_PSEUDO_KEY);
-            keytokey_.add(fromFlags_);
           }
           break;
         }

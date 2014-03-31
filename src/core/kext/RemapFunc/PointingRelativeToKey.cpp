@@ -11,6 +11,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       current_keytokey_(NULL)
     {
       keyrepeat_ic_.begin();
+
+      keytokey_[KEYTOKEY_UP].add(KeyCode::VK_PSEUDO_KEY);
+      keytokey_[KEYTOKEY_DOWN].add(KeyCode::VK_PSEUDO_KEY);
+      keytokey_[KEYTOKEY_LEFT].add(KeyCode::VK_PSEUDO_KEY);
+      keytokey_[KEYTOKEY_RIGHT].add(KeyCode::VK_PSEUDO_KEY);
     }
 
     PointingRelativeToKey::~PointingRelativeToKey(void)
@@ -38,10 +43,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (! current_keytokey_) {
             IOLOG_ERROR("Invalid PointingRelativeToKey::add\n");
           } else {
-            if (current_keytokey_->toKeysSize() == 0) {
-              current_keytokey_->add(KeyCode::VK_PSEUDO_KEY);
-              current_keytokey_->add(fromFlags_);
-            }
             current_keytokey_->add(datatype, newval);
           }
 
@@ -52,6 +53,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           if (! current_keytokey_) {
             fromFlags_ = Flags(newval);
+
+            keytokey_[KEYTOKEY_UP].add(datatype, newval);
+            keytokey_[KEYTOKEY_DOWN].add(datatype, newval);
+            keytokey_[KEYTOKEY_LEFT].add(datatype, newval);
+            keytokey_[KEYTOKEY_RIGHT].add(datatype, newval);
           } else {
             current_keytokey_->add(datatype, newval);
           }
