@@ -2,6 +2,7 @@
 #define KEYCODE_HPP
 
 #include "../../../src/bridge/include/bridge.h"
+#include "Types.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class KeyCode;
@@ -95,8 +96,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
     Flags& add(ModifierFlag flag) { return add(Flags(flag)); }
-    Flags& add(unsigned int datatype, unsigned int newval) {
-      if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG) {
+    Flags& add(AddDataType datatype, AddValue newval) {
+      if (datatype == AddDataType(BRIDGE_DATATYPE_MODIFIERFLAG)) {
         value_ |= newval;
       }
       return *this;

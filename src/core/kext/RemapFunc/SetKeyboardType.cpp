@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    SetKeyboardType::add(unsigned int datatype, unsigned int newval)
+    SetKeyboardType::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYBOARDTYPE:
@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("SetKeyboardType::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("SetKeyboardType::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

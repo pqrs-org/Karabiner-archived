@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    ScrollWheelToScrollWheel::add(unsigned int datatype, unsigned int newval)
+    ScrollWheelToScrollWheel::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_MODIFIERFLAG:
@@ -35,7 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         default:
-          IOLOG_ERROR("ScrollWheelToScrollWheel::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("ScrollWheelToScrollWheel::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

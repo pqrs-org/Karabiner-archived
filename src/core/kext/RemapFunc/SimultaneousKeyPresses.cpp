@@ -20,7 +20,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    SimultaneousKeyPresses::add(unsigned int datatype, unsigned int newval)
+    SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
@@ -101,7 +101,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             keytokey_.add(option);
 
           } else {
-            IOLOG_ERROR("SimultaneousKeyPresses::add unknown option:%d\n", newval);
+            IOLOG_ERROR("SimultaneousKeyPresses::add unknown option:%u\n", static_cast<unsigned int>(newval));
           }
           break;
         }
@@ -114,7 +114,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("SimultaneousKeyPresses::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("SimultaneousKeyPresses::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

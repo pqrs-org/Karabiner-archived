@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool remap(RemapParams& remapParams);
 
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
     private:
       bool flipHorizontalScroll_;

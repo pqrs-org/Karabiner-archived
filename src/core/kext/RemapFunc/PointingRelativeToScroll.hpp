@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // [1] => Option::POINTINGRELATIVETOSCROLL_TOFLAGS
       // [2] => toFlags_
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
     private:
       enum {

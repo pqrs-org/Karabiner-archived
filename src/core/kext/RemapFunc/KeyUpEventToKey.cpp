@@ -4,7 +4,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     void
-    KeyUpEventToKey::add(unsigned int datatype, unsigned int newval)
+    KeyUpEventToKey::add(AddDataType datatype, AddValue newval)
     {
       if (datatype == BRIDGE_DATATYPE_OPTION &&
           Option(newval) == Option::SEPARATOR) {

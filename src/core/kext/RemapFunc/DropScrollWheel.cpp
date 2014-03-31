@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    DropScrollWheel::add(unsigned int datatype, unsigned int newval)
+    DropScrollWheel::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_OPTION:
@@ -22,13 +22,13 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL == option) {
             dropHorizontalScroll_ = true;
           } else {
-            IOLOG_ERROR("DropScrollWheel::add unknown option:%d\n", newval);
+            IOLOG_ERROR("DropScrollWheel::add unknown option:%u\n", static_cast<unsigned int>(newval));
           }
           break;
         }
 
         default:
-          IOLOG_ERROR("DropScrollWheel::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("DropScrollWheel::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

@@ -28,25 +28,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     // initialize values.
     //
-#define INITIALIZE_UNION_VALUE(POINTER, CLASS) {                      \
-    POINTER = new CLASS;                                              \
-    if (! POINTER) {                                                  \
-      IOLOG_ERROR("RemapClass::Item::Item failed to allocate.\n");    \
-      return;                                                         \
-    } else {                                                          \
-      type_ = newtype;                                                \
-      for (size_t i = 1;; i += 2) {                                   \
-        size_t datatype_index = i;                                    \
-        size_t value_index    = i + 1;                                \
-        if (value_index >= length) break;                             \
-        if (vec[datatype_index] == BRIDGE_DATATYPE_OPTION &&          \
-            Option(vec[value_index]) == Option::IGNORE_PASSTHROUGH) { \
-          ignorePassThrough_ = true;                                  \
-        } else {                                                      \
-          (POINTER)->add(vec[datatype_index], vec[value_index]);      \
-        }                                                             \
-      }                                                               \
-    }                                                                 \
+#define INITIALIZE_UNION_VALUE(POINTER, CLASS) {                                        \
+    POINTER = new CLASS;                                                                \
+    if (! POINTER) {                                                                    \
+      IOLOG_ERROR("RemapClass::Item::Item failed to allocate.\n");                      \
+      return;                                                                           \
+    } else {                                                                            \
+      type_ = newtype;                                                                  \
+      for (size_t i = 1;; i += 2) {                                                     \
+        size_t datatype_index = i;                                                      \
+        size_t value_index    = i + 1;                                                  \
+        if (value_index >= length) break;                                               \
+        if (vec[datatype_index] == BRIDGE_DATATYPE_OPTION &&                            \
+            Option(vec[value_index]) == Option::IGNORE_PASSTHROUGH) {                   \
+          ignorePassThrough_ = true;                                                    \
+        } else {                                                                        \
+          (POINTER)->add(AddDataType(vec[datatype_index]), AddValue(vec[value_index])); \
+        }                                                                               \
+      }                                                                                 \
+    }                                                                                   \
 }
 
     unsigned int newtype = vec[0];

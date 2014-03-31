@@ -20,12 +20,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [1] => toKeys_[0]
       // [2] => toKeys_[1]
       // [3] => ...
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
       // ----------------------------------------
       // utility functions
-      void add(KeyCode newval) { add(BRIDGE_DATATYPE_KEYCODE, newval.get()); }
-      void add(Option newval)  { add(BRIDGE_DATATYPE_OPTION,  newval.get()); }
+      void add(KeyCode newval) { add(AddDataType(BRIDGE_DATATYPE_KEYCODE), AddValue(newval.get())); }
+      void add(Option newval)  { add(AddDataType(BRIDGE_DATATYPE_OPTION),  AddValue(newval.get())); }
 
       bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
 

@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    IgnoreMultipleSameKeyPress::add(unsigned int datatype, unsigned int newval)
+    IgnoreMultipleSameKeyPress::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
@@ -27,7 +27,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         default:
-          IOLOG_ERROR("IgnoreMultipleSameKeyPress::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("IgnoreMultipleSameKeyPress::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

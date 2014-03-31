@@ -56,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // </autogen>
       //
 
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
     private:
       KeyToKey fromKeyToKey_;

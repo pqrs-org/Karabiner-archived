@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    DoublePressModifier::add(unsigned int datatype, unsigned int newval)
+    DoublePressModifier::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("DoublePressModifier::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("DoublePressModifier::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }
