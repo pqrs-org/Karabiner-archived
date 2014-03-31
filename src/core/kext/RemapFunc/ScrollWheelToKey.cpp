@@ -13,6 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       continuousScrollEvent_ic_.begin();
       keyrepeat_ic_.begin();
+      keytokey_.add(KeyCode::VK_PSEUDO_KEY);
     }
 
     ScrollWheelToKey::~ScrollWheelToKey(void)
@@ -46,10 +47,6 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid ScrollWheelToKey::add\n");
               break;
 
-            case 1:
-              // pass-through (== no break)
-              keytokey_.add(KeyCode::VK_PSEUDO_KEY);
-              keytokey_.add(fromFlags_);
             default:
               keytokey_.add(datatype, newval);
               break;
@@ -65,11 +62,12 @@ namespace org_pqrs_KeyRemap4MacBook {
             case 0:
               IOLOG_ERROR("Invalid ScrollWheelToKey::add\n");
               break;
-            case 1:
-              fromFlags_ = Flags(newval);
-              break;
+
             default:
-              keytokey_.add(Flags(newval));
+              if (index_ == 1) {
+                fromFlags_ = Flags(newval);
+              }
+              keytokey_.add(datatype, newval);
               break;
           }
           break;
