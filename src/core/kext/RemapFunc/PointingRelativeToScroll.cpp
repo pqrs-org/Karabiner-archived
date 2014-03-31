@@ -60,15 +60,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     PointingRelativeToScroll::add(unsigned int datatype, unsigned int newval)
     {
       switch (datatype) {
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
           switch (index_type_) {
             case INDEX_TYPE_DEFAULT:
-              fromFlags_ = Flags(newval);
+              fromFlags_.add(datatype, newval);
               keytokey_.add(datatype, newval);
               break;
             case INDEX_TYPE_TOFLAGS:
-              toFlags_ = Flags(newval);
+              toFlags_.add(datatype, newval);
               break;
             case INDEX_TYPE_TOKEYS:
               keytokey_.add(datatype, newval);

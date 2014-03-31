@@ -389,7 +389,6 @@ namespace pqrs {
     std::string value;
     while (tokenizer_comma.split_removing_empty(arg)) {
       unsigned int datatype = 0;
-      unsigned int newvalue = 0;
 
       pqrs::string::tokenizer tokenizer_pipe(arg, '|');
       while (tokenizer_pipe.split_removing_empty(value)) {
@@ -401,14 +400,19 @@ namespace pqrs {
         if (datatype) {
           // There are some connection(|).
 
-          if (newdatatype != BRIDGE_DATATYPE_FLAGS) {
+          if (newdatatype != BRIDGE_DATATYPE_MODIFIERFLAG) {
             // Don't connect expect ModifierFlags. (Example: KeyCode::A | KeyCode::B)
             throw xml_compiler_runtime_error("Cannot connect(|) except ModifierFlag:\n\n" + arg);
           }
         }
 
         datatype = newdatatype;
-        newvalue |= symbol_map_.get(value);
+        unsigned int newvalue = symbol_map_.get(value);
+
+        remapclasses_initialize_vector_.push_back(datatype);
+        ++count;
+        remapclasses_initialize_vector_.push_back(newvalue);
+        ++count;
 
         // Unshift Option::USE_SEPARATOR when Option::SEPARATOR is found.
         if (datatype == BRIDGE_DATATYPE_OPTION &&
@@ -420,10 +424,13 @@ namespace pqrs {
         }
       }
 
-      remapclasses_initialize_vector_.push_back(datatype);
-      ++count;
-      remapclasses_initialize_vector_.push_back(newvalue);
-      ++count;
+      // Append BRIDGE_DATATYPE_MODIFIERFLAGS_END if needed
+      if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG) {
+        remapclasses_initialize_vector_.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+        ++count;
+        remapclasses_initialize_vector_.push_back(1);
+        ++count;
+      }
     }
 
     remapclasses_initialize_vector_.update(count_index, count);

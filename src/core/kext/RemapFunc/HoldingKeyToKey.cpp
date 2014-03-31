@@ -51,7 +51,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         case BRIDGE_DATATYPE_OPTION:
         case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
         case BRIDGE_DATATYPE_KEYREPEAT:
@@ -66,29 +67,22 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
+            {
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, datatype, newval);
 
-              switch (datatype) {
-                case BRIDGE_DATATYPE_FLAGS:
-                {
-                  Flags flags(newval);
-                  if (fromEvent_.getModifierFlag() != ModifierFlag::NONE) {
-                    flags.remove(fromEvent_.getModifierFlag());
-                  }
-                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, flags);
-                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  flags);
-                  break;
-                }
-                case BRIDGE_DATATYPE_OPTION:
-                case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
-                case BRIDGE_DATATYPE_KEYREPEAT:
-                {
-                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
-                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
-                  break;
-                }
+              bool skip = false;
+              if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG &&
+                  fromEvent_.getModifierFlag() == ModifierFlag(newval) &&
+                  fromEvent_.getModifierFlag() != ModifierFlag::NONE) {
+                skip = true;
+              }
+
+              if (! skip) {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
               }
               break;
+            }
 
             default:
               if (datatype == BRIDGE_DATATYPE_OPTION && Option::SEPARATOR == Option(newval)) {

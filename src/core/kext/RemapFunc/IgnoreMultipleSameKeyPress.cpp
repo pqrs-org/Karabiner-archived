@@ -21,8 +21,9 @@ namespace org_pqrs_KeyRemap4MacBook {
           fromKey_.key = KeyCode(newval);
           break;
 
-        case BRIDGE_DATATYPE_FLAGS:
-          fromKey_.flags = Flags(newval);
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
+          fromKey_.flags.add(datatype, newval);
           break;
 
         default:

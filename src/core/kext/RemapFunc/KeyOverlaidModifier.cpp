@@ -56,7 +56,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
-        case BRIDGE_DATATYPE_FLAGS:
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
           switch (index_) {
             case 0:
@@ -64,18 +65,24 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             case 1:
+            {
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, datatype, newval);
-              {
-                Flags flags(newval);
-                if (fromEvent_.getModifierFlag() != ModifierFlag::NONE) {
-                  flags.remove(fromEvent_.getModifierFlag());
-                }
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             flags);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,              flags);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         flags);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, flags);
+
+              bool skip = false;
+              if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG &&
+                  fromEvent_.getModifierFlag() == ModifierFlag(newval) &&
+                  fromEvent_.getModifierFlag() != ModifierFlag::NONE) {
+                skip = true;
+              }
+
+              if (! skip) {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,              datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
               }
               break;
+            }
 
             default:
               if (index_is_holding_) {
