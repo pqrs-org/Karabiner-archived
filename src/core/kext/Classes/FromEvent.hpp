@@ -24,13 +24,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
     explicit FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
-    FromEvent(unsigned int datatype, unsigned int v) : isPressing_(false) {
+    FromEvent(AddDataType datatype, AddValue v) : isPressing_(false) {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:         type_ = Type::KEY;             key_      = KeyCode(v);         break;
         case BRIDGE_DATATYPE_CONSUMERKEYCODE: type_ = Type::CONSUMER_KEY;    consumer_ = ConsumerKeyCode(v); break;
         case BRIDGE_DATATYPE_POINTINGBUTTON:  type_ = Type::POINTING_BUTTON; button_   = PointingButton(v);  break;
         default:
-          IOLOG_ERROR("Unknown datatype: %d\n", datatype);
+          IOLOG_ERROR("Unknown datatype: %u\n", static_cast<unsigned int>(datatype));
           type_ = Type::NONE;
           break;
       }

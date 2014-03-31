@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    PointingRelativeToKey::add(unsigned int datatype, unsigned int newval)
+    PointingRelativeToKey::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_POINTINGRELATIVE:
@@ -64,7 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("PointingRelativeToKey::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("PointingRelativeToKey::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

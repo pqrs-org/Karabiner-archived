@@ -116,7 +116,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     void
-    DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, unsigned int datatype, unsigned int newval)
+    DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, AddDataType datatype, AddValue newval)
     {
       if (type == KeyToKeyType::END_) return;
 

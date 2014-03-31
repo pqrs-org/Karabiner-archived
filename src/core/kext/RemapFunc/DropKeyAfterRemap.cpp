@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    DropKeyAfterRemap::add(unsigned int datatype, unsigned int newval)
+    DropKeyAfterRemap::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
@@ -29,7 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("DropKeyAfterRemap::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("DropKeyAfterRemap::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

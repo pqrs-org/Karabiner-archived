@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    HoldingKeyToKey::add(unsigned int datatype, unsigned int newval)
+    HoldingKeyToKey::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
@@ -100,7 +100,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("HoldingKeyToKey::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("HoldingKeyToKey::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

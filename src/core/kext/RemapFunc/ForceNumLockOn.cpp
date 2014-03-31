@@ -13,7 +13,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    ForceNumLockOn::add(unsigned int datatype, unsigned int newval)
+    ForceNumLockOn::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_DEVICEVENDOR:
@@ -53,7 +53,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
 
         default:
-          IOLOG_ERROR("ForceNumLockOn::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("ForceNumLockOn::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

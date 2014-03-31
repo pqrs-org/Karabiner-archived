@@ -5,7 +5,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class PassThrough {
     public:
-      void add(unsigned int datatype, unsigned int newval) {}
+      void add(AddDataType datatype, AddValue newval) {}
     };
   }
 }

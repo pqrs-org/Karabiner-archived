@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    KeyOverlaidModifier::add(unsigned int datatype, unsigned int newval)
+    KeyOverlaidModifier::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
@@ -113,7 +113,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                      Option::KEYTOKEY_AFTER_KEYUP == option) {
             dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
           } else {
-            IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%d\n", newval);
+            IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%u\n", static_cast<unsigned int>(newval));
           }
           break;
         }
@@ -126,7 +126,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("KeyOverlaidModifier::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("KeyOverlaidModifier::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

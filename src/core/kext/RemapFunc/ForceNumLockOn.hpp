@@ -16,7 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // [0] => DeviceVendor
       // [1] => DeviceProduct
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
     private:
       size_t index_;

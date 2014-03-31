@@ -26,15 +26,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       // [3] => toKeys_[0]
       // [4] => toKeys_[1]
       // [5] => ...
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
     private:
       void push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier);
 
       class FromInfo {
       public:
-        FromInfo(void)                                  : fromEvent_(),             active_(false) {}
-        FromInfo(unsigned int datatype, unsigned int v) : fromEvent_(datatype, v),  active_(false) {}
+        FromInfo(void)                             : fromEvent_(),             active_(false) {}
+        FromInfo(AddDataType datatype, AddValue v) : fromEvent_(datatype, v),  active_(false) {}
 
         void activate(void)        { active_ = true; }
         void deactivate(void)      { active_ = false; }

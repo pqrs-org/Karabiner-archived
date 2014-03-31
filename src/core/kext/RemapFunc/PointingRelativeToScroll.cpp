@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    PointingRelativeToScroll::add(unsigned int datatype, unsigned int newval)
+    PointingRelativeToScroll::add(AddDataType datatype, AddValue newval)
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_MODIFIERFLAG:
@@ -111,7 +111,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
 
         default:
-          IOLOG_ERROR("PointingRelativeToScroll::add invalid datatype:%d\n", datatype);
+          IOLOG_ERROR("PointingRelativeToScroll::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;
       }
     }

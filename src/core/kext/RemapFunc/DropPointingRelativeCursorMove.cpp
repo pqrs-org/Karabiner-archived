@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {}
 
     void
-    DropPointingRelativeCursorMove::add(unsigned int datatype, unsigned int newval)
+    DropPointingRelativeCursorMove::add(AddDataType datatype, AddValue newval)
     {}
 
     bool

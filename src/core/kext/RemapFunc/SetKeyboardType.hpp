@@ -14,7 +14,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // [0] => toKeyboardType
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
     private:
       KeyboardType toKeyboardType_;

@@ -15,7 +15,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       // [0] => fromKey_
-      void add(unsigned int datatype, unsigned int newval);
+      void add(AddDataType datatype, AddValue newval);
 
     private:
       FromEvent fromEvent_;
