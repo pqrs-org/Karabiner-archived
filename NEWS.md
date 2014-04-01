@@ -28,7 +28,7 @@ Since 9.3.0
     * v9.3.20: You can use KeyCode and ConsumerKeyCode in \_\_PointingRelativeToScroll\_\_.
     * v9.3.32: Added \_\_KeyUpEventToKey\_\_.
     * v9.3.40: Added ThresholdMillisecond into \_\_HoldingKeyToKey\_\_.<br />
-      You can control holding threshold:<br />
+      You can control a holding threshold:<br />
       <pre>
         &lt;autogen&gt;
           __HoldingKeyToKey__
