@@ -103,7 +103,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case Type::POINTING_BUTTON:
       {
-        FlagStatus::ScopedTemporaryFlagsChanger stfc(flags);
+        FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), flags);
 
         for (int i = 0; i < 2; ++i) {
           if (i == 0) {

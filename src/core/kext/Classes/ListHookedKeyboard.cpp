@@ -331,7 +331,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_passthrough_capslock_led_status)) return;
 
-    Flags flags = FlagStatus::makeFlags();
+    Flags flags = FlagStatus::globalFlagStatus().makeFlags();
 
     for (Item* p = static_cast<Item*>(self.list_->front()); p; p = static_cast<Item*>(p->getnext())) {
       if (! p->isReplaced()) continue;

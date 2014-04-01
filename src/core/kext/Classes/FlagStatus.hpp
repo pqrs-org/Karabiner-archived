@@ -56,31 +56,31 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class ScopedTemporaryFlagsChanger {
     public:
-      ScopedTemporaryFlagsChanger(Flags toFlags) {
+      ScopedTemporaryFlagsChanger(FlagStatus& flagStatus, Flags toFlags) : flagStatus_(flagStatus) {
         count_ = new int[MAXNUM];
         if (! count_) return;
 
         for (int i = 0;; ++i) {
           count_[i] = 0;
 
-          ModifierFlag flag = getFlag(i);
+          ModifierFlag flag = flagStatus_.getFlag(i);
           if (flag == ModifierFlag::NONE) break;
 
           // ----------------------------------------
           // reset flag
-          while (! makeFlags().isOn(flag)) {
-            temporary_increase(flag);
+          while (! flagStatus_.makeFlags().isOn(flag)) {
+            flagStatus_.temporary_increase(flag);
             ++count_[i];
           }
-          while (makeFlags().isOn(flag)) {
-            temporary_decrease(flag);
+          while (flagStatus_.makeFlags().isOn(flag)) {
+            flagStatus_.temporary_decrease(flag);
             --count_[i];
           }
 
           // ----------------------------------------
           // set a flag
           if (toFlags.isOn(flag)) {
-            temporary_increase(flag);
+            flagStatus_.temporary_increase(flag);
             ++count_[i];
           }
         }
@@ -89,17 +89,17 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (! count_) return;
 
         for (int i = 0;; ++i) {
-          ModifierFlag flag = getFlag(i);
+          ModifierFlag flag = flagStatus_.getFlag(i);
           if (flag == ModifierFlag::NONE) break;
 
           if (count_[i] < 0) {
             while (count_[i] != 0) {
-              temporary_increase(flag);
+              flagStatus_.temporary_increase(flag);
               ++count_[i];
             }
           } else if (count_[i] > 0) {
             while (count_[i] != 0) {
-              temporary_decrease(flag);
+              flagStatus_.temporary_decrease(flag);
               --count_[i];
             }
           }
@@ -109,54 +109,58 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
     private:
+      FlagStatus& flagStatus_;
       int* count_;
     };
 
     enum { MAXNUM = 32 };
 
-    static bool initialize(void);
-    static void set(void);
-    static void set(KeyCode key, Flags flags);
-    static Flags makeFlags(void);
+    FlagStatus(void);
+
+    void set(void);
+    void set(KeyCode key, Flags flags);
+    Flags makeFlags(void) const;
     // get registered ModifierFlag by index.
-    static ModifierFlag getFlag(int index);
-    static void reset(void);
+    ModifierFlag getFlag(int index) const;
+    void reset(void);
 
     // getLockedFlags returns only Virtual locks (not hardware CapsLock).
-    static Flags getLockedFlags(void);
-    static Flags getStickyFlags(void);
+    Flags getLockedFlags(void) const;
+    Flags getStickyFlags(void) const;
 
-    static void increase(Flags flags);
-    static void decrease(Flags flags);
-    static void increase(ModifierFlag flag) { increase(Flags(flag)); }
-    static void decrease(ModifierFlag flag) { decrease(Flags(flag)); }
-    static void temporary_increase(Flags flags);
-    static void temporary_decrease(Flags flags);
-    static void temporary_increase(ModifierFlag flag) { temporary_increase(Flags(flag)); }
-    static void temporary_decrease(ModifierFlag flag) { temporary_decrease(Flags(flag)); }
-    static void lock_increase(Flags flags);
-    static void lock_increase(ModifierFlag flag) { lock_increase(Flags(flag)); }
-    static void lock_decrease(Flags flags);
-    static void lock_decrease(ModifierFlag flag) { lock_decrease(Flags(flag)); }
-    static void lock_toggle(Flags flags);
-    static void lock_toggle(ModifierFlag flag) { lock_toggle(Flags(flag)); }
+    void increase(Flags flags);
+    void decrease(Flags flags);
+    void increase(ModifierFlag flag) { increase(Flags(flag)); }
+    void decrease(ModifierFlag flag) { decrease(Flags(flag)); }
+    void temporary_increase(Flags flags);
+    void temporary_decrease(Flags flags);
+    void temporary_increase(ModifierFlag flag) { temporary_increase(Flags(flag)); }
+    void temporary_decrease(ModifierFlag flag) { temporary_decrease(Flags(flag)); }
+    void lock_increase(Flags flags);
+    void lock_increase(ModifierFlag flag) { lock_increase(Flags(flag)); }
+    void lock_decrease(Flags flags);
+    void lock_decrease(ModifierFlag flag) { lock_decrease(Flags(flag)); }
+    void lock_toggle(Flags flags);
+    void lock_toggle(ModifierFlag flag) { lock_toggle(Flags(flag)); }
 
     // lock_clear clears only Virtual locks (not hardware CapsLock).
-    static void lock_clear(void) { lock_decrease(getLockedFlags()); }
+    void lock_clear(void) { lock_decrease(getLockedFlags()); }
 
-    static void sticky_increase(Flags flags);
-    static void sticky_increase(ModifierFlag flag) { sticky_increase(Flags(flag)); }
-    static void sticky_decrease(Flags flags);
-    static void sticky_decrease(ModifierFlag flag) { sticky_decrease(Flags(flag)); }
-    static void sticky_toggle(Flags flags);
-    static void sticky_toggle(ModifierFlag flag) { sticky_toggle(Flags(flag)); }
-    static void sticky_clear(void);
+    void sticky_increase(Flags flags);
+    void sticky_increase(ModifierFlag flag) { sticky_increase(Flags(flag)); }
+    void sticky_decrease(Flags flags);
+    void sticky_decrease(ModifierFlag flag) { sticky_decrease(Flags(flag)); }
+    void sticky_toggle(Flags flags);
+    void sticky_toggle(ModifierFlag flag) { sticky_toggle(Flags(flag)); }
+    void sticky_clear(void);
+
+    static FlagStatus& globalFlagStatus(void);
 
   private:
-    static void updateStatusMessage(void);
+    void updateStatusMessage(void);
 
-    static Flags statusMessageFlags_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
-    static Item item_[MAXNUM];
+    Flags statusMessageFlags_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
+    Item item_[MAXNUM];
   };
 }
 

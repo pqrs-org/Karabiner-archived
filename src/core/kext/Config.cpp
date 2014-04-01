@@ -70,8 +70,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     // reset values
-    org_pqrs_KeyRemap4MacBook::FlagStatus::lock_clear();
-    org_pqrs_KeyRemap4MacBook::FlagStatus::sticky_clear();
+    org_pqrs_KeyRemap4MacBook::FlagStatus::globalFlagStatus().lock_clear();
+    org_pqrs_KeyRemap4MacBook::FlagStatus::globalFlagStatus().sticky_clear();
     org_pqrs_KeyRemap4MacBook::ButtonStatus::lock_clear();
 
     // cancel timers

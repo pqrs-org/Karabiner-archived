@@ -179,8 +179,8 @@ namespace org_pqrs_KeyRemap4MacBook {
             periodtype_ = PeriodType::NONE;
 
             // clear temporary_flags (KeyToKeyType::FROM's flags)
-            FlagStatus::set();
-            savedflags_ = FlagStatus::makeFlags();
+            FlagStatus::globalFlagStatus().set();
+            savedflags_ = FlagStatus::globalFlagStatus().makeFlags();
 
             fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
 
@@ -210,7 +210,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           periodtype_ = PeriodType::SHORT_PERIOD;
 
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
+          FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), savedflags_);
           keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
 
           break;
@@ -245,7 +245,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
             if (! isAnyEventHappen_ &&
                 ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
-              FlagStatus::ScopedTemporaryFlagsChanger stfc(savedflags_);
+              FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), savedflags_);
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
             }
@@ -279,7 +279,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           target_->periodtype_ = PeriodType::LONG_PERIOD;
 
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(target_->savedflags_);
+          FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), target_->savedflags_);
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           target_->keyboardRepeatID_ = KeyboardRepeat::getID();
 
@@ -307,7 +307,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else {
             target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
 
-            FlagStatus::ScopedTemporaryFlagsChanger stfc(target_->savedflags_);
+            FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), target_->savedflags_);
             (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           }
 

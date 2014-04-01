@@ -58,7 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     else if (params.key == KeyCode::VK_LOCK_EXTRA5_FORCE_OFF)    { flags.add(ModifierFlag::EXTRA5);    force_off = true; }
 
     else if (params.key == KeyCode::VK_LOCK_ALL_FORCE_OFF) {
-      FlagStatus::lock_clear();
+      FlagStatus::globalFlagStatus().lock_clear();
       EventOutputQueue::FireModifiers::fire();
       return true;
     } else {
@@ -67,11 +67,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.ex_iskeydown && params.repeat == false) {
       if (force_off) {
-        FlagStatus::lock_decrease(flags);
+        FlagStatus::globalFlagStatus().lock_decrease(flags);
       } else if (force_on) {
-        FlagStatus::lock_increase(flags);
+        FlagStatus::globalFlagStatus().lock_increase(flags);
       } else {
-        FlagStatus::lock_toggle(flags);
+        FlagStatus::globalFlagStatus().lock_toggle(flags);
       }
       EventOutputQueue::FireModifiers::fire();
     }

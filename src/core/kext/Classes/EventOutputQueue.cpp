@@ -39,7 +39,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
     PUSH_TO_OUTPUTQUEUE;
     if (p.eventType == EventType::DOWN) {
-      FlagStatus::sticky_clear();
+      FlagStatus::globalFlagStatus().sticky_clear();
     }
   }
   void EventOutputQueue::push(const Params_UpdateEventFlagsCallback& p) {
@@ -48,18 +48,18 @@ namespace org_pqrs_KeyRemap4MacBook {
   void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p) {
     PUSH_TO_OUTPUTQUEUE;
     if (p.ex_iskeydown) {
-      FlagStatus::sticky_clear();
+      FlagStatus::globalFlagStatus().sticky_clear();
     }
   }
   void EventOutputQueue::push(const Params_RelativePointerEventCallback& p) {
     PUSH_TO_OUTPUTQUEUE;
     if (p.buttons != Buttons(0)) {
-      FlagStatus::sticky_clear();
+      FlagStatus::globalFlagStatus().sticky_clear();
     }
   }
   void EventOutputQueue::push(const Params_ScrollWheelEventCallback& p) {
     PUSH_TO_OUTPUTQUEUE;
-    FlagStatus::sticky_clear();
+    FlagStatus::globalFlagStatus().sticky_clear();
   }
   void EventOutputQueue::push(const Params_Wait& p) {
     PUSH_TO_OUTPUTQUEUE;
@@ -197,7 +197,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     // KeyUp
     for (int i = 0;; ++i) {
-      ModifierFlag flag = FlagStatus::getFlag(i);
+      ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
       if (flag == ModifierFlag::NONE) break;
       if (flag == ModifierFlag::CURSOR) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
@@ -214,7 +214,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // KeyDown
     for (int i = 0;; ++i) {
-      ModifierFlag flag = FlagStatus::getFlag(i);
+      ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
       if (flag == ModifierFlag::NONE) break;
       if (flag == ModifierFlag::CURSOR) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
@@ -296,19 +296,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag f = key.getModifierFlag();
 
     if (f != ModifierFlag::NONE) {
-      FlagStatus::ScopedTemporaryFlagsChanger stfc(flags);
+      FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), flags);
 
       // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".
-      FlagStatus::increase(f);
+      FlagStatus::globalFlagStatus().increase(f);
       {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), key, keyboardType, false));
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY,
+                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
+                                                                                       key,
+                                                                                       keyboardType,
+                                                                                       false));
         if (! ptr) return;
         FireKey::fire(*ptr);
       }
 
-      FlagStatus::decrease(f);
+      FlagStatus::globalFlagStatus().decrease(f);
       {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, FlagStatus::makeFlags(), key, keyboardType, false));
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY,
+                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
+                                                                                       key,
+                                                                                       keyboardType,
+                                                                                       false));
         if (! ptr) return;
         FireKey::fire(*ptr);
       }

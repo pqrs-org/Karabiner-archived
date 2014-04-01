@@ -455,7 +455,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // So, call FlagStatus::set(key, flags) after EventInputQueue.
       // ------------------------------------------------------------
       if (! front->retainFlagStatusTemporaryCount) {
-        FlagStatus::set();
+        FlagStatus::globalFlagStatus().set();
       }
 
       CommonData::setcurrent_deviceIdentifier(front->deviceIdentifier);

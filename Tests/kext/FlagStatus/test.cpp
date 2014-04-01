@@ -17,331 +17,335 @@ std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os 
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 
 TEST(FlagStatus, makeFlags) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+  flagStatus.set();
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
-  FlagStatus::set();
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
-
-  FlagStatus::set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::A, Flags(0));
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
   // down SHIFT_L
-  FlagStatus::set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   // no effect with ModifierFlag::NONE
-  FlagStatus::set(KeyCode::A, Flags(ModifierFlag::NONE));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::A, Flags(ModifierFlag::NONE));
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   // down CONTROL_
-  FlagStatus::set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
   // down A
-  FlagStatus::set(KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
   // up SHIFT_L
-  FlagStatus::set(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L));
-  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L));
+  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
   // up CONTROL_L
-  FlagStatus::set(KeyCode::CONTROL_L, Flags(0));
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::CONTROL_L, Flags(0));
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
   // All flags
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
-  FlagStatus::set(KeyCode::CAPSLOCK, Flags(0));
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::SHIFT_R, Flags(ModifierFlag::SHIFT_R));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::SHIFT_R, Flags(ModifierFlag::SHIFT_R));
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::CONTROL_L, Flags(ModifierFlag::CONTROL_L));
-  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::CONTROL_L, Flags(ModifierFlag::CONTROL_L));
+  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::CONTROL_R, Flags(ModifierFlag::CONTROL_R));
-  EXPECT_EQ(Flags(ModifierFlag::CONTROL_R), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::CONTROL_R, Flags(ModifierFlag::CONTROL_R));
+  EXPECT_EQ(Flags(ModifierFlag::CONTROL_R), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::OPTION_L, Flags(ModifierFlag::OPTION_L));
-  EXPECT_EQ(Flags(ModifierFlag::OPTION_L), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::OPTION_L, Flags(ModifierFlag::OPTION_L));
+  EXPECT_EQ(Flags(ModifierFlag::OPTION_L), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::OPTION_R, Flags(ModifierFlag::OPTION_R));
-  EXPECT_EQ(Flags(ModifierFlag::OPTION_R), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::OPTION_R, Flags(ModifierFlag::OPTION_R));
+  EXPECT_EQ(Flags(ModifierFlag::OPTION_R), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::COMMAND_R, Flags(ModifierFlag::COMMAND_R));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_R), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::COMMAND_R, Flags(ModifierFlag::COMMAND_R));
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_R), flagStatus.makeFlags());
 
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::FN, Flags(ModifierFlag::FN));
-  EXPECT_EQ(Flags(ModifierFlag::FN), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::FN, Flags(ModifierFlag::FN));
+  EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, getFlag) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  EXPECT_EQ(ModifierFlag::CAPSLOCK, FlagStatus::getFlag(0));
+  EXPECT_EQ(ModifierFlag::CAPSLOCK, flagStatus.getFlag(0));
 }
 
 TEST(FlagStatus, getLockedFlags) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  EXPECT_EQ(Flags(0), FlagStatus::getLockedFlags());
+  EXPECT_EQ(Flags(0), flagStatus.getLockedFlags());
 
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  FlagStatus::temporary_increase(ModifierFlag::SHIFT_R);
-  FlagStatus::lock_increase(ModifierFlag::COMMAND_L);
-  FlagStatus::lock_increase(ModifierFlag::OPTION_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, FlagStatus::getLockedFlags());
+  flagStatus.increase(ModifierFlag::SHIFT_L);
+  flagStatus.temporary_increase(ModifierFlag::SHIFT_R);
+  flagStatus.lock_increase(ModifierFlag::COMMAND_L);
+  flagStatus.lock_increase(ModifierFlag::OPTION_L);
+  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, flagStatus.getLockedFlags());
 }
 
 TEST(FlagStatus, getStickyFlags) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  EXPECT_EQ(Flags(0), FlagStatus::getStickyFlags());
+  EXPECT_EQ(Flags(0), flagStatus.getStickyFlags());
 
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  FlagStatus::temporary_increase(ModifierFlag::SHIFT_R);
-  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L);
-  FlagStatus::sticky_increase(ModifierFlag::OPTION_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, FlagStatus::getStickyFlags());
+  flagStatus.increase(ModifierFlag::SHIFT_L);
+  flagStatus.temporary_increase(ModifierFlag::SHIFT_R);
+  flagStatus.sticky_increase(ModifierFlag::COMMAND_L);
+  flagStatus.sticky_increase(ModifierFlag::OPTION_L);
+  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, flagStatus.getStickyFlags());
 }
 
 TEST(FlagStatus, increase) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
   // Do nothing with ModifierFlag::NONE.
-  FlagStatus::increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+  flagStatus.increase(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-  FlagStatus::increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), FlagStatus::makeFlags());
+  flagStatus.increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, decrease) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
-  FlagStatus::decrease(ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.decrease(ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, temporary_increase) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
   // Do nothing with ModifierFlag::NONE.
-  FlagStatus::temporary_increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.temporary_increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
-  FlagStatus::temporary_increase(ModifierFlag::OPTION_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), FlagStatus::makeFlags());
+  flagStatus.temporary_increase(ModifierFlag::OPTION_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), flagStatus.makeFlags());
 
-  // temporary_increase will reset by FlagStatus::set
-  FlagStatus::set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  // temporary_increase will reset by flagStatus.set
+  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, temporary_decrease) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  FlagStatus::increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
-  FlagStatus::temporary_decrease(ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.temporary_decrease(ModifierFlag::CONTROL_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
-  // temporary_increase will reset by FlagStatus::set
-  FlagStatus::set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), FlagStatus::makeFlags());
+  // temporary_increase will reset by flagStatus.set
+  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, lock_increase) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
   // Do nothing with ModifierFlag::NONE.
-  FlagStatus::lock_increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.lock_increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  FlagStatus::lock_increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.lock_increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
   // lock don't cancel by reset & set.
-  FlagStatus::reset();
-  FlagStatus::set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.reset();
+  flagStatus.set(KeyCode::A, Flags(0));
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
-  FlagStatus::lock_decrease(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+  flagStatus.lock_decrease(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, lock_toggle) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  FlagStatus::lock_increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.lock_increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
-  FlagStatus::lock_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.lock_toggle(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  FlagStatus::lock_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.lock_toggle(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, lock_clear) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  FlagStatus::lock_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, FlagStatus::makeFlags());
+  flagStatus.lock_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
 
-  FlagStatus::lock_clear();
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.lock_clear();
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, sticky_increase) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
   // Do nothing with ModifierFlag::NONE.
-  FlagStatus::sticky_increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.sticky_increase(ModifierFlag::NONE);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN), FlagStatus::makeFlags());
+  flagStatus.sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN), flagStatus.makeFlags());
 
-  FlagStatus::sticky_decrease(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::FN), FlagStatus::makeFlags());
+  flagStatus.sticky_decrease(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, sticky_toggle) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.sticky_increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
-  FlagStatus::sticky_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.sticky_toggle(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  FlagStatus::sticky_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), FlagStatus::makeFlags());
+  flagStatus.sticky_toggle(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, sticky_clear) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  FlagStatus::sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, FlagStatus::makeFlags());
+  flagStatus.sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
+  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
 
-  FlagStatus::sticky_clear();
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.sticky_clear();
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, CapsLock) {
-  ASSERT_TRUE(FlagStatus::initialize());
+  FlagStatus flagStatus;
 
-  FlagStatus::set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
-  FlagStatus::reset();
+  flagStatus.reset();
 
-  FlagStatus::set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
   // from other keyboard
-  FlagStatus::set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::A, Flags(0));
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
-  FlagStatus::set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
   // reset
-  FlagStatus::set(KeyCode::CAPSLOCK, Flags(0));
-  EXPECT_EQ(Flags(), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
   // soft caps
-  FlagStatus::lock_increase(ModifierFlag::CAPSLOCK);
-  FlagStatus::set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), FlagStatus::makeFlags());
+  flagStatus.lock_increase(ModifierFlag::CAPSLOCK);
+  flagStatus.set(KeyCode::A, Flags(0));
+  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
   // soft caps will be canceled by hardware caps
-  FlagStatus::set(KeyCode::CAPSLOCK, Flags(0));
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, ScopedTemporaryFlagsChanger) {
-  ASSERT_TRUE(FlagStatus::initialize());
-
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  FlagStatus::increase(ModifierFlag::SHIFT_R);
-  FlagStatus::temporary_increase(ModifierFlag::CONTROL_L);
-  FlagStatus::lock_increase(ModifierFlag::COMMAND_R);
-  FlagStatus::sticky_increase(ModifierFlag::OPTION_R);
-
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), FlagStatus::makeFlags());
-
   {
-    FlagStatus::ScopedTemporaryFlagsChanger stfc(ModifierFlag::FN | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R);
+    FlagStatus flagStatus;
 
-    EXPECT_EQ(Flags(ModifierFlag::FN | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R), FlagStatus::makeFlags());
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    flagStatus.increase(ModifierFlag::SHIFT_R);
+    flagStatus.temporary_increase(ModifierFlag::CONTROL_L);
+    flagStatus.lock_increase(ModifierFlag::COMMAND_R);
+    flagStatus.sticky_increase(ModifierFlag::OPTION_R);
+
+    EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), flagStatus.makeFlags());
+
+    {
+      FlagStatus::ScopedTemporaryFlagsChanger stfc(flagStatus,
+                                                   ModifierFlag::FN | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R);
+
+      EXPECT_EQ(Flags(ModifierFlag::FN | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_R), flagStatus.makeFlags());
+    }
+
+    EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), flagStatus.makeFlags());
+
+    flagStatus.decrease(ModifierFlag::SHIFT_L);
+    flagStatus.decrease(ModifierFlag::SHIFT_L);
+    flagStatus.decrease(ModifierFlag::SHIFT_L);
+
+    EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), flagStatus.makeFlags());
+
+    flagStatus.decrease(ModifierFlag::SHIFT_L);
+
+    EXPECT_EQ(Flags(ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), flagStatus.makeFlags());
   }
-
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), FlagStatus::makeFlags());
-
-  FlagStatus::decrease(ModifierFlag::SHIFT_L);
-  FlagStatus::decrease(ModifierFlag::SHIFT_L);
-  FlagStatus::decrease(ModifierFlag::SHIFT_L);
-
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), FlagStatus::makeFlags());
-
-  FlagStatus::decrease(ModifierFlag::SHIFT_L);
-
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_R | ModifierFlag::OPTION_R), FlagStatus::makeFlags());
 
   // ------------------------------------------------------------
-  ASSERT_TRUE(FlagStatus::initialize());
-
-  FlagStatus::decrease(ModifierFlag::SHIFT_L);
-  FlagStatus::decrease(ModifierFlag::SHIFT_L);
-
   {
-    Flags flags(ModifierFlag::SHIFT_R);
-    FlagStatus::ScopedTemporaryFlagsChanger stfc(flags);
-    EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), FlagStatus::makeFlags());
+    FlagStatus flagStatus;
+
+    flagStatus.decrease(ModifierFlag::SHIFT_L);
+    flagStatus.decrease(ModifierFlag::SHIFT_L);
+
+    {
+      Flags flags(ModifierFlag::SHIFT_R);
+      FlagStatus::ScopedTemporaryFlagsChanger stfc(flagStatus, flags);
+      EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), flagStatus.makeFlags());
+    }
+
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+
+    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
   }
-
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-  FlagStatus::increase(ModifierFlag::SHIFT_L);
-
-  EXPECT_EQ(Flags(0), FlagStatus::makeFlags());
 }

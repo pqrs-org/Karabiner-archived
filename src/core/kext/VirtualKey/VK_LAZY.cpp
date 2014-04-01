@@ -17,9 +17,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (params.repeat) return true;
 
     if (params.eventType == EventType::DOWN) {
-      FlagStatus::increase(f);
+      FlagStatus::globalFlagStatus().increase(f);
     } else if (params.eventType == EventType::UP) {
-      FlagStatus::decrease(f);
+      FlagStatus::globalFlagStatus().decrease(f);
     } else {
       IOLOG_ERROR("Handle_VK_LAZY invalid EventType.\n");
     }

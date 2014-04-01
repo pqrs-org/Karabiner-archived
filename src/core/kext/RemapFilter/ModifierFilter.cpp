@@ -28,7 +28,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           bool isnot = (type_ == BRIDGE_FILTERTYPE_MODIFIER_NOT);
 
-          Flags current = FlagStatus::makeFlags();
+          Flags current = FlagStatus::globalFlagStatus().makeFlags();
           for (size_t i = 0; i < targets_.size(); ++i) {
             Flags f(targets_[i]);
             if (current.isOn(f)) {

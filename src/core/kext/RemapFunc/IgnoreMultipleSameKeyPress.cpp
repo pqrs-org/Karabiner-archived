@@ -38,7 +38,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
       if (! params) return false;
 
-      if (remapParams.isremapped || ! FlagStatus::makeFlags().isOn(fromKey_.flags)) {
+      if (remapParams.isremapped || ! FlagStatus::globalFlagStatus().makeFlags().isOn(fromKey_.flags)) {
         lastkeycode_ = KeyCode::VK_NONE;
         return false;
       }
