@@ -950,6 +950,22 @@
           KeyRepeat::RawValue::0,
         </autogen>
       </item>
+      <item>
+        <name>with ThresholdMillisecond</name>
+        <appendix>Escape to Tab (+ Holding Escape to Space for 3 seconds.)</appendix>
+        <identifier>remap.samples_holdingkeytokey_ThresholdMillisecond</identifier>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::ESCAPE,
+          @begin
+          KeyCode::TAB,
+          @end
+          @begin
+          KeyCode::SPACE,
+          @end
+          ThresholdMillisecond::RawValue::3000,
+        </autogen>
+      </item>
     </item>
 
     <item>
