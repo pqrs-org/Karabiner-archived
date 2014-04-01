@@ -27,6 +27,25 @@ Since 9.3.0
       </pre>
     * v9.3.20: You can use KeyCode and ConsumerKeyCode in \_\_PointingRelativeToScroll\_\_.
     * v9.3.32: Added \_\_KeyUpEventToKey\_\_.
+    * v9.3.40: Added ThresholdMillisecond into \_\_HoldingKeyToKey\_\_.<br />
+      You can control holding threshold:<br />
+      <pre>
+        &lt;autogen&gt;
+          __HoldingKeyToKey__
+          KeyCode::ESCAPE,
+
+          @begin
+          KeyCode::ESCAPE
+          @end
+
+          @begin
+          KeyCode::LAUNCHPAD,
+          @end
+
+          &lt;!-- open Launchpad by press and hold the escape key for 2 seconds. --&gt;
+          ThresholdMillisecond::RawValue::2000,
+        &lt;/autogen&gt;
+      </pre>
 
 Version 9.3.0
 -------------
