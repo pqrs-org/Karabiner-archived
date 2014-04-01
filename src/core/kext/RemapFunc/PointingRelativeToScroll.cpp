@@ -151,19 +151,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       if (! useFromEvent) {
-        if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+        if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
         goto doremap;
 
       } else {
         // FromEvent == KeyCode or ConsumerKeyCode or PointingButton.
 
         bool pressingStateChanged = fromEvent_.changePressingState(remapParams.paramsUnion,
-                                                                   FlagStatus::makeFlags(),
+                                                                   FlagStatus::globalFlagStatus().makeFlags(),
                                                                    fromFlags_);
         if (pressingStateChanged) {
           if (fromEvent_.isPressing()) {
             // down event
-            FlagStatus::decrease(fromEvent_.getModifierFlag());
+            FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
             ButtonStatus::decrease(fromEvent_.getPointingButton());
 
             absolute_distance_ = 0;
@@ -174,7 +174,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           } else {
             // up event
-            FlagStatus::increase(fromEvent_.getModifierFlag());
+            FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
             ButtonStatus::increase(fromEvent_.getPointingButton());
 
             cancelScroll();
@@ -188,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                 keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
               } else {
-                toEvent_.fire_downup(FlagStatus::makeFlags());
+                toEvent_.fire_downup(FlagStatus::globalFlagStatus().makeFlags());
               }
             }
           }
@@ -328,8 +328,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ----------------------------------------
-      FlagStatus::temporary_decrease(currentFromFlags_);
-      FlagStatus::temporary_increase(currentToFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(currentFromFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(currentToFlags_);
       {
         int d1 = delta1;
         int d2 = delta2;
@@ -344,8 +344,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // We need to restore temporary flags.
       // Because normal cursor move event don't restore temporary_count_.
       // (See EventInputQueue::push_RelativePointerEventCallback.)
-      FlagStatus::temporary_decrease(currentToFlags_);
-      FlagStatus::temporary_increase(currentFromFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(currentToFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(currentFromFlags_);
 
       // ----------------------------------------
       if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_momentum_scroll)) {

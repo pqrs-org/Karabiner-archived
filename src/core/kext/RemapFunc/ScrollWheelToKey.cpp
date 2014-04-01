@@ -115,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // --------------------
       if (remapParams.isremapped) return false;
-      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
 
       if (fromScrollWheel_ != firstScrollWheelEvent_) return false;
 

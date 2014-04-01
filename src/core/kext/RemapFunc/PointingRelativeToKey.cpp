@@ -77,7 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (remapParams.isremapped) return false;
-      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
       // skip button press/release events.
       if (params->ex_button != PointingButton::NONE) return false;
 
@@ -105,7 +105,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           // clear temporary flags.
-          FlagStatus::set();
+          FlagStatus::globalFlagStatus().set();
 
           // We need to call EventWatcher::on here.
           // See the comments in EventInputQueue::fire_timer_callback.

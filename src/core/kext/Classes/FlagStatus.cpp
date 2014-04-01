@@ -6,8 +6,12 @@
 #include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
-  FlagStatus::Item FlagStatus::item_[FlagStatus::MAXNUM];
-  Flags FlagStatus::statusMessageFlags_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
+  FlagStatus globalFlagStatus_;
+
+  FlagStatus&
+  FlagStatus::globalFlagStatus(void) {
+    return globalFlagStatus_;
+  }
 
   void
   FlagStatus::Item::initialize(ModifierFlag f)
@@ -85,23 +89,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  bool
-  FlagStatus::initialize(void)
+  FlagStatus::FlagStatus(void)
   {
     for (int i = 0;; ++i) {
       if (i >= MAXNUM) {
 #ifndef FLAGSTATUS_TEST
         IOLOG_ERROR("FlagStatus::initialize MAXNUM is too small. Expand it.");
 #endif
-        return false;
       }
 
       ModifierFlag f = Flags::getModifierFlagByIndex(i);
       item_[i].initialize(f);
       if (f == ModifierFlag::NONE) break;
     }
-
-    return true;
   }
 
   void
@@ -129,7 +129,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   Flags
-  FlagStatus::makeFlags(void)
+  FlagStatus::makeFlags(void) const
   {
     Flags flags;
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
@@ -139,7 +139,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   ModifierFlag
-  FlagStatus::getFlag(int index)
+  FlagStatus::getFlag(int index) const
   {
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
       if (i == index) {
@@ -150,7 +150,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   Flags
-  FlagStatus::getLockedFlags(void)
+  FlagStatus::getLockedFlags(void) const
   {
     Flags f(0);
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
@@ -162,7 +162,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   Flags
-  FlagStatus::getStickyFlags(void)
+  FlagStatus::getStickyFlags(void) const
   {
     Flags f(0);
     for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {

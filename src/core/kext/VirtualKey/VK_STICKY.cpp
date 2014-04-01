@@ -63,11 +63,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (params.ex_iskeydown && params.repeat == false) {
       if (force_off) {
-        FlagStatus::sticky_decrease(flag);
+        FlagStatus::globalFlagStatus().sticky_decrease(flag);
       } else if (force_on) {
-        FlagStatus::sticky_increase(flag);
+        FlagStatus::globalFlagStatus().sticky_increase(flag);
       } else {
-        FlagStatus::sticky_toggle(flag);
+        FlagStatus::globalFlagStatus().sticky_toggle(flag);
       }
       EventOutputQueue::FireModifiers::fire();
     }

@@ -36,7 +36,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       CommonData::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
-      FlagStatus::initialize();
       ButtonStatus::initialize();
 
       workLoop = IOWorkLoop::workLoop();
@@ -162,7 +161,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack* params = paramsUnion.get_Params_KeyboardEventCallBack();
       if (! params) return;
 
-      FlagStatus::set(params->key, params->flags);
+      FlagStatus::globalFlagStatus().set(params->key, params->flags);
 
       RemapParams remapParams(paramsUnion);
       RemapClassManager::remap(remapParams);
@@ -170,7 +169,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
         Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params->eventType,
-                                                                                       FlagStatus::makeFlags(),
+                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
                                                                                        params->key,
                                                                                        params->charCode,
                                                                                        params->charSet,
@@ -188,10 +187,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         NumHeldDownKeys::reset();
         KeyboardRepeat::cancel();
         EventWatcher::reset();
-        FlagStatus::reset();
+        FlagStatus::globalFlagStatus().reset();
         ButtonStatus::reset();
         VirtualKey::reset();
-        EventOutputQueue::FireModifiers::fire(FlagStatus::makeFlags());
+        EventOutputQueue::FireModifiers::fire(FlagStatus::globalFlagStatus().makeFlags());
         EventOutputQueue::FireRelativePointer::fire();
         PressDownKeys::clear();
       }
@@ -213,7 +212,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         Params_KeyboardSpecialEventCallback::auto_ptr ptr(
           Params_KeyboardSpecialEventCallback::alloc(
             params->eventType,
-            FlagStatus::makeFlags(),
+            FlagStatus::globalFlagStatus().makeFlags(),
             params->key,
             params->flavor,
             params->guid,

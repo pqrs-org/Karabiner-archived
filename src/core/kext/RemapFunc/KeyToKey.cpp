@@ -100,7 +100,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyToKey::remap(RemapParams& remapParams)
     {
       if (remapParams.isremapped) return false;
-      if (! fromEvent_.changePressingState(remapParams.paramsUnion, FlagStatus::makeFlags(), fromFlags_)) return false;
+      if (! fromEvent_.changePressingState(remapParams.paramsUnion,
+                                           FlagStatus::globalFlagStatus().makeFlags(),
+                                           fromFlags_)) return false;
       remapParams.isremapped = true;
 
       // ------------------------------------------------------------
@@ -125,28 +127,28 @@ namespace org_pqrs_KeyRemap4MacBook {
       fromFlags.remove(fromEvent_.getModifierFlag());
 
       if (fromEvent_.isPressing()) {
-        FlagStatus::decrease(fromEvent_.getModifierFlag());
+        FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
         ButtonStatus::decrease(fromEvent_.getPointingButton());
       } else {
-        FlagStatus::increase(fromEvent_.getModifierFlag());
+        FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
         ButtonStatus::increase(fromEvent_.getPointingButton());
       }
 
       // ----------------------------------------
       // Handle beforeKeys_
       if (fromEvent_.isPressing()) {
-        FlagStatus::temporary_decrease(fromFlags);
+        FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
 
         for (size_t i = 0; i < beforeKeys_.size(); ++i) {
-          FlagStatus::temporary_increase(beforeKeys_[i].getFlags());
+          FlagStatus::globalFlagStatus().temporary_increase(beforeKeys_[i].getFlags());
 
-          Flags f = FlagStatus::makeFlags();
+          Flags f = FlagStatus::globalFlagStatus().makeFlags();
           beforeKeys_[i].fire_downup(f);
 
-          FlagStatus::temporary_decrease(beforeKeys_[i].getFlags());
+          FlagStatus::globalFlagStatus().temporary_decrease(beforeKeys_[i].getFlags());
         }
 
-        FlagStatus::temporary_increase(fromFlags);
+        FlagStatus::globalFlagStatus().temporary_increase(fromFlags);
       }
 
       // ----------------------------------------
@@ -167,8 +169,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           if (toModifierFlag == ModifierFlag::NONE && ! toKeys_[0].isEventLikeModifier()) {
             // toKey
-            FlagStatus::temporary_decrease(fromFlags);
-            FlagStatus::temporary_increase(toKeys_[0].getFlags());
+            FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
+            FlagStatus::globalFlagStatus().temporary_increase(toKeys_[0].getFlags());
 
           } else {
             // toModifier or VirtualKey::isKeyLikeModifier
@@ -177,15 +179,15 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             if (fromEvent_.isPressing()) {
-              FlagStatus::increase(toKeys_[0].getFlags() | toModifierFlag);
-              FlagStatus::decrease(fromFlags);
+              FlagStatus::globalFlagStatus().increase(toKeys_[0].getFlags() | toModifierFlag);
+              FlagStatus::globalFlagStatus().decrease(fromFlags);
             } else {
-              FlagStatus::decrease(toKeys_[0].getFlags() | toModifierFlag);
-              FlagStatus::increase(fromFlags);
+              FlagStatus::globalFlagStatus().decrease(toKeys_[0].getFlags() | toModifierFlag);
+              FlagStatus::globalFlagStatus().increase(fromFlags);
             }
           }
 
-          toKeys_[0].fire(newEventType, FlagStatus::makeFlags(),
+          toKeys_[0].fire(newEventType, FlagStatus::globalFlagStatus().makeFlags(),
                           add_to_keyrepeat, getDelayUntilRepeat(), getKeyRepeat());
 
           if (! add_to_keyrepeat) {
@@ -204,7 +206,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (fromEvent_.isPressing()) {
             KeyboardRepeat::cancel();
 
-            FlagStatus::temporary_decrease(fromFlags);
+            FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
 
             size_t size = toKeys_.size();
             // If the last key is modifier, we give it special treatment.
@@ -215,28 +217,28 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             for (size_t i = 0; i < size; ++i) {
-              FlagStatus::temporary_increase(toKeys_[i].getFlags());
+              FlagStatus::globalFlagStatus().temporary_increase(toKeys_[i].getFlags());
 
-              Flags f = FlagStatus::makeFlags();
+              Flags f = FlagStatus::globalFlagStatus().makeFlags();
 
               toKeys_[i].fire_downup(f, true);
 
-              FlagStatus::temporary_decrease(toKeys_[i].getFlags());
+              FlagStatus::globalFlagStatus().temporary_decrease(toKeys_[i].getFlags());
             }
 
             if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               // restore temporary flag.
-              FlagStatus::temporary_increase(fromFlags);
+              FlagStatus::globalFlagStatus().temporary_increase(fromFlags);
 
-              FlagStatus::increase(lastToEvent.getFlags() | lastToEventModifierFlag);
-              FlagStatus::decrease(fromFlags);
+              FlagStatus::globalFlagStatus().increase(lastToEvent.getFlags() | lastToEventModifierFlag);
+              FlagStatus::globalFlagStatus().decrease(fromFlags);
 
               if (isLastToEventLikeModifier) {
                 // Don't call EventOutputQueue::FireModifiers::fire here.
                 //
                 // Intentionally VK_LAZY_* stop sending MODIFY events.
                 // EventOutputQueue::FireModifiers::fire destroys this behavior.
-                lastToEvent.fire(EventType::DOWN, FlagStatus::makeFlags(), false);
+                lastToEvent.fire(EventType::DOWN, FlagStatus::globalFlagStatus().makeFlags(), false);
 
               } else {
                 EventOutputQueue::FireModifiers::fire();
@@ -259,11 +261,11 @@ namespace org_pqrs_KeyRemap4MacBook {
               // we need to handle these keys before restoring fromFlags, lastKeyFlags and lastKeyModifierFlag.
               // The unnecessary modifier events occur unless we do it.
               if (isLastToEventLikeModifier) {
-                lastToEvent.fire(EventType::UP, FlagStatus::makeFlags(), false);
+                lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), false);
               }
 
-              FlagStatus::decrease(lastToEvent.getFlags() | lastToEventModifierFlag);
-              FlagStatus::increase(fromFlags);
+              FlagStatus::globalFlagStatus().decrease(lastToEvent.getFlags() | lastToEventModifierFlag);
+              FlagStatus::globalFlagStatus().increase(fromFlags);
               EventOutputQueue::FireModifiers::fire();
 
             } else {
@@ -281,20 +283,20 @@ namespace org_pqrs_KeyRemap4MacBook {
         // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
         if (afterKeys_.size() > 0) {
           // clear temporary flags.
-          FlagStatus::set();
+          FlagStatus::globalFlagStatus().globalFlagStatus().set();
 
-          FlagStatus::temporary_decrease(fromFlags);
+          FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
 
           for (size_t i = 0; i < afterKeys_.size(); ++i) {
-            FlagStatus::temporary_increase(afterKeys_[i].getFlags());
+            FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getFlags());
 
-            Flags f = FlagStatus::makeFlags();
+            Flags f = FlagStatus::globalFlagStatus().makeFlags();
             afterKeys_[i].fire_downup(f);
 
-            FlagStatus::temporary_decrease(afterKeys_[i].getFlags());
+            FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getFlags());
           }
 
-          FlagStatus::temporary_increase(fromFlags);
+          FlagStatus::globalFlagStatus().temporary_increase(fromFlags);
         }
       }
 
@@ -305,7 +307,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType)
     {
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
-                                                                                     FlagStatus::makeFlags(),
+                                                                                     FlagStatus::globalFlagStatus().makeFlags(),
                                                                                      KeyCode::VK_PSEUDO_KEY,
                                                                                      CommonData::getcurrent_keyboardType(),
                                                                                      false));

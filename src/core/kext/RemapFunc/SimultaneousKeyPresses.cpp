@@ -181,7 +181,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // handle KeyDown event.
-      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
 
       // Check the first item in queue_ is target.
       //

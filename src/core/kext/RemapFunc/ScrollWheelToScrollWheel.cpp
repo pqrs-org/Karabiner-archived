@@ -47,12 +47,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! params) return false;
 
       if (remapParams.isremapped) return false;
-      if (! FlagStatus::makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
 
       remapParams.isremapped = true;
 
-      FlagStatus::temporary_decrease(fromFlags_);
-      FlagStatus::temporary_increase(toFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(fromFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(toFlags_);
 
       EventOutputQueue::FireScrollWheel::fire(*params);
       RemapFunc::PointingRelativeToScroll::cancelScroll();
@@ -72,8 +72,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       // (3) scroll (strip option)
       // (4) drag mouse (option+left drag)
       // ------------------------------------------------------------
-      FlagStatus::temporary_decrease(toFlags_);
-      FlagStatus::temporary_increase(fromFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(toFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(fromFlags_);
 
       return true;
     }

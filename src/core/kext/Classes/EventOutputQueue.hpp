@@ -21,7 +21,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ======================================================================
     class FireModifiers {
     public:
-      static void fire(Flags toFlags = FlagStatus::makeFlags(), KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
+      static void fire(Flags toFlags = FlagStatus::globalFlagStatus().makeFlags(),
+                       KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
 
     private:
       static Flags lastFlags_;
