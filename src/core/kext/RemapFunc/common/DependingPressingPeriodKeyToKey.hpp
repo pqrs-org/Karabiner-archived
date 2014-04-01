@@ -93,6 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             HOLDING_KEY_TO_KEY,
             KEY_OVERLAID_MODIFIER,
             KEY_OVERLAID_MODIFIER_WITH_REPEAT,
+            __END__,
           };
         };
         class Type {
@@ -101,18 +102,23 @@ namespace org_pqrs_KeyRemap4MacBook {
             SHORT_PERIOD,             // (A) in above description.
             LONG_LONG_PERIOD,         // (B) in above description.
             PRESSING_TARGET_KEY_ONLY, // (C) in above description.
+            __END__,
           };
         };
 
         PeriodMS(void);
 
         void set(Mode::Value newval);
+        void overwrite(Mode::Value mode, Type::Value type, unsigned int newval) {
+          overwritten_value_[mode][type] = newval;
+        }
 
         unsigned int get(Type::Value type);
         bool enabled(Type::Value type);
 
       private:
         Mode::Value mode_;
+        int overwritten_value_[Mode::__END__][Type::__END__];
       };
 
       // ----------------------------------------
@@ -176,6 +182,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       void setPeriodMS(PeriodMS::Mode::Value newval) { periodMS_.set(newval); }
+      void overwritePeriodMS(PeriodMS::Mode::Value mode, PeriodMS::Type::Value type, unsigned int newval) {
+        periodMS_.overwrite(mode, type, newval);
+      }
 
     private:
       class PeriodType {
