@@ -99,6 +99,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           break;
         }
 
+        case BRIDGE_DATATYPE_THRESHOLDMILLISECOND:
+          dppkeytokey_.overwritePeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY,
+                                         DependingPressingPeriodKeyToKey::PeriodMS::Type::SHORT_PERIOD,
+                                         newval);
+          break;
+
         default:
           IOLOG_ERROR("HoldingKeyToKey::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
           break;

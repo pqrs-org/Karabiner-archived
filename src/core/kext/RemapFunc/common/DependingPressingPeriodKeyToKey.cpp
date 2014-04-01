@@ -12,7 +12,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     DependingPressingPeriodKeyToKey* DependingPressingPeriodKeyToKey::target_ = NULL;
 
     DependingPressingPeriodKeyToKey::PeriodMS::PeriodMS(void) : mode_(Mode::NONE)
-    {}
+    {
+      for (size_t m = 0; m < Mode::__END__; ++m) {
+        for (size_t t = 0; t < Type::__END__; ++t) {
+          overwritten_value_[m][t] = -1;
+        }
+      }
+    }
 
     void
     DependingPressingPeriodKeyToKey::PeriodMS::set(PeriodMS::Mode::Value newval)
@@ -23,12 +29,17 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int
     DependingPressingPeriodKeyToKey::PeriodMS::get(PeriodMS::Type::Value type)
     {
+      if (overwritten_value_[mode_][type] >= 0) {
+        return overwritten_value_[mode_][type];
+      }
+
       switch (mode_) {
         case Mode::HOLDING_KEY_TO_KEY:
           switch (type) {
             case Type::SHORT_PERIOD:             return Config::get_holdingkeytokey_wait();
             case Type::LONG_LONG_PERIOD:         return 0;
             case Type::PRESSING_TARGET_KEY_ONLY: return 0;
+            case Type::__END__:                  return 0;
           }
 
         case Mode::KEY_OVERLAID_MODIFIER:
@@ -36,6 +47,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             case Type::SHORT_PERIOD:             return Config::get_keyoverlaidmodifier_initial_modifier_wait();
             case Type::LONG_LONG_PERIOD:         return 0;
             case Type::PRESSING_TARGET_KEY_ONLY: return Config::get_keyoverlaidmodifier_timeout();
+            case Type::__END__:                  return 0;
           }
 
         case Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT:
@@ -43,9 +55,11 @@ namespace org_pqrs_KeyRemap4MacBook {
             case Type::SHORT_PERIOD:             return Config::get_keyoverlaidmodifier_initial_modifier_wait();
             case Type::LONG_LONG_PERIOD:         return Config::get_keyoverlaidmodifier_initial_wait();
             case Type::PRESSING_TARGET_KEY_ONLY: return Config::get_keyoverlaidmodifier_timeout();
+            case Type::__END__:                  return 0;
           }
 
         case Mode::NONE:
+        case Mode::__END__:
           IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::get\n");
           return 0;
       }
@@ -62,6 +76,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             case Type::SHORT_PERIOD:             return true;
             case Type::LONG_LONG_PERIOD:         return false;
             case Type::PRESSING_TARGET_KEY_ONLY: return false;
+            case Type::__END__:                  return false;
           }
 
         case Mode::KEY_OVERLAID_MODIFIER:
@@ -69,6 +84,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             case Type::SHORT_PERIOD:             return true;
             case Type::LONG_LONG_PERIOD:         return false;
             case Type::PRESSING_TARGET_KEY_ONLY: return true;
+            case Type::__END__:                  return false;
           }
 
         case Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT:
@@ -76,9 +92,11 @@ namespace org_pqrs_KeyRemap4MacBook {
             case Type::SHORT_PERIOD:             return true;
             case Type::LONG_LONG_PERIOD:         return true;
             case Type::PRESSING_TARGET_KEY_ONLY: return true;
+            case Type::__END__:                  return false;
           }
 
         case Mode::NONE:
+        case Mode::__END__:
           IOLOG_ERROR("Invalid DependingPressingPeriodKeyToKey::PeriodMS::enabled\n");
           return false;
       }
