@@ -124,7 +124,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     ModifierFlag getFlag(int index) const;
     void reset(void);
 
-    bool isOn(ModifierFlag modifierFlag) const;
     bool isOn(const Vector_ModifierFlag& modifierFlags) const;
 
     // getLockedFlags returns only Virtual locks (not hardware CapsLock).
@@ -160,6 +159,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static FlagStatus& globalFlagStatus(void);
 
   private:
+    bool isOn(ModifierFlag modifierFlag) const;
     void updateStatusMessage(void);
 
     Flags statusMessageFlags_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
