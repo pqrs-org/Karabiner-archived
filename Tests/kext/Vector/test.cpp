@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include "Vector.hpp"
 
-DECLARE_VECTOR(int);
+DECLARE_VECTOR_WITH_HELPER(int);
 
 class TestItem {
 public:
@@ -135,4 +135,16 @@ TEST(Vector, clear) {
 
   v.clear();
   EXPECT_EQ(static_cast<size_t>(0), v.capacity());
+}
+
+TEST(Vector, is_include) {
+  Vector_int v;
+  v.push_back(1);
+  v.push_back(2);
+  v.push_back(3);
+  v.push_back(4);
+  v.push_back(5);
+
+  EXPECT_TRUE(v.is_include(4));
+  EXPECT_TRUE(! v.is_include(6));
 }
