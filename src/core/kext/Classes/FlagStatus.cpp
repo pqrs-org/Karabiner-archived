@@ -128,6 +128,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  bool
+  FlagStatus::isOn(ModifierFlag modifierFlag) const
+  {
+    for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
+      if (item_[i].flag_ == modifierFlag) {
+        return item_[i].sum() > 0;
+      }
+    }
+    return false;
+  }
+
+  bool
+  FlagStatus::isOn(const Vector_ModifierFlag& modifierFlags) const
+  {
+    bool strict = false;
+
+    for (size_t i = 0; i < modifierFlags.size(); ++i) {
+      if (modifierFlags[i] == ModifierFlag::NONE) {
+        strict = true;
+      } else {
+        if (! isOn(modifierFlags[i])) return false;
+      }
+    }
+
+    // If modifierFlags contains ModifierFlag::NONE,
+    // return false when unspecified modifierflag is pressed.
+    if (strict) {
+      for (int i = 0; item_[i].flag_ != ModifierFlag::NONE; ++i) {
+        if (item_[i].sum() > 0 &&
+            ! modifierFlags.is_include(item_[i].flag_)) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   Flags
   FlagStatus::makeFlags(void) const
   {

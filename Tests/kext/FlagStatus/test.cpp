@@ -349,3 +349,54 @@ TEST(FlagStatus, ScopedTemporaryFlagsChanger) {
     EXPECT_EQ(Flags(0), flagStatus.makeFlags());
   }
 }
+
+TEST(FlagStatus, isOn) {
+  {
+    FlagStatus flagStatus;
+
+    {
+      Vector_ModifierFlag modifierFlags;
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+  }
+
+  {
+    FlagStatus flagStatus;
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    flagStatus.increase(ModifierFlag::CONTROL_R);
+    flagStatus.increase(ModifierFlag::COMMAND_R);
+
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_R);
+      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      modifierFlags.push_back(ModifierFlag::CONTROL_R);
+      modifierFlags.push_back(ModifierFlag::COMMAND_R);
+      modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+  }
+  {
+    FlagStatus flagStatus;
+  }
+}
