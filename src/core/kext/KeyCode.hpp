@@ -44,6 +44,13 @@ namespace org_pqrs_KeyRemap4MacBook {
   class ModifierFlag {
   public:
     explicit ModifierFlag(unsigned int v = 0) : value_(v) {}
+    explicit ModifierFlag(AddDataType datatype, AddValue newval) {
+      if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG) {
+        value_ = newval;
+      } else {
+        value_ = 0;
+      }
+    }
     unsigned int get(void) const { return value_; }
     bool operator==(ModifierFlag other) const { return value_ == other.get(); }
     bool operator!=(ModifierFlag other) const { return ! (*this == other); }
