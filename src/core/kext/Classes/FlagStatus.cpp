@@ -145,6 +145,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool strict = false;
 
     for (size_t i = 0; i < modifierFlags.size(); ++i) {
+      if (modifierFlags[i] == ModifierFlag::ZERO) continue;
+
       if (modifierFlags[i] == ModifierFlag::NONE) {
         strict = true;
       } else {
