@@ -360,7 +360,75 @@ TEST(FlagStatus, isOn) {
     }
     {
       Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag(ModifierFlag::ZERO));
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::NONE);
+      modifierFlags.push_back(ModifierFlag::ZERO);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+  }
+
+  {
+    FlagStatus flagStatus;
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_R);
+      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      modifierFlags.push_back(ModifierFlag::ZERO);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+  }
+
+  {
+    FlagStatus flagStatus;
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    flagStatus.increase(ModifierFlag::ZERO);
+
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_R);
+      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      modifierFlags.push_back(ModifierFlag::ZERO);
       EXPECT_TRUE(flagStatus.isOn(modifierFlags));
     }
   }
@@ -395,8 +463,5 @@ TEST(FlagStatus, isOn) {
       modifierFlags.push_back(ModifierFlag::NONE);
       EXPECT_TRUE(flagStatus.isOn(modifierFlags));
     }
-  }
-  {
-    FlagStatus flagStatus;
   }
 }
