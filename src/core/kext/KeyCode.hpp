@@ -3,6 +3,7 @@
 
 #include "../../../src/bridge/include/bridge.h"
 #include "Types.hpp"
+#include "Vector.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   class KeyCode;
@@ -42,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ======================================================================
   class ModifierFlag {
   public:
-    explicit ModifierFlag(unsigned int v) : value_(v) {}
+    explicit ModifierFlag(unsigned int v = 0) : value_(v) {}
     unsigned int get(void) const { return value_; }
     bool operator==(ModifierFlag other) const { return value_ == other.get(); }
     bool operator!=(ModifierFlag other) const { return ! (*this == other); }
@@ -56,6 +57,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     unsigned int value_;
   };
+  DECLARE_VECTOR(ModifierFlag);
+
   class Flags {
   public:
     explicit Flags(unsigned int v = 0) : value_(v) {}
