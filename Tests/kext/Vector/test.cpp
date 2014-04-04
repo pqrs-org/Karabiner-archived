@@ -4,8 +4,6 @@
 #include <gtest/gtest.h>
 #include "Vector.hpp"
 
-DECLARE_VECTOR_WITH_HELPER(int);
-
 class TestItem {
 public:
   static int counter;
