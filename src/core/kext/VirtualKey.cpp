@@ -79,7 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::isKeyLikeModifier(KeyCode keycode)
   {
     if (VirtualKey::VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;
-    if (VirtualKey::VK_LAZY::getModifierFlag(keycode) != ModifierFlag::NONE) return true;
+    if (VirtualKey::VK_LAZY::getModifierFlag(keycode) != ModifierFlag::ZERO) return true;
     if (VirtualKey::VK_MOUSEKEY::isKeyLikeModifier(keycode)) return true;
     return false;
   }

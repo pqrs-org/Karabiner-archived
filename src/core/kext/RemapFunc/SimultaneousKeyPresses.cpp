@@ -285,7 +285,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       Flags flags(0);
       if (isKeyDown) {
         flags.add(key.getModifierFlag());
-        flags.stripNONE();
       }
 
       // ----------------------------------------

@@ -11,7 +11,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   VirtualKey::VK_LAZY::handle(const Params_KeyboardEventCallBack& params)
   {
     ModifierFlag f = getModifierFlag(params.key);
-    if (f == ModifierFlag::NONE) return false;
+    if (f == ModifierFlag::ZERO) return false;
 
     // ----------------------------------------
     if (params.repeat) return true;
@@ -40,6 +40,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     else if (keycode == KeyCode::VK_LAZY_SHIFT_L)   { return ModifierFlag::SHIFT_L;   }
     else if (keycode == KeyCode::VK_LAZY_SHIFT_R)   { return ModifierFlag::SHIFT_R;   }
 
-    return ModifierFlag::NONE;
+    return ModifierFlag::ZERO;
   }
 }

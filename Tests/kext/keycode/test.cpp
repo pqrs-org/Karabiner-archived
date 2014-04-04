@@ -616,8 +616,8 @@ TEST(KeyCode, getModifierFlag) {
   EXPECT_EQ(ModifierFlag::EXTRA4, KeyCode::VK_MODIFIER_EXTRA4.getModifierFlag());
   EXPECT_EQ(ModifierFlag::EXTRA5, KeyCode::VK_MODIFIER_EXTRA5.getModifierFlag());
 
-  EXPECT_EQ(ModifierFlag::NONE, KeyCode(KeyCode::A).getModifierFlag());
-  EXPECT_EQ(ModifierFlag::NONE, KeyCode(KeyCode::VK_NONE).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::ZERO, KeyCode(KeyCode::A).getModifierFlag());
+  EXPECT_EQ(ModifierFlag::ZERO, KeyCode(KeyCode::VK_NONE).getModifierFlag());
 }
 
 TEST(KeyCode, isModifier) {

@@ -178,7 +178,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (*this == KeyCode::VK_MODIFIER_EXTRA4) return ModifierFlag::EXTRA4;
     if (*this == KeyCode::VK_MODIFIER_EXTRA5) return ModifierFlag::EXTRA5;
 
-    return ModifierFlag::NONE;
+    return ModifierFlag::ZERO;
   }
 
   bool

@@ -167,14 +167,14 @@ namespace org_pqrs_KeyRemap4MacBook {
           EventType newEventType = fromEvent_.isPressing() ? EventType::DOWN : EventType::UP;
           ModifierFlag toModifierFlag = toKeys_[0].getModifierFlag();
 
-          if (toModifierFlag == ModifierFlag::NONE && ! toKeys_[0].isEventLikeModifier()) {
+          if (toModifierFlag == ModifierFlag::ZERO && ! toKeys_[0].isEventLikeModifier()) {
             // toKey
             FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
             FlagStatus::globalFlagStatus().temporary_increase(toKeys_[0].getFlags());
 
           } else {
             // toModifier or VirtualKey::isKeyLikeModifier
-            if (toModifierFlag != ModifierFlag::NONE) {
+            if (toModifierFlag != ModifierFlag::ZERO) {
               newEventType = EventType::MODIFY;
             }
 
@@ -200,7 +200,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         default:
           ToEvent& lastToEvent                 = toKeys_[toKeys_.size() - 1];
           ModifierFlag lastToEventModifierFlag = lastToEvent.getModifierFlag();
-          bool isLastToEventModifierKey        = (lastToEventModifierFlag != ModifierFlag::NONE);
+          bool isLastToEventModifierKey        = (lastToEventModifierFlag != ModifierFlag::ZERO);
           bool isLastToEventLikeModifier       = lastToEvent.isEventLikeModifier();
 
           if (fromEvent_.isPressing()) {

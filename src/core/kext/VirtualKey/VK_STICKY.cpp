@@ -8,7 +8,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   VirtualKey::VK_STICKY::handle(const Params_KeyboardEventCallBack& params)
   {
-    ModifierFlag flag = ModifierFlag::NONE;
+    ModifierFlag flag = ModifierFlag::ZERO;
     bool force_on = false;
     bool force_off = false;
 

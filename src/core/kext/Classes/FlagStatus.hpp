@@ -12,7 +12,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     public:
       Item(void) :
-        flag_(ModifierFlag::NONE),
+        flag_(ModifierFlag::ZERO),
         count_(0),
         temporary_count_(0),
         lock_count_(0),
