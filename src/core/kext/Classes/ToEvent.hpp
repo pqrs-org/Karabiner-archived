@@ -43,7 +43,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
-      if (type_ != Type::KEY) return ModifierFlag::NONE;
+      if (type_ != Type::KEY) return ModifierFlag::ZERO;
       return key_.getModifierFlag();
     }
     bool isEventLikeModifier(void) const;

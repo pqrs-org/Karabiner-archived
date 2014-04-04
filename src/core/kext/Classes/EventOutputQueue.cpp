@@ -295,7 +295,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     ModifierFlag f = key.getModifierFlag();
 
-    if (f != ModifierFlag::NONE) {
+    if (f != ModifierFlag::ZERO) {
       FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), flags);
 
       // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".

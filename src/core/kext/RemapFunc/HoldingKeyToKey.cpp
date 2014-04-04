@@ -72,8 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
               bool skip = false;
               if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG &&
-                  fromEvent_.getModifierFlag() == ModifierFlag(newval) &&
-                  fromEvent_.getModifierFlag() != ModifierFlag::NONE) {
+                  fromEvent_.getModifierFlag() == ModifierFlag(newval)) {
                 skip = true;
               }
 

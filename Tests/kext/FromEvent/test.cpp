@@ -60,7 +60,7 @@ ParamsUnion up_shift(
 TEST(Generic, getModifierFlag) {
   {
     FromEvent fe(KeyCode::RETURN);
-    EXPECT_EQ(ModifierFlag::NONE, fe.getModifierFlag());
+    EXPECT_EQ(ModifierFlag::ZERO, fe.getModifierFlag());
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
@@ -68,11 +68,11 @@ TEST(Generic, getModifierFlag) {
   }
   {
     FromEvent fe(ConsumerKeyCode::VOLUME_MUTE);
-    EXPECT_EQ(ModifierFlag::NONE, fe.getModifierFlag());
+    EXPECT_EQ(ModifierFlag::ZERO, fe.getModifierFlag());
   }
   {
     FromEvent fe(PointingButton::LEFT);
-    EXPECT_EQ(ModifierFlag::NONE, fe.getModifierFlag());
+    EXPECT_EQ(ModifierFlag::ZERO, fe.getModifierFlag());
   }
 }
 

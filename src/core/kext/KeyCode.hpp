@@ -199,7 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void reverseNormalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType);
 
     ModifierFlag getModifierFlag(void) const;
-    bool isModifier(void) const { return getModifierFlag() != ModifierFlag::NONE; }
+    bool isModifier(void) const { return getModifierFlag() != ModifierFlag::ZERO; }
 
 #include "../../../src/bridge/output/include.kext.KeyCode.hpp"
 
