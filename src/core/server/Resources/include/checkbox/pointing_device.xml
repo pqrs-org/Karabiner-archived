@@ -272,7 +272,7 @@
         </item>
       </item>
       <item>
-        <name>Open Mission Control when you press and hold the right button for 1 second.</name>
+        <name>Open Mission Control when you press and hold the right button for 500 milliseconds.</name>
         <identifier>remap.open_mission_control_by_holding_right_button</identifier>
         <autogen>
           __HoldingKeyToKey__
@@ -289,7 +289,7 @@
           @end
 
           Option::UNINTERRUPTIBLE_BY_SCROLL_WHEEL,
-          ThresholdMillisecond::RawValue::1000,
+          ThresholdMillisecond::RawValue::500,
         </autogen>
       </item>
       <item>
