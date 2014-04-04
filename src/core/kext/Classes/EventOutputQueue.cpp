@@ -196,9 +196,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     // KeyUp
-    for (int i = 0;; ++i) {
+    for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
       ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
-      if (flag == ModifierFlag::NONE) break;
+
       if (flag == ModifierFlag::CURSOR) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
 
@@ -213,9 +213,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // KeyDown
-    for (int i = 0;; ++i) {
+    for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
       ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
-      if (flag == ModifierFlag::NONE) break;
+
       if (flag == ModifierFlag::CURSOR) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
 
