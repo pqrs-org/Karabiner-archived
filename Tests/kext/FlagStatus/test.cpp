@@ -431,6 +431,13 @@ TEST(FlagStatus, isOn) {
       modifierFlags.push_back(ModifierFlag::ZERO);
       EXPECT_TRUE(flagStatus.isOn(modifierFlags));
     }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      modifierFlags.push_back(ModifierFlag::ZERO);
+      modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+    }
   }
 
   {
