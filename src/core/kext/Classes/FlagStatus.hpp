@@ -53,67 +53,53 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       int sticky_count_;
     };
+    DECLARE_VECTOR(Item);
 
     class ScopedTemporaryFlagsChanger {
     public:
       ScopedTemporaryFlagsChanger(FlagStatus& flagStatus, Flags toFlags) : flagStatus_(flagStatus) {
-        count_ = new int[MAXNUM];
-        if (! count_) return;
-
-        for (int i = 0;; ++i) {
-          count_[i] = 0;
-
-          ModifierFlag flag = flagStatus_.getFlag(i);
-          if (flag == ModifierFlag::NONE) break;
+        for (size_t i = 0; i < flagStatus_.item_.size(); ++i) {
+          count_.push_back(0);
 
           // ----------------------------------------
           // reset flag
-          while (! flagStatus_.makeFlags().isOn(flag)) {
-            flagStatus_.temporary_increase(flag);
-            ++count_[i];
+          while (flagStatus_.item_[i].sum() < 0) {
+            flagStatus_.item_[i].temporary_increase();
+            ++(count_.back());
           }
-          while (flagStatus_.makeFlags().isOn(flag)) {
-            flagStatus_.temporary_decrease(flag);
-            --count_[i];
+          while (flagStatus_.item_[i].sum() > 0) {
+            flagStatus_.item_[i].temporary_decrease();
+            --(count_.back());
           }
 
           // ----------------------------------------
           // set a flag
+          ModifierFlag flag = flagStatus_.getFlag(i);
           if (toFlags.isOn(flag)) {
-            flagStatus_.temporary_increase(flag);
-            ++count_[i];
+            flagStatus_.item_[i].temporary_increase();
+            ++(count_.back());
           }
         }
       }
       ~ScopedTemporaryFlagsChanger(void) {
-        if (! count_) return;
+        for (size_t i = 0; i < flagStatus_.item_.size(); ++i) {
+          if (i >= count_.size()) break;
 
-        for (int i = 0;; ++i) {
-          ModifierFlag flag = flagStatus_.getFlag(i);
-          if (flag == ModifierFlag::NONE) break;
-
-          if (count_[i] < 0) {
-            while (count_[i] != 0) {
-              flagStatus_.temporary_increase(flag);
-              ++count_[i];
-            }
-          } else if (count_[i] > 0) {
-            while (count_[i] != 0) {
-              flagStatus_.temporary_decrease(flag);
-              --count_[i];
-            }
+          while (count_[i] < 0) {
+            flagStatus_.item_[i].temporary_increase();
+            ++(count_[i]);
+          }
+          while (count_[i] > 0) {
+            flagStatus_.item_[i].temporary_decrease();
+            --(count_[i]);
           }
         }
-
-        delete[] count_;
       }
 
     private:
       FlagStatus& flagStatus_;
-      int* count_;
+      Vector_int count_;
     };
-
-    enum { MAXNUM = 32 };
 
     FlagStatus(void);
 
@@ -121,8 +107,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     void set(KeyCode key, Flags flags);
     Flags makeFlags(void) const;
     // get registered ModifierFlag by index.
-    ModifierFlag getFlag(int index) const;
+    ModifierFlag getFlag(size_t index) const;
     void reset(void);
+
+    size_t itemSize(void) const { return item_.size(); }
 
     bool isOn(const Vector_ModifierFlag& modifierFlags) const;
 
@@ -163,7 +151,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void updateStatusMessage(void);
 
     Flags statusMessageFlags_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
-    Item item_[MAXNUM];
+    Vector_Item item_;
   };
 }
 
