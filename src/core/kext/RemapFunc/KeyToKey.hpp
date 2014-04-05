@@ -55,8 +55,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       size_t index_;
 
       FromEvent fromEvent_;
-      // TODO: remove fromFlags_.
-      Flags fromFlags_;
       Vector_ModifierFlag fromModifierFlags_;
       Vector_ModifierFlag pureFromModifierFlags_; // fromModifierFlags_ - fromEvent_.getModifierFlag() - ModifierFlag::NONE.
 

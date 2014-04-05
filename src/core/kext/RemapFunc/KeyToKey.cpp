@@ -51,7 +51,6 @@ namespace org_pqrs_KeyRemap4MacBook {
             case 1:
             {
               ModifierFlag modifierFlag(datatype, newval);
-              fromFlags_.add(modifierFlag);
               fromModifierFlags_.push_back(modifierFlag);
               if (fromEvent_.getModifierFlag() != modifierFlag) {
                 pureFromModifierFlags_.push_back(modifierFlag);
@@ -108,8 +107,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       if (remapParams.isremapped) return false;
       if (! fromEvent_.changePressingState(remapParams.paramsUnion,
-                                           FlagStatus::globalFlagStatus().makeFlags(),
-                                           fromFlags_)) return false;
+                                           FlagStatus::globalFlagStatus(),
+                                           fromModifierFlags_)) return false;
       remapParams.isremapped = true;
 
       // ------------------------------------------------------------
@@ -118,17 +117,17 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Let's consider the following setting.
       //   __KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R
       // In this setting, we need decrease SHIFT_R only once.
-      // So, we transform values of fromFlags_.
+      // So, we use pureFromModifierFlags_.
       //
       // [before]
-      //   fromEvent_ : KeyCode::SHIFT_R
-      //   fromFlags_ : ModifierFlag::SHIFT_R | ModifierFlag::NONE
+      //   fromEvent_         : KeyCode::SHIFT_R
+      //   fromModifierFlags_ : ModifierFlag::SHIFT_R | ModifierFlag::NONE
       //
       // [after]
-      //   fromEvent_ : KeyCode::SHIFT_R
-      //   fromFlags_ : ModifierFlag::NONE
+      //   fromEvent_             : KeyCode::SHIFT_R
+      //   pureFromModifierFlags_ : ModifierFlag::NONE
       //
-      // Note: we need to apply this transformation after calling fromEvent_.changePressingState.
+      // Note: we need to use pureFromModifierFlags_ after calling fromEvent_.changePressingState.
 
       if (fromEvent_.isPressing()) {
         FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());

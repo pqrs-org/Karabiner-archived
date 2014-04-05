@@ -9,7 +9,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     List* PointingRelativeToScroll::queue_ = NULL;
-    Flags PointingRelativeToScroll::currentFromFlags_ = Flags();
+    Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;
     Flags PointingRelativeToScroll::currentToFlags_ = Flags();
     TimerWrapper PointingRelativeToScroll::timer_;
 
@@ -65,7 +65,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_type_) {
             case INDEX_TYPE_DEFAULT:
-              fromFlags_.add(datatype, newval);
+              fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
               keytokey_.add(datatype, newval);
               break;
             case INDEX_TYPE_TOFLAGS:
@@ -132,7 +132,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // Skip on error in order to avoid this situation.
       if (fromEvent_.getType() == FromEvent::Type::NONE &&
-          fromFlags_ == Flags(0)) {
+          fromModifierFlags_.empty()) {
         IOLOG_WARN("Ignore __PointingRelativeToScroll__ with no option. "
                    "Please use \"__PointingRelativeToScroll__ PointingButton::NONE\".\n");
         return false;
@@ -151,15 +151,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       if (! useFromEvent) {
-        if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
+        if (! FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) return false;
         goto doremap;
 
       } else {
         // FromEvent == KeyCode or ConsumerKeyCode or PointingButton.
 
         bool pressingStateChanged = fromEvent_.changePressingState(remapParams.paramsUnion,
-                                                                   FlagStatus::globalFlagStatus().makeFlags(),
-                                                                   fromFlags_);
+                                                                   FlagStatus::globalFlagStatus(),
+                                                                   fromModifierFlags_);
         if (pressingStateChanged) {
           if (fromEvent_.isPressing()) {
             // down event
@@ -304,7 +304,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       absolute_distance_ += abs(chained_delta1_) + abs(chained_delta2_);
       queue_->push_back(new Item(chained_delta1_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE, chained_delta2_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE));
 
-      currentFromFlags_ = fromFlags_;
+      currentFromModifierFlags_ = fromModifierFlags_;
       currentToFlags_ = toFlags_;
       timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
     }
@@ -328,7 +328,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       // ----------------------------------------
-      FlagStatus::globalFlagStatus().temporary_decrease(currentFromFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(currentFromModifierFlags_);
       FlagStatus::globalFlagStatus().temporary_increase(currentToFlags_);
       {
         int d1 = delta1;
@@ -345,7 +345,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Because normal cursor move event don't restore temporary_count_.
       // (See EventInputQueue::push_RelativePointerEventCallback.)
       FlagStatus::globalFlagStatus().temporary_decrease(currentToFlags_);
-      FlagStatus::globalFlagStatus().temporary_increase(currentFromFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(currentFromModifierFlags_);
 
       // ----------------------------------------
       if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_momentum_scroll)) {
