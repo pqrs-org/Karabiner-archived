@@ -5,10 +5,8 @@
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
-    IgnoreMultipleSameKeyPress::IgnoreMultipleSameKeyPress(void)
-    {
-      lastkeycode_ = KeyCode::VK_NONE;
-    }
+    IgnoreMultipleSameKeyPress::IgnoreMultipleSameKeyPress(void) : needToIgnore_(false)
+    {}
 
     IgnoreMultipleSameKeyPress::~IgnoreMultipleSameKeyPress(void)
     {}
@@ -18,12 +16,14 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:
-          fromKey_.key = KeyCode(newval);
+        case BRIDGE_DATATYPE_CONSUMERKEYCODE:
+        case BRIDGE_DATATYPE_POINTINGBUTTON:
+          fromEvent_ = FromEvent(datatype, newval);
           break;
 
         case BRIDGE_DATATYPE_MODIFIERFLAG:
         case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
-          fromKey_.flags.add(datatype, newval);
+          fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
           break;
 
         default:
@@ -35,25 +35,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams)
     {
-      Params_KeyboardEventCallBack* params = remapParams.paramsUnion.get_Params_KeyboardEventCallBack();
-      if (! params) return false;
-
-      if (remapParams.isremapped || ! FlagStatus::globalFlagStatus().makeFlags().isOn(fromKey_.flags)) {
-        lastkeycode_ = KeyCode::VK_NONE;
-        return false;
+      if (remapParams.isremapped) goto nottargetevent;
+      if (! fromEvent_.changePressingState(remapParams.paramsUnion,
+                                           FlagStatus::globalFlagStatus(),
+                                           fromModifierFlags_)) {
+        goto nottargetevent;
       }
 
-      if (fromKey_.key == params->key &&
-          fromKey_.key == lastkeycode_) {
+      if (needToIgnore_) {
         // disable event.
         remapParams.isremapped = true;
         return true;
       }
 
-      // set lastkeycode_ if KeyUp.
-      if (! params->ex_iskeydown) {
-        lastkeycode_ = params->key;
+      if (! fromEvent_.isPressing()) {
+        needToIgnore_ = true;
       }
+      return false;
+
+    nottargetevent:
+      needToIgnore_ = false;
       return false;
     }
   }
