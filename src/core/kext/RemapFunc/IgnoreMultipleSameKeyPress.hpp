@@ -1,6 +1,7 @@
 #ifndef IGNOREMULTIPLESAMEKEYPRESS_HPP
 #define IGNOREMULTIPLESAMEKEYPRESS_HPP
 
+#include "FromEvent.hpp"
 #include "RemapFuncClasses.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -18,8 +19,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void add(AddDataType datatype, AddValue newval);
 
     private:
-      PairKeyFlags fromKey_;
-      KeyCode lastkeycode_;
+      FromEvent fromEvent_;
+      Vector_ModifierFlag fromModifierFlags_;
+      bool needToIgnore_;
     };
   }
 }

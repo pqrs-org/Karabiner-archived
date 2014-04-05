@@ -15,17 +15,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     const ParamsUnion& paramsUnion;
     bool isremapped;
   };
-
-  namespace RemapFunc {
-    struct PairKeyFlags {
-      PairKeyFlags(void) {}
-      PairKeyFlags(KeyCode k) : key(k) {}
-
-      KeyCode key;
-      Flags flags;
-    };
-    DECLARE_VECTOR(PairKeyFlags);
-  }
 }
 
 #endif
