@@ -106,7 +106,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     initialize();
   }
 
-  FlagStatus::FlagStatus(Flags flags) : FlagStatus()
+  FlagStatus::FlagStatus(Flags flags)
   {
     initialize();
 
