@@ -89,7 +89,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-  FlagStatus::FlagStatus(void)
+  void
+  FlagStatus::initialize(void)
   {
     for (int i = 0;; ++i) {
       ModifierFlag f = Flags::getModifierFlagByIndex(i);
@@ -97,6 +98,22 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       item_.push_back(Item());
       item_.back().initialize(f);
+    }
+  }
+
+  FlagStatus::FlagStatus(void)
+  {
+    initialize();
+  }
+
+  FlagStatus::FlagStatus(Flags flags) : FlagStatus()
+  {
+    initialize();
+
+    for (size_t i = 0; i < item_.size(); ++i) {
+      if (flags.isOn(item_[i].flag_)) {
+        item_[i].increase();
+      }
     }
   }
 
