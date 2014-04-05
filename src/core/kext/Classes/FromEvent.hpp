@@ -1,6 +1,7 @@
 #ifndef FROMEVENT_HPP
 #define FROMEVENT_HPP
 
+#include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
 #include "ParamsUnion.hpp"
 #include "Vector.hpp"
@@ -39,7 +40,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     Type::Value getType(void) const { return type_; }
 
     // Return whether pressing state is changed.
-    bool changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags);
+    bool changePressingState(const ParamsUnion& paramsUnion,
+                             const FlagStatus& currentFlags,
+                             const Vector_ModifierFlag& fromFlags);
+
     bool isPressing(void) const { return isPressing_; }
     void unsetPressingState(void) { isPressing_ = false; }
 

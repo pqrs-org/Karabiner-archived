@@ -96,87 +96,107 @@ TEST(Generic, changePressingState) {
     FromEvent fe(KeyCode::RETURN);
     EXPECT_EQ(false, fe.isPressing());
 
-    Flags currentFlags(0);
-    Flags fromFlags(0);
-
     // ----------------------------------------
     // Without Flags
     // (For example, "change return to tab".)
+    {
+      FlagStatus currentFlags;
+      Vector_ModifierFlag fromFlags;
 
-    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
-    EXPECT_EQ(true,  fe.isPressing());
+      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
+      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
 
-    // Another event does not modify state
-    EXPECT_EQ(false, fe.changePressingState(down_shift, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
-    EXPECT_EQ(false, fe.changePressingState(up_shift, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
+      // Another event does not modify state
+      EXPECT_EQ(false, fe.changePressingState(down_shift, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
+      EXPECT_EQ(false, fe.changePressingState(up_shift, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
+    }
 
     // ----------------------------------------
     // Set currentFlags
     // (For example, "change return to tab".)
+    {
+      Flags f(ModifierFlag::SHIFT_L);
+      FlagStatus currentFlags(f);
+      Vector_ModifierFlag fromFlags;
 
-    currentFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
-    EXPECT_EQ(true,  fe.isPressing());
+      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
+      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
+    }
 
     // ----------------------------------------
     // Set fromFlags
     // (For example, "change shift-return to tab".)
+    {
+      FlagStatus currentFlags;
+      Vector_ModifierFlag fromFlags;
+      fromFlags.push_back(ModifierFlag::SHIFT_L);
 
-    // Does not change state if currentFlags lacks flags.
-    currentFlags = Flags(0);
-    fromFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(false, fe.changePressingState(down_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
+      // Does not change state if currentFlags lacks flags.
+      EXPECT_EQ(false, fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
 
-    EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
+      EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
+    }
+    {
+      Flags f(ModifierFlag::SHIFT_L);
+      FlagStatus currentFlags(f);
+      Vector_ModifierFlag fromFlags;
+      fromFlags.push_back(ModifierFlag::SHIFT_L);
 
-    // ----------
-    currentFlags = Flags(ModifierFlag::SHIFT_L);
-    fromFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
-    EXPECT_EQ(true,  fe.isPressing());
+      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
+      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
+    }
+    {
+      Flags f(ModifierFlag::SHIFT_L);
+      FlagStatus currentFlags(f);
+      Vector_ModifierFlag fromFlags;
+      fromFlags.push_back(ModifierFlag::SHIFT_L);
 
-    // ----------
-    currentFlags = Flags(ModifierFlag::SHIFT_L);
-    fromFlags = Flags(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
-    EXPECT_EQ(true,  fe.isPressing());
+      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.isPressing());
 
-    // Change state even if currentFlags lacks flags when key is pressing.
-    // This behavior is necessary for this case.
-    // - shift down
-    // - return down (shift-return is pressed.)
-    // - shift up
-    // - return up (shift-return is released.)
-    currentFlags = Flags(0);
-    EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
-    // return false if call changePressingState once again.
-    EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
+      // Change state even if currentFlags lacks flags when key is pressing.
+      // This behavior is necessary for this case.
+      // - shift down
+      // - return down (shift-return is pressed.)
+      // - shift up
+      // - return up (shift-return is released.)
+      currentFlags.reset();
+      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.isPressing());
+      // return false if call changePressingState once again.
+      EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
+    }
   }
   {
     FromEvent fe(KeyCode::SPACE);
-    EXPECT_EQ(false, fe.changePressingState(down_return, Flags(0), Flags(0)));
-    EXPECT_EQ(false, fe.changePressingState(up_return, Flags(0), Flags(0)));
+    FlagStatus currentFlags;
+    Vector_ModifierFlag fromFlags;
+    EXPECT_EQ(false, fe.changePressingState(down_return, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
-    EXPECT_EQ(true,  fe.changePressingState(down_shift, Flags(ModifierFlag::SHIFT_L), Flags(0)));
-    EXPECT_EQ(true,  fe.isPressing());
+    Flags f(ModifierFlag::SHIFT_L);
+    FlagStatus currentFlags(f);
+    Vector_ModifierFlag fromFlags;
+    EXPECT_EQ(true, fe.changePressingState(down_shift, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.isPressing());
 
-    EXPECT_EQ(true,  fe.changePressingState(up_shift, Flags(0), Flags(0)));
+    currentFlags.reset();
+    EXPECT_EQ(true,  fe.changePressingState(up_shift, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
   }
 }
@@ -184,9 +204,11 @@ TEST(Generic, changePressingState) {
 TEST(Generic, unsetPressingState) {
   {
     FromEvent fe(KeyCode::RETURN);
+    FlagStatus currentFlags;
+    Vector_ModifierFlag fromFlags;
 
-    EXPECT_EQ(true,  fe.changePressingState(down_return, Flags(0), Flags(0)));
-    EXPECT_EQ(true,  fe.isPressing());
+    EXPECT_EQ(true, fe.changePressingState(down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.isPressing());
 
     fe.unsetPressingState();
     EXPECT_EQ(false, fe.isPressing());
