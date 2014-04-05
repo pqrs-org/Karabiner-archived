@@ -48,7 +48,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   bool
-  FromEvent::changePressingState(const ParamsUnion& paramsUnion, Flags currentFlags, Flags fromFlags)
+  FromEvent::changePressingState(const ParamsUnion& paramsUnion,
+                                 const FlagStatus& currentFlags,
+                                 const Vector_ModifierFlag& fromFlags)
   {
     bool isDown = false;
     if (! isTargetEvent(isDown, paramsUnion)) return false;
