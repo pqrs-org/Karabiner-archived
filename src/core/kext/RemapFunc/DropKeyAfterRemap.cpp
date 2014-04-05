@@ -24,7 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_MODIFIERFLAG:
         case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
-          fromFlags_.add(datatype, newval);
+          fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
           break;
         }
 
@@ -38,7 +38,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     DropKeyAfterRemap::drop(const Params_KeyboardEventCallBack& params)
     {
       ParamsUnion paramsUnion(params);
-      if (! fromEvent_.changePressingState(paramsUnion, params.flags, fromFlags_)) return false;
+      FlagStatus currentFlags(params.flags);
+      if (! fromEvent_.changePressingState(paramsUnion, currentFlags, fromModifierFlags_)) return false;
       return true;
     }
   }

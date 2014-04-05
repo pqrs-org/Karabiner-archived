@@ -19,7 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       FromEvent fromEvent_;
-      Flags fromFlags_;
+      Vector_ModifierFlag fromModifierFlags_;
     };
   }
 };
