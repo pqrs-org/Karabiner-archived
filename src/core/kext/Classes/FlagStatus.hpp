@@ -118,6 +118,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags getLockedFlags(void) const;
     Flags getStickyFlags(void) const;
 
+    void increase(const Vector_ModifierFlag& modifierFlags);
+    void decrease(const Vector_ModifierFlag& modifierFlags);
+    void temporary_increase(const Vector_ModifierFlag& modifierFlags);
+    void temporary_decrease(const Vector_ModifierFlag& modifierFlags);
+    void lock_increase(const Vector_ModifierFlag& modifierFlags);
+    void lock_decrease(const Vector_ModifierFlag& modifierFlags);
+    void lock_toggle(const Vector_ModifierFlag& modifierFlags);
+    void sticky_increase(const Vector_ModifierFlag& modifierFlags);
+    void sticky_decrease(const Vector_ModifierFlag& modifierFlags);
+    void sticky_toggle(const Vector_ModifierFlag& modifierFlags);
+
+    // TODO: remove these methods.
     void increase(Flags flags);
     void decrease(Flags flags);
     void increase(ModifierFlag flag) { increase(Flags(flag)); }
