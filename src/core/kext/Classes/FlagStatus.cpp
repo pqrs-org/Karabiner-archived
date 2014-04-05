@@ -229,6 +229,51 @@ namespace org_pqrs_KeyRemap4MacBook {
   void FlagStatus::sticky_toggle(Flags flags)      { FOREACH_TO_FLAGS(sticky_toggle);   updateStatusMessage(); }
 #undef FOREACH_TO_FLAGS
 
+#define FOREACH_TO_FLAGS(METHOD) {                    \
+    for (size_t i = 0; i < item_.size(); ++i) {       \
+      if (modifierFlags.is_include(item_[i].flag_)) { \
+        item_[i].METHOD();                            \
+      }                                               \
+    }                                                 \
+}
+  void FlagStatus::increase(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(increase);
+  }
+  void FlagStatus::decrease(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(decrease);
+  }
+  void FlagStatus::temporary_increase(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(temporary_increase);
+  }
+  void FlagStatus::temporary_decrease(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(temporary_decrease);
+  }
+  void FlagStatus::lock_increase(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(lock_increase);
+    updateStatusMessage();
+  }
+  void FlagStatus::lock_decrease(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(lock_decrease);
+    updateStatusMessage();
+  }
+  void FlagStatus::lock_toggle(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(lock_toggle);
+    updateStatusMessage();
+  }
+  void FlagStatus::sticky_increase(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(sticky_increase);
+    updateStatusMessage();
+  }
+  void FlagStatus::sticky_decrease(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(sticky_decrease);
+    updateStatusMessage();
+  }
+  void FlagStatus::sticky_toggle(const Vector_ModifierFlag& modifierFlags) {
+    FOREACH_TO_FLAGS(sticky_toggle);
+    updateStatusMessage();
+  }
+#undef FOREACH_TO_FLAGS
+
   void FlagStatus::sticky_clear(void) {
     for (size_t i = 0; i < item_.size(); ++i) {
       item_[i].sticky_decrease();
