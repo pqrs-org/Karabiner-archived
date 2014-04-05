@@ -49,8 +49,15 @@ namespace org_pqrs_KeyRemap4MacBook {
               IOLOG_ERROR("Invalid KeyToKey::add\n");
               break;
             case 1:
-              fromFlags_.add(datatype, newval);
+            {
+              ModifierFlag modifierFlag(datatype, newval);
+              fromFlags_.add(modifierFlag);
+              fromModifierFlags_.push_back(modifierFlag);
+              if (fromEvent_.getModifierFlag() != modifierFlag) {
+                pureFromModifierFlags_.push_back(modifierFlag);
+              }
               break;
+            }
             default:
               if (! getCurrentToEvent().empty()) {
                 getCurrentToEvent().back().addModifierFlag(datatype, newval);
@@ -123,9 +130,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // Note: we need to apply this transformation after calling fromEvent_.changePressingState.
 
-      Flags fromFlags = fromFlags_;
-      fromFlags.remove(fromEvent_.getModifierFlag());
-
       if (fromEvent_.isPressing()) {
         FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
         ButtonStatus::decrease(fromEvent_.getPointingButton());
@@ -137,7 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------------------------------------
       // Handle beforeKeys_
       if (fromEvent_.isPressing()) {
-        FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
+        FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
         for (size_t i = 0; i < beforeKeys_.size(); ++i) {
           FlagStatus::globalFlagStatus().temporary_increase(beforeKeys_[i].getFlags());
@@ -148,7 +152,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           FlagStatus::globalFlagStatus().temporary_decrease(beforeKeys_[i].getFlags());
         }
 
-        FlagStatus::globalFlagStatus().temporary_increase(fromFlags);
+        FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
       }
 
       // ----------------------------------------
@@ -169,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           if (toModifierFlag == ModifierFlag::ZERO && ! toKeys_[0].isEventLikeModifier()) {
             // toKey
-            FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
+            FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
             FlagStatus::globalFlagStatus().temporary_increase(toKeys_[0].getFlags());
 
           } else {
@@ -180,10 +184,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             if (fromEvent_.isPressing()) {
               FlagStatus::globalFlagStatus().increase(toKeys_[0].getFlags() | toModifierFlag);
-              FlagStatus::globalFlagStatus().decrease(fromFlags);
+              FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
             } else {
               FlagStatus::globalFlagStatus().decrease(toKeys_[0].getFlags() | toModifierFlag);
-              FlagStatus::globalFlagStatus().increase(fromFlags);
+              FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
             }
           }
 
@@ -206,7 +210,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (fromEvent_.isPressing()) {
             KeyboardRepeat::cancel();
 
-            FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
+            FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
             size_t size = toKeys_.size();
             // If the last key is modifier, we give it special treatment.
@@ -228,10 +232,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               // restore temporary flag.
-              FlagStatus::globalFlagStatus().temporary_increase(fromFlags);
+              FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
 
               FlagStatus::globalFlagStatus().increase(lastToEvent.getFlags() | lastToEventModifierFlag);
-              FlagStatus::globalFlagStatus().decrease(fromFlags);
+              FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
               if (isLastToEventLikeModifier) {
                 // Don't call EventOutputQueue::FireModifiers::fire here.
@@ -258,14 +262,14 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else {
             if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               // For Lazy-Modifiers (KeyCode::VK_LAZY_*),
-              // we need to handle these keys before restoring fromFlags, lastKeyFlags and lastKeyModifierFlag.
+              // we need to handle these keys before restoring pureFromModifierFlags_, lastKeyFlags and lastKeyModifierFlag.
               // The unnecessary modifier events occur unless we do it.
               if (isLastToEventLikeModifier) {
                 lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), false);
               }
 
               FlagStatus::globalFlagStatus().decrease(lastToEvent.getFlags() | lastToEventModifierFlag);
-              FlagStatus::globalFlagStatus().increase(fromFlags);
+              FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
               EventOutputQueue::FireModifiers::fire();
 
             } else {
@@ -285,7 +289,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // clear temporary flags.
           FlagStatus::globalFlagStatus().globalFlagStatus().set();
 
-          FlagStatus::globalFlagStatus().temporary_decrease(fromFlags);
+          FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
           for (size_t i = 0; i < afterKeys_.size(); ++i) {
             FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getFlags());
@@ -296,7 +300,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getFlags());
           }
 
-          FlagStatus::globalFlagStatus().temporary_increase(fromFlags);
+          FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
         }
       }
 
