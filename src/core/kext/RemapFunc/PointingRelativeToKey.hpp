@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       PointingRelativeToKey(const PointingRelativeToKey& rhs); // Prevent copy-construction
       PointingRelativeToKey& operator=(const PointingRelativeToKey& rhs); // Prevent assignment
 
-      Flags fromFlags_;
+      Vector_ModifierFlag fromModifierFlags_;
 
       DeltaBuffer deltaBuffer_dx_;
       DeltaBuffer deltaBuffer_dy_;

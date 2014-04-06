@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             return;
           } else {
             if (keytokey_.toKeysSize() == 0) {
-              fromFlags_.add(datatype, newval);
+              fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
             }
             keytokey_.add(datatype, newval);
           }
@@ -181,7 +181,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       // handle KeyDown event.
-      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) return false;
 
       // Check the first item in queue_ is target.
       //

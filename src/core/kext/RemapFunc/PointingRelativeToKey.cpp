@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
         {
           if (! current_keytokey_) {
-            fromFlags_.add(datatype, newval);
+            fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
 
             for (size_t i = 0; i < KEYTOKEY__END__; ++i) {
               keytokey_[i].add(datatype, newval);
@@ -77,7 +77,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ------------------------------------------------------------
       if (remapParams.isremapped) return false;
-      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) return false;
       // skip button press/release events.
       if (params->ex_button != PointingButton::NONE) return false;
 

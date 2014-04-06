@@ -21,7 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              fromFlags_.add(datatype, newval);
+              fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
               break;
             default:
               toFlags_.add(datatype, newval);
@@ -47,11 +47,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! params) return false;
 
       if (remapParams.isremapped) return false;
-      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) return false;
 
       remapParams.isremapped = true;
 
-      FlagStatus::globalFlagStatus().temporary_decrease(fromFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(fromModifierFlags_);
       FlagStatus::globalFlagStatus().temporary_increase(toFlags_);
 
       EventOutputQueue::FireScrollWheel::fire(*params);
@@ -73,7 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // (4) drag mouse (option+left drag)
       // ------------------------------------------------------------
       FlagStatus::globalFlagStatus().temporary_decrease(toFlags_);
-      FlagStatus::globalFlagStatus().temporary_increase(fromFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(fromModifierFlags_);
 
       return true;
     }
