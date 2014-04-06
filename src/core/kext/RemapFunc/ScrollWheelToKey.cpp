@@ -66,7 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             default:
               if (index_ == 1) {
-                fromFlags_.add(datatype, newval);
+                fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
               }
               keytokey_.add(datatype, newval);
               break;
@@ -115,7 +115,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // --------------------
       if (remapParams.isremapped) return false;
-      if (! FlagStatus::globalFlagStatus().makeFlags().isOn(fromFlags_)) return false;
+      if (! FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) return false;
 
       if (fromScrollWheel_ != firstScrollWheelEvent_) return false;
 

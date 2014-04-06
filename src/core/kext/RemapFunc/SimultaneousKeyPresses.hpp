@@ -64,7 +64,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       Vector_FromInfo fromInfo_;
       bool isFromInfoFull_;
-      Flags fromFlags_;
+      Vector_ModifierFlag fromModifierFlags_;
 
       // --------------------
       bool isToRaw_;

@@ -22,7 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
 
       size_t index_;
-      Flags fromFlags_;
+      Vector_ModifierFlag fromModifierFlags_;
       ScrollWheel fromScrollWheel_;
 
       IntervalChecker continuousScrollEvent_ic_;
