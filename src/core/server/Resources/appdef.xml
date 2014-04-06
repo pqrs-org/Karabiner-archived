@@ -17,6 +17,7 @@
   <appdef>
     <appname>TEXTMATE</appname>
     <prefix>com.macromates.textmate</prefix>
+    <prefix>com.macromates.TextMate</prefix>
   </appdef>
 
   <appdef>
