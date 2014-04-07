@@ -143,12 +143,12 @@ namespace org_pqrs_KeyRemap4MacBook {
         FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
         for (size_t i = 0; i < beforeKeys_.size(); ++i) {
-          FlagStatus::globalFlagStatus().temporary_increase(beforeKeys_[i].getFlags());
+          FlagStatus::globalFlagStatus().temporary_increase(beforeKeys_[i].getModifierFlags());
 
           Flags f = FlagStatus::globalFlagStatus().makeFlags();
           beforeKeys_[i].fire_downup(f);
 
-          FlagStatus::globalFlagStatus().temporary_decrease(beforeKeys_[i].getFlags());
+          FlagStatus::globalFlagStatus().temporary_decrease(beforeKeys_[i].getModifierFlags());
         }
 
         FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
@@ -173,7 +173,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (toModifierFlag == ModifierFlag::ZERO && ! toKeys_[0].isEventLikeModifier()) {
             // toKey
             FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
-            FlagStatus::globalFlagStatus().temporary_increase(toKeys_[0].getFlags());
+            FlagStatus::globalFlagStatus().temporary_increase(toKeys_[0].getModifierFlags());
 
           } else {
             // toModifier or VirtualKey::isKeyLikeModifier
@@ -182,10 +182,10 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             if (fromEvent_.isPressing()) {
-              FlagStatus::globalFlagStatus().increase(toKeys_[0].getFlags() | toModifierFlag);
+              FlagStatus::globalFlagStatus().increase(toModifierFlag, toKeys_[0].getModifierFlags());
               FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
             } else {
-              FlagStatus::globalFlagStatus().decrease(toKeys_[0].getFlags() | toModifierFlag);
+              FlagStatus::globalFlagStatus().decrease(toModifierFlag, toKeys_[0].getModifierFlags());
               FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
             }
           }
@@ -220,20 +220,20 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             for (size_t i = 0; i < size; ++i) {
-              FlagStatus::globalFlagStatus().temporary_increase(toKeys_[i].getFlags());
+              FlagStatus::globalFlagStatus().temporary_increase(toKeys_[i].getModifierFlags());
 
               Flags f = FlagStatus::globalFlagStatus().makeFlags();
 
               toKeys_[i].fire_downup(f, true);
 
-              FlagStatus::globalFlagStatus().temporary_decrease(toKeys_[i].getFlags());
+              FlagStatus::globalFlagStatus().temporary_decrease(toKeys_[i].getModifierFlags());
             }
 
             if (isLastToEventModifierKey || isLastToEventLikeModifier) {
               // restore temporary flag.
               FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
 
-              FlagStatus::globalFlagStatus().increase(lastToEvent.getFlags() | lastToEventModifierFlag);
+              FlagStatus::globalFlagStatus().increase(lastToEventModifierFlag, lastToEvent.getModifierFlags());
               FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
               if (isLastToEventLikeModifier) {
@@ -267,7 +267,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                 lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), false);
               }
 
-              FlagStatus::globalFlagStatus().decrease(lastToEvent.getFlags() | lastToEventModifierFlag);
+              FlagStatus::globalFlagStatus().decrease(lastToEventModifierFlag, lastToEvent.getModifierFlags());
               FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
               EventOutputQueue::FireModifiers::fire();
 
@@ -291,12 +291,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
           for (size_t i = 0; i < afterKeys_.size(); ++i) {
-            FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getFlags());
+            FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getModifierFlags());
 
             Flags f = FlagStatus::globalFlagStatus().makeFlags();
             afterKeys_[i].fire_downup(f);
 
-            FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getFlags());
+            FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getModifierFlags());
           }
 
           FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);

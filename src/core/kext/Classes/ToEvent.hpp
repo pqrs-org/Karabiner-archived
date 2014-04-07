@@ -36,8 +36,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    Flags getFlags(void) const { return flags_; }
-    void addModifierFlag(AddDataType datatype, AddValue newval) { flags_.add(datatype, newval); }
+    const Vector_ModifierFlag& getModifierFlags(void) const { return modifierFlags_; }
+    void addModifierFlag(AddDataType datatype, AddValue newval) {
+      modifierFlags_.push_back(ModifierFlag(datatype, newval));
+    }
 
     Type::Value getType(void) const { return type_; }
 
@@ -54,7 +56,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   private:
     Type::Value type_;
-    Flags flags_;
+    Vector_ModifierFlag modifierFlags_;
     KeyCode key_;
     ConsumerKeyCode consumer_;
     PointingButton button_;
