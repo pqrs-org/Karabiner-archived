@@ -130,32 +130,32 @@ namespace org_pqrs_KeyRemap4MacBook {
     void sticky_decrease(const Vector_ModifierFlag& modifierFlags);
     void sticky_toggle(const Vector_ModifierFlag& modifierFlags);
 
-    // TODO: remove these methods.
-    void increase(Flags flags);
-    void decrease(Flags flags);
-    void increase(ModifierFlag flag) { increase(Flags(flag)); }
-    void decrease(ModifierFlag flag) { decrease(Flags(flag)); }
-    void temporary_increase(Flags flags);
-    void temporary_decrease(Flags flags);
-    void temporary_increase(ModifierFlag flag) { temporary_increase(Flags(flag)); }
-    void temporary_decrease(ModifierFlag flag) { temporary_decrease(Flags(flag)); }
-    void lock_increase(Flags flags);
-    void lock_increase(ModifierFlag flag) { lock_increase(Flags(flag)); }
-    void lock_decrease(Flags flags);
-    void lock_decrease(ModifierFlag flag) { lock_decrease(Flags(flag)); }
-    void lock_toggle(Flags flags);
-    void lock_toggle(ModifierFlag flag) { lock_toggle(Flags(flag)); }
+    // TODO: remove Flags methods.
+    void increase(ModifierFlag flag);
+    void decrease(ModifierFlag flag);
+    void temporary_increase(ModifierFlag flag);
+    void temporary_decrease(ModifierFlag flag);
+    void lock_increase(ModifierFlag flag);
+    void lock_decrease(ModifierFlag flag);
+    void lock_toggle(ModifierFlag flag);
+    void sticky_increase(ModifierFlag flag);
+    void sticky_decrease(ModifierFlag flag);
+    void sticky_toggle(ModifierFlag flag);
+    void sticky_clear(void);
 
     // lock_clear clears only Virtual locks (not hardware CapsLock).
     void lock_clear(void) { lock_decrease(getLockedFlags()); }
 
+    void increase(Flags flags);
+    void decrease(Flags flags);
+    void temporary_increase(Flags flags);
+    void temporary_decrease(Flags flags);
+    void lock_increase(Flags flags);
+    void lock_decrease(Flags flags);
+    void lock_toggle(Flags flags);
     void sticky_increase(Flags flags);
-    void sticky_increase(ModifierFlag flag) { sticky_increase(Flags(flag)); }
     void sticky_decrease(Flags flags);
-    void sticky_decrease(ModifierFlag flag) { sticky_decrease(Flags(flag)); }
     void sticky_toggle(Flags flags);
-    void sticky_toggle(ModifierFlag flag) { sticky_toggle(Flags(flag)); }
-    void sticky_clear(void);
 
     static FlagStatus& globalFlagStatus(void);
 
