@@ -1122,14 +1122,22 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     expected.push_back(3000);
 
     // <modifier_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifier_only>
-    expected.push_back(2);
+    expected.push_back(7);
     expected.push_back(BRIDGE_FILTERTYPE_MODIFIER_ONLY);
-    expected.push_back(0x1000 | 0x4000);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
+    expected.push_back(0x1000);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
+    expected.push_back(0x4000);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+    expected.push_back(1);
 
     // <modifier_not> ModifierFlag::MOD2 </modifier_not>
-    expected.push_back(2);
+    expected.push_back(5);
     expected.push_back(BRIDGE_FILTERTYPE_MODIFIER_NOT);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
     expected.push_back(0x2000);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+    expected.push_back(1);
 
     // <lastpressedphysicalkey_not>KeyCode::KC1</lastpressedphysicalkey_not>
     expected.push_back(3);

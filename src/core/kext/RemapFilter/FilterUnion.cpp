@@ -105,8 +105,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
           p_.modifierFilter = new ModifierFilter(type_);
           if (p_.modifierFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.modifierFilter)->add(AddValue(vec[i]));
+            for (size_t i = 1; i < length - 1; i += 2) {
+              (p_.modifierFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
             }
           }
           break;
