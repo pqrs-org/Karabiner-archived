@@ -162,13 +162,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool isOn(ModifierFlag flag) const {
       return (value_ & flag.get()) == flag.get();
     }
-    bool isOn(Flags flags) const {
-      if (flags.isOn(ModifierFlag::NONE)) {
-        return (value_ | ModifierFlag::NONE.get()) == flags.get();
-      } else {
-        return (value_ & flags.get()) == flags.get();
-      }
-    }
 
     bool isVirtualModifiersOn(void) const {
       if (isOn(ModifierFlag::NONE)) return true;
