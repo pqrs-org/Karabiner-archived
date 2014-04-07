@@ -227,68 +227,67 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
-#define FOREACH_TO_FLAGS(METHOD) {              \
-    for (size_t i = 0; i < item_.size(); ++i) { \
-      if (flags.isOn(item_[i].flag_)) {         \
-        item_[i].METHOD();                      \
-      }                                         \
-    }                                           \
-}
-  void FlagStatus::increase(Flags flags)           { FOREACH_TO_FLAGS(increase);                               }
-  void FlagStatus::decrease(Flags flags)           { FOREACH_TO_FLAGS(decrease);                               }
-  void FlagStatus::temporary_increase(Flags flags) { FOREACH_TO_FLAGS(temporary_increase);                     }
-  void FlagStatus::temporary_decrease(Flags flags) { FOREACH_TO_FLAGS(temporary_decrease);                     }
-  void FlagStatus::lock_increase(Flags flags)      { FOREACH_TO_FLAGS(lock_increase);   updateStatusMessage(); }
-  void FlagStatus::lock_decrease(Flags flags)      { FOREACH_TO_FLAGS(lock_decrease);   updateStatusMessage(); }
-  void FlagStatus::lock_toggle(Flags flags)        { FOREACH_TO_FLAGS(lock_toggle);     updateStatusMessage(); }
-  void FlagStatus::sticky_increase(Flags flags)    { FOREACH_TO_FLAGS(sticky_increase); updateStatusMessage(); }
-  void FlagStatus::sticky_decrease(Flags flags)    { FOREACH_TO_FLAGS(sticky_decrease); updateStatusMessage(); }
-  void FlagStatus::sticky_toggle(Flags flags)      { FOREACH_TO_FLAGS(sticky_toggle);   updateStatusMessage(); }
-#undef FOREACH_TO_FLAGS
+#define DEFINE_METHODS(METHOD)                                        \
+  void FlagStatus::METHOD(Flags flags) {                              \
+    for (size_t i = 0; i < item_.size(); ++i) {                       \
+      if (flags.isOn(item_[i].flag_)) {                               \
+        item_[i].METHOD();                                            \
+      }                                                               \
+    }                                                                 \
+  }                                                                   \
+  void FlagStatus::METHOD(ModifierFlag modifierFlag) {                \
+    for (size_t i = 0; i < item_.size(); ++i) {                       \
+      if (modifierFlag == item_[i].flag_) {                           \
+        item_[i].METHOD();                                            \
+      }                                                               \
+    }                                                                 \
+  }                                                                   \
+  void FlagStatus::METHOD(const Vector_ModifierFlag &modifierFlags) { \
+    for (size_t i = 0; i < item_.size(); ++i) {                       \
+      if (modifierFlags.is_include(item_[i].flag_)) {                 \
+        item_[i].METHOD();                                            \
+      }                                                               \
+    }                                                                 \
+  }                                                                   \
 
-#define FOREACH_TO_FLAGS(METHOD) {                    \
-    for (size_t i = 0; i < item_.size(); ++i) {       \
-      if (modifierFlags.is_include(item_[i].flag_)) { \
-        item_[i].METHOD();                            \
-      }                                               \
-    }                                                 \
-}
-  void FlagStatus::increase(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(increase);
-  }
-  void FlagStatus::decrease(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(decrease);
-  }
-  void FlagStatus::temporary_increase(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(temporary_increase);
-  }
-  void FlagStatus::temporary_decrease(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(temporary_decrease);
-  }
-  void FlagStatus::lock_increase(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(lock_increase);
-    updateStatusMessage();
-  }
-  void FlagStatus::lock_decrease(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(lock_decrease);
-    updateStatusMessage();
-  }
-  void FlagStatus::lock_toggle(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(lock_toggle);
-    updateStatusMessage();
-  }
-  void FlagStatus::sticky_increase(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(sticky_increase);
-    updateStatusMessage();
-  }
-  void FlagStatus::sticky_decrease(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(sticky_decrease);
-    updateStatusMessage();
-  }
-  void FlagStatus::sticky_toggle(const Vector_ModifierFlag& modifierFlags) {
-    FOREACH_TO_FLAGS(sticky_toggle);
-    updateStatusMessage();
-  }
+  DEFINE_METHODS(increase)
+  DEFINE_METHODS(decrease)
+  DEFINE_METHODS(temporary_increase)
+  DEFINE_METHODS(temporary_decrease)
+#undef DEFINE_METHODS
+
+#define DEFINE_METHODS(METHOD)                                        \
+  void FlagStatus::METHOD(Flags flags) {                              \
+    for (size_t i = 0; i < item_.size(); ++i) {                       \
+      if (flags.isOn(item_[i].flag_)) {                               \
+        item_[i].METHOD();                                            \
+        updateStatusMessage();                                        \
+      }                                                               \
+    }                                                                 \
+  }                                                                   \
+  void FlagStatus::METHOD(ModifierFlag modifierFlag) {                \
+    for (size_t i = 0; i < item_.size(); ++i) {                       \
+      if (modifierFlag == item_[i].flag_) {                           \
+        item_[i].METHOD();                                            \
+        updateStatusMessage();                                        \
+      }                                                               \
+    }                                                                 \
+  }                                                                   \
+  void FlagStatus::METHOD(const Vector_ModifierFlag &modifierFlags) { \
+    for (size_t i = 0; i < item_.size(); ++i) {                       \
+      if (modifierFlags.is_include(item_[i].flag_)) {                 \
+        item_[i].METHOD();                                            \
+        updateStatusMessage();                                        \
+      }                                                               \
+    }                                                                 \
+  }                                                                   \
+
+  DEFINE_METHODS(lock_increase)
+  DEFINE_METHODS(lock_decrease)
+  DEFINE_METHODS(lock_toggle)
+  DEFINE_METHODS(sticky_increase)
+  DEFINE_METHODS(sticky_decrease)
+  DEFINE_METHODS(sticky_toggle)
 #undef FOREACH_TO_FLAGS
 
   void FlagStatus::sticky_clear(void) {
