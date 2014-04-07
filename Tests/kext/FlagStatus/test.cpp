@@ -126,20 +126,41 @@ TEST(FlagStatus, getStickyFlags) {
 }
 
 TEST(FlagStatus, increase) {
-  FlagStatus flagStatus;
+  {
+    FlagStatus flagStatus;
 
-  // Do nothing with ModifierFlag::NONE.
-  flagStatus.increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+    // Do nothing with ModifierFlag::NONE.
+    flagStatus.increase(ModifierFlag::NONE);
+    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  flagStatus.increase(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    flagStatus.increase(ModifierFlag::SHIFT_L);
+    EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-  flagStatus.increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    flagStatus.increase(ModifierFlag::NONE);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  }
+
+  {
+    FlagStatus flagStatus;
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::CONTROL_L);
+    flagStatus.increase(ModifierFlag::SHIFT_L, v);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  }
+  {
+    FlagStatus flagStatus;
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::CONTROL_L);
+    flagStatus.increase(ModifierFlag::COMMAND_L, v);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+    flagStatus.decrease(v);
+    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  }
 }
 
 TEST(FlagStatus, decrease) {
