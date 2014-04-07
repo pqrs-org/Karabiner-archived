@@ -71,8 +71,6 @@ namespace pqrs {
     pqrs::string::tokenizer tokenizer_comma(string_no_whitespaces, ',');
     std::string arg;
     while (tokenizer_comma.split_removing_empty(arg)) {
-      uint32_t filter_value = 0;
-
       switch (filter_type) {
         case BRIDGE_FILTERTYPE_MODIFIER_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
@@ -84,8 +82,15 @@ namespace pqrs {
           while (tokenizer_pipe.split_removing_empty(value)) {
             std::string key = prefix + value;
             normalize_identifier_(key);
-            filter_value |= symbol_map_.get(key);
+            data_.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
+            ++count;
+            data_.push_back(symbol_map_.get(key));
+            ++count;
           }
+          data_.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+          ++count;
+          data_.push_back(1);
+          ++count;
           break;
         }
 
@@ -97,7 +102,8 @@ namespace pqrs {
           normalize_identifier_(arg);
           data_.push_back(xml_compiler_utilities::get_datatype(arg));
           ++count;
-          filter_value = symbol_map_.get(arg);
+          data_.push_back(symbol_map_.get(arg));
+          ++count;
           break;
         }
 
@@ -114,13 +120,11 @@ namespace pqrs {
         {
           std::string key = prefix + arg;
           normalize_identifier_(key);
-          filter_value = symbol_map_.get(key);
+          data_.push_back(symbol_map_.get(key));
+          ++count;
           break;
         }
       }
-
-      data_.push_back(filter_value);
-      ++count;
     }
 
     // ------------------------------------------------------------

@@ -8,15 +8,35 @@
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFilter {
     ModifierFilter::ModifierFilter(unsigned int t) : type_(t)
-    {}
+    {
+      Vector_ModifierFlag v;
+      targets_.push_back(v);
+    }
 
     ModifierFilter::~ModifierFilter(void)
     {}
 
     void
-    ModifierFilter::add(AddValue newval)
+    ModifierFilter::add(AddDataType datatype, AddValue newval)
     {
-      targets_.push_back(newval);
+      switch (datatype) {
+        case BRIDGE_DATATYPE_MODIFIERFLAG:
+          if (! targets_.empty()) {
+            targets_.back().push_back(ModifierFlag(datatype, newval));
+          }
+          break;
+
+        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
+        {
+          Vector_ModifierFlag v;
+          targets_.push_back(v);
+          break;
+        }
+
+        default:
+          IOLOG_ERROR("ModifierFilter::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
+          break;
+      }
     }
 
     bool
@@ -28,10 +48,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           bool isnot = (type_ == BRIDGE_FILTERTYPE_MODIFIER_NOT);
 
-          Flags current = FlagStatus::globalFlagStatus().makeFlags();
           for (size_t i = 0; i < targets_.size(); ++i) {
-            Flags f(targets_[i]);
-            if (current.isOn(f)) {
+            if (targets_[i].empty()) continue;
+
+            if (FlagStatus::globalFlagStatus().isOn(targets_[i])) {
               return isnot ? true : false;
             }
           }

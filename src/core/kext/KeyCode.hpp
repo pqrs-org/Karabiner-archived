@@ -65,6 +65,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int value_;
   };
   DECLARE_VECTOR_WITH_HELPER(ModifierFlag);
+  DECLARE_VECTOR(Vector_ModifierFlag);
 
   class Flags {
   public:
