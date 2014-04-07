@@ -119,43 +119,28 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags getLockedFlags(void) const;
     Flags getStickyFlags(void) const;
 
-    void increase(const Vector_ModifierFlag& modifierFlags);
-    void decrease(const Vector_ModifierFlag& modifierFlags);
-    void temporary_increase(const Vector_ModifierFlag& modifierFlags);
-    void temporary_decrease(const Vector_ModifierFlag& modifierFlags);
-    void lock_increase(const Vector_ModifierFlag& modifierFlags);
-    void lock_decrease(const Vector_ModifierFlag& modifierFlags);
-    void lock_toggle(const Vector_ModifierFlag& modifierFlags);
-    void sticky_increase(const Vector_ModifierFlag& modifierFlags);
-    void sticky_decrease(const Vector_ModifierFlag& modifierFlags);
-    void sticky_toggle(const Vector_ModifierFlag& modifierFlags);
+#define DECLARE_METHODS(METHOD)                                                     \
+  void METHOD(ModifierFlag modifierFlag);                                           \
+  void METHOD(ModifierFlag modifierFlag, const Vector_ModifierFlag &modifierFlags); \
+  void METHOD(const Vector_ModifierFlag &modifierFlags);                            \
+  void METHOD(Flags flags);                                                         \
 
-    // TODO: remove Flags methods.
-    void increase(ModifierFlag flag);
-    void decrease(ModifierFlag flag);
-    void temporary_increase(ModifierFlag flag);
-    void temporary_decrease(ModifierFlag flag);
-    void lock_increase(ModifierFlag flag);
-    void lock_decrease(ModifierFlag flag);
-    void lock_toggle(ModifierFlag flag);
-    void sticky_increase(ModifierFlag flag);
-    void sticky_decrease(ModifierFlag flag);
-    void sticky_toggle(ModifierFlag flag);
+    DECLARE_METHODS(increase)
+    DECLARE_METHODS(decrease)
+    DECLARE_METHODS(temporary_increase)
+    DECLARE_METHODS(temporary_decrease)
+    DECLARE_METHODS(lock_increase)
+    DECLARE_METHODS(lock_decrease)
+    DECLARE_METHODS(lock_toggle)
+    DECLARE_METHODS(sticky_increase)
+    DECLARE_METHODS(sticky_decrease)
+    DECLARE_METHODS(sticky_toggle)
+#undef DECLARE_METHODS
+
     void sticky_clear(void);
 
     // lock_clear clears only Virtual locks (not hardware CapsLock).
-    void lock_clear(void) { lock_decrease(getLockedFlags()); }
-
-    void increase(Flags flags);
-    void decrease(Flags flags);
-    void temporary_increase(Flags flags);
-    void temporary_decrease(Flags flags);
-    void lock_increase(Flags flags);
-    void lock_decrease(Flags flags);
-    void lock_toggle(Flags flags);
-    void sticky_increase(Flags flags);
-    void sticky_decrease(Flags flags);
-    void sticky_toggle(Flags flags);
+    void lock_clear(void);
 
     static FlagStatus& globalFlagStatus(void);
 

@@ -227,28 +227,36 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ------------------------------------------------------------
-#define DEFINE_METHODS(METHOD)                                        \
-  void FlagStatus::METHOD(Flags flags) {                              \
-    for (size_t i = 0; i < item_.size(); ++i) {                       \
-      if (flags.isOn(item_[i].flag_)) {                               \
-        item_[i].METHOD();                                            \
-      }                                                               \
-    }                                                                 \
-  }                                                                   \
-  void FlagStatus::METHOD(ModifierFlag modifierFlag) {                \
-    for (size_t i = 0; i < item_.size(); ++i) {                       \
-      if (modifierFlag == item_[i].flag_) {                           \
-        item_[i].METHOD();                                            \
-      }                                                               \
-    }                                                                 \
-  }                                                                   \
-  void FlagStatus::METHOD(const Vector_ModifierFlag &modifierFlags) { \
-    for (size_t i = 0; i < item_.size(); ++i) {                       \
-      if (modifierFlags.is_include(item_[i].flag_)) {                 \
-        item_[i].METHOD();                                            \
-      }                                                               \
-    }                                                                 \
-  }                                                                   \
+#define DEFINE_METHODS(METHOD)                                                                   \
+  void FlagStatus::METHOD(Flags flags) {                                                         \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (flags.isOn(item_[i].flag_)) {                                                          \
+        item_[i].METHOD();                                                                       \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
+  void FlagStatus::METHOD(ModifierFlag modifierFlag) {                                           \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (modifierFlag == item_[i].flag_) {                                                      \
+        item_[i].METHOD();                                                                       \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
+  void FlagStatus::METHOD(ModifierFlag modifierFlag, const Vector_ModifierFlag &modifierFlags) { \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (modifierFlag == item_[i].flag_ ||                                                      \
+          modifierFlags.is_include(item_[i].flag_)) {                                            \
+        item_[i].METHOD();                                                                       \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
+  void FlagStatus::METHOD(const Vector_ModifierFlag &modifierFlags) {                            \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (modifierFlags.is_include(item_[i].flag_)) {                                            \
+        item_[i].METHOD();                                                                       \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
 
   DEFINE_METHODS(increase)
   DEFINE_METHODS(decrease)
@@ -256,31 +264,40 @@ namespace org_pqrs_KeyRemap4MacBook {
   DEFINE_METHODS(temporary_decrease)
 #undef DEFINE_METHODS
 
-#define DEFINE_METHODS(METHOD)                                        \
-  void FlagStatus::METHOD(Flags flags) {                              \
-    for (size_t i = 0; i < item_.size(); ++i) {                       \
-      if (flags.isOn(item_[i].flag_)) {                               \
-        item_[i].METHOD();                                            \
-        updateStatusMessage();                                        \
-      }                                                               \
-    }                                                                 \
-  }                                                                   \
-  void FlagStatus::METHOD(ModifierFlag modifierFlag) {                \
-    for (size_t i = 0; i < item_.size(); ++i) {                       \
-      if (modifierFlag == item_[i].flag_) {                           \
-        item_[i].METHOD();                                            \
-        updateStatusMessage();                                        \
-      }                                                               \
-    }                                                                 \
-  }                                                                   \
-  void FlagStatus::METHOD(const Vector_ModifierFlag &modifierFlags) { \
-    for (size_t i = 0; i < item_.size(); ++i) {                       \
-      if (modifierFlags.is_include(item_[i].flag_)) {                 \
-        item_[i].METHOD();                                            \
-        updateStatusMessage();                                        \
-      }                                                               \
-    }                                                                 \
-  }                                                                   \
+#define DEFINE_METHODS(METHOD)                                                                   \
+  void FlagStatus::METHOD(Flags flags) {                                                         \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (flags.isOn(item_[i].flag_)) {                                                          \
+        item_[i].METHOD();                                                                       \
+        updateStatusMessage();                                                                   \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
+  void FlagStatus::METHOD(ModifierFlag modifierFlag) {                                           \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (modifierFlag == item_[i].flag_) {                                                      \
+        item_[i].METHOD();                                                                       \
+        updateStatusMessage();                                                                   \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
+  void FlagStatus::METHOD(ModifierFlag modifierFlag, const Vector_ModifierFlag &modifierFlags) { \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (modifierFlag == item_[i].flag_ ||                                                      \
+          modifierFlags.is_include(item_[i].flag_)) {                                            \
+        item_[i].METHOD();                                                                       \
+        updateStatusMessage();                                                                   \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
+  void FlagStatus::METHOD(const Vector_ModifierFlag &modifierFlags) {                            \
+    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
+      if (modifierFlags.is_include(item_[i].flag_)) {                                            \
+        item_[i].METHOD();                                                                       \
+        updateStatusMessage();                                                                   \
+      }                                                                                          \
+    }                                                                                            \
+  }                                                                                              \
 
   DEFINE_METHODS(lock_increase)
   DEFINE_METHODS(lock_decrease)
@@ -288,13 +305,25 @@ namespace org_pqrs_KeyRemap4MacBook {
   DEFINE_METHODS(sticky_increase)
   DEFINE_METHODS(sticky_decrease)
   DEFINE_METHODS(sticky_toggle)
-#undef FOREACH_TO_FLAGS
+#undef DEFINE_METHODS
 
-  void FlagStatus::sticky_clear(void) {
+  void
+  FlagStatus::sticky_clear(void)
+  {
     for (size_t i = 0; i < item_.size(); ++i) {
       item_[i].sticky_decrease();
     }
     updateStatusMessage();
+  }
+
+  void
+  FlagStatus::lock_clear(void)
+  {
+    for (size_t i = 0; i < item_.size(); ++i) {
+      if (item_[i].lock_count_) {
+        item_[i].lock_decrease();
+      }
+    }
   }
 
   void
