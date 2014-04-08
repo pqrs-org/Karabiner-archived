@@ -10,7 +10,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     List* PointingRelativeToScroll::queue_ = NULL;
     Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;
-    Flags PointingRelativeToScroll::currentToFlags_ = Flags();
+    Vector_ModifierFlag PointingRelativeToScroll::currentToModifierFlags_;
     TimerWrapper PointingRelativeToScroll::timer_;
 
     void
@@ -69,7 +69,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               keytokey_.add(datatype, newval);
               break;
             case INDEX_TYPE_TOFLAGS:
-              toFlags_.add(datatype, newval);
+              toModifierFlags_.push_back(ModifierFlag(datatype, newval));
               break;
             case INDEX_TYPE_TOKEYS:
               keytokey_.add(datatype, newval);
@@ -305,7 +305,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       queue_->push_back(new Item(chained_delta1_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE, chained_delta2_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE));
 
       currentFromModifierFlags_ = fromModifierFlags_;
-      currentToFlags_ = toFlags_;
+      currentToModifierFlags_ = toModifierFlags_;
       timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
     }
 
@@ -329,7 +329,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       // ----------------------------------------
       FlagStatus::globalFlagStatus().temporary_decrease(currentFromModifierFlags_);
-      FlagStatus::globalFlagStatus().temporary_increase(currentToFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(currentToModifierFlags_);
       {
         int d1 = delta1;
         int d2 = delta2;
@@ -344,7 +344,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // We need to restore temporary flags.
       // Because normal cursor move event don't restore temporary_count_.
       // (See EventInputQueue::push_RelativePointerEventCallback.)
-      FlagStatus::globalFlagStatus().temporary_decrease(currentToFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(currentToModifierFlags_);
       FlagStatus::globalFlagStatus().temporary_increase(currentFromModifierFlags_);
 
       // ----------------------------------------
