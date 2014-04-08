@@ -255,6 +255,11 @@
   <!-- ============================================================ -->
   <!-- languagecode -->
   <inputsourcedef>
+    <name>BELGIAN</name>
+    <languagecode>nl</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>BULGARIAN</name>
     <languagecode>bg</languagecode>
   </inputsourcedef>
