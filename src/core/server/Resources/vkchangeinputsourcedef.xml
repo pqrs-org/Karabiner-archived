@@ -152,6 +152,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_BELGIAN</name>
+    <languagecode>nl</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_BRITISH</name>
     <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
   </vkchangeinputsourcedef>
