@@ -66,7 +66,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       } index_type_;
       FromEvent fromEvent_;
       Vector_ModifierFlag fromModifierFlags_;
-      Flags toFlags_;
+      Vector_ModifierFlag toModifierFlags_;
       ToEvent toEvent_;
       KeyToKey keytokey_;
       bool isToKeysDefined_;
@@ -87,7 +87,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ----------
       static List* queue_;
       static Vector_ModifierFlag currentFromModifierFlags_;
-      static Flags currentToFlags_;
+      static Vector_ModifierFlag currentToModifierFlags_;
       static TimerWrapper timer_;
     };
   }
