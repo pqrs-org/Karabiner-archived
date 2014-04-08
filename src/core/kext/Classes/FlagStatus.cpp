@@ -324,6 +324,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         item_[i].lock_decrease();
       }
     }
+    updateStatusMessage();
   }
 
   void
