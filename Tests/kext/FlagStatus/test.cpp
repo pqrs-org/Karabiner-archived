@@ -136,8 +136,13 @@ TEST(FlagStatus, increase) {
     flagStatus.increase(ModifierFlag::SHIFT_L);
     EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-    flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    {
+      Vector_ModifierFlag v;
+      v.push_back(ModifierFlag::COMMAND_L);
+      v.push_back(ModifierFlag::CONTROL_L);
+      flagStatus.increase(v);
+      EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    }
 
     flagStatus.increase(ModifierFlag::NONE);
     EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
@@ -166,8 +171,13 @@ TEST(FlagStatus, increase) {
 TEST(FlagStatus, decrease) {
   FlagStatus flagStatus;
 
-  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  {
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::CONTROL_L);
+    flagStatus.increase(v);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  }
 
   flagStatus.decrease(ModifierFlag::CONTROL_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
@@ -180,8 +190,13 @@ TEST(FlagStatus, temporary_increase) {
   flagStatus.temporary_increase(ModifierFlag::NONE);
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  {
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::CONTROL_L);
+    flagStatus.increase(v);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  }
 
   flagStatus.temporary_increase(ModifierFlag::OPTION_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), flagStatus.makeFlags());
@@ -194,8 +209,13 @@ TEST(FlagStatus, temporary_increase) {
 TEST(FlagStatus, temporary_decrease) {
   FlagStatus flagStatus;
 
-  flagStatus.increase(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  {
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::CONTROL_L);
+    flagStatus.increase(v);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  }
 
   flagStatus.temporary_decrease(ModifierFlag::CONTROL_L);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
@@ -240,8 +260,14 @@ TEST(FlagStatus, lock_toggle) {
 TEST(FlagStatus, lock_clear) {
   FlagStatus flagStatus;
 
-  flagStatus.lock_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+  {
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::FN);
+    v.push_back(ModifierFlag::SHIFT_L);
+    flagStatus.lock_increase(v);
+    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+  }
 
   flagStatus.lock_clear();
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
@@ -254,8 +280,13 @@ TEST(FlagStatus, sticky_increase) {
   flagStatus.sticky_increase(ModifierFlag::NONE);
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
-  flagStatus.sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN), flagStatus.makeFlags());
+  {
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::FN);
+    flagStatus.sticky_increase(v);
+    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN), flagStatus.makeFlags());
+  }
 
   flagStatus.sticky_decrease(ModifierFlag::COMMAND_L);
   EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
@@ -277,8 +308,14 @@ TEST(FlagStatus, sticky_toggle) {
 TEST(FlagStatus, sticky_clear) {
   FlagStatus flagStatus;
 
-  flagStatus.sticky_increase(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+  {
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::FN);
+    v.push_back(ModifierFlag::SHIFT_L);
+    flagStatus.sticky_increase(v);
+    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+  }
 
   flagStatus.sticky_clear();
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
