@@ -159,6 +159,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     return KeyCode::VK_NONE;
   }
 
+  unsigned int
+  ModifierFlag::getRawBits(void) const
+  {
+    if (*this == ModifierFlag::CAPSLOCK)  { return 0x10000; }
+    if (*this == ModifierFlag::SHIFT_L)   { return 0x20002; }
+    if (*this == ModifierFlag::SHIFT_R)   { return 0x20004; }
+    if (*this == ModifierFlag::CONTROL_L) { return 0x40001; }
+    if (*this == ModifierFlag::CONTROL_R) { return 0x42000; }
+    if (*this == ModifierFlag::OPTION_L)  { return 0x80020; }
+    if (*this == ModifierFlag::OPTION_R)  { return 0x80040; }
+    if (*this == ModifierFlag::COMMAND_L) { return 0x100008; }
+    if (*this == ModifierFlag::COMMAND_R) { return 0x100010; }
+    if (*this == ModifierFlag::CURSOR)    { return 0x200000; }
+    if (*this == ModifierFlag::KEYPAD)    { return 0x200000; }
+    if (*this == ModifierFlag::FN)        { return 0x800000; }
+    return 0;
+  }
+
   ModifierFlag
   KeyCode::getModifierFlag(void) const
   {
