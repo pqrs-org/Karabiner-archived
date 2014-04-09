@@ -268,6 +268,11 @@ TEST(FlagStatus, lock_clear) {
     flagStatus.lock_increase(v);
     EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
   }
+  {
+    flagStatus.increase(ModifierFlag::CAPSLOCK);
+    EXPECT_EQ(ModifierFlag::CAPSLOCK | ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L,
+              flagStatus.makeFlags());
+  }
 
   flagStatus.lock_clear();
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());

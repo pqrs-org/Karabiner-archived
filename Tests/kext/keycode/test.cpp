@@ -589,6 +589,13 @@ TEST(ModifierFlag, getKeyCode) {
   EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::KEYPAD.getKeyCode());
 }
 
+TEST(ModifierFlag, getRawBits) {
+  EXPECT_EQ(0x10000, ModifierFlag::CAPSLOCK.getRawBits());
+  EXPECT_EQ(0x100008, ModifierFlag::COMMAND_L.getRawBits());
+  EXPECT_EQ(0, ModifierFlag::ZERO.getRawBits());
+  EXPECT_EQ(0, ModifierFlag::NONE.getRawBits());
+}
+
 TEST(KeyCode, getModifierFlag) {
   EXPECT_EQ(ModifierFlag::CAPSLOCK, KeyCode::CAPSLOCK.getModifierFlag());
   EXPECT_EQ(ModifierFlag::SHIFT_L, KeyCode::SHIFT_L.getModifierFlag());
