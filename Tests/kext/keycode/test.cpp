@@ -68,12 +68,12 @@ TEST(Flags, remove) {
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
   }
   {
-    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CURSOR | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
-    Flags removed = ModifierFlag::SHIFT_R | ModifierFlag::CURSOR | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
+    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
+    Flags removed = ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
 
     removed = ModifierFlag::SHIFT_R | ModifierFlag::NONE;
-    EXPECT_EQ(removed, flags.remove(ModifierFlag::CURSOR | ModifierFlag::EXTRA2));
+    EXPECT_EQ(removed, flags.remove(ModifierFlag::NUMPAD | ModifierFlag::EXTRA2));
 
     removed = Flags(0);
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_R | ModifierFlag::NONE));
@@ -113,22 +113,13 @@ TEST(Flags, stripEXTRA) {
   EXPECT_EQ(mask, flags.stripEXTRA());
 }
 
-TEST(Flags, stripCURSOR) {
+TEST(Flags, stripNUMPAD) {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
-  EXPECT_EQ(mask, flags.stripCURSOR());
+  EXPECT_EQ(mask, flags.stripNUMPAD());
 
-  flags.add(ModifierFlag::CURSOR);
-  EXPECT_EQ(mask, flags.stripCURSOR());
-}
-
-TEST(Flags, stripKEYPAD) {
-  Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  Flags flags = mask;
-  EXPECT_EQ(mask, flags.stripKEYPAD());
-
-  flags.add(ModifierFlag::KEYPAD);
-  EXPECT_EQ(mask, flags.stripKEYPAD());
+  flags.add(ModifierFlag::NUMPAD);
+  EXPECT_EQ(mask, flags.stripNUMPAD());
 }
 
 TEST(Flags, stripNONE) {
@@ -207,7 +198,7 @@ TEST(Flags, getModifierFlagByIndex) {
   }
   {
     ModifierFlag flag = Flags::getModifierFlagByIndex(9);
-    EXPECT_EQ(flag, ModifierFlag::CURSOR);
+    EXPECT_EQ(flag, ModifierFlag::NUMPAD);
   }
   {
     ModifierFlag flag = Flags::getModifierFlagByIndex(10);
@@ -407,13 +398,13 @@ TEST(KeyCode, normalizeKey) {
   // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
   {
     KeyCode key = KeyCode::CURSOR_RIGHT;
-    Flags flags = Flags(ModifierFlag::CURSOR);
+    Flags flags = Flags(ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, Flags(0));
 
     key = KeyCode::CURSOR_RIGHT;
-    flags = Flags(ModifierFlag::FN | ModifierFlag::CURSOR);
+    flags = Flags(ModifierFlag::FN | ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
     EXPECT_EQ(flags, Flags(ModifierFlag::FN));
@@ -441,7 +432,7 @@ TEST(KeyCode, reverseNormalizeKey) {
     KeyCode key = keypads[i][0];
     Flags fromFlags = Flags(ModifierFlag::SHIFT_L);
     Flags toFlags = fromFlags;
-    if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) toFlags.add(ModifierFlag::KEYPAD);
+    if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) toFlags.add(ModifierFlag::NUMPAD);
 
     vec.push_back(NormalizeItem(key, fromFlags,
                                 key, toFlags, KeyboardType::MACBOOK));
@@ -463,8 +454,8 @@ TEST(KeyCode, reverseNormalizeKey) {
 
   // CURSOR (without FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
-    vec.push_back(NormalizeItem(cursors[i][1], Flags(ModifierFlag::CURSOR),
-                                cursors[i][1], Flags(ModifierFlag::CURSOR), KeyboardType::MACBOOK));
+    vec.push_back(NormalizeItem(cursors[i][1], Flags(ModifierFlag::NUMPAD),
+                                cursors[i][1], Flags(ModifierFlag::NUMPAD), KeyboardType::MACBOOK));
   }
 
   // ----------------------------------------
@@ -477,7 +468,7 @@ TEST(KeyCode, reverseNormalizeKey) {
     KeyCode key = keypads[i][0];
     Flags fromFlags = ModifierFlag::SHIFT_L | ModifierFlag::FN;
     Flags toFlags = fromFlags;
-    if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) toFlags.add(ModifierFlag::KEYPAD);
+    if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) toFlags.add(ModifierFlag::NUMPAD);
 
     vec.push_back(NormalizeItem(key, fromFlags,
                                 key, toFlags, KeyboardType::MACBOOK));
@@ -553,18 +544,18 @@ TEST(KeyCode, reverseNormalizeKey) {
   // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
   {
     KeyCode key = KeyCode::CURSOR_RIGHT;
-    Flags flags = Flags(ModifierFlag::CURSOR);
+    Flags flags = Flags(ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, Flags(ModifierFlag::CURSOR));
+    EXPECT_EQ(flags, Flags(ModifierFlag::NUMPAD));
 
     key = KeyCode::CURSOR_RIGHT;
-    flags = Flags(ModifierFlag::FN | ModifierFlag::CURSOR);
+    flags = Flags(ModifierFlag::FN | ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, ModifierFlag::FN | ModifierFlag::CURSOR);
+    EXPECT_EQ(flags, ModifierFlag::FN | ModifierFlag::NUMPAD);
   }
 }
 
@@ -585,8 +576,7 @@ TEST(ModifierFlag, getKeyCode) {
   EXPECT_EQ(KeyCode::VK_MODIFIER_EXTRA4, ModifierFlag::EXTRA4.getKeyCode());
   EXPECT_EQ(KeyCode::VK_MODIFIER_EXTRA5, ModifierFlag::EXTRA5.getKeyCode());
 
-  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::CURSOR.getKeyCode());
-  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::KEYPAD.getKeyCode());
+  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::NUMPAD.getKeyCode());
 }
 
 TEST(ModifierFlag, getRawBits) {
