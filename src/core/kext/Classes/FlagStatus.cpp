@@ -228,13 +228,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   // ------------------------------------------------------------
 #define DEFINE_METHODS(METHOD)                                                                   \
-  void FlagStatus::METHOD(Flags flags) {                                                         \
-    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
-      if (flags.isOn(item_[i].flag_)) {                                                          \
-        item_[i].METHOD();                                                                       \
-      }                                                                                          \
-    }                                                                                            \
-  }                                                                                              \
   void FlagStatus::METHOD(ModifierFlag modifierFlag) {                                           \
     for (size_t i = 0; i < item_.size(); ++i) {                                                  \
       if (modifierFlag == item_[i].flag_) {                                                      \
@@ -265,14 +258,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 #undef DEFINE_METHODS
 
 #define DEFINE_METHODS(METHOD)                                                                   \
-  void FlagStatus::METHOD(Flags flags) {                                                         \
-    for (size_t i = 0; i < item_.size(); ++i) {                                                  \
-      if (flags.isOn(item_[i].flag_)) {                                                          \
-        item_[i].METHOD();                                                                       \
-        updateStatusMessage();                                                                   \
-      }                                                                                          \
-    }                                                                                            \
-  }                                                                                              \
   void FlagStatus::METHOD(ModifierFlag modifierFlag) {                                           \
     for (size_t i = 0; i < item_.size(); ++i) {                                                  \
       if (modifierFlag == item_[i].flag_) {                                                      \
