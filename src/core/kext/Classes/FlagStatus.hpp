@@ -123,7 +123,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void METHOD(ModifierFlag modifierFlag);                                           \
   void METHOD(ModifierFlag modifierFlag, const Vector_ModifierFlag &modifierFlags); \
   void METHOD(const Vector_ModifierFlag &modifierFlags);                            \
-  void METHOD(Flags flags);                                                         \
 
     DECLARE_METHODS(increase)
     DECLARE_METHODS(decrease)
