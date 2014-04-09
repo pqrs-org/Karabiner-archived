@@ -58,6 +58,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     unsigned int operator~(void) const { return ~value_; }
 
     KeyCode getKeyCode(void) const;
+    unsigned int getRawBits(void) const;
 
 #include "../../../src/bridge/output/include.kext.ModifierFlag.hpp"
 
