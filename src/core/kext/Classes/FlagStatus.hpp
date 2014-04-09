@@ -115,7 +115,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isOn(const Vector_ModifierFlag& modifierFlags) const;
 
-    // getLockedFlags returns only Virtual locks (not hardware CapsLock).
     Flags getLockedFlags(void) const;
     Flags getStickyFlags(void) const;
 
@@ -137,8 +136,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 #undef DECLARE_METHODS
 
     void sticky_clear(void);
-
-    // lock_clear clears only Virtual locks (not hardware CapsLock).
     void lock_clear(void);
 
     static FlagStatus& globalFlagStatus(void);
