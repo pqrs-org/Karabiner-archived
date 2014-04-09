@@ -165,9 +165,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     // it does not works well when the last is KeyUp of Command.
 
     // ------------------------------------------------------------
-    // About ModifierFlag::CURSOR (UpdateEventFlags) handling:
+    // About ModifierFlag::NUMPAD (UpdateEventFlags) handling:
     //
-    // We need to treat ModifierFlag::CURSOR specially.
+    // We need to treat ModifierFlag::NUMPAD specially.
     //
     // When we activated "Control+Right to Option+Right" and pressed Control+Right,
     // the following events are happened.
@@ -180,13 +180,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     // (4) Release Control_L | eventType:keyMod  code:0x3a name:Option_L  flags:               misc:
     // ----------------------+----------------------------------------------------------------------
     //
-    // We need to treat "ModifierFlag::CURSOR Down" event after other modifiers.
-    // We need to treat "ModifierFlag::CURSOR Up" event before other modifiers.
-    // If not, unnecessary ModifierFlag::CURSOR is added on keyMod events.
+    // We need to treat "ModifierFlag::NUMPAD Down" event after other modifiers.
+    // We need to treat "ModifierFlag::NUMPAD Up" event before other modifiers.
+    // If not, unnecessary ModifierFlag::NUMPAD is added on keyMod events.
 
-    // ModifierFlag::CURSOR (Up)
-    if (lastFlags_.isOn(ModifierFlag::CURSOR) && ! toFlags.isOn(ModifierFlag::CURSOR)) {
-      lastFlags_.remove(ModifierFlag::CURSOR);
+    // ModifierFlag::NUMPAD (Up)
+    if (lastFlags_.isOn(ModifierFlag::NUMPAD) && ! toFlags.isOn(ModifierFlag::NUMPAD)) {
+      lastFlags_.remove(ModifierFlag::NUMPAD);
 
       Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
       if (ptr) {
@@ -199,7 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
       ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
 
-      if (flag == ModifierFlag::CURSOR) continue;
+      if (flag == ModifierFlag::NUMPAD) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
 
       if (! lastFlags_.isOn(flag)) continue;
@@ -216,7 +216,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
       ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
 
-      if (flag == ModifierFlag::CURSOR) continue;
+      if (flag == ModifierFlag::NUMPAD) continue;
       if (Flags(flag).isVirtualModifiersOn()) continue;
 
       if (! toFlags.isOn(flag)) continue;
@@ -230,9 +230,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ------------------------------------------------------------
-    // ModifierFlag::CURSOR (Down)
-    if (! lastFlags_.isOn(ModifierFlag::CURSOR) && toFlags.isOn(ModifierFlag::CURSOR)) {
-      lastFlags_.add(ModifierFlag::CURSOR);
+    // ModifierFlag::NUMPAD (Down)
+    if (! lastFlags_.isOn(ModifierFlag::NUMPAD) && toFlags.isOn(ModifierFlag::NUMPAD)) {
+      lastFlags_.add(ModifierFlag::NUMPAD);
 
       Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
       if (ptr) {

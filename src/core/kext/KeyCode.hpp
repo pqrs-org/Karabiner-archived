@@ -93,8 +93,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         case 6:  return ModifierFlag::OPTION_R;
         case 7:  return ModifierFlag::COMMAND_L;
         case 8:  return ModifierFlag::COMMAND_R;
-        case 9:  return ModifierFlag::CURSOR;
-        // ModifierFlag::KEYPAD, // skip KEYPAD because CURSOR == KEYPAD.
+        case 9:  return ModifierFlag::NUMPAD;
         case 10: return ModifierFlag::FN;
         case 11: return ModifierFlag::EXTRA1;
         case 12: return ModifierFlag::EXTRA2;
@@ -149,8 +148,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags& remove(ModifierFlag flag) { return remove(Flags(flag)); }
 
     Flags& stripFN(void)     { return remove(ModifierFlag::FN); }
-    Flags& stripCURSOR(void) { return remove(ModifierFlag::CURSOR); }
-    Flags& stripKEYPAD(void) { return remove(ModifierFlag::KEYPAD); }
+    Flags& stripNUMPAD(void) { return remove(ModifierFlag::NUMPAD); }
     Flags& stripNONE(void)   { return remove(ModifierFlag::NONE); }
     Flags& stripEXTRA(void) {
       return remove(Flags(ModifierFlag::EXTRA1) |
