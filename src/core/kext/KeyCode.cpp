@@ -65,8 +65,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   KeyCode::normalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType)
   {
-    // We can drop CURSOR and KEYPAD flags, because we'll set these flags at reverseNormalizeKey.
-    flags.stripCURSOR().stripKEYPAD();
+    // We can drop NUMPAD flags, because we'll set these flags at reverseNormalizeKey.
+    flags.stripNUMPAD();
 
     if (keyboardType == KeyboardType::POWERBOOK ||
         keyboardType == KeyboardType::POWERBOOK_G4 ||
@@ -113,10 +113,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     // Therefore, we don't add ModifierFlag::FN for these keys.
 
     // ------------------------------------------------------------
-    // set ModifierFlag::KEYPAD, ModifierFlag::CURSOR
-    flags.stripCURSOR().stripKEYPAD();
+    // set ModifierFlag::NUMPAD
+    flags.stripNUMPAD();
 
-    // Note: KEYPAD_CLEAR, KEYPAD_COMMA have no ModifierFlag::KEYPAD bit.
+    // Note: KEYPAD_CLEAR, KEYPAD_COMMA have no ModifierFlag::NUMPAD bit.
     if (key == KeyCode::KEYPAD_0 || key == KeyCode::KEYPAD_1 || key == KeyCode::KEYPAD_2 ||
         key == KeyCode::KEYPAD_3 || key == KeyCode::KEYPAD_4 || key == KeyCode::KEYPAD_5 ||
         key == KeyCode::KEYPAD_6 || key == KeyCode::KEYPAD_7 || key == KeyCode::KEYPAD_8 ||
@@ -127,14 +127,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         key == KeyCode::KEYPAD_SLASH ||
         key == KeyCode::KEYPAD_MINUS ||
         key == KeyCode::KEYPAD_EQUAL) {
-      flags.add(ModifierFlag::KEYPAD);
+      flags.add(ModifierFlag::NUMPAD);
     }
 
     if (key == KeyCode::CURSOR_UP ||
         key == KeyCode::CURSOR_DOWN ||
         key == KeyCode::CURSOR_LEFT ||
         key == KeyCode::CURSOR_RIGHT) {
-      flags.add(ModifierFlag::CURSOR);
+      flags.add(ModifierFlag::NUMPAD);
     }
   }
 
@@ -171,8 +171,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (*this == ModifierFlag::OPTION_R)  { return 0x80040; }
     if (*this == ModifierFlag::COMMAND_L) { return 0x100008; }
     if (*this == ModifierFlag::COMMAND_R) { return 0x100010; }
-    if (*this == ModifierFlag::CURSOR)    { return 0x200000; }
-    if (*this == ModifierFlag::KEYPAD)    { return 0x200000; }
+    if (*this == ModifierFlag::NUMPAD)    { return 0x200000; }
     if (*this == ModifierFlag::FN)        { return 0x800000; }
     return 0;
   }
