@@ -17,7 +17,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       size_t index_;
       Vector_ModifierFlag fromModifierFlags_;
-      Flags toFlags_;
+      Vector_ModifierFlag toModifierFlags_;
     };
   }
 }

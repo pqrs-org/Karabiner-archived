@@ -24,7 +24,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               fromModifierFlags_.push_back(ModifierFlag(datatype, newval));
               break;
             default:
-              toFlags_.add(datatype, newval);
+              toModifierFlags_.push_back(ModifierFlag(datatype, newval));
               break;
           }
           break;
@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       remapParams.isremapped = true;
 
       FlagStatus::globalFlagStatus().temporary_decrease(fromModifierFlags_);
-      FlagStatus::globalFlagStatus().temporary_increase(toFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(toModifierFlags_);
 
       EventOutputQueue::FireScrollWheel::fire(*params);
       RemapFunc::PointingRelativeToScroll::cancelScroll();
@@ -72,7 +72,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       // (3) scroll (strip option)
       // (4) drag mouse (option+left drag)
       // ------------------------------------------------------------
-      FlagStatus::globalFlagStatus().temporary_decrease(toFlags_);
+      FlagStatus::globalFlagStatus().temporary_decrease(toModifierFlags_);
       FlagStatus::globalFlagStatus().temporary_increase(fromModifierFlags_);
 
       return true;
