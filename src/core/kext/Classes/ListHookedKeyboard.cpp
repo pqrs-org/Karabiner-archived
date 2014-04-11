@@ -253,6 +253,21 @@ namespace org_pqrs_KeyRemap4MacBook {
     const AbsoluteTime& ts = CommonData::getcurrent_ts();
     OSObject* refcon = NULL;
 
+    // ----------------------------------------
+    // Send an UpdateEventFlags event if needed. (Send before KeyboardEvent when EventType::DOWN)
+    bool needUpdateEventFlagsEvent = false;
+    if (params.flags.isOn(ModifierFlag::NUMPAD)) {
+      needUpdateEventFlagsEvent = true;
+    }
+
+    if (needUpdateEventFlagsEvent && params.eventType == EventType::DOWN) {
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(params.flags));
+      if (ptr) {
+        apply(*ptr);
+      }
+    }
+
+    // ----------------------------------------
     Params_KeyboardEventCallBack::log(false, params.eventType, params.flags, params.key, params.keyboardType, params.repeat);
     {
       // We need to unlock the global lock while we are calling the callback function.
@@ -267,6 +282,18 @@ namespace org_pqrs_KeyRemap4MacBook {
                params.keyboardType.get(), params.repeat, ts, sender, refcon);
     }
 
+    // ----------------------------------------
+    // Send an UpdateEventFlags event if needed. (Send after KeyboardEvent when EventType::UP)
+    if (needUpdateEventFlagsEvent && params.eventType == EventType::UP) {
+      Flags stripped(params.flags);
+      stripped.stripNUMPAD();
+      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(stripped));
+      if (ptr) {
+        apply(*ptr);
+      }
+    }
+
+    // ----------------------------------------
     // The CapsLock LED is not designed to turn it on/off frequently.
     // So, we have to use the timer to call a setAlphaLock function at appropriate frequency.
     enum {
