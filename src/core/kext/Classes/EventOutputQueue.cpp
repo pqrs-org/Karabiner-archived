@@ -42,9 +42,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       FlagStatus::globalFlagStatus().sticky_clear();
     }
   }
-  void EventOutputQueue::push(const Params_UpdateEventFlagsCallback& p) {
-    PUSH_TO_OUTPUTQUEUE;
-  }
   void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p) {
     PUSH_TO_OUTPUTQUEUE;
     if (p.ex_iskeydown) {
@@ -93,14 +90,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         break;
       }
-      case ParamsUnion::UPDATE_FLAGS:
-      {
-        Params_UpdateEventFlagsCallback* params = (p->params).get_Params_UpdateEventFlagsCallback();
-        if (params) {
-          ListHookedKeyboard::instance().apply(*params);
-        }
-        break;
-      }
       case ParamsUnion::KEYBOARD_SPECIAL:
       {
         Params_KeyboardSpecialEventCallback* params = (p->params).get_Params_KeyboardSpecialEventCallback();
@@ -136,6 +125,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
         break;
       }
+      case ParamsUnion::UPDATE_FLAGS:
+        // do nothing
+        break;
     }
 
     queue_->pop_front();
@@ -165,43 +157,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     // it does not works well when the last is KeyUp of Command.
 
     // ------------------------------------------------------------
-    // About ModifierFlag::NUMPAD (UpdateEventFlags) handling:
-    //
-    // We need to treat ModifierFlag::NUMPAD specially.
-    //
-    // When we activated "Control+Right to Option+Right" and pressed Control+Right,
-    // the following events are happened.
-    //
-    // ----------------------+----------------------------------------------------------------------
-    // (1) Press Control_L   | eventType:keyMod  code:0x3b name:Control_L flags:               misc:
-    // (2) Press Right       | eventType:keyMod  code:0x3a name:Option_L  flags:Opt            misc:
-    //                       | eventType:keyDown code:0x7c name:Right     flags:Opt NumPad Fn  misc:
-    // (3) Release Right     | eventType:keyUp   code:0x7c name:Right     flags:Opt NumPad Fn  misc:
-    // (4) Release Control_L | eventType:keyMod  code:0x3a name:Option_L  flags:               misc:
-    // ----------------------+----------------------------------------------------------------------
-    //
-    // We need to treat "ModifierFlag::NUMPAD Down" event after other modifiers.
-    // We need to treat "ModifierFlag::NUMPAD Up" event before other modifiers.
-    // If not, unnecessary ModifierFlag::NUMPAD is added on keyMod events.
-
-    // ModifierFlag::NUMPAD (Up)
-    if (lastFlags_.isOn(ModifierFlag::NUMPAD) && ! toFlags.isOn(ModifierFlag::NUMPAD)) {
-      lastFlags_.remove(ModifierFlag::NUMPAD);
-
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
-      if (ptr) {
-        EventOutputQueue::push(*ptr);
-      }
-    }
-
-    // ------------------------------------------------------------
     // KeyUp
     for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
       ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
 
-      if (flag == ModifierFlag::NUMPAD) continue;
-      if (Flags(flag).isVirtualModifiersOn()) continue;
+      // Skipping ModifierFlag::NUMPAD
+      if (flag.getKeyCode() == KeyCode::VK_NONE) continue;
+      // Skipping virtual modifiers.
+      if (flag.getRawBits() == 0) continue;
 
+      // ----------------------------------------
       if (! lastFlags_.isOn(flag)) continue;
       if (toFlags.isOn(flag)) continue;
 
@@ -216,9 +181,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
       ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
 
-      if (flag == ModifierFlag::NUMPAD) continue;
-      if (Flags(flag).isVirtualModifiersOn()) continue;
+      // Skipping ModifierFlag::NUMPAD
+      if (flag.getKeyCode() == KeyCode::VK_NONE) continue;
+      // Skipping virtual modifiers.
+      if (flag.getRawBits() == 0) continue;
 
+      // ----------------------------------------
       if (! toFlags.isOn(flag)) continue;
       if (lastFlags_.isOn(flag)) continue;
 
@@ -227,17 +195,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
       if (! ptr) continue;
       EventOutputQueue::push(*ptr);
-    }
-
-    // ------------------------------------------------------------
-    // ModifierFlag::NUMPAD (Down)
-    if (! lastFlags_.isOn(ModifierFlag::NUMPAD) && toFlags.isOn(ModifierFlag::NUMPAD)) {
-      lastFlags_.add(ModifierFlag::NUMPAD);
-
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(lastFlags_));
-      if (ptr) {
-        EventOutputQueue::push(*ptr);
-      }
     }
 
     lastFlags_ = toFlags;

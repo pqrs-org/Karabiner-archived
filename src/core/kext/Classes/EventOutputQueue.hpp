@@ -74,7 +74,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     class Item : public List::Item {
     public:
       Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
-      Item(const Params_UpdateEventFlagsCallback& p)     : params(p) {}
       Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
       Item(const Params_RelativePointerEventCallback& p) : params(p) {}
       Item(const Params_ScrollWheelEventCallback& p)     : params(p) {}
@@ -87,7 +86,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);
     static void push(const Params_KeyboardEventCallBack& p);
-    static void push(const Params_UpdateEventFlagsCallback& p);
     static void push(const Params_KeyboardSpecialEventCallback& p);
     static void push(const Params_RelativePointerEventCallback& p);
     static void push(const Params_ScrollWheelEventCallback& p);
