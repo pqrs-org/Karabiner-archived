@@ -145,20 +145,6 @@ TEST(Flags, isOn) {
   EXPECT_FALSE(flags.isOn(ModifierFlag::NONE));
 }
 
-TEST(Flags, isVirtualModifiersOn) {
-  Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  EXPECT_FALSE(flags.isVirtualModifiersOn());
-
-  flags = Flags(0);
-  EXPECT_FALSE(flags.isVirtualModifiersOn());
-
-  flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R | ModifierFlag::NONE;
-  EXPECT_TRUE(flags.isVirtualModifiersOn());
-
-  flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R | ModifierFlag::EXTRA3;
-  EXPECT_TRUE(flags.isVirtualModifiersOn());
-}
-
 TEST(Flags, getModifierFlagByIndex) {
   {
     ModifierFlag flag = Flags::getModifierFlagByIndex(0);
