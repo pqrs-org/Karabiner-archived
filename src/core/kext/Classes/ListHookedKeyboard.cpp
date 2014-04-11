@@ -232,10 +232,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid modifierkey:%08x\n", params.key.get());
       return;
     }
-    if (params.flags.isVirtualModifiersOn()) {
-      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, params.flags.get());
-      return;
-    }
 
     // ------------------------------------------------------------
     if (RemapClassManager::remap_dropkeyafterremap(params)) return;
@@ -305,11 +301,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   ListHookedKeyboard::Item::apply(const Params_UpdateEventFlagsCallback& params)
   {
-    if (params.flags.isVirtualModifiersOn()) {
-      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, params.flags.get());
-      return;
-    }
-
     // ------------------------------------------------------------
     UpdateEventFlagsCallback callback = orig_updateEventFlagsAction_;
     if (! callback) return;
