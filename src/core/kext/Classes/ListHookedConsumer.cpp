@@ -171,10 +171,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       IOLOG_ERROR("%s invalid key:%d\n", __PRETTY_FUNCTION__, params.key.get());
       return;
     }
-    if (params.flags.isVirtualModifiersOn()) {
-      IOLOG_ERROR("%s invalid flags:%d\n", __PRETTY_FUNCTION__, params.flags.get());
-      return;
-    }
 
     // ------------------------------------------------------------
     KeyboardSpecialEventCallback callback = orig_keyboardSpecialEventAction_;
