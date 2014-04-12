@@ -51,7 +51,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         value_ = 0;
       }
     }
-    unsigned int get(void) const { return value_; }
     bool operator==(ModifierFlag other) const { return value_ == other.get(); }
     bool operator!=(ModifierFlag other) const { return ! (*this == other); }
 
@@ -63,6 +62,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 #include "../../../src/bridge/output/include.kext.ModifierFlag.hpp"
 
   private:
+    unsigned int get(void) const { return value_; }
     unsigned int value_;
   };
   DECLARE_VECTOR_WITH_HELPER(ModifierFlag);
@@ -71,7 +71,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   class Flags {
   public:
     explicit Flags(unsigned int v = 0) : value_(v) {}
-    explicit Flags(ModifierFlag v) : value_(v.get()) {}
+    explicit Flags(ModifierFlag v) : value_(v.getRawBits()) {}
     unsigned int get(void) const { return value_; }
     bool operator==(Flags other) const { return value_ == other.get(); }
     bool operator!=(Flags other) const { return ! (*this == other); }
@@ -109,7 +109,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags& add(ModifierFlag flag) { value_ |= flag.getRawBits(); return *this; }
     Flags& add(AddDataType datatype, AddValue newval) {
       if (datatype == AddDataType(BRIDGE_DATATYPE_MODIFIERFLAG)) {
-        value_ |= newval;
+        add(ModifierFlag(datatype, newval));
       }
       return *this;
     }
@@ -137,7 +137,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         ModifierFlag f = getModifierFlagByIndex(i);
 
         if (! flags.isOn(f) && old.isOn(f)) {
-          value_ |= f.get();
+          value_ |= f.getRawBits();
         }
 
         if (f == ModifierFlag::NONE) break;
@@ -159,7 +159,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     bool isOn(ModifierFlag flag) const {
-      return (value_ & flag.get()) == flag.get();
+      return (value_ & flag.getRawBits()) == flag.getRawBits();
     }
 
   private:
