@@ -151,7 +151,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags& stripNUMPAD(void) { return remove(ModifierFlag::NUMPAD); }
 
     bool isOn(ModifierFlag flag) const {
-      return (value_ & flag.getRawBits()) == flag.getRawBits();
+      if (flag == ModifierFlag::ZERO) return true;
+
+      unsigned int bits = flag.getRawBits();
+      if (bits == 0) return false;
+
+      return (value_ & bits) == bits;
     }
 
   private:
