@@ -186,7 +186,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     Flags flags;
     for (size_t i = 0; i < item_.size(); ++i) {
-      flags.add(item_[i].makeFlag());
+      if (item_[i].sum() > 0) {
+        flags.add(item_[i].flag_);
+      }
     }
     return flags;
   }

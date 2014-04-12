@@ -16,6 +16,8 @@ std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os
 std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 
+Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.get() | rhs.get()); }
+
 TEST(FlagStatus, makeFlags) {
   FlagStatus flagStatus;
   EXPECT_EQ(Flags(), flagStatus.makeFlags());

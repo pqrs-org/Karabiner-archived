@@ -26,13 +26,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void reset(void);
       int sum(void) const { return count_ + temporary_count_ + lock_count_ + sticky_count_; }
-      Flags makeFlag(void) const {
-        if (sum() > 0) {
-          return Flags(flag_);
-        } else {
-          return Flags();
-        }
-      }
 
       void increase(void);
       void decrease(void);
