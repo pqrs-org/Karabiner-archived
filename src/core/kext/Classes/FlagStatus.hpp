@@ -108,9 +108,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     bool isOn(const Vector_ModifierFlag& modifierFlags) const;
 
-    Flags getLockedFlags(void) const;
-    Flags getStickyFlags(void) const;
-
 #define DECLARE_METHODS(METHOD)                                                     \
   void METHOD(ModifierFlag modifierFlag);                                           \
   void METHOD(ModifierFlag modifierFlag, const Vector_ModifierFlag &modifierFlags); \
@@ -137,8 +134,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void initialize(void);
     bool isOn(ModifierFlag modifierFlag) const;
     void updateStatusMessage(void);
+    void updateStatusMessage(unsigned int statusMessageIndex);
 
-    Flags statusMessageFlags_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
     Vector_Item item_;
   };
 }
