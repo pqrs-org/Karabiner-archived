@@ -111,6 +111,12 @@ TEST(Flags, isOn) {
 
   EXPECT_TRUE(flags.isOn(ModifierFlag::SHIFT_L));
   EXPECT_FALSE(flags.isOn(ModifierFlag::SHIFT_R));
+
+  flags = Flags();
+  EXPECT_TRUE(flags.isOn(ModifierFlag::ZERO));
+
+  flags = Flags();
+  EXPECT_FALSE(flags.isOn(ModifierFlag::NONE));
 }
 
 TEST(Flags, getModifierFlagByIndex) {
