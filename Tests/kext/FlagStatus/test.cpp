@@ -9,14 +9,14 @@ Config config;
 
 std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const KeyboardType& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.getRawBits(); }
 std::ostream& operator<<(std::ostream& os, const Flags& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const KeyCode& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 
-Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.get() | rhs.get()); }
+Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.getRawBits() | rhs.getRawBits()); }
 
 TEST(FlagStatus, makeFlags) {
   FlagStatus flagStatus;
@@ -95,6 +95,11 @@ TEST(FlagStatus, makeFlags) {
   flagStatus.reset();
   flagStatus.set(KeyCode::FN, Flags(ModifierFlag::FN));
   EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
+
+  // Virtual modifiers are ignored at makeFlags.
+  flagStatus.reset();
+  flagStatus.increase(ModifierFlag::EXTRA1);
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, getFlag) {
