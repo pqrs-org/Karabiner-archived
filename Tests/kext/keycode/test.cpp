@@ -9,7 +9,7 @@ Config config;
 
 std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const KeyboardType& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.getRawBits(); }
 std::ostream& operator<<(std::ostream& os, const Flags& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const KeyCode& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os << v.get(); }
@@ -17,6 +17,8 @@ std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os 
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const ScrollWheel& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const PointingRelative& v) { return os << v.get(); }
+
+Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.getRawBits() | rhs.getRawBits()); }
 
 TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(EventType));
@@ -43,10 +45,6 @@ TEST(EventType, isKeyDownOrModifierDown) {
 
   EXPECT_TRUE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L));
   EXPECT_FALSE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L)));
-}
-
-TEST(ModifierFlag, get) {
-  EXPECT_EQ(static_cast<unsigned int>(0x10000), ModifierFlag::CAPSLOCK.get());
 }
 
 TEST(Flags, add) {
@@ -137,18 +135,12 @@ TEST(Flags, isOn) {
 
   EXPECT_TRUE(flags.isOn(ModifierFlag::SHIFT_L));
   EXPECT_FALSE(flags.isOn(ModifierFlag::SHIFT_R));
-
-  flags = Flags(ModifierFlag::NONE);
-  EXPECT_TRUE(flags.isOn(ModifierFlag::NONE));
-
-  flags = Flags(0);
-  EXPECT_FALSE(flags.isOn(ModifierFlag::NONE));
 }
 
 TEST(Flags, getModifierFlagByIndex) {
   {
     ModifierFlag flag = Flags::getModifierFlagByIndex(0);
-    EXPECT_EQ(flag.get(), ModifierFlag::CAPSLOCK.get());
+    EXPECT_EQ(flag, ModifierFlag::CAPSLOCK);
   }
   {
     ModifierFlag flag = Flags::getModifierFlagByIndex(1);

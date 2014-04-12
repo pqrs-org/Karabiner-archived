@@ -9,7 +9,7 @@ Config config;
 
 std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const KeyboardType& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.get(); }
+std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.getRawBits(); }
 std::ostream& operator<<(std::ostream& os, const Flags& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const KeyCode& v) { return os << v.get(); }
 std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os << v.get(); }
