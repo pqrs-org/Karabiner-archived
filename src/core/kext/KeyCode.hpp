@@ -149,14 +149,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     Flags& stripFN(void)     { return remove(ModifierFlag::FN); }
     Flags& stripNUMPAD(void) { return remove(ModifierFlag::NUMPAD); }
-    Flags& stripNONE(void)   { return remove(ModifierFlag::NONE); }
-    Flags& stripEXTRA(void) {
-      return remove(Flags(ModifierFlag::EXTRA1) |
-                    Flags(ModifierFlag::EXTRA2) |
-                    Flags(ModifierFlag::EXTRA3) |
-                    Flags(ModifierFlag::EXTRA4) |
-                    Flags(ModifierFlag::EXTRA5));
-    }
 
     bool isOn(ModifierFlag flag) const {
       return (value_ & flag.getRawBits()) == flag.getRawBits();
