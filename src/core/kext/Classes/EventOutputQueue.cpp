@@ -144,9 +144,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardType)
   {
-    toFlags.stripNONE();
-    toFlags.stripEXTRA();
-
     if (lastFlags_ == toFlags) return;
 
     // ------------------------------------------------------------
@@ -218,7 +215,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags newflags = params.flags;
 
     KeyCode::reverseNormalizeKey(newkeycode, newflags, params.eventType, params.keyboardType);
-    newflags.stripEXTRA();
 
     // skip no-outputable keycodes.
     // Note: check before FireModifiers to avoid meaningless modifier event.
@@ -296,9 +292,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params)
   {
-    Flags newflags = params.flags;
-    newflags.stripEXTRA();
-
     // skip no-outputable keycodes.
     // Note: check before FireModifiers to avoid meaningless modifier event.
     if (params.key == ConsumerKeyCode::VK_NONE ||
@@ -308,7 +301,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     FireModifiers::fire();
 
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType, newflags, params.key, params.repeat));
+    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType, params.flags, params.key, params.repeat));
     if (ptr) {
       EventOutputQueue::push(*ptr);
     }
