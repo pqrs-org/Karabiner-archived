@@ -96,21 +96,6 @@ TEST(Flags, stripFN) {
   EXPECT_EQ(mask, flags.stripFN());
 }
 
-TEST(Flags, stripEXTRA) {
-  Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  Flags flags = mask;
-  EXPECT_EQ(mask, flags.stripEXTRA());
-
-  flags.add(ModifierFlag::EXTRA1);
-  EXPECT_EQ(mask, flags.stripEXTRA());
-
-  flags.add(ModifierFlag::EXTRA2);
-  EXPECT_EQ(mask, flags.stripEXTRA());
-
-  flags.add(ModifierFlag::EXTRA3 | ModifierFlag::EXTRA5);
-  EXPECT_EQ(mask, flags.stripEXTRA());
-}
-
 TEST(Flags, stripNUMPAD) {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
@@ -118,15 +103,6 @@ TEST(Flags, stripNUMPAD) {
 
   flags.add(ModifierFlag::NUMPAD);
   EXPECT_EQ(mask, flags.stripNUMPAD());
-}
-
-TEST(Flags, stripNONE) {
-  Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-  Flags flags = mask;
-  EXPECT_EQ(mask, flags.stripNONE());
-
-  flags.add(ModifierFlag::NONE);
-  EXPECT_EQ(mask, flags.stripNONE());
 }
 
 TEST(Flags, isOn) {
