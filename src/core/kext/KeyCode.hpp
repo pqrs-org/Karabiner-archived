@@ -105,8 +105,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
     }
 
-    Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
-    Flags& add(ModifierFlag flag) { return add(Flags(flag)); }
+    Flags& add(Flags flags)       { value_ |= flags.get();       return *this; }
+    Flags& add(ModifierFlag flag) { value_ |= flag.getRawBits(); return *this; }
     Flags& add(AddDataType datatype, AddValue newval) {
       if (datatype == AddDataType(BRIDGE_DATATYPE_MODIFIERFLAG)) {
         value_ |= newval;
@@ -165,7 +165,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     unsigned int value_;
   };
-  inline Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.get() | rhs.get()); }
 
   // ======================================================================
   class KeyCode {
