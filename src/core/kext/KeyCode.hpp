@@ -105,8 +105,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       };
     }
 
-    Flags& add(Flags flags)       { value_ |= flags.get();       return *this; }
-    Flags& add(ModifierFlag flag) { value_ |= flag.getRawBits(); return *this; }
+    Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
+    Flags& add(ModifierFlag flag) { return add(Flags(flag)); }
     Flags& add(AddDataType datatype, AddValue newval) {
       if (datatype == AddDataType(BRIDGE_DATATYPE_MODIFIERFLAG)) {
         add(ModifierFlag(datatype, newval));
