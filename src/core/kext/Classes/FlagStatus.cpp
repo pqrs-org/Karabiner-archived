@@ -1,8 +1,5 @@
-#ifndef FLAGSTATUS_TEST
 #include "CommonData.hpp"
 #include "IOLogWrapper.hpp"
-#endif
-
 #include "FlagStatus.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -343,7 +340,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::updateStatusMessage(void)
   {
-#ifndef FLAGSTATUS_TEST
     int indexes[] = {
       BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
       BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
@@ -360,6 +356,5 @@ namespace org_pqrs_KeyRemap4MacBook {
         CommonData::send_notification_statusmessage(idx);
       }
     }
-#endif
   }
 }
