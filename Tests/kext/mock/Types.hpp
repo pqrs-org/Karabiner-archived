@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 
 typedef int IOFixed;
 typedef int32_t SInt32;
