@@ -1068,7 +1068,7 @@
 
       <item>
         <name>Standard</name>
-        <appendix>Enter A,S,D,F when key up.</appendix>
+        <appendix>Enter A,S,D,F when key up if you pressed A,S,D,F keys.</appendix>
         <identifier>remap.samples_KeyUpEventToKey</identifier>
         <autogen>
           __KeyUpEventToKey__
