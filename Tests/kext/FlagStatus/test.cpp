@@ -108,30 +108,6 @@ TEST(FlagStatus, getFlag) {
   EXPECT_EQ(ModifierFlag::CAPSLOCK, flagStatus.getFlag(0));
 }
 
-TEST(FlagStatus, getLockedFlags) {
-  FlagStatus flagStatus;
-
-  EXPECT_EQ(Flags(0), flagStatus.getLockedFlags());
-
-  flagStatus.increase(ModifierFlag::SHIFT_L);
-  flagStatus.temporary_increase(ModifierFlag::SHIFT_R);
-  flagStatus.lock_increase(ModifierFlag::COMMAND_L);
-  flagStatus.lock_increase(ModifierFlag::OPTION_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, flagStatus.getLockedFlags());
-}
-
-TEST(FlagStatus, getStickyFlags) {
-  FlagStatus flagStatus;
-
-  EXPECT_EQ(Flags(0), flagStatus.getStickyFlags());
-
-  flagStatus.increase(ModifierFlag::SHIFT_L);
-  flagStatus.temporary_increase(ModifierFlag::SHIFT_R);
-  flagStatus.sticky_increase(ModifierFlag::COMMAND_L);
-  flagStatus.sticky_increase(ModifierFlag::OPTION_L);
-  EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L, flagStatus.getStickyFlags());
-}
-
 TEST(FlagStatus, increase) {
   {
     FlagStatus flagStatus;
