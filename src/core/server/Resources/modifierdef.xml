@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<root>
+
+  <!--
+      | <modifierdef> defines a modifier.
+      | For example, <modifierdef>EXTRA1</modifierdef> defines ModifierFlag and KeyCodes.
+      |
+      | * ModifierFlag::EXTRA1
+      | * KeyCode::VK_MODIFIER_EXTRA1
+      | * KeyCode::VK_LOCK_EXTRA1
+      | * KeyCode::VK_LOCK_EXTRA1_FORCE_ON
+      | * KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+      | * KeyCode::VK_STICKY_EXTRA1
+      | * KeyCode::VK_STICKY_EXTRA1_FORCE_ON
+      | * KeyCode::VK_STICKY_EXTRA1_FORCE_OFF
+      |
+      |
+      | You can use new modifier like this:
+      |
+      | * Change the right command key to the extra1 modifier key:
+      |
+      |   <autogen>
+      |     __KeyToKey__
+      |     KeyCode::COMMAND_R,
+      |     KeyCode::VK_MODIFIER_EXTRA1,
+      |   </autogen>
+      |
+      | * Change extra1+keys to other keys:
+      |
+      |   <autogen>
+      |     __KeyToKey__
+      |     KeyCode::A, ModifierFlag::EXTRA1,
+      |     KeyCode::KEY_1,
+      |   </autogen>
+      |   <autogen>
+      |     __KeyToKey__
+      |     KeyCode::S, ModifierFlag::EXTRA1,
+      |     KeyCode::KEY_2,
+      |   </autogen>
+      |
+  -->
+
+  <modifierdef>EXTRA1</modifierdef>
+  <modifierdef>EXTRA2</modifierdef>
+  <modifierdef>EXTRA3</modifierdef>
+  <modifierdef>EXTRA4</modifierdef>
+  <modifierdef>EXTRA5</modifierdef>
+
+</root>
