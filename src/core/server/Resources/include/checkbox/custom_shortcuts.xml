@@ -40,6 +40,21 @@
         KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND
       </autogen>
     </item>
+    <item>
+      <name>Change Command+Q to Escape.</name>
+      <appendix>(Quit Application by Command+Option+Q.)</appendix>
+      <identifier>remap.cmdoptqtoquit</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::ESCAPE,
+      </autogen>
+    </item>
     <item><name>──────────────────────────────</name></item>
     <item>
       <name>Change "right option key + equal key" to "move focus to next window in application".</name>
