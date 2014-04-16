@@ -23,6 +23,7 @@ namespace pqrs {
     replacement_warnings_.clear();
     replacement_.clear();
     symbol_map_.clear();
+    modifier_map_.clear();
     app_vector_.clear();
     vk_change_inputsource_map_.clear();
     inputsource_vector_.clear();
@@ -86,6 +87,21 @@ namespace pqrs {
         }
 
         loader_wrapper<symbol_map_loader>::traverse_system_xml(*this, loader, "symbol_map.xml");
+      }
+
+      // modifier
+      {
+        modifier_loader loader(*this,
+                               symbol_map_,
+                               remapclasses_initialize_vector_,
+                               identifier_map_,
+                               modifier_map_);
+
+        if (private_xml_ptree_ptr) {
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
+        }
+
+        loader_wrapper<modifier_loader>::traverse_system_xml(*this, loader, "modifierdef.xml");
       }
 
       // app

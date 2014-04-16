@@ -40,6 +40,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
 #include "pqrs/xml_compiler/detail/remapclasses_initialize_vector_prepare_loader.hpp"
 #include "pqrs/xml_compiler/detail/loader_wrapper.hpp"
+#include "pqrs/xml_compiler/detail/modifier.hpp"
 #include "pqrs/xml_compiler/detail/inputsource.hpp"
 #include "pqrs/xml_compiler/detail/url.hpp"
 
@@ -136,6 +137,7 @@ namespace pqrs {
 
     pqrs::string::replacement replacement_;
     symbol_map symbol_map_;
+    boost::unordered_map<uint32_t, std::shared_ptr<modifier> > modifier_map_;
     std::vector<std::shared_ptr<app> > app_vector_;
     boost::unordered_map<uint32_t, std::shared_ptr<inputsource> > vk_change_inputsource_map_;
     std::vector<std::shared_ptr<inputsource> > inputsource_vector_;
