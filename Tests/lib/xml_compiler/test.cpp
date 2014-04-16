@@ -15,6 +15,7 @@ TEST(pqrs_xml_compiler, reload)
     int v = 0;
     int space_is_ignored = 0;
 
+    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_modifier_definition"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_change_inputsource_definition"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_open_url_definition"));
     EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_private_sample"));
@@ -42,7 +43,7 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map().get_optional("KeyCode::SPACE_IS_IGNORED"));
 
   // ------------------------------------------------------------
-  uint32_t vk_change_inputsource_base = 1191;
+  uint32_t vk_change_inputsource_base = 1226;
 
   // JAPANESE
   EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
