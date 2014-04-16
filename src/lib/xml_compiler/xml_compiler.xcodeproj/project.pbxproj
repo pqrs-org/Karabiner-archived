@@ -19,6 +19,7 @@
 		340D31CA152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BE152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp */; };
 		340D31CB152CB8EF00C88AC5 /* xml_compiler+replacement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */; };
 		340D31CC152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */; };
+		3413D3EC18FEAFC8004CC497 /* xml_compiler+modifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3413D3EB18FEAFC8004CC497 /* xml_compiler+modifier.cpp */; };
 		3414CA2016C57C7E004329EF /* xml_compiler+url.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3414CA1F16C57C7E004329EF /* xml_compiler+url.cpp */; };
 		342984CF1548473200406438 /* file_path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342984CE1548473200406438 /* file_path.cpp */; };
 		3453732A15FDEFAD00B9C459 /* xml_compiler+inputsource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3453732915FDEFAD00B9C459 /* xml_compiler+inputsource.cpp */; };
@@ -37,6 +38,7 @@
 		340D31BE152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+remapclasses_initialize_vector.cpp"; path = "src/xml_compiler+remapclasses_initialize_vector.cpp"; sourceTree = "<group>"; };
 		340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+replacement.cpp"; path = "src/xml_compiler+replacement.cpp"; sourceTree = "<group>"; };
 		340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+symbol_map.cpp"; path = "src/xml_compiler+symbol_map.cpp"; sourceTree = "<group>"; };
+		3413D3EB18FEAFC8004CC497 /* xml_compiler+modifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+modifier.cpp"; path = "src/xml_compiler+modifier.cpp"; sourceTree = "<group>"; };
 		3414CA1F16C57C7E004329EF /* xml_compiler+url.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+url.cpp"; path = "src/xml_compiler+url.cpp"; sourceTree = "<group>"; };
 		342984CE1548473200406438 /* file_path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file_path.cpp; path = src/file_path.cpp; sourceTree = "<group>"; };
 		3453732915FDEFAD00B9C459 /* xml_compiler+inputsource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+inputsource.cpp"; path = "src/xml_compiler+inputsource.cpp"; sourceTree = "<group>"; };
@@ -57,21 +59,22 @@
 		340D31B4152CB8D800C88AC5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3453732915FDEFAD00B9C459 /* xml_compiler+inputsource.cpp */,
 				342984CE1548473200406438 /* file_path.cpp */,
 				340D31B5152CB8EF00C88AC5 /* string.cpp */,
 				340D31B6152CB8EF00C88AC5 /* vector.cpp */,
-				340D31B7152CB8EF00C88AC5 /* xml_compiler.cpp */,
 				340D31B8152CB8EF00C88AC5 /* xml_compiler+app.cpp */,
-				340D31B9152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector_loader.cpp */,
 				340D31BA152CB8EF00C88AC5 /* xml_compiler+bindings_clang.cpp */,
 				340D31BB152CB8EF00C88AC5 /* xml_compiler+device.cpp */,
 				340D31BC152CB8EF00C88AC5 /* xml_compiler+filter_vector.cpp */,
+				3453732915FDEFAD00B9C459 /* xml_compiler+inputsource.cpp */,
+				3413D3EB18FEAFC8004CC497 /* xml_compiler+modifier.cpp */,
 				340D31BD152CB8EF00C88AC5 /* xml_compiler+preferences_node.cpp */,
 				340D31BE152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector.cpp */,
+				340D31B9152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector_loader.cpp */,
 				340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */,
 				340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */,
 				3414CA1F16C57C7E004329EF /* xml_compiler+url.cpp */,
+				340D31B7152CB8EF00C88AC5 /* xml_compiler.cpp */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				342984CF1548473200406438 /* file_path.cpp in Sources */,
 				3453732A15FDEFAD00B9C459 /* xml_compiler+inputsource.cpp in Sources */,
 				3414CA2016C57C7E004329EF /* xml_compiler+url.cpp in Sources */,
+				3413D3EC18FEAFC8004CC497 /* xml_compiler+modifier.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
