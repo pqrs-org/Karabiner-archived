@@ -2,6 +2,7 @@
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
+#include "ModifierName.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus globalFlagStatus_;
@@ -90,6 +91,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::initialize(void)
   {
+    item_.clear();
+
     auto& pairs = KeyCodeModifierFlagPairs::getPairs();
     for (size_t i = 0; i < pairs.size(); ++i) {
       item_.push_back(Item());
@@ -303,36 +306,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      if (item_[i].flag_ == ModifierFlag::FN) {
-        CommonData::append_statusmessage(statusMessageIndex, "FN ");
-      }
-      if (item_[i].flag_ == ModifierFlag::COMMAND_L || item_[i].flag_ == ModifierFlag::COMMAND_R) {
-        CommonData::append_statusmessage(statusMessageIndex, "Cmd ");
-      }
-      if (item_[i].flag_ == ModifierFlag::CONTROL_L || item_[i].flag_ == ModifierFlag::CONTROL_R) {
-        CommonData::append_statusmessage(statusMessageIndex, "Ctrl ");
-      }
-      if (item_[i].flag_ == ModifierFlag::OPTION_L || item_[i].flag_ == ModifierFlag::OPTION_R) {
-        CommonData::append_statusmessage(statusMessageIndex, "Opt ");
-      }
-      if (item_[i].flag_ == ModifierFlag::SHIFT_L || item_[i].flag_ == ModifierFlag::SHIFT_R) {
-        CommonData::append_statusmessage(statusMessageIndex, "Shift ");
-      }
-      if (item_[i].flag_ == ModifierFlag::EXTRA1) {
-        CommonData::append_statusmessage(statusMessageIndex, "Ex1 ");
-      }
-      if (item_[i].flag_ == ModifierFlag::EXTRA2) {
-        CommonData::append_statusmessage(statusMessageIndex, "Ex2 ");
-      }
-      if (item_[i].flag_ == ModifierFlag::EXTRA3) {
-        CommonData::append_statusmessage(statusMessageIndex, "Ex3 ");
-      }
-      if (item_[i].flag_ == ModifierFlag::EXTRA4) {
-        CommonData::append_statusmessage(statusMessageIndex, "Ex4 ");
-      }
-      if (item_[i].flag_ == ModifierFlag::EXTRA5) {
-        CommonData::append_statusmessage(statusMessageIndex, "Ex5 ");
-      }
+      // Skip caps lock.
+      if (item_[i].flag_ == ModifierFlag::CAPSLOCK) continue;
+
+      CommonData::append_statusmessage(statusMessageIndex, ModifierName::getName(item_[i].flag_));
+      CommonData::append_statusmessage(statusMessageIndex, " ");
     }
   }
 
