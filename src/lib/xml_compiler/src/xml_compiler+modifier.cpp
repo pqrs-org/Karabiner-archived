@@ -39,6 +39,13 @@ namespace pqrs {
             symbol_map_.add("KeyCode", std::string("VK_STICKY_") + name + "_FORCE_ON"));
           remapclasses_initialize_vector_.push_back(
             symbol_map_.add("KeyCode", std::string("VK_STICKY_") + name + "_FORCE_OFF"));
+
+          remapclasses_initialize_vector_.push_back(2 + static_cast<uint32_t>(name.length()) + 1);
+          remapclasses_initialize_vector_.push_back(BRIDGE_MODIFIERNAME);
+          for (size_t i = 0; i < name.length(); ++i) {
+            remapclasses_initialize_vector_.push_back(name[i]);
+          }
+          remapclasses_initialize_vector_.push_back('\0');
         }
       }
       remapclasses_initialize_vector_.end();
