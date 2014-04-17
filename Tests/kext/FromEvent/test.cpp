@@ -1,61 +1,70 @@
 #include <ostream>
 #include <gtest/gtest.h>
 #include "FromEvent.hpp"
+#include "KeyCodeModifierFlagPairs.hpp"
 
 using namespace org_pqrs_KeyRemap4MacBook;
 
-ParamsUnion down_return(
-  *(Params_KeyboardEventCallBack::auto_ptr(
-      Params_KeyboardEventCallBack::alloc(
-        EventType::DOWN,
-        Flags(0),
-        KeyCode::RETURN,
-        CharCode(0),
-        CharSet(0),
-        OrigCharCode(0),
-        OrigCharSet(0),
-        KeyboardType(0),
-        false))));
+ParamsUnion* down_return;
+ParamsUnion* up_return;
+ParamsUnion* down_shift;
+ParamsUnion* up_shift;
 
-ParamsUnion up_return(
-  *(Params_KeyboardEventCallBack::auto_ptr(
-      Params_KeyboardEventCallBack::alloc(
-        EventType::UP,
-        Flags(0),
-        KeyCode::RETURN,
-        CharCode(0),
-        CharSet(0),
-        OrigCharCode(0),
-        OrigCharSet(0),
-        KeyboardType(0),
-        false))));
+TEST(Generic, setUp) {
+  KeyCodeModifierFlagPairs::clearVirtualModifiers();
 
-ParamsUnion down_shift(
-  *(Params_KeyboardEventCallBack::auto_ptr(
-      Params_KeyboardEventCallBack::alloc(
-        EventType::MODIFY,
-        Flags(ModifierFlag::SHIFT_L),
-        KeyCode::SHIFT_L,
-        CharCode(0),
-        CharSet(0),
-        OrigCharCode(0),
-        OrigCharSet(0),
-        KeyboardType(0),
-        false))));
+  down_return = new ParamsUnion(
+    *(Params_KeyboardEventCallBack::auto_ptr(
+        Params_KeyboardEventCallBack::alloc(
+          EventType::DOWN,
+          Flags(0),
+          KeyCode::RETURN,
+          CharCode(0),
+          CharSet(0),
+          OrigCharCode(0),
+          OrigCharSet(0),
+          KeyboardType(0),
+          false))));
 
-ParamsUnion up_shift(
-  *(Params_KeyboardEventCallBack::auto_ptr(
-      Params_KeyboardEventCallBack::alloc(
-        EventType::MODIFY,
-        Flags(0),
-        KeyCode::SHIFT_L,
-        CharCode(0),
-        CharSet(0),
-        OrigCharCode(0),
-        OrigCharSet(0),
-        KeyboardType(0),
-        false))));
+  up_return = new ParamsUnion(
+    *(Params_KeyboardEventCallBack::auto_ptr(
+        Params_KeyboardEventCallBack::alloc(
+          EventType::UP,
+          Flags(0),
+          KeyCode::RETURN,
+          CharCode(0),
+          CharSet(0),
+          OrigCharCode(0),
+          OrigCharSet(0),
+          KeyboardType(0),
+          false))));
 
+  down_shift = new ParamsUnion(
+    *(Params_KeyboardEventCallBack::auto_ptr(
+        Params_KeyboardEventCallBack::alloc(
+          EventType::MODIFY,
+          Flags(ModifierFlag::SHIFT_L),
+          KeyCode::SHIFT_L,
+          CharCode(0),
+          CharSet(0),
+          OrigCharCode(0),
+          OrigCharSet(0),
+          KeyboardType(0),
+          false))));
+
+  up_shift = new ParamsUnion(
+    *(Params_KeyboardEventCallBack::auto_ptr(
+        Params_KeyboardEventCallBack::alloc(
+          EventType::MODIFY,
+          Flags(0),
+          KeyCode::SHIFT_L,
+          CharCode(0),
+          CharSet(0),
+          OrigCharCode(0),
+          OrigCharSet(0),
+          KeyboardType(0),
+          false))));
+}
 
 TEST(Generic, getModifierFlag) {
   {
@@ -103,16 +112,16 @@ TEST(Generic, changePressingState) {
       FlagStatus currentFlags;
       Vector_ModifierFlag fromFlags;
 
-      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
       EXPECT_EQ(true,  fe.isPressing());
 
-      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
 
       // Another event does not modify state
-      EXPECT_EQ(false, fe.changePressingState(down_shift, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.changePressingState(*down_shift, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
-      EXPECT_EQ(false, fe.changePressingState(up_shift, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.changePressingState(*up_shift, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
     }
 
@@ -124,10 +133,10 @@ TEST(Generic, changePressingState) {
       FlagStatus currentFlags(f);
       Vector_ModifierFlag fromFlags;
 
-      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
       EXPECT_EQ(true,  fe.isPressing());
 
-      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
     }
 
@@ -140,10 +149,10 @@ TEST(Generic, changePressingState) {
       fromFlags.push_back(ModifierFlag::SHIFT_L);
 
       // Does not change state if currentFlags lacks flags.
-      EXPECT_EQ(false, fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.changePressingState(*down_return, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
 
-      EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
     }
     {
@@ -152,10 +161,10 @@ TEST(Generic, changePressingState) {
       Vector_ModifierFlag fromFlags;
       fromFlags.push_back(ModifierFlag::SHIFT_L);
 
-      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
       EXPECT_EQ(true,  fe.isPressing());
 
-      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
     }
     {
@@ -164,7 +173,7 @@ TEST(Generic, changePressingState) {
       Vector_ModifierFlag fromFlags;
       fromFlags.push_back(ModifierFlag::SHIFT_L);
 
-      EXPECT_EQ(true,  fe.changePressingState(down_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*down_return, currentFlags, fromFlags));
       EXPECT_EQ(true,  fe.isPressing());
 
       // Change state even if currentFlags lacks flags when key is pressing.
@@ -174,29 +183,29 @@ TEST(Generic, changePressingState) {
       // - shift up
       // - return up (shift-return is released.)
       currentFlags.reset();
-      EXPECT_EQ(true,  fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(true,  fe.changePressingState(*up_return, currentFlags, fromFlags));
       EXPECT_EQ(false, fe.isPressing());
       // return false if call changePressingState once again.
-      EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
+      EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
     }
   }
   {
     FromEvent fe(KeyCode::SPACE);
     FlagStatus currentFlags;
     Vector_ModifierFlag fromFlags;
-    EXPECT_EQ(false, fe.changePressingState(down_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.changePressingState(up_return, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
     Flags f(ModifierFlag::SHIFT_L);
     FlagStatus currentFlags(f);
     Vector_ModifierFlag fromFlags;
-    EXPECT_EQ(true, fe.changePressingState(down_shift, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.changePressingState(*down_shift, currentFlags, fromFlags));
     EXPECT_EQ(true, fe.isPressing());
 
     currentFlags.reset();
-    EXPECT_EQ(true,  fe.changePressingState(up_shift, currentFlags, fromFlags));
+    EXPECT_EQ(true,  fe.changePressingState(*up_shift, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
   }
 }
@@ -207,7 +216,7 @@ TEST(Generic, unsetPressingState) {
     FlagStatus currentFlags;
     Vector_ModifierFlag fromFlags;
 
-    EXPECT_EQ(true, fe.changePressingState(down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
     EXPECT_EQ(true, fe.isPressing());
 
     fe.unsetPressingState();
@@ -218,23 +227,23 @@ TEST(Generic, unsetPressingState) {
 TEST(Generic, isTargetDownEvent) {
   {
     FromEvent fe(KeyCode::RETURN);
-    EXPECT_EQ(true,  fe.isTargetDownEvent(down_return));
-    EXPECT_EQ(false, fe.isTargetUpEvent(down_return));
+    EXPECT_EQ(true,  fe.isTargetDownEvent(*down_return));
+    EXPECT_EQ(false, fe.isTargetUpEvent(*down_return));
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(up_return));
-    EXPECT_EQ(true,  fe.isTargetUpEvent(up_return));
+    EXPECT_EQ(false, fe.isTargetDownEvent(*up_return));
+    EXPECT_EQ(true,  fe.isTargetUpEvent(*up_return));
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(down_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(down_shift));
-    EXPECT_EQ(false, fe.isTargetDownEvent(up_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(up_shift));
+    EXPECT_EQ(false, fe.isTargetDownEvent(*down_shift));
+    EXPECT_EQ(false, fe.isTargetUpEvent(*down_shift));
+    EXPECT_EQ(false, fe.isTargetDownEvent(*up_shift));
+    EXPECT_EQ(false, fe.isTargetUpEvent(*up_shift));
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
-    EXPECT_EQ(true,  fe.isTargetDownEvent(down_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(down_shift));
+    EXPECT_EQ(true,  fe.isTargetDownEvent(*down_shift));
+    EXPECT_EQ(false, fe.isTargetUpEvent(*down_shift));
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(up_shift));
-    EXPECT_EQ(true,  fe.isTargetUpEvent(up_shift));
+    EXPECT_EQ(false, fe.isTargetDownEvent(*up_shift));
+    EXPECT_EQ(true,  fe.isTargetUpEvent(*up_shift));
   }
 }
