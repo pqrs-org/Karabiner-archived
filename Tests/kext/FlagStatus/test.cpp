@@ -100,11 +100,6 @@ TEST(FlagStatus, makeFlags) {
   flagStatus.reset();
   flagStatus.set(KeyCode::FN, Flags(ModifierFlag::FN));
   EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
-
-  // Virtual modifiers are ignored at makeFlags.
-  flagStatus.reset();
-  flagStatus.increase(ModifierFlag::EXTRA1);
-  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, getFlag) {
