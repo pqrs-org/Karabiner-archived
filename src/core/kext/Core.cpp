@@ -16,6 +16,7 @@
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
+#include "ModifierName.hpp"
 #include "NumHeldDownKeys.hpp"
 #include "PressDownKeys.hpp"
 #include "RemapClass.hpp"
@@ -36,6 +37,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       GlobalLock::initialize();
       CommonData::initialize();
       KeyCodeModifierFlagPairs::initialize();
+      ModifierName::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
       ButtonStatus::initialize();

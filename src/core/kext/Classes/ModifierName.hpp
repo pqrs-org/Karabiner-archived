@@ -43,8 +43,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     DECLARE_VECTOR(Item);
 
+    static void initialize(void) {
+      clearVirtualModifiers();
+    }
+
     static void clearVirtualModifiers(void);
     static void registerVirtualModifier(ModifierFlag modifierFlag, const uint32_t* name, size_t size);
+    static const char* getName(ModifierFlag modifierFlag);
 
   private:
     static Vector_Item items_;

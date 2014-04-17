@@ -25,4 +25,15 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     items_.push_back(Item(modifierFlag, name, size));
   }
+
+  const char*
+  ModifierName::getName(ModifierFlag modifierFlag)
+  {
+    for (size_t i = 0; i < items_.size(); ++i) {
+      if (modifierFlag == items_[i].getModifierFlag()) {
+        return items_[i].getName();
+      }
+    }
+    return "";
+  }
 }
