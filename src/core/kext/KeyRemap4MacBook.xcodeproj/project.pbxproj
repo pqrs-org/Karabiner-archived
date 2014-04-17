@@ -158,6 +158,8 @@
 		34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DC263B1262A5A500354378 /* FilterUnion.cpp */; };
 		34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */; };
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
+		34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E984C218FFD108003A21F6 /* ModifierName.cpp */; };
+		34E984C518FFD108003A21F6 /* ModifierName.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E984C318FFD108003A21F6 /* ModifierName.hpp */; };
 		34FFF078149867D800A1348A /* ScrollWheelToScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */; };
 		34FFF079149867D800A1348A /* ScrollWheelToScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */; };
 /* End PBXBuildFile section */
@@ -316,6 +318,8 @@
 		34DC263B1262A5A500354378 /* FilterUnion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FilterUnion.cpp; path = RemapFilter/FilterUnion.cpp; sourceTree = "<group>"; };
 		34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousKeyPresses.cpp; path = RemapFunc/SimultaneousKeyPresses.cpp; sourceTree = "<group>"; };
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
+		34E984C218FFD108003A21F6 /* ModifierName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierName.cpp; path = Classes/ModifierName.cpp; sourceTree = "<group>"; };
+		34E984C318FFD108003A21F6 /* ModifierName.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierName.hpp; path = Classes/ModifierName.hpp; sourceTree = "<group>"; };
 		34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollWheelToScrollWheel.cpp; path = RemapFunc/ScrollWheelToScrollWheel.cpp; sourceTree = "<group>"; };
 		34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToScrollWheel.hpp; path = RemapFunc/ScrollWheelToScrollWheel.hpp; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -485,6 +489,8 @@
 				3477934A185B1FA800B3EF06 /* ListHookedKeyboard.hpp */,
 				3477934B185B1FA800B3EF06 /* ListHookedPointing.cpp */,
 				3477934C185B1FA800B3EF06 /* ListHookedPointing.hpp */,
+				34E984C218FFD108003A21F6 /* ModifierName.cpp */,
+				34E984C318FFD108003A21F6 /* ModifierName.hpp */,
 				3477934D185B1FA800B3EF06 /* NumHeldDownKeys.cpp */,
 				3477934E185B1FA800B3EF06 /* NumHeldDownKeys.hpp */,
 				3477934F185B1FA800B3EF06 /* ParamsUnion.cpp */,
@@ -642,6 +648,7 @@
 				34B3663816DA5E0D0081C5D7 /* FlipPointingRelative.hpp in Headers */,
 				34A6627018B9DAF70010D8B9 /* PointingRelativeToKey.hpp in Headers */,
 				3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */,
+				34E984C518FFD108003A21F6 /* ModifierName.hpp in Headers */,
 				3496DB891707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp in Headers */,
 				348F4BA718C76E46000394FE /* PassThrough.hpp in Headers */,
 				34779360185B1FA800B3EF06 /* EventOutputQueue.hpp in Headers */,
@@ -759,6 +766,7 @@
 				34779386185B271E00B3EF06 /* FromEvent.cpp in Sources */,
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
 				34779366185B1FA800B3EF06 /* GlobalLock.cpp in Sources */,
+				34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */,
 				344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */,
 				05CB4A2D12BB4C0800737491 /* ModifierFilter.cpp in Sources */,
 				3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */,
