@@ -1,8 +1,9 @@
 #include <ostream>
 #include <gtest/gtest.h>
-#include "KeyCode.hpp"
-#include "FlagStatus.hpp"
 #include "Config.hpp"
+#include "FlagStatus.hpp"
+#include "KeyCode.hpp"
+#include "KeyCodeModifierFlagPairs.hpp"
 
 using namespace org_pqrs_KeyRemap4MacBook;
 Config config;
@@ -17,6 +18,10 @@ std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os 
 std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
 
 Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.getRawBits() | rhs.getRawBits()); }
+
+TEST(Generic, setUp) {
+  KeyCodeModifierFlagPairs::clearVirtualModifiers();
+}
 
 TEST(FlagStatus, makeFlags) {
   FlagStatus flagStatus;
