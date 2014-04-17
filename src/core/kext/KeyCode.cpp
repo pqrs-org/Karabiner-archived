@@ -141,7 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   KeyCode
   ModifierFlag::getKeyCode(void) const {
-    return KeyCodeModifierFlagPairs::getKeyCode(*this);
+    return KeyCodeModifierFlagPairs::getKeyCode(*this, KeyCodeModifierFlagPairs::KeyCodeType::KEYCODE);
   }
 
   unsigned int
@@ -199,7 +199,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ModifierFlag
   KeyCode::getModifierFlag(void) const
   {
-    return KeyCodeModifierFlagPairs::getModifierFlag(*this);
+    return KeyCodeModifierFlagPairs::getModifierFlag(*this, KeyCodeModifierFlagPairs::KeyCodeType::KEYCODE);
   }
 
   bool
