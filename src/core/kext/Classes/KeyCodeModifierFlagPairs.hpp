@@ -22,6 +22,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void clearVirtualModifiers(void) {
       pairs_.clear();
 
+      // Register normal modifiers.
       pairs_.push_back(Pair(KeyCode::CAPSLOCK,           ModifierFlag::CAPSLOCK));
       pairs_.push_back(Pair(KeyCode::SHIFT_L,            ModifierFlag::SHIFT_L));
       pairs_.push_back(Pair(KeyCode::SHIFT_R,            ModifierFlag::SHIFT_R));
@@ -42,6 +43,24 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     static void registerVirtualModifier(KeyCode k, ModifierFlag m) {
       pairs_.push_back(Pair(k, m));
+    }
+
+    static KeyCode getKeyCode(ModifierFlag m) {
+      for (size_t i = 0; i < pairs_.size(); ++i) {
+        if (pairs_[i].getModifierFlag() == m) {
+          return pairs_[i].getKeyCode();
+        }
+      }
+      return KeyCode::VK_NONE;
+    }
+
+    static ModifierFlag getModifierFlag(KeyCode k) {
+      for (size_t i = 0; i < pairs_.size(); ++i) {
+        if (pairs_[i].getKeyCode() == k) {
+          return pairs_[i].getModifierFlag();
+        }
+      }
+      return ModifierFlag::ZERO;
     }
 
   private:

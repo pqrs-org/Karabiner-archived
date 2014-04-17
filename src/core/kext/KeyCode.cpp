@@ -1,5 +1,6 @@
-#include "KeyCode.hpp"
 #include "Config.hpp"
+#include "KeyCode.hpp"
+#include "KeyCodeModifierFlagPairs.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
 #include "../../../src/bridge/output/include.kext.keycode.cpp"
@@ -140,23 +141,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   KeyCode
   ModifierFlag::getKeyCode(void) const {
-    if (*this == ModifierFlag::CAPSLOCK) return KeyCode::CAPSLOCK;
-    if (*this == ModifierFlag::SHIFT_L) return KeyCode::SHIFT_L;
-    if (*this == ModifierFlag::SHIFT_R) return KeyCode::SHIFT_R;
-    if (*this == ModifierFlag::CONTROL_L) return KeyCode::CONTROL_L;
-    if (*this == ModifierFlag::CONTROL_R) return KeyCode::CONTROL_R;
-    if (*this == ModifierFlag::OPTION_L) return KeyCode::OPTION_L;
-    if (*this == ModifierFlag::OPTION_R) return KeyCode::OPTION_R;
-    if (*this == ModifierFlag::COMMAND_L) return KeyCode::COMMAND_L;
-    if (*this == ModifierFlag::COMMAND_R) return KeyCode::COMMAND_R;
-    if (*this == ModifierFlag::FN) return KeyCode::FN;
-    if (*this == ModifierFlag::EXTRA1) return KeyCode::VK_MODIFIER_EXTRA1;
-    if (*this == ModifierFlag::EXTRA2) return KeyCode::VK_MODIFIER_EXTRA2;
-    if (*this == ModifierFlag::EXTRA3) return KeyCode::VK_MODIFIER_EXTRA3;
-    if (*this == ModifierFlag::EXTRA4) return KeyCode::VK_MODIFIER_EXTRA4;
-    if (*this == ModifierFlag::EXTRA5) return KeyCode::VK_MODIFIER_EXTRA5;
-
-    return KeyCode::VK_NONE;
+    return KeyCodeModifierFlagPairs::getKeyCode(*this);
   }
 
   unsigned int
@@ -179,23 +164,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   ModifierFlag
   KeyCode::getModifierFlag(void) const
   {
-    if (*this == KeyCode::CAPSLOCK) return ModifierFlag::CAPSLOCK;
-    if (*this == KeyCode::SHIFT_L) return ModifierFlag::SHIFT_L;
-    if (*this == KeyCode::SHIFT_R) return ModifierFlag::SHIFT_R;
-    if (*this == KeyCode::CONTROL_L) return ModifierFlag::CONTROL_L;
-    if (*this == KeyCode::CONTROL_R) return ModifierFlag::CONTROL_R;
-    if (*this == KeyCode::OPTION_L) return ModifierFlag::OPTION_L;
-    if (*this == KeyCode::OPTION_R) return ModifierFlag::OPTION_R;
-    if (*this == KeyCode::COMMAND_L) return ModifierFlag::COMMAND_L;
-    if (*this == KeyCode::COMMAND_R) return ModifierFlag::COMMAND_R;
-    if (*this == KeyCode::FN) return ModifierFlag::FN;
-    if (*this == KeyCode::VK_MODIFIER_EXTRA1) return ModifierFlag::EXTRA1;
-    if (*this == KeyCode::VK_MODIFIER_EXTRA2) return ModifierFlag::EXTRA2;
-    if (*this == KeyCode::VK_MODIFIER_EXTRA3) return ModifierFlag::EXTRA3;
-    if (*this == KeyCode::VK_MODIFIER_EXTRA4) return ModifierFlag::EXTRA4;
-    if (*this == KeyCode::VK_MODIFIER_EXTRA5) return ModifierFlag::EXTRA5;
-
-    return ModifierFlag::ZERO;
+    return KeyCodeModifierFlagPairs::getModifierFlag(*this);
   }
 
   bool
