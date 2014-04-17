@@ -181,15 +181,16 @@ namespace org_pqrs_KeyRemap4MacBook {
     //
     Flags old = *this;
 
-    value_ = 0;
+    // keep ModifierFlag::NUMPAD.
+    value_ &= ~(flag.getRawBits());
 
     auto& pairs = KeyCodeModifierFlagPairs::getPairs();
     for (size_t i = 0; i < pairs.size(); ++i) {
       ModifierFlag f = pairs[i].getModifierFlag();
+      if (f == flag) continue;
+      if (! old.isOn(f)) continue;
 
-      if (f != flag && old.isOn(f)) {
-        value_ |= f.getRawBits();
-      }
+      value_ |= f.getRawBits();
     }
 
     return *this;
