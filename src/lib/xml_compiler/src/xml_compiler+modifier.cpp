@@ -42,6 +42,7 @@ namespace pqrs {
 
           remapclasses_initialize_vector_.push_back(2 + static_cast<uint32_t>(name.length()) + 1);
           remapclasses_initialize_vector_.push_back(BRIDGE_MODIFIERNAME);
+          remapclasses_initialize_vector_.push_back(it.first);
           for (size_t i = 0; i < name.length(); ++i) {
             remapclasses_initialize_vector_.push_back(name[i]);
           }
