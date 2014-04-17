@@ -92,6 +92,8 @@
 		34779382185B1FA800B3EF06 /* Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779355185B1FA800B3EF06 /* Vector.hpp */; };
 		34779384185B236C00B3EF06 /* FromEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779383185B236C00B3EF06 /* FromEvent.hpp */; };
 		34779386185B271E00B3EF06 /* FromEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779385185B271E00B3EF06 /* FromEvent.cpp */; };
+		34779AEA18FF881500820FCB /* KeyCodeModifierFlagPairs.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779AE918FF881500820FCB /* KeyCodeModifierFlagPairs.hpp */; };
+		34779AEC18FF905A00820FCB /* KeyCodeModifierFlagPairs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779AEB18FF905A00820FCB /* KeyCodeModifierFlagPairs.cpp */; };
 		3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */; };
 		3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */; };
 		34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34794D51126F32E700655ADB /* SetKeyboardType.cpp */; };
@@ -248,6 +250,8 @@
 		34779355185B1FA800B3EF06 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = Classes/Vector.hpp; sourceTree = "<group>"; };
 		34779383185B236C00B3EF06 /* FromEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FromEvent.hpp; path = Classes/FromEvent.hpp; sourceTree = "<group>"; };
 		34779385185B271E00B3EF06 /* FromEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FromEvent.cpp; path = Classes/FromEvent.cpp; sourceTree = "<group>"; };
+		34779AE918FF881500820FCB /* KeyCodeModifierFlagPairs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyCodeModifierFlagPairs.hpp; path = Classes/KeyCodeModifierFlagPairs.hpp; sourceTree = "<group>"; };
+		34779AEB18FF905A00820FCB /* KeyCodeModifierFlagPairs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyCodeModifierFlagPairs.cpp; path = Classes/KeyCodeModifierFlagPairs.cpp; sourceTree = "<group>"; };
 		3477E3B911CFAC9D00DC05C9 /* RemapClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RemapClass.cpp; sourceTree = "<group>"; };
 		3477E3BA11CFAC9D00DC05C9 /* RemapClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RemapClass.hpp; sourceTree = "<group>"; };
 		34794D51126F32E700655ADB /* SetKeyboardType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetKeyboardType.cpp; path = RemapFunc/SetKeyboardType.cpp; sourceTree = "<group>"; };
@@ -467,6 +471,8 @@
 				3477933E185B1FA800B3EF06 /* IOLogWrapper.hpp */,
 				3477933F185B1FA800B3EF06 /* KeyboardRepeat.cpp */,
 				34779340185B1FA800B3EF06 /* KeyboardRepeat.hpp */,
+				34779AEB18FF905A00820FCB /* KeyCodeModifierFlagPairs.cpp */,
+				34779AE918FF881500820FCB /* KeyCodeModifierFlagPairs.hpp */,
 				34779341185B1FA800B3EF06 /* LastPressedPhysicalKey.cpp */,
 				34779342185B1FA800B3EF06 /* LastPressedPhysicalKey.hpp */,
 				34779343185B1FA800B3EF06 /* List.cpp */,
@@ -563,6 +569,7 @@
 				34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */,
 				3477936B185B1FA800B3EF06 /* IOLogWrapper.hpp in Headers */,
 				34779364185B1FA800B3EF06 /* FlagStatus.hpp in Headers */,
+				34779AEA18FF881500820FCB /* KeyCodeModifierFlagPairs.hpp in Headers */,
 				345004AE0E7CE48F0075324B /* Core.hpp in Headers */,
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
 				34779382185B1FA800B3EF06 /* Vector.hpp in Headers */,
@@ -760,6 +767,7 @@
 				34B464DA13A652CF00470265 /* VK_STICKY.cpp in Sources */,
 				34B464DF13A6538A00470265 /* VK_LAZY.cpp in Sources */,
 				3477935D185B1FA800B3EF06 /* EventInputQueue.cpp in Sources */,
+				34779AEC18FF905A00820FCB /* KeyCodeModifierFlagPairs.cpp in Sources */,
 				34B464E713A6563B00470265 /* VK_CONFIG.cpp in Sources */,
 				3477937A185B1FA800B3EF06 /* NumHeldDownKeys.cpp in Sources */,
 				34B464EB13A6587400470265 /* VK_MOUSEKEY.cpp in Sources */,

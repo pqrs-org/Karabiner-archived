@@ -3,6 +3,7 @@
 #include "CommonData.hpp"
 #include "EventInputQueue.hpp"
 #include "IOLogWrapper.hpp"
+#include "KeyCodeModifierFlagPairs.hpp"
 #include "KeyboardRepeat.hpp"
 #include "RemapClass.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
@@ -404,6 +405,16 @@ namespace org_pqrs_KeyRemap4MacBook {
             statusmessage_[size - 1] = '\0';
           }
 
+        } else if (type == BRIDGE_VK_MODIFIER) {
+          if (size != 9) {
+            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_MODIFIER. (%d)\n", size);
+            return;
+          } else {
+            unsigned int modifierFlag        = p[1];
+            unsigned int keycode_vk_modifier = p[2];
+            KeyCodeModifierFlagPairs::registerVirtualModifier(KeyCode(keycode_vk_modifier), ModifierFlag(modifierFlag));
+          }
+
         } else if (type == BRIDGE_VK_CONFIG) {
           if (size != 5) {
             IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_CONFIG. (%d)\n", size);
@@ -659,6 +670,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void
     clear_remapclasses(void)
     {
+      KeyCodeModifierFlagPairs::clearVirtualModifiers();
       VirtualKey::VK_CONFIG::clear_items();
       VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items();
 
