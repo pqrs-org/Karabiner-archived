@@ -71,12 +71,11 @@ TEST(Flags, remove) {
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
   }
   {
-    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
-    Flags removed = ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
+    Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::NONE;
+    Flags removed = ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::NONE;
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
 
     flags.remove(ModifierFlag::NUMPAD);
-    flags.remove(ModifierFlag::EXTRA2);
     removed = ModifierFlag::SHIFT_R | ModifierFlag::NONE;
     EXPECT_EQ(removed, flags);
 
@@ -466,11 +465,6 @@ TEST(ModifierFlag, getKeyCode) {
   EXPECT_EQ(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L.getKeyCode());
   EXPECT_EQ(KeyCode::COMMAND_R, ModifierFlag::COMMAND_R.getKeyCode());
   EXPECT_EQ(KeyCode::FN, ModifierFlag::FN.getKeyCode());
-  EXPECT_EQ(KeyCode::VK_MODIFIER_EXTRA1, ModifierFlag::EXTRA1.getKeyCode());
-  EXPECT_EQ(KeyCode::VK_MODIFIER_EXTRA2, ModifierFlag::EXTRA2.getKeyCode());
-  EXPECT_EQ(KeyCode::VK_MODIFIER_EXTRA3, ModifierFlag::EXTRA3.getKeyCode());
-  EXPECT_EQ(KeyCode::VK_MODIFIER_EXTRA4, ModifierFlag::EXTRA4.getKeyCode());
-  EXPECT_EQ(KeyCode::VK_MODIFIER_EXTRA5, ModifierFlag::EXTRA5.getKeyCode());
 
   EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::NUMPAD.getKeyCode());
 }
@@ -493,11 +487,6 @@ TEST(KeyCode, getModifierFlag) {
   EXPECT_EQ(ModifierFlag::COMMAND_L, KeyCode::COMMAND_L.getModifierFlag());
   EXPECT_EQ(ModifierFlag::COMMAND_R, KeyCode::COMMAND_R.getModifierFlag());
   EXPECT_EQ(ModifierFlag::FN, KeyCode::FN.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::EXTRA1, KeyCode::VK_MODIFIER_EXTRA1.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::EXTRA2, KeyCode::VK_MODIFIER_EXTRA2.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::EXTRA3, KeyCode::VK_MODIFIER_EXTRA3.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::EXTRA4, KeyCode::VK_MODIFIER_EXTRA4.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::EXTRA5, KeyCode::VK_MODIFIER_EXTRA5.getModifierFlag());
 
   EXPECT_EQ(ModifierFlag::ZERO, KeyCode(KeyCode::A).getModifierFlag());
   EXPECT_EQ(ModifierFlag::ZERO, KeyCode(KeyCode::VK_NONE).getModifierFlag());
