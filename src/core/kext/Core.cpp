@@ -11,6 +11,7 @@
 #include "EventWatcher.hpp"
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
+#include "KeyCodeModifierFlagPairs.hpp"
 #include "KeyboardRepeat.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
@@ -34,6 +35,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       GlobalLock::initialize();
       CommonData::initialize();
+      KeyCodeModifierFlagPairs::initialize();
       EventWatcher::initialize();
       PressDownKeys::initialize();
       ButtonStatus::initialize();
