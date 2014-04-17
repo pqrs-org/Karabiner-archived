@@ -1,4 +1,5 @@
 include ../../Makefile.common
+CXXFLAGS += -I../../../src/bridge/include
 
 a.out: $(SOURCES)
 	$(MAKE) -C ../../../src/bridge/generator/config

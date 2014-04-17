@@ -1,8 +1,9 @@
 #include <ostream>
 #include <vector>
 #include <gtest/gtest.h>
-#include "KeyCode.hpp"
 #include "Config.hpp"
+#include "KeyCode.hpp"
+#include "KeyCodeModifierFlagPairs.hpp"
 
 using namespace org_pqrs_KeyRemap4MacBook;
 Config config;
@@ -19,6 +20,10 @@ std::ostream& operator<<(std::ostream& os, const ScrollWheel& v) { return os << 
 std::ostream& operator<<(std::ostream& os, const PointingRelative& v) { return os << v.get(); }
 
 Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.getRawBits() | rhs.getRawBits()); }
+
+TEST(Generic, setUp) {
+  KeyCodeModifierFlagPairs::clearVirtualModifiers();
+}
 
 TEST(Generic, sizeof_) {
   EXPECT_EQ(sizeof(unsigned int), sizeof(EventType));
@@ -70,14 +75,20 @@ TEST(Flags, remove) {
     Flags removed = ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::EXTRA2 | ModifierFlag::NONE;
     EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
 
+    flags.remove(ModifierFlag::NUMPAD);
+    flags.remove(ModifierFlag::EXTRA2);
     removed = ModifierFlag::SHIFT_R | ModifierFlag::NONE;
-    EXPECT_EQ(removed, flags.remove(ModifierFlag::NUMPAD | ModifierFlag::EXTRA2));
+    EXPECT_EQ(removed, flags);
 
+    flags.remove(ModifierFlag::SHIFT_R);
+    flags.remove(ModifierFlag::NONE);
     removed = Flags(0);
-    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_R | ModifierFlag::NONE));
+    EXPECT_EQ(removed, flags);
 
+    flags.remove(ModifierFlag::OPTION_L);
+    flags.remove(ModifierFlag::COMMAND_R);
     removed = Flags(0);
-    EXPECT_EQ(removed, flags.remove(ModifierFlag::OPTION_L | ModifierFlag::COMMAND_R));
+    EXPECT_EQ(removed, flags);
   }
   {
     // chain
@@ -117,81 +128,6 @@ TEST(Flags, isOn) {
 
   flags = Flags();
   EXPECT_FALSE(flags.isOn(ModifierFlag::NONE));
-}
-
-TEST(Flags, getModifierFlagByIndex) {
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(0);
-    EXPECT_EQ(flag, ModifierFlag::CAPSLOCK);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(1);
-    EXPECT_EQ(flag, ModifierFlag::SHIFT_L);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(2);
-    EXPECT_EQ(flag, ModifierFlag::SHIFT_R);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(3);
-    EXPECT_EQ(flag, ModifierFlag::CONTROL_L);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(4);
-    EXPECT_EQ(flag, ModifierFlag::CONTROL_R);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(5);
-    EXPECT_EQ(flag, ModifierFlag::OPTION_L);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(6);
-    EXPECT_EQ(flag, ModifierFlag::OPTION_R);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(7);
-    EXPECT_EQ(flag, ModifierFlag::COMMAND_L);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(8);
-    EXPECT_EQ(flag, ModifierFlag::COMMAND_R);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(9);
-    EXPECT_EQ(flag, ModifierFlag::NUMPAD);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(10);
-    EXPECT_EQ(flag, ModifierFlag::FN);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(11);
-    EXPECT_EQ(flag, ModifierFlag::EXTRA1);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(12);
-    EXPECT_EQ(flag, ModifierFlag::EXTRA2);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(13);
-    EXPECT_EQ(flag, ModifierFlag::EXTRA3);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(14);
-    EXPECT_EQ(flag, ModifierFlag::EXTRA4);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(15);
-    EXPECT_EQ(flag, ModifierFlag::EXTRA5);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(16);
-    EXPECT_EQ(flag, ModifierFlag::NONE);
-  }
-  {
-    ModifierFlag flag = Flags::getModifierFlagByIndex(17);
-    EXPECT_EQ(flag, ModifierFlag::NONE);
-  }
 }
 
 namespace {
