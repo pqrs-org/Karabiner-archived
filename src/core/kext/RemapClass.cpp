@@ -415,9 +415,14 @@ namespace org_pqrs_KeyRemap4MacBook {
             IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_MODIFIER. (%d)\n", size);
             return;
           } else {
-            unsigned int modifierFlag        = p[1];
-            unsigned int keycode_vk_modifier = p[2];
-            KeyCodeModifierFlagPairs::registerVirtualModifier(KeyCode(keycode_vk_modifier), ModifierFlag(modifierFlag));
+            KeyCodeModifierFlagPairs::registerVirtualModifier(ModifierFlag(p[1]),
+                                                              KeyCode(p[2]),  // VK_MODIFIER_*
+                                                              KeyCode(p[3]),  // VK_LOCK_*
+                                                              KeyCode(p[4]),  // VK_LOCK_*_FORCE_ON
+                                                              KeyCode(p[5]),  // VK_LOCK_*_FORCE_OFF
+                                                              KeyCode(p[6]),  // VK_STICKY_*
+                                                              KeyCode(p[7]),  // VK_STICKY_*_FORCE_ON
+                                                              KeyCode(p[8])); // VK_STICKY_*_FORCE_OFF
           }
 
         } else if (type == BRIDGE_VK_CONFIG) {
