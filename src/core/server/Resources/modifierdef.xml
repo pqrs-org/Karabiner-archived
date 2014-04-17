@@ -45,5 +45,36 @@
   <modifierdef>EXTRA3</modifierdef>
   <modifierdef>EXTRA4</modifierdef>
   <modifierdef>EXTRA5</modifierdef>
+  <modifierdef>EXTRA6</modifierdef>
+  <modifierdef>EXTRA7</modifierdef>
+  <modifierdef>EXTRA8</modifierdef>
+  <modifierdef>EXTRA9</modifierdef>
+  <modifierdef>EXTRA10</modifierdef>
 
+  <modifierdef>A</modifierdef>
+  <modifierdef>B</modifierdef>
+  <modifierdef>C</modifierdef>
+  <modifierdef>D</modifierdef>
+  <modifierdef>E</modifierdef>
+  <modifierdef>F</modifierdef>
+  <modifierdef>G</modifierdef>
+  <modifierdef>H</modifierdef>
+  <modifierdef>I</modifierdef>
+  <modifierdef>J</modifierdef>
+  <modifierdef>K</modifierdef>
+  <modifierdef>L</modifierdef>
+  <modifierdef>M</modifierdef>
+  <modifierdef>N</modifierdef>
+  <modifierdef>O</modifierdef>
+  <modifierdef>P</modifierdef>
+  <modifierdef>Q</modifierdef>
+  <modifierdef>R</modifierdef>
+  <modifierdef>S</modifierdef>
+  <modifierdef>T</modifierdef>
+  <modifierdef>U</modifierdef>
+  <modifierdef>V</modifierdef>
+  <modifierdef>W</modifierdef>
+  <modifierdef>X</modifierdef>
+  <modifierdef>Y</modifierdef>
+  <modifierdef>Z</modifierdef>
 </root>
