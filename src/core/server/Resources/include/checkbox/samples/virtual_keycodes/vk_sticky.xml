@@ -20,6 +20,7 @@
       <appendix>Use T to Sticky ModifierFlag::EXTRA5</appendix>
       <appendix>Use Y to Y,Sticky Shift_L</appendix>
       <appendix>Use L to Shift_L (+ Sticky Shift_L)</appendix>
+      <appendix>Use Z to Force Sticky off All</appendix>
       <appendix></appendix>
       <appendix>EXTRA1+A to 1</appendix>
       <appendix>EXTRA2+A to 2</appendix>
@@ -43,6 +44,7 @@
       <autogen>__KeyToKey__ KeyCode::T, KeyCode::VK_STICKY_EXTRA5</autogen>
       <autogen>__KeyToKey__ KeyCode::Y, KeyCode::Y, KeyCode::VK_STICKY_SHIFT_L</autogen>
       <autogen>__KeyOverlaidModifier__ KeyCode::L, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, KeyCode::VK_STICKY_ALL_FORCE_OFF</autogen>
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA1, KeyCode::KEY_1</autogen>
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA2, KeyCode::KEY_2</autogen>
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::EXTRA3, KeyCode::KEY_3</autogen>
