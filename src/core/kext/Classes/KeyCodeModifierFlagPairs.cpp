@@ -10,30 +10,50 @@ namespace org_pqrs_KeyRemap4MacBook {
     pairs_.clear();
 
     // Register normal modifiers.
-    pairs_.push_back(Pair(KeyCode::CAPSLOCK,           ModifierFlag::CAPSLOCK));
-    pairs_.push_back(Pair(KeyCode::SHIFT_L,            ModifierFlag::SHIFT_L));
-    pairs_.push_back(Pair(KeyCode::SHIFT_R,            ModifierFlag::SHIFT_R));
-    pairs_.push_back(Pair(KeyCode::CONTROL_L,          ModifierFlag::CONTROL_L));
-    pairs_.push_back(Pair(KeyCode::CONTROL_R,          ModifierFlag::CONTROL_R));
-    pairs_.push_back(Pair(KeyCode::OPTION_L,           ModifierFlag::OPTION_L));
-    pairs_.push_back(Pair(KeyCode::OPTION_R,           ModifierFlag::OPTION_R));
-    pairs_.push_back(Pair(KeyCode::COMMAND_L,          ModifierFlag::COMMAND_L));
-    pairs_.push_back(Pair(KeyCode::COMMAND_R,          ModifierFlag::COMMAND_R));
-    pairs_.push_back(Pair(KeyCode::FN,                 ModifierFlag::FN));
 
-    pairs_.push_back(Pair(KeyCode::VK_MODIFIER_EXTRA1, ModifierFlag::EXTRA1));
-    pairs_.push_back(Pair(KeyCode::VK_MODIFIER_EXTRA2, ModifierFlag::EXTRA2));
-    pairs_.push_back(Pair(KeyCode::VK_MODIFIER_EXTRA3, ModifierFlag::EXTRA3));
-    pairs_.push_back(Pair(KeyCode::VK_MODIFIER_EXTRA4, ModifierFlag::EXTRA4));
-    pairs_.push_back(Pair(KeyCode::VK_MODIFIER_EXTRA5, ModifierFlag::EXTRA5));
+#define REGISTER_MODIFIER(NAME)                                      \
+  pairs_.push_back(Pair(ModifierFlag::NAME,                          \
+                        KeyCode::NAME,                               \
+                        KeyCode::VK_LOCK_ ## NAME,                   \
+                        KeyCode::VK_LOCK_ ## NAME ## _FORCE_ON,      \
+                        KeyCode::VK_LOCK_ ## NAME ## _FORCE_OFF,     \
+                        KeyCode::VK_STICKY_ ## NAME,                 \
+                        KeyCode::VK_STICKY_ ## NAME ## _FORCE_ON,    \
+                        KeyCode::VK_STICKY_ ## NAME ## _FORCE_OFF)); \
+
+    REGISTER_MODIFIER(CAPSLOCK);
+    REGISTER_MODIFIER(COMMAND_L);
+    REGISTER_MODIFIER(COMMAND_R);
+    REGISTER_MODIFIER(CONTROL_L);
+    REGISTER_MODIFIER(CONTROL_R);
+    REGISTER_MODIFIER(FN);
+    REGISTER_MODIFIER(OPTION_L);
+    REGISTER_MODIFIER(OPTION_R);
+    REGISTER_MODIFIER(SHIFT_L);
+    REGISTER_MODIFIER(SHIFT_R);
+#undef REGISTER_MODIFIER
 
     FlagStatus::globalFlagStatus().initialize();
   }
 
   void
-  KeyCodeModifierFlagPairs::registerVirtualModifier(KeyCode k, ModifierFlag m)
+  KeyCodeModifierFlagPairs::registerVirtualModifier(ModifierFlag m,
+                                                    KeyCode k,
+                                                    KeyCode vk_lock,
+                                                    KeyCode vk_lock_force_on,
+                                                    KeyCode vk_lock_force_off,
+                                                    KeyCode vk_sticky,
+                                                    KeyCode vk_sticky_force_on,
+                                                    KeyCode vk_sticky_force_off)
   {
-    pairs_.push_back(Pair(k, m));
+    pairs_.push_back(Pair(m,
+                          k,
+                          vk_lock,
+                          vk_lock_force_on,
+                          vk_lock_force_off,
+                          vk_sticky,
+                          vk_sticky_force_on,
+                          vk_sticky_force_off));
 
     FlagStatus::globalFlagStatus().initialize();
   }
