@@ -41,6 +41,7 @@ namespace pqrs {
             symbol_map_.add("KeyCode", std::string("VK_STICKY_") + name + "_FORCE_OFF"));
         }
       }
+      remapclasses_initialize_vector_.end();
     } catch (std::exception& e) {
       assert(! "exception in ~modifier_loader");
     }
