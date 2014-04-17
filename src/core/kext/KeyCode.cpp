@@ -161,6 +161,40 @@ namespace org_pqrs_KeyRemap4MacBook {
     return 0;
   }
 
+  Flags&
+  Flags::remove(ModifierFlag flag)
+  {
+    // We consider the following case.
+    //   (ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R).remove(ModifierFlag::SHIFT_L).
+    //
+    // The value of SHIFT_L and SHIFT_R is below.
+    //
+    // ModifierFlag::SHIFT_L : 0x20002
+    // ModifierFlag::SHIFT_R : 0x20004
+    //
+    // So, the correct value of above case is 0x20004 (SHIFT_R).
+    //
+    // If we remove bits simple way (value_ &= ~flags),
+    // the result value becomes 0x00004. It's not right.
+    //
+    // Therefore, we save the old value, and restore the necessary bits from it.
+    //
+    Flags old = *this;
+
+    value_ = 0;
+
+    auto& pairs = KeyCodeModifierFlagPairs::getPairs();
+    for (size_t i = 0; i < pairs.size(); ++i) {
+      ModifierFlag f = pairs[i].getModifierFlag();
+
+      if (f != flag && old.isOn(f)) {
+        value_ |= f.getRawBits();
+      }
+    }
+
+    return *this;
+  }
+
   ModifierFlag
   KeyCode::getModifierFlag(void) const
   {

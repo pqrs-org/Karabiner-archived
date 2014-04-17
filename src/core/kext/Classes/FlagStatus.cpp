@@ -1,6 +1,7 @@
 #include "CommonData.hpp"
-#include "IOLogWrapper.hpp"
 #include "FlagStatus.hpp"
+#include "IOLogWrapper.hpp"
+#include "KeyCodeModifierFlagPairs.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   FlagStatus globalFlagStatus_;
@@ -89,12 +90,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   FlagStatus::initialize(void)
   {
-    for (int i = 0;; ++i) {
-      ModifierFlag f = Flags::getModifierFlagByIndex(i);
-      if (f == ModifierFlag::NONE) break;
-
+    auto& pairs = KeyCodeModifierFlagPairs::getPairs();
+    for (size_t i = 0; i < pairs.size(); ++i) {
       item_.push_back(Item());
-      item_.back().initialize(f);
+      item_.back().initialize(pairs[i].getModifierFlag());
     }
   }
 

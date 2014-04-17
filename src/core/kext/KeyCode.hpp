@@ -82,29 +82,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     Flags operator&(Flags other) const { return Flags(value_ & other.get()); }
     Flags operator&(ModifierFlag other) const { return *this & Flags(other); }
 
-    static ModifierFlag getModifierFlagByIndex(unsigned int index) {
-      switch (index) {
-        case 0:  return ModifierFlag::CAPSLOCK;
-        case 1:  return ModifierFlag::SHIFT_L;
-        case 2:  return ModifierFlag::SHIFT_R;
-        case 3:  return ModifierFlag::CONTROL_L;
-        case 4:  return ModifierFlag::CONTROL_R;
-        case 5:  return ModifierFlag::OPTION_L;
-        case 6:  return ModifierFlag::OPTION_R;
-        case 7:  return ModifierFlag::COMMAND_L;
-        case 8:  return ModifierFlag::COMMAND_R;
-        case 9:  return ModifierFlag::NUMPAD;
-        case 10: return ModifierFlag::FN;
-        case 11: return ModifierFlag::EXTRA1;
-        case 12: return ModifierFlag::EXTRA2;
-        case 13: return ModifierFlag::EXTRA3;
-        case 14: return ModifierFlag::EXTRA4;
-        case 15: return ModifierFlag::EXTRA5;
-        // Note: ModifierFlag::NONE must be a last item.
-        default: return ModifierFlag::NONE;
-      };
-    }
-
     Flags& add(Flags flags) { value_ |= flags.get(); return *this; }
     Flags& add(ModifierFlag flag) { return add(Flags(flag)); }
     Flags& add(AddDataType datatype, AddValue newval) {
@@ -113,39 +90,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
       return *this;
     }
-    Flags& remove(Flags flags) {
-      // We consider the following case.
-      //   (ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R).remove(ModifierFlag::SHIFT_L).
-      //
-      // The value of SHIFT_L and SHIFT_R is below.
-      //
-      // ModifierFlag::SHIFT_L : 0x20002
-      // ModifierFlag::SHIFT_R : 0x20004
-      //
-      // So, the correct value of above case is 0x20004 (SHIFT_R).
-      //
-      // If we remove bits simple way (value_ &= ~flags),
-      // the result value becomes 0x00004. It's not right.
-      //
-      // Therefore, we save the old value, and restore the necessary bits from it.
-      //
-      Flags old = *this;
-
-      value_ &= ~flags;
-
-      for (unsigned int i = 0;; ++i) {
-        ModifierFlag f = getModifierFlagByIndex(i);
-
-        if (! flags.isOn(f) && old.isOn(f)) {
-          value_ |= f.getRawBits();
-        }
-
-        if (f == ModifierFlag::NONE) break;
-      }
-
-      return *this;
-    }
-    Flags& remove(ModifierFlag flag) { return remove(Flags(flag)); }
+    Flags& remove(ModifierFlag flag);
 
     Flags& stripFN(void)     { return remove(ModifierFlag::FN); }
     Flags& stripNUMPAD(void) { return remove(ModifierFlag::NUMPAD); }

@@ -97,6 +97,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     FlagStatus(void);
     FlagStatus(Flags flags);
 
+    void initialize(void);
     void set(void);
     void set(KeyCode key, Flags flags);
     Flags makeFlags(void) const;
@@ -131,7 +132,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     static FlagStatus& globalFlagStatus(void);
 
   private:
-    void initialize(void);
     bool isOn(ModifierFlag modifierFlag) const;
     void updateStatusMessage(void);
     void updateStatusMessage(unsigned int statusMessageIndex);
