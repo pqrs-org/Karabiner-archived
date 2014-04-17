@@ -40,10 +40,10 @@
       |
   -->
 
-  <modifierdef>TEST1</modifierdef>
-  <modifierdef>TEST2</modifierdef>
-  <modifierdef>TEST3</modifierdef>
-  <modifierdef>TEST4</modifierdef>
-  <modifierdef>TEST5</modifierdef>
+  <modifierdef>EXTRA1</modifierdef>
+  <modifierdef>EXTRA2</modifierdef>
+  <modifierdef>EXTRA3</modifierdef>
+  <modifierdef>EXTRA4</modifierdef>
+  <modifierdef>EXTRA5</modifierdef>
 
 </root>
