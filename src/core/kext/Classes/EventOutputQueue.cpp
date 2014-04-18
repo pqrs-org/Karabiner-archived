@@ -202,7 +202,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params)
   {
     if (VirtualKey::handle(params)) return;
-    if (params.eventType == EventType::MODIFY) return;
 
     // ------------------------------------------------------------
     KeyCode newkeycode = params.key;
