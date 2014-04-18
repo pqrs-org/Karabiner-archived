@@ -1,10 +1,14 @@
 <?xml version="1.0"?>
 <root>
+  {{ MODIFIERDEF_REPLACEMENT }}
 
   <modifierdef>TEST1</modifierdef>
   <modifierdef>TEST2</modifierdef>
   <modifierdef>TEST3</modifierdef>
   <modifierdef>TEST4</modifierdef>
   <modifierdef>TEST5</modifierdef>
+
+  <!-- modifierdef of physical modifiers (command,control,shift,option,etc.) will be ignored.-->
+  <modifierdef>SHIFT_L</modifierdef>
 
 </root>

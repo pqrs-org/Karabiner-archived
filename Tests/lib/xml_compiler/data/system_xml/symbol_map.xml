@@ -35,11 +35,20 @@
   <symbol_map type="InputSource" name="VK__AUTOINDEX__BEGIN__" value="1" />
   <symbol_map type="InputSourceDetail" name="NONE" value="0" />
   <symbol_map type="InputSourceDetail" name="VK__AUTOINDEX__BEGIN__" value="1" />
-  <symbol_map type="ModifierFlag" name="CAPSLOCK" value="0x10000" />
-  <symbol_map type="ModifierFlag" name="SHIFT_L" value="0x20002" />
-  <symbol_map type="ModifierFlag" name="SHIFT_R" value="0x20004" />
-  <symbol_map type="ModifierFlag" name="NONE" value="0x20000000" />
-  <symbol_map type="ModifierFlag" name="VK__AUTOINDEX__BEGIN__" value="0x20000001" />
+  <symbol_map type="ModifierFlag" name="ZERO" value="0" />
+  <symbol_map type="ModifierFlag" name="CAPSLOCK" value="1" />
+  <symbol_map type="ModifierFlag" name="SHIFT_L" value="2" />
+  <symbol_map type="ModifierFlag" name="SHIFT_R" value="3" />
+  <symbol_map type="ModifierFlag" name="CONTROL_L" value="4" />
+  <symbol_map type="ModifierFlag" name="CONTROL_R" value="5" />
+  <symbol_map type="ModifierFlag" name="OPTION_L" value="6" />
+  <symbol_map type="ModifierFlag" name="OPTION_R" value="7" />
+  <symbol_map type="ModifierFlag" name="COMMAND_L" value="8" />
+  <symbol_map type="ModifierFlag" name="COMMAND_R" value="9" />
+  <symbol_map type="ModifierFlag" name="NUMPAD" value="10" />
+  <symbol_map type="ModifierFlag" name="FN" value="11" />
+  <symbol_map type="ModifierFlag" name="NONE" value="12" />
+  <symbol_map type="ModifierFlag" name="VK__AUTOINDEX__BEGIN__" value="13" />
   <symbol_map type="Option" name="USE_SEPARATOR" value="1" />
   <symbol_map type="Option" name="SEPARATOR" value="2" />
   <symbol_map type="Option" name="KEYOVERLAIDMODIFIER_REPEAT" value="3" />

@@ -16,6 +16,11 @@
   </replacementdef>
 
   <replacementdef>
+    <replacementname>MODIFIERDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
     <replacementname>VKCHANGEINPUTSOURCEDEF_REPLACEMENT</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
