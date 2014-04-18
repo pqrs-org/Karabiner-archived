@@ -71,7 +71,7 @@ namespace pqrs {
 
         // ----------------------------------------
         // register to symbol_map_.
-        if (! symbol_map_.get_optional(*(newmodifier->get_name()))) {
+        if (! symbol_map_.get_optional("ModifierFlag", it.get_data())) {
           auto v = symbol_map_.add("ModifierFlag", it.get_data());
           modifier_map_[v] = newmodifier;
         }

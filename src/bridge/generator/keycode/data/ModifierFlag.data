@@ -13,3 +13,5 @@ NUMPAD    --AUTO--
 FN        --AUTO--
 
 NONE      --AUTO--
+
+// Please define other ModifierFlag by modifierdef.xml.
