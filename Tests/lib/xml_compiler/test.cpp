@@ -33,6 +33,11 @@ TEST(pqrs_xml_compiler, reload)
     EXPECT_EQ(boost::optional<int>(space_is_ignored), xml_compiler.get_config_index(expected));
   }
 
+  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map().get_optional("ModifierFlag::CAPSLOCK"));
+  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("ModifierFlag::SHIFT_L"));
+  EXPECT_NE(boost::none, xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_TEST1"));
+  EXPECT_EQ(boost::none, xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_SHIFT_L"));
+
   EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_123"));
   EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_456"));
   EXPECT_EQ(boost::optional<uint32_t>(654), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_654"));
@@ -569,7 +574,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
-      expected.push_back(131074); // ModifierFlag::SHIFT_L
+      expected.push_back(2); // ModifierFlag::SHIFT_L
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
@@ -580,7 +585,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49);     // KeyCode::SPACE
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
-      expected.push_back(131076); // ModifierFlag::SHIFT_R
+      expected.push_back(3); // ModifierFlag::SHIFT_R
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
@@ -593,7 +598,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
-      expected.push_back(131074); // ModifierFlag::SHIFT_L
+      expected.push_back(2); // ModifierFlag::SHIFT_L
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
@@ -604,7 +609,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(48);     // KeyCode::TAB
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
-      expected.push_back(131076); // ModifierFlag::SHIFT_R
+      expected.push_back(3); // ModifierFlag::SHIFT_R
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
@@ -658,7 +663,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name1", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(45): unexpected end of data",
+    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(50): unexpected end of data",
               xml_compiler.get_error_information().get_message());
     EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
