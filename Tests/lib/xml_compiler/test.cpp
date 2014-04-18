@@ -35,6 +35,7 @@ TEST(pqrs_xml_compiler, reload)
 
   EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map().get_optional("ModifierFlag::CAPSLOCK"));
   EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("ModifierFlag::SHIFT_L"));
+  EXPECT_EQ(boost::optional<uint32_t>(13), xml_compiler.get_symbol_map().get_optional("ModifierFlag::TEST1"));
   EXPECT_NE(boost::none, xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_TEST1"));
   EXPECT_EQ(boost::none, xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_SHIFT_L"));
 
