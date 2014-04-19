@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Expose Mode2</name>
+    <appendix><![CDATA[  Mission Control: K down -> E down -> E up  ]]></appendix>
+    <appendix><![CDATA[  Show Desktop: K down -> D down -> D up  ]]></appendix>
+    <appendix><![CDATA[  Launchpad: K down -> L down -> L up  ]]></appendix>
+    <identifier>remap.expose_mode2</identifier>
+
+    <!-- Turn ModifierFlag::K on -->
+    <autogen>
+      __KeyUpEventToKey__
+      @begin
+      KeyCode::K, ModifierFlag::NONE,
+      KeyCode::VK_LOCK_K_FORCE_ON, <!-- Lock ModifierFlag::K -->
+      @end
+
+      @begin
+      ModifierFlag::K, <!-- If ModifierFlag::K is still active -->
+      KeyCode::K,
+      KeyCode::VK_LOCK_K_FORCE_OFF,
+      @end
+    </autogen>
+
+    <!-- Change keys when K key is pressed. -->
+    <autogen>
+      __KeyUpEventToKey__
+      @begin
+      KeyCode::E, ModifierFlag::K,
+      @end
+
+      @begin
+      ModifierFlag::K,
+      KeyCode::MISSION_CONTROL,
+      KeyCode::VK_LOCK_K_FORCE_OFF, <!-- Unlock ModifierFlag::K in order to cancel "k" input. -->
+      @end
+
+      @begin
+      KeyCode::E,
+      @end
+    </autogen>
+    <autogen>
+      __KeyUpEventToKey__
+      @begin
+      KeyCode::D, ModifierFlag::K,
+      @end
+
+      @begin
+      ModifierFlag::K,
+      KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L,
+      KeyCode::VK_LOCK_K_FORCE_OFF, <!-- Unlock ModifierFlag::K in order to cancel "k" input. -->
+      @end
+
+      @begin
+      KeyCode::D,
+      @end
+    </autogen>
+    <autogen>
+      __KeyUpEventToKey__
+      @begin
+      KeyCode::L, ModifierFlag::K,
+      @end
+
+      @begin
+      ModifierFlag::K,
+      KeyCode::LAUNCHPAD,
+      KeyCode::VK_LOCK_K_FORCE_OFF, <!-- Unlock ModifierFlag::K in order to cancel "k" input. -->
+      @end
+
+      @begin
+      KeyCode::L,
+      @end
+    </autogen>
+
+    <include path="register_all_keys_with_default_behavior.xml">
+      <replacementdef>
+        <replacementname>MODIFIER_CHARACTER</replacementname>
+        <replacementvalue>K</replacementvalue>
+      </replacementdef>
+    </include>
+
+  </item>
+
+</root>

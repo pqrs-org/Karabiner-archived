@@ -136,6 +136,7 @@
         <identifier>option.expose_mode_f_to_optiontab</identifier>
       </item>
     </item>
+    <include path="expose_mode2/expose_mode2.xml" />
     <item>
       <name>Cmd+Tab Mode</name>
       <item>
