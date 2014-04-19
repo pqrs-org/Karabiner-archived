@@ -51,30 +51,30 @@
   <modifierdef>EXTRA9</modifierdef>
   <modifierdef>EXTRA10</modifierdef>
 
-  <modifierdef>A</modifierdef>
-  <modifierdef>B</modifierdef>
-  <modifierdef>C</modifierdef>
-  <modifierdef>D</modifierdef>
-  <modifierdef>E</modifierdef>
-  <modifierdef>F</modifierdef>
-  <modifierdef>G</modifierdef>
-  <modifierdef>H</modifierdef>
-  <modifierdef>I</modifierdef>
-  <modifierdef>J</modifierdef>
-  <modifierdef>K</modifierdef>
-  <modifierdef>L</modifierdef>
-  <modifierdef>M</modifierdef>
-  <modifierdef>N</modifierdef>
-  <modifierdef>O</modifierdef>
-  <modifierdef>P</modifierdef>
-  <modifierdef>Q</modifierdef>
-  <modifierdef>R</modifierdef>
-  <modifierdef>S</modifierdef>
-  <modifierdef>T</modifierdef>
-  <modifierdef>U</modifierdef>
-  <modifierdef>V</modifierdef>
-  <modifierdef>W</modifierdef>
-  <modifierdef>X</modifierdef>
-  <modifierdef>Y</modifierdef>
-  <modifierdef>Z</modifierdef>
+  <modifierdef notify="false">A</modifierdef>
+  <modifierdef notify="false">B</modifierdef>
+  <modifierdef notify="false">C</modifierdef>
+  <modifierdef notify="false">D</modifierdef>
+  <modifierdef notify="false">E</modifierdef>
+  <modifierdef notify="false">F</modifierdef>
+  <modifierdef notify="false">G</modifierdef>
+  <modifierdef notify="false">H</modifierdef>
+  <modifierdef notify="false">I</modifierdef>
+  <modifierdef notify="false">J</modifierdef>
+  <modifierdef notify="false">K</modifierdef>
+  <modifierdef notify="false">L</modifierdef>
+  <modifierdef notify="false">M</modifierdef>
+  <modifierdef notify="false">N</modifierdef>
+  <modifierdef notify="false">O</modifierdef>
+  <modifierdef notify="false">P</modifierdef>
+  <modifierdef notify="false">Q</modifierdef>
+  <modifierdef notify="false">R</modifierdef>
+  <modifierdef notify="false">S</modifierdef>
+  <modifierdef notify="false">T</modifierdef>
+  <modifierdef notify="false">U</modifierdef>
+  <modifierdef notify="false">V</modifierdef>
+  <modifierdef notify="false">W</modifierdef>
+  <modifierdef notify="false">X</modifierdef>
+  <modifierdef notify="false">Y</modifierdef>
+  <modifierdef notify="false">Z</modifierdef>
 </root>
