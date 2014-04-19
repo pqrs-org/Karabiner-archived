@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>VK_JIS_*</name>
+
+    <item>
+      <name>VK_JIS_TOGGLE_EISUU_KANA</name>
+      <appendix>A to KANA/EISUU (toggle)</appendix>
+      <appendix>Command_L to KANA/EISUU (toggle)</appendix>
+      <appendix>Command_R to Command_R (When type only, send send KANA/EISUU (toggle))</appendix>
+      <identifier>remap.samples_vk_jis_toggle_eisuu_kana</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_BACKSLASH</name>
+      <appendix>Use A as JIS_BACKSLASH</appendix>
+      <identifier>remap.samples_a2jisbackslash</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_JIS_BACKSLASH</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_YEN</name>
+      <appendix>Use A as JIS_YEN</appendix>
+      <identifier>remap.samples_a2jisyen</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_JIS_YEN</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_ROMAN</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_ROMAN,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_ROMAN,A,I,U</appendix>
+      <identifier>remap.samples_vk_jis_temporary_roman</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, KeyCode::VK_JIS_TEMPORARY_ROMAN, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_HIRAGANA</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_HIRAGANA,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_HIRAGANA,A,I,U</appendix>
+      <identifier>remap.samples_vk_jis_temporary_hiragana</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_HIRAGANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, KeyCode::VK_JIS_TEMPORARY_HIRAGANA, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_KATAKANA</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_KATAKANA,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_KATAKANA,A,I,U</appendix>
+      <identifier>remap.samples_vk_jis_temporary_katakana</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, KeyCode::VK_JIS_TEMPORARY_KATAKANA, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
+    <item>
+      <name>VK_JIS_TEMPORARY_AINU</name>
+      <appendix>Use A as A,VK_JIS_TEMPORARY_AINU,I,U</appendix>
+      <appendix>Use B as VK_JIS_TEMPORARY_AINU,A,I,U</appendix>
+      <identifier>remap.samples_vk_jis_temporary_ainu</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::A, KeyCode::VK_JIS_TEMPORARY_AINU, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, KeyCode::VK_JIS_TEMPORARY_AINU, KeyCode::A, KeyCode::I, KeyCode::U, KeyCode::VK_JIS_TEMPORARY_RESTORE</autogen>
+    </item>
+  </item>
+
+</root>
