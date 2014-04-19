@@ -40,13 +40,15 @@ namespace pqrs {
           remapclasses_initialize_vector_.push_back(
             symbol_map_.add("KeyCode", std::string("VK_STICKY_") + name + "_FORCE_OFF"));
 
-          remapclasses_initialize_vector_.push_back(2 + static_cast<uint32_t>(name.length()) + 1);
-          remapclasses_initialize_vector_.push_back(BRIDGE_MODIFIERNAME);
-          remapclasses_initialize_vector_.push_back(it.first);
-          for (size_t i = 0; i < name.length(); ++i) {
-            remapclasses_initialize_vector_.push_back(name[i]);
+          if ((it.second)->get_notify()) {
+            remapclasses_initialize_vector_.push_back(2 + static_cast<uint32_t>(name.length()) + 1);
+            remapclasses_initialize_vector_.push_back(BRIDGE_MODIFIERNAME);
+            remapclasses_initialize_vector_.push_back(it.first);
+            for (size_t i = 0; i < name.length(); ++i) {
+              remapclasses_initialize_vector_.push_back(name[i]);
+            }
+            remapclasses_initialize_vector_.push_back('\0');
           }
-          remapclasses_initialize_vector_.push_back('\0');
         }
       }
       remapclasses_initialize_vector_.end();
@@ -68,6 +70,18 @@ namespace pqrs {
         if (! newmodifier) continue;
 
         newmodifier->set_name(it.get_data());
+
+        auto attr_notify = it.get_optional("<xmlattr>.notify");
+        if (attr_notify) {
+          if (*attr_notify == "false") {
+            newmodifier->set_notify(false);
+          } else if (*attr_notify == "true") {
+            newmodifier->set_notify(true);
+          } else {
+            xml_compiler_.error_information_.set(std::string("Invalid 'notify' attribute within <modifierdef>: ") + *attr_notify);
+            continue;
+          }
+        }
 
         if (newmodifier->get_name()->empty()) {
           xml_compiler_.error_information_.set("Empty <modifierdef>.");

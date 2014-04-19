@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>MODIFIERDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+               <modifierdef notify="falsee">INVALID_NOTIFY</modifierdef>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>
