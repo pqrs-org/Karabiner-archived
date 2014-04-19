@@ -2,14 +2,20 @@
 
 class modifier {
 public:
+  modifier(void) : notify_(true) {}
+
   boost::optional<const std::string&> get_name(void) const {
     if (! name_) return boost::none;
     return *name_;
   }
   void set_name(const std::string& v) { name_ = v; }
 
+  bool get_notify(void) const { return notify_; }
+  void set_notify(bool v) { notify_ = v; }
+
 private:
   boost::optional<std::string> name_;
+  bool notify_;
 };
 
 class modifier_loader {
