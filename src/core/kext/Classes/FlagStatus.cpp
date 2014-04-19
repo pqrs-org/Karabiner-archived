@@ -309,8 +309,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Skip caps lock.
       if (item_[i].flag_ == ModifierFlag::CAPSLOCK) continue;
 
-      CommonData::append_statusmessage(statusMessageIndex, ModifierName::getName(item_[i].flag_));
-      CommonData::append_statusmessage(statusMessageIndex, " ");
+      const char* name = ModifierName::getName(item_[i].flag_);
+      if (name) {
+        CommonData::append_statusmessage(statusMessageIndex, name);
+        CommonData::append_statusmessage(statusMessageIndex, " ");
+      }
     }
   }
 

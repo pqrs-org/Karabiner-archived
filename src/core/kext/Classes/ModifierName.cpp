@@ -34,6 +34,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         return items_[i].getName();
       }
     }
-    return "";
+    return NULL;
   }
 }
