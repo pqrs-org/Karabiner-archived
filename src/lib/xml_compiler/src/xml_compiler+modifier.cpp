@@ -69,6 +69,11 @@ namespace pqrs {
 
         newmodifier->set_name(it.get_data());
 
+        if (newmodifier->get_name()->empty()) {
+          xml_compiler_.error_information_.set("Empty <modifierdef>.");
+          continue;
+        }
+
         // ----------------------------------------
         // register to symbol_map_.
         if (! symbol_map_.get_optional("ModifierFlag", it.get_data())) {

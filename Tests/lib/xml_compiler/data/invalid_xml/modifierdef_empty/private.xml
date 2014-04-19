@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>MODIFIERDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+               <modifierdef></modifierdef>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>
