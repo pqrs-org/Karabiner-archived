@@ -46,6 +46,8 @@ Since 9.3.0
           ThresholdMillisecond::RawValue::2000,
         &lt;/autogen&gt;
       </pre>
+    * v9.3.60: You can add your own modifiers by &lt;modifierdef&gt;.
+     [Usage of &lt;modifierdef&gt;.](https://pqrs.org/macosx/keyremap4macbook/xml.html.en#modifier)
 
 Version 9.3.0
 -------------
