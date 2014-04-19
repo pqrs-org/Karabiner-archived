@@ -78,4 +78,9 @@
   <modifierdef notify="false">X</modifierdef>
   <modifierdef notify="false">Y</modifierdef>
   <modifierdef notify="false">Z</modifierdef>
+  <modifierdef notify="false">DELETE</modifierdef>
+  <modifierdef notify="false">ESCAPE</modifierdef>
+  <modifierdef notify="false">RETURN</modifierdef>
+  <modifierdef notify="false">SPACE</modifierdef>
+  <modifierdef notify="false">TAB</modifierdef>
 </root>
