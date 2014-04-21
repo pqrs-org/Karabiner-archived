@@ -194,6 +194,26 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_eject_disc</name>
+    <url type="shell">
+      <![CDATA[
+               /usr/bin/osascript -e 'display notification "Ejecting disc" with title "KeyRemap4MacBook"';
+               /usr/bin/drutil eject
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_eject_volumes</name>
+    <url type="shell">
+      <![CDATA[
+               /usr/bin/osascript -e 'display notification "Ejecting volumes" with title "KeyRemap4MacBook"';
+               for f in /Volumes/*; do /usr/sbin/diskutil unmount "$f"; done
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_SHELL_kill_EventViewer</name>
     <url type="shell">
       <![CDATA[    /usr/bin/killall EventViewer    ]]>
