@@ -4,6 +4,9 @@ IGNORE_PASSTHROUGH                      --AUTO--
 // For __KeyOverlaidModifier__
 KEYOVERLAIDMODIFIER_REPEAT              --AUTO--
 
+// For __KeyUpEventToKey__
+KEYUPEVENTTOKEY_PRESERVE_KEYDOWN_ORDER  --AUTO--
+
 // For __SimultaneousKeyPresses__
 SIMULTANEOUSKEYPRESSES_RAW              --AUTO--
 SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER --AUTO--
