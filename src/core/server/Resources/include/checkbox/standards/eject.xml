@@ -139,5 +139,21 @@
       <identifier>remap.drop_eject</identifier>
       <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, KeyCode::VK_NONE</autogen>
     </item>
+
+    <item>
+      <name>Use the eject key to eject volumes.</name>
+      <appendix>(+ fn-eject to eject disc.)</appendix>
+      <identifier>remap.eject_volumes</identifier>
+      <autogen>
+        __KeyToKey__
+        ConsumerKeyCode::EJECT, ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_SHELL_eject_volumes,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        ConsumerKeyCode::EJECT, ModifierFlag::FN,
+        KeyCode::VK_OPEN_URL_SHELL_eject_disc,
+      </autogen>
+    </item>
   </item>
 </root>
