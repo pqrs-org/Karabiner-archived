@@ -2,11 +2,17 @@
 #define KEYUPEVENTTOKEY_HPP
 
 #include "KeyToKey.hpp"
+#include "List.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     class KeyUpEventToKey {
     public:
+      static void static_initialize(void);
+      static void static_terminate(void);
+
+      KeyUpEventToKey(void) : preserveKeyDownOrder_(false) {}
+
       bool remap(RemapParams& remapParams);
 
       // ========================================
@@ -58,9 +64,24 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void add(AddDataType datatype, AddValue newval);
 
+      class Item : public List::Item {
+      public:
+        Item(KeyUpEventToKey& k) : keyUpEventToKey_(k) {}
+        KeyUpEventToKey& get(void) { return keyUpEventToKey_; }
+
+      private:
+        KeyUpEventToKey& keyUpEventToKey_;
+      };
+
     private:
+      void doKeyUp(void);
+
       KeyToKey fromKeyToKey_;
       Vector_KeyToKey toKeyToKeys_;
+      bool preserveKeyDownOrder_;
+
+      // Queue for Option::KEYUPEVENTTOKEY_PRESERVE_KEYDOWN_ORDER.
+      static List queue_;
     };
   }
 }

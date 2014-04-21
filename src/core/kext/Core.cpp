@@ -42,6 +42,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       PressDownKeys::initialize();
       ButtonStatus::initialize();
 
+      RemapFunc::KeyUpEventToKey::static_initialize();
+
       workLoop = IOWorkLoop::workLoop();
       if (! workLoop) {
         IOLOG_ERROR("IOWorkLoop::workLoop failed\n");
@@ -88,6 +90,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         workLoop->release();
         workLoop = NULL;
       }
+
+      RemapFunc::KeyUpEventToKey::static_terminate();
 
       EventWatcher::terminate();
       PressDownKeys::terminate();
