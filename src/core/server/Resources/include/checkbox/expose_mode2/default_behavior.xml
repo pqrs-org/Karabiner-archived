@@ -8,7 +8,7 @@
   <autogen>
     __KeyUpEventToKey__
     @begin
-    KeyCode::{{ KEY }}, ModifierFlag::KEYUP_INPUT_MODE,
+    KeyCode::{{ KEY }},
     KeyCode::VK_MODIFIER_KEYUP_INPUT_MODE,
     @end
 
