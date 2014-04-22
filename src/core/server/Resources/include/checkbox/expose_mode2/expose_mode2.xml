@@ -74,7 +74,10 @@
       @end
     </autogen>
 
-    <include path="register_all_keys_with_default_behavior.xml" />
+    <block>
+      <modifier_only>ModifierFlag::KEYUP_INPUT_MODE</modifier_only>
+      <include path="register_all_keys_with_default_behavior.xml" />
+    </block>
   </item>
 
 </root>
