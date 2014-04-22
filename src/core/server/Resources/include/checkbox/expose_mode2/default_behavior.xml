@@ -3,26 +3,20 @@
 
   <!--
       {{ KEY }} : A, B, C, etc.
-      {{ MODIFIER_CHARACTER }} : K at expose mode2, SPACE at sands2.
   -->
 
   <autogen>
     __KeyUpEventToKey__
     @begin
-    KeyCode::{{ KEY }}, ModifierFlag::{{ MODIFIER_CHARACTER }},
-    @end
-
-    @begin
-    ModifierFlag::{{ MODIFIER_CHARACTER }},
-    KeyCode::{{ MODIFIER_CHARACTER }},
-    KeyCode::{{ KEY }},
-    KeyCode::VK_LOCK_{{ MODIFIER_CHARACTER }}_FORCE_OFF, <!-- Unlock ModifierFlag in order to avoid duplicated modifier charater input. -->
+    KeyCode::{{ KEY }}, ModifierFlag::KEYUP_INPUT_MODE,
+    KeyCode::VK_MODIFIER_KEYUP_INPUT_MODE,
     @end
 
     @begin
     KeyCode::{{ KEY }},
     @end
+
+    Option::KEYUPEVENTTOKEY_PRESERVE_KEYDOWN_ORDER,
   </autogen>
 
 </root>
-

@@ -51,6 +51,9 @@
   <modifierdef>EXTRA9</modifierdef>
   <modifierdef>EXTRA10</modifierdef>
 
+  <!-- For "Expose Mode 2", etc. -->
+  <modifierdef>KEYUP_INPUT_MODE</modifierdef>
+
   <!-- The lock and sticky modifier notification will be hidden if you set notify="false". -->
   <modifierdef notify="false">A</modifierdef>
   <modifierdef notify="false">B</modifierdef>
