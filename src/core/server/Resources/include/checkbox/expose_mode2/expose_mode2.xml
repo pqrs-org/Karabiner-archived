@@ -14,6 +14,7 @@
       @begin
       KeyCode::K, ModifierFlag::NONE,
       KeyCode::VK_LOCK_K_FORCE_ON, <!-- Lock ModifierFlag::K -->
+      KeyCode::VK_MODIFIER_KEYUP_INPUT_MODE,
       @end
 
       @begin
@@ -73,13 +74,7 @@
       @end
     </autogen>
 
-    <include path="register_all_keys_with_default_behavior.xml">
-      <replacementdef>
-        <replacementname>MODIFIER_CHARACTER</replacementname>
-        <replacementvalue>K</replacementvalue>
-      </replacementdef>
-    </include>
-
+    <include path="register_all_keys_with_default_behavior.xml" />
   </item>
 
 </root>
