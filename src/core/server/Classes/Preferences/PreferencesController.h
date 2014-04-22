@@ -14,5 +14,7 @@
 }
 
 - (void) show;
+- (IBAction) openWebPage:(id)sender;
+- (IBAction) openGitHub:(id)sender;
 
 @end
