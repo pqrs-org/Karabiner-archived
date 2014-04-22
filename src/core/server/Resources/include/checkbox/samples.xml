@@ -1200,6 +1200,41 @@
           @end
         </autogen>
       </item>
+
+      <item>
+        <name>With Option::KEYUPEVENTTOKEY_PRESERVE_KEYDOWN_ORDER</name>
+        <appendix>A down, S down, S up, A up -&gt; "sa" is entered.</appendix>
+        <appendix>S down, D down, D up, S up -&gt; "sd" is entered.</appendix>
+        <identifier>remap.samples_KeyUpEventToKey_with_KEYUPEVENTTOKEY_PRESERVE_KEYDOWN_ORDER</identifier>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin
+          KeyCode::A,
+          @end
+          @begin
+          KeyCode::A,
+          @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin
+          KeyCode::S,
+          @end
+          @begin
+          KeyCode::S,
+          @end
+        </autogen>
+        <autogen>
+          __KeyUpEventToKey__
+          @begin
+          KeyCode::D,
+          @end
+          @begin
+          KeyCode::D,
+          @end
+          Option::KEYUPEVENTTOKEY_PRESERVE_KEYDOWN_ORDER
+        </autogen>
+      </item>
     </item>
 
     <item>
