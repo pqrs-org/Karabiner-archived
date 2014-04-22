@@ -263,6 +263,11 @@
     NSString* message = [self preferencepane_error_message];
     [self insert_caution_into_preferencepane_checkbox:message];
 
+    NSUInteger maxlen = 500;
+    if ([message length] > maxlen) {
+      message = [message substringToIndex:maxlen];
+    }
+
     NSAlert* alert = [NSAlert new];
     [alert setMessageText:@"KeyRemap4MacBook Error"];
     [alert addButtonWithTitle:@"Close"];
