@@ -10,18 +10,10 @@
 
     <!-- Turn ModifierFlag::K on -->
     <autogen>
-      __KeyUpEventToKey__
-      @begin
+      __KeyOverlaidModifier__
       KeyCode::K, ModifierFlag::NONE,
-      KeyCode::VK_LOCK_K_FORCE_ON, <!-- Lock ModifierFlag::K -->
-      KeyCode::VK_MODIFIER_KEYUP_INPUT_MODE,
-      @end
-
-      @begin
-      ModifierFlag::K, <!-- If ModifierFlag::K is still active -->
+      KeyCode::VK_MODIFIER_KEYUP_INPUT_MODE, ModifierFlag::K,
       KeyCode::K,
-      KeyCode::VK_LOCK_K_FORCE_OFF,
-      @end
     </autogen>
 
     <!-- Change keys when K key is pressed. -->
