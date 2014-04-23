@@ -337,6 +337,7 @@ namespace pqrs {
       { "__PointingButtonToKey__",            BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__PointingRelativeToKey__",          BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY },
       { "__PointingRelativeToScroll__",       BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL },
+      { "__BlockUntilKeyup__",                BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP },
       { "__DropKeyAfterRemap__",              BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP },
       { "__SetKeyboardType__",                BRIDGE_REMAPTYPE_SETKEYBOARDTYPE },
       { "__ForceNumLockOn__",                 BRIDGE_REMAPTYPE_FORCENUMLOCKON },
