@@ -129,6 +129,18 @@ TEST(List, pop_front) {
   List list;
   list.pop_front();
 }
+TEST(List, pop_back) {
+  List list;
+  list.pop_back();
+
+  list.push_back(new TestItem(1));
+  list.push_back(new TestItem(2));
+  list.pop_back();
+  EXPECT_EQ(static_cast<size_t>(1), list.size());
+
+  TestItem* p = static_cast<TestItem*>(list.back());
+  EXPECT_EQ(static_cast<size_t>(1), p->v());
+}
 
 TEST(List, erase_and_delete) {
   const int MAXITEM = 10;
