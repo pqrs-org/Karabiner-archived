@@ -3,6 +3,7 @@
 
 #include "bridge.h"
 #include "RemapFilter/FilterUnion.hpp"
+#include "RemapFunc/BlockUntilKeyUp.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/DropKeyAfterRemap.hpp"
 #include "RemapFunc/DropPointingRelativeCursorMove.hpp"
@@ -41,6 +42,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void remap(RemapParams& remapParams);
       // for DropKeyAfterRemap
       bool drop(const Params_KeyboardEventCallBack& params);
+      // for BlockUntilKeyUp
+      bool isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion);
       //
       bool remap_SimultaneousKeyPresses(void);
       //
@@ -70,6 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       bool ignorePassThrough_;
 
       union {
+        RemapFunc::BlockUntilKeyUp* blockUntilKeyUp;
         RemapFunc::DoublePressModifier* doublePressModifier;
         RemapFunc::DropKeyAfterRemap* dropKeyAfterRemap;
         RemapFunc::DropPointingRelativeCursorMove* dropPointingRelativeCursorMove;
@@ -104,6 +108,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
     void remap(RemapParams& remapParams, bool passThroughEnabled);
 
+    // for BlockUntilKeyUp
+    bool isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion, bool passThroughEnabled);
     bool remap_simultaneouskeypresses(bool passThroughEnabled);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled);
     const char* get_statusmessage(void) const { return statusmessage_; }
@@ -149,6 +155,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     void remap_setkeyboardtype(KeyboardType& keyboardType);
     void remap_forcenumlockon(ListHookedKeyboard::Item* item);
     void remap(RemapParams& remapParams);
+
+    // for BlockUntilKeyUp
+    bool isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion);
 
     // return true if EventInputQueue::queue_ is changed.
     bool remap_simultaneouskeypresses(void);
