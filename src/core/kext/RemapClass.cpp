@@ -73,6 +73,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       INITIALIZE_UNION_VALUE(p_.scrollWheelToScrollWheel,       RemapFunc::ScrollWheelToScrollWheel);       break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               INITIALIZE_UNION_VALUE(p_.scrollWheelToKey,               RemapFunc::ScrollWheelToKey);               break;
       case BRIDGE_REMAPTYPE_KEYUPEVENTTOKEY:                INITIALIZE_UNION_VALUE(p_.keyUpEventToKey,                RemapFunc::KeyUpEventToKey);                break;
+      case BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP:                INITIALIZE_UNION_VALUE(p_.blockUntilKeyUp,                RemapFunc::BlockUntilKeyUp);                break;
       case BRIDGE_REMAPTYPE_PASSTHROUGH:                    INITIALIZE_UNION_VALUE(p_.passThrough,                    RemapFunc::PassThrough);                    break;
       default:
         IOLOG_ERROR("RemapClass::Item::Item unknown type_ (%d)\n", type_);
@@ -109,6 +110,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       DELETE_UNLESS_NULL(p_.scrollWheelToScrollWheel);       break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               DELETE_UNLESS_NULL(p_.scrollWheelToKey);               break;
       case BRIDGE_REMAPTYPE_KEYUPEVENTTOKEY:                DELETE_UNLESS_NULL(p_.keyUpEventToKey);                break;
+      case BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP:                DELETE_UNLESS_NULL(p_.blockUntilKeyUp);                break;
       case BRIDGE_REMAPTYPE_PASSTHROUGH:                    DELETE_UNLESS_NULL(p_.passThrough);                    break;
       default:
         IOLOG_ERROR("RemapClass::Item::terminate unknown type_ (%d)\n", type_);
@@ -243,6 +245,38 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_UNION_FUNCTION
+
+    return false;
+  }
+
+  bool
+  RemapClass::Item::isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion)
+  {
+    bool iskeydown = false;
+    if (! paramsUnion.iskeydown(iskeydown)) {
+      iskeydown = false;
+    }
+
+    if (iskeydown) {
+      if (! parent_.enabled()) return false;
+      if (isblocked()) return false;
+    } else {
+      // We ignore filters_ if active_ is set at KeyDown.
+      if (isblocked() && ! active_) return false;
+    }
+
+    if (type_ == BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP) {
+      if (p_.blockUntilKeyUp) {
+        if ((p_.blockUntilKeyUp)->isTargetEvent(paramsUnion)) {
+          if (iskeydown) {
+            active_ = true;
+          } else {
+            active_ = false;
+          }
+          return true;
+        }
+      }
+    }
 
     return false;
   }
@@ -526,6 +560,25 @@ namespace org_pqrs_KeyRemap4MacBook {
         p->remap(remapParams);
       }
     }
+  }
+
+  bool
+  RemapClass::isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion, bool passThroughEnabled)
+  {
+    bool isTargetEvent = false;
+
+    for (size_t i = 0; i < items_.size(); ++i) {
+      Item* p = items_[i];
+      if (p) {
+        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
+
+        if (p->isTargetEventForBlockUntilKeyUp(paramsUnion)) {
+          isTargetEvent = true;
+        }
+      }
+    }
+
+    return isTargetEvent;
   }
 
   bool
@@ -934,6 +987,26 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
 #undef CALL_REMAPCLASS_FUNC
+
+    bool
+    isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion)
+    {
+      bool passThroughEnabled = isPassThroughEnabled();
+      bool isTargetEvent = false;
+
+      if (enabled_remapclasses_) {
+        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
+          RemapClass* p = (*enabled_remapclasses_)[i];
+          if (p) {
+            if (p->isTargetEventForBlockUntilKeyUp(paramsUnion, passThroughEnabled)) {
+              isTargetEvent = true;
+            }
+          }
+        }
+      }
+
+      return isTargetEvent;
+    }
 
     bool
     remap_simultaneouskeypresses(void)

@@ -110,6 +110,8 @@
 		3496DB891707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */; };
 		34997E3616C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34997E3416C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp */; };
 		34997E3716C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34997E3516C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp */; };
+		349A10901907D0290000E43F /* BlockUntilKeyUp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349A108E1907D0290000E43F /* BlockUntilKeyUp.cpp */; };
+		349A10911907D0290000E43F /* BlockUntilKeyUp.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349A108F1907D0290000E43F /* BlockUntilKeyUp.hpp */; };
 		349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 349E3C9713371CD700E7A81C /* UserClient_kext.cpp */; };
 		349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 349E3C9813371CD700E7A81C /* UserClient_kext.hpp */; };
 		34A6626F18B9DAF70010D8B9 /* PointingRelativeToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A6626D18B9DAF70010D8B9 /* PointingRelativeToKey.cpp */; };
@@ -270,6 +272,8 @@
 		3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LastPressedPhysicalKeyFilter.hpp; path = RemapFilter/LastPressedPhysicalKeyFilter.hpp; sourceTree = "<group>"; };
 		34997E3416C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_DEFINED_IN_USERSPACE.cpp; path = VirtualKey/VK_DEFINED_IN_USERSPACE.cpp; sourceTree = "<group>"; };
 		34997E3516C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_DEFINED_IN_USERSPACE.hpp; path = VirtualKey/VK_DEFINED_IN_USERSPACE.hpp; sourceTree = "<group>"; };
+		349A108E1907D0290000E43F /* BlockUntilKeyUp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockUntilKeyUp.cpp; path = RemapFunc/BlockUntilKeyUp.cpp; sourceTree = "<group>"; };
+		349A108F1907D0290000E43F /* BlockUntilKeyUp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BlockUntilKeyUp.hpp; path = RemapFunc/BlockUntilKeyUp.hpp; sourceTree = "<group>"; };
 		349E3C9713371CD700E7A81C /* UserClient_kext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserClient_kext.cpp; sourceTree = "<group>"; };
 		349E3C9813371CD700E7A81C /* UserClient_kext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UserClient_kext.hpp; sourceTree = "<group>"; };
 		34A6626D18B9DAF70010D8B9 /* PointingRelativeToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToKey.cpp; path = RemapFunc/PointingRelativeToKey.cpp; sourceTree = "<group>"; };
@@ -405,6 +409,8 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				349A108E1907D0290000E43F /* BlockUntilKeyUp.cpp */,
+				349A108F1907D0290000E43F /* BlockUntilKeyUp.hpp */,
 				342BB27A13BB6A7400E18FDD /* common */,
 				3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */,
 				3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */,
@@ -580,6 +586,7 @@
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
 				34779382185B1FA800B3EF06 /* Vector.hpp in Headers */,
 				3477936D185B1FA800B3EF06 /* KeyboardRepeat.hpp in Headers */,
+				349A10911907D0290000E43F /* BlockUntilKeyUp.hpp in Headers */,
 				3477937B185B1FA800B3EF06 /* NumHeldDownKeys.hpp in Headers */,
 				34779381185B1FA800B3EF06 /* TimerWrapper.hpp in Headers */,
 				34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */,
@@ -797,6 +804,7 @@
 				3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */,
 				342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */,
 				34997E3616C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp in Sources */,
+				349A10901907D0290000E43F /* BlockUntilKeyUp.cpp in Sources */,
 				347A6DAB16DA54C4000DD15D /* FlipScrollWheel.cpp in Sources */,
 				34779376185B1FA800B3EF06 /* ListHookedKeyboard.cpp in Sources */,
 				34B3663716DA5E0D0081C5D7 /* FlipPointingRelative.cpp in Sources */,
