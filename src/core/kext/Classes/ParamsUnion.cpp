@@ -32,6 +32,42 @@ namespace org_pqrs_KeyRemap4MacBook {
     params_.params_Wait = Params_Wait::alloc(p);
   }
 
+  ParamsUnion::ParamsUnion(const ParamsUnion& rhs) : type(rhs.type)
+  {
+#define NEW_PARAMS(PARAMS, CLASS) {         \
+    if (rhs.PARAMS) {                       \
+      PARAMS = CLASS::alloc(*(rhs.PARAMS)); \
+    } else {                                \
+      PARAMS = NULL;                        \
+    }                                       \
+}
+
+    switch (rhs.type) {
+      case KEYBOARD:
+        NEW_PARAMS(params_.params_KeyboardEventCallBack, Params_KeyboardEventCallBack);
+        break;
+      case UPDATE_FLAGS:
+        NEW_PARAMS(params_.params_UpdateEventFlagsCallback, Params_UpdateEventFlagsCallback);
+        break;
+      case KEYBOARD_SPECIAL:
+        NEW_PARAMS(params_.params_KeyboardSpecialEventCallback, Params_KeyboardSpecialEventCallback);
+        break;
+      case RELATIVE_POINTER:
+        NEW_PARAMS(params_.params_RelativePointerEventCallback, Params_RelativePointerEventCallback);
+        break;
+      case SCROLL_WHEEL:
+        NEW_PARAMS(params_.params_ScrollWheelEventCallback, Params_ScrollWheelEventCallback);
+        break;
+      case WAIT:
+        NEW_PARAMS(params_.params_Wait, Params_Wait);
+        break;
+      default:
+        IOLOG_ERROR("ParamsUnion::~ParamsUnion() unknown type\n");
+    }
+
+#undef NEW_PARAMS
+  }
+
   ParamsUnion::~ParamsUnion(void)
   {
 #define DELETE_PARAMS(PARAMS) { \
