@@ -109,6 +109,23 @@ namespace org_pqrs_KeyRemap4MacBook {
       DELAY_TYPE_POINTING_BUTTON,
     };
 
+    class BlockUntilKeyUpHander {
+    public:
+      static void initialize(void);
+      static void terminate(void);
+
+      // Return true if you need to call doFire.
+      static bool doBlockUntilKeyUp(void);
+
+    private:
+      static bool isTargetEventType(const Item& front);
+      static bool isTargetDownEventInBlockedQueue(const Item& front);
+      static void endBlocking(void);
+
+      static bool active_;
+      static List* blockedQueue_;
+    };
+
     static uint32_t calcdelay(DelayType type);
 
     // ------------------------------------------------------------
@@ -121,6 +138,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void enqueue_(const Params_ScrollWheelEventCallback& p,
                          bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di);
     static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
+    static void doFire(void);
     static void setTimer(void);
 
     static List* queue_;

@@ -8,65 +8,34 @@
     <appendix><![CDATA[  Launchpad: K down -> L down -> L up  ]]></appendix>
     <identifier>remap.expose_mode2</identifier>
 
-    <!-- Turn ModifierFlag::K on -->
+    <autogen>
+      __BlockUntilKeyUp__ KeyCode::K, ModifierFlag::NONE,
+    </autogen>
     <autogen>
       __KeyOverlaidModifier__
       KeyCode::K, ModifierFlag::NONE,
-      KeyCode::VK_MODIFIER_KEYUP_INPUT_MODE, ModifierFlag::K,
+      KeyCode::VK_MODIFIER_EXPOSE_MODE_2,
       KeyCode::K,
     </autogen>
 
-    <!-- Change keys when K key is pressed. -->
     <autogen>
-      __KeyUpEventToKey__
-      @begin
-      KeyCode::E, ModifierFlag::K,
-      @end
-
-      @begin
-      ModifierFlag::K,
+      __KeyToKey__
+      KeyCode::E, ModifierFlag::EXPOSE_MODE_2,
       KeyCode::MISSION_CONTROL,
-      @end
-
-      @begin
-      KeyCode::E,
-      @end
+      Option::NOREPEAT,
     </autogen>
     <autogen>
-      __KeyUpEventToKey__
-      @begin
-      KeyCode::D, ModifierFlag::K,
-      @end
-
-      @begin
-      ModifierFlag::K,
+      __KeyToKey__
+      KeyCode::D, ModifierFlag::EXPOSE_MODE_2,
       KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L,
-      @end
-
-      @begin
-      KeyCode::D,
-      @end
+      Option::NOREPEAT,
     </autogen>
     <autogen>
-      __KeyUpEventToKey__
-      @begin
-      KeyCode::L, ModifierFlag::K,
-      @end
-
-      @begin
-      ModifierFlag::K,
+      __KeyToKey__
+      KeyCode::L, ModifierFlag::EXPOSE_MODE_2,
       KeyCode::LAUNCHPAD,
-      @end
-
-      @begin
-      KeyCode::L,
-      @end
+      Option::NOREPEAT,
     </autogen>
-
-    <block>
-      <modifier_only>ModifierFlag::KEYUP_INPUT_MODE</modifier_only>
-      <include path="register_all_keys_with_default_behavior.xml" />
-    </block>
   </item>
 
 </root>
