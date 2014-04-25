@@ -67,6 +67,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       class Item : public List::Item {
       public:
         Item(KeyUpEventToKey& k) : keyUpEventToKey_(k) {}
+        virtual ~Item(void) {}
+
         KeyUpEventToKey& get(void) { return keyUpEventToKey_; }
 
       private:
