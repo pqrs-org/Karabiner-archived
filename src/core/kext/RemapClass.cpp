@@ -267,7 +267,10 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (type_ == BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP) {
       if (p_.blockUntilKeyUp) {
-        if ((p_.blockUntilKeyUp)->isTargetEvent(paramsUnion)) {
+        const FromEvent& fromEvent = (p_.blockUntilKeyUp)->getFromEvent();
+
+        if (fromEvent.isTargetDownEvent(paramsUnion) ||
+            fromEvent.isTargetUpEvent(paramsUnion)) {
           if (iskeydown) {
             active_ = true;
           } else {
