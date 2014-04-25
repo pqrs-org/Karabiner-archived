@@ -19,6 +19,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   TimerWrapper EventInputQueue::fire_timer_;
   uint64_t EventInputQueue::serialNumber_;
 
+  bool EventInputQueue::BlockUntilKeyUpHander::active_ = false;
+  List* EventInputQueue::BlockUntilKeyUpHander::blockedQueue_ = NULL;
+
   void
   EventInputQueue::initialize(IOWorkLoop& workloop)
   {
@@ -26,6 +29,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     ic_.begin();
     fire_timer_.initialize(&workloop, NULL, EventInputQueue::fire_timer_callback);
     serialNumber_ = 0;
+
+    BlockUntilKeyUpHander::initialize();
   }
 
   void
@@ -35,7 +40,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     if (queue_) {
       delete queue_;
+      queue_ = NULL;
     }
+    BlockUntilKeyUpHander::terminate();
   }
 
   uint32_t
@@ -469,6 +476,24 @@ namespace org_pqrs_KeyRemap4MacBook {
     } while (RemapClassManager::remap_simultaneouskeypresses());
 
     // ------------------------------------------------------------
+    // handle BlockUntilKeyUp
+    //
+    // Note:
+    // We need to handle BlockUntilKeyUp after SimultaneousKeyPresses
+    // in order to avoid unintended modification by SimultaneousKeyPresses.
+    bool needToFire = BlockUntilKeyUpHander::doBlockUntilKeyUp();
+    if (needToFire) {
+      doFire();
+    }
+
+    setTimer();
+  }
+
+  void
+  EventInputQueue::doFire(void)
+  {
+    if (! queue_) return;
+
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
@@ -598,7 +623,169 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     queue_->pop_front();
     ++serialNumber_;
+  }
 
-    setTimer();
+  void
+  EventInputQueue::BlockUntilKeyUpHander::initialize(void)
+  {
+    blockedQueue_ = new List();
+  }
+
+  void
+  EventInputQueue::BlockUntilKeyUpHander::terminate(void)
+  {
+    if (blockedQueue_) {
+      delete blockedQueue_;
+      blockedQueue_ = NULL;
+    }
+  }
+
+  bool
+  EventInputQueue::BlockUntilKeyUpHander::doBlockUntilKeyUp(void)
+  {
+    if (! queue_) return true;
+    if (! blockedQueue_) return true;
+
+    Item* front = static_cast<Item*>(queue_->front());
+    if (! front) return true;
+
+    if (! isTargetEventType(*front)) return true;
+
+    // ----------------------------------------
+    if (active_) {
+      // When <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen> is enabled:
+      //
+      // Case 1:
+      //   * Space down
+      //   * T down
+      //   * T up         <- up event and event != Space
+      //
+      //   => Enqueue "Space down, T down, T up".
+      //
+      // Case 2:
+      //   * Space down
+      //   * T down
+      //   * Space up     <- up event and event == Space
+      //
+      //   => Move "Space up" after "Space down".
+      //      Then, Enqueue "Space down, Space up, T down".
+      //
+
+      bool iskeydown = false;
+      if (! (front->params).iskeydown(iskeydown)) return true;
+
+      if (! iskeydown) {
+        if (RemapClassManager::isTargetEventForBlockUntilKeyUp(front->params)) {
+          // Case 2
+          Item* blockedFront = static_cast<Item*>(blockedQueue_->front());
+          if (blockedFront) {
+            Item blockedFrontCopy(*blockedFront);
+            blockedQueue_->pop_front();
+            blockedFront = NULL;
+
+            Item frontCopy(*front);
+            queue_->pop_front();
+            front = NULL;
+
+            blockedQueue_->push_front(new Item(frontCopy));
+            blockedQueue_->push_front(new Item(blockedFrontCopy));
+          }
+          endBlocking();
+          return true;
+
+        } else if (isTargetDownEventInBlockedQueue(*front)) {
+          // Case 1
+          endBlocking();
+          return true;
+        }
+      }
+
+      blockedQueue_->push_back(new Item(*front));
+      queue_->pop_front();
+      // Do not call doFire.
+      return false;
+
+    } else {
+      if (RemapClassManager::isTargetEventForBlockUntilKeyUp(front->params)) {
+        active_ = true;
+
+        blockedQueue_->push_back(new Item(*front));
+        queue_->pop_front();
+        // Do not call doFire.
+        return false;
+      }
+
+      return true;
+    }
+  }
+
+  bool
+  EventInputQueue::BlockUntilKeyUpHander::isTargetEventType(const Item& front)
+  {
+    switch (front.params.type) {
+      case ParamsUnion::KEYBOARD:
+      case ParamsUnion::KEYBOARD_SPECIAL:
+        return true;
+
+      case ParamsUnion::RELATIVE_POINTER:
+      {
+        Params_RelativePointerEventCallback* p = front.params.get_Params_RelativePointerEventCallback();
+        if (! p) return false;
+
+        return (p->ex_button != PointingButton::NONE);
+      }
+
+      default:
+        return false;
+    }
+  }
+
+  bool
+  EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const Item& front)
+  {
+    if (! blockedQueue_) return true;
+
+    for (Item* p = static_cast<Item*>(blockedQueue_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      bool iskeydown = false;
+      if (! (p->params).iskeydown(iskeydown)) continue;
+      if (! iskeydown) continue;
+
+      {
+        Params_KeyboardEventCallBack* p1 = front.params.get_Params_KeyboardEventCallBack();
+        Params_KeyboardEventCallBack* p2 = (p->params).get_Params_KeyboardEventCallBack();
+        if (p1 && p2 && p1->key == p2->key) return true;
+      }
+      {
+        Params_KeyboardSpecialEventCallback* p1 = front.params.get_Params_KeyboardSpecialEventCallback();
+        Params_KeyboardSpecialEventCallback* p2 = (p->params).get_Params_KeyboardSpecialEventCallback();
+        if (p1 && p2 && p1->key == p2->key) return true;
+      }
+      {
+        Params_RelativePointerEventCallback* p1 = front.params.get_Params_RelativePointerEventCallback();
+        Params_RelativePointerEventCallback* p2 = (p->params).get_Params_RelativePointerEventCallback();
+        if (p1 && p2 && p1->ex_button == p2->ex_button) return true;
+      }
+    }
+
+    return false;
+  }
+
+  void
+  EventInputQueue::BlockUntilKeyUpHander::endBlocking(void)
+  {
+    if (! queue_) return;
+    if (! blockedQueue_) return;
+
+    active_ = false;
+
+    // restore queue_
+    for (;;) {
+      Item* p = static_cast<Item*>(blockedQueue_->back());
+      if (! p) break;
+
+      p->delayMS = 0;
+      queue_->push_front(new Item(*p));
+      blockedQueue_->pop_back();
+    }
   }
 }
