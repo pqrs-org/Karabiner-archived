@@ -25,6 +25,35 @@ namespace org_pqrs_KeyRemap4MacBook {
     explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
     explicit FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
+    explicit FromEvent(const ParamsUnion& paramsUnion) : isPressing_(false) {
+      type_ = Type::NONE;
+
+      {
+        Params_KeyboardEventCallBack* p = paramsUnion.get_Params_KeyboardEventCallBack();
+        if (p) {
+          type_ = Type::KEY;
+          key_ = p->key;
+          return;
+        }
+      }
+      {
+        Params_KeyboardSpecialEventCallback* p = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+        if (p) {
+          type_ = Type::CONSUMER_KEY;
+          consumer_ = p->key;
+          return;
+        }
+      }
+      {
+        Params_RelativePointerEventCallback* p = paramsUnion.get_Params_RelativePointerEventCallback();
+        if (p) {
+          type_ = Type::POINTING_BUTTON;
+          button_ = p->ex_button;
+          return;
+        }
+      }
+    }
+
     FromEvent(AddDataType datatype, AddValue v) : isPressing_(false) {
       switch (datatype) {
         case BRIDGE_DATATYPE_KEYCODE:         type_ = Type::KEY;             key_      = KeyCode(v);         break;
