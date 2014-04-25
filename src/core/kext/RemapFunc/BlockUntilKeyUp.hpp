@@ -10,12 +10,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     class BlockUntilKeyUp {
     public:
       void add(AddDataType datatype, AddValue newval);
-      bool isTargetEvent(const ParamsUnion& paramsUnion);
       const FromEvent& getFromEvent(void) const { return fromEvent_; }
 
     private:
       FromEvent fromEvent_;
-      Vector_ModifierFlag fromModifierFlags_;
     };
   }
 }
