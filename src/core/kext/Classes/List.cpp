@@ -52,6 +52,44 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  List::Item*
+  List::insert(Item* p, Item* newval) {
+    if (! newval) return NULL;
+
+    if (p == NULL) {
+      // push front if p == NULL
+
+      if (front_) {
+        front_->prev_ = newval;
+      }
+
+      newval->prev_ = NULL;
+      newval->next_ = front_;
+
+      front_ = newval;
+
+      if (! back_) {
+        back_ = front_;
+      }
+
+    } else {
+      newval->next_ = p;
+
+      if (p->prev_) {
+        newval->prev_ = p->prev_;
+
+        p->prev_->next_ = newval;
+      } else {
+        front_ = newval;
+      }
+
+      p->prev_ = newval;
+    }
+
+    ++size_;
+    return newval;
+  }
+
   void
   List::push_back(Item* p)
   {
@@ -76,19 +114,6 @@ namespace org_pqrs_KeyRemap4MacBook {
   List::push_front(Item* p)
   {
     if (! p) return;
-
-    if (front_) {
-      front_->prev_ = p;
-    }
-    p->prev_ = NULL;
-    p->next_ = front_;
-
-    front_ = p;
-
-    if (! back_) {
-      back_ = front_;
-    }
-
-    ++size_;
+    insert(NULL, p);
   }
 }

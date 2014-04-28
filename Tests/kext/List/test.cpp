@@ -142,6 +142,54 @@ TEST(List, pop_back) {
   EXPECT_EQ(static_cast<size_t>(1), p->v());
 }
 
+TEST(List, insert) {
+  List list;
+  TestItem* p = NULL;
+
+  list.insert(NULL, NULL);
+
+  // push_front if first argument == NULL.
+  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
+  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(2))); // [2,1]
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.front()->getnext())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.back())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.back()->getprev())->v());
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  list.pop_front();
+  EXPECT_EQ(1, static_cast<TestItem*>(list.front())->v());
+  list.pop_front();
+
+  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
+  p = static_cast<TestItem*>(list.insert(p, new TestItem(2))); // [2,1]
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.front()->getnext())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.back())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.back()->getprev())->v());
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  list.pop_front();
+  EXPECT_EQ(1, static_cast<TestItem*>(list.front())->v());
+  list.pop_front();
+
+  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
+  p = static_cast<TestItem*>(list.insert(p, new TestItem(2))); // [2,1]
+  p = static_cast<TestItem*>(list.insert(list.back(), new TestItem(3))); // [2,3,1]
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.back())->v());
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  list.pop_front();
+  EXPECT_EQ(3, static_cast<TestItem*>(list.front())->v());
+  list.pop_front();
+  EXPECT_EQ(1, static_cast<TestItem*>(list.front())->v());
+  list.pop_front();
+}
+
 TEST(List, erase_and_delete) {
   const int MAXITEM = 10;
 
