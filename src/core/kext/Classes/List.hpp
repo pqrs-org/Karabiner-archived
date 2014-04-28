@@ -31,6 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     size_t size(void) const { return size_; }
 
     Item* erase_and_delete(Item* p);
+    Item* insert(Item* p, Item* newval);
     void clear(void);
 
     // We must call push_back with Item which allocated by "new".
