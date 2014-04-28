@@ -217,6 +217,7 @@ TEST(List, erase_and_delete) {
       EXPECT_EQ(i, p->v());
       p = static_cast<TestItem*>(p->getnext());
     }
+    EXPECT_EQ(static_cast<size_t>(MAXITEM - 1), list.size());
   }
 }
 
@@ -231,5 +232,6 @@ TEST(List, clear) {
     EXPECT_EQ(static_cast<size_t>(i + 1), list.size());
   }
   list.clear();
+  EXPECT_EQ(static_cast<size_t>(0), list.size());
   EXPECT_EQ(0, allocatecount);
 }
