@@ -2,6 +2,7 @@
 #define EVENTINPUTQUEUE_HPP
 
 #include "CallBackWrapper.hpp"
+#include "FromEvent.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
@@ -118,12 +119,31 @@ namespace org_pqrs_KeyRemap4MacBook {
       static bool doBlockUntilKeyUp(void);
 
     private:
-      static bool isTargetEventType(const Item& front);
       static bool isTargetDownEventInBlockedQueue(const Item& front);
       static void endBlocking(void);
 
-      static bool active_;
+      class PressingEvent : public List::Item {
+      public:
+        PressingEvent(const ParamsUnion& paramsUnion) :
+          paramsUnion_(paramsUnion),
+          fromEvent_(paramsUnion),
+          ignore_(false) {}
+        virtual ~PressingEvent(void) {}
+
+        const ParamsUnion& getParamsUnion(void) const { return paramsUnion_; }
+        const FromEvent& getFromEvent(void) const { return fromEvent_; }
+
+        bool ignore(void) const { return ignore_; }
+        void setIgnore(void) { ignore_ = true; }
+
+      private:
+        ParamsUnion paramsUnion_;
+        FromEvent fromEvent_;
+        bool ignore_;
+      };
+
       static List* blockedQueue_;
+      static List* pressingEvents_;
     };
 
     static uint32_t calcdelay(DelayType type);
