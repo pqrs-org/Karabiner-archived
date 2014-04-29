@@ -7,32 +7,41 @@
     <appendix><![CDATA[  Show Desktop: K down -> D down -> D up  ]]></appendix>
     <appendix><![CDATA[  Launchpad: K down -> L down -> L up  ]]></appendix>
     <identifier>remap.expose_mode2</identifier>
-
-    <autogen>
-      __BlockUntilKeyUp__ KeyCode::K, ModifierFlag::NONE,
-    </autogen>
     <autogen>
       __KeyOverlaidModifier__
-      KeyCode::K, ModifierFlag::NONE,
-      KeyCode::VK_MODIFIER_EXPOSE_MODE_2,
       KeyCode::K,
+
+      @begin
+      KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode2,
+      @end
+
+      @begin
+      KeyCode::K,
+      @end
+    </autogen>
+  </item>
+
+  <item hidden="true">
+    <identifier vk_config="true">notsave.expose_mode2</identifier>
+    <autogen>
+      __BlockUntilKeyUp__ KeyCode::K
     </autogen>
 
     <autogen>
       __KeyToKey__
-      KeyCode::E, ModifierFlag::EXPOSE_MODE_2,
+      KeyCode::E,
       KeyCode::MISSION_CONTROL,
       Option::NOREPEAT,
     </autogen>
     <autogen>
       __KeyToKey__
-      KeyCode::D, ModifierFlag::EXPOSE_MODE_2,
+      KeyCode::D,
       KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L,
       Option::NOREPEAT,
     </autogen>
     <autogen>
       __KeyToKey__
-      KeyCode::L, ModifierFlag::EXPOSE_MODE_2,
+      KeyCode::L,
       KeyCode::LAUNCHPAD,
       Option::NOREPEAT,
     </autogen>
