@@ -252,18 +252,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   bool
   RemapClass::Item::isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion)
   {
-    bool iskeydown = false;
-    if (! paramsUnion.iskeydown(iskeydown)) {
-      iskeydown = false;
-    }
+    // BlockUntilKeyUp does not use Flags.
+    // So, we do not need to use "active_" flag.
 
-    if (iskeydown) {
-      if (! parent_.enabled()) return false;
-      if (isblocked()) return false;
-    } else {
-      // We ignore filters_ if active_ is set at KeyDown.
-      if (isblocked() && ! active_) return false;
-    }
+    if (! parent_.enabled()) return false;
+    if (isblocked()) return false;
 
     if (type_ == BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP) {
       if (p_.blockUntilKeyUp) {
@@ -271,11 +264,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         if (fromEvent.isTargetDownEvent(paramsUnion) ||
             fromEvent.isTargetUpEvent(paramsUnion)) {
-          if (iskeydown) {
-            active_ = true;
-          } else {
-            active_ = false;
-          }
           return true;
         }
       }
