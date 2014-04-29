@@ -147,5 +147,30 @@
       <identifier>remap.fn_space_to_left_click</identifier>
       <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::FN, PointingButton::LEFT</autogen>
     </item>
+
+    <item>
+      <name>SandS 2</name>
+      <appendix>* Change the space key to the left shift key.</appendix>
+      <appendix>* Send a space key event when the space key is pressed alone.</appendix>
+      <appendix></appendix>
+      <appendix>* Send a space key event when the space key is released before another key is released.</appendix>
+      <appendix>For example:</appendix>
+      <appendix><![CDATA[  Space down -> T down -> T up => Shift+T  ]]></appendix>
+      <appendix><![CDATA[  Space down -> T down -> Space up => Space,T  ]]></appendix>
+      <identifier>remap.sands2</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SPACE,
+
+        KeyCode::SHIFT_L, ModifierFlag::SANDS2,
+
+        KeyCode::SPACE,
+      </autogen>
+
+      <block>
+        <modifier_only>ModifierFlag::SANDS2</modifier_only>
+        <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
+      </block>
+    </item>
   </item>
 </root>
