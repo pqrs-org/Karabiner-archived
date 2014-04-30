@@ -727,25 +727,22 @@ namespace org_pqrs_KeyRemap4MacBook {
       // Case2
 
       // Move up event after down event.
-      {
-        FromEvent fromEvent(front->params);
-        for (Item* p = static_cast<Item*>(blockedQueue_->back()); p; p = static_cast<Item*>(p->getprev())) {
-          if (fromEvent.isTargetUpEvent(p->params)) {
-            if (p->getnext()) {
-              blockedQueue_->insert(p->getnext(), new Item(*front));
-            } else {
-              blockedQueue_->push_back(new Item(*front));
-            }
-            goto endBlocking;
+      FromEvent fromEvent(front->params);
+      for (Item* p = static_cast<Item*>(blockedQueue_->back()); p; p = static_cast<Item*>(p->getprev())) {
+        if (fromEvent.isTargetDownEvent(p->params)) {
+          if (p->getnext()) {
+            blockedQueue_->insert(p->getnext(), new Item(*front));
+          } else {
+            blockedQueue_->push_back(new Item(*front));
           }
+          goto endBlocking;
         }
-
-        // corresponded
-
-        blockedQueue_->push_front(new Item(*front));
-        goto endBlocking;
       }
-    } else if (isTargetDownEventInBlockedQueue(*front)) {
+      // corresponded event is not found.
+      blockedQueue_->push_front(new Item(*front));
+      goto endBlocking;
+
+    } else if (! iskeydown && isTargetDownEventInBlockedQueue(*front)) {
       // Case 1
 
       blockedQueue_->push_back(new Item(*front));
