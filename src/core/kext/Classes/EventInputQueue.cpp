@@ -781,6 +781,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     if (! queue_) return;
     if (! blockedQueue_) return;
+    if (! pressingEvents_) return;
 
     if (blockedQueue_->size() > 0) {
       // restore queue_
