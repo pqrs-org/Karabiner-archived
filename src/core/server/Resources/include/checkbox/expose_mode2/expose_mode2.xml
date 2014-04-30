@@ -9,7 +9,7 @@
     <identifier>remap.expose_mode2</identifier>
     <autogen>
       __KeyOverlaidModifier__
-      KeyCode::K,
+      KeyCode::K, ModifierFlag::NONE,
 
       @begin
       KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_expose_mode2,
