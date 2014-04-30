@@ -1016,6 +1016,16 @@
     </item>
 
     <item>
+      <name>BlockUntilKeyUp</name>
+
+      <item>
+        <name>Standard</name>
+        <identifier>remap.samples_BlockUntilKeyUp</identifier>
+        <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
+      </item>
+    </item>
+
+    <item>
       <name>KeyUpEventToKey</name>
       <!--
           // ========================================
