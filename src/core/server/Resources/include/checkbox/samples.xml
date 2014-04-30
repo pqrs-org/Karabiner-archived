@@ -1020,8 +1020,48 @@
 
       <item>
         <name>Standard</name>
+        <appendix>* Events are blocked until keys are released when the space key is pressed.</appendix>
+        <appendix></appendix>
+        <appendix>Input: <![CDATA[  Space down -> T down -> T up -> Space up:  ]]></appendix>
+        <appendix>Output:</appendix>
+        <appendix>- Space down</appendix>
+        <appendix>- T down</appendix>
+        <appendix>- T up</appendix>
+        <appendix>- Space up</appendix>
+        <appendix></appendix>
+        <appendix>Input: <![CDATA[  Space down -> T down -> Space up -> T up:  ]]></appendix>
+        <appendix>Output:</appendix>
+        <appendix>- Space down</appendix>
+        <appendix>- Space up</appendix>
+        <appendix>- T down</appendix>
+        <appendix>- T up</appendix>
+        <appendix></appendix>
         <identifier>remap.samples_BlockUntilKeyUp</identifier>
         <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
+      </item>
+
+      <item>
+        <name>With KeyOverlaidModifier</name>
+        <appendix>* Change the space key to the left shift key.</appendix>
+        <appendix>* Send a space key event when the space key is pressed alone.</appendix>
+        <appendix></appendix>
+        <appendix>Input: <![CDATA[  Space down -> T down -> T up -> Space up:  ]]></appendix>
+        <appendix>Output: Shift+T</appendix>
+        <appendix></appendix>
+        <appendix>Input: <![CDATA[  Space down -> T down -> Space up -> T up:  ]]></appendix>
+        <appendix>Output: Shift, Space, T</appendix>
+        <appendix></appendix>
+        <identifier>remap.samples_BlockUntilKeyUp_with_KeyOverlaidModifier</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::SPACE,
+          KeyCode::SHIFT_L,
+          KeyCode::SPACE,
+        </autogen>
+        <block>
+          <modifier_only>ModifierFlag::SHIFT_L</modifier_only>
+          <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
+        </block>
       </item>
     </item>
 
