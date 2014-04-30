@@ -26,7 +26,6 @@ Since 9.3.0
         &lt;/item&gt;
       </pre>
     * v9.3.20: You can use KeyCode and ConsumerKeyCode in \_\_PointingRelativeToScroll\_\_.
-    * v9.3.32: Added \_\_KeyUpEventToKey\_\_.
     * v9.3.40: Added ThresholdMillisecond into \_\_HoldingKeyToKey\_\_.<br />
       You can control a holding threshold:<br />
       <pre>
@@ -48,6 +47,7 @@ Since 9.3.0
       </pre>
     * v9.3.60: You can add your own modifiers by &lt;modifierdef&gt;.
      [Usage of &lt;modifierdef&gt;.](https://pqrs.org/macosx/keyremap4macbook/xml.html.en#modifier)
+    * v9.3.69: Added \_\_BlockUntilKeyUp\_\_. (\_\_KeyUpEventToKey\_\_ is removed.)
 
 Version 9.3.0
 -------------

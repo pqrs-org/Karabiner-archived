@@ -72,7 +72,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                INITIALIZE_UNION_VALUE(p_.setKeyboardType,                RemapFunc::SetKeyboardType);                break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       INITIALIZE_UNION_VALUE(p_.scrollWheelToScrollWheel,       RemapFunc::ScrollWheelToScrollWheel);       break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               INITIALIZE_UNION_VALUE(p_.scrollWheelToKey,               RemapFunc::ScrollWheelToKey);               break;
-      case BRIDGE_REMAPTYPE_KEYUPEVENTTOKEY:                INITIALIZE_UNION_VALUE(p_.keyUpEventToKey,                RemapFunc::KeyUpEventToKey);                break;
       case BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP:                INITIALIZE_UNION_VALUE(p_.blockUntilKeyUp,                RemapFunc::BlockUntilKeyUp);                break;
       case BRIDGE_REMAPTYPE_PASSTHROUGH:                    INITIALIZE_UNION_VALUE(p_.passThrough,                    RemapFunc::PassThrough);                    break;
       default:
@@ -109,7 +108,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                DELETE_UNLESS_NULL(p_.setKeyboardType);                break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       DELETE_UNLESS_NULL(p_.scrollWheelToScrollWheel);       break;
       case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               DELETE_UNLESS_NULL(p_.scrollWheelToKey);               break;
-      case BRIDGE_REMAPTYPE_KEYUPEVENTTOKEY:                DELETE_UNLESS_NULL(p_.keyUpEventToKey);                break;
       case BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP:                DELETE_UNLESS_NULL(p_.blockUntilKeyUp);                break;
       case BRIDGE_REMAPTYPE_PASSTHROUGH:                    DELETE_UNLESS_NULL(p_.passThrough);                    break;
       default:
@@ -192,7 +190,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
       case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_FUNCTION(p_.keyToKey);                       break;
       case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);         break;
-      case BRIDGE_REMAPTYPE_KEYUPEVENTTOKEY:            CALL_UNION_FUNCTION(p_.keyUpEventToKey);                break;
 
       // check parent_.enabled() for RelativePointerEvent and ScrollWheelEvent.
       case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: CALL_IF_ENABLED(p_.dropPointingRelativeCursorMove); break;

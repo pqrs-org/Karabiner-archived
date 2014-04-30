@@ -103,8 +103,6 @@
 		347A6DAB16DA54C4000DD15D /* FlipScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 347A6DA916DA54C4000DD15D /* FlipScrollWheel.cpp */; };
 		347A6DAC16DA54C4000DD15D /* FlipScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 347A6DAA16DA54C4000DD15D /* FlipScrollWheel.hpp */; };
 		348077B818BCEEDC00314700 /* DeltaBuffer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348077B718BCEEDC00314700 /* DeltaBuffer.hpp */; };
-		3482826C18E46D2E00D6048C /* KeyUpEventToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3482826A18E46D2E00D6048C /* KeyUpEventToKey.cpp */; };
-		3482826D18E46D2E00D6048C /* KeyUpEventToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3482826B18E46D2E00D6048C /* KeyUpEventToKey.hpp */; };
 		348F4BA718C76E46000394FE /* PassThrough.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 348F4BA618C76E46000394FE /* PassThrough.hpp */; };
 		3496DB881707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3496DB861707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp */; };
 		3496DB891707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */; };
@@ -265,8 +263,6 @@
 		347A6DA916DA54C4000DD15D /* FlipScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlipScrollWheel.cpp; path = RemapFunc/FlipScrollWheel.cpp; sourceTree = "<group>"; };
 		347A6DAA16DA54C4000DD15D /* FlipScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlipScrollWheel.hpp; path = RemapFunc/FlipScrollWheel.hpp; sourceTree = "<group>"; };
 		348077B718BCEEDC00314700 /* DeltaBuffer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeltaBuffer.hpp; path = Classes/DeltaBuffer.hpp; sourceTree = "<group>"; };
-		3482826A18E46D2E00D6048C /* KeyUpEventToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyUpEventToKey.cpp; path = RemapFunc/KeyUpEventToKey.cpp; sourceTree = "<group>"; };
-		3482826B18E46D2E00D6048C /* KeyUpEventToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyUpEventToKey.hpp; path = RemapFunc/KeyUpEventToKey.hpp; sourceTree = "<group>"; };
 		348F4BA618C76E46000394FE /* PassThrough.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PassThrough.hpp; path = RemapFunc/PassThrough.hpp; sourceTree = "<group>"; };
 		3496DB861707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LastPressedPhysicalKeyFilter.cpp; path = RemapFilter/LastPressedPhysicalKeyFilter.cpp; sourceTree = "<group>"; };
 		3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LastPressedPhysicalKeyFilter.hpp; path = RemapFilter/LastPressedPhysicalKeyFilter.hpp; sourceTree = "<group>"; };
@@ -434,8 +430,6 @@
 				34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */,
 				34D347E411D8106C00D70815 /* KeyToKey.cpp */,
 				34D347E511D8106C00D70815 /* KeyToKey.hpp */,
-				3482826A18E46D2E00D6048C /* KeyUpEventToKey.cpp */,
-				3482826B18E46D2E00D6048C /* KeyUpEventToKey.hpp */,
 				348F4BA618C76E46000394FE /* PassThrough.hpp */,
 				34A6626D18B9DAF70010D8B9 /* PointingRelativeToKey.cpp */,
 				34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */,
@@ -601,7 +595,6 @@
 				34779375185B1FA800B3EF06 /* ListHookedDevice.hpp in Headers */,
 				34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */,
 				3477937F185B1FA800B3EF06 /* PressDownKeys.hpp in Headers */,
-				3482826D18E46D2E00D6048C /* KeyUpEventToKey.hpp in Headers */,
 				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 				3477937D185B1FA800B3EF06 /* ParamsUnion.hpp in Headers */,
 				3477935E185B1FA800B3EF06 /* EventInputQueue.hpp in Headers */,
@@ -809,7 +802,6 @@
 				34779376185B1FA800B3EF06 /* ListHookedKeyboard.cpp in Sources */,
 				34B3663716DA5E0D0081C5D7 /* FlipPointingRelative.cpp in Sources */,
 				3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */,
-				3482826C18E46D2E00D6048C /* KeyUpEventToKey.cpp in Sources */,
 				3496DB881707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp in Sources */,
 				3477935B185B1FA800B3EF06 /* CommonData.cpp in Sources */,
 				346EE06B1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp in Sources */,

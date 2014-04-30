@@ -326,7 +326,6 @@ namespace pqrs {
       { "__KeyToKey__",                       BRIDGE_REMAPTYPE_KEYTOKEY },
       { "__KeyToConsumer__",                  BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
       { "__KeyToPointingButton__",            BRIDGE_REMAPTYPE_KEYTOKEY }, // for backwards compatibility
-      { "__KeyUpEventToKey__",                BRIDGE_REMAPTYPE_KEYUPEVENTTOKEY },
       { "__DoublePressModifier__",            BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER },
       { "__HoldingKeyToKey__",                BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY },
       { "__IgnoreMultipleSameKeyPress__",     BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS },
