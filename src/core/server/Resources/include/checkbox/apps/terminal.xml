@@ -199,6 +199,21 @@
       </item>
     </item>
     <item>
+      <name>Disable Bigger (⌘+) &amp; Smaller (⌘-)</name>
+      <identifier>remap.app_term_disable_bigger_and_smaller</identifier>
+      <only>TERMINAL</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::EQUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::VK_NONE,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::VK_NONE,
+      </autogen>
+    </item>
+    <item>
       <name>Extra settings</name>
       <item>
         <name>Change Control_L to Option_L in Terminal</name>
