@@ -429,8 +429,12 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
 
         } else if (type == BRIDGE_MODIFIERNAME) {
-          unsigned int modifierFlag = p[1];
-          ModifierName::registerVirtualModifier(ModifierFlag(modifierFlag), p + 2, size - 3);
+          if (size < 3) {
+            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_MODIFIERNAME. (%d)\n", size);
+          } else {
+            unsigned int modifierFlag = p[1];
+            ModifierName::registerVirtualModifier(ModifierFlag(modifierFlag), p + 2, size - 3);
+          }
 
         } else if (type == BRIDGE_VK_MODIFIER) {
           if (size != 9) {
