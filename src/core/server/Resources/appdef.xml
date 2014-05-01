@@ -510,4 +510,10 @@
     <prefix>org.netbeans.ide.baseide.</prefix>
   </appdef>
 
+  <appdef>
+    <appname>JAVA</appname>
+    <equal>com.apple.javajdk16.cmd</equal>
+    <equal>net.java.openjdk.cmd</equal>
+  </appdef>
+
 </root>
