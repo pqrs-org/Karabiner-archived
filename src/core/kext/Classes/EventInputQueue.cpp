@@ -21,6 +21,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
   List* EventInputQueue::BlockUntilKeyUpHander::blockedQueue_ = NULL;
   List* EventInputQueue::BlockUntilKeyUpHander::pressingEvents_ = NULL;
+  TimerWrapper EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_;
 
   void
   EventInputQueue::initialize(IOWorkLoop& workloop)
@@ -30,7 +31,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     fire_timer_.initialize(&workloop, NULL, EventInputQueue::fire_timer_callback);
     serialNumber_ = 0;
 
-    BlockUntilKeyUpHander::initialize();
+    BlockUntilKeyUpHander::initialize(workloop);
   }
 
   void
@@ -626,15 +627,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  EventInputQueue::BlockUntilKeyUpHander::initialize(void)
+  EventInputQueue::BlockUntilKeyUpHander::initialize(IOWorkLoop& workloop)
   {
     blockedQueue_ = new List();
     pressingEvents_ = new List();
+
+    blockingTimeOut_timer_.initialize(&workloop, NULL, EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback);
   }
 
   void
   EventInputQueue::BlockUntilKeyUpHander::terminate(void)
   {
+    blockingTimeOut_timer_.terminate();
+
     if (blockedQueue_) {
       delete blockedQueue_;
       blockedQueue_ = NULL;
@@ -705,6 +710,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     return true;
 
   needToBlock:
+    // Set timeout at first.
+    {
+      int timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_blockuntilkeyup_timeout);
+      blockingTimeOut_timer_.setTimeoutMS(timeout);
+    }
+
     // When <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen> is enabled:
     //
     // Case 1:
@@ -799,5 +810,14 @@ namespace org_pqrs_KeyRemap4MacBook {
         p->setIgnore();
       }
     }
+
+    blockingTimeOut_timer_.cancelTimeout();
+  }
+
+  void
+  EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender)
+  {
+    endBlocking();
+    setTimer();
   }
 }

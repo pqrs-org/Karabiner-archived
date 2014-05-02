@@ -86,6 +86,14 @@
     </item>
 
     <item>
+      <name>__BlockUntilKeyUp__</name>
+      <item>
+        <name>Timeout</name>
+        <identifier essential="true" default="500" step="100" baseunit="ms">parameter.blockuntilkeyup_timeout</identifier>
+      </item>
+    </item>
+
+    <item>
       <name>CursorMove to ScrollWheel</name>
       <item>
         <name>Rate</name>

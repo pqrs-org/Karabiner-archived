@@ -112,7 +112,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     class BlockUntilKeyUpHander {
     public:
-      static void initialize(void);
+      static void initialize(IOWorkLoop& workloop);
       static void terminate(void);
 
       // Return true if you need to call doFire.
@@ -121,6 +121,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       static bool isTargetDownEventInBlockedQueue(const Item& front);
       static void endBlocking(void);
+      static void blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
       class PressingEvent : public List::Item {
       public:
@@ -144,6 +145,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       static List* blockedQueue_;
       static List* pressingEvents_;
+      static TimerWrapper blockingTimeOut_timer_;
     };
 
     static uint32_t calcdelay(DelayType type);
