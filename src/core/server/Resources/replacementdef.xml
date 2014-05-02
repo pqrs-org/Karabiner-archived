@@ -37,6 +37,12 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>EXPOSE_MODE_2_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>THUMBSENSE_EXTRA</replacementname>
     <replacementvalue>
       <![CDATA[
