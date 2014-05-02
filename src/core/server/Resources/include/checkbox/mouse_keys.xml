@@ -388,8 +388,8 @@
       <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
       <appendix></appendix>
       <appendix>* D+F+HJKL: Scroll wheel.</appendix>
-      <appendix>* D+A+HJKL: High-speed movement.</appendix>
-      <appendix>* D+F+A+HJKL: High-speed Scroll wheel.</appendix>
+      <appendix>* D+S+HJKL: High-speed movement.</appendix>
+      <appendix>* D+F+S+HJKL: High-speed Scroll wheel.</appendix>
       <appendix></appendix>
       <appendix>* D+Left command: Left click.</appendix>
       <appendix>* D+Space: Middle click.</appendix>
@@ -447,7 +447,7 @@
       <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MODIFIER_MOUSE_KEYS_MODE_2_SCROLL</autogen>
 
       <!-- other -->
-      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
 
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
       <autogen>__KeyToKey__ KeyCode::SPACE,     PointingButton::MIDDLE</autogen>
