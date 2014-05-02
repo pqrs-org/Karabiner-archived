@@ -377,6 +377,88 @@
     </item>
 
     <item>
+      <name>Mouse Keys Mode 2</name>
+      <appendix>Use D key to enable mode.</appendix>
+      <appendix><![CDATA[  * Left: D down -> H down -> H up  ]]></appendix>
+      <appendix><![CDATA[  * Down: D down -> J down -> J up  ]]></appendix>
+      <appendix><![CDATA[  * Up: D down -> K down -> K up  ]]></appendix>
+      <appendix><![CDATA[  * Right: D down -> L down -> L up  ]]></appendix>
+      <appendix></appendix>
+      <appendix>The hjkl keys also act as mouse keys when you hold d+hjkl keys down.</appendix>
+      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
+      <appendix></appendix>
+      <appendix>* D+F+HJKL: Scroll wheel.</appendix>
+      <appendix>* D+A+HJKL: High-speed movement.</appendix>
+      <appendix>* D+F+A+HJKL: High-speed Scroll wheel.</appendix>
+      <appendix></appendix>
+      <appendix>* D+Left command: Left click.</appendix>
+      <appendix>* D+Space: Middle click.</appendix>
+      <appendix>* D+Right command: Right click.</appendix>
+      <identifier>remap.mouse_keys_mode_2</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::D, ModifierFlag::NONE,
+
+        @begin
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mouse_keys_mode_2,
+        @end
+
+        @begin
+        KeyCode::D,
+        @end
+      </autogen>
+    </item>
+    <item hidden="true">
+      <identifier vk_config="true">notsave.mouse_keys_mode_2</identifier>
+
+      {{ MOUSE_KEYS_MODE_2_EXTRA }}
+
+      <autogen>
+        __BlockUntilKeyUp__ KeyCode::D
+      </autogen>
+
+      <!-- scroll -->
+      <autogen>
+        __KeyToKey__
+        KeyCode::H, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
+        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::J, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
+        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::K, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
+        KeyCode::VK_MOUSEKEY_SCROLL_UP,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
+        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+      </autogen>
+
+      <!-- mouse move -->
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::VK_MOUSEKEY_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::VK_MOUSEKEY_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::VK_MOUSEKEY_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MODIFIER_MOUSE_KEYS_MODE_2_SCROLL</autogen>
+
+      <!-- other -->
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE,     PointingButton::MIDDLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
+
+      <!-- For Japanese keyboards -->
+      <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::JIS_KANA,  PointingButton::RIGHT</autogen>
+    </item>
+
+    <item>
       <name>Control+L to RightClick</name>
       <identifier>remap.control_l2rightclick</identifier>
       <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::RIGHT</autogen>
