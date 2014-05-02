@@ -92,6 +92,12 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>SIMPLE_VI_MODE_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>UBIQUITOUS_VIM_BINDINGS_IGNORE_APPS</replacementname>
     <replacementvalue>TERMINAL, VI, PASSWORD, FIREFOX, EMACS</replacementvalue>
   </replacementdef>

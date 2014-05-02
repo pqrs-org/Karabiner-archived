@@ -115,5 +115,43 @@
       <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::OPTION_L, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
     </item>
+
+    <item>
+      <name>Use S key to enable hjkl keys.</name>
+      <appendix><![CDATA[  * Left-arrow: S down -> H down -> H up  ]]></appendix>
+      <appendix><![CDATA[  * Down-arrow: S down -> J down -> J up  ]]></appendix>
+      <appendix><![CDATA[  * Up-arrow: S down -> K down -> K up  ]]></appendix>
+      <appendix><![CDATA[  * Right-arrow: S down -> L down -> L up  ]]></appendix>
+      <appendix></appendix>
+      <appendix>The hjkl keys also act as arrow keys when you hold s+hjkl keys down.</appendix>
+      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
+      <identifier>remap.simple_vi_mode</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::S, ModifierFlag::NONE,
+
+        @begin
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simple_vi_mode,
+        @end
+
+        @begin
+        KeyCode::S,
+        @end
+      </autogen>
+    </item>
+    <item hidden="true">
+      <identifier vk_config="true">notsave.simple_vi_mode</identifier>
+
+      {{ SIMPLE_VI_MODE_EXTRA }}
+
+      <autogen>
+        __BlockUntilKeyUp__ KeyCode::S
+      </autogen>
+
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+    </item>
   </item>
 </root>
