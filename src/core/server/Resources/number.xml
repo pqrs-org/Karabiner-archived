@@ -89,7 +89,7 @@
       <name>__BlockUntilKeyUp__</name>
       <item>
         <name>Timeout</name>
-        <identifier essential="true" default="500" step="100" baseunit="ms">parameter.blockuntilkeyup_timeout</identifier>
+        <identifier essential="true" default="200" step="100" baseunit="ms">parameter.blockuntilkeyup_timeout</identifier>
       </item>
     </item>
 
