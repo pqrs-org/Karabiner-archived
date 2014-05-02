@@ -23,6 +23,9 @@
 
   <item hidden="true">
     <identifier vk_config="true">notsave.expose_mode2</identifier>
+
+    {{ EXPOSE_MODE_2_EXTRA }}
+
     <autogen>
       __BlockUntilKeyUp__ KeyCode::K
     </autogen>
