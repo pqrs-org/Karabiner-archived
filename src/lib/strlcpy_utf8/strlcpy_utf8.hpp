@@ -30,6 +30,8 @@ namespace pqrs {
           i += 3;
         } else if ((dst[i] & 0xf8) == 0xf0) { // 11110xxx
           i += 4;
+        } else {
+          break;
         }
 
         if (i > len) {

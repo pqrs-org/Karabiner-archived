@@ -64,3 +64,15 @@ TEST(strlcpy_utf8, multibyte_short)
   EXPECT_EQ(buf[4], static_cast<char>(0x93));
   EXPECT_EQ(buf[5], '\0');
 }
+
+TEST(strlcpy_utf8, invalid_char)
+{
+  uint8_t string[] = {
+    0x80, // 0x10000000
+  };
+
+  char buf[512];
+  pqrs::strlcpy_utf8::strlcpy(buf, reinterpret_cast<char*>(string), sizeof(buf));
+
+  EXPECT_EQ(strcmp("", buf), 0);
+}
