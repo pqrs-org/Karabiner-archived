@@ -6,8 +6,35 @@
       <name>左右のコマンドキー（⌘）を「英数／かな」としても使う</name>
       <appendix>（左コマンドキーを英数キーにする）</appendix>
       <appendix>（右コマンドキーをかなキーにする）</appendix>
+
       <item>
-        <name>コマンドキーの動作を優先モード</name>
+        <name>コマンドキーの動作を優先モード v2</name>
+        <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
+        <appendix>（コマンドキーを押している間に他のキーを打つと通常のコマンドキーとして動作。</appendix>
+        <appendix>ただし、他のキーを離す前にコマンドキーを離した場合は「英数／かな」として扱う。）</appendix>
+        <identifier>remap.japanese_command2eisuukana_prefer_command_v2</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_L,
+          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_japanese_command2eisuukana_prefer_command_v2, ModifierFlag::COMMAND_L,
+          KeyCode::JIS_EISUU,
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_R,
+          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_japanese_command2eisuukana_prefer_command_v2, ModifierFlag::COMMAND_R,
+          KeyCode::JIS_KANA,
+        </autogen>
+      </item>
+      <item hidden="true">
+        <identifier vk_config="true">notsave.japanese_command2eisuukana_prefer_command_v2</identifier>
+        <autogen>__BlockUntilKeyUp__ KeyCode::COMMAND_L</autogen>
+        <autogen>__BlockUntilKeyUp__ KeyCode::COMMAND_R</autogen>
+      </item>
+
+      <item><name>──────────────────────────────</name></item>
+      <item>
+        <name>コマンドキーの動作を優先モード v1</name>
         <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
         <appendix>（コマンドキーを押している間に他のキーを打つと通常のコマンドキーとして動作）</appendix>
         <identifier>remap.jis_command2eisuukana_prefer_command</identifier>
