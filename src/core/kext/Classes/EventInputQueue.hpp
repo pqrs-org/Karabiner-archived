@@ -83,13 +83,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     class Item : public List::Item {
     public:
       Item(const Params_KeyboardEventCallBack& p,        bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d) {}
+        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
       Item(const Params_KeyboardSpecialEventCallback& p, bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d) {}
+        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
       Item(const Params_RelativePointerEventCallback& p, bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d) {}
+        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
       Item(const Params_ScrollWheelEventCallback& p,     bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d) {}
+        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
@@ -97,6 +97,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       DeviceIdentifier deviceIdentifier;
 
       uint32_t delayMS;
+
+      // To avoid recursive enqueueing from blockedQueue_.
+      enum EnqueuedFrom {
+        ENQUEUED_FROM_HARDWARE,
+        ENQUEUED_FROM_BLOCKEDQUEUE,
+      } enqueuedFrom;
     };
 
   private:
