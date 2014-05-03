@@ -142,37 +142,41 @@
       </autogen>
 
       <!-- scroll -->
-      <autogen>
-        __KeyToKey__
-        KeyCode::H, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_LEFT, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::J, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_DOWN, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::K, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_UP, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::L, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-      </autogen>
+      <block>
+        <modifier_only>ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL</modifier_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::H,
+          KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::J,
+          KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K,
+          KeyCode::VK_MOUSEKEY_SCROLL_UP,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::L,
+          KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+        </autogen>
+      </block>
 
       <!-- mouse move -->
       <autogen>__KeyToKey__ KeyCode::H, KeyCode::VK_MOUSEKEY_LEFT</autogen>
       <autogen>__KeyToKey__ KeyCode::J, KeyCode::VK_MOUSEKEY_DOWN</autogen>
       <autogen>__KeyToKey__ KeyCode::K, KeyCode::VK_MOUSEKEY_UP</autogen>
       <autogen>__KeyToKey__ KeyCode::L, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
-      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MODIFIER_MOUSE_KEYS_MODE_2_SCROLL</autogen>
 
       <!-- other -->
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MODIFIER_MOUSE_KEYS_MODE_2_SCROLL</autogen>
       <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
 
+      <!-- click -->
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
       <autogen>__KeyToKey__ KeyCode::SPACE,     PointingButton::MIDDLE</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
