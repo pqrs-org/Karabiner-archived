@@ -149,7 +149,7 @@
     </item>
 
     <item>
-      <name>SandS 2</name>
+      <name>SandS v2</name>
       <appendix>* Change the space key to the left shift key.</appendix>
       <appendix>* Send a space key event when the space key is pressed alone.</appendix>
       <appendix></appendix>
