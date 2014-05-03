@@ -660,6 +660,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* front = static_cast<Item*>(queue_->front());
     if (! front) return true;
 
+    // Ignore events enqueued from blockedQueue_.
+    if (front->enqueuedFrom == Item::ENQUEUED_FROM_BLOCKEDQUEUE) return true;
+
     // Ignore events that are not down/up events.
     // (For example, mouse cursor move events.)
     bool iskeydown = false;
@@ -801,6 +804,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         if (! p) break;
 
         p->delayMS = 0;
+        p->enqueuedFrom = Item::ENQUEUED_FROM_BLOCKEDQUEUE;
         queue_->push_front(new Item(*p));
         blockedQueue_->pop_back();
       }
