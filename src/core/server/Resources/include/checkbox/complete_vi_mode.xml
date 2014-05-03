@@ -26,6 +26,9 @@
       <appendix>- i to turn off Vi Mode</appendix>
       <identifier vk_config="true">notsave.complete_vimode</identifier>
       <autogen>__ShowStatusMessage__ Vi Mode</autogen>
+
+      {{ COMPLETE_VI_MODE_EXTRA }}
+
       <block>
         <config_not>option.complete_vimode_dvorak</config_not>
         <!-- HJKL -->
@@ -35,8 +38,16 @@
         <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
 
         <!-- 0, Shift+4 -->
-        <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_0, ModifierFlag::NONE,
+          KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
+        </autogen>
 
         <!-- C-f, C-b -->
         <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEDOWN</autogen>
@@ -47,15 +58,35 @@
         <autogen>__KeyToKey__ KeyCode::E, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
 
         <!-- W -->
-        <autogen>__KeyToKey__ KeyCode::W, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, ModifierFlag::NONE,
+          KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
+          KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
+          KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L
+        </autogen>
 
         <!-- G, Shift+G -->
         <autogen>__KeyToKey__ KeyCode::G, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::END</autogen>
         <autogen>__KeyToKey__ KeyCode::G, KeyCode::HOME</autogen>
 
         <!-- SLASH, N -->
-        <autogen>__KeyToKey__ KeyCode::SLASH, KeyCode::F, ModifierFlag::COMMAND_L, KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode</autogen>
-        <autogen>__KeyToKey__ KeyCode::N, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SLASH, ModifierFlag::NONE,
+          KeyCode::F, ModifierFlag::COMMAND_L,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_complete_vimode,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::N, ModifierFlag::NONE,
+          KeyCode::G, ModifierFlag::COMMAND_L,
+        </autogen>
 
         <!-- X -->
         <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::DELETE</autogen>
