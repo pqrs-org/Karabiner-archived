@@ -117,7 +117,8 @@
     </item>
 
     <item>
-      <name>Use S key to enable hjkl keys.</name>
+      <name>Simple Vi Mode v2</name>
+      <appendix>Use S key to enable hjkl key operation.</appendix>
       <appendix><![CDATA[  * Left-arrow: S down -> H down -> H up  ]]></appendix>
       <appendix><![CDATA[  * Down-arrow: S down -> J down -> J up  ]]></appendix>
       <appendix><![CDATA[  * Up-arrow: S down -> K down -> K up  ]]></appendix>
@@ -125,6 +126,12 @@
       <appendix></appendix>
       <appendix>The hjkl keys also act as arrow keys when you hold s+hjkl keys down.</appendix>
       <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
+      <appendix></appendix>
+      <appendix>* Change F key to fn key when S key is pressed.</appendix>
+      <appendix><![CDATA[  * S+F+H: Home  ]]></appendix>
+      <appendix><![CDATA[  * S+F+J: Page Down  ]]></appendix>
+      <appendix><![CDATA[  * S+F+K: Page Up  ]]></appendix>
+      <appendix><![CDATA[  * S+F+L: End  ]]></appendix>
       <identifier>remap.simple_vi_mode</identifier>
       <autogen>
         __KeyOverlaidModifier__
@@ -152,6 +159,8 @@
       <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
       <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
       <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::FN</autogen>
     </item>
   </item>
 </root>
