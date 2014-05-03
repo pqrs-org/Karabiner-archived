@@ -127,7 +127,7 @@
       <appendix>The hjkl keys also act as arrow keys when you hold s+hjkl keys down.</appendix>
       <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
       <appendix></appendix>
-      <appendix>* Change F key to fn key when S key is pressed.</appendix>
+      <appendix>F key acts as fn key when S key is pressed.</appendix>
       <appendix><![CDATA[  * S+F+H: Home  ]]></appendix>
       <appendix><![CDATA[  * S+F+J: Page Down  ]]></appendix>
       <appendix><![CDATA[  * S+F+K: Page Up  ]]></appendix>
