@@ -15,92 +15,6 @@
     </item>
 
     <item>
-      <name>"Right command key + j/k" to scroll down/up</name>
-      <identifier>remap.right_command_jk_to_scroll</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::J, ModifierFlag::COMMAND_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::K, ModifierFlag::COMMAND_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_UP,
-      </autogen>
-    </item>
-    <item>
-      <name>"Right command key + h/l" to scroll left/right</name>
-      <identifier>remap.right_command_hl_to_scroll</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::H, ModifierFlag::COMMAND_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::L, ModifierFlag::COMMAND_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
-      </autogen>
-    </item>
-    <item>
-      <name>"Right option key + up down arrows" to scroll down/up</name>
-      <identifier>remap.right_command_arrow_to_scroll</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::CURSOR_UP, ModifierFlag::OPTION_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_UP,
-      </autogen>
-    </item>
-    <item>
-      <name>"Right option key + left right arrows" to scroll left/right</name>
-      <identifier>remap.right_command_leftrightarrow_to_scroll</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R,
-        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
-      </autogen>
-    </item>
-
-    <item>
-      <name>"Left control key + qa" to scroll down/up</name>
-      <identifier>remap.left ctrl to scroll</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::A, ModifierFlag::CONTROL_L,
-        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::Q, ModifierFlag::CONTROL_L,
-        KeyCode::VK_MOUSEKEY_SCROLL_UP,
-      </autogen>
-    </item>
-    <item>
-      <name>"Left control key + ws to scroll left/right"</name>
-      <identifier>remap.left_ctrl_ws_to_scroll</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::W, ModifierFlag::CONTROL_L,
-        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::S, ModifierFlag::CONTROL_L,
-        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
-      </autogen>
-    </item>
-
-    <item>
       <name>Mouse Keys Mode v2</name>
       <appendix>You can move mouse pointer by d+hjkl keys, and scroll by d+f+hjkl keys.</appendix>
       <appendix></appendix>
@@ -194,392 +108,484 @@
       <autogen>__KeyToKey__ KeyCode::JIS_KANA,  PointingButton::RIGHT</autogen>
     </item>
 
+    <item><name>──────────────────────────────</name></item>
+
     <item>
-      <name>Mouse Keys Mode v1</name>
+      <name>Other settings</name>
+
       <item>
-        <name>What's Mouse Keys Mode?</name>
-        <appendix>Push "S" and "D" keys simultaneously while pressing Shift key,</appendix>
-        <appendix>and keep S,D keys pressing.</appendix>
-        <appendix>Then you can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
-        <appendix>- HJKL to move mouse cursor</appendix>
-        <appendix>- Arrow Keys to move mouse cursor</appendix>
-        <appendix></appendix>
-        <appendix>And, control scroll wheel.</appendix>
-        <appendix>- F+HJKL to scroll wheel</appendix>
-        <appendix>- F+Arrow Keys to scroll wheel</appendix>
-        <appendix></appendix>
-        <appendix>You can adjust the speed, too.</appendix>
-        <appendix>- A+HJKL to high-speed movement</appendix>
-        <appendix>- A+Arrow Keys to high-speed movement</appendix>
-        <identifier vk_config="true">notsave.mousekeys_mode</identifier>
-        <autogen>__ShowStatusMessage__ Mouse Keys</autogen>
-        <!-- scroll wheel mode -->
-        <autogen>__KeyToKey__ {{VI_H}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ {{VI_J}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ {{VI_K}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ {{VI_L}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
-        <!-- normal mode -->
-        <autogen>__KeyToKey__ {{VI_H}},    KeyCode::VK_MOUSEKEY_LEFT</autogen>
-        <autogen>__KeyToKey__ {{VI_J}},    KeyCode::VK_MOUSEKEY_DOWN</autogen>
-        <autogen>__KeyToKey__ {{VI_K}},    KeyCode::VK_MOUSEKEY_UP</autogen>
-        <autogen>__KeyToKey__ {{VI_L}},    KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+        <name>"Right command key + j/k" to scroll down/up</name>
+        <identifier>remap.right_command_jk_to_scroll</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::J, ModifierFlag::COMMAND_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K, ModifierFlag::COMMAND_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_UP,
+        </autogen>
+      </item>
+      <item>
+        <name>"Right command key + h/l" to scroll left/right</name>
+        <identifier>remap.right_command_hl_to_scroll</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::H, ModifierFlag::COMMAND_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::L, ModifierFlag::COMMAND_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+        </autogen>
+      </item>
+      <item>
+        <name>"Right option key + up down arrows" to scroll down/up</name>
+        <identifier>remap.right_command_arrow_to_scroll</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_DOWN, ModifierFlag::OPTION_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_UP, ModifierFlag::OPTION_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_UP,
+        </autogen>
+      </item>
+      <item>
+        <name>"Right option key + left right arrows" to scroll left/right</name>
+        <identifier>remap.right_command_leftrightarrow_to_scroll</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R,
+          KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+        </autogen>
+      </item>
+
+      <item>
+        <name>"Left control key + qa" to scroll down/up</name>
+        <identifier>remap.left ctrl to scroll</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::A, ModifierFlag::CONTROL_L,
+          KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Q, ModifierFlag::CONTROL_L,
+          KeyCode::VK_MOUSEKEY_SCROLL_UP,
+        </autogen>
+      </item>
+      <item>
+        <name>"Left control key + ws to scroll left/right"</name>
+        <identifier>remap.left_ctrl_ws_to_scroll</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, ModifierFlag::CONTROL_L,
+          KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::S, ModifierFlag::CONTROL_L,
+          KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+        </autogen>
+      </item>
+
+      <item>
+        <name>Mouse Keys Mode v1</name>
+        <item>
+          <name>What's Mouse Keys Mode?</name>
+          <appendix>Push "S" and "D" keys simultaneously while pressing Shift key,</appendix>
+          <appendix>and keep S,D keys pressing.</appendix>
+          <appendix>Then you can control mouse cursor by HJKL keys. (and Arrow keys)</appendix>
+          <appendix>- HJKL to move mouse cursor</appendix>
+          <appendix>- Arrow Keys to move mouse cursor</appendix>
+          <appendix></appendix>
+          <appendix>And, control scroll wheel.</appendix>
+          <appendix>- F+HJKL to scroll wheel</appendix>
+          <appendix>- F+Arrow Keys to scroll wheel</appendix>
+          <appendix></appendix>
+          <appendix>You can adjust the speed, too.</appendix>
+          <appendix>- A+HJKL to high-speed movement</appendix>
+          <appendix>- A+Arrow Keys to high-speed movement</appendix>
+          <identifier vk_config="true">notsave.mousekeys_mode</identifier>
+          <autogen>__ShowStatusMessage__ Mouse Keys</autogen>
+          <!-- scroll wheel mode -->
+          <autogen>__KeyToKey__ {{VI_H}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ {{VI_J}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ {{VI_K}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ {{VI_L}},               ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_UP,    ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_DOWN,  ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_LEFT,  ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::FN</autogen>
+          <!-- normal mode -->
+          <autogen>__KeyToKey__ {{VI_H}},    KeyCode::VK_MOUSEKEY_LEFT</autogen>
+          <autogen>__KeyToKey__ {{VI_J}},    KeyCode::VK_MOUSEKEY_DOWN</autogen>
+          <autogen>__KeyToKey__ {{VI_K}},    KeyCode::VK_MOUSEKEY_UP</autogen>
+          <autogen>__KeyToKey__ {{VI_L}},    KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
+          <!-- ======================================== -->
+          <block>
+            <config_only>
+              remap.simultaneouskeypresses_mouse_keys_mode_commandSD,
+              remap.simultaneouskeypresses_mouse_keys_mode_shiftSD,
+              remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order,
+            </config_only>
+            <autogen>__KeyToKey__ KeyCode::F, KeyCode::FN</autogen>
+            <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+          </block>
+          <block>
+            <config_only>remap.simultaneouskeypresses_mouse_keys_mode_df</config_only>
+            <autogen>__KeyToKey__ KeyCode::S, KeyCode::FN</autogen>
+            <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+          </block>
+          <block>
+            <config_only>remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
+            <autogen>__KeyToKey__ KeyCode::V, KeyCode::FN</autogen>
+            <autogen>__KeyToKey__ KeyCode::Z, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+          </block>
+          <block>
+            <config_only>remap.mouse_keys_mode_holding_m</config_only>
+            <autogen>__KeyToKey__ KeyCode::F, KeyCode::FN</autogen>
+            <autogen>__KeyToKey__ KeyCode::D, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+          </block>
+          <!-- ======================================== -->
+          <block>
+            <config_only>option.mousekeys_mode_commandL2leftclick</config_only>
+            <autogen>__KeyToKey__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_mode_space2middleclick</config_only>
+            <autogen>__KeyToKey__ KeyCode::SPACE, PointingButton::MIDDLE</autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_mode_commandR2rightclick</config_only>
+            <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_n_to_click_lock</config_only>
+            <autogen>
+              __HoldingKeyToKey__
+              KeyCode::N,
+
+              @begin
+              KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT,
+              @end
+
+              @begin
+              PointingButton::LEFT,
+              PointingButton::LEFT,
+              KeyCode::VK_NONE,
+              Option::NOREPEAT,
+              @end
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::DOT,
+              KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF,
+            </autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_mode_wer2click</config_only>
+            <autogen>__KeyToKey__ KeyCode::W, PointingButton::LEFT</autogen>
+            <autogen>__KeyToKey__ KeyCode::E, PointingButton::MIDDLE</autogen>
+            <autogen>__KeyToKey__ KeyCode::R, PointingButton::RIGHT</autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_mode_uio2click</config_only>
+            <autogen>__KeyToKey__ KeyCode::U, PointingButton::LEFT</autogen>
+            <autogen>__KeyToKey__ KeyCode::I, PointingButton::MIDDLE</autogen>
+            <autogen>__KeyToKey__ KeyCode::O, PointingButton::RIGHT</autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_mode_move_mouse_cursor_uio</config_only>
+            <autogen>
+              __KeyToKey__
+              KeyCode::U,
+              KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_left,
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::I,
+              KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::O,
+              KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_right,
+            </autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_mode_jis_eisuu2leftclick</config_only>
+            <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
+          </block>
+          <block>
+            <config_only>option.mousekeys_mode_jis_kana2rightclick</config_only>
+            <autogen>__KeyToKey__ KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
+          </block>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [D+S] to turn on Mouse Keys Mode</name>
+          <appendix>// Strict Simultaneous Key Order. You need to press D key before S key.</appendix>
+          <appendix></appendix>
+          <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+          <appendix>// F+HJKL to scroll wheel</appendix>
+          <appendix></appendix>
+          <appendix>+ A turns on "High Speed Mode"</appendix>
+          <appendix>// A+HJKL to high-speed movement</appendix>
+          <identifier>remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order</identifier>
+          <autogen>
+            __SimultaneousKeyPresses__
+            KeyCode::D, KeyCode::S,
+            KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode,
+            Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
+          </autogen>
+        </item>
+        <item>
+          <name>[Option] Change left command key to left click in Mouse Keys Mode</name>
+          <identifier>option.mousekeys_mode_commandL2leftclick</identifier>
+        </item>
+        <item>
+          <name>[Option] Change space key to middle click in Mouse Keys Mode</name>
+          <identifier>option.mousekeys_mode_space2middleclick</identifier>
+        </item>
+        <item>
+          <name>[Option] Change right command key to right click in Mouse Keys Mode</name>
+          <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
+        </item>
+        <item>
+          <name>[Option] Move mouse cursor to top-left,middle-center,top-right by U,I,O</name>
+          <identifier>option.mousekeys_mode_move_mouse_cursor_uio</identifier>
+        </item>
+        <item>
+          <name>[Option] Use N key to click lock in Mouse Keys Mode.</name>
+          <appendix>(+ Holding N key to double-click)</appendix>
+          <appendix>(Use . key to release click.)</appendix>
+          <identifier>option.mousekeys_n_to_click_lock</identifier>
+        </item>
+        <item><name>──────────────────────────────</name></item>
+        <item>
+          <name>Simultaneous Key Presses Shift+[S+D] to turn on Mouse Keys Mode</name>
+          <appendix>// Press S,D keys simultaneously while pressing Shift_L or Shift_R.</appendix>
+          <appendix>// You can release Shift key while pressing S,D keys.</appendix>
+          <appendix></appendix>
+          <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+          <appendix>// F+HJKL to scroll wheel</appendix>
+          <appendix></appendix>
+          <appendix>+ A turns on "High Speed Mode"</appendix>
+          <appendix>// A+HJKL to high-speed movement</appendix>
+          <identifier>remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</identifier>
+          <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
+          <appendix>// Press S,D keys simultaneously while pressing Command_L or Command_R.</appendix>
+          <appendix>// You can release Command key while pressing S,D keys.</appendix>
+          <appendix></appendix>
+          <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+          <appendix>// F+HJKL to scroll wheel</appendix>
+          <appendix></appendix>
+          <appendix>+ A turns on "High Speed Mode"</appendix>
+          <appendix>// A+HJKL to high-speed movement</appendix>
+          <identifier>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</identifier>
+          <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
+          <appendix></appendix>
+          <appendix>+ S turns on "Scroll Wheel Mode"</appendix>
+          <appendix>// S+HJKL to scroll wheel</appendix>
+          <appendix></appendix>
+          <appendix>+ A turns on "High Speed Mode"</appendix>
+          <appendix>// A+HJKL to high-speed movement</appendix>
+          <identifier>remap.simultaneouskeypresses_mouse_keys_mode_df</identifier>
+          <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+        </item>
+        <item>
+          <name>Simultaneous Key Presses [X+C] to turn on Mouse Keys Mode</name>
+          <appendix></appendix>
+          <appendix>+ V turns on "Scroll Wheel Mode"</appendix>
+          <appendix>// V+HJKL to scroll wheel</appendix>
+          <appendix></appendix>
+          <appendix>+ Z turns on "High Speed Mode"</appendix>
+          <appendix>// Z+HJKL to high-speed movement</appendix>
+          <identifier>remap.simultaneouskeypresses_mouse_keys_mode_cx</identifier>
+          <autogen>__SimultaneousKeyPresses__ KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
+        </item>
+        <item>
+          <name>Holding "M" Key to toggle Mouse Keys Mode</name>
+          <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
+          <appendix>// F+HJKL to scroll wheel</appendix>
+          <appendix></appendix>
+          <appendix>+ D turns on "High Speed Mode"</appendix>
+          <appendix>// D+HJKL to high-speed movement</appendix>
+          <identifier>remap.mouse_keys_mode_holding_m</identifier>
+          <autogen>__HoldingKeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
+        </item>
+        <item><name>──────────────────────────────</name></item>
+        <item>
+          <name>[Option] WER to Click</name>
+          <appendix>- W to LeftClick</appendix>
+          <appendix>- E to MiddleClick</appendix>
+          <appendix>- R to RightClick</appendix>
+          <identifier>option.mousekeys_mode_wer2click</identifier>
+        </item>
+        <item>
+          <name>[Option] UIO to Click</name>
+          <appendix>- U to LeftClick</appendix>
+          <appendix>- I to MiddleClick</appendix>
+          <appendix>- O to RightClick</appendix>
+          <identifier>option.mousekeys_mode_uio2click</identifier>
+        </item>
+        <item>
+          <name>[Option] JIS_EISUU to LeftClick</name>
+          <appendix></appendix>
+          <appendix>// If you are using Apple keyboards, this setting may be useless.</appendix>
+          <appendix>// Because Apple keyboards have a 2-key rollover problem,</appendix>
+          <appendix>// and can't recognize JIS_EISUU while pressing S,D keys.</appendix>
+          <identifier>option.mousekeys_mode_jis_eisuu2leftclick</identifier>
+        </item>
+        <item>
+          <name>[Option] JIS_KANA to RightClick</name>
+          <identifier>option.mousekeys_mode_jis_kana2rightclick</identifier>
+        </item>
+        <item>
+          <name>[Option] Ignore Hardware CursorMove Events</name>
+          <identifier>option.mousekeys_mode_droppointingrelativecursormove</identifier>
+          <config_only>
+            remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order,
+            remap.simultaneouskeypresses_mouse_keys_mode_shiftSD,
+            remap.simultaneouskeypresses_mouse_keys_mode_commandSD,
+            remap.simultaneouskeypresses_mouse_keys_mode_df,
+            remap.simultaneouskeypresses_mouse_keys_mode_cx,
+          </config_only>
+          <autogen>__DropPointingRelativeCursorMove__</autogen>
+        </item>
+      </item>
+
+      <item>
+        <name>Control+L to RightClick</name>
+        <identifier>remap.control_l2rightclick</identifier>
+        <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::RIGHT</autogen>
+      </item>
+
+      <item>
+        <name>Mouse Keys with Left-Hand</name>
+        <item>
+          <name>Base Operation</name>
+          <appendix>Clicks:</appendix>
+          <appendix>fn+x = mouse left click</appendix>
+          <appendix>fn+v = mouse right click</appendix>
+          <appendix>fn+x+e = hold/release left mouse</appendix>
+          <appendix>fn+v+e = hold/release right mouse</appendix>
+          <appendix></appendix>
+          <appendix>Moving:</appendix>
+          <appendix>fn+w = move mouse left</appendix>
+          <appendix>fn+r = move mouse right</appendix>
+          <appendix>fn+d = move mouse down</appendix>
+          <appendix>fn+3 = move mouse up</appendix>
+          <appendix>fn+2 = move mouse to up left diagonally</appendix>
+          <appendix>fn+4 = move mouse up right diagonally</appendix>
+          <appendix>fn+s = move mouse down left diagonally</appendix>
+          <appendix>fn+f = move mouse down right diagonally</appendix>
+          <identifier>remap.mousekeys_with_lefthand</identifier>
+          <!-- Retain ModifierFlag::FN to enable moving pointer while clicking. -->
+
+          <!-- use ModifierFlag::EXTRA1 to detect lock -->
+          <!-- use ModifierFlag::EXTRA2 to detect lock -->
+          <!-- use ModifierFlag::EXTRA3 to detect lock -->
+          <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::EXTRA1, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::EXTRA2, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
+          <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
+          <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
+
+          <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::FN,
+          KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::FN | ModifierFlag::EXTRA1</autogen>
+          <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::FN,
+          KeyCode::VK_MOUSEKEY_BUTTON_RIGHT, ModifierFlag::FN | ModifierFlag::EXTRA2</autogen>
+          <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::FN, KeyCode::VK_MODIFIER_EXTRA3, ModifierFlag::FN</autogen>
+
+          <block>
+            <config_only>option.mousekeys_with_lefthand_fixed_distance_with_control_fn</config_only>
+            <autogen>
+              __KeyToKey__
+              KeyCode::W,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+
+              KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+              Option::NOREPEAT,
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::R,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+
+              KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+              Option::NOREPEAT,
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::D,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+
+              KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+              Option::NOREPEAT,
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::KEY_3,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+
+              KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP,
+              MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
+              Option::NOREPEAT,
+            </autogen>
+          </block>
+
+          <autogen>__KeyToKey__ KeyCode::W,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::R,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::D,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::FN</autogen>
+
+          <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NW, ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NE, ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::S,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SW, ModifierFlag::FN</autogen>
+          <autogen>__KeyToKey__ KeyCode::F,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SE, ModifierFlag::FN</autogen>
+        </item>
+
+        <item>
+          <name>Optional Operation</name>
+          <appendix>control+fn+w = move mouse fixed distance left</appendix>
+          <appendix>control+fn+r = move mouse fixed distance right</appendix>
+          <appendix>control+fn+d = move mouse fixed distance down</appendix>
+          <appendix>control+fn+3 = move mouse fixed distance up</appendix>
+          <identifier>option.mousekeys_with_lefthand_fixed_distance_with_control_fn</identifier>
+        </item>
+      </item>
+
+      <item>
+        <name>Arrow(Up/Down/Left/Right) Keys to Mouse Keys</name>
+        <identifier>remap.mousekeys_arrow</identifier>
         <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
         <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
         <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
         <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
-        <!-- ======================================== -->
-        <block>
-          <config_only>
-            remap.simultaneouskeypresses_mouse_keys_mode_commandSD,
-            remap.simultaneouskeypresses_mouse_keys_mode_shiftSD,
-            remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order,
-          </config_only>
-          <autogen>__KeyToKey__ KeyCode::F, KeyCode::FN</autogen>
-          <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
-        </block>
-        <block>
-          <config_only>remap.simultaneouskeypresses_mouse_keys_mode_df</config_only>
-          <autogen>__KeyToKey__ KeyCode::S, KeyCode::FN</autogen>
-          <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
-        </block>
-        <block>
-          <config_only>remap.simultaneouskeypresses_mouse_keys_mode_cx</config_only>
-          <autogen>__KeyToKey__ KeyCode::V, KeyCode::FN</autogen>
-          <autogen>__KeyToKey__ KeyCode::Z, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
-        </block>
-        <block>
-          <config_only>remap.mouse_keys_mode_holding_m</config_only>
-          <autogen>__KeyToKey__ KeyCode::F, KeyCode::FN</autogen>
-          <autogen>__KeyToKey__ KeyCode::D, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
-        </block>
-        <!-- ======================================== -->
-        <block>
-          <config_only>option.mousekeys_mode_commandL2leftclick</config_only>
-          <autogen>__KeyToKey__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_mode_space2middleclick</config_only>
-          <autogen>__KeyToKey__ KeyCode::SPACE, PointingButton::MIDDLE</autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_mode_commandR2rightclick</config_only>
-          <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_n_to_click_lock</config_only>
-          <autogen>
-            __HoldingKeyToKey__
-            KeyCode::N,
-
-            @begin
-            KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT,
-            @end
-
-            @begin
-            PointingButton::LEFT,
-            PointingButton::LEFT,
-            KeyCode::VK_NONE,
-            Option::NOREPEAT,
-            @end
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::DOT,
-            KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF,
-          </autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_mode_wer2click</config_only>
-          <autogen>__KeyToKey__ KeyCode::W, PointingButton::LEFT</autogen>
-          <autogen>__KeyToKey__ KeyCode::E, PointingButton::MIDDLE</autogen>
-          <autogen>__KeyToKey__ KeyCode::R, PointingButton::RIGHT</autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_mode_uio2click</config_only>
-          <autogen>__KeyToKey__ KeyCode::U, PointingButton::LEFT</autogen>
-          <autogen>__KeyToKey__ KeyCode::I, PointingButton::MIDDLE</autogen>
-          <autogen>__KeyToKey__ KeyCode::O, PointingButton::RIGHT</autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_mode_move_mouse_cursor_uio</config_only>
-          <autogen>
-            __KeyToKey__
-            KeyCode::U,
-            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_left,
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::I,
-            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::O,
-            KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_top_right,
-          </autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_mode_jis_eisuu2leftclick</config_only>
-          <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
-        </block>
-        <block>
-          <config_only>option.mousekeys_mode_jis_kana2rightclick</config_only>
-          <autogen>__KeyToKey__ KeyCode::JIS_KANA, PointingButton::RIGHT</autogen>
-        </block>
       </item>
-      <item>
-        <name>Simultaneous Key Presses [D+S] to turn on Mouse Keys Mode</name>
-        <appendix>// Strict Simultaneous Key Order. You need to press D key before S key.</appendix>
-        <appendix></appendix>
-        <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
-        <appendix>// F+HJKL to scroll wheel</appendix>
-        <appendix></appendix>
-        <appendix>+ A turns on "High Speed Mode"</appendix>
-        <appendix>// A+HJKL to high-speed movement</appendix>
-        <identifier>remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order</identifier>
-        <autogen>
-          __SimultaneousKeyPresses__
-          KeyCode::D, KeyCode::S,
-          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode,
-          Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER
-        </autogen>
-      </item>
-      <item>
-        <name>[Option] Change left command key to left click in Mouse Keys Mode</name>
-        <identifier>option.mousekeys_mode_commandL2leftclick</identifier>
-      </item>
-      <item>
-        <name>[Option] Change space key to middle click in Mouse Keys Mode</name>
-        <identifier>option.mousekeys_mode_space2middleclick</identifier>
-      </item>
-      <item>
-        <name>[Option] Change right command key to right click in Mouse Keys Mode</name>
-        <identifier>option.mousekeys_mode_commandR2rightclick</identifier>
-      </item>
-      <item>
-        <name>[Option] Move mouse cursor to top-left,middle-center,top-right by U,I,O</name>
-        <identifier>option.mousekeys_mode_move_mouse_cursor_uio</identifier>
-      </item>
-      <item>
-        <name>[Option] Use N key to click lock in Mouse Keys Mode.</name>
-        <appendix>(+ Holding N key to double-click)</appendix>
-        <appendix>(Use . key to release click.)</appendix>
-        <identifier>option.mousekeys_n_to_click_lock</identifier>
-      </item>
-      <item><name>──────────────────────────────</name></item>
-      <item>
-        <name>Simultaneous Key Presses Shift+[S+D] to turn on Mouse Keys Mode</name>
-        <appendix>// Press S,D keys simultaneously while pressing Shift_L or Shift_R.</appendix>
-        <appendix>// You can release Shift key while pressing S,D keys.</appendix>
-        <appendix></appendix>
-        <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
-        <appendix>// F+HJKL to scroll wheel</appendix>
-        <appendix></appendix>
-        <appendix>+ A turns on "High Speed Mode"</appendix>
-        <appendix>// A+HJKL to high-speed movement</appendix>
-        <identifier>remap.simultaneouskeypresses_mouse_keys_mode_shiftSD</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
-      </item>
-      <item>
-        <name>Simultaneous Key Presses Command+[S+D] to turn on Mouse Keys Mode</name>
-        <appendix>// Press S,D keys simultaneously while pressing Command_L or Command_R.</appendix>
-        <appendix>// You can release Command key while pressing S,D keys.</appendix>
-        <appendix></appendix>
-        <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
-        <appendix>// F+HJKL to scroll wheel</appendix>
-        <appendix></appendix>
-        <appendix>+ A turns on "High Speed Mode"</appendix>
-        <appendix>// A+HJKL to high-speed movement</appendix>
-        <identifier>remap.simultaneouskeypresses_mouse_keys_mode_commandSD</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
-      </item>
-      <item>
-        <name>Simultaneous Key Presses [D+F] to turn on Mouse Keys Mode</name>
-        <appendix></appendix>
-        <appendix>+ S turns on "Scroll Wheel Mode"</appendix>
-        <appendix>// S+HJKL to scroll wheel</appendix>
-        <appendix></appendix>
-        <appendix>+ A turns on "High Speed Mode"</appendix>
-        <appendix>// A+HJKL to high-speed movement</appendix>
-        <identifier>remap.simultaneouskeypresses_mouse_keys_mode_df</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::F, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
-      </item>
-      <item>
-        <name>Simultaneous Key Presses [X+C] to turn on Mouse Keys Mode</name>
-        <appendix></appendix>
-        <appendix>+ V turns on "Scroll Wheel Mode"</appendix>
-        <appendix>// V+HJKL to scroll wheel</appendix>
-        <appendix></appendix>
-        <appendix>+ Z turns on "High Speed Mode"</appendix>
-        <appendix>// Z+HJKL to high-speed movement</appendix>
-        <identifier>remap.simultaneouskeypresses_mouse_keys_mode_cx</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::C, KeyCode::X, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mousekeys_mode</autogen>
-      </item>
-      <item>
-        <name>Holding "M" Key to toggle Mouse Keys Mode</name>
-        <appendix>+ F turns on "Scroll Wheel Mode"</appendix>
-        <appendix>// F+HJKL to scroll wheel</appendix>
-        <appendix></appendix>
-        <appendix>+ D turns on "High Speed Mode"</appendix>
-        <appendix>// D+HJKL to high-speed movement</appendix>
-        <identifier>remap.mouse_keys_mode_holding_m</identifier>
-        <autogen>__HoldingKeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::M, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_mousekeys_mode</autogen>
-      </item>
-      <item><name>──────────────────────────────</name></item>
-      <item>
-        <name>[Option] WER to Click</name>
-        <appendix>- W to LeftClick</appendix>
-        <appendix>- E to MiddleClick</appendix>
-        <appendix>- R to RightClick</appendix>
-        <identifier>option.mousekeys_mode_wer2click</identifier>
-      </item>
-      <item>
-        <name>[Option] UIO to Click</name>
-        <appendix>- U to LeftClick</appendix>
-        <appendix>- I to MiddleClick</appendix>
-        <appendix>- O to RightClick</appendix>
-        <identifier>option.mousekeys_mode_uio2click</identifier>
-      </item>
-      <item>
-        <name>[Option] JIS_EISUU to LeftClick</name>
-        <appendix></appendix>
-        <appendix>// If you are using Apple keyboards, this setting may be useless.</appendix>
-        <appendix>// Because Apple keyboards have a 2-key rollover problem,</appendix>
-        <appendix>// and can't recognize JIS_EISUU while pressing S,D keys.</appendix>
-        <identifier>option.mousekeys_mode_jis_eisuu2leftclick</identifier>
-      </item>
-      <item>
-        <name>[Option] JIS_KANA to RightClick</name>
-        <identifier>option.mousekeys_mode_jis_kana2rightclick</identifier>
-      </item>
-      <item>
-        <name>[Option] Ignore Hardware CursorMove Events</name>
-        <identifier>option.mousekeys_mode_droppointingrelativecursormove</identifier>
-        <config_only>
-          remap.simultaneouskeypresses_mouse_keys_mode_ds_strict_key_order,
-          remap.simultaneouskeypresses_mouse_keys_mode_shiftSD,
-          remap.simultaneouskeypresses_mouse_keys_mode_commandSD,
-          remap.simultaneouskeypresses_mouse_keys_mode_df,
-          remap.simultaneouskeypresses_mouse_keys_mode_cx,
-        </config_only>
-        <autogen>__DropPointingRelativeCursorMove__</autogen>
-      </item>
-    </item>
-
-    <item>
-      <name>Control+L to RightClick</name>
-      <identifier>remap.control_l2rightclick</identifier>
-      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, PointingButton::RIGHT</autogen>
-    </item>
-
-    <item>
-      <name>Mouse Keys with Left-Hand</name>
-      <item>
-        <name>Base Operation</name>
-        <appendix>Clicks:</appendix>
-        <appendix>fn+x = mouse left click</appendix>
-        <appendix>fn+v = mouse right click</appendix>
-        <appendix>fn+x+e = hold/release left mouse</appendix>
-        <appendix>fn+v+e = hold/release right mouse</appendix>
-        <appendix></appendix>
-        <appendix>Moving:</appendix>
-        <appendix>fn+w = move mouse left</appendix>
-        <appendix>fn+r = move mouse right</appendix>
-        <appendix>fn+d = move mouse down</appendix>
-        <appendix>fn+3 = move mouse up</appendix>
-        <appendix>fn+2 = move mouse to up left diagonally</appendix>
-        <appendix>fn+4 = move mouse up right diagonally</appendix>
-        <appendix>fn+s = move mouse down left diagonally</appendix>
-        <appendix>fn+f = move mouse down right diagonally</appendix>
-        <identifier>remap.mousekeys_with_lefthand</identifier>
-        <!-- Retain ModifierFlag::FN to enable moving pointer while clicking. -->
-
-        <!-- use ModifierFlag::EXTRA1 to detect lock -->
-        <!-- use ModifierFlag::EXTRA2 to detect lock -->
-        <!-- use ModifierFlag::EXTRA3 to detect lock -->
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::EXTRA1, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::EXTRA2, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
-        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_LEFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::EXTRA3, KeyCode::VK_MOUSEKEY_LOCK_BUTTON_RIGHT</autogen>
-
-        <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::FN,
-          KeyCode::VK_MOUSEKEY_BUTTON_LEFT, ModifierFlag::FN | ModifierFlag::EXTRA1</autogen>
-        <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::FN,
-          KeyCode::VK_MOUSEKEY_BUTTON_RIGHT, ModifierFlag::FN | ModifierFlag::EXTRA2</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::FN, KeyCode::VK_MODIFIER_EXTRA3, ModifierFlag::FN</autogen>
-
-        <block>
-          <config_only>option.mousekeys_with_lefthand_fixed_distance_with_control_fn</config_only>
-          <autogen>
-            __KeyToKey__
-            KeyCode::W,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-
-            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_LEFT,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-            Option::NOREPEAT,
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::R,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-
-            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-            Option::NOREPEAT,
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::D,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-
-            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_DOWN,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-            Option::NOREPEAT,
-          </autogen>
-          <autogen>
-            __KeyToKey__
-            KeyCode::KEY_3,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-
-            KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_UP,
-            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::FN,
-            Option::NOREPEAT,
-          </autogen>
-        </block>
-
-        <autogen>__KeyToKey__ KeyCode::W,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_LEFT,  ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::R,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_RIGHT, ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::D,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DOWN,  ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_UP,    ModifierFlag::FN</autogen>
-
-        <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NW, ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_NE, ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::S,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SW, ModifierFlag::FN</autogen>
-        <autogen>__KeyToKey__ KeyCode::F,     ModifierFlag::FN, KeyCode::VK_MOUSEKEY_DIAGONAL_SE, ModifierFlag::FN</autogen>
-      </item>
-
-      <item>
-        <name>Optional Operation</name>
-        <appendix>control+fn+w = move mouse fixed distance left</appendix>
-        <appendix>control+fn+r = move mouse fixed distance right</appendix>
-        <appendix>control+fn+d = move mouse fixed distance down</appendix>
-        <appendix>control+fn+3 = move mouse fixed distance up</appendix>
-        <identifier>option.mousekeys_with_lefthand_fixed_distance_with_control_fn</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>Arrow(Up/Down/Left/Right) Keys to Mouse Keys</name>
-      <identifier>remap.mousekeys_arrow</identifier>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_UP</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_DOWN</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_LEFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
     </item>
   </item>
 </root>
