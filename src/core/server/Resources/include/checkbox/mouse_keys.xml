@@ -421,22 +421,22 @@
       <autogen>
         __KeyToKey__
         KeyCode::H, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_LEFT,
+        KeyCode::VK_MOUSEKEY_SCROLL_LEFT, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
       </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::J, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_DOWN,
+        KeyCode::VK_MOUSEKEY_SCROLL_DOWN, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
       </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::K, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_UP,
+        KeyCode::VK_MOUSEKEY_SCROLL_UP, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
       </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::L, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
-        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT,
+        KeyCode::VK_MOUSEKEY_SCROLL_RIGHT, ModifierFlag::MOUSE_KEYS_MODE_2_SCROLL,
       </autogen>
 
       <!-- mouse move -->
