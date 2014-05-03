@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case RELATIVE_POINTER: {
           Params_RelativePointerEventCallback* p = get_Params_RelativePointerEventCallback();
-          if (p) {
+          if (p && p->ex_button != PointingButton::NONE) {
             output = p->ex_isbuttondown;
             return true;
           }
