@@ -377,7 +377,7 @@
     </item>
 
     <item>
-      <name>Mouse Keys Mode 2</name>
+      <name>Mouse Keys Mode v2</name>
       <appendix>Use D key to enable mode.</appendix>
       <appendix><![CDATA[  * Left: D down -> H down -> H up  ]]></appendix>
       <appendix><![CDATA[  * Down: D down -> J down -> J up  ]]></appendix>
