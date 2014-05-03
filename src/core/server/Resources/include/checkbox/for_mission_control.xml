@@ -90,8 +90,11 @@
         KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
       </autogen>
     </item>
+
+    <include path="expose_mode2/expose_mode2.xml" />
+
     <item>
-      <name>Expose Mode</name>
+      <name>Expose Mode v1</name>
       <item>
         <name>What's Expose Mode?</name>
         <appendix>This makes it easy to use Expose.</appendix>
@@ -136,7 +139,7 @@
         <identifier>option.expose_mode_f_to_optiontab</identifier>
       </item>
     </item>
-    <include path="expose_mode2/expose_mode2.xml" />
+
     <item>
       <name>Cmd+Tab Mode</name>
       <item>
