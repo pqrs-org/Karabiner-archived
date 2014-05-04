@@ -72,7 +72,7 @@
       <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
       <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
       <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
-      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
       <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
       <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
       <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Xcode</autogen>
