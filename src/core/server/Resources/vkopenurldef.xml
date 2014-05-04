@@ -144,6 +144,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_iPhoneSimulator</name>
+    <url type="file">/Applications/Xcode.app/Contents/Applications/iPhone Simulator.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_iTunes</name>
     <url type="file">/Applications/iTunes.app</url>
   </vkopenurldef>
