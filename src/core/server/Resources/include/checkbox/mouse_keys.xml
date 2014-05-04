@@ -104,7 +104,7 @@
       <!-- click -->
       <autogen>__KeyToKey__ KeyCode::V, PointingButton::LEFT</autogen>
       <autogen>__KeyToKey__ KeyCode::B, PointingButton::MIDDLE</autogen>
-      <autogen>__KeyToKey__ KeyCode::M, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::N, PointingButton::RIGHT</autogen>
 
       <!-- warp cursor position -->
       <autogen>__KeyToKey__ KeyCode::I, KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center</autogen>
