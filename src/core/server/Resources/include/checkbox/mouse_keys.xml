@@ -37,9 +37,12 @@
       <appendix>* D+F+S+HJKL: High-speed Scroll wheel.</appendix>
       <appendix></appendix>
       <appendix>Click by:</appendix>
-      <appendix>* D+Left command: Left click.</appendix>
-      <appendix>* D+Space: Middle click.</appendix>
-      <appendix>* D+Right command: Right click.</appendix>
+      <appendix>* D+V: Left click.</appendix>
+      <appendix>* D+B: Middle click.</appendix>
+      <appendix>* D+M: Right click.</appendix>
+      <appendix></appendix>
+      <appendix>Warp cursor position:</appendix>
+      <appendix>* D+I: Move mouse cursor to the center of the frontmost app's window.</appendix>
       <identifier>remap.mouse_keys_mode_2</identifier>
       <autogen>
         __KeyOverlaidModifier__
@@ -99,13 +102,12 @@
       <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
 
       <!-- click -->
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, PointingButton::LEFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::SPACE,     PointingButton::MIDDLE</autogen>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_R, PointingButton::RIGHT</autogen>
+      <autogen>__KeyToKey__ KeyCode::V, PointingButton::LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, PointingButton::MIDDLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::M, PointingButton::RIGHT</autogen>
 
-      <!-- For Japanese keyboards -->
-      <autogen>__KeyToKey__ KeyCode::JIS_EISUU, PointingButton::LEFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::JIS_KANA,  PointingButton::RIGHT</autogen>
+      <!-- warp cursor position -->
+      <autogen>__KeyToKey__ KeyCode::I, KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center</autogen>
     </item>
 
     <item><name>──────────────────────────────</name></item>
