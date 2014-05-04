@@ -21,6 +21,7 @@
       <appendix></appendix>
       <appendix>* Activity Monitor: L+A key</appendix>
       <appendix>* Dictionary: L+D key</appendix>
+      <appendix>* Search a selected text by Dictionary: L+Q key</appendix>
       <appendix>* DigitalColor Meter: L+shift+D key</appendix>
       <appendix>* Mail: L+M key</appendix>
       <appendix>* Safari: L+S key</appendix>
@@ -57,6 +58,17 @@
 
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
       <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::Q, ModifierFlag::NONE,
+        KeyCode::C, ModifierFlag::COMMAND_L,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::VK_OPEN_URL_APP_Dictionary,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::V, ModifierFlag::COMMAND_L,
+        Option::NOREPEAT
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
       <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
       <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
