@@ -150,6 +150,16 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>LAUNCHER_MODE_V2_EXTRA</replacementname>
+    <replacementvalue>
+      <![CDATA[
+               <!-- Put your own definition by overwriting in private.xml. -->
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>PC_STYLE_BINDINGS_IGNORE_APPS</replacementname>
     <replacementvalue>
       VIRTUALMACHINE,

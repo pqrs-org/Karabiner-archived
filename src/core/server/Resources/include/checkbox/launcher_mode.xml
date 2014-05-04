@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Launcher Mode</name>
+
+    <item>
+      <name>Launcher Mode v2</name>
+      <appendix>Open apps by shortcut keys.</appendix>
+      <appendix></appendix>
+      <appendix>Usage:</appendix>
+      <appendix></appendix>
+      <appendix>Enable launcher by L key.</appendix>
+      <appendix><![CDATA[  * Open "Activity Monitor" by "L down -> A down -> A up".  ]]></appendix>
+      <appendix><![CDATA[  * Open "TextEdit" by "L down -> E down -> E up".  ]]></appendix>
+      <appendix>And you can open other apps by similar way.</appendix>
+      <appendix></appendix>
+      <appendix>You can also open apps by holding L+A keys down.</appendix>
+      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
+      <appendix></appendix>
+      <appendix>List:</appendix>
+      <appendix></appendix>
+      <appendix>* Activity Monitor: L+A key</appendix>
+      <appendix>* Dictionary: L+D key</appendix>
+      <appendix>* DigitalColor Meter: L+shift+D key</appendix>
+      <appendix>* Mail: L+M key</appendix>
+      <appendix>* Safari: L+S key</appendix>
+      <appendix>* Stickies: L+shift+S key</appendix>
+      <appendix>* Terminal: L+T key</appendix>
+      <appendix>* TextEdit: L+shift+T key</appendix>
+      <appendix>* Xcode: L+X key</appendix>
+      <appendix>* iPhone Simulator: L+shift+X key</appendix>
+
+      <identifier>remap.launcher_mode_v2</identifier>
+
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::L, ModifierFlag::NONE,
+
+        @begin
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_launcher_mode_v2,
+        @end
+
+        @begin
+        KeyCode::L,
+        @end
+      </autogen>
+    </item>
+
+    <item hidden="true">
+      <identifier vk_config="true">notsave.launcher_mode_v2</identifier>
+
+      {{ LAUNCHER_MODE_V2_EXTRA }}
+
+      <autogen>
+        __BlockUntilKeyUp__ KeyCode::L
+      </autogen>
+
+      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
+      <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
+      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Xcode</autogen>
+      <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_iPhoneSimulator</autogen>
+    </item>
+
+  </item>
+</root>

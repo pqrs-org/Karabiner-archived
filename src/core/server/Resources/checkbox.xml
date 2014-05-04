@@ -55,6 +55,7 @@
   <include path="include/checkbox/simultaneouskeypresses.xml" />
   <include path="include/checkbox/thumbsense.xml" />
   <include path="include/checkbox/for_mission_control.xml" />
+  <include path="include/checkbox/launcher_mode.xml" />
 
   <include path="include/checkbox/grenouille.xml" />
   <include path="include/checkbox/asetniop.xml" />
