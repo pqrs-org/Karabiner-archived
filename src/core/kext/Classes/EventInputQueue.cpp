@@ -740,6 +740,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (! iskeydown && RemapClassManager::isTargetEventForBlockUntilKeyUp(front->params)) {
       // Case2
 
+      // Do not call setIgnoreToAllPressingEvents here.
+      //
+      // We do not need to call that here because front->params is already removed from pressingEvents_.
+      // And if multiple __BlockUntilKeyUp__ are enabled,
+      // setIgnoreToAllPressingEvents breaks other __BlockUntilKeyUp__.
+
       // Move up event after down event.
       FromEvent fromEvent(front->params);
       for (Item* p = static_cast<Item*>(blockedQueue_->back()); p; p = static_cast<Item*>(p->getprev())) {
