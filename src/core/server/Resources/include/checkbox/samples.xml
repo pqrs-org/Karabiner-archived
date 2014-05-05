@@ -1111,6 +1111,16 @@
           <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
         </block>
       </item>
+
+      <item>
+        <name>Multiple __BlockUntilKeyUp__</name>
+        <appendix>Input: <![CDATA[  A down -> S down -> A up -> D down -> S up -> D up:  ]]></appendix>
+        <appendix>Output: A, S, D</appendix>
+        <identifier>remap.samples_multiple_BlockUntilKeyUp</identifier>
+        <autogen>__BlockUntilKeyUp__ KeyCode::A</autogen>
+        <autogen>__BlockUntilKeyUp__ KeyCode::S</autogen>
+        <autogen>__BlockUntilKeyUp__ KeyCode::D</autogen>
+      </item>
     </item>
 
     <item>
