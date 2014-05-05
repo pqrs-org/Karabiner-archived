@@ -127,6 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     private:
       static bool isTargetDownEventInBlockedQueue(const Item& front);
       static void endBlocking(void);
+      static void setIgnoreToAllPressingEvents(void);
       static void blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
       class PressingEvent : public List::Item {
