@@ -3,6 +3,7 @@ IGNORE_PASSTHROUGH                      --AUTO--
 
 // For __KeyOverlaidModifier__
 KEYOVERLAIDMODIFIER_REPEAT              --AUTO--
+KEYOVERLAIDMODIFIER_REPEAT_TOKEYS       --AUTO--
 
 // For __SimultaneousKeyPresses__
 SIMULTANEOUSKEYPRESSES_RAW              --AUTO--
