@@ -30,7 +30,11 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       bool isUseSeparator_;
-      bool index_is_holding_;
+      enum IndexType {
+        INDEX_IS_HOLDING,
+        INDEX_IS_NORMAL,
+        INDEX_IS_REPEAT_TOKEYS,
+      } indexType_;
       size_t index_;
       FromEvent fromEvent_;
 
