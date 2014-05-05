@@ -281,12 +281,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
           FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), target_->savedflags_);
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-          target_->keyboardRepeatID_ = KeyboardRepeat::getID();
 
           EventWatcher::set(target_->isAnyEventHappen_);
           (target_->ic_).begin();
 
           if (target_->periodMS_.enabled(PeriodMS::Type::LONG_LONG_PERIOD)) {
+            KeyboardRepeat::cancel();
+            target_->keyboardRepeatID_ = KeyboardRepeat::getID();
             fire_timer_.setTimeoutMS(target_->periodMS_.get(PeriodMS::Type::LONG_LONG_PERIOD));
           }
 
@@ -295,7 +296,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
         case PeriodType::LONG_PERIOD:
         {
-          // If keyboard repeat is canceled while pressing LONG_PERIOD key,
+          // If keyboard repeat cancellation occured while pressing LONG_PERIOD key,
           // we cancel LONG_LONG_PERIOD event.
           bool isKeyboardRepeatCanceled = (target_->keyboardRepeatID_ != KeyboardRepeat::getID());
 
