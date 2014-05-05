@@ -186,6 +186,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         periodMS_.overwrite(mode, type, newval);
       }
 
+      void clearToKeys(KeyToKeyType::Value type) {
+        if (type == KeyToKeyType::END_) return;
+        keytokey_[type].clearToKeys();
+      }
+
     private:
       class PeriodType {
       public:
