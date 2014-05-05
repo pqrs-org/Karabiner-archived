@@ -102,6 +102,20 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
+    void
+    KeyToKey::clearToKeys(void)
+    {
+      if (index_ > 1) {
+        index_ = 1;
+      }
+
+      toKeys_.clear();
+      beforeKeys_.clear();
+      afterKeys_.clear();
+
+      currentToEvent_ = CurrentToEvent::TOKEYS;
+    }
+
     bool
     KeyToKey::remap(RemapParams& remapParams)
     {
