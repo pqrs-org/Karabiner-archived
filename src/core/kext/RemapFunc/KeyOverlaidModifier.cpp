@@ -9,7 +9,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   namespace RemapFunc {
     KeyOverlaidModifier::KeyOverlaidModifier(void) :
       isUseSeparator_(false),
-      index_is_holding_(true),
+      indexType_(INDEX_IS_HOLDING),
       index_(0)
     {
       dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
@@ -37,17 +37,19 @@ namespace org_pqrs_KeyRemap4MacBook {
               break;
 
             default:
-              if (! isUseSeparator_ && index_ >= 2) {
-                index_is_holding_ = false;
+              if (! isUseSeparator_ && index_ >= 2 && indexType_ == INDEX_IS_HOLDING) {
+                indexType_ = INDEX_IS_NORMAL;
               }
 
-              if (index_is_holding_) {
+              if (indexType_ == INDEX_IS_HOLDING) {
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, KeyCode::VK_NONE);
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
-              } else {
+              } else if (indexType_ == INDEX_IS_NORMAL) {
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
+              } else if (indexType_ == INDEX_IS_REPEAT_TOKEYS) {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
               }
               break;
           }
@@ -84,12 +86,14 @@ namespace org_pqrs_KeyRemap4MacBook {
             }
 
             default:
-              if (index_is_holding_) {
+              if (indexType_ == INDEX_IS_HOLDING) {
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
-              } else {
+              } else if (indexType_ == INDEX_IS_NORMAL) {
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
+              } else if (indexType_ == INDEX_IS_REPEAT_TOKEYS) {
+                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
               }
               break;
           }
@@ -101,11 +105,14 @@ namespace org_pqrs_KeyRemap4MacBook {
           Option option(newval);
           if (Option::KEYOVERLAIDMODIFIER_REPEAT == option) {
             dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER_WITH_REPEAT);
+          } else if (Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS == option) {
+            indexType_ = INDEX_IS_REPEAT_TOKEYS;
+            dppkeytokey_.clearToKeys(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD);
           } else if (Option::USE_SEPARATOR == option) {
             isUseSeparator_ = true;
           } else if (Option::SEPARATOR == option) {
-            if (index_ >= 2) {
-              index_is_holding_ = false;
+            if (index_ >= 2 && indexType_ == INDEX_IS_HOLDING) {
+              indexType_ = INDEX_IS_NORMAL;
             }
           } else if (Option::NOREPEAT == option ||
                      Option::KEYTOKEY_BEFORE_KEYDOWN == option ||
