@@ -824,6 +824,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   void
   EventInputQueue::BlockUntilKeyUpHander::setIgnoreToAllPressingEvents(void)
   {
+    if (! pressingEvents_) return;
+
     // Ignore pressingEvents_ from next.
     for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
       p->setIgnore();
