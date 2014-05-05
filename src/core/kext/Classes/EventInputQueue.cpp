@@ -759,6 +759,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     } else if (! iskeydown && isTargetDownEventInBlockedQueue(*front)) {
       // Case 1
 
+      setIgnoreToAllPressingEvents();
+
       blockedQueue_->push_back(new Item(*front));
       goto endBlocking;
     }
@@ -808,20 +810,25 @@ namespace org_pqrs_KeyRemap4MacBook {
         queue_->push_front(new Item(*p));
         blockedQueue_->pop_back();
       }
-
-      // Ignore pressingEvents_ from next doFire.
-      for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
-        p->setIgnore();
-      }
     }
 
     blockingTimeOut_timer_.cancelTimeout();
   }
 
   void
+  EventInputQueue::BlockUntilKeyUpHander::setIgnoreToAllPressingEvents(void)
+  {
+    // Ignore pressingEvents_ from next.
+    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
+      p->setIgnore();
+    }
+  }
+
+  void
   EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender)
   {
     endBlocking();
+    setIgnoreToAllPressingEvents();
     setTimer();
   }
 }
