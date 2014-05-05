@@ -856,6 +856,54 @@
         </autogen>
       </item>
 
+      <item>
+        <name>With Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS</name>
+        <appendix>Change "a" key "abc". (+ repeat tokeys: "123".)</appendix>
+        <appendix>(Send "def" if you press only "a" key.)</appendix>
+        <appendix></appendix>
+        <appendix>Change the right shift key to control-f. (+ repeat tokeys: option-e)</appendix>
+        <appendix>(Send "command-a" if you press only the right shift key.)</appendix>
+        <identifier>remap.samples_keyoverlaidmodifier_reepat_tokeys</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::A,
+
+          @begin
+          <!-- hold 'a' -->
+          KeyCode::A,
+          KeyCode::B,
+          KeyCode::C,
+          @end
+
+          @begin
+          <!-- release 'a' -->
+          KeyCode::D,
+          KeyCode::E,
+          KeyCode::F,
+          @end
+
+          Option::KEYOVERLAIDMODIFIER_REPEAT,
+
+          Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS,
+          @begin
+          KeyCode::KEY_1,
+          KeyCode::KEY_2,
+          KeyCode::KEY_3,
+          @end
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::SHIFT_R,
+          KeyCode::F, ModifierFlag::CONTROL_L,
+          KeyCode::A, ModifierFlag::COMMAND_L,
+
+          Option::KEYOVERLAIDMODIFIER_REPEAT,
+
+          Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS,
+          KeyCode::E, ModifierFlag::OPTION_L,
+        </autogen>
+      </item>
+
     </item>
 
     <item>
