@@ -1117,9 +1117,22 @@
         <appendix>Input: <![CDATA[  A down -> S down -> A up -> D down -> S up -> D up:  ]]></appendix>
         <appendix>Output: A, S, D</appendix>
         <identifier>remap.samples_multiple_BlockUntilKeyUp</identifier>
-        <autogen>__BlockUntilKeyUp__ KeyCode::A</autogen>
-        <autogen>__BlockUntilKeyUp__ KeyCode::S</autogen>
-        <autogen>__BlockUntilKeyUp__ KeyCode::D</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::A, KeyCode::VK_MODIFIER_A, KeyCode::A</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::S, KeyCode::VK_MODIFIER_S, KeyCode::S</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::D, KeyCode::VK_MODIFIER_D, KeyCode::D</autogen>
+
+        <block>
+          <modifier_only>ModifierFlag::A</modifier_only>
+          <autogen>__BlockUntilKeyUp__ KeyCode::A</autogen>
+        </block>
+        <block>
+          <modifier_only>ModifierFlag::S</modifier_only>
+          <autogen>__BlockUntilKeyUp__ KeyCode::S</autogen>
+        </block>
+        <block>
+          <modifier_only>ModifierFlag::D</modifier_only>
+          <autogen>__BlockUntilKeyUp__ KeyCode::D</autogen>
+        </block>
       </item>
     </item>
 
