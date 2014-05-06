@@ -117,7 +117,11 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else if (Option::NOREPEAT == option ||
                      Option::KEYTOKEY_BEFORE_KEYDOWN == option ||
                      Option::KEYTOKEY_AFTER_KEYUP == option) {
-            dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+            if (indexType_ == INDEX_IS_REPEAT_TOKEYS) {
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
+            } else {
+              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+            }
           } else {
             IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%u\n", static_cast<unsigned int>(newval));
           }
@@ -127,7 +131,11 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
         case BRIDGE_DATATYPE_KEYREPEAT:
         {
-          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+          if (indexType_ == INDEX_IS_REPEAT_TOKEYS) {
+            dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
+          } else {
+            dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+          }
           break;
         }
 
