@@ -58,9 +58,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     count_ = 0;
     temporary_count_ = 0;
+    lazy_count_ = 0;
+    lazy_enabled_ = false;
 
     /*
-       preserve lock_count.
+       preserve lock_count and sticky_count_.
 
        FlagStatus::reset is called when NumHeldDownKeys == 0,
        so we need remember the status of CapsLock.
@@ -232,6 +234,8 @@ namespace org_pqrs_KeyRemap4MacBook {
   DEFINE_METHODS(decrease)
   DEFINE_METHODS(temporary_increase)
   DEFINE_METHODS(temporary_decrease)
+  DEFINE_METHODS(lazy_increase)
+  DEFINE_METHODS(lazy_decrease)
 #undef DEFINE_METHODS
 
 #define DEFINE_METHODS(METHOD)                                                                   \
@@ -287,6 +291,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
     updateStatusMessage();
+  }
+
+  void
+  FlagStatus::lazy_enable(void)
+  {
+    for (size_t i = 0; i < item_.size(); ++i) {
+      item_[i].lazy_enable();
+    }
   }
 
   void

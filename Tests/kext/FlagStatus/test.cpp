@@ -309,6 +309,49 @@ TEST(FlagStatus, sticky_clear) {
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 }
 
+TEST(FlagStatus, lazy_increase) {
+  FlagStatus flagStatus;
+
+  // lazy_enable will be ignored when lazy_count_ == 0
+  flagStatus.lazy_enable();
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  // +1 (total 1)
+  flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  // +0 (total 1)
+  flagStatus.lazy_enable();
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+
+  // -1 (total 0) lazy modifier is disabled when lazy_count_ == 0.
+  flagStatus.lazy_decrease(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  // +1 (total 1)
+  flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  // +2 (total 2)
+  flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  // +0 (total 2)
+  flagStatus.lazy_enable();
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+
+  // -1 (total 1)
+  flagStatus.lazy_decrease(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+
+  // => 0
+  flagStatus.reset();
+
+  // +1 (total 1)
+  flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+}
+
 TEST(FlagStatus, CapsLock) {
   FlagStatus flagStatus;
 
