@@ -137,8 +137,6 @@
 		34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */; };
 		34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */; };
 		34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */; };
-		34B464FB13A65CE000470265 /* VK_JIS_TEMPORARY.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464F913A65CE000470265 /* VK_JIS_TEMPORARY.cpp */; };
-		34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */; };
 		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
 		34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */; };
@@ -297,8 +295,6 @@
 		34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_BACKSLASH.hpp; path = VirtualKey/VK_JIS_BACKSLASH.hpp; sourceTree = "<group>"; };
 		34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_JIS_YEN.cpp; path = VirtualKey/VK_JIS_YEN.cpp; sourceTree = "<group>"; };
 		34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_YEN.hpp; path = VirtualKey/VK_JIS_YEN.hpp; sourceTree = "<group>"; };
-		34B464F913A65CE000470265 /* VK_JIS_TEMPORARY.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_JIS_TEMPORARY.cpp; path = VirtualKey/VK_JIS_TEMPORARY.cpp; sourceTree = "<group>"; };
-		34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_TEMPORARY.hpp; path = VirtualKey/VK_JIS_TEMPORARY.hpp; sourceTree = "<group>"; };
 		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
 		34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputSourceFilter.cpp; path = RemapFilter/InputSourceFilter.cpp; sourceTree = "<group>"; };
@@ -519,8 +515,6 @@
 				342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */,
 				34B464F113A65AED00470265 /* VK_JIS_BACKSLASH.cpp */,
 				34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */,
-				34B464F913A65CE000470265 /* VK_JIS_TEMPORARY.cpp */,
-				34B464FA13A65CE000470265 /* VK_JIS_TEMPORARY.hpp */,
 				34B464ED13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp */,
 				34B464EE13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp */,
 				34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */,
@@ -630,7 +624,6 @@
 				34779369185B1FA800B3EF06 /* IntervalChecker.hpp in Headers */,
 				34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */,
 				342BC69C18609F5D00578EC5 /* ToEvent.hpp in Headers */,
-				34B464FC13A65CE000470265 /* VK_JIS_TEMPORARY.hpp in Headers */,
 				342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */,
 				340800D813BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp in Headers */,
 				34779358185B1FA800B3EF06 /* ButtonStatus.hpp in Headers */,
@@ -786,7 +779,6 @@
 				34213BB71860A4F7002CBAB9 /* ToEvent.cpp in Sources */,
 				34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */,
 				34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */,
-				34B464FB13A65CE000470265 /* VK_JIS_TEMPORARY.cpp in Sources */,
 				340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */,
 				3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */,
 				34799527140A70B600B85E42 /* VK_CONSUMERKEY.cpp in Sources */,
