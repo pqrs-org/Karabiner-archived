@@ -344,7 +344,7 @@ TEST(FlagStatus, lazy_increase) {
   flagStatus.lazy_decrease(ModifierFlag::SHIFT_L);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-  // => 0
+  // => 0 (lazy modifier is disabled when reset.)
   flagStatus.reset();
 
   // +1 (total 1)
