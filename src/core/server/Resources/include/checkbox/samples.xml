@@ -935,6 +935,39 @@
         </autogen>
       </item>
 
+      <item>
+        <name>With DelayUntilRepeat,KeyRepeat</name>
+        <appendix>Change "a" key "abc". (+ repeat tokeys: "1".)</appendix>
+        <appendix>(Send "def" if you press only "a" key.)</appendix>
+        <appendix>(with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <identifier>remap.samples_keyoverlaidmodifier_delayuntilrepeat</identifier>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::A,
+
+          @begin
+          <!-- hold 'a' -->
+          KeyCode::A,
+          KeyCode::B,
+          KeyCode::C,
+          @end
+
+          @begin
+          <!-- release 'a' -->
+          KeyCode::D,
+          KeyCode::E,
+          KeyCode::F,
+          @end
+
+          Option::KEYOVERLAIDMODIFIER_REPEAT,
+
+          Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS,
+          KeyCode::KEY_1,
+          DelayUntilRepeat::RawValue::0,
+          KeyRepeat::RawValue::0,
+        </autogen>
+      </item>
+
     </item>
 
     <item>
