@@ -48,6 +48,7 @@ Since 9.3.0
     * v9.3.60: You can add your own modifiers by &lt;modifierdef&gt;.
      [Usage of &lt;modifierdef&gt;.](https://pqrs.org/macosx/keyremap4macbook/xml.html.en#modifier)
     * v9.3.69: Added \_\_BlockUntilKeyUp\_\_. (\_\_KeyUpEventToKey\_\_ is removed.)
+    * v9.3.76: Added Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS.
 
 Version 9.3.0
 -------------
