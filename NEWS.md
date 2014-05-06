@@ -1,6 +1,9 @@
 Since 9.3.0
 -----------
 
+* Incompatible changes:
+    * v9.3.81: KeyCode::VK\_JIS\_TEMPORARY_* are removed.<br />
+      Please use &lt;inputsource\_filter&gt;, KeyCode::JIS\_EISUU and KeyCode::JIS\_KANA instead.
 * v9.3.24: A command line utility "warp-mouse-cursor-position" has been added.<br />
   Settings which use this utility have been added, too.<br />
   For example, this setting allows you to move mouse cursor by tapping fn key:
