@@ -193,5 +193,15 @@
         @end
       </autogen>
     </item>
+    <item>
+      <name>Simultaneous Key Presses [Backquote(`)+1] to Escape</name>
+      <identifier>remap.simultaneouskeypresses_backquote_1_to_escape</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::BACKQUOTE, KeyCode::KEY_1, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>Simultaneous Key Presses [Equal(=)+Delete] to Forward Delete</name>
+      <identifier>remap.simultaneouskeypresses_equal_delete_to_forward_delete</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::EQUAL, KeyCode::DELETE, KeyCode::FORWARD_DELETE</autogen>
+    </item>
   </item>
 </root>
