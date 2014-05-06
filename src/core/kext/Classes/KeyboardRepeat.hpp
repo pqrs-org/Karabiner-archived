@@ -58,6 +58,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_add_downup(Flags flags,
                                      ConsumerKeyCode key);
 
+    static void primitive_add(const Params_KeyboardEventCallBack& params) {
+      primitive_add(params.eventType, params.flags, params.key, params.keyboardType, Item::TYPE_NORMAL);
+    }
     static void primitive_add(EventType eventType,
                               Flags flags,
                               ConsumerKeyCode key);
