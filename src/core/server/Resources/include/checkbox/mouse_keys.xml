@@ -29,11 +29,11 @@
       <appendix>The hjkl keys also act as mouse keys when you hold d+hjkl keys down.</appendix>
       <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
       <appendix></appendix>
-      <appendix>Use F key to enable scroll.</appendix>
-      <appendix>* D+F+HJKL: Scroll wheel.</appendix>
+      <appendix>Use S key to enable scroll. ("S"croll)</appendix>
+      <appendix>* D+S+HJKL: Scroll wheel.</appendix>
       <appendix></appendix>
-      <appendix>Use S key to increase speed.</appendix>
-      <appendix>* D+S+HJKL: High-speed movement.</appendix>
+      <appendix>Use F key to increase speed. ("F"ast)</appendix>
+      <appendix>* D+F+HJKL: High-speed movement.</appendix>
       <appendix>* D+F+S+HJKL: High-speed Scroll wheel.</appendix>
       <appendix></appendix>
       <appendix>Click by:</appendix>
@@ -98,8 +98,8 @@
       <autogen>__KeyToKey__ KeyCode::L, KeyCode::VK_MOUSEKEY_RIGHT</autogen>
 
       <!-- other -->
-      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MODIFIER_MOUSE_KEYS_MODE_2_SCROLL</autogen>
-      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_MODIFIER_MOUSE_KEYS_MODE_2_SCROLL</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, KeyCode::VK_MOUSEKEY_HIGHSPEED</autogen>
 
       <!-- click -->
       <autogen>__KeyToKey__ KeyCode::V, PointingButton::LEFT</autogen>
