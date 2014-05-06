@@ -32,6 +32,27 @@
   </item>
 
   <item>
+    <name>Enable at only Thunderbird</name>
+    <item>
+      <name>Next Tab and Previous Tab by command-shift-[ and command-shift-]</name>
+      <identifier>remap.app_thunderbird_tab</identifier>
+      <only>THUNDERBIRD</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        <!-- command-option-left arrow -->
+        KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        <!-- command-option-right arrow -->
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::OPTION_L
+      </autogen>
+    </item>
+  </item>
+
+  <item>
     <name>Enable at only Firefox/Thunderbird</name>
     <item>
       <name>Fix Home/End</name>
