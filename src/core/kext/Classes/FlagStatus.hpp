@@ -16,7 +16,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         count_(0),
         temporary_count_(0),
         lock_count_(0),
-        sticky_count_(0)
+        sticky_count_(0),
+        lazy_count_(0),
+        lazy_enabled_(false)
       {}
 
     private:
@@ -25,7 +27,13 @@ namespace org_pqrs_KeyRemap4MacBook {
       void set(KeyCode key, Flags flags);
 
       void reset(void);
-      int sum(void) const { return count_ + temporary_count_ + lock_count_ + sticky_count_; }
+      int sum(void) const {
+        int sum = count_ + temporary_count_ + lock_count_ + sticky_count_;
+        if (lazy_enabled_) {
+          sum += lazy_count_;
+        }
+        return sum;
+      }
 
       void increase(void);
       void decrease(void);
@@ -37,6 +45,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       void sticky_increase(void) { sticky_count_ = 1; }
       void sticky_decrease(void) { sticky_count_ = 0; }
       void sticky_toggle(void) { sticky_count_ = ! sticky_count_; }
+      void lazy_increase(void) { ++lazy_count_; }
+      void lazy_decrease(void) {
+        --lazy_count_;
+        if (lazy_count_ == 0) {
+          lazy_enabled_ = false;
+        }
+      }
+      void lazy_enable(void) {
+        if (lazy_count_ > 0) {
+          lazy_enabled_ = true;
+        }
+      }
 
       ModifierFlag flag_;
       int count_;
@@ -45,6 +65,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       int lock_count_; // store remapped lock status. (CapsLock, FN lock, ...)
 
       int sticky_count_;
+
+      int lazy_count_;
+      bool lazy_enabled_;
     };
     DECLARE_VECTOR(Item);
 
@@ -124,10 +147,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     DECLARE_METHODS(sticky_increase)
     DECLARE_METHODS(sticky_decrease)
     DECLARE_METHODS(sticky_toggle)
+    DECLARE_METHODS(lazy_increase)
+    DECLARE_METHODS(lazy_decrease)
 #undef DECLARE_METHODS
 
     void sticky_clear(void);
     void lock_clear(void);
+    void lazy_enable(void);
 
     static FlagStatus& globalFlagStatus(void);
 
