@@ -516,4 +516,9 @@
     <equal>net.java.openjdk.cmd</equal>
   </appdef>
 
+  <appdef>
+    <appname>Atom</appname>
+    <equal>com.github.atom</equal>
+  </appdef>
+
 </root>
