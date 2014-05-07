@@ -36,7 +36,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     class FireConsumer {
     public:
       static void fire(const Params_KeyboardSpecialEventCallback& params);
-      static void fire_downup(Flags flags, ConsumerKeyCode key);
     };
 
     class FireRelativePointer {
