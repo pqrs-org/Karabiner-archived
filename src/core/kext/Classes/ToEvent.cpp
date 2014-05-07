@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  ToEvent::fire_downup(Flags flags, bool add_to_keyrepeat)
+  ToEvent::fire_downup(bool add_to_keyrepeat)
   {
     switch (type_) {
       case Type::NONE:
@@ -83,16 +83,53 @@ namespace org_pqrs_KeyRemap4MacBook {
       case Type::KEY:
       {
         KeyboardType keyboardType = CommonData::getcurrent_keyboardType();
+        ModifierFlag f = key_.getModifierFlag();
 
-        EventOutputQueue::FireKey::fire_downup(flags, key_, keyboardType);
-        if (add_to_keyrepeat) {
-          KeyboardRepeat::primitive_add_downup(flags, key_, keyboardType);
+#define CALL_FIREKEY_FIRE(ptr)             \
+  if (ptr) {                               \
+    EventOutputQueue::FireKey::fire(*ptr); \
+    if (add_to_keyrepeat) {                \
+      KeyboardRepeat::primitive_add(*ptr); \
+    }                                      \
+  }                                        \
+
+        if (f != ModifierFlag::ZERO) {
+          {
+            FlagStatus::globalFlagStatus().increase(f);
+            Flags flags = FlagStatus::globalFlagStatus().makeFlags();
+            Params_KeyboardEventCallBack::auto_ptr ptr(
+              Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key_, keyboardType, false));
+            CALL_FIREKEY_FIRE(ptr);
+          }
+          {
+            FlagStatus::globalFlagStatus().decrease(f);
+            Flags flags = FlagStatus::globalFlagStatus().makeFlags();
+            Params_KeyboardEventCallBack::auto_ptr ptr(
+              Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key_, keyboardType, false));
+            CALL_FIREKEY_FIRE(ptr);
+          }
+        } else {
+          Flags flags = FlagStatus::globalFlagStatus().makeFlags();
+          {
+            Params_KeyboardEventCallBack::auto_ptr ptr(
+              Params_KeyboardEventCallBack::alloc(EventType::DOWN, flags, key_, keyboardType, false));
+            CALL_FIREKEY_FIRE(ptr);
+          }
+          {
+            Params_KeyboardEventCallBack::auto_ptr ptr(
+              Params_KeyboardEventCallBack::alloc(EventType::UP, flags, key_, keyboardType, false));
+            CALL_FIREKEY_FIRE(ptr);
+          }
         }
+
+#undef CALL_FIREKEY_FIRE
+
         break;
       }
 
       case Type::CONSUMER_KEY:
       {
+        Flags flags = FlagStatus::globalFlagStatus().makeFlags();
         EventOutputQueue::FireConsumer::fire_downup(flags, consumer_);
         if (add_to_keyrepeat) {
           KeyboardRepeat::primitive_add(EventType::DOWN, flags, consumer_);
@@ -103,8 +140,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       case Type::POINTING_BUTTON:
       {
-        FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), flags);
-
         for (int i = 0; i < 2; ++i) {
           if (i == 0) {
             ButtonStatus::increase(button_);

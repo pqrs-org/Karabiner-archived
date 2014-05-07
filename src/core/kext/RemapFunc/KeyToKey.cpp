@@ -159,8 +159,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         for (size_t i = 0; i < beforeKeys_.size(); ++i) {
           FlagStatus::globalFlagStatus().temporary_increase(beforeKeys_[i].getModifierFlags());
 
-          Flags f = FlagStatus::globalFlagStatus().makeFlags();
-          beforeKeys_[i].fire_downup(f);
+          beforeKeys_[i].fire_downup();
 
           FlagStatus::globalFlagStatus().temporary_decrease(beforeKeys_[i].getModifierFlags());
         }
@@ -236,9 +235,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             for (size_t i = 0; i < size; ++i) {
               FlagStatus::globalFlagStatus().temporary_increase(toKeys_[i].getModifierFlags());
 
-              Flags f = FlagStatus::globalFlagStatus().makeFlags();
-
-              toKeys_[i].fire_downup(f, true);
+              toKeys_[i].fire_downup(true);
 
               FlagStatus::globalFlagStatus().temporary_decrease(toKeys_[i].getModifierFlags());
             }
@@ -307,8 +304,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           for (size_t i = 0; i < afterKeys_.size(); ++i) {
             FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getModifierFlags());
 
-            Flags f = FlagStatus::globalFlagStatus().makeFlags();
-            afterKeys_[i].fire_downup(f);
+            afterKeys_[i].fire_downup();
 
             FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getModifierFlags());
           }

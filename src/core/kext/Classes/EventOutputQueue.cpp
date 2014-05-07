@@ -236,51 +236,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
-  void
-  EventOutputQueue::FireKey::fire_downup(Flags flags, KeyCode key, KeyboardType keyboardType)
-  {
-    ModifierFlag f = key.getModifierFlag();
-
-    if (f != ModifierFlag::ZERO) {
-      FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), flags);
-
-      // We operate FlagStatus for the case "key == KeyCode::CAPSLOCK".
-      FlagStatus::globalFlagStatus().increase(f);
-      {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY,
-                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
-                                                                                       key,
-                                                                                       keyboardType,
-                                                                                       false));
-        if (! ptr) return;
-        FireKey::fire(*ptr);
-      }
-
-      FlagStatus::globalFlagStatus().decrease(f);
-      {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY,
-                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
-                                                                                       key,
-                                                                                       keyboardType,
-                                                                                       false));
-        if (! ptr) return;
-        FireKey::fire(*ptr);
-      }
-
-    } else {
-      {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::DOWN, flags, key, keyboardType, false));
-        if (! ptr) return;
-        FireKey::fire(*ptr);
-      }
-      {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, flags, key, keyboardType, false));
-        if (! ptr) return;
-        FireKey::fire(*ptr);
-      }
-    }
-  }
-
   // ======================================================================
   void
   EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params)
