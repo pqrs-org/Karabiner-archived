@@ -31,7 +31,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     class FireKey {
     public:
       static void fire(const Params_KeyboardEventCallBack& params);
-      static void fire_downup(Flags flags, KeyCode key, KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
     };
 
     class FireConsumer {

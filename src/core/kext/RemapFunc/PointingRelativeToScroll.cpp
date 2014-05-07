@@ -188,7 +188,7 @@ namespace org_pqrs_KeyRemap4MacBook {
                 keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
               } else {
-                toEvent_.fire_downup(FlagStatus::globalFlagStatus().makeFlags());
+                toEvent_.fire_downup();
               }
             }
           }
