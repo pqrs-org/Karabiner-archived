@@ -52,14 +52,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // --------------------------------------------------
     // primitive operations.
-    static void primitive_add_downup(Flags flags,
-                                     KeyCode key,
-                                     KeyboardType keyboardType);
-    static void primitive_add_downup(Flags flags,
-                                     ConsumerKeyCode key);
-
     static void primitive_add(const Params_KeyboardEventCallBack& params) {
-      primitive_add(params.eventType, params.flags, params.key, params.keyboardType, Item::TYPE_NORMAL);
+      primitive_add(params.eventType, params.flags, params.key, params.keyboardType);
     }
     static void primitive_add(EventType eventType,
                               Flags flags,
@@ -71,18 +65,12 @@ namespace org_pqrs_KeyRemap4MacBook {
   private:
     class Item : public List::Item {
     public:
-      enum Type {
-        TYPE_NORMAL,
-        TYPE_DOWNUP,
-      };
-
-      Item(const Params_KeyboardEventCallBack& p, Type t)        : params(p), type(t) {}
-      Item(const Params_KeyboardSpecialEventCallback& p, Type t) : params(p), type(t) {}
-      Item(const Params_RelativePointerEventCallback& p, Type t) : params(p), type(t) {}
+      Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
+      Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
+      Item(const Params_RelativePointerEventCallback& p) : params(p) {}
       virtual ~Item(void) {}
 
       ParamsUnion params;
-      Type type;
     };
 
     // ------------------------------------------------------------
@@ -91,13 +79,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void primitive_add(EventType eventType,
                               Flags flags,
                               KeyCode key,
-                              KeyboardType keyboardType,
-                              Item::Type type);
-
-    static void primitive_add(EventType eventType,
-                              Flags flags,
-                              ConsumerKeyCode key,
-                              Item::Type type);
+                              KeyboardType keyboardType);
 
     static int succID(void) {
       ++id_;
