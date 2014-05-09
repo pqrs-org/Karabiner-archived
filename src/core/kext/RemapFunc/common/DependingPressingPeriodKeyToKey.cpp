@@ -123,7 +123,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       isAnyEventHappen_(false),
       keyboardRepeatID_(0),
       interruptibleByScrollWheel_(true)
-    {}
+    {
+      for (size_t i = 0; i < KeyToKeyType::END_; ++i) {
+        keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
+      }
+    }
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)
     {
@@ -163,9 +167,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         bool iskeydown = false;
         if (remapParams.paramsUnion.iskeydown(iskeydown)) {
-          bool result = keytokey_[KeyToKeyType::FROM].remap(remapParams);
-
-          if (! result) {
+          if (remapParams.isremapped ||
+              ! fromEvent_.changePressingState(remapParams.paramsUnion,
+                                               FlagStatus::globalFlagStatus(),
+                                               fromModifierFlags_)) {
             if (iskeydown) {
               // another key is pressed.
               dokeydown();
@@ -173,20 +178,25 @@ namespace org_pqrs_KeyRemap4MacBook {
             return false;
           }
 
+          remapParams.isremapped = true;
+
           if (iskeydown) {
             target_ = this;
             active_ = true;
             periodtype_ = PeriodType::NONE;
 
-            // clear temporary_flags (KeyToKeyType::FROM's flags)
-            FlagStatus::globalFlagStatus().set();
-            savedflags_ = FlagStatus::globalFlagStatus().makeFlags();
+            FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
+            FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
             fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
 
           } else {
+            FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
+
             dokeydown();
             dokeyup();
+
+            FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
           }
           return true;
         }
@@ -210,7 +220,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           periodtype_ = PeriodType::SHORT_PERIOD;
 
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), savedflags_);
           keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
 
           break;
@@ -245,7 +254,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
             if (! isAnyEventHappen_ &&
                 ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
-              FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), savedflags_);
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
             }
@@ -267,6 +275,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
 
       EventWatcher::unset(isAnyEventHappen_);
+      // FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag(), fromModifierFlags_);
     }
 
     void
@@ -279,7 +288,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           target_->periodtype_ = PeriodType::LONG_PERIOD;
 
-          FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), target_->savedflags_);
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
 
           EventWatcher::set(target_->isAnyEventHappen_);
@@ -308,7 +316,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           } else {
             target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
 
-            FlagStatus::ScopedTemporaryFlagsChanger stfc(FlagStatus::globalFlagStatus(), target_->savedflags_);
             (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           }
 
