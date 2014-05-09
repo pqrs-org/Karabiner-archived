@@ -71,52 +71,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
     DECLARE_VECTOR(Item);
 
-    class ScopedTemporaryFlagsChanger {
-    public:
-      ScopedTemporaryFlagsChanger(FlagStatus& flagStatus, Flags toFlags) : flagStatus_(flagStatus) {
-        for (size_t i = 0; i < flagStatus_.item_.size(); ++i) {
-          count_.push_back(0);
-
-          // ----------------------------------------
-          // reset flag
-          while (flagStatus_.item_[i].sum() < 0) {
-            flagStatus_.item_[i].temporary_increase();
-            ++(count_.back());
-          }
-          while (flagStatus_.item_[i].sum() > 0) {
-            flagStatus_.item_[i].temporary_decrease();
-            --(count_.back());
-          }
-
-          // ----------------------------------------
-          // set a flag
-          ModifierFlag flag = flagStatus_.getFlag(i);
-          if (toFlags.isOn(flag)) {
-            flagStatus_.item_[i].temporary_increase();
-            ++(count_.back());
-          }
-        }
-      }
-      ~ScopedTemporaryFlagsChanger(void) {
-        for (size_t i = 0; i < flagStatus_.item_.size(); ++i) {
-          if (i >= count_.size()) break;
-
-          while (count_[i] < 0) {
-            flagStatus_.item_[i].temporary_increase();
-            ++(count_[i]);
-          }
-          while (count_[i] > 0) {
-            flagStatus_.item_[i].temporary_decrease();
-            --(count_[i]);
-          }
-        }
-      }
-
-    private:
-      FlagStatus& flagStatus_;
-      Vector_int count_;
-    };
-
     FlagStatus(void);
     FlagStatus(Flags flags);
 
