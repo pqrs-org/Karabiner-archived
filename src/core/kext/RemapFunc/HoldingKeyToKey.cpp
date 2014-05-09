@@ -23,15 +23,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM,         datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, KeyCode::VK_PSEUDO_KEY);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  KeyCode::VK_PSEUDO_KEY);
               fromEvent_ = FromEvent(datatype, newval);
+              dppkeytokey_.setFromEvent(fromEvent_);
               break;
 
-            case 1:
-              // pass-through (== no break)
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, KeyCode::VK_NONE);
             default:
               if (datatype == BRIDGE_DATATYPE_KEYCODE &&
                   KeyCode::VK_NONE == KeyCode(newval) &&
@@ -68,17 +63,9 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             case 1:
             {
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, datatype, newval);
-
-              bool skip = false;
-              if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG &&
-                  fromEvent_.getModifierFlag() == ModifierFlag(newval)) {
-                skip = true;
-              }
-
-              if (! skip) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
+              if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG ||
+                  datatype == BRIDGE_DATATYPE_MODIFIERFLAGS_END) {
+                dppkeytokey_.addFromModifierFlags(datatype, newval);
               }
               break;
             }

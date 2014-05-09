@@ -76,7 +76,6 @@ namespace org_pqrs_KeyRemap4MacBook {
       class KeyToKeyType {
       public:
         enum Value {
-          FROM,
           SHORT_PERIOD,             // (1) in above description.
           LONG_PERIOD,              // (2) in above description.
           LONG_LONG_PERIOD,         // (3) in above description.
@@ -130,7 +129,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool remap(RemapParams& remapParams);
 
-      // About trick of KeyToKeyType::FROM's ModifierFlag.
+      // About trick of fromModifierFlags_.
       // Let's consider the following KeyOverlaidModifier.
       //
       // __KeyOverlaidModifier__ KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::CONTROL_L, KeyCode::SPACE
@@ -138,14 +137,11 @@ namespace org_pqrs_KeyRemap4MacBook {
       // We separate the keys to KeyToKeyType::*.
       //
       // ------------------------------------------------------------
-      // "KeyCode::A, ModifierFlag::SHIFT_L" -> KeyToKeyType::FROM
+      // "KeyCode::A, ModifierFlag::SHIFT_L" -> fromEvent_, fromModifierFlags_
       // "KeyCode::CONTROL_L"                -> KeyToKeyType::LONG_PERIO
       // "KeyCode::SPACE"                    -> KeyToKeyType::SHORT_PERIOD,
       //                                        KeyToKeyType::PRESSING_TARGET_KEY_ONLY
       // --------------------
-      // ** KeyToKeyType::FROM **
-      //   KeyCode::A, ModifierFlag::SHIFT_L to KeyCode::VK_NONE
-      //
       // ** KeyToKeyType::LONG_PERIO **
       //   KeyCode::VK_PSEUDO_KEY            to KeyCode::CONTROL_L
       //
@@ -153,26 +149,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       //   KeyCode::VK_PSEUDO_KEY            to KeyCode::SPACE
       // ------------------------------------------------------------
       //
-      //
-      // However, in this case, ModifierFlag::SHIFT_L of KeyToKeyType::FROM is temporary flags
-      // because toKey of KeyToKeyType::FROM is VK_NONE (== not modifier).
-      // So, ModifierFlag::SHIFT_L will be restored if other keys are pressed.
-      //
-      // Therefore, we use a trick around KeyToKeyType::FROM's ModifierFlag.
-      //
-      // --------------------
-      // ** KeyToKeyType::FROM **
-      //   KeyCode::A,             ModifierFlag::SHIFT_L to KeyCode::VK_NONE
-      //
-      // ** KeyToKeyType::LONG_PERIO **
-      //   KeyCode::VK_PSEUDO_KEY, ModifierFlag::SHIFT_L to KeyCode::CONTROL_L
-      //
-      // ** KeyToKeyType::SHORT_PERIOD **
-      //   KeyCode::VK_PSEUDO_KEY, ModifierFlag::SHIFT_L to KeyCode::SPACE
-      // ------------------------------------------------------------
-      //
-      // Then, ModifierFlag::SHIFT_L is treated properly.
-      //
+      void setFromEvent(const FromEvent& v) { fromEvent_ = v; }
+      void addFromModifierFlags(AddDataType datatype, AddValue newval) {
+        ModifierFlag modifierFlag(datatype, newval);
+        fromModifierFlags_.push_back(modifierFlag);
+        if (fromEvent_.getModifierFlag() != modifierFlag) {
+          pureFromModifierFlags_.push_back(modifierFlag);
+        }
+      }
+
       void add(KeyToKeyType::Value type, AddDataType datatype, AddValue newval);
       void add(KeyToKeyType::Value type, KeyCode newval) {
         add(type, AddDataType(BRIDGE_DATATYPE_KEYCODE), AddValue(newval.get()));
@@ -209,10 +194,12 @@ namespace org_pqrs_KeyRemap4MacBook {
       static TimerWrapper fire_timer_;
       static DependingPressingPeriodKeyToKey* target_;
 
-      Flags savedflags_;
-
       bool active_;
       PeriodType::Value periodtype_;
+
+      FromEvent fromEvent_;
+      Vector_ModifierFlag fromModifierFlags_;
+      Vector_ModifierFlag pureFromModifierFlags_; // fromModifierFlags_ - fromEvent_.getModifierFlag()
 
       KeyToKey keytokey_[KeyToKeyType::END_];
       PeriodMS periodMS_;

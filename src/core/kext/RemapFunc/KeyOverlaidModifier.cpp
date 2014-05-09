@@ -28,12 +28,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         {
           switch (index_) {
             case 0:
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, datatype, newval);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             KeyCode::VK_PSEUDO_KEY);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,              KeyCode::VK_PSEUDO_KEY);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         KeyCode::VK_PSEUDO_KEY);
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, KeyCode::VK_PSEUDO_KEY);
               fromEvent_ = FromEvent(datatype, newval);
+              dppkeytokey_.setFromEvent(fromEvent_);
               break;
 
             default:
@@ -42,7 +38,6 @@ namespace org_pqrs_KeyRemap4MacBook {
               }
 
               if (indexType_ == INDEX_IS_HOLDING) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, KeyCode::VK_NONE);
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
               } else if (indexType_ == INDEX_IS_NORMAL) {
                 dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
@@ -68,20 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
             case 1:
             {
-              dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::FROM, datatype, newval);
-
-              bool skip = false;
-              if (datatype == BRIDGE_DATATYPE_MODIFIERFLAG &&
-                  fromEvent_.getModifierFlag() == ModifierFlag(newval)) {
-                skip = true;
-              }
-
-              if (! skip) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,              datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
-              }
+              dppkeytokey_.addFromModifierFlags(datatype, newval);
               break;
             }
 

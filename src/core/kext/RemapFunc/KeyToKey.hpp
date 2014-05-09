@@ -57,7 +57,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       FromEvent fromEvent_;
       Vector_ModifierFlag fromModifierFlags_;
-      Vector_ModifierFlag pureFromModifierFlags_; // fromModifierFlags_ - fromEvent_.getModifierFlag() - ModifierFlag::NONE.
+      Vector_ModifierFlag pureFromModifierFlags_; // fromModifierFlags_ - fromEvent_.getModifierFlag()
 
       Vector_ToEvent toKeys_;
       Vector_ToEvent beforeKeys_;
