@@ -4,6 +4,7 @@
     <name>For Ukrainian</name>
     <item>
       <name>Swap и and і</name>
+      <inputsource_only>UKRAINIAN</inputsource_only>
       <identifier>remap.ukrainian_swap_s_b</identifier>
       <autogen>__KeyToKey__ KeyCode::S, KeyCode::B</autogen>
       <autogen>__KeyToKey__ KeyCode::B, KeyCode::S</autogen>
