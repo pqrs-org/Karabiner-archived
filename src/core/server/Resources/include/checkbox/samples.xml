@@ -1252,6 +1252,12 @@
         <identifier>remap.samples_dropscrollwheel_horizontal_scroll</identifier>
         <autogen>__DropScrollWheel__ Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL</autogen>
       </item>
+      <item>
+        <name>Drop momentum scrolling on safari</name>
+        <identifier>remap.samples_dropscrollwheel_momentum_scroll</identifier>
+        <only>SAFARI</only>
+        <autogen>__DropScrollWheel__ Option::DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL</autogen>
+      </item>
     </item>
 
     <item>
