@@ -506,6 +506,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (params->ex_iskeydown) {
             EventWatcher::on();
           }
+          FlagStatus::globalFlagStatus().lazy_set_enable(params->ex_iskeydown);
 
           // ------------------------------------------------------------
           // We must call NumHeldDownKeys after inputqueue. (Not before queuing)
@@ -553,6 +554,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (params->ex_iskeydown) {
             EventWatcher::on();
           }
+          FlagStatus::globalFlagStatus().lazy_set_enable(params->ex_iskeydown);
 
           // ------------------------------------------------------------
           NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
@@ -589,6 +591,7 @@ namespace org_pqrs_KeyRemap4MacBook {
               params->ex_isbuttondown) {
             EventWatcher::on();
           }
+          FlagStatus::globalFlagStatus().lazy_set_enable(true);
 
           // ------------------------------------------------------------
           if (params->ex_button != PointingButton::NONE) {
@@ -609,6 +612,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           // Then release Space, user don't intend to send Space.
           // So, we need to set EventWatcher::on here.
           EventWatcher::on();
+          FlagStatus::globalFlagStatus().lazy_set_enable(true);
 
           Core::remap_ScrollWheelEventCallback(p->params);
         }

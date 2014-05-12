@@ -27,9 +27,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void set(KeyCode key, Flags flags);
 
       void reset(void);
-      int sum(void) const {
+      int sum(bool forceEnableLazy) const {
         int sum = count_ + temporary_count_ + lock_count_ + sticky_count_;
-        if (lazy_enabled_) {
+        if (forceEnableLazy || lazy_enabled_) {
           sum += lazy_count_;
         }
         return sum;
@@ -46,17 +46,8 @@ namespace org_pqrs_KeyRemap4MacBook {
       void sticky_decrease(void) { sticky_count_ = 0; }
       void sticky_toggle(void) { sticky_count_ = ! sticky_count_; }
       void lazy_increase(void) { ++lazy_count_; }
-      void lazy_decrease(void) {
-        --lazy_count_;
-        if (lazy_count_ == 0) {
-          lazy_enabled_ = false;
-        }
-      }
-      void lazy_enable(void) {
-        if (lazy_count_ > 0) {
-          lazy_enabled_ = true;
-        }
-      }
+      void lazy_decrease(void) { --lazy_count_; }
+      void lazy_set_enable(bool newval) { lazy_enabled_ = newval; }
 
       ModifierFlag flag_;
       int count_;
@@ -107,7 +98,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     void sticky_clear(void);
     void lock_clear(void);
-    void lazy_enable(void);
+    void lazy_set_enable(bool newval);
 
     static FlagStatus& globalFlagStatus(void);
 

@@ -147,7 +147,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     for (size_t i = 0; i < item_.size(); ++i) {
       if (item_[i].flag_ == modifierFlag) {
-        return item_[i].sum() > 0;
+        return item_[i].sum(true) > 0;
       }
     }
     return false;
@@ -172,7 +172,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // return false when unspecified modifierflag is pressed.
     if (strict) {
       for (size_t i = 0; i < item_.size(); ++i) {
-        if (item_[i].sum() > 0 &&
+        if (item_[i].sum(true) > 0 &&
             ! modifierFlags.is_include(item_[i].flag_)) {
           return false;
         }
@@ -187,7 +187,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     Flags flags;
     for (size_t i = 0; i < item_.size(); ++i) {
-      if (item_[i].sum() > 0) {
+      if (item_[i].sum(false) > 0) {
         flags.add(item_[i].flag_);
       }
     }
@@ -294,10 +294,10 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FlagStatus::lazy_enable(void)
+  FlagStatus::lazy_set_enable(bool newval)
   {
     for (size_t i = 0; i < item_.size(); ++i) {
-      item_[i].lazy_enable();
+      item_[i].lazy_set_enable(newval);
     }
   }
 

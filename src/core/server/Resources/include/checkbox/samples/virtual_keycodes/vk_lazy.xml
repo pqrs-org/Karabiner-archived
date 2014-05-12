@@ -13,6 +13,13 @@
       <appendix>Use 7 to Lazy Option_R</appendix>
       <appendix>Use 8 to Lazy Shift_L</appendix>
       <appendix>Use 9 to Lazy Shift_R</appendix>
+      <appendix></appendix>
+      <appendix>The lazy modifiers do not send events if they are pressed alone.</appendix>
+      <appendix>And if the lazy left shift key is pressed with the space key, input events are follows:</appendix>
+      <appendix>eventType:keyMod          code:0x3c       name:Shift_R         flags:Shift</appendix>
+      <appendix>eventType:keyDown         code:0x31       name:Space           flags:Shift</appendix>
+      <appendix>eventType:keyMod          code:0x3c       name:Shift_R         flags:</appendix>
+      <appendix>eventType:keyUp           code:0x31       name:Space           flags:</appendix>
       <identifier>remap.samples_vk_lazy</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_LAZY_COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_LAZY_COMMAND_R</autogen>
@@ -29,14 +36,30 @@
       <appendix>Change 1 to A,B,C,VK_LAZY_SHIFT_L</appendix>
       <appendix>Change 2 to Control_L+VK_LAZY_SHIFT_L</appendix>
       <appendix>Change 3 to A,Control_L+VK_LAZY_SHIFT_L</appendix>
+      <appendix></appendix>
+      <appendix>* Change the right command key to the lazy ocmmand key.</appendix>
+      <appendix>* Change "right command-space" to "option-shift".</appendix>
+      <appendix></appendix>
+      <appendix>(The events are follows when you press "right command-space".)</appendix>
+      <appendix>eventType:keyMod          code:0x3a       name:Option_L        flags:Opt</appendix>
+      <appendix>eventType:keyMod          code:0x38       name:Shift_L         flags:Shift Opt</appendix>
+      <appendix>eventType:keyMod          code:0x3a       name:Option_L        flags:Shift</appendix>
+      <appendix>eventType:keyMod          code:0x38       name:Shift_L         flags:</appendix>
       <identifier>remap.samples_vk_lazy_keytokey</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::A, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::VK_LAZY_COMMAND_R</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SPACE, ModifierFlag::COMMAND_R,
+        KeyCode::SHIFT_L, ModifierFlag::OPTION_L,
+      </autogen>
     </item>
     <item>
       <name>KeyOverlaidModifier</name>
-      <appendix>Change 1 to VK_LAZY_SHIFT_L (When type only, send Space)</appendix>
+      <appendix>* Change 1 to VK_LAZY_SHIFT_L (When type only, send Space)</appendix>
       <identifier>remap.samples_vk_lazy_keyoverlaidmodifier</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::SPACE</autogen>
     </item>
