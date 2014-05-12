@@ -16,6 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     private:
       bool dropHorizontalScroll_;
+      bool dropMomentumScroll_;
     };
   }
 }

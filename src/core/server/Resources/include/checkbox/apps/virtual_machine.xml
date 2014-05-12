@@ -3,6 +3,13 @@
   <item>
     <name>Enable at only VMware Fusion, Parallels Desktop, VirtualBox</name>
     <item>
+      <name>Disable momentum scrolling on virtual machine</name>
+      <identifier>remap.app_disable_momentum_scrolling_on_virtual_machines</identifier>
+      <only>VIRTUALMACHINE</only>
+      <autogen>__DropScrollWheel__ Option::DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL</autogen>
+    </item>
+
+    <item>
       <name>Eject to Forward Delete</name>
       <appendix>(Fn+Eject to Eject)</appendix>
       <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>

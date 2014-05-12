@@ -21,6 +21,8 @@ namespace org_pqrs_KeyRemap4MacBook {
           Option option(newval);
           if (Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL == option) {
             dropHorizontalScroll_ = true;
+          } else if (Option::DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL == option) {
+            dropMomentumScroll_ = true;
           } else {
             IOLOG_ERROR("DropScrollWheel::add unknown option:%u\n", static_cast<unsigned int>(newval));
           }
@@ -40,6 +42,18 @@ namespace org_pqrs_KeyRemap4MacBook {
       if (! params) return false;
 
       if (remapParams.isremapped) return false;
+
+      if (dropMomentumScroll_) {
+        // Drop events which have kScrollTypeMomentumContinue.
+
+        // see IOHIDSystem/IOHIDevicePrivateKeys.h about options.
+        const int kScrollTypeMomentumContinue_ = 0x0004;
+        if ((params->options & kScrollTypeMomentumContinue_) == 0) {
+          return false;
+        }
+      }
+
+      // ----------------------------------------
       remapParams.isremapped = true;
 
       if (dropHorizontalScroll_) {
