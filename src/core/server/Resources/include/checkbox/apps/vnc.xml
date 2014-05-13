@@ -11,10 +11,24 @@
     </item>
 
     <item>
+      <name>Change the right command key to the right control key.</name>
+      <identifier>remap.app_vnc_command_r_to_control_r</identifier>
+      <only>VNC</only>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::CONTROL_R</autogen>
+    </item>
+
+    <item>
       <name>Change the left control key to the left command key.</name>
       <identifier>remap.app_vnc_control_l_to_command_l</identifier>
       <only>VNC</only>
       <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>Change the right control key to the right command key.</name>
+      <identifier>remap.app_vnc_control_r_to_command_r</identifier>
+      <only>VNC</only>
+      <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::COMMAND_R</autogen>
     </item>
   </item>
 </root>
