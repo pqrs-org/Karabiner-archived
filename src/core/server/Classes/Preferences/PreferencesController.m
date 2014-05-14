@@ -133,14 +133,9 @@
   [NSApp activateIgnoringOtherApps:YES];
 }
 
-- (IBAction) openWebPage:(id)sender
+- (IBAction) openURL:(id)sender
 {
-  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://pqrs.org/macosx/keyremap4macbook/"]];
-}
-
-- (IBAction) openGitHub:(id)sender
-{
-  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/tekezo/KeyRemap4MacBook/"]];
+  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[sender title]]];
 }
 
 @end

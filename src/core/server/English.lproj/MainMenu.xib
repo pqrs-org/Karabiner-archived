@@ -934,7 +934,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="openWebPage:" target="1181" id="qrI-dA-Z36"/>
+                                                            <action selector="openURL:" target="1181" id="qrI-dA-Z36"/>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="yat-77-L8T">
@@ -945,7 +945,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="openGitHub:" target="1181" id="dWw-gm-YXn"/>
+                                                            <action selector="openURL:" target="1181" id="dWw-gm-YXn"/>
                                                         </connections>
                                                     </button>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="R0Y-fc-sdF">
