@@ -33,11 +33,69 @@
       <name>Option+AEIUO to àèìùò on "U.S. Input Source"</name>
       <identifier>remap.italian_optionAEIUO_grave_us</identifier>
       <inputsource_only>ENGLISH</inputsource_only>
-      <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::A</autogen>
-      <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::E</autogen>
-      <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::I</autogen>
-      <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::U</autogen>
-      <autogen>__KeyToKey__ KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L, KeyCode::O</autogen>
+      <!-- with shift -->
+      <autogen>
+        __KeyToKey__
+        KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+      </autogen>
+
+      <!-- without shift -->
+      <autogen>
+        __KeyToKey__
+        KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::A,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::E,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::I,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::U,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        KeyCode::O,
+      </autogen>
     </item>
     <item>
       <name>KeyPad Comma(,) to Dot(.) on "Italian Pro Input Source"</name>
