@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <root>
+  {{ WINDOWNAMEDEF_REPLACEMENT }}
 
   <windownamedef>
     <name>Gmail</name>

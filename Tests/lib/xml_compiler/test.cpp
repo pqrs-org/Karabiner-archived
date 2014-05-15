@@ -664,7 +664,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name1", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(50): unexpected end of data",
+    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(55): unexpected end of data",
               xml_compiler.get_error_information().get_message());
     EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
@@ -763,6 +763,21 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/appdef_empty_name");
     xml_compiler.reload();
     EXPECT_EQ("Empty <appname> within <appdef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
+
+  // ------------------------------------------------------------
+  // windownamedef.xml
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/windownamedef_no_name");
+    xml_compiler.reload();
+    EXPECT_EQ("No <name> within <windownamedef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/windownamedef_empty_name");
+    xml_compiler.reload();
+    EXPECT_EQ("Empty <name> within <windownamedef>.", std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
 

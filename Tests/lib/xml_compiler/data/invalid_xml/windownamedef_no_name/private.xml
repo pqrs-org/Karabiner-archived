@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>WINDOWNAMEDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+               <windownamedef>
+                 <!--
+                 <name>Gmail</name>
+                 -->
+                 <regex> - Gmail$</regex>
+               </windownamedef>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>

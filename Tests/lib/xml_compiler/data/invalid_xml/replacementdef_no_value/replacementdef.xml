@@ -6,6 +6,11 @@
   </replacementdef>
 
   <replacementdef>
+    <replacementname>WINDOWNAMEDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
     <replacementname>DEVICEPRODUCTDEF_REPLACEMENT</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
