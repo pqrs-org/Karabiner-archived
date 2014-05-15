@@ -48,6 +48,8 @@ enum {
   BRIDGE_FILTERTYPE_NONE,
   BRIDGE_FILTERTYPE_APPLICATION_NOT,
   BRIDGE_FILTERTYPE_APPLICATION_ONLY,
+  BRIDGE_FILTERTYPE_WINDOWNAME_NOT,
+  BRIDGE_FILTERTYPE_WINDOWNAME_ONLY,
   BRIDGE_FILTERTYPE_CONFIG_NOT,
   BRIDGE_FILTERTYPE_CONFIG_ONLY,
   BRIDGE_FILTERTYPE_DEVICE_NOT,
@@ -150,10 +152,11 @@ enum { STATIC_ASSERT__sizeof_BridgeSetConfigOne = 1 / (sizeof(struct BridgeSetCo
 
 struct BridgeWorkSpaceData {
   uint32_t applicationtype;
+  uint32_t windowname;
   uint32_t inputsource;
   uint32_t inputsourcedetail;
 };
-enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 12) };
+enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 16) };
 
 struct BridgeDeviceInformation {
   uint32_t isFound;
