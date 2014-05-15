@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<root>
+
+  <windownamedef>
+    <name>Gmail</name>
+    <regex> - Gmail$</regex>
+  </windownamedef>
+
+</root>

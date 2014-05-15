@@ -75,6 +75,7 @@
 
         // ----------------------------------------
         _windowBounds = windowBounds;
+        _windowName = windowName;
         _bundleIdentifier = bundleIdentifier;
         break;
       }
@@ -84,6 +85,7 @@
       if ([[frontmostApplication bundleIdentifier] isEqualToString:@"com.apple.finder"]) {
         // Desktop
         _windowBounds = [[NSScreen mainScreen] frame];
+        _windowName = nil;
         _bundleIdentifier = [frontmostApplication bundleIdentifier];
       }
     }
