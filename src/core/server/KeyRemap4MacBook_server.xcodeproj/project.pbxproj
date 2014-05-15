@@ -30,6 +30,7 @@
 		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
 		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
+		34738785192589CC00F605BD /* windownamedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34738784192589CC00F605BD /* windownamedef.xml */; };
 		347828F613EE5F3400D50AB1 /* kr4mb_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */; };
 		347828F913EE5F6500D50AB1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
 		347828FA13EE5F6700D50AB1 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 347828F813EE5F6500D50AB1 /* Sparkle.framework */; };
@@ -123,6 +124,7 @@
 		345647411346AE1700FD0C38 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
+		34738784192589CC00F605BD /* windownamedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = windownamedef.xml; path = Resources/windownamedef.xml; sourceTree = "<group>"; };
 		347828F513EE5F3400D50AB1 /* kr4mb_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kr4mb_pub.pem; path = Resources/kr4mb_pub.pem; sourceTree = "<group>"; };
 		347828F813EE5F6500D50AB1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkopenurldef.xml; path = Resources/vkopenurldef.xml; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				343A17D81529A5B400F2E968 /* symbol_map.xml */,
 				34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */,
 				3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */,
+				34738784192589CC00F605BD /* windownamedef.xml */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */,
 				3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */,
 				3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */,
+				34738785192589CC00F605BD /* windownamedef.xml in Resources */,
 				34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */,
 				34192A8618FEC13000AC2390 /* modifierdef.xml in Resources */,
 				34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */,
