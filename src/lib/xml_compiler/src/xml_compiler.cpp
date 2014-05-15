@@ -25,6 +25,7 @@ namespace pqrs {
     symbol_map_.clear();
     modifier_map_.clear();
     app_vector_.clear();
+    window_name_vector_.clear();
     vk_change_inputsource_map_.clear();
     inputsource_vector_.clear();
     vk_open_url_map_.clear();
@@ -113,6 +114,17 @@ namespace pqrs {
         }
 
         loader_wrapper<app_loader>::traverse_system_xml(*this, loader, "appdef.xml");
+      }
+
+      // window_name
+      {
+        window_name_loader loader(*this, symbol_map_, window_name_vector_);
+
+        if (private_xml_ptree_ptr) {
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
+        }
+
+        loader_wrapper<window_name_loader>::traverse_system_xml(*this, loader, "windownamedef.xml");
       }
 
       // device
@@ -307,6 +319,28 @@ namespace pqrs {
 
   notfound:
     // return ApplicationType::UNKNOWN (== 0)
+    return 0;
+  }
+
+  uint32_t
+  xml_compiler::get_windownameid(const std::string& window_name) const
+  {
+    for (const auto& it : window_name_vector_) {
+      if (! it) continue;
+
+      if (it->is_rules_matched(window_name)) {
+        auto name = it->get_name();
+        if (! name) goto notfound;
+
+        auto v = symbol_map_.get_optional(std::string("WindowName::") + *name);
+        if (! v) goto notfound;
+
+        return *v;
+      }
+    }
+
+  notfound:
+    // return WindowName::UNKNOWN (== 0)
     return 0;
   }
 

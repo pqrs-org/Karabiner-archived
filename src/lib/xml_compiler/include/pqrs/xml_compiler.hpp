@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <memory>
+#include <regex>
 #include <stack>
 #include <stdexcept>
 #include <string>
@@ -33,6 +34,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
+#include "pqrs/xml_compiler/detail/window_name.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
 #include "pqrs/xml_compiler/detail/essential_configuration.hpp"
@@ -64,6 +66,7 @@ namespace pqrs {
     boost::optional<const std::string&> get_identifier(int config_index) const;
     boost::optional<int> get_config_index(const std::string& identifier) const;
     uint32_t get_appid(const std::string& application_identifier) const;
+    uint32_t get_windownameid(const std::string& window_name) const;
     bool is_vk_change_inputsource_matched(uint32_t keycode,
                                           const std::string& languagecode,
                                           const std::string& inputsourceid,
@@ -139,6 +142,7 @@ namespace pqrs {
     symbol_map symbol_map_;
     boost::unordered_map<uint32_t, std::shared_ptr<modifier> > modifier_map_;
     std::vector<std::shared_ptr<app> > app_vector_;
+    std::vector<std::shared_ptr<window_name> > window_name_vector_;
     boost::unordered_map<uint32_t, std::shared_ptr<inputsource> > vk_change_inputsource_map_;
     std::vector<std::shared_ptr<inputsource> > inputsource_vector_;
     boost::unordered_map<uint32_t, std::shared_ptr<url> > vk_open_url_map_;

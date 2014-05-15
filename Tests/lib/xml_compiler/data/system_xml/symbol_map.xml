@@ -67,4 +67,6 @@
   <symbol_map type="ScrollWheel" name="LEFT" value="4" />
   <symbol_map type="ScrollWheel" name="RIGHT" value="5" />
   <symbol_map type="ScrollWheel" name="VK__AUTOINDEX__BEGIN__" value="6" />
+  <symbol_map type="WindowName" name="UNKNOWN" value="0" />
+  <symbol_map type="WindowName" name="VK__AUTOINDEX__BEGIN__" value="1" />
 </root>

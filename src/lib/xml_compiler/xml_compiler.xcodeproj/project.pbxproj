@@ -23,6 +23,7 @@
 		3414CA2016C57C7E004329EF /* xml_compiler+url.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3414CA1F16C57C7E004329EF /* xml_compiler+url.cpp */; };
 		342984CF1548473200406438 /* file_path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342984CE1548473200406438 /* file_path.cpp */; };
 		3453732A15FDEFAD00B9C459 /* xml_compiler+inputsource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3453732915FDEFAD00B9C459 /* xml_compiler+inputsource.cpp */; };
+		34B6143D1924DAB400E5F44C /* xml_compiler+window_name.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B6143C1924DAB400E5F44C /* xml_compiler+window_name.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3414CA1F16C57C7E004329EF /* xml_compiler+url.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+url.cpp"; path = "src/xml_compiler+url.cpp"; sourceTree = "<group>"; };
 		342984CE1548473200406438 /* file_path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file_path.cpp; path = src/file_path.cpp; sourceTree = "<group>"; };
 		3453732915FDEFAD00B9C459 /* xml_compiler+inputsource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+inputsource.cpp"; path = "src/xml_compiler+inputsource.cpp"; sourceTree = "<group>"; };
+		34B6143C1924DAB400E5F44C /* xml_compiler+window_name.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "xml_compiler+window_name.cpp"; path = "src/xml_compiler+window_name.cpp"; sourceTree = "<group>"; };
 		34F271B3152CB80700BD77AB /* libxml_compiler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxml_compiler.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 				340D31BF152CB8EF00C88AC5 /* xml_compiler+replacement.cpp */,
 				340D31C0152CB8EF00C88AC5 /* xml_compiler+symbol_map.cpp */,
 				3414CA1F16C57C7E004329EF /* xml_compiler+url.cpp */,
+				34B6143C1924DAB400E5F44C /* xml_compiler+window_name.cpp */,
 				340D31B7152CB8EF00C88AC5 /* xml_compiler.cpp */,
 			);
 			name = Sources;
@@ -159,6 +162,7 @@
 				340D31C2152CB8EF00C88AC5 /* vector.cpp in Sources */,
 				340D31C3152CB8EF00C88AC5 /* xml_compiler.cpp in Sources */,
 				340D31C4152CB8EF00C88AC5 /* xml_compiler+app.cpp in Sources */,
+				34B6143D1924DAB400E5F44C /* xml_compiler+window_name.cpp in Sources */,
 				340D31C5152CB8EF00C88AC5 /* xml_compiler+remapclasses_initialize_vector_loader.cpp in Sources */,
 				340D31C6152CB8EF00C88AC5 /* xml_compiler+bindings_clang.cpp in Sources */,
 				340D31C7152CB8EF00C88AC5 /* xml_compiler+device.cpp in Sources */,
