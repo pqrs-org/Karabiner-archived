@@ -16,6 +16,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         count_(0),
         temporary_count_(0),
         lock_count_(0),
+        negative_lock_count_(0),
         sticky_count_(0),
         lazy_count_(0),
         lazy_enabled_(false)
@@ -28,6 +29,8 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void reset(void);
       int sum(bool forceEnableLazy) const {
+        if (negative_lock_count_ > 0) return 0;
+
         int sum = count_ + temporary_count_ + lock_count_ + sticky_count_;
         if (forceEnableLazy || lazy_enabled_) {
           sum += lazy_count_;
@@ -42,6 +45,9 @@ namespace org_pqrs_KeyRemap4MacBook {
       void lock_increase(void) { lock_count_ = 1; }
       void lock_decrease(void) { lock_count_ = 0; }
       void lock_toggle(void)   { lock_count_ = ! lock_count_; }
+      void negative_lock_increase(void) { negative_lock_count_ = 1; }
+      void negative_lock_decrease(void) { negative_lock_count_ = 0; }
+      void negative_lock_toggle(void)   { negative_lock_count_ = ! lock_count_; }
       void sticky_increase(void) { sticky_count_ = 1; }
       void sticky_decrease(void) { sticky_count_ = 0; }
       void sticky_toggle(void) { sticky_count_ = ! sticky_count_; }
@@ -54,6 +60,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       int temporary_count_;
 
       int lock_count_; // store remapped lock status. (CapsLock, FN lock, ...)
+      int negative_lock_count_;
 
       int sticky_count_;
 
@@ -89,6 +96,9 @@ namespace org_pqrs_KeyRemap4MacBook {
     DECLARE_METHODS(lock_increase)
     DECLARE_METHODS(lock_decrease)
     DECLARE_METHODS(lock_toggle)
+    DECLARE_METHODS(negative_lock_increase)
+    DECLARE_METHODS(negative_lock_decrease)
+    DECLARE_METHODS(negative_lock_toggle)
     DECLARE_METHODS(sticky_increase)
     DECLARE_METHODS(sticky_decrease)
     DECLARE_METHODS(sticky_toggle)

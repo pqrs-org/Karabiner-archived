@@ -19,6 +19,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     count_ = 0;
     temporary_count_ = 0;
     lock_count_ = 0;
+    negative_lock_count_ = 0;
     sticky_count_ = 0;
   }
 
@@ -62,7 +63,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     lazy_enabled_ = false;
 
     /*
-       preserve lock_count and sticky_count_.
+       preserve lock_count, negative_lock_count_ and sticky_count_.
 
        FlagStatus::reset is called when NumHeldDownKeys == 0,
        so we need remember the status of CapsLock.
@@ -268,6 +269,9 @@ namespace org_pqrs_KeyRemap4MacBook {
   DEFINE_METHODS(lock_increase)
   DEFINE_METHODS(lock_decrease)
   DEFINE_METHODS(lock_toggle)
+  DEFINE_METHODS(negative_lock_increase)
+  DEFINE_METHODS(negative_lock_decrease)
+  DEFINE_METHODS(negative_lock_toggle)
   DEFINE_METHODS(sticky_increase)
   DEFINE_METHODS(sticky_decrease)
   DEFINE_METHODS(sticky_toggle)
@@ -307,24 +311,30 @@ namespace org_pqrs_KeyRemap4MacBook {
     CommonData::clear_statusmessage(statusMessageIndex);
 
     for (size_t i = 0; i < item_.size(); ++i) {
-      if (statusMessageIndex == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK) {
-        if (item_[i].lock_count_ <= 0) {
-          continue;
-        }
-      }
-      if (statusMessageIndex == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY) {
-        if (item_[i].sticky_count_ <= 0) {
-          continue;
-        }
-      }
-
       // Skip caps lock.
       if (item_[i].flag_ == ModifierFlag::CAPSLOCK) continue;
 
       const char* name = ModifierName::getName(item_[i].flag_);
       if (name) {
-        CommonData::append_statusmessage(statusMessageIndex, name);
-        CommonData::append_statusmessage(statusMessageIndex, " ");
+        switch (statusMessageIndex) {
+          case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
+            if (item_[i].negative_lock_count_ > 0) {
+              CommonData::append_statusmessage(statusMessageIndex, "-");
+              CommonData::append_statusmessage(statusMessageIndex, name);
+              CommonData::append_statusmessage(statusMessageIndex, " ");
+            } else if (item_[i].lock_count_ > 0) {
+              CommonData::append_statusmessage(statusMessageIndex, name);
+              CommonData::append_statusmessage(statusMessageIndex, " ");
+            }
+            break;
+
+          case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY:
+            if (item_[i].sticky_count_ > 0) {
+              CommonData::append_statusmessage(statusMessageIndex, name);
+              CommonData::append_statusmessage(statusMessageIndex, " ");
+            }
+            break;
+        }
       }
     }
   }
