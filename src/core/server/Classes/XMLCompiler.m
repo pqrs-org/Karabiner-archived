@@ -351,6 +351,13 @@
   }
 }
 
+- (uint32_t) windownameid:(NSString*)windowName
+{
+  @synchronized(self) {
+    return pqrs_xml_compiler_get_windownameid(pqrs_xml_compiler_, [windowName UTF8String]);
+  }
+}
+
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
   languagecode:(NSString*)languagecode
   inputSourceID:(NSString*)inputSourceID
