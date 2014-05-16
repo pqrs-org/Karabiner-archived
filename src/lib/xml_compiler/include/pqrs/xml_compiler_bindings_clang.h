@@ -28,6 +28,7 @@ const char* pqrs_xml_compiler_get_symbol_map_name(const pqrs_xml_compiler* p, co
 const char* pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index);
 int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* identifier);
 uint32_t pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier);
+uint32_t pqrs_xml_compiler_get_windownameid(const pqrs_xml_compiler* p, const char* window_name);
 uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
                                                             uint32_t keycode,
                                                             const char* languagecode,

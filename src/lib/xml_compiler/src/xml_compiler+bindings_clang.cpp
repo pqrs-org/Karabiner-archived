@@ -109,7 +109,20 @@ pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (! xml_compiler) return 0;
 
+  if (! application_identifier) return 0;
+
   return xml_compiler->get_appid(application_identifier);
+}
+
+uint32_t
+pqrs_xml_compiler_get_windownameid(const pqrs_xml_compiler* p, const char* window_name)
+{
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (! xml_compiler) return 0;
+
+  if (! window_name) return 0;
+
+  return xml_compiler->get_windownameid(window_name);
 }
 
 uint32_t
