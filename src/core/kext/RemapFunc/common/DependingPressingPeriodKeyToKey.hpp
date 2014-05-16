@@ -196,6 +196,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       bool active_;
       PeriodType::Value periodtype_;
+      FlagStatus flagStatusWhenKeyPressed_;
 
       FromEvent fromEvent_;
       Vector_ModifierFlag fromModifierFlags_;

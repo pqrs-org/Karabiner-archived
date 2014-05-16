@@ -185,6 +185,22 @@ namespace org_pqrs_KeyRemap4MacBook {
             active_ = true;
             periodtype_ = PeriodType::NONE;
 
+            // We need save FlagStatus at keydown.
+            // For example, "Change Space to Shift_L" is enabled,
+            //
+            // (1) Control_L down
+            // (2) Space down
+            // (3) Control_L up
+            // (4) Space up        -> We should send Control_L+Space here.
+            //
+            // At (4), Control_L is not presssed.
+            // We should send Control_L+Space at (4) because user pressed Space with Control_L at (2).
+            //
+            // Therefore, we need to save FlagStatus at (2).
+            // And restore it at (4).
+            //
+            flagStatusWhenKeyPressed_ = FlagStatus::globalFlagStatus();
+
             FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
             FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
@@ -254,8 +270,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
             if (! isAnyEventHappen_ &&
                 ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
+              // Restore FlagStatus at key down.
+              FlagStatus original;
+              original = FlagStatus::globalFlagStatus();
+              FlagStatus::globalFlagStatus() = flagStatusWhenKeyPressed_;
+
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+
+              // Restore current FlagStatus.
+              FlagStatus::globalFlagStatus() = original;
             }
           }
 
