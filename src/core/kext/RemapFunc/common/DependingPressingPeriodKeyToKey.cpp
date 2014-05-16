@@ -185,6 +185,9 @@ namespace org_pqrs_KeyRemap4MacBook {
             active_ = true;
             periodtype_ = PeriodType::NONE;
 
+            FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
+            FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
+
             // We need save FlagStatus at keydown.
             // For example, "Change Space to Shift_L" is enabled,
             //
@@ -200,9 +203,6 @@ namespace org_pqrs_KeyRemap4MacBook {
             // And restore it at (4).
             //
             flagStatusWhenKeyPressed_ = FlagStatus::globalFlagStatus();
-
-            FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
-            FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
             fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
 
