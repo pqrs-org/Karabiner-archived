@@ -44,4 +44,11 @@
   return [xmlCompiler_ appid:name];
 }
 
+- (unsigned int) getWindowName:(NSString*)name
+{
+  if (! name) return 0;
+
+  return [xmlCompiler_ windownameid:name];
+}
+
 @end
