@@ -39,6 +39,7 @@
 		34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34848265152F54B700A9A3BE /* XMLCompiler.m */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
 		348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 348F120015EA8ADA008A2BDA /* devicelocationdef.xml */; };
+		349120481925E19C0088F2C3 /* FrontmostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 349120471925E19C0088F2C3 /* FrontmostWindow.m */; };
 		34A06A4C11F8792E0085749B /* icon.statusbar.0.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */; };
 		34A06A4D11F8792E0085749B /* icon.statusbar.1.tif in Resources */ = {isa = PBXBuildFile; fileRef = 34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */; };
 		34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */; };
@@ -134,6 +135,8 @@
 		348C6A2C128E4504005F516D /* StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusBar.h; path = Classes/StatusBar.h; sourceTree = "<group>"; };
 		348C6A2D128E4504005F516D /* StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusBar.m; path = Classes/StatusBar.m; sourceTree = "<group>"; };
 		348F120015EA8ADA008A2BDA /* devicelocationdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicelocationdef.xml; path = Resources/devicelocationdef.xml; sourceTree = "<group>"; };
+		349120461925E19C0088F2C3 /* FrontmostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontmostWindow.h; path = ../../share/FrontmostWindow.h; sourceTree = "<group>"; };
+		349120471925E19C0088F2C3 /* FrontmostWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontmostWindow.m; path = ../../share/FrontmostWindow.m; sourceTree = "<group>"; };
 		34A06A4A11F8792E0085749B /* icon.statusbar.0.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.0.tif; path = Resources/icon.statusbar.0.tif; sourceTree = "<group>"; };
 		34A06A4B11F8792E0085749B /* icon.statusbar.1.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.1.tif; path = Resources/icon.statusbar.1.tif; sourceTree = "<group>"; };
 		34A5572916EA04D6000E5399 /* StatusMessageView_normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView_normal.h; path = Classes/StatusMessage/StatusMessageView_normal.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */,
 				3429B704171A990000C7DB64 /* EnvironmentChecker.h */,
 				3429B705171A990000C7DB64 /* EnvironmentChecker.m */,
+				349120461925E19C0088F2C3 /* FrontmostWindow.h */,
+				349120471925E19C0088F2C3 /* FrontmostWindow.m */,
 				340B7E3D1545090D00FB3237 /* InputSource.h */,
 				340B7E3E1545090D00FB3237 /* InputSource.m */,
 				342D245C16A68C4E00EF070F /* IOHIDPostEventWrapper.h */,
@@ -432,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				349120481925E19C0088F2C3 /* FrontmostWindow.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
 				34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */,
@@ -509,6 +515,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
