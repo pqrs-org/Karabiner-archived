@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <root>
 
+  <!--
+      regex syntax: http://www.cplusplus.com/reference/regex/ECMAScript/
+  -->
+
   <windownamedef>
     <name>Gmail</name>
     <regex> - Gmail$</regex>
