@@ -183,6 +183,12 @@
     </item>
     <item>
       <name>Option_R to Option_R</name>
+      <appendix>(+ When you type Option_R only, send Control+F8 (Move focus to the status bar))</appendix>
+      <identifier>remap.optionR2optionR_controlF8</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::F8, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>Option_R to Option_R</name>
       <appendix>(+ When you type Option_R only, toggle IM)</appendix>
       <item>
         <name>When you type Option_R only, send Command+Space</name>
