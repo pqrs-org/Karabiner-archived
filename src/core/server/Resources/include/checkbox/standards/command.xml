@@ -154,6 +154,12 @@
       <identifier>remap.shiftLcommandL2escape</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
     </item>
+    <item>
+      <name>Command_L to Command_L</name>
+      <appendix>(+ When you type Command_L only, send Control+F2 (Move focus to the menu bar))</appendix>
+      <identifier>remap.commandL2commandL_controlF2</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::F2, ModifierFlag::CONTROL_L</autogen>
+    </item>
   </item>
 
   <item>
@@ -435,6 +441,12 @@
       <appendix>(Note: Return is sent when you release Command_R)</appendix>
       <identifier>remap.shiftLcommandR2return</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Command_R to Command_R</name>
+      <appendix>(+ When you type Command_R only, send Control+F8 (Move focus to the status bar))</appendix>
+      <identifier>remap.commandR2commandR_controlF8</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::F8, ModifierFlag::CONTROL_L</autogen>
     </item>
   </item>
 </root>
