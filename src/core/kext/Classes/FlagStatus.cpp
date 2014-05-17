@@ -315,7 +315,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         int sum1 = item_[i].sum(true);
         int sum2 = other.item_[i].sum(true);
         if (sum1 > sum2) {
-          for (size_t j = 0; j < sum1 - sum2; ++j) {
+          for (int j = 0; j < sum1 - sum2; ++j) {
             modifierFlags.push_back(item_[i].flag_);
           }
         }
