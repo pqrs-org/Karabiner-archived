@@ -505,3 +505,27 @@ TEST(FlagStatus, isOn) {
     }
   }
 }
+
+TEST(FlagStatus, subtract) {
+  FlagStatus flagStatus1;
+  FlagStatus flagStatus2;
+
+  flagStatus1.increase(ModifierFlag::CONTROL_L);
+  flagStatus1.increase(ModifierFlag::OPTION_L);
+  flagStatus1.increase(ModifierFlag::SHIFT_L);
+  flagStatus1.increase(ModifierFlag::SHIFT_L);
+
+  flagStatus2.increase(ModifierFlag::CONTROL_L);
+  flagStatus2.increase(ModifierFlag::FN);
+
+  Vector_ModifierFlag v;
+  flagStatus1.subtract(flagStatus2, v);
+  EXPECT_EQ(3, v.size());
+  EXPECT_EQ(ModifierFlag::OPTION_L, v[0]);
+  EXPECT_EQ(ModifierFlag::SHIFT_L,  v[1]);
+  EXPECT_EQ(ModifierFlag::SHIFT_L,  v[2]);
+
+  flagStatus2.subtract(flagStatus1, v);
+  EXPECT_EQ(1, v.size());
+  EXPECT_EQ(ModifierFlag::FN, v[0]);
+}

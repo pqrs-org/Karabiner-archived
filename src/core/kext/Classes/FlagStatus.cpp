@@ -306,6 +306,24 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FlagStatus::subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags) const
+  {
+    modifierFlags.clear();
+
+    if (item_.size() == other.item_.size()) {
+      for (size_t i = 0; i < item_.size(); ++i) {
+        int sum1 = item_[i].sum(true);
+        int sum2 = other.item_[i].sum(true);
+        if (sum1 > sum2) {
+          for (size_t j = 0; j < sum1 - sum2; ++j) {
+            modifierFlags.push_back(item_[i].flag_);
+          }
+        }
+      }
+    }
+  }
+
+  void
   FlagStatus::updateStatusMessage(unsigned int statusMessageIndex)
   {
     CommonData::clear_statusmessage(statusMessageIndex);
