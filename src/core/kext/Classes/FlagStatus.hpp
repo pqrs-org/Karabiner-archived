@@ -29,9 +29,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       void reset(void);
       int sum(bool forceEnableLazy) const {
-        if (negative_lock_count_ > 0) return 0;
-
-        int sum = count_ + temporary_count_ + lock_count_ + sticky_count_;
+        int sum = count_ + temporary_count_ + lock_count_ - negative_lock_count_ + sticky_count_;
         if (forceEnableLazy || lazy_enabled_) {
           sum += lazy_count_;
         }

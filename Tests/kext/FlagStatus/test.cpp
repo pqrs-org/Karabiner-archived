@@ -227,6 +227,40 @@ TEST(FlagStatus, lock_increase) {
   EXPECT_EQ(Flags(), flagStatus.makeFlags());
 }
 
+TEST(FlagStatus, negative_lock_increase) {
+  FlagStatus flagStatus;
+
+  // ----------------------------------------
+  flagStatus.negative_lock_increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  flagStatus.increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  flagStatus.increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+
+  // ----------------------------------------
+  // lock don't cancel by reset & set.
+  flagStatus.reset();
+  flagStatus.set(KeyCode::A, Flags(0));
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  flagStatus.increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  flagStatus.increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+
+  // ----------------------------------------
+  flagStatus.reset();
+  flagStatus.negative_lock_decrease(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+  flagStatus.increase(ModifierFlag::COMMAND_L);
+  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+}
+
 TEST(FlagStatus, lock_toggle) {
   FlagStatus flagStatus;
 
