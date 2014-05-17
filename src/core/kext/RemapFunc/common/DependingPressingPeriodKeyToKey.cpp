@@ -270,16 +270,32 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
             if (! isAnyEventHappen_ &&
                 ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
+              // ----------------------------------------
               // Restore FlagStatus at key down.
-              FlagStatus original;
-              original = FlagStatus::globalFlagStatus();
-              FlagStatus::globalFlagStatus() = flagStatusWhenKeyPressed_;
+              Vector_ModifierFlag added;
+              Vector_ModifierFlag removed;
+              FlagStatus::globalFlagStatus().subtract(flagStatusWhenKeyPressed_, added);
+              flagStatusWhenKeyPressed_.subtract(FlagStatus::globalFlagStatus(), removed);
 
+              for (size_t i = 0; i < added.size(); ++i) {
+                FlagStatus::globalFlagStatus().decrease(added[i]);
+              }
+              for (size_t i = 0; i < removed.size(); ++i) {
+                FlagStatus::globalFlagStatus().increase(removed[i]);
+              }
+
+              // ----------------------------------------
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
               keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
+              // ----------------------------------------
               // Restore current FlagStatus.
-              FlagStatus::globalFlagStatus() = original;
+              for (size_t i = 0; i < added.size(); ++i) {
+                FlagStatus::globalFlagStatus().increase(added[i]);
+              }
+              for (size_t i = 0; i < removed.size(); ++i) {
+                FlagStatus::globalFlagStatus().decrease(removed[i]);
+              }
             }
           }
 
