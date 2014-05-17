@@ -514,6 +514,7 @@ TEST(FlagStatus, subtract) {
   flagStatus1.increase(ModifierFlag::OPTION_L);
   flagStatus1.increase(ModifierFlag::SHIFT_L);
   flagStatus1.increase(ModifierFlag::SHIFT_L);
+  flagStatus1.decrease(ModifierFlag::COMMAND_R);
 
   flagStatus2.increase(ModifierFlag::CONTROL_L);
   flagStatus2.increase(ModifierFlag::FN);
@@ -526,6 +527,7 @@ TEST(FlagStatus, subtract) {
   EXPECT_EQ(ModifierFlag::SHIFT_L,  v[2]);
 
   flagStatus2.subtract(flagStatus1, v);
-  EXPECT_EQ(1, v.size());
-  EXPECT_EQ(ModifierFlag::FN, v[0]);
+  EXPECT_EQ(2, v.size());
+  EXPECT_EQ(ModifierFlag::COMMAND_R, v[0]);
+  EXPECT_EQ(ModifierFlag::FN,        v[1]);
 }
