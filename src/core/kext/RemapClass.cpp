@@ -437,7 +437,7 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
 
         } else if (type == BRIDGE_VK_MODIFIER) {
-          if (size != 9) {
+          if (size != 12) {
             IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_MODIFIER. (%d)\n", size);
             return;
           } else {
@@ -446,9 +446,12 @@ namespace org_pqrs_KeyRemap4MacBook {
                                                               KeyCode(p[3]),  // VK_LOCK_*
                                                               KeyCode(p[4]),  // VK_LOCK_*_FORCE_ON
                                                               KeyCode(p[5]),  // VK_LOCK_*_FORCE_OFF
-                                                              KeyCode(p[6]),  // VK_STICKY_*
-                                                              KeyCode(p[7]),  // VK_STICKY_*_FORCE_ON
-                                                              KeyCode(p[8])); // VK_STICKY_*_FORCE_OFF
+                                                              KeyCode(p[6]),  // VK_NEGATIVE_LOCK_*
+                                                              KeyCode(p[7]),  // VK_NEGATIVE_LOCK_*_FORCE_ON
+                                                              KeyCode(p[8]),  // VK_NEGATIVE_LOCK_*_FORCE_OFF
+                                                              KeyCode(p[9]),  // VK_STICKY_*
+                                                              KeyCode(p[10]),  // VK_STICKY_*_FORCE_ON
+                                                              KeyCode(p[11])); // VK_STICKY_*_FORCE_OFF
           }
 
         } else if (type == BRIDGE_VK_CONFIG) {

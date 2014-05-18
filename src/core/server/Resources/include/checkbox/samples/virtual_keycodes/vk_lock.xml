@@ -111,4 +111,72 @@
       </autogen>
     </item>
   </item>
+
+  <item>
+    <name>VK_NEGATIVE_LOCK</name>
+    <item>
+      <name>Normal Modifiers</name>
+      <appendix>Use 1 to Negative Lock Command_L</appendix>
+      <appendix>Use 2 to Negative Lock Command_R</appendix>
+      <appendix>Use 3 to Negative Lock Control_L</appendix>
+      <appendix>Use 4 to Negative Lock Control_R</appendix>
+      <appendix>Use 5 to Negative Lock Fn</appendix>
+      <appendix>Use 6 to Negative Lock Option_L</appendix>
+      <appendix>Use 7 to Negative Lock Option_R</appendix>
+      <appendix>Use 8 to Negative Lock Shift_L</appendix>
+      <appendix>Use 9 to Negative Lock Shift_R</appendix>
+      <appendix>Use Q to Force Negative Lock on Command_L</appendix>
+      <appendix>Use W to Force NegaLock Lock on Command_R</appendix>
+      <appendix>Use E to Force NegaLock Lock on Control_L</appendix>
+      <appendix>Use R to Force NegaLock Lock on Control_R</appendix>
+      <appendix>Use T to Force NegaLock Lock on Fn</appendix>
+      <appendix>Use Y to Force NegaLock Lock on Option_L</appendix>
+      <appendix>Use U to Force NegaLock Lock on Option_R</appendix>
+      <appendix>Use I to Force NegaLock Lock on Shift_L</appendix>
+      <appendix>Use O to Force NegaLock Lock on Shift_R</appendix>
+      <appendix>Use A to Force NegaLock Lock off Command_L</appendix>
+      <appendix>Use S to Force NegaLock Lock off Command_R</appendix>
+      <appendix>Use D to Force NegaLock Lock off Control_L</appendix>
+      <appendix>Use F to Force NegaLock Lock off Control_R</appendix>
+      <appendix>Use G to Force NegaLock Lock off Fn</appendix>
+      <appendix>Use H to Force NegaLock Lock off Option_L</appendix>
+      <appendix>Use J to Force NegaLock Lock off Option_R</appendix>
+      <appendix>Use K to Force NegaLock Lock off Shift_L</appendix>
+      <appendix>Use L to Force NegaLock Lock off Shift_R</appendix>
+      <appendix>Use Z to Force NegaLock Lock off All</appendix>
+      <appendix></appendix>
+      <appendix>The modifier flags counter will be decreased (-1) by negative locks.</appendix>
+      <appendix>For example, the left shift modifier is not triggered</appendix>
+      <appendix>when you pressed the left shift key if it is negative locked.</appendix>
+      <identifier>remap.samples_vk_negative_lock_normal</identifier>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_NEGATIVE_LOCK_COMMAND_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_NEGATIVE_LOCK_COMMAND_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::VK_NEGATIVE_LOCK_CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::VK_NEGATIVE_LOCK_CONTROL_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::VK_NEGATIVE_LOCK_FN</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::VK_NEGATIVE_LOCK_OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::VK_NEGATIVE_LOCK_OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::VK_NEGATIVE_LOCK_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::VK_NEGATIVE_LOCK_SHIFT_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::Q,     KeyCode::VK_NEGATIVE_LOCK_COMMAND_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::W,     KeyCode::VK_NEGATIVE_LOCK_COMMAND_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::E,     KeyCode::VK_NEGATIVE_LOCK_CONTROL_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::R,     KeyCode::VK_NEGATIVE_LOCK_CONTROL_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::T,     KeyCode::VK_NEGATIVE_LOCK_FN_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::Y,     KeyCode::VK_NEGATIVE_LOCK_OPTION_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::U,     KeyCode::VK_NEGATIVE_LOCK_OPTION_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::I,     KeyCode::VK_NEGATIVE_LOCK_SHIFT_L_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::O,     KeyCode::VK_NEGATIVE_LOCK_SHIFT_R_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::A,     KeyCode::VK_NEGATIVE_LOCK_COMMAND_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::S,     KeyCode::VK_NEGATIVE_LOCK_COMMAND_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::D,     KeyCode::VK_NEGATIVE_LOCK_CONTROL_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::F,     KeyCode::VK_NEGATIVE_LOCK_CONTROL_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::G,     KeyCode::VK_NEGATIVE_LOCK_FN_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::H,     KeyCode::VK_NEGATIVE_LOCK_OPTION_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::J,     KeyCode::VK_NEGATIVE_LOCK_OPTION_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::K,     KeyCode::VK_NEGATIVE_LOCK_SHIFT_L_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::L,     KeyCode::VK_NEGATIVE_LOCK_SHIFT_R_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z,     KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF</autogen>
+    </item>
+  </item>
 </root>
