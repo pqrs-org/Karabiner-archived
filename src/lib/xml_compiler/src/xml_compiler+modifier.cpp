@@ -21,7 +21,7 @@ namespace pqrs {
           if (! (it.second)->get_name()) continue;
           auto& name = *((it.second)->get_name());
 
-          remapclasses_initialize_vector_.push_back(9);
+          remapclasses_initialize_vector_.push_back(12);
           remapclasses_initialize_vector_.push_back(BRIDGE_VK_MODIFIER);
           remapclasses_initialize_vector_.push_back(it.first);
 
@@ -33,6 +33,12 @@ namespace pqrs {
             symbol_map_.add("KeyCode", std::string("VK_LOCK_") + name + "_FORCE_ON"));
           remapclasses_initialize_vector_.push_back(
             symbol_map_.add("KeyCode", std::string("VK_LOCK_") + name + "_FORCE_OFF"));
+          remapclasses_initialize_vector_.push_back(
+            symbol_map_.add("KeyCode", std::string("VK_NEGATIVE_LOCK_") + name));
+          remapclasses_initialize_vector_.push_back(
+            symbol_map_.add("KeyCode", std::string("VK_NEGATIVE_LOCK_") + name + "_FORCE_ON"));
+          remapclasses_initialize_vector_.push_back(
+            symbol_map_.add("KeyCode", std::string("VK_NEGATIVE_LOCK_") + name + "_FORCE_OFF"));
           remapclasses_initialize_vector_.push_back(
             symbol_map_.add("KeyCode", std::string("VK_STICKY_") + name));
           remapclasses_initialize_vector_.push_back(

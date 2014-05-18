@@ -13,6 +13,9 @@ namespace org_pqrs_KeyRemap4MacBook {
         VK_LOCK,
         VK_LOCK_FORCE_ON,
         VK_LOCK_FORCE_OFF,
+        VK_NEGATIVE_LOCK,
+        VK_NEGATIVE_LOCK_FORCE_ON,
+        VK_NEGATIVE_LOCK_FORCE_OFF,
         VK_STICKY,
         VK_STICKY_FORCE_ON,
         VK_STICKY_FORCE_OFF,
@@ -28,18 +31,24 @@ namespace org_pqrs_KeyRemap4MacBook {
            KeyCode vk_lock,
            KeyCode vk_lock_force_on,
            KeyCode vk_lock_force_off,
+           KeyCode vk_negative_lock,
+           KeyCode vk_negative_lock_force_on,
+           KeyCode vk_negative_lock_force_off,
            KeyCode vk_sticky,
            KeyCode vk_sticky_force_on,
            KeyCode vk_sticky_force_off) :
         modifierFlag_(m)
       {
-        keyCode_[KeyCodeType::KEYCODE]             = k;
-        keyCode_[KeyCodeType::VK_LOCK]             = vk_lock;
-        keyCode_[KeyCodeType::VK_LOCK_FORCE_ON]    = vk_lock_force_on;
-        keyCode_[KeyCodeType::VK_LOCK_FORCE_OFF]   = vk_lock_force_off;
-        keyCode_[KeyCodeType::VK_STICKY]           = vk_sticky;
-        keyCode_[KeyCodeType::VK_STICKY_FORCE_ON]  = vk_sticky_force_on;
-        keyCode_[KeyCodeType::VK_STICKY_FORCE_OFF] = vk_sticky_force_off;
+        keyCode_[KeyCodeType::KEYCODE]                    = k;
+        keyCode_[KeyCodeType::VK_LOCK]                    = vk_lock;
+        keyCode_[KeyCodeType::VK_LOCK_FORCE_ON]           = vk_lock_force_on;
+        keyCode_[KeyCodeType::VK_LOCK_FORCE_OFF]          = vk_lock_force_off;
+        keyCode_[KeyCodeType::VK_NEGATIVE_LOCK]           = vk_negative_lock;
+        keyCode_[KeyCodeType::VK_NEGATIVE_LOCK_FORCE_ON]  = vk_negative_lock_force_on;
+        keyCode_[KeyCodeType::VK_NEGATIVE_LOCK_FORCE_OFF] = vk_negative_lock_force_off;
+        keyCode_[KeyCodeType::VK_STICKY]                  = vk_sticky;
+        keyCode_[KeyCodeType::VK_STICKY_FORCE_ON]         = vk_sticky_force_on;
+        keyCode_[KeyCodeType::VK_STICKY_FORCE_OFF]        = vk_sticky_force_off;
       }
       ModifierFlag getModifierFlag(void) const { return modifierFlag_; }
       KeyCode getKeyCode(KeyCodeType::Value type) const {
@@ -65,6 +74,9 @@ namespace org_pqrs_KeyRemap4MacBook {
                                         KeyCode vk_lock,
                                         KeyCode vk_lock_force_on,
                                         KeyCode vk_lock_force_off,
+                                        KeyCode vk_negative_lock,
+                                        KeyCode vk_negative_lock_force_on,
+                                        KeyCode vk_negative_lock_force_off,
                                         KeyCode vk_sticky,
                                         KeyCode vk_sticky_force_on,
                                         KeyCode vk_sticky_force_off);
