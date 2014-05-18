@@ -45,7 +45,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       void lock_toggle(void)   { lock_count_ = ! lock_count_; }
       void negative_lock_increase(void) { negative_lock_count_ = 1; }
       void negative_lock_decrease(void) { negative_lock_count_ = 0; }
-      void negative_lock_toggle(void)   { negative_lock_count_ = ! lock_count_; }
+      void negative_lock_toggle(void)   { negative_lock_count_ = ! negative_lock_count_; }
       void sticky_increase(void) { sticky_count_ = 1; }
       void sticky_decrease(void) { sticky_count_ = 0; }
       void sticky_toggle(void) { sticky_count_ = ! sticky_count_; }
