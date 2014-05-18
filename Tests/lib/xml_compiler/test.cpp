@@ -49,7 +49,7 @@ TEST(pqrs_xml_compiler, reload)
   EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map().get_optional("KeyCode::SPACE_IS_IGNORED"));
 
   // ------------------------------------------------------------
-  uint32_t vk_change_inputsource_base = 1226;
+  uint32_t vk_change_inputsource_base = 1241;
 
   // JAPANESE
   EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
