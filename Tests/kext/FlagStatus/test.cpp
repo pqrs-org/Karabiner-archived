@@ -295,6 +295,34 @@ TEST(FlagStatus, lock_clear) {
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 }
 
+TEST(FlagStatus, negative_lock_clear) {
+  FlagStatus flagStatus;
+
+  {
+    Vector_ModifierFlag v;
+    v.push_back(ModifierFlag::COMMAND_L);
+    v.push_back(ModifierFlag::FN);
+    v.push_back(ModifierFlag::SHIFT_L);
+    flagStatus.negative_lock_increase(v);
+    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+    flagStatus.increase(v);
+    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+    flagStatus.increase(v);
+    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+
+    flagStatus.reset();
+    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+    flagStatus.increase(v);
+    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+
+    flagStatus.negative_lock_clear();
+    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+  }
+}
+
 TEST(FlagStatus, sticky_increase) {
   FlagStatus flagStatus;
 

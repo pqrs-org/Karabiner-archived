@@ -298,6 +298,17 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
+  FlagStatus::negative_lock_clear(void)
+  {
+    for (size_t i = 0; i < item_.size(); ++i) {
+      if (item_[i].negative_lock_count_) {
+        item_[i].negative_lock_decrease();
+      }
+    }
+    updateStatusMessage();
+  }
+
+  void
   FlagStatus::lazy_set_enable(bool newval)
   {
     for (size_t i = 0; i < item_.size(); ++i) {
