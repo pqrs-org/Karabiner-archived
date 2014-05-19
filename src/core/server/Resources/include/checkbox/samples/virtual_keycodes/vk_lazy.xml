@@ -60,8 +60,12 @@
     <item>
       <name>KeyOverlaidModifier</name>
       <appendix>* Change 1 to VK_LAZY_SHIFT_L (When type only, send Space)</appendix>
+      <appendix>* Change 2 to VK_LAZY_OPTION_L (When type only, send Space)</appendix>
+      <appendix></appendix>
+      <appendix>(Pressing 1+2 key sends shift-space.)</appendix>
       <identifier>remap.samples_vk_lazy_keyoverlaidmodifier</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L, KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::KEY_1, KeyCode::VK_LAZY_SHIFT_L,  KeyCode::SPACE</autogen>
+      <autogen>__KeyOverlaidModifier__ KeyCode::KEY_2, KeyCode::VK_LAZY_OPTION_L, KeyCode::SPACE</autogen>
     </item>
     <item>
       <name>DoublePressModifier</name>
