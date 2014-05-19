@@ -316,6 +316,13 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
   }
 
+  bool
+  FlagStatus::lazy_enabled(void) const
+  {
+    if (item_.size() == 0) return false;
+    return item_[0].lazy_enabled_;
+  }
+
   void
   FlagStatus::subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags) const
   {
