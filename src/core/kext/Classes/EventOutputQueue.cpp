@@ -215,6 +215,10 @@ namespace org_pqrs_KeyRemap4MacBook {
         newkeycode == KeyCode::VK_PSEUDO_KEY) {
       return;
     }
+    if (newkeycode.isModifier() && newkeycode.getModifierFlag().getRawBits() == 0) {
+      // virtual modifiers.
+      return;
+    }
 
     FireModifiers::fire(newflags, params.keyboardType);
 
