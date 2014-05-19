@@ -108,6 +108,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     void lock_clear(void);
     void negative_lock_clear(void);
     void lazy_set_enable(bool newval);
+    bool lazy_enabled(void) const;
 
     void subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags) const;
 
