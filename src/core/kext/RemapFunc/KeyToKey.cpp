@@ -319,17 +319,27 @@ namespace org_pqrs_KeyRemap4MacBook {
     bool
     KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType)
     {
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
-                                                                                     FlagStatus::globalFlagStatus().makeFlags(),
-                                                                                     KeyCode::VK_PSEUDO_KEY,
-                                                                                     CommonData::getcurrent_keyboardType(),
-                                                                                     false));
-      if (! ptr) return false;
-      Params_KeyboardEventCallBack& params = *ptr;
+      bool result = false;
 
-      ParamsUnion paramsUnion(params);
-      RemapParams rp(paramsUnion);
-      return remap(rp);
+      // set lazy modifiers
+      bool lazy_enabled = FlagStatus::globalFlagStatus().lazy_enabled();
+      FlagStatus::globalFlagStatus().lazy_set_enable(eventType == EventType::DOWN);
+      {
+        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
+                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
+                                                                                       KeyCode::VK_PSEUDO_KEY,
+                                                                                       CommonData::getcurrent_keyboardType(),
+                                                                                       false));
+        if (! ptr) return false;
+        Params_KeyboardEventCallBack& params = *ptr;
+
+        ParamsUnion paramsUnion(params);
+        RemapParams rp(paramsUnion);
+        result = remap(rp);
+      }
+      FlagStatus::globalFlagStatus().lazy_set_enable(lazy_enabled);
+
+      return result;
     }
 
     int
