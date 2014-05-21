@@ -244,7 +244,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Prefix.pch";
-				INFOPLIST_FILE = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Info.plist";
+				INFOPLIST_FILE = "KeyRemap4MacBook_AXNotifier/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
