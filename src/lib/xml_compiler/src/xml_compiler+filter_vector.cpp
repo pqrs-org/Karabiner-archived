@@ -12,6 +12,10 @@ namespace pqrs {
         add_(BRIDGE_FILTERTYPE_APPLICATION_NOT,  "ApplicationType::", it.get_data());
       } else if (it.get_tag_name() == "only") {
         add_(BRIDGE_FILTERTYPE_APPLICATION_ONLY, "ApplicationType::", it.get_data());
+      } else if (it.get_tag_name() == "windowname_not") {
+        add_(BRIDGE_FILTERTYPE_WINDOWNAME_NOT,  "WindowName::", it.get_data());
+      } else if (it.get_tag_name() == "windowname_only") {
+        add_(BRIDGE_FILTERTYPE_WINDOWNAME_ONLY, "WindowName::", it.get_data());
       } else if (it.get_tag_name() == "config_not") {
         add_(BRIDGE_FILTERTYPE_CONFIG_NOT,  "ConfigIndex::", it.get_data());
       } else if (it.get_tag_name() == "config_only") {

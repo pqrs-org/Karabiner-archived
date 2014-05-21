@@ -989,6 +989,9 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   s.add("ApplicationType", "APP1", 1);
   s.add("ApplicationType", "APP2", 2);
   s.add("ApplicationType", "APP3", 3);
+  s.add("WindowName", "WN1", 5);
+  s.add("WindowName", "WN2", 6);
+  s.add("WindowName", "WN3", 7);
   s.add("DeviceVendor", "VENDOR1", 10);
   s.add("DeviceVendor", "VENDOR2", 20);
   s.add("DeviceVendor", "VENDOR3", 30);
@@ -1024,6 +1027,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "  <only><!-- empty --></only>"
                   "  <only>,,</only>"
                   "  <not><!-- XXX --->APP2</not>"
+                  "  <windowname_only>WN1,WN2</windowname_only>"
+                  "  <windowname_not>WN3</windowname_not>"
                   "  <identifier>sample</identifier>"
                   "  <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</device_only>"
                   "  <device_not>"
@@ -1083,6 +1088,17 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     expected.push_back(2); // count
     expected.push_back(BRIDGE_FILTERTYPE_APPLICATION_NOT);
     expected.push_back(2); // APP2
+
+    // <windowname_only>WN1,WN2</windowname_only>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_WINDOWNAME_ONLY);
+    expected.push_back(5); // WN1
+    expected.push_back(6); // WN2
+
+    // <windowname_not>WN3</windowname_not>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_WINDOWNAME_NOT);
+    expected.push_back(7); // WN3
 
     // <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</device_only>
     expected.push_back(4); // count
