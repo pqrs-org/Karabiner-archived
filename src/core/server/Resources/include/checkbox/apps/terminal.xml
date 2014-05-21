@@ -162,7 +162,6 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
     </item>
 
-
     <item>
       <name>Change Option+y to F18</name>
       <only>TERMINAL</only>
