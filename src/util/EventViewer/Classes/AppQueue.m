@@ -47,9 +47,20 @@ enum {
   [view_ scrollRowToVisible:([queue_ count] - 1)];
 }
 
-- (void) push:(NSString*)applicationBundleIdentifier
+- (void) push:(NSDictionary*)dictionary
 {
+  NSString* applicationBundleIdentifier = dictionary[@"name"];
+  if (! applicationBundleIdentifier) {
+    applicationBundleIdentifier = @"";
+  }
+
+  NSString* windowName = dictionary[@"windowName"];
+  if (! windowName) {
+    windowName = @"";
+  }
+
   NSDictionary* dict = @{ @"applicationBundleIdentifier": applicationBundleIdentifier,
+                          @"windowName": windowName,
                           @"date": [[NSDate date] description] };
 
   [queue_ insertObject:dict atIndex:0];
@@ -73,7 +84,7 @@ enum {
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = queue_[([queue_ count] - 1 - i)];
 
-    [string appendFormat:@"%@\n", dict[@"applicationBundleIdentifier"]];
+    [string appendFormat:@"%@\t%@\n", dict[@"applicationBundleIdentifier"], dict[@"windowName"]];
   }
 
   if ([string length] > 0) {

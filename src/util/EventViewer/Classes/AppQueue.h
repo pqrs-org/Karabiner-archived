@@ -8,7 +8,7 @@
   IBOutlet id view_;
 }
 
-- (void) push:(NSString*)applicationBundleIdentifier;
+- (void) push:(NSDictionary*)dictionary;
 
 - (IBAction) clear:(id)sender;
 - (IBAction) copy:(id)sender;
