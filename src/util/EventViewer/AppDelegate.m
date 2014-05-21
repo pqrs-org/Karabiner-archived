@@ -16,7 +16,7 @@
 - (void) addToAppQueue
 {
   @try {
-    [appQueue_ push:[[client_ proxy] application_information][@"name"]];
+    [appQueue_ push:[[client_ proxy] application_information]];
   } @catch (NSException* exception) {
     NSLog(@"%@", exception);
   }
