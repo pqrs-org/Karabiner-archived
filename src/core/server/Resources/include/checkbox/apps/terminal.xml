@@ -32,6 +32,22 @@
       </include>
     </item>
     <item>
+      <name>Change Command_L to Option_L</name>
+      <appendix>(Pass-Through Tab, Backquote and Space)</appendix>
+      <identifier>remap.app_term_commandL2optionL_except_tab_space</identifier>
+      <only>TERMINAL</only>
+      <include path="../snippets/modifier_tab_to_command_tab_backquote_space.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>COMMAND_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+      </include>
+    </item>
+    <item>
       <name>Change Delete Key</name>
       <item>
         <name>Delete to Control_L+H</name>
