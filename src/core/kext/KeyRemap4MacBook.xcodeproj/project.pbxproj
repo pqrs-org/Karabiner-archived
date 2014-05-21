@@ -158,6 +158,8 @@
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
 		34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E984C218FFD108003A21F6 /* ModifierName.cpp */; };
 		34E984C518FFD108003A21F6 /* ModifierName.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E984C318FFD108003A21F6 /* ModifierName.hpp */; };
+		34EE5C53192CDEAA00D73DDE /* WindowNameFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */; };
+		34EE5C54192CDEAA00D73DDE /* WindowNameFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */; };
 		34FFF078149867D800A1348A /* ScrollWheelToScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */; };
 		34FFF079149867D800A1348A /* ScrollWheelToScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */; };
 /* End PBXBuildFile section */
@@ -316,6 +318,8 @@
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
 		34E984C218FFD108003A21F6 /* ModifierName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierName.cpp; path = Classes/ModifierName.cpp; sourceTree = "<group>"; };
 		34E984C318FFD108003A21F6 /* ModifierName.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierName.hpp; path = Classes/ModifierName.hpp; sourceTree = "<group>"; };
+		34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WindowNameFilter.cpp; path = RemapFilter/WindowNameFilter.cpp; sourceTree = "<group>"; };
+		34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WindowNameFilter.hpp; path = RemapFilter/WindowNameFilter.hpp; sourceTree = "<group>"; };
 		34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollWheelToScrollWheel.cpp; path = RemapFunc/ScrollWheelToScrollWheel.cpp; sourceTree = "<group>"; };
 		34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToScrollWheel.hpp; path = RemapFunc/ScrollWheelToScrollWheel.hpp; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -555,6 +559,8 @@
 				05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */,
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
+				34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */,
+				34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */,
 			);
 			name = RemapFilter;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 				34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */,
 				3477936B185B1FA800B3EF06 /* IOLogWrapper.hpp in Headers */,
 				34779364185B1FA800B3EF06 /* FlagStatus.hpp in Headers */,
+				34EE5C54192CDEAA00D73DDE /* WindowNameFilter.hpp in Headers */,
 				34779AEA18FF881500820FCB /* KeyCodeModifierFlagPairs.hpp in Headers */,
 				345004AE0E7CE48F0075324B /* Core.hpp in Headers */,
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
@@ -730,6 +737,7 @@
 				34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */,
 				345004AD0E7CE48F0075324B /* Core.cpp in Sources */,
 				34779378185B1FA800B3EF06 /* ListHookedPointing.cpp in Sources */,
+				34EE5C53192CDEAA00D73DDE /* WindowNameFilter.cpp in Sources */,
 				345004AF0E7CE48F0075324B /* Driver.cpp in Sources */,
 				34A7883010CBD79100DF72FD /* KeyCode.cpp in Sources */,
 				3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */,
