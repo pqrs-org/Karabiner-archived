@@ -17,6 +17,7 @@ pkginfo/Info.plist
 pkginfo/Distribution.xml
 src/core/kext/Info.plist
 src/core/server/Info.plist
+src/util/AXNotifier/KeyRemap4MacBook_AXNotifier/Info.plist
 src/util/EventViewer/Info.plist
 src/util/cli/Info.plist
 src/util/multitouchextension/Info.plist
