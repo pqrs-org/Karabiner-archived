@@ -106,6 +106,23 @@
       </include>
     </item>
     <item>
+      <name>Command_L to Option_L (only in Terminal)</name>
+      <appendix>(Pass-Through Command+Tab)</appendix>
+      <identifier>remap.command_l_to_option_l_terminal_except_command_tab</identifier>
+      <only>TERMINAL</only>
+      {{ COMMAND_L_TO_OPTION_L_EXCEPT_TAB_EXTRA }}
+      <include path="../snippets/modifier_tab_to_command_tab.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>COMMAND_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+      </include>
+    </item>
+    <item>
       <name>Command_L to Shift_L</name>
       <identifier>remap.commandL2shiftL</identifier>
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::SHIFT_L</autogen>
