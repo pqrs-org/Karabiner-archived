@@ -21,7 +21,7 @@
 		3401001A192C63AA00B0A3A5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		3401001B192C63AA00B0A3A5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3401001C192C63AA00B0A3A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		3401001F192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyRemap4MacBook_AXNotifier-Info.plist"; sourceTree = "<group>"; };
+		3401001F192C63AA00B0A3A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34010021192C63AA00B0A3A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		34010023192C63AA00B0A3A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		34010025192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeyRemap4MacBook_AXNotifier-Prefix.pch"; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		3401001E192C63AA00B0A3A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3401001F192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Info.plist */,
+				3401001F192C63AA00B0A3A5 /* Info.plist */,
 				34010020192C63AA00B0A3A5 /* InfoPlist.strings */,
 				34010023192C63AA00B0A3A5 /* main.m */,
 				34010025192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Prefix.pch */,
