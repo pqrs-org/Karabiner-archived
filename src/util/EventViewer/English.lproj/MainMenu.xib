@@ -274,21 +274,21 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Applications" borderType="line" id="879">
-                                            <rect key="frame" x="6" y="15" width="816" height="551"/>
+                                            <rect key="frame" x="6" y="144" width="816" height="422"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="814" height="535"/>
+                                                <rect key="frame" x="1" y="1" width="814" height="406"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <scrollView focusRingType="none" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="883">
-                                                        <rect key="frame" x="18" y="14" width="778" height="482"/>
+                                                        <rect key="frame" x="18" y="14" width="778" height="350"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" id="bOl-cR-gr0">
-                                                            <rect key="frame" x="1" y="17" width="761" height="464"/>
+                                                            <rect key="frame" x="1" y="17" width="761" height="332"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="886" id="884">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="761" height="464"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="761" height="332"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -347,7 +347,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="887">
-                                                            <rect key="frame" x="762" y="17" width="15" height="464"/>
+                                                            <rect key="frame" x="762" y="17" width="15" height="332"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                         <tableHeaderView key="headerView" id="886">
@@ -356,7 +356,7 @@
                                                         </tableHeaderView>
                                                     </scrollView>
                                                     <button verticalHuggingPriority="750" id="882">
-                                                        <rect key="frame" x="12" y="497" width="162" height="32"/>
+                                                        <rect key="frame" x="12" y="368" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="898">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -367,7 +367,7 @@
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="905">
-                                                        <rect key="frame" x="174" y="497" width="135" height="32"/>
+                                                        <rect key="frame" x="174" y="368" width="135" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="clear the result" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="906">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -377,6 +377,34 @@
                                                             <action selector="clear:" target="826" id="915"/>
                                                         </connections>
                                                     </button>
+                                                </subviews>
+                                            </view>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box autoresizesSubviews="NO" borderType="line" titlePosition="noTitle" id="6BO-Yy-5kc">
+                                            <rect key="frame" x="6" y="80" width="816" height="62"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView">
+                                                <rect key="frame" x="1" y="1" width="814" height="60"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView id="d8G-TF-VNV">
+                                                        <rect key="frame" x="18" y="16" width="32" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="bZa-Vw-TNh"/>
+                                                    </imageView>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EYh-8r-92q">
+                                                        <rect key="frame" x="56" y="14" width="633" height="34"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="ska-M2-30n">
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="title">If you want to observe Window Name frequently, you need to use AXNotifier.
+(You can launch AXNotifier from KeyRemap4MacBook Preferences &gt; Misc tab &gt; Helper Applications.</string>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                 </subviews>
                                             </view>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -590,6 +618,7 @@
         </customObject>
     </objects>
     <resources>
+        <image name="NSInfo" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="10" height="12"/>
     </resources>
 </document>
