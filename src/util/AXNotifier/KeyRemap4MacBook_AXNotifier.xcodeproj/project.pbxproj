@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34010018192C63AA00B0A3A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34010017192C63AA00B0A3A5 /* Cocoa.framework */; };
+		34010022192C63AA00B0A3A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34010020192C63AA00B0A3A5 /* InfoPlist.strings */; };
+		34010024192C63AA00B0A3A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34010023192C63AA00B0A3A5 /* main.m */; };
+		3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401002A192C63AA00B0A3A5 /* AppDelegate.m */; };
+		3401002E192C63AA00B0A3A5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3401002C192C63AA00B0A3A5 /* MainMenu.xib */; };
+		34010030192C63AA00B0A3A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3401002F192C63AA00B0A3A5 /* Images.xcassets */; };
+		34010037192C63AA00B0A3A5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34010036192C63AA00B0A3A5 /* XCTest.framework */; };
+		34010038192C63AA00B0A3A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34010017192C63AA00B0A3A5 /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34010039192C63AA00B0A3A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3401000C192C63AA00B0A3A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34010013192C63AA00B0A3A5;
+			remoteInfo = KeyRemap4MacBook_AXNotifier;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		34010014192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyRemap4MacBook_AXNotifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34010017192C63AA00B0A3A5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3401001A192C63AA00B0A3A5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3401001B192C63AA00B0A3A5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3401001C192C63AA00B0A3A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3401001F192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyRemap4MacBook_AXNotifier-Info.plist"; sourceTree = "<group>"; };
+		34010021192C63AA00B0A3A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		34010023192C63AA00B0A3A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		34010025192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeyRemap4MacBook_AXNotifier-Prefix.pch"; sourceTree = "<group>"; };
+		34010029192C63AA00B0A3A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3401002A192C63AA00B0A3A5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3401002D192C63AA00B0A3A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3401002F192C63AA00B0A3A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		34010035192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook_AXNotifierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34010036192C63AA00B0A3A5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		34010011192C63AA00B0A3A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34010018192C63AA00B0A3A5 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34010032192C63AA00B0A3A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34010038192C63AA00B0A3A5 /* Cocoa.framework in Frameworks */,
+				34010037192C63AA00B0A3A5 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3401000B192C63AA00B0A3A5 = {
+			isa = PBXGroup;
+			children = (
+				3401001D192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier */,
+				34010016192C63AA00B0A3A5 /* Frameworks */,
+				34010015192C63AA00B0A3A5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		34010015192C63AA00B0A3A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34010014192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier.app */,
+				34010035192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifierTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34010016192C63AA00B0A3A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34010017192C63AA00B0A3A5 /* Cocoa.framework */,
+				34010036192C63AA00B0A3A5 /* XCTest.framework */,
+				34010019192C63AA00B0A3A5 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		34010019192C63AA00B0A3A5 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3401001A192C63AA00B0A3A5 /* AppKit.framework */,
+				3401001B192C63AA00B0A3A5 /* CoreData.framework */,
+				3401001C192C63AA00B0A3A5 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3401001D192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier */ = {
+			isa = PBXGroup;
+			children = (
+				34010029192C63AA00B0A3A5 /* AppDelegate.h */,
+				3401002A192C63AA00B0A3A5 /* AppDelegate.m */,
+				3401002C192C63AA00B0A3A5 /* MainMenu.xib */,
+				3401002F192C63AA00B0A3A5 /* Images.xcassets */,
+				3401001E192C63AA00B0A3A5 /* Supporting Files */,
+			);
+			path = KeyRemap4MacBook_AXNotifier;
+			sourceTree = "<group>";
+		};
+		3401001E192C63AA00B0A3A5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3401001F192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Info.plist */,
+				34010020192C63AA00B0A3A5 /* InfoPlist.strings */,
+				34010023192C63AA00B0A3A5 /* main.m */,
+				34010025192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		34010013192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34010045192C63AA00B0A3A5 /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_AXNotifier" */;
+			buildPhases = (
+				34010010192C63AA00B0A3A5 /* Sources */,
+				34010011192C63AA00B0A3A5 /* Frameworks */,
+				34010012192C63AA00B0A3A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyRemap4MacBook_AXNotifier;
+			productName = KeyRemap4MacBook_AXNotifier;
+			productReference = 34010014192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier.app */;
+			productType = "com.apple.product-type.application";
+		};
+		34010034192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifierTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34010048192C63AA00B0A3A5 /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_AXNotifierTests" */;
+			buildPhases = (
+				34010031192C63AA00B0A3A5 /* Sources */,
+				34010032192C63AA00B0A3A5 /* Frameworks */,
+				34010033192C63AA00B0A3A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3401003A192C63AA00B0A3A5 /* PBXTargetDependency */,
+			);
+			name = KeyRemap4MacBook_AXNotifierTests;
+			productName = KeyRemap4MacBook_AXNotifierTests;
+			productReference = 34010035192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifierTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3401000C192C63AA00B0A3A5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Takayama Fumihiko";
+				TargetAttributes = {
+					34010034192C63AA00B0A3A5 = {
+						TestTargetID = 34010013192C63AA00B0A3A5;
+					};
+				};
+			};
+			buildConfigurationList = 3401000F192C63AA00B0A3A5 /* Build configuration list for PBXProject "KeyRemap4MacBook_AXNotifier" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3401000B192C63AA00B0A3A5;
+			productRefGroup = 34010015192C63AA00B0A3A5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				34010013192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier */,
+				34010034192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifierTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		34010012192C63AA00B0A3A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34010022192C63AA00B0A3A5 /* InfoPlist.strings in Resources */,
+				34010030192C63AA00B0A3A5 /* Images.xcassets in Resources */,
+				3401002E192C63AA00B0A3A5 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34010033192C63AA00B0A3A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		34010010192C63AA00B0A3A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */,
+				34010024192C63AA00B0A3A5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34010031192C63AA00B0A3A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3401003A192C63AA00B0A3A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34010013192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier */;
+			targetProxy = 34010039192C63AA00B0A3A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		34010020192C63AA00B0A3A5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34010021192C63AA00B0A3A5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3401002C192C63AA00B0A3A5 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3401002D192C63AA00B0A3A5 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		34010043192C63AA00B0A3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		34010044192C63AA00B0A3A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		34010046192C63AA00B0A3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Prefix.pch";
+				INFOPLIST_FILE = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		34010047192C63AA00B0A3A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Prefix.pch";
+				INFOPLIST_FILE = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		34010049192C63AA00B0A3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KeyRemap4MacBook_AXNotifier.app/Contents/MacOS/KeyRemap4MacBook_AXNotifier";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "KeyRemap4MacBook_AXNotifierTests/KeyRemap4MacBook_AXNotifierTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3401004A192C63AA00B0A3A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KeyRemap4MacBook_AXNotifier.app/Contents/MacOS/KeyRemap4MacBook_AXNotifier";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Prefix.pch";
+				INFOPLIST_FILE = "KeyRemap4MacBook_AXNotifierTests/KeyRemap4MacBook_AXNotifierTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3401000F192C63AA00B0A3A5 /* Build configuration list for PBXProject "KeyRemap4MacBook_AXNotifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34010043192C63AA00B0A3A5 /* Debug */,
+				34010044192C63AA00B0A3A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34010045192C63AA00B0A3A5 /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_AXNotifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34010046192C63AA00B0A3A5 /* Debug */,
+				34010047192C63AA00B0A3A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34010048192C63AA00B0A3A5 /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook_AXNotifierTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34010049192C63AA00B0A3A5 /* Debug */,
+				3401004A192C63AA00B0A3A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3401000C192C63AA00B0A3A5 /* Project object */;
+}
