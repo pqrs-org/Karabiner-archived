@@ -54,6 +54,10 @@ Since 9.3.0
     * v9.3.76: Added Option::KEYOVERLAIDMODIFIER\_REPEAT\_TOKEYS.
     * v9.3.81: Added Option::DROPSCROLLWHEEL\_DROP\_MOMENTUM\_SCROLL.
     * v9.3.85: Added KeyCode::VK\_NEGATIVE\_LOCK\_*. (eg. KeyCode::VK\_NEGATIVE\_LOCK\_COMMAND\_L, KeyCode::VK\_NEGATIVE\_LOCK\_SHIFT\_L.)
+    * v9.3.86: Added KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_*:
+        * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_TOGGLE
+        * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_ON
+        * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_OFF
 
 Version 9.3.0
 -------------
