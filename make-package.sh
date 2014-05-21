@@ -21,6 +21,7 @@ cp -R "src/core/server/build/Release/KeyRemap4MacBook.app" "pkgroot/Applications
 basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Applications"
 mkdir -p "$basedir"
 for d in \
+    src/util/AXNotifier/build/Release/KeyRemap4MacBook_AXNotifier.app \
     src/util/EventViewer/build/Release/EventViewer.app \
     src/util/cli/build/Release/KeyRemap4MacBook_cli.app \
     src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app \
