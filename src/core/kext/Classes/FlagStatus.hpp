@@ -104,6 +104,10 @@ namespace org_pqrs_KeyRemap4MacBook {
     DECLARE_METHODS(lazy_decrease)
 #undef DECLARE_METHODS
 
+    void sticky_active_modifiers_toggle(void);
+    void sticky_active_modifiers_increase(void);
+    void sticky_active_modifiers_decrease(void);
+
     void sticky_clear(void);
     void lock_clear(void);
     void negative_lock_clear(void);

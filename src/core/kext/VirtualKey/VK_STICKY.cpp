@@ -42,12 +42,19 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
 
-    if (params.key == KeyCode::VK_STICKY_ALL_FORCE_OFF) {
-      if (isFirstKeyDownEvent) {
-        FlagStatus::globalFlagStatus().sticky_clear();
-      }
-      goto remapped;
-    }
+#define HANDLE_KEYCODE(KEYCODE, METHOD) {        \
+    if (params.key == KEYCODE) {                 \
+      if (isFirstKeyDownEvent) {                 \
+        FlagStatus::globalFlagStatus().METHOD(); \
+      }                                          \
+      goto remapped;                             \
+    }                                            \
+}                                                \
+
+    HANDLE_KEYCODE(KeyCode::VK_STICKY_ACTIVE_MODIFIERS_TOGGLE,    sticky_active_modifiers_toggle);
+    HANDLE_KEYCODE(KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,  sticky_active_modifiers_increase);
+    HANDLE_KEYCODE(KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_OFF, sticky_active_modifiers_decrease);
+    HANDLE_KEYCODE(KeyCode::VK_STICKY_ALL_FORCE_OFF,              sticky_clear);
 
     return false;
 
