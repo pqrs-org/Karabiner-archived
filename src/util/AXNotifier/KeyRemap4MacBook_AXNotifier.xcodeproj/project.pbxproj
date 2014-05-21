@@ -12,7 +12,7 @@
 		34010024192C63AA00B0A3A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34010023192C63AA00B0A3A5 /* main.m */; };
 		3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401002A192C63AA00B0A3A5 /* AppDelegate.m */; };
 		3401002E192C63AA00B0A3A5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3401002C192C63AA00B0A3A5 /* MainMenu.xib */; };
-		34010030192C63AA00B0A3A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3401002F192C63AA00B0A3A5 /* Images.xcassets */; };
+		34D05539192C6962001A4F4F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34D05538192C6962001A4F4F /* app.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,8 @@
 		34010029192C63AA00B0A3A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3401002A192C63AA00B0A3A5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3401002D192C63AA00B0A3A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		3401002F192C63AA00B0A3A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		34D05538192C6962001A4F4F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
+		34D0553A192C6E98001A4F4F /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +85,8 @@
 			children = (
 				34010029192C63AA00B0A3A5 /* AppDelegate.h */,
 				3401002A192C63AA00B0A3A5 /* AppDelegate.m */,
+				34D0553A192C6E98001A4F4F /* KeyRemap4MacBookKeys.h */,
 				3401002C192C63AA00B0A3A5 /* MainMenu.xib */,
-				3401002F192C63AA00B0A3A5 /* Images.xcassets */,
 				3401001E192C63AA00B0A3A5 /* Supporting Files */,
 			);
 			path = KeyRemap4MacBook_AXNotifier;
@@ -94,10 +95,11 @@
 		3401001E192C63AA00B0A3A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				34D05538192C6962001A4F4F /* app.icns */,
 				3401001F192C63AA00B0A3A5 /* Info.plist */,
 				34010020192C63AA00B0A3A5 /* InfoPlist.strings */,
-				34010023192C63AA00B0A3A5 /* main.m */,
 				34010025192C63AA00B0A3A5 /* KeyRemap4MacBook_AXNotifier-Prefix.pch */,
+				34010023192C63AA00B0A3A5 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -154,8 +156,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D05539192C6962001A4F4F /* app.icns in Resources */,
 				34010022192C63AA00B0A3A5 /* InfoPlist.strings in Resources */,
-				34010030192C63AA00B0A3A5 /* Images.xcassets in Resources */,
 				3401002E192C63AA00B0A3A5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,11 +242,10 @@
 		34010047192C63AA00B0A3A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KeyRemap4MacBook_AXNotifier/KeyRemap4MacBook_AXNotifier-Prefix.pch";
-				INFOPLIST_FILE = "KeyRemap4MacBook_AXNotifier/Info.plist";
+				INFOPLIST_FILE = KeyRemap4MacBook_AXNotifier/Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
