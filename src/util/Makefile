@@ -1,4 +1,5 @@
 all:
+	$(MAKE) -C AXNotifier
 	$(MAKE) -C EventViewer
 	$(MAKE) -C cli
 	$(MAKE) -C multitouchextension
@@ -6,6 +7,7 @@ all:
 	$(MAKE) -C warp-mouse-cursor-position
 
 clean:
+	$(MAKE) -C AXNotifier clean
 	$(MAKE) -C EventViewer clean
 	$(MAKE) -C cli clean
 	$(MAKE) -C multitouchextension clean
