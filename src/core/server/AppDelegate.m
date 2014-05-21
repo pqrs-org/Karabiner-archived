@@ -1,6 +1,7 @@
 #import <Carbon/Carbon.h>
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
+#import "FrontmostWindow.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
@@ -16,7 +17,7 @@
 
 @interface AppDelegate ()
 {
-  NSDictionary* applicationInformation_;
+  NSMutableDictionary* applicationInformation_;
   NSMutableDictionary* inputSourceInformation_;
 
   // for IONotification
@@ -37,25 +38,62 @@
   [clientForKernelspace send_workspacedata_to_kext:&bridgeworkspacedata_];
 }
 
+- (void) updateApplicationInformation
+{
+  NSString* name = [WorkSpaceData getActiveApplicationName];
+  if (! name) return;
+
+  // We ignore our investigation application.
+  if ([name isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) return;
+
+  bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
+
+  FrontmostWindow* frontmostWindow = [FrontmostWindow new];
+  if (frontmostWindow.windowName) {
+    bridgeworkspacedata_.windowname = [workSpaceData_ getWindowName:frontmostWindow.windowName];
+  }
+
+  [self send_workspacedata_to_kext];
+
+  @synchronized(self) {
+    applicationInformation_ = [NSMutableDictionary new];
+    applicationInformation_[@"name"] = name;
+    if (frontmostWindow.windowName) {
+      applicationInformation_[@"windowName"] = frontmostWindow.windowName;
+    }
+  }
+
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
+                                                                 object:nil];
+}
+
 // ------------------------------------------------------------
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSString* name = [WorkSpaceData getActiveApplicationName];
-    if (name) {
-      // We ignore our investigation application.
-      if (! [name isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) {
-        bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
-        [self send_workspacedata_to_kext];
+    [self updateApplicationInformation];
+  });
+}
 
-        @synchronized(self) {
-          applicationInformation_ = @{ @"name":name };
-        }
+- (void) observer_NSWorkspaceActiveSpaceDidChangeNotification:(NSNotification*)notification
+{
+  // We need to observe this NSWorkspaceActiveSpaceDidChangeNotification.
+  //
+  // Because NSWorkspaceDidActivateApplicationNotification does not provide properly windowName when
+  // NSWorkspaceDidActivateApplicationNotification is called with the space switching.
+  //
+  // NSWorkspaceDidActivateApplicationNotification will be called before space switching is completed.
+  // Then, the windowName will be empty because there is no window at screen.
 
-        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
-                                                                       object:nil];
-      }
-    }
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self updateApplicationInformation];
+  });
+}
+
+- (void) distributedObserver_kKeyRemap4MacBookAXTitleChangedNotification:(NSNotification*)notification
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self updateApplicationInformation];
   });
 }
 
@@ -335,6 +373,17 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
                                                              name:NSWorkspaceDidActivateApplicationNotification
                                                            object:nil];
 
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceActiveSpaceDidChangeNotification:)
+                                                             name:NSWorkspaceActiveSpaceDidChangeNotification
+                                                           object:nil];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookAXTitleChangedNotification:)
+                                                          name:(NSString*)(kKeyRemap4MacBookAXTitleChangedNotification)
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+
   // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
   // because kTISNotify* will be dropped sometimes without this.
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
@@ -395,11 +444,15 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (NSDictionary*) getApplicationInformation
 {
-  return applicationInformation_;
+  @synchronized(self) {
+    return applicationInformation_;
+  }
 }
 - (NSDictionary*) getInputSourceInformation
 {
-  return inputSourceInformation_;
+  @synchronized(self) {
+    return inputSourceInformation_;
+  }
 }
 
 // ------------------------------------------------------------
