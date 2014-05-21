@@ -140,11 +140,11 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
       <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
     </item>
-    
+
     <item>
       <name>Change Functional Keys to F1...F12 (MacBook late 2013 with Launchpad on F4 key)</name>
       <appendix>(For keyboards of F10 == Volume Mute and F4 == Launchpad)</appendix>
-      <identifier>remap.app_term_functional2function</identifier>
+      <identifier>remap.app_term_functional2function2</identifier>
       <only>TERMINAL</only>
       <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_DOWN, KeyCode::F1</autogen>
       <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::F2</autogen>
@@ -161,8 +161,8 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::F11</autogen>
       <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::F12</autogen>
     </item>
-    
-    
+
+
     <item>
       <name>Change Option+y to F18</name>
       <only>TERMINAL</only>
