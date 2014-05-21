@@ -113,5 +113,21 @@
       <autogen>__KeyToKey__ KeyCode::V, KeyCode::VK_STICKY_EXTRA4_FORCE_OFF</autogen>
       <autogen>__KeyToKey__ KeyCode::B, KeyCode::VK_STICKY_EXTRA5_FORCE_OFF</autogen>
     </item>
+
+    <item>
+      <name>Active modifiers manipulator</name>
+      <appendix>Use A to KeyCode::VK_STICKY_ACTIVE_MODIFIERS_TOGGLE</appendix>
+      <appendix>Use S to KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON</appendix>
+      <appendix>Use D to KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_OFF</appendix>
+      <appendix>Use Z to Force Sticky off All</appendix>
+      <appendix></appendix>
+      <appendix>For example, command-shift-A toggles command and shift sticky modifiers state.</appendix>
+      <identifier>remap.samples_vk_sticky_active_modifiers_manipulator</identifier>
+      <autogen>__KeyToKey__ KeyCode::A, KeyCode::VK_STICKY_ACTIVE_MODIFIERS_TOGGLE</autogen>
+      <autogen>__KeyToKey__ KeyCode::S, KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON</autogen>
+      <autogen>__KeyToKey__ KeyCode::D, KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_OFF</autogen>
+      <autogen>__KeyToKey__ KeyCode::Z, KeyCode::VK_STICKY_ALL_FORCE_OFF</autogen>
+    </item>
+
   </item>
 </root>
