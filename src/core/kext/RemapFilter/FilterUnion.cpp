@@ -111,6 +111,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
+        case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
+          p_.windowNameFilter = new WindowNameFilter(type_);
+          if (p_.windowNameFilter) {
+            for (size_t i = 1; i < length; ++i) {
+              (p_.windowNameFilter)->add(AddValue(vec[i]));
+            }
+          }
+          break;
+
         default:
           IOLOG_ERROR("FilterUnion::initialize unknown type_:%d.\n", type_);
           goto error;
@@ -176,6 +186,13 @@ namespace org_pqrs_KeyRemap4MacBook {
             delete p_.modifierFilter;
           }
           break;
+
+        case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
+        case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
+          if (p_.windowNameFilter) {
+            delete p_.windowNameFilter;
+          }
+          break;
       }
 
       type_ = BRIDGE_FILTERTYPE_NONE;
@@ -233,6 +250,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
           if (p_.modifierFilter) {
             return (p_.modifierFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
+        case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
+          if (p_.windowNameFilter) {
+            return (p_.windowNameFilter)->isblocked();
           }
           break;
       }
