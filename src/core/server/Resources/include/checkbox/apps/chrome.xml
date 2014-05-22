@@ -11,5 +11,29 @@
       <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ModifierFlag::NONE,
         KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
+
+    <item>
+      <name>Disable Close Window shortcut (command-shift-w)</name>
+      <identifier>remap.app_google_chrome_disable_close_window</identifier>
+      <only>GOOGLE_CHROME</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+      </autogen>
+    </item>
+
+    <item>
+      <name>Disable Close Tab shortcut (command-w) on Google Translate</name>
+      <identifier>remap.app_google_chrome_disable_close_tab_on_google_translate</identifier>
+      <only>GOOGLE_CHROME</only>
+      <windowname_only>Google_Translate</windowname_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+      </autogen>
+    </item>
+
   </item>
 </root>
