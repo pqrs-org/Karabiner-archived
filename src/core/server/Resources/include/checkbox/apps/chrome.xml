@@ -3,7 +3,7 @@
   <item>
     <name>Enable at only Google Chrome</name>
     <item>
-      <name>Tilt Wheel to Back/Forward (Command+[, Command+])</name>
+      <name>Tilt Wheel to Back/Forward. (Command+[, Command+])</name>
       <identifier>remap.app_google_chrome_tilt_to_back_forward</identifier>
       <only>GOOGLE_CHROME</only>
       <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT, ModifierFlag::NONE,
@@ -13,7 +13,7 @@
     </item>
 
     <item>
-      <name>Disable Close Window shortcut (command-shift-w)</name>
+      <name>Disable Close Window shortcut. (command-shift-w)</name>
       <identifier>remap.app_google_chrome_disable_close_window</identifier>
       <only>GOOGLE_CHROME</only>
       <autogen>
@@ -24,7 +24,8 @@
     </item>
 
     <item>
-      <name>Disable Close Tab shortcut (command-w) on Google Translate</name>
+      <name>Disable Close Tab shortcut (command-w) on Google Translate.</name>
+      <include path="../snippets/appendix_axnotifier.xml" />
       <identifier>remap.app_google_chrome_disable_close_tab_on_google_translate</identifier>
       <only>GOOGLE_CHROME</only>
       <windowname_only>Google_Translate</windowname_only>
