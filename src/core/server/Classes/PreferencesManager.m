@@ -30,7 +30,7 @@
                           kStatusWindowOpacity : @80,
                           kStatusWindowFontSize : @0,  // Small
                           kStatusWindowPosition : @3,  // Bottom right
-  };
+                          kLaunchAXNotifierAutomatically : @NO, };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 

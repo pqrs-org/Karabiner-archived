@@ -422,6 +422,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [updater_ checkForUpdatesInBackground:nil];
 
   // ------------------------------------------------------------
+  // Launch AXNotifier if needed.
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kLaunchAXNotifierAutomatically]) {
+    [self launchAXNotifier:nil];
+  }
+
+  // ------------------------------------------------------------
   // Open Preferences if KeyRemap4MacBook was launched by hand.
   if (! fromLaunchAgents &&
       ! isDescendantProcess) {
@@ -465,6 +471,26 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 - (IBAction) launchMultiTouchExtension:(id)sender
 {
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"];
+}
+
+- (IBAction) launchAXNotifier:(id)sender
+{
+  if (sender) {
+    // Launch from button.
+    // Check existing processes.
+    NSArray* apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"org.pqrs.KeyRemap4MacBook-AXNotifier"];
+    if ([apps count] > 0) {
+      [[NSAlert alertWithMessageText:@"AXNotifier is already running."
+                       defaultButton:nil
+                     alternateButton:nil
+                         otherButton:nil
+           informativeTextWithFormat:@""] runModal];
+      return;
+    }
+  }
+
+  NSString* path = @"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app";
+  [[NSWorkspace sharedWorkspace] launchApplication:path];
 }
 
 - (IBAction) launchUninstaller:(id)sender
