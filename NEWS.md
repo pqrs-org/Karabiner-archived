@@ -58,6 +58,9 @@ Since 9.3.0
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_TOGGLE
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_ON
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_OFF
+    * v9.3.87: Added &lt;windowname\_only&gt; and &lt;windowname\_not&gt; filters.
+        * You need to launch AXNotifier in order to use these filters. <br />
+          You can launch AXNotifier from Preferences &gt; Misc tab &gt; Helper Applications.
 
 Version 9.3.0
 -------------
