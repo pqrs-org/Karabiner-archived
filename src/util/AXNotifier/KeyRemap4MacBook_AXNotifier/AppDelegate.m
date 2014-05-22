@@ -81,11 +81,11 @@ finish:
   dispatch_async(dispatch_get_main_queue(), ^{
     if (AXIsProcessTrusted()) {
       [_text setStringValue:@"AXNotifier is working."];
+      [[NSApplication sharedApplication] hide:self];
 
       if (! initialized_) {
         initialized_ = YES;
         [self registerApplication:[[NSWorkspace sharedWorkspace] frontmostApplication]];
-        [[NSApplication sharedApplication] hide:self];
       }
 
     } else {
