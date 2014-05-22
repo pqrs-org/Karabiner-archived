@@ -101,6 +101,10 @@ finish:
   NSDictionary* options = @{ (__bridge NSString*)(kAXTrustedCheckOptionPrompt): @YES };
   AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
 
+  if (! AXIsProcessTrusted()) {
+    [_window orderFront:self];
+  }
+
   [NSTimer scheduledTimerWithTimeInterval:1.0
                                    target:self
                                  selector:@selector(timerFireMethod:)
