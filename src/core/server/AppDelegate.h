@@ -32,6 +32,7 @@
 
 - (IBAction) launchEventViewer:(id)sender;
 - (IBAction) launchMultiTouchExtension:(id)sender;
+- (IBAction) launchAXNotifier:(id)sender;
 - (IBAction) launchUninstaller:(id)sender;
 - (IBAction) openPreferences:(id)sender;
 - (IBAction) openPrivateXML:(id)sender;

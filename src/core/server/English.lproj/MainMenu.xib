@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1090" defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -108,7 +108,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView initialItem="633" id="630">
-                        <rect key="frame" x="13" y="10.000000077850888" width="642" height="604"/>
+                        <rect key="frame" x="13" y="10" width="642" height="604"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
@@ -619,7 +619,7 @@ Use the first two settings below.</string>
                             <tabViewItem label="MenuBar" identifier="Item 3" id="631">
                                 <view key="view" id="693">
                                     <rect key="frame" x="10" y="33" width="622" height="558"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="SettingList" borderType="line" id="695">
                                             <rect key="frame" x="14" y="80" width="594" height="375"/>
@@ -633,7 +633,7 @@ Use the first two settings below.</string>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" id="XEC-4K-dD2">
                                                             <rect key="frame" x="1" y="1" width="554" height="190"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="703">
                                                                     <rect key="frame" x="0.0" y="0.0" width="554" height="190"/>
@@ -881,7 +881,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="658">
-                                                        <rect key="frame" x="12" y="6" width="241" height="32"/>
+                                                        <rect key="frame" x="12" y="31" width="241" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="Launch &quot;multi-touch extension&quot;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="661">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -889,6 +889,28 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="launchMultiTouchExtension:" target="494" id="1200"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" id="LAa-FB-Zob">
+                                                        <rect key="frame" x="12" y="7" width="154" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Launch AXNotifier" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xJM-eu-97h">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="launchAXNotifier:" target="494" id="H4Y-Hw-HY1"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button id="k2r-Pp-deQ">
+                                                        <rect key="frame" x="173" y="15" width="228" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Launch AXNotifier automatically." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BFB-pU-ARQ">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="1176" name="value" keyPath="values.kLaunchAXNotifierAutomatically" id="fR6-ve-MBH"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
