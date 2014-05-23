@@ -76,6 +76,12 @@ finish:
   [self registerApplication:runningApplication];
 }
 
+- (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
+{
+  [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
+  [NSApp terminate:self];
+}
+
 - (void) timerFireMethod:(NSTimer*)timer
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -115,6 +121,12 @@ finish:
                                                          selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                              name:NSWorkspaceDidActivateApplicationNotification
                                                            object:nil];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:)
+                                                          name:kKeyRemap4MacBookServerDidLaunchNotification
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
 - (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
