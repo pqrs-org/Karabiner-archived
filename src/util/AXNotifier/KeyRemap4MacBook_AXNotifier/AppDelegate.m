@@ -129,10 +129,4 @@ finish:
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
 
-- (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
-{
-  [[NSApplication sharedApplication] unhide:self];
-  return YES;
-}
-
 @end
