@@ -51,6 +51,13 @@
 }
 
 // ------------------------------------------------------------
+- (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
+{
+  [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
+  [NSApp terminate:self];
+}
+
+// ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [self setKeyResponder];
   [self updateOtherInformationStore];
@@ -66,6 +73,12 @@
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_inputSourceChanged:)
                                                           name:kKeyRemap4MacBookInputSourceChangedNotification
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:)
+                                                          name:kKeyRemap4MacBookServerDidLaunchNotification
                                                         object:nil
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
