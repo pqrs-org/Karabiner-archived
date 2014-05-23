@@ -422,17 +422,23 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [updater_ checkForUpdatesInBackground:nil];
 
   // ------------------------------------------------------------
-  // Send kKeyRemap4MacBookServerDidLaunchNotification before launching AXNotifier.
-  // (AXNotifier will be relaunched by kKeyRemap4MacBookServerDidLaunchNotification.
-  // So, we need to send the notification before launching AXNotifier.)
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerDidLaunchNotification
-                                                                 object:nil];
-
-  // ------------------------------------------------------------
   // Launch AXNotifier if needed.
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kLaunchAXNotifierAutomatically]) {
     [self launchAXNotifier:nil];
   }
+
+  // ------------------------------------------------------------
+  // Send kKeyRemap4MacBookServerDidLaunchNotification after launching AXNotifier.
+  //
+  // AXNotifier will be relaunched by kKeyRemap4MacBookServerDidLaunchNotification.
+  // If we send the notification before launching AXNotifier,
+  // two AXNotifier processes will be launched when AXNotifier is already running.
+  //
+  // * relaunched AXNotifier.
+  // * AXNotifier launched by launchAXNotifier.
+
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerDidLaunchNotification
+                                                                 object:nil];
 
   // ------------------------------------------------------------
   // Open Preferences if KeyRemap4MacBook was launched by hand.
