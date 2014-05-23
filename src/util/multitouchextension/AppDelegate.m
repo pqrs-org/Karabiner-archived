@@ -1,5 +1,6 @@
 #include <IOKit/IOKitLib.h>
 #import "AppDelegate.h"
+#import "KeyRemap4MacBookKeys.h"
 #import "PreferencesKeys.h"
 
 enum { MAX_FINGERS = 4 };
