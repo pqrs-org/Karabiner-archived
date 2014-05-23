@@ -414,6 +414,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   });
 }
 
+- (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
+{
+  [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
+  [NSApp terminate:self];
+}
+
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [preferences_ load];
@@ -439,6 +445,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                          selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
                                                              name:NSWorkspaceSessionDidResignActiveNotification
                                                            object:nil];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:)
+                                                          name:kKeyRemap4MacBookServerDidLaunchNotification
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
   [self setcallback:YES];
 }
