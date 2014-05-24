@@ -6,6 +6,7 @@
 
 + (AXUIElementRef) copyFocusedUIElement;
 + (AXUIElementRef) copyFocusedWindow;
++ (AXUIElementRef) copyFrontmost;
 + (AXUIElementRef) copyMainWindow;
 
 + (NSString*) titleOfUIElement:(AXUIElementRef)element;

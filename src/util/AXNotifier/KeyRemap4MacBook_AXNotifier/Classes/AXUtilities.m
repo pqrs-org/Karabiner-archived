@@ -6,12 +6,30 @@
 {
   AXUIElementRef result = NULL;
   AXUIElementRef systemWideElement = NULL;
+  AXUIElementRef applicationElement = NULL;
+  AXUIElementRef baseElement = NULL;
   AXError error = kAXErrorSuccess;
 
   systemWideElement = AXUIElementCreateSystemWide();
   if (! systemWideElement) goto finish;
 
-  error = AXUIElementCopyAttributeValue(systemWideElement, kAXFocusedUIElementAttribute, (CFTypeRef*)&result);
+  if (CFStringCompare(attribute, kAXFocusedUIElementAttribute, 0) == kCFCompareEqualTo) {
+    baseElement = systemWideElement;
+  } else {
+    error = AXUIElementCopyAttributeValue(systemWideElement,
+                                          kAXFocusedApplicationAttribute,
+                                          (CFTypeRef*)(&applicationElement));
+    if (error != kAXErrorSuccess) {
+      NSLog(@"AXUIElementCopyAttributeValue is failed: %@", kAXFocusedApplicationAttribute);
+      result = NULL;
+      goto finish;
+    }
+    baseElement = applicationElement;
+  }
+
+  error = AXUIElementCopyAttributeValue(baseElement,
+                                        attribute,
+                                        (CFTypeRef*)(&result));
   if (error != kAXErrorSuccess) {
     NSLog(@"AXUIElementCopyAttributeValue is failed: %@", attribute);
     result = NULL;
@@ -19,8 +37,15 @@
   }
 
 finish:
+  // Do not release baseElement. (baseElement is not own.)
+
+  if (applicationElement) {
+    CFRelease(applicationElement);
+    applicationElement = NULL;
+  }
   if (systemWideElement) {
     CFRelease(systemWideElement);
+    systemWideElement = NULL;
   }
   return result;
 }
@@ -33,6 +58,11 @@ finish:
 + (AXUIElementRef) copyFocusedWindow
 {
   return [AXUtilities copyUIElement:kAXFocusedWindowAttribute];
+}
+
++ (AXUIElementRef) copyFrontmost
+{
+  return [AXUtilities copyUIElement:kAXFrontmostAttribute];
 }
 
 + (AXUIElementRef) copyMainWindow
