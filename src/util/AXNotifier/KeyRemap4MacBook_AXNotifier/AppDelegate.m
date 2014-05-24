@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "AXUtilities.h"
 #import "KeyRemap4MacBookKeys.h"
 
 // ==================================================
@@ -6,16 +7,131 @@
 {
   BOOL initialized_;
   AXObserverRef observer_;
+  NSMutableDictionary* focusedUIElementInformation_;
 }
 @end
 
 @implementation AppDelegate
 
+/*
+ * Notification and Information
+ * ============================
+ *
+ * We need to observe these notifications on a web browser which has tab and multi window.
+ *
+ * - NSWorkspaceDidActivateApplicationNotification
+ * - kAXTitleChangedNotification
+ * - kAXFocusedWindowChangedNotification
+ * - kAXFocusedUIElementChangedNotification
+ *
+ *
+ * NSWorkspaceDidActivateApplicationNotification
+ * ---------------------------------------------
+ *
+ *   A essential notification for bundle identifier.
+ *   This notification is also needed for title and role when user changed focused application.
+ *
+ *   (kAXTitleChangedNotification and other AX notifications will not be sent when user changed focused application
+ *   because we create an observer for focused application when application is focused.)
+ *
+ *   Items that need to be updated:
+ *     - bundleIdentifier
+ *     - title
+ *     - role
+ *
+ *
+ * kAXTitleChangedNotification
+ * ---------------------------
+ *
+ *   A essential notification for window name.
+ *
+ *   Items that need to be updated:
+ *     - title
+ *
+ *
+ * kAXFocusedWindowChangedNotification
+ * -----------------------------------
+ *
+ *   It's necessary for window name when user changes a focused window.
+ *   (kAXTitleChangedNotification will not be sent when user changed focused window.)
+ *
+ *   Items that need to be updated:
+ *     - title
+ *
+ *
+ * kAXFocusedUIElementChangedNotification
+ * --------------------------------------
+ *
+ *   A essential notification for ui element role.
+ *   (kAXFocusedUIElementChangedNotification will also be triggered when user changed focused window.)
+ *
+ *   Items that need to be updated:
+ *     - role
+ *
+ */
+
+- (void) updateBundleIdentifier:(NSRunningApplication*)runningApplication
+{
+  @synchronized(self) {
+    focusedUIElementInformation_[@"bundleIdentifier"] = [runningApplication bundleIdentifier];
+  }
+}
+
+- (void) updateTitle
+{
+  @synchronized(self) {
+    focusedUIElementInformation_[@"title"] = @"";
+
+    AXUIElementRef element = [AXUtilities copyFocusedWindow];
+    if (element) {
+      NSString* title = [AXUtilities titleOfUIElement:element];
+      if (title) {
+        focusedUIElementInformation_[@"title"] = title;
+      }
+      CFRelease(element);
+    }
+  }
+}
+
+- (void) updateRole
+{
+  @synchronized(self) {
+    focusedUIElementInformation_[@"role"] = @"";
+
+    AXUIElementRef element = [AXUtilities copyFocusedUIElement];
+    if (element) {
+      NSString* role = [AXUtilities roleOfUIElement:element];
+      if (role) {
+        focusedUIElementInformation_[@"role"] = role;
+      }
+      CFRelease(element);
+    }
+  }
+}
+
+- (void) sendNotification
+{
+  NSLog(@"%@", focusedUIElementInformation_);
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookAXTitleChangedNotification
+                                                                 object:nil
+                                                               userInfo:focusedUIElementInformation_];
+}
+
 static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef notification, void* refcon)
 {
-  if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo) {
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookAXTitleChangedNotification
-                                                                   object:nil];
+  AppDelegate* self = (__bridge AppDelegate*)(refcon);
+  if (! self) return;
+
+  NSLog(@"observerCallback: %@", (__bridge NSString*)(notification));
+
+  if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo ||
+      CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
+    [self updateTitle];
+    [self sendNotification];
+  }
+  if (CFStringCompare(notification, kAXFocusedUIElementChangedNotification, 0) == kCFCompareEqualTo) {
+    [self updateRole];
+    [self sendNotification];
   }
 }
 
@@ -53,10 +169,18 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
     goto finish;
   }
 
-  error = AXObserverAddNotification(observer_, application, kAXTitleChangedNotification, (__bridge void*)self);
-  if (error != kAXErrorSuccess) {
-    NSLog(@"AXObserverAddNotification is failed: pid:%d error:%d", pid, error);
-    goto finish;
+  {
+    NSArray* notifications = @[(__bridge NSString*)(kAXTitleChangedNotification),
+                               (__bridge NSString*)(kAXFocusedWindowChangedNotification),
+                               (__bridge NSString*)(kAXFocusedUIElementChangedNotification),
+                             ];
+    for (NSString* notification in notifications) {
+      error = AXObserverAddNotification(observer_, application, (__bridge CFStringRef)(notification), (__bridge void*)self);
+      if (error != kAXErrorSuccess) {
+        NSLog(@"AXObserverAddNotification is failed: pid:%d error:%d", pid, error);
+        goto finish;
+      }
+    }
   }
 
   CFRunLoopAddSource(CFRunLoopGetCurrent(),
@@ -73,7 +197,13 @@ finish:
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
   NSRunningApplication* runningApplication = [notification userInfo][NSWorkspaceApplicationKey];
+
   [self registerApplication:runningApplication];
+
+  [self updateBundleIdentifier:runningApplication];
+  [self updateTitle];
+  [self updateRole];
+  [self sendNotification];
 }
 
 - (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
@@ -104,6 +234,8 @@ finish:
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
+  focusedUIElementInformation_ = [NSMutableDictionary new];
+
   NSDictionary* options = @{ (__bridge NSString*)(kAXTrustedCheckOptionPrompt): @YES };
   AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
 
