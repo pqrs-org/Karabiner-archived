@@ -13,7 +13,10 @@
   systemWideElement = AXUIElementCreateSystemWide();
   if (! systemWideElement) goto finish;
 
+  // ----------------------------------------
+  // set baseElement
   if (CFStringCompare(attribute, kAXFocusedUIElementAttribute, 0) == kCFCompareEqualTo) {
+    // We can get kAXFocusedUIElementAttribute from systemWideElement.
     baseElement = systemWideElement;
   } else {
     error = AXUIElementCopyAttributeValue(systemWideElement,
