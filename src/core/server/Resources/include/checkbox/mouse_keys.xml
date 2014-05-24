@@ -5,7 +5,7 @@
     <item>
       <name style="important">Important:</name>
       <appendix>You need at least one pointing device that has been remapped in order to use Mouse Keys feature.</appendix>
-      <appendix>Therefore, Mouse Keys does not work with "General > Don't remap any pointing devices".</appendix>
+      <appendix>Do not enable "General &gt; Don't remap any pointing devices" if you want to use Mouse Keys.</appendix>
     </item>
 
     <item>
