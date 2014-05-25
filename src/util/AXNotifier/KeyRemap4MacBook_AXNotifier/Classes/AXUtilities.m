@@ -25,7 +25,10 @@
                                           kAXFocusedApplicationAttribute,
                                           (CFTypeRef*)(&applicationElement));
     if (error != kAXErrorSuccess) {
+#if 0
+      // for debug
       NSLog(@"AXUIElementCopyAttributeValue is failed: %@", kAXFocusedApplicationAttribute);
+#endif
       result = NULL;
       goto finish;
     }
@@ -36,7 +39,10 @@
                                         attribute,
                                         (CFTypeRef*)(&result));
   if (error != kAXErrorSuccess) {
+#if 0
+    // for debug
     NSLog(@"AXUIElementCopyAttributeValue is failed: %@", attribute);
+#endif
     result = NULL;
     goto finish;
   }
