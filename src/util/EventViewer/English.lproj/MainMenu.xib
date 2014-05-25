@@ -395,12 +395,13 @@
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="bZa-Vw-TNh"/>
                                                     </imageView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EYh-8r-92q">
-                                                        <rect key="frame" x="56" y="14" width="633" height="34"/>
+                                                        <rect key="frame" x="56" y="-3" width="633" height="51"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="ska-M2-30n">
                                                             <font key="font" metaFont="system"/>
-                                                            <string key="title">If you want to observe Window Name frequently, you need to use AXNotifier.
-(You can launch AXNotifier from KeyRemap4MacBook Preferences &gt; Misc tab &gt; Helper Applications.</string>
+                                                            <string key="title">Window Name and UIElement Role require accessibility features.
+If these values are empty, please permit accessibility features to KeyRemap4MacBook_AXNotifier.
+</string>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -416,7 +417,7 @@
                             <tabViewItem label="Devices" identifier="Devices" id="657">
                                 <view key="view" id="658">
                                     <rect key="frame" x="10" y="33" width="828" height="566"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Device information" borderType="line" id="764">
                                             <rect key="frame" x="6" y="143" width="816" height="423"/>
@@ -430,7 +431,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" id="sNt-DB-b00">
                                                             <rect key="frame" x="1" y="17" width="761" height="336"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="752" id="750">
                                                                     <rect key="frame" x="0.0" y="0.0" width="761" height="336"/>
