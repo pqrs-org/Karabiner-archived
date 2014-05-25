@@ -49,18 +49,24 @@ enum {
 
 - (void) push:(NSDictionary*)dictionary
 {
-  NSString* applicationBundleIdentifier = dictionary[@"bundleIdentifier"];
-  if (! applicationBundleIdentifier) {
-    applicationBundleIdentifier = @"";
+  NSString* bundleIdentifier = dictionary[@"BundleIdentifier"];
+  if (! bundleIdentifier) {
+    bundleIdentifier = @"";
   }
 
-  NSString* windowName = dictionary[@"title"];
+  NSString* windowName = dictionary[@"WindowName"];
   if (! windowName) {
     windowName = @"";
   }
 
-  NSDictionary* dict = @{ @"applicationBundleIdentifier": applicationBundleIdentifier,
-                          @"windowName": windowName,
+  NSString* role = dictionary[@"UIElementRole"];
+  if (! role) {
+    role = @"";
+  }
+
+  NSDictionary* dict = @{ @"BundleIdentifier": bundleIdentifier,
+                          @"WindowName": windowName,
+                          @"UIElementRole": role,
                           @"date": [[NSDate date] description] };
 
   [queue_ insertObject:dict atIndex:0];
@@ -84,7 +90,7 @@ enum {
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = queue_[([queue_ count] - 1 - i)];
 
-    [string appendFormat:@"%@\t%@\n", dict[@"applicationBundleIdentifier"], dict[@"windowName"]];
+    [string appendFormat:@"%@\t%@\t%@\n", dict[@"BundleIdentifier"], dict[@"WindowName"], dict[@"UIElementRole"]];
   }
 
   if ([string length] > 0) {
