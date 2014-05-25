@@ -1,9 +1,13 @@
 Since 9.3.0
 -----------
 
+* v9.99.1: AXNotifier has been added.<br />
+  AXNotifier allows you to observe the window name (window title) and the focused ui element role (eg. whether textarea or not).
+
 * Incompatible changes:
     * v9.3.81: KeyCode::VK\_JIS\_TEMPORARY_* are removed.<br />
       Please use &lt;inputsource\_filter&gt;, Option::KEYTOKEY\_BEFORE\_KEYDOWN, Option::KEYTOKEY\_AFTER\_KEYUP, KeyCode::JIS\_EISUU and KeyCode::JIS\_KANA instead.
+
 * v9.3.24: A command line utility "warp-mouse-cursor-position" has been added.<br />
   Settings which use this utility have been added, too.<br />
   For example, this setting allows you to move mouse cursor by tapping fn key:
@@ -59,8 +63,6 @@ Since 9.3.0
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_ON
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_OFF
     * v9.3.87: Added &lt;windowname\_only&gt; and &lt;windowname\_not&gt; filters.
-        * You need to launch AXNotifier in order to use these filters. <br />
-          You can launch AXNotifier from Preferences &gt; Misc tab &gt; Helper Applications.
 
 Version 9.3.0
 -------------
