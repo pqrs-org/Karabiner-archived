@@ -2,7 +2,7 @@
 
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
-#import "StartAtLoginController.h"
+#import "StartAtLoginUtilities.h"
 
 @implementation PreferencesController
 
@@ -44,7 +44,7 @@
 
 - (void) load
 {
-  if ([StartAtLoginController isStartAtLogin]) {
+  if ([StartAtLoginUtilities isStartAtLogin]) {
     [startAtLogin_ setState:NSOnState];
   } else {
     [startAtLogin_ setState:NSOffState];
@@ -59,10 +59,10 @@
 - (IBAction) setStartAtLogin:(id)sender
 {
   // startAtLogin
-  if ([StartAtLoginController isStartAtLogin]) {
-    [StartAtLoginController setStartAtLogin:NO];
+  if ([StartAtLoginUtilities isStartAtLogin]) {
+    [StartAtLoginUtilities setStartAtLogin:NO];
   } else {
-    [StartAtLoginController setStartAtLogin:YES];
+    [StartAtLoginUtilities setStartAtLogin:YES];
   }
 }
 

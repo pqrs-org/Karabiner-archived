@@ -1,6 +1,6 @@
-#import "StartAtLoginController.h"
+#import "StartAtLoginUtilities.h"
 
-@implementation StartAtLoginController
+@implementation StartAtLoginUtilities
 
 + (NSURL*) appURL
 {
@@ -12,7 +12,7 @@
   if (! loginItems) return NULL;
 
   LSSharedFileListItemRef retval = NULL;
-  NSURL* appURL = [StartAtLoginController appURL];
+  NSURL* appURL = [StartAtLoginUtilities appURL];
 
   UInt32 seed = 0U;
   CFArrayRef currentLoginItemsRef = LSSharedFileListCopySnapshot(loginItems, &seed);
@@ -46,7 +46,7 @@
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
   if (! loginItems) return;
 
-  NSURL* appURL = [StartAtLoginController appURL];
+  NSURL* appURL = [StartAtLoginUtilities appURL];
   LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)(appURL), NULL, NULL);
   if (item) {
     CFRelease(item);
@@ -59,7 +59,7 @@
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
   if (! loginItems) return;
 
-  LSSharedFileListItemRef item = [StartAtLoginController getLSSharedFileListItemRef:loginItems];
+  LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems];
   if (item) {
     LSSharedFileListItemRemove(loginItems, item);
   }
@@ -72,7 +72,7 @@
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
   if (! loginItems) return NO;
 
-  LSSharedFileListItemRef item = [StartAtLoginController getLSSharedFileListItemRef:loginItems];
+  LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems];
   CFRelease(loginItems);
 
   return item != NULL;
@@ -80,12 +80,12 @@
 
 + (void) setStartAtLogin:(BOOL)newvalue
 {
-  if ([StartAtLoginController isStartAtLogin] == newvalue) return;
+  if ([StartAtLoginUtilities isStartAtLogin] == newvalue) return;
 
   if (newvalue) {
-    [StartAtLoginController enableStartAtLogin];
+    [StartAtLoginUtilities enableStartAtLogin];
   } else {
-    [StartAtLoginController disableStartAtLogin];
+    [StartAtLoginUtilities disableStartAtLogin];
   }
 }
 

@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface StartAtLoginController : NSObject
+@interface StartAtLoginUtilities : NSObject
 
 + (BOOL) isStartAtLogin;
 + (void) setStartAtLogin:(BOOL)newvalue;
