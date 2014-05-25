@@ -119,7 +119,6 @@
 
 - (void) tellToServer
 {
-  NSLog(@"%@", focusedUIElementInformation_);
   [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
 }
 
@@ -127,8 +126,6 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
 {
   AppDelegate* self = (__bridge AppDelegate*)(refcon);
   if (! self) return;
-
-  NSLog(@"observerCallback: %@", (__bridge NSString*)(notification));
 
   if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo ||
       CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
