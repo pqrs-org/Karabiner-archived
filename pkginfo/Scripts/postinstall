@@ -4,7 +4,6 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 # ------------------------------------------------------------
 # set file permissions
 for f in \
-    /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.server.plist \
     /Applications/KeyRemap4MacBook.app \
     ; do
     echo "set file permissions: $f"
