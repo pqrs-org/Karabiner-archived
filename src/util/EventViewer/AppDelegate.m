@@ -15,39 +15,40 @@
 
 - (void) addToAppQueue
 {
-  @try {
-    [appQueue_ push:[[client_ proxy] application_information]];
-  } @catch (NSException* exception) {
-    NSLog(@"%@", exception);
+  @synchronized(self) {
+    static NSNumber* lastMtime = nil;
+
+    @try {
+      NSDictionary* information = [[client_ proxy] focused_uielement_information];
+      if (! [information[@"mtime"] isEqualToNumber:lastMtime]) {
+        lastMtime = information[@"mtime"];
+
+        [appQueue_ push:information];
+      }
+    } @catch (NSException* exception) {
+      NSLog(@"%@", exception);
+    }
   }
 }
 
 - (void) updateOtherInformationStore
 {
-  @try {
-    NSDictionary* d = [[client_ proxy] inputsource_information];
-    [otherinformationstore_ setLanguageCode:d[@"languageCode"]];
-    [otherinformationstore_ setInputSourceID:d[@"inputSourceID"]];
-    [otherinformationstore_ setInputModeID:d[@"inputModeID"]];
-  } @catch (NSException* exception) {
-    NSLog(@"%@", exception);
+  @synchronized(self) {
+    static NSNumber* lastMtime = nil;
+
+    @try {
+      NSDictionary* information = [[client_ proxy] inputsource_information];
+      if (! [information[@"mtime"] isEqualToNumber:lastMtime]) {
+        lastMtime = information[@"mtime"];
+
+        [otherinformationstore_ setLanguageCode:information[@"languageCode"]];
+        [otherinformationstore_ setInputSourceID:information[@"inputSourceID"]];
+        [otherinformationstore_ setInputModeID:information[@"inputModeID"]];
+      }
+    } @catch (NSException* exception) {
+      NSLog(@"%@", exception);
+    }
   }
-}
-
-// ------------------------------------------------------------
-- (void) distributedObserver_applicationChanged:(NSNotification*)notification
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self addToAppQueue];
-  });
-}
-
-// ------------------------------------------------------------
-- (void) distributedObserver_inputSourceChanged:(NSNotification*)notification
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self updateOtherInformationStore];
-  });
 }
 
 // ------------------------------------------------------------
@@ -58,24 +59,27 @@
 }
 
 // ------------------------------------------------------------
+- (void) timerFireMethod:(NSTimer*)timer
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self addToAppQueue];
+    [self updateOtherInformationStore];
+  });
+}
+
+// ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [self setKeyResponder];
   [self updateOtherInformationStore];
 
+  [NSTimer scheduledTimerWithTimeInterval:0.3
+                                   target:self
+                                 selector:@selector(timerFireMethod:)
+                                 userInfo:nil
+                                  repeats:YES];
+
   // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
   // in order to get notifications when this app is not active.
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(distributedObserver_applicationChanged:)
-                                                          name:kKeyRemap4MacBookApplicationChangedNotification
-                                                        object:nil
-                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
-
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(distributedObserver_inputSourceChanged:)
-                                                          name:kKeyRemap4MacBookInputSourceChangedNotification
-                                                        object:nil
-                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
-
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:)
                                                           name:kKeyRemap4MacBookServerDidLaunchNotification
