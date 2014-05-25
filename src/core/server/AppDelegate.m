@@ -388,13 +388,13 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   @synchronized(self) {
     if (information) {
       // We ignore our investigation application.
-      if ([information[@"bundleIdentifier"] isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) return;
+      if ([information[@"BundleIdentifier"] isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) return;
 
       focusedUIElementInformation_ = information;
     }
 
-    bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:focusedUIElementInformation_[@"bundleIdentifier"]];
-    bridgeworkspacedata_.windowname      = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"title"]];
+    bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:focusedUIElementInformation_[@"BundleIdentifier"]];
+    bridgeworkspacedata_.windowname      = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"WindowName"]];
     [self send_workspacedata_to_kext];
 
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
