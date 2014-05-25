@@ -255,19 +255,17 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   setenv([kDescendantProcess UTF8String], "1", 1);
 
   // ------------------------------------------------------------
+  BOOL openPreferences = NO;
+  if (! [StartAtLoginUtilities isStartAtLogin]) {
+    [StartAtLoginUtilities setStartAtLogin:YES];
+    openPreferences = YES;
+  }
+
+  // ------------------------------------------------------------
   system("/Applications/KeyRemap4MacBook.app/Contents/Library/bin/kextload load");
 
   // ------------------------------------------------------------
-  BOOL fromLaunchAgents = NO;
-
-  for (NSString* argument in [[NSProcessInfo processInfo] arguments]) {
-    if ([argument isEqualToString:@"--fromLaunchAgents"]) {
-      fromLaunchAgents = YES;
-    }
-  }
-
-  if (fromLaunchAgents) {
-    // ------------------------------------------------------------
+  {
     // Remove old pkg files and finish_installation.app in
     // "~/Library/Application Support/KeyRemap4MacBook/.Sparkle".
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
@@ -281,13 +279,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
         [fm removeItemAtPath:sparkle error:nil];
       }
     }
-
-    // ------------------------------------------------------------
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsQuitByHand]) {
-      [NSApp terminate:nil];
-    }
   }
-  [PreferencesManager setIsQuitByHand:@NO];
 
   // ------------------------------------------------------------
   if (! [serverForUserspace_ register]) {
@@ -365,7 +357,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
   // ------------------------------------------------------------
   // Open Preferences if KeyRemap4MacBook was launched by hand.
-  if (! fromLaunchAgents &&
+  if (openPreferences &&
       ! isDescendantProcess) {
     [preferencesController_ show];
   }
@@ -463,7 +455,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
                        informativeTextWithFormat:@"Are you sure you want to quit KeyRemap4MacBook?"];
   if ([alert runModal] != NSAlertDefaultReturn) return;
 
-  [PreferencesManager setIsQuitByHand:@YES];
+  [StartAtLoginUtilities setStartAtLogin:NO];
   [NSApp terminate:nil];
 }
 

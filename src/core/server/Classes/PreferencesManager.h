@@ -11,8 +11,6 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-+ (void) setIsQuitByHand:(NSNumber*)newvalue;
-
 // --------------------------------------------------
 - (void) load;
 
