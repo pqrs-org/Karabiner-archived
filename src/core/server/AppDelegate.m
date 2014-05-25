@@ -1,8 +1,8 @@
 #import <Carbon/Carbon.h>
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
-#import "FrontmostWindow.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
@@ -17,7 +17,7 @@
 
 @interface AppDelegate ()
 {
-  NSMutableDictionary* applicationInformation_;
+  NSDictionary* focusedUIElementInformation_;
   NSMutableDictionary* inputSourceInformation_;
 
   // for IONotification
@@ -38,65 +38,7 @@
   [clientForKernelspace send_workspacedata_to_kext:&bridgeworkspacedata_];
 }
 
-- (void) updateApplicationInformation
-{
-  NSString* name = [WorkSpaceData getActiveApplicationName];
-  if (! name) return;
-
-  // We ignore our investigation application.
-  if ([name isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) return;
-
-  bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:name];
-
-  FrontmostWindow* frontmostWindow = [FrontmostWindow new];
-  if (frontmostWindow.windowName) {
-    bridgeworkspacedata_.windowname = [workSpaceData_ getWindowName:frontmostWindow.windowName];
-  }
-
-  [self send_workspacedata_to_kext];
-
-  @synchronized(self) {
-    applicationInformation_ = [NSMutableDictionary new];
-    applicationInformation_[@"name"] = name;
-    if (frontmostWindow.windowName) {
-      applicationInformation_[@"windowName"] = frontmostWindow.windowName;
-    }
-  }
-
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
-                                                                 object:nil];
-}
-
 // ------------------------------------------------------------
-- (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self updateApplicationInformation];
-  });
-}
-
-- (void) observer_NSWorkspaceActiveSpaceDidChangeNotification:(NSNotification*)notification
-{
-  // We need to observe this NSWorkspaceActiveSpaceDidChangeNotification.
-  //
-  // Because NSWorkspaceDidActivateApplicationNotification does not provide properly windowName when
-  // NSWorkspaceDidActivateApplicationNotification is called with the space switching.
-  //
-  // NSWorkspaceDidActivateApplicationNotification will be called before space switching is completed.
-  // Then, the windowName will be empty because there is no window at screen.
-
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self updateApplicationInformation];
-  });
-}
-
-- (void) distributedObserver_kKeyRemap4MacBookAXTitleChangedNotification:(NSNotification*)notification
-{
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self updateApplicationInformation];
-  });
-}
-
 - (void) distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -142,7 +84,7 @@
     // - bridgeworkspacedata_.inputsource
     // - bridgeworkspacedata_.inputsourcedetail
 
-    [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
+    [self updateFocusedUIElementInformation:nil];
     [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
     [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
   });
@@ -368,22 +310,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [xmlCompiler_ reload];
 
   // ------------------------------------------------------------
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
-                                                             name:NSWorkspaceDidActivateApplicationNotification
-                                                           object:nil];
-
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceActiveSpaceDidChangeNotification:)
-                                                             name:NSWorkspaceActiveSpaceDidChangeNotification
-                                                           object:nil];
-
-  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookAXTitleChangedNotification:)
-                                                          name:(NSString*)(kKeyRemap4MacBookAXTitleChangedNotification)
-                                                        object:nil
-                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
-
   // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
   // because kTISNotify* will be dropped sometimes without this.
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
@@ -415,7 +341,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
                                                            object:nil];
 
   // ------------------------------------------------------------
-  [self observer_NSWorkspaceDidActivateApplicationNotification:nil];
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
@@ -461,12 +386,32 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
+- (void) updateFocusedUIElementInformation:(NSDictionary*)information;
+{
+  @synchronized(self) {
+    if (information) {
+      // We ignore our investigation application.
+      if ([information[@"bundleIdentifier"] isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) return;
+
+      focusedUIElementInformation_ = information;
+    }
+
+    bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:focusedUIElementInformation_[@"bundleIdentifier"]];
+    bridgeworkspacedata_.windowname      = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"title"]];
+    [self send_workspacedata_to_kext];
+
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
+                                                                   object:nil];
+  }
+}
+
 - (NSDictionary*) getApplicationInformation
 {
   @synchronized(self) {
-    return applicationInformation_;
+    return focusedUIElementInformation_;
   }
 }
+
 - (NSDictionary*) getInputSourceInformation
 {
   @synchronized(self) {
