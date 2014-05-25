@@ -14,7 +14,6 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="client" destination="E62-9f-xSp" id="3Fs-w4-Ge3"/>
-                <outlet property="text" destination="Vbw-Ll-CGj" id="0hJ-CT-wTO"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -45,43 +44,58 @@
         <window title="KeyRemap4MacBook_AXNotifier" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="500" height="118"/>
+            <rect key="contentRect" x="335" y="390" width="500" height="166"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="500" height="118"/>
+                <rect key="frame" x="0.0" y="0.0" width="500" height="166"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Bv-G2-VYO">
-                        <rect key="frame" x="419" y="13" width="67" height="32"/>
+                        <rect key="frame" x="417" y="11" width="69" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="om0-Bd-uuh">
+                        <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="om0-Bd-uuh">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="terminate:" target="-1" id="BPJ-mJ-aAI"/>
+                            <action selector="performClose:" target="-1" id="RV9-Dj-sSy"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vbw-Ll-CGj">
-                        <rect key="frame" x="90" y="49" width="392" height="49"/>
+                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIJ-Ev-0VJ">
+                        <rect key="frame" x="20" y="82" width="64" height="64"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="app" id="TWJ-CG-4g9"/>
+                    </imageView>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5gr-za-EVF">
+                        <rect key="frame" x="90" y="20" width="229" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="G5t-ve-quo">
+                        <buttonCell key="cell" type="check" title="Do not show this message again." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IHi-Tx-bki">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
-                            <string key="title">AXNotifier requires using the accessibility features in order to detect window's title changes.
-Please permit the accessibility features.
+                        </buttonCell>
+                        <connections>
+                            <binding destination="UCr-Gq-OJB" name="value" keyPath="values.kDoNotShowAXWarningMessage" id="MH8-iC-onN"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-iy-bJK">
+                        <rect key="frame" x="90" y="44" width="392" height="102"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="R3u-zK-6pC">
+                            <font key="font" metaFont="system"/>
+                            <string key="title">AXNotifier requires using accessibility features:
+  * In order to detect window's title changes.
+  * In order to detect whether you are editing text or not.
+
+Please permit accessibility features.
 </string>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yIJ-Ev-0VJ">
-                        <rect key="frame" x="20" y="34" width="64" height="64"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="app" id="TWJ-CG-4g9"/>
-                    </imageView>
                 </subviews>
             </view>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="UCr-Gq-OJB"/>
     </objects>
     <resources>
         <image name="app" width="512" height="512"/>

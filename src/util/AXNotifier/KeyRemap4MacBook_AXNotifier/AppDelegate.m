@@ -1,6 +1,7 @@
-#import "AppDelegate.h"
 #import "AXUtilities.h"
+#import "AppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "PreferencesKeys.h"
 
 // ==================================================
 @interface AppDelegate ()
@@ -218,7 +219,6 @@ finish:
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     if (AXIsProcessTrusted()) {
-      [_text setStringValue:@"AXNotifier is working."];
       [[NSApplication sharedApplication] hide:self];
 
       if (! initialized_) {
@@ -231,8 +231,6 @@ finish:
       }
 
     } else {
-      [_text setStringValue:@"AXNotifier requires using the accessibility features in order to detect window's title changes.\nPlease permit the accessibility features."];
-
       initialized_ = NO;
     }
   });
@@ -246,7 +244,9 @@ finish:
   AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
 
   if (! AXIsProcessTrusted()) {
-    [_window orderFront:self];
+    if (! [[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
+      [_window orderFront:self];
+    }
   }
 
   [NSTimer scheduledTimerWithTimeInterval:1.0
