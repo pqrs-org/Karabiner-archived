@@ -97,6 +97,13 @@
   });
 }
 
+// ----------------------------------------------------------------------
+- (void) updateFocusedUIElementInformation:(NSDictionary*)information
+{
+  return [appDelegate_ updateFocusedUIElementInformation:information];
+}
+
+// ----------------------------------------------------------------------
 - (NSArray*) device_information:(NSInteger)type
 {
   return [clientForKernelspace_ device_information:type];

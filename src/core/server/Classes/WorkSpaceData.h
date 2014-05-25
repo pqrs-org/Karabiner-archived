@@ -9,7 +9,6 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-+ (NSString*) getActiveApplicationName;
 - (unsigned int) getApplicationType:(NSString*)name;
 - (unsigned int) getWindowName:(NSString*)name;
 

@@ -27,6 +27,7 @@
 
 @property (weak) ClientForKernelspace* clientForKernelspace;
 
+- (void) updateFocusedUIElementInformation:(NSDictionary*)information;
 - (NSDictionary*) getApplicationInformation;
 - (NSDictionary*) getInputSourceInformation;
 
