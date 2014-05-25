@@ -881,7 +881,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="658">
-                                                        <rect key="frame" x="12" y="31" width="241" height="32"/>
+                                                        <rect key="frame" x="12" y="22" width="241" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="Launch &quot;multi-touch extension&quot;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="661">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -889,28 +889,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="launchMultiTouchExtension:" target="494" id="1200"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" id="LAa-FB-Zob">
-                                                        <rect key="frame" x="12" y="7" width="154" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="Launch AXNotifier" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xJM-eu-97h">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="launchAXNotifier:" target="494" id="H4Y-Hw-HY1"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button id="k2r-Pp-deQ">
-                                                        <rect key="frame" x="173" y="15" width="228" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Launch AXNotifier automatically." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BFB-pU-ARQ">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <binding destination="1176" name="value" keyPath="values.kLaunchAXNotifierAutomatically" id="fR6-ve-MBH"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
