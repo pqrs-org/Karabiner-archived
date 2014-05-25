@@ -49,12 +49,12 @@ enum {
 
 - (void) push:(NSDictionary*)dictionary
 {
-  NSString* applicationBundleIdentifier = dictionary[@"name"];
+  NSString* applicationBundleIdentifier = dictionary[@"bundleIdentifier"];
   if (! applicationBundleIdentifier) {
     applicationBundleIdentifier = @"";
   }
 
-  NSString* windowName = dictionary[@"windowName"];
+  NSString* windowName = dictionary[@"title"];
   if (! windowName) {
     windowName = @"";
   }
