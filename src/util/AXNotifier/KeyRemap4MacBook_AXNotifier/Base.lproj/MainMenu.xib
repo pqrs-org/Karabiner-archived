@@ -13,10 +13,12 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="client" destination="E62-9f-xSp" id="3Fs-w4-Ge3"/>
                 <outlet property="text" destination="Vbw-Ll-CGj" id="0hJ-CT-wTO"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
+        <customObject id="E62-9f-xSp" customClass="KeyRemap4MacBookClient"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>

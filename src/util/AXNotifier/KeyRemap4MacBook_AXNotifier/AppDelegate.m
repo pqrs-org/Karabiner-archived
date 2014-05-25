@@ -109,12 +109,17 @@
   }
 }
 
-- (void) sendNotification
+- (void) updateAll:(NSRunningApplication*)runningApplication
+{
+  [self updateBundleIdentifier:runningApplication];
+  [self updateTitle];
+  [self updateRole];
+}
+
+- (void) tellToServer
 {
   NSLog(@"%@", focusedUIElementInformation_);
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookAXTitleChangedNotification
-                                                                 object:nil
-                                                               userInfo:focusedUIElementInformation_];
+  [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
 }
 
 static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef notification, void* refcon)
@@ -127,11 +132,11 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
   if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo ||
       CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
     [self updateTitle];
-    [self sendNotification];
+    [self tellToServer];
   }
   if (CFStringCompare(notification, kAXFocusedUIElementChangedNotification, 0) == kCFCompareEqualTo) {
     [self updateRole];
-    [self sendNotification];
+    [self tellToServer];
   }
 }
 
@@ -199,11 +204,8 @@ finish:
   NSRunningApplication* runningApplication = [notification userInfo][NSWorkspaceApplicationKey];
 
   [self registerApplication:runningApplication];
-
-  [self updateBundleIdentifier:runningApplication];
-  [self updateTitle];
-  [self updateRole];
-  [self sendNotification];
+  [self updateAll:runningApplication];
+  [self tellToServer];
 }
 
 - (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
@@ -221,7 +223,11 @@ finish:
 
       if (! initialized_) {
         initialized_ = YES;
-        [self registerApplication:[[NSWorkspace sharedWorkspace] frontmostApplication]];
+
+        NSRunningApplication* runningApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
+        [self registerApplication:runningApplication];
+        [self updateAll:runningApplication];
+        [self tellToServer];
       }
 
     } else {
