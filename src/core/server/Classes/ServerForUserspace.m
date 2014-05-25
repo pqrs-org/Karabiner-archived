@@ -109,9 +109,9 @@
   return [clientForKernelspace_ device_information:type];
 }
 
-- (NSDictionary*) application_information
+- (NSDictionary*) focused_uielement_information
 {
-  return [appDelegate_ getApplicationInformation];
+  return [appDelegate_ getFocusedUIElementInformation];
 }
 
 - (NSDictionary*) inputsource_information

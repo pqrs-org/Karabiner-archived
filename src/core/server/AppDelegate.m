@@ -68,9 +68,6 @@
         inputSourceInformation_[@"inputModeID"] = [inputSource inputModeID];
       }
     }
-
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookInputSourceChangedNotification
-                                                                   object:nil];
   });
 }
 
@@ -389,13 +386,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
     bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:focusedUIElementInformation_[@"BundleIdentifier"]];
     bridgeworkspacedata_.windowname      = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"WindowName"]];
     [self send_workspacedata_to_kext];
-
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookApplicationChangedNotification
-                                                                   object:nil];
   }
 }
 
-- (NSDictionary*) getApplicationInformation
+- (NSDictionary*) getFocusedUIElementInformation
 {
   @synchronized(self) {
     return focusedUIElementInformation_;
