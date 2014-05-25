@@ -58,6 +58,8 @@
 
     @synchronized(self) {
       inputSourceInformation_ = [NSMutableDictionary new];
+      inputSourceInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
+
       if ([inputSource languagecode]) {
         inputSourceInformation_[@"languageCode"] = [inputSource languagecode];
       }
