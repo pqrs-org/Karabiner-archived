@@ -74,20 +74,20 @@
 - (void) updateBundleIdentifier:(NSRunningApplication*)runningApplication
 {
   @synchronized(self) {
-    focusedUIElementInformation_[@"bundleIdentifier"] = [runningApplication bundleIdentifier];
+    focusedUIElementInformation_[@"BundleIdentifier"] = [runningApplication bundleIdentifier];
   }
 }
 
 - (void) updateTitle
 {
   @synchronized(self) {
-    focusedUIElementInformation_[@"title"] = @"";
+    focusedUIElementInformation_[@"WindowName"] = @"";
 
     AXUIElementRef element = [AXUtilities copyFocusedWindow];
     if (element) {
       NSString* title = [AXUtilities titleOfUIElement:element];
       if (title) {
-        focusedUIElementInformation_[@"title"] = title;
+        focusedUIElementInformation_[@"WindowName"] = title;
       }
       CFRelease(element);
     }
@@ -97,13 +97,13 @@
 - (void) updateRole
 {
   @synchronized(self) {
-    focusedUIElementInformation_[@"role"] = @"";
+    focusedUIElementInformation_[@"UIElementRole"] = @"";
 
     AXUIElementRef element = [AXUtilities copyFocusedUIElement];
     if (element) {
       NSString* role = [AXUtilities roleOfUIElement:element];
       if (role) {
-        focusedUIElementInformation_[@"role"] = role;
+        focusedUIElementInformation_[@"UIElementRole"] = role;
       }
       CFRelease(element);
     }
