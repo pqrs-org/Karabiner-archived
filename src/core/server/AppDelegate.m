@@ -9,6 +9,7 @@
 #import "PreferencesManager.h"
 #import "Relauncher.h"
 #import "ServerForUserspace.h"
+#import "StartAtLoginUtilities.h"
 #import "StatusBar.h"
 #import "StatusWindow.h"
 #import "Updater.h"

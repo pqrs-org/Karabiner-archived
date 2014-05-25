@@ -55,7 +55,7 @@
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
-		34D94443193216CD0062E422 /* StartAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94442193216CD0062E422 /* StartAtLoginController.m */; };
+		34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94448193217A80062E422 /* StartAtLoginUtilities.m */; };
 		34F216BC1930F67100584141 /* KeyRemap4MacBookUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F216BB1930F67100584141 /* KeyRemap4MacBookUtilities.m */; };
 		34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* inputsourcedef.xml */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
@@ -162,8 +162,8 @@
 		34D4F82712C4463B001819AA /* StatusWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusWindow.m; path = Classes/StatusWindow.m; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputSource.m"; path = "Classes/WorkSpaceData+InputSource.m"; sourceTree = "<group>"; };
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
-		34D94441193216CD0062E422 /* StartAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginController.h; path = ../../share/StartAtLoginController.h; sourceTree = "<group>"; };
-		34D94442193216CD0062E422 /* StartAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginController.m; path = ../../share/StartAtLoginController.m; sourceTree = "<group>"; };
+		34D94447193217A80062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
+		34D94448193217A80062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
 		34F216BA1930F67100584141 /* KeyRemap4MacBookUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookUtilities.h; path = ../../share/KeyRemap4MacBookUtilities.h; sourceTree = "<group>"; };
 		34F216BB1930F67100584141 /* KeyRemap4MacBookUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookUtilities.m; path = ../../share/KeyRemap4MacBookUtilities.m; sourceTree = "<group>"; };
 		34F37D53149A2E7800D4694B /* inputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = inputsourcedef.xml; path = Resources/inputsourcedef.xml; sourceTree = "<group>"; };
@@ -364,8 +364,8 @@
 				3401D0DE16586C0700CF962F /* KeyRemap4MacBookProtocol.h */,
 				34F216BA1930F67100584141 /* KeyRemap4MacBookUtilities.h */,
 				34F216BB1930F67100584141 /* KeyRemap4MacBookUtilities.m */,
-				34D94441193216CD0062E422 /* StartAtLoginController.h */,
-				34D94442193216CD0062E422 /* StartAtLoginController.m */,
+				34D94447193217A80062E422 /* StartAtLoginUtilities.h */,
+				34D94448193217A80062E422 /* StartAtLoginUtilities.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -461,8 +461,8 @@
 				34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */,
 				348C6A2E128E4504005F516D /* StatusBar.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
+				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
 				34D4F82812C4463B001819AA /* StatusWindow.m in Sources */,
-				34D94443193216CD0062E422 /* StartAtLoginController.m in Sources */,
 				34AE39041848E72300D413AD /* Relauncher.m in Sources */,
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */,
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
