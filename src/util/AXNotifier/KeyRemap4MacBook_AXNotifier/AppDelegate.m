@@ -237,16 +237,24 @@ finish:
   });
 }
 
+#define kDescendantProcess @"org_pqrs_KeyRemap4MacBook_AXNotifier_DescendantProcess"
+
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
+  NSInteger isDescendantProcess = [[[NSProcessInfo processInfo] environment][kDescendantProcess] integerValue];
+  setenv([kDescendantProcess UTF8String], "1", 1);
+
+  // ------------------------------------------------------------
   focusedUIElementInformation_ = [NSMutableDictionary new];
 
   if (! [[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
     if (! AXIsProcessTrusted()) {
       [_window orderFront:self];
 
-      NSDictionary* options = @{ (__bridge NSString*)(kAXTrustedCheckOptionPrompt): @YES };
-      AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
+      if (! isDescendantProcess) {
+        NSDictionary* options = @{ (__bridge NSString*)(kAXTrustedCheckOptionPrompt): @YES };
+        AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
+      }
     }
   }
 
