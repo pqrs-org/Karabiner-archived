@@ -237,12 +237,12 @@ finish:
 {
   focusedUIElementInformation_ = [NSMutableDictionary new];
 
-  NSDictionary* options = @{ (__bridge NSString*)(kAXTrustedCheckOptionPrompt): @YES };
-  AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
-
-  if (! AXIsProcessTrusted()) {
-    if (! [[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
+  if (! [[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
+    if (! AXIsProcessTrusted()) {
       [_window orderFront:self];
+
+      NSDictionary* options = @{ (__bridge NSString*)(kAXTrustedCheckOptionPrompt): @YES };
+      AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
     }
   }
 
