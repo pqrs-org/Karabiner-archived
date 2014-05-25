@@ -18,6 +18,9 @@
 
 - (void) relaunch;
 
+// for AXNotifier
+- (void) updateFocusedUIElementInformation:(NSDictionary*)information;
+
 // For EventViewer.
 - (NSArray*) device_information:(NSInteger)type;
 - (NSDictionary*) application_information;
