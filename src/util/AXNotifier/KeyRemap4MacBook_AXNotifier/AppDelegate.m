@@ -119,6 +119,10 @@
 
 - (void) tellToServer
 {
+  focusedUIElementInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
+#if 0
+  NSLog(@"%@", focusedUIElementInformation_);
+#endif
   [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
 }
 
