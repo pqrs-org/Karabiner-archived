@@ -23,7 +23,7 @@
 
 // For EventViewer.
 - (NSArray*) device_information:(NSInteger)type;
-- (NSDictionary*) application_information;
+- (NSDictionary*) focused_uielement_information;
 - (NSDictionary*) inputsource_information;
 
 @end
