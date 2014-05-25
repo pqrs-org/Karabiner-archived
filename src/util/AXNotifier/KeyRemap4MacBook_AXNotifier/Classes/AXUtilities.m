@@ -4,6 +4,8 @@
 
 + (AXUIElementRef) copyUIElement:(CFStringRef)attribute
 {
+  if (! AXIsProcessTrusted()) return NULL;
+
   AXUIElementRef result = NULL;
   AXUIElementRef systemWideElement = NULL;
   AXUIElementRef applicationElement = NULL;
