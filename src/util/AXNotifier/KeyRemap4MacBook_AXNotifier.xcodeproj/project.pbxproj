@@ -12,6 +12,7 @@
 		34010024192C63AA00B0A3A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34010023192C63AA00B0A3A5 /* main.m */; };
 		3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401002A192C63AA00B0A3A5 /* AppDelegate.m */; };
 		3401002E192C63AA00B0A3A5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3401002C192C63AA00B0A3A5 /* MainMenu.xib */; };
+		3403B0811930EF1F003E0CC1 /* KeyRemap4MacBookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3403B07F1930EF1F003E0CC1 /* KeyRemap4MacBookClient.m */; };
 		34D05539192C6962001A4F4F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34D05538192C6962001A4F4F /* app.icns */; };
 		34FB0ED6192F97FB0038C1D5 /* AXUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB0ED5192F97FB0038C1D5 /* AXUtilities.m */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,9 @@
 		34010029192C63AA00B0A3A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3401002A192C63AA00B0A3A5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3401002D192C63AA00B0A3A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3403B07E1930EF1F003E0CC1 /* KeyRemap4MacBookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookClient.h; path = ../../../share/KeyRemap4MacBookClient.h; sourceTree = "<group>"; };
+		3403B07F1930EF1F003E0CC1 /* KeyRemap4MacBookClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyRemap4MacBookClient.m; path = ../../../share/KeyRemap4MacBookClient.m; sourceTree = "<group>"; };
+		3403B0801930EF1F003E0CC1 /* KeyRemap4MacBookProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookProtocol.h; path = ../../../share/KeyRemap4MacBookProtocol.h; sourceTree = "<group>"; };
 		34D05538192C6962001A4F4F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
 		34D0553A192C6E98001A4F4F /* KeyRemap4MacBookKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyRemap4MacBookKeys.h; path = ../../../share/KeyRemap4MacBookKeys.h; sourceTree = "<group>"; };
 		34FB0ED4192F97FB0038C1D5 /* AXUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXUtilities.h; path = Classes/AXUtilities.h; sourceTree = "<group>"; };
@@ -89,8 +93,8 @@
 				34010029192C63AA00B0A3A5 /* AppDelegate.h */,
 				3401002A192C63AA00B0A3A5 /* AppDelegate.m */,
 				34FB0ED3192F97EC0038C1D5 /* Classes */,
-				34D0553A192C6E98001A4F4F /* KeyRemap4MacBookKeys.h */,
 				3401002C192C63AA00B0A3A5 /* MainMenu.xib */,
+				3403B07D1930EF0A003E0CC1 /* share */,
 				3401001E192C63AA00B0A3A5 /* Supporting Files */,
 			);
 			path = KeyRemap4MacBook_AXNotifier;
@@ -106,6 +110,17 @@
 				34010023192C63AA00B0A3A5 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3403B07D1930EF0A003E0CC1 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				3403B07E1930EF1F003E0CC1 /* KeyRemap4MacBookClient.h */,
+				3403B07F1930EF1F003E0CC1 /* KeyRemap4MacBookClient.m */,
+				34D0553A192C6E98001A4F4F /* KeyRemap4MacBookKeys.h */,
+				3403B0801930EF1F003E0CC1 /* KeyRemap4MacBookProtocol.h */,
+			);
+			name = share;
 			sourceTree = "<group>";
 		};
 		34FB0ED3192F97EC0038C1D5 /* Classes */ = {
@@ -182,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3403B0811930EF1F003E0CC1 /* KeyRemap4MacBookClient.m in Sources */,
 				3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */,
 				34010024192C63AA00B0A3A5 /* main.m in Sources */,
 				34FB0ED6192F97FB0038C1D5 /* AXUtilities.m in Sources */,
