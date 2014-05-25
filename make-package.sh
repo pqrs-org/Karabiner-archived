@@ -63,15 +63,6 @@ basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/vendor/bin"
 mkdir -p "$basedir"
 cp -R src/vendor/blueutil/build/Release/blueutil "$basedir"
 
-basedir="pkgroot/Library"
-mkdir -p "$basedir"
-for d in \
-    files/LaunchAgents \
-    ;
-do
-    cp -R "$d" "$basedir"
-done
-
 # Sign with Developer ID
 bash files/extra/codesign.sh pkgroot
 
