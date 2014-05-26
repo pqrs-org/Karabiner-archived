@@ -13,6 +13,11 @@
   <windownamedef>
     <name>Google_Translate</name>
     <regex>^Google Translate$</regex>
+    <regex>^Google Übersetzer$</regex> <!-- https://translate.google.co.jp/?hl=de -->
+    <regex>^Google Traduction$</regex> <!-- https://translate.google.co.jp/?hl=fr -->
+    <regex>^Google Traduttore$</regex> <!-- https://translate.google.co.jp/?hl=it -->
+    <regex>^Google 翻訳$</regex> <!-- https://translate.google.co.jp/?hl=ja -->
+    <regex>^Переводчик Google$</regex> <!-- https://translate.google.co.jp/?hl=ru -->
   </windownamedef>
 
 </root>
