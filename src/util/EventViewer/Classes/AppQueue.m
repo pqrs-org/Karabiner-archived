@@ -90,7 +90,10 @@ enum {
   for (NSUInteger i = 0; i < [queue_ count]; ++i) {
     NSDictionary* dict = queue_[([queue_ count] - 1 - i)];
 
-    [string appendFormat:@"%@\t%@\t%@\n", dict[@"BundleIdentifier"], dict[@"WindowName"], dict[@"UIElementRole"]];
+    [string appendFormat:@"BundleIdentifier: %@\n", dict[@"BundleIdentifier"]];
+    [string appendFormat:@"WindowName:       %@\n", dict[@"WindowName"]];
+    [string appendFormat:@"UIElementRole:    %@\n", dict[@"UIElementRole"]];
+    [string appendString:@"\n"];
   }
 
   if ([string length] > 0) {
