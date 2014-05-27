@@ -72,6 +72,16 @@
   [self setKeyResponder];
   [self updateOtherInformationStore];
 
+  // set window level
+  {
+    [window setLevel:NSFloatingWindowLevel];
+
+    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    behavior &= ~(NSWindowCollectionBehaviorTransient);
+    behavior |= NSWindowCollectionBehaviorManaged;
+    [window setCollectionBehavior:behavior];
+  }
+
   [NSTimer scheduledTimerWithTimeInterval:0.3
                                    target:self
                                  selector:@selector(timerFireMethod:)
