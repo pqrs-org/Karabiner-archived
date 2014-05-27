@@ -23,4 +23,6 @@
 
 @property (weak) IBOutlet NSWindow* window;
 
+- (IBAction) setWindowProperty:(id)sender;
+
 @end

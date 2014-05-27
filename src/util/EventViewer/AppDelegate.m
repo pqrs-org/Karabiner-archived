@@ -2,6 +2,7 @@
 #import "KeyRemap4MacBookClient.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "KeyResponder.h"
+#import "PreferencesKeys.h"
 #import <Carbon/Carbon.h>
 
 @implementation AppDelegate
@@ -72,16 +73,6 @@
   [self setKeyResponder];
   [self updateOtherInformationStore];
 
-  // set window level
-  {
-    [window setLevel:NSFloatingWindowLevel];
-
-    NSWindowCollectionBehavior behavior = [window collectionBehavior];
-    behavior &= ~(NSWindowCollectionBehaviorTransient);
-    behavior |= NSWindowCollectionBehaviorManaged;
-    [window setCollectionBehavior:behavior];
-  }
-
   [NSTimer scheduledTimerWithTimeInterval:0.3
                                    target:self
                                  selector:@selector(timerFireMethod:)
@@ -113,6 +104,40 @@
     [self setKeyResponder];
   } else if ([[tabViewItem identifier] isEqualToString:@"Devices"]) {
     [devices_ refresh:nil];
+  }
+}
+
+- (IBAction) setWindowProperty:(id)sender
+{
+  // ----------------------------------------
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kForceStayTop]) {
+    [window setLevel:NSFloatingWindowLevel];
+
+    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    behavior &= ~(NSWindowCollectionBehaviorTransient);
+    behavior |= NSWindowCollectionBehaviorManaged;
+    [window setCollectionBehavior:behavior];
+
+  } else {
+    [window setLevel:NSNormalWindowLevel];
+
+    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    behavior &= ~(NSWindowCollectionBehaviorTransient);
+    behavior |= NSWindowCollectionBehaviorManaged;
+    [window setCollectionBehavior:behavior];
+  }
+
+  // ----------------------------------------
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowInAllSpaces]) {
+    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    behavior &= ~(NSWindowCollectionBehaviorMoveToActiveSpace);
+    behavior |= NSWindowCollectionBehaviorCanJoinAllSpaces;
+    [window setCollectionBehavior:behavior];
+
+  } else {
+    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    behavior &= ~(NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorMoveToActiveSpace);
+    [window setCollectionBehavior:behavior];
   }
 }
 
