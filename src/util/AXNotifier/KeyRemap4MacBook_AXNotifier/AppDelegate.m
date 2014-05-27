@@ -12,6 +12,7 @@
   AXUIElementRef applicationElement_;
   AXUIElementRef focusedWindowElement_;
   NSMutableDictionary* focusedUIElementInformation_;
+  NSDictionary* previousSentInformation_;
 }
 @end
 
@@ -179,11 +180,31 @@
 
 - (void) tellToServer
 {
-  focusedUIElementInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
+  @synchronized(self) {
+    // Send if the current information and the previous information are different.
+    for (NSString* key in focusedUIElementInformation_) {
+      if ([key isEqual:@"mtime"]) {
+        continue;
+      }
+
+      if (! [focusedUIElementInformation_[key] isEqual:previousSentInformation_[key]]) {
+        goto send;
+      }
+    }
 #if 0
-  NSLog(@"%@", focusedUIElementInformation_);
+    NSLog(@"tellToServer skip");
 #endif
-  [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
+    return;
+
+  send:
+    focusedUIElementInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
+#if 0
+    NSLog(@"%@", focusedUIElementInformation_);
+#endif
+    [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
+
+    previousSentInformation_ = [NSDictionary dictionaryWithDictionary:focusedUIElementInformation_];
+  }
 }
 
 - (void) registerFocusNotifications
