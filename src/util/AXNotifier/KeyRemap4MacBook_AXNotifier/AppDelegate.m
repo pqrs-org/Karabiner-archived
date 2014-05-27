@@ -1,6 +1,5 @@
 #import "AXUtilities.h"
 #import "AppDelegate.h"
-#import "FrontmostWindow.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "PreferencesKeys.h"
 
@@ -8,7 +7,10 @@
 @interface AppDelegate ()
 {
   BOOL initialized_;
+  NSRunningApplication* runningApplication_;
   AXObserverRef observer_;
+  AXUIElementRef applicationElement_;
+  AXUIElementRef focusedWindowElement_;
   NSMutableDictionary* focusedUIElementInformation_;
 }
 @end
@@ -22,9 +24,9 @@
  * We need to observe these notifications on a web browser which has tab and multi window.
  *
  * - NSWorkspaceDidActivateApplicationNotification
- * - NSWorkspaceActiveSpaceDidChangeNotification
  * - kAXTitleChangedNotification
  * - kAXFocusedUIElementChangedNotification
+ * - kAXFocusedWindowChangedNotification
  *
  *
  * NSWorkspaceDidActivateApplicationNotification
@@ -40,22 +42,6 @@
  *     - bundleIdentifier
  *     - title
  *     - role
- *
- *
- * NSWorkspaceActiveSpaceDidChangeNotification
- * -------------------------------------------
- *
- *   We are using FrontmostWindow to get window name in some cases. (eg. Microsoft Remote Desktop.)
- *
- *   If user switched to other apps which are not in the current space,
- *   FrontmostWindow failed to get properly window name.
- *   Because FrontmostWindow collects shown windows on screen and
- *   there is no other apps's window when it was called. (They are in other spaces.)
- *
- *   Therefore, we need to observe NSWorkspaceActiveSpaceDidChangeNotification for this case.
- *
- *   Items that need to be updated:
- *     - title
  *
  *
  * kAXTitleChangedNotification
@@ -85,19 +71,79 @@
  *   (It might be a bug of Safari 7.0.4.)
  *   So we need to update title at kAXFocusedUIElementChangedNotification.
  *
- *   kAXFocusedUIElementChangedNotification will also be triggered when user changed focused window.
- *   Therefore, we don't need to observe kAXFocusedWindowChangedNotification.
- *
  *   Items that need to be updated:
  *     - title
  *     - role
  *
+ *   Note:
+ *   kAXFocusedUIElementChangedNotification will also be triggered when user changed focused window.
+ *   But kAXFocusedUIElementChangedNotification and kAXFocusedWindowChangedNotification is not unordered.
+ *   Therefore, we need to update title at both notifications.
+ *
+ *
+ * kAXFocusedWindowChangedNotification
+ * -----------------------------------
+ *
+ *   We need to register kAXTitleChangedNotification to the focused window.
+ *   (If register kAXTitleChangedNotification to application element,
+ *   kAXTitleChangedNotification will not be triggered on Emacs.app.)
+ *
+ *   We need to observe this notification in order to refresh kAXTitleChangedNotification observer.
+ *
+ *   Items that need to be updated:
+ *     - title
+ *
+ *   Note:
+ *   See the note of kAXFocusedUIElementChangedNotification.
+ *
  */
 
-- (void) updateBundleIdentifier:(NSRunningApplication*)runningApplication
+- (void) updateApplicationElement
 {
   @synchronized(self) {
-    focusedUIElementInformation_[@"BundleIdentifier"] = [runningApplication bundleIdentifier];
+    // ----------------------------------------
+    if (applicationElement_) {
+      CFRelease(applicationElement_);
+      applicationElement_ = NULL;
+    }
+
+    // ----------------------------------------
+    if (! AXIsProcessTrusted()) return;
+
+    // ----------------------------------------
+    applicationElement_ = AXUIElementCreateApplication([runningApplication_ processIdentifier]);
+    if (! applicationElement_) {
+      NSLog(@"AXUIElementCreateApplication is failed. %@", runningApplication_);
+    }
+  }
+}
+
+- (void) updateFocusedWindowElement
+{
+  @synchronized(self) {
+    // ----------------------------------------
+    if (focusedWindowElement_) {
+      CFRelease(focusedWindowElement_);
+      focusedWindowElement_ = NULL;
+    }
+
+    // ----------------------------------------
+    if (! AXIsProcessTrusted()) return;
+
+    // ----------------------------------------
+    AXError error = AXUIElementCopyAttributeValue(applicationElement_,
+                                                  kAXFocusedWindowAttribute,
+                                                  (CFTypeRef*)(&focusedWindowElement_));
+    if (error != kAXErrorSuccess) {
+      NSLog(@"updateFocusedWindowElement is failed: %@", runningApplication_);
+    }
+  }
+}
+
+- (void) updateBundleIdentifier
+{
+  @synchronized(self) {
+    focusedUIElementInformation_[@"BundleIdentifier"] = [runningApplication_ bundleIdentifier];
   }
 }
 
@@ -106,28 +152,10 @@
   @synchronized(self) {
     focusedUIElementInformation_[@"WindowName"] = @"";
 
-    AXUIElementRef element = [AXUtilities copyFocusedWindow];
-    if (element) {
-      NSString* title = [AXUtilities titleOfUIElement:element];
+    if (focusedWindowElement_) {
+      NSString* title = [AXUtilities titleOfUIElement:focusedWindowElement_];
       if (title) {
         focusedUIElementInformation_[@"WindowName"] = title;
-      }
-      CFRelease(element);
-
-    } else {
-      // Getting kAXFocusedUIElementAttribute will be failed in some cases. (eg. Microsoft Remote Desktop.)
-      // In this case, we use to FrontmostWindow to get the window name.
-      // (We do not use FrontmostWindow always because it is a relatively expensive operation.)
-      //
-      // Note:
-      // FrontmostWindow returns wrong window name
-      // when Finder windows are opened and the current focus is desktop icon.
-      // (The window name should be empty but FrontmostWindow return the frontmost window's name.)
-      // So, we should not call FrontmostWindow everytime.
-      //
-      FrontmostWindow* frontmostWindow = [FrontmostWindow new];
-      if (frontmostWindow.windowName) {
-        focusedUIElementInformation_[@"WindowName"] = frontmostWindow.windowName;
       }
     }
   }
@@ -149,13 +177,6 @@
   }
 }
 
-- (void) updateAll:(NSRunningApplication*)runningApplication
-{
-  [self updateBundleIdentifier:runningApplication];
-  [self updateTitle];
-  [self updateRole];
-}
-
 - (void) tellToServer
 {
   focusedUIElementInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
@@ -165,8 +186,64 @@
   [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
 }
 
+- (void) registerFocusNotifications
+{
+  @synchronized(self) {
+    if (! observer_) return;
+    if (! applicationElement_) return;
+
+    NSArray* notifications = @[(__bridge NSString*)(kAXFocusedUIElementChangedNotification),
+                               (__bridge NSString*)(kAXFocusedWindowChangedNotification),
+                             ];
+    for (NSString* notification in notifications) {
+      AXError error = AXObserverAddNotification(observer_,
+                                                applicationElement_,
+                                                (__bridge CFStringRef)(notification),
+                                                (__bridge void*)self);
+      if (error != kAXErrorSuccess) {
+        NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, runningApplication_);
+      }
+    }
+  }
+}
+
+- (void) registerTitleChangedNotification
+{
+  @synchronized(self) {
+    if (! observer_) return;
+    if (! focusedWindowElement_) return;
+
+    AXError error = AXObserverAddNotification(observer_,
+                                              focusedWindowElement_,
+                                              kAXTitleChangedNotification,
+                                              (__bridge void*)self);
+    if (error != kAXErrorSuccess) {
+      NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, runningApplication_);
+    }
+  }
+}
+
+- (void) unregisterTitleChangedNotification
+{
+  @synchronized(self) {
+    if (! observer_) return;
+    if (! focusedWindowElement_) return;
+
+    AXError error = AXObserverRemoveNotification(observer_,
+                                                 focusedWindowElement_,
+                                                 kAXTitleChangedNotification);
+    if (error != kAXErrorSuccess) {
+      NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, runningApplication_);
+    }
+  }
+}
+
 static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef notification, void* refcon)
 {
+#if 0
+  NSLog(@"%@", (__bridge NSString*)(notification));
+#endif
+
   AppDelegate* self = (__bridge AppDelegate*)(refcon);
   if (! self) return;
 
@@ -179,79 +256,84 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
     [self updateRole];
     [self tellToServer];
   }
+  if (CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
+    // ----------------------------------------
+    // unregister notifications.
+    [self unregisterTitleChangedNotification];
+
+    // ----------------------------------------
+    // update AX variables.
+    [self updateFocusedWindowElement];
+
+    // ----------------------------------------
+    // register notifications.
+    [self registerTitleChangedNotification];
+
+    // ----------------------------------------
+    [self updateTitle];
+    [self tellToServer];
+  }
 }
 
-- (void) registerApplication:(NSRunningApplication*)runningApplication
+- (void) updateObserver
 {
-  // ----------------------------------------
-  // unregister
-  if (observer_) {
-    CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
-                          AXObserverGetRunLoopSource(observer_),
-                          kCFRunLoopDefaultMode);
+  @synchronized(self) {
+    // ----------------------------------------
+    if (observer_) {
+      CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
+                            AXObserverGetRunLoopSource(observer_),
+                            kCFRunLoopDefaultMode);
 
-    CFRelease(observer_);
-    observer_ = NULL;
-  }
-
-  // ----------------------------------------
-  if (! AXIsProcessTrusted()) return;
-
-  // ----------------------------------------
-  AXError error = kAXErrorSuccess;
-  AXUIElementRef application = NULL;
-
-  pid_t pid = [runningApplication processIdentifier];
-
-  error = AXObserverCreate(pid, observerCallback, &observer_);
-  if (error != kAXErrorSuccess) {
-    NSLog(@"AXObserverCreate is failed. pid:%d error:%d", pid, error);
-    goto finish;
-  }
-
-  application = AXUIElementCreateApplication(pid);
-  if (! application) {
-    NSLog(@"AXUIElementCreateApplication is failed. pid:%d", pid);
-    goto finish;
-  }
-
-  {
-    NSArray* notifications = @[(__bridge NSString*)(kAXTitleChangedNotification),
-                               (__bridge NSString*)(kAXFocusedUIElementChangedNotification),
-                             ];
-    for (NSString* notification in notifications) {
-      error = AXObserverAddNotification(observer_, application, (__bridge CFStringRef)(notification), (__bridge void*)self);
-      if (error != kAXErrorSuccess) {
-        NSLog(@"AXObserverAddNotification is failed: pid:%d error:%d", pid, error);
-        goto finish;
-      }
+      CFRelease(observer_);
+      observer_ = NULL;
     }
-  }
 
-  CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                     AXObserverGetRunLoopSource(observer_),
-                     kCFRunLoopDefaultMode);
+    // ----------------------------------------
+    if (! AXIsProcessTrusted()) return;
 
-finish:
-  if (application) {
-    CFRelease(application);
-    application = NULL;
+    // ----------------------------------------
+    AXError error = kAXErrorSuccess;
+
+    error = AXObserverCreate([runningApplication_ processIdentifier], observerCallback, &observer_);
+    if (error != kAXErrorSuccess) {
+      observer_ = NULL;
+      NSLog(@"AXObserverCreate is failed. error:%d %@", error, runningApplication_);
+      return;
+    }
+
+    CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                       AXObserverGetRunLoopSource(observer_),
+                       kCFRunLoopDefaultMode);
   }
+}
+
+- (void) didActivateApplication:(NSRunningApplication*)runningApplication
+{
+  runningApplication_ = runningApplication;
+
+  // ----------------------------------------
+  // update AX variables.
+  [self updateObserver];
+  [self updateApplicationElement];
+  [self updateFocusedWindowElement];
+
+  // ----------------------------------------
+  // register notifications.
+  [self registerFocusNotifications];
+  [self registerTitleChangedNotification];
+
+  // ----------------------------------------
+  // tell to server.
+  [self updateBundleIdentifier];
+  [self updateTitle];
+  [self updateRole];
+  [self tellToServer];
 }
 
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
   NSRunningApplication* runningApplication = [notification userInfo][NSWorkspaceApplicationKey];
-
-  [self registerApplication:runningApplication];
-  [self updateAll:runningApplication];
-  [self tellToServer];
-}
-
-- (void) observer_NSWorkspaceActiveSpaceDidChangeNotification:(NSNotification*)notification
-{
-  [self updateTitle];
-  [self tellToServer];
+  [self didActivateApplication:runningApplication];
 }
 
 - (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
@@ -270,9 +352,7 @@ finish:
         initialized_ = YES;
 
         NSRunningApplication* runningApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
-        [self registerApplication:runningApplication];
-        [self updateAll:runningApplication];
-        [self tellToServer];
+        [self didActivateApplication:runningApplication];
       }
 
     } else {
@@ -311,11 +391,6 @@ finish:
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                              name:NSWorkspaceDidActivateApplicationNotification
-                                                           object:nil];
-
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceActiveSpaceDidChangeNotification:)
-                                                             name:NSWorkspaceActiveSpaceDidChangeNotification
                                                            object:nil];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
