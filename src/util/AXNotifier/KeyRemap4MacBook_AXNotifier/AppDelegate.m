@@ -1,5 +1,6 @@
 #import "AXUtilities.h"
 #import "AppDelegate.h"
+#import "FrontmostWindow.h"
 #import "KeyRemap4MacBookKeys.h"
 #import "PreferencesKeys.h"
 
@@ -21,8 +22,8 @@
  * We need to observe these notifications on a web browser which has tab and multi window.
  *
  * - NSWorkspaceDidActivateApplicationNotification
+ * - NSWorkspaceActiveSpaceDidChangeNotification
  * - kAXTitleChangedNotification
- * - kAXFocusedWindowChangedNotification
  * - kAXFocusedUIElementChangedNotification
  *
  *
@@ -41,20 +42,35 @@
  *     - role
  *
  *
- * kAXTitleChangedNotification
- * ---------------------------
+ * NSWorkspaceActiveSpaceDidChangeNotification
+ * -------------------------------------------
  *
- *   A essential notification for window name.
+ *   We are using FrontmostWindow to get window name in some cases. (eg. Microsoft Remote Desktop.)
+ *
+ *   If user switched to other apps which are not in the current space,
+ *   FrontmostWindow failed to get properly window name.
+ *   Because FrontmostWindow collects shown windows on screen and
+ *   there is no other apps's window when it was called. (They are in other spaces.)
+ *
+ *   Therefore, we need to observe NSWorkspaceActiveSpaceDidChangeNotification for this case.
  *
  *   Items that need to be updated:
  *     - title
  *
  *
- * kAXFocusedWindowChangedNotification
- * -----------------------------------
+ * kAXTitleChangedNotification
+ * ---------------------------
  *
- *   It's necessary for window name when user changes a focused window.
- *   (kAXTitleChangedNotification will not be sent when user changed focused window.)
+ *   A essential notification for window name.
+ *
+ *   We need to observe this notification in this case:
+ *     The window name will be changed when we use Google Chrome and click a link.
+ *     If the link does not open new tab, kAXFocusedUIElementChangedNotification is not triggered.
+ *     So we observe the window name changes by kAXTitleChangedNotification.
+ *
+ *     Note:
+ *     kAXTitleChangedNotification will not be called on Safari 7.0.4 in this case.
+ *     It might be a bug of Safari 7.0.4.
  *
  *   Items that need to be updated:
  *     - title
@@ -64,9 +80,16 @@
  * --------------------------------------
  *
  *   A essential notification for ui element role.
- *   (kAXFocusedUIElementChangedNotification will also be triggered when user changed focused window.)
+ *
+ *   On Safari, kAXTitleChangedNotification will not be called when user changed the current tab.
+ *   (It might be a bug of Safari 7.0.4.)
+ *   So we need to update title at kAXFocusedUIElementChangedNotification.
+ *
+ *   kAXFocusedUIElementChangedNotification will also be triggered when user changed focused window.
+ *   Therefore, we don't need to observe kAXFocusedWindowChangedNotification.
  *
  *   Items that need to be updated:
+ *     - title
  *     - role
  *
  */
@@ -90,6 +113,22 @@
         focusedUIElementInformation_[@"WindowName"] = title;
       }
       CFRelease(element);
+
+    } else {
+      // Getting kAXFocusedUIElementAttribute will be failed in some cases. (eg. Microsoft Remote Desktop.)
+      // In this case, we use to FrontmostWindow to get the window name.
+      // (We do not use FrontmostWindow always because it is a relatively expensive operation.)
+      //
+      // Note:
+      // FrontmostWindow returns wrong window name
+      // when Finder windows are opened and the current focus is desktop icon.
+      // (The window name should be empty but FrontmostWindow return the frontmost window's name.)
+      // So, we should not call FrontmostWindow everytime.
+      //
+      FrontmostWindow* frontmostWindow = [FrontmostWindow new];
+      if (frontmostWindow.windowName) {
+        focusedUIElementInformation_[@"WindowName"] = frontmostWindow.windowName;
+      }
     }
   }
 }
@@ -131,12 +170,12 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
   AppDelegate* self = (__bridge AppDelegate*)(refcon);
   if (! self) return;
 
-  if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo ||
-      CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
+  if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo) {
     [self updateTitle];
     [self tellToServer];
   }
   if (CFStringCompare(notification, kAXFocusedUIElementChangedNotification, 0) == kCFCompareEqualTo) {
+    [self updateTitle];
     [self updateRole];
     [self tellToServer];
   }
@@ -178,7 +217,6 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
 
   {
     NSArray* notifications = @[(__bridge NSString*)(kAXTitleChangedNotification),
-                               (__bridge NSString*)(kAXFocusedWindowChangedNotification),
                                (__bridge NSString*)(kAXFocusedUIElementChangedNotification),
                              ];
     for (NSString* notification in notifications) {
@@ -207,6 +245,12 @@ finish:
 
   [self registerApplication:runningApplication];
   [self updateAll:runningApplication];
+  [self tellToServer];
+}
+
+- (void) observer_NSWorkspaceActiveSpaceDidChangeNotification:(NSNotification*)notification
+{
+  [self updateTitle];
   [self tellToServer];
 }
 
@@ -267,6 +311,11 @@ finish:
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                              name:NSWorkspaceDidActivateApplicationNotification
+                                                           object:nil];
+
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
+                                                         selector:@selector(observer_NSWorkspaceActiveSpaceDidChangeNotification:)
+                                                             name:NSWorkspaceActiveSpaceDidChangeNotification
                                                            object:nil];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
