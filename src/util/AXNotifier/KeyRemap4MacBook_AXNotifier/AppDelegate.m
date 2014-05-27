@@ -233,7 +233,11 @@
                                                  focusedWindowElement_,
                                                  kAXTitleChangedNotification);
     if (error != kAXErrorSuccess) {
-      NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, runningApplication_);
+      if (error == kAXErrorInvalidUIElement) {
+        // Ignore this error because it is expected error when focusedWindowElement_ is closed.
+      } else {
+        NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, runningApplication_);
+      }
     }
   }
 }
