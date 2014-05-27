@@ -2,83 +2,31 @@
 
 @implementation AXUtilities
 
-+ (AXUIElementRef) copyUIElement:(CFStringRef)attribute
++ (AXUIElementRef) copyFocusedUIElement
 {
   if (! AXIsProcessTrusted()) return NULL;
 
   AXUIElementRef result = NULL;
   AXUIElementRef systemWideElement = NULL;
-  AXUIElementRef applicationElement = NULL;
-  AXUIElementRef baseElement = NULL;
   AXError error = kAXErrorSuccess;
 
   systemWideElement = AXUIElementCreateSystemWide();
   if (! systemWideElement) goto finish;
 
-  // ----------------------------------------
-  // set baseElement
-  if (CFStringCompare(attribute, kAXFocusedUIElementAttribute, 0) == kCFCompareEqualTo) {
-    // We can get kAXFocusedUIElementAttribute from systemWideElement.
-    baseElement = systemWideElement;
-  } else {
-    error = AXUIElementCopyAttributeValue(systemWideElement,
-                                          kAXFocusedApplicationAttribute,
-                                          (CFTypeRef*)(&applicationElement));
-    if (error != kAXErrorSuccess) {
-#if 0
-      // for debug
-      NSLog(@"AXUIElementCopyAttributeValue is failed: %@", kAXFocusedApplicationAttribute);
-#endif
-      result = NULL;
-      goto finish;
-    }
-    baseElement = applicationElement;
-  }
-
-  error = AXUIElementCopyAttributeValue(baseElement,
-                                        attribute,
+  error = AXUIElementCopyAttributeValue(systemWideElement,
+                                        kAXFocusedUIElementAttribute,
                                         (CFTypeRef*)(&result));
   if (error != kAXErrorSuccess) {
-#if 0
-    // for debug
-    NSLog(@"AXUIElementCopyAttributeValue is failed: %@", attribute);
-#endif
     result = NULL;
     goto finish;
   }
 
 finish:
-  // Do not release baseElement. (baseElement is not own.)
-
-  if (applicationElement) {
-    CFRelease(applicationElement);
-    applicationElement = NULL;
-  }
   if (systemWideElement) {
     CFRelease(systemWideElement);
     systemWideElement = NULL;
   }
   return result;
-}
-
-+ (AXUIElementRef) copyFocusedUIElement
-{
-  return [AXUtilities copyUIElement:kAXFocusedUIElementAttribute];
-}
-
-+ (AXUIElementRef) copyFocusedWindow
-{
-  return [AXUtilities copyUIElement:kAXFocusedWindowAttribute];
-}
-
-+ (AXUIElementRef) copyFrontmost
-{
-  return [AXUtilities copyUIElement:kAXFrontmostAttribute];
-}
-
-+ (AXUIElementRef) copyMainWindow
-{
-  return [AXUtilities copyUIElement:kAXMainWindowAttribute];
 }
 
 + (NSArray*) attributeNamesOfUIElement:(AXUIElementRef)element
