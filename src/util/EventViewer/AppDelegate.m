@@ -72,6 +72,7 @@
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
   [self setKeyResponder];
   [self updateOtherInformationStore];
+  [self setWindowProperty:self];
 
   [NSTimer scheduledTimerWithTimeInterval:0.3
                                    target:self
