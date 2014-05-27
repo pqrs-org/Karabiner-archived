@@ -375,6 +375,8 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
   // ------------------------------------------------------------
   focusedUIElementInformation_ = [NSMutableDictionary new];
 
+  [_window setLevel:NSFloatingWindowLevel];
+
   if (! [[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
     if (! AXIsProcessTrusted()) {
       [_window orderFront:self];
