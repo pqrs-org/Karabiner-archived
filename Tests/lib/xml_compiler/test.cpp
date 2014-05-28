@@ -664,7 +664,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name1", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(55): unexpected end of data",
+    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(60): unexpected end of data",
               xml_compiler.get_error_information().get_message());
     EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
   }
