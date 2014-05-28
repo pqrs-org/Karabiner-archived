@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Portuguese PC keyboards</name>
+    <name>Remap keys in Portuguese input source, from PC to MAC keyboard.</name>
+    <inputsource_only>PORTUGUESE</inputsource_only>
+  
+    <item>
+      <name>Map +/-</name>
+      <identifier>remap.portuguese_plusminus</identifier>
+      <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, KeyCode::EQUAL</autogen>
+    </item>
+      
+    <item>
+      <name>Map backslash</name>
+      <identifier>remap.portuguese_backslash</identifier>
+      <autogen>__KeyToKey__ KeyCode::SPANISH_ORDINAL_INDICATOR, KeyCode::BACKSLASH</autogen>
+    </item>
+
+    <item>
+      <name>Map ordinals</name>
+      <identifier>remap.portuguese_ordinals</identifier>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, KeyCode::BRACKET_LEFT</autogen>
+    </item>
+    
+    <item>
+      <name>Map tilde/accent</name>
+      <identifier>remap.portuguese_ordinals</identifier>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::QUOTE</autogen>
+    </item>
+    
+    <item>
+      <name>Map Alt-Gr modified keys</name>
+      <identifier>remap.portuguese_ordinals</identifier>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_0, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_8, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_9, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_9, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_8, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_8, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_7, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_8, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_6, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_6, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_5, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_3, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_4, ModifierFlag::CONTROL_R,
+        KeyCode::MINUS, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_3, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_4, ModifierFlag::OPTION_L
+      </autogen>
+      <autogen>__KeyToKey__ 
+        KeyCode::KEY_2, ModifierFlag::CONTROL_R,
+        KeyCode::KEY_2, ModifierFlag::OPTION_L
+      </autogen>
+    </item>
+  </item>  
+</root>
