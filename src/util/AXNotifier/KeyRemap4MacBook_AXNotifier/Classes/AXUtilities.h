@@ -5,6 +5,7 @@
 @interface AXUtilities : NSObject
 
 + (AXUIElementRef) copyFocusedUIElement;
++ (AXUIElementRef) copyFocusedWindow:(AXUIElementRef)applicationElement;
 
 + (NSString*) titleOfUIElement:(AXUIElementRef)element;
 + (NSString*) roleOfUIElement:(AXUIElementRef)element;
