@@ -29,6 +29,19 @@ finish:
   return result;
 }
 
++ (AXUIElementRef) copyFocusedWindow:(AXUIElementRef)applicationElement
+{
+  AXUIElementRef result = NULL;
+  AXError error = AXUIElementCopyAttributeValue(applicationElement,
+                                                kAXFocusedWindowAttribute,
+                                                (CFTypeRef*)(&result));
+  if (error != kAXErrorSuccess) {
+    NSLog(@"copyFocusedWindow is failed. error:%d", error);
+    return NULL;
+  }
+  return result;
+}
+
 + (NSArray*) attributeNamesOfUIElement:(AXUIElementRef)element
 {
   if (! element) return nil;
