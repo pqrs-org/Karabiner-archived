@@ -410,6 +410,9 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
         // AXObserverAddNotification might be failed when just application launched.
         // So, we try to re-register notification by timer.
         if (observerRegistered_) {
+          if (observerRegisterRetryCounter_ > 0) {
+            NSLog(@"notifications registration has been finished.");
+          }
           observerRegisterRetryCounter_ = 0;
         } else {
           NSLog(@"register notifications: retry counter:%d", observerRegisterRetryCounter_);
@@ -446,6 +449,11 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
         AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
       }
     }
+  }
+
+  {
+    NSRunningApplication* runningApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
+    [self didActivateApplication:runningApplication];
   }
 
   [NSTimer scheduledTimerWithTimeInterval:0.5
