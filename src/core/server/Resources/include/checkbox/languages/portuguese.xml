@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Portuguese</name>
+    <include path="portuguese-pc.xml" />
+  </item>
+</root>
