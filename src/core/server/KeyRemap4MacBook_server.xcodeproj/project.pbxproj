@@ -24,6 +24,7 @@
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
 		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
+		344F10261936539F00D240DC /* uielementroledef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 344F10251936539F00D240DC /* uielementroledef.xml */; };
 		3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3451A54F14532D400030EAD7 /* deviceproductdef.xml */; };
 		3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3451A55014532D400030EAD7 /* devicevendordef.xml */; };
 		345248A31298F8A2005447DE /* private.xml in Resources */ = {isa = PBXBuildFile; fileRef = 345248A21298F8A2005447DE /* private.xml */; };
@@ -119,6 +120,7 @@
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
 		343B2458153DCC7C0023BA6E /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = Resources/include; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
+		344F10251936539F00D240DC /* uielementroledef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = uielementroledef.xml; path = Resources/uielementroledef.xml; sourceTree = "<group>"; };
 		3451A54F14532D400030EAD7 /* deviceproductdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = deviceproductdef.xml; path = Resources/deviceproductdef.xml; sourceTree = "<group>"; };
 		3451A55014532D400030EAD7 /* devicevendordef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicevendordef.xml; path = Resources/devicevendordef.xml; sourceTree = "<group>"; };
 		345248A21298F8A2005447DE /* private.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = private.xml; path = Resources/private.xml; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				345248A21298F8A2005447DE /* private.xml */,
 				34FEAE4C148695AE0042D507 /* replacementdef.xml */,
 				343A17D81529A5B400F2E968 /* symbol_map.xml */,
+				344F10251936539F00D240DC /* uielementroledef.xml */,
 				34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */,
 				3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */,
 				34738784192589CC00F605BD /* windownamedef.xml */,
@@ -444,6 +447,7 @@
 				34D590271531983100160DFC /* number.xml in Resources */,
 				348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */,
 				34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */,
+				344F10261936539F00D240DC /* uielementroledef.xml in Resources */,
 				3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
