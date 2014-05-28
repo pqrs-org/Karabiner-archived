@@ -35,6 +35,7 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
 #include "pqrs/xml_compiler/detail/window_name.hpp"
+#include "pqrs/xml_compiler/detail/ui_element_role.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
 #include "pqrs/xml_compiler/detail/essential_configuration.hpp"
