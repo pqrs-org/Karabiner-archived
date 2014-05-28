@@ -127,6 +127,17 @@ namespace pqrs {
         loader_wrapper<window_name_loader>::traverse_system_xml(*this, loader, "windownamedef.xml");
       }
 
+      // ui_element_role
+      {
+        ui_element_role_loader loader(*this, symbol_map_);
+
+        if (private_xml_ptree_ptr) {
+          loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
+        }
+
+        loader_wrapper<ui_element_role_loader>::traverse_system_xml(*this, loader, "uielementroledef.xml");
+      }
+
       // device
       {
         device_loader loader(*this, symbol_map_);
