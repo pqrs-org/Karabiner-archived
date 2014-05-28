@@ -135,8 +135,8 @@
   // AXUIElementCopyAttributeValue with kAXFocusedWindowAttribute sometimes fails.
   // Therefore, if newelement is specified, use it.
   if (newelement) {
-    applicationElement_ = newelement;
-    CFRetain(applicationElement_);
+    focusedWindowElement_ = newelement;
+    CFRetain(focusedWindowElement_);
   } else {
     AXError error = AXUIElementCopyAttributeValue(applicationElement_,
                                                   kAXFocusedWindowAttribute,
@@ -209,21 +209,37 @@ send:
   previousSentInformation_ = [NSDictionary dictionaryWithDictionary:focusedUIElementInformation_];
 }
 
-- (BOOL) registerFocusNotifications
+- (BOOL) observeAXNotification:(AXUIElementRef)element notification:(CFStringRef)notification add:(BOOL)add
 {
   if (! observer_) return YES;
-  if (! applicationElement_) return YES;
 
-  NSArray* notifications = @[(__bridge NSString*)(kAXFocusedUIElementChangedNotification),
-                             (__bridge NSString*)(kAXFocusedWindowChangedNotification),
-                           ];
-  for (NSString* notification in notifications) {
+  if (add) {
     AXError error = AXObserverAddNotification(observer_,
-                                              applicationElement_,
-                                              (__bridge CFStringRef)(notification),
+                                              element,
+                                              notification,
                                               (__bridge void*)self);
     if (error != kAXErrorSuccess) {
+      if (error == kAXErrorNotificationUnsupported ||
+          error == kAXErrorNotificationAlreadyRegistered) {
+        // We ignore this error.
+        return YES;
+      }
       NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, runningApplication_);
+      return NO;
+    }
+
+  } else {
+    AXError error = AXObserverRemoveNotification(observer_,
+                                                 element,
+                                                 notification);
+    if (error != kAXErrorSuccess) {
+      // Note: Ignore kAXErrorInvalidUIElement because it is expected error when focusedWindowElement_ is closed.
+      if (error == kAXErrorInvalidUIElement ||
+          error == kAXErrorNotificationNotRegistered) {
+        // We ignore this error.
+        return YES;
+      }
+      NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, runningApplication_);
       return NO;
     }
   }
@@ -231,42 +247,29 @@ send:
   return YES;
 }
 
-- (BOOL) registerTitleChangedNotification
+- (BOOL) registerFocusNotifications:(BOOL)add
 {
   if (! observer_) return YES;
-  if (! focusedWindowElement_) return YES;
+  if (! applicationElement_) return YES;
 
-  AXError error = AXObserverAddNotification(observer_,
-                                            focusedWindowElement_,
-                                            kAXTitleChangedNotification,
-                                            (__bridge void*)self);
-  if (error != kAXErrorSuccess) {
-    if (error == kAXErrorNotificationUnsupported) {
-      // We ignore this error.
-      return YES;
-    }
-    NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, runningApplication_);
+  if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedUIElementChangedNotification add:add] ||
+      ! [self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification    add:add]) {
     return NO;
   }
 
   return YES;
 }
 
-- (void) unregisterTitleChangedNotification
+- (BOOL) registerTitleChangedNotification:(BOOL)add
 {
-  if (! observer_) return;
-  if (! focusedWindowElement_) return;
+  if (! observer_) return YES;
+  if (! focusedWindowElement_) return YES;
 
-  AXError error = AXObserverRemoveNotification(observer_,
-                                               focusedWindowElement_,
-                                               kAXTitleChangedNotification);
-  if (error != kAXErrorSuccess) {
-    if (error == kAXErrorInvalidUIElement) {
-      // Ignore this error because it is expected error when focusedWindowElement_ is closed.
-    } else {
-      NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, runningApplication_);
-    }
+  if (! [self observeAXNotification:focusedWindowElement_ notification:kAXTitleChangedNotification add:add]) {
+    return NO;
   }
+
+  return YES;
 }
 
 static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef notification, void* refcon)
@@ -291,7 +294,7 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
     if (CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
       // ----------------------------------------
       // unregister notifications.
-      [self unregisterTitleChangedNotification];
+      [self registerTitleChangedNotification:NO];
 
       // ----------------------------------------
       // update AX variables.
@@ -299,7 +302,7 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
 
       // ----------------------------------------
       // register notifications.
-      [self registerTitleChangedNotification];
+      [self registerTitleChangedNotification:YES];
 
       // ----------------------------------------
       [self updateTitle];
@@ -347,6 +350,11 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
   observerRegistered_ = YES;
 
   // ----------------------------------------
+  // unregister notifications. (Do not check error)
+  [self registerFocusNotifications:NO];
+  [self registerTitleChangedNotification:NO];
+
+  // ----------------------------------------
   // update AX variables.
   if (! [self updateObserver]) {
     observerRegistered_ = NO;
@@ -356,10 +364,10 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
 
   // ----------------------------------------
   // register notifications.
-  if (! [self registerFocusNotifications]) {
+  if (! [self registerFocusNotifications:YES]) {
     observerRegistered_ = NO;
   }
-  if (! [self registerTitleChangedNotification]) {
+  if (! [self registerTitleChangedNotification:YES]) {
     observerRegistered_ = NO;
   }
 
