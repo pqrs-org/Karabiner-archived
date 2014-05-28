@@ -30,31 +30,31 @@
         <window title="EventViewer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="122" width="874" height="628"/>
+            <rect key="contentRect" x="335" y="122" width="874" height="551"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="874" height="628"/>
+                <rect key="frame" x="0.0" y="0.0" width="874" height="551"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView initialItem="656" id="655">
-                        <rect key="frame" x="13" y="10" width="848" height="612"/>
+                        <rect key="frame" x="13" y="10" width="848" height="535"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Main" identifier="Main" id="656">
                                 <view key="view" id="659">
-                                    <rect key="frame" x="10" y="33" width="828" height="566"/>
+                                    <rect key="frame" x="10" y="33" width="828" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Keyboard &amp; Pointing events" borderType="line" id="614">
-                                            <rect key="frame" x="6" y="191" width="816" height="375"/>
+                                            <rect key="frame" x="6" y="178" width="816" height="311"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="814" height="359"/>
+                                                <rect key="frame" x="1" y="1" width="814" height="295"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="539">
-                                                        <rect key="frame" x="174" y="321" width="135" height="32"/>
+                                                        <rect key="frame" x="174" y="257" width="135" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="clear the result" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="540">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -65,7 +65,7 @@
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="541">
-                                                        <rect key="frame" x="12" y="321" width="162" height="32"/>
+                                                        <rect key="frame" x="12" y="257" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="542">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -76,14 +76,14 @@
                                                         </connections>
                                                     </button>
                                                     <scrollView horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="561">
-                                                        <rect key="frame" x="18" y="14" width="778" height="306"/>
+                                                        <rect key="frame" x="18" y="14" width="778" height="242"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" id="OS0-60-iDz">
-                                                            <rect key="frame" x="1" y="17" width="761" height="288"/>
+                                                            <rect key="frame" x="1" y="17" width="761" height="224"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView autoresizesSubviews="NO" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="565" id="564">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="761" height="288"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="761" height="224"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,7 +163,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="562">
-                                                            <rect key="frame" x="762" y="17" width="15" height="288"/>
+                                                            <rect key="frame" x="762" y="17" width="15" height="224"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                         <tableHeaderView key="headerView" autoresizesSubviews="NO" focusRingType="none" id="565">
@@ -177,7 +177,7 @@
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Input Source" borderType="line" id="811">
-                                            <rect key="frame" x="6" y="13" width="648" height="135"/>
+                                            <rect key="frame" x="6" y="10" width="648" height="135"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="646" height="119"/>
@@ -254,7 +254,7 @@
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <customView id="925" customClass="KeyResponder">
-                                            <rect key="frame" x="659" y="17" width="160" height="160"/>
+                                            <rect key="frame" x="659" y="14" width="160" height="160"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <connections>
                                                 <outlet property="client_" destination="641" id="926"/>
@@ -269,11 +269,11 @@
                             </tabViewItem>
                             <tabViewItem label="App" identifier="App" id="824">
                                 <view key="view" id="825">
-                                    <rect key="frame" x="10" y="33" width="828" height="566"/>
+                                    <rect key="frame" x="10" y="33" width="828" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Applications" borderType="line" id="879">
-                                            <rect key="frame" x="6" y="144" width="816" height="422"/>
+                                            <rect key="frame" x="6" y="67" width="816" height="422"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="814" height="406"/>
@@ -395,7 +395,7 @@
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" borderType="line" titlePosition="noTitle" id="6BO-Yy-5kc">
-                                            <rect key="frame" x="6" y="80" width="816" height="62"/>
+                                            <rect key="frame" x="6" y="3" width="816" height="62"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="814" height="60"/>
@@ -428,11 +428,11 @@ If these values are empty, please permit accessibility features to KeyRemap4MacB
                             </tabViewItem>
                             <tabViewItem label="Devices" identifier="Devices" id="657">
                                 <view key="view" id="658">
-                                    <rect key="frame" x="10" y="33" width="828" height="566"/>
+                                    <rect key="frame" x="10" y="33" width="828" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Device information" borderType="line" id="764">
-                                            <rect key="frame" x="6" y="143" width="816" height="423"/>
+                                            <rect key="frame" x="6" y="66" width="816" height="423"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="814" height="407"/>
@@ -584,11 +584,11 @@ If these values are empty, please permit accessibility features to KeyRemap4MacB
                             </tabViewItem>
                             <tabViewItem label="Preferences" identifier="" id="xC1-NR-t4e">
                                 <view key="view" id="FqR-MI-IIO">
-                                    <rect key="frame" x="10" y="33" width="828" height="566"/>
+                                    <rect key="frame" x="10" y="33" width="828" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Window behavior" borderType="line" id="Qpe-gM-a7s">
-                                            <rect key="frame" x="134" y="383" width="560" height="140"/>
+                                            <rect key="frame" x="134" y="306" width="560" height="140"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="558" height="124"/>
