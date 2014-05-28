@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root>
+  <replacementdef>
+    <replacementname>UIELEMENTROLEDEF_REPLACEMENT</replacementname>
+    <replacementvalue>
+      <![CDATA[
+               <uielementroledef>
+
+               </uielementroledef>
+      ]]>
+    </replacementvalue>
+  </replacementdef>
+</root>
