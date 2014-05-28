@@ -16,6 +16,10 @@ namespace pqrs {
         add_(BRIDGE_FILTERTYPE_WINDOWNAME_NOT,  "WindowName::", it.get_data());
       } else if (it.get_tag_name() == "windowname_only") {
         add_(BRIDGE_FILTERTYPE_WINDOWNAME_ONLY, "WindowName::", it.get_data());
+      } else if (it.get_tag_name() == "uielementrole_not") {
+        add_(BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT,  "UIElementRole::", it.get_data());
+      } else if (it.get_tag_name() == "uielementrole_only") {
+        add_(BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY, "UIElementRole::", it.get_data());
       } else if (it.get_tag_name() == "config_not") {
         add_(BRIDGE_FILTERTYPE_CONFIG_NOT,  "ConfigIndex::", it.get_data());
       } else if (it.get_tag_name() == "config_only") {
