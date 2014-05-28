@@ -204,9 +204,13 @@ send:
 #if 0
   NSLog(@"%@", focusedUIElementInformation_);
 #endif
-  [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
-
-  previousSentInformation_ = [NSDictionary dictionaryWithDictionary:focusedUIElementInformation_];
+  @try {
+    [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
+    previousSentInformation_ = [NSDictionary dictionaryWithDictionary:focusedUIElementInformation_];
+  } @catch (NSException* exception) {
+    NSLog(@"%@", exception);
+    previousSentInformation_ = nil;
+  }
 }
 
 - (BOOL) observeAXNotification:(AXUIElementRef)element notification:(CFStringRef)notification add:(BOOL)add
@@ -253,7 +257,7 @@ send:
   if (! applicationElement_) return YES;
 
   if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedUIElementChangedNotification add:add] ||
-      ! [self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification    add:add]) {
+      ! [self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification add:add]) {
     return NO;
   }
 
