@@ -69,4 +69,6 @@
   <symbol_map type="ScrollWheel" name="VK__AUTOINDEX__BEGIN__" value="6" />
   <symbol_map type="WindowName" name="UNKNOWN" value="0" />
   <symbol_map type="WindowName" name="VK__AUTOINDEX__BEGIN__" value="1" />
+  <symbol_map type="UIElementRole" name="UNKNOWN" value="0" />
+  <symbol_map type="UIElementRole" name="VK__AUTOINDEX__BEGIN__" value="1" />
 </root>
