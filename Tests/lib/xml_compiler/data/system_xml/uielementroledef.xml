@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <root>
+  {{ UIELEMENTROLEDEF_REPLACEMENT }}
 
   <uielementroledef>  AXApplication              </uielementroledef>
   <uielementroledef>  AXSystemWide               </uielementroledef>

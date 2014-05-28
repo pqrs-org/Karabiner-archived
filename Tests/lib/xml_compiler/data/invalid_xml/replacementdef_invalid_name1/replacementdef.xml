@@ -11,6 +11,11 @@
   </replacementdef>
 
   <replacementdef>
+    <replacementname>UIELEMENTROLEDEF_REPLACEMENT</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
     <replacementname>DEVICEPRODUCTDEF_REPLACEMENT</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
