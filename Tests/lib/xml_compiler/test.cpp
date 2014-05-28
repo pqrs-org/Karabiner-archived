@@ -782,6 +782,15 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   }
 
   // ------------------------------------------------------------
+  // uielementroledef.xml
+  {
+    pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/uielementroledef_empty_name");
+    xml_compiler.reload();
+    EXPECT_EQ("Empty <uielementroledef>.", std::string(xml_compiler.get_error_information().get_message()));
+    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+  }
+
+  // ------------------------------------------------------------
   // devicevendordef.xml
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_no_name");
