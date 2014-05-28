@@ -417,8 +417,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
 {
-  [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
-  [NSApp terminate:self];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
+    [NSApp terminate:self];
+  });
 }
 
 // ------------------------------------------------------------
