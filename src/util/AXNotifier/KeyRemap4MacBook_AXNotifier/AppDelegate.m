@@ -7,6 +7,9 @@
 @interface AppDelegate ()
 {
   BOOL initialized_;
+  BOOL observerRegistered_;
+  int observerRegisterRetryCounter_;
+
   NSRunningApplication* runningApplication_;
   AXObserverRef observer_;
   AXUIElementRef applicationElement_;
@@ -101,164 +104,167 @@
 
 - (void) updateApplicationElement
 {
-  @synchronized(self) {
-    // ----------------------------------------
-    if (applicationElement_) {
-      CFRelease(applicationElement_);
-      applicationElement_ = NULL;
-    }
+  // ----------------------------------------
+  if (applicationElement_) {
+    CFRelease(applicationElement_);
+    applicationElement_ = NULL;
+  }
 
-    // ----------------------------------------
-    if (! AXIsProcessTrusted()) return;
+// ----------------------------------------
+  if (! AXIsProcessTrusted()) return;
 
-    // ----------------------------------------
-    applicationElement_ = AXUIElementCreateApplication([runningApplication_ processIdentifier]);
-    if (! applicationElement_) {
-      NSLog(@"AXUIElementCreateApplication is failed. %@", runningApplication_);
-    }
+// ----------------------------------------
+  applicationElement_ = AXUIElementCreateApplication([runningApplication_ processIdentifier]);
+  if (! applicationElement_) {
+    NSLog(@"AXUIElementCreateApplication is failed. %@", runningApplication_);
   }
 }
 
-- (void) updateFocusedWindowElement
+- (void) updateFocusedWindowElement:(AXUIElementRef)newelement
 {
-  @synchronized(self) {
-    // ----------------------------------------
-    if (focusedWindowElement_) {
-      CFRelease(focusedWindowElement_);
-      focusedWindowElement_ = NULL;
-    }
+  // ----------------------------------------
+  if (focusedWindowElement_) {
+    CFRelease(focusedWindowElement_);
+    focusedWindowElement_ = NULL;
+  }
 
-    // ----------------------------------------
-    if (! AXIsProcessTrusted()) return;
+  // ----------------------------------------
+  if (! AXIsProcessTrusted()) return;
 
-    // ----------------------------------------
+  // ----------------------------------------
+  // AXUIElementCopyAttributeValue with kAXFocusedWindowAttribute sometimes fails.
+  // Therefore, if newelement is specified, use it.
+  if (newelement) {
+    applicationElement_ = newelement;
+    CFRetain(applicationElement_);
+  } else {
     AXError error = AXUIElementCopyAttributeValue(applicationElement_,
                                                   kAXFocusedWindowAttribute,
                                                   (CFTypeRef*)(&focusedWindowElement_));
     if (error != kAXErrorSuccess) {
-      NSLog(@"updateFocusedWindowElement is failed: %@", runningApplication_);
+      NSLog(@"updateFocusedWindowElement is failed. error:%d %@", error, runningApplication_);
     }
   }
 }
 
 - (void) updateBundleIdentifier
 {
-  @synchronized(self) {
-    focusedUIElementInformation_[@"BundleIdentifier"] = [runningApplication_ bundleIdentifier];
-  }
+  focusedUIElementInformation_[@"BundleIdentifier"] = [runningApplication_ bundleIdentifier];
 }
 
 - (void) updateTitle
 {
-  @synchronized(self) {
-    focusedUIElementInformation_[@"WindowName"] = @"";
+  focusedUIElementInformation_[@"WindowName"] = @"";
 
-    if (focusedWindowElement_) {
-      NSString* title = [AXUtilities titleOfUIElement:focusedWindowElement_];
-      if (title) {
-        focusedUIElementInformation_[@"WindowName"] = title;
-      }
+  if (focusedWindowElement_) {
+    NSString* title = [AXUtilities titleOfUIElement:focusedWindowElement_];
+    if (title) {
+      focusedUIElementInformation_[@"WindowName"] = title;
     }
   }
 }
 
-- (void) updateRole
+- (void) updateRole:(AXUIElementRef)element
 {
-  @synchronized(self) {
-    focusedUIElementInformation_[@"UIElementRole"] = @"";
+  focusedUIElementInformation_[@"UIElementRole"] = @"";
 
-    AXUIElementRef element = [AXUtilities copyFocusedUIElement];
-    if (element) {
-      NSString* role = [AXUtilities roleOfUIElement:element];
-      if (role) {
-        focusedUIElementInformation_[@"UIElementRole"] = role;
-      }
-      CFRelease(element);
+  if (element) {
+    CFRetain(element);
+  } else {
+    element = [AXUtilities copyFocusedUIElement];
+  }
+  if (element) {
+    NSString* role = [AXUtilities roleOfUIElement:element];
+    if (role) {
+      focusedUIElementInformation_[@"UIElementRole"] = role;
     }
+    CFRelease(element);
   }
 }
 
 - (void) tellToServer
 {
-  @synchronized(self) {
-    // Send if the current information and the previous information are different.
-    for (NSString* key in focusedUIElementInformation_) {
-      if ([key isEqual:@"mtime"]) {
-        continue;
-      }
-
-      if (! [focusedUIElementInformation_[key] isEqual:previousSentInformation_[key]]) {
-        goto send;
-      }
+  // Send if the current information and the previous information are different.
+  for (NSString* key in focusedUIElementInformation_) {
+    if ([key isEqual:@"mtime"]) {
+      continue;
     }
-#if 0
-    NSLog(@"tellToServer skip");
-#endif
-    return;
 
-  send:
-    focusedUIElementInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
-#if 0
-    NSLog(@"%@", focusedUIElementInformation_);
-#endif
-    [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
-
-    previousSentInformation_ = [NSDictionary dictionaryWithDictionary:focusedUIElementInformation_];
-  }
-}
-
-- (void) registerFocusNotifications
-{
-  @synchronized(self) {
-    if (! observer_) return;
-    if (! applicationElement_) return;
-
-    NSArray* notifications = @[(__bridge NSString*)(kAXFocusedUIElementChangedNotification),
-                               (__bridge NSString*)(kAXFocusedWindowChangedNotification),
-                             ];
-    for (NSString* notification in notifications) {
-      AXError error = AXObserverAddNotification(observer_,
-                                                applicationElement_,
-                                                (__bridge CFStringRef)(notification),
-                                                (__bridge void*)self);
-      if (error != kAXErrorSuccess) {
-        NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, runningApplication_);
-      }
+    if (! [focusedUIElementInformation_[key] isEqual:previousSentInformation_[key]]) {
+      goto send;
     }
   }
+#if 0
+  NSLog(@"tellToServer skip");
+#endif
+  return;
+
+send:
+  focusedUIElementInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
+#if 0
+  NSLog(@"%@", focusedUIElementInformation_);
+#endif
+  [[self.client proxy] updateFocusedUIElementInformation:focusedUIElementInformation_];
+
+  previousSentInformation_ = [NSDictionary dictionaryWithDictionary:focusedUIElementInformation_];
 }
 
-- (void) registerTitleChangedNotification
+- (BOOL) registerFocusNotifications
 {
-  @synchronized(self) {
-    if (! observer_) return;
-    if (! focusedWindowElement_) return;
+  if (! observer_) return YES;
+  if (! applicationElement_) return YES;
 
+  NSArray* notifications = @[(__bridge NSString*)(kAXFocusedUIElementChangedNotification),
+                             (__bridge NSString*)(kAXFocusedWindowChangedNotification),
+                           ];
+  for (NSString* notification in notifications) {
     AXError error = AXObserverAddNotification(observer_,
-                                              focusedWindowElement_,
-                                              kAXTitleChangedNotification,
+                                              applicationElement_,
+                                              (__bridge CFStringRef)(notification),
                                               (__bridge void*)self);
     if (error != kAXErrorSuccess) {
       NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, runningApplication_);
+      return NO;
     }
   }
+
+  return YES;
+}
+
+- (BOOL) registerTitleChangedNotification
+{
+  if (! observer_) return YES;
+  if (! focusedWindowElement_) return YES;
+
+  AXError error = AXObserverAddNotification(observer_,
+                                            focusedWindowElement_,
+                                            kAXTitleChangedNotification,
+                                            (__bridge void*)self);
+  if (error != kAXErrorSuccess) {
+    if (error == kAXErrorNotificationUnsupported) {
+      // We ignore this error.
+      return YES;
+    }
+    NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, runningApplication_);
+    return NO;
+  }
+
+  return YES;
 }
 
 - (void) unregisterTitleChangedNotification
 {
-  @synchronized(self) {
-    if (! observer_) return;
-    if (! focusedWindowElement_) return;
+  if (! observer_) return;
+  if (! focusedWindowElement_) return;
 
-    AXError error = AXObserverRemoveNotification(observer_,
-                                                 focusedWindowElement_,
-                                                 kAXTitleChangedNotification);
-    if (error != kAXErrorSuccess) {
-      if (error == kAXErrorInvalidUIElement) {
-        // Ignore this error because it is expected error when focusedWindowElement_ is closed.
-      } else {
-        NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, runningApplication_);
-      }
+  AXError error = AXObserverRemoveNotification(observer_,
+                                               focusedWindowElement_,
+                                               kAXTitleChangedNotification);
+  if (error != kAXErrorSuccess) {
+    if (error == kAXErrorInvalidUIElement) {
+      // Ignore this error because it is expected error when focusedWindowElement_ is closed.
+    } else {
+      NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, runningApplication_);
     }
   }
 }
@@ -272,116 +278,149 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
   AppDelegate* self = (__bridge AppDelegate*)(refcon);
   if (! self) return;
 
-  if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo) {
-    [self updateTitle];
-    [self tellToServer];
-  }
-  if (CFStringCompare(notification, kAXFocusedUIElementChangedNotification, 0) == kCFCompareEqualTo) {
-    [self updateTitle];
-    [self updateRole];
-    [self tellToServer];
-  }
-  if (CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
-    // ----------------------------------------
-    // unregister notifications.
-    [self unregisterTitleChangedNotification];
+  @synchronized(self) {
+    if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo) {
+      [self updateTitle];
+      [self tellToServer];
+    }
+    if (CFStringCompare(notification, kAXFocusedUIElementChangedNotification, 0) == kCFCompareEqualTo) {
+      [self updateTitle];
+      [self updateRole:element];
+      [self tellToServer];
+    }
+    if (CFStringCompare(notification, kAXFocusedWindowChangedNotification, 0) == kCFCompareEqualTo) {
+      // ----------------------------------------
+      // unregister notifications.
+      [self unregisterTitleChangedNotification];
 
-    // ----------------------------------------
-    // update AX variables.
-    [self updateFocusedWindowElement];
+      // ----------------------------------------
+      // update AX variables.
+      [self updateFocusedWindowElement:element];
 
-    // ----------------------------------------
-    // register notifications.
-    [self registerTitleChangedNotification];
+      // ----------------------------------------
+      // register notifications.
+      [self registerTitleChangedNotification];
 
-    // ----------------------------------------
-    [self updateTitle];
-    [self tellToServer];
+      // ----------------------------------------
+      [self updateTitle];
+      [self tellToServer];
+    }
   }
 }
 
-- (void) updateObserver
+- (BOOL) updateObserver
 {
-  @synchronized(self) {
-    // ----------------------------------------
-    if (observer_) {
-      CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
-                            AXObserverGetRunLoopSource(observer_),
-                            kCFRunLoopDefaultMode);
+  // ----------------------------------------
+  if (observer_) {
+    CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
+                          AXObserverGetRunLoopSource(observer_),
+                          kCFRunLoopDefaultMode);
 
-      CFRelease(observer_);
-      observer_ = NULL;
-    }
-
-    // ----------------------------------------
-    if (! AXIsProcessTrusted()) return;
-
-    // ----------------------------------------
-    AXError error = kAXErrorSuccess;
-
-    error = AXObserverCreate([runningApplication_ processIdentifier], observerCallback, &observer_);
-    if (error != kAXErrorSuccess) {
-      observer_ = NULL;
-      NSLog(@"AXObserverCreate is failed. error:%d %@", error, runningApplication_);
-      return;
-    }
-
-    CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                       AXObserverGetRunLoopSource(observer_),
-                       kCFRunLoopDefaultMode);
+    CFRelease(observer_);
+    observer_ = NULL;
   }
+
+  // ----------------------------------------
+  if (! AXIsProcessTrusted()) return YES;
+
+  // ----------------------------------------
+  AXError error = kAXErrorSuccess;
+
+  error = AXObserverCreate([runningApplication_ processIdentifier], observerCallback, &observer_);
+  if (error != kAXErrorSuccess) {
+    observer_ = NULL;
+    NSLog(@"AXObserverCreate is failed. error:%d %@", error, runningApplication_);
+    return NO;
+  }
+
+  CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                     AXObserverGetRunLoopSource(observer_),
+                     kCFRunLoopDefaultMode);
+
+  return YES;
 }
 
 - (void) didActivateApplication:(NSRunningApplication*)runningApplication
 {
   runningApplication_ = runningApplication;
 
+  observerRegistered_ = YES;
+
   // ----------------------------------------
   // update AX variables.
-  [self updateObserver];
+  if (! [self updateObserver]) {
+    observerRegistered_ = NO;
+  }
   [self updateApplicationElement];
-  [self updateFocusedWindowElement];
+  [self updateFocusedWindowElement:NULL];
 
   // ----------------------------------------
   // register notifications.
-  [self registerFocusNotifications];
-  [self registerTitleChangedNotification];
+  if (! [self registerFocusNotifications]) {
+    observerRegistered_ = NO;
+  }
+  if (! [self registerTitleChangedNotification]) {
+    observerRegistered_ = NO;
+  }
 
   // ----------------------------------------
   // tell to server.
   [self updateBundleIdentifier];
   [self updateTitle];
-  [self updateRole];
+  [self updateRole:NULL];
   [self tellToServer];
 }
 
 - (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
 {
-  NSRunningApplication* runningApplication = [notification userInfo][NSWorkspaceApplicationKey];
-  [self didActivateApplication:runningApplication];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @synchronized(self) {
+      NSRunningApplication* runningApplication = [notification userInfo][NSWorkspaceApplicationKey];
+      [self didActivateApplication:runningApplication];
+    }
+  });
 }
 
 - (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
 {
-  [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
-  [NSApp terminate:self];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @synchronized(self) {
+      [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
+      [NSApp terminate:self];
+    }
+  });
 }
 
 - (void) timerFireMethod:(NSTimer*)timer
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    if (AXIsProcessTrusted()) {
-      [[NSApplication sharedApplication] hide:self];
+    @synchronized(self) {
+      if (AXIsProcessTrusted()) {
+        if (! [[NSApplication sharedApplication] isHidden]) {
+          [[NSApplication sharedApplication] hide:self];
+        }
 
-      if (! initialized_) {
-        initialized_ = YES;
+        if (! initialized_) {
+          initialized_ = YES;
 
-        NSRunningApplication* runningApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
-        [self didActivateApplication:runningApplication];
+          NSRunningApplication* runningApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
+          [self didActivateApplication:runningApplication];
+        }
+
+        // AXObserverAddNotification might be failed when just application launched.
+        // So, we try to re-register notification by timer.
+        if (observerRegistered_) {
+          observerRegisterRetryCounter_ = 0;
+        } else {
+          NSLog(@"register notifications: retry counter:%d", observerRegisterRetryCounter_);
+          ++observerRegisterRetryCounter_;
+          NSRunningApplication* runningApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
+          [self didActivateApplication:runningApplication];
+        }
+
+      } else {
+        initialized_ = NO;
       }
-
-    } else {
-      initialized_ = NO;
     }
   });
 }
@@ -409,7 +448,7 @@ static void observerCallback(AXObserverRef observer, AXUIElementRef element, CFS
     }
   }
 
-  [NSTimer scheduledTimerWithTimeInterval:1.0
+  [NSTimer scheduledTimerWithTimeInterval:0.5
                                    target:self
                                  selector:@selector(timerFireMethod:)
                                  userInfo:nil
