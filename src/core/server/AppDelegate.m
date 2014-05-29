@@ -2,7 +2,6 @@
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
