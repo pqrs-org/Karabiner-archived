@@ -25,7 +25,7 @@
     <item>
       <name>window name</name>
       <appendix>Change the right shift key to the Launchpad key when Gmail on Google Chrome.</appendix>
-      <appendix>Change the right option key to the Launchpad key except Gmail on Google Chrome.</appendix>
+      <appendix>Change the right option key to the Launchpad key on Google Chrome except Gmail.</appendix>
       <identifier>remap.samples_windowname</identifier>
       <block>
         <only>GOOGLE_CHROME</only>
