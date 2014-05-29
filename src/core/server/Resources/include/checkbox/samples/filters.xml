@@ -22,6 +22,43 @@
       </block>
     </item>
 
+    <item>
+      <name>window name</name>
+      <appendix>Change the right shift key to the Launchpad key when Gmail on Google Chrome.</appendix>
+      <appendix>Change the right option key to the Launchpad key except Gmail on Google Chrome.</appendix>
+      <identifier>remap.samples_windowname</identifier>
+      <block>
+        <only>GOOGLE_CHROME</only>
+        <windowname_only>Gmail</windowname_only>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::LAUNCHPAD</autogen>
+      </block>
+      <block>
+        <only>GOOGLE_CHROME</only>
+        <windowname_not>Gmail</windowname_not>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::LAUNCHPAD</autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>UIElementRole</name>
+      <appendix>Change hjkl keys to arrow keys on Finder except editing text (eg. filename).</appendix>
+      <appendix>Change the right shift key to the delete key when editing text on Finder.</appendix>
+      <identifier>remap.samples_uielementrole</identifier>
+      <block>
+        <only>FINDER</only>
+        <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </block>
+      <block>
+        <only>FINDER</only>
+        <uielementrole_only>AXTextField, AXTextArea</uielementrole_only>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::DELETE</autogen>
+      </block>
+    </item>
+
     <!-- Device only -->
     <item>
       <name>Device only</name>
