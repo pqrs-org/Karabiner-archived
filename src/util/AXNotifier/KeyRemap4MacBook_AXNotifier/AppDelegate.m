@@ -1,6 +1,7 @@
 #import "AXUtilities.h"
 #import "AppDelegate.h"
 #import "KeyRemap4MacBookKeys.h"
+#import "KeyRemap4MacBookUtilities.h"
 #import "PreferencesKeys.h"
 
 // ==================================================
@@ -124,7 +125,7 @@
 
 - (void) updateBundleIdentifier
 {
-  focusedUIElementInformation_[@"BundleIdentifier"] = [runningApplication_ bundleIdentifier];
+  focusedUIElementInformation_[@"BundleIdentifier"] = [KeyRemap4MacBookUtilities bundleIdentifier:runningApplication_];
 }
 
 - (void) updateTitle
