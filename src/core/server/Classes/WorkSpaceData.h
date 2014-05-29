@@ -11,6 +11,7 @@
 
 - (unsigned int) getApplicationType:(NSString*)name;
 - (unsigned int) getWindowName:(NSString*)name;
+- (unsigned int) getUIElementRole:(NSString*)name;
 
 @end
 

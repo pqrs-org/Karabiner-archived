@@ -24,6 +24,7 @@
 - (int) config_index:(NSString*)identifier;
 - (uint32_t) appid:(NSString*)bundleIdentifier;
 - (uint32_t) windownameid:(NSString*)windowName;
+- (uint32_t) uielementroleid:(NSString*)uiElementRole;
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
   languagecode:(NSString*)languagecode
   inputSourceID:(NSString*)inputSourceID

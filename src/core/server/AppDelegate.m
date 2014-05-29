@@ -81,6 +81,8 @@
     // Therefore, we need to resend values to kext.
     //
     // - bridgeworkspacedata_.applicationtype
+    // - bridgeworkspacedata_.windowname
+    // - bridgeworkspacedata_.uielementrole
     // - bridgeworkspacedata_.inputsource
     // - bridgeworkspacedata_.inputsourcedetail
 
@@ -387,6 +389,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
     bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:focusedUIElementInformation_[@"BundleIdentifier"]];
     bridgeworkspacedata_.windowname      = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"WindowName"]];
+    bridgeworkspacedata_.uielementrole   = [workSpaceData_ getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]];
     [self send_workspacedata_to_kext];
   }
 }

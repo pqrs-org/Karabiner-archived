@@ -121,6 +121,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT:
+        case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
+          p_.uiElementRoleFilter = new UIElementRoleFilter(type_);
+          if (p_.uiElementRoleFilter) {
+            for (size_t i = 1; i < length; ++i) {
+              (p_.uiElementRoleFilter)->add(AddValue(vec[i]));
+            }
+          }
+          break;
+
         default:
           IOLOG_ERROR("FilterUnion::initialize unknown type_:%d.\n", type_);
           goto error;
@@ -187,6 +197,13 @@ namespace org_pqrs_KeyRemap4MacBook {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT:
+        case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
+          if (p_.uiElementRoleFilter) {
+            delete p_.uiElementRoleFilter;
+          }
+          break;
+
         case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
         case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
           if (p_.windowNameFilter) {
@@ -250,6 +267,13 @@ namespace org_pqrs_KeyRemap4MacBook {
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
           if (p_.modifierFilter) {
             return (p_.modifierFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT:
+        case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
+          if (p_.uiElementRoleFilter) {
+            return (p_.uiElementRoleFilter)->isblocked();
           }
           break;
 
