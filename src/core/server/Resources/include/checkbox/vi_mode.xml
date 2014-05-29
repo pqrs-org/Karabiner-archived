@@ -4,6 +4,33 @@
     <name>Vi Mode</name>
 
     <item>
+      <name>Use "hjkl" keys as arrow keys if you are not editing text.</name>
+
+      <item>
+        <name>Enable on Finder.</name>
+        <identifier>remap.hjkl_arrow_finder</identifier>
+        <only>FINDER</only>
+        <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+
+      <item>
+        <name>Enable on Mail.app.</name>
+        <identifier>remap.hjkl_arrow_mail</identifier>
+        <only>MAIL</only>
+        <!-- Mail body editor is AXWebArea -->
+        <uielementrole_not>AXTextField, AXTextArea, AXWebArea</uielementrole_not>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </item>
+    </item>
+
+    <item>
       <name>Simple Vi Mode v2</name>
       <appendix>Use S key to enable hjkl key operation.</appendix>
       <appendix><![CDATA[  * Left-arrow: S down -> H down -> H up  ]]></appendix>
