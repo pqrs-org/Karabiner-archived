@@ -9,6 +9,7 @@
 #include "InputSourceFilter.hpp"
 #include "LastPressedPhysicalKeyFilter.hpp"
 #include "ModifierFilter.hpp"
+#include "UIElementRoleFilter.hpp"
 #include "WindowNameFilter.hpp"
 
 namespace org_pqrs_KeyRemap4MacBook {
@@ -37,6 +38,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         InputSourceFilter* inputSourceFilter;
         LastPressedPhysicalKeyFilter* lastPressedPhysicalKeyFilter;
         ModifierFilter* modifierFilter;
+        UIElementRoleFilter* uiElementRoleFilter;
         WindowNameFilter* windowNameFilter;
       } p_;
     };

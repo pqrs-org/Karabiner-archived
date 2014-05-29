@@ -18,4 +18,11 @@
   return [xmlCompiler_ windownameid:name];
 }
 
+- (unsigned int) getUIElementRole:(NSString*)name
+{
+  if (! name) return 0;
+
+  return [xmlCompiler_ uielementroleid:name];
+}
+
 @end

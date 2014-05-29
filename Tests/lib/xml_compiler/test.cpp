@@ -1001,6 +1001,9 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
   s.add("WindowName", "WN1", 5);
   s.add("WindowName", "WN2", 6);
   s.add("WindowName", "WN3", 7);
+  s.add("UIElementRole", "UER1", 20001);
+  s.add("UIElementRole", "UER2", 20002);
+  s.add("UIElementRole", "UER3", 20003);
   s.add("DeviceVendor", "VENDOR1", 10);
   s.add("DeviceVendor", "VENDOR2", 20);
   s.add("DeviceVendor", "VENDOR3", 30);
@@ -1038,6 +1041,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "  <not><!-- XXX --->APP2</not>"
                   "  <windowname_only>WN1,WN2</windowname_only>"
                   "  <windowname_not>WN3</windowname_not>"
+                  "  <uielementrole_only>UER1,UER2</uielementrole_only>"
+                  "  <uielementrole_not>UER3</uielementrole_not>"
                   "  <identifier>sample</identifier>"
                   "  <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</device_only>"
                   "  <device_not>"
@@ -1108,6 +1113,17 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     expected.push_back(2); // count
     expected.push_back(BRIDGE_FILTERTYPE_WINDOWNAME_NOT);
     expected.push_back(7); // WN3
+
+    // <uielementrole_only>UER1,UER2</uielementrole_only>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY);
+    expected.push_back(20001); // UER1
+    expected.push_back(20002); // UER2
+
+    // <uielementrole_not>UER3</uielementrole_not>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT);
+    expected.push_back(20003); // UER3
 
     // <device_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</device_only>
     expected.push_back(4); // count

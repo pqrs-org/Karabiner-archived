@@ -358,6 +358,14 @@
   }
 }
 
+- (uint32_t) uielementroleid:(NSString*)uiElementRole
+{
+  @synchronized(self) {
+    NSString* key = [NSString stringWithFormat:@"UIElementRole::%@", uiElementRole];
+    return pqrs_xml_compiler_get_symbol_map_value(pqrs_xml_compiler_, [key UTF8String]);
+  }
+}
+
 - (BOOL) is_vk_change_inputsource_matched:(uint32_t)keycode
   languagecode:(NSString*)languagecode
   inputSourceID:(NSString*)inputSourceID
