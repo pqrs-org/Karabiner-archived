@@ -9,40 +9,43 @@
       <appendix></appendix>
       <appendix>Usage:</appendix>
       <appendix></appendix>
-      <appendix>Enable launcher by L key.</appendix>
-      <appendix><![CDATA[  * Open "Activity Monitor" by "L down -> A down -> A up".  ]]></appendix>
-      <appendix><![CDATA[  * Open "TextEdit" by "L down -> E down -> E up".  ]]></appendix>
+      <appendix>Enable launcher mode by O key. (Remember as "O"pen apps.)</appendix>
+      <appendix><![CDATA[  * Open "Activity Monitor" by "O down -> A down -> A up".  ]]></appendix>
+      <appendix><![CDATA[  * Open "TextEdit" by "O down -> E down -> E up".  ]]></appendix>
       <appendix>And you can open other apps by similar way.</appendix>
       <appendix></appendix>
-      <appendix>You can also open apps by holding L+A keys down.</appendix>
+      <appendix>You can also open apps by holding O+A keys down.</appendix>
       <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
       <appendix></appendix>
       <appendix>List:</appendix>
       <appendix></appendix>
-      <appendix>* Activity Monitor: L+A key</appendix>
-      <appendix>* Dictionary: L+D key</appendix>
-      <appendix>* Search a selected text by Dictionary: L+Q key</appendix>
-      <appendix>* DigitalColor Meter: L+shift+D key</appendix>
-      <appendix>* Mail: L+M key</appendix>
-      <appendix>* Safari: L+S key</appendix>
-      <appendix>* Stickies: L+shift+S key</appendix>
-      <appendix>* Terminal: L+T key</appendix>
-      <appendix>* TextEdit: L+shift+T key</appendix>
-      <appendix>* Xcode: L+X key</appendix>
-      <appendix>* iPhone Simulator: L+shift+X key</appendix>
+      <appendix>* Activity Monitor: O+A key</appendix>
+      <appendix>* Dictionary: O+D key</appendix>
+      <appendix>* Search a selected text by Dictionary: O+Q key</appendix>
+      <appendix>* DigitalColor Meter: O+shift+D key</appendix>
+      <appendix>* Launchpad: O+Space key</appendix>
+      <appendix>* Mail: O+M key</appendix>
+      <appendix>* Mission Control: O+Tab key</appendix>
+      <appendix>* Safari: O+S key</appendix>
+      <appendix>* Show Desktop: O+Escape key</appendix>
+      <appendix>* Stickies: O+shift+S key</appendix>
+      <appendix>* Terminal: O+T key</appendix>
+      <appendix>* TextEdit: O+shift+T key</appendix>
+      <appendix>* Xcode: O+X key</appendix>
+      <appendix>* iPhone Simulator: O+shift+X key</appendix>
 
       <identifier>remap.launcher_mode_v2</identifier>
 
       <autogen>
         __KeyOverlaidModifier__
-        KeyCode::L, ModifierFlag::NONE,
+        KeyCode::O, ModifierFlag::NONE,
 
         @begin
         KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_launcher_mode_v2,
         @end
 
         @begin
-        KeyCode::L,
+        KeyCode::O,
         @end
       </autogen>
     </item>
@@ -53,7 +56,7 @@
       {{ LAUNCHER_MODE_V2_EXTRA }}
 
       <autogen>
-        __BlockUntilKeyUp__ KeyCode::L
+        __BlockUntilKeyUp__ KeyCode::O
       </autogen>
 
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
@@ -70,8 +73,11 @@
         Option::NOREPEAT
       </autogen>
       <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
+      <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
       <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
+      <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
       <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
+      <autogen>__KeyToKey__ KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
       <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
       <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
