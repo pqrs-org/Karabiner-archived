@@ -521,4 +521,19 @@
     <equal>com.github.atom</equal>
   </appdef>
 
+  <appdef>
+    <appname>Activity_Monitor</appname>
+    <equal>com.apple.ActivityMonitor</equal>
+  </appdef>
+
+  <appdef>
+    <appname>KeyRemap4MacBook</appname>
+    <equal>org.pqrs.KeyRemap4MacBook</equal>
+  </appdef>
+
+  <appdef>
+    <appname>PCKeyboardHack</appname>
+    <equal>org.pqrs.PCKeyboardHack</equal>
+  </appdef>
+
 </root>
