@@ -104,6 +104,12 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>HJKL_ARROW_EXTRA</replacementname>
+    <replacementvalue></replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>COMPLETE_VI_MODE_EXTRA</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
