@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <root>
 
+  <!-- From AXRoleConstants.h -->
   <uielementroledef>  AXApplication              </uielementroledef>
   <uielementroledef>  AXSystemWide               </uielementroledef>
   <uielementroledef>  AXWindow                   </uielementroledef>
@@ -58,5 +59,8 @@
   <uielementroledef>  AXLayoutItem               </uielementroledef>
   <uielementroledef>  AXHandle                   </uielementroledef>
   <uielementroledef>  AXPopover                  </uielementroledef>
+
+  <!-- Undocumented Role -->
+  <uielementroledef>  AXWebArea                  </uielementroledef>
 
 </root>
