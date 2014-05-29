@@ -7,14 +7,19 @@
     <item>
       <name>Enable in some standard apps.</name>
       <appendix>Supported Applications:</appendix>
-      <appendix>- Activity Monitor, Finder, Mail.app.</appendix>
+      <appendix>- Finder, iTunes, Mail.app.</appendix>
+      <appendix>- Activity Monitor.</appendix>
       <appendix>- System Preferences, KeyRemap4MacBook, PCKeyboardHack.</appendix>
       <identifier>remap.hjkl_arrow</identifier>
 
       {{ HJKL_ARROW_EXTRA }}
 
       <block>
-        <only>Activity_Monitor, FINDER, SYSTEM_PREFERENCES, KeyRemap4MacBook, PCKeyboardHack</only>
+        <only>
+          FINDER, ITUNES, SYSTEM_PREFERENCES,
+          Activity_Monitor,
+          KeyRemap4MacBook, PCKeyboardHack,
+        </only>
         <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
         <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
         <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
