@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Use "hjkl" keys as arrow keys if you are not editing text.</name>
+
+    <item>
+      <name>Enable in some standard apps.</name>
+      <appendix>Supported Applications:</appendix>
+      <appendix>- Activity Monitor, Finder, Mail.app.</appendix>
+      <appendix>- System Preferences, KeyRemap4MacBook, PCKeyboardHack.</appendix>
+      <identifier>remap.hjkl_arrow</identifier>
+
+      {{ HJKL_ARROW_EXTRA }}
+
+      <block>
+        <only>Activity_Monitor, FINDER, SYSTEM_PREFERENCES, KeyRemap4MacBook, PCKeyboardHack</only>
+        <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </block>
+
+      <block>
+        <only>MAIL</only>
+        <!-- Mail body editor is AXWebArea -->
+        <uielementrole_not>AXTextField, AXTextArea, AXWebArea</uielementrole_not>
+        <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+        <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      </block>
+    </item>
+
+    <item>
+      <name>Enable in Xcode.</name>
+      <identifier>remap.hjkl_arrow_xcode</identifier>
+      <only>XCODE</only>
+      <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+    </item>
+  </item>
+
+</root>

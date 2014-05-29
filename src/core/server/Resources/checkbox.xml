@@ -44,6 +44,7 @@
   <include path="include/checkbox/overtype_mode.xml" />
   <include path="include/checkbox/emacs_mode.xml" />
   <include path="include/checkbox/mouse_keys.xml" />
+  <include path="include/checkbox/hjkl_arrow.xml" />
   <include path="include/checkbox/vi_mode.xml" />
   <include path="include/checkbox/ubiquitous_vim_bindings.xml" />
   <include path="include/checkbox/vim_emu.xml" />
