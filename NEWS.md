@@ -63,6 +63,7 @@ Since 9.3.0
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_ON
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_OFF
     * v9.3.87: Added &lt;windowname\_only&gt; and &lt;windowname\_not&gt; filters.
+    * v9.99.11: Added &lt;uielementrole\_only&gt; and &lt;uielementrole\_not&gt; filters.
 
 Version 9.3.0
 -------------
