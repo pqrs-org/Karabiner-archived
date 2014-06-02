@@ -31,6 +31,14 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>UIELEMENTROLES_EDITING_IN_FINDER</replacementname>
+    <!-- editing file name: AXTextField -->
+    <!-- editing command:   AXTextArea -->
+    <replacementvalue>AXTextField, AXTextArea</replacementvalue>
+  </replacementdef>
+
+  <!-- ============================================================ -->
+  <replacementdef>
     <replacementname>BROWSING_MODE_EXTRA</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
