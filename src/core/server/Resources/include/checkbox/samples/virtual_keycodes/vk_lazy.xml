@@ -36,16 +36,41 @@
       <appendix>Change 1 to A,B,C,VK_LAZY_SHIFT_L</appendix>
       <appendix>Change 2 to Control_L+VK_LAZY_SHIFT_L</appendix>
       <appendix>Change 3 to A,Control_L+VK_LAZY_SHIFT_L</appendix>
-      <appendix></appendix>
+      <identifier>remap.samples_vk_lazy_keytokey</identifier>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::A, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
+    </item>
+    <item>
+      <name>KeyToKey (2)</name>
       <appendix>* Change the right command key to the lazy ocmmand key.</appendix>
       <appendix>* Change "right command-space" to "option-shift".</appendix>
+      <appendix>* Change "right command-c" to "left click".</appendix>
+      <appendix>* Change "right command-left click" to "right click".</appendix>
       <appendix></appendix>
-      <appendix>(The events are follows when you press "right command-space".)</appendix>
+      <appendix></appendix>
+      <appendix>The events are follows when you press "right command-space":</appendix>
+      <appendix>(Do not send the command key to prevent the windows key tapping on virtual machine.)</appendix>
+      <appendix></appendix>
       <appendix>eventType:keyMod          code:0x3a       name:Option_L        flags:Opt</appendix>
       <appendix>eventType:keyMod          code:0x38       name:Shift_L         flags:Shift Opt</appendix>
       <appendix>eventType:keyMod          code:0x3a       name:Option_L        flags:Shift</appendix>
       <appendix>eventType:keyMod          code:0x38       name:Shift_L         flags:</appendix>
-      <identifier>remap.samples_vk_lazy_keytokey</identifier>
+      <appendix></appendix>
+      <appendix></appendix>
+      <appendix>The events are follows when you press "right command-c".</appendix>
+      <appendix>(Do not send the command key for the double click.)</appendix>
+      <appendix></appendix>
+      <appendix>eventType:mouseDown       code:0x0        name:left           flags:</appendix>
+      <appendix>eventType:mouseUp         code:0x0        name:left           flags:</appendix>
+      <appendix></appendix>
+      <appendix></appendix>
+      <appendix>The events are follows when you press "right command-left click":</appendix>
+      <appendix>(Do not send the command key for the double click.)</appendix>
+      <appendix></appendix>
+      <appendix>eventType:mouseDown       code:0x1        name:right           flags:</appendix>
+      <appendix>eventType:mouseUp         code:0x1        name:right           flags:</appendix>
+      <identifier>remap.samples_vk_lazy_keytokey_2</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::A, KeyCode::B, KeyCode::C, KeyCode::VK_LAZY_SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::A, KeyCode::VK_LAZY_SHIFT_L, ModifierFlag::CONTROL_L</autogen>
@@ -55,6 +80,17 @@
         __KeyToKey__
         KeyCode::SPACE, ModifierFlag::COMMAND_R,
         KeyCode::SHIFT_L, ModifierFlag::OPTION_L,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::C, ModifierFlag::COMMAND_R,
+        PointingButton::LEFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        PointingButton::LEFT, ModifierFlag::COMMAND_R,
+        PointingButton::RIGHT,
       </autogen>
     </item>
     <item>
