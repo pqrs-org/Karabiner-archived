@@ -321,23 +321,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     {
       bool result = false;
 
-      // set lazy modifiers
-      bool lazy_enabled = FlagStatus::globalFlagStatus().lazy_enabled();
-      FlagStatus::globalFlagStatus().lazy_set_enable(eventType == EventType::DOWN);
-      {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
-                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
-                                                                                       KeyCode::VK_PSEUDO_KEY,
-                                                                                       CommonData::getcurrent_keyboardType(),
-                                                                                       false));
-        if (! ptr) return false;
-        Params_KeyboardEventCallBack& params = *ptr;
-
-        ParamsUnion paramsUnion(params);
-        RemapParams rp(paramsUnion);
-        result = remap(rp);
+      // ----------------------------------------
+      if (eventType == EventType::DOWN) {
+        FlagStatus::globalFlagStatus().lazy_enable();
+      } else {
+        FlagStatus::globalFlagStatus().lazy_disable_if_off();
       }
-      FlagStatus::globalFlagStatus().lazy_set_enable(lazy_enabled);
+
+      // ----------------------------------------
+      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
+                                                                                     FlagStatus::globalFlagStatus().makeFlags(),
+                                                                                     KeyCode::VK_PSEUDO_KEY,
+                                                                                     CommonData::getcurrent_keyboardType(),
+                                                                                     false));
+      if (! ptr) return false;
+      Params_KeyboardEventCallBack& params = *ptr;
+
+      ParamsUnion paramsUnion(params);
+      RemapParams rp(paramsUnion);
+      result = remap(rp);
 
       return result;
     }
