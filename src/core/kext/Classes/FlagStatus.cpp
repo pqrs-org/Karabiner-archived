@@ -323,18 +323,19 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   void
-  FlagStatus::lazy_set_enable(bool newval)
+  FlagStatus::lazy_enable(void)
   {
     for (size_t i = 0; i < item_.size(); ++i) {
-      item_[i].lazy_set_enable(newval);
+      item_[i].lazy_enable();
     }
   }
 
-  bool
-  FlagStatus::lazy_enabled(void) const
+  void
+  FlagStatus::lazy_disable_if_off(void)
   {
-    if (item_.size() == 0) return false;
-    return item_[0].lazy_enabled_;
+    for (size_t i = 0; i < item_.size(); ++i) {
+      item_[i].lazy_disable_if_off();
+    }
   }
 
   void

@@ -51,7 +51,35 @@ namespace org_pqrs_KeyRemap4MacBook {
       void sticky_toggle(void) { sticky_count_ = ! sticky_count_; }
       void lazy_increase(void) { ++lazy_count_; }
       void lazy_decrease(void) { --lazy_count_; }
-      void lazy_set_enable(bool newval) { lazy_enabled_ = newval; }
+      void lazy_enable(void) { lazy_enabled_ = true; }
+      /*
+       * The following key sequence is required with lazy command key + tab:
+       * (== We should not disable lazy command key when the tab key is released.)
+       *
+       * eventType:keyMod          code:0x37       name:Command_L       flags:Cmd
+       * eventType:keyDown         code:0x30       name:Tab             flags:Cmd
+       * eventType:keyUp           code:0x30       name:Tab             flags:Cmd
+       * eventType:keyDown         code:0x30       name:Tab             flags:Cmd
+       * eventType:keyUp           code:0x30       name:Tab             flags:Cmd
+       * eventType:keyMod          code:0x37       name:Command_L       flags:
+       *
+       *
+       * The following key sequence is required with lazy command key + "command+space to left click".
+       * (== We have to disable lazy command key when the space key is released.)
+       *
+       * eventType:mouseDown       code:0x0        name:left            flags:
+       * eventType:mouseUp         code:0x0        name:left            flags:
+       * eventType:mouseDown       code:0x0        name:left            flags:
+       * eventType:mouseUp         code:0x0        name:left            flags:
+       *
+       *
+       * Therefore, we have to disable lazy command key only when it is not active.
+       */
+      void lazy_disable_if_off(void) {
+        if (sum(true) <= 0) {
+          lazy_enabled_ = false;
+        }
+      }
 
       ModifierFlag flag_;
       int count_;
@@ -111,8 +139,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     void sticky_clear(void);
     void lock_clear(void);
     void negative_lock_clear(void);
-    void lazy_set_enable(bool newval);
-    bool lazy_enabled(void) const;
+    void lazy_enable(void);
+    void lazy_disable_if_off(void);
 
     void subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags) const;
 
