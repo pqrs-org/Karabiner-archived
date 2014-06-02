@@ -13,14 +13,14 @@
       </item>
       <item><name>F2 key ──────────────────────────</name></item>
       <item>
-        <name>Use Brightness Up to Rename (Use Tab to complete Rename)</name>
+        <name>Use Brightness Up to Rename</name>
         <appendix>(Change Brightness Up to Return)</appendix>
         <identifier>remap.app_finder_brightness_up_to_return</identifier>
         <only>FINDER</only>
         <autogen>__KeyToKey__ ConsumerKeyCode::BRIGHTNESS_UP, KeyCode::RETURN</autogen>
       </item>
       <item>
-        <name>Use F2 to Rename (Use Tab to complete Rename)</name>
+        <name>Use F2 to Rename</name>
         <appendix>(Change F2 to Return)</appendix>
         <identifier>remap.app_finder_f2_to_return</identifier>
         <only>FINDER</only>
@@ -32,12 +32,14 @@
         <appendix>(Change Forward Delete to Command_L+Delete)</appendix>
         <identifier>remap.app_finder_forwarddelete2commandLdelete</identifier>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <autogen>__KeyToKey__ FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Return Key Opens a file</name>
-        <appendix>(use F2 to rename but caution not to use Return when done typing name or file opens)</appendix>
+        <appendix>(use F2 to rename)</appendix>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.KPReturn_to_Ctrl_O</identifier>
         <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
       </item>
@@ -48,6 +50,7 @@
         <appendix>(Change Fn+Return to Return)</appendix>
         <identifier>remap.app_finder_return2commandO</identifier>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <autogen>__KeyToKey__ KeyCode::RETURN, ModifierFlag::FN, KeyCode::RETURN</autogen>
         <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
       </item>
@@ -56,76 +59,96 @@
         <appendix>(Change Enter to Command+O)</appendix>
         <identifier>remap.app_finder_enter2commandO</identifier>
         <only>FINDER</only>
-        <autogen>__KeyToKey__ KeyCode::ENTER,
-          KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ KeyCode::RETURN, ModifierFlag::FN,
-          KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
+        <autogen>
+          __KeyToKey__
+          KeyCode::ENTER,
+          KeyCode::O, ModifierFlag::COMMAND_L,
+          Option::NOREPEAT,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::RETURN, ModifierFlag::FN,
+          KeyCode::O, ModifierFlag::COMMAND_L,
+          Option::NOREPEAT,
+        </autogen>
       </item>
       <item>
         <name>Use Quote (') to go UP a directory (' to Ctrl+Up)</name>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.Quote_to_Ctrl_UpArrow</identifier>
         <autogen>__KeyToKey__ KeyCode::QUOTE, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Use Semicolon to go Back in history (; to Ctrl+[)</name>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.Semicolon_to_Ctrl_LeftBrckt</identifier>
         <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
         <name>Use { to select next file (i.e. up arrow key) ({ to Up-Arrow)</name>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.CurlyLBracket_to_UpArrow</identifier>
         <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_UP</autogen>
       </item>
       <item>
         <name>Use } to select previous file (i.e. down arrow key) (} to Down-Arrow)</name>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.CurlyRBracket_to_DArrow</identifier>
         <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CURSOR_DOWN</autogen>
       </item>
       <item>
         <name>Use [ to collapse folder (i.e. left key) ([ to Left-Arrow)</name>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.LBracket_to_LArrow</identifier>
         <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, KeyCode::CURSOR_LEFT</autogen>
       </item>
       <item>
         <name>Use ] to expand folder (i.e. left key) (] to Left-Arrow)</name>
         <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.RBracket_to_RArrow</identifier>
         <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, KeyCode::CURSOR_RIGHT</autogen>
-      </item>
-      <item hidden="true">
-        <name></name>
-        <identifier vk_config="true">notsave.app_finder_return_accepts_rename</identifier>
-        <only>FINDER</only>
-        <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
       </item>
       <item>
         <name>Cmd+N to new folder | Cmd+Shift+N to new window</name>
         <identifier>remap.app_finder_switch_new_folder_window</identifier>
         <only>FINDER</only>
-        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::COMMAND_R | ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::COMMAND_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
-        <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::COMMAND_R, KeyCode::N, ModifierFlag::COMMAND_R |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
+        <autogen>
+          __KeyToKey__
+          KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+          KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        </autogen>
+        <autogen>
+        __KeyToKey__
+        KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L,
+        </autogen>
       </item>
       <item>
         <name>Cmd+R to Rename | Return to Open</name>
-        <appendix>+ if you press Return while renaming (via Cmd+R) it accepts new name</appendix>
-        <appendix>  instead of opening.</appendix>
         <identifier>remap.app_finder_switch_open_rename</identifier>
         <only>FINDER</only>
-        <autogen>__KeyToKey__ KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::RETURN, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
-        <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::O, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
-        <autogen>__KeyToKey__ KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
-        <autogen>__KeyToKey__ KeyCode::N,  ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
-        <autogen>__KeyToKey__ KeyCode::N,  ModifierFlag::COMMAND_R |  ModifierFlag::SHIFT_L, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
-        <autogen>__KeyToKey__ KeyCode::N,  ModifierFlag::COMMAND_R |  ModifierFlag::SHIFT_R, KeyCode::N, ModifierFlag::COMMAND_L |  ModifierFlag::SHIFT_L, KeyCode::VK_CONFIG_TOGGLE_notsave_app_finder_return_accepts_rename</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+          KeyCode::RETURN,
+        </autogen>
+        <block>
+          <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
+          <autogen>
+            __KeyToKey__
+            KeyCode::RETURN, ModifierFlag::NONE,
+            KeyCode::O, ModifierFlag::COMMAND_L,
+            Option::NOREPEAT,
+          </autogen>
+        </block>
       </item>
     </item>
     <item>
