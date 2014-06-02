@@ -63,6 +63,11 @@
         <autogen>__PointingRelativeToScroll__ PointingButton::BUTTON4</autogen>
       </item>
       <item>
+        <name>MouseButton5+CursorMove to ScrollWheel</name>
+        <identifier>remap.pointing_relative_mousebutton5_to_scroll</identifier>
+        <autogen>__PointingRelativeToScroll__ PointingButton::BUTTON5</autogen>
+      </item>
+      <item>
         <name>Control+RightClick+CursorMove to ScrollWheel</name>
         <identifier>remap.pointing_relative_controlRightClick_to_scroll</identifier>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL</autogen>
