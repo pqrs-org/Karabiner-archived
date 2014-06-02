@@ -379,7 +379,7 @@ TEST(FlagStatus, lazy_increase) {
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
   // +0 (total 1)
-  flagStatus.lazy_set_enable(true);
+  flagStatus.lazy_enable();
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   // -1 (total 0)
@@ -390,15 +390,11 @@ TEST(FlagStatus, lazy_increase) {
   flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
-  flagStatus.lazy_set_enable(false);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  flagStatus.lazy_disable_if_off();
+  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   // +2 (total 2)
   flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
-
-  // +0 (total 2)
-  flagStatus.lazy_set_enable(true);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   // -1 (total 1)
