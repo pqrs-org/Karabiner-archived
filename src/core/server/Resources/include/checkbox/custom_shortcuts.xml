@@ -153,6 +153,26 @@
           @end
         </autogen>
       </item>
+
+      <item>
+        <name>By button4 on mouse.</name>
+        <identifier>remap.move_mouse_cursor_center_button4</identifier>
+        <autogen>
+          __KeyToKey__
+          PointingButton::BUTTON4,
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+        </autogen>
+      </item>
+
+      <item>
+        <name>By button5 on mouse.</name>
+        <identifier>remap.move_mouse_cursor_center_button5</identifier>
+        <autogen>
+          __KeyToKey__
+          PointingButton::BUTTON5,
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+        </autogen>
+      </item>
     </item>
     <item>
       <name>Move mouse cursor to top-left side of the frontmost app's window:</name>
