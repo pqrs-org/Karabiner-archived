@@ -30,11 +30,11 @@ namespace org_pqrs_KeyRemap4MacBook {
   }
 
   // ----------------------------------------------------------------------
-#define PUSH_TO_OUTPUTQUEUE {               \
-    if (! queue_) return;                   \
-                                            \
-    queue_->push_back(new Item(p));         \
-    fire_timer_.setTimeoutMS(DELAY, false); \
+#define PUSH_TO_OUTPUTQUEUE {           \
+    if (! queue_) return;               \
+                                        \
+    queue_->push_back(new Item(p));     \
+    fire_timer_.setTimeoutMS(0, false); \
 }
   void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
     PUSH_TO_OUTPUTQUEUE;
@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
-    int delay = DELAY;
+    int delay = 0;
 
     // ----------------------------------------
     switch ((p->params).type) {
