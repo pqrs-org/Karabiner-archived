@@ -66,9 +66,6 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ======================================================================
   private:
-    enum {
-      DELAY = 1,
-    };
     class Item : public List::Item {
     public:
       Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
