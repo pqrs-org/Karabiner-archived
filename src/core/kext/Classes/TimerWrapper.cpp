@@ -95,12 +95,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       return kIOReturnSuccess;
     }
 
+    UInt32 scale_factor = kMillisecondScale;
     if (ms == 0) {
+      scale_factor = kNanosecondScale;
       ms = 1;
     }
 
     object_->setActive(true);
-    IOReturn retval = timer_->setTimeoutMS(ms);
+    IOReturn retval = timer_->setTimeout(ms, scale_factor);
     if (retval != kIOReturnSuccess) {
       IOLOG_WARN("setTimeoutMS is failed\n");
       object_->setActive(false);
