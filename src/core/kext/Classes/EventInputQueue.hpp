@@ -106,11 +106,6 @@ namespace org_pqrs_KeyRemap4MacBook {
     };
 
   private:
-    enum {
-      MIN_DELAY = 1,
-      IMMEDIATELY_DELAY = 1,
-    };
-
     enum DelayType {
       DELAY_TYPE_KEY,
       DELAY_TYPE_POINTING_BUTTON,

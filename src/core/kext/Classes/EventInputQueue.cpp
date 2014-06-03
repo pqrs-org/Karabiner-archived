@@ -51,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
   {
     // if no SimultaneousKeyPresses is enabled, fire immediately.
     if (! RemapClassManager::isEventInputQueueDelayEnabled()) {
-      return IMMEDIATELY_DELAY;
+      return 0;
     }
 
     uint32_t ms = ic_.getmillisec();
@@ -65,7 +65,6 @@ namespace org_pqrs_KeyRemap4MacBook {
         break;
     }
     if (delay > ms) delay = ms;  // min(ms, delay)
-    if (delay < MIN_DELAY) delay = MIN_DELAY;  // max(MIN_DELAY, delay)
     ic_.begin();
     return delay;
   }
