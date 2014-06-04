@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Samples for KeyRemap4MacBook Developer</name>
+    <name>Samples for KeyRemap4MacBook Binding Developers</name>
+    <appendix>defined in .../include/checkbox/samples.xml</appendix>
     <item>
       <name>SetKeyboardType</name>
+      <appendix>Showing __SetKeyboardType__ and KeyboardType::*</appendix>
       <item>
         <name>Set keyboardType = KeyboardType::MACBOOK</name>
         <identifier>remap.samples_setkeyboardtype_macbook</identifier>
@@ -29,9 +31,11 @@
 
     <item>
       <name>Pass Through Mode</name>
+      <appendix>(To "pass through" means to turn off further remapping.)</appendix>
       <item>
-        <name>Core</name>
+        <name>Core - Toggle Passthrough</name>
         <appendix>Change A to toggle "Pass Through Mode"</appendix>
+        <appendix>(using KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough and IGNORE_PASSTHROUGH)</appendix>
         <identifier>passthrough.samples</identifier>
         <autogen>
           __KeyToKey__
@@ -41,14 +45,18 @@
         </autogen>
       </item>
       <item>
-        <name>Samples</name>
-        <appendix>B to C</appendix>
-        <appendix>Volume Mute to A</appendix>
+        <name>Mapping Samples</name>
+        <appendix>(mappings to test passthrough)</appendix>
+        <appendix>B to C (using __KeyToKey__ and KeyCode::*)</appendix>
+        <appendix>Volume Mute to A (using ConsumerKeyCode::VOLUME_MUTE)</appendix>
         <appendix>RightClick+CursorMove to ScrollWheel</appendix>
-        <appendix>Holding LeftClick to Mission Control</appendix>
+        <appendix>(using __PointingRelativeToScroll__ and PointingButton::*</appendix>
+        <appendix>Hold Left once to select Mission Control</appendix>
+        <appendix>(using __HoldingKeyToKey__, KeyCode::MISSION_CONTROL, NOREPEAT)</appendix>
         <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
+        <appendix>(using __SimultaneousKeyPresses__)</appendix>
         <identifier>remap.samples_passthrough</identifier>
-        <autogen>__ShowStatusMessage__ Samples</autogen>
+        <autogen>__ShowStatusMessage__ Mapping Samples Active</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::C</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
@@ -68,12 +76,14 @@
       </item>
       <item>
         <name>Disable all settings while you are using Terminal.</name>
+        <appendix>(using __PassThrough__ and only)</appendix>
         <identifier>remap.samples_passthrough_terminal</identifier>
         <only>TERMINAL</only>
         <autogen>__PassThrough__</autogen>
       </item>
       <item>
         <name>Disable all settings on Magic Mouse.</name>
+        <appendix>(using device_only, DeviceVendor::*, DeviceProduct::*)</appendix>
         <identifier>remap.samples_passthrough_magic_mouse</identifier>
         <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE</device_only>
         <autogen>__PassThrough__</autogen>
@@ -82,23 +92,28 @@
 
     <item>
       <name>ShowStatusMessage</name>
+      <appendix>(show a message box, usually in lower right corner)</appendix>
       <item>
         <name>Sample1</name>
+        <appendix>(using __ShowStatusMessage__)</appendix>
         <identifier>remap.samples_showstatusmessage_sample1</identifier>
         <autogen>__ShowStatusMessage__ Sample1</autogen>
       </item>
       <item>
         <name>Sample2</name>
+        <appendix>(shares box with Sample1 if both selected)</appendix>
         <identifier>remap.samples_showstatusmessage_sample2</identifier>
         <autogen>__ShowStatusMessage__ Sample2</autogen>
       </item>
       <item>
         <name>(Empty)</name>
+        <appendix>(diplays box even when no other message active)</appendix>
         <identifier>remap.samples_showstatusmessage_empty</identifier>
         <autogen>__ShowStatusMessage__</autogen>
       </item>
       <item>
-        <name>Lock, Sticky</name>
+        <name>Lock modifiers and Sticky</name>
+        <appendix>(See modifiers if Preferences pane->Status Message tab->Show Sticky Modifiers is checked)</appendix>
         <appendix>Q to Lock Control_L</appendix>
         <appendix>W to Lock Left Button</appendix>
         <appendix>E to Sticky Shift_L</appendix>
@@ -112,10 +127,11 @@
     <item>
       <name>KeyToKey</name>
       <item>
-        <name>Standard</name>
-        <appendix>A to B (KeyToKey)</appendix>
-        <appendix>S to SHIFT_L (KeyToModifier)</appendix>
-        <appendix>SHIFT_L to Return (ModifierToKey)</appendix>
+        <name>Standard Remappings</name>
+        <appendix>(using __KeyToKey__ and KeyCode::*)</appendix>
+        <appendix>A to B</appendix>
+        <appendix>S to SHIFT_L</appendix>
+        <appendix>SHIFT_L to Return</appendix>
         <appendix>Option_L to Command_L</appendix>
         <identifier>remap.samples_keytokey_standard</identifier>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::B</autogen>
