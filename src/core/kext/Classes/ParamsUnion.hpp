@@ -90,6 +90,15 @@ namespace org_pqrs_KeyRemap4MacBook {
       return false;
     }
 
+    bool isModifier(void) const {
+      if (type != KEYBOARD) return false;
+
+      Params_KeyboardEventCallBack* p = get_Params_KeyboardEventCallBack();
+      if (! p) return false;
+
+      return  (p->key).isModifier();
+    }
+
   private:
     ParamsUnion& operator=(const ParamsUnion& rhs); // Prevent assignment
 
