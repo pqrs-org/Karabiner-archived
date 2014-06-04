@@ -36,8 +36,8 @@
     <item>
       <name>Generic</name>
       <item>
-        <name>Wait between sequential key events</name>
-        <identifier essential="true" default="1" step="1" baseunit="ms">parameter.wait_between_sequential_keys</identifier>
+        <name>Wait before and after a modifier key event</name>
+        <identifier essential="true" default="10" step="1" baseunit="ms">parameter.wait_before_and_after_a_modifier_key_event</identifier>
       </item>
     </item>
 
