@@ -127,7 +127,7 @@
     <item>
       <name>KeyToKey</name>
       <item>
-        <name>Standard Remappings</name>
+        <name>Standard Remapping</name>
         <appendix>(using __KeyToKey__ and KeyCode::*)</appendix>
         <appendix>A to B</appendix>
         <appendix>S to SHIFT_L</appendix>
@@ -142,8 +142,12 @@
 
       <item>
         <name>Useful macros</name>
+        <appendix>(Macros create keyword aliases)</appendix>
+        <appendix>Map A+shift to B</appendix>
+        <appendix>(using MODIFERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT)</appendix>
         <appendix>MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT is alias to</appendix>
         <appendix>ModifierFlag::SHIFT_L and ModifierFlag::SHIFT_R</appendix>
+        <appendix>So this code:</appendix>
         <appendix>+--------------------------------------------</appendix>
         <appendix>|  &lt;autogen&gt;</appendix>
         <appendix>|    __KeyToKey__</appendix>
@@ -151,10 +155,16 @@
         <appendix>|    KeyCode::B,</appendix>
         <appendix>|  &lt;/autogen&gt;</appendix>
         <appendix>+--------------------------------------------</appendix>
-        <appendix>==&gt; __KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</appendix>
-        <appendix>==&gt; __KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::B</appendix>
+        <appendix>maps to this code:</appendix>
+        <appendix>+--------------------------------------------</appendix>
+        <appendix>|  &lt;__KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B&gt;</appendix>
+        <appendix>|  &lt; __KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::B&gt;</appendix>
+        <appendix>+--------------------------------------------</appendix>
         <appendix></appendix>
+        <appendix>Map C+optional modifers to D with same modifiers + E</appendix>
+        <appendix>(So "c" to "de" but "C" to "De")</appendix>
         <appendix>Multiple MODIFIERFLAG_* in one definition are replaced with same value.</appendix>
+        <appendix>So this code:</appendix>
         <appendix>+--------------------------------------------</appendix>
         <appendix>|  &lt;autogen&gt;</appendix>
         <appendix>|    __KeyToKey__</appendix>
@@ -163,37 +173,42 @@
         <appendix>|    KeyCode::E,</appendix>
         <appendix>|  &lt;/autogen&gt;</appendix>
         <appendix>+--------------------------------------------</appendix>
-        <appendix>==&gt; 2 MODIFIERFLAGS_ANYs are replaced to ModifierFlag::COMMAND_L</appendix>
-        <appendix>==&gt; 2 MODIFIERFLAGS_ANYs are replaced to ModifierFlag::COMMAND_R</appendix>
-        <appendix>==&gt; ... replaced to ModifierFlag::CONTROL_L</appendix>
-        <appendix>==&gt; ... replaced to ModifierFlag::CONTROL_R</appendix>
-        <appendix>==&gt; ... replaced to ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L</appendix>
-        <appendix>==&gt; ...</appendix>
+        <appendix>Maps to this code:</appendix>
+        <appendix>+--------------------------------------------</appendix>
+        <appendix>|  &lt;__KeyToKey__ KeyCode::C, KeyCode::D, KeyCode::E&gt;</appendix>
+        <appendix>|  &lt;__KeyToKey__ KeyCode::C, ModifierFlag::SHIFT_L,</appendix>
+        <appendix>|      KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::E&gt;</appendix>
+        <appendix>|  &lt;__KeyToKey__ KeyCode::C, ModifierFlag::SHIFT_L|ModifierFlag::CONTROL_L,</appendix>
+        <appendix>|      KeyCode::D, ModifierFlag::SHIFT_L|ModifierFlag::CONTROL_L, KeyCode::E&gt;</appendix>
+        <appendix>|  ... and so on for all combinations of modifier keys</appendix>
+        <appendix>+--------------------------------------------</appendix>
         <identifier>remap.samples_keytokey_vk_modifier</identifier>
         <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
         <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAGS_ANY, KeyCode::D, MODIFIERFLAGS_ANY, KeyCode::E</autogen>
+        <autogen>__ShowStatusMessage__ Useful Macros active</autogen>
       </item>
 
       <item>
-        <name>Key To XXX</name>
-        <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
-        <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
-        <appendix>S to Shift_L+Shift_R</appendix>
-        <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
-        <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
-        <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
-        <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
-        <appendix>G to CapsLock (To CapsLock)</appendix>
-        <appendix>Shift+Control+H to Option_L+Space</appendix>
+        <name>Modifier Key Remappings</name>
+        <appendix>(Many example using ModifierFlag::* and MODIFIER_EITHER_LEFT_OR_RIGHT_SHIFT)</appendix>
+        <appendix>A to Shift_L+B</appendix>
+        <appendix>B to Command_L+Shift_L</appendix>
+        <appendix>Shift+C to Space</appendix>
+        <appendix>Shift+D to Option_L (notice KeyCode versus ModifierFlag)</appendix>
+        <appendix>Shift+E to Control_L+Space</appendix>
+        <appendix>Shift+F to Option_L+Shift_L</appendix>
+        <appendix>G to CapsLock (to CapsLock)</appendix>
+        <appendix>Shift+Control+H to Option_L+Space (uses MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL)</appendix>
         <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
-        <appendix>1 to A (only if no Modifiers)</appendix>
-        <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
-        <appendix>Command+Volume Down to Space (if no other modifiers pressed)</appendix>
-        <appendix>RightClick to CapsLock,A</appendix>
+        <appendix>S to Shift_L+Shift_R</appendix>
+        <appendix>1 to A (only if no Modifiers, using ModifierFlag::NONE)</appendix>
+        <appendix>2 to A (if only ModifierFlag == Shift_L)</appendix>
+        <appendix>Command+Volume Down to Space (if no other modifiers pressed, uses ConsumerKeyCode:*)</appendix>
+        <appendix>RightClick to CapsLock, A (uses PointingButton:*)</appendix>
+
         <identifier>remap.samples_keytokey_key2xxx</identifier>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, KeyCode::SHIFT_R, ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE</autogen>
         <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::OPTION_L</autogen>
         <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
@@ -204,6 +219,7 @@
         <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
         <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
         <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::S, KeyCode::SHIFT_R, ModifierFlag::SHIFT_L</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::A</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
         <autogen>
@@ -222,7 +238,7 @@
       </item>
 
       <item>
-        <name>Key To XXX(2)</name>
+        <name>Key Remaps with Many Modifiers</name>
         <appendix>Option+A to Command_L+Shift_L+Tab</appendix>
         <appendix>Option+S to Command_L+Tab</appendix>
         <identifier>remap.samples_keytokey_key2xxx_2</identifier>
@@ -231,7 +247,7 @@
       </item>
 
       <item>
-        <name>Key To XXX(3)</name>
+        <name>Capslock Modifiers</name>
         <appendix>A to CapsLock</appendix>
         <appendix>CapsLock+S to Shift_L+1</appendix>
         <appendix>CapsLock+O to Option_L+2</appendix>
@@ -239,9 +255,11 @@
         <appendix></appendix>
         <appendix>Change Shift_L key to turning CapsLock off</appendix>
         <appendix>(Retain Shift_L movement when CapsLock is off)</appendix>
+        <appendix>(uses VK_NONE)</appendix>
         <appendix></appendix>
         <appendix>Change Shift_R key to turning CapsLock off</appendix>
         <appendix>(Retain Shift_R movement at all times)</appendix>
+        <appendix>(uses &lt;block&gt; and &lt;modifier_only&gt;)</appendix>
         <identifier>remap.samples_keytokey_key2xxx_3</identifier>
         <autogen>__KeyToKey__ KeyCode::A,                               KeyCode::CAPSLOCK</autogen>
         <autogen>__KeyToKey__ KeyCode::S,       ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
@@ -255,7 +273,7 @@
       </item>
 
       <item>
-        <name>Key To XXX(4)</name>
+        <name>Remap with competing rules</name>
         <appendix>A to Shift_L</appendix>
         <appendix>Shift_L+A to B</appendix>
         <identifier>remap.samples_keytokey_key2xxx_4</identifier>
@@ -264,7 +282,7 @@
       </item>
 
       <item>
-        <name>Modifier To XXX</name>
+        <name>Modifier To Modifier</name>
         <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
         <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
         <identifier>remap.samples_keytokey_modifier2xxx</identifier>
