@@ -86,7 +86,16 @@ namespace org_pqrs_KeyRemap4MacBook {
           if (! handled) {
             ListHookedKeyboard::instance().apply(*params);
           }
-          delay = Config::get_wait_between_sequential_keys();
+
+          if ((p->params).isModifier()) {
+            // Delay after modifier
+            //
+            // We need to wait before and after a modifier event because
+            // events will be dropped by window server if
+            // we send a mouse click event and a modifier event at the same time.
+            //
+            delay = Config::get_wait_before_and_after_a_modifier_key_event();
+          }
         }
         break;
       }
@@ -133,9 +142,18 @@ namespace org_pqrs_KeyRemap4MacBook {
     queue_->pop_front();
 
     // ----------------------------------------
-    if (! queue_->empty()) {
-      fire_timer_.setTimeoutMS(delay);
+    Item* next = static_cast<Item*>(queue_->front());
+    if (! next) return;
+
+    if ((next->params).isModifier()) {
+      // Delay before modifier
+      //
+      // See comments of "Delay after modifier".
+      //
+      delay = Config::get_wait_before_and_after_a_modifier_key_event();
     }
+
+    fire_timer_.setTimeoutMS(delay);
   }
 
   // ======================================================================
