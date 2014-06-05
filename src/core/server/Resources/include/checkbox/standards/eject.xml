@@ -155,5 +155,15 @@
         KeyCode::VK_OPEN_URL_SHELL_eject_disc,
       </autogen>
     </item>
+
+    <item>
+      <name>Use the eject key to eject disc in an external drive.</name>
+      <identifier>remap.eject_external_disc</identifier>
+	  <autogen>
+        __KeyToKey__
+        ConsumerKeyCode::EJECT, ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_SHELL_eject_disc_external,
+      </autogen>
+    </item>
   </item>
 </root>
