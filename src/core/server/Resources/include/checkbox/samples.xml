@@ -47,13 +47,18 @@
       <item>
         <name>Mapping Samples</name>
         <appendix>(mappings to test passthrough)</appendix>
-        <appendix>B to C (using __KeyToKey__ and KeyCode::*)</appendix>
-        <appendix>Volume Mute to A (using ConsumerKeyCode::VOLUME_MUTE)</appendix>
-        <appendix>RightClick+CursorMove to ScrollWheel</appendix>
+        <appendix></appendix>
+        <appendix>* B to C (using __KeyToKey__ and KeyCode::*)</appendix>
+        <appendix></appendix>
+        <appendix>* Volume Mute to A (using ConsumerKeyCode::VOLUME_MUTE)</appendix>
+        <appendix></appendix>
+        <appendix>* RightClick+CursorMove to ScrollWheel</appendix>
         <appendix>(using __PointingRelativeToScroll__ and PointingButton::*</appendix>
-        <appendix>Hold Left once to select Mission Control</appendix>
+        <appendix></appendix>
+        <appendix>* Hold Left once to select Mission Control</appendix>
         <appendix>(using __HoldingKeyToKey__, KeyCode::MISSION_CONTROL, NOREPEAT)</appendix>
-        <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
+        <appendix></appendix>
+        <appendix>* Simultaneous Key Presses [D+F] to Escape</appendix>
         <appendix>(using __SimultaneousKeyPresses__)</appendix>
         <identifier>remap.samples_passthrough</identifier>
         <autogen>__ShowStatusMessage__ Mapping Samples Active</autogen>
@@ -113,7 +118,11 @@
       </item>
       <item>
         <name>Lock modifiers and Sticky</name>
-        <appendix>(See modifiers if Preferences pane->Status Message tab->Show Sticky Modifiers is checked)</appendix>
+        <appendix>
+          <![CDATA[
+                   (See modifiers if Preferences pane->Status Message tab->Show Sticky Modifiers is checked)
+          ]]>
+        </appendix>
         <appendix>Q to Lock Control_L</appendix>
         <appendix>W to Lock Left Button</appendix>
         <appendix>E to Sticky Shift_L</appendix>
