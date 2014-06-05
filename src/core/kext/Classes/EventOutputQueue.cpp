@@ -74,7 +74,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
-    int delay = 0;
+    unsigned int delay = 0;
 
     // ----------------------------------------
     switch ((p->params).type) {
@@ -94,7 +94,7 @@ namespace org_pqrs_KeyRemap4MacBook {
             // events will be dropped by window server if
             // we send a mouse click event and a modifier event at the same time.
             //
-            delay = Config::get_wait_before_and_after_a_modifier_key_event();
+            delay = max(delay, Config::get_wait_before_and_after_a_modifier_key_event());
           }
         }
         break;
@@ -130,7 +130,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         Params_Wait* params = (p->params).get_Params_Wait();
         if (params) {
-          delay = params->milliseconds;
+          delay = max(delay, static_cast<unsigned int>(params->milliseconds));
         }
         break;
       }
@@ -150,7 +150,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       //
       // See comments of "Delay after modifier".
       //
-      delay = Config::get_wait_before_and_after_a_modifier_key_event();
+      delay = max(delay, Config::get_wait_before_and_after_a_modifier_key_event());
     }
 
     fire_timer_.setTimeoutMS(delay);
