@@ -85,4 +85,10 @@ finish:
   return (NSString*)[AXUtilities valueOfAttribute:NSAccessibilityRoleAttribute ofUIElement:element];
 }
 
++ (NSString*) subroleOfUIElement:(AXUIElementRef)element
+{
+  if (! element) return nil;
+  return (NSString*)[AXUtilities valueOfAttribute:NSAccessibilitySubroleAttribute ofUIElement:element];
+}
+
 @end
