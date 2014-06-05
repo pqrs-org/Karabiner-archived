@@ -159,6 +159,25 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     // ======================================================================
+    namespace {
+      void
+      resetWhenNumHeldDownKeysIsZero(void)
+      {
+        if (NumHeldDownKeys::iszero()) {
+          NumHeldDownKeys::reset();
+          KeyboardRepeat::cancel();
+          EventWatcher::reset();
+          FlagStatus::globalFlagStatus().reset();
+          ButtonStatus::reset();
+          VirtualKey::reset();
+          EventOutputQueue::FireModifiers::fire(FlagStatus::globalFlagStatus().makeFlags());
+          EventOutputQueue::FireRelativePointer::fire();
+          PressDownKeys::clear();
+        }
+      }
+    }
+
+    // ======================================================================
     void
     remap_KeyboardEventCallback(ParamsUnion& paramsUnion)
     {
@@ -187,17 +206,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
-      if (NumHeldDownKeys::iszero()) {
-        NumHeldDownKeys::reset();
-        KeyboardRepeat::cancel();
-        EventWatcher::reset();
-        FlagStatus::globalFlagStatus().reset();
-        ButtonStatus::reset();
-        VirtualKey::reset();
-        EventOutputQueue::FireModifiers::fire(FlagStatus::globalFlagStatus().makeFlags());
-        EventOutputQueue::FireRelativePointer::fire();
-        PressDownKeys::clear();
-      }
+      resetWhenNumHeldDownKeysIsZero();
 
       RemapFunc::PointingRelativeToScroll::cancelScroll();
     }
@@ -227,6 +236,8 @@ namespace org_pqrs_KeyRemap4MacBook {
         }
       }
 
+      resetWhenNumHeldDownKeysIsZero();
+
       RemapFunc::PointingRelativeToScroll::cancelScroll();
     }
 
@@ -244,6 +255,10 @@ namespace org_pqrs_KeyRemap4MacBook {
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
         EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons(), params->dx, params->dy);
+      }
+
+      if (params->ex_button != PointingButton::NONE) {
+        resetWhenNumHeldDownKeysIsZero();
       }
     }
 
