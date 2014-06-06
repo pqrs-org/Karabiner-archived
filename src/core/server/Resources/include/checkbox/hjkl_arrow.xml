@@ -7,7 +7,7 @@
     <item>
       <name>Enable in some standard apps.</name>
       <appendix>Supported Applications:</appendix>
-      <appendix>- Finder, iTunes, Mail.app.</appendix>
+      <appendix>- Finder, iPhoto, iTunes, Mail.app.</appendix>
       <appendix>- Activity Monitor.</appendix>
       <appendix>- System Preferences, KeyRemap4MacBook, PCKeyboardHack.</appendix>
       <identifier>remap.hjkl_arrow</identifier>
@@ -16,7 +16,7 @@
 
       <block>
         <only>
-          FINDER, ITUNES, SYSTEM_PREFERENCES,
+          FINDER, IPHOTO, ITUNES, SYSTEM_PREFERENCES,
           Activity_Monitor,
           KeyRemap4MacBook, PCKeyboardHack,
         </only>
