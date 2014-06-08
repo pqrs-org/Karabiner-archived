@@ -39,6 +39,10 @@
         <name>Wait before and after a modifier key event</name>
         <identifier essential="true" default="10" step="1" baseunit="ms">parameter.wait_before_and_after_a_modifier_key_event</identifier>
       </item>
+      <item>
+        <name>Wait before and after a pointing device click event</name>
+        <identifier essential="true" default="10" step="1" baseunit="ms">parameter.wait_before_and_after_a_click_event</identifier>
+      </item>
     </item>
 
     <item>
