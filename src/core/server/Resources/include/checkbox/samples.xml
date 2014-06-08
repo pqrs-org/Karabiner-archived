@@ -50,20 +50,17 @@
         <appendix>(mappings to test passthrough)</appendix>
         <autogen>__ShowStatusMessage__ Mapping Samples Active</autogen>
 
-        <appendix>* B to C (using __KeyToKey__ and KeyCode::*)</appendix>
+        <appendix>B to C (using __KeyToKey__ and KeyCode::*)</appendix>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::C</autogen>
 
-        <appendix></appendix>
-        <appendix>* Volume Mute to A (using ConsumerKeyCode::VOLUME_MUTE)</appendix>
+        <appendix>Volume Mute to A (using ConsumerKeyCode::VOLUME_MUTE)</appendix>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
 
-        <appendix></appendix>
-        <appendix>* RightClick+CursorMove to ScrollWheel</appendix>
+        <appendix>RightClick+CursorMove to ScrollWheel</appendix>
         <appendix>(using __PointingRelativeToScroll__ and PointingButton::*</appendix>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
 
-        <appendix></appendix>
-        <appendix>* Hold Left once to select Mission Control</appendix>
+        <appendix>Hold Left once to select Mission Control</appendix>
         <appendix>(using __HoldingKeyToKey__, KeyCode::MISSION_CONTROL, NOREPEAT)</appendix>
         <autogen>
           __HoldingKeyToKey__
@@ -78,8 +75,7 @@
           @end
         </autogen>
 
-        <appendix></appendix>
-        <appendix>* Simultaneous Key Presses [D+F] to Escape</appendix>
+        <appendix>Simultaneous Key Presses [D+F] to Escape</appendix>
         <appendix>(using __SimultaneousKeyPresses__)</appendix>
         <autogen>__SimultaneousKeyPresses__ KeyCode::F, KeyCode::D, KeyCode::ESCAPE</autogen>
       </item>
