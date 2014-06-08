@@ -2,13 +2,16 @@
 <root>
   <item>
     <name>Filters</name>
+    <appendix>in .../include/checkbox/samples/filters.xml</appendix>
     <!-- application only -->
     <item>
       <name>application</name>
       <appendix>A to B if application == TERMINAL (KeyToKey)</appendix>
-      <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
       <appendix>Volume Mute to B if application == TERMINAL (ConsumerToKey)</appendix>
+      <appenix>(using &lt;only&gt; and a &lt;block&gt;)</appendix>
+      <appendix>A to C if application != TERMINAL (KeyToKey)</appendix>
       <appendix>Volume Mute to C if application != TERMINAL (ConsumerToKey)</appendix>
+      <appendix>(using &lt;not&gt; and a &lt;block&gt;)</appendix>
       <identifier>remap.samples_application</identifier>
       <block>
         <only>TERMINAL</only>
@@ -632,6 +635,7 @@
       <item>
         <name>Standard</name>
         <appendix>Change A to 1 if time elapsed since last pressed is greater than 1000ms.</appendix>
+        <appendix>(uses &lt;elapsedtimesincelatpressed_greaterthan&gt;)</appendix>
         <appendix>Change S to 2 if time elapsed since last pressed is less than 1000ms.</appendix>
         <identifier>remap.samples_elapsedtimesincelastpressed</identifier>
         <block>
