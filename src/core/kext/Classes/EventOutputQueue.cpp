@@ -11,6 +11,7 @@
 namespace org_pqrs_KeyRemap4MacBook {
   List* EventOutputQueue::queue_ = NULL;
   TimerWrapper EventOutputQueue::fire_timer_;
+  Buttons EventOutputQueue::previousButtons_;
 
   void
   EventOutputQueue::initialize(IOWorkLoop& workloop)
@@ -64,6 +65,54 @@ namespace org_pqrs_KeyRemap4MacBook {
 #undef PUSH_TO_OUTPUTQUEUE
 
   // ----------------------------------------------------------------------
+  unsigned int
+  EventOutputQueue::calcDelay(const ParamsUnion& paramsUnion)
+  {
+    // ----------------------------------------
+    {
+      // Delay before and after modifier
+      //
+      // We need to wait before and after a modifier event because
+      // events will be dropped by window server if
+      // we send a mouse click event and a modifier event at the same time.
+      //
+      if (paramsUnion.isModifier()) {
+        return Config::get_wait_before_and_after_a_modifier_key_event();
+      }
+    }
+
+    // ----------------------------------------
+    {
+      // Delay before and after modifier
+      //
+      // We need to wait before and after a pointing device click event because
+      // events will be dropped by processes (eg. NetBeans) if
+      // we send press button event and release button event at the same time.
+      //
+
+      Params_RelativePointerEventCallback* params = paramsUnion.get_Params_RelativePointerEventCallback();
+      if (params) {
+        if (params->buttons != previousButtons_) {
+          previousButtons_ = params->buttons;
+          return Config::get_wait_before_and_after_a_click_event();
+        }
+      }
+    }
+
+    // ----------------------------------------
+    return 0;
+  }
+
+  namespace {
+    unsigned int maxDelay(unsigned int v1, unsigned int v2) {
+      if (v1 > v2) {
+        return v1;
+      } else {
+        return v2;
+      }
+    }
+  }
+
   void
   EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */)
   {
@@ -74,7 +123,8 @@ namespace org_pqrs_KeyRemap4MacBook {
     Item* p = static_cast<Item*>(queue_->front());
     if (! p) return;
 
-    unsigned int delay = 0;
+    // Delay after modifier or click.
+    unsigned int delay = calcDelay(p->params);
 
     // ----------------------------------------
     switch ((p->params).type) {
@@ -85,16 +135,6 @@ namespace org_pqrs_KeyRemap4MacBook {
           bool handled = VirtualKey::handleAfterEnqueued(*params);
           if (! handled) {
             ListHookedKeyboard::instance().apply(*params);
-          }
-
-          if ((p->params).isModifier()) {
-            // Delay after modifier
-            //
-            // We need to wait before and after a modifier event because
-            // events will be dropped by window server if
-            // we send a mouse click event and a modifier event at the same time.
-            //
-            delay = max(delay, Config::get_wait_before_and_after_a_modifier_key_event());
           }
         }
         break;
@@ -130,7 +170,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       {
         Params_Wait* params = (p->params).get_Params_Wait();
         if (params) {
-          delay = max(delay, static_cast<unsigned int>(params->milliseconds));
+          delay = maxDelay(delay, static_cast<unsigned int>(params->milliseconds));
         }
         break;
       }
@@ -142,16 +182,12 @@ namespace org_pqrs_KeyRemap4MacBook {
     queue_->pop_front();
 
     // ----------------------------------------
+    // Set timeout for next event.
+
+    // Delay before modifier and click.
     Item* next = static_cast<Item*>(queue_->front());
     if (! next) return;
-
-    if ((next->params).isModifier()) {
-      // Delay before modifier
-      //
-      // See comments of "Delay after modifier".
-      //
-      delay = max(delay, Config::get_wait_before_and_after_a_modifier_key_event());
-    }
+    delay = maxDelay(delay, calcDelay(next->params));
 
     fire_timer_.setTimeoutMS(delay);
   }
