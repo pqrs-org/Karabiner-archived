@@ -106,6 +106,25 @@
         <autogen>__ShowStatusMessage__ Sample2</autogen>
       </item>
       <item>
+        <name>A Long Message Taking Up Most Box Space</name>
+        <appendix>(shares box with Sample1 if both selected)</appendix>
+        <identifier>remap.samples_showstatusmessage_longmessage</identifier>
+        <autogen>__ShowStatusMessage__ A Long Message Taking Up Most Box Space</autogen>
+      </item>
+      <item>
+        <name>A Multiline Message Over Two Lines</name>
+        <identifier>remap.samples_showstatusmessage_multilinemessage</identifier>
+        <autogen>__ShowStatusMessage__ A Multiline Message Over
+Two Lines</autogen>
+      </item>
+      <item>
+      <name>Sample3</name>
+        <appendix>(cannot see if box is full)</appendix>
+        <identifier>remap.samples_showstatusmessage_sample3</identifier>
+        <autogen>__ShowStatusMessage__ Sample3</autogen>
+      </item>
+
+      <item>
         <name>(Empty)</name>
         <appendix>(diplays box even when no other message active)</appendix>
         <identifier>remap.samples_showstatusmessage_empty</identifier>
