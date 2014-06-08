@@ -175,7 +175,7 @@
     <productname>LOGITECH_USB_RECEIVER</productname>
     <productid>0xc52b</productid>
   </deviceproductdef>
-  
+
   <deviceproductdef>
     <productname>LOGITECH_DINOVO_EDGE_0xb309</productname>
     <productid>0xb309</productid>
@@ -245,7 +245,7 @@
     <productname>MICROSOFT_NANO_TRANSCEIVER_2-1</productname>
     <productid>0x07a5</productid>
   </deviceproductdef>
-  
+
   <deviceproductdef>
     <productname>TARGUS_BLUETOOTH_PRESENTER</productname>
     <productid>0x07d1</productid>
