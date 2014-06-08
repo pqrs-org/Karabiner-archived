@@ -195,6 +195,47 @@
         <autogen>__KeyToKey__ KeyCode::F5, KeyCode::P, ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::B</autogen>
       </item>
+
+      <item>
+        <name>Enhance Logicool Wireless Trackball M570, M570t.</name>
+        <appendix><![CDATA[  Button5+Trackball -> ScrollWheel ]]></appendix>
+        <appendix></appendix>
+        <appendix>Button4+Trackball:</appendix>
+        <appendix>* Up: Mission Control</appendix>
+        <appendix>* Down: Show Desktop</appendix>
+        <appendix>* Left: Move right a space</appendix>
+        <appendix>* Right: Move left a space</appendix>
+        <appendix></appendix>
+        <appendix><![CDATA[ Press button5 alone -> middle click ]]></appendix>
+        <appendix><![CDATA[ Press button4 alone -> Move mouse cursor to the center of the frontmost app's window ]]></appendix>
+        <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_UNIFYING_0xc52b</device_only>
+        <identifier>remap.logitech_m570t_hack</identifier>
+
+        <autogen>
+          __PointingRelativeToScroll__
+          PointingButton::BUTTON5,
+
+          Option::POINTINGRELATIVETOSCROLL_TOKEYS,
+          PointingButton::MIDDLE,
+        </autogen>
+
+        <autogen>
+          __KeyOverlaidModifier__
+          PointingButton::BUTTON4,
+          KeyCode::VK_MODIFIER_BUTTON4,
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+        </autogen>
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::BUTTON4,
+
+          PointingRelative::UP,    KeyCode::MISSION_CONTROL,
+          PointingRelative::DOWN,  KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L,
+          PointingRelative::LEFT,  KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L,
+          PointingRelative::RIGHT, KeyCode::CURSOR_LEFT,  ModifierFlag::CONTROL_L,
+        </autogen>
+
+      </item>
     </item>
 
     <item>
