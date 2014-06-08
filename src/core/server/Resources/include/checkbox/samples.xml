@@ -168,8 +168,9 @@ Two Lines</autogen>
       </item>
 
       <item>
-        <identifier>remap.samples_keytokey_vk_modifier</identifier>
-        <name>Useful macros</name>
+        <identifier>remap.samples_keytokey_right_left</identifier>
+        <name>MODIFIER_FLAG_EITHER_LEFT_OR_RIGHT_SHIFT</name>
+        <appendix>Map A+(SHIFT_L or SHIFT_R) to B</appendix>
         <appendix>MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT is alias to</appendix>
         <appendix>ModifierFlag::SHIFT_L and ModifierFlag::SHIFT_R</appendix>
         <appendix>+--------------------------------------------</appendix>
@@ -181,7 +182,12 @@ Two Lines</autogen>
         <appendix>+--------------------------------------------</appendix>
         <appendix>==&gt; __KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</appendix>
         <appendix>==&gt; __KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_R, KeyCode::B</appendix>
-        <appendix></appendix>
+        <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_keytokey_modifier_any</identifier>
+        <name>MODIFIERFLAGS_ANY</name>
+        <appendix>Map C+(any modifier keys) to D+(those same modifier keys) then E</appendix>
         <appendix>Multiple MODIFIERFLAG_* in one definition are replaced with same value.</appendix>
         <appendix>+--------------------------------------------</appendix>
         <appendix>|  &lt;autogen&gt;</appendix>
@@ -197,7 +203,6 @@ Two Lines</autogen>
         <appendix>==&gt; ... replaced to ModifierFlag::CONTROL_R</appendix>
         <appendix>==&gt; ... replaced to ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L</appendix>
         <appendix>==&gt; ...</appendix>
-        <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
         <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAGS_ANY, KeyCode::D, MODIFIERFLAGS_ANY, KeyCode::E</autogen>
       </item>
 
