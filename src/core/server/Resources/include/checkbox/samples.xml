@@ -324,9 +324,9 @@ Two Lines</autogen>
       </item>
 
       <item>
-        <identifier>remap.samples_keytokey_modifier2xxx_2</identifier>
+        <identifier>remap.samples_keytokey_interactions</identifier>
         <name>Key to Key interactions between mappings.</name>
-        <appendix>(These are best understood by watching the EventViewer)</appendix>
+        <appendix>(These are best understood by watching the result in EventViewer)</appendix>
         <appendix>Shift_L to Shift_L (if no other modifiers pressed)</appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L</autogen>
 
@@ -350,18 +350,19 @@ Two Lines</autogen>
         <appendix>Command_R to Option_R</appendix>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
       </item>
-
       <item>
-        <identifier>remap.samples_keytokey_modifier2xxx_3</identifier>
-        <name>Modifier To XXX(3)</name>
+        <identifier>remap.samples_keytokey_modifier_self</identifier>
+        <name>Referencing a Modifier Key in its mapping</name>
+        <appendix>(including self modifier, ModifierFlag::SHIFT_R)</appendix>
         <appendix>Shift_R to A</appendix>
         <appendix>Shift_L+Shift_R to B</appendix>
-        <appendix>Command_R to A</appendix>
-        <appendix>Command_L+Command_R to B</appendix>
-        <!-- including self modifier (ModifierFlag::SHIFT_R) -->
         <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R, KeyCode::B</autogen>
         <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::A</autogen>
-        <!-- excluding self modifier (ModifierFlag::COMMAND_R) -->
+
+        <appendix></appendix>
+        <appendix>(excluding self modfier, ModifierFlag::COMMAND_R)</appendix>
+        <appendix>Command_R to A</appendix>
+        <appendix>Command_L+Command_R to B</appendix>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::B</autogen>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::A</autogen>
       </item>
