@@ -76,6 +76,14 @@ namespace org_pqrs_KeyRemap4MacBook {
       // events will be dropped by window server if
       // we send a mouse click event and a modifier event at the same time.
       //
+      // For example, change middle click to command-left click by this autogen.
+      // We need to put a wait on this setting in Mail.app.
+      //    <autogen>
+      //      __KeyToKey__
+      //      PointingButton::MIDDLE, ModifierFlag::NONE,
+      //      PointingButton::LEFT, ModifierFlag::COMMAND_L,
+      //    </autogen>
+      //
       if (paramsUnion.isModifier()) {
         return Config::get_wait_before_and_after_a_modifier_key_event();
       }
