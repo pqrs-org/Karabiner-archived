@@ -89,4 +89,11 @@
   <modifierdef notify="false">RETURN</modifierdef>
   <modifierdef notify="false">SPACE</modifierdef>
   <modifierdef notify="false">TAB</modifierdef>
+
+  <modifierdef notify="false">BUTTON1</modifierdef>
+  <modifierdef notify="false">BUTTON2</modifierdef>
+  <modifierdef notify="false">BUTTON3</modifierdef>
+  <modifierdef notify="false">BUTTON4</modifierdef>
+  <modifierdef notify="false">BUTTON5</modifierdef>
+
 </root>
