@@ -208,41 +208,55 @@ Two Lines</autogen>
 
       <item>
         <identifier>remap.samples_keytokey_key2xxx</identifier>
-        <name>Key To XXX</name>
+        <name>Key To Key with Modifier Flags</name>
         <appendix>A to Shift_L+B (Key to Key+Modifier)</appendix>
-        <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
-        <appendix>S to Shift_L+Shift_R</appendix>
-        <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
-        <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
-        <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
-        <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
-        <appendix>G to CapsLock (To CapsLock)</appendix>
-        <appendix>Shift+Control+H to Option_L+Space</appendix>
-        <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
-        <appendix>1 to A (only if no Modifiers)</appendix>
-        <appendix>2 to A (only if ModifierFlag == Shift_L)</appendix>
-        <appendix>Command+Volume Down to Space (if no other modifiers pressed)</appendix>
-        <appendix>RightClick to CapsLock,A</appendix>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::B, ModifierFlag::SHIFT_L</autogen>
+
+        <appendix>B to Command_L+Shift_L (Key to Modifier+Modifier)</appendix>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::COMMAND_L, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::S, KeyCode::SHIFT_R, ModifierFlag::SHIFT_L</autogen>
+
+
+        <appendix>Shift+C to Space (Key+Modifier To Key)</appendix>
         <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE</autogen>
+
+        <appendix>Shift+D to Option_L (Key+Modifier To Modifier)</appendix>
         <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::OPTION_L</autogen>
+
+        <appendix>Shift+E to Control_L+Space (Key+Modifier To Key+Modifier)</appendix>
         <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
+
+        <appendix>Shift+F to Option_L+Shift_L (Key+Modifier To Modifier+Modifier)</appendix>
         <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+
+        <appendix>G to CapsLock (To CapsLock)</appendix>
         <autogen>__KeyToKey__ KeyCode::G, KeyCode::CAPSLOCK</autogen>
+
+        <appendix>Shift+Control+H to Option_L+Space</appendix>
         <autogen>__KeyToKey__ KeyCode::H, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE, ModifierFlag::OPTION_L</autogen>
+
+        <appendix>Fn+hjkl to Left/Down/Up/Right (Key+Fn to Key) (around KeyPad)</appendix>
         <autogen>__KeyToKey__ KeyCode::H, ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
         <autogen>__KeyToKey__ KeyCode::J, ModifierFlag::FN, KeyCode::CURSOR_DOWN</autogen>
         <autogen>__KeyToKey__ KeyCode::K, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
         <autogen>__KeyToKey__ KeyCode::L, ModifierFlag::FN, KeyCode::CURSOR_RIGHT</autogen>
+
+        <appendix>S to Shift_L+Shift_R</appendix>
+        <autogen>__KeyToKey__ KeyCode::S, KeyCode::SHIFT_R, ModifierFlag::SHIFT_L</autogen>
+
+        <appendix>1 to A (only if no Modifiers)</appendix>
         <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::A</autogen>
+
+        <appendix>2 to A (only if Shift_L is only modifier)</appendix>
         <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::A</autogen>
+
+        <appendix>Command+Volume Down to Space (if no other modifiers pressed)</appendix>
         <autogen>
           __KeyToKey__
           ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
           KeyCode::SPACE,
         </autogen>
+
+        <appendix>RightClick to CapsLock,A</appendix>
         <autogen>
           __KeyToKey__
           <!-- from -->
@@ -255,7 +269,7 @@ Two Lines</autogen>
 
       <item>
         <identifier>remap.samples_keytokey_key2xxx_2</identifier>
-        <name>Key To XXX(2)</name>
+        <name>Key To Key with Multiple Modifiers</name>
         <appendix>Option+A to Command_L+Shift_L+Tab</appendix>
         <appendix>Option+S to Command_L+Tab</appendix>
         <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
@@ -264,22 +278,27 @@ Two Lines</autogen>
 
       <item>
         <identifier>remap.samples_keytokey_key2xxx_3</identifier>
-        <name>Key To XXX(3)</name>
+        <name>Key To Key with Capslock</name>
         <appendix>A to CapsLock</appendix>
+        <autogen>__KeyToKey__ KeyCode::A,                               KeyCode::CAPSLOCK</autogen>
+
         <appendix>CapsLock+S to Shift_L+1</appendix>
+        <autogen>__KeyToKey__ KeyCode::S,       ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+
         <appendix>CapsLock+O to Option_L+2</appendix>
+        <autogen>__KeyToKey__ KeyCode::O,       ModifierFlag::CAPSLOCK, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
+
         <appendix>CapsLock+C to Command_L+3</appendix>
+        <autogen>__KeyToKey__ KeyCode::C,       ModifierFlag::CAPSLOCK, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
+
         <appendix></appendix>
         <appendix>Change Shift_L key to turning CapsLock off</appendix>
         <appendix>(Retain Shift_L movement when CapsLock is off)</appendix>
+        <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::CAPSLOCK, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
+
         <appendix></appendix>
         <appendix>Change Shift_R key to turning CapsLock off</appendix>
         <appendix>(Retain Shift_R movement at all times)</appendix>
-        <autogen>__KeyToKey__ KeyCode::A,                               KeyCode::CAPSLOCK</autogen>
-        <autogen>__KeyToKey__ KeyCode::S,       ModifierFlag::CAPSLOCK, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::O,       ModifierFlag::CAPSLOCK, KeyCode::KEY_2, ModifierFlag::OPTION_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::C,       ModifierFlag::CAPSLOCK, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::CAPSLOCK, KeyCode::CAPSLOCK, KeyCode::VK_NONE</autogen>
         <block>
           <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
           <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CAPSLOCK, KeyCode::SHIFT_R</autogen>
@@ -288,7 +307,7 @@ Two Lines</autogen>
 
       <item>
         <identifier>remap.samples_keytokey_key2xxx_4</identifier>
-        <name>Key To XXX(4)</name>
+        <name>Key To Key with Shift</name>
         <appendix>A to Shift_L</appendix>
         <appendix>Shift_L+A to B</appendix>
         <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::SHIFT_L, KeyCode::B</autogen>
@@ -297,7 +316,7 @@ Two Lines</autogen>
 
       <item>
         <identifier>remap.samples_keytokey_modifier2xxx</identifier>
-        <name>Modifier To XXX</name>
+        <name>Modifiers To Modifiers</name>
         <appendix>Shift_R to Command_L+Option_L (Modifier to Modifier+Modifier)</appendix>
         <appendix>Fn+Option_L to Command_L (Modifier+Modifier To Modifier)</appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::COMMAND_L, ModifierFlag::OPTION_L</autogen>
@@ -306,20 +325,29 @@ Two Lines</autogen>
 
       <item>
         <identifier>remap.samples_keytokey_modifier2xxx_2</identifier>
-        <name>Modifier To XXX(2)</name>
+        <name>Key to Key interactions between mappings.</name>
+        <appendix>(These are best understood by watching the EventViewer)</appendix>
         <appendix>Shift_L to Shift_L (if no other modifiers pressed)</appendix>
-        <appendix>Shift_L to Command_L</appendix>
-        <appendix>Shift+A to B</appendix>
-        <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
-        <appendix>Command_L+Command_R to Command_L+Command_R (if no other modifiers pressed)</appendix>
-        <appendix>Command_L+Command_R+A to B</appendix>
-        <appendix>Command_R to Option_R</appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L</autogen>
+
+        <appendix>Shift_L to Command_L</appendix>
+        <appendix>(but only with other modifiers because Shift_L by itself grabbed by above)</appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
+
+        <appendix>Shift+A to B</appendix>
+        <appendix>(including Shift_L+A but Control+L_shift+A gives control+command+a)</appendix>
         <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
+
+        <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R</autogen>
+
+        <appendix>Command_L+Command_R to Command_L+Command_R (if no other modifiers pressed)</appendix>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R | ModifierFlag::NONE, KeyCode::COMMAND_R, ModifierFlag::COMMAND_L</autogen>
+
+        <appendix>Command_L+Command_R+A to B</appendix>
         <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::COMMAND_L | ModifierFlag::COMMAND_R, KeyCode::B</autogen>
+
+        <appendix>Command_R to Option_R</appendix>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
       </item>
 
