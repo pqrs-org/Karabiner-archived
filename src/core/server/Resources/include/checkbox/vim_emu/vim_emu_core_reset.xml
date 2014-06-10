@@ -51,10 +51,6 @@
     <autogen>
       __KeyToKey__ KeyCode::SPACE,
       VK_CONTROL|ModifierFlag::NONE,
-      KeyCode::A,
-      KeyCode::A,
-      KeyCode::A,
-      KeyCode::A,
       {{VIM_EMU_FORCE_OFF_ALL_BUT_LINE}},
       KeyCode::SPACE, VK_CONTROL
     </autogen>
