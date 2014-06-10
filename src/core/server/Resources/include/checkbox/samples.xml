@@ -48,20 +48,25 @@
         <identifier>remap.samples_passthrough</identifier>
         <name>Mapping Samples</name>
         <appendix>(mappings to test passthrough)</appendix>
+        <appendix></appendix>
         <autogen>__ShowStatusMessage__ Mapping Samples Active</autogen>
 
         <appendix>B to C (using __KeyToKey__ and KeyCode::*)</appendix>
+        <appendix></appendix>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::C</autogen>
 
         <appendix>Volume Mute to A (using ConsumerKeyCode::VOLUME_MUTE)</appendix>
+        <appendix></appendix>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, KeyCode::A</autogen>
 
         <appendix>RightClick+CursorMove to ScrollWheel</appendix>
         <appendix>(using __PointingRelativeToScroll__ and PointingButton::*</appendix>
+        <appendix></appendix>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
 
         <appendix>Hold Left once to select Mission Control</appendix>
         <appendix>(using __HoldingKeyToKey__, KeyCode::MISSION_CONTROL, NOREPEAT)</appendix>
+        <appendix></appendix>
         <autogen>
           __HoldingKeyToKey__
           PointingButton::LEFT,
@@ -327,15 +332,20 @@ Two Lines</autogen>
         <identifier>remap.samples_keytokey_interactions</identifier>
         <name>Key to Key interactions between mappings.</name>
         <appendix>(These are best understood by watching the result in EventViewer)</appendix>
+        <appendix></appendix>
+
         <appendix>Shift_L to Shift_L (if no other modifiers pressed)</appendix>
+        <appendix></appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L</autogen>
 
         <appendix>Shift_L to Command_L</appendix>
         <appendix>(but only with other modifiers because Shift_L by itself grabbed by above)</appendix>
+        <appendix></appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::COMMAND_L</autogen>
 
         <appendix>Shift+A to B</appendix>
         <appendix>(including Shift_L+A but Control+L_shift+A gives control+command+a)</appendix>
+        <appendix></appendix>
         <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
 
         <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
