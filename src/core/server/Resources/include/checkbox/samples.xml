@@ -174,7 +174,7 @@ Two Lines</autogen>
 
       <item>
         <identifier>remap.samples_keytokey_right_left</identifier>
-        <name>MODIFIER_FLAG_EITHER_LEFT_OR_RIGHT_SHIFT</name>
+        <name>MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</name>
         <appendix>Map A+(SHIFT_L or SHIFT_R) to B</appendix>
         <appendix>MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT is alias to</appendix>
         <appendix>ModifierFlag::SHIFT_L and ModifierFlag::SHIFT_R</appendix>
