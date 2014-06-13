@@ -21,7 +21,7 @@
 
     @try {
       NSDictionary* information = [[client_ proxy] focused_uielement_information];
-      if (! [lastMtime isEqualToNumber:information[@"mtime"]]) {
+      if (information[@"mtime"] && ! [lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
         [appQueue_ push:information];
@@ -39,7 +39,7 @@
 
     @try {
       NSDictionary* information = [[client_ proxy] inputsource_information];
-      if (! [lastMtime isEqualToNumber:information[@"mtime"]]) {
+      if (information[@"mtime"] && ! [lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
         [otherinformationstore_ setLanguageCode:information[@"languageCode"]];
