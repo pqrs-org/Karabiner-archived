@@ -11,4 +11,4 @@ open(filepath, 'w') do |f|
   end
 end
 
-KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
+KarabinerBridge::Converter.update_file_if_needed(filepath)
