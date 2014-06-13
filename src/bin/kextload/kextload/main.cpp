@@ -24,9 +24,9 @@ main(int argc, const char* argv[])
   std::string argument(argv[1]);
 
   if (argument == "load") {
-    command = "/sbin/kextload '/Applications/KeyRemap4MacBook.app/Contents/Library/KeyRemap4MacBook.signed.kext'";
+    command = "/sbin/kextload '/Applications/Karabiner.app/Contents/Library/Karabiner.signed.kext'";
   } else if (argument == "unload") {
-    command = "/sbin/kextunload -b org.pqrs.driver.KeyRemap4MacBook";
+    command = "/sbin/kextunload -b org.pqrs.driver.Karabiner";
   } else {
     usage();
   }
