@@ -1,14 +1,14 @@
-#import "KeyRemap4MacBookClient.h"
-#import "KeyRemap4MacBookKeys.h"
+#import "KarabinerClient.h"
+#import "KarabinerKeys.h"
 
-@implementation KeyRemap4MacBookClient
+@implementation KarabinerClient
 
-- (id<KeyRemap4MacBookProtocol>) proxy
+- (id<KarabinerProtocol>) proxy
 {
   @synchronized(self) {
     if (! proxy_) {
-      proxy_ = [NSConnection rootProxyForConnectionWithRegisteredName:kKeyRemap4MacBookConnectionName host:nil];
-      [proxy_ setProtocolForProxy:@protocol(KeyRemap4MacBookProtocol)];
+      proxy_ = [NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil];
+      [proxy_ setProtocolForProxy:@protocol(KarabinerProtocol)];
     }
     return proxy_;
   }

@@ -1,12 +1,12 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import <Cocoa/Cocoa.h>
-#import "KeyRemap4MacBookProtocol.h"
+#import "KarabinerProtocol.h"
 
-@interface KeyRemap4MacBookClient : NSObject {
+@interface KarabinerClient : NSObject {
   id proxy_;
 }
 
-- (id<KeyRemap4MacBookProtocol>) proxy;
+- (id<KarabinerProtocol>) proxy;
 
 @end

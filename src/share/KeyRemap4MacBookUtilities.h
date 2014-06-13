@@ -2,7 +2,7 @@
 
 @import Cocoa;
 
-@interface KeyRemap4MacBookUtilities : NSObject
+@interface KarabinerUtilities : NSObject
 
 + (NSString*) bundleIdentifier:(NSRunningApplication*)runningApplication;
 
