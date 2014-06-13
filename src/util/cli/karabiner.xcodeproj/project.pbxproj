@@ -1,0 +1,221 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3480B3E9194AFCB100E168BC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3480B3E8194AFCB100E168BC /* CoreFoundation.framework */; };
+		34AF0F31194AFD5300C1EF75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AF0F30194AFD5300C1EF75 /* main.m */; };
+		34E8FBBD194AFE4800C94B30 /* KarabinerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8FBBC194AFE4800C94B30 /* KarabinerClient.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3480B3E3194AFCB100E168BC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3480B3E5194AFCB100E168BC /* karabiner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = karabiner; sourceTree = BUILT_PRODUCTS_DIR; };
+		3480B3E8194AFCB100E168BC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		34AF0F30194AFD5300C1EF75 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		34E8FBBB194AFE4800C94B30 /* KarabinerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerClient.h; path = ../../../share/KarabinerClient.h; sourceTree = "<group>"; };
+		34E8FBBC194AFE4800C94B30 /* KarabinerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KarabinerClient.m; path = ../../../share/KarabinerClient.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3480B3E2194AFCB100E168BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3480B3E9194AFCB100E168BC /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3480B3DC194AFCB100E168BC = {
+			isa = PBXGroup;
+			children = (
+				3480B3EA194AFCB100E168BC /* karabiner */,
+				3480B3E7194AFCB100E168BC /* Frameworks */,
+				3480B3E6194AFCB100E168BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3480B3E6194AFCB100E168BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3480B3E5194AFCB100E168BC /* karabiner */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3480B3E7194AFCB100E168BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3480B3E8194AFCB100E168BC /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3480B3EA194AFCB100E168BC /* karabiner */ = {
+			isa = PBXGroup;
+			children = (
+				34AF0F30194AFD5300C1EF75 /* main.m */,
+				34E8FBBA194AFDF300C94B30 /* share */,
+			);
+			path = karabiner;
+			sourceTree = "<group>";
+		};
+		34E8FBBA194AFDF300C94B30 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				34E8FBBB194AFE4800C94B30 /* KarabinerClient.h */,
+				34E8FBBC194AFE4800C94B30 /* KarabinerClient.m */,
+			);
+			name = share;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3480B3E4194AFCB100E168BC /* karabiner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3480B3F1194AFCB100E168BC /* Build configuration list for PBXNativeTarget "karabiner" */;
+			buildPhases = (
+				3480B3E1194AFCB100E168BC /* Sources */,
+				3480B3E2194AFCB100E168BC /* Frameworks */,
+				3480B3E3194AFCB100E168BC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = karabiner;
+			productName = karabiner;
+			productReference = 3480B3E5194AFCB100E168BC /* karabiner */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3480B3DD194AFCB100E168BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Takayama Fumihiko";
+			};
+			buildConfigurationList = 3480B3E0194AFCB100E168BC /* Build configuration list for PBXProject "karabiner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3480B3DC194AFCB100E168BC;
+			productRefGroup = 3480B3E6194AFCB100E168BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3480B3E4194AFCB100E168BC /* karabiner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3480B3E1194AFCB100E168BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34E8FBBD194AFE4800C94B30 /* KarabinerClient.m in Sources */,
+				34AF0F31194AFD5300C1EF75 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3480B3F0194AFCB100E168BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3480B3F3194AFCB100E168BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3480B3E0194AFCB100E168BC /* Build configuration list for PBXProject "karabiner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3480B3F0194AFCB100E168BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3480B3F1194AFCB100E168BC /* Build configuration list for PBXNativeTarget "karabiner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3480B3F3194AFCB100E168BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3480B3DD194AFCB100E168BC /* Project object */;
+}
