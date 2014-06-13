@@ -11,6 +11,7 @@ xcuserdata/
 *.mode1
 *.mode1v3
 *.pbxuser
+*.xccheckout
 src/bridge/output
 src/core/server/Resources/symbol_map.xml
 pkginfo/Info.plist
