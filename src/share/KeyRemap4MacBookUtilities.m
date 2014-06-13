@@ -1,6 +1,6 @@
-#import "KeyRemap4MacBookUtilities.h"
+#import "KarabinerUtilities.h"
 
-@implementation KeyRemap4MacBookUtilities
+@implementation KarabinerUtilities
 
 + (NSString*) bundleIdentifier:(NSRunningApplication*)runningApplication
 {

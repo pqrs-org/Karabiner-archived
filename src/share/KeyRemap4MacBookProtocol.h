@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@protocol KeyRemap4MacBookProtocol
+@protocol KarabinerProtocol
 - (int) value:(NSString*)name;
 - (int) defaultValue:(NSString*)name;
 - (void) setValue:(int)newval forName:(NSString*)name;
