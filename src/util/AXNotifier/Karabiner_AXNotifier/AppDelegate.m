@@ -1,7 +1,7 @@
 #import "AXUtilities.h"
 #import "AppDelegate.h"
-#import "KeyRemap4MacBookKeys.h"
-#import "KeyRemap4MacBookUtilities.h"
+#import "KarabinerKeys.h"
+#import "KarabinerUtilities.h"
 #import "PreferencesKeys.h"
 
 // ==================================================
@@ -125,7 +125,7 @@
 
 - (void) updateBundleIdentifier
 {
-  focusedUIElementInformation_[@"BundleIdentifier"] = [KeyRemap4MacBookUtilities bundleIdentifier:runningApplication_];
+  focusedUIElementInformation_[@"BundleIdentifier"] = [KarabinerUtilities bundleIdentifier:runningApplication_];
 }
 
 - (void) updateTitle
@@ -369,7 +369,7 @@ tell_to_server:
   });
 }
 
-- (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
+- (void) distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
@@ -416,7 +416,7 @@ tell_to_server:
   });
 }
 
-#define kDescendantProcess @"org_pqrs_KeyRemap4MacBook_AXNotifier_DescendantProcess"
+#define kDescendantProcess @"org_pqrs_Karabiner_AXNotifier_DescendantProcess"
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
@@ -456,8 +456,8 @@ tell_to_server:
                                                            object:nil];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:)
-                                                          name:kKeyRemap4MacBookServerDidLaunchNotification
+                                                      selector:@selector(distributedObserver_kKarabinerServerDidLaunchNotification:)
+                                                          name:kKarabinerServerDidLaunchNotification
                                                         object:nil
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
