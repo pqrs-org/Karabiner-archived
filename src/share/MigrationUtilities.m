@@ -27,9 +27,10 @@
   for (NSURL* appURL in appURLs) {
     if ([StartAtLoginUtilities isStartAtLogin:appURL]) {
       startAtLogin = YES;
+
+      NSLog(@"Remove %@ from Login Items.", appURL);
+      [StartAtLoginUtilities setStartAtLogin:NO appURL:appURL];
     }
-    NSLog(@"Remove %@ from Login Items.", appURL);
-    [StartAtLoginUtilities setStartAtLogin:NO appURL:appURL];
   }
 
   if (startAtLogin) {
