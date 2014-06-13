@@ -1,13 +1,13 @@
 // -*- Mode: objc -*-
 
 #import <Cocoa/Cocoa.h>
-#import "KeyRemap4MacBookClient.h"
+#import "KarabinerClient.h"
 
 @interface PreferencesController : NSObject {
   NSMutableArray* oldSettings_;
 
   IBOutlet NSWindow* preferencesWindow_;
-  IBOutlet KeyRemap4MacBookClient* client_;
+  IBOutlet KarabinerClient* client_;
 
   IBOutlet NSButton* startAtLogin_;
 }

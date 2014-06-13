@@ -1,6 +1,6 @@
 #include <IOKit/IOKitLib.h>
 #import "AppDelegate.h"
-#import "KeyRemap4MacBookKeys.h"
+#import "KarabinerKeys.h"
 #import "PreferencesKeys.h"
 
 enum { MAX_FINGERS = 4 };
@@ -69,7 +69,7 @@ void MTDeviceStop(MTDeviceRef, int);
 
 AppDelegate* global_self_ = nil;
 IgnoredAreaView* global_ignoredAreaView_ = nil;
-KeyRemap4MacBookClient* global_client_ = nil;
+KarabinerClient* global_client_ = nil;
 
 - (void) setValueFromTimer:(NSTimer*)timer
 {
@@ -415,7 +415,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   });
 }
 
-- (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
+- (void) distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
@@ -450,8 +450,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                            object:nil];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:)
-                                                          name:kKeyRemap4MacBookServerDidLaunchNotification
+                                                      selector:@selector(distributedObserver_kKarabinerServerDidLaunchNotification:)
+                                                          name:kKarabinerServerDidLaunchNotification
                                                         object:nil
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
