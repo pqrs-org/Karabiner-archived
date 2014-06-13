@@ -43,7 +43,7 @@
         // There are well known windows that we need ignore:
         //   * Google Chrome has some transparent windows.
         //   * Google Chrome's status bar which is shown when mouse cursor is on links.
-        //   * KeyRemap4MacBook's status message windows.
+        //   * Karabiner's status message windows.
         //
         // Do not forget to treat this situations:
         //   * Do not ignore menubar.
@@ -63,7 +63,7 @@
           continue;
         }
         // Ignore some app windows.
-        if ([bundleIdentifier isEqualToString:@"org.pqrs.KeyRemap4MacBook"]) {
+        if ([bundleIdentifier isEqualToString:@"org.pqrs.Karabiner"]) {
           // There is no reliable public specifications for kCGWindowLayer.
           // So, we use magic numbers that are confirmed by "dump_windows" option.
 
