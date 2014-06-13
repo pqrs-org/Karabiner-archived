@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include "List.hpp"
 
-using namespace org_pqrs_KeyRemap4MacBook;
+using namespace org_pqrs_Karabiner;
 
 int allocatecount = 0;
 

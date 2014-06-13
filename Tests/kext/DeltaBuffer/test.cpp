@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include "DeltaBuffer.hpp"
 
-using namespace org_pqrs_KeyRemap4MacBook;
+using namespace org_pqrs_Karabiner;
 
 TEST(DeltaBuffer, push) {
   DeltaBuffer deltaBuffer;
