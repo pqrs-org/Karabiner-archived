@@ -1,6 +1,7 @@
 #include <IOKit/IOKitLib.h>
 #import "AppDelegate.h"
 #import "KarabinerKeys.h"
+#import "MigrationUtilities.h"
 #import "PreferencesKeys.h"
 
 enum { MAX_FINGERS = 4 };
@@ -424,7 +425,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
+{
+  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.multitouchextension"]
+                      appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"]]];
+
+  // ----------------------------------------
   [preferences_ load];
 
   if (! [[NSUserDefaults standardUserDefaults] boolForKey:@"hideIconInDock"]) {
