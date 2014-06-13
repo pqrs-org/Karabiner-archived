@@ -5,7 +5,7 @@
 
 #include "List.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class TimerWrapper;
 
   class ListHookedDevice {

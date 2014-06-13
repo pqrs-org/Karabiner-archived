@@ -1,7 +1,7 @@
 #ifndef NUMHELDDOWNKEYS_HPP
 #define NUMHELDDOWNKEYS_HPP
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class NumHeldDownKeys {
   public:
     static void set(int diff);

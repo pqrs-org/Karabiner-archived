@@ -12,7 +12,7 @@
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace {
     int sysctl_debug          = 0;
     int sysctl_debug_pointing = 0;
@@ -31,36 +31,36 @@ namespace org_pqrs_KeyRemap4MacBook {
   // ----------------------------------------------------------------------
   // SYSCTL staff
   // http://developer.apple.com/documentation/Darwin/Conceptual/KernelProgramming/boundaries/chapter_14_section_7.html#//apple_ref/doc/uid/TP30000905-CH217-TPXREF116
-  SYSCTL_DECL(_keyremap4macbook);
-  SYSCTL_NODE(, OID_AUTO, keyremap4macbook, CTLFLAG_RW, 0, "");
+  SYSCTL_DECL(_karabiner);
+  SYSCTL_NODE(, OID_AUTO, karabiner, CTLFLAG_RW, 0, "");
 
   // ----------------------------------------
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, initialized,    CTLTYPE_INT,              &(sysctl_initialized),    0, "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug,          CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug),          0, "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_pointing, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_pointing), 0, "");
-  SYSCTL_INT(_keyremap4macbook,    OID_AUTO, debug_devel,    CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_devel),    0, "");
+  SYSCTL_INT(_karabiner,    OID_AUTO, initialized,    CTLTYPE_INT,              &(sysctl_initialized),    0, "");
+  SYSCTL_INT(_karabiner,    OID_AUTO, debug,          CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug),          0, "");
+  SYSCTL_INT(_karabiner,    OID_AUTO, debug_pointing, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_pointing), 0, "");
+  SYSCTL_INT(_karabiner,    OID_AUTO, debug_devel,    CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_devel),    0, "");
 
   // ----------------------------------------------------------------------
   void
   Config::sysctl_register(void)
   {
-    sysctl_register_oid(&sysctl__keyremap4macbook);
+    sysctl_register_oid(&sysctl__karabiner);
 
-    sysctl_register_oid(&sysctl__keyremap4macbook_initialized);
-    sysctl_register_oid(&sysctl__keyremap4macbook_debug);
-    sysctl_register_oid(&sysctl__keyremap4macbook_debug_pointing);
-    sysctl_register_oid(&sysctl__keyremap4macbook_debug_devel);
+    sysctl_register_oid(&sysctl__karabiner_initialized);
+    sysctl_register_oid(&sysctl__karabiner_debug);
+    sysctl_register_oid(&sysctl__karabiner_debug_pointing);
+    sysctl_register_oid(&sysctl__karabiner_debug_devel);
   }
 
   void
   Config::sysctl_unregister(void)
   {
-    sysctl_unregister_oid(&sysctl__keyremap4macbook);
+    sysctl_unregister_oid(&sysctl__karabiner);
 
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_initialized);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_debug);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_pointing);
-    sysctl_unregister_oid(&sysctl__keyremap4macbook_debug_devel);
+    sysctl_unregister_oid(&sysctl__karabiner_initialized);
+    sysctl_unregister_oid(&sysctl__karabiner_debug);
+    sysctl_unregister_oid(&sysctl__karabiner_debug_pointing);
+    sysctl_unregister_oid(&sysctl__karabiner_debug_devel);
   }
 
   void
@@ -70,13 +70,13 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ----------------------------------------
     // reset values
-    org_pqrs_KeyRemap4MacBook::FlagStatus::globalFlagStatus().lock_clear();
-    org_pqrs_KeyRemap4MacBook::FlagStatus::globalFlagStatus().sticky_clear();
-    org_pqrs_KeyRemap4MacBook::ButtonStatus::lock_clear();
+    org_pqrs_Karabiner::FlagStatus::globalFlagStatus().lock_clear();
+    org_pqrs_Karabiner::FlagStatus::globalFlagStatus().sticky_clear();
+    org_pqrs_Karabiner::ButtonStatus::lock_clear();
 
     // cancel timers
-    org_pqrs_KeyRemap4MacBook::KeyboardRepeat::cancel();
-    org_pqrs_KeyRemap4MacBook::RemapFunc::PointingRelativeToScroll::cancelScroll();
+    org_pqrs_Karabiner::KeyboardRepeat::cancel();
+    org_pqrs_Karabiner::RemapFunc::PointingRelativeToScroll::cancelScroll();
 
     // refresh devices
     ListHookedDevice::refreshAll();

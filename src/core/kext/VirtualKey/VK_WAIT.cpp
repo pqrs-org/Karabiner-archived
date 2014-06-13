@@ -3,7 +3,7 @@
 #include "EventOutputQueue.hpp"
 #include "VK_WAIT.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_WAIT::handle(const Params_KeyboardEventCallBack& params)
   {

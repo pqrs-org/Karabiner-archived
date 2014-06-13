@@ -13,7 +13,7 @@
 #include "ListHookedKeyboard.hpp"
 #include "RemapClass.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace {
     ListHookedKeyboard listHookedKeyboard;
   }
@@ -129,7 +129,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     // ------------------------------------------------------------
     {
       // Logitech's driver (LCC) modifies _keyboardEventAction after we changed it.
-      // So, we need to replace _keyboardEventAction until it points KeyRemap4MacBook's callback function.
+      // So, we need to replace _keyboardEventAction until it points Karabiner's callback function.
       KeyboardEventCallback callback = reinterpret_cast<KeyboardEventCallback>(kbd->_keyboardEventAction);
 
       if (! callback) {
@@ -151,7 +151,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
     {
-      // We need to replace _updateEventFlagsAction until it points KeyRemap4MacBook's callback function.
+      // We need to replace _updateEventFlagsAction until it points Karabiner's callback function.
       // (A reason is described at ListHookedKeyboard::replaceEventAction.)
       UpdateEventFlagsCallback callback = reinterpret_cast<UpdateEventFlagsCallback>(kbd->_updateEventFlagsAction);
       if (! callback) {

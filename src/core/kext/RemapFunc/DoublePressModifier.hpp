@@ -5,7 +5,7 @@
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // A modifier has DoublePressed key action.
     class DoublePressModifier {

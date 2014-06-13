@@ -12,7 +12,7 @@
 #include "UIElementRoleFilter.hpp"
 #include "WindowNameFilter.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class FilterUnion {
     public:

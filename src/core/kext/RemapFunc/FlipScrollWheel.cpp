@@ -4,7 +4,7 @@
 #include "FlipScrollWheel.hpp"
 #include "IOLogWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     FlipScrollWheel::FlipScrollWheel(void) : flipHorizontalScroll_(false), flipVerticalScroll_(false)
     {}

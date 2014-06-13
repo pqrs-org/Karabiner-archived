@@ -4,7 +4,7 @@
 #include "FromEvent.hpp"
 #include "RemapFuncClasses.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // ex. Ignore JIS_KANA x 2. (validate only the first once)
     class IgnoreMultipleSameKeyPress {

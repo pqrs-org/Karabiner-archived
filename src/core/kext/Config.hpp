@@ -6,7 +6,7 @@
 #include "bridge.h"
 #include "../../bridge/output/include.bridge_essential_configuration_enum.h"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class Config {
   public:
     static void sysctl_register(void);

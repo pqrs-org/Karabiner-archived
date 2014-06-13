@@ -1,7 +1,7 @@
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   IOLock* GlobalLock::lock_ = NULL;
 
   void

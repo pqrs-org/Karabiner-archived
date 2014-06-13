@@ -4,7 +4,7 @@
 #include "EventOutputQueue.hpp"
 #include "IOLogWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     DropScrollWheel::DropScrollWheel(void) : dropHorizontalScroll_(false)
     {}

@@ -6,7 +6,7 @@
 #include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     TimerWrapper DependingPressingPeriodKeyToKey::fire_timer_;
     DependingPressingPeriodKeyToKey* DependingPressingPeriodKeyToKey::target_ = NULL;

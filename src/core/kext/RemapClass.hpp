@@ -23,7 +23,7 @@
 #include "RemapFunc/SetKeyboardType.hpp"
 #include "RemapFunc/SimultaneousKeyPresses.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class RemapClass {
   public:
     enum {

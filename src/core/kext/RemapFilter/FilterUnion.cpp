@@ -3,7 +3,7 @@
 #include "FilterUnion.hpp"
 #include "IOLogWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     FilterUnion::FilterUnion(const unsigned int* vec, size_t length)
     {

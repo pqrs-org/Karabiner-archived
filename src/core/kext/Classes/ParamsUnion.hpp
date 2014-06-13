@@ -3,7 +3,7 @@
 
 #include "CallBackWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class ParamsUnion {
   public:
     explicit ParamsUnion(const Params_KeyboardEventCallBack& p);

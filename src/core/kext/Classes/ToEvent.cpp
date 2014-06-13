@@ -4,7 +4,7 @@
 #include "ToEvent.hpp"
 #include "VirtualKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   ToEvent::isEventLikeModifier(void) const
   {

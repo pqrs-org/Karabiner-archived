@@ -5,7 +5,7 @@
 #include "ListHookedKeyboard.hpp"
 #include "RemapClass.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   List* KeyboardRepeat::queue_ = NULL;
   TimerWrapper KeyboardRepeat::fire_timer_;
   int KeyboardRepeat::id_ = 0;

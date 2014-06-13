@@ -13,7 +13,7 @@
 #include "UserClient_kext.hpp"
 #include "strlcpy_utf8.hpp"
 
-#define KEXT_NAMESPACE org_pqrs_KeyRemap4MacBook
+#define KEXT_NAMESPACE org_pqrs_Karabiner
 
 #define super IOUserClient
 

@@ -1,7 +1,7 @@
 #include "KeyCodeModifierFlagPairs.hpp"
 #include "FlagStatus.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   KeyCodeModifierFlagPairs::Vector_Pair KeyCodeModifierFlagPairs::pairs_;
 
   void

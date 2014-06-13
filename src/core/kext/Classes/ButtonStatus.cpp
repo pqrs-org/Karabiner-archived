@@ -4,7 +4,7 @@
 
 #include "ButtonStatus.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   ButtonStatus::Item ButtonStatus::item_[ButtonStatus::MAXNUM];
   Buttons ButtonStatus::statusMessageButtons_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
 

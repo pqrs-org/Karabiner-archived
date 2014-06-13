@@ -5,7 +5,7 @@
 #include "Types.hpp"
 #include "Vector.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class KeyCode;
   class Flags;
   class Buttons;

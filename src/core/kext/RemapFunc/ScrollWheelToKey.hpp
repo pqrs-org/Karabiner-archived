@@ -5,7 +5,7 @@
 #include "KeyToKey.hpp"
 #include "IntervalChecker.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class ScrollWheelToKey {
     public:

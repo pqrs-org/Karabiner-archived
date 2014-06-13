@@ -9,7 +9,7 @@
 #include "TimerWrapper.hpp"
 #include "ToEvent.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class PointingRelativeToScroll {
     public:

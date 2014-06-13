@@ -1,7 +1,7 @@
 #include "LastPressedPhysicalKey.hpp"
 #include "ParamsUnion.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   void
   LastPressedPhysicalKey::update(const ParamsUnion& newval)
   {

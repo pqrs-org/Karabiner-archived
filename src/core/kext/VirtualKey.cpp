@@ -17,7 +17,7 @@
 #include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
 #include "VirtualKey/VK_JIS_YEN.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   void
   VirtualKey::initialize(IOWorkLoop& workloop)
   {

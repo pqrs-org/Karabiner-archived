@@ -1,7 +1,7 @@
 #ifndef DELTABUFFER_HPP
 #define DELTABUFFER_HPP
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   // DeltaBuffer stores dx and dy of RelativePointerEvent in the short term
   // in order to calculate an average of pointer movement.
 

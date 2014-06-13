@@ -4,7 +4,7 @@
 #include "KeyCode.hpp"
 #include "List.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   // store EventOutput::FireKey results
   class PressDownKeys {
   public:

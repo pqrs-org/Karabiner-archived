@@ -3,11 +3,11 @@
 
 #include <IOKit/IOTimerEventSource.h>
 
-class org_pqrs_KeyRemap4MacBook_TimerWrapperObject : public OSObject {
-  OSDeclareDefaultStructors(org_pqrs_KeyRemap4MacBook_TimerWrapperObject);
+class org_pqrs_Karabiner_TimerWrapperObject : public OSObject {
+  OSDeclareDefaultStructors(org_pqrs_Karabiner_TimerWrapperObject);
 
 public:
-  static org_pqrs_KeyRemap4MacBook_TimerWrapperObject* timerEventSource(OSObject* owner, IOTimerEventSource::Action action);
+  static org_pqrs_Karabiner_TimerWrapperObject* timerEventSource(OSObject* owner, IOTimerEventSource::Action action);
   bool init(OSObject* owner, IOTimerEventSource::Action action);
   void free(void);
 
@@ -23,7 +23,7 @@ private:
   bool active_;
 };
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class TimerWrapper {
   public:
     TimerWrapper(void) : workloop_(NULL), object_(NULL), timer_(NULL) {}
@@ -38,7 +38,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     static void callback_(OSObject* owner, IOTimerEventSource* sender);
 
     IOWorkLoop* workloop_;
-    org_pqrs_KeyRemap4MacBook_TimerWrapperObject* object_;
+    org_pqrs_Karabiner_TimerWrapperObject* object_;
     IOTimerEventSource* timer_;
   };
 }

@@ -1,6 +1,6 @@
 #include "List.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   List::List(void) : front_(NULL), back_(NULL), size_(0)
   {}
 

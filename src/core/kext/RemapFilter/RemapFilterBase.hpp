@@ -5,7 +5,7 @@
 #include "Vector.hpp"
 #include "KeyCode.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     typedef unsigned int FilterValue;
     DECLARE_VECTOR(FilterValue);

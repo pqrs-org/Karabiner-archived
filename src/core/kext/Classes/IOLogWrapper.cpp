@@ -1,3 +1,3 @@
 #include "IOLogWrapper.hpp"
 
-bool org_pqrs_KeyRemap4MacBook::IOLogWrapper::suppressed_ = false;
+bool org_pqrs_Karabiner::IOLogWrapper::suppressed_ = false;

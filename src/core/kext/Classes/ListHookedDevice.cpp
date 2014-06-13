@@ -11,7 +11,7 @@
 #include "TimerWrapper.hpp"
 #include "strlcpy_utf8.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   TimerWrapper ListHookedDevice::refreshInProgressDevices_timer_;
 
   // ======================================================================

@@ -6,7 +6,7 @@
 #include "KeyboardRepeat.hpp"
 #include "VirtualKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     KeyToKey::KeyToKey(void) :
       index_(0),

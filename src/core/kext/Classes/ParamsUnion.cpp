@@ -1,7 +1,7 @@
 #include "IOLogWrapper.hpp"
 #include "ParamsUnion.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   ParamsUnion::ParamsUnion(const Params_KeyboardEventCallBack& p) : type(KEYBOARD)
   {
     params_.params_KeyboardEventCallBack = Params_KeyboardEventCallBack::alloc(p);

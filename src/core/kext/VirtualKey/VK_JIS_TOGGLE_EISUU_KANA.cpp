@@ -4,7 +4,7 @@
 #include "FlagStatus.hpp"
 #include "VK_JIS_TOGGLE_EISUU_KANA.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   KeyCode VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::newkeycode_;
 
   bool

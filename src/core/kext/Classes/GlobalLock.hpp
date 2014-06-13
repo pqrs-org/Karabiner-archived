@@ -3,7 +3,7 @@
 
 #include <IOKit/IOLib.h>
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class GlobalLock {
   public:
     static void initialize(void);

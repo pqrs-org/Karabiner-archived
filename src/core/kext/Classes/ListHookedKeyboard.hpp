@@ -5,7 +5,7 @@
 
 #include "ListHookedDevice.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class Params_KeyboardEventCallBack;
   class Params_UpdateEventFlagsCallback;
   class TimerWrapper;

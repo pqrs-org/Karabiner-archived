@@ -10,7 +10,7 @@
 #include "ParamsUnion.hpp"
 #include "TimerWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class EventOutputQueue {
     friend class PressDownKeys;
 

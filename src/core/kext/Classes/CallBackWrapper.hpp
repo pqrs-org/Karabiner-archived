@@ -7,7 +7,7 @@
 #include "Types.hpp"
 #include "auto_ptr.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class Params_KeyboardEventCallBack {
     friend class EventOutputQueue;
 

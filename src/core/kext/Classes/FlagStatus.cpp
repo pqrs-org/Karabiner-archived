@@ -4,7 +4,7 @@
 #include "KeyCodeModifierFlagPairs.hpp"
 #include "ModifierName.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   FlagStatus globalFlagStatus_;
 
   FlagStatus&

@@ -8,7 +8,7 @@
 #include "ParamsUnion.hpp"
 #include "TimerWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class KeyboardRepeat {
   public:
     enum {

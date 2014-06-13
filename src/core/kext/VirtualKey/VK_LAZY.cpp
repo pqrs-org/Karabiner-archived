@@ -6,7 +6,7 @@
 #include "IOLogWrapper.hpp"
 #include "VK_LAZY.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_LAZY::handle(const Params_KeyboardEventCallBack& params)
   {

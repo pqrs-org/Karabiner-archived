@@ -5,7 +5,7 @@
 #include "KeyCodeModifierFlagPairs.hpp"
 #include "VK_LOCK.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_LOCK::handle(const Params_KeyboardEventCallBack& params)
   {

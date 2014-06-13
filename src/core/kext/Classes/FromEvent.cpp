@@ -1,6 +1,6 @@
 #include "FromEvent.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   FromEvent::isTargetEvent(bool& isDown, const ParamsUnion& paramsUnion) const
   {

@@ -4,7 +4,7 @@
 #include "FlagStatus.hpp"
 #include "VK_JIS_YEN.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_JIS_YEN::handle(const Params_KeyboardEventCallBack& params)
   {

@@ -5,7 +5,7 @@
 #include "UserClient_kext.hpp"
 #include "VK_DEFINED_IN_USERSPACE.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   VirtualKey::VK_DEFINED_IN_USERSPACE::Vector_Item* VirtualKey::VK_DEFINED_IN_USERSPACE::items_ = NULL;
 
   void
@@ -105,7 +105,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
       if (params.key == keycode) {
         if (params.ex_iskeydown && params.repeat == false) {
-          org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(notification_type, params.key.get());
+          org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(notification_type, params.key.get());
         }
         return true;
       }

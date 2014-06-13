@@ -7,7 +7,7 @@
 #include "Vector.hpp"
 #include "bridge.h"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class FromEvent {
   public:
     class Type {

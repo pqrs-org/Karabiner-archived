@@ -1,6 +1,6 @@
 #include "ModifierName.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   ModifierName::Vector_Item ModifierName::items_;
 
   void ModifierName::clearVirtualModifiers(void)

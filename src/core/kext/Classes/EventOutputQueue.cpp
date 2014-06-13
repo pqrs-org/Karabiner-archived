@@ -8,7 +8,7 @@
 #include "VirtualKey.hpp"
 #include "VK_IOHIDPOSTEVENT.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   List* EventOutputQueue::queue_ = NULL;
   TimerWrapper EventOutputQueue::fire_timer_;
   Buttons EventOutputQueue::previousButtons_;

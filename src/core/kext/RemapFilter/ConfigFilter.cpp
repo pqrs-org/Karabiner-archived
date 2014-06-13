@@ -6,7 +6,7 @@
 #include "RemapClass.hpp"
 #include "bridge.h"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     ConfigFilter::ConfigFilter(unsigned int t) : type_(t)
     {}

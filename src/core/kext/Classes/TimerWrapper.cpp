@@ -4,12 +4,12 @@
 #include "TimerWrapper.hpp"
 
 #define super    OSObject
-OSDefineMetaClassAndStructors(org_pqrs_KeyRemap4MacBook_TimerWrapperObject, OSObject);
+OSDefineMetaClassAndStructors(org_pqrs_Karabiner_TimerWrapperObject, OSObject);
 
-org_pqrs_KeyRemap4MacBook_TimerWrapperObject*
-org_pqrs_KeyRemap4MacBook_TimerWrapperObject::timerEventSource(OSObject* owner, IOTimerEventSource::Action action)
+org_pqrs_Karabiner_TimerWrapperObject*
+org_pqrs_Karabiner_TimerWrapperObject::timerEventSource(OSObject* owner, IOTimerEventSource::Action action)
 {
-  org_pqrs_KeyRemap4MacBook_TimerWrapperObject* p = new org_pqrs_KeyRemap4MacBook_TimerWrapperObject;
+  org_pqrs_Karabiner_TimerWrapperObject* p = new org_pqrs_Karabiner_TimerWrapperObject;
 
   if (p && ! p->init(owner, action)) {
     if (p) p->release();
@@ -19,7 +19,7 @@ org_pqrs_KeyRemap4MacBook_TimerWrapperObject::timerEventSource(OSObject* owner, 
 }
 
 bool
-org_pqrs_KeyRemap4MacBook_TimerWrapperObject::init(OSObject* owner, IOTimerEventSource::Action action)
+org_pqrs_Karabiner_TimerWrapperObject::init(OSObject* owner, IOTimerEventSource::Action action)
 {
   if (! super::init()) {
     return false;
@@ -33,7 +33,7 @@ org_pqrs_KeyRemap4MacBook_TimerWrapperObject::init(OSObject* owner, IOTimerEvent
 }
 
 void
-org_pqrs_KeyRemap4MacBook_TimerWrapperObject::free(void)
+org_pqrs_Karabiner_TimerWrapperObject::free(void)
 {
   super::free();
   return;
@@ -42,7 +42,7 @@ org_pqrs_KeyRemap4MacBook_TimerWrapperObject::free(void)
 #undef super
 
 // ================================================================================
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   void
   TimerWrapper::initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Action func)
   {
@@ -52,7 +52,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     workloop_ = wl;
 
-    object_ = org_pqrs_KeyRemap4MacBook_TimerWrapperObject::timerEventSource(owner, func);
+    object_ = org_pqrs_Karabiner_TimerWrapperObject::timerEventSource(owner, func);
     if (! object_) return;
 
     timer_ = IOTimerEventSource::timerEventSource(object_, callback_);
@@ -127,7 +127,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     GlobalLock::ScopedLock lk;
     if (! lk) return;
 
-    org_pqrs_KeyRemap4MacBook_TimerWrapperObject* object = OSDynamicCast(org_pqrs_KeyRemap4MacBook_TimerWrapperObject, owner);
+    org_pqrs_Karabiner_TimerWrapperObject* object = OSDynamicCast(org_pqrs_Karabiner_TimerWrapperObject, owner);
     if (! object) return;
 
     object->setActive(false);

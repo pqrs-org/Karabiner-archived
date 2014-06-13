@@ -5,7 +5,7 @@
 #include "IOLogWrapper.hpp"
 #include "PressDownKeys.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   List* PressDownKeys::list_;
 
   void

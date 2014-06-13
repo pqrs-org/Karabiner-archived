@@ -3,7 +3,7 @@
 
 #include "RemapClass.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace VirtualKey {
     // This class implements these keycodes.
     // - KeyCode::VK_CHANGE_INPUTSOURCE_*

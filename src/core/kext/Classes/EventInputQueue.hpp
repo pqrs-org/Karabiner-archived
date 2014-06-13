@@ -9,7 +9,7 @@
 #include "ParamsUnion.hpp"
 #include "TimerWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class SimultaneousButtonPresses;
     class SimultaneousKeyPresses;

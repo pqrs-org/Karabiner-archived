@@ -6,7 +6,7 @@
 #include "ToEvent.hpp"
 #include "bridge.h"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class KeyToKey {
     public:

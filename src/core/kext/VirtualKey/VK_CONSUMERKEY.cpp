@@ -4,7 +4,7 @@
 #include "FlagStatus.hpp"
 #include "VK_CONSUMERKEY.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_CONSUMERKEY::handle(const Params_KeyboardEventCallBack& params)
   {

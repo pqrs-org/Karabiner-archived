@@ -6,7 +6,7 @@
 #include "TimerWrapper.hpp"
 #include "IntervalChecker.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // ======================================================================
     // This class is an implementation of HoldingKeyToKey and KeyOverlaidModifier.
