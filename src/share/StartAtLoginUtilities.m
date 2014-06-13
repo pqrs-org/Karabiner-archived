@@ -7,12 +7,11 @@
   return [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 }
 
-+ (LSSharedFileListItemRef) getLSSharedFileListItemRef:(LSSharedFileListRef)loginItems
++ (LSSharedFileListItemRef) getLSSharedFileListItemRef:(LSSharedFileListRef)loginItems appURL:(NSURL*)appURL
 {
   if (! loginItems) return NULL;
 
   LSSharedFileListItemRef retval = NULL;
-  NSURL* appURL = [StartAtLoginUtilities appURL];
 
   UInt32 seed = 0U;
   CFArrayRef currentLoginItemsRef = LSSharedFileListCopySnapshot(loginItems, &seed);
@@ -41,12 +40,11 @@
   return retval;
 }
 
-+ (void) enableStartAtLogin
++ (void) enableStartAtLogin:(NSURL*)appURL
 {
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
   if (! loginItems) return;
 
-  NSURL* appURL = [StartAtLoginUtilities appURL];
   LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)(appURL), NULL, NULL);
   if (item) {
     CFRelease(item);
@@ -54,12 +52,12 @@
   CFRelease(loginItems);
 }
 
-+ (void) disableStartAtLogin
++ (void) disableStartAtLogin:(NSURL*)appURL
 {
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
   if (! loginItems) return;
 
-  LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems];
+  LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems appURL:appURL];
   if (item) {
     LSSharedFileListItemRemove(loginItems, item);
   }
@@ -67,26 +65,36 @@
 }
 
 // ------------------------------------------------------------
-+ (BOOL) isStartAtLogin
++ (BOOL) isStartAtLogin:(NSURL*)appURL
 {
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
   if (! loginItems) return NO;
 
-  LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems];
+  LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems appURL:appURL];
   CFRelease(loginItems);
 
   return item != NULL;
 }
 
-+ (void) setStartAtLogin:(BOOL)newvalue
++ (BOOL) isStartAtLogin
 {
-  if ([StartAtLoginUtilities isStartAtLogin] == newvalue) return;
+  return [StartAtLoginUtilities isStartAtLogin:[StartAtLoginUtilities appURL]];
+}
+
++ (void) setStartAtLogin:(BOOL)newvalue appURL:(NSURL*)appURL
+{
+  if ([StartAtLoginUtilities isStartAtLogin:appURL] == newvalue) return;
 
   if (newvalue) {
-    [StartAtLoginUtilities enableStartAtLogin];
+    [StartAtLoginUtilities enableStartAtLogin:appURL];
   } else {
-    [StartAtLoginUtilities disableStartAtLogin];
+    [StartAtLoginUtilities disableStartAtLogin:appURL];
   }
+}
+
++ (void) setStartAtLogin:(BOOL)newvalue
+{
+  [StartAtLoginUtilities setStartAtLogin:newvalue appURL:[StartAtLoginUtilities appURL]];
 }
 
 @end
