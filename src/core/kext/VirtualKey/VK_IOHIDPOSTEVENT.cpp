@@ -4,7 +4,7 @@
 #include "UserClient_kext.hpp"
 #include "VK_IOHIDPOSTEVENT.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_IOHIDPOSTEVENT::handle(const Params_KeyboardEventCallBack& params)
   {
@@ -44,7 +44,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (params.ex_iskeydown) {
-      org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT, keytype);
+      org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT, keytype);
     }
     return true;
   }
@@ -70,7 +70,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     }
 
     if (params.ex_iskeydown) {
-      org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT, keytype);
+      org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT, keytype);
     }
   }
 }

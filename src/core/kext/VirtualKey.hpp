@@ -5,7 +5,7 @@
 #include "KeyCode.hpp"
 #include "Types.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace VirtualKey {
     void initialize(IOWorkLoop& workloop);
     void terminate(void);

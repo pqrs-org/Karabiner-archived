@@ -3,7 +3,7 @@
 
 #include "KeyCode.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class KeyCodeModifierFlagPairs {
   public:
     class KeyCodeType {

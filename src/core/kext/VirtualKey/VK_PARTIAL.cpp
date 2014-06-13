@@ -3,7 +3,7 @@
 #include "EventOutputQueue.hpp"
 #include "VK_PARTIAL.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   List* VirtualKey::VK_PARTIAL::changedKeyCodes_ = NULL;
   bool VirtualKey::VK_PARTIAL::active_ = false;
   EventType VirtualKey::VK_PARTIAL::eventType_;

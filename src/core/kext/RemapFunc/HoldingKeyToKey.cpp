@@ -3,7 +3,7 @@
 #include "HoldingKeyToKey.hpp"
 #include "IOLogWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false)
     {

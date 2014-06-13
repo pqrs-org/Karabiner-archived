@@ -7,7 +7,7 @@
 
 class Params_KeyboardSpecialEventCallback;
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class ListHookedConsumer : public ListHookedDevice {
   public:
     class Item : public ListHookedDevice::Item {

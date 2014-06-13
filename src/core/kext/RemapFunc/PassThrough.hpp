@@ -1,7 +1,7 @@
 #ifndef PASSTHROUGH_HPP
 #define PASSTHROUGH_HPP
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class PassThrough {
     public:

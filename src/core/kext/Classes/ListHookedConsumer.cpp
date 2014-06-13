@@ -13,7 +13,7 @@
 #include "IOLogWrapper.hpp"
 #include "ListHookedConsumer.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace {
     ListHookedConsumer listHookedConsumer;
   }
@@ -109,7 +109,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     {
-      // We need to replace _keyboardSpecialEventAction until it points KeyRemap4MacBook's callback function.
+      // We need to replace _keyboardSpecialEventAction until it points Karabiner's callback function.
       // (A reason is described at ListHookedKeyboard::replaceEventAction.)
       KeyboardSpecialEventCallback callback = reinterpret_cast<KeyboardSpecialEventCallback>(kbd->_keyboardSpecialEventAction);
       if (! callback) {

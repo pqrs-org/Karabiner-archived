@@ -3,7 +3,7 @@
 #include "DropPointingRelativeCursorMove.hpp"
 #include "IOLogWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     DropPointingRelativeCursorMove::DropPointingRelativeCursorMove(void)
     {}

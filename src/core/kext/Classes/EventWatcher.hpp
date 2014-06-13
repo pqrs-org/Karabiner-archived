@@ -4,7 +4,7 @@
 #include "List.hpp"
 #include "EventInputQueue.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class EventWatcher {
   public:
     static void initialize(void);

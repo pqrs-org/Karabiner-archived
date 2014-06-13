@@ -2,7 +2,7 @@
 #include "KeyCode.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
 #include "../../../src/bridge/output/include.kext.keycode.cpp"
 
   // ------------------------------------------------------------

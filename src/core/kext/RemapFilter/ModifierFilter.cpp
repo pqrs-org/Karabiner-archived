@@ -5,7 +5,7 @@
 #include "ModifierFilter.hpp"
 #include "bridge.h"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     ModifierFilter::ModifierFilter(unsigned int t) : type_(t)
     {

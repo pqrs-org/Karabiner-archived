@@ -6,7 +6,7 @@
 class IOService;
 class IONotifier;
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace Core {
     void start(void);
     void stop(void);

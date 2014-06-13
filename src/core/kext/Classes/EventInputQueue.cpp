@@ -13,7 +13,7 @@
 #include "NumHeldDownKeys.hpp"
 #include "RemapClass.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   List* EventInputQueue::queue_ = NULL;
   IntervalChecker EventInputQueue::ic_;
   TimerWrapper EventInputQueue::fire_timer_;

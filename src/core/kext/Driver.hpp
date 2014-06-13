@@ -4,9 +4,9 @@
 #include <IOKit/IOService.h>
 
 // http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptIOKit/hello_iokit.html#//apple_ref/doc/uid/20002366-CIHECHHE
-class org_pqrs_driver_KeyRemap4MacBook : public IOService
+class org_pqrs_driver_Karabiner : public IOService
 {
-  OSDeclareDefaultStructors(org_pqrs_driver_KeyRemap4MacBook);
+  OSDeclareDefaultStructors(org_pqrs_driver_Karabiner);
 
 public:
   virtual bool init(OSDictionary* dictionary = 0);

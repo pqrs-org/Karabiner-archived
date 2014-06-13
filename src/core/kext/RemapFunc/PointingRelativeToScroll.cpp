@@ -6,7 +6,7 @@
 #include "IOLogWrapper.hpp"
 #include "PointingRelativeToScroll.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     List* PointingRelativeToScroll::queue_ = NULL;
     Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;

@@ -1,7 +1,7 @@
 #include "BlockUntilKeyUp.hpp"
 #include "FlagStatus.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     void
     BlockUntilKeyUp::add(AddDataType datatype, AddValue newval)

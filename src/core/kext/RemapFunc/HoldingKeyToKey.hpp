@@ -5,7 +5,7 @@
 #include "RemapFuncClasses.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class HoldingKeyToKey {
     public:

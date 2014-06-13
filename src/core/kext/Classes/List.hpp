@@ -4,7 +4,7 @@
 #include <sys/types.h>
 #include <string.h>
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class List {
   public:
     class Item {

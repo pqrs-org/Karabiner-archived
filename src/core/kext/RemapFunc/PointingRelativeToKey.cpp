@@ -5,7 +5,7 @@
 #include "IOLogWrapper.hpp"
 #include "PointingRelativeToKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     PointingRelativeToKey::PointingRelativeToKey(void) :
       current_keytokey_(NULL)

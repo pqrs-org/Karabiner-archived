@@ -5,7 +5,7 @@
 #include "UserClient_kext.hpp"
 #include "VK_CONFIG.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   VirtualKey::VK_CONFIG::Vector_Item* VirtualKey::VK_CONFIG::items_ = NULL;
 
   void
@@ -112,7 +112,7 @@ namespace org_pqrs_KeyRemap4MacBook {
         RemapClassManager::refresh();
 
         // Tell remapclass status is changed to userspace.
-        org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED, remapclass->get_configindex());
+        org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED, remapclass->get_configindex());
       }
     }
 

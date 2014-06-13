@@ -5,7 +5,7 @@
 #include "PointingRelativeToScroll.hpp"
 #include "ScrollWheelToScrollWheel.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     ScrollWheelToScrollWheel::ScrollWheelToScrollWheel(void) : index_(0)
     {}

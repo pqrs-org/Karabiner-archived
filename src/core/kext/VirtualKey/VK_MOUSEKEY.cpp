@@ -5,7 +5,7 @@
 #include "FlagStatus.hpp"
 #include "VK_MOUSEKEY.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   int VirtualKey::VK_MOUSEKEY::dx_;
   int VirtualKey::VK_MOUSEKEY::dy_;
   int VirtualKey::VK_MOUSEKEY::scale_;

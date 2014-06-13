@@ -5,7 +5,7 @@
 #include "ParamsUnion.hpp"
 #include "Types.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class BlockUntilKeyUp {
     public:

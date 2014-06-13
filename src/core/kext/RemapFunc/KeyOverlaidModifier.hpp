@@ -5,7 +5,7 @@
 #include "RemapFuncClasses.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
     class KeyOverlaidModifier {

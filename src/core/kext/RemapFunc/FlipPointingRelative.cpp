@@ -4,7 +4,7 @@
 #include "FlipPointingRelative.hpp"
 #include "IOLogWrapper.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     FlipPointingRelative::FlipPointingRelative(void) : flipHorizontal_(false), flipVertical_(false)
     {}

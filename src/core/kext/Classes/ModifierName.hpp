@@ -4,7 +4,7 @@
 #include "KeyCode.hpp"
 #include "strlcpy_utf8.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class ModifierName {
   public:
     class Item {

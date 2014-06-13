@@ -4,7 +4,7 @@
 #include "RemapFuncClasses.hpp"
 #include "ListHookedKeyboard.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class ForceNumLockOn {
     public:

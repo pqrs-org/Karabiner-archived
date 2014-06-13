@@ -4,7 +4,7 @@
 #include "KeyCode.hpp"
 #include "bridge.h"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class ButtonStatus {
   public:
     class Item {

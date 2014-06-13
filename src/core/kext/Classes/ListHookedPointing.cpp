@@ -12,7 +12,7 @@
 #include "IOLogWrapper.hpp"
 #include "ListHookedPointing.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace {
     ListHookedPointing listHookedPointing;
   }
@@ -85,7 +85,7 @@ namespace org_pqrs_KeyRemap4MacBook {
 
     // ------------------------------------------------------------
     {
-      // We need to replace _relativePointerEventAction until it points KeyRemap4MacBook's callback function.
+      // We need to replace _relativePointerEventAction until it points Karabiner's callback function.
       // (A reason is described at ListHookedKeyboard::replaceEventAction.)
       RelativePointerEventCallback callback = reinterpret_cast<RelativePointerEventCallback>(pointing->_relativePointerEventAction);
       if (! callback) {
@@ -107,7 +107,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       }
     }
     {
-      // We need to replace _scrollWheelEventAction until it points KeyRemap4MacBook's callback function.
+      // We need to replace _scrollWheelEventAction until it points Karabiner's callback function.
       // (A reason is described at ListHookedKeyboard::replaceEventAction.)
       ScrollWheelEventCallback callback = reinterpret_cast<ScrollWheelEventCallback>(pointing->_scrollWheelEventAction);
       if (! callback) {

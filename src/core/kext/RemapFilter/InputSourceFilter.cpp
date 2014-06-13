@@ -5,7 +5,7 @@
 #include "InputSourceFilter.hpp"
 #include "bridge.h"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     InputSourceFilter::InputSourceFilter(unsigned int t) : type_(t)
     {}

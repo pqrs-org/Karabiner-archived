@@ -12,7 +12,7 @@
 #include "bridge.h"
 #include "strlcpy_utf8.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) :
     parent_(parent),
     type_(BRIDGE_REMAPTYPE_NONE),

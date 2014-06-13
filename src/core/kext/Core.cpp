@@ -25,7 +25,7 @@
 #include "TimerWrapper.hpp"
 #include "VirtualKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace Core {
     namespace {
       IOWorkLoop* workLoop = NULL;

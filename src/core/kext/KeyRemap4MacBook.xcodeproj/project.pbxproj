@@ -171,7 +171,7 @@
 		05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierFilter.cpp; path = RemapFilter/ModifierFilter.cpp; sourceTree = "<group>"; };
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyRemap4MacBook.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		32D94FD00562CBF700B6AF17 /* Karabiner.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Karabiner.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		3405382013E6ED7E009DF83F /* DropScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropScrollWheel.cpp; path = RemapFunc/DropScrollWheel.cpp; sourceTree = "<group>"; };
 		3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropScrollWheel.hpp; path = RemapFunc/DropScrollWheel.hpp; sourceTree = "<group>"; };
 		340800D513BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DependingPressingPeriodKeyToKey.cpp; path = RemapFunc/common/DependingPressingPeriodKeyToKey.cpp; sourceTree = "<group>"; };
@@ -340,7 +340,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* KeyRemap4MacBook */ = {
+		089C166AFE841209C02AAC07 /* Karabiner */ = {
 			isa = PBXGroup;
 			children = (
 				247142CAFF3F8F9811CA285C /* Source */,
@@ -348,7 +348,7 @@
 				089C167CFE841241C02AAC07 /* Resources */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
 			);
-			name = KeyRemap4MacBook;
+			name = Karabiner;
 			sourceTree = "<group>";
 		};
 		089C167CFE841241C02AAC07 /* Resources */ = {
@@ -363,7 +363,7 @@
 		19C28FB6FE9D52B211CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */,
+				32D94FD00562CBF700B6AF17 /* Karabiner.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -667,9 +667,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		32D94FC30562CBF700B6AF17 /* KeyRemap4MacBook */ = {
+		32D94FC30562CBF700B6AF17 /* Karabiner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook" */;
+			buildConfigurationList = 1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "Karabiner" */;
 			buildPhases = (
 				32D94FC50562CBF700B6AF17 /* Headers */,
 				32D94FC70562CBF700B6AF17 /* Resources */,
@@ -681,10 +681,10 @@
 			);
 			dependencies = (
 			);
-			name = KeyRemap4MacBook;
+			name = Karabiner;
 			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-			productName = KeyRemap4MacBook;
-			productReference = 32D94FD00562CBF700B6AF17 /* KeyRemap4MacBook.kext */;
+			productName = Karabiner;
+			productReference = 32D94FD00562CBF700B6AF17 /* Karabiner.kext */;
 			productType = "com.apple.product-type.kernel-extension.iokit";
 		};
 /* End PBXNativeTarget section */
@@ -695,7 +695,7 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook" */;
+			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "Karabiner" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -705,11 +705,11 @@
 				French,
 				German,
 			);
-			mainGroup = 089C166AFE841209C02AAC07 /* KeyRemap4MacBook */;
+			mainGroup = 089C166AFE841209C02AAC07 /* Karabiner */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				32D94FC30562CBF700B6AF17 /* KeyRemap4MacBook */,
+				32D94FC30562CBF700B6AF17 /* Karabiner */,
 			);
 		};
 /* End PBXProject section */
@@ -838,9 +838,9 @@
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_PREPROCESS = YES;
-				MODULE_NAME = org.pqrs.driver.KeyRemap4MacBook;
+				MODULE_NAME = org.pqrs.driver.Karabiner;
 				MODULE_VERSION = 1.0.0d1;
-				PRODUCT_NAME = KeyRemap4MacBook;
+				PRODUCT_NAME = Karabiner;
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
@@ -880,7 +880,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "KeyRemap4MacBook" */ = {
+		1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "Karabiner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB91DB08733DB10010E9CD /* Release */,
@@ -888,7 +888,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "KeyRemap4MacBook" */ = {
+		1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "Karabiner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB91DF08733DB10010E9CD /* Release */,

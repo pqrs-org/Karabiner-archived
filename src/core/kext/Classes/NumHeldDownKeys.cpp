@@ -3,7 +3,7 @@
 #include "KeyCode.hpp"
 #include "NumHeldDownKeys.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   int NumHeldDownKeys::num_ = 0;
 
   void

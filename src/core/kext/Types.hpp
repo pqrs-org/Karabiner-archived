@@ -4,7 +4,7 @@
 #include <IOKit/IOLib.h>
 #include <IOKit/IOTimerEventSource.h>
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   class AddDataType {
   public:
     explicit AddDataType(unsigned int v = 0) : value_(v) {}

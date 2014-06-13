@@ -3,11 +3,11 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # --------------------------------------------------
-sudo rm -rf /tmp/KeyRemap4MacBook
-mkdir /tmp/KeyRemap4MacBook
+sudo rm -rf /tmp/Karabiner
+mkdir /tmp/Karabiner
 
-cp -R build/Release/KeyRemap4MacBook.kext /tmp/KeyRemap4MacBook/KeyRemap4MacBook.signed.kext
-bash ../../../files/extra/codesign.sh /tmp/KeyRemap4MacBook
-sudo chown -R root:wheel /tmp/KeyRemap4MacBook
+cp -R build/Release/Karabiner.kext /tmp/Karabiner/Karabiner.signed.kext
+bash ../../../files/extra/codesign.sh /tmp/Karabiner
+sudo chown -R root:wheel /tmp/Karabiner
 
-sudo kextutil -t /tmp/KeyRemap4MacBook/KeyRemap4MacBook.signed.kext
+sudo kextutil -t /tmp/Karabiner/Karabiner.signed.kext

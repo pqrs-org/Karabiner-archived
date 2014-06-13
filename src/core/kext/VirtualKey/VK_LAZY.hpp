@@ -5,7 +5,7 @@ class KeyCode;
 class ModifierFlag;
 class Params_KeyboardEventCallBack;
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace VirtualKey {
     class VK_LAZY {
     public:

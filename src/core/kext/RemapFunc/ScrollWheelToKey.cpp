@@ -4,7 +4,7 @@
 #include "IOLogWrapper.hpp"
 #include "ScrollWheelToKey.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     ScrollWheelToKey::ScrollWheelToKey(void) :
       index_(0),

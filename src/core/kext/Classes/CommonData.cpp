@@ -3,7 +3,7 @@
 #include "IOLogWrapper.hpp"
 #include "UserClient_kext.hpp"
 
-namespace org_pqrs_KeyRemap4MacBook {
+namespace org_pqrs_Karabiner {
   AbsoluteTime CommonData::current_ts_;
   KeyboardType CommonData::current_keyboardType_;
   DeviceIdentifier CommonData::current_deviceIdentifier_;
@@ -51,7 +51,7 @@ namespace org_pqrs_KeyRemap4MacBook {
     if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
     if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
 
-    org_pqrs_driver_KeyRemap4MacBook_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED, index);
+    org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED, index);
   }
 
   const char*
