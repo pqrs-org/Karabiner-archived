@@ -13,6 +13,7 @@
 		342DF86F1653548700C832FE /* FingerStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 342DF86E1653548700C832FE /* FingerStatus.m */; };
 		343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343CFC86130A8C7C00BA28B9 /* PreferencesController.m */; };
 		343EE7A113098F2E00953F8F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343EE7A013098F2E00953F8F /* IOKit.framework */; };
+		3477DDA3194B046C00E46EDC /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3477DDA2194B046C00E46EDC /* MigrationUtilities.m */; };
 		3491D60013098C1B0060C12B /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3491D5FF13098C1B0060C12B /* app.icns */; };
 		349AD35113098DD400474EFD /* KarabinerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 349AD35013098DD400474EFD /* KarabinerClient.m */; };
 		349AD37613098E7A00474EFD /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349AD37513098E7A00474EFD /* MultitouchSupport.framework */; };
@@ -41,6 +42,8 @@
 		343CFC85130A8C7C00BA28B9 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = Classes/PreferencesController.h; sourceTree = "<group>"; };
 		343CFC86130A8C7C00BA28B9 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = Classes/PreferencesController.m; sourceTree = "<group>"; };
 		343EE7A013098F2E00953F8F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		3477DDA1194B046C00E46EDC /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../share/MigrationUtilities.h; sourceTree = "<group>"; };
+		3477DDA2194B046C00E46EDC /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../share/MigrationUtilities.m; sourceTree = "<group>"; };
 		3487280A180016C40061399A /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
 		3491D5FF13098C1B0060C12B /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = Resources/app.icns; sourceTree = "<group>"; };
 		349AD34F13098DD400474EFD /* KarabinerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerClient.h; path = ../../share/KarabinerClient.h; sourceTree = SOURCE_ROOT; };
@@ -160,6 +163,8 @@
 		34900B3E19321476004C41EF /* share */ = {
 			isa = PBXGroup;
 			children = (
+				3477DDA1194B046C00E46EDC /* MigrationUtilities.h */,
+				3477DDA2194B046C00E46EDC /* MigrationUtilities.m */,
 				34D94444193217400062E422 /* StartAtLoginUtilities.h */,
 				34D94445193217400062E422 /* StartAtLoginUtilities.m */,
 			);
@@ -237,6 +242,7 @@
 				349AD35113098DD400474EFD /* KarabinerClient.m in Sources */,
 				343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */,
 				3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */,
+				3477DDA3194B046C00E46EDC /* MigrationUtilities.m in Sources */,
 				342DF86F1653548700C832FE /* FingerStatus.m in Sources */,
 				34D94446193217400062E422 /* StartAtLoginUtilities.m in Sources */,
 			);
