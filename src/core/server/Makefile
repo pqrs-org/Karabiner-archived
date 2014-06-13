@@ -26,4 +26,4 @@ xcode:
 	open *.xcodeproj
 
 run: all
-	open ./build/Release/KeyRemap4MacBook.app
+	open ./build/Release/Karabiner.app

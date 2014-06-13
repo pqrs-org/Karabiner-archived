@@ -59,7 +59,7 @@
       <name>Don't leave any modes automatically when the machine wakes from sleep.</name>
       <appendix>(Pass Through Mode, Browsing Mode, etc.)</appendix>
       <appendix></appendix>
-      <appendix>KeyRemap4MacBook turns off these modes automatically because</appendix>
+      <appendix>Karabiner turns off these modes automatically because</appendix>
       <appendix>these modes are not suitable for password input.</appendix>
       <appendix></appendix>
       <appendix>This setting allows you to keep these modes's states.</appendix>
@@ -69,7 +69,7 @@
     <item>
       <name>Pass-Through caps lock LED status</name>
       <appendix></appendix>
-      <appendix>KeyRemap4MacBook manipulates caps lock LED according to internal caps lock state.</appendix>
+      <appendix>Karabiner manipulates caps lock LED according to internal caps lock state.</appendix>
       <appendix>(For example, if you changed right option key to caps lock,</appendix>
       <appendix>LED will be toggled each time the right option key is pressed.)</appendix>
       <appendix></appendix>
@@ -99,7 +99,7 @@
     <item><name>──────────────────────────────</name></item>
     <item>
       <name>Unlimited rapid key repeat rate</name>
-      <appendix>(KeyRemap4MacBook limits most rapid "Delay Until Repeat" to 200ms for safe.</appendix>
+      <appendix>(Karabiner limits most rapid "Delay Until Repeat" to 200ms for safe.</appendix>
       <appendix>This setting allows you unlimited "Delay Until Repeat".)</appendix>
       <identifier essential="true">general.unlimited_key_repeat_rate</identifier>
     </item>
@@ -107,7 +107,7 @@
     <item>
       <name>Allow devices which Vendor ID and Product ID are zero.</name>
       <appendix>(Be careful enabling this option.</appendix>
-      <appendix>These devices might cause system crash with KeyRemap4MacBook.)</appendix>
+      <appendix>These devices might cause system crash with Karabiner.)</appendix>
       <identifier essential="true">general.allow_devices_vendor_id_product_id_are_zero</identifier>
     </item>
   </item>

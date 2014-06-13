@@ -188,7 +188,7 @@
   NSFileManager* filemanager = [NSFileManager defaultManager];
   NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
   NSString* path = paths[0];
-  path = [path stringByAppendingPathComponent:@"KeyRemap4MacBook"];
+  path = [path stringByAppendingPathComponent:@"Karabiner"];
   if (! [filemanager fileExistsAtPath:path]) {
     [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
   }
@@ -269,7 +269,7 @@
     }
 
     NSAlert* alert = [NSAlert new];
-    [alert setMessageText:@"KeyRemap4MacBook Error"];
+    [alert setMessageText:@"Karabiner Error"];
     [alert addButtonWithTitle:@"Close"];
     [alert setInformativeText:message];
 
@@ -278,10 +278,10 @@
 
   // ------------------------------------------------------------
   if ([EnvironmentChecker checkDoubleCommand]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\n\nKeyRemap4MacBook ignores keyboard devices.\n(You can use KeyRemap4MacBook as a pointing device remapper.)"];
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\n\nKarabiner ignores keyboard devices.\n(You can use Karabiner as a pointing device remapper.)"];
   }
   if ([EnvironmentChecker checkSmoothMouse]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKeyRemap4MacBook ignores pointing devices.\n(You can use KeyRemap4MacBook as a keyboard device remapper.)"];
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKarabiner ignores pointing devices.\n(You can use Karabiner as a keyboard device remapper.)"];
   }
 
   // ------------------------------------------------------------

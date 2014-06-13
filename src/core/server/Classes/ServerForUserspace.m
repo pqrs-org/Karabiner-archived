@@ -1,6 +1,6 @@
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
-#import "KeyRemap4MacBookKeys.h"
+#import "KarabinerKeys.h"
 #import "PreferencesManager.h"
 #import "Relauncher.h"
 #import "ServerForUserspace.h"
@@ -32,7 +32,7 @@
 - (BOOL) register
 {
   [connection_ setRootObject:self];
-  if (! [connection_ registerName:kKeyRemap4MacBookConnectionName]) {
+  if (! [connection_ registerName:kKarabinerConnectionName]) {
     return NO;
   }
   return YES;
@@ -91,7 +91,7 @@
   // Use dispatch_async in order to avoid "disconnected from server".
   //
   // Example error message of disconnection:
-  //   "KeyRemap4MacBook_cli: connection went invalid while waiting for a reply because a mach port died"
+  //   "karabiner: connection went invalid while waiting for a reply because a mach port died"
   dispatch_async(dispatch_get_main_queue(), ^{
     [Relauncher relaunch];
   });

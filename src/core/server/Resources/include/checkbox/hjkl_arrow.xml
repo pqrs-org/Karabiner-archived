@@ -9,7 +9,7 @@
       <appendix>Supported Applications:</appendix>
       <appendix>- Finder, iPhoto, iTunes, Mail.app.</appendix>
       <appendix>- Activity Monitor.</appendix>
-      <appendix>- System Preferences, KeyRemap4MacBook, PCKeyboardHack.</appendix>
+      <appendix>- System Preferences, Karabiner, Seil.</appendix>
       <identifier>remap.hjkl_arrow</identifier>
 
       {{ HJKL_ARROW_EXTRA }}
@@ -18,7 +18,7 @@
         <only>
           FINDER, IPHOTO, ITUNES, SYSTEM_PREFERENCES,
           Activity_Monitor,
-          KeyRemap4MacBook, PCKeyboardHack,
+          Karabiner, Seil,
         </only>
         <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
         <modifier_only>

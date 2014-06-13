@@ -52,7 +52,7 @@
       statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
 
       [statusItem_ setTitle:@""];
-      [statusItem_ setToolTip:@"KeyRemap4MacBook"];
+      [statusItem_ setToolTip:@"Karabiner"];
       [statusItem_ setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
       [statusItem_ setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
       [statusItem_ setHighlightMode:YES];
