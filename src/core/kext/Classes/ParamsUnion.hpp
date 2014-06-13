@@ -96,7 +96,7 @@ namespace org_pqrs_KeyRemap4MacBook {
       Params_KeyboardEventCallBack* p = get_Params_KeyboardEventCallBack();
       if (! p) return false;
 
-      return  (p->key).isModifier();
+      return (p->key).isModifier();
     }
 
   private:
