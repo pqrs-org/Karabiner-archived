@@ -4,17 +4,17 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 # ------------------------------------------------------------
 # set file permissions
 for f in \
-    /Applications/KeyRemap4MacBook.app \
+    /Applications/Karabiner.app \
     ; do
     echo "set file permissions: $f"
-    sh /Applications/KeyRemap4MacBook.app/Contents/Library/extra/setpermissions.sh "$f"
+    sh /Applications/Karabiner.app/Contents/Library/extra/setpermissions.sh "$f"
     chown -Rh root:wheel "$f"
 done
 
 # ------------------------------------------------------------
 # relaunch KeyRemap4MacBook.app
 
-/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli \
+/Applications/Karabiner.app/Contents/Library/bin/karabiner \
     relaunch
 
 # ------------------------------------------------------------

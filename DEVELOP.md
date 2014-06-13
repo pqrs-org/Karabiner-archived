@@ -1,8 +1,8 @@
 Document for Developers
 =======================
 
-The functions of KeyRemap4MacBook by Developer's perspective.
--------------------------------------------------------------
+The functions of Karabiner by Developer's perspective
+-----------------------------------------------------
 
 * Change the key event. (For example, "Change Right Option to Enter")
 * Change the consumer key event. (The consumer key is the functional key such as "Volume Down")
@@ -21,8 +21,8 @@ See README.md
 
 Main components
 ---------------
-* KeyRemap4MacBook.kext (Kernel Extension)
-* KeyRemap4MacBook.app (Userspace Application)
+* Karabiner.kext (Kernel Extension)
+* Karabiner.app (Userspace Application)
 
 
 Source code dependencies
@@ -56,7 +56,7 @@ The sequence of event handling
 1. Device sends the input event.
 1. Modify the input event by PCKeyboardHack.
 1. Modify the input event by "System Preferences > Keyboard > Modifier Keys..."
-1. Modify the input event by KeyRemap4MacBook.
+1. Modify the input event by Karabiner.
 1. Send the input event to Applications.
 
 

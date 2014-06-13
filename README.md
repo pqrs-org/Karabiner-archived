@@ -1,18 +1,19 @@
-KeyRemap4MacBook
-================
+Karabiner
+=========
 
-KeyRemap4MacBook is a powerful utility for keyboard customization.
+Karabiner (KeyRemap4MacBook) is a powerful utility for keyboard customization.
 
 * Change the key. (For example, "Change Right Option to Enter")
 * Accelerate speed of the key repeat.
 * The revival of a lost NumPad key (Fn+jkluio789…)
 * Features for more efficient operations. (Emacs Mode, Vi Mode, Mouse Keys Mode, ...)
 
+(Karabiner has been called KeyRemap4MacBook till version 9.3.0.)
 
 Web pages
 ---------
 
-* master: https://pqrs.org/macosx/keyremap4macbook/
+* master: https://pqrs.org/macosx/karabiner/
 * backup: http://tekezo.github.io/pqrs.org/
 * Google Group:  https://groups.google.com/forum/#!forum/keyremap4macbook
 
@@ -20,10 +21,10 @@ Web pages
 System requirements
 -------------------
 
-Mac OS X 10.9 (Maveriks) or higher.  KeyRemap4MacBook works for all Mac products, including the MacBook series, the iMac, Mac mini, and Mac Pro.
+Mac OS X 10.9 (Maveriks) or higher.  Karabiner works for all Mac products, including the MacBook series, the iMac, Mac mini, and Mac Pro.
 
-* If you require KeyRemap4MacBook for OS X 10.6 - 10.8, use KeyRemap4MacBook 8.4.0.
-* If you require KeyRemap4MacBook for OS X 10.4 - 10.5, use KeyRemap4MacBook 5.1.0.
+* If you require Karabiner for OS X 10.6 - 10.8, use Karabiner 8.4.0.
+* If you require Karabiner for OS X 10.4 - 10.5, use Karabiner 5.1.0.
 
 
 How to build
@@ -43,7 +44,7 @@ Please install Boost into /usr/local/include/boost.
 Execute a following command in Terminal.app.
 
 <pre>
-git clone --depth 10 https://github.com/tekezo/KeyRemap4MacBook.git
+git clone --depth 10 https://github.com/tekezo/Karabiner.git
 </pre>
 
 ### Step2: Building a package
@@ -51,11 +52,11 @@ git clone --depth 10 https://github.com/tekezo/KeyRemap4MacBook.git
 Execute a following command in Terminal.app.
 
 <pre>
-cd KeyRemap4MacBook
+cd Karabiner
 make
 </pre>
 
-Then, KeyRemap4MacBook-VERSION.dmg has been created in the current directory.
+Then, Karabiner-VERSION.dmg has been created in the current directory.
 It's a distributable package.
 
 
