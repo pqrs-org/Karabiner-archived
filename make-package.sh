@@ -16,34 +16,34 @@ rm -rf pkgroot
 mkdir -p pkgroot
 
 mkdir -p "pkgroot/Applications"
-cp -R "src/core/server/build/Release/KeyRemap4MacBook.app" "pkgroot/Applications"
+cp -R "src/core/server/build/Release/Karabiner.app" "pkgroot/Applications"
 
-basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Applications"
+basedir="pkgroot/Applications/Karabiner.app/Contents/Applications"
 mkdir -p "$basedir"
 for d in \
-    src/util/AXNotifier/build/Release/KeyRemap4MacBook_AXNotifier.app \
+    src/util/AXNotifier/build/Release/Karabiner_AXNotifier.app \
     src/util/EventViewer/build/Release/EventViewer.app \
-    src/util/cli/build/Release/KeyRemap4MacBook_cli.app \
-    src/util/multitouchextension/build/Release/KeyRemap4MacBook_multitouchextension.app \
-    src/util/uninstaller/automator/KeyRemap4MacBookUninstaller.app \
+    src/util/multitouchextension/build/Release/Karabiner_multitouchextension.app \
+    src/util/uninstaller/automator/KarabinerUninstaller.app \
     ;
 do
     cp -R "$d" "$basedir"
 done
 
-basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Applications/Utilities"
+basedir="pkgroot/Applications/Karabiner.app/Contents/Applications/Utilities"
 mkdir -p "$basedir"
 cp -R files/Utilities/*.app "$basedir"
 
-basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library"
+basedir="pkgroot/Applications/Karabiner.app/Contents/Library"
 mkdir -p "$basedir"
-cp -R src/core/kext/build/Release/KeyRemap4MacBook.kext "$basedir/KeyRemap4MacBook.signed.kext"
+cp -R src/core/kext/build/Release/Karabiner.kext "$basedir/Karabiner.signed.kext"
 
-basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/bin"
+basedir="pkgroot/Applications/Karabiner.app/Contents/Library/bin"
 mkdir -p "$basedir"
 cp -R src/bin/kextload/build/Release/kextload "$basedir"
+cp -R src/util/cli/build/Release/karabiner "$basedir"
 
-basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/extra"
+basedir="pkgroot/Applications/Karabiner.app/Contents/Library/extra"
 mkdir -p "$basedir"
 cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
 for f in \
@@ -55,11 +55,11 @@ do
     cp -R "$f" "$basedir"
 done
 
-basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/utilities/bin"
+basedir="pkgroot/Applications/Karabiner.app/Contents/Library/utilities/bin"
 mkdir -p "$basedir"
 cp -R src/util/warp-mouse-cursor-position/build/Release/warp-mouse-cursor-position "$basedir"
 
-basedir="pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/vendor/bin"
+basedir="pkgroot/Applications/Karabiner.app/Contents/Library/vendor/bin"
 mkdir -p "$basedir"
 cp -R src/vendor/blueutil/build/Release/blueutil "$basedir"
 
@@ -73,14 +73,14 @@ bash files/extra/codesign.sh pkgroot
 #   PackageMaker uses their permissions.
 #
 #   For example:
-#     If /Applications/KeyRemap4MacBook.app permission is 0777 by accidental reasons,
+#     If /Applications/Karabiner.app permission is 0777 by accidental reasons,
 #     the directory permission will be 0777 in Archive.bom
 #     even if we set this directory permission to 0755 by setpermissions.sh.
 #
 #   Then, we need to repair file permissions in postinstall script.
 #   Please also see postinstall.
 #
-chmod 4755 pkgroot/Applications/KeyRemap4MacBook.app/Contents/Library/bin/kextload
+chmod 4755 pkgroot/Applications/Karabiner.app/Contents/Library/bin/kextload
 sh "files/extra/setpermissions.sh" pkgroot
 sh "files/extra/setpermissions.sh" pkginfo
 chmod 755 \
@@ -91,9 +91,9 @@ chmod 755 \
 # --------------------------------------------------
 echo "Create pkg"
 
-pkgName="KeyRemap4MacBook.pkg"
-pkgIdentifier="org.pqrs.driver.KeyRemap4MacBook"
-archiveName="KeyRemap4MacBook-${version}"
+pkgName="Karabiner.pkg"
+pkgIdentifier="org.pqrs.driver.Karabiner"
+archiveName="Karabiner-${version}"
 
 rm -rf $archiveName
 mkdir $archiveName

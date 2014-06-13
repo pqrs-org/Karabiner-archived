@@ -1,6 +1,8 @@
 Since 9.3.0
 -----------
 
+* KeyRemap4MacBook has been renamed to "Karabiner".
+
 * v9.99.1: AXNotifier has been added.<br />
   AXNotifier allows you to observe the window name (window title) and the focused ui element role (eg. whether textarea or not).
 
