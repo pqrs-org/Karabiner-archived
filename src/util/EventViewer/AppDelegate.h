@@ -9,14 +9,14 @@
 #import "EventQueue.h"
 #import "OtherInformationStore.h"
 
-@class KeyRemap4MacBookClient;
+@class KarabinerClient;
 @class KeyResponder;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   NSWindow* __weak window;
   IBOutlet AppQueue* appQueue_;
   IBOutlet Devices* devices_;
-  IBOutlet KeyRemap4MacBookClient* client_;
+  IBOutlet KarabinerClient* client_;
   IBOutlet OtherInformationStore* otherinformationstore_;
   IBOutlet KeyResponder* keyResponder_;
 }

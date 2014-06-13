@@ -407,13 +407,12 @@
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="bZa-Vw-TNh"/>
                                                     </imageView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EYh-8r-92q">
-                                                        <rect key="frame" x="56" y="-3" width="633" height="51"/>
+                                                        <rect key="frame" x="56" y="14" width="742" height="34"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="ska-M2-30n">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Window Name and UIElement Role require accessibility features.
-If these values are empty, please permit accessibility features to KeyRemap4MacBook_AXNotifier.
-</string>
+If these values are empty, please permit accessibility features to Karabiner_AXNotifier.</string>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -661,7 +660,7 @@ If these values are empty, please permit accessibility features to KeyRemap4MacB
                 <outlet property="label_languagecode_" destination="814" id="819"/>
             </connections>
         </customObject>
-        <customObject id="641" customClass="KeyRemap4MacBookClient"/>
+        <customObject id="641" customClass="KarabinerClient"/>
         <customObject id="787" customClass="Devices">
             <connections>
                 <outlet property="client_" destination="641" id="809"/>

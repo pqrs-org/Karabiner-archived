@@ -1,6 +1,6 @@
 #import "AppDelegate.h"
-#import "KeyRemap4MacBookClient.h"
-#import "KeyRemap4MacBookKeys.h"
+#import "KarabinerClient.h"
+#import "KarabinerKeys.h"
 #import "KeyResponder.h"
 #import "PreferencesKeys.h"
 #import <Carbon/Carbon.h>
@@ -53,7 +53,7 @@
 }
 
 // ------------------------------------------------------------
-- (void) distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:(NSNotification*)notification
+- (void) distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
@@ -85,8 +85,8 @@
   // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
   // in order to get notifications when this app is not active.
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                      selector:@selector(distributedObserver_kKeyRemap4MacBookServerDidLaunchNotification:)
-                                                          name:kKeyRemap4MacBookServerDidLaunchNotification
+                                                      selector:@selector(distributedObserver_kKarabinerServerDidLaunchNotification:)
+                                                          name:kKarabinerServerDidLaunchNotification
                                                         object:nil
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 }
