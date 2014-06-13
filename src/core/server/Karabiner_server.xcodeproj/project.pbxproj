@@ -51,6 +51,7 @@
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
 		34AE39041848E72300D413AD /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AE39031848E72300D413AD /* Relauncher.m */; };
 		34AFABF2181C354C00146896 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFABF1181C354C00146896 /* libc++.dylib */; };
+		34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B41846194B5C1900707306 /* MigrationUtilities.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
 		34D4F82812C4463B001819AA /* StatusWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F82712C4463B001819AA /* StatusWindow.m */; };
@@ -156,6 +157,8 @@
 		34AE39031848E72300D413AD /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = Classes/Relauncher.m; sourceTree = "<group>"; };
 		34AFABF1181C354C00146896 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		34B2A65A13745B6000694134 /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../share/KarabinerKeys.h; sourceTree = "<group>"; };
+		34B41845194B5C1900707306 /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../share/MigrationUtilities.h; sourceTree = "<group>"; };
+		34B41846194B5C1900707306 /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../share/MigrationUtilities.m; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
 		34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkchangeinputsourcedef.xml; path = Resources/vkchangeinputsourcedef.xml; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 				349120471925E19C0088F2C3 /* FrontmostWindow.m */,
 				34B2A65A13745B6000694134 /* KarabinerKeys.h */,
 				3401D0DE16586C0700CF962F /* KarabinerProtocol.h */,
+				34B41845194B5C1900707306 /* MigrationUtilities.h */,
+				34B41846194B5C1900707306 /* MigrationUtilities.m */,
 				34D94447193217A80062E422 /* StartAtLoginUtilities.h */,
 				34D94448193217A80062E422 /* StartAtLoginUtilities.m */,
 			);
@@ -471,6 +476,7 @@
 				3401D0DA1657CE6A00CF962F /* Updater.m in Sources */,
 				3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */,
 				34207C051666209F00E7FD08 /* OutlineView_checkbox.m in Sources */,
+				34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */,
 				34207C061666209F00E7FD08 /* OutlineView_number.m in Sources */,
 				34207C071666209F00E7FD08 /* OutlineView.m in Sources */,
 				34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */,
