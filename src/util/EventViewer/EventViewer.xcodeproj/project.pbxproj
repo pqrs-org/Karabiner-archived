@@ -17,6 +17,8 @@
 		34CA697F174FB72900EC8EFB /* EventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA6978174FB72900EC8EFB /* EventQueue.m */; };
 		34CA6980174FB72900EC8EFB /* KeyResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA697A174FB72900EC8EFB /* KeyResponder.m */; };
 		34CA6981174FB72900EC8EFB /* OtherInformationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA697C174FB72900EC8EFB /* OtherInformationStore.m */; };
+		34F16534194B096600D9765F /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F16531194B096600D9765F /* MigrationUtilities.m */; };
+		34F16535194B096600D9765F /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F16533194B096600D9765F /* StartAtLoginUtilities.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -51,6 +53,10 @@
 		34CA697A174FB72900EC8EFB /* KeyResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyResponder.m; path = Classes/KeyResponder.m; sourceTree = "<group>"; };
 		34CA697B174FB72900EC8EFB /* OtherInformationStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OtherInformationStore.h; path = Classes/OtherInformationStore.h; sourceTree = "<group>"; };
 		34CA697C174FB72900EC8EFB /* OtherInformationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherInformationStore.m; path = Classes/OtherInformationStore.m; sourceTree = "<group>"; };
+		34F16530194B096600D9765F /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../share/MigrationUtilities.h; sourceTree = "<group>"; };
+		34F16531194B096600D9765F /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../share/MigrationUtilities.m; sourceTree = "<group>"; };
+		34F16532194B096600D9765F /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
+		34F16533194B096600D9765F /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* EventViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -165,6 +171,10 @@
 				3441AA3B194AF4CB00A96684 /* KarabinerClient.m */,
 				3441AA3C194AF4CB00A96684 /* KarabinerKeys.h */,
 				3441AA3D194AF4CB00A96684 /* KarabinerProtocol.h */,
+				34F16530194B096600D9765F /* MigrationUtilities.h */,
+				34F16531194B096600D9765F /* MigrationUtilities.m */,
+				34F16532194B096600D9765F /* StartAtLoginUtilities.h */,
+				34F16533194B096600D9765F /* StartAtLoginUtilities.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -237,6 +247,8 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
+				34F16535194B096600D9765F /* StartAtLoginUtilities.m in Sources */,
+				34F16534194B096600D9765F /* MigrationUtilities.m in Sources */,
 				34CA697D174FB72900EC8EFB /* AppQueue.m in Sources */,
 				34CA697E174FB72900EC8EFB /* Devices.m in Sources */,
 				34CA697F174FB72900EC8EFB /* EventQueue.m in Sources */,

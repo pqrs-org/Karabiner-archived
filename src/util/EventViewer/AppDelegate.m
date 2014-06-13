@@ -2,6 +2,7 @@
 #import "KarabinerClient.h"
 #import "KarabinerKeys.h"
 #import "KeyResponder.h"
+#import "MigrationUtilities.h"
 #import "PreferencesKeys.h"
 #import <Carbon/Carbon.h>
 
@@ -71,7 +72,12 @@
 }
 
 // ------------------------------------------------------------
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification {
+- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
+{
+  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.EventViewer.plist"]
+                      appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app"]]];
+
+  // ----------------------------------------
   [self setKeyResponder];
   [self updateOtherInformationStore];
   [self setWindowProperty:self];
