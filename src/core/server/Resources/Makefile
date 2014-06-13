@@ -18,6 +18,6 @@ all:
 	done
 
 install: all
-	sudo cp -r *.xml include /Applications/KeyRemap4MacBook.app/Contents/Resources
-	sudo /Applications/KeyRemap4MacBook.app/Contents/Library/extra/setpermissions.sh /Applications/KeyRemap4MacBook.app/Contents/Resources
-	/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli reloadxml
+	sudo cp -r *.xml include /Applications/Karabiner.app/Contents/Resources
+	sudo /Applications/Karabiner.app/Contents/Library/extra/setpermissions.sh /Applications/Karabiner.app/Contents/Resources
+	/Applications/Karabiner.app/Contents/Library/bin/karabiner reloadxml

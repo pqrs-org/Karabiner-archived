@@ -527,13 +527,13 @@
   </appdef>
 
   <appdef>
-    <appname>KeyRemap4MacBook</appname>
-    <equal>org.pqrs.KeyRemap4MacBook</equal>
+    <appname>Karabiner</appname>
+    <equal>org.pqrs.Karabiner</equal>
   </appdef>
 
   <appdef>
-    <appname>PCKeyboardHack</appname>
-    <equal>org.pqrs.PCKeyboardHack</equal>
+    <appname>Seil</appname>
+    <equal>org.pqrs.Seil</equal>
   </appdef>
 
 </root>

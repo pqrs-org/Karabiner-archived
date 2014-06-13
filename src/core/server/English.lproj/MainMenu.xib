@@ -14,10 +14,10 @@
         <customObject id="-3" userLabel="Application"/>
         <menu title="AMainMenu" systemMenu="main" id="887">
             <items>
-                <menuItem title="KeyRemap4MacBook" id="893">
-                    <menu key="submenu" title="KeyRemap4MacBook" systemMenu="apple" id="900">
+                <menuItem title="Karabiner" id="893">
+                    <menu key="submenu" title="Karabiner" systemMenu="apple" id="900">
                         <items>
-                            <menuItem title="Hide KeyRemap4MacBook" keyEquivalent="h" id="910">
+                            <menuItem title="Hide Karabiner" keyEquivalent="h" id="910">
                                 <connections>
                                     <action selector="hide:" target="-1" id="1043"/>
                                 </connections>
@@ -99,7 +99,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="KeyRemap4MacBook" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="628" userLabel="Preferences">
+        <window title="Karabiner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="628" userLabel="Preferences">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="398" y="285" width="668" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
@@ -227,14 +227,14 @@
                             <tabViewItem label="Key Repeat" identifier="Item 2" id="632">
                                 <view key="view" wantsLayer="YES" id="676">
                                     <rect key="frame" x="10" y="33" width="622" height="558"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView horizontalLineScroll="18" horizontalPageScroll="10" verticalLineScroll="18" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="677">
                                             <rect key="frame" x="17" y="39" width="588" height="459"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="9G2-q6-FVr">
                                                 <rect key="frame" x="1" y="17" width="571" height="441"/>
-                                                <autoresizingMask key="autoresizingMask"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" headerView="681" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="683" id="678">
                                                         <rect key="frame" x="0.0" y="0.0" width="571" height="441"/>
@@ -343,7 +343,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1332">
                                                             <font key="font" metaFont="system"/>
-                                                            <string key="title">KeyRemap4MacBook overrides the OS X's standard Key Repeat settings.
+                                                            <string key="title">Karabiner overrides the OS X's standard Key Repeat settings.
 Use the first two settings below.</string>
                                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -365,7 +365,7 @@ Use the first two settings below.</string>
                             <tabViewItem label="Status Message" identifier="StatusMessage" id="1221">
                                 <view key="view" id="1222">
                                     <rect key="frame" x="10" y="33" width="622" height="558"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="On/Off" borderType="line" id="1324">
                                             <rect key="frame" x="14" y="451" width="594" height="94"/>
@@ -761,16 +761,16 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" id="641">
-                                            <rect key="frame" x="2" y="538" width="195" height="17"/>
+                                            <rect key="frame" x="15" y="538" width="114" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="KeyRemap4MacBook.version" id="642">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Karabiner.version" id="642">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" id="640">
-                                            <rect key="frame" x="199" y="538" width="129" height="17"/>
+                                            <rect key="frame" x="133" y="538" width="129" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="x.x.xx" id="643">
                                                 <font key="font" metaFont="system"/>
@@ -815,7 +815,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                     <button verticalHuggingPriority="750" id="644">
                                                         <rect key="frame" x="12" y="7" width="313" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="Check for updates (The stable release only)" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
+                                                        <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -927,9 +927,9 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="B4b-iA-pXM">
-                                                        <rect key="frame" x="158" y="47" width="339" height="32"/>
+                                                        <rect key="frame" x="158" y="47" width="271" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/macosx/keyremap4macbook/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
+                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/macosx/karabiner/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -938,9 +938,9 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="yat-77-L8T">
-                                                        <rect key="frame" x="158" y="14" width="354" height="32"/>
+                                                        <rect key="frame" x="158" y="14" width="286" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="https://github.com/tekezo/KeyRemap4MacBook/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
+                                                        <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1007,7 +1007,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                 <outlet property="view_" destination="703" id="720"/>
             </connections>
         </customObject>
-        <window title="KeyRemap4MacBook" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="371" userLabel="StatusMessage_normal">
+        <window title="Karabiner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="371" userLabel="StatusMessage_normal">
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" stationary="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="582" width="280" height="70"/>
@@ -1040,7 +1040,7 @@ Label</string>
                 </connections>
             </view>
         </window>
-        <window title="KeyRemap4MacBook" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1393" userLabel="StatusMessage_nano">
+        <window title="Karabiner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1393" userLabel="StatusMessage_nano">
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" stationary="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="103" height="19"/>
@@ -1064,7 +1064,7 @@ Label</string>
                 </connections>
             </view>
         </window>
-        <window title="KeyRemap4MacBook" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1413" userLabel="StatusMessage_edge">
+        <window title="Karabiner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1413" userLabel="StatusMessage_edge">
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" stationary="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="206" height="33"/>
@@ -1133,7 +1133,7 @@ Label</string>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="1378"/>
-                <menuItem title="Quit KeyRemap4MacBook" id="1379">
+                <menuItem title="Quit Karabiner" id="1379">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="quit:" target="494" id="1380"/>

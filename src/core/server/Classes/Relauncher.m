@@ -2,8 +2,8 @@
 
 @implementation Relauncher
 
-#define kRelaunchedCount @"org_pqrs_KeyRemap4MacBook_RelaunchedCount"
-#define kPreviousProcessVersion @"org_pqrs_KeyRemap4MacBook_PreviousProcessVersion"
+#define kRelaunchedCount @"org_pqrs_Karabiner_RelaunchedCount"
+#define kPreviousProcessVersion @"org_pqrs_Karabiner_PreviousProcessVersion"
 
 // ------------------------------------------------------------
 + (void) setRelaunchedCount:(int)newvalue

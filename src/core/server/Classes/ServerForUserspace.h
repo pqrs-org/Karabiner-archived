@@ -1,7 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #import <Cocoa/Cocoa.h>
-#import "KeyRemap4MacBookProtocol.h"
+#import "KarabinerProtocol.h"
 
 @class AppDelegate;
 @class ClientForKernelspace;
@@ -9,7 +9,7 @@
 @class Updater;
 @class XMLCompiler;
 
-@interface ServerForUserspace : NSObject<KeyRemap4MacBookProtocol>
+@interface ServerForUserspace : NSObject<KarabinerProtocol>
 {
   IBOutlet AppDelegate* appDelegate_;
   IBOutlet ClientForKernelspace* clientForKernelspace_;

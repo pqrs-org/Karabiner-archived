@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:KeyRemap4MacBook_server.xcodeproj">
+      location = "self:Karabiner_server.xcodeproj">
    </FileRef>
 </Workspace>

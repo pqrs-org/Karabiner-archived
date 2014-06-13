@@ -7,7 +7,7 @@
       <appendix>Eject key has a delay.</appendix>
       <appendix>You need to press eject key for a few seconds.</appendix>
       <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
-      <appendix>&#8594; https://pqrs.org/macosx/keyremap4macbook/noejectdelay.html</appendix>
+      <appendix>&#8594; https://pqrs.org/macosx/karabiner/noejectdelay.html</appendix>
     </item>
     <item>
       <name>Limitation:</name>
@@ -15,7 +15,7 @@
       <appendix>and eject key does not support key repeat exceptionally.</appendix>
       <appendix></appendix>
       <appendix>Because eject key sends keydown&amp;keyup event at the same time when you press the key.</appendix>
-      <appendix>KeyRemap4MacBook cannot know whether you're holding eject key or not.</appendix>
+      <appendix>Karabiner cannot know whether you're holding eject key or not.</appendix>
     </item>
     <item>
       <name>Eject to Option+Backquote(`)</name>

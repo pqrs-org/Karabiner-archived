@@ -5,7 +5,7 @@
     <name>Change Power Button/Power Key</name>
     <item>
       <name style="caution">Caution:</name>
-      <appendix>KeyRemap4MacBook has removed power button support since OS X 10.9.</appendix>
+      <appendix>Karabiner has removed power button support since OS X 10.9.</appendix>
       <appendix>You can no longer change the power button on MacBook.</appendix>
     </item>
 

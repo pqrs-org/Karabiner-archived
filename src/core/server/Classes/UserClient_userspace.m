@@ -50,7 +50,7 @@ typedef enum {
 
   io_iterator_t iterator;
 
-  kern_return_t kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("org_pqrs_driver_KeyRemap4MacBook"), &iterator);
+  kern_return_t kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("org_pqrs_driver_Karabiner"), &iterator);
   if (kernResult != KERN_SUCCESS) {
     NSLog(@"[ERROR] IOServiceGetMatchingServices returned 0x%08x\n\n", kernResult);
     return;
@@ -107,7 +107,7 @@ typedef enum {
           if ([Relauncher isEqualPreviousProcessVersionAndCurrentProcessVersion]) {
             unrecoverableError_ = UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH;
           } else {
-            NSLog(@"KeyRemap4MacBook might have been upgraded.");
+            NSLog(@"Karabiner might have been upgraded.");
             [Relauncher relaunch];
           }
           continue;
@@ -247,7 +247,7 @@ finish:
     }
 
     if (connect_ == IO_OBJECT_NULL) {
-      errorMessage = @"KeyRemap4MacBook cannot connect with kernel extension.\n"
+      errorMessage = @"Karabiner cannot connect with kernel extension.\n"
                      @"Please restart your system in order to solve the problem.\n";
       goto error;
     }
@@ -259,7 +259,7 @@ error:
   if (errorMessage) {
     dispatch_async(dispatch_get_main_queue(), ^{
       NSAlert* alert = [NSAlert new];
-      [alert setMessageText:@"KeyRemap4MacBook Alert"];
+      [alert setMessageText:@"Karabiner Alert"];
       [alert addButtonWithTitle:@"Close"];
       [alert setInformativeText:errorMessage];
       [alert runModal];

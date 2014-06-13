@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>Samples for KeyRemap4MacBook Binding Developers</name>
+    <name>Samples for Karabiner Binding Developers</name>
     <appendix>defined in .../include/checkbox/samples.xml</appendix>
     <item>
       <name>SetKeyboardType</name>
@@ -585,7 +585,7 @@ Two Lines</autogen>
         <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
         <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
         <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
-        <appendix>E to Type "https://pqrs.org/macosx/keyremap4macbook/"</appendix>
+        <appendix>E to Type "https://pqrs.org/macosx/karabiner/"</appendix>
         <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
         <appendix>G to Option_L,Shift_L,A,S</appendix>
         <appendix>Volume Mute to Volume Up,Brightness Up</appendix>

@@ -1,7 +1,7 @@
 #import <Carbon/Carbon.h>
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
-#import "KeyRemap4MacBookKeys.h"
+#import "KarabinerKeys.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
@@ -201,7 +201,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
   kernResult = IOServiceAddMatchingNotification(notifyport_,
                                                 kIOMatchedNotification,
-                                                IOServiceNameMatching("org_pqrs_driver_KeyRemap4MacBook"),
+                                                IOServiceNameMatching("org_pqrs_driver_Karabiner"),
                                                 &observer_IONotification,
                                                 (__bridge void*)(self),
                                                 &it);
@@ -247,7 +247,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
-#define kDescendantProcess @"org_pqrs_KeyRemap4MacBook_DescendantProcess"
+#define kDescendantProcess @"org_pqrs_Karabiner_DescendantProcess"
 
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
@@ -262,16 +262,16 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   }
 
   // ------------------------------------------------------------
-  system("/Applications/KeyRemap4MacBook.app/Contents/Library/bin/kextload load");
+  system("/Applications/Karabiner.app/Contents/Library/bin/kextload load");
 
   // ------------------------------------------------------------
   {
     // Remove old pkg files and finish_installation.app in
-    // "~/Library/Application Support/KeyRemap4MacBook/.Sparkle".
+    // "~/Library/Application Support/Karabiner/.Sparkle".
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString* sparkle = paths[0];
     if (sparkle) {
-      sparkle = [sparkle stringByAppendingPathComponent:@"KeyRemap4MacBook"];
+      sparkle = [sparkle stringByAppendingPathComponent:@"Karabiner"];
       sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
 
       NSFileManager* fm = [NSFileManager defaultManager];
@@ -343,20 +343,20 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [self launchAXNotifier];
 
   // ------------------------------------------------------------
-  // Send kKeyRemap4MacBookServerDidLaunchNotification after launching AXNotifier.
+  // Send kKarabinerServerDidLaunchNotification after launching AXNotifier.
   //
-  // AXNotifier will be relaunched by kKeyRemap4MacBookServerDidLaunchNotification.
+  // AXNotifier will be relaunched by kKarabinerServerDidLaunchNotification.
   // If we send the notification before launching AXNotifier,
   // two AXNotifier processes will be launched when AXNotifier is already running.
   //
   // * relaunched AXNotifier.
   // * AXNotifier launched by launchAXNotifier.
 
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKeyRemap4MacBookServerDidLaunchNotification
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerServerDidLaunchNotification
                                                                  object:nil];
 
   // ------------------------------------------------------------
-  // Open Preferences if KeyRemap4MacBook was launched by hand.
+  // Open Preferences if Karabiner was launched by hand.
   if (openPreferences &&
       ! isDescendantProcess) {
     [preferencesController_ show];
@@ -381,7 +381,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   @synchronized(self) {
     if (information) {
       // We ignore our investigation application.
-      if ([information[@"BundleIdentifier"] isEqualToString:@"org.pqrs.KeyRemap4MacBook.EventViewer"]) return;
+      if ([information[@"BundleIdentifier"] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) return;
 
       focusedUIElementInformation_ = information;
     }
@@ -410,24 +410,24 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 - (IBAction) launchEventViewer:(id)sender
 {
-  NSString* path = @"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app";
+  NSString* path = @"/Applications/Karabiner.app/Contents/Applications/EventViewer.app";
   [[NSWorkspace sharedWorkspace] launchApplication:path];
 }
 
 - (IBAction) launchMultiTouchExtension:(id)sender
 {
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"];
+  [[NSWorkspace sharedWorkspace] launchApplication:@"/Applications/Karabiner.app/Contents/Applications/Karabiner_multitouchextension.app"];
 }
 
 - (void) launchAXNotifier
 {
-  NSString* path = @"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app";
+  NSString* path = @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
   [[NSWorkspace sharedWorkspace] launchApplication:path];
 }
 
 - (IBAction) launchUninstaller:(id)sender
 {
-  system("/Applications/KeyRemap4MacBook.app/Contents/Library/extra/launchUninstaller.sh");
+  system("/Applications/Karabiner.app/Contents/Library/extra/launchUninstaller.sh");
 }
 
 - (IBAction) openPreferences:(id)sender
@@ -446,11 +446,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
 - (IBAction) quit:(id)sender
 {
-  NSAlert* alert = [NSAlert alertWithMessageText:@"Quit KeyRemap4MacBook?"
+  NSAlert* alert = [NSAlert alertWithMessageText:@"Quit Karabiner?"
                                    defaultButton:@"Quit"
                                  alternateButton:@"Cancel"
                                      otherButton:nil
-                       informativeTextWithFormat:@"Are you sure you want to quit KeyRemap4MacBook?"];
+                       informativeTextWithFormat:@"Are you sure you want to quit Karabiner?"];
   if ([alert runModal] != NSAlertDefaultReturn) return;
 
   [StartAtLoginUtilities setStartAtLogin:NO];
