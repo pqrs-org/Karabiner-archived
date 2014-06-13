@@ -18,4 +18,4 @@ xcode:
 	open *.xcodeproj
 
 run: all
-	./build/Release/KeyRemap4MacBook_multitouchextension.app/Contents/MacOS/KeyRemap4MacBook_multitouchextension
+	./build/Release/Karabiner_multitouchextension.app/Contents/MacOS/Karabiner_multitouchextension

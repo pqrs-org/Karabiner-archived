@@ -3,7 +3,7 @@
 #import <Cocoa/Cocoa.h>
 #import "IgnoredAreaView.h"
 #import "FingerStatus.h"
-#import "KeyRemap4MacBookClient.h"
+#import "KarabinerClient.h"
 #import "PreferencesController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
@@ -13,7 +13,7 @@
 
   IBOutlet PreferencesController* preferences_;
   IBOutlet IgnoredAreaView* ignoredAreaView_;
-  IBOutlet KeyRemap4MacBookClient* client_;
+  IBOutlet KarabinerClient* client_;
 }
 
 @end
