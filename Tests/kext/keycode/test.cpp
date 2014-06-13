@@ -5,7 +5,7 @@
 #include "KeyCode.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
 
-using namespace org_pqrs_KeyRemap4MacBook;
+using namespace org_pqrs_Karabiner;
 Config config;
 
 std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
@@ -264,10 +264,10 @@ TEST(KeyCode, normalizeKey) {
   //  (2) Right-Arrow Down
   //  (3) FN Up
   //  (4) Right-Arrow Up
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x800000, key 63, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 10, flags 0x800000, key 119, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 11, flags 0x0, key 119, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0x800000, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 10, flags 0x800000, key 119, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 11, flags 0x0, key 119, kbdType 37
   {
     KeyCode key = KeyCode::END;
     Flags flags = Flags(ModifierFlag::FN);
@@ -287,10 +287,10 @@ TEST(KeyCode, normalizeKey) {
   //  (2) FN Down
   //  (3) Right-Arrow UP
   //  (4) FN Up
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 10, flags 0x200000, key 124, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0xa00000, key 63, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 11, flags 0xa00000, key 124, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 10, flags 0x200000, key 124, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0xa00000, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 11, flags 0xa00000, key 124, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
   {
     KeyCode key = KeyCode::CURSOR_RIGHT;
     Flags flags = Flags(ModifierFlag::NUMPAD);
@@ -408,10 +408,10 @@ TEST(KeyCode, reverseNormalizeKey) {
   //  (2) Right-Arrow Down
   //  (3) FN Up
   //  (4) Right-Arrow Up
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x800000, key 63, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 10, flags 0x800000, key 119, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 11, flags 0x0, key 119, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0x800000, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 10, flags 0x800000, key 119, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 11, flags 0x0, key 119, kbdType 37
   {
     KeyCode key(KeyCode::END);
     Flags flags(ModifierFlag::FN);
@@ -433,10 +433,10 @@ TEST(KeyCode, reverseNormalizeKey) {
   //  (2) FN Down
   //  (3) Right-Arrow UP
   //  (4) FN Up
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 10, flags 0x200000, key 124, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0xa00000, key 63, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 11, flags 0xa00000, key 124, kbdType 37
-  // KeyRemap4MacBook KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 10, flags 0x200000, key 124, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0xa00000, key 63, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 11, flags 0xa00000, key 124, kbdType 37
+  // Karabiner KeyboardEventCallback [ caught]: eventType 12, flags 0x0, key 63, kbdType 37
   {
     KeyCode key = KeyCode::CURSOR_RIGHT;
     Flags flags = Flags(ModifierFlag::NUMPAD);

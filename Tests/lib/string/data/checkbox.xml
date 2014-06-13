@@ -7,7 +7,7 @@
       <appendix>This option suppresses the warning: "Growl is not running"</appendix>
       <appendix></appendix>
       <appendix>If you want to suppress the Growl notification itself,</appendix>
-      <appendix>disable the notification of KeyRemap4MacBook from Growl Preferences.</appendix>
+      <appendix>disable the notification of Karabiner from Growl Preferences.</appendix>
       <identifier essential="true">general.suppress_growl_warning</identifier>
     </item>
     <item>
@@ -745,7 +745,7 @@
     <item>
       <name>CapsLock is an exceptional key.</name>
       <appendix>Use "PCKeyboardHack" to change CapsLock key.</appendix>
-      <appendix>&#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <appendix>&#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
     </item>
     <item>
       <name>Tips:</name>
@@ -756,7 +756,7 @@
       <appendix>change the key code of CapsLock to 110 in PCKeyboardHack.</appendix>
       <appendix>(keycode:110 is PC Application Key)</appendix>
       <appendix></appendix>
-      <appendix>Then, change PC Application Key in KeyRemap4MacBook.</appendix>
+      <appendix>Then, change PC Application Key in Karabiner.</appendix>
       <appendix>For example, activate the following setting to change CapsLock to Command+Space</appendix>
       <appendix>"For PC Users &gt; Change PC Application Key &gt; Application Key to Command_L+Space"</appendix>
     </item>
@@ -1490,7 +1490,7 @@
       <appendix>Eject key has a delay.</appendix>
       <appendix>You need to press eject key for a few seconds.</appendix>
       <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
-      <appendix>&#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <appendix>&#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
     </item>
     <item>
       <name>Limitation:</name>
@@ -1498,7 +1498,7 @@
       <appendix>and eject key does not support key repeat exceptionally.</appendix>
       <appendix></appendix>
       <appendix>Because eject key sends keydown&amp;keyup event at the same time when you press the key.</appendix>
-      <appendix>KeyRemap4MacBook cannot know whether you're holding eject key or not.</appendix>
+      <appendix>Karabiner cannot know whether you're holding eject key or not.</appendix>
     </item>
     <item>
       <name>Eject to Option+Backquote(`)</name>
@@ -2521,7 +2521,7 @@
           <appendix>Eject(F12) to Volume Up</appendix>
           <appendix></appendix>
           <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-          <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+          <appendix>*** &#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
           <identifier>remap.functional2fn_air3_1_to_previous</identifier>
           <autogen>__KeyToKey__      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
           <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY,  ConsumerKeyCode::MUSIC_PREV</autogen>
@@ -8300,7 +8300,7 @@
         <name>Eject to Forward Delete</name>
         <appendix>(Fn+Eject to Eject)</appendix>
         <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-        <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+        <appendix>*** &#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
         <identifier>remap.app_vm_eject2forwarddelete</identifier>
         <only>VIRTUALMACHINE</only>
         <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
@@ -11514,7 +11514,7 @@
     <item>
       <name>Change Eject Key</name>
       <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-      <appendix>*** &#8594; https://pqrs.org/macosx/keyremap4macbook/extra.html</appendix>
+      <appendix>*** &#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
       <item>
         <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
         <identifier>remap.jis_eject2eisuuf13_withoutmodifiers</identifier>
@@ -20300,7 +20300,7 @@
   </item>
 
   <item>
-    <name>Samples for KeyRemap4MacBook Developer</name>
+    <name>Samples for Karabiner Developer</name>
     <item>
       <name>SetKeyboardType</name>
       <item>
@@ -20519,7 +20519,7 @@
         <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
         <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
         <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
-        <appendix>E to Type "https://pqrs.org/macosx/keyremap4macbook/"</appendix>
+        <appendix>E to Type "https://pqrs.org/macosx/karabiner/"</appendix>
         <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
         <appendix>G to Option_L,Shift_L,A,S</appendix>
         <appendix></appendix>

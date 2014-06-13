@@ -3,7 +3,7 @@
 #include "FromEvent.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
 
-using namespace org_pqrs_KeyRemap4MacBook;
+using namespace org_pqrs_Karabiner;
 
 ParamsUnion* down_return;
 ParamsUnion* up_return;

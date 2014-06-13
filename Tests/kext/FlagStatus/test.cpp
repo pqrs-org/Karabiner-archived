@@ -5,7 +5,7 @@
 #include "KeyCode.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
 
-using namespace org_pqrs_KeyRemap4MacBook;
+using namespace org_pqrs_Karabiner;
 Config config;
 
 std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
