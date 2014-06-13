@@ -17,13 +17,13 @@
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
-        <customObject id="E62-9f-xSp" customClass="KeyRemap4MacBookClient"/>
+        <customObject id="E62-9f-xSp" customClass="KarabinerClient"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="KeyRemap4MacBook_AXNotifier" id="1Xt-HY-uBw">
+                <menuItem title="Karabiner_AXNotifier" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="KeyRemap4MacBook_AXNotifier" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="Karabiner_AXNotifier" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
                             <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                 <connections>
@@ -31,7 +31,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                            <menuItem title="Quit KeyRemap4MacBook_AXNotifier" keyEquivalent="q" id="4sb-4s-VLi">
+                            <menuItem title="Quit Karabiner_AXNotifier" keyEquivalent="q" id="4sb-4s-VLi">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
                                 </connections>
@@ -41,7 +41,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="KeyRemap4MacBook_AXNotifier" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="Karabiner_AXNotifier" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>

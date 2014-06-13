@@ -1,11 +1,11 @@
 // -*- Mode: objc -*-
 
 #import <Cocoa/Cocoa.h>
-#import "KeyRemap4MacBookClient.h"
+#import "KarabinerClient.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow* window;
-@property (assign) IBOutlet KeyRemap4MacBookClient* client;
+@property (assign) IBOutlet KarabinerClient* client;
 
 @end
