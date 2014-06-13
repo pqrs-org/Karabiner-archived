@@ -6,6 +6,6 @@
 @interface KeyResponder : NSView
 {
   IBOutlet EventQueue* eventqueue_;
-  IBOutlet KeyRemap4MacBookClient* client_;
+  IBOutlet KarabinerClient* client_;
 }
 @end

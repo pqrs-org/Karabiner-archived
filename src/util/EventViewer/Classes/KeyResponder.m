@@ -1,6 +1,6 @@
 // -*- Mode: objc -*-
 
-#import "KeyRemap4MacBookClient.h"
+#import "KarabinerClient.h"
 #import "KeyResponder.h"
 
 @implementation KeyResponder

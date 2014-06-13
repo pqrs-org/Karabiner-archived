@@ -1,6 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 #import <Cocoa/Cocoa.h>
-#import "KeyRemap4MacBookClient.h"
+#import "KarabinerClient.h"
 
 @interface OtherInformationStore : NSObject
 {
@@ -12,7 +12,7 @@
   IBOutlet id label_languagecode_;
   IBOutlet id label_inputsourceid_;
   IBOutlet id label_inputmodeid_;
-  IBOutlet KeyRemap4MacBookClient* client_;
+  IBOutlet KarabinerClient* client_;
 }
 
 - (void) setLanguageCode:(NSString*)value;
