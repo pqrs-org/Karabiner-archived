@@ -53,7 +53,7 @@ Dir.glob("*.data") do |filename|
 
     outfile.each do |name,file|
       file.close
-      KeyRemap4MacBookBridge::Converter.update_file_if_needed(file.path)
+      KarabinerBridge::Converter.update_file_if_needed(file.path)
     end
   end
 end
@@ -66,7 +66,7 @@ open(filepath, 'w') do |f|
     f << "const #{info[:classname]} #{info[:name]}(#{info[:value]});\n"
   end
 end
-KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
+KarabinerBridge::Converter.update_file_if_needed(filepath)
 
 # ----------------------------------------------------------------------
 # symbol_map.xml
@@ -80,4 +80,4 @@ open(filepath, 'w') do |f|
   f << "</root>\n"
 end
 
-KeyRemap4MacBookBridge::Converter.update_file_if_needed(filepath)
+KarabinerBridge::Converter.update_file_if_needed(filepath)

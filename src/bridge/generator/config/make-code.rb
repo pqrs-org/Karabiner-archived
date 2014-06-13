@@ -21,5 +21,5 @@ require "#{File.dirname(__FILE__)}/../lib/converter.rb"
   private_xml_directory    = '../../../core/server/Resources'
   system("#{dump_xml_compiler_result} #{system_xml_directory} #{private_xml_directory} #{info[:parameter]} > #{info[:filename]}")
 
-  KeyRemap4MacBookBridge::Converter.update_file_if_needed(info[:filename])
+  KarabinerBridge::Converter.update_file_if_needed(info[:filename])
 end
