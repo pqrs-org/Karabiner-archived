@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import "KarabinerKeys.h"
 #import "KarabinerUtilities.h"
+#import "MigrationUtilities.h"
 #import "PreferencesKeys.h"
 
 // ==================================================
@@ -422,6 +423,10 @@ tell_to_server:
 {
   NSInteger isDescendantProcess = [[[NSProcessInfo processInfo] environment][kDescendantProcess] integerValue];
   setenv([kDescendantProcess UTF8String], "1", 1);
+
+  // ------------------------------------------------------------
+  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.AXNotifier"]
+                      appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app"]]];
 
   // ------------------------------------------------------------
   focusedUIElementInformation_ = [NSMutableDictionary new];

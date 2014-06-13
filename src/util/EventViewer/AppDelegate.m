@@ -74,7 +74,7 @@
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
-  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.EventViewer.plist"]
+  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.EventViewer"]
                       appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app"]]];
 
   // ----------------------------------------
