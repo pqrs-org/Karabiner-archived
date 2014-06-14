@@ -164,7 +164,7 @@ namespace org_pqrs_Karabiner {
     // ------------------------------------------------------------
     // Ignore unknown modifiers
     //
-    // You can confirm an unknown modifier by setting key code to 255 on PCKeyboardHack.
+    // You can confirm an unknown modifier by setting key code to 255 on Seil.
     // This event also will be sent by Fn key on Leopold FC660M.
     //
     //   KeyboardEventCallback [ caught]: eventType 12, flags 0x80000000, key 0x00ff, kbdType  43, repeat = 0

@@ -45,7 +45,7 @@
       <name>For MacBook series (vid/pid: 0x05ac,0x0218)</name>
       <item>
         <name>Swap Shift_L and CapsLock on the Mac's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-        <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
+        <appendix>(*Note: You have to set Seil to remap CapsLock to ExposeAll on all kbds*)</appendix>
         <appendix>(ExposeAll to Shift_L and Shift_L to CapsLock on the MacBook's internal keyboard)</appendix>
         <appendix>(ExposeAll back to CapsLock on other devices)</appendix>
         <identifier>remap.swap_shiftLcapslock_MacBookOnly</identifier>
@@ -61,7 +61,7 @@
       </item>
       <item>
         <name>Revert CapsLock to normal on every kbds</name>
-        <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
+        <appendix>(*Note: You have to set Seil to remap CapsLock to ExposeAll on all kbds*)</appendix>
         <identifier>remap.restorecapslock_AllKeyboards</identifier>
         <autogen>__KeyToKey__ KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
       </item>
@@ -431,7 +431,7 @@
       <item>
         <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
         <appendix>// We perform it through PC Application Key.</appendix>
-        <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
+        <appendix>// Set CapsLock key code to 110 by Seil.</appendix>
         <identifier>remap.swap_capslock_and_control_FKBN91ML</identifier>
         <block>
           <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
