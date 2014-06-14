@@ -108,6 +108,42 @@
     <url type="file">/Applications/Karabiner.app/Contents/Applications/Utilities/ReloadXML.app</url>
   </vkopenurldef>
 
+  <!-- for backward compatibility -->
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook</name>
+    <url type="file">/Applications/Karabiner.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_EventViewer</name>
+    <url type="file">/Applications/Karabiner.app/Contents/Applications/EventViewer.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile0</name>
+    <url type="file">/Applications/Karabiner.app/Contents/Applications/Utilities/Profile0.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile1</name>
+    <url type="file">/Applications/Karabiner.app/Contents/Applications/Utilities/Profile1.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile2</name>
+    <url type="file">/Applications/Karabiner.app/Contents/Applications/Utilities/Profile2.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_Profile3</name>
+    <url type="file">/Applications/Karabiner.app/Contents/Applications/Utilities/Profile3.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_KeyRemap4MacBook_ReloadXML</name>
+    <url type="file">/Applications/Karabiner.app/Contents/Applications/Utilities/ReloadXML.app</url>
+  </vkopenurldef>
+
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Launchpad</name>
     <url type="file">/Applications/Launchpad.app</url>
