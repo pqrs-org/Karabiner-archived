@@ -1,5 +1,6 @@
 #import "ClientForKernelspace.h"
 #import "EnvironmentChecker.h"
+#import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
@@ -188,7 +189,7 @@
   NSFileManager* filemanager = [NSFileManager defaultManager];
   NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
   NSString* path = paths[0];
-  path = [path stringByAppendingPathComponent:@"Karabiner"];
+  path = [path stringByAppendingPathComponent:[MigrationUtilities applicationSupportName]];
   if (! [filemanager fileExistsAtPath:path]) {
     [filemanager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
   }
@@ -279,6 +280,9 @@
   // ------------------------------------------------------------
   if ([EnvironmentChecker checkDoubleCommand]) {
     [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\n\nKarabiner ignores keyboard devices.\n(You can use Karabiner as a pointing device remapper.)"];
+  }
+  if ([EnvironmentChecker checkKeyRemap4MacBook]) {
+    [self insert_caution_into_preferencepane_checkbox:@"An old kernel extension has still been loaded. Please restart your system in order to unload it."];
   }
   if ([EnvironmentChecker checkSmoothMouse]) {
     [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKarabiner ignores pointing devices.\n(You can use Karabiner as a keyboard device remapper.)"];
