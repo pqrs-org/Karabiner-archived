@@ -39,7 +39,7 @@ static NSMutableDictionary* cache_;
   }
 
   {
-    NSString* command = @"/usr/sbin/kextstat -l | /usr/bin/grep -q org.pqrs.driver.KeyRemap4MacBook";
+    NSString* command = @"/bin/test -n \"`/usr/sbin/kextstat -l -b org.pqrs.driver.KeyRemap4MacBook`\"";
     NSTask* task = [NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[@"-c", command]];
     [task waitUntilExit];
     if ([task terminationStatus] == 0) {
