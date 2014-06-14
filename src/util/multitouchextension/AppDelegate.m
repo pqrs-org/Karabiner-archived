@@ -428,7 +428,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
   [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.multitouchextension"]
-                      appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"]]];
+       oldApplicationSupports:@[]
+                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"]];
 
   // ----------------------------------------
   [preferences_ load];

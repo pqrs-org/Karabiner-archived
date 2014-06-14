@@ -75,7 +75,8 @@
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
   [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.EventViewer"]
-                      appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app"]]];
+       oldApplicationSupports:@[]
+                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app"]];
 
   // ----------------------------------------
   [self setKeyResponder];

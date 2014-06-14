@@ -426,7 +426,8 @@ tell_to_server:
 
   // ------------------------------------------------------------
   [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.AXNotifier"]
-                      appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app"]]];
+       oldApplicationSupports:@[]
+                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app"]];
 
   // ------------------------------------------------------------
   focusedUIElementInformation_ = [NSMutableDictionary new];
