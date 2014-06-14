@@ -30,6 +30,27 @@ static NSMutableDictionary* cache_;
   return NO;
 }
 
++ (BOOL) checkKeyRemap4MacBook
+{
+  // If KeyRemap4MacBook was installed, return YES even if it removed.
+  NSString* cachekey = @"KeyRemap4MacBook";
+  if (cache_[cachekey]) {
+    return YES;
+  }
+
+  {
+    NSString* command = @"/usr/sbin/kextstat -l | /usr/bin/grep -q org.pqrs.driver.KeyRemap4MacBook";
+    NSTask* task = [NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[@"-c", command]];
+    [task waitUntilExit];
+    if ([task terminationStatus] == 0) {
+      cache_[cachekey] = @YES;
+      return YES;
+    }
+  }
+
+  return NO;
+}
+
 + (BOOL) checkSmoothMouse
 {
   // If SmoothMouse was installed, return YES even if it removed.
