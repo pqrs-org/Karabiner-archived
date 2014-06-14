@@ -257,7 +257,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
   // ------------------------------------------------------------
   [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook"]
-                      appURLs:@[[NSURL fileURLWithPath:@"/Applications/KeyRemap4MacBook.app"]]];
+       oldApplicationSupports:@[@"KeyRemap4MacBook"]
+                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app"]];
 
   // ------------------------------------------------------------
   BOOL openPreferences = NO;
@@ -276,7 +277,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString* sparkle = paths[0];
     if (sparkle) {
-      sparkle = [sparkle stringByAppendingPathComponent:@"Karabiner"];
+      sparkle = [sparkle stringByAppendingPathComponent:[MigrationUtilities applicationSupportName]];
       sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
 
       NSFileManager* fm = [NSFileManager defaultManager];
