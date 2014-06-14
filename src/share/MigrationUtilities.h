@@ -4,6 +4,10 @@
 
 @interface MigrationUtilities : NSObject
 
-+ (void) migrate:(NSArray*)bundleIdentifiers appURLs:(NSArray*)appURLs;
++ (NSString*) applicationSupportName;
+
++ (void) migrate:(NSArray*)oldBundleIdentifiers
+  oldApplicationSupports:(NSArray*)oldApplicationSupports
+  oldPaths:(NSArray*)oldPaths;
 
 @end
