@@ -608,9 +608,7 @@ Two Lines</autogen>
           KeyCode::SLASH,
           KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::O, KeyCode::S, KeyCode::X,
           KeyCode::SLASH,
-          KeyCode::K, KeyCode::E, KeyCode::Y, KeyCode::R, KeyCode::E, KeyCode::M, KeyCode::A, KeyCode::P,
-          KeyCode::KEY_4,
-          KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::B, KeyCode::O, KeyCode::O, KeyCode::K,
+          KeyCode::K, KeyCode::A, KeyCode::R, KeyCode::A, KeyCode::B, KeyCode::I, KeyCode::N, KeyCode::E, KeyCode::R,
           KeyCode::SLASH
         </autogen>
         <autogen>__KeyToKey__ KeyCode::F, KeyCode::CAPSLOCK, KeyCode::A, KeyCode::S, KeyCode::D, KeyCode::CAPSLOCK</autogen>
