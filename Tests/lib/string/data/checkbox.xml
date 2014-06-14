@@ -744,16 +744,15 @@
     <name>Change CapsLock Key</name>
     <item>
       <name>CapsLock is an exceptional key.</name>
-      <appendix>Use "PCKeyboardHack" to change CapsLock key.</appendix>
-      <appendix>&#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
+      <appendix>Use "Seil" to change CapsLock key.</appendix>
     </item>
     <item>
       <name>Tips:</name>
-      <appendix>You can change CapsLock to an other key in PCKeyboardHack.</appendix>
+      <appendix>You can change CapsLock to an other key in Seil.</appendix>
       <appendix>For example, you can change CapsLock to Escape by setting keycode=53.</appendix>
       <appendix></appendix>
       <appendix>If you want to change CapsLock to modifier+key such as Command+Space,</appendix>
-      <appendix>change the key code of CapsLock to 110 in PCKeyboardHack.</appendix>
+      <appendix>change the key code of CapsLock to 110 in Seil.</appendix>
       <appendix>(keycode:110 is PC Application Key)</appendix>
       <appendix></appendix>
       <appendix>Then, change PC Application Key in Karabiner.</appendix>
@@ -1490,7 +1489,6 @@
       <appendix>Eject key has a delay.</appendix>
       <appendix>You need to press eject key for a few seconds.</appendix>
       <appendix>We recommend you to use "NoEjectDelay" together to get rid of a delay.</appendix>
-      <appendix>&#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
     </item>
     <item>
       <name>Limitation:</name>
@@ -2521,7 +2519,6 @@
           <appendix>Eject(F12) to Volume Up</appendix>
           <appendix></appendix>
           <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-          <appendix>*** &#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
           <identifier>remap.functional2fn_air3_1_to_previous</identifier>
           <autogen>__KeyToKey__      ConsumerKeyCode::MUSIC_PREV,  KeyCode::F6</autogen>
           <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY,  ConsumerKeyCode::MUSIC_PREV</autogen>
@@ -8300,7 +8297,6 @@
         <name>Eject to Forward Delete</name>
         <appendix>(Fn+Eject to Eject)</appendix>
         <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-        <appendix>*** &#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
         <identifier>remap.app_vm_eject2forwarddelete</identifier>
         <only>VIRTUALMACHINE</only>
         <autogen>__KeyToKey__ ConsumerKeyCode::EJECT, ModifierFlag::FN, ConsumerKeyCode::EJECT</autogen>
@@ -10284,7 +10280,7 @@
       <name>For MacBook series (vid/pid: 0x05ac,0x0218)</name>
       <item>
         <name>Swap Shift_L and CapsLock on the Mac's internal kbd (vid/pid: 0x05ac,0x0218)</name>
-        <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
+        <appendix>(*Note: I have set Seil to remap CapsLock to ExposeAll on all kbds*)</appendix>
         <appendix>(ExposeAll to Shift_L and Shift_L to CapsLock on the MacBook's internal keyboard)</appendix>
         <appendix>(ExposeAll back to CapsLock on other devices)</appendix>
         <identifier>remap.swap_shiftLcapslock_MacBookOnly</identifier>
@@ -10300,7 +10296,7 @@
       </item>
       <item>
         <name>Revert CapsLock to normal on every kbds</name>
-        <appendix>(*Note: I have set PCKeyboardHack to remap CapsLock to ExposeAll on all kbds*)</appendix>
+        <appendix>(*Note: I have set Seil to remap CapsLock to ExposeAll on all kbds*)</appendix>
         <identifier>remap.restorecapslock_AllKeyboards</identifier>
         <autogen>__KeyToKey__ KeyCode::EXPOSE_ALL, KeyCode::CAPSLOCK</autogen>
       </item>
@@ -10585,7 +10581,7 @@
       <item>
         <name>Swap CapsLock and Control on FILCO FKBN91ML/NB</name>
         <appendix>// We perform it through PC Application Key.</appendix>
-        <appendix>// Set CapsLock key code to 110 by PCKeyboardHack.</appendix>
+        <appendix>// Set CapsLock key code to 110 by Seil.</appendix>
         <identifier>remap.swap_capslock_and_control_FKBN91ML</identifier>
         <block>
           <device_only>DeviceVendor::FILCO,DeviceProduct::FKBN91ML_NB</device_only>
@@ -11190,7 +11186,7 @@
       <appendix>BACKSLASH (#) to OPTION_R</appendix>
       <appendix></appendix>
       <appendix>// To change CAPSLOCK to OPTION_L,</appendix>
-      <appendix>// install PCKeyboardHack and change CapsLock keycode to 58.</appendix>
+      <appendix>// install Seil and change CapsLock keycode to 58.</appendix>
       <identifier>remap.german_neo</identifier>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::OPTION_R</autogen>
     </item>
@@ -11514,7 +11510,6 @@
     <item>
       <name>Change Eject Key</name>
       <appendix>*** We recommend you to use "NoEjectDelay" together when you change eject key.</appendix>
-      <appendix>*** &#8594; https://pqrs.org/macosx/karabiner/extra.html</appendix>
       <item>
         <name>Eject to EISUU,F13 (if no modifiers pressed)</name>
         <identifier>remap.jis_eject2eisuuf13_withoutmodifiers</identifier>
@@ -20519,7 +20514,6 @@
         <appendix>C to JIS_KANA,A,I,JIS_EISUU,U (Key To with Japanese)</appendix>
         <appendix>Shift_L to A,B,Control_L+B,Shift_L+C,D (Modifier To)</appendix>
         <appendix>Control+D to Shift_L+A, Control_L+F (Key+Modifier To)</appendix>
-        <appendix>E to Type "https://pqrs.org/macosx/karabiner/"</appendix>
         <appendix>F to CapsLock,A,S,D,CapsLock</appendix>
         <appendix>G to Option_L,Shift_L,A,S</appendix>
         <appendix></appendix>
