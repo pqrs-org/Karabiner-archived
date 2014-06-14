@@ -53,8 +53,14 @@ And we modify the input event in the hook function.
 
 The sequence of event handling
 ------------------------------
+
+Karabiner and Seil will modify input events at different timing.
+
+Karabiner: http://pqrs.org/macosx/karabiner/
+Seil:      http://pqrs.org/macosx/karabiner/pckeyboardhack.html
+
 1. Device sends the input event.
-1. Modify the input event by PCKeyboardHack.
+1. Modify the input event by Seil.
 1. Modify the input event by "System Preferences > Keyboard > Modifier Keys..."
 1. Modify the input event by Karabiner.
 1. Send the input event to Applications.

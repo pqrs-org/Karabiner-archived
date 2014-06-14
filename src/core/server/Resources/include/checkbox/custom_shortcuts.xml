@@ -8,7 +8,7 @@
       -->
       <name>F19 to Escape and Control</name>
       <appendix>Tap F19 for Escape, Hold F19 for Control</appendix>
-      <appendix>Works well with using PCKeyboardHack to remap CapsLock to F19(code 80).</appendix>
+      <appendix>Works well with using Seil to remap CapsLock to F19(code 80).</appendix>
       <identifier>bilalh.remap.f19_escape_control</identifier>
       <autogen>
         __KeyOverlaidModifier__

@@ -181,7 +181,7 @@
       <appendix>BACKSLASH (#) to OPTION_R</appendix>
       <appendix></appendix>
       <appendix>// To change CAPSLOCK to OPTION_L,</appendix>
-      <appendix>// install PCKeyboardHack and change CapsLock keycode to 58.</appendix>
+      <appendix>// install Seil and change CapsLock keycode to 58.</appendix>
       <identifier>remap.german_neo</identifier>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::OPTION_R</autogen>
     </item>

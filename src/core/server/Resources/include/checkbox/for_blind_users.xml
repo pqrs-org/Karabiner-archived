@@ -4,7 +4,7 @@
     <name>For Blind Users</name>
     <item>
       <name>Use Caps Lock as Voice Over key.</name>
-      <appendix>Important: Please change the key code of Caps Lock to 110 on PCKeyboardHack Prefs,</appendix>
+      <appendix>Important: Please change the key code of Caps Lock to 110 on Seil Prefs,</appendix>
       <appendix>when you use this setting.</appendix>
       <appendix></appendix>
       <appendix>This setting changes Caps Lock to Control+Option.</appendix>

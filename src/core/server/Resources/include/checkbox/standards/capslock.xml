@@ -4,16 +4,16 @@
     <name>Change CapsLock Key</name>
     <item>
       <name style="important">CapsLock is an exceptional key.</name>
-      <appendix>Use "PCKeyboardHack" to change CapsLock key.</appendix>
+      <appendix>Use "Seil" to change CapsLock key.</appendix>
       <appendix>&#8594; https://pqrs.org/macosx/karabiner/pckeyboardhack.html</appendix>
     </item>
     <item>
       <name>Tips:</name>
-      <appendix>You can change CapsLock to an other key in PCKeyboardHack.</appendix>
+      <appendix>You can change CapsLock to an other key in Seil.</appendix>
       <appendix>For example, you can change CapsLock to Escape by setting keycode=53.</appendix>
       <appendix></appendix>
       <appendix>If you want to change CapsLock to modifier+key such as Command+Space,</appendix>
-      <appendix>change the key code of CapsLock to 110 in PCKeyboardHack.</appendix>
+      <appendix>change the key code of CapsLock to 110 in Seil.</appendix>
       <appendix>(keycode:110 is PC Application Key)</appendix>
       <appendix></appendix>
       <appendix>Then, change PC Application Key in Karabiner.</appendix>
