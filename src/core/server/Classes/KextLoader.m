@@ -8,6 +8,7 @@
 {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
+    NSLog(@"kextload");
     system("/Applications/Karabiner.app/Contents/Library/bin/kextload load");
   });
 }
