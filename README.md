@@ -1,7 +1,7 @@
 Karabiner
 =========
 
-Karabiner (KeyRemap4MacBook) is a powerful utility for keyboard customization.
+Karabiner is a powerful utility for keyboard customization.
 
 * Change the key. (For example, "Change Right Option to Enter")
 * Accelerate speed of the key repeat.
