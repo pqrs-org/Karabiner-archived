@@ -2,6 +2,7 @@
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "KarabinerKeys.h"
+#import "KextLoader.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
@@ -200,6 +201,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   io_iterator_t it;
   kern_return_t kernResult;
 
+  [KextLoader load]; // Load kext before use org_pqrs_driver_Karabiner
+
   kernResult = IOServiceAddMatchingNotification(notifyport_,
                                                 kIOMatchedNotification,
                                                 IOServiceNameMatching("org_pqrs_driver_Karabiner"),
@@ -266,9 +269,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
     [StartAtLoginUtilities setStartAtLogin:YES];
     openPreferences = YES;
   }
-
-  // ------------------------------------------------------------
-  system("/Applications/Karabiner.app/Contents/Library/bin/kextload load");
 
   // ------------------------------------------------------------
   {
