@@ -139,6 +139,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 - (void) refresh_connection_with_retry
 {
   // Try one minute
+  // (There are few seconds between kext::init and registerService is called.
+  // So we need to wait for a while.)
   [userClient_userspace_ refresh_connection_with_retry:120 wait:0.5];
   [self observer_ConfigXMLReloaded:nil];
 }
