@@ -9,8 +9,6 @@
     static BOOL result = NO;
 
     dispatch_once(&onceToken, ^{
-      NSLog(@"checkDoubleCommand");
-
       // Check file system.
       // (Do not determine by kextstat because loading kext might be lazy loading.)
       NSArray* paths = @[ @"/Library/StartupItems/DoubleCommand" ];
@@ -33,8 +31,6 @@
     static BOOL result = NO;
 
     dispatch_once(&onceToken, ^{
-      NSLog(@"checkKeyRemap4MacBook");
-
       // Check kextstat.
       //
       // KeyRemap4MacBook and Karabiner are running together only when upgrading
@@ -59,8 +55,6 @@
     static BOOL result = NO;
 
     dispatch_once(&onceToken, ^{
-      NSLog(@"checkSmoothMouse");
-
       // Check file system.
       // (Do not determine by kextstat because loading kext might be lazy loading.)
       NSArray* paths = @[ @"/System/Library/Extensions/SmoothMouse.kext",
