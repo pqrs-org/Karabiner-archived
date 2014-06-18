@@ -256,6 +256,7 @@
   <appdef>
     <appname>VNC</appname>
     <equal>com.geekspiff.chickenofthevnc</equal>
+    <equal>net.sourceforge.chicken</equal>
     <prefix>de.jinx.JollysFastVNC</prefix>
     <prefix>com.realvnc.vncviewer</prefix>
   </appdef>
