@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Workarounds for broken keys</name>
+
+    <item>
+      <name>For broken up arrow and down arrow keys</name>
+      <item>
+        <name>Change "shift-left arrow" to up arrow</name>
+        <identifier>remap.shiftleft2up</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::CURSOR_UP,
+        </autogen>
+      </item>
+      <item>
+        <name>Change "shift-right arrow" to down arrow</name>
+        <identifier>remap.shiftright2down</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::CURSOR_DOWN,
+        </autogen>
+      </item>
+      <item>
+        <name>Change "command-left arrow" to pageup</name>
+        <identifier>remap.commandleft2pageup</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::PAGEUP,
+        </autogen>
+      </item>
+      <item>
+        <name>Change "command-right arrow" to pagedown</name>
+        <identifier>remap.commandright2pagedown</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::PAGEDOWN,
+        </autogen>
+      </item>
+    </item>
+
+  </item>
+
+</root>

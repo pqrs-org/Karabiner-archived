@@ -98,10 +98,9 @@
   <include path="include/checkbox/for_pc_users.xml" />
   <include path="include/checkbox/for_dvorak_users.xml" />
   <include path="include/checkbox/for_blind_users.xml" />
-
   <include path="include/checkbox/device_specific.xml" />
-
   <include path="include/checkbox/change_input_source_temporary.xml" />
+  <include path="include/checkbox/for_broken_keys.xml" />
 
   <item><name>──────────────────────────────</name></item>
   <include path="include/checkbox/languages/iso_keyboard.xml" />
