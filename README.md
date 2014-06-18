@@ -21,10 +21,10 @@ Web pages
 System requirements
 -------------------
 
-Mac OS X 10.9 (Maveriks) or higher.  Karabiner works for all Mac products, including the MacBook series, the iMac, Mac mini, and Mac Pro.
+Mac OS X 10.9 (Maveriks) or higher.  Karabiner works for all Mac products, including MacBook series, iMac, Mac mini, and Mac Pro.
 
-* If you require Karabiner for OS X 10.6 - 10.8, use Karabiner 8.4.0.
-* If you require Karabiner for OS X 10.4 - 10.5, use Karabiner 5.1.0.
+* If you require Karabiner for OS X 10.6 - 10.8, use KeyRemap4MacBook 8.4.0.
+* If you require Karabiner for OS X 10.4 - 10.5, use KeyRemap4MacBook 5.1.0.
 
 
 How to build
