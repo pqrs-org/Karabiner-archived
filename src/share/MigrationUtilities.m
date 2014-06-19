@@ -72,6 +72,12 @@
 
 + (void) migrateStartAtLogin:(NSArray*)oldPaths
 {
+  // Note: This method does not work properly in major case.
+  // Because isStartAtLogin will be failed with deleted file URL.
+  // (== LSSharedFileListItemResolve will be failed with deleted file URL.)
+  //
+  // So, this method works only when both old app and new app exist.
+
   BOOL startAtLogin = NO;
   for (NSString* path in oldPaths) {
     NSURL* url = [NSURL fileURLWithPath:path];
