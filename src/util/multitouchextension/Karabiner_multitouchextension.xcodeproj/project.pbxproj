@@ -17,6 +17,7 @@
 		3491D60013098C1B0060C12B /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3491D5FF13098C1B0060C12B /* app.icns */; };
 		349AD35113098DD400474EFD /* KarabinerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 349AD35013098DD400474EFD /* KarabinerClient.m */; };
 		349AD37613098E7A00474EFD /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349AD37513098E7A00474EFD /* MultitouchSupport.framework */; };
+		349DCA291956B4DA00EC272A /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 349DCA281956B4DA00EC272A /* Relauncher.m */; };
 		34D94446193217400062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94445193217400062E422 /* StartAtLoginUtilities.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -49,6 +50,8 @@
 		349AD34F13098DD400474EFD /* KarabinerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerClient.h; path = ../../share/KarabinerClient.h; sourceTree = SOURCE_ROOT; };
 		349AD35013098DD400474EFD /* KarabinerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KarabinerClient.m; path = ../../share/KarabinerClient.m; sourceTree = SOURCE_ROOT; };
 		349AD37513098E7A00474EFD /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = SDKROOT; };
+		349DCA271956B4DA00EC272A /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
+		349DCA281956B4DA00EC272A /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
 		34B2A68B1374629A00694134 /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../share/KarabinerKeys.h; sourceTree = "<group>"; };
 		34D94444193217400062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		34D94445193217400062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 			children = (
 				3477DDA1194B046C00E46EDC /* MigrationUtilities.h */,
 				3477DDA2194B046C00E46EDC /* MigrationUtilities.m */,
+				349DCA271956B4DA00EC272A /* Relauncher.h */,
+				349DCA281956B4DA00EC272A /* Relauncher.m */,
 				34D94444193217400062E422 /* StartAtLoginUtilities.h */,
 				34D94445193217400062E422 /* StartAtLoginUtilities.m */,
 			);
@@ -242,6 +247,7 @@
 				349AD35113098DD400474EFD /* KarabinerClient.m in Sources */,
 				343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */,
 				3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */,
+				349DCA291956B4DA00EC272A /* Relauncher.m in Sources */,
 				3477DDA3194B046C00E46EDC /* MigrationUtilities.m in Sources */,
 				342DF86F1653548700C832FE /* FingerStatus.m in Sources */,
 				34D94446193217400062E422 /* StartAtLoginUtilities.m in Sources */,

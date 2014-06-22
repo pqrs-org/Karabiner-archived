@@ -3,6 +3,7 @@
 #import "KarabinerKeys.h"
 #import "MigrationUtilities.h"
 #import "PreferencesKeys.h"
+#import "Relauncher.h"
 
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
@@ -427,9 +428,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
-  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.multitouchextension"]
-       oldApplicationSupports:@[]
-                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"]];
+  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.multitouchextension"]
+           oldApplicationSupports:@[]
+                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"]]) {
+    [Relauncher relaunch];
+  }
 
   // ----------------------------------------
   [preferences_ load];
@@ -463,6 +466,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
   [self setcallback:YES];
+
+  [Relauncher resetRelaunchedCount];
 }
 
 - (void) applicationWillTerminate:(NSNotification*)aNotification {
