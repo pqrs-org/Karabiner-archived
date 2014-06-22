@@ -17,7 +17,8 @@ Since 9.3.0
     * Custom Shortcuts
         * Move mouse cursor to the center of the frontmost app's window:
             * By pressing fn key alone.
-* Fixed an issue:
+* Fixed issues:
+    * v9.99.24: A message "Kernel extension is not loaded" might be shown in some environment.
     * v9.3.18: Status Message will not be shown properly when you are using multiple displays.
 * v9.3.9: Added "relaunch" command into KeyRemap4MacBook_cli.
 * v9.3.1: Updated prepared settings.
