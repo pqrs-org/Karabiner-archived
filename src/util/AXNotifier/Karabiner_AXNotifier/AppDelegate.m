@@ -4,6 +4,7 @@
 #import "KarabinerUtilities.h"
 #import "MigrationUtilities.h"
 #import "PreferencesKeys.h"
+#import "Relauncher.h"
 
 // ==================================================
 @interface AppDelegate ()
@@ -425,9 +426,11 @@ tell_to_server:
   setenv([kDescendantProcess UTF8String], "1", 1);
 
   // ------------------------------------------------------------
-  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.AXNotifier"]
-       oldApplicationSupports:@[]
-                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app"]];
+  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.AXNotifier"]
+           oldApplicationSupports:@[]
+                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app"]]) {
+    [Relauncher relaunch];
+  }
 
   // ------------------------------------------------------------
   focusedUIElementInformation_ = [NSMutableDictionary new];
@@ -466,6 +469,8 @@ tell_to_server:
                                                           name:kKarabinerServerDidLaunchNotification
                                                         object:nil
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+
+  [Relauncher resetRelaunchedCount];
 }
 
 @end

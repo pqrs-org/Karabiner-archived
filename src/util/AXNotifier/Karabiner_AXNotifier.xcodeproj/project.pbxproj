@@ -16,6 +16,7 @@
 		342BFA7E1936DC7900DA93EC /* KarabinerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 342BFA7D1936DC7900DA93EC /* KarabinerUtilities.m */; };
 		347A86EB194B0BC7009A6CDA /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */; };
 		347A86EC194B0BC7009A6CDA /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */; };
+		34BD67F31956AFFD00587BE7 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BD67F21956AFFD00587BE7 /* Relauncher.m */; };
 		34D05539192C6962001A4F4F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34D05538192C6962001A4F4F /* app.icns */; };
 		34E3507E1932FC690036B0D3 /* FrontmostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E3507D1932FC690036B0D3 /* FrontmostWindow.m */; };
 		34FB0ED6192F97FB0038C1D5 /* AXUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB0ED5192F97FB0038C1D5 /* AXUtilities.m */; };
@@ -44,6 +45,8 @@
 		347A86E9194B0BC7009A6CDA /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
 		348BBE611931839E00934FB7 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
+		34BD67F11956AFFD00587BE7 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../../share/Relauncher.h; sourceTree = "<group>"; };
+		34BD67F21956AFFD00587BE7 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../../share/Relauncher.m; sourceTree = "<group>"; };
 		34D05538192C6962001A4F4F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
 		34D0553A192C6E98001A4F4F /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../../share/KarabinerKeys.h; sourceTree = "<group>"; };
 		34E3507C1932FC690036B0D3 /* FrontmostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontmostWindow.h; path = ../../../share/FrontmostWindow.h; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				342BFA7D1936DC7900DA93EC /* KarabinerUtilities.m */,
 				347A86E7194B0BC7009A6CDA /* MigrationUtilities.h */,
 				347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */,
+				34BD67F11956AFFD00587BE7 /* Relauncher.h */,
+				34BD67F21956AFFD00587BE7 /* Relauncher.m */,
 				347A86E9194B0BC7009A6CDA /* StartAtLoginUtilities.h */,
 				347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */,
 			);
@@ -224,6 +229,7 @@
 				347A86EC194B0BC7009A6CDA /* StartAtLoginUtilities.m in Sources */,
 				342BFA7E1936DC7900DA93EC /* KarabinerUtilities.m in Sources */,
 				347A86EB194B0BC7009A6CDA /* MigrationUtilities.m in Sources */,
+				34BD67F31956AFFD00587BE7 /* Relauncher.m in Sources */,
 				34E3507E1932FC690036B0D3 /* FrontmostWindow.m in Sources */,
 				34010024192C63AA00B0A3A5 /* main.m in Sources */,
 				34FB0ED6192F97FB0038C1D5 /* AXUtilities.m in Sources */,
