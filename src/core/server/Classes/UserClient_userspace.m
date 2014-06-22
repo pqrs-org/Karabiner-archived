@@ -6,7 +6,6 @@
 typedef enum {
   UNRECOVERABLE_ERROR_NONE,
   UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH,
-  UNRECOVERABLE_ERROR_KEXT_NOT_FOUND,
 } UnrecoverableError;
 
 @interface UserClient_userspace ()
@@ -59,13 +58,14 @@ typedef enum {
     return;
   }
 
-  BOOL kextFound = NO;
-
   for (;;) {
+    // service will not be found until registerService() is called in kext.
+    // If service does not exist, wait for a while and retry in refresh_connection_with_retry.
     io_service_t s = IOIteratorNext(iterator);
-    if (s == IO_OBJECT_NULL) break;
-
-    kextFound = YES;
+    if (s == IO_OBJECT_NULL) {
+      NSLog(@"[INFO] IOService is not found.");
+      break;
+    }
 
     [self closeUserClient];
 
@@ -142,10 +142,6 @@ typedef enum {
 
   // failed to open connection.
   [self closeUserClient];
-
-  if (! kextFound) {
-    unrecoverableError_ = UNRECOVERABLE_ERROR_KEXT_NOT_FOUND;
-  }
 
 finish:
   IOObjectRelease(iterator);
@@ -233,11 +229,6 @@ finish:
           case UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH:
             errorMessage = @"Kernel extension and app version are mismatched.\n"
                            @"Please restart your system in order to reload kernel extension.\n";
-            break;
-
-          case UNRECOVERABLE_ERROR_KEXT_NOT_FOUND:
-            errorMessage = @"Kernel extension is not loaded.\n"
-                           @"Please restart your system in order to load kernel extension.\n";
             break;
 
           case UNRECOVERABLE_ERROR_NONE:
