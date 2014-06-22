@@ -259,9 +259,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   setenv([kDescendantProcess UTF8String], "1", 1);
 
   // ------------------------------------------------------------
-  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook"]
-       oldApplicationSupports:@[@"KeyRemap4MacBook"]
-                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app"]];
+  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook"]
+           oldApplicationSupports:@[@"KeyRemap4MacBook"]
+                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app"]]) {
+    [Relauncher relaunch];
+  }
 
   // ------------------------------------------------------------
   BOOL openPreferences = NO;
