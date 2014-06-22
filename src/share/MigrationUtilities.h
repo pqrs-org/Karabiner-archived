@@ -6,7 +6,7 @@
 
 + (NSString*) applicationSupportName;
 
-+ (void) migrate:(NSArray*)oldBundleIdentifiers
++ (BOOL) migrate:(NSArray*)oldBundleIdentifiers
   oldApplicationSupports:(NSArray*)oldApplicationSupports
   oldPaths:(NSArray*)oldPaths;
 

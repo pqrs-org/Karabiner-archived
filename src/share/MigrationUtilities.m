@@ -94,7 +94,7 @@
   }
 }
 
-+ (void) migrate:(NSArray*)oldBundleIdentifiers
++ (BOOL) migrate:(NSArray*)oldBundleIdentifiers
   oldApplicationSupports:(NSArray*)oldApplicationSupports
   oldPaths:(NSArray*)oldPaths;
 {
@@ -103,12 +103,16 @@
   NSString* key = @"MigrationUtilitiesCurrentBundleIdentifer";
   NSString* currentBundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
   if ([[[NSUserDefaults standardUserDefaults] stringForKey:key] isEqualToString:currentBundleIdentifier]) {
-    return;
+    return NO;
   }
 
   // ----------------------------------------
   // Migrate
+  BOOL migrated = NO;
+
   if ([MigrationUtilities migrateUserDefaults:oldBundleIdentifiers]) {
+    migrated = YES;
+
     [MigrationUtilities migrateApplicationSupport:oldApplicationSupports];
     [MigrationUtilities migrateStartAtLogin:oldPaths];
   }
@@ -116,6 +120,8 @@
   // ----------------------------------------
   // Set migrated
   [[NSUserDefaults standardUserDefaults] setObject:currentBundleIdentifier forKey:key];
+
+  return migrated;
 }
 
 @end
