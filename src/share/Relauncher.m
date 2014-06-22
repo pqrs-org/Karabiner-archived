@@ -48,7 +48,6 @@
 + (NSInteger) getRelaunchedCount
 {
   NSString* key = [Relauncher getRelaunchedCountEnvironmentKey];
-  NSLog(@"%@", key);
   return [[[NSProcessInfo processInfo] environment][key] integerValue];
 }
 
@@ -79,8 +78,6 @@
   if (! previous) return NO;
 
   NSString* current = [self currentProcessVersion];
-
-  NSLog(@"key:%@ previous:%@ current:%@", key, previous, current);
 
   return [current isEqualToString:previous];
 }
