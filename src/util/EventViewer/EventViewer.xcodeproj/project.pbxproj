@@ -11,6 +11,7 @@
 		256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */; };
 		3441AA3E194AF4CB00A96684 /* KarabinerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA3B194AF4CB00A96684 /* KarabinerClient.m */; };
 		3488F176174FB64C00178158 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3488F175174FB64C00178158 /* app.icns */; };
+		34BD67F01956620000587BE7 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BD67EF1956620000587BE7 /* Relauncher.m */; };
 		34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C92D211122EDA100B0B4ED /* Carbon.framework */; };
 		34CA697D174FB72900EC8EFB /* AppQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA6974174FB72900EC8EFB /* AppQueue.m */; };
 		34CA697E174FB72900EC8EFB /* Devices.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA6976174FB72900EC8EFB /* Devices.m */; };
@@ -42,6 +43,8 @@
 		3441AA3D194AF4CB00A96684 /* KarabinerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerProtocol.h; path = ../../share/KarabinerProtocol.h; sourceTree = "<group>"; };
 		348323671934E0FD0038CA78 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
 		3488F175174FB64C00178158 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = Resources/app.icns; sourceTree = "<group>"; };
+		34BD67EE1956620000587BE7 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
+		34BD67EF1956620000587BE7 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
 		34C92D211122EDA100B0B4ED /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34CA6973174FB72900EC8EFB /* AppQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppQueue.h; path = Classes/AppQueue.h; sourceTree = "<group>"; };
 		34CA6974174FB72900EC8EFB /* AppQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppQueue.m; path = Classes/AppQueue.m; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				3441AA3D194AF4CB00A96684 /* KarabinerProtocol.h */,
 				34F16530194B096600D9765F /* MigrationUtilities.h */,
 				34F16531194B096600D9765F /* MigrationUtilities.m */,
+				34BD67EE1956620000587BE7 /* Relauncher.h */,
+				34BD67EF1956620000587BE7 /* Relauncher.m */,
 				34F16532194B096600D9765F /* StartAtLoginUtilities.h */,
 				34F16533194B096600D9765F /* StartAtLoginUtilities.m */,
 			);
@@ -248,6 +253,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
 				34F16535194B096600D9765F /* StartAtLoginUtilities.m in Sources */,
+				34BD67F01956620000587BE7 /* Relauncher.m in Sources */,
 				34F16534194B096600D9765F /* MigrationUtilities.m in Sources */,
 				34CA697D174FB72900EC8EFB /* AppQueue.m in Sources */,
 				34CA697E174FB72900EC8EFB /* Devices.m in Sources */,

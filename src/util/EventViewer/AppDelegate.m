@@ -4,6 +4,7 @@
 #import "KeyResponder.h"
 #import "MigrationUtilities.h"
 #import "PreferencesKeys.h"
+#import "Relauncher.h"
 #import <Carbon/Carbon.h>
 
 @implementation AppDelegate
@@ -74,9 +75,11 @@
 // ------------------------------------------------------------
 - (void) applicationDidFinishLaunching:(NSNotification*)aNotification
 {
-  [MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.EventViewer"]
-       oldApplicationSupports:@[]
-                     oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app"]];
+  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.EventViewer"]
+           oldApplicationSupports:@[]
+                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app"]]) {
+    [Relauncher relaunch];
+  }
 
   // ----------------------------------------
   [self setKeyResponder];
