@@ -99,6 +99,8 @@
                                                           name:kKarabinerServerDidLaunchNotification
                                                         object:nil
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+
+  [Relauncher resetRelaunchedCount];
 }
 
 - (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
