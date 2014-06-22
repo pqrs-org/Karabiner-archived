@@ -1,21 +1,55 @@
+#import <CommonCrypto/CommonDigest.h>
 #import "Relauncher.h"
 
 @implementation Relauncher
 
-#define kRelaunchedCount @"org_pqrs_Karabiner_RelaunchedCount"
-#define kPreviousProcessVersion @"org_pqrs_Karabiner_PreviousProcessVersion"
++ (NSString*) getEnvironmentKey
+{
+  NSString* bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+  if (! bundleIdentifier) {
+    return @"Relauncher_unknownBundleIdentifier";
+  }
+
+  unsigned char digest[CC_MD5_DIGEST_LENGTH];
+  {
+    const char* data = [bundleIdentifier UTF8String];
+    CC_LONG len = (CC_LONG)([bundleIdentifier lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+    CC_MD5(data, len, digest);
+  }
+
+  NSMutableString* result = [NSMutableString new];
+  [result appendString:@"Relauncher_"];
+  for (size_t i = 0; i < sizeof(digest); ++i) {
+    [result appendFormat:@"%02x", digest[i]];
+  }
+
+  return result;
+}
+
++ (NSString*) getRelaunchedCountEnvironmentKey
+{
+  return [NSString stringWithFormat:@"%@_RC", [Relauncher getEnvironmentKey]];
+}
+
++ (NSString*) getPreviousProcessVersionEnvironmentKey
+{
+  return [NSString stringWithFormat:@"%@_PPV", [Relauncher getEnvironmentKey]];
+}
 
 // ------------------------------------------------------------
 + (void) setRelaunchedCount:(int)newvalue
 {
-  setenv([kRelaunchedCount UTF8String],
+  const char* key = [[Relauncher getRelaunchedCountEnvironmentKey] UTF8String];
+  setenv(key,
          [[NSString stringWithFormat:@"%d", newvalue] UTF8String],
          1);
 }
 
 + (NSInteger) getRelaunchedCount
 {
-  return [[[NSProcessInfo processInfo] environment][kRelaunchedCount] integerValue];
+  NSString* key = [Relauncher getRelaunchedCountEnvironmentKey];
+  NSLog(@"%@", key);
+  return [[[NSProcessInfo processInfo] environment][key] integerValue];
 }
 
 + (void) resetRelaunchedCount
@@ -31,17 +65,22 @@
 
 + (void) setPreviousProcessVersion
 {
-  setenv([kPreviousProcessVersion UTF8String],
+  const char* key = [[Relauncher getPreviousProcessVersionEnvironmentKey] UTF8String];
+  setenv(key,
          [[self currentProcessVersion] UTF8String],
          1);
 }
 
 + (BOOL) isEqualPreviousProcessVersionAndCurrentProcessVersion
 {
-  NSString* previous = [[NSProcessInfo processInfo] environment][kPreviousProcessVersion];
+  NSString* key = [Relauncher getPreviousProcessVersionEnvironmentKey];
+
+  NSString* previous = [[NSProcessInfo processInfo] environment][key];
   if (! previous) return NO;
 
   NSString* current = [self currentProcessVersion];
+
+  NSLog(@"key:%@ previous:%@ current:%@", key, previous, current);
 
   return [current isEqualToString:previous];
 }
