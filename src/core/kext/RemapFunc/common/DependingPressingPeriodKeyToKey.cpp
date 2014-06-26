@@ -204,7 +204,12 @@ namespace org_pqrs_Karabiner {
             //
             flagStatusWhenKeyPressed_ = FlagStatus::globalFlagStatus();
 
-            fire_timer_.setTimeoutMS(periodMS_.get(PeriodMS::Type::SHORT_PERIOD));
+            unsigned int ms = periodMS_.get(PeriodMS::Type::SHORT_PERIOD);
+            if (ms == 0) {
+              fire_timer_callback(NULL, NULL);
+            } else {
+              fire_timer_.setTimeoutMS(ms);
+            }
 
           } else {
             FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
