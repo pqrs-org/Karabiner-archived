@@ -933,10 +933,7 @@ namespace org_pqrs_Karabiner {
     refresh(void)
     {
       // We use timer to prevent deadlock of lock_. (refresh may be called in the "remap" method.)
-      enum {
-        DELAY = 1,
-      };
-      refresh_timer_.setTimeoutMS(DELAY);
+      refresh_timer_.setTimeoutMS(0);
     }
 
     // ----------------------------------------------------------------------
