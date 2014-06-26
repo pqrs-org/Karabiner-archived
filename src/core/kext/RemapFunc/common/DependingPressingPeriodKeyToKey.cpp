@@ -319,7 +319,7 @@ namespace org_pqrs_Karabiner {
     }
 
     void
-    DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender)
+    DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */)
     {
       if (! target_) return;
 
