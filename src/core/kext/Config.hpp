@@ -64,7 +64,7 @@ namespace org_pqrs_Karabiner {
     }
     static unsigned int get_keyoverlaidmodifier_initial_modifier_wait(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_initial_modifier_wait);
-      return getvalue(v, 1);
+      return getvalue(v, 0);
     }
     static unsigned int get_keyoverlaidmodifier_initial_wait(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_keyoverlaidmodifier_initial_wait);
