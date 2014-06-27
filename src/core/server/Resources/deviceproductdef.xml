@@ -47,6 +47,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0252</productname>
+    <productid>0x0252</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0262</productname>
     <productid>0x0262</productid>
   </deviceproductdef>
