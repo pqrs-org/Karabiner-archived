@@ -14,6 +14,8 @@
 		3401002E192C63AA00B0A3A5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3401002C192C63AA00B0A3A5 /* MainMenu.xib */; };
 		3403B0811930EF1F003E0CC1 /* KarabinerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3403B07F1930EF1F003E0CC1 /* KarabinerClient.m */; };
 		342BFA7E1936DC7900DA93EC /* KarabinerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 342BFA7D1936DC7900DA93EC /* KarabinerUtilities.m */; };
+		342C9FBA1960534F00B4C740 /* AXApplicationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 342C9FB71960534F00B4C740 /* AXApplicationObserver.m */; };
+		342C9FBB1960534F00B4C740 /* WindowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 342C9FB91960534F00B4C740 /* WindowObserver.m */; };
 		347A86EB194B0BC7009A6CDA /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */; };
 		347A86EC194B0BC7009A6CDA /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */; };
 		34BD67F31956AFFD00587BE7 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BD67F21956AFFD00587BE7 /* Relauncher.m */; };
@@ -40,6 +42,10 @@
 		3403B0801930EF1F003E0CC1 /* KarabinerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerProtocol.h; path = ../../../share/KarabinerProtocol.h; sourceTree = "<group>"; };
 		342BFA7C1936DC7900DA93EC /* KarabinerUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerUtilities.h; path = ../../../share/KarabinerUtilities.h; sourceTree = "<group>"; };
 		342BFA7D1936DC7900DA93EC /* KarabinerUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KarabinerUtilities.m; path = ../../../share/KarabinerUtilities.m; sourceTree = "<group>"; };
+		342C9FB61960534F00B4C740 /* AXApplicationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXApplicationObserver.h; path = Classes/AXApplicationObserver.h; sourceTree = "<group>"; };
+		342C9FB71960534F00B4C740 /* AXApplicationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXApplicationObserver.m; path = Classes/AXApplicationObserver.m; sourceTree = "<group>"; };
+		342C9FB81960534F00B4C740 /* WindowObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowObserver.h; path = Classes/WindowObserver.h; sourceTree = "<group>"; };
+		342C9FB91960534F00B4C740 /* WindowObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WindowObserver.m; path = Classes/WindowObserver.m; sourceTree = "<group>"; };
 		347A86E7194B0BC7009A6CDA /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../../share/MigrationUtilities.h; sourceTree = "<group>"; };
 		347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../../share/MigrationUtilities.m; sourceTree = "<group>"; };
 		347A86E9194B0BC7009A6CDA /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
@@ -152,9 +158,13 @@
 		34FB0ED3192F97EC0038C1D5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				342C9FB61960534F00B4C740 /* AXApplicationObserver.h */,
+				342C9FB71960534F00B4C740 /* AXApplicationObserver.m */,
 				34FB0ED4192F97FB0038C1D5 /* AXUtilities.h */,
 				34FB0ED5192F97FB0038C1D5 /* AXUtilities.m */,
 				348BBE611931839E00934FB7 /* PreferencesKeys.h */,
+				342C9FB81960534F00B4C740 /* WindowObserver.h */,
+				342C9FB91960534F00B4C740 /* WindowObserver.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -226,7 +236,9 @@
 			files = (
 				3403B0811930EF1F003E0CC1 /* KarabinerClient.m in Sources */,
 				3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */,
+				342C9FBB1960534F00B4C740 /* WindowObserver.m in Sources */,
 				347A86EC194B0BC7009A6CDA /* StartAtLoginUtilities.m in Sources */,
+				342C9FBA1960534F00B4C740 /* AXApplicationObserver.m in Sources */,
 				342BFA7E1936DC7900DA93EC /* KarabinerUtilities.m in Sources */,
 				347A86EB194B0BC7009A6CDA /* MigrationUtilities.m in Sources */,
 				34BD67F31956AFFD00587BE7 /* Relauncher.m in Sources */,
