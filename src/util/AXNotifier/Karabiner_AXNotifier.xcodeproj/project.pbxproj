@@ -50,6 +50,7 @@
 		347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../../share/MigrationUtilities.m; sourceTree = "<group>"; };
 		347A86E9194B0BC7009A6CDA /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
+		34850A0D19605391006489BE /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationKeys.h; path = Classes/NotificationKeys.h; sourceTree = "<group>"; };
 		348BBE611931839E00934FB7 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
 		34BD67F11956AFFD00587BE7 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../../share/Relauncher.h; sourceTree = "<group>"; };
 		34BD67F21956AFFD00587BE7 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../../share/Relauncher.m; sourceTree = "<group>"; };
@@ -162,6 +163,7 @@
 				342C9FB71960534F00B4C740 /* AXApplicationObserver.m */,
 				34FB0ED4192F97FB0038C1D5 /* AXUtilities.h */,
 				34FB0ED5192F97FB0038C1D5 /* AXUtilities.m */,
+				34850A0D19605391006489BE /* NotificationKeys.h */,
 				348BBE611931839E00934FB7 /* PreferencesKeys.h */,
 				342C9FB81960534F00B4C740 /* WindowObserver.h */,
 				342C9FB91960534F00B4C740 /* WindowObserver.m */,
