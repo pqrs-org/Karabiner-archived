@@ -18,6 +18,7 @@
 		342C9FBB1960534F00B4C740 /* WindowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 342C9FB91960534F00B4C740 /* WindowObserver.m */; };
 		347A86EB194B0BC7009A6CDA /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */; };
 		347A86EC194B0BC7009A6CDA /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */; };
+		349909BF196069D200058C5F /* AXApplicationObserverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 349909BE196069D200058C5F /* AXApplicationObserverManager.m */; };
 		34BD67F31956AFFD00587BE7 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BD67F21956AFFD00587BE7 /* Relauncher.m */; };
 		34D05539192C6962001A4F4F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34D05538192C6962001A4F4F /* app.icns */; };
 		34E3507E1932FC690036B0D3 /* FrontmostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E3507D1932FC690036B0D3 /* FrontmostWindow.m */; };
@@ -52,6 +53,8 @@
 		347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
 		34850A0D19605391006489BE /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationKeys.h; path = Classes/NotificationKeys.h; sourceTree = "<group>"; };
 		348BBE611931839E00934FB7 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
+		349909BD196069D200058C5F /* AXApplicationObserverManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXApplicationObserverManager.h; path = Classes/AXApplicationObserverManager.h; sourceTree = "<group>"; };
+		349909BE196069D200058C5F /* AXApplicationObserverManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXApplicationObserverManager.m; path = Classes/AXApplicationObserverManager.m; sourceTree = "<group>"; };
 		34BD67F11956AFFD00587BE7 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../../share/Relauncher.h; sourceTree = "<group>"; };
 		34BD67F21956AFFD00587BE7 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../../share/Relauncher.m; sourceTree = "<group>"; };
 		34D05538192C6962001A4F4F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
@@ -161,6 +164,8 @@
 			children = (
 				342C9FB61960534F00B4C740 /* AXApplicationObserver.h */,
 				342C9FB71960534F00B4C740 /* AXApplicationObserver.m */,
+				349909BD196069D200058C5F /* AXApplicationObserverManager.h */,
+				349909BE196069D200058C5F /* AXApplicationObserverManager.m */,
 				34FB0ED4192F97FB0038C1D5 /* AXUtilities.h */,
 				34FB0ED5192F97FB0038C1D5 /* AXUtilities.m */,
 				34850A0D19605391006489BE /* NotificationKeys.h */,
@@ -237,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3403B0811930EF1F003E0CC1 /* KarabinerClient.m in Sources */,
+				349909BF196069D200058C5F /* AXApplicationObserverManager.m in Sources */,
 				3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */,
 				342C9FBB1960534F00B4C740 /* WindowObserver.m in Sources */,
 				347A86EC194B0BC7009A6CDA /* StartAtLoginUtilities.m in Sources */,
