@@ -11,7 +11,7 @@
 // ==================================================
 @interface AppDelegate ()
 {
-  BOOL initialized_;
+  BOOL axEnabled_;
 
   NSDictionary* focusedUIElementInformation_;
   NSDictionary* overlaidWindowElementInformation_;
@@ -111,16 +111,15 @@ send:
           [[NSApplication sharedApplication] hide:self];
         }
 
-        if (! initialized_) {
-          initialized_ = YES;
+        if (! axEnabled_) {
+          axEnabled_ = YES;
 
           // Renew AXApplicationObserverManager
           axApplicationObserverManager_ = [AXApplicationObserverManager new];
-          windowObserver_ = [WindowObserver new];
         }
 
       } else {
-        initialized_ = NO;
+        axEnabled_ = NO;
       }
     }
   });
@@ -172,6 +171,9 @@ send:
                                              object:nil];
 
   // ----------------------------------------
+  if (AXIsProcessTrusted()) {
+    axEnabled_ = YES;
+  }
   axApplicationObserverManager_ = [AXApplicationObserverManager new];
   windowObserver_ = [WindowObserver new];
 
