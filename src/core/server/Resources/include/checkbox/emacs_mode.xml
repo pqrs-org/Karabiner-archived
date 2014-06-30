@@ -227,7 +227,8 @@
         <autogen>
           __KeyToKey__
           KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
-          KeyCode::ESCAPE,
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::X, ModifierFlag::COMMAND_L,
           Option::NOREPEAT
         </autogen>
       </block>
@@ -259,7 +260,8 @@
         <autogen>
           __KeyToKey__
           KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
-          KeyCode::ESCAPE,
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::DELETE,
           Option::NOREPEAT
         </autogen>
       </block>
@@ -291,7 +293,8 @@
         <autogen>
           __KeyToKey__
           KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
-          KeyCode::ESCAPE,
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::FORWARD_DELETE,
           Option::NOREPEAT
         </autogen>
       </block>
