@@ -57,52 +57,54 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     self.title = @"";
     self.role = @"";
 
-    pid_t pid = [self.runningApplication processIdentifier];
+    if (AXIsProcessTrusted()) {
+      pid_t pid = [self.runningApplication processIdentifier];
 
-    // ----------------------------------------
-    // Create applicationElement_
+      // ----------------------------------------
+      // Create applicationElement_
 
-    applicationElement_ = AXUIElementCreateApplication(pid);
-    if (! applicationElement_) {
-      @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                     reason:@"AXUIElementCreateApplication is failed."
-                                   userInfo:@{ @"runningApplication" : self.runningApplication }];
-    }
-
-    // ----------------------------------------
-    // Create observer_
-
-    {
-      AXError error = AXObserverCreate(pid, observerCallback, &observer_);
-      if (error != kAXErrorSuccess) {
+      applicationElement_ = AXUIElementCreateApplication(pid);
+      if (! applicationElement_) {
         @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                       reason:@"AXObserverCreate is failed."
-                                     userInfo:@{ @"runningApplication" : self.runningApplication, @"error": @(error) }];
+                                       reason:@"AXUIElementCreateApplication is failed."
+                                     userInfo:@{ @"runningApplication" : self.runningApplication }];
       }
+
+      // ----------------------------------------
+      // Create observer_
+
+      {
+        AXError error = AXObserverCreate(pid, observerCallback, &observer_);
+        if (error != kAXErrorSuccess) {
+          @throw [NSException exceptionWithName:@"AXApplicationObserverException"
+                                         reason:@"AXObserverCreate is failed."
+                                       userInfo:@{ @"runningApplication" : self.runningApplication, @"error": @(error) }];
+        }
+      }
+
+      // ----------------------------------------
+      // Observe notifications
+
+      // AXObserverAddNotification might be failed when just application launched.
+      if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedUIElementChangedNotification add:YES]) {
+        @throw [NSException exceptionWithName:@"AXApplicationObserverException"
+                                       reason:@"Failed to observe kAXFocusedUIElementChangedNotification."
+                                     userInfo:@{ @"runningApplication" : self.runningApplication }];
+      }
+      if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification add:YES]) {
+        @throw [NSException exceptionWithName:@"AXApplicationObserverException"
+                                       reason:@"Failed to observe kAXFocusedWindowChangedNotification."
+                                     userInfo:@{ @"runningApplication" : self.runningApplication }];
+      }
+
+      [self updateTitle];
+      [self updateRole:NULL];
+
+      // ----------------------------------------
+      CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                         AXObserverGetRunLoopSource(observer_),
+                         kCFRunLoopDefaultMode);
     }
-
-    // ----------------------------------------
-    // Observe notifications
-
-    // AXObserverAddNotification might be failed when just application launched.
-    if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedUIElementChangedNotification add:YES]) {
-      @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                     reason:@"Failed to observe kAXFocusedUIElementChangedNotification."
-                                   userInfo:@{ @"runningApplication" : self.runningApplication }];
-    }
-    if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification add:YES]) {
-      @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                     reason:@"Failed to observe kAXFocusedWindowChangedNotification."
-                                   userInfo:@{ @"runningApplication" : self.runningApplication }];
-    }
-
-    [self updateTitle];
-    [self updateRole:NULL];
-
-    // ----------------------------------------
-    CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                       AXObserverGetRunLoopSource(observer_),
-                       kCFRunLoopDefaultMode);
   }
 
   return self;
