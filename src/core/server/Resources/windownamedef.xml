@@ -20,4 +20,9 @@
     <regex>^Переводчик Google$</regex> <!-- https://translate.google.co.jp/?hl=ru -->
   </windownamedef>
 
+  <windownamedef>
+    <name>Launchpad</name>
+    <regex>^Launchpad$</regex>
+  </windownamedef>
+
 </root>

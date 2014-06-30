@@ -222,6 +222,16 @@
         </autogen>
       </block>
       <block>
+        <only>Dock</only>
+        <windowname_only>Launchpad</windowname_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::ESCAPE,
+          Option::NOREPEAT
+        </autogen>
+      </block>
+      <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
         <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
       </block>
@@ -244,6 +254,16 @@
         </autogen>
       </block>
       <block>
+        <only>Dock</only>
+        <windowname_only>Launchpad</windowname_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::ESCAPE,
+          Option::NOREPEAT
+        </autogen>
+      </block>
+      <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
         <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE, Option::NOREPEAT</autogen>
       </block>
@@ -262,6 +282,16 @@
           KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
           KeyCode::HOME, ModifierFlag::SHIFT_L,
           KeyCode::FORWARD_DELETE,
+          Option::NOREPEAT
+        </autogen>
+      </block>
+      <block>
+        <only>Dock</only>
+        <windowname_only>Launchpad</windowname_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::ESCAPE,
           Option::NOREPEAT
         </autogen>
       </block>
