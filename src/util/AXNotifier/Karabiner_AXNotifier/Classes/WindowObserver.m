@@ -49,28 +49,34 @@
                                                                              kCGNullWindowID));
   // Check windows state in priority order.
   for (NSDictionary* window in windows) {
-    if ([window[(__bridge NSString*)(kCGWindowOwnerName)] isEqualToString:@"Dock"] &&
-        [window[(__bridge NSString*)(kCGWindowName)] isEqualToString:@"Launchpad"]) {
+    pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
+    NSString* windowOwnerName = window[(__bridge NSString*)(kCGWindowOwnerName)];
+    NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
+
+    if ([windowOwnerName isEqualToString:@"Dock"] &&
+        [windowName isEqualToString:@"Launchpad"]) {
       if (! shown_[@"Launchpad"]) {
-        shown_[@"Launchpad"] = @YES;
-        [self postNotification:@"Launchpad" visibility:YES];
-        return;
+        shown_[@"Launchpad"] = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
+        [self postNotification:@"Launchpad" bundleIdentifier:shown_[@"Launchpad"] visibility:YES];
       }
+      return;
     }
   }
 
   for (NSString* key in shown_) {
     if (shown_[key]) {
-      [self postNotification:key visibility:NO];
+      [self postNotification:key bundleIdentifier:shown_[key] visibility:NO];
       [shown_ removeObjectForKey:key];
     }
   }
 }
 
-- (void) postNotification:(NSString*)windowName visibility:(BOOL)visibility
+- (void) postNotification:(NSString*)windowName bundleIdentifier:(NSString*)bundleIdentifier visibility:(BOOL)visibility
 {
   NSDictionary* userInfo = @{
+    @"bundleIdentifier": bundleIdentifier,
     @"windowName": windowName,
+    @"role": @"",
     @"visibility": @(visibility),
   };
   [[NSNotificationCenter defaultCenter] postNotificationName:kWindowVisibilityChanged object:self userInfo:userInfo];
