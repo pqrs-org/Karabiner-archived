@@ -529,6 +529,11 @@
   </appdef>
 
   <appdef>
+    <appname>Dock</appname>
+    <equal>com.apple.dock</equal>
+  </appdef>
+
+  <appdef>
     <appname>Karabiner</appname>
     <equal>org.pqrs.Karabiner</equal>
   </appdef>
