@@ -12,7 +12,8 @@ enum {
   NSTimer* refreshWindowIDsTimer_;
   NSMutableDictionary* shown_;
 
-  CGWindowID rawWindowIDs_[WINDOWID__END__];
+  // rawWindowIDs_ should be pointer sized type in order to pass CFArrayCreate.
+  long rawWindowIDs_[WINDOWID__END__];
   CFArrayRef windowIDs_;
 }
 @end
