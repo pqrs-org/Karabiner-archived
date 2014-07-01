@@ -13,4 +13,6 @@
 
 - (void) postNotification;
 
+@property NSRunningApplication* runningApplication;
+
 @end
