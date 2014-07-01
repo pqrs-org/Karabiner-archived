@@ -10,7 +10,6 @@
   AXObserverRef observer_;
 }
 
-@property NSRunningApplication* runningApplication;
 @property NSString* title;
 @property NSString* role;
 
