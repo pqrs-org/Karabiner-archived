@@ -84,15 +84,51 @@
 
 @interface AXApplicationObserverManager ()
 {
-  NSMutableDictionary* observers_;
+  NSMutableDictionary* systemApplicationObservers_;
+
+  // We need to observe frontmostApplication only because
+  // kAXFocusedWindowChangedNotification will be sent from apps which are not frontmost.
+  // (You can confirm it by WindowChangedNotificationTester.app.)
+  AXApplicationObserver* observer_;
 
   NSTimer* timer_;
   NSRunningApplication* runningApplicationForAXApplicationObserver_;
   int retryCounter_;
+
+  NSTimer* systemApplicationObserversRefreshTimer_;
 }
 @end
 
 @implementation AXApplicationObserverManager
+
+- (void) systemApplicationObserversRefreshTimerFireMethod:(NSTimer*)timer
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @synchronized(self) {
+      for (NSString* bundleIdentifier in @[@"com.apple.systemuiserver",
+                                           @"com.apple.notificationcenterui"]) {
+        {
+          // Remove if terminated.
+          AXApplicationObserver* o = systemApplicationObservers_[bundleIdentifier];
+          if (o) {
+            NSRunningApplication* runningApplication = o.runningApplication;
+            if (! runningApplication || runningApplication.terminated) {
+              NSLog(@"Remove %@ from systemApplicationObservers_", bundleIdentifier);
+              [systemApplicationObservers_ removeObjectForKey:bundleIdentifier];
+            }
+          }
+        }
+
+        if (! systemApplicationObservers_[bundleIdentifier]) {
+          NSArray* runningApplications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
+          if ([runningApplications count] > 0) {
+            systemApplicationObservers_[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0]];
+          }
+        }
+      }
+    }
+  });
+}
 
 - (void) timerFireMethod:(NSTimer*)timer
 {
@@ -113,12 +149,9 @@
         }
 
         @try {
-          AXApplicationObserver* o = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplicationForAXApplicationObserver_];
-          pid_t pid = [runningApplicationForAXApplicationObserver_ processIdentifier];
-          observers_[@(pid)] = o;
-
-          [o observeTitleChangedNotification];
-          [o postNotification];
+          observer_ = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplicationForAXApplicationObserver_];
+          [observer_ observeTitleChangedNotification];
+          [observer_ postNotification];
 
           runningApplicationForAXApplicationObserver_ = nil;
           retryCounter_ = 0;
@@ -136,9 +169,7 @@
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      for (NSNumber* pid in observers_) {
-        [observers_[pid] unobserveTitleChangedNotification];
-      }
+      observer_ = nil;
 
       runningApplicationForAXApplicationObserver_ = [notification userInfo][NSWorkspaceApplicationKey];
       [timer_ fire];
@@ -151,29 +182,27 @@
   self = [super init];
 
   if (self) {
-    observers_ = [NSMutableDictionary new];
+    systemApplicationObservers_ = [NSMutableDictionary new];
 
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                            selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
                                                                name:NSWorkspaceDidActivateApplicationNotification
                                                              object:nil];
 
-    for (NSRunningApplication* runningApplication in [[NSWorkspace sharedWorkspace] runningApplications]) {
-      @try {
-        pid_t pid = [runningApplication processIdentifier];
-        AXApplicationObserver* app = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplication];
-        observers_[@(pid)] = app;
-      } @catch (NSException* e) {
-        NSLog(@"%@", e);
-      }
-    }
-
     // ----------------------------------------
+    systemApplicationObserversRefreshTimer_ = [NSTimer scheduledTimerWithTimeInterval:3
+                                                                               target:self
+                                                                             selector:@selector(systemApplicationObserversRefreshTimerFireMethod:)
+                                                                             userInfo:nil
+                                                                              repeats:YES];
+    [systemApplicationObserversRefreshTimer_ fire];
+
     timer_ = [NSTimer scheduledTimerWithTimeInterval:0.5
                                               target:self
                                             selector:@selector(timerFireMethod:)
                                             userInfo:nil
                                              repeats:YES];
+
     runningApplicationForAXApplicationObserver_ = [[NSWorkspace sharedWorkspace] frontmostApplication];
     [timer_ fire];
   }
