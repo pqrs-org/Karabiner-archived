@@ -51,7 +51,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, KeyCode::SPACE</autogen> <!-- Play button -->
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x11, KeyCode::CURSOR_RIGHT</autogen><!-- Next button -->
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x12, KeyCode::CURSOR_LEFT</autogen><!-- Previous button -->
-      <autogen>__KeyToKey__ Consume rKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
     </item>
     <item>
       <name>Configure Satechi Bluetooth Remote for iTunes</name>
