@@ -1036,7 +1036,7 @@ Two Lines</autogen>
         <name>With DelayUntilRepeat,KeyRepeat</name>
         <appendix>Change "a" key "abc". (+ repeat tokeys: "1".)</appendix>
         <appendix>(Send "def" if you press only "a" key.)</appendix>
-        <appendix>(with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <appendix>(with DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1)</appendix>
         <autogen>
           __KeyOverlaidModifier__
           KeyCode::A,
@@ -1059,8 +1059,8 @@ Two Lines</autogen>
 
           Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS,
           KeyCode::KEY_1,
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
+          DelayUntilRepeat::RawValue::1,
+          KeyRepeat::RawValue::1,
         </autogen>
       </item>
 
@@ -1144,7 +1144,7 @@ Two Lines</autogen>
         <identifier>remap.samples_holdingkeytokey_delayuntilrepeat</identifier>
         <name>DelayUntilRepeat, KeyRepeat</name>
         <appendix>Escape to Tab (+ Holding Escape to Space)</appendix>
-        <appendix>(with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <appendix>(with DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1)</appendix>
         <autogen>
           __HoldingKeyToKey__
           KeyCode::ESCAPE,
@@ -1154,8 +1154,8 @@ Two Lines</autogen>
           @begin
           KeyCode::SPACE,
           @end
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
+          DelayUntilRepeat::RawValue::1,
+          KeyRepeat::RawValue::1,
         </autogen>
       </item>
       <item>
@@ -1567,15 +1567,15 @@ Two Lines</autogen>
       <item>
         <identifier>remap.samples_simultaneouskeypresses_delayuntilrepeat</identifier>
         <name>DelayUntilRepeat, KeyRepeat</name>
-        <appendix>A+J to Down (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <appendix>A+J to Down (with DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1)</appendix>
         <autogen>
           __SimultaneousKeyPresses__
           @begin
           KeyCode::J, KeyCode::A,
           @end
           KeyCode::CURSOR_DOWN,
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
+          DelayUntilRepeat::RawValue::1,
+          KeyRepeat::RawValue::1,
         </autogen>
       </item>
       <item>
