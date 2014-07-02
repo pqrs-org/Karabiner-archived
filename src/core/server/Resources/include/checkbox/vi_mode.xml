@@ -87,31 +87,31 @@
     </item>
     <item>
       <name>Fn+hjkl to rapid Left/Down/Up/Right</name>
-      <appendix>(delay until repeat: 0ms, key repeat: 0ms)</appendix>
+      <appendix>(delay until repeat: 1ms, key repeat: 1ms)</appendix>
       <identifier>option.vimode_fn_hjkl_rapid</identifier>
       <autogen>
         __KeyToKey__
         KeyCode::H, ModifierFlag::FN,
         KeyCode::CURSOR_LEFT,
-        DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0
+        DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1
       </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::J, ModifierFlag::FN,
         KeyCode::CURSOR_DOWN,
-        DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0
+        DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1
       </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::K,
         ModifierFlag::FN, KeyCode::CURSOR_UP,
-        DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0
+        DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1
       </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::L, ModifierFlag::FN,
         KeyCode::CURSOR_RIGHT,
-        DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0
+        DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1
       </autogen>
     </item>
     <item>
