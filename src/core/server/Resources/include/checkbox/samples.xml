@@ -687,29 +687,35 @@ Two Lines</autogen>
       <item>
         <identifier>remap.samples_keytokey_delayuntilrepeat</identifier>
         <name>DelayUntilRepeat, KeyRepeat</name>
-        <appendix>1 to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
-        <appendix>Volume Down to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
-        <appendix>RightClick to A (with DelayUntilRepeat::RawValue::0, KeyRepeat::RawValue::0)</appendix>
+        <appendix>1 to A (with DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1)</appendix>
+        <appendix>Volume Down to A (with DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1)</appendix>
+        <appendix>RightClick to A (with DelayUntilRepeat::RawValue::1, KeyRepeat::RawValue::1)</appendix>
         <autogen>
           __KeyToKey__
           KeyCode::KEY_1,
           KeyCode::A,
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
+          <!-- 1 millisecond -->
+          DelayUntilRepeat::RawValue::1,
+          <!-- 1 millisecond -->
+          KeyRepeat::RawValue::1,
         </autogen>
         <autogen>
           __KeyToKey__
           ConsumerKeyCode::VOLUME_DOWN,
           KeyCode::A,
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
+          <!-- 1 millisecond -->
+          DelayUntilRepeat::RawValue::1,
+          <!-- 1 millisecond -->
+          KeyRepeat::RawValue::1,
         </autogen>
         <autogen>
           __KeyToKey__
           PointingButton::RIGHT,
           KeyCode::A,
-          DelayUntilRepeat::RawValue::0,
-          KeyRepeat::RawValue::0,
+          <!-- 1 millisecond -->
+          DelayUntilRepeat::RawValue::1,
+          <!-- 1 millisecond -->
+          KeyRepeat::RawValue::1,
         </autogen>
       </item>
 
