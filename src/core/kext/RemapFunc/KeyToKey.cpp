@@ -86,13 +86,15 @@ namespace org_pqrs_Karabiner {
 
         case BRIDGE_DATATYPE_DELAYUNTILREPEAT:
         {
-          delayUntilRepeat_ = newval;
+          // Use 1ms if newval == 0 because Terminal.app cannot treat too rapid key repeat events.)
+          delayUntilRepeat_ = max(newval, 1);
           break;
         }
 
         case BRIDGE_DATATYPE_KEYREPEAT:
         {
-          keyRepeat_ = newval;
+          // Use 1ms if newval == 0 because Terminal.app cannot treat too rapid key repeat events.)
+          keyRepeat_ = max(newval, 1);
           break;
         }
 
