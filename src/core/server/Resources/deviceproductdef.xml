@@ -250,6 +250,11 @@
     <productname>MICROSOFT_NANO_TRANSCEIVER_2-1</productname>
     <productid>0x07a5</productid>
   </deviceproductdef>
+  
+  <deviceproductdef>
+    <productname>MICROSOFT_BLUETOOTH_MOBILE_KEYBOARD_6000</productname>
+    <productid>0x0762</productid>
+  </deviceproductdef>
 
   <deviceproductdef>
     <productname>TARGUS_BLUETOOTH_PRESENTER</productname>
