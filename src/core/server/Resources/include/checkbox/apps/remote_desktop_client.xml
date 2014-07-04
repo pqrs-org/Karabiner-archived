@@ -2,6 +2,42 @@
 <root>
   <item>
     <name>Enable at only Remote Desktop Connection Client</name>
+
+    <item>
+      <name>Change command key to control key in RDC.</name>
+      <appendix>+ Change command-tab to alt-tab.</appendix>
+      <identifier>remap.app_rdc_command_to_control</identifier>
+      <only>REMOTEDESKTOPCONNECTION</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_L,
+        KeyCode::CONTROL_L, ModifierFlag::RDC_COMMAND,
+
+        Option::KEYTOKEY_AFTER_KEYUP,
+        KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
+        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_R,
+        KeyCode::CONTROL_R, ModifierFlag::RDC_COMMAND,
+
+        Option::KEYTOKEY_AFTER_KEYUP,
+        KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
+        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::TAB, ModifierFlag::RDC_COMMAND,
+        KeyCode::TAB, ModifierFlag::OPTION_L | ModifierFlag::RDC_COMMAND,
+        KeyCode::VK_STICKY_OPTION_L_FORCE_ON,
+
+        Option::KEYTOKEY_BEFORE_KEYDOWN,
+        KeyCode::VK_NEGATIVE_LOCK_CONTROL_L_FORCE_ON,
+        KeyCode::VK_NEGATIVE_LOCK_CONTROL_R_FORCE_ON,
+      </autogen>
+    </item>
+
     <item>
       <name>Command+Tab to Option+Tab</name>
       <appendix>(only in RDC)</appendix>
