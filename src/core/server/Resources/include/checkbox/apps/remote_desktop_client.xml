@@ -6,25 +6,40 @@
     <item>
       <name>Change command key to control key in RDC.</name>
       <appendix>+ Change command-tab to alt-tab.</appendix>
+      <appendix>+ Send Windows key event when you pressed the command key alone.</appendix>
       <identifier>remap.app_rdc_command_to_control</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
       <autogen>
-        __KeyToKey__
+        __KeyOverlaidModifier__
         KeyCode::COMMAND_L,
+
+        @begin
         KeyCode::CONTROL_L, ModifierFlag::RDC_COMMAND,
 
         Option::KEYTOKEY_AFTER_KEYUP,
         KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
         KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
+        @end
+
+        @begin
+        KeyCode::COMMAND_L,
+        @end
       </autogen>
       <autogen>
-        __KeyToKey__
+        __KeyOverlaidModifier__
         KeyCode::COMMAND_R,
+
+        @begin
         KeyCode::CONTROL_R, ModifierFlag::RDC_COMMAND,
 
         Option::KEYTOKEY_AFTER_KEYUP,
         KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
         KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
+        @end
+
+        @begin
+        KeyCode::COMMAND_R,
+        @end
       </autogen>
       <autogen>
         __KeyToKey__
