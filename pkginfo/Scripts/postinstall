@@ -12,7 +12,7 @@ for f in \
 done
 
 # ------------------------------------------------------------
-# relaunch KeyRemap4MacBook.app
+# relaunch Karabiner.app
 
 /Applications/Karabiner.app/Contents/Library/bin/karabiner \
     relaunch
