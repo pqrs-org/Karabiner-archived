@@ -56,7 +56,25 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     self.title = @"";
     self.role = @"";
 
-    if (AXIsProcessTrusted()) {
+    // ----------------------------------------
+    bool observable = YES;
+    if (! AXIsProcessTrusted()) {
+      observable = NO;
+    }
+
+    // We do not need to observe EventViewer because all events in EventViewer will be ignored in Karabiner.app.
+    if ([[runningApplication bundleIdentifier] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) {
+      observable = NO;
+    }
+
+    // Java apps will be crash if observe. (We confirm crash in SQLDeveloper.)
+    if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"]) {
+      NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
+      observable = NO;
+    }
+
+    // ----------------------------------------
+    if (observable) {
       pid_t pid = [self.runningApplication processIdentifier];
 
       // ----------------------------------------
