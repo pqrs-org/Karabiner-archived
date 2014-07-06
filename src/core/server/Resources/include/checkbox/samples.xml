@@ -417,12 +417,10 @@ Two Lines</autogen>
         <appendix>Volume Down to Volume Mute</appendix>
         <appendix>Shift+Volume Up to Volume Mute (with Modifier)</appendix>
         <appendix>Music Play to Power</appendix>
-        <appendix>NumLock to Volume Mute</appendix>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, ConsumerKeyCode::VOLUME_UP</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_MUTE</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, ConsumerKeyCode::VOLUME_MUTE</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::MUSIC_PLAY, ConsumerKeyCode::POWER</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, ConsumerKeyCode::VOLUME_MUTE</autogen>
       </item>
 
       <item>
