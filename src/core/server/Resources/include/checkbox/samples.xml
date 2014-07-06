@@ -349,6 +349,7 @@ Two Lines</autogen>
         <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
 
         <appendix>Shift_R to Shift_R+A (if no other modifiers pressed)</appendix>
+        <appendix></appendix>
         <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::A, ModifierFlag::SHIFT_R</autogen>
 
         <appendix>Command_L+Command_R to Command_L+Command_R (if no other modifiers pressed)</appendix>
