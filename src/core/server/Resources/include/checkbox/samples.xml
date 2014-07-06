@@ -387,17 +387,12 @@ Two Lines</autogen>
         <appendix>Shift+Volume Up to B (with Modifier)</appendix>
         <appendix>Volume Up to Control_L (to Modifier)</appendix>
         <appendix>Option+Volume Mute to Shift_L+C (to Key+Modifier)</appendix>
-        <appendix>NumLock to A</appendix>
-        <!-- Note: -->
-        <!-- NumLock is a special key. When we press "A" key with holding NumLock key, there is no key down event occurred -->
-        <!-- Therefore we cannot change NumLock to Modifier -->
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::A, KeyCode::S, KeyCode::D, ModifierFlag::SHIFT_L, KeyCode::F, ModifierFlag::CONTROL_L, KeyCode::G</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::A</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SHIFT_L</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::B</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CONTROL_L</autogen>
         <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_MUTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::C, ModifierFlag::SHIFT_L</autogen>
-        <autogen>__KeyToKey__ ConsumerKeyCode::NUMLOCK, KeyCode::A</autogen>
       </item>
 
       <item>
