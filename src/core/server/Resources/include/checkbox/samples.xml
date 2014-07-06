@@ -64,7 +64,7 @@
         <appendix></appendix>
         <autogen>__PointingRelativeToScroll__ PointingButton::RIGHT</autogen>
 
-        <appendix>Hold Left once to select Mission Control</appendix>
+        <appendix>Hold left click to open Mission Control</appendix>
         <appendix>(using __HoldingKeyToKey__, KeyCode::MISSION_CONTROL, NOREPEAT)</appendix>
         <appendix></appendix>
         <autogen>
