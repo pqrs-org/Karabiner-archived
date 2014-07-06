@@ -18,8 +18,8 @@
       <appendix>And if the lazy left shift key is pressed with the space key, input events are follows:</appendix>
       <appendix>eventType:keyMod          code:0x3c       name:Shift_R         flags:Shift</appendix>
       <appendix>eventType:keyDown         code:0x31       name:Space           flags:Shift</appendix>
-      <appendix>eventType:keyMod          code:0x3c       name:Shift_R         flags:</appendix>
       <appendix>eventType:keyUp           code:0x31       name:Space           flags:</appendix>
+      <appendix>eventType:keyMod          code:0x3c       name:Shift_R         flags:</appendix>
       <identifier>remap.samples_vk_lazy</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::VK_LAZY_COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_LAZY_COMMAND_R</autogen>
