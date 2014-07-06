@@ -16,3 +16,8 @@ clean:
 
 xcode:
 	open *.xcodeproj
+
+run:
+	../../../files/extra/codesign.sh build
+	killall Karabiner_AXNotifier
+	open build/Release/Karabiner_AXNotifier.app
