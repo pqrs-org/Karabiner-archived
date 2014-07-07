@@ -56,7 +56,7 @@ Since 9.3.0
         &lt;/autogen&gt;
       </pre>
     * v9.3.60: You can add your own modifiers by &lt;modifierdef&gt;.
-     [Usage of &lt;modifierdef&gt;.](https://pqrs.org/macosx/keyremap4macbook/xml.html.en#modifier)
+     [Usage of &lt;modifierdef&gt;.](https://pqrs.org/osx/karabiner/xml.html.en#modifier)
     * v9.3.69: Added \_\_BlockUntilKeyUp\_\_. (\_\_KeyUpEventToKey\_\_ is removed.)
     * v9.3.76: Added Option::KEYOVERLAIDMODIFIER\_REPEAT\_TOKEYS.
     * v9.3.81: Added Option::DROPSCROLLWHEEL\_DROP\_MOMENTUM\_SCROLL.
@@ -184,9 +184,9 @@ Version 8.0.0
 -------------
 
 * Changed Preferences location. <br />
-  https://pqrs.org/macosx/keyremap4macbook/document.html
+  https://pqrs.org/osx/karabiner/document.html
 * Changed KeyRemap4MacBook\_cli location. <br />
-  https://pqrs.org/macosx/keyremap4macbook/document-misc.html#commandlineinterface
+  https://pqrs.org/osx/karabiner/document.html#commandlineinterface
 * Integrated a status message indicator. (Removed Growl support.)
 * Dynamic VK\_CHANGE\_INPUTSOURCE definition feature has been added.
 * Dynamic &lt;inputsource\_only&gt; definition feature has been added.
@@ -229,7 +229,7 @@ Version 7.5.0
 
 * Dynamic ApplicationType,DeviceVendor,DeviceProduct definition feature has been added.
 * Support Growl-1.3 on notifications. <br />
-  https://pqrs.org/macosx/keyremap4macbook/document.html#t4
+  https://pqrs.org/osx/karabiner/document.html
 * Added --StripModifierFromScrollWheel--.
 * Added Option::KEYTOKEY\_BEFORE\_KEYDOWN, Option::KEYTOKEY\_AFTER\_KEYUP.
 * Added KeyCode::VK\_CONSUMERKEY\_*.
@@ -243,7 +243,7 @@ Version 7.4.0
 * Some improvements on Mac OS X 10.7 (Lion).
 * Removed "General &gt; Enable CapsLock LED Hack".<br />
   If you're using this setting for PCKeyboardHack, use "No Action" configuration instead. <br />
-  https://pqrs.org/macosx/keyremap4macbook/extra.html#t1p1
+  https://pqrs.org/osx/karabiner/seil.html#usage
 * Clean up "Simultaneous Vi Mode". <br />
   (and split some options into "Home Row Arrow and Modifier Mode".)
 * Added "[Key Overlaid Modifier] Initial Modifier Wait" preference into "Key Repeat" tab. <br />
@@ -285,7 +285,7 @@ Version 7.1.0
 * Replaced StatusWindow with Growl. <br />
   StatusWindow was displaying the lock state of modifiers and extra message. <br />
   Now, these messages are shown by Growl. <br />
-  https://pqrs.org/macosx/keyremap4macbook/img/growl.png <br />
+  https://pqrs.org/osx/karabiner/img/growl.png <br />
   http://growl.info/
 * Attached an application named "multi-touch extension". <br />
   This application activates specific setting while fingers touch the multi-touch device. <br />
