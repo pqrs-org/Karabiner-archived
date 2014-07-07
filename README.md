@@ -13,7 +13,7 @@ Karabiner is a powerful utility for keyboard customization.
 Web pages
 ---------
 
-* master: https://pqrs.org/macosx/karabiner/
+* master: https://pqrs.org/osx/karabiner/
 * backup: http://tekezo.github.io/pqrs.org/
 * Google Group:  https://groups.google.com/forum/#!forum/keyremap4macbook
 
