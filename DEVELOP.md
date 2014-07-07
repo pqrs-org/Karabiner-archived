@@ -56,8 +56,8 @@ The sequence of event handling
 
 Karabiner and Seil will modify input events at different timing.
 
-Karabiner: http://pqrs.org/macosx/karabiner/
-Seil:      http://pqrs.org/macosx/karabiner/seil.html
+Karabiner: http://pqrs.org/osx/karabiner/
+Seil:      http://pqrs.org/osx/karabiner/seil.html
 
 1. Device sends the input event.
 1. Modify the input event by Seil.
