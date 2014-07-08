@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1090" defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -927,9 +927,9 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="B4b-iA-pXM">
-                                                        <rect key="frame" x="158" y="47" width="271" height="32"/>
+                                                        <rect key="frame" x="158" y="47" width="245" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/macosx/karabiner/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
+                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
