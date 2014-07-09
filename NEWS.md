@@ -1,30 +1,28 @@
-Since 9.3.0
------------
+Version 10.0.0
+--------------
 
 * KeyRemap4MacBook has been renamed to "Karabiner".
-
-* v9.99.1: AXNotifier has been added.<br />
-  AXNotifier allows you to observe the window name (window title) and the focused ui element role (eg. whether textarea or not).
-
-* Incompatible changes:
-    * v9.3.81: KeyCode::VK\_JIS\_TEMPORARY_* are removed.<br />
-      Please use &lt;inputsource\_filter&gt;, Option::KEYTOKEY\_BEFORE\_KEYDOWN, Option::KEYTOKEY\_AFTER\_KEYUP, KeyCode::JIS\_EISUU and KeyCode::JIS\_KANA instead.
-
-* v9.3.24: A command line utility "warp-mouse-cursor-position" has been added.<br />
+* AXNotifier has been added. <br />
+  AXNotifier allows you to observe the window name (window title) and the focused ui element role (eg. whether textarea or not). <br />
+  For example, you can use hjkl keys as arrow keys in Finder when you are not editing text such as filename.
+* A command line utility "warp-mouse-cursor-position" has been added.<br />
   Settings which use this utility have been added, too.<br />
   For example, this setting allows you to move mouse cursor by tapping fn key:
-
     * Custom Shortcuts
         * Move mouse cursor to the center of the frontmost app's window:
             * By pressing fn key alone.
 * Fixed issues:
-    * v9.99.24: A message "Kernel extension is not loaded" might be shown in some environment.
-    * v9.3.18: Status Message will not be shown properly when you are using multiple displays.
-* v9.3.9: Added "relaunch" command into KeyRemap4MacBook_cli.
-* v9.3.1: Updated prepared settings.
+    * A message "Kernel extension is not loaded" might be shown in some environment.
+    * Status Message will not be shown properly when you are using multiple displays.
+* Updated prepared settings.
+* Some minor improvements.
 * Updates for people who add new settings by oneself:
-    * v9.3.7: Added \_\_PointingRelativeToKey\_\_.
-    * v9.3.15: Added \_\_PassThrough\_\_. You can disable all settings in specific situations.<br />
+    * You can add your own modifiers by &lt;modifierdef&gt;.
+     [Usage of &lt;modifierdef&gt;.](https://pqrs.org/osx/karabiner/xml.html.en#modifier)
+    * Added &lt;windowname\_only&gt; and &lt;windowname\_not&gt; filters.
+    * Added &lt;uielementrole\_only&gt; and &lt;uielementrole\_not&gt; filters.
+    * Added \_\_PointingRelativeToKey\_\_.
+    * Added \_\_PassThrough\_\_. You can disable all settings in specific situations.<br />
       For example, this item allow you to disable all settings while you are using virtual machine.<br />
       (This setting is already included in prepared settings.)
       <pre>
@@ -35,8 +33,8 @@ Since 9.3.0
           &lt;autogen&gt;\_\_PassThrough\_\_&lt;/autogen&gt;
         &lt;/item&gt;
       </pre>
-    * v9.3.20: You can use KeyCode and ConsumerKeyCode in \_\_PointingRelativeToScroll\_\_.
-    * v9.3.40: Added ThresholdMillisecond into \_\_HoldingKeyToKey\_\_.<br />
+    * You can use KeyCode and ConsumerKeyCode in \_\_PointingRelativeToScroll\_\_.
+    * Added ThresholdMillisecond into \_\_HoldingKeyToKey\_\_.<br />
       You can control a holding threshold:<br />
       <pre>
         &lt;autogen&gt;
@@ -55,18 +53,17 @@ Since 9.3.0
           ThresholdMillisecond::RawValue::2000,
         &lt;/autogen&gt;
       </pre>
-    * v9.3.60: You can add your own modifiers by &lt;modifierdef&gt;.
-     [Usage of &lt;modifierdef&gt;.](https://pqrs.org/osx/karabiner/xml.html.en#modifier)
-    * v9.3.69: Added \_\_BlockUntilKeyUp\_\_. (\_\_KeyUpEventToKey\_\_ is removed.)
-    * v9.3.76: Added Option::KEYOVERLAIDMODIFIER\_REPEAT\_TOKEYS.
-    * v9.3.81: Added Option::DROPSCROLLWHEEL\_DROP\_MOMENTUM\_SCROLL.
-    * v9.3.85: Added KeyCode::VK\_NEGATIVE\_LOCK\_*. (eg. KeyCode::VK\_NEGATIVE\_LOCK\_COMMAND\_L, KeyCode::VK\_NEGATIVE\_LOCK\_SHIFT\_L.)
-    * v9.3.86: Added KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_*:
+    * Added \_\_BlockUntilKeyUp\_\_. (\_\_KeyUpEventToKey\_\_ is removed.)
+    * Added Option::KEYOVERLAIDMODIFIER\_REPEAT\_TOKEYS.
+    * Added Option::DROPSCROLLWHEEL\_DROP\_MOMENTUM\_SCROLL.
+    * Added KeyCode::VK\_NEGATIVE\_LOCK\_*. (eg. KeyCode::VK\_NEGATIVE\_LOCK\_COMMAND\_L, KeyCode::VK\_NEGATIVE\_LOCK\_SHIFT\_L.)
+    * Added KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_*:
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_TOGGLE
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_ON
         * KeyCode::VK\_STICKY\_ACTIVE\_MODIFIERS\_FORCE\_OFF
-    * v9.3.87: Added &lt;windowname\_only&gt; and &lt;windowname\_not&gt; filters.
-    * v9.99.11: Added &lt;uielementrole\_only&gt; and &lt;uielementrole\_not&gt; filters.
+    * An incompatible change:
+        * KeyCode::VK\_JIS\_TEMPORARY_* are removed.<br />
+          Please use &lt;inputsource\_filter&gt;, Option::KEYTOKEY\_BEFORE\_KEYDOWN, Option::KEYTOKEY\_AFTER\_KEYUP, KeyCode::JIS\_EISUU and KeyCode::JIS\_KANA instead.
 
 Version 9.3.0
 -------------
