@@ -4,7 +4,7 @@ Version 10.0.0
 * KeyRemap4MacBook has been renamed to "Karabiner".
 * AXNotifier has been added. <br />
   AXNotifier allows you to observe the window name (window title) and the focused ui element role (eg. whether textarea or not). <br />
-  For example, you can use hjkl keys as arrow keys in Finder when you are not editing text such as filename.
+  For example, a setting that allows you to use hjkl keys as arrow keys in Finder when you are not editing text such as filename has been added.
 * A command line utility "warp-mouse-cursor-position" has been added.<br />
   Settings which use this utility have been added, too.<br />
   For example, this setting allows you to move mouse cursor by tapping fn key:
@@ -53,7 +53,7 @@ Version 10.0.0
           ThresholdMillisecond::RawValue::2000,
         &lt;/autogen&gt;
       </pre>
-    * Added \_\_BlockUntilKeyUp\_\_. (\_\_KeyUpEventToKey\_\_ is removed.)
+    * Added \_\_BlockUntilKeyUp\_\_.
     * Added Option::KEYOVERLAIDMODIFIER\_REPEAT\_TOKEYS.
     * Added Option::DROPSCROLLWHEEL\_DROP\_MOMENTUM\_SCROLL.
     * Added KeyCode::VK\_NEGATIVE\_LOCK\_*. (eg. KeyCode::VK\_NEGATIVE\_LOCK\_COMMAND\_L, KeyCode::VK\_NEGATIVE\_LOCK\_SHIFT\_L.)
