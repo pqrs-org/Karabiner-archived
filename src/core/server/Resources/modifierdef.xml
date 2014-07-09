@@ -10,6 +10,9 @@
       | * KeyCode::VK_LOCK_EXTRA1
       | * KeyCode::VK_LOCK_EXTRA1_FORCE_ON
       | * KeyCode::VK_LOCK_EXTRA1_FORCE_OFF
+      | * KeyCode::VK_NEGATIVE_LOCK_EXTRA1
+      | * KeyCode::VK_NEGATIVE_LOCK_EXTRA1_FORCE_ON
+      | * KeyCode::VK_NEGATIVE_LOCK_EXTRA1_FORCE_OFF
       | * KeyCode::VK_STICKY_EXTRA1
       | * KeyCode::VK_STICKY_EXTRA1_FORCE_ON
       | * KeyCode::VK_STICKY_EXTRA1_FORCE_OFF
