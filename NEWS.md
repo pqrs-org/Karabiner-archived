@@ -1,3 +1,9 @@
+Since 10.0.0
+------------
+
+* Updates for people who add new settings by oneself:
+  * Added KeyCode::VK\_IOHIKEYBOARD\_TOGGLE\_NUMLOCK.
+
 Version 10.0.0
 --------------
 
