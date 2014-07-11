@@ -1,8 +1,11 @@
 Since 10.0.0
 ------------
 
+* Fixed issues:
+    * The continuous key sequence will be improper order in environments which VMWare Fusion is installed.
+
 * Updates for people who add new settings by oneself:
-  * Added KeyCode::VK\_IOHIKEYBOARD\_TOGGLE\_NUMLOCK.
+    * Added KeyCode::VK\_IOHIKEYBOARD\_TOGGLE\_NUMLOCK.
 
 Version 10.0.0
 --------------
