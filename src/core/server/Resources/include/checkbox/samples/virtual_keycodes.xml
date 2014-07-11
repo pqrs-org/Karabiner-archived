@@ -350,6 +350,19 @@
         <autogen>__KeyToKey__ KeyCode::F12, KeyCode::VK_IOHIDPOSTEVENT_NX_POWER_KEY</autogen>
       </item>
     </item>
+    <item>
+      <name>VK_IOHIKEYBOARD_TOGGLE_NUMLOCK</name>
+      <item>
+        <name>Change fn-escape to VK_IOHIKEYBOARD_TOGGLE_NUMLOCK</name>
+        <appendix>(The jkl keys on MacBook will be changed to 123 when numlock is on.)</appendix>
+        <identifier>remap.samples_VK_IOHIKEYBOARD_TOGGLE_NUMLOCK</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::ESCAPE, ModifierFlag::FN,
+          KeyCode::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK,
+        </autogen>
+      </item>
+    </item>
     <include path="virtual_keycodes/vk_jis.xml" />
   </item>
 </root>
