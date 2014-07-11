@@ -600,7 +600,7 @@ Two Lines</autogen>
           KeyCode::DOT,
           KeyCode::O, KeyCode::R, KeyCode::G,
           KeyCode::SLASH,
-          KeyCode::M, KeyCode::A, KeyCode::C, KeyCode::O, KeyCode::S, KeyCode::X,
+          KeyCode::O, KeyCode::S, KeyCode::X,
           KeyCode::SLASH,
           KeyCode::K, KeyCode::A, KeyCode::R, KeyCode::A, KeyCode::B, KeyCode::I, KeyCode::N, KeyCode::E, KeyCode::R,
           KeyCode::SLASH
