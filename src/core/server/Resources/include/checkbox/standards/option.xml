@@ -113,6 +113,11 @@
       <identifier>remap.optionL2space</identifier>
       <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::SPACE</autogen>
     </item>
+    <item>
+      <name>Disable Option_L</name>
+      <identifier>remap.drop_option_l</identifier>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::VK_NONE</autogen>
+    </item>
   </item>
 
   <item>
@@ -404,6 +409,11 @@
       <identifier>remap.option_r_to_right_click</identifier>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, ModifierFlag::FN, KeyCode::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, PointingButton::RIGHT</autogen>
+    </item>
+    <item>
+      <name>Disable Option_R</name>
+      <identifier>remap.drop_option_r</identifier>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_NONE</autogen>
     </item>
   </item>
 </root>
