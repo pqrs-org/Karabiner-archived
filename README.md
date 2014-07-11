@@ -8,7 +8,7 @@ Karabiner is a powerful utility for keyboard customization.
 * The revival of a lost NumPad key (Fn+jkluio789…)
 * Features for more efficient operations. (Emacs Mode, Vi Mode, Mouse Keys Mode, ...)
 
-(Karabiner has been called KeyRemap4MacBook till version 9.3.0.)
+Prior to version 9.3.0, Karabiner was called *KeyRemap4MacBook*.
 
 Web pages
 ---------
@@ -21,7 +21,7 @@ Web pages
 System requirements
 -------------------
 
-Mac OS X 10.9 (Maveriks) or higher.  Karabiner works for all Mac products, including MacBook series, iMac, Mac mini, and Mac Pro.
+Mac OS X 10.9 (Mavericks) or higher.  Karabiner works for all Mac products, including MacBook series, iMac, Mac mini, and Mac Pro.
 
 * If you require Karabiner for OS X 10.6 - 10.8, use KeyRemap4MacBook 8.4.0.
 * If you require Karabiner for OS X 10.4 - 10.5, use KeyRemap4MacBook 5.1.0.
@@ -39,7 +39,7 @@ Requirements:
 
 Please install Boost into /usr/local/include/boost.
 
-### Step1: Getting source code
+### Step 1: Getting source code
 
 Execute a following command in Terminal.app.
 
@@ -47,7 +47,7 @@ Execute a following command in Terminal.app.
 git clone --depth 10 https://github.com/tekezo/Karabiner.git
 </pre>
 
-### Step2: Building a package
+### Step 2: Building a package
 
 Execute a following command in Terminal.app.
 
