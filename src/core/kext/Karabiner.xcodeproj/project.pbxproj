@@ -162,6 +162,8 @@
 		34E984C518FFD108003A21F6 /* ModifierName.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E984C318FFD108003A21F6 /* ModifierName.hpp */; };
 		34EE5C53192CDEAA00D73DDE /* WindowNameFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */; };
 		34EE5C54192CDEAA00D73DDE /* WindowNameFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */; };
+		34F6FE5F197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F6FE5D197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp */; };
+		34F6FE60197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F6FE5E197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp */; };
 		34FFF078149867D800A1348A /* ScrollWheelToScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */; };
 		34FFF079149867D800A1348A /* ScrollWheelToScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */; };
 /* End PBXBuildFile section */
@@ -324,6 +326,8 @@
 		34E984C318FFD108003A21F6 /* ModifierName.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierName.hpp; path = Classes/ModifierName.hpp; sourceTree = "<group>"; };
 		34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WindowNameFilter.cpp; path = RemapFilter/WindowNameFilter.cpp; sourceTree = "<group>"; };
 		34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WindowNameFilter.hpp; path = RemapFilter/WindowNameFilter.hpp; sourceTree = "<group>"; };
+		34F6FE5D197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp; path = VirtualKey/VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp; sourceTree = "<group>"; };
+		34F6FE5E197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp; path = VirtualKey/VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp; sourceTree = "<group>"; };
 		34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollWheelToScrollWheel.cpp; path = RemapFunc/ScrollWheelToScrollWheel.cpp; sourceTree = "<group>"; };
 		34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToScrollWheel.hpp; path = RemapFunc/ScrollWheelToScrollWheel.hpp; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
@@ -521,6 +525,8 @@
 				34997E3516C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp */,
 				342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */,
 				342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */,
+				34F6FE5D197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp */,
+				34F6FE5E197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp */,
 				34B464F113A65AED00470265 /* VK_JIS_BACKSLASH.cpp */,
 				34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */,
 				34B464ED13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp */,
@@ -579,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */,
+				34F6FE60197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp in Headers */,
 				3477936B185B1FA800B3EF06 /* IOLogWrapper.hpp in Headers */,
 				34779364185B1FA800B3EF06 /* FlagStatus.hpp in Headers */,
 				34EE5C54192CDEAA00D73DDE /* WindowNameFilter.hpp in Headers */,
@@ -806,6 +813,7 @@
 				342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */,
 				34997E3616C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.cpp in Sources */,
 				349A10901907D0290000E43F /* BlockUntilKeyUp.cpp in Sources */,
+				34F6FE5F197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp in Sources */,
 				347A6DAB16DA54C4000DD15D /* FlipScrollWheel.cpp in Sources */,
 				34779376185B1FA800B3EF06 /* ListHookedKeyboard.cpp in Sources */,
 				34B3663716DA5E0D0081C5D7 /* FlipPointingRelative.cpp in Sources */,

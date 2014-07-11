@@ -7,11 +7,12 @@
 #include "VirtualKey/VK_CONSUMERKEY.hpp"
 #include "VirtualKey/VK_DEFINED_IN_USERSPACE.hpp"
 #include "VirtualKey/VK_IOHIDPOSTEVENT.hpp"
+#include "VirtualKey/VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp"
 #include "VirtualKey/VK_LAZY.hpp"
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
-#include "VirtualKey/VK_STICKY.hpp"
 #include "VirtualKey/VK_PARTIAL.hpp"
+#include "VirtualKey/VK_STICKY.hpp"
 #include "VirtualKey/VK_WAIT.hpp"
 #include "VirtualKey/VK_JIS_BACKSLASH.hpp"
 #include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
@@ -47,19 +48,20 @@ namespace org_pqrs_Karabiner {
   bool
   VirtualKey::handle(const Params_KeyboardEventCallBack& params)
   {
-    if (VirtualKey::VK_CONFIG::handle(params))                { return true; }
-    if (VirtualKey::VK_CONSUMERKEY::handle(params))           { return true; }
-    if (VirtualKey::VK_DEFINED_IN_USERSPACE::handle(params))  { return true; }
-    if (VirtualKey::VK_IOHIDPOSTEVENT::handle(params))        { return true; }
-    if (VirtualKey::VK_LAZY::handle(params))                  { return true; }
-    if (VirtualKey::VK_LOCK::handle(params))                  { return true; }
-    if (VirtualKey::VK_MOUSEKEY::handle(params))              { return true; }
-    if (VirtualKey::VK_PARTIAL::handle(params))               { return true; }
-    if (VirtualKey::VK_STICKY::handle(params))                { return true; }
-    if (VirtualKey::VK_WAIT::handle(params))                  { return true; }
-    if (VirtualKey::VK_JIS_BACKSLASH::handle(params))         { return true; }
-    if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params)) { return true; }
-    if (VirtualKey::VK_JIS_YEN::handle(params))               { return true; }
+    if (VirtualKey::VK_CONFIG::handle(params))                      { return true; }
+    if (VirtualKey::VK_CONSUMERKEY::handle(params))                 { return true; }
+    if (VirtualKey::VK_DEFINED_IN_USERSPACE::handle(params))        { return true; }
+    if (VirtualKey::VK_IOHIDPOSTEVENT::handle(params))              { return true; }
+    if (VirtualKey::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK::handle(params)) { return true; }
+    if (VirtualKey::VK_LAZY::handle(params))                        { return true; }
+    if (VirtualKey::VK_LOCK::handle(params))                        { return true; }
+    if (VirtualKey::VK_MOUSEKEY::handle(params))                    { return true; }
+    if (VirtualKey::VK_PARTIAL::handle(params))                     { return true; }
+    if (VirtualKey::VK_STICKY::handle(params))                      { return true; }
+    if (VirtualKey::VK_WAIT::handle(params))                        { return true; }
+    if (VirtualKey::VK_JIS_BACKSLASH::handle(params))               { return true; }
+    if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params))       { return true; }
+    if (VirtualKey::VK_JIS_YEN::handle(params))                     { return true; }
     return false;
   }
 

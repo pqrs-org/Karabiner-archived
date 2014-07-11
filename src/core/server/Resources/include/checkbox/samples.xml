@@ -1864,8 +1864,22 @@ Two Lines</autogen>
       <name>ForceNumLockOn</name>
       <item>
         <identifier>remap.samples_forcenumlockon</identifier>
-        <name>Force turn NumLock on at Apple Internal Keyboard (0x05ac,0x021a)</name>
-        <autogen>__ForceNumLockOn__ DeviceVendor::APPLE_COMPUTER, DeviceProduct::APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x021a</autogen>
+        <name>Force turn NumLock on at Apple Internal Keyboard (0x05ac,0x0245)</name>
+        <appendix>(The jkl keys on MacBook will be changed to 123 when numlock is on.)</appendix>
+        <autogen>
+          __ForceNumLockOn__
+          DeviceVendor::RawValue::0x05ac,
+          DeviceProduct::RawValue::0x0245,
+        </autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_forcenumlockon_restore</identifier>
+        <name>Toggle NumLock by fn-escape.</name>
+        <autogen>
+          __KeyToKey__
+          KeyCode::ESCAPE, ModifierFlag::FN,
+          KeyCode::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK,
+        </autogen>
       </item>
     </item>
 
