@@ -538,4 +538,9 @@
     <equal>org.pqrs.Seil</equal>
   </appdef>
 
+  <appdef>
+    <appname>muCommander</appname>
+    <equal>com.mucommander.muCommander</equal>
+  </appdef>
+
 </root>
