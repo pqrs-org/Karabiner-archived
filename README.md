@@ -11,7 +11,7 @@ Karabiner is a powerful utility for keyboard customization.
 Prior to version 9.3.0, Karabiner was called *KeyRemap4MacBook*.
 
 Useful links
----------
+------------
 
 * Latest build: https://pqrs.org/osx/karabiner/
 * Mirror: http://tekezo.github.io/pqrs.org/
