@@ -1,42 +1,42 @@
 <?xml version="1.0"?>
 <root>
-	<item>
-		<name>Logitech M560 mouse</name>
-		<appendix>Support for extra buttons</appendix>
-		<item>
-			<name>Forward Button to Browser Go Forward</name>
-			<appendix>Button on the left side of M560</appendix>
-			<identifier>device.logitech.m560.browser.goforward</identifier>
-			<device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
-			<autogen>
-				__KeyToKey__
-				KeyCode::COMMAND_R,
-				KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L
-			</autogen>
-		</item>
+  <item>
+    <name>Logitech M560 mouse</name>
+    <appendix>Support for extra buttons</appendix>
+    <item>
+      <name>Forward Button to Browser Go Forward</name>
+      <appendix>Button on the left side of M560</appendix>
+      <identifier>device.logitech.m560.browser.goforward</identifier>
+      <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMAND_R,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L
+      </autogen>
+    </item>
 
-		<item>
-			<name>Back Button to Browser Go Back</name>
-			<appendix>Button on the left side of M560</appendix>
-			<identifier>device.logitech.m560.browser.goback</identifier>
-			<device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
-			<autogen>
-				__KeyToKey__
-				KeyCode::D, ModifierFlag::COMMAND_L,
-				KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L
-			</autogen>
-		</item>
+    <item>
+      <name>Back Button to Browser Go Back</name>
+      <appendix>Button on the left side of M560</appendix>
+      <identifier>device.logitech.m560.browser.goback</identifier>
+      <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::D, ModifierFlag::COMMAND_L,
+        KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L
+      </autogen>
+    </item>
 
-		<item>
-			<name>Home button (under the wheel) to Mission Control</name>
-			<appendix>Button in the middle of M560 under the wheel</appendix>
-			<identifier>device.logitech.m560.osx.missioncontrol</identifier>
-			<device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
-			<autogen>
-				__KeyToKey__
-				KeyCode::OPTION_L, KeyCode::COMMAND_L,
-				KeyCode::F9
-			</autogen>
-		</item>
-	</item>
+    <item>
+      <name>Home button (under the wheel) to Mission Control</name>
+      <appendix>Button in the middle of M560 under the wheel</appendix>
+      <identifier>device.logitech.m560.osx.missioncontrol</identifier>
+      <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_L, KeyCode::COMMAND_L,
+        KeyCode::F9
+      </autogen>
+    </item>
+  </item>
 </root>
