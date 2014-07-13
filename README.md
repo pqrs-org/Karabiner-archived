@@ -15,7 +15,7 @@ Useful links
 
 * Latest build: https://pqrs.org/osx/karabiner/
 * Mirror: http://tekezo.github.io/pqrs.org/
-* Google Group:  https://groups.google.com/forum/#!forum/osx-karabiner
+* Google Group: https://groups.google.com/forum/#!forum/osx-karabiner
 
 
 System requirements
