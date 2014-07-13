@@ -8,6 +8,9 @@
       <appendix>Then you can use Vi style navigation by HJKL.</appendix>
       <appendix>- HJKL to Left/Down/Up/Right</appendix>
       <identifier vk_config="true">notsave.simultaneouskeypresses_vimode</identifier>
+
+      {{ SIMULTANEOUS_VI_MODE_EXTRA }}
+
       <autogen>__ShowStatusMessage__ Vi Mode</autogen>
       <autogen>__KeyToKey__ {{VI_H}}, KeyCode::CURSOR_LEFT</autogen>
       <autogen>__KeyToKey__ {{VI_J}}, KeyCode::CURSOR_DOWN</autogen>
