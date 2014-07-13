@@ -3,66 +3,62 @@ Karabiner
 
 Karabiner is a powerful utility for keyboard customization.
 
-* Change the key. (For example, "Change Right Option to Enter")
-* Accelerate speed of the key repeat.
+* Change the key mappings (For example, "Change Right Option to Enter")
+* Change the key repeat speed.
 * The revival of a lost NumPad key (Fn+jkluio789…)
 * Features for more efficient operations. (Emacs Mode, Vi Mode, Mouse Keys Mode, ...)
 
 Prior to version 9.3.0, Karabiner was called *KeyRemap4MacBook*.
 
-Web pages
+Useful links
 ---------
 
-* master: https://pqrs.org/osx/karabiner/
-* backup: http://tekezo.github.io/pqrs.org/
+* Latest build: https://pqrs.org/osx/karabiner/
+* Mirror: http://tekezo.github.io/pqrs.org/
 * Google Group:  https://groups.google.com/forum/#!forum/keyremap4macbook
 
 
 System requirements
 -------------------
 
-Mac OS X 10.9 (Mavericks) or higher.  Karabiner works for all Mac products, including MacBook series, iMac, Mac mini, and Mac Pro.
+Karabiner works for all Mac products, including MacBook series, iMac, Mac mini, and Mac Pro, with the requirement that it runs Mac OS X 10.9 (Mavericks) or higher.  
 
-* If you require Karabiner for OS X 10.6 - 10.8, use KeyRemap4MacBook 8.4.0.
-* If you require Karabiner for OS X 10.4 - 10.5, use KeyRemap4MacBook 5.1.0.
+* If you require Karabiner for OS X 10.6 - 10.8, please use KeyRemap4MacBook 8.4.0.
+* If you require Karabiner for OS X 10.4 - 10.5, please use KeyRemap4MacBook 5.1.0.
 
 
 How to build
 ------------
 
-Requirements:
+System Requirements:
 
 * OS X 10.9+
 * Xcode 5.0.1+
 * Command Line Tools for Xcode
 * Boost 1.54.0+ (header-only) http://www.boost.org/
 
-Please install Boost into /usr/local/include/boost.
+Please install Boost into `/usr/local/include/boost`.
 
 ### Step 1: Getting source code
 
-Execute a following command in Terminal.app.
+Download the source to master.tar.gz in the current directory, this can be re-executed to restart a cancelled download.
 
-<pre>
-git clone --depth 10 https://github.com/tekezo/Karabiner.git
-</pre>
+    curl -OLC - https://github.com/tekezo/Karabiner/archive/master.tar.gz
+
+Extract the master.tar.gz file to "Karabiner-master" and delete the tar.gz file
+
+    tar -xvzf master.tar.gz && rm master.tar.gz
 
 ### Step 2: Building a package
 
-Execute a following command in Terminal.app.
+    cd Karabiner-master
+    make
 
-<pre>
-cd Karabiner
-make
-</pre>
-
-Then, Karabiner-VERSION.dmg has been created in the current directory.
-It's a distributable package.
+The `make` script will create a redistributable **Karabiner-VERSION.dmg** in the current directory.
 
 
-**Note:**<br />
-Build may be failed if you changed environment values or changed /usr/bin files.<br />
-Use clean environment (new account) if build was failed.
+**Note:**
+The build may fail if you have changed any environment variables or if you have modified scripts in the `/usr/bin` locations. Use a clean environment (new account) if this is the case.
 
 
 Customized Sparkle
