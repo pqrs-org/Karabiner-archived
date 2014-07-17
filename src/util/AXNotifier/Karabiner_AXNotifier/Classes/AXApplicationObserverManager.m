@@ -122,7 +122,13 @@
         if (! systemApplicationObservers_[bundleIdentifier]) {
           NSArray* runningApplications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
           if ([runningApplications count] > 0) {
-            systemApplicationObservers_[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0]];
+            @try {
+              systemApplicationObservers_[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0]];
+            } @catch (NSException* e) {
+#if 0
+              NSLog(@"%@", e);
+#endif
+            }
           }
         }
       }
