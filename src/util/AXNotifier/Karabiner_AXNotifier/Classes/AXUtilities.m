@@ -36,7 +36,9 @@ finish:
                                                 kAXFocusedWindowAttribute,
                                                 (CFTypeRef*)(&result));
   if (error != kAXErrorSuccess) {
+#if 0
     NSLog(@"copyFocusedWindow is failed. error:%d", error);
+#endif
     return NULL;
   }
   return result;

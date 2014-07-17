@@ -142,11 +142,13 @@
           runningApplicationForAXApplicationObserver_ = nil;
           return;
         }
+#if 0
         if (retryCounter_ > 0) {
           NSLog(@"AXApplicationObserverManager creates AXApplicationObserver for %@ (retryCounter_:%d)",
                 runningApplicationForAXApplicationObserver_,
                 retryCounter_);
         }
+#endif
 
         @try {
           observer_ = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplicationForAXApplicationObserver_];
@@ -157,7 +159,9 @@
           retryCounter_ = 0;
 
         } @catch (NSException* e) {
+#if 0
           NSLog(@"%@", e);
+#endif
           ++retryCounter_;
         }
       }
