@@ -75,6 +75,12 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       observable = NO;
     }
 
+    // LibreOffice will be crash if observe.
+    // https://github.com/tekezo/Karabiner/issues/243
+    if ([[runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"]) {
+      observable = NO;
+    }
+
     // ----------------------------------------
     if (observable) {
       pid_t pid = [self.runningApplication processIdentifier];
