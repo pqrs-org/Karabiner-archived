@@ -10,7 +10,21 @@
     static dispatch_once_t onceToken = 0;
     dispatch_once(&onceToken, ^{
       NSLog(@"kextload");
-      system("/Applications/Karabiner.app/Contents/Library/bin/kextload load");
+
+      NSString* kextload = @"/Applications/Karabiner.app/Contents/Library/bin/kextload";
+      if (! [[NSFileManager defaultManager] fileExistsAtPath:@"kextload"]) {
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSAlert* alert = [NSAlert new];
+            [alert setMessageText:@"Karabiner Error"];
+            [alert addButtonWithTitle:@"Close"];
+            [alert setInformativeText:@"You need to place Karabiner.app in /Applications."];
+
+            [alert runModal];
+          });
+        return;
+      }
+
+      system([[NSString stringWithFormat:@"%@ load", kextload] UTF8String]);
       [NSThread sleepForTimeInterval:0.5];
     });
   }
