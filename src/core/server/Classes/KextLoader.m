@@ -12,7 +12,7 @@
       NSLog(@"kextload");
 
       NSString* kextload = @"/Applications/Karabiner.app/Contents/Library/bin/kextload";
-      if (! [[NSFileManager defaultManager] fileExistsAtPath:@"kextload"]) {
+      if (! [[NSFileManager defaultManager] fileExistsAtPath:kextload]) {
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSAlert* alert = [NSAlert new];
             [alert setMessageText:@"Karabiner Error"];
