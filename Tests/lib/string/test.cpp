@@ -42,7 +42,7 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file)
       std::string key = std::string("TARGET") + boost::lexical_cast<std::string>(i);
       replacement[key] = "REPLACEMENT";
     }
-    const char* filepath = "data/checkbox.xml";
+    const char* filepath = "data/large";
     pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, replacement_warnings, filepath, replacement);
   }
 }
