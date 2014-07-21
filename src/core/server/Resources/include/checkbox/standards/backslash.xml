@@ -53,6 +53,40 @@
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
+      <name>Backslash(\) to Forward Delete</name>
+      <appendix>(+ Fn+Backslash(\) to Backslash(\))</appendix>
+      <appendix>(+ Command+Backslash to delete word)</appendix>
+      <identifier>remap.backslash_to_forward_delete_command_backslash_delete_word</identifier>
+
+      <!-- command-backslash to delete word -->
+      <block>
+        <only>WORD</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+          KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L,
+        </autogen>
+      </block>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L,
+      </autogen>
+
+      <!-- fn-backslash to backslash -->
+      <autogen>
+        __KeyToKey__
+        KeyCode::BACKSLASH, ModifierFlag::FN,
+        KeyCode::BACKSLASH
+      </autogen>
+      <!-- backslash to forward delete -->
+      <autogen>
+        __KeyToKey__
+        KeyCode::BACKSLASH,
+        KeyCode::FORWARD_DELETE,
+      </autogen>
+    </item>
+    <item>
       <name>Backslash(\) to Forward Delete (if no other modifiers pressed)</name>
       <identifier>remap.backslash2forwarddelete_nomods</identifier>
       <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
