@@ -142,28 +142,36 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
 - (void) refresh_connection_with_retry
 {
-  // [UserClient_userspace connect_to_kext] may fail by kIOReturnExclusiveAccess
-  // when connect_to_kext is called in NSWorkspaceSessionDidBecomeActiveNotification.
-  // So, we retry the connection some times.
-  //
-  // Try one minute
-  // (There are few seconds between kext::init and registerService is called.
-  // So we need to wait for a while.)
+  @synchronized(self) {
+    // [UserClient_userspace connect_to_kext] may fail by kIOReturnExclusiveAccess
+    // when connect_to_kext is called in NSWorkspaceSessionDidBecomeActiveNotification.
+    // So, we retry the connection some times.
+    //
+    // Try one minute
+    // (There are few seconds between kext::init and registerService is called.
+    // So we need to wait for a while.)
 
-  [timer_ invalidate];
-  timer_ = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                            target:self
-                                          selector:@selector(timerFireMethod:)
-                                          userInfo:nil
-                                           repeats:YES];
-  retryCounter_ = 0;
-  [timer_ fire];
+    [timer_ invalidate];
+    timer_ = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                              target:self
+                                            selector:@selector(timerFireMethod:)
+                                            userInfo:nil
+                                             repeats:YES];
+    retryCounter_ = 0;
+    [timer_ fire];
+  }
 }
 
 - (void) timerFireMethod:(NSTimer*)timer
 {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
+      if (! [timer isValid]) {
+        // disconnect_from_kext is already called.
+        // return immediately.
+        return;
+      }
+
       @try {
         if ([userClient_userspace_ refresh_connection]) {
           // connected
@@ -190,6 +198,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
         }
 
       } @catch (NSException* e) {
+        // unrecoverable error occurred.
+
         [timer invalidate];
 
         NSAlert* alert = [NSAlert new];
@@ -206,8 +216,10 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
 - (void) disconnect_from_kext
 {
-  [timer_ invalidate];
-  [userClient_userspace_ disconnect_from_kext];
+  @synchronized(self) {
+    [timer_ invalidate];
+    [userClient_userspace_ disconnect_from_kext];
+  }
 }
 
 - (void) send_remapclasses_initialize_vector_to_kext
