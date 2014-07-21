@@ -3,6 +3,7 @@ Since 10.0.0
 
 * Fixed issues:
     * The continuous key sequence will be improper order in environments which VMWare Fusion is installed.
+    * A message "Karabiner cannot connect with kernel extension" might be shown in some environment.
 
 * Show an error alert when Karabiner is not placed in /Applications.
 
