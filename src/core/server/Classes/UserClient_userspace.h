@@ -8,7 +8,7 @@
 
 - (id) init:(io_async_ref64_t*)asyncref;
 
-- (void) refresh_connection_with_retry:(int)retrycount wait:(NSTimeInterval)wait;
+- (BOOL) refresh_connection;
 - (void) disconnect_from_kext;
 - (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct;
 
