@@ -3,11 +3,6 @@
 #import "UserClient_userspace.h"
 #include "bridge.h"
 
-typedef enum {
-  UNRECOVERABLE_ERROR_NONE,
-  UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH,
-} UnrecoverableError;
-
 @interface UserClient_userspace ()
 {
   io_service_t service_;
@@ -15,8 +10,6 @@ typedef enum {
   IONotificationPortRef notifyport_;
   CFRunLoopSourceRef loopsource_;
   io_async_ref64_t* asyncref_;
-
-  UnrecoverableError unrecoverableError_;
 }
 @end
 
@@ -46,8 +39,6 @@ typedef enum {
 
 - (void) openUserClient
 {
-  unrecoverableError_ = UNRECOVERABLE_ERROR_NONE;
-
   io_iterator_t iterator;
 
   [KextLoader load]; // Load kext before use org_pqrs_driver_Karabiner
@@ -60,7 +51,7 @@ typedef enum {
 
   for (;;) {
     // service will not be found until registerService() is called in kext.
-    // If service does not exist, wait for a while and retry in refresh_connection_with_retry.
+    // If service does not exist, wait for a while and retry.
     io_service_t s = IOIteratorNext(iterator);
     if (s == IO_OBJECT_NULL) {
       NSLog(@"[INFO] IOService is not found.");
@@ -108,7 +99,9 @@ typedef enum {
         if (open_result == BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH) {
           NSLog(@"[ERROR] BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH\n");
           if ([Relauncher isEqualPreviousProcessVersionAndCurrentProcessVersion]) {
-            unrecoverableError_ = UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH;
+            @throw [NSException exceptionWithName:@"UserClient_userspaceException"
+                                           reason:@"Kernel extension and app version are mismatched.\nPlease restart your system in order to reload kernel extension."
+                                         userInfo:nil];
           } else {
             NSLog(@"Karabiner might have been upgraded.");
             [Relauncher relaunch];
@@ -155,7 +148,6 @@ finish:
     service_ = IO_OBJECT_NULL;
     connect_ = IO_OBJECT_NULL;
     asyncref_ = asyncref;
-    unrecoverableError_ = UNRECOVERABLE_ERROR_NONE;
   }
 
   return self;
@@ -205,59 +197,13 @@ finish:
   }
 }
 
-- (void) refresh_connection_with_retry:(int)retrycount wait:(NSTimeInterval)wait
+- (BOOL) refresh_connection
 {
-  // "connect_to_kext" may fail by kIOReturnExclusiveAccess
-  // when connect_to_kext is called in NSWorkspaceSessionDidBecomeActiveNotification.
-  // So, we retry the connection some times.
-
-  NSString* errorMessage = nil;
-
   @synchronized(self) {
-    for (int i = 0; i < retrycount; ++i) {
-      [self disconnect_from_kext];
-      [self connect_to_kext];
+    [self disconnect_from_kext];
+    [self connect_to_kext];
 
-      if (connect_ != IO_OBJECT_NULL) {
-        // succeed
-        return;
-      }
-
-      // If an unrecoverable error occurred, give up immediately.
-      if (unrecoverableError_ != UNRECOVERABLE_ERROR_NONE) {
-        switch (unrecoverableError_) {
-          case UNRECOVERABLE_ERROR_BRIDGE_VERSION_MISMATCH:
-            errorMessage = @"Kernel extension and app version are mismatched.\n"
-                           @"Please restart your system in order to reload kernel extension.\n";
-            break;
-
-          case UNRECOVERABLE_ERROR_NONE:
-            break;
-        }
-        goto error;
-      }
-
-      [NSThread sleepForTimeInterval:wait];
-    }
-
-    if (connect_ == IO_OBJECT_NULL) {
-      errorMessage = @"Karabiner cannot connect with kernel extension.\n"
-                     @"Please restart your system in order to solve the problem.\n";
-      goto error;
-    }
-  }
-
-  return;
-
-error:
-  if (errorMessage) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-      NSAlert* alert = [NSAlert new];
-      [alert setMessageText:@"Karabiner Alert"];
-      [alert addButtonWithTitle:@"Close"];
-      [alert setInformativeText:errorMessage];
-      [alert runModal];
-    });
+    return connect_ != IO_OBJECT_NULL;
   }
 }
 
