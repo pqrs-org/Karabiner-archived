@@ -127,6 +127,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>FKBN91MRL_NFB2</productname>
+    <productid>0x1818</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>K33374</productname>
     <productid>0x2012</productid>
   </deviceproductdef>
