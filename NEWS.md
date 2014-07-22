@@ -1,5 +1,5 @@
-Since 10.0.0
-------------
+Version 10.1.0
+--------------
 
 * Fixed issues:
     * The continuous key sequence will be improper order in environments which VMWare Fusion is installed.
@@ -7,6 +7,8 @@ Since 10.0.0
 * Show an error alert when Karabiner is not placed in /Applications.
 * Updates for people who add new settings by oneself:
     * Added KeyCode::VK\_IOHIKEYBOARD\_TOGGLE\_NUMLOCK.
+* Updated prepared settings.
+* Some minor improvements.
 
 Version 10.0.0
 --------------
