@@ -20,7 +20,21 @@
     <item>
       <name>Command+Delete to Option_L+Delete</name>
       <identifier>remap.commandDelete2optionLdelete</identifier>
-      <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <block>
+        <!-- preserve command-delete at delete-selected-files in Finder -->
+        <only>FINDER</only>
+        <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
+        <autogen>
+          __KeyToKey__
+          KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        </autogen>
+      </block>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::DELETE, ModifierFlag::OPTION_L,
+      </autogen>
     </item>
     <item>
       <name>Control+Delete to Command_L+Delete</name>
