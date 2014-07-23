@@ -68,7 +68,8 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     }
 
     // Java apps will be crash if observe. (We confirm crash in SQLDeveloper.)
-    if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"]) {
+    if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
+        [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"]) {
 #if 0
       NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
 #endif
