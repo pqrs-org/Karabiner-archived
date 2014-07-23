@@ -755,6 +755,66 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                     </subviews>
                                 </view>
                             </tabViewItem>
+                            <tabViewItem label="AXNotifier" identifier="" id="fN6-dc-HpZ">
+                                <view key="view" id="zdM-6k-jSP">
+                                    <rect key="frame" x="10" y="33" width="622" height="558"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <box autoresizesSubviews="NO" title="On/Off" borderType="line" id="9xz-eA-K3t">
+                                            <rect key="frame" x="14" y="213" width="594" height="332"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView">
+                                                <rect key="frame" x="1" y="1" width="592" height="316"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button id="27K-KA-6hE">
+                                                        <rect key="frame" x="16" y="290" width="217" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WZS-lb-Ap5">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="manageAXNotifier:" target="494" id="39y-1a-xeO"/>
+                                                            <binding destination="1176" name="value" keyPath="values.kIsAXNotifierEnabled" id="YMa-nF-sYh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <imageView id="Qz6-Jz-LBo">
+                                                        <rect key="frame" x="18" y="242" width="32" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="ODw-fA-ogD"/>
+                                                    </imageView>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jUH-Ca-wfX">
+                                                        <rect key="frame" x="56" y="36" width="520" height="238"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="e3W-S7-z09">
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="title">Be careful:
+Do not disable AXNotifier if you do not know much about AXNotifier.
+
+
+You need to enable AXNotifier if you want to use following settings:
+
+* application specific settings.
+    (eg. "Change the command key only in Terminal".)
+
+* window name specific settings.
+    (eg. "Disable command-w in Gmail on Google Chrome".)
+
+* ui element role specific settings.
+    (eg. "Change hjkl keys to arrow keys when you are not editing text.)</string>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </view>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
                             <tabViewItem label="Misc &amp; Uninstall" identifier="2" id="634">
                                 <view key="view" id="635">
                                     <rect key="frame" x="10" y="33" width="622" height="558"/>
@@ -1185,6 +1245,15 @@ Label</string>
         </customObject>
         <customObject id="1320" customClass="IOHIDPostEventWrapper"/>
         <userDefaultsController representsSharedInstance="YES" id="1176"/>
+        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="GZ6-sW-Plb">
+            <rect key="frame" x="0.0" y="0.0" width="63" height="34"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Multiline Label" id="ukG-dq-Ouc">
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+        </textField>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
