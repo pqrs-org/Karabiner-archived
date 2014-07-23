@@ -1,3 +1,8 @@
+Version 10.1.1
+--------------
+
+* Improved compatibility with JavaAppLauncher.
+
 Version 10.1.0
 --------------
 
