@@ -2,6 +2,7 @@ Version 10.1.1
 --------------
 
 * Improved compatibility with JavaAppLauncher.
+* Added an option to disable AXNotifier. ("AXNotifier" tab in Preferences.)
 
 Version 10.1.0
 --------------
