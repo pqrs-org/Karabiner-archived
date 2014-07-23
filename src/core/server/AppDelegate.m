@@ -348,7 +348,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [updater_ checkForUpdatesInBackground:nil];
 
   // ------------------------------------------------------------
-  [self launchAXNotifier];
+  [self manageAXNotifier:self];
 
   // ------------------------------------------------------------
   // Send kKarabinerServerDidLaunchNotification after launching AXNotifier.
@@ -358,7 +358,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   // two AXNotifier processes will be launched when AXNotifier is already running.
   //
   // * relaunched AXNotifier.
-  // * AXNotifier launched by launchAXNotifier.
+  // * AXNotifier launched by manageAXNotifier.
 
   [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerServerDidLaunchNotification
                                                                  object:nil];
@@ -416,6 +416,22 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
+- (IBAction) manageAXNotifier:(id)sender
+{
+  NSString* path = @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
+
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
+    // Launch AXNotifier
+    [[NSWorkspace sharedWorkspace] launchApplication:path];
+  } else {
+    NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
+    NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
+    for (NSRunningApplication* runningApplication in applications) {
+      [runningApplication terminate];
+    }
+  }
+}
+
 - (IBAction) launchEventViewer:(id)sender
 {
   NSString* path = @"/Applications/Karabiner.app/Contents/Applications/EventViewer.app";
@@ -425,12 +441,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 - (IBAction) launchMultiTouchExtension:(id)sender
 {
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Applications/Karabiner.app/Contents/Applications/Karabiner_multitouchextension.app"];
-}
-
-- (void) launchAXNotifier
-{
-  NSString* path = @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
-  [[NSWorkspace sharedWorkspace] launchApplication:path];
 }
 
 - (IBAction) launchUninstaller:(id)sender

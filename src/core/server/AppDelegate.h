@@ -31,6 +31,7 @@
 - (NSDictionary*) getFocusedUIElementInformation;
 - (NSDictionary*) getInputSourceInformation;
 
+- (IBAction) manageAXNotifier:(id)sender;
 - (IBAction) launchEventViewer:(id)sender;
 - (IBAction) launchMultiTouchExtension:(id)sender;
 - (IBAction) launchUninstaller:(id)sender;

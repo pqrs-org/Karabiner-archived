@@ -12,3 +12,4 @@
 #define kStatusWindowOpacity                  @"statusWindowOpacity"
 #define kStatusWindowFontSize                 @"statusWindowFontSize"
 #define kStatusWindowPosition                 @"statusWindowPosition"
+#define kIsAXNotifierEnabled                  @"kIsAXNotifierEnabled"

@@ -29,7 +29,7 @@
                           kStatusWindowOpacity : @80,
                           kStatusWindowFontSize : @0,  // Small
                           kStatusWindowPosition : @3,  // Bottom right
-  };
+                          kIsAXNotifierEnabled : @YES, };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
