@@ -21,6 +21,7 @@
   [self output:@"  Profile operations:\n"];
   [self output:@"    $ karabiner list\n"];
   [self output:@"    $ karabiner select INDEX (INDEX starts at 0)\n"];
+  [self output:@"    $ karabiner select_by_name NAME\n"];
   [self output:@"    $ karabiner selected\n"];
   [self output:@"    $ karabiner append NAME\n"];
   [self output:@"    $ karabiner rename INDEX NEWNAME (INDEX starts at 0)\n"];
@@ -53,6 +54,16 @@
   [self output:@"  $ karabiner relaunch\n"];
 
   exit(2);
+}
+
+- (void) select:(KarabinerClient*)client command:(NSString*)command index:(NSInteger)index
+{
+  [[client proxy] configlist_select:index];
+
+  if ([[client proxy] configlist_selectedIndex] != index) {
+    [self output:[NSString stringWithFormat:@"Failed to %@.\n", command]];
+    exit(1);
+  }
 }
 
 - (void) main
@@ -112,12 +123,23 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        [[client proxy] configlist_select:[value intValue]];
+        [self select:client command:command index:[value integerValue]];
 
-        if ([[client proxy] configlist_selectedIndex] != [value integerValue]) {
-          [self output:@"Failed to select.\n"];
-          exit(1);
+      } else if ([command isEqualToString:@"select_by_name"]) {
+        if ([arguments count] != 3) {
+          [self usage];
         }
+        NSString* value = arguments[2];
+        int index = 0;
+        for (NSDictionary* config in [[client proxy] configlist_getConfigList]) {
+          if ([value isEqualToString:config[@"name"]]) {
+            [self select:client command:command index:index];
+            return;
+          }
+          ++index;
+        }
+        [self output:[NSString stringWithFormat:@"\"%@\" is not found.\n", value]];
+        exit(1);
 
       } else if ([command isEqualToString:@"append"]) {
         if ([arguments count] != 3) {
@@ -180,8 +202,6 @@
       NSLog(@"%@", exception);
     }
   }
-
-  [[NSApplication sharedApplication] terminate:nil];
 }
 
 @end
