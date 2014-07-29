@@ -34,6 +34,15 @@
   NSInteger idx = [view_ selectedRow];
   if (idx == -1) return;
 
+  if (idx == [preferencesManager_ configlist_selectedIndex]) {
+    NSAlert* alert = [NSAlert new];
+    [alert setMessageText:@"Karabiner Alert"];
+    [alert addButtonWithTitle:@"Close"];
+    [alert setInformativeText:@"You cannot delete selected profile.\n"];
+    [alert runModal];
+    return;
+  }
+
   [preferencesManager_ configlist_delete:idx];
   [view_ reloadData];
 }
