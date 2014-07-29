@@ -18,28 +18,33 @@
 - (void) usage
 {
   [self output:@"Usage:\n"];
-  [self output:@"  karabiner list\n"];
-  [self output:@"  karabiner selected\n"];
-  [self output:@"  karabiner changed\n"];
-  [self output:@"  karabiner reloadxml\n"];
-  [self output:@"  karabiner export\n"];
-  [self output:@"  karabiner relaunch\n"];
-  [self output:@"  karabiner select INDEX\n"];
-  [self output:@"  karabiner set IDENTIFIER VALUE\n"];
-  [self output:@"  karabiner enable IDENTIFIER (alias of set IDENTIFIER 1)\n"];
-  [self output:@"  karabiner disable IDENTIFIER (alias of set IDENTIFIER 0)\n"];
+  [self output:@"  Profile operations:\n"];
+  [self output:@"    $ karabiner list\n"];
+  [self output:@"    $ karabiner select INDEX\n"];
+  [self output:@"    $ karabiner selected\n"];
+  [self output:@"  Settings:\n"];
+  [self output:@"    $ karabiner set IDENTIFIER VALUE\n"];
+  [self output:@"    $ karabiner enable IDENTIFIER (alias of set IDENTIFIER 1)\n"];
+  [self output:@"    $ karabiner disable IDENTIFIER (alias of set IDENTIFIER 0)\n"];
+  [self output:@"    $ karabiner changed\n"];
+  [self output:@"  Others:\n"];
+  [self output:@"    $ karabiner export\n"];
+  [self output:@"    $ karabiner reloadxml\n"];
+  [self output:@"    $ karabiner relaunch\n"];
   [self output:@"\n"];
-  [self output:@"Example:\n"];
-  [self output:@"  karabiner list\n"];
-  [self output:@"  karabiner selected\n"];
-  [self output:@"  karabiner changed\n"];
-  [self output:@"  karabiner reloadxml\n"];
-  [self output:@"  karabiner export\n"];
-  [self output:@"  karabiner relaunch\n"];
-  [self output:@"  karabiner select 1\n"];
-  [self output:@"  karabiner set repeat.wait 30\n"];
-  [self output:@"  karabiner enable remap.shiftL2commandL\n"];
-  [self output:@"  karabiner disable remap.shiftL2commandL\n"];
+  [self output:@"Examples:\n"];
+  [self output:@"  $ karabiner list\n"];
+  [self output:@"  $ karabiner select 1\n"];
+  [self output:@"  $ karabiner selected\n"];
+  [self output:@"\n"];
+  [self output:@"  $ karabiner set repeat.wait 30\n"];
+  [self output:@"  $ karabiner enable remap.shiftL2commandL\n"];
+  [self output:@"  $ karabiner disable remap.shiftL2commandL\n"];
+  [self output:@"  $ karabiner changed\n"];
+  [self output:@"\n"];
+  [self output:@"  $ karabiner export\n"];
+  [self output:@"  $ karabiner reloadxml\n"];
+  [self output:@"  $ karabiner relaunch\n"];
 
   [[NSApplication sharedApplication] terminate:nil];
 }
