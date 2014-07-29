@@ -53,6 +53,7 @@
     <equal>com.thinomenon.RemoteDesktopConnection</equal>
     <equal>com.itap-mobile.qmote</equal>
     <equal>com.nulana.remotixmac</equal>
+    <equal>com.p5sys.jump.mac.viewer</equal>
   </appdef>
 
   <appdef>
