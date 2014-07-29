@@ -74,6 +74,21 @@
   [preferencesManager_ configlist_select:newIndex];
 }
 
+- (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
+{
+  [preferencesManager_ configlist_setName:rowIndex name:name];
+}
+
+- (void) configlist_append
+{
+  [preferencesManager_ configlist_append];
+}
+
+- (void) configlist_delete:(NSInteger)rowIndex
+{
+  [preferencesManager_ configlist_delete:rowIndex];
+}
+
 // ----------------------------------------------------------------------
 - (void) configxml_reload
 {
