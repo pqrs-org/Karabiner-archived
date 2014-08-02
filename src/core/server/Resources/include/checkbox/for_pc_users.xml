@@ -3,7 +3,7 @@
   <item>
     <name>For PC Users</name>
     <item>
-      <name>Change PC Application Key</name>
+      <name>Change PC Application Key (Menu Key)</name>
       <item>
         <name>Application Key to CapsLock</name>
         <identifier>remap.pc_application2capslock</identifier>
@@ -127,6 +127,15 @@
         <name>Application Key to F11</name>
         <identifier>remap.pc_application2f11</identifier>
         <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::F11</autogen>
+      </item>
+      <item>
+        <name>Application Key to Minimize</name>
+        <identifier>remap.menu_to_minimize</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::PC_APPLICATION, ModifierFlag::NONE,
+          KeyCode::M, ModifierFlag::COMMAND_R,
+        </autogen>
       </item>
       <item>
         <name>Application Key to Command_L+Space</name>
