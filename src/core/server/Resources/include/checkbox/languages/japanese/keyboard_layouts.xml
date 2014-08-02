@@ -33,6 +33,7 @@
         <include path="keyboard_layouts/dvorak.xml" />
       </item>
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Use Japanese Keyboard as US Keyboard</name>
       <identifier>remap.jis_jansi</identifier>
@@ -40,6 +41,7 @@
       <autogen>__KeyToKey__ KeyCode::JIS_YEN, KeyCode::BACKQUOTE</autogen>
       <autogen>__KeyToKey__ KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Use US Keyboard as Japanese Keyboard</name>
       <item>
@@ -77,6 +79,7 @@
         </item>
       </item>
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Use Japanese Keyboard as Semi-US Keyboard</name>
       <appendix>Change Shift+semicolon(;) to colon(:)</appendix>
@@ -95,6 +98,7 @@
       <!-- asterisk(*) == Shift+: -->
       <autogen>__KeyToKey__ KeyCode::KEY_7,     MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,           KeyCode::JIS_COLON, ModifierFlag::SHIFT_L</autogen>
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Use JIS X 6004</name>
       <identifier>remap.jis_layout_jisx6004</identifier>
@@ -117,6 +121,7 @@
       </inputsourcedetail_only>
       <include path="keyboard_layouts/jisx6004_us.xml" />
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Oyayubi Shift Input</name>
       <appendix>親指シフト (NICOLA)</appendix>
