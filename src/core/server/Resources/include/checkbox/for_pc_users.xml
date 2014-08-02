@@ -129,7 +129,7 @@
         <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::F11</autogen>
       </item>
       <item>
-        <name>Application Key to Minimize</name>
+        <name>Application Key to Minimize (Send command-m)</name>
         <identifier>remap.menu_to_minimize</identifier>
         <autogen>
           __KeyToKey__
