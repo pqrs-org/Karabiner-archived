@@ -177,7 +177,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
           // connected
 
           [timer invalidate];
-          [self observer_ConfigXMLReloaded:nil];
+          [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
           return;
 
         } else {
