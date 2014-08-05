@@ -107,8 +107,11 @@ enum {
             NSString* key = @"Launchpad";
             if (isOnScreen) {
               if (! shown_[key]) {
-                shown_[key] = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
-                [self postNotification:key bundleIdentifier:shown_[key] visibility:YES];
+                NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
+                if (bundleIdentifier) {
+                  shown_[key] = bundleIdentifier;
+                  [self postNotification:key bundleIdentifier:shown_[key] visibility:YES];
+                }
               }
               return;
             }
