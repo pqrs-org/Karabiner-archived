@@ -5,7 +5,10 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    HoldingKeyToKey::HoldingKeyToKey(void) : index_(0), index_is_holding_(false)
+    HoldingKeyToKey::HoldingKeyToKey(void) :
+      isUseSeparator_(false),
+      indexType_(INDEX_IS_NORMAL),
+      index_(0)
     {
       dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY);
     }
@@ -28,16 +31,13 @@ namespace org_pqrs_Karabiner {
               break;
 
             default:
-              if (datatype == BRIDGE_DATATYPE_KEYCODE &&
+              if (! isUseSeparator_ &&
+                  datatype == BRIDGE_DATATYPE_KEYCODE &&
                   KeyCode::VK_NONE == KeyCode(newval) &&
-                  ! index_is_holding_) {
-                index_is_holding_ = true;
+                  indexType_ == INDEX_IS_NORMAL) {
+                indexType_ = INDEX_IS_HOLDING;
               } else {
-                if (index_is_holding_) {
-                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,  datatype, newval);
-                } else {
-                  dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
-                }
+                addToDependingPressingPeriodKeyToKey(datatype, newval);
               }
               break;
           }
@@ -55,7 +55,7 @@ namespace org_pqrs_Karabiner {
           switch (index_) {
             case 0:
               if (datatype == BRIDGE_DATATYPE_OPTION && Option::USE_SEPARATOR == Option(newval)) {
-                // do nothing
+                isUseSeparator_ = true;
               } else {
                 IOLOG_ERROR("Invalid HoldingKeyToKey::add\n");
               }
@@ -72,13 +72,18 @@ namespace org_pqrs_Karabiner {
 
             default:
               if (datatype == BRIDGE_DATATYPE_OPTION && Option::SEPARATOR == Option(newval)) {
-                if (index_ >= 2) {
-                  index_is_holding_ = true;
+                if (index_ >= 2 &&
+                    indexType_ == INDEX_IS_NORMAL) {
+                  indexType_ = INDEX_IS_HOLDING;
                 }
-              } else if (index_is_holding_) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+              } else if (datatype == BRIDGE_DATATYPE_OPTION && Option::KEYTOKEY_BEFORE_KEYDOWN == Option(newval)) {
+                indexType_ = INDEX_IS_KEYTOKEY_BEFORE_KEYDOWN;
+                dppkeytokey_.addBeforeAfterKeys(datatype, newval);
+              } else if (datatype == BRIDGE_DATATYPE_OPTION && Option::KEYTOKEY_AFTER_KEYUP == Option(newval)) {
+                indexType_ = INDEX_IS_KEYTOKEY_AFTER_KEYUP;
+                dppkeytokey_.addBeforeAfterKeys(datatype, newval);
               } else {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD, datatype, newval);
+                addToDependingPressingPeriodKeyToKey(datatype, newval);
               }
               break;
           }
@@ -93,6 +98,25 @@ namespace org_pqrs_Karabiner {
 
         default:
           IOLOG_ERROR("HoldingKeyToKey::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
+          break;
+      }
+    }
+
+    void
+    HoldingKeyToKey::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval)
+    {
+      switch (indexType_) {
+        case INDEX_IS_NORMAL:
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,
+                           datatype, newval);
+          break;
+        case INDEX_IS_HOLDING:
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD,
+                           datatype, newval);
+          break;
+        case INDEX_IS_KEYTOKEY_BEFORE_KEYDOWN:
+        case INDEX_IS_KEYTOKEY_AFTER_KEYUP:
+          dppkeytokey_.addBeforeAfterKeys(datatype, newval);
           break;
       }
     }
