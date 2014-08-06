@@ -1028,15 +1028,15 @@ Two Lines</autogen>
       <item>
         <identifier>remap.samples_keyoverlaidmodifier_KEYTOKEY_BEFORE_KEYDOWN</identifier>
         <name>With Option::KEYTOKEY_BEFORE_KEYDOWN, Option::KEYTOKEY_AFTER_KEYUP</name>
-        <appendix>Change space key to shift key.</appendix>
-        <appendix>(Send space key event if space key is pressed alone.)</appendix>
-        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,E)</appendix>
+        <appendix>Change right shift key to option key.</appendix>
+        <appendix>(Send space key event if right shift key is pressed alone.)</appendix>
+        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,Shift+E,F)</appendix>
         <autogen>
           __KeyOverlaidModifier__
-          KeyCode::SPACE,
+          KeyCode::SHIFT_R,
 
           @begin
-          KeyCode::SHIFT_L,
+          KeyCode::OPTION_L,
           @end
 
           @begin
@@ -1044,12 +1044,13 @@ Two Lines</autogen>
           @end
 
           Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::B, ModifierFlag::SHIFT_L,
+          KeyCode::B, ModifierFlag::SHIFT_R,
           KeyCode::C,
 
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::D, ModifierFlag::OPTION_L,
-          KeyCode::E,
+          KeyCode::E, ModifierFlag::SHIFT_R,
+          KeyCode::F,
         </autogen>
       </item>
 
@@ -1184,7 +1185,7 @@ Two Lines</autogen>
         <identifier>remap.samples_holdingkeytokey_KEYTOKEY_BEFORE_KEYDOWN</identifier>
         <name>With Option::KEYTOKEY_BEFORE_KEYDOWN, Option::KEYTOKEY_AFTER_KEYUP</name>
         <appendix>Right shift key to Tab (+ Holding right shift key to Space)</appendix>
-        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,E)</appendix>
+        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,Shift+E,F)</appendix>
         <autogen>
           __HoldingKeyToKey__
           KeyCode::SHIFT_R,
@@ -1198,12 +1199,13 @@ Two Lines</autogen>
           @end
 
           Option::KEYTOKEY_BEFORE_KEYDOWN,
-          KeyCode::B, ModifierFlag::SHIFT_L,
+          KeyCode::B, ModifierFlag::SHIFT_R,
           KeyCode::C,
 
           Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::D, ModifierFlag::OPTION_L,
-          KeyCode::E,
+          KeyCode::E, ModifierFlag::SHIFT_R,
+          KeyCode::F,
         </autogen>
       </item>
       <item>
