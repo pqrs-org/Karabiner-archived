@@ -4,7 +4,7 @@ Since 10.1.0
 * Improved compatibility with JavaAppLauncher.
 * Added an option to disable AXNotifier. ("AXNotifier" tab in Preferences.)
 * Updates for people who add new settings by oneself:
-    * \_\_HoldingKeyToKey\_\_ supports Option::KEYTOKEY_BEFORE_KEYDOWN and Option::KEYTOKEY_AFTER_KEYUP.
+    * \_\_HoldingKeyToKey\_\_ and \_\_KeyOverlaidModifier\_\_ support Option::KEYTOKEY_BEFORE_KEYDOWN and Option::KEYTOKEY_AFTER_KEYUP.
 
 Version 10.1.0
 --------------

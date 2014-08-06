@@ -37,15 +37,7 @@ namespace org_pqrs_Karabiner {
                 indexType_ = INDEX_IS_NORMAL;
               }
 
-              if (indexType_ == INDEX_IS_HOLDING) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
-              } else if (indexType_ == INDEX_IS_NORMAL) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
-              } else if (indexType_ == INDEX_IS_REPEAT_TOKEYS) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
-              }
+              addToDependingPressingPeriodKeyToKey(datatype, newval);
               break;
           }
           ++index_;
@@ -68,15 +60,7 @@ namespace org_pqrs_Karabiner {
             }
 
             default:
-              if (indexType_ == INDEX_IS_HOLDING) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
-              } else if (indexType_ == INDEX_IS_NORMAL) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
-              } else if (indexType_ == INDEX_IS_REPEAT_TOKEYS) {
-                dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
-              }
+              addToDependingPressingPeriodKeyToKey(datatype, newval);
               break;
           }
           break;
@@ -96,14 +80,18 @@ namespace org_pqrs_Karabiner {
             if (index_ >= 2 && indexType_ == INDEX_IS_HOLDING) {
               indexType_ = INDEX_IS_NORMAL;
             }
-          } else if (Option::NOREPEAT == option ||
-                     Option::KEYTOKEY_BEFORE_KEYDOWN == option ||
-                     Option::KEYTOKEY_AFTER_KEYUP == option) {
+          } else if (Option::NOREPEAT == option) {
             if (indexType_ == INDEX_IS_REPEAT_TOKEYS) {
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
             } else {
               dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
             }
+          } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == option) {
+            indexType_ = INDEX_IS_KEYTOKEY_BEFORE_KEYDOWN;
+            dppkeytokey_.addBeforeAfterKeys(datatype, newval);
+          } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
+            indexType_ = INDEX_IS_KEYTOKEY_AFTER_KEYUP;
+            dppkeytokey_.addBeforeAfterKeys(datatype, newval);
           } else {
             IOLOG_ERROR("KeyOverlaidModifier::add unknown option:%u\n", static_cast<unsigned int>(newval));
           }
@@ -123,6 +111,28 @@ namespace org_pqrs_Karabiner {
 
         default:
           IOLOG_ERROR("KeyOverlaidModifier::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
+          break;
+      }
+    }
+
+    void
+    KeyOverlaidModifier::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval)
+    {
+      switch (indexType_) {
+        case INDEX_IS_HOLDING:
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);
+          break;
+        case INDEX_IS_NORMAL:
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,             datatype, newval);
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD,         datatype, newval);
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::PRESSING_TARGET_KEY_ONLY, datatype, newval);
+          break;
+        case INDEX_IS_REPEAT_TOKEYS:
+          dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_LONG_PERIOD, datatype, newval);
+          break;
+        case INDEX_IS_KEYTOKEY_BEFORE_KEYDOWN:
+        case INDEX_IS_KEYTOKEY_AFTER_KEYUP:
+          dppkeytokey_.addBeforeAfterKeys(datatype, newval);
           break;
       }
     }
