@@ -146,9 +146,9 @@ namespace org_pqrs_Karabiner {
           }
         }
 
-        // We need to wait at least 3ms in order to avoid changing key sequence order randomly.
+        // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
         // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
-        delay = maxDelay(delay, 3);
+        delay = maxDelay(delay, 1);
         break;
       }
       case ParamsUnion::KEYBOARD_SPECIAL:
@@ -161,9 +161,9 @@ namespace org_pqrs_Karabiner {
           }
         }
 
-        // We need to wait at least 3ms in order to avoid changing key sequence order randomly.
+        // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
         // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
-        delay = maxDelay(delay, 3);
+        delay = maxDelay(delay, 1);
         break;
       }
       case ParamsUnion::RELATIVE_POINTER:
