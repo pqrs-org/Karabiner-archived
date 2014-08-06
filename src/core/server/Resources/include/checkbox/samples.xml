@@ -746,7 +746,7 @@ Two Lines</autogen>
           __KeyToKey__
           KeyCode::SHIFT_R, KeyCode::A,
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::B, ModifierFlag::CONTROL_L, KeyCode::C,
-          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L,  KeyCode::E
+          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D, ModifierFlag::OPTION_L,  KeyCode::E,
         </autogen>
         <autogen>
           __KeyToKey__
@@ -897,16 +897,16 @@ Two Lines</autogen>
           KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_keyoverlaidmodifier_use_separator_1,
           KeyCode::VK_CONFIG_FORCE_ON_notsave_samples_keyoverlaidmodifier_use_separator_2,
           KeyCode::SHIFT_L,
-
-          Option::KEYTOKEY_AFTER_KEYUP,
-          KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_1,
-          KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_2,
           @end
 
           @begin
           <!-- release 'a' -->
           KeyCode::SPACE,
           @end
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_1,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_samples_keyoverlaidmodifier_use_separator_2,
         </autogen>
       </item>
       <item hidden="true">
@@ -1022,6 +1022,34 @@ Two Lines</autogen>
           KeyCode::KEY_3,
           Option::NOREPEAT,
           @end
+        </autogen>
+      </item>
+
+      <item>
+        <identifier>remap.samples_keyoverlaidmodifier_KEYTOKEY_BEFORE_KEYDOWN</identifier>
+        <name>With Option::KEYTOKEY_BEFORE_KEYDOWN, Option::KEYTOKEY_AFTER_KEYUP</name>
+        <appendix>Change space key to shift key.</appendix>
+        <appendix>(Send space key event if space key is pressed alone.)</appendix>
+        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,E)</appendix>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::SPACE,
+
+          @begin
+          KeyCode::SHIFT_L,
+          @end
+
+          @begin
+          KeyCode::SPACE,
+          @end
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::B, ModifierFlag::SHIFT_L,
+          KeyCode::C,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::D, ModifierFlag::OPTION_L,
+          KeyCode::E,
         </autogen>
       </item>
 

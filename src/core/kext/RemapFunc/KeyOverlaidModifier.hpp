@@ -29,11 +29,15 @@ namespace org_pqrs_Karabiner {
       void add(Option newval)  { add(AddDataType(BRIDGE_DATATYPE_OPTION),  AddValue(newval.get())); }
 
     private:
+      void addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval);
+
       bool isUseSeparator_;
       enum IndexType {
         INDEX_IS_HOLDING,
         INDEX_IS_NORMAL,
         INDEX_IS_REPEAT_TOKEYS,
+        INDEX_IS_KEYTOKEY_BEFORE_KEYDOWN,
+        INDEX_IS_KEYTOKEY_AFTER_KEYUP,
       } indexType_;
       size_t index_;
       FromEvent fromEvent_;
