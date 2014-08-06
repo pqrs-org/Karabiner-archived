@@ -325,7 +325,6 @@ namespace org_pqrs_Karabiner {
       }
 
       EventWatcher::unset(isAnyEventHappen_);
-      // FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag(), fromModifierFlags_);
     }
 
     void
@@ -365,6 +364,9 @@ namespace org_pqrs_Karabiner {
 
           } else {
             target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
+
+            // clear temporary flags.
+            FlagStatus::globalFlagStatus().set();
 
             (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
           }
