@@ -1153,6 +1153,32 @@ Two Lines</autogen>
         </autogen>
       </item>
       <item>
+        <identifier>remap.samples_holdingkeytokey_KEYTOKEY_BEFORE_KEYDOWN</identifier>
+        <name>With Option::KEYTOKEY_BEFORE_KEYDOWN, Option::KEYTOKEY_AFTER_KEYUP</name>
+        <appendix>Right shift key to Tab (+ Holding right shift key to Space)</appendix>
+        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,E)</appendix>
+        <autogen>
+          __HoldingKeyToKey__
+          KeyCode::SHIFT_R,
+
+          @begin
+          KeyCode::TAB,
+          @end
+
+          @begin
+          KeyCode::SPACE,
+          @end
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::B, ModifierFlag::SHIFT_L,
+          KeyCode::C,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::D, ModifierFlag::OPTION_L,
+          KeyCode::E,
+        </autogen>
+      </item>
+      <item>
         <identifier>remap.samples_holdingkeytokey_ThresholdMillisecond</identifier>
         <name>with ThresholdMillisecond</name>
         <appendix>Escape to Tab (+ Holding Escape to Space for 3 seconds.)</appendix>

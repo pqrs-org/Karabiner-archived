@@ -127,6 +127,7 @@ namespace org_pqrs_Karabiner {
       for (size_t i = 0; i < KeyToKeyType::END_; ++i) {
         keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
       }
+      beforeAfterKeys_.add(KeyCode::VK_PSEUDO_KEY);
     }
 
     DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void)
@@ -188,6 +189,8 @@ namespace org_pqrs_Karabiner {
             FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
             FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
+            beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+
             // We need save FlagStatus at keydown.
             // For example, "Change Space to Shift_L" is enabled,
             //
@@ -218,6 +221,8 @@ namespace org_pqrs_Karabiner {
             dokeyup();
 
             FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
+
+            beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
           }
           return true;
         }

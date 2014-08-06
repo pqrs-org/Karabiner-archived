@@ -26,8 +26,16 @@ namespace org_pqrs_Karabiner {
       void add(AddDataType datatype, AddValue newval);
 
     private:
+      void addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval);
+
+      bool isUseSeparator_;
+      enum IndexType {
+        INDEX_IS_NORMAL,
+        INDEX_IS_HOLDING,
+        INDEX_IS_KEYTOKEY_BEFORE_KEYDOWN,
+        INDEX_IS_KEYTOKEY_AFTER_KEYUP,
+      } indexType_;
       size_t index_;
-      bool index_is_holding_;
       FromEvent fromEvent_;
 
       DependingPressingPeriodKeyToKey dppkeytokey_;

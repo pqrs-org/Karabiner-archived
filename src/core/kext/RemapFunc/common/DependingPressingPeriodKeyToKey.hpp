@@ -165,6 +165,10 @@ namespace org_pqrs_Karabiner {
       void add(KeyToKeyType::Value type, Option newval)  {
         add(type, AddDataType(BRIDGE_DATATYPE_OPTION), AddValue(newval.get()));
       }
+      void addBeforeAfterKeys(AddDataType datatype, AddValue newval)
+      {
+        beforeAfterKeys_.add(datatype, newval);
+      }
 
       void setPeriodMS(PeriodMS::Mode::Value newval) { periodMS_.set(newval); }
       void overwritePeriodMS(PeriodMS::Mode::Value mode, PeriodMS::Type::Value type, unsigned int newval) {
@@ -203,6 +207,7 @@ namespace org_pqrs_Karabiner {
       Vector_ModifierFlag pureFromModifierFlags_; // fromModifierFlags_ - fromEvent_.getModifierFlag()
 
       KeyToKey keytokey_[KeyToKeyType::END_];
+      KeyToKey beforeAfterKeys_;
       PeriodMS periodMS_;
 
       bool isAnyEventHappen_;
