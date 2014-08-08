@@ -995,33 +995,23 @@ Two Lines</autogen>
           Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS,
           KeyCode::E, ModifierFlag::OPTION_L,
         </autogen>
+
         <autogen>
           __KeyOverlaidModifier__
           KeyCode::S,
 
-          @begin
-          <!-- hold 'a' -->
-          KeyCode::A,
-          KeyCode::B,
-          KeyCode::C,
-          @end
+          <!-- You can also use __{ }__ as same as @begin, @end. -->
 
-          @begin
+          <!-- hold 'a' -->
+          __{ KeyCode::A, KeyCode::B, KeyCode::C, }__
+
           <!-- release 'a' -->
-          KeyCode::D,
-          KeyCode::E,
-          KeyCode::F,
-          @end
+          __{ KeyCode::D, KeyCode::E, KeyCode::F, }__
 
           Option::KEYOVERLAIDMODIFIER_REPEAT,
 
           Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS,
-          @begin
-          KeyCode::KEY_1,
-          KeyCode::KEY_2,
-          KeyCode::KEY_3,
-          Option::NOREPEAT,
-          @end
+          __{ KeyCode::KEY_1, KeyCode::KEY_2, KeyCode::KEY_3, Option::NOREPEAT, }__
         </autogen>
       </item>
 
