@@ -302,6 +302,7 @@
   <inputsourcedef>
     <name>HEBREW</name>
     <languagecode>he</languagecode>
+    <inputsourceid_equal>org.unknown.keylayout.Hebrew</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>

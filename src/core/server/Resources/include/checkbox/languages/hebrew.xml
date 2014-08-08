@@ -21,6 +21,21 @@
       </autogen>
     </item>
 
+    <item>
+      <name>Option+Shift to switch between English and Hebrew</name>
+      <appendix>The side of the shift chooses the layout: Shift_L switches to English, Shift_R switches to Hebrew</appendix>
+      <identifier>remap.hebrew_opt_shift_change_he_en</identifier>
+
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, ModifierFlag::SHIFT_L,  KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_L,  ModifierFlag::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, ModifierFlag::SHIFT_L,  KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_L,  ModifierFlag::OPTION_R, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, ModifierFlag::SHIFT_R,  KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_R,  ModifierFlag::OPTION_R, KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, ModifierFlag::SHIFT_R,  KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</autogen>
+      <autogen>__KeyToKey__ KeyCode::SHIFT_R,  ModifierFlag::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</autogen>
+    </item>
   </item>
 
 </root>
