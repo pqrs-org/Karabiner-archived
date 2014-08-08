@@ -1000,7 +1000,7 @@ Two Lines</autogen>
           __KeyOverlaidModifier__
           KeyCode::S,
 
-          <!-- You can also use __{ }__ as same as @begin, @end. -->
+          <!-- You can also use __{ }__ as well as @begin, @end. -->
 
           <!-- hold 'a' -->
           __{ KeyCode::A, KeyCode::B, KeyCode::C, }__
