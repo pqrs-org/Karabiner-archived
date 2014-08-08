@@ -96,6 +96,12 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</name>
+    <languagecode>he</languagecode>
+    <inputsourceid_equal>org.unknown.keylayout.Hebrew</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN_PRO</name>
     <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPRO</inputsourceid_equal>
   </vkchangeinputsourcedef>
