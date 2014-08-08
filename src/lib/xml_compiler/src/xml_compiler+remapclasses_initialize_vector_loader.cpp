@@ -372,6 +372,8 @@ namespace pqrs {
     // aliases
     boost::replace_all(params, "@begin", ",");
     boost::replace_all(params, "@end", ",Option::SEPARATOR,");
+    boost::replace_all(params, "__{", ",");
+    boost::replace_all(params, "}__", ",Option::SEPARATOR,");
 
     // ------------------------------------------------------------
     size_t count_index = remapclasses_initialize_vector_.size();
