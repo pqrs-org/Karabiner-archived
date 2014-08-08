@@ -36,6 +36,19 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_L, ModifierFlag::SHIFT_R,  KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</autogen>
       <autogen>__KeyToKey__ KeyCode::SHIFT_R,  ModifierFlag::OPTION_L, KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</autogen>
     </item>
+
+    <item>
+      <name>Toggle English and Hebrew by f19 key.</name>
+      <appendix>(This setting allows you to toggle input source by caps lock key by using Seil together.</appendix>
+      <appendix>Set caps lock key code to 80 in Seil.)</appendix>
+      <identifier>remap.toggle_he_en_by_f19</identifier>
+
+      <block>
+        <inputsource_only>HEBREW</inputsource_only>
+        <autogen>__KeyToKey__ KeyCode::F19, KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</autogen>
+      </block>
+      <autogen>__KeyToKey__ KeyCode::F19, KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</autogen>
+    </item>
   </item>
 
 </root>
