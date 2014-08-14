@@ -59,6 +59,18 @@
 
       <autogen>__KeyToKey__ KeyCode::N, ModifierFlag::OPTION_R,
         KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L</autogen>
+      
+      <appendix>Option_R (AltGr) + , = &lt;</appendix>
+      <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::OPTION_R,
+          KeyCode::BACKQUOTE, ModifierFlag::NONE</autogen>
+      
+      <appendix>Option_R (AltGr) + . = &gt;</appendix>
+      <autogen>__KeyToKey__ KeyCode::DOT, ModifierFlag::OPTION_R,
+          KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>
+      
+      <appendix>Option_R (AltGr) + 3 = ^</appendix>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::OPTION_R,
+          KeyCode::QUOTE, ModifierFlag::OPTION_R</autogen>
     </item>
   </item>
 </root>
