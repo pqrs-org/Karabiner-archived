@@ -265,8 +265,6 @@ namespace org_pqrs_Karabiner {
       if (! ptr) continue;
       EventOutputQueue::push(*ptr);
     }
-
-    lastFlags_ = toFlags;
   }
 
   // ======================================================================
