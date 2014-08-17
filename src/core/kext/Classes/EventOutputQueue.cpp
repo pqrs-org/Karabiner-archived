@@ -191,7 +191,9 @@ namespace org_pqrs_Karabiner {
         break;
       }
       case ParamsUnion::UPDATE_FLAGS:
-        // do nothing
+        // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
+        // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
+        delay = maxDelay(delay, 1);
         break;
     }
 
