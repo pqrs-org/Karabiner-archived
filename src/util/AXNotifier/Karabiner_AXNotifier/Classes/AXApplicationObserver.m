@@ -83,6 +83,12 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       observable = NO;
     }
 
+    // Matlab will be crash if observe.
+    // https://github.com/tekezo/Karabiner/issues/259
+    if ([[runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"]) {
+      observable = NO;
+    }
+
     // ----------------------------------------
     if (observable) {
       pid_t pid = [self.runningApplication processIdentifier];
