@@ -1,6 +1,8 @@
 Since 10.1.0
 ------------
 
+* Fixed issues:
+    * Shortcuts (eg. Ctrl-C, Ctrl-V) might not work properly in Microsoft Remote Desktop.
 * Improved compatibility with JavaAppLauncher.
 * Added an option to disable AXNotifier. ("AXNotifier" tab in Preferences.)
 * Updates for people who add new settings by oneself:
