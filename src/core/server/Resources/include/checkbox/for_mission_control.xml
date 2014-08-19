@@ -241,6 +241,17 @@
         </autogen>
       </item>
       <item>
+        <name>Cmd+Space to toggle Cmd+Tab</name>
+        <identifier>remap.keytokey_cmdtab_cmdspace</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode,
+          KeyCode::VK_LOCK_COMMAND_L_FORCE_ON,
+          KeyCode::TAB,
+        </autogen>
+      </item>
+      <item>
         <name>[Option] Control+M to Return</name>
         <identifier>remap.cmdtab_mode_controlM</identifier>
       </item>
