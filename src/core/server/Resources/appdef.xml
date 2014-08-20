@@ -544,4 +544,9 @@
     <equal>org.pqrs.Seil</equal>
   </appdef>
 
+  <appdef>
+    <appname>iPhoneSimulator</appname>
+    <equal>com.apple.iphonesimulator</equal>
+  </appdef>
+
 </root>
