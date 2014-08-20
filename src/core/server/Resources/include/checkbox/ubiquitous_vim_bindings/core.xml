@@ -87,8 +87,10 @@
         <appendix></appendix>
         <appendix>Any key (without a modifier) not defined here is a dead key.</appendix>
         <appendix></appendix>
-        <appendix>Ubiquitous Vim Normal Mode is inactive in terminal applications, Firefox, emacs, vi and vim, and when the password dialog box is active.
-        </appendix>
+        <appendix>Ubiquitous Vim Normal Mode is inactive in terminal applications, Firefox, emacs, vi and vim,</appendix>
+        <appendix>and when the password dialog box is active.</appendix>
+        <appendix></appendix>
+        <appendix>Ubiquitous Vim Normal Mode is designed for QWERTY layout.</appendix>
 
         <identifier vk_config="true">notsave.ubiq_vimnormal</identifier>
 
