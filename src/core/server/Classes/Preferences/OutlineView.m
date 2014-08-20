@@ -3,6 +3,12 @@
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
+@interface OutlineView ()
+{
+  NSMutableDictionary* textsHeightCache_;
+}
+@end
+
 @implementation OutlineView
 
 - (void) observer_PreferencesChanged:(NSNotification*)notification
@@ -34,11 +40,27 @@
   });
 }
 
++ (CGFloat) textsHeight:(NSUInteger)lineCount
+{
+  if (lineCount == 0) return 0.0f;
+
+  NSString* line = @"gM\n";
+  NSUInteger length = [line length] * lineCount - 1; // skip last '\n'
+  NSString* texts = [[NSString string] stringByPaddingToLength:length withString:line startingAtIndex:0];
+  NSDictionary* attributes = @{
+    NSFontAttributeName: [NSFont systemFontOfSize:[NSFont smallSystemFontSize]],
+  };
+  NSSize size = [texts sizeWithAttributes:attributes];
+  return size.height;
+}
+
 - (id) init
 {
   self = [super init];
 
   if (self) {
+    textsHeightCache_ = [NSMutableDictionary new];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_PreferencesChanged:)
                                                  name:kPreferencesChangedNotification
@@ -193,10 +215,14 @@
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
   NSNumber* number = item[@"height"];
-  if (! number || [number intValue] == 0) {
+  if (! number || [number intValue] <= 1) {
     number = @([outlineView rowHeight]);
   } else {
-    number = @([number intValue] * (CGFloat)([outlineView rowHeight]));
+    if (textsHeightCache_[number] == nil) {
+      textsHeightCache_[number] = @([OutlineView textsHeight:[number unsignedIntegerValue]]);
+    }
+    // We add [outlineView rowHeight] as vertical margin.
+    number = @([textsHeightCache_[number] floatValue] + [outlineView rowHeight]);
   }
 
   return [number floatValue];
