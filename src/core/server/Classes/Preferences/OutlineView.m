@@ -6,6 +6,7 @@
 @interface OutlineView ()
 {
   NSMutableDictionary* textsHeightCache_;
+  dispatch_queue_t textsHeightQueue_;
 }
 @end
 
@@ -60,6 +61,7 @@
 
   if (self) {
     textsHeightCache_ = [NSMutableDictionary new];
+    textsHeightQueue_ = dispatch_queue_create("org.pqrs.Karabiner.OutlineView.textsHeightQueue_", NULL);
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_PreferencesChanged:)
@@ -214,18 +216,20 @@
 
 - (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
 {
-  NSNumber* number = item[@"height"];
-  if (! number || [number intValue] <= 1) {
-    number = @([outlineView rowHeight]);
-  } else {
-    if (textsHeightCache_[number] == nil) {
-      textsHeightCache_[number] = @([OutlineView textsHeight:[number unsignedIntegerValue]]);
-    }
-    // We add [outlineView rowHeight] as vertical margin.
-    number = @([textsHeightCache_[number] floatValue] + [outlineView rowHeight]);
+  NSNumber* lineCount = item[@"height"];
+  __block NSNumber* height = @([outlineView rowHeight]);
+
+  if ([lineCount integerValue] > 1) {
+    dispatch_sync(textsHeightQueue_, ^{
+      if (textsHeightCache_[lineCount] == nil) {
+        textsHeightCache_[lineCount] = @([OutlineView textsHeight:[lineCount unsignedIntegerValue]]);
+      }
+      // We add [outlineView rowHeight] as vertical margin.
+      height = @([textsHeightCache_[lineCount] floatValue] + [outlineView rowHeight]);
+    });
   }
 
-  return [number floatValue];
+  return [height floatValue];
 }
 
 - (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
