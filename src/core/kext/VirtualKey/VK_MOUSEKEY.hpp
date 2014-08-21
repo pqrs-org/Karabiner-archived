@@ -13,9 +13,6 @@ namespace org_pqrs_Karabiner {
       static bool isKeyLikeModifier(KeyCode keycode);
 
     private:
-      enum {
-        TIMER_INTERVAL = 20,
-      };
       static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
 
       static bool handle_button(const Params_KeyboardEventCallBack& params);
