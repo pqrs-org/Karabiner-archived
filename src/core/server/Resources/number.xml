@@ -138,6 +138,14 @@
           <name>Speed in high speed mode</name>
           <identifier essential="true" default="50" step="10" baseunit="">parameter.mousekey_high_speed_of_pointer</identifier>
         </item>
+        <item>
+          <name>Initial Wait</name>
+          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_initial_wait_of_pointer</identifier>
+        </item>
+        <item>
+          <name>Repeat Wait</name>
+          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_repeat_wait_of_pointer</identifier>
+        </item>
       </item>
 
       <item>
@@ -153,6 +161,14 @@
         <item>
           <name>Speed in high speed mode</name>
           <identifier essential="true" default="50" step="10" baseunit="">parameter.mousekey_high_speed_of_scroll</identifier>
+        </item>
+        <item>
+          <name>Initial Wait</name>
+          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_initial_wait_of_scroll</identifier>
+        </item>
+        <item>
+          <name>Repeat Wait</name>
+          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_repeat_wait_of_scroll</identifier>
         </item>
       </item>
 

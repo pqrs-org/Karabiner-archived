@@ -90,8 +90,24 @@ namespace org_pqrs_Karabiner {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_high_speed_of_pointer);
       return getvalue(v, 0);
     }
+    static unsigned int get_mousekey_initial_wait_of_pointer(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_initial_wait_of_pointer);
+      return getvalue(v, 0);
+    }
+    static unsigned int get_mousekey_repeat_wait_of_pointer(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_repeat_wait_of_pointer);
+      return getvalue(v, 0);
+    }
     static unsigned int get_mousekey_high_speed_of_scroll(void) {
       int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_high_speed_of_scroll);
+      return getvalue(v, 0);
+    }
+    static unsigned int get_mousekey_initial_wait_of_scroll(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_initial_wait_of_scroll);
+      return getvalue(v, 0);
+    }
+    static unsigned int get_mousekey_repeat_wait_of_scroll(void) {
+      int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mousekey_repeat_wait_of_scroll);
       return getvalue(v, 0);
     }
     static unsigned int get_fixed_distance_magnification(void) {

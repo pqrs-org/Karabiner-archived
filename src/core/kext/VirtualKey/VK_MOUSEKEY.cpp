@@ -212,7 +212,11 @@ namespace org_pqrs_Karabiner {
     if (dy_ < 0) dy_ = -1;
 
     if (dx_ != 0 || dy_ != 0) {
-      fire_timer_.setTimeoutMS(TIMER_INTERVAL, false);
+      if (scrollmode_) {
+        fire_timer_.setTimeoutMS(Config::get_mousekey_initial_wait_of_scroll());
+      } else {
+        fire_timer_.setTimeoutMS(Config::get_mousekey_initial_wait_of_pointer());
+      }
     } else {
       scale_ = 1;
 
@@ -319,6 +323,10 @@ namespace org_pqrs_Karabiner {
       scale_ += acceleration;
     }
 
-    fire_timer_.setTimeoutMS(TIMER_INTERVAL);
+    if (scrollmode_) {
+      fire_timer_.setTimeoutMS(Config::get_mousekey_repeat_wait_of_scroll());
+    } else {
+      fire_timer_.setTimeoutMS(Config::get_mousekey_repeat_wait_of_pointer());
+    }
   }
 }
