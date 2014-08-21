@@ -41,6 +41,11 @@
   });
 }
 
++ (NSFont*) font
+{
+  return [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+}
+
 + (CGFloat) textsHeight:(NSUInteger)lineCount
 {
   if (lineCount == 0) return 0.0f;
@@ -48,9 +53,7 @@
   NSString* line = @"gM\n";
   NSUInteger length = [line length] * lineCount - 1; // skip last '\n'
   NSString* texts = [[NSString string] stringByPaddingToLength:length withString:line startingAtIndex:0];
-  NSDictionary* attributes = @{
-    NSFontAttributeName: [NSFont systemFontOfSize:[NSFont smallSystemFontSize]],
-  };
+  NSDictionary* attributes = @{ NSFontAttributeName: [OutlineView font] };
   NSSize size = [texts sizeWithAttributes:attributes];
   return size.height;
 }
@@ -120,7 +123,6 @@
     a = item[@"children"];
   }
 
-  if (! a) return 0;
   return [a count];
 }
 
@@ -150,28 +152,92 @@
   return a ? YES : NO;
 }
 
+- (BOOL) isTextCell:(NSTableColumn*)tableColumn item:(id)item
+{
+  if (ischeckbox_) {
+    NSString* identifier = item[@"identifier"];
+    return (! identifier || [identifier hasPrefix:@"notsave."]);
+  } else {
+    return NO;
+  }
+}
+
+- (NSCell*) outlineView:(NSOutlineView*)outlineView dataCellForTableColumn:(NSTableColumn*)tableColumn item:(id)item
+{
+  if (! tableColumn) return nil;
+
+  if (ischeckbox_) {
+    NSButtonCell* cell = [NSButtonCell new];
+    [cell setFont:[OutlineView font]];
+    [cell setButtonType:NSSwitchButton];
+    [cell setTitle:item[@"name"]];
+
+    {
+      NSColor* backgroundColor = nil;
+      NSString* style = item[@"style"];
+      if ([style isEqualToString:@"caution"]) {
+        backgroundColor = [NSColor greenColor];
+      } else if ([style isEqualToString:@"important"]) {
+        backgroundColor = [NSColor orangeColor];
+      } else if ([style isEqualToString:@"slight"]) {
+        backgroundColor = [NSColor lightGrayColor];
+      }
+
+      if (backgroundColor) {
+        [cell setBackgroundColor:backgroundColor];
+      }
+    }
+
+    if ([self isTextCell:tableColumn item:item]) {
+      [cell setImagePosition:NSNoImage];
+    }
+
+    return cell;
+
+  } else {
+    NSString* identifier = item[@"identifier"];
+    NSString* columnIdentifier = [tableColumn identifier];
+
+    if (identifier) {
+      if ([columnIdentifier isEqualToString:@"value"]) {
+        NSTextFieldCell* cell = [NSTextFieldCell new];
+        [cell setFont:[OutlineView font]];
+        [cell setEditable:YES];
+        return cell;
+
+      } else if ([columnIdentifier isEqualToString:@"stepper"]) {
+        NSStepperCell* cell = [NSStepperCell new];
+        [cell setFont:[OutlineView font]];
+
+        [cell setMinValue:0];
+        [cell setMaxValue:1073741824]; // 2^30
+        [cell setIncrement:[item[@"step"] intValue]];
+        [cell setAutorepeat:YES];
+        [cell setValueWraps:NO];
+        return cell;
+      }
+    }
+
+    // ----------------------------------------
+    NSCell* cell = [NSCell new];
+    [cell setFont:[OutlineView font]];
+
+    if ([columnIdentifier isEqualToString:@"default"]) {
+      [cell setEnabled:NO];
+    }
+
+    return cell;
+  }
+}
+
 - (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
 {
   NSString* identifier = item[@"identifier"];
 
   if (ischeckbox_) {
-    NSButtonCell* cell = [tableColumn dataCell];
-    if (! cell) return nil;
-
-    NSDictionary* attributes = item[@"stringAttributes"];
-    if (attributes) {
-      [cell setAttributedTitle:[[NSAttributedString alloc] initWithString:item[@"name"]
-                                                               attributes:attributes]];
-    } else {
-      [cell setTitle:item[@"name"]];
-    }
-
-    if (! identifier || [identifier hasPrefix:@"notsave."]) {
-      [cell setImagePosition:NSNoImage];
+    if ([self isTextCell:tableColumn item:item]) {
       return nil;
-
     } else {
-      [cell setImagePosition:NSImageLeft];
       return @([preferencesManager_ value:identifier]);
     }
 
@@ -183,31 +249,14 @@
 
     } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
                [columnIdentifier isEqualToString:@"default"]) {
-      if (! identifier) {
-        return nil;
-      }
+      if (! identifier) return nil;
       return item[columnIdentifier];
 
-    } else if ([columnIdentifier isEqualToString:@"value"]) {
-      NSTextFieldCell* cell = [tableColumn dataCell];
-      if (! cell) return nil;
+    } else if ([columnIdentifier isEqualToString:@"value"] ||
+               [columnIdentifier isEqualToString:@"stepper"]) {
+      if (! identifier) return nil;
 
-      if (! identifier) {
-        [cell setEditable:NO];
-        return nil;
-      } else {
-        [cell setEditable:YES];
-        return @([preferencesManager_ value:identifier]);
-      }
-
-    } else if ([columnIdentifier isEqualToString:@"stepper"]) {
-      NSStepperCell* cell = [tableColumn dataCell];
-      if (! identifier) {
-        [cell setEnabled:NO];
-      } else {
-        [cell setEnabled:YES];
-      }
-      return nil;
+      return @([preferencesManager_ value:identifier]);
     }
   }
 
@@ -238,7 +287,7 @@
 
   if (identifier) {
     if (ischeckbox_) {
-      if (! [identifier hasPrefix:@"notsave."]) {
+      if (! [self isTextCell:tableColumn item:item]) {
         int value = [preferencesManager_ value:identifier];
         value = ! value;
         [preferencesManager_ setValue:value forName:identifier];
@@ -246,23 +295,9 @@
 
     } else {
       NSString* columnIdentifier = [tableColumn identifier];
-      if ([columnIdentifier isEqualToString:@"value"]) {
+      if ([columnIdentifier isEqualToString:@"value"] ||
+          [columnIdentifier isEqualToString:@"stepper"]) {
         [preferencesManager_ setValue:[object intValue] forName:identifier];
-
-      } else if ([columnIdentifier isEqualToString:@"stepper"]) {
-        int newvalue = [preferencesManager_ value:identifier];
-        NSNumber* step = item[@"step"];
-        newvalue += ([object intValue]* [step intValue]);
-
-        // confirm range
-        if (newvalue < 0) {
-          newvalue = 0;
-        } else if (newvalue > 1073741824) { // 2^30
-          newvalue = 1073741824;
-        }
-
-        [preferencesManager_ setValue:newvalue forName:identifier];
-
         [outlineView reloadItem:item];
       }
     }
