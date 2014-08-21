@@ -212,7 +212,7 @@
         [cell setMinValue:0];
         [cell setMaxValue:1073741824]; // 2^30
         [cell setIncrement:[item[@"step"] intValue]];
-        [cell setAutorepeat:YES];
+        [cell setAutorepeat:NO];
         [cell setValueWraps:NO];
         return cell;
       }
