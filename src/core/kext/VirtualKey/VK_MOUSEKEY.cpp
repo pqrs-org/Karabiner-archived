@@ -146,60 +146,47 @@ namespace org_pqrs_Karabiner {
   VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params)
   {
     /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { --dy_; scrollmode_ = false; } else { ++dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { --dy_; scrollmode_ = false; } else { ++dy_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_DOWN) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { ++dy_; scrollmode_ = false; } else { --dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { ++dy_; scrollmode_ = false; } else { --dy_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_LEFT) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { --dx_; scrollmode_ = false; } else { ++dx_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { --dx_; scrollmode_ = false; } else { ++dx_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_RIGHT) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { ++dx_; scrollmode_ = false; } else { --dx_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { ++dx_; scrollmode_ = false; } else { --dx_; }
 
     } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_NE) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { ++dx_; --dy_; scrollmode_ = false; } else { --dx_; ++dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { ++dx_; --dy_; scrollmode_ = false; } else { --dx_; ++dy_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_NW) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { --dx_; --dy_; scrollmode_ = false; } else { ++dx_; ++dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { --dx_; --dy_; scrollmode_ = false; } else { ++dx_; ++dy_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_SE) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { ++dx_; ++dy_; scrollmode_ = false; } else { --dx_; --dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { ++dx_; ++dy_; scrollmode_ = false; } else { --dx_; --dy_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_SW) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { --dx_; ++dy_; scrollmode_ = false; } else { ++dx_; --dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { --dx_; ++dy_; scrollmode_ = false; } else { ++dx_; --dy_; }
 
     } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_UP) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { --dy_; scrollmode_ = true; } else { ++dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { --dy_; scrollmode_ = true; } else { ++dy_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_DOWN) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { ++dy_; scrollmode_ = true; } else { --dy_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { ++dy_; scrollmode_ = true; } else { --dy_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_LEFT) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { --dx_; scrollmode_ = true; } else { ++dx_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { --dx_; scrollmode_ = true; } else { ++dx_; }
     } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) {
-      if (params.repeat == false) {
-        if (params.ex_iskeydown) { ++dx_; scrollmode_ = true; } else { --dx_; }
-      }
+      if (params.repeat) return true;
+      if (params.ex_iskeydown) { ++dx_; scrollmode_ = true; } else { --dx_; }
 
     } else if (params.key == KeyCode::VK_MOUSEKEY_HIGHSPEED) {
-      if (params.repeat == false) {
-        highspeed_ = params.ex_iskeydown;
-      }
+      if (params.repeat) return true;
+      highspeed_ = params.ex_iskeydown;
 
     } else {
       return false;
