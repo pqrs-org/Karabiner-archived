@@ -1,12 +1,15 @@
-Since 10.1.0
-------------
+Version 10.2.0
+--------------
 
 * Fixed issues:
     * Shortcuts (eg. Ctrl-C, Ctrl-V) might not work properly in Microsoft Remote Desktop.
-* Improved compatibility with JavaAppLauncher.
+    * Some Java apps will be crash.
 * Added an option to disable AXNotifier. ("AXNotifier" tab in Preferences.)
+* Updated prepared settings.
+* Some minor improvements.
+* Profile management functions have been added into command line interface.
 * Updates for people who add new settings by oneself:
-    * \_\_HoldingKeyToKey\_\_ and \_\_KeyOverlaidModifier\_\_ support Option::KEYTOKEY_BEFORE_KEYDOWN and Option::KEYTOKEY_AFTER_KEYUP.
+    * \_\_HoldingKeyToKey\_\_ and \_\_KeyOverlaidModifier\_\_ support Option::KEYTOKEY\_BEFORE\_KEYDOWN and Option::KEYTOKEY\_AFTER\_KEYUP.
     * You can also use \_\_{ }\_\_ as well as @begin, @end.
 
 Version 10.1.0
