@@ -103,7 +103,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="398" y="285" width="668" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
-            <view key="contentView" id="629">
+            <view key="contentView" wantsLayer="YES" id="629">
                 <rect key="frame" x="0.0" y="0.0" width="668" height="620"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -1084,7 +1084,7 @@ You need to enable AXNotifier if you want to use following settings:
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="582" width="280" height="70"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
-            <view key="contentView" id="372" customClass="StatusMessageView_normal">
+            <view key="contentView" wantsLayer="YES" id="372" customClass="StatusMessageView_normal">
                 <rect key="frame" x="0.0" y="0.0" width="280" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -1117,7 +1117,7 @@ Label</string>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="103" height="19"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
-            <view key="contentView" id="1394" customClass="StatusMessageView_nano">
+            <view key="contentView" wantsLayer="YES" id="1394" customClass="StatusMessageView_nano">
                 <rect key="frame" x="0.0" y="0.0" width="103" height="19"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -1141,7 +1141,7 @@ Label</string>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="206" height="33"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
-            <view key="contentView" id="1414" customClass="StatusMessageView_edge">
+            <view key="contentView" wantsLayer="YES" id="1414" customClass="StatusMessageView_edge">
                 <rect key="frame" x="0.0" y="0.0" width="206" height="33"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
@@ -1257,15 +1257,6 @@ Label</string>
         </customObject>
         <customObject id="1320" customClass="IOHIDPostEventWrapper"/>
         <userDefaultsController representsSharedInstance="YES" id="1176"/>
-        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="GZ6-sW-Plb">
-            <rect key="frame" x="0.0" y="0.0" width="63" height="34"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Multiline Label" id="ukG-dq-Ouc">
-                <font key="font" metaFont="system"/>
-                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-            </textFieldCell>
-        </textField>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="8" height="8"/>
