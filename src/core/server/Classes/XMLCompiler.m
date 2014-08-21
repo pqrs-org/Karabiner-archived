@@ -19,33 +19,6 @@
 // ------------------------------------------------------------
 // private methods
 
-+ (void) setStringAttributes:(NSMutableDictionary*)dict style:(NSString*)style
-{
-  if ([style isEqualToString:@"caution"]) {
-    dict[@"stringAttributes"] = @{
-      NSForegroundColorAttributeName : [NSColor blackColor],
-      NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:1.0f green:0.0f blue:0.0f alpha:0.2f],
-    };
-
-  } else if ([style isEqualToString:@"important"]) {
-    dict[@"stringAttributes"] = @{
-      NSForegroundColorAttributeName : [NSColor blackColor],
-      NSBackgroundColorAttributeName : [NSColor colorWithCalibratedRed:0.0f green:0.0f blue:1.0f alpha:0.2f],
-    };
-
-  } else if ([style isEqualToString:@"slight"]) {
-    dict[@"stringAttributes"] = @{
-      NSForegroundColorAttributeName : [NSColor grayColor],
-    };
-  }
-
-  if (dict[@"stringAttributes"][NSBackgroundColorAttributeName]) {
-    // append "\n" for background color.
-    dict[@"name"] = [NSString stringWithFormat:@"%@\n", dict[@"name"]];
-    dict[@"height"] = @([dict[@"height"] unsignedIntValue] + 1);
-  }
-}
-
 + (NSMutableArray*) build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree
 {
   if (! node_tree) return nil;
@@ -89,7 +62,7 @@
     {
       const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(child);
       if (style) {
-        [XMLCompiler setStringAttributes:dict style:@(style)];
+        dict[@"style"] = @(style);
       }
     }
 
@@ -112,8 +85,7 @@
   dict[@"name"] = message;
   dict[@"height"] = @(height);
   dict[@"string_for_filter"] = [message lowercaseString];
-
-  [XMLCompiler setStringAttributes:dict style:@"caution"];
+  dict[@"style"] = @("caution");
 
   [preferencepane_checkbox_ insertObject:dict atIndex:0];
 }
