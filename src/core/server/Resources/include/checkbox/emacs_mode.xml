@@ -154,6 +154,10 @@
       <name>Option+BF to Option+Left/Right</name>
       <identifier>option.emacsmode_optionBF</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
     </item>
@@ -161,6 +165,11 @@
       <name>Option+D to Option+Forward Delete</name>
       <identifier>option.emacsmode_optionD</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
@@ -206,6 +215,11 @@
       <name>[ex] Control+W to Option+Delete</name>
       <identifier>option.emacsmode_ex_controlW</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
