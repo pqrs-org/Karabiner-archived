@@ -2,15 +2,16 @@
 CONFIGURATION = Release
 
 all:
+	pod install --no-repo-update
 	$(MAKE) -C Resources
 	$(MAKE) -C ../../../pkginfo
 	$(MAKE) -C ../../bridge/generator/bridge_version
 	$(MAKE) -C ../../bridge/generator/config
 	$(MAKE) -C ../../lib/xml_compiler
-	xcodebuild -alltargets -configuration $(CONFIGURATION) build
+	xcodebuild -workspace *.xcworkspace -scheme Karabiner_server -configuration $(CONFIGURATION) build
 
 buildonly:
-	xcodebuild -alltargets -configuration $(CONFIGURATION) build
+	xcodebuild -workspace *.xcworkspace -scheme Karabiner_server -configuration $(CONFIGURATION) build
 
 clean:
 	rm -rf build
@@ -23,7 +24,7 @@ clean:
 	$(MAKE) -C ../../lib/xml_compiler clean
 
 xcode:
-	open *.xcodeproj
+	open *.xcworkspace
 
 run: all
 	open ./build/Release/Karabiner.app
