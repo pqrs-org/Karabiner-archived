@@ -8,10 +8,20 @@ all:
 	$(MAKE) -C ../../bridge/generator/bridge_version
 	$(MAKE) -C ../../bridge/generator/config
 	$(MAKE) -C ../../lib/xml_compiler
-	xcodebuild -workspace *.xcworkspace -scheme Karabiner_server -configuration $(CONFIGURATION) build
+	xcodebuild \
+		-workspace *.xcworkspace \
+		-scheme Karabiner_server \
+		-configuration $(CONFIGURATION) \
+		build \
+		SYMROOT=$(PWD)/build
 
 buildonly:
-	xcodebuild -workspace *.xcworkspace -scheme Karabiner_server -configuration $(CONFIGURATION) build
+	xcodebuild \
+		-workspace *.xcworkspace \
+		-scheme Karabiner_server \
+		-configuration $(CONFIGURATION) \
+		build \
+		SYMROOT=$(PWD)/build
 
 clean:
 	rm -rf build
