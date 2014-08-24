@@ -13,7 +13,7 @@ all:
 		-scheme Karabiner_server \
 		-configuration $(CONFIGURATION) \
 		build \
-		SYMROOT=$(PWD)/build
+		SYMROOT=`pwd`/build
 
 buildonly:
 	xcodebuild \
@@ -21,7 +21,7 @@ buildonly:
 		-scheme Karabiner_server \
 		-configuration $(CONFIGURATION) \
 		build \
-		SYMROOT=$(PWD)/build
+		SYMROOT=`pwd`/build
 
 clean:
 	rm -rf build
