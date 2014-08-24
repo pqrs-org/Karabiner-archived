@@ -36,6 +36,7 @@ System Requirements:
 * Xcode 5.0.1+
 * Command Line Tools for Xcode
 * Boost 1.54.0+ (header-only) http://www.boost.org/
+* CocoaPods http://cocoapods.org/
 
 Please install Boost into `/usr/local/include/boost`.
 
