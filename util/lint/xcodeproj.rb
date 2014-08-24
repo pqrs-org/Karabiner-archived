@@ -1,48 +1,42 @@
 #!/usr/bin/ruby
 
-$lines = []
-while l = $stdin.gets
-  $lines << l.strip
-end
+require 'json'
 
-def parseline(line)
-  if /(.+?)=(.+)/ =~ line then
-    name = $1
-    value = $2
-    return [name.strip, value.strip.gsub(/;$/, '')]
-  end
-  return [nil, nil]
-end
+$configuration = JSON.parse($stdin.read)
 
-def check_value(name, value)
+def check_value(name, value, configuration = nil)
   return if ARGV.include?(name)
-  print "  check #{name}\n"
+  if configuration.nil? then
+    print "  check #{name}\n"
+    configuration = $configuration
+  end
 
   isexist = false
-  $lines.each do |l|
-    (linename, linevalue) = parseline(l)
-    if name == linename then
-      isexist = true
-      if value != linevalue then
-        print "[ERROR] Invalid value: #{name} (#{linevalue} != #{value})\n"
-        exit 1
+  configuration.each do |k,v|
+    if v.kind_of?(Enumerable) then
+      if check_value(name, value, v) then
+        isexist = true
+      end
+    else
+      if name == k then
+        isexist = true
+        if value.nil? then
+          print "[ERROR] Appear name: #{name}\n"
+          exit 1
+        elsif value != v then
+          print "[ERROR] Invalid value: #{name} (#{v} != #{value})\n"
+          exit 1
+        end
       end
     end
   end
-  unless isexist then
+
+  if configuration.nil? and (not isexist) then
     print "[ERROR] No setting: #{name}\n"
     exit 1
   end
-end
 
-def check_noexist(name)
-  $lines.each do |l|
-    (linename, linevalue) = parseline(l)
-    if name == linename then
-      print "[ERROR] Appear name: #{name}\n"
-      exit 1
-    end
-  end
+  isexist
 end
 
 check_value('objectVersion', '46')
@@ -67,5 +61,5 @@ check_value('MACOSX_DEPLOYMENT_TARGET', '10.9')
 check_value('RUN_CLANG_STATIC_ANALYZER', 'YES')
 check_value('SDKROOT', 'macosx')
 
-check_noexist('GCC_WARN_PROTOTYPE_CONVERSION')
-check_noexist('ARCHS')
+check_value('GCC_WARN_PROTOTYPE_CONVERSION', nil)
+check_value('ARCHS', nil)
