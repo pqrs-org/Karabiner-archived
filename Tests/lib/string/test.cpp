@@ -195,3 +195,10 @@ TEST(pqrs_string, remove_whitespaces)
   pqrs::string::remove_whitespaces(actual);
   EXPECT_EQ("ABCD", actual);
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

@@ -235,3 +235,10 @@ TEST(List, clear) {
   EXPECT_EQ(static_cast<size_t>(0), list.size());
   EXPECT_EQ(0, allocatecount);
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

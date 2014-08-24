@@ -159,3 +159,10 @@ TEST(pqrs_vector, make_combination)
     EXPECT_EQ(expected, *(actual[15]));
   }
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

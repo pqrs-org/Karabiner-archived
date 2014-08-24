@@ -50,3 +50,10 @@ TEST(DeltaBuffer, push) {
   EXPECT_EQ(0, deltaBuffer.sum());
   EXPECT_TRUE(! deltaBuffer.isFull());
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

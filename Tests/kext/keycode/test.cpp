@@ -620,3 +620,10 @@ TEST(PointingRelative, getPointingRelativeFromDelta) {
   EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(10, 6));
   EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(6, 10));
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

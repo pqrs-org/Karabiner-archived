@@ -589,3 +589,10 @@ TEST(FlagStatus, subtract) {
   EXPECT_EQ(ModifierFlag::COMMAND_R, v[0]);
   EXPECT_EQ(ModifierFlag::FN,        v[1]);
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

@@ -1249,3 +1249,10 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     EXPECT_EQ(expected, fv.get());
   }
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
