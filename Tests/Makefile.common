@@ -1,12 +1,14 @@
-CXXFLAGS = -I../../ -I/usr/local/include \
+CXXFLAGS = \
+    -I../../Pods/Headers/GoogleTest \
+    -I/usr/local/include \
     -Wall -Werror \
     -O2 \
     -std=c++11
 
-LDFLAGS = -F$(HOME)/Library/Frameworks -framework gtest \
-	-L$(HOME)/Library/Frameworks/gtest.Framework/Resources \
-	-stdlib=libc++ \
-	-lgtest_main
+LDFLAGS = \
+	-L../../Pods/build/Release/ \
+    -lPods \
+    -lPods-GoogleTest
 
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(patsubst %.cpp,%.o,$(SOURCES))

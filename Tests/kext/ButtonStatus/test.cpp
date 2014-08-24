@@ -66,3 +66,10 @@ TEST(ButtonStatus, all) {
   ButtonStatus::lock_clear();
   EXPECT_EQ(Buttons(), ButtonStatus::makeButtons());
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

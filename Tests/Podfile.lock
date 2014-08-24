@@ -1,0 +1,10 @@
+PODS:
+  - GoogleTest (1.6.0)
+
+DEPENDENCIES:
+  - GoogleTest
+
+SPEC CHECKSUMS:
+  GoogleTest: ce9194813548f026b01fff837a2419fe343c85ee
+
+COCOAPODS: 0.33.1

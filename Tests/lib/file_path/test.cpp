@@ -121,3 +121,10 @@ TEST(pqrs_file_path, normalize)
   pqrs::file_path::normalize(file_path);
   EXPECT_EQ("../../b/c", file_path);
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

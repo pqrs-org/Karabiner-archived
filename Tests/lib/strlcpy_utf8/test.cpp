@@ -76,3 +76,10 @@ TEST(strlcpy_utf8, invalid_char)
 
   EXPECT_EQ(strcmp("", buf), 0);
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

@@ -247,3 +247,10 @@ TEST(Generic, isTargetDownEvent) {
     EXPECT_EQ(true,  fe.isTargetUpEvent(*up_shift));
   }
 }
+
+int
+main(int argc, char** argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
