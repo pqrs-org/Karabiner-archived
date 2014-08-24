@@ -4,9 +4,10 @@ basedir=`dirname $0`
 
 ############################################################
 # xcodeproj
-for f in `find $basedir/../../* -name 'project.pbxproj'`; do
+for f in `find $basedir/../../* -name 'project.pbxproj' ! -ipath '*/Pods/*'`; do
     echo "Check $f"
-    "$basedir/xcodeproj.rb" < $f || exit 1
+
+    plutil -convert json -o - "$f" | "$basedir/xcodeproj.rb"  || exit 1
 done
 
 ############################################################
