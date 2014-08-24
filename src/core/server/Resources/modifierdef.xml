@@ -102,4 +102,24 @@
   <modifierdef notify="false">BUTTON4</modifierdef>
   <modifierdef notify="false">BUTTON5</modifierdef>
 
+  <!-- For sticky modifiers with lock -->
+  <modifierdef notify="false">SL1_COMMAND_L</modifierdef>
+  <modifierdef notify="false">SL1_COMMAND_R</modifierdef>
+  <modifierdef notify="false">SL1_CONTROL_L</modifierdef>
+  <modifierdef notify="false">SL1_CONTROL_R</modifierdef>
+  <modifierdef notify="false">SL1_FN</modifierdef>
+  <modifierdef notify="false">SL1_OPTION_L</modifierdef>
+  <modifierdef notify="false">SL1_OPTION_R</modifierdef>
+  <modifierdef notify="false">SL1_SHIFT_L</modifierdef>
+  <modifierdef notify="false">SL1_SHIFT_R</modifierdef>
+  <modifierdef notify="false">SL2_COMMAND_L</modifierdef>
+  <modifierdef notify="false">SL2_COMMAND_R</modifierdef>
+  <modifierdef notify="false">SL2_CONTROL_L</modifierdef>
+  <modifierdef notify="false">SL2_CONTROL_R</modifierdef>
+  <modifierdef notify="false">SL2_FN</modifierdef>
+  <modifierdef notify="false">SL2_OPTION_L</modifierdef>
+  <modifierdef notify="false">SL2_OPTION_R</modifierdef>
+  <modifierdef notify="false">SL2_SHIFT_L</modifierdef>
+  <modifierdef notify="false">SL2_SHIFT_R</modifierdef>
+
 </root>

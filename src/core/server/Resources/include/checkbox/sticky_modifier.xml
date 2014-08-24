@@ -17,6 +17,75 @@
       <include path="commons/sticky_modifiers/SHIFT_L.xml" />
       <include path="commons/sticky_modifiers/SHIFT_R.xml" />
     </item>
+
+    <item>
+      <name>Enable Sticky Modifier Keys (with lock feature)</name>
+      <appendix>You should turn on "Show sticky modifiers state" in Status Message tab on Preferences.</appendix>
+      <identifier>remap.sticky_with_lock</identifier>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>COMMAND_L</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>COMMAND_R</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>FN</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>SHIFT_L</replacementvalue>
+        </replacementdef>
+      </include>
+
+      <include path="commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>SHIFT_R</replacementvalue>
+        </replacementdef>
+      </include>
+    </item>
   </item>
 
 </root>
