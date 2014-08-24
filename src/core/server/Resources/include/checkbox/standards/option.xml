@@ -68,9 +68,19 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
-      <name>Option_L to Sticky Option_L</name>
+      <name>Use the left option key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_optionL</identifier>
       <include path="../commons/sticky_modifiers/OPTION_L.xml" />
+    </item>
+    <item>
+      <name>Use the left option key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_optionL_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Option_L to Escape</name>
@@ -216,9 +226,19 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::OPTION_R, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
-      <name>Option_R to Sticky Option_R</name>
+      <name>Use the right option key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_optionR</identifier>
       <include path="../commons/sticky_modifiers/OPTION_R.xml" />
+    </item>
+    <item>
+      <name>Use the right option key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_optionR_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Option_R to Delete</name>
