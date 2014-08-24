@@ -111,9 +111,19 @@
       <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
-      <name>Control_L to Sticky Control_L</name>
+      <name>Use the left control key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_controlL</identifier>
       <include path="../commons/sticky_modifiers/CONTROL_L.xml" />
+    </item>
+    <item>
+      <name>Use the left control key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_controlL_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Control_L to Backquote(`)</name>
@@ -209,9 +219,19 @@
       <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::SHIFT_R</autogen>
     </item>
     <item>
-      <name>Control_R to Sticky Control_R</name>
+      <name>Use the right control key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_controlR</identifier>
       <include path="../commons/sticky_modifiers/CONTROL_R.xml" />
+    </item>
+    <item>
+      <name>Use the right control key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_controlR_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Control_R to Delete</name>

@@ -102,9 +102,19 @@
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::OPTION_L</autogen>
     </item>
     <item>
-      <name>Shift_L to Sticky Shift_L</name>
+      <name>Use the left shift key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_shiftL</identifier>
       <include path="../commons/sticky_modifiers/SHIFT_L.xml" />
+    </item>
+    <item>
+      <name>Use the left shift key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_shiftL_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>SHIFT_L</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Shift_L to Escape</name>
@@ -281,9 +291,19 @@
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::VK_LAZY_SHIFT_R</autogen>
     </item>
     <item>
-      <name>Shift_R to Sticky Shift_R</name>
+      <name>Use the right shift key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_shiftR</identifier>
       <include path="../commons/sticky_modifiers/SHIFT_R.xml" />
+    </item>
+    <item>
+      <name>Use the right shift key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_shiftR_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>SHIFT_R</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Shift_R to ^ (Shift+6)</name>

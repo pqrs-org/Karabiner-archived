@@ -111,9 +111,19 @@
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
-      <name>Command_L to Sticky Command_L</name>
+      <name>Use the left command key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_commandL</identifier>
       <include path="../commons/sticky_modifiers/COMMAND_L.xml" />
+    </item>
+    <item>
+      <name>Use the left command key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_commandL_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>COMMAND_L</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Command_L to ModifierFlag::Extra2</name>
@@ -272,9 +282,19 @@
       <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SHIFT_L</autogen>
     </item>
     <item>
-      <name>Command_R to Sticky Command_R</name>
+      <name>Use the right command key as sticky modifier. (without lock)</name>
       <identifier>remap.sticky_commandR</identifier>
       <include path="../commons/sticky_modifiers/COMMAND_R.xml" />
+    </item>
+    <item>
+      <name>Use the right command key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_commandR_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>MODIFIER</replacementname>
+          <replacementvalue>COMMAND_R</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>CommandR to ModifierFlag::Extra1</name>
