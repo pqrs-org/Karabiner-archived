@@ -1,14 +1,14 @@
-#ifndef MODIFIERFILTER_HPP
-#define MODIFIERFILTER_HPP
+#ifndef MODIFIERLOCKEDFILTER_HPP
+#define MODIFIERLOCKEDFILTER_HPP
 
 #include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    class ModifierFilter {
+    class ModifierLockedFilter {
     public:
-      ModifierFilter(unsigned int t);
-      ~ModifierFilter(void);
+      ModifierLockedFilter(unsigned int t);
+      ~ModifierLockedFilter(void);
 
       void add(AddDataType datatype, AddValue newval);
 
