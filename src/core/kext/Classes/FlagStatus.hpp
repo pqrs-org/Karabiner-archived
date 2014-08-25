@@ -109,6 +109,7 @@ namespace org_pqrs_Karabiner {
     size_t itemSize(void) const { return item_.size(); }
 
     bool isOn(const Vector_ModifierFlag& modifierFlags) const;
+    bool isLocked(const Vector_ModifierFlag& modifierFlags) const;
 
 #define DECLARE_METHODS(METHOD)                                                     \
   void METHOD(ModifierFlag modifierFlag);                                           \
