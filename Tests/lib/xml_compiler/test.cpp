@@ -1063,6 +1063,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
                   "  <config_not>config3</config_not>"
                   "  <modifier_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifier_only>"
                   "  <modifier_not> ModifierFlag::MOD2 </modifier_not>"
+                  "  <modifierlocked_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifierlocked_only>"
+                  "  <modifierlocked_not> ModifierFlag::MOD2 </modifierlocked_not>"
                   "  <lastpressedphysicalkey_not>KeyCode::KC1</lastpressedphysicalkey_not>"
                   "  <lastpressedphysicalkey_only>KeyCode::KC2</lastpressedphysicalkey_only>"
                   "  <elapsedtimesincelastpressed_greaterthan>"
@@ -1213,6 +1215,24 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
     // <modifier_not> ModifierFlag::MOD2 </modifier_not>
     expected.push_back(5);
     expected.push_back(BRIDGE_FILTERTYPE_MODIFIER_NOT);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
+    expected.push_back(0x2000);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+    expected.push_back(1);
+
+    // <modifierlocked_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifierlocked_only>
+    expected.push_back(7);
+    expected.push_back(BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
+    expected.push_back(0x1000);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
+    expected.push_back(0x4000);
+    expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
+    expected.push_back(1);
+
+    // <modifierlocked_not> ModifierFlag::MOD2 </modifierlocked_not>
+    expected.push_back(5);
+    expected.push_back(BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT);
     expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
     expected.push_back(0x2000);
     expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
