@@ -36,6 +36,10 @@ namespace pqrs {
         add_(BRIDGE_FILTERTYPE_MODIFIER_NOT,  "", it.get_data());
       } else if (it.get_tag_name() == "modifier_only") {
         add_(BRIDGE_FILTERTYPE_MODIFIER_ONLY, "", it.get_data());
+      } else if (it.get_tag_name() == "modifierlocked_not") {
+        add_(BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT,  "", it.get_data());
+      } else if (it.get_tag_name() == "modifierlocked_only") {
+        add_(BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY, "", it.get_data());
       } else if (it.get_tag_name() == "inputsource_not" ||
                  it.get_tag_name() == "inputmode_not") {
         // We allow "inputmode_*" for compatibility.
@@ -82,6 +86,8 @@ namespace pqrs {
       switch (filter_type) {
         case BRIDGE_FILTERTYPE_MODIFIER_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
         {
           // support '|' for <modifier_only>.
           // For example: <modifier_only>ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L, ModifierFlag::COMMAND_L|ModifierFlag::OPTION_L</modifier_only>
