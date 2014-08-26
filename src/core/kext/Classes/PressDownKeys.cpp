@@ -10,8 +10,7 @@ namespace org_pqrs_Karabiner {
 
   void
   PressDownKeys::initialize(void)
-  {
-  }
+  {}
 
   void
   PressDownKeys::terminate(void)
