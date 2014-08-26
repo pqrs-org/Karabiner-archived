@@ -6,20 +6,16 @@
 #include "VK_CONFIG.hpp"
 
 namespace org_pqrs_Karabiner {
-  VirtualKey::VK_CONFIG::Vector_Item* VirtualKey::VK_CONFIG::items_ = NULL;
+  VirtualKey::VK_CONFIG::Vector_Item VirtualKey::VK_CONFIG::items_;
 
   void
   VirtualKey::VK_CONFIG::initialize(void)
-  {
-    items_ = new Vector_Item();
-  }
+  {}
 
   void
   VirtualKey::VK_CONFIG::terminate(void)
   {
-    if (items_) {
-      delete items_;
-    }
+    items_.clear();
   }
 
   void
@@ -29,31 +25,27 @@ namespace org_pqrs_Karabiner {
                                   unsigned int keycode_force_off,
                                   unsigned int keycode_sync_keydownup)
   {
-    if (! items_) return;
-
-    items_->push_back(Item(remapclass, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
+    items_.push_back(Item(remapclass, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
   }
 
   void
   VirtualKey::VK_CONFIG::clear_items(void)
   {
-    items_->clear();
+    items_.clear();
   }
 
   bool
   VirtualKey::VK_CONFIG::handle(const Params_KeyboardEventCallBack& params)
   {
-    if (! items_) return false;
-
     RemapClass* remapclass = NULL;
     bool value_old = false;
 
-    for (size_t i = 0; i < items_->size(); ++i) {
-      remapclass = (*items_)[i].remapclass;
-      KeyCode keycode_toggle((*items_)[i].keycode_toggle);
-      KeyCode keycode_force_on((*items_)[i].keycode_force_on);
-      KeyCode keycode_force_off((*items_)[i].keycode_force_off);
-      KeyCode keycode_sync_keydownup((*items_)[i].keycode_sync_keydownup);
+    for (size_t i = 0; i < items_.size(); ++i) {
+      remapclass = items_[i].remapclass;
+      KeyCode keycode_toggle(items_[i].keycode_toggle);
+      KeyCode keycode_force_on(items_[i].keycode_force_on);
+      KeyCode keycode_force_off(items_[i].keycode_force_off);
+      KeyCode keycode_sync_keydownup(items_[i].keycode_sync_keydownup);
 
       if (! remapclass) return false;
 
@@ -124,10 +116,8 @@ namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode)
   {
-    if (! items_) return false;
-
-    for (size_t i = 0; i < items_->size(); ++i) {
-      KeyCode keycode_sync_keydownup((*items_)[i].keycode_sync_keydownup);
+    for (size_t i = 0; i < items_.size(); ++i) {
+      KeyCode keycode_sync_keydownup(items_[i].keycode_sync_keydownup);
       if (keycode == keycode_sync_keydownup) return true;
     }
 
