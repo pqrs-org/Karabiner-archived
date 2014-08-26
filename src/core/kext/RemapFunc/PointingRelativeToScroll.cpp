@@ -8,7 +8,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    List* PointingRelativeToScroll::queue_ = NULL;
+    List PointingRelativeToScroll::queue_;
     Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;
     Vector_ModifierFlag PointingRelativeToScroll::currentToModifierFlags_;
     TimerWrapper PointingRelativeToScroll::timer_;
@@ -16,7 +16,6 @@ namespace org_pqrs_Karabiner {
     void
     PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop)
     {
-      queue_ = new List();
       timer_.initialize(&workloop, NULL, PointingRelativeToScroll::timer_callback);
     }
 
@@ -25,9 +24,7 @@ namespace org_pqrs_Karabiner {
     {
       timer_.terminate();
 
-      if (queue_) {
-        delete queue_;
-      }
+      queue_.clear();
     }
 
     void
@@ -35,9 +32,7 @@ namespace org_pqrs_Karabiner {
     {
       timer_.cancelTimeout();
 
-      if (queue_) {
-        queue_->clear();
-      }
+      queue_.clear();
     }
 
     PointingRelativeToScroll::PointingRelativeToScroll(void) :
@@ -227,8 +222,6 @@ namespace org_pqrs_Karabiner {
       Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return;
 
-      if (! queue_) return;
-
       // ----------------------------------------
       const uint32_t CANCEL_THRESHOLD = 100;
       if (chained_ic_.getmillisec() > CANCEL_THRESHOLD) {
@@ -290,7 +283,7 @@ namespace org_pqrs_Karabiner {
       // when sign is different
       if (0 > delta1 * chained_delta1_ ||
           0 > delta2 * chained_delta2_) {
-        queue_->clear();
+        queue_.clear();
         chained_delta1_ = delta1;
         chained_delta2_ = delta2;
 
@@ -302,7 +295,7 @@ namespace org_pqrs_Karabiner {
       }
 
       absolute_distance_ += abs(chained_delta1_) + abs(chained_delta2_);
-      queue_->push_back(new Item(chained_delta1_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE, chained_delta2_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE));
+      queue_.push_back(new Item(chained_delta1_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE, chained_delta2_ * EventOutputQueue::FireScrollWheel::DELTA_SCALE));
 
       currentFromModifierFlags_ = fromModifierFlags_;
       currentToModifierFlags_ = toModifierFlags_;
@@ -312,19 +305,17 @@ namespace org_pqrs_Karabiner {
     void
     PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      if (! queue_) return;
-
       // ----------------------------------------
       int delta1 = 0;
       int delta2 = 0;
       {
-        Item* p = static_cast<Item*>(queue_->safe_front());
+        Item* p = static_cast<Item*>(queue_.safe_front());
         if (! p) return;
 
         delta1 = p->delta1;
         delta2 = p->delta2;
 
-        queue_->pop_front();
+        queue_.pop_front();
       }
 
       // ----------------------------------------
@@ -350,7 +341,7 @@ namespace org_pqrs_Karabiner {
       // ----------------------------------------
       if (! Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_disable_momentum_scroll)) {
         if (delta1 != 0 || delta2 != 0) {
-          queue_->push_back(new Item(delta1 / 2, delta2 / 2));
+          queue_.push_back(new Item(delta1 / 2, delta2 / 2));
         }
       }
 
