@@ -70,8 +70,12 @@
         <autogen>
           __KeyToKey__
           KeyCode::C,
-          KeyCode::VK_PARTIAL_KEYDOWN, KeyCode::C,
           KeyCode::VK_MOUSEKEY_BUTTON_LEFT,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::VK_PARTIAL_KEYDOWN, KeyCode::C,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
           KeyCode::VK_PARTIAL_KEYUP, KeyCode::C,
         </autogen>
       </item>
