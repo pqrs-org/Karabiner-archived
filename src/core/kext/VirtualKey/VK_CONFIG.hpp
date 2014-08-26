@@ -39,7 +39,7 @@ namespace org_pqrs_Karabiner {
         unsigned int keycode_sync_keydownup;
       };
       DECLARE_VECTOR(Item);
-      static Vector_Item* items_;
+      static Vector_Item items_;
     };
   }
 }
