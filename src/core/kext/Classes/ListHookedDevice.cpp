@@ -172,18 +172,13 @@ namespace org_pqrs_Karabiner {
   bool
   ListHookedDevice::initialize(void)
   {
-    list_ = new List();
-    if (! list_) return false;
-
     return true;
   }
 
   void
   ListHookedDevice::terminate(void)
   {
-    if (list_) {
-      delete list_;
-    }
+    list_.clear();
 
     reset();
   }
@@ -191,16 +186,15 @@ namespace org_pqrs_Karabiner {
   void
   ListHookedDevice::push_back(ListHookedDevice::Item* newp)
   {
-    if (! list_) return;
     if (! newp) return;
 
     last_ = newp->device_;
-    list_->push_back(newp);
+    list_.push_back(newp);
 
     // Call reset whenever the device status is changed.
     reset();
 
-    IOLOG_DEVEL("ListHookedDevice::push_back list_->size = %d\n", static_cast<int>(list_->size()));
+    IOLOG_DEVEL("ListHookedDevice::push_back list_.size = %d\n", static_cast<int>(list_.size()));
 
     refresh();
     start_refreshInProgressDevices_timer();
@@ -209,17 +203,15 @@ namespace org_pqrs_Karabiner {
   void
   ListHookedDevice::erase(IOHIDevice* p)
   {
-    if (! list_) return;
-
     ListHookedDevice::Item* item = get(p);
     if (! item) return;
 
-    list_->erase_and_delete(item);
+    list_.erase_and_delete(item);
 
     // Call reset whenever the device status is changed.
     reset();
 
-    IOLOG_DEVEL("ListHookedDevice::erase list_->size = %d\n", static_cast<int>(list_->size()));
+    IOLOG_DEVEL("ListHookedDevice::erase list_.size = %d\n", static_cast<int>(list_.size()));
 
     refresh();
   }
@@ -227,11 +219,9 @@ namespace org_pqrs_Karabiner {
   ListHookedDevice::Item*
   ListHookedDevice::get(const IOHIDevice* device)
   {
-    if (! list_) return NULL;
-
     last_ = device;
 
-    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->device_ == device) return p;
     }
 
@@ -241,8 +231,6 @@ namespace org_pqrs_Karabiner {
   ListHookedDevice::Item*
   ListHookedDevice::get_replaced(void)
   {
-    if (! list_) return NULL;
-
     // ----------------------------------------------------------------------
     // Search a last_ device first.
     ListHookedDevice::Item* p = get(last_);
@@ -250,7 +238,7 @@ namespace org_pqrs_Karabiner {
 
     // ----------------------------------------------------------------------
     // Using a first matched device.
-    for (p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->isReplaced()) return p;
     }
 
@@ -260,9 +248,7 @@ namespace org_pqrs_Karabiner {
   void
   ListHookedDevice::refresh(void)
   {
-    if (! list_) return;
-
-    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->refresh()) {
         // Call reset whenever the device status is changed.
         reset();
@@ -273,9 +259,7 @@ namespace org_pqrs_Karabiner {
   bool
   ListHookedDevice::isInProgress(void)
   {
-    if (! list_) return false;
-
-    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->inProgress_) {
         return true;
       }
@@ -293,9 +277,7 @@ namespace org_pqrs_Karabiner {
     out.productID = 0;
     out.locationID = 0;
 
-    if (! list_) return;
-
-    Item* p = static_cast<Item*>(list_->safe_front());
+    Item* p = static_cast<Item*>(list_.safe_front());
 
     for (;;) {
       if (! p) return;

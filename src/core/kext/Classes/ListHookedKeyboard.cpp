@@ -345,13 +345,11 @@ namespace org_pqrs_Karabiner {
   {
     ListHookedKeyboard& self = ListHookedKeyboard::instance();
 
-    if (! self.list_) return;
-
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_passthrough_capslock_led_status)) return;
 
     Flags flags = FlagStatus::globalFlagStatus().makeFlags();
 
-    for (Item* p = static_cast<Item*>(self.list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(self.list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (! p->isReplaced()) continue;
 
       // Don't call setAlphaLock on devices which have non-Apple driver.
