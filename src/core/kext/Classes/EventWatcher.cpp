@@ -8,8 +8,7 @@ namespace org_pqrs_Karabiner {
 
   void
   EventWatcher::initialize(void)
-  {
-  }
+  {}
 
   void
   EventWatcher::terminate(void)

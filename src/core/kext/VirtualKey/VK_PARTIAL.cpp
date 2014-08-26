@@ -10,8 +10,7 @@ namespace org_pqrs_Karabiner {
 
   void
   VirtualKey::VK_PARTIAL::initialize(void)
-  {
-  }
+  {}
 
   void
   VirtualKey::VK_PARTIAL::terminate(void)
