@@ -238,7 +238,7 @@ namespace org_pqrs_Karabiner {
     if (params.buttons == Buttons(0) &&
         params.dx == 0 &&
         params.dy == 0) {
-      for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+      for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
         if (! p->isReplaced()) continue;
 
         p->apply(params);

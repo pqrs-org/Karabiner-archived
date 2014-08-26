@@ -64,11 +64,11 @@ namespace org_pqrs_Karabiner {
     static void refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
   protected:
-    ListHookedDevice(void) : last_(NULL), list_(NULL) {}
+    ListHookedDevice(void) : last_(NULL) {}
     virtual ~ListHookedDevice(void) {}
 
     const IOHIDevice* last_;
-    List* list_;
+    List list_;
 
   private:
     enum {
