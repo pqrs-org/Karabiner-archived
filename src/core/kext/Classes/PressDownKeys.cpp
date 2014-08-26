@@ -39,7 +39,7 @@ namespace org_pqrs_Karabiner {
   {
     if (! list_) return;
 
-    Item* p = static_cast<Item*>(list_->front());
+    Item* p = static_cast<Item*>(list_->safe_front());
     for (;;) {
       if (! p) break;
 
@@ -61,7 +61,7 @@ namespace org_pqrs_Karabiner {
 
     IOLOG_DEVEL("PressDownKeys::clear list_->size = %d\n", static_cast<int>(list_->size()));
 
-    Item* p = static_cast<Item*>(list_->front());
+    Item* p = static_cast<Item*>(list_->safe_front());
     for (;;) {
       if (! p) break;
 

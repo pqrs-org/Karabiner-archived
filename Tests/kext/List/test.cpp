@@ -36,7 +36,7 @@ TEST(List, push_back) {
   }
 
   for (int i = 0; i < MAXITEM; ++i) {
-    p = dynamic_cast<TestItem*>(list.front());
+    p = dynamic_cast<TestItem*>(list.safe_front());
     EXPECT_TRUE(p != NULL);
     EXPECT_EQ(i, p->v());
 
@@ -89,7 +89,7 @@ TEST(List, push_front) {
   }
 
   for (int i = 0; i < MAXITEM; ++i) {
-    p = dynamic_cast<TestItem*>(list.front());
+    p = dynamic_cast<TestItem*>(list.safe_front());
     EXPECT_TRUE(p != NULL);
     EXPECT_EQ(MAXITEM - (i + 1), p->v());
 
@@ -125,6 +125,18 @@ TEST(List, push_front) {
   EXPECT_EQ(0, allocatecount);
 }
 
+TEST(List, safe_front) {
+  List list;
+  list.safe_front();
+  list.safe_front();
+  list.safe_front();
+}
+TEST(List, safe_back) {
+  List list;
+  list.safe_back();
+  list.safe_back();
+  list.safe_back();
+}
 TEST(List, pop_front) {
   List list;
   list.pop_front();
@@ -142,7 +154,7 @@ TEST(List, pop_back) {
   list.pop_back();
   EXPECT_EQ(static_cast<size_t>(1), list.size());
 
-  TestItem* p = static_cast<TestItem*>(list.back());
+  TestItem* p = static_cast<TestItem*>(list.safe_back());
   EXPECT_EQ(static_cast<size_t>(1), p->v());
 }
 
@@ -156,41 +168,41 @@ TEST(List, insert) {
   p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
   p = static_cast<TestItem*>(list.insert(NULL, new TestItem(2))); // [2,1]
 
-  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
-  EXPECT_EQ(1, static_cast<TestItem*>(list.front()->getnext())->v());
-  EXPECT_EQ(1, static_cast<TestItem*>(list.back())->v());
-  EXPECT_EQ(2, static_cast<TestItem*>(list.back()->getprev())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front()->getnext())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_back())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_back()->getprev())->v());
 
-  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
   list.pop_front();
-  EXPECT_EQ(1, static_cast<TestItem*>(list.front())->v());
-  list.pop_front();
-
-  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
-  p = static_cast<TestItem*>(list.insert(p, new TestItem(2))); // [2,1]
-
-  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
-  EXPECT_EQ(1, static_cast<TestItem*>(list.front()->getnext())->v());
-  EXPECT_EQ(1, static_cast<TestItem*>(list.back())->v());
-  EXPECT_EQ(2, static_cast<TestItem*>(list.back()->getprev())->v());
-
-  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
-  list.pop_front();
-  EXPECT_EQ(1, static_cast<TestItem*>(list.front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front())->v());
   list.pop_front();
 
   p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
   p = static_cast<TestItem*>(list.insert(p, new TestItem(2))); // [2,1]
-  p = static_cast<TestItem*>(list.insert(list.back(), new TestItem(3))); // [2,3,1]
 
-  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
-  EXPECT_EQ(1, static_cast<TestItem*>(list.back())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front()->getnext())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_back())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_back()->getprev())->v());
 
-  EXPECT_EQ(2, static_cast<TestItem*>(list.front())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
   list.pop_front();
-  EXPECT_EQ(3, static_cast<TestItem*>(list.front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front())->v());
   list.pop_front();
-  EXPECT_EQ(1, static_cast<TestItem*>(list.front())->v());
+
+  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
+  p = static_cast<TestItem*>(list.insert(p, new TestItem(2))); // [2,1]
+  p = static_cast<TestItem*>(list.insert(list.safe_back(), new TestItem(3))); // [2,3,1]
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_back())->v());
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
+  list.pop_front();
+  EXPECT_EQ(3, static_cast<TestItem*>(list.safe_front())->v());
+  list.pop_front();
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front())->v());
   list.pop_front();
 }
 
@@ -207,7 +219,7 @@ TEST(List, erase_and_delete) {
       EXPECT_EQ(static_cast<size_t>(i + 1), list.size());
     }
 
-    TestItem* p = static_cast<TestItem*>(list.front());
+    TestItem* p = static_cast<TestItem*>(list.safe_front());
     for (int i = 0; i < erase_index; ++i) {
       p = static_cast<TestItem*>(p->getnext());
     }
@@ -215,7 +227,7 @@ TEST(List, erase_and_delete) {
     EXPECT_EQ(next, list.erase_and_delete(p));
 
     // check
-    p = static_cast<TestItem*>(list.front());
+    p = static_cast<TestItem*>(list.safe_front());
     for (int i = 0; i < MAXITEM; ++i) {
       if (i == erase_index) continue;
       EXPECT_EQ(i, p->v());

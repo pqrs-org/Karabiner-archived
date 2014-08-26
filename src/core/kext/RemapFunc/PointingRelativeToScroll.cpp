@@ -318,7 +318,7 @@ namespace org_pqrs_Karabiner {
       int delta1 = 0;
       int delta2 = 0;
       {
-        Item* p = static_cast<Item*>(queue_->front());
+        Item* p = static_cast<Item*>(queue_->safe_front());
         if (! p) return;
 
         delta1 = p->delta1;

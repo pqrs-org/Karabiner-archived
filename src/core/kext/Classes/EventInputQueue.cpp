@@ -134,7 +134,7 @@ namespace org_pqrs_Karabiner {
   {
     if (! queue_) return;
 
-    Item* front = static_cast<Item*>(queue_->front());
+    Item* front = static_cast<Item*>(queue_->safe_front());
     if (front) {
       fire_timer_.setTimeoutMS(front->delayMS, false);
     }
@@ -449,7 +449,7 @@ namespace org_pqrs_Karabiner {
     // ------------------------------------------------------------
     // handle SimultaneousKeyPresses
     do {
-      Item* front = static_cast<Item*>(queue_->front());
+      Item* front = static_cast<Item*>(queue_->safe_front());
       if (! front) return;
 
       // ------------------------------------------------------------
@@ -494,7 +494,7 @@ namespace org_pqrs_Karabiner {
   {
     if (! queue_) return;
 
-    Item* p = static_cast<Item*>(queue_->front());
+    Item* p = static_cast<Item*>(queue_->safe_front());
     if (! p) return;
 
     switch (p->params.type) {
@@ -669,7 +669,7 @@ namespace org_pqrs_Karabiner {
     if (! blockedQueue_) return true;
     if (! pressingEvents_) return true;
 
-    Item* front = static_cast<Item*>(queue_->front());
+    Item* front = static_cast<Item*>(queue_->safe_front());
     if (! front) return true;
 
     // Ignore events enqueued from blockedQueue_.
@@ -686,7 +686,7 @@ namespace org_pqrs_Karabiner {
 
     // Remove existing events.
     {
-      PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->front());
+      PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->safe_front());
       for (;;) {
         if (! p) break;
 
@@ -708,7 +708,7 @@ namespace org_pqrs_Karabiner {
     // Test whether pressingEvents_ are a target event of BlockUntilKeyUp.
     //
 
-    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
+    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
       if (p->ignore()) continue;
 
       if (RemapClassManager::isTargetEventForBlockUntilKeyUp(p->getParamsUnion())) {
@@ -760,7 +760,7 @@ namespace org_pqrs_Karabiner {
 
       // Move up event after down event.
       FromEvent fromEvent(front->params);
-      for (Item* p = static_cast<Item*>(blockedQueue_->back()); p; p = static_cast<Item*>(p->getprev())) {
+      for (Item* p = static_cast<Item*>(blockedQueue_->safe_back()); p; p = static_cast<Item*>(p->getprev())) {
         if (fromEvent.isTargetDownEvent(p->params)) {
           if (p->getnext()) {
             blockedQueue_->insert(p->getnext(), new Item(*front));
@@ -801,7 +801,7 @@ namespace org_pqrs_Karabiner {
 
     FromEvent fromEvent(front.params);
 
-    for (Item* p = static_cast<Item*>(blockedQueue_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(blockedQueue_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (fromEvent.isTargetDownEvent(p->params)) {
         return true;
       }
@@ -820,7 +820,7 @@ namespace org_pqrs_Karabiner {
     if (blockedQueue_->size() > 0) {
       // restore queue_
       for (;;) {
-        Item* p = static_cast<Item*>(blockedQueue_->back());
+        Item* p = static_cast<Item*>(blockedQueue_->safe_back());
         if (! p) break;
 
         p->delayMS = 0;
@@ -839,7 +839,7 @@ namespace org_pqrs_Karabiner {
     if (! pressingEvents_) return;
 
     // Ignore pressingEvents_ from next.
-    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
+    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
       p->setIgnore();
     }
   }

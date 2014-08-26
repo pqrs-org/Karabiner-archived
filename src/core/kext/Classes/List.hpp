@@ -25,8 +25,9 @@ namespace org_pqrs_Karabiner {
     List(void);
     ~List(void);
 
-    Item* front(void) { return front_; }
-    Item* back(void) { return back_; }
+    // You can call safe_front and safe_back to empty list.
+    Item* safe_front(void) { return front_; }
+    Item* safe_back(void) { return back_; }
     bool empty(void) const { return front_ == NULL; }
     size_t size(void) const { return size_; }
 

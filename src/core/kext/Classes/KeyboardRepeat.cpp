@@ -124,7 +124,7 @@ namespace org_pqrs_Karabiner {
       if (queue_->size() != 1) return;
 
       // We stop key repeat only when the repeating key is up.
-      KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front());
+      KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->safe_front());
       if (p) {
         Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
         if (params && key == params->key) {
@@ -194,7 +194,7 @@ namespace org_pqrs_Karabiner {
     IOLOG_DEVEL("KeyboardRepeat::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
 
     // ----------------------------------------
-    for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
+    for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->safe_front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
       switch ((p->params).type) {
         case ParamsUnion::KEYBOARD:
         {

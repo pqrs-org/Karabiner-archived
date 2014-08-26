@@ -69,7 +69,7 @@ namespace org_pqrs_Karabiner {
     // ------------------------------------------------------------
     // Ignore processed target key until it will be KeyUp.
     if (changedKeyCodes_) {
-      for (Item* p = static_cast<Item*>(changedKeyCodes_->front()); p; p = static_cast<Item*>(p->getnext())) {
+      for (Item* p = static_cast<Item*>(changedKeyCodes_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
         if (p->key == params.key) {
           if (! params.ex_iskeydown) {
             changedKeyCodes_->erase_and_delete(p);

@@ -145,7 +145,7 @@ namespace org_pqrs_Karabiner {
       // If (4) is alive, Shift_R Up event which we don't intend is fired in EventInputQueue.
       // So, we retry handling KeyUp event once more when we drop KeyUp event.
 
-      EventInputQueue::Item* front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->front());
+      EventInputQueue::Item* front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->safe_front());
       if (! front) return false;
 
       // backup device information.
