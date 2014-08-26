@@ -431,6 +431,7 @@ namespace org_pqrs_Karabiner {
         } else if (type == BRIDGE_MODIFIERNAME) {
           if (size < 3) {
             IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_MODIFIERNAME. (%d)\n", size);
+            return;
           } else {
             unsigned int modifierFlag = p[1];
             ModifierName::registerVirtualModifier(ModifierFlag(modifierFlag), p + 2, size - 3);
@@ -657,36 +658,26 @@ namespace org_pqrs_Karabiner {
     char lastmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
     bool isEventInputQueueDelayEnabled_ = false;
 
-    Vector_RemapClassPointer* remapclasses_ = NULL;
-    Vector_RemapClassPointer* enabled_remapclasses_ = NULL;
+    Vector_RemapClassPointer remapclasses_;
+    Vector_RemapClassPointer enabled_remapclasses_;
 
     // ======================================================================
     static void
     refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender)
     {
-      if (! remapclasses_) {
-        IOLOG_ERROR("RemapClassManager::refresh_core remapclasses_ == NULL.\n");
-        return;
-      }
-
-      // ----------------------------------------
-      if (enabled_remapclasses_) {
-        delete enabled_remapclasses_;
-      }
-      enabled_remapclasses_ = new Vector_RemapClassPointer();
-      if (! enabled_remapclasses_) return;
+      enabled_remapclasses_.clear();
 
       // ----------------------------------------
       statusmessage_[0] = '\0';
 
       isEventInputQueueDelayEnabled_ = false;
 
-      for (size_t i = 0; i < remapclasses_->size(); ++i) {
-        RemapClass* p = (*remapclasses_)[i];
+      for (size_t i = 0; i < remapclasses_.size(); ++i) {
+        RemapClass* p = remapclasses_[i];
         if (! p) continue;
 
         if (p->enabled() || p->hasActiveItem()) {
-          enabled_remapclasses_->push_back(p);
+          enabled_remapclasses_.push_back(p);
 
           if (p->enabled()) {
             const char* msg = p->get_statusmessage();
@@ -719,8 +710,6 @@ namespace org_pqrs_Karabiner {
     {
       statusmessage_[0] = '\0';
       lastmessage_[0] = '\0';
-      remapclasses_ = NULL;
-      enabled_remapclasses_ = NULL;
 
       refresh_timer_.initialize(&workloop, NULL, refresh_timer_callback);
     }
@@ -733,21 +722,15 @@ namespace org_pqrs_Karabiner {
       VirtualKey::VK_CONFIG::clear_items();
       VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items();
 
-      if (enabled_remapclasses_) {
-        delete enabled_remapclasses_;
-        enabled_remapclasses_ = NULL;
-      }
+      enabled_remapclasses_.clear();
 
-      if (remapclasses_) {
-        for (size_t i = 0; i < remapclasses_->size(); ++i) {
-          RemapClass* p = (*remapclasses_)[i];
-          if (p) {
-            delete p;
-          }
+      for (size_t i = 0; i < remapclasses_.size(); ++i) {
+        RemapClass* p = remapclasses_[i];
+        if (p) {
+          delete p;
         }
-        delete remapclasses_;
-        remapclasses_ = NULL;
       }
+      remapclasses_.clear();
     }
 
     void
@@ -764,12 +747,6 @@ namespace org_pqrs_Karabiner {
       // ------------------------------------------------------------
       // clean previous resources and setup new resources.
       clear_remapclasses();
-
-      remapclasses_ = new Vector_RemapClassPointer();
-      if (! remapclasses_) {
-        IOLOG_ERROR("%s remapclasses_ == NULL.\n", __FUNCTION__);
-        goto error;
-      }
 
       // ------------------------------------------------------------
       // Validate vector_size
@@ -806,12 +783,12 @@ namespace org_pqrs_Karabiner {
 
         // ------------------------------------------------------------
         // load
-        remapclasses_->reserve(count);
+        remapclasses_.reserve(count);
         RemapClass::reset_allocation_count();
 
         // (1) Setting NULL to all items.
         for (uint32_t i = 0; i < count; ++i) {
-          remapclasses_->push_back(NULL);
+          remapclasses_.push_back(NULL);
         }
 
         // (2) Setting RemapClass* to items.
@@ -842,18 +819,18 @@ namespace org_pqrs_Karabiner {
           }
           p += size;
 
-          if (configindex >= remapclasses_->size()) {
-            IOLOG_ERROR("%s invalid configindex %d (remapclasses_->size() == %d).\n", __FUNCTION__,
-                        configindex, static_cast<int>(remapclasses_->size()));
+          if (configindex >= remapclasses_.size()) {
+            IOLOG_ERROR("%s invalid configindex %d (remapclasses_.size() == %d).\n", __FUNCTION__,
+                        configindex, static_cast<int>(remapclasses_.size()));
             goto error;
           }
-          (*remapclasses_)[configindex] = newp;
+          remapclasses_[configindex] = newp;
         }
 
         // (3) Making sure that is not NULL for all items.
-        for (uint32_t i = 0; i < remapclasses_->size(); ++i) {
-          if (! (*remapclasses_)[i]) {
-            IOLOG_ERROR("%s (*remapclasses_)[i] == NULL.\n", __FUNCTION__);
+        for (uint32_t i = 0; i < remapclasses_.size(); ++i) {
+          if (! remapclasses_[i]) {
+            IOLOG_ERROR("%s remapclasses_[i] == NULL.\n", __FUNCTION__);
             goto error;
           }
         }
@@ -873,12 +850,7 @@ namespace org_pqrs_Karabiner {
     {
       // ------------------------------------------------------------
       // check
-      if (! remapclasses_) {
-        IOLOG_ERROR("%s remapclasses_ == NULL.\n", __FUNCTION__);
-        return false;
-      }
-
-      if (config_size != (BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_->size()) * sizeof(int32_t)) {
+      if (config_size != (BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_.size()) * sizeof(int32_t)) {
         IOLOG_ERROR("%s config_size mismatch.\n", __FUNCTION__);
         return false;
       }
@@ -889,8 +861,8 @@ namespace org_pqrs_Karabiner {
       Config::set_essential_config(p, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
       // remapclasses config
       p += BRIDGE_ESSENTIAL_CONFIG_INDEX__END__;
-      for (size_t i = 0; i < remapclasses_->size(); ++i) {
-        RemapClass* rc = (*remapclasses_)[i];
+      for (size_t i = 0; i < remapclasses_.size(); ++i) {
+        RemapClass* rc = remapclasses_[i];
         if (! rc) {
           IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
         } else {
@@ -911,10 +883,10 @@ namespace org_pqrs_Karabiner {
       if (isEssentialConfig) {
         succeed = Config::set_essential_config_one(index, value);
       } else {
-        if (index >= remapclasses_->size()) {
+        if (index >= remapclasses_.size()) {
           IOLOG_ERROR("%s index is invalid.\n", __FUNCTION__);
         } else {
-          RemapClass* rc = (*remapclasses_)[index];
+          RemapClass* rc = remapclasses_[index];
           if (! rc) {
             IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
           } else {
@@ -939,22 +911,18 @@ namespace org_pqrs_Karabiner {
     // ----------------------------------------------------------------------
     static bool
     isPassThroughEnabled(void) {
-      if (enabled_remapclasses_) {
-        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
-          RemapClass* p = (*enabled_remapclasses_)[i];
-          if (p && p->isPassThroughEnabled()) return true;
-        }
+      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+        RemapClass* p = enabled_remapclasses_[i];
+        if (p && p->isPassThroughEnabled()) return true;
       }
       return false;
     }
 
-#define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                       \
-    if (enabled_remapclasses_) {                                   \
-      for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) { \
-        RemapClass* p = (*enabled_remapclasses_)[i];               \
-        if (p) p->FUNC(PARAMS, passThroughEnabled);                \
-      }                                                            \
-    }                                                              \
+#define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                    \
+    for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) { \
+      RemapClass* p = enabled_remapclasses_[i];                 \
+      if (p) p->FUNC(PARAMS, passThroughEnabled);               \
+    }                                                           \
 }
 
     void
@@ -986,13 +954,11 @@ namespace org_pqrs_Karabiner {
       bool passThroughEnabled = isPassThroughEnabled();
       bool isTargetEvent = false;
 
-      if (enabled_remapclasses_) {
-        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
-          RemapClass* p = (*enabled_remapclasses_)[i];
-          if (p) {
-            if (p->isTargetEventForBlockUntilKeyUp(paramsUnion, passThroughEnabled)) {
-              isTargetEvent = true;
-            }
+      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+        RemapClass* p = enabled_remapclasses_[i];
+        if (p) {
+          if (p->isTargetEventForBlockUntilKeyUp(paramsUnion, passThroughEnabled)) {
+            isTargetEvent = true;
           }
         }
       }
@@ -1006,13 +972,11 @@ namespace org_pqrs_Karabiner {
       bool passThroughEnabled = isPassThroughEnabled();
       bool queue_changed = false;
 
-      if (enabled_remapclasses_) {
-        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
-          RemapClass* p = (*enabled_remapclasses_)[i];
-          if (p) {
-            if (p->remap_simultaneouskeypresses(passThroughEnabled)) {
-              queue_changed = true;
-            }
+      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+        RemapClass* p = enabled_remapclasses_[i];
+        if (p) {
+          if (p->remap_simultaneouskeypresses(passThroughEnabled)) {
+            queue_changed = true;
           }
         }
       }
@@ -1026,12 +990,10 @@ namespace org_pqrs_Karabiner {
       bool passThroughEnabled = isPassThroughEnabled();
       bool dropped = false;
 
-      if (enabled_remapclasses_) {
-        for (size_t i = 0; i < enabled_remapclasses_->size(); ++i) {
-          RemapClass* p = (*enabled_remapclasses_)[i];
-          if (p) {
-            if (p->remap_dropkeyafterremap(params, passThroughEnabled)) dropped = true;
-          }
+      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+        RemapClass* p = enabled_remapclasses_[i];
+        if (p) {
+          if (p->remap_dropkeyafterremap(params, passThroughEnabled)) dropped = true;
         }
       }
 
@@ -1047,14 +1009,12 @@ namespace org_pqrs_Karabiner {
     bool
     isEnabled(size_t configindex)
     {
-      if (! remapclasses_) return false;
-
-      if (configindex >= remapclasses_->size()) {
+      if (configindex >= remapclasses_.size()) {
         IOLOG_ERROR("RemapClass::isEnabled invalid configindex.\n");
         return false;
       }
 
-      RemapClass* p = (*remapclasses_)[configindex];
+      RemapClass* p = remapclasses_[configindex];
       if (! p) return false;
 
       return p->enabled();
