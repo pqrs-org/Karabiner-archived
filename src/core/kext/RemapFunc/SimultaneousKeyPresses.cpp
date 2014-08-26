@@ -122,8 +122,6 @@ namespace org_pqrs_Karabiner {
     bool
     SimultaneousKeyPresses::remap(bool keyuponly)
     {
-      if (! EventInputQueue::queue_) return false;
-
       // We consider "Shift_L+Shift_R to Space".
       // When we press keys by the following order.
       //
@@ -145,7 +143,7 @@ namespace org_pqrs_Karabiner {
       // If (4) is alive, Shift_R Up event which we don't intend is fired in EventInputQueue.
       // So, we retry handling KeyUp event once more when we drop KeyUp event.
 
-      EventInputQueue::Item* front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_->safe_front());
+      EventInputQueue::Item* front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_.safe_front());
       if (! front) return false;
 
       // backup device information.
@@ -158,7 +156,7 @@ namespace org_pqrs_Karabiner {
         if (! fromInfo_[i].fromEvent().isTargetUpEvent(front->params)) continue;
 
         // --------------------
-        EventInputQueue::queue_->pop_front();
+        EventInputQueue::queue_.pop_front();
         fromInfo_[i].deactivate();
 
         // --------------------
@@ -257,7 +255,7 @@ namespace org_pqrs_Karabiner {
         if (isAllKeysDown) {
           for (size_t i = 0; i < fromInfo_.size(); ++i) {
             fromInfo_[i].activate();
-            EventInputQueue::queue_->erase_and_delete(downKeys_[i].item);
+            EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
           }
           push_remapped(true, deviceIdentifier);
           return true;

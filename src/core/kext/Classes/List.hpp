@@ -22,8 +22,8 @@ namespace org_pqrs_Karabiner {
       Item* next_;
     };
 
-    List(void);
-    ~List(void);
+    List(void) : front_(NULL), back_(NULL), size_(0) {}
+    ~List(void) { clear(); }
 
     // You can call safe_front and safe_back to empty list.
     Item* safe_front(void) { return front_; }

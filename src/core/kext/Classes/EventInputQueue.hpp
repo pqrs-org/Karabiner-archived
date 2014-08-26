@@ -145,8 +145,8 @@ namespace org_pqrs_Karabiner {
         bool ignore_;
       };
 
-      static List* blockedQueue_;
-      static List* pressingEvents_;
+      static List blockedQueue_;
+      static List pressingEvents_;
       static TimerWrapper blockingTimeOut_timer_;
     };
 
@@ -165,7 +165,7 @@ namespace org_pqrs_Karabiner {
     static void doFire(void);
     static void setTimer(void);
 
-    static List* queue_;
+    static List queue_;
     static IntervalChecker ic_;
     static TimerWrapper fire_timer_;
     // Increment at fire_timer_callback.
