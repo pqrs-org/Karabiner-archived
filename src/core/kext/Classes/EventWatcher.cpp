@@ -4,38 +4,31 @@
 #include "IOLogWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
-  List* EventWatcher::list_;
+  List EventWatcher::list_;
 
   void
   EventWatcher::initialize(void)
   {
-    list_ = new List();
   }
 
   void
   EventWatcher::terminate(void)
   {
-    if (list_) {
-      delete list_;
-    }
+    list_.clear();
   }
 
   void
   EventWatcher::reset(void)
   {
-    if (! list_) return;
-
-    list_->clear();
+    list_.clear();
   }
 
   void
   EventWatcher::on(void)
   {
-    if (! list_) return;
+    IOLOG_DEVEL("EventWatcher::on (list_.size:%d)\n", static_cast<int>(list_.size()));
 
-    IOLOG_DEVEL("EventWatcher::on (list_->size:%d)\n", static_cast<int>(list_->size()));
-
-    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       p->on();
     }
   }
@@ -43,9 +36,7 @@ namespace org_pqrs_Karabiner {
   void
   EventWatcher::undo(void)
   {
-    if (! list_) return;
-
-    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       p->undo();
     }
   }
@@ -53,23 +44,19 @@ namespace org_pqrs_Karabiner {
   void
   EventWatcher::set(bool& b)
   {
-    if (! list_) return;
-
     b = false;
-    list_->push_back(new Item(b));
+    list_.push_back(new Item(b));
   }
 
   void
   EventWatcher::unset(bool& b)
   {
-    if (! list_) return;
-
-    Item* p = static_cast<Item*>(list_->safe_front());
+    Item* p = static_cast<Item*>(list_.safe_front());
     for (;;) {
       if (! p) break;
 
       if (p->isSameAddress(b)) {
-        p = static_cast<Item*>(list_->erase_and_delete(p));
+        p = static_cast<Item*>(list_.erase_and_delete(p));
       } else {
         p = static_cast<Item*>(p->getnext());
       }
