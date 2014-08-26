@@ -161,6 +161,7 @@ IOReturn
 USERCLIENT_KEXT_CLASSNAME::static_callback_open(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
+  if (! arguments) return kIOReturnBadArgument;
 
   return target->callback_open(arguments->scalarInput[0], &(arguments->scalarOutput[0]));
 }
@@ -261,6 +262,8 @@ IOReturn
 USERCLIENT_KEXT_CLASSNAME::static_callback_synchronized_communication(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
+  if (! arguments) return kIOReturnBadArgument;
+
   return target->callback_synchronized_communication(static_cast<const BridgeUserClientStruct*>(arguments->structureInput), &arguments->scalarOutput[0]);
 }
 
@@ -337,6 +340,8 @@ IOReturn
 USERCLIENT_KEXT_CLASSNAME::static_callback_notification_from_kext(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
 {
   if (! target) return kIOReturnBadArgument;
+  if (! arguments) return kIOReturnBadArgument;
+
   return target->callback_notification_from_kext(arguments->asyncReference);
 }
 
