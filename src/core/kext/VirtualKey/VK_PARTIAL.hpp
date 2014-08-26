@@ -21,7 +21,7 @@ namespace org_pqrs_Karabiner {
         KeyCode key;
       };
 
-      static List* changedKeyCodes_;
+      static List changedKeyCodes_;
       static bool active_;
       static EventType eventType_;
     };
