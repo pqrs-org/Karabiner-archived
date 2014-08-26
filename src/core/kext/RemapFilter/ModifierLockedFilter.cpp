@@ -43,10 +43,10 @@ namespace org_pqrs_Karabiner {
     ModifierLockedFilter::isblocked(void)
     {
       switch (type_) {
-        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
-        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
         {
-          bool isnot = (type_ == BRIDGE_FILTERTYPE_MODIFIER_NOT);
+          bool isnot = (type_ == BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT);
 
           for (size_t i = 0; i < targets_.size(); ++i) {
             if (targets_[i].empty()) continue;
