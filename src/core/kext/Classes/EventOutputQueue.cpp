@@ -128,7 +128,7 @@ namespace org_pqrs_Karabiner {
 
     // IOLOG_DEVEL("EventOutputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
 
-    Item* p = static_cast<Item*>(queue_->front());
+    Item* p = static_cast<Item*>(queue_->safe_front());
     if (! p) return;
 
     // Delay after modifier or click.
@@ -203,7 +203,7 @@ namespace org_pqrs_Karabiner {
     // Set timeout for next event.
 
     // Delay before modifier and click.
-    Item* next = static_cast<Item*>(queue_->front());
+    Item* next = static_cast<Item*>(queue_->safe_front());
     if (! next) return;
     delay = maxDelay(delay, calcDelay(next->params));
 

@@ -35,7 +35,7 @@ namespace org_pqrs_Karabiner {
 
     IOLOG_DEVEL("EventWatcher::on (list_->size:%d)\n", static_cast<int>(list_->size()));
 
-    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       p->on();
     }
   }
@@ -45,7 +45,7 @@ namespace org_pqrs_Karabiner {
   {
     if (! list_) return;
 
-    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       p->undo();
     }
   }
@@ -64,7 +64,7 @@ namespace org_pqrs_Karabiner {
   {
     if (! list_) return;
 
-    Item* p = static_cast<Item*>(list_->front());
+    Item* p = static_cast<Item*>(list_->safe_front());
     for (;;) {
       if (! p) break;
 

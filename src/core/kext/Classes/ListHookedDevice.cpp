@@ -231,7 +231,7 @@ namespace org_pqrs_Karabiner {
 
     last_ = device;
 
-    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->device_ == device) return p;
     }
 
@@ -250,7 +250,7 @@ namespace org_pqrs_Karabiner {
 
     // ----------------------------------------------------------------------
     // Using a first matched device.
-    for (p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->isReplaced()) return p;
     }
 
@@ -262,7 +262,7 @@ namespace org_pqrs_Karabiner {
   {
     if (! list_) return;
 
-    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->refresh()) {
         // Call reset whenever the device status is changed.
         reset();
@@ -275,7 +275,7 @@ namespace org_pqrs_Karabiner {
   {
     if (! list_) return false;
 
-    for (Item* p = static_cast<Item*>(list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->inProgress_) {
         return true;
       }
@@ -295,7 +295,7 @@ namespace org_pqrs_Karabiner {
 
     if (! list_) return;
 
-    Item* p = static_cast<Item*>(list_->front());
+    Item* p = static_cast<Item*>(list_->safe_front());
 
     for (;;) {
       if (! p) return;

@@ -351,7 +351,7 @@ namespace org_pqrs_Karabiner {
 
     Flags flags = FlagStatus::globalFlagStatus().makeFlags();
 
-    for (Item* p = static_cast<Item*>(self.list_->front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(self.list_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (! p->isReplaced()) continue;
 
       // Don't call setAlphaLock on devices which have non-Apple driver.
