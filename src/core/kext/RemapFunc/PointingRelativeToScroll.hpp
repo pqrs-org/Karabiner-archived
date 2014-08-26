@@ -85,7 +85,7 @@ namespace org_pqrs_Karabiner {
       int fixation_delta2_;
 
       // ----------
-      static List* queue_;
+      static List queue_;
       static Vector_ModifierFlag currentFromModifierFlags_;
       static Vector_ModifierFlag currentToModifierFlags_;
       static TimerWrapper timer_;
