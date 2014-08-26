@@ -6,7 +6,6 @@ Since 10.2.0
         * <modifierlocked_only>
         * <modifierlocked_not>
 
-
 Version 10.2.0
 --------------
 
