@@ -41,7 +41,7 @@ namespace org_pqrs_Karabiner {
     // Example:
     //   queue.push_back(new List::Item);
     //
-    //   List::Item* p = queue.front();
+    //   List::Item* p = queue.safe_front();
     //   queue.pop_front();
     //
     // ----------------------------------------
