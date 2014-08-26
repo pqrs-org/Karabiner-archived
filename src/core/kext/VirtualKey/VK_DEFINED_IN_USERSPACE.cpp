@@ -10,8 +10,7 @@ namespace org_pqrs_Karabiner {
 
   void
   VirtualKey::VK_DEFINED_IN_USERSPACE::initialize(void)
-  {
-  }
+  {}
 
   void
   VirtualKey::VK_DEFINED_IN_USERSPACE::terminate(void)
