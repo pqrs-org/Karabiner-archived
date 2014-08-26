@@ -128,9 +128,13 @@ TEST(List, push_front) {
 TEST(List, pop_front) {
   List list;
   list.pop_front();
+  list.pop_front();
+  list.pop_front();
 }
 TEST(List, pop_back) {
   List list;
+  list.pop_back();
+  list.pop_back();
   list.pop_back();
 
   list.push_back(new TestItem(1));
