@@ -14,19 +14,18 @@
 #include "RemapClass.hpp"
 
 namespace org_pqrs_Karabiner {
-  List* EventInputQueue::queue_ = NULL;
+  List EventInputQueue::queue_;
   IntervalChecker EventInputQueue::ic_;
   TimerWrapper EventInputQueue::fire_timer_;
   uint64_t EventInputQueue::serialNumber_;
 
-  List* EventInputQueue::BlockUntilKeyUpHander::blockedQueue_ = NULL;
-  List* EventInputQueue::BlockUntilKeyUpHander::pressingEvents_ = NULL;
+  List EventInputQueue::BlockUntilKeyUpHander::blockedQueue_;
+  List EventInputQueue::BlockUntilKeyUpHander::pressingEvents_;
   TimerWrapper EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_;
 
   void
   EventInputQueue::initialize(IOWorkLoop& workloop)
   {
-    queue_ = new List();
     ic_.begin();
     fire_timer_.initialize(&workloop, NULL, EventInputQueue::fire_timer_callback);
     serialNumber_ = 0;
@@ -39,10 +38,8 @@ namespace org_pqrs_Karabiner {
   {
     fire_timer_.terminate();
 
-    if (queue_) {
-      delete queue_;
-      queue_ = NULL;
-    }
+    queue_.clear();
+
     BlockUntilKeyUpHander::terminate();
   }
 
@@ -75,8 +72,6 @@ namespace org_pqrs_Karabiner {
                             const DeviceIdentifier& deviceIdentifier,
                             bool push_back)
   {
-    if (! queue_) return;
-
     // Because we handle the key repeat ourself, drop the key repeat.
     if (p.repeat) return;
 
@@ -84,9 +79,9 @@ namespace org_pqrs_Karabiner {
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
     Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay);
     if (push_back) {
-      queue_->push_back(item);
+      queue_.push_back(item);
     } else {
-      queue_->push_front(item);
+      queue_.push_front(item);
     }
   }
 
@@ -95,14 +90,12 @@ namespace org_pqrs_Karabiner {
                             bool retainFlagStatusTemporaryCount,
                             const DeviceIdentifier& deviceIdentifier)
   {
-    if (! queue_) return;
-
     // Because we handle the key repeat ourself, drop the key repeat.
     if (p.repeat) return;
 
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
+    queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
   }
 
   void
@@ -110,11 +103,9 @@ namespace org_pqrs_Karabiner {
                             bool retainFlagStatusTemporaryCount,
                             const DeviceIdentifier& deviceIdentifier)
   {
-    if (! queue_) return;
-
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
+    queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
   }
 
   void
@@ -122,19 +113,15 @@ namespace org_pqrs_Karabiner {
                             bool retainFlagStatusTemporaryCount,
                             const DeviceIdentifier& deviceIdentifier)
   {
-    if (! queue_) return;
-
     // --------------------
     uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-    queue_->push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
+    queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
   }
 
   void
   EventInputQueue::setTimer(void)
   {
-    if (! queue_) return;
-
-    Item* front = static_cast<Item*>(queue_->safe_front());
+    Item* front = static_cast<Item*>(queue_.safe_front());
     if (front) {
       fire_timer_.setTimeoutMS(front->delayMS, false);
     }
@@ -442,14 +429,12 @@ namespace org_pqrs_Karabiner {
   void
   EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/)
   {
-    if (! queue_) return;
-
-    // IOLOG_DEVEL("EventInputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
+    // IOLOG_DEVEL("EventInputQueue::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
 
     // ------------------------------------------------------------
     // handle SimultaneousKeyPresses
     do {
-      Item* front = static_cast<Item*>(queue_->safe_front());
+      Item* front = static_cast<Item*>(queue_.safe_front());
       if (! front) return;
 
       // ------------------------------------------------------------
@@ -492,9 +477,7 @@ namespace org_pqrs_Karabiner {
   void
   EventInputQueue::doFire(void)
   {
-    if (! queue_) return;
-
-    Item* p = static_cast<Item*>(queue_->safe_front());
+    Item* p = static_cast<Item*>(queue_.safe_front());
     if (! p) return;
 
     switch (p->params.type) {
@@ -634,16 +617,13 @@ namespace org_pqrs_Karabiner {
 
     CommonData::setcurrent_lastpressedphysicalkey(p->params);
 
-    queue_->pop_front();
+    queue_.pop_front();
     ++serialNumber_;
   }
 
   void
   EventInputQueue::BlockUntilKeyUpHander::initialize(IOWorkLoop& workloop)
   {
-    blockedQueue_ = new List();
-    pressingEvents_ = new List();
-
     blockingTimeOut_timer_.initialize(&workloop, NULL, EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback);
   }
 
@@ -652,24 +632,14 @@ namespace org_pqrs_Karabiner {
   {
     blockingTimeOut_timer_.terminate();
 
-    if (blockedQueue_) {
-      delete blockedQueue_;
-      blockedQueue_ = NULL;
-    }
-    if (pressingEvents_) {
-      delete pressingEvents_;
-      pressingEvents_ = NULL;
-    }
+    blockedQueue_.clear();
+    pressingEvents_.clear();
   }
 
   bool
   EventInputQueue::BlockUntilKeyUpHander::doBlockUntilKeyUp(void)
   {
-    if (! queue_) return true;
-    if (! blockedQueue_) return true;
-    if (! pressingEvents_) return true;
-
-    Item* front = static_cast<Item*>(queue_->safe_front());
+    Item* front = static_cast<Item*>(queue_.safe_front());
     if (! front) return true;
 
     // Ignore events enqueued from blockedQueue_.
@@ -686,13 +656,13 @@ namespace org_pqrs_Karabiner {
 
     // Remove existing events.
     {
-      PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->safe_front());
+      PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_.safe_front());
       for (;;) {
         if (! p) break;
 
         if ((p->getFromEvent()).isTargetDownEvent(front->params) ||
             (p->getFromEvent()).isTargetUpEvent(front->params)) {
-          p = static_cast<PressingEvent*>(pressingEvents_->erase_and_delete(p));
+          p = static_cast<PressingEvent*>(pressingEvents_.erase_and_delete(p));
         } else {
           p = static_cast<PressingEvent*>(p->getnext());
         }
@@ -701,14 +671,14 @@ namespace org_pqrs_Karabiner {
 
     // Add to list.
     if (iskeydown) {
-      pressingEvents_->push_back(new PressingEvent(front->params));
+      pressingEvents_.push_back(new PressingEvent(front->params));
     }
 
     // ----------------------------------------
     // Test whether pressingEvents_ are a target event of BlockUntilKeyUp.
     //
 
-    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
+    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_.safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
       if (p->ignore()) continue;
 
       if (RemapClassManager::isTargetEventForBlockUntilKeyUp(p->getParamsUnion())) {
@@ -760,18 +730,18 @@ namespace org_pqrs_Karabiner {
 
       // Move up event after down event.
       FromEvent fromEvent(front->params);
-      for (Item* p = static_cast<Item*>(blockedQueue_->safe_back()); p; p = static_cast<Item*>(p->getprev())) {
+      for (Item* p = static_cast<Item*>(blockedQueue_.safe_back()); p; p = static_cast<Item*>(p->getprev())) {
         if (fromEvent.isTargetDownEvent(p->params)) {
           if (p->getnext()) {
-            blockedQueue_->insert(p->getnext(), new Item(*front));
+            blockedQueue_.insert(p->getnext(), new Item(*front));
           } else {
-            blockedQueue_->push_back(new Item(*front));
+            blockedQueue_.push_back(new Item(*front));
           }
           goto endBlocking;
         }
       }
       // corresponded event is not found.
-      blockedQueue_->push_front(new Item(*front));
+      blockedQueue_.push_front(new Item(*front));
       goto endBlocking;
 
     } else if (! iskeydown && isTargetDownEventInBlockedQueue(*front)) {
@@ -779,17 +749,17 @@ namespace org_pqrs_Karabiner {
 
       setIgnoreToAllPressingEvents();
 
-      blockedQueue_->push_back(new Item(*front));
+      blockedQueue_.push_back(new Item(*front));
       goto endBlocking;
     }
 
-    blockedQueue_->push_back(new Item(*front));
-    queue_->pop_front();
+    blockedQueue_.push_back(new Item(*front));
+    queue_.pop_front();
     // Do not call doFire.
     return false;
 
   endBlocking:
-    queue_->pop_front();
+    queue_.pop_front();
     endBlocking();
     return true;
   }
@@ -797,11 +767,9 @@ namespace org_pqrs_Karabiner {
   bool
   EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const Item& front)
   {
-    if (! blockedQueue_) return true;
-
     FromEvent fromEvent(front.params);
 
-    for (Item* p = static_cast<Item*>(blockedQueue_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (fromEvent.isTargetDownEvent(p->params)) {
         return true;
       }
@@ -813,20 +781,16 @@ namespace org_pqrs_Karabiner {
   void
   EventInputQueue::BlockUntilKeyUpHander::endBlocking(void)
   {
-    if (! queue_) return;
-    if (! blockedQueue_) return;
-    if (! pressingEvents_) return;
-
-    if (blockedQueue_->size() > 0) {
+    if (blockedQueue_.size() > 0) {
       // restore queue_
       for (;;) {
-        Item* p = static_cast<Item*>(blockedQueue_->safe_back());
+        Item* p = static_cast<Item*>(blockedQueue_.safe_back());
         if (! p) break;
 
         p->delayMS = 0;
         p->enqueuedFrom = Item::ENQUEUED_FROM_BLOCKEDQUEUE;
-        queue_->push_front(new Item(*p));
-        blockedQueue_->pop_back();
+        queue_.push_front(new Item(*p));
+        blockedQueue_.pop_back();
       }
     }
 
@@ -836,10 +800,8 @@ namespace org_pqrs_Karabiner {
   void
   EventInputQueue::BlockUntilKeyUpHander::setIgnoreToAllPressingEvents(void)
   {
-    if (! pressingEvents_) return;
-
     // Ignore pressingEvents_ from next.
-    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_->safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
+    for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_.safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
       p->setIgnore();
     }
   }

@@ -1,14 +1,6 @@
 #include "List.hpp"
 
 namespace org_pqrs_Karabiner {
-  List::List(void) : front_(NULL), back_(NULL), size_(0)
-  {}
-
-  List::~List(void)
-  {
-    clear();
-  }
-
   List::Item*
   List::erase(Item* p)
   {
