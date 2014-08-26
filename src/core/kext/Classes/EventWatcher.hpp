@@ -32,7 +32,7 @@ namespace org_pqrs_Karabiner {
       uint64_t cancelableEventInputQueueSerialNumber_;
       bool& isAnyEventHappen_;
     };
-    static List* list_;
+    static List list_;
   };
 }
 
