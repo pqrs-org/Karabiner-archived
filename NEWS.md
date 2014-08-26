@@ -1,3 +1,12 @@
+Since 10.2.0
+------------
+
+* Updates for people who add new settings by oneself:
+    * The following filters have been added.
+        * <modifierlocked_only>
+        * <modifierlocked_not>
+
+
 Version 10.2.0
 --------------
 
