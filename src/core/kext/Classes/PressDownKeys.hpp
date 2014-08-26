@@ -23,7 +23,7 @@ namespace org_pqrs_Karabiner {
       KeyCode key;
       KeyboardType keyboardType;
     };
-    static List* list_;
+    static List list_;
   };
 }
 
