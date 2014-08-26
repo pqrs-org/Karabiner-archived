@@ -90,7 +90,7 @@ namespace org_pqrs_Karabiner {
       return id_;
     }
 
-    static List* queue_;
+    static List queue_;
     static TimerWrapper fire_timer_;
     static int id_;
     static int keyRepeat_;
