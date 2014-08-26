@@ -9,14 +9,13 @@
 #include "VK_IOHIDPOSTEVENT.hpp"
 
 namespace org_pqrs_Karabiner {
-  List* EventOutputQueue::queue_ = NULL;
+  List EventOutputQueue::queue_;
   TimerWrapper EventOutputQueue::fire_timer_;
   Buttons EventOutputQueue::previousButtons_;
 
   void
   EventOutputQueue::initialize(IOWorkLoop& workloop)
   {
-    queue_ = new List();
     fire_timer_.initialize(&workloop, NULL, EventOutputQueue::fire_timer_callback);
   }
 
@@ -25,16 +24,12 @@ namespace org_pqrs_Karabiner {
   {
     fire_timer_.terminate();
 
-    if (queue_) {
-      delete queue_;
-    }
+    queue_.clear();
   }
 
   // ----------------------------------------------------------------------
 #define PUSH_TO_OUTPUTQUEUE {           \
-    if (! queue_) return;               \
-                                        \
-    queue_->push_back(new Item(p));     \
+    queue_.push_back(new Item(p));      \
     fire_timer_.setTimeoutMS(0, false); \
 }
   void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
@@ -124,11 +119,9 @@ namespace org_pqrs_Karabiner {
   void
   EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */)
   {
-    if (! queue_) return;
+    // IOLOG_DEVEL("EventOutputQueue::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
 
-    // IOLOG_DEVEL("EventOutputQueue::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
-
-    Item* p = static_cast<Item*>(queue_->safe_front());
+    Item* p = static_cast<Item*>(queue_.safe_front());
     if (! p) return;
 
     // Delay after modifier or click.
@@ -197,13 +190,13 @@ namespace org_pqrs_Karabiner {
         break;
     }
 
-    queue_->pop_front();
+    queue_.pop_front();
 
     // ----------------------------------------
     // Set timeout for next event.
 
     // Delay before modifier and click.
-    Item* next = static_cast<Item*>(queue_->safe_front());
+    Item* next = static_cast<Item*>(queue_.safe_front());
     if (! next) return;
     delay = maxDelay(delay, calcDelay(next->params));
 
