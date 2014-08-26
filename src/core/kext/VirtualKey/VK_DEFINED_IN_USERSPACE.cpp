@@ -6,36 +6,29 @@
 #include "VK_DEFINED_IN_USERSPACE.hpp"
 
 namespace org_pqrs_Karabiner {
-  VirtualKey::VK_DEFINED_IN_USERSPACE::Vector_Item* VirtualKey::VK_DEFINED_IN_USERSPACE::items_ = NULL;
+  VirtualKey::VK_DEFINED_IN_USERSPACE::Vector_Item VirtualKey::VK_DEFINED_IN_USERSPACE::items_;
 
   void
   VirtualKey::VK_DEFINED_IN_USERSPACE::initialize(void)
   {
-    items_ = new Vector_Item();
   }
 
   void
   VirtualKey::VK_DEFINED_IN_USERSPACE::terminate(void)
   {
-    if (items_) {
-      delete items_;
-    }
+    items_.clear();
   }
 
   void
   VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type)
   {
-    if (! items_) return;
-
-    items_->push_back(Item(remapclass, keycode, notification_type));
+    items_.push_back(Item(remapclass, keycode, notification_type));
   }
 
   void
   VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items(void)
   {
-    if (! items_) return;
-
-    items_->clear();
+    items_.clear();
   }
 
   bool
@@ -94,12 +87,10 @@ namespace org_pqrs_Karabiner {
   bool
   VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
   {
-    if (! items_) return false;
-
-    for (size_t i = 0; i < items_->size(); ++i) {
-      RemapClass* remapclass = (*items_)[i].remapclass;
-      KeyCode keycode((*items_)[i].keycode);
-      uint32_t notification_type = (*items_)[i].notification_type;
+    for (size_t i = 0; i < items_.size(); ++i) {
+      RemapClass* remapclass = items_[i].remapclass;
+      KeyCode keycode(items_[i].keycode);
+      uint32_t notification_type = items_[i].notification_type;
 
       if (! remapclass) return false;
 
