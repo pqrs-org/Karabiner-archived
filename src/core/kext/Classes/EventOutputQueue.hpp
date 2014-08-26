@@ -87,7 +87,7 @@ namespace org_pqrs_Karabiner {
     static void push(const Params_ScrollWheelEventCallback& p);
     static void push(const Params_Wait& p);
 
-    static List* queue_;
+    static List queue_;
     static TimerWrapper fire_timer_;
     static Buttons previousButtons_;
   };
