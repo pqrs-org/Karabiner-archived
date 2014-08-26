@@ -6,7 +6,7 @@
 #include "RemapClass.hpp"
 
 namespace org_pqrs_Karabiner {
-  List* KeyboardRepeat::queue_ = NULL;
+  List KeyboardRepeat::queue_;
   TimerWrapper KeyboardRepeat::fire_timer_;
   int KeyboardRepeat::id_ = 0;
   int KeyboardRepeat::keyRepeat_ = 0;
@@ -14,7 +14,6 @@ namespace org_pqrs_Karabiner {
   void
   KeyboardRepeat::initialize(IOWorkLoop& workloop)
   {
-    queue_ = new List();
     fire_timer_.initialize(&workloop, NULL, KeyboardRepeat::fire_timer_callback);
   }
 
@@ -23,18 +22,15 @@ namespace org_pqrs_Karabiner {
   {
     fire_timer_.terminate();
 
-    if (queue_) {
-      delete queue_;
-    }
+    queue_.clear();
   }
 
   void
   KeyboardRepeat::cancel(void)
   {
     fire_timer_.cancelTimeout();
-    if (queue_) {
-      queue_->clear();
-    }
+
+    queue_.clear();
 
     // Increase id_ at cancel for DependingPressingPeriodKeyToKey to detect keyboardRepeat canceling.
     succID();
@@ -46,7 +42,6 @@ namespace org_pqrs_Karabiner {
                                 KeyCode key,
                                 KeyboardType keyboardType)
   {
-    if (! queue_) return;
     if (key == KeyCode::VK_NONE) return;
 
     // ------------------------------------------------------------
@@ -57,7 +52,7 @@ namespace org_pqrs_Karabiner {
                                                                                    true));
     if (! ptr) return;
     Params_KeyboardEventCallBack& params = *ptr;
-    queue_->push_back(new Item(params));
+    queue_.push_back(new Item(params));
   }
 
   void
@@ -65,7 +60,6 @@ namespace org_pqrs_Karabiner {
                                 Flags flags,
                                 ConsumerKeyCode key)
   {
-    if (! queue_) return;
     if (key == ConsumerKeyCode::VK_NONE) return;
 
     // ------------------------------------------------------------
@@ -75,14 +69,12 @@ namespace org_pqrs_Karabiner {
                                                                                                  true));
     if (! ptr) return;
     Params_KeyboardSpecialEventCallback& params = *ptr;
-    queue_->push_back(new Item(params));
+    queue_.push_back(new Item(params));
   }
 
   void
   KeyboardRepeat::primitive_add(Buttons button)
   {
-    if (! queue_) return;
-
     // ------------------------------------------------------------
     Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(button,
                                                                                                  0,
@@ -91,7 +83,7 @@ namespace org_pqrs_Karabiner {
                                                                                                  false));
     if (! ptr) return;
     Params_RelativePointerEventCallback& params = *ptr;
-    queue_->push_back(new Item(params));
+    queue_.push_back(new Item(params));
   }
 
   int
@@ -111,8 +103,6 @@ namespace org_pqrs_Karabiner {
                       int delayUntilRepeat,
                       int keyRepeat)
   {
-    if (! queue_) return;
-
     if (key == KeyCode::VK_NONE) return;
 
     if (eventType == EventType::MODIFY) {
@@ -121,10 +111,10 @@ namespace org_pqrs_Karabiner {
     } else if (eventType == EventType::UP) {
       // The repetition of plural keys is controlled by manual operation.
       // So, we ignore it.
-      if (queue_->size() != 1) return;
+      if (queue_.size() != 1) return;
 
       // We stop key repeat only when the repeating key is up.
-      KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->safe_front());
+      KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_.safe_front());
       if (p) {
         Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
         if (params && key == params->key) {
@@ -157,8 +147,6 @@ namespace org_pqrs_Karabiner {
                       int delayUntilRepeat,
                       int keyRepeat)
   {
-    if (! queue_) return;
-
     if (key == ConsumerKeyCode::VK_NONE) return;
 
     if (eventType == EventType::UP) {
@@ -189,12 +177,10 @@ namespace org_pqrs_Karabiner {
   void
   KeyboardRepeat::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender)
   {
-    if (! queue_) return;
-
-    IOLOG_DEVEL("KeyboardRepeat::fire queue_->size = %d\n", static_cast<int>(queue_->size()));
+    IOLOG_DEVEL("KeyboardRepeat::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
 
     // ----------------------------------------
-    for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_->safe_front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
+    for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_.safe_front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
       switch ((p->params).type) {
         case ParamsUnion::KEYBOARD:
         {
@@ -205,7 +191,7 @@ namespace org_pqrs_Karabiner {
                                                   params->flags,
                                                   params->key,
                                                   params->keyboardType,
-                                                  queue_->size() == 1 ? true : false));
+                                                  queue_.size() == 1 ? true : false));
             if (ptr) {
               EventOutputQueue::FireKey::fire(*ptr);
             }
@@ -221,7 +207,7 @@ namespace org_pqrs_Karabiner {
               Params_KeyboardSpecialEventCallback::alloc(params->eventType,
                                                          params->flags,
                                                          params->key,
-                                                         queue_->size() == 1 ? true : false));
+                                                         queue_.size() == 1 ? true : false));
             if (ptr) {
               EventOutputQueue::FireConsumer::fire(*ptr);
             }
