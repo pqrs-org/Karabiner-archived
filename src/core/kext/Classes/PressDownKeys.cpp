@@ -6,30 +6,25 @@
 #include "PressDownKeys.hpp"
 
 namespace org_pqrs_Karabiner {
-  List* PressDownKeys::list_;
+  List PressDownKeys::list_;
 
   void
   PressDownKeys::initialize(void)
   {
-    list_ = new List();
   }
 
   void
   PressDownKeys::terminate(void)
   {
-    if (list_) {
-      delete list_;
-    }
+    list_.clear();
   }
 
   void
   PressDownKeys::add(KeyCode key, KeyboardType keyboardType)
   {
-    if (! list_) return;
-
     if (key == KeyCode::VK_NONE) return;
 
-    list_->push_back(new Item(key, keyboardType));
+    list_.push_back(new Item(key, keyboardType));
 
     IOLOG_DEVEL("PressDownKeys::add key:%d, keyboardType:%d\n", key.get(), keyboardType.get());
   }
@@ -37,15 +32,13 @@ namespace org_pqrs_Karabiner {
   void
   PressDownKeys::remove(KeyCode key, KeyboardType keyboardType)
   {
-    if (! list_) return;
-
-    Item* p = static_cast<Item*>(list_->safe_front());
+    Item* p = static_cast<Item*>(list_.safe_front());
     for (;;) {
       if (! p) break;
 
       if (p->key == key &&
           p->keyboardType == keyboardType) {
-        p = static_cast<Item*>(list_->erase_and_delete(p));
+        p = static_cast<Item*>(list_.erase_and_delete(p));
       } else {
         p = static_cast<Item*>(p->getnext());
       }
@@ -57,11 +50,9 @@ namespace org_pqrs_Karabiner {
   void
   PressDownKeys::clear(void)
   {
-    if (! list_) return;
+    IOLOG_DEVEL("PressDownKeys::clear list_.size = %d\n", static_cast<int>(list_.size()));
 
-    IOLOG_DEVEL("PressDownKeys::clear list_->size = %d\n", static_cast<int>(list_->size()));
-
-    Item* p = static_cast<Item*>(list_->safe_front());
+    Item* p = static_cast<Item*>(list_.safe_front());
     for (;;) {
       if (! p) break;
 
@@ -71,7 +62,7 @@ namespace org_pqrs_Karabiner {
       EventOutputQueue::push(*ptr);
       IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", (p->key).get(), (p->keyboardType).get());
 
-      p = static_cast<Item*>(list_->erase_and_delete(p));
+      p = static_cast<Item*>(list_.erase_and_delete(p));
     }
   }
 }
