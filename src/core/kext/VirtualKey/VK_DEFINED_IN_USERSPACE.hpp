@@ -33,7 +33,7 @@ namespace org_pqrs_Karabiner {
         uint32_t notification_type;
       };
       DECLARE_VECTOR(Item);
-      static Vector_Item* items_;
+      static Vector_Item items_;
     };
   }
 }
