@@ -4,20 +4,19 @@
 #include "VK_PARTIAL.hpp"
 
 namespace org_pqrs_Karabiner {
-  List* VirtualKey::VK_PARTIAL::changedKeyCodes_ = NULL;
+  List VirtualKey::VK_PARTIAL::changedKeyCodes_;
   bool VirtualKey::VK_PARTIAL::active_ = false;
   EventType VirtualKey::VK_PARTIAL::eventType_;
 
   void
   VirtualKey::VK_PARTIAL::initialize(void)
   {
-    changedKeyCodes_ = new List();
   }
 
   void
   VirtualKey::VK_PARTIAL::terminate(void)
   {
-    delete changedKeyCodes_;
+    changedKeyCodes_.clear();
   }
 
   bool
@@ -59,23 +58,19 @@ namespace org_pqrs_Karabiner {
 
       // We need to register a key for changedKeyCodes_ after EventOutputQueue::FireKey::fire
       // because changedKeyCodes_ blocks key events.
-      if (changedKeyCodes_) {
-        changedKeyCodes_->push_back(new Item(params.key));
-      }
+      changedKeyCodes_.push_back(new Item(params.key));
 
       return true;
     }
 
     // ------------------------------------------------------------
     // Ignore processed target key until it will be KeyUp.
-    if (changedKeyCodes_) {
-      for (Item* p = static_cast<Item*>(changedKeyCodes_->safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-        if (p->key == params.key) {
-          if (! params.ex_iskeydown) {
-            changedKeyCodes_->erase_and_delete(p);
-          }
-          return true;
+    for (Item* p = static_cast<Item*>(changedKeyCodes_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (p->key == params.key) {
+        if (! params.ex_iskeydown) {
+          changedKeyCodes_.erase_and_delete(p);
         }
+        return true;
       }
     }
 
