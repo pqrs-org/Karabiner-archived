@@ -1,69 +1,57 @@
 <?xml version="1.0"?>
 <root>
+
   <!-- when modifier is locked. -->
-  <autogen>
-    __KeyOverlaidModifier__
-    KeyCode::{{ MODIFIER }}, ModifierFlag::SL2_{{ MODIFIER }},
+  <block>
+    <modifierlocked_only>ModifierFlag::{{ TO_MODIFIER }}</modifierlocked_only>
+    <autogen>
+      __KeyOverlaidModifier__
+      KeyCode::{{ FROM_MODIFIER }},
 
-    @begin
-    KeyCode::{{ MODIFIER }},
-    @end
+      @begin
+      KeyCode::{{ TO_MODIFIER }},
+      @end
 
-    @begin
-    <!-- cancel modifier -->
-    KeyCode::VK_STICKY_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_STICKY_SL1_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_STICKY_SL2_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_SL1_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_SL2_{{ MODIFIER }}_FORCE_OFF,
-    @end
-  </autogen>
+      @begin
+      KeyCode::VK_LOCK_{{ TO_MODIFIER }}_FORCE_OFF,
+      KeyCode::VK_STICKY_{{ TO_MODIFIER }}_FORCE_OFF,
+      @end
+    </autogen>
+  </block>
 
   <!-- when modifier is pressed twice. -->
-  <autogen>
-    __KeyOverlaidModifier__
-    KeyCode::{{ MODIFIER }}, ModifierFlag::SL1_{{ MODIFIER }},
+  <block>
+    <modifierstuck_only>ModifierFlag::{{ TO_MODIFIER }}</modifierstuck_only>
+    <autogen>
+      __KeyOverlaidModifier__
+      KeyCode::{{ FROM_MODIFIER }},
 
-    @begin
-    KeyCode::{{ MODIFIER }},
-    @end
+      @begin
+      KeyCode::{{ TO_MODIFIER }},
+      @end
 
-    @begin
-    KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
-    <!-- cancel modifiers -->
-    KeyCode::VK_STICKY_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_STICKY_SL1_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_STICKY_SL2_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_SL1_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_SL2_{{ MODIFIER }}_FORCE_OFF,
-    <!-- lock modifier -->
-    KeyCode::VK_LOCK_{{ MODIFIER }}_FORCE_ON,
-    KeyCode::VK_LOCK_SL2_{{ MODIFIER }}_FORCE_ON,
-    @end
-  </autogen>
+      @begin
+      KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+      KeyCode::VK_LOCK_{{ TO_MODIFIER }}_FORCE_ON,
+      KeyCode::VK_STICKY_{{ TO_MODIFIER }}_FORCE_OFF,
+      @end
+    </autogen>
+  </block>
 
-  <autogen>
-    __KeyOverlaidModifier__
-    KeyCode::{{ MODIFIER }},
+  <block>
+    <autogen>
+      __KeyOverlaidModifier__
+      KeyCode::{{ FROM_MODIFIER }},
 
-    @begin
-    KeyCode::{{ MODIFIER }},
-    @end
+      @begin
+      KeyCode::{{ TO_MODIFIER }},
+      @end
 
-    @begin
-    KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
-    <!-- cancel modifiers -->
-    KeyCode::VK_STICKY_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_STICKY_SL1_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_STICKY_SL2_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_SL1_{{ MODIFIER }}_FORCE_OFF,
-    KeyCode::VK_LOCK_SL2_{{ MODIFIER }}_FORCE_OFF,
-    <!-- sticky modifier -->
-    KeyCode::VK_STICKY_{{ MODIFIER }}_FORCE_ON,
-    KeyCode::VK_STICKY_SL1_{{ MODIFIER }}_FORCE_ON,
-    @end
-  </autogen>
+      @begin
+      KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+      KeyCode::VK_STICKY_{{ TO_MODIFIER }}_FORCE_ON,
+      @end
+    </autogen>
+  </block>
+
 </root>

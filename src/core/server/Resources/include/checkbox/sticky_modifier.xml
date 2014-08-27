@@ -25,63 +25,99 @@
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>COMMAND_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>COMMAND_L</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>COMMAND_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>COMMAND_R</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>CONTROL_L</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>CONTROL_R</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>FN</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>OPTION_L</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>OPTION_R</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>SHIFT_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>SHIFT_L</replacementvalue>
         </replacementdef>
       </include>
 
       <include path="commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>SHIFT_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>SHIFT_R</replacementvalue>
         </replacementdef>
       </include>

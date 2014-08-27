@@ -111,7 +111,11 @@
       <identifier>remap.sticky_shiftL_lock</identifier>
       <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>SHIFT_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>SHIFT_L</replacementvalue>
         </replacementdef>
       </include>
@@ -300,7 +304,11 @@
       <identifier>remap.sticky_shiftR_lock</identifier>
       <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>SHIFT_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>SHIFT_R</replacementvalue>
         </replacementdef>
       </include>

@@ -5,6 +5,8 @@ Since 10.2.0
     * The following filters have been added.
         * <modifierlocked_only>
         * <modifierlocked_not>
+        * <modifierstuck_only>
+        * <modifierstuck_not>
 
 Version 10.2.0
 --------------
