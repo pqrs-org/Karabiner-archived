@@ -77,7 +77,11 @@
       <identifier>remap.sticky_optionL_lock</identifier>
       <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>OPTION_L</replacementvalue>
         </replacementdef>
       </include>
@@ -235,7 +239,11 @@
       <identifier>remap.sticky_optionR_lock</identifier>
       <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>OPTION_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>OPTION_R</replacementvalue>
         </replacementdef>
       </include>

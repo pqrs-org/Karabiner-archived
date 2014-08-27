@@ -120,7 +120,11 @@
       <identifier>remap.sticky_controlL_lock</identifier>
       <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_L</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>CONTROL_L</replacementvalue>
         </replacementdef>
       </include>
@@ -228,7 +232,11 @@
       <identifier>remap.sticky_controlR_lock</identifier>
       <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
         <replacementdef>
-          <replacementname>MODIFIER</replacementname>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>CONTROL_R</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
           <replacementvalue>CONTROL_R</replacementvalue>
         </replacementdef>
       </include>
