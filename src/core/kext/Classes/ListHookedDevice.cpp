@@ -257,7 +257,7 @@ namespace org_pqrs_Karabiner {
   }
 
   bool
-  ListHookedDevice::isInProgress(void)
+  ListHookedDevice::isInProgress(void) const
   {
     for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (p->inProgress_) {
@@ -269,7 +269,8 @@ namespace org_pqrs_Karabiner {
   }
 
   void
-  ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) {
+  ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) const
+  {
     out.isFound = 0;
     out.manufacturer[0] = '\0';
     out.product[0] = '\0';
