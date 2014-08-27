@@ -587,6 +587,94 @@
           <autogen>__KeyToKey__ KeyCode::C, KeyCode::F</autogen>
         </block>
       </item>
+
+      <item>
+        <name>Lock and Sticky</name>
+        <appendix>Use the left shift key as the sticky modifier with lock.</appendix>
+        <appendix></appendix>
+        <appendix>+ Change A to f1 if the left shift key is stuck.</appendix>
+        <appendix>+ Change A to f2 if the left shift key is locked.</appendix>
+        <appendix>+ Change A to f3 if the left shift key is not stuck and locked.</appendix>
+        <appendix>+ Change S to f1 if the left shift key is not stuck.</appendix>
+        <appendix>+ Change D to f1 if the left shift key is not locked.</appendix>
+        <identifier>remap.samples_modifier_lock_sticky</identifier>
+
+        <!-- ======================================== -->
+        <!-- sticky modifier -->
+        <block>
+          <modifierlocked_only>ModifierFlag::SHIFT_L</modifierlocked_only>
+          <autogen>
+            __KeyOverlaidModifier__
+            KeyCode::SHIFT_L,
+
+            @begin
+            KeyCode::SHIFT_L,
+            @end
+
+            @begin
+            KeyCode::VK_LOCK_SHIFT_L_FORCE_OFF,
+            KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF,
+            @end
+          </autogen>
+        </block>
+        <block>
+          <modifierstuck_only>ModifierFlag::SHIFT_L</modifierstuck_only>
+          <autogen>
+            __KeyOverlaidModifier__
+            KeyCode::SHIFT_L,
+
+            @begin
+            KeyCode::SHIFT_L,
+            @end
+
+            @begin
+            KeyCode::VK_LOCK_SHIFT_L_FORCE_ON,
+            KeyCode::VK_STICKY_SHIFT_L_FORCE_OFF,
+            @end
+          </autogen>
+        </block>
+        <block>
+          <autogen>
+            __KeyOverlaidModifier__
+            KeyCode::SHIFT_L,
+
+            @begin
+            KeyCode::SHIFT_L,
+            @end
+
+            @begin
+            KeyCode::VK_STICKY_ACTIVE_MODIFIERS_FORCE_ON,
+            KeyCode::VK_STICKY_SHIFT_L_FORCE_ON,
+            @end
+          </autogen>
+        </block>
+
+        <!-- ======================================== -->
+        <!-- Change A key -->
+        <block>
+          <modifierstuck_only>ModifierFlag::SHIFT_L</modifierstuck_only>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::F1</autogen>
+        </block>
+        <block>
+          <modifierlocked_only>ModifierFlag::SHIFT_L</modifierlocked_only>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::F2</autogen>
+        </block>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::F3</autogen>
+
+        <!-- ======================================== -->
+        <!-- Change S key -->
+        <block>
+          <modifierstuck_not>ModifierFlag::SHIFT_L</modifierstuck_not>
+          <autogen>__KeyToKey__ KeyCode::S, KeyCode::F1</autogen>
+        </block>
+
+        <!-- ======================================== -->
+        <!-- Change D key -->
+        <block>
+          <modifierlocked_not>ModifierFlag::SHIFT_L</modifierlocked_not>
+          <autogen>__KeyToKey__ KeyCode::D, KeyCode::F1</autogen>
+        </block>
+      </item>
     </item>
 
     <item>
