@@ -158,6 +158,8 @@
 		34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DC263B1262A5A500354378 /* FilterUnion.cpp */; };
 		34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */; };
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
+		34E429E219ADBE8B0081855C /* ModifierStuckFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E429E019ADBE8B0081855C /* ModifierStuckFilter.cpp */; };
+		34E429E319ADBE8B0081855C /* ModifierStuckFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E429E119ADBE8B0081855C /* ModifierStuckFilter.hpp */; };
 		34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E984C218FFD108003A21F6 /* ModifierName.cpp */; };
 		34E984C518FFD108003A21F6 /* ModifierName.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E984C318FFD108003A21F6 /* ModifierName.hpp */; };
 		34EE5C53192CDEAA00D73DDE /* WindowNameFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */; };
@@ -324,6 +326,8 @@
 		34DC263B1262A5A500354378 /* FilterUnion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FilterUnion.cpp; path = RemapFilter/FilterUnion.cpp; sourceTree = "<group>"; };
 		34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousKeyPresses.cpp; path = RemapFunc/SimultaneousKeyPresses.cpp; sourceTree = "<group>"; };
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
+		34E429E019ADBE8B0081855C /* ModifierStuckFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierStuckFilter.cpp; path = RemapFilter/ModifierStuckFilter.cpp; sourceTree = "<group>"; };
+		34E429E119ADBE8B0081855C /* ModifierStuckFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierStuckFilter.hpp; path = RemapFilter/ModifierStuckFilter.hpp; sourceTree = "<group>"; };
 		34E984C218FFD108003A21F6 /* ModifierName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierName.cpp; path = Classes/ModifierName.cpp; sourceTree = "<group>"; };
 		34E984C318FFD108003A21F6 /* ModifierName.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierName.hpp; path = Classes/ModifierName.hpp; sourceTree = "<group>"; };
 		34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WindowNameFilter.cpp; path = RemapFilter/WindowNameFilter.cpp; sourceTree = "<group>"; };
@@ -574,6 +578,8 @@
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				34FCA55919AB940B006FB082 /* ModifierLockedFilter.cpp */,
 				34FCA55A19AB940B006FB082 /* ModifierLockedFilter.hpp */,
+				34E429E019ADBE8B0081855C /* ModifierStuckFilter.cpp */,
+				34E429E119ADBE8B0081855C /* ModifierStuckFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 				345C2F0C1936B86F005CB203 /* UIElementRoleFilter.cpp */,
 				345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */,
@@ -638,6 +644,7 @@
 				3477936F185B1FA800B3EF06 /* LastPressedPhysicalKey.hpp in Headers */,
 				05CB4A2C12BB4C0800737491 /* ModifierFilter.hpp in Headers */,
 				3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */,
+				34E429E319ADBE8B0081855C /* ModifierStuckFilter.hpp in Headers */,
 				349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */,
 				34B464D113A6515200470265 /* VK_LOCK.hpp in Headers */,
 				34B464DB13A652CF00470265 /* VK_STICKY.hpp in Headers */,
@@ -809,6 +816,7 @@
 				34779363185B1FA800B3EF06 /* FlagStatus.cpp in Sources */,
 				34213BB71860A4F7002CBAB9 /* ToEvent.cpp in Sources */,
 				34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */,
+				34E429E219ADBE8B0081855C /* ModifierStuckFilter.cpp in Sources */,
 				34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */,
 				340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */,
 				3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */,

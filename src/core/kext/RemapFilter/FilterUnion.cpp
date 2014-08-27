@@ -121,6 +121,16 @@ namespace org_pqrs_Karabiner {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
+          p_.modifierStuckFilter = new ModifierStuckFilter(type_);
+          if (p_.modifierStuckFilter) {
+            for (size_t i = 1; i < length - 1; i += 2) {
+              (p_.modifierStuckFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
+            }
+          }
+          break;
+
         case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
         case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
           p_.windowNameFilter = new WindowNameFilter(type_);
@@ -214,6 +224,13 @@ namespace org_pqrs_Karabiner {
           }
           break;
 
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
+          if (p_.modifierStuckFilter) {
+            delete p_.modifierStuckFilter;
+          }
+          break;
+
         case BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT:
         case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
           if (p_.uiElementRoleFilter) {
@@ -291,6 +308,13 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
           if (p_.modifierLockedFilter) {
             return (p_.modifierLockedFilter)->isblocked();
+          }
+          break;
+
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
+          if (p_.modifierStuckFilter) {
+            return (p_.modifierStuckFilter)->isblocked();
           }
           break;
 
