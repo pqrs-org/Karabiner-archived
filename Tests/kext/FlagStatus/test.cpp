@@ -603,6 +603,48 @@ TEST(FlagStatus, isLocked) {
   }
 }
 
+TEST(FlagStatus, isStuck) {
+  {
+    FlagStatus flagStatus;
+
+    {
+      Vector_ModifierFlag modifierFlags;
+      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag(ModifierFlag::ZERO));
+      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::NONE);
+      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+    }
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::NONE);
+      modifierFlags.push_back(ModifierFlag::ZERO);
+      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+    }
+
+    {
+      Vector_ModifierFlag modifierFlags;
+      modifierFlags.push_back(ModifierFlag::SHIFT_L);
+      EXPECT_FALSE(flagStatus.isStuck(modifierFlags));
+
+      flagStatus.increase(ModifierFlag::SHIFT_L);
+      EXPECT_FALSE(flagStatus.isStuck(modifierFlags));
+
+      flagStatus.sticky_increase(ModifierFlag::SHIFT_L);
+      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+
+      flagStatus.sticky_clear();
+      EXPECT_FALSE(flagStatus.isStuck(modifierFlags));
+    }
+  }
+}
+
 TEST(FlagStatus, subtract) {
   FlagStatus flagStatus1;
   FlagStatus flagStatus2;
