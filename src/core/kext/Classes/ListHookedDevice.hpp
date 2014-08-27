@@ -49,12 +49,12 @@ namespace org_pqrs_Karabiner {
     void erase(IOHIDevice* p);
 
     void refresh(void);
-    bool isInProgress(void);
+    bool isInProgress(void) const;
 
     ListHookedDevice::Item* get(const IOHIDevice* device);
     ListHookedDevice::Item* get_replaced(void);
 
-    void getDeviceInformation(BridgeDeviceInformation& out, size_t index);
+    void getDeviceInformation(BridgeDeviceInformation& out, size_t index) const;
 
     static void initializeAll(IOWorkLoop& workloop);
     static void terminateAll(void);
