@@ -14,8 +14,8 @@ namespace org_pqrs_Karabiner {
       Item(void) : prev_(NULL), next_(NULL) {}
       virtual ~Item(void) {}
 
-      Item* getprev(void) { return prev_; }
-      Item* getnext(void) { return next_; }
+      Item* getprev(void) const { return prev_; }
+      Item* getnext(void) const { return next_; }
 
     protected:
       Item* prev_;
@@ -26,8 +26,8 @@ namespace org_pqrs_Karabiner {
     ~List(void) { clear(); }
 
     // You can call safe_front and safe_back to empty list.
-    Item* safe_front(void) { return front_; }
-    Item* safe_back(void) { return back_; }
+    Item* safe_front(void) const { return front_; }
+    Item* safe_back(void) const { return back_; }
     bool empty(void) const { return front_ == NULL; }
     size_t size(void) const { return size_; }
 
