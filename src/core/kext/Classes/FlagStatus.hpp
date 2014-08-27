@@ -110,6 +110,7 @@ namespace org_pqrs_Karabiner {
 
     bool isOn(const Vector_ModifierFlag& modifierFlags) const;
     bool isLocked(const Vector_ModifierFlag& modifierFlags) const;
+    bool isStuck(const Vector_ModifierFlag& modifierFlags) const;
 
 #define DECLARE_METHODS(METHOD)                                                     \
   void METHOD(ModifierFlag modifierFlag);                                           \

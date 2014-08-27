@@ -198,6 +198,21 @@ namespace org_pqrs_Karabiner {
     return true;
   }
 
+  bool
+  FlagStatus::isStuck(const Vector_ModifierFlag& modifierFlags) const
+  {
+    for (size_t i = 0; i < item_.size(); ++i) {
+      if (item_[i].flag_ == ModifierFlag::ZERO) continue;
+      if (item_[i].flag_ == ModifierFlag::NONE) continue;
+
+      if (modifierFlags.is_include(item_[i].flag_) &&
+          item_[i].sticky_count_ <= 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   Flags
   FlagStatus::makeFlags(void) const
   {
