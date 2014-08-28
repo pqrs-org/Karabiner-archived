@@ -7,16 +7,18 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    DeviceFilter::DeviceFilter(unsigned int t) : type_(t)
-    {}
-
-    DeviceFilter::~DeviceFilter(void)
-    {}
-
     void
-    DeviceFilter::add(DeviceVendor vendorID, DeviceProduct productID, DeviceLocation locationID)
+    DeviceFilter::initialize(const unsigned int* vec, size_t length)
     {
-      targets_.push_back(DeviceIdentifier(vendorID, productID, locationID));
+      for (size_t i = 0; i < length - 2; i += 3) {
+        targets_.push_back(DeviceIdentifier(DeviceVendor(vec[i]),
+                                            DeviceProduct(vec[i + 1]),
+                                            DeviceLocation(vec[i + 2])));
+      }
+
+      if (length % 3 > 0) {
+        IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_DEVICE_*\n", static_cast<int>(length));
+      }
     }
 
     bool
