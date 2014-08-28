@@ -65,7 +65,7 @@
     NSAlert* alert = [NSAlert new];
     [alert setMessageText:@"Karabiner Alert"];
     [alert addButtonWithTitle:@"Close"];
-    [alert setInformativeText:@"You cannot delete selected profile.\n"];
+    [alert setInformativeText:@"You cannot delete an active profile.\n"];
     [alert runModal];
     return;
   }
