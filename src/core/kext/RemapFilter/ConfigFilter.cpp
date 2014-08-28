@@ -8,16 +8,12 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    ConfigFilter::ConfigFilter(unsigned int t) : type_(t)
-    {}
-
-    ConfigFilter::~ConfigFilter(void)
-    {}
-
     void
-    ConfigFilter::add(AddValue newval)
+    ConfigFilter::initialize(const unsigned int* vec, size_t length)
     {
-      targets_.push_back(newval);
+      for (size_t i = 0; i < length; ++i) {
+        targets_.push_back(AddValue(vec[i]));
+      }
     }
 
     bool
