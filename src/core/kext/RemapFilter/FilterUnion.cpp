@@ -54,14 +54,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
           p_.deviceFilter = new DeviceFilter(type_);
           if (p_.deviceFilter) {
-            for (size_t i = 1; i < length - 2; i += 3) {
-              (p_.deviceFilter)->add(DeviceVendor(vec[i]),
-                                     DeviceProduct(vec[i + 1]),
-                                     DeviceLocation(vec[i + 2]));
-            }
-            if ((length - 1) % 3 > 0) {
-              IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_DEVICE_*\n", static_cast<int>(length));
-            }
+            (p_.deviceFilter)->initialize(vec + 1, length - 1);
           }
           break;
 

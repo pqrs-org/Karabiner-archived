@@ -7,11 +7,10 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class DeviceFilter {
     public:
-      DeviceFilter(unsigned int t);
-      ~DeviceFilter(void);
+      DeviceFilter(unsigned int t) : type_(t) {};
+      ~DeviceFilter(void) {}
 
-      void add(DeviceVendor vendorID, DeviceProduct productID, DeviceLocation locationID);
-
+      void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
