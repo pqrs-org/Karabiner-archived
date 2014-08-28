@@ -7,11 +7,10 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class ApplicationFilter {
     public:
-      ApplicationFilter(unsigned int t);
-      ~ApplicationFilter(void);
+      ApplicationFilter(unsigned int t) : type_(t) {}
+      ~ApplicationFilter(void) {}
 
-      void add(AddValue newval);
-
+      void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:

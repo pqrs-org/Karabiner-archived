@@ -38,9 +38,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_APPLICATION_ONLY:
           p_.applicationFilter = new ApplicationFilter(type_);
           if (p_.applicationFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.applicationFilter)->add(AddValue(vec[i]));
-            }
+            (p_.applicationFilter)->initialize(vec + 1, length - 1);
           }
           break;
 

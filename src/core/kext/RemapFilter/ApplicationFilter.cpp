@@ -7,16 +7,12 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    ApplicationFilter::ApplicationFilter(unsigned int t) : type_(t)
-    {}
-
-    ApplicationFilter::~ApplicationFilter(void)
-    {}
-
     void
-    ApplicationFilter::add(AddValue newval)
+    ApplicationFilter::initialize(const unsigned int* vec, size_t length)
     {
-      targets_.push_back(newval);
+      for (size_t i = 0; i < length; ++i) {
+        targets_.push_back(AddValue(vec[i]));
+      }
     }
 
     bool
