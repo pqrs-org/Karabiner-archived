@@ -1,9 +1,36 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
+#import "NotificationKeys.h"
 #import "PreferencesManager.h"
 #import "TableView_configlist.h"
 
 @implementation TableView_configlist
+
+- (void) observer_ConfigListChanged:(NSNotification*)notification
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [view_ setNeedsDisplay:YES];
+  });
+}
+
+- (id) init
+{
+  self = [super init];
+
+  if (self) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_ConfigListChanged:)
+                                                 name:kConfigListChangedNotification
+                                               object:nil];
+  }
+
+  return self;
+}
+
+- (void) dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 // ======================================================================
 - (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView
