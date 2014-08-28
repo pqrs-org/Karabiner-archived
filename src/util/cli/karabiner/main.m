@@ -39,6 +39,7 @@
   [self output:@"Examples:\n"];
   [self output:@"  $ karabiner list\n"];
   [self output:@"  $ karabiner select 1\n"];
+  [self output:@"  $ karabiner select_by_name NewItem\n"];
   [self output:@"  $ karabiner selected\n"];
   [self output:@"  $ karabiner append \"For external keyboard\"\n"];
   [self output:@"  $ karabiner rename 1 \"Empty Setting\"\n"];
