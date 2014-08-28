@@ -46,9 +46,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_CONFIG_ONLY:
           p_.configFilter = new ConfigFilter(type_);
           if (p_.configFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.configFilter)->add(AddValue(vec[i]));
-            }
+            (p_.configFilter)->initialize(vec + 1, length - 1);
           }
           break;
 
