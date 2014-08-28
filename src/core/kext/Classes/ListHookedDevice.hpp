@@ -23,6 +23,8 @@ namespace org_pqrs_Karabiner {
       const DeviceIdentifier& getDeviceIdentifier(void) const { return deviceIdentifier_; }
       DeviceType::DeviceType getDeviceType(void) const { return deviceType_; }
 
+      bool isInternalDevice(void) const { return deviceType_ == DeviceType::APPLE_INTERNAL; }
+
     protected:
       IOHIDevice* device_;
       DeviceIdentifier deviceIdentifier_;
@@ -50,6 +52,7 @@ namespace org_pqrs_Karabiner {
 
     void refresh(void);
     bool isInProgress(void) const;
+    bool isExternalDevicesConnected(void) const;
 
     ListHookedDevice::Item* get(const IOHIDevice* device);
     ListHookedDevice::Item* get_replaced(void);

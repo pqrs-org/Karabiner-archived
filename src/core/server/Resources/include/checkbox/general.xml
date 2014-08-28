@@ -56,6 +56,15 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Disable an internal keyboard while external keyboards are connected.</name>
+      <appendix></appendix>
+      <appendix>Note for Logitech Unifying Receiver users:</appendix>
+      <appendix>The receiver is detected as a composite device of keyboard and mouse.</appendix>
+      <appendix>So, the receiver always disables an internal keyboard even if you are using only mouse.</appendix>
+      <identifier essential="true">general.disable_internal_keyboard_if_external_keyboard_exsits</identifier>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Don't leave any modes automatically when the machine wakes from sleep.</name>
       <appendix>(Pass Through Mode, Browsing Mode, etc.)</appendix>
       <appendix></appendix>

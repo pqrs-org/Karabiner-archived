@@ -196,6 +196,16 @@ namespace org_pqrs_Karabiner {
     if (! item) return;
 
     // ------------------------------------------------------------
+    // Device Hacks
+
+    // Drop events if "Disable an internal keyboard while external keyboards are connected" is enabled.
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_internal_keyboard_if_external_keyboard_exsits)) {
+      if (item->isInternalDevice() &&
+          ListHookedKeyboard::instance().isExternalDevicesConnected()) {
+        return;
+      }
+    }
+
     // Logitech Cordless Presenter (LCP) Hack
     //
     // When an LCP is first plugged in, it will send a CONTROL_L down event
@@ -290,6 +300,17 @@ namespace org_pqrs_Karabiner {
 
     ListHookedConsumer::Item* item = static_cast<ListHookedConsumer::Item*>(ListHookedConsumer::instance().get(device));
     if (! item) return;
+
+    // ------------------------------------------------------------
+    // Device Hacks
+
+    // Drop events if "Disable an internal keyboard while external keyboards are connected" is enabled.
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_internal_keyboard_if_external_keyboard_exsits)) {
+      if (item->isInternalDevice() &&
+          ListHookedKeyboard::instance().isExternalDevicesConnected()) {
+        return;
+      }
+    }
 
     // ------------------------------------------------------------
     CommonData::setcurrent_ts(ts);
