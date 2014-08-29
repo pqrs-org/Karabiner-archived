@@ -149,7 +149,6 @@
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */; };
 		34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */; };
-		34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34CAB8521261195200C3FFCB /* ConfigFilter.cpp */; };
 		34CAB8561261195200C3FFCB /* ConfigFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8531261195200C3FFCB /* ConfigFilter.hpp */; };
 		34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
@@ -311,7 +310,6 @@
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToScroll.cpp; path = RemapFunc/PointingRelativeToScroll.cpp; sourceTree = "<group>"; };
 		34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingRelativeToScroll.hpp; path = RemapFunc/PointingRelativeToScroll.hpp; sourceTree = "<group>"; };
-		34CAB8521261195200C3FFCB /* ConfigFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConfigFilter.cpp; path = RemapFilter/ConfigFilter.cpp; sourceTree = "<group>"; };
 		34CAB8531261195200C3FFCB /* ConfigFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConfigFilter.hpp; path = RemapFilter/ConfigFilter.hpp; sourceTree = "<group>"; };
 		34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterBase.hpp; path = RemapFilter/RemapFilterBase.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
@@ -549,7 +547,6 @@
 			isa = PBXGroup;
 			children = (
 				34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */,
-				34CAB8521261195200C3FFCB /* ConfigFilter.cpp */,
 				34CAB8531261195200C3FFCB /* ConfigFilter.hpp */,
 				342C80521261B379007F15DA /* DeviceFilter.cpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
@@ -764,7 +761,6 @@
 				34779372185B1FA800B3EF06 /* ListHookedConsumer.cpp in Sources */,
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
 				3477937E185B1FA800B3EF06 /* PressDownKeys.cpp in Sources */,
-				34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */,
 				34A6626F18B9DAF70010D8B9 /* PointingRelativeToKey.cpp in Sources */,
 				34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */,
 				3477937C185B1FA800B3EF06 /* ParamsUnion.cpp in Sources */,

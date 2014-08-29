@@ -1,6 +1,11 @@
 #ifndef CONFIGFILTER_HPP
 #define CONFIGFILTER_HPP
 
+#include "bridge.h"
+#include "Config.hpp"
+#include "ConfigFilter.hpp"
+#include "IOLogWrapper.hpp"
+#include "RemapClass.hpp"
 #include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -9,11 +14,33 @@ namespace org_pqrs_Karabiner {
     public:
       ConfigFilter(unsigned int type) : RemapFilterBase(type) {}
 
-      void initialize(const unsigned int* vec, size_t length);
-      bool isblocked(void);
+      void initialize(const unsigned int* vec, size_t length) {
+        for (size_t i = 0; i < length; ++i) {
+          targets_.push_back(AddValue(vec[i]));
+        }
+      }
+
+      bool isblocked(void) {
+        if (get_type() == BRIDGE_FILTERTYPE_CONFIG_NOT ||
+            get_type() == BRIDGE_FILTERTYPE_CONFIG_ONLY) {
+
+          bool isnot = (get_type() == BRIDGE_FILTERTYPE_CONFIG_NOT);
+
+          for (size_t i = 0; i < targets_.size(); ++i) {
+            if (RemapClassManager::isEnabled(targets_[i])) {
+              return isnot ? true : false;
+            }
+          }
+
+          return isnot ? false : true;
+        }
+
+        IOLOG_ERROR("ConfigFilter::isblocked unknown type(%d)\n", get_type());
+        return false;
+      }
 
     private:
-      Vector_FilterValue targets_;
+      Vector_AddValue targets_;
     };
   }
 }
