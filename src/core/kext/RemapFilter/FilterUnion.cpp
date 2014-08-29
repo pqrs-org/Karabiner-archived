@@ -62,9 +62,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
           p_.elapsedTimeSinceLastPressedFilter = new ElapsedTimeSinceLastPressedFilter(type_);
           if (p_.elapsedTimeSinceLastPressedFilter) {
-            for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.elapsedTimeSinceLastPressedFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
-            }
+            (p_.elapsedTimeSinceLastPressedFilter)->initialize(vec + 1, length - 1);
           }
           break;
 

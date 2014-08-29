@@ -7,11 +7,10 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class ElapsedTimeSinceLastPressedFilter {
     public:
-      ElapsedTimeSinceLastPressedFilter(unsigned int t);
-      ~ElapsedTimeSinceLastPressedFilter(void);
+      ElapsedTimeSinceLastPressedFilter(unsigned int t) : type_(t) {}
+      ~ElapsedTimeSinceLastPressedFilter(void) {}
 
-      void add(AddDataType datatype, AddValue value);
-
+      void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
