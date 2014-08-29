@@ -2,7 +2,7 @@
 #define REMAPCLASS_HPP
 
 #include "bridge.h"
-#include "RemapFilter/FilterUnion.hpp"
+#include "RemapFilter/RemapFilterFactory.hpp"
 #include "RemapFunc/BlockUntilKeyUp.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/DropKeyAfterRemap.hpp"
@@ -93,7 +93,7 @@ namespace org_pqrs_Karabiner {
         RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
       } p_;
 
-      RemapFilter::Vector_FilterUnionPointer filters_;
+      RemapFilter::Vector_RemapFilterBasePointer filters_;
     };
     typedef Item* ItemPointer;
     DECLARE_VECTOR(ItemPointer);

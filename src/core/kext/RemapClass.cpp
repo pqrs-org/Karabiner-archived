@@ -119,7 +119,7 @@ namespace org_pqrs_Karabiner {
 
     // ------------------------------------------------------------
     for (size_t i = 0; i < filters_.size(); ++i) {
-      RemapFilter::FilterUnion* p = filters_[i];
+      RemapFilter::RemapFilterBase* p = filters_[i];
       if (p) {
         delete p;
       }
@@ -140,9 +140,9 @@ namespace org_pqrs_Karabiner {
     // ------------------------------------------------------------
     // append to filters_.
     //
-    RemapFilter::FilterUnion* newp = new RemapFilter::FilterUnion(vec, length);
+    RemapFilter::RemapFilterBase* newp = RemapFilter::RemapFilterFactory::create(vec, length);
     if (! newp) {
-      IOLOG_ERROR("RemapClass::Item::append_filter failed to allocate.\n");
+      IOLOG_ERROR("RemapClass::Item::append_filter new filter is NULL.\n");
       return;
     }
 
@@ -345,7 +345,7 @@ namespace org_pqrs_Karabiner {
   RemapClass::Item::isblocked(void) const
   {
     for (size_t i = 0; i < filters_.size(); ++i) {
-      RemapFilter::FilterUnion* p = filters_[i];
+      RemapFilter::RemapFilterBase* p = filters_[i];
       if (p && p->isblocked()) return true;
     }
 
