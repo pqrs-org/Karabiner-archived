@@ -140,7 +140,6 @@
 		34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */; };
 		34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */; };
 		34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */; };
-		34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */; };
 		34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */; };
 		34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */; };
 		34B5E8B61261960700DCFB0D /* InputSourceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */; };
@@ -303,7 +302,6 @@
 		34B464F213A65AED00470265 /* VK_JIS_BACKSLASH.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_BACKSLASH.hpp; path = VirtualKey/VK_JIS_BACKSLASH.hpp; sourceTree = "<group>"; };
 		34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_JIS_YEN.cpp; path = VirtualKey/VK_JIS_YEN.cpp; sourceTree = "<group>"; };
 		34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_JIS_YEN.hpp; path = VirtualKey/VK_JIS_YEN.hpp; sourceTree = "<group>"; };
-		34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ApplicationFilter.cpp; path = RemapFilter/ApplicationFilter.cpp; sourceTree = "<group>"; };
 		34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ApplicationFilter.hpp; path = RemapFilter/ApplicationFilter.hpp; sourceTree = "<group>"; };
 		34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InputSourceFilter.cpp; path = RemapFilter/InputSourceFilter.cpp; sourceTree = "<group>"; };
 		34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = InputSourceFilter.hpp; path = RemapFilter/InputSourceFilter.hpp; sourceTree = "<group>"; };
@@ -550,7 +548,6 @@
 		34CAB84F1261194100C3FFCB /* RemapFilter */ = {
 			isa = PBXGroup;
 			children = (
-				34B5E8A41261284200DCFB0D /* ApplicationFilter.cpp */,
 				34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */,
 				34CAB8521261195200C3FFCB /* ConfigFilter.cpp */,
 				34CAB8531261195200C3FFCB /* ConfigFilter.hpp */,
@@ -769,7 +766,6 @@
 				3477937E185B1FA800B3EF06 /* PressDownKeys.cpp in Sources */,
 				34CAB8551261195200C3FFCB /* ConfigFilter.cpp in Sources */,
 				34A6626F18B9DAF70010D8B9 /* PointingRelativeToKey.cpp in Sources */,
-				34B5E8A61261284200DCFB0D /* ApplicationFilter.cpp in Sources */,
 				34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */,
 				3477937C185B1FA800B3EF06 /* ParamsUnion.cpp in Sources */,
 				3477936E185B1FA800B3EF06 /* LastPressedPhysicalKey.cpp in Sources */,
