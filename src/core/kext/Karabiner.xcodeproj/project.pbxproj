@@ -28,6 +28,7 @@
 		34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */; };
 		3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */; };
 		3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */; };
+		3442A85219B07F11007FD563 /* RemapFilterFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */; };
 		3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */; };
 		3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */; };
 		3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */; };
@@ -192,6 +193,7 @@
 		34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToKey.hpp; path = RemapFunc/ScrollWheelToKey.hpp; sourceTree = "<group>"; };
 		3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_PARTIAL.cpp; path = VirtualKey/VK_PARTIAL.cpp; sourceTree = "<group>"; };
 		3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_PARTIAL.hpp; path = VirtualKey/VK_PARTIAL.hpp; sourceTree = "<group>"; };
+		3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterFactory.hpp; path = RemapFilter/RemapFilterFactory.hpp; sourceTree = "<group>"; };
 		3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ForceNumLockOn.cpp; path = RemapFunc/ForceNumLockOn.cpp; sourceTree = "<group>"; };
 		3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ForceNumLockOn.hpp; path = RemapFunc/ForceNumLockOn.hpp; sourceTree = "<group>"; };
 		3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DoublePressModifier.cpp; path = RemapFunc/DoublePressModifier.cpp; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */,
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
+				3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */,
 				345C2F0C1936B86F005CB203 /* UIElementRoleFilter.cpp */,
 				345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */,
 				34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */,
@@ -611,6 +614,7 @@
 				3477937F185B1FA800B3EF06 /* PressDownKeys.hpp in Headers */,
 				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 				3477937D185B1FA800B3EF06 /* ParamsUnion.hpp in Headers */,
+				3442A85219B07F11007FD563 /* RemapFilterFactory.hpp in Headers */,
 				3477935E185B1FA800B3EF06 /* EventInputQueue.hpp in Headers */,
 				34779377185B1FA800B3EF06 /* ListHookedKeyboard.hpp in Headers */,
 				34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */,
