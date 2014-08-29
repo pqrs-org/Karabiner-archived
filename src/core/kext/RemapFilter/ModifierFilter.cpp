@@ -47,25 +47,45 @@ namespace org_pqrs_Karabiner {
     bool
     ModifierFilter::isblocked(void)
     {
-      switch (get_type()) {
-        case BRIDGE_FILTERTYPE_MODIFIER_NOT:
-        case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
-        {
-          bool isnot = (get_type() == BRIDGE_FILTERTYPE_MODIFIER_NOT);
+      if (get_type() == BRIDGE_FILTERTYPE_MODIFIER_NOT ||
+          get_type() == BRIDGE_FILTERTYPE_MODIFIER_ONLY ||
+          get_type() == BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT ||
+          get_type() == BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY ||
+          get_type() == BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT ||
+          get_type() == BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY) {
 
-          for (size_t i = 0; i < targets_.size(); ++i) {
-            if (targets_[i].empty()) continue;
+        bool isnot = (get_type() == BRIDGE_FILTERTYPE_MODIFIER_NOT ||
+                      get_type() == BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT ||
+                      get_type() == BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT);
 
+        for (size_t i = 0; i < targets_.size(); ++i) {
+          if (targets_[i].empty()) continue;
+
+          if (get_type() == BRIDGE_FILTERTYPE_MODIFIER_NOT ||
+              get_type() == BRIDGE_FILTERTYPE_MODIFIER_ONLY) {
             if (FlagStatus::globalFlagStatus().isOn(targets_[i])) {
               return isnot ? true : false;
             }
           }
-          return isnot ? false : true;
-        }
 
-        default:
-          IOLOG_ERROR("ModifierFilter::isblocked unknown type_(%d)\n", get_type());
-          break;
+          if (get_type() == BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT ||
+              get_type() == BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY) {
+            if (FlagStatus::globalFlagStatus().isLocked(targets_[i])) {
+              return isnot ? true : false;
+            }
+          }
+
+          if (get_type() == BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT ||
+              get_type() == BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY) {
+            if (FlagStatus::globalFlagStatus().isStuck(targets_[i])) {
+              return isnot ? true : false;
+            }
+          }
+        }
+        return isnot ? false : true;
+
+      } else {
+        IOLOG_ERROR("ModifierFilter::isblocked unknown type_(%d)\n", get_type());
       }
 
       return false;

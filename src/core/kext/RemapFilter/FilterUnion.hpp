@@ -9,8 +9,6 @@
 #include "InputSourceFilter.hpp"
 #include "LastPressedPhysicalKeyFilter.hpp"
 #include "ModifierFilter.hpp"
-#include "ModifierLockedFilter.hpp"
-#include "ModifierStuckFilter.hpp"
 #include "UIElementRoleFilter.hpp"
 #include "WindowNameFilter.hpp"
 
@@ -40,8 +38,6 @@ namespace org_pqrs_Karabiner {
         InputSourceFilter* inputSourceFilter;
         LastPressedPhysicalKeyFilter* lastPressedPhysicalKeyFilter;
         ModifierFilter* modifierFilter;
-        ModifierLockedFilter* modifierLockedFilter;
-        ModifierStuckFilter* modifierStuckFilter;
         UIElementRoleFilter* uiElementRoleFilter;
         WindowNameFilter* windowNameFilter;
       } p_;
