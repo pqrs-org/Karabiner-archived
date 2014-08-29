@@ -1,0 +1,100 @@
+#ifndef REMAPFILTERFACTORY_HPP
+#define REMAPFILTERFACTORY_HPP
+
+#include "bridge.h"
+#include "ApplicationFilter.hpp"
+#include "ConfigFilter.hpp"
+#include "DeviceFilter.hpp"
+#include "ElapsedTimeSinceLastPressedFilter.hpp"
+#include "InputSourceFilter.hpp"
+#include "LastPressedPhysicalKeyFilter.hpp"
+#include "ModifierFilter.hpp"
+#include "UIElementRoleFilter.hpp"
+#include "WindowNameFilter.hpp"
+
+namespace org_pqrs_Karabiner {
+  namespace RemapFilter {
+    class RemapFilterFactory {
+    public:
+      static RemapFilterBase* create(const unsigned int* vec, size_t length) {
+        // ------------------------------------------------------------
+        // check parameters.
+        //
+        if (! vec || length == 0) {
+          IOLOG_ERROR("RemapFilterFactory::create invalid parameter %p, %ld.\n", vec, length);
+          return NULL;
+        }
+
+        // ------------------------------------------------------------
+        // initialize values.
+        //
+        unsigned int type = vec[0];
+        RemapFilterBase* filter = NULL;
+
+        switch (type) {
+          case BRIDGE_FILTERTYPE_APPLICATION_NOT:
+          case BRIDGE_FILTERTYPE_APPLICATION_ONLY:
+            filter = new ApplicationFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_CONFIG_NOT:
+          case BRIDGE_FILTERTYPE_CONFIG_ONLY:
+            filter = new ConfigFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_DEVICE_NOT:
+          case BRIDGE_FILTERTYPE_DEVICE_ONLY:
+            filter = new DeviceFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
+          case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
+            filter = new ElapsedTimeSinceLastPressedFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
+          case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
+          case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT:
+          case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
+            filter = new InputSourceFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
+          case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
+            filter = new LastPressedPhysicalKeyFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_MODIFIER_NOT:
+          case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+          case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT:
+          case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
+          case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
+          case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
+            filter = new ModifierFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
+          case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
+            filter = new WindowNameFilter(type);
+            break;
+
+          case BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT:
+          case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
+            filter = new UIElementRoleFilter(type);
+            break;
+
+          default:
+            IOLOG_ERROR("RemapFilterFactory::create unknown type:%d.\n", type);
+            return NULL;
+        }
+
+        if (filter) {
+          filter->initialize(vec + 1, length - 1);
+        }
+        return filter;
+      }
+    };
+  }
+}
+
+#endif
