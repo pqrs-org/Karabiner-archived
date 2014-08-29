@@ -2,8 +2,9 @@
 #define REMAPFILTERBASE_HPP
 
 #include "bridge.h"
-#include "Vector.hpp"
+#include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
+#include "Vector.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
