@@ -13,29 +13,31 @@ namespace org_pqrs_Karabiner {
       targets_.push_back(v);
     }
 
-    ModifierFilter::~ModifierFilter(void)
-    {}
-
     void
-    ModifierFilter::add(AddDataType datatype, AddValue newval)
+    ModifierFilter::initialize(const unsigned int* vec, size_t length)
     {
-      switch (datatype) {
-        case BRIDGE_DATATYPE_MODIFIERFLAG:
-          if (! targets_.empty()) {
-            targets_.back().push_back(ModifierFlag(datatype, newval));
+      for (size_t i = 0; i < length - 1; i += 2) {
+        AddDataType datatype(vec[i]);
+        AddValue newval(vec[i + 1]);
+
+        switch (datatype) {
+          case BRIDGE_DATATYPE_MODIFIERFLAG:
+            if (! targets_.empty()) {
+              targets_.back().push_back(ModifierFlag(datatype, newval));
+            }
+            break;
+
+          case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
+          {
+            Vector_ModifierFlag v;
+            targets_.push_back(v);
+            break;
           }
-          break;
 
-        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
-        {
-          Vector_ModifierFlag v;
-          targets_.push_back(v);
-          break;
+          default:
+            IOLOG_ERROR("ModifierFilter::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
+            break;
         }
-
-        default:
-          IOLOG_ERROR("ModifierFilter::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
-          break;
       }
     }
 

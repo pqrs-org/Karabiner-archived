@@ -89,7 +89,7 @@ namespace org_pqrs_Karabiner {
           p_.modifierFilter = new ModifierFilter(type_);
           if (p_.modifierFilter) {
             for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.modifierFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
+              (p_.modifierFilter)->initialize(vec + 1, length - 1);
             }
           }
           break;
