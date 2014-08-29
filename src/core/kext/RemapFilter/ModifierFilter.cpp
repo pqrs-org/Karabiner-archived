@@ -39,6 +39,10 @@ namespace org_pqrs_Karabiner {
             break;
         }
       }
+
+      if (length % 2 > 0) {
+        IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_MODIFIER_*\n", static_cast<int>(length));
+      }
     }
 
     bool
