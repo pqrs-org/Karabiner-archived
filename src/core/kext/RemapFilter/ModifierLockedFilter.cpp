@@ -13,29 +13,35 @@ namespace org_pqrs_Karabiner {
       targets_.push_back(v);
     }
 
-    ModifierLockedFilter::~ModifierLockedFilter(void)
-    {}
-
     void
-    ModifierLockedFilter::add(AddDataType datatype, AddValue newval)
+    ModifierLockedFilter::initialize(const unsigned int* vec, size_t length)
     {
-      switch (datatype) {
-        case BRIDGE_DATATYPE_MODIFIERFLAG:
-          if (! targets_.empty()) {
-            targets_.back().push_back(ModifierFlag(datatype, newval));
+      for (size_t i = 0; i < length - 1; i += 2) {
+        AddDataType datatype(vec[i]);
+        AddValue newval(vec[i + 1]);
+
+        switch (datatype) {
+          case BRIDGE_DATATYPE_MODIFIERFLAG:
+            if (! targets_.empty()) {
+              targets_.back().push_back(ModifierFlag(datatype, newval));
+            }
+            break;
+
+          case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
+          {
+            Vector_ModifierFlag v;
+            targets_.push_back(v);
+            break;
           }
-          break;
 
-        case BRIDGE_DATATYPE_MODIFIERFLAGS_END:
-        {
-          Vector_ModifierFlag v;
-          targets_.push_back(v);
-          break;
+          default:
+            IOLOG_ERROR("ModifierLockedFilter::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
+            break;
         }
+      }
 
-        default:
-          IOLOG_ERROR("ModifierLockedFilter::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
-          break;
+      if (length % 2 > 0) {
+        IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_MODIFIER_LOCKED_*\n", static_cast<int>(length));
       }
     }
 

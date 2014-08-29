@@ -88,9 +88,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
           p_.modifierFilter = new ModifierFilter(type_);
           if (p_.modifierFilter) {
-            for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.modifierFilter)->initialize(vec + 1, length - 1);
-            }
+            (p_.modifierFilter)->initialize(vec + 1, length - 1);
           }
           break;
 
@@ -98,9 +96,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
           p_.modifierLockedFilter = new ModifierLockedFilter(type_);
           if (p_.modifierLockedFilter) {
-            for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.modifierLockedFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
-            }
+            (p_.modifierLockedFilter)->initialize(vec + 1, length - 1);
           }
           break;
 
