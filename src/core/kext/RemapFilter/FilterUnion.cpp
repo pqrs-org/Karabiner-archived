@@ -112,9 +112,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
           p_.windowNameFilter = new WindowNameFilter(type_);
           if (p_.windowNameFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.windowNameFilter)->add(AddValue(vec[i]));
-            }
+            (p_.windowNameFilter)->initialize(vec + 1, length - 1);
           }
           break;
 

@@ -7,11 +7,10 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class WindowNameFilter {
     public:
-      WindowNameFilter(unsigned int t);
-      ~WindowNameFilter(void);
+      WindowNameFilter(unsigned int t) : type_(t) {}
+      ~WindowNameFilter(void) {}
 
-      void add(AddValue newval);
-
+      void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
