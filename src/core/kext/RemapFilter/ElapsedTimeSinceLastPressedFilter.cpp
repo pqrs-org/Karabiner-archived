@@ -25,7 +25,7 @@ namespace org_pqrs_Karabiner {
       const LastPressedPhysicalKey& current = CommonData::getcurrent_lastpressedphysicalkey();
       if (current.get_datatype() == BRIDGE_DATATYPE_NONE) return false;
 
-      switch (type_) {
+      switch (get_type()) {
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
         case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
         {
@@ -40,7 +40,7 @@ namespace org_pqrs_Karabiner {
               continue;
             }
 
-            switch (type_) {
+            switch (get_type()) {
               case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
                 if (filter_ms > current_ms) return true;
                 break;
@@ -53,7 +53,7 @@ namespace org_pqrs_Karabiner {
         }
 
         default:
-          IOLOG_ERROR("ElapsedTimeSinceLastPressedFilter::isblocked unknown type_(%d)\n", type_);
+          IOLOG_ERROR("ElapsedTimeSinceLastPressedFilter::isblocked unknown type_(%d)\n", get_type());
           break;
       }
 

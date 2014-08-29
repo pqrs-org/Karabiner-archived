@@ -24,11 +24,11 @@ namespace org_pqrs_Karabiner {
     bool
     DeviceFilter::isblocked(void)
     {
-      switch (type_) {
+      switch (get_type()) {
         case BRIDGE_FILTERTYPE_DEVICE_NOT:
         case BRIDGE_FILTERTYPE_DEVICE_ONLY:
         {
-          bool isnot = (type_ == BRIDGE_FILTERTYPE_DEVICE_NOT);
+          bool isnot = (get_type() == BRIDGE_FILTERTYPE_DEVICE_NOT);
 
           for (size_t i = 0; i < targets_.size(); ++i) {
             DeviceIdentifier& v = targets_[i];
@@ -40,7 +40,7 @@ namespace org_pqrs_Karabiner {
         }
 
         default:
-          IOLOG_ERROR("DeviceFilter::isblocked unknown type_(%d)\n", type_);
+          IOLOG_ERROR("DeviceFilter::isblocked unknown type_(%d)\n", get_type());
           break;
       }
 

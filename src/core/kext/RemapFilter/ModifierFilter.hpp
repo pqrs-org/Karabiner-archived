@@ -5,16 +5,14 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    class ModifierFilter {
+    class ModifierFilter : public RemapFilterBase {
     public:
-      ModifierFilter(unsigned int t);
-      ~ModifierFilter(void) {}
+      ModifierFilter(unsigned int type) : RemapFilterBase(type) {}
 
       void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
-      unsigned int type_;
       Vector_Vector_ModifierFlag targets_;
     };
   }

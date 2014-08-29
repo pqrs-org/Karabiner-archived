@@ -19,7 +19,7 @@ namespace org_pqrs_Karabiner {
     InputSourceFilter::isblocked(void)
     {
       unsigned int current = 0;
-      switch (type_) {
+      switch (get_type()) {
         case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
         case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
           current = CommonData::getcurrent_workspacedata().inputsource;
@@ -31,13 +31,14 @@ namespace org_pqrs_Karabiner {
           break;
       }
 
-      switch (type_) {
+      switch (get_type()) {
         case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
         case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT:
         case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
         case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
         {
-          bool isnot = (type_ == BRIDGE_FILTERTYPE_INPUTSOURCE_NOT || type_ == BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT);
+          bool isnot = (get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_NOT ||
+                        get_type() == BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT);
 
           for (size_t i = 0; i < targets_.size(); ++i) {
             if (targets_[i] == current) {
@@ -48,7 +49,7 @@ namespace org_pqrs_Karabiner {
         }
 
         default:
-          IOLOG_ERROR("InputSourceFilter::isblocked unknown type_(%d)\n", type_);
+          IOLOG_ERROR("InputSourceFilter::isblocked unknown type_(%d)\n", get_type());
           break;
       }
 
