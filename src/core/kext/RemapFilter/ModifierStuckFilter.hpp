@@ -8,10 +8,9 @@ namespace org_pqrs_Karabiner {
     class ModifierStuckFilter {
     public:
       ModifierStuckFilter(unsigned int t);
-      ~ModifierStuckFilter(void);
+      ~ModifierStuckFilter(void) {}
 
-      void add(AddDataType datatype, AddValue newval);
-
+      void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
