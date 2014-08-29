@@ -7,16 +7,12 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    WindowNameFilter::WindowNameFilter(unsigned int t) : type_(t)
-    {}
-
-    WindowNameFilter::~WindowNameFilter(void)
-    {}
-
     void
-    WindowNameFilter::add(AddValue newval)
+    WindowNameFilter::initialize(const unsigned int* vec, size_t length)
     {
-      targets_.push_back(newval);
+      for (size_t i = 0; i < length; ++i) {
+        targets_.push_back(AddValue(vec[i]));
+      }
     }
 
     bool
