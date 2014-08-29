@@ -19,7 +19,6 @@
 		34213BB71860A4F7002CBAB9 /* ToEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34213BB61860A4F7002CBAB9 /* ToEvent.cpp */; };
 		342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */; };
 		342BC69C18609F5D00578EC5 /* ToEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BC69B18609F5D00578EC5 /* ToEvent.hpp */; };
-		342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342C80521261B379007F15DA /* DeviceFilter.cpp */; };
 		342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342C80531261B379007F15DA /* DeviceFilter.hpp */; };
 		342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */; };
 		342D245616A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */; };
@@ -180,7 +179,6 @@
 		34213BB61860A4F7002CBAB9 /* ToEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToEvent.cpp; path = Classes/ToEvent.cpp; sourceTree = "<group>"; };
 		342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncClasses.hpp; path = RemapFunc/common/RemapFuncClasses.hpp; sourceTree = "<group>"; };
 		342BC69B18609F5D00578EC5 /* ToEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ToEvent.hpp; path = Classes/ToEvent.hpp; sourceTree = "<group>"; };
-		342C80521261B379007F15DA /* DeviceFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceFilter.cpp; path = RemapFilter/DeviceFilter.cpp; sourceTree = "<group>"; };
 		342C80531261B379007F15DA /* DeviceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceFilter.hpp; path = RemapFilter/DeviceFilter.hpp; sourceTree = "<group>"; };
 		342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_IOHIDPOSTEVENT.cpp; path = VirtualKey/VK_IOHIDPOSTEVENT.cpp; sourceTree = "<group>"; };
 		342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_IOHIDPOSTEVENT.hpp; path = VirtualKey/VK_IOHIDPOSTEVENT.hpp; sourceTree = "<group>"; };
@@ -548,7 +546,6 @@
 			children = (
 				34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */,
 				34CAB8531261195200C3FFCB /* ConfigFilter.hpp */,
-				342C80521261B379007F15DA /* DeviceFilter.cpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
 				346EE0691709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp */,
 				346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */,
@@ -765,7 +762,6 @@
 				34B5E8B51261960700DCFB0D /* InputSourceFilter.cpp in Sources */,
 				3477937C185B1FA800B3EF06 /* ParamsUnion.cpp in Sources */,
 				3477936E185B1FA800B3EF06 /* LastPressedPhysicalKey.cpp in Sources */,
-				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
 				3477936C185B1FA800B3EF06 /* KeyboardRepeat.cpp in Sources */,
 				34779386185B271E00B3EF06 /* FromEvent.cpp in Sources */,
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
