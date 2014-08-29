@@ -6,6 +6,7 @@
 #include "ConfigFilter.hpp"
 #include "DeviceFilter.hpp"
 #include "ElapsedTimeSinceLastPressedFilter.hpp"
+#include "IOLogWrapper.hpp"
 #include "InputSourceFilter.hpp"
 #include "LastPressedPhysicalKeyFilter.hpp"
 #include "ModifierFilter.hpp"
