@@ -1,10 +1,7 @@
 #ifndef DEVICEFILTER_HPP
 #define DEVICEFILTER_HPP
 
-#include "bridge.h"
 #include "CommonData.hpp"
-#include "DeviceFilter.hpp"
-#include "IOLogWrapper.hpp"
 #include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
