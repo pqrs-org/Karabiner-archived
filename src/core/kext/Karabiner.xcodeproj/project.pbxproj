@@ -151,7 +151,6 @@
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
 		34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E984C218FFD108003A21F6 /* ModifierName.cpp */; };
 		34E984C518FFD108003A21F6 /* ModifierName.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E984C318FFD108003A21F6 /* ModifierName.hpp */; };
-		34EE5C53192CDEAA00D73DDE /* WindowNameFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */; };
 		34EE5C54192CDEAA00D73DDE /* WindowNameFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */; };
 		34F6FE5F197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34F6FE5D197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp */; };
 		34F6FE60197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F6FE5E197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp */; };
@@ -306,7 +305,6 @@
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
 		34E984C218FFD108003A21F6 /* ModifierName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierName.cpp; path = Classes/ModifierName.cpp; sourceTree = "<group>"; };
 		34E984C318FFD108003A21F6 /* ModifierName.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierName.hpp; path = Classes/ModifierName.hpp; sourceTree = "<group>"; };
-		34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WindowNameFilter.cpp; path = RemapFilter/WindowNameFilter.cpp; sourceTree = "<group>"; };
 		34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WindowNameFilter.hpp; path = RemapFilter/WindowNameFilter.hpp; sourceTree = "<group>"; };
 		34F6FE5D197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp; path = VirtualKey/VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.cpp; sourceTree = "<group>"; };
 		34F6FE5E197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp; path = VirtualKey/VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp; sourceTree = "<group>"; };
@@ -544,7 +542,6 @@
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 				3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */,
 				345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */,
-				34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */,
 				34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */,
 			);
 			name = RemapFilter;
@@ -724,7 +721,6 @@
 				34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */,
 				345004AD0E7CE48F0075324B /* Core.cpp in Sources */,
 				34779378185B1FA800B3EF06 /* ListHookedPointing.cpp in Sources */,
-				34EE5C53192CDEAA00D73DDE /* WindowNameFilter.cpp in Sources */,
 				345004AF0E7CE48F0075324B /* Driver.cpp in Sources */,
 				34A7883010CBD79100DF72FD /* KeyCode.cpp in Sources */,
 				3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */,
