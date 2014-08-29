@@ -1,10 +1,7 @@
 #ifndef CONFIGFILTER_HPP
 #define CONFIGFILTER_HPP
 
-#include "bridge.h"
 #include "Config.hpp"
-#include "ConfigFilter.hpp"
-#include "IOLogWrapper.hpp"
 #include "RemapClass.hpp"
 #include "RemapFilterBase.hpp"
 
