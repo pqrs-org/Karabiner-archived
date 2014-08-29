@@ -40,7 +40,6 @@
 		345004B00E7CE48F0075324B /* Driver.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004AB0E7CE48F0075324B /* Driver.hpp */; };
 		3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3456837A10DA734100D7E2E6 /* VirtualKey.cpp */; };
 		3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3456837B10DA734200D7E2E6 /* VirtualKey.hpp */; };
-		345C2F0E1936B86F005CB203 /* UIElementRoleFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345C2F0C1936B86F005CB203 /* UIElementRoleFilter.cpp */; };
 		345C2F0F1936B86F005CB203 /* UIElementRoleFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */; };
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
@@ -196,7 +195,6 @@
 		345004AB0E7CE48F0075324B /* Driver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Driver.hpp; sourceTree = "<group>"; };
 		3456837A10DA734100D7E2E6 /* VirtualKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VirtualKey.cpp; sourceTree = "<group>"; };
 		3456837B10DA734200D7E2E6 /* VirtualKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualKey.hpp; sourceTree = "<group>"; };
-		345C2F0C1936B86F005CB203 /* UIElementRoleFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UIElementRoleFilter.cpp; path = RemapFilter/UIElementRoleFilter.cpp; sourceTree = "<group>"; };
 		345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UIElementRoleFilter.hpp; path = RemapFilter/UIElementRoleFilter.hpp; sourceTree = "<group>"; };
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
@@ -545,7 +543,6 @@
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 				3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */,
-				345C2F0C1936B86F005CB203 /* UIElementRoleFilter.cpp */,
 				345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */,
 				34EE5C51192CDEAA00D73DDE /* WindowNameFilter.cpp */,
 				34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */,
@@ -738,7 +735,6 @@
 				3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */,
 				341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */,
 				34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */,
-				345C2F0E1936B86F005CB203 /* UIElementRoleFilter.cpp in Sources */,
 				34779361185B1FA800B3EF06 /* EventWatcher.cpp in Sources */,
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
