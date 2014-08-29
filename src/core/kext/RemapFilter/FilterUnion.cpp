@@ -104,9 +104,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
           p_.modifierStuckFilter = new ModifierStuckFilter(type_);
           if (p_.modifierStuckFilter) {
-            for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.modifierStuckFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
-            }
+            (p_.modifierStuckFilter)->initialize(vec + 1, length - 1);
           }
           break;
 
