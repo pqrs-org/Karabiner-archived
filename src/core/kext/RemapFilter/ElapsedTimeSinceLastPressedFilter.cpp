@@ -7,16 +7,16 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    ElapsedTimeSinceLastPressedFilter::ElapsedTimeSinceLastPressedFilter(unsigned int t) : type_(t)
-    {}
-
-    ElapsedTimeSinceLastPressedFilter::~ElapsedTimeSinceLastPressedFilter(void)
-    {}
-
     void
-    ElapsedTimeSinceLastPressedFilter::add(AddDataType datatype, AddValue value)
+    ElapsedTimeSinceLastPressedFilter::initialize(const unsigned int* vec, size_t length)
     {
-      targets_.push_back(FilterValueWithDataType(datatype, value));
+      for (size_t i = 0; i < length - 1; i += 2) {
+        targets_.push_back(FilterValueWithDataType(AddDataType(vec[i]), AddValue(vec[i + 1])));
+      }
+
+      if (length % 2 > 0) {
+        IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_*\n", static_cast<int>(length));
+      }
     }
 
     bool
