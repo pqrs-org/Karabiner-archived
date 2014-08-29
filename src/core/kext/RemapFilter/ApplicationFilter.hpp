@@ -33,11 +33,10 @@ namespace org_pqrs_Karabiner {
           }
 
           return isnot ? false : true;
-
-        } else {
-          IOLOG_ERROR("ApplicationFilter::isblocked unknown type_(%d)\n", get_type());
-          return false;
         }
+
+        IOLOG_ERROR("ApplicationFilter::isblocked unknown type(%d)\n", get_type());
+        return false;
       }
 
     private:
