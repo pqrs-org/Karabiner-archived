@@ -86,25 +86,13 @@ namespace org_pqrs_Karabiner {
 
         case BRIDGE_FILTERTYPE_MODIFIER_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
+        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
+        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
           p_.modifierFilter = new ModifierFilter(type_);
           if (p_.modifierFilter) {
             (p_.modifierFilter)->initialize(vec + 1, length - 1);
-          }
-          break;
-
-        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT:
-        case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
-          p_.modifierLockedFilter = new ModifierLockedFilter(type_);
-          if (p_.modifierLockedFilter) {
-            (p_.modifierLockedFilter)->initialize(vec + 1, length - 1);
-          }
-          break;
-
-        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
-        case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
-          p_.modifierStuckFilter = new ModifierStuckFilter(type_);
-          if (p_.modifierStuckFilter) {
-            (p_.modifierStuckFilter)->initialize(vec + 1, length - 1);
           }
           break;
 
@@ -185,22 +173,12 @@ namespace org_pqrs_Karabiner {
 
         case BRIDGE_FILTERTYPE_MODIFIER_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
-          if (p_.modifierFilter) {
-            delete p_.modifierFilter;
-          }
-          break;
-
         case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
-          if (p_.modifierLockedFilter) {
-            delete p_.modifierLockedFilter;
-          }
-          break;
-
         case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
-          if (p_.modifierStuckFilter) {
-            delete p_.modifierStuckFilter;
+          if (p_.modifierFilter) {
+            delete p_.modifierFilter;
           }
           break;
 
@@ -272,22 +250,12 @@ namespace org_pqrs_Karabiner {
 
         case BRIDGE_FILTERTYPE_MODIFIER_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
-          if (p_.modifierFilter) {
-            return (p_.modifierFilter)->isblocked();
-          }
-          break;
-
         case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
-          if (p_.modifierLockedFilter) {
-            return (p_.modifierLockedFilter)->isblocked();
-          }
-          break;
-
         case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
         case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
-          if (p_.modifierStuckFilter) {
-            return (p_.modifierStuckFilter)->isblocked();
+          if (p_.modifierFilter) {
+            return (p_.modifierFilter)->isblocked();
           }
           break;
 
