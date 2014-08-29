@@ -24,9 +24,6 @@ namespace org_pqrs_Karabiner {
       };
       DECLARE_VECTOR(FilterValueWithDataType);
 
-      // For <device_only>, <device_not>
-      DECLARE_VECTOR(DeviceIdentifier);
-
       virtual void initialize(const unsigned int* vec, size_t length) = 0;
       virtual bool isblocked(void) = 0;
 
