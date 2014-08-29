@@ -37,6 +37,7 @@ namespace org_pqrs_Karabiner {
               return isnot ? true : false;
             }
           }
+
           return isnot ? false : true;
         }
 
