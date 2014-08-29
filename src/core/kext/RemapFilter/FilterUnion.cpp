@@ -120,9 +120,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
           p_.uiElementRoleFilter = new UIElementRoleFilter(type_);
           if (p_.uiElementRoleFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.uiElementRoleFilter)->add(AddValue(vec[i]));
-            }
+            (p_.uiElementRoleFilter)->initialize(vec + 1, length - 1);
           }
           break;
 
