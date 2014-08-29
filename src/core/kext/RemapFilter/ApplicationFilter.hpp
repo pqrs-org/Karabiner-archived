@@ -1,9 +1,7 @@
 #ifndef APPLICATIONFILTER_HPP
 #define APPLICATIONFILTER_HPP
 
-#include "bridge.h"
 #include "CommonData.hpp"
-#include "IOLogWrapper.hpp"
 #include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
