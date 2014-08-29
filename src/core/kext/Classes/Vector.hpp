@@ -1,8 +1,6 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
-#include "Types.hpp"
-
 #define DECLARE_VECTOR_CLASS_BODY(TYPENAME, CHUNKSIZE)                 \
 public:                                                                \
   Vector_ ## TYPENAME(void) : vector_(NULL), capacity_(0), size_(0) {} \
