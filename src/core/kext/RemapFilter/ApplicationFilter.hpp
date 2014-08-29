@@ -5,16 +5,14 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    class ApplicationFilter {
+    class ApplicationFilter : public RemapFilterBase {
     public:
-      ApplicationFilter(unsigned int t) : type_(t) {}
-      ~ApplicationFilter(void) {}
+      ApplicationFilter(unsigned int type) : RemapFilterBase(type) {}
 
       void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
-      unsigned int type_;
       Vector_FilterValue targets_;
     };
   }

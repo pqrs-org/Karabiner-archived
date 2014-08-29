@@ -25,11 +25,11 @@ namespace org_pqrs_Karabiner {
       const LastPressedPhysicalKey& current = CommonData::getcurrent_lastpressedphysicalkey();
       if (current.get_datatype() == BRIDGE_DATATYPE_NONE) return false;
 
-      switch (type_) {
+      switch (get_type()) {
         case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
         case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
         {
-          bool isnot = (type_ == BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT);
+          bool isnot = (get_type() == BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT);
 
           for (size_t i = 0; i < targets_.size(); ++i) {
             if (targets_[i].datatype == current.get_datatype() &&
@@ -41,7 +41,7 @@ namespace org_pqrs_Karabiner {
         }
 
         default:
-          IOLOG_ERROR("LastPressedPhysicalKeyFilter::isblocked unknown type_(%d)\n", type_);
+          IOLOG_ERROR("LastPressedPhysicalKeyFilter::isblocked unknown type_(%d)\n", get_type());
           break;
       }
 

@@ -20,11 +20,11 @@ namespace org_pqrs_Karabiner {
     {
       unsigned int current = CommonData::getcurrent_workspacedata().windowname;
 
-      switch (type_) {
+      switch (get_type()) {
         case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
         case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
         {
-          bool isnot = (type_ == BRIDGE_FILTERTYPE_WINDOWNAME_NOT);
+          bool isnot = (get_type() == BRIDGE_FILTERTYPE_WINDOWNAME_NOT);
 
           for (size_t i = 0; i < targets_.size(); ++i) {
             if (targets_[i] == current) {
@@ -35,7 +35,7 @@ namespace org_pqrs_Karabiner {
         }
 
         default:
-          IOLOG_ERROR("WindowNameFilter::isblocked unknown type_(%d)\n", type_);
+          IOLOG_ERROR("WindowNameFilter::isblocked unknown type_(%d)\n", get_type());
           break;
       }
 

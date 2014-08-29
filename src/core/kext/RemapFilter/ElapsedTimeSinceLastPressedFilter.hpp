@@ -5,16 +5,14 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    class ElapsedTimeSinceLastPressedFilter {
+    class ElapsedTimeSinceLastPressedFilter : public RemapFilterBase {
     public:
-      ElapsedTimeSinceLastPressedFilter(unsigned int t) : type_(t) {}
-      ~ElapsedTimeSinceLastPressedFilter(void) {}
+      ElapsedTimeSinceLastPressedFilter(unsigned int type) : RemapFilterBase(type) {}
 
       void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
-      unsigned int type_;
       Vector_FilterValueWithDataType targets_;
     };
   }
