@@ -35,6 +35,9 @@ namespace org_pqrs_Karabiner {
     private:
       unsigned int type_;
     };
+
+    typedef RemapFilterBase* RemapFilterBasePointer;
+    DECLARE_VECTOR(RemapFilterBasePointer);
   }
 }
 
