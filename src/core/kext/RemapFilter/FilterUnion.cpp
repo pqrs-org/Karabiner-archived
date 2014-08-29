@@ -80,9 +80,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
           p_.lastPressedPhysicalKeyFilter = new LastPressedPhysicalKeyFilter(type_);
           if (p_.lastPressedPhysicalKeyFilter) {
-            for (size_t i = 1; i < length - 1; i += 2) {
-              (p_.lastPressedPhysicalKeyFilter)->add(AddDataType(vec[i]), AddValue(vec[i + 1]));
-            }
+            (p_.lastPressedPhysicalKeyFilter)->initialize(vec + 1, length - 1);
           }
           break;
 
