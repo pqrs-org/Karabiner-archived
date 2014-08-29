@@ -1,6 +1,7 @@
 #ifndef LASTPRESSEDPHYSICALKEYFILTER_HPP
 #define LASTPRESSEDPHYSICALKEYFILTER_HPP
 
+#include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -9,11 +10,41 @@ namespace org_pqrs_Karabiner {
     public:
       LastPressedPhysicalKeyFilter(unsigned int type) : RemapFilterBase(type) {}
 
-      void initialize(const unsigned int* vec, size_t length);
-      bool isblocked(void);
+      void initialize(const unsigned int* vec, size_t length) {
+        for (size_t i = 0; i < length - 1; i += 2) {
+          targets_.push_back(AddValueWithDataType(AddDataType(vec[i]), AddValue(vec[i + 1])));
+        }
+
+        if (length % 2 > 0) {
+          IOLOG_WARN("Invalid length(%d) in BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_*\n", static_cast<int>(length));
+        }
+      }
+
+      bool isblocked(void) {
+        if (get_type() == BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT ||
+            get_type() == BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY) {
+
+          const LastPressedPhysicalKey& current = CommonData::getcurrent_lastpressedphysicalkey();
+          if (current.get_datatype() == BRIDGE_DATATYPE_NONE) return false;
+
+          bool isnot = (get_type() == BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT);
+
+          for (size_t i = 0; i < targets_.size(); ++i) {
+            if (targets_[i].dataType == current.get_datatype() &&
+                targets_[i].value == current.get_value()) {
+              return isnot ? true : false;
+            }
+          }
+
+          return isnot ? false : true;
+        }
+
+        IOLOG_ERROR("LastPressedPhysicalKeyFilter::isblocked unknown type(%d)\n", get_type());
+        return false;
+      }
 
     private:
-      Vector_FilterValueWithDataType targets_;
+      Vector_AddValueWithDataType targets_;
     };
   }
 }
