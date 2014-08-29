@@ -8,10 +8,9 @@ namespace org_pqrs_Karabiner {
     class ModifierLockedFilter {
     public:
       ModifierLockedFilter(unsigned int t);
-      ~ModifierLockedFilter(void);
+      ~ModifierLockedFilter(void) {}
 
-      void add(AddDataType datatype, AddValue newval);
-
+      void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
