@@ -7,16 +7,12 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFilter {
-    UIElementRoleFilter::UIElementRoleFilter(unsigned int t) : type_(t)
-    {}
-
-    UIElementRoleFilter::~UIElementRoleFilter(void)
-    {}
-
     void
-    UIElementRoleFilter::add(AddValue newval)
+    UIElementRoleFilter::initialize(const unsigned int* vec, size_t length)
     {
-      targets_.push_back(newval);
+      for (size_t i = 0; i < length; ++i) {
+        targets_.push_back(AddValue(vec[i]));
+      }
     }
 
     bool
