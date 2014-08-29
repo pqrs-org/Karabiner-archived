@@ -155,8 +155,6 @@
 		34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
 		34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D347E511D8106C00D70815 /* KeyToKey.hpp */; };
-		34DC263812629E0000354378 /* FilterUnion.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34DC263712629E0000354378 /* FilterUnion.hpp */; };
-		34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DC263B1262A5A500354378 /* FilterUnion.cpp */; };
 		34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */; };
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
 		34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E984C218FFD108003A21F6 /* ModifierName.cpp */; };
@@ -320,8 +318,6 @@
 		34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterBase.hpp; path = RemapFilter/RemapFilterBase.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
 		34D347E511D8106C00D70815 /* KeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToKey.hpp; path = RemapFunc/KeyToKey.hpp; sourceTree = "<group>"; };
-		34DC263712629E0000354378 /* FilterUnion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FilterUnion.hpp; path = RemapFilter/FilterUnion.hpp; sourceTree = "<group>"; };
-		34DC263B1262A5A500354378 /* FilterUnion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FilterUnion.cpp; path = RemapFilter/FilterUnion.cpp; sourceTree = "<group>"; };
 		34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousKeyPresses.cpp; path = RemapFunc/SimultaneousKeyPresses.cpp; sourceTree = "<group>"; };
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
 		34E984C218FFD108003A21F6 /* ModifierName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierName.cpp; path = Classes/ModifierName.cpp; sourceTree = "<group>"; };
@@ -562,8 +558,6 @@
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
 				346EE0691709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.cpp */,
 				346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */,
-				34DC263B1262A5A500354378 /* FilterUnion.cpp */,
-				34DC263712629E0000354378 /* FilterUnion.hpp */,
 				34B5E8B31261960700DCFB0D /* InputSourceFilter.cpp */,
 				34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */,
 				3496DB861707C134002BE306 /* LastPressedPhysicalKeyFilter.cpp */,
@@ -629,7 +623,6 @@
 				34B5E8B61261960700DCFB0D /* InputSourceFilter.hpp in Headers */,
 				34779356185B1FA800B3EF06 /* auto_ptr.hpp in Headers */,
 				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
-				34DC263812629E0000354378 /* FilterUnion.hpp in Headers */,
 				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
 				348077B818BCEEDC00314700 /* DeltaBuffer.hpp in Headers */,
 				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
@@ -781,7 +774,6 @@
 				3477937C185B1FA800B3EF06 /* ParamsUnion.cpp in Sources */,
 				3477936E185B1FA800B3EF06 /* LastPressedPhysicalKey.cpp in Sources */,
 				342C80541261B379007F15DA /* DeviceFilter.cpp in Sources */,
-				34DC263C1262A5A500354378 /* FilterUnion.cpp in Sources */,
 				3477936C185B1FA800B3EF06 /* KeyboardRepeat.cpp in Sources */,
 				34779386185B271E00B3EF06 /* FromEvent.cpp in Sources */,
 				34794D53126F32E700655ADB /* SetKeyboardType.cpp in Sources */,
