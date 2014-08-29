@@ -72,9 +72,7 @@ namespace org_pqrs_Karabiner {
         case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
           p_.inputSourceFilter = new InputSourceFilter(type_);
           if (p_.inputSourceFilter) {
-            for (size_t i = 1; i < length; ++i) {
-              (p_.inputSourceFilter)->add(AddValue(vec[i]));
-            }
+            (p_.inputSourceFilter)->initialize(vec + 1, length - 1);
           }
           break;
 

@@ -7,11 +7,10 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class InputSourceFilter {
     public:
-      InputSourceFilter(unsigned int t);
-      ~InputSourceFilter(void);
+      InputSourceFilter(unsigned int t) : type_(t) {}
+      ~InputSourceFilter(void) {}
 
-      void add(AddValue newval);
-
+      void initialize(const unsigned int* vec, size_t length);
       bool isblocked(void);
 
     private:
