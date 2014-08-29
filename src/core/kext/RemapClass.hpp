@@ -2,7 +2,7 @@
 #define REMAPCLASS_HPP
 
 #include "bridge.h"
-#include "RemapFilter/RemapFilterFactory.hpp"
+#include "RemapFilter/RemapFilterBase.hpp"
 #include "RemapFunc/BlockUntilKeyUp.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/DropKeyAfterRemap.hpp"
