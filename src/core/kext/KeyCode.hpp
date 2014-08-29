@@ -549,6 +549,8 @@ namespace org_pqrs_Karabiner {
     DeviceProduct product_;
     DeviceLocation location_;
   };
+  // For <device_only>, <device_not>
+  DECLARE_VECTOR(DeviceIdentifier);
 
   // ======================================================================
   namespace DeviceType {
