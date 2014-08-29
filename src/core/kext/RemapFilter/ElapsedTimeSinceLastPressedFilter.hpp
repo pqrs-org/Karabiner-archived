@@ -1,6 +1,7 @@
 #ifndef ELAPSEDTIMESINCELASTPRESSEDFILTER_HPP
 #define ELAPSEDTIMESINCELASTPRESSEDFILTER_HPP
 
+#include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
