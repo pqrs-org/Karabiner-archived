@@ -21,30 +21,27 @@ namespace org_pqrs_Karabiner {
       bool isblocked(void) {
         unsigned int current = CommonData::getcurrent_workspacedata().applicationtype;
 
-        switch (get_type()) {
-          case BRIDGE_FILTERTYPE_APPLICATION_NOT:
-          case BRIDGE_FILTERTYPE_APPLICATION_ONLY:
-          {
-            bool isnot = (get_type() == BRIDGE_FILTERTYPE_APPLICATION_NOT);
+        if (get_type() == BRIDGE_FILTERTYPE_APPLICATION_NOT ||
+            get_type() == BRIDGE_FILTERTYPE_APPLICATION_ONLY) {
 
-            for (size_t i = 0; i < targets_.size(); ++i) {
-              if (targets_[i] == current) {
-                return isnot ? true : false;
-              }
+          bool isnot = (get_type() == BRIDGE_FILTERTYPE_APPLICATION_NOT);
+
+          for (size_t i = 0; i < targets_.size(); ++i) {
+            if (targets_[i] == current) {
+              return isnot ? true : false;
             }
-            return isnot ? false : true;
           }
 
-          default:
-            IOLOG_ERROR("ApplicationFilter::isblocked unknown type_(%d)\n", get_type());
-            break;
-        }
+          return isnot ? false : true;
 
-        return false;
+        } else {
+          IOLOG_ERROR("ApplicationFilter::isblocked unknown type_(%d)\n", get_type());
+          return false;
+        }
       }
 
     private:
-      Vector_FilterValue targets_;
+      Vector_AddValue targets_;
     };
   }
 }
