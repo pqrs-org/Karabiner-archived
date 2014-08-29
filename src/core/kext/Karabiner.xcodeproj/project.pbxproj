@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		05CB4A2C12BB4C0800737491 /* ModifierFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */; };
-		05CB4A2D12BB4C0800737491 /* ModifierFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */; };
 		32D94FC80562CBF700B6AF17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3405382013E6ED7E009DF83F /* DropScrollWheel.cpp */; };
 		3405382313E6ED7E009DF83F /* DropScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */; };
@@ -163,7 +162,6 @@
 
 /* Begin PBXFileReference section */
 		05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ModifierFilter.hpp; path = RemapFilter/ModifierFilter.hpp; sourceTree = "<group>"; };
-		05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierFilter.cpp; path = RemapFilter/ModifierFilter.cpp; sourceTree = "<group>"; };
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32D94FCF0562CBF700B6AF17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D94FD00562CBF700B6AF17 /* Karabiner.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Karabiner.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -544,7 +542,6 @@
 				346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */,
 				34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */,
 				3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */,
-				05CB4A2B12BB4C0800737491 /* ModifierFilter.cpp */,
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 				3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */,
@@ -758,7 +755,6 @@
 				34779366185B1FA800B3EF06 /* GlobalLock.cpp in Sources */,
 				34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */,
 				344BB4EE12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp in Sources */,
-				05CB4A2D12BB4C0800737491 /* ModifierFilter.cpp in Sources */,
 				3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */,
 				349E3C9913371CD700E7A81C /* UserClient_kext.cpp in Sources */,
 				34B464D013A6515200470265 /* VK_LOCK.cpp in Sources */,
