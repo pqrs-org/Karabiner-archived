@@ -85,7 +85,7 @@ namespace org_pqrs_Karabiner {
           return isnot ? false : true;
         }
 
-        IOLOG_ERROR("ModifierFilter::isblocked unknown type_(%d)\n", get_type());
+        IOLOG_ERROR("ModifierFilter::isblocked unknown type(%d)\n", get_type());
         return false;
       }
 
