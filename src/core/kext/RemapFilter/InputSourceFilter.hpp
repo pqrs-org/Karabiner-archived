@@ -1,6 +1,7 @@
 #ifndef INPUTSOURCEFILTER_HPP
 #define INPUTSOURCEFILTER_HPP
 
+#include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
