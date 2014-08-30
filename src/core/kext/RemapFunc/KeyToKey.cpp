@@ -8,18 +8,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    KeyToKey::KeyToKey(void) :
-      index_(0),
-      currentToEvent_(CurrentToEvent::TOKEYS),
-      keyboardRepeatID_(-1),
-      isRepeatEnabled_(true),
-      delayUntilRepeat_(-1),
-      keyRepeat_(-1)
-    {}
-
-    KeyToKey::~KeyToKey(void)
-    {}
-
     void
     KeyToKey::add(AddDataType datatype, AddValue newval)
     {
