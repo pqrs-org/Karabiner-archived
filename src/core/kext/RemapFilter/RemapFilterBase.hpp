@@ -13,7 +13,6 @@ namespace org_pqrs_Karabiner {
       RemapFilterBase(unsigned int type) : type_(type) {}
       virtual ~RemapFilterBase(void) {}
 
-      virtual void initialize(const unsigned int* vec, size_t length) = 0;
       virtual bool isblocked(void) = 0;
 
       unsigned int get_type(void) const { return type_; }

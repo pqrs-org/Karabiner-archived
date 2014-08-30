@@ -30,40 +30,35 @@ namespace org_pqrs_Karabiner {
         // initialize values.
         //
         unsigned int type = vec[0];
-        RemapFilterBase* filter = NULL;
+        ++vec;
+        --length;
 
         switch (type) {
           case BRIDGE_FILTERTYPE_APPLICATION_NOT:
           case BRIDGE_FILTERTYPE_APPLICATION_ONLY:
-            filter = new ApplicationFilter(type);
-            break;
+            return new ApplicationFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_CONFIG_NOT:
           case BRIDGE_FILTERTYPE_CONFIG_ONLY:
-            filter = new ConfigFilter(type);
-            break;
+            return new ConfigFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_DEVICE_NOT:
           case BRIDGE_FILTERTYPE_DEVICE_ONLY:
-            filter = new DeviceFilter(type);
-            break;
+            return new DeviceFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
           case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
-            filter = new ElapsedTimeSinceLastPressedFilter(type);
-            break;
+            return new ElapsedTimeSinceLastPressedFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
           case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
           case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT:
           case BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY:
-            filter = new InputSourceFilter(type);
-            break;
+            return new InputSourceFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
           case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
-            filter = new LastPressedPhysicalKeyFilter(type);
-            break;
+            return new LastPressedPhysicalKeyFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_MODIFIER_NOT:
           case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
@@ -71,28 +66,19 @@ namespace org_pqrs_Karabiner {
           case BRIDGE_FILTERTYPE_MODIFIER_LOCKED_ONLY:
           case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
           case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
-            filter = new ModifierFilter(type);
-            break;
+            return new ModifierFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
           case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:
-            filter = new WindowNameFilter(type);
-            break;
+            return new WindowNameFilter(type, vec, length);
 
           case BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT:
           case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
-            filter = new UIElementRoleFilter(type);
-            break;
-
-          default:
-            IOLOG_ERROR("RemapFilterFactory::create unknown type:%d.\n", type);
-            return NULL;
+            return new UIElementRoleFilter(type, vec, length);
         }
 
-        if (filter) {
-          filter->initialize(vec + 1, length - 1);
-        }
-        return filter;
+        IOLOG_ERROR("RemapFilterFactory::create unknown type:%d.\n", type);
+        return NULL;
       }
     };
   }

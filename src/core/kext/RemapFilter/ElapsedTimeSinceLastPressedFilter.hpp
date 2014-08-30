@@ -8,9 +8,11 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class ElapsedTimeSinceLastPressedFilter : public RemapFilterBase {
     public:
-      ElapsedTimeSinceLastPressedFilter(unsigned int type) : RemapFilterBase(type) {}
+      ElapsedTimeSinceLastPressedFilter(unsigned int type, const unsigned int* vec, size_t length) :
+        RemapFilterBase(type)
+      {
+        targets_.reserve(length / 2);
 
-      void initialize(const unsigned int* vec, size_t length) {
         for (size_t i = 0; i < length - 1; i += 2) {
           targets_.push_back(AddValueWithDataType(AddDataType(vec[i]), AddValue(vec[i + 1])));
         }
@@ -20,7 +22,9 @@ namespace org_pqrs_Karabiner {
         }
       }
 
-      bool isblocked(void) {
+      bool
+      isblocked(void)
+      {
         const LastPressedPhysicalKey& current = CommonData::getcurrent_lastpressedphysicalkey();
         if (current.get_datatype() == BRIDGE_DATATYPE_NONE) return false;
 

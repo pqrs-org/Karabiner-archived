@@ -8,9 +8,11 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class LastPressedPhysicalKeyFilter : public RemapFilterBase {
     public:
-      LastPressedPhysicalKeyFilter(unsigned int type) : RemapFilterBase(type) {}
+      LastPressedPhysicalKeyFilter(unsigned int type, const unsigned int* vec, size_t length) :
+        RemapFilterBase(type)
+      {
+        targets_.reserve(length / 2);
 
-      void initialize(const unsigned int* vec, size_t length) {
         for (size_t i = 0; i < length - 1; i += 2) {
           targets_.push_back(AddValueWithDataType(AddDataType(vec[i]), AddValue(vec[i + 1])));
         }
@@ -20,7 +22,9 @@ namespace org_pqrs_Karabiner {
         }
       }
 
-      bool isblocked(void) {
+      bool
+      isblocked(void)
+      {
         if (get_type() == BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT ||
             get_type() == BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY) {
 

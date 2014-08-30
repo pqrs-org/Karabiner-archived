@@ -8,15 +8,19 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class ApplicationFilter : public RemapFilterBase {
     public:
-      ApplicationFilter(unsigned int type) : RemapFilterBase(type) {}
+      ApplicationFilter(unsigned int type, const unsigned int* vec, size_t length) :
+        RemapFilterBase(type)
+      {
+        targets_.reserve(length);
 
-      void initialize(const unsigned int* vec, size_t length) {
         for (size_t i = 0; i < length; ++i) {
           targets_.push_back(AddValue(vec[i]));
         }
       }
 
-      bool isblocked(void) {
+      bool
+      isblocked(void)
+      {
         unsigned int current = CommonData::getcurrent_workspacedata().applicationtype;
 
         if (get_type() == BRIDGE_FILTERTYPE_APPLICATION_NOT ||
