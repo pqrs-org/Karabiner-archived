@@ -8,9 +8,11 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class DeviceFilter : public RemapFilterBase {
     public:
-      DeviceFilter(unsigned int type) : RemapFilterBase(type) {};
+      DeviceFilter(unsigned int type, const unsigned int* vec, size_t length) :
+        RemapFilterBase(type)
+      {
+        targets_.reserve(length / 3);
 
-      void initialize(const unsigned int* vec, size_t length) {
         for (size_t i = 0; i < length - 2; i += 3) {
           targets_.push_back(DeviceIdentifier(DeviceVendor(vec[i]),
                                               DeviceProduct(vec[i + 1]),
@@ -22,7 +24,9 @@ namespace org_pqrs_Karabiner {
         }
       }
 
-      bool isblocked(void) {
+      bool
+      isblocked(void)
+      {
         if (get_type() == BRIDGE_FILTERTYPE_DEVICE_NOT ||
             get_type() == BRIDGE_FILTERTYPE_DEVICE_ONLY) {
 

@@ -8,9 +8,11 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class ModifierFilter : public RemapFilterBase {
     public:
-      ModifierFilter(unsigned int type) : RemapFilterBase(type) {}
+      ModifierFilter(unsigned int type, const unsigned int* vec, size_t length) :
+        RemapFilterBase(type)
+      {
+        targets_.reserve(length / 2);
 
-      void initialize(const unsigned int* vec, size_t length) {
         {
           Vector_ModifierFlag v;
           targets_.push_back(v);
@@ -45,7 +47,9 @@ namespace org_pqrs_Karabiner {
         }
       }
 
-      bool isblocked(void) {
+      bool
+      isblocked(void)
+      {
         if (get_type() == BRIDGE_FILTERTYPE_MODIFIER_NOT ||
             get_type() == BRIDGE_FILTERTYPE_MODIFIER_ONLY ||
             get_type() == BRIDGE_FILTERTYPE_MODIFIER_LOCKED_NOT ||

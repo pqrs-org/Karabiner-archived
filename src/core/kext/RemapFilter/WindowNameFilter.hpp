@@ -7,15 +7,19 @@ namespace org_pqrs_Karabiner {
   namespace RemapFilter {
     class WindowNameFilter : public RemapFilterBase {
     public:
-      WindowNameFilter(unsigned int type) : RemapFilterBase(type) {}
+      WindowNameFilter(unsigned int type, const unsigned int* vec, size_t length) :
+        RemapFilterBase(type)
+      {
+        targets_.reserve(length);
 
-      void initialize(const unsigned int* vec, size_t length) {
         for (size_t i = 0; i < length; ++i) {
           targets_.push_back(AddValue(vec[i]));
         }
       }
 
-      bool isblocked(void) {
+      bool
+      isblocked(void)
+      {
         if (get_type() == BRIDGE_FILTERTYPE_WINDOWNAME_NOT ||
             get_type() == BRIDGE_FILTERTYPE_WINDOWNAME_ONLY) {
 
