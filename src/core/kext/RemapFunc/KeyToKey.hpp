@@ -2,16 +2,23 @@
 #define KEYTOKEY_HPP
 
 #include "FromEvent.hpp"
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 #include "ToEvent.hpp"
 #include "bridge.h"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class KeyToKey {
+    class KeyToKey : RemapFuncBase {
     public:
-      KeyToKey(void);
-      ~KeyToKey(void);
+      KeyToKey(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_KEYTOKEY),
+        index_(0),
+        currentToEvent_(CurrentToEvent::TOKEYS),
+        keyboardRepeatID_(-1),
+        isRepeatEnabled_(true),
+        delayUntilRepeat_(-1),
+        keyRepeat_(-1)
+      {}
 
       bool remap(RemapParams& remapParams);
 

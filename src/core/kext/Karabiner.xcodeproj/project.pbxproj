@@ -147,6 +147,7 @@
 		34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */; };
 		34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34D347E411D8106C00D70815 /* KeyToKey.cpp */; };
 		34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D347E511D8106C00D70815 /* KeyToKey.hpp */; };
+		34D5B57419B1BECA00ABD446 /* RemapFuncBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34D5B57319B1BECA00ABD446 /* RemapFuncBase.hpp */; };
 		34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */; };
 		34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */; };
 		34E984C418FFD108003A21F6 /* ModifierName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34E984C218FFD108003A21F6 /* ModifierName.cpp */; };
@@ -301,6 +302,7 @@
 		34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterBase.hpp; path = RemapFilter/RemapFilterBase.hpp; sourceTree = "<group>"; };
 		34D347E411D8106C00D70815 /* KeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyToKey.cpp; path = RemapFunc/KeyToKey.cpp; sourceTree = "<group>"; };
 		34D347E511D8106C00D70815 /* KeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyToKey.hpp; path = RemapFunc/KeyToKey.hpp; sourceTree = "<group>"; };
+		34D5B57319B1BECA00ABD446 /* RemapFuncBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncBase.hpp; path = RemapFunc/RemapFuncBase.hpp; sourceTree = "<group>"; };
 		34E04BFB11DD878D001AE230 /* SimultaneousKeyPresses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimultaneousKeyPresses.cpp; path = RemapFunc/SimultaneousKeyPresses.cpp; sourceTree = "<group>"; };
 		34E04BFC11DD878D001AE230 /* SimultaneousKeyPresses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SimultaneousKeyPresses.hpp; path = RemapFunc/SimultaneousKeyPresses.hpp; sourceTree = "<group>"; };
 		34E984C218FFD108003A21F6 /* ModifierName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModifierName.cpp; path = Classes/ModifierName.cpp; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
+				34D5B57319B1BECA00ABD446 /* RemapFuncBase.hpp */,
 				349A108E1907D0290000E43F /* BlockUntilKeyUp.cpp */,
 				349A108F1907D0290000E43F /* BlockUntilKeyUp.hpp */,
 				342BB27A13BB6A7400E18FDD /* common */,
@@ -565,6 +568,7 @@
 				34779382185B1FA800B3EF06 /* Vector.hpp in Headers */,
 				3477936D185B1FA800B3EF06 /* KeyboardRepeat.hpp in Headers */,
 				349A10911907D0290000E43F /* BlockUntilKeyUp.hpp in Headers */,
+				34D5B57419B1BECA00ABD446 /* RemapFuncBase.hpp in Headers */,
 				3477937B185B1FA800B3EF06 /* NumHeldDownKeys.hpp in Headers */,
 				34779381185B1FA800B3EF06 /* TimerWrapper.hpp in Headers */,
 				34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */,
