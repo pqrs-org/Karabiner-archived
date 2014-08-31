@@ -1,14 +1,17 @@
 #ifndef FLIPSCROLLWHEEL_HPP
 #define FLIPSCROLLWHEEL_HPP
 
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class FlipScrollWheel {
+    class FlipScrollWheel : RemapFuncBase {
     public:
-      FlipScrollWheel(void);
-      ~FlipScrollWheel(void);
+      FlipScrollWheel(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL),
+        flipHorizontalScroll_(false),
+        flipVerticalScroll_(false)
+      {}
 
       bool remap(RemapParams& remapParams);
 
