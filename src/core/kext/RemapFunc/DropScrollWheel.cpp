@@ -6,12 +6,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    DropScrollWheel::DropScrollWheel(void) : dropHorizontalScroll_(false)
-    {}
-
-    DropScrollWheel::~DropScrollWheel(void)
-    {}
-
     void
     DropScrollWheel::add(AddDataType datatype, AddValue newval)
     {
