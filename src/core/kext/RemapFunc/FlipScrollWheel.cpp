@@ -6,12 +6,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    FlipScrollWheel::FlipScrollWheel(void) : flipHorizontalScroll_(false), flipVerticalScroll_(false)
-    {}
-
-    FlipScrollWheel::~FlipScrollWheel(void)
-    {}
-
     void
     FlipScrollWheel::add(AddDataType datatype, AddValue newval)
     {
