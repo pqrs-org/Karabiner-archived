@@ -6,12 +6,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    FlipPointingRelative::FlipPointingRelative(void) : flipHorizontal_(false), flipVertical_(false)
-    {}
-
-    FlipPointingRelative::~FlipPointingRelative(void)
-    {}
-
     void
     FlipPointingRelative::add(AddDataType datatype, AddValue newval)
     {
