@@ -1,10 +1,7 @@
 #ifndef KEYTOKEY_HPP
 #define KEYTOKEY_HPP
 
-#include "FromEvent.hpp"
 #include "RemapFuncBase.hpp"
-#include "ToEvent.hpp"
-#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
