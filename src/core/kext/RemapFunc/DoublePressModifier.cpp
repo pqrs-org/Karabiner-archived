@@ -6,18 +6,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    DoublePressModifier::DoublePressModifier(void) :
-      isUseSeparator_(false),
-      index_is_double_pressed_(false),
-      index_(0),
-      pressCount_(0)
-    {
-      ic_.begin();
-    }
-
-    DoublePressModifier::~DoublePressModifier(void)
-    {}
-
     void
     DoublePressModifier::add(AddDataType datatype, AddValue newval)
     {

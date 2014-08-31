@@ -1,17 +1,24 @@
 #ifndef DOUBLEPRESSMODIFIER_HPP
 #define DOUBLEPRESSMODIFIER_HPP
 
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // A modifier has DoublePressed key action.
-    class DoublePressModifier {
+    class DoublePressModifier : RemapFuncBase {
     public:
-      DoublePressModifier(void);
-      ~DoublePressModifier(void);
+      DoublePressModifier(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER),
+        isUseSeparator_(false),
+        index_is_double_pressed_(false),
+        index_(0),
+        pressCount_(0)
+      {
+        ic_.begin();
+      }
 
       bool remap(RemapParams& remapParams);
 
