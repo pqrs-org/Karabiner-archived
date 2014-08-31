@@ -2,9 +2,11 @@
 #define REMAPFUNCBASE_HPP
 
 #include "bridge.h"
+#include "FromEvent.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
 #include "RemapFuncClasses.hpp"
+#include "ToEvent.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
@@ -15,7 +17,7 @@ namespace org_pqrs_Karabiner {
 
       virtual void add(AddDataType datatype, AddValue newval) = 0;
 
-      virtual bool remap(RemapParams& remapParams) = 0;
+      virtual bool remap(RemapParams& remapParams) { return false; }
 
       unsigned int get_type(void) const { return type_; }
 
