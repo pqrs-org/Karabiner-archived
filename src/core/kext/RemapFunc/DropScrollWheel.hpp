@@ -1,14 +1,17 @@
 #ifndef DROPSCROLLWHEEL_HPP
 #define DROPSCROLLWHEEL_HPP
 
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class DropScrollWheel {
+    class DropScrollWheel : RemapFuncBase {
     public:
-      DropScrollWheel(void);
-      ~DropScrollWheel(void);
+      DropScrollWheel(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_DROPSCROLLWHEEL),
+        dropHorizontalScroll_(false),
+        dropMomentumScroll_(false)
+      {}
 
       bool remap(RemapParams& remapParams);
 
