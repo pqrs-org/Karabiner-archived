@@ -1,15 +1,15 @@
 #ifndef DROPKEYAFTERREMAP_HPP
 #define DROPKEYAFTERREMAP_HPP
 
-#include "FromEvent.hpp"
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class DropKeyAfterRemap {
+    class DropKeyAfterRemap : RemapFuncBase {
     public:
-      DropKeyAfterRemap(void);
-      ~DropKeyAfterRemap(void);
+      DropKeyAfterRemap(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP)
+      {}
 
       bool drop(const Params_KeyboardEventCallBack& params);
 

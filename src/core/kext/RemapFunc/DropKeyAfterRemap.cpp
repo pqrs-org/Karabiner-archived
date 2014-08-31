@@ -5,12 +5,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    DropKeyAfterRemap::DropKeyAfterRemap(void)
-    {}
-
-    DropKeyAfterRemap::~DropKeyAfterRemap(void)
-    {}
-
     void
     DropKeyAfterRemap::add(AddDataType datatype, AddValue newval)
     {
