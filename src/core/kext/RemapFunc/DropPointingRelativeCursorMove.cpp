@@ -5,16 +5,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    DropPointingRelativeCursorMove::DropPointingRelativeCursorMove(void)
-    {}
-
-    DropPointingRelativeCursorMove::~DropPointingRelativeCursorMove(void)
-    {}
-
-    void
-    DropPointingRelativeCursorMove::add(AddDataType datatype, AddValue newval)
-    {}
-
     bool
     DropPointingRelativeCursorMove::remap(RemapParams& remapParams)
     {
