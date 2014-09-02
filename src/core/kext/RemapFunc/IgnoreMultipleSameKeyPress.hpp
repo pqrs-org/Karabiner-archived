@@ -1,16 +1,17 @@
 #ifndef IGNOREMULTIPLESAMEKEYPRESS_HPP
 #define IGNOREMULTIPLESAMEKEYPRESS_HPP
 
-#include "FromEvent.hpp"
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // ex. Ignore JIS_KANA x 2. (validate only the first once)
-    class IgnoreMultipleSameKeyPress {
+    class IgnoreMultipleSameKeyPress : RemapFuncBase {
     public:
-      IgnoreMultipleSameKeyPress(void);
-      ~IgnoreMultipleSameKeyPress(void);
+      IgnoreMultipleSameKeyPress(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS),
+        needToIgnore_(false)
+      {}
 
       bool remap(RemapParams& remapParams);
 
