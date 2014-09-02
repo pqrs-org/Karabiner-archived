@@ -6,12 +6,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    ForceNumLockOn::ForceNumLockOn(void) : index_(0)
-    {}
-
-    ForceNumLockOn::~ForceNumLockOn(void)
-    {}
-
     void
     ForceNumLockOn::add(AddDataType datatype, AddValue newval)
     {
