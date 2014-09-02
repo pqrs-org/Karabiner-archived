@@ -1,16 +1,21 @@
 #ifndef HOLDINGKEYTOKEY_HPP
 #define HOLDINGKEYTOKEY_HPP
 
-#include "FromEvent.hpp"
-#include "RemapFuncClasses.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class HoldingKeyToKey {
+    class HoldingKeyToKey : RemapFuncBase {
     public:
-      HoldingKeyToKey(void);
-      ~HoldingKeyToKey(void);
+      HoldingKeyToKey(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY),
+        isUseSeparator_(false),
+        indexType_(INDEX_IS_NORMAL),
+        index_(0)
+      {
+        dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY);
+      }
 
       bool remap(RemapParams& remapParams);
 
