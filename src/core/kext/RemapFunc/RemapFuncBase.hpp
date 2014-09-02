@@ -5,6 +5,7 @@
 #include "FromEvent.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
+#include "ListHookedKeyboard.hpp"
 #include "RemapFuncClasses.hpp"
 #include "ToEvent.hpp"
 

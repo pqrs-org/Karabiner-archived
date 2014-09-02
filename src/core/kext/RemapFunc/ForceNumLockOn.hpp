@@ -1,15 +1,16 @@
 #ifndef FORCENUMLOCKON_HPP
 #define FORCENUMLOCKON_HPP
 
-#include "RemapFuncClasses.hpp"
-#include "ListHookedKeyboard.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class ForceNumLockOn {
+    class ForceNumLockOn : RemapFuncBase {
     public:
-      ForceNumLockOn(void);
-      ~ForceNumLockOn(void);
+      ForceNumLockOn(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_FORCENUMLOCKON),
+        index_(0)
+      {}
 
       bool remap(ListHookedKeyboard::Item* item);
 
