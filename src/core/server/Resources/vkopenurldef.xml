@@ -145,6 +145,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Launchbar</name>
+    <url type="file">/Applications/Launchbar.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Launchpad</name>
     <url type="file">/Applications/Launchpad.app</url>
   </vkopenurldef>
