@@ -5,17 +5,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    HoldingKeyToKey::HoldingKeyToKey(void) :
-      isUseSeparator_(false),
-      indexType_(INDEX_IS_NORMAL),
-      index_(0)
-    {
-      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY);
-    }
-
-    HoldingKeyToKey::~HoldingKeyToKey(void)
-    {}
-
     void
     HoldingKeyToKey::add(AddDataType datatype, AddValue newval)
     {
