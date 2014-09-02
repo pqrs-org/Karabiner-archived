@@ -2,18 +2,58 @@
 <root>
   <item>
     <name>Enable at only Launchbar</name>
+
     <item>
-      <name>Change Semicolon(;) to Return</name>
+      <name style="important">Open LaunchBar by command-space.</name>
+      <appendix>*** Please use this setting together if you use the following settings. ***</appendix>
+      <identifier>remap.app_launchbar_open</identifier>
+      <not>LAUNCHBAR</not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_APP_Launchbar,
+      </autogen>
+    </item>
+
+    <item>
+      <name>Change semi-colon(;) to return key</name>
       <identifier>remap.app_launchbar_semicolon_to_return</identifier>
       <only>LAUNCHBAR</only>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
     </item>
+
     <item>
-      <name>Change Right to Cmd+Right</name>
+      <name>Change control-L to command-right arrow</name>
+      <appendix>Assumed Control Key Navigation in LB Preferences is hkli</appendix>
+      <identifier>remap.app_launchbar_hack_Control_L</identifier>
+      <only>LAUNCHBAR</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
+        Option::NOREPEAT,
+      </autogen>
+    </item>
+
+    <item>
+      <name>Change Dot(.) to Tab Key</name>
+      <identifier>remap.app_launchbar_hack_Tab</identifier>
+      <only>LAUNCHBAR</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DOT,
+        KeyCode::TAB,
+        Option::NOREPEAT,
+      </autogen>
+    </item>
+
+    <item>
+      <name>Change right arrow to command-right arrow</name>
       <identifier>remap.app_launchbar_right_to_command_right</identifier>
       <only>LAUNCHBAR</only>
       <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
+
     <item>
       <name>Change Cmd+D to Cmd+Shift+D</name>
       <identifier>remap.app_launchbar_cmd_d_to_cmd_shif_d</identifier>
