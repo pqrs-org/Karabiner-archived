@@ -11,6 +11,9 @@
       <autogen>
         __KeyToKey__
         KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+
+        Option::KEYTOKEY_AFTER_KEYUP,
         KeyCode::VK_OPEN_URL_APP_Launchbar,
       </autogen>
     </item>
