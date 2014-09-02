@@ -5,12 +5,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    IgnoreMultipleSameKeyPress::IgnoreMultipleSameKeyPress(void) : needToIgnore_(false)
-    {}
-
-    IgnoreMultipleSameKeyPress::~IgnoreMultipleSameKeyPress(void)
-    {}
-
     void
     IgnoreMultipleSameKeyPress::add(AddDataType datatype, AddValue newval)
     {
