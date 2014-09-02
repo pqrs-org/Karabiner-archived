@@ -7,17 +7,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    KeyOverlaidModifier::KeyOverlaidModifier(void) :
-      isUseSeparator_(false),
-      indexType_(INDEX_IS_HOLDING),
-      index_(0)
-    {
-      dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
-    }
-
-    KeyOverlaidModifier::~KeyOverlaidModifier(void)
-    {}
-
     void
     KeyOverlaidModifier::add(AddDataType datatype, AddValue newval)
     {

@@ -1,17 +1,22 @@
 #ifndef KEYOVERLAIDMODIFIER_HPP
 #define KEYOVERLAIDMODIFIER_HPP
 
-#include "FromEvent.hpp"
-#include "RemapFuncClasses.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
-    class KeyOverlaidModifier {
+    class KeyOverlaidModifier : RemapFuncBase {
     public:
-      KeyOverlaidModifier(void);
-      ~KeyOverlaidModifier(void);
+      KeyOverlaidModifier(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER),
+        isUseSeparator_(false),
+        indexType_(INDEX_IS_HOLDING),
+        index_(0)
+      {
+        dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
+      }
 
       bool remap(RemapParams& remapParams);
 
