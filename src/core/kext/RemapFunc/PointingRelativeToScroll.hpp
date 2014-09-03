@@ -1,24 +1,33 @@
 #ifndef POINTINGRELATIVETOSCROLL_HPP
 #define POINTINGRELATIVETOSCROLL_HPP
 
-#include "FromEvent.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
 #include "List.hpp"
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 #include "TimerWrapper.hpp"
-#include "ToEvent.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class PointingRelativeToScroll {
+    class PointingRelativeToScroll : RemapFuncBase {
     public:
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
       static void cancelScroll(void);
 
-      PointingRelativeToScroll(void);
-      ~PointingRelativeToScroll(void);
+      PointingRelativeToScroll(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL),
+        index_(0),
+        index_type_(INDEX_TYPE_DEFAULT),
+        isToKeysDefined_(false),
+        absolute_distance_(0),
+        chained_delta1_(0),
+        chained_delta2_(0),
+        fixation_delta1_(0),
+        fixation_delta2_(0)
+      {
+        keytokey_.add(KeyCode::VK_PSEUDO_KEY);
+      }
 
       bool remap(RemapParams& remapParams);
 
