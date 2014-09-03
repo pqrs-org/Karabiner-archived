@@ -1,14 +1,16 @@
 #ifndef SCROLLWHEELTOSCROLLWHEEL_HPP
 #define SCROLLWHEELTOSCROLLWHEEL_HPP
 
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class ScrollWheelToScrollWheel {
+    class ScrollWheelToScrollWheel : RemapFuncBase {
     public:
-      ScrollWheelToScrollWheel(void);
-      ~ScrollWheelToScrollWheel(void);
+      ScrollWheelToScrollWheel(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL),
+        index_(0)
+      {}
 
       bool remap(RemapParams& remapParams);
 
