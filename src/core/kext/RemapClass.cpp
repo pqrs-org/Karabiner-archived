@@ -277,7 +277,7 @@ namespace org_pqrs_Karabiner {
     if (isblocked()) return false;
 
 #define CALL_UNION_FUNCTION(POINTER) {                             \
-    if (POINTER) { return (POINTER)->remap(! parent_.enabled()); } \
+    if (POINTER) { return (POINTER)->remapSimultaneousKeyPresses(! parent_.enabled()); } \
 }
 
     switch (type_) {

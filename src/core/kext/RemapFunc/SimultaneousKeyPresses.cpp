@@ -108,7 +108,7 @@ namespace org_pqrs_Karabiner {
     }
 
     bool
-    SimultaneousKeyPresses::remap(bool keyuponly)
+    SimultaneousKeyPresses::remapSimultaneousKeyPresses(bool keyuponly)
     {
       // We consider "Shift_L+Shift_R to Space".
       // When we press keys by the following order.
