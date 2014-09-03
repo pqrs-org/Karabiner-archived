@@ -5,12 +5,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    SetKeyboardType::SetKeyboardType(void) : toKeyboardType_(KeyboardType::MACBOOK)
-    {}
-
-    SetKeyboardType::~SetKeyboardType(void)
-    {}
-
     void
     SetKeyboardType::add(AddDataType datatype, AddValue newval)
     {
