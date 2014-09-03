@@ -4,14 +4,22 @@
 #include "DeltaBuffer.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class PointingRelativeToKey {
+    class PointingRelativeToKey : RemapFuncBase {
     public:
-      PointingRelativeToKey(void);
-      ~PointingRelativeToKey(void);
+      PointingRelativeToKey(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY),
+        current_keytokey_(NULL)
+      {
+        keyrepeat_ic_.begin();
+
+        for (size_t i = 0; i < KEYTOKEY__END__; ++i) {
+          keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
+        }
+      }
 
       bool remap(RemapParams& remapParams);
 
