@@ -27,8 +27,6 @@ namespace org_pqrs_Karabiner {
         }
 
         // ------------------------------------------------------------
-        // initialize values.
-        //
         unsigned int type = vec[0];
         ++vec;
         --length;
