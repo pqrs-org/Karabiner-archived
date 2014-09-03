@@ -1,16 +1,24 @@
 #ifndef SCROLLWHEELTOKEY_HPP
 #define SCROLLWHEELTOKEY_HPP
 
-#include "RemapFuncClasses.hpp"
-#include "KeyToKey.hpp"
 #include "IntervalChecker.hpp"
+#include "KeyToKey.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class ScrollWheelToKey {
+    class ScrollWheelToKey : RemapFuncBase {
     public:
-      ScrollWheelToKey(void);
-      ~ScrollWheelToKey(void);
+      ScrollWheelToKey(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY),
+        index_(0),
+        firstScrollWheelEvent_(ScrollWheel::NONE),
+        isContinuousScrollEventRemapped_(false)
+      {
+        continuousScrollEvent_ic_.begin();
+        keyrepeat_ic_.begin();
+        keytokey_.add(KeyCode::VK_PSEUDO_KEY);
+      }
 
       bool remap(RemapParams& remapParams);
 
