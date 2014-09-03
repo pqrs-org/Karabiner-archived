@@ -7,18 +7,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    SimultaneousKeyPresses::SimultaneousKeyPresses(void) :
-      isUseSeparator_(false),
-      index_(0),
-      isFromInfoFull_(false),
-      isToRaw_(false),
-      isStrictKeyOrder_(false),
-      toKey_raw_(KeyCode::VK_NONE)
-    {}
-
-    SimultaneousKeyPresses::~SimultaneousKeyPresses(void)
-    {}
-
     void
     SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval)
     {

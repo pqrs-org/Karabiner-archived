@@ -2,16 +2,22 @@
 #define SIMULTANEOUSKEYPRESSES_HPP
 
 #include "EventInputQueue.hpp"
-#include "FromEvent.hpp"
 #include "KeyToKey.hpp"
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class SimultaneousKeyPresses {
+    class SimultaneousKeyPresses : RemapFuncBase {
     public:
-      SimultaneousKeyPresses(void);
-      ~SimultaneousKeyPresses(void);
+      SimultaneousKeyPresses(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES),
+        isUseSeparator_(false),
+        index_(0),
+        isFromInfoFull_(false),
+        isToRaw_(false),
+        isStrictKeyOrder_(false),
+        toKey_raw_(KeyCode::VK_NONE)
+      {}
 
       // This function changes Simultaneous key presses to KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx
       // It returns true if EventInputQueue::queue_ is changed.
