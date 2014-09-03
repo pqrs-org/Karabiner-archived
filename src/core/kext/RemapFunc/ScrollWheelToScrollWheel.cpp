@@ -7,12 +7,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    ScrollWheelToScrollWheel::ScrollWheelToScrollWheel(void) : index_(0)
-    {}
-
-    ScrollWheelToScrollWheel::~ScrollWheelToScrollWheel(void)
-    {}
-
     void
     ScrollWheelToScrollWheel::add(AddDataType datatype, AddValue newval)
     {
