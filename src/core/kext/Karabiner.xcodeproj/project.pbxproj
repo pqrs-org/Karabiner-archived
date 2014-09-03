@@ -22,6 +22,7 @@
 		342D245516A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */; };
 		342D245616A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */; };
 		34340FB3185CA89800D72086 /* Types.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34340FB2185CA89800D72086 /* Types.hpp */; };
+		3434FAAD19B771C400E904C0 /* RemapFuncFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3434FAAC19B771C400E904C0 /* RemapFuncFactory.hpp */; };
 		34379D4614B7794B0004B0F4 /* ScrollWheelToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */; };
 		34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */; };
 		3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */; };
@@ -177,6 +178,7 @@
 		342D245316A5AC9100EF070F /* VK_IOHIDPOSTEVENT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_IOHIDPOSTEVENT.cpp; path = VirtualKey/VK_IOHIDPOSTEVENT.cpp; sourceTree = "<group>"; };
 		342D245416A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_IOHIDPOSTEVENT.hpp; path = VirtualKey/VK_IOHIDPOSTEVENT.hpp; sourceTree = "<group>"; };
 		34340FB2185CA89800D72086 /* Types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Types.hpp; sourceTree = "<group>"; };
+		3434FAAC19B771C400E904C0 /* RemapFuncFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncFactory.hpp; path = RemapFunc/RemapFuncFactory.hpp; sourceTree = "<group>"; };
 		34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollWheelToKey.cpp; path = RemapFunc/ScrollWheelToKey.cpp; sourceTree = "<group>"; };
 		34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToKey.hpp; path = RemapFunc/ScrollWheelToKey.hpp; sourceTree = "<group>"; };
 		3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_PARTIAL.cpp; path = VirtualKey/VK_PARTIAL.cpp; sourceTree = "<group>"; };
@@ -395,7 +397,6 @@
 		345E3EC511D79D17004B6347 /* RemapFunc */ = {
 			isa = PBXGroup;
 			children = (
-				34D5B57319B1BECA00ABD446 /* RemapFuncBase.hpp */,
 				349A108E1907D0290000E43F /* BlockUntilKeyUp.cpp */,
 				349A108F1907D0290000E43F /* BlockUntilKeyUp.hpp */,
 				342BB27A13BB6A7400E18FDD /* common */,
@@ -426,6 +427,8 @@
 				34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
 				34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */,
+				34D5B57319B1BECA00ABD446 /* RemapFuncBase.hpp */,
+				3434FAAC19B771C400E904C0 /* RemapFuncFactory.hpp */,
 				34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */,
 				34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */,
 				34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */,
@@ -616,6 +619,7 @@
 				345C2F0F1936B86F005CB203 /* UIElementRoleFilter.hpp in Headers */,
 				34B464F013A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp in Headers */,
 				34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */,
+				3434FAAD19B771C400E904C0 /* RemapFuncFactory.hpp in Headers */,
 				34779369185B1FA800B3EF06 /* IntervalChecker.hpp in Headers */,
 				34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */,
 				342BC69C18609F5D00578EC5 /* ToEvent.hpp in Headers */,

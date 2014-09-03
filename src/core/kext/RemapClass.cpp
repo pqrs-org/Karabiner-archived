@@ -8,6 +8,7 @@
 #include "ModifierName.hpp"
 #include "RemapClass.hpp"
 #include "RemapFilter/RemapFilterFactory.hpp"
+#include "RemapFunc/RemapFuncFactory.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
 #include "VirtualKey/VK_DEFINED_IN_USERSPACE.hpp"
 #include "bridge.h"
