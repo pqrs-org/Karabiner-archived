@@ -12,7 +12,7 @@ namespace org_pqrs_Karabiner {
         toKeyboardType_(KeyboardType::MACBOOK)
       {}
 
-      bool remap(KeyboardType& keyboardType);
+      bool remapSetKeyboardType(KeyboardType& keyboardType);
 
       // ----------------------------------------
       // [0] => toKeyboardType

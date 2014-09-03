@@ -299,7 +299,7 @@ namespace org_pqrs_Karabiner {
     if (! parent_.enabled()) return;
 
 #define CALL_UNION_FUNCTION(POINTER) {               \
-    if (POINTER) { (POINTER)->remap(keyboardType); } \
+    if (POINTER) { (POINTER)->remapSetKeyboardType(keyboardType); } \
 }
 
     switch (type_) {
@@ -319,7 +319,7 @@ namespace org_pqrs_Karabiner {
     if (! parent_.enabled()) return;
 
 #define CALL_UNION_FUNCTION(POINTER) {       \
-    if (POINTER) { (POINTER)->remap(item); } \
+    if (POINTER) { (POINTER)->remapForceNumLockOn(item); } \
 }
 
     switch (type_) {

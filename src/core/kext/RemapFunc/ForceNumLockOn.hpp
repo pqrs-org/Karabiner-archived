@@ -12,7 +12,7 @@ namespace org_pqrs_Karabiner {
         index_(0)
       {}
 
-      bool remap(ListHookedKeyboard::Item* item);
+      bool remapForceNumLockOn(ListHookedKeyboard::Item* item);
 
       // ----------------------------------------
       // [0] => DeviceVendor

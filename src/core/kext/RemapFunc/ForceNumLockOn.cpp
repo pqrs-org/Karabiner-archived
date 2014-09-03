@@ -53,7 +53,7 @@ namespace org_pqrs_Karabiner {
     }
 
     bool
-    ForceNumLockOn::remap(ListHookedKeyboard::Item* item)
+    ForceNumLockOn::remapForceNumLockOn(ListHookedKeyboard::Item* item)
     {
       if (! item) return false;
       if (index_ < 2) return false;
