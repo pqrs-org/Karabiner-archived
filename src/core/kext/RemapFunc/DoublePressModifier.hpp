@@ -8,7 +8,7 @@
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     // A modifier has DoublePressed key action.
-    class DoublePressModifier : RemapFuncBase {
+    class DoublePressModifier : public RemapFuncBase {
     public:
       DoublePressModifier(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER),

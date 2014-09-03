@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class FlipPointingRelative : RemapFuncBase {
+    class FlipPointingRelative : public RemapFuncBase {
     public:
       FlipPointingRelative(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE),

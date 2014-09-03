@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class BlockUntilKeyUp : RemapFuncBase {
+    class BlockUntilKeyUp : public RemapFuncBase {
     public:
       BlockUntilKeyUp(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP)

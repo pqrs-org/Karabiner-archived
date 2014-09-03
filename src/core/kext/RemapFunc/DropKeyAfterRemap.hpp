@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class DropKeyAfterRemap : RemapFuncBase {
+    class DropKeyAfterRemap : public RemapFuncBase {
     public:
       DropKeyAfterRemap(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP)

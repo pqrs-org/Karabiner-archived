@@ -9,7 +9,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class PointingRelativeToScroll : RemapFuncBase {
+    class PointingRelativeToScroll : public RemapFuncBase {
     public:
       static void static_initialize(IOWorkLoop& workloop);
       static void static_terminate(void);
