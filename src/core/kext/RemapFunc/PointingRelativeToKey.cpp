@@ -7,19 +7,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    PointingRelativeToKey::PointingRelativeToKey(void) :
-      current_keytokey_(NULL)
-    {
-      keyrepeat_ic_.begin();
-
-      for (size_t i = 0; i < KEYTOKEY__END__; ++i) {
-        keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
-      }
-    }
-
-    PointingRelativeToKey::~PointingRelativeToKey(void)
-    {}
-
     void
     PointingRelativeToKey::add(AddDataType datatype, AddValue newval)
     {
