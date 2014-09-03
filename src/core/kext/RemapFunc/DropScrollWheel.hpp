@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class DropScrollWheel : RemapFuncBase {
+    class DropScrollWheel : public RemapFuncBase {
     public:
       DropScrollWheel(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_DROPSCROLLWHEEL),

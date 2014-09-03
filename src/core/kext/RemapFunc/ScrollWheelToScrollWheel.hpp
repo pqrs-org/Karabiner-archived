@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class ScrollWheelToScrollWheel : RemapFuncBase {
+    class ScrollWheelToScrollWheel : public RemapFuncBase {
     public:
       ScrollWheelToScrollWheel(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL),

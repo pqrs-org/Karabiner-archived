@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class PassThrough : RemapFuncBase {
+    class PassThrough : public RemapFuncBase {
     public:
       PassThrough(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_PASSTHROUGH)

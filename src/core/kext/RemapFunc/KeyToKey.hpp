@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class KeyToKey : RemapFuncBase {
+    class KeyToKey : public RemapFuncBase {
     public:
       KeyToKey(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_KEYTOKEY),

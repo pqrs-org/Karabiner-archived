@@ -6,7 +6,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class HoldingKeyToKey : RemapFuncBase {
+    class HoldingKeyToKey : public RemapFuncBase {
     public:
       HoldingKeyToKey(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY),

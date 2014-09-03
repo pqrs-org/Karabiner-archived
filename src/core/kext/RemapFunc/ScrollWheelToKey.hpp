@@ -7,7 +7,7 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class ScrollWheelToKey : RemapFuncBase {
+    class ScrollWheelToKey : public RemapFuncBase {
     public:
       ScrollWheelToKey(void) :
         RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY),
