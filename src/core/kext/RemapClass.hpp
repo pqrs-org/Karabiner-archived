@@ -3,6 +3,7 @@
 
 #include "bridge.h"
 #include "RemapFilter/RemapFilterBase.hpp"
+#include "RemapFunc/RemapFuncBase.hpp"
 #include "RemapFunc/BlockUntilKeyUp.hpp"
 #include "RemapFunc/DoublePressModifier.hpp"
 #include "RemapFunc/DropKeyAfterRemap.hpp"
