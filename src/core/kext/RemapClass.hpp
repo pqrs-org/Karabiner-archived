@@ -54,7 +54,10 @@ namespace org_pqrs_Karabiner {
       bool active(void) const { return active_; }
 
       bool isPassThroughEnabled(void) const;
-      bool isIgnorePassThrough(void) const { return ignorePassThrough_; }
+      bool isIgnorePassThrough(void) const {
+        if (! processor_) return false;
+        return processor_->getIgnorePassThrough();
+      }
 
     private:
       bool isblocked(void) const;
@@ -69,31 +72,7 @@ namespace org_pqrs_Karabiner {
       // true if remapped at KeyDown.
       bool active_;
 
-      // true if the setting is effective in PassThrough Mode.
-      bool ignorePassThrough_;
-
-      union {
-        RemapFunc::BlockUntilKeyUp* blockUntilKeyUp;
-        RemapFunc::DoublePressModifier* doublePressModifier;
-        RemapFunc::DropKeyAfterRemap* dropKeyAfterRemap;
-        RemapFunc::DropPointingRelativeCursorMove* dropPointingRelativeCursorMove;
-        RemapFunc::DropScrollWheel* dropScrollWheel;
-        RemapFunc::FlipPointingRelative* flipPointingRelative;
-        RemapFunc::FlipScrollWheel* flipScrollWheel;
-        RemapFunc::ForceNumLockOn* forceNumLockOn;
-        RemapFunc::HoldingKeyToKey* holdingKeyToKey;
-        RemapFunc::IgnoreMultipleSameKeyPress* ignoreMultipleSameKeyPress;
-        RemapFunc::KeyOverlaidModifier* keyOverlaidModifier;
-        RemapFunc::KeyToKey* keyToKey;
-        RemapFunc::PassThrough* passThrough;
-        RemapFunc::PointingRelativeToKey* pointingRelativeToKey;
-        RemapFunc::PointingRelativeToScroll* pointingRelativeToScroll;
-        RemapFunc::ScrollWheelToKey* scrollWheelToKey;
-        RemapFunc::ScrollWheelToScrollWheel* scrollWheelToScrollWheel;
-        RemapFunc::SetKeyboardType* setKeyboardType;
-        RemapFunc::SimultaneousKeyPresses* simultaneousKeyPresses;
-      } p_;
-
+      RemapFunc::RemapFuncBase* processor_;
       RemapFilter::Vector_RemapFilterBasePointer filters_;
     };
     typedef Item* ItemPointer;

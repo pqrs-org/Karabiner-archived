@@ -18,106 +18,17 @@ namespace org_pqrs_Karabiner {
   RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) :
     parent_(parent),
     type_(BRIDGE_REMAPTYPE_NONE),
-    active_(false),
-    ignorePassThrough_(false)
+    active_(false)
   {
-    // ------------------------------------------------------------
-    // check parameters.
-    //
-    if (! vec || length == 0) {
-      IOLOG_ERROR("RemapClass::Item::Item invalid parameter.\n");
-      return;
-    }
-
-    // ------------------------------------------------------------
-    // initialize values.
-    //
-#define INITIALIZE_UNION_VALUE(POINTER, CLASS) {                                        \
-    POINTER = new CLASS;                                                                \
-    if (! POINTER) {                                                                    \
-      IOLOG_ERROR("RemapClass::Item::Item failed to allocate.\n");                      \
-      return;                                                                           \
-    } else {                                                                            \
-      type_ = newtype;                                                                  \
-      for (size_t i = 1;; i += 2) {                                                     \
-        size_t datatype_index = i;                                                      \
-        size_t value_index    = i + 1;                                                  \
-        if (value_index >= length) break;                                               \
-        if (vec[datatype_index] == BRIDGE_DATATYPE_OPTION &&                            \
-            Option(vec[value_index]) == Option::IGNORE_PASSTHROUGH) {                   \
-          ignorePassThrough_ = true;                                                    \
-        } else {                                                                        \
-          (POINTER)->add(AddDataType(vec[datatype_index]), AddValue(vec[value_index])); \
-        }                                                                               \
-      }                                                                                 \
-    }                                                                                   \
-}
-
-    unsigned int newtype = vec[0];
-
-    switch (newtype) {
-      // handle BRIDGE_REMAPTYPE_NONE as error. (see default)
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                       INITIALIZE_UNION_VALUE(p_.keyToKey,                       RemapFunc::KeyToKey);                       break;
-      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            INITIALIZE_UNION_VALUE(p_.doublePressModifier,            RemapFunc::DoublePressModifier);            break;
-      case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              INITIALIZE_UNION_VALUE(p_.dropKeyAfterRemap,              RemapFunc::DropKeyAfterRemap);              break;
-      case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: INITIALIZE_UNION_VALUE(p_.dropPointingRelativeCursorMove, RemapFunc::DropPointingRelativeCursorMove); break;
-      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                INITIALIZE_UNION_VALUE(p_.dropScrollWheel,                RemapFunc::DropScrollWheel); break;
-      case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           INITIALIZE_UNION_VALUE(p_.flipPointingRelative,           RemapFunc::FlipPointingRelative); break;
-      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                INITIALIZE_UNION_VALUE(p_.flipScrollWheel,                RemapFunc::FlipScrollWheel); break;
-      case BRIDGE_REMAPTYPE_FORCENUMLOCKON:                 INITIALIZE_UNION_VALUE(p_.forceNumLockOn,                 RemapFunc::ForceNumLockOn);                 break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                INITIALIZE_UNION_VALUE(p_.holdingKeyToKey,                RemapFunc::HoldingKeyToKey);                break;
-      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     INITIALIZE_UNION_VALUE(p_.ignoreMultipleSameKeyPress,     RemapFunc::IgnoreMultipleSameKeyPress);     break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            INITIALIZE_UNION_VALUE(p_.keyOverlaidModifier,            RemapFunc::KeyOverlaidModifier);            break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:          INITIALIZE_UNION_VALUE(p_.pointingRelativeToKey,          RemapFunc::PointingRelativeToKey);          break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       INITIALIZE_UNION_VALUE(p_.pointingRelativeToScroll,       RemapFunc::PointingRelativeToScroll);       break;
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         INITIALIZE_UNION_VALUE(p_.simultaneousKeyPresses,         RemapFunc::SimultaneousKeyPresses);         break;
-      case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                INITIALIZE_UNION_VALUE(p_.setKeyboardType,                RemapFunc::SetKeyboardType);                break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       INITIALIZE_UNION_VALUE(p_.scrollWheelToScrollWheel,       RemapFunc::ScrollWheelToScrollWheel);       break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               INITIALIZE_UNION_VALUE(p_.scrollWheelToKey,               RemapFunc::ScrollWheelToKey);               break;
-      case BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP:                INITIALIZE_UNION_VALUE(p_.blockUntilKeyUp,                RemapFunc::BlockUntilKeyUp);                break;
-      case BRIDGE_REMAPTYPE_PASSTHROUGH:                    INITIALIZE_UNION_VALUE(p_.passThrough,                    RemapFunc::PassThrough);                    break;
-      default:
-        IOLOG_ERROR("RemapClass::Item::Item unknown type_ (%d)\n", type_);
-        type_ = BRIDGE_REMAPTYPE_NONE;
-        return;
-    }
-
-#undef INITIALIZE_UNION_VALUE
+    processor_ = RemapFunc::RemapFuncFactory::create(vec, length);
   }
 
   RemapClass::Item::~Item(void)
   {
-#define DELETE_UNLESS_NULL(POINTER) { \
-    if (POINTER) { delete POINTER; }  \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_NONE:                                                                                  break;
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                       DELETE_UNLESS_NULL(p_.keyToKey);                       break;
-      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:            DELETE_UNLESS_NULL(p_.doublePressModifier);            break;
-      case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:              DELETE_UNLESS_NULL(p_.dropKeyAfterRemap);              break;
-      case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: DELETE_UNLESS_NULL(p_.dropPointingRelativeCursorMove); break;
-      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                DELETE_UNLESS_NULL(p_.dropScrollWheel);                break;
-      case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           DELETE_UNLESS_NULL(p_.flipPointingRelative);           break;
-      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                DELETE_UNLESS_NULL(p_.flipScrollWheel);                break;
-      case BRIDGE_REMAPTYPE_FORCENUMLOCKON:                 DELETE_UNLESS_NULL(p_.forceNumLockOn);                 break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:                DELETE_UNLESS_NULL(p_.holdingKeyToKey);                break;
-      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:     DELETE_UNLESS_NULL(p_.ignoreMultipleSameKeyPress);     break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:            DELETE_UNLESS_NULL(p_.keyOverlaidModifier);            break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:          DELETE_UNLESS_NULL(p_.pointingRelativeToKey);          break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       DELETE_UNLESS_NULL(p_.pointingRelativeToScroll);       break;
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:         DELETE_UNLESS_NULL(p_.simultaneousKeyPresses);         break;
-      case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:                DELETE_UNLESS_NULL(p_.setKeyboardType);                break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       DELETE_UNLESS_NULL(p_.scrollWheelToScrollWheel);       break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               DELETE_UNLESS_NULL(p_.scrollWheelToKey);               break;
-      case BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP:                DELETE_UNLESS_NULL(p_.blockUntilKeyUp);                break;
-      case BRIDGE_REMAPTYPE_PASSTHROUGH:                    DELETE_UNLESS_NULL(p_.passThrough);                    break;
-      default:
-        IOLOG_ERROR("RemapClass::Item::terminate unknown type_ (%d)\n", type_);
-        break;
+    if (processor_) {
+      delete processor_;
+      processor_ = NULL;
     }
-
-#undef DELETE_UNLESS_NULL
 
     // ------------------------------------------------------------
     for (size_t i = 0; i < filters_.size(); ++i) {
@@ -154,6 +65,8 @@ namespace org_pqrs_Karabiner {
   void
   RemapClass::Item::remap(RemapParams& remapParams)
   {
+    if (! processor_) return;
+
     bool iskeydown = false;
     if (! remapParams.paramsUnion.iskeydown(iskeydown)) {
       iskeydown = false;
@@ -167,54 +80,32 @@ namespace org_pqrs_Karabiner {
       if (isblocked() && ! active_) return;
     }
 
-#define CALL_UNION_FUNCTION(POINTER) {     \
-    if (POINTER) {                         \
-      if ((POINTER)->remap(remapParams)) { \
-        if (iskeydown) {                   \
-          active_ = true;                  \
-        } else {                           \
-          active_ = false;                 \
-        }                                  \
-      }                                    \
-    }                                      \
-}
-
-#define CALL_IF_ENABLED(POINTER) {  \
-    if (parent_.enabled()) {        \
-      CALL_UNION_FUNCTION(POINTER); \
-    }                               \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:        CALL_UNION_FUNCTION(p_.doublePressModifier);            break;
-      case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:            CALL_UNION_FUNCTION(p_.holdingKeyToKey);                break;
-      case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS: CALL_UNION_FUNCTION(p_.ignoreMultipleSameKeyPress);     break;
-      case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:        CALL_UNION_FUNCTION(p_.keyOverlaidModifier);            break;
-      case BRIDGE_REMAPTYPE_KEYTOKEY:                   CALL_UNION_FUNCTION(p_.keyToKey);                       break;
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:     CALL_UNION_FUNCTION(p_.simultaneousKeyPresses);         break;
-
-      // check parent_.enabled() for RelativePointerEvent and ScrollWheelEvent.
-      case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE: CALL_IF_ENABLED(p_.dropPointingRelativeCursorMove); break;
-      case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:                CALL_IF_ENABLED(p_.dropScrollWheel);                break;
-      case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:           CALL_IF_ENABLED(p_.flipPointingRelative);           break;
-      case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:                CALL_IF_ENABLED(p_.flipScrollWheel);                break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:          CALL_IF_ENABLED(p_.pointingRelativeToKey);          break;
-      case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:       CALL_IF_ENABLED(p_.pointingRelativeToScroll);       break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:               CALL_IF_ENABLED(p_.scrollWheelToKey);               break;
-      case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:       CALL_IF_ENABLED(p_.scrollWheelToScrollWheel);       break;
-
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
+    // check parent_.enabled() for RelativePointerEvent and ScrollWheelEvent.
+    if (processor_->getType() == BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE ||
+        processor_->getType() == BRIDGE_REMAPTYPE_DROPSCROLLWHEEL ||
+        processor_->getType() == BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE ||
+        processor_->getType() == BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL ||
+        processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY ||
+        processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL ||
+        processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY ||
+        processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL) {
+      if (! parent_.enabled()) return;
     }
 
-#undef CALL_UNION_FUNCTION
-#undef CALL_IF_ENABLED
+    if (processor_->remap(remapParams)) {
+      if (iskeydown) {
+        active_ = true;
+      } else {
+        active_ = false;
+      }
+    }
   }
 
   bool
   RemapClass::Item::drop(const Params_KeyboardEventCallBack& params)
   {
+    if (! processor_) return false;
+
     if (params.ex_iskeydown) {
       if (! parent_.enabled()) return false;
       if (isblocked()) return false;
@@ -223,27 +114,14 @@ namespace org_pqrs_Karabiner {
       if (isblocked() && ! active_) return false;
     }
 
-#define CALL_UNION_FUNCTION(POINTER) { \
-    if (POINTER) {                     \
-      if ((POINTER)->drop(params)) {   \
-        if (params.ex_iskeydown) {     \
-          active_ = true;              \
-        } else {                       \
-          active_ = false;             \
-        }                              \
-        return true;                   \
-      }                                \
-    }                                  \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP: CALL_UNION_FUNCTION(p_.dropKeyAfterRemap); break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
+    if (processor_->drop(params)) {
+      if (params.ex_iskeydown) {
+        active_ = true;
+      } else {
+        active_ = false;
+      }
+      return true;
     }
-
-#undef CALL_UNION_FUNCTION
 
     return false;
   }
@@ -251,20 +129,19 @@ namespace org_pqrs_Karabiner {
   bool
   RemapClass::Item::isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion)
   {
+    if (! processor_) return false;
+
     // BlockUntilKeyUp does not use Flags.
     // So, we do not need to use "active_" flag.
 
     if (! parent_.enabled()) return false;
     if (isblocked()) return false;
 
-    if (type_ == BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP) {
-      if (p_.blockUntilKeyUp) {
-        const FromEvent& fromEvent = (p_.blockUntilKeyUp)->getFromEvent();
-
-        if (fromEvent.isTargetDownEvent(paramsUnion) ||
-            fromEvent.isTargetUpEvent(paramsUnion)) {
-          return true;
-        }
+    const FromEvent* fromEvent = processor_->getBlockUntilKeyUpFromEvent();
+    if (fromEvent) {
+      if (fromEvent->isTargetDownEvent(paramsUnion) ||
+          fromEvent->isTargetUpEvent(paramsUnion)) {
+        return true;
       }
     }
 
@@ -274,71 +151,40 @@ namespace org_pqrs_Karabiner {
   bool
   RemapClass::Item::remap_SimultaneousKeyPresses(void)
   {
+    if (! processor_) return false;
     if (isblocked()) return false;
 
-#define CALL_UNION_FUNCTION(POINTER) {                             \
-    if (POINTER) { return (POINTER)->remapSimultaneousKeyPresses(! parent_.enabled()); } \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES: CALL_UNION_FUNCTION(p_.simultaneousKeyPresses); break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
-    }
-
-#undef CALL_UNION_FUNCTION
-
-    return false;
+    return processor_->remapSimultaneousKeyPresses(! parent_.enabled());
   }
 
   void
   RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType)
   {
+    if (! processor_) return;
     if (isblocked()) return;
     if (! parent_.enabled()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {               \
-    if (POINTER) { (POINTER)->remapSetKeyboardType(keyboardType); } \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE: CALL_UNION_FUNCTION(p_.setKeyboardType); break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
-    }
-
-#undef CALL_UNION_FUNCTION
+    processor_->remapSetKeyboardType(keyboardType);
   }
 
   void
   RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item)
   {
+    if (! processor_) return;
     if (isblocked()) return;
     if (! parent_.enabled()) return;
 
-#define CALL_UNION_FUNCTION(POINTER) {       \
-    if (POINTER) { (POINTER)->remapForceNumLockOn(item); } \
-}
-
-    switch (type_) {
-      case BRIDGE_REMAPTYPE_FORCENUMLOCKON: CALL_UNION_FUNCTION(p_.forceNumLockOn); break;
-      default:
-        // do nothing. (Do not call IOLOG_ERROR)
-        break;
-    }
-
-#undef CALL_UNION_FUNCTION
+    processor_->remapForceNumLockOn(item);
   }
 
   bool
   RemapClass::Item::isPassThroughEnabled(void) const
   {
+    if (! processor_) return false;
     if (isblocked()) return false;
     if (! parent_.enabled()) return false;
 
-    if (type_ != BRIDGE_REMAPTYPE_PASSTHROUGH) return false;
+    if (processor_->getType() != BRIDGE_REMAPTYPE_PASSTHROUGH) return false;
 
     return true;
   }

@@ -12,7 +12,7 @@ namespace org_pqrs_Karabiner {
       {}
 
       void add(AddDataType datatype, AddValue newval);
-      const FromEvent& getFromEvent(void) const { return fromEvent_; }
+      const FromEvent* getBlockUntilKeyUpFromEvent(void) const { return &fromEvent_; }
 
     private:
       FromEvent fromEvent_;
