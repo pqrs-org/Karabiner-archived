@@ -20,6 +20,9 @@ namespace org_pqrs_Karabiner {
 
       virtual bool remap(RemapParams& remapParams) { return false; }
       virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }
+      virtual bool remapSimultaneousKeyPresses(bool keyuponly) { return false; }
+      virtual bool remapSetKeyboardType(KeyboardType& keyboardType) { return false; }
+      virtual bool remapForceNumLockOn(ListHookedKeyboard::Item* item) { return false; }
 
       unsigned int getType(void) const { return type_; }
       void setIgnorePassThrough(bool v) { ignorePassThrough_ = v; }
