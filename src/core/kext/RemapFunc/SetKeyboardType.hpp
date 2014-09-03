@@ -1,14 +1,16 @@
 #ifndef SETKEYBOARDTYPE_HPP
 #define SETKEYBOARDTYPE_HPP
 
-#include "RemapFuncClasses.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    class SetKeyboardType {
+    class SetKeyboardType : RemapFuncBase {
     public:
-      SetKeyboardType(void);
-      ~SetKeyboardType(void);
+      SetKeyboardType(void) :
+        RemapFuncBase(BRIDGE_REMAPTYPE_SETKEYBOARDTYPE),
+        toKeyboardType_(KeyboardType::MACBOOK)
+      {}
 
       bool remap(KeyboardType& keyboardType);
 
