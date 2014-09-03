@@ -6,19 +6,6 @@
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
-    ScrollWheelToKey::ScrollWheelToKey(void) :
-      index_(0),
-      firstScrollWheelEvent_(ScrollWheel::NONE),
-      isContinuousScrollEventRemapped_(false)
-    {
-      continuousScrollEvent_ic_.begin();
-      keyrepeat_ic_.begin();
-      keytokey_.add(KeyCode::VK_PSEUDO_KEY);
-    }
-
-    ScrollWheelToKey::~ScrollWheelToKey(void)
-    {}
-
     void
     ScrollWheelToKey::add(AddDataType datatype, AddValue newval)
     {
