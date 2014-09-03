@@ -13,17 +13,21 @@ namespace org_pqrs_Karabiner {
   namespace RemapFunc {
     class RemapFuncBase {
     public:
-      RemapFuncBase(unsigned int type) : type_(type) {}
+      RemapFuncBase(unsigned int type) : type_(type), ignorePassThrough_(false) {}
       virtual ~RemapFuncBase(void) {}
 
       virtual void add(AddDataType datatype, AddValue newval) = 0;
 
       virtual bool remap(RemapParams& remapParams) { return false; }
+      virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }
 
-      unsigned int get_type(void) const { return type_; }
+      unsigned int getType(void) const { return type_; }
+      void setIgnorePassThrough(bool v) { ignorePassThrough_ = v; }
+      bool getIgnorePassThrough(void) const { return ignorePassThrough_; }
 
     private:
       unsigned int type_;
+      bool ignorePassThrough_;
     };
   }
 }
