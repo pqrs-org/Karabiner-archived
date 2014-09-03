@@ -22,10 +22,10 @@ namespace org_pqrs_Karabiner {
     }
 
     bool
-    SetKeyboardType::remap(KeyboardType& keyboardType)
+    SetKeyboardType::remapSetKeyboardType(KeyboardType& keyboardType)
     {
       keyboardType = toKeyboardType_;
-      return false;
+      return true;
     }
   }
 }
