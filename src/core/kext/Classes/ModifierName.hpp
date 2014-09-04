@@ -1,6 +1,7 @@
 #ifndef MODIFIERNAME_HPP
 #define MODIFIERNAME_HPP
 
+#include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
 #include "strlcpy_utf8.hpp"
 
@@ -14,20 +15,27 @@ namespace org_pqrs_Karabiner {
       }
 
       Item(ModifierFlag modifierFlag, const char* name) : modifierFlag_(modifierFlag) {
-        pqrs::strlcpy_utf8::strlcpy(name_, name, sizeof(name_));
+        if (name) {
+          pqrs::strlcpy_utf8::strlcpy(name_, name, sizeof(name_));
+        }
       }
 
       Item(ModifierFlag modifierFlag, const uint32_t* name, size_t size) : modifierFlag_(modifierFlag) {
-        char* tmp = new char[size + 1];
-        {
-          for (size_t i = 0; i < size; ++i) {
-            tmp[i] = name[i];
-          }
-          tmp[size] = '\0';
+        if (name) {
+          char* tmp = new char[size + 1];
+          if (! tmp) {
+            IOLOG_ERROR("ModifierName: Failed to allocate: %p, %ld", name, size);
+          } else {
+            for (size_t i = 0; i < size; ++i) {
+              tmp[i] = name[i];
+            }
+            tmp[size] = '\0';
 
-          pqrs::strlcpy_utf8::strlcpy(name_, tmp, sizeof(name_));
+            pqrs::strlcpy_utf8::strlcpy(name_, tmp, sizeof(name_));
+
+            delete[] tmp;
+          }
         }
-        delete[] tmp;
       }
 
       ModifierFlag getModifierFlag(void) const { return modifierFlag_; }
