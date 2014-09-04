@@ -1,10 +1,11 @@
 #ifndef DEPENDINGPRESSINGPERIODKEYTOKEY_HPP
 #define DEPENDINGPRESSINGPERIODKEYTOKEY_HPP
 
-#include "RemapFuncClasses.hpp"
-#include "KeyToKey.hpp"
-#include "TimerWrapper.hpp"
+#include "EventWatcher.hpp"
 #include "IntervalChecker.hpp"
+#include "KeyToKey.hpp"
+#include "RemapFuncClasses.hpp"
+#include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace RemapFunc {
@@ -210,7 +211,7 @@ namespace org_pqrs_Karabiner {
       KeyToKey beforeAfterKeys_;
       PeriodMS periodMS_;
 
-      bool isAnyEventHappen_;
+      EventWatcher::Target eventWatcherTarget_;
       IntervalChecker ic_;
       int keyboardRepeatID_;
 

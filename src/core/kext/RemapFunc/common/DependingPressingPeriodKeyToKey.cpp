@@ -2,7 +2,6 @@
 
 #include "Config.hpp"
 #include "DependingPressingPeriodKeyToKey.hpp"
-#include "EventWatcher.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
 
@@ -120,7 +119,6 @@ namespace org_pqrs_Karabiner {
     DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) :
       active_(false),
       periodtype_(PeriodType::NONE),
-      isAnyEventHappen_(false),
       keyboardRepeatID_(0),
       interruptibleByScrollWheel_(true)
     {
@@ -278,7 +276,7 @@ namespace org_pqrs_Karabiner {
           // ----------------------------------------
           // handle PRESSING_TARGET_KEY_ONLY
           if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
-            if (! isAnyEventHappen_ &&
+            if (! eventWatcherTarget_.isAnyEventHappen() &&
                 ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
               // ----------------------------------------
               // Restore FlagStatus at key down.
@@ -324,7 +322,7 @@ namespace org_pqrs_Karabiner {
           break;
       }
 
-      EventWatcher::unset(isAnyEventHappen_);
+      eventWatcherTarget_.unobserve();
     }
 
     void
@@ -339,7 +337,7 @@ namespace org_pqrs_Karabiner {
 
           (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
 
-          EventWatcher::set(target_->isAnyEventHappen_);
+          (target_->eventWatcherTarget_).observe();
           (target_->ic_).begin();
 
           if (target_->periodMS_.enabled(PeriodMS::Type::LONG_LONG_PERIOD)) {
