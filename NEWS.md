@@ -1,6 +1,7 @@
 Since 10.2.0
 ------------
 
+* Stability at reloading XML has been improved.
 * Updates for people who add new settings by oneself:
     * The following filters have been added.
         * <modifierlocked_only>
