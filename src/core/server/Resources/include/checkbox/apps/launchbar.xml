@@ -22,6 +22,7 @@
       <name>Change semi-colon(;) to return key</name>
       <identifier>remap.app_launchbar_semicolon_to_return</identifier>
       <only>LAUNCHBAR</only>
+      <uielementrole_not>AXTextField</uielementrole_not>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::RETURN</autogen>
     </item>
 
@@ -42,6 +43,7 @@
       <name>Change Dot(.) to Tab Key</name>
       <identifier>remap.app_launchbar_hack_Tab</identifier>
       <only>LAUNCHBAR</only>
+      <uielementrole_not>AXTextField</uielementrole_not>
       <autogen>
         __KeyToKey__
         KeyCode::DOT,
@@ -52,9 +54,21 @@
 
     <item>
       <name>Change right arrow to command-right arrow</name>
+      <appendix>also, change control-L to command-right arrow.</appendix>
       <identifier>remap.app_launchbar_right_to_command_right</identifier>
       <only>LAUNCHBAR</only>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_RIGHT, ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
+        Option::NOREPEAT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
+        Option::NOREPEAT,
+      </autogen>
     </item>
 
     <item>
