@@ -29,6 +29,15 @@
       <autogen>__DropKeyAfterRemap__ KeyCode::F12,        MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
     </item>
     <item>
+      <name>Show desktop by command-D.</name>
+      <identifier>remap.show_desktop_by_command_d</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::MISSION_CONTROL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+    </item>
+    <item>
       <name>Holding "E" Key to Mission Control (Expose)</name>
       <identifier>remap.holding_e_to_expose</identifier>
       <autogen>
