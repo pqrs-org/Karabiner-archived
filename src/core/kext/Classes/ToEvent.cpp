@@ -26,31 +26,27 @@ namespace org_pqrs_Karabiner {
 
       case Type::KEY:
       {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
-                                                                                       flags,
-                                                                                       key_,
-                                                                                       CommonData::getcurrent_keyboardType(),
-                                                                                       false));
-        if (ptr) {
-          EventOutputQueue::FireKey::fire(*ptr);
-          if (add_to_keyrepeat) {
-            KeyboardRepeat::set(*ptr, delayUntilRepeat, keyRepeat);
-          }
+        Params_KeyboardEventCallBack params(eventType,
+                                            flags,
+                                            key_,
+                                            CommonData::getcurrent_keyboardType(),
+                                            false);
+        EventOutputQueue::FireKey::fire(params);
+        if (add_to_keyrepeat) {
+          KeyboardRepeat::set(params, delayUntilRepeat, keyRepeat);
         }
         break;
       }
 
       case Type::CONSUMER_KEY:
       {
-        Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
-                                                                                                     flags,
-                                                                                                     consumer_,
-                                                                                                     false));
-        if (ptr) {
-          EventOutputQueue::FireConsumer::fire(*ptr);
-          if (add_to_keyrepeat) {
-            KeyboardRepeat::set(*ptr, delayUntilRepeat, keyRepeat);
-          }
+        Params_KeyboardSpecialEventCallback params(eventType,
+                                                   flags,
+                                                   consumer_,
+                                                   false);
+        EventOutputQueue::FireConsumer::fire(params);
+        if (add_to_keyrepeat) {
+          KeyboardRepeat::set(params, delayUntilRepeat, keyRepeat);
         }
         break;
       }
