@@ -196,14 +196,11 @@ namespace org_pqrs_Karabiner {
         {
           Params_KeyboardSpecialEventCallback* params = (p->params).get_Params_KeyboardSpecialEventCallback();
           if (params) {
-            Params_KeyboardSpecialEventCallback::auto_ptr ptr(
-              Params_KeyboardSpecialEventCallback::alloc(params->eventType,
-                                                         params->flags,
-                                                         params->key,
-                                                         queue_.size() == 1 ? true : false));
-            if (ptr) {
-              EventOutputQueue::FireConsumer::fire(*ptr);
-            }
+            Params_KeyboardSpecialEventCallback pr(params->eventType,
+                                                   params->flags,
+                                                   params->key,
+                                                   queue_.size() == 1 ? true : false);
+            EventOutputQueue::FireConsumer::fire(pr);
           }
           break;
         }
