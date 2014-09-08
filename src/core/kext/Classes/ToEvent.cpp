@@ -85,40 +85,34 @@ namespace org_pqrs_Karabiner {
         KeyboardType keyboardType = CommonData::getcurrent_keyboardType();
         ModifierFlag f = key_.getModifierFlag();
 
-#define CALL_FIREKEY_FIRE(ptr)             \
-  if (ptr) {                               \
-    EventOutputQueue::FireKey::fire(*ptr); \
-    if (add_to_keyrepeat) {                \
-      KeyboardRepeat::primitive_add(*ptr); \
-    }                                      \
+#define CALL_FIREKEY_FIRE(params)          \
+  EventOutputQueue::FireKey::fire(params); \
+  if (add_to_keyrepeat) {                  \
+    KeyboardRepeat::primitive_add(params); \
   }                                        \
 
         if (f != ModifierFlag::ZERO) {
           {
             FlagStatus::globalFlagStatus().increase(f);
             Flags flags = FlagStatus::globalFlagStatus().makeFlags();
-            Params_KeyboardEventCallBack::auto_ptr ptr(
-              Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key_, keyboardType, false));
-            CALL_FIREKEY_FIRE(ptr);
+            Params_KeyboardEventCallBack params(EventType::MODIFY, flags, key_, keyboardType, false);
+            CALL_FIREKEY_FIRE(params);
           }
           {
             FlagStatus::globalFlagStatus().decrease(f);
             Flags flags = FlagStatus::globalFlagStatus().makeFlags();
-            Params_KeyboardEventCallBack::auto_ptr ptr(
-              Params_KeyboardEventCallBack::alloc(EventType::MODIFY, flags, key_, keyboardType, false));
-            CALL_FIREKEY_FIRE(ptr);
+            Params_KeyboardEventCallBack params(EventType::MODIFY, flags, key_, keyboardType, false);
+            CALL_FIREKEY_FIRE(params);
           }
         } else {
           Flags flags = FlagStatus::globalFlagStatus().makeFlags();
           {
-            Params_KeyboardEventCallBack::auto_ptr ptr(
-              Params_KeyboardEventCallBack::alloc(EventType::DOWN, flags, key_, keyboardType, false));
-            CALL_FIREKEY_FIRE(ptr);
+            Params_KeyboardEventCallBack params(EventType::DOWN, flags, key_, keyboardType, false);
+            CALL_FIREKEY_FIRE(params);
           }
           {
-            Params_KeyboardEventCallBack::auto_ptr ptr(
-              Params_KeyboardEventCallBack::alloc(EventType::UP, flags, key_, keyboardType, false));
-            CALL_FIREKEY_FIRE(ptr);
+            Params_KeyboardEventCallBack params(EventType::UP, flags, key_, keyboardType, false);
+            CALL_FIREKEY_FIRE(params);
           }
         }
 
