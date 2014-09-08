@@ -55,11 +55,10 @@ namespace org_pqrs_Karabiner {
     for (;;) {
       if (! p) break;
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::UP, Flags(0), p->key, p->keyboardType, false));
-      if (! ptr) break;
+      Params_KeyboardEventCallBack params(EventType::UP, Flags(0), p->key, p->keyboardType, false);
 
-      EventOutputQueue::push(*ptr);
-      IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", (p->key).get(), (p->keyboardType).get());
+      EventOutputQueue::push(params);
+      IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", params.key.get(), params.keyboardType.get());
 
       p = static_cast<Item*>(list_.erase_and_delete(p));
     }
