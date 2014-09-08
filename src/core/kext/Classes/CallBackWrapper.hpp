@@ -12,6 +12,26 @@ namespace org_pqrs_Karabiner {
     friend class EventOutputQueue;
 
   public:
+    Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
+                                 CharCode cc, CharSet cs, OrigCharCode occ, OrigCharSet ocs,
+                                 KeyboardType kt, bool r) :
+      eventType(et), flags(fl), key(kc),
+      charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
+      keyboardType(kt), repeat(r),
+      ex_iskeydown(et.isKeyDownOrModifierDown(kc, fl))
+    {
+      CommonData::increase_alloccount();
+    }
+    Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
+                                 KeyboardType kt, bool r) :
+      eventType(et), flags(fl), key(kc),
+      charCode(0), charSet(0), origCharCode(0), origCharSet(0),
+      keyboardType(kt), repeat(r),
+      ex_iskeydown(et.isKeyDownOrModifierDown(kc, fl))
+    {
+      CommonData::increase_alloccount();
+    }
+
     ~Params_KeyboardEventCallBack(void) {
       CommonData::decrease_alloccount();
     }
@@ -56,14 +76,6 @@ namespace org_pqrs_Karabiner {
     const bool ex_iskeydown;
 
   private:
-    Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
-                                 CharCode cc, CharSet cs, OrigCharCode occ, OrigCharSet ocs,
-                                 KeyboardType kt, bool r) :
-      eventType(et), flags(fl), key(kc),
-      charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
-      keyboardType(kt), repeat(r), ex_iskeydown(et.isKeyDownOrModifierDown(kc, fl)) {
-      CommonData::increase_alloccount();
-    }
   };
 
   class Params_UpdateEventFlagsCallback {
@@ -103,6 +115,25 @@ namespace org_pqrs_Karabiner {
     friend class EventOutputQueue;
 
   public:
+    Params_KeyboardSpecialEventCallback(EventType et, Flags fl, ConsumerKeyCode ckc,
+                                        unsigned int fv, UInt64 g,
+                                        bool r) :
+      eventType(et), flags(fl), key(ckc),
+      flavor(fv), guid(g),
+      repeat(r), ex_iskeydown(et == EventType::DOWN)
+    {
+      CommonData::increase_alloccount();
+    }
+
+    Params_KeyboardSpecialEventCallback(EventType et, Flags fl, ConsumerKeyCode ckc,
+                                        bool r) :
+      eventType(et), flags(fl), key(ckc),
+      flavor(ckc.get()), guid(static_cast<UInt64>(-1)),
+      repeat(r), ex_iskeydown(et == EventType::DOWN)
+    {
+      CommonData::increase_alloccount();
+    }
+
     ~Params_KeyboardSpecialEventCallback(void) {
       CommonData::decrease_alloccount();
     }
@@ -145,16 +176,6 @@ namespace org_pqrs_Karabiner {
     const bool repeat;
 
     const bool ex_iskeydown;
-
-  private:
-    Params_KeyboardSpecialEventCallback(EventType et, Flags fl, ConsumerKeyCode ckc,
-                                        unsigned int fv, UInt64 g,
-                                        bool r) :
-      eventType(et), flags(fl), key(ckc),
-      flavor(fv), guid(g),
-      repeat(r), ex_iskeydown(et == EventType::DOWN) {
-      CommonData::increase_alloccount();
-    }
   };
 
   class Params_RelativePointerEventCallback {
