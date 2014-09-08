@@ -176,17 +176,15 @@ namespace org_pqrs_Karabiner {
     KeyCode::normalizeKey(newkey, newflags, EventType(eventType), newkeyboardtype);
 
     // ------------------------------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType(eventType),
-                                                                                   newflags,
-                                                                                   newkey,
-                                                                                   CharCode(charCode),
-                                                                                   CharSet(charSet),
-                                                                                   OrigCharCode(origCharCode),
-                                                                                   OrigCharSet(origCharSet),
-                                                                                   newkeyboardtype,
-                                                                                   repeat));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& params = *ptr;
+    Params_KeyboardEventCallBack params(EventType(eventType),
+                                        newflags,
+                                        newkey,
+                                        CharCode(charCode),
+                                        CharSet(charSet),
+                                        OrigCharCode(origCharCode),
+                                        OrigCharSet(origCharSet),
+                                        newkeyboardtype,
+                                        repeat);
 
     // ------------------------------------------------------------
     IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
@@ -289,10 +287,10 @@ namespace org_pqrs_Karabiner {
     Params_KeyboardSpecialEventCallback::log(true, EventType(eventType), Flags(flags), ConsumerKeyCode(key), flavor, guid, repeat);
 
     // ------------------------------------------------------------
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(EventType(eventType), Flags(flags), ConsumerKeyCode(key),
-                                                                                                 flavor, guid, repeat));
-    if (! ptr) return;
-    Params_KeyboardSpecialEventCallback& params = *ptr;
+    Params_KeyboardSpecialEventCallback params(EventType(eventType),
+                                               Flags(flags),
+                                               ConsumerKeyCode(key),
+                                               flavor, guid, repeat);
 
     // ------------------------------------------------------------
     IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
