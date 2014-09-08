@@ -234,9 +234,8 @@ namespace org_pqrs_Karabiner {
 
       lastFlags_.remove(flag);
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
-      if (! ptr) continue;
-      EventOutputQueue::push(*ptr);
+      Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
+      EventOutputQueue::push(params);
     }
 
     // KeyDown
@@ -254,9 +253,8 @@ namespace org_pqrs_Karabiner {
 
       lastFlags_.add(flag);
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false));
-      if (! ptr) continue;
-      EventOutputQueue::push(*ptr);
+      Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
+      EventOutputQueue::push(params);
     }
   }
 
@@ -286,12 +284,10 @@ namespace org_pqrs_Karabiner {
     FireModifiers::fire(newflags, params.keyboardType);
 
     if (params.eventType == EventType::DOWN || params.eventType == EventType::UP) {
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, newflags, newkeycode,
-                                                                                     params.charCode, params.charSet, params.origCharCode, params.origCharSet,
-                                                                                     params.keyboardType, params.repeat));
-      if (ptr) {
-        EventOutputQueue::push(*ptr);
-      }
+      Params_KeyboardEventCallBack p(params.eventType, newflags, newkeycode,
+                                     params.charCode, params.charSet, params.origCharCode, params.origCharSet,
+                                     params.keyboardType, params.repeat);
+      EventOutputQueue::push(p);
 
       if (! params.repeat) {
         if (params.eventType == EventType::DOWN) {
@@ -316,10 +312,7 @@ namespace org_pqrs_Karabiner {
 
     FireModifiers::fire();
 
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType, params.flags, params.key, params.repeat));
-    if (ptr) {
-      EventOutputQueue::push(*ptr);
-    }
+    EventOutputQueue::push(params);
   }
 
   // ======================================================================
