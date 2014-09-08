@@ -45,13 +45,11 @@ namespace org_pqrs_Karabiner {
     if (key == KeyCode::VK_NONE) return;
 
     // ------------------------------------------------------------
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
-                                                                                   flags,
-                                                                                   key,
-                                                                                   keyboardType,
-                                                                                   true));
-    if (! ptr) return;
-    Params_KeyboardEventCallBack& params = *ptr;
+    Params_KeyboardEventCallBack params(eventType,
+                                        flags,
+                                        key,
+                                        keyboardType,
+                                        true);
     queue_.push_back(new Item(params));
   }
 
@@ -63,12 +61,10 @@ namespace org_pqrs_Karabiner {
     if (key == ConsumerKeyCode::VK_NONE) return;
 
     // ------------------------------------------------------------
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(eventType,
-                                                                                                 flags,
-                                                                                                 key,
-                                                                                                 true));
-    if (! ptr) return;
-    Params_KeyboardSpecialEventCallback& params = *ptr;
+    Params_KeyboardSpecialEventCallback params(eventType,
+                                               flags,
+                                               key,
+                                               true);
     queue_.push_back(new Item(params));
   }
 
@@ -186,15 +182,12 @@ namespace org_pqrs_Karabiner {
         {
           Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
           if (params) {
-            Params_KeyboardEventCallBack::auto_ptr ptr(
-              Params_KeyboardEventCallBack::alloc(params->eventType,
-                                                  params->flags,
-                                                  params->key,
-                                                  params->keyboardType,
-                                                  queue_.size() == 1 ? true : false));
-            if (ptr) {
-              EventOutputQueue::FireKey::fire(*ptr);
-            }
+            Params_KeyboardEventCallBack pr(params->eventType,
+                                            params->flags,
+                                            params->key,
+                                            params->keyboardType,
+                                            queue_.size() == 1 ? true : false);
+            EventOutputQueue::FireKey::fire(pr);
           }
           break;
         }
