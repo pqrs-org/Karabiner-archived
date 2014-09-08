@@ -121,23 +121,19 @@ namespace org_pqrs_Karabiner {
       {
         Flags flags = FlagStatus::globalFlagStatus().makeFlags();
 
-#define CALL_FIRECONSUMER_FIRE(ptr)             \
-  if (ptr) {                                    \
-    EventOutputQueue::FireConsumer::fire(*ptr); \
-    if (add_to_keyrepeat) {                     \
-      KeyboardRepeat::primitive_add(*ptr);      \
-    }                                           \
+#define CALL_FIRECONSUMER_FIRE(params)          \
+  EventOutputQueue::FireConsumer::fire(params); \
+  if (add_to_keyrepeat) {                       \
+    KeyboardRepeat::primitive_add(params);      \
   }                                             \
 
         {
-          Params_KeyboardSpecialEventCallback::auto_ptr ptr(
-            Params_KeyboardSpecialEventCallback::alloc(EventType::DOWN, flags, consumer_, false));
-          CALL_FIRECONSUMER_FIRE(ptr);
+          Params_KeyboardSpecialEventCallback params(EventType::DOWN, flags, consumer_, false);
+          CALL_FIRECONSUMER_FIRE(params);
         }
         {
-          Params_KeyboardSpecialEventCallback::auto_ptr ptr(
-            Params_KeyboardSpecialEventCallback::alloc(EventType::UP, flags, consumer_, false));
-          CALL_FIRECONSUMER_FIRE(ptr);
+          Params_KeyboardSpecialEventCallback params(EventType::UP, flags, consumer_, false);
+          CALL_FIRECONSUMER_FIRE(params);
         }
 
 #undef CALL_FIRECONSUMER_FIRE
