@@ -39,17 +39,6 @@ namespace org_pqrs_Karabiner {
     // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_KeyboardEventCallBack);
 
-    static Params_KeyboardEventCallBack* alloc(EventType et, Flags fl, KeyCode kc,
-                                               CharCode cc, CharSet cs, OrigCharCode occ, OrigCharSet ocs,
-                                               KeyboardType kt, bool r) {
-      return new Params_KeyboardEventCallBack(et, fl, kc, cc, cs, occ, ocs, kt, r);
-    }
-    static Params_KeyboardEventCallBack* alloc(EventType et, Flags fl, KeyCode kc,
-                                               KeyboardType kt, bool r) {
-      return new Params_KeyboardEventCallBack(et, fl, kc,
-                                              CharCode(0), CharSet(0), OrigCharCode(0), OrigCharSet(0),
-                                              kt, r);
-    }
     static Params_KeyboardEventCallBack* alloc(const Params_KeyboardEventCallBack& p) {
       return new Params_KeyboardEventCallBack(p.eventType, p.flags, p.key,
                                               p.charCode, p.charSet, p.origCharCode, p.origCharSet,
