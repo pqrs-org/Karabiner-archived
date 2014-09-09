@@ -20,24 +20,6 @@ namespace org_pqrs_Karabiner {
         }
       }
 
-      Item(ModifierFlag modifierFlag, const uint32_t* name, size_t size) : modifierFlag_(modifierFlag) {
-        if (name) {
-          char* tmp = new char[size + 1];
-          if (! tmp) {
-            IOLOG_ERROR("ModifierName: Failed to allocate: %p, %ld", name, size);
-          } else {
-            for (size_t i = 0; i < size; ++i) {
-              tmp[i] = name[i];
-            }
-            tmp[size] = '\0';
-
-            pqrs::strlcpy_utf8::strlcpy(name_, tmp, sizeof(name_));
-
-            delete[] tmp;
-          }
-        }
-      }
-
       ModifierFlag getModifierFlag(void) const { return modifierFlag_; }
       const char* getName(void) const { return name_; }
 
@@ -56,7 +38,11 @@ namespace org_pqrs_Karabiner {
     }
 
     static void clearVirtualModifiers(void);
-    static void registerVirtualModifier(ModifierFlag modifierFlag, const uint32_t* name, size_t size);
+
+    static void registerVirtualModifier(ModifierFlag modifierFlag, const char* name) {
+      items_.push_back(Item(modifierFlag, name));
+    }
+
     static const char* getName(ModifierFlag modifierFlag);
 
   private:

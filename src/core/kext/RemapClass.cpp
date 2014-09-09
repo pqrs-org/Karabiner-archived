@@ -268,13 +268,9 @@ namespace org_pqrs_Karabiner {
           if (statusmessage_) {
             delete[] statusmessage_;
           }
-          statusmessage_ = new char[size];
-          if (statusmessage_) {
-            for (size_t i = 0; i < size - 1; ++i) {
-              statusmessage_[i] = p[i + 1];
-            }
-            statusmessage_[size - 1] = '\0';
-          }
+          size_t length = size * sizeof(uint32_t);
+          statusmessage_ = new char[length];
+          pqrs::strlcpy_utf8::strlcpy(statusmessage_, reinterpret_cast<const char*>(p + 1), length);
 
         } else if (type == BRIDGE_MODIFIERNAME) {
           if (size < 3) {
@@ -282,7 +278,7 @@ namespace org_pqrs_Karabiner {
             return;
           } else {
             unsigned int modifierFlag = p[1];
-            ModifierName::registerVirtualModifier(ModifierFlag(modifierFlag), p + 2, size - 3);
+            ModifierName::registerVirtualModifier(ModifierFlag(modifierFlag), reinterpret_cast<const char*>(p + 2));
           }
 
         } else if (type == BRIDGE_VK_MODIFIER) {
