@@ -291,7 +291,7 @@ TEST(pqrs_xml_compiler, reload)
 
     // <autogen>__ShowStatusMessage__ A B C D E F G -- </autogen>
 
-    expected.push_back(17); // count
+    expected.push_back(18); // count
     expected.push_back(BRIDGE_STATUSMESSAGE);
     expected.push_back(65); // A
     expected.push_back(32); // space
@@ -309,6 +309,7 @@ TEST(pqrs_xml_compiler, reload)
     expected.push_back(32); // space
     expected.push_back(45); // -
     expected.push_back(45); // -
+    expected.push_back(0);  // \0
 
     EXPECT_EQ(expected, actual);
   }
@@ -321,7 +322,7 @@ TEST(pqrs_xml_compiler, reload)
 
     // <autogen>--ShowStatusMessage-- O L D 1 2 3 4 -- </autogen>
 
-    expected.push_back(17); // count
+    expected.push_back(18); // count
     expected.push_back(BRIDGE_STATUSMESSAGE);
     expected.push_back(79); // O
     expected.push_back(32); // space
@@ -339,6 +340,7 @@ TEST(pqrs_xml_compiler, reload)
     expected.push_back(32); // space
     expected.push_back(45); // -
     expected.push_back(45); // -
+    expected.push_back(0);  // \0
 
     EXPECT_EQ(expected, actual);
   }

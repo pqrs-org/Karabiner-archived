@@ -292,12 +292,14 @@ namespace pqrs {
         boost::trim(params);
 
         size_t length = params.size();
-        remapclasses_initialize_vector_.push_back(static_cast<uint32_t>(length + 1));
+        remapclasses_initialize_vector_.push_back(1 + static_cast<uint32_t>(length + 1));
         remapclasses_initialize_vector_.push_back(BRIDGE_STATUSMESSAGE);
 
         for (const auto& c : params) {
           remapclasses_initialize_vector_.push_back(c);
         }
+        remapclasses_initialize_vector_.push_back('\0');
+
         // no need filter_vector
         return;
       }
