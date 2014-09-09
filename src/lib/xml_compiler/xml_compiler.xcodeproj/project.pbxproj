@@ -212,6 +212,7 @@
 				HEADER_SEARCH_PATHS = (
 					include,
 					../../bridge/include,
+					../strlcpy_utf8,
 					/usr/local/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;

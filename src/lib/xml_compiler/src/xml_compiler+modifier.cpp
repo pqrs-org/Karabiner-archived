@@ -47,13 +47,13 @@ namespace pqrs {
             symbol_map_.add("KeyCode", std::string("VK_STICKY_") + name + "_FORCE_OFF"));
 
           if ((it.second)->get_notify()) {
-            remapclasses_initialize_vector_.push_back(2 + static_cast<uint32_t>(name.length()) + 1);
+            size_t index = remapclasses_initialize_vector_.size();
+            remapclasses_initialize_vector_.push_back(0); // The count will be updated after push_string.
             remapclasses_initialize_vector_.push_back(BRIDGE_MODIFIERNAME);
             remapclasses_initialize_vector_.push_back(it.first);
-            for (size_t i = 0; i < name.length(); ++i) {
-              remapclasses_initialize_vector_.push_back(name[i]);
-            }
-            remapclasses_initialize_vector_.push_back('\0');
+
+            size_t count = remapclasses_initialize_vector_.push_string(name);
+            remapclasses_initialize_vector_.update(index, static_cast<uint32_t>(count + 2));
           }
         }
       }

@@ -1,6 +1,7 @@
 #include "bridge.h"
 #include "pqrs/vector.hpp"
 #include "pqrs/xml_compiler.hpp"
+#include "strlcpy_utf8.hpp"
 
 namespace pqrs {
   xml_compiler::remapclasses_initialize_vector::remapclasses_initialize_vector(void)
@@ -94,6 +95,25 @@ namespace pqrs {
       max_config_index_ = config_index;
     }
     is_config_index_added_[config_index] = true;
+  }
+
+  size_t
+  xml_compiler::remapclasses_initialize_vector::push_string(const std::string& string)
+  {
+    size_t length = string.size() / sizeof(uint32_t) + 1;
+
+    uint32_t* buffer = new uint32_t[length];
+    if (! buffer) return 0;
+
+    memset(buffer, 0, length * sizeof(uint32_t));
+    pqrs::strlcpy_utf8::strlcpy(reinterpret_cast<char*>(buffer), string.c_str(), length * sizeof(uint32_t));
+
+    for (size_t i = 0; i < length; ++i) {
+      push_back(buffer[i]);
+    }
+    delete[] buffer;
+
+    return length;
   }
 
   void
