@@ -291,25 +291,17 @@ TEST(pqrs_xml_compiler, reload)
 
     // <autogen>__ShowStatusMessage__ A B C D E F G -- </autogen>
 
-    expected.push_back(18); // count
+    uint32_t buffer[5];
+    memset(&buffer, 0, sizeof(buffer));
+    strlcpy(reinterpret_cast<char*>(buffer), "A B C D E F G --", sizeof(buffer));
+
+    expected.push_back(6); // count
     expected.push_back(BRIDGE_STATUSMESSAGE);
-    expected.push_back(65); // A
-    expected.push_back(32); // space
-    expected.push_back(66); // B
-    expected.push_back(32); // space
-    expected.push_back(67); // C
-    expected.push_back(32); // space
-    expected.push_back(68); // D
-    expected.push_back(32); // space
-    expected.push_back(69); // E
-    expected.push_back(32); // space
-    expected.push_back(70); // F
-    expected.push_back(32); // space
-    expected.push_back(71); // G
-    expected.push_back(32); // space
-    expected.push_back(45); // -
-    expected.push_back(45); // -
-    expected.push_back(0);  // \0
+    expected.push_back(buffer[0]); // "A B "
+    expected.push_back(buffer[1]); // "C D "
+    expected.push_back(buffer[2]); // "E F "
+    expected.push_back(buffer[3]); // "G --"
+    expected.push_back(buffer[4]); // \0
 
     EXPECT_EQ(expected, actual);
   }
@@ -320,27 +312,19 @@ TEST(pqrs_xml_compiler, reload)
 
     std::vector<uint32_t> expected;
 
-    // <autogen>--ShowStatusMessage-- O L D 1 2 3 4 -- </autogen>
+    // <autogen>--ShowStatusMessage-- O L D 1 2 3 4 - -- </autogen>
 
-    expected.push_back(18); // count
+    uint32_t buffer[6];
+    memset(&buffer, 0, sizeof(buffer));
+    strlcpy(reinterpret_cast<char*>(buffer), "O L D 1 2 3 4 - --", sizeof(buffer));
+
+    expected.push_back(6); // count
     expected.push_back(BRIDGE_STATUSMESSAGE);
-    expected.push_back(79); // O
-    expected.push_back(32); // space
-    expected.push_back(76); // L
-    expected.push_back(32); // space
-    expected.push_back(68); // D
-    expected.push_back(32); // space
-    expected.push_back(49); // 1
-    expected.push_back(32); // space
-    expected.push_back(50); // 2
-    expected.push_back(32); // space
-    expected.push_back(51); // 3
-    expected.push_back(32); // space
-    expected.push_back(52); // 4
-    expected.push_back(32); // space
-    expected.push_back(45); // -
-    expected.push_back(45); // -
-    expected.push_back(0);  // \0
+    expected.push_back(buffer[0]); // "O L "
+    expected.push_back(buffer[1]); // "D 1 "
+    expected.push_back(buffer[2]); // "2 3 "
+    expected.push_back(buffer[3]); // "4 - "
+    expected.push_back(buffer[4]); // "--" \0\0
 
     EXPECT_EQ(expected, actual);
   }

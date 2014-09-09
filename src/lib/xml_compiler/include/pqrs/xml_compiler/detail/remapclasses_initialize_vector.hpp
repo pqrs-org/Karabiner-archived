@@ -25,6 +25,8 @@ public:
   size_t size(void) const { return data_.size(); }
   void update(size_t index, uint32_t v) { data_[index] = v; }
 
+  size_t push_string(const std::string& string);
+
   void freeze(void);
 
 private:

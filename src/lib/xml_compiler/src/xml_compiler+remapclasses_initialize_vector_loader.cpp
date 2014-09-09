@@ -291,14 +291,12 @@ namespace pqrs {
         std::string params = autogen.substr(symbol.length());
         boost::trim(params);
 
-        size_t length = params.size();
-        remapclasses_initialize_vector_.push_back(1 + static_cast<uint32_t>(length + 1));
+        size_t index = remapclasses_initialize_vector_.size();
+        remapclasses_initialize_vector_.push_back(0); // The count will be updated after push_string.
         remapclasses_initialize_vector_.push_back(BRIDGE_STATUSMESSAGE);
 
-        for (const auto& c : params) {
-          remapclasses_initialize_vector_.push_back(c);
-        }
-        remapclasses_initialize_vector_.push_back('\0');
+        size_t count = remapclasses_initialize_vector_.push_string(params);
+        remapclasses_initialize_vector_.update(index, static_cast<uint32_t>(count + 1));
 
         // no need filter_vector
         return;
