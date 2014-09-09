@@ -20,11 +20,10 @@ namespace org_pqrs_Karabiner {
       }
     }
 
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, params.flags, newkeycode_,
-                                                                                   params.keyboardType, params.repeat));
-    if (ptr) {
-      EventOutputQueue::FireKey::fire(*ptr);
-    }
+    Params_KeyboardEventCallBack p(params.eventType, params.flags, newkeycode_,
+                                   params.keyboardType, params.repeat);
+    EventOutputQueue::FireKey::fire(p);
+
     return true;
   }
 }

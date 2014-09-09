@@ -42,18 +42,16 @@ namespace org_pqrs_Karabiner {
     if (active_ && params.ex_iskeydown) {
       active_ = false;
 
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType_,
-                                                                                     params.flags,
-                                                                                     params.key,
-                                                                                     params.charCode,
-                                                                                     params.charSet,
-                                                                                     params.origCharCode,
-                                                                                     params.origCharSet,
-                                                                                     params.keyboardType,
-                                                                                     params.repeat));
-      if (ptr) {
-        EventOutputQueue::FireKey::fire(*ptr);
-      }
+      Params_KeyboardEventCallBack p(eventType_,
+                                     params.flags,
+                                     params.key,
+                                     params.charCode,
+                                     params.charSet,
+                                     params.origCharCode,
+                                     params.origCharSet,
+                                     params.keyboardType,
+                                     params.repeat);
+      EventOutputQueue::FireKey::fire(p);
 
       // We need to register a key for changedKeyCodes_ after EventOutputQueue::FireKey::fire
       // because changedKeyCodes_ blocks key events.
