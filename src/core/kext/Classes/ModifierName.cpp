@@ -20,12 +20,6 @@ namespace org_pqrs_Karabiner {
     items_.push_back(Item(ModifierFlag::FN,        "fn"));
   }
 
-  void
-  ModifierName::registerVirtualModifier(ModifierFlag modifierFlag, const uint32_t* name, size_t size)
-  {
-    items_.push_back(Item(modifierFlag, name, size));
-  }
-
   const char*
   ModifierName::getName(ModifierFlag modifierFlag)
   {
