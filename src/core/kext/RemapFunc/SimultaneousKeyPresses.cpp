@@ -274,10 +274,8 @@ namespace org_pqrs_Karabiner {
       }
 
       // ----------------------------------------
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType, flags, key, CommonData::getcurrent_keyboardType(), false));
-      if (! ptr) return;
+      Params_KeyboardEventCallBack params(eventType, flags, key, CommonData::getcurrent_keyboardType(), false);
 
-      Params_KeyboardEventCallBack& params = *ptr;
       bool retainFlagStatusTemporaryCount = false;
       bool push_back = false;
       EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceIdentifier, push_back);

@@ -319,13 +319,11 @@ namespace org_pqrs_Karabiner {
       }
 
       // ----------------------------------------
-      Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(eventType,
-                                                                                     FlagStatus::globalFlagStatus().makeFlags(),
-                                                                                     KeyCode::VK_PSEUDO_KEY,
-                                                                                     CommonData::getcurrent_keyboardType(),
-                                                                                     false));
-      if (! ptr) return false;
-      Params_KeyboardEventCallBack& params = *ptr;
+      Params_KeyboardEventCallBack params(eventType,
+                                          FlagStatus::globalFlagStatus().makeFlags(),
+                                          KeyCode::VK_PSEUDO_KEY,
+                                          CommonData::getcurrent_keyboardType(),
+                                          false);
 
       ParamsUnion paramsUnion(params);
       RemapParams rp(paramsUnion);
