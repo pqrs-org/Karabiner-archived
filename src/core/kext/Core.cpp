@@ -191,19 +191,17 @@ namespace org_pqrs_Karabiner {
 
       // ------------------------------------------------------------
       if (! remapParams.isremapped) {
-        Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params->eventType,
-                                                                                       FlagStatus::globalFlagStatus().makeFlags(),
-                                                                                       params->key,
-                                                                                       params->charCode,
-                                                                                       params->charSet,
-                                                                                       params->origCharCode,
-                                                                                       params->origCharSet,
-                                                                                       params->keyboardType,
-                                                                                       false));
-        if (ptr) {
-          KeyboardRepeat::set(*ptr);
-          EventOutputQueue::FireKey::fire(*ptr);
-        }
+        Params_KeyboardEventCallBack p(params->eventType,
+                                       FlagStatus::globalFlagStatus().makeFlags(),
+                                       params->key,
+                                       params->charCode,
+                                       params->charSet,
+                                       params->origCharCode,
+                                       params->origCharSet,
+                                       params->keyboardType,
+                                       false);
+        KeyboardRepeat::set(p);
+        EventOutputQueue::FireKey::fire(p);
       }
 
       resetWhenNumHeldDownKeysIsZero();
