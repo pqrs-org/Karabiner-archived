@@ -10,11 +10,10 @@ namespace org_pqrs_Karabiner {
   {
     if (params.key != KeyCode::VK_JIS_BACKSLASH) return false;
 
-    Params_KeyboardEventCallBack::auto_ptr ptr(Params_KeyboardEventCallBack::alloc(params.eventType, params.flags, KeyCode::BACKSLASH,
-                                                                                   KeyboardType::MACBOOK, params.repeat));
-    if (ptr) {
-      EventOutputQueue::FireKey::fire(*ptr);
-    }
+    Params_KeyboardEventCallBack p(params.eventType, params.flags, KeyCode::BACKSLASH,
+                                   KeyboardType::MACBOOK, params.repeat);
+    EventOutputQueue::FireKey::fire(p);
+
     return true;
   }
 }
