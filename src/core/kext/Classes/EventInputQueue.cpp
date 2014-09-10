@@ -363,26 +363,23 @@ namespace org_pqrs_Karabiner {
     for (int i = 0; i < ButtonStatus::MAXNUM; ++i) {
       PointingButton btn(1 << i);
       if (justPressed.isOn(btn)) {
-        Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, true));
-        if (! ptr) return;
+        Params_RelativePointerEventCallback params(buttons, 0, 0, btn, true);
         bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-        enqueue_(*ptr, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+        enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
       }
       if (justReleased.isOn(btn)) {
-        Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, 0, 0, btn, false));
-        if (! ptr) return;
+        Params_RelativePointerEventCallback params(buttons, 0, 0, btn, false);
         bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-        enqueue_(*ptr, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+        enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
       }
     }
     // If (dx == 0 && dy == 0), the event is either needless event or just pressing/releasing buttons event.
     // About just pressing/releasing buttons event, we handled these in the above processes.
     // So, we can drop (dx == 0 && dy == 0) events in here.
     if (dx != 0 || dy != 0) {
-      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(buttons, dx, dy, PointingButton::NONE, false));
-      if (! ptr) return;
+      Params_RelativePointerEventCallback params(buttons, dx, dy, PointingButton::NONE, false);
       bool retainFlagStatusTemporaryCount = true;
-      enqueue_(*ptr, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+      enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
     }
 
     setTimer();

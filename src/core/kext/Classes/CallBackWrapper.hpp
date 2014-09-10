@@ -155,16 +155,20 @@ namespace org_pqrs_Karabiner {
     friend class EventOutputQueue;
 
   public:
+    Params_RelativePointerEventCallback(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) :
+      buttons(bt),
+      dx(x), dy(y),
+      ex_button(ex_btn), ex_isbuttondown(ex_isdown)
+    {
+      CommonData::increase_alloccount();
+    }
+
     ~Params_RelativePointerEventCallback(void) {
       CommonData::decrease_alloccount();
     }
 
     // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
-
-    static Params_RelativePointerEventCallback* alloc(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) {
-      return new Params_RelativePointerEventCallback(bt, x, y, ex_btn, ex_isdown);
-    }
 
     static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
       return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_button, p.ex_isbuttondown);
@@ -187,12 +191,8 @@ namespace org_pqrs_Karabiner {
     // ex_isbuttondown indicates "pressed" or "released".
     const PointingButton ex_button;
     const bool ex_isbuttondown;
-
-  private:
-    Params_RelativePointerEventCallback(Buttons bt, int x, int y, PointingButton ex_btn, bool ex_isdown) : buttons(bt), dx(x), dy(y), ex_button(ex_btn), ex_isbuttondown(ex_isdown) {
-      CommonData::increase_alloccount();
-    }
   };
+
   class Params_ScrollWheelEventCallback {
     friend class EventOutputQueue;
 
