@@ -281,8 +281,6 @@ namespace org_pqrs_Karabiner {
     }
 
     const int milliseconds;
-
-  private:
   };
 }
 

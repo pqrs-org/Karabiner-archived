@@ -257,10 +257,8 @@ namespace org_pqrs_Karabiner {
     }
 
     if (needUpdateEventFlagsEvent && params.eventType == EventType::DOWN) {
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(params.flags));
-      if (ptr) {
-        apply(*ptr);
-      }
+      Params_UpdateEventFlagsCallback p(params.flags);
+      apply(p);
     }
 
     // ----------------------------------------
@@ -283,10 +281,9 @@ namespace org_pqrs_Karabiner {
     if (needUpdateEventFlagsEvent && params.eventType == EventType::UP) {
       Flags stripped(params.flags);
       stripped.stripNUMPAD();
-      Params_UpdateEventFlagsCallback::auto_ptr ptr(Params_UpdateEventFlagsCallback::alloc(stripped));
-      if (ptr) {
-        apply(*ptr);
-      }
+
+      Params_UpdateEventFlagsCallback p(stripped);
+      apply(p);
     }
 
     // ----------------------------------------
