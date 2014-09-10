@@ -197,6 +197,17 @@ namespace org_pqrs_Karabiner {
     friend class EventOutputQueue;
 
   public:
+    Params_ScrollWheelEventCallback(short da1, short da2, short da3,
+                                    IOFixed fd1, IOFixed fd2, IOFixed fd3,
+                                    SInt32 pd1, SInt32 pd2, SInt32 pd3,
+                                    SInt32 op) :
+      deltaAxis1(da1), deltaAxis2(da2), deltaAxis3(da3),
+      fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
+      pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
+      options(op) {
+      CommonData::increase_alloccount();
+    }
+
     ~Params_ScrollWheelEventCallback(void) {
       CommonData::decrease_alloccount();
     }
@@ -256,18 +267,6 @@ namespace org_pqrs_Karabiner {
     const SInt32 pointDelta2;
     const SInt32 pointDelta3;
     const SInt32 options;
-
-  private:
-    Params_ScrollWheelEventCallback(short da1, short da2, short da3,
-                                    IOFixed fd1, IOFixed fd2, IOFixed fd3,
-                                    SInt32 pd1, SInt32 pd2, SInt32 pd3,
-                                    SInt32 op) :
-      deltaAxis1(da1), deltaAxis2(da2), deltaAxis3(da3),
-      fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
-      pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
-      options(op) {
-      CommonData::increase_alloccount();
-    }
   };
 
   // This params is virtual parameter for EventOutputQueue.

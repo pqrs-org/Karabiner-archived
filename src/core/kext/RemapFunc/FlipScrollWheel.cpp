@@ -59,13 +59,11 @@ namespace org_pqrs_Karabiner {
         pd1 = -pd1;
       }
 
-      Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(da1, da2, da3,
-                                                                                           fd1, fd2, fd3,
-                                                                                           pd1, pd2, pd3,
-                                                                                           params->options));
-      if (ptr) {
-        EventOutputQueue::FireScrollWheel::fire(*ptr);
-      }
+      Params_ScrollWheelEventCallback p(da1, da2, da3,
+                                        fd1, fd2, fd3,
+                                        pd1, pd2, pd3,
+                                        params->options);
+      EventOutputQueue::FireScrollWheel::fire(p);
 
       return true;
     }
