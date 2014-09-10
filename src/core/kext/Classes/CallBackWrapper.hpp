@@ -22,6 +22,7 @@ namespace org_pqrs_Karabiner {
     {
       CommonData::increase_alloccount();
     }
+
     Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
                                  KeyboardType kt, bool r) :
       eventType(et), flags(fl), key(kc),
@@ -63,14 +64,16 @@ namespace org_pqrs_Karabiner {
     const bool repeat;
 
     const bool ex_iskeydown;
-
-  private:
   };
 
   class Params_UpdateEventFlagsCallback {
     friend class EventOutputQueue;
 
   public:
+    Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {
+      CommonData::increase_alloccount();
+    }
+
     ~Params_UpdateEventFlagsCallback(void) {
       CommonData::decrease_alloccount();
     }
@@ -78,9 +81,6 @@ namespace org_pqrs_Karabiner {
     // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_UpdateEventFlagsCallback);
 
-    static Params_UpdateEventFlagsCallback* alloc(Flags fl) {
-      return new Params_UpdateEventFlagsCallback(fl);
-    }
     static Params_UpdateEventFlagsCallback* alloc(const Params_UpdateEventFlagsCallback& p) {
       return new Params_UpdateEventFlagsCallback(p.flags);
     }
@@ -93,11 +93,6 @@ namespace org_pqrs_Karabiner {
     }
 
     const Flags flags;
-
-  private:
-    Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {
-      CommonData::increase_alloccount();
-    }
   };
 
   class Params_KeyboardSpecialEventCallback {
@@ -129,17 +124,6 @@ namespace org_pqrs_Karabiner {
 
     // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_KeyboardSpecialEventCallback);
-
-    static Params_KeyboardSpecialEventCallback* alloc(EventType et, Flags fl, ConsumerKeyCode ckc,
-                                                      unsigned int fv, UInt64 g,
-                                                      bool r) {
-      return new Params_KeyboardSpecialEventCallback(et, fl, ckc, fv, g, r);
-    }
-
-    static Params_KeyboardSpecialEventCallback* alloc(EventType et, Flags fl, ConsumerKeyCode ckc,
-                                                      bool r) {
-      return new Params_KeyboardSpecialEventCallback(et, fl, ckc, ckc.get(), static_cast<UInt64>(-1), r);
-    }
 
     static Params_KeyboardSpecialEventCallback* alloc(const Params_KeyboardSpecialEventCallback& p) {
       return new Params_KeyboardSpecialEventCallback(p.eventType,
