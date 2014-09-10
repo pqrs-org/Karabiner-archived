@@ -55,19 +55,11 @@ namespace org_pqrs_Karabiner {
         // We should not drop events which vertical values are 0
         // because it might cause a vertical scroll stuck in some apps (Adobe Photoshop, Illustrator).
 
-        Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(params->deltaAxis1,
-                                                                                             0,
-                                                                                             0,
-                                                                                             params->fixedDelta1,
-                                                                                             0,
-                                                                                             0,
-                                                                                             params->pointDelta1,
-                                                                                             0,
-                                                                                             0,
-                                                                                             params->options));
-        if (ptr) {
-          EventOutputQueue::FireScrollWheel::fire(*ptr);
-        }
+        Params_ScrollWheelEventCallback p(params->deltaAxis1, 0, 0,
+                                          params->fixedDelta1, 0, 0,
+                                          params->pointDelta1, 0, 0,
+                                          params->options);
+        EventOutputQueue::FireScrollWheel::fire(p);
       }
 
       return true;

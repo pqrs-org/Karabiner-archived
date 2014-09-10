@@ -402,12 +402,11 @@ namespace org_pqrs_Karabiner {
     const int kScrollTypeContinuous_ = 0x0001;
     int options = kScrollTypeContinuous_;
 
-    Params_ScrollWheelEventCallback::auto_ptr ptr(Params_ScrollWheelEventCallback::alloc(deltaAxis1,  deltaAxis2, 0,
-                                                                                         fixedDelta1, fixedDelta2, 0,
-                                                                                         pointDelta1, pointDelta2, 0,
-                                                                                         options));
-    if (! ptr) return;
-    EventOutputQueue::FireScrollWheel::fire(*ptr);
+    Params_ScrollWheelEventCallback params(deltaAxis1,  deltaAxis2, 0,
+                                           fixedDelta1, fixedDelta2, 0,
+                                           pointDelta1, pointDelta2, 0,
+                                           options);
+    EventOutputQueue::FireScrollWheel::fire(params);
   }
 
   // ======================================================================
