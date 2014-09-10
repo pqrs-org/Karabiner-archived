@@ -27,13 +27,11 @@ namespace org_pqrs_Karabiner {
 
     if (! key.isRepeatable() && params.repeat) return true;
 
-    Params_KeyboardSpecialEventCallback::auto_ptr ptr(Params_KeyboardSpecialEventCallback::alloc(params.eventType,
-                                                                                                 params.flags,
-                                                                                                 key,
-                                                                                                 params.repeat));
-    if (ptr) {
-      EventOutputQueue::FireConsumer::fire(*ptr);
-    }
+    Params_KeyboardSpecialEventCallback p(params.eventType,
+                                          params.flags,
+                                          key,
+                                          params.repeat);
+    EventOutputQueue::FireConsumer::fire(p);
 
     return true;
   }
