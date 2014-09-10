@@ -47,7 +47,6 @@
 		346EE06C1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */; };
 		3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3472914014CEFC64006586F5 /* VK_WAIT.cpp */; };
 		3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3472914114CEFC64006586F5 /* VK_WAIT.hpp */; };
-		34779356185B1FA800B3EF06 /* auto_ptr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779329185B1FA800B3EF06 /* auto_ptr.hpp */; };
 		34779357185B1FA800B3EF06 /* ButtonStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477932A185B1FA800B3EF06 /* ButtonStatus.cpp */; };
 		34779358185B1FA800B3EF06 /* ButtonStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477932B185B1FA800B3EF06 /* ButtonStatus.hpp */; };
 		3477935A185B1FA800B3EF06 /* CallBackWrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477932D185B1FA800B3EF06 /* CallBackWrapper.hpp */; };
@@ -203,7 +202,6 @@
 		346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ElapsedTimeSinceLastPressedFilter.hpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.hpp; sourceTree = "<group>"; };
 		3472914014CEFC64006586F5 /* VK_WAIT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_WAIT.cpp; path = VirtualKey/VK_WAIT.cpp; sourceTree = "<group>"; };
 		3472914114CEFC64006586F5 /* VK_WAIT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_WAIT.hpp; path = VirtualKey/VK_WAIT.hpp; sourceTree = "<group>"; };
-		34779329185B1FA800B3EF06 /* auto_ptr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = auto_ptr.hpp; path = Classes/auto_ptr.hpp; sourceTree = "<group>"; };
 		3477932A185B1FA800B3EF06 /* ButtonStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ButtonStatus.cpp; path = Classes/ButtonStatus.cpp; sourceTree = "<group>"; };
 		3477932B185B1FA800B3EF06 /* ButtonStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ButtonStatus.hpp; path = Classes/ButtonStatus.hpp; sourceTree = "<group>"; };
 		3477932D185B1FA800B3EF06 /* CallBackWrapper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CallBackWrapper.hpp; path = Classes/CallBackWrapper.hpp; sourceTree = "<group>"; };
@@ -444,7 +442,6 @@
 		34779328185B1F8500B3EF06 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				34779329185B1FA800B3EF06 /* auto_ptr.hpp */,
 				3477932A185B1FA800B3EF06 /* ButtonStatus.cpp */,
 				3477932B185B1FA800B3EF06 /* ButtonStatus.hpp */,
 				3477932D185B1FA800B3EF06 /* CallBackWrapper.hpp */,
@@ -601,7 +598,6 @@
 				34CAB8571261195200C3FFCB /* RemapFilterBase.hpp in Headers */,
 				34B5E8A71261284200DCFB0D /* ApplicationFilter.hpp in Headers */,
 				34B5E8B61261960700DCFB0D /* InputSourceFilter.hpp in Headers */,
-				34779356185B1FA800B3EF06 /* auto_ptr.hpp in Headers */,
 				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
 				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
 				348077B818BCEEDC00314700 /* DeltaBuffer.hpp in Headers */,

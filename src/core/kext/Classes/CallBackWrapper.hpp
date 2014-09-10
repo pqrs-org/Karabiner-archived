@@ -5,7 +5,6 @@
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
 #include "Types.hpp"
-#include "auto_ptr.hpp"
 
 namespace org_pqrs_Karabiner {
   class Params_KeyboardEventCallBack {
@@ -36,9 +35,6 @@ namespace org_pqrs_Karabiner {
     ~Params_KeyboardEventCallBack(void) {
       CommonData::decrease_alloccount();
     }
-
-    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
-    DECLARE_AUTO_PTR(Params_KeyboardEventCallBack);
 
     static Params_KeyboardEventCallBack* alloc(const Params_KeyboardEventCallBack& p) {
       return new Params_KeyboardEventCallBack(p.eventType, p.flags, p.key,
@@ -77,9 +73,6 @@ namespace org_pqrs_Karabiner {
     ~Params_UpdateEventFlagsCallback(void) {
       CommonData::decrease_alloccount();
     }
-
-    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
-    DECLARE_AUTO_PTR(Params_UpdateEventFlagsCallback);
 
     static Params_UpdateEventFlagsCallback* alloc(const Params_UpdateEventFlagsCallback& p) {
       return new Params_UpdateEventFlagsCallback(p.flags);
@@ -121,9 +114,6 @@ namespace org_pqrs_Karabiner {
     ~Params_KeyboardSpecialEventCallback(void) {
       CommonData::decrease_alloccount();
     }
-
-    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
-    DECLARE_AUTO_PTR(Params_KeyboardSpecialEventCallback);
 
     static Params_KeyboardSpecialEventCallback* alloc(const Params_KeyboardSpecialEventCallback& p) {
       return new Params_KeyboardSpecialEventCallback(p.eventType,
@@ -167,9 +157,6 @@ namespace org_pqrs_Karabiner {
       CommonData::decrease_alloccount();
     }
 
-    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
-    DECLARE_AUTO_PTR(Params_RelativePointerEventCallback);
-
     static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
       return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_button, p.ex_isbuttondown);
     }
@@ -211,9 +198,6 @@ namespace org_pqrs_Karabiner {
     ~Params_ScrollWheelEventCallback(void) {
       CommonData::decrease_alloccount();
     }
-
-    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
-    DECLARE_AUTO_PTR(Params_ScrollWheelEventCallback);
 
     static Params_ScrollWheelEventCallback* alloc(const Params_ScrollWheelEventCallback& p) {
       return new Params_ScrollWheelEventCallback(p.deltaAxis1,
@@ -272,9 +256,6 @@ namespace org_pqrs_Karabiner {
     ~Params_Wait(void) {
       CommonData::decrease_alloccount();
     }
-
-    // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
-    DECLARE_AUTO_PTR(Params_Wait);
 
     static Params_Wait* alloc(const Params_Wait& p) {
       return new Params_Wait(p.milliseconds);
