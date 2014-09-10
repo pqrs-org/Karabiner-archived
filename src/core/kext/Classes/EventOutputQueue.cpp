@@ -354,19 +354,13 @@ namespace org_pqrs_Karabiner {
     if (lastButtons_ != toButtons) {
       lastButtons_ = toButtons;
 
-      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, 0, 0, PointingButton::NONE, false));
-      if (! ptr) return;
-      Params_RelativePointerEventCallback& params = *ptr;
-
+      Params_RelativePointerEventCallback params(toButtons, 0, 0, PointingButton::NONE, false);
       EventOutputQueue::push(params);
     }
 
     // Sending cursor
     if (dx != 0 || dy != 0) {
-      Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(toButtons, dx, dy, PointingButton::NONE, false));
-      if (! ptr) return;
-      Params_RelativePointerEventCallback& params = *ptr;
-
+      Params_RelativePointerEventCallback params(toButtons, dx, dy, PointingButton::NONE, false);
       EventOutputQueue::push(params);
     }
 

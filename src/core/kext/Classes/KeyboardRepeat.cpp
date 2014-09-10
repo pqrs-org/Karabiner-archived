@@ -72,13 +72,11 @@ namespace org_pqrs_Karabiner {
   KeyboardRepeat::primitive_add(Buttons button)
   {
     // ------------------------------------------------------------
-    Params_RelativePointerEventCallback::auto_ptr ptr(Params_RelativePointerEventCallback::alloc(button,
-                                                                                                 0,
-                                                                                                 0,
-                                                                                                 PointingButton::NONE,
-                                                                                                 false));
-    if (! ptr) return;
-    Params_RelativePointerEventCallback& params = *ptr;
+    Params_RelativePointerEventCallback params(button,
+                                               0,
+                                               0,
+                                               PointingButton::NONE,
+                                               false);
     queue_.push_back(new Item(params));
   }
 
