@@ -265,11 +265,10 @@ namespace org_pqrs_Karabiner {
           }
 
         } else if (type == BRIDGE_STATUSMESSAGE) {
-          if (statusmessage_) {
-            delete[] statusmessage_;
-          }
           size_t length = BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN;
-          statusmessage_ = new char[length];
+          if (! statusmessage_) {
+            statusmessage_ = new char[length];
+          }
           pqrs::strlcpy_utf8::strlcpy(statusmessage_, reinterpret_cast<const char*>(p + 1), length);
 
         } else if (type == BRIDGE_MODIFIERNAME) {
