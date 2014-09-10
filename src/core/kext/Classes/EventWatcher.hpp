@@ -14,39 +14,39 @@ namespace org_pqrs_Karabiner {
     public:
       Target(void)
       {
-        item = new Item();
-        if (item) {
-          list_.push_back(item);
+        item_ = new Item();
+        if (item_) {
+          list_.push_back(item_);
         }
       }
 
       ~Target(void)
       {
-        if (item) {
-          list_.erase_and_delete(item);
+        if (item_) {
+          list_.erase_and_delete(item_);
         }
       }
 
       void observe(void)
       {
-        if (item) {
-          item->observe();
+        if (item_) {
+          item_->observe();
         }
       }
       void unobserve(void)
       {
-        if (item) {
-          item->unobserve();
+        if (item_) {
+          item_->unobserve();
         }
       }
       bool isAnyEventHappen(void) const
       {
-        if (! item) return false;
-        return item->isAnyEventHappen();
+        if (! item_) return false;
+        return item_->isAnyEventHappen();
       }
 
     private:
-      Item* item;
+      Item* item_;
     };
 
     static void initialize(void);
