@@ -215,16 +215,6 @@ namespace org_pqrs_Karabiner {
     // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_ScrollWheelEventCallback);
 
-    static Params_ScrollWheelEventCallback* alloc(short da1, short da2, short da3,
-                                                  IOFixed fd1, IOFixed fd2, IOFixed fd3,
-                                                  SInt32 pd1, SInt32 pd2, SInt32 pd3,
-                                                  SInt32 op) {
-      return new Params_ScrollWheelEventCallback(da1, da2, da3,
-                                                 fd1, fd2, fd3,
-                                                 pd1, pd2, pd3,
-                                                 op);
-    }
-
     static Params_ScrollWheelEventCallback* alloc(const Params_ScrollWheelEventCallback& p) {
       return new Params_ScrollWheelEventCallback(p.deltaAxis1,
                                                  p.deltaAxis2,
@@ -275,6 +265,10 @@ namespace org_pqrs_Karabiner {
     friend class EventOutputQueue;
 
   public:
+    Params_Wait(int ms) : milliseconds(ms) {
+      CommonData::increase_alloccount();
+    }
+
     ~Params_Wait(void) {
       CommonData::decrease_alloccount();
     }
@@ -282,9 +276,6 @@ namespace org_pqrs_Karabiner {
     // Use auto_ptr instead allocating in kernel stack. (Reduce kernel stack usage.)
     DECLARE_AUTO_PTR(Params_Wait);
 
-    static Params_Wait* alloc(int ms) {
-      return new Params_Wait(ms);
-    }
     static Params_Wait* alloc(const Params_Wait& p) {
       return new Params_Wait(p.milliseconds);
     }
@@ -292,9 +283,6 @@ namespace org_pqrs_Karabiner {
     const int milliseconds;
 
   private:
-    Params_Wait(int ms) : milliseconds(ms) {
-      CommonData::increase_alloccount();
-    }
   };
 }
 

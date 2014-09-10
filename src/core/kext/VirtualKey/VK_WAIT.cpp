@@ -17,10 +17,9 @@ namespace org_pqrs_Karabiner {
       return false;
     }
 
-    Params_Wait::auto_ptr ptr(Params_Wait::alloc(milliseconds));
-    if (ptr) {
-      EventOutputQueue::FireWait::fire(*ptr);
-    }
+    Params_Wait p(milliseconds);
+    EventOutputQueue::FireWait::fire(p);
+
     return true;
   }
 }
