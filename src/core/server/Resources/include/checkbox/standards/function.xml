@@ -910,6 +910,17 @@
         </item>
         <item><name>──────────────────────────────</name></item>
         <item>
+          <name>Put MediaKeys to F10,F11,F12</name>
+          <appendix>Change F10 to music prev</appendix>
+          <appendix>Change F11 to music play</appendix>
+          <appendix>Change F12 to music next</appendix>
+          <identifier>remap.Put_MediaKeys_To_F10_F11_F12</identifier>
+          <autogen>__KeyToKey__ KeyCode::F10, KeyCode::VK_CONSUMERKEY_MUSIC_PREV</autogen>
+          <autogen>__KeyToKey__ KeyCode::F11, KeyCode::VK_CONSUMERKEY_MUSIC_PLAY</autogen>
+          <autogen>__KeyToKey__ KeyCode::F12, KeyCode::VK_CONSUMERKEY_MUSIC_NEXT</autogen>
+        </item>
+        <item><name>──────────────────────────────</name></item>
+        <item>
           <name>F13 to Volume Mute</name>
           <identifier>remap.f13_to_volumemute_all</identifier>
           <autogen>__KeyToKey__ KeyCode::F13, ConsumerKeyCode::VOLUME_MUTE</autogen>
