@@ -250,14 +250,65 @@
         </autogen>
       </item>
       <item>
-        <name>Cmd+Space to toggle Cmd+Tab</name>
+        <name>Cmd+Space to enter Cmd+Tab Mode</name>
         <identifier>remap.keytokey_cmdtab_cmdspace</identifier>
+        <modifier_not>
+          ModifierFlag::CONTROL_L,
+          ModifierFlag::CONTROL_R,
+          ModifierFlag::FN,
+          ModifierFlag::OPTION_L,
+          ModifierFlag::OPTION_R,
+          ModifierFlag::SHIFT_L,
+          ModifierFlag::SHIFT_R,
+        </modifier_not>
+
+        <block>
+          <config_only>notsave.cmdtab_mode</config_only>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
+        </block>
+
         <autogen>
           __KeyToKey__
           KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
           KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode,
           KeyCode::VK_LOCK_COMMAND_L_FORCE_ON,
           KeyCode::TAB,
+        </autogen>
+      </item>
+      <item>
+        <name>Cmd+Space to enter Cmd+Tab Mode</name>
+        <appendix>(+ Change the space key to the left control key.)</appendix>
+        <appendix>(+ Send a space key event when you pressed the space key alone.)</appendix>
+        <identifier>remap.keytokey_cmdtab_cmdspace_space_to_control</identifier>
+        <block>
+          <modifier_not>
+            ModifierFlag::CONTROL_L,
+            ModifierFlag::CONTROL_R,
+            ModifierFlag::FN,
+            ModifierFlag::OPTION_L,
+            ModifierFlag::OPTION_R,
+            ModifierFlag::SHIFT_L,
+            ModifierFlag::SHIFT_R,
+          </modifier_not>
+
+          <block>
+            <config_only>notsave.cmdtab_mode</config_only>
+            <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
+          </block>
+
+          <autogen>
+            __KeyToKey__
+            KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+            KeyCode::VK_CONFIG_FORCE_ON_notsave_cmdtab_mode,
+            KeyCode::VK_LOCK_COMMAND_L_FORCE_ON,
+            KeyCode::TAB,
+          </autogen>
+        </block>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::SPACE,
+          __{ KeyCode::CONTROL_L, }__
+          __{ KeyCode::SPACE }__
         </autogen>
       </item>
       <item>
