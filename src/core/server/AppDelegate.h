@@ -31,6 +31,7 @@
 - (NSDictionary*) getFocusedUIElementInformation;
 - (NSDictionary*) getInputSourceInformation;
 
+- (IBAction) restartAXNotifier:(id)sender;
 - (IBAction) manageAXNotifier:(id)sender;
 - (IBAction) launchEventViewer:(id)sender;
 - (IBAction) launchMultiTouchExtension:(id)sender;

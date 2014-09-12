@@ -26,6 +26,8 @@
   IONotificationPortRef notifyport_;
   CFRunLoopSourceRef loopsource_;
 
+  dispatch_queue_t axnotifierManagerQueue_;
+
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 }
 @end
@@ -308,6 +310,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   // Wait until other apps connect to me.
   [NSThread sleepForTimeInterval:1];
 
+  axnotifierManagerQueue_ = dispatch_queue_create("org.pqrs.Karabiner.axnotifierManagerQueue_", NULL);
+
   [preferencesManager_ load];
 
   [self registerIONotification];
@@ -423,19 +427,59 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
-- (IBAction) manageAXNotifier:(id)sender
+- (NSString*) AXNotifierPath
 {
-  NSString* path = @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
+  return @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
+}
 
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
-    // Launch AXNotifier
-    [[NSWorkspace sharedWorkspace] launchApplication:path];
-  } else {
+- (void) launchNewAXNotifier
+{
+  dispatch_sync(axnotifierManagerQueue_, ^{
+    NSString* path = [self AXNotifierPath];
+    NSURL* url = [NSURL fileURLWithPath:path];
+    // Set NSWorkspaceLaunchNewInstance because
+    // AXNotifier might be running (terminating) immediately after terminateAXNotifier.
+    NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault | NSWorkspaceLaunchNewInstance;
+    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
+                                                  options:options
+                                            configuration:nil
+                                                    error:nil];
+  });
+}
+
+- (void) terminateAXNotifiers
+{
+  dispatch_sync(axnotifierManagerQueue_, ^{
+    NSString* path = [self AXNotifierPath];
     NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
     NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
     for (NSRunningApplication* runningApplication in applications) {
       [runningApplication terminate];
     }
+  });
+}
+
+- (IBAction) restartAXNotifier:(id)sender
+{
+  if (! [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
+    NSAlert* alert = [NSAlert new];
+    [alert setMessageText:@"Karabiner Alert"];
+    [alert addButtonWithTitle:@"Close"];
+    [alert setInformativeText:@"AXNotifier is disabled.\nPlease enable AXNotifier if you want to start."];
+    [alert runModal];
+    return;
+  }
+
+  [self terminateAXNotifiers];
+  [self launchNewAXNotifier];
+}
+
+- (IBAction) manageAXNotifier:(id)sender
+{
+  [self terminateAXNotifiers];
+
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
+    [self launchNewAXNotifier];
   }
 }
 
