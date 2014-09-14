@@ -29,7 +29,7 @@ namespace org_pqrs_Karabiner {
       type_ = Type::NONE;
 
       {
-        Params_KeyboardEventCallBack* p = paramsUnion.get_Params_KeyboardEventCallBack();
+        auto p = paramsUnion.get_Params_KeyboardEventCallBack();
         if (p) {
           type_ = Type::KEY;
           key_ = p->key;

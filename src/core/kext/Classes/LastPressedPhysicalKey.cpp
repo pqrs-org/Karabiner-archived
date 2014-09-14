@@ -8,7 +8,7 @@ namespace org_pqrs_Karabiner {
     switch (newval.type) {
       case ParamsUnion::KEYBOARD:
       {
-        Params_KeyboardEventCallBack* p = newval.get_Params_KeyboardEventCallBack();
+        auto p = newval.get_Params_KeyboardEventCallBack();
 
         if (p && p->ex_iskeydown) {
           datatype_ = BRIDGE_DATATYPE_KEYCODE;

@@ -181,7 +181,7 @@ namespace org_pqrs_Karabiner {
     void
     remap_KeyboardEventCallback(ParamsUnion& paramsUnion)
     {
-      Params_KeyboardEventCallBack* params = paramsUnion.get_Params_KeyboardEventCallBack();
+      auto params = paramsUnion.get_Params_KeyboardEventCallBack();
       if (! params) return;
 
       FlagStatus::globalFlagStatus().set(params->key, params->flags);

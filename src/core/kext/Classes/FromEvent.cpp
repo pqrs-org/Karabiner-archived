@@ -12,7 +12,7 @@ namespace org_pqrs_Karabiner {
 
       case Type::KEY:
       {
-        Params_KeyboardEventCallBack* params = paramsUnion.get_Params_KeyboardEventCallBack();
+        auto params = paramsUnion.get_Params_KeyboardEventCallBack();
         if (! params) return false;
 
         if (params->key != key_) return false;

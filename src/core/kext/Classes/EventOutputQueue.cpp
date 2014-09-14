@@ -131,7 +131,7 @@ namespace org_pqrs_Karabiner {
     switch ((p->params).type) {
       case ParamsUnion::KEYBOARD:
       {
-        Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
+        auto params = (p->params).get_Params_KeyboardEventCallBack();
         if (params) {
           bool handled = VirtualKey::handleAfterEnqueued(*params);
           if (! handled) {

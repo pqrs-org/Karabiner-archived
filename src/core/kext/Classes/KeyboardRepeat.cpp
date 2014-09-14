@@ -110,7 +110,7 @@ namespace org_pqrs_Karabiner {
       // We stop key repeat only when the repeating key is up.
       KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_.safe_front());
       if (p) {
-        Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
+        auto params = (p->params).get_Params_KeyboardEventCallBack();
         if (params && key == params->key) {
           goto cancel;
         }
@@ -178,7 +178,7 @@ namespace org_pqrs_Karabiner {
       switch ((p->params).type) {
         case ParamsUnion::KEYBOARD:
         {
-          Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
+          auto params = (p->params).get_Params_KeyboardEventCallBack();
           if (params) {
             Params_KeyboardEventCallBack pr(params->eventType,
                                             params->flags,
