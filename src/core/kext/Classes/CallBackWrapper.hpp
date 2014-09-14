@@ -7,7 +7,27 @@
 #include "Types.hpp"
 
 namespace org_pqrs_Karabiner {
-  class Params_KeyboardEventCallBack {
+  class Params_KeyboardEventCallBack;
+  class Params_UpdateEventFlagsCallback;
+  class Params_KeyboardSpecialEventCallback;
+  class Params_RelativePointerEventCallback;
+  class Params_ScrollWheelEventCallback;
+  class Params_Wait;
+
+  class Params_Base {
+  public:
+    Params_Base(void) {}
+    virtual ~Params_Base(void) {}
+
+    virtual const Params_KeyboardEventCallBack*        get_Params_KeyboardEventCallBack(void)        const { return NULL; }
+    virtual const Params_UpdateEventFlagsCallback*     get_Params_UpdateEventFlagsCallback(void)     const { return NULL; }
+    virtual const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const { return NULL; }
+    virtual const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return NULL; }
+    virtual const Params_ScrollWheelEventCallback*     get_Params_ScrollWheelEventCallback(void)     const { return NULL; }
+    virtual const Params_Wait*                         get_Params_Wait(void)                         const { return NULL; }
+  };
+
+  class Params_KeyboardEventCallBack : public Params_Base {
     friend class EventOutputQueue;
 
   public:
@@ -42,6 +62,8 @@ namespace org_pqrs_Karabiner {
                                               p.keyboardType, p.repeat);
     }
 
+    const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const { return this; }
+
     // ----------------------------------------
     static void log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat) {
       IOLOG_DEBUG("KeyboardEventCallback [%7s]: eventType %2d, flags 0x%08x, key 0x%04x, kbdType %3d, repeat = %d\n",
@@ -62,7 +84,7 @@ namespace org_pqrs_Karabiner {
     const bool ex_iskeydown;
   };
 
-  class Params_UpdateEventFlagsCallback {
+  class Params_UpdateEventFlagsCallback : public Params_Base {
     friend class EventOutputQueue;
 
   public:
@@ -78,6 +100,8 @@ namespace org_pqrs_Karabiner {
       return new Params_UpdateEventFlagsCallback(p.flags);
     }
 
+    const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const { return this; }
+
     // ----------------------------------------
     static void log(bool isCaught, Flags flags) {
       IOLOG_DEBUG("UpdateEventFlagsCallback [%7s]: flags 0x%08x\n",
@@ -88,7 +112,7 @@ namespace org_pqrs_Karabiner {
     const Flags flags;
   };
 
-  class Params_KeyboardSpecialEventCallback {
+  class Params_KeyboardSpecialEventCallback : public Params_Base {
     friend class EventOutputQueue;
 
   public:
@@ -124,6 +148,8 @@ namespace org_pqrs_Karabiner {
                                                      p.repeat);
     }
 
+    const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const { return this; }
+
     // ----------------------------------------
     static void log(bool isCaught, EventType eventType, Flags flags, ConsumerKeyCode key, unsigned int flavor, UInt64 guid, bool repeat) {
       IOLOG_DEBUG("KeyboardSpecialEventCallBack [%7s]: eventType %2d, flags 0x%08x, key 0x%04x, flavor %4d, guid %lld, repeat = %d\n",
@@ -141,7 +167,7 @@ namespace org_pqrs_Karabiner {
     const bool ex_iskeydown;
   };
 
-  class Params_RelativePointerEventCallback {
+  class Params_RelativePointerEventCallback : public Params_Base {
     friend class EventOutputQueue;
 
   public:
@@ -160,6 +186,8 @@ namespace org_pqrs_Karabiner {
     static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
       return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_button, p.ex_isbuttondown);
     }
+
+    const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return this; }
 
     static void log(bool isCaught, Buttons buttons, int dx, int dy) {
       IOLOG_DEBUG_POINTING("RelativePointerEventCallBack [%7s]: buttons: 0x%08x, dx: %3d, dy: %3d\n",
@@ -180,7 +208,7 @@ namespace org_pqrs_Karabiner {
     const bool ex_isbuttondown;
   };
 
-  class Params_ScrollWheelEventCallback {
+  class Params_ScrollWheelEventCallback : public Params_Base {
     friend class EventOutputQueue;
 
   public:
@@ -211,6 +239,8 @@ namespace org_pqrs_Karabiner {
                                                  p.pointDelta3,
                                                  p.options);
     }
+
+    const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const { return this; }
 
     static void log(bool isCaught,
                     short deltaAxis1,
@@ -245,7 +275,7 @@ namespace org_pqrs_Karabiner {
 
   // This params is virtual parameter for EventOutputQueue.
   // Hardware does not send this event.
-  class Params_Wait {
+  class Params_Wait : public Params_Base {
     friend class EventOutputQueue;
 
   public:
@@ -260,6 +290,8 @@ namespace org_pqrs_Karabiner {
     static Params_Wait* alloc(const Params_Wait& p) {
       return new Params_Wait(p.milliseconds);
     }
+
+    const Params_Wait* get_Params_Wait(void) const { return this; }
 
     const int milliseconds;
   };
