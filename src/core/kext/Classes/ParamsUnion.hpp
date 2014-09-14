@@ -25,7 +25,7 @@ namespace org_pqrs_Karabiner {
     };
     const Type type;
 
-    Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const {
+    const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const {
       if (type != KEYBOARD) return NULL;
       return params_.params_KeyboardEventCallBack;
     }
@@ -55,7 +55,7 @@ namespace org_pqrs_Karabiner {
 
       switch (type) {
         case KEYBOARD: {
-          Params_KeyboardEventCallBack* p = get_Params_KeyboardEventCallBack();
+          auto p = get_Params_KeyboardEventCallBack();
           if (p) {
             output = p->ex_iskeydown;
             return true;
@@ -93,7 +93,7 @@ namespace org_pqrs_Karabiner {
     bool isModifier(void) const {
       if (type != KEYBOARD) return false;
 
-      Params_KeyboardEventCallBack* p = get_Params_KeyboardEventCallBack();
+      auto p = get_Params_KeyboardEventCallBack();
       if (! p) return false;
 
       return (p->key).isModifier();

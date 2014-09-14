@@ -466,7 +466,7 @@ namespace org_pqrs_Karabiner {
 
       CommonData::setcurrent_deviceIdentifier(front->deviceIdentifier);
       {
-        Params_KeyboardEventCallBack* params = (front->params).get_Params_KeyboardEventCallBack();
+        auto params = (front->params).get_Params_KeyboardEventCallBack();
         if (params) {
           CommonData::setcurrent_keyboardType(params->keyboardType);
         }
@@ -497,7 +497,7 @@ namespace org_pqrs_Karabiner {
     switch (p->params.type) {
       case ParamsUnion::KEYBOARD:
       {
-        Params_KeyboardEventCallBack* params = (p->params).get_Params_KeyboardEventCallBack();
+        auto params = (p->params).get_Params_KeyboardEventCallBack();
         if (params) {
           if (params->ex_iskeydown) {
             EventWatcher::on();
