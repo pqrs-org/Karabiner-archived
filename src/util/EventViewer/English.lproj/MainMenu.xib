@@ -36,7 +36,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="874" height="551"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView initialItem="656" id="655">
+                    <tabView initialItem="656" id="655" customClass="TabView">
                         <rect key="frame" x="13" y="10" width="848" height="535"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
