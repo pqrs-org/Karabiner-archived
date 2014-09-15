@@ -25,6 +25,9 @@ namespace org_pqrs_Karabiner {
     virtual const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return NULL; }
     virtual const Params_ScrollWheelEventCallback*     get_Params_ScrollWheelEventCallback(void)     const { return NULL; }
     virtual const Params_Wait*                         get_Params_Wait(void)                         const { return NULL; }
+
+    virtual bool iskeydown(bool& output) const { return false; }
+    virtual bool isModifier(void) const { return false; }
   };
 
   class Params_KeyboardEventCallBack : public Params_Base {
@@ -63,6 +66,8 @@ namespace org_pqrs_Karabiner {
     }
 
     const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const { return this; }
+    bool iskeydown(bool& output) const { output = ex_iskeydown; return true; }
+    bool isModifier(void) const { return key.isModifier(); }
 
     // ----------------------------------------
     static void log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat) {
@@ -149,6 +154,7 @@ namespace org_pqrs_Karabiner {
     }
 
     const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const { return this; }
+    bool iskeydown(bool& output) const { output = ex_iskeydown; return true; }
 
     // ----------------------------------------
     static void log(bool isCaught, EventType eventType, Flags flags, ConsumerKeyCode key, unsigned int flavor, UInt64 guid, bool repeat) {
@@ -188,6 +194,13 @@ namespace org_pqrs_Karabiner {
     }
 
     const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return this; }
+    bool iskeydown(bool& output) const
+    {
+      if (ex_button == PointingButton::NONE) return false;
+
+      output = ex_isbuttondown;
+      return true;
+    }
 
     static void log(bool isCaught, Buttons buttons, int dx, int dy) {
       IOLOG_DEBUG_POINTING("RelativePointerEventCallBack [%7s]: buttons: 0x%08x, dx: %3d, dy: %3d\n",
