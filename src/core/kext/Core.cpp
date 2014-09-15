@@ -259,7 +259,7 @@ namespace org_pqrs_Karabiner {
     void
     remap_ScrollWheelEventCallback(ParamsUnion& paramsUnion)
     {
-      Params_ScrollWheelEventCallback* params = paramsUnion.get_Params_ScrollWheelEventCallback();
+      auto params = paramsUnion.get_Params_ScrollWheelEventCallback();
       if (! params) return;
 
       RemapParams remapParams(paramsUnion);

@@ -153,7 +153,7 @@ namespace org_pqrs_Karabiner {
     {
       // Params_ScrollWheelEventCallback
       {
-        Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+        auto params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
         if (params) {
           if (interruptibleByScrollWheel_) {
             dokeydown();

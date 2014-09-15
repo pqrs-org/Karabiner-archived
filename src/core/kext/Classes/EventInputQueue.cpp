@@ -610,7 +610,7 @@ namespace org_pqrs_Karabiner {
 
       case ParamsUnion::SCROLL_WHEEL:
       {
-        Params_ScrollWheelEventCallback* params = (p->params).get_Params_ScrollWheelEventCallback();
+        auto params = (p->params).get_Params_ScrollWheelEventCallback();
         if (params) {
           // When "Space to Command (+ When you type Space only, send Space)" is activated,
           // user press Space and scroll wheel to input Command+ScrollWheel.

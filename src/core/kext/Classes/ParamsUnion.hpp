@@ -41,7 +41,7 @@ namespace org_pqrs_Karabiner {
       if (type != RELATIVE_POINTER) return NULL;
       return params_.params_RelativePointerEventCallback;
     }
-    Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const {
+    const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const {
       if (type != SCROLL_WHEEL) return NULL;
       return params_.params_ScrollWheelEventCallback;
     }
