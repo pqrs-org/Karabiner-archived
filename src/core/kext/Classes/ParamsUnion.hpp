@@ -45,7 +45,7 @@ namespace org_pqrs_Karabiner {
       if (type != SCROLL_WHEEL) return NULL;
       return params_.params_ScrollWheelEventCallback;
     }
-    Params_Wait* get_Params_Wait(void) const {
+    const Params_Wait* get_Params_Wait(void) const {
       if (type != WAIT) return NULL;
       return params_.params_Wait;
     }
