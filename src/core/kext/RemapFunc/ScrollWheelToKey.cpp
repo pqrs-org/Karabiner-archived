@@ -70,7 +70,7 @@ namespace org_pqrs_Karabiner {
     bool
     ScrollWheelToKey::remap(RemapParams& remapParams)
     {
-      Params_ScrollWheelEventCallback* params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+      auto params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
       if (! params) return false;
 
       // ------------------------------------------------------------
