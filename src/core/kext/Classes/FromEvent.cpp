@@ -23,7 +23,7 @@ namespace org_pqrs_Karabiner {
 
       case Type::CONSUMER_KEY:
       {
-        Params_KeyboardSpecialEventCallback* params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+        auto params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
         if (! params) return false;
 
         if (params->key != consumer_) return false;
