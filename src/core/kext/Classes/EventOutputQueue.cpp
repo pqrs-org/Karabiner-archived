@@ -177,7 +177,7 @@ namespace org_pqrs_Karabiner {
       }
       case ParamsUnion::WAIT:
       {
-        Params_Wait* params = (p->params).get_Params_Wait();
+        auto params = (p->params).get_Params_Wait();
         if (params) {
           delay = maxDelay(delay, static_cast<unsigned int>(params->milliseconds));
         }
