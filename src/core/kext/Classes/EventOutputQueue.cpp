@@ -128,66 +128,57 @@ namespace org_pqrs_Karabiner {
     unsigned int delay = calcDelay(p->params);
 
     // ----------------------------------------
-    switch ((p->params).type) {
-      case ParamsUnion::KEYBOARD:
-      {
-        auto params = (p->params).get_Params_KeyboardEventCallBack();
-        if (params) {
-          bool handled = VirtualKey::handleAfterEnqueued(*params);
-          if (! handled) {
-            ListHookedKeyboard::instance().apply(*params);
-          }
+    {
+      auto params = (p->params).get_Params_KeyboardEventCallBack();
+      if (params) {
+        bool handled = VirtualKey::handleAfterEnqueued(*params);
+        if (! handled) {
+          ListHookedKeyboard::instance().apply(*params);
         }
 
         // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
         // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
         delay = maxDelay(delay, 1);
-        break;
       }
-      case ParamsUnion::KEYBOARD_SPECIAL:
-      {
-        auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
-        if (params) {
-          if (! ListHookedConsumer::instance().apply(*params)) {
-            // If there is no consumer device, we send an event as a software key.
-            VirtualKey::VK_IOHIDPOSTEVENT::post(*params);
-          }
+    }
+    {
+      auto params = (p->params).get_Params_UpdateEventFlagsCallback();
+      if (params) {
+        // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
+        // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
+        delay = maxDelay(delay, 1);
+      }
+    }
+    {
+      auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
+      if (params) {
+        if (! ListHookedConsumer::instance().apply(*params)) {
+          // If there is no consumer device, we send an event as a software key.
+          VirtualKey::VK_IOHIDPOSTEVENT::post(*params);
         }
 
         // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
         // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
         delay = maxDelay(delay, 1);
-        break;
       }
-      case ParamsUnion::RELATIVE_POINTER:
-      {
-        auto params = (p->params).get_Params_RelativePointerEventCallback();
-        if (params) {
-          ListHookedPointing::instance().apply(*params);
-        }
-        break;
+    }
+    {
+      auto params = (p->params).get_Params_RelativePointerEventCallback();
+      if (params) {
+        ListHookedPointing::instance().apply(*params);
       }
-      case ParamsUnion::SCROLL_WHEEL:
-      {
-        auto params = (p->params).get_Params_ScrollWheelEventCallback();
-        if (params) {
-          ListHookedPointing::instance().apply(*params);
-        }
-        break;
+    }
+    {
+      auto params = (p->params).get_Params_ScrollWheelEventCallback();
+      if (params) {
+        ListHookedPointing::instance().apply(*params);
       }
-      case ParamsUnion::WAIT:
-      {
-        auto params = (p->params).get_Params_Wait();
-        if (params) {
-          delay = maxDelay(delay, static_cast<unsigned int>(params->milliseconds));
-        }
-        break;
+    }
+    {
+      auto params = (p->params).get_Params_Wait();
+      if (params) {
+        delay = maxDelay(delay, static_cast<unsigned int>(params->milliseconds));
       }
-      case ParamsUnion::UPDATE_FLAGS:
-        // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
-        // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
-        delay = maxDelay(delay, 1);
-        break;
     }
 
     queue_.pop_front();

@@ -6,110 +6,89 @@
 namespace org_pqrs_Karabiner {
   class ParamsUnion {
   public:
-    explicit ParamsUnion(const Params_KeyboardEventCallBack& p);
-    explicit ParamsUnion(const Params_UpdateEventFlagsCallback& p);
-    explicit ParamsUnion(const Params_KeyboardSpecialEventCallback& p);
-    explicit ParamsUnion(const Params_RelativePointerEventCallback& p);
-    explicit ParamsUnion(const Params_ScrollWheelEventCallback& p);
-    explicit ParamsUnion(const Params_Wait& p);
-    explicit ParamsUnion(const ParamsUnion& rhs);
-    ~ParamsUnion(void);
-
-    enum Type {
-      KEYBOARD,
-      UPDATE_FLAGS,
-      KEYBOARD_SPECIAL,
-      RELATIVE_POINTER,
-      SCROLL_WHEEL,
-      WAIT,
-    };
-    const Type type;
-
-    const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const {
-      if (type != KEYBOARD) return NULL;
-      return params_.params_KeyboardEventCallBack;
+    explicit ParamsUnion(const Params_KeyboardEventCallBack& p)
+    {
+      params_ = Params_KeyboardEventCallBack::alloc(p);
     }
-    const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const {
-      if (type != UPDATE_FLAGS) return NULL;
-      return params_.params_UpdateEventFlagsCallback;
+    explicit ParamsUnion(const Params_UpdateEventFlagsCallback& p)
+    {
+      params_ = Params_UpdateEventFlagsCallback::alloc(p);
     }
-    const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const {
-      if (type != KEYBOARD_SPECIAL) return NULL;
-      return params_.params_KeyboardSpecialEventCallback;
+    explicit ParamsUnion(const Params_KeyboardSpecialEventCallback& p)
+    {
+      params_ = Params_KeyboardSpecialEventCallback::alloc(p);
     }
-    const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const {
-      if (type != RELATIVE_POINTER) return NULL;
-      return params_.params_RelativePointerEventCallback;
+    explicit ParamsUnion(const Params_RelativePointerEventCallback& p)
+    {
+      params_ = Params_RelativePointerEventCallback::alloc(p);
     }
-    const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const {
-      if (type != SCROLL_WHEEL) return NULL;
-      return params_.params_ScrollWheelEventCallback;
+    explicit ParamsUnion(const Params_ScrollWheelEventCallback& p)
+    {
+      params_ = Params_ScrollWheelEventCallback::alloc(p);
     }
-    const Params_Wait* get_Params_Wait(void) const {
-      if (type != WAIT) return NULL;
-      return params_.params_Wait;
+    explicit ParamsUnion(const Params_Wait& p)
+    {
+      params_ = Params_Wait::alloc(p);
+    }
+    explicit ParamsUnion(const ParamsUnion& rhs)
+    {
+      params_ = (rhs.params_ != NULL) ? Params_Factory::copy(*(rhs.params_)) : NULL;
     }
 
-    bool iskeydown(bool& output) const {
-      output = false;
-
-      switch (type) {
-        case KEYBOARD: {
-          auto p = get_Params_KeyboardEventCallBack();
-          if (p) {
-            output = p->ex_iskeydown;
-            return true;
-          }
-          break;
-        }
-
-        case KEYBOARD_SPECIAL: {
-          auto p = get_Params_KeyboardSpecialEventCallback();
-          if (p) {
-            output = p->ex_iskeydown;
-            return true;
-          }
-          break;
-        }
-
-        case RELATIVE_POINTER: {
-          auto p = get_Params_RelativePointerEventCallback();
-          if (p && p->ex_button != PointingButton::NONE) {
-            output = p->ex_isbuttondown;
-            return true;
-          }
-          break;
-        }
-
-        case UPDATE_FLAGS:
-        case SCROLL_WHEEL:
-        case WAIT:
-          break;
+    ~ParamsUnion(void)
+    {
+      if (params_) {
+        delete params_;
       }
-
-      return false;
     }
 
-    bool isModifier(void) const {
-      if (type != KEYBOARD) return false;
+    const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const
+    {
+      if (! params_) return NULL;
+      return params_->get_Params_KeyboardEventCallBack();
+    }
+    const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const
+    {
+      if (! params_) return NULL;
+      return params_->get_Params_UpdateEventFlagsCallback();
+    }
+    const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const
+    {
+      if (! params_) return NULL;
+      return params_->get_Params_KeyboardSpecialEventCallback();
+    }
+    const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const
+    {
+      if (! params_) return NULL;
+      return params_->get_Params_RelativePointerEventCallback();
+    }
+    const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const
+    {
+      if (! params_) return NULL;
+      return params_->get_Params_ScrollWheelEventCallback();
+    }
+    const Params_Wait* get_Params_Wait(void) const
+    {
+      if (! params_) return NULL;
+      return params_->get_Params_Wait();
+    }
 
-      auto p = get_Params_KeyboardEventCallBack();
-      if (! p) return false;
+    bool iskeydown(bool& output) const
+    {
+      if (! params_) return false;
+      return params_->iskeydown(output);
+    }
 
-      return (p->key).isModifier();
+    bool isModifier(void) const
+    {
+      if (! params_) return false;
+      return params_->isModifier();
     }
 
   private:
     ParamsUnion& operator=(const ParamsUnion& rhs); // Prevent assignment
 
-    union {
-      Params_KeyboardEventCallBack* params_KeyboardEventCallBack;
-      Params_UpdateEventFlagsCallback* params_UpdateEventFlagsCallback;
-      Params_KeyboardSpecialEventCallback* params_KeyboardSpecialEventCallback;
-      Params_RelativePointerEventCallback* params_RelativePointerEventCallback;
-      Params_ScrollWheelEventCallback* params_ScrollWheelEventCallback;
-      Params_Wait* params_Wait;
-    } params_;
+    Params_Base* params_;
   };
 }
 

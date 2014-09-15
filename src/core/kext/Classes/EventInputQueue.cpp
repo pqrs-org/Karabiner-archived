@@ -494,139 +494,125 @@ namespace org_pqrs_Karabiner {
     Item* p = static_cast<Item*>(queue_.safe_front());
     if (! p) return;
 
-    switch (p->params.type) {
-      case ParamsUnion::KEYBOARD:
-      {
-        auto params = (p->params).get_Params_KeyboardEventCallBack();
-        if (params) {
-          if (params->ex_iskeydown) {
-            EventWatcher::on();
-            FlagStatus::globalFlagStatus().lazy_enable();
-          } else {
-            FlagStatus::globalFlagStatus().lazy_disable_if_off();
-          }
-
-          // ------------------------------------------------------------
-          // We must call NumHeldDownKeys after inputqueue. (Not before queuing)
-          // For example, when we type Command_L+S.
-          //
-          // (1) Command_L down (queued)
-          // (2) KeyCode::S down (Command_L+S)
-          // (1') dequeue Command_L down
-          // (3) Command_L up
-          // (4) KeyCode::S up
-          // (2') dequeue KeyCode::S down
-          //
-          // if NumHeldDownKeys called when (4), Command_L state is reset.
-          // Then (2') send KeyCode::S without Modifiers.
-          //
-          // ------------------------------------------------------------
-          // When we press&release CapsLock, key event is fired only once.
-          // (down or up depending on the state of CapsLock)
-          // If we use Virtual CapsLock (remapped CapsLock) like "Change A to CapsLock",
-          // the NumHeldDownKeys state is increase illegally.
-          // So, we ignore Hardware CapsLock at NumHeldDownKeys.
-          //
-          // (1) Press Hardware CapsLock (EventType::DOWN is fired.)
-          // (2) Press A (EventType::DOWN is fired.)
-          // (2') (A is changed to CapsLock.)
-          // (3) Release A (EventType::UP is fired.)
-          // (3') (A is changed to CapsLock.)
-          // (4) Press Hardware CapsLock (EventType::DOWN is fired.)
-          //
-          // Both (1) and (4) fire DOWN event.
-
-          if (params->key != KeyCode::CAPSLOCK) {
-            NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
-          }
-
-          Core::remap_KeyboardEventCallback(p->params);
-        }
-        break;
-      }
-
-      case ParamsUnion::KEYBOARD_SPECIAL:
-      {
-        auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
-        if (params) {
-          if (params->ex_iskeydown) {
-            EventWatcher::on();
-            FlagStatus::globalFlagStatus().lazy_enable();
-          } else {
-            FlagStatus::globalFlagStatus().lazy_disable_if_off();
-          }
-
-          // ------------------------------------------------------------
-          NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
-
-          Core::remap_KeyboardSpecialEventCallback(p->params);
-        }
-        break;
-      }
-
-      case ParamsUnion::RELATIVE_POINTER:
-      {
-        auto params = (p->params).get_Params_RelativePointerEventCallback();
-        if (params) {
-          // ------------------------------------------------------------
-          // We set EventWatcher::on only when Buttons pressed.
-
-          // ------------------------------
-          // About PointingRelativeToScroll:
-          //
-          // If PointingRelativeToScroll is applied, we should call EventWatcher::on. (== canceling KeyOverlaidModifier)
-          // When the following settings are activated,
-          // Fn_Lock should not be fired if the RelativePointerEvent is happened.
-          //
-          // - Fn+CursorMove to ScrollWheel
-          // - Fn to Fn (+ When you type Fn only, send Fn_Lock)
-          //
-          // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
-          // It's more terrible than above problem.
-          //
-          // Therefore, we call EventWatcher::on in PointingRelativeToScroll::remap.
-          // So we don't need to call EventWatcher::on unless just buttons are pressed.
-
-          if (params->ex_button != PointingButton::NONE &&
-              params->ex_isbuttondown) {
-            EventWatcher::on();
-          }
-          if (params->ex_button == PointingButton::NONE ||
-              params->ex_isbuttondown) {
-            FlagStatus::globalFlagStatus().lazy_enable();
-          } else {
-            FlagStatus::globalFlagStatus().lazy_disable_if_off();
-          }
-
-          // ------------------------------------------------------------
-          if (params->ex_button != PointingButton::NONE) {
-            NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
-          }
-
-          Core::remap_RelativePointerEventCallback(p->params);
-        }
-        break;
-      }
-
-      case ParamsUnion::SCROLL_WHEEL:
-      {
-        auto params = (p->params).get_Params_ScrollWheelEventCallback();
-        if (params) {
-          // When "Space to Command (+ When you type Space only, send Space)" is activated,
-          // user press Space and scroll wheel to input Command+ScrollWheel.
-          // Then release Space, user don't intend to send Space.
-          // So, we need to set EventWatcher::on here.
+    {
+      auto params = (p->params).get_Params_KeyboardEventCallBack();
+      if (params) {
+        if (params->ex_iskeydown) {
           EventWatcher::on();
           FlagStatus::globalFlagStatus().lazy_enable();
-
-          Core::remap_ScrollWheelEventCallback(p->params);
+        } else {
+          FlagStatus::globalFlagStatus().lazy_disable_if_off();
         }
-        break;
-      }
 
-      default:
-        IOLOG_ERROR("%s unkown type\n", __PRETTY_FUNCTION__);
-        break;
+        // ------------------------------------------------------------
+        // We must call NumHeldDownKeys after inputqueue. (Not before queuing)
+        // For example, when we type Command_L+S.
+        //
+        // (1) Command_L down (queued)
+        // (2) KeyCode::S down (Command_L+S)
+        // (1') dequeue Command_L down
+        // (3) Command_L up
+        // (4) KeyCode::S up
+        // (2') dequeue KeyCode::S down
+        //
+        // if NumHeldDownKeys called when (4), Command_L state is reset.
+        // Then (2') send KeyCode::S without Modifiers.
+        //
+        // ------------------------------------------------------------
+        // When we press&release CapsLock, key event is fired only once.
+        // (down or up depending on the state of CapsLock)
+        // If we use Virtual CapsLock (remapped CapsLock) like "Change A to CapsLock",
+        // the NumHeldDownKeys state is increase illegally.
+        // So, we ignore Hardware CapsLock at NumHeldDownKeys.
+        //
+        // (1) Press Hardware CapsLock (EventType::DOWN is fired.)
+        // (2) Press A (EventType::DOWN is fired.)
+        // (2') (A is changed to CapsLock.)
+        // (3) Release A (EventType::UP is fired.)
+        // (3') (A is changed to CapsLock.)
+        // (4) Press Hardware CapsLock (EventType::DOWN is fired.)
+        //
+        // Both (1) and (4) fire DOWN event.
+
+        if (params->key != KeyCode::CAPSLOCK) {
+          NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+        }
+
+        Core::remap_KeyboardEventCallback(p->params);
+      }
+    }
+
+    {
+      auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
+      if (params) {
+        if (params->ex_iskeydown) {
+          EventWatcher::on();
+          FlagStatus::globalFlagStatus().lazy_enable();
+        } else {
+          FlagStatus::globalFlagStatus().lazy_disable_if_off();
+        }
+
+        // ------------------------------------------------------------
+        NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+
+        Core::remap_KeyboardSpecialEventCallback(p->params);
+      }
+    }
+
+    {
+      auto params = (p->params).get_Params_RelativePointerEventCallback();
+      if (params) {
+        // ------------------------------------------------------------
+        // We set EventWatcher::on only when Buttons pressed.
+
+        // ------------------------------
+        // About PointingRelativeToScroll:
+        //
+        // If PointingRelativeToScroll is applied, we should call EventWatcher::on. (== canceling KeyOverlaidModifier)
+        // When the following settings are activated,
+        // Fn_Lock should not be fired if the RelativePointerEvent is happened.
+        //
+        // - Fn+CursorMove to ScrollWheel
+        // - Fn to Fn (+ When you type Fn only, send Fn_Lock)
+        //
+        // But, if we call EventWatcher::on every CursorMove event, unexpected cancel occurs.
+        // It's more terrible than above problem.
+        //
+        // Therefore, we call EventWatcher::on in PointingRelativeToScroll::remap.
+        // So we don't need to call EventWatcher::on unless just buttons are pressed.
+
+        if (params->ex_button != PointingButton::NONE &&
+            params->ex_isbuttondown) {
+          EventWatcher::on();
+        }
+        if (params->ex_button == PointingButton::NONE ||
+            params->ex_isbuttondown) {
+          FlagStatus::globalFlagStatus().lazy_enable();
+        } else {
+          FlagStatus::globalFlagStatus().lazy_disable_if_off();
+        }
+
+        // ------------------------------------------------------------
+        if (params->ex_button != PointingButton::NONE) {
+          NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
+        }
+
+        Core::remap_RelativePointerEventCallback(p->params);
+      }
+    }
+
+    {
+      auto params = (p->params).get_Params_ScrollWheelEventCallback();
+      if (params) {
+        // When "Space to Command (+ When you type Space only, send Space)" is activated,
+        // user press Space and scroll wheel to input Command+ScrollWheel.
+        // Then release Space, user don't intend to send Space.
+        // So, we need to set EventWatcher::on here.
+        EventWatcher::on();
+        FlagStatus::globalFlagStatus().lazy_enable();
+
+        Core::remap_ScrollWheelEventCallback(p->params);
+      }
     }
 
     CommonData::setcurrent_lastpressedphysicalkey(p->params);

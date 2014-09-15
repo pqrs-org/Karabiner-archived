@@ -175,8 +175,7 @@ namespace org_pqrs_Karabiner {
 
     // ----------------------------------------
     for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_.safe_front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
-      switch ((p->params).type) {
-        case ParamsUnion::KEYBOARD:
+      {
         {
           auto params = (p->params).get_Params_KeyboardEventCallBack();
           if (params) {
@@ -187,10 +186,8 @@ namespace org_pqrs_Karabiner {
                                             queue_.size() == 1 ? true : false);
             EventOutputQueue::FireKey::fire(pr);
           }
-          break;
         }
 
-        case ParamsUnion::KEYBOARD_SPECIAL:
         {
           auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
           if (params) {
@@ -200,23 +197,14 @@ namespace org_pqrs_Karabiner {
                                                    queue_.size() == 1 ? true : false);
             EventOutputQueue::FireConsumer::fire(pr);
           }
-          break;
         }
 
-        case ParamsUnion::RELATIVE_POINTER:
         {
           auto params = (p->params).get_Params_RelativePointerEventCallback();
           if (params) {
             EventOutputQueue::FireRelativePointer::fire(params->buttons, params->dx, params->dy);
           }
-          break;
         }
-
-        case ParamsUnion::UPDATE_FLAGS:
-        case ParamsUnion::SCROLL_WHEEL:
-        case ParamsUnion::WAIT:
-          // do nothing
-          break;
       }
     }
 
