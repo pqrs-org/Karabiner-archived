@@ -65,12 +65,15 @@ namespace org_pqrs_Karabiner {
   private:
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
-      Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
-      Item(const Params_RelativePointerEventCallback& p) : params(p) {}
-      virtual ~Item(void) {}
+      Item(const Params_Base& p) : params(Params_Factory::copy(p)) {}
 
-      ParamsUnion params;
+      virtual ~Item(void) {
+        if (params) {
+          delete params;
+        }
+      }
+
+      Params_Base* params;
     };
 
     // ------------------------------------------------------------
