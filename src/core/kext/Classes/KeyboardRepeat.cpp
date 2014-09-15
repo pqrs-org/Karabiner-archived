@@ -205,7 +205,7 @@ namespace org_pqrs_Karabiner {
 
         case ParamsUnion::RELATIVE_POINTER:
         {
-          Params_RelativePointerEventCallback* params = (p->params).get_Params_RelativePointerEventCallback();
+          auto params = (p->params).get_Params_RelativePointerEventCallback();
           if (params) {
             EventOutputQueue::FireRelativePointer::fire(params->buttons, params->dx, params->dy);
           }

@@ -37,7 +37,7 @@ namespace org_pqrs_Karabiner {
       if (type != KEYBOARD_SPECIAL) return NULL;
       return params_.params_KeyboardSpecialEventCallback;
     }
-    Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const {
+    const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const {
       if (type != RELATIVE_POINTER) return NULL;
       return params_.params_RelativePointerEventCallback;
     }
@@ -73,7 +73,7 @@ namespace org_pqrs_Karabiner {
         }
 
         case RELATIVE_POINTER: {
-          Params_RelativePointerEventCallback* p = get_Params_RelativePointerEventCallback();
+          auto p = get_Params_RelativePointerEventCallback();
           if (p && p->ex_button != PointingButton::NONE) {
             output = p->ex_isbuttondown;
             return true;

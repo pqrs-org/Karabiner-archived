@@ -31,7 +31,7 @@ namespace org_pqrs_Karabiner {
 
       case ParamsUnion::RELATIVE_POINTER:
       {
-        Params_RelativePointerEventCallback* p = newval.get_Params_RelativePointerEventCallback();
+        auto p = newval.get_Params_RelativePointerEventCallback();
 
         if (p && p->ex_button != PointingButton::NONE && p->ex_isbuttondown) {
           datatype_ = BRIDGE_DATATYPE_POINTINGBUTTON;

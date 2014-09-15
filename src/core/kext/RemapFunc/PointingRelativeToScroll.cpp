@@ -185,7 +185,7 @@ namespace org_pqrs_Karabiner {
     doremap:
       // change only cursor move events.
       {
-        Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+        auto params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
         if (! params) return false;
         if (params->ex_button != PointingButton::NONE) return false;
       }
@@ -203,7 +203,7 @@ namespace org_pqrs_Karabiner {
     void
     PointingRelativeToScroll::toscroll(RemapParams& remapParams)
     {
-      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      auto params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return;
 
       // ----------------------------------------
