@@ -1,9 +1,9 @@
+#include "CallBackWrapper.hpp"
 #include "LastPressedPhysicalKey.hpp"
-#include "ParamsUnion.hpp"
 
 namespace org_pqrs_Karabiner {
   void
-  LastPressedPhysicalKey::update(const ParamsUnion& newval)
+  LastPressedPhysicalKey::update(const Params_Base& newval)
   {
     {
       auto p = newval.get_Params_KeyboardEventCallBack();

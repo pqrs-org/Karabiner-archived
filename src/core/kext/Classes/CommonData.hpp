@@ -7,7 +7,7 @@
 #include <string.h>
 
 namespace org_pqrs_Karabiner {
-  class ParamsUnion;
+  class Params_Base;
 
   class CommonData {
   public:
@@ -28,7 +28,7 @@ namespace org_pqrs_Karabiner {
     static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) { current_workspacedata_ = newval; }
     static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
-    static void setcurrent_lastpressedphysicalkey(const ParamsUnion& newval) {
+    static void setcurrent_lastpressedphysicalkey(const Params_Base& newval) {
       current_lastpressedphysicalkey_.update(newval);
     }
     static const LastPressedPhysicalKey& getcurrent_lastpressedphysicalkey(void) {

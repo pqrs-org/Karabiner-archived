@@ -5,7 +5,7 @@
 #include "IntervalChecker.hpp"
 
 namespace org_pqrs_Karabiner {
-  class ParamsUnion;
+  class Params_Base;
 
   class LastPressedPhysicalKey {
   public:
@@ -14,7 +14,7 @@ namespace org_pqrs_Karabiner {
       value_(0)
     {}
 
-    void update(const ParamsUnion& newval);
+    void update(const Params_Base& newval);
 
     uint32_t get_datatype(void) const { return datatype_; }
     uint32_t get_value(void) const { return value_; }
