@@ -5,7 +5,6 @@
 #include "Config.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
-#include "ParamsUnion.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -73,7 +72,7 @@ namespace org_pqrs_Karabiner {
         }
       }
 
-      Params_Base* params;
+      const Params_Base* params;
     };
 
     // ------------------------------------------------------------
