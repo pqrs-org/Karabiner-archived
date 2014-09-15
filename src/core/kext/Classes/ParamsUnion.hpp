@@ -29,11 +29,11 @@ namespace org_pqrs_Karabiner {
       if (type != KEYBOARD) return NULL;
       return params_.params_KeyboardEventCallBack;
     }
-    Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const {
+    const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const {
       if (type != UPDATE_FLAGS) return NULL;
       return params_.params_UpdateEventFlagsCallback;
     }
-    Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const {
+    const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const {
       if (type != KEYBOARD_SPECIAL) return NULL;
       return params_.params_KeyboardSpecialEventCallback;
     }
@@ -64,7 +64,7 @@ namespace org_pqrs_Karabiner {
         }
 
         case KEYBOARD_SPECIAL: {
-          Params_KeyboardSpecialEventCallback* p = get_Params_KeyboardSpecialEventCallback();
+          auto p = get_Params_KeyboardSpecialEventCallback();
           if (p) {
             output = p->ex_iskeydown;
             return true;

@@ -212,7 +212,7 @@ namespace org_pqrs_Karabiner {
     void
     remap_KeyboardSpecialEventCallback(ParamsUnion& paramsUnion)
     {
-      Params_KeyboardSpecialEventCallback* params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+      auto params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
       if (! params) return;
 
       RemapParams remapParams(paramsUnion);

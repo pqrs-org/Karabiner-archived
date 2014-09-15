@@ -37,7 +37,7 @@ namespace org_pqrs_Karabiner {
         }
       }
       {
-        Params_KeyboardSpecialEventCallback* p = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+        auto p = paramsUnion.get_Params_KeyboardSpecialEventCallback();
         if (p) {
           type_ = Type::CONSUMER_KEY;
           consumer_ = p->key;

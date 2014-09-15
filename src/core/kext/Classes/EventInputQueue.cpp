@@ -547,7 +547,7 @@ namespace org_pqrs_Karabiner {
 
       case ParamsUnion::KEYBOARD_SPECIAL:
       {
-        Params_KeyboardSpecialEventCallback* params = (p->params).get_Params_KeyboardSpecialEventCallback();
+        auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
         if (params) {
           if (params->ex_iskeydown) {
             EventWatcher::on();

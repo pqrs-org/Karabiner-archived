@@ -20,7 +20,7 @@ namespace org_pqrs_Karabiner {
 
       case ParamsUnion::KEYBOARD_SPECIAL:
       {
-        Params_KeyboardSpecialEventCallback* p = newval.get_Params_KeyboardSpecialEventCallback();
+        auto p = newval.get_Params_KeyboardSpecialEventCallback();
         if (p && p->ex_iskeydown) {
           datatype_ = BRIDGE_DATATYPE_CONSUMERKEYCODE;
           value_ = (p->key).get();
