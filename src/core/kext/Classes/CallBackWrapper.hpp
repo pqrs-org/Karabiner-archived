@@ -30,6 +30,7 @@ namespace org_pqrs_Karabiner {
     virtual bool isModifier(void) const { return false; }
   };
 
+  // =================================================
   class Params_KeyboardEventCallBack : public Params_Base {
     friend class EventOutputQueue;
 
@@ -307,6 +308,52 @@ namespace org_pqrs_Karabiner {
     const Params_Wait* get_Params_Wait(void) const { return this; }
 
     const int milliseconds;
+  };
+
+  // =================================================
+  class Params_Factory {
+  public:
+    static Params_Base* copy(const Params_Base& params)
+    {
+      {
+        auto p = params.get_Params_KeyboardEventCallBack();
+        if (p) {
+          return new Params_KeyboardEventCallBack(*p);
+        }
+      }
+      {
+        auto p = params.get_Params_UpdateEventFlagsCallback();
+        if (p) {
+          return new Params_UpdateEventFlagsCallback(*p);
+        }
+      }
+      {
+        auto p = params.get_Params_KeyboardSpecialEventCallback();
+        if (p) {
+          return new Params_KeyboardSpecialEventCallback(*p);
+        }
+      }
+      {
+        auto p = params.get_Params_RelativePointerEventCallback();
+        if (p) {
+          return new Params_RelativePointerEventCallback(*p);
+        }
+      }
+      {
+        auto p = params.get_Params_ScrollWheelEventCallback();
+        if (p) {
+          return new Params_ScrollWheelEventCallback(*p);
+        }
+      }
+      {
+        auto p = params.get_Params_Wait();
+        if (p) {
+          return new Params_Wait(*p);
+        }
+      }
+
+      return NULL;
+    }
   };
 }
 
