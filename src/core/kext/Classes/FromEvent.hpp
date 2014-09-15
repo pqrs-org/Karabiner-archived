@@ -45,7 +45,7 @@ namespace org_pqrs_Karabiner {
         }
       }
       {
-        Params_RelativePointerEventCallback* p = paramsUnion.get_Params_RelativePointerEventCallback();
+        auto p = paramsUnion.get_Params_RelativePointerEventCallback();
         if (p) {
           type_ = Type::POINTING_BUTTON;
           button_ = p->ex_button;

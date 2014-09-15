@@ -8,7 +8,7 @@ namespace org_pqrs_Karabiner {
     bool
     DropPointingRelativeCursorMove::remap(RemapParams& remapParams)
     {
-      Params_RelativePointerEventCallback* params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      auto params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return false;
 
       if (remapParams.isremapped) return false;

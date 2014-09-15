@@ -34,7 +34,7 @@ namespace org_pqrs_Karabiner {
 
       case Type::POINTING_BUTTON:
       {
-        Params_RelativePointerEventCallback* params = paramsUnion.get_Params_RelativePointerEventCallback();
+        auto params = paramsUnion.get_Params_RelativePointerEventCallback();
         if (! params) return false;
 
         if (params->ex_button != button_) return false;

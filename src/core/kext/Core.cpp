@@ -238,7 +238,7 @@ namespace org_pqrs_Karabiner {
     void
     remap_RelativePointerEventCallback(ParamsUnion& paramsUnion)
     {
-      Params_RelativePointerEventCallback* params = paramsUnion.get_Params_RelativePointerEventCallback();
+      auto params = paramsUnion.get_Params_RelativePointerEventCallback();
       if (! params) return;
 
       ButtonStatus::set(params->ex_button, params->ex_isbuttondown);

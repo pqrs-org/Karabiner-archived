@@ -93,7 +93,7 @@ namespace org_pqrs_Karabiner {
       // we send press button event and release button event at the same time.
       //
 
-      Params_RelativePointerEventCallback* params = paramsUnion.get_Params_RelativePointerEventCallback();
+      auto params = paramsUnion.get_Params_RelativePointerEventCallback();
       if (params) {
         if (params->buttons != previousButtons_) {
           previousButtons_ = params->buttons;
@@ -161,7 +161,7 @@ namespace org_pqrs_Karabiner {
       }
       case ParamsUnion::RELATIVE_POINTER:
       {
-        Params_RelativePointerEventCallback* params = (p->params).get_Params_RelativePointerEventCallback();
+        auto params = (p->params).get_Params_RelativePointerEventCallback();
         if (params) {
           ListHookedPointing::instance().apply(*params);
         }
