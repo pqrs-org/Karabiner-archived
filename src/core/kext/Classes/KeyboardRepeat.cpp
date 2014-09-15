@@ -109,8 +109,8 @@ namespace org_pqrs_Karabiner {
 
       // We stop key repeat only when the repeating key is up.
       KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_.safe_front());
-      if (p) {
-        auto params = (p->params).get_Params_KeyboardEventCallBack();
+      if (p && p->params) {
+        auto params = p->params->get_Params_KeyboardEventCallBack();
         if (params && key == params->key) {
           goto cancel;
         }
@@ -176,33 +176,37 @@ namespace org_pqrs_Karabiner {
     // ----------------------------------------
     for (KeyboardRepeat::Item* p = static_cast<KeyboardRepeat::Item*>(queue_.safe_front()); p; p = static_cast<KeyboardRepeat::Item*>(p->getnext())) {
       {
-        {
-          auto params = (p->params).get_Params_KeyboardEventCallBack();
-          if (params) {
-            Params_KeyboardEventCallBack pr(params->eventType,
-                                            params->flags,
-                                            params->key,
-                                            params->keyboardType,
-                                            queue_.size() == 1 ? true : false);
-            EventOutputQueue::FireKey::fire(pr);
+        if (p->params) {
+          {
+            auto params = p->params->get_Params_KeyboardEventCallBack();
+            if (params) {
+              EventOutputQueue::FireKey::fire(
+                Params_KeyboardEventCallBack(
+                  params->eventType,
+                  params->flags,
+                  params->key,
+                  params->keyboardType,
+                  queue_.size() == 1 ? true : false));
+            }
           }
-        }
 
-        {
-          auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
-          if (params) {
-            Params_KeyboardSpecialEventCallback pr(params->eventType,
-                                                   params->flags,
-                                                   params->key,
-                                                   queue_.size() == 1 ? true : false);
-            EventOutputQueue::FireConsumer::fire(pr);
+          {
+            auto params = p->params->get_Params_KeyboardSpecialEventCallback();
+            if (params) {
+              EventOutputQueue::FireConsumer::fire(
+                Params_KeyboardSpecialEventCallback(
+                  params->eventType,
+                  params->flags,
+                  params->key,
+                  queue_.size() == 1 ? true : false));
+            }
           }
-        }
 
-        {
-          auto params = (p->params).get_Params_RelativePointerEventCallback();
-          if (params) {
-            EventOutputQueue::FireRelativePointer::fire(params->buttons, params->dx, params->dy);
+          {
+            auto params = p->params->get_Params_RelativePointerEventCallback();
+            if (params) {
+              EventOutputQueue::FireRelativePointer::fire(params->buttons, params->dx, params->dy);
+            }
           }
         }
       }
