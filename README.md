@@ -33,7 +33,7 @@ How to build
 System Requirements:
 
 * OS X 10.9+
-* Xcode 5.0.1+
+* Xcode 6.0.1+
 * Command Line Tools for Xcode
 * Boost 1.54.0+ (header-only) http://www.boost.org/
 * CocoaPods http://cocoapods.org/
