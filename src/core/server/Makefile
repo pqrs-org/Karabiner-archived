@@ -10,18 +10,20 @@ all:
 	$(MAKE) -C ../../lib/xml_compiler
 	xcodebuild \
 		-workspace *.xcworkspace \
-		-scheme Karabiner_server \
+		-scheme Pods \
 		-configuration $(CONFIGURATION) \
 		build \
 		SYMROOT=`pwd`/build
+	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 buildonly:
 	xcodebuild \
 		-workspace *.xcworkspace \
-		-scheme Karabiner_server \
+		-scheme Pods \
 		-configuration $(CONFIGURATION) \
 		build \
 		SYMROOT=`pwd`/build
+	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
 	rm -rf build
