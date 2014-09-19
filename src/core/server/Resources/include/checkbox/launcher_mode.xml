@@ -26,6 +26,7 @@
       <appendix>* Launchpad: O+Space key</appendix>
       <appendix>* Mail: O+M key</appendix>
       <appendix>* Mission Control: O+Tab key</appendix>
+      <appendix>* Open Desktop by Finder: O+F key</appendix>
       <appendix>* Safari: O+S key</appendix>
       <appendix>* Show Desktop: O+Escape key</appendix>
       <appendix>* Stickies: O+shift+S key</appendix>
@@ -76,6 +77,7 @@
       <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
       <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
       <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
+      <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_FILE_Desktop</autogen>
       <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
       <autogen>__KeyToKey__ KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
