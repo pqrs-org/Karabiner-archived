@@ -2,7 +2,8 @@
 
 # Package build into a signed .dmg file
 
-PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
+# set $GEM_HOME/bin/ for CocoaPods.
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:$GEM_HOME/bin"; export PATH
 
 version=$(cat version)
 
