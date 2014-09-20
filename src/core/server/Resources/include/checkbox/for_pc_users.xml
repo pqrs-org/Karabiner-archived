@@ -532,6 +532,16 @@
       <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
+      <name>Use PC Style Open In New Tab (Browser only) Control+LeftClick to Command+LeftClick</name>
+      <identifier>remap.pointing_controlLeftclick2commandLeftclick</identifier>
+      <autogen>
+        __KeyToKey__
+        PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        PointingButton::LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND
+      </autogen>
+      <only>FIREFOX, GOOGLE_CHROME, OPERA, SAFARI</only>
+    </item>
+    <item>
       <name>Use PC Style Find</name>
       <appendix>(Control+F to Command_L+F)</appendix>
       <appendix>(Control+G to Command_L+G)</appendix>
