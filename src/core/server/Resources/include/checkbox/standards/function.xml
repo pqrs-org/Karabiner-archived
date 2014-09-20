@@ -1397,5 +1397,66 @@
         </item>
       </item>
     </item>
+
+    <item>
+      <name>For PC keyboards</name>
+
+      <item>
+        <name>Change f1...f12 to brightness control, volume control, etc.</name>
+        <appendix>(You can use standard function keys by fn-f1...fn-f12.)</appendix>
+        <appendix></appendix>
+        <appendix>* f1-f2: Brightness control.</appendix>
+        <appendix>* f3: Mission Control.</appendix>
+        <appendix>* f4: Launchpad.</appendix>
+        <appendix>* f7-f9: Music control.</appendix>
+        <appendix>* f10-f12: Volume control.</appendix>
+        <identifier>remap.pc_keyboard_function_standard</identifier>
+
+        <modifier_not>ModifierFlag::FN</modifier_not>
+
+        <!-- We use KeyCode::VK_IOHIDPOSTEVENT in order to control both internal and external display brightness. -->
+        <autogen>__KeyToKey__ KeyCode::F1, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::F2, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_UP</autogen>
+
+        <autogen>__KeyToKey__ KeyCode::F3, KeyCode::MISSION_CONTROL</autogen>
+        <autogen>__KeyToKey__ KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
+
+        <autogen>__KeyToKey__ KeyCode::F7, ConsumerKeyCode::MUSIC_PREV</autogen>
+        <autogen>__KeyToKey__ KeyCode::F8, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        <autogen>__KeyToKey__ KeyCode::F9, ConsumerKeyCode::MUSIC_NEXT</autogen>
+
+        <autogen>__KeyToKey__ KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::F12, ConsumerKeyCode::VOLUME_UP</autogen>
+      </item>
+
+      <item>
+        <name>Change fn-f1...f12 to brightness control, volume control, etc.</name>
+        <appendix>(Please use "Change XXX to fn" setting together.)</appendix>
+        <appendix></appendix>
+        <appendix>* fn-f1...f2: Brightness control.</appendix>
+        <appendix>* fn-f3: Mission Control.</appendix>
+        <appendix>* fn-f4: Launchpad.</appendix>
+        <appendix>* fn-f7...f9: Music control.</appendix>
+        <appendix>* fn-f10...f12: Volume control.</appendix>
+        <identifier>remap.pc_keyboard_function_inv</identifier>
+
+        <!-- We use KeyCode::VK_IOHIDPOSTEVENT in order to control both internal and external display brightness. -->
+        <autogen>__KeyToKey__ KeyCode::F1, ModifierFlag::FN, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::F2, ModifierFlag::FN, KeyCode::VK_IOHIDPOSTEVENT_NX_KEYTYPE_BRIGHTNESS_UP</autogen>
+
+        <autogen>__KeyToKey__ KeyCode::F3, ModifierFlag::FN, KeyCode::MISSION_CONTROL</autogen>
+        <autogen>__KeyToKey__ KeyCode::F4, ModifierFlag::FN, KeyCode::LAUNCHPAD</autogen>
+
+        <autogen>__KeyToKey__ KeyCode::F7, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PREV</autogen>
+        <autogen>__KeyToKey__ KeyCode::F8, ModifierFlag::FN, ConsumerKeyCode::MUSIC_PLAY</autogen>
+        <autogen>__KeyToKey__ KeyCode::F9, ModifierFlag::FN, ConsumerKeyCode::MUSIC_NEXT</autogen>
+
+        <autogen>__KeyToKey__ KeyCode::F10, ModifierFlag::FN, ConsumerKeyCode::VOLUME_MUTE</autogen>
+        <autogen>__KeyToKey__ KeyCode::F11, ModifierFlag::FN, ConsumerKeyCode::VOLUME_DOWN</autogen>
+        <autogen>__KeyToKey__ KeyCode::F12, ModifierFlag::FN, ConsumerKeyCode::VOLUME_UP</autogen>
+      </item>
+    </item>
+
   </item>
 </root>
