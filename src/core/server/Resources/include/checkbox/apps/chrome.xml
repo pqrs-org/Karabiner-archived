@@ -47,5 +47,11 @@
       </autogen>
     </item>
 
+    <item>
+      <name>Control+L to Command+L</name>
+      <identifier>remap.app_google_chrome_controlL2commandL</identifier>
+      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::L, ModifierFlag::COMMAND_L</autogen>
+      <only>GOOGLE_CHROME</only>
+    </item>
   </item>
 </root>
