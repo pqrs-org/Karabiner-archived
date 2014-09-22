@@ -205,15 +205,51 @@
       <appendix>- delete to ctrl+d (delete forwards)</appendix>
       <identifier>remap.app_term_meta_movement</identifier>
       <only>TERMINAL</only>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L, KeyCode::E, ModifierFlag::CONTROL_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::B</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::F</autogen>
-      <autogen>__KeyToKey__ KeyCode::DELETE, ModifierFlag::COMMAND_L, KeyCode::U, ModifierFlag::CONTROL_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, ModifierFlag::COMMAND_L, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::DELETE, ModifierFlag::OPTION_L, KeyCode::W, ModifierFlag::CONTROL_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L, KeyCode::ESCAPE, KeyCode::D</autogen>
-      <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, KeyCode::D, ModifierFlag::CONTROL_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::A, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::E, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::ESCAPE, KeyCode::B,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::ESCAPE, KeyCode::F,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        FROMKEYCODE_FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::K, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        FROMKEYCODE_FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::ESCAPE, KeyCode::D,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        FROMKEYCODE_FORWARD_DELETE,
+        KeyCode::D, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::U, ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::W, ModifierFlag::CONTROL_L,
+      </autogen>
     </item>
     <item>
       <name>Meta Modifier Key</name>
