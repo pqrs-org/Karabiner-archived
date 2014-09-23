@@ -68,11 +68,7 @@ namespace org_pqrs_Karabiner {
   private:
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p)        : params(new Params_KeyboardEventCallBack(p)) {}
-      Item(const Params_KeyboardSpecialEventCallback& p) : params(new Params_KeyboardSpecialEventCallback(p)) {}
-      Item(const Params_RelativePointerEventCallback& p) : params(new Params_RelativePointerEventCallback(p)) {}
-      Item(const Params_ScrollWheelEventCallback& p)     : params(new Params_ScrollWheelEventCallback(p)) {}
-      Item(const Params_Wait& p)                         : params(new Params_Wait(p)) {}
+      Item(const Params_Base& p) : params(Params_Factory::copy(p)) {}
 
       virtual ~Item(void) {
         if (params) {
