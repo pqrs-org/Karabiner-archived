@@ -61,7 +61,7 @@ namespace org_pqrs_Karabiner {
 
   // ----------------------------------------------------------------------
   unsigned int
-  EventOutputQueue::calcDelay(const ParamsUnion& paramsUnion)
+  EventOutputQueue::calcDelay(const Params_Base& params)
   {
     // ----------------------------------------
     {
@@ -79,7 +79,7 @@ namespace org_pqrs_Karabiner {
       //      PointingButton::LEFT, ModifierFlag::COMMAND_L,
       //    </autogen>
       //
-      if (paramsUnion.isModifier()) {
+      if (params.isModifier()) {
         return Config::get_wait_before_and_after_a_modifier_key_event();
       }
     }
@@ -93,10 +93,10 @@ namespace org_pqrs_Karabiner {
       // we send press button event and release button event at the same time.
       //
 
-      auto params = paramsUnion.get_Params_RelativePointerEventCallback();
-      if (params) {
-        if (params->buttons != previousButtons_) {
-          previousButtons_ = params->buttons;
+      auto p = params.get_Params_RelativePointerEventCallback();
+      if (p) {
+        if (p->buttons != previousButtons_) {
+          previousButtons_ = p->buttons;
           return Config::get_wait_before_and_after_a_click_event();
         }
       }
@@ -121,19 +121,22 @@ namespace org_pqrs_Karabiner {
   {
     // IOLOG_DEVEL("EventOutputQueue::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
 
-    Item* p = static_cast<Item*>(queue_.safe_front());
-    if (! p) return;
+    Item* front = static_cast<Item*>(queue_.safe_front());
+    if (! front) return;
+    if (! front->params) return;
+
+    const Params_Base& params = *(front->params);
 
     // Delay after modifier or click.
-    unsigned int delay = calcDelay(p->params);
+    unsigned int delay = calcDelay(params);
 
     // ----------------------------------------
     {
-      auto params = (p->params).get_Params_KeyboardEventCallBack();
-      if (params) {
-        bool handled = VirtualKey::handleAfterEnqueued(*params);
+      auto p = params.get_Params_KeyboardEventCallBack();
+      if (p) {
+        bool handled = VirtualKey::handleAfterEnqueued(*p);
         if (! handled) {
-          ListHookedKeyboard::instance().apply(*params);
+          ListHookedKeyboard::instance().apply(*p);
         }
 
         // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
@@ -142,19 +145,19 @@ namespace org_pqrs_Karabiner {
       }
     }
     {
-      auto params = (p->params).get_Params_UpdateEventFlagsCallback();
-      if (params) {
+      auto p = params.get_Params_UpdateEventFlagsCallback();
+      if (p) {
         // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
         // (If VMware Fusion's driver is installed, the wrong order issue will be happen.)
         delay = maxDelay(delay, 1);
       }
     }
     {
-      auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
-      if (params) {
-        if (! ListHookedConsumer::instance().apply(*params)) {
+      auto p = params.get_Params_KeyboardSpecialEventCallback();
+      if (p) {
+        if (! ListHookedConsumer::instance().apply(*p)) {
           // If there is no consumer device, we send an event as a software key.
-          VirtualKey::VK_IOHIDPOSTEVENT::post(*params);
+          VirtualKey::VK_IOHIDPOSTEVENT::post(*p);
         }
 
         // We need to wait at least 1ms in order to avoid changing key sequence order randomly.
@@ -163,21 +166,21 @@ namespace org_pqrs_Karabiner {
       }
     }
     {
-      auto params = (p->params).get_Params_RelativePointerEventCallback();
-      if (params) {
-        ListHookedPointing::instance().apply(*params);
+      auto p = params.get_Params_RelativePointerEventCallback();
+      if (p) {
+        ListHookedPointing::instance().apply(*p);
       }
     }
     {
-      auto params = (p->params).get_Params_ScrollWheelEventCallback();
-      if (params) {
-        ListHookedPointing::instance().apply(*params);
+      auto p = params.get_Params_ScrollWheelEventCallback();
+      if (p) {
+        ListHookedPointing::instance().apply(*p);
       }
     }
     {
-      auto params = (p->params).get_Params_Wait();
-      if (params) {
-        delay = maxDelay(delay, static_cast<unsigned int>(params->milliseconds));
+      auto p = params.get_Params_Wait();
+      if (p) {
+        delay = maxDelay(delay, static_cast<unsigned int>(p->milliseconds));
       }
     }
 
@@ -189,7 +192,8 @@ namespace org_pqrs_Karabiner {
     // Delay before modifier and click.
     Item* next = static_cast<Item*>(queue_.safe_front());
     if (! next) return;
-    delay = maxDelay(delay, calcDelay(next->params));
+    if (! next->params) return;
+    delay = maxDelay(delay, calcDelay(*(next->params)));
 
     fire_timer_.setTimeoutMS(delay);
   }
