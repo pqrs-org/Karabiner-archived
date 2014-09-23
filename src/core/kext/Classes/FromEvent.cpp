@@ -12,34 +12,34 @@ namespace org_pqrs_Karabiner {
 
       case Type::KEY:
       {
-        auto params = paramsUnion.get_Params_KeyboardEventCallBack();
-        if (! params) return false;
+        auto p = paramsUnion.get_Params_KeyboardEventCallBack();
+        if (! p) return false;
 
-        if (params->key != key_) return false;
+        if (p->key != key_) return false;
 
-        isDown = params->ex_iskeydown;
+        isDown = p->ex_iskeydown;
         return true;
       }
 
       case Type::CONSUMER_KEY:
       {
-        auto params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
-        if (! params) return false;
+        auto p = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+        if (! p) return false;
 
-        if (params->key != consumer_) return false;
+        if (p->key != consumer_) return false;
 
-        isDown = params->ex_iskeydown;
+        isDown = p->ex_iskeydown;
         return true;
       }
 
       case Type::POINTING_BUTTON:
       {
-        auto params = paramsUnion.get_Params_RelativePointerEventCallback();
-        if (! params) return false;
+        auto p = paramsUnion.get_Params_RelativePointerEventCallback();
+        if (! p) return false;
 
-        if (params->ex_button != button_) return false;
+        if (p->ex_button != button_) return false;
 
-        isDown = params->ex_isbuttondown;
+        isDown = p->ex_isbuttondown;
         return true;
       }
     }
