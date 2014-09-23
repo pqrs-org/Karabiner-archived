@@ -2,12 +2,12 @@
 #define EVENTOUTPUTQUEUE_HPP
 
 #include "ButtonStatus.hpp"
+#include "CallbackWrapper.hpp"
 #include "CommonData.hpp"
 #include "FlagStatus.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
-#include "ParamsUnion.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -68,19 +68,27 @@ namespace org_pqrs_Karabiner {
   private:
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p)        : params(p) {}
-      Item(const Params_KeyboardSpecialEventCallback& p) : params(p) {}
-      Item(const Params_RelativePointerEventCallback& p) : params(p) {}
-      Item(const Params_ScrollWheelEventCallback& p)     : params(p) {}
-      Item(const Params_Wait& p)                         : params(p) {}
+      Item(const Params_KeyboardEventCallBack& p)        : params(new Params_KeyboardEventCallBack(p)) {}
+      Item(const Params_KeyboardSpecialEventCallback& p) : params(new Params_KeyboardSpecialEventCallback(p)) {}
+      Item(const Params_RelativePointerEventCallback& p) : params(new Params_RelativePointerEventCallback(p)) {}
+      Item(const Params_ScrollWheelEventCallback& p)     : params(new Params_ScrollWheelEventCallback(p)) {}
+      Item(const Params_Wait& p)                         : params(new Params_Wait(p)) {}
 
-      virtual ~Item(void) {}
+      virtual ~Item(void) {
+        if (params) {
+          delete params;
+        }
+      }
 
-      ParamsUnion params;
+      Params_Base* params;
+
+    private:
+      Item(const Item& rhs); // Prevent copy-construction
+      Item& operator=(const Item& rhs); // Prevent assignment
     };
 
     static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);
-    static unsigned int calcDelay(const ParamsUnion& paramsUnion);
+    static unsigned int calcDelay(const Params_Base& params);
     static void push(const Params_KeyboardEventCallBack& p);
     static void push(const Params_KeyboardSpecialEventCallback& p);
     static void push(const Params_RelativePointerEventCallback& p);
