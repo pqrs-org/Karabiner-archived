@@ -181,7 +181,9 @@
       </item>
     </item>
     <item>
-      <name>1234567890 to !@#$%^&amp;*() / Shift+1234567890 to 1234567890</name>
+      <name>Swap numbers and symbols.</name>
+      <appendix>1234567890 to !@#$%^&amp;*()</appendix>
+      <appendix>shift-1234567890 to 1234567890</appendix>
       <identifier>remap.swap_number_and_symbol</identifier>
       <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
