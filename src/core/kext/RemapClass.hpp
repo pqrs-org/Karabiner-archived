@@ -2,6 +2,7 @@
 #define REMAPCLASS_HPP
 
 #include "bridge.h"
+#include "ParamsUnion.hpp"
 #include "RemapFilter/RemapFilterBase.hpp"
 #include "RemapFunc/RemapFuncBase.hpp"
 
@@ -24,7 +25,7 @@ namespace org_pqrs_Karabiner {
       // for DropKeyAfterRemap
       bool drop(const Params_KeyboardEventCallBack& params);
       // for BlockUntilKeyUp
-      bool isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion);
+      bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
       //
       bool remap_SimultaneousKeyPresses(void);
       //
@@ -68,7 +69,7 @@ namespace org_pqrs_Karabiner {
     void remap(RemapParams& remapParams, bool passThroughEnabled);
 
     // for BlockUntilKeyUp
-    bool isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion, bool passThroughEnabled);
+    bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
     bool remap_simultaneouskeypresses(bool passThroughEnabled);
     bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled);
     const char* get_statusmessage(void) const { return statusmessage_; }
@@ -116,7 +117,7 @@ namespace org_pqrs_Karabiner {
     void remap(RemapParams& remapParams);
 
     // for BlockUntilKeyUp
-    bool isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion);
+    bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
 
     // return true if EventInputQueue::queue_ is changed.
     bool remap_simultaneouskeypresses(void);
