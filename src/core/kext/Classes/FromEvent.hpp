@@ -25,11 +25,11 @@ namespace org_pqrs_Karabiner {
     explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY),    consumer_(v) {}
     explicit FromEvent(PointingButton v)  : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v)   {}
 
-    explicit FromEvent(const ParamsUnion& paramsUnion) : isPressing_(false) {
+    explicit FromEvent(const Params_Base& paramsBase) : isPressing_(false) {
       type_ = Type::NONE;
 
       {
-        auto p = paramsUnion.get_Params_KeyboardEventCallBack();
+        auto p = paramsBase.get_Params_KeyboardEventCallBack();
         if (p) {
           type_ = Type::KEY;
           key_ = p->key;
@@ -37,7 +37,7 @@ namespace org_pqrs_Karabiner {
         }
       }
       {
-        auto p = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+        auto p = paramsBase.get_Params_KeyboardSpecialEventCallback();
         if (p) {
           type_ = Type::CONSUMER_KEY;
           consumer_ = p->key;
@@ -45,7 +45,7 @@ namespace org_pqrs_Karabiner {
         }
       }
       {
-        auto p = paramsUnion.get_Params_RelativePointerEventCallback();
+        auto p = paramsBase.get_Params_RelativePointerEventCallback();
         if (p) {
           type_ = Type::POINTING_BUTTON;
           button_ = p->ex_button;
