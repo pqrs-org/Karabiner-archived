@@ -466,7 +466,7 @@ namespace org_pqrs_Karabiner {
 
       CommonData::setcurrent_deviceIdentifier(front->deviceIdentifier);
       {
-        auto params = (front->params).get_Params_KeyboardEventCallBack();
+        auto params = (front->getParamsBase()).get_Params_KeyboardEventCallBack();
         if (params) {
           CommonData::setcurrent_keyboardType(params->keyboardType);
         }
@@ -495,7 +495,7 @@ namespace org_pqrs_Karabiner {
     if (! p) return;
 
     {
-      auto params = (p->params).get_Params_KeyboardEventCallBack();
+      auto params = (p->getParamsBase()).get_Params_KeyboardEventCallBack();
       if (params) {
         if (params->ex_iskeydown) {
           EventWatcher::on();
@@ -538,12 +538,12 @@ namespace org_pqrs_Karabiner {
           NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
         }
 
-        Core::remap_KeyboardEventCallback(p->params);
+        Core::remap_KeyboardEventCallback(p->getParamsBase());
       }
     }
 
     {
-      auto params = (p->params).get_Params_KeyboardSpecialEventCallback();
+      auto params = (p->getParamsBase()).get_Params_KeyboardSpecialEventCallback();
       if (params) {
         if (params->ex_iskeydown) {
           EventWatcher::on();
@@ -555,12 +555,12 @@ namespace org_pqrs_Karabiner {
         // ------------------------------------------------------------
         NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
 
-        Core::remap_KeyboardSpecialEventCallback(p->params);
+        Core::remap_KeyboardSpecialEventCallback(p->getParamsBase());
       }
     }
 
     {
-      auto params = (p->params).get_Params_RelativePointerEventCallback();
+      auto params = (p->getParamsBase()).get_Params_RelativePointerEventCallback();
       if (params) {
         // ------------------------------------------------------------
         // We set EventWatcher::on only when Buttons pressed.
@@ -597,12 +597,12 @@ namespace org_pqrs_Karabiner {
           NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
         }
 
-        Core::remap_RelativePointerEventCallback(p->params);
+        Core::remap_RelativePointerEventCallback(p->getParamsBase());
       }
     }
 
     {
-      auto params = (p->params).get_Params_ScrollWheelEventCallback();
+      auto params = (p->getParamsBase()).get_Params_ScrollWheelEventCallback();
       if (params) {
         // When "Space to Command (+ When you type Space only, send Space)" is activated,
         // user press Space and scroll wheel to input Command+ScrollWheel.
@@ -611,11 +611,11 @@ namespace org_pqrs_Karabiner {
         EventWatcher::on();
         FlagStatus::globalFlagStatus().lazy_enable();
 
-        Core::remap_ScrollWheelEventCallback(p->params);
+        Core::remap_ScrollWheelEventCallback(p->getParamsBase());
       }
     }
 
-    CommonData::setcurrent_lastpressedphysicalkey((p->params).get_Params_Base());
+    CommonData::setcurrent_lastpressedphysicalkey(p->getParamsBase());
 
     queue_.pop_front();
     ++serialNumber_;
@@ -648,7 +648,7 @@ namespace org_pqrs_Karabiner {
     // Ignore events that are not down/up events.
     // (For example, mouse cursor move events.)
     bool iskeydown = false;
-    if (! (front->params).iskeydown(iskeydown)) return true;
+    if (! (front->getParamsBase()).iskeydown(iskeydown)) return true;
 
     // ----------------------------------------
     // Modify pressingEvents_.
@@ -671,7 +671,7 @@ namespace org_pqrs_Karabiner {
 
     // Add to list.
     if (iskeydown) {
-      pressingEvents_.push_back(new PressingEvent(front->params));
+      pressingEvents_.push_back(new PressingEvent(front->getParamsBase()));
     }
 
     // ----------------------------------------
@@ -724,12 +724,12 @@ namespace org_pqrs_Karabiner {
 
       // Do not call setIgnoreToAllPressingEvents here.
       //
-      // We do not need to call that here because front->params is already removed from pressingEvents_.
+      // We do not need to call that here because front->p_ is already removed from pressingEvents_.
       // And if multiple __BlockUntilKeyUp__ are enabled,
       // setIgnoreToAllPressingEvents breaks other __BlockUntilKeyUp__.
 
       // Move up event after down event.
-      FromEvent fromEvent((front->params).get_Params_Base());
+      FromEvent fromEvent(front->getParamsBase());
       for (Item* p = static_cast<Item*>(blockedQueue_.safe_back()); p; p = static_cast<Item*>(p->getprev())) {
         if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
           if (p->getnext()) {
@@ -767,7 +767,7 @@ namespace org_pqrs_Karabiner {
   bool
   EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const Item& front)
   {
-    FromEvent fromEvent(front.params.get_Params_Base());
+    FromEvent fromEvent(front.getParamsBase());
 
     for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (fromEvent.isTargetDownEvent(p->getParamsBase())) {

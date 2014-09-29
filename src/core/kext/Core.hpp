@@ -21,10 +21,10 @@ namespace org_pqrs_Karabiner {
     bool IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier);
 
     // ----------------------------------------------------------------------
-    void remap_KeyboardEventCallback(ParamsUnion& paramsUnion);
-    void remap_KeyboardSpecialEventCallback(ParamsUnion& paramsUnion);
-    void remap_RelativePointerEventCallback(ParamsUnion& paramsUnion);
-    void remap_ScrollWheelEventCallback(ParamsUnion& paramsUnion);
+    void remap_KeyboardEventCallback(const Params_Base& paramsBase);
+    void remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase);
+    void remap_RelativePointerEventCallback(const Params_Base& paramsBase);
+    void remap_ScrollWheelEventCallback(const Params_Base& paramsBase);
   };
 }
 
