@@ -5,61 +5,57 @@
 
 using namespace org_pqrs_Karabiner;
 
-ParamsUnion* down_return;
-ParamsUnion* up_return;
-ParamsUnion* down_shift;
-ParamsUnion* up_shift;
+Params_KeyboardEventCallBack* down_return;
+Params_KeyboardEventCallBack* up_return;
+Params_KeyboardEventCallBack* down_shift;
+Params_KeyboardEventCallBack* up_shift;
 
 TEST(Generic, setUp) {
   KeyCodeModifierFlagPairs::clearVirtualModifiers();
 
-  down_return = new ParamsUnion(
-    Params_KeyboardEventCallBack(
-      EventType::DOWN,
-      Flags(0),
-      KeyCode::RETURN,
-      CharCode(0),
-      CharSet(0),
-      OrigCharCode(0),
-      OrigCharSet(0),
-      KeyboardType(0),
-      false));
+  down_return = new Params_KeyboardEventCallBack(
+    EventType::DOWN,
+    Flags(0),
+    KeyCode::RETURN,
+    CharCode(0),
+    CharSet(0),
+    OrigCharCode(0),
+    OrigCharSet(0),
+    KeyboardType(0),
+    false);
 
-  up_return = new ParamsUnion(
-    Params_KeyboardEventCallBack(
-      EventType::UP,
-      Flags(0),
-      KeyCode::RETURN,
-      CharCode(0),
-      CharSet(0),
-      OrigCharCode(0),
-      OrigCharSet(0),
-      KeyboardType(0),
-      false));
+  up_return = new Params_KeyboardEventCallBack(
+    EventType::UP,
+    Flags(0),
+    KeyCode::RETURN,
+    CharCode(0),
+    CharSet(0),
+    OrigCharCode(0),
+    OrigCharSet(0),
+    KeyboardType(0),
+    false);
 
-  down_shift = new ParamsUnion(
-    Params_KeyboardEventCallBack(
-      EventType::MODIFY,
-      Flags(ModifierFlag::SHIFT_L),
-      KeyCode::SHIFT_L,
-      CharCode(0),
-      CharSet(0),
-      OrigCharCode(0),
-      OrigCharSet(0),
-      KeyboardType(0),
-      false));
+  down_shift = new Params_KeyboardEventCallBack(
+    EventType::MODIFY,
+    Flags(ModifierFlag::SHIFT_L),
+    KeyCode::SHIFT_L,
+    CharCode(0),
+    CharSet(0),
+    OrigCharCode(0),
+    OrigCharSet(0),
+    KeyboardType(0),
+    false);
 
-  up_shift = new ParamsUnion(
-    Params_KeyboardEventCallBack(
-      EventType::MODIFY,
-      Flags(0),
-      KeyCode::SHIFT_L,
-      CharCode(0),
-      CharSet(0),
-      OrigCharCode(0),
-      OrigCharSet(0),
-      KeyboardType(0),
-      false));
+  up_shift = new Params_KeyboardEventCallBack(
+    EventType::MODIFY,
+    Flags(0),
+    KeyCode::SHIFT_L,
+    CharCode(0),
+    CharSet(0),
+    OrigCharCode(0),
+    OrigCharSet(0),
+    KeyboardType(0),
+    false);
 }
 
 TEST(Generic, getModifierFlag) {
