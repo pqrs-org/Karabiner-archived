@@ -76,7 +76,7 @@ namespace org_pqrs_Karabiner {
         }
       }
 
-      Params_Base* params;
+      const Params_Base* params;
 
     private:
       Item(const Item& rhs); // Prevent copy-construction
