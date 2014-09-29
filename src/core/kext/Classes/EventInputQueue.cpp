@@ -729,7 +729,7 @@ namespace org_pqrs_Karabiner {
       // setIgnoreToAllPressingEvents breaks other __BlockUntilKeyUp__.
 
       // Move up event after down event.
-      FromEvent fromEvent(front->params);
+      FromEvent fromEvent((front->params).get_Params_Base());
       for (Item* p = static_cast<Item*>(blockedQueue_.safe_back()); p; p = static_cast<Item*>(p->getprev())) {
         if (fromEvent.isTargetDownEvent(p->params)) {
           if (p->getnext()) {
@@ -767,7 +767,7 @@ namespace org_pqrs_Karabiner {
   bool
   EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const Item& front)
   {
-    FromEvent fromEvent(front.params);
+    FromEvent fromEvent(front.params.get_Params_Base());
 
     for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       if (fromEvent.isTargetDownEvent(p->params)) {

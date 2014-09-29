@@ -129,7 +129,7 @@ namespace org_pqrs_Karabiner {
       public:
         PressingEvent(const ParamsUnion& paramsUnion) :
           paramsUnion_(paramsUnion),
-          fromEvent_(paramsUnion),
+          fromEvent_(paramsUnion.get_Params_Base()),
           ignore_(false) {}
         virtual ~PressingEvent(void) {}
 
