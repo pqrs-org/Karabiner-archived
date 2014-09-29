@@ -2,7 +2,6 @@
 #define REMAPCLASS_HPP
 
 #include "bridge.h"
-#include "ParamsUnion.hpp"
 #include "RemapFilter/RemapFilterBase.hpp"
 #include "RemapFunc/RemapFuncBase.hpp"
 

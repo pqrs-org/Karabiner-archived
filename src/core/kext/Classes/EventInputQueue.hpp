@@ -6,7 +6,6 @@
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
-#include "ParamsUnion.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -82,19 +81,31 @@ namespace org_pqrs_Karabiner {
     // ------------------------------------------------------------
     class Item : public List::Item {
     public:
-      Item(const Params_KeyboardEventCallBack& p,        bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
-      Item(const Params_KeyboardSpecialEventCallback& p, bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
-      Item(const Params_RelativePointerEventCallback& p, bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
-      Item(const Params_ScrollWheelEventCallback& p,     bool r, const DeviceIdentifier& di, uint32_t d) :
-        params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
-      virtual ~Item(void) {}
+      Item(const Params_Base& p, bool r, const DeviceIdentifier& di, uint32_t d) :
+        p_(Params_Factory::copy(p)),
+        retainFlagStatusTemporaryCount(r),
+        deviceIdentifier(di),
+        delayMS(d),
+        enqueuedFrom(ENQUEUED_FROM_HARDWARE)
+      {}
 
-      const Params_Base& getParamsBase(void) const { return params.get_Params_Base(); }
+      Item(const Item& rhs) :
+        p_(Params_Factory::copy(rhs.getParamsBase())),
+        retainFlagStatusTemporaryCount(rhs.retainFlagStatusTemporaryCount),
+        deviceIdentifier(rhs.deviceIdentifier),
+        delayMS(rhs.delayMS),
+        enqueuedFrom(rhs.enqueuedFrom)
+      {}
 
-      ParamsUnion params;
+      virtual ~Item(void)
+      {
+        if (p_) {
+          delete p_;
+        }
+      }
+
+      const Params_Base& getParamsBase(void) const { return Params_Base::safe_dereference(p_); }
+
       bool retainFlagStatusTemporaryCount;
       DeviceIdentifier deviceIdentifier;
 
@@ -105,6 +116,11 @@ namespace org_pqrs_Karabiner {
         ENQUEUED_FROM_HARDWARE,
         ENQUEUED_FROM_BLOCKEDQUEUE,
       } enqueuedFrom;
+
+    private:
+      Item& operator=(const Item& rhs); // Prevent assignment
+
+      const Params_Base* p_;
     };
 
   private:
@@ -129,21 +145,31 @@ namespace org_pqrs_Karabiner {
 
       class PressingEvent : public List::Item {
       public:
-        PressingEvent(const ParamsUnion& paramsUnion) :
-          paramsUnion_(paramsUnion),
-          fromEvent_(paramsUnion.get_Params_Base()),
-          ignore_(false) {}
-        virtual ~PressingEvent(void) {}
+        PressingEvent(const Params_Base& p) :
+          p_(Params_Factory::copy(p)),
+          ignore_(false)
+        {
+          fromEvent_ = FromEvent(Params_Base::safe_dereference(p_));
+        }
 
-        const ParamsUnion& getParamsUnion(void) const { return paramsUnion_; }
-        const Params_Base& getParamsBase(void) const { return paramsUnion_.get_Params_Base(); }
+        virtual ~PressingEvent(void)
+        {
+          if (p_) {
+            delete p_;
+          }
+        }
+
+        const Params_Base& getParamsBase(void) const { return Params_Base::safe_dereference(p_); }
         const FromEvent& getFromEvent(void) const { return fromEvent_; }
 
         bool ignore(void) const { return ignore_; }
         void setIgnore(void) { ignore_ = true; }
 
       private:
-        ParamsUnion paramsUnion_;
+        PressingEvent(const PressingEvent& rhs); // Prevent copy-construction
+        PressingEvent& operator=(const PressingEvent& rhs); // Prevent assignment
+
+        const Params_Base* p_;
         FromEvent fromEvent_;
         bool ignore_;
       };

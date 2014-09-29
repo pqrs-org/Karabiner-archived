@@ -179,9 +179,9 @@ namespace org_pqrs_Karabiner {
 
     // ======================================================================
     void
-    remap_KeyboardEventCallback(ParamsUnion& paramsUnion)
+    remap_KeyboardEventCallback(const Params_Base& paramsBase)
     {
-      auto params = paramsUnion.get_Params_KeyboardEventCallBack();
+      auto params = paramsBase.get_Params_KeyboardEventCallBack();
       if (! params) return;
 
       FlagStatus::globalFlagStatus().set(params->key, params->flags);
@@ -210,9 +210,9 @@ namespace org_pqrs_Karabiner {
     }
 
     void
-    remap_KeyboardSpecialEventCallback(ParamsUnion& paramsUnion)
+    remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase)
     {
-      auto params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+      auto params = paramsBase.get_Params_KeyboardSpecialEventCallback();
       if (! params) return;
 
       RemapParams remapParams(*params);
@@ -236,9 +236,9 @@ namespace org_pqrs_Karabiner {
     }
 
     void
-    remap_RelativePointerEventCallback(ParamsUnion& paramsUnion)
+    remap_RelativePointerEventCallback(const Params_Base& paramsBase)
     {
-      auto params = paramsUnion.get_Params_RelativePointerEventCallback();
+      auto params = paramsBase.get_Params_RelativePointerEventCallback();
       if (! params) return;
 
       ButtonStatus::set(params->ex_button, params->ex_isbuttondown);
@@ -257,9 +257,9 @@ namespace org_pqrs_Karabiner {
     }
 
     void
-    remap_ScrollWheelEventCallback(ParamsUnion& paramsUnion)
+    remap_ScrollWheelEventCallback(const Params_Base& paramsBase)
     {
-      auto params = paramsUnion.get_Params_ScrollWheelEventCallback();
+      auto params = paramsBase.get_Params_ScrollWheelEventCallback();
       if (! params) return;
 
       RemapParams remapParams(*params);
