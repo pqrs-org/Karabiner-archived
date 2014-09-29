@@ -70,7 +70,8 @@ namespace org_pqrs_Karabiner {
     public:
       Item(const Params_Base& p) : p_(Params_Factory::copy(p)) {}
 
-      virtual ~Item(void) {
+      virtual ~Item(void)
+      {
         if (p_) {
           delete p_;
         }
