@@ -4,7 +4,7 @@
 #undef protected
 #undef private
 
-#include "CallbackWrapper.hpp"
+#include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventInputQueue.hpp"

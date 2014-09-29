@@ -1,7 +1,7 @@
 #ifndef KEYBOARDREPEAT_HPP
 #define KEYBOARDREPEAT_HPP
 
-#include "CallbackWrapper.hpp"
+#include "CallBackWrapper.hpp"
 #include "Config.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
