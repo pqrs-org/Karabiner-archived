@@ -200,7 +200,7 @@ namespace org_pqrs_Karabiner {
     return false;
   }
 
-// ----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
   int RemapClass::allocation_count_ = 0;
 
   RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex) :
