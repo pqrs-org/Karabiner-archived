@@ -64,15 +64,18 @@ namespace org_pqrs_Karabiner {
   private:
     class Item : public List::Item {
     public:
-      Item(const Params_Base& p) : params(Params_Factory::copy(p)) {}
+      Item(const Params_Base& p) : p_(Params_Factory::copy(p)) {}
 
       virtual ~Item(void) {
-        if (params) {
-          delete params;
+        if (p_) {
+          delete p_;
         }
       }
 
-      const Params_Base* params;
+      const Params_Base& getParamsBase(void) const { return Params_Base::safe_dereference(p_); }
+
+    private:
+      const Params_Base* p_;
     };
 
     // ------------------------------------------------------------
