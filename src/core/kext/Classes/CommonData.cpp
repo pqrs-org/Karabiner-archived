@@ -11,8 +11,6 @@ namespace org_pqrs_Karabiner {
   LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
   char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
-  int CommonData::alloccount_;
-
   bool
   CommonData::initialize(void)
   {
@@ -61,22 +59,5 @@ namespace org_pqrs_Karabiner {
     if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return NULL;
 
     return statusmessage_[index];
-  }
-
-  void
-  CommonData::increase_alloccount(void)
-  {
-    ++alloccount_;
-    if (alloccount_ > 1024) {
-      IOLOG_WARN("alloccount_ > 1024\n");
-    }
-    // IOLOG_DEVEL("CommonData::increase_alloccount alloccount_:%d\n", alloccount_);
-  }
-
-  void
-  CommonData::decrease_alloccount(void)
-  {
-    --alloccount_;
-    // IOLOG_DEVEL("CommonData::decrease_alloccount alloccount_:%d\n", alloccount_);
   }
 }

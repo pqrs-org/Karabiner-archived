@@ -40,10 +40,6 @@ namespace org_pqrs_Karabiner {
     static void send_notification_statusmessage(int index);
     static const char* get_statusmessage(int index);
 
-    // for debug
-    static void increase_alloccount(void);
-    static void decrease_alloccount(void);
-
   private:
     static AbsoluteTime current_ts_;
     static KeyboardType current_keyboardType_;
@@ -52,8 +48,6 @@ namespace org_pqrs_Karabiner {
     static LastPressedPhysicalKey current_lastpressedphysicalkey_;
 
     static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
-
-    static int alloccount_;
   };
 }
 
