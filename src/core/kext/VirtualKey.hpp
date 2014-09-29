@@ -1,7 +1,7 @@
 #ifndef VIRTUALKEY_HPP
 #define VIRTUALKEY_HPP
 
-#include "CallbackWrapper.hpp"
+#include "CallBackWrapper.hpp"
 #include "KeyCode.hpp"
 #include "Types.hpp"
 
