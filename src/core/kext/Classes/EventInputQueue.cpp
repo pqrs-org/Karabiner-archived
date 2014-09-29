@@ -616,10 +616,7 @@ namespace org_pqrs_Karabiner {
     }
 
     {
-      auto params = (p->params).get_Params_Base();
-      if (params) {
-        CommonData::setcurrent_lastpressedphysicalkey(*params);
-      }
+      CommonData::setcurrent_lastpressedphysicalkey((p->params).get_Params_Base());
     }
 
     queue_.pop_front();

@@ -42,7 +42,7 @@ namespace org_pqrs_Karabiner {
       }
     }
 
-    const Params_Base* get_Params_Base(void) const { return params_; }
+    const Params_Base& get_Params_Base(void) const { return Params_Base::safe_dereference(params_); }
 
     const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const
     {
