@@ -45,9 +45,7 @@ namespace org_pqrs_Karabiner {
       charCode(cc), charSet(cs), origCharCode(occ), origCharSet(ocs),
       keyboardType(kt), repeat(r),
       ex_iskeydown(et.isKeyDownOrModifierDown(kc, fl))
-    {
-      CommonData::increase_alloccount();
-    }
+    {}
 
     Params_KeyboardEventCallBack(EventType et, Flags fl, KeyCode kc,
                                  KeyboardType kt, bool r) :
@@ -55,19 +53,9 @@ namespace org_pqrs_Karabiner {
       charCode(0), charSet(0), origCharCode(0), origCharSet(0),
       keyboardType(kt), repeat(r),
       ex_iskeydown(et.isKeyDownOrModifierDown(kc, fl))
-    {
-      CommonData::increase_alloccount();
-    }
+    {}
 
-    ~Params_KeyboardEventCallBack(void) {
-      CommonData::decrease_alloccount();
-    }
-
-    static Params_KeyboardEventCallBack* alloc(const Params_KeyboardEventCallBack& p) {
-      return new Params_KeyboardEventCallBack(p.eventType, p.flags, p.key,
-                                              p.charCode, p.charSet, p.origCharCode, p.origCharSet,
-                                              p.keyboardType, p.repeat);
-    }
+    ~Params_KeyboardEventCallBack(void) {}
 
     const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const { return this; }
     bool iskeydown(bool& output) const { output = ex_iskeydown; return true; }
@@ -97,17 +85,9 @@ namespace org_pqrs_Karabiner {
     friend class EventOutputQueue;
 
   public:
-    Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {
-      CommonData::increase_alloccount();
-    }
+    Params_UpdateEventFlagsCallback(Flags fl) : flags(fl) {}
 
-    ~Params_UpdateEventFlagsCallback(void) {
-      CommonData::decrease_alloccount();
-    }
-
-    static Params_UpdateEventFlagsCallback* alloc(const Params_UpdateEventFlagsCallback& p) {
-      return new Params_UpdateEventFlagsCallback(p.flags);
-    }
+    ~Params_UpdateEventFlagsCallback(void) {}
 
     const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const { return this; }
 
@@ -131,31 +111,16 @@ namespace org_pqrs_Karabiner {
       eventType(et), flags(fl), key(ckc),
       flavor(fv), guid(g),
       repeat(r), ex_iskeydown(et == EventType::DOWN)
-    {
-      CommonData::increase_alloccount();
-    }
+    {}
 
     Params_KeyboardSpecialEventCallback(EventType et, Flags fl, ConsumerKeyCode ckc,
                                         bool r) :
       eventType(et), flags(fl), key(ckc),
       flavor(ckc.get()), guid(static_cast<UInt64>(-1)),
       repeat(r), ex_iskeydown(et == EventType::DOWN)
-    {
-      CommonData::increase_alloccount();
-    }
+    {}
 
-    ~Params_KeyboardSpecialEventCallback(void) {
-      CommonData::decrease_alloccount();
-    }
-
-    static Params_KeyboardSpecialEventCallback* alloc(const Params_KeyboardSpecialEventCallback& p) {
-      return new Params_KeyboardSpecialEventCallback(p.eventType,
-                                                     p.flags,
-                                                     p.key,
-                                                     p.flavor,
-                                                     p.guid,
-                                                     p.repeat);
-    }
+    ~Params_KeyboardSpecialEventCallback(void) {}
 
     const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const { return this; }
     bool iskeydown(bool& output) const { output = ex_iskeydown; return true; }
@@ -185,17 +150,9 @@ namespace org_pqrs_Karabiner {
       buttons(bt),
       dx(x), dy(y),
       ex_button(ex_btn), ex_isbuttondown(ex_isdown)
-    {
-      CommonData::increase_alloccount();
-    }
+    {}
 
-    ~Params_RelativePointerEventCallback(void) {
-      CommonData::decrease_alloccount();
-    }
-
-    static Params_RelativePointerEventCallback* alloc(const Params_RelativePointerEventCallback& p) {
-      return new Params_RelativePointerEventCallback(p.buttons, p.dx, p.dy, p.ex_button, p.ex_isbuttondown);
-    }
+    ~Params_RelativePointerEventCallback(void) {}
 
     const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return this; }
     bool iskeydown(bool& output) const
@@ -236,26 +193,10 @@ namespace org_pqrs_Karabiner {
       deltaAxis1(da1), deltaAxis2(da2), deltaAxis3(da3),
       fixedDelta1(fd1), fixedDelta2(fd2), fixedDelta3(fd3),
       pointDelta1(pd1), pointDelta2(pd2), pointDelta3(pd3),
-      options(op) {
-      CommonData::increase_alloccount();
-    }
+      options(op)
+    {}
 
-    ~Params_ScrollWheelEventCallback(void) {
-      CommonData::decrease_alloccount();
-    }
-
-    static Params_ScrollWheelEventCallback* alloc(const Params_ScrollWheelEventCallback& p) {
-      return new Params_ScrollWheelEventCallback(p.deltaAxis1,
-                                                 p.deltaAxis2,
-                                                 p.deltaAxis3,
-                                                 p.fixedDelta1,
-                                                 p.fixedDelta2,
-                                                 p.fixedDelta3,
-                                                 p.pointDelta1,
-                                                 p.pointDelta2,
-                                                 p.pointDelta3,
-                                                 p.options);
-    }
+    ~Params_ScrollWheelEventCallback(void) {}
 
     const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const { return this; }
 
@@ -296,17 +237,9 @@ namespace org_pqrs_Karabiner {
     friend class EventOutputQueue;
 
   public:
-    Params_Wait(int ms) : milliseconds(ms) {
-      CommonData::increase_alloccount();
-    }
+    Params_Wait(int ms) : milliseconds(ms) {}
 
-    ~Params_Wait(void) {
-      CommonData::decrease_alloccount();
-    }
-
-    static Params_Wait* alloc(const Params_Wait& p) {
-      return new Params_Wait(p.milliseconds);
-    }
+    ~Params_Wait(void) {}
 
     const Params_Wait* get_Params_Wait(void) const { return this; }
 
