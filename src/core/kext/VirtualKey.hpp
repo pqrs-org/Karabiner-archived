@@ -1,8 +1,8 @@
 #ifndef VIRTUALKEY_HPP
 #define VIRTUALKEY_HPP
 
-#include "CallBackWrapper.hpp"
 #include "KeyCode.hpp"
+#include "Params.hpp"
 #include "Types.hpp"
 
 namespace org_pqrs_Karabiner {

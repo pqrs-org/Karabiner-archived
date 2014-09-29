@@ -3,8 +3,8 @@
 
 #include <IOKit/hidsystem/IOHIPointing.h>
 
-#include "CallBackWrapper.hpp"
 #include "ListHookedDevice.hpp"
+#include "Params.hpp"
 
 namespace org_pqrs_Karabiner {
   class ListHookedPointing : public ListHookedDevice {

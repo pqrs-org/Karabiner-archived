@@ -4,7 +4,6 @@
 #undef protected
 #undef private
 
-#include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
@@ -12,6 +11,7 @@
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
 #include "ListHookedConsumer.hpp"
+#include "Params.hpp"
 
 namespace org_pqrs_Karabiner {
   namespace {

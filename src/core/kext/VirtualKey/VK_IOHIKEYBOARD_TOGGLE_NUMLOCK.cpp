@@ -1,9 +1,9 @@
 #include <IOKit/IOLib.h>
 
-#include "CallBackWrapper.hpp"
 #include "GlobalLock.hpp"
 #include "KeyCode.hpp"
 #include "ListHookedKeyboard.hpp"
+#include "Params.hpp"
 #include "VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp"
 
 namespace org_pqrs_Karabiner {

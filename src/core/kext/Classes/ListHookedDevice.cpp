@@ -1,6 +1,5 @@
 #include <IOKit/hid/IOHIDKeys.h>
 
-#include "CallBackWrapper.hpp"
 #include "Config.hpp"
 #include "IOLogWrapper.hpp"
 #include "ListHookedConsumer.hpp"
@@ -8,6 +7,7 @@
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
 #include "NumHeldDownKeys.hpp"
+#include "Params.hpp"
 #include "TimerWrapper.hpp"
 #include "strlcpy_utf8.hpp"
 

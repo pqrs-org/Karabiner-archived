@@ -2,12 +2,12 @@
 #define EVENTOUTPUTQUEUE_HPP
 
 #include "ButtonStatus.hpp"
-#include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "FlagStatus.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
+#include "Params.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
