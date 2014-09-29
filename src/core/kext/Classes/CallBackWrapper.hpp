@@ -28,6 +28,9 @@ namespace org_pqrs_Karabiner {
 
     virtual bool iskeydown(bool& output) const { return false; }
     virtual bool isModifier(void) const { return false; }
+
+    static const Params_Base& emptyInstance(void);
+    static const Params_Base& safe_dereference(const Params_Base* p) { return p == NULL ? emptyInstance() : *p; }
   };
 
   // =================================================

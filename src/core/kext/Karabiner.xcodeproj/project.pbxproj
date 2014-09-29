@@ -44,6 +44,7 @@
 		345C2F0F1936B86F005CB203 /* UIElementRoleFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */; };
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
+		346A727819D8F55E00DEEDE6 /* CallBackWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346A727719D8F55E00DEEDE6 /* CallBackWrapper.cpp */; };
 		346EE06C1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */; };
 		3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3472914014CEFC64006586F5 /* VK_WAIT.cpp */; };
 		3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3472914114CEFC64006586F5 /* VK_WAIT.hpp */; };
@@ -198,6 +199,7 @@
 		345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UIElementRoleFilter.hpp; path = RemapFilter/UIElementRoleFilter.hpp; sourceTree = "<group>"; };
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
+		346A727719D8F55E00DEEDE6 /* CallBackWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CallBackWrapper.cpp; path = Classes/CallBackWrapper.cpp; sourceTree = "<group>"; };
 		346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ElapsedTimeSinceLastPressedFilter.hpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.hpp; sourceTree = "<group>"; };
 		3472914014CEFC64006586F5 /* VK_WAIT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_WAIT.cpp; path = VirtualKey/VK_WAIT.cpp; sourceTree = "<group>"; };
 		3472914114CEFC64006586F5 /* VK_WAIT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_WAIT.hpp; path = VirtualKey/VK_WAIT.hpp; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			children = (
 				3477932A185B1FA800B3EF06 /* ButtonStatus.cpp */,
 				3477932B185B1FA800B3EF06 /* ButtonStatus.hpp */,
+				346A727719D8F55E00DEEDE6 /* CallBackWrapper.cpp */,
 				3477932D185B1FA800B3EF06 /* CallBackWrapper.hpp */,
 				3477932E185B1FA800B3EF06 /* CommonData.cpp */,
 				3477932F185B1FA800B3EF06 /* CommonData.hpp */,
@@ -736,6 +739,7 @@
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
 				34779368185B1FA800B3EF06 /* IntervalChecker.cpp in Sources */,
+				346A727819D8F55E00DEEDE6 /* CallBackWrapper.cpp in Sources */,
 				34779372185B1FA800B3EF06 /* ListHookedConsumer.cpp in Sources */,
 				34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */,
 				3477937E185B1FA800B3EF06 /* PressDownKeys.cpp in Sources */,
