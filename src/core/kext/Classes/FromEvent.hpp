@@ -1,6 +1,7 @@
 #ifndef FROMEVENT_HPP
 #define FROMEVENT_HPP
 
+#include "CallbackWrapper.hpp"
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
 #include "ParamsUnion.hpp"
@@ -69,9 +70,16 @@ namespace org_pqrs_Karabiner {
     Type::Value getType(void) const { return type_; }
 
     // Return whether pressing state is changed.
-    bool changePressingState(const ParamsUnion& paramsUnion,
+    bool changePressingState(const Params_Base& paramsBase,
                              const FlagStatus& currentFlags,
                              const Vector_ModifierFlag& fromFlags);
+
+    bool changePressingState(const ParamsUnion& paramsUnion,
+                             const FlagStatus& currentFlags,
+                             const Vector_ModifierFlag& fromFlags)
+    {
+      return changePressingState(paramsUnion.get_Params_Base(), currentFlags, fromFlags);
+    }
 
     bool isPressing(void) const { return isPressing_; }
     void unsetPressingState(void) { isPressing_ = false; }
@@ -79,8 +87,17 @@ namespace org_pqrs_Karabiner {
     // Primitive functions:
     // These functions do not treat Flags.
     // Use changePressingState in general.
-    bool isTargetDownEvent(const ParamsUnion& paramsUnion) const;
-    bool isTargetUpEvent(const ParamsUnion& paramsUnion) const;
+    bool isTargetDownEvent(const Params_Base& paramsBase) const;
+    bool isTargetUpEvent(const Params_Base& paramsBase) const;
+
+    bool isTargetDownEvent(const ParamsUnion& paramsUnion) const
+    {
+      return isTargetDownEvent(paramsUnion.get_Params_Base());
+    }
+    bool isTargetUpEvent(const ParamsUnion& paramsUnion) const
+    {
+      return isTargetUpEvent(paramsUnion.get_Params_Base());
+    }
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {
@@ -93,7 +110,7 @@ namespace org_pqrs_Karabiner {
     }
 
   private:
-    bool isTargetEvent(bool& isDown, const ParamsUnion& paramsUnion) const;
+    bool isTargetEvent(bool& isDown, const Params_Base& paramsBase) const;
 
     bool isPressing_;
 
