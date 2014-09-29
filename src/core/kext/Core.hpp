@@ -7,8 +7,6 @@ class IOService;
 class IONotifier;
 
 namespace org_pqrs_Karabiner {
-  class ParamsUnion;
-
   namespace Core {
     void start(void);
     void stop(void);
