@@ -2,7 +2,7 @@
 
 namespace org_pqrs_Karabiner {
   bool
-  FromEvent::isTargetEvent(bool& isDown, const ParamsUnion& paramsUnion) const
+  FromEvent::isTargetEvent(bool& isDown, const Params_Base& paramsBase) const
   {
     switch (type_) {
       case Type::NONE:
@@ -12,7 +12,7 @@ namespace org_pqrs_Karabiner {
 
       case Type::KEY:
       {
-        auto p = paramsUnion.get_Params_KeyboardEventCallBack();
+        auto p = paramsBase.get_Params_KeyboardEventCallBack();
         if (! p) return false;
 
         if (p->key != key_) return false;
@@ -23,7 +23,7 @@ namespace org_pqrs_Karabiner {
 
       case Type::CONSUMER_KEY:
       {
-        auto p = paramsUnion.get_Params_KeyboardSpecialEventCallback();
+        auto p = paramsBase.get_Params_KeyboardSpecialEventCallback();
         if (! p) return false;
 
         if (p->key != consumer_) return false;
@@ -34,7 +34,7 @@ namespace org_pqrs_Karabiner {
 
       case Type::POINTING_BUTTON:
       {
-        auto p = paramsUnion.get_Params_RelativePointerEventCallback();
+        auto p = paramsBase.get_Params_RelativePointerEventCallback();
         if (! p) return false;
 
         if (p->ex_button != button_) return false;
@@ -48,12 +48,12 @@ namespace org_pqrs_Karabiner {
   }
 
   bool
-  FromEvent::changePressingState(const ParamsUnion& paramsUnion,
+  FromEvent::changePressingState(const Params_Base& paramsBase,
                                  const FlagStatus& currentFlags,
                                  const Vector_ModifierFlag& fromFlags)
   {
     bool isDown = false;
-    if (! isTargetEvent(isDown, paramsUnion)) return false;
+    if (! isTargetEvent(isDown, paramsBase)) return false;
 
     if (isDown) {
       if (currentFlags.isOn(fromFlags)) {
@@ -72,18 +72,18 @@ namespace org_pqrs_Karabiner {
   }
 
   bool
-  FromEvent::isTargetDownEvent(const ParamsUnion& paramsUnion) const
+  FromEvent::isTargetDownEvent(const Params_Base& paramsBase) const
   {
     bool isDown = false;
-    if (! isTargetEvent(isDown, paramsUnion)) return false;
+    if (! isTargetEvent(isDown, paramsBase)) return false;
     return isDown;
   }
 
   bool
-  FromEvent::isTargetUpEvent(const ParamsUnion& paramsUnion) const
+  FromEvent::isTargetUpEvent(const Params_Base& paramsBase) const
   {
     bool isDown = false;
-    if (! isTargetEvent(isDown, paramsUnion)) return false;
+    if (! isTargetEvent(isDown, paramsBase)) return false;
     return ! isDown;
   }
 }
