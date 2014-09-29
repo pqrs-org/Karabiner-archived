@@ -660,8 +660,8 @@ namespace org_pqrs_Karabiner {
       for (;;) {
         if (! p) break;
 
-        if ((p->getFromEvent()).isTargetDownEvent(front->params) ||
-            (p->getFromEvent()).isTargetUpEvent(front->params)) {
+        if ((p->getFromEvent()).isTargetDownEvent(front->getParamsBase()) ||
+            (p->getFromEvent()).isTargetUpEvent(front->getParamsBase())) {
           p = static_cast<PressingEvent*>(pressingEvents_.erase_and_delete(p));
         } else {
           p = static_cast<PressingEvent*>(p->getnext());
@@ -681,13 +681,13 @@ namespace org_pqrs_Karabiner {
     for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_.safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
       if (p->ignore()) continue;
 
-      if (RemapClassManager::isTargetEventForBlockUntilKeyUp(p->getParamsUnion())) {
+      if (RemapClassManager::isTargetEventForBlockUntilKeyUp(p->getParamsBase())) {
         goto needToBlock;
       }
     }
 
     // If current event is target event, we need to block it.
-    if (RemapClassManager::isTargetEventForBlockUntilKeyUp(front->params)) {
+    if (RemapClassManager::isTargetEventForBlockUntilKeyUp(front->getParamsBase())) {
       goto needToBlock;
     }
 
@@ -719,7 +719,7 @@ namespace org_pqrs_Karabiner {
     //      Then, Enqueue "Space down, Space up, T down".
     //
 
-    if (! iskeydown && RemapClassManager::isTargetEventForBlockUntilKeyUp(front->params)) {
+    if (! iskeydown && RemapClassManager::isTargetEventForBlockUntilKeyUp(front->getParamsBase())) {
       // Case2
 
       // Do not call setIgnoreToAllPressingEvents here.
@@ -731,7 +731,7 @@ namespace org_pqrs_Karabiner {
       // Move up event after down event.
       FromEvent fromEvent((front->params).get_Params_Base());
       for (Item* p = static_cast<Item*>(blockedQueue_.safe_back()); p; p = static_cast<Item*>(p->getprev())) {
-        if (fromEvent.isTargetDownEvent(p->params)) {
+        if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
           if (p->getnext()) {
             blockedQueue_.insert(p->getnext(), new Item(*front));
           } else {
@@ -770,7 +770,7 @@ namespace org_pqrs_Karabiner {
     FromEvent fromEvent(front.params.get_Params_Base());
 
     for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-      if (fromEvent.isTargetDownEvent(p->params)) {
+      if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
         return true;
       }
     }

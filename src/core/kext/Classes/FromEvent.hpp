@@ -4,7 +4,6 @@
 #include "CallBackWrapper.hpp"
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
-#include "ParamsUnion.hpp"
 #include "Vector.hpp"
 #include "bridge.h"
 
@@ -74,13 +73,6 @@ namespace org_pqrs_Karabiner {
                              const FlagStatus& currentFlags,
                              const Vector_ModifierFlag& fromFlags);
 
-    bool changePressingState(const ParamsUnion& paramsUnion,
-                             const FlagStatus& currentFlags,
-                             const Vector_ModifierFlag& fromFlags)
-    {
-      return changePressingState(paramsUnion.get_Params_Base(), currentFlags, fromFlags);
-    }
-
     bool isPressing(void) const { return isPressing_; }
     void unsetPressingState(void) { isPressing_ = false; }
 
@@ -89,15 +81,6 @@ namespace org_pqrs_Karabiner {
     // Use changePressingState in general.
     bool isTargetDownEvent(const Params_Base& paramsBase) const;
     bool isTargetUpEvent(const Params_Base& paramsBase) const;
-
-    bool isTargetDownEvent(const ParamsUnion& paramsUnion) const
-    {
-      return isTargetDownEvent(paramsUnion.get_Params_Base());
-    }
-    bool isTargetUpEvent(const ParamsUnion& paramsUnion) const
-    {
-      return isTargetUpEvent(paramsUnion.get_Params_Base());
-    }
 
     // Get ModifierFlag from KeyCode.
     ModifierFlag getModifierFlag(void) const {

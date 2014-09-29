@@ -92,6 +92,8 @@ namespace org_pqrs_Karabiner {
         params(p), retainFlagStatusTemporaryCount(r), deviceIdentifier(di), delayMS(d), enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
       virtual ~Item(void) {}
 
+      const Params_Base& getParamsBase(void) const { return params.get_Params_Base(); }
+
       ParamsUnion params;
       bool retainFlagStatusTemporaryCount;
       DeviceIdentifier deviceIdentifier;
@@ -134,6 +136,7 @@ namespace org_pqrs_Karabiner {
         virtual ~PressingEvent(void) {}
 
         const ParamsUnion& getParamsUnion(void) const { return paramsUnion_; }
+        const Params_Base& getParamsBase(void) const { return paramsUnion_.get_Params_Base(); }
         const FromEvent& getFromEvent(void) const { return fromEvent_; }
 
         bool ignore(void) const { return ignore_; }

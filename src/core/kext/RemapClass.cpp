@@ -127,7 +127,7 @@ namespace org_pqrs_Karabiner {
   }
 
   bool
-  RemapClass::Item::isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion)
+  RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase)
   {
     if (! processor_) return false;
 
@@ -139,8 +139,8 @@ namespace org_pqrs_Karabiner {
 
     const FromEvent* fromEvent = processor_->getBlockUntilKeyUpFromEvent();
     if (fromEvent) {
-      if (fromEvent->isTargetDownEvent(paramsUnion) ||
-          fromEvent->isTargetUpEvent(paramsUnion)) {
+      if (fromEvent->isTargetDownEvent(paramsBase) ||
+          fromEvent->isTargetUpEvent(paramsBase)) {
         return true;
       }
     }
@@ -402,7 +402,7 @@ namespace org_pqrs_Karabiner {
   }
 
   bool
-  RemapClass::isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion, bool passThroughEnabled)
+  RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled)
   {
     bool isTargetEvent = false;
 
@@ -411,7 +411,7 @@ namespace org_pqrs_Karabiner {
       if (p) {
         if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
 
-        if (p->isTargetEventForBlockUntilKeyUp(paramsUnion)) {
+        if (p->isTargetEventForBlockUntilKeyUp(paramsBase)) {
           isTargetEvent = true;
         }
       }
@@ -792,7 +792,7 @@ namespace org_pqrs_Karabiner {
 #undef CALL_REMAPCLASS_FUNC
 
     bool
-    isTargetEventForBlockUntilKeyUp(const ParamsUnion& paramsUnion)
+    isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase)
     {
       bool passThroughEnabled = isPassThroughEnabled();
       bool isTargetEvent = false;
@@ -800,7 +800,7 @@ namespace org_pqrs_Karabiner {
       for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
         RemapClass* p = enabled_remapclasses_[i];
         if (p) {
-          if (p->isTargetEventForBlockUntilKeyUp(paramsUnion, passThroughEnabled)) {
+          if (p->isTargetEventForBlockUntilKeyUp(paramsBase, passThroughEnabled)) {
             isTargetEvent = true;
           }
         }
