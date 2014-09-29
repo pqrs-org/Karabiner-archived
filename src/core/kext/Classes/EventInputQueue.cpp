@@ -615,9 +615,7 @@ namespace org_pqrs_Karabiner {
       }
     }
 
-    {
-      CommonData::setcurrent_lastpressedphysicalkey((p->params).get_Params_Base());
-    }
+    CommonData::setcurrent_lastpressedphysicalkey((p->params).get_Params_Base());
 
     queue_.pop_front();
     ++serialNumber_;
