@@ -153,7 +153,7 @@ namespace org_pqrs_Karabiner {
     {
       // Params_ScrollWheelEventCallback
       {
-        auto params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+        auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
         if (params) {
           if (interruptibleByScrollWheel_) {
             dokeydown();
@@ -165,9 +165,9 @@ namespace org_pqrs_Karabiner {
       // Params_KeyboardEventCallBack, Params_KeyboardSpecialEventCallback, Params_RelativePointerEventCallback
       {
         bool iskeydown = false;
-        if (remapParams.paramsUnion.iskeydown(iskeydown)) {
+        if (remapParams.paramsBase.iskeydown(iskeydown)) {
           if (remapParams.isremapped ||
-              ! fromEvent_.changePressingState(remapParams.paramsUnion,
+              ! fromEvent_.changePressingState(remapParams.paramsBase,
                                                FlagStatus::globalFlagStatus(),
                                                fromModifierFlags_)) {
             if (iskeydown) {

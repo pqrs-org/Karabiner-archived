@@ -59,7 +59,7 @@ namespace org_pqrs_Karabiner {
     bool
     PointingRelativeToKey::remap(RemapParams& remapParams)
     {
-      auto params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
       if (! params) return false;
 
       // ------------------------------------------------------------
