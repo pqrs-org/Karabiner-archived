@@ -1,9 +1,9 @@
 #include <IOKit/IOLib.h>
 
-#include "CallBackWrapper.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
+#include "Params.hpp"
 #include "VK_LAZY.hpp"
 
 namespace org_pqrs_Karabiner {

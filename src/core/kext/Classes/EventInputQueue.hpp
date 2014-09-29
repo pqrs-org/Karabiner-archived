@@ -1,11 +1,11 @@
 #ifndef EVENTINPUTQUEUE_HPP
 #define EVENTINPUTQUEUE_HPP
 
-#include "CallBackWrapper.hpp"
 #include "FromEvent.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
+#include "Params.hpp"
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {

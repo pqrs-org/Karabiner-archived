@@ -2,7 +2,6 @@
 #include <sys/errno.h>
 
 #include "ButtonStatus.hpp"
-#include "CallBackWrapper.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "Core.hpp"
@@ -18,6 +17,7 @@
 #include "ListHookedPointing.hpp"
 #include "ModifierName.hpp"
 #include "NumHeldDownKeys.hpp"
+#include "Params.hpp"
 #include "PressDownKeys.hpp"
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"

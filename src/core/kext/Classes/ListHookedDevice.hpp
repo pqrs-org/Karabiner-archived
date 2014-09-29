@@ -3,6 +3,7 @@
 
 #include <IOKit/hidsystem/IOHIDevice.h>
 
+#include "KeyCode.hpp"
 #include "List.hpp"
 
 namespace org_pqrs_Karabiner {

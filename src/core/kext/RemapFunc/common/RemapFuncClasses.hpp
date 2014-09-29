@@ -1,9 +1,9 @@
 #ifndef REMAPFUNCCLASSES_HPP
 #define REMAPFUNCCLASSES_HPP
 
-#include "CallBackWrapper.hpp"
 #include "FlagStatus.hpp"
 #include "KeyCode.hpp"
+#include "Params.hpp"
 #include "Vector.hpp"
 #include "bridge.h"
 

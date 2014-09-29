@@ -1,7 +1,7 @@
 #ifndef CORE_HPP
 #define CORE_HPP
 
-#include "CallBackWrapper.hpp"
+#include "Params.hpp"
 
 class IOService;
 class IONotifier;
