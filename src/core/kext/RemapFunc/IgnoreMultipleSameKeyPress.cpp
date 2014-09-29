@@ -30,7 +30,7 @@ namespace org_pqrs_Karabiner {
     IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams)
     {
       if (remapParams.isremapped) goto nottargetevent;
-      if (! fromEvent_.changePressingState(remapParams.paramsUnion,
+      if (! fromEvent_.changePressingState(remapParams.paramsBase,
                                            FlagStatus::globalFlagStatus(),
                                            fromModifierFlags_)) {
         goto nottargetevent;

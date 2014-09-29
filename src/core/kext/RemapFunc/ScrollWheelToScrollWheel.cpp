@@ -37,7 +37,7 @@ namespace org_pqrs_Karabiner {
     bool
     ScrollWheelToScrollWheel::remap(RemapParams& remapParams)
     {
-      auto params = remapParams.paramsUnion.get_Params_ScrollWheelEventCallback();
+      auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
       if (! params) return false;
 
       if (remapParams.isremapped) return false;

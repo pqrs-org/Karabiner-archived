@@ -68,7 +68,7 @@ namespace org_pqrs_Karabiner {
     if (! processor_) return;
 
     bool iskeydown = false;
-    if (! remapParams.paramsUnion.iskeydown(iskeydown)) {
+    if (! remapParams.paramsBase.iskeydown(iskeydown)) {
       iskeydown = false;
     }
 

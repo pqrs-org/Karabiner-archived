@@ -31,9 +31,8 @@ namespace org_pqrs_Karabiner {
     bool
     DropKeyAfterRemap::drop(const Params_KeyboardEventCallBack& params)
     {
-      ParamsUnion paramsUnion(params);
       FlagStatus currentFlags(params.flags);
-      if (! fromEvent_.changePressingState(paramsUnion, currentFlags, fromModifierFlags_)) return false;
+      if (! fromEvent_.changePressingState(params, currentFlags, fromModifierFlags_)) return false;
       return true;
     }
   }

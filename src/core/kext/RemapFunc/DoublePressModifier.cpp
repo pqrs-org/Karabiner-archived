@@ -91,7 +91,7 @@ namespace org_pqrs_Karabiner {
     DoublePressModifier::remap(RemapParams& remapParams)
     {
       bool iskeydown;
-      if (! remapParams.paramsUnion.iskeydown(iskeydown)) {
+      if (! remapParams.paramsBase.iskeydown(iskeydown)) {
         return false;
       }
 

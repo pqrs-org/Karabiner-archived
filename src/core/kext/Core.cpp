@@ -186,7 +186,7 @@ namespace org_pqrs_Karabiner {
 
       FlagStatus::globalFlagStatus().set(params->key, params->flags);
 
-      RemapParams remapParams(paramsUnion);
+      RemapParams remapParams(*params);
       RemapClassManager::remap(remapParams);
 
       // ------------------------------------------------------------
@@ -215,7 +215,7 @@ namespace org_pqrs_Karabiner {
       auto params = paramsUnion.get_Params_KeyboardSpecialEventCallback();
       if (! params) return;
 
-      RemapParams remapParams(paramsUnion);
+      RemapParams remapParams(*params);
       RemapClassManager::remap(remapParams);
 
       // ----------------------------------------
@@ -243,7 +243,7 @@ namespace org_pqrs_Karabiner {
 
       ButtonStatus::set(params->ex_button, params->ex_isbuttondown);
 
-      RemapParams remapParams(paramsUnion);
+      RemapParams remapParams(*params);
       RemapClassManager::remap(remapParams);
 
       // ------------------------------------------------------------
@@ -262,7 +262,7 @@ namespace org_pqrs_Karabiner {
       auto params = paramsUnion.get_Params_ScrollWheelEventCallback();
       if (! params) return;
 
-      RemapParams remapParams(paramsUnion);
+      RemapParams remapParams(*params);
       RemapClassManager::remap(remapParams);
 
       if (! remapParams.isremapped) {

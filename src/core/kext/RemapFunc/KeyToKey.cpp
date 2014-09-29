@@ -110,7 +110,7 @@ namespace org_pqrs_Karabiner {
     KeyToKey::remap(RemapParams& remapParams)
     {
       if (remapParams.isremapped) return false;
-      if (! fromEvent_.changePressingState(remapParams.paramsUnion,
+      if (! fromEvent_.changePressingState(remapParams.paramsBase,
                                            FlagStatus::globalFlagStatus(),
                                            fromModifierFlags_)) return false;
       remapParams.isremapped = true;
@@ -324,9 +324,7 @@ namespace org_pqrs_Karabiner {
                                           KeyCode::VK_PSEUDO_KEY,
                                           CommonData::getcurrent_keyboardType(),
                                           false);
-
-      ParamsUnion paramsUnion(params);
-      RemapParams rp(paramsUnion);
+      RemapParams rp(params);
       result = remap(rp);
 
       return result;

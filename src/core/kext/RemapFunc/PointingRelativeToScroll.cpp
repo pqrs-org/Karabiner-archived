@@ -136,7 +136,7 @@ namespace org_pqrs_Karabiner {
       } else {
         // FromEvent == KeyCode or ConsumerKeyCode or PointingButton.
 
-        bool pressingStateChanged = fromEvent_.changePressingState(remapParams.paramsUnion,
+        bool pressingStateChanged = fromEvent_.changePressingState(remapParams.paramsBase,
                                                                    FlagStatus::globalFlagStatus(),
                                                                    fromModifierFlags_);
         if (pressingStateChanged) {
@@ -185,7 +185,7 @@ namespace org_pqrs_Karabiner {
     doremap:
       // change only cursor move events.
       {
-        auto params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+        auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
         if (! params) return false;
         if (params->ex_button != PointingButton::NONE) return false;
       }
@@ -203,7 +203,7 @@ namespace org_pqrs_Karabiner {
     void
     PointingRelativeToScroll::toscroll(RemapParams& remapParams)
     {
-      auto params = remapParams.paramsUnion.get_Params_RelativePointerEventCallback();
+      auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
       if (! params) return;
 
       // ----------------------------------------
