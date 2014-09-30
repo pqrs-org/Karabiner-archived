@@ -9,8 +9,7 @@
 #import "WindowObserver.h"
 
 // ==================================================
-@interface AppDelegate ()
-{
+@interface AppDelegate () {
   BOOL axEnabled_;
 
   NSDictionary* focusedUIElementInformation_;
@@ -24,8 +23,7 @@
 
 @implementation AppDelegate
 
-- (void) tellToServer
-{
+- (void)tellToServer {
   NSMutableDictionary* target = nil;
   if (overlaidWindowElementInformation_) {
     target = [NSMutableDictionary dictionaryWithDictionary:overlaidWindowElementInformation_];
@@ -35,7 +33,7 @@
 
   // Send if the current information and the previous information are different.
   for (NSString* key in target) {
-    if (! [target[key] isEqual:previousSentInformation_[key]]) {
+    if (![target[key] isEqual:previousSentInformation_[key]]) {
       goto send;
     }
   }
@@ -52,14 +50,14 @@ send:
   @try {
     [[self.client proxy] updateFocusedUIElementInformation:target];
     previousSentInformation_ = target;
-  } @catch (NSException* exception) {
+  }
+  @catch (NSException* exception) {
     NSLog(@"%@", exception);
     previousSentInformation_ = nil;
   }
 }
 
-- (void) distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification
-{
+- (void)distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
@@ -68,8 +66,7 @@ send:
   });
 }
 
-- (void) observer_kFocusedUIElementChanged:(NSNotification*)notification
-{
+- (void)observer_kFocusedUIElementChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
@@ -83,8 +80,7 @@ send:
   });
 }
 
-- (void) observer_kWindowVisibilityChanged:(NSNotification*)notification
-{
+- (void)observer_kWindowVisibilityChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
@@ -102,8 +98,7 @@ send:
   });
 }
 
-- (void) timerFireMethod:(NSTimer*)timer
-{
+- (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       if (AXIsProcessTrusted()) {
@@ -127,27 +122,26 @@ send:
 
 #define kDescendantProcess @"org_pqrs_Karabiner_AXNotifier_DescendantProcess"
 
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
   NSInteger isDescendantProcess = [[[NSProcessInfo processInfo] environment][kDescendantProcess] integerValue];
   setenv([kDescendantProcess UTF8String], "1", 1);
 
   // ------------------------------------------------------------
-  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.AXNotifier"]
+  if ([MigrationUtilities migrate:@[ @"org.pqrs.KeyRemap4MacBook.AXNotifier" ]
            oldApplicationSupports:@[]
-                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app"]]) {
+                         oldPaths:@[ @"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app" ]]) {
     [Relauncher relaunch];
   }
 
   // ------------------------------------------------------------
   [_window setLevel:NSFloatingWindowLevel];
 
-  if (! [[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
-    if (! AXIsProcessTrusted()) {
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
+    if (!AXIsProcessTrusted()) {
       [_window orderFront:self];
 
-      if (! isDescendantProcess) {
-        NSDictionary* options = @{ (__bridge NSString*)(kAXTrustedCheckOptionPrompt): @YES };
+      if (!isDescendantProcess) {
+        NSDictionary* options = @{(__bridge NSString*)(kAXTrustedCheckOptionPrompt) : @YES };
         AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options);
       }
     }

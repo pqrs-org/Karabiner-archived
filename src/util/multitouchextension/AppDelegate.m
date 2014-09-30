@@ -14,8 +14,7 @@ static NSTimer* global_timer_[MAX_FINGERS];
 
 @implementation AppDelegate
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -29,7 +28,6 @@ static NSTimer* global_timer_[MAX_FINGERS];
 
   return self;
 }
-
 
 // ------------------------------------------------------------
 typedef struct {
@@ -61,7 +59,7 @@ typedef struct {
 } Finger;
 
 typedef void* MTDeviceRef;
-typedef int (* MTContactCallbackFunction)(int, Finger*, int, double, int);
+typedef int (*MTContactCallbackFunction)(int, Finger*, int, double, int);
 
 CFMutableArrayRef MTDeviceCreateList(void);
 void MTRegisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
@@ -73,8 +71,7 @@ AppDelegate* global_self_ = nil;
 IgnoredAreaView* global_ignoredAreaView_ = nil;
 KarabinerClient* global_client_ = nil;
 
-- (void) setValueFromTimer:(NSTimer*)timer
-{
+- (void)setValueFromTimer:(NSTimer*)timer {
   NSDictionary* dict = [timer userInfo];
   [[global_client_ proxy] setValue:[dict[@"value"] intValue] forName:dict[@"name"]];
 }
@@ -104,19 +101,21 @@ static void setPreference(int fingers, int newvalue) {
           global_timer_[fingers - 1] = [NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
                                                                         target:global_self_
                                                                       selector:@selector(setValueFromTimer:)
-                                                                      userInfo:@{ @"name": name,
-                                                                                  @"value": @(newvalue), }
+                                                                      userInfo:@{
+                                                                        @"name" : name,
+                                                                        @"value" : @(newvalue),
+                                                                      }
                                                                        repeats:NO];
         }
-      } @catch (NSException* exception) {
+      }
+      @catch (NSException* exception) {
         NSLog(@"%@", exception);
       }
     }
   }
 }
 
-- (void) resetPreferences
-{
+- (void)resetPreferences {
   for (int i = 0; i < MAX_FINGERS; ++i) {
     setPreference(i + 1, 0);
   }
@@ -215,14 +214,14 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
   return 0;
 }
 
-- (void) setcallback:(BOOL)isset {
+- (void)setcallback:(BOOL)isset {
   @synchronized(self) {
     // ------------------------------------------------------------
     // unset callback (even if isset is YES.)
     if (mtdevices_) {
       for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
         MTDeviceRef device = (__bridge MTDeviceRef)(mtdevices_[i]);
-        if (! device) continue;
+        if (!device) continue;
 
         MTDeviceStop(device, 0);
         MTUnregisterContactFrameCallback(device, callback);
@@ -237,7 +236,7 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
       if (mtdevices_) {
         for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
           MTDeviceRef device = (__bridge MTDeviceRef)(mtdevices_[i]);
-          if (! device) continue;
+          if (!device) continue;
 
           MTRegisterContactFrameCallback(device, callback);
           MTDeviceStart(device, 0);
@@ -251,10 +250,10 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
 
 // ------------------------------------------------------------
 // IONotification
-- (void) release_iterator:(io_iterator_t)iterator {
+- (void)release_iterator:(io_iterator_t)iterator {
   for (;;) {
     io_object_t obj = IOIteratorNext(iterator);
-    if (! obj) break;
+    if (!obj) break;
 
     IOObjectRelease(obj);
   }
@@ -269,7 +268,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   });
 }
 
-- (void) unregisterIONotification {
+- (void)unregisterIONotification {
   NSLog(@"unregisterIONotification");
 
   @synchronized(self) {
@@ -284,7 +283,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 }
 
-- (void) registerIONotification {
+- (void)registerIONotification {
   NSLog(@"registerIONotification");
 
   @synchronized(self) {
@@ -293,7 +292,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     }
 
     notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
-    if (! notifyport_) {
+    if (!notifyport_) {
       NSLog(@"[ERROR] IONotificationPortCreate");
       return;
     }
@@ -344,7 +343,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
     // ----------------------------------------------------------------------
     loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
-    if (! loopsource_) {
+    if (!loopsource_) {
       NSLog(@"[ERROR] IONotificationPortGetRunLoopSource");
       return;
     }
@@ -353,8 +352,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
-- (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceDidWakeNotification");
 
@@ -377,24 +375,21 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   });
 }
 
-- (void) registerWakeNotification
-{
+- (void)registerWakeNotification {
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceDidWakeNotification:)
                                                              name:NSWorkspaceDidWakeNotification
                                                            object:nil];
 }
 
-- (void) unregisterWakeNotification
-{
+- (void)unregisterWakeNotification {
   [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
                                                                 name:NSWorkspaceDidWakeNotification
                                                               object:nil];
 }
 
 // ----------------------------------------
-- (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
     [self registerIONotification];
@@ -407,8 +402,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   });
 }
 
-- (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
     [self unregisterIONotification];
@@ -417,8 +411,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   });
 }
 
-- (void) distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification
-{
+- (void)distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
     [NSApp terminate:self];
@@ -426,19 +419,18 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
-{
-  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.multitouchextension"]
+- (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  if ([MigrationUtilities migrate:@[ @"org.pqrs.KeyRemap4MacBook.multitouchextension" ]
            oldApplicationSupports:@[]
-                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app"]]) {
+                         oldPaths:@[ @"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app" ]]) {
     [Relauncher relaunch];
   }
 
   // ----------------------------------------
   [preferences_ load];
 
-  if (! [[NSUserDefaults standardUserDefaults] boolForKey:@"hideIconInDock"]) {
-    ProcessSerialNumber psn = { 0, kCurrentProcess };
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hideIconInDock"]) {
+    ProcessSerialNumber psn = {0, kCurrentProcess};
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
   }
 
@@ -470,12 +462,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [Relauncher resetRelaunchedCount];
 }
 
-- (void) applicationWillTerminate:(NSNotification*)aNotification {
+- (void)applicationWillTerminate:(NSNotification*)aNotification {
   [self setcallback:NO];
 }
 
-- (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
-{
+- (BOOL)applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag {
   [preferences_ show];
   return YES;
 }

@@ -2,9 +2,7 @@
 #import "AXUtilities.h"
 #import "NotificationKeys.h"
 
-@interface AXApplicationObserver ()
-
-{
+@interface AXApplicationObserver () {
   AXUIElementRef applicationElement_;
   AXUIElementRef focusedWindowElementForAXTitleChangedNotification_;
   AXObserverRef observer_;
@@ -13,16 +11,15 @@
 @property NSString* title;
 @property NSString* role;
 
-- (void) updateTitle;
-- (void) updateRole:(AXUIElementRef)element;
+- (void)updateTitle;
+- (void)updateRole:(AXUIElementRef)element;
 
 @end
 
 static void
-observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef notification, void* refcon)
-{
+observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef notification, void* refcon) {
   AXApplicationObserver* self = (__bridge AXApplicationObserver*)(refcon);
-  if (! self) return;
+  if (!self) return;
 
   @synchronized(self) {
     if (CFStringCompare(notification, kAXTitleChangedNotification, 0) == kCFCompareEqualTo) {
@@ -47,8 +44,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
 @implementation AXApplicationObserver
 
-- (instancetype) initWithRunningApplication:(NSRunningApplication*)runningApplication
-{
+- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication {
   self = [super init];
 
   if (self) {
@@ -58,7 +54,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
     // ----------------------------------------
     bool observable = YES;
-    if (! AXIsProcessTrusted()) {
+    if (!AXIsProcessTrusted()) {
       observable = NO;
     }
 
@@ -97,7 +93,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       // Create applicationElement_
 
       applicationElement_ = AXUIElementCreateApplication(pid);
-      if (! applicationElement_) {
+      if (!applicationElement_) {
         @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                        reason:@"AXUIElementCreateApplication is failed."
                                      userInfo:@{ @"runningApplication" : self.runningApplication }];
@@ -111,7 +107,8 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         if (error != kAXErrorSuccess) {
           @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                          reason:@"AXObserverCreate is failed."
-                                       userInfo:@{ @"runningApplication" : self.runningApplication, @"error": @(error) }];
+                                       userInfo:@{ @"runningApplication" : self.runningApplication,
+                                                   @"error" : @(error) }];
         }
       }
 
@@ -119,12 +116,12 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       // Observe notifications
 
       // AXObserverAddNotification might be failed when just application launched.
-      if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedUIElementChangedNotification add:YES]) {
+      if (![self observeAXNotification:applicationElement_ notification:kAXFocusedUIElementChangedNotification add:YES]) {
         @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                        reason:@"Failed to observe kAXFocusedUIElementChangedNotification."
                                      userInfo:@{ @"runningApplication" : self.runningApplication }];
       }
-      if (! [self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification add:YES]) {
+      if (![self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification add:YES]) {
         @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                        reason:@"Failed to observe kAXFocusedWindowChangedNotification."
                                      userInfo:@{ @"runningApplication" : self.runningApplication }];
@@ -143,8 +140,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   if (observer_) {
     CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
                           AXObserverGetRunLoopSource(observer_),
@@ -159,10 +155,9 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   }
 }
 
-- (BOOL) observeAXNotification:(AXUIElementRef)element notification:(CFStringRef)notification add:(BOOL)add
-{
-  if (! element) return YES;
-  if (! observer_) return YES;
+- (BOOL)observeAXNotification:(AXUIElementRef)element notification:(CFStringRef)notification add:(BOOL)add {
+  if (!element) return YES;
+  if (!observer_) return YES;
 
   if (add) {
     AXError error = AXObserverAddNotification(observer_,
@@ -202,8 +197,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   return YES;
 }
 
-- (void) unobserveTitleChangedNotification
-{
+- (void)unobserveTitleChangedNotification {
   if (focusedWindowElementForAXTitleChangedNotification_) {
     [self observeAXNotification:focusedWindowElementForAXTitleChangedNotification_
                    notification:kAXTitleChangedNotification
@@ -213,25 +207,23 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   }
 }
 
-- (void) observeTitleChangedNotification
-{
-  if (! applicationElement_) return;
+- (void)observeTitleChangedNotification {
+  if (!applicationElement_) return;
 
   [self unobserveTitleChangedNotification];
 
   focusedWindowElementForAXTitleChangedNotification_ = [AXUtilities copyFocusedWindow:applicationElement_];
-  if (! focusedWindowElementForAXTitleChangedNotification_) return;
+  if (!focusedWindowElementForAXTitleChangedNotification_) return;
 
   [self observeAXNotification:focusedWindowElementForAXTitleChangedNotification_
                  notification:kAXTitleChangedNotification
                           add:YES];
 }
 
-- (void) updateTitle
-{
+- (void)updateTitle {
   self.title = @"";
 
-  if (! applicationElement_) return;
+  if (!applicationElement_) return;
 
   // Do not cache focusedWindowElement.
   // We need to get new focusedWindowElement because
@@ -247,8 +239,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   }
 }
 
-- (void) updateRole:(AXUIElementRef)element
-{
+- (void)updateRole:(AXUIElementRef)element {
   self.role = @"";
 
   if (element) {
@@ -265,12 +256,11 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   }
 }
 
-- (void) postNotification
-{
+- (void)postNotification {
   NSDictionary* userInfo = @{
     @"bundleIdentifier" : [self.runningApplication bundleIdentifier],
-    @"title": self.title,
-    @"role": self.role,
+    @"title" : self.title,
+    @"role" : self.role,
   };
   [[NSNotificationCenter defaultCenter] postNotificationName:kFocusedUIElementChanged object:self userInfo:userInfo];
 }

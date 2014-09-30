@@ -4,11 +4,11 @@
 
 @interface AXUtilities : NSObject
 
-+ (AXUIElementRef) copyFocusedUIElement;
-+ (AXUIElementRef) copyFocusedWindow:(AXUIElementRef)applicationElement;
++ (AXUIElementRef)copyFocusedUIElement;
++ (AXUIElementRef)copyFocusedWindow:(AXUIElementRef)applicationElement;
 
-+ (NSString*) titleOfUIElement:(AXUIElementRef)element;
-+ (NSString*) roleOfUIElement:(AXUIElementRef)element;
++ (NSString *)titleOfUIElement:(AXUIElementRef)element;
++ (NSString *)roleOfUIElement:(AXUIElementRef)element;
 
 /*
  * About NSAccessibilitySubroleAttribute:
@@ -17,6 +17,6 @@
  * The subrole is same value (AXStandardWindow) in browser
  * even if the focused element is <textarea>, <input> or other elements.
  */
-+ (NSString*) subroleOfUIElement:(AXUIElementRef)element;
++ (NSString *)subroleOfUIElement:(AXUIElementRef)element;
 
 @end

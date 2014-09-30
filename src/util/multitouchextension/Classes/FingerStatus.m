@@ -2,8 +2,7 @@
 
 @implementation FingerStatus
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -13,13 +12,11 @@
   return self;
 }
 
-- (void) clear
-{
+- (void)clear {
   size_ = 0;
 }
 
-- (void) add:(int)identifier active:(BOOL)active
-{
+- (void)add:(int)identifier active:(BOOL)active {
   if (size_ < FINGER_STATUS_MAX_FINGERS) {
     identifier_[size_] = identifier;
     active_[size_] = active;
@@ -27,8 +24,7 @@
   }
 }
 
-- (BOOL) isActive:(int)identifier
-{
+- (BOOL)isActive:(int)identifier {
   for (size_t i = 0; i < size_; ++i) {
     if (identifier_[i] == identifier) {
       return active_[i];

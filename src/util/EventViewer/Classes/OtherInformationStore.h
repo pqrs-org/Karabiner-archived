@@ -2,9 +2,8 @@
 #import <Cocoa/Cocoa.h>
 #import "KarabinerClient.h"
 
-@interface OtherInformationStore : NSObject
-{
-  @private
+@interface OtherInformationStore : NSObject {
+@private
   NSString* languagecode_;
   NSString* inputsourceid_;
   NSString* inputmodeid_;
@@ -15,10 +14,10 @@
   IBOutlet KarabinerClient* client_;
 }
 
-- (void) setLanguageCode:(NSString*)value;
-- (void) setInputSourceID:(NSString*)value;
-- (void) setInputModeID:(NSString*)value;
+- (void)setLanguageCode:(NSString*)value;
+- (void)setInputSourceID:(NSString*)value;
+- (void)setInputModeID:(NSString*)value;
 
-- (IBAction) copy:(id)sender;
+- (IBAction)copy:(id)sender;
 
 @end

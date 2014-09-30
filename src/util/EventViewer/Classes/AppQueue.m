@@ -8,8 +8,7 @@ enum {
   MAXNUM = 50,
 };
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -19,9 +18,7 @@ enum {
   return self;
 }
 
-
-- (NSInteger) numberOfRowsInTableView:(NSTableView*)aTableView
-{
+- (NSInteger)numberOfRowsInTableView:(NSTableView*)aTableView {
   if ([queue_ count] == 0) {
     return 1;
   }
@@ -29,8 +26,7 @@ enum {
   return [queue_ count];
 }
 
-- (id) tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex
-{
+- (id)tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex {
   NSString* identifier = [aTableColumn identifier];
 
   if ([queue_ count] == 0) {
@@ -41,33 +37,31 @@ enum {
   return dict[identifier];
 }
 
-- (void) refresh
-{
+- (void)refresh {
   [view_ reloadData];
   [view_ scrollRowToVisible:([queue_ count] - 1)];
 }
 
-- (void) push:(NSDictionary*)dictionary
-{
+- (void)push:(NSDictionary*)dictionary {
   NSString* bundleIdentifier = dictionary[@"BundleIdentifier"];
-  if (! bundleIdentifier) {
+  if (!bundleIdentifier) {
     bundleIdentifier = @"";
   }
 
   NSString* windowName = dictionary[@"WindowName"];
-  if (! windowName) {
+  if (!windowName) {
     windowName = @"";
   }
 
   NSString* role = dictionary[@"UIElementRole"];
-  if (! role) {
+  if (!role) {
     role = @"";
   }
 
-  NSDictionary* dict = @{ @"BundleIdentifier": bundleIdentifier,
-                          @"WindowName": windowName,
-                          @"UIElementRole": role,
-                          @"date": [[NSDate date] description] };
+  NSDictionary* dict = @{ @"BundleIdentifier" : bundleIdentifier,
+                          @"WindowName" : windowName,
+                          @"UIElementRole" : role,
+                          @"date" : [[NSDate date] description] };
 
   [queue_ insertObject:dict atIndex:0];
   if ([queue_ count] > MAXNUM) {
@@ -76,14 +70,12 @@ enum {
   [self refresh];
 }
 
-- (IBAction) clear:(id)sender
-{
+- (IBAction)clear:(id)sender {
   [queue_ removeAllObjects];
   [self refresh];
 }
 
-- (IBAction) copy:(id)sender
-{
+- (IBAction)copy:(id)sender {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [NSMutableString new];
 
@@ -98,7 +90,7 @@ enum {
 
   if ([string length] > 0) {
     [pboard clearContents];
-    [pboard writeObjects:@[string]];
+    [pboard writeObjects:@[ string ]];
   }
 }
 

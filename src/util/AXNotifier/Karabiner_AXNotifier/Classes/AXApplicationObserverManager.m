@@ -82,8 +82,7 @@
  *
  */
 
-@interface AXApplicationObserverManager ()
-{
+@interface AXApplicationObserverManager () {
   NSMutableDictionary* systemApplicationObservers_;
 
   // We need to observe frontmostApplication only because
@@ -101,8 +100,7 @@
 
 @implementation AXApplicationObserverManager
 
-- (void) systemApplicationObserversRefreshTimerFireMethod:(NSTimer*)timer
-{
+- (void)systemApplicationObserversRefreshTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       for (NSString* bundleIdentifier in @[@"com.apple.systemuiserver",
@@ -136,8 +134,7 @@
   });
 }
 
-- (void) timerFireMethod:(NSTimer*)timer
-{
+- (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       if (! runningApplicationForAXApplicationObserver_) {
@@ -175,8 +172,7 @@
   });
 }
 
-- (void) observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       observer_ = nil;
@@ -187,8 +183,7 @@
   });
 }
 
-- (instancetype) init
-{
+- (instancetype)init {
   self = [super init];
 
   if (self) {

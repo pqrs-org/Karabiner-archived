@@ -12,12 +12,12 @@
   IBOutlet NSButton* startAtLogin_;
 }
 
-- (void) load;
-- (void) show;
-+ (BOOL) isSettingEnabled:(NSInteger)fingers;
-+ (NSString*) getSettingName:(NSInteger)fingers;
+- (void)load;
+- (void)show;
++ (BOOL)isSettingEnabled:(NSInteger)fingers;
++ (NSString*)getSettingName:(NSInteger)fingers;
 
-- (IBAction) setStartAtLogin:(id)sender;
-- (IBAction) set:(id)sender;
+- (IBAction)setStartAtLogin:(id)sender;
+- (IBAction)set:(id)sender;
 
 @end
