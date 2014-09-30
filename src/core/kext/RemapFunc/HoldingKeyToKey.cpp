@@ -105,6 +105,9 @@ HoldingKeyToKey::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddV
   }
 }
 
-bool HoldingKeyToKey::remap(RemapParams& remapParams) { return dppkeytokey_.remap(remapParams); }
+bool
+HoldingKeyToKey::remap(RemapParams& remapParams) {
+  return dppkeytokey_.remap(remapParams);
+}
 }
 }
