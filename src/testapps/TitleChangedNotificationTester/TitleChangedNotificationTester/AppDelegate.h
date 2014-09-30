@@ -4,10 +4,10 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow* window1;
-@property (assign) IBOutlet NSWindow* window2;
-@property (assign) IBOutlet NSWindow* window3;
+@property(assign) IBOutlet NSWindow* window1;
+@property(assign) IBOutlet NSWindow* window2;
+@property(assign) IBOutlet NSWindow* window3;
 
-- (IBAction) refreshWindow1Title:(id)sender;
+- (IBAction)refreshWindow1Title:(id)sender;
 
 @end
