@@ -4,10 +4,10 @@
 
 @interface MigrationUtilities : NSObject
 
-+ (NSString*) applicationSupportName;
++ (NSString *)applicationSupportName;
 
-+ (BOOL) migrate:(NSArray*)oldBundleIdentifiers
-  oldApplicationSupports:(NSArray*)oldApplicationSupports
-  oldPaths:(NSArray*)oldPaths;
++ (BOOL)migrate:(NSArray *)oldBundleIdentifiers
+    oldApplicationSupports:(NSArray *)oldApplicationSupports
+                  oldPaths:(NSArray *)oldPaths;
 
 @end

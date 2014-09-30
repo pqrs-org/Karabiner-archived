@@ -4,6 +4,6 @@
 
 @interface KarabinerUtilities : NSObject
 
-+ (NSString*) bundleIdentifier:(NSRunningApplication*)runningApplication;
++ (NSString *)bundleIdentifier:(NSRunningApplication *)runningApplication;
 
 @end

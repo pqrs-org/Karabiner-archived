@@ -4,8 +4,7 @@
 @implementation MigrationUtilities
 
 // This value must be same as Sparkle's value.
-+ (NSString*) applicationSupportName
-{
++ (NSString*)applicationSupportName {
   NSBundle* bundle = [NSBundle mainBundle];
 
   NSString* name = [bundle objectForInfoDictionaryKey:@"CFBundleDisplayName"];
@@ -17,8 +16,7 @@
   return [[[NSFileManager defaultManager] displayNameAtPath:[bundle bundlePath]] stringByDeletingPathExtension];
 }
 
-+ (BOOL) migrateUserDefaults:(NSArray*)oldBundleIdentifiers
-{
++ (BOOL)migrateUserDefaults:(NSArray*)oldBundleIdentifiers {
   NSString* currentBundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
 
   // Migrate when old preferences exists.
@@ -35,8 +33,7 @@
   return NO;
 }
 
-+ (void) migrateApplicationSupport:(NSArray*)oldApplicationSupports
-{
++ (void)migrateApplicationSupport:(NSArray*)oldApplicationSupports {
   NSFileManager* filemanager = [NSFileManager defaultManager];
   NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
   if ([paths count] == 0) return;
@@ -55,12 +52,12 @@
       NSError* error = nil;
 
       if ([filemanager fileExistsAtPath:newpath]) {
-        if (! [filemanager removeItemAtPath:newpath error:&error]) {
+        if (![filemanager removeItemAtPath:newpath error:&error]) {
           NSLog(@"Removing %@ is failed: %@", newpath, error);
           return;
         }
       }
-      if (! [filemanager copyItemAtPath:oldpath toPath:newpath error:&error]) {
+      if (![filemanager copyItemAtPath:oldpath toPath:newpath error:&error]) {
         NSLog(@"Copying %@ to %@ is failed: %@", oldpath, newpath, error);
         return;
       }
@@ -70,8 +67,7 @@
   }
 }
 
-+ (void) migrateStartAtLogin:(NSArray*)oldPaths
-{
++ (void)migrateStartAtLogin:(NSArray*)oldPaths {
   // Note: This method does not work properly in major case.
   // Because isStartAtLogin will be failed with deleted file URL.
   // (== LSSharedFileListItemResolve will be failed with deleted file URL.)
@@ -94,9 +90,9 @@
   }
 }
 
-+ (BOOL) migrate:(NSArray*)oldBundleIdentifiers
-  oldApplicationSupports:(NSArray*)oldApplicationSupports
-  oldPaths:(NSArray*)oldPaths;
++ (BOOL)migrate:(NSArray*)oldBundleIdentifiers
+    oldApplicationSupports:(NSArray*)oldApplicationSupports
+                  oldPaths:(NSArray*)oldPaths;
 {
   // ----------------------------------------
   // Skip if already migrated.

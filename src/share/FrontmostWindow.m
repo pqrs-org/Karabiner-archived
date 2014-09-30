@@ -2,8 +2,7 @@
 
 @implementation FrontmostWindow
 
-- (instancetype) init
-{
+- (instancetype)init {
   self = [super init];
 
   if (self) {
@@ -13,7 +12,7 @@
     pid_t frontmostApplicationPid = [frontmostApplication processIdentifier];
 
     NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly |
-                                                                               kCGWindowListExcludeDesktopElements,
+                                                                                   kCGWindowListExcludeDesktopElements,
                                                                                kCGNullWindowID));
     for (NSDictionary* window in windows) {
       // Target windows:
@@ -32,7 +31,7 @@
           ([bundleIdentifier isEqualToString:@"com.apple.loginwindow"]) ||
           ([bundleIdentifier isEqualToString:@"com.apple.dock"] &&
            [windowName isEqualToString:@"Launchpad"])) {
-        CGFloat windowAlpha   = [window[(__bridge NSString*)(kCGWindowAlpha)] floatValue];
+        CGFloat windowAlpha = [window[(__bridge NSString*)(kCGWindowAlpha)] floatValue];
         NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
         CGRect windowBounds;
         CGRectMakeWithDictionaryRepresentation((__bridge CFDictionaryRef)(window[(__bridge NSString*)(kCGWindowBounds)]), &windowBounds);
