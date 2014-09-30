@@ -5,7 +5,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow* window;
-@property (assign) IBOutlet KarabinerClient* client;
+@property(assign) IBOutlet NSWindow* window;
+@property(assign) IBOutlet KarabinerClient* client;
 
 @end

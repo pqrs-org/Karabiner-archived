@@ -21,8 +21,8 @@
   IBOutlet KeyResponder* keyResponder_;
 }
 
-@property (weak) IBOutlet NSWindow* window;
+@property(weak) IBOutlet NSWindow* window;
 
-- (IBAction) setWindowProperty:(id)sender;
+- (IBAction)setWindowProperty:(id)sender;
 
 @end

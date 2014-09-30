@@ -4,6 +4,6 @@
 
 @interface AXApplicationObserverManager : NSObject
 
-- (instancetype) init;
+- (instancetype)init;
 
 @end

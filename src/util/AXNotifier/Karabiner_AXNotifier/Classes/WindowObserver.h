@@ -4,6 +4,6 @@
 
 @interface WindowObserver : NSObject
 
-- (instancetype) init;
+- (instancetype)init;
 
 @end

@@ -11,52 +11,50 @@
 
 @synthesize window;
 
-- (void) setKeyResponder
-{
+- (void)setKeyResponder {
   [window makeFirstResponder:keyResponder_];
 }
 
-- (void) addToAppQueue
-{
+- (void)addToAppQueue {
   @synchronized(self) {
     static NSNumber* lastMtime = nil;
 
     @try {
       NSDictionary* information = [[client_ proxy] focused_uielement_information];
-      if (information[@"mtime"] && ! [lastMtime isEqualToNumber:information[@"mtime"]]) {
+      if (information[@"mtime"] && ![lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
         [appQueue_ push:information];
       }
-    } @catch (NSException* exception) {
+    }
+    @catch (NSException* exception) {
       NSLog(@"%@", exception);
     }
   }
 }
 
-- (void) updateOtherInformationStore
-{
+- (void)updateOtherInformationStore {
   @synchronized(self) {
     static NSNumber* lastMtime = nil;
 
     @try {
       NSDictionary* information = [[client_ proxy] inputsource_information];
-      if (information[@"mtime"] && ! [lastMtime isEqualToNumber:information[@"mtime"]]) {
+      if (information[@"mtime"] && ![lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
         [otherinformationstore_ setLanguageCode:information[@"languageCode"]];
         [otherinformationstore_ setInputSourceID:information[@"inputSourceID"]];
         [otherinformationstore_ setInputModeID:information[@"inputModeID"]];
       }
-    } @catch (NSException* exception) {
+    }
+    @catch (NSException* exception) {
       NSLog(@"%@", exception);
     }
   }
 }
 
 // ------------------------------------------------------------
-- (void) distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification
-{
+- (void)distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
     [NSApp terminate:self];
@@ -64,8 +62,7 @@
 }
 
 // ------------------------------------------------------------
-- (void) timerFireMethod:(NSTimer*)timer
-{
+- (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self addToAppQueue];
     [self updateOtherInformationStore];
@@ -73,11 +70,10 @@
 }
 
 // ------------------------------------------------------------
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
-{
-  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook.EventViewer"]
+- (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  if ([MigrationUtilities migrate:@[ @"org.pqrs.KeyRemap4MacBook.EventViewer" ]
            oldApplicationSupports:@[]
-                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app"]]) {
+                         oldPaths:@[ @"/Applications/KeyRemap4MacBook.app/Contents/Applications/EventViewer.app" ]]) {
     [Relauncher relaunch];
   }
 
@@ -103,18 +99,15 @@
   [Relauncher resetRelaunchedCount];
 }
 
-- (BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)theApplication {
   return YES;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
-
 }
 
-- (void) tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem
-{
+- (void)tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem {
   if ([[tabViewItem identifier] isEqualToString:@"Main"]) {
     [self setKeyResponder];
   } else if ([[tabViewItem identifier] isEqualToString:@"Devices"]) {
@@ -122,8 +115,7 @@
   }
 }
 
-- (IBAction) setWindowProperty:(id)sender
-{
+- (IBAction)setWindowProperty:(id)sender {
   // ----------------------------------------
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kForceStayTop]) {
     [window setLevel:NSFloatingWindowLevel];

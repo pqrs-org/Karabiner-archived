@@ -5,8 +5,7 @@
 
 @implementation KeyResponder
 
-- (void) drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
   [NSGraphicsContext saveGraphicsState];
   {
     NSRect bounds = [self bounds];
@@ -27,9 +26,11 @@
     [path stroke];
 
     // Draw texts
-    NSDictionary* attributes = @{ NSFontAttributeName :[NSFont boldSystemFontOfSize:(text.size.width / 10)],
-                                  NSForegroundColorAttributeName :[[NSColor blackColor] colorWithAlphaComponent:0.6], };
-    [@"Mouse Area" drawInRect : text withAttributes : attributes];
+    NSDictionary* attributes = @{
+      NSFontAttributeName : [NSFont boldSystemFontOfSize:(text.size.width / 10)],
+      NSForegroundColorAttributeName : [[NSColor blackColor] colorWithAlphaComponent:0.6],
+    };
+    [@"Mouse Area" drawInRect:text withAttributes:attributes];
   }
   [NSGraphicsContext restoreGraphicsState];
 }
@@ -39,21 +40,19 @@
 // Key event handlers
 //
 
-- (NSString*) modifierFlagsToString:(NSUInteger)flags
-{
+- (NSString*)modifierFlagsToString:(NSUInteger)flags {
   return [NSString stringWithFormat:@"%s%s%s%s%s%s%s%s",
-          ((flags & NSAlphaShiftKeyMask) ? "Caps " : ""),
-          ((flags & NSShiftKeyMask)      ? "Shift " : ""),
-          ((flags & NSControlKeyMask)    ? "Ctrl " : ""),
-          ((flags & NSAlternateKeyMask)  ? "Opt " : ""),
-          ((flags & NSCommandKeyMask)    ? "Cmd " : ""),
-          ((flags & NSNumericPadKeyMask) ? "NumPad " : ""),
-          ((flags & NSHelpKeyMask)       ? "Help " : ""),
-          ((flags & NSFunctionKeyMask)   ? "Fn " : "")];
+                                    ((flags & NSAlphaShiftKeyMask) ? "Caps " : ""),
+                                    ((flags & NSShiftKeyMask) ? "Shift " : ""),
+                                    ((flags & NSControlKeyMask) ? "Ctrl " : ""),
+                                    ((flags & NSAlternateKeyMask) ? "Opt " : ""),
+                                    ((flags & NSCommandKeyMask) ? "Cmd " : ""),
+                                    ((flags & NSNumericPadKeyMask) ? "NumPad " : ""),
+                                    ((flags & NSHelpKeyMask) ? "Help " : ""),
+                                    ((flags & NSFunctionKeyMask) ? "Fn " : "")];
 }
 
-- (NSString*) specialKeycodeToString:(NSEvent*)event
-{
+- (NSString*)specialKeycodeToString:(NSEvent*)event {
   unsigned short keycode = [event keyCode];
 
   if (keycode == 0x35) return @"Escape";
@@ -83,20 +82,20 @@
     if ([characters length] > 0) {
       unichar unichar = [characters characterAtIndex:0];
 
-      if (unichar == NSUpArrowFunctionKey)    { return @"Up";    }
-      if (unichar == NSDownArrowFunctionKey)  { return @"Down";  }
-      if (unichar == NSLeftArrowFunctionKey)  { return @"Left";  }
+      if (unichar == NSUpArrowFunctionKey) { return @"Up"; }
+      if (unichar == NSDownArrowFunctionKey) { return @"Down"; }
+      if (unichar == NSLeftArrowFunctionKey) { return @"Left"; }
       if (unichar == NSRightArrowFunctionKey) { return @"Right"; }
 
-      if (unichar == NSF1FunctionKey)  { return @"F1";  }
-      if (unichar == NSF2FunctionKey)  { return @"F2";  }
-      if (unichar == NSF3FunctionKey)  { return @"F3";  }
-      if (unichar == NSF4FunctionKey)  { return @"F4";  }
-      if (unichar == NSF5FunctionKey)  { return @"F5";  }
-      if (unichar == NSF6FunctionKey)  { return @"F6";  }
-      if (unichar == NSF7FunctionKey)  { return @"F7";  }
-      if (unichar == NSF8FunctionKey)  { return @"F8";  }
-      if (unichar == NSF9FunctionKey)  { return @"F9";  }
+      if (unichar == NSF1FunctionKey) { return @"F1"; }
+      if (unichar == NSF2FunctionKey) { return @"F2"; }
+      if (unichar == NSF3FunctionKey) { return @"F3"; }
+      if (unichar == NSF4FunctionKey) { return @"F4"; }
+      if (unichar == NSF5FunctionKey) { return @"F5"; }
+      if (unichar == NSF6FunctionKey) { return @"F6"; }
+      if (unichar == NSF7FunctionKey) { return @"F7"; }
+      if (unichar == NSF8FunctionKey) { return @"F8"; }
+      if (unichar == NSF9FunctionKey) { return @"F9"; }
       if (unichar == NSF10FunctionKey) { return @"F10"; }
       if (unichar == NSF11FunctionKey) { return @"F11"; }
       if (unichar == NSF12FunctionKey) { return @"F12"; }
@@ -124,47 +123,48 @@
       if (unichar == NSF34FunctionKey) { return @"F34"; }
       if (unichar == NSF35FunctionKey) { return @"F35"; }
 
-      if (unichar == NSInsertFunctionKey)       { return @"Insert";           }
-      if (unichar == NSDeleteFunctionKey)       { return @"Forward Delete";   }
-      if (unichar == NSHomeFunctionKey)         { return @"Home";             }
-      if (unichar == NSBeginFunctionKey)        { return @"Begin";            }
-      if (unichar == NSEndFunctionKey)          { return @"End";              }
-      if (unichar == NSPageUpFunctionKey)       { return @"Page Up";          }
-      if (unichar == NSPageDownFunctionKey)     { return @"Page Down";        }
-      if (unichar == NSPrintScreenFunctionKey)  { return @"Print Screen";     }
-      if (unichar == NSScrollLockFunctionKey)   { return @"Scroll Lock";      }
-      if (unichar == NSPauseFunctionKey)        { return @"Pause";            }
-      if (unichar == NSSysReqFunctionKey)       { return @"System Request";   }
-      if (unichar == NSBreakFunctionKey)        { return @"Break";            }
-      if (unichar == NSResetFunctionKey)        { return @"Reset";            }
-      if (unichar == NSStopFunctionKey)         { return @"Stop";             }
-      if (unichar == NSMenuFunctionKey)         { return @"Menu";             }
-      if (unichar == NSUserFunctionKey)         { return @"User";             }
-      if (unichar == NSSystemFunctionKey)       { return @"System";           }
-      if (unichar == NSPrintFunctionKey)        { return @"Print";            }
-      if (unichar == NSClearLineFunctionKey)    { return @"Clear/Num Lock";   }
-      if (unichar == NSClearDisplayFunctionKey) { return @"Clear Display";    }
-      if (unichar == NSInsertLineFunctionKey)   { return @"Insert Line";      }
-      if (unichar == NSDeleteLineFunctionKey)   { return @"Delete Line";      }
-      if (unichar == NSInsertCharFunctionKey)   { return @"Insert Character"; }
-      if (unichar == NSDeleteCharFunctionKey)   { return @"Delete Character"; }
-      if (unichar == NSPrevFunctionKey)         { return @"Previous";         }
-      if (unichar == NSNextFunctionKey)         { return @"Next";             }
-      if (unichar == NSSelectFunctionKey)       { return @"Select";           }
-      if (unichar == NSExecuteFunctionKey)      { return @"Execute";          }
-      if (unichar == NSUndoFunctionKey)         { return @"Undo";             }
-      if (unichar == NSRedoFunctionKey)         { return @"Redo";             }
-      if (unichar == NSFindFunctionKey)         { return @"Find";             }
-      if (unichar == NSHelpFunctionKey)         { return @"Help";             }
-      if (unichar == NSModeSwitchFunctionKey)   { return @"Mode Switch";      }
+      if (unichar == NSInsertFunctionKey) { return @"Insert"; }
+      if (unichar == NSDeleteFunctionKey) { return @"Forward Delete"; }
+      if (unichar == NSHomeFunctionKey) { return @"Home"; }
+      if (unichar == NSBeginFunctionKey) { return @"Begin"; }
+      if (unichar == NSEndFunctionKey) { return @"End"; }
+      if (unichar == NSPageUpFunctionKey) { return @"Page Up"; }
+      if (unichar == NSPageDownFunctionKey) { return @"Page Down"; }
+      if (unichar == NSPrintScreenFunctionKey) { return @"Print Screen"; }
+      if (unichar == NSScrollLockFunctionKey) { return @"Scroll Lock"; }
+      if (unichar == NSPauseFunctionKey) { return @"Pause"; }
+      if (unichar == NSSysReqFunctionKey) { return @"System Request"; }
+      if (unichar == NSBreakFunctionKey) { return @"Break"; }
+      if (unichar == NSResetFunctionKey) { return @"Reset"; }
+      if (unichar == NSStopFunctionKey) { return @"Stop"; }
+      if (unichar == NSMenuFunctionKey) { return @"Menu"; }
+      if (unichar == NSUserFunctionKey) { return @"User"; }
+      if (unichar == NSSystemFunctionKey) { return @"System"; }
+      if (unichar == NSPrintFunctionKey) { return @"Print"; }
+      if (unichar == NSClearLineFunctionKey) { return @"Clear/Num Lock"; }
+      if (unichar == NSClearDisplayFunctionKey) { return @"Clear Display"; }
+      if (unichar == NSInsertLineFunctionKey) { return @"Insert Line"; }
+      if (unichar == NSDeleteLineFunctionKey) { return @"Delete Line"; }
+      if (unichar == NSInsertCharFunctionKey) { return @"Insert Character"; }
+      if (unichar == NSDeleteCharFunctionKey) { return @"Delete Character"; }
+      if (unichar == NSPrevFunctionKey) { return @"Previous"; }
+      if (unichar == NSNextFunctionKey) { return @"Next"; }
+      if (unichar == NSSelectFunctionKey) { return @"Select"; }
+      if (unichar == NSExecuteFunctionKey) { return @"Execute"; }
+      if (unichar == NSUndoFunctionKey) { return @"Undo"; }
+      if (unichar == NSRedoFunctionKey) { return @"Redo"; }
+      if (unichar == NSFindFunctionKey) { return @"Find"; }
+      if (unichar == NSHelpFunctionKey) { return @"Help"; }
+      if (unichar == NSModeSwitchFunctionKey) { return @"Mode Switch"; }
     }
-  } @catch (NSException* exception) {}
+  }
+  @catch (NSException* exception) {
+  }
 
   return nil;
 }
 
-- (NSString*) keycodeToString:(NSEvent*)event
-{
+- (NSString*)keycodeToString:(NSEvent*)event {
   NSString* string = [self specialKeycodeToString:event];
   if (string) return string;
 
@@ -202,24 +202,26 @@
 
   @try {
     return [event charactersIgnoringModifiers];
-  } @catch (NSException* exception) {}
+  }
+  @catch (NSException* exception) {
+  }
   return @"";
 }
 
-- (NSString*) charactersToString:(NSEvent*)event
-{
+- (NSString*)charactersToString:(NSEvent*)event {
   // We ignore special characters.
   NSString* string = [self specialKeycodeToString:event];
   if (string) return @"";
 
   @try {
     return [event characters];
-  } @catch (NSException* exception) {}
+  }
+  @catch (NSException* exception) {
+  }
   return @"";
 }
 
-- (NSString*) buttonToString:(NSEvent*)event
-{
+- (NSString*)buttonToString:(NSEvent*)event {
   NSInteger number = [event buttonNumber];
   if (number == 0) return @"left";
   if (number == 1) return @"right";
@@ -228,12 +230,11 @@
   return [NSString stringWithFormat:@"button%d", (int)(number + 1)];
 }
 
-- (void) outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType
-{
+- (void)outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType {
   NSString* keyCodeName = [[client_ proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
   NSString* misc = [NSString stringWithFormat:@"characters:%@\t%@",
-                    [[self charactersToString:event] stringByPaddingToLength:4 withString:@" " startingAtIndex:0],
-                    keyCodeName ? keyCodeName:@""];
+                                              [[self charactersToString:event] stringByPaddingToLength:4 withString:@" " startingAtIndex:0],
+                                              keyCodeName ? keyCodeName : @""];
 
   [eventqueue_ push:eventType
                code:[NSString stringWithFormat:@"0x%x", (int)([event keyCode])]
@@ -242,8 +243,7 @@
                misc:misc];
 }
 
-- (void) outputMouseEvent:(NSEvent*)event eventType:(NSString*)eventType
-{
+- (void)outputMouseEvent:(NSEvent*)event eventType:(NSString*)eventType {
   [eventqueue_ push:eventType
                code:[NSString stringWithFormat:@"0x%x", (int)([event buttonNumber])]
                name:[self buttonToString:event]
@@ -251,68 +251,55 @@
                misc:[NSString stringWithFormat:@"%@ %d", NSStringFromPoint([event locationInWindow]), (int)([event clickCount])]];
 }
 
-- (void) keyDown:(NSEvent*)event
-{
+- (void)keyDown:(NSEvent*)event {
   [self outputKeyEvent:event eventType:@"keyDown"];
 }
 
-- (void) keyUp:(NSEvent*)event
-{
+- (void)keyUp:(NSEvent*)event {
   [self outputKeyEvent:event eventType:@"keyUp"];
 }
 
-- (void) flagsChanged:(NSEvent*)event
-{
+- (void)flagsChanged:(NSEvent*)event {
   [self outputKeyEvent:event eventType:@"keyMod"];
 }
 
-- (void) mouseDown:(NSEvent*)event
-{
+- (void)mouseDown:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseDown"];
 }
 
-- (void) mouseUp:(NSEvent*)event
-{
+- (void)mouseUp:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseUp"];
 }
 
-- (void) mouseDragged:(NSEvent*)event
-{
+- (void)mouseDragged:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseDragged"];
 }
 
-- (void) rightMouseDown:(NSEvent*)event
-{
+- (void)rightMouseDown:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseDown"];
 }
 
-- (void) rightMouseUp:(NSEvent*)event
-{
+- (void)rightMouseUp:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseUp"];
 }
 
-- (void) rightMouseDragged:(NSEvent*)event
-{
+- (void)rightMouseDragged:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseDragged"];
 }
 
-- (void) otherMouseDown:(NSEvent*)event
-{
+- (void)otherMouseDown:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseDown"];
 }
 
-- (void) otherMouseUp:(NSEvent*)event
-{
+- (void)otherMouseUp:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseUp"];
 }
 
-- (void) otherMouseDragged:(NSEvent*)event
-{
+- (void)otherMouseDragged:(NSEvent*)event {
   [self outputMouseEvent:event eventType:@"mouseDragged"];
 }
 
-- (void) scrollWheel:(NSEvent*)event
-{
+- (void)scrollWheel:(NSEvent*)event {
   [eventqueue_ push:@"scroll"
                code:@""
                name:@""
@@ -320,8 +307,7 @@
                misc:[NSString stringWithFormat:@"dx:%.03f dy:%.03f dz:%.03f", [event deltaX], [event deltaY], [event deltaZ]]];
 }
 
-- (void) swipeWithEvent:(NSEvent*)event
-{
+- (void)swipeWithEvent:(NSEvent*)event {
   [eventqueue_ push:@"swipe"
                code:@""
                name:@""

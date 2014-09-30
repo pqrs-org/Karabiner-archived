@@ -3,20 +3,18 @@
 
 @interface KarabinerCLI : NSObject
 
-- (void) main;
+- (void)main;
 
 @end
 
 @implementation KarabinerCLI
 
-- (void) output:(NSString*)string
-{
+- (void)output:(NSString*)string {
   NSFileHandle* fh = [NSFileHandle fileHandleWithStandardOutput];
   [fh writeData:[string dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
-- (void) usage
-{
+- (void)usage {
   [self output:@"Usage:\n"];
   [self output:@"  Profile operations:\n"];
   [self output:@"    $ karabiner list\n"];
@@ -57,8 +55,7 @@
   exit(2);
 }
 
-- (void) select:(KarabinerClient*)client command:(NSString*)command index:(NSInteger)index
-{
+- (void)select:(KarabinerClient*)client command:(NSString*)command index:(NSInteger)index {
   [[client proxy] configlist_select:index];
 
   if ([[client proxy] configlist_selectedIndex] != index) {
@@ -67,8 +64,7 @@
   }
 }
 
-- (void) main
-{
+- (void)main {
   NSArray* arguments = [[NSProcessInfo processInfo] arguments];
 
   if ([arguments count] == 1) {
@@ -108,7 +104,7 @@
           [self output:[NSString stringWithFormat:@"cli=%@\n\n", arguments[0]]];
 
           for (NSString* key in [dict allKeys]) {
-            if (! [key hasPrefix:@"notsave."]) {
+            if (![key hasPrefix:@"notsave."]) {
               [self output:[NSString stringWithFormat:@"$cli set %@ %@\n", key, dict[key]]];
               [self output:@"/bin/echo -n .\n"];
             }
@@ -198,8 +194,8 @@
         [self output:[NSString stringWithFormat:@"Unknown argument: %@\n", command]];
         exit(1);
       }
-
-    } @catch (NSException* exception) {
+    }
+    @catch (NSException* exception) {
       NSLog(@"%@", exception);
     }
   }
@@ -208,8 +204,7 @@
 @end
 
 int
-main(int argc, const char* argv[])
-{
+main(int argc, const char* argv[]) {
   [[KarabinerCLI new] main];
   return 0;
 }

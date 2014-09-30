@@ -3,15 +3,14 @@
 #import <Cocoa/Cocoa.h>
 #import "KarabinerClient.h"
 
-@interface Devices : NSObject
-{
-  @private
+@interface Devices : NSObject {
+@private
   NSMutableArray* devices_;
   IBOutlet id view_;
   IBOutlet KarabinerClient* client_;
 }
 
-- (IBAction) refresh:(id)sender;
-- (IBAction) copy:(id)sender;
+- (IBAction)refresh:(id)sender;
+- (IBAction)copy:(id)sender;
 
 @end

@@ -4,13 +4,12 @@
 
 @implementation IgnoredAreaView
 
-+ (NSRect) getTargetArea
-{
++ (NSRect)getTargetArea {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  double top    = [[defaults stringForKey:@"ignoredAreaTop"]    doubleValue] / 100;
+  double top = [[defaults stringForKey:@"ignoredAreaTop"] doubleValue] / 100;
   double bottom = [[defaults stringForKey:@"ignoredAreaBottom"] doubleValue] / 100;
-  double left   = [[defaults stringForKey:@"ignoredAreaLeft"]   doubleValue] / 100;
-  double right  = [[defaults stringForKey:@"ignoredAreaRight"]  doubleValue] / 100;
+  double left = [[defaults stringForKey:@"ignoredAreaLeft"] doubleValue] / 100;
+  double right = [[defaults stringForKey:@"ignoredAreaRight"] doubleValue] / 100;
 
   return NSMakeRect(left,
                     bottom,
@@ -18,8 +17,7 @@
                     (1.0 - top - bottom));
 }
 
-- (void) drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
   [NSGraphicsContext saveGraphicsState];
   {
     NSRect bounds = [self bounds];
@@ -32,11 +30,12 @@
     NSRect targetArea = [IgnoredAreaView getTargetArea];
 
     [[NSColor grayColor] set];
-    [[NSBezierPath bezierPathWithRoundedRect:NSMakeRect(bounds.size.width  * targetArea.origin.x,
+    [[NSBezierPath bezierPathWithRoundedRect:NSMakeRect(bounds.size.width * targetArea.origin.x,
                                                         bounds.size.height * targetArea.origin.y,
-                                                        bounds.size.width  * targetArea.size.width,
+                                                        bounds.size.width * targetArea.size.width,
                                                         bounds.size.height * targetArea.size.height)
-                                     xRadius:10 yRadius:10] fill];
+                                     xRadius:10
+                                     yRadius:10] fill];
 
     // Draw fingers
     for (size_t i = 0; i < nfingers_; ++i) {
@@ -49,7 +48,7 @@
       } else {
         [[NSColor redColor] set];
       }
-      NSRect rect = NSMakeRect(bounds.size.width  * fingers_[i].point.x - DIAMETER / 2,
+      NSRect rect = NSMakeRect(bounds.size.width * fingers_[i].point.x - DIAMETER / 2,
                                bounds.size.height * fingers_[i].point.y - DIAMETER / 2,
                                DIAMETER,
                                DIAMETER);
@@ -61,14 +60,12 @@
   [NSGraphicsContext restoreGraphicsState];
 }
 
-- (void) clearFingers
-{
+- (void)clearFingers {
   nfingers_ = 0;
   [self setNeedsDisplay:YES];
 }
 
-- (void) addFinger:(NSPoint)point ignored:(BOOL)ignored
-{
+- (void)addFinger:(NSPoint)point ignored:(BOOL)ignored {
   fingers_[nfingers_].point = point;
   fingers_[nfingers_].ignored = ignored;
 
@@ -78,14 +75,12 @@
   [self setNeedsDisplay:YES];
 }
 
-+ (BOOL) isIgnoredArea:(NSPoint)point
-{
++ (BOOL)isIgnoredArea:(NSPoint)point {
   NSRect targetArea = [IgnoredAreaView getTargetArea];
-  return ! NSPointInRect(point, targetArea);
+  return !NSPointInRect(point, targetArea);
 }
 
-- (IBAction) draw:(id)sender
-{
+- (IBAction)draw:(id)sender {
   [self setNeedsDisplay:YES];
 }
 

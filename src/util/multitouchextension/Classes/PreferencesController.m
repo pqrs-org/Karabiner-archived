@@ -6,8 +6,7 @@
 
 @implementation PreferencesController
 
-+ (void) initialize
-{
++ (void)initialize {
   NSDictionary* dict = @{
     @"hideIconInDock" : @NO,
     @"relaunchAfterWakeUpFromSleep" : @YES,
@@ -20,18 +19,17 @@
     @"targetSetting2" : @"notsave.enhanced_copyandpaste",
     @"targetSetting3" : @"notsave.pointing_relative_to_scroll",
     @"targetSetting4" : @"notsave.pointing_relative_to_scroll",
-    @"ignoredAreaTop"    : @"0",
+    @"ignoredAreaTop" : @"0",
     @"ignoredAreaBottom" : @"0",
-    @"ignoredAreaLeft"   : @"0",
-    @"ignoredAreaRight"  : @"0",
-    kDelayBeforeTurnOff: @"0",
-    kDelayBeforeTurnOn:  @"0",
+    @"ignoredAreaLeft" : @"0",
+    @"ignoredAreaRight" : @"0",
+    kDelayBeforeTurnOff : @"0",
+    kDelayBeforeTurnOn : @"0",
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -41,9 +39,7 @@
   return self;
 }
 
-
-- (void) load
-{
+- (void)load {
   if ([StartAtLoginUtilities isStartAtLogin]) {
     [startAtLogin_ setState:NSOnState];
   } else {
@@ -51,13 +47,11 @@
   }
 }
 
-- (void) show
-{
+- (void)show {
   [preferencesWindow_ makeKeyAndOrderFront:nil];
 }
 
-- (IBAction) setStartAtLogin:(id)sender
-{
+- (IBAction)setStartAtLogin:(id)sender {
   // startAtLogin
   if ([StartAtLoginUtilities isStartAtLogin]) {
     [StartAtLoginUtilities setStartAtLogin:NO];
@@ -66,24 +60,22 @@
   }
 }
 
-+ (BOOL) isSettingEnabled:(NSInteger)fingers
-{
++ (BOOL)isSettingEnabled:(NSInteger)fingers {
   return [[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", (int)(fingers)]];
 }
 
-+ (NSString*) getSettingName:(NSInteger)fingers
-{
++ (NSString*)getSettingName:(NSInteger)fingers {
   return [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSetting%d", (int)(fingers)]];
 }
 
-- (IBAction) set:(id)sender
-{
+- (IBAction)set:(id)sender {
   // ------------------------------------------------------------
   // disable old settings
   for (NSString* name in oldSettings_) {
     @try {
       [[client_ proxy] setValue:0 forName:name];
-    } @catch (NSException* exception) {
+    }
+    @catch (NSException* exception) {
       NSLog(@"%@", exception);
     }
   }
@@ -96,8 +88,7 @@
   }
 }
 
-- (void) windowWillClose:(NSNotification*)notification
-{
+- (void)windowWillClose:(NSNotification*)notification {
   [self set:nil];
 }
 

@@ -4,8 +4,7 @@
 
 @implementation OtherInformationStore
 
-- (IBAction) copy:(id)sender
-{
+- (IBAction)copy:(id)sender {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [NSMutableString new];
 
@@ -14,12 +13,11 @@
   [string appendFormat:@"Input Mode ID: %@\n", inputmodeid_];
 
   [pboard clearContents];
-  [pboard writeObjects:@[string]];
+  [pboard writeObjects:@[ string ]];
 }
 
-- (void) setLanguageCode:(NSString*)value
-{
-  if (! value) {
+- (void)setLanguageCode:(NSString*)value {
+  if (!value) {
     value = @"---";
   }
 
@@ -27,9 +25,8 @@
   [label_languagecode_ setStringValue:value];
 }
 
-- (void) setInputSourceID:(NSString*)value
-{
-  if (! value) {
+- (void)setInputSourceID:(NSString*)value {
+  if (!value) {
     value = @"---";
   }
 
@@ -37,9 +34,8 @@
   [label_inputsourceid_ setStringValue:value];
 }
 
-- (void) setInputModeID:(NSString*)value
-{
-  if (! value) {
+- (void)setInputModeID:(NSString*)value {
+  if (!value) {
     value = @"---";
   }
 

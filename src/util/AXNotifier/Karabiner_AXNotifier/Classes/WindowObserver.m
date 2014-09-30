@@ -6,8 +6,7 @@ enum {
   WINDOWID__END__,
 };
 
-@interface WindowObserver ()
-{
+@interface WindowObserver () {
   NSTimer* timer_;
   NSTimer* refreshWindowIDsTimer_;
   NSMutableDictionary* shown_;
@@ -20,8 +19,7 @@ enum {
 
 @implementation WindowObserver : NSObject
 
-- (instancetype) init
-{
+- (instancetype)init {
   self = [super init];
 
   if (self) {
@@ -46,8 +44,7 @@ enum {
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [timer_ invalidate];
 
   if (windowIDs_) {
@@ -55,8 +52,7 @@ enum {
   }
 }
 
-- (void) refreshWindowIDsTimerFireMethod:(NSTimer*)timer
-{
+- (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       // ----------------------------------------
@@ -90,8 +86,7 @@ enum {
   });
 }
 
-- (void) timerFireMethod:(NSTimer*)timer
-{
+- (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       if (windowIDs_) {
@@ -129,13 +124,12 @@ enum {
   });
 }
 
-- (void) postNotification:(NSString*)windowName bundleIdentifier:(NSString*)bundleIdentifier visibility:(BOOL)visibility
-{
+- (void)postNotification:(NSString*)windowName bundleIdentifier:(NSString*)bundleIdentifier visibility:(BOOL)visibility {
   NSDictionary* userInfo = @{
-    @"bundleIdentifier": bundleIdentifier,
-    @"windowName": windowName,
-    @"role": @"",
-    @"visibility": @(visibility),
+    @"bundleIdentifier" : bundleIdentifier,
+    @"windowName" : windowName,
+    @"role" : @"",
+    @"visibility" : @(visibility),
   };
   [[NSNotificationCenter defaultCenter] postNotificationName:kWindowVisibilityChanged object:self userInfo:userInfo];
 }
