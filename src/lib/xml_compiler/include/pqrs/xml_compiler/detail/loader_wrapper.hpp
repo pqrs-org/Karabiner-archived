@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-template<class T>
+template <class T>
 class loader_wrapper {
 public:
   static void traverse_system_xml(const xml_compiler& xml_compiler,

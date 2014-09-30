@@ -2,11 +2,9 @@
 
 class essential_configuration {
 public:
-  essential_configuration(const preferences_node& node) :
-    identifier_(node.get_identifier()),
-    raw_identifier_(node.get_identifier()),
-    default_value_(node.get_default_value())
-  {
+  essential_configuration(const preferences_node& node) : identifier_(node.get_identifier()),
+                                                          raw_identifier_(node.get_identifier()),
+                                                          default_value_(node.get_default_value()) {
     xml_compiler::normalize_identifier_(identifier_);
   }
 

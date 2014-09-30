@@ -2,10 +2,8 @@
 
 class preferences_node {
 public:
-  preferences_node(void) :
-    name_line_count_(1),
-    default_value_(0)
-  {}
+  preferences_node(void) : name_line_count_(1),
+                           default_value_(0) {}
   virtual ~preferences_node(void) {}
 
   const std::string& get_name(void) const { return name_; }
@@ -27,9 +25,7 @@ protected:
 class preferences_checkbox_node : public preferences_node {
 public:
   preferences_checkbox_node(void) {}
-  preferences_checkbox_node(const preferences_checkbox_node& parent_node) :
-    name_for_filter_(parent_node.name_for_filter_ + " ")
-  {}
+  preferences_checkbox_node(const preferences_checkbox_node& parent_node) : name_for_filter_(parent_node.name_for_filter_ + " ") {}
 
   void handle_item_child(const extracted_ptree::node& it);
 
@@ -41,12 +37,8 @@ private:
 
 class preferences_number_node : public preferences_node {
 public:
-  preferences_number_node(void) :
-    step_(1)
-  {}
-  preferences_number_node(const preferences_number_node& /*parent_node*/) :
-    preferences_number_node()
-  {}
+  preferences_number_node(void) : step_(1) {}
+  preferences_number_node(const preferences_number_node& /*parent_node*/) : preferences_number_node() {}
 
   void handle_item_child(const extracted_ptree::node& it);
 
@@ -81,7 +73,7 @@ public:
   const preferences_node_tree_ptrs_ptr& get_children(void) const { return children_; }
 
   void push_back(const preferences_node_tree_ptr& ptr) {
-    if (! children_) {
+    if (!children_) {
       children_ = preferences_node_tree_ptrs_ptr(new preferences_node_tree_ptrs());
     }
     children_->push_back(ptr);

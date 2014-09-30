@@ -2,9 +2,7 @@
 
 class filter_vector {
 public:
-  filter_vector(const symbol_map& symbol_map) :
-    symbol_map_(symbol_map)
-  {}
+  filter_vector(const symbol_map& symbol_map) : symbol_map_(symbol_map) {}
   void traverse(const extracted_ptree& pt);
 
   const std::vector<uint32_t>& get(void) const {

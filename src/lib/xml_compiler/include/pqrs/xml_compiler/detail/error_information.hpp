@@ -5,7 +5,7 @@ public:
   error_information(void) : count_(0) {}
 
   const std::string& get_message(void) const { return message_; }
-  size_t get_count(void)               const { return count_; }
+  size_t get_count(void) const { return count_; }
 
   void set(const std::string& message) {
     if (message_.empty()) {

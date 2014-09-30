@@ -15,14 +15,12 @@ class remapclasses_initialize_vector_prepare_loader {
 public:
   remapclasses_initialize_vector_prepare_loader(const xml_compiler& xml_compiler,
                                                 symbol_map& symbol_map,
-                                                std::vector<std::shared_ptr<essential_configuration> >& essential_configurations,
-                                                preferences_node_tree_t* preferences_node_tree) :
-    xml_compiler_(xml_compiler),
-    symbol_map_(symbol_map),
-    essential_configurations_(essential_configurations),
-    preferences_node_tree_(preferences_node_tree),
-    root_preferences_node_tree_(preferences_node_tree)
-  {}
+                                                std::vector<std::shared_ptr<essential_configuration>>& essential_configurations,
+                                                preferences_node_tree_t* preferences_node_tree) : xml_compiler_(xml_compiler),
+                                                                                                  symbol_map_(symbol_map),
+                                                                                                  essential_configurations_(essential_configurations),
+                                                                                                  preferences_node_tree_(preferences_node_tree),
+                                                                                                  root_preferences_node_tree_(preferences_node_tree) {}
 
   void traverse(const extracted_ptree& pt) {
     for (const auto& it : pt) {
@@ -35,7 +33,7 @@ public:
       // traverse
       {
         if (it.get_tag_name() != "item") {
-          if (! it.children_empty()) {
+          if (!it.children_empty()) {
             traverse(it.children_extracted_ptree());
           }
         } else {
@@ -65,10 +63,10 @@ public:
                 auto attr_vk_config = child.get_optional("<xmlattr>.vk_config");
                 if (attr_vk_config) {
                   const char* names[] = {
-                    "VK_CONFIG_TOGGLE_",
-                    "VK_CONFIG_FORCE_ON_",
-                    "VK_CONFIG_FORCE_OFF_",
-                    "VK_CONFIG_SYNC_KEYDOWNUP_",
+                      "VK_CONFIG_TOGGLE_",
+                      "VK_CONFIG_FORCE_ON_",
+                      "VK_CONFIG_FORCE_OFF_",
+                      "VK_CONFIG_SYNC_KEYDOWNUP_",
                   };
                   for (const auto& n : names) {
                     symbol_map_.add("KeyCode", std::string(n) + identifier);
@@ -88,14 +86,14 @@ public:
           auto saved_preferences_node_tree = preferences_node_tree_;
           preferences_node_tree_ = ptr.get();
           {
-            if (! it.children_empty()) {
+            if (!it.children_empty()) {
               traverse(it.children_extracted_ptree());
             }
           }
           preferences_node_tree_ = saved_preferences_node_tree;
 
           auto attr_hidden = it.get_optional("<xmlattr>.hidden");
-          if (! attr_hidden) {
+          if (!attr_hidden) {
             preferences_node_tree_->push_back(ptr);
           }
         }
@@ -127,7 +125,7 @@ public:
 private:
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
-  std::vector<std::shared_ptr<essential_configuration> >& essential_configurations_;
+  std::vector<std::shared_ptr<essential_configuration>>& essential_configurations_;
   preferences_node_tree_t* preferences_node_tree_;
   preferences_node_tree_t* const root_preferences_node_tree_;
 

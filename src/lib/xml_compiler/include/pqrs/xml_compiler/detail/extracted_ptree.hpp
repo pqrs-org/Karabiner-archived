@@ -1,33 +1,27 @@
 // This header intentionally has no include guards.
 
-class extracted_ptree
-{
+class extracted_ptree {
 public:
   extracted_ptree(const xml_compiler& xml_compiler,
                   const pqrs::string::replacement& replacement,
                   const boost::property_tree::ptree& pt,
-                  const std::string& xml_file_path) :
-    xml_compiler_(xml_compiler),
-    replacement_(replacement),
-    pt_(pt),
-    included_files_ptr_(new std::deque<std::string>),
-    included_files_(*included_files_ptr_),
-    stack_ptr_(new std::stack<stack_data>),
-    stack_(*stack_ptr_)
-  {
+                  const std::string& xml_file_path) : xml_compiler_(xml_compiler),
+                                                      replacement_(replacement),
+                                                      pt_(pt),
+                                                      included_files_ptr_(new std::deque<std::string>),
+                                                      included_files_(*included_files_ptr_),
+                                                      stack_ptr_(new std::stack<stack_data>),
+                                                      stack_(*stack_ptr_) {
     included_files_.push_back(xml_file_path);
   }
 
-  class node
-  {
+  class node {
   public:
     node(const boost::property_tree::ptree::value_type& node,
          const extracted_ptree& extracted_ptree,
-         const pqrs::string::replacement& replacement) :
-      node_(node),
-      extracted_ptree_(extracted_ptree),
-      replacement_(replacement)
-    {}
+         const pqrs::string::replacement& replacement) : node_(node),
+                                                         extracted_ptree_(extracted_ptree),
+                                                         replacement_(replacement) {}
 
     const std::string& get_tag_name(void) const { return node_.first; }
     const std::string& get_data(void) const { return node_.second.data(); }
@@ -49,22 +43,18 @@ public:
   class stack_data {
   public:
     stack_data(const boost::property_tree::ptree& pt,
-               const pqrs::string::replacement& r) :
-      it(pt.begin()),
-      end(pt.end()),
-      parent_replacement(r)
-    {}
+               const pqrs::string::replacement& r) : it(pt.begin()),
+                                                     end(pt.end()),
+                                                     parent_replacement(r) {}
 
     // For extracted ptree.
     stack_data(const ptree_ptr& p,
                const std::shared_ptr<pqrs::string::replacement>& r,
-               const boost::property_tree::ptree& root_children) :
-      it(root_children.begin()),
-      end(root_children.end()),
-      parent_replacement(*r),
-      pt_ptr_(p),
-      replacement_ptr_(r)
-    {}
+               const boost::property_tree::ptree& root_children) : it(root_children.begin()),
+                                                                   end(root_children.end()),
+                                                                   parent_replacement(*r),
+                                                                   pt_ptr_(p),
+                                                                   replacement_ptr_(r) {}
 
     boost::property_tree::ptree::const_iterator it;
     boost::property_tree::ptree::const_iterator end;
@@ -80,25 +70,20 @@ public:
 
   class extracted_ptree_iterator : public boost::iterator_facade<extracted_ptree_iterator,
                                                                  const node,
-                                                                 boost::forward_traversal_tag>
-  {
+                                                                 boost::forward_traversal_tag> {
   public:
-    extracted_ptree_iterator(const extracted_ptree& extracted_ptree) :
-      extracted_ptree_(extracted_ptree),
-      stack_size_(0),
-      node_(nullptr)
-    {
+    extracted_ptree_iterator(const extracted_ptree& extracted_ptree) : extracted_ptree_(extracted_ptree),
+                                                                       stack_size_(0),
+                                                                       node_(nullptr) {
       set_node_();
     }
 
     extracted_ptree_iterator(const extracted_ptree& extracted_ptree,
                              const pqrs::string::replacement& replacement,
-                             const boost::property_tree::ptree& pt) :
-      extracted_ptree_(extracted_ptree),
-      stack_size_(extracted_ptree.stack_.size() + 1),
-      node_(nullptr)
-    {
-      if (! pt.empty()) {
+                             const boost::property_tree::ptree& pt) : extracted_ptree_(extracted_ptree),
+                                                                      stack_size_(extracted_ptree.stack_.size() + 1),
+                                                                      node_(nullptr) {
+      if (!pt.empty()) {
         extracted_ptree_.stack_.push(stack_data(pt, replacement));
         extract_include_();
       }
@@ -111,7 +96,7 @@ public:
         node_ = nullptr;
       }
 
-      while (! ended_()) {
+      while (!ended_()) {
         auto& top = extracted_ptree_.stack_.top();
         top.it = top.end;
         collapse_();
@@ -190,7 +175,7 @@ public:
       // ----------------------------------------
       // replacement
       std::shared_ptr<pqrs::string::replacement> replacement_ptr(new pqrs::string::replacement);
-      if (! it.second.empty()) {
+      if (!it.second.empty()) {
         replacement_loader loader(xml_compiler, *replacement_ptr);
         loader.traverse(extracted_ptree(extracted_ptree_, top.parent_replacement, it.second));
       }
@@ -207,13 +192,13 @@ public:
       {
         auto path = it.second.get_optional<std::string>("<xmlattr>.path");
         if (path) {
-          assert(! extracted_ptree_.included_files_.empty());
+          assert(!extracted_ptree_.included_files_.empty());
           xml_file_path = xml_compiler.make_file_path(pqrs::file_path::dirname(extracted_ptree_.included_files_.back()),
                                                       *path);
         }
       }
 
-      if (! xml_file_path.empty()) {
+      if (!xml_file_path.empty()) {
         for (const auto& i : extracted_ptree_.included_files_) {
           if (i == xml_file_path) {
             xml_compiler.error_information_.set("An infinite include loop is detected:\n" + xml_file_path);
@@ -232,10 +217,10 @@ public:
           // Do not call collapse_ here.
           // (Keep included_files_ to detect an infinite include loop.)
 
-          if (! pt_ptr->empty()) {
+          if (!pt_ptr->empty()) {
             auto root_node = pt_ptr->begin();
             const auto& root_children = root_node->second;
-            if (! root_children.empty()) {
+            if (!root_children.empty()) {
               extracted_ptree_.stack_.push(stack_data(pt_ptr, replacement_ptr, root_children));
               extracted_ptree_.included_files_.push_back(xml_file_path);
               extract_include_();
@@ -257,7 +242,7 @@ public:
         }
 
         if (top.extracted()) {
-          assert(! extracted_ptree_.included_files_.empty());
+          assert(!extracted_ptree_.included_files_.empty());
           extracted_ptree_.included_files_.pop_back();
         }
         extracted_ptree_.stack_.pop();
@@ -286,23 +271,21 @@ public:
 private:
   extracted_ptree(const extracted_ptree& extracted_ptree,
                   const pqrs::string::replacement& replacement,
-                  const boost::property_tree::ptree& pt) :
-    xml_compiler_(extracted_ptree.xml_compiler_),
-    replacement_(replacement),
-    pt_(pt),
-    included_files_(extracted_ptree.included_files_),
-    stack_(extracted_ptree.stack_)
-  {}
+                  const boost::property_tree::ptree& pt) : xml_compiler_(extracted_ptree.xml_compiler_),
+                                                           replacement_(replacement),
+                                                           pt_(pt),
+                                                           included_files_(extracted_ptree.included_files_),
+                                                           stack_(extracted_ptree.stack_) {}
 
   const xml_compiler& xml_compiler_;
   const pqrs::string::replacement& replacement_;
   const boost::property_tree::ptree& pt_;
 
   // shared_ptr for included_files_.
-  std::shared_ptr<std::deque<std::string> > included_files_ptr_;
+  std::shared_ptr<std::deque<std::string>> included_files_ptr_;
   std::deque<std::string>& included_files_;
 
   // shared_ptr for stack_.
-  std::shared_ptr<std::stack<stack_data> > stack_ptr_;
+  std::shared_ptr<std::stack<stack_data>> stack_ptr_;
   std::stack<stack_data>& stack_;
 };
