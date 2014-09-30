@@ -5,17 +5,15 @@
 #include <unistd.h>
 
 namespace {
-  void
-  usage(void)
-  {
-    std::cout << "Usage: kextload {load|unload}" << std::endl;
-    exit(1);
-  }
+void
+usage(void) {
+  std::cout << "Usage: kextload {load|unload}" << std::endl;
+  exit(1);
+}
 }
 
 int
-main(int argc, const char* argv[])
-{
+main(int argc, const char* argv[]) {
   if (argc != 2) {
     usage();
   }

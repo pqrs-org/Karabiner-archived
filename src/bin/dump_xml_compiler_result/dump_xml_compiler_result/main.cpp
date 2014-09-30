@@ -3,83 +3,79 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace {
-  int total_identifier_count_ = 0;
+int total_identifier_count_ = 0;
 
-  void
-  escapeHTML(std::string& string)
-  {
-    boost::replace_all(string, "&", "&amp;");
-    boost::replace_all(string, "<", "&lt;");
-    boost::replace_all(string, ">", "&gt;");
-  }
+void
+escapeHTML(std::string& string) {
+  boost::replace_all(string, "&", "&amp;");
+  boost::replace_all(string, "<", "&lt;");
+  boost::replace_all(string, ">", "&gt;");
+}
 
-  void
-  dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>& node_tree,
-            bool dump_all)
-  {
-    auto children_ptr = node_tree.get_children();
-    if (children_ptr) {
-      auto& children = *children_ptr;
+void
+dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>& node_tree,
+          bool dump_all) {
+  auto children_ptr = node_tree.get_children();
+  if (children_ptr) {
+    auto& children = *children_ptr;
 
-      static bool first_ul = true;
-      if (first_ul) {
-        std::cout << "<ul id=\"collapser\">";
-        first_ul = false;
-      } else {
-        std::cout << "<ul>";
-      }
-
-      for (auto& it : children) {
-        auto& node = it->get_node();
-
-        std::string name = node.get_name();
-        escapeHTML(name);
-        std::cout << "<li>" << name;
-
-        if (dump_all) {
-          std::cout << "<identifier>" << node.get_identifier() << "</identifier>" << std::endl;
-          std::cout << "<name_for_filter>" << node.get_name_for_filter() << "</name_for_filter>" << std::endl;
-        }
-
-        dump_tree(*it, dump_all);
-
-        std::cout << "</li>";
-
-        auto& identifier = node.get_identifier();
-        if (! identifier.empty()) {
-          ++total_identifier_count_;
-        }
-      }
-
-      std::cout << "</ul>";
+    static bool first_ul = true;
+    if (first_ul) {
+      std::cout << "<ul id=\"collapser\">";
+      first_ul = false;
+    } else {
+      std::cout << "<ul>";
     }
-  }
 
-  void
-  dump_number(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_number_node>& node_tree)
-  {
-    auto children_ptr = node_tree.get_children();
-    if (children_ptr) {
-      auto& children = *children_ptr;
+    for (auto& it : children) {
+      auto& node = it->get_node();
 
-      for (auto& it : children) {
-        auto& node = it->get_node();
+      std::string name = node.get_name();
+      escapeHTML(name);
+      std::cout << "<li>" << name;
 
-        std::cout << node.get_name() << std::endl
-                  << "  default_value:" << node.get_default_value() << std::endl
-                  << "           step:" << node.get_step() << std::endl
-                  << "      base_unit:" << node.get_base_unit() << std::endl
-                  << std::endl;
+      if (dump_all) {
+        std::cout << "<identifier>" << node.get_identifier() << "</identifier>" << std::endl;
+        std::cout << "<name_for_filter>" << node.get_name_for_filter() << "</name_for_filter>" << std::endl;
+      }
 
-        dump_number(*it);
+      dump_tree(*it, dump_all);
+
+      std::cout << "</li>";
+
+      auto& identifier = node.get_identifier();
+      if (!identifier.empty()) {
+        ++total_identifier_count_;
       }
     }
+
+    std::cout << "</ul>";
   }
 }
 
+void
+dump_number(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_number_node>& node_tree) {
+  auto children_ptr = node_tree.get_children();
+  if (children_ptr) {
+    auto& children = *children_ptr;
+
+    for (auto& it : children) {
+      auto& node = it->get_node();
+
+      std::cout << node.get_name() << std::endl
+                << "  default_value:" << node.get_default_value() << std::endl
+                << "           step:" << node.get_step() << std::endl
+                << "      base_unit:" << node.get_base_unit() << std::endl
+                << std::endl;
+
+      dump_number(*it);
+    }
+  }
+}
+}
+
 int
-main(int argc, const char* argv[])
-{
+main(int argc, const char* argv[]) {
   if (argc != 4) {
     std::cerr << "Usage: " << argv[0] << " system_xml_directory private_xml_directory command" << std::endl
               << std::endl
@@ -124,7 +120,7 @@ main(int argc, const char* argv[])
   } else if (command == "dump_identifier_except_essential") {
     for (int i = 0;; ++i) {
       auto identifier = xml_compiler.get_identifier(i);
-      if (! identifier) break;
+      if (!identifier) break;
 
       std::cout << *identifier << std::endl;
     }
@@ -137,7 +133,7 @@ main(int argc, const char* argv[])
 
     for (size_t i = 0;; ++i) {
       auto essential_configuration = xml_compiler.get_essential_configuration(i);
-      if (! essential_configuration) {
+      if (!essential_configuration) {
         std::cout << "BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ = " << i << std::endl;
         break;
       }
@@ -152,7 +148,7 @@ main(int argc, const char* argv[])
   } else if (command == "output_bridge_essential_configuration_default_values_c") {
     for (size_t i = 0;; ++i) {
       auto essential_configuration = xml_compiler.get_essential_configuration(i);
-      if (! essential_configuration) {
+      if (!essential_configuration) {
         break;
       }
       std::cout << essential_configuration->get_default_value()
@@ -163,7 +159,7 @@ main(int argc, const char* argv[])
   } else if (command == "output_bridge_essential_configuration_identifiers_m") {
     for (size_t i = 0;; ++i) {
       auto essential_configuration = xml_compiler.get_essential_configuration(i);
-      if (! essential_configuration) {
+      if (!essential_configuration) {
         std::cout << "nil" << std::endl;
         break;
       }
