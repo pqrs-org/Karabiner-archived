@@ -5,8 +5,8 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-HoldingKeyToKey::add(AddDataType datatype, AddValue newval) {
+
+void HoldingKeyToKey::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
   case BRIDGE_DATATYPE_CONSUMERKEYCODE:
@@ -87,8 +87,7 @@ HoldingKeyToKey::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-void
-HoldingKeyToKey::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval) {
+void HoldingKeyToKey::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval) {
   switch (indexType_) {
   case INDEX_IS_NORMAL:
     dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::SHORT_PERIOD,
@@ -105,8 +104,7 @@ HoldingKeyToKey::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddV
   }
 }
 
-bool
-HoldingKeyToKey::remap(RemapParams& remapParams) {
+bool HoldingKeyToKey::remap(RemapParams& remapParams) {
   return dppkeytokey_.remap(remapParams);
 }
 }
