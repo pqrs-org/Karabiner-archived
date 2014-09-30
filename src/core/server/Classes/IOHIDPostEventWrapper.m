@@ -2,16 +2,14 @@
 #import <IOKit/hidsystem/ev_keymap.h>
 #import "IOHIDPostEventWrapper.h"
 
-@interface IOHIDPostEventWrapper ()
-{
+@interface IOHIDPostEventWrapper () {
   mach_port_t eventDriver_;
 }
 @end
 
 @implementation IOHIDPostEventWrapper
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -31,7 +29,7 @@
     if (KERN_SUCCESS != kr) goto finish;
 
     service = IOIteratorNext(iter);
-    if (! service) goto finish;
+    if (!service) goto finish;
 
     kr = IOServiceOpen(service, mach_task_self(), kIOHIDParamConnectType, &eventDriver_);
     if (KERN_SUCCESS != kr) goto finish;
@@ -48,11 +46,10 @@
   return self;
 }
 
-- (void) postAuxKey:(uint8_t)auxKeyCode
-{
-  if (! eventDriver_) return;
+- (void)postAuxKey:(uint8_t)auxKeyCode {
+  if (!eventDriver_) return;
 
-  uint32_t keydownup[] = { NX_KEYDOWN, NX_KEYUP };
+  uint32_t keydownup[] = {NX_KEYDOWN, NX_KEYUP};
 
   for (size_t i = 0; i < sizeof(keydownup) / sizeof(keydownup[0]); ++i) {
     NXEventData event;
@@ -60,7 +57,7 @@
     event.compound.subType = NX_SUBTYPE_AUX_CONTROL_BUTTONS;
     event.compound.misc.L[0] = (auxKeyCode << 16 | keydownup[i] << 8);
 
-    IOGPoint loc = { 0, 0 };
+    IOGPoint loc = {0, 0};
     kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, 0, FALSE);
     if (KERN_SUCCESS != kr) {
       NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
@@ -68,23 +65,21 @@
   }
 }
 
-- (void) postPowerKey
-{
-  if (! eventDriver_) return;
+- (void)postPowerKey {
+  if (!eventDriver_) return;
 
   NXEventData event;
   bzero(&event, sizeof(event));
   event.compound.subType = NX_SUBTYPE_POWER_KEY;
 
-  IOGPoint loc = { 0, 0 };
+  IOGPoint loc = {0, 0};
   kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, 0, FALSE);
   if (KERN_SUCCESS != kr) {
     NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
   }
 }
 
-- (void) postKey:(uint8_t)keyCode
-{
+- (void)postKey:(uint8_t)keyCode {
   if (keyCode == NX_POWER_KEY) {
     [self postPowerKey];
   } else {

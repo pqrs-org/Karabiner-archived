@@ -6,13 +6,13 @@ class ModifierFlag;
 class Params_KeyboardEventCallBack;
 
 namespace org_pqrs_Karabiner {
-  namespace VirtualKey {
-    class VK_LAZY {
-    public:
-      static bool handle(const Params_KeyboardEventCallBack& params);
-      static ModifierFlag getModifierFlag(KeyCode keycode);
-    };
-  }
+namespace VirtualKey {
+class VK_LAZY {
+public:
+  static bool handle(const Params_KeyboardEventCallBack& params);
+  static ModifierFlag getModifierFlag(KeyCode keycode);
+};
+}
 }
 
 #endif

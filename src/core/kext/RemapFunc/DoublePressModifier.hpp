@@ -6,42 +6,40 @@
 #include "KeyToKey.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace RemapFunc {
-    // A modifier has DoublePressed key action.
-    class DoublePressModifier : public RemapFuncBase {
-    public:
-      DoublePressModifier(void) :
-        RemapFuncBase(BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER),
-        isUseSeparator_(false),
-        index_is_double_pressed_(false),
-        index_(0),
-        pressCount_(0)
-      {
-        ic_.begin();
-      }
-
-      bool remap(RemapParams& remapParams);
-
-      // ----------------------------------------
-      // [0] => fromKey_
-      // [1] => toKey_
-      // [2] => fireKeys_[0]
-      // [3] => fireKeys_[1]
-      // [4] => fireKeys_[2]
-      // ...
-      void add(AddDataType datatype, AddValue newval);
-
-    private:
-      bool isUseSeparator_;
-      bool index_is_double_pressed_;
-      size_t index_;
-      int pressCount_;
-      IntervalChecker ic_;
-
-      KeyToKey keytokey_;
-      KeyToKey keytokey_fire_;
-    };
+namespace RemapFunc {
+// A modifier has DoublePressed key action.
+class DoublePressModifier : public RemapFuncBase {
+public:
+  DoublePressModifier(void) : RemapFuncBase(BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER),
+                              isUseSeparator_(false),
+                              index_is_double_pressed_(false),
+                              index_(0),
+                              pressCount_(0) {
+    ic_.begin();
   }
+
+  bool remap(RemapParams& remapParams);
+
+  // ----------------------------------------
+  // [0] => fromKey_
+  // [1] => toKey_
+  // [2] => fireKeys_[0]
+  // [3] => fireKeys_[1]
+  // [4] => fireKeys_[2]
+  // ...
+  void add(AddDataType datatype, AddValue newval);
+
+private:
+  bool isUseSeparator_;
+  bool index_is_double_pressed_;
+  size_t index_;
+  int pressCount_;
+  IntervalChecker ic_;
+
+  KeyToKey keytokey_;
+  KeyToKey keytokey_fire_;
+};
+}
 }
 
 #endif

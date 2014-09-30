@@ -9,8 +9,7 @@
 @class Updater;
 @class XMLCompiler;
 
-@interface ServerForUserspace : NSObject<KarabinerProtocol>
-{
+@interface ServerForUserspace : NSObject <KarabinerProtocol> {
   IBOutlet AppDelegate* appDelegate_;
   IBOutlet ClientForKernelspace* clientForKernelspace_;
   IBOutlet PreferencesManager* preferencesManager_;

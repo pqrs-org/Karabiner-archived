@@ -5,8 +5,7 @@
 #import "XMLCompiler.h"
 #include <sys/time.h>
 
-@interface PreferencesManager ()
-{
+@interface PreferencesManager () {
   NSMutableDictionary* default_;
   NSArray* essential_configuration_identifiers_;
 }
@@ -15,44 +14,43 @@
 @implementation PreferencesManager
 
 // ----------------------------------------
-+ (void) initialize
-{
-  NSDictionary* dict = @{ kIsStatusBarEnabled : @YES,
-                          kIsShowSettingNameInStatusBar : @NO,
-                          kConfigListSelectedIndex : @0,
-                          kCheckForUpdates : @1,
-                          kIsStatusWindowEnabled : @YES,
-                          kIsStatusWindowShowStickyModifier : @NO,
-                          kIsStatusWindowShowPointingButtonLock : @YES,
-                          kStatusWindowType : @0,  // Normal
-                          kStatusWindowTheme : @0,  // White
-                          kStatusWindowOpacity : @80,
-                          kStatusWindowFontSize : @0,  // Small
-                          kStatusWindowPosition : @3,  // Bottom right
-                          kIsAXNotifierEnabled : @YES, };
++ (void)initialize {
+  NSDictionary* dict = @{
+    kIsStatusBarEnabled : @YES,
+    kIsShowSettingNameInStatusBar : @NO,
+    kConfigListSelectedIndex : @0,
+    kCheckForUpdates : @1,
+    kIsStatusWindowEnabled : @YES,
+    kIsStatusWindowShowStickyModifier : @NO,
+    kIsStatusWindowShowPointingButtonLock : @YES,
+    kStatusWindowType : @0,  // Normal
+    kStatusWindowTheme : @0, // White
+    kStatusWindowOpacity : @80,
+    kStatusWindowFontSize : @0, // Small
+    kStatusWindowPosition : @3, // Bottom right
+    kIsAXNotifierEnabled : @YES,
+  };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
 // ----------------------------------------
-- (void) addToDefault:(NSXMLElement*)element
-{
-  for (NSXMLElement* e in [element elementsForName : @"identifier"]) {
+- (void)addToDefault:(NSXMLElement*)element {
+  for (NSXMLElement* e in [element elementsForName:@"identifier"]) {
     NSXMLNode* attr_default = [e attributeForName:@"default"];
-    if (! attr_default) continue;
+    if (!attr_default) continue;
 
     default_[[e stringValue]] = @([[attr_default stringValue] intValue]);
   }
 
-  for (NSXMLElement* e in [element elementsForName : @"list"]) {
+  for (NSXMLElement* e in [element elementsForName:@"list"]) {
     [self addToDefault:e];
   }
-  for (NSXMLElement* e in [element elementsForName : @"item"]) {
+  for (NSXMLElement* e in [element elementsForName:@"item"]) {
     [self addToDefault:e];
   }
 }
 
-- (void) setDefault
-{
+- (void)setDefault {
   NSURL* xmlurl = [[NSBundle mainBundle] URLForResource:@"number" withExtension:@"xml"];
   NSXMLDocument* xmldocument = [[NSXMLDocument alloc] initWithContentsOfURL:xmlurl options:0 error:NULL];
   if (xmldocument) {
@@ -61,8 +59,7 @@
 }
 
 // ----------------------------------------
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -71,21 +68,19 @@
 
     essential_configuration_identifiers_ = [NSArray arrayWithObjects:
 #include "../../../bridge/output/include.bridge_essential_configuration_identifiers.m"
-                                           ];
+    ];
   }
 
   return self;
 }
 
-
-- (void) load
-{
+- (void)load {
   // ------------------------------------------------------------
   // initialize
-  if (! [self configlist_selectedIdentifier]) {
+  if (![self configlist_selectedIdentifier]) {
     [self configlist_select:0];
 
-    if (! [self configlist_selectedIdentifier]) {
+    if (![self configlist_selectedIdentifier]) {
       NSLog(@"initialize configlist");
 
       // add new item
@@ -98,13 +93,13 @@
   // ------------------------------------------------------------
   // scan config_* and detech notsave.*
   for (NSDictionary* dict in [self configlist_getConfigList]) {
-    if (! dict) continue;
+    if (!dict) continue;
 
     NSString* identifier = dict[@"identify"];
-    if (! identifier) continue;
+    if (!identifier) continue;
 
     NSDictionary* d = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-    if (! d) continue;
+    if (!d) continue;
 
     NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
 
@@ -119,8 +114,7 @@
 }
 
 // ----------------------------------------------------------------------
-- (int) value:(NSString*)name
-{
+- (int)value:(NSString*)name {
   // user setting
   NSString* identifier = [self configlist_selectedIdentifier];
   if (identifier) {
@@ -136,8 +130,7 @@
   return [self defaultValue:name];
 }
 
-- (int) defaultValue:(NSString*)name
-{
+- (int)defaultValue:(NSString*)name {
   NSNumber* number = default_[name];
   if (number) {
     return [number intValue];
@@ -146,18 +139,16 @@
   }
 }
 
-- (void) setValue:(int)newval forName:(NSString*)name
-{
+- (void)setValue:(int)newval forName:(NSString*)name {
   [self setValue:newval forName:name tellToKext:YES];
 }
 
-- (void) setValue:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext
-{
+- (void)setValue:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext {
   @synchronized(self) {
     int oldval = [self value:name];
 
     NSString* identifier = [self configlist_selectedIdentifier];
-    if (! identifier) {
+    if (!identifier) {
       NSLog(@"[ERROR] %s identifier == nil", __FUNCTION__);
       return;
     }
@@ -170,7 +161,7 @@
     } else {
       md = [NSMutableDictionary new];
     }
-    if (! md) {
+    if (!md) {
       NSLog(@"[ERROR] %s md == nil", __FUNCTION__);
       return;
     }
@@ -199,7 +190,7 @@
   }
 }
 
-- (void) callSetConfigOne:(NSString*)name value:(int)value {
+- (void)callSetConfigOne:(NSString*)name value:(int)value {
   struct BridgeSetConfigOne bridgeSetConfigOne;
 
   for (NSUInteger i = 0, count = [essential_configuration_identifiers_ count]; i < count; ++i) {
@@ -222,8 +213,7 @@
   }
 }
 
-- (void) clearNotSave
-{
+- (void)clearNotSave {
   @synchronized(self) {
     // user setting
     NSString* identifier = [self configlist_selectedIdentifier];
@@ -252,8 +242,7 @@
   }
 }
 
-- (NSArray*) essential_config
-{
+- (NSArray*)essential_config {
   NSMutableArray* a = [NSMutableArray new];
 
   if (essential_configuration_identifiers_) {
@@ -265,73 +254,63 @@
   return a;
 }
 
-- (NSDictionary*) changed
-{
+- (NSDictionary*)changed {
   NSString* identifier = [self configlist_selectedIdentifier];
-  if (! identifier) return nil;
+  if (!identifier) return nil;
 
   return [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
 }
 
 // ----------------------------------------------------------------------
-- (NSInteger) configlist_selectedIndex
-{
+- (NSInteger)configlist_selectedIndex {
   return [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndex"];
 }
 
-- (NSString*) configlist_selectedName
-{
+- (NSString*)configlist_selectedName {
   return [self configlist_name:[self configlist_selectedIndex]];
 }
 
-- (NSString*) configlist_selectedIdentifier
-{
+- (NSString*)configlist_selectedIdentifier {
   return [self configlist_identifier:[self configlist_selectedIndex]];
 }
 
-- (NSArray*) configlist_getConfigList
-{
+- (NSArray*)configlist_getConfigList {
   return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
 }
 
-- (NSUInteger) configlist_count
-{
+- (NSUInteger)configlist_count {
   NSArray* a = [self configlist_getConfigList];
-  if (! a) return 0;
+  if (!a) return 0;
   return [a count];
 }
 
-- (NSDictionary*) configlist_dictionary:(NSInteger)rowIndex
-{
+- (NSDictionary*)configlist_dictionary:(NSInteger)rowIndex {
   NSArray* list = [self configlist_getConfigList];
-  if (! list) return nil;
+  if (!list) return nil;
 
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [list count]) return nil;
 
   return list[rowIndex];
 }
 
-- (NSString*) configlist_name:(NSInteger)rowIndex
-{
+- (NSString*)configlist_name:(NSInteger)rowIndex {
   NSDictionary* dict = [self configlist_dictionary:rowIndex];
-  if (! dict) return nil;
+  if (!dict) return nil;
   return dict[@"name"];
 }
 
-- (NSString*) configlist_identifier:(NSInteger)rowIndex
-{
+- (NSString*)configlist_identifier:(NSInteger)rowIndex {
   NSDictionary* dict = [self configlist_dictionary:rowIndex];
-  if (! dict) return nil;
+  if (!dict) return nil;
   return dict[@"identify"];
 }
 
-- (void) configlist_select:(NSInteger)newindex
-{
+- (void)configlist_select:(NSInteger)newindex {
   if (newindex < 0) return;
   if (newindex == [self configlist_selectedIndex]) return;
 
   NSArray* list = [self configlist_getConfigList];
-  if (! list) return;
+  if (!list) return;
   if ((NSUInteger)(newindex) >= [list count]) return;
 
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
@@ -342,23 +321,22 @@
   [clientForKernelspace_ send_config_to_kext];
 }
 
-- (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
-{
+- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
   if ([name length] == 0) return;
 
   NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-  if (! a) return;
+  if (!a) return;
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
 
   NSDictionary* d = a[rowIndex];
-  if (! d) return;
+  if (!d) return;
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
-  if (! md) return;
+  if (!md) return;
   md[@"name"] = name;
 
   NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
-  if (! ma) return;
+  if (!ma) return;
   ma[rowIndex] = md;
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
@@ -366,8 +344,7 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
-- (void) configlist_append
-{
+- (void)configlist_append {
   NSMutableArray* ma = nil;
 
   NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
@@ -376,7 +353,7 @@
   } else {
     ma = [NSMutableArray new];
   }
-  if (! ma) return;
+  if (!ma) return;
 
   struct timeval tm;
   gettimeofday(&tm, NULL);
@@ -393,10 +370,9 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
-- (void) configlist_delete:(NSInteger)rowIndex
-{
+- (void)configlist_delete:(NSInteger)rowIndex {
   NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-  if (! a) return;
+  if (!a) return;
 
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
 
@@ -404,7 +380,7 @@
   if (rowIndex == selectedIndex) return;
 
   NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
-  if (! ma) return;
+  if (!ma) return;
 
   [ma removeObjectAtIndex:(NSUInteger)(rowIndex)];
 
@@ -425,14 +401,12 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSInteger) checkForUpdatesMode
-{
+- (NSInteger)checkForUpdatesMode {
   return [[NSUserDefaults standardUserDefaults] integerForKey:kCheckForUpdates];
 }
 
 // ----------------------------------------------------------------------
-- (IBAction) sendConfigListChangedNotification:(id)sender
-{
+- (IBAction)sendConfigListChangedNotification:(id)sender {
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 

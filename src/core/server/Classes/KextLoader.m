@@ -4,8 +4,7 @@
 
 @implementation KextLoader
 
-+ (void) load
-{
++ (void)load {
   @synchronized(self) {
     static dispatch_once_t onceToken = 0;
     dispatch_once(&onceToken, ^{

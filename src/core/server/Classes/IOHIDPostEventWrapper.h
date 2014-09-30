@@ -4,6 +4,6 @@
 
 @interface IOHIDPostEventWrapper : NSObject
 
-- (void) postKey:(uint8_t)keyCode;
+- (void)postKey:(uint8_t)keyCode;
 
 @end

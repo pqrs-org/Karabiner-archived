@@ -6,7 +6,7 @@
 @class XMLCompiler;
 
 @interface OutlineView : NSObject {
-  @protected
+@protected
   NSArray* datasource_;
   BOOL ischeckbox_;
 
@@ -19,11 +19,11 @@
   IBOutlet NSButton* showEnabledOnly_;
 }
 
-- (void) load:(BOOL)force;
-- (void) filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
+- (void)load:(BOOL)force;
+- (void)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 
-- (IBAction) filter:(id)sender;
-- (IBAction) expand:(id)sender;
-- (IBAction) collapse:(id)sender;
+- (IBAction)filter:(id)sender;
+- (IBAction)expand:(id)sender;
+- (IBAction)collapse:(id)sender;
 
 @end

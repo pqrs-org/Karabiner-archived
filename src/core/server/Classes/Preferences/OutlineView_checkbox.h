@@ -5,6 +5,6 @@
 
 @interface OutlineView_checkbox : OutlineView
 
-- (IBAction) reloadXML:(id)sender;
+- (IBAction)reloadXML:(id)sender;
 
 @end

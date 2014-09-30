@@ -3,8 +3,7 @@
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
-@interface OutlineView ()
-{
+@interface OutlineView () {
   NSMutableDictionary* textsHeightCache_;
   dispatch_queue_t textsHeightQueue_;
 }
@@ -12,15 +11,13 @@
 
 @implementation OutlineView
 
-- (void) observer_PreferencesChanged:(NSNotification*)notification
-{
+- (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [outlineview_ setNeedsDisplay:YES];
   });
 }
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification
-{
+- (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [outlineview_ setNeedsDisplay:YES];
     if ([showEnabledOnly_ state] == NSOnState) {
@@ -29,8 +26,7 @@
   });
 }
 
-- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
-{
+- (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self load:YES];
     [outlineview_ reloadData];
@@ -41,25 +37,22 @@
   });
 }
 
-+ (NSFont*) font
-{
++ (NSFont*)font {
   return [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
 }
 
-+ (CGFloat) textsHeight:(NSUInteger)lineCount
-{
++ (CGFloat)textsHeight:(NSUInteger)lineCount {
   if (lineCount == 0) return 0.0f;
 
   NSString* line = @"gM\n";
   NSUInteger length = [line length] * lineCount - 1; // skip last '\n'
   NSString* texts = [[NSString string] stringByPaddingToLength:length withString:line startingAtIndex:0];
-  NSDictionary* attributes = @{ NSFontAttributeName: [OutlineView font] };
+  NSDictionary* attributes = @{NSFontAttributeName : [OutlineView font]};
   NSSize size = [texts sizeWithAttributes:attributes];
   return size.height;
 }
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -85,13 +78,11 @@
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) load:(BOOL)force
-{
+- (void)load:(BOOL)force {
   if (force) {
     if (datasource_) {
       datasource_ = nil;
@@ -108,15 +99,14 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (NSUInteger) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item
-{
+- (NSUInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
   [self load:NO];
 
   // ----------------------------------------
   NSArray* a = nil;
 
   // root object
-  if (! item) {
+  if (!item) {
     a = datasource_;
 
   } else {
@@ -126,45 +116,41 @@
   return [a count];
 }
 
-- (id) outlineView:(NSOutlineView*)outlineView child:(NSUInteger)idx ofItem:(id)item
-{
+- (id)outlineView:(NSOutlineView*)outlineView child:(NSUInteger)idx ofItem:(id)item {
   [self load:NO];
 
   // ----------------------------------------
   NSArray* a = nil;
 
   // root object
-  if (! item) {
+  if (!item) {
     a = datasource_;
 
   } else {
     a = item[@"children"];
   }
 
-  if (! a) return nil;
+  if (!a) return nil;
   if (idx >= [a count]) return nil;
   return a[idx];
 }
 
-- (BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item
-{
+- (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
   NSArray* a = item[@"children"];
   return a ? YES : NO;
 }
 
-- (BOOL) isTextCell:(NSTableColumn*)tableColumn item:(id)item
-{
+- (BOOL)isTextCell:(NSTableColumn*)tableColumn item:(id)item {
   if (ischeckbox_) {
     NSString* identifier = item[@"identifier"];
-    return (! identifier || [identifier hasPrefix:@"notsave."]);
+    return (!identifier || [identifier hasPrefix:@"notsave."]);
   } else {
     return NO;
   }
 }
 
-- (NSCell*) outlineView:(NSOutlineView*)outlineView dataCellForTableColumn:(NSTableColumn*)tableColumn item:(id)item
-{
-  if (! tableColumn) return nil;
+- (NSCell*)outlineView:(NSOutlineView*)outlineView dataCellForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
+  if (!tableColumn) return nil;
 
   if (ischeckbox_) {
     NSButtonCell* cell = [NSButtonCell new];
@@ -230,8 +216,7 @@
   }
 }
 
-- (id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
-{
+- (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
   NSString* identifier = item[@"identifier"];
 
   if (ischeckbox_) {
@@ -249,12 +234,12 @@
 
     } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
                [columnIdentifier isEqualToString:@"default"]) {
-      if (! identifier) return nil;
+      if (!identifier) return nil;
       return item[columnIdentifier];
 
     } else if ([columnIdentifier isEqualToString:@"value"] ||
                [columnIdentifier isEqualToString:@"stepper"]) {
-      if (! identifier) return nil;
+      if (!identifier) return nil;
 
       return @([preferencesManager_ value:identifier]);
     }
@@ -263,8 +248,7 @@
   return nil;
 }
 
-- (CGFloat) outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item
-{
+- (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
   NSNumber* lineCount = item[@"height"];
   __block NSNumber* height = @([outlineView rowHeight]);
 
@@ -281,15 +265,14 @@
   return [height floatValue];
 }
 
-- (void) outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item
-{
+- (void)outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
   NSString* identifier = item[@"identifier"];
 
   if (identifier) {
     if (ischeckbox_) {
-      if (! [self isTextCell:tableColumn item:item]) {
+      if (![self isTextCell:tableColumn item:item]) {
         int value = [preferencesManager_ value:identifier];
-        value = ! value;
+        value = !value;
         [preferencesManager_ setValue:value forName:identifier];
       }
 
@@ -315,8 +298,7 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (NSDictionary*) filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings
-{
+- (NSDictionary*)filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
   // ------------------------------------------------------------
   // check children
   NSArray* children = dictionary[@"children"];
@@ -340,10 +322,10 @@
   // filter by isEnabledOnly
   if (isEnabledOnly) {
     NSString* identifier = dictionary[@"identifier"];
-    if (! identifier) {
+    if (!identifier) {
       return nil;
     }
-    if (! [preferencesManager_ value:identifier]) {
+    if (![preferencesManager_ value:identifier]) {
       return nil;
     }
   }
@@ -363,16 +345,15 @@
   return nil;
 }
 
-- (void) filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string
-{
+- (void)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string {
   [self load:YES];
-  if (! datasource_) return;
+  if (!datasource_) return;
 
   NSMutableArray* newdatasource = [NSMutableArray new];
 
   NSMutableArray* strings = [NSMutableArray new];
   if (string) {
-    for (NSString* s in [string componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceCharacterSet]]) {
+    for (NSString* s in [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]) {
       if ([s length] == 0) continue;
       [strings addObject:[s lowercaseString]];
     }
@@ -395,22 +376,19 @@
   }
 }
 
-- (IBAction) filter:(id)sender
-{
+- (IBAction)filter:(id)sender {
   if (ischeckbox_) {
     BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
     [self filterDataSource:isEnabledOnly string:[searchText_ stringValue]];
   }
 }
 
-- (IBAction) expand:(id)sender
-{
+- (IBAction)expand:(id)sender {
   [outlineview_ expandItem:nil expandChildren:YES];
   [outlineview_ setNeedsDisplay:YES];
 }
 
-- (IBAction) collapse:(id)sender
-{
+- (IBAction)collapse:(id)sender {
   [outlineview_ collapseItem:nil collapseChildren:YES];
   [outlineview_ setNeedsDisplay:YES];
 }

@@ -15,852 +15,812 @@
 #include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_Karabiner {
-  RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) :
-    parent_(parent),
-    type_(BRIDGE_REMAPTYPE_NONE),
-    active_(false)
-  {
-    processor_ = RemapFunc::RemapFuncFactory::create(vec, length);
+RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) : parent_(parent),
+                                                                                       type_(BRIDGE_REMAPTYPE_NONE),
+                                                                                       active_(false) {
+  processor_ = RemapFunc::RemapFuncFactory::create(vec, length);
+}
+
+RemapClass::Item::~Item(void) {
+  if (processor_) {
+    delete processor_;
+    processor_ = NULL;
   }
 
-  RemapClass::Item::~Item(void)
-  {
-    if (processor_) {
-      delete processor_;
-      processor_ = NULL;
-    }
-
-    // ------------------------------------------------------------
-    for (size_t i = 0; i < filters_.size(); ++i) {
-      RemapFilter::RemapFilterBase* p = filters_[i];
-      if (p) {
-        delete p;
-      }
+  // ------------------------------------------------------------
+  for (size_t i = 0; i < filters_.size(); ++i) {
+    RemapFilter::RemapFilterBase* p = filters_[i];
+    if (p) {
+      delete p;
     }
   }
+}
 
-  void
-  RemapClass::Item::append_filter(const unsigned int* vec, size_t length)
-  {
-    // ------------------------------------------------------------
-    // check parameters.
-    //
-    if (! vec || length <= 0) {
-      IOLOG_ERROR("RemapClass::Item::append_filter invalid parameter.\n");
-      return;
-    }
-
-    // ------------------------------------------------------------
-    // append to filters_.
-    //
-    RemapFilter::RemapFilterBase* newp = RemapFilter::RemapFilterFactory::create(vec, length);
-    if (! newp) {
-      IOLOG_ERROR("RemapClass::Item::append_filter new filter is NULL.\n");
-      return;
-    }
-
-    filters_.push_back(newp);
+void
+RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
+  // ------------------------------------------------------------
+  // check parameters.
+  //
+  if (!vec || length <= 0) {
+    IOLOG_ERROR("RemapClass::Item::append_filter invalid parameter.\n");
+    return;
   }
 
-  void
-  RemapClass::Item::remap(RemapParams& remapParams)
-  {
-    if (! processor_) return;
+  // ------------------------------------------------------------
+  // append to filters_.
+  //
+  RemapFilter::RemapFilterBase* newp = RemapFilter::RemapFilterFactory::create(vec, length);
+  if (!newp) {
+    IOLOG_ERROR("RemapClass::Item::append_filter new filter is NULL.\n");
+    return;
+  }
 
-    bool iskeydown = false;
-    if (! remapParams.paramsBase.iskeydown(iskeydown)) {
-      iskeydown = false;
-    }
+  filters_.push_back(newp);
+}
 
+void
+RemapClass::Item::remap(RemapParams& remapParams) {
+  if (!processor_) return;
+
+  bool iskeydown = false;
+  if (!remapParams.paramsBase.iskeydown(iskeydown)) {
+    iskeydown = false;
+  }
+
+  if (iskeydown) {
+    if (!parent_.enabled()) return;
+    if (isblocked()) return;
+  } else {
+    // We ignore filters_ if active_ is set at KeyDown.
+    if (isblocked() && !active_) return;
+  }
+
+  // check parent_.enabled() for RelativePointerEvent and ScrollWheelEvent.
+  if (processor_->getType() == BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE ||
+      processor_->getType() == BRIDGE_REMAPTYPE_DROPSCROLLWHEEL ||
+      processor_->getType() == BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE ||
+      processor_->getType() == BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL ||
+      processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY ||
+      processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL ||
+      processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY ||
+      processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL) {
+    if (!parent_.enabled()) return;
+  }
+
+  if (processor_->remap(remapParams)) {
     if (iskeydown) {
-      if (! parent_.enabled()) return;
-      if (isblocked()) return;
+      active_ = true;
     } else {
-      // We ignore filters_ if active_ is set at KeyDown.
-      if (isblocked() && ! active_) return;
-    }
-
-    // check parent_.enabled() for RelativePointerEvent and ScrollWheelEvent.
-    if (processor_->getType() == BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE ||
-        processor_->getType() == BRIDGE_REMAPTYPE_DROPSCROLLWHEEL ||
-        processor_->getType() == BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE ||
-        processor_->getType() == BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL ||
-        processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY ||
-        processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL ||
-        processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY ||
-        processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL) {
-      if (! parent_.enabled()) return;
-    }
-
-    if (processor_->remap(remapParams)) {
-      if (iskeydown) {
-        active_ = true;
-      } else {
-        active_ = false;
-      }
+      active_ = false;
     }
   }
+}
 
-  bool
-  RemapClass::Item::drop(const Params_KeyboardEventCallBack& params)
-  {
-    if (! processor_) return false;
+bool
+RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
+  if (!processor_) return false;
 
+  if (params.ex_iskeydown) {
+    if (!parent_.enabled()) return false;
+    if (isblocked()) return false;
+  } else {
+    // We ignore filters_ if active_ is set at KeyDown.
+    if (isblocked() && !active_) return false;
+  }
+
+  if (processor_->drop(params)) {
     if (params.ex_iskeydown) {
-      if (! parent_.enabled()) return false;
-      if (isblocked()) return false;
+      active_ = true;
     } else {
-      // We ignore filters_ if active_ is set at KeyDown.
-      if (isblocked() && ! active_) return false;
+      active_ = false;
     }
-
-    if (processor_->drop(params)) {
-      if (params.ex_iskeydown) {
-        active_ = true;
-      } else {
-        active_ = false;
-      }
-      return true;
-    }
-
-    return false;
-  }
-
-  bool
-  RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase)
-  {
-    if (! processor_) return false;
-
-    // BlockUntilKeyUp does not use Flags.
-    // So, we do not need to use "active_" flag.
-
-    if (! parent_.enabled()) return false;
-    if (isblocked()) return false;
-
-    const FromEvent* fromEvent = processor_->getBlockUntilKeyUpFromEvent();
-    if (fromEvent) {
-      if (fromEvent->isTargetDownEvent(paramsBase) ||
-          fromEvent->isTargetUpEvent(paramsBase)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  bool
-  RemapClass::Item::remap_SimultaneousKeyPresses(void)
-  {
-    if (! processor_) return false;
-    if (isblocked()) return false;
-
-    return processor_->remapSimultaneousKeyPresses(! parent_.enabled());
-  }
-
-  void
-  RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType)
-  {
-    if (! processor_) return;
-    if (isblocked()) return;
-    if (! parent_.enabled()) return;
-
-    processor_->remapSetKeyboardType(keyboardType);
-  }
-
-  void
-  RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item)
-  {
-    if (! processor_) return;
-    if (isblocked()) return;
-    if (! parent_.enabled()) return;
-
-    processor_->remapForceNumLockOn(item);
-  }
-
-  bool
-  RemapClass::Item::isPassThroughEnabled(void) const
-  {
-    if (! processor_) return false;
-    if (isblocked()) return false;
-    if (! parent_.enabled()) return false;
-
-    if (processor_->getType() != BRIDGE_REMAPTYPE_PASSTHROUGH) return false;
-
     return true;
   }
 
-  bool
-  RemapClass::Item::isblocked(void) const
-  {
-    for (size_t i = 0; i < filters_.size(); ++i) {
-      RemapFilter::RemapFilterBase* p = filters_[i];
-      if (p && p->isblocked()) return true;
-    }
+  return false;
+}
 
-    return false;
+bool
+RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
+  if (!processor_) return false;
+
+  // BlockUntilKeyUp does not use Flags.
+  // So, we do not need to use "active_" flag.
+
+  if (!parent_.enabled()) return false;
+  if (isblocked()) return false;
+
+  const FromEvent* fromEvent = processor_->getBlockUntilKeyUpFromEvent();
+  if (fromEvent) {
+    if (fromEvent->isTargetDownEvent(paramsBase) ||
+        fromEvent->isTargetUpEvent(paramsBase)) {
+      return true;
+    }
   }
 
-  // ----------------------------------------------------------------------
-  int RemapClass::allocation_count_ = 0;
+  return false;
+}
 
-  RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex) :
-    statusmessage_(NULL),
-    enabled_(false),
-    is_simultaneouskeypresses_(false),
-    configindex_(configindex)
-  {
-    if (! initialize_vector) {
-      IOLOG_ERROR("RemapClass::RemapClass invalid parameter.\n");
+bool
+RemapClass::Item::remap_SimultaneousKeyPresses(void) {
+  if (!processor_) return false;
+  if (isblocked()) return false;
+
+  return processor_->remapSimultaneousKeyPresses(!parent_.enabled());
+}
+
+void
+RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType) {
+  if (!processor_) return;
+  if (isblocked()) return;
+  if (!parent_.enabled()) return;
+
+  processor_->remapSetKeyboardType(keyboardType);
+}
+
+void
+RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item) {
+  if (!processor_) return;
+  if (isblocked()) return;
+  if (!parent_.enabled()) return;
+
+  processor_->remapForceNumLockOn(item);
+}
+
+bool
+RemapClass::Item::isPassThroughEnabled(void) const {
+  if (!processor_) return false;
+  if (isblocked()) return false;
+  if (!parent_.enabled()) return false;
+
+  if (processor_->getType() != BRIDGE_REMAPTYPE_PASSTHROUGH) return false;
+
+  return true;
+}
+
+bool
+RemapClass::Item::isblocked(void) const {
+  for (size_t i = 0; i < filters_.size(); ++i) {
+    RemapFilter::RemapFilterBase* p = filters_[i];
+    if (p && p->isblocked()) return true;
+  }
+
+  return false;
+}
+
+// ----------------------------------------------------------------------
+int RemapClass::allocation_count_ = 0;
+
+RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex) : statusmessage_(NULL),
+                                                                                                              enabled_(false),
+                                                                                                              is_simultaneouskeypresses_(false),
+                                                                                                              configindex_(configindex) {
+  if (!initialize_vector) {
+    IOLOG_ERROR("RemapClass::RemapClass invalid parameter.\n");
+    return;
+  }
+
+  // ------------------------------------------------------------
+  if (allocation_count_ + vector_size > MAX_ALLOCATION_COUNT) {
+    IOLOG_ERROR("RemapClass::RemapClass too many allocation_count_.\n");
+    return;
+  }
+  allocation_count_ += vector_size;
+
+  // ------------------------------------------------------------
+  // initialize items_ from vector
+  const uint32_t* p = initialize_vector;
+
+  for (;;) {
+    if (p == initialize_vector + vector_size) break;
+
+    if (p > initialize_vector + vector_size) {
+      IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch. (vector_size:%d)\n", vector_size);
       return;
     }
 
-    // ------------------------------------------------------------
-    if (allocation_count_ + vector_size > MAX_ALLOCATION_COUNT) {
-      IOLOG_ERROR("RemapClass::RemapClass too many allocation_count_.\n");
+    uint32_t size = *p++;
+    if (p + size > initialize_vector + vector_size) {
+      IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch. (vector_size:%d)\n", vector_size);
       return;
     }
-    allocation_count_ += vector_size;
 
-    // ------------------------------------------------------------
-    // initialize items_ from vector
-    const uint32_t* p = initialize_vector;
+    if (size > 0) {
+      unsigned int type = p[0];
 
-    for (;;) {
-      if (p == initialize_vector + vector_size) break;
+      if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
+        Item* newp = new Item(*this, p, size);
+        if (!newp) {
+          IOLOG_ERROR("RemapClass::RemapClass newp == NULL.\n");
+          return;
+        }
+        items_.push_back(newp);
 
-      if (p > initialize_vector + vector_size) {
-        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch. (vector_size:%d)\n", vector_size);
+        if (type == BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES) {
+          is_simultaneouskeypresses_ = true;
+        }
+
+      } else if (BRIDGE_FILTERTYPE_NONE < type && type < BRIDGE_FILTERTYPE_END) {
+        if (items_.size() == 0) {
+          IOLOG_ERROR("RemapClass::RemapClass invalid filter (%d).\n", type);
+          return;
+        }
+        Item* back = items_.back();
+        if (back) {
+          back->append_filter(p, size);
+        }
+
+      } else if (type == BRIDGE_STATUSMESSAGE) {
+        size_t length = BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN;
+        if (!statusmessage_) {
+          statusmessage_ = new char[length];
+        }
+        pqrs::strlcpy_utf8::strlcpy(statusmessage_, reinterpret_cast<const char*>(p + 1), length);
+
+      } else if (type == BRIDGE_MODIFIERNAME) {
+        if (size < 3) {
+          IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_MODIFIERNAME. (%d)\n", size);
+          return;
+        } else {
+          unsigned int modifierFlag = p[1];
+          ModifierName::registerVirtualModifier(ModifierFlag(modifierFlag), reinterpret_cast<const char*>(p + 2));
+        }
+
+      } else if (type == BRIDGE_VK_MODIFIER) {
+        if (size != 12) {
+          IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_MODIFIER. (%d)\n", size);
+          return;
+        } else {
+          KeyCodeModifierFlagPairs::registerVirtualModifier(ModifierFlag(p[1]),
+                                                            KeyCode(p[2]),   // VK_MODIFIER_*
+                                                            KeyCode(p[3]),   // VK_LOCK_*
+                                                            KeyCode(p[4]),   // VK_LOCK_*_FORCE_ON
+                                                            KeyCode(p[5]),   // VK_LOCK_*_FORCE_OFF
+                                                            KeyCode(p[6]),   // VK_NEGATIVE_LOCK_*
+                                                            KeyCode(p[7]),   // VK_NEGATIVE_LOCK_*_FORCE_ON
+                                                            KeyCode(p[8]),   // VK_NEGATIVE_LOCK_*_FORCE_OFF
+                                                            KeyCode(p[9]),   // VK_STICKY_*
+                                                            KeyCode(p[10]),  // VK_STICKY_*_FORCE_ON
+                                                            KeyCode(p[11])); // VK_STICKY_*_FORCE_OFF
+        }
+
+      } else if (type == BRIDGE_VK_CONFIG) {
+        if (size != 5) {
+          IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_CONFIG. (%d)\n", size);
+          return;
+
+        } else {
+          unsigned int keycode_toggle = p[1];
+          unsigned int keycode_force_on = p[2];
+          unsigned int keycode_force_off = p[3];
+          unsigned int keycode_sync_keydownup = p[4];
+          VirtualKey::VK_CONFIG::add_item(this,
+                                          keycode_toggle,
+                                          keycode_force_on,
+                                          keycode_force_off,
+                                          keycode_sync_keydownup);
+        }
+
+      } else if (type == BRIDGE_VK_CHANGE_INPUTSOURCE || type == BRIDGE_VK_OPEN_URL) {
+        if (size != 2) {
+          IOLOG_ERROR("RemapClass::RemapClass invalid size for VK_DEFINED_IN_USERSPACE (type:%d, %d)\n", type, size);
+          return;
+
+        } else {
+          unsigned int keycode = p[1];
+          uint32_t notification_type = 0;
+          switch (type) {
+          case BRIDGE_VK_CHANGE_INPUTSOURCE:
+            notification_type = BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE;
+            break;
+          case BRIDGE_VK_OPEN_URL:
+            notification_type = BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL;
+            break;
+          default:
+            IOLOG_ERROR("RemapClass::RemapClass invalid type for VK_DEFINED_IN_USERSPACE (type:%d)\n", type);
+            return;
+          }
+          VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(this, keycode, notification_type);
+        }
+
+      } else {
+        IOLOG_ERROR("RemapClass::RemapClass unknown type:%d.\n", type);
         return;
+      }
+
+      p += size;
+    }
+  }
+}
+
+RemapClass::~RemapClass(void) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      delete p;
+    }
+  }
+  if (statusmessage_) {
+    delete[] statusmessage_;
+  }
+}
+
+void
+RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      p->remap_setkeyboardtype(keyboardType);
+    }
+  }
+}
+
+void
+RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      p->remap_forcenumlockon(item);
+    }
+  }
+}
+
+void
+RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      // DependingPressingPeriodKeyToKey watches another key status.
+      // Therefore, we need to call 'p->remap(remapParams)' for all items.
+      p->remap(remapParams);
+    }
+  }
+}
+
+bool
+RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled) {
+  bool isTargetEvent = false;
+
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      if (p->isTargetEventForBlockUntilKeyUp(paramsBase)) {
+        isTargetEvent = true;
+      }
+    }
+  }
+
+  return isTargetEvent;
+}
+
+bool
+RemapClass::remap_simultaneouskeypresses(bool passThroughEnabled) {
+  bool queue_changed = false;
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      if (p->remap_SimultaneousKeyPresses()) {
+        queue_changed = true;
+      }
+    }
+  }
+
+  return queue_changed;
+}
+
+bool
+RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled) {
+  bool dropped = false;
+
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      if (p->drop(params)) {
+        dropped = true;
+      }
+    }
+  }
+
+  return dropped;
+}
+
+bool
+RemapClass::hasActiveItem(void) const {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p && p->active()) return true;
+  }
+  return false;
+}
+
+bool
+RemapClass::isPassThroughEnabled(void) const {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p && p->isPassThroughEnabled()) return true;
+  }
+  return false;
+}
+
+void
+RemapClass::log_allocation_count(void) {
+  IOLOG_INFO("RemapClass::allocation_count_ %d/%d (memory usage: %d%% of %dKB)\n",
+             allocation_count_,
+             MAX_ALLOCATION_COUNT,
+             allocation_count_ * 100 / MAX_ALLOCATION_COUNT,
+             static_cast<int>(MAX_ALLOCATION_COUNT * sizeof(uint32_t) / 1024));
+}
+
+void
+RemapClass::reset_allocation_count(void) {
+  allocation_count_ = 0;
+}
+
+// ================================================================================
+namespace RemapClassManager {
+TimerWrapper refresh_timer_;
+
+char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
+char lastmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
+bool isEventInputQueueDelayEnabled_ = false;
+
+Vector_RemapClassPointer remapclasses_;
+Vector_RemapClassPointer enabled_remapclasses_;
+
+// ======================================================================
+static void
+refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
+  enabled_remapclasses_.clear();
+
+  // ----------------------------------------
+  statusmessage_[0] = '\0';
+
+  isEventInputQueueDelayEnabled_ = false;
+
+  for (size_t i = 0; i < remapclasses_.size(); ++i) {
+    RemapClass* p = remapclasses_[i];
+    if (!p) continue;
+
+    if (p->enabled() || p->hasActiveItem()) {
+      enabled_remapclasses_.push_back(p);
+
+      if (p->enabled()) {
+        const char* msg = p->get_statusmessage();
+        if (msg) {
+          strlcat(statusmessage_, msg, sizeof(statusmessage_));
+          strlcat(statusmessage_, " ", sizeof(statusmessage_));
+        }
+
+        if (p->is_simultaneouskeypresses()) {
+          isEventInputQueueDelayEnabled_ = true;
+        }
+      }
+    }
+  }
+
+  if (strcmp(statusmessage_, lastmessage_) != 0) {
+    pqrs::strlcpy_utf8::strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
+
+    int index = BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA;
+    CommonData::clear_statusmessage(index);
+    CommonData::append_statusmessage(index, statusmessage_);
+    CommonData::send_notification_statusmessage(index);
+  }
+}
+
+// ======================================================================
+
+void
+initialize(IOWorkLoop& workloop) {
+  statusmessage_[0] = '\0';
+  lastmessage_[0] = '\0';
+
+  refresh_timer_.initialize(&workloop, NULL, refresh_timer_callback);
+}
+
+static void
+clear_remapclasses(void) {
+  KeyCodeModifierFlagPairs::clearVirtualModifiers();
+  ModifierName::clearVirtualModifiers();
+  VirtualKey::VK_CONFIG::clear_items();
+  VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items();
+
+  enabled_remapclasses_.clear();
+
+  for (size_t i = 0; i < remapclasses_.size(); ++i) {
+    RemapClass* p = remapclasses_[i];
+    if (p) {
+      delete p;
+    }
+  }
+  remapclasses_.clear();
+}
+
+void
+terminate(void) {
+  refresh_timer_.terminate();
+
+  clear_remapclasses();
+}
+
+bool
+load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size) {
+  // ------------------------------------------------------------
+  // clean previous resources and setup new resources.
+  clear_remapclasses();
+
+  // ------------------------------------------------------------
+  // Validate vector_size
+
+  // "vector_size" is byte of remapclasses_initialize_vector. (!= count of items.)
+  // Confirming vector_size is a multiple of sizeof(uint32_t).
+  if ((vector_size % sizeof(uint32_t)) != 0) {
+    IOLOG_ERROR("%s (vector_size %% sizeof(uint32_t)) != 0. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
+    goto error;
+  }
+
+  // change vector_size to num of uint32_t.
+  vector_size /= sizeof(uint32_t);
+  // Then, we can treat "remapclasses_initialize_vector + vector_size" as valid.
+
+  if (vector_size < 2) {
+    IOLOG_ERROR("%s vector_size < 2. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
+    goto error;
+  }
+  if (vector_size > RemapClass::MAX_ALLOCATION_COUNT) {
+    IOLOG_ERROR("%s too large vector_size. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
+    goto error;
+  }
+
+  // ------------------------------------------------------------
+  {
+    const uint32_t* p = remapclasses_initialize_vector;
+    uint32_t count = *p++;
+
+    if (count > RemapClass::MAX_CONFIG_COUNT) {
+      IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
+      goto error;
+    }
+
+    // ------------------------------------------------------------
+    // load
+    remapclasses_.reserve(count);
+    RemapClass::reset_allocation_count();
+
+    // (1) Setting NULL to all items.
+    for (uint32_t i = 0; i < count; ++i) {
+      remapclasses_.push_back(NULL);
+    }
+
+    // (2) Setting RemapClass* to items.
+    for (uint32_t i = 0; i < count; ++i) {
+      if (p >= remapclasses_initialize_vector + vector_size) {
+        IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
+        goto error;
       }
 
       uint32_t size = *p++;
-      if (p + size > initialize_vector + vector_size) {
-        IOLOG_ERROR("RemapClass::RemapClass vector_size mismatch. (vector_size:%d)\n", vector_size);
-        return;
+      if (p + size > remapclasses_initialize_vector + vector_size) {
+        IOLOG_ERROR("%s vector_size mismatch. (vector_size:%d, size:%d)\n", __FUNCTION__,
+                    static_cast<int>(vector_size), size);
+        goto error;
+      }
+      if (size == 0) {
+        IOLOG_ERROR("%s size == 0.\n", __FUNCTION__);
+        goto error;
       }
 
-      if (size > 0) {
-        unsigned int type = p[0];
+      uint32_t configindex = *p++;
+      --size;
 
-        if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
-          Item* newp = new Item(*this, p, size);
-          if (! newp) {
-            IOLOG_ERROR("RemapClass::RemapClass newp == NULL.\n");
-            return;
-          }
-          items_.push_back(newp);
+      RemapClass* newp = new RemapClass(p, size, configindex);
+      if (!newp) {
+        IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
+        goto error;
+      }
+      p += size;
 
-          if (type == BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES) {
-            is_simultaneouskeypresses_ = true;
-          }
+      if (configindex >= remapclasses_.size()) {
+        IOLOG_ERROR("%s invalid configindex %d (remapclasses_.size() == %d).\n", __FUNCTION__,
+                    configindex, static_cast<int>(remapclasses_.size()));
+        goto error;
+      }
+      remapclasses_[configindex] = newp;
+    }
 
-        } else if (BRIDGE_FILTERTYPE_NONE < type && type < BRIDGE_FILTERTYPE_END) {
-          if (items_.size() == 0) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid filter (%d).\n", type);
-            return;
-          }
-          Item* back = items_.back();
-          if (back) {
-            back->append_filter(p, size);
-          }
-
-        } else if (type == BRIDGE_STATUSMESSAGE) {
-          size_t length = BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN;
-          if (! statusmessage_) {
-            statusmessage_ = new char[length];
-          }
-          pqrs::strlcpy_utf8::strlcpy(statusmessage_, reinterpret_cast<const char*>(p + 1), length);
-
-        } else if (type == BRIDGE_MODIFIERNAME) {
-          if (size < 3) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_MODIFIERNAME. (%d)\n", size);
-            return;
-          } else {
-            unsigned int modifierFlag = p[1];
-            ModifierName::registerVirtualModifier(ModifierFlag(modifierFlag), reinterpret_cast<const char*>(p + 2));
-          }
-
-        } else if (type == BRIDGE_VK_MODIFIER) {
-          if (size != 12) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_MODIFIER. (%d)\n", size);
-            return;
-          } else {
-            KeyCodeModifierFlagPairs::registerVirtualModifier(ModifierFlag(p[1]),
-                                                              KeyCode(p[2]),  // VK_MODIFIER_*
-                                                              KeyCode(p[3]),  // VK_LOCK_*
-                                                              KeyCode(p[4]),  // VK_LOCK_*_FORCE_ON
-                                                              KeyCode(p[5]),  // VK_LOCK_*_FORCE_OFF
-                                                              KeyCode(p[6]),  // VK_NEGATIVE_LOCK_*
-                                                              KeyCode(p[7]),  // VK_NEGATIVE_LOCK_*_FORCE_ON
-                                                              KeyCode(p[8]),  // VK_NEGATIVE_LOCK_*_FORCE_OFF
-                                                              KeyCode(p[9]),  // VK_STICKY_*
-                                                              KeyCode(p[10]),  // VK_STICKY_*_FORCE_ON
-                                                              KeyCode(p[11])); // VK_STICKY_*_FORCE_OFF
-          }
-
-        } else if (type == BRIDGE_VK_CONFIG) {
-          if (size != 5) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid size for BRIDGE_VK_CONFIG. (%d)\n", size);
-            return;
-
-          } else {
-            unsigned int keycode_toggle         = p[1];
-            unsigned int keycode_force_on       = p[2];
-            unsigned int keycode_force_off      = p[3];
-            unsigned int keycode_sync_keydownup = p[4];
-            VirtualKey::VK_CONFIG::add_item(this,
-                                            keycode_toggle,
-                                            keycode_force_on,
-                                            keycode_force_off,
-                                            keycode_sync_keydownup);
-          }
-
-        } else if (type == BRIDGE_VK_CHANGE_INPUTSOURCE || type == BRIDGE_VK_OPEN_URL) {
-          if (size != 2) {
-            IOLOG_ERROR("RemapClass::RemapClass invalid size for VK_DEFINED_IN_USERSPACE (type:%d, %d)\n", type, size);
-            return;
-
-          } else {
-            unsigned int keycode = p[1];
-            uint32_t notification_type = 0;
-            switch (type) {
-              case BRIDGE_VK_CHANGE_INPUTSOURCE:
-                notification_type = BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE;
-                break;
-              case BRIDGE_VK_OPEN_URL:
-                notification_type = BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL;
-                break;
-              default:
-                IOLOG_ERROR("RemapClass::RemapClass invalid type for VK_DEFINED_IN_USERSPACE (type:%d)\n", type);
-                return;
-            }
-            VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(this, keycode, notification_type);
-          }
-
-        } else {
-          IOLOG_ERROR("RemapClass::RemapClass unknown type:%d.\n", type);
-          return;
-        }
-
-        p += size;
+    // (3) Making sure that is not NULL for all items.
+    for (uint32_t i = 0; i < remapclasses_.size(); ++i) {
+      if (!remapclasses_[i]) {
+        IOLOG_ERROR("%s remapclasses_[i] == NULL.\n", __FUNCTION__);
+        goto error;
       }
     }
   }
 
-  RemapClass::~RemapClass(void)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        delete p;
-      }
-    }
-    if (statusmessage_) {
-      delete[] statusmessage_;
-    }
-  }
+  RemapClass::log_allocation_count();
 
-  void
-  RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
+  return true;
 
-        p->remap_setkeyboardtype(keyboardType);
-      }
-    }
-  }
+error:
+  clear_remapclasses();
+  return false;
+}
 
-  void
-  RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
-
-        p->remap_forcenumlockon(item);
-      }
-    }
-  }
-
-  void
-  RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
-
-        // DependingPressingPeriodKeyToKey watches another key status.
-        // Therefore, we need to call 'p->remap(remapParams)' for all items.
-        p->remap(remapParams);
-      }
-    }
-  }
-
-  bool
-  RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled)
-  {
-    bool isTargetEvent = false;
-
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
-
-        if (p->isTargetEventForBlockUntilKeyUp(paramsBase)) {
-          isTargetEvent = true;
-        }
-      }
-    }
-
-    return isTargetEvent;
-  }
-
-  bool
-  RemapClass::remap_simultaneouskeypresses(bool passThroughEnabled)
-  {
-    bool queue_changed = false;
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
-
-        if (p->remap_SimultaneousKeyPresses()) {
-          queue_changed = true;
-        }
-      }
-    }
-
-    return queue_changed;
-  }
-
-  bool
-  RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled)
-  {
-    bool dropped = false;
-
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p) {
-        if (passThroughEnabled && ! p->isIgnorePassThrough()) continue;
-
-        if (p->drop(params)) {
-          dropped = true;
-        }
-      }
-    }
-
-    return dropped;
-  }
-
-  bool
-  RemapClass::hasActiveItem(void) const
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p && p->active()) return true;
-    }
+bool
+set_config(const int32_t* const config_vector, mach_vm_size_t config_size) {
+  // ------------------------------------------------------------
+  // check
+  if (config_size != (BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_.size()) * sizeof(int32_t)) {
+    IOLOG_ERROR("%s config_size mismatch.\n", __FUNCTION__);
     return false;
   }
 
-  bool
-  RemapClass::isPassThroughEnabled(void) const
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      Item* p = items_[i];
-      if (p && p->isPassThroughEnabled()) return true;
+  // ------------------------------------------------------------
+  // essential config
+  const int32_t* p = config_vector;
+  Config::set_essential_config(p, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
+  // remapclasses config
+  p += BRIDGE_ESSENTIAL_CONFIG_INDEX__END__;
+  for (size_t i = 0; i < remapclasses_.size(); ++i) {
+    RemapClass* rc = remapclasses_[i];
+    if (!rc) {
+      IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
+    } else {
+      rc->setEnabled(p[i]);
     }
-    return false;
   }
 
-  void
-  RemapClass::log_allocation_count(void)
-  {
-    IOLOG_INFO("RemapClass::allocation_count_ %d/%d (memory usage: %d%% of %dKB)\n",
-               allocation_count_,
-               MAX_ALLOCATION_COUNT,
-               allocation_count_ * 100 / MAX_ALLOCATION_COUNT,
-               static_cast<int>(MAX_ALLOCATION_COUNT * sizeof(uint32_t) / 1024));
-  }
+  refresh();
 
-  void
-  RemapClass::reset_allocation_count(void)
-  {
-    allocation_count_ = 0;
-  }
+  return true;
+}
 
-// ================================================================================
-  namespace RemapClassManager {
-    TimerWrapper refresh_timer_;
+bool
+set_config_one(bool isEssentialConfig, uint32_t index, int32_t value) {
+  bool succeed = false;
 
-    char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
-    char lastmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
-    bool isEventInputQueueDelayEnabled_ = false;
-
-    Vector_RemapClassPointer remapclasses_;
-    Vector_RemapClassPointer enabled_remapclasses_;
-
-    // ======================================================================
-    static void
-    refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender)
-    {
-      enabled_remapclasses_.clear();
-
-      // ----------------------------------------
-      statusmessage_[0] = '\0';
-
-      isEventInputQueueDelayEnabled_ = false;
-
-      for (size_t i = 0; i < remapclasses_.size(); ++i) {
-        RemapClass* p = remapclasses_[i];
-        if (! p) continue;
-
-        if (p->enabled() || p->hasActiveItem()) {
-          enabled_remapclasses_.push_back(p);
-
-          if (p->enabled()) {
-            const char* msg = p->get_statusmessage();
-            if (msg) {
-              strlcat(statusmessage_, msg, sizeof(statusmessage_));
-              strlcat(statusmessage_, " ", sizeof(statusmessage_));
-            }
-
-            if (p->is_simultaneouskeypresses()) {
-              isEventInputQueueDelayEnabled_ = true;
-            }
-          }
-        }
-      }
-
-      if (strcmp(statusmessage_, lastmessage_) != 0) {
-        pqrs::strlcpy_utf8::strlcpy(lastmessage_, statusmessage_, sizeof(lastmessage_));
-
-        int index = BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA;
-        CommonData::clear_statusmessage(index);
-        CommonData::append_statusmessage(index, statusmessage_);
-        CommonData::send_notification_statusmessage(index);
-      }
-    }
-
-    // ======================================================================
-
-    void
-    initialize(IOWorkLoop& workloop)
-    {
-      statusmessage_[0] = '\0';
-      lastmessage_[0] = '\0';
-
-      refresh_timer_.initialize(&workloop, NULL, refresh_timer_callback);
-    }
-
-    static void
-    clear_remapclasses(void)
-    {
-      KeyCodeModifierFlagPairs::clearVirtualModifiers();
-      ModifierName::clearVirtualModifiers();
-      VirtualKey::VK_CONFIG::clear_items();
-      VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items();
-
-      enabled_remapclasses_.clear();
-
-      for (size_t i = 0; i < remapclasses_.size(); ++i) {
-        RemapClass* p = remapclasses_[i];
-        if (p) {
-          delete p;
-        }
-      }
-      remapclasses_.clear();
-    }
-
-    void
-    terminate(void)
-    {
-      refresh_timer_.terminate();
-
-      clear_remapclasses();
-    }
-
-    bool
-    load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size)
-    {
-      // ------------------------------------------------------------
-      // clean previous resources and setup new resources.
-      clear_remapclasses();
-
-      // ------------------------------------------------------------
-      // Validate vector_size
-
-      // "vector_size" is byte of remapclasses_initialize_vector. (!= count of items.)
-      // Confirming vector_size is a multiple of sizeof(uint32_t).
-      if ((vector_size % sizeof(uint32_t)) != 0) {
-        IOLOG_ERROR("%s (vector_size %% sizeof(uint32_t)) != 0. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
-        goto error;
-      }
-
-      // change vector_size to num of uint32_t.
-      vector_size /= sizeof(uint32_t);
-      // Then, we can treat "remapclasses_initialize_vector + vector_size" as valid.
-
-      if (vector_size < 2) {
-        IOLOG_ERROR("%s vector_size < 2. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
-        goto error;
-      }
-      if (vector_size > RemapClass::MAX_ALLOCATION_COUNT) {
-        IOLOG_ERROR("%s too large vector_size. (%d)\n", __FUNCTION__, static_cast<int>(vector_size));
-        goto error;
-      }
-
-      // ------------------------------------------------------------
-      {
-        const uint32_t* p = remapclasses_initialize_vector;
-        uint32_t count   = *p++;
-
-        if (count > RemapClass::MAX_CONFIG_COUNT) {
-          IOLOG_ERROR("%s too many count. (%d)\n", __FUNCTION__, count);
-          goto error;
-        }
-
-        // ------------------------------------------------------------
-        // load
-        remapclasses_.reserve(count);
-        RemapClass::reset_allocation_count();
-
-        // (1) Setting NULL to all items.
-        for (uint32_t i = 0; i < count; ++i) {
-          remapclasses_.push_back(NULL);
-        }
-
-        // (2) Setting RemapClass* to items.
-        for (uint32_t i = 0; i < count; ++i) {
-          if (p >= remapclasses_initialize_vector + vector_size) {
-            IOLOG_ERROR("%s vector_size mismatch.\n", __FUNCTION__);
-            goto error;
-          }
-
-          uint32_t size = *p++;
-          if (p + size > remapclasses_initialize_vector + vector_size) {
-            IOLOG_ERROR("%s vector_size mismatch. (vector_size:%d, size:%d)\n", __FUNCTION__,
-                        static_cast<int>(vector_size), size);
-            goto error;
-          }
-          if (size == 0) {
-            IOLOG_ERROR("%s size == 0.\n", __FUNCTION__);
-            goto error;
-          }
-
-          uint32_t configindex = *p++;
-          --size;
-
-          RemapClass* newp = new RemapClass(p, size, configindex);
-          if (! newp) {
-            IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
-            goto error;
-          }
-          p += size;
-
-          if (configindex >= remapclasses_.size()) {
-            IOLOG_ERROR("%s invalid configindex %d (remapclasses_.size() == %d).\n", __FUNCTION__,
-                        configindex, static_cast<int>(remapclasses_.size()));
-            goto error;
-          }
-          remapclasses_[configindex] = newp;
-        }
-
-        // (3) Making sure that is not NULL for all items.
-        for (uint32_t i = 0; i < remapclasses_.size(); ++i) {
-          if (! remapclasses_[i]) {
-            IOLOG_ERROR("%s remapclasses_[i] == NULL.\n", __FUNCTION__);
-            goto error;
-          }
-        }
-      }
-
-      RemapClass::log_allocation_count();
-
-      return true;
-
-    error:
-      clear_remapclasses();
-      return false;
-    }
-
-    bool
-    set_config(const int32_t* const config_vector, mach_vm_size_t config_size)
-    {
-      // ------------------------------------------------------------
-      // check
-      if (config_size != (BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_.size()) * sizeof(int32_t)) {
-        IOLOG_ERROR("%s config_size mismatch.\n", __FUNCTION__);
-        return false;
-      }
-
-      // ------------------------------------------------------------
-      // essential config
-      const int32_t* p = config_vector;
-      Config::set_essential_config(p, BRIDGE_ESSENTIAL_CONFIG_INDEX__END__);
-      // remapclasses config
-      p += BRIDGE_ESSENTIAL_CONFIG_INDEX__END__;
-      for (size_t i = 0; i < remapclasses_.size(); ++i) {
-        RemapClass* rc = remapclasses_[i];
-        if (! rc) {
-          IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
-        } else {
-          rc->setEnabled(p[i]);
-        }
-      }
-
-      refresh();
-
-      return true;
-    }
-
-    bool
-    set_config_one(bool isEssentialConfig, uint32_t index, int32_t value)
-    {
-      bool succeed = false;
-
-      if (isEssentialConfig) {
-        succeed = Config::set_essential_config_one(index, value);
+  if (isEssentialConfig) {
+    succeed = Config::set_essential_config_one(index, value);
+  } else {
+    if (index >= remapclasses_.size()) {
+      IOLOG_ERROR("%s index is invalid.\n", __FUNCTION__);
+    } else {
+      RemapClass* rc = remapclasses_[index];
+      if (!rc) {
+        IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
       } else {
-        if (index >= remapclasses_.size()) {
-          IOLOG_ERROR("%s index is invalid.\n", __FUNCTION__);
-        } else {
-          RemapClass* rc = remapclasses_[index];
-          if (! rc) {
-            IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
-          } else {
-            rc->setEnabled(value);
-            succeed = true;
-          }
-        }
+        rc->setEnabled(value);
+        succeed = true;
       }
-
-      refresh();
-
-      return succeed;
     }
+  }
 
-    void
-    refresh(void)
-    {
-      // We use timer to prevent deadlock of lock_. (refresh may be called in the "remap" method.)
-      refresh_timer_.setTimeoutMS(0);
-    }
+  refresh();
 
-    // ----------------------------------------------------------------------
-    static bool
-    isPassThroughEnabled(void) {
-      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
-        RemapClass* p = enabled_remapclasses_[i];
-        if (p && p->isPassThroughEnabled()) return true;
-      }
-      return false;
-    }
+  return succeed;
+}
 
-#define CALL_REMAPCLASS_FUNC(FUNC, PARAMS) {                    \
+void
+refresh(void) {
+  // We use timer to prevent deadlock of lock_. (refresh may be called in the "remap" method.)
+  refresh_timer_.setTimeoutMS(0);
+}
+
+// ----------------------------------------------------------------------
+static bool
+isPassThroughEnabled(void) {
+  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+    RemapClass* p = enabled_remapclasses_[i];
+    if (p && p->isPassThroughEnabled()) return true;
+  }
+  return false;
+}
+
+#define CALL_REMAPCLASS_FUNC(FUNC, PARAMS)                      \
+  {                                                             \
     for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) { \
       RemapClass* p = enabled_remapclasses_[i];                 \
       if (p) p->FUNC(PARAMS, passThroughEnabled);               \
     }                                                           \
+  }
+
+void
+remap_setkeyboardtype(KeyboardType& keyboardType) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  CALL_REMAPCLASS_FUNC(remap_setkeyboardtype, keyboardType);
 }
 
-    void
-    remap_setkeyboardtype(KeyboardType& keyboardType)
-    {
-      bool passThroughEnabled = isPassThroughEnabled();
-      CALL_REMAPCLASS_FUNC(remap_setkeyboardtype, keyboardType);
-    }
+void
+remap_forcenumlockon(ListHookedKeyboard::Item* item) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
+}
 
-    void
-    remap_forcenumlockon(ListHookedKeyboard::Item* item)
-    {
-      bool passThroughEnabled = isPassThroughEnabled();
-      CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
-    }
-
-    void
-    remap(RemapParams& remapParams)
-    {
-      bool passThroughEnabled = isPassThroughEnabled();
-      CALL_REMAPCLASS_FUNC(remap, remapParams);
-    }
+void
+remap(RemapParams& remapParams) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  CALL_REMAPCLASS_FUNC(remap, remapParams);
+}
 
 #undef CALL_REMAPCLASS_FUNC
 
-    bool
-    isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase)
-    {
-      bool passThroughEnabled = isPassThroughEnabled();
-      bool isTargetEvent = false;
+bool
+isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  bool isTargetEvent = false;
 
-      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
-        RemapClass* p = enabled_remapclasses_[i];
-        if (p) {
-          if (p->isTargetEventForBlockUntilKeyUp(paramsBase, passThroughEnabled)) {
-            isTargetEvent = true;
-          }
-        }
+  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+    RemapClass* p = enabled_remapclasses_[i];
+    if (p) {
+      if (p->isTargetEventForBlockUntilKeyUp(paramsBase, passThroughEnabled)) {
+        isTargetEvent = true;
       }
-
-      return isTargetEvent;
-    }
-
-    bool
-    remap_simultaneouskeypresses(void)
-    {
-      bool passThroughEnabled = isPassThroughEnabled();
-      bool queue_changed = false;
-
-      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
-        RemapClass* p = enabled_remapclasses_[i];
-        if (p) {
-          if (p->remap_simultaneouskeypresses(passThroughEnabled)) {
-            queue_changed = true;
-          }
-        }
-      }
-
-      return queue_changed;
-    }
-
-    bool
-    remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params)
-    {
-      bool passThroughEnabled = isPassThroughEnabled();
-      bool dropped = false;
-
-      for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
-        RemapClass* p = enabled_remapclasses_[i];
-        if (p) {
-          if (p->remap_dropkeyafterremap(params, passThroughEnabled)) dropped = true;
-        }
-      }
-
-      return dropped;
-    }
-
-    bool
-    isEventInputQueueDelayEnabled(void)
-    {
-      return isEventInputQueueDelayEnabled_;
-    }
-
-    bool
-    isEnabled(size_t configindex)
-    {
-      if (configindex >= remapclasses_.size()) {
-        IOLOG_ERROR("RemapClass::isEnabled invalid configindex.\n");
-        return false;
-      }
-
-      RemapClass* p = remapclasses_[configindex];
-      if (! p) return false;
-
-      return p->enabled();
     }
   }
+
+  return isTargetEvent;
+}
+
+bool
+remap_simultaneouskeypresses(void) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  bool queue_changed = false;
+
+  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+    RemapClass* p = enabled_remapclasses_[i];
+    if (p) {
+      if (p->remap_simultaneouskeypresses(passThroughEnabled)) {
+        queue_changed = true;
+      }
+    }
+  }
+
+  return queue_changed;
+}
+
+bool
+remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  bool dropped = false;
+
+  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+    RemapClass* p = enabled_remapclasses_[i];
+    if (p) {
+      if (p->remap_dropkeyafterremap(params, passThroughEnabled)) dropped = true;
+    }
+  }
+
+  return dropped;
+}
+
+bool
+isEventInputQueueDelayEnabled(void) {
+  return isEventInputQueueDelayEnabled_;
+}
+
+bool
+isEnabled(size_t configindex) {
+  if (configindex >= remapclasses_.size()) {
+    IOLOG_ERROR("RemapClass::isEnabled invalid configindex.\n");
+    return false;
+  }
+
+  RemapClass* p = remapclasses_[configindex];
+  if (!p) return false;
+
+  return p->enabled();
+}
+}
 }

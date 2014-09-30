@@ -4,14 +4,13 @@
 
 @class PreferencesManager;
 
-@interface TableView_configlist : NSObject
-{
-  @private
+@interface TableView_configlist : NSObject {
+@private
   IBOutlet NSTableView* view_;
   IBOutlet PreferencesManager* preferencesManager_;
 }
 
-- (IBAction) add:(id)sender;
+- (IBAction)add:(id)sender;
 - (IBAction) delete:(id)sender;
 
 @end

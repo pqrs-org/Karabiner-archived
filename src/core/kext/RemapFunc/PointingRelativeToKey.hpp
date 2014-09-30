@@ -7,45 +7,43 @@
 #include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace RemapFunc {
-    class PointingRelativeToKey : public RemapFuncBase {
-    public:
-      PointingRelativeToKey(void) :
-        RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY),
-        current_keytokey_(NULL)
-      {
-        keyrepeat_ic_.begin();
+namespace RemapFunc {
+class PointingRelativeToKey : public RemapFuncBase {
+public:
+  PointingRelativeToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY),
+                                current_keytokey_(NULL) {
+    keyrepeat_ic_.begin();
 
-        for (size_t i = 0; i < KEYTOKEY__END__; ++i) {
-          keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
-        }
-      }
-
-      bool remap(RemapParams& remapParams);
-
-      void add(AddDataType datatype, AddValue newval);
-
-    private:
-      PointingRelativeToKey(const PointingRelativeToKey& rhs); // Prevent copy-construction
-      PointingRelativeToKey& operator=(const PointingRelativeToKey& rhs); // Prevent assignment
-
-      Vector_ModifierFlag fromModifierFlags_;
-
-      DeltaBuffer deltaBuffer_dx_;
-      DeltaBuffer deltaBuffer_dy_;
-      IntervalChecker keyrepeat_ic_;
-
-      enum {
-        KEYTOKEY_UP,
-        KEYTOKEY_DOWN,
-        KEYTOKEY_LEFT,
-        KEYTOKEY_RIGHT,
-        KEYTOKEY__END__,
-      };
-      KeyToKey keytokey_[KEYTOKEY__END__];
-      KeyToKey* current_keytokey_;
-    };
+    for (size_t i = 0; i < KEYTOKEY__END__; ++i) {
+      keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
+    }
   }
+
+  bool remap(RemapParams& remapParams);
+
+  void add(AddDataType datatype, AddValue newval);
+
+private:
+  PointingRelativeToKey(const PointingRelativeToKey& rhs);            // Prevent copy-construction
+  PointingRelativeToKey& operator=(const PointingRelativeToKey& rhs); // Prevent assignment
+
+  Vector_ModifierFlag fromModifierFlags_;
+
+  DeltaBuffer deltaBuffer_dx_;
+  DeltaBuffer deltaBuffer_dy_;
+  IntervalChecker keyrepeat_ic_;
+
+  enum {
+    KEYTOKEY_UP,
+    KEYTOKEY_DOWN,
+    KEYTOKEY_LEFT,
+    KEYTOKEY_RIGHT,
+    KEYTOKEY__END__,
+  };
+  KeyToKey keytokey_[KEYTOKEY__END__];
+  KeyToKey* current_keytokey_;
+};
+}
 }
 
 #endif

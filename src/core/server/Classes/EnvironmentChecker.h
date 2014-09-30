@@ -4,8 +4,8 @@
 
 @interface EnvironmentChecker : NSObject
 
-+ (BOOL) checkDoubleCommand;
-+ (BOOL) checkKeyRemap4MacBook;
-+ (BOOL) checkSmoothMouse;
++ (BOOL)checkDoubleCommand;
++ (BOOL)checkKeyRemap4MacBook;
++ (BOOL)checkSmoothMouse;
 
 @end

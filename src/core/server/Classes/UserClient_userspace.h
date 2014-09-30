@@ -6,10 +6,10 @@
 
 @interface UserClient_userspace : NSObject
 
-- (id) init:(io_async_ref64_t*)asyncref;
+- (id)init:(io_async_ref64_t *)asyncref;
 
-- (BOOL) refresh_connection;
-- (void) disconnect_from_kext;
-- (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct;
+- (BOOL)refresh_connection;
+- (void)disconnect_from_kext;
+- (BOOL)synchronized_communication:(struct BridgeUserClientStruct *)bridgestruct;
 
 @end

@@ -5,8 +5,7 @@ static NSMutableArray* enabledInputSources_ = nil;
 
 @implementation WorkSpaceData (InputSource)
 
-+ (void) refreshEnabledInputSources
-{
++ (void)refreshEnabledInputSources {
   @synchronized(self) {
     CFDictionaryRef filter = NULL;
     CFArrayRef list = NULL;
@@ -16,25 +15,25 @@ static NSMutableArray* enabledInputSources_ = nil;
     // ----------------------------------------
     // Making filter
     const void* keys[] = {
-      kTISPropertyInputSourceIsSelectCapable,
-      kTISPropertyInputSourceCategory,
+        kTISPropertyInputSourceIsSelectCapable,
+        kTISPropertyInputSourceCategory,
     };
     const void* values[] = {
-      kCFBooleanTrue,
-      kTISCategoryKeyboardInputSource,
+        kCFBooleanTrue,
+        kTISCategoryKeyboardInputSource,
     };
     filter = CFDictionaryCreate(NULL, keys, values, sizeof(keys) / sizeof(keys[0]), NULL, NULL);
-    if (! filter) goto finish;
+    if (!filter) goto finish;
 
     // ----------------------------------------
     // Making list
     list = TISCreateInputSourceList(filter, false);
-    if (! list) goto finish;
+    if (!list) goto finish;
 
     // ----------------------------------------
     for (int i = 0; i < CFArrayGetCount(list); ++i) {
       TISInputSourceRef source = (TISInputSourceRef)(CFArrayGetValueAtIndex(list, i));
-      if (! source) continue;
+      if (!source) continue;
 
       // ----------------------------------------
       // Skip inappropriate input sources.
@@ -65,8 +64,7 @@ static NSMutableArray* enabledInputSources_ = nil;
   }
 }
 
-+ (InputSource*) getCurrentInputSource
-{
++ (InputSource*)getCurrentInputSource {
   @synchronized(self) {
     for (InputSource* inputSource in enabledInputSources_) {
       if ([inputSource selected]) {
@@ -78,8 +76,7 @@ static NSMutableArray* enabledInputSources_ = nil;
 }
 
 // ----------------------------------------------------------------------
-- (void) selectInputSource:(unsigned int)vk_keycode
-{
+- (void)selectInputSource:(unsigned int)vk_keycode {
   // ----------------------------------------------------------------------
   // Note for languagecode
   // TISCopyInputSourceForLanguage returns unselectable InputSource.
@@ -127,12 +124,15 @@ static NSMutableArray* enabledInputSources_ = nil;
   }
 }
 
-- (void) getInputSourceID:(InputSource*)inputSource
-  output_inputSource:(uint32_t*)output_inputSource
-  output_inputSourceDetail:(uint32_t*)output_inputSourceDetail
-{
-  if (output_inputSource)       { *output_inputSource = 0; }
-  if (output_inputSourceDetail) { *output_inputSourceDetail = 0; }
+- (void)getInputSourceID:(InputSource*)inputSource
+          output_inputSource:(uint32_t*)output_inputSource
+    output_inputSourceDetail:(uint32_t*)output_inputSourceDetail {
+  if (output_inputSource) {
+    *output_inputSource = 0;
+  }
+  if (output_inputSourceDetail) {
+    *output_inputSourceDetail = 0;
+  }
 
   [xmlCompiler_ inputsourceid:output_inputSource
             inputSourceDetail:output_inputSourceDetail

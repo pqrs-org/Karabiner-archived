@@ -6,15 +6,15 @@
 #include "Types.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace VirtualKey {
-    void initialize(IOWorkLoop& workloop);
-    void terminate(void);
-    void reset(void);
-    bool handle(const Params_KeyboardEventCallBack& params);
-    bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
+namespace VirtualKey {
+void initialize(IOWorkLoop& workloop);
+void terminate(void);
+void reset(void);
+bool handle(const Params_KeyboardEventCallBack& params);
+bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 
-    bool isKeyLikeModifier(KeyCode keycode);
-  };
+bool isKeyLikeModifier(KeyCode keycode);
+};
 }
 
 #endif

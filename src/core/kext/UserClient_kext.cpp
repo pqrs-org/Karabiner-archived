@@ -18,52 +18,49 @@
 #define super IOUserClient
 
 OSDefineMetaClassAndStructors(USERCLIENT_KEXT_CLASSNAME, IOUserClient)
-
-OSAsyncReference64 USERCLIENT_KEXT_CLASSNAME::asyncref_;
+    OSAsyncReference64 USERCLIENT_KEXT_CLASSNAME::asyncref_;
 bool USERCLIENT_KEXT_CLASSNAME::notification_enabled_ = false;
 
 IOExternalMethodDispatch USERCLIENT_KEXT_CLASSNAME::methods_[BRIDGE_USERCLIENT__END__] = {
-  { // BRIDGE_USERCLIENT_OPEN
-    reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
-    1,                                                               // One scalar input value.
-    0,                                                               // No struct input value.
-    1,                                                               // One scalar output value.
-    0                                                                // No struct output value.
-  },
-  { // BRIDGE_USERCLIENT_CLOSE
-    reinterpret_cast<IOExternalMethodAction>(&static_callback_close), // Method pointer.
-    0,                                                         // No scalar input values.
-    0,                                                         // No struct input value.
-    0,                                                         // No scalar output values.
-    0                                                          // No struct output value.
-  },
-  { // BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION
-    reinterpret_cast<IOExternalMethodAction>(&static_callback_synchronized_communication), // Method pointer.
-    0,                                                                                     // No scalar input values.
-    sizeof(BridgeUserClientStruct),                                                        // The size of the input struct.
-    1,                                                                                     // One scalar output value.
-    0,                                                                                     // No struct output value.
-  },
-  { // BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT
-    reinterpret_cast<IOExternalMethodAction>(&static_callback_notification_from_kext), // Method pointer.
-    0,                                                                                 // No scalar input values.
-    0,                                                                                 // No struct input value.
-    0,                                                                                 // No scalar output values.
-    0                                                                                  // No struct output value.
-  }
-};
+    {                                                                 // BRIDGE_USERCLIENT_OPEN
+     reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
+     1,                                                               // One scalar input value.
+     0,                                                               // No struct input value.
+     1,                                                               // One scalar output value.
+     0                                                                // No struct output value.
+    },
+    {                                                                  // BRIDGE_USERCLIENT_CLOSE
+     reinterpret_cast<IOExternalMethodAction>(&static_callback_close), // Method pointer.
+     0,                                                                // No scalar input values.
+     0,                                                                // No struct input value.
+     0,                                                                // No scalar output values.
+     0                                                                 // No struct output value.
+    },
+    {                                                                                       // BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION
+     reinterpret_cast<IOExternalMethodAction>(&static_callback_synchronized_communication), // Method pointer.
+     0,                                                                                     // No scalar input values.
+     sizeof(BridgeUserClientStruct),                                                        // The size of the input struct.
+     1,                                                                                     // One scalar output value.
+     0,                                                                                     // No struct output value.
+    },
+    {                                                                                   // BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT
+     reinterpret_cast<IOExternalMethodAction>(&static_callback_notification_from_kext), // Method pointer.
+     0,                                                                                 // No scalar input values.
+     0,                                                                                 // No struct input value.
+     0,                                                                                 // No scalar output values.
+     0                                                                                  // No struct output value.
+    }};
 
 // ============================================================
 // initWithTask is called as a result of the user process calling IOServiceOpen.
 bool
-USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityToken, UInt32 type)
-{
+USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityToken, UInt32 type) {
   if (clientHasPrivilege(owningTask, kIOClientPrivilegeLocalUser) != KERN_SUCCESS) {
     IOLOG_ERROR("UserClient_kext::initWithTask clientHasPrivilege failed\n");
     return false;
   }
 
-  if (! super::initWithTask(owningTask, securityToken, type)) {
+  if (!super::initWithTask(owningTask, securityToken, type)) {
     IOLOG_ERROR("UserClient_kext::initWithTask super::initWithTask failed\n");
     return false;
   }
@@ -81,10 +78,9 @@ USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityToken, 
 
 // start is called after initWithTask as a result of the user process calling IOServiceOpen.
 bool
-USERCLIENT_KEXT_CLASSNAME::start(IOService* provider)
-{
+USERCLIENT_KEXT_CLASSNAME::start(IOService* provider) {
   provider_ = OSDynamicCast(KEXT_CLASSNAME, provider);
-  if (! provider_) {
+  if (!provider_) {
     IOLOG_ERROR("UserClient_kext::start provider == NULL\n");
     return false;
   }
@@ -92,7 +88,7 @@ USERCLIENT_KEXT_CLASSNAME::start(IOService* provider)
   // It's important not to call super::start if some previous condition
   // (like an invalid provider) would cause this function to return false.
   // I/O Kit won't call stop on an object if its start function returned false.
-  if (! super::start(provider)) {
+  if (!super::start(provider)) {
     IOLOG_ERROR("UserClient_kext::start super::start failed\n");
     return false;
   }
@@ -101,16 +97,14 @@ USERCLIENT_KEXT_CLASSNAME::start(IOService* provider)
 }
 
 void
-USERCLIENT_KEXT_CLASSNAME::stop(IOService* provider)
-{
+USERCLIENT_KEXT_CLASSNAME::stop(IOService* provider) {
   super::stop(provider);
   provider_ = NULL;
 }
 
 // clientClose is called as a result of the user process calling IOServiceClose.
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::clientClose(void)
-{
+USERCLIENT_KEXT_CLASSNAME::clientClose(void) {
   // Defensive coding in case the user process called IOServiceClose
   // without calling BRIDGE_USERCLIENT_CLOSE first.
   callback_close();
@@ -121,7 +115,7 @@ USERCLIENT_KEXT_CLASSNAME::clientClose(void)
   // terminate would return false if the user process still had this user client open.
   // This should never happen in our case because this code path is only reached if the user process
   // explicitly requests closing the connection to the user client.
-  if (! terminate()) {
+  if (!terminate()) {
     IOLOG_ERROR("UserClient_kext::clientClose terminate() failed\n");
   }
 
@@ -130,8 +124,7 @@ USERCLIENT_KEXT_CLASSNAME::clientClose(void)
 }
 
 bool
-USERCLIENT_KEXT_CLASSNAME::didTerminate(IOService* provider, IOOptionBits options, bool* defer)
-{
+USERCLIENT_KEXT_CLASSNAME::didTerminate(IOService* provider, IOOptionBits options, bool* defer) {
   // If all pending I/O has been terminated, close our provider. If I/O is still outstanding, set defer to true
   // and the user client will not have stop called on it.
   callback_close();
@@ -142,12 +135,11 @@ USERCLIENT_KEXT_CLASSNAME::didTerminate(IOService* provider, IOOptionBits option
 
 IOReturn
 USERCLIENT_KEXT_CLASSNAME::externalMethod(uint32_t selector, IOExternalMethodArguments* arguments,
-                                          IOExternalMethodDispatch* dispatch, OSObject* target, void* reference)
-{
+                                          IOExternalMethodDispatch* dispatch, OSObject* target, void* reference) {
   if (selector < static_cast<uint32_t>(BRIDGE_USERCLIENT__END__)) {
     dispatch = &(methods_[selector]);
 
-    if (! target) {
+    if (!target) {
       target = this;
     }
   }
@@ -155,24 +147,21 @@ USERCLIENT_KEXT_CLASSNAME::externalMethod(uint32_t selector, IOExternalMethodArg
   return super::externalMethod(selector, arguments, dispatch, target, reference);
 }
 
-
 // ======================================================================
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::static_callback_open(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
-{
-  if (! target) return kIOReturnBadArgument;
-  if (! arguments) return kIOReturnBadArgument;
+USERCLIENT_KEXT_CLASSNAME::static_callback_open(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments) {
+  if (!target) return kIOReturnBadArgument;
+  if (!arguments) return kIOReturnBadArgument;
 
   return target->callback_open(arguments->scalarInput[0], &(arguments->scalarOutput[0]));
 }
 
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::callback_open(uint64_t bridge_version_app, uint64_t* outputdata)
-{
+USERCLIENT_KEXT_CLASSNAME::callback_open(uint64_t bridge_version_app, uint64_t* outputdata) {
   KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
-  if (! lk) return kIOReturnCannotLock;
+  if (!lk) return kIOReturnCannotLock;
 
-  if (! outputdata) {
+  if (!outputdata) {
     IOLOG_ERROR("UserClient_kext::callback_open kIOReturnBadArgument\n");
     return kIOReturnBadArgument;
   }
@@ -187,7 +176,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_open(uint64_t bridge_version_app, uint64_t* 
     return kIOReturnNotAttached;
   }
 
-  if (! provider_->open(this)) {
+  if (!provider_->open(this)) {
     // The most common reason this open call will fail is because the provider is already open
     // and it doesn't support being opened by more than one client at a time.
     IOLOG_ERROR("UserClient_kext::callback_open kIOReturnExclusiveAccess\n");
@@ -205,7 +194,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_open(uint64_t bridge_version_app, uint64_t* 
   // (If we return error such as kIOReturnError, outputdata in userspace will not be changed.)
   uint64_t bridge_version_kext =
 #include "../../../src/bridge/output/include.bridge_version.h"
-  ;
+      ;
   if (bridge_version_kext != bridge_version_app) {
     IOLOG_ERROR("UserClient_kext::callback_open BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_BRIDGE_VERSION_MISMATCH kext:0x%llx != app:0x%llx\n",
                 bridge_version_kext,
@@ -219,28 +208,26 @@ USERCLIENT_KEXT_CLASSNAME::callback_open(uint64_t bridge_version_app, uint64_t* 
 
 // ----------------------------------------------------------------------
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::static_callback_close(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
-{
-  if (! target) return kIOReturnBadArgument;
+USERCLIENT_KEXT_CLASSNAME::static_callback_close(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments) {
+  if (!target) return kIOReturnBadArgument;
   return target->callback_close();
 }
 
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::callback_close(void)
-{
+USERCLIENT_KEXT_CLASSNAME::callback_close(void) {
   KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
-  if (! lk) return kIOReturnCannotLock;
+  if (!lk) return kIOReturnCannotLock;
 
-  if (! provider_) {
+  if (!provider_) {
     // Return an error if we don't have a provider. This could happen if the user process
     // called callback_close without calling IOServiceOpen first.
     IOLOG_ERROR("UserClient_kext::callback_close kIOReturnNotAttached\n");
     return kIOReturnNotAttached;
   }
 
-  if (! provider_->isOpen(this)) {
-    // This error can occur in the normal usage. (by fast user switching)
-    // So we suppress the log message.
+  if (!provider_->isOpen(this)) {
+// This error can occur in the normal usage. (by fast user switching)
+// So we suppress the log message.
 #if 0
     IOLOG_ERROR("UserClient_kext::callback_close kIOReturnNotOpen\n");
 #endif
@@ -259,25 +246,23 @@ USERCLIENT_KEXT_CLASSNAME::callback_close(void)
 
 // ----------------------------------------------------------------------
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::static_callback_synchronized_communication(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
-{
-  if (! target) return kIOReturnBadArgument;
-  if (! arguments) return kIOReturnBadArgument;
+USERCLIENT_KEXT_CLASSNAME::static_callback_synchronized_communication(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments) {
+  if (!target) return kIOReturnBadArgument;
+  if (!arguments) return kIOReturnBadArgument;
 
   return target->callback_synchronized_communication(static_cast<const BridgeUserClientStruct*>(arguments->structureInput), &arguments->scalarOutput[0]);
 }
 
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserClientStruct* inputdata, uint64_t* outputdata)
-{
+USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserClientStruct* inputdata, uint64_t* outputdata) {
   KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
-  if (! lk) return kIOReturnCannotLock;
+  if (!lk) return kIOReturnCannotLock;
 
   IOReturn result = kIOReturnError;
   uint8_t* buffer = NULL;
   size_t size = 0;
 
-  if (! inputdata || ! outputdata) {
+  if (!inputdata || !outputdata) {
     result = kIOReturnBadArgument;
     IOLOG_ERROR("UserClient_kext::callback_synchronized_communication kIOReturnBadArgument\n");
     goto finish;
@@ -292,7 +277,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserC
     goto finish;
   }
 
-  if (! provider_->isOpen(this)) {
+  if (!provider_->isOpen(this)) {
     // Return an error if we do not have the driver open. This could happen if the user process
     // did not call callback_open before calling this function.
     result = kIOReturnNotOpen;
@@ -307,7 +292,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserC
   }
 
   buffer = new uint8_t[size];
-  if (! buffer) {
+  if (!buffer) {
     IOLOG_ERROR("callback_synchronized_communication buffer is null\n");
     goto finish;
   }
@@ -337,19 +322,17 @@ finish:
 
 // ------------------------------------------------------------
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::static_callback_notification_from_kext(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments)
-{
-  if (! target) return kIOReturnBadArgument;
-  if (! arguments) return kIOReturnBadArgument;
+USERCLIENT_KEXT_CLASSNAME::static_callback_notification_from_kext(USERCLIENT_KEXT_CLASSNAME* target, void* reference, IOExternalMethodArguments* arguments) {
+  if (!target) return kIOReturnBadArgument;
+  if (!arguments) return kIOReturnBadArgument;
 
   return target->callback_notification_from_kext(arguments->asyncReference);
 }
 
 IOReturn
-USERCLIENT_KEXT_CLASSNAME::callback_notification_from_kext(OSAsyncReference64 asyncReference)
-{
+USERCLIENT_KEXT_CLASSNAME::callback_notification_from_kext(OSAsyncReference64 asyncReference) {
   KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
-  if (! lk) return kIOReturnCannotLock;
+  if (!lk) return kIOReturnCannotLock;
 
   if (provider_ == NULL || isInactive()) {
     // Return an error if we don't have a provider. This could happen if the user process
@@ -359,7 +342,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_notification_from_kext(OSAsyncReference64 as
     return kIOReturnNotAttached;
   }
 
-  if (! provider_->isOpen(this)) {
+  if (!provider_->isOpen(this)) {
     // Return an error if we do not have the driver open. This could happen if the user process
     // did not call callback_open before calling this function.
     IOLOG_ERROR("UserClient_kext::callback_notification_from_kext kIOReturnNotOpen\n");
@@ -373,10 +356,9 @@ USERCLIENT_KEXT_CLASSNAME::callback_notification_from_kext(OSAsyncReference64 as
 }
 
 void
-USERCLIENT_KEXT_CLASSNAME::send_notification_to_userspace(uint32_t type, uint32_t option)
-{
+USERCLIENT_KEXT_CLASSNAME::send_notification_to_userspace(uint32_t type, uint32_t option) {
   if (notification_enabled_) {
-    io_user_reference_t args[] = { type, option };
+    io_user_reference_t args[] = {type, option};
     sendAsyncResult64(asyncref_, kIOReturnSuccess, args, 2);
   }
 }
@@ -387,133 +369,124 @@ USERCLIENT_KEXT_CLASSNAME::handle_synchronized_communication(uint32_t type,
                                                              uint32_t option,
                                                              uint8_t* buffer,
                                                              size_t size,
-                                                             uint64_t* outputdata)
-{
+                                                             uint64_t* outputdata) {
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {
-    case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR:
-    {
-      KEXT_NAMESPACE::Config::set_initialized(false);
+  case BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR: {
+    KEXT_NAMESPACE::Config::set_initialized(false);
 
-      const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(buffer);
-      if (initialize_vector) {
-        if (KEXT_NAMESPACE::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
-          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-        }
+    const uint32_t* initialize_vector = reinterpret_cast<uint32_t*>(buffer);
+    if (initialize_vector) {
+      if (KEXT_NAMESPACE::RemapClassManager::load_remapclasses_initialize_vector(initialize_vector, size)) {
+        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
-      break;
     }
+    break;
+  }
 
-    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ALL:
-    {
-      const int32_t* config = reinterpret_cast<int32_t*>(buffer);
-      if (config) {
-        if (KEXT_NAMESPACE::RemapClassManager::set_config(config, size)) {
+  case BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ALL: {
+    const int32_t* config = reinterpret_cast<int32_t*>(buffer);
+    if (config) {
+      if (KEXT_NAMESPACE::RemapClassManager::set_config(config, size)) {
+        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+
+        KEXT_NAMESPACE::ListHookedDevice::refreshAll();
+      }
+    }
+    break;
+  }
+
+  case BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE: {
+    if (size != sizeof(BridgeSetConfigOne)) {
+      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE wrong 'size' parameter\n");
+    } else {
+      const BridgeSetConfigOne* p = reinterpret_cast<const BridgeSetConfigOne*>(buffer);
+      if (p) {
+        if (KEXT_NAMESPACE::RemapClassManager::set_config_one(p->isEssentialConfig, p->index, p->value)) {
           *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
 
           KEXT_NAMESPACE::ListHookedDevice::refreshAll();
         }
       }
-      break;
     }
+    break;
+  }
 
-    case BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE:
-    {
-      if (size != sizeof(BridgeSetConfigOne)) {
-        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE wrong 'size' parameter\n");
-      } else {
-        const BridgeSetConfigOne* p = reinterpret_cast<const BridgeSetConfigOne*>(buffer);
-        if (p) {
-          if (KEXT_NAMESPACE::RemapClassManager::set_config_one(p->isEssentialConfig, p->index, p->value)) {
-            *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-
-            KEXT_NAMESPACE::ListHookedDevice::refreshAll();
-          }
-        }
-      }
-      break;
-    }
-
-    case BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED:
-    {
-      if (size != sizeof(uint32_t)) {
-        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED wrong 'size' parameter\n");
-      } else {
-        uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
-        if (p) {
-          KEXT_NAMESPACE::Config::set_initialized(*p);
-          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-        }
-      }
-      break;
-    }
-
-    case BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED:
-    {
-      if (size != sizeof(uint32_t)) {
-        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED wrong 'size' parameter\n");
-      } else {
-        uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
-        if (p) {
-          *p = KEXT_NAMESPACE::RemapClassManager::isEnabled(option);
-          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-        }
-      }
-      break;
-    }
-
-    case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE:
-    {
-      const char* statusmessage = KEXT_NAMESPACE::CommonData::get_statusmessage(option);
-      char* p = reinterpret_cast<char*>(buffer);
-
-      if (statusmessage && p) {
-        pqrs::strlcpy_utf8::strlcpy(p, statusmessage, static_cast<size_t>(size));
+  case BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED: {
+    if (size != sizeof(uint32_t)) {
+      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED wrong 'size' parameter\n");
+    } else {
+      uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
+      if (p) {
+        KEXT_NAMESPACE::Config::set_initialized(*p);
         *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
-      break;
     }
+    break;
+  }
 
-    case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA:
-    {
-      if (size != sizeof(BridgeWorkSpaceData)) {
-        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA wrong 'size' parameter\n");
-      } else {
-        const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(buffer);
-        if (p) {
-          KEXT_NAMESPACE::CommonData::setcurrent_workspacedata(*p);
-          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-        }
+  case BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED: {
+    if (size != sizeof(uint32_t)) {
+      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED wrong 'size' parameter\n");
+    } else {
+      uint32_t* p = reinterpret_cast<uint32_t*>(buffer);
+      if (p) {
+        *p = KEXT_NAMESPACE::RemapClassManager::isEnabled(option);
+        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
-      break;
     }
+    break;
+  }
 
-    case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:
-    case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER:
-    case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING:
-    {
-      if (size != sizeof(BridgeDeviceInformation)) {
-        IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_* wrong 'size' parameter\n");
-      } else {
-        BridgeDeviceInformation* p = reinterpret_cast<BridgeDeviceInformation*>(buffer);
-        if (p) {
-          switch (type) {
-            case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:
-              KEXT_NAMESPACE::ListHookedKeyboard::instance().getDeviceInformation(*p, option);
-              break;
-            case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER:
-              KEXT_NAMESPACE::ListHookedConsumer::instance().getDeviceInformation(*p, option);
-              break;
-            case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING:
-              KEXT_NAMESPACE::ListHookedPointing::instance().getDeviceInformation(*p, option);
-              break;
-          }
-          *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-        }
+  case BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE: {
+    const char* statusmessage = KEXT_NAMESPACE::CommonData::get_statusmessage(option);
+    char* p = reinterpret_cast<char*>(buffer);
+
+    if (statusmessage && p) {
+      pqrs::strlcpy_utf8::strlcpy(p, statusmessage, static_cast<size_t>(size));
+      *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+    }
+    break;
+  }
+
+  case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA: {
+    if (size != sizeof(BridgeWorkSpaceData)) {
+      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA wrong 'size' parameter\n");
+    } else {
+      const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(buffer);
+      if (p) {
+        KEXT_NAMESPACE::CommonData::setcurrent_workspacedata(*p);
+        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
-
-      break;
     }
+    break;
+  }
+
+  case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:
+  case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER:
+  case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING: {
+    if (size != sizeof(BridgeDeviceInformation)) {
+      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_* wrong 'size' parameter\n");
+    } else {
+      BridgeDeviceInformation* p = reinterpret_cast<BridgeDeviceInformation*>(buffer);
+      if (p) {
+        switch (type) {
+        case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD:
+          KEXT_NAMESPACE::ListHookedKeyboard::instance().getDeviceInformation(*p, option);
+          break;
+        case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER:
+          KEXT_NAMESPACE::ListHookedConsumer::instance().getDeviceInformation(*p, option);
+          break;
+        case BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING:
+          KEXT_NAMESPACE::ListHookedPointing::instance().getDeviceInformation(*p, option);
+          break;
+        }
+        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+      }
+    }
+
+    break;
+  }
   }
 }
