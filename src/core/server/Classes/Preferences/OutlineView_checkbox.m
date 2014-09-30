@@ -5,8 +5,7 @@
 
 @implementation OutlineView_checkbox
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -16,8 +15,7 @@
   return self;
 }
 
-- (IBAction) reloadXML:(id)sender
-{
+- (IBAction)reloadXML:(id)sender {
   [xmlCompiler_ reload];
 }
 

@@ -4,24 +4,22 @@
 #import "InputSource.h"
 #import "XMLCompiler.h"
 
-@interface WorkSpaceData : NSObject
-{
+@interface WorkSpaceData : NSObject {
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-- (unsigned int) getApplicationType:(NSString*)name;
-- (unsigned int) getWindowName:(NSString*)name;
-- (unsigned int) getUIElementRole:(NSString*)name;
+- (unsigned int)getApplicationType:(NSString*)name;
+- (unsigned int)getWindowName:(NSString*)name;
+- (unsigned int)getUIElementRole:(NSString*)name;
 
 @end
 
-
 @interface WorkSpaceData (InputSource)
-+ (void) refreshEnabledInputSources;
++ (void)refreshEnabledInputSources;
 
-+ (InputSource*) getCurrentInputSource;
-- (void) selectInputSource:(unsigned int)vk_keycode;
-- (void) getInputSourceID:(InputSource*)inputSource
-  output_inputSource:(uint32_t*)output_inputSource
-  output_inputSourceDetail:(uint32_t*)output_inputSourceDetail;
++ (InputSource*)getCurrentInputSource;
+- (void)selectInputSource:(unsigned int)vk_keycode;
+- (void)getInputSourceID:(InputSource*)inputSource
+          output_inputSource:(uint32_t*)output_inputSource
+    output_inputSourceDetail:(uint32_t*)output_inputSourceDetail;
 @end

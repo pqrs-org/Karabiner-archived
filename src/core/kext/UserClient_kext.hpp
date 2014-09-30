@@ -5,16 +5,13 @@
 #include "bridge.h"
 #include <IOKit/IOUserClient.h>
 
-#define KEXT_CLASSNAME            org_pqrs_driver_Karabiner
+#define KEXT_CLASSNAME org_pqrs_driver_Karabiner
 #define USERCLIENT_KEXT_CLASSNAME org_pqrs_driver_Karabiner_UserClient_kext
 
-class USERCLIENT_KEXT_CLASSNAME : public IOUserClient
-{
-  OSDeclareDefaultStructors(USERCLIENT_KEXT_CLASSNAME)
-
-public:
-  // IOUserClient methods
-  virtual bool initWithTask(task_t owningTask, void* securityToken, UInt32 type);
+class USERCLIENT_KEXT_CLASSNAME : public IOUserClient {
+  OSDeclareDefaultStructors(USERCLIENT_KEXT_CLASSNAME) public :
+      // IOUserClient methods
+      virtual bool initWithTask(task_t owningTask, void* securityToken, UInt32 type);
 
   virtual bool start(IOService* provider);
   virtual void stop(IOService* provider);

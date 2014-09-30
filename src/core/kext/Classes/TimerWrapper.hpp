@@ -24,23 +24,23 @@ private:
 };
 
 namespace org_pqrs_Karabiner {
-  class TimerWrapper {
-  public:
-    TimerWrapper(void) : workloop_(NULL), object_(NULL), timer_(NULL) {}
-    void initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Action func);
-    void terminate(void);
+class TimerWrapper {
+public:
+  TimerWrapper(void) : workloop_(NULL), object_(NULL), timer_(NULL) {}
+  void initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Action func);
+  void terminate(void);
 
-    // if overwrite == false, we don't set timeout if timer is already active.
-    IOReturn setTimeoutMS(UInt32 ms, bool overwrite = true);
-    void cancelTimeout(void);
+  // if overwrite == false, we don't set timeout if timer is already active.
+  IOReturn setTimeoutMS(UInt32 ms, bool overwrite = true);
+  void cancelTimeout(void);
 
-  private:
-    static void callback_(OSObject* owner, IOTimerEventSource* sender);
+private:
+  static void callback_(OSObject* owner, IOTimerEventSource* sender);
 
-    IOWorkLoop* workloop_;
-    org_pqrs_Karabiner_TimerWrapperObject* object_;
-    IOTimerEventSource* timer_;
-  };
+  IOWorkLoop* workloop_;
+  org_pqrs_Karabiner_TimerWrapperObject* object_;
+  IOTimerEventSource* timer_;
+};
 }
 
 #endif

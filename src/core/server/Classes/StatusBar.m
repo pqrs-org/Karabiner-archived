@@ -5,23 +5,20 @@
 #import "PreferencesManager.h"
 #import "StatusBar.h"
 
-@interface StatusBar ()
-{
+@interface StatusBar () {
   NSStatusItem* statusItem_;
 }
 @end
 
 @implementation StatusBar
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification
-{
+- (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self refresh];
   });
 }
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -34,21 +31,19 @@
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) refresh
-{
-  if (! [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled]) {
+- (void)refresh {
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled]) {
     if (statusItem_) {
       [[NSStatusBar systemStatusBar] removeStatusItem:statusItem_];
       statusItem_ = nil;
     }
 
   } else {
-    if (! statusItem_) {
+    if (!statusItem_) {
       statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
 
       [statusItem_ setTitle:@""];
@@ -61,7 +56,7 @@
     }
 
     // setTitle
-    if (! [[NSUserDefaults standardUserDefaults] boolForKey:kIsShowSettingNameInStatusBar]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsShowSettingNameInStatusBar]) {
       [statusItem_ setTitle:@""];
       [statusItem_ setLength:24];
 
@@ -76,15 +71,13 @@
   }
 }
 
-- (void) statusBarItemSelected:(id)sender
-{
+- (void)statusBarItemSelected:(id)sender {
   NSNumber* idx = [sender representedObject];
   [preferencesManager_ configlist_select:[idx intValue]];
   [self refresh];
 }
 
-- (void) menuNeedsUpdate:(NSMenu*)menu
-{
+- (void)menuNeedsUpdate:(NSMenu*)menu {
   // --------------------
   // clear
   for (;;) {
@@ -100,7 +93,7 @@
   int i = 0;
   NSInteger selectedIndex = [preferencesManager_ configlist_selectedIndex];
   for (NSDictionary* dict in list) {
-    if (! dict) continue;
+    if (!dict) continue;
 
     NSString* title = dict[@"name"];
     NSMenuItem* newItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(statusBarItemSelected:) keyEquivalent:@""];

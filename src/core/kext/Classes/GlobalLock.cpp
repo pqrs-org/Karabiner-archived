@@ -2,74 +2,66 @@
 #include "IOLogWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
-  IOLock* GlobalLock::lock_ = NULL;
+IOLock* GlobalLock::lock_ = NULL;
 
-  void
-  GlobalLock::initialize(void)
-  {
-    lock_ = IOLockAlloc();
-    if (! lock_) {
-      IOLOG_ERROR("IOLockAlloc failed.\n");
-    }
+void
+GlobalLock::initialize(void) {
+  lock_ = IOLockAlloc();
+  if (!lock_) {
+    IOLOG_ERROR("IOLockAlloc failed.\n");
   }
+}
 
-  void
-  GlobalLock::terminate(void)
-  {
-    if (! lock_) return;
+void
+GlobalLock::terminate(void) {
+  if (!lock_) return;
 
-    IOLockLock(lock_);
-    IOLock* tmp = lock_;
-    lock_ = NULL;
-    IOLockUnlock(tmp);
+  IOLockLock(lock_);
+  IOLock* tmp = lock_;
+  lock_ = NULL;
+  IOLockUnlock(tmp);
 
-    // roughly sleep:
-    IOSleep(200);
+  // roughly sleep:
+  IOSleep(200);
 
-    IOLockFree(tmp);
-  }
+  IOLockFree(tmp);
+}
 
-  // ------------------------------------------------------------
-  GlobalLock::ScopedLock::ScopedLock(void)
-  {
-    lock_ = GlobalLock::lock_;
-    if (! lock_) return;
+// ------------------------------------------------------------
+GlobalLock::ScopedLock::ScopedLock(void) {
+  lock_ = GlobalLock::lock_;
+  if (!lock_) return;
 
-    IOLockLock(lock_);
-  }
+  IOLockLock(lock_);
+}
 
-  GlobalLock::ScopedLock::~ScopedLock(void)
-  {
-    if (! lock_) return;
+GlobalLock::ScopedLock::~ScopedLock(void) {
+  if (!lock_) return;
 
-    IOLockUnlock(lock_);
-  }
+  IOLockUnlock(lock_);
+}
 
-  bool
-  GlobalLock::ScopedLock::operator!(void) const
-  {
-    return lock_ == NULL;
-  }
+bool
+GlobalLock::ScopedLock::operator!(void)const {
+  return lock_ == NULL;
+}
 
-  // ------------------------------------------------------------
-  GlobalLock::ScopedUnlock::ScopedUnlock(void)
-  {
-    lock_ = GlobalLock::lock_;
-    if (! lock_) return;
+// ------------------------------------------------------------
+GlobalLock::ScopedUnlock::ScopedUnlock(void) {
+  lock_ = GlobalLock::lock_;
+  if (!lock_) return;
 
-    IOLockUnlock(lock_);
-  }
+  IOLockUnlock(lock_);
+}
 
-  GlobalLock::ScopedUnlock::~ScopedUnlock(void)
-  {
-    if (! lock_) return;
+GlobalLock::ScopedUnlock::~ScopedUnlock(void) {
+  if (!lock_) return;
 
-    IOLockLock(lock_);
-  }
+  IOLockLock(lock_);
+}
 
-  bool
-  GlobalLock::ScopedUnlock::operator!(void) const
-  {
-    return lock_ == NULL;
-  }
+bool
+GlobalLock::ScopedUnlock::operator!(void)const {
+  return lock_ == NULL;
+}
 }

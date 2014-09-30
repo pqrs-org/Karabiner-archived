@@ -7,16 +7,14 @@
 #import "Updater.h"
 #import "XMLCompiler.h"
 
-@interface ServerForUserspace ()
-{
+@interface ServerForUserspace () {
   NSConnection* connection_;
 }
 @end
 
 @implementation ServerForUserspace
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -26,82 +24,67 @@
   return self;
 }
 
-
 // ----------------------------------------------------------------------
-- (BOOL) register
-{
+- (BOOL) register {
   [connection_ setRootObject:self];
-  if (! [connection_ registerName:kKarabinerConnectionName]) {
+  if (![connection_ registerName:kKarabinerConnectionName]) {
     return NO;
   }
   return YES;
 }
 
 // ----------------------------------------------------------------------
-- (int) value:(NSString*)name
-{
+- (int)value:(NSString*)name {
   return [preferencesManager_ value:name];
 }
 
-- (int) defaultValue:(NSString*)name
-{
+- (int)defaultValue:(NSString*)name {
   return [preferencesManager_ defaultValue:name];
 }
 
-- (void) setValue:(int)newval forName:(NSString*)name
-{
+- (void)setValue:(int)newval forName:(NSString*)name {
   [preferencesManager_ setValue:newval forName:name];
 }
 
-- (NSDictionary*) changed
-{
+- (NSDictionary*)changed {
   return [preferencesManager_ changed];
 }
 
 // ----------------------------------------------------------------------
-- (NSInteger) configlist_selectedIndex
-{
+- (NSInteger)configlist_selectedIndex {
   return [preferencesManager_ configlist_selectedIndex];
 }
 
-- (NSArray*) configlist_getConfigList
-{
+- (NSArray*)configlist_getConfigList {
   return [preferencesManager_ configlist_getConfigList];
 }
 
-- (void) configlist_select:(NSInteger)newIndex
-{
+- (void)configlist_select:(NSInteger)newIndex {
   [preferencesManager_ configlist_select:newIndex];
 }
 
-- (void) configlist_setName:(NSInteger)rowIndex name:(NSString*)name
-{
+- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
   [preferencesManager_ configlist_setName:rowIndex name:name];
 }
 
-- (void) configlist_append
-{
+- (void)configlist_append {
   [preferencesManager_ configlist_append];
 }
 
-- (void) configlist_delete:(NSInteger)rowIndex
-{
+- (void)configlist_delete:(NSInteger)rowIndex {
   [preferencesManager_ configlist_delete:rowIndex];
 }
 
 // ----------------------------------------------------------------------
-- (void) configxml_reload
-{
+- (void)configxml_reload {
   [xmlCompiler_ reload];
 }
 
-- (NSString*) symbolMapName:(NSString*)type value:(NSInteger)value
-{
+- (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value {
   return [xmlCompiler_ symbolMapName:type value:(uint32_t)(value)];
 }
 
-- (void) relaunch
-{
+- (void)relaunch {
   // Use dispatch_async in order to avoid "disconnected from server".
   //
   // Example error message of disconnection:
@@ -112,24 +95,20 @@
 }
 
 // ----------------------------------------------------------------------
-- (void) updateFocusedUIElementInformation:(NSDictionary*)information
-{
+- (void)updateFocusedUIElementInformation:(NSDictionary*)information {
   return [appDelegate_ updateFocusedUIElementInformation:information];
 }
 
 // ----------------------------------------------------------------------
-- (NSArray*) device_information:(NSInteger)type
-{
+- (NSArray*)device_information:(NSInteger)type {
   return [clientForKernelspace_ device_information:type];
 }
 
-- (NSDictionary*) focused_uielement_information
-{
+- (NSDictionary*)focused_uielement_information {
   return [appDelegate_ getFocusedUIElementInformation];
 }
 
-- (NSDictionary*) inputsource_information
-{
+- (NSDictionary*)inputsource_information {
   return [appDelegate_ getInputSourceInformation];
 }
 

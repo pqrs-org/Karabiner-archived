@@ -1,7 +1,6 @@
 #import "InputSource.h"
 
-@interface InputSource ()
-{
+@interface InputSource () {
   TISInputSourceRef inputSource_;
 }
 @end
@@ -12,8 +11,7 @@
 @synthesize inputSourceID = inputSourceID_;
 @synthesize inputModeID = inputModeID_;
 
-+ (NSString*) getLanguageCode:(TISInputSourceRef)source
-{
++ (NSString*)getLanguageCode:(TISInputSourceRef)source {
   NSArray* languages = (__bridge NSArray*)(TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages));
   if ([languages count] > 0) {
     // U.S. InputSource has many languages (en, de, fr, ...),
@@ -25,8 +23,7 @@
   return nil;
 }
 
-- (id) initWithTISInputSourceRef:(TISInputSourceRef)ref
-{
+- (id)initWithTISInputSourceRef:(TISInputSourceRef)ref {
   self = [super init];
 
   if (self) {
@@ -34,37 +31,34 @@
       inputSource_ = ref;
       CFRetain(inputSource_);
 
-      languagecode_  = [InputSource getLanguageCode:inputSource_];
+      languagecode_ = [InputSource getLanguageCode:inputSource_];
       inputSourceID_ = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID));
-      inputModeID_   = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID));
+      inputModeID_ = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID));
     }
   }
 
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   if (inputSource_) {
     CFRelease(inputSource_);
   }
 }
 
-- (void) select
-{
+- (void)select {
   if (inputSource_) {
     TISSelectInputSource(inputSource_);
   }
 }
 
-- (Boolean) selected
-{
-  if (! inputSource_) {
+- (Boolean)selected {
+  if (!inputSource_) {
     return NO;
   }
 
   CFBooleanRef selected = TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceIsSelected);
-  if (! selected) {
+  if (!selected) {
     return NO;
   }
 

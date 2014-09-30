@@ -2,8 +2,7 @@
 
 @implementation EnvironmentChecker
 
-+ (BOOL) checkDoubleCommand
-{
++ (BOOL)checkDoubleCommand {
   @synchronized(self) {
     static dispatch_once_t onceToken = 0;
     static BOOL result = NO;
@@ -24,8 +23,7 @@
   }
 }
 
-+ (BOOL) checkKeyRemap4MacBook
-{
++ (BOOL)checkKeyRemap4MacBook {
   @synchronized(self) {
     static dispatch_once_t onceToken = 0;
     static BOOL result = NO;
@@ -48,8 +46,7 @@
   }
 }
 
-+ (BOOL) checkSmoothMouse
-{
++ (BOOL)checkSmoothMouse {
   @synchronized(self) {
     static dispatch_once_t onceToken = 0;
     static BOOL result = NO;

@@ -25,19 +25,19 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-@property (weak) ClientForKernelspace* clientForKernelspace;
+@property(weak) ClientForKernelspace* clientForKernelspace;
 
-- (void) updateFocusedUIElementInformation:(NSDictionary*)information;
-- (NSDictionary*) getFocusedUIElementInformation;
-- (NSDictionary*) getInputSourceInformation;
+- (void)updateFocusedUIElementInformation:(NSDictionary*)information;
+- (NSDictionary*)getFocusedUIElementInformation;
+- (NSDictionary*)getInputSourceInformation;
 
-- (IBAction) restartAXNotifier:(id)sender;
-- (IBAction) manageAXNotifier:(id)sender;
-- (IBAction) launchEventViewer:(id)sender;
-- (IBAction) launchMultiTouchExtension:(id)sender;
-- (IBAction) launchUninstaller:(id)sender;
-- (IBAction) openPreferences:(id)sender;
-- (IBAction) openPrivateXML:(id)sender;
-- (IBAction) quit:(id)sender;
+- (IBAction)restartAXNotifier:(id)sender;
+- (IBAction)manageAXNotifier:(id)sender;
+- (IBAction)launchEventViewer:(id)sender;
+- (IBAction)launchMultiTouchExtension:(id)sender;
+- (IBAction)launchUninstaller:(id)sender;
+- (IBAction)openPreferences:(id)sender;
+- (IBAction)openPrivateXML:(id)sender;
+- (IBAction)quit:(id)sender;
 
 @end

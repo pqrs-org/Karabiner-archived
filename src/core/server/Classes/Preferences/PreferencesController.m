@@ -7,29 +7,25 @@
 
 @implementation PreferencesController
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification
-{
+- (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
   });
 }
 
-- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
-{
+- (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
   });
 }
 
-- (void) observer_PreferencesChanged:(NSNotification*)notification
-{
+- (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
   });
 }
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -52,33 +48,29 @@
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /* ---------------------------------------------------------------------- */
-- (void) drawVersion
-{
+- (void)drawVersion {
   NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   [versionText_ setStringValue:version];
 }
 
-- (void) drawEnabledCount
-{
+- (void)drawEnabledCount {
   // Calculating enabled_count is a bit heavy.
   // So, we skip this calculation if the preferences window was invisible.
-  if (! [preferencesWindow_ isVisible]) return;
+  if (![preferencesWindow_ isVisible]) return;
 
   int count = [self enabled_count:[xmlCompiler_ preferencepane_checkbox]
                           changed:[preferencesManager_ changed]];
 
-  [checkbox_showEnabledOnly_ setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items":@"item"]];
+  [checkbox_showEnabledOnly_ setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items" : @"item"]];
 }
 
 /* ---------------------------------------------------------------------- */
-- (int) enabled_count:(NSArray*)checkbox changed:(NSDictionary*)changed
-{
+- (int)enabled_count:(NSArray*)checkbox changed:(NSDictionary*)changed {
   int count = 0;
 
   if (checkbox) {
@@ -98,8 +90,7 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (void) sendStatusWindowPreferencesNotification:(NSString*)identifier
-{
+- (void)sendStatusWindowPreferencesNotification:(NSString*)identifier {
   if ([identifier isEqualToString:@"StatusMessage"]) {
     [[NSNotificationCenter defaultCenter] postNotificationName:kStatusWindowPreferencesOpenedNotification object:nil];
   } else {
@@ -108,33 +99,28 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (void) windowDidBecomeMain:(NSNotification*)notification
-{
+- (void)windowDidBecomeMain:(NSNotification*)notification {
   [self drawVersion];
   [self drawEnabledCount];
   [self sendStatusWindowPreferencesNotification:[[tabView_ selectedTabViewItem] identifier]];
 }
 
-- (void) windowWillClose:(NSNotification*)notification
-{
+- (void)windowWillClose:(NSNotification*)notification {
   [self sendStatusWindowPreferencesNotification:nil];
 }
 
 /* ---------------------------------------------------------------------- */
-- (void) tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem
-{
+- (void)tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem {
   [self sendStatusWindowPreferencesNotification:[tabViewItem identifier]];
 }
 
 /* ---------------------------------------------------------------------- */
-- (void) show
-{
+- (void)show {
   [preferencesWindow_ makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
 }
 
-- (IBAction) openURL:(id)sender
-{
+- (IBAction)openURL:(id)sender {
   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[sender title]]];
 }
 

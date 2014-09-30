@@ -7,39 +7,39 @@
 #include "Vector.hpp"
 
 namespace org_pqrs_Karabiner {
-  class AddDataType {
-  public:
-    AddDataType(void) : value_(BRIDGE_DATATYPE_NONE) {}
-    explicit AddDataType(unsigned int v) : value_(v) {}
-    operator unsigned int(void) {
-      return value_;
-    }
+class AddDataType {
+public:
+  AddDataType(void) : value_(BRIDGE_DATATYPE_NONE) {}
+  explicit AddDataType(unsigned int v) : value_(v) {}
+  operator unsigned int(void) {
+    return value_;
+  }
 
-  private:
-    unsigned int value_;
-  };
+private:
+  unsigned int value_;
+};
 
-  class AddValue {
-  public:
-    AddValue(void) : value_(0) {}
-    explicit AddValue(unsigned int v) : value_(v) {}
-    operator unsigned int(void) {
-      return value_;
-    }
+class AddValue {
+public:
+  AddValue(void) : value_(0) {}
+  explicit AddValue(unsigned int v) : value_(v) {}
+  operator unsigned int(void) {
+    return value_;
+  }
 
-  private:
-    unsigned int value_;
-  };
-  DECLARE_VECTOR(AddValue);
+private:
+  unsigned int value_;
+};
+DECLARE_VECTOR(AddValue);
 
-  class AddValueWithDataType {
-  public:
-    AddValueWithDataType(void) {}
-    AddValueWithDataType(AddDataType d, AddValue v) : dataType(d), value(v) {}
-    AddDataType dataType;
-    AddValue value;
-  };
-  DECLARE_VECTOR(AddValueWithDataType);
+class AddValueWithDataType {
+public:
+  AddValueWithDataType(void) {}
+  AddValueWithDataType(AddDataType d, AddValue v) : dataType(d), value(v) {}
+  AddDataType dataType;
+  AddValue value;
+};
+DECLARE_VECTOR(AddValueWithDataType);
 }
 
 #endif

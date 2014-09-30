@@ -6,101 +6,95 @@
 #include "VK_DEFINED_IN_USERSPACE.hpp"
 
 namespace org_pqrs_Karabiner {
-  VirtualKey::VK_DEFINED_IN_USERSPACE::Vector_Item VirtualKey::VK_DEFINED_IN_USERSPACE::items_;
+VirtualKey::VK_DEFINED_IN_USERSPACE::Vector_Item VirtualKey::VK_DEFINED_IN_USERSPACE::items_;
 
-  void
-  VirtualKey::VK_DEFINED_IN_USERSPACE::initialize(void)
-  {}
+void
+VirtualKey::VK_DEFINED_IN_USERSPACE::initialize(void) {}
 
-  void
-  VirtualKey::VK_DEFINED_IN_USERSPACE::terminate(void)
-  {
-    items_.clear();
-  }
+void
+VirtualKey::VK_DEFINED_IN_USERSPACE::terminate(void) {
+  items_.clear();
+}
 
-  void
-  VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type)
-  {
-    items_.push_back(Item(remapclass, keycode, notification_type));
-  }
+void
+VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type) {
+  items_.push_back(Item(remapclass, keycode, notification_type));
+}
 
-  void
-  VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items(void)
-  {
-    items_.clear();
-  }
+void
+VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items(void) {
+  items_.clear();
+}
 
-  bool
-  VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& params)
-  {
-    // VK_DEFINED_IN_USERSPACE uses UserClient which is effective immediately.
-    // Considering KeyCode::VK_WAIT, we should not send notification via UserClient at here.
-    //
-    // For example:
-    // ----------------------------------------
-    //   <autogen>
-    //     __KeyToKey__
-    //     KeyCode::A,
-    //
-    //     KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH,
-    //     <!-- Waiting Input Source switching. -->
-    //     KeyCode::VK_WAIT_10MS,
-    //     KeyCode::A,
-    //
-    //     KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
-    //     <!-- Waiting Input Source switching. -->
-    //     KeyCode::VK_WAIT_10MS,
-    //     KeyCode::A,
-    //   </autogen>
-    // ----------------------------------------
-    //
-    // VK_WAIT_10MS modifies wait of EventOutputQueue.
-    // It is not wait at VirtualKey::handle.
-    //
-    // Therefore, if we send notification at here,
-    // the order of sending keys is follows.
-    //
-    // 1. KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH
-    // 2. KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH
-    // 3. <wait 10ms>
-    // 4. KeyCode::A
-    // 5. <wait 10ms>
-    // 6. KeyCode::A
-    //
-    // This order is not intended.
-    // The intended order is follows.
-    //
-    // 1. KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH
-    // 2. <wait 10ms>
-    // 3. KeyCode::A
-    // 4. KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH
-    // 5. <wait 10ms>
-    // 6. KeyCode::A
-    //
-    // In order to achieve this behavior,
-    // we need to send notification at handleAfterEnqueued.
+bool
+VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& params) {
+  // VK_DEFINED_IN_USERSPACE uses UserClient which is effective immediately.
+  // Considering KeyCode::VK_WAIT, we should not send notification via UserClient at here.
+  //
+  // For example:
+  // ----------------------------------------
+  //   <autogen>
+  //     __KeyToKey__
+  //     KeyCode::A,
+  //
+  //     KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH,
+  //     <!-- Waiting Input Source switching. -->
+  //     KeyCode::VK_WAIT_10MS,
+  //     KeyCode::A,
+  //
+  //     KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+  //     <!-- Waiting Input Source switching. -->
+  //     KeyCode::VK_WAIT_10MS,
+  //     KeyCode::A,
+  //   </autogen>
+  // ----------------------------------------
+  //
+  // VK_WAIT_10MS modifies wait of EventOutputQueue.
+  // It is not wait at VirtualKey::handle.
+  //
+  // Therefore, if we send notification at here,
+  // the order of sending keys is follows.
+  //
+  // 1. KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH
+  // 2. KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH
+  // 3. <wait 10ms>
+  // 4. KeyCode::A
+  // 5. <wait 10ms>
+  // 6. KeyCode::A
+  //
+  // This order is not intended.
+  // The intended order is follows.
+  //
+  // 1. KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH
+  // 2. <wait 10ms>
+  // 3. KeyCode::A
+  // 4. KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH
+  // 5. <wait 10ms>
+  // 6. KeyCode::A
+  //
+  // In order to achieve this behavior,
+  // we need to send notification at handleAfterEnqueued.
 
-    return false;
-  }
+  return false;
+}
 
-  bool
-  VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params)
-  {
-    for (size_t i = 0; i < items_.size(); ++i) {
-      RemapClass* remapclass = items_[i].remapclass;
-      KeyCode keycode(items_[i].keycode);
-      uint32_t notification_type = items_[i].notification_type;
+bool
+VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    RemapClass* remapclass = items_[i].remapclass;
+    KeyCode keycode(items_[i].keycode);
+    uint32_t notification_type = items_[i].notification_type;
 
-      if (! remapclass) return false;
+    if (!remapclass) return false;
 
-      if (params.key == keycode) {
-        if (params.ex_iskeydown && params.repeat == false) {
-          org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(notification_type, params.key.get());
-        }
-        return true;
+    if (params.key == keycode) {
+      if (params.ex_iskeydown && params.repeat == false) {
+        org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(notification_type, params.key.get());
       }
+      return true;
     }
-
-    return false;
   }
+
+  return false;
+}
 }

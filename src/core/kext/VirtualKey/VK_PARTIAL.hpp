@@ -5,27 +5,27 @@
 #include "List.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace VirtualKey {
-    class VK_PARTIAL {
-    public:
-      static void initialize(void);
-      static void terminate(void);
-      static bool handle(const Params_KeyboardEventCallBack& params);
+namespace VirtualKey {
+class VK_PARTIAL {
+public:
+  static void initialize(void);
+  static void terminate(void);
+  static bool handle(const Params_KeyboardEventCallBack& params);
 
-    private:
-      class Item : public List::Item {
-      public:
-        Item(KeyCode k) : key(k) {}
-        virtual ~Item(void) {}
+private:
+  class Item : public List::Item {
+  public:
+    Item(KeyCode k) : key(k) {}
+    virtual ~Item(void) {}
 
-        KeyCode key;
-      };
+    KeyCode key;
+  };
 
-      static List changedKeyCodes_;
-      static bool active_;
-      static EventType eventType_;
-    };
-  }
+  static List changedKeyCodes_;
+  static bool active_;
+  static EventType eventType_;
+};
+}
 }
 
 #endif

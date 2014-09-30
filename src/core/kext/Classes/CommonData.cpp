@@ -4,60 +4,54 @@
 #include "UserClient_kext.hpp"
 
 namespace org_pqrs_Karabiner {
-  AbsoluteTime CommonData::current_ts_;
-  KeyboardType CommonData::current_keyboardType_;
-  DeviceIdentifier CommonData::current_deviceIdentifier_;
-  BridgeWorkSpaceData CommonData::current_workspacedata_;
-  LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
-  char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
+AbsoluteTime CommonData::current_ts_;
+KeyboardType CommonData::current_keyboardType_;
+DeviceIdentifier CommonData::current_deviceIdentifier_;
+BridgeWorkSpaceData CommonData::current_workspacedata_;
+LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
+char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
-  bool
-  CommonData::initialize(void)
-  {
-    for (int i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
-      statusmessage_[i][0] = '\0';
-    }
-
-    return true;
+bool
+CommonData::initialize(void) {
+  for (int i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
+    statusmessage_[i][0] = '\0';
   }
 
-  void
-  CommonData::terminate(void)
-  {}
+  return true;
+}
 
-  void
-  CommonData::clear_statusmessage(int index)
-  {
-    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
-    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
+void
+CommonData::terminate(void) {}
 
-    statusmessage_[index][0] = '\0';
-  }
+void
+CommonData::clear_statusmessage(int index) {
+  if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
+  if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
 
-  void
-  CommonData::append_statusmessage(int index, const char* message)
-  {
-    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
-    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
+  statusmessage_[index][0] = '\0';
+}
 
-    strlcat(statusmessage_[index], message, sizeof(statusmessage_[index]));
-  }
+void
+CommonData::append_statusmessage(int index, const char* message) {
+  if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
+  if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
 
-  void
-  CommonData::send_notification_statusmessage(int index)
-  {
-    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
-    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
+  strlcat(statusmessage_[index], message, sizeof(statusmessage_[index]));
+}
 
-    org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED, index);
-  }
+void
+CommonData::send_notification_statusmessage(int index) {
+  if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
+  if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;
 
-  const char*
-  CommonData::get_statusmessage(int index)
-  {
-    if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return NULL;
-    if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return NULL;
+  org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED, index);
+}
 
-    return statusmessage_[index];
-  }
+const char*
+CommonData::get_statusmessage(int index) {
+  if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return NULL;
+  if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return NULL;
+
+  return statusmessage_[index];
+}
 }

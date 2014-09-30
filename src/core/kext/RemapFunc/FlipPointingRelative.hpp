@@ -4,24 +4,22 @@
 #include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace RemapFunc {
-    class FlipPointingRelative : public RemapFuncBase {
-    public:
-      FlipPointingRelative(void) :
-        RemapFuncBase(BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE),
-        flipHorizontal_(false),
-        flipVertical_(false)
-      {}
+namespace RemapFunc {
+class FlipPointingRelative : public RemapFuncBase {
+public:
+  FlipPointingRelative(void) : RemapFuncBase(BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE),
+                               flipHorizontal_(false),
+                               flipVertical_(false) {}
 
-      bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams);
 
-      void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval);
 
-    private:
-      bool flipHorizontal_;
-      bool flipVertical_;
-    };
-  }
+private:
+  bool flipHorizontal_;
+  bool flipVertical_;
+};
+}
 }
 
 #endif

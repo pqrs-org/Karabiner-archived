@@ -4,6 +4,6 @@
 
 @interface KextLoader : NSObject
 
-+ (void) load;
++ (void)load;
 
 @end

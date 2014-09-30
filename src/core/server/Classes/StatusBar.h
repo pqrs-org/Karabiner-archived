@@ -9,7 +9,7 @@
   IBOutlet PreferencesManager* preferencesManager_;
 }
 
-- (void) refresh;
-- (void) statusBarItemSelected:(id)sender;
+- (void)refresh;
+- (void)statusBarItemSelected:(id)sender;
 
 @end

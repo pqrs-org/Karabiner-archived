@@ -4,15 +4,15 @@
 #include "RemapClass.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace VirtualKey {
-    class VK_IOHIDPOSTEVENT {
-    public:
-      static bool handle(const Params_KeyboardEventCallBack& params);
-      static bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
+namespace VirtualKey {
+class VK_IOHIDPOSTEVENT {
+public:
+  static bool handle(const Params_KeyboardEventCallBack& params);
+  static bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 
-      static void post(const Params_KeyboardSpecialEventCallback& params);
-    };
-  }
+  static void post(const Params_KeyboardSpecialEventCallback& params);
+};
+}
 }
 
 #endif

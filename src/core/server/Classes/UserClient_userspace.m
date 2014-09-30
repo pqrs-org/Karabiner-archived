@@ -3,8 +3,7 @@
 #import "UserClient_userspace.h"
 #include "bridge.h"
 
-@interface UserClient_userspace ()
-{
+@interface UserClient_userspace () {
   io_service_t service_;
   io_connect_t connect_;
   IONotificationPortRef notifyport_;
@@ -15,8 +14,7 @@
 
 @implementation UserClient_userspace
 
-- (void) closeUserClient
-{
+- (void)closeUserClient {
   // ----------------------------------------
   // call BRIDGE_USERCLIENT_CLOSE
   if (service_ != IO_OBJECT_NULL && connect_ != IO_OBJECT_NULL) {
@@ -37,8 +35,7 @@
   }
 }
 
-- (void) openUserClient
-{
+- (void)openUserClient {
   io_iterator_t iterator;
 
   [KextLoader load]; // Load kext before use org_pqrs_driver_Karabiner
@@ -82,7 +79,7 @@
     {
       uint64_t bridge_version =
 #include "../../../../src/bridge/output/include.bridge_version.h"
-      ;
+          ;
       uint64_t open_result = 0;
       uint32_t count = 1;
 
@@ -119,10 +116,10 @@
                                                   IONotificationPortGetMachPort(notifyport_),
                                                   *asyncref_,
                                                   kOSAsyncRef64Count,
-                                                  NULL,                // input
-                                                  0,                   // inputCnt
-                                                  NULL,                // output
-                                                  NULL);               // outputCnt
+                                                  NULL,  // input
+                                                  0,     // inputCnt
+                                                  NULL,  // output
+                                                  NULL); // outputCnt
       if (kernResult != KERN_SUCCESS) {
         NSLog(@"[ERROR] BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT returned 0x%08x\n", kernResult);
         continue;
@@ -140,7 +137,7 @@ finish:
   IOObjectRelease(iterator);
 }
 
-- (id) init:(io_async_ref64_t*)asyncref;
+- (id)init:(io_async_ref64_t*)asyncref;
 {
   self = [super init];
 
@@ -154,8 +151,7 @@ finish:
 }
 
 // ======================================================================
-- (void) connect_to_kext
-{
+- (void)connect_to_kext {
   @synchronized(self) {
     [self disconnect_from_kext];
 
@@ -165,12 +161,12 @@ finish:
     // ----------------------------------------
     // setup IONotification
     notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
-    if (! notifyport_) {
+    if (!notifyport_) {
       NSLog(@"[ERROR] IONotificationPortCreate failed\n");
 
     } else {
       loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
-      if (! loopsource_) {
+      if (!loopsource_) {
         NSLog(@"[ERROR] IONotificationPortGetRunLoopSource failed\n");
 
       } else {
@@ -181,8 +177,7 @@ finish:
   }
 }
 
-- (void) disconnect_from_kext
-{
+- (void)disconnect_from_kext {
   @synchronized(self) {
     [self closeUserClient];
 
@@ -197,8 +192,7 @@ finish:
   }
 }
 
-- (BOOL) refresh_connection
-{
+- (BOOL)refresh_connection {
   @synchronized(self) {
     [self disconnect_from_kext];
     [self connect_to_kext];
@@ -207,14 +201,13 @@ finish:
   }
 }
 
-- (BOOL) synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct
-{
+- (BOOL)synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct {
   @synchronized(self) {
     if (connect_ == IO_OBJECT_NULL) {
       NSLog(@"[INFO] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION connection is null");
       return NO;
     }
-    if (! bridgestruct) return NO;
+    if (!bridgestruct) return NO;
 
     uint64_t output = 0;
     uint32_t outputCnt = 1;

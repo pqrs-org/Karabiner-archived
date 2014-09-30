@@ -4,8 +4,7 @@
 #import "StatusWindow.h"
 #include "bridge.h"
 
-@interface StatusWindow ()
-{
+@interface StatusWindow () {
   BOOL statusWindowPreferencesOpened_;
   NSMutableArray* windows_;
   NSMutableArray* lines_;
@@ -16,31 +15,27 @@
 @implementation StatusWindow
 
 // ------------------------------------------------------------
-- (void) observer_NSApplicationDidChangeScreenParametersNotification:(NSNotification*)notification
-{
+- (void)observer_NSApplicationDidChangeScreenParametersNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self updateFrameOrigin];
   });
 }
 
-- (void) observer_StatusWindowPreferencesOpened:(NSNotification*)notification
-{
+- (void)observer_StatusWindowPreferencesOpened:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     statusWindowPreferencesOpened_ = YES;
     [self refresh:self];
   });
 }
 
-- (void) observer_StatusWindowPreferencesClosed:(NSNotification*)notification
-{
+- (void)observer_StatusWindowPreferencesClosed:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     statusWindowPreferencesOpened_ = NO;
     [self refresh:self];
   });
 }
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -60,23 +55,23 @@
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_StatusWindowPreferencesOpened:)
-                                                 name:kStatusWindowPreferencesOpenedNotification object:nil];
+                                                 name:kStatusWindowPreferencesOpenedNotification
+                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_StatusWindowPreferencesClosed:)
-                                                 name:kStatusWindowPreferencesClosedNotification object:nil];
+                                                 name:kStatusWindowPreferencesClosedNotification
+                                               object:nil];
   }
 
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // ------------------------------------------------------------
-- (void) hideStatusWindow:(NSWindow*)window
-{
+- (void)hideStatusWindow:(NSWindow*)window {
   // On OS X 10.9.2 and multi display environment,
   // if we set NSWindowCollectionBehaviorStationary to NSWindow,
   // the window becomes invisible when we call methods by the following procedures.
@@ -96,15 +91,13 @@
   [[window contentView] setAlphaValue:0];
 }
 
-- (void) showStatusWindow:(NSWindow*)window
-{
+- (void)showStatusWindow:(NSWindow*)window {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   double opacity = [defaults doubleForKey:kStatusWindowOpacity];
   [[window contentView] setAlphaValue:(opacity / 100)];
 }
 
-- (void) setupStatusWindow:(NSWindow*)window
-{
+- (void)setupStatusWindow:(NSWindow*)window {
   NSWindowCollectionBehavior behavior = NSWindowCollectionBehaviorCanJoinAllSpaces |
                                         NSWindowCollectionBehaviorStationary |
                                         NSWindowCollectionBehaviorIgnoresCycle;
@@ -121,8 +114,7 @@
   [[window contentView] setMessage:@""];
 }
 
-- (void) setupStatusWindow
-{
+- (void)setupStatusWindow {
   if ([windows_ count] == 0) {
     [statusMessage_normal_ setTitle:@"normal"];
     [statusMessage_nano_ setTitle:@"nano"];
@@ -140,18 +132,18 @@
 }
 
 // ------------------------------------------------------------
-- (IBAction) refresh:(id)sender;
+- (IBAction)refresh:(id)sender;
 {
   NSWindow* window = [self currentWindow];
   // Hide windows which have an unselected type.
   for (NSWindow* w in windows_) {
-    if (! [[w title] isEqualToString:[window title]]) {
+    if (![[w title] isEqualToString:[window title]]) {
       [self hideStatusWindow:w];
     }
   }
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  if (! [defaults boolForKey:kIsStatusWindowEnabled]) {
+  if (![defaults boolForKey:kIsStatusWindowEnabled]) {
     [self hideStatusWindow:window];
     return;
   }
@@ -162,21 +154,21 @@
   // ------------------------------------------------------------
   // Modifier Message
   int indexes[] = {
-    BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
-    BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
-    BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK,
   };
   for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
     int idx = indexes[i];
 
     // Skip message if configured as hide.
     if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY) {
-      if (! [defaults boolForKey:kIsStatusWindowShowStickyModifier]) {
+      if (![defaults boolForKey:kIsStatusWindowShowStickyModifier]) {
         continue;
       }
     }
     if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK) {
-      if (! [defaults boolForKey:kIsStatusWindowShowPointingButtonLock]) {
+      if (![defaults boolForKey:kIsStatusWindowShowPointingButtonLock]) {
         continue;
       }
     }
@@ -185,15 +177,15 @@
     if ([message length] > 0) {
       NSString* name = nil;
       switch (idx) {
-        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
-          name = @"Lock";
-          break;
-        case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY:
-          name = @"Sticky";
-          break;
-        case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK:
-          name = @"Click Lock";
-          break;
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
+        name = @"Lock";
+        break;
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY:
+        name = @"Sticky";
+        break;
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK:
+        name = @"Click Lock";
+        break;
       }
       if (name) {
         [statusMessage appendFormat:@"%@: %@\n", name, message];
@@ -227,8 +219,7 @@
   }
 }
 
-- (void) resetStatusMessage
-{
+- (void)resetStatusMessage {
   for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
     lines_[i] = @"";
   }
@@ -236,21 +227,21 @@
   [self refresh:self];
 }
 
-- (void) setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message
-{
+- (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message {
   lines_[lineIndex] = message;
   [self refresh:self];
 }
 
-- (NSWindow*) currentWindow {
+- (NSWindow*)currentWindow {
   @try {
     return windows_[[[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType]];
-  } @catch (NSException* exception) {
+  }
+  @catch (NSException* exception) {
     return nil;
   }
 }
 
-- (void) updateFrameOrigin {
+- (void)updateFrameOrigin {
   for (NSWindow* window in windows_) {
     [[window contentView] updateWindowFrame];
   }

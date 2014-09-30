@@ -5,64 +5,61 @@
 #include "IOLogWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace RemapFunc {
-    void
-    DropScrollWheel::add(AddDataType datatype, AddValue newval)
-    {
-      switch (datatype) {
-        case BRIDGE_DATATYPE_OPTION:
-        {
-          Option option(newval);
-          if (Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL == option) {
-            dropHorizontalScroll_ = true;
-          } else if (Option::DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL == option) {
-            dropMomentumScroll_ = true;
-          } else {
-            IOLOG_ERROR("DropScrollWheel::add unknown option:%u\n", static_cast<unsigned int>(newval));
-          }
-          break;
-        }
-
-        default:
-          IOLOG_ERROR("DropScrollWheel::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
-          break;
-      }
+namespace RemapFunc {
+void
+DropScrollWheel::add(AddDataType datatype, AddValue newval) {
+  switch (datatype) {
+  case BRIDGE_DATATYPE_OPTION: {
+    Option option(newval);
+    if (Option::DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL == option) {
+      dropHorizontalScroll_ = true;
+    } else if (Option::DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL == option) {
+      dropMomentumScroll_ = true;
+    } else {
+      IOLOG_ERROR("DropScrollWheel::add unknown option:%u\n", static_cast<unsigned int>(newval));
     }
+    break;
+  }
 
-    bool
-    DropScrollWheel::remap(RemapParams& remapParams)
-    {
-      auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
-      if (! params) return false;
+  default:
+    IOLOG_ERROR("DropScrollWheel::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
+    break;
+  }
+}
 
-      if (remapParams.isremapped) return false;
+bool
+DropScrollWheel::remap(RemapParams& remapParams) {
+  auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
+  if (!params) return false;
 
-      if (dropMomentumScroll_) {
-        // Drop events which have kScrollTypeMomentumContinue.
+  if (remapParams.isremapped) return false;
 
-        // see IOHIDSystem/IOHIDevicePrivateKeys.h about options.
-        const int kScrollTypeMomentumContinue_ = 0x0004;
-        if ((params->options & kScrollTypeMomentumContinue_) == 0) {
-          return false;
-        }
-      }
+  if (dropMomentumScroll_) {
+    // Drop events which have kScrollTypeMomentumContinue.
 
-      // ----------------------------------------
-      remapParams.isremapped = true;
-
-      if (dropHorizontalScroll_) {
-        // Overwrite horizontal values with 0.
-        // We should not drop events which vertical values are 0
-        // because it might cause a vertical scroll stuck in some apps (Adobe Photoshop, Illustrator).
-
-        Params_ScrollWheelEventCallback p(params->deltaAxis1, 0, 0,
-                                          params->fixedDelta1, 0, 0,
-                                          params->pointDelta1, 0, 0,
-                                          params->options);
-        EventOutputQueue::FireScrollWheel::fire(p);
-      }
-
-      return true;
+    // see IOHIDSystem/IOHIDevicePrivateKeys.h about options.
+    const int kScrollTypeMomentumContinue_ = 0x0004;
+    if ((params->options & kScrollTypeMomentumContinue_) == 0) {
+      return false;
     }
   }
+
+  // ----------------------------------------
+  remapParams.isremapped = true;
+
+  if (dropHorizontalScroll_) {
+    // Overwrite horizontal values with 0.
+    // We should not drop events which vertical values are 0
+    // because it might cause a vertical scroll stuck in some apps (Adobe Photoshop, Illustrator).
+
+    Params_ScrollWheelEventCallback p(params->deltaAxis1, 0, 0,
+                                      params->fixedDelta1, 0, 0,
+                                      params->pointDelta1, 0, 0,
+                                      params->options);
+    EventOutputQueue::FireScrollWheel::fire(p);
+  }
+
+  return true;
+}
+}
 }

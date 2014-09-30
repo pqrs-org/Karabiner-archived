@@ -4,24 +4,22 @@
 #include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
-  namespace RemapFunc {
-    class FlipScrollWheel : public RemapFuncBase {
-    public:
-      FlipScrollWheel(void) :
-        RemapFuncBase(BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL),
-        flipHorizontalScroll_(false),
-        flipVerticalScroll_(false)
-      {}
+namespace RemapFunc {
+class FlipScrollWheel : public RemapFuncBase {
+public:
+  FlipScrollWheel(void) : RemapFuncBase(BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL),
+                          flipHorizontalScroll_(false),
+                          flipVerticalScroll_(false) {}
 
-      bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams);
 
-      void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval);
 
-    private:
-      bool flipHorizontalScroll_;
-      bool flipVerticalScroll_;
-    };
-  }
+private:
+  bool flipHorizontalScroll_;
+  bool flipVerticalScroll_;
+};
+}
 }
 
 #endif

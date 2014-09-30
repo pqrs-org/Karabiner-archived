@@ -2,12 +2,12 @@
 #define VIRTUALKEY_VK_LOCK_HPP
 
 namespace org_pqrs_Karabiner {
-  namespace VirtualKey {
-    class VK_LOCK {
-    public:
-      static bool handle(const Params_KeyboardEventCallBack& params);
-    };
-  }
+namespace VirtualKey {
+class VK_LOCK {
+public:
+  static bool handle(const Params_KeyboardEventCallBack& params);
+};
+}
 }
 
 #endif

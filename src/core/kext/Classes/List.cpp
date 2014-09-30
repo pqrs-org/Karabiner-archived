@@ -1,111 +1,106 @@
 #include "List.hpp"
 
 namespace org_pqrs_Karabiner {
-  List::Item*
-  List::erase(Item* p)
-  {
-    if (! p) return NULL;
+List::Item*
+List::erase(Item* p) {
+  if (!p) return NULL;
 
-    Item* next = p->next_;
+  Item* next = p->next_;
+
+  if (p->prev_) {
+    p->prev_->next_ = p->next_;
+  }
+  if (p->next_) {
+    p->next_->prev_ = p->prev_;
+  }
+  if (front_ == p) {
+    front_ = p->next_;
+  }
+  if (back_ == p) {
+    back_ = p->prev_;
+  }
+
+  --size_;
+
+  return next;
+}
+
+List::Item*
+List::erase_and_delete(Item* p) {
+  if (!p) return NULL;
+
+  Item* next = erase(p);
+  delete p;
+  return next;
+}
+
+void
+List::clear(void) {
+  while (front_) {
+    erase_and_delete(front_);
+  }
+}
+
+List::Item*
+List::insert(Item* p, Item* newval) {
+  if (!newval) return NULL;
+
+  if (p == NULL) {
+    // push front if p == NULL
+
+    if (front_) {
+      front_->prev_ = newval;
+    }
+
+    newval->prev_ = NULL;
+    newval->next_ = front_;
+
+    front_ = newval;
+
+    if (!back_) {
+      back_ = front_;
+    }
+
+  } else {
+    newval->next_ = p;
 
     if (p->prev_) {
-      p->prev_->next_ = p->next_;
-    }
-    if (p->next_) {
-      p->next_->prev_ = p->prev_;
-    }
-    if (front_ == p) {
-      front_ = p->next_;
-    }
-    if (back_ == p) {
-      back_ = p->prev_;
-    }
+      newval->prev_ = p->prev_;
 
-    --size_;
-
-    return next;
-  }
-
-  List::Item*
-  List::erase_and_delete(Item* p)
-  {
-    if (! p) return NULL;
-
-    Item* next = erase(p);
-    delete p;
-    return next;
-  }
-
-  void
-  List::clear(void)
-  {
-    while (front_) {
-      erase_and_delete(front_);
-    }
-  }
-
-  List::Item*
-  List::insert(Item* p, Item* newval) {
-    if (! newval) return NULL;
-
-    if (p == NULL) {
-      // push front if p == NULL
-
-      if (front_) {
-        front_->prev_ = newval;
-      }
-
-      newval->prev_ = NULL;
-      newval->next_ = front_;
-
-      front_ = newval;
-
-      if (! back_) {
-        back_ = front_;
-      }
-
+      p->prev_->next_ = newval;
     } else {
-      newval->next_ = p;
-
-      if (p->prev_) {
-        newval->prev_ = p->prev_;
-
-        p->prev_->next_ = newval;
-      } else {
-        front_ = newval;
-      }
-
-      p->prev_ = newval;
+      front_ = newval;
     }
 
-    ++size_;
-    return newval;
+    p->prev_ = newval;
   }
 
-  void
-  List::push_back(Item* p)
-  {
-    if (! p) return;
+  ++size_;
+  return newval;
+}
 
-    if (back_) {
-      back_->next_ = p;
-    }
-    p->prev_ = back_;
-    p->next_ = NULL;
+void
+List::push_back(Item* p) {
+  if (!p) return;
 
-    back_ = p;
+  if (back_) {
+    back_->next_ = p;
+  }
+  p->prev_ = back_;
+  p->next_ = NULL;
 
-    if (! front_) {
-      front_ = back_;
-    }
+  back_ = p;
 
-    ++size_;
+  if (!front_) {
+    front_ = back_;
   }
 
-  void
-  List::push_front(Item* p)
-  {
-    if (! p) return;
-    insert(NULL, p);
-  }
+  ++size_;
+}
+
+void
+List::push_front(Item* p) {
+  if (!p) return;
+  insert(NULL, p);
+}
 }

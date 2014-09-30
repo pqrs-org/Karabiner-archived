@@ -2,16 +2,14 @@
 #import "Sparkle/SUUpdater.h"
 #import "Updater.h"
 
-@interface Updater ()
-{
+@interface Updater () {
   SUUpdater* suupdater_;
 }
 @end
 
 @implementation Updater
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -21,9 +19,7 @@
   return self;
 }
 
-
-- (NSString*) getFeedURL:(NSInteger)checkupdate
-{
+- (NSString*)getFeedURL:(NSInteger)checkupdate {
   // ----------------------------------------
   // check nothing.
   if (checkupdate == 0) {
@@ -43,12 +39,11 @@
   return @"https://pqrs.org/osx/karabiner/files/appcast.xml";
 }
 
-- (void) check:(BOOL)isBackground
-{
+- (void)check:(BOOL)isBackground {
   NSInteger checkupdate = [preferencesManager_ checkForUpdatesMode];
   NSString* url = [self getFeedURL:checkupdate];
 
-  if (! url) {
+  if (!url) {
     NSLog(@"skip checkForUpdates");
     return;
   }
@@ -62,26 +57,22 @@
   }
 }
 
-- (IBAction) checkForUpdates:(id)sender
-{
+- (IBAction)checkForUpdates:(id)sender {
   [self check:NO];
 }
 
-- (IBAction) checkForUpdatesInBackground:(id)sender
-{
+- (IBAction)checkForUpdatesInBackground:(id)sender {
   [self check:YES];
 }
 
-- (IBAction) checkForUpdatesStableOnly:(id)sender
-{
+- (IBAction)checkForUpdatesStableOnly:(id)sender {
   NSString* url = [self getFeedURL:1];
   [suupdater_ setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
   [suupdater_ checkForUpdates:nil];
 }
 
-- (IBAction) checkForUpdatesWithBetaVersion:(id)sender
-{
+- (IBAction)checkForUpdatesWithBetaVersion:(id)sender {
   NSString* url = [self getFeedURL:2];
   [suupdater_ setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);

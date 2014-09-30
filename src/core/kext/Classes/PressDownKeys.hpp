@@ -5,26 +5,26 @@
 #include "List.hpp"
 
 namespace org_pqrs_Karabiner {
-  // store EventOutput::FireKey results
-  class PressDownKeys {
+// store EventOutput::FireKey results
+class PressDownKeys {
+public:
+  static void initialize(void);
+  static void terminate(void);
+  static void add(KeyCode key, KeyboardType keyboardType);
+  static void remove(KeyCode key, KeyboardType keyboardType);
+  static void clear(void);
+
+private:
+  class Item : public List::Item {
   public:
-    static void initialize(void);
-    static void terminate(void);
-    static void add(KeyCode key, KeyboardType keyboardType);
-    static void remove(KeyCode key, KeyboardType keyboardType);
-    static void clear(void);
+    Item(KeyCode k, KeyboardType kt) : key(k), keyboardType(kt) {}
+    virtual ~Item(void) {}
 
-  private:
-    class Item : public List::Item {
-    public:
-      Item(KeyCode k, KeyboardType kt) : key(k), keyboardType(kt) {}
-      virtual ~Item(void) {}
-
-      KeyCode key;
-      KeyboardType keyboardType;
-    };
-    static List list_;
+    KeyCode key;
+    KeyboardType keyboardType;
   };
+  static List list_;
+};
 }
 
 #endif

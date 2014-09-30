@@ -4,18 +4,17 @@
 
 @class StatusMessageView_normal;
 
-@interface StatusWindow : NSObject
-{
+@interface StatusWindow : NSObject {
   IBOutlet NSWindow* statusMessage_normal_;
   IBOutlet NSWindow* statusMessage_nano_;
   IBOutlet NSWindow* statusMessage_edge_;
 }
 
-- (void) setupStatusWindow;
+- (void)setupStatusWindow;
 
-- (void) resetStatusMessage;
-- (void) setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message;
+- (void)resetStatusMessage;
+- (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message;
 
-- (IBAction) refresh:(id)sender;
+- (IBAction)refresh:(id)sender;
 
 @end

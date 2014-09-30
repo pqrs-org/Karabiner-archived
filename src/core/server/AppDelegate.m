@@ -17,8 +17,7 @@
 #import "WorkSpaceData.h"
 #include <stdlib.h>
 
-@interface AppDelegate ()
-{
+@interface AppDelegate () {
   NSDictionary* focusedUIElementInformation_;
   NSMutableDictionary* inputSourceInformation_;
 
@@ -37,21 +36,18 @@
 @synthesize clientForKernelspace;
 
 // ----------------------------------------
-- (void) send_workspacedata_to_kext
-{
+- (void)send_workspacedata_to_kext {
   [clientForKernelspace send_workspacedata_to_kext:&bridgeworkspacedata_];
 }
 
 // ------------------------------------------------------------
-- (void) distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:(NSNotification*)notification
-{
+- (void)distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [WorkSpaceData refreshEnabledInputSources];
   });
 }
 
-- (void) distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification
-{
+- (void)distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
     [workSpaceData_ getInputSourceID:inputSource
@@ -76,8 +72,7 @@
   });
 }
 
-- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
-{
+- (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     // If <appdef> or <inputsourcedef> is updated,
     // the following values might be changed.
@@ -96,9 +91,8 @@
 }
 
 // ------------------------------------------------------------
-- (void) callClearNotSave
-{
-  if (! [preferencesManager_ value:@"general.keep_notsave_at_wake"]) {
+- (void)callClearNotSave {
+  if (![preferencesManager_ value:@"general.keep_notsave_at_wake"]) {
     // disable notsave.* in order to disable "Browsing Mode" and
     // other modes which overwrite some keys
     // because these modes annoy password input.
@@ -106,24 +100,21 @@
   }
 }
 
-- (void) observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceDidWakeNotification");
     [self callClearNotSave];
   });
 }
 
-- (void) observer_NSWorkspaceScreensDidWakeNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceScreensDidWakeNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceScreensDidWakeNotification");
     [self callClearNotSave];
   });
 }
 
-- (void) registerWakeNotification
-{
+- (void)registerWakeNotification {
   [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                          selector:@selector(observer_NSWorkspaceDidWakeNotification:)
                                                              name:NSWorkspaceDidWakeNotification
@@ -134,8 +125,7 @@
                                                            object:nil];
 }
 
-- (void) unregisterWakeNotification
-{
+- (void)unregisterWakeNotification {
   [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
                                                                 name:NSWorkspaceDidWakeNotification
                                                               object:nil];
@@ -145,8 +135,7 @@
 }
 
 // ------------------------------------------------------------
-static void observer_IONotification(void* refcon, io_iterator_t iterator)
-{
+static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_IONotification");
 
@@ -177,8 +166,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   });
 }
 
-- (void) unregisterIONotification
-{
+- (void)unregisterIONotification {
   if (notifyport_) {
     if (loopsource_) {
       CFRunLoopSourceInvalidate(loopsource_);
@@ -189,12 +177,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   }
 }
 
-- (void) registerIONotification
-{
+- (void)registerIONotification {
   [self unregisterIONotification];
 
   notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
-  if (! notifyport_) {
+  if (!notifyport_) {
     NSLog(@"[ERROR] IONotificationPortCreate failed\n");
     return;
   }
@@ -219,7 +206,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 
   // ----------------------------------------------------------------------
   loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
-  if (! loopsource_) {
+  if (!loopsource_) {
     NSLog(@"[ERROR] IONotificationPortGetRunLoopSource failed");
     return;
   }
@@ -227,8 +214,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 }
 
 // ------------------------------------------------------------
-- (void) observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
 
@@ -239,8 +225,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   });
 }
 
-- (void) observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification
-{
+- (void)observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
 
@@ -255,15 +240,14 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
 // ------------------------------------------------------------
 #define kDescendantProcess @"org_pqrs_Karabiner_DescendantProcess"
 
-- (void) applicationDidFinishLaunching:(NSNotification*)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
   NSInteger isDescendantProcess = [[[NSProcessInfo processInfo] environment][kDescendantProcess] integerValue];
   setenv([kDescendantProcess UTF8String], "1", 1);
 
   // ------------------------------------------------------------
-  if ([MigrationUtilities migrate:@[@"org.pqrs.KeyRemap4MacBook"]
-           oldApplicationSupports:@[@"KeyRemap4MacBook"]
-                         oldPaths:@[@"/Applications/KeyRemap4MacBook.app"]]) {
+  if ([MigrationUtilities migrate:@[ @"org.pqrs.KeyRemap4MacBook" ]
+           oldApplicationSupports:@[ @"KeyRemap4MacBook" ]
+                         oldPaths:@[ @"/Applications/KeyRemap4MacBook.app" ]]) {
     [Relauncher relaunch];
   }
 
@@ -271,10 +255,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   BOOL openPreferences = NO;
   {
     NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
-    if (! [bundlePath isEqualToString:@"/Applications/Karabiner.app"]) {
+    if (![bundlePath isEqualToString:@"/Applications/Karabiner.app"]) {
       NSLog(@"Skip setStartAtLogin for %@", bundlePath);
     } else {
-      if (! [StartAtLoginUtilities isStartAtLogin]) {
+      if (![StartAtLoginUtilities isStartAtLogin]) {
         [StartAtLoginUtilities setStartAtLogin:YES];
         openPreferences = YES;
       }
@@ -299,7 +283,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   }
 
   // ------------------------------------------------------------
-  if (! [serverForUserspace_ register]) {
+  if (![serverForUserspace_ register]) {
     // Relaunch when register is failed.
     NSLog(@"[ServerForUserspace register] is failed. Restarting process.");
     [NSThread sleepForTimeInterval:2];
@@ -377,25 +361,23 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   // ------------------------------------------------------------
   // Open Preferences if Karabiner was launched by hand.
   if (openPreferences &&
-      ! isDescendantProcess) {
+      !isDescendantProcess) {
     [preferencesController_ show];
   }
 }
 
-- (BOOL) applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag
-{
+- (BOOL)applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag {
   [preferencesController_ show];
   return YES;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // ------------------------------------------------------------
-- (void) updateFocusedUIElementInformation:(NSDictionary*)information;
+- (void)updateFocusedUIElementInformation:(NSDictionary*)information;
 {
   @synchronized(self) {
     if (information) {
@@ -406,34 +388,30 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
     }
 
     bridgeworkspacedata_.applicationtype = [workSpaceData_ getApplicationType:focusedUIElementInformation_[@"BundleIdentifier"]];
-    bridgeworkspacedata_.windowname      = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"WindowName"]];
-    bridgeworkspacedata_.uielementrole   = [workSpaceData_ getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]];
+    bridgeworkspacedata_.windowname = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"WindowName"]];
+    bridgeworkspacedata_.uielementrole = [workSpaceData_ getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]];
     [self send_workspacedata_to_kext];
   }
 }
 
-- (NSDictionary*) getFocusedUIElementInformation
-{
+- (NSDictionary*)getFocusedUIElementInformation {
   @synchronized(self) {
     return focusedUIElementInformation_;
   }
 }
 
-- (NSDictionary*) getInputSourceInformation
-{
+- (NSDictionary*)getInputSourceInformation {
   @synchronized(self) {
     return inputSourceInformation_;
   }
 }
 
 // ------------------------------------------------------------
-- (NSString*) AXNotifierPath
-{
+- (NSString*)AXNotifierPath {
   return @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
 }
 
-- (void) launchNewAXNotifier
-{
+- (void)launchNewAXNotifier {
   dispatch_sync(axnotifierManagerQueue_, ^{
     NSString* path = [self AXNotifierPath];
     NSURL* url = [NSURL fileURLWithPath:path];
@@ -447,8 +425,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   });
 }
 
-- (void) terminateAXNotifiers
-{
+- (void)terminateAXNotifiers {
   dispatch_sync(axnotifierManagerQueue_, ^{
     NSString* path = [self AXNotifierPath];
     NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
@@ -459,9 +436,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   });
 }
 
-- (IBAction) restartAXNotifier:(id)sender
-{
-  if (! [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
+- (IBAction)restartAXNotifier:(id)sender {
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
     NSAlert* alert = [NSAlert new];
     [alert setMessageText:@"Karabiner Alert"];
     [alert addButtonWithTitle:@"Close"];
@@ -474,8 +450,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   [self launchNewAXNotifier];
 }
 
-- (IBAction) manageAXNotifier:(id)sender
-{
+- (IBAction)manageAXNotifier:(id)sender {
   [self terminateAXNotifiers];
 
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
@@ -483,29 +458,24 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   }
 }
 
-- (IBAction) launchEventViewer:(id)sender
-{
+- (IBAction)launchEventViewer:(id)sender {
   NSString* path = @"/Applications/Karabiner.app/Contents/Applications/EventViewer.app";
   [[NSWorkspace sharedWorkspace] launchApplication:path];
 }
 
-- (IBAction) launchMultiTouchExtension:(id)sender
-{
+- (IBAction)launchMultiTouchExtension:(id)sender {
   [[NSWorkspace sharedWorkspace] launchApplication:@"/Applications/Karabiner.app/Contents/Applications/Karabiner_multitouchextension.app"];
 }
 
-- (IBAction) launchUninstaller:(id)sender
-{
+- (IBAction)launchUninstaller:(id)sender {
   system("/Applications/Karabiner.app/Contents/Library/extra/launchUninstaller.sh");
 }
 
-- (IBAction) openPreferences:(id)sender
-{
+- (IBAction)openPreferences:(id)sender {
   [preferencesController_ show];
 }
 
-- (IBAction) openPrivateXML:(id)sender
-{
+- (IBAction)openPrivateXML:(id)sender {
   // Open a directory which contains private.xml.
   NSString* path = [XMLCompiler get_private_xml_path];
   if ([path length] > 0) {
@@ -513,8 +483,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator)
   }
 }
 
-- (IBAction) quit:(id)sender
-{
+- (IBAction)quit:(id)sender {
   NSAlert* alert = [NSAlert alertWithMessageText:@"Quit Karabiner?"
                                    defaultButton:@"Quit"
                                  alternateButton:@"Cancel"

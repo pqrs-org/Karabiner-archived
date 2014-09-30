@@ -7,8 +7,7 @@
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
 
-@interface ClientForKernelspace ()
-{
+@interface ClientForKernelspace () {
   io_async_ref64_t asyncref_;
   UserClient_userspace* userClient_userspace_;
 
@@ -19,8 +18,7 @@
 
 @implementation ClientForKernelspace
 
-- (void) callback_NotificationFromKext:(uint32_t)type option:(uint32_t)option
-{
+- (void)callback_NotificationFromKext:(uint32_t)type option:(uint32_t)option {
   dispatch_async(dispatch_get_main_queue(), ^{
     switch (type) {
       case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED:
@@ -88,14 +86,12 @@
   });
 }
 
-static void static_callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option)
-{
+static void static_callback_NotificationFromKext(void* refcon, IOReturn result, uint32_t type, uint32_t option) {
   ClientForKernelspace* self = (__bridge ClientForKernelspace*)(refcon);
   [self callback_NotificationFromKext:type option:option];
 }
 
-- (void) observer_ConfigXMLReloaded:(NSNotification*)notification
-{
+- (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self send_remapclasses_initialize_vector_to_kext];
     [preferencesManager_ clearNotSave];
@@ -104,8 +100,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   });
 }
 
-- (void) observer_ConfigListChanged:(NSNotification*)notification
-{
+- (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [preferencesManager_ clearNotSave];
     [self send_config_to_kext];
@@ -113,8 +108,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   });
 }
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -125,23 +119,23 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigXMLReloaded:)
-                                                 name:kConfigXMLReloadedNotification object:nil];
+                                                 name:kConfigXMLReloadedNotification
+                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigListChanged:)
-                                                 name:kConfigListChangedNotification object:nil];
+                                                 name:kConfigListChangedNotification
+                                               object:nil];
   }
 
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   [timer_ invalidate];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) refresh_connection_with_retry
-{
+- (void)refresh_connection_with_retry {
   @synchronized(self) {
     // [UserClient_userspace connect_to_kext] may fail by kIOReturnExclusiveAccess
     // when connect_to_kext is called in NSWorkspaceSessionDidBecomeActiveNotification.
@@ -162,8 +156,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   }
 }
 
-- (void) timerFireMethod:(NSTimer*)timer
-{
+- (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       if (! [timer isValid]) {
@@ -214,31 +207,28 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   });
 }
 
-- (void) disconnect_from_kext
-{
+- (void)disconnect_from_kext {
   @synchronized(self) {
     [timer_ invalidate];
     [userClient_userspace_ disconnect_from_kext];
   }
 }
 
-- (void) send_remapclasses_initialize_vector_to_kext
-{
+- (void)send_remapclasses_initialize_vector_to_kext {
   const uint32_t* p = [xmlCompiler_ remapclasses_initialize_vector_data];
   size_t size = [xmlCompiler_ remapclasses_initialize_vector_size] * sizeof(uint32_t);
 
   // --------------------
   struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
+  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_REMAPCLASSES_INITIALIZE_VECTOR;
   bridgestruct.option = 0;
-  bridgestruct.data   = (user_addr_t)(p);
-  bridgestruct.size   = size;
+  bridgestruct.data = (user_addr_t)(p);
+  bridgestruct.size = size;
 
   [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
-- (void) send_config_to_kext
-{
+- (void)send_config_to_kext {
   // ------------------------------------------------------------
   // Set notsave.automatically_enable_* before sending config into kext.
   {
@@ -266,17 +256,17 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
   // ------------------------------------------------------------
   NSArray* essential_config = [preferencesManager_ essential_config];
-  if (! essential_config) {
+  if (!essential_config) {
     NSLog(@"[WARNING] essential_config == nil.");
     return;
   }
 
   // ------------------------------------------------------------
   NSUInteger essential_config_count = [essential_config count];
-  NSUInteger remapclasses_count     = [xmlCompiler_ remapclasses_initialize_vector_config_count];
+  NSUInteger remapclasses_count = [xmlCompiler_ remapclasses_initialize_vector_config_count];
   size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
   int32_t* data = (int32_t*)(malloc(size));
-  if (! data) {
+  if (!data) {
     NSLog(@"[WARNING] malloc failed.");
     return;
 
@@ -293,7 +283,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     // remapclasses config
     for (NSUInteger i = 0; i < remapclasses_count; ++i) {
       NSString* name = [xmlCompiler_ identifier:(int)(i)];
-      if (! name) {
+      if (!name) {
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
       } else {
@@ -303,10 +293,10 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
     // --------------------
     struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ALL;
+    bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ALL;
     bridgestruct.option = 0;
-    bridgestruct.data   = (user_addr_t)(data);
-    bridgestruct.size   = size;
+    bridgestruct.data = (user_addr_t)(data);
+    bridgestruct.size = size;
 
     [userClient_userspace_ synchronized_communication:&bridgestruct];
 
@@ -314,62 +304,58 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   }
 }
 
-- (void) set_config_one:(struct BridgeSetConfigOne*)bridgeSetConfigOne
-{
+- (void)set_config_one:(struct BridgeSetConfigOne*)bridgeSetConfigOne {
   struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE;
+  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_CONFIG_ONE;
   bridgestruct.option = 0;
-  bridgestruct.data   = (user_addr_t)(bridgeSetConfigOne);
-  bridgestruct.size   = sizeof(*bridgeSetConfigOne);
+  bridgestruct.data = (user_addr_t)(bridgeSetConfigOne);
+  bridgestruct.size = sizeof(*bridgeSetConfigOne);
 
   [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
-- (void) set_initialized
-{
+- (void)set_initialized {
   uint32_t value = 1;
   struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED;
+  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED;
   bridgestruct.option = 0;
-  bridgestruct.data   = &value;
-  bridgestruct.size   = sizeof(value);
+  bridgestruct.data = &value;
+  bridgestruct.size = sizeof(value);
 
   [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
-- (void) send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata
-{
+- (void)send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata {
   struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
+  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
   bridgestruct.option = 0;
-  bridgestruct.data   = (user_addr_t)(bridgeworkspacedata);
-  bridgestruct.size   = sizeof(*bridgeworkspacedata);
+  bridgestruct.data = (user_addr_t)(bridgeworkspacedata);
+  bridgestruct.size = sizeof(*bridgeworkspacedata);
 
   [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
-- (NSArray*) device_information:(NSInteger)type
-{
+- (NSArray*)device_information:(NSInteger)type {
   NSMutableArray* information = [NSMutableArray new];
 
   for (size_t i = 0;; ++i) {
     struct BridgeDeviceInformation deviceInformation;
 
     struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type   = (uint32_t)(type);
+    bridgestruct.type = (uint32_t)(type);
     bridgestruct.option = (uint32_t)(i);
-    bridgestruct.data   = (user_addr_t)(&deviceInformation);
-    bridgestruct.size   = sizeof(deviceInformation);
+    bridgestruct.data = (user_addr_t)(&deviceInformation);
+    bridgestruct.size = sizeof(deviceInformation);
 
-    if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) break;
+    if (![userClient_userspace_ synchronized_communication:&bridgestruct]) break;
 
-    if (! deviceInformation.isFound) break;
+    if (!deviceInformation.isFound) break;
 
-    NSDictionary* newdict = @{ @"manufacturer": @(deviceInformation.manufacturer),
-                               @"product": @(deviceInformation.product),
-                               @"vendorID": [NSString stringWithFormat:@"0x%04x", deviceInformation.vendorID],
-                               @"productID": [NSString stringWithFormat:@"0x%04x", deviceInformation.productID],
-                               @"locationID": [NSString stringWithFormat:@"0x%04x", deviceInformation.locationID] };
+    NSDictionary* newdict = @{ @"manufacturer" : @(deviceInformation.manufacturer),
+                               @"product" : @(deviceInformation.product),
+                               @"vendorID" : [NSString stringWithFormat:@"0x%04x", deviceInformation.vendorID],
+                               @"productID" : [NSString stringWithFormat:@"0x%04x", deviceInformation.productID],
+                               @"locationID" : [NSString stringWithFormat:@"0x%04x", deviceInformation.locationID] };
 
     // skip if newdict is already exists.
     BOOL found = NO;
@@ -378,7 +364,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
         found = YES;
       }
     }
-    if (! found) {
+    if (!found) {
       [information addObject:newdict];
     }
   }

@@ -4,23 +4,20 @@
 
 @implementation WorkSpaceData
 
-- (unsigned int) getApplicationType:(NSString*)name
-{
-  if (! name) return 0;
+- (unsigned int)getApplicationType:(NSString *)name {
+  if (!name) return 0;
 
   return [xmlCompiler_ appid:name];
 }
 
-- (unsigned int) getWindowName:(NSString*)name
-{
-  if (! name) return 0;
+- (unsigned int)getWindowName:(NSString *)name {
+  if (!name) return 0;
 
   return [xmlCompiler_ windownameid:name];
 }
 
-- (unsigned int) getUIElementRole:(NSString*)name
-{
-  if (! name) return 0;
+- (unsigned int)getUIElementRole:(NSString *)name {
+  if (!name) return 0;
 
   return [xmlCompiler_ uielementroleid:name];
 }

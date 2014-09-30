@@ -3,8 +3,7 @@
 @class PreferencesManager;
 @class XMLCompiler;
 
-@interface PreferencesController : NSObject <NSWindowDelegate, NSTabViewDelegate>
-{
+@interface PreferencesController : NSObject <NSWindowDelegate, NSTabViewDelegate> {
   IBOutlet NSButton* checkbox_showEnabledOnly_;
   IBOutlet NSTabView* tabView_;
   IBOutlet NSTextField* versionText_;
@@ -13,7 +12,7 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-- (void) show;
-- (IBAction) openURL:(id)sender;
+- (void)show;
+- (IBAction)openURL:(id)sender;
 
 @end
