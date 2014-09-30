@@ -3,10 +3,8 @@
 class replacement_loader {
 public:
   replacement_loader(const xml_compiler& xml_compiler,
-                     pqrs::string::replacement& replacement) :
-    xml_compiler_(xml_compiler),
-    replacement_(replacement)
-  {}
+                     pqrs::string::replacement& replacement) : xml_compiler_(xml_compiler),
+                                                               replacement_(replacement) {}
 
   void traverse(const extracted_ptree& pt) const;
 

@@ -25,9 +25,9 @@
 #include "pqrs/string.hpp"
 
 namespace pqrs {
-  class xml_compiler {
-  public:
-    typedef std::shared_ptr<boost::property_tree::ptree> ptree_ptr;
+class xml_compiler {
+public:
+  typedef std::shared_ptr<boost::property_tree::ptree> ptree_ptr;
 #include "pqrs/xml_compiler/detail/exception.hpp"
 #include "pqrs/xml_compiler/detail/error_information.hpp"
 #include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
@@ -47,113 +47,111 @@ namespace pqrs {
 #include "pqrs/xml_compiler/detail/inputsource.hpp"
 #include "pqrs/xml_compiler/detail/url.hpp"
 
-    xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) :
-      system_xml_directory_(system_xml_directory),
-      private_xml_directory_(private_xml_directory)
-    {}
+  xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) : system_xml_directory_(system_xml_directory),
+                                                                                                    private_xml_directory_(private_xml_directory) {}
 
-    void reload(void);
+  void reload(void);
 
-    const remapclasses_initialize_vector& get_remapclasses_initialize_vector(void) const {
-      return remapclasses_initialize_vector_;
+  const remapclasses_initialize_vector& get_remapclasses_initialize_vector(void) const {
+    return remapclasses_initialize_vector_;
+  }
+
+  const error_information& get_error_information(void) const {
+    return error_information_;
+  }
+
+  const symbol_map& get_symbol_map(void) const { return symbol_map_; }
+
+  boost::optional<const std::string&> get_identifier(int config_index) const;
+  boost::optional<int> get_config_index(const std::string& identifier) const;
+  uint32_t get_appid(const std::string& application_identifier) const;
+  uint32_t get_windownameid(const std::string& window_name) const;
+  bool is_vk_change_inputsource_matched(uint32_t keycode,
+                                        const std::string& languagecode,
+                                        const std::string& inputsourceid,
+                                        const std::string& inputmodeid) const;
+  void get_inputsourceid(uint32_t& inputsource,
+                         uint32_t& inputsource_detail,
+                         const std::string& languagecode,
+                         const std::string& inputsourceid,
+                         const std::string& inputmodeid) const;
+  boost::optional<const std::string&> get_url(int keycode) const;
+  boost::optional<const std::string&> get_url_type(int keycode) const;
+
+  boost::optional<const essential_configuration&> get_essential_configuration(size_t index) const {
+    if (index >= essential_configurations_.size()) return boost::none;
+    return *(essential_configurations_[index]);
+  }
+
+  const preferences_node_tree<preferences_checkbox_node>& get_preferences_checkbox_node_tree(void) const {
+    return preferences_checkbox_node_tree_;
+  }
+  const preferences_node_tree<preferences_number_node>& get_preferences_number_node_tree(void) const {
+    return preferences_number_node_tree_;
+  }
+
+  // ----------------------------------------
+  bool debug_get_initialize_vector(std::vector<uint32_t>& out, const std::string& raw_identifier) const;
+
+private:
+  void read_xml_(ptree_ptr& out,
+                 const std::string& file_path,
+                 const pqrs::string::replacement& replacement) const;
+  void read_xml_(ptree_ptr& out,
+                 const std::string& file_path) const {
+    read_xml_(out, file_path, replacement_);
+  }
+
+  std::string make_file_path(const std::string& base_directory, const std::string& path) const {
+    std::string p;
+    if (!boost::starts_with(path, "/")) {
+      p = base_directory + "/" + path;
+    } else {
+      p = path;
     }
+    pqrs::file_path::normalize(p);
+    return p;
+  }
 
-    const error_information& get_error_information(void) const {
-      return error_information_;
-    }
+  extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt,
+                                       const std::string& xml_file_path,
+                                       const pqrs::string::replacement& replacement) const {
+    return extracted_ptree(*this, replacement, pt, xml_file_path);
+  }
 
-    const symbol_map& get_symbol_map(void) const { return symbol_map_; }
+  extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt,
+                                       const std::string& xml_file_path) const {
+    return make_extracted_ptree(pt, xml_file_path, replacement_);
+  }
 
-    boost::optional<const std::string&> get_identifier(int config_index) const;
-    boost::optional<int> get_config_index(const std::string& identifier) const;
-    uint32_t get_appid(const std::string& application_identifier) const;
-    uint32_t get_windownameid(const std::string& window_name) const;
-    bool is_vk_change_inputsource_matched(uint32_t keycode,
-                                          const std::string& languagecode,
-                                          const std::string& inputsourceid,
-                                          const std::string& inputmodeid) const;
-    void get_inputsourceid(uint32_t& inputsource,
-                           uint32_t& inputsource_detail,
-                           const std::string& languagecode,
-                           const std::string& inputsourceid,
-                           const std::string& inputmodeid) const;
-    boost::optional<const std::string&> get_url(int keycode) const;
-    boost::optional<const std::string&> get_url_type(int keycode) const;
+  static void normalize_identifier_(std::string& identifier) {
+    pqrs::string::remove_whitespaces(identifier);
+    boost::replace_all(identifier, ".", "_");
+  }
 
-    boost::optional<const essential_configuration&> get_essential_configuration(size_t index) const {
-      if (index >= essential_configurations_.size()) return boost::none;
-      return *(essential_configurations_[index]);
-    }
+  bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
 
-    const preferences_node_tree<preferences_checkbox_node>& get_preferences_checkbox_node_tree(void) const {
-      return preferences_checkbox_node_tree_;
-    }
-    const preferences_node_tree<preferences_number_node>& get_preferences_number_node_tree(void) const {
-      return preferences_number_node_tree_;
-    }
+  const std::string system_xml_directory_;
+  const std::string private_xml_directory_;
 
-    // ----------------------------------------
-    bool debug_get_initialize_vector(std::vector<uint32_t>& out, const std::string& raw_identifier) const;
+  mutable error_information error_information_;
+  mutable std::string replacement_warnings_;
 
-  private:
-    void read_xml_(ptree_ptr& out,
-                   const std::string& file_path,
-                   const pqrs::string::replacement& replacement) const;
-    void read_xml_(ptree_ptr& out,
-                   const std::string& file_path) const {
-      read_xml_(out, file_path, replacement_);
-    }
+  pqrs::string::replacement replacement_;
+  symbol_map symbol_map_;
+  boost::unordered_map<uint32_t, std::shared_ptr<modifier>> modifier_map_;
+  std::vector<std::shared_ptr<app>> app_vector_;
+  std::vector<std::shared_ptr<window_name>> window_name_vector_;
+  boost::unordered_map<uint32_t, std::shared_ptr<inputsource>> vk_change_inputsource_map_;
+  std::vector<std::shared_ptr<inputsource>> inputsource_vector_;
+  boost::unordered_map<uint32_t, std::shared_ptr<url>> vk_open_url_map_;
+  boost::unordered_map<uint32_t, std::string> identifier_map_;
+  std::vector<std::shared_ptr<essential_configuration>> essential_configurations_;
+  remapclasses_initialize_vector remapclasses_initialize_vector_;
 
-    std::string make_file_path(const std::string& base_directory, const std::string& path) const {
-      std::string p;
-      if (! boost::starts_with(path, "/")) {
-        p = base_directory + "/" + path;
-      } else {
-        p = path;
-      }
-      pqrs::file_path::normalize(p);
-      return p;
-    }
-
-    extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt,
-                                         const std::string& xml_file_path,
-                                         const pqrs::string::replacement& replacement) const {
-      return extracted_ptree(*this, replacement, pt, xml_file_path);
-    }
-
-    extracted_ptree make_extracted_ptree(const boost::property_tree::ptree& pt,
-                                         const std::string& xml_file_path) const {
-      return make_extracted_ptree(pt, xml_file_path, replacement_);
-    }
-
-    static void normalize_identifier_(std::string& identifier) {
-      pqrs::string::remove_whitespaces(identifier);
-      boost::replace_all(identifier, ".", "_");
-    }
-
-    bool valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const;
-
-    const std::string system_xml_directory_;
-    const std::string private_xml_directory_;
-
-    mutable error_information error_information_;
-    mutable std::string replacement_warnings_;
-
-    pqrs::string::replacement replacement_;
-    symbol_map symbol_map_;
-    boost::unordered_map<uint32_t, std::shared_ptr<modifier> > modifier_map_;
-    std::vector<std::shared_ptr<app> > app_vector_;
-    std::vector<std::shared_ptr<window_name> > window_name_vector_;
-    boost::unordered_map<uint32_t, std::shared_ptr<inputsource> > vk_change_inputsource_map_;
-    std::vector<std::shared_ptr<inputsource> > inputsource_vector_;
-    boost::unordered_map<uint32_t, std::shared_ptr<url> > vk_open_url_map_;
-    boost::unordered_map<uint32_t, std::string> identifier_map_;
-    std::vector<std::shared_ptr<essential_configuration> > essential_configurations_;
-    remapclasses_initialize_vector remapclasses_initialize_vector_;
-
-    preferences_node_tree<preferences_checkbox_node> preferences_checkbox_node_tree_;
-    preferences_node_tree<preferences_number_node> preferences_number_node_tree_;
-  };
+  preferences_node_tree<preferences_checkbox_node> preferences_checkbox_node_tree_;
+  preferences_node_tree<preferences_number_node> preferences_number_node_tree_;
+};
 }
 
 #endif

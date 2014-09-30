@@ -51,16 +51,14 @@ public:
   remapclasses_initialize_vector_loader(const xml_compiler& xml_compiler,
                                         symbol_map& symbol_map,
                                         remapclasses_initialize_vector& remapclasses_initialize_vector,
-                                        boost::unordered_map<uint32_t, std::string>& identifier_map) :
-    xml_compiler_(xml_compiler),
-    symbol_map_(symbol_map),
-    remapclasses_initialize_vector_(remapclasses_initialize_vector),
-    identifier_map_(identifier_map),
-    simultaneous_keycode_index_(0),
-    filter_vector_(symbol_map),
-    symbol_map_cache_option_separator_(symbol_map_.get("Option::SEPARATOR")),
-    symbol_map_cache_option_use_separator_(symbol_map_.get("Option::USE_SEPARATOR"))
-  {}
+                                        boost::unordered_map<uint32_t, std::string>& identifier_map) : xml_compiler_(xml_compiler),
+                                                                                                       symbol_map_(symbol_map),
+                                                                                                       remapclasses_initialize_vector_(remapclasses_initialize_vector),
+                                                                                                       identifier_map_(identifier_map),
+                                                                                                       simultaneous_keycode_index_(0),
+                                                                                                       filter_vector_(symbol_map),
+                                                                                                       symbol_map_cache_option_separator_(symbol_map_.get("Option::SEPARATOR")),
+                                                                                                       symbol_map_cache_option_use_separator_(symbol_map_.get("Option::USE_SEPARATOR")) {}
 
   void traverse(const extracted_ptree& pt,
                 const std::string& parent_tag_name);
