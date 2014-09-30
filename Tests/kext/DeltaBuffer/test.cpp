@@ -14,7 +14,7 @@ TEST(DeltaBuffer, push) {
   EXPECT_EQ(-1, deltaBuffer.sum());
 
   // fill buffer
-  EXPECT_TRUE(! deltaBuffer.isFull());
+  EXPECT_TRUE(!deltaBuffer.isFull());
   int sum = 0;
   for (;;) {
     deltaBuffer.push(-1);
@@ -36,10 +36,10 @@ TEST(DeltaBuffer, push) {
   deltaBuffer.push(1);
   sum = 1;
   EXPECT_EQ(sum, deltaBuffer.sum());
-  EXPECT_TRUE(! deltaBuffer.isFull());
+  EXPECT_TRUE(!deltaBuffer.isFull());
 
   // clear
-  while (! deltaBuffer.isFull()) {
+  while (!deltaBuffer.isFull()) {
     deltaBuffer.push(1);
   }
   EXPECT_NE(0, deltaBuffer.sum());
@@ -48,12 +48,11 @@ TEST(DeltaBuffer, push) {
   deltaBuffer.clear();
 
   EXPECT_EQ(0, deltaBuffer.sum());
-  EXPECT_TRUE(! deltaBuffer.isFull());
+  EXPECT_TRUE(!deltaBuffer.isFull());
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

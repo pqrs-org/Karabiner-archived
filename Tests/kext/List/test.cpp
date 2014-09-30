@@ -179,7 +179,7 @@ TEST(List, insert) {
   list.pop_front();
 
   p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
-  p = static_cast<TestItem*>(list.insert(p, new TestItem(2))); // [2,1]
+  p = static_cast<TestItem*>(list.insert(p, new TestItem(2)));    // [2,1]
 
   EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
   EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front()->getnext())->v());
@@ -191,8 +191,8 @@ TEST(List, insert) {
   EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front())->v());
   list.pop_front();
 
-  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
-  p = static_cast<TestItem*>(list.insert(p, new TestItem(2))); // [2,1]
+  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1)));             // [1]
+  p = static_cast<TestItem*>(list.insert(p, new TestItem(2)));                // [2,1]
   p = static_cast<TestItem*>(list.insert(list.safe_back(), new TestItem(3))); // [2,3,1]
 
   EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
@@ -253,8 +253,7 @@ TEST(List, clear) {
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

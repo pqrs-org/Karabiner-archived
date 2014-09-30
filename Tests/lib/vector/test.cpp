@@ -2,8 +2,7 @@
 #include <gtest/gtest.h>
 #include "pqrs/vector.hpp"
 
-TEST(pqrs_vector, remove_empty_strings)
-{
+TEST(pqrs_vector, remove_empty_strings) {
   std::vector<std::string> v;
   v.push_back("");
   v.push_back("A");
@@ -24,8 +23,7 @@ TEST(pqrs_vector, remove_empty_strings)
   EXPECT_EQ(expected, v);
 }
 
-TEST(pqrs_vector, push_back)
-{
+TEST(pqrs_vector, push_back) {
   std::vector<uint32_t> v1;
   v1.push_back(1);
   v1.push_back(2);
@@ -54,10 +52,9 @@ TEST(pqrs_vector, push_back)
   EXPECT_EQ(expected, v1);
 }
 
-TEST(pqrs_vector, make_combination)
-{
-  const char* seeds[] = { "A", "B", "C", "D" };
-  std::vector<std::shared_ptr<std::vector<std::string> > > actual;
+TEST(pqrs_vector, make_combination) {
+  const char* seeds[] = {"A", "B", "C", "D"};
+  std::vector<std::shared_ptr<std::vector<std::string>>> actual;
   pqrs::vector::make_combination(actual, seeds, sizeof(seeds) / sizeof(seeds[0]));
 
   EXPECT_EQ(static_cast<uint32_t>(16), actual.size());
@@ -161,8 +158,7 @@ TEST(pqrs_vector, make_combination)
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

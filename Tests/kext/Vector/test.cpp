@@ -69,7 +69,7 @@ TEST(Vector, push_back) {
     EXPECT_EQ(3, v[i * 2 + 1].vector(3));
   }
 
-  EXPECT_TRUE(! v.empty());
+  EXPECT_TRUE(!v.empty());
 
   EXPECT_TRUE(TestItem::counter > 0);
 }
@@ -113,7 +113,7 @@ TEST(Vector, reserve) {
     EXPECT_EQ(i, v[i * 2 + 1].v());
   }
 
-  EXPECT_TRUE(! v.empty());
+  EXPECT_TRUE(!v.empty());
 }
 
 TEST(Vector, clear) {
@@ -144,12 +144,11 @@ TEST(Vector, is_include) {
   v.push_back(5);
 
   EXPECT_TRUE(v.is_include(4));
-  EXPECT_TRUE(! v.is_include(6));
+  EXPECT_TRUE(!v.is_include(6));
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

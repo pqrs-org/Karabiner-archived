@@ -3,8 +3,7 @@
 #include <boost/lexical_cast.hpp>
 #include "pqrs/string.hpp"
 
-TEST(pqrs_string, string_from_file)
-{
+TEST(pqrs_string, string_from_file) {
   std::string actual;
   int error = 0;
   error = pqrs::string::string_from_file(actual, "data/sample");
@@ -16,8 +15,7 @@ TEST(pqrs_string, string_from_file)
   EXPECT_EQ(-1, error);
 }
 
-TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file)
-{
+TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file) {
   pqrs::string::replacement replacement;
   replacement["AAA"] = "1";
   replacement["BBB"] = "2222";
@@ -47,8 +45,7 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file)
   }
 }
 
-TEST(pqrs_string, string_by_replacing_double_curly_braces_from_string)
-{
+TEST(pqrs_string, string_by_replacing_double_curly_braces_from_string) {
   pqrs::string::replacement replacement;
   replacement["AAA"] = "1";
   replacement["BBB"] = "2222";
@@ -98,8 +95,7 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_string)
   EXPECT_TRUE(replacement_warnings.empty());
 }
 
-TEST(pqrs_string, to_uint32_t)
-{
+TEST(pqrs_string, to_uint32_t) {
   boost::optional<uint32_t> actual;
 
   actual = pqrs::string::to_uint32_t("123456");
@@ -137,8 +133,7 @@ TEST(pqrs_string, to_uint32_t)
   EXPECT_EQ(static_cast<uint32_t>(123), *actual);
 }
 
-TEST(pqrs_string, tokenizer)
-{
+TEST(pqrs_string, tokenizer) {
   {
     std::string string = "A,B,,C";
     pqrs::string::tokenizer tokenizer(string, ',');
@@ -189,16 +184,14 @@ TEST(pqrs_string, tokenizer)
   }
 }
 
-TEST(pqrs_string, remove_whitespaces)
-{
+TEST(pqrs_string, remove_whitespaces) {
   std::string actual = " A B C \r\n \t D ";
   pqrs::string::remove_whitespaces(actual);
   EXPECT_EQ("ABCD", actual);
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
