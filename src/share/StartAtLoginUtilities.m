@@ -2,14 +2,12 @@
 
 @implementation StartAtLoginUtilities
 
-+ (NSURL*) appURL
-{
++ (NSURL*)appURL {
   return [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 }
 
-+ (LSSharedFileListItemRef) getLSSharedFileListItemRef:(LSSharedFileListRef)loginItems appURL:(NSURL*)appURL
-{
-  if (! loginItems) return NULL;
++ (LSSharedFileListItemRef)getLSSharedFileListItemRef:(LSSharedFileListRef)loginItems appURL:(NSURL*)appURL {
+  if (!loginItems) return NULL;
 
   LSSharedFileListItemRef retval = NULL;
 
@@ -40,10 +38,9 @@
   return retval;
 }
 
-+ (void) enableStartAtLogin:(NSURL*)appURL
-{
++ (void)enableStartAtLogin:(NSURL*)appURL {
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-  if (! loginItems) return;
+  if (!loginItems) return;
 
   LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)(appURL), NULL, NULL);
   if (item) {
@@ -52,10 +49,9 @@
   CFRelease(loginItems);
 }
 
-+ (void) disableStartAtLogin:(NSURL*)appURL
-{
++ (void)disableStartAtLogin:(NSURL*)appURL {
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-  if (! loginItems) return;
+  if (!loginItems) return;
 
   LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems appURL:appURL];
   if (item) {
@@ -65,10 +61,9 @@
 }
 
 // ------------------------------------------------------------
-+ (BOOL) isStartAtLogin:(NSURL*)appURL
-{
++ (BOOL)isStartAtLogin:(NSURL*)appURL {
   LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-  if (! loginItems) return NO;
+  if (!loginItems) return NO;
 
   LSSharedFileListItemRef item = [StartAtLoginUtilities getLSSharedFileListItemRef:loginItems appURL:appURL];
   CFRelease(loginItems);
@@ -76,13 +71,11 @@
   return item != NULL;
 }
 
-+ (BOOL) isStartAtLogin
-{
++ (BOOL)isStartAtLogin {
   return [StartAtLoginUtilities isStartAtLogin:[StartAtLoginUtilities appURL]];
 }
 
-+ (void) setStartAtLogin:(BOOL)newvalue appURL:(NSURL*)appURL
-{
++ (void)setStartAtLogin:(BOOL)newvalue appURL:(NSURL*)appURL {
   if ([StartAtLoginUtilities isStartAtLogin:appURL] == newvalue) return;
 
   if (newvalue) {
@@ -92,8 +85,7 @@
   }
 }
 
-+ (void) setStartAtLogin:(BOOL)newvalue
-{
++ (void)setStartAtLogin:(BOOL)newvalue {
   [StartAtLoginUtilities setStartAtLogin:newvalue appURL:[StartAtLoginUtilities appURL]];
 }
 

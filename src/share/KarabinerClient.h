@@ -7,6 +7,6 @@
   id proxy_;
 }
 
-- (id<KarabinerProtocol>) proxy;
+- (id<KarabinerProtocol>)proxy;
 
 @end

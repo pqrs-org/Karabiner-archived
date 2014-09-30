@@ -3,10 +3,9 @@
 
 @implementation KarabinerClient
 
-- (id<KarabinerProtocol>) proxy
-{
+- (id<KarabinerProtocol>)proxy {
   @synchronized(self) {
-    if (! proxy_) {
+    if (!proxy_) {
       proxy_ = [NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil];
       [proxy_ setProtocolForProxy:@protocol(KarabinerProtocol)];
     }
@@ -14,8 +13,7 @@
   }
 }
 
-- (void) observer_NSConnectionDidDieNotification:(NSNotification*)notification
-{
+- (void)observer_NSConnectionDidDieNotification:(NSNotification *)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       NSLog(@"observer_NSConnectionDidDieNotification is called");
@@ -24,8 +22,7 @@
   });
 }
 
-- (id) init
-{
+- (id)init {
   self = [super init];
 
   if (self) {
@@ -38,8 +35,7 @@
   return self;
 }
 
-- (void) dealloc
-{
+- (void)dealloc {
   // Call removeObserver first because observer may refresh connection.
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

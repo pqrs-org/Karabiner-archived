@@ -6,4 +6,4 @@
 
 // ------------------------------------------------------------
 // NSConnection
-#define kKarabinerConnectionName                 @"org.pqrs.Karabiner.server"
+#define kKarabinerConnectionName @"org.pqrs.Karabiner.server"

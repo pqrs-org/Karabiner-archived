@@ -4,8 +4,8 @@
 
 @interface Relauncher : NSObject
 
-+ (void) resetRelaunchedCount;
-+ (void) relaunch;
-+ (BOOL) isEqualPreviousProcessVersionAndCurrentProcessVersion;
++ (void)resetRelaunchedCount;
++ (void)relaunch;
++ (BOOL)isEqualPreviousProcessVersionAndCurrentProcessVersion;
 
 @end

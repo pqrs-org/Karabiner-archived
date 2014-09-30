@@ -3,30 +3,30 @@
 #import <Cocoa/Cocoa.h>
 
 @protocol KarabinerProtocol
-- (int) value:(NSString*)name;
-- (int) defaultValue:(NSString*)name;
-- (void) setValue:(int)newval forName:(NSString*)name;
+- (int)value:(NSString *)name;
+- (int)defaultValue:(NSString *)name;
+- (void)setValue:(int)newval forName:(NSString *)name;
 
-- (NSDictionary*) changed;
+- (NSDictionary *)changed;
 
-- (NSInteger)     configlist_selectedIndex;
-- (NSArray*)      configlist_getConfigList;
-- (void)          configlist_select:(NSInteger)newindex;
-- (void)          configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
-- (void)          configlist_append;
-- (void)          configlist_delete:(NSInteger)rowIndex;
+- (NSInteger)configlist_selectedIndex;
+- (NSArray *)configlist_getConfigList;
+- (void)configlist_select:(NSInteger)newindex;
+- (void)configlist_setName:(NSInteger)rowIndex name:(NSString *)name;
+- (void)configlist_append;
+- (void)configlist_delete:(NSInteger)rowIndex;
 
-- (void) configxml_reload;
-- (NSString*) symbolMapName:(NSString*)type value:(NSInteger)value;
+- (void)configxml_reload;
+- (NSString *)symbolMapName:(NSString *)type value:(NSInteger)value;
 
-- (void) relaunch;
+- (void)relaunch;
 
 // for AXNotifier
-- (void) updateFocusedUIElementInformation:(NSDictionary*)information;
+- (void)updateFocusedUIElementInformation:(NSDictionary *)information;
 
 // For EventViewer.
-- (NSArray*) device_information:(NSInteger)type;
-- (NSDictionary*) focused_uielement_information;
-- (NSDictionary*) inputsource_information;
+- (NSArray *)device_information:(NSInteger)type;
+- (NSDictionary *)focused_uielement_information;
+- (NSDictionary *)inputsource_information;
 
 @end

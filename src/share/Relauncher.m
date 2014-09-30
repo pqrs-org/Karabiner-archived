@@ -3,10 +3,9 @@
 
 @implementation Relauncher
 
-+ (NSString*) getEnvironmentKey
-{
++ (NSString*)getEnvironmentKey {
   NSString* bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-  if (! bundleIdentifier) {
+  if (!bundleIdentifier) {
     return @"Relauncher_unknownBundleIdentifier";
   }
 
@@ -26,56 +25,48 @@
   return result;
 }
 
-+ (NSString*) getRelaunchedCountEnvironmentKey
-{
++ (NSString*)getRelaunchedCountEnvironmentKey {
   return [NSString stringWithFormat:@"%@_RC", [Relauncher getEnvironmentKey]];
 }
 
-+ (NSString*) getPreviousProcessVersionEnvironmentKey
-{
++ (NSString*)getPreviousProcessVersionEnvironmentKey {
   return [NSString stringWithFormat:@"%@_PPV", [Relauncher getEnvironmentKey]];
 }
 
 // ------------------------------------------------------------
-+ (void) setRelaunchedCount:(int)newvalue
-{
++ (void)setRelaunchedCount:(int)newvalue {
   const char* key = [[Relauncher getRelaunchedCountEnvironmentKey] UTF8String];
   setenv(key,
          [[NSString stringWithFormat:@"%d", newvalue] UTF8String],
          1);
 }
 
-+ (NSInteger) getRelaunchedCount
-{
++ (NSInteger)getRelaunchedCount {
   NSString* key = [Relauncher getRelaunchedCountEnvironmentKey];
   return [[[NSProcessInfo processInfo] environment][key] integerValue];
 }
 
-+ (void) resetRelaunchedCount
-{
++ (void)resetRelaunchedCount {
   [self setRelaunchedCount:0];
 }
 
 // ------------------------------------------------------------
-+ (NSString*) currentProcessVersion
-{
++ (NSString*)currentProcessVersion {
   return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
 }
 
-+ (void) setPreviousProcessVersion
-{
++ (void)setPreviousProcessVersion {
   const char* key = [[Relauncher getPreviousProcessVersionEnvironmentKey] UTF8String];
   setenv(key,
          [[self currentProcessVersion] UTF8String],
          1);
 }
 
-+ (BOOL) isEqualPreviousProcessVersionAndCurrentProcessVersion
-{
++ (BOOL)isEqualPreviousProcessVersionAndCurrentProcessVersion {
   NSString* key = [Relauncher getPreviousProcessVersionEnvironmentKey];
 
   NSString* previous = [[NSProcessInfo processInfo] environment][key];
-  if (! previous) return NO;
+  if (!previous) return NO;
 
   NSString* current = [self currentProcessVersion];
 
@@ -83,8 +74,7 @@
 }
 
 // ------------------------------------------------------------
-+ (void) relaunch
-{
++ (void)relaunch {
   const int RETRY_COUNT = 5;
 
   NSInteger count = [self getRelaunchedCount];

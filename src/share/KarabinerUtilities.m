@@ -2,8 +2,7 @@
 
 @implementation KarabinerUtilities
 
-+ (NSString*) bundleIdentifier:(NSRunningApplication*)runningApplication
-{
++ (NSString*)bundleIdentifier:(NSRunningApplication*)runningApplication {
   NSString* bundleIdentifier = [runningApplication bundleIdentifier];
   if (bundleIdentifier) {
     return bundleIdentifier;
