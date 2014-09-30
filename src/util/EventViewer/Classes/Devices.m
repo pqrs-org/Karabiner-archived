@@ -53,7 +53,13 @@
   NSMutableString* string = [NSMutableString new];
 
   for (NSDictionary* dict in devices_) {
-    [string appendFormat:@"%@\n    %@ (%@)\n    Vendor ID:%@\n    Product ID:%@\n    Location ID:%@\n\n",
+    [string appendFormat:@"%@\n"
+                         @"    %@ (%@)\n"
+                         @"\n"
+                         @"    DeviceVendor::RawValue::%@,\n"
+                         @"    DeviceProduct::RawValue::%@,\n"
+                         @"\n"
+                         @"    DeviceLocation::RawValue::%@,\n\n",
                          dict[@"deviceType"],
                          dict[@"product"],
                          dict[@"manufacturer"],
