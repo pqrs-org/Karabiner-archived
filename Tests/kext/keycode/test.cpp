@@ -130,32 +130,32 @@ TEST(Flags, isOn) {
 }
 
 namespace {
-  KeyCode keypads[][2] = {
-    { KeyCode::KEYPAD_0, KeyCode::M },
-    { KeyCode::KEYPAD_1, KeyCode::J },
-    { KeyCode::KEYPAD_2, KeyCode::K },
-    { KeyCode::KEYPAD_3, KeyCode::L },
-    { KeyCode::KEYPAD_4, KeyCode::U },
-    { KeyCode::KEYPAD_5, KeyCode::I },
-    { KeyCode::KEYPAD_6, KeyCode::O },
-    { KeyCode::KEYPAD_7, KeyCode::KEY_7 },
-    { KeyCode::KEYPAD_8, KeyCode::KEY_8 },
-    { KeyCode::KEYPAD_9, KeyCode::KEY_9 },
-    { KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6 },
-    { KeyCode::KEYPAD_PLUS, KeyCode::SLASH },
-    { KeyCode::KEYPAD_MINUS, KeyCode::SEMICOLON },
-    { KeyCode::KEYPAD_MULTIPLY, KeyCode::P },
-    { KeyCode::KEYPAD_SLASH, KeyCode::KEY_0 },
-    { KeyCode::KEYPAD_EQUAL, KeyCode::MINUS },
-    { KeyCode::KEYPAD_DOT, KeyCode::DOT },
-  };
+KeyCode keypads[][2] = {
+    {KeyCode::KEYPAD_0, KeyCode::M},
+    {KeyCode::KEYPAD_1, KeyCode::J},
+    {KeyCode::KEYPAD_2, KeyCode::K},
+    {KeyCode::KEYPAD_3, KeyCode::L},
+    {KeyCode::KEYPAD_4, KeyCode::U},
+    {KeyCode::KEYPAD_5, KeyCode::I},
+    {KeyCode::KEYPAD_6, KeyCode::O},
+    {KeyCode::KEYPAD_7, KeyCode::KEY_7},
+    {KeyCode::KEYPAD_8, KeyCode::KEY_8},
+    {KeyCode::KEYPAD_9, KeyCode::KEY_9},
+    {KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6},
+    {KeyCode::KEYPAD_PLUS, KeyCode::SLASH},
+    {KeyCode::KEYPAD_MINUS, KeyCode::SEMICOLON},
+    {KeyCode::KEYPAD_MULTIPLY, KeyCode::P},
+    {KeyCode::KEYPAD_SLASH, KeyCode::KEY_0},
+    {KeyCode::KEYPAD_EQUAL, KeyCode::MINUS},
+    {KeyCode::KEYPAD_DOT, KeyCode::DOT},
+};
 
-  KeyCode cursors[][2] = {
-    { KeyCode::PAGEUP, KeyCode::CURSOR_UP },
-    { KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN },
-    { KeyCode::HOME, KeyCode::CURSOR_LEFT },
-    { KeyCode::END, KeyCode::CURSOR_RIGHT },
-  };
+KeyCode cursors[][2] = {
+    {KeyCode::PAGEUP, KeyCode::CURSOR_UP},
+    {KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN},
+    {KeyCode::HOME, KeyCode::CURSOR_LEFT},
+    {KeyCode::END, KeyCode::CURSOR_RIGHT},
+};
 }
 
 TEST(KeyCode, op) {
@@ -182,11 +182,11 @@ TEST(KeyCode, normalizeKey) {
 
   // ENTER_POWERBOOK (without FN) -> ENTER
   vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, Flags(ModifierFlag::SHIFT_L),
-                              KeyCode::ENTER,           Flags(ModifierFlag::SHIFT_L), KeyboardType::POWERBOOK));
+                              KeyCode::ENTER, Flags(ModifierFlag::SHIFT_L), KeyboardType::POWERBOOK));
 
   // ENTER_POWERBOOK(+FN) -> ENTER(+FN) -> RETURN
   vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L | ModifierFlag::FN,
-                              KeyCode::RETURN,          ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::POWERBOOK));
+                              KeyCode::RETURN, ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::POWERBOOK));
 
   // ----------------------------------------
   // normal key (without FN)
@@ -234,12 +234,12 @@ TEST(KeyCode, normalizeKey) {
   }
 
   // ENTER(+FN) -> RETURN+FN
-  vec.push_back(NormalizeItem(KeyCode::ENTER,  ModifierFlag::SHIFT_L | ModifierFlag::FN,
+  vec.push_back(NormalizeItem(KeyCode::ENTER, ModifierFlag::SHIFT_L | ModifierFlag::FN,
                               KeyCode::RETURN, ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
 
   // FORWARD_DELETE(+FN) -> DELETE+FN
   vec.push_back(NormalizeItem(KeyCode::FORWARD_DELETE, ModifierFlag::SHIFT_L | ModifierFlag::FN,
-                              KeyCode::DELETE,         ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
+                              KeyCode::DELETE, ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
 
   // ----------------------------------------
   for (std::vector<NormalizeItem>::iterator it = vec.begin(); it != vec.end(); ++it) {
@@ -500,20 +500,20 @@ TEST(KeyCode, isModifier) {
 }
 
 TEST(ConsumerKeyCode, isRepeatable) {
-  EXPECT_EQ(true,  ConsumerKeyCode::BRIGHTNESS_DOWN.isRepeatable());
-  EXPECT_EQ(true,  ConsumerKeyCode::BRIGHTNESS_UP.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::BRIGHTNESS_DOWN.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::BRIGHTNESS_UP.isRepeatable());
 
   EXPECT_EQ(false, ConsumerKeyCode::KEYBOARDLIGHT_OFF.isRepeatable());
-  EXPECT_EQ(true,  ConsumerKeyCode::KEYBOARDLIGHT_LOW.isRepeatable());
-  EXPECT_EQ(true,  ConsumerKeyCode::KEYBOARDLIGHT_HIGH.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::KEYBOARDLIGHT_LOW.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::KEYBOARDLIGHT_HIGH.isRepeatable());
 
-  EXPECT_EQ(true,  ConsumerKeyCode::MUSIC_PREV.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::MUSIC_PREV.isRepeatable());
   EXPECT_EQ(false, ConsumerKeyCode::MUSIC_PLAY.isRepeatable());
-  EXPECT_EQ(true,  ConsumerKeyCode::MUSIC_NEXT.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::MUSIC_NEXT.isRepeatable());
 
   EXPECT_EQ(false, ConsumerKeyCode::VOLUME_MUTE.isRepeatable());
-  EXPECT_EQ(true,  ConsumerKeyCode::VOLUME_DOWN.isRepeatable());
-  EXPECT_EQ(true,  ConsumerKeyCode::VOLUME_UP.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::VOLUME_DOWN.isRepeatable());
+  EXPECT_EQ(true, ConsumerKeyCode::VOLUME_UP.isRepeatable());
 
   EXPECT_EQ(false, ConsumerKeyCode::EJECT.isRepeatable());
   EXPECT_EQ(false, ConsumerKeyCode::POWER.isRepeatable());
@@ -598,32 +598,31 @@ TEST(ScrollWheel, getScrollWheelFromDelta) {
 }
 
 TEST(PointingRelative, getPointingRelativeFromDelta) {
-  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(0, 0));
+  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(0, 0));
 
-  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(0, -10));
-  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(0, 10));
-  EXPECT_EQ(PointingRelative::LEFT,  PointingRelative::getPointingRelativeFromDelta(-10, 0));
+  EXPECT_EQ(PointingRelative::UP, PointingRelative::getPointingRelativeFromDelta(0, -10));
+  EXPECT_EQ(PointingRelative::DOWN, PointingRelative::getPointingRelativeFromDelta(0, 10));
+  EXPECT_EQ(PointingRelative::LEFT, PointingRelative::getPointingRelativeFromDelta(-10, 0));
   EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(10, 0));
 
-  EXPECT_EQ(PointingRelative::UP,    PointingRelative::getPointingRelativeFromDelta(3, -10));
-  EXPECT_EQ(PointingRelative::DOWN,  PointingRelative::getPointingRelativeFromDelta(3, 10));
-  EXPECT_EQ(PointingRelative::LEFT,  PointingRelative::getPointingRelativeFromDelta(-10, 3));
+  EXPECT_EQ(PointingRelative::UP, PointingRelative::getPointingRelativeFromDelta(3, -10));
+  EXPECT_EQ(PointingRelative::DOWN, PointingRelative::getPointingRelativeFromDelta(3, 10));
+  EXPECT_EQ(PointingRelative::LEFT, PointingRelative::getPointingRelativeFromDelta(-10, 3));
   EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(10, 3));
 
   // diagonal direction
-  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(10, -10));
-  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(-10, 10));
+  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(10, -10));
+  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(-10, 10));
 
-  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(10, 8));
-  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(8, 10));
+  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(10, 8));
+  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(8, 10));
 
-  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(10, 6));
-  EXPECT_EQ(PointingRelative::NONE,  PointingRelative::getPointingRelativeFromDelta(6, 10));
+  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(10, 6));
+  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(6, 10));
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

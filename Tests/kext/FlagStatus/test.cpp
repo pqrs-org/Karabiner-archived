@@ -662,18 +662,17 @@ TEST(FlagStatus, subtract) {
   flagStatus1.subtract(flagStatus2, v);
   EXPECT_EQ(3, v.size());
   EXPECT_EQ(ModifierFlag::OPTION_L, v[0]);
-  EXPECT_EQ(ModifierFlag::SHIFT_L,  v[1]);
-  EXPECT_EQ(ModifierFlag::SHIFT_L,  v[2]);
+  EXPECT_EQ(ModifierFlag::SHIFT_L, v[1]);
+  EXPECT_EQ(ModifierFlag::SHIFT_L, v[2]);
 
   flagStatus2.subtract(flagStatus1, v);
   EXPECT_EQ(2, v.size());
   EXPECT_EQ(ModifierFlag::COMMAND_R, v[0]);
-  EXPECT_EQ(ModifierFlag::FN,        v[1]);
+  EXPECT_EQ(ModifierFlag::FN, v[1]);
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

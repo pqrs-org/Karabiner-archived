@@ -4,8 +4,7 @@
 #include "pqrs/xml_compiler.hpp"
 #include "bridge.h"
 
-TEST(pqrs_xml_compiler, reload)
-{
+TEST(pqrs_xml_compiler, reload) {
   pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");
   xml_compiler.reload();
   EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
@@ -404,8 +403,7 @@ TEST(pqrs_xml_compiler, reload)
   }
 }
 
-TEST(pqrs_xml_compiler, reload_bindings_clang)
-{
+TEST(pqrs_xml_compiler, reload_bindings_clang) {
   pqrs_xml_compiler* p = NULL;
   EXPECT_EQ(0, pqrs_xml_compiler_initialize(&p, "data/system_xml", "data/private_xml"));
   pqrs_xml_compiler_reload(p);
@@ -441,8 +439,7 @@ TEST(pqrs_xml_compiler, reload_bindings_clang)
   pqrs_xml_compiler_terminate(&p);
 }
 
-TEST(pqrs_xml_compiler, reload_invalid_xml)
-{
+TEST(pqrs_xml_compiler, reload_invalid_xml) {
   // ------------------------------------------------------------
   // invalid XML format
   {
@@ -556,51 +553,51 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
 
       // ------------------------------------------------------------
       // <autogen>__KeyToKey__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>
-      expected.push_back(9);      // count
+      expected.push_back(9); // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(49);     // KeyCode::SPACE
+      expected.push_back(49); // KeyCode::SPACE
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(2); // ModifierFlag::SHIFT_L
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(48);     // KeyCode::TAB
+      expected.push_back(48); // KeyCode::TAB
 
-      expected.push_back(9);      // count
+      expected.push_back(9); // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(49);     // KeyCode::SPACE
+      expected.push_back(49); // KeyCode::SPACE
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(3); // ModifierFlag::SHIFT_R
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(48);     // KeyCode::TAB
+      expected.push_back(48); // KeyCode::TAB
 
       // ------------------------------------------------------------
       // <autogen>--KeyToKey-- KeyCode::TAB, VK_SHIFT, KeyCode::SPACE</autogen>
-      expected.push_back(9);      // count
+      expected.push_back(9); // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(48);     // KeyCode::TAB
+      expected.push_back(48); // KeyCode::TAB
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(2); // ModifierFlag::SHIFT_L
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(49);     // KeyCode::SPACE
+      expected.push_back(49); // KeyCode::SPACE
 
-      expected.push_back(9);      // count
+      expected.push_back(9); // count
       expected.push_back(BRIDGE_REMAPTYPE_KEYTOKEY);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(48);     // KeyCode::TAB
+      expected.push_back(48); // KeyCode::TAB
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAG);
       expected.push_back(3); // ModifierFlag::SHIFT_R
       expected.push_back(BRIDGE_DATATYPE_MODIFIERFLAGS_END);
       expected.push_back(1);
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
-      expected.push_back(49);     // KeyCode::SPACE
+      expected.push_back(49); // KeyCode::SPACE
 
       EXPECT_EQ(expected, actual);
     }
@@ -881,8 +878,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml)
   }
 }
 
-TEST(pqrs_xml_compiler_symbol_map, add)
-{
+TEST(pqrs_xml_compiler_symbol_map, add) {
   pqrs::xml_compiler::symbol_map s;
   s.add("KeyCode", "SPACE", 36);
   s.add("KeyCode", "VK__AUTOINDEX__BEGIN__", 1024);
@@ -893,14 +889,12 @@ TEST(pqrs_xml_compiler_symbol_map, add)
   EXPECT_EQ(static_cast<uint32_t>(1025), s.get("KeyCode::VK_NEW2"));
 }
 
-TEST(pqrs_xml_compiler_remapclasses_initialize_vector, get)
-{
+TEST(pqrs_xml_compiler_remapclasses_initialize_vector, get) {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
   EXPECT_EQ(1, v.get().size());
 }
 
-TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
-{
+TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add) {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
   v.clear();
   v.start(1, "remap.empty");
@@ -935,8 +929,7 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add)
   EXPECT_EQ(expected, v.get());
 }
 
-TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial)
-{
+TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial) {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
   v.clear();
   v.start(1, "remap.empty");
@@ -978,8 +971,7 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial)
   EXPECT_EQ(expected, v.get());
 }
 
-TEST(pqrs_xml_compiler_filter_vector, filter_vector)
-{
+TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
   pqrs::xml_compiler::symbol_map s;
   s.add("ApplicationType", "APP1", 1);
   s.add("ApplicationType", "APP2", 2);
@@ -1277,8 +1269,7 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector)
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

@@ -2,8 +2,7 @@
 #include <gtest/gtest.h>
 #include "pqrs/file_path.hpp"
 
-TEST(pqrs_file_path, dirname)
-{
+TEST(pqrs_file_path, dirname) {
   EXPECT_EQ("/usr/bin", pqrs::file_path::dirname("/usr/bin/ls"));
   EXPECT_EQ("/usr/bin", pqrs::file_path::dirname("/usr/bin/ls/"));
   EXPECT_EQ("/usr/bin", pqrs::file_path::dirname("/usr/bin/l"));
@@ -17,8 +16,7 @@ TEST(pqrs_file_path, dirname)
   EXPECT_EQ(".", pqrs::file_path::dirname(""));
 }
 
-TEST(pqrs_file_path, normalize)
-{
+TEST(pqrs_file_path, normalize) {
   std::string file_path;
 
   file_path = "";
@@ -123,8 +121,7 @@ TEST(pqrs_file_path, normalize)
 }
 
 int
-main(int argc, char** argv)
-{
+main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
