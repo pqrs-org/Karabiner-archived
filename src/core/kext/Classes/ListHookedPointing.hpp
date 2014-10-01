@@ -7,9 +7,9 @@
 #include "Params.hpp"
 
 namespace org_pqrs_Karabiner {
-class ListHookedPointing : public ListHookedDevice {
+class ListHookedPointing final : public ListHookedDevice {
 public:
-  class Item : public ListHookedDevice::Item {
+  class Item final : public ListHookedDevice::Item {
   public:
     Item(IOHIDevice* d);
     ~Item(void);

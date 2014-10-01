@@ -6,9 +6,9 @@
 #include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_Karabiner {
-class ModifierName {
+class ModifierName final {
 public:
-  class Item {
+  class Item final {
   public:
     Item(void) {
       name_[0] = '\0';

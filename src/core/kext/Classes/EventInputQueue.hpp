@@ -14,7 +14,7 @@ class SimultaneousButtonPresses;
 class SimultaneousKeyPresses;
 }
 
-class EventInputQueue {
+class EventInputQueue final {
   friend class RemapFunc::SimultaneousButtonPresses;
   friend class RemapFunc::SimultaneousKeyPresses;
 

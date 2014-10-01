@@ -6,7 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 // store EventOutput::FireKey results
-class PressDownKeys {
+class PressDownKeys final {
 public:
   static void initialize(void);
   static void terminate(void);
@@ -15,7 +15,7 @@ public:
   static void clear(void);
 
 private:
-  class Item : public List::Item {
+  class Item final : public List::Item {
   public:
     Item(KeyCode k, KeyboardType kt) : key(k), keyboardType(kt) {}
     virtual ~Item(void) {}

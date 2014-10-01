@@ -5,7 +5,7 @@
 #include "bridge.h"
 
 namespace org_pqrs_Karabiner {
-class FlagStatus {
+class FlagStatus final {
 public:
   class Item {
     friend class FlagStatus;

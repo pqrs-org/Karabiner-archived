@@ -34,7 +34,7 @@ public:
 };
 
 // =================================================
-class Params_KeyboardEventCallBack : public Params_Base {
+class Params_KeyboardEventCallBack final : public Params_Base {
   friend class EventOutputQueue;
 
 public:
@@ -80,7 +80,7 @@ public:
   const bool ex_iskeydown;
 };
 
-class Params_UpdateEventFlagsCallback : public Params_Base {
+class Params_UpdateEventFlagsCallback final : public Params_Base {
   friend class EventOutputQueue;
 
 public:
@@ -100,7 +100,7 @@ public:
   const Flags flags;
 };
 
-class Params_KeyboardSpecialEventCallback : public Params_Base {
+class Params_KeyboardSpecialEventCallback final : public Params_Base {
   friend class EventOutputQueue;
 
 public:
@@ -140,7 +140,7 @@ public:
   const bool ex_iskeydown;
 };
 
-class Params_RelativePointerEventCallback : public Params_Base {
+class Params_RelativePointerEventCallback final : public Params_Base {
   friend class EventOutputQueue;
 
 public:
@@ -177,7 +177,7 @@ public:
   const bool ex_isbuttondown;
 };
 
-class Params_ScrollWheelEventCallback : public Params_Base {
+class Params_ScrollWheelEventCallback final : public Params_Base {
   friend class EventOutputQueue;
 
 public:
@@ -226,7 +226,7 @@ public:
 
 // This params is virtual parameter for EventOutputQueue.
 // Hardware does not send this event.
-class Params_Wait : public Params_Base {
+class Params_Wait final : public Params_Base {
   friend class EventOutputQueue;
 
 public:
@@ -240,7 +240,7 @@ public:
 };
 
 // =================================================
-class Params_Factory {
+class Params_Factory final {
 public:
   static Params_Base* copy(const Params_Base& params) {
     {

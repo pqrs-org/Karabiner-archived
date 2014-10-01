@@ -5,7 +5,7 @@ namespace org_pqrs_Karabiner {
 // DeltaBuffer stores dx and dy of RelativePointerEvent in the short term
 // in order to calculate an average of pointer movement.
 
-class DeltaBuffer {
+class DeltaBuffer final {
 public:
   DeltaBuffer(void) {
     clear();

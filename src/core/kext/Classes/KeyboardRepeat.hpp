@@ -8,7 +8,7 @@
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
-class KeyboardRepeat {
+class KeyboardRepeat final {
 public:
   enum {
     // getID() will return [0 .. MAX_KEYBOARDREPEATID] (including edge).

@@ -11,7 +11,7 @@
 #include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
-class EventOutputQueue {
+class EventOutputQueue final {
   friend class PressDownKeys;
 
 public:

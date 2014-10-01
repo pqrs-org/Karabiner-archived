@@ -7,7 +7,7 @@
 namespace org_pqrs_Karabiner {
 class Params_Base;
 
-class LastPressedPhysicalKey {
+class LastPressedPhysicalKey final {
 public:
   LastPressedPhysicalKey(void) : datatype_(BRIDGE_DATATYPE_NONE),
                                  value_(0) {}
