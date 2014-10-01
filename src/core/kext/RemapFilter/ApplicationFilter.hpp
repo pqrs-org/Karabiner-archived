@@ -17,7 +17,7 @@ public:
   }
 
   bool
-  isblocked(void) {
+  isblocked(void) override {
     unsigned int current = CommonData::getcurrent_workspacedata().applicationtype;
 
     if (get_type() == BRIDGE_FILTERTYPE_APPLICATION_NOT ||

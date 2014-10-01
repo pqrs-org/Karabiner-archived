@@ -23,7 +23,7 @@ public:
   }
 
   bool
-  isblocked(void) {
+  isblocked(void) override {
     if (get_type() == BRIDGE_FILTERTYPE_DEVICE_NOT ||
         get_type() == BRIDGE_FILTERTYPE_DEVICE_ONLY) {
 

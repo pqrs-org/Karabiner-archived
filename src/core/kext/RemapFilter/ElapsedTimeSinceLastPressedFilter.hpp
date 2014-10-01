@@ -21,7 +21,7 @@ public:
   }
 
   bool
-  isblocked(void) {
+  isblocked(void) override {
     const LastPressedPhysicalKey& current = CommonData::getcurrent_lastpressedphysicalkey();
     if (current.get_datatype() == BRIDGE_DATATYPE_NONE) return false;
 
