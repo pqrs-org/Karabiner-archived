@@ -10,7 +10,7 @@
 #include <boost/unordered_map.hpp>
 
 namespace pqrs {
-class string {
+class string final {
 public:
   static int string_from_file(std::string& out, const char* filename);
 
