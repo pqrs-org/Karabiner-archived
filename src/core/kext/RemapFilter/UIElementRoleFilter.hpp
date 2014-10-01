@@ -17,7 +17,7 @@ public:
   }
 
   bool
-  isblocked(void) {
+  isblocked(void) override {
     if (get_type() == BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT ||
         get_type() == BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY) {
 
