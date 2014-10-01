@@ -53,12 +53,12 @@ public:
 
   ~Params_KeyboardEventCallBack(void) {}
 
-  const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const { return this; }
-  bool iskeydown(bool& output) const {
+  const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const override { return this; }
+  bool iskeydown(bool& output) const override {
     output = ex_iskeydown;
     return true;
   }
-  bool isModifier(void) const { return key.isModifier(); }
+  bool isModifier(void) const override { return key.isModifier(); }
 
   // ----------------------------------------
   static void log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat) {
@@ -88,7 +88,7 @@ public:
 
   ~Params_UpdateEventFlagsCallback(void) {}
 
-  const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const { return this; }
+  const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const override { return this; }
 
   // ----------------------------------------
   static void log(bool isCaught, Flags flags) {
@@ -117,8 +117,8 @@ public:
 
   ~Params_KeyboardSpecialEventCallback(void) {}
 
-  const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const { return this; }
-  bool iskeydown(bool& output) const {
+  const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const override { return this; }
+  bool iskeydown(bool& output) const override {
     output = ex_iskeydown;
     return true;
   }
@@ -150,8 +150,8 @@ public:
 
   ~Params_RelativePointerEventCallback(void) {}
 
-  const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return this; }
-  bool iskeydown(bool& output) const {
+  const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const override { return this; }
+  bool iskeydown(bool& output) const override {
     if (ex_button == PointingButton::NONE) return false;
 
     output = ex_isbuttondown;
@@ -191,7 +191,7 @@ public:
 
   ~Params_ScrollWheelEventCallback(void) {}
 
-  const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const { return this; }
+  const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const override { return this; }
 
   static void log(bool isCaught,
                   short deltaAxis1,
@@ -234,7 +234,7 @@ public:
 
   ~Params_Wait(void) {}
 
-  const Params_Wait* get_Params_Wait(void) const { return this; }
+  const Params_Wait* get_Params_Wait(void) const override { return this; }
 
   const int milliseconds;
 };
