@@ -6,7 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
-class ApplicationFilter : public RemapFilterBase {
+class ApplicationFilter final : public RemapFilterBase {
 public:
   ApplicationFilter(unsigned int type, const unsigned int* vec, size_t length) : RemapFilterBase(type) {
     targets_.reserve(length);

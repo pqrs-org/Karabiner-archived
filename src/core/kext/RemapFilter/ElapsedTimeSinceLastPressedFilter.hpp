@@ -6,7 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
-class ElapsedTimeSinceLastPressedFilter : public RemapFilterBase {
+class ElapsedTimeSinceLastPressedFilter final : public RemapFilterBase {
 public:
   ElapsedTimeSinceLastPressedFilter(unsigned int type, const unsigned int* vec, size_t length) : RemapFilterBase(type) {
     targets_.reserve(length / 2);

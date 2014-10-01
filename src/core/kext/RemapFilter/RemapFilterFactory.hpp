@@ -15,7 +15,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
-class RemapFilterFactory {
+class RemapFilterFactory final {
 public:
   static RemapFilterBase* create(const unsigned int* vec, size_t length) {
     // ------------------------------------------------------------

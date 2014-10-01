@@ -6,7 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
-class UIElementRoleFilter : public RemapFilterBase {
+class UIElementRoleFilter final : public RemapFilterBase {
 public:
   UIElementRoleFilter(unsigned int type, const unsigned int* vec, size_t length) : RemapFilterBase(type) {
     targets_.reserve(length);
