@@ -2,7 +2,7 @@
 #define STRLCPY_UTF8_HPP
 
 namespace pqrs {
-class strlcpy_utf8 {
+class strlcpy_utf8 final {
 public:
   static void
   strlcpy(char* dst, const char* src, size_t size) {
