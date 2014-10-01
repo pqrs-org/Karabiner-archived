@@ -74,7 +74,7 @@ namespace RemapFunc {
 //
 class DependingPressingPeriodKeyToKey final {
 public:
-  class KeyToKeyType {
+  class KeyToKeyType final {
   public:
     enum Value {
       SHORT_PERIOD,             // (1) in above description.
@@ -84,9 +84,9 @@ public:
       END_,
     };
   };
-  class PeriodMS {
+  class PeriodMS final {
   public:
-    class Mode {
+    class Mode final {
     public:
       enum Value {
         NONE,
@@ -96,7 +96,7 @@ public:
         __END__,
       };
     };
-    class Type {
+    class Type final {
     public:
       enum Value {
         SHORT_PERIOD,             // (A) in above description.
@@ -181,7 +181,7 @@ public:
   }
 
 private:
-  class PeriodType {
+  class PeriodType final {
   public:
     enum Value {
       NONE,

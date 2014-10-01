@@ -38,7 +38,7 @@ private:
   int getDelayUntilRepeat(void);
   int getKeyRepeat(void);
 
-  class CurrentToEvent {
+  class CurrentToEvent final {
   public:
     enum Value {
       TOKEYS,

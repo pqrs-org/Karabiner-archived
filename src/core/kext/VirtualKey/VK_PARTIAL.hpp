@@ -13,7 +13,7 @@ public:
   static bool handle(const Params_KeyboardEventCallBack& params);
 
 private:
-  class Item : public List::Item {
+  class Item final : public List::Item {
   public:
     Item(KeyCode k) : key(k) {}
     virtual ~Item(void) {}

@@ -134,7 +134,7 @@ public:
   // We also need to change FN+Arrow to Home,End,PageUp,PageDown before outputting key code.
   //
   // This class handles the above.
-  class FNKeyHack {
+  class FNKeyHack final {
   public:
     FNKeyHack(const KeyCode& fk, const KeyCode& tk) : fromKeyCode_(fk), toKeyCode_(tk), active_normalize_(false), active_reverse_(false) {}
     // FN+PageUp to FN+Up-Arrow

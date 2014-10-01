@@ -80,12 +80,12 @@ private:                                                             \
   size_t size_;
 
 #define DECLARE_VECTOR_WITH_CHUNKSIZE(TYPENAME, CHUNKSIZE) \
-  class Vector_##TYPENAME {                                \
+  class Vector_##TYPENAME final {                          \
     DECLARE_VECTOR_CLASS_BODY(TYPENAME, CHUNKSIZE)         \
   };
 
 #define DECLARE_VECTOR_WITH_CHUNKSIZE_WITH_HELPER(TYPENAME, CHUNKSIZE) \
-  class Vector_##TYPENAME {                                            \
+  class Vector_##TYPENAME final {                                      \
     DECLARE_VECTOR_CLASS_BODY(TYPENAME, CHUNKSIZE)                     \
   public:                                                              \
     bool is_include(const TYPENAME& v) const {                         \

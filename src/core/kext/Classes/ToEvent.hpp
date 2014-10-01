@@ -9,7 +9,7 @@
 namespace org_pqrs_Karabiner {
 class ToEvent final {
 public:
-  class Type {
+  class Type final {
   public:
     enum Value {
       NONE,

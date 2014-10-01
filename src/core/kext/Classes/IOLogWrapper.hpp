@@ -58,7 +58,7 @@ public:
   static bool suppressed(void) { return suppressed_; }
   static void suppress(bool v) { suppressed_ = v; }
 
-  class ScopedSuppress {
+  class ScopedSuppress final {
   public:
     ScopedSuppress(void) {
       original = suppressed();

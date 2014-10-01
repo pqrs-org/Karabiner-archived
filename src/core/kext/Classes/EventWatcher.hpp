@@ -10,7 +10,7 @@ private:
   class Item;
 
 public:
-  class Target {
+  class Target final {
   public:
     Target(void) {
       item_ = new Item();
@@ -52,7 +52,7 @@ public:
   static void undo(void);
 
 private:
-  class Item : public List::Item {
+  class Item final : public List::Item {
   public:
     Item(void) : observed_(false),
                  cancelableEventInputQueueSerialNumber_(0),

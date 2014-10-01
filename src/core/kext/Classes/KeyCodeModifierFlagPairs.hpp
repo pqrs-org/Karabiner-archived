@@ -6,7 +6,7 @@
 namespace org_pqrs_Karabiner {
 class KeyCodeModifierFlagPairs final {
 public:
-  class KeyCodeType {
+  class KeyCodeType final {
   public:
     enum Value {
       KEYCODE,
@@ -23,7 +23,7 @@ public:
     };
   };
 
-  class Pair {
+  class Pair final {
   public:
     Pair(void) {}
     Pair(ModifierFlag m,

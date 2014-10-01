@@ -7,7 +7,7 @@
 namespace org_pqrs_Karabiner {
 class FlagStatus final {
 public:
-  class Item {
+  class Item final {
     friend class FlagStatus;
 
   public:
