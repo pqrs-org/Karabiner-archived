@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
-class VK_CONFIG {
+class VK_CONFIG final {
 public:
   static void initialize(void);
   static void terminate(void);

@@ -3,7 +3,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
-class VK_JIS_BACKSLASH {
+class VK_JIS_BACKSLASH final {
 public:
   static bool handle(const Params_KeyboardEventCallBack& params);
 };

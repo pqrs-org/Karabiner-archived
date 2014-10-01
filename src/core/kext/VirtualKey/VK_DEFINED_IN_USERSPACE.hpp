@@ -9,7 +9,7 @@ namespace VirtualKey {
 // - KeyCode::VK_CHANGE_INPUTSOURCE_*
 // - KeyCode::VK_OPEN_URL_*
 
-class VK_DEFINED_IN_USERSPACE {
+class VK_DEFINED_IN_USERSPACE final {
 public:
   static void initialize(void);
   static void terminate(void);
