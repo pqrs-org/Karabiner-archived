@@ -72,7 +72,7 @@ public:
   void traverse(const extracted_ptree& pt) const;
 
 private:
-  class definition_type {
+  class definition_type final {
   public:
     enum type {
       none,

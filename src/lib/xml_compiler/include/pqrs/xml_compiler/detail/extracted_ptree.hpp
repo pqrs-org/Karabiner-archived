@@ -15,7 +15,7 @@ public:
     included_files_.push_back(xml_file_path);
   }
 
-  class node {
+  class node final {
   public:
     node(const boost::property_tree::ptree::value_type& node,
          const extracted_ptree& extracted_ptree,
@@ -40,7 +40,7 @@ public:
     const pqrs::string::replacement& replacement_;
   };
 
-  class stack_data {
+  class stack_data final {
   public:
     stack_data(const boost::property_tree::ptree& pt,
                const pqrs::string::replacement& r) : it(pt.begin()),

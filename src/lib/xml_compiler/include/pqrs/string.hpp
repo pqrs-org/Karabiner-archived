@@ -61,7 +61,7 @@ public:
   }
 
   // tokenizer
-  class tokenizer {
+  class tokenizer final {
   public:
     tokenizer(const std::string& string, char c) : string_(string),
                                                    c_(c),
@@ -110,7 +110,7 @@ public:
 
 private:
   template <typename T>
-  class hex_to {
+  class hex_to final {
   public:
     operator T(void) const { return value; }
     friend std::istream& operator>>(std::istream& in, hex_to& out) {
@@ -123,7 +123,7 @@ private:
   };
 
   template <typename T>
-  class oct_to {
+  class oct_to final {
   public:
     operator T(void) const { return value; }
     friend std::istream& operator>>(std::istream& in, oct_to& out) {
