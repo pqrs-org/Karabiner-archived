@@ -72,7 +72,7 @@ namespace RemapFunc {
 // (B) [Key Overlaid Modifier's Key Repeat] Initial Wait
 // (C) [Key Overlaid Modifier] Timeout
 //
-class DependingPressingPeriodKeyToKey {
+class DependingPressingPeriodKeyToKey final {
 public:
   class KeyToKeyType {
   public:

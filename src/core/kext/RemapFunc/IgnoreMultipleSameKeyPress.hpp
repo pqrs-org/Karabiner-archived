@@ -6,7 +6,7 @@
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 // ex. Ignore JIS_KANA x 2. (validate only the first once)
-class IgnoreMultipleSameKeyPress : public RemapFuncBase {
+class IgnoreMultipleSameKeyPress final : public RemapFuncBase {
 public:
   IgnoreMultipleSameKeyPress(void) : RemapFuncBase(BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS),
                                      needToIgnore_(false) {}

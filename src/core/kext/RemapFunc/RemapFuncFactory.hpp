@@ -24,7 +24,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class RemapFuncFactory {
+class RemapFuncFactory final {
 public:
   static RemapFuncBase* create(const unsigned int* vec, size_t length) {
     // ------------------------------------------------------------

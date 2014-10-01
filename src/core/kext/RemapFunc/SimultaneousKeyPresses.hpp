@@ -7,7 +7,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class SimultaneousKeyPresses : public RemapFuncBase {
+class SimultaneousKeyPresses final : public RemapFuncBase {
 public:
   SimultaneousKeyPresses(void) : RemapFuncBase(BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES),
                                  isUseSeparator_(false),

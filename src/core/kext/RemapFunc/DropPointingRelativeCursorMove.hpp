@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class DropPointingRelativeCursorMove : public RemapFuncBase {
+class DropPointingRelativeCursorMove final : public RemapFuncBase {
 public:
   DropPointingRelativeCursorMove(void) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE) {}
 
