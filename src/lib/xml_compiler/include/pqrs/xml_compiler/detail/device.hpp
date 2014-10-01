@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class device_loader {
+class device_loader final {
 public:
   device_loader(const xml_compiler& xml_compiler,
                 symbol_map& symbol_map) : xml_compiler_(xml_compiler),

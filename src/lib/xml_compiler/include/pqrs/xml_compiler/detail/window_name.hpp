@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class window_name {
+class window_name final {
 public:
   boost::optional<const std::string&> get_name(void) const {
     if (!name_) return boost::none;
@@ -15,7 +15,7 @@ private:
   std::vector<std::regex> rules_regex_;
 };
 
-class window_name_loader {
+class window_name_loader final {
 public:
   window_name_loader(const xml_compiler& xml_compiler,
                      symbol_map& symbol_map,

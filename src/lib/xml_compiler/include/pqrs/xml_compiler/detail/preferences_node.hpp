@@ -22,7 +22,7 @@ protected:
   std::string style_;
 };
 
-class preferences_checkbox_node : public preferences_node {
+class preferences_checkbox_node final : public preferences_node {
 public:
   preferences_checkbox_node(void) {}
   preferences_checkbox_node(const preferences_checkbox_node& parent_node) : name_for_filter_(parent_node.name_for_filter_ + " ") {}
@@ -35,7 +35,7 @@ private:
   std::string name_for_filter_;
 };
 
-class preferences_number_node : public preferences_node {
+class preferences_number_node final : public preferences_node {
 public:
   preferences_number_node(void) : step_(1) {}
   preferences_number_node(const preferences_number_node& /*parent_node*/) : preferences_number_node() {}
@@ -51,7 +51,7 @@ private:
 };
 
 template <class T>
-class preferences_node_tree {
+class preferences_node_tree final {
 public:
   typedef std::shared_ptr<const preferences_node_tree> preferences_node_tree_ptr;
   typedef std::vector<preferences_node_tree_ptr> preferences_node_tree_ptrs;

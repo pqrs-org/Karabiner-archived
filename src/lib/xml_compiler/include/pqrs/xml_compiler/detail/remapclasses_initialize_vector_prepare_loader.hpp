@@ -11,7 +11,7 @@
 //   - preferences_node_tree
 //
 template <class preferences_node_tree_t>
-class remapclasses_initialize_vector_prepare_loader {
+class remapclasses_initialize_vector_prepare_loader final {
 public:
   remapclasses_initialize_vector_prepare_loader(const xml_compiler& xml_compiler,
                                                 symbol_map& symbol_map,

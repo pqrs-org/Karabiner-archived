@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class extracted_ptree {
+class extracted_ptree final {
 public:
   extracted_ptree(const xml_compiler& xml_compiler,
                   const pqrs::string::replacement& replacement,
@@ -68,9 +68,9 @@ public:
     const std::shared_ptr<pqrs::string::replacement> replacement_ptr_;
   };
 
-  class extracted_ptree_iterator : public boost::iterator_facade<extracted_ptree_iterator,
-                                                                 const node,
-                                                                 boost::forward_traversal_tag> {
+  class extracted_ptree_iterator final : public boost::iterator_facade<extracted_ptree_iterator,
+                                                                       const node,
+                                                                       boost::forward_traversal_tag> {
   public:
     extracted_ptree_iterator(const extracted_ptree& extracted_ptree) : extracted_ptree_(extracted_ptree),
                                                                        stack_size_(0),

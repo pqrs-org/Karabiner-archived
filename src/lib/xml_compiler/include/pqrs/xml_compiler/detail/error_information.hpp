@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class error_information {
+class error_information final {
 public:
   error_information(void) : count_(0) {}
 

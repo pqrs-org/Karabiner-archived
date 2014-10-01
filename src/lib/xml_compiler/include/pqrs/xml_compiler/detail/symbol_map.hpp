@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class symbol_map {
+class symbol_map final {
 public:
   symbol_map(void);
   void clear(void);
@@ -24,7 +24,7 @@ private:
   boost::unordered_map<std::string, std::string> map_for_get_name_;
 };
 
-class symbol_map_loader {
+class symbol_map_loader final {
 public:
   symbol_map_loader(const xml_compiler& xml_compiler,
                     symbol_map& symbol_map) : xml_compiler_(xml_compiler),

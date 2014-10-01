@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class replacement_loader {
+class replacement_loader final {
 public:
   replacement_loader(const xml_compiler& xml_compiler,
                      pqrs::string::replacement& replacement) : xml_compiler_(xml_compiler),

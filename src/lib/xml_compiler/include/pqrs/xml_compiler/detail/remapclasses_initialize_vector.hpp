@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class remapclasses_initialize_vector {
+class remapclasses_initialize_vector final {
 public:
   remapclasses_initialize_vector(void);
   void clear(void);
@@ -46,7 +46,7 @@ private:
   bool ended_;
 };
 
-class remapclasses_initialize_vector_loader {
+class remapclasses_initialize_vector_loader final {
 public:
   remapclasses_initialize_vector_loader(const xml_compiler& xml_compiler,
                                         symbol_map& symbol_map,
