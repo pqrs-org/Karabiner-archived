@@ -53,7 +53,7 @@
 
 // ------------------------------------------------------------
 namespace org_pqrs_Karabiner {
-class IOLogWrapper {
+class IOLogWrapper final {
 public:
   static bool suppressed(void) { return suppressed_; }
   static void suppress(bool v) { suppressed_ = v; }

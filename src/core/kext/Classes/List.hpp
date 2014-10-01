@@ -5,7 +5,7 @@
 #include <string.h>
 
 namespace org_pqrs_Karabiner {
-class List {
+class List final {
 public:
   class Item {
     friend class List;

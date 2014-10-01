@@ -4,7 +4,7 @@
 #include "Types.hpp"
 
 namespace org_pqrs_Karabiner {
-class IntervalChecker {
+class IntervalChecker final {
 public:
   void begin(void);
   uint32_t getmillisec(void) const;

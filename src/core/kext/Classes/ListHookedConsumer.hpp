@@ -8,7 +8,7 @@
 class Params_KeyboardSpecialEventCallback;
 
 namespace org_pqrs_Karabiner {
-class ListHookedConsumer : public ListHookedDevice {
+class ListHookedConsumer final : public ListHookedDevice {
 public:
   class Item : public ListHookedDevice::Item {
   public:

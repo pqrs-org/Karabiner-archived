@@ -2,7 +2,7 @@
 #define NUMHELDDOWNKEYS_HPP
 
 namespace org_pqrs_Karabiner {
-class NumHeldDownKeys {
+class NumHeldDownKeys final {
 public:
   static void set(int diff);
   static void reset(void);

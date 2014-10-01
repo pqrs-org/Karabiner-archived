@@ -3,7 +3,7 @@
 
 #include <IOKit/IOTimerEventSource.h>
 
-class org_pqrs_Karabiner_TimerWrapperObject : public OSObject {
+class org_pqrs_Karabiner_TimerWrapperObject final : public OSObject {
   OSDeclareDefaultStructors(org_pqrs_Karabiner_TimerWrapperObject);
 
 public:
@@ -24,7 +24,7 @@ private:
 };
 
 namespace org_pqrs_Karabiner {
-class TimerWrapper {
+class TimerWrapper final {
 public:
   TimerWrapper(void) : workloop_(NULL), object_(NULL), timer_(NULL) {}
   void initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Action func);

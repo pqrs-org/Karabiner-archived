@@ -5,7 +5,7 @@
 #include "EventInputQueue.hpp"
 
 namespace org_pqrs_Karabiner {
-class EventWatcher {
+class EventWatcher final {
 private:
   class Item;
 

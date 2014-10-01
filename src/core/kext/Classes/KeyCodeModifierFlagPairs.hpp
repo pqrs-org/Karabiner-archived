@@ -4,7 +4,7 @@
 #include "KeyCode.hpp"
 
 namespace org_pqrs_Karabiner {
-class KeyCodeModifierFlagPairs {
+class KeyCodeModifierFlagPairs final {
 public:
   class KeyCodeType {
   public:

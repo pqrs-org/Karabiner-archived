@@ -10,7 +10,7 @@ class Params_KeyboardEventCallBack;
 class Params_UpdateEventFlagsCallback;
 class TimerWrapper;
 
-class ListHookedKeyboard : public ListHookedDevice {
+class ListHookedKeyboard final : public ListHookedDevice {
 public:
   class Item : public ListHookedDevice::Item {
   public:

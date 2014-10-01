@@ -7,7 +7,7 @@
 #include "bridge.h"
 
 namespace org_pqrs_Karabiner {
-class ToEvent {
+class ToEvent final {
 public:
   class Type {
   public:

@@ -4,7 +4,7 @@
 #include <IOKit/IOLib.h>
 
 namespace org_pqrs_Karabiner {
-class GlobalLock {
+class GlobalLock final {
 public:
   static void initialize(void);
   static void terminate(void);

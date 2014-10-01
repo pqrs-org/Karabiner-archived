@@ -9,7 +9,7 @@
 namespace org_pqrs_Karabiner {
 class Params_Base;
 
-class CommonData {
+class CommonData final {
 public:
   static bool initialize(void);
   static void terminate(void);
