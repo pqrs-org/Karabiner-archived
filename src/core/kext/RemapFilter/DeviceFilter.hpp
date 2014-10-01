@@ -6,7 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
-class DeviceFilter : public RemapFilterBase {
+class DeviceFilter final : public RemapFilterBase {
 public:
   DeviceFilter(unsigned int type, const unsigned int* vec, size_t length) : RemapFilterBase(type) {
     targets_.reserve(length / 3);
