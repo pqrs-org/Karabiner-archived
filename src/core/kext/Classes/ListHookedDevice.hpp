@@ -14,10 +14,11 @@ public:
   class Item : public List::Item {
     friend class ListHookedDevice;
 
-  public:
+  protected:
     Item(IOHIDevice* d);
     virtual ~Item(void) {};
 
+  public:
     virtual bool isReplaced(void) const = 0;
 
     const IOHIDevice* get(void) const { return device_; }
