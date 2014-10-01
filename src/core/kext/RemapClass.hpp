@@ -13,7 +13,7 @@ public:
     MAX_ALLOCATION_COUNT = (8 * 1024 * 1024) / sizeof(uint32_t), // 8MB
   };
 
-  class Item {
+  class Item final {
   public:
     Item(const RemapClass& parent, const uint32_t* vec, size_t length);
     ~Item(void);

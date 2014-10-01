@@ -42,7 +42,7 @@ private:
     SCROLL_INTERVAL_MS = 10,
   };
 
-  class Item : public List::Item {
+  class Item final : public List::Item {
   public:
     Item(int d1, int d2) : delta1(d1), delta2(d2) {}
     virtual ~Item(void) {}

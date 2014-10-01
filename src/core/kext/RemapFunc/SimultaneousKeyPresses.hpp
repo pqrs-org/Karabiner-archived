@@ -35,7 +35,7 @@ public:
 private:
   void push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier);
 
-  class FromInfo {
+  class FromInfo final {
   public:
     FromInfo(void) : fromEvent_(), active_(false) {}
     FromInfo(AddDataType datatype, AddValue v) : fromEvent_(datatype, v), active_(false) {}
@@ -53,7 +53,7 @@ private:
   };
   DECLARE_VECTOR(FromInfo);
 
-  class DownKeys {
+  class DownKeys final {
   public:
     DownKeys(void) : item(NULL) {}
     DownKeys(EventInputQueue::Item* i) : item(i) {}

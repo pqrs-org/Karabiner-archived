@@ -7,7 +7,7 @@
 namespace org_pqrs_Karabiner {
 class ButtonStatus final {
 public:
-  class Item {
+  class Item final {
     friend class ButtonStatus;
 
   public:

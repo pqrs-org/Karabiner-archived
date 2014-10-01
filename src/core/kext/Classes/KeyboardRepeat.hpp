@@ -62,7 +62,7 @@ public:
   static int primitive_start(int delayUntilRepeat, int keyRepeat);
 
 private:
-  class Item : public List::Item {
+  class Item final : public List::Item {
   public:
     Item(const Params_Base& p) : p_(Params_Factory::copy(p)) {}
 

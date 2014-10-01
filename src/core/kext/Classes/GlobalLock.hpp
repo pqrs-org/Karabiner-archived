@@ -9,7 +9,7 @@ public:
   static void initialize(void);
   static void terminate(void);
 
-  class ScopedLock {
+  class ScopedLock final {
   public:
     ScopedLock(void);
     ~ScopedLock(void);
@@ -19,7 +19,7 @@ public:
     IOLock* lock_;
   };
 
-  class ScopedUnlock {
+  class ScopedUnlock final {
   public:
     ScopedUnlock(void);
     ~ScopedUnlock(void);

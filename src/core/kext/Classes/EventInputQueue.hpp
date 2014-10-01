@@ -79,7 +79,7 @@ public:
                                             void* refcon);
 
   // ------------------------------------------------------------
-  class Item : public List::Item {
+  class Item final : public List::Item {
   public:
     Item(const Params_Base& p, bool r, const DeviceIdentifier& di, uint32_t d) : p_(Params_Factory::copy(p)),
                                                                                  retainFlagStatusTemporaryCount(r),
@@ -124,7 +124,7 @@ private:
     DELAY_TYPE_POINTING_BUTTON,
   };
 
-  class BlockUntilKeyUpHander {
+  class BlockUntilKeyUpHander final {
   public:
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);
@@ -138,7 +138,7 @@ private:
     static void setIgnoreToAllPressingEvents(void);
     static void blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
-    class PressingEvent : public List::Item {
+    class PressingEvent final : public List::Item {
     public:
       PressingEvent(const Params_Base& p) : p_(Params_Factory::copy(p)),
                                             ignore_(false) {

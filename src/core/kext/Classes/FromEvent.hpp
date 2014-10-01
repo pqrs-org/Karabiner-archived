@@ -10,7 +10,7 @@
 namespace org_pqrs_Karabiner {
 class FromEvent final {
 public:
-  class Type {
+  class Type final {
   public:
     enum Value {
       NONE,

@@ -19,7 +19,7 @@ public:
   static void terminate(void);
 
   // ======================================================================
-  class FireModifiers {
+  class FireModifiers final {
   public:
     static void fire(Flags toFlags = FlagStatus::globalFlagStatus().makeFlags(),
                      KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
@@ -28,17 +28,17 @@ public:
     static Flags lastFlags_;
   };
 
-  class FireKey {
+  class FireKey final {
   public:
     static void fire(const Params_KeyboardEventCallBack& params);
   };
 
-  class FireConsumer {
+  class FireConsumer final {
   public:
     static void fire(const Params_KeyboardSpecialEventCallback& params);
   };
 
-  class FireRelativePointer {
+  class FireRelativePointer final {
   public:
     static void fire(Buttons toButtons = ButtonStatus::makeButtons(), int dx = 0, int dy = 0);
 
@@ -46,7 +46,7 @@ public:
     static Buttons lastButtons_;
   };
 
-  class FireScrollWheel {
+  class FireScrollWheel final {
   public:
     enum {
       // see IOHIPointing.cpp in darwin.
@@ -58,14 +58,14 @@ public:
     static void fire(int delta1, int delta2);
   };
 
-  class FireWait {
+  class FireWait final {
   public:
     static void fire(const Params_Wait& params);
   };
 
   // ======================================================================
 private:
-  class Item : public List::Item {
+  class Item final : public List::Item {
   public:
     Item(const Params_Base& p) : p_(Params_Factory::copy(p)) {}
 
