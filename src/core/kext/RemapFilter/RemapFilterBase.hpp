@@ -9,8 +9,10 @@
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
 class RemapFilterBase {
-public:
+protected:
   RemapFilterBase(unsigned int type) : type_(type) {}
+
+public:
   virtual ~RemapFilterBase(void) {}
 
   virtual bool isblocked(void) = 0;

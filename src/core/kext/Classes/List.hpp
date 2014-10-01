@@ -10,10 +10,11 @@ public:
   class Item {
     friend class List;
 
-  public:
+  protected:
     Item(void) : prev_(NULL), next_(NULL) {}
     virtual ~Item(void) {}
 
+  public:
     Item* getprev(void) const { return prev_; }
     Item* getnext(void) const { return next_; }
 

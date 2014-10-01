@@ -12,8 +12,10 @@
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class RemapFuncBase {
-public:
+protected:
   RemapFuncBase(unsigned int type) : type_(type), ignorePassThrough_(false) {}
+
+public:
   virtual ~RemapFuncBase(void) {}
 
   virtual void add(AddDataType datatype, AddValue newval) = 0;
