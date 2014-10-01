@@ -14,7 +14,7 @@ public:
     Item(IOHIDevice* d);
     ~Item(void);
 
-    bool isReplaced(void) const { return orig_relativePointerEventAction_ != NULL; }
+    bool isReplaced(void) const override { return orig_relativePointerEventAction_ != NULL; }
 
     Buttons get_previousbuttons(void) const { return previousbuttons_; }
     void set_previousbuttons(Buttons newval) { previousbuttons_ = newval; }
@@ -30,7 +30,7 @@ public:
 
     Buttons previousbuttons_;
 
-    bool refresh(void);
+    bool refresh(void) override;
 
     /** return true if event action is replaced. */
     bool replaceEventAction(void);

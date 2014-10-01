@@ -15,7 +15,7 @@ public:
     Item(IOHIDevice* p);
     ~Item(void);
 
-    bool isReplaced(void) const { return orig_keyboardSpecialEventAction_ != NULL; }
+    bool isReplaced(void) const override { return orig_keyboardSpecialEventAction_ != NULL; }
 
     void apply(const Params_KeyboardSpecialEventCallback& params);
     void disableNumLock(void);
@@ -24,7 +24,7 @@ public:
     KeyboardSpecialEventCallback orig_keyboardSpecialEventAction_;
     OSObject* orig_keyboardSpecialEventTarget_;
 
-    bool refresh(void);
+    bool refresh(void) override;
 
     /** return true if event action is replaced. */
     bool replaceEventAction(void);
