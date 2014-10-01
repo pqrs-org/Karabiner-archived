@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class modifier {
+class modifier final {
 public:
   modifier(void) : notify_(true) {}
 
@@ -18,7 +18,7 @@ private:
   bool notify_;
 };
 
-class modifier_loader {
+class modifier_loader final {
 public:
   modifier_loader(const xml_compiler& xml_compiler,
                   symbol_map& symbol_map,

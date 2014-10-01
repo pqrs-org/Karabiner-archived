@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class url {
+class url final {
 public:
   boost::optional<const std::string&> get_name(void) const {
     if (!name_) return boost::none;
@@ -26,7 +26,7 @@ private:
   boost::optional<std::string> type_;
 };
 
-class url_loader {
+class url_loader final {
 public:
   url_loader(const xml_compiler& xml_compiler,
              symbol_map& symbol_map,

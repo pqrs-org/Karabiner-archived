@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class filter_vector {
+class filter_vector final {
 public:
   filter_vector(const symbol_map& symbol_map) : symbol_map_(symbol_map) {}
   void traverse(const extracted_ptree& pt);

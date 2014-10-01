@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class essential_configuration {
+class essential_configuration final {
 public:
   essential_configuration(const preferences_node& node) : identifier_(node.get_identifier()),
                                                           raw_identifier_(node.get_identifier()),

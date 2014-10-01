@@ -1,6 +1,6 @@
 // This header intentionally has no include guards.
 
-class inputsource {
+class inputsource final {
 public:
   boost::optional<const std::string&> get_name(void) const {
     if (!name_) return boost::none;
@@ -54,7 +54,7 @@ private:
   std::vector<std::string> rules_inputmodeid_prefix_;
 };
 
-class inputsource_loader {
+class inputsource_loader final {
 public:
   inputsource_loader(const xml_compiler& xml_compiler,
                      symbol_map& symbol_map,
