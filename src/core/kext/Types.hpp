@@ -7,7 +7,7 @@
 #include "Vector.hpp"
 
 namespace org_pqrs_Karabiner {
-class AddDataType {
+class AddDataType final {
 public:
   AddDataType(void) : value_(BRIDGE_DATATYPE_NONE) {}
   explicit AddDataType(unsigned int v) : value_(v) {}
@@ -19,7 +19,7 @@ private:
   unsigned int value_;
 };
 
-class AddValue {
+class AddValue final {
 public:
   AddValue(void) : value_(0) {}
   explicit AddValue(unsigned int v) : value_(v) {}
@@ -32,7 +32,7 @@ private:
 };
 DECLARE_VECTOR(AddValue);
 
-class AddValueWithDataType {
+class AddValueWithDataType final {
 public:
   AddValueWithDataType(void) {}
   AddValueWithDataType(AddDataType d, AddValue v) : dataType(d), value(v) {}

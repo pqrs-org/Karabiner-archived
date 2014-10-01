@@ -7,7 +7,7 @@
 #include "../../bridge/output/include.bridge_essential_configuration_enum.h"
 
 namespace org_pqrs_Karabiner {
-class Config {
+class Config final {
 public:
   static void sysctl_register(void);
   static void sysctl_unregister(void);

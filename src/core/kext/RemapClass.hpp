@@ -6,7 +6,7 @@
 #include "RemapFunc/RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
-class RemapClass {
+class RemapClass final {
 public:
   enum {
     MAX_CONFIG_COUNT = 10000,

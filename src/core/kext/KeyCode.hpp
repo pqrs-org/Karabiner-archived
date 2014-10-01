@@ -11,7 +11,7 @@ class Flags;
 class Buttons;
 
 // ======================================================================
-class EventType {
+class EventType final {
 public:
   explicit EventType(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -27,7 +27,7 @@ private:
 };
 
 // ======================================================================
-class KeyboardType {
+class KeyboardType final {
 public:
   explicit KeyboardType(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -41,7 +41,7 @@ private:
 };
 
 // ======================================================================
-class ModifierFlag {
+class ModifierFlag final {
 public:
   explicit ModifierFlag(unsigned int v = 0) : value_(v) {}
   explicit ModifierFlag(AddDataType datatype, AddValue newval) {
@@ -66,7 +66,7 @@ private:
 DECLARE_VECTOR_WITH_HELPER(ModifierFlag);
 DECLARE_VECTOR(Vector_ModifierFlag);
 
-class Flags {
+class Flags final {
 public:
   explicit Flags(unsigned int v = 0) : value_(v) {}
   explicit Flags(ModifierFlag v) : value_(v.getRawBits()) {}
@@ -110,7 +110,7 @@ private:
 };
 
 // ======================================================================
-class KeyCode {
+class KeyCode final {
 public:
   explicit KeyCode(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -155,7 +155,7 @@ private:
   unsigned int value_;
 };
 
-class CharCode {
+class CharCode final {
 public:
   explicit CharCode(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -165,7 +165,7 @@ public:
 private:
   unsigned int value_;
 };
-class CharSet {
+class CharSet final {
 public:
   explicit CharSet(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -175,7 +175,7 @@ public:
 private:
   unsigned int value_;
 };
-class OrigCharCode {
+class OrigCharCode final {
 public:
   explicit OrigCharCode(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -185,7 +185,7 @@ public:
 private:
   unsigned int value_;
 };
-class OrigCharSet {
+class OrigCharSet final {
 public:
   explicit OrigCharSet(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -197,7 +197,7 @@ private:
 };
 
 // ======================================================================
-class ConsumerKeyCode {
+class ConsumerKeyCode final {
 public:
   explicit ConsumerKeyCode(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -216,7 +216,7 @@ private:
 };
 
 // ======================================================================
-class PointingButton {
+class PointingButton final {
 public:
   explicit PointingButton(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -230,7 +230,7 @@ public:
 private:
   unsigned int value_;
 };
-class Buttons {
+class Buttons final {
 public:
   explicit Buttons(unsigned int v = 0) : value_(v) {}
   explicit Buttons(PointingButton v) : value_(v.get()) {}
@@ -283,7 +283,7 @@ private:
 inline Buttons operator|(PointingButton lhs, PointingButton rhs) { return Buttons(lhs.get() | rhs.get()); }
 
 // ======================================================================
-class ScrollWheel {
+class ScrollWheel final {
 public:
   explicit ScrollWheel(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -331,7 +331,7 @@ private:
 };
 
 // ======================================================================
-class PointingRelative {
+class PointingRelative final {
 public:
   explicit PointingRelative(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -384,7 +384,7 @@ private:
 };
 
 // ======================================================================
-class Option {
+class Option final {
 public:
   explicit Option(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -398,7 +398,7 @@ private:
 };
 
 // ======================================================================
-class ApplicationType {
+class ApplicationType final {
 public:
   explicit ApplicationType(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -411,7 +411,7 @@ private:
   unsigned int value_;
 };
 
-class WindowName {
+class WindowName final {
 public:
   explicit WindowName(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -424,7 +424,7 @@ private:
   unsigned int value_;
 };
 
-class UIElementRole {
+class UIElementRole final {
 public:
   explicit UIElementRole(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -438,7 +438,7 @@ private:
 };
 
 // ======================================================================
-class InputSource {
+class InputSource final {
 public:
   explicit InputSource(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -452,7 +452,7 @@ private:
 };
 
 // ======================================================================
-class InputSourceDetail {
+class InputSourceDetail final {
 public:
   explicit InputSourceDetail(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -466,7 +466,7 @@ private:
 };
 
 // ======================================================================
-class DeviceVendor {
+class DeviceVendor final {
 public:
   explicit DeviceVendor(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -480,7 +480,7 @@ private:
 };
 
 // ======================================================================
-class DeviceProduct {
+class DeviceProduct final {
 public:
   explicit DeviceProduct(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -513,7 +513,7 @@ private:
 //   Device Address: 00-26-bb-7e-95-74
 //   LocationID:     0x3b7e9574
 //
-class DeviceLocation {
+class DeviceLocation final {
 public:
   explicit DeviceLocation(unsigned int v = 0) : value_(v) {}
   unsigned int get(void) const { return value_; }
@@ -527,7 +527,7 @@ private:
 };
 
 // ======================================================================
-class DeviceIdentifier {
+class DeviceIdentifier final {
 public:
   DeviceIdentifier(void) : vendor_(0), product_(0), location_(0) {}
   DeviceIdentifier(DeviceVendor v, DeviceProduct p, DeviceLocation l) : vendor_(v), product_(p), location_(l) {}
