@@ -10,11 +10,11 @@ public:
   SetKeyboardType(void) : RemapFuncBase(BRIDGE_REMAPTYPE_SETKEYBOARDTYPE),
                           toKeyboardType_(KeyboardType::MACBOOK) {}
 
-  bool remapSetKeyboardType(KeyboardType& keyboardType);
+  bool remapSetKeyboardType(KeyboardType& keyboardType) override;
 
   // ----------------------------------------
   // [0] => toKeyboardType
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   KeyboardType toKeyboardType_;

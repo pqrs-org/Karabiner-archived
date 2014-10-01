@@ -10,12 +10,12 @@ public:
   ForceNumLockOn(void) : RemapFuncBase(BRIDGE_REMAPTYPE_FORCENUMLOCKON),
                          index_(0) {}
 
-  bool remapForceNumLockOn(ListHookedKeyboard::Item* item);
+  bool remapForceNumLockOn(ListHookedKeyboard::Item* item) override;
 
   // ----------------------------------------
   // [0] => DeviceVendor
   // [1] => DeviceProduct
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   size_t index_;

@@ -9,9 +9,9 @@ class DropPointingRelativeCursorMove final : public RemapFuncBase {
 public:
   DropPointingRelativeCursorMove(void) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE) {}
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
-  void add(AddDataType datatype, AddValue newval) {}
+  void add(AddDataType datatype, AddValue newval) override {}
 };
 }
 }

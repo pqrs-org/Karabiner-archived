@@ -11,11 +11,11 @@ public:
   IgnoreMultipleSameKeyPress(void) : RemapFuncBase(BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS),
                                      needToIgnore_(false) {}
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------
   // [0] => fromKey_
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   FromEvent fromEvent_;

@@ -18,7 +18,7 @@ public:
     ic_.begin();
   }
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------
   // [0] => fromKey_
@@ -27,7 +27,7 @@ public:
   // [3] => fireKeys_[1]
   // [4] => fireKeys_[2]
   // ...
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   bool isUseSeparator_;

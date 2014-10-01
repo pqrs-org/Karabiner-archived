@@ -19,9 +19,9 @@ public:
 
   // This function changes Simultaneous key presses to KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx
   // It returns true if EventInputQueue::queue_ is changed.
-  bool remapSimultaneousKeyPresses(bool keyuponly);
+  bool remapSimultaneousKeyPresses(bool keyuponly) override;
   // This function changes KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx to remapped key/pointing events.
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------
   // [0] => virtualkey
@@ -30,7 +30,7 @@ public:
   // [3] => toKeys_[0]
   // [4] => toKeys_[1]
   // [5] => ...
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   void push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier);

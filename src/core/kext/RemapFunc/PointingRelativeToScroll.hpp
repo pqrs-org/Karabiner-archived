@@ -27,7 +27,7 @@ public:
     keytokey_.add(KeyCode::VK_PSEUDO_KEY);
   }
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------
   // [0] => fromFlags_
@@ -35,7 +35,7 @@ public:
   //
   // [1] => Option::POINTINGRELATIVETOSCROLL_TOFLAGS
   // [2] => toFlags_
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   enum {
