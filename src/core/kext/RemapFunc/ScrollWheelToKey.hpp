@@ -18,9 +18,9 @@ public:
     keytokey_.add(KeyCode::VK_PSEUDO_KEY);
   }
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   enum {

@@ -19,9 +19,9 @@ public:
     }
   }
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   PointingRelativeToKey(const PointingRelativeToKey& rhs);            // Prevent copy-construction

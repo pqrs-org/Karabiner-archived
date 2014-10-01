@@ -15,7 +15,7 @@ public:
     dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY);
   }
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------
   // [0]   => fromKey_
@@ -26,7 +26,7 @@ public:
   // [n+1] => toKeys_holding_[0]
   // [n+2] => toKeys_holding_[1]
   // [n+3] => ...
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
 private:
   void addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval);

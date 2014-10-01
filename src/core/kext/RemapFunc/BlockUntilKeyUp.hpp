@@ -9,8 +9,8 @@ class BlockUntilKeyUp final : public RemapFuncBase {
 public:
   BlockUntilKeyUp(void) : RemapFuncBase(BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP) {}
 
-  void add(AddDataType datatype, AddValue newval);
-  const FromEvent* getBlockUntilKeyUpFromEvent(void) const { return &fromEvent_; }
+  void add(AddDataType datatype, AddValue newval) override;
+  const FromEvent* getBlockUntilKeyUpFromEvent(void) const override { return &fromEvent_; }
 
 private:
   FromEvent fromEvent_;

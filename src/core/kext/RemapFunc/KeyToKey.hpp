@@ -15,14 +15,14 @@ public:
                    delayUntilRepeat_(-1),
                    keyRepeat_(-1) {}
 
-  bool remap(RemapParams& remapParams);
+  bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------
   // [0] => fromEvent_
   // [1] => toKeys_[0]
   // [2] => toKeys_[1]
   // [3] => ...
-  void add(AddDataType datatype, AddValue newval);
+  void add(AddDataType datatype, AddValue newval) override;
 
   // ----------------------------------------
   // utility functions
