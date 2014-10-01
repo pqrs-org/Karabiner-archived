@@ -1,9 +1,11 @@
 // This header intentionally has no include guards.
 
 class preferences_node {
-public:
+protected:
   preferences_node(void) : name_line_count_(1),
                            default_value_(0) {}
+
+public:
   virtual ~preferences_node(void) {}
 
   const std::string& get_name(void) const { return name_; }
