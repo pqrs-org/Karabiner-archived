@@ -3,7 +3,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
-class VK_MOUSEKEY {
+class VK_MOUSEKEY final {
 public:
   static void initialize(IOWorkLoop& workloop);
   static void terminate(void);
