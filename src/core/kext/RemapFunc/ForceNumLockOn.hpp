@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class ForceNumLockOn : public RemapFuncBase {
+class ForceNumLockOn final : public RemapFuncBase {
 public:
   ForceNumLockOn(void) : RemapFuncBase(BRIDGE_REMAPTYPE_FORCENUMLOCKON),
                          index_(0) {}

@@ -8,7 +8,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class PointingRelativeToKey : public RemapFuncBase {
+class PointingRelativeToKey final : public RemapFuncBase {
 public:
   PointingRelativeToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY),
                                 current_keytokey_(NULL) {

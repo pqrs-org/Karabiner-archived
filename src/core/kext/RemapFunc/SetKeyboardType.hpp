@@ -5,7 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class SetKeyboardType : public RemapFuncBase {
+class SetKeyboardType final : public RemapFuncBase {
 public:
   SetKeyboardType(void) : RemapFuncBase(BRIDGE_REMAPTYPE_SETKEYBOARDTYPE),
                           toKeyboardType_(KeyboardType::MACBOOK) {}
