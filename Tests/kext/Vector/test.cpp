@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include "Vector.hpp"
 
-class TestItem {
+class TestItem final {
 public:
   static int counter;
 

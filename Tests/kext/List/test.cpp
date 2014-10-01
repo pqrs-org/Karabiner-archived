@@ -6,7 +6,7 @@ using namespace org_pqrs_Karabiner;
 
 int allocatecount = 0;
 
-class TestItem : public List::Item {
+class TestItem final : public List::Item {
 public:
   TestItem(int v) : value_(v) { ++allocatecount; }
   virtual ~TestItem(void) {
