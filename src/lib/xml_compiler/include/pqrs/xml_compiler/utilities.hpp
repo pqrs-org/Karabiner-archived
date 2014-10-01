@@ -4,7 +4,7 @@
 #include "bridge.h"
 
 namespace pqrs {
-class xml_compiler_utilities {
+class xml_compiler_utilities final {
 public:
   static uint32_t get_datatype(const std::string& s) {
     if (boost::starts_with(s, "KeyCode::")) {

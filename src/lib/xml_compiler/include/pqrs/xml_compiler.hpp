@@ -25,7 +25,7 @@
 #include "pqrs/string.hpp"
 
 namespace pqrs {
-class xml_compiler {
+class xml_compiler final {
 public:
   typedef std::shared_ptr<boost::property_tree::ptree> ptree_ptr;
 #include "pqrs/xml_compiler/detail/exception.hpp"
