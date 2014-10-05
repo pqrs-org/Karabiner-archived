@@ -44,12 +44,14 @@
 
   } else {
     if (!statusItem_) {
+      NSImage* image = [NSImage imageNamed:@"icon.statusbar"];
+      [image setTemplate:YES];
+
       statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
 
       [statusItem_ setTitle:@""];
       [statusItem_ setToolTip:@"Karabiner"];
-      [statusItem_ setImage:[NSImage imageNamed:@"icon.statusbar.0"]];
-      [statusItem_ setAlternateImage:[NSImage imageNamed:@"icon.statusbar.1"]];
+      [statusItem_ setImage:image];
       [statusItem_ setHighlightMode:YES];
 
       [statusItem_ setMenu:menu_];
