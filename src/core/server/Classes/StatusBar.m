@@ -60,14 +60,12 @@
     // setTitle
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsShowSettingNameInStatusBar]) {
       [statusItem_ setTitle:@""];
-      [statusItem_ setLength:24];
 
     } else {
       NSString* title = [preferencesManager_ configlist_selectedName];
       if (title) {
         NSAttributedString* attributedtitle = [[NSAttributedString alloc] initWithString:title attributes:nil];
         [statusItem_ setAttributedTitle:attributedtitle];
-        [statusItem_ setLength:(24 + [attributedtitle size].width)];
       }
     }
   }
