@@ -47,7 +47,7 @@
       NSImage* image = [NSImage imageNamed:@"icon.statusbar"];
       [image setTemplate:YES];
 
-      statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:24];
+      statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 
       [statusItem_ setTitle:@""];
       [statusItem_ setToolTip:@"Karabiner"];
