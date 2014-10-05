@@ -43,7 +43,7 @@
     </item>
     <item>
       <name>KeyToKey (2)</name>
-      <appendix>* Change the right command key to the lazy ocmmand key.</appendix>
+      <appendix>* Change the right command key to the lazy command key.</appendix>
       <appendix>* Change "right command-space" to "option-shift".</appendix>
       <appendix>* Change "right command-c" to "left click".</appendix>
       <appendix>* Change "right command-left click" to "right click".</appendix>
