@@ -103,7 +103,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="398" y="285" width="668" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
-            <view key="contentView" wantsLayer="YES" id="629">
+            <view key="contentView" id="629">
                 <rect key="frame" x="0.0" y="0.0" width="668" height="620"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -113,7 +113,7 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Change Key" identifier="1" id="633">
-                                <view key="view" id="662">
+                                <view key="view" wantsLayer="YES" id="662">
                                     <rect key="frame" x="10" y="33" width="622" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
