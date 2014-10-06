@@ -13,7 +13,12 @@
       <appendix>(when there are no other modifiers)</appendix>
       <identifier>option.emacsmode_controlD_nomodifiers</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
       <name>Control+H to Delete</name>
@@ -62,7 +67,12 @@
       <appendix>(when there are no other modifiers)</appendix>
       <identifier>option.emacsmode_controlPNBF_nomodifiers</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <include path="snippets/emacsmode_controlPNBF_nomodifiers.xml" />
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <include path="snippets/emacsmode_controlPNBF.xml" />
     </item>
     <item>
       <name>Control+PNBF to Up/Down/Left/Right</name>
@@ -79,17 +89,29 @@
       <name>Control+V to PageDown</name>
       <identifier>option.emacsmode_controlV</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEDOWN</autogen>
     </item>
     <item>
       <name>Option+V to PageUp</name>
       <identifier>option.emacsmode_optionV</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::PAGEUP</autogen>
     </item>
     <item>
       <name>Command+V to PageUp</name>
       <identifier>option.emacsmode_commandV</identifier>
+      <modifier_not>
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
       <!-- Do not use "not filter" on changing Command+XXX -->
       <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::PAGEUP</autogen>
     </item>
@@ -97,58 +119,142 @@
       <name>Control+Y to Command+V</name>
       <identifier>option.emacsmode_controlY</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::V, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Control+AE to Command+Left/Right</name>
       <identifier>option.emacsmode_controlAE</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Control+AE to Command+Shift+Left/Right,Left/Right</name>
       <appendix>(An Alternative way if you use Command+Left/Right for Spaces)</appendix>
       <identifier>option.emacsmode_controlAE_alternative</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+      </autogen>
     </item>
     <item>
       <name>Control+K to Command+Shift+Right,Forward Delete</name>
       <identifier>option.emacsmode_controlK_ex</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
-        <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+
+          KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+          KeyCode::FORWARD_DELETE,
+        </autogen>
       </block>
       <block>
         <only>DICTIONARY</only>
-        <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+
+          KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::FORWARD_DELETE,
+        </autogen>
       </block>
     </item>
     <item>
       <name>Control+K to Command+Shift+Right,Command+X</name>
       <identifier>option.emacsmode_controlK</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
-        <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+
+          KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+        </autogen>
       </block>
       <block>
         <only>DICTIONARY</only>
-        <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+        </autogen>
       </block>
     </item>
     <item>
       <name>Control+W to Command+X</name>
       <identifier>option.emacsmode_controlW</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::X, ModifierFlag::COMMAND_L
+      </autogen>
     </item>
     <item>
       <name>Option+W to Command+C</name>
       <identifier>option.emacsmode_OptionWCopy</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::C, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Option+BF to Option+Left/Right</name>
@@ -158,8 +264,16 @@
         ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
         ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
       </modifier_not>
-      <autogen>__KeyToKey__ KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
+      </autogen>
     </item>
     <item>
       <name>Option+D to Option+Forward Delete</name>
@@ -170,31 +284,68 @@
         ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
         ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
       </modifier_not>
-      <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_L,
+      </autogen>
     </item>
     <item>
       <name>Option+&lt; to Home / Option+&gt; to End</name>
       <identifier>option.emacsmode_optionLtGt</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::COMMA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::HOME, ModifierFlag::OPTION_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::DOT,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::END, ModifierFlag::OPTION_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::COMMA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::HOME, ModifierFlag::OPTION_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::END, ModifierFlag::OPTION_L
+      </autogen>
     </item>
     <item>
       <name>Control+/ to Command_Z</name>
       <identifier>option.emacsmode_controlSlash</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::SLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::Z, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Control+S to Command+F</name>
       <identifier>option.emacsmode_controlS</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::F, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>[ex] Control+1 to Home / Control+2 to End</name>
       <identifier>option.emacsmode_ex_control12</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::HOME</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::END</autogen>
     </item>
@@ -202,6 +353,10 @@
       <name>[ex] Control+Comma(,)/Dot(.) to Home/End</name>
       <identifier>option.emacsmode_ex_controlcommadot</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::COMMA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::HOME</autogen>
       <autogen>__KeyToKey__ KeyCode::DOT,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::END</autogen>
     </item>
@@ -209,6 +364,10 @@
       <name>[ex] Control+Q to PageUp</name>
       <identifier>option.emacsmode_ex_controlQ</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEUP</autogen>
     </item>
     <item>
@@ -220,16 +379,25 @@
         ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
         ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
       </modifier_not>
-      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::DELETE, ModifierFlag::OPTION_L,
+      </autogen>
     </item>
     <item>
       <name>[ex] Control+U to Command+Shift+Left,Command+X</name>
       <identifier>option.emacsmode_ex_controlU</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <block>
         <only>EXCEL</only>
         <autogen>
           __KeyToKey__
-          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::HOME, ModifierFlag::SHIFT_L,
           KeyCode::X, ModifierFlag::COMMAND_L,
           Option::NOREPEAT
@@ -240,7 +408,7 @@
         <windowname_only>Launchpad</windowname_only>
         <autogen>
           __KeyToKey__
-          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
           KeyCode::X, ModifierFlag::COMMAND_L,
           Option::NOREPEAT
@@ -248,21 +416,38 @@
       </block>
       <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
-        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+          Option::NOREPEAT,
+        </autogen>
       </block>
       <block>
         <only>DICTIONARY</only>
-        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L, KeyCode::X, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+          Option::NOREPEAT,
+        </autogen>
       </block>
     </item>
     <item>
       <name>[ex] Control+U to Command+Shift+Left,Delete</name>
       <identifier>option.emacsmode_ex_controlU_delete</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <block>
         <only>EXCEL</only>
         <autogen>
           __KeyToKey__
-          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::HOME, ModifierFlag::SHIFT_L,
           KeyCode::DELETE,
           Option::NOREPEAT
@@ -273,7 +458,7 @@
         <windowname_only>Launchpad</windowname_only>
         <autogen>
           __KeyToKey__
-          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
           KeyCode::DELETE,
           Option::NOREPEAT
@@ -281,24 +466,40 @@
       </block>
       <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
-        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::DELETE, Option::NOREPEAT</autogen>
+        <autogen>
+          __KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+          KeyCode::DELETE,
+          Option::NOREPEAT,
+        </autogen>
       </block>
       <block>
         <only>DICTIONARY</only>
-        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L, KeyCode::DELETE, Option::NOREPEAT</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::DELETE,
+          Option::NOREPEAT,
+        </autogen>
       </block>
     </item>
     <item>
       <name>[ex] Control+U to Command+Shift+Left,Forward Delete</name>
       <identifier>option.emacsmode_ex_controlU_forwarddelete</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <block>
         <only>EXCEL</only>
         <autogen>
           __KeyToKey__
-          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::HOME, ModifierFlag::SHIFT_L,
           KeyCode::FORWARD_DELETE,
-          Option::NOREPEAT
+          Option::NOREPEAT,
         </autogen>
       </block>
       <block>
@@ -306,25 +507,41 @@
         <windowname_only>Launchpad</windowname_only>
         <autogen>
           __KeyToKey__
-          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
           KeyCode::FORWARD_DELETE,
-          Option::NOREPEAT
+          Option::NOREPEAT,
         </autogen>
       </block>
       <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}, DICTIONARY</not>
-        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, Option::NOREPEAT</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+          KeyCode::FORWARD_DELETE,
+          Option::NOREPEAT,
+        </autogen>
       </block>
       <block>
         <only>DICTIONARY</only>
-        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L, KeyCode::FORWARD_DELETE, Option::NOREPEAT</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::SHIFT_L,
+          KeyCode::FORWARD_DELETE,
+          Option::NOREPEAT,
+        </autogen>
       </block>
     </item>
     <item>
       <name>[ex] Control+U to PageUp</name>
       <identifier>remap.controlU2pageup</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::PAGEUP</autogen>
     </item>
     <item>
@@ -337,58 +554,127 @@
       <name>[ex] Control+AE to Home/End</name>
       <identifier>option.emacsmode_ex_controlAE</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::HOME</autogen>
       <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::END</autogen>
     </item>
     <item>
       <name>[ex] Command+W to Command+C</name>
       <identifier>option.emacsmode_ex_commandW</identifier>
+      <modifier_not>
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <!-- Do not use "not filter" on changing Command+XXX -->
-      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
     </item>
     <item>
       <name>[ex] Command+W to Control+X,Control+M,Command+C (only in Xcode)</name>
       <appendix>(+ Command+W to Command+C (except Xcode))</appendix>
       <identifier>option.emacsmode_ex_commandW_xcode</identifier>
+      <modifier_not>
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <block>
         <only>XCODE</only>
-        <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::X, ModifierFlag::CONTROL_L,
+          KeyCode::M, ModifierFlag::CONTROL_L,
+          KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        </autogen>
       </block>
       <block>
         <!-- Do not use "not filter" on changing Command+XXX -->
-        <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+          KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        </autogen>
       </block>
     </item>
     <item>
       <name>[ex] Control+W to Control+X,Control+M,Command+X (only in Xcode)</name>
       <appendix>(+ Control+W to Command+X (except Xcode))</appendix>
       <identifier>option.emacsmode_ex_controlW_xcode</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <block>
         <only>XCODE</only>
-        <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::CONTROL_L, KeyCode::M, ModifierFlag::CONTROL_L, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+        </autogen>
       </block>
       <block>
         <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-        <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::X, ModifierFlag::COMMAND_L,
+        </autogen>
       </block>
     </item>
     <item>
       <name>[ex] Option+W to Command+W</name>
       <identifier>option.emacsmode_ex_optionW</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::W, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>[ex] Option+E to Command+W</name>
       <identifier>option.emacsmode_ex_optionE</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::W, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>[ex] Option+T to Command+T</name>
       <identifier>option.emacsmode_ex_optionT</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
-      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::T, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>[ex] Use Control+X as prefix key</name>
