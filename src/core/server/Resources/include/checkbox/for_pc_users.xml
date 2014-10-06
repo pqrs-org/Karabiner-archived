@@ -328,8 +328,8 @@
     </item>
     <item>
       <name>Use PC Style Home/End</name>
-      <appendix>(Change Home to Control+A)</appendix>
-      <appendix>(Change End to Control+E)</appendix>
+      <appendix>(Use Home and End key to beginning-of-line/end-of-line.)</appendix>
+      <appendix>(Actually, change Home/End key to Control+A/E.)</appendix>
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikehomeend_emacs</identifier>
@@ -354,8 +354,9 @@
     </item>
     <item>
       <name>Use PC Style Home/End #2</name>
-      <appendix>(Change Home to Command+Left)</appendix>
-      <appendix>(Change End to Command+Right)</appendix>
+      <appendix>(Use Home and End key to beginning-of-line/end-of-line.)</appendix>
+      <appendix>(Actually, change Home/End key to Command+Left/Right.)</appendix>
+      <appendix></appendix>
       <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
       <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
       <appendix></appendix>
