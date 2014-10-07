@@ -1,7 +1,13 @@
-Since 10.2.0
-------------
+Version 10.3.0
+--------------
 
 * Stability at reloading XML has been improved.
+* OS X 10.10 support has been improved.
+* Prepared settings have been updated.
+* "Check for updates" (Sparkle) has been updated.
+* "Restart AXNotifier" button has been added into Preferences.
+* Fixed issues:
+  * EventViewer does not show control-tab and control-shift-tab event when Full Keyboard Access is enabled.
 * Updates for people who add new settings by oneself:
     * The following filters have been added.
         * <modifierlocked_only>
