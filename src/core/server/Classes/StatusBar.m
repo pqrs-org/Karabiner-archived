@@ -47,9 +47,8 @@
       NSImage* image = [NSImage imageNamed:@"icon.statusbar"];
       [image setTemplate:YES];
 
-      statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+      statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
 
-      [statusItem_ setTitle:@""];
       [statusItem_ setToolTip:@"Karabiner"];
       [statusItem_ setImage:image];
       [statusItem_ setHighlightMode:YES];
@@ -60,12 +59,16 @@
     // setTitle
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsShowSettingNameInStatusBar]) {
       [statusItem_ setTitle:@""];
+      [statusItem_ setLength:NSSquareStatusItemLength];
 
     } else {
       NSString* title = [preferencesManager_ configlist_selectedName];
       if (title) {
         NSAttributedString* attributedtitle = [[NSAttributedString alloc] initWithString:title attributes:nil];
         [statusItem_ setAttributedTitle:attributedtitle];
+        // We need to set length manually to avoid a bug of OS X 10.10.
+        // (Don't use NSVariableStatusItemLength.)
+        [statusItem_ setLength:([[NSStatusBar systemStatusBar] thickness] + [attributedtitle size].width) + 2];
       }
     }
   }
