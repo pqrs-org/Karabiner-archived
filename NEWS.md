@@ -10,10 +10,10 @@ Version 10.3.0
   * EventViewer does not show control-tab and control-shift-tab event when Full Keyboard Access is enabled.
 * Updates for people who add new settings by oneself:
     * The following filters have been added.
-        * <modifierlocked_only>
-        * <modifierlocked_not>
-        * <modifierstuck_only>
-        * <modifierstuck_not>
+        * &lt;modifierlocked_only&gt;
+        * &lt;modifierlocked_not&gt;
+        * &lt;modifierstuck_only&gt;
+        * &lt;modifierstuck_not&gt;
 
 Version 10.2.0
 --------------
