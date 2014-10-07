@@ -6,7 +6,7 @@ Version 10.3.0
 * Prepared settings have been updated.
 * "Check for updates" (Sparkle) has been updated.
 * "Restart AXNotifier" button has been added into Preferences.
-* Fixed issues:
+* Fixed issue:
   * EventViewer does not show control-tab and control-shift-tab event when Full Keyboard Access is enabled.
 * Updates for people who add new settings by oneself:
     * The following filters have been added.
