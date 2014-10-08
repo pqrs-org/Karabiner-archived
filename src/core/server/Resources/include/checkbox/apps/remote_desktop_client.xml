@@ -15,15 +15,15 @@
 
         @begin
         KeyCode::CONTROL_L, ModifierFlag::RDC_COMMAND,
-
-        Option::KEYTOKEY_AFTER_KEYUP,
-        KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
-        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
         @end
 
         @begin
         KeyCode::COMMAND_L,
         @end
+
+        Option::KEYTOKEY_AFTER_KEYUP,
+        KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
+        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
       </autogen>
       <autogen>
         __KeyOverlaidModifier__
@@ -31,15 +31,15 @@
 
         @begin
         KeyCode::CONTROL_R, ModifierFlag::RDC_COMMAND,
-
-        Option::KEYTOKEY_AFTER_KEYUP,
-        KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
-        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
         @end
 
         @begin
         KeyCode::COMMAND_R,
         @end
+
+        Option::KEYTOKEY_AFTER_KEYUP,
+        KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
+        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
       </autogen>
       <autogen>
         __KeyToKey__
