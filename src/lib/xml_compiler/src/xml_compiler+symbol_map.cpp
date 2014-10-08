@@ -1,3 +1,4 @@
+#include <iostream>
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
