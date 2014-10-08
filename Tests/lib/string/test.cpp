@@ -99,35 +99,35 @@ TEST(pqrs_string, to_uint32_t) {
   boost::optional<uint32_t> actual;
 
   actual = pqrs::string::to_uint32_t("123456");
-  EXPECT_TRUE(actual);
+  EXPECT_TRUE(static_cast<bool>(actual));
   EXPECT_EQ(static_cast<uint32_t>(123456), *actual);
 
   actual = pqrs::string::to_uint32_t("0");
-  EXPECT_TRUE(actual);
+  EXPECT_TRUE(static_cast<bool>(actual));
   EXPECT_EQ(static_cast<uint32_t>(0), *actual);
 
   // oct
   actual = pqrs::string::to_uint32_t("0100");
-  EXPECT_TRUE(actual);
+  EXPECT_TRUE(static_cast<bool>(actual));
   EXPECT_EQ(static_cast<uint32_t>(64), *actual);
 
   // hex
   actual = pqrs::string::to_uint32_t("0x123456");
-  EXPECT_TRUE(actual);
+  EXPECT_TRUE(static_cast<bool>(actual));
   EXPECT_EQ(static_cast<uint32_t>(1193046), *actual);
 
   actual = pqrs::string::to_uint32_t("");
-  EXPECT_FALSE(actual);
+  EXPECT_FALSE(static_cast<bool>(actual));
 
   actual = pqrs::string::to_uint32_t("0xG");
-  EXPECT_FALSE(actual);
+  EXPECT_FALSE(static_cast<bool>(actual));
 
   actual = pqrs::string::to_uint32_t("abc");
-  EXPECT_FALSE(actual);
+  EXPECT_FALSE(static_cast<bool>(actual));
 
   // boost::optional<std::string>
   actual = pqrs::string::to_uint32_t(boost::none);
-  EXPECT_FALSE(actual);
+  EXPECT_FALSE(static_cast<bool>(actual));
 
   actual = pqrs::string::to_uint32_t(boost::optional<std::string>("123"));
   EXPECT_EQ(static_cast<uint32_t>(123), *actual);
