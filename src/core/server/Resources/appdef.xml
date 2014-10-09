@@ -168,6 +168,11 @@
   </appdef>
 
   <appdef>
+      <appname>ANDROID_STUDIO</appname>
+      <equal>com.google.android.studio</equal>
+  </appdef>
+
+  <appdef>
     <appname>MACSOUP</appname>
     <equal>org.pqrs.unknownapp.MacSOUP</equal>
   </appdef>
