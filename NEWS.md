@@ -1,3 +1,8 @@
+Version 10.4.0
+--------------
+
+* A broken prepared setting has been fixed.
+
 Version 10.3.0
 --------------
 
