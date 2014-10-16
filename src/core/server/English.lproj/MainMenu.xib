@@ -188,17 +188,6 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
                                         </scrollView>
-                                        <button id="665">
-                                            <rect key="frame" x="510" y="532" width="95" height="25"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" title="ReloadXML" bezelStyle="shadowlessSquare" image="NSRefreshTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="668">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="reloadXML:" target="710" id="723"/>
-                                            </connections>
-                                        </button>
                                         <button verticalHuggingPriority="750" id="1371">
                                             <rect key="frame" x="17" y="10" width="82" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -219,6 +208,17 @@
                                             </buttonCell>
                                             <connections>
                                                 <action selector="collapse:" target="710" id="1377"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="665">
+                                            <rect key="frame" x="483" y="527" width="129" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Reload XML" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="668">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="reloadXML:" target="710" id="723"/>
                                             </connections>
                                         </button>
                                     </subviews>
