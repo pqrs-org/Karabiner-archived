@@ -63,7 +63,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       observable = NO;
     }
 
-    // Java apps will be crash if observe. (We confirm crash in SQLDeveloper.)
+    // Java apps will be crashed if observe. (We confirm crash in SQLDeveloper.)
     if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
         [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
         [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
