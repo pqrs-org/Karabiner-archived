@@ -66,28 +66,22 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     // Java apps will be crash if observe. (We confirm crash in SQLDeveloper.)
     if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
         [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
-        [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"]) {
+        [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
+
+        // LibreOffice
+        // https://github.com/tekezo/Karabiner/issues/243
+        [[runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"] ||
+
+        // Matlab
+        // https://github.com/tekezo/Karabiner/issues/259
+        [[runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"] ||
+
+        // IntelliJ IDEA
+        // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
+        [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains.intellij"]) {
 #if 0
       NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
 #endif
-      observable = NO;
-    }
-
-    // LibreOffice will be crash if observe.
-    // https://github.com/tekezo/Karabiner/issues/243
-    if ([[runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"]) {
-      observable = NO;
-    }
-
-    // Matlab will be crash if observe.
-    // https://github.com/tekezo/Karabiner/issues/259
-    if ([[runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"]) {
-      observable = NO;
-    }
-
-    // IntelliJ IDEA will be crash if observe.
-    // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
-    if ([[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains.intellij"]) {
       observable = NO;
     }
 
