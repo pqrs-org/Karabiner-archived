@@ -85,6 +85,12 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       observable = NO;
     }
 
+    // IntelliJ IDEA will be crash if observe.
+    // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
+    if ([[runningApplication bundleIdentifier] isEqualToString:@"com.jetbrains.intellij.ce"]) {
+      observable = NO;
+    }
+
     // ----------------------------------------
     if (observable) {
       pid_t pid = [self.runningApplication processIdentifier];
