@@ -40,3 +40,6 @@ xcode:
 
 run: all
 	open ./build/Release/Karabiner.app
+
+podupdate:
+	pod update
