@@ -321,4 +321,9 @@
     <productid>0x023C</productid>
   </deviceproductdef>
 
+  <deviceproductdef>
+    <productname>Advantage_MPC</productname>
+    <productid>0x0007</productid>
+  </deviceproductdef>
+
 </root>

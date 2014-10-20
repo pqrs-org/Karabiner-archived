@@ -126,4 +126,9 @@
     <vendorid>0x05AC</vendorid>
   </devicevendordef>
 
+  <devicevendordef>
+    <vendorname>Kinesis</vendorname>
+    <vendorid>0x05f3</vendorid>
+  </devicevendordef>
+
 </root>
