@@ -87,7 +87,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
     // IntelliJ IDEA will be crash if observe.
     // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
-    if ([[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains.intellij.ce"]) {
+    if ([[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains.intellij"]) {
       observable = NO;
     }
 
