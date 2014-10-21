@@ -8,7 +8,7 @@ namespace RemapFunc {
 class ForceNumLockOn final : public RemapFuncBase {
 public:
   ForceNumLockOn(void) : RemapFuncBase(BRIDGE_REMAPTYPE_FORCENUMLOCKON),
-                         index_(0) {}
+                         index_(0), forceOffMode_(false) {}
 
   bool remapForceNumLockOn(ListHookedKeyboard::Item* item) override;
 
@@ -20,6 +20,7 @@ public:
 private:
   size_t index_;
   DeviceIdentifier deviceIdentifier_;
+  bool forceOffMode_;
 };
 }
 }

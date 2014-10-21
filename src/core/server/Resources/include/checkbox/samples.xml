@@ -1927,6 +1927,16 @@ Two Lines</autogen>
           KeyCode::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK,
         </autogen>
       </item>
+      <item>
+        <identifier>remap.samples_forcenumlockon_force_off</identifier>
+        <name>Force turn NumLock *off* at Apple Internal Keyboard (0x05ac,0x0245)</name>
+        <autogen>
+          __ForceNumLockOn__
+          DeviceVendor::RawValue::0x05ac,
+          DeviceProduct::RawValue::0x0245,
+          Option::FORCENUMLOCKON_FORCE_OFF,
+        </autogen>
+      </item>
     </item>
 
     <item>
