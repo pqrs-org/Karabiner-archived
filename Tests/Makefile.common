@@ -1,5 +1,5 @@
 CXXFLAGS = \
-    -I../../Pods/Headers/GoogleTest \
+    -I../../Pods/Headers/Public/GoogleTest \
     -I/usr/local/include \
     -Wall -Werror \
     -O2 \
