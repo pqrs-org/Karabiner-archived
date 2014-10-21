@@ -35,6 +35,16 @@
           <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
         </replacementdef>
       </include>
+      <include path="../commons/wrap_keys/pointing_button.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::COMMAND_L</replacementvalue>
+        </replacementdef>
+      </include>
     </item>
     <item>
       <name>Fn+letter to Control+letter</name>
@@ -64,6 +74,16 @@
         </replacementdef>
       </include>
       <include path="../commons/wrap_keys/symbol.xml">
+        <replacementdef>
+          <replacementname>BEFORE</replacementname>
+          <replacementvalue>ModifierFlag::FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>AFTER</replacementname>
+          <replacementvalue>ModifierFlag::CONTROL_L</replacementvalue>
+        </replacementdef>
+      </include>
+      <include path="../commons/wrap_keys/pointing_button.xml">
         <replacementdef>
           <replacementname>BEFORE</replacementname>
           <replacementvalue>ModifierFlag::FN</replacementvalue>
@@ -105,6 +125,16 @@
           </replacementdef>
        </include>
        <include path="../commons/wrap_keys/symbol.xml">
+          <replacementdef>
+             <replacementname>BEFORE</replacementname>
+             <replacementvalue>ModifierFlag::FN</replacementvalue>
+          </replacementdef>
+          <replacementdef>
+             <replacementname>AFTER</replacementname>
+             <replacementvalue>ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</replacementvalue>
+          </replacementdef>
+       </include>
+       <include path="../commons/wrap_keys/pointing_button.xml">
           <replacementdef>
              <replacementname>BEFORE</replacementname>
              <replacementvalue>ModifierFlag::FN</replacementvalue>
