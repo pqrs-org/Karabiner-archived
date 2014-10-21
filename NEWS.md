@@ -1,3 +1,10 @@
+Since 10.4.0
+------------
+
+* Updates for people who add new settings by oneself:
+    * Option::FORCENUMLOCKON_FORCE_OFF has been added.
+
+
 Version 10.4.0
 --------------
 
@@ -12,7 +19,7 @@ Version 10.3.0
 * "Check for updates" (Sparkle) has been updated.
 * "Restart AXNotifier" button has been added into Preferences.
 * Fixed issue:
-  * EventViewer does not show control-tab and control-shift-tab event when Full Keyboard Access is enabled.
+    * EventViewer does not show control-tab and control-shift-tab event when Full Keyboard Access is enabled.
 * Updates for people who add new settings by oneself:
     * The following filters have been added.
         * &lt;modifierlocked_only&gt;
