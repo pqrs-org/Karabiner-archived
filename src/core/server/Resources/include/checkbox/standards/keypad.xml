@@ -293,6 +293,16 @@
       <autogen>__ForceNumLockOn__ DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_NUMBER_PAD</autogen>
     </item>
     <item>
+      <name>Turn off NumLock LED in Logitech keyboards automatically.</name>
+      <appendix>(NumLock LED will be turned off after you type any keys.)</appendix>
+      <identifier>remap.turn_off_numlock_led_automatically</identifier>
+      <autogen>
+        __ForceNumLockOn__
+        DeviceVendor::LOGITECH, DeviceProduct::ANY,
+        Option::FORCENUMLOCKON_FORCE_OFF,
+      </autogen>
+    </item>
+    <item>
       <name>Use KeyPad as MS Project Build Keys</name>
       <appendix>Maps some of the keypad keys to standard debugger step thru cmds for Visual Studio</appendix>
       <item>
