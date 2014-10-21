@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<root>
+  <autogen>__KeyToKey__ PointingButton::LEFT,     {{ BEFORE }}, PointingButton::LEFT,     {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::RIGHT,    {{ BEFORE }}, PointingButton::RIGHT,    {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::MIDDLE,   {{ BEFORE }}, PointingButton::MIDDLE,   {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON4,  {{ BEFORE }}, PointingButton::BUTTON4,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON5,  {{ BEFORE }}, PointingButton::BUTTON5,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON6,  {{ BEFORE }}, PointingButton::BUTTON6,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON7,  {{ BEFORE }}, PointingButton::BUTTON7,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON8,  {{ BEFORE }}, PointingButton::BUTTON8,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON9,  {{ BEFORE }}, PointingButton::BUTTON9,  {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON10, {{ BEFORE }}, PointingButton::BUTTON10, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON11, {{ BEFORE }}, PointingButton::BUTTON11, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON12, {{ BEFORE }}, PointingButton::BUTTON12, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON13, {{ BEFORE }}, PointingButton::BUTTON13, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON14, {{ BEFORE }}, PointingButton::BUTTON14, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON15, {{ BEFORE }}, PointingButton::BUTTON15, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON16, {{ BEFORE }}, PointingButton::BUTTON16, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON17, {{ BEFORE }}, PointingButton::BUTTON17, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON18, {{ BEFORE }}, PointingButton::BUTTON18, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON19, {{ BEFORE }}, PointingButton::BUTTON19, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON20, {{ BEFORE }}, PointingButton::BUTTON20, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON21, {{ BEFORE }}, PointingButton::BUTTON21, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON22, {{ BEFORE }}, PointingButton::BUTTON22, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON23, {{ BEFORE }}, PointingButton::BUTTON23, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON24, {{ BEFORE }}, PointingButton::BUTTON24, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON25, {{ BEFORE }}, PointingButton::BUTTON25, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON26, {{ BEFORE }}, PointingButton::BUTTON26, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON27, {{ BEFORE }}, PointingButton::BUTTON27, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON28, {{ BEFORE }}, PointingButton::BUTTON28, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON29, {{ BEFORE }}, PointingButton::BUTTON29, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON30, {{ BEFORE }}, PointingButton::BUTTON30, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON31, {{ BEFORE }}, PointingButton::BUTTON31, {{ AFTER }}</autogen>
+  <autogen>__KeyToKey__ PointingButton::BUTTON32, {{ BEFORE }}, PointingButton::BUTTON32, {{ AFTER }}</autogen>
+</root>
