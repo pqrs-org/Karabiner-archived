@@ -308,5 +308,10 @@
       <identifier>remap.fn2rightclick</identifier>
       <autogen>__KeyToKey__ KeyCode::FN, PointingButton::RIGHT</autogen>
     </item>
+    <item>
+      <name>Disable Fn</name>
+      <identifier>remap.drop_fn</identifier>
+      <autogen>__KeyToKey__ KeyCode::FN, KeyCode::VK_NONE</autogen>
+    </item>
   </item>
 </root>
