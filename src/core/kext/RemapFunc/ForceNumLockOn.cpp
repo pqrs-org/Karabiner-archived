@@ -45,6 +45,14 @@ ForceNumLockOn::add(AddDataType datatype, AddValue newval) {
     }
     break;
 
+  case BRIDGE_DATATYPE_OPTION: {
+    Option option(newval);
+    if (Option::FORCENUMLOCKON_FORCE_OFF == option) {
+      forceOffMode_ = true;
+    }
+    break;
+  }
+
   default:
     IOLOG_ERROR("ForceNumLockOn::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
     break;
@@ -65,8 +73,14 @@ ForceNumLockOn::remapForceNumLockOn(ListHookedKeyboard::Item* item) {
   IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, item->get());
   if (kbd) {
     GlobalLock::ScopedUnlock lk;
-    if (!kbd->numLock()) {
-      kbd->setNumLock(true);
+    if (!forceOffMode_) {
+      if (!kbd->numLock()) {
+        kbd->setNumLock(true);
+      }
+    } else {
+      if (kbd->numLock()) {
+        kbd->setNumLock(false);
+      }
     }
   }
 

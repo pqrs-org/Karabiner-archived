@@ -35,6 +35,9 @@ FLIPSCROLLWHEEL_VERTICAL                --AUTO--
 // For __KeyOverlaidModifier__ and __HoldingKeyToKey__
 UNINTERRUPTIBLE_BY_SCROLL_WHEEL         --AUTO--
 
+// For __ForceNumLockOn__
+FORCENUMLOCKON_FORCE_OFF                --AUTO--
+
 // Identities of @begin, @end.
 USE_SEPARATOR                           --AUTO--
 SEPARATOR                               --AUTO--
