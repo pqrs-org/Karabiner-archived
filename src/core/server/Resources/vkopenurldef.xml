@@ -190,8 +190,13 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_iOS_Simulator</name>
+    <url type="file">/Applications/Xcode.app/Contents/Applications/iOS Simulator.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_iPhoneSimulator</name>
-    <url type="file">/Applications/Xcode.app/Contents/Applications/iPhone Simulator.app</url>
+    <url type="file">/Applications/Xcode.app/Contents/Applications/iOS Simulator.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
