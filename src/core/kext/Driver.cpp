@@ -11,10 +11,10 @@
 #define super IOService
 // You cannot use the "super" macro here, however, with the
 //  OSDefineMetaClassAndStructors macro.
-OSDefineMetaClassAndStructors(org_pqrs_driver_Karabiner, IOService)
+OSDefineMetaClassAndStructors(org_pqrs_driver_Karabiner, IOService);
 
-    // ----------------------------------------------------------------------
-    bool org_pqrs_driver_Karabiner::init(OSDictionary* dict) {
+// ----------------------------------------------------------------------
+bool org_pqrs_driver_Karabiner::init(OSDictionary* dict) {
   IOLOG_INFO("init\n");
 
   bool res = super::init(dict);
