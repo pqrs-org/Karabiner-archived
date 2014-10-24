@@ -17,8 +17,8 @@
 
 #define super IOUserClient
 
-OSDefineMetaClassAndStructors(USERCLIENT_KEXT_CLASSNAME, IOUserClient)
-    OSAsyncReference64 USERCLIENT_KEXT_CLASSNAME::asyncref_;
+OSDefineMetaClassAndStructors(USERCLIENT_KEXT_CLASSNAME, IOUserClient);
+OSAsyncReference64 USERCLIENT_KEXT_CLASSNAME::asyncref_;
 bool USERCLIENT_KEXT_CLASSNAME::notification_enabled_ = false;
 
 IOExternalMethodDispatch USERCLIENT_KEXT_CLASSNAME::methods_[BRIDGE_USERCLIENT__END__] = {
