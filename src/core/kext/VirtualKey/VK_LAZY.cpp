@@ -28,7 +28,9 @@ VirtualKey::VK_LAZY::handle(const Params_KeyboardEventCallBack& params) {
 
 ModifierFlag
 VirtualKey::VK_LAZY::getModifierFlag(KeyCode keycode) {
-  /**/ if (keycode == KeyCode::VK_LAZY_COMMAND_L) { return ModifierFlag::COMMAND_L; } else if (keycode == KeyCode::VK_LAZY_COMMAND_R) {
+  /**/ if (keycode == KeyCode::VK_LAZY_COMMAND_L) {
+    return ModifierFlag::COMMAND_L;
+  } else if (keycode == KeyCode::VK_LAZY_COMMAND_R) {
     return ModifierFlag::COMMAND_R;
   } else if (keycode == KeyCode::VK_LAZY_CONTROL_L) {
     return ModifierFlag::CONTROL_L;
