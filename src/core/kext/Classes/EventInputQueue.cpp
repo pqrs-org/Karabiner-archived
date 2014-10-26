@@ -433,7 +433,7 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
 
   // ------------------------------------------------------------
   // handle SimultaneousKeyPresses
-  do {
+  while (true) {
     Item* front = static_cast<Item*>(queue_.safe_front());
     if (!front) return;
 
@@ -458,7 +458,10 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
       }
     }
 
-  } while (RemapClassManager::remap_simultaneouskeypresses());
+    if (!RemapClassManager::remap_simultaneouskeypresses(front->getParamsBase())) {
+      break;
+    }
+  }
 
   // ------------------------------------------------------------
   // handle BlockUntilKeyUp

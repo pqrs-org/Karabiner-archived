@@ -119,7 +119,7 @@ void remap(RemapParams& remapParams);
 bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
 
 // return true if EventInputQueue::queue_ is changed.
-bool remap_simultaneouskeypresses(void);
+bool remap_simultaneouskeypresses(const Params_Base& paramsBase);
 
 // return true if dropped.
 bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
