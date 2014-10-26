@@ -103,7 +103,7 @@ SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval) {
 }
 
 bool
-SimultaneousKeyPresses::remapSimultaneousKeyPresses(bool keyuponly) {
+SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
   // We consider "Shift_L+Shift_R to Space".
   // When we press keys by the following order.
   //
@@ -155,9 +155,6 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(bool keyuponly) {
 
     return true;
   }
-
-  // ------------------------------------------------------------
-  if (keyuponly) return false;
 
   // ------------------------------------------------------------
   // handle KeyDown event.
