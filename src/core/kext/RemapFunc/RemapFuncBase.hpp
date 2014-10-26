@@ -10,6 +10,25 @@
 #include "ToEvent.hpp"
 
 namespace org_pqrs_Karabiner {
+class RemapSimultaneousKeyPressesResult {
+public:
+  enum Value {
+    NOT_CHANGED,
+
+    // __SimultaneousKeyPresses__ has been applied.
+    // And KeyCode::VK_SIMULTANEOUSKEYPRESSES_* has been pushed.
+    APPLIED,
+
+    // __SimultaneousKeyPresses__ has been applied.
+    // But no KeyCode::VK_SIMULTANEOUSKEYPRESSES_* has been pushed.
+    // This result will be returned when key up event and some keys remain pressed.
+    //
+    // We need to continue remap_simultaneouskeypresses in EventInputQueue but
+    // do not change active_SimultaneousButtonPresses_ in RemapClass::Item.
+    QUEUE_CHANGED,
+  };
+};
+
 namespace RemapFunc {
 class RemapFuncBase {
 protected:
@@ -22,7 +41,9 @@ public:
 
   virtual bool remap(RemapParams& remapParams) { return false; }
   virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }
-  virtual bool remapSimultaneousKeyPresses(void) { return false; }
+  virtual RemapSimultaneousKeyPressesResult::Value remapSimultaneousKeyPresses(void) {
+    return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
+  }
   virtual bool remapSetKeyboardType(KeyboardType& keyboardType) { return false; }
   virtual bool remapForceNumLockOn(ListHookedKeyboard::Item* item) { return false; }
   virtual const FromEvent* getBlockUntilKeyUpFromEvent(void) const { return NULL; }
