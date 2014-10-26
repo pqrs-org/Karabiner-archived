@@ -65,36 +65,22 @@ RemapClass::Item::remap(RemapParams& remapParams) {
 
   bool iskeydown = false;
   if (!remapParams.paramsBase.iskeydown(iskeydown)) {
-    iskeydown = false;
+    iskeydown = true;
   }
 
   if (iskeydown) {
     if (!parent_.enabled()) return;
     if (isblocked()) return;
   } else {
-    // We ignore filters_ if active_ is set at KeyDown.
-    if (isblocked() && !active_) return;
+    // We ignore event if active_ is not set at KeyDown.
+    if (!active_) return;
   }
 
-  // check parent_.enabled() for RelativePointerEvent and ScrollWheelEvent.
-  if (processor_->getType() == BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE ||
-      processor_->getType() == BRIDGE_REMAPTYPE_DROPSCROLLWHEEL ||
-      processor_->getType() == BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE ||
-      processor_->getType() == BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL ||
-      processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY ||
-      processor_->getType() == BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL ||
-      processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY ||
-      processor_->getType() == BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL) {
-    if (!parent_.enabled()) return;
+  if (!processor_->remap(remapParams)) {
+    return;
   }
 
-  if (processor_->remap(remapParams)) {
-    if (iskeydown) {
-      active_ = true;
-    } else {
-      active_ = false;
-    }
-  }
+  active_ = iskeydown;
 }
 
 bool
@@ -105,20 +91,16 @@ RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
     if (!parent_.enabled()) return false;
     if (isblocked()) return false;
   } else {
-    // We ignore filters_ if active_ is set at KeyDown.
-    if (isblocked() && !active_) return false;
+    // We ignore event if active_ is not set at KeyDown.
+    if (!active_) return false;
   }
 
-  if (processor_->drop(params)) {
-    if (params.ex_iskeydown) {
-      active_ = true;
-    } else {
-      active_ = false;
-    }
-    return true;
+  if (!processor_->drop(params)) {
+    return false;
   }
 
-  return false;
+  active_ = params.ex_iskeydown;
+  return true;
 }
 
 bool
@@ -143,11 +125,26 @@ RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase)
 }
 
 bool
-RemapClass::Item::remap_SimultaneousKeyPresses(const Params_Base& paramsBase) {
+RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown) {
   if (!processor_) return false;
-  if (isblocked()) return false;
 
-  return processor_->remapSimultaneousKeyPresses(!parent_.enabled());
+  if (iskeydown) {
+    if (!parent_.enabled()) return false;
+    if (isblocked()) return false;
+  } else {
+    // We ignore event if active_SimultaneousButtonPresses_ is not set at KeyDown.
+    if (!active_SimultaneousButtonPresses_) return false;
+  }
+
+  auto result = processor_->remapSimultaneousKeyPresses();
+  if (result == RemapSimultaneousKeyPressesResult::NOT_CHANGED) {
+    return false;
+  }
+
+  if (result == RemapSimultaneousKeyPressesResult::APPLIED) {
+    active_SimultaneousButtonPresses_ = iskeydown;
+  }
+  return true;
 }
 
 void
@@ -403,14 +400,14 @@ RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool 
 }
 
 bool
-RemapClass::remap_simultaneouskeypresses(const Params_Base& paramsBase, bool passThroughEnabled) {
+RemapClass::remap_simultaneouskeypresses(bool iskeydown, bool passThroughEnabled) {
   bool queue_changed = false;
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
       if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
 
-      if (p->remap_SimultaneousKeyPresses(paramsBase)) {
+      if (p->remap_SimultaneousKeyPresses(iskeydown)) {
         queue_changed = true;
       }
     }
@@ -775,14 +772,14 @@ isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
 }
 
 bool
-remap_simultaneouskeypresses(const Params_Base& paramsBase) {
+remap_simultaneouskeypresses(bool iskeydown) {
   bool passThroughEnabled = isPassThroughEnabled();
   bool queue_changed = false;
 
   for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
     RemapClass* p = enabled_remapclasses_[i];
     if (p) {
-      if (p->remap_simultaneouskeypresses(paramsBase, passThroughEnabled)) {
+      if (p->remap_simultaneouskeypresses(iskeydown, passThroughEnabled)) {
         queue_changed = true;
       }
     }

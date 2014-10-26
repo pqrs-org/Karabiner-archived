@@ -458,7 +458,12 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
       }
     }
 
-    if (!RemapClassManager::remap_simultaneouskeypresses(front->getParamsBase())) {
+    bool iskeydown = false;
+    if (!(front->getParamsBase()).iskeydown(iskeydown)) {
+      iskeydown = true;
+    }
+
+    if (!RemapClassManager::remap_simultaneouskeypresses(iskeydown)) {
       break;
     }
   }
