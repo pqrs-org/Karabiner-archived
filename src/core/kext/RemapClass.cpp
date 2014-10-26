@@ -774,7 +774,7 @@ isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
 }
 
 bool
-remap_simultaneouskeypresses(void) {
+remap_simultaneouskeypresses(const Params_Base& paramsBase) {
   bool passThroughEnabled = isPassThroughEnabled();
   bool queue_changed = false;
 
