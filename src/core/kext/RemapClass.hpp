@@ -26,7 +26,7 @@ public:
     // for BlockUntilKeyUp
     bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
     //
-    bool remap_SimultaneousKeyPresses(void);
+    bool remap_SimultaneousKeyPresses(const Params_Base& paramsBase);
     //
     void remap_setkeyboardtype(KeyboardType& keyboardType);
     //
@@ -69,7 +69,7 @@ public:
 
   // for BlockUntilKeyUp
   bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
-  bool remap_simultaneouskeypresses(bool passThroughEnabled);
+  bool remap_simultaneouskeypresses(const Params_Base& paramsBase, bool passThroughEnabled);
   bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled);
   const char* get_statusmessage(void) const { return statusmessage_; }
   bool enabled(void) const { return enabled_; }
