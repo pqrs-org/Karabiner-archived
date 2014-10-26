@@ -274,6 +274,29 @@
           @end
         </autogen>
       </item>
+
+      <item><name>──────────────────────────────</name></item>
+      <item>
+        <name>With config_only</name>
+        <appendix>Show message by pressing A and S simultaneously.</appendix>
+        <identifier>remap.samples_vk_config_config_only</identifier>
+        <config_not>notsave.samples_vk_config_config_only</config_not>
+        <autogen>
+          __SimultaneousKeyPresses__
+          __{ KeyCode::A, KeyCode::S, }__
+
+          KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_vk_config_config_only,
+        </autogen>
+      </item>
+      <item hidden="true">
+        <identifier vk_config="true">notsave.samples_vk_config_config_only</identifier>
+        <autogen>
+          __ShowStatusMessage__
+          A and S are pressed.
+          This message should be hidden
+          when you release A and S keys.
+        </autogen>
+      </item>
     </item>
     <item>
       <name>VK_CONSUMERKEY</name>
