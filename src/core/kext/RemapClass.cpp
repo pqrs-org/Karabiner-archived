@@ -17,7 +17,8 @@
 namespace org_pqrs_Karabiner {
 RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) : parent_(parent),
                                                                                        type_(BRIDGE_REMAPTYPE_NONE),
-                                                                                       active_(false) {
+                                                                                       active_(false),
+                                                                                       active_SimultaneousButtonPresses_(false) {
   processor_ = RemapFunc::RemapFuncFactory::create(vec, length);
 }
 

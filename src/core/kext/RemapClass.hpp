@@ -52,6 +52,7 @@ public:
 
     // true if remapped at KeyDown.
     bool active_;
+    bool active_SimultaneousButtonPresses_;
 
     RemapFunc::RemapFuncBase* processor_;
     RemapFilter::Vector_RemapFilterBasePointer filters_;
