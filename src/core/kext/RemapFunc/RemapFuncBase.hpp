@@ -22,7 +22,7 @@ public:
 
   virtual bool remap(RemapParams& remapParams) { return false; }
   virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }
-  virtual bool remapSimultaneousKeyPresses(bool keyuponly) { return false; }
+  virtual bool remapSimultaneousKeyPresses(void) { return false; }
   virtual bool remapSetKeyboardType(KeyboardType& keyboardType) { return false; }
   virtual bool remapForceNumLockOn(ListHookedKeyboard::Item* item) { return false; }
   virtual const FromEvent* getBlockUntilKeyUpFromEvent(void) const { return NULL; }
