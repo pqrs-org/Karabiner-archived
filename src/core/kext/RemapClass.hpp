@@ -26,7 +26,7 @@ public:
     // for BlockUntilKeyUp
     bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
     //
-    bool remap_SimultaneousKeyPresses(const Params_Base& paramsBase);
+    bool remap_SimultaneousKeyPresses(bool iskeydown);
     //
     void remap_setkeyboardtype(KeyboardType& keyboardType);
     //
@@ -70,7 +70,7 @@ public:
 
   // for BlockUntilKeyUp
   bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
-  bool remap_simultaneouskeypresses(const Params_Base& paramsBase, bool passThroughEnabled);
+  bool remap_simultaneouskeypresses(bool iskeydown, bool passThroughEnabled);
   bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled);
   const char* get_statusmessage(void) const { return statusmessage_; }
   bool enabled(void) const { return enabled_; }
@@ -120,7 +120,13 @@ void remap(RemapParams& remapParams);
 bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
 
 // return true if EventInputQueue::queue_ is changed.
-bool remap_simultaneouskeypresses(const Params_Base& paramsBase);
+//
+// Implementation Note:
+// Do not pass Params_Base to remap_simultaneouskeypresses because
+// this method may modify EventInputQueue (pop queue).
+// If passed Params_Base is deleted by pop queue,
+// access violation will happen.
+bool remap_simultaneouskeypresses(bool iskeydown);
 
 // return true if dropped.
 bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
