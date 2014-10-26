@@ -3,7 +3,7 @@ Since 10.4.0
 
 * Updates for people who add new settings by oneself:
     * Option::FORCENUMLOCKON_FORCE_OFF has been added.
-
+    * \_\_SimultaneousKeyPresses\_\_ has been improved in some corner cases.
 
 Version 10.4.0
 --------------
