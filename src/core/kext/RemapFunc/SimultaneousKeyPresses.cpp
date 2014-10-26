@@ -102,7 +102,7 @@ SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
+RemapSimultaneousKeyPressesResult::Value
 SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
   // We consider "Shift_L+Shift_R to Space".
   // When we press keys by the following order.
@@ -126,7 +126,7 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
   // So, we retry handling KeyUp event once more when we drop KeyUp event.
 
   EventInputQueue::Item* front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_.safe_front());
-  if (!front) return false;
+  if (!front) return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
 
   // backup device information.
   DeviceIdentifier deviceIdentifier(front->deviceIdentifier);
@@ -149,16 +149,17 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
         isAllDeactived = false;
       }
     }
-    if (isAllDeactived) {
-      push_remapped(false, deviceIdentifier);
+    if (!isAllDeactived) {
+      return RemapSimultaneousKeyPressesResult::QUEUE_CHANGED;
     }
 
-    return true;
+    push_remapped(false, deviceIdentifier);
+    return RemapSimultaneousKeyPressesResult::APPLIED;
   }
 
   // ------------------------------------------------------------
   // handle KeyDown event.
-  if (!FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) return false;
+  if (!FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
 
   // Check the first item in queue_ is target.
   //
@@ -176,7 +177,7 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
     }
   }
   // skip
-  return false;
+  return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
 
 scan:
   // --------------------
@@ -207,7 +208,7 @@ scan:
         downKeys_[i].item = front;
         break;
       } else if (fromInfo_[i].fromEvent().isTargetUpEvent(front->getParamsBase())) {
-        return false;
+        return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
       }
     }
 
@@ -226,7 +227,7 @@ scan:
         // - downKeys_[1] != NULL
         //
         if (!isAllKeysDown && isStrictKeyOrder_) {
-          return false;
+          return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
         }
       }
     }
@@ -237,15 +238,15 @@ scan:
         EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
       }
       push_remapped(true, deviceIdentifier);
-      return true;
+      return RemapSimultaneousKeyPressesResult::APPLIED;
     }
 
     // ----------------------------------------
     front = static_cast<EventInputQueue::Item*>(front->getnext());
-    if (!front) return false;
+    if (!front) return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
   }
 
-  return false;
+  return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
 }
 
 void
