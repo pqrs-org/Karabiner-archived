@@ -142,7 +142,7 @@ RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase)
 }
 
 bool
-RemapClass::Item::remap_SimultaneousKeyPresses(void) {
+RemapClass::Item::remap_SimultaneousKeyPresses(const Params_Base& paramsBase) {
   if (!processor_) return false;
   if (isblocked()) return false;
 
@@ -402,14 +402,14 @@ RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool 
 }
 
 bool
-RemapClass::remap_simultaneouskeypresses(bool passThroughEnabled) {
+RemapClass::remap_simultaneouskeypresses(const Params_Base& paramsBase, bool passThroughEnabled) {
   bool queue_changed = false;
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
       if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
 
-      if (p->remap_SimultaneousKeyPresses()) {
+      if (p->remap_SimultaneousKeyPresses(paramsBase)) {
         queue_changed = true;
       }
     }
@@ -781,7 +781,7 @@ remap_simultaneouskeypresses(const Params_Base& paramsBase) {
   for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
     RemapClass* p = enabled_remapclasses_[i];
     if (p) {
-      if (p->remap_simultaneouskeypresses(passThroughEnabled)) {
+      if (p->remap_simultaneouskeypresses(paramsBase, passThroughEnabled)) {
         queue_changed = true;
       }
     }
