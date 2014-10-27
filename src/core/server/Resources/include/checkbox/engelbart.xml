@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
 <!--
-    https://github.com/gabrielelana/engelbart/
-  -->
+  https://github.com/gabrielelana/engelbart/
+-->
 
 <root>
   <item>
@@ -17,7 +17,7 @@
       <appendix>Simultaneous home keys presses to CONTROL</appendix>
       <appendix>(D+F to CONTROL_L)</appendix>
       <appendix>(J+K to CONTROL_R)</appendix>
-      <identifier>remap.engelbart.home_row_to_control</identifier>
+      <identifier>remap.engelbart_control</identifier>
       <autogen>__SimultaneousKeyPresses__ KeyCode::D, KeyCode::F, KeyCode::CONTROL_L</autogen>
       <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::K, KeyCode::CONTROL_R</autogen>
     </item>
@@ -26,36 +26,95 @@
       <appendix>Simultaneous home keys presses to OPTION</appendix>
       <appendix>(S+D to OPTION_L)</appendix>
       <appendix>(K+L to OPTION_R)</appendix>
-      <identifier>remap.engelbart.home_row_to_option</identifier>
+      <identifier>remap.engelbart_option</identifier>
       <autogen>__SimultaneousKeyPresses__ KeyCode::S, KeyCode::D, KeyCode::OPTION_L</autogen>
       <autogen>__SimultaneousKeyPresses__ KeyCode::K, KeyCode::L, KeyCode::OPTION_R</autogen>
     </item>
     <item>
-      <name>ESCAPE</name>
-      <appendix>Simultaneous home keys presses to ESCAPE</appendix>
-      <appendix>(E+F to ESCAPE)</appendix>
-      <appendix>(J+I to ESCAPE)</appendix>
-      <identifier>remap.engelbart.home_row_to_ESCAPE</identifier>
-      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::F, KeyCode::ESCAPE</autogen>
-      <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::I, KeyCode::ESCAPE</autogen>
-    </item>
-    <item>
-      <name>META-1</name>
-      <appendix>Simultaneous home keys presses to META-1</appendix>
-      <appendix>(S+F to META-1)</appendix>
-      <appendix>(J+L to META-1)</appendix>
-      <identifier>remap.engelbart.home_row_to_meta_1</identifier>
+      <name>META</name>
+      <appendix>Simultaneous home keys presses to META. META doesn't exists as KeyCode so we will map those combo to KEYPAD_1 and KEYPAD_2</appendix>
+      <appendix>This is designed to work in an XOrg environment (maybe in a virtual machine) where you have xmodmap</appendix>
+      <appendix>(S+F to KEYPAD_1 and then (with xmodmap) to META_L)</appendix>
+      <appendix>(J+L to KEYPAD_2 and then (with xmodmap) to META_R)</appendix>
+      <identifier>remap.engelbart_meta</identifier>
       <autogen>__SimultaneousKeyPresses__ KeyCode::S, KeyCode::F, KeyCode::KEYPAD_1</autogen>
       <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::L, KeyCode::KEYPAD_2</autogen>
     </item>
     <item>
-      <name>META-2</name>
-      <appendix>Simultaneous home keys presses to META-2</appendix>
-      <appendix>(A+F to META-2)</appendix>
-      <appendix>(J+; to META-2)</appendix>
-      <identifier>remap.engelbart.home_row_to_meta_2</identifier>
+      <name>SUPER</name>
+      <appendix>Simultaneous home keys presses to SUPER. SUPER doesn't exists as KeyCode so we will map those combo to KEYPAD_3 and KEYPAD_4</appendix>
+      <appendix>This is designed to work in an XOrg environment (maybe in a virtual machine) where you have xmodmap</appendix>
+      <appendix>(A+F to KEYPAD_3 and then (with xmodmap) to SUPER_L)</appendix>
+      <appendix>(J+; to KEYPAD_4 and then (with xmodmap) to SUPER_R)</appendix>
+      <identifier>remap.engelbart_super</identifier>
       <autogen>__SimultaneousKeyPresses__ KeyCode::A, KeyCode::F, KeyCode::KEYPAD_3</autogen>
       <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::SEMICOLON, KeyCode::KEYPAD_4</autogen>
+    </item>
+    <!-- HOME ROW CROSS ABOVE ROW -->
+    <item>
+      <name>ESCAPE</name>
+      <appendix>Simultaneous keys presses to ESCAPE</appendix>
+      <appendix>(E+F to ESCAPE)</appendix>
+      <appendix>(J+I to ESCAPE)</appendix>
+      <identifier>remap.engelbart_escape</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::F, KeyCode::ESCAPE</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::I, KeyCode::ESCAPE</autogen>
+    </item>
+    <item>
+      <name>DELETE</name>
+      <appendix>Simultaneous keys presses to DELETE</appendix>
+      <appendix>(W+F to DELETE)</appendix>
+      <appendix>(J+O to DELETE)</appendix>
+      <identifier>remap.engelbart_delete</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::W, KeyCode::F, KeyCode::DELETE</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::J, KeyCode::O, KeyCode::DELETE</autogen>
+    </item>
+    <!-- ABOVE ROW -->
+    <item>
+      <name>LEADER</name>
+      <appendix>Simultaneous keys presses to Vim LEADER aka NO_BREAK_SPACE</appendix>
+      <appendix>(E+R to LEADER)</appendix>
+      <appendix>(U+I to LEADER)</appendix>
+      <identifier>remap.engelbart_leader</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::E, KeyCode::R, KeyCode::KEYPAD_5</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::U, KeyCode::I, KeyCode::KEYPAD_6</autogen>
+    </item>
+    <!-- BELOW ROW -->
+    <item>
+      <name>CONTROL+OPTION</name>
+      <appendix>Simultaneous keys presses to CONTROL+OPTION</appendix>
+      <appendix>(C+V to CONTROL_L+OPTION_L)</appendix>
+      <appendix>(M+, to CONTROL_R+OPTION_R)</appendix>
+      <identifier>remap.engelbart_control_plus_option</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::C, KeyCode::V, KeyCode::CONTROL_L, ModifierFlag::OPTION_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::M, KeyCode::COMMA, KeyCode::CONTROL_R, ModifierFlag::OPTION_R</autogen>
+    </item>
+    <item>
+      <name>CONTROL+SHIFT</name>
+      <appendix>Simultaneous keys presses to CONTROL+SHIFT</appendix>
+      <appendix>(X+V to CONTROL_L+SHIFT_L)</appendix>
+      <appendix>(M+. to CONTROL_R+SHIFT_R)</appendix>
+      <identifier>remap.engelbart_control_plus_shift</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::X, KeyCode::V, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::M, KeyCode::DOT, KeyCode::CONTROL_R, ModifierFlag::SHIFT_R</autogen>
+    </item>
+    <item>
+      <name>OPTION+SHIFT</name>
+      <appendix>Simultaneous keys presses to OPTION+SHIFT</appendix>
+      <appendix>(X+C to OPTION_L+SHIFT_L)</appendix>
+      <appendix>(,+. to OPTION_R+SHIFT_R)</appendix>
+      <identifier>remap.engelbart_option_plus_shift</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::X, KeyCode::C, KeyCode::OPTION_L, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::COMMA, KeyCode::DOT, KeyCode::OPTION_R, ModifierFlag::SHIFT_R</autogen>
+    </item>
+    <item>
+      <name>CONTROL+OPTION+SHIFT</name>
+      <appendix>Simultaneous keys presses to CONTROL+OPTION+SHIFT</appendix>
+      <appendix>(Z+V to CONTROL_L+OPTION_L+SHIFT_L)</appendix>
+      <appendix>(M+/ to CONTROL_R+OPTION_R+SHIFT_R)</appendix>
+      <identifier>remap.engelbart_control_plug_option_plus_shift</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::Z, KeyCode::V, KeyCode::CONTROL_L, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::M, KeyCode::SLASH, KeyCode::CONTROL_R, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
     </item>
   </item>
 </root>
