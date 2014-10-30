@@ -114,6 +114,12 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Ignore bouncing (chattering) events.</name>
+      <appendix>(Please adjust threshold in "Key Repeat" tab.)</appendix>
+      <identifier essential="true">general.ignore_bouncing_events</identifier>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Allow devices which Vendor ID and Product ID are zero.</name>
       <appendix>(Be careful enabling this option.</appendix>
       <appendix>These devices might cause system crash with Karabiner.)</appendix>

@@ -191,6 +191,7 @@ private:
   static TimerWrapper fire_timer_;
   // Increment at fire_timer_callback.
   static uint64_t serialNumber_;
+  static FromEvent fromEvent_for_ignore_bouncing_;
 };
 }
 

@@ -46,6 +46,14 @@
     </item>
 
     <item>
+      <name>Ignore bouncing/chattering events</name>
+      <item>
+        <name>Ignore threshold</name>
+        <identifier essential="true" default="10" step="1" baseunit="ms">parameter.ignore_bouncing_threshold</identifier>
+      </item>
+    </item>
+
+    <item>
       <name>Key Overlaid Modifier</name>
       <item>
         <name>Initial Modifier Wait</name>
