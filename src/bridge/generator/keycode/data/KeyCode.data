@@ -214,6 +214,14 @@ SWISS_SECTION   0xa
 UK_SECTION 0xa
 
 // ----------------------------------------
+// Reserved for user: 0x10000 - 0xFFFFFFF
+//
+// User can define own key code in private.xml:
+// <symbol_map type="KeyCode" name="PRIVATE_SIMULTANEOUS_WE" value="0x10001" />
+// <symbol_map type="KeyCode" name="PRIVATE_SIMULTANEOUS_ER" value="0x10002" />
+//
+
+// ----------------------------------------
 // Virtual KeyCode
 
 VK__BEGIN__ 0x10000000
