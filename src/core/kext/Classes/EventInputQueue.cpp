@@ -18,7 +18,6 @@ List EventInputQueue::queue_;
 IntervalChecker EventInputQueue::ic_;
 TimerWrapper EventInputQueue::fire_timer_;
 uint64_t EventInputQueue::serialNumber_;
-FromEvent EventInputQueue::fromEvent_for_ignore_bouncing_;
 
 List EventInputQueue::BlockUntilKeyUpHander::blockedQueue_;
 List EventInputQueue::BlockUntilKeyUpHander::pressingEvents_;
@@ -42,23 +41,41 @@ EventInputQueue::terminate(void) {
   BlockUntilKeyUpHander::terminate();
 }
 
+namespace {
+unsigned int maxDelay(unsigned int v1, unsigned int v2) {
+  if (v1 > v2) {
+    return v1;
+  } else {
+    return v2;
+  }
+}
+}
+
 uint32_t
 EventInputQueue::calcdelay(DelayType type) {
-  // if no SimultaneousKeyPresses is enabled, fire immediately.
-  if (!RemapClassManager::isSimultaneousKeyPressesEnabled()) {
+  // if delay is not required, fire immediately.
+  if (!RemapClassManager::isSimultaneousKeyPressesEnabled() &&
+      !Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
     return 0;
   }
 
   uint32_t ms = ic_.getmillisec();
   uint32_t delay = 0;
-  switch (type) {
-  case DELAY_TYPE_KEY:
-    delay = Config::get_simultaneouskeypresses_delay();
-    break;
-  case DELAY_TYPE_POINTING_BUTTON:
-    delay = Config::get_simultaneouskeypresses_pointingbutton_delay();
-    break;
+
+  if (RemapClassManager::isSimultaneousKeyPressesEnabled()) {
+    switch (type) {
+    case DELAY_TYPE_KEY:
+      delay = maxDelay(delay, Config::get_simultaneouskeypresses_delay());
+      break;
+    case DELAY_TYPE_POINTING_BUTTON:
+      delay = maxDelay(delay, Config::get_simultaneouskeypresses_pointingbutton_delay());
+      break;
+    }
   }
+  if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
+    delay = maxDelay(delay, Config::get_ignore_bouncing_threshold());
+  }
+
   if (delay > ms) delay = ms; // min(ms, delay)
   ic_.begin();
   return delay;
@@ -435,41 +452,38 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
   // ------------------------------------------------------------
   // Ignore key bouncing (chattering).
   if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
-    uint32_t threshold = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_ignore_bouncing_threshold);
+  retry:
+    Item* p = static_cast<Item*>(queue_.safe_front());
+    for (;;) {
+      if (!p) break;
 
-    while (true) {
-      Item* front = static_cast<Item*>(queue_.safe_front());
-      if (!front) return;
-
-      // Do not ignore other key event.
-      {
-        Vector_ModifierFlag v;
-        if (!fromEvent_for_ignore_bouncing_.changePressingState(front->getParamsBase(),
-                                                                FlagStatus::globalFlagStatus(),
-                                                                v)) {
-          goto end;
-        }
-      }
-
-      // Ignore "key up event" and "key down event in small interval".
-      if (!fromEvent_for_ignore_bouncing_.isPressing() ||
-          CommonData::getcurrent_lastpressedphysicalkey().get_milliseconds() < threshold) {
-        IOLOG_DEBUG("Ignore bouncing event.\n");
-        queue_.pop_front();
-        continue;
-      } else {
-        // Clear FromEvent in order to keep "key up event".
-        fromEvent_for_ignore_bouncing_ = FromEvent();
-      }
-
-    end:
+      // Search key down, key up, key down event.
       bool iskeydown;
-      if (!fromEvent_for_ignore_bouncing_.isPressing() &&
-          front->getParamsBase().iskeydown(iskeydown) &&
-          iskeydown) {
-        fromEvent_for_ignore_bouncing_ = FromEvent(front->getParamsBase());
+      if (p->getParamsBase().iskeydown(iskeydown)) {
+        FromEvent fromEvent(p->getParamsBase());
+
+        p = static_cast<Item*>(p->getnext());
+        if (!p) break;
+        Item* firstKeyUp = p;
+
+        if (fromEvent.isTargetUpEvent(p->getParamsBase())) {
+          p = static_cast<Item*>(p->getnext());
+          if (!p) break;
+          Item* secondKeyDown = p;
+
+          if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
+            if (firstKeyUp->delayMS + secondKeyDown->delayMS < Config::get_ignore_bouncing_threshold()) {
+              queue_.erase_and_delete(firstKeyUp);
+              queue_.erase_and_delete(secondKeyDown);
+              goto retry;
+            }
+          }
+        }
+
+        continue;
       }
-      break;
+
+      p = static_cast<Item*>(p->getnext());
     }
   }
 
