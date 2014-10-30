@@ -18,6 +18,7 @@ List EventInputQueue::queue_;
 IntervalChecker EventInputQueue::ic_;
 TimerWrapper EventInputQueue::fire_timer_;
 uint64_t EventInputQueue::serialNumber_;
+FromEvent EventInputQueue::fromEvent_for_ignore_bouncing_;
 
 List EventInputQueue::BlockUntilKeyUpHander::blockedQueue_;
 List EventInputQueue::BlockUntilKeyUpHander::pressingEvents_;
@@ -430,6 +431,47 @@ EventInputQueue::push_ScrollWheelEventCallback(OSObject* target,
 void
 EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/) {
   // IOLOG_DEVEL("EventInputQueue::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
+
+  // ------------------------------------------------------------
+  // Ignore key bouncing (chattering).
+  if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
+    uint32_t threshold = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_ignore_bouncing_threshold);
+
+    while (true) {
+      Item* front = static_cast<Item*>(queue_.safe_front());
+      if (!front) return;
+
+      // Do not ignore other key event.
+      {
+        Vector_ModifierFlag v;
+        if (!fromEvent_for_ignore_bouncing_.changePressingState(front->getParamsBase(),
+                                                                FlagStatus::globalFlagStatus(),
+                                                                v)) {
+          goto end;
+        }
+      }
+
+      // Ignore "key up event" and "key down event in small interval".
+      if (!fromEvent_for_ignore_bouncing_.isPressing() ||
+          CommonData::getcurrent_lastpressedphysicalkey().get_milliseconds() < threshold) {
+        IOLOG_DEBUG("Ignore bouncing event.\n");
+        queue_.pop_front();
+        continue;
+      } else {
+        // Clear FromEvent in order to keep "key up event".
+        fromEvent_for_ignore_bouncing_ = FromEvent();
+      }
+
+    end:
+      bool iskeydown;
+      if (!fromEvent_for_ignore_bouncing_.isPressing() &&
+          front->getParamsBase().iskeydown(iskeydown) &&
+          iskeydown) {
+        fromEvent_for_ignore_bouncing_ = FromEvent(front->getParamsBase());
+      }
+      break;
+    }
+  }
 
   // ------------------------------------------------------------
   // handle SimultaneousKeyPresses
