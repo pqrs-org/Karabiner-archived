@@ -131,7 +131,7 @@ bool remap_simultaneouskeypresses(bool iskeydown);
 // return true if dropped.
 bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
 
-bool isEventInputQueueDelayEnabled(void);
+bool isSimultaneousKeyPressesEnabled(void);
 
 bool isEnabled(size_t configindex);
 };

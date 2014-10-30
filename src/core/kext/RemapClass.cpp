@@ -472,7 +472,7 @@ TimerWrapper refresh_timer_;
 
 char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 char lastmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
-bool isEventInputQueueDelayEnabled_ = false;
+bool isSimultaneousKeyPressesEnabled_ = false;
 
 Vector_RemapClassPointer remapclasses_;
 Vector_RemapClassPointer enabled_remapclasses_;
@@ -485,7 +485,7 @@ refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   // ----------------------------------------
   statusmessage_[0] = '\0';
 
-  isEventInputQueueDelayEnabled_ = false;
+  isSimultaneousKeyPressesEnabled_ = false;
 
   for (size_t i = 0; i < remapclasses_.size(); ++i) {
     RemapClass* p = remapclasses_[i];
@@ -502,7 +502,7 @@ refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
         }
 
         if (p->is_simultaneouskeypresses()) {
-          isEventInputQueueDelayEnabled_ = true;
+          isSimultaneousKeyPressesEnabled_ = true;
         }
       }
     }
@@ -804,8 +804,8 @@ remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {
 }
 
 bool
-isEventInputQueueDelayEnabled(void) {
-  return isEventInputQueueDelayEnabled_;
+isSimultaneousKeyPressesEnabled(void) {
+  return isSimultaneousKeyPressesEnabled_;
 }
 
 bool
