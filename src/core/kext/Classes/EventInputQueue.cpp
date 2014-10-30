@@ -45,7 +45,7 @@ EventInputQueue::terminate(void) {
 uint32_t
 EventInputQueue::calcdelay(DelayType type) {
   // if no SimultaneousKeyPresses is enabled, fire immediately.
-  if (!RemapClassManager::isEventInputQueueDelayEnabled()) {
+  if (!RemapClassManager::isSimultaneousKeyPressesEnabled()) {
     return 0;
   }
 
