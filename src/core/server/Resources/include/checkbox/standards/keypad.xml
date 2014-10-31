@@ -293,6 +293,16 @@
       <autogen>__ForceNumLockOn__ DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_NUMBER_PAD</autogen>
     </item>
     <item>
+      <name>FILCO Number Pad Hack</name>
+      <appendix>Force turn NumLock on at FILCO keyboards.</appendix>
+      <identifier>remap.filco_number_pad_hack</identifier>
+      <autogen>
+        __ForceNumLockOn__
+        DeviceVendor::FILCO,
+        DeviceProduct::ANY,
+      </autogen>
+    </item>
+    <item>
       <name>Turn off NumLock LED in Logitech keyboards automatically.</name>
       <appendix>(NumLock LED will be turned off after you type any keys.)</appendix>
       <identifier>remap.turn_off_numlock_led_automatically</identifier>
