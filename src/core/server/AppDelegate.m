@@ -429,9 +429,14 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_sync(axnotifierManagerQueue_, ^{
     NSString* path = [self AXNotifierPath];
     NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
-    NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
-    for (NSRunningApplication* runningApplication in applications) {
-      [runningApplication terminate];
+
+    // If Karabiner has been moved into /Applications/Utilities, bundleIdentifier will be nil.
+
+    if (bundleIdentifier) {
+      NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
+      for (NSRunningApplication* runningApplication in applications) {
+        [runningApplication terminate];
+      }
     }
   });
 }
