@@ -30,7 +30,7 @@ Karabiner works for all Mac products, including the MacBook series, iMac, Mac mi
 How to build
 ------------
 
-System Requirements:
+System requirements:
 
 * OS X 10.10+
 * Xcode 6.0.1+
