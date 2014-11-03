@@ -91,6 +91,11 @@ EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
 
   // --------------------
   uint32_t delay = calcdelay(DELAY_TYPE_KEY);
+
+  if (Config::get_debug_show_delay()) {
+    IOLOG_DEBUG("delay: %d\n", delay);
+  }
+
   Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay);
   if (push_back) {
     queue_.push_back(item);
@@ -108,6 +113,11 @@ EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p,
 
   // --------------------
   uint32_t delay = calcdelay(DELAY_TYPE_KEY);
+
+  if (Config::get_debug_show_delay()) {
+    IOLOG_DEBUG("delay: %d\n", delay);
+  }
+
   queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
 }
 
@@ -117,6 +127,11 @@ EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p,
                           const DeviceIdentifier& deviceIdentifier) {
   // --------------------
   uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
+
+  if (Config::get_debug_show_delay()) {
+    IOLOG_DEBUG_POINTING("delay: %d\n", delay);
+  }
+
   queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
 }
 
@@ -126,6 +141,11 @@ EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p,
                           const DeviceIdentifier& deviceIdentifier) {
   // --------------------
   uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
+
+  if (Config::get_debug_show_delay()) {
+    IOLOG_DEBUG_POINTING("delay: %d\n", delay);
+  }
+
   queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
 }
 
