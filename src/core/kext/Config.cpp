@@ -17,6 +17,7 @@ namespace {
 int sysctl_debug = 0;
 int sysctl_debug_pointing = 0;
 int sysctl_debug_devel = 0;
+int sysctl_debug_show_delay = 0;
 int sysctl_initialized = 0;
 }
 
@@ -39,6 +40,7 @@ SYSCTL_INT(_karabiner, OID_AUTO, initialized, CTLTYPE_INT, &(sysctl_initialized)
 SYSCTL_INT(_karabiner, OID_AUTO, debug, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug), 0, "");
 SYSCTL_INT(_karabiner, OID_AUTO, debug_pointing, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_pointing), 0, "");
 SYSCTL_INT(_karabiner, OID_AUTO, debug_devel, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_devel), 0, "");
+SYSCTL_INT(_karabiner, OID_AUTO, debug_show_delay, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_show_delay), 0, "");
 
 // ----------------------------------------------------------------------
 void
@@ -49,6 +51,7 @@ Config::sysctl_register(void) {
   sysctl_register_oid(&sysctl__karabiner_debug);
   sysctl_register_oid(&sysctl__karabiner_debug_pointing);
   sysctl_register_oid(&sysctl__karabiner_debug_devel);
+  sysctl_register_oid(&sysctl__karabiner_debug_show_delay);
 }
 
 void
@@ -59,6 +62,7 @@ Config::sysctl_unregister(void) {
   sysctl_unregister_oid(&sysctl__karabiner_debug);
   sysctl_unregister_oid(&sysctl__karabiner_debug_pointing);
   sysctl_unregister_oid(&sysctl__karabiner_debug_devel);
+  sysctl_unregister_oid(&sysctl__karabiner_debug_show_delay);
 }
 
 void
@@ -84,6 +88,7 @@ Config::set_initialized(bool newvalue) {
     sysctl_debug = 0;
     sysctl_debug_devel = 0;
     sysctl_debug_pointing = 0;
+    sysctl_debug_show_delay = 0;
 
     load_essential_config_default();
   }
@@ -93,6 +98,7 @@ bool Config::get_initialized(void) { return sysctl_initialized; }
 bool Config::get_debug(void) { return sysctl_debug; }
 bool Config::get_debug_devel(void) { return sysctl_debug_devel; }
 bool Config::get_debug_pointing(void) { return sysctl_debug_pointing; }
+bool Config::get_debug_show_delay(void) { return sysctl_debug_show_delay; }
 
 void
 Config::load_essential_config_default(void) {
