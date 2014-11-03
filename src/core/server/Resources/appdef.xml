@@ -131,6 +131,11 @@
   </appdef>
 
   <appdef>
+    <appname>LIGHTROOM4</appname>
+    <equal>com.adobe.Lightroom4</equal>
+  </appdef>
+
+  <appdef>
     <appname>ADOBE</appname>
     <prefix>com.adobe.</prefix>
   </appdef>
