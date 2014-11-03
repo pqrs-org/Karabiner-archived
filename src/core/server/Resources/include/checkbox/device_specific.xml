@@ -197,6 +197,25 @@
       </item>
 
       <item>
+        <name>Logitech Presenter (R400, R800) with Preview</name>
+        <identifier>remap.app_prewview_logitech_presenter_r400</identifier>
+        <only>PREVIEW</only>
+        <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_R400</device_only>
+        <autogen>__KeyToKey__ KeyCode::PAGEDOWN, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::PAGEUP, KeyCode::CURSOR_LEFT</autogen>
+      </item>
+      <item>
+        <name>Logitech Presenter (R400, R800) with Lightroom</name>
+        <identifier>remap.app_lightroom_logitech_presenter_r400</identifier>
+        <only>LIGHTROOM4</only>
+        <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_R400</device_only>
+        <autogen>__KeyToKey__ KeyCode::PAGEDOWN, KeyCode::CURSOR_RIGHT</autogen>
+        <autogen>__KeyToKey__ KeyCode::PAGEUP, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>__KeyToKey__ KeyCode::F5, KeyCode::RETURN</autogen>
+        <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::ESCAPE</autogen>
+      </item>
+
+      <item>
         <name>Enhance Logicool Wireless Trackball M570, M570t.</name>
         <appendix><![CDATA[  Button5+Trackball -> ScrollWheel ]]></appendix>
         <appendix></appendix>
