@@ -107,36 +107,34 @@ EventInputQueue::setTimer(void) {
     const Params_Base& paramsBase = front->getParamsBase();
 
     if (RemapClassManager::isSimultaneousKeyPressesEnabled()) {
-      {
-        auto p = paramsBase.get_Params_KeyboardEventCallBack();
-        if (p) {
-          threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_delay());
-        }
+      if (paramsBase.get_Params_KeyboardEventCallBack() ||
+          paramsBase.get_Params_KeyboardSpecialEventCallback()) {
+        threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_delay());
       }
-      {
-        auto p = paramsBase.get_Params_KeyboardSpecialEventCallback();
-        if (p) {
-          threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_delay());
-        }
-      }
-      {
-        auto p = paramsBase.get_Params_RelativePointerEventCallback();
-        if (p) {
-          if (p->ex_button != PointingButton::NONE) {
-            threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_pointingbutton_delay());
-          }
-        }
-      }
-      {
-        auto p = paramsBase.get_Params_ScrollWheelEventCallback();
-        if (p) {
-          threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_pointingbutton_delay());
-        }
+      if (paramsBase.get_Params_RelativePointerEventCallback() ||
+          paramsBase.get_Params_ScrollWheelEventCallback()) {
+        threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_pointingbutton_delay());
       }
     }
 
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
       threshold = maxThreshold(threshold, Config::get_ignore_bouncing_threshold());
+    }
+
+    // Do not delay cursor move events and scroll wheel events.
+    {
+      auto p = paramsBase.get_Params_RelativePointerEventCallback();
+      if (p) {
+        if (p->ex_button == PointingButton::NONE) {
+          threshold = 0;
+        }
+      }
+    }
+    {
+      auto p = paramsBase.get_Params_ScrollWheelEventCallback();
+      if (p) {
+        threshold = 0;
+      }
     }
 
     // ----------------------------------------
@@ -496,10 +494,10 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
             uint32_t ms2 = (secondKeyDown->ic).getmillisec();
 
             if (Config::get_debug_show_delay()) {
-              IOLOG_DEBUG("Bouncing events? (interval: %d)\n", ms2 - ms1);
+              IOLOG_DEBUG("Bouncing events? (interval: %d)\n", ms1 - ms2);
             }
 
-            if (ms2 - ms1 < Config::get_ignore_bouncing_threshold()) {
+            if (ms1 - ms2 < Config::get_ignore_bouncing_threshold()) {
               queue_.erase_and_delete(firstKeyUp);
               queue_.erase_and_delete(secondKeyDown);
               goto retry;
