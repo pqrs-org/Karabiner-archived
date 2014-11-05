@@ -227,6 +227,7 @@
         <appendix></appendix>
         <appendix><![CDATA[ Press button5 alone -> middle click ]]></appendix>
         <appendix><![CDATA[ Press button4 alone -> Move mouse cursor to the center of the frontmost app's window ]]></appendix>
+        <appendix><![CDATA[ Press button4+button5 simultaneously -> Show app switcher ]]></appendix>
         <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_UNIFYING_0xc52b</device_only>
         <identifier>remap.logitech_m570t_hack</identifier>
 
@@ -254,6 +255,13 @@
           PointingRelative::RIGHT, KeyCode::CURSOR_LEFT,  ModifierFlag::CONTROL_L,
         </autogen>
 
+        <autogen>
+          __SimultaneousKeyPresses__
+          __{ PointingButton::BUTTON4, PointingButton::BUTTON5, }__
+
+          KeyCode::TAB, ModifierFlag::COMMAND_L,
+          KeyCode::VK_STICKY_COMMAND_L
+        </autogen>
       </item>
     </item>
 
