@@ -1573,6 +1573,16 @@ Two Lines</autogen>
         </block>
       </item>
       <item>
+        <identifier>remap.samples_simultaneouskeypresses_consumer</identifier>
+        <name>Consumer</name>
+        <appendix>Volume Down+Volume Up to Mute</appendix>
+        <autogen>
+          __SimultaneousKeyPresses__
+          __{ ConsumerKeyCode::VOLUME_DOWN, ConsumerKeyCode::VOLUME_UP, }__
+          ConsumerKeyCode::VOLUME_MUTE,
+        </autogen>
+      </item>
+      <item>
         <identifier>remap.samples_simultaneouskeypresses_buttontobutton</identifier>
         <name>ButtonToButton</name>
         <appendix>Shift+LeftClick+RightClick to Button4</appendix>
