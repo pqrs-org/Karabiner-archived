@@ -54,10 +54,10 @@
   <modifierdef>EXTRA9</modifierdef>
   <modifierdef>EXTRA10</modifierdef>
 
-  <!-- For "SandS 2" -->
+  <!-- For "SandS v2" -->
   <modifierdef>SANDS2</modifierdef>
 
-  <!-- For "Mouse Keys Mode 2" -->
+  <!-- For "Mouse Keys Mode v2" -->
   <modifierdef>MOUSE_KEYS_MODE_2_SCROLL</modifierdef>
 
   <!-- For remap.app_rdc_command_to_control -->
@@ -101,25 +101,5 @@
   <modifierdef notify="false">BUTTON3</modifierdef>
   <modifierdef notify="false">BUTTON4</modifierdef>
   <modifierdef notify="false">BUTTON5</modifierdef>
-
-  <!-- For sticky modifiers with lock -->
-  <modifierdef notify="false">SL1_COMMAND_L</modifierdef>
-  <modifierdef notify="false">SL1_COMMAND_R</modifierdef>
-  <modifierdef notify="false">SL1_CONTROL_L</modifierdef>
-  <modifierdef notify="false">SL1_CONTROL_R</modifierdef>
-  <modifierdef notify="false">SL1_FN</modifierdef>
-  <modifierdef notify="false">SL1_OPTION_L</modifierdef>
-  <modifierdef notify="false">SL1_OPTION_R</modifierdef>
-  <modifierdef notify="false">SL1_SHIFT_L</modifierdef>
-  <modifierdef notify="false">SL1_SHIFT_R</modifierdef>
-  <modifierdef notify="false">SL2_COMMAND_L</modifierdef>
-  <modifierdef notify="false">SL2_COMMAND_R</modifierdef>
-  <modifierdef notify="false">SL2_CONTROL_L</modifierdef>
-  <modifierdef notify="false">SL2_CONTROL_R</modifierdef>
-  <modifierdef notify="false">SL2_FN</modifierdef>
-  <modifierdef notify="false">SL2_OPTION_L</modifierdef>
-  <modifierdef notify="false">SL2_OPTION_R</modifierdef>
-  <modifierdef notify="false">SL2_SHIFT_L</modifierdef>
-  <modifierdef notify="false">SL2_SHIFT_R</modifierdef>
 
 </root>
