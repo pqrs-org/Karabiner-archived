@@ -87,7 +87,7 @@
 
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
+    <inputsourceid_equal>org.sil.ukelele.keyboardlayout.t.english- ilya birman typography</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -124,7 +124,7 @@
 
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
+    <inputsourceid_equal>org.sil.ukelele.keyboardlayout.t.russian- ilya birman typography</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
