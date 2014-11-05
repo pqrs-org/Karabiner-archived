@@ -81,16 +81,17 @@ public:
   // ------------------------------------------------------------
   class Item final : public List::Item {
   public:
-    Item(const Params_Base& p, bool r, const DeviceIdentifier& di, uint32_t d) : p_(Params_Factory::copy(p)),
-                                                                                 retainFlagStatusTemporaryCount(r),
-                                                                                 deviceIdentifier(di),
-                                                                                 delayMS(d),
-                                                                                 enqueuedFrom(ENQUEUED_FROM_HARDWARE) {}
+    Item(const Params_Base& p, bool r, const DeviceIdentifier& di) : p_(Params_Factory::copy(p)),
+                                                                     retainFlagStatusTemporaryCount(r),
+                                                                     deviceIdentifier(di),
+                                                                     enqueuedFrom(ENQUEUED_FROM_HARDWARE) {
+      ic.begin();
+    }
 
     Item(const Item& rhs) : p_(Params_Factory::copy(rhs.getParamsBase())),
                             retainFlagStatusTemporaryCount(rhs.retainFlagStatusTemporaryCount),
                             deviceIdentifier(rhs.deviceIdentifier),
-                            delayMS(rhs.delayMS),
+                            ic(rhs.ic),
                             enqueuedFrom(rhs.enqueuedFrom) {}
 
     virtual ~Item(void) {
@@ -104,7 +105,7 @@ public:
     bool retainFlagStatusTemporaryCount;
     DeviceIdentifier deviceIdentifier;
 
-    uint32_t delayMS;
+    IntervalChecker ic;
 
     // To avoid recursive enqueueing from blockedQueue_.
     enum EnqueuedFrom {

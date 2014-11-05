@@ -41,46 +41,6 @@ EventInputQueue::terminate(void) {
   BlockUntilKeyUpHander::terminate();
 }
 
-namespace {
-unsigned int maxDelay(unsigned int v1, unsigned int v2) {
-  if (v1 > v2) {
-    return v1;
-  } else {
-    return v2;
-  }
-}
-}
-
-uint32_t
-EventInputQueue::calcdelay(DelayType type) {
-  // if delay is not required, fire immediately.
-  if (!RemapClassManager::isSimultaneousKeyPressesEnabled() &&
-      !Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
-    return 0;
-  }
-
-  uint32_t ms = ic_.getmillisec();
-  uint32_t delay = 0;
-
-  if (RemapClassManager::isSimultaneousKeyPressesEnabled()) {
-    switch (type) {
-    case DELAY_TYPE_KEY:
-      delay = maxDelay(delay, Config::get_simultaneouskeypresses_delay());
-      break;
-    case DELAY_TYPE_POINTING_BUTTON:
-      delay = maxDelay(delay, Config::get_simultaneouskeypresses_pointingbutton_delay());
-      break;
-    }
-  }
-  if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
-    delay = maxDelay(delay, Config::get_ignore_bouncing_threshold());
-  }
-
-  if (delay > ms) delay = ms; // min(ms, delay)
-  ic_.begin();
-  return delay;
-}
-
 void
 EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
                           bool retainFlagStatusTemporaryCount,
@@ -89,14 +49,7 @@ EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
   // Because we handle the key repeat ourself, drop the key repeat.
   if (p.repeat) return;
 
-  // --------------------
-  uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-
-  if (Config::get_debug_show_delay()) {
-    IOLOG_DEBUG("delay: %d\n", delay);
-  }
-
-  Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay);
+  Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier);
   if (push_back) {
     queue_.push_back(item);
   } else {
@@ -111,50 +64,96 @@ EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p,
   // Because we handle the key repeat ourself, drop the key repeat.
   if (p.repeat) return;
 
-  // --------------------
-  uint32_t delay = calcdelay(DELAY_TYPE_KEY);
-
-  if (Config::get_debug_show_delay()) {
-    IOLOG_DEBUG("delay: %d\n", delay);
-  }
-
-  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
+  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
 }
 
 void
 EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p,
                           bool retainFlagStatusTemporaryCount,
                           const DeviceIdentifier& deviceIdentifier) {
-  // --------------------
-  uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
-
-  if (Config::get_debug_show_delay()) {
-    IOLOG_DEBUG_POINTING("delay: %d\n", delay);
-  }
-
-  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
+  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
 }
 
 void
 EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p,
                           bool retainFlagStatusTemporaryCount,
                           const DeviceIdentifier& deviceIdentifier) {
-  // --------------------
-  uint32_t delay = calcdelay(DELAY_TYPE_POINTING_BUTTON);
+  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
+}
 
-  if (Config::get_debug_show_delay()) {
-    IOLOG_DEBUG_POINTING("delay: %d\n", delay);
+namespace {
+unsigned int maxThreshold(unsigned int v1, unsigned int v2) {
+  if (v1 > v2) {
+    return v1;
+  } else {
+    return v2;
   }
-
-  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier, delay));
+}
 }
 
 void
 EventInputQueue::setTimer(void) {
   Item* front = static_cast<Item*>(queue_.safe_front());
-  if (front) {
-    fire_timer_.setTimeoutMS(front->delayMS, false);
+  if (!front) return;
+
+  // ----------------------------------------
+  uint32_t timeoutMS = 0;
+
+  if (RemapClassManager::isSimultaneousKeyPressesEnabled() ||
+      Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
+    // ----------------------------------------
+    // Calculate threshold
+    uint32_t threshold = 0;
+    const Params_Base& paramsBase = front->getParamsBase();
+
+    if (RemapClassManager::isSimultaneousKeyPressesEnabled()) {
+      {
+        auto p = paramsBase.get_Params_KeyboardEventCallBack();
+        if (p) {
+          threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_delay());
+        }
+      }
+      {
+        auto p = paramsBase.get_Params_KeyboardSpecialEventCallback();
+        if (p) {
+          threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_delay());
+        }
+      }
+      {
+        auto p = paramsBase.get_Params_RelativePointerEventCallback();
+        if (p) {
+          if (p->ex_button != PointingButton::NONE) {
+            threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_pointingbutton_delay());
+          }
+        }
+      }
+      {
+        auto p = paramsBase.get_Params_ScrollWheelEventCallback();
+        if (p) {
+          threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_pointingbutton_delay());
+        }
+      }
+    }
+
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
+      threshold = maxThreshold(threshold, Config::get_ignore_bouncing_threshold());
+    }
+
+    // ----------------------------------------
+    // Calculate timeoutMS (== threshold - ic.getmillisec())
+    uint32_t ms = (front->ic).getmillisec();
+
+    if (ms < threshold) {
+      timeoutMS = threshold - ms;
+    }
+
+    // Ignore rounding error
+    if (timeoutMS > 0) {
+      --timeoutMS;
+    }
   }
+
+  fire_timer_.setTimeoutMS(timeoutMS, false);
 }
 
 // ======================================================================
@@ -476,6 +475,7 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
     Item* p = static_cast<Item*>(queue_.safe_front());
     for (;;) {
       if (!p) break;
+      Item* firstKeyDown = p;
 
       // Search key down, key up, key down event.
       bool iskeydown;
@@ -492,7 +492,14 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
           Item* secondKeyDown = p;
 
           if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
-            if (firstKeyUp->delayMS + secondKeyDown->delayMS < Config::get_ignore_bouncing_threshold()) {
+            uint32_t ms1 = (firstKeyDown->ic).getmillisec();
+            uint32_t ms2 = (secondKeyDown->ic).getmillisec();
+
+            if (Config::get_debug_show_delay()) {
+              IOLOG_DEBUG("Bouncing events? (interval: %d)\n", ms2 - ms1);
+            }
+
+            if (ms2 - ms1 < Config::get_ignore_bouncing_threshold()) {
               queue_.erase_and_delete(firstKeyUp);
               queue_.erase_and_delete(secondKeyDown);
               goto retry;
@@ -851,7 +858,6 @@ EventInputQueue::BlockUntilKeyUpHander::endBlocking(void) {
       Item* p = static_cast<Item*>(blockedQueue_.safe_back());
       if (!p) break;
 
-      p->delayMS = 0;
       p->enqueuedFrom = Item::ENQUEUED_FROM_BLOCKEDQUEUE;
       queue_.push_front(new Item(*p));
       blockedQueue_.pop_back();
