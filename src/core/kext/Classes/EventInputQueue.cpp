@@ -472,52 +472,51 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
   // Ignore key bouncing (chattering).
   if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
   retry:
-    Item* p = static_cast<Item*>(queue_.safe_front());
-    for (;;) {
-      if (!p) break;
-      Item* keyUpEvent = p;
-
+    for (Item* p = static_cast<Item*>(queue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
       // Search key up, key down event.
       bool iskeydown;
-      if (p->getParamsBase().iskeydown(iskeydown)) {
+      if (p->getParamsBase().iskeydown(iskeydown) && !iskeydown) {
+        Item* keyUpEvent = p;
+
         FromEvent fromEvent(p->getParamsBase());
 
-        p = static_cast<Item*>(p->getnext());
-        if (!p) break;
-        Item* keyDownEvent = p;
-
-        if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
-          uint32_t ms1 = (keyUpEvent->ic).getmillisec();
-          uint32_t ms2 = (keyDownEvent->ic).getmillisec();
-
-          uint32_t threshold = 0;
-          switch (fromEvent.getType()) {
-          case FromEvent::Type::KEY:
-          case FromEvent::Type::CONSUMER_KEY:
-            threshold = Config::get_ignore_bouncing_threshold_for_keyboard();
+        for (Item* q = static_cast<Item*>(p->getnext()); q; q = static_cast<Item*>(q->getnext())) {
+          if (fromEvent.isTargetUpEvent(q->getParamsBase())) {
             break;
-          case FromEvent::Type::POINTING_BUTTON:
-            threshold = Config::get_ignore_bouncing_threshold_for_mice();
-            break;
-          case FromEvent::Type::NONE:
-            break;
-          }
 
-          if (Config::get_debug_show_delay()) {
-            IOLOG_DEBUG("Bouncing events? (interval: %d, threshold: %d)\n", ms1 - ms2, threshold);
-          }
+          } else if (fromEvent.isTargetDownEvent(q->getParamsBase())) {
+            Item* keyDownEvent = q;
 
-          if (ms1 - ms2 < threshold) {
-            queue_.erase_and_delete(keyUpEvent);
-            queue_.erase_and_delete(keyDownEvent);
-            goto retry;
+            uint32_t ms1 = (keyUpEvent->ic).getmillisec();
+            uint32_t ms2 = (keyDownEvent->ic).getmillisec();
+            uint32_t interval = ms1 - ms2;
+
+            uint32_t threshold = 0;
+            switch (fromEvent.getType()) {
+            case FromEvent::Type::KEY:
+            case FromEvent::Type::CONSUMER_KEY:
+              threshold = Config::get_ignore_bouncing_threshold_for_keyboard();
+              break;
+            case FromEvent::Type::POINTING_BUTTON:
+              threshold = Config::get_ignore_bouncing_threshold_for_mice();
+              break;
+            case FromEvent::Type::NONE:
+              break;
+            }
+
+            if (interval < threshold) {
+              IOLOG_INFO("Bouncing events are removed. (interval: %d, threshold: %d)\n", interval, threshold);
+
+              queue_.erase_and_delete(keyUpEvent);
+              queue_.erase_and_delete(keyDownEvent);
+              goto retry;
+
+            } else {
+              IOLOG_INFO("Bouncing events? (interval: %d, threshold: %d)\n", interval, threshold);
+            }
           }
         }
-
-        continue;
       }
-
-      p = static_cast<Item*>(p->getnext());
     }
   }
 
