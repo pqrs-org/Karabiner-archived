@@ -49,11 +49,11 @@
       <name>Ignore bouncing/chattering events</name>
       <item>
         <name>Ignore threshold for keyboards.</name>
-        <identifier essential="true" default="10" step="1" baseunit="ms">parameter.ignore_bouncing_threshold_for_keyboard</identifier>
+        <identifier essential="true" default="30" step="5" baseunit="ms">parameter.ignore_bouncing_threshold_for_keyboard</identifier>
       </item>
       <item>
         <name>Ignore threshold for mice.</name>
-        <identifier essential="true" default="5" step="1" baseunit="ms">parameter.ignore_bouncing_threshold_for_mice</identifier>
+        <identifier essential="true" default="40" step="5" baseunit="ms">parameter.ignore_bouncing_threshold_for_mice</identifier>
       </item>
     </item>
 
