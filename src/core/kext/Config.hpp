@@ -75,9 +75,13 @@ public:
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_timeout);
     return getvalue(v, 0);
   }
-  static unsigned int get_ignore_bouncing_threshold(void) {
-    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_ignore_bouncing_threshold);
-    return getvalue(v, 5, 1000);
+  static unsigned int get_ignore_bouncing_threshold_for_keyboard(void) {
+    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_ignore_bouncing_threshold_for_keyboard);
+    return getvalue(v, 0, 1000);
+  }
+  static unsigned int get_ignore_bouncing_threshold_for_mice(void) {
+    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_ignore_bouncing_threshold_for_mice);
+    return getvalue(v, 0, 1000);
   }
   static unsigned int get_simultaneouskeypresses_delay(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_simultaneouskeypresses_delay);
