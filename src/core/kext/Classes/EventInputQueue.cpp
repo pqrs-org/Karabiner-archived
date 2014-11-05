@@ -105,35 +105,37 @@ EventInputQueue::setTimer(void) {
     // Calculate threshold
     uint32_t threshold = 0;
     const Params_Base& paramsBase = front->getParamsBase();
+    bool is_key = false;
+    bool is_pointingbutton = false;
+
+    if (paramsBase.get_Params_KeyboardEventCallBack() ||
+        paramsBase.get_Params_KeyboardSpecialEventCallback()) {
+      is_key = true;
+    }
+    {
+      auto p = paramsBase.get_Params_RelativePointerEventCallback();
+      if (p) {
+        if (p->ex_button != PointingButton::NONE) {
+          is_pointingbutton = true;
+        }
+      }
+    }
 
     if (RemapClassManager::isSimultaneousKeyPressesEnabled()) {
-      if (paramsBase.get_Params_KeyboardEventCallBack() ||
-          paramsBase.get_Params_KeyboardSpecialEventCallback()) {
+      if (is_key) {
         threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_delay());
       }
-      if (paramsBase.get_Params_RelativePointerEventCallback() ||
-          paramsBase.get_Params_ScrollWheelEventCallback()) {
+      if (is_pointingbutton) {
         threshold = maxThreshold(threshold, Config::get_simultaneouskeypresses_pointingbutton_delay());
       }
     }
 
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_bouncing_events)) {
-      threshold = maxThreshold(threshold, Config::get_ignore_bouncing_threshold());
-    }
-
-    // Do not delay cursor move events and scroll wheel events.
-    {
-      auto p = paramsBase.get_Params_RelativePointerEventCallback();
-      if (p) {
-        if (p->ex_button == PointingButton::NONE) {
-          threshold = 0;
-        }
+      if (is_key) {
+        threshold = maxThreshold(threshold, Config::get_ignore_bouncing_threshold_for_keyboard());
       }
-    }
-    {
-      auto p = paramsBase.get_Params_ScrollWheelEventCallback();
-      if (p) {
-        threshold = 0;
+      if (is_pointingbutton) {
+        threshold = maxThreshold(threshold, Config::get_ignore_bouncing_threshold_for_mice());
       }
     }
 
@@ -473,35 +475,42 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
     Item* p = static_cast<Item*>(queue_.safe_front());
     for (;;) {
       if (!p) break;
-      Item* firstKeyDown = p;
+      Item* keyUpEvent = p;
 
-      // Search key down, key up, key down event.
+      // Search key up, key down event.
       bool iskeydown;
       if (p->getParamsBase().iskeydown(iskeydown)) {
         FromEvent fromEvent(p->getParamsBase());
 
         p = static_cast<Item*>(p->getnext());
         if (!p) break;
-        Item* firstKeyUp = p;
+        Item* keyDownEvent = p;
 
-        if (fromEvent.isTargetUpEvent(p->getParamsBase())) {
-          p = static_cast<Item*>(p->getnext());
-          if (!p) break;
-          Item* secondKeyDown = p;
+        if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
+          uint32_t ms1 = (keyUpEvent->ic).getmillisec();
+          uint32_t ms2 = (keyDownEvent->ic).getmillisec();
 
-          if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
-            uint32_t ms1 = (firstKeyDown->ic).getmillisec();
-            uint32_t ms2 = (secondKeyDown->ic).getmillisec();
+          uint32_t threshold = 0;
+          switch (fromEvent.getType()) {
+          case FromEvent::Type::KEY:
+          case FromEvent::Type::CONSUMER_KEY:
+            threshold = Config::get_ignore_bouncing_threshold_for_keyboard();
+            break;
+          case FromEvent::Type::POINTING_BUTTON:
+            threshold = Config::get_ignore_bouncing_threshold_for_mice();
+            break;
+          case FromEvent::Type::NONE:
+            break;
+          }
 
-            if (Config::get_debug_show_delay()) {
-              IOLOG_DEBUG("Bouncing events? (interval: %d)\n", ms1 - ms2);
-            }
+          if (Config::get_debug_show_delay()) {
+            IOLOG_DEBUG("Bouncing events? (interval: %d, threshold: %d)\n", ms1 - ms2, threshold);
+          }
 
-            if (ms1 - ms2 < Config::get_ignore_bouncing_threshold()) {
-              queue_.erase_and_delete(firstKeyUp);
-              queue_.erase_and_delete(secondKeyDown);
-              goto retry;
-            }
+          if (ms1 - ms2 < threshold) {
+            queue_.erase_and_delete(keyUpEvent);
+            queue_.erase_and_delete(keyDownEvent);
+            goto retry;
           }
         }
 
