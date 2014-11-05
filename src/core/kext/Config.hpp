@@ -18,7 +18,6 @@ public:
   static bool get_debug(void);
   static bool get_debug_devel(void);
   static bool get_debug_pointing(void);
-  static bool get_debug_show_delay(void);
 
   // ----------------------------------------
   static void set_essential_config(const int32_t* newvalues, size_t num);
