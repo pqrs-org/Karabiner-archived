@@ -25,14 +25,16 @@
       //
       pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
       NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
+      NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
       NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
 
       if ((windowOwnerPID == frontmostApplicationPid) ||
           ([bundleIdentifier isEqualToString:@"com.apple.loginwindow"]) ||
           ([bundleIdentifier isEqualToString:@"com.apple.dock"] &&
-           [windowName isEqualToString:@"Launchpad"])) {
+           [windowName isEqualToString:@"Launchpad"]) ||
+          ([bundleIdentifier isEqualToString:@"com.apple.Spotlight"] &&
+           windowLayer < 25)) {
         CGFloat windowAlpha = [window[(__bridge NSString*)(kCGWindowAlpha)] floatValue];
-        NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
         CGRect windowBounds;
         CGRectMakeWithDictionaryRepresentation((__bridge CFDictionaryRef)(window[(__bridge NSString*)(kCGWindowBounds)]), &windowBounds);
 
