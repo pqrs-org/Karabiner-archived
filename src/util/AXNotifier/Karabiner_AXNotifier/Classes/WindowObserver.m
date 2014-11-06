@@ -3,6 +3,7 @@
 
 enum {
   WINDOWID_LAUNCHPAD,
+  WINDOWID_SPOTLIGHT,
   WINDOWID__END__,
 };
 
@@ -67,10 +68,22 @@ enum {
       for (NSDictionary* window in windows) {
         NSString* windowOwnerName = window[(__bridge NSString*)(kCGWindowOwnerName)];
         NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
+        NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
 
         if ([windowOwnerName isEqualToString:@"Dock"] &&
             [windowName isEqualToString:@"Launchpad"]) {
           rawWindowIDs_[WINDOWID_LAUNCHPAD] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+        }
+
+        if ([windowOwnerName isEqualToString:@"Spotlight"] &&
+            [windowName isEqualToString:@"Spotlight"]) {
+          // There is no reliable public specifications for kCGWindowLayer.
+          // So, we use magic numbers that are confirmed by "warp-mouse-cursor-position".
+
+          // Ignore Spotlight in statusbar.
+          if (0 < windowLayer && windowLayer < 25) {
+            rawWindowIDs_[WINDOWID_SPOTLIGHT] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          }
         }
       }
 
@@ -111,15 +124,29 @@ enum {
               return;
             }
           }
+          if ([windowOwnerName isEqualToString:@"Spotlight"] &&
+              [windowName isEqualToString:@"Spotlight"]) {
+            NSString* key = @"Spotlight";
+            if (isOnScreen) {
+              if (! shown_[key]) {
+                NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
+                if (bundleIdentifier) {
+                  shown_[key] = bundleIdentifier;
+                  [self postNotification:key bundleIdentifier:shown_[key] visibility:YES];
+                }
+              }
+              return;
+            }
+          }
         }
       }
 
       for (NSString* key in shown_) {
         if (shown_[key]) {
           [self postNotification:key bundleIdentifier:shown_[key] visibility:NO];
-          [shown_ removeObjectForKey:key];
         }
       }
+      [shown_ removeAllObjects];
     }
   });
 }
