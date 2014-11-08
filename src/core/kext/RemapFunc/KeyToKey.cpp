@@ -165,6 +165,30 @@ KeyToKey::remap(RemapParams& remapParams) {
 
     if (toModifierFlag == ModifierFlag::ZERO && !toKeys_[0].isEventLikeModifier()) {
       // toKey
+
+      // Consider "Change Shift-P to Control-P".
+      //
+      // Case 1:
+      //   Actual input:
+      //     1. shift down
+      //     2. p down
+      //     3. p up
+      //     4. p down
+      //     5. p up
+      //     6. shift up
+      //
+      //   Excepted results:
+      //     1. shift down
+      //     2. shift up, control down, p down
+      //     3. p up
+      //     4. p down
+      //     5. p up
+      //     6. control up
+      //
+      //   In this case, in step 3 and 5, we should not release control and do not restore shift.
+      //   (== temporary_decrease shift and temporary_increase control in 2,3,4,5.)
+      //
+
       FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
       FlagStatus::globalFlagStatus().temporary_increase(toKeys_[0].getModifierFlags());
 
