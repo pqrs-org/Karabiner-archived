@@ -70,6 +70,12 @@ class Flags final {
 public:
   explicit Flags(unsigned int v = 0) : value_(v) {}
   explicit Flags(ModifierFlag v) : value_(v.getRawBits()) {}
+  explicit Flags(const Vector_ModifierFlag& v) {
+    value_ = 0;
+    for (size_t i = 0; i < v.size(); ++i) {
+      value_ |= v[i].getRawBits();
+    }
+  }
   unsigned int get(void) const { return value_; }
   bool operator==(Flags other) const { return value_ == other.get(); }
   bool operator!=(Flags other) const { return !(*this == other); }
