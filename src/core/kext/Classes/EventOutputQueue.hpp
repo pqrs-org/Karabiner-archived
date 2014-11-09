@@ -24,6 +24,8 @@ public:
     static void fire(Flags toFlags = FlagStatus::globalFlagStatus().makeFlags(),
                      KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
 
+    static Flags getLastFlags(void) { return lastFlags_; }
+
   private:
     static Flags lastFlags_;
   };
