@@ -9,14 +9,41 @@
       <appendix>When pressed alone, Right Shift types right paren )</appendix>
       <appendix>When used with other keys, they're normal Shifts.</appendix>
       <identifier>remap.programmer.shifts_parens</identifier>
-      <!-- This is the basic mapping. -->
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::KEY_9, ModifierFlag::SHIFT_R</autogen>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, ModifierFlag::CAPSLOCK, KeyCode::SHIFT_R, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_L, ModifierFlag::CAPSLOCK, KeyCode::SHIFT_L, KeyCode::KEY_9, ModifierFlag::SHIFT_R</autogen>
+
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::FN,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
+
       <!-- Pushing Shifts together produces () -->
-      <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::SHIFT_R, KeyCode::KEY_0, ModifierFlag::SHIFT_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::SHIFT_R, ModifierFlag::SHIFT_L, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SHIFT_L, ModifierFlag::SHIFT_R,
+        KeyCode::KEY_0, ModifierFlag::SHIFT_L,
+        KeyCode::KEY_9, ModifierFlag::SHIFT_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SHIFT_R, ModifierFlag::SHIFT_L,
+        KeyCode::KEY_9, ModifierFlag::SHIFT_L,
+        KeyCode::KEY_0, ModifierFlag::SHIFT_L,
+      </autogen>
+
+      <!-- This is the basic mapping. -->
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_R,
+        KeyCode::SHIFT_R,
+        KeyCode::KEY_0, ModifierFlag::SHIFT_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_L,
+        KeyCode::SHIFT_L,
+        KeyCode::KEY_9, ModifierFlag::SHIFT_R,
+      </autogen>
     </item>
     <item>
       <name>Controls to Angle Brackets</name>
