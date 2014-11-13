@@ -7,66 +7,84 @@
       <identifier>remap.commandL2controlL</identifier>
       <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
     </item>
+
     <item>
-      <name>Command_L to Control_L (only in virtual machine, RDC)</name>
-      <identifier>remap.commandL2controlL_vm</identifier>
-      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      <name>Variations of specific apps</name>
+
+      <item>
+        <name>Command_L to Control_L (only in virtual machine, RDC)</name>
+        <identifier>remap.commandL2controlL_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (only in RDC)</name>
+        <identifier>remap.commandL2controlL_rdc</identifier>
+        <only>REMOTEDESKTOPCONNECTION</only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (only in Terminal)</name>
+        <identifier>remap.commandL2controlL_terminal</identifier>
+        <only>TERMINAL</only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (only in Cathode)</name>
+        <identifier>remap.commandL2controlL_cathode</identifier>
+        <only>CATHODE</only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (only in X11)</name>
+        <identifier>remap.commandL2controlL_x11</identifier>
+        <only>X11</only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (only in Emacs)</name>
+        <identifier>remap.commandL2controlL_emacs</identifier>
+        <only>EMACS</only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (except Emacs)</name>
+        <identifier>remap.commandL2controlL_ex_emacs</identifier>
+        <not>EMACS</not>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (except Terminal, Chrome, RDC)</name>
+        <identifier>remap.commandL2controlL_excustom</identifier>
+        <not>TERMINAL, GOOGLE_CHROME, REMOTEDESKTOPCONNECTION</not>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L</name>
+        <appendix>(except Terminal, Virtual Machine, RDC, VNC, TeamViewer, EMACS, X11, Citrix Viewer)</appendix>
+        <identifier>remap.commandL2controlL_extermvm</identifier>
+        <not>
+          TERMINAL,
+          VIRTUALMACHINE,
+          REMOTEDESKTOPCONNECTION,
+          VNC,
+          TEAMVIEWER,
+          EMACS,
+          X11,
+          CITRIX_ONLINE_PLUG_IN,
+          CITRIX_XEN_APP_VIEWER,
+        </not>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item>
+        <name>Command_L to Control_L (except Virtual Machine, RDC)</name>
+        <identifier>remap.commandL2controlL_exvm</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+      </item>
+      <item><name>──────────────────────────────</name></item>
     </item>
-    <item>
-      <name>Command_L to Control_L (only in RDC)</name>
-      <identifier>remap.commandL2controlL_rdc</identifier>
-      <only>REMOTEDESKTOPCONNECTION</only>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (only in Terminal)</name>
-      <identifier>remap.commandL2controlL_terminal</identifier>
-      <only>TERMINAL</only>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (only in Cathode)</name>
-      <identifier>remap.commandL2controlL_cathode</identifier>
-      <only>CATHODE</only>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (only in X11)</name>
-      <identifier>remap.commandL2controlL_x11</identifier>
-      <only>X11</only>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (only in Emacs)</name>
-      <identifier>remap.commandL2controlL_emacs</identifier>
-      <only>EMACS</only>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (except Emacs)</name>
-      <identifier>remap.commandL2controlL_ex_emacs</identifier>
-      <not>EMACS</not>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (except Terminal, Chrome, RDC)</name>
-      <identifier>remap.commandL2controlL_excustom</identifier>
-      <not>TERMINAL, GOOGLE_CHROME, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (except Terminal, Virtual Machine, RDC)</name>
-      <identifier>remap.commandL2controlL_extermvm</identifier>
-      <not>TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
-    <item>
-      <name>Command_L to Control_L (except Virtual Machine, RDC)</name>
-      <identifier>remap.commandL2controlL_exvm</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
-    </item>
+
     <item>
       <name>Command_L to Fn</name>
       <identifier>remap.commandL2fn</identifier>
