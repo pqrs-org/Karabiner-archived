@@ -7,48 +7,66 @@
       <identifier>remap.controlL2commandL</identifier>
       <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
     </item>
+
     <item>
-      <name>Control_L to Command_L (only in virtual machine, RDC)</name>
-      <identifier>remap.controlL2commandL_vm</identifier>
-      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-      <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      <name>Variations of specific apps</name>
+
+      <item>
+        <name>Control_L to Command_L (only in virtual machine, RDC)</name>
+        <identifier>remap.controlL2commandL_vm</identifier>
+        <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (only in Terminal)</name>
+        <identifier>remap.controlL2commandL_terminal</identifier>
+        <only>TERMINAL</only>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (only in X11)</name>
+        <identifier>remap.controlL2commandL_x11</identifier>
+        <only>X11</only>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (except Emacs)</name>
+        <identifier>remap.controlL2commandL_ex_emacs</identifier>
+        <not>EMACS</not>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (except Terminal, Chrome, RDC)</name>
+        <identifier>remap.controlL2commandL_excustom</identifier>
+        <not>TERMINAL, GOOGLE_CHROME, REMOTEDESKTOPCONNECTION</not>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L</name>
+        <appendix>(except Terminal, Virtual Machine, RDC, VNC, TeamViewer, EMACS, X11, Citrix Viewer)</appendix>
+        <identifier>remap.controlL2commandL_extermvm</identifier>
+        <not>
+          TERMINAL,
+          VIRTUALMACHINE,
+          REMOTEDESKTOPCONNECTION,
+          VNC,
+          TEAMVIEWER,
+          EMACS,
+          X11,
+          CITRIX_ONLINE_PLUG_IN,
+          CITRIX_XEN_APP_VIEWER,
+        </not>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Control_L to Command_L (except Virtual Machine, RDC)</name>
+        <identifier>remap.controlL2commandL_exvm</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item><name>──────────────────────────────</name></item>
     </item>
-    <item>
-      <name>Control_L to Command_L (only in Terminal)</name>
-      <identifier>remap.controlL2commandL_terminal</identifier>
-      <only>TERMINAL</only>
-      <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Control_L to Command_L (only in X11)</name>
-      <identifier>remap.controlL2commandL_x11</identifier>
-      <only>X11</only>
-      <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Control_L to Command_L (except Emacs)</name>
-      <identifier>remap.controlL2commandL_ex_emacs</identifier>
-      <not>EMACS</not>
-      <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Control_L to Command_L (except Terminal, Chrome, RDC)</name>
-      <identifier>remap.controlL2commandL_excustom</identifier>
-      <not>TERMINAL, GOOGLE_CHROME, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Control_L to Command_L (except Terminal, Virtual Machine, RDC)</name>
-      <identifier>remap.controlL2commandL_extermvm</identifier>
-      <not>TERMINAL, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Control_L to Command_L (except Virtual Machine, RDC)</name>
-      <identifier>remap.controlL2commandL_exvm</identifier>
-      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-      <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::COMMAND_L</autogen>
-    </item>
+
     <item>
       <name>Control_L to Control_L</name>
       <appendix>(+ When you type Control_L only, send Delete)</appendix>
