@@ -80,6 +80,8 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         // PhpStorm (com.jetbrains.PhpStorm)
         // RubyMine (com.jetbrains.rubymine)
         // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
+        //
+        // We treat JetBrains's products are made by Java.
         [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."]) {
 #if 0
       NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
