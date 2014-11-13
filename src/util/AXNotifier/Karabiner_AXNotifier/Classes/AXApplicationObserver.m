@@ -76,9 +76,11 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         // https://github.com/tekezo/Karabiner/issues/259
         [[runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"] ||
 
-        // IntelliJ IDEA
+        // IntelliJ IDEA (com.jetbrains.intellij*)
+        // PhpStorm (com.jetbrains.PhpStorm)
+        // RubyMine (com.jetbrains.rubymine)
         // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
-        [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains.intellij"]) {
+        [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."]) {
 #if 0
       NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
 #endif
