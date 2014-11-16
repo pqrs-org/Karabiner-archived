@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For Polish</name>
+    <item>
+      <name>Swap Command_R with Options_R</name>
+      <identifier>remap.polish_keypad_swap_command_r_with_options_r</identifier>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+    </item>
+  </item>
+</root>
