@@ -91,6 +91,7 @@ bool KeyDownUpToKey::remap(RemapParams &remapParams) {
   if (!keytokey_from_.remap(remapParams)) return false;
 
   if (interrupted_) {
+    interrupted_ = false;
     keytokey_interrupted_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
   }
 
