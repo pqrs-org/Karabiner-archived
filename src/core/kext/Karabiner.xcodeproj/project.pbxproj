@@ -27,6 +27,8 @@
 		34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */; };
 		3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */; };
 		3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */; };
+		343CB4EB1A19F0AA009EC95F /* KeyDownUpToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343CB4E91A19F0AA009EC95F /* KeyDownUpToKey.cpp */; };
+		343CB4EC1A19F0AA009EC95F /* KeyDownUpToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343CB4EA1A19F0AA009EC95F /* KeyDownUpToKey.hpp */; };
 		3442A85219B07F11007FD563 /* RemapFilterFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */; };
 		3442D9E612F3123300EF7DF8 /* ForceNumLockOn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */; };
 		3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */; };
@@ -181,6 +183,8 @@
 		34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToKey.hpp; path = RemapFunc/ScrollWheelToKey.hpp; sourceTree = "<group>"; };
 		3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_PARTIAL.cpp; path = VirtualKey/VK_PARTIAL.cpp; sourceTree = "<group>"; };
 		3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_PARTIAL.hpp; path = VirtualKey/VK_PARTIAL.hpp; sourceTree = "<group>"; };
+		343CB4E91A19F0AA009EC95F /* KeyDownUpToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyDownUpToKey.cpp; path = RemapFunc/KeyDownUpToKey.cpp; sourceTree = "<group>"; };
+		343CB4EA1A19F0AA009EC95F /* KeyDownUpToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyDownUpToKey.hpp; path = RemapFunc/KeyDownUpToKey.hpp; sourceTree = "<group>"; };
 		3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterFactory.hpp; path = RemapFilter/RemapFilterFactory.hpp; sourceTree = "<group>"; };
 		3442D9E412F3123300EF7DF8 /* ForceNumLockOn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ForceNumLockOn.cpp; path = RemapFunc/ForceNumLockOn.cpp; sourceTree = "<group>"; };
 		3442D9E512F3123300EF7DF8 /* ForceNumLockOn.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ForceNumLockOn.hpp; path = RemapFunc/ForceNumLockOn.hpp; sourceTree = "<group>"; };
@@ -414,6 +418,8 @@
 				341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */,
 				345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */,
 				345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */,
+				343CB4E91A19F0AA009EC95F /* KeyDownUpToKey.cpp */,
+				343CB4EA1A19F0AA009EC95F /* KeyDownUpToKey.hpp */,
 				34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */,
 				34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */,
 				34D347E411D8106C00D70815 /* KeyToKey.cpp */,
@@ -596,6 +602,7 @@
 				34B5E8B61261960700DCFB0D /* InputSourceFilter.hpp in Headers */,
 				342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */,
 				34794D54126F32E700655ADB /* SetKeyboardType.hpp in Headers */,
+				343CB4EC1A19F0AA009EC95F /* KeyDownUpToKey.hpp in Headers */,
 				348077B818BCEEDC00314700 /* DeltaBuffer.hpp in Headers */,
 				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
 				3477936F185B1FA800B3EF06 /* LastPressedPhysicalKey.hpp in Headers */,
@@ -759,6 +766,7 @@
 				34B464EB13A6587400470265 /* VK_MOUSEKEY.cpp in Sources */,
 				34779380185B1FA800B3EF06 /* TimerWrapper.cpp in Sources */,
 				34B464EF13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp in Sources */,
+				343CB4EB1A19F0AA009EC95F /* KeyDownUpToKey.cpp in Sources */,
 				3477935F185B1FA800B3EF06 /* EventOutputQueue.cpp in Sources */,
 				34779363185B1FA800B3EF06 /* FlagStatus.cpp in Sources */,
 				34213BB71860A4F7002CBAB9 /* ToEvent.cpp in Sources */,
