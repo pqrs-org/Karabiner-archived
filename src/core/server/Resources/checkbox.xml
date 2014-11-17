@@ -121,6 +121,7 @@
   <include path="include/checkbox/languages/korean.xml" />
   <include path="include/checkbox/languages/lithuanian.xml" />
   <include path="include/checkbox/languages/norwegian.xml" />
+  <include path="include/checkbox/languages/polish.xml" />
   <include path="include/checkbox/languages/portuguese.xml" />
   <include path="include/checkbox/languages/russian.xml" />
   <include path="include/checkbox/languages/slovenian.xml" />
