@@ -328,6 +328,7 @@ xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::s
         {"__HoldingKeyToKey__", BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY},
         {"__IgnoreMultipleSameKeyPress__", BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS},
         {"__KeyOverlaidModifier__", BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER},
+        {"__KeyDownUpToKey__", BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY},
         {"__ConsumerToConsumer__", BRIDGE_REMAPTYPE_KEYTOKEY},             // for backwards compatibility
         {"__ConsumerToKey__", BRIDGE_REMAPTYPE_KEYTOKEY},                  // for backwards compatibility
         {"__PointingButtonToPointingButton__", BRIDGE_REMAPTYPE_KEYTOKEY}, // for backwards compatibility
