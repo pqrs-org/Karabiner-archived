@@ -60,7 +60,7 @@
 
   <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</name>
-    <url type="file">/Applications/Utilities/DigitalColor Meter.app</url>
+    <url type="file">/Applications/Utilities/Digital Color Meter.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
