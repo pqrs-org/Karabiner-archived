@@ -60,6 +60,13 @@ RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
 }
 
 void
+RemapClass::Item::prepare(RemapParams& remapParams) {
+  if (!processor_) return;
+
+  processor_->prepare(remapParams);
+}
+
+void
 RemapClass::Item::remap(RemapParams& remapParams) {
   if (!processor_) return;
 
@@ -363,6 +370,20 @@ RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroug
       if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
 
       p->remap_forcenumlockon(item);
+    }
+  }
+}
+
+void
+RemapClass::prepare(RemapParams& remapParams, bool passThroughEnabled) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      // DependingPressingPeriodKeyToKey watches another key status.
+      // Therefore, we need to call 'p->prepare(remapParams)' for all items.
+      p->prepare(remapParams);
     }
   }
 }
@@ -744,6 +765,11 @@ void
 remap_forcenumlockon(ListHookedKeyboard::Item* item) {
   bool passThroughEnabled = isPassThroughEnabled();
   CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
+}
+
+void prepare(RemapParams& remapParams) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  CALL_REMAPCLASS_FUNC(prepare, remapParams);
 }
 
 void
