@@ -176,9 +176,29 @@ remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_KeyboardEventCallBack();
   if (!params) return;
 
+  RemapParams remapParams(*params);
+
+  // Call `prepare` before FlagStatus::set.
+  //
+  // For example, with this autogen:
+  //
+  //    <autogen>
+  //      __HoldingKeyToKey__
+  //      KeyCode::I,
+  //      __{ KeyCode::A }__
+  //      __{ KeyCode::B }__
+  //    </autogen>
+  //
+  // Hitting `i` and `shift` immediately,
+  // `a` and `shift` should be sent.
+  //
+  // If we call prepare after FlagStatus::set,
+  // `shift-a` will be sent. It's not intended.
+
+  RemapClassManager::prepare(remapParams);
+
   FlagStatus::globalFlagStatus().set(params->key, params->flags);
 
-  RemapParams remapParams(*params);
   RemapClassManager::remap(remapParams);
 
   // ------------------------------------------------------------
@@ -207,6 +227,7 @@ remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
   if (!params) return;
 
   RemapParams remapParams(*params);
+  RemapClassManager::prepare(remapParams);
   RemapClassManager::remap(remapParams);
 
   // ----------------------------------------
@@ -234,6 +255,7 @@ remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
   ButtonStatus::set(params->ex_button, params->ex_isbuttondown);
 
   RemapParams remapParams(*params);
+  RemapClassManager::prepare(remapParams);
   RemapClassManager::remap(remapParams);
 
   // ------------------------------------------------------------
@@ -252,6 +274,7 @@ remap_ScrollWheelEventCallback(const Params_Base& paramsBase) {
   if (!params) return;
 
   RemapParams remapParams(*params);
+  RemapClassManager::prepare(remapParams);
   RemapClassManager::remap(remapParams);
 
   if (!remapParams.isremapped) {
