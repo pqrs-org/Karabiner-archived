@@ -12,6 +12,7 @@
 #include "ForceNumLockOn.hpp"
 #include "HoldingKeyToKey.hpp"
 #include "IgnoreMultipleSameKeyPress.hpp"
+#include "KeyDownUpToKey.hpp"
 #include "KeyOverlaidModifier.hpp"
 #include "KeyToKey.hpp"
 #include "PassThrough.hpp"
@@ -73,6 +74,9 @@ public:
       break;
     case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:
       p = new KeyOverlaidModifier();
+      break;
+    case BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY:
+      p = new KeyDownUpToKey();
       break;
     case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:
       p = new PointingRelativeToKey();
