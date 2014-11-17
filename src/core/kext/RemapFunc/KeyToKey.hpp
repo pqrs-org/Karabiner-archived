@@ -34,6 +34,8 @@ public:
   size_t toKeysSize(void) const { return toKeys_.size(); }
   void clearToKeys(void);
 
+  bool isPressing(void) const { return fromEvent_.isPressing(); }
+
 private:
   int getDelayUntilRepeat(void);
   int getKeyRepeat(void);
