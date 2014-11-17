@@ -60,10 +60,10 @@
         __BlockUntilKeyUp__ KeyCode::O
       </autogen>
 
-      <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
-      <autogen>__KeyToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
       <autogen>
-        __KeyToKey__
+        __KeyDownUpToKey__
         KeyCode::Q, ModifierFlag::NONE,
         KeyCode::C, ModifierFlag::COMMAND_L,
         KeyCode::VK_WAIT_100MS,
@@ -73,18 +73,18 @@
         KeyCode::V, ModifierFlag::COMMAND_L,
         Option::NOREPEAT
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
-      <autogen>__KeyToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
-      <autogen>__KeyToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
-      <autogen>__KeyToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
-      <autogen>__KeyToKey__ KeyCode::F, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_FILE_Desktop</autogen>
-      <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
-      <autogen>__KeyToKey__ KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
-      <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
-      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
-      <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Xcode</autogen>
-      <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_iPhoneSimulator</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::F, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_FILE_Desktop</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Xcode</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_iPhoneSimulator</autogen>
     </item>
 
   </item>
