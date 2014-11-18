@@ -71,7 +71,6 @@
         KeyCode::VK_WAIT_100MS,
         KeyCode::VK_WAIT_100MS,
         KeyCode::V, ModifierFlag::COMMAND_L,
-        Option::NOREPEAT
       </autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
