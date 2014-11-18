@@ -789,6 +789,17 @@ needToBlock:
   //
   //   => Enqueue "Space down, T down, T up".
   //
+  //   Note:
+  //     If there is an orphan key up event,
+  //     user is typing fast and we should change key events order in Case 2.
+  //     So, we keep blocking.
+  //
+  //       * M down
+  //       * Space down  (start blocking)
+  //       * M up        (orphan key up event)
+  //       * T down
+  //       * T up
+  //
   // Case 2:
   //   * Space down
   //   * T down
@@ -823,7 +834,9 @@ needToBlock:
     blockedQueue_.push_front(new Item(*front));
     goto endBlocking;
 
-  } else if (!iskeydown && isTargetDownEventInBlockedQueue(*front)) {
+  } else if (!iskeydown &&
+             !isOrphanKeyUpEventExistsInBlockedQueue() &&
+             isTargetDownEventInBlockedQueue(*front)) {
     // Case 1
 
     setIgnoreToAllPressingEvents();
@@ -850,6 +863,27 @@ EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const It
   for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
     if (fromEvent.isTargetDownEvent(p->getParamsBase())) {
       return true;
+    }
+  }
+
+  return false;
+}
+
+bool
+EventInputQueue::BlockUntilKeyUpHander::isOrphanKeyUpEventExistsInBlockedQueue(void) {
+  for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    bool iskeydown;
+    if ((p->getParamsBase()).iskeydown(iskeydown) && !iskeydown) {
+      FromEvent fromEvent(p->getParamsBase());
+      bool found = false;
+      for (Item* q = p; q; q = static_cast<Item*>(q->getprev())) {
+        if (fromEvent.isTargetDownEvent(q->getParamsBase())) {
+          found = true;
+        }
+      }
+      if (!found) {
+        return true;
+      }
     }
   }
 

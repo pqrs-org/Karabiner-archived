@@ -135,6 +135,7 @@ private:
 
   private:
     static bool isTargetDownEventInBlockedQueue(const Item& front);
+    static bool isOrphanKeyUpEventExistsInBlockedQueue(void);
     static void endBlocking(void);
     static void setIgnoreToAllPressingEvents(void);
     static void blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender);
