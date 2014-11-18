@@ -313,6 +313,13 @@
       </item>
     </item>
     <item>
+      <name>Enable PC Prev/Next Media Keys</name>
+      <appendix>(Das Keyboard, Logitech G Series, ...)</appendix>
+      <identifier>remap.pc_style_prev_next</identifier>
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0011, ModifierFlag::NONE, ConsumerKeyCode::MUSIC_NEXT</autogen>
+      <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0012, ModifierFlag::NONE, ConsumerKeyCode::MUSIC_PREV</autogen>
+    </item>
+    <item>
       <name>Use PC Style KeyPad Layout on Apple KeyPad</name>
       <appendix>(Change = to /)</appendix>
       <appendix>(Change / to *)</appendix>
