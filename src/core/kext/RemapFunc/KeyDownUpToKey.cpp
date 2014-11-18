@@ -61,6 +61,10 @@ void KeyDownUpToKey::add(AddDataType datatype, AddValue newval) {
     if (Option::SEPARATOR == option) {
       indexType_ = INDEXTYPE_INTERRUPTED;
       needClearInterruptedToKeys_ = true;
+    } else if (Option::USE_SEPARATOR == option) {
+      // do nothing
+    } else {
+      IOLOG_ERROR("KeyDownUpToKey::add unknown option:%u\n", static_cast<unsigned int>(newval));
     }
     break;
   }
