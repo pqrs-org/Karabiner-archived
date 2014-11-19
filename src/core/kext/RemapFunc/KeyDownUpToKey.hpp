@@ -11,7 +11,6 @@ public:
   KeyDownUpToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY),
                          indexType_(INDEXTYPE_NONE),
                          needClearInterruptedToKeys_(false),
-                         needProcessPrepare_(false),
                          interrupted_(false) {}
 
   void prepare(RemapParams& remapParams) override;
@@ -32,7 +31,6 @@ private:
   KeyToKey keytokey_interrupted_;
 
   bool needClearInterruptedToKeys_;
-  bool needProcessPrepare_;
   bool interrupted_;
 };
 }

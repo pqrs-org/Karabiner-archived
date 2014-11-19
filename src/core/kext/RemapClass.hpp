@@ -41,6 +41,8 @@ public:
       return processor_->getIgnorePassThrough();
     }
 
+    RemapFunc::RemapFuncBase* processor(void) const { return processor_; }
+
   private:
     bool isblocked(void) const;
 
@@ -82,6 +84,7 @@ public:
   uint32_t get_configindex(void) const { return configindex_; }
   bool hasActiveItem(void) const;
   bool isPassThroughEnabled(void) const;
+  Item* findItem(RemapFunc::RemapFuncBase* processor) const;
 
   static void log_allocation_count(void);
   static void reset_allocation_count(void);
@@ -116,7 +119,6 @@ void refresh(void);
 
 void remap_setkeyboardtype(KeyboardType& keyboardType);
 void remap_forcenumlockon(ListHookedKeyboard::Item* item);
-void prepare(RemapParams& remapParams);
 void remap(RemapParams& remapParams);
 
 // for BlockUntilKeyUp
@@ -137,7 +139,22 @@ bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
 bool isSimultaneousKeyPressesEnabled(void);
 
 bool isEnabled(size_t configindex);
+
+class PrepareTargetItem final : public List::Item {
+public:
+  PrepareTargetItem(const RemapClass::Item& i) : item(i) {}
+  virtual ~PrepareTargetItem(void) {}
+
+  const RemapClass::Item& item;
+
+private:
+  PrepareTargetItem& operator=(const PrepareTargetItem& rhs); // Prevent assignment
 };
+
+void registerPrepareTargetItem(RemapFunc::RemapFuncBase* processor);
+void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor);
+void prepare(RemapParams& remapParams);
+}
 }
 
 #endif
