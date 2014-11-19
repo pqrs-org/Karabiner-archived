@@ -1,5 +1,6 @@
 #include "IOLogWrapper.hpp"
 #include "KeyDownUpToKey.hpp"
+#include "RemapClass.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
@@ -77,10 +78,7 @@ void KeyDownUpToKey::add(AddDataType datatype, AddValue newval) {
 
 void KeyDownUpToKey::prepare(RemapParams &remapParams) {
   bool iskeydown = false;
-  if (needProcessPrepare_ &&
-      remapParams.paramsBase.iskeydown(iskeydown)) {
-    needProcessPrepare_ = false;
-
+  if (remapParams.paramsBase.iskeydown(iskeydown)) {
     if (keytokey_from_.remap(remapParams)) {
       keytokey_downup_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       keytokey_downup_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
@@ -88,6 +86,7 @@ void KeyDownUpToKey::prepare(RemapParams &remapParams) {
       keytokey_interrupted_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       interrupted_ = true;
     }
+    RemapClassManager::unregisterPrepareTargetItem(this);
   }
 }
 
@@ -100,8 +99,8 @@ bool KeyDownUpToKey::remap(RemapParams &remapParams) {
   }
 
   if (keytokey_from_.isPressing()) {
+    RemapClassManager::registerPrepareTargetItem(this);
     interrupted_ = false;
-    needProcessPrepare_ = true;
   }
 
   return true;

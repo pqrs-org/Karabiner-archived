@@ -60,13 +60,6 @@ RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
 }
 
 void
-RemapClass::Item::prepare(RemapParams& remapParams) {
-  if (!processor_) return;
-
-  processor_->prepare(remapParams);
-}
-
-void
 RemapClass::Item::remap(RemapParams& remapParams) {
   if (!processor_) return;
 
@@ -375,20 +368,6 @@ RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroug
 }
 
 void
-RemapClass::prepare(RemapParams& remapParams, bool passThroughEnabled) {
-  for (size_t i = 0; i < items_.size(); ++i) {
-    Item* p = items_[i];
-    if (p) {
-      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
-
-      // DependingPressingPeriodKeyToKey watches another key status.
-      // Therefore, we need to call 'p->prepare(remapParams)' for all items.
-      p->prepare(remapParams);
-    }
-  }
-}
-
-void
 RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled) {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
@@ -473,6 +452,14 @@ RemapClass::isPassThroughEnabled(void) const {
   return false;
 }
 
+RemapClass::Item* RemapClass::findItem(RemapFunc::RemapFuncBase* processor) const {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p->processor() == processor) return p;
+  }
+  return NULL;
+}
+
 void
 RemapClass::log_allocation_count(void) {
   IOLOG_INFO("RemapClass::allocation_count_ %d/%d (memory usage: %d%% of %dKB)\n",
@@ -497,6 +484,8 @@ bool isSimultaneousKeyPressesEnabled_ = false;
 
 Vector_RemapClassPointer remapclasses_;
 Vector_RemapClassPointer enabled_remapclasses_;
+
+List prepareTargetItems_;
 
 // ======================================================================
 static void
@@ -557,6 +546,7 @@ clear_remapclasses(void) {
   VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items();
 
   enabled_remapclasses_.clear();
+  prepareTargetItems_.clear();
 
   for (size_t i = 0; i < remapclasses_.size(); ++i) {
     RemapClass* p = remapclasses_[i];
@@ -767,11 +757,6 @@ remap_forcenumlockon(ListHookedKeyboard::Item* item) {
   CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
 }
 
-void prepare(RemapParams& remapParams) {
-  bool passThroughEnabled = isPassThroughEnabled();
-  CALL_REMAPCLASS_FUNC(prepare, remapParams);
-}
-
 void
 remap(RemapParams& remapParams) {
   bool passThroughEnabled = isPassThroughEnabled();
@@ -845,6 +830,58 @@ isEnabled(size_t configindex) {
   if (!p) return false;
 
   return p->enabled();
+}
+
+void registerPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
+  unregisterPrepareTargetItem(processor);
+
+  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+    auto p = enabled_remapclasses_[i];
+    if (p) {
+      auto item = p->findItem(processor);
+      if (item) {
+        prepareTargetItems_.push_back(new PrepareTargetItem(*item));
+      }
+    }
+  }
+}
+
+void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
+  auto item = static_cast<PrepareTargetItem*>(prepareTargetItems_.safe_front());
+  for (;;) {
+    if (!item) return;
+
+    auto next = static_cast<PrepareTargetItem*>(item->getnext());
+
+    if ((item->item).processor() == processor) {
+      prepareTargetItems_.erase_and_delete(item);
+    }
+
+    item = next;
+  }
+}
+
+void prepare(RemapParams& remapParams) {
+  bool passThroughEnabled = isPassThroughEnabled();
+
+  auto item = static_cast<PrepareTargetItem*>(prepareTargetItems_.safe_front());
+  for (;;) {
+    if (!item) return;
+
+    // item might be removed by unregisterPrepareTargetItem in `prepare`.
+    // So, we store next pointer at first.
+    auto next = static_cast<PrepareTargetItem*>(item->getnext());
+
+    if (!passThroughEnabled ||
+        (item->item).isIgnorePassThrough()) {
+      auto p = (item->item).processor();
+      if (p) {
+        p->prepare(remapParams);
+      }
+    }
+
+    item = next;
+  }
 }
 }
 }
