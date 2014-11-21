@@ -12,11 +12,13 @@ public:
   KeyOverlaidModifier(void) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER),
                               isUseSeparator_(false),
                               indexType_(INDEX_IS_HOLDING),
-                              index_(0) {
+                              index_(0),
+                              dppkeytokey_(this) {
     dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
   }
 
-  bool remap(RemapParams& remapParams) override;
+  void prepare(RemapParams& remapParams) override { prepare(remapParams); }
+  bool remap(RemapParams& remapParams) override { return dppkeytokey_.remap(remapParams); }
 
   // ----------------------------------------
   // [0]   => fromKey_

@@ -118,7 +118,5 @@ KeyOverlaidModifier::addToDependingPressingPeriodKeyToKey(AddDataType datatype, 
     break;
   }
 }
-
-bool KeyOverlaidModifier::remap(RemapParams& remapParams) { return dppkeytokey_.remap(remapParams); }
 }
 }

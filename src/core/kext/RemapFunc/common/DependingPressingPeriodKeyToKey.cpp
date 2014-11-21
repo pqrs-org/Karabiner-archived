@@ -134,10 +134,11 @@ DependingPressingPeriodKeyToKey::static_terminate(void) {
   fire_timer_.terminate();
 }
 
-DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(void) : active_(false),
-                                                                         periodtype_(PeriodType::NONE),
-                                                                         keyboardRepeatID_(0),
-                                                                         interruptibleByScrollWheel_(true) {
+DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner) : owner_(owner),
+                                                                                                    active_(false),
+                                                                                                    periodtype_(PeriodType::NONE),
+                                                                                                    keyboardRepeatID_(0),
+                                                                                                    interruptibleByScrollWheel_(true) {
   for (size_t i = 0; i < KeyToKeyType::END_; ++i) {
     keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
   }
@@ -160,6 +161,9 @@ DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, AddDataType datat
   } else {
     keytokey_[type].add(datatype, newval);
   }
+}
+
+void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
 }
 
 bool
