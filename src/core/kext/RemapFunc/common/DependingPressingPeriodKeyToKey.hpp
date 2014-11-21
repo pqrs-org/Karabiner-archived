@@ -125,9 +125,10 @@ public:
   static void static_initialize(IOWorkLoop& workloop);
   static void static_terminate(void);
 
-  DependingPressingPeriodKeyToKey(void);
+  DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner);
   ~DependingPressingPeriodKeyToKey(void);
 
+  void prepare(RemapParams& remapParams);
   bool remap(RemapParams& remapParams);
 
   // About trick of fromModifierFlags_.
@@ -194,6 +195,8 @@ private:
   void dokeydown(void);
   void dokeyup(void);
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
+
+  RemapFunc::RemapFuncBase* owner_;
 
   static TimerWrapper fire_timer_;
   static DependingPressingPeriodKeyToKey* target_;

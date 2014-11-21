@@ -11,11 +11,13 @@ public:
   HoldingKeyToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY),
                           isUseSeparator_(false),
                           indexType_(INDEX_IS_NORMAL),
-                          index_(0) {
+                          index_(0),
+                          dppkeytokey_(this) {
     dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::HOLDING_KEY_TO_KEY);
   }
 
-  bool remap(RemapParams& remapParams) override;
+  void prepare(RemapParams& remapParams) override { prepare(remapParams); }
+  bool remap(RemapParams& remapParams) override { return dppkeytokey_.remap(remapParams); }
 
   // ----------------------------------------
   // [0]   => fromKey_
