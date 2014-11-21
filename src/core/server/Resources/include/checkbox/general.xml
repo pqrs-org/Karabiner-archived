@@ -120,6 +120,13 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Workaround for keyboards with stuck keys.</name>
+      <appendix>Enable this seting if you are using external keyboards</appendix>
+      <appendix>which sometimes keep pressing modifiers. (eg. shift)</appendix>
+      <identifier essential="true">general.workaround_stuck_keyboards</identifier>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Allow devices which Vendor ID and Product ID are zero.</name>
       <appendix>(Be careful enabling this option.</appendix>
       <appendix>These devices might cause system crash with Karabiner.)</appendix>
