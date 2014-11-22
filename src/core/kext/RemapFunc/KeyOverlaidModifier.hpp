@@ -17,7 +17,7 @@ public:
     dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
   }
 
-  void prepare(RemapParams& remapParams) override { prepare(remapParams); }
+  void prepare(RemapParams& remapParams) override { dppkeytokey_.prepare(remapParams); }
   bool remap(RemapParams& remapParams) override { return dppkeytokey_.remap(remapParams); }
 
   // ----------------------------------------
