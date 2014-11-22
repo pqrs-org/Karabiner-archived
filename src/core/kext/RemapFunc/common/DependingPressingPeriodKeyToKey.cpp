@@ -4,6 +4,7 @@
 #include "DependingPressingPeriodKeyToKey.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyboardRepeat.hpp"
+#include "RemapClass.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
@@ -164,6 +165,7 @@ DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, AddDataType datat
 }
 
 void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
+  RemapClassManager::unregisterPrepareTargetItem(owner_);
 }
 
 bool
@@ -228,6 +230,8 @@ DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
         } else {
           fire_timer_.setTimeoutMS(ms);
         }
+
+        RemapClassManager::registerPrepareTargetItem(owner_);
 
       } else {
         FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
