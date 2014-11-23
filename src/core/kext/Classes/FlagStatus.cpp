@@ -1,5 +1,4 @@
 #include "CommonData.hpp"
-#include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
@@ -48,12 +47,6 @@ FlagStatus::Item::set(KeyCode key, Flags flags) {
       increase();
     } else {
       decrease();
-
-      // Some keyboards sometimes drop keyup events for modifiers and modifiers will be stuck.
-      // So, set count_ zero for this case.
-      if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_workaround_stuck_keyboards)) {
-        count_ = 0;
-      }
     }
   }
 }
