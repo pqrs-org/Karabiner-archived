@@ -66,6 +66,13 @@ FromEvent::changePressingState(const Params_Base& paramsBase,
 }
 
 bool
+FromEvent::isTargetEvent(const Params_Base& paramsBase) const {
+  bool isDown = false;
+  if (!isTargetEvent(isDown, paramsBase)) return false;
+  return true;
+}
+
+bool
 FromEvent::isTargetDownEvent(const Params_Base& paramsBase) const {
   bool isDown = false;
   if (!isTargetEvent(isDown, paramsBase)) return false;

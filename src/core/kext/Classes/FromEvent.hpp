@@ -88,6 +88,7 @@ public:
   // Primitive functions:
   // These functions do not treat Flags.
   // Use changePressingState in general.
+  bool isTargetEvent(const Params_Base& paramsBase) const;
   bool isTargetDownEvent(const Params_Base& paramsBase) const;
   bool isTargetUpEvent(const Params_Base& paramsBase) const;
 
