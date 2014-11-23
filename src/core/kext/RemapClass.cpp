@@ -841,6 +841,7 @@ void registerPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
       auto item = p->findItem(processor);
       if (item) {
         prepareTargetItems_.push_back(new PrepareTargetItem(*item));
+        return;
       }
     }
   }
@@ -851,13 +852,11 @@ void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
   for (;;) {
     if (!item) return;
 
-    auto next = static_cast<PrepareTargetItem*>(item->getnext());
-
     if ((item->item).processor() == processor) {
-      prepareTargetItems_.erase_and_delete(item);
+      item = static_cast<PrepareTargetItem*>(prepareTargetItems_.erase_and_delete(item));
+    } else {
+      item = static_cast<PrepareTargetItem*>(item->getnext());
     }
-
-    item = next;
   }
 }
 
