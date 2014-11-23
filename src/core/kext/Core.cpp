@@ -38,6 +38,7 @@ start(void) {
   KeyCodeModifierFlagPairs::initialize();
   ModifierName::initialize();
   EventWatcher::initialize();
+  PressingPhysicalKeys::initialize();
   PressDownKeys::initialize();
   ButtonStatus::initialize();
 
@@ -89,6 +90,7 @@ stop(void) {
 
   EventWatcher::terminate();
   PressDownKeys::terminate();
+  PressingPhysicalKeys::terminate();
 
   CommonData::terminate();
 }
@@ -156,8 +158,9 @@ IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOSe
 namespace {
 void
 resetWhenPressingPhysicalKeysIsEmpty(void) {
-  if (PressingPhysicalKeys::iszero()) {
-    PressingPhysicalKeys::reset();
+  if (PressingPhysicalKeys::empty()) {
+    IOLOG_DEVEL("resetWhenPressingPhysicalKeysIsEmpty\n");
+    PressingPhysicalKeys::clear();
     KeyboardRepeat::cancel();
     EventWatcher::reset();
     FlagStatus::globalFlagStatus().reset();

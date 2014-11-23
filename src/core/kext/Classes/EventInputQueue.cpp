@@ -617,7 +617,7 @@ EventInputQueue::doFire(void) {
       // Both (1) and (4) fire DOWN event.
 
       if (params->key != KeyCode::CAPSLOCK) {
-        PressingPhysicalKeys::set(params->ex_iskeydown ? 1 : -1);
+        PressingPhysicalKeys::update(p->getParamsBase());
       }
 
       Core::remap_KeyboardEventCallback(p->getParamsBase());
@@ -635,7 +635,7 @@ EventInputQueue::doFire(void) {
       }
 
       // ------------------------------------------------------------
-      PressingPhysicalKeys::set(params->ex_iskeydown ? 1 : -1);
+      PressingPhysicalKeys::update(p->getParamsBase());
 
       Core::remap_KeyboardSpecialEventCallback(p->getParamsBase());
     }
@@ -676,7 +676,7 @@ EventInputQueue::doFire(void) {
 
       // ------------------------------------------------------------
       if (params->ex_button != PointingButton::NONE) {
-        PressingPhysicalKeys::set(params->ex_isbuttondown ? 1 : -1);
+        PressingPhysicalKeys::update(p->getParamsBase());
       }
 
       Core::remap_RelativePointerEventCallback(p->getParamsBase());
