@@ -159,7 +159,7 @@ ListHookedDevice::Item::isConsumer(const char* name) {
 namespace {
 void
 reset(void) {
-  PressingPhysicalKeys::reset();
+  PressingPhysicalKeys::clear();
 }
 }
 

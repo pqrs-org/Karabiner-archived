@@ -1,17 +1,27 @@
 #ifndef PRESSINGPHYSICALKEYS_HPP
 #define PRESSINGPHYSICALKEYS_HPP
 
+#include "FromEvent.hpp"
+#include "List.hpp"
+
 namespace org_pqrs_Karabiner {
 class PressingPhysicalKeys final {
 public:
-  static void set(int diff);
-  static void reset(void);
-  static bool iszero(void);
+  static void initialize(void);
+  static void terminate(void);
+  static void update(const Params_Base& paramsBase);
+  static void clear(void);
+  static bool empty(void);
 
 private:
-  static void log(void);
+  class Item final : public List::Item {
+  public:
+    Item(const Params_Base& paramsBase) : fromEvent(paramsBase) {}
+    virtual ~Item(void) {}
 
-  static int num_;
+    FromEvent fromEvent;
+  };
+  static List list_;
 };
 }
 
