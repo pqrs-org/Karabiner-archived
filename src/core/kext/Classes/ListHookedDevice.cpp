@@ -6,8 +6,8 @@
 #include "ListHookedDevice.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
-#include "NumHeldDownKeys.hpp"
 #include "Params.hpp"
+#include "PressingPhysicalKeys.hpp"
 #include "TimerWrapper.hpp"
 #include "strlcpy_utf8.hpp"
 
@@ -159,7 +159,7 @@ ListHookedDevice::Item::isConsumer(const char* name) {
 namespace {
 void
 reset(void) {
-  NumHeldDownKeys::reset();
+  PressingPhysicalKeys::reset();
 }
 }
 

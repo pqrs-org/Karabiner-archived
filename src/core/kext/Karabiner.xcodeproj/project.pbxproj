@@ -83,8 +83,8 @@
 		34779377185B1FA800B3EF06 /* ListHookedKeyboard.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477934A185B1FA800B3EF06 /* ListHookedKeyboard.hpp */; };
 		34779378185B1FA800B3EF06 /* ListHookedPointing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477934B185B1FA800B3EF06 /* ListHookedPointing.cpp */; };
 		34779379185B1FA800B3EF06 /* ListHookedPointing.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477934C185B1FA800B3EF06 /* ListHookedPointing.hpp */; };
-		3477937A185B1FA800B3EF06 /* NumHeldDownKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477934D185B1FA800B3EF06 /* NumHeldDownKeys.cpp */; };
-		3477937B185B1FA800B3EF06 /* NumHeldDownKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477934E185B1FA800B3EF06 /* NumHeldDownKeys.hpp */; };
+		3477937A185B1FA800B3EF06 /* PressingPhysicalKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3477934D185B1FA800B3EF06 /* PressingPhysicalKeys.cpp */; };
+		3477937B185B1FA800B3EF06 /* PressingPhysicalKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3477934E185B1FA800B3EF06 /* PressingPhysicalKeys.hpp */; };
 		3477937E185B1FA800B3EF06 /* PressDownKeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779351185B1FA800B3EF06 /* PressDownKeys.cpp */; };
 		3477937F185B1FA800B3EF06 /* PressDownKeys.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34779352185B1FA800B3EF06 /* PressDownKeys.hpp */; };
 		34779380185B1FA800B3EF06 /* TimerWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34779353185B1FA800B3EF06 /* TimerWrapper.cpp */; };
@@ -239,8 +239,8 @@
 		3477934A185B1FA800B3EF06 /* ListHookedKeyboard.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedKeyboard.hpp; path = Classes/ListHookedKeyboard.hpp; sourceTree = "<group>"; };
 		3477934B185B1FA800B3EF06 /* ListHookedPointing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ListHookedPointing.cpp; path = Classes/ListHookedPointing.cpp; sourceTree = "<group>"; };
 		3477934C185B1FA800B3EF06 /* ListHookedPointing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ListHookedPointing.hpp; path = Classes/ListHookedPointing.hpp; sourceTree = "<group>"; };
-		3477934D185B1FA800B3EF06 /* NumHeldDownKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NumHeldDownKeys.cpp; path = Classes/NumHeldDownKeys.cpp; sourceTree = "<group>"; };
-		3477934E185B1FA800B3EF06 /* NumHeldDownKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NumHeldDownKeys.hpp; path = Classes/NumHeldDownKeys.hpp; sourceTree = "<group>"; };
+		3477934D185B1FA800B3EF06 /* PressingPhysicalKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PressingPhysicalKeys.cpp; path = Classes/PressingPhysicalKeys.cpp; sourceTree = "<group>"; };
+		3477934E185B1FA800B3EF06 /* PressingPhysicalKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PressingPhysicalKeys.hpp; path = Classes/PressingPhysicalKeys.hpp; sourceTree = "<group>"; };
 		34779351185B1FA800B3EF06 /* PressDownKeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PressDownKeys.cpp; path = Classes/PressDownKeys.cpp; sourceTree = "<group>"; };
 		34779352185B1FA800B3EF06 /* PressDownKeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PressDownKeys.hpp; path = Classes/PressDownKeys.hpp; sourceTree = "<group>"; };
 		34779353185B1FA800B3EF06 /* TimerWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimerWrapper.cpp; path = Classes/TimerWrapper.cpp; sourceTree = "<group>"; };
@@ -485,12 +485,12 @@
 				3477934C185B1FA800B3EF06 /* ListHookedPointing.hpp */,
 				34E984C218FFD108003A21F6 /* ModifierName.cpp */,
 				34E984C318FFD108003A21F6 /* ModifierName.hpp */,
-				3477934D185B1FA800B3EF06 /* NumHeldDownKeys.cpp */,
-				3477934E185B1FA800B3EF06 /* NumHeldDownKeys.hpp */,
 				346A727719D8F55E00DEEDE6 /* Params.cpp */,
 				3477932D185B1FA800B3EF06 /* Params.hpp */,
 				34779351185B1FA800B3EF06 /* PressDownKeys.cpp */,
 				34779352185B1FA800B3EF06 /* PressDownKeys.hpp */,
+				3477934D185B1FA800B3EF06 /* PressingPhysicalKeys.cpp */,
+				3477934E185B1FA800B3EF06 /* PressingPhysicalKeys.hpp */,
 				34779353185B1FA800B3EF06 /* TimerWrapper.cpp */,
 				34779354185B1FA800B3EF06 /* TimerWrapper.hpp */,
 				34213BB61860A4F7002CBAB9 /* ToEvent.cpp */,
@@ -572,7 +572,7 @@
 				3477936D185B1FA800B3EF06 /* KeyboardRepeat.hpp in Headers */,
 				349A10911907D0290000E43F /* BlockUntilKeyUp.hpp in Headers */,
 				34D5B57419B1BECA00ABD446 /* RemapFuncBase.hpp in Headers */,
-				3477937B185B1FA800B3EF06 /* NumHeldDownKeys.hpp in Headers */,
+				3477937B185B1FA800B3EF06 /* PressingPhysicalKeys.hpp in Headers */,
 				34779381185B1FA800B3EF06 /* TimerWrapper.hpp in Headers */,
 				34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */,
 				3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */,
@@ -762,7 +762,7 @@
 				3477935D185B1FA800B3EF06 /* EventInputQueue.cpp in Sources */,
 				34779AEC18FF905A00820FCB /* KeyCodeModifierFlagPairs.cpp in Sources */,
 				34B464E713A6563B00470265 /* VK_CONFIG.cpp in Sources */,
-				3477937A185B1FA800B3EF06 /* NumHeldDownKeys.cpp in Sources */,
+				3477937A185B1FA800B3EF06 /* PressingPhysicalKeys.cpp in Sources */,
 				34B464EB13A6587400470265 /* VK_MOUSEKEY.cpp in Sources */,
 				34779380185B1FA800B3EF06 /* TimerWrapper.cpp in Sources */,
 				34B464EF13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.cpp in Sources */,

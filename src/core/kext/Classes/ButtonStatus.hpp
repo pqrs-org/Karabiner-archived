@@ -36,7 +36,7 @@ public:
 
       // Preserve lock_count_.
       //
-      // ButtonStatus::reset is called when NumHeldDownKeys == 0,
+      // ButtonStatus::reset is called when PressingPhysicalKeys is empty,
       // We need to remember lock status even if all key is released.
       // So, do not reset lock_count_ here.
     }
