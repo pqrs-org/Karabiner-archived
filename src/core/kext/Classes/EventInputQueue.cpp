@@ -10,7 +10,7 @@
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
-#include "NumHeldDownKeys.hpp"
+#include "PressingPhysicalKeys.hpp"
 #include "RemapClass.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -186,7 +186,7 @@ EventInputQueue::push_KeyboardEventCallback(OSObject* target,
   //
   // This key sends the same event at key pressing and key releasing.
   // Therefore, we cannot recognize whether key is pressed or key is released.
-  // So, we have to ignore this key for NumHeldDownKeys.
+  // So, we have to ignore this key for PressingPhysicalKeys.
   //
   if (EventType::MODIFY == EventType(eventType)) {
     if (KeyCode(key).getModifierFlag() == ModifierFlag::ZERO) {
@@ -587,7 +587,7 @@ EventInputQueue::doFire(void) {
       }
 
       // ------------------------------------------------------------
-      // We must call NumHeldDownKeys after inputqueue. (Not before queuing)
+      // We must call PressingPhysicalKeys after inputqueue. (Not before queuing)
       // For example, when we type Command_L+S.
       //
       // (1) Command_L down (queued)
@@ -597,15 +597,15 @@ EventInputQueue::doFire(void) {
       // (4) KeyCode::S up
       // (2') dequeue KeyCode::S down
       //
-      // if NumHeldDownKeys called when (4), Command_L state is reset.
+      // if PressingPhysicalKeys called when (4), Command_L state is reset.
       // Then (2') send KeyCode::S without Modifiers.
       //
       // ------------------------------------------------------------
       // When we press&release CapsLock, key event is fired only once.
       // (down or up depending on the state of CapsLock)
       // If we use Virtual CapsLock (remapped CapsLock) like "Change A to CapsLock",
-      // the NumHeldDownKeys state is increase illegally.
-      // So, we ignore Hardware CapsLock at NumHeldDownKeys.
+      // the PressingPhysicalKeys state is increase illegally.
+      // So, we ignore Hardware CapsLock at PressingPhysicalKeys.
       //
       // (1) Press Hardware CapsLock (EventType::DOWN is fired.)
       // (2) Press A (EventType::DOWN is fired.)
@@ -617,7 +617,7 @@ EventInputQueue::doFire(void) {
       // Both (1) and (4) fire DOWN event.
 
       if (params->key != KeyCode::CAPSLOCK) {
-        NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+        PressingPhysicalKeys::set(params->ex_iskeydown ? 1 : -1);
       }
 
       Core::remap_KeyboardEventCallback(p->getParamsBase());
@@ -635,7 +635,7 @@ EventInputQueue::doFire(void) {
       }
 
       // ------------------------------------------------------------
-      NumHeldDownKeys::set(params->ex_iskeydown ? 1 : -1);
+      PressingPhysicalKeys::set(params->ex_iskeydown ? 1 : -1);
 
       Core::remap_KeyboardSpecialEventCallback(p->getParamsBase());
     }
@@ -676,7 +676,7 @@ EventInputQueue::doFire(void) {
 
       // ------------------------------------------------------------
       if (params->ex_button != PointingButton::NONE) {
-        NumHeldDownKeys::set(params->ex_isbuttondown ? 1 : -1);
+        PressingPhysicalKeys::set(params->ex_isbuttondown ? 1 : -1);
       }
 
       Core::remap_RelativePointerEventCallback(p->getParamsBase());

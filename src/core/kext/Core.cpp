@@ -16,9 +16,9 @@
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
 #include "ModifierName.hpp"
-#include "NumHeldDownKeys.hpp"
 #include "Params.hpp"
 #include "PressDownKeys.hpp"
+#include "PressingPhysicalKeys.hpp"
 #include "RemapClass.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/common/DependingPressingPeriodKeyToKey.hpp"
@@ -155,9 +155,9 @@ IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOSe
 // ======================================================================
 namespace {
 void
-resetWhenNumHeldDownKeysIsZero(void) {
-  if (NumHeldDownKeys::iszero()) {
-    NumHeldDownKeys::reset();
+resetWhenPressingPhysicalKeysIsEmpty(void) {
+  if (PressingPhysicalKeys::iszero()) {
+    PressingPhysicalKeys::reset();
     KeyboardRepeat::cancel();
     EventWatcher::reset();
     FlagStatus::globalFlagStatus().reset();
@@ -216,7 +216,7 @@ remap_KeyboardEventCallback(const Params_Base& paramsBase) {
     EventOutputQueue::FireKey::fire(p);
   }
 
-  resetWhenNumHeldDownKeysIsZero();
+  resetWhenPressingPhysicalKeysIsEmpty();
 
   RemapFunc::PointingRelativeToScroll::cancelScroll();
 }
@@ -242,7 +242,7 @@ remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
     EventOutputQueue::FireConsumer::fire(p);
   }
 
-  resetWhenNumHeldDownKeysIsZero();
+  resetWhenPressingPhysicalKeysIsEmpty();
 
   RemapFunc::PointingRelativeToScroll::cancelScroll();
 }
@@ -264,7 +264,7 @@ remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
   }
 
   if (params->ex_button != PointingButton::NONE) {
-    resetWhenNumHeldDownKeysIsZero();
+    resetWhenPressingPhysicalKeysIsEmpty();
   }
 }
 

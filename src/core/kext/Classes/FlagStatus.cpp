@@ -68,7 +68,7 @@ FlagStatus::Item::reset(void) {
   /*
        preserve lock_count, negative_lock_count_ and sticky_count_.
 
-       FlagStatus::reset is called when NumHeldDownKeys == 0,
+       FlagStatus::reset is called when PressingPhysicalKeys is empty,
        so we need remember the status of CapsLock.
      */
 }

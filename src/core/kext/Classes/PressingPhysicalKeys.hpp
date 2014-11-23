@@ -1,8 +1,8 @@
-#ifndef NUMHELDDOWNKEYS_HPP
-#define NUMHELDDOWNKEYS_HPP
+#ifndef PRESSINGPHYSICALKEYS_HPP
+#define PRESSINGPHYSICALKEYS_HPP
 
 namespace org_pqrs_Karabiner {
-class NumHeldDownKeys final {
+class PressingPhysicalKeys final {
 public:
   static void set(int diff);
   static void reset(void);
