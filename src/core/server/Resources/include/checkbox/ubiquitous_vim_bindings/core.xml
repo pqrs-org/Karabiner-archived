@@ -226,60 +226,12 @@
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
           </autogen>
 
-          <!-- Default gt, gT (tab-switch) bindings. -->
-          <block>
-            <not>SAFARI, SKYPE, GOOGLE_CHROME</not>
-            <autogen>
-              __KeyToKey__
-              KeyCode::T, ModifierFlag::NONE,
-              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-            <autogen>
-              __KeyToKey__
-              KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-          </block>
+          <!-- ======================================== -->
+          <!-- gt, gT (tab-switch) bindings -->
 
-          <!-- Skype tab-switch customization. -->
+          <!-- Skype -->
           <block>
             <only>SKYPE</only>
-            <autogen>
-              __KeyToKey__
-              KeyCode::T, ModifierFlag::NONE,
-              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-            <autogen>
-              __KeyToKey__
-              KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-          </block>
-
-          <!-- Safari tab-switch customization. -->
-          <block>
-            <only>SAFARI</only>
-            <autogen>
-              __KeyToKey__
-              KeyCode::T, ModifierFlag::NONE,
-              KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-            <autogen>
-              __KeyToKey__
-              KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-              KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
-            </autogen>
-          </block>
-
-          <!-- Google Chrome tab-switch customization. -->
-          <block>
-            <only>GOOGLE_CHROME</only>
             <autogen>
               __KeyToKey__
               KeyCode::T, ModifierFlag::NONE,
@@ -290,6 +242,39 @@
               __KeyToKey__
               KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+          </block>
+
+          <!-- Thunderbird -->
+          <block>
+            <only>THUNDERBIRD</only>
+            <autogen>
+              __KeyToKey__
+              KeyCode::T, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+          </block>
+
+          <!-- Default -->
+          <block>
+            <autogen>
+              __KeyToKey__
+              KeyCode::T, ModifierFlag::NONE,
+              KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+              KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
+            </autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+              KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_g_operator_pending
             </autogen>
           </block>
