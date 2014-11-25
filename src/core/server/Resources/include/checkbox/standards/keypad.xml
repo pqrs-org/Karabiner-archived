@@ -38,9 +38,9 @@
     <item>
       <name>Change KeyPad-Comma(,) Key</name>
       <item>
-        <name>KeyPad-Comma(,) to Shift+Comma</name>
+        <name>KeyPad-Comma(,) to Comma</name>
         <identifier>remap.keypadcomma2shiftComma</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_COMMA, KeyCode::KEYPAD_COMMA, ModifierFlag::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_COMMA, KeyCode::COMMA</autogen>
       </item>
       <item>
         <name>KeyPad-Comma(,) to Equal</name>
@@ -78,9 +78,9 @@
         </autogen>
       </item>
       <item>
-        <name>KeyPad-Dot(.) to Keypad-Comma(,)</name>
+        <name>KeyPad-Dot(.) to Comma(,)</name>
         <identifier>remap.keypaddot2comma</identifier>
-        <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_COMMA</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::COMMA</autogen>
       </item>
       <item>
         <name>Fn+KeyPad-Dot(.) to Fn+Shift+Dot</name>
@@ -95,7 +95,7 @@
         <autogen>
           __KeyToKey__
           KeyCode::KEYPAD_DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-          KeyCode::KEYPAD_COMMA,
+          KeyCode::COMMA,
         </autogen>
       </item>
       <item>
