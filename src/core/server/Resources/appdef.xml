@@ -559,4 +559,9 @@
     <equal>com.apple.iphonesimulator</equal>
   </appdef>
 
+  <appdef>
+    <appname>Avid_MediaComposer</appname>
+    <equal>com.avid.mediacomposer</equal>
+  </appdef>
+
 </root>
