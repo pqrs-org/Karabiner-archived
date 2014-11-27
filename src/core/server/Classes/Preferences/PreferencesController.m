@@ -124,4 +124,9 @@
   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[sender title]]];
 }
 
+- (IBAction)openPrivateXMLUsageURL:(id)sender {
+  NSString* url = @"https://pqrs.org/osx/karabiner/document.html#privatexml";
+  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
 @end

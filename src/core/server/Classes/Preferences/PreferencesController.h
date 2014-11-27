@@ -14,5 +14,6 @@
 
 - (void)show;
 - (IBAction)openURL:(id)sender;
+- (IBAction)openPrivateXMLUsageURL:(id)sender;
 
 @end
