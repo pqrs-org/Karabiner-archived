@@ -141,7 +141,7 @@
                                             </connections>
                                         </searchField>
                                         <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="664">
-                                            <rect key="frame" x="17" y="37" width="588" height="491"/>
+                                            <rect key="frame" x="17" y="54" width="588" height="474"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n2M-kD-RD0">
                                                 <rect key="frame" x="1" y="17" width="571" height="473"/>
@@ -189,7 +189,7 @@
                                             </tableHeaderView>
                                         </scrollView>
                                         <button verticalHuggingPriority="750" id="1371">
-                                            <rect key="frame" x="17" y="10" width="82" height="20"/>
+                                            <rect key="frame" x="17" y="27" width="82" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="smallSquare" title="Open All" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1372">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -200,7 +200,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" id="1374">
-                                            <rect key="frame" x="107" y="10" width="82" height="20"/>
+                                            <rect key="frame" x="107" y="27" width="82" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="smallSquare" title="Close All" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1375">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -219,6 +219,26 @@
                                             </buttonCell>
                                             <connections>
                                                 <action selector="reloadXML:" target="710" id="723"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cA4-9j-dKU">
+                                            <rect key="frame" x="395" y="29" width="212" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Do you want to add your own settings?" id="zTw-95-O8N">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" id="gpt-OH-jDS">
+                                            <rect key="frame" x="401" y="6" width="205" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="smallSquare" title="Open the documentation web site" bezelStyle="smallSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" state="on" borderStyle="border" inset="2" id="T1a-er-beZ">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openPrivateXMLUsageURL:" target="1181" id="ZB2-ib-ytq"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1031,9 +1051,9 @@ You need to enable AXNotifier if you want to use following settings:
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="B4b-iA-pXM">
-                                                        <rect key="frame" x="158" y="47" width="245" height="32"/>
+                                                        <rect key="frame" x="158" y="47" width="250" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
+                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1042,9 +1062,9 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="yat-77-L8T">
-                                                        <rect key="frame" x="158" y="14" width="286" height="32"/>
+                                                        <rect key="frame" x="158" y="14" width="289" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
+                                                        <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -1292,6 +1312,7 @@ Label</string>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
