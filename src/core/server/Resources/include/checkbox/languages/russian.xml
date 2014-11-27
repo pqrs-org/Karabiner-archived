@@ -85,6 +85,14 @@
     </item>
 
     <item>
+      <name>Swap Backquote(`) to Section(§) only for US input source</name>
+      <identifier>remap.swap_section_backquote</identifier>
+      <inputsource_only>ENGLISH</inputsource_only>
+      <autogen>__KeyToKey__ KeyCode::BACKQUOTE, KeyCode::DANISH_DOLLAR</autogen>
+      <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::BACKQUOTE</autogen>
+    </item>
+
+    <item>
       <name>Change Option_R+,(≤) to Comma(,) Key for Russian</name>
       <identifier>remap.change_option_r_plus_comma_to_comma_for_russian</identifier>
       <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::OPTION_R,
