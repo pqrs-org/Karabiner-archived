@@ -129,6 +129,7 @@
   <include path="include/checkbox/languages/swedish.xml" />
   <include path="include/checkbox/languages/swiss.xml" />
   <include path="include/checkbox/languages/ukrainian.xml" />
+  <include path="include/checkbox/languages/us.xml" />
 
   <item><name>──────────────────────────────</name></item>
   <include path="include/checkbox/samples.xml" />

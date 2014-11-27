@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>For U.S. input source</name>
+
+    <item>
+      <name>Input € (euro) by option-e in U.S. input source.</name>
+      <identifier>remap.euro_in_us</identifier>
+
+      <inputsource_only>ENGLISH</inputsource_only>
+
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::SHIFT_L,
+      </autogen>
+    </item>
+  </item>
+</root>
