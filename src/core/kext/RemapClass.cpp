@@ -74,6 +74,7 @@ RemapClass::Item::remap(RemapParams& remapParams) {
   } else {
     // We ignore event if active_ is not set at KeyDown.
     if (!active_) return;
+    if (isblocked_keyup()) return;
   }
 
   if (!processor_->remap(remapParams)) {
@@ -93,6 +94,7 @@ RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
   } else {
     // We ignore event if active_ is not set at KeyDown.
     if (!active_) return false;
+    if (isblocked_keyup()) return false;
   }
 
   if (!processor_->drop(params)) {
@@ -134,6 +136,7 @@ RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown) {
   } else {
     // We ignore event if active_SimultaneousButtonPresses_ is not set at KeyDown.
     if (!active_SimultaneousButtonPresses_) return false;
+    if (isblocked_keyup()) return false;
   }
 
   auto result = processor_->remapSimultaneousKeyPresses();
@@ -181,6 +184,15 @@ RemapClass::Item::isblocked(void) const {
   for (size_t i = 0; i < filters_.size(); ++i) {
     RemapFilter::RemapFilterBase* p = filters_[i];
     if (p && p->isblocked()) return true;
+  }
+
+  return false;
+}
+
+bool RemapClass::Item::isblocked_keyup(void) const {
+  for (size_t i = 0; i < filters_.size(); ++i) {
+    RemapFilter::RemapFilterBase* p = filters_[i];
+    if (p && p->isblocked_keyup()) return true;
   }
 
   return false;
