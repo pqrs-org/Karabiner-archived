@@ -43,6 +43,8 @@ public:
     return false;
   }
 
+  bool isblocked_keyup(void) override { return isblocked(); }
+
 private:
   Vector_DeviceIdentifier targets_;
 };

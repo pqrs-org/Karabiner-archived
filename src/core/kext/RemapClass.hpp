@@ -45,6 +45,7 @@ public:
 
   private:
     bool isblocked(void) const;
+    bool isblocked_keyup(void) const;
 
     Item(const Item& rhs);            // Prevent copy-construction
     Item& operator=(const Item& rhs); // Prevent assignment
