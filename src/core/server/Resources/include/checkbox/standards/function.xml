@@ -191,12 +191,12 @@
 
         <autogen>
           __KeyToKey__
-          ConsumerKeyCode::VOLUME_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
+          ConsumerKeyCode::VOLUME_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
           ConsumerKeyCode::VOLUME_UP
         </autogen>
         <autogen>
           __KeyToKey__
-          ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
+          ConsumerKeyCode::VOLUME_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
           ConsumerKeyCode::VOLUME_DOWN
         </autogen>
       </item>
