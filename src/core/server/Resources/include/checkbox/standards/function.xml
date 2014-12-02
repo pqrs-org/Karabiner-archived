@@ -120,6 +120,45 @@
         </item>
       </item>
       <item>
+        <name>Fine grained brightness controls</name>
+        <appendix>Enables fine grained brightness controls by default</appendix>
+        <identifier>remap.fine_grained_brightness_controls</identifier>
+        <!-- Brightness Up -->
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::NONE,
+          ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <!-- For "Use all F1, F2, etc. keys as standard function keys." -->
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::FN | ModifierFlag::NONE,
+          ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::BRIGHTNESS_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          ConsumerKeyCode::BRIGHTNESS_UP
+        </autogen>
+        <!-- Brightness Down -->
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::NONE,
+          ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <!-- For "Use all F1, F2, etc. keys as standard function keys." -->
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::FN | ModifierFlag::NONE,
+          ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          ConsumerKeyCode::BRIGHTNESS_DOWN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          ConsumerKeyCode::BRIGHTNESS_DOWN
+        </autogen>
+      </item>
+      <item>
         <name>Fine grained volume controls</name>
         <appendix>Enables fine grained volume controls by default</appendix>
         <identifier>remap.fine_grained_volume_controls</identifier>
