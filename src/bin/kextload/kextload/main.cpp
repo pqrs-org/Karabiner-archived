@@ -1,7 +1,4 @@
-#include <boost/lexical_cast.hpp>
 #include <iostream>
-#include <string>
-#include <sys/utsname.h>
 #include <unistd.h>
 
 namespace {
