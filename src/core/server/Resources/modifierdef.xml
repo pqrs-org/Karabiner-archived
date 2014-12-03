@@ -57,6 +57,9 @@
   <!-- For "SandS v2" -->
   <modifierdef>SANDS2</modifierdef>
 
+  <!-- For "space_to_command" -->
+  <modifierdef>SPACE_TO_COMMAND</modifierdef>
+
   <!-- For "Mouse Keys Mode v2" -->
   <modifierdef>MOUSE_KEYS_MODE_2_SCROLL</modifierdef>
 
