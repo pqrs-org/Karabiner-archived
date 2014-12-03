@@ -19,6 +19,29 @@
       <identifier>remap.space2controlL_space_keyrepeat</identifier>
       <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::SPACE, KeyCode::CONTROL_L, KeyCode::SPACE</autogen>
     </item>
+
+    <item>
+      <name>Use space as command key when you hold space key and press other keys.</name>
+      <appendix></appendix>
+      <appendix>For example:</appendix>
+      <appendix><![CDATA[  Space down -> T down -> T up => Command-T  ]]></appendix>
+      <appendix><![CDATA[  Space down -> T down -> Space up => Space,T  ]]></appendix>
+      <identifier>remap.space_to_command</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SPACE,
+
+        KeyCode::VK_LAZY_COMMAND_L, ModifierFlag::SPACE_TO_COMMAND,
+
+        KeyCode::SPACE,
+      </autogen>
+
+      <block>
+        <modifier_only>ModifierFlag::SPACE_TO_COMMAND</modifier_only>
+        <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
+      </block>
+    </item>
+
     <item>
       <name>Space to Option_L</name>
       <identifier>remap.space2optionL</identifier>
