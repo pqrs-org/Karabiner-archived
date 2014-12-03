@@ -21,7 +21,7 @@
     </item>
 
     <item>
-      <name>Use space as command key when you hold space key and press other keys.</name>
+      <name>Use the space key as left command key when you press keys while holding space key.</name>
       <appendix></appendix>
       <appendix>For example:</appendix>
       <appendix><![CDATA[  Space down -> T down -> T up => Command-T  ]]></appendix>
