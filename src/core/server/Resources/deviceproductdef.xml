@@ -167,6 +167,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>LOGITECH_R400T</productname>
+    <productid>0xc538</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>LOGITECH_R800</productname>
     <productid>0xc52d</productid>
   </deviceproductdef>
