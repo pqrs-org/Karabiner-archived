@@ -165,11 +165,6 @@ DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, AddDataType datat
 }
 
 void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
-  RemapClassManager::unregisterPrepareTargetItem(owner_);
-}
-
-bool
-DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
   // Params_ScrollWheelEventCallback
   {
     auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
@@ -177,10 +172,12 @@ DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
       if (interruptibleByScrollWheel_) {
         dokeydown();
       }
-      return false;
     }
   }
+}
 
+bool
+DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
   // Params_KeyboardEventCallBack, Params_KeyboardSpecialEventCallback, Params_RelativePointerEventCallback
   {
     bool iskeydown = false;
@@ -242,6 +239,8 @@ DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
         FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
 
         beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+
+        RemapClassManager::unregisterPrepareTargetItem(owner_);
       }
       return true;
     }
