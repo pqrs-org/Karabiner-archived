@@ -192,8 +192,8 @@ remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   //      __{ KeyCode::B }__
   //    </autogen>
   //
-  // Hitting `i` and `shift` immediately,
-  // `a` and `shift` should be sent.
+  // Hitting `i` and `shift` immediately (`i` down, `shift` down, `i` up, `shift` up),
+  // `a` and `shift` should be sent (`a` down, `shift` down, `a` up, `shift` up).
   //
   // If we call prepare after FlagStatus::set,
   // `shift-a` will be sent. It's not intended.
