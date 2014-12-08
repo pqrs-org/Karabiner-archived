@@ -56,11 +56,11 @@ public:
   }
   static unsigned int get_wait_before_and_after_a_modifier_key_event(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_wait_before_and_after_a_modifier_key_event);
-    return getvalue(v, 0, 100);
+    return getvalue(v, 0, 1000);
   }
   static unsigned int get_wait_before_and_after_a_click_event(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_wait_before_and_after_a_click_event);
-    return getvalue(v, 0, 100);
+    return getvalue(v, 0, 1000);
   }
   static unsigned int get_keyoverlaidmodifier_initial_modifier_wait(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keyoverlaidmodifier_initial_modifier_wait);
