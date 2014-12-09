@@ -173,8 +173,8 @@
   </appdef>
 
   <appdef>
-      <appname>ANDROID_STUDIO</appname>
-      <equal>com.google.android.studio</equal>
+    <appname>ANDROID_STUDIO</appname>
+    <equal>com.google.android.studio</equal>
   </appdef>
 
   <appdef>
@@ -231,7 +231,7 @@
         If OS X version <= 10.7, we cannot get a NSWorkspaceDidActivateApplicationNotification for com.apple.loginwindow.
         Therefore, we cannot use <only> and <not> filter on com.apple.loginwindow.
         Unfortunately, this <equal> entry of com.apple.loginwindow is "dummy" at OS X version <= 10.7.
-      -->
+    -->
     <equal>com.apple.loginwindow</equal>
   </appdef>
 
