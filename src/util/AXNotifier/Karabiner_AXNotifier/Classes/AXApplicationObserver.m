@@ -82,7 +82,11 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
         //
         // We treat JetBrains's products are made by Java.
-        [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."]) {
+        [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."] ||
+
+        // Android Studio
+        // https://github.com/tekezo/Karabiner/issues/255
+        [[runningApplication bundleIdentifier] isEqualToString:@"com.google.android.studio"]) {
 #if 0
       NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
 #endif
