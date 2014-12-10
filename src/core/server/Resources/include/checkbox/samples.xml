@@ -36,7 +36,6 @@
         <identifier>passthrough.samples</identifier>
         <name>Core - Toggle Passthrough</name>
         <appendix>Change A to toggle "Pass Through Mode"</appendix>
-        <appendix>(using KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough and IGNORE_PASSTHROUGH)</appendix>
         <autogen>
           __KeyToKey__
           KeyCode::A,
