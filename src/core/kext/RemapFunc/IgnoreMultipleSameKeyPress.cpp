@@ -43,7 +43,7 @@ IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams) {
   if (!fromEvent_.isPressing()) {
     needToIgnore_ = true;
   }
-  return false;
+  return true;
 
 nottargetevent:
   needToIgnore_ = false;
