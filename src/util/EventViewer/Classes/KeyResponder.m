@@ -232,9 +232,10 @@
 
 - (void)outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType {
   NSString* keyCodeName = [[client_ proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
-  NSString* misc = [NSString stringWithFormat:@"characters:%@\t%@",
-                                              [[self charactersToString:event] stringByPaddingToLength:4 withString:@" " startingAtIndex:0],
-                                              keyCodeName ? keyCodeName : @""];
+  // Show `characters` at last because `characters` might be newline. (== newline truncates message.)
+  NSString* misc = [NSString stringWithFormat:@"%@\tcharacters:%@",
+                                              keyCodeName ? keyCodeName : @"",
+                                              [[self charactersToString:event] stringByPaddingToLength:4 withString:@" " startingAtIndex:0]];
 
   [eventqueue_ push:eventType
                code:[NSString stringWithFormat:@"0x%x", (int)([event keyCode])]
