@@ -458,8 +458,14 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/missing_include");
     xml_compiler.reload();
-    EXPECT_EQ("data/invalid_xml/missing_include/include.xml is not found.",
-              xml_compiler.get_error_information().get_message());
+
+    EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
+
+    auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
+    EXPECT_TRUE(node_tree.get_children() != nullptr);
+
+    auto node_ptr = (*(node_tree.get_children()))[0];
+    EXPECT_EQ("Caution:\n  data/invalid_xml/missing_include/include.xml is not found.", node_ptr->get_node().get_name());
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/infinite_include_loop");
