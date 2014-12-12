@@ -1336,6 +1336,34 @@ Two Lines</autogen>
     </item>
 
     <item>
+      <name>KeyDownUpToKey</name>
+
+      <item>
+        <identifier>remap.samples_KeyDownUpToKey</identifier>
+        <name>Standard</name>
+        <appendix>The A key will be changed the space key</appendix>
+        <appendix>when you pressed and released the A key without other keys press.</appendix>
+        <appendix></appendix>
+        <appendix>Input: <![CDATA[  A down -> A up:  ]]></appendix>
+        <appendix>Output:</appendix>
+        <appendix>- Space</appendix>
+        <appendix></appendix>
+        <appendix>Input: <![CDATA[  A down -> S down -> A up:  ]]></appendix>
+        <appendix>Output:</appendix>
+        <appendix>- A</appendix>
+        <appendix>- S</appendix>
+        <appendix></appendix>
+        <appendix>Input: <![CDATA[  S down -> A down -> S up -> A up:  ]]></appendix>
+        <appendix>Output:</appendix>
+        <appendix>- S</appendix>
+        <appendix>- A</appendix>
+        <appendix></appendix>
+
+        <autogen>__KeyDownUpToKey__ KeyCode::A, KeyCode::SPACE</autogen>
+      </item>
+    </item>
+
+    <item>
       <name>DropKeyAfterRemap</name>
       <item>
         <identifier>remap.samples_dropkeyafterremap</identifier>
