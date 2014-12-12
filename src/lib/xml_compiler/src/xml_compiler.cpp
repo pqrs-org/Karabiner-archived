@@ -262,8 +262,20 @@ xml_compiler::read_xml_(ptree_ptr& out,
                                                                       replacement);
     }
     if (xml.empty()) {
-      error_information_.set(file_path + " is not found.");
-      return;
+      // Show warning message when we failed to read file.
+      //
+      // If private.xml includes files in network file system, it might fail to read.
+      // For that case, we continue reading with ignoring missing files.
+
+      xml += "<?xml version=\"1.0\"?>\n"
+             "<root>"
+             "  <item>"
+             "    <name style=\"caution\">Caution:</name>"
+             "    <appendix><![CDATA[";
+      xml += file_path + " is not found.";
+      xml += "    ]]></appendix>"
+             "  </item>"
+             "</root>";
     }
 
     std::stringstream istream(xml, std::stringstream::in);
