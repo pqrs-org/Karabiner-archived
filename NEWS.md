@@ -1,10 +1,20 @@
-Since 10.4.0
-------------
+Version 10.5.0
+--------------
 
-* Simultaneous presses detection with rapid key typing has been improved.
+* Fixed issues:
+    * Some Java apps might be crash when AXNotifier is enabled. (IntelliJ IDEA, PhpStorm, RubyMine, Android Studio)
+    * &lt;device\_only&gt; and &lt;device\_not&gt; filters are ignored when multiple keyboards are connected and same keys are pressed at the same time.
+* Improvements:
+    * "Ignore bouncing (chattering) events" setting has been added.
+    * Spotlight has been supported in &lt;only&gt; and &lt;not&gt; filters.
+    * Quit button has been added into Preferences.
+    * Simultaneous presses detection with rapid key typing has been improved.
+    * ModifierFlag manipulation when key up has been improved.
+    * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
-    * Option::FORCENUMLOCKON_FORCE_OFF has been added.
-    * \_\_SimultaneousKeyPresses\_\_ has been improved in some corner cases.
+    * Option::FORCENUMLOCKON\_FORCE\_OFF has been added.
+    * \_\_KeyDownUpToKey\_\_ has been added.
+    * &lt;include&gt; ignores missing files. (Karabiner does not show an alert dialog when &lt;include&gt; refers missing files.)
 
 Version 10.4.0
 --------------
