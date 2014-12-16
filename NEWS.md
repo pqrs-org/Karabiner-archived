@@ -1,3 +1,9 @@
+Since 10.5.0
+------------
+
+* A broken prepared setting has been fixed.
+    * "Disable an internal keyboard while external keyboards are connected."
+
 Version 10.5.0
 --------------
 
