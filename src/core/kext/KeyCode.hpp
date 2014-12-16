@@ -571,6 +571,7 @@ DECLARE_VECTOR(DeviceIdentifier);
 namespace DeviceType {
 enum DeviceType {
   UNKNOWN,
+  APPLE_MIKEY_HID_DRIVER,
   APPLE_INTERNAL,
   APPLE_EXTERNAL,
   USB_OVERDRIVE,
