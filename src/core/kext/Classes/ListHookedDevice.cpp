@@ -120,6 +120,11 @@ ListHookedDevice::Item::setDeviceType(void) {
         if (strncmp(internalname, pname, strlen(internalname)) == 0) {
           deviceType_ = DeviceType::APPLE_INTERNAL;
         }
+
+        const char* mikeyname = "Apple Mikey HID Driver";
+        if (strcmp(mikeyname, pname) == 0) {
+          deviceType_ = DeviceType::APPLE_MIKEY_HID_DRIVER;
+        }
       }
     }
 
