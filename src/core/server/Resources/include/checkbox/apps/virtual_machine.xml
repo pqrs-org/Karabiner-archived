@@ -65,6 +65,8 @@
     </item>
     <item>
       <name>Change command keys to lazy command keys.</name>
+      <appendix>(Prevent unintended windows menu popup if you changed command-letters to</appendix>
+      <appendix>control-letters.)</appendix>
       <identifier>remap.app_vm_command_to_lazy_overlaid</identifier>
       <only>VIRTUALMACHINE</only>
       <autogen>
