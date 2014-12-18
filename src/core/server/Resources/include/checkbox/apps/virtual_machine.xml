@@ -64,6 +64,23 @@
       <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::VK_LAZY_COMMAND_R</autogen>
     </item>
     <item>
+      <name>Change command keys to lazy command keys.</name>
+      <identifier>remap.app_vm_command_to_lazy_overlaid</identifier>
+      <only>VIRTUALMACHINE</only>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_L,
+        KeyCode::VK_LAZY_COMMAND_L,
+        KeyCode::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::COMMAND_R,
+        KeyCode::VK_LAZY_COMMAND_R,
+        KeyCode::COMMAND_R,
+      </autogen>
+    </item>
+    <item>
       <name>Change Command_L Keys</name>
       <appendix>(To support Emacs on Fusion. This allows controlling individual key translations)</appendix>
       <item>
