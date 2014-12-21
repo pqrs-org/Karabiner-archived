@@ -333,6 +333,11 @@ ListHookedKeyboard::isExternalDevicesConnected(void) const {
         continue;
       }
     }
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_invalid_devices_from_external_keyboard)) {
+      if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor(0x0000), DeviceProduct(0x0000))) {
+        continue;
+      }
+    }
 
     if (p->getDeviceType() != DeviceType::APPLE_MIKEY_HID_DRIVER &&
         p->getDeviceType() != DeviceType::APPLE_INTERNAL) {
