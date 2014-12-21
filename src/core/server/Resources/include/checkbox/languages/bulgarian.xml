@@ -6,8 +6,17 @@
       <name>Change underscore(_) on Japanese keyboard to ч</name>
       <appendix>(For Bulgarian-Phonetic)</appendix>
       <identifier>remap.bulgarian_jis_underscore_to_backquote</identifier>
-      <inputsource_only>BULGARIAN</inputsource_only>
+      <inputsourcedetail_only>BULGARIAN</inputsourcedetail_only>
       <autogen>__KeyToKey__ KeyCode::JIS_UNDERSCORE, KeyCode::BACKQUOTE</autogen>
+    </item>
+
+    <item>
+      <name>Bulgarian Phonetic map 'ч' to ± </name>
+      <appendix>Bulgarian Phonetic map 'ч' from '`' to ±.</appendix>
+      <appendix>This is valid when you get used with US layout and then switch to UK</appendix>
+      <identifier>remap.bulgarina.phonetic</identifier>
+      <inputsourcedetail_only>BULGARIAN_PHONETIC</inputsourcedetail_only>
+      <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::BACKQUOTE</autogen>
     </item>
   </item>
 </root>
