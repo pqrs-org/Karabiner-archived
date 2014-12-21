@@ -259,20 +259,6 @@ ListHookedDevice::isInProgress(void) const {
   return false;
 }
 
-bool
-ListHookedDevice::isExternalDevicesConnected(void) const {
-  for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-    if (p->inProgress_) continue;
-
-    if (p->deviceType_ != DeviceType::APPLE_MIKEY_HID_DRIVER &&
-        p->deviceType_ != DeviceType::APPLE_INTERNAL) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
 void
 ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) const {
   out.isFound = 0;

@@ -45,6 +45,8 @@ public:
   void apply(const Params_KeyboardEventCallBack& params);
   void apply(const Params_UpdateEventFlagsCallback& params);
 
+  bool isExternalDevicesConnected(void) const;
+
 private:
   static void setcapslock_timer_callback(OSObject* owner, IOTimerEventSource* sender);
   static TimerWrapper setcapslock_timer_;

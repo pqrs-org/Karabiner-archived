@@ -325,6 +325,24 @@ ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params) {
   }
 }
 
+bool
+ListHookedKeyboard::isExternalDevicesConnected(void) const {
+  for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_treat_unifying_as_pointing_device)) {
+      if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor(0x046d), DeviceProduct(0xc52b))) {
+        continue;
+      }
+    }
+
+    if (p->getDeviceType() != DeviceType::APPLE_MIKEY_HID_DRIVER &&
+        p->getDeviceType() != DeviceType::APPLE_INTERNAL) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 void
 ListHookedKeyboard::setcapslock_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   ListHookedKeyboard& self = ListHookedKeyboard::instance();

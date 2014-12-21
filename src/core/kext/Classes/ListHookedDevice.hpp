@@ -54,7 +54,6 @@ public:
 
   void refresh(void);
   bool isInProgress(void) const;
-  bool isExternalDevicesConnected(void) const;
 
   ListHookedDevice::Item* get(const IOHIDevice* device);
   ListHookedDevice::Item* get_replaced(void);
