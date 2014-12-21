@@ -45,6 +45,12 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>BULGARIAN</name>
+    <detail>BULGARIAN_PHONETIC</detail>
+    <inputsourceid_prefix>com.apple.keylayout.Bulgarian-Phonetic</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>CHINESE_TRADITIONAL</name>
     <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
     <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
