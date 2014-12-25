@@ -66,4 +66,14 @@
   [view_ reloadData];
 }
 
+- (IBAction)sortByName:(id)sender {
+  [preferencesManager_ configlist_sortByName];
+  [view_ reloadData];
+}
+
+- (IBAction)sortByCreated:(id)sender {
+  [preferencesManager_ configlist_sortByAppendIndex];
+  [view_ reloadData];
+}
+
 @end

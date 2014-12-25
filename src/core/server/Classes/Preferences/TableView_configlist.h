@@ -12,5 +12,7 @@
 
 - (IBAction)add:(id)sender;
 - (IBAction) delete:(id)sender;
+- (IBAction)sortByName:(id)sender;
+- (IBAction)sortByCreated:(id)sender;
 
 @end
