@@ -99,7 +99,7 @@
     for (NSDictionary* d in [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"]) {
       NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
 
-      if (! md[@"appendIndex"]) {
+      if (!md[@"appendIndex"]) {
         md[@"appendIndex"] = @(appendIndex);
         ++appendIndex;
       }
@@ -341,6 +341,16 @@
   [clientForKernelspace_ send_config_to_kext];
 }
 
+- (void)configlist_selectByIdentifier:(NSString*)identifier {
+  NSInteger count = (NSInteger)([self configlist_count]);
+  for (NSInteger i = 0; i < count; ++i) {
+    if ([identifier isEqualToString:[self configlist_identifier:i]]) {
+      [self configlist_select:i];
+      return;
+    }
+  }
+}
+
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
   if ([name length] == 0) return;
 
@@ -434,6 +444,30 @@
   }
 
   return maxAppendIndex;
+}
+
+- (void)configlist_sortByAppendIndex {
+  NSString* identifier = [self configlist_selectedIdentifier];
+
+  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
+  NSArray* sorted = [a sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+      return [obj1[@"appendIndex"] compare:obj2[@"appendIndex"]];
+  }];
+  [[NSUserDefaults standardUserDefaults] setObject:sorted forKey:@"configList"];
+
+  [self configlist_selectByIdentifier:identifier];
+}
+
+- (void)configlist_sortByName {
+  NSString* identifier = [self configlist_selectedIdentifier];
+
+  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
+  NSArray* sorted = [a sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+      return [obj1[@"name"] compare:obj2[@"name"]];
+  }];
+  [[NSUserDefaults standardUserDefaults] setObject:sorted forKey:@"configList"];
+
+  [self configlist_selectByIdentifier:identifier];
 }
 
 // ----------------------------------------------------------------------
