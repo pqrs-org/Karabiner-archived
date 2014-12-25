@@ -91,6 +91,26 @@
   }
 
   // ------------------------------------------------------------
+  // set AppendIndex if needed.
+  {
+    NSMutableArray* ma = [NSMutableArray new];
+    NSInteger appendIndex = [self configlist_maxAppendIndex] + 1;
+
+    for (NSDictionary* d in [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"]) {
+      NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
+
+      if (! md[@"appendIndex"]) {
+        md[@"appendIndex"] = @(appendIndex);
+        ++appendIndex;
+      }
+
+      [ma addObject:md];
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
+  }
+
+  // ------------------------------------------------------------
   // scan config_* and detech notsave.*
   for (NSDictionary* dict in [self configlist_getConfigList]) {
     if (!dict) continue;
@@ -362,6 +382,7 @@
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithCapacity:0];
   md[@"name"] = @"NewItem";
   md[@"identify"] = identifier;
+  md[@"appendIndex"] = @([self configlist_maxAppendIndex] + 1);
 
   [ma addObject:md];
 
@@ -398,6 +419,21 @@
   }
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
+}
+
+- (NSInteger)configlist_maxAppendIndex {
+  NSInteger maxAppendIndex = 0;
+
+  for (NSDictionary* d in [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"]) {
+    if (d[@"appendIndex"]) {
+      NSInteger index = [d[@"appendIndex"] integerValue];
+      if (maxAppendIndex < index) {
+        maxAppendIndex = index;
+      }
+    }
+  }
+
+  return maxAppendIndex;
 }
 
 // ----------------------------------------------------------------------
