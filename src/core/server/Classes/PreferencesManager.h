@@ -35,6 +35,8 @@
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
 - (void)configlist_append;
 - (void)configlist_delete:(NSInteger)rowIndex;
+- (void)configlist_sortByAppendIndex;
+- (void)configlist_sortByName;
 
 - (NSInteger)checkForUpdatesMode;
 
