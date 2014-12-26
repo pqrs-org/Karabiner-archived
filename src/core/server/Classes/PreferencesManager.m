@@ -463,7 +463,7 @@
 
   NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
   NSArray* sorted = [a sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-      return [obj1[@"name"] compare:obj2[@"name"]];
+      return [obj1[@"name"] compare:obj2[@"name"] options:NSCaseInsensitiveSearch];
   }];
   [[NSUserDefaults standardUserDefaults] setObject:sorted forKey:@"configList"];
 
