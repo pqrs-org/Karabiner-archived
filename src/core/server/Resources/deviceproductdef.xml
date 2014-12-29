@@ -210,6 +210,11 @@
     <productname>LOGITECH_G9X</productname>
     <productid>0xc249</productid>
   </deviceproductdef>
+  
+  <deviceproductdef>
+    <productname>LOGITECH_G502</productname>
+    <productid>0xc07d</productid>
+  </deviceproductdef>
 
   <deviceproductdef>
     <productname>HHKB_Professional_JP_0x000d</productname>
