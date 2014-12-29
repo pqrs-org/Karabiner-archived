@@ -34,6 +34,13 @@
       <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER</device_only>
       <autogen>__PassThrough__</autogen>
     </item>
+    
+    <item>
+      <name>Disable all settings on Logitech G502 Mouse.</name>
+      <identifier>general.dont_remap_logitech_g502_mouse</identifier>
+      <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_G502</device_only>
+      <autogen>__PassThrough__</autogen>
+    </item>
 
     <item>
       <name>Disable all settings on Magic Mouse.</name>
