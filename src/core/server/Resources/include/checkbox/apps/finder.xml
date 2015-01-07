@@ -152,22 +152,26 @@
       </item>
     </item>
     <item>
-      <name>Disable Command+D (Duplicate)</name>
+      <name>Disable "Duplicate" shortcut. (Command+D)</name>
       <identifier>remap.app_finder_disable_command_d</identifier>
       <only>FINDER</only>
       <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
     </item>
     <item>
-      <name>Disable Command+L (Make Alias)</name>
+      <name>Disable "Make Alias" shortcut. (Command+L)</name>
       <identifier>remap.app_finder_disable_command_l</identifier>
       <only>FINDER</only>
       <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
     </item>
     <item>
-      <name>Disable Command+T (Add To Sidebar)</name>
-      <identifier>remap.app_finder_disable_command_t</identifier>
+      <name>Disable "Add To Sidebar" shortcut. (Command+Control+T)</name>
+      <identifier>remap.app_finder_disable_add_to_sidebar</identifier>
       <only>FINDER</only>
-      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
+        KeyCode::VK_NONE
+      </autogen>
     </item>
   </item>
 </root>
