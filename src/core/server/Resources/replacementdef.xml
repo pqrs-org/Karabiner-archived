@@ -198,6 +198,13 @@
     </replacementvalue>
   </replacementdef>
 
+  <replacementdef>
+    <replacementname>PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES</replacementname>
+    <replacementvalue>
+      FRENCH,
+    </replacementvalue>
+  </replacementdef>
+
   <!-- ============================================================ -->
   <replacementdef>
     <replacementname>LOGITECH_N305_EQUAL</replacementname>
