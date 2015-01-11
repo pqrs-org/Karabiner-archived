@@ -506,7 +506,15 @@
       <identifier>remap.select_all_winstyle_no_term</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
-      <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
+
+      <block>
+        <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
+        <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::Q, ModifierFlag::COMMAND_L</autogen>
+      </block>
+      <block>
+        <inputsource_not>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_not>
+        <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::A, ModifierFlag::COMMAND_L</autogen>
+      </block>
     </item>
     <item>
       <name>Use PC Style Save</name>
