@@ -664,9 +664,19 @@
       <identifier>remap.pcstyle_altf4</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
-      <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
-      <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,  KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
-      <autogen>__KeyToKey__ KeyCode::Q,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_NONE</autogen>
+
+      <block>
+        <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
+        <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,  KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>__KeyToKey__ KeyCode::A,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_NONE</autogen>
+      </block>
+      <block>
+        <inputsource_not>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_not>
+        <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>__KeyToKey__ KeyCode::F4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,  KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+        <autogen>__KeyToKey__ KeyCode::Q,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::VK_NONE</autogen>
+      </block>
     </item>
     <item>
       <name>Simulate Windows Copy Paste keys.</name>
