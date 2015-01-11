@@ -486,6 +486,10 @@
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.undo_winstyle_no_term</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+      </modifier_not>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
 
@@ -504,6 +508,11 @@
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.select_all_winstyle_no_term</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
 
@@ -662,6 +671,10 @@
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_altf4</identifier>
+      <modifier_not>
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
 
@@ -703,6 +716,11 @@
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.winstyle_redo</identifier>
+      <modifier_not>
+        ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <not>
         {{ PC_STYLE_BINDINGS_IGNORE_APPS }},
         <!-- except for Microsoft applications which already have this built-in -->
@@ -714,7 +732,7 @@
         <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
         <autogen>
           __KeyToKey__
-          KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+          KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
           KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L
         </autogen>
       </block>
@@ -722,7 +740,7 @@
         <inputsource_not>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_not>
         <autogen>
           __KeyToKey__
-          KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+          KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
           KeyCode::Z, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L
         </autogen>
       </block>
