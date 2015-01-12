@@ -503,6 +503,49 @@
       </block>
     </item>
     <item>
+      <name>Use PC Style Redo</name>
+      <appendix>(Control+Y to Command_L+Shift_L+Z)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
+      <identifier>remap.redo_winstyle_no_term</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+
+      <block>
+        <only>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::Y, ModifierFlag::COMMAND_L,
+        </autogen>
+      </block>
+
+      <block>
+        <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
+        {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+
+        <block>
+          <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
+          <autogen>
+            __KeyToKey__
+            KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+            KeyCode::W, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+          </autogen>
+        </block>
+        <block>
+          <inputsource_not>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_not>
+          <autogen>
+            __KeyToKey__
+            KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+            KeyCode::Z, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+          </autogen>
+        </block>
+      </block>
+    </item>
+    <item>
       <name>Use PC Style Select All</name>
       <appendix>(Control+A to Command_L+A)</appendix>
       <appendix></appendix>
@@ -730,7 +773,7 @@
       </autogen>
     </item>
     <item>
-      <name>Command+Y sends Command+Shift+Z (Windows-style Redo)</name>
+      <name>Command+Y sends Command+Shift+Z (Windows-style Redo command modifier ver.)</name>
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.winstyle_redo</identifier>
