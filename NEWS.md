@@ -1,8 +1,10 @@
-Since 10.5.0
-------------
+Version 10.6.0
+--------------
 
-* A broken prepared setting has been fixed.
-    * "Disable an internal keyboard while external keyboards are connected."
+* A following prepared setting has been fixed.
+    * General &gt; Disable an internal keyboard while external keyboards are connected.
+* "Sort by name" and "Sort by created" button have been added in Preferences &gt; MenuBar.
+* Prepared settings have been updated.
 
 Version 10.5.0
 --------------
