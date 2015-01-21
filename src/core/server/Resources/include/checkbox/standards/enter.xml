@@ -144,6 +144,16 @@
       <autogen>__KeyToKey__ KeyCode::ENTER, KeyCode::RETURN</autogen>
     </item>
     <item>
+      <name>Enter to Tab + Return</name>
+      <appendix>Change the Eject button on full keyboard (== enter key) to be tab then return.</appendix>
+      <identifier>remap.enter_to_tab_return</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::ENTER,
+        KeyCode::TAB, KeyCode::RETURN
+      </autogen>
+    </item>
+    <item>
       <name>Enter to Command_L+Right-Arrow (end-of-line)</name>
       <identifier>remap.enter2commandLrightarrow_all</identifier>
       <autogen>__KeyToKey__ KeyCode::ENTER, KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
