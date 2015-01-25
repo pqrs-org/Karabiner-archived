@@ -174,6 +174,17 @@ void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
       }
     }
   }
+
+  // Params_KeyboardEventCallBack, Params_KeyboardSpecialEventCallback, Params_RelativePointerEventCallback
+  {
+    bool iskeydown = false;
+    if (remapParams.paramsBase.iskeydown(iskeydown)) {
+      if (iskeydown) {
+        // another key is pressed.
+        dokeydown();
+      }
+    }
+  }
 }
 
 bool
@@ -186,10 +197,6 @@ DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
           !fromEvent_.changePressingState(remapParams.paramsBase,
                                           FlagStatus::globalFlagStatus(),
                                           fromModifierFlags_)) {
-        if (iskeydown) {
-          // another key is pressed.
-          dokeydown();
-        }
         return false;
       }
 
