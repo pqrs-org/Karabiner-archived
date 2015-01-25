@@ -1,3 +1,11 @@
+Since 10.6.0
+------------
+
+* Prepared settings have been updated.
+* Updates for people who add new settings by oneself:
+  * \_\_HoldingKeyToKey\_\_ has been improved at you pressed modifiers while holding target key down.
+
+
 Version 10.6.0
 --------------
 
