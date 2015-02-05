@@ -21,6 +21,7 @@
         VNC,
         TEAMVIEWER,
         CITRIX_XEN_APP_VIEWER,
+        NoMachine,
       </only>
       <autogen>__PassThrough__</autogen>
     </item>
