@@ -564,4 +564,9 @@
     <equal>com.avid.mediacomposer</equal>
   </appdef>
 
+  <appdef>
+    <appname>NoMachine</appname>
+    <equal>com.nomachine.nxdock</equal>
+  </appdef>
+
 </root>
