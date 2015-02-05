@@ -71,6 +71,20 @@
       <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::NONE</autogen>
       <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::SHIFT_R, KeyCode::BACKQUOTE, ModifierFlag::NONE</autogen>
     </item>
+    <item>
+      <name>Swap backtick ` and tilde ~</name>
+      <identifier>remap.programmer.backtick_tilde</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BACKQUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::BACKQUOTE,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::BACKQUOTE, ModifierFlag::NONE,
+        KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L,
+      </autogen>
+    </item>
     <item><name>──────────────────────────────</name></item>
     <item>
       <name>Replace number keys with symbols.</name>
