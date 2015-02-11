@@ -86,7 +86,14 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
         // Android Studio
         // https://github.com/tekezo/Karabiner/issues/255
-        [[runningApplication bundleIdentifier] isEqualToString:@"com.google.android.studio"]) {
+        [[runningApplication bundleIdentifier] isEqualToString:@"com.google.android.studio"] ||
+
+        // Screencast-O-Matic
+        // https://github.com/tekezo/Karabiner/issues/337
+        [[runningApplication bundleIdentifier] isEqualToString:@"com.screencastomatic.app"] ||
+
+        // Putting false in order to allow tailing || in the last valid item.
+        false) {
 #if 0
       NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
 #endif
