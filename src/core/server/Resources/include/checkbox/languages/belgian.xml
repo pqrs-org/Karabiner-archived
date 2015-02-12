@@ -1,11 +1,27 @@
 <?xml version="1.0"?>
 <root>
+
   <item>
     <name>For Belgian</name>
+
     <item>
       <name>Change KeyPad Comma(,) to Dot(.)</name>
       <identifier>remap.belgian_keypad_comma_to_dot</identifier>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
     </item>
+
+    <item>
+      <name>Change AltGr+2 to @</name>
+      <appendix>(When Input Source is Belgian AZERTY)</appendix>
+      <identifier>remap.belgian_altgr_2_to_at</identifier>
+      <inputsourceonly>BELGIAN</inputsourceonly>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        <!-- @ == option+g -->
+        KeyCode:: BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION
+      </autogen>
+    </item>
+
   </item>
 </root>
