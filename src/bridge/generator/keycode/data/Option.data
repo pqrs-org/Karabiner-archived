@@ -16,6 +16,11 @@ NOREPEAT                                --AUTO--
 KEYTOKEY_BEFORE_KEYDOWN                 --AUTO--
 KEYTOKEY_AFTER_KEYUP                    --AUTO--
 
+// Send keys at timeout.
+KEYTOKEY_TIMEOUT                        --AUTO--
+KEYTOKEY_TIMEOUT_CANCEL_BY              --AUTO--
+KEYTOKEY_TIMEOUT_CANCEL_DEFAULT         --AUTO--
+
 // For __PointingRelativeToScroll__
 POINTINGRELATIVETOSCROLL_TOFLAGS        --AUTO--
 POINTINGRELATIVETOSCROLL_TOKEYS         --AUTO--
