@@ -1,6 +1,7 @@
 Since 10.6.0
 ------------
 
+* A command line tool has been added: post-hid-event
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
   * \_\_HoldingKeyToKey\_\_ has been improved at you pressed modifiers while holding target key down.
