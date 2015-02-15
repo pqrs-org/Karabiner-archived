@@ -52,6 +52,9 @@ public:
     if (boost::starts_with(s, "ThresholdMillisecond::")) {
       return BRIDGE_DATATYPE_THRESHOLDMILLISECOND;
     }
+    if (boost::starts_with(s, "Count::")) {
+      return BRIDGE_DATATYPE_COUNT;
+    }
     return BRIDGE_DATATYPE_NONE;
   }
 };
