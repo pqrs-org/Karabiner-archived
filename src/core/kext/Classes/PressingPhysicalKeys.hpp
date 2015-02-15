@@ -12,6 +12,7 @@ public:
   static void update(const Params_Base& paramsBase);
   static void clear(void);
   static bool empty(void);
+  static size_t count(void);
 
 private:
   class Item final : public List::Item {
