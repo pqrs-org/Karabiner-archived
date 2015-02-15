@@ -1059,6 +1059,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
                   "  <elapsedtimesincelastpressed_lessthan>"
                   "    Millisecond::RawValue::500"
                   "  </elapsedtimesincelastpressed_lessthan>"
+                  "  <pressingkeys_greaterthan>1</pressingkeys_greaterthan>"
+                  "  <pressingkeys_lessthan>2</pressingkeys_lessthan>"
                   "</item>");
   std::stringstream istream(xml, std::stringstream::in);
 
@@ -1269,6 +1271,16 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
     expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN);
     expected.push_back(BRIDGE_DATATYPE_MILLISECOND);
     expected.push_back(500);
+
+    //  <pressingkeys_greaterthan>1</pressingkeys_greaterthan>"
+    expected.push_back(2);
+    expected.push_back(BRIDGE_FILTERTYPE_PRESSINGKEYS_GREATERTHAN);
+    expected.push_back(1);
+
+    //  <pressingkeys_lessthan>2</pressingkeys_lessthan>"
+    expected.push_back(2);
+    expected.push_back(BRIDGE_FILTERTYPE_PRESSINGKEYS_LESSTHAN);
+    expected.push_back(2);
 
     EXPECT_EQ(expected, fv.get());
   }
