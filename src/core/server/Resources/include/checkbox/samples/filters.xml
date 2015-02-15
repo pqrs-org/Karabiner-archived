@@ -733,6 +733,31 @@
       </item>
     </item>
 
+    <item>
+      <name>Pressing Physical Keys Count</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Change A to 1 if pressing physical keys count &lt; 2</appendix>
+        <appendix>Change S to 2 if pressing physical keys count &gt; 1</appendix>
+        <appendix></appendix>
+        <appendix>Example:</appendix>
+        <appendix><![CDATA[  Return down, A down, A up, Return up -> Return, A  ]]></appendix>
+        <appendix><![CDATA[  Return down, Return up, A down, A up -> Return, 1  ]]></appendix>
+        <appendix></appendix>
+        <appendix><![CDATA[  Return down, S down, S up, Return up -> Return, 2  ]]></appendix>
+        <appendix><![CDATA[  Return down, Return up, S down, S up -> Return, S  ]]></appendix>
+        <identifier>remap.samples_pressingphysicalkeys</identifier>
+        <block>
+          <pressingphysicalkeys_lessthan>2</pressingphysicalkeys_lessthan>
+          <autogen>__KeyToKey__ KeyCode::A, KeyCode::KEY_1</autogen>
+        </block>
+        <block>
+          <pressingphysicalkeys_greaterthan>1</pressingphysicalkeys_greaterthan>
+          <autogen>__KeyToKey__ KeyCode::S, KeyCode::KEY_2</autogen>
+        </block>
+      </item>
+    </item>
+
     <!-- block -->
     <item>
       <name>block sample</name>
