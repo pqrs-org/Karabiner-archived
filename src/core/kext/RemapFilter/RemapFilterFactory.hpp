@@ -10,6 +10,7 @@
 #include "InputSourceFilter.hpp"
 #include "LastPressedPhysicalKeyFilter.hpp"
 #include "ModifierFilter.hpp"
+#include "PressingPhysicalKeysFilter.hpp"
 #include "UIElementRoleFilter.hpp"
 #include "WindowNameFilter.hpp"
 
@@ -65,6 +66,10 @@ public:
     case BRIDGE_FILTERTYPE_MODIFIER_STUCK_NOT:
     case BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY:
       return new ModifierFilter(type, vec, length);
+
+    case BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN:
+    case BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_LESSTHAN:
+      return new PressingPhysicalKeysFilter(type, vec, length);
 
     case BRIDGE_FILTERTYPE_WINDOWNAME_NOT:
     case BRIDGE_FILTERTYPE_WINDOWNAME_ONLY:

@@ -115,6 +115,7 @@
 		34A6627018B9DAF70010D8B9 /* PointingRelativeToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */; };
 		34A7883010CBD79100DF72FD /* KeyCode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34A7882E10CBD79100DF72FD /* KeyCode.cpp */; };
 		34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A7882F10CBD79100DF72FD /* KeyCode.hpp */; };
+		34A7DABB1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34A7DABA1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp */; };
 		34A7F15812537F0D0012B982 /* bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A7F15712537F0D0012B982 /* bridge.h */; };
 		34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */; };
 		34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */; };
@@ -271,6 +272,7 @@
 		34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingRelativeToKey.hpp; path = RemapFunc/PointingRelativeToKey.hpp; sourceTree = "<group>"; };
 		34A7882E10CBD79100DF72FD /* KeyCode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyCode.cpp; sourceTree = "<group>"; };
 		34A7882F10CBD79100DF72FD /* KeyCode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyCode.hpp; sourceTree = "<group>"; };
+		34A7DABA1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PressingPhysicalKeysFilter.hpp; path = RemapFilter/PressingPhysicalKeysFilter.hpp; sourceTree = "<group>"; };
 		34A7F15712537F0D0012B982 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
 		34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyOverlaidModifier.cpp; path = RemapFunc/KeyOverlaidModifier.cpp; sourceTree = "<group>"; };
 		34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyOverlaidModifier.hpp; path = RemapFunc/KeyOverlaidModifier.hpp; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 				34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */,
 				3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */,
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
+				34A7DABA1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 				3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */,
 				345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */,
@@ -619,6 +622,7 @@
 				34B464F013A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp in Headers */,
 				34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */,
 				3434FAAD19B771C400E904C0 /* RemapFuncFactory.hpp in Headers */,
+				34A7DABB1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp in Headers */,
 				34779369185B1FA800B3EF06 /* IntervalChecker.hpp in Headers */,
 				34B464F813A65B6600470265 /* VK_JIS_YEN.hpp in Headers */,
 				342BC69C18609F5D00578EC5 /* ToEvent.hpp in Headers */,

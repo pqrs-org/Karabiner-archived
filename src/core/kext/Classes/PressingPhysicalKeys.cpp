@@ -52,4 +52,8 @@ void PressingPhysicalKeys::clear(void) {
 bool PressingPhysicalKeys::empty(void) {
   return list_.size() == 0;
 }
+
+size_t PressingPhysicalKeys::count(void) {
+  return list_.size();
+}
 }
