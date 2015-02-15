@@ -37,6 +37,7 @@
 
       <identifier>remap.launcher_mode_v2</identifier>
 
+      <pressingphysicalkeys_lessthan>2</pressingphysicalkeys_lessthan>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::O, ModifierFlag::NONE,
