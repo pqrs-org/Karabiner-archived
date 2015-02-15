@@ -41,10 +41,10 @@ public:
         }
 
         if (get_type() == BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN) {
-          if (filter_ms > current_ms) return true;
+          if (filter_ms >= current_ms) return true;
         }
         if (get_type() == BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN) {
-          if (filter_ms < current_ms) return true;
+          if (filter_ms <= current_ms) return true;
         }
       }
       return false;
