@@ -63,10 +63,10 @@ xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
       add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT, "", it.get_data());
     } else if (it.get_tag_name() == "lastpressedphysicalkey_only") {
       add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY, "", it.get_data());
-    } else if (it.get_tag_name() == "pressingkeys_greaterthan") {
-      add_(BRIDGE_FILTERTYPE_PRESSINGKEYS_GREATERTHAN, "Count::RawValue::", it.get_data());
-    } else if (it.get_tag_name() == "pressingkeys_lessthan") {
-      add_(BRIDGE_FILTERTYPE_PRESSINGKEYS_LESSTHAN, "Count::RawValue::", it.get_data());
+    } else if (it.get_tag_name() == "pressingphysicalkeys_greaterthan") {
+      add_(BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN, "Count::RawValue::", it.get_data());
+    } else if (it.get_tag_name() == "pressingphysicalkeys_lessthan") {
+      add_(BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_LESSTHAN, "Count::RawValue::", it.get_data());
     }
   }
 }
