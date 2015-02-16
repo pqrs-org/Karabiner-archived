@@ -168,6 +168,8 @@
   <appdef>
     <appname>ECLIPSE</appname>
     <equal>org.eclipse.eclipse</equal>
+    <equal>org.eclipse.platform.ide</equal>
+    <equal>org.eclipse.sdk.ide</equal>
     <equal>com.springsource.sts</equal>
     <equal>org.springsource.sts.ide</equal>
   </appdef>
