@@ -135,6 +135,16 @@
       </autogen>
     </item>
     <item>
+      <name>Close window or tab by command-delete</name>
+      <appendix>(Change command-delete to command-w)</appendix>
+      <identifier>remap.command_delete_to_command_w</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+    </item>
+    <item>
       <name>Disable Delete</name>
       <identifier>remap.drop_delete</identifier>
       <autogen>__KeyToKey__ KeyCode::DELETE, KeyCode::VK_NONE</autogen>
