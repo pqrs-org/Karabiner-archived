@@ -9,7 +9,7 @@ Since 10.6.0
         * &lt;pressingphysicalkeys\_greaterthan&gt;
         * &lt;pressingphysicalkeys\_lessthan&gt;
 * Fixed issues:
-    * Some Java apps might be crash when AXNotifier is enabled. (Screencast-O-Matic)
+    * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic)
 
 Version 10.6.0
 --------------
