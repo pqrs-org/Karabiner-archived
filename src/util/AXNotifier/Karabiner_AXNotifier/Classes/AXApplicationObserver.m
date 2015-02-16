@@ -68,6 +68,9 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
         [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
 
+        // Eclipse
+        [[[runningApplication executableURL] absoluteString] hasSuffix:@"/eclipse"] ||
+
         // LibreOffice
         // https://github.com/tekezo/Karabiner/issues/243
         [[runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"] ||
