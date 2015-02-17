@@ -28,6 +28,7 @@
   [self output:@"    $ karabiner set IDENTIFIER VALUE\n"];
   [self output:@"    $ karabiner enable IDENTIFIER (alias of set IDENTIFIER 1)\n"];
   [self output:@"    $ karabiner disable IDENTIFIER (alias of set IDENTIFIER 0)\n"];
+  [self output:@"    $ karabiner toggle IDENTIFIER\n"];
   [self output:@"    $ karabiner changed\n"];
   [self output:@"  Others:\n"];
   [self output:@"    $ karabiner export\n"];
@@ -46,6 +47,7 @@
   [self output:@"  $ karabiner set repeat.wait 30\n"];
   [self output:@"  $ karabiner enable remap.shiftL2commandL\n"];
   [self output:@"  $ karabiner disable remap.shiftL2commandL\n"];
+  [self output:@"  $ karabiner toggle remap.shiftL2commandL\n"];
   [self output:@"  $ karabiner changed\n"];
   [self output:@"\n"];
   [self output:@"  $ karabiner export\n"];
@@ -189,6 +191,14 @@
         }
         NSString* value = arguments[2];
         [[client proxy] setValue:0 forName:value];
+
+      } else if ([command isEqualToString:@"toggle"]) {
+        if ([arguments count] != 3) {
+          [self usage];
+        }
+        NSString* value = arguments[2];
+        int current = [[client proxy] value:value];
+        [[client proxy] setValue:(!current) forName:value];
 
       } else {
         [self output:[NSString stringWithFormat:@"Unknown argument: %@\n", command]];
