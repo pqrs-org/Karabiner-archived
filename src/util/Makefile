@@ -3,6 +3,7 @@ all:
 	$(MAKE) -C EventViewer
 	$(MAKE) -C cli
 	$(MAKE) -C multitouchextension
+	$(MAKE) -C post-hid-event
 	$(MAKE) -C uninstaller
 	$(MAKE) -C warp-mouse-cursor-position
 
@@ -11,5 +12,6 @@ clean:
 	$(MAKE) -C EventViewer clean
 	$(MAKE) -C cli clean
 	$(MAKE) -C multitouchextension clean
+	$(MAKE) -C post-hid-event clean
 	$(MAKE) -C uninstaller clean
 	$(MAKE) -C warp-mouse-cursor-position clean
