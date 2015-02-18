@@ -185,66 +185,37 @@
       <appendix>1234567890 to !@#$%^&amp;*()</appendix>
       <appendix>shift-1234567890 to 1234567890</appendix>
       <identifier>remap.swap_number_and_symbol</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::NONE, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::NONE, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_1,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_2,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_3,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_4,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_5,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_6,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_7,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_8,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_9,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::KEY_0,
-      </autogen>
+
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L,
+        ModifierFlag::CONTROL_R,
+        ModifierFlag::FN,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_R,
+      </modifier_not>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_1</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_2</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_3,</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_4</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_5</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_6</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_7</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_8</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_9</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_0</autogen>
+
+      <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::KEY_1, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::KEY_3, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::KEY_5, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::KEY_6, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::KEY_8, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::KEY_9, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::KEY_0, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>CapsLock+1234567890 to !@#$%^&amp;*() / CapsLock+Shift+1234567890 to 1234567890</name>
