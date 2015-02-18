@@ -1,13 +1,26 @@
 #include "CommonData.hpp"
+#include "Config.hpp"
 #include "EventInputQueue.hpp"
 #include "EventOutputQueue.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyToKey.hpp"
 #include "KeyboardRepeat.hpp"
+#include "RemapClass.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
+TimerWrapper KeyToKey::fire_timer_;
+KeyToKey* KeyToKey::target_ = NULL;
+
+void KeyToKey::static_initialize(IOWorkLoop& workloop) {
+  fire_timer_.initialize(&workloop, NULL, KeyToKey::fire_timer_callback);
+}
+
+void KeyToKey::static_terminate(void) {
+  fire_timer_.terminate();
+}
+
 void
 KeyToKey::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
@@ -58,6 +71,8 @@ KeyToKey::add(AddDataType datatype, AddValue newval) {
       currentToEvent_ = CurrentToEvent::BEFOREKEYS;
     } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
       currentToEvent_ = CurrentToEvent::AFTERKEYS;
+    } else if (Option::KEYTOKEY_TIMEOUT == option) {
+      currentToEvent_ = CurrentToEvent::TIMEOUTKEYS;
     } else if (Option::USE_SEPARATOR == option ||
                Option::SEPARATOR == option) {
       // do nothing
@@ -94,8 +109,19 @@ KeyToKey::clearToKeys(void) {
   toKeys_.clear();
   beforeKeys_.clear();
   afterKeys_.clear();
+  timeoutKeys_.clear();
 
   currentToEvent_ = CurrentToEvent::TOKEYS;
+}
+
+void KeyToKey::prepare(RemapParams& remapParams) {
+  bool iskeydown = false;
+  if (remapParams.paramsBase.iskeydown(iskeydown)) {
+    if (iskeydown) {
+      fire_timer_.cancelTimeout();
+      RemapClassManager::unregisterPrepareTargetItem(this);
+    }
+  }
 }
 
 bool
@@ -381,7 +407,44 @@ KeyToKey::remap(RemapParams& remapParams) {
     }
   }
 
+  // ----------------------------------------
+  // Handle timeoutKeys_
+  if (fromEvent_.isPressing()) {
+    if (!timeoutKeys_.empty()) {
+      auto timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keytokey_timeout);
+
+      target_ = this;
+      fire_timer_.setTimeoutMS(timeout);
+      RemapClassManager::registerPrepareTargetItem(this);
+    }
+  }
+
   return true;
+}
+
+void KeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
+  if (!target_) return;
+  target_->doTimeout();
+}
+
+void KeyToKey::doTimeout(void) {
+  if (!timeoutKeys_.empty()) {
+    if (fromEvent_.isPressing()) {
+      FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
+    }
+
+    for (size_t i = 0; i < timeoutKeys_.size(); ++i) {
+      FlagStatus::globalFlagStatus().temporary_increase(timeoutKeys_[i].getModifierFlags());
+
+      timeoutKeys_[i].fire_downup();
+
+      FlagStatus::globalFlagStatus().temporary_decrease(timeoutKeys_[i].getModifierFlags());
+    }
+
+    if (fromEvent_.isPressing()) {
+      FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
+    }
+  }
 }
 
 bool
