@@ -58,6 +58,14 @@
     </item>
 
     <item>
+      <name>KeyToKey</name>
+      <item>
+        <name>Timeout</name>
+        <identifier essential="true" default="400" step="100" baseunit="ms">parameter.keytokey_timeout</identifier>
+      </item>
+    </item>
+
+    <item>
       <name>Key Overlaid Modifier</name>
       <item>
         <name>Initial Modifier Wait</name>

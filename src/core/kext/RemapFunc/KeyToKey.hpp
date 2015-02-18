@@ -2,11 +2,15 @@
 #define KEYTOKEY_HPP
 
 #include "RemapFuncBase.hpp"
+#include "TimerWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class KeyToKey final : public RemapFuncBase {
 public:
+  static void static_initialize(IOWorkLoop& workloop);
+  static void static_terminate(void);
+
   KeyToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYTOKEY),
                    index_(0),
                    currentToEvent_(CurrentToEvent::TOKEYS),
@@ -15,6 +19,14 @@ public:
                    delayUntilRepeat_(-1),
                    keyRepeat_(-1) {}
 
+  ~KeyToKey(void) {
+    if (target_ == this) {
+      fire_timer_.cancelTimeout();
+      target_ = NULL;
+    }
+  }
+
+  void prepare(RemapParams& remapParams) override;
   bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------
@@ -37,6 +49,9 @@ public:
   bool isPressing(void) const { return fromEvent_.isPressing(); }
 
 private:
+  static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
+  void doTimeout(void);
+
   int getDelayUntilRepeat(void);
   int getKeyRepeat(void);
 
@@ -46,6 +61,7 @@ private:
       TOKEYS,
       BEFOREKEYS,
       AFTERKEYS,
+      TIMEOUTKEYS,
     };
   };
 
@@ -57,6 +73,8 @@ private:
       return beforeKeys_;
     case CurrentToEvent::AFTERKEYS:
       return afterKeys_;
+    case CurrentToEvent::TIMEOUTKEYS:
+      return timeoutKeys_;
     }
   }
 
@@ -69,7 +87,11 @@ private:
   Vector_ToEvent toKeys_;
   Vector_ToEvent beforeKeys_;
   Vector_ToEvent afterKeys_;
+  Vector_ToEvent timeoutKeys_;
   CurrentToEvent::Value currentToEvent_;
+
+  static TimerWrapper fire_timer_;
+  static KeyToKey* target_;
 
   int keyboardRepeatID_;
   bool isRepeatEnabled_;

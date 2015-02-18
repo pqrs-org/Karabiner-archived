@@ -20,6 +20,7 @@
 #include "PressDownKeys.hpp"
 #include "PressingPhysicalKeys.hpp"
 #include "RemapClass.hpp"
+#include "RemapFunc/KeyToKey.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/common/DependingPressingPeriodKeyToKey.hpp"
 #include "TimerWrapper.hpp"
@@ -52,6 +53,7 @@ start(void) {
     EventInputQueue::initialize(*workLoop);
     VirtualKey::initialize(*workLoop);
     EventOutputQueue::initialize(*workLoop);
+    RemapFunc::KeyToKey::static_initialize(*workLoop);
     RemapFunc::DependingPressingPeriodKeyToKey::static_initialize(*workLoop);
     RemapFunc::PointingRelativeToScroll::static_initialize(*workLoop);
     ListHookedKeyboard::static_initialize(*workLoop);
@@ -79,6 +81,7 @@ stop(void) {
   EventInputQueue::terminate();
   VirtualKey::terminate();
   EventOutputQueue::terminate();
+  RemapFunc::KeyToKey::static_terminate();
   RemapFunc::DependingPressingPeriodKeyToKey::static_terminate();
   RemapFunc::PointingRelativeToScroll::static_terminate();
   ListHookedKeyboard::static_terminate();
