@@ -914,7 +914,7 @@
               </autogen>
             </block>
             <block>
-              <config_only>notsave.ubiq_register_type_line</config_only>
+              <config_not>notsave.ubiq_register_type_character</config_not>
               <autogen>
                 __KeyToKey__
                 KeyCode::P, ModifierFlag::NONE,
@@ -1079,7 +1079,7 @@
               </autogen>
             </block>
             <block>
-              <config_only>notsave.ubiq_register_type_line</config_only>
+              <config_not>notsave.ubiq_register_type_character</config_not>
               <autogen>
                 __KeyToKey__
                 KeyCode::P, ModifierFlag::NONE,
