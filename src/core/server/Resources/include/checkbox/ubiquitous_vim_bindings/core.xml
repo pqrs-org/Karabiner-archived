@@ -334,11 +334,6 @@
           <!-- Unimplemented dead keys in Normal Mode -->
           <autogen>
             __KeyToKey__
-            KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-            KeyCode::VK_NONE
-          </autogen>
-          <autogen>
-            __KeyToKey__
             KeyCode::V, ModifierFlag::NONE,
             KeyCode::VK_NONE
           </autogen>
@@ -768,6 +763,17 @@
             KeyCode::Z, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
             KeyCode::CONTROL_L,
             KeyCode::W, ModifierFlag::COMMAND_L
+          </autogen>
+
+          <!-- C -->
+          <autogen>
+            __KeyToKey__
+            KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
+            KeyCode::X, ModifierFlag::COMMAND_L,
+            KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
+            {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
           </autogen>
 
           <!-- f -->
