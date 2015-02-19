@@ -429,6 +429,9 @@ void KeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /*
 
 void KeyToKey::doTimeout(void) {
   if (!timeoutKeys_.empty()) {
+    // clear temporary flags.
+    FlagStatus::globalFlagStatus().set();
+
     if (fromEvent_.isPressing()) {
       FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
     }

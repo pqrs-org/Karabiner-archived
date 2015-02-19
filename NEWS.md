@@ -4,6 +4,7 @@ Since 10.6.0
 * New option has been added into command line interface: `toggle`
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
+    * Option::KEYTOKEY_TIMEOUT has been added.
     * \_\_HoldingKeyToKey\_\_ has been improved at you pressed modifiers while holding target key down.
     * The following filters have been added.
         * &lt;pressingphysicalkeys\_greaterthan&gt;
