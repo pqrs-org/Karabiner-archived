@@ -4,6 +4,28 @@
   <!-- Author: Seth Milliken          -->
   <!-- Date:  2010-09-26 21:51:17 PDT -->
 
-  <include path="ubiquitous_vim_bindings/core.xml" />
+  <include path="ubiquitous_vim_bindings/core.xml">
+    <replacementdef>
+      <replacementname>UBIQ_RESET_REGISTER_TYPE</replacementname>
+      <replacementvalue>
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_register_type_character,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_register_type_line,
+      </replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>UBIQ_SET_REGISTER_TYPE_CHARACTER</replacementname>
+      <replacementvalue>
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_register_type_character,
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_register_type_line,
+      </replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>UBIQ_SET_REGISTER_TYPE_LINE</replacementname>
+      <replacementvalue>
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_register_type_character,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_ubiq_register_type_line,
+      </replacementvalue>
+    </replacementdef>
+  </include>
 
 </root>
