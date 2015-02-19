@@ -64,8 +64,8 @@
         <appendix>S: Delete line (Command_L+Left, Command_L+Shift_L+Right, Command_L-x)</appendix> <!-- FIXME: implement this. -->
         <appendix>yy: Yank line (Command_L+Left, Shift_L+Down, Command_L-c)</appendix>
         <appendix>Y: Yank line (Command_L+Left, Shift_L+Down, Command_L-c)</appendix>
-        <appendix>p: Paste line below (Command_L+Left, Down, Command_L+v)</appendix> <!-- TODO: Can't detect context, so assuming linewise operation wanted. -->
-        <appendix>P: Paste line above (Command_L+Left, Command_L+v)</appendix> <!-- TODO: Can't detect context, so assuming linewise operation wanted. -->
+        <appendix>p: Paste line below (Command_L+Left, Down, Command_L+v)</appendix>
+        <appendix>P: Paste line above (Command_L+Left, Command_L+v)</appendix>
         <appendix>ZZ: Close Window (Command_L+w)</appendix>
         <appendix></appendix>
         <appendix>g operator-pending mode:</appendix>
@@ -113,6 +113,7 @@
             KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            {{ UBIQ_SET_REGISTER_TYPE_LINE }}
             {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
           </autogen>
 
@@ -123,6 +124,7 @@
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
           </autogen>
 
@@ -133,6 +135,7 @@
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
           </autogen>
 
@@ -145,6 +148,7 @@
             KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
           </autogen>
 
@@ -155,6 +159,7 @@
             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
           </autogen>
         </block>
@@ -171,6 +176,7 @@
             KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
             KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
+            {{ UBIQ_SET_REGISTER_TYPE_LINE }}
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
           </autogen>
 
@@ -180,6 +186,7 @@
             KeyCode::B, ModifierFlag::NONE,
             KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
           </autogen>
 
@@ -189,6 +196,7 @@
             KeyCode::E, ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
           </autogen>
 
@@ -200,6 +208,7 @@
             KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
           </autogen>
 
@@ -209,6 +218,7 @@
             KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
             KeyCode::X, ModifierFlag::COMMAND_L,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             KeyCode::VK_CONFIG_FORCE_OFF_notsave_d_operator_pending
           </autogen>
         </block>
@@ -715,12 +725,20 @@
           <!-- x, X -->
           <block>
             <config_not>notsave.c_w_operator_pending</config_not>
-            <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::FORWARD_DELETE</autogen>
+            <autogen>
+              __KeyToKey__
+              KeyCode::X, ModifierFlag::NONE,
+              KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L,
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
+            </autogen>
           </block>
           <autogen>
             __KeyToKey__
             KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-            KeyCode::DELETE
+            KeyCode::CURSOR_LEFT, ModifierFlag::SHIFT_L,
+            KeyCode::X, ModifierFlag::COMMAND_L,
+            {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
           </autogen>
 
           <!-- u, C-r -->
@@ -845,6 +863,7 @@
               KeyCode::X, ModifierFlag::COMMAND_L,
               <!-- to insert mode -->
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
 
@@ -856,6 +875,7 @@
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
               KeyCode::X, ModifierFlag::COMMAND_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
 
@@ -866,37 +886,57 @@
               KeyCode::VK_NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-              KeyCode::C, ModifierFlag::COMMAND_L
+              KeyCode::C, ModifierFlag::COMMAND_L,
+              {{ UBIQ_SET_REGISTER_TYPE_LINE }}
             </autogen>
             <autogen>
               __KeyToKey__
               KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-              KeyCode::C, ModifierFlag::COMMAND_L
+              KeyCode::C, ModifierFlag::COMMAND_L,
+              {{ UBIQ_SET_REGISTER_TYPE_LINE }}
             </autogen>
 
             <!-- p, P -->
-            <autogen>
-              __KeyToKey__
-              KeyCode::P, ModifierFlag::NONE,
-              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-              KeyCode::CURSOR_DOWN,
-              KeyCode::V, ModifierFlag::COMMAND_L
-            </autogen>
-            <autogen>
-              __KeyToKey__
-              KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-              KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
-              KeyCode::V, ModifierFlag::COMMAND_L
-            </autogen>
+            <block>
+              <config_only>notsave.ubiq_register_type_character</config_only>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, ModifierFlag::NONE,
+                KeyCode::CURSOR_RIGHT,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+            </block>
+            <block>
+              <config_only>notsave.ubiq_register_type_line</config_only>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, ModifierFlag::NONE,
+                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+                KeyCode::CURSOR_DOWN,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                KeyCode::CURSOR_LEFT, ModifierFlag::COMMAND_L,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+            </block>
 
             <!-- D -->
             <autogen>
               __KeyToKey__
               KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
               KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L,
-              KeyCode::X, ModifierFlag::COMMAND_L
+              KeyCode::X, ModifierFlag::COMMAND_L,
+              {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
             </autogen>
 
             <!-- C-n, C-p -->
@@ -1000,6 +1040,7 @@
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
               KeyCode::X, ModifierFlag::COMMAND_L,
               KeyCode::VK_CONFIG_FORCE_OFF_notsave_ubiq_vimnormal,
+              {{ UBIQ_SET_REGISTER_TYPE_CHARACTER }}
               {{ UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING }}
             </autogen>
 
@@ -1010,30 +1051,49 @@
               KeyCode::VK_NONE,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-              KeyCode::C, ModifierFlag::COMMAND_L
+              KeyCode::C, ModifierFlag::COMMAND_L,
+              {{ UBIQ_SET_REGISTER_TYPE_LINE }}
             </autogen>
             <autogen>
               __KeyToKey__
               KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
               KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
               KeyCode::CURSOR_DOWN, ModifierFlag::SHIFT_L,
-              KeyCode::C, ModifierFlag::COMMAND_L
+              KeyCode::C, ModifierFlag::COMMAND_L,
+              {{ UBIQ_SET_REGISTER_TYPE_LINE }}
             </autogen>
 
             <!-- p, P -->
-            <autogen>
-              __KeyToKey__
-              KeyCode::P, ModifierFlag::NONE,
-              KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
-              KeyCode::CURSOR_DOWN,
-              KeyCode::V, ModifierFlag::COMMAND_L
-            </autogen>
-            <autogen>
-              __KeyToKey__
-              KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
-              KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
-              KeyCode::V, ModifierFlag::COMMAND_L
-            </autogen>
+            <block>
+              <config_only>notsave.ubiq_register_type_character</config_only>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, ModifierFlag::NONE,
+                KeyCode::CURSOR_RIGHT,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+            </block>
+            <block>
+              <config_only>notsave.ubiq_register_type_line</config_only>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, ModifierFlag::NONE,
+                KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
+                KeyCode::CURSOR_DOWN,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+              <autogen>
+                __KeyToKey__
+                KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+                KeyCode::CURSOR_LEFT, ModifierFlag::CONTROL_L,
+                KeyCode::V, ModifierFlag::COMMAND_L
+              </autogen>
+            </block>
 
             <!-- D -->
             <autogen>
@@ -1685,6 +1745,8 @@
         <identifier vk_config="true">notsave.c_w_operator_pending</identifier>
         <autogen>__ShowStatusMessage__ [w]</autogen>
       </item>
+      <item><identifier vk_config="true">notsave.ubiq_register_type_character</identifier></item>
+      <item><identifier vk_config="true">notsave.ubiq_register_type_line</identifier></item>
     </item>
 
   </item> <!-- End Ubiquitous Vim Bindings -->
