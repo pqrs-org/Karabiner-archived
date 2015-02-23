@@ -73,6 +73,8 @@ KeyToKey::add(AddDataType datatype, AddValue newval) {
       currentToEvent_ = CurrentToEvent::AFTER_KEYS;
     } else if (Option::KEYTOKEY_TIMEOUT == option) {
       currentToEvent_ = CurrentToEvent::TIMEOUT_KEYS;
+    } else if (Option::KEYTOKEY_TIMEOUT_CANCELED_DEFAULT == option) {
+      currentToEvent_ = CurrentToEvent::TIMEOUT_CANCELED_DEFAULT_KEYS;
     } else if (Option::USE_SEPARATOR == option ||
                Option::SEPARATOR == option) {
       // do nothing
@@ -110,6 +112,7 @@ KeyToKey::clearToKeys(void) {
   beforeKeys_.clear();
   afterKeys_.clear();
   timeoutKeys_.clear();
+  timeoutCanceledDefaultKeys_.clear();
 
   currentToEvent_ = CurrentToEvent::TO_KEYS;
 }
@@ -120,6 +123,12 @@ void KeyToKey::prepare(RemapParams& remapParams) {
     if (iskeydown) {
       fire_timer_.cancelTimeout();
       RemapClassManager::unregisterPrepareTargetItem(this);
+
+      if (timeoutCanceledDefaultKeys_.size() > 0) {
+        doTimeout(timeoutCanceledDefaultKeys_);
+      } else {
+        doTimeout(timeoutKeys_);
+      }
     }
   }
 }
@@ -424,11 +433,11 @@ KeyToKey::remap(RemapParams& remapParams) {
 
 void KeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
   if (!target_) return;
-  target_->doTimeout();
+  target_->doTimeout(target_->timeoutKeys_);
 }
 
-void KeyToKey::doTimeout(void) {
-  if (!timeoutKeys_.empty()) {
+void KeyToKey::doTimeout(const Vector_ToEvent& keys) {
+  if (!keys.empty()) {
     // clear temporary flags.
     FlagStatus::globalFlagStatus().set();
 
@@ -436,12 +445,12 @@ void KeyToKey::doTimeout(void) {
       FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
     }
 
-    for (size_t i = 0; i < timeoutKeys_.size(); ++i) {
-      FlagStatus::globalFlagStatus().temporary_increase(timeoutKeys_[i].getModifierFlags());
+    for (size_t i = 0; i < keys.size(); ++i) {
+      FlagStatus::globalFlagStatus().temporary_increase(keys[i].getModifierFlags());
 
-      timeoutKeys_[i].fire_downup();
+      keys[i].fire_downup();
 
-      FlagStatus::globalFlagStatus().temporary_decrease(timeoutKeys_[i].getModifierFlags());
+      FlagStatus::globalFlagStatus().temporary_decrease(keys[i].getModifierFlags());
     }
 
     if (fromEvent_.isPressing()) {
