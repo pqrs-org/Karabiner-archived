@@ -13,7 +13,7 @@ public:
 
   KeyToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYTOKEY),
                    index_(0),
-                   currentToEvent_(CurrentToEvent::TOKEYS),
+                   currentToEvent_(CurrentToEvent::TO_KEYS),
                    keyboardRepeatID_(-1),
                    isRepeatEnabled_(true),
                    delayUntilRepeat_(-1),
@@ -58,22 +58,22 @@ private:
   class CurrentToEvent final {
   public:
     enum Value {
-      TOKEYS,
-      BEFOREKEYS,
-      AFTERKEYS,
-      TIMEOUTKEYS,
+      TO_KEYS,
+      BEFORE_KEYS,
+      AFTER_KEYS,
+      TIMEOUT_KEYS,
     };
   };
 
   Vector_ToEvent& getCurrentToEvent(void) {
     switch (currentToEvent_) {
-    case CurrentToEvent::TOKEYS:
+    case CurrentToEvent::TO_KEYS:
       return toKeys_;
-    case CurrentToEvent::BEFOREKEYS:
+    case CurrentToEvent::BEFORE_KEYS:
       return beforeKeys_;
-    case CurrentToEvent::AFTERKEYS:
+    case CurrentToEvent::AFTER_KEYS:
       return afterKeys_;
-    case CurrentToEvent::TIMEOUTKEYS:
+    case CurrentToEvent::TIMEOUT_KEYS:
       return timeoutKeys_;
     }
   }
