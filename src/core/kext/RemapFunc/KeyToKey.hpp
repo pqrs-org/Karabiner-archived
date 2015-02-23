@@ -50,7 +50,7 @@ public:
 
 private:
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
-  void doTimeout(void);
+  void doTimeout(const Vector_ToEvent& keys);
 
   int getDelayUntilRepeat(void);
   int getKeyRepeat(void);
@@ -62,6 +62,7 @@ private:
       BEFORE_KEYS,
       AFTER_KEYS,
       TIMEOUT_KEYS,
+      TIMEOUT_CANCELED_DEFAULT_KEYS,
     };
   };
 
@@ -75,6 +76,8 @@ private:
       return afterKeys_;
     case CurrentToEvent::TIMEOUT_KEYS:
       return timeoutKeys_;
+    case CurrentToEvent::TIMEOUT_CANCELED_DEFAULT_KEYS:
+      return timeoutCanceledDefaultKeys_;
     }
   }
 
@@ -88,6 +91,7 @@ private:
   Vector_ToEvent beforeKeys_;
   Vector_ToEvent afterKeys_;
   Vector_ToEvent timeoutKeys_;
+  Vector_ToEvent timeoutCanceledDefaultKeys_;
   CurrentToEvent::Value currentToEvent_;
 
   static TimerWrapper fire_timer_;
