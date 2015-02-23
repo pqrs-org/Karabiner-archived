@@ -61,7 +61,7 @@ public:
 
   void fire(EventType eventType, Flags flags,
             bool add_to_keyrepeat, int delayUntilRepeat = 0, int keyRepeat = 0);
-  void fire_downup(bool add_to_keyrepeat = false);
+  void fire_downup(bool add_to_keyrepeat = false) const;
 
 private:
   Type::Value type_;
