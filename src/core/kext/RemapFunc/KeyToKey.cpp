@@ -68,11 +68,11 @@ KeyToKey::add(AddDataType datatype, AddValue newval) {
     if (Option::NOREPEAT == option) {
       isRepeatEnabled_ = false;
     } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == option) {
-      currentToEvent_ = CurrentToEvent::BEFOREKEYS;
+      currentToEvent_ = CurrentToEvent::BEFORE_KEYS;
     } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
-      currentToEvent_ = CurrentToEvent::AFTERKEYS;
+      currentToEvent_ = CurrentToEvent::AFTER_KEYS;
     } else if (Option::KEYTOKEY_TIMEOUT == option) {
-      currentToEvent_ = CurrentToEvent::TIMEOUTKEYS;
+      currentToEvent_ = CurrentToEvent::TIMEOUT_KEYS;
     } else if (Option::USE_SEPARATOR == option ||
                Option::SEPARATOR == option) {
       // do nothing
@@ -111,7 +111,7 @@ KeyToKey::clearToKeys(void) {
   afterKeys_.clear();
   timeoutKeys_.clear();
 
-  currentToEvent_ = CurrentToEvent::TOKEYS;
+  currentToEvent_ = CurrentToEvent::TO_KEYS;
 }
 
 void KeyToKey::prepare(RemapParams& remapParams) {
