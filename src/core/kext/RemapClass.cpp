@@ -11,6 +11,7 @@
 #include "RemapFunc/RemapFuncFactory.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
 #include "VirtualKey/VK_DEFINED_IN_USERSPACE.hpp"
+#include "VirtualKey/VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp"
 #include "bridge.h"
 #include "strlcpy_utf8.hpp"
 
@@ -875,9 +876,14 @@ void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
 void prepare(RemapParams& remapParams) {
   bool passThroughEnabled = isPassThroughEnabled();
 
+  // VirtualKey::VK_KEYTOKEY_TIMEOUT_DROP_EVENT::needToDrop will be set in KeyToKey::prepare.
+  // If needToDrop is set in prepare, we should ignore this event.
+  // So, set remapParams.isremapped true when needToDrop is set.
+  VirtualKey::VK_KEYTOKEY_TIMEOUT_DROP_EVENT::setNeedToDrop(false);
+
   auto item = static_cast<PrepareTargetItem*>(prepareTargetItems_.safe_front());
   for (;;) {
-    if (!item) return;
+    if (!item) break;
 
     // item might be removed by unregisterPrepareTargetItem in `prepare`.
     // So, we store next pointer at first.
@@ -892,6 +898,10 @@ void prepare(RemapParams& remapParams) {
     }
 
     item = next;
+  }
+
+  if (VirtualKey::VK_KEYTOKEY_TIMEOUT_DROP_EVENT::needToDrop()) {
+    remapParams.isremapped = true;
   }
 }
 }

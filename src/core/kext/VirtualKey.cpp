@@ -8,6 +8,7 @@
 #include "VirtualKey/VK_DEFINED_IN_USERSPACE.hpp"
 #include "VirtualKey/VK_IOHIDPOSTEVENT.hpp"
 #include "VirtualKey/VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp"
+#include "VirtualKey/VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp"
 #include "VirtualKey/VK_LAZY.hpp"
 #include "VirtualKey/VK_LOCK.hpp"
 #include "VirtualKey/VK_MOUSEKEY.hpp"
@@ -39,6 +40,7 @@ VirtualKey::terminate(void) {
 
 void
 VirtualKey::reset(void) {
+  VirtualKey::VK_KEYTOKEY_TIMEOUT_DROP_EVENT::reset();
   VirtualKey::VK_MOUSEKEY::reset();
 }
 
@@ -57,6 +59,9 @@ VirtualKey::handle(const Params_KeyboardEventCallBack& params) {
     return true;
   }
   if (VirtualKey::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK::handle(params)) {
+    return true;
+  }
+  if (VirtualKey::VK_KEYTOKEY_TIMEOUT_DROP_EVENT::handle(params)) {
     return true;
   }
   if (VirtualKey::VK_LAZY::handle(params)) {
