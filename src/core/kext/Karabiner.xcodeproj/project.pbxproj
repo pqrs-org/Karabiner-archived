@@ -16,6 +16,8 @@
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
 		34213BB71860A4F7002CBAB9 /* ToEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34213BB61860A4F7002CBAB9 /* ToEvent.cpp */; };
+		342966A31A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 342966A11A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.cpp */; };
+		342966A41A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342966A21A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp */; };
 		342BB27D13BB6A9900E18FDD /* RemapFuncClasses.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */; };
 		342BC69C18609F5D00578EC5 /* ToEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342BC69B18609F5D00578EC5 /* ToEvent.hpp */; };
 		342C80551261B379007F15DA /* DeviceFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 342C80531261B379007F15DA /* DeviceFilter.hpp */; };
@@ -173,6 +175,8 @@
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
 		34213BB61860A4F7002CBAB9 /* ToEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToEvent.cpp; path = Classes/ToEvent.cpp; sourceTree = "<group>"; };
+		342966A11A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_KEYTOKEY_TIMEOUT_DROP_EVENT.cpp; path = VirtualKey/VK_KEYTOKEY_TIMEOUT_DROP_EVENT.cpp; sourceTree = "<group>"; };
+		342966A21A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp; path = VirtualKey/VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp; sourceTree = "<group>"; };
 		342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFuncClasses.hpp; path = RemapFunc/common/RemapFuncClasses.hpp; sourceTree = "<group>"; };
 		342BC69B18609F5D00578EC5 /* ToEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ToEvent.hpp; path = Classes/ToEvent.hpp; sourceTree = "<group>"; };
 		342C80531261B379007F15DA /* DeviceFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceFilter.hpp; path = RemapFilter/DeviceFilter.hpp; sourceTree = "<group>"; };
@@ -521,6 +525,8 @@
 				34B464EE13A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp */,
 				34B464F513A65B6600470265 /* VK_JIS_YEN.cpp */,
 				34B464F613A65B6600470265 /* VK_JIS_YEN.hpp */,
+				342966A11A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.cpp */,
+				342966A21A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp */,
 				34B464DD13A6538A00470265 /* VK_LAZY.cpp */,
 				34B464DE13A6538A00470265 /* VK_LAZY.hpp */,
 				34B464CE13A6515200470265 /* VK_LOCK.cpp */,
@@ -631,6 +637,7 @@
 				34779358185B1FA800B3EF06 /* ButtonStatus.hpp in Headers */,
 				3405382313E6ED7E009DF83F /* DropScrollWheel.hpp in Headers */,
 				34799528140A70B600B85E42 /* VK_CONSUMERKEY.hpp in Headers */,
+				342966A41A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp in Headers */,
 				34779371185B1FA800B3EF06 /* List.hpp in Headers */,
 				34FFF079149867D800A1348A /* ScrollWheelToScrollWheel.hpp in Headers */,
 				34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */,
@@ -777,6 +784,7 @@
 				34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */,
 				34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */,
 				340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */,
+				342966A31A9CA0B400CAE6E9 /* VK_KEYTOKEY_TIMEOUT_DROP_EVENT.cpp in Sources */,
 				3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */,
 				34799527140A70B600B85E42 /* VK_CONSUMERKEY.cpp in Sources */,
 				34FFF078149867D800A1348A /* ScrollWheelToScrollWheel.cpp in Sources */,

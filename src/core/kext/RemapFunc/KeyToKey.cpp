@@ -6,6 +6,7 @@
 #include "KeyToKey.hpp"
 #include "KeyboardRepeat.hpp"
 #include "RemapClass.hpp"
+#include "VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -467,6 +468,9 @@ void KeyToKey::doTimeout(const Vector_ToEvent& keys, bool timeoutCanceledBy) {
       if (timeoutCanceledBy && i == 0) {
         // We ignore the first item because it is from event.
         continue;
+      }
+      if (keys[i] == KeyCode::VK_KEYTOKEY_TIMEOUT_DROP_EVENT) {
+        VirtualKey::VK_KEYTOKEY_TIMEOUT_DROP_EVENT::setNeedToDrop(true);
       }
 
       FlagStatus::globalFlagStatus().temporary_increase(keys[i].getModifierFlags());
