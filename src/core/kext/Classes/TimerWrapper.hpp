@@ -35,7 +35,7 @@ public:
   void cancelTimeout(void);
 
   bool isActive(void) const {
-    if (! object_) return false;
+    if (!object_) return false;
     return object_->isActive();
   }
 
