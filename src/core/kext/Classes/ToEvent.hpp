@@ -95,6 +95,10 @@ public:
     return false;
   }
 
+  bool operator==(KeyCode other) const {
+    return type_ == Type::KEY && key_ == other;
+  }
+
 private:
   Type::Value type_;
   Vector_ModifierFlag modifierFlags_;
