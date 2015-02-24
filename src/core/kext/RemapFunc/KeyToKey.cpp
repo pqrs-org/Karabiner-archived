@@ -75,6 +75,10 @@ KeyToKey::add(AddDataType datatype, AddValue newval) {
       currentToEvent_ = CurrentToEvent::TIMEOUT_KEYS;
     } else if (Option::KEYTOKEY_TIMEOUT_CANCELED_DEFAULT == option) {
       currentToEvent_ = CurrentToEvent::TIMEOUT_CANCELED_DEFAULT_KEYS;
+    } else if (Option::KEYTOKEY_TIMEOUT_CANCELED_BY == option) {
+      Vector_ToEvent v;
+      timeoutCanceledByKeys_.push_back(v);
+      currentToEvent_ = CurrentToEvent::TIMEOUT_CANCELED_BY_KEYS;
     } else if (Option::USE_SEPARATOR == option ||
                Option::SEPARATOR == option) {
       // do nothing
@@ -113,6 +117,7 @@ KeyToKey::clearToKeys(void) {
   afterKeys_.clear();
   timeoutKeys_.clear();
   timeoutCanceledDefaultKeys_.clear();
+  timeoutCanceledByKeys_.clear();
 
   currentToEvent_ = CurrentToEvent::TO_KEYS;
 }
@@ -121,13 +126,26 @@ void KeyToKey::prepare(RemapParams& remapParams) {
   bool iskeydown = false;
   if (remapParams.paramsBase.iskeydown(iskeydown)) {
     if (iskeydown) {
-      fire_timer_.cancelTimeout();
       RemapClassManager::unregisterPrepareTargetItem(this);
 
-      if (timeoutCanceledDefaultKeys_.size() > 0) {
-        doTimeout(timeoutCanceledDefaultKeys_);
-      } else {
-        doTimeout(timeoutKeys_);
+      if (fire_timer_.isActive()) {
+        fire_timer_.cancelTimeout();
+
+        // timeout canceled by
+        for (size_t i = 0; i < timeoutCanceledByKeys_.size(); ++i) {
+          if (timeoutCanceledByKeys_[i].size() > 0 &&
+              timeoutCanceledByKeys_[i][0] == remapParams.paramsBase) {
+            doTimeout(timeoutCanceledByKeys_[i], true);
+            return;
+          }
+        }
+        // timeout canceled default
+        if (timeoutCanceledDefaultKeys_.size() > 0) {
+          doTimeout(timeoutCanceledDefaultKeys_, false);
+        } else {
+          // We use timeoutKeys_ if timeoutCanceledDefaultKeys_ is not specified.
+          doTimeout(timeoutKeys_, false);
+        }
       }
     }
   }
@@ -433,10 +451,10 @@ KeyToKey::remap(RemapParams& remapParams) {
 
 void KeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
   if (!target_) return;
-  target_->doTimeout(target_->timeoutKeys_);
+  target_->doTimeout(target_->timeoutKeys_, false);
 }
 
-void KeyToKey::doTimeout(const Vector_ToEvent& keys) {
+void KeyToKey::doTimeout(const Vector_ToEvent& keys, bool timeoutCanceledBy) {
   if (!keys.empty()) {
     // clear temporary flags.
     FlagStatus::globalFlagStatus().set();
@@ -446,6 +464,11 @@ void KeyToKey::doTimeout(const Vector_ToEvent& keys) {
     }
 
     for (size_t i = 0; i < keys.size(); ++i) {
+      if (timeoutCanceledBy && i == 0) {
+        // We ignore the first item because it is from event.
+        continue;
+      }
+
       FlagStatus::globalFlagStatus().temporary_increase(keys[i].getModifierFlags());
 
       keys[i].fire_downup();
