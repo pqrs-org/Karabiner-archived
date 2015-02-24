@@ -8,7 +8,9 @@ bool
 VirtualKey::VK_WAIT::handle(const Params_KeyboardEventCallBack& params) {
   int milliseconds = 0;
 
-  /**/ if (params.key == KeyCode::VK_WAIT_10MS) { milliseconds = 10; } else if (params.key == KeyCode::VK_WAIT_50MS) {
+  /**/ if (params.key == KeyCode::VK_WAIT_10MS) {
+    milliseconds = 10;
+  } else if (params.key == KeyCode::VK_WAIT_50MS) {
     milliseconds = 50;
   } else if (params.key == KeyCode::VK_WAIT_100MS) {
     milliseconds = 100;
