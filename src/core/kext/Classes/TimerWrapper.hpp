@@ -34,6 +34,11 @@ public:
   IOReturn setTimeoutMS(UInt32 ms, bool overwrite = true);
   void cancelTimeout(void);
 
+  bool isActive(void) const {
+    if (! object_) return false;
+    return object_->isActive();
+  }
+
 private:
   static void callback_(OSObject* owner, IOTimerEventSource* sender);
 
