@@ -63,6 +63,38 @@ public:
             bool add_to_keyrepeat, int delayUntilRepeat = 0, int keyRepeat = 0);
   void fire_downup(bool add_to_keyrepeat = false) const;
 
+  bool operator==(const Params_Base& paramsBase) const {
+    switch (type_) {
+    case Type::KEY: {
+      auto p = paramsBase.get_Params_KeyboardEventCallBack();
+      if (p) {
+        return key_ == p->key;
+      }
+      break;
+    }
+
+    case Type::CONSUMER_KEY: {
+      auto p = paramsBase.get_Params_KeyboardSpecialEventCallback();
+      if (p) {
+        return consumer_ == p->key;
+      }
+      break;
+    }
+
+    case Type::POINTING_BUTTON: {
+      auto p = paramsBase.get_Params_RelativePointerEventCallback();
+      if (p) {
+        return button_ == p->ex_button;
+      }
+      break;
+    }
+
+    case Type::NONE:
+      break;
+    }
+    return false;
+  }
+
 private:
   Type::Value type_;
   Vector_ModifierFlag modifierFlags_;
@@ -72,6 +104,7 @@ private:
 };
 
 DECLARE_VECTOR(ToEvent);
+DECLARE_VECTOR(Vector_ToEvent);
 }
 
 #endif
