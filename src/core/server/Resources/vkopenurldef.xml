@@ -49,6 +49,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_FILE_Home</name>
+    <url type="file">{{ ENV_HOME }}</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Activity_Monitor</name>
     <url type="file">/Applications/Utilities/Activity Monitor.app</url>
   </vkopenurldef>

@@ -22,12 +22,13 @@
       <appendix>* Activity Monitor: O+A key</appendix>
       <appendix>* Search a selected text by Dictionary: O+Q key</appendix>
       <appendix>* Dictionary: O+Q,Q (press Q twice)</appendix>
-      <appendix>* Show Desktop: O+D key</appendix>
+      <appendix>* Show desktop: O+D key</appendix>
       <appendix>* DigitalColor Meter: O+D,D (press D twice)</appendix>
       <appendix>* Launchpad: O+Space key</appendix>
       <appendix>* Mail: O+M key</appendix>
       <appendix>* Mission Control: O+Tab key</appendix>
       <appendix>* Open Desktop by Finder: O+F key</appendix>
+      <appendix>* Open the home folder by Finder: O+F,F (press F twice)</appendix>
       <appendix>* Safari: O+S key</appendix>
       <appendix>* Stickies: O+S,S (press S twice)</appendix>
       <appendix>* Terminal: O+T key</appendix>
@@ -95,7 +96,18 @@
       <autogen>__KeyDownUpToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::F, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_FILE_Desktop</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F, ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::VK_OPEN_URL_FILE_Desktop,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::F,
+        KeyCode::VK_OPEN_URL_FILE_Home,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::S, ModifierFlag::NONE,
