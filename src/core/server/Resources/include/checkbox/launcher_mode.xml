@@ -21,19 +21,19 @@
       <appendix></appendix>
       <appendix>* Activity Monitor: O+A key</appendix>
       <appendix>* Search a selected text by Dictionary: O+Q key</appendix>
-      <appendix>* Dictionary: O+Q,Q</appendix>
-      <appendix>* DigitalColor Meter: O+shift+D key</appendix>
+      <appendix>* Dictionary: O+Q,Q (press Q twice)</appendix>
+      <appendix>* Show Desktop: O+D key</appendix>
+      <appendix>* DigitalColor Meter: O+D,D (press D twice)</appendix>
       <appendix>* Launchpad: O+Space key</appendix>
       <appendix>* Mail: O+M key</appendix>
       <appendix>* Mission Control: O+Tab key</appendix>
       <appendix>* Open Desktop by Finder: O+F key</appendix>
       <appendix>* Safari: O+S key</appendix>
-      <appendix>* Show Desktop: O+Escape key</appendix>
-      <appendix>* Stickies: O+shift+S key</appendix>
+      <appendix>* Stickies: O+S,S (press S twice)</appendix>
       <appendix>* Terminal: O+T key</appendix>
       <appendix>* TextEdit: O+shift+T key</appendix>
       <appendix>* Xcode: O+X key</appendix>
-      <appendix>* iPhone Simulator: O+shift+X key</appendix>
+      <appendix>* iPhone Simulator: O+X,X (press X twice)</appendix>
 
       <identifier>remap.launcher_mode_v2</identifier>
 
@@ -80,18 +80,48 @@
         KeyCode::VK_OPEN_URL_APP_Dictionary,
         KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
       </autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::D, ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::D,
+        KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::F, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_FILE_Desktop</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::ESCAPE, ModifierFlag::NONE, KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Stickies</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::S, ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::VK_OPEN_URL_APP_Safari,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::S,
+        KeyCode::VK_OPEN_URL_APP_Stickies,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::X, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Xcode</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_iPhoneSimulator</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::X, ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::VK_OPEN_URL_APP_Xcode,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::X,
+        KeyCode::VK_OPEN_URL_APP_iPhoneSimulator,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
     </item>
 
   </item>
