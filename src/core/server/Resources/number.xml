@@ -60,8 +60,8 @@
     <item>
       <name>KeyToKey</name>
       <item>
-        <name>Timeout</name>
-        <identifier essential="true" default="300" step="100" baseunit="ms">parameter.keytokey_timeout</identifier>
+        <name>Timeout of delayed action</name>
+        <identifier essential="true" default="300" step="100" baseunit="ms">parameter.keytokey_delayed_action_timeout</identifier>
       </item>
     </item>
 
