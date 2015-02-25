@@ -1,9 +1,9 @@
-#ifndef VK_KEYTOKEY_TIMEOUT_DROP_EVENT_HPP
-#define VK_KEYTOKEY_TIMEOUT_DROP_EVENT_HPP
+#ifndef VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT_HPP
+#define VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT_HPP
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
-class VK_KEYTOKEY_TIMEOUT_DROP_EVENT final {
+class VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT final {
 public:
   static void reset(void);
 

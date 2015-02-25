@@ -50,7 +50,7 @@ public:
 
 private:
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
-  void doTimeout(const Vector_ToEvent& keys, bool timeoutCanceledBy);
+  void doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCanceledBy);
 
   int getDelayUntilRepeat(void);
   int getKeyRepeat(void);
@@ -61,9 +61,9 @@ private:
       TO_KEYS,
       BEFORE_KEYS,
       AFTER_KEYS,
-      TIMEOUT_KEYS,
-      TIMEOUT_CANCELED_DEFAULT_KEYS,
-      TIMEOUT_CANCELED_BY_KEYS,
+      DELAYED_ACTION_KEYS,
+      DELAYED_ACTION_CANCELED_DEFAULT_KEYS,
+      DELAYED_ACTION_CANCELED_BY_KEYS,
     };
   };
 
@@ -75,12 +75,12 @@ private:
       return beforeKeys_;
     case CurrentToEvent::AFTER_KEYS:
       return afterKeys_;
-    case CurrentToEvent::TIMEOUT_KEYS:
-      return timeoutKeys_;
-    case CurrentToEvent::TIMEOUT_CANCELED_DEFAULT_KEYS:
-      return timeoutCanceledDefaultKeys_;
-    case CurrentToEvent::TIMEOUT_CANCELED_BY_KEYS:
-      return timeoutCanceledByKeys_.back();
+    case CurrentToEvent::DELAYED_ACTION_KEYS:
+      return delayedActionKeys_;
+    case CurrentToEvent::DELAYED_ACTION_CANCELED_DEFAULT_KEYS:
+      return delayedActionCanceledDefaultKeys_;
+    case CurrentToEvent::DELAYED_ACTION_CANCELED_BY_KEYS:
+      return delayedActionCanceledByKeys_.back();
     }
   }
 
@@ -93,9 +93,9 @@ private:
   Vector_ToEvent toKeys_;
   Vector_ToEvent beforeKeys_;
   Vector_ToEvent afterKeys_;
-  Vector_ToEvent timeoutKeys_;
-  Vector_ToEvent timeoutCanceledDefaultKeys_;
-  Vector_Vector_ToEvent timeoutCanceledByKeys_;
+  Vector_ToEvent delayedActionKeys_;
+  Vector_ToEvent delayedActionCanceledDefaultKeys_;
+  Vector_Vector_ToEvent delayedActionCanceledByKeys_;
   CurrentToEvent::Value currentToEvent_;
 
   static TimerWrapper fire_timer_;

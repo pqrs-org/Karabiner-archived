@@ -6,7 +6,7 @@
 #include "KeyToKey.hpp"
 #include "KeyboardRepeat.hpp"
 #include "RemapClass.hpp"
-#include "VK_KEYTOKEY_TIMEOUT_DROP_EVENT.hpp"
+#include "VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_Karabiner {
@@ -72,14 +72,14 @@ KeyToKey::add(AddDataType datatype, AddValue newval) {
       currentToEvent_ = CurrentToEvent::BEFORE_KEYS;
     } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
       currentToEvent_ = CurrentToEvent::AFTER_KEYS;
-    } else if (Option::KEYTOKEY_TIMEOUT == option) {
-      currentToEvent_ = CurrentToEvent::TIMEOUT_KEYS;
-    } else if (Option::KEYTOKEY_TIMEOUT_CANCELED_DEFAULT == option) {
-      currentToEvent_ = CurrentToEvent::TIMEOUT_CANCELED_DEFAULT_KEYS;
-    } else if (Option::KEYTOKEY_TIMEOUT_CANCELED_BY == option) {
+    } else if (Option::KEYTOKEY_DELAYED_ACTION == option) {
+      currentToEvent_ = CurrentToEvent::DELAYED_ACTION_KEYS;
+    } else if (Option::KEYTOKEY_DELAYED_ACTION_CANCELED_DEFAULT == option) {
+      currentToEvent_ = CurrentToEvent::DELAYED_ACTION_CANCELED_DEFAULT_KEYS;
+    } else if (Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY == option) {
       Vector_ToEvent v;
-      timeoutCanceledByKeys_.push_back(v);
-      currentToEvent_ = CurrentToEvent::TIMEOUT_CANCELED_BY_KEYS;
+      delayedActionCanceledByKeys_.push_back(v);
+      currentToEvent_ = CurrentToEvent::DELAYED_ACTION_CANCELED_BY_KEYS;
     } else if (Option::USE_SEPARATOR == option ||
                Option::SEPARATOR == option) {
       // do nothing
@@ -116,9 +116,9 @@ KeyToKey::clearToKeys(void) {
   toKeys_.clear();
   beforeKeys_.clear();
   afterKeys_.clear();
-  timeoutKeys_.clear();
-  timeoutCanceledDefaultKeys_.clear();
-  timeoutCanceledByKeys_.clear();
+  delayedActionKeys_.clear();
+  delayedActionCanceledDefaultKeys_.clear();
+  delayedActionCanceledByKeys_.clear();
 
   currentToEvent_ = CurrentToEvent::TO_KEYS;
 }
@@ -132,20 +132,20 @@ void KeyToKey::prepare(RemapParams& remapParams) {
       if (fire_timer_.isActive()) {
         fire_timer_.cancelTimeout();
 
-        // timeout canceled by
-        for (size_t i = 0; i < timeoutCanceledByKeys_.size(); ++i) {
-          if (timeoutCanceledByKeys_[i].size() > 0 &&
-              timeoutCanceledByKeys_[i][0] == remapParams.paramsBase) {
-            doTimeout(timeoutCanceledByKeys_[i], true);
+        // delayed action canceled by
+        for (size_t i = 0; i < delayedActionCanceledByKeys_.size(); ++i) {
+          if (delayedActionCanceledByKeys_[i].size() > 0 &&
+              delayedActionCanceledByKeys_[i][0] == remapParams.paramsBase) {
+            doDelayedAction(delayedActionCanceledByKeys_[i], true);
             return;
           }
         }
-        // timeout canceled default
-        if (timeoutCanceledDefaultKeys_.size() > 0) {
-          doTimeout(timeoutCanceledDefaultKeys_, false);
+        // delayedAction canceled default
+        if (delayedActionCanceledDefaultKeys_.size() > 0) {
+          doDelayedAction(delayedActionCanceledDefaultKeys_, false);
         } else {
-          // We use timeoutKeys_ if timeoutCanceledDefaultKeys_ is not specified.
-          doTimeout(timeoutKeys_, false);
+          // We use delayedActionKeys_ if delayedActionCanceledDefaultKeys_ is not specified.
+          doDelayedAction(delayedActionKeys_, false);
         }
       }
     }
@@ -436,10 +436,10 @@ KeyToKey::remap(RemapParams& remapParams) {
   }
 
   // ----------------------------------------
-  // Handle timeoutKeys_
+  // Handle delayedActionKeys_
   if (fromEvent_.isPressing()) {
-    if (!timeoutKeys_.empty()) {
-      auto timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keytokey_timeout);
+    if (!delayedActionKeys_.empty()) {
+      auto timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keytokey_delayed_action_timeout);
 
       target_ = this;
       fire_timer_.setTimeoutMS(timeout);
@@ -452,10 +452,10 @@ KeyToKey::remap(RemapParams& remapParams) {
 
 void KeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
   if (!target_) return;
-  target_->doTimeout(target_->timeoutKeys_, false);
+  target_->doDelayedAction(target_->delayedActionKeys_, false);
 }
 
-void KeyToKey::doTimeout(const Vector_ToEvent& keys, bool timeoutCanceledBy) {
+void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCanceledBy) {
   if (!keys.empty()) {
     // clear temporary flags.
     FlagStatus::globalFlagStatus().set();
@@ -465,12 +465,12 @@ void KeyToKey::doTimeout(const Vector_ToEvent& keys, bool timeoutCanceledBy) {
     }
 
     for (size_t i = 0; i < keys.size(); ++i) {
-      if (timeoutCanceledBy && i == 0) {
+      if (delayedActionCanceledBy && i == 0) {
         // We ignore the first item because it is from event.
         continue;
       }
-      if (keys[i] == KeyCode::VK_KEYTOKEY_TIMEOUT_DROP_EVENT) {
-        VirtualKey::VK_KEYTOKEY_TIMEOUT_DROP_EVENT::setNeedToDrop(true);
+      if (keys[i] == KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT) {
+        VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::setNeedToDrop(true);
       }
 
       FlagStatus::globalFlagStatus().temporary_increase(keys[i].getModifierFlags());
