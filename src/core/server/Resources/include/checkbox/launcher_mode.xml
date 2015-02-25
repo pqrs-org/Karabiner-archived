@@ -20,8 +20,8 @@
       <appendix>List:</appendix>
       <appendix></appendix>
       <appendix>* Activity Monitor: O+A key</appendix>
-      <appendix>* Dictionary: O+D key</appendix>
       <appendix>* Search a selected text by Dictionary: O+Q key</appendix>
+      <appendix>* Dictionary: O+Q,Q</appendix>
       <appendix>* DigitalColor Meter: O+shift+D key</appendix>
       <appendix>* Launchpad: O+Space key</appendix>
       <appendix>* Mail: O+M key</appendix>
@@ -62,16 +62,23 @@
       </autogen>
 
       <autogen>__KeyDownUpToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::D, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Dictionary</autogen>
       <autogen>
-        __KeyDownUpToKey__
+        __KeyToKey__
         KeyCode::Q, ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
         KeyCode::C, ModifierFlag::COMMAND_L,
         KeyCode::VK_WAIT_100MS,
         KeyCode::VK_OPEN_URL_APP_Dictionary,
         KeyCode::VK_WAIT_100MS,
         KeyCode::VK_WAIT_100MS,
         KeyCode::V, ModifierFlag::COMMAND_L,
+        KeyCode::A, ModifierFlag::COMMAND_L,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::Q,
+        KeyCode::VK_OPEN_URL_APP_Dictionary,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
       </autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter</autogen>
       <autogen>__KeyDownUpToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
