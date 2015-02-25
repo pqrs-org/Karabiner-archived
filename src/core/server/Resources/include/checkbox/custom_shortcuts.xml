@@ -229,6 +229,24 @@
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
+      <name>Launch iTunes when you press the play/pause button twice.</name>
+      <identifier>remap.launch_itunes_by_play_button_twice</identifier>
+      <autogen>
+        __KeyToKey__
+        ConsumerKeyCode::MUSIC_PLAY,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
+        ConsumerKeyCode::MUSIC_PLAY,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY,
+        ConsumerKeyCode::MUSIC_PLAY,
+        KeyCode::VK_OPEN_URL_APP_iTunes,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <name>Switch current setting profile by fn+1,fn+2,fn+3, and fn+4.</name>
       <appendix>(You can make multiple profiles by MenuBar tab on Preferences.</appendix>
       <appendix>This setting changes current profile by shortcut.)</appendix>
