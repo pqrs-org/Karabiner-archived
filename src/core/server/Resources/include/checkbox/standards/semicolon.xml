@@ -51,5 +51,21 @@
         KeyCode::SEMICOLON, ModifierFlag::SHIFT_L,
       </autogen>
     </item>
+    <item>
+      <name>Input colon(:) by pressing semicolon(;) twice.</name>
+      <identifier>remap.semicolon_x2_to_colon</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SEMICOLON, ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::SEMICOLON,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::SEMICOLON,
+        KeyCode::SEMICOLON, ModifierFlag::SHIFT_L,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
+    </item>
   </item>
 </root>
