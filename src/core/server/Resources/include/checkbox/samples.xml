@@ -790,6 +790,51 @@ Two Lines</autogen>
       </item>
 
       <item>
+        <identifier>remap.samples_keytokey_delayed_action</identifier>
+        <name>Option::KEYTOKEY_DELAYED_ACTION</name>
+        <appendix>────────</appendix>
+        <appendix>Change the return key x2 to the space key.</appendix>
+        <appendix></appendix>
+        <appendix>* When you press the return key twice, a space key event will be sent. (no return key events)</appendix>
+        <appendix>* When you press the return key once, a return key event will be sent.</appendix>
+        <appendix>────────</appendix>
+        <appendix>Change control-tab to the left shift key.</appendix>
+        <appendix>+ Change control-tab x2 to a,option-b,c</appendix>
+        <appendix></appendix>
+        <appendix>* When you press control-tab twice, "left shift, a, option-b, c" will be sent.</appendix>
+        <appendix>* When you press control-tab once, "left shift" will be sent.</appendix>
+        <appendix>────────</appendix>
+
+        <autogen>
+          __KeyToKey__
+          KeyCode::RETURN,
+          KeyCode::VK_NONE,
+
+          Option::KEYTOKEY_DELAYED_ACTION,
+          KeyCode::RETURN,
+
+          Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::RETURN,
+          KeyCode::SPACE,
+          KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT, <!-- drop second return key event -->
+        </autogen>
+
+        <autogen>
+          __KeyToKey__
+          KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::SHIFT_L,
+
+          Option::KEYTOKEY_DELAYED_ACTION,
+          KeyCode::VK_NONE,
+
+          Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::TAB,
+          KeyCode::A,
+          KeyCode::B, ModifierFlag::OPTION_L,
+          KeyCode::C,
+          KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT, <!-- drop second tab key event -->
+        </autogen>
+      </item>
+
+      <item>
         <identifier>remap.samples_keytokey_apply_from_to_top</identifier>
         <name>Apply from the top sequentially.</name>
         <appendix>1 to A</appendix>
