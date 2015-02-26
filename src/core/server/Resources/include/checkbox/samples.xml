@@ -1218,6 +1218,16 @@ Two Lines</autogen>
     <item>
       <name>DoublePressModifier</name>
       <item>
+        <name style="important">Note:</name>
+        <appendix>DoublePressModifier always sends the first event.</appendix>
+        <appendix>For example, "change shift x2 to return" sends shift,shift,return when you press shift key twice.</appendix>
+        <appendix></appendix>
+        <appendix>If you want to cancel the first event, please use __KeyToKey__ and </appendix>
+        <appendix>Option::KEYTOKEY_DELAYED_ACTION.</appendix>
+        <appendix>For example, you should use __KeyToKey__ if you want</appendix>
+        <appendix>"change semicolon(;) twice to colon(:)" that sends either semicolon or colon.</appendix>
+      </item>
+      <item>
         <identifier>remap.samples_doublepressmodifier</identifier>
         <name>Standard</name>
         <appendix>Shift_L x2 to RETURN</appendix>
