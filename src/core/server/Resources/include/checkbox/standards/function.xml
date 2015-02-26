@@ -159,6 +159,45 @@
         </autogen>
       </item>
       <item>
+        <name>Fine grained keyboard backlighting controls</name>
+        <appendix>Enables fine grained backlighting controls by default</appendix>
+        <identifier>remap.fine_grained_backlighting_controls</identifier>
+        <!-- Backlighting Up -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::NONE,
+          ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <!-- For "Use all F1, F2, etc. keys as standard function keys." -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::FN | ModifierFlag::NONE,
+          ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::KEYBOARDLIGHT_HIGH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          ConsumerKeyCode::KEYBOARDLIGHT_HIGH
+        </autogen>
+        <!-- Backlighting Down -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::NONE,
+          ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <!-- For "Use all F1, F2, etc. keys as standard function keys." -->
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::FN | ModifierFlag::NONE,
+          ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L
+        </autogen>
+        <autogen>
+          __ConsumerToConsumer__
+          ConsumerKeyCode::KEYBOARDLIGHT_LOW, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          ConsumerKeyCode::KEYBOARDLIGHT_LOW
+        </autogen>
+      </item>
+      <item>
         <name>Fine grained volume controls</name>
         <appendix>Enables fine grained volume controls by default</appendix>
         <identifier>remap.fine_grained_volume_controls</identifier>
