@@ -826,7 +826,7 @@ Two Lines</autogen>
           Option::KEYTOKEY_DELAYED_ACTION,
           KeyCode::VK_NONE,
 
-          Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::TAB,
+          Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
           KeyCode::A,
           KeyCode::B, ModifierFlag::OPTION_L,
           KeyCode::C,

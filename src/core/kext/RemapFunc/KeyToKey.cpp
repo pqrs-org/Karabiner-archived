@@ -132,10 +132,14 @@ void KeyToKey::prepare(RemapParams& remapParams) {
       if (fire_timer_.isActive()) {
         fire_timer_.cancelTimeout();
 
+        // clear temporary flags.
+        FlagStatus::globalFlagStatus().globalFlagStatus().set();
+
         // delayed action canceled by
         for (size_t i = 0; i < delayedActionCanceledByKeys_.size(); ++i) {
           if (delayedActionCanceledByKeys_[i].size() > 0 &&
-              delayedActionCanceledByKeys_[i][0] == remapParams.paramsBase) {
+              delayedActionCanceledByKeys_[i][0] == remapParams.paramsBase &&
+              FlagStatus::globalFlagStatus().isOn(delayedActionCanceledByKeys_[i][0].getModifierFlags())) {
             doDelayedAction(delayedActionCanceledByKeys_[i], true);
             return;
           }
@@ -463,6 +467,9 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
     if (fromEvent_.isPressing()) {
       FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
     }
+    if (delayedActionCanceledBy && keys.size() > 0) {
+      FlagStatus::globalFlagStatus().temporary_decrease(keys[0].getModifierFlags());
+    }
 
     for (size_t i = 0; i < keys.size(); ++i) {
       if (delayedActionCanceledBy && i == 0) {
@@ -482,6 +489,9 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
 
     if (fromEvent_.isPressing()) {
       FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
+    }
+    if (delayedActionCanceledBy && keys.size() > 0) {
+      FlagStatus::globalFlagStatus().temporary_increase(keys[0].getModifierFlags());
     }
   }
 }
