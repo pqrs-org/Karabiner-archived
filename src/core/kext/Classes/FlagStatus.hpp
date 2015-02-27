@@ -93,6 +93,35 @@ public:
   };
   DECLARE_VECTOR(Item);
 
+  class ScopedSetter final {
+  public:
+    ScopedSetter(FlagStatus& flagStatus, const FlagStatus& newval) : flagStatus_(flagStatus) {
+      flagStatus_.subtract(newval, added_);
+      newval.subtract(flagStatus_, removed_);
+
+      for (size_t i = 0; i < added_.size(); ++i) {
+        flagStatus_.decrease(added_[i]);
+      }
+      for (size_t i = 0; i < removed_.size(); ++i) {
+        flagStatus_.increase(removed_[i]);
+      }
+    }
+
+    ~ScopedSetter(void) {
+      for (size_t i = 0; i < added_.size(); ++i) {
+        flagStatus_.increase(added_[i]);
+      }
+      for (size_t i = 0; i < removed_.size(); ++i) {
+        flagStatus_.decrease(removed_[i]);
+      }
+    }
+
+  private:
+    FlagStatus& flagStatus_;
+    Vector_ModifierFlag added_;
+    Vector_ModifierFlag removed_;
+  };
+
   FlagStatus(void);
   FlagStatus(Flags flags);
 

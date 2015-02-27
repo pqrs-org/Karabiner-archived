@@ -671,6 +671,42 @@ TEST(FlagStatus, subtract) {
   EXPECT_EQ(ModifierFlag::FN, v[1]);
 }
 
+TEST(FlagStatus, ScopedSetter) {
+  FlagStatus flagStatus1;
+  FlagStatus flagStatus2;
+
+  flagStatus1.increase(ModifierFlag::CONTROL_L);
+  flagStatus1.increase(ModifierFlag::OPTION_L);
+  flagStatus1.increase(ModifierFlag::SHIFT_L);
+  flagStatus1.increase(ModifierFlag::SHIFT_L);
+  flagStatus1.decrease(ModifierFlag::COMMAND_R);
+
+  flagStatus2.increase(ModifierFlag::COMMAND_R);
+  flagStatus2.increase(ModifierFlag::CONTROL_L);
+  flagStatus2.increase(ModifierFlag::FN);
+
+  {
+    EXPECT_EQ(flagStatus1.makeFlags(),
+              ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L);
+    EXPECT_EQ(flagStatus2.makeFlags(),
+              ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
+
+    {
+      FlagStatus::ScopedSetter scopedSetter(flagStatus1, flagStatus2);
+
+      EXPECT_EQ(flagStatus1.makeFlags(),
+                ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
+      EXPECT_EQ(flagStatus2.makeFlags(),
+                ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
+    }
+
+    EXPECT_EQ(flagStatus1.makeFlags(),
+              ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L);
+    EXPECT_EQ(flagStatus2.makeFlags(),
+              ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
+  }
+}
+
 int
 main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
