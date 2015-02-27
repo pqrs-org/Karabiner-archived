@@ -214,6 +214,7 @@
 					../../bridge/include,
 					../strlcpy_utf8,
 					/usr/local/include,
+					/opt/local/include/
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				RUN_CLANG_STATIC_ANALYZER = YES;
