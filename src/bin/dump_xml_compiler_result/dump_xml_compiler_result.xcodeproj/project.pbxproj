@@ -147,6 +147,7 @@
 				HEADER_SEARCH_PATHS = (
 					../../lib/xml_compiler/include,
 					/usr/local/include,
+					/opt/local/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				RUN_CLANG_STATIC_ANALYZER = YES;
