@@ -300,32 +300,10 @@ DependingPressingPeriodKeyToKey::dokeyup(void) {
     if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
       if (!eventWatcherTarget_.isAnyEventHappen() &&
           ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
-        // ----------------------------------------
-        // Restore FlagStatus at key down.
-        Vector_ModifierFlag added;
-        Vector_ModifierFlag removed;
-        FlagStatus::globalFlagStatus().subtract(flagStatusWhenKeyPressed_, added);
-        flagStatusWhenKeyPressed_.subtract(FlagStatus::globalFlagStatus(), removed);
+        FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
 
-        for (size_t i = 0; i < added.size(); ++i) {
-          FlagStatus::globalFlagStatus().decrease(added[i]);
-        }
-        for (size_t i = 0; i < removed.size(); ++i) {
-          FlagStatus::globalFlagStatus().increase(removed[i]);
-        }
-
-        // ----------------------------------------
         keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
         keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
-
-        // ----------------------------------------
-        // Restore current FlagStatus.
-        for (size_t i = 0; i < added.size(); ++i) {
-          FlagStatus::globalFlagStatus().increase(added[i]);
-        }
-        for (size_t i = 0; i < removed.size(); ++i) {
-          FlagStatus::globalFlagStatus().decrease(removed[i]);
-        }
       }
     }
 
