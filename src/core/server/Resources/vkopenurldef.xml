@@ -170,13 +170,28 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Microsoft_Excel</name>
+    <url type="file">/Applications/Microsoft Excel.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Microsoft_Excel_2011</name>
     <url type="file">/Applications/Microsoft Office 2011/Microsoft Excel.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Microsoft_PowerPoint</name>
+    <url type="file">/Applications/Microsoft PowerPoint.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_Microsoft_PowerPoint_2011</name>
     <url type="file">/Applications/Microsoft Office 2011/Microsoft PowerPoint.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Microsoft_Word</name>
+    <url type="file">/Applications/Microsoft Word.app</url>
   </vkopenurldef>
 
   <vkopenurldef>
