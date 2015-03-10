@@ -50,6 +50,22 @@
         KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::OPTION_L
       </autogen>
     </item>
+    <item>
+      <name>Search Messages by command-F</name>
+      <appendix>(Swap command-F and command-shift-F)</appendix>
+      <identifier>remap.app_thunderbird_swap_command_f_command_shift_f</identifier>
+      <only>THUNDERBIRD</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+    </item>
   </item>
 
   <item>
