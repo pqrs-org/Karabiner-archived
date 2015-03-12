@@ -8,5 +8,21 @@
       <inputsource_only>LITHUANIAN</inputsource_only>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::DOT</autogen>
     </item>
+
+    <item>
+      <name>Change letters to numbers when right command key is pressed in Lithuanian input source.</name>
+      <identifier>remap.lithuanian_command_r_numbers_keypads</identifier>
+      <inputsource_only>LITHUANIAN</inputsource_only>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_1</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_2</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_3</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_4</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_5</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_6</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_7</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_8</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_9</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::COMMAND_R, KeyCode::KEYPAD_0</autogen>
+    </item>
   </item>
 </root>
