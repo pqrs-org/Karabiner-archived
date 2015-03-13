@@ -127,6 +127,9 @@ void KeyToKey::prepare(RemapParams& remapParams) {
   bool iskeydown = false;
   if (remapParams.paramsBase.iskeydown(iskeydown)) {
     if (iskeydown) {
+      // A key is pressed.
+      // We need to cancel delayed action.
+
       RemapClassManager::unregisterPrepareTargetItem(this);
 
       if (fire_timer_.isActive()) {
