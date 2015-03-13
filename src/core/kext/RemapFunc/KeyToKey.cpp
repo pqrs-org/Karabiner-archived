@@ -319,6 +319,36 @@ KeyToKey::remap(RemapParams& remapParams) {
 
     } else {
       // toModifier or VirtualKey::isKeyLikeModifier
+
+      // Consider "Change Shift-A to Control".
+      //
+      //   Actual input:
+      //     1. shift down
+      //     2. a down
+      //     3. a up
+      //     4. a down
+      //     5. a up
+      //     6. shift up
+      //
+      //   Desirable results:
+      //     1. shift down
+      //     2. shift up, control down
+      //     3. control up
+      //     4. control down
+      //     5. control up
+      //     6. nop
+      //
+      //   Undesirable results:
+      //     1. shift down
+      //     2. shift up, control down
+      //     3. control up, shift down
+      //     4. shift up, control down
+      //     5. control up, shift down
+      //     6. shift up
+      //
+      // We should increase and temporary_decrease pureFromModifierFlags_ when key up
+      // in order to avoid undesirable results.
+
       if (toModifierFlag != ModifierFlag::ZERO) {
         newEventType = EventType::MODIFY;
       }
@@ -329,6 +359,7 @@ KeyToKey::remap(RemapParams& remapParams) {
       } else {
         FlagStatus::globalFlagStatus().decrease(toModifierFlag, toKeys_[0].getModifierFlags());
         FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
+        FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
       }
     }
 
