@@ -100,6 +100,7 @@ private:
 
   static TimerWrapper fire_timer_;
   static KeyToKey* target_;
+  static FlagStatus flagStatusForDelayedActionKeys_;
 
   int keyboardRepeatID_;
   bool isRepeatEnabled_;

@@ -13,6 +13,7 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 TimerWrapper KeyToKey::fire_timer_;
 KeyToKey* KeyToKey::target_ = NULL;
+FlagStatus KeyToKey::flagStatusForDelayedActionKeys_;
 
 void KeyToKey::static_initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, NULL, KeyToKey::fire_timer_callback);
@@ -191,6 +192,20 @@ KeyToKey::remap(RemapParams& remapParams) {
   } else {
     FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
     ButtonStatus::increase(fromEvent_.getPointingButton());
+  }
+
+  // ----------------------------------------
+  // Handle delayedActionKeys_
+  if (fromEvent_.isPressing()) {
+    if (!delayedActionKeys_.empty()) {
+      auto timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keytokey_delayed_action_timeout);
+
+      target_ = this;
+      fire_timer_.setTimeoutMS(timeout);
+      flagStatusForDelayedActionKeys_ = FlagStatus::globalFlagStatus();
+      flagStatusForDelayedActionKeys_.decrease(pureFromModifierFlags_);
+      RemapClassManager::registerPrepareTargetItem(this);
+    }
   }
 
   // ----------------------------------------
@@ -474,18 +489,6 @@ KeyToKey::remap(RemapParams& remapParams) {
     }
   }
 
-  // ----------------------------------------
-  // Handle delayedActionKeys_
-  if (fromEvent_.isPressing()) {
-    if (!delayedActionKeys_.empty()) {
-      auto timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keytokey_delayed_action_timeout);
-
-      target_ = this;
-      fire_timer_.setTimeoutMS(timeout);
-      RemapClassManager::registerPrepareTargetItem(this);
-    }
-  }
-
   return true;
 }
 
@@ -496,12 +499,11 @@ void KeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /*
 
 void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCanceledBy) {
   if (!keys.empty()) {
+    FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusForDelayedActionKeys_);
+
     // clear temporary flags.
     FlagStatus::globalFlagStatus().set();
 
-    if (fromEvent_.isPressing()) {
-      FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
-    }
     if (delayedActionCanceledBy && keys.size() > 0) {
       FlagStatus::globalFlagStatus().temporary_decrease(keys[0].getModifierFlags());
     }
@@ -522,9 +524,6 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
       FlagStatus::globalFlagStatus().temporary_decrease(keys[i].getModifierFlags());
     }
 
-    if (fromEvent_.isPressing()) {
-      FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
-    }
     if (delayedActionCanceledBy && keys.size() > 0) {
       FlagStatus::globalFlagStatus().temporary_increase(keys[0].getModifierFlags());
     }
