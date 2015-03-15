@@ -10,7 +10,7 @@ class TestItem final {
 public:
   TestItem(void) {
     WeakPointerManager_TestItem::add(this);
-  };
+  }
   ~TestItem(void) {
     WeakPointerManager_TestItem::remove(this);
   }
