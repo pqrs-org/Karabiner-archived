@@ -7,7 +7,7 @@ namespace org_pqrs_Karabiner {
 
 #define DECLARE_WEAKPOINTER(TYPENAME)                                                                   \
   class TYPENAME;                                                                                       \
-  class WeakPointer_##TYPENAME final {                                                                  \
+  class WeakPointerManager_##TYPENAME final {                                                           \
   public:                                                                                               \
     static void add(TYPENAME* p) {                                                                      \
       auto item = new Item(p);                                                                          \
@@ -47,10 +47,19 @@ namespace org_pqrs_Karabiner {
     };                                                                                                  \
                                                                                                         \
     static List list_;                                                                                  \
+  };                                                                                                    \
+                                                                                                        \
+  class WeakPointer_##TYPENAME final {                                                                  \
+  public:                                                                                               \
+    WeakPointer_##TYPENAME(TYPENAME* p) : pointer_(p) {}                                                \
+    bool expired(void) const { return WeakPointerManager_##TYPENAME::expired(pointer_); }               \
+                                                                                                        \
+  private:                                                                                              \
+    TYPENAME* pointer_;                                                                                 \
   };
-}
 
 #define DEFINE_WEAKPOINTER(TYPENAME) \
-  List WeakPointer_##TYPENAME::list_;
+  List WeakPointerManager_##TYPENAME::list_;
+}
 
 #endif

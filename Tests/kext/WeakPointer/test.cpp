@@ -9,10 +9,10 @@ DECLARE_WEAKPOINTER(TestItem);
 class TestItem final {
 public:
   TestItem(void) {
-    WeakPointer_TestItem::add(this);
+    WeakPointerManager_TestItem::add(this);
   };
   ~TestItem(void) {
-    WeakPointer_TestItem::remove(this);
+    WeakPointerManager_TestItem::remove(this);
   }
 };
 
@@ -22,18 +22,21 @@ TEST(WeakPointer, expired) {
   auto p1 = new TestItem();
   auto p2 = new TestItem();
 
-  EXPECT_FALSE(WeakPointer_TestItem::expired(p1));
-  EXPECT_FALSE(WeakPointer_TestItem::expired(p2));
+  WeakPointer_TestItem wp1(p1);
+  WeakPointer_TestItem wp2(p2);
+
+  EXPECT_FALSE(wp1.expired());
+  EXPECT_FALSE(wp2.expired());
 
   delete p1;
 
-  EXPECT_TRUE(WeakPointer_TestItem::expired(p1));
-  EXPECT_FALSE(WeakPointer_TestItem::expired(p2));
+  EXPECT_TRUE(wp1.expired());
+  EXPECT_FALSE(wp2.expired());
 
   delete p2;
 
-  EXPECT_TRUE(WeakPointer_TestItem::expired(p1));
-  EXPECT_TRUE(WeakPointer_TestItem::expired(p2));
+  EXPECT_TRUE(wp1.expired());
+  EXPECT_TRUE(wp2.expired());
 }
 
 int main(int argc, char** argv) {
