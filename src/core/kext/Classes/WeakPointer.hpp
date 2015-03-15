@@ -9,6 +9,28 @@ namespace org_pqrs_Karabiner {
   class TYPENAME;                                                                                       \
   class WeakPointerManager_##TYPENAME final {                                                           \
   public:                                                                                               \
+    /* Call WeakPointerManager::add in constructor. */                                                  \
+    /* For example: */                                                                                  \
+                                                                                                        \
+    /* ----------------------------------------------- */                                               \
+    /* DECLARE_WEAKPOINTER(TestClass);                 */                                               \
+    /*                                                 */                                               \
+    /* class TestClass final {                         */                                               \
+    /* public:                                         */                                               \
+    /*   TestClass(void) {                             */                                               \
+    /*     WeakPointerManager_TestClass::add(this);    */                                               \
+    /*   }                                             */                                               \
+    /*   ~TestClass(void) {                            */                                               \
+    /*     WeakPointerManager_TestClass::remove(this); */                                               \
+    /*   }                                             */                                               \
+    /* };                                              */                                               \
+    /* ----------------------------------------------- */                                               \
+                                                                                                        \
+    /* Note: */                                                                                         \
+    /* DO NOT call WeakPointerManager::add twice with same pointer. */                                  \
+    /* If you call WeakPointerManager::add twice, */                                                    \
+    /* WeakPointerManager::expired will return false with deleted pointer. */                           \
+                                                                                                        \
     static void add(TYPENAME* p) {                                                                      \
       auto item = new Item(p);                                                                          \
       if (item) {                                                                                       \
@@ -17,13 +39,10 @@ namespace org_pqrs_Karabiner {
     }                                                                                                   \
                                                                                                         \
     static void remove(TYPENAME* pointer) {                                                             \
-      Item* p = static_cast<Item*>(list_.safe_front());                                                 \
-      for (;;) {                                                                                        \
-        if (!p) break;                                                                                  \
+      for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) { \
         if (p->pointer == pointer) {                                                                    \
-          p = static_cast<Item*>(list_.erase_and_delete(p));                                            \
-        } else {                                                                                        \
-          p = static_cast<Item*>(p->getnext());                                                         \
+          list_.erase_and_delete(p);                                                                    \
+          break;                                                                                        \
         }                                                                                               \
       }                                                                                                 \
     }                                                                                                   \
