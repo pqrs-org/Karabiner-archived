@@ -70,11 +70,13 @@ namespace org_pqrs_Karabiner {
                                                                                                         \
   class WeakPointer_##TYPENAME final {                                                                  \
   public:                                                                                               \
-    WeakPointer_##TYPENAME(const TYPENAME* p) : pointer_(p) {}                                          \
+    WeakPointer_##TYPENAME(TYPENAME* p) : pointer_(p) {}                                                \
     bool expired(void) const { return WeakPointerManager_##TYPENAME::expired(pointer_); }               \
                                                                                                         \
+    TYPENAME* operator->(void) { return pointer_; }                                                     \
+                                                                                                        \
   private:                                                                                              \
-    const TYPENAME* pointer_;                                                                           \
+    TYPENAME* pointer_;                                                                                 \
   };
 
 #define DEFINE_WEAKPOINTER(TYPENAME) \
