@@ -19,7 +19,7 @@ public:
                    delayUntilRepeat_(-1),
                    keyRepeat_(-1) {}
 
-  ~KeyToKey(void) {
+  virtual ~KeyToKey(void) {
     if (target_ == this) {
       fire_timer_.cancelTimeout();
       target_ = NULL;
