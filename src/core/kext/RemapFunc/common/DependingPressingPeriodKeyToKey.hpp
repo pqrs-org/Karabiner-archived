@@ -126,7 +126,7 @@ public:
   static void static_terminate(void);
 
   DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner);
-  ~DependingPressingPeriodKeyToKey(void);
+  virtual ~DependingPressingPeriodKeyToKey(void);
 
   void prepare(RemapParams& remapParams);
   bool remap(RemapParams& remapParams);
