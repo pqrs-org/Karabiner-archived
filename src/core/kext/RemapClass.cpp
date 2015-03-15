@@ -814,16 +814,8 @@ bool isEnabled(size_t configindex) {
 
 void registerPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
   unregisterPrepareTargetItem(processor);
-
-  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
-    auto p = enabled_remapclasses_[i];
-    if (p) {
-      auto item = p->findItem(processor);
-      if (item) {
-        prepareTargetItems_.push_back(new PrepareTargetItem(*item));
-        return;
-      }
-    }
+  if (processor) {
+    prepareTargetItems_.push_back(new PrepareTargetItem(processor));
   }
 }
 
@@ -832,7 +824,8 @@ void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
   for (;;) {
     if (!item) return;
 
-    if ((item->item).processor() == processor) {
+    if ((item->remapFuncBaseWeakPointer).expired() ||
+        (item->remapFuncBaseWeakPointer).get() == processor) {
       item = static_cast<PrepareTargetItem*>(prepareTargetItems_.erase_and_delete(item));
     } else {
       item = static_cast<PrepareTargetItem*>(item->getnext());
@@ -841,8 +834,6 @@ void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
 }
 
 void prepare(RemapParams& remapParams) {
-  bool passThroughEnabled = isPassThroughEnabled();
-
   // VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::needToDrop will be set in KeyToKey::prepare.
   // If needToDrop is set in prepare, we should ignore this event.
   // So, set remapParams.isremapped true when needToDrop is set.
@@ -856,12 +847,8 @@ void prepare(RemapParams& remapParams) {
     // So, we store next pointer at first.
     auto next = static_cast<PrepareTargetItem*>(item->getnext());
 
-    if (!passThroughEnabled ||
-        (item->item).isIgnorePassThrough()) {
-      auto p = (item->item).processor();
-      if (p) {
-        p->prepare(remapParams);
-      }
+    if (!item->remapFuncBaseWeakPointer.expired()) {
+      item->remapFuncBaseWeakPointer->prepare(remapParams);
     }
 
     item = next;

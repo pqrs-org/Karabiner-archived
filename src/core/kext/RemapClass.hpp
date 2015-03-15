@@ -143,10 +143,10 @@ bool isEnabled(size_t configindex);
 
 class PrepareTargetItem final : public List::Item {
 public:
-  PrepareTargetItem(const RemapClass::Item& i) : item(i) {}
+  PrepareTargetItem(RemapFunc::RemapFuncBase* p) : remapFuncBaseWeakPointer(p) {}
   virtual ~PrepareTargetItem(void) {}
 
-  const RemapClass::Item& item;
+  RemapFunc::WeakPointer_RemapFuncBase remapFuncBaseWeakPointer;
 
 private:
   PrepareTargetItem& operator=(const PrepareTargetItem& rhs); // Prevent assignment
