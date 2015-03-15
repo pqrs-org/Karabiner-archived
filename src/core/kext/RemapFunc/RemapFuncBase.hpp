@@ -8,6 +8,7 @@
 #include "ListHookedKeyboard.hpp"
 #include "RemapFuncClasses.hpp"
 #include "ToEvent.hpp"
+#include "WeakPointer.hpp"
 
 namespace org_pqrs_Karabiner {
 class RemapSimultaneousKeyPressesResult {
@@ -30,12 +31,18 @@ public:
 };
 
 namespace RemapFunc {
+DECLARE_WEAKPOINTER(RemapFuncBase);
+
 class RemapFuncBase {
 protected:
-  RemapFuncBase(unsigned int type) : type_(type), ignorePassThrough_(false) {}
+  RemapFuncBase(unsigned int type) : type_(type), ignorePassThrough_(false) {
+    WeakPointerManager_RemapFuncBase::add(this);
+  }
 
 public:
-  virtual ~RemapFuncBase(void) {}
+  virtual ~RemapFuncBase(void) {
+    WeakPointerManager_RemapFuncBase::remove(this);
+  }
 
   virtual void add(AddDataType datatype, AddValue newval) = 0;
 

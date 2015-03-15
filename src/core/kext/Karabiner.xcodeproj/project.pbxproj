@@ -121,6 +121,7 @@
 		34A7F15812537F0D0012B982 /* bridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 34A7F15712537F0D0012B982 /* bridge.h */; };
 		34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */; };
 		34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */; };
+		34AC76CB1AB5CAEA00154DF2 /* RemapFuncBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34AC76CA1AB5CAEA00154DF2 /* RemapFuncBase.cpp */; };
 		34B3663716DA5E0D0081C5D7 /* FlipPointingRelative.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B3663516DA5E0D0081C5D7 /* FlipPointingRelative.cpp */; };
 		34B3663816DA5E0D0081C5D7 /* FlipPointingRelative.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B3663616DA5E0D0081C5D7 /* FlipPointingRelative.hpp */; };
 		34B464D013A6515200470265 /* VK_LOCK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B464CE13A6515200470265 /* VK_LOCK.cpp */; };
@@ -281,6 +282,7 @@
 		34A7F15712537F0D0012B982 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
 		34AC5ECF11DA3BD60089BC58 /* KeyOverlaidModifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyOverlaidModifier.cpp; path = RemapFunc/KeyOverlaidModifier.cpp; sourceTree = "<group>"; };
 		34AC5ED011DA3BD60089BC58 /* KeyOverlaidModifier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyOverlaidModifier.hpp; path = RemapFunc/KeyOverlaidModifier.hpp; sourceTree = "<group>"; };
+		34AC76CA1AB5CAEA00154DF2 /* RemapFuncBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RemapFuncBase.cpp; path = RemapFunc/RemapFuncBase.cpp; sourceTree = "<group>"; };
 		34B3663516DA5E0D0081C5D7 /* FlipPointingRelative.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlipPointingRelative.cpp; path = RemapFunc/FlipPointingRelative.cpp; sourceTree = "<group>"; };
 		34B3663616DA5E0D0081C5D7 /* FlipPointingRelative.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FlipPointingRelative.hpp; path = RemapFunc/FlipPointingRelative.hpp; sourceTree = "<group>"; };
 		34B464CE13A6515200470265 /* VK_LOCK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_LOCK.cpp; path = VirtualKey/VK_LOCK.cpp; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				34A6626E18B9DAF70010D8B9 /* PointingRelativeToKey.hpp */,
 				34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */,
 				34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */,
+				34AC76CA1AB5CAEA00154DF2 /* RemapFuncBase.cpp */,
 				34D5B57319B1BECA00ABD446 /* RemapFuncBase.hpp */,
 				3434FAAC19B771C400E904C0 /* RemapFuncFactory.hpp */,
 				34379D4414B7794B0004B0F4 /* ScrollWheelToKey.cpp */,
@@ -788,6 +791,7 @@
 				34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */,
 				34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */,
 				340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */,
+				34AC76CB1AB5CAEA00154DF2 /* RemapFuncBase.cpp in Sources */,
 				342966A31A9CA0B400CAE6E9 /* VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT.cpp in Sources */,
 				3405382213E6ED7E009DF83F /* DropScrollWheel.cpp in Sources */,
 				34799527140A70B600B85E42 /* VK_CONSUMERKEY.cpp in Sources */,
