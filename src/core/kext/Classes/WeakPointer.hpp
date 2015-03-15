@@ -73,7 +73,8 @@ namespace org_pqrs_Karabiner {
     WeakPointer_##TYPENAME(TYPENAME* p) : pointer_(p) {}                                                \
     bool expired(void) const { return WeakPointerManager_##TYPENAME::expired(pointer_); }               \
                                                                                                         \
-    TYPENAME* operator->(void) { return pointer_; }                                                     \
+    TYPENAME* operator->(void) const { return pointer_; }                                               \
+    TYPENAME* get(void) const { return pointer_; }                                                      \
                                                                                                         \
   private:                                                                                              \
     TYPENAME* pointer_;                                                                                 \
