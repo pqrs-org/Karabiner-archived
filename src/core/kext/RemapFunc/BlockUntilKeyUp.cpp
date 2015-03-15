@@ -3,8 +3,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-BlockUntilKeyUp::add(AddDataType datatype, AddValue newval) {
+void BlockUntilKeyUp::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
   case BRIDGE_DATATYPE_CONSUMERKEYCODE:

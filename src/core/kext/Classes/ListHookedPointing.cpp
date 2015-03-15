@@ -34,8 +34,7 @@ ListHookedPointing::Item::~Item(void) {
   restoreEventAction();
 }
 
-bool
-ListHookedPointing::Item::refresh(void) {
+bool ListHookedPointing::Item::refresh(void) {
   if (!device_) goto restore;
 
   // ------------------------------------------------------------
@@ -69,8 +68,7 @@ restore:
   return restoreEventAction();
 }
 
-bool
-ListHookedPointing::Item::replaceEventAction(void) {
+bool ListHookedPointing::Item::replaceEventAction(void) {
   if (!device_) return false;
 
   IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device_);
@@ -127,8 +125,7 @@ ListHookedPointing::Item::replaceEventAction(void) {
   return result;
 }
 
-bool
-ListHookedPointing::Item::restoreEventAction(void) {
+bool ListHookedPointing::Item::restoreEventAction(void) {
   if (!device_) return false;
 
   IOHIPointing* pointing = OSDynamicCast(IOHIPointing, device_);
@@ -169,8 +166,7 @@ ListHookedPointing::Item::restoreEventAction(void) {
 }
 
 // ======================================================================
-void
-ListHookedPointing::Item::apply(const Params_RelativePointerEventCallback& params) {
+void ListHookedPointing::Item::apply(const Params_RelativePointerEventCallback& params) {
   RelativePointerEventCallback callback = orig_relativePointerEventAction_;
   if (!callback) return;
 
@@ -192,8 +188,7 @@ ListHookedPointing::Item::apply(const Params_RelativePointerEventCallback& param
   }
 }
 
-void
-ListHookedPointing::Item::apply(const Params_ScrollWheelEventCallback& params) {
+void ListHookedPointing::Item::apply(const Params_ScrollWheelEventCallback& params) {
   ScrollWheelEventCallback callback = orig_scrollWheelEventAction_;
   if (!callback) return;
 
@@ -223,8 +218,7 @@ ListHookedPointing::Item::apply(const Params_ScrollWheelEventCallback& params) {
   }
 }
 
-void
-ListHookedPointing::apply(const Params_RelativePointerEventCallback& params) {
+void ListHookedPointing::apply(const Params_RelativePointerEventCallback& params) {
   // if all button are released, send event for all devices.
   if (params.buttons == Buttons(0) &&
       params.dx == 0 &&
@@ -243,8 +237,7 @@ ListHookedPointing::apply(const Params_RelativePointerEventCallback& params) {
   }
 }
 
-void
-ListHookedPointing::apply(const Params_ScrollWheelEventCallback& params) {
+void ListHookedPointing::apply(const Params_ScrollWheelEventCallback& params) {
   ListHookedPointing::Item* p = static_cast<ListHookedPointing::Item*>(get_replaced());
   if (p) {
     p->apply(params);

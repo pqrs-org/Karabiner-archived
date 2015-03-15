@@ -3,29 +3,25 @@
 
 namespace pqrs {
 
-void
-xml_compiler::app::add_rule_equal(const std::string& v) {
+void xml_compiler::app::add_rule_equal(const std::string& v) {
   if (!v.empty()) {
     rules_equal_.push_back(v);
   }
 }
 
-void
-xml_compiler::app::add_rule_prefix(const std::string& v) {
+void xml_compiler::app::add_rule_prefix(const std::string& v) {
   if (!v.empty()) {
     rules_prefix_.push_back(v);
   }
 }
 
-void
-xml_compiler::app::add_rule_suffix(const std::string& v) {
+void xml_compiler::app::add_rule_suffix(const std::string& v) {
   if (!v.empty()) {
     rules_suffix_.push_back(v);
   }
 }
 
-bool
-xml_compiler::app::is_rules_matched(const std::string& identifier) const {
+bool xml_compiler::app::is_rules_matched(const std::string& identifier) const {
   for (const auto& r : rules_equal_) {
     if (identifier == r) {
       return true;
@@ -46,8 +42,7 @@ xml_compiler::app::is_rules_matched(const std::string& identifier) const {
 }
 
 // ============================================================
-void
-xml_compiler::app_loader::traverse(const extracted_ptree& pt) const {
+void xml_compiler::app_loader::traverse(const extracted_ptree& pt) const {
   for (const auto& it : pt) {
     if (it.get_tag_name() != "appdef") {
       if (!it.children_empty()) {

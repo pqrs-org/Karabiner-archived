@@ -7,8 +7,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval) {
+void SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
   case BRIDGE_DATATYPE_CONSUMERKEYCODE:
@@ -249,8 +248,7 @@ scan:
   return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
 }
 
-void
-SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier) {
+void SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier) {
   EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
 
   KeyCode key = virtualkey_;
@@ -272,8 +270,7 @@ SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifier& de
   EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceIdentifier, push_back);
 }
 
-bool
-SimultaneousKeyPresses::remap(RemapParams& remapParams) {
+bool SimultaneousKeyPresses::remap(RemapParams& remapParams) {
   return keytokey_.remap(remapParams);
 }
 }

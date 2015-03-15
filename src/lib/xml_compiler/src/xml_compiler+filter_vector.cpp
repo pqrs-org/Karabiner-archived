@@ -4,8 +4,7 @@
 #include "pqrs/xml_compiler/utilities.hpp"
 
 namespace pqrs {
-void
-xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
+void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
   for (const auto& it : pt) {
     /*  */ if (it.get_tag_name() == "not") {
       add_(BRIDGE_FILTERTYPE_APPLICATION_NOT, "ApplicationType::", it.get_data());
@@ -71,10 +70,9 @@ xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
   }
 }
 
-void
-xml_compiler::filter_vector::add_(uint32_t filter_type,
-                                  const std::string& prefix,
-                                  const std::string& string) {
+void xml_compiler::filter_vector::add_(uint32_t filter_type,
+                                       const std::string& prefix,
+                                       const std::string& string) {
   std::string string_no_whitespaces(string);
   pqrs::string::remove_whitespaces(string_no_whitespaces);
 
@@ -161,8 +159,7 @@ xml_compiler::filter_vector::add_(uint32_t filter_type,
   }
 }
 
-void
-xml_compiler::filter_vector::fill_omitted_device_specifying(uint32_t& count) {
+void xml_compiler::filter_vector::fill_omitted_device_specifying(uint32_t& count) {
   // <device_not> and <device_only> require a strict arguments order.
   // 1st: DeviceVendor
   // 2nd: DeviceProduct

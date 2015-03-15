@@ -6,8 +6,7 @@ namespace org_pqrs_Karabiner {
 #include "../../../src/bridge/output/include.kext.keycode.cpp"
 
 // ------------------------------------------------------------
-bool
-EventType::isKeyDownOrModifierDown(KeyCode key, Flags flags) const {
+bool EventType::isKeyDownOrModifierDown(KeyCode key, Flags flags) const {
   if (*this == EventType::DOWN) return true;
   if (*this == EventType::MODIFY) {
     return flags.isOn(key.getModifierFlag());
@@ -15,8 +14,7 @@ EventType::isKeyDownOrModifierDown(KeyCode key, Flags flags) const {
   return false;
 }
 
-bool
-KeyCode::FNKeyHack::remap(KeyCode& key, Flags flags, EventType eventType, bool& active, KeyCode fromKeyCode, KeyCode toKeyCode) {
+bool KeyCode::FNKeyHack::remap(KeyCode& key, Flags flags, EventType eventType, bool& active, KeyCode fromKeyCode, KeyCode toKeyCode) {
   if (key != fromKeyCode) return false;
 
   bool isKeyDown = eventType.isKeyDownOrModifierDown(key, flags);
@@ -61,8 +59,7 @@ KeyCode::FNKeyHack fnkeyhack[] = {
 };
 }
 
-void
-KeyCode::normalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType) {
+void KeyCode::normalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType) {
   // We can drop NUMPAD flags, because we'll set these flags at reverseNormalizeKey.
   flags.stripNUMPAD();
 
@@ -81,8 +78,7 @@ KeyCode::normalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardT
   }
 }
 
-void
-KeyCode::reverseNormalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType) {
+void KeyCode::reverseNormalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType) {
   if (!Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_numpad_hack)) {
     for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
       if (fnkeyhack[i].reverse(key, flags, eventType)) break;
@@ -221,8 +217,7 @@ KeyCode::getModifierFlag(void) const {
   return KeyCodeModifierFlagPairs::getModifierFlag(*this, KeyCodeModifierFlagPairs::KeyCodeType::KEYCODE);
 }
 
-bool
-ConsumerKeyCode::isRepeatable(void) const {
+bool ConsumerKeyCode::isRepeatable(void) const {
   if (*this == ConsumerKeyCode::BRIGHTNESS_DOWN) {
     return true;
   }

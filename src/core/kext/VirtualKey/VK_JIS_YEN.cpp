@@ -5,8 +5,7 @@
 #include "VK_JIS_YEN.hpp"
 
 namespace org_pqrs_Karabiner {
-bool
-VirtualKey::VK_JIS_YEN::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_JIS_YEN::handle(const Params_KeyboardEventCallBack& params) {
   if (params.key != KeyCode::VK_JIS_YEN) return false;
 
   Params_KeyboardEventCallBack p(params.eventType, params.flags, KeyCode::JIS_YEN,

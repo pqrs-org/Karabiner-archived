@@ -33,8 +33,7 @@ ListHookedConsumer::Item::~Item(void) {
 }
 
 // ----------------------------------------------------------------------
-bool
-ListHookedConsumer::Item::refresh(void) {
+bool ListHookedConsumer::Item::refresh(void) {
   if (!device_) goto restore;
 
   {
@@ -93,8 +92,7 @@ restore:
   return restoreEventAction();
 }
 
-bool
-ListHookedConsumer::Item::replaceEventAction(void) {
+bool ListHookedConsumer::Item::replaceEventAction(void) {
   if (!device_) return false;
 
   IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -129,8 +127,7 @@ ListHookedConsumer::Item::replaceEventAction(void) {
   return result;
 }
 
-bool
-ListHookedConsumer::Item::restoreEventAction(void) {
+bool ListHookedConsumer::Item::restoreEventAction(void) {
   if (!device_) return false;
 
   IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -157,8 +154,7 @@ ListHookedConsumer::Item::restoreEventAction(void) {
 }
 
 // ======================================================================
-void
-ListHookedConsumer::Item::apply(const Params_KeyboardSpecialEventCallback& params) {
+void ListHookedConsumer::Item::apply(const Params_KeyboardSpecialEventCallback& params) {
   if (params.key >= ConsumerKeyCode::VK__BEGIN__) {
     // Invalid keycode
     IOLOG_ERROR("%s invalid key:%d\n", __PRETTY_FUNCTION__, params.key.get());
@@ -189,8 +185,7 @@ ListHookedConsumer::Item::apply(const Params_KeyboardSpecialEventCallback& param
   }
 }
 
-void
-ListHookedConsumer::Item::disableNumLock(void) {
+void ListHookedConsumer::Item::disableNumLock(void) {
   IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
   if (!kbd) return;
 
@@ -200,8 +195,7 @@ ListHookedConsumer::Item::disableNumLock(void) {
   }
 }
 
-bool
-ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params) {
+bool ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params) {
   ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced());
   if (p) {
     p->apply(params);
@@ -210,8 +204,7 @@ ListHookedConsumer::apply(const Params_KeyboardSpecialEventCallback& params) {
   return false;
 }
 
-void
-ListHookedConsumer::disableNumLock(void) {
+void ListHookedConsumer::disableNumLock(void) {
   ListHookedConsumer::Item* p = static_cast<ListHookedConsumer::Item*>(get_replaced());
   if (p) {
     p->disableNumLock();

@@ -8,16 +8,13 @@
 namespace org_pqrs_Karabiner {
 List PressDownKeys::list_;
 
-void
-PressDownKeys::initialize(void) {}
+void PressDownKeys::initialize(void) {}
 
-void
-PressDownKeys::terminate(void) {
+void PressDownKeys::terminate(void) {
   list_.clear();
 }
 
-void
-PressDownKeys::add(KeyCode key, KeyboardType keyboardType) {
+void PressDownKeys::add(KeyCode key, KeyboardType keyboardType) {
   if (key == KeyCode::VK_NONE) return;
 
   list_.push_back(new Item(key, keyboardType));
@@ -25,8 +22,7 @@ PressDownKeys::add(KeyCode key, KeyboardType keyboardType) {
   IOLOG_DEVEL("PressDownKeys::add key:%d, keyboardType:%d\n", key.get(), keyboardType.get());
 }
 
-void
-PressDownKeys::remove(KeyCode key, KeyboardType keyboardType) {
+void PressDownKeys::remove(KeyCode key, KeyboardType keyboardType) {
   Item* p = static_cast<Item*>(list_.safe_front());
   for (;;) {
     if (!p) break;
@@ -42,8 +38,7 @@ PressDownKeys::remove(KeyCode key, KeyboardType keyboardType) {
   IOLOG_DEVEL("PressDownKeys::remove key:%d, keyboardType:%d\n", key.get(), keyboardType.get());
 }
 
-void
-PressDownKeys::clear(void) {
+void PressDownKeys::clear(void) {
   IOLOG_DEVEL("PressDownKeys::clear list_.size = %d\n", static_cast<int>(list_.size()));
 
   Item* p = static_cast<Item*>(list_.safe_front());

@@ -5,8 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-DropKeyAfterRemap::add(AddDataType datatype, AddValue newval) {
+void DropKeyAfterRemap::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE: {
     fromEvent_ = FromEvent(datatype, newval);
@@ -25,8 +24,7 @@ DropKeyAfterRemap::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-DropKeyAfterRemap::drop(const Params_KeyboardEventCallBack& params) {
+bool DropKeyAfterRemap::drop(const Params_KeyboardEventCallBack& params) {
   FlagStatus currentFlags(params.flags);
   if (!fromEvent_.changePressingState(params, currentFlags, fromModifierFlags_)) return false;
   return true;

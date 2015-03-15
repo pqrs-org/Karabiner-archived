@@ -6,8 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-FlipPointingRelative::add(AddDataType datatype, AddValue newval) {
+void FlipPointingRelative::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_OPTION: {
     Option option(newval);
@@ -27,8 +26,7 @@ FlipPointingRelative::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-FlipPointingRelative::remap(RemapParams& remapParams) {
+bool FlipPointingRelative::remap(RemapParams& remapParams) {
   auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
   if (!params) return false;
 

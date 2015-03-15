@@ -8,26 +8,21 @@
 namespace org_pqrs_Karabiner {
 VirtualKey::VK_DEFINED_IN_USERSPACE::Vector_Item VirtualKey::VK_DEFINED_IN_USERSPACE::items_;
 
-void
-VirtualKey::VK_DEFINED_IN_USERSPACE::initialize(void) {}
+void VirtualKey::VK_DEFINED_IN_USERSPACE::initialize(void) {}
 
-void
-VirtualKey::VK_DEFINED_IN_USERSPACE::terminate(void) {
+void VirtualKey::VK_DEFINED_IN_USERSPACE::terminate(void) {
   items_.clear();
 }
 
-void
-VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type) {
+void VirtualKey::VK_DEFINED_IN_USERSPACE::add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type) {
   items_.push_back(Item(remapclass, keycode, notification_type));
 }
 
-void
-VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items(void) {
+void VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items(void) {
   items_.clear();
 }
 
-bool
-VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& params) {
   // VK_DEFINED_IN_USERSPACE uses UserClient which is effective immediately.
   // Considering KeyCode::VK_WAIT, we should not send notification via UserClient at here.
   //
@@ -78,8 +73,7 @@ VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& 
   return false;
 }
 
-bool
-VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
   for (size_t i = 0; i < items_.size(); ++i) {
     RemapClass* remapclass = items_[i].remapclass;
     KeyCode keycode(items_[i].keycode);

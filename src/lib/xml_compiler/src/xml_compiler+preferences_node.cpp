@@ -1,8 +1,7 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-bool
-xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_ptree::node& it) {
+bool xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_ptree::node& it) {
   if (it.get_tag_name() == "name") {
     if (!name_.empty()) {
       name_ += "\n";
@@ -35,8 +34,7 @@ xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_ptree:
   return false;
 }
 
-void
-xml_compiler::preferences_checkbox_node::handle_item_child(const extracted_ptree::node& it) {
+void xml_compiler::preferences_checkbox_node::handle_item_child(const extracted_ptree::node& it) {
   if (preferences_node::handle_name_and_appendix_(it)) {
     name_for_filter_ += boost::algorithm::to_lower_copy(boost::trim_copy(it.get_data()));
     name_for_filter_ += " ";
@@ -46,8 +44,7 @@ xml_compiler::preferences_checkbox_node::handle_item_child(const extracted_ptree
   }
 }
 
-void
-xml_compiler::preferences_number_node::handle_item_child(const extracted_ptree::node& it) {
+void xml_compiler::preferences_number_node::handle_item_child(const extracted_ptree::node& it) {
   if (preferences_node::handle_name_and_appendix_(it)) {
     return;
   }

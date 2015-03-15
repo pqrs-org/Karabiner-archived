@@ -23,8 +23,7 @@ void KeyToKey::static_terminate(void) {
   fire_timer_.terminate();
 }
 
-void
-KeyToKey::add(AddDataType datatype, AddValue newval) {
+void KeyToKey::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
   case BRIDGE_DATATYPE_CONSUMERKEYCODE:
@@ -108,8 +107,7 @@ KeyToKey::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-void
-KeyToKey::clearToKeys(void) {
+void KeyToKey::clearToKeys(void) {
   if (index_ > 1) {
     index_ = 1;
   }
@@ -160,8 +158,7 @@ void KeyToKey::prepare(RemapParams& remapParams) {
   }
 }
 
-bool
-KeyToKey::remap(RemapParams& remapParams) {
+bool KeyToKey::remap(RemapParams& remapParams) {
   if (remapParams.isremapped) return false;
   if (!fromEvent_.changePressingState(remapParams.paramsBase,
                                       FlagStatus::globalFlagStatus(),
@@ -530,8 +527,7 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
   }
 }
 
-bool
-KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType) {
+bool KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType) {
   bool result = false;
 
   // ----------------------------------------
@@ -553,8 +549,7 @@ KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType) {
   return result;
 }
 
-int
-KeyToKey::getDelayUntilRepeat(void) {
+int KeyToKey::getDelayUntilRepeat(void) {
   if (delayUntilRepeat_ >= 0) {
     return delayUntilRepeat_;
   } else {
@@ -569,8 +564,7 @@ KeyToKey::getDelayUntilRepeat(void) {
   }
 }
 
-int
-KeyToKey::getKeyRepeat(void) {
+int KeyToKey::getKeyRepeat(void) {
   if (keyRepeat_ >= 0) {
     return keyRepeat_;
   } else {

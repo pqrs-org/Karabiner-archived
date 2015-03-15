@@ -41,8 +41,7 @@ SYSCTL_INT(_karabiner, OID_AUTO, debug_pointing, CTLTYPE_INT | CTLFLAG_RW, &(sys
 SYSCTL_INT(_karabiner, OID_AUTO, debug_devel, CTLTYPE_INT | CTLFLAG_RW, &(sysctl_debug_devel), 0, "");
 
 // ----------------------------------------------------------------------
-void
-Config::sysctl_register(void) {
+void Config::sysctl_register(void) {
   sysctl_register_oid(&sysctl__karabiner);
 
   sysctl_register_oid(&sysctl__karabiner_initialized);
@@ -51,8 +50,7 @@ Config::sysctl_register(void) {
   sysctl_register_oid(&sysctl__karabiner_debug_devel);
 }
 
-void
-Config::sysctl_unregister(void) {
+void Config::sysctl_unregister(void) {
   sysctl_unregister_oid(&sysctl__karabiner);
 
   sysctl_unregister_oid(&sysctl__karabiner_initialized);
@@ -61,8 +59,7 @@ Config::sysctl_unregister(void) {
   sysctl_unregister_oid(&sysctl__karabiner_debug_devel);
 }
 
-void
-Config::set_initialized(bool newvalue) {
+void Config::set_initialized(bool newvalue) {
   sysctl_initialized = newvalue;
 
   // ----------------------------------------
@@ -94,15 +91,13 @@ bool Config::get_debug(void) { return sysctl_debug; }
 bool Config::get_debug_devel(void) { return sysctl_debug_devel; }
 bool Config::get_debug_pointing(void) { return sysctl_debug_pointing; }
 
-void
-Config::load_essential_config_default(void) {
+void Config::load_essential_config_default(void) {
   for (int i = 0; i < BRIDGE_ESSENTIAL_CONFIG_INDEX__END__; ++i) {
     essential_config_[i] = essential_config_default_[i];
   }
 }
 
-void
-Config::set_essential_config(const int32_t* newvalues, size_t num) {
+void Config::set_essential_config(const int32_t* newvalues, size_t num) {
   if (num != BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
     IOLOG_ERROR("Config::set_essential_config wrong 'num' parameter. (%d)\n", static_cast<int>(num));
     load_essential_config_default();
@@ -114,8 +109,7 @@ Config::set_essential_config(const int32_t* newvalues, size_t num) {
   }
 }
 
-bool
-Config::set_essential_config_one(uint32_t index, int32_t value) {
+bool Config::set_essential_config_one(uint32_t index, int32_t value) {
   if (index >= BRIDGE_ESSENTIAL_CONFIG_INDEX__END__) {
     IOLOG_ERROR("Config::set_essential_config_one wrong 'index' parameter. (%d)\n", static_cast<int>(index));
     return false;

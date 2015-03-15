@@ -7,8 +7,7 @@
 #include "VK_LAZY.hpp"
 
 namespace org_pqrs_Karabiner {
-bool
-VirtualKey::VK_LAZY::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_LAZY::handle(const Params_KeyboardEventCallBack& params) {
   ModifierFlag f = getModifierFlag(params.key);
   if (f == ModifierFlag::ZERO) return false;
 

@@ -17,8 +17,7 @@ org_pqrs_Karabiner_TimerWrapperObject::timerEventSource(OSObject* owner, IOTimer
   return p;
 }
 
-bool
-org_pqrs_Karabiner_TimerWrapperObject::init(OSObject* owner, IOTimerEventSource::Action action) {
+bool org_pqrs_Karabiner_TimerWrapperObject::init(OSObject* owner, IOTimerEventSource::Action action) {
   if (!super::init()) {
     return false;
   }
@@ -30,8 +29,7 @@ org_pqrs_Karabiner_TimerWrapperObject::init(OSObject* owner, IOTimerEventSource:
   return true;
 }
 
-void
-org_pqrs_Karabiner_TimerWrapperObject::free(void) {
+void org_pqrs_Karabiner_TimerWrapperObject::free(void) {
   super::free();
   return;
 }
@@ -40,8 +38,7 @@ org_pqrs_Karabiner_TimerWrapperObject::free(void) {
 
 // ================================================================================
 namespace org_pqrs_Karabiner {
-void
-TimerWrapper::initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Action func) {
+void TimerWrapper::initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Action func) {
   if (timer_) terminate();
 
   if (!wl) return;
@@ -60,8 +57,7 @@ TimerWrapper::initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Ac
   }
 }
 
-void
-TimerWrapper::terminate(void) {
+void TimerWrapper::terminate(void) {
   if (timer_) {
     timer_->cancelTimeout();
     if (workloop_) {
@@ -104,8 +100,7 @@ TimerWrapper::setTimeoutMS(UInt32 ms, bool overwrite) {
   return retval;
 }
 
-void
-TimerWrapper::cancelTimeout(void) {
+void TimerWrapper::cancelTimeout(void) {
   if (!object_) return;
 
   if (timer_) {
@@ -114,8 +109,7 @@ TimerWrapper::cancelTimeout(void) {
   object_->setActive(false);
 }
 
-void
-TimerWrapper::callback_(OSObject* owner, IOTimerEventSource* sender) {
+void TimerWrapper::callback_(OSObject* owner, IOTimerEventSource* sender) {
   GlobalLock::ScopedLock lk;
   if (!lk) return;
 

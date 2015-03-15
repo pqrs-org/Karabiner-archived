@@ -5,8 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-bool
-DropPointingRelativeCursorMove::remap(RemapParams& remapParams) {
+bool DropPointingRelativeCursorMove::remap(RemapParams& remapParams) {
   auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
   if (!params) return false;
 

@@ -3,8 +3,7 @@
 #include "IntervalChecker.hpp"
 
 namespace org_pqrs_Karabiner {
-void
-IntervalChecker::begin(void) {
+void IntervalChecker::begin(void) {
   clock_get_system_microtime(&secs_, &microsecs_);
 }
 

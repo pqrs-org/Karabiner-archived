@@ -5,8 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-SetKeyboardType::add(AddDataType datatype, AddValue newval) {
+void SetKeyboardType::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYBOARDTYPE: {
     toKeyboardType_ = KeyboardType(newval);
@@ -19,8 +18,7 @@ SetKeyboardType::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-SetKeyboardType::remapSetKeyboardType(KeyboardType& keyboardType) {
+bool SetKeyboardType::remapSetKeyboardType(KeyboardType& keyboardType) {
   keyboardType = toKeyboardType_;
   return true;
 }

@@ -1,8 +1,7 @@
 #include "FromEvent.hpp"
 
 namespace org_pqrs_Karabiner {
-bool
-FromEvent::isTargetEvent(bool& isDown, const Params_Base& paramsBase) const {
+bool FromEvent::isTargetEvent(bool& isDown, const Params_Base& paramsBase) const {
   switch (type_) {
   case Type::NONE: {
     return false;
@@ -42,10 +41,9 @@ FromEvent::isTargetEvent(bool& isDown, const Params_Base& paramsBase) const {
   return false;
 }
 
-bool
-FromEvent::changePressingState(const Params_Base& paramsBase,
-                               const FlagStatus& currentFlags,
-                               const Vector_ModifierFlag& fromFlags) {
+bool FromEvent::changePressingState(const Params_Base& paramsBase,
+                                    const FlagStatus& currentFlags,
+                                    const Vector_ModifierFlag& fromFlags) {
   bool isDown = false;
   if (!isTargetEvent(isDown, paramsBase)) return false;
 
@@ -65,22 +63,19 @@ FromEvent::changePressingState(const Params_Base& paramsBase,
   return false;
 }
 
-bool
-FromEvent::isTargetEvent(const Params_Base& paramsBase) const {
+bool FromEvent::isTargetEvent(const Params_Base& paramsBase) const {
   bool isDown = false;
   if (!isTargetEvent(isDown, paramsBase)) return false;
   return true;
 }
 
-bool
-FromEvent::isTargetDownEvent(const Params_Base& paramsBase) const {
+bool FromEvent::isTargetDownEvent(const Params_Base& paramsBase) const {
   bool isDown = false;
   if (!isTargetEvent(isDown, paramsBase)) return false;
   return isDown;
 }
 
-bool
-FromEvent::isTargetUpEvent(const Params_Base& paramsBase) const {
+bool FromEvent::isTargetUpEvent(const Params_Base& paramsBase) const {
   bool isDown = false;
   if (!isTargetEvent(isDown, paramsBase)) return false;
   return !isDown;

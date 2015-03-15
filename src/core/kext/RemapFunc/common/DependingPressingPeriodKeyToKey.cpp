@@ -19,8 +19,7 @@ DependingPressingPeriodKeyToKey::PeriodMS::PeriodMS(void) : mode_(Mode::NONE) {
   }
 }
 
-void
-DependingPressingPeriodKeyToKey::PeriodMS::set(PeriodMS::Mode::Value newval) {
+void DependingPressingPeriodKeyToKey::PeriodMS::set(PeriodMS::Mode::Value newval) {
   mode_ = newval;
 }
 
@@ -76,8 +75,7 @@ DependingPressingPeriodKeyToKey::PeriodMS::get(PeriodMS::Type::Value type) {
   return 0;
 }
 
-bool
-DependingPressingPeriodKeyToKey::PeriodMS::enabled(PeriodMS::Type::Value type) {
+bool DependingPressingPeriodKeyToKey::PeriodMS::enabled(PeriodMS::Type::Value type) {
   switch (mode_) {
   case Mode::HOLDING_KEY_TO_KEY:
     switch (type) {
@@ -125,13 +123,11 @@ DependingPressingPeriodKeyToKey::PeriodMS::enabled(PeriodMS::Type::Value type) {
 }
 
 // ======================================================================
-void
-DependingPressingPeriodKeyToKey::static_initialize(IOWorkLoop& workloop) {
+void DependingPressingPeriodKeyToKey::static_initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, NULL, DependingPressingPeriodKeyToKey::fire_timer_callback);
 }
 
-void
-DependingPressingPeriodKeyToKey::static_terminate(void) {
+void DependingPressingPeriodKeyToKey::static_terminate(void) {
   fire_timer_.terminate();
 }
 
@@ -153,8 +149,7 @@ DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void) {
   }
 }
 
-void
-DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, AddDataType datatype, AddValue newval) {
+void DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, AddDataType datatype, AddValue newval) {
   if (type == KeyToKeyType::END_) return;
 
   if (datatype == BRIDGE_DATATYPE_OPTION && Option::UNINTERRUPTIBLE_BY_SCROLL_WHEEL == Option(newval)) {
@@ -187,8 +182,7 @@ void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
   }
 }
 
-bool
-DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
+bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
   // Params_KeyboardEventCallBack, Params_KeyboardSpecialEventCallback, Params_RelativePointerEventCallback
   {
     bool iskeydown = false;
@@ -256,8 +250,7 @@ DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
   return false;
 }
 
-void
-DependingPressingPeriodKeyToKey::dokeydown(void) {
+void DependingPressingPeriodKeyToKey::dokeydown(void) {
   if (!active_) return;
   active_ = false;
 
@@ -282,8 +275,7 @@ DependingPressingPeriodKeyToKey::dokeydown(void) {
   }
 }
 
-void
-DependingPressingPeriodKeyToKey::dokeyup(void) {
+void DependingPressingPeriodKeyToKey::dokeyup(void) {
   switch (periodtype_) {
   case PeriodType::SHORT_PERIOD: {
     periodtype_ = PeriodType::NONE;
@@ -324,8 +316,7 @@ DependingPressingPeriodKeyToKey::dokeyup(void) {
   eventWatcherTarget_.unobserve();
 }
 
-void
-DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
+void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
   if (!target_) return;
 
   switch (target_->periodtype_) {

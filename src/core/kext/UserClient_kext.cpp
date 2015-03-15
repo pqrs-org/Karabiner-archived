@@ -22,28 +22,32 @@ OSAsyncReference64 USERCLIENT_KEXT_CLASSNAME::asyncref_;
 bool USERCLIENT_KEXT_CLASSNAME::notification_enabled_ = false;
 
 IOExternalMethodDispatch USERCLIENT_KEXT_CLASSNAME::methods_[BRIDGE_USERCLIENT__END__] = {
-    {                                                                 // BRIDGE_USERCLIENT_OPEN
+    {
+     // BRIDGE_USERCLIENT_OPEN
      reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
      1,                                                               // One scalar input value.
      0,                                                               // No struct input value.
      1,                                                               // One scalar output value.
      0                                                                // No struct output value.
     },
-    {                                                                  // BRIDGE_USERCLIENT_CLOSE
+    {
+     // BRIDGE_USERCLIENT_CLOSE
      reinterpret_cast<IOExternalMethodAction>(&static_callback_close), // Method pointer.
      0,                                                                // No scalar input values.
      0,                                                                // No struct input value.
      0,                                                                // No scalar output values.
      0                                                                 // No struct output value.
     },
-    {                                                                                       // BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION
+    {
+     // BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION
      reinterpret_cast<IOExternalMethodAction>(&static_callback_synchronized_communication), // Method pointer.
      0,                                                                                     // No scalar input values.
      sizeof(BridgeUserClientStruct),                                                        // The size of the input struct.
      1,                                                                                     // One scalar output value.
      0,                                                                                     // No struct output value.
     },
-    {                                                                                   // BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT
+    {
+     // BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT
      reinterpret_cast<IOExternalMethodAction>(&static_callback_notification_from_kext), // Method pointer.
      0,                                                                                 // No scalar input values.
      0,                                                                                 // No struct input value.
@@ -53,8 +57,7 @@ IOExternalMethodDispatch USERCLIENT_KEXT_CLASSNAME::methods_[BRIDGE_USERCLIENT__
 
 // ============================================================
 // initWithTask is called as a result of the user process calling IOServiceOpen.
-bool
-USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityToken, UInt32 type) {
+bool USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityToken, UInt32 type) {
   if (clientHasPrivilege(owningTask, kIOClientPrivilegeLocalUser) != KERN_SUCCESS) {
     IOLOG_ERROR("UserClient_kext::initWithTask clientHasPrivilege failed\n");
     return false;
@@ -77,8 +80,7 @@ USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityToken, 
 }
 
 // start is called after initWithTask as a result of the user process calling IOServiceOpen.
-bool
-USERCLIENT_KEXT_CLASSNAME::start(IOService* provider) {
+bool USERCLIENT_KEXT_CLASSNAME::start(IOService* provider) {
   provider_ = OSDynamicCast(KEXT_CLASSNAME, provider);
   if (!provider_) {
     IOLOG_ERROR("UserClient_kext::start provider == NULL\n");
@@ -96,8 +98,7 @@ USERCLIENT_KEXT_CLASSNAME::start(IOService* provider) {
   return true;
 }
 
-void
-USERCLIENT_KEXT_CLASSNAME::stop(IOService* provider) {
+void USERCLIENT_KEXT_CLASSNAME::stop(IOService* provider) {
   super::stop(provider);
   provider_ = NULL;
 }
@@ -123,8 +124,7 @@ USERCLIENT_KEXT_CLASSNAME::clientClose(void) {
   return kIOReturnSuccess;
 }
 
-bool
-USERCLIENT_KEXT_CLASSNAME::didTerminate(IOService* provider, IOOptionBits options, bool* defer) {
+bool USERCLIENT_KEXT_CLASSNAME::didTerminate(IOService* provider, IOOptionBits options, bool* defer) {
   // If all pending I/O has been terminated, close our provider. If I/O is still outstanding, set defer to true
   // and the user client will not have stop called on it.
   callback_close();
@@ -355,8 +355,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_notification_from_kext(OSAsyncReference64 as
   return kIOReturnSuccess;
 }
 
-void
-USERCLIENT_KEXT_CLASSNAME::send_notification_to_userspace(uint32_t type, uint32_t option) {
+void USERCLIENT_KEXT_CLASSNAME::send_notification_to_userspace(uint32_t type, uint32_t option) {
   if (notification_enabled_) {
     io_user_reference_t args[] = {type, option};
     sendAsyncResult64(asyncref_, kIOReturnSuccess, args, 2);
@@ -364,12 +363,11 @@ USERCLIENT_KEXT_CLASSNAME::send_notification_to_userspace(uint32_t type, uint32_
 }
 
 // ------------------------------------------------------------
-void
-USERCLIENT_KEXT_CLASSNAME::handle_synchronized_communication(uint32_t type,
-                                                             uint32_t option,
-                                                             uint8_t* buffer,
-                                                             size_t size,
-                                                             uint64_t* outputdata) {
+void USERCLIENT_KEXT_CLASSNAME::handle_synchronized_communication(uint32_t type,
+                                                                  uint32_t option,
+                                                                  uint8_t* buffer,
+                                                                  size_t size,
+                                                                  uint64_t* outputdata) {
   *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_ERROR_GENERIC;
 
   switch (type) {

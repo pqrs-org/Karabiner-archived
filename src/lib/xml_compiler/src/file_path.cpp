@@ -107,8 +107,7 @@ dirname(const std::string& path) {
   return path.substr(0, pos);
 }
 
-void
-normalize(std::string& path) {
+void normalize(std::string& path) {
   if (path.empty()) {
     path += '.';
     return;

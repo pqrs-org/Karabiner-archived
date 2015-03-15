@@ -2,8 +2,7 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-void
-xml_compiler::device_loader::traverse(const extracted_ptree& pt) const {
+void xml_compiler::device_loader::traverse(const extracted_ptree& pt) const {
   for (const auto& it : pt) {
     if (it.get_tag_name() != "devicevendordef" &&
         it.get_tag_name() != "deviceproductdef" &&

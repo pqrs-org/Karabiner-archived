@@ -6,8 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-DoublePressModifier::add(AddDataType datatype, AddValue newval) {
+void DoublePressModifier::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
   case BRIDGE_DATATYPE_CONSUMERKEYCODE:
@@ -83,8 +82,7 @@ DoublePressModifier::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-DoublePressModifier::remap(RemapParams& remapParams) {
+bool DoublePressModifier::remap(RemapParams& remapParams) {
   bool iskeydown;
   if (!remapParams.paramsBase.iskeydown(iskeydown)) {
     return false;

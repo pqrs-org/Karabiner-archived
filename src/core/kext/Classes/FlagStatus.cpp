@@ -12,8 +12,7 @@ FlagStatus::globalFlagStatus(void) {
   return globalFlagStatus_;
 }
 
-void
-FlagStatus::Item::initialize(ModifierFlag f) {
+void FlagStatus::Item::initialize(ModifierFlag f) {
   flag_ = f;
   count_ = 0;
   temporary_count_ = 0;
@@ -22,13 +21,11 @@ FlagStatus::Item::initialize(ModifierFlag f) {
   sticky_count_ = 0;
 }
 
-void
-FlagStatus::Item::set(void) {
+void FlagStatus::Item::set(void) {
   temporary_count_ = 0;
 }
 
-void
-FlagStatus::Item::set(KeyCode key, Flags flags) {
+void FlagStatus::Item::set(KeyCode key, Flags flags) {
   temporary_count_ = 0;
 
   // ------------------------------------------------------------
@@ -51,8 +48,7 @@ FlagStatus::Item::set(KeyCode key, Flags flags) {
   }
 }
 
-void
-FlagStatus::Item::reset(void) {
+void FlagStatus::Item::reset(void) {
   count_ = 0;
   temporary_count_ = 0;
   lazy_count_ = 0;
@@ -66,8 +62,7 @@ FlagStatus::Item::reset(void) {
      */
 }
 
-void
-FlagStatus::Item::increase(void) {
+void FlagStatus::Item::increase(void) {
   if (flag_ == ModifierFlag::CAPSLOCK) {
     lock_count_ = !lock_count_;
   } else {
@@ -75,8 +70,7 @@ FlagStatus::Item::increase(void) {
   }
 }
 
-void
-FlagStatus::Item::decrease(void) {
+void FlagStatus::Item::decrease(void) {
   if (flag_ == ModifierFlag::CAPSLOCK) {
     // do nothing (toggle at Item::increase).
   } else {
@@ -85,8 +79,7 @@ FlagStatus::Item::decrease(void) {
 }
 
 // ----------------------------------------------------------------------
-void
-FlagStatus::initialize(void) {
+void FlagStatus::initialize(void) {
   item_.clear();
 
   auto& pairs = KeyCodeModifierFlagPairs::getPairs();
@@ -110,29 +103,25 @@ FlagStatus::FlagStatus(Flags flags) {
   }
 }
 
-void
-FlagStatus::set(void) {
+void FlagStatus::set(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].set();
   }
 }
 
-void
-FlagStatus::set(KeyCode key, Flags flags) {
+void FlagStatus::set(KeyCode key, Flags flags) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].set(key, flags);
   }
 }
 
-void
-FlagStatus::reset(void) {
+void FlagStatus::reset(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].reset();
   }
 }
 
-bool
-FlagStatus::isOn(ModifierFlag modifierFlag) const {
+bool FlagStatus::isOn(ModifierFlag modifierFlag) const {
   for (size_t i = 0; i < item_.size(); ++i) {
     if (item_[i].flag_ == modifierFlag) {
       return item_[i].sum(true) > 0;
@@ -141,8 +130,7 @@ FlagStatus::isOn(ModifierFlag modifierFlag) const {
   return false;
 }
 
-bool
-FlagStatus::isOn(const Vector_ModifierFlag& modifierFlags) const {
+bool FlagStatus::isOn(const Vector_ModifierFlag& modifierFlags) const {
   bool strict = false;
 
   for (size_t i = 0; i < modifierFlags.size(); ++i) {
@@ -169,8 +157,7 @@ FlagStatus::isOn(const Vector_ModifierFlag& modifierFlags) const {
   return true;
 }
 
-bool
-FlagStatus::isLocked(const Vector_ModifierFlag& modifierFlags) const {
+bool FlagStatus::isLocked(const Vector_ModifierFlag& modifierFlags) const {
   for (size_t i = 0; i < item_.size(); ++i) {
     if (item_[i].flag_ == ModifierFlag::ZERO) continue;
     if (item_[i].flag_ == ModifierFlag::NONE) continue;
@@ -183,8 +170,7 @@ FlagStatus::isLocked(const Vector_ModifierFlag& modifierFlags) const {
   return true;
 }
 
-bool
-FlagStatus::isStuck(const Vector_ModifierFlag& modifierFlags) const {
+bool FlagStatus::isStuck(const Vector_ModifierFlag& modifierFlags) const {
   for (size_t i = 0; i < item_.size(); ++i) {
     if (item_[i].flag_ == ModifierFlag::ZERO) continue;
     if (item_[i].flag_ == ModifierFlag::NONE) continue;
@@ -197,8 +183,7 @@ FlagStatus::isStuck(const Vector_ModifierFlag& modifierFlags) const {
   return true;
 }
 
-Flags
-FlagStatus::makeFlags(void) const {
+Flags FlagStatus::makeFlags(void) const {
   Flags flags;
   for (size_t i = 0; i < item_.size(); ++i) {
     if (item_[i].sum(false) > 0) {
@@ -302,16 +287,14 @@ void FlagStatus::sticky_active_modifiers_increase(void) { STICKY_ACTIVE_MODIFIER
 void FlagStatus::sticky_active_modifiers_decrease(void) { STICKY_ACTIVE_MODIFIERS_METHOD(sticky_decrease); }
 #undef STICKY_ACTIVE_MODIFIERS_METHOD
 
-void
-FlagStatus::sticky_clear(void) {
+void FlagStatus::sticky_clear(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].sticky_decrease();
   }
   updateStatusMessage();
 }
 
-void
-FlagStatus::lock_clear(void) {
+void FlagStatus::lock_clear(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     if (item_[i].lock_count_) {
       item_[i].lock_decrease();
@@ -320,8 +303,7 @@ FlagStatus::lock_clear(void) {
   updateStatusMessage();
 }
 
-void
-FlagStatus::negative_lock_clear(void) {
+void FlagStatus::negative_lock_clear(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     if (item_[i].negative_lock_count_) {
       item_[i].negative_lock_decrease();
@@ -330,22 +312,19 @@ FlagStatus::negative_lock_clear(void) {
   updateStatusMessage();
 }
 
-void
-FlagStatus::lazy_enable(void) {
+void FlagStatus::lazy_enable(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].lazy_enable();
   }
 }
 
-void
-FlagStatus::lazy_disable_if_off(void) {
+void FlagStatus::lazy_disable_if_off(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].lazy_disable_if_off();
   }
 }
 
-void
-FlagStatus::subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags) const {
+void FlagStatus::subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags) const {
   modifierFlags.clear();
 
   if (item_.size() == other.item_.size()) {
@@ -361,8 +340,7 @@ FlagStatus::subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags
   }
 }
 
-void
-FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
+void FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
   CommonData::clear_statusmessage(statusMessageIndex);
 
   for (size_t i = 0; i < item_.size(); ++i) {
@@ -394,8 +372,7 @@ FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
   }
 }
 
-void
-FlagStatus::updateStatusMessage(void) {
+void FlagStatus::updateStatusMessage(void) {
   int indexes[] = {
       BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
       BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,

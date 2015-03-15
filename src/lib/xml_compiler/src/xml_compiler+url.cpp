@@ -26,8 +26,7 @@ xml_compiler::url_loader::~url_loader(void) {
   }
 }
 
-void
-xml_compiler::url_loader::traverse(const extracted_ptree& pt) const {
+void xml_compiler::url_loader::traverse(const extracted_ptree& pt) const {
   for (const auto& it : pt) {
     if (it.get_tag_name() != "vkopenurldef") {
       if (!it.children_empty()) {

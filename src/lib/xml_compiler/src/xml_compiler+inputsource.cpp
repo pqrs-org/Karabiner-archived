@@ -3,10 +3,9 @@
 #include "bridge.h"
 
 namespace pqrs {
-bool
-xml_compiler::inputsource::is_rules_matched(const std::string& languagecode,
-                                            const std::string& inputsourceid,
-                                            const std::string& inputmodeid) const {
+bool xml_compiler::inputsource::is_rules_matched(const std::string& languagecode,
+                                                 const std::string& inputsourceid,
+                                                 const std::string& inputmodeid) const {
   for (const auto& r : rules_languagecode_) {
     if (languagecode == r) return true;
   }
@@ -51,8 +50,7 @@ xml_compiler::inputsource_loader::~inputsource_loader(void) {
   }
 }
 
-void
-xml_compiler::inputsource_loader::traverse(const extracted_ptree& pt) const {
+void xml_compiler::inputsource_loader::traverse(const extracted_ptree& pt) const {
   for (const auto& it : pt) {
     definition_type::type definition_type = definition_type::none;
     if (it.get_tag_name() == "vkchangeinputsourcedef") {

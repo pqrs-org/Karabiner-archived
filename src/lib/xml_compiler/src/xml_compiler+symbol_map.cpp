@@ -6,16 +6,14 @@ xml_compiler::symbol_map::symbol_map(void) {
   clear();
 }
 
-void
-xml_compiler::symbol_map::clear(void) {
+void xml_compiler::symbol_map::clear(void) {
   symbol_map_.clear();
   symbol_map_["ConfigIndex::VK__AUTOINDEX__BEGIN__"] = 0;
 
   map_for_get_name_.clear();
 }
 
-void
-xml_compiler::symbol_map::dump(void) const {
+void xml_compiler::symbol_map::dump(void) const {
   for (const auto& it : symbol_map_) {
     std::cout << it.first << " " << it.second << std::endl;
   }
@@ -94,8 +92,7 @@ xml_compiler::symbol_map::get_name(const std::string& type, uint32_t value) cons
 }
 
 // ============================================================
-void
-xml_compiler::symbol_map_loader::traverse(const extracted_ptree& pt) const {
+void xml_compiler::symbol_map_loader::traverse(const extracted_ptree& pt) const {
   for (const auto& it : pt) {
     if (it.get_tag_name() != "symbol_map") {
       if (!it.children_empty()) {

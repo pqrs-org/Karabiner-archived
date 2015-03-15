@@ -62,8 +62,7 @@ xml_compiler::modifier_loader::~modifier_loader(void) {
   }
 }
 
-void
-xml_compiler::modifier_loader::traverse(const extracted_ptree& pt) const {
+void xml_compiler::modifier_loader::traverse(const extracted_ptree& pt) const {
   for (const auto& it : pt) {
     if (it.get_tag_name() != "modifierdef") {
       if (!it.children_empty()) {

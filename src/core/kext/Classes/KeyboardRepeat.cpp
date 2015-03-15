@@ -11,20 +11,17 @@ TimerWrapper KeyboardRepeat::fire_timer_;
 int KeyboardRepeat::id_ = 0;
 int KeyboardRepeat::keyRepeat_ = 0;
 
-void
-KeyboardRepeat::initialize(IOWorkLoop& workloop) {
+void KeyboardRepeat::initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, NULL, KeyboardRepeat::fire_timer_callback);
 }
 
-void
-KeyboardRepeat::terminate(void) {
+void KeyboardRepeat::terminate(void) {
   fire_timer_.terminate();
 
   queue_.clear();
 }
 
-void
-KeyboardRepeat::cancel(void) {
+void KeyboardRepeat::cancel(void) {
   fire_timer_.cancelTimeout();
 
   queue_.clear();
@@ -33,11 +30,10 @@ KeyboardRepeat::cancel(void) {
   succID();
 }
 
-void
-KeyboardRepeat::primitive_add(EventType eventType,
-                              Flags flags,
-                              KeyCode key,
-                              KeyboardType keyboardType) {
+void KeyboardRepeat::primitive_add(EventType eventType,
+                                   Flags flags,
+                                   KeyCode key,
+                                   KeyboardType keyboardType) {
   if (key == KeyCode::VK_NONE) return;
 
   // ------------------------------------------------------------
@@ -49,10 +45,9 @@ KeyboardRepeat::primitive_add(EventType eventType,
   queue_.push_back(new Item(params));
 }
 
-void
-KeyboardRepeat::primitive_add(EventType eventType,
-                              Flags flags,
-                              ConsumerKeyCode key) {
+void KeyboardRepeat::primitive_add(EventType eventType,
+                                   Flags flags,
+                                   ConsumerKeyCode key) {
   if (key == ConsumerKeyCode::VK_NONE) return;
 
   // ------------------------------------------------------------
@@ -63,8 +58,7 @@ KeyboardRepeat::primitive_add(EventType eventType,
   queue_.push_back(new Item(params));
 }
 
-void
-KeyboardRepeat::primitive_add(Buttons button) {
+void KeyboardRepeat::primitive_add(Buttons button) {
   // ------------------------------------------------------------
   Params_RelativePointerEventCallback params(button,
                                              0,
@@ -74,21 +68,19 @@ KeyboardRepeat::primitive_add(Buttons button) {
   queue_.push_back(new Item(params));
 }
 
-int
-KeyboardRepeat::primitive_start(int delayUntilRepeat, int keyRepeat) {
+int KeyboardRepeat::primitive_start(int delayUntilRepeat, int keyRepeat) {
   keyRepeat_ = keyRepeat;
   fire_timer_.setTimeoutMS(delayUntilRepeat);
 
   return succID();
 }
 
-void
-KeyboardRepeat::set(EventType eventType,
-                    Flags flags,
-                    KeyCode key,
-                    KeyboardType keyboardType,
-                    int delayUntilRepeat,
-                    int keyRepeat) {
+void KeyboardRepeat::set(EventType eventType,
+                         Flags flags,
+                         KeyCode key,
+                         KeyboardType keyboardType,
+                         int delayUntilRepeat,
+                         int keyRepeat) {
   if (key == KeyCode::VK_NONE) return;
 
   if (eventType == EventType::MODIFY) {
@@ -126,12 +118,11 @@ cancel:
   cancel();
 }
 
-void
-KeyboardRepeat::set(EventType eventType,
-                    Flags flags,
-                    ConsumerKeyCode key,
-                    int delayUntilRepeat,
-                    int keyRepeat) {
+void KeyboardRepeat::set(EventType eventType,
+                         Flags flags,
+                         ConsumerKeyCode key,
+                         int delayUntilRepeat,
+                         int keyRepeat) {
   if (key == ConsumerKeyCode::VK_NONE) return;
 
   if (eventType == EventType::UP) {
@@ -159,8 +150,7 @@ cancel:
   cancel();
 }
 
-void
-KeyboardRepeat::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
+void KeyboardRepeat::fire_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   IOLOG_DEVEL("KeyboardRepeat::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
 
   // ----------------------------------------

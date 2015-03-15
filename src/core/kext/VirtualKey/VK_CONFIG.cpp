@@ -8,30 +8,25 @@
 namespace org_pqrs_Karabiner {
 VirtualKey::VK_CONFIG::Vector_Item VirtualKey::VK_CONFIG::items_;
 
-void
-VirtualKey::VK_CONFIG::initialize(void) {}
+void VirtualKey::VK_CONFIG::initialize(void) {}
 
-void
-VirtualKey::VK_CONFIG::terminate(void) {
+void VirtualKey::VK_CONFIG::terminate(void) {
   items_.clear();
 }
 
-void
-VirtualKey::VK_CONFIG::add_item(RemapClass* remapclass,
-                                unsigned int keycode_toggle,
-                                unsigned int keycode_force_on,
-                                unsigned int keycode_force_off,
-                                unsigned int keycode_sync_keydownup) {
+void VirtualKey::VK_CONFIG::add_item(RemapClass* remapclass,
+                                     unsigned int keycode_toggle,
+                                     unsigned int keycode_force_on,
+                                     unsigned int keycode_force_off,
+                                     unsigned int keycode_sync_keydownup) {
   items_.push_back(Item(remapclass, keycode_toggle, keycode_force_on, keycode_force_off, keycode_sync_keydownup));
 }
 
-void
-VirtualKey::VK_CONFIG::clear_items(void) {
+void VirtualKey::VK_CONFIG::clear_items(void) {
   items_.clear();
 }
 
-bool
-VirtualKey::VK_CONFIG::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_CONFIG::handle(const Params_KeyboardEventCallBack& params) {
   RemapClass* remapclass = NULL;
   bool value_old = false;
 
@@ -108,8 +103,7 @@ finish:
   return true;
 }
 
-bool
-VirtualKey::VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode) {
+bool VirtualKey::VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode) {
   for (size_t i = 0; i < items_.size(); ++i) {
     KeyCode keycode_sync_keydownup(items_[i].keycode_sync_keydownup);
     if (keycode == keycode_sync_keydownup) return true;

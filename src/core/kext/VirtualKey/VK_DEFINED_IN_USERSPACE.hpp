@@ -24,7 +24,7 @@ private:
   struct Item {
     Item(void) : remapclass(NULL),
                  keycode(0),
-                 notification_type(0) {};
+                 notification_type(0){};
     Item(RemapClass* p, unsigned int kc, uint32_t nt) : remapclass(p), keycode(kc), notification_type(nt) {}
     RemapClass* remapclass;
     unsigned int keycode;

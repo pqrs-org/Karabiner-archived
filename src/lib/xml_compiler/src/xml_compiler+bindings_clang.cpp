@@ -2,10 +2,9 @@
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 // ------------------------------------------------------------
-int
-pqrs_xml_compiler_initialize(pqrs_xml_compiler** out,
-                             const char* system_xml_directory,
-                             const char* private_xml_directory) {
+int pqrs_xml_compiler_initialize(pqrs_xml_compiler** out,
+                                 const char* system_xml_directory,
+                                 const char* private_xml_directory) {
   if (!out) return -1;
   // return if already initialized.
   if (*out) return -1;
@@ -15,8 +14,7 @@ pqrs_xml_compiler_initialize(pqrs_xml_compiler** out,
   return 0;
 }
 
-void
-pqrs_xml_compiler_terminate(pqrs_xml_compiler** out) {
+void pqrs_xml_compiler_terminate(pqrs_xml_compiler** out) {
   if (out && *out) {
     delete reinterpret_cast<pqrs::xml_compiler*>(*out);
     *out = nullptr;
@@ -24,8 +22,7 @@ pqrs_xml_compiler_terminate(pqrs_xml_compiler** out) {
 }
 
 // ------------------------------------------------------------
-void
-pqrs_xml_compiler_reload(pqrs_xml_compiler* p) {
+void pqrs_xml_compiler_reload(pqrs_xml_compiler* p) {
   pqrs::xml_compiler* xml_compiler = reinterpret_cast<pqrs::xml_compiler*>(p);
   if (!xml_compiler) return;
 
@@ -83,8 +80,7 @@ pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index) {
   return v->c_str();
 }
 
-int
-pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* identifier) {
+int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* identifier) {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (!xml_compiler) return -1;
 
@@ -129,13 +125,12 @@ pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
                                                         inputmodeid != nullptr ? inputmodeid : "");
 }
 
-void
-pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
-                                    uint32_t* inputsource,
-                                    uint32_t* inputsource_detail,
-                                    const char* languagecode,
-                                    const char* inputsourceid,
-                                    const char* inputmodeid) {
+void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
+                                         uint32_t* inputsource,
+                                         uint32_t* inputsource_detail,
+                                         const char* languagecode,
+                                         const char* inputsourceid,
+                                         const char* inputmodeid) {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (!xml_compiler) return;
 
@@ -244,8 +239,7 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compile
   return (node_tree->get_node()).get_name().c_str();
 }
 
-int
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
+int pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
   if (!node_tree) return 0;
 
@@ -325,8 +319,7 @@ pqrs_xml_compiler_get_preferences_number_node_tree_name(const pqrs_xml_compiler_
   return (node_tree->get_node()).get_name().c_str();
 }
 
-int
-pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(const pqrs_xml_compiler_preferences_number_node_tree* p) {
+int pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(const pqrs_xml_compiler_preferences_number_node_tree* p) {
   auto node_tree = cast_to_preferences_number_node_tree(p);
   if (!node_tree) return 0;
 
@@ -344,16 +337,14 @@ pqrs_xml_compiler_get_preferences_number_node_tree_identifier(const pqrs_xml_com
   return identifier.c_str();
 }
 
-int
-pqrs_xml_compiler_get_preferences_number_node_tree_default_value(const pqrs_xml_compiler_preferences_number_node_tree* p) {
+int pqrs_xml_compiler_get_preferences_number_node_tree_default_value(const pqrs_xml_compiler_preferences_number_node_tree* p) {
   auto node_tree = cast_to_preferences_number_node_tree(p);
   if (!node_tree) return 0;
 
   return (node_tree->get_node()).get_default_value();
 }
 
-int
-pqrs_xml_compiler_get_preferences_number_node_tree_step(const pqrs_xml_compiler_preferences_number_node_tree* p) {
+int pqrs_xml_compiler_get_preferences_number_node_tree_step(const pqrs_xml_compiler_preferences_number_node_tree* p) {
   auto node_tree = cast_to_preferences_number_node_tree(p);
   if (!node_tree) return 0;
 

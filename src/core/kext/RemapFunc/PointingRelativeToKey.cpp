@@ -7,8 +7,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-PointingRelativeToKey::add(AddDataType datatype, AddValue newval) {
+void PointingRelativeToKey::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_POINTINGRELATIVE: {
     PointingRelative val(newval);
@@ -60,8 +59,7 @@ PointingRelativeToKey::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-PointingRelativeToKey::remap(RemapParams& remapParams) {
+bool PointingRelativeToKey::remap(RemapParams& remapParams) {
   auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
   if (!params) return false;
 

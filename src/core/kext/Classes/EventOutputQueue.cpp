@@ -13,13 +13,11 @@ List EventOutputQueue::queue_;
 TimerWrapper EventOutputQueue::fire_timer_;
 Buttons EventOutputQueue::previousButtons_;
 
-void
-EventOutputQueue::initialize(IOWorkLoop& workloop) {
+void EventOutputQueue::initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, NULL, EventOutputQueue::fire_timer_callback);
 }
 
-void
-EventOutputQueue::terminate(void) {
+void EventOutputQueue::terminate(void) {
   fire_timer_.terminate();
 
   queue_.clear();
@@ -114,8 +112,7 @@ unsigned int maxDelay(unsigned int v1, unsigned int v2) {
 }
 }
 
-void
-EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
+void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
   // IOLOG_DEVEL("EventOutputQueue::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
 
   Item* p = static_cast<Item*>(queue_.safe_front());
@@ -194,8 +191,7 @@ EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource*
 // ======================================================================
 Flags EventOutputQueue::FireModifiers::lastFlags_(0);
 
-void
-EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardType) {
+void EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardType) {
   if (lastFlags_ == toFlags) return;
 
   // ------------------------------------------------------------
@@ -246,8 +242,7 @@ EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardType) 
 }
 
 // ======================================================================
-void
-EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params) {
+void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params) {
   if (VirtualKey::handle(params)) return;
 
   // ------------------------------------------------------------
@@ -286,8 +281,7 @@ EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params) {
 }
 
 // ======================================================================
-void
-EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params) {
+void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params) {
   // skip no-outputable keycodes.
   // Note: check before FireModifiers to avoid meaningless modifier event.
   if (params.key == ConsumerKeyCode::VK_NONE ||
@@ -303,8 +297,7 @@ EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& 
 // ======================================================================
 Buttons EventOutputQueue::FireRelativePointer::lastButtons_(0);
 
-void
-EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy) {
+void EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy) {
   // When changing space to command+left click,
   //   __KeyToKey__ KeyCode::SPACE, PointingButton::LEFT, ModifierFlag::COMMAND_L
   //
@@ -354,14 +347,12 @@ EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy) {
 }
 
 // ======================================================================
-void
-EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params) {
+void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params) {
   FireModifiers::fire();
   EventOutputQueue::push(params);
 }
 
-void
-EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2) {
+void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2) {
   short deltaAxis1;
   short deltaAxis2;
   IOFixed fixedDelta1;
@@ -392,8 +383,7 @@ EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2) {
 }
 
 // ======================================================================
-void
-EventOutputQueue::FireWait::fire(const Params_Wait& params) {
+void EventOutputQueue::FireWait::fire(const Params_Wait& params) {
   EventOutputQueue::push(params);
 }
 }

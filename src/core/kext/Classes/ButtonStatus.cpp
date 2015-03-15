@@ -9,8 +9,7 @@ ButtonStatus::Item ButtonStatus::item_[ButtonStatus::MAXNUM];
 Buttons ButtonStatus::statusMessageButtons_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__];
 
 // ----------------------------------------------------------------------
-bool
-ButtonStatus::initialize(void) {
+bool ButtonStatus::initialize(void) {
   for (int i = 0; i < MAXNUM; ++i) {
     item_[i].initialize(PointingButton(1 << i));
   }
@@ -18,15 +17,13 @@ ButtonStatus::initialize(void) {
   return true;
 }
 
-void
-ButtonStatus::set(PointingButton button, bool isbuttondown) {
+void ButtonStatus::set(PointingButton button, bool isbuttondown) {
   for (int i = 0; i < MAXNUM; ++i) {
     item_[i].set(button, isbuttondown);
   }
 }
 
-void
-ButtonStatus::reset(void) {
+void ButtonStatus::reset(void) {
   for (int i = 0; i < MAXNUM; ++i) {
     item_[i].reset();
   }
@@ -78,8 +75,7 @@ void ButtonStatus::lock_toggle(Buttons buttons) {
 }
 #undef FOREACH_TO_BUTTONS
 
-void
-ButtonStatus::updateStatusMessage(void) {
+void ButtonStatus::updateStatusMessage(void) {
 #ifndef BUTTONSTATUS_TEST
   int indexes[] = {
       BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK,

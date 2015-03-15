@@ -22,8 +22,7 @@ ListHookedDevice::Item::Item(IOHIDevice* d) : device_(d),
   setDeviceType();
 }
 
-void
-ListHookedDevice::Item::setDeviceIdentifier(void) {
+void ListHookedDevice::Item::setDeviceIdentifier(void) {
   if (!device_) return;
 
   IORegistryEntry* dev = device_;
@@ -84,8 +83,7 @@ finish:
               deviceIdentifier_.getLocation().get());
 }
 
-void
-ListHookedDevice::Item::setDeviceType(void) {
+void ListHookedDevice::Item::setDeviceType(void) {
   if (!device_) return;
 
   const char* name = NULL;
@@ -150,8 +148,7 @@ finish:
               deviceType_);
 }
 
-bool
-ListHookedDevice::Item::isConsumer(const char* name) {
+bool ListHookedDevice::Item::isConsumer(const char* name) {
   if (!name) return false;
 
   if (strcmp(name, "IOHIDConsumer") == 0) return true;
@@ -162,26 +159,22 @@ ListHookedDevice::Item::isConsumer(const char* name) {
 
 // ======================================================================
 namespace {
-void
-reset(void) {
+void reset(void) {
   PressingPhysicalKeys::clear();
 }
 }
 
-bool
-ListHookedDevice::initialize(void) {
+bool ListHookedDevice::initialize(void) {
   return true;
 }
 
-void
-ListHookedDevice::terminate(void) {
+void ListHookedDevice::terminate(void) {
   list_.clear();
 
   reset();
 }
 
-void
-ListHookedDevice::push_back(ListHookedDevice::Item* newp) {
+void ListHookedDevice::push_back(ListHookedDevice::Item* newp) {
   if (!newp) return;
 
   last_ = newp->device_;
@@ -196,8 +189,7 @@ ListHookedDevice::push_back(ListHookedDevice::Item* newp) {
   start_refreshInProgressDevices_timer();
 }
 
-void
-ListHookedDevice::erase(IOHIDevice* p) {
+void ListHookedDevice::erase(IOHIDevice* p) {
   ListHookedDevice::Item* item = get(p);
   if (!item) return;
 
@@ -238,8 +230,7 @@ ListHookedDevice::get_replaced(void) {
   return NULL;
 }
 
-void
-ListHookedDevice::refresh(void) {
+void ListHookedDevice::refresh(void) {
   for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
     if (p->refresh()) {
       // Call reset whenever the device status is changed.
@@ -248,8 +239,7 @@ ListHookedDevice::refresh(void) {
   }
 }
 
-bool
-ListHookedDevice::isInProgress(void) const {
+bool ListHookedDevice::isInProgress(void) const {
   for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
     if (p->inProgress_) {
       return true;
@@ -259,8 +249,7 @@ ListHookedDevice::isInProgress(void) const {
   return false;
 }
 
-void
-ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) const {
+void ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) const {
   out.isFound = 0;
   out.manufacturer[0] = '\0';
   out.product[0] = '\0';
@@ -309,8 +298,7 @@ ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t inde
   out.isFound = 1;
 }
 
-void
-ListHookedDevice::initializeAll(IOWorkLoop& workloop) {
+void ListHookedDevice::initializeAll(IOWorkLoop& workloop) {
   ListHookedKeyboard::instance().initialize();
   ListHookedConsumer::instance().initialize();
   ListHookedPointing::instance().initialize();
@@ -318,8 +306,7 @@ ListHookedDevice::initializeAll(IOWorkLoop& workloop) {
   refreshInProgressDevices_timer_.initialize(&workloop, NULL, ListHookedDevice::refreshInProgressDevices_timer_callback);
 }
 
-void
-ListHookedDevice::terminateAll(void) {
+void ListHookedDevice::terminateAll(void) {
   refreshInProgressDevices_timer_.terminate();
 
   ListHookedKeyboard::instance().terminate();
@@ -327,20 +314,17 @@ ListHookedDevice::terminateAll(void) {
   ListHookedPointing::instance().terminate();
 }
 
-void
-ListHookedDevice::refreshAll(void) {
+void ListHookedDevice::refreshAll(void) {
   ListHookedKeyboard::instance().refresh();
   ListHookedConsumer::instance().refresh();
   ListHookedPointing::instance().refresh();
 }
 
-void
-ListHookedDevice::start_refreshInProgressDevices_timer(void) {
+void ListHookedDevice::start_refreshInProgressDevices_timer(void) {
   refreshInProgressDevices_timer_.setTimeoutMS(REFRESH_INPROGRESS_DEVICES_TIMER_INTERVAL);
 }
 
-void
-ListHookedDevice::refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
+void ListHookedDevice::refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   IOLOG_DEBUG("refreshInProgressDevices_timer_callback\n");
 
   if (ListHookedKeyboard::instance().isInProgress()) {

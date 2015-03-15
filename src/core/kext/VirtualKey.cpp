@@ -20,8 +20,7 @@
 #include "VirtualKey/VK_JIS_YEN.hpp"
 
 namespace org_pqrs_Karabiner {
-void
-VirtualKey::initialize(IOWorkLoop& workloop) {
+void VirtualKey::initialize(IOWorkLoop& workloop) {
   VirtualKey::VK_MOUSEKEY::initialize(workloop);
 
   VirtualKey::VK_CONFIG::initialize();
@@ -29,8 +28,7 @@ VirtualKey::initialize(IOWorkLoop& workloop) {
   VirtualKey::VK_PARTIAL::initialize();
 }
 
-void
-VirtualKey::terminate(void) {
+void VirtualKey::terminate(void) {
   VirtualKey::VK_MOUSEKEY::terminate();
 
   VirtualKey::VK_CONFIG::terminate();
@@ -38,14 +36,12 @@ VirtualKey::terminate(void) {
   VirtualKey::VK_PARTIAL::terminate();
 }
 
-void
-VirtualKey::reset(void) {
+void VirtualKey::reset(void) {
   VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::reset();
   VirtualKey::VK_MOUSEKEY::reset();
 }
 
-bool
-VirtualKey::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::handle(const Params_KeyboardEventCallBack& params) {
   if (VirtualKey::VK_CONFIG::handle(params)) {
     return true;
   }
@@ -94,8 +90,7 @@ VirtualKey::handle(const Params_KeyboardEventCallBack& params) {
   return false;
 }
 
-bool
-VirtualKey::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
   if (VirtualKey::VK_DEFINED_IN_USERSPACE::handleAfterEnqueued(params)) {
     return true;
   }
@@ -105,8 +100,7 @@ VirtualKey::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
   return false;
 }
 
-bool
-VirtualKey::isKeyLikeModifier(KeyCode keycode) {
+bool VirtualKey::isKeyLikeModifier(KeyCode keycode) {
   if (VirtualKey::VK_CONFIG::is_VK_CONFIG_SYNC_KEYDOWNUP(keycode)) return true;
   if (VirtualKey::VK_LAZY::getModifierFlag(keycode) != ModifierFlag::ZERO) return true;
   if (VirtualKey::VK_MOUSEKEY::isKeyLikeModifier(keycode)) return true;

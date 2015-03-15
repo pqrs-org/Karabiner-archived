@@ -7,9 +7,8 @@
 #include "pqrs/vector.hpp"
 
 namespace pqrs {
-void
-xml_compiler::remapclasses_initialize_vector_loader::traverse(const extracted_ptree& pt,
-                                                              const std::string& parent_tag_name) {
+void xml_compiler::remapclasses_initialize_vector_loader::traverse(const extracted_ptree& pt,
+                                                                   const std::string& parent_tag_name) {
   for (const auto& it : pt) {
     try {
       if (it.get_tag_name() != "identifier") {
@@ -66,10 +65,9 @@ xml_compiler::remapclasses_initialize_vector_loader::traverse(const extracted_pt
   }
 }
 
-void
-xml_compiler::remapclasses_initialize_vector_loader::traverse_autogen_(const extracted_ptree& pt,
-                                                                       const std::string& identifier,
-                                                                       const std::string& raw_identifier) {
+void xml_compiler::remapclasses_initialize_vector_loader::traverse_autogen_(const extracted_ptree& pt,
+                                                                            const std::string& identifier,
+                                                                            const std::string& raw_identifier) {
   filter_vector_.traverse(pt);
 
   // ----------------------------------------
@@ -108,9 +106,8 @@ xml_compiler::remapclasses_initialize_vector_loader::traverse_autogen_(const ext
   }
 }
 
-void
-xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::string& autogen,
-                                                                    const std::string& raw_autogen) {
+void xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::string& autogen,
+                                                                         const std::string& raw_autogen) {
   // ------------------------------------------------------------
   // preprocess
   //
@@ -121,17 +118,17 @@ xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::s
       const std::string name;
       const std::string flags[2];
     } info[] = {
-          {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND", {"ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R"}},
-          {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL", {"ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R"}},
-          {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT", {"ModifierFlag::SHIFT_L", "ModifierFlag::SHIFT_R"}},
-          {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION", {"ModifierFlag::OPTION_L", "ModifierFlag::OPTION_R"}},
+        {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND", {"ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R"}},
+        {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL", {"ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R"}},
+        {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT", {"ModifierFlag::SHIFT_L", "ModifierFlag::SHIFT_R"}},
+        {"MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION", {"ModifierFlag::OPTION_L", "ModifierFlag::OPTION_R"}},
 
-          // for backwards compatibility
-          {"VK_COMMAND", {"ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R"}},
-          {"VK_CONTROL", {"ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R"}},
-          {"VK_SHIFT", {"ModifierFlag::SHIFT_L", "ModifierFlag::SHIFT_R"}},
-          {"VK_OPTION", {"ModifierFlag::OPTION_L", "ModifierFlag::OPTION_R"}},
-      };
+        // for backwards compatibility
+        {"VK_COMMAND", {"ModifierFlag::COMMAND_L", "ModifierFlag::COMMAND_R"}},
+        {"VK_CONTROL", {"ModifierFlag::CONTROL_L", "ModifierFlag::CONTROL_R"}},
+        {"VK_SHIFT", {"ModifierFlag::SHIFT_L", "ModifierFlag::SHIFT_R"}},
+        {"VK_OPTION", {"ModifierFlag::OPTION_L", "ModifierFlag::OPTION_R"}},
+    };
 
     for (const auto& it : info) {
       if (autogen.find(it.name) != std::string::npos) {
@@ -150,18 +147,18 @@ xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::s
       const std::string name;
       const std::string flag;
     } info[] = {
-          {"MODIFIERFLAGS_CCOS_L",
-           "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L"},
-          {"MODIFIERFLAGS_CCS_L",
-           "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L"},
-          {"MODIFIERFLAGS_CCO_L",
-           "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L"},
+        {"MODIFIERFLAGS_CCOS_L",
+         "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L"},
+        {"MODIFIERFLAGS_CCS_L",
+         "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L"},
+        {"MODIFIERFLAGS_CCO_L",
+         "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L"},
 
-          // for backwards compatibility
-          {"VK_MOD_CCOS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L"},
-          {"VK_MOD_CCS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L"},
-          {"VK_MOD_CCO_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L"},
-      };
+        // for backwards compatibility
+        {"VK_MOD_CCOS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L|ModifierFlag::SHIFT_L"},
+        {"VK_MOD_CCS_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::SHIFT_L"},
+        {"VK_MOD_CCO_L", "ModifierFlag::COMMAND_L|ModifierFlag::CONTROL_L|ModifierFlag::OPTION_L"},
+    };
     for (const auto& it : info) {
       if (autogen.find(it.name) != std::string::npos) {
         handle_autogen(boost::replace_all_copy(autogen, it.name, it.flag),
@@ -176,11 +173,11 @@ xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::s
     static const struct {
       const std::string name;
     } info[] = {
-          "MODIFIERFLAGS_ANY",
+        "MODIFIERFLAGS_ANY",
 
-          // for backwards compatibility
-          "VK_MOD_ANY",
-      };
+        // for backwards compatibility
+        "VK_MOD_ANY",
+    };
     for (const auto& it : info) {
       if (autogen.find(it.name) != std::string::npos) {
         // Making combination at the first time. (reuse it since 2nd time.)
@@ -320,32 +317,32 @@ xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::s
     const std::string symbol;
     uint32_t type;
   } info[] = {
-        {"__PassThrough__", BRIDGE_REMAPTYPE_PASSTHROUGH},
-        {"__KeyToKey__", BRIDGE_REMAPTYPE_KEYTOKEY},
-        {"__KeyToConsumer__", BRIDGE_REMAPTYPE_KEYTOKEY},       // for backwards compatibility
-        {"__KeyToPointingButton__", BRIDGE_REMAPTYPE_KEYTOKEY}, // for backwards compatibility
-        {"__DoublePressModifier__", BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER},
-        {"__HoldingKeyToKey__", BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY},
-        {"__IgnoreMultipleSameKeyPress__", BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS},
-        {"__KeyOverlaidModifier__", BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER},
-        {"__KeyDownUpToKey__", BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY},
-        {"__ConsumerToConsumer__", BRIDGE_REMAPTYPE_KEYTOKEY},             // for backwards compatibility
-        {"__ConsumerToKey__", BRIDGE_REMAPTYPE_KEYTOKEY},                  // for backwards compatibility
-        {"__PointingButtonToPointingButton__", BRIDGE_REMAPTYPE_KEYTOKEY}, // for backwards compatibility
-        {"__PointingButtonToKey__", BRIDGE_REMAPTYPE_KEYTOKEY},            // for backwards compatibility
-        {"__PointingRelativeToKey__", BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY},
-        {"__PointingRelativeToScroll__", BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL},
-        {"__BlockUntilKeyUp__", BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP},
-        {"__DropKeyAfterRemap__", BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP},
-        {"__SetKeyboardType__", BRIDGE_REMAPTYPE_SETKEYBOARDTYPE},
-        {"__ForceNumLockOn__", BRIDGE_REMAPTYPE_FORCENUMLOCKON},
-        {"__DropPointingRelativeCursorMove__", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE},
-        {"__DropScrollWheel__", BRIDGE_REMAPTYPE_DROPSCROLLWHEEL},
-        {"__FlipPointingRelative__", BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE},
-        {"__FlipScrollWheel__", BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL},
-        {"__ScrollWheelToScrollWheel__", BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL},
-        {"__ScrollWheelToKey__", BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY},
-    };
+      {"__PassThrough__", BRIDGE_REMAPTYPE_PASSTHROUGH},
+      {"__KeyToKey__", BRIDGE_REMAPTYPE_KEYTOKEY},
+      {"__KeyToConsumer__", BRIDGE_REMAPTYPE_KEYTOKEY},       // for backwards compatibility
+      {"__KeyToPointingButton__", BRIDGE_REMAPTYPE_KEYTOKEY}, // for backwards compatibility
+      {"__DoublePressModifier__", BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER},
+      {"__HoldingKeyToKey__", BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY},
+      {"__IgnoreMultipleSameKeyPress__", BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS},
+      {"__KeyOverlaidModifier__", BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER},
+      {"__KeyDownUpToKey__", BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY},
+      {"__ConsumerToConsumer__", BRIDGE_REMAPTYPE_KEYTOKEY},             // for backwards compatibility
+      {"__ConsumerToKey__", BRIDGE_REMAPTYPE_KEYTOKEY},                  // for backwards compatibility
+      {"__PointingButtonToPointingButton__", BRIDGE_REMAPTYPE_KEYTOKEY}, // for backwards compatibility
+      {"__PointingButtonToKey__", BRIDGE_REMAPTYPE_KEYTOKEY},            // for backwards compatibility
+      {"__PointingRelativeToKey__", BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY},
+      {"__PointingRelativeToScroll__", BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL},
+      {"__BlockUntilKeyUp__", BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP},
+      {"__DropKeyAfterRemap__", BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP},
+      {"__SetKeyboardType__", BRIDGE_REMAPTYPE_SETKEYBOARDTYPE},
+      {"__ForceNumLockOn__", BRIDGE_REMAPTYPE_FORCENUMLOCKON},
+      {"__DropPointingRelativeCursorMove__", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE},
+      {"__DropScrollWheel__", BRIDGE_REMAPTYPE_DROPSCROLLWHEEL},
+      {"__FlipPointingRelative__", BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE},
+      {"__FlipScrollWheel__", BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL},
+      {"__ScrollWheelToScrollWheel__", BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL},
+      {"__ScrollWheelToKey__", BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY},
+  };
   for (const auto& it : info) {
     if (boost::starts_with(autogen, it.symbol)) {
       std::string params = autogen.substr(it.symbol.length());
@@ -360,9 +357,8 @@ xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const std::s
                                    raw_autogen);
 }
 
-void
-xml_compiler::remapclasses_initialize_vector_loader::add_to_initialize_vector(std::string& params,
-                                                                              uint32_t type) const {
+void xml_compiler::remapclasses_initialize_vector_loader::add_to_initialize_vector(std::string& params,
+                                                                                   uint32_t type) const {
   // ------------------------------------------------------------
   // for backwards compatibility
   boost::replace_all(params, "SimultaneousKeyPresses::Option::RAW", "Option::SIMULTANEOUSKEYPRESSES_RAW");

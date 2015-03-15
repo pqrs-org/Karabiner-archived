@@ -6,8 +6,7 @@
 #include "VK_LOCK.hpp"
 
 namespace org_pqrs_Karabiner {
-bool
-VirtualKey::VK_LOCK::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_LOCK::handle(const Params_KeyboardEventCallBack& params) {
   bool isFirstKeyDownEvent = (params.ex_iskeydown && params.repeat == false);
 
 #define MODIFY_FLAGSTATUS(KEYCODETYPE, METHOD)                                                      \

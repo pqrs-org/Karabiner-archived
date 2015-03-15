@@ -34,8 +34,7 @@ List::erase_and_delete(Item* p) {
   return next;
 }
 
-void
-List::clear(void) {
+void List::clear(void) {
   while (front_) {
     erase_and_delete(front_);
   }
@@ -79,8 +78,7 @@ List::insert(Item* p, Item* newval) {
   return newval;
 }
 
-void
-List::push_back(Item* p) {
+void List::push_back(Item* p) {
   if (!p) return;
 
   if (back_) {
@@ -98,8 +96,7 @@ List::push_back(Item* p) {
   ++size_;
 }
 
-void
-List::push_front(Item* p) {
+void List::push_front(Item* p) {
   if (!p) return;
   insert(NULL, p);
 }

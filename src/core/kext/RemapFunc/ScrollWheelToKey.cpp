@@ -6,8 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-ScrollWheelToKey::add(AddDataType datatype, AddValue newval) {
+void ScrollWheelToKey::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_SCROLLWHEEL: {
     switch (index_) {
@@ -63,8 +62,7 @@ ScrollWheelToKey::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-ScrollWheelToKey::remap(RemapParams& remapParams) {
+bool ScrollWheelToKey::remap(RemapParams& remapParams) {
   auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
   if (!params) return false;
 

@@ -5,16 +5,14 @@
 namespace {
 int total_identifier_count_ = 0;
 
-void
-escapeHTML(std::string& string) {
+void escapeHTML(std::string& string) {
   boost::replace_all(string, "&", "&amp;");
   boost::replace_all(string, "<", "&lt;");
   boost::replace_all(string, ">", "&gt;");
 }
 
-void
-dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>& node_tree,
-          bool dump_all) {
+void dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>& node_tree,
+               bool dump_all) {
   auto children_ptr = node_tree.get_children();
   if (children_ptr) {
     auto& children = *children_ptr;
@@ -53,8 +51,7 @@ dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::pr
   }
 }
 
-void
-dump_number(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_number_node>& node_tree) {
+void dump_number(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_number_node>& node_tree) {
   auto children_ptr = node_tree.get_children();
   if (children_ptr) {
     auto& children = *children_ptr;
@@ -74,8 +71,7 @@ dump_number(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::
 }
 }
 
-int
-main(int argc, const char* argv[]) {
+int main(int argc, const char* argv[]) {
   if (argc != 4) {
     std::cerr << "Usage: " << argv[0] << " system_xml_directory private_xml_directory command" << std::endl
               << std::endl

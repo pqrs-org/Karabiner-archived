@@ -213,8 +213,7 @@
 
 @end
 
-int
-main(int argc, const char* argv[]) {
+int main(int argc, const char* argv[]) {
   [[KarabinerCLI new] main];
   return 0;
 }

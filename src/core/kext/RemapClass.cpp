@@ -38,8 +38,7 @@ RemapClass::Item::~Item(void) {
   }
 }
 
-void
-RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
+void RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
   // ------------------------------------------------------------
   // check parameters.
   //
@@ -60,8 +59,7 @@ RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
   filters_.push_back(newp);
 }
 
-void
-RemapClass::Item::remap(RemapParams& remapParams) {
+void RemapClass::Item::remap(RemapParams& remapParams) {
   if (!processor_) return;
 
   bool iskeydown = false;
@@ -85,8 +83,7 @@ RemapClass::Item::remap(RemapParams& remapParams) {
   active_ = iskeydown;
 }
 
-bool
-RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
+bool RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
   if (!processor_) return false;
 
   if (params.ex_iskeydown) {
@@ -106,8 +103,7 @@ RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
   return true;
 }
 
-bool
-RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
+bool RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
   if (!processor_) return false;
 
   // BlockUntilKeyUp does not use Flags.
@@ -127,8 +123,7 @@ RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase)
   return false;
 }
 
-bool
-RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown) {
+bool RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown) {
   if (!processor_) return false;
 
   if (iskeydown) {
@@ -151,8 +146,7 @@ RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown) {
   return true;
 }
 
-void
-RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType) {
+void RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType) {
   if (!processor_) return;
   if (isblocked()) return;
   if (!parent_.enabled()) return;
@@ -160,8 +154,7 @@ RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType) {
   processor_->remapSetKeyboardType(keyboardType);
 }
 
-void
-RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item) {
+void RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item) {
   if (!processor_) return;
   if (isblocked()) return;
   if (!parent_.enabled()) return;
@@ -169,8 +162,7 @@ RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item) {
   processor_->remapForceNumLockOn(item);
 }
 
-bool
-RemapClass::Item::isPassThroughEnabled(void) const {
+bool RemapClass::Item::isPassThroughEnabled(void) const {
   if (!processor_) return false;
   if (isblocked()) return false;
   if (!parent_.enabled()) return false;
@@ -180,8 +172,7 @@ RemapClass::Item::isPassThroughEnabled(void) const {
   return true;
 }
 
-bool
-RemapClass::Item::isblocked(void) const {
+bool RemapClass::Item::isblocked(void) const {
   for (size_t i = 0; i < filters_.size(); ++i) {
     RemapFilter::RemapFilterBase* p = filters_[i];
     if (p && p->isblocked()) return true;
@@ -356,8 +347,7 @@ RemapClass::~RemapClass(void) {
   }
 }
 
-void
-RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled) {
+void RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled) {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
@@ -368,8 +358,7 @@ RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEn
   }
 }
 
-void
-RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled) {
+void RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled) {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
@@ -380,8 +369,7 @@ RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroug
   }
 }
 
-void
-RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled) {
+void RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled) {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
@@ -394,8 +382,7 @@ RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled) {
   }
 }
 
-bool
-RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled) {
+bool RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled) {
   bool isTargetEvent = false;
 
   for (size_t i = 0; i < items_.size(); ++i) {
@@ -412,8 +399,7 @@ RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool 
   return isTargetEvent;
 }
 
-bool
-RemapClass::remap_simultaneouskeypresses(bool iskeydown, bool passThroughEnabled) {
+bool RemapClass::remap_simultaneouskeypresses(bool iskeydown, bool passThroughEnabled) {
   bool queue_changed = false;
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
@@ -429,8 +415,7 @@ RemapClass::remap_simultaneouskeypresses(bool iskeydown, bool passThroughEnabled
   return queue_changed;
 }
 
-bool
-RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled) {
+bool RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled) {
   bool dropped = false;
 
   for (size_t i = 0; i < items_.size(); ++i) {
@@ -447,8 +432,7 @@ RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, 
   return dropped;
 }
 
-bool
-RemapClass::hasActiveItem(void) const {
+bool RemapClass::hasActiveItem(void) const {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p && p->active()) return true;
@@ -456,8 +440,7 @@ RemapClass::hasActiveItem(void) const {
   return false;
 }
 
-bool
-RemapClass::isPassThroughEnabled(void) const {
+bool RemapClass::isPassThroughEnabled(void) const {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p && p->isPassThroughEnabled()) return true;
@@ -473,8 +456,7 @@ RemapClass::Item* RemapClass::findItem(RemapFunc::RemapFuncBase* processor) cons
   return NULL;
 }
 
-void
-RemapClass::log_allocation_count(void) {
+void RemapClass::log_allocation_count(void) {
   IOLOG_INFO("RemapClass::allocation_count_ %d/%d (memory usage: %d%% of %dKB)\n",
              allocation_count_,
              MAX_ALLOCATION_COUNT,
@@ -482,8 +464,7 @@ RemapClass::log_allocation_count(void) {
              static_cast<int>(MAX_ALLOCATION_COUNT * sizeof(uint32_t) / 1024));
 }
 
-void
-RemapClass::reset_allocation_count(void) {
+void RemapClass::reset_allocation_count(void) {
   allocation_count_ = 0;
 }
 
@@ -543,8 +524,7 @@ refresh_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
 
 // ======================================================================
 
-void
-initialize(IOWorkLoop& workloop) {
+void initialize(IOWorkLoop& workloop) {
   statusmessage_[0] = '\0';
   lastmessage_[0] = '\0';
 
@@ -570,15 +550,13 @@ clear_remapclasses(void) {
   remapclasses_.clear();
 }
 
-void
-terminate(void) {
+void terminate(void) {
   refresh_timer_.terminate();
 
   clear_remapclasses();
 }
 
-bool
-load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size) {
+bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_initialize_vector, mach_vm_size_t vector_size) {
   // ------------------------------------------------------------
   // clean previous resources and setup new resources.
   clear_remapclasses();
@@ -680,8 +658,7 @@ error:
   return false;
 }
 
-bool
-set_config(const int32_t* const config_vector, mach_vm_size_t config_size) {
+bool set_config(const int32_t* const config_vector, mach_vm_size_t config_size) {
   // ------------------------------------------------------------
   // check
   if (config_size != (BRIDGE_ESSENTIAL_CONFIG_INDEX__END__ + remapclasses_.size()) * sizeof(int32_t)) {
@@ -709,8 +686,7 @@ set_config(const int32_t* const config_vector, mach_vm_size_t config_size) {
   return true;
 }
 
-bool
-set_config_one(bool isEssentialConfig, uint32_t index, int32_t value) {
+bool set_config_one(bool isEssentialConfig, uint32_t index, int32_t value) {
   bool succeed = false;
 
   if (isEssentialConfig) {
@@ -734,8 +710,7 @@ set_config_one(bool isEssentialConfig, uint32_t index, int32_t value) {
   return succeed;
 }
 
-void
-refresh(void) {
+void refresh(void) {
   // We use timer to prevent deadlock of lock_. (refresh may be called in the "remap" method.)
   refresh_timer_.setTimeoutMS(0);
 }
@@ -758,28 +733,24 @@ isPassThroughEnabled(void) {
     }                                                           \
   }
 
-void
-remap_setkeyboardtype(KeyboardType& keyboardType) {
+void remap_setkeyboardtype(KeyboardType& keyboardType) {
   bool passThroughEnabled = isPassThroughEnabled();
   CALL_REMAPCLASS_FUNC(remap_setkeyboardtype, keyboardType);
 }
 
-void
-remap_forcenumlockon(ListHookedKeyboard::Item* item) {
+void remap_forcenumlockon(ListHookedKeyboard::Item* item) {
   bool passThroughEnabled = isPassThroughEnabled();
   CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
 }
 
-void
-remap(RemapParams& remapParams) {
+void remap(RemapParams& remapParams) {
   bool passThroughEnabled = isPassThroughEnabled();
   CALL_REMAPCLASS_FUNC(remap, remapParams);
 }
 
 #undef CALL_REMAPCLASS_FUNC
 
-bool
-isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
+bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
   bool passThroughEnabled = isPassThroughEnabled();
   bool isTargetEvent = false;
 
@@ -795,8 +766,7 @@ isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
   return isTargetEvent;
 }
 
-bool
-remap_simultaneouskeypresses(bool iskeydown) {
+bool remap_simultaneouskeypresses(bool iskeydown) {
   bool passThroughEnabled = isPassThroughEnabled();
   bool queue_changed = false;
 
@@ -812,8 +782,7 @@ remap_simultaneouskeypresses(bool iskeydown) {
   return queue_changed;
 }
 
-bool
-remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {
+bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {
   bool passThroughEnabled = isPassThroughEnabled();
   bool dropped = false;
 
@@ -827,13 +796,11 @@ remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {
   return dropped;
 }
 
-bool
-isSimultaneousKeyPressesEnabled(void) {
+bool isSimultaneousKeyPressesEnabled(void) {
   return isSimultaneousKeyPressesEnabled_;
 }
 
-bool
-isEnabled(size_t configindex) {
+bool isEnabled(size_t configindex) {
   if (configindex >= remapclasses_.size()) {
     IOLOG_ERROR("RemapClass::isEnabled invalid configindex.\n");
     return false;

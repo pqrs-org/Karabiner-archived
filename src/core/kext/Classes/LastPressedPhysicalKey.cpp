@@ -2,8 +2,7 @@
 #include "Params.hpp"
 
 namespace org_pqrs_Karabiner {
-void
-LastPressedPhysicalKey::update(const Params_Base& newval) {
+void LastPressedPhysicalKey::update(const Params_Base& newval) {
   {
     auto p = newval.get_Params_KeyboardEventCallBack();
 

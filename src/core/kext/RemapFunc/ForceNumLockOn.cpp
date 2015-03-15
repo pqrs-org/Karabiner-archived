@@ -6,8 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-ForceNumLockOn::add(AddDataType datatype, AddValue newval) {
+void ForceNumLockOn::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_DEVICEVENDOR:
     switch (index_) {
@@ -59,8 +58,7 @@ ForceNumLockOn::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-ForceNumLockOn::remapForceNumLockOn(ListHookedKeyboard::Item* item) {
+bool ForceNumLockOn::remapForceNumLockOn(ListHookedKeyboard::Item* item) {
   if (!item) return false;
   if (index_ < 2) return false;
 

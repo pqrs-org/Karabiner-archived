@@ -7,8 +7,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-KeyOverlaidModifier::add(AddDataType datatype, AddValue newval) {
+void KeyOverlaidModifier::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
   case BRIDGE_DATATYPE_CONSUMERKEYCODE:
@@ -98,8 +97,7 @@ KeyOverlaidModifier::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-void
-KeyOverlaidModifier::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval) {
+void KeyOverlaidModifier::addToDependingPressingPeriodKeyToKey(AddDataType datatype, AddValue newval) {
   switch (indexType_) {
   case INDEX_IS_HOLDING:
     dppkeytokey_.add(DependingPressingPeriodKeyToKey::KeyToKeyType::LONG_PERIOD, datatype, newval);

@@ -23,8 +23,7 @@ List EventInputQueue::BlockUntilKeyUpHander::blockedQueue_;
 List EventInputQueue::BlockUntilKeyUpHander::pressingEvents_;
 TimerWrapper EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_;
 
-void
-EventInputQueue::initialize(IOWorkLoop& workloop) {
+void EventInputQueue::initialize(IOWorkLoop& workloop) {
   ic_.begin();
   fire_timer_.initialize(&workloop, NULL, EventInputQueue::fire_timer_callback);
   serialNumber_ = 0;
@@ -32,8 +31,7 @@ EventInputQueue::initialize(IOWorkLoop& workloop) {
   BlockUntilKeyUpHander::initialize(workloop);
 }
 
-void
-EventInputQueue::terminate(void) {
+void EventInputQueue::terminate(void) {
   fire_timer_.terminate();
 
   queue_.clear();
@@ -41,11 +39,10 @@ EventInputQueue::terminate(void) {
   BlockUntilKeyUpHander::terminate();
 }
 
-void
-EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
-                          bool retainFlagStatusTemporaryCount,
-                          const DeviceIdentifier& deviceIdentifier,
-                          bool push_back) {
+void EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
+                               bool retainFlagStatusTemporaryCount,
+                               const DeviceIdentifier& deviceIdentifier,
+                               bool push_back) {
   // Because we handle the key repeat ourself, drop the key repeat.
   if (p.repeat) return;
 
@@ -57,27 +54,24 @@ EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
   }
 }
 
-void
-EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p,
-                          bool retainFlagStatusTemporaryCount,
-                          const DeviceIdentifier& deviceIdentifier) {
+void EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p,
+                               bool retainFlagStatusTemporaryCount,
+                               const DeviceIdentifier& deviceIdentifier) {
   // Because we handle the key repeat ourself, drop the key repeat.
   if (p.repeat) return;
 
   queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
 }
 
-void
-EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p,
-                          bool retainFlagStatusTemporaryCount,
-                          const DeviceIdentifier& deviceIdentifier) {
+void EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p,
+                               bool retainFlagStatusTemporaryCount,
+                               const DeviceIdentifier& deviceIdentifier) {
   queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
 }
 
-void
-EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p,
-                          bool retainFlagStatusTemporaryCount,
-                          const DeviceIdentifier& deviceIdentifier) {
+void EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p,
+                               bool retainFlagStatusTemporaryCount,
+                               const DeviceIdentifier& deviceIdentifier) {
   queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
 }
 
@@ -91,8 +85,7 @@ unsigned int maxThreshold(unsigned int v1, unsigned int v2) {
 }
 }
 
-void
-EventInputQueue::setTimer(void) {
+void EventInputQueue::setTimer(void) {
   Item* front = static_cast<Item*>(queue_.safe_front());
   if (!front) return;
 
@@ -157,20 +150,19 @@ EventInputQueue::setTimer(void) {
 }
 
 // ======================================================================
-void
-EventInputQueue::push_KeyboardEventCallback(OSObject* target,
-                                            unsigned int eventType,
-                                            unsigned int flags,
-                                            unsigned int key,
-                                            unsigned int charCode,
-                                            unsigned int charSet,
-                                            unsigned int origCharCode,
-                                            unsigned int origCharSet,
-                                            unsigned int keyboardType,
-                                            bool repeat,
-                                            AbsoluteTime ts,
-                                            OSObject* sender,
-                                            void* refcon) {
+void EventInputQueue::push_KeyboardEventCallback(OSObject* target,
+                                                 unsigned int eventType,
+                                                 unsigned int flags,
+                                                 unsigned int key,
+                                                 unsigned int charCode,
+                                                 unsigned int charSet,
+                                                 unsigned int origCharCode,
+                                                 unsigned int origCharSet,
+                                                 unsigned int keyboardType,
+                                                 bool repeat,
+                                                 AbsoluteTime ts,
+                                                 OSObject* sender,
+                                                 void* refcon) {
   GlobalLock::ScopedLock lk;
   if (!lk) return;
 
@@ -246,8 +238,7 @@ EventInputQueue::push_KeyboardEventCallback(OSObject* target,
   //
   // *** LCP has 6 keys (Page Up, Page Down, a 'B' key, an 'Esc' key, and volume up / down keys). ***
   // *** So, we can drop CONTROL_L and SHIFT_L without a problem. ***
-  if ((item->getDeviceIdentifier()).isEqualVendorProduct(DeviceVendor::LOGITECH,
-                                                         DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
+  if ((item->getDeviceIdentifier()).isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_CORDLESS_PRESENTER)) {
     if (params.key == KeyCode::CONTROL_L) return;
     if (params.key == KeyCode::SHIFT_L) return;
   }
@@ -274,11 +265,10 @@ EventInputQueue::push_KeyboardEventCallback(OSObject* target,
   setTimer();
 }
 
-void
-EventInputQueue::push_UpdateEventFlagsCallback(OSObject* target,
-                                               unsigned flags,
-                                               OSObject* sender,
-                                               void* refcon) {
+void EventInputQueue::push_UpdateEventFlagsCallback(OSObject* target,
+                                                    unsigned flags,
+                                                    OSObject* sender,
+                                                    void* refcon) {
   GlobalLock::ScopedLock lk;
   if (!lk) return;
 
@@ -296,17 +286,16 @@ EventInputQueue::push_UpdateEventFlagsCallback(OSObject* target,
 }
 
 // ----------------------------------------------------------------------
-void
-EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
-                                                   unsigned int eventType,
-                                                   unsigned int flags,
-                                                   unsigned int key,
-                                                   unsigned int flavor,
-                                                   UInt64 guid,
-                                                   bool repeat,
-                                                   AbsoluteTime ts,
-                                                   OSObject* sender,
-                                                   void* refcon) {
+void EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
+                                                        unsigned int eventType,
+                                                        unsigned int flags,
+                                                        unsigned int key,
+                                                        unsigned int flavor,
+                                                        UInt64 guid,
+                                                        bool repeat,
+                                                        AbsoluteTime ts,
+                                                        OSObject* sender,
+                                                        void* refcon) {
   GlobalLock::ScopedLock lk;
   if (!lk) return;
 
@@ -351,14 +340,13 @@ EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
 }
 
 // ----------------------------------------------------------------------
-void
-EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
-                                                   int buttons_raw,
-                                                   int dx,
-                                                   int dy,
-                                                   AbsoluteTime ts,
-                                                   OSObject* sender,
-                                                   void* refcon) {
+void EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
+                                                        int buttons_raw,
+                                                        int dx,
+                                                        int dy,
+                                                        AbsoluteTime ts,
+                                                        OSObject* sender,
+                                                        void* refcon) {
   GlobalLock::ScopedLock lk;
   if (!lk) return;
 
@@ -410,21 +398,20 @@ EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
   setTimer();
 }
 
-void
-EventInputQueue::push_ScrollWheelEventCallback(OSObject* target,
-                                               short deltaAxis1,
-                                               short deltaAxis2,
-                                               short deltaAxis3,
-                                               IOFixed fixedDelta1,
-                                               IOFixed fixedDelta2,
-                                               IOFixed fixedDelta3,
-                                               SInt32 pointDelta1,
-                                               SInt32 pointDelta2,
-                                               SInt32 pointDelta3,
-                                               SInt32 options,
-                                               AbsoluteTime ts,
-                                               OSObject* sender,
-                                               void* refcon) {
+void EventInputQueue::push_ScrollWheelEventCallback(OSObject* target,
+                                                    short deltaAxis1,
+                                                    short deltaAxis2,
+                                                    short deltaAxis3,
+                                                    IOFixed fixedDelta1,
+                                                    IOFixed fixedDelta2,
+                                                    IOFixed fixedDelta3,
+                                                    SInt32 pointDelta1,
+                                                    SInt32 pointDelta2,
+                                                    SInt32 pointDelta3,
+                                                    SInt32 options,
+                                                    AbsoluteTime ts,
+                                                    OSObject* sender,
+                                                    void* refcon) {
   GlobalLock::ScopedLock lk;
   if (!lk) return;
 
@@ -464,8 +451,7 @@ EventInputQueue::push_ScrollWheelEventCallback(OSObject* target,
 }
 
 // ======================================================================
-void
-EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/) {
+void EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSource* /*notuse_sender*/) {
   // IOLOG_DEVEL("EventInputQueue::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
 
   // ------------------------------------------------------------
@@ -571,8 +557,7 @@ EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEventSou
   setTimer();
 }
 
-void
-EventInputQueue::doFire(void) {
+void EventInputQueue::doFire(void) {
   Item* p = static_cast<Item*>(queue_.safe_front());
   if (!p) return;
 
@@ -703,21 +688,18 @@ EventInputQueue::doFire(void) {
   ++serialNumber_;
 }
 
-void
-EventInputQueue::BlockUntilKeyUpHander::initialize(IOWorkLoop& workloop) {
+void EventInputQueue::BlockUntilKeyUpHander::initialize(IOWorkLoop& workloop) {
   blockingTimeOut_timer_.initialize(&workloop, NULL, EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback);
 }
 
-void
-EventInputQueue::BlockUntilKeyUpHander::terminate(void) {
+void EventInputQueue::BlockUntilKeyUpHander::terminate(void) {
   blockingTimeOut_timer_.terminate();
 
   blockedQueue_.clear();
   pressingEvents_.clear();
 }
 
-bool
-EventInputQueue::BlockUntilKeyUpHander::doBlockUntilKeyUp(void) {
+bool EventInputQueue::BlockUntilKeyUpHander::doBlockUntilKeyUp(void) {
   Item* front = static_cast<Item*>(queue_.safe_front());
   if (!front) return true;
 
@@ -856,8 +838,7 @@ endBlocking:
   return true;
 }
 
-bool
-EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const Item& front) {
+bool EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const Item& front) {
   FromEvent fromEvent(front.getParamsBase());
 
   for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
@@ -869,8 +850,7 @@ EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const It
   return false;
 }
 
-bool
-EventInputQueue::BlockUntilKeyUpHander::isOrphanKeyUpEventExistsInBlockedQueue(void) {
+bool EventInputQueue::BlockUntilKeyUpHander::isOrphanKeyUpEventExistsInBlockedQueue(void) {
   for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
     bool iskeydown;
     if ((p->getParamsBase()).iskeydown(iskeydown) && !iskeydown) {
@@ -890,8 +870,7 @@ EventInputQueue::BlockUntilKeyUpHander::isOrphanKeyUpEventExistsInBlockedQueue(v
   return false;
 }
 
-void
-EventInputQueue::BlockUntilKeyUpHander::endBlocking(void) {
+void EventInputQueue::BlockUntilKeyUpHander::endBlocking(void) {
   if (blockedQueue_.size() > 0) {
     // restore queue_
     for (;;) {
@@ -907,16 +886,14 @@ EventInputQueue::BlockUntilKeyUpHander::endBlocking(void) {
   blockingTimeOut_timer_.cancelTimeout();
 }
 
-void
-EventInputQueue::BlockUntilKeyUpHander::setIgnoreToAllPressingEvents(void) {
+void EventInputQueue::BlockUntilKeyUpHander::setIgnoreToAllPressingEvents(void) {
   // Ignore pressingEvents_ from next.
   for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_.safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
     p->setIgnore();
   }
 }
 
-void
-EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
+void EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   endBlocking();
   setIgnoreToAllPressingEvents();
   setTimer();

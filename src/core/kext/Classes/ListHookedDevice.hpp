@@ -16,7 +16,7 @@ public:
 
   protected:
     Item(IOHIDevice* d);
-    virtual ~Item(void) {};
+    virtual ~Item(void){};
 
   public:
     virtual bool isReplaced(void) const = 0;

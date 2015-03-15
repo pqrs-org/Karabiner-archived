@@ -32,8 +32,7 @@ namespace {
 IOWorkLoop* workLoop = NULL;
 }
 
-void
-start(void) {
+void start(void) {
   GlobalLock::initialize();
   CommonData::initialize();
   KeyCodeModifierFlagPairs::initialize();
@@ -63,8 +62,7 @@ start(void) {
   Config::sysctl_register();
 }
 
-void
-stop(void) {
+void stop(void) {
   // Destroy global lock.
   // Then, all callbacks and hooked functions become inactive.
   GlobalLock::terminate();
@@ -99,8 +97,7 @@ stop(void) {
 }
 
 // ======================================================================
-bool
-IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
+bool IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
   GlobalLock::ScopedLock lk;
   if (!lk) return false;
 
@@ -114,8 +111,7 @@ IOHIKeyboard_gIOMatchedNotification_callback(void* target, void* refCon, IOServi
   return true;
 }
 
-bool
-IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
+bool IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
   GlobalLock::ScopedLock lk;
   if (!lk) return false;
 
@@ -129,8 +125,7 @@ IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon, IOSe
   return true;
 }
 
-bool
-IOHIPointing_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
+bool IOHIPointing_gIOMatchedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
   GlobalLock::ScopedLock lk;
   if (!lk) return false;
 
@@ -143,8 +138,7 @@ IOHIPointing_gIOMatchedNotification_callback(void* target, void* refCon, IOServi
   return true;
 }
 
-bool
-IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
+bool IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOService* newService, IONotifier* notifier) {
   GlobalLock::ScopedLock lk;
   if (!lk) return false;
 
@@ -159,8 +153,7 @@ IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon, IOSe
 
 // ======================================================================
 namespace {
-void
-resetWhenPressingPhysicalKeysIsEmpty(void) {
+void resetWhenPressingPhysicalKeysIsEmpty(void) {
   if (PressingPhysicalKeys::empty()) {
     IOLOG_DEVEL("resetWhenPressingPhysicalKeysIsEmpty\n");
     PressingPhysicalKeys::clear();
@@ -177,8 +170,7 @@ resetWhenPressingPhysicalKeysIsEmpty(void) {
 }
 
 // ======================================================================
-void
-remap_KeyboardEventCallback(const Params_Base& paramsBase) {
+void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_KeyboardEventCallBack();
   if (!params) return;
 
@@ -227,8 +219,7 @@ remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   RemapFunc::PointingRelativeToScroll::cancelScroll();
 }
 
-void
-remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
+void remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_KeyboardSpecialEventCallback();
   if (!params) return;
 
@@ -253,8 +244,7 @@ remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
   RemapFunc::PointingRelativeToScroll::cancelScroll();
 }
 
-void
-remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
+void remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_RelativePointerEventCallback();
   if (!params) return;
 
@@ -274,8 +264,7 @@ remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
   }
 }
 
-void
-remap_ScrollWheelEventCallback(const Params_Base& paramsBase) {
+void remap_ScrollWheelEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_ScrollWheelEventCallback();
   if (!params) return;
 

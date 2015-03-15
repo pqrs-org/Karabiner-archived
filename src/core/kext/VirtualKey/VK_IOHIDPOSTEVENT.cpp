@@ -5,16 +5,14 @@
 #include "VK_IOHIDPOSTEVENT.hpp"
 
 namespace org_pqrs_Karabiner {
-bool
-VirtualKey::VK_IOHIDPOSTEVENT::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_IOHIDPOSTEVENT::handle(const Params_KeyboardEventCallBack& params) {
   // We need to send events at handleAfterEnqueued.
   // See VK_DEFINED_IN_USERSPACE::handle.
 
   return false;
 }
 
-bool
-VirtualKey::VK_IOHIDPOSTEVENT::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_IOHIDPOSTEVENT::handleAfterEnqueued(const Params_KeyboardEventCallBack& params) {
   bool target = false;
   uint32_t keytype = 0;
 
@@ -47,8 +45,7 @@ VirtualKey::VK_IOHIDPOSTEVENT::handleAfterEnqueued(const Params_KeyboardEventCal
   return true;
 }
 
-void
-VirtualKey::VK_IOHIDPOSTEVENT::post(const Params_KeyboardSpecialEventCallback& params) {
+void VirtualKey::VK_IOHIDPOSTEVENT::post(const Params_KeyboardSpecialEventCallback& params) {
   uint32_t keytype = 0;
   /**/ if (params.key == ConsumerKeyCode::BRIGHTNESS_DOWN) { keytype = NX_KEYTYPE_BRIGHTNESS_DOWN; } else if (params.key == ConsumerKeyCode::BRIGHTNESS_UP) {
     keytype = NX_KEYTYPE_BRIGHTNESS_UP;

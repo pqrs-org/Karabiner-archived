@@ -6,8 +6,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-FlipScrollWheel::add(AddDataType datatype, AddValue newval) {
+void FlipScrollWheel::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_OPTION: {
     Option option(newval);
@@ -27,8 +26,7 @@ FlipScrollWheel::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-FlipScrollWheel::remap(RemapParams& remapParams) {
+bool FlipScrollWheel::remap(RemapParams& remapParams) {
   auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
   if (!params) return false;
 

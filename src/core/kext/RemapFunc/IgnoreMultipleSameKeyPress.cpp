@@ -5,8 +5,7 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void
-IgnoreMultipleSameKeyPress::add(AddDataType datatype, AddValue newval) {
+void IgnoreMultipleSameKeyPress::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
   case BRIDGE_DATATYPE_CONSUMERKEYCODE:
@@ -25,8 +24,7 @@ IgnoreMultipleSameKeyPress::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams) {
+bool IgnoreMultipleSameKeyPress::remap(RemapParams& remapParams) {
   if (remapParams.isremapped) goto nottargetevent;
   if (!fromEvent_.changePressingState(remapParams.paramsBase,
                                       FlagStatus::globalFlagStatus(),

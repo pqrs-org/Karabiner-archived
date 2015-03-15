@@ -4,8 +4,7 @@
 namespace org_pqrs_Karabiner {
 KeyCodeModifierFlagPairs::Vector_Pair KeyCodeModifierFlagPairs::pairs_;
 
-void
-KeyCodeModifierFlagPairs::clearVirtualModifiers(void) {
+void KeyCodeModifierFlagPairs::clearVirtualModifiers(void) {
   pairs_.clear();
 
 // Register normal modifiers.
@@ -38,18 +37,17 @@ KeyCodeModifierFlagPairs::clearVirtualModifiers(void) {
   FlagStatus::globalFlagStatus().initialize();
 }
 
-void
-KeyCodeModifierFlagPairs::registerVirtualModifier(ModifierFlag m,
-                                                  KeyCode k,
-                                                  KeyCode vk_lock,
-                                                  KeyCode vk_lock_force_on,
-                                                  KeyCode vk_lock_force_off,
-                                                  KeyCode vk_negative_lock,
-                                                  KeyCode vk_negative_lock_force_on,
-                                                  KeyCode vk_negative_lock_force_off,
-                                                  KeyCode vk_sticky,
-                                                  KeyCode vk_sticky_force_on,
-                                                  KeyCode vk_sticky_force_off) {
+void KeyCodeModifierFlagPairs::registerVirtualModifier(ModifierFlag m,
+                                                       KeyCode k,
+                                                       KeyCode vk_lock,
+                                                       KeyCode vk_lock_force_on,
+                                                       KeyCode vk_lock_force_off,
+                                                       KeyCode vk_negative_lock,
+                                                       KeyCode vk_negative_lock_force_on,
+                                                       KeyCode vk_negative_lock_force_off,
+                                                       KeyCode vk_sticky,
+                                                       KeyCode vk_sticky_force_on,
+                                                       KeyCode vk_sticky_force_off) {
   pairs_.push_back(Pair(m,
                         k,
                         vk_lock,

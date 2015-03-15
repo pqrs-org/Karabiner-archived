@@ -13,8 +13,7 @@ bool VirtualKey::VK_MOUSEKEY::scrollmode_;
 bool VirtualKey::VK_MOUSEKEY::highspeed_;
 TimerWrapper VirtualKey::VK_MOUSEKEY::fire_timer_;
 
-void
-VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
+void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
   dx_ = 0;
   dy_ = 0;
   scale_ = 1;
@@ -24,13 +23,11 @@ VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, NULL, VirtualKey::VK_MOUSEKEY::fire_timer_callback);
 }
 
-void
-VirtualKey::VK_MOUSEKEY::terminate(void) {
+void VirtualKey::VK_MOUSEKEY::terminate(void) {
   fire_timer_.terminate();
 }
 
-void
-VirtualKey::VK_MOUSEKEY::reset(void) {
+void VirtualKey::VK_MOUSEKEY::reset(void) {
   dx_ = 0;
   dy_ = 0;
   scale_ = 1;
@@ -40,8 +37,7 @@ VirtualKey::VK_MOUSEKEY::reset(void) {
   fire_timer_.cancelTimeout();
 }
 
-bool
-VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params) {
   if (handle_button(params)) return true;
   if (handle_move(params)) return true;
   if (handle_fixeddistancemove(params)) return true;
@@ -155,8 +151,7 @@ VirtualKey::VK_MOUSEKEY::getPointingButtonFromLockKey(KeyCode keycode) {
   return PointingButton::NONE;
 }
 
-bool
-VirtualKey::VK_MOUSEKEY::isKeyLikeModifier(KeyCode keycode) {
+bool VirtualKey::VK_MOUSEKEY::isKeyLikeModifier(KeyCode keycode) {
   if (getPointingButton(keycode) != PointingButton::NONE) return true;
   if (keycode == KeyCode::VK_MOUSEKEY_UP) {
     return true;
@@ -204,8 +199,7 @@ VirtualKey::VK_MOUSEKEY::isKeyLikeModifier(KeyCode keycode) {
   return false;
 }
 
-bool
-VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& params) {
   PointingButton button = getPointingButton(params.key);
   if (button == PointingButton::NONE) return false;
 
@@ -224,8 +218,7 @@ VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& param
   return true;
 }
 
-bool
-VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params) {
   /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
     if (params.repeat) return true;
     if (params.ex_iskeydown) {
@@ -369,8 +362,7 @@ VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params)
   return true;
 }
 
-bool
-VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEventCallBack& params) {
   int fdx = 0;
   int fdy = 0;
 
@@ -395,8 +387,7 @@ VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEventCall
   return true;
 }
 
-bool
-VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallBack& params) {
   if (params.key == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF) {
     ButtonStatus::lock_clear();
     EventOutputQueue::FireRelativePointer::fire(ButtonStatus::makeButtons());
@@ -418,8 +409,7 @@ VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallBack& 
   return true;
 }
 
-void
-VirtualKey::VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender) {
+void VirtualKey::VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender) {
   if (!scrollmode_) {
     int s = scale_;
     if (highspeed_) s = Config::get_mousekey_high_speed_of_pointer();

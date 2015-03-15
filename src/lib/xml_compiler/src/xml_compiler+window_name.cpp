@@ -3,15 +3,13 @@
 
 namespace pqrs {
 
-void
-xml_compiler::window_name::add_rule_regex(const std::string& regex) {
+void xml_compiler::window_name::add_rule_regex(const std::string& regex) {
   if (!regex.empty()) {
     rules_regex_.push_back(std::regex(regex));
   }
 }
 
-bool
-xml_compiler::window_name::is_rules_matched(const std::string& window_name) const {
+bool xml_compiler::window_name::is_rules_matched(const std::string& window_name) const {
   for (const auto& r : rules_regex_) {
     if (regex_search(window_name.begin(), window_name.end(), r)) {
       return true;
@@ -21,8 +19,7 @@ xml_compiler::window_name::is_rules_matched(const std::string& window_name) cons
 }
 
 // ============================================================
-void
-xml_compiler::window_name_loader::traverse(const extracted_ptree& pt) const {
+void xml_compiler::window_name_loader::traverse(const extracted_ptree& pt) const {
   for (const auto& it : pt) {
     if (it.get_tag_name() != "windownamedef") {
       if (!it.children_empty()) {

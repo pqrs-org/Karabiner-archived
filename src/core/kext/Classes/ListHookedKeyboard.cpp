@@ -19,13 +19,11 @@ ListHookedKeyboard listHookedKeyboard;
 }
 TimerWrapper ListHookedKeyboard::setcapslock_timer_;
 
-void
-ListHookedKeyboard::static_initialize(IOWorkLoop& workloop) {
+void ListHookedKeyboard::static_initialize(IOWorkLoop& workloop) {
   setcapslock_timer_.initialize(&workloop, NULL, ListHookedKeyboard::setcapslock_timer_callback);
 }
 
-void
-ListHookedKeyboard::static_terminate(void) {
+void ListHookedKeyboard::static_terminate(void) {
   setcapslock_timer_.terminate();
 }
 
@@ -46,8 +44,7 @@ ListHookedKeyboard::Item::~Item(void) {
 }
 
 // ======================================================================
-bool
-ListHookedKeyboard::Item::refresh(void) {
+bool ListHookedKeyboard::Item::refresh(void) {
   if (!device_) goto restore;
 
   {
@@ -110,8 +107,7 @@ restore:
   return restoreEventAction();
 }
 
-bool
-ListHookedKeyboard::Item::replaceEventAction(void) {
+bool ListHookedKeyboard::Item::replaceEventAction(void) {
   if (!device_) return false;
 
   IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -169,8 +165,7 @@ ListHookedKeyboard::Item::replaceEventAction(void) {
   return result;
 }
 
-bool
-ListHookedKeyboard::Item::restoreEventAction(void) {
+bool ListHookedKeyboard::Item::restoreEventAction(void) {
   if (!device_) return false;
 
   IOHIKeyboard* kbd = OSDynamicCast(IOHIKeyboard, device_);
@@ -211,8 +206,7 @@ ListHookedKeyboard::Item::restoreEventAction(void) {
 }
 
 // ======================================================================
-void
-ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params) {
+void ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params) {
   if (params.key >= KeyCode::VK__BEGIN__) {
     // Invalid keycode
     IOLOG_ERROR("ListHookedKeyboard::Item::apply invalid key:%d eventType:%d\n", params.key.get(), params.eventType.get());
@@ -286,8 +280,7 @@ ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params) {
   setcapslock_timer_.setTimeoutMS(CAPSLOCK_LED_DELAY_MS, false);
 }
 
-void
-ListHookedKeyboard::Item::apply(const Params_UpdateEventFlagsCallback& params) {
+void ListHookedKeyboard::Item::apply(const Params_UpdateEventFlagsCallback& params) {
   // ------------------------------------------------------------
   UpdateEventFlagsCallback callback = orig_updateEventFlagsAction_;
   if (!callback) return;
@@ -309,24 +302,21 @@ ListHookedKeyboard::Item::apply(const Params_UpdateEventFlagsCallback& params) {
   }
 }
 
-void
-ListHookedKeyboard::apply(const Params_KeyboardEventCallBack& params) {
+void ListHookedKeyboard::apply(const Params_KeyboardEventCallBack& params) {
   ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced());
   if (p) {
     p->apply(params);
   }
 }
 
-void
-ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params) {
+void ListHookedKeyboard::apply(const Params_UpdateEventFlagsCallback& params) {
   ListHookedKeyboard::Item* p = static_cast<ListHookedKeyboard::Item*>(get_replaced());
   if (p) {
     p->apply(params);
   }
 }
 
-bool
-ListHookedKeyboard::isExternalDevicesConnected(void) const {
+bool ListHookedKeyboard::isExternalDevicesConnected(void) const {
   for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_treat_unifying_as_pointing_device)) {
       if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor(0x046d), DeviceProduct(0xc52b))) {
@@ -348,8 +338,7 @@ ListHookedKeyboard::isExternalDevicesConnected(void) const {
   return false;
 }
 
-void
-ListHookedKeyboard::setcapslock_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
+void ListHookedKeyboard::setcapslock_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   ListHookedKeyboard& self = ListHookedKeyboard::instance();
 
   if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_passthrough_capslock_led_status)) return;

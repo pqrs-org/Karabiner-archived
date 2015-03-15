@@ -16,8 +16,7 @@ append_environments_to_replacement(pqrs::string::replacement& r) {
   }
 }
 
-void
-xml_compiler::reload(void) {
+void xml_compiler::reload(void) {
   error_information_.clear();
   replacement_warnings_.clear();
   replacement_.clear();
@@ -245,10 +244,9 @@ xml_compiler::reload(void) {
   }
 }
 
-void
-xml_compiler::read_xml_(ptree_ptr& out,
-                        const std::string& file_path,
-                        const pqrs::string::replacement& replacement) const {
+void xml_compiler::read_xml_(ptree_ptr& out,
+                             const std::string& file_path,
+                             const pqrs::string::replacement& replacement) const {
   try {
     out.reset(new boost::property_tree::ptree());
 
@@ -361,11 +359,10 @@ notfound:
   return 0;
 }
 
-bool
-xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
-                                               const std::string& languagecode,
-                                               const std::string& inputsourceid,
-                                               const std::string& inputmodeid) const {
+bool xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
+                                                    const std::string& languagecode,
+                                                    const std::string& inputsourceid,
+                                                    const std::string& inputmodeid) const {
   auto it = vk_change_inputsource_map_.find(keycode);
   if (it == vk_change_inputsource_map_.end()) {
     return false;
@@ -377,12 +374,11 @@ xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
   return it->second->is_rules_matched(languagecode, inputsourceid, inputmodeid);
 }
 
-void
-xml_compiler::get_inputsourceid(uint32_t& inputsource,
-                                uint32_t& inputsource_detail,
-                                const std::string& languagecode,
-                                const std::string& inputsourceid,
-                                const std::string& inputmodeid) const {
+void xml_compiler::get_inputsourceid(uint32_t& inputsource,
+                                     uint32_t& inputsource_detail,
+                                     const std::string& languagecode,
+                                     const std::string& inputsourceid,
+                                     const std::string& inputmodeid) const {
   inputsource = 0;        // InputSource::NONE
   inputsource_detail = 0; // InputSourceDetail::NONE
 
@@ -437,8 +433,7 @@ xml_compiler::get_url_type(int keycode) const {
   return it->second->get_type();
 }
 
-bool
-xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const {
+bool xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const {
   if (identifier.empty()) {
     error_information_.set("Empty <identifier>.");
     return false;
@@ -455,8 +450,7 @@ xml_compiler::valid_identifier_(const std::string& identifier, const std::string
   return true;
 }
 
-bool
-xml_compiler::debug_get_initialize_vector(std::vector<uint32_t>& out, const std::string& raw_identifier) const {
+bool xml_compiler::debug_get_initialize_vector(std::vector<uint32_t>& out, const std::string& raw_identifier) const {
   std::string identifier = raw_identifier;
   normalize_identifier_(identifier);
 

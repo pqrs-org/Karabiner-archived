@@ -5,11 +5,10 @@
 #include "pqrs/vector.hpp"
 
 namespace pqrs {
-int
-string::string_by_replacing_double_curly_braces_(std::string& out,
-                                                 std::string& replacement_warnings,
-                                                 std::istream& istream,
-                                                 replacement replacement) {
+int string::string_by_replacing_double_curly_braces_(std::string& out,
+                                                     std::string& replacement_warnings,
+                                                     std::istream& istream,
+                                                     replacement replacement) {
   int previous = '\0';
 
   if (!istream.good()) {
@@ -66,8 +65,7 @@ finish:
   return 0;
 }
 
-int
-string::string_from_file(std::string& out, const char* filename) {
+int string::string_from_file(std::string& out, const char* filename) {
   out.clear();
 
   // ----------------------------------------
@@ -98,11 +96,10 @@ string::string_from_file(std::string& out, const char* filename) {
   return 0;
 }
 
-int
-string::string_by_replacing_double_curly_braces_from_file(std::string& out,
-                                                          std::string& replacement_warnings,
-                                                          const char* filename,
-                                                          replacement replacement) {
+int string::string_by_replacing_double_curly_braces_from_file(std::string& out,
+                                                              std::string& replacement_warnings,
+                                                              const char* filename,
+                                                              replacement replacement) {
   out.clear();
 
   // ----------------------------------------
@@ -127,11 +124,10 @@ string::string_by_replacing_double_curly_braces_from_file(std::string& out,
   return string_by_replacing_double_curly_braces_(out, replacement_warnings, istream, replacement);
 }
 
-int
-string::string_by_replacing_double_curly_braces_from_string(std::string& out,
-                                                            std::string& replacement_warnings,
-                                                            const std::string& source,
-                                                            replacement replacement) {
+int string::string_by_replacing_double_curly_braces_from_string(std::string& out,
+                                                                std::string& replacement_warnings,
+                                                                const std::string& source,
+                                                                replacement replacement) {
   out.clear();
 
   // ----------------------------------------

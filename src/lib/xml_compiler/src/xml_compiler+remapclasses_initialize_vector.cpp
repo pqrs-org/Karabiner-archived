@@ -9,8 +9,7 @@ xml_compiler::remapclasses_initialize_vector::remapclasses_initialize_vector(voi
   freeze();
 }
 
-void
-xml_compiler::remapclasses_initialize_vector::clear(void) {
+void xml_compiler::remapclasses_initialize_vector::clear(void) {
   data_.resize(1);
   data_[INDEX_OF_CONFIG_COUNT] = 0;
 
@@ -34,8 +33,7 @@ xml_compiler::remapclasses_initialize_vector::get_config_count(void) const {
   return data_[INDEX_OF_CONFIG_COUNT];
 }
 
-void
-xml_compiler::remapclasses_initialize_vector::freeze(void) {
+void xml_compiler::remapclasses_initialize_vector::freeze(void) {
   assert(!freezed_);
 
   cleanup_();
@@ -50,9 +48,8 @@ xml_compiler::remapclasses_initialize_vector::freeze(void) {
   freezed_ = true;
 }
 
-void
-xml_compiler::remapclasses_initialize_vector::start(uint32_t config_index,
-                                                    const std::string& raw_identifier) {
+void xml_compiler::remapclasses_initialize_vector::start(uint32_t config_index,
+                                                         const std::string& raw_identifier) {
   assert(!freezed_);
 
   if (is_config_index_added_.find(config_index) != is_config_index_added_.end()) {
@@ -75,8 +72,7 @@ xml_compiler::remapclasses_initialize_vector::start(uint32_t config_index,
   data_.push_back(config_index);
 }
 
-void
-xml_compiler::remapclasses_initialize_vector::end(void) {
+void xml_compiler::remapclasses_initialize_vector::end(void) {
   ended_ = true;
 
   // ----------------------------------------
@@ -108,8 +104,7 @@ xml_compiler::remapclasses_initialize_vector::push_string(const std::string& str
   return length;
 }
 
-void
-xml_compiler::remapclasses_initialize_vector::cleanup_(void) {
+void xml_compiler::remapclasses_initialize_vector::cleanup_(void) {
   if (ended_) return;
 
   data_.resize(start_index_);

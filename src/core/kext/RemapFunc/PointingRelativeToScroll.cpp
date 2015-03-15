@@ -13,27 +13,23 @@ Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;
 Vector_ModifierFlag PointingRelativeToScroll::currentToModifierFlags_;
 TimerWrapper PointingRelativeToScroll::timer_;
 
-void
-PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop) {
+void PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop) {
   timer_.initialize(&workloop, NULL, PointingRelativeToScroll::timer_callback);
 }
 
-void
-PointingRelativeToScroll::static_terminate(void) {
+void PointingRelativeToScroll::static_terminate(void) {
   timer_.terminate();
 
   queue_.clear();
 }
 
-void
-PointingRelativeToScroll::cancelScroll(void) {
+void PointingRelativeToScroll::cancelScroll(void) {
   timer_.cancelTimeout();
 
   queue_.clear();
 }
 
-void
-PointingRelativeToScroll::add(AddDataType datatype, AddValue newval) {
+void PointingRelativeToScroll::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_MODIFIERFLAG:
   case BRIDGE_DATATYPE_MODIFIERFLAGS_END: {
@@ -88,8 +84,7 @@ PointingRelativeToScroll::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-bool
-PointingRelativeToScroll::remap(RemapParams& remapParams) {
+bool PointingRelativeToScroll::remap(RemapParams& remapParams) {
   // ------------------------------------------------------------
   // PointingRelativeToScroll grabs all pointing movement events.
   // Therefore, if user write inappropriate <autogen> (empty flags and empty buttons),
@@ -192,8 +187,7 @@ returntrue:
   return true;
 }
 
-void
-PointingRelativeToScroll::toscroll(RemapParams& remapParams) {
+void PointingRelativeToScroll::toscroll(RemapParams& remapParams) {
   auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
   if (!params) return;
 
@@ -277,8 +271,7 @@ PointingRelativeToScroll::toscroll(RemapParams& remapParams) {
   timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
 }
 
-void
-PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSource* sender) {
+void PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   // ----------------------------------------
   int delta1 = 0;
   int delta2 = 0;

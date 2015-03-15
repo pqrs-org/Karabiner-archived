@@ -19,21 +19,18 @@ is_string_empty(const std::string& s) {
   return s.empty();
 }
 
-void
-remove_empty_strings(std::vector<std::string>& v) {
+void remove_empty_strings(std::vector<std::string>& v) {
   auto it = std::remove_if(v.begin(), v.end(), is_string_empty);
   v.erase(it, v.end());
 }
 
-void
-push_back(std::vector<uint32_t>& v1, const std::vector<uint32_t>& v2) {
+void push_back(std::vector<uint32_t>& v1, const std::vector<uint32_t>& v2) {
   std::copy(v2.begin(), v2.end(), std::back_inserter(v1));
 }
 
 // ============================================================
-void
-make_combination(std::vector<std::shared_ptr<std::vector<std::string>>>& v,
-                 const char* seeds[], size_t seeds_size) {
+void make_combination(std::vector<std::shared_ptr<std::vector<std::string>>>& v,
+                      const char* seeds[], size_t seeds_size) {
   typedef std::shared_ptr<std::vector<std::string>> ptr;
 
   if (seeds_size == 0) {
