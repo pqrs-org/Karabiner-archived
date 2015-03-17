@@ -165,7 +165,7 @@ void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
     auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
     if (params) {
       if (interruptibleByScrollWheel_) {
-        dokeydown();
+        dokeydown(remapParams);
       }
     }
   }
@@ -176,7 +176,7 @@ void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
     if (remapParams.paramsBase.iskeydown(iskeydown)) {
       if (iskeydown) {
         // another key is pressed.
-        dokeydown();
+        dokeydown(remapParams);
       }
     }
   }
@@ -234,7 +234,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
       } else {
         FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
 
-        dokeydown();
+        dokeydown(remapParams);
         dokeyup();
 
         FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
@@ -250,7 +250,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
   return false;
 }
 
-void DependingPressingPeriodKeyToKey::dokeydown(void) {
+void DependingPressingPeriodKeyToKey::dokeydown(RemapParams& remapParams) {
   if (!active_) return;
   active_ = false;
 
@@ -263,6 +263,22 @@ void DependingPressingPeriodKeyToKey::dokeydown(void) {
     periodtype_ = PeriodType::SHORT_PERIOD;
 
     keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+
+    // Call prepare in order to cancel delayed action.
+    //
+    // For example:
+    //   1. Enable remap.samples_keytokey_delayed_action_3 in samples.xml.
+    //   2. Type return.
+    //   3. Type space.
+    //   4. It should be changed to 1,space.
+    //
+    // If we don't call prepare, the delayed action will be registered when we type the space key
+    // and it will not be canceled.
+    // The result becomes `space,1`. (`1` is entered by delayed action after space key.)
+    //
+    // Therefore we need to call prepare to preserve events order.
+
+    keytokey_[KeyToKeyType::SHORT_PERIOD].prepare(remapParams);
 
     break;
   }

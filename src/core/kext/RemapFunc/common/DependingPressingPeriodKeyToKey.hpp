@@ -192,7 +192,7 @@ private:
     };
   };
 
-  void dokeydown(void);
+  void dokeydown(RemapParams& remapParams);
   void dokeyup(void);
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
