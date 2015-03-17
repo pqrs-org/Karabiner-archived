@@ -41,8 +41,6 @@ public:
       return processor_->getIgnorePassThrough();
     }
 
-    RemapFunc::RemapFuncBase* processor(void) const { return processor_; }
-
   private:
     bool isblocked(void) const;
     bool isblocked_keyup(void) const;
@@ -85,7 +83,6 @@ public:
   uint32_t get_configindex(void) const { return configindex_; }
   bool hasActiveItem(void) const;
   bool isPassThroughEnabled(void) const;
-  Item* findItem(RemapFunc::RemapFuncBase* processor) const;
 
   static void log_allocation_count(void);
   static void reset_allocation_count(void);

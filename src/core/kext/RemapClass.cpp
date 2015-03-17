@@ -448,14 +448,6 @@ bool RemapClass::isPassThroughEnabled(void) const {
   return false;
 }
 
-RemapClass::Item* RemapClass::findItem(RemapFunc::RemapFuncBase* processor) const {
-  for (size_t i = 0; i < items_.size(); ++i) {
-    Item* p = items_[i];
-    if (p->processor() == processor) return p;
-  }
-  return NULL;
-}
-
 void RemapClass::log_allocation_count(void) {
   IOLOG_INFO("RemapClass::allocation_count_ %d/%d (memory usage: %d%% of %dKB)\n",
              allocation_count_,
