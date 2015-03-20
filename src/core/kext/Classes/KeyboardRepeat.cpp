@@ -87,7 +87,7 @@ void KeyboardRepeat::set(EventType eventType,
     goto cancel;
 
   } else if (eventType == EventType::UP) {
-    // The repetition of plural keys is controlled by manual operation.
+    // The repetition of multiple keys is controlled by manual operation.
     // So, we ignore it.
     if (queue_.size() != 1) return;
 
