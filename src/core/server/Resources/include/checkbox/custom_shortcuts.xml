@@ -3,6 +3,54 @@
   <item>
     <name>Custom Shortcuts</name>
     <item>
+      <name>Hold Command+Q to Quit Application</name>
+      <appendix>(You can adjust the threshold time of holding by</appendix>
+      <appendix>"Holding Key to Key &gt; Holding Threshold" in Key Repeat tab.)</appendix>
+      <identifier>remap.holdcommandQ</identifier>
+      <autogen>__HoldingKeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, Option::NOREPEAT</autogen>
+    </item>
+    <item>
+      <name>Press Command+Q twice to Quit Application</name>
+      <identifier>remap.doublepresscommandQ</identifier>
+      <autogen>__DoublePressModifier__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND
+      </autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Switch current setting profile by fn+1,fn+2,fn+3, and fn+4.</name>
+      <appendix>(You can make multiple profiles by MenuBar tab on Preferences.</appendix>
+      <appendix>This setting changes current profile by shortcut.)</appendix>
+      <identifier>remap.switch_profile_fn1_fn4</identifier>
+      <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile0</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile1</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile2</autogen>
+      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile3</autogen>
+    </item>
+    <item>
+      <name>Open Karabiner by fn+K.</name>
+      <appendix>(+ Reload XML by fn+R.)</appendix>
+      <appendix>(+ Open EventViewer by fn+E.)</appendix>
+      <identifier>remap.open_karabiner_by_fn_k</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::K, ModifierFlag::FN | ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_APP_Karabiner,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::R, ModifierFlag::FN | ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_APP_Karabiner_ReloadXML,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, ModifierFlag::FN | ModifierFlag::NONE,
+        KeyCode::VK_OPEN_URL_APP_Karabiner_EventViewer,
+      </autogen>
+    </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
       <!--
       Based off an idea from http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#controlescape
       -->
@@ -17,28 +65,13 @@
         KeyCode::ESCAPE
       </autogen>
     </item>
+    <item><name>──────────────────────────────</name></item>
     <item>
       <name>Change Command+Q to Command+Shift+W</name>
       <appendix>Change Command+Shift_L+Q to Command+Q</appendix>
       <identifier>remap.commandQ2commandW_commandshiftQ2commandQ</identifier>
       <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE</autogen>
       <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,    KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::SHIFT_L</autogen>
-    </item>
-    <item><name>──────────────────────────────</name></item>
-    <item>
-      <name>Hold Command+Q to Quit Application</name>
-      <appendix>(You can adjust the threshold time of holding by</appendix>
-      <appendix>"Holding Key to Key &gt; Holding Threshold" in Key Repeat tab.)</appendix>
-      <identifier>remap.holdcommandQ</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, Option::NOREPEAT</autogen>
-    </item>
-    <item>
-      <name>Press Command+Q twice to Quit Application</name>
-      <identifier>remap.doublepresscommandQ</identifier>
-      <autogen>__DoublePressModifier__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
-        KeyCode::VK_NONE,
-        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND
-      </autogen>
     </item>
     <item>
       <name>Change Command+Q to Escape.</name>
@@ -242,38 +275,6 @@
         Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, ConsumerKeyCode::MUSIC_PLAY,
         KeyCode::VK_OPEN_URL_APP_iTunes,
         KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
-      </autogen>
-    </item>
-    <item><name>──────────────────────────────</name></item>
-    <item>
-      <name>Switch current setting profile by fn+1,fn+2,fn+3, and fn+4.</name>
-      <appendix>(You can make multiple profiles by MenuBar tab on Preferences.</appendix>
-      <appendix>This setting changes current profile by shortcut.)</appendix>
-      <identifier>remap.switch_profile_fn1_fn4</identifier>
-      <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile0</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile1</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile2</autogen>
-      <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::FN, KeyCode::VK_OPEN_URL_APP_Karabiner_Profile3</autogen>
-    </item>
-    <item>
-      <name>Open Karabiner by fn+K.</name>
-      <appendix>(+ Reload XML by fn+R.)</appendix>
-      <appendix>(+ Open EventViewer by fn+E.)</appendix>
-      <identifier>remap.open_karabiner_by_fn_k</identifier>
-      <autogen>
-        __KeyToKey__
-        KeyCode::K, ModifierFlag::FN | ModifierFlag::NONE,
-        KeyCode::VK_OPEN_URL_APP_Karabiner,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::R, ModifierFlag::FN | ModifierFlag::NONE,
-        KeyCode::VK_OPEN_URL_APP_Karabiner_ReloadXML,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::E, ModifierFlag::FN | ModifierFlag::NONE,
-        KeyCode::VK_OPEN_URL_APP_Karabiner_EventViewer,
       </autogen>
     </item>
   </item>
