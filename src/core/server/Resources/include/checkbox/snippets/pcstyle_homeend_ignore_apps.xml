@@ -6,6 +6,11 @@
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::END,  ModifierFlag::SHIFT_L</autogen>
   </block>
   <block>
+    <only>PHOTOSHOP</only>
+    <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+  </block>
+  <block>
     <only>BLUEFISH,WORD,EXCEL,POWERPOINT</only>
     <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::HOME</autogen>
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::END</autogen>
