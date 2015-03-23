@@ -166,6 +166,17 @@ pqrs_xml_compiler_get_url_type(const pqrs_xml_compiler* p, uint32_t keycode) {
   return v->c_str();
 }
 
+uint32_t
+pqrs_xml_compiler_get_url_background(const pqrs_xml_compiler* p, uint32_t keycode) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return 0;
+
+  auto v = xml_compiler->get_url_background(keycode);
+
+  if (v) return 1;
+  return 0;
+}
+
 // ------------------------------------------------------------
 const uint32_t*
 pqrs_xml_compiler_get_remapclasses_initialize_vector_data(const pqrs_xml_compiler* p) {
