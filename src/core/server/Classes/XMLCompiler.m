@@ -371,6 +371,12 @@
   }
 }
 
+- (BOOL)urlIsBackground:(uint32_t)keycode {
+  @synchronized(self) {
+    return pqrs_xml_compiler_get_url_background(pqrs_xml_compiler_, keycode);
+  }
+}
+
 - (NSArray*)preferencepane_checkbox {
   @synchronized(self) {
     return preferencepane_checkbox_;

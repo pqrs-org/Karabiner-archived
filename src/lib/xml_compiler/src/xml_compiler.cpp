@@ -433,6 +433,18 @@ xml_compiler::get_url_type(int keycode) const {
   return it->second->get_type();
 }
 
+bool xml_compiler::get_url_background(int keycode) const {
+    auto it = vk_open_url_map_.find(keycode);
+    if (it == vk_open_url_map_.end()) {
+        return false;
+    }
+
+    if (!it->second) {
+        return false;
+    }
+    return it->second->get_background();
+}
+
 bool xml_compiler::valid_identifier_(const std::string& identifier, const std::string& parent_tag_name) const {
   if (identifier.empty()) {
     error_information_.set("Empty <identifier>.");

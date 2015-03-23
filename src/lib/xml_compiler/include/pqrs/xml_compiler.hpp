@@ -77,6 +77,7 @@ public:
                          const std::string& inputmodeid) const;
   boost::optional<const std::string&> get_url(int keycode) const;
   boost::optional<const std::string&> get_url_type(int keycode) const;
+  bool get_url_background(int keycode) const;
 
   boost::optional<const essential_configuration&> get_essential_configuration(size_t index) const {
     if (index >= essential_configurations_.size()) return boost::none;

@@ -73,7 +73,17 @@
             } else if ([urlType isEqualToString:@"file"]) {
               [[NSWorkspace sharedWorkspace] openFile:url];
             } else {
-              [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+              BOOL openInBackground = [xmlCompiler_ urlIsBackground:option];
+              if (openInBackground) {
+                NSArray *urls = [NSArray arrayWithObject:[NSURL URLWithString:url]];
+                [[NSWorkspace sharedWorkspace] openURLs:urls
+                                withAppBundleIdentifier:nil
+                                                options:NSWorkspaceLaunchWithoutActivation
+                         additionalEventParamDescriptor:nil
+                                      launchIdentifiers:nil];
+              } else {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+              }
             }
           }
           break;

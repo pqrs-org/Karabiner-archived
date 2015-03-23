@@ -35,6 +35,7 @@
           inputModeID:(NSString*)inputModeID;
 - (NSString*)url:(uint32_t)keycode;
 - (NSString*)urlType:(uint32_t)keycode;
+- (BOOL)urlIsBackground:(uint32_t)keycode;
 
 - (NSArray*)preferencepane_checkbox;
 - (NSArray*)preferencepane_number;
