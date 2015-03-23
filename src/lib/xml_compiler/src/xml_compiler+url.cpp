@@ -56,11 +56,8 @@ void xml_compiler::url_loader::traverse(const extracted_ptree& pt) const {
           if (type) {
             newurl->set_type(boost::trim_copy(*type));
           }
-
-          auto background = child.get_optional("<xmlattr>.background");
-          if (background) {
-            newurl->set_background(true);
-          }
+        } else if (child.get_tag_name() == "background") {
+          newurl->set_background(true);
         }
       }
 

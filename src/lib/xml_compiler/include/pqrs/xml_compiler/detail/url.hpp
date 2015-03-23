@@ -20,17 +20,16 @@ public:
   }
   void set_type(const std::string& v) { type_ = v; }
 
-  boost::optional<const bool> get_background(void) const {
-    if (!background_) return false;
-    return *background_;
+  bool get_background(void) const {
+    return background_;
   }
-  void set_background(const bool v) { background_ = v; }
+  void set_background(bool v) { background_ = v; }
 
 private:
   boost::optional<std::string> name_;
   boost::optional<std::string> url_;
   boost::optional<std::string> type_;
-  boost::optional<bool> background_;
+  bool background_;
 };
 
 class url_loader final {

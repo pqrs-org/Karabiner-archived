@@ -433,8 +433,7 @@ xml_compiler::get_url_type(int keycode) const {
   return it->second->get_type();
 }
 
-boost::optional<const bool>
-xml_compiler::get_url_background(int keycode) const {
+bool xml_compiler::get_url_background(int keycode) const {
     auto it = vk_open_url_map_.find(keycode);
     if (it == vk_open_url_map_.end()) {
         return false;
