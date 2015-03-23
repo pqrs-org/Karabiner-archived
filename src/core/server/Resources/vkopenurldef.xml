@@ -34,6 +34,12 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_WEB_pqrs_org_in_background</name>
+    <url>https://pqrs.org/</url>
+    <background />
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_WEB_twitter</name>
     <url>https://twitter.com/</url>
   </vkopenurldef>

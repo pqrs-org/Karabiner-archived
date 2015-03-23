@@ -146,7 +146,8 @@
       <name>VK_OPEN_URL</name>
       <appendix>Command_R+A to Launch Activity Monitor</appendix>
       <appendix>Command_R+F to Launch Finder and Open New Window</appendix>
-      <appendix>Command_R+G to Open Google</appendix>
+      <appendix>Command_R+P to Open https://pqrs.org/</appendix>
+      <appendix>Command_R+B to Open https://pqrs.org/ in background</appendix>
       <appendix>Command_R+S to Launch Safari</appendix>
       <appendix>Command_R+T to Launch TextEdit</appendix>
       <identifier>remap.samples_vk_open_url</identifier>
@@ -158,7 +159,8 @@
         KeyCode::N, ModifierFlag::COMMAND_R,
         Option::NOREPEAT
       </autogen>
-      <autogen>__KeyToKey__ KeyCode::G, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_WEB_google</autogen>
+      <autogen>__KeyToKey__ KeyCode::P, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_WEB_pqrs_org</autogen>
+      <autogen>__KeyToKey__ KeyCode::B, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_WEB_pqrs_org_in_background</autogen>
       <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_Safari</autogen>
       <autogen>__KeyToKey__ KeyCode::T, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
     </item>

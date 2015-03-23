@@ -2,6 +2,8 @@
 
 class url final {
 public:
+  url(void) : background_(false) {}
+
   boost::optional<const std::string&> get_name(void) const {
     if (!name_) return boost::none;
     return *name_;

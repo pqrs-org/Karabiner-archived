@@ -166,8 +166,7 @@ pqrs_xml_compiler_get_url_type(const pqrs_xml_compiler* p, uint32_t keycode) {
   return v->c_str();
 }
 
-bool
-pqrs_xml_compiler_get_url_background(const pqrs_xml_compiler* p, uint32_t keycode) {
+bool pqrs_xml_compiler_get_url_background(const pqrs_xml_compiler* p, uint32_t keycode) {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (!xml_compiler) return 0;
 
