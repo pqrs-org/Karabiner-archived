@@ -75,7 +75,7 @@
             } else {
               BOOL openInBackground = [xmlCompiler_ urlIsBackground:option];
               if (openInBackground) {
-                NSArray *urls = [NSArray arrayWithObject:[NSURL URLWithString:url]];
+                NSArray* urls = [NSArray arrayWithObject:[NSURL URLWithString:url]];
                 [[NSWorkspace sharedWorkspace] openURLs:urls
                                 withAppBundleIdentifier:nil
                                                 options:NSWorkspaceLaunchWithoutActivation
