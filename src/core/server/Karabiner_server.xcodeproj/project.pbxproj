@@ -21,6 +21,7 @@
 		34207C071666209F00E7FD08 /* OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C021666209F00E7FD08 /* OutlineView.m */; };
 		34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C041666209F00E7FD08 /* TableView_configlist.m */; };
 		3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3429B705171A990000C7DB64 /* EnvironmentChecker.m */; };
+		3429B82D1AB8D9AA00DD8E7E /* StatusMessageNormalWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3429B82C1AB8D9AA00DD8E7E /* StatusMessageNormalWindow.xib */; };
 		342A42D81A8EE7EE0007D37E /* IOHIDPostEventWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 342A42D71A8EE7EE0007D37E /* IOHIDPostEventWrapper.m */; };
 		3431D7CB19E1395D00AE3219 /* icon.statusbar.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3431D7CA19E1395D00AE3219 /* icon.statusbar.tif */; };
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
@@ -113,6 +114,7 @@
 		34207C041666209F00E7FD08 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableView_configlist.m; path = Classes/Preferences/TableView_configlist.m; sourceTree = "<group>"; };
 		3429B704171A990000C7DB64 /* EnvironmentChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvironmentChecker.h; path = Classes/EnvironmentChecker.h; sourceTree = "<group>"; };
 		3429B705171A990000C7DB64 /* EnvironmentChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvironmentChecker.m; path = Classes/EnvironmentChecker.m; sourceTree = "<group>"; };
+		3429B82C1AB8D9AA00DD8E7E /* StatusMessageNormalWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusMessageNormalWindow.xib; sourceTree = "<group>"; };
 		342A42D61A8EE7EE0007D37E /* IOHIDPostEventWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOHIDPostEventWrapper.h; path = ../../share/IOHIDPostEventWrapper.h; sourceTree = "<group>"; };
 		342A42D71A8EE7EE0007D37E /* IOHIDPostEventWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOHIDPostEventWrapper.m; path = ../../share/IOHIDPostEventWrapper.m; sourceTree = "<group>"; };
 		3431D7CA19E1395D00AE3219 /* icon.statusbar.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.tif; path = Resources/icon.statusbar.tif; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */,
 				3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */,
 				34738784192589CC00F605BD /* windownamedef.xml */,
+				3429B82C1AB8D9AA00DD8E7E /* StatusMessageNormalWindow.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				34738785192589CC00F605BD /* windownamedef.xml in Resources */,
 				34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */,
 				34192A8618FEC13000AC2390 /* modifierdef.xml in Resources */,
+				3429B82D1AB8D9AA00DD8E7E /* StatusMessageNormalWindow.xib in Resources */,
 				34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */,
 				343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */,
 				3431D7CB19E1395D00AE3219 /* icon.statusbar.tif in Resources */,
