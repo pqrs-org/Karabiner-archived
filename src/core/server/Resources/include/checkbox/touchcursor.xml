@@ -41,6 +41,11 @@
         KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_touchcursor,
         KeyCode::SPACE
       </autogen>
+
+      <block>
+        <config_only>notsave.touchcursor</config_only>
+        <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
+      </block>
     </item>
 
   </item>
