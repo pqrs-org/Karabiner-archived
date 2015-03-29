@@ -63,27 +63,14 @@ enum {
   }
 
   // For OS X 10.10.
-  // (Launchpad uses two windows at the same time. We use either.)
   //
-  // com.apple.dock
-  // {
-  //     kCGWindowAlpha = 1;
-  //     kCGWindowBounds =     {
-  //         Height = 1200;
-  //         Width = 1920;
-  //         X = 0;
-  //         Y = 0;
-  //     };
-  //     kCGWindowIsOnscreen = 1;
-  //     kCGWindowLayer = 29;
-  //     kCGWindowMemoryUsage = 1008;
-  //     kCGWindowName = Dock;
-  //     kCGWindowNumber = 55;
-  //     kCGWindowOwnerName = Dock;
-  //     kCGWindowOwnerPID = 300;
-  //     kCGWindowSharingState = 1;
-  //     kCGWindowStoreType = 1;
-  // }
+  // Dock has two windows (Dock and Launchpad).
+  // If kCGWindowName is "Dock", it is the Dock window.
+  // We need to ignore the Dock window.
+  //
+  // --------------------------------------------------
+  //
+  // When Launchpad is shown:
   //
   // com.apple.dock
   // {
@@ -103,9 +90,55 @@ enum {
   //     kCGWindowSharingState = 1;
   //     kCGWindowStoreType = 1;
   // }
+  //
+  // --------------------------------------------------
+  //
+  // When Launchpad is hidden:
+  //
+  // com.apple.dock
+  // {
+  //     kCGWindowAlpha = 1;
+  //     kCGWindowBounds =     {
+  //         Height = 1200;
+  //         Width = 1920;
+  //         X = 0;
+  //         Y = 0;
+  //     };
+  //     kCGWindowLayer = 20;
+  //     kCGWindowMemoryUsage = 1008;
+  //     kCGWindowNumber = 54;
+  //     kCGWindowOwnerName = Dock;
+  //     kCGWindowOwnerPID = 300;
+  //     kCGWindowSharingState = 1;
+  //     kCGWindowStoreType = 1;
+  // }
+  //
+  // --------------------------------------------------
+  //
+  // The Dock window
+  //
+  // com.apple.dock
+  // {
+  //     kCGWindowAlpha = 1;
+  //     kCGWindowBounds =     {
+  //         Height = 1200;
+  //         Width = 1920;
+  //         X = 0;
+  //         Y = 0;
+  //     };
+  //     kCGWindowIsOnscreen = 1;
+  //     kCGWindowLayer = 20;
+  //     kCGWindowMemoryUsage = 1008;
+  //     kCGWindowName = Dock;
+  //     kCGWindowNumber = 55;
+  //     kCGWindowOwnerName = Dock;
+  //     kCGWindowOwnerPID = 300;
+  //     kCGWindowSharingState = 1;
+  //     kCGWindowStoreType = 1;
+  // }
 
   if ([windowOwnerName isEqualToString:@"Dock"] &&
-      windowLayer == 29) {
+      windowName == nil) {
     return YES;
   }
 
