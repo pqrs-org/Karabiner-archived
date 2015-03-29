@@ -11,7 +11,6 @@ Since 10.6.0
         * &lt;pressingphysicalkeys\_lessthan&gt;
 * Fixed issues:
     * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic)
-    * Failed to detect Launchpad in OS X 10.10.2.
 
 Version 10.6.0
 --------------

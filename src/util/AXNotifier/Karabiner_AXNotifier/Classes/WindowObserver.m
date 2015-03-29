@@ -64,9 +64,15 @@ enum {
 
   // For OS X 10.10.
   //
-  // Dock has two windows (Dock and Launchpad).
-  // If kCGWindowName is "Dock", it is the Dock window.
-  // We need to ignore the Dock window.
+  // Dock has at least two windows (Dock and Launchpad).
+  // When Launchpad is hidden, there is no reliable way to find Launchpad window.
+  //
+  // The only difference between the Dock window and the Launchpad window is that
+  // Dock has kCGWindowName and Launchpad does not have that.
+  //
+  // But it is not robust way.
+  // If we treat windows that does not have kCGWindowName as the Launchpad window,
+  // isLaunchpad will always return YES if other window does not have kCGWindowName and is always shown.
   //
   // --------------------------------------------------
   //
@@ -136,11 +142,6 @@ enum {
   //     kCGWindowSharingState = 1;
   //     kCGWindowStoreType = 1;
   // }
-
-  if ([windowOwnerName isEqualToString:@"Dock"] &&
-      windowName == nil) {
-    return YES;
-  }
 
   return NO;
 }
