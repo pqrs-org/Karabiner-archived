@@ -53,6 +53,83 @@ enum {
   }
 }
 
+- (BOOL)isLaunchpad:(NSString*)windowOwnerName
+         windowName:(NSString*)windowName
+        windowLayer:(NSInteger)windowLayer {
+  // For OS X 10.9.
+  if ([windowOwnerName isEqualToString:@"Dock"] &&
+      [windowName isEqualToString:@"Launchpad"]) {
+    return YES;
+  }
+
+  // For OS X 10.10.
+  // (Launchpad uses two windows at the same time. We use either.)
+  //
+  // com.apple.dock
+  // {
+  //     kCGWindowAlpha = 1;
+  //     kCGWindowBounds =     {
+  //         Height = 1200;
+  //         Width = 1920;
+  //         X = 0;
+  //         Y = 0;
+  //     };
+  //     kCGWindowIsOnscreen = 1;
+  //     kCGWindowLayer = 29;
+  //     kCGWindowMemoryUsage = 1008;
+  //     kCGWindowName = Dock;
+  //     kCGWindowNumber = 55;
+  //     kCGWindowOwnerName = Dock;
+  //     kCGWindowOwnerPID = 300;
+  //     kCGWindowSharingState = 1;
+  //     kCGWindowStoreType = 1;
+  // }
+  //
+  // com.apple.dock
+  // {
+  //     kCGWindowAlpha = 1;
+  //     kCGWindowBounds =     {
+  //         Height = 1200;
+  //         Width = 1920;
+  //         X = 0;
+  //         Y = 0;
+  //     };
+  //     kCGWindowIsOnscreen = 1;
+  //     kCGWindowLayer = 27;
+  //     kCGWindowMemoryUsage = 1008;
+  //     kCGWindowNumber = 54;
+  //     kCGWindowOwnerName = Dock;
+  //     kCGWindowOwnerPID = 300;
+  //     kCGWindowSharingState = 1;
+  //     kCGWindowStoreType = 1;
+  // }
+
+  if ([windowOwnerName isEqualToString:@"Dock"] &&
+      windowLayer == 29) {
+    return YES;
+  }
+
+  return NO;
+}
+
+- (BOOL)isSpotlight:(NSString*)windowOwnerName
+         windowName:(NSString*)windowName
+        windowLayer:(NSInteger)windowLayer {
+  if ([windowOwnerName isEqualToString:@"Spotlight"] &&
+      [windowName isEqualToString:@"Spotlight"]) {
+
+    // There is no reliable public specifications for kCGWindowLayer.
+    // So, we use magic numbers that are confirmed by "warp-mouse-cursor-position".
+
+    // Ignore Spotlight in statusbar.
+    if (0 < windowLayer && windowLayer < 25) {
+      return YES;
+    }
+  }
+
+  return NO;
+}
+
 - (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
@@ -70,20 +147,16 @@ enum {
         NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
         NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
 
-        if ([windowOwnerName isEqualToString:@"Dock"] &&
-            [windowName isEqualToString:@"Launchpad"]) {
+        if ([self isLaunchpad:windowOwnerName
+                   windowName:windowName
+                  windowLayer:windowLayer]) {
           rawWindowIDs_[WINDOWID_LAUNCHPAD] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
         }
 
-        if ([windowOwnerName isEqualToString:@"Spotlight"] &&
-            [windowName isEqualToString:@"Spotlight"]) {
-          // There is no reliable public specifications for kCGWindowLayer.
-          // So, we use magic numbers that are confirmed by "warp-mouse-cursor-position".
-
-          // Ignore Spotlight in statusbar.
-          if (0 < windowLayer && windowLayer < 25) {
-            rawWindowIDs_[WINDOWID_SPOTLIGHT] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          }
+        if ([self isSpotlight:windowOwnerName
+                   windowName:windowName
+                  windowLayer:windowLayer]) {
+          rawWindowIDs_[WINDOWID_SPOTLIGHT] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
         }
       }
 
@@ -106,27 +179,19 @@ enum {
         NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(windowIDs_));
         for (NSDictionary* window in windows) {
           pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
-          NSString* windowOwnerName = window[(__bridge NSString*)(kCGWindowOwnerName)];
-          NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
+          long windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
           BOOL isOnScreen = [window[(__bridge NSString*)(kCGWindowIsOnscreen)] boolValue];
 
-          if ([windowOwnerName isEqualToString:@"Dock"] &&
-              [windowName isEqualToString:@"Launchpad"]) {
-            NSString* key = @"Launchpad";
-            if (isOnScreen) {
-              if (! shown_[key]) {
-                NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
-                if (bundleIdentifier) {
-                  shown_[key] = bundleIdentifier;
-                  [self postNotification:key bundleIdentifier:shown_[key] visibility:YES];
-                }
-              }
-              return;
-            }
+          NSString* key = NULL;
+
+          if (rawWindowIDs_[WINDOWID_LAUNCHPAD] == windowNumber) {
+            key = @"Launchpad";
           }
-          if ([windowOwnerName isEqualToString:@"Spotlight"] &&
-              [windowName isEqualToString:@"Spotlight"]) {
-            NSString* key = @"Spotlight";
+          if (rawWindowIDs_[WINDOWID_SPOTLIGHT] == windowNumber) {
+            key = @"Spotlight";
+          }
+
+          if (key) {
             if (isOnScreen) {
               if (! shown_[key]) {
                 NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
@@ -140,6 +205,9 @@ enum {
           }
         }
       }
+
+      // ----------------------------------------
+      // There is no target window in screen.
 
       for (NSString* key in shown_) {
         if (shown_[key]) {
