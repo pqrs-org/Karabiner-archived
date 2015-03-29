@@ -1,7 +1,7 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "StatusMessageView_normal.h"
-#import "StatusWindow.h"
+#import "StatusMessageManager.h"
 #include "bridge.h"
 
 @interface StatusWindow () {

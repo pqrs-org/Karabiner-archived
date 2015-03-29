@@ -12,7 +12,7 @@
 #import "ServerForUserspace.h"
 #import "StartAtLoginUtilities.h"
 #import "StatusBar.h"
-#import "StatusWindow.h"
+#import "StatusMessageManager.h"
 #import "Updater.h"
 #import "WorkSpaceData.h"
 #include <stdlib.h>
