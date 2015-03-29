@@ -1237,7 +1237,7 @@
       </item>
     </item>
     <item>
-      <name>Hack for the bug of OS X</name>
+      <name>Hack for bugs of OS X</name>
       <item>
         <name>Disable Command/Control/Option/Shift+EISUU, Command/Control/Option/Shift+KANA</name>
         <appendix>(to prevent the system hangup at Snow Leopard)</appendix>
