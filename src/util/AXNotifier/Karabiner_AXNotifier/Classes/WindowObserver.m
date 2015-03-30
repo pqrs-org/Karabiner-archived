@@ -13,7 +13,7 @@ enum {
   NSMutableDictionary* shown_;
 
   // rawWindowIDs_ should be pointer sized type in order to pass CFArrayCreate.
-  // (We need to manager long[] in order to put non-object-pointer into CFArray.)
+  // (We need to manage long[] in order to put non-object-pointer into CFArray.)
   long rawWindowIDs_[WINDOWID__END__];
   CFArrayRef windowIDs_;
 }
