@@ -1240,7 +1240,8 @@
       <name>Hack for bugs of OS X</name>
       <item>
         <name>Disable Command/Control/Option/Shift+EISUU, Command/Control/Option/Shift+KANA</name>
-        <appendix>(to prevent the system hangup at Snow Leopard)</appendix>
+        <appendix>* This setting prevents the app hangup.</appendix>
+        <appendix>* This setting prevents unintended up-arrow injection.</appendix>
         <identifier>option.jis_drop_eisuukana_with_modifiers</identifier>
         <autogen>__DropKeyAfterRemap__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
         <autogen>__DropKeyAfterRemap__ KeyCode::JIS_KANA,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
