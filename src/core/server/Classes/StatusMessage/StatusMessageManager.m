@@ -174,6 +174,17 @@
     }
 
     NSString* message = lines_[idx];
+
+    // append caps lock status to modifier lock.
+    if ([defaults boolForKey:kIsStatusWindowShowCapsLock]) {
+      if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK) {
+        NSString* capslock = lines_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK];
+        if ([capslock length] > 0) {
+          message = [NSString stringWithFormat:@"%@%@", capslock, message];
+        }
+      }
+    }
+
     if ([message length] > 0) {
       NSString* name = nil;
       switch (idx) {

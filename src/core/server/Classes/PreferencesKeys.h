@@ -5,6 +5,7 @@
 #define kConfigListSelectedIndex @"selectedIndex"
 #define kCheckForUpdates @"isCheckUpdate"
 #define kIsStatusWindowEnabled @"isStatusWindowEnabled"
+#define kIsStatusWindowShowCapsLock @"isStatusWindowShowCapsLock"
 #define kIsStatusWindowShowStickyModifier @"isStatusWindowShowStickyModifier"
 #define kIsStatusWindowShowPointingButtonLock @"isStatusWindowShowPointingButtonLock"
 #define kStatusWindowType @"statusWindowType"

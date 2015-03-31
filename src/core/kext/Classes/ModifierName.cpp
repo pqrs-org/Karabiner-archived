@@ -7,7 +7,7 @@ void ModifierName::clearVirtualModifiers(void) {
   items_.clear();
 
   // Register normal modifiers.
-  items_.push_back(Item(ModifierFlag::CAPSLOCK, "caps lock"));
+  items_.push_back(Item(ModifierFlag::CAPSLOCK, "caps"));
   items_.push_back(Item(ModifierFlag::SHIFT_L, "shift"));
   items_.push_back(Item(ModifierFlag::SHIFT_R, "shift"));
   items_.push_back(Item(ModifierFlag::CONTROL_L, "control"));

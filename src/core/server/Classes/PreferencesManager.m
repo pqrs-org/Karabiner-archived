@@ -21,6 +21,7 @@
     kConfigListSelectedIndex : @0,
     kCheckForUpdates : @1,
     kIsStatusWindowEnabled : @YES,
+    kIsStatusWindowShowCapsLock : @NO,
     kIsStatusWindowShowStickyModifier : @NO,
     kIsStatusWindowShowPointingButtonLock : @YES,
     kStatusWindowType : @0,  // Normal

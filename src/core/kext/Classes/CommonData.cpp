@@ -42,8 +42,7 @@ void CommonData::send_notification_statusmessage(int index) {
   org_pqrs_driver_Karabiner_UserClient_kext::send_notification_to_userspace(BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED, index);
 }
 
-const char*
-CommonData::get_statusmessage(int index) {
+const char* CommonData::get_statusmessage(int index) {
   if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return NULL;
   if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return NULL;
 

@@ -55,11 +55,11 @@ void FlagStatus::Item::reset(void) {
   lazy_enabled_ = false;
 
   /*
-       preserve lock_count, negative_lock_count_ and sticky_count_.
+      preserve lock_count, negative_lock_count_ and sticky_count_.
 
-       FlagStatus::reset is called when PressingPhysicalKeys is empty,
-       so we need remember the status of CapsLock.
-     */
+      FlagStatus::reset is called when PressingPhysicalKeys is empty,
+      so we need remember the status of CapsLock.
+    */
 }
 
 void FlagStatus::Item::increase(void) {
@@ -107,18 +107,21 @@ void FlagStatus::set(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].set();
   }
+  updateStatusMessage();
 }
 
 void FlagStatus::set(KeyCode key, Flags flags) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].set(key, flags);
   }
+  updateStatusMessage();
 }
 
 void FlagStatus::reset(void) {
   for (size_t i = 0; i < item_.size(); ++i) {
     item_[i].reset();
   }
+  updateStatusMessage();
 }
 
 bool FlagStatus::isOn(ModifierFlag modifierFlag) const {
@@ -209,6 +212,9 @@ FlagStatus::getFlag(size_t index) const {
     for (size_t i = 0; i < item_.size(); ++i) {                                                  \
       if (modifierFlag == item_[i].flag_) {                                                      \
         item_[i].METHOD();                                                                       \
+        if (item_[i].flag_ == ModifierFlag::CAPSLOCK) {                                          \
+          updateStatusMessage();                                                                 \
+        }                                                                                        \
       }                                                                                          \
     }                                                                                            \
   }                                                                                              \
@@ -216,6 +222,9 @@ FlagStatus::getFlag(size_t index) const {
     for (size_t i = 0; i < item_.size(); ++i) {                                                  \
       if (modifierFlag == item_[i].flag_ || modifierFlags.is_include(item_[i].flag_)) {          \
         item_[i].METHOD();                                                                       \
+        if (item_[i].flag_ == ModifierFlag::CAPSLOCK) {                                          \
+          updateStatusMessage();                                                                 \
+        }                                                                                        \
       }                                                                                          \
     }                                                                                            \
   }                                                                                              \
@@ -223,6 +232,9 @@ FlagStatus::getFlag(size_t index) const {
     for (size_t i = 0; i < item_.size(); ++i) {                                                  \
       if (modifierFlags.is_include(item_[i].flag_)) {                                            \
         item_[i].METHOD();                                                                       \
+        if (item_[i].flag_ == ModifierFlag::CAPSLOCK) {                                          \
+          updateStatusMessage();                                                                 \
+        }                                                                                        \
       }                                                                                          \
     }                                                                                            \
   }
@@ -344,20 +356,29 @@ void FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
   CommonData::clear_statusmessage(statusMessageIndex);
 
   for (size_t i = 0; i < item_.size(); ++i) {
-    // Skip caps lock.
-    if (item_[i].flag_ == ModifierFlag::CAPSLOCK) continue;
-
     const char* name = ModifierName::getName(item_[i].flag_);
     if (name) {
       switch (statusMessageIndex) {
       case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
-        if (item_[i].negative_lock_count_ > 0) {
-          CommonData::append_statusmessage(statusMessageIndex, "-");
-          CommonData::append_statusmessage(statusMessageIndex, name);
-          CommonData::append_statusmessage(statusMessageIndex, " ");
-        } else if (item_[i].lock_count_ > 0) {
-          CommonData::append_statusmessage(statusMessageIndex, name);
-          CommonData::append_statusmessage(statusMessageIndex, " ");
+        // Skip caps lock.
+        if (item_[i].flag_ != ModifierFlag::CAPSLOCK) {
+          if (item_[i].negative_lock_count_ > 0) {
+            CommonData::append_statusmessage(statusMessageIndex, "-");
+            CommonData::append_statusmessage(statusMessageIndex, name);
+            CommonData::append_statusmessage(statusMessageIndex, " ");
+          } else if (item_[i].lock_count_ > 0) {
+            CommonData::append_statusmessage(statusMessageIndex, name);
+            CommonData::append_statusmessage(statusMessageIndex, " ");
+          }
+        }
+        break;
+
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK:
+        if (item_[i].flag_ == ModifierFlag::CAPSLOCK) {
+          if (item_[i].lock_count_ > 0) {
+            CommonData::append_statusmessage(statusMessageIndex, name);
+            CommonData::append_statusmessage(statusMessageIndex, " ");
+          }
         }
         break;
 
@@ -375,6 +396,7 @@ void FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
 void FlagStatus::updateStatusMessage(void) {
   int indexes[] = {
       BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK,
       BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
   };
   for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
