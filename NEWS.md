@@ -2,6 +2,7 @@ Since 10.6.0
 ------------
 
 * New option has been added into command line interface: `toggle`
+* "Status Message > Show caps lock state" option has been added.
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
     * Option::KEYTOKEY_DELAYED_ACTION has been added.
