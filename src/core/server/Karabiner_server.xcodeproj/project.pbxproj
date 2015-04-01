@@ -38,6 +38,7 @@
 		34738785192589CC00F605BD /* windownamedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34738784192589CC00F605BD /* windownamedef.xml */; };
 		347828F613EE5F3400D50AB1 /* karabiner_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* karabiner_pub.pem */; };
 		3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */; };
+		3481FAA11ACC48510063828A /* StatusMessageNormalWindow.xib in Sources */ = {isa = PBXBuildFile; fileRef = 340D08811AC8463A006DD5ED /* StatusMessageNormalWindow.xib */; };
 		34848260152F526B00A9A3BE /* libxml_compiler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3484825F152F526B00A9A3BE /* libxml_compiler.a */; };
 		34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34848265152F54B700A9A3BE /* XMLCompiler.m */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
@@ -507,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3481FAA11ACC48510063828A /* StatusMessageNormalWindow.xib in Sources */,
 				349120481925E19C0088F2C3 /* FrontmostWindow.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
