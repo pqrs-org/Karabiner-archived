@@ -54,7 +54,7 @@
 
           if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) return;
 
-          [statusWindow_ setStatusMessage:option message:@(buf)];
+          [statusMessageManager_ setStatusMessage:option message:@(buf)];
           break;
         }
 

@@ -5,7 +5,7 @@
 
 @class IOHIDPostEventWrapper;
 @class PreferencesManager;
-@class StatusWindow;
+@class StatusMessageManager;
 @class UserClient_userspace;
 @class WorkSpaceData;
 @class XMLCompiler;
@@ -13,7 +13,7 @@
 @interface ClientForKernelspace : NSObject {
   IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper_;
   IBOutlet PreferencesManager* preferencesManager_;
-  IBOutlet StatusWindow* statusWindow_;
+  IBOutlet StatusMessageManager* statusMessageManager_;
   IBOutlet WorkSpaceData* workSpaceData_;
   IBOutlet XMLCompiler* xmlCompiler_;
 }

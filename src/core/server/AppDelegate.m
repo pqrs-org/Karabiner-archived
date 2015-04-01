@@ -218,7 +218,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
 
-    [statusWindow_ resetStatusMessage];
+    [statusMessageManager_ resetStatusMessage];
 
     [self registerIONotification];
     [self registerWakeNotification];
@@ -229,7 +229,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_async(dispatch_get_main_queue(), ^{
     NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
 
-    [statusWindow_ resetStatusMessage];
+    [statusMessageManager_ resetStatusMessage];
 
     [self unregisterIONotification];
     [self unregisterWakeNotification];
@@ -301,7 +301,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self registerIONotification];
   [self registerWakeNotification];
 
-  [statusWindow_ setupStatusWindow];
+  [statusMessageManager_ setupStatusMessageManager];
   [statusbar_ refresh];
   [xmlCompiler_ reload];
 

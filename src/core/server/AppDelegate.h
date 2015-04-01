@@ -8,7 +8,7 @@
 @class PreferencesManager;
 @class ServerForUserspace;
 @class StatusBar;
-@class StatusWindow;
+@class StatusMessageManager;
 @class Updater;
 @class WorkSpaceData;
 @class XMLCompiler;
@@ -19,7 +19,7 @@
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet ServerForUserspace* serverForUserspace_;
   IBOutlet StatusBar* statusbar_;
-  IBOutlet StatusWindow* statusWindow_;
+  IBOutlet StatusMessageManager* statusMessageManager_;
   IBOutlet Updater* updater_;
   IBOutlet WorkSpaceData* workSpaceData_;
   IBOutlet XMLCompiler* xmlCompiler_;

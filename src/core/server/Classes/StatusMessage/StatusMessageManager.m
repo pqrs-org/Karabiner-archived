@@ -4,7 +4,7 @@
 #import "StatusMessageManager.h"
 #include "bridge.h"
 
-@interface StatusWindow () {
+@interface StatusMessageManager () {
   BOOL statusWindowPreferencesOpened_;
   NSMutableArray* windows_;
   NSMutableArray* lines_;
@@ -12,7 +12,7 @@
 }
 @end
 
-@implementation StatusWindow
+@implementation StatusMessageManager
 
 // ------------------------------------------------------------
 - (void)observer_NSApplicationDidChangeScreenParametersNotification:(NSNotification*)notification {
@@ -114,7 +114,7 @@
   [[window contentView] setMessage:@""];
 }
 
-- (void)setupStatusWindow {
+- (void)setupStatusMessageManager {
   if ([windows_ count] == 0) {
     [statusMessage_normal_ setTitle:@"normal"];
     [statusMessage_nano_ setTitle:@"nano"];

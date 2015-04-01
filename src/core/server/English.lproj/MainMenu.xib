@@ -1257,7 +1257,7 @@ Label</string>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
         </window>
-        <customObject id="606" customClass="StatusWindow">
+        <customObject id="606" customClass="StatusMessageManager">
             <connections>
                 <outlet property="statusMessage_edge_" destination="1413" id="1418"/>
                 <outlet property="statusMessage_nano_" destination="1393" id="1400"/>
@@ -1280,7 +1280,7 @@ Label</string>
                 <outlet property="preferencesController_" destination="1181" id="1207"/>
                 <outlet property="preferencesManager_" destination="592" id="608"/>
                 <outlet property="serverForUserspace_" destination="593" id="627"/>
-                <outlet property="statusWindow_" destination="606" id="607"/>
+                <outlet property="statusMessageManager_" destination="606" id="607"/>
                 <outlet property="statusbar_" destination="552" id="561"/>
                 <outlet property="updater_" destination="588" id="614"/>
                 <outlet property="workSpaceData_" destination="596" id="598"/>
@@ -1361,7 +1361,7 @@ Label</string>
             <connections>
                 <outlet property="iohidPostEventWrapper_" destination="1320" id="uDb-nH-9ck"/>
                 <outlet property="preferencesManager_" destination="592" id="2bq-UB-2Ld"/>
-                <outlet property="statusWindow_" destination="606" id="Cyy-F3-fIz"/>
+                <outlet property="statusMessageManager_" destination="606" id="Cyy-F3-fIz"/>
                 <outlet property="workSpaceData_" destination="596" id="aSv-UU-EmW"/>
                 <outlet property="xmlCompiler_" destination="591" id="81H-Ss-LEK"/>
             </connections>
