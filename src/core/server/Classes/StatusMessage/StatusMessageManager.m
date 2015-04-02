@@ -19,7 +19,7 @@
 // ------------------------------------------------------------
 - (void)observer_NSApplicationDidChangeScreenParametersNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-      [self updateWindows];
+      [self refresh:self];
   });
 }
 
