@@ -2,11 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface StatusMessageManager : NSObject {
-  IBOutlet NSWindow* statusMessage_normal_;
-  IBOutlet NSWindow* statusMessage_nano_;
-  IBOutlet NSWindow* statusMessage_edge_;
-}
+@interface StatusMessageManager : NSObject
 
 - (void)setupStatusMessageManager;
 
