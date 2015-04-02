@@ -90,11 +90,11 @@
   [NSGraphicsContext restoreGraphicsState];
 }
 
-- (void)updateWindowFrame {
+- (void)updateWindowFrame:(NSScreen*)screen {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSInteger position = [defaults integerForKey:kStatusWindowPosition];
 
-  NSRect screenFrame = [[NSScreen mainScreen] visibleFrame];
+  NSRect screenFrame = [screen visibleFrame];
   NSRect windowFrame = [[self window] frame];
   int margin = 10;
   NSPoint point;

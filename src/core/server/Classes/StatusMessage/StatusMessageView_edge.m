@@ -5,7 +5,7 @@
 
 @implementation StatusMessageView_edge
 
-- (void)updateWindowFrame {
+- (void)updateWindowFrame:(NSScreen*)screen {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSInteger position = [defaults integerForKey:kStatusWindowPosition];
   NSInteger fontsize = [defaults integerForKey:kStatusWindowFontSize];
@@ -25,7 +25,7 @@
     break;
   }
 
-  NSRect rect = [[NSScreen mainScreen] frame];
+  NSRect rect = [screen frame];
   switch (position) {
   case 0:
     // Top left -> Top

@@ -20,7 +20,6 @@
 - (void)observer_NSApplicationDidChangeScreenParametersNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
       [self updateWindows];
-      [self updateFrameOrigin];
   });
 }
 
@@ -119,7 +118,7 @@
   [[window contentView] setMessage:@""];
 }
 
-- (BOOL)isNeedUpdateWindows {
+- (BOOL)isNeedReplaceWindows {
   // ----------------------------------------
   // Check count.
   if ([windowControllers_ count] == 0) {
@@ -171,34 +170,39 @@
 }
 
 - (void)updateWindows {
-  if (![self isNeedUpdateWindows]) {
-    return;
+  NSArray* screens = [NSScreen screens];
+  NSUInteger screenCount = [screens count];
+
+  if ([self isNeedReplaceWindows]) {
+    for (NSWindowController* controller in windowControllers_) {
+      [self hideStatusWindow:controller];
+    }
+    [windowControllers_ removeAllObjects];
+
+    NSString* nibName = [self windowNibName];
+    for (NSUInteger i = 0; i < screenCount; ++i) {
+      NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:nibName];
+      [self setupStatusWindow:controller];
+      [windowControllers_ addObject:controller];
+    }
   }
 
-  for (NSWindowController* controller in windowControllers_) {
-    [self hideStatusWindow:controller];
-  }
-  [windowControllers_ removeAllObjects];
-
-  NSString* nibName = [self windowNibName];
-  NSUInteger screenCount = [[NSScreen screens] count];
-  for (NSUInteger i = 0; i < screenCount; ++i) {
-    NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:nibName];
-    [self setupStatusWindow:controller];
-    [windowControllers_ addObject:controller];
+  // updateWindowFrame
+  if ([windowControllers_ count] == screenCount) {
+    for (NSUInteger i = 0; i < screenCount; ++i) {
+      [[[windowControllers_[i] window] contentView] updateWindowFrame:screens[i]];
+    }
   }
 }
 
 - (void)setupStatusMessageManager {
   [self updateWindows];
-  [self updateFrameOrigin];
 }
 
 // ------------------------------------------------------------
 - (IBAction)refresh:(id)sender;
 {
   [self updateWindows];
-  [self updateFrameOrigin];
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   if (![defaults boolForKey:kIsStatusWindowEnabled]) {
@@ -304,12 +308,6 @@
 - (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message {
   lines_[lineIndex] = message;
   [self refresh:self];
-}
-
-- (void)updateFrameOrigin {
-  for (NSWindowController* controller in windowControllers_) {
-    [[[controller window] contentView] updateWindowFrame];
-  }
 }
 
 @end

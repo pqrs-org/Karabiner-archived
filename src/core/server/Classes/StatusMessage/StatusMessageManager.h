@@ -7,7 +7,7 @@
 - (void)setupStatusMessageManager;
 
 - (void)resetStatusMessage;
-- (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message;
+- (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString *)message;
 
 - (IBAction)refresh:(id)sender;
 

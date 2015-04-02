@@ -5,6 +5,6 @@
 }
 
 - (void)setMessage:(NSString*)message;
-- (void)updateWindowFrame;
+- (void)updateWindowFrame:(NSScreen*)screen;
 
 @end
