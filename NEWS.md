@@ -3,7 +3,7 @@ Since 10.6.0
 
 * New option has been added into command line interface: `toggle`
 * "Status Message > Show caps lock state" option has been added.
-* Multiple displays support has been improved. The indicator is shown in the all screen.
+* Multiple displays support has been improved. The status message will be shown in the all screen.
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
     * Option::KEYTOKEY_DELAYED_ACTION has been added.
