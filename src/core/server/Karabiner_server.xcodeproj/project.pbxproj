@@ -39,6 +39,8 @@
 		347828F613EE5F3400D50AB1 /* karabiner_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* karabiner_pub.pem */; };
 		3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */; };
 		3481FAA11ACC48510063828A /* StatusMessageNormalWindow.xib in Sources */ = {isa = PBXBuildFile; fileRef = 340D08811AC8463A006DD5ED /* StatusMessageNormalWindow.xib */; };
+		3481FAA31ACC4B020063828A /* StatusMessageNanoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */; };
+		3481FAA41ACC4C280063828A /* StatusMessageNanoWindow.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */; };
 		34848260152F526B00A9A3BE /* libxml_compiler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3484825F152F526B00A9A3BE /* libxml_compiler.a */; };
 		34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = 34848265152F54B700A9A3BE /* XMLCompiler.m */; };
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
@@ -136,6 +138,7 @@
 		34738784192589CC00F605BD /* windownamedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = windownamedef.xml; path = Resources/windownamedef.xml; sourceTree = "<group>"; };
 		347828F513EE5F3400D50AB1 /* karabiner_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = karabiner_pub.pem; path = Resources/karabiner_pub.pem; sourceTree = "<group>"; };
 		3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkopenurldef.xml; path = Resources/vkopenurldef.xml; sourceTree = "<group>"; };
+		3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatusMessageNanoWindow.xib; path = Resources/StatusMessageNanoWindow.xib; sourceTree = "<group>"; };
 		3484825F152F526B00A9A3BE /* libxml_compiler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml_compiler.a; path = ../../lib/xml_compiler/build/Release/libxml_compiler.a; sourceTree = "<group>"; };
 		34848264152F533500A9A3BE /* XMLCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLCompiler.h; path = Classes/XMLCompiler.h; sourceTree = "<group>"; };
 		34848265152F54B700A9A3BE /* XMLCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLCompiler.m; path = Classes/XMLCompiler.m; sourceTree = "<group>"; };
@@ -302,6 +305,7 @@
 				34D590261531983100160DFC /* number.xml */,
 				345248A21298F8A2005447DE /* private.xml */,
 				34FEAE4C148695AE0042D507 /* replacementdef.xml */,
+				3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */,
 				340D08811AC8463A006DD5ED /* StatusMessageNormalWindow.xib */,
 				343A17D81529A5B400F2E968 /* symbol_map.xml */,
 				344F10251936539F00D240DC /* uielementroledef.xml */,
@@ -449,6 +453,7 @@
 				345248A31298F8A2005447DE /* private.xml in Resources */,
 				343BB0CA13E055B10037A81F /* app.icns in Resources */,
 				347828F613EE5F3400D50AB1 /* karabiner_pub.pem in Resources */,
+				3481FAA31ACC4B020063828A /* StatusMessageNanoWindow.xib in Resources */,
 				34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */,
 				3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */,
 				3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */,
@@ -508,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3481FAA41ACC4C280063828A /* StatusMessageNanoWindow.xib in Sources */,
 				3481FAA11ACC48510063828A /* StatusMessageNormalWindow.xib in Sources */,
 				349120481925E19C0088F2C3 /* FrontmostWindow.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
