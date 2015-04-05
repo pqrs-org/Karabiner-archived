@@ -420,10 +420,10 @@ void VirtualKey::VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTime
     int s = scale_;
     if (highspeed_) s = Config::get_mousekey_high_speed_of_scroll();
 
-    int delta1 = -dy_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
-    int delta2 = -dx_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+    int delta1 = dy_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+    int delta2 = dx_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
 
-    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mouse_key_scroll_natural_direction)) {
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mouse_key_scroll_not_natural_direction)) {
       delta1 = -delta1;
       delta2 = -delta2;
     }
