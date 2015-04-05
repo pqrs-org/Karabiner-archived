@@ -3,6 +3,7 @@ Since 10.6.0
 
 * *Incompatibility changes*:
     * The default mouse keys scroll direction has been changed to `natural`.
+
 * New option has been added into command line interface: `toggle`
 * "Status Message > Show caps lock state" option has been added.
 * Multiple displays support has been improved. The status message will be shown in the all screen.
