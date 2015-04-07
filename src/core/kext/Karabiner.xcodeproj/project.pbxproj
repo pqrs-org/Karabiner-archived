@@ -13,6 +13,8 @@
 		3405382313E6ED7E009DF83F /* DropScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */; };
 		340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 340800D513BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp */; };
 		340800D813BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 340800D613BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp */; };
+		34096FEC1AD3E92E00481A54 /* DropKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34096FEA1AD3E92E00481A54 /* DropKey.cpp */; };
+		34096FED1AD3E92E00481A54 /* DropKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34096FEB1AD3E92E00481A54 /* DropKey.hpp */; };
 		341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */; };
 		341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */; };
 		34213BB71860A4F7002CBAB9 /* ToEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34213BB61860A4F7002CBAB9 /* ToEvent.cpp */; };
@@ -174,6 +176,8 @@
 		3405382113E6ED7E009DF83F /* DropScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropScrollWheel.hpp; path = RemapFunc/DropScrollWheel.hpp; sourceTree = "<group>"; };
 		340800D513BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DependingPressingPeriodKeyToKey.cpp; path = RemapFunc/common/DependingPressingPeriodKeyToKey.cpp; sourceTree = "<group>"; };
 		340800D613BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DependingPressingPeriodKeyToKey.hpp; path = RemapFunc/common/DependingPressingPeriodKeyToKey.hpp; sourceTree = "<group>"; };
+		34096FEA1AD3E92E00481A54 /* DropKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropKey.cpp; path = RemapFunc/DropKey.cpp; sourceTree = "<group>"; };
+		34096FEB1AD3E92E00481A54 /* DropKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropKey.hpp; path = RemapFunc/DropKey.hpp; sourceTree = "<group>"; };
 		341272FC11D8FE0E000A62DB /* HoldingKeyToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HoldingKeyToKey.cpp; path = RemapFunc/HoldingKeyToKey.cpp; sourceTree = "<group>"; };
 		341272FD11D8FE0E000A62DB /* HoldingKeyToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HoldingKeyToKey.hpp; path = RemapFunc/HoldingKeyToKey.hpp; sourceTree = "<group>"; };
 		34213BB61860A4F7002CBAB9 /* ToEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToEvent.cpp; path = Classes/ToEvent.cpp; sourceTree = "<group>"; };
@@ -412,6 +416,8 @@
 				342BB27A13BB6A7400E18FDD /* common */,
 				3443E80F11D8536B00BB28FB /* DoublePressModifier.cpp */,
 				3443E81011D8536B00BB28FB /* DoublePressModifier.hpp */,
+				34096FEA1AD3E92E00481A54 /* DropKey.cpp */,
+				34096FEB1AD3E92E00481A54 /* DropKey.hpp */,
 				34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */,
 				34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */,
 				344BB4EC12812A9F008B75F6 /* DropPointingRelativeCursorMove.cpp */,
@@ -585,6 +591,7 @@
 				345004AE0E7CE48F0075324B /* Core.hpp in Headers */,
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
 				34779382185B1FA800B3EF06 /* Vector.hpp in Headers */,
+				34096FED1AD3E92E00481A54 /* DropKey.hpp in Headers */,
 				3477936D185B1FA800B3EF06 /* KeyboardRepeat.hpp in Headers */,
 				349A10911907D0290000E43F /* BlockUntilKeyUp.hpp in Headers */,
 				34D5B57419B1BECA00ABD446 /* RemapFuncBase.hpp in Headers */,
@@ -788,6 +795,7 @@
 				3477935F185B1FA800B3EF06 /* EventOutputQueue.cpp in Sources */,
 				34779363185B1FA800B3EF06 /* FlagStatus.cpp in Sources */,
 				34213BB71860A4F7002CBAB9 /* ToEvent.cpp in Sources */,
+				34096FEC1AD3E92E00481A54 /* DropKey.cpp in Sources */,
 				34B464F313A65AED00470265 /* VK_JIS_BACKSLASH.cpp in Sources */,
 				34B464F713A65B6600470265 /* VK_JIS_YEN.cpp in Sources */,
 				340800D713BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp in Sources */,

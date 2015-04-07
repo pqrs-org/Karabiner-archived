@@ -1495,6 +1495,57 @@ Two Lines</autogen>
     </item>
 
     <item>
+      <name>DropKey</name>
+      <item>
+        <identifier>remap.samples_drop_key</identifier>
+        <appendix>Drop all key combinations while the right option key is pressed.</appendix>
+        <appendix>(Except option-qwer)</appendix>
+        <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::Q, ModifierFlag::OPTION_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::OPTION_R, KeyCode::W, ModifierFlag::OPTION_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::OPTION_R, KeyCode::E, ModifierFlag::OPTION_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::OPTION_R, KeyCode::R, ModifierFlag::OPTION_R</autogen>
+        <autogen>
+          __DropKey__
+          ModifierFlag::OPTION_R,
+
+          Option::DROPKEY_DROP_KEY,
+          Option::DROPKEY_DROP_CONSUMERKEY,
+          Option::DROPKEY_DROP_POINTINGBUTTON,
+        </autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_drop_key_key</identifier>
+        <appendix>Drop all keys while the right option key is pressed.</appendix>
+        <autogen>
+          __DropKey__
+          ModifierFlag::OPTION_R,
+
+          Option::DROPKEY_DROP_KEY,
+        </autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_drop_key_consumerkey</identifier>
+        <appendix>Drop all consumer keys while the right option key is pressed.</appendix>
+        <autogen>
+          __DropKey__
+          ModifierFlag::OPTION_R,
+
+          Option::DROPKEY_DROP_CONSUMERKEY,
+        </autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_drop_key_pointingbutton</identifier>
+        <appendix>Drop all pointing buttons while the right option key is pressed.</appendix>
+        <autogen>
+          __DropKey__
+          ModifierFlag::OPTION_R,
+
+          Option::DROPKEY_DROP_POINTINGBUTTON,
+        </autogen>
+      </item>
+    </item>
+
+    <item>
       <name>DropPointingRelativeCursorMove</name>
       <item>
         <identifier>remap.samples_droppointingrelativecursormove_config</identifier>

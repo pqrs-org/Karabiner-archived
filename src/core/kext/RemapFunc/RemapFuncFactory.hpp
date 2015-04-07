@@ -4,6 +4,7 @@
 #include "bridge.h"
 #include "BlockUntilKeyUp.hpp"
 #include "DoublePressModifier.hpp"
+#include "DropKey.hpp"
 #include "DropKeyAfterRemap.hpp"
 #include "DropPointingRelativeCursorMove.hpp"
 #include "DropScrollWheel.hpp"
@@ -47,6 +48,9 @@ public:
       break;
     case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:
       p = new DoublePressModifier();
+      break;
+    case BRIDGE_REMAPTYPE_DROPKEY:
+      p = new DropKey();
       break;
     case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:
       p = new DropKeyAfterRemap();
