@@ -80,7 +80,7 @@ void RemapClass::Item::remap(RemapParams& remapParams) {
     return;
   }
 
-  active_ = iskeydown;
+  active_ = processor_->isActive(iskeydown);
 }
 
 bool RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
@@ -99,7 +99,7 @@ bool RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
     return false;
   }
 
-  active_ = params.ex_iskeydown;
+  active_ = processor_->isActive(params.ex_iskeydown);
   return true;
 }
 

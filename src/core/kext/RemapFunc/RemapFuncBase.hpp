@@ -59,6 +59,8 @@ public:
   virtual bool remapForceNumLockOn(ListHookedKeyboard::Item* item) { return false; }
   virtual const FromEvent* getBlockUntilKeyUpFromEvent(void) const { return NULL; }
 
+  virtual bool isActive(bool iskeydown) { return iskeydown; }
+
   unsigned int getType(void) const { return type_; }
   void setIgnorePassThrough(bool v) { ignorePassThrough_ = v; }
   bool getIgnorePassThrough(void) const { return ignorePassThrough_; }
