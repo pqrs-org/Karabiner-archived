@@ -52,7 +52,9 @@ bool DropKey::remap(RemapParams& remapParams) {
   {
     auto params = remapParams.paramsBase.get_Params_KeyboardEventCallBack();
     if (params && dropKey_) {
-      return dropKey(remapParams);
+      if (! fromModifierFlags_.is_include((params->key).getModifierFlag())) {
+        return dropKey(remapParams);
+      }
     }
   }
   {

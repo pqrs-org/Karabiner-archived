@@ -16,6 +16,14 @@ public:
 
   void add(AddDataType datatype, AddValue newval) override;
 
+  bool isActive(bool iskeydown) override {
+    if (iskeydown) {
+      return true;
+    } else {
+      return !dropped_.empty();
+    }
+  }
+
 private:
   bool dropKey(RemapParams& remapParams);
 
