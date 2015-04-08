@@ -60,6 +60,9 @@
   <!-- For "space_to_command" -->
   <modifierdef>SPACE_TO_COMMAND</modifierdef>
 
+  <!-- For "Launcher Mode v2" -->
+  <modifierdef>LAUNCHER_MODE_V2</modifierdef>
+
   <!-- For "Mouse Keys Mode v2" -->
   <modifierdef>MOUSE_KEYS_MODE_2_SCROLL</modifierdef>
 

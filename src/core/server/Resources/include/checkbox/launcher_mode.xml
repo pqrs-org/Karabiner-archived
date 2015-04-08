@@ -43,8 +43,12 @@
         __KeyOverlaidModifier__
         KeyCode::O, ModifierFlag::NONE,
 
+        <!--
+            Use notsave.launcher_mode_v2 in order to be higher priority.
+            Use ModifierFlag::LAUNCHER_MODE_V2 for __DropKey__.
+        -->
         @begin
-        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_launcher_mode_v2,
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_launcher_mode_v2, ModifierFlag::LAUNCHER_MODE_V2,
         @end
 
         @begin
@@ -62,10 +66,10 @@
         __BlockUntilKeyUp__ KeyCode::O
       </autogen>
 
-      <autogen>__KeyDownUpToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::A, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
       <autogen>
         __KeyToKey__
-        KeyCode::Q, ModifierFlag::NONE,
+        KeyCode::Q,
         KeyCode::VK_NONE,
 
         Option::KEYTOKEY_DELAYED_ACTION,
@@ -83,7 +87,7 @@
       </autogen>
       <autogen>
         __KeyToKey__
-        KeyCode::D, ModifierFlag::NONE,
+        KeyCode::D,
         KeyCode::VK_NONE,
 
         Option::KEYTOKEY_DELAYED_ACTION,
@@ -93,12 +97,12 @@
         KeyCode::VK_OPEN_URL_APP_DigitalColor_Meter,
         KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
       </autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::SPACE, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::M, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::TAB, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::SPACE, KeyCode::VK_OPEN_URL_APP_Launchpad</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::M, KeyCode::VK_OPEN_URL_APP_Mail</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::TAB, KeyCode::VK_OPEN_URL_APP_Mission_Control</autogen>
       <autogen>
         __KeyToKey__
-        KeyCode::F, ModifierFlag::NONE,
+        KeyCode::F,
         KeyCode::VK_NONE,
 
         Option::KEYTOKEY_DELAYED_ACTION,
@@ -110,7 +114,7 @@
       </autogen>
       <autogen>
         __KeyToKey__
-        KeyCode::S, ModifierFlag::NONE,
+        KeyCode::S,
         KeyCode::VK_NONE,
 
         Option::KEYTOKEY_DELAYED_ACTION,
@@ -120,11 +124,11 @@
         KeyCode::VK_OPEN_URL_APP_Stickies,
         KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
       </autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::T, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
-      <autogen>__KeyDownUpToKey__ KeyCode::E, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::T, KeyCode::VK_OPEN_URL_APP_Terminal</autogen>
+      <autogen>__KeyDownUpToKey__ KeyCode::E, KeyCode::VK_OPEN_URL_APP_TextEdit</autogen>
       <autogen>
         __KeyToKey__
-        KeyCode::X, ModifierFlag::NONE,
+        KeyCode::X,
         KeyCode::VK_NONE,
 
         Option::KEYTOKEY_DELAYED_ACTION,
@@ -133,6 +137,13 @@
         Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::X,
         KeyCode::VK_OPEN_URL_APP_iPhoneSimulator,
         KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
+
+      <autogen>
+        __DropKey__
+        ModifierFlag::LAUNCHER_MODE_V2,
+
+        Option::DROPKEY_DROP_KEY,
       </autogen>
     </item>
 
