@@ -262,23 +262,27 @@ void DependingPressingPeriodKeyToKey::dokeydown(RemapParams& remapParams) {
   case PeriodType::NONE: {
     periodtype_ = PeriodType::SHORT_PERIOD;
 
-    keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+    {
+      FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
 
-    // Call prepare in order to cancel delayed action.
-    //
-    // For example:
-    //   1. Enable remap.samples_keytokey_delayed_action_3 in samples.xml.
-    //   2. Type return.
-    //   3. Type space.
-    //   4. It should be changed to 1,space.
-    //
-    // If we don't call prepare, the delayed action will be registered when we type the space key
-    // and it will not be canceled.
-    // The result becomes `space,1`. (`1` is entered by delayed action after space key.)
-    //
-    // Therefore we need to call prepare to preserve events order.
+      keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
 
-    keytokey_[KeyToKeyType::SHORT_PERIOD].prepare(remapParams);
+      // Call prepare in order to cancel delayed action.
+      //
+      // For example:
+      //   1. Enable remap.samples_keytokey_delayed_action_3 in samples.xml.
+      //   2. Type return.
+      //   3. Type space.
+      //   4. It should be changed to 1,space.
+      //
+      // If we don't call prepare, the delayed action will be registered when we type the space key
+      // and it will not be canceled.
+      // The result becomes `space,1`. (`1` is entered by delayed action after space key.)
+      //
+      // Therefore we need to call prepare to preserve events order.
+
+      keytokey_[KeyToKeyType::SHORT_PERIOD].prepare(remapParams);
+    }
 
     break;
   }
@@ -339,7 +343,10 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
   case PeriodType::NONE: {
     target_->periodtype_ = PeriodType::LONG_PERIOD;
 
-    (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+    {
+      FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
+      (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+    }
 
     (target_->eventWatcherTarget_).observe();
     (target_->ic_).begin();
@@ -366,10 +373,10 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
     } else {
       target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
 
-      // clear temporary flags.
-      FlagStatus::globalFlagStatus().set();
-
-      (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+      {
+        FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
+        (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+      }
     }
 
     break;
