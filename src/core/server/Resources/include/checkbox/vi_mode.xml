@@ -22,7 +22,7 @@
       <identifier>remap.simple_vi_mode</identifier>
       <autogen>
         __KeyOverlaidModifier__
-        KeyCode::S, ModifierFlag::NONE,
+        KeyCode::S,
 
         @begin
         KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simple_vi_mode,

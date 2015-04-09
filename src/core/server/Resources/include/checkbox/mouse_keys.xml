@@ -46,7 +46,7 @@
       <identifier>remap.mouse_keys_mode_2</identifier>
       <autogen>
         __KeyOverlaidModifier__
-        KeyCode::D, ModifierFlag::NONE,
+        KeyCode::D,
 
         @begin
         KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mouse_keys_mode_2,
