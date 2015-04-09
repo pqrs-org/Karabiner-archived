@@ -48,7 +48,7 @@ public:
 
   // Clean up internal state before `remap`.
   // For example, send short period key event in HoldingKeyToKey.
-  virtual void prepare(RemapParams& remapParams) {}
+  virtual void before(RemapParams& remapParams) {}
 
   virtual bool remap(RemapParams& remapParams) { return false; }
   virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }

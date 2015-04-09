@@ -122,14 +122,14 @@ void KeyToKey::clearToKeys(void) {
   currentToEvent_ = CurrentToEvent::TO_KEYS;
 }
 
-void KeyToKey::prepare(RemapParams& remapParams) {
+void KeyToKey::before(RemapParams& remapParams) {
   bool iskeydown = false;
   if (remapParams.paramsBase.iskeydown(iskeydown)) {
     if (iskeydown) {
       // A key is pressed.
       // We need to cancel delayed action.
 
-      RemapClassManager::unregisterPrepareTargetItem(this);
+      RemapClassManager::unregisterBeforeTargetItem(this);
 
       if (fire_timer_.isActive()) {
         fire_timer_.cancelTimeout();
@@ -201,7 +201,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       fire_timer_.setTimeoutMS(timeout);
       flagStatusForDelayedActionKeys_ = FlagStatus::globalFlagStatus();
       flagStatusForDelayedActionKeys_.decrease(pureFromModifierFlags_);
-      RemapClassManager::registerPrepareTargetItem(this);
+      RemapClassManager::registerBeforeTargetItem(this);
     }
   }
 

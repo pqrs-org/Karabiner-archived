@@ -76,7 +76,7 @@ void KeyDownUpToKey::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-void KeyDownUpToKey::prepare(RemapParams &remapParams) {
+void KeyDownUpToKey::before(RemapParams &remapParams) {
   bool iskeydown = false;
   if (remapParams.paramsBase.iskeydown(iskeydown)) {
     if (keytokey_from_.remap(remapParams)) {
@@ -86,7 +86,7 @@ void KeyDownUpToKey::prepare(RemapParams &remapParams) {
       keytokey_interrupted_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
       interrupted_ = true;
     }
-    RemapClassManager::unregisterPrepareTargetItem(this);
+    RemapClassManager::unregisterBeforeTargetItem(this);
   }
 }
 
@@ -99,7 +99,7 @@ bool KeyDownUpToKey::remap(RemapParams &remapParams) {
   }
 
   if (keytokey_from_.isPressing()) {
-    RemapClassManager::registerPrepareTargetItem(this);
+    RemapClassManager::registerBeforeTargetItem(this);
     interrupted_ = false;
   }
 

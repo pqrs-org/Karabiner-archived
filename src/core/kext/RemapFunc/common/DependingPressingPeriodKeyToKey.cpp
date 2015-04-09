@@ -159,7 +159,7 @@ void DependingPressingPeriodKeyToKey::add(KeyToKeyType::Value type, AddDataType 
   }
 }
 
-void DependingPressingPeriodKeyToKey::prepare(RemapParams& remapParams) {
+void DependingPressingPeriodKeyToKey::before(RemapParams& remapParams) {
   // Params_ScrollWheelEventCallback
   {
     auto params = remapParams.paramsBase.get_Params_ScrollWheelEventCallback();
@@ -229,7 +229,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
           fire_timer_.setTimeoutMS(ms);
         }
 
-        RemapClassManager::registerPrepareTargetItem(owner_);
+        RemapClassManager::registerBeforeTargetItem(owner_);
 
       } else {
         FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
@@ -241,7 +241,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
 
         beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
 
-        RemapClassManager::unregisterPrepareTargetItem(owner_);
+        RemapClassManager::unregisterBeforeTargetItem(owner_);
       }
       return true;
     }
@@ -264,7 +264,7 @@ void DependingPressingPeriodKeyToKey::dokeydown(RemapParams& remapParams) {
 
     keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
 
-    // Call prepare in order to cancel delayed action.
+    // Call `before` in order to cancel delayed action.
     //
     // For example:
     //   1. Enable remap.samples_keytokey_delayed_action_3 in samples.xml.
@@ -272,13 +272,13 @@ void DependingPressingPeriodKeyToKey::dokeydown(RemapParams& remapParams) {
     //   3. Type space.
     //   4. It should be changed to 1,space.
     //
-    // If we don't call prepare, the delayed action will be registered when we type the space key
+    // If we don't call `before`, the delayed action will be registered when we type the space key
     // and it will not be canceled.
     // The result becomes `space,1`. (`1` is entered by delayed action after space key.)
     //
-    // Therefore we need to call prepare to preserve events order.
+    // Therefore we need to call `before` to preserve events order.
 
-    keytokey_[KeyToKeyType::SHORT_PERIOD].prepare(remapParams);
+    keytokey_[KeyToKeyType::SHORT_PERIOD].before(remapParams);
 
     break;
   }
