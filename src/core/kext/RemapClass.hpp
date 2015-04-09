@@ -21,6 +21,7 @@ public:
 
     // --------------------
     void remap(RemapParams& remapParams);
+    void settle(RemapParams& remapParams);
     // for DropKeyAfterRemap
     bool drop(const Params_KeyboardEventCallBack& params);
     // for BlockUntilKeyUp
@@ -68,6 +69,7 @@ public:
   void remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled);
   void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
   void remap(RemapParams& remapParams, bool passThroughEnabled);
+  void settle(RemapParams& remapParams, bool passThroughEnabled);
 
   // for BlockUntilKeyUp
   bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
@@ -116,6 +118,7 @@ void refresh(void);
 void remap_setkeyboardtype(KeyboardType& keyboardType);
 void remap_forcenumlockon(ListHookedKeyboard::Item* item);
 void remap(RemapParams& remapParams);
+void settle(RemapParams& remapParams);
 
 // for BlockUntilKeyUp
 bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);

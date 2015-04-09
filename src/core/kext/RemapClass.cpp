@@ -83,6 +83,11 @@ void RemapClass::Item::remap(RemapParams& remapParams) {
   active_ = processor_->isActive(iskeydown);
 }
 
+void RemapClass::Item::settle(RemapParams& remapParams) {
+  if (!processor_) return;
+  processor_->settle(remapParams);
+}
+
 bool RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
   if (!processor_) return false;
 
@@ -378,6 +383,17 @@ void RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled) {
       // DependingPressingPeriodKeyToKey watches another key status.
       // Therefore, we need to call 'p->remap(remapParams)' for all items.
       p->remap(remapParams);
+    }
+  }
+}
+
+void RemapClass::settle(RemapParams& remapParams, bool passThroughEnabled) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      p->settle(remapParams);
     }
   }
 }
@@ -738,6 +754,11 @@ void remap_forcenumlockon(ListHookedKeyboard::Item* item) {
 void remap(RemapParams& remapParams) {
   bool passThroughEnabled = isPassThroughEnabled();
   CALL_REMAPCLASS_FUNC(remap, remapParams);
+}
+
+void settle(RemapParams& remapParams) {
+  bool passThroughEnabled = isPassThroughEnabled();
+  CALL_REMAPCLASS_FUNC(settle, remapParams);
 }
 
 #undef CALL_REMAPCLASS_FUNC
