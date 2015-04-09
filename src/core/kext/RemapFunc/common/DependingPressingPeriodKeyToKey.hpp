@@ -128,7 +128,7 @@ public:
   DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner);
   virtual ~DependingPressingPeriodKeyToKey(void);
 
-  void before(RemapParams& remapParams);
+  void prepare(RemapParams& remapParams);
   bool remap(RemapParams& remapParams);
 
   // About trick of fromModifierFlags_.

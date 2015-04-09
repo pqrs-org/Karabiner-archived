@@ -471,7 +471,7 @@ bool isSimultaneousKeyPressesEnabled_ = false;
 Vector_RemapClassPointer remapclasses_;
 Vector_RemapClassPointer enabled_remapclasses_;
 
-List beforeTargetItems_;
+List prepareTargetItems_;
 
 // ======================================================================
 static void
@@ -531,7 +531,7 @@ clear_remapclasses(void) {
   VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items();
 
   enabled_remapclasses_.clear();
-  beforeTargetItems_.clear();
+  prepareTargetItems_.clear();
 
   for (size_t i = 0; i < remapclasses_.size(); ++i) {
     RemapClass* p = remapclasses_[i];
@@ -804,43 +804,43 @@ bool isEnabled(size_t configindex) {
   return p->enabled();
 }
 
-void registerBeforeTargetItem(RemapFunc::RemapFuncBase* processor) {
-  unregisterBeforeTargetItem(processor);
+void registerPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
+  unregisterPrepareTargetItem(processor);
   if (processor) {
-    beforeTargetItems_.push_back(new BeforeTargetItem(processor));
+    prepareTargetItems_.push_back(new PrepareTargetItem(processor));
   }
 }
 
-void unregisterBeforeTargetItem(RemapFunc::RemapFuncBase* processor) {
-  auto item = static_cast<BeforeTargetItem*>(beforeTargetItems_.safe_front());
+void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
+  auto item = static_cast<PrepareTargetItem*>(prepareTargetItems_.safe_front());
   for (;;) {
     if (!item) return;
 
     if ((item->remapFuncBaseWeakPointer).expired() ||
         (item->remapFuncBaseWeakPointer).get() == processor) {
-      item = static_cast<BeforeTargetItem*>(beforeTargetItems_.erase_and_delete(item));
+      item = static_cast<PrepareTargetItem*>(prepareTargetItems_.erase_and_delete(item));
     } else {
-      item = static_cast<BeforeTargetItem*>(item->getnext());
+      item = static_cast<PrepareTargetItem*>(item->getnext());
     }
   }
 }
 
-void before(RemapParams& remapParams) {
-  // VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::needToDrop will be set in KeyToKey::before.
-  // If needToDrop is set in `before`, we should ignore this event.
+void prepare(RemapParams& remapParams) {
+  // VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::needToDrop will be set in KeyToKey::prepare.
+  // If needToDrop is set in prepare, we should ignore this event.
   // So, set remapParams.isremapped true when needToDrop is set.
   VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::setNeedToDrop(false);
 
-  auto item = static_cast<BeforeTargetItem*>(beforeTargetItems_.safe_front());
+  auto item = static_cast<PrepareTargetItem*>(prepareTargetItems_.safe_front());
   for (;;) {
     if (!item) break;
 
-    // item might be removed by unregisterBeforeTargetItem in `before`.
+    // item might be removed by unregisterPrepareTargetItem in `prepare`.
     // So, we store next pointer at first.
-    auto next = static_cast<BeforeTargetItem*>(item->getnext());
+    auto next = static_cast<PrepareTargetItem*>(item->getnext());
 
     if (!item->remapFuncBaseWeakPointer.expired()) {
-      item->remapFuncBaseWeakPointer->before(remapParams);
+      item->remapFuncBaseWeakPointer->prepare(remapParams);
     }
 
     item = next;

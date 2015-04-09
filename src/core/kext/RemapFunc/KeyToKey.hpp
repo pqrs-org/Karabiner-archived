@@ -26,7 +26,7 @@ public:
     }
   }
 
-  void before(RemapParams& remapParams) override;
+  void prepare(RemapParams& remapParams) override;
   bool remap(RemapParams& remapParams) override;
 
   // ----------------------------------------

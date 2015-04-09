@@ -20,7 +20,7 @@ public:
     void append_filter(const uint32_t* vec, size_t length);
 
     // --------------------
-    void before(RemapParams& remapParams);
+    void prepare(RemapParams& remapParams);
     void remap(RemapParams& remapParams);
     // for DropKeyAfterRemap
     bool drop(const Params_KeyboardEventCallBack& params);
@@ -68,7 +68,7 @@ public:
 
   void remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled);
   void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
-  void before(RemapParams& remapParams, bool passThroughEnabled);
+  void prepare(RemapParams& remapParams, bool passThroughEnabled);
   void remap(RemapParams& remapParams, bool passThroughEnabled);
 
   // for BlockUntilKeyUp
@@ -138,20 +138,20 @@ bool isSimultaneousKeyPressesEnabled(void);
 
 bool isEnabled(size_t configindex);
 
-class BeforeTargetItem final : public List::Item {
+class PrepareTargetItem final : public List::Item {
 public:
-  BeforeTargetItem(RemapFunc::RemapFuncBase* p) : remapFuncBaseWeakPointer(p) {}
-  virtual ~BeforeTargetItem(void) {}
+  PrepareTargetItem(RemapFunc::RemapFuncBase* p) : remapFuncBaseWeakPointer(p) {}
+  virtual ~PrepareTargetItem(void) {}
 
   RemapFunc::WeakPointer_RemapFuncBase remapFuncBaseWeakPointer;
 
 private:
-  BeforeTargetItem& operator=(const BeforeTargetItem& rhs); // Prevent assignment
+  PrepareTargetItem& operator=(const PrepareTargetItem& rhs); // Prevent assignment
 };
 
-void registerBeforeTargetItem(RemapFunc::RemapFuncBase* processor);
-void unregisterBeforeTargetItem(RemapFunc::RemapFuncBase* processor);
-void before(RemapParams& remapParams);
+void registerPrepareTargetItem(RemapFunc::RemapFuncBase* processor);
+void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor);
+void prepare(RemapParams& remapParams);
 }
 }
 

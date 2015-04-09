@@ -13,7 +13,7 @@ public:
                          needClearInterruptedToKeys_(false),
                          interrupted_(false) {}
 
-  void before(RemapParams& remapParams) override;
+  void prepare(RemapParams& remapParams) override;
   bool remap(RemapParams& remapParams) override;
 
   void add(AddDataType datatype, AddValue newval) override;
