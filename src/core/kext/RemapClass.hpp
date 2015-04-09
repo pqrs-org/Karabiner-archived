@@ -20,7 +20,6 @@ public:
     void append_filter(const uint32_t* vec, size_t length);
 
     // --------------------
-    void prepare(RemapParams& remapParams);
     void remap(RemapParams& remapParams);
     // for DropKeyAfterRemap
     bool drop(const Params_KeyboardEventCallBack& params);
@@ -68,7 +67,6 @@ public:
 
   void remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled);
   void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
-  void prepare(RemapParams& remapParams, bool passThroughEnabled);
   void remap(RemapParams& remapParams, bool passThroughEnabled);
 
   // for BlockUntilKeyUp
