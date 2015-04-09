@@ -266,6 +266,9 @@
           KeyCode::VK_STICKY_COMMAND_L
         </autogen>
       </item>
+
+      <include path="devices/logitech_m560.xml" />
+      <include path="devices/logitech_m510.xml" />
     </item>
 
     <item>
@@ -529,6 +532,5 @@
 
     <include path="devices/lmp-bluetooth-keypad.xml" />
     <include path="devices/satechi_bluetooth_remote.xml" />
-    <include path="devices/logitech_m560.xml" />
   </item>
 </root>
