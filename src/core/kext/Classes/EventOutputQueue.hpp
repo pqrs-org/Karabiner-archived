@@ -18,6 +18,8 @@ public:
   static void initialize(IOWorkLoop& workloop);
   static void terminate(void);
 
+  static uint64_t currentSerialNumber(void) { return serialNumber_; }
+
   // ======================================================================
   class FireModifiers final {
   public:
@@ -97,6 +99,9 @@ private:
   static List queue_;
   static TimerWrapper fire_timer_;
   static Buttons previousButtons_;
+
+  // Increment at `push`.
+  static uint64_t serialNumber_;
 };
 }
 

@@ -12,9 +12,11 @@ namespace org_pqrs_Karabiner {
 List EventOutputQueue::queue_;
 TimerWrapper EventOutputQueue::fire_timer_;
 Buttons EventOutputQueue::previousButtons_;
+uint64_t EventOutputQueue::serialNumber_;
 
 void EventOutputQueue::initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, NULL, EventOutputQueue::fire_timer_callback);
+  serialNumber_ = 0;
 }
 
 void EventOutputQueue::terminate(void) {
@@ -27,6 +29,7 @@ void EventOutputQueue::terminate(void) {
 #define PUSH_TO_OUTPUTQUEUE             \
   {                                     \
     queue_.push_back(new Item(p));      \
+    ++serialNumber_;                    \
     fire_timer_.setTimeoutMS(0, false); \
   }
 void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
