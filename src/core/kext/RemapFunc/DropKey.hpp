@@ -13,19 +13,15 @@ public:
                   dropPointingButton_(false) {}
 
   bool remap(RemapParams& remapParams) override;
+  void settle(RemapParams& remapParams) override;
 
   void add(AddDataType datatype, AddValue newval) override;
 
-  bool isActive(bool iskeydown) override {
-    if (iskeydown) {
-      return true;
-    } else {
-      return !dropped_.empty();
-    }
-  }
+  // Always call `remap`.
+  bool isActive(bool iskeydown) override { return true; }
 
 private:
-  bool dropKey(RemapParams& remapParams);
+  void dropKey(RemapParams& remapParams);
 
   class Item final : public List::Item {
   public:

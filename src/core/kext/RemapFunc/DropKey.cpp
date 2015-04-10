@@ -42,25 +42,32 @@ void DropKey::add(AddDataType datatype, AddValue newval) {
 }
 
 bool DropKey::remap(RemapParams& remapParams) {
+  return true;
+}
+
+void DropKey::settle(RemapParams& remapParams) {
   if (fromModifierFlags_.empty()) {
     IOLOG_WARN("Ignore __DropKey__ with no ModifierFlag.\n");
-    return false;
+    return;
   }
 
-  if (remapParams.isremapped) return false;
+  if (remapParams.isremapped) return;
+
+  // Do not drop any modifier flags.
+  if (remapParams.paramsBase.isModifier()) return;
 
   {
     auto params = remapParams.paramsBase.get_Params_KeyboardEventCallBack();
     if (params && dropKey_) {
-      if (!fromModifierFlags_.is_include((params->key).getModifierFlag())) {
-        return dropKey(remapParams);
-      }
+      dropKey(remapParams);
+      return;
     }
   }
   {
     auto params = remapParams.paramsBase.get_Params_KeyboardSpecialEventCallback();
     if (params && dropConsumerKey_) {
-      return dropKey(remapParams);
+      dropKey(remapParams);
+      return;
     }
   }
 
@@ -70,15 +77,13 @@ bool DropKey::remap(RemapParams& remapParams) {
       if (FlagStatus::globalFlagStatus().isOn(fromModifierFlags_) &&
           !(params->buttons).isNONE()) {
         remapParams.isremapped = true;
-        return true;
+        return;
       }
     }
   }
-
-  return false;
 }
 
-bool DropKey::dropKey(RemapParams& remapParams) {
+void DropKey::dropKey(RemapParams& remapParams) {
   bool iskeydown = false;
   if (remapParams.paramsBase.iskeydown(iskeydown)) {
     if (iskeydown) {
@@ -103,11 +108,10 @@ bool DropKey::dropKey(RemapParams& remapParams) {
     }
   }
 
-  return false;
+  return;
 
 drop:
   remapParams.isremapped = true;
-  return true;
 }
 }
 }
