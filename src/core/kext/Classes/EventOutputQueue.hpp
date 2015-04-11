@@ -18,7 +18,16 @@ public:
   static void initialize(IOWorkLoop& workloop);
   static void terminate(void);
 
-  static uint64_t currentSerialNumber(void) { return serialNumber_; }
+  static uint64_t getLastPushedSerialNumber(void) { return serialNumber_; }
+
+  static const Params_Base* getParamsBase(uint64_t serialNumber) {
+    for (Item* p = static_cast<Item*>(queue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (p->getSerialNumber() == serialNumber) {
+        return &(p->getParamsBase());
+      }
+    }
+    return NULL;
+  }
 
   // ======================================================================
   class FireModifiers final {
@@ -71,7 +80,7 @@ public:
 private:
   class Item final : public List::Item {
   public:
-    Item(const Params_Base& p) : p_(Params_Factory::copy(p)) {}
+    Item(const Params_Base& p, uint64_t serialNumber) : p_(Params_Factory::copy(p)), serialNumber_(serialNumber) {}
 
     virtual ~Item(void) {
       if (p_) {
@@ -80,12 +89,14 @@ private:
     }
 
     const Params_Base& getParamsBase(void) const { return Params_Base::safe_dereference(p_); }
+    uint64_t getSerialNumber(void) const { return serialNumber_; }
 
   private:
     Item(const Item& rhs);            // Prevent copy-construction
     Item& operator=(const Item& rhs); // Prevent assignment
 
     const Params_Base* p_;
+    const uint64_t serialNumber_;
   };
 
   static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);

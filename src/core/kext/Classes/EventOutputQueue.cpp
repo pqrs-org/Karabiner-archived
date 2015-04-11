@@ -26,11 +26,11 @@ void EventOutputQueue::terminate(void) {
 }
 
 // ----------------------------------------------------------------------
-#define PUSH_TO_OUTPUTQUEUE             \
-  {                                     \
-    queue_.push_back(new Item(p));      \
-    ++serialNumber_;                    \
-    fire_timer_.setTimeoutMS(0, false); \
+#define PUSH_TO_OUTPUTQUEUE                       \
+  {                                               \
+    ++serialNumber_;                              \
+    queue_.push_back(new Item(p, serialNumber_)); \
+    fire_timer_.setTimeoutMS(0, false);           \
   }
 void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
   PUSH_TO_OUTPUTQUEUE;
