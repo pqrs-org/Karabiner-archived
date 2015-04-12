@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change QWERTY to Norman layout</name>
+    <identifier>remap.qwerty2norman</identifier>
+    <include path="common/keypad_redefinition.xml" />
+    <autogen>__KeyToKey__ KeyCode::E, KeyCode::D</autogen>
+    <autogen>__KeyToKey__ KeyCode::R, KeyCode::F</autogen>
+    <autogen>__KeyToKey__ KeyCode::T, KeyCode::K</autogen>
+    <autogen>__KeyToKey__ KeyCode::Y, KeyCode::J</autogen>
+    <autogen>__KeyToKey__ KeyCode::I, KeyCode::R</autogen>
+    <autogen>__KeyToKey__ KeyCode::O, KeyCode::L</autogen>
+    <autogen>__KeyToKey__ KeyCode::P, KeyCode::SEMICOLON</autogen>
+    <autogen>__KeyToKey__ KeyCode::D, KeyCode::E</autogen>
+    <autogen>__KeyToKey__ KeyCode::F, KeyCode::T</autogen>
+    <autogen>__KeyToKey__ KeyCode::H, KeyCode::Y</autogen>
+    <autogen>__KeyToKey__ KeyCode::J, KeyCode::N</autogen>
+    <autogen>__KeyToKey__ KeyCode::K, KeyCode::I</autogen>
+    <autogen>__KeyToKey__ KeyCode::L, KeyCode::O</autogen>
+    <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::H</autogen>
+    <autogen>__KeyToKey__ KeyCode::N, KeyCode::P</autogen>
+  </item>
+</root>
