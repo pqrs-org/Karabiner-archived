@@ -198,7 +198,6 @@ void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   FlagStatus::globalFlagStatus().set(params->key, params->flags);
 
   RemapClassManager::remap(remapParams);
-  RemapClassManager::settle(remapParams);
 
   // ------------------------------------------------------------
   if (!remapParams.isremapped) {
@@ -227,7 +226,6 @@ void remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
   RemapParams remapParams(*params);
   RemapClassManager::prepare(remapParams);
   RemapClassManager::remap(remapParams);
-  RemapClassManager::settle(remapParams);
 
   // ----------------------------------------
   if (!remapParams.isremapped) {
@@ -255,7 +253,6 @@ void remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
   RemapParams remapParams(*params);
   RemapClassManager::prepare(remapParams);
   RemapClassManager::remap(remapParams);
-  RemapClassManager::settle(remapParams);
 
   // ------------------------------------------------------------
   if (!remapParams.isremapped) {
@@ -274,7 +271,6 @@ void remap_ScrollWheelEventCallback(const Params_Base& paramsBase) {
   RemapParams remapParams(*params);
   RemapClassManager::prepare(remapParams);
   RemapClassManager::remap(remapParams);
-  RemapClassManager::settle(remapParams);
 
   if (!remapParams.isremapped) {
     EventOutputQueue::FireScrollWheel::fire(*params);
