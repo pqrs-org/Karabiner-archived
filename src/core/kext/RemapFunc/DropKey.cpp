@@ -42,60 +42,73 @@ void DropKey::add(AddDataType datatype, AddValue newval) {
 }
 
 bool DropKey::remap(RemapParams& remapParams) {
-  return true;
+  if (fromModifierFlags_.empty()) {
+    IOLOG_WARN("Ignore __DropKey__ with no ModifierFlag.\n");
+
+    modifierMatched_ = false;
+    eventOutputQueueSerialNumber_ = 0;
+    return false;
+  } else {
+    modifierMatched_ = FlagStatus::globalFlagStatus().isOn(fromModifierFlags_);
+    eventOutputQueueSerialNumber_ = EventOutputQueue::getLastPushedSerialNumber() + 1;
+    return true;
+  }
 }
 
 void DropKey::settle(RemapParams& remapParams) {
-  if (fromModifierFlags_.empty()) {
-    IOLOG_WARN("Ignore __DropKey__ with no ModifierFlag.\n");
+  if (eventOutputQueueSerialNumber_ == 0) {
     return;
   }
 
-  if (remapParams.isremapped) return;
-
-  // Do not drop any modifier flags.
-  if (remapParams.paramsBase.isModifier()) return;
-
-  {
-    auto params = remapParams.paramsBase.get_Params_KeyboardEventCallBack();
-    if (params && dropKey_) {
-      dropKey(remapParams);
-      return;
+  while (true) {
+    auto p = EventOutputQueue::getItem(eventOutputQueueSerialNumber_);
+    if (!p) {
+      break;
     }
-  }
-  {
-    auto params = remapParams.paramsBase.get_Params_KeyboardSpecialEventCallback();
-    if (params && dropConsumerKey_) {
-      dropKey(remapParams);
-      return;
-    }
-  }
+    ++eventOutputQueueSerialNumber_;
 
-  {
-    auto params = remapParams.paramsBase.get_Params_RelativePointerEventCallback();
-    if (params && dropPointingButton_) {
-      if (FlagStatus::globalFlagStatus().isOn(fromModifierFlags_) &&
-          !(params->buttons).isNONE()) {
-        remapParams.isremapped = true;
-        return;
+    // Do not drop any modifier flags.
+    if ((p->getParamsBase()).isModifier()) continue;
+
+    {
+      auto params = (p->getParamsBase()).get_Params_KeyboardEventCallBack();
+      if (params && dropKey_) {
+        dropKey(*p);
+      }
+    }
+    {
+      auto params = (p->getParamsBase()).get_Params_KeyboardSpecialEventCallback();
+      if (params && dropConsumerKey_) {
+        dropKey(*p);
+      }
+    }
+    {
+      auto params = (p->getParamsBase()).get_Params_RelativePointerEventCallback();
+      if (params && dropPointingButton_) {
+        if (modifierMatched_ &&
+            !(params->buttons).isNONE()) {
+          remapParams.isremapped = true;
+          return;
+        }
       }
     }
   }
+  eventOutputQueueSerialNumber_ = 0;
 }
 
-void DropKey::dropKey(RemapParams& remapParams) {
+void DropKey::dropKey(EventOutputQueue::Item& item) {
   bool iskeydown = false;
-  if (remapParams.paramsBase.iskeydown(iskeydown)) {
+  if (item.getParamsBase().iskeydown(iskeydown)) {
     if (iskeydown) {
       if (FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) {
-        dropped_.push_back(new Item(remapParams.paramsBase));
+        dropped_.push_back(new Item(item.getParamsBase()));
         goto drop;
       }
     } else {
       bool found = false;
       Item* p = static_cast<Item*>(dropped_.safe_front());
       while (p) {
-        if ((p->fromEvent).isTargetEvent(remapParams.paramsBase)) {
+        if ((p->fromEvent).isTargetEvent(item.getParamsBase())) {
           found = true;
           p = static_cast<Item*>(dropped_.erase_and_delete(p));
         } else {
@@ -111,7 +124,7 @@ void DropKey::dropKey(RemapParams& remapParams) {
   return;
 
 drop:
-  remapParams.isremapped = true;
+  item.cancel();
 }
 }
 }

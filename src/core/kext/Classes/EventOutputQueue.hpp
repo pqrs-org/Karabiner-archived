@@ -21,15 +21,6 @@ public:
 
   static uint64_t getLastPushedSerialNumber(void) { return serialNumber_; }
 
-  static const Params_Base* getParamsBase(uint64_t serialNumber) {
-    for (Item* p = static_cast<Item*>(queue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-      if (p->getSerialNumber() == serialNumber) {
-        return &(p->getParamsBase());
-      }
-    }
-    return NULL;
-  }
-
   // ======================================================================
   class FireModifiers final {
   public:
@@ -105,6 +96,15 @@ public:
     const uint64_t eventInputQueueSerialNumber_;
     bool canceled_;
   };
+
+  static Item* getItem(uint64_t serialNumber) {
+    for (Item* p = static_cast<Item*>(queue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+      if (p->getSerialNumber() == serialNumber) {
+        return p;
+      }
+    }
+    return NULL;
+  }
 
 private:
   // Collapse continuous up,down modifier key events in the same EventInputQueue.
