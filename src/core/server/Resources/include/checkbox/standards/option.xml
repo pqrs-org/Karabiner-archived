@@ -296,6 +296,14 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER</autogen>
     </item>
     <item>
+      <name>Option_R to Enter (except virtual machine)</name>
+      <identifier>remap.option_r_to_enter_not_vm</identifier>
+      <block>
+        <not>VIRTUALMACHINE</not>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ENTER</autogen>
+      </block>
+    </item>
+    <item>
       <name>Option_R to Escape</name>
       <identifier>remap.optionR2escape</identifier>
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::ESCAPE</autogen>
