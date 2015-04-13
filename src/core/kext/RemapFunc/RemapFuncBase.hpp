@@ -51,11 +51,6 @@ public:
   virtual void prepare(RemapParams& remapParams) {}
 
   virtual bool remap(RemapParams& remapParams) { return false; }
-
-  // Do something after `remap`.
-  // For example, drop key events in DropKey.
-  virtual void settle(RemapParams& remapParams) {}
-
   virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }
   virtual RemapSimultaneousKeyPressesResult::Value remapSimultaneousKeyPresses(void) {
     return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
