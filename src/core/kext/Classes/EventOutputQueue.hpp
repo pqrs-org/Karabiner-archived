@@ -3,6 +3,7 @@
 
 #include "ButtonStatus.hpp"
 #include "CommonData.hpp"
+#include "EventInputQueue.hpp"
 #include "FlagStatus.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
@@ -76,11 +77,12 @@ public:
     static void fire(const Params_Wait& params);
   };
 
-  // ======================================================================
-private:
   class Item final : public List::Item {
   public:
-    Item(const Params_Base& p, uint64_t serialNumber) : p_(Params_Factory::copy(p)), serialNumber_(serialNumber) {}
+    Item(const Params_Base& p, uint64_t serialNumber) : p_(Params_Factory::copy(p)),
+                                                        serialNumber_(serialNumber),
+                                                        eventInputQueueSerialNumber_(EventInputQueue::currentSerialNumber()),
+                                                        canceled_(false) {}
 
     virtual ~Item(void) {
       if (p_) {
@@ -90,6 +92,9 @@ private:
 
     const Params_Base& getParamsBase(void) const { return Params_Base::safe_dereference(p_); }
     uint64_t getSerialNumber(void) const { return serialNumber_; }
+    uint64_t getEventInputQueueSerialNumber(void) const { return eventInputQueueSerialNumber_; }
+    bool isCanceled(void) const { return canceled_; }
+    void cancel(void) { canceled_ = true; }
 
   private:
     Item(const Item& rhs);            // Prevent copy-construction
@@ -97,7 +102,27 @@ private:
 
     const Params_Base* p_;
     const uint64_t serialNumber_;
+    const uint64_t eventInputQueueSerialNumber_;
+    bool canceled_;
   };
+
+private:
+  // Collapse continuous up,down modifier key events in the same EventInputQueue.
+  //
+  // For example, if EventInputQueue is follows,
+  //   EventOutputQueue[0]: escape up
+  //   EventOutputQueue[1]: shift up
+  //   EventOutputQueue[2]: shift down
+  //   EventOutputQueue[3]: tab down
+  // queue will be collapsed.
+  //   EventOutputQueue[0]: escape up
+  //   EventOutputQueue[1]: shift up    (canceled)
+  //   EventOutputQueue[2]: shift down  (canceled)
+  //   EventOutputQueue[3]: tab down
+  //
+  // We need to do this in order to reduce unnecessary modifier events in the same time.
+  //
+  static void collapseModifierKeyUpDownEvent(void);
 
   static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);
   static unsigned int calcDelay(const Params_Base& params);
@@ -113,6 +138,7 @@ private:
 
   // Increment at `push`.
   static uint64_t serialNumber_;
+  static uint64_t lastProcessedEventInputQueueSerialNumber_;
 };
 }
 

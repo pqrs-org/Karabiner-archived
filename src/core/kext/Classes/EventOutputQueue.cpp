@@ -13,10 +13,12 @@ List EventOutputQueue::queue_;
 TimerWrapper EventOutputQueue::fire_timer_;
 Buttons EventOutputQueue::previousButtons_;
 uint64_t EventOutputQueue::serialNumber_;
+uint64_t EventOutputQueue::lastProcessedEventInputQueueSerialNumber_;
 
 void EventOutputQueue::initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, NULL, EventOutputQueue::fire_timer_callback);
   serialNumber_ = 0;
+  lastProcessedEventInputQueueSerialNumber_ = 0;
 }
 
 void EventOutputQueue::terminate(void) {
@@ -116,9 +118,21 @@ unsigned int maxDelay(unsigned int v1, unsigned int v2) {
 }
 
 void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
-  // IOLOG_DEVEL("EventOutputQueue::fire queue_.size = %d\n", static_cast<int>(queue_.size()));
+  // Delete canceled items.
+  Item* p = NULL;
 
-  Item* p = static_cast<Item*>(queue_.safe_front());
+  p = static_cast<Item*>(queue_.safe_front());
+  while (p) {
+    if (p->isCanceled()) {
+      p = static_cast<Item*>(queue_.erase_and_delete(p));
+    } else {
+      p = static_cast<Item*>(p->getnext());
+    }
+  }
+
+  // ------------------------------------------------------------
+  // Send key event.
+  p = static_cast<Item*>(queue_.safe_front());
   if (!p) return;
 
   // Delay after modifier or click.
@@ -189,6 +203,33 @@ void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSo
   delay = maxDelay(delay, calcDelay(next->getParamsBase()));
 
   fire_timer_.setTimeoutMS(delay);
+}
+
+void EventOutputQueue::collapseModifierKeyUpDownEvent(void) {
+  // Find EventType::UP
+  for (Item* p = static_cast<Item*>(queue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    auto params = (p->getParamsBase()).get_Params_KeyboardEventCallBack();
+    if (params &&
+        params->isModifier() &&
+        !params->ex_iskeydown) {
+      // `p` is modifier up event.
+      // Check next event is EventType::DOWN
+      auto next = static_cast<Item*>(p->getnext());
+      if (next &&
+          p->getEventInputQueueSerialNumber() == next->getEventInputQueueSerialNumber()) {
+#if 0
+        auto nextParams = (next->getParamsBase()).get_Params_KeyboardEventCallBack();
+        if (nextParams &&
+            params->key == nextParams->key &&
+            nextParams->ex_iskeydown) {
+          // `next` is modifier down event.
+          p->cancel();
+          next->cancel();
+        }
+#endif
+      }
+    }
+  }
 }
 
 // ======================================================================
