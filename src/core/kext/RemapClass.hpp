@@ -23,6 +23,7 @@ public:
     void remap(RemapParams& remapParams);
     // for DropKeyAfterRemap
     bool drop(const Params_KeyboardEventCallBack& params);
+    void cancelEventOutputQueueItems(void);
     // for BlockUntilKeyUp
     bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
     //
@@ -73,6 +74,7 @@ public:
   bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
   bool remap_simultaneouskeypresses(bool iskeydown, bool passThroughEnabled);
   bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled);
+  void cancelEventOutputQueueItems(bool passThroughEnabled);
   const char* get_statusmessage(void) const { return statusmessage_; }
   bool enabled(void) const { return enabled_; }
   void setEnabled(bool newval) { enabled_ = newval; }
@@ -131,6 +133,8 @@ bool remap_simultaneouskeypresses(bool iskeydown);
 
 // return true if dropped.
 bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
+
+void cancelEventOutputQueueItems(void);
 
 bool isSimultaneousKeyPressesEnabled(void);
 

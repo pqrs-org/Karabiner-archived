@@ -55,7 +55,7 @@ bool DropKey::remap(RemapParams& remapParams) {
   }
 }
 
-void DropKey::settle(RemapParams& remapParams) {
+void DropKey::cancelEventOutputQueueItems(void) {
   if (eventOutputQueueSerialNumber_ == 0) {
     return;
   }
@@ -67,27 +67,29 @@ void DropKey::settle(RemapParams& remapParams) {
     }
     ++eventOutputQueueSerialNumber_;
 
+    auto& paramsBase = p->getParamsBase();
+
     // Do not drop any modifier flags.
-    if ((p->getParamsBase()).isModifier()) continue;
+    if (paramsBase.isModifier()) continue;
 
     {
-      auto params = (p->getParamsBase()).get_Params_KeyboardEventCallBack();
+      auto params = paramsBase.get_Params_KeyboardEventCallBack();
       if (params && dropKey_) {
         dropKey(*p);
       }
     }
     {
-      auto params = (p->getParamsBase()).get_Params_KeyboardSpecialEventCallback();
+      auto params = paramsBase.get_Params_KeyboardSpecialEventCallback();
       if (params && dropConsumerKey_) {
         dropKey(*p);
       }
     }
     {
-      auto params = (p->getParamsBase()).get_Params_RelativePointerEventCallback();
+      auto params = paramsBase.get_Params_RelativePointerEventCallback();
       if (params && dropPointingButton_) {
         if (modifierMatched_ &&
             !(params->buttons).isNONE()) {
-          remapParams.isremapped = true;
+          p->cancel();
           return;
         }
       }
@@ -100,9 +102,9 @@ void DropKey::dropKey(EventOutputQueue::Item& item) {
   bool iskeydown = false;
   if (item.getParamsBase().iskeydown(iskeydown)) {
     if (iskeydown) {
-      if (FlagStatus::globalFlagStatus().isOn(fromModifierFlags_)) {
+      if (modifierMatched_) {
         dropped_.push_back(new Item(item.getParamsBase()));
-        goto drop;
+        item.cancel();
       }
     } else {
       bool found = false;
@@ -116,15 +118,10 @@ void DropKey::dropKey(EventOutputQueue::Item& item) {
         }
       }
       if (found) {
-        goto drop;
+        item.cancel();
       }
     }
   }
-
-  return;
-
-drop:
-  item.cancel();
 }
 }
 }

@@ -103,6 +103,15 @@ bool RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
   return true;
 }
 
+void RemapClass::Item::cancelEventOutputQueueItems(void) {
+  if (!processor_) return;
+
+  if (!parent_.enabled()) return;
+  if (isblocked()) return;
+
+  processor_->cancelEventOutputQueueItems();
+}
+
 bool RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
   if (!processor_) return false;
 
@@ -430,6 +439,17 @@ bool RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& par
   }
 
   return dropped;
+}
+
+void RemapClass::cancelEventOutputQueueItems(bool passThroughEnabled) {
+  for (size_t i = 0; i < items_.size(); ++i) {
+    Item* p = items_[i];
+    if (p) {
+      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
+
+      p->cancelEventOutputQueueItems();
+    }
+  }
 }
 
 bool RemapClass::hasActiveItem(void) const {
@@ -786,6 +806,17 @@ bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {
   }
 
   return dropped;
+}
+
+void cancelEventOutputQueueItems(void) {
+  bool passThroughEnabled = isPassThroughEnabled();
+
+  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
+    RemapClass* p = enabled_remapclasses_[i];
+    if (p) {
+      p->cancelEventOutputQueueItems(passThroughEnabled);
+    }
+  }
 }
 
 bool isSimultaneousKeyPressesEnabled(void) {

@@ -16,7 +16,7 @@ public:
                   eventOutputQueueSerialNumber_(0) {}
 
   bool remap(RemapParams& remapParams) override;
-  void settle(RemapParams& remapParams) override;
+  void cancelEventOutputQueueItems(void) override;
 
   void add(AddDataType datatype, AddValue newval) override;
 

@@ -52,6 +52,7 @@ public:
 
   virtual bool remap(RemapParams& remapParams) { return false; }
   virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }
+  virtual void cancelEventOutputQueueItems(void) {}
   virtual RemapSimultaneousKeyPressesResult::Value remapSimultaneousKeyPresses(void) {
     return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
   }

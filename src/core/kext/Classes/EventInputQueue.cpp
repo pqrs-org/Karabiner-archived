@@ -682,6 +682,8 @@ void EventInputQueue::doFire(void) {
     }
   }
 
+  RemapClassManager::cancelEventOutputQueueItems();
+
   CommonData::setcurrent_lastpressedphysicalkey(p->getParamsBase());
 
   queue_.pop_front();
