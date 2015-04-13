@@ -571,4 +571,19 @@
     <equal>com.nomachine.nxdock</equal>
   </appdef>
 
+  <appdef>
+    <appname>PhpStorm</appname>
+    <prefix>com.jetbrains.PhpStorm</prefix>
+  </appdef>
+
+  <appdef>
+    <appname>RubyMine</appname>
+    <prefix>com.jetbrains.rubymine</prefix>
+  </appdef>
+
+  <appdef>
+    <appname>IntelliJ</appname>
+    <prefix>com.jetbrains.intellij</prefix>
+  </appdef>
+
 </root>
