@@ -65,10 +65,13 @@ public:
   unsigned int getType(void) const { return type_; }
   void setIgnorePassThrough(bool v) { ignorePassThrough_ = v; }
   bool getIgnorePassThrough(void) const { return ignorePassThrough_; }
+  void setRemapClassItemId(uint64_t v) { remapClassItemId_ = v; }
+  uint64_t getRemapClassItemId(void) { return remapClassItemId_; }
 
 private:
   unsigned int type_;
   bool ignorePassThrough_;
+  uint64_t remapClassItemId_;
 };
 }
 }
