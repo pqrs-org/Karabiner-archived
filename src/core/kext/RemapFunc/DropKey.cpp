@@ -50,7 +50,7 @@ bool DropKey::remap(RemapParams& remapParams) {
     return false;
   } else {
     modifierMatched_ = FlagStatus::globalFlagStatus().isOn(fromModifierFlags_);
-    eventOutputQueueSerialNumber_ = EventOutputQueue::getLastPushedSerialNumber() + 1;
+    eventOutputQueueSerialNumber_ = EventOutputQueue::getLastPushedSerialNumber();
     return true;
   }
 }
@@ -60,12 +60,15 @@ void DropKey::cancelEventOutputQueueItems(void) {
     return;
   }
 
-  while (true) {
-    auto p = EventOutputQueue::getItem(eventOutputQueueSerialNumber_);
-    if (!p) {
-      break;
+  for (EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(EventOutputQueue::getQueue().safe_front());
+       p;
+       p = static_cast<EventOutputQueue::Item*>(p->getnext())) {
+    if (EventInputQueue::currentSerialNumber() != p->getEventInputQueueSerialNumber()) {
+      continue;
     }
-    ++eventOutputQueueSerialNumber_;
+    if (eventOutputQueueSerialNumber_ >= p->getSerialNumber()) {
+      continue;
+    }
 
     auto& paramsBase = p->getParamsBase();
 

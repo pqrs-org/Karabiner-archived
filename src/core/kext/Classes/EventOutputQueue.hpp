@@ -97,14 +97,7 @@ public:
     bool canceled_;
   };
 
-  static Item* getItem(uint64_t serialNumber) {
-    for (Item* p = static_cast<Item*>(queue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-      if (p->getSerialNumber() == serialNumber) {
-        return p;
-      }
-    }
-    return NULL;
-  }
+  static const List& getQueue(void) { return queue_; }
 
 private:
   // Collapse continuous up,down modifier key events in the same EventInputQueue.
