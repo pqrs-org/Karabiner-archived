@@ -70,10 +70,10 @@ public:
 
   class Item final : public List::Item {
   public:
-    Item(const Params_Base& p, uint64_t serialNumber) : p_(Params_Factory::copy(p)),
-                                                        serialNumber_(serialNumber),
-                                                        eventInputQueueSerialNumber_(EventInputQueue::currentSerialNumber()),
-                                                        canceled_(false) {}
+    Item(const Params_Base& p, uint64_t autogenId) : p_(Params_Factory::copy(p)),
+                                                     autogenId_(autogenId),
+                                                     eventInputQueueSerialNumber_(EventInputQueue::currentSerialNumber()),
+                                                     canceled_(false) {}
 
     virtual ~Item(void) {
       if (p_) {
@@ -82,7 +82,7 @@ public:
     }
 
     const Params_Base& getParamsBase(void) const { return Params_Base::safe_dereference(p_); }
-    uint64_t getSerialNumber(void) const { return serialNumber_; }
+    uint64_t getAutogenId(void) const { return autogenId_; }
     uint64_t getEventInputQueueSerialNumber(void) const { return eventInputQueueSerialNumber_; }
     bool isCanceled(void) const { return canceled_; }
     void cancel(void) { canceled_ = true; }
@@ -92,7 +92,7 @@ public:
     Item& operator=(const Item& rhs); // Prevent assignment
 
     const Params_Base* p_;
-    const uint64_t serialNumber_;
+    const uint64_t autogenId_;
     const uint64_t eventInputQueueSerialNumber_;
     bool canceled_;
   };
