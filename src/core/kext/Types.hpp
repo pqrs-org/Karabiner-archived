@@ -49,6 +49,11 @@ public:
     return value_;
   }
 
+  static AutogenId maxValue(void) {
+    //       1234567812345678
+    return AutogenId(0xffffffffffffffff);
+  }
+
 private:
   uint64_t value_;
 };

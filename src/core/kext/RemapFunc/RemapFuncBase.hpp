@@ -35,7 +35,9 @@ DECLARE_WEAKPOINTER(RemapFuncBase);
 
 class RemapFuncBase {
 protected:
-  RemapFuncBase(unsigned int type) : type_(type), ignorePassThrough_(false) {
+  RemapFuncBase(unsigned int type) : type_(type),
+                                     ignorePassThrough_(false),
+                                     autogenId_(AutogenId(0)) {
     WeakPointerManager_RemapFuncBase::add(this);
   }
 
@@ -65,13 +67,13 @@ public:
   unsigned int getType(void) const { return type_; }
   void setIgnorePassThrough(bool v) { ignorePassThrough_ = v; }
   bool getIgnorePassThrough(void) const { return ignorePassThrough_; }
-  void setAutogenId(uint64_t v) { autogenId_ = v; }
-  uint64_t getAutogenId(void) { return autogenId_; }
+  void setAutogenId(AutogenId v) { autogenId_ = v; }
+  AutogenId getAutogenId(void) { return autogenId_; }
 
 private:
   unsigned int type_;
   bool ignorePassThrough_;
-  uint64_t autogenId_;
+  AutogenId autogenId_;
 };
 }
 }

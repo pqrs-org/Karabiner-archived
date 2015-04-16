@@ -23,7 +23,7 @@ RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t len
   processor_ = RemapFunc::RemapFuncFactory::create(vec, length);
 
   if (processor_) {
-    uint64_t autogenId = (static_cast<uint64_t>(parent_.configindex_) << 32) | (parent.items_.size() + 1);
+    auto autogenId = AutogenId((static_cast<uint64_t>(parent_.configindex_) << 32) | (parent.items_.size() + 1));
     processor_->setAutogenId(autogenId);
   }
 }
