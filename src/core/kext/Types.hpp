@@ -42,4 +42,15 @@ public:
 DECLARE_VECTOR(AddValueWithDataType);
 }
 
+class AutogenId final {
+public:
+  explicit AutogenId(uint64_t v) : value_(v) {}
+  operator uint64_t(void) {
+    return value_;
+  }
+
+private:
+  uint64_t value_;
+};
+
 #endif
