@@ -137,7 +137,7 @@
 		34F271AA152CB80700BD77AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = 34F271AD152CB80700BD77AB /* Build configuration list for PBXProject "xml_compiler" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -188,7 +188,7 @@
 		34F271B6152CB80700BD77AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -214,7 +214,7 @@
 					../../bridge/include,
 					../strlcpy_utf8,
 					/usr/local/include,
-					/opt/local/include/
+					/opt/local/include/,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				RUN_CLANG_STATIC_ANALYZER = YES;

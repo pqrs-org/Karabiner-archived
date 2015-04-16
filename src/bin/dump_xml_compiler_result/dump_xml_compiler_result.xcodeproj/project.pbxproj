@@ -92,7 +92,7 @@
 		3465055F153665B20095CCC9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 			};
 			buildConfigurationList = 34650562153665B20095CCC9 /* Build configuration list for PBXProject "dump_xml_compiler_result" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -126,7 +126,7 @@
 		34650571153665B20095CCC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
