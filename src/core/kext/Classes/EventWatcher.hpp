@@ -54,7 +54,6 @@ private:
   class Item final : public List::Item {
   public:
     Item(void) : observed_(false),
-                 cancelableEventInputQueueSerialNumber_(0),
                  isAnyEventHappen_(false) {}
     virtual ~Item(void) {}
 
@@ -71,7 +70,6 @@ private:
 
   private:
     bool observed_;
-    uint64_t cancelableEventInputQueueSerialNumber_;
     bool isAnyEventHappen_;
   };
 

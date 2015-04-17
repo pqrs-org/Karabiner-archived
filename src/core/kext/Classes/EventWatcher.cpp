@@ -29,9 +29,6 @@ void EventWatcher::on(void) {
 }
 
 void EventWatcher::Item::on(void) {
-  if (!isAnyEventHappen_) {
-    cancelableEventInputQueueSerialNumber_ = EventInputQueue::currentSerialNumber();
-  }
   isAnyEventHappen_ = true;
 }
 }
