@@ -25,7 +25,7 @@ TimerWrapper EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_;
 
 void EventInputQueue::initialize(IOWorkLoop& workloop) {
   ic_.begin();
-  fire_timer_.initialize(&workloop, NULL, EventInputQueue::fire_timer_callback);
+  fire_timer_.initialize(&workloop, nullptr, EventInputQueue::fire_timer_callback);
   serialNumber_ = 0;
 
   BlockUntilKeyUpHander::initialize(workloop);
@@ -691,7 +691,7 @@ void EventInputQueue::doFire(void) {
 }
 
 void EventInputQueue::BlockUntilKeyUpHander::initialize(IOWorkLoop& workloop) {
-  blockingTimeOut_timer_.initialize(&workloop, NULL, EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback);
+  blockingTimeOut_timer_.initialize(&workloop, nullptr, EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback);
 }
 
 void EventInputQueue::BlockUntilKeyUpHander::terminate(void) {

@@ -34,13 +34,13 @@ public:
     //
     if (!vec || length == 0) {
       IOLOG_ERROR("RemapFuncFactory::create invalid parameter %p, %ld.\n", vec, length);
-      return NULL;
+      return nullptr;
     }
 
     // ------------------------------------------------------------
     unsigned int type = vec[0];
 
-    RemapFuncBase* p = NULL;
+    RemapFuncBase* p = nullptr;
 
     switch (type) {
     case BRIDGE_REMAPTYPE_KEYTOKEY:
@@ -108,12 +108,12 @@ public:
       break;
     default:
       IOLOG_ERROR("RemapFuncFactory::create unknown type: %d\n", type);
-      return NULL;
+      return nullptr;
     }
 
     if (!p) {
       IOLOG_ERROR("RemapFuncFactory::create failed to allocate: %d\n", type);
-      return NULL;
+      return nullptr;
     }
 
     // ------------------------------------------------------------

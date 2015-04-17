@@ -60,7 +60,7 @@ public:
   }
   virtual bool remapSetKeyboardType(KeyboardType& keyboardType) { return false; }
   virtual bool remapForceNumLockOn(ListHookedKeyboard::Item* item) { return false; }
-  virtual const FromEvent* getBlockUntilKeyUpFromEvent(void) const { return NULL; }
+  virtual const FromEvent* getBlockUntilKeyUpFromEvent(void) const { return nullptr; }
 
   virtual bool isActive(bool iskeydown) { return iskeydown; }
 

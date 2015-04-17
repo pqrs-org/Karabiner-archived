@@ -15,7 +15,7 @@ public:
     Item(IOHIDevice* p);
     ~Item(void);
 
-    bool isReplaced(void) const override { return orig_keyboardSpecialEventAction_ != NULL; }
+    bool isReplaced(void) const override { return orig_keyboardSpecialEventAction_ != nullptr; }
 
     void apply(const Params_KeyboardSpecialEventCallback& params);
     void disableNumLock(void);

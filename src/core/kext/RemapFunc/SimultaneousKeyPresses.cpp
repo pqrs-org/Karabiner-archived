@@ -182,12 +182,12 @@ scan:
   // --------------------
   // scan items in queue_.
   while (downKeys_.size() < fromInfo_.size()) {
-    downKeys_.push_back(NULL);
+    downKeys_.push_back(nullptr);
   }
   // Then, downKeys_.size() >= fromInfo_.size()
 
   for (size_t i = 0; i < fromInfo_.size(); ++i) {
-    downKeys_[i].item = NULL;
+    downKeys_[i].item = nullptr;
   }
 
   for (;;) {
@@ -222,8 +222,8 @@ scan:
         // If isStrictKeyOrder_ == true,
         // we must not handle the following state as SimultaneousKeyPresses.
         //
-        // - downKeys_[0] == NULL
-        // - downKeys_[1] != NULL
+        // - downKeys_[0] == nullptr
+        // - downKeys_[1] != nullptr
         //
         if (!isAllKeysDown && isStrictKeyOrder_) {
           return RemapSimultaneousKeyPressesResult::NOT_CHANGED;

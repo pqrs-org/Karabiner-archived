@@ -16,7 +16,7 @@ uint64_t EventOutputQueue::serialNumber_;
 uint64_t EventOutputQueue::lastProcessedEventInputQueueSerialNumber_;
 
 void EventOutputQueue::initialize(IOWorkLoop& workloop) {
-  fire_timer_.initialize(&workloop, NULL, EventOutputQueue::fire_timer_callback);
+  fire_timer_.initialize(&workloop, nullptr, EventOutputQueue::fire_timer_callback);
   serialNumber_ = 0;
   lastProcessedEventInputQueueSerialNumber_ = 0;
 }
@@ -119,7 +119,7 @@ unsigned int maxDelay(unsigned int v1, unsigned int v2) {
 
 void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
   // Delete canceled items.
-  Item* p = NULL;
+  Item* p = nullptr;
 
   p = static_cast<Item*>(queue_.safe_front());
   while (p) {

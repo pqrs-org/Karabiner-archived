@@ -12,7 +12,7 @@ org_pqrs_Karabiner_TimerWrapperObject::timerEventSource(OSObject* owner, IOTimer
 
   if (p && !p->init(owner, action)) {
     if (p) p->release();
-    return NULL;
+    return nullptr;
   }
   return p;
 }
@@ -53,7 +53,7 @@ void TimerWrapper::initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSourc
   if (workloop_->addEventSource(timer_) != kIOReturnSuccess) {
     IOLOG_ERROR("TimerWrapper addEventSource failed\n");
     timer_->release();
-    timer_ = NULL;
+    timer_ = nullptr;
   }
 }
 
@@ -64,13 +64,13 @@ void TimerWrapper::terminate(void) {
       workloop_->removeEventSource(timer_);
     }
     timer_->release();
-    timer_ = NULL;
+    timer_ = nullptr;
   }
-  workloop_ = NULL;
+  workloop_ = nullptr;
 
   if (object_) {
     object_->release();
-    object_ = NULL;
+    object_ = nullptr;
   }
 }
 

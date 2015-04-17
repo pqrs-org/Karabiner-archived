@@ -68,7 +68,7 @@ public:
   static void refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender);
 
 protected:
-  ListHookedDevice(void) : last_(NULL) {}
+  ListHookedDevice(void) : last_(nullptr) {}
   virtual ~ListHookedDevice(void) {}
 
   const IOHIDevice* last_;

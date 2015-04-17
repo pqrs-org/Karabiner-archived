@@ -68,7 +68,7 @@ bool USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityTo
     return false;
   }
 
-  provider_ = NULL;
+  provider_ = nullptr;
 
   // Don't change static values here. (For example, notification_enabled_)
   // initWithTask is called by each IOServiceOpen.
@@ -83,7 +83,7 @@ bool USERCLIENT_KEXT_CLASSNAME::initWithTask(task_t owningTask, void* securityTo
 bool USERCLIENT_KEXT_CLASSNAME::start(IOService* provider) {
   provider_ = OSDynamicCast(KEXT_CLASSNAME, provider);
   if (!provider_) {
-    IOLOG_ERROR("UserClient_kext::start provider == NULL\n");
+    IOLOG_ERROR("UserClient_kext::start provider == nullptr\n");
     return false;
   }
 
@@ -100,7 +100,7 @@ bool USERCLIENT_KEXT_CLASSNAME::start(IOService* provider) {
 
 void USERCLIENT_KEXT_CLASSNAME::stop(IOService* provider) {
   super::stop(provider);
-  provider_ = NULL;
+  provider_ = nullptr;
 }
 
 // clientClose is called as a result of the user process calling IOServiceClose.
@@ -168,7 +168,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_open(uint64_t bridge_version_app, uint64_t* 
 
   *outputdata = BRIDGE_USERCLIENT_OPEN_RETURN_ERROR_GENERIC;
 
-  if (provider_ == NULL || isInactive()) {
+  if (provider_ == nullptr || isInactive()) {
     // Return an error if we don't have a provider. This could happen if the user process
     // called callback_open without calling IOServiceOpen first. Or, the user client could be
     // in the process of being terminated and is thus inactive.
@@ -259,7 +259,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserC
   if (!lk) return kIOReturnCannotLock;
 
   IOReturn result = kIOReturnError;
-  uint8_t* buffer = NULL;
+  uint8_t* buffer = nullptr;
   size_t size = 0;
 
   if (!inputdata || !outputdata) {
@@ -268,7 +268,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserC
     goto finish;
   }
 
-  if (provider_ == NULL || isInactive()) {
+  if (provider_ == nullptr || isInactive()) {
     // Return an error if we don't have a provider. This could happen if the user process
     // called callback_synchronized_communication without calling IOServiceOpen first.
     // Or, the user client could be in the process of being terminated and is thus inactive.
@@ -314,7 +314,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_synchronized_communication(const BridgeUserC
 finish:
   if (buffer) {
     delete[] buffer;
-    buffer = NULL;
+    buffer = nullptr;
   }
 
   return result;
@@ -334,7 +334,7 @@ USERCLIENT_KEXT_CLASSNAME::callback_notification_from_kext(OSAsyncReference64 as
   KEXT_NAMESPACE::GlobalLock::ScopedLock lk;
   if (!lk) return kIOReturnCannotLock;
 
-  if (provider_ == NULL || isInactive()) {
+  if (provider_ == nullptr || isInactive()) {
     // Return an error if we don't have a provider. This could happen if the user process
     // called callback_notification_from_kext without calling IOServiceOpen first.
     // Or, the user client could be in the process of being terminated and is thus inactive.

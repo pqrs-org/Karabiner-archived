@@ -12,7 +12,7 @@ int KeyboardRepeat::id_ = 0;
 int KeyboardRepeat::keyRepeat_ = 0;
 
 void KeyboardRepeat::initialize(IOWorkLoop& workloop) {
-  fire_timer_.initialize(&workloop, NULL, KeyboardRepeat::fire_timer_callback);
+  fire_timer_.initialize(&workloop, nullptr, KeyboardRepeat::fire_timer_callback);
 }
 
 void KeyboardRepeat::terminate(void) {

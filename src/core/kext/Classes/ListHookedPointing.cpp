@@ -23,10 +23,10 @@ ListHookedPointing::instance(void) {
 }
 
 ListHookedPointing::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
-                                                orig_relativePointerEventAction_(NULL),
-                                                orig_relativePointerEventTarget_(NULL),
-                                                orig_scrollWheelEventAction_(NULL),
-                                                orig_scrollWheelEventTarget_(NULL),
+                                                orig_relativePointerEventAction_(nullptr),
+                                                orig_relativePointerEventTarget_(nullptr),
+                                                orig_scrollWheelEventAction_(nullptr),
+                                                orig_scrollWheelEventTarget_(nullptr),
                                                 previousbuttons_(0) {}
 
 ListHookedPointing::Item::~Item(void) {
@@ -157,10 +157,10 @@ bool ListHookedPointing::Item::restoreEventAction(void) {
     }
   }
 
-  orig_relativePointerEventAction_ = NULL;
-  orig_scrollWheelEventAction_ = NULL;
-  orig_relativePointerEventTarget_ = NULL;
-  orig_scrollWheelEventTarget_ = NULL;
+  orig_relativePointerEventAction_ = nullptr;
+  orig_scrollWheelEventAction_ = nullptr;
+  orig_relativePointerEventTarget_ = nullptr;
+  orig_scrollWheelEventTarget_ = nullptr;
 
   return result;
 }
@@ -177,7 +177,7 @@ void ListHookedPointing::Item::apply(const Params_RelativePointerEventCallback& 
   if (!sender) return;
 
   const AbsoluteTime& ts = CommonData::getcurrent_ts();
-  OSObject* refcon = NULL;
+  OSObject* refcon = nullptr;
 
   Params_RelativePointerEventCallback::log(false, params.buttons, params.dx, params.dy);
   {
@@ -199,7 +199,7 @@ void ListHookedPointing::Item::apply(const Params_ScrollWheelEventCallback& para
   if (!sender) return;
 
   const AbsoluteTime& ts = CommonData::getcurrent_ts();
-  OSObject* refcon = NULL;
+  OSObject* refcon = nullptr;
 
   Params_ScrollWheelEventCallback::log(false,
                                        params.deltaAxis1, params.deltaAxis2, params.deltaAxis3,

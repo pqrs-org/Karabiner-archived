@@ -20,7 +20,7 @@ ListHookedKeyboard listHookedKeyboard;
 TimerWrapper ListHookedKeyboard::setcapslock_timer_;
 
 void ListHookedKeyboard::static_initialize(IOWorkLoop& workloop) {
-  setcapslock_timer_.initialize(&workloop, NULL, ListHookedKeyboard::setcapslock_timer_callback);
+  setcapslock_timer_.initialize(&workloop, nullptr, ListHookedKeyboard::setcapslock_timer_callback);
 }
 
 void ListHookedKeyboard::static_terminate(void) {
@@ -33,10 +33,10 @@ ListHookedKeyboard::instance(void) {
 }
 
 ListHookedKeyboard::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
-                                                orig_keyboardEventAction_(NULL),
-                                                orig_keyboardEventTarget_(NULL),
-                                                orig_updateEventFlagsAction_(NULL),
-                                                orig_updateEventFlagsTarget_(NULL) {}
+                                                orig_keyboardEventAction_(nullptr),
+                                                orig_keyboardEventTarget_(nullptr),
+                                                orig_updateEventFlagsAction_(nullptr),
+                                                orig_updateEventFlagsTarget_(nullptr) {}
 
 ListHookedKeyboard::Item::~Item(void) {
   IOLOG_DEBUG("ListHookedKeyboard::Item::~Item()\n");
@@ -197,10 +197,10 @@ bool ListHookedKeyboard::Item::restoreEventAction(void) {
     }
   }
 
-  orig_keyboardEventAction_ = NULL;
-  orig_keyboardEventTarget_ = NULL;
-  orig_updateEventFlagsAction_ = NULL;
-  orig_updateEventFlagsTarget_ = NULL;
+  orig_keyboardEventAction_ = nullptr;
+  orig_keyboardEventTarget_ = nullptr;
+  orig_updateEventFlagsAction_ = nullptr;
+  orig_updateEventFlagsTarget_ = nullptr;
 
   return result;
 }
@@ -232,7 +232,7 @@ void ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
   if (!sender) return;
 
   const AbsoluteTime& ts = CommonData::getcurrent_ts();
-  OSObject* refcon = NULL;
+  OSObject* refcon = nullptr;
 
   // ----------------------------------------
   // Send an UpdateEventFlags event if needed. (Send before KeyboardEvent when EventType::DOWN)
@@ -291,7 +291,7 @@ void ListHookedKeyboard::Item::apply(const Params_UpdateEventFlagsCallback& para
   OSObject* sender = OSDynamicCast(OSObject, device_);
   if (!sender) return;
 
-  OSObject* refcon = NULL;
+  OSObject* refcon = nullptr;
 
   Params_UpdateEventFlagsCallback::log(false, params.flags);
   {

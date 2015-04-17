@@ -14,7 +14,7 @@ Vector_ModifierFlag PointingRelativeToScroll::currentToModifierFlags_;
 TimerWrapper PointingRelativeToScroll::timer_;
 
 void PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop) {
-  timer_.initialize(&workloop, NULL, PointingRelativeToScroll::timer_callback);
+  timer_.initialize(&workloop, nullptr, PointingRelativeToScroll::timer_callback);
 }
 
 void PointingRelativeToScroll::static_terminate(void) {

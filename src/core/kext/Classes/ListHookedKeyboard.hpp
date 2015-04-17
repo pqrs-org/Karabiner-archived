@@ -17,7 +17,7 @@ public:
     Item(IOHIDevice* p);
     ~Item(void);
 
-    bool isReplaced(void) const override { return orig_keyboardEventAction_ != NULL; }
+    bool isReplaced(void) const override { return orig_keyboardEventAction_ != nullptr; }
 
     void apply(const Params_KeyboardEventCallBack& params);
     void apply(const Params_UpdateEventFlagsCallback& params);

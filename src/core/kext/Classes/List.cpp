@@ -3,7 +3,7 @@
 namespace org_pqrs_Karabiner {
 List::Item*
 List::erase(Item* p) {
-  if (!p) return NULL;
+  if (!p) return nullptr;
 
   Item* next = p->next_;
 
@@ -27,7 +27,7 @@ List::erase(Item* p) {
 
 List::Item*
 List::erase_and_delete(Item* p) {
-  if (!p) return NULL;
+  if (!p) return nullptr;
 
   Item* next = erase(p);
   delete p;
@@ -42,16 +42,16 @@ void List::clear(void) {
 
 List::Item*
 List::insert(Item* p, Item* newval) {
-  if (!newval) return NULL;
+  if (!newval) return nullptr;
 
-  if (p == NULL) {
-    // push front if p == NULL
+  if (p == nullptr) {
+    // push front if p == nullptr
 
     if (front_) {
       front_->prev_ = newval;
     }
 
-    newval->prev_ = NULL;
+    newval->prev_ = nullptr;
     newval->next_ = front_;
 
     front_ = newval;
@@ -85,7 +85,7 @@ void List::push_back(Item* p) {
     back_->next_ = p;
   }
   p->prev_ = back_;
-  p->next_ = NULL;
+  p->next_ = nullptr;
 
   back_ = p;
 
@@ -98,6 +98,6 @@ void List::push_back(Item* p) {
 
 void List::push_front(Item* p) {
   if (!p) return;
-  insert(NULL, p);
+  insert(nullptr, p);
 }
 }

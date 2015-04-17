@@ -29,7 +29,7 @@
 namespace org_pqrs_Karabiner {
 namespace Core {
 namespace {
-IOWorkLoop* workLoop = NULL;
+IOWorkLoop* workLoop = nullptr;
 }
 
 void start(void) {
@@ -86,7 +86,7 @@ void stop(void) {
 
   if (workLoop) {
     workLoop->release();
-    workLoop = NULL;
+    workLoop = nullptr;
   }
 
   EventWatcher::terminate();

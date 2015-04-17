@@ -43,8 +43,8 @@ void CommonData::send_notification_statusmessage(int index) {
 }
 
 const char* CommonData::get_statusmessage(int index) {
-  if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return NULL;
-  if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return NULL;
+  if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return nullptr;
+  if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return nullptr;
 
   return statusmessage_[index];
 }

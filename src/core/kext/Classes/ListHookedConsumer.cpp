@@ -24,8 +24,8 @@ ListHookedConsumer::instance(void) {
 }
 
 ListHookedConsumer::Item::Item(IOHIDevice* p) : ListHookedDevice::Item(p),
-                                                orig_keyboardSpecialEventAction_(NULL),
-                                                orig_keyboardSpecialEventTarget_(NULL) {}
+                                                orig_keyboardSpecialEventAction_(nullptr),
+                                                orig_keyboardSpecialEventTarget_(nullptr) {}
 
 ListHookedConsumer::Item::~Item(void) {
   IOLOG_DEBUG("ListHookedConsumer::Item::~Item()\n");
@@ -147,8 +147,8 @@ bool ListHookedConsumer::Item::restoreEventAction(void) {
     }
   }
 
-  orig_keyboardSpecialEventAction_ = NULL;
-  orig_keyboardSpecialEventTarget_ = NULL;
+  orig_keyboardSpecialEventAction_ = nullptr;
+  orig_keyboardSpecialEventTarget_ = nullptr;
 
   return result;
 }
@@ -172,7 +172,7 @@ void ListHookedConsumer::Item::apply(const Params_KeyboardSpecialEventCallback& 
   if (!sender) return;
 
   const AbsoluteTime& ts = CommonData::getcurrent_ts();
-  OSObject* refcon = NULL;
+  OSObject* refcon = nullptr;
 
   Params_KeyboardSpecialEventCallback::log(false, params.eventType, params.flags, params.key,
                                            params.flavor, params.guid, params.repeat);

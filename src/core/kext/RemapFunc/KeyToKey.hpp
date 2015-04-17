@@ -22,7 +22,7 @@ public:
   virtual ~KeyToKey(void) {
     if (target_ == this) {
       fire_timer_.cancelTimeout();
-      target_ = NULL;
+      target_ = nullptr;
     }
   }
 

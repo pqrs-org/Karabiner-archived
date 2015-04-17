@@ -27,7 +27,7 @@ RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t len
 RemapClass::Item::~Item(void) {
   if (processor_) {
     delete processor_;
-    processor_ = NULL;
+    processor_ = nullptr;
   }
 
   // ------------------------------------------------------------
@@ -53,7 +53,7 @@ void RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
   //
   RemapFilter::RemapFilterBase* newp = RemapFilter::RemapFilterFactory::create(vec, length);
   if (!newp) {
-    IOLOG_ERROR("RemapClass::Item::append_filter new filter is NULL.\n");
+    IOLOG_ERROR("RemapClass::Item::append_filter new filter is nullptr.\n");
     return;
   }
 
@@ -203,7 +203,7 @@ bool RemapClass::Item::isblocked_keyup(void) const {
 // ----------------------------------------------------------------------
 int RemapClass::allocation_count_ = 0;
 
-RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex) : statusmessage_(NULL),
+RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_size, uint32_t configindex) : statusmessage_(nullptr),
                                                                                                               enabled_(false),
                                                                                                               is_simultaneouskeypresses_(false),
                                                                                                               configindex_(configindex) {
@@ -243,7 +243,7 @@ RemapClass::RemapClass(const uint32_t* const initialize_vector, uint32_t vector_
       if (BRIDGE_REMAPTYPE_NONE < type && type < BRIDGE_REMAPTYPE_END) {
         Item* newp = new Item(*this, p, size);
         if (!newp) {
-          IOLOG_ERROR("RemapClass::RemapClass newp == NULL.\n");
+          IOLOG_ERROR("RemapClass::RemapClass newp == nullptr.\n");
           return;
         }
         items_.push_back(newp);
@@ -541,7 +541,7 @@ void initialize(IOWorkLoop& workloop) {
   statusmessage_[0] = '\0';
   lastmessage_[0] = '\0';
 
-  refresh_timer_.initialize(&workloop, NULL, refresh_timer_callback);
+  refresh_timer_.initialize(&workloop, nullptr, refresh_timer_callback);
 }
 
 static void
@@ -612,9 +612,9 @@ bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_init
     remapclasses_.reserve(count);
     RemapClass::reset_allocation_count();
 
-    // (1) Setting NULL to all items.
+    // (1) Setting nullptr to all items.
     for (uint32_t i = 0; i < count; ++i) {
-      remapclasses_.push_back(NULL);
+      remapclasses_.push_back(nullptr);
     }
 
     // (2) Setting RemapClass* to items.
@@ -640,7 +640,7 @@ bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_init
 
       RemapClass* newp = new RemapClass(p, size, configindex);
       if (!newp) {
-        IOLOG_ERROR("%s newp == NULL.\n", __FUNCTION__);
+        IOLOG_ERROR("%s newp == nullptr.\n", __FUNCTION__);
         goto error;
       }
       p += size;
@@ -653,10 +653,10 @@ bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_init
       remapclasses_[configindex] = newp;
     }
 
-    // (3) Making sure that is not NULL for all items.
+    // (3) Making sure that is not nullptr for all items.
     for (uint32_t i = 0; i < remapclasses_.size(); ++i) {
       if (!remapclasses_[i]) {
-        IOLOG_ERROR("%s remapclasses_[i] == NULL.\n", __FUNCTION__);
+        IOLOG_ERROR("%s remapclasses_[i] == nullptr.\n", __FUNCTION__);
         goto error;
       }
     }
@@ -688,7 +688,7 @@ bool set_config(const int32_t* const config_vector, mach_vm_size_t config_size) 
   for (size_t i = 0; i < remapclasses_.size(); ++i) {
     RemapClass* rc = remapclasses_[i];
     if (!rc) {
-      IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
+      IOLOG_ERROR("%s RemapClass == nullptr.\n", __FUNCTION__);
     } else {
       rc->setEnabled(p[i]);
     }
@@ -710,7 +710,7 @@ bool set_config_one(bool isEssentialConfig, uint32_t index, int32_t value) {
     } else {
       RemapClass* rc = remapclasses_[index];
       if (!rc) {
-        IOLOG_ERROR("%s RemapClass == NULL.\n", __FUNCTION__);
+        IOLOG_ERROR("%s RemapClass == nullptr.\n", __FUNCTION__);
       } else {
         rc->setEnabled(value);
         succeed = true;

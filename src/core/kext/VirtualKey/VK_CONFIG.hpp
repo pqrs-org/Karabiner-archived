@@ -23,7 +23,7 @@ public:
 
 private:
   struct Item {
-    Item(void) : remapclass(NULL),
+    Item(void) : remapclass(nullptr),
                  keycode_toggle(0),
                  keycode_force_on(0),
                  keycode_force_off(0),

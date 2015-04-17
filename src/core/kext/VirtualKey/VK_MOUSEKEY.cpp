@@ -20,7 +20,7 @@ void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
   scrollmode_ = false;
   highspeed_ = false;
 
-  fire_timer_.initialize(&workloop, NULL, VirtualKey::VK_MOUSEKEY::fire_timer_callback);
+  fire_timer_.initialize(&workloop, nullptr, VirtualKey::VK_MOUSEKEY::fire_timer_callback);
 }
 
 void VirtualKey::VK_MOUSEKEY::terminate(void) {

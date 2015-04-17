@@ -15,7 +15,7 @@ public:
                                                          {autogenId},
                                                          {autogenId},
                                                          {autogenId}},
-                                               current_keytokey_(NULL) {
+                                               current_keytokey_(nullptr) {
     keyrepeat_ic_.begin();
 
     for (size_t i = 0; i < KEYTOKEY__END__; ++i) {

@@ -19,18 +19,18 @@ public:
   Params_Base(void) {}
   virtual ~Params_Base(void) {}
 
-  virtual const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const { return NULL; }
-  virtual const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const { return NULL; }
-  virtual const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const { return NULL; }
-  virtual const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return NULL; }
-  virtual const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const { return NULL; }
-  virtual const Params_Wait* get_Params_Wait(void) const { return NULL; }
+  virtual const Params_KeyboardEventCallBack* get_Params_KeyboardEventCallBack(void) const { return nullptr; }
+  virtual const Params_UpdateEventFlagsCallback* get_Params_UpdateEventFlagsCallback(void) const { return nullptr; }
+  virtual const Params_KeyboardSpecialEventCallback* get_Params_KeyboardSpecialEventCallback(void) const { return nullptr; }
+  virtual const Params_RelativePointerEventCallback* get_Params_RelativePointerEventCallback(void) const { return nullptr; }
+  virtual const Params_ScrollWheelEventCallback* get_Params_ScrollWheelEventCallback(void) const { return nullptr; }
+  virtual const Params_Wait* get_Params_Wait(void) const { return nullptr; }
 
   virtual bool iskeydown(bool& output) const { return false; }
   virtual bool isModifier(void) const { return false; }
 
   static const Params_Base& emptyInstance(void);
-  static const Params_Base& safe_dereference(const Params_Base* p) { return p == NULL ? emptyInstance() : *p; }
+  static const Params_Base& safe_dereference(const Params_Base* p) { return p == nullptr ? emptyInstance() : *p; }
 };
 
 // =================================================
@@ -280,7 +280,7 @@ public:
       }
     }
 
-    return NULL;
+    return nullptr;
   }
 };
 }

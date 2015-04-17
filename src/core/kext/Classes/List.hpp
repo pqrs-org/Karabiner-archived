@@ -11,7 +11,7 @@ public:
     friend class List;
 
   protected:
-    Item(void) : prev_(NULL), next_(NULL) {}
+    Item(void) : prev_(nullptr), next_(nullptr) {}
     virtual ~Item(void) {}
 
   public:
@@ -23,13 +23,13 @@ public:
     Item* next_;
   };
 
-  List(void) : front_(NULL), back_(NULL), size_(0) {}
+  List(void) : front_(nullptr), back_(nullptr), size_(0) {}
   ~List(void) { clear(); }
 
   // You can call safe_front and safe_back to empty list.
   Item* safe_front(void) const { return front_; }
   Item* safe_back(void) const { return back_; }
-  bool empty(void) const { return front_ == NULL; }
+  bool empty(void) const { return front_ == nullptr; }
   size_t size(void) const { return size_; }
 
   Item* erase_and_delete(Item* p);

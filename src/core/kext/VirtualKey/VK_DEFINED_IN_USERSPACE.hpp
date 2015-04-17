@@ -22,7 +22,7 @@ public:
 
 private:
   struct Item {
-    Item(void) : remapclass(NULL),
+    Item(void) : remapclass(nullptr),
                  keycode(0),
                  notification_type(0){};
     Item(RemapClass* p, unsigned int kc, uint32_t nt) : remapclass(p), keycode(kc), notification_type(nt) {}

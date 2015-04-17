@@ -9,7 +9,7 @@
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 TimerWrapper DependingPressingPeriodKeyToKey::fire_timer_;
-DependingPressingPeriodKeyToKey* DependingPressingPeriodKeyToKey::target_ = NULL;
+DependingPressingPeriodKeyToKey* DependingPressingPeriodKeyToKey::target_ = nullptr;
 
 DependingPressingPeriodKeyToKey::PeriodMS::PeriodMS(void) : mode_(Mode::NONE) {
   for (size_t m = 0; m < Mode::__END__; ++m) {
@@ -124,7 +124,7 @@ bool DependingPressingPeriodKeyToKey::PeriodMS::enabled(PeriodMS::Type::Value ty
 
 // ======================================================================
 void DependingPressingPeriodKeyToKey::static_initialize(IOWorkLoop& workloop) {
-  fire_timer_.initialize(&workloop, NULL, DependingPressingPeriodKeyToKey::fire_timer_callback);
+  fire_timer_.initialize(&workloop, nullptr, DependingPressingPeriodKeyToKey::fire_timer_callback);
 }
 
 void DependingPressingPeriodKeyToKey::static_terminate(void) {
@@ -150,7 +150,7 @@ DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(RemapFunc::Rema
 DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void) {
   if (target_ == this) {
     fire_timer_.cancelTimeout();
-    target_ = NULL;
+    target_ = nullptr;
   }
 }
 
@@ -229,7 +229,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
 
         unsigned int ms = periodMS_.get(PeriodMS::Type::SHORT_PERIOD);
         if (ms == 0) {
-          fire_timer_callback(NULL, NULL);
+          fire_timer_callback(nullptr, nullptr);
         } else {
           fire_timer_.setTimeoutMS(ms);
         }

@@ -28,10 +28,10 @@ void ListHookedDevice::Item::setDeviceIdentifier(void) {
   IORegistryEntry* dev = device_;
 
   while (dev) {
-    const OSNumber* vid = NULL;
+    const OSNumber* vid = nullptr;
     vid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDVendorIDKey));
 
-    const OSNumber* pid = NULL;
+    const OSNumber* pid = nullptr;
     pid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDProductIDKey));
 
     if (vid && pid) {
@@ -69,7 +69,7 @@ void ListHookedDevice::Item::setDeviceIdentifier(void) {
 finish:
   // Set LocationID
   if (dev) {
-    const OSNumber* locationid = NULL;
+    const OSNumber* locationid = nullptr;
     locationid = OSDynamicCast(OSNumber, dev->getProperty(kIOHIDLocationIDKey));
     if (locationid) {
       deviceIdentifier_.setLocation(DeviceLocation(locationid->unsigned32BitValue()));
@@ -86,7 +86,7 @@ finish:
 void ListHookedDevice::Item::setDeviceType(void) {
   if (!device_) return;
 
-  const char* name = NULL;
+  const char* name = nullptr;
 
   name = device_->getName();
   if (!name) goto finish;
@@ -109,7 +109,7 @@ void ListHookedDevice::Item::setDeviceType(void) {
     // We judge it from a product name whether it is internal device.
     // At keyboard, we cannot use the KeyboardType,
     // because some external keyboard has the same KeyboardType as Apple internal keyboard.
-    const OSString* productname = NULL;
+    const OSString* productname = nullptr;
     productname = OSDynamicCast(OSString, device_->getProperty(kIOHIDProductKey));
     if (productname) {
       const char* pname = productname->getCStringNoCopy();
@@ -211,7 +211,7 @@ ListHookedDevice::get(const IOHIDevice* device) {
     if (p->device_ == device) return p;
   }
 
-  return NULL;
+  return nullptr;
 }
 
 ListHookedDevice::Item*
@@ -227,7 +227,7 @@ ListHookedDevice::get_replaced(void) {
     if (p->isReplaced()) return p;
   }
 
-  return NULL;
+  return nullptr;
 }
 
 void ListHookedDevice::refresh(void) {
@@ -303,7 +303,7 @@ void ListHookedDevice::initializeAll(IOWorkLoop& workloop) {
   ListHookedConsumer::instance().initialize();
   ListHookedPointing::instance().initialize();
 
-  refreshInProgressDevices_timer_.initialize(&workloop, NULL, ListHookedDevice::refreshInProgressDevices_timer_callback);
+  refreshInProgressDevices_timer_.initialize(&workloop, nullptr, ListHookedDevice::refreshInProgressDevices_timer_callback);
 }
 
 void ListHookedDevice::terminateAll(void) {

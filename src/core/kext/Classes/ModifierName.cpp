@@ -26,6 +26,6 @@ ModifierName::getName(ModifierFlag modifierFlag) {
       return items_[i].getName();
     }
   }
-  return NULL;
+  return nullptr;
 }
 }

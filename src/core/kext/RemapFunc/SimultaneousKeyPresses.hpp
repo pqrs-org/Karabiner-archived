@@ -55,7 +55,7 @@ private:
 
   class DownKeys final {
   public:
-    DownKeys(void) : item(NULL) {}
+    DownKeys(void) : item(nullptr) {}
     DownKeys(EventInputQueue::Item* i) : item(i) {}
     EventInputQueue::Item* item;
   };

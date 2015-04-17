@@ -26,7 +26,7 @@ private:
 namespace org_pqrs_Karabiner {
 class TimerWrapper final {
 public:
-  TimerWrapper(void) : workloop_(NULL), object_(NULL), timer_(NULL) {}
+  TimerWrapper(void) : workloop_(nullptr), object_(nullptr), timer_(nullptr) {}
   void initialize(IOWorkLoop* wl, OSObject* owner, IOTimerEventSource::Action func);
   void terminate(void);
 

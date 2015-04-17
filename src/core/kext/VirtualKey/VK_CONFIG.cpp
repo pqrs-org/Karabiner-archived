@@ -27,7 +27,7 @@ void VirtualKey::VK_CONFIG::clear_items(void) {
 }
 
 bool VirtualKey::VK_CONFIG::handle(const Params_KeyboardEventCallBack& params) {
-  RemapClass* remapclass = NULL;
+  RemapClass* remapclass = nullptr;
   bool value_old = false;
 
   for (size_t i = 0; i < items_.size(); ++i) {

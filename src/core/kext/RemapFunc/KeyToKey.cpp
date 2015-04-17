@@ -12,11 +12,11 @@
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 TimerWrapper KeyToKey::fire_timer_;
-KeyToKey* KeyToKey::target_ = NULL;
+KeyToKey* KeyToKey::target_ = nullptr;
 FlagStatus KeyToKey::flagStatusForDelayedActionKeys_;
 
 void KeyToKey::static_initialize(IOWorkLoop& workloop) {
-  fire_timer_.initialize(&workloop, NULL, KeyToKey::fire_timer_callback);
+  fire_timer_.initialize(&workloop, nullptr, KeyToKey::fire_timer_callback);
 }
 
 void KeyToKey::static_terminate(void) {

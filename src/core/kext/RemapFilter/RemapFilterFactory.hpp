@@ -24,7 +24,7 @@ public:
     //
     if (!vec || length == 0) {
       IOLOG_ERROR("RemapFilterFactory::create invalid parameter %p, %ld.\n", vec, length);
-      return NULL;
+      return nullptr;
     }
 
     // ------------------------------------------------------------
@@ -81,7 +81,7 @@ public:
     }
 
     IOLOG_ERROR("RemapFilterFactory::create unknown type:%d.\n", type);
-    return NULL;
+    return nullptr;
   }
 };
 }
