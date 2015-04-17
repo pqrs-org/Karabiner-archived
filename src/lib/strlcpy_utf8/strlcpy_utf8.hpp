@@ -4,14 +4,13 @@
 namespace pqrs {
 class strlcpy_utf8 final {
 public:
-  static void
+  static size_t
   strlcpy(char* dst, const char* src, size_t size) {
-    // Do not use nullptr because kext build environment does not support it.
-    if (dst == NULL) return;
-    if (src == NULL) return;
-    if (size == 0) return;
+    if (dst == nullptr) return -1;
+    if (src == nullptr) return -1;
+    if (size == 0) return -1;
 
-    ::strlcpy(dst, src, size);
+    size_t retval = ::strlcpy(dst, src, size);
 
     size_t len = strlen(dst);
 
@@ -38,6 +37,8 @@ public:
       }
     }
     dst[previous] = '\0';
+
+    return retval;
   }
 };
 }
