@@ -15,15 +15,16 @@ public:
   static void static_terminate(void);
   static void cancelScroll(void);
 
-  PointingRelativeToScroll(void) : RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL),
-                                   index_(0),
-                                   index_type_(INDEX_TYPE_DEFAULT),
-                                   isToKeysDefined_(false),
-                                   absolute_distance_(0),
-                                   chained_delta1_(0),
-                                   chained_delta2_(0),
-                                   fixation_delta1_(0),
-                                   fixation_delta2_(0) {
+  PointingRelativeToScroll(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL, autogenId),
+                                                  index_(0),
+                                                  index_type_(INDEX_TYPE_DEFAULT),
+                                                  keytokey_(autogenId),
+                                                  isToKeysDefined_(false),
+                                                  absolute_distance_(0),
+                                                  chained_delta1_(0),
+                                                  chained_delta2_(0),
+                                                  fixation_delta1_(0),
+                                                  fixation_delta2_(0) {
     keytokey_.add(KeyCode::VK_PSEUDO_KEY);
   }
 

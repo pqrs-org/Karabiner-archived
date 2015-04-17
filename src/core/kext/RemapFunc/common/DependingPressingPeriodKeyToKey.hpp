@@ -125,7 +125,7 @@ public:
   static void static_initialize(IOWorkLoop& workloop);
   static void static_terminate(void);
 
-  DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner);
+  DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner, AutogenId autogenId);
   virtual ~DependingPressingPeriodKeyToKey(void);
 
   void prepare(RemapParams& remapParams);

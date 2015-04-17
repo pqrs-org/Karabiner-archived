@@ -9,11 +9,11 @@ namespace RemapFunc {
 // for SandS like behavior remappings (remap_space2shift, remap_enter2optionL_commandSpace, ...)
 class KeyOverlaidModifier final : public RemapFuncBase {
 public:
-  KeyOverlaidModifier(void) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER),
-                              isUseSeparator_(false),
-                              indexType_(INDEX_IS_HOLDING),
-                              index_(0),
-                              dppkeytokey_(this) {
+  KeyOverlaidModifier(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER, autogenId),
+                                             isUseSeparator_(false),
+                                             indexType_(INDEX_IS_HOLDING),
+                                             index_(0),
+                                             dppkeytokey_(this, autogenId) {
     dppkeytokey_.setPeriodMS(DependingPressingPeriodKeyToKey::PeriodMS::Mode::KEY_OVERLAID_MODIFIER);
   }
 

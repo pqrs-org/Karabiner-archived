@@ -9,13 +9,14 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class SimultaneousKeyPresses final : public RemapFuncBase {
 public:
-  SimultaneousKeyPresses(void) : RemapFuncBase(BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES),
-                                 isUseSeparator_(false),
-                                 index_(0),
-                                 isFromInfoFull_(false),
-                                 isToRaw_(false),
-                                 isStrictKeyOrder_(false),
-                                 toKey_raw_(KeyCode::VK_NONE) {}
+  SimultaneousKeyPresses(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES, autogenId),
+                                                isUseSeparator_(false),
+                                                index_(0),
+                                                isFromInfoFull_(false),
+                                                isToRaw_(false),
+                                                isStrictKeyOrder_(false),
+                                                toKey_raw_(KeyCode::VK_NONE),
+                                                keytokey_(autogenId) {}
 
   // This function changes Simultaneous key presses to KeyCode::VK_SIMULTANEOUSKEYPRESSES_xxx
   RemapSimultaneousKeyPressesResult::Value remapSimultaneousKeyPresses(void) override;

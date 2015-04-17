@@ -7,7 +7,7 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class DropKeyAfterRemap final : public RemapFuncBase {
 public:
-  DropKeyAfterRemap(void) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP) {}
+  DropKeyAfterRemap(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP, autogenId) {}
 
   bool drop(const Params_KeyboardEventCallBack& params) override;
 

@@ -131,11 +131,16 @@ void DependingPressingPeriodKeyToKey::static_terminate(void) {
   fire_timer_.terminate();
 }
 
-DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner) : owner_(owner),
-                                                                                                    active_(false),
-                                                                                                    periodtype_(PeriodType::NONE),
-                                                                                                    keyboardRepeatID_(0),
-                                                                                                    interruptibleByScrollWheel_(true) {
+DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner, AutogenId autogenId) : owner_(owner),
+                                                                                                                         active_(false),
+                                                                                                                         periodtype_(PeriodType::NONE),
+                                                                                                                         keytokey_{{autogenId},
+                                                                                                                                   {autogenId},
+                                                                                                                                   {autogenId},
+                                                                                                                                   {autogenId}},
+                                                                                                                         beforeAfterKeys_(autogenId),
+                                                                                                                         keyboardRepeatID_(0),
+                                                                                                                         interruptibleByScrollWheel_(true) {
   for (size_t i = 0; i < KeyToKeyType::END_; ++i) {
     keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
   }

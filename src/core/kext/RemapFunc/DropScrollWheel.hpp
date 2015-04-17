@@ -7,9 +7,9 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class DropScrollWheel final : public RemapFuncBase {
 public:
-  DropScrollWheel(void) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPSCROLLWHEEL),
-                          dropHorizontalScroll_(false),
-                          dropMomentumScroll_(false) {}
+  DropScrollWheel(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPSCROLLWHEEL, autogenId),
+                                         dropHorizontalScroll_(false),
+                                         dropMomentumScroll_(false) {}
 
   bool remap(RemapParams& remapParams) override;
 

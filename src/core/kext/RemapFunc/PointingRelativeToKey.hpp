@@ -10,8 +10,12 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class PointingRelativeToKey final : public RemapFuncBase {
 public:
-  PointingRelativeToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY),
-                                current_keytokey_(NULL) {
+  PointingRelativeToKey(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY, autogenId),
+                                               keytokey_{{autogenId},
+                                                         {autogenId},
+                                                         {autogenId},
+                                                         {autogenId}},
+                                               current_keytokey_(NULL) {
     keyrepeat_ic_.begin();
 
     for (size_t i = 0; i < KEYTOKEY__END__; ++i) {

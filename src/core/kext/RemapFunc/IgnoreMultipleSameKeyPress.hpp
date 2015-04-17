@@ -8,8 +8,8 @@ namespace RemapFunc {
 // ex. Ignore JIS_KANA x 2. (validate only the first once)
 class IgnoreMultipleSameKeyPress final : public RemapFuncBase {
 public:
-  IgnoreMultipleSameKeyPress(void) : RemapFuncBase(BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS),
-                                     needToIgnore_(false) {}
+  IgnoreMultipleSameKeyPress(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS, autogenId),
+                                                    needToIgnore_(false) {}
 
   bool remap(RemapParams& remapParams) override;
 

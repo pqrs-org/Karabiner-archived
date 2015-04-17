@@ -8,10 +8,13 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class KeyDownUpToKey final : public RemapFuncBase {
 public:
-  KeyDownUpToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY),
-                         indexType_(INDEXTYPE_NONE),
-                         needClearInterruptedToKeys_(false),
-                         interrupted_(false) {}
+  KeyDownUpToKey(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY, autogenId),
+                                        indexType_(INDEXTYPE_NONE),
+                                        keytokey_from_(autogenId),
+                                        keytokey_downup_(autogenId),
+                                        keytokey_interrupted_(autogenId),
+                                        needClearInterruptedToKeys_(false),
+                                        interrupted_(false) {}
 
   void prepare(RemapParams& remapParams) override;
   bool remap(RemapParams& remapParams) override;

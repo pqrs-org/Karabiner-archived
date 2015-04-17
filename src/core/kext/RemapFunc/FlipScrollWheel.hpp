@@ -7,9 +7,9 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class FlipScrollWheel final : public RemapFuncBase {
 public:
-  FlipScrollWheel(void) : RemapFuncBase(BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL),
-                          flipHorizontalScroll_(false),
-                          flipVerticalScroll_(false) {}
+  FlipScrollWheel(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL, autogenId),
+                                         flipHorizontalScroll_(false),
+                                         flipVerticalScroll_(false) {}
 
   bool remap(RemapParams& remapParams) override;
 

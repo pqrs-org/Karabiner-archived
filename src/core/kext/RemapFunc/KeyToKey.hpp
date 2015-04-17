@@ -11,13 +11,13 @@ public:
   static void static_initialize(IOWorkLoop& workloop);
   static void static_terminate(void);
 
-  KeyToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYTOKEY),
-                   index_(0),
-                   currentToEvent_(CurrentToEvent::TO_KEYS),
-                   keyboardRepeatID_(-1),
-                   isRepeatEnabled_(true),
-                   delayUntilRepeat_(-1),
-                   keyRepeat_(-1) {}
+  KeyToKey(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_KEYTOKEY, autogenId),
+                                  index_(0),
+                                  currentToEvent_(CurrentToEvent::TO_KEYS),
+                                  keyboardRepeatID_(-1),
+                                  isRepeatEnabled_(true),
+                                  delayUntilRepeat_(-1),
+                                  keyRepeat_(-1) {}
 
   virtual ~KeyToKey(void) {
     if (target_ == this) {
@@ -108,7 +108,6 @@ private:
   int delayUntilRepeat_;
   int keyRepeat_;
 };
-DECLARE_VECTOR(KeyToKey);
 }
 }
 

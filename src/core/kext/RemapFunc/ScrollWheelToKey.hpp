@@ -9,10 +9,11 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class ScrollWheelToKey final : public RemapFuncBase {
 public:
-  ScrollWheelToKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY),
-                           index_(0),
-                           firstScrollWheelEvent_(ScrollWheel::NONE),
-                           isContinuousScrollEventRemapped_(false) {
+  ScrollWheelToKey(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY, autogenId),
+                                          index_(0),
+                                          firstScrollWheelEvent_(ScrollWheel::NONE),
+                                          isContinuousScrollEventRemapped_(false),
+                                          keytokey_(autogenId) {
     continuousScrollEvent_ic_.begin();
     keyrepeat_ic_.begin();
     keytokey_.add(KeyCode::VK_PSEUDO_KEY);

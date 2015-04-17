@@ -28,7 +28,7 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class RemapFuncFactory final {
 public:
-  static RemapFuncBase* create(const unsigned int* vec, size_t length) {
+  static RemapFuncBase* create(const unsigned int* vec, size_t length, AutogenId autogenId) {
     // ------------------------------------------------------------
     // check parameters.
     //
@@ -44,67 +44,67 @@ public:
 
     switch (type) {
     case BRIDGE_REMAPTYPE_KEYTOKEY:
-      p = new KeyToKey();
+      p = new KeyToKey(autogenId);
       break;
     case BRIDGE_REMAPTYPE_DOUBLEPRESSMODIFIER:
-      p = new DoublePressModifier();
+      p = new DoublePressModifier(autogenId);
       break;
     case BRIDGE_REMAPTYPE_DROPKEY:
-      p = new DropKey();
+      p = new DropKey(autogenId);
       break;
     case BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP:
-      p = new DropKeyAfterRemap();
+      p = new DropKeyAfterRemap(autogenId);
       break;
     case BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE:
-      p = new DropPointingRelativeCursorMove();
+      p = new DropPointingRelativeCursorMove(autogenId);
       break;
     case BRIDGE_REMAPTYPE_DROPSCROLLWHEEL:
-      p = new DropScrollWheel();
+      p = new DropScrollWheel(autogenId);
       break;
     case BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE:
-      p = new FlipPointingRelative();
+      p = new FlipPointingRelative(autogenId);
       break;
     case BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL:
-      p = new FlipScrollWheel();
+      p = new FlipScrollWheel(autogenId);
       break;
     case BRIDGE_REMAPTYPE_FORCENUMLOCKON:
-      p = new ForceNumLockOn();
+      p = new ForceNumLockOn(autogenId);
       break;
     case BRIDGE_REMAPTYPE_HOLDINGKEYTOKEY:
-      p = new HoldingKeyToKey();
+      p = new HoldingKeyToKey(autogenId);
       break;
     case BRIDGE_REMAPTYPE_IGNOREMULTIPLESAMEKEYPRESS:
-      p = new IgnoreMultipleSameKeyPress();
+      p = new IgnoreMultipleSameKeyPress(autogenId);
       break;
     case BRIDGE_REMAPTYPE_KEYOVERLAIDMODIFIER:
-      p = new KeyOverlaidModifier();
+      p = new KeyOverlaidModifier(autogenId);
       break;
     case BRIDGE_REMAPTYPE_KEYDOWNUPTOKEY:
-      p = new KeyDownUpToKey();
+      p = new KeyDownUpToKey(autogenId);
       break;
     case BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY:
-      p = new PointingRelativeToKey();
+      p = new PointingRelativeToKey(autogenId);
       break;
     case BRIDGE_REMAPTYPE_POINTINGRELATIVETOSCROLL:
-      p = new PointingRelativeToScroll();
+      p = new PointingRelativeToScroll(autogenId);
       break;
     case BRIDGE_REMAPTYPE_SIMULTANEOUSKEYPRESSES:
-      p = new SimultaneousKeyPresses();
+      p = new SimultaneousKeyPresses(autogenId);
       break;
     case BRIDGE_REMAPTYPE_SETKEYBOARDTYPE:
-      p = new SetKeyboardType();
+      p = new SetKeyboardType(autogenId);
       break;
     case BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL:
-      p = new ScrollWheelToScrollWheel();
+      p = new ScrollWheelToScrollWheel(autogenId);
       break;
     case BRIDGE_REMAPTYPE_SCROLLWHEELTOKEY:
-      p = new ScrollWheelToKey();
+      p = new ScrollWheelToKey(autogenId);
       break;
     case BRIDGE_REMAPTYPE_BLOCKUNTILKEYUP:
-      p = new BlockUntilKeyUp();
+      p = new BlockUntilKeyUp(autogenId);
       break;
     case BRIDGE_REMAPTYPE_PASSTHROUGH:
-      p = new PassThrough();
+      p = new PassThrough(autogenId);
       break;
     default:
       IOLOG_ERROR("RemapFuncFactory::create unknown type: %d\n", type);

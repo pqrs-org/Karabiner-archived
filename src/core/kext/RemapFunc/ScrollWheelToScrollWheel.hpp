@@ -7,8 +7,8 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class ScrollWheelToScrollWheel final : public RemapFuncBase {
 public:
-  ScrollWheelToScrollWheel(void) : RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL),
-                                   index_(0) {}
+  ScrollWheelToScrollWheel(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_SCROLLWHEELTOSCROLLWHEEL, autogenId),
+                                                  index_(0) {}
 
   bool remap(RemapParams& remapParams) override;
 

@@ -7,8 +7,8 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class ForceNumLockOn final : public RemapFuncBase {
 public:
-  ForceNumLockOn(void) : RemapFuncBase(BRIDGE_REMAPTYPE_FORCENUMLOCKON),
-                         index_(0), forceOffMode_(false) {}
+  ForceNumLockOn(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_FORCENUMLOCKON, autogenId),
+                                        index_(0), forceOffMode_(false) {}
 
   bool remapForceNumLockOn(ListHookedKeyboard::Item* item) override;
 

@@ -8,12 +8,12 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class DropKey final : public RemapFuncBase {
 public:
-  DropKey(void) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEY),
-                  dropKey_(false),
-                  dropConsumerKey_(false),
-                  dropPointingButton_(false),
-                  modifierMatched_(false),
-                  dropTargetAutogenId_(AutogenId(0)) {}
+  DropKey(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEY, autogenId),
+                                 dropKey_(false),
+                                 dropConsumerKey_(false),
+                                 dropPointingButton_(false),
+                                 modifierMatched_(false),
+                                 dropTargetAutogenId_(AutogenId(0)) {}
 
   bool remap(RemapParams& remapParams) override;
   void cancelEventOutputQueueItems(void) override;

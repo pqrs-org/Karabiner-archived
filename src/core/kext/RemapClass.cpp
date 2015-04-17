@@ -20,12 +20,8 @@ RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t len
                                                                                        type_(BRIDGE_REMAPTYPE_NONE),
                                                                                        active_(false),
                                                                                        active_SimultaneousButtonPresses_(false) {
-  processor_ = RemapFunc::RemapFuncFactory::create(vec, length);
-
-  if (processor_) {
-    auto autogenId = AutogenId((static_cast<uint64_t>(parent_.configindex_) << 32) | (parent.items_.size() + 1));
-    processor_->setAutogenId(autogenId);
-  }
+  auto autogenId = AutogenId((static_cast<uint64_t>(parent_.configindex_) << 32) | (parent.items_.size() + 1));
+  processor_ = RemapFunc::RemapFuncFactory::create(vec, length, autogenId);
 }
 
 RemapClass::Item::~Item(void) {
