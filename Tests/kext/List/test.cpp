@@ -21,11 +21,11 @@ private:
 
 TEST(List, push_back) {
   List list;
-  TestItem* p = NULL;
+  TestItem* p = nullptr;
   const int MAXITEM = 10;
 
   // ------------------------------------------------------------
-  list.push_back(NULL);
+  list.push_back(nullptr);
   EXPECT_EQ(static_cast<size_t>(0), list.size());
 
   // ------------------------------------------------------------
@@ -37,7 +37,7 @@ TEST(List, push_back) {
 
   for (int i = 0; i < MAXITEM; ++i) {
     p = dynamic_cast<TestItem*>(list.safe_front());
-    EXPECT_TRUE(p != NULL);
+    EXPECT_TRUE(p != nullptr);
     EXPECT_EQ(i, p->v());
 
     list.pop_front();
@@ -50,23 +50,23 @@ TEST(List, push_back) {
   // check prev/next value.
   TestItem* item1 = new TestItem(1);
   TestItem* item2 = new TestItem(2);
-  EXPECT_TRUE(item1->getprev() == NULL);
-  EXPECT_TRUE(item1->getnext() == NULL);
-  EXPECT_TRUE(item2->getprev() == NULL);
-  EXPECT_TRUE(item2->getnext() == NULL);
+  EXPECT_TRUE(item1->getprev() == nullptr);
+  EXPECT_TRUE(item1->getnext() == nullptr);
+  EXPECT_TRUE(item2->getprev() == nullptr);
+  EXPECT_TRUE(item2->getnext() == nullptr);
 
   list.push_back(item1);
-  EXPECT_TRUE(item1->getprev() == NULL);
-  EXPECT_TRUE(item1->getnext() == NULL);
+  EXPECT_TRUE(item1->getprev() == nullptr);
+  EXPECT_TRUE(item1->getnext() == nullptr);
   list.push_back(item2);
-  EXPECT_TRUE(item1->getprev() == NULL);
+  EXPECT_TRUE(item1->getprev() == nullptr);
   EXPECT_TRUE(item1->getnext() == item2);
   EXPECT_TRUE(item2->getprev() == item1);
-  EXPECT_TRUE(item2->getnext() == NULL);
+  EXPECT_TRUE(item2->getnext() == nullptr);
 
   list.pop_front();
-  EXPECT_TRUE(item2->getprev() == NULL);
-  EXPECT_TRUE(item2->getnext() == NULL);
+  EXPECT_TRUE(item2->getprev() == nullptr);
+  EXPECT_TRUE(item2->getnext() == nullptr);
 
   list.pop_front();
   EXPECT_EQ(0, allocatecount);
@@ -74,11 +74,11 @@ TEST(List, push_back) {
 
 TEST(List, push_front) {
   List list;
-  TestItem* p = NULL;
+  TestItem* p = nullptr;
   const int MAXITEM = 10;
 
   // ------------------------------------------------------------
-  list.push_front(NULL);
+  list.push_front(nullptr);
   EXPECT_EQ(static_cast<size_t>(0), list.size());
 
   // ------------------------------------------------------------
@@ -90,7 +90,7 @@ TEST(List, push_front) {
 
   for (int i = 0; i < MAXITEM; ++i) {
     p = dynamic_cast<TestItem*>(list.safe_front());
-    EXPECT_TRUE(p != NULL);
+    EXPECT_TRUE(p != nullptr);
     EXPECT_EQ(MAXITEM - (i + 1), p->v());
 
     list.pop_front();
@@ -103,23 +103,23 @@ TEST(List, push_front) {
   // check prev/next value.
   TestItem* item1 = new TestItem(1);
   TestItem* item2 = new TestItem(2);
-  EXPECT_TRUE(item1->getprev() == NULL);
-  EXPECT_TRUE(item1->getnext() == NULL);
-  EXPECT_TRUE(item2->getprev() == NULL);
-  EXPECT_TRUE(item2->getnext() == NULL);
+  EXPECT_TRUE(item1->getprev() == nullptr);
+  EXPECT_TRUE(item1->getnext() == nullptr);
+  EXPECT_TRUE(item2->getprev() == nullptr);
+  EXPECT_TRUE(item2->getnext() == nullptr);
 
   list.push_front(item1);
-  EXPECT_TRUE(item1->getprev() == NULL);
-  EXPECT_TRUE(item1->getnext() == NULL);
+  EXPECT_TRUE(item1->getprev() == nullptr);
+  EXPECT_TRUE(item1->getnext() == nullptr);
   list.push_front(item2);
   EXPECT_TRUE(item1->getprev() == item2);
-  EXPECT_TRUE(item1->getnext() == NULL);
-  EXPECT_TRUE(item2->getprev() == NULL);
+  EXPECT_TRUE(item1->getnext() == nullptr);
+  EXPECT_TRUE(item2->getprev() == nullptr);
   EXPECT_TRUE(item2->getnext() == item1);
 
   list.pop_front();
-  EXPECT_TRUE(item1->getprev() == NULL);
-  EXPECT_TRUE(item1->getnext() == NULL);
+  EXPECT_TRUE(item1->getprev() == nullptr);
+  EXPECT_TRUE(item1->getnext() == nullptr);
 
   list.pop_front();
   EXPECT_EQ(0, allocatecount);
@@ -160,26 +160,13 @@ TEST(List, pop_back) {
 
 TEST(List, insert) {
   List list;
-  TestItem* p = NULL;
+  TestItem* p = nullptr;
 
-  list.insert(NULL, NULL);
+  list.insert(nullptr, nullptr);
 
-  // push_front if first argument == NULL.
-  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
-  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(2))); // [2,1]
-
-  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
-  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front()->getnext())->v());
-  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_back())->v());
-  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_back()->getprev())->v());
-
-  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
-  list.pop_front();
-  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front())->v());
-  list.pop_front();
-
-  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1))); // [1]
-  p = static_cast<TestItem*>(list.insert(p, new TestItem(2)));    // [2,1]
+  // push_front if first argument == nullptr.
+  p = static_cast<TestItem*>(list.insert(nullptr, new TestItem(1))); // [1]
+  p = static_cast<TestItem*>(list.insert(nullptr, new TestItem(2))); // [2,1]
 
   EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
   EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front()->getnext())->v());
@@ -191,7 +178,20 @@ TEST(List, insert) {
   EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front())->v());
   list.pop_front();
 
-  p = static_cast<TestItem*>(list.insert(NULL, new TestItem(1)));             // [1]
+  p = static_cast<TestItem*>(list.insert(nullptr, new TestItem(1))); // [1]
+  p = static_cast<TestItem*>(list.insert(p, new TestItem(2)));       // [2,1]
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front()->getnext())->v());
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_back())->v());
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_back()->getprev())->v());
+
+  EXPECT_EQ(2, static_cast<TestItem*>(list.safe_front())->v());
+  list.pop_front();
+  EXPECT_EQ(1, static_cast<TestItem*>(list.safe_front())->v());
+  list.pop_front();
+
+  p = static_cast<TestItem*>(list.insert(nullptr, new TestItem(1)));          // [1]
   p = static_cast<TestItem*>(list.insert(p, new TestItem(2)));                // [2,1]
   p = static_cast<TestItem*>(list.insert(list.safe_back(), new TestItem(3))); // [2,3,1]
 

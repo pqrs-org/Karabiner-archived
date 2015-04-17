@@ -404,7 +404,7 @@ TEST(pqrs_xml_compiler, reload) {
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang) {
-  pqrs_xml_compiler* p = NULL;
+  pqrs_xml_compiler* p = nullptr;
   EXPECT_EQ(0, pqrs_xml_compiler_initialize(&p, "data/system_xml", "data/private_xml"));
   pqrs_xml_compiler_reload(p);
 
@@ -417,7 +417,7 @@ TEST(pqrs_xml_compiler, reload_bindings_clang) {
                                         &inputsource_detail,
                                         "fr",
                                         "com.apple.keylayout.French",
-                                        NULL);
+                                        nullptr);
     EXPECT_TRUE(inputsource != 0);
     EXPECT_TRUE(inputsource_detail != 0);
   }
@@ -429,9 +429,9 @@ TEST(pqrs_xml_compiler, reload_bindings_clang) {
     pqrs_xml_compiler_get_inputsourceid(p,
                                         &inputsource,
                                         &inputsource_detail,
-                                        NULL,
-                                        NULL,
-                                        NULL);
+                                        nullptr,
+                                        nullptr,
+                                        nullptr);
     EXPECT_TRUE(inputsource == 0);
     EXPECT_TRUE(inputsource_detail == 0);
   }
