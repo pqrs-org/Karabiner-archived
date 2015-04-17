@@ -34,10 +34,4 @@ void EventWatcher::Item::on(void) {
   }
   isAnyEventHappen_ = true;
 }
-
-void EventWatcher::Item::undo(void) {
-  if (cancelableEventInputQueueSerialNumber_ == EventInputQueue::currentSerialNumber()) {
-    isAnyEventHappen_ = false;
-  }
-}
 }

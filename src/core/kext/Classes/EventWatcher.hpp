@@ -59,7 +59,6 @@ private:
     virtual ~Item(void) {}
 
     void on(void);
-    void undo(void);
 
     bool observed(void) const { return observed_; }
     void observe(void) {
