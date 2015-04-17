@@ -49,7 +49,6 @@ public:
 
   static void reset(void);
   static void on(void);
-  static void undo(void);
 
 private:
   class Item final : public List::Item {

@@ -28,14 +28,6 @@ void EventWatcher::on(void) {
   }
 }
 
-void EventWatcher::undo(void) {
-  for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-    if (p->observed()) {
-      p->undo();
-    }
-  }
-}
-
 void EventWatcher::Item::on(void) {
   if (!isAnyEventHappen_) {
     cancelableEventInputQueueSerialNumber_ = EventInputQueue::currentSerialNumber();
