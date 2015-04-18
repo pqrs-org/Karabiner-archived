@@ -1934,6 +1934,31 @@ Two Lines</autogen>
         </autogen>
       </item>
       <item>
+        <identifier>remap.samples_simultaneouskeypresses_SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS</identifier>
+        <name>With Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS</name>
+        <appendix>Change D+F to lock control key.</appendix>
+        <appendix>* Unlock control key by escape key.</appendix>
+        <appendix>* Change D key to left shift key when control is locked.</appendix>
+        <appendix>* Change F key to left option key when control is locked.</appendix>
+        <appendix></appendix>
+        <appendix>When you press D+F, shift and option modifiers will be active until you release D,F keys.</appendix>
+        <appendix><![CDATA[  D down, F down, D up -> control down, shift down, option down, shift up  ]]></appendix>
+        <appendix><![CDATA[  D down, F down, F up -> control down, shift down, option down, option up  ]]></appendix>
+        <autogen>
+          __SimultaneousKeyPresses__
+          __{ KeyCode::D, KeyCode::F, }__
+          KeyCode::VK_LOCK_CONTROL_L_FORCE_ON,
+          Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS,
+        </autogen>
+
+        <block>
+          <modifierlocked_only>ModifierFlag::CONTROL_L</modifierlocked_only>
+          <autogen>__KeyToKey__ KeyCode::D, KeyCode::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::F, KeyCode::OPTION_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::ESCAPE, KeyCode::VK_LOCK_CONTROL_L_FORCE_OFF</autogen>
+        </block>
+      </item>
+      <item>
         <name>Note:</name>
         <appendix>Basically, a sending key will not be modified by other manipulators such as __KeyToKey__.</appendix>
         <appendix>Option::SIMULTANEOUSKEYPRESSES_RAW removes this restriction.</appendix>
