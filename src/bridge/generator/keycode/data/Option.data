@@ -1,53 +1,54 @@
 // Allow a setting to work in PassThrough Mode.
-IGNORE_PASSTHROUGH                      --AUTO--
+IGNORE_PASSTHROUGH                              --AUTO--
 
 // For __KeyOverlaidModifier__
-KEYOVERLAIDMODIFIER_REPEAT              --AUTO--
-KEYOVERLAIDMODIFIER_REPEAT_TOKEYS       --AUTO--
+KEYOVERLAIDMODIFIER_REPEAT                      --AUTO--
+KEYOVERLAIDMODIFIER_REPEAT_TOKEYS               --AUTO--
 
 // For __SimultaneousKeyPresses__
-SIMULTANEOUSKEYPRESSES_RAW              --AUTO--
-SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER --AUTO--
+SIMULTANEOUSKEYPRESSES_RAW                      --AUTO--
+SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS --AUTO--
+SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER         --AUTO--
 
 // Suppress keyboard repeat
-NOREPEAT                                --AUTO--
+NOREPEAT                                        --AUTO--
 
 // Send a key sequence at keydown and keyup.
-KEYTOKEY_BEFORE_KEYDOWN                 --AUTO--
-KEYTOKEY_AFTER_KEYUP                    --AUTO--
+KEYTOKEY_BEFORE_KEYDOWN                         --AUTO--
+KEYTOKEY_AFTER_KEYUP                            --AUTO--
 
 // Send keys at timeout.
-KEYTOKEY_DELAYED_ACTION                  --AUTO--
-KEYTOKEY_DELAYED_ACTION_CANCELED_BY      --AUTO--
-KEYTOKEY_DELAYED_ACTION_CANCELED_DEFAULT --AUTO--
+KEYTOKEY_DELAYED_ACTION                         --AUTO--
+KEYTOKEY_DELAYED_ACTION_CANCELED_BY             --AUTO--
+KEYTOKEY_DELAYED_ACTION_CANCELED_DEFAULT        --AUTO--
 
 // For __PointingRelativeToScroll__
-POINTINGRELATIVETOSCROLL_TOFLAGS        --AUTO--
-POINTINGRELATIVETOSCROLL_TOKEYS         --AUTO--
+POINTINGRELATIVETOSCROLL_TOFLAGS                --AUTO--
+POINTINGRELATIVETOSCROLL_TOKEYS                 --AUTO--
 
 // For __DropKey__
-DROPKEY_DROP_KEY                        --AUTO--
-DROPKEY_DROP_CONSUMERKEY                --AUTO--
-DROPKEY_DROP_POINTINGBUTTON             --AUTO--
+DROPKEY_DROP_KEY                                --AUTO--
+DROPKEY_DROP_CONSUMERKEY                        --AUTO--
+DROPKEY_DROP_POINTINGBUTTON                     --AUTO--
 
 // For __DropScrollWheel__
-DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL  --AUTO--
-DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL    --AUTO--
+DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL          --AUTO--
+DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL            --AUTO--
 
 // For __FlipPointingRelative__
-FLIPPOINTINGRELATIVE_HORIZONTAL         --AUTO--
-FLIPPOINTINGRELATIVE_VERTICAL           --AUTO--
+FLIPPOINTINGRELATIVE_HORIZONTAL                 --AUTO--
+FLIPPOINTINGRELATIVE_VERTICAL                   --AUTO--
 
 // For __FlipScrollWheel__
-FLIPSCROLLWHEEL_HORIZONTAL              --AUTO--
-FLIPSCROLLWHEEL_VERTICAL                --AUTO--
+FLIPSCROLLWHEEL_HORIZONTAL                      --AUTO--
+FLIPSCROLLWHEEL_VERTICAL                        --AUTO--
 
 // For __KeyOverlaidModifier__ and __HoldingKeyToKey__
-UNINTERRUPTIBLE_BY_SCROLL_WHEEL         --AUTO--
+UNINTERRUPTIBLE_BY_SCROLL_WHEEL                 --AUTO--
 
 // For __ForceNumLockOn__
-FORCENUMLOCKON_FORCE_OFF                --AUTO--
+FORCENUMLOCKON_FORCE_OFF                        --AUTO--
 
 // Identities of @begin, @end.
-USE_SEPARATOR                           --AUTO--
-SEPARATOR                               --AUTO--
+USE_SEPARATOR                                   --AUTO--
+SEPARATOR                                       --AUTO--
