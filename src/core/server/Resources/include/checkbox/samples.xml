@@ -1948,6 +1948,7 @@ Two Lines</autogen>
           __SimultaneousKeyPresses__
           __{ KeyCode::D, KeyCode::F, }__
           KeyCode::VK_LOCK_CONTROL_L_FORCE_ON,
+          <!-- The D and F key will be sent and modified by below __KeyToKey__. -->
           Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS,
         </autogen>
 
