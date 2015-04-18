@@ -1942,8 +1942,8 @@ Two Lines</autogen>
         <appendix>* Change F key to left option key when control is locked.</appendix>
         <appendix></appendix>
         <appendix>When you press D+F, shift and option modifiers will be active until you release D,F keys.</appendix>
-        <appendix><![CDATA[  D down, F down, D up -> control down, shift down, option down, shift up  ]]></appendix>
-        <appendix><![CDATA[  D down, F down, F up -> control down, shift down, option down, option up  ]]></appendix>
+        <appendix><![CDATA[  * D down, F down, D up -> control down, shift down, option down, shift up  ]]></appendix>
+        <appendix><![CDATA[  * D down, F down, F up -> control down, shift down, option down, option up  ]]></appendix>
         <autogen>
           __SimultaneousKeyPresses__
           __{ KeyCode::D, KeyCode::F, }__
