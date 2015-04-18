@@ -14,6 +14,7 @@ public:
                                                 index_(0),
                                                 isFromInfoFull_(false),
                                                 isToRaw_(false),
+                                                isDropOriginalEvents_(true),
                                                 isStrictKeyOrder_(false),
                                                 toKey_raw_(KeyCode::VK_NONE),
                                                 keytokey_(autogenId) {}
@@ -72,6 +73,7 @@ private:
 
   // --------------------
   bool isToRaw_;
+  bool isDropOriginalEvents_;
   bool isStrictKeyOrder_;
   KeyCode toKey_raw_;
 

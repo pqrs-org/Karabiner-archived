@@ -69,6 +69,9 @@ void SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval) {
     Option option(newval);
     if (Option::SIMULTANEOUSKEYPRESSES_RAW == option) {
       isToRaw_ = true;
+    } else if (Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS == option) {
+      isToRaw_ = true;
+      isDropOriginalEvents_ = false;
     } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == option) {
       isStrictKeyOrder_ = true;
 
@@ -124,8 +127,14 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
   // If (4) is alive, Shift_R Up event which we don't intend is fired in EventInputQueue.
   // So, we retry handling KeyUp event once more when we drop KeyUp event.
 
-  EventInputQueue::Item* front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_.safe_front());
-  if (!front) return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
+  auto front = static_cast<EventInputQueue::Item*>(EventInputQueue::queue_.safe_front());
+  if (!front) {
+    return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
+  }
+
+  if (!(front->isSimultaneousKeyPressesTarget)) {
+    return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
+  }
 
   // backup device information.
   DeviceIdentifier deviceIdentifier(front->deviceIdentifier);
@@ -137,7 +146,11 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
     if (!fromInfo_[i].fromEvent().isTargetUpEvent(front->getParamsBase())) continue;
 
     // --------------------
-    EventInputQueue::queue_.pop_front();
+    if (isDropOriginalEvents_) {
+      EventInputQueue::queue_.pop_front();
+    } else {
+      front->isSimultaneousKeyPressesTarget = false;
+    }
     fromInfo_[i].deactivate();
 
     // --------------------
@@ -234,15 +247,27 @@ scan:
     if (isAllKeysDown) {
       for (size_t i = 0; i < fromInfo_.size(); ++i) {
         fromInfo_[i].activate();
-        EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
+        if (isDropOriginalEvents_) {
+          EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
+        } else {
+          (downKeys_[i].item)->isSimultaneousKeyPressesTarget = false;
+        }
       }
       push_remapped(true, deviceIdentifier);
       return RemapSimultaneousKeyPressesResult::APPLIED;
     }
 
     // ----------------------------------------
-    front = static_cast<EventInputQueue::Item*>(front->getnext());
-    if (!front) return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
+    // get next target item.
+    for (;;) {
+      front = static_cast<EventInputQueue::Item*>(front->getnext());
+      if (!front) {
+        return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
+      }
+      if (front->isSimultaneousKeyPressesTarget) {
+        break;
+      }
+    }
   }
 
   return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
@@ -267,7 +292,8 @@ void SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifie
 
   bool retainFlagStatusTemporaryCount = false;
   bool push_back = false;
-  EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceIdentifier, push_back);
+  bool isSimultaneousKeyPressesTarget = false;
+  EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceIdentifier, push_back, isSimultaneousKeyPressesTarget);
 }
 
 bool SimultaneousKeyPresses::remap(RemapParams& remapParams) {
