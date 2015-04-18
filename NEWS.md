@@ -8,7 +8,8 @@ Since 10.6.0
 * Multiple displays support has been improved. The status message will be shown in the all screen.
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
-    * Option::KEYTOKEY_DELAYED_ACTION has been added.
+    * Option::KEYTOKEY\_DELAYED\_ACTION has been added.
+    * Option::SIMULTANEOUSKEYPRESSES\_RAW\_WITH\_ORIGINAL\_EVENTS has been added.
     * \_\_HoldingKeyToKey\_\_ has been improved at you pressed modifiers while holding target key down.
     * The following filters have been added.
         * &lt;pressingphysicalkeys\_greaterthan&gt;
