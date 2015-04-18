@@ -84,6 +84,7 @@ public:
     Item(const Params_Base& p, bool r, const DeviceIdentifier& di) : p_(Params_Factory::copy(p)),
                                                                      retainFlagStatusTemporaryCount(r),
                                                                      deviceIdentifier(di),
+                                                                     isSimultaneousKeyPressesTarget(true),
                                                                      enqueuedFrom(ENQUEUED_FROM_HARDWARE) {
       ic.begin();
     }
@@ -92,6 +93,7 @@ public:
                             retainFlagStatusTemporaryCount(rhs.retainFlagStatusTemporaryCount),
                             deviceIdentifier(rhs.deviceIdentifier),
                             ic(rhs.ic),
+                            isSimultaneousKeyPressesTarget(rhs.isSimultaneousKeyPressesTarget),
                             enqueuedFrom(rhs.enqueuedFrom) {}
 
     virtual ~Item(void) {
@@ -106,6 +108,9 @@ public:
     DeviceIdentifier deviceIdentifier;
 
     IntervalChecker ic;
+
+    // Flag for __SimultaneousKeyPresses__
+    bool isSimultaneousKeyPressesTarget;
 
     // To avoid recursive enqueueing from blockedQueue_.
     enum EnqueuedFrom {
@@ -177,7 +182,7 @@ private:
 
   // ------------------------------------------------------------
   static void enqueue_(const Params_KeyboardEventCallBack& p,
-                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di, bool push_back);
+                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di, bool push_back, bool isSimultaneousKeyPressesTarget);
   static void enqueue_(const Params_KeyboardSpecialEventCallback& p,
                        bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di);
   static void enqueue_(const Params_RelativePointerEventCallback& p,

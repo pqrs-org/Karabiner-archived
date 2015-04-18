@@ -42,15 +42,19 @@ void EventInputQueue::terminate(void) {
 void EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
                                bool retainFlagStatusTemporaryCount,
                                const DeviceIdentifier& deviceIdentifier,
-                               bool push_back) {
+                               bool push_back,
+                               bool isSimultaneousKeyPressesTarget) {
   // Because we handle the key repeat ourself, drop the key repeat.
   if (p.repeat) return;
 
   Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier);
-  if (push_back) {
-    queue_.push_back(item);
-  } else {
-    queue_.push_front(item);
+  if (item) {
+    item->isSimultaneousKeyPressesTarget = isSimultaneousKeyPressesTarget;
+    if (push_back) {
+      queue_.push_back(item);
+    } else {
+      queue_.push_front(item);
+    }
   }
 }
 
@@ -260,7 +264,8 @@ void EventInputQueue::push_KeyboardEventCallback(OSObject* target,
   // ------------------------------------------------------------
   bool retainFlagStatusTemporaryCount = false;
   bool push_back = true;
-  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), push_back);
+  bool isSimultaneousKeyPressesTarget = true;
+  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), push_back, isSimultaneousKeyPressesTarget);
 
   setTimer();
 }
