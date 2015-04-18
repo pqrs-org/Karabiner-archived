@@ -13,7 +13,7 @@ Since 10.6.0
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * The following filters have been added.
         * `<pressingphysicalkeys_greaterthan>`
-        * `<pressingphysicalkeys\_lessthan>`
+        * `<pressingphysicalkeys_lessthan>`
 * Fixed issues:
     * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic)
 
