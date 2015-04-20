@@ -1936,6 +1936,7 @@ Two Lines</autogen>
       <item>
         <identifier>remap.samples_simultaneouskeypresses_SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS</identifier>
         <name>With Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS</name>
+        <appendix></appendix>
         <appendix>Change D+F to lock control key.</appendix>
         <appendix>* Unlock control key by escape key.</appendix>
         <appendix>* Change D key to left shift key when control is locked.</appendix>
@@ -1944,6 +1945,12 @@ Two Lines</autogen>
         <appendix>When you press D+F, shift and option modifiers will be active until you release D,F keys.</appendix>
         <appendix><![CDATA[  * D down, F down, D up -> control down, shift down, option down, shift up  ]]></appendix>
         <appendix><![CDATA[  * D down, F down, F up -> control down, shift down, option down, option up  ]]></appendix>
+        <appendix></appendix>
+        <appendix></appendix>
+        <appendix>Change F+G to EXTRA1 modifier key.</appendix>
+        <appendix>* Change F key to left shift key when extra1 is pressed.</appendix>
+        <appendix>* Change G key to left option key when extra1 is pressed.</appendix>
+        <appendix></appendix>
         <autogen>
           __SimultaneousKeyPresses__
           __{ KeyCode::D, KeyCode::F, }__
@@ -1952,11 +1959,26 @@ Two Lines</autogen>
           Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS,
         </autogen>
 
+        <!-- with virtual modifier -->
+        <autogen>
+          __SimultaneousKeyPresses__
+          __{ KeyCode::F, KeyCode::G, }__
+          KeyCode::VK_MODIFIER_EXTRA1,
+          Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS,
+        </autogen>
+
         <block>
           <modifierlocked_only>ModifierFlag::CONTROL_L</modifierlocked_only>
           <autogen>__KeyToKey__ KeyCode::D, KeyCode::SHIFT_L</autogen>
           <autogen>__KeyToKey__ KeyCode::F, KeyCode::OPTION_L</autogen>
           <autogen>__KeyToKey__ KeyCode::ESCAPE, KeyCode::VK_LOCK_CONTROL_L_FORCE_OFF</autogen>
+        </block>
+
+        <block>
+          <modifier_only>ModifierFlag::EXTRA1</modifier_only>
+          <!-- increase ModifierFlag::EXTRA1 to enable this setting in the case "F down, G down, F up, F down, G up, G down" -->
+          <autogen>__KeyToKey__ KeyCode::F, KeyCode::SHIFT_L, ModifierFlag::EXTRA1</autogen>
+          <autogen>__KeyToKey__ KeyCode::G, KeyCode::OPTION_L, ModifierFlag::EXTRA1</autogen>
         </block>
       </item>
       <item>
