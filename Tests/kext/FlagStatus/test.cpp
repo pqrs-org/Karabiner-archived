@@ -19,8 +19,57 @@ std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.ge
 
 Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.getRawBits() | rhs.getRawBits()); }
 
+// ----------------------------------------
+const ModifierFlag extra1(0x10000001);
+const ModifierFlag extra2(0x10000002);
+// --------------------
+const KeyCode extra1_key(0x10001001);
+const KeyCode extra1_lock(0x10001002);
+const KeyCode extra1_lock_force_on(0x10001003);
+const KeyCode extra1_lock_force_off(0x10001004);
+const KeyCode extra1_negative_lock(0x10001005);
+const KeyCode extra1_negative_lock_force_on(0x10001006);
+const KeyCode extra1_negative_lock_force_off(0x10001007);
+const KeyCode extra1_sticky(0x10001008);
+const KeyCode extra1_sticky_force_on(0x10001009);
+const KeyCode extra1_sticky_force_off(0x10001010);
+// --------------------
+const KeyCode extra2_key(0x10002001);
+const KeyCode extra2_lock(0x10002002);
+const KeyCode extra2_lock_force_on(0x10002003);
+const KeyCode extra2_lock_force_off(0x10002004);
+const KeyCode extra2_negative_lock(0x10002005);
+const KeyCode extra2_negative_lock_force_on(0x10002006);
+const KeyCode extra2_negative_lock_force_off(0x10002007);
+const KeyCode extra2_sticky(0x10002008);
+const KeyCode extra2_sticky_force_on(0x10002009);
+const KeyCode extra2_sticky_force_off(0x10002010);
+// ----------------------------------------
+
 TEST(Generic, setUp) {
   KeyCodeModifierFlagPairs::clearVirtualModifiers();
+  KeyCodeModifierFlagPairs::registerVirtualModifier(extra1,
+                                                    extra1_key,
+                                                    extra1_lock,
+                                                    extra1_lock_force_on,
+                                                    extra1_lock_force_off,
+                                                    extra1_negative_lock,
+                                                    extra1_negative_lock_force_on,
+                                                    extra1_negative_lock_force_off,
+                                                    extra1_sticky,
+                                                    extra1_sticky_force_on,
+                                                    extra1_sticky_force_off);
+  KeyCodeModifierFlagPairs::registerVirtualModifier(extra2,
+                                                    extra2_key,
+                                                    extra2_lock,
+                                                    extra2_lock_force_on,
+                                                    extra2_lock_force_off,
+                                                    extra2_negative_lock,
+                                                    extra2_negative_lock_force_on,
+                                                    extra2_negative_lock_force_off,
+                                                    extra2_sticky,
+                                                    extra2_sticky_force_on,
+                                                    extra2_sticky_force_off);
 }
 
 TEST(FlagStatus, makeFlags) {
@@ -30,76 +79,88 @@ TEST(FlagStatus, makeFlags) {
   flagStatus.set();
   EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
-  flagStatus.set(KeyCode::A, Flags(0));
+  flagStatus.set(KeyCode::A, Flags(0), EventType::DOWN);
   EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
   // down SHIFT_L
-  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
+  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   // no effect with ModifierFlag::NONE
-  flagStatus.set(KeyCode::A, Flags(ModifierFlag::NONE));
+  flagStatus.set(KeyCode::A, Flags(ModifierFlag::NONE), EventType::DOWN);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   // down CONTROL_
-  flagStatus.set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
+  flagStatus.set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
   // down A
-  flagStatus.set(KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
+  flagStatus.set(KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L, EventType::DOWN);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
   // up SHIFT_L
-  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L));
+  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
   // up CONTROL_L
-  flagStatus.set(KeyCode::CONTROL_L, Flags(0));
+  flagStatus.set(KeyCode::CONTROL_L, Flags(0), EventType::MODIFY);
   EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
   // All flags
   flagStatus.reset();
-  flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
-  flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(0), EventType::MODIFY);
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
+  flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::SHIFT_R, Flags(ModifierFlag::SHIFT_R));
+  flagStatus.set(KeyCode::SHIFT_R, Flags(ModifierFlag::SHIFT_R), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::CONTROL_L, Flags(ModifierFlag::CONTROL_L));
+  flagStatus.set(KeyCode::CONTROL_L, Flags(ModifierFlag::CONTROL_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::CONTROL_R, Flags(ModifierFlag::CONTROL_R));
+  flagStatus.set(KeyCode::CONTROL_R, Flags(ModifierFlag::CONTROL_R), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::CONTROL_R), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::OPTION_L, Flags(ModifierFlag::OPTION_L));
+  flagStatus.set(KeyCode::OPTION_L, Flags(ModifierFlag::OPTION_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::OPTION_L), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::OPTION_R, Flags(ModifierFlag::OPTION_R));
+  flagStatus.set(KeyCode::OPTION_R, Flags(ModifierFlag::OPTION_R), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::OPTION_R), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
+  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::COMMAND_R, Flags(ModifierFlag::COMMAND_R));
+  flagStatus.set(KeyCode::COMMAND_R, Flags(ModifierFlag::COMMAND_R), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_R), flagStatus.makeFlags());
 
   flagStatus.reset();
-  flagStatus.set(KeyCode::FN, Flags(ModifierFlag::FN));
+  flagStatus.set(KeyCode::FN, Flags(ModifierFlag::FN), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
+
+  flagStatus.reset();
+  flagStatus.set(extra1_key, Flags(0), EventType::DOWN);
+  EXPECT_EQ(Flags(extra1), flagStatus.makeFlags());
+  flagStatus.set(extra1_key, Flags(0), EventType::UP);
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
+
+  flagStatus.reset();
+  flagStatus.set(extra2_key, Flags(0), EventType::DOWN);
+  EXPECT_EQ(Flags(extra2), flagStatus.makeFlags());
+  flagStatus.set(extra2_key, Flags(0), EventType::UP);
+  EXPECT_EQ(Flags(), flagStatus.makeFlags());
 }
 
 TEST(FlagStatus, getFlag) {
@@ -185,7 +246,7 @@ TEST(FlagStatus, temporary_increase) {
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), flagStatus.makeFlags());
 
   // temporary_increase will reset by flagStatus.set
-  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
+  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 }
 
@@ -204,7 +265,7 @@ TEST(FlagStatus, temporary_decrease) {
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
   // temporary_increase will reset by flagStatus.set
-  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
+  flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
 }
 
@@ -220,7 +281,7 @@ TEST(FlagStatus, lock_increase) {
 
   // lock don't cancel by reset & set.
   flagStatus.reset();
-  flagStatus.set(KeyCode::A, Flags(0));
+  flagStatus.set(KeyCode::A, Flags(0), EventType::DOWN);
   EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
 
   flagStatus.lock_decrease(ModifierFlag::COMMAND_L);
@@ -243,7 +304,7 @@ TEST(FlagStatus, negative_lock_increase) {
   // ----------------------------------------
   // lock don't cancel by reset & set.
   flagStatus.reset();
-  flagStatus.set(KeyCode::A, Flags(0));
+  flagStatus.set(KeyCode::A, Flags(0), EventType::DOWN);
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 
   flagStatus.increase(ModifierFlag::COMMAND_L);
@@ -412,32 +473,32 @@ TEST(FlagStatus, lazy_increase) {
 TEST(FlagStatus, CapsLock) {
   FlagStatus flagStatus;
 
-  flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK), EventType::MODIFY);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
   flagStatus.reset();
 
-  flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
+  flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK), EventType::DOWN);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
   // from other keyboard
-  flagStatus.set(KeyCode::A, Flags(0));
+  flagStatus.set(KeyCode::A, Flags(0), EventType::DOWN);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
-  flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
+  flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK), EventType::DOWN);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
   // reset
-  flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(0), EventType::MODIFY);
   EXPECT_EQ(Flags(), flagStatus.makeFlags());
 
   // soft caps
   flagStatus.lock_increase(ModifierFlag::CAPSLOCK);
-  flagStatus.set(KeyCode::A, Flags(0));
+  flagStatus.set(KeyCode::A, Flags(0), EventType::DOWN);
   EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
 
   // soft caps will be canceled by hardware caps
-  flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
+  flagStatus.set(KeyCode::CAPSLOCK, Flags(0), EventType::MODIFY);
   EXPECT_EQ(Flags(0), flagStatus.makeFlags());
 }
 

@@ -25,7 +25,7 @@ void FlagStatus::Item::set(void) {
   temporary_count_ = 0;
 }
 
-void FlagStatus::Item::set(KeyCode key, Flags flags) {
+void FlagStatus::Item::set(KeyCode key, Flags flags, EventType eventType) {
   temporary_count_ = 0;
 
   // ------------------------------------------------------------
@@ -40,7 +40,19 @@ void FlagStatus::Item::set(KeyCode key, Flags flags) {
     }
 
   } else {
-    if (flags.isOn(flag_)) {
+    // We need to check `eventType` because the `key` might be a virtual modifier.
+    // (eg. KeyCode::VK_MODIFIER_EXTRA1.
+    //
+    // For example, this autogen pushes KeyCode::VK_MODIFIER_EXTRA1 into EventInputQueue.
+    //
+    // <autogen>
+    //   __SimultaneousKeyPresses__
+    //   __{ KeyCode::D, KeyCode::F, }__
+    //   KeyCode::VK_MODIFIER_EXTRA1,
+    //   Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS,
+    // </autogen>
+
+    if (flags.isOn(flag_) || eventType == EventType::DOWN) {
       increase();
     } else {
       decrease();
@@ -110,9 +122,9 @@ void FlagStatus::set(void) {
   updateStatusMessage();
 }
 
-void FlagStatus::set(KeyCode key, Flags flags) {
+void FlagStatus::set(KeyCode key, Flags flags, EventType eventType) {
   for (size_t i = 0; i < item_.size(); ++i) {
-    item_[i].set(key, flags);
+    item_[i].set(key, flags, eventType);
   }
   updateStatusMessage();
 }
