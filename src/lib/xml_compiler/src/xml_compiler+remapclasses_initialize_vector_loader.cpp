@@ -336,7 +336,7 @@ void xml_compiler::remapclasses_initialize_vector_loader::handle_autogen(const s
       {"__DropKeyAfterRemap__", BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP},
       {"__SetKeyboardType__", BRIDGE_REMAPTYPE_SETKEYBOARDTYPE},
       {"__ForceNumLockOn__", BRIDGE_REMAPTYPE_FORCENUMLOCKON},
-      {"__DropKey__", BRIDGE_REMAPTYPE_DROPKEY},
+      {"__DropAllKeys__", BRIDGE_REMAPTYPE_DROPALLKEYS},
       {"__DropPointingRelativeCursorMove__", BRIDGE_REMAPTYPE_DROPPOINTINGRELATIVECURSORMOVE},
       {"__DropScrollWheel__", BRIDGE_REMAPTYPE_DROPSCROLLWHEEL},
       {"__FlipPointingRelative__", BRIDGE_REMAPTYPE_FLIPPOINTINGRELATIVE},

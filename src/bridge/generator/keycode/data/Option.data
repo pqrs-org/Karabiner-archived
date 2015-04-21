@@ -26,10 +26,10 @@ KEYTOKEY_DELAYED_ACTION_CANCELED_DEFAULT        --AUTO--
 POINTINGRELATIVETOSCROLL_TOFLAGS                --AUTO--
 POINTINGRELATIVETOSCROLL_TOKEYS                 --AUTO--
 
-// For __DropKey__
-DROPKEY_DROP_KEY                                --AUTO--
-DROPKEY_DROP_CONSUMERKEY                        --AUTO--
-DROPKEY_DROP_POINTINGBUTTON                     --AUTO--
+// For __DropAllKeys__
+DROPALLKEYS_DROP_KEY                            --AUTO--
+DROPALLKEYS_DROP_CONSUMERKEY                    --AUTO--
+DROPALLKEYS_DROP_POINTINGBUTTON                 --AUTO--
 
 // For __DropScrollWheel__
 DROPSCROLLWHEEL_DROP_HORIZONTAL_SCROLL          --AUTO--

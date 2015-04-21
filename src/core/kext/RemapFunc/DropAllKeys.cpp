@@ -1,12 +1,12 @@
 #include <IOKit/IOLib.h>
 
-#include "DropKey.hpp"
+#include "DropAllKeys.hpp"
 #include "EventOutputQueue.hpp"
 #include "IOLogWrapper.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-void DropKey::add(AddDataType datatype, AddValue newval) {
+void DropAllKeys::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_MODIFIERFLAG: {
     ModifierFlag modifierFlag(newval);
@@ -23,27 +23,27 @@ void DropKey::add(AddDataType datatype, AddValue newval) {
 
   case BRIDGE_DATATYPE_OPTION: {
     Option option(newval);
-    if (Option::DROPKEY_DROP_KEY == option) {
+    if (Option::DROPALLKEYS_DROP_KEY == option) {
       dropKey_ = true;
-    } else if (Option::DROPKEY_DROP_CONSUMERKEY == option) {
+    } else if (Option::DROPALLKEYS_DROP_CONSUMERKEY == option) {
       dropConsumerKey_ = true;
-    } else if (Option::DROPKEY_DROP_POINTINGBUTTON == option) {
+    } else if (Option::DROPALLKEYS_DROP_POINTINGBUTTON == option) {
       dropPointingButton_ = true;
     } else {
-      IOLOG_ERROR("DropKey::add unknown option:%u\n", static_cast<unsigned int>(newval));
+      IOLOG_ERROR("DropAllKeys::add unknown option:%u\n", static_cast<unsigned int>(newval));
     }
     break;
   }
 
   default:
-    IOLOG_ERROR("DropKey::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
+    IOLOG_ERROR("DropAllKeys::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
     break;
   }
 }
 
-bool DropKey::remap(RemapParams& remapParams) {
+bool DropAllKeys::remap(RemapParams& remapParams) {
   if (fromModifierFlags_.empty()) {
-    IOLOG_WARN("Ignore __DropKey__ with no ModifierFlag.\n");
+    IOLOG_WARN("Ignore __DropAllKeys__ with no ModifierFlag.\n");
 
     modifierMatched_ = false;
     dropTargetAutogenId_ = AutogenId(0);
@@ -55,7 +55,7 @@ bool DropKey::remap(RemapParams& remapParams) {
   }
 }
 
-void DropKey::cancelEventOutputQueueItems(void) {
+void DropAllKeys::cancelEventOutputQueueItems(void) {
   if (dropTargetAutogenId_ == 0) {
     return;
   }
@@ -101,7 +101,7 @@ void DropKey::cancelEventOutputQueueItems(void) {
   dropTargetAutogenId_ = AutogenId(0);
 }
 
-void DropKey::dropKey(EventOutputQueue::Item& item) {
+void DropAllKeys::dropKey(EventOutputQueue::Item& item) {
   bool iskeydown = false;
   if (item.getParamsBase().iskeydown(iskeydown)) {
     if (iskeydown) {

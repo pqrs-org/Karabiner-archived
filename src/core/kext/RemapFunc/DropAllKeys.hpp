@@ -1,19 +1,19 @@
-#ifndef DROPKEY_HPP
-#define DROPKEY_HPP
+#ifndef DROPALLKEYS_HPP
+#define DROPALLKEYS_HPP
 
 #include "EventOutputQueue.hpp"
 #include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class DropKey final : public RemapFuncBase {
+class DropAllKeys final : public RemapFuncBase {
 public:
-  DropKey(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEY, autogenId),
-                                 dropKey_(false),
-                                 dropConsumerKey_(false),
-                                 dropPointingButton_(false),
-                                 modifierMatched_(false),
-                                 dropTargetAutogenId_(AutogenId(0)) {}
+  DropAllKeys(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPALLKEYS, autogenId),
+                                     dropKey_(false),
+                                     dropConsumerKey_(false),
+                                     dropPointingButton_(false),
+                                     modifierMatched_(false),
+                                     dropTargetAutogenId_(AutogenId(0)) {}
 
   bool remap(RemapParams& remapParams) override;
   void cancelEventOutputQueueItems(void) override;

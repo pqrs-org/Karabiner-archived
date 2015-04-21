@@ -45,7 +45,7 @@
 
         <!--
             Use notsave.launcher_mode_v2 in order to be higher priority.
-            Use ModifierFlag::LAUNCHER_MODE_V2 for __DropKey__.
+            Use ModifierFlag::LAUNCHER_MODE_V2 for __DropAllKeys__.
         -->
         @begin
         KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_launcher_mode_v2, ModifierFlag::LAUNCHER_MODE_V2,
@@ -140,10 +140,10 @@
       </autogen>
 
       <autogen>
-        __DropKey__
+        __DropAllKeys__
         ModifierFlag::LAUNCHER_MODE_V2,
 
-        Option::DROPKEY_DROP_KEY,
+        Option::DROPALLKEYS_DROP_KEY,
       </autogen>
     </item>
 
