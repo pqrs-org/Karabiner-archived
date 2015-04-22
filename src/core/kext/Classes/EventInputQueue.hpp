@@ -181,14 +181,12 @@ private:
   static uint32_t calcdelay(DelayType type);
 
   // ------------------------------------------------------------
-  static void enqueue_(const Params_KeyboardEventCallBack& p,
+  static void enqueue_(const Params_Base& paramsBase,
                        bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di, bool push_back, bool isSimultaneousKeyPressesTarget);
-  static void enqueue_(const Params_KeyboardSpecialEventCallback& p,
-                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di);
-  static void enqueue_(const Params_RelativePointerEventCallback& p,
-                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di);
-  static void enqueue_(const Params_ScrollWheelEventCallback& p,
-                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di);
+  static void enqueue_(const Params_Base& paramsBase,
+                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di) {
+    enqueue_(paramsBase, retainFlagStatusTemporaryCount, di, true, true);
+  }
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
   static void doFire(void);
   static void setTimer(void);

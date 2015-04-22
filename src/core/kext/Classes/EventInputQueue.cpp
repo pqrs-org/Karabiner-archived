@@ -39,15 +39,15 @@ void EventInputQueue::terminate(void) {
   BlockUntilKeyUpHander::terminate();
 }
 
-void EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
+void EventInputQueue::enqueue_(const Params_Base& paramsBase,
                                bool retainFlagStatusTemporaryCount,
                                const DeviceIdentifier& deviceIdentifier,
                                bool push_back,
                                bool isSimultaneousKeyPressesTarget) {
   // Because we handle the key repeat ourself, drop the key repeat.
-  if (p.repeat) return;
+  if (paramsBase.isRepeat()) return;
 
-  Item* item = new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier);
+  Item* item = new Item(paramsBase, retainFlagStatusTemporaryCount, deviceIdentifier);
   if (item) {
     item->isSimultaneousKeyPressesTarget = isSimultaneousKeyPressesTarget;
     if (push_back) {
@@ -56,27 +56,6 @@ void EventInputQueue::enqueue_(const Params_KeyboardEventCallBack& p,
       queue_.push_front(item);
     }
   }
-}
-
-void EventInputQueue::enqueue_(const Params_KeyboardSpecialEventCallback& p,
-                               bool retainFlagStatusTemporaryCount,
-                               const DeviceIdentifier& deviceIdentifier) {
-  // Because we handle the key repeat ourself, drop the key repeat.
-  if (p.repeat) return;
-
-  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
-}
-
-void EventInputQueue::enqueue_(const Params_RelativePointerEventCallback& p,
-                               bool retainFlagStatusTemporaryCount,
-                               const DeviceIdentifier& deviceIdentifier) {
-  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
-}
-
-void EventInputQueue::enqueue_(const Params_ScrollWheelEventCallback& p,
-                               bool retainFlagStatusTemporaryCount,
-                               const DeviceIdentifier& deviceIdentifier) {
-  queue_.push_back(new Item(p, retainFlagStatusTemporaryCount, deviceIdentifier));
 }
 
 namespace {
