@@ -52,7 +52,7 @@ void EventOutputQueue::push(const Params_RelativePointerEventCallback& p) {
     FlagStatus::globalFlagStatus().sticky_clear();
   }
 }
-void EventOutputQueue::push(const Params_ScrollWheelEventCallback& p) {
+void EventOutputQueue::push(const Params_ScrollWheelEventCallback& p, AutogenId autogenId) {
   PUSH_TO_OUTPUTQUEUE;
   FlagStatus::globalFlagStatus().sticky_clear();
 }
@@ -391,12 +391,12 @@ void EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int 
 }
 
 // ======================================================================
-void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params) {
+void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId) {
   FireModifiers::fire();
-  EventOutputQueue::push(params);
+  EventOutputQueue::push(params, autogenId);
 }
 
-void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2) {
+void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2, AutogenId autogenId) {
   short deltaAxis1;
   short deltaAxis2;
   IOFixed fixedDelta1;
@@ -423,7 +423,7 @@ void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2) {
                                          fixedDelta1, fixedDelta2, 0,
                                          pointDelta1, pointDelta2, 0,
                                          options);
-  EventOutputQueue::FireScrollWheel::fire(params);
+  EventOutputQueue::FireScrollWheel::fire(params, autogenId);
 }
 
 // ======================================================================

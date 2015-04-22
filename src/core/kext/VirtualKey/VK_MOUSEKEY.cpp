@@ -11,6 +11,7 @@ int VirtualKey::VK_MOUSEKEY::dy_;
 int VirtualKey::VK_MOUSEKEY::scale_;
 bool VirtualKey::VK_MOUSEKEY::scrollmode_;
 bool VirtualKey::VK_MOUSEKEY::highspeed_;
+AutogenId VirtualKey::VK_MOUSEKEY::currentAutogenId_(0);
 TimerWrapper VirtualKey::VK_MOUSEKEY::fire_timer_;
 
 void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
@@ -19,6 +20,7 @@ void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
   scale_ = 1;
   scrollmode_ = false;
   highspeed_ = false;
+  currentAutogenId_ = AutogenId(0);
 
   fire_timer_.initialize(&workloop, nullptr, VirtualKey::VK_MOUSEKEY::fire_timer_callback);
 }
@@ -33,13 +35,14 @@ void VirtualKey::VK_MOUSEKEY::reset(void) {
   scale_ = 1;
   scrollmode_ = false;
   highspeed_ = false;
+  currentAutogenId_ = AutogenId(0);
 
   fire_timer_.cancelTimeout();
 }
 
 bool VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
   if (handle_button(params)) return true;
-  if (handle_move(params)) return true;
+  if (handle_move(params, autogenId)) return true;
   if (handle_fixeddistancemove(params)) return true;
   if (handle_lock_button(params)) return true;
   return false;
@@ -218,7 +221,7 @@ bool VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& 
   return true;
 }
 
-bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
   /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
     if (params.repeat) return true;
     if (params.ex_iskeydown) {
@@ -340,6 +343,8 @@ bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& pa
   if (dy_ > 0) dy_ = 1;
   if (dy_ < 0) dy_ = -1;
 
+  currentAutogenId_ = autogenId;
+
   if (dx_ != 0 || dy_ != 0) {
     if (scrollmode_) {
       fire_timer_.setTimeoutMS(Config::get_mousekey_initial_wait_of_scroll());
@@ -428,7 +433,7 @@ void VirtualKey::VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTime
       delta2 = -delta2;
     }
 
-    EventOutputQueue::FireScrollWheel::fire(delta1, delta2);
+    EventOutputQueue::FireScrollWheel::fire(delta1, delta2, currentAutogenId_);
   }
 
   int max = scrollmode_ ? Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_scroll) : Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_pointer);

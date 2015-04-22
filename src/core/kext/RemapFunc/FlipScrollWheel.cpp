@@ -58,7 +58,7 @@ bool FlipScrollWheel::remap(RemapParams& remapParams) {
                                     fd1, fd2, fd3,
                                     pd1, pd2, pd3,
                                     params->options);
-  EventOutputQueue::FireScrollWheel::fire(p);
+  EventOutputQueue::FireScrollWheel::fire(p, autogenId_);
 
   return true;
 }

@@ -64,8 +64,8 @@ public:
       POINTING_POINT_SCALE = 10,    // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
       DELTA_SCALE = 128,
     };
-    static void fire(const Params_ScrollWheelEventCallback& params);
-    static void fire(int delta1, int delta2);
+    static void fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId);
+    static void fire(int delta1, int delta2, AutogenId autogenId);
   };
 
   class FireWait final {
@@ -127,7 +127,7 @@ private:
   static void push(const Params_KeyboardEventCallBack& p);
   static void push(const Params_KeyboardSpecialEventCallback& p);
   static void push(const Params_RelativePointerEventCallback& p);
-  static void push(const Params_ScrollWheelEventCallback& p);
+  static void push(const Params_ScrollWheelEventCallback& p, AutogenId autogenId);
   static void push(const Params_Wait& p, AutogenId autogenId);
 
   static List queue_;

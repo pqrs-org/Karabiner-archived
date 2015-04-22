@@ -98,6 +98,7 @@ private:
   static List queue_;
   static Vector_ModifierFlag currentFromModifierFlags_;
   static Vector_ModifierFlag currentToModifierFlags_;
+  static AutogenId currentAutogenId_;
   static TimerWrapper timer_;
 };
 }

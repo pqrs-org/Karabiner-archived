@@ -72,7 +72,9 @@ public:
 private:
   unsigned int type_;
   bool ignorePassThrough_;
-  AutogenId autogenId_;
+
+protected:
+  const AutogenId autogenId_;
 };
 }
 }

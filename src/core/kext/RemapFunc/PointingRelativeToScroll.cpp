@@ -11,6 +11,7 @@ namespace RemapFunc {
 List PointingRelativeToScroll::queue_;
 Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;
 Vector_ModifierFlag PointingRelativeToScroll::currentToModifierFlags_;
+AutogenId PointingRelativeToScroll::currentAutogenId_(0);
 TimerWrapper PointingRelativeToScroll::timer_;
 
 void PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop) {
@@ -268,6 +269,7 @@ void PointingRelativeToScroll::toscroll(RemapParams& remapParams) {
 
   currentFromModifierFlags_ = fromModifierFlags_;
   currentToModifierFlags_ = toModifierFlags_;
+  currentAutogenId_ = autogenId_;
   timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
 }
 
@@ -297,7 +299,7 @@ void PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSourc
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_horizontal_scrolling)) {
       d2 = -d2;
     }
-    EventOutputQueue::FireScrollWheel::fire(d1, d2);
+    EventOutputQueue::FireScrollWheel::fire(d1, d2, currentAutogenId_);
   }
   // We need to restore temporary flags.
   // Because normal cursor move event don't restore temporary_count_.

@@ -54,7 +54,7 @@ bool DropScrollWheel::remap(RemapParams& remapParams) {
                                       params->fixedDelta1, 0, 0,
                                       params->pointDelta1, 0, 0,
                                       params->options);
-    EventOutputQueue::FireScrollWheel::fire(p);
+    EventOutputQueue::FireScrollWheel::fire(p, autogenId_);
   }
 
   return true;

@@ -273,7 +273,7 @@ void remap_ScrollWheelEventCallback(const Params_Base& paramsBase) {
   RemapClassManager::remap(remapParams);
 
   if (!remapParams.isremapped) {
-    EventOutputQueue::FireScrollWheel::fire(*params);
+    EventOutputQueue::FireScrollWheel::fire(*params, AutogenId::maxValue());
     RemapFunc::PointingRelativeToScroll::cancelScroll();
   }
 }
