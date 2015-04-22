@@ -195,7 +195,7 @@ void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
 
   RemapClassManager::prepare(remapParams);
 
-  FlagStatus::globalFlagStatus().set(params->key, params->flags, params->eventType);
+  FlagStatus::globalFlagStatus().set(params->key, params->flags);
 
   RemapClassManager::remap(remapParams);
 

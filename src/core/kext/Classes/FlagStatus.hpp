@@ -23,7 +23,7 @@ public:
   private:
     void initialize(ModifierFlag f);
     void set(void);
-    void set(KeyCode key, Flags flags, EventType eventType);
+    void set(KeyCode key, Flags flags);
 
     void reset(void);
     int sum(bool forceEnableLazy) const {
@@ -127,7 +127,7 @@ public:
 
   void initialize(void);
   void set(void);
-  void set(KeyCode key, Flags flags, EventType eventType);
+  void set(KeyCode key, Flags flags);
   Flags makeFlags(void) const;
   // get registered ModifierFlag by index.
   ModifierFlag getFlag(size_t index) const;
