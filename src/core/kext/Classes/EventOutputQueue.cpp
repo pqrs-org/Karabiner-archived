@@ -56,7 +56,7 @@ void EventOutputQueue::push(const Params_ScrollWheelEventCallback& p) {
   PUSH_TO_OUTPUTQUEUE;
   FlagStatus::globalFlagStatus().sticky_clear();
 }
-void EventOutputQueue::push(const Params_Wait& p) {
+void EventOutputQueue::push(const Params_Wait& p, AutogenId autogenId) {
   PUSH_TO_OUTPUTQUEUE;
 }
 #undef PUSH_TO_OUTPUTQUEUE
@@ -286,8 +286,8 @@ void EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardT
 }
 
 // ======================================================================
-void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params) {
-  if (VirtualKey::handle(params)) return;
+void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+  if (VirtualKey::handle(params, autogenId)) return;
 
   // ------------------------------------------------------------
   KeyCode newkeycode = params.key;
@@ -427,7 +427,7 @@ void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2) {
 }
 
 // ======================================================================
-void EventOutputQueue::FireWait::fire(const Params_Wait& params) {
-  EventOutputQueue::push(params);
+void EventOutputQueue::FireWait::fire(const Params_Wait& params, AutogenId autogenId) {
+  EventOutputQueue::push(params, autogenId);
 }
 }

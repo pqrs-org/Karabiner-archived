@@ -7,7 +7,7 @@
 namespace org_pqrs_Karabiner {
 KeyCode VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::newkeycode_;
 
-bool VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
   if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
   if (params.ex_iskeydown) {

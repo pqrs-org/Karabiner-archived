@@ -14,7 +14,7 @@ void VirtualKey::VK_PARTIAL::terminate(void) {
   changedKeyCodes_.clear();
 }
 
-bool VirtualKey::VK_PARTIAL::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_PARTIAL::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
   // ------------------------------------------------------------
   // Process VK_PARTIAL
   if (params.key == KeyCode::VK_PARTIAL_KEYDOWN ||

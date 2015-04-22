@@ -17,7 +17,7 @@ public:
                        unsigned int keycode_sync_keydownup);
   static void clear_items(void);
 
-  static bool handle(const Params_KeyboardEventCallBack& params);
+  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
 
   static bool is_VK_CONFIG_SYNC_KEYDOWNUP(KeyCode keycode);
 

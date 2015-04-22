@@ -17,7 +17,7 @@ public:
   static void add_item(RemapClass* remapclass, unsigned int keycode, uint32_t notification_type);
   static void clear_items(void);
 
-  static bool handle(const Params_KeyboardEventCallBack& params);
+  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
   static bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 
 private:

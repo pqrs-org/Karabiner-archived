@@ -4,7 +4,7 @@
 #include "VK_WAIT.hpp"
 
 namespace org_pqrs_Karabiner {
-bool VirtualKey::VK_WAIT::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_WAIT::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
   int milliseconds = 0;
 
   /**/ if (params.key == KeyCode::VK_WAIT_10MS) {
@@ -20,7 +20,7 @@ bool VirtualKey::VK_WAIT::handle(const Params_KeyboardEventCallBack& params) {
   }
 
   Params_Wait p(milliseconds);
-  EventOutputQueue::FireWait::fire(p);
+  EventOutputQueue::FireWait::fire(p, autogenId);
 
   return true;
 }

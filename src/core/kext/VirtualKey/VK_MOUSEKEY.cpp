@@ -37,7 +37,7 @@ void VirtualKey::VK_MOUSEKEY::reset(void) {
   fire_timer_.cancelTimeout();
 }
 
-bool VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
   if (handle_button(params)) return true;
   if (handle_move(params)) return true;
   if (handle_fixeddistancemove(params)) return true;

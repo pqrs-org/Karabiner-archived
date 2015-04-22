@@ -7,7 +7,7 @@ namespace org_pqrs_Karabiner {
 namespace VirtualKey {
 class VK_IOHIDPOSTEVENT final {
 public:
-  static bool handle(const Params_KeyboardEventCallBack& params);
+  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
   static bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 
   static void post(const Params_KeyboardSpecialEventCallback& params);

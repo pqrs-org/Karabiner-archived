@@ -7,7 +7,7 @@
 #include "VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp"
 
 namespace org_pqrs_Karabiner {
-bool VirtualKey::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK::handle(const Params_KeyboardEventCallBack& params) {
+bool VirtualKey::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
   if (params.key != KeyCode::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK) return false;
 
   if (params.ex_iskeydown && params.repeat == false) {

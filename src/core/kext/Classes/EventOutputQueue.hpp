@@ -35,7 +35,12 @@ public:
 
   class FireKey final {
   public:
-    static void fire(const Params_KeyboardEventCallBack& params);
+    static void fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
+
+    // TODO: DELETE ME. Do not use this method.
+    static void fire(const Params_KeyboardEventCallBack& params) {
+      fire(params, AutogenId(0));
+    }
   };
 
   class FireConsumer final {
@@ -65,7 +70,7 @@ public:
 
   class FireWait final {
   public:
-    static void fire(const Params_Wait& params);
+    static void fire(const Params_Wait& params, AutogenId autogenId);
   };
 
   class Item final : public List::Item {
@@ -123,7 +128,7 @@ private:
   static void push(const Params_KeyboardSpecialEventCallback& p);
   static void push(const Params_RelativePointerEventCallback& p);
   static void push(const Params_ScrollWheelEventCallback& p);
-  static void push(const Params_Wait& p);
+  static void push(const Params_Wait& p, AutogenId autogenId);
 
   static List queue_;
   static TimerWrapper fire_timer_;
