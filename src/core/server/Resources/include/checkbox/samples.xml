@@ -1934,8 +1934,8 @@ Two Lines</autogen>
         </autogen>
       </item>
       <item>
-        <identifier>remap.samples_simultaneouskeypresses_SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS</identifier>
-        <name>With Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS</name>
+        <identifier>remap.samples_simultaneouskeypresses_SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW</identifier>
+        <name>With Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW</name>
         <appendix></appendix>
         <appendix>Change D+F to lock control key.</appendix>
         <appendix>* Unlock control key by escape key.</appendix>
@@ -1956,7 +1956,14 @@ Two Lines</autogen>
           __{ KeyCode::D, KeyCode::F, }__
           KeyCode::VK_LOCK_CONTROL_L_FORCE_ON,
           <!-- The D and F key will be sent and modified by below __KeyToKey__. -->
-          Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS,
+          Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW,
+
+          <!--
+              Note:
+              The from events will be posted by the defined order.
+              For example, the from events are always posted by D,F order
+              even if you press them F,D order.
+          -->
         </autogen>
 
         <!-- with virtual modifier -->
@@ -1964,7 +1971,7 @@ Two Lines</autogen>
           __SimultaneousKeyPresses__
           __{ KeyCode::F, KeyCode::G, }__
           KeyCode::VK_MODIFIER_EXTRA1,
-          Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS,
+          Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW,
         </autogen>
 
         <block>

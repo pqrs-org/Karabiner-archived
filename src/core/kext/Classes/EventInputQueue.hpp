@@ -10,12 +10,10 @@
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
-class SimultaneousButtonPresses;
 class SimultaneousKeyPresses;
 }
 
 class EventInputQueue final {
-  friend class RemapFunc::SimultaneousButtonPresses;
   friend class RemapFunc::SimultaneousKeyPresses;
 
 public:

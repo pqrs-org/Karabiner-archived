@@ -69,9 +69,8 @@ void SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval) {
     Option option(newval);
     if (Option::SIMULTANEOUSKEYPRESSES_RAW == option) {
       isToRaw_ = true;
-    } else if (Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS == option) {
-      isToRaw_ = true;
-      isDropOriginalEvents_ = false;
+    } else if (Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW == option) {
+      isPostFromEventsAsRaw_ = true;
     } else if (Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER == option) {
       isStrictKeyOrder_ = true;
 
@@ -146,10 +145,10 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
     if (!fromInfo_[i].fromEvent().isTargetUpEvent(front->getParamsBase())) continue;
 
     // --------------------
-    if (isDropOriginalEvents_) {
-      EventInputQueue::queue_.pop_front();
-    } else {
+    if (isPostFromEventsAsRaw_) {
       front->isSimultaneousKeyPressesTarget = false;
+    } else {
+      EventInputQueue::queue_.pop_front();
     }
     fromInfo_[i].deactivate();
 
@@ -245,13 +244,23 @@ scan:
     }
 
     if (isAllKeysDown) {
-      for (size_t i = 0; i < fromInfo_.size(); ++i) {
+      // We use the reverse iterator for isPostFromEventsAsRaw_.
+      for (int i = static_cast<int>(fromInfo_.size()) - 1; i >= 0; --i) {
         fromInfo_[i].activate();
-        if (isDropOriginalEvents_) {
-          EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
-        } else {
-          (downKeys_[i].item)->isSimultaneousKeyPressesTarget = false;
+
+        if (! downKeys_[i].item) continue;
+
+        if (isPostFromEventsAsRaw_) {
+          bool retainFlagStatusTemporaryCount = false;
+          bool push_back = false;
+          bool isSimultaneousKeyPressesTarget = false;
+          EventInputQueue::enqueue_((downKeys_[i].item)->getParamsBase(),
+                                    retainFlagStatusTemporaryCount,
+                                    deviceIdentifier,
+                                    push_back,
+                                    isSimultaneousKeyPressesTarget);
         }
+        EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
       }
       push_remapped(true, deviceIdentifier);
       return RemapSimultaneousKeyPressesResult::APPLIED;

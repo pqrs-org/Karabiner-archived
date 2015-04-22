@@ -9,7 +9,7 @@ Since 10.6.0
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
     * `Option::KEYTOKEY_DELAYED_ACTION` has been added.
-    * `Option::SIMULTANEOUSKEYPRESSES_RAW_WITH_ORIGINAL_EVENTS` has been added.
+    * `Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW` has been added.
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * The following filters have been added.
         * `<pressingphysicalkeys_greaterthan>`
