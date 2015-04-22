@@ -28,6 +28,7 @@ public:
 
   virtual bool iskeydown(bool& output) const { return false; }
   virtual bool isModifier(void) const { return false; }
+  virtual bool isRepeat(void) const { return false; }
 
   static const Params_Base& emptyInstance(void);
   static const Params_Base& safe_dereference(const Params_Base* p) { return p == nullptr ? emptyInstance() : *p; }
@@ -59,6 +60,7 @@ public:
     return true;
   }
   bool isModifier(void) const override { return key.isModifier(); }
+  bool isRepeat(void) const override { return repeat; }
 
   // ----------------------------------------
   static void log(bool isCaught, EventType eventType, Flags flags, KeyCode key, KeyboardType keyboardType, bool repeat) {
@@ -122,6 +124,7 @@ public:
     output = ex_iskeydown;
     return true;
   }
+  bool isRepeat(void) const override { return repeat; }
 
   // ----------------------------------------
   static void log(bool isCaught, EventType eventType, Flags flags, ConsumerKeyCode key, unsigned int flavor, UInt64 guid, bool repeat) {
