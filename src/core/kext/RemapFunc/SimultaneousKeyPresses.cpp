@@ -248,7 +248,7 @@ scan:
       for (int i = static_cast<int>(fromInfo_.size()) - 1; i >= 0; --i) {
         fromInfo_[i].activate();
 
-        if (! downKeys_[i].item) continue;
+        if (!downKeys_[i].item) continue;
 
         if (isPostFromEventsAsRaw_) {
           bool retainFlagStatusTemporaryCount = false;
