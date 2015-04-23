@@ -10,6 +10,7 @@ List KeyboardRepeat::queue_;
 TimerWrapper KeyboardRepeat::fire_timer_;
 int KeyboardRepeat::id_ = 0;
 int KeyboardRepeat::keyRepeat_ = 0;
+AutogenId KeyboardRepeat::autogenId_(0);
 
 void KeyboardRepeat::initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, nullptr, KeyboardRepeat::fire_timer_callback);
@@ -68,8 +69,9 @@ void KeyboardRepeat::primitive_add(Buttons button) {
   queue_.push_back(new Item(params));
 }
 
-int KeyboardRepeat::primitive_start(int delayUntilRepeat, int keyRepeat) {
+int KeyboardRepeat::primitive_start(AutogenId autogenId, int delayUntilRepeat, int keyRepeat) {
   keyRepeat_ = keyRepeat;
+  autogenId_ = autogenId;
   fire_timer_.setTimeoutMS(delayUntilRepeat);
 
   return succID();
@@ -79,6 +81,7 @@ void KeyboardRepeat::set(EventType eventType,
                          Flags flags,
                          KeyCode key,
                          KeyboardType keyboardType,
+                         AutogenId autogenId,
                          int delayUntilRepeat,
                          int keyRepeat) {
   if (key == KeyCode::VK_NONE) return;
@@ -104,7 +107,7 @@ void KeyboardRepeat::set(EventType eventType,
     cancel();
 
     primitive_add(eventType, flags, key, keyboardType);
-    primitive_start(delayUntilRepeat, keyRepeat);
+    primitive_start(autogenId, delayUntilRepeat, keyRepeat);
 
     IOLOG_DEVEL("KeyboardRepeat::set key:%d flags:0x%x\n", key.get(), flags.get());
 
@@ -121,6 +124,7 @@ cancel:
 void KeyboardRepeat::set(EventType eventType,
                          Flags flags,
                          ConsumerKeyCode key,
+                         AutogenId autogenId,
                          int delayUntilRepeat,
                          int keyRepeat) {
   if (key == ConsumerKeyCode::VK_NONE) return;
@@ -136,7 +140,7 @@ void KeyboardRepeat::set(EventType eventType,
     cancel();
 
     primitive_add(eventType, flags, key);
-    primitive_start(delayUntilRepeat, keyRepeat);
+    primitive_start(autogenId, delayUntilRepeat, keyRepeat);
 
     IOLOG_DEVEL("KeyboardRepeat::set consumer key:%d flags:0x%x\n", key.get(), flags.get());
 

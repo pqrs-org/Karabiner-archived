@@ -28,25 +28,29 @@ public:
                   Flags flags,
                   KeyCode key,
                   KeyboardType keyboardType,
+                  AutogenId autogenId,
                   int delayUntilRepeat,
                   int keyRepeat);
 
   static void set(const Params_KeyboardEventCallBack& p,
+                  AutogenId autogenId,
                   int delayUntilRepeat = Config::get_repeat_initial_wait(),
                   int keyRepeat = Config::get_repeat_wait()) {
-    set(p.eventType, p.flags, p.key, p.keyboardType, delayUntilRepeat, keyRepeat);
+    set(p.eventType, p.flags, p.key, p.keyboardType, autogenId, delayUntilRepeat, keyRepeat);
   }
 
   // for consumer
   static void set(EventType eventType,
                   Flags flags,
                   ConsumerKeyCode key,
+                  AutogenId autogenId,
                   int delayUntilRepeat,
                   int keyRepeat);
   static void set(const Params_KeyboardSpecialEventCallback& p,
+                  AutogenId autogenId,
                   int delayUntilRepeat = Config::get_repeat_consumer_initial_wait(),
                   int keyRepeat = Config::get_repeat_consumer_wait()) {
-    set(p.eventType, p.flags, p.key, delayUntilRepeat, keyRepeat);
+    set(p.eventType, p.flags, p.key, autogenId, delayUntilRepeat, keyRepeat);
   }
 
   // --------------------------------------------------
@@ -59,7 +63,7 @@ public:
   }
   static void primitive_add(Buttons button);
 
-  static int primitive_start(int delayUntilRepeat, int keyRepeat);
+  static int primitive_start(AutogenId autogenId, int delayUntilRepeat, int keyRepeat);
 
 private:
   class Item final : public List::Item {
@@ -99,6 +103,7 @@ private:
   static TimerWrapper fire_timer_;
   static int id_;
   static int keyRepeat_;
+  static AutogenId autogenId_;
 };
 }
 

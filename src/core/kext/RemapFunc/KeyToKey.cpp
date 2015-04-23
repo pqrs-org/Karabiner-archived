@@ -435,7 +435,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         KeyboardRepeat::cancel();
       } else {
         if (isRepeatEnabled_) {
-          keyboardRepeatID_ = KeyboardRepeat::primitive_start(getDelayUntilRepeat(), getKeyRepeat());
+          keyboardRepeatID_ = KeyboardRepeat::primitive_start(autogenId_, getDelayUntilRepeat(), getKeyRepeat());
         } else {
           keyboardRepeatID_ = -1;
         }

@@ -32,7 +32,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
                                         false);
     EventOutputQueue::FireKey::fire(params);
     if (add_to_keyrepeat) {
-      KeyboardRepeat::set(params, delayUntilRepeat, keyRepeat);
+      KeyboardRepeat::set(params, autogenId, delayUntilRepeat, keyRepeat);
     }
     break;
   }
@@ -44,7 +44,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
                                                false);
     EventOutputQueue::FireConsumer::fire(params);
     if (add_to_keyrepeat) {
-      KeyboardRepeat::set(params, delayUntilRepeat, keyRepeat);
+      KeyboardRepeat::set(params, autogenId, delayUntilRepeat, keyRepeat);
     }
     break;
   }

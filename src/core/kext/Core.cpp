@@ -210,7 +210,7 @@ void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
                                    params->origCharSet,
                                    params->keyboardType,
                                    false);
-    KeyboardRepeat::set(p);
+    KeyboardRepeat::set(p, AutogenId::maxValue());
     EventOutputQueue::FireKey::fire(p);
   }
 
@@ -235,7 +235,7 @@ void remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
                                           params->flavor,
                                           params->guid,
                                           false);
-    KeyboardRepeat::set(p);
+    KeyboardRepeat::set(p, AutogenId::maxValue());
     EventOutputQueue::FireConsumer::fire(p);
   }
 
