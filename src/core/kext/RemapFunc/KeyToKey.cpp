@@ -375,7 +375,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       }
     }
 
-    toKeys_[0].fire(newEventType, FlagStatus::globalFlagStatus().makeFlags(),
+    toKeys_[0].fire(newEventType, FlagStatus::globalFlagStatus().makeFlags(), autogenId_,
                     add_to_keyrepeat, getDelayUntilRepeat(), getKeyRepeat());
 
     if (!add_to_keyrepeat) {
@@ -424,7 +424,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
           //
           // Intentionally VK_LAZY_* stop sending MODIFY events.
           // EventOutputQueue::FireModifiers::fire destroys this behavior.
-          lastToEvent.fire(EventType::DOWN, FlagStatus::globalFlagStatus().makeFlags(), false);
+          lastToEvent.fire(EventType::DOWN, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, false);
 
         } else {
           EventOutputQueue::FireModifiers::fire();
@@ -447,7 +447,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         // we need to handle these keys before restoring pureFromModifierFlags_, lastKeyFlags and lastKeyModifierFlag.
         // The unnecessary modifier events occur unless we do it.
         if (isLastToEventLikeModifier) {
-          lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), false);
+          lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, false);
         }
 
         FlagStatus::globalFlagStatus().decrease(lastToEventModifierFlag, lastToEvent.getModifierFlags());

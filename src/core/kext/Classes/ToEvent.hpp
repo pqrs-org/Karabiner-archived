@@ -59,7 +59,7 @@ public:
   }
   bool isEventLikeModifier(void) const;
 
-  void fire(EventType eventType, Flags flags,
+  void fire(EventType eventType, Flags flags, AutogenId autogenId,
             bool add_to_keyrepeat, int delayUntilRepeat = 0, int keyRepeat = 0);
   void fire_downup(bool add_to_keyrepeat = false) const;
 

@@ -18,7 +18,7 @@ bool ToEvent::isEventLikeModifier(void) const {
   }
 }
 
-void ToEvent::fire(EventType eventType, Flags flags,
+void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
                    bool add_to_keyrepeat, int delayUntilRepeat, int keyRepeat) {
   switch (type_) {
   case Type::NONE:
