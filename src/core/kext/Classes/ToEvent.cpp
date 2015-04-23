@@ -66,7 +66,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
   }
 }
 
-void ToEvent::fire_downup(bool add_to_keyrepeat) const {
+void ToEvent::fire_downup(AutogenId autogenId, bool add_to_keyrepeat) const {
   switch (type_) {
   case Type::NONE:
     break;

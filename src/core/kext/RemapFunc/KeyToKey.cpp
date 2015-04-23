@@ -213,7 +213,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
     for (size_t i = 0; i < beforeKeys_.size(); ++i) {
       FlagStatus::globalFlagStatus().temporary_increase(beforeKeys_[i].getModifierFlags());
 
-      beforeKeys_[i].fire_downup();
+      beforeKeys_[i].fire_downup(autogenId_);
 
       FlagStatus::globalFlagStatus().temporary_decrease(beforeKeys_[i].getModifierFlags());
     }
@@ -407,7 +407,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       for (size_t i = 0; i < size; ++i) {
         FlagStatus::globalFlagStatus().temporary_increase(toKeys_[i].getModifierFlags());
 
-        toKeys_[i].fire_downup(true);
+        toKeys_[i].fire_downup(autogenId_, true);
 
         FlagStatus::globalFlagStatus().temporary_decrease(toKeys_[i].getModifierFlags());
       }
@@ -477,7 +477,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       for (size_t i = 0; i < afterKeys_.size(); ++i) {
         FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getModifierFlags());
 
-        afterKeys_[i].fire_downup();
+        afterKeys_[i].fire_downup(autogenId_);
 
         FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getModifierFlags());
       }
@@ -516,7 +516,7 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
 
       FlagStatus::globalFlagStatus().temporary_increase(keys[i].getModifierFlags());
 
-      keys[i].fire_downup();
+      keys[i].fire_downup(autogenId_);
 
       FlagStatus::globalFlagStatus().temporary_decrease(keys[i].getModifierFlags());
     }
