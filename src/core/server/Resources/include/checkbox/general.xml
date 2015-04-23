@@ -45,7 +45,7 @@
       <identifier essential="true">general.dont_remap_non_apple_pointing</identifier>
     </item>
     <item>
-      <name>Don't remap keyboards which has third vendor's driver</name>
+      <name>Don't remap keyboards which have third vendor's driver</name>
       <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
       <identifier essential="true">general.dont_remap_thirdvendor_keyboard</identifier>
     </item>
