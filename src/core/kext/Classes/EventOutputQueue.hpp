@@ -50,7 +50,7 @@ public:
 
   class FireRelativePointer final {
   public:
-    static void fire(Buttons toButtons = ButtonStatus::makeButtons(), int dx = 0, int dy = 0);
+    static void fire(AutogenId autogenId, Buttons toButtons = ButtonStatus::makeButtons(), int dx = 0, int dy = 0);
 
   private:
     static Buttons lastButtons_;
@@ -126,7 +126,7 @@ private:
   static unsigned int calcDelay(const Params_Base& params);
   static void push(const Params_KeyboardEventCallBack& p);
   static void push(const Params_KeyboardSpecialEventCallback& p);
-  static void push(const Params_RelativePointerEventCallback& p);
+  static void push(const Params_RelativePointerEventCallback& p, AutogenId autogenId);
   static void push(const Params_ScrollWheelEventCallback& p, AutogenId autogenId);
   static void push(const Params_Wait& p, AutogenId autogenId);
 

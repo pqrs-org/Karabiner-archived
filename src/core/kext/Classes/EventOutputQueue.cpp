@@ -46,7 +46,7 @@ void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p) {
     FlagStatus::globalFlagStatus().sticky_clear();
   }
 }
-void EventOutputQueue::push(const Params_RelativePointerEventCallback& p) {
+void EventOutputQueue::push(const Params_RelativePointerEventCallback& p, AutogenId autogenId) {
   PUSH_TO_OUTPUTQUEUE;
   if (p.buttons != Buttons(0)) {
     FlagStatus::globalFlagStatus().sticky_clear();
@@ -341,7 +341,7 @@ void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallb
 // ======================================================================
 Buttons EventOutputQueue::FireRelativePointer::lastButtons_(0);
 
-void EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int dy) {
+void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, Buttons toButtons, int dx, int dy) {
   // When changing space to command+left click,
   //   __KeyToKey__ KeyCode::SPACE, PointingButton::LEFT, ModifierFlag::COMMAND_L
   //
@@ -376,13 +376,13 @@ void EventOutputQueue::FireRelativePointer::fire(Buttons toButtons, int dx, int 
     lastButtons_ = toButtons;
 
     Params_RelativePointerEventCallback params(toButtons, 0, 0, PointingButton::NONE, false);
-    EventOutputQueue::push(params);
+    EventOutputQueue::push(params, autogenId);
   }
 
   // Sending cursor
   if (dx != 0 || dy != 0) {
     Params_RelativePointerEventCallback params(toButtons, dx, dy, PointingButton::NONE, false);
-    EventOutputQueue::push(params);
+    EventOutputQueue::push(params, autogenId);
   }
 
   if (isButtonReleased) {
