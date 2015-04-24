@@ -115,6 +115,10 @@ unsigned int maxDelay(unsigned int v1, unsigned int v2) {
 }
 
 void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */) {
+  // We need to cancelEventOutputQueueItems in fire_timer_callback
+  // in order to cancel __HoldingKeyToKey__ events.
+  RemapClassManager::cancelEventOutputQueueItems();
+
   // Delete canceled items.
   Item* p = nullptr;
 

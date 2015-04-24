@@ -545,6 +545,8 @@ void EventInputQueue::doFire(void) {
   Item* p = static_cast<Item*>(queue_.safe_front());
   if (!p) return;
 
+  ++serialNumber_;
+
   {
     auto params = (p->getParamsBase()).get_Params_KeyboardEventCallBack();
     if (params) {
@@ -666,12 +668,9 @@ void EventInputQueue::doFire(void) {
     }
   }
 
-  RemapClassManager::cancelEventOutputQueueItems();
-
   CommonData::setcurrent_lastpressedphysicalkey(p->getParamsBase());
 
   queue_.pop_front();
-  ++serialNumber_;
 }
 
 void EventInputQueue::BlockUntilKeyUpHander::initialize(IOWorkLoop& workloop) {
