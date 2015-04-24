@@ -24,7 +24,8 @@ public:
   // ======================================================================
   class FireModifiers final {
   public:
-    static void fire(Flags toFlags = FlagStatus::globalFlagStatus().makeFlags(),
+    static void fire(AutogenId autogenId,
+                     Flags toFlags = FlagStatus::globalFlagStatus().makeFlags(),
                      KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
 
     static Flags getLastFlags(void) { return lastFlags_; }
@@ -36,11 +37,6 @@ public:
   class FireKey final {
   public:
     static void fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
-
-    // TODO: DELETE ME. Do not use this method.
-    static void fire(const Params_KeyboardEventCallBack& params) {
-      fire(params, AutogenId(0));
-    }
   };
 
   class FireConsumer final {
@@ -124,7 +120,7 @@ private:
 
   static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);
   static unsigned int calcDelay(const Params_Base& params);
-  static void push(const Params_KeyboardEventCallBack& p);
+  static void push(const Params_KeyboardEventCallBack& p, AutogenId autogenId);
   static void push(const Params_KeyboardSpecialEventCallback& p, AutogenId autogenId);
   static void push(const Params_RelativePointerEventCallback& p, AutogenId autogenId);
   static void push(const Params_ScrollWheelEventCallback& p, AutogenId autogenId);

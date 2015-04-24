@@ -427,7 +427,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
           lastToEvent.fire(EventType::DOWN, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, false);
 
         } else {
-          EventOutputQueue::FireModifiers::fire();
+          EventOutputQueue::FireModifiers::fire(autogenId_);
         }
       }
 
@@ -453,7 +453,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         FlagStatus::globalFlagStatus().decrease(lastToEventModifierFlag, lastToEvent.getModifierFlags());
         FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
         FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
-        EventOutputQueue::FireModifiers::fire();
+        EventOutputQueue::FireModifiers::fire(autogenId_);
 
       } else {
         if (KeyboardRepeat::getID() == keyboardRepeatID_) {

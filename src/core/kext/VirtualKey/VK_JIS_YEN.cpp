@@ -10,7 +10,7 @@ bool VirtualKey::VK_JIS_YEN::handle(const Params_KeyboardEventCallBack& params, 
 
   Params_KeyboardEventCallBack p(params.eventType, params.flags, KeyCode::JIS_YEN,
                                  KeyboardType::JIS_MACBOOK_2008, params.repeat);
-  EventOutputQueue::FireKey::fire(p);
+  EventOutputQueue::FireKey::fire(p, autogenId);
 
   return true;
 }

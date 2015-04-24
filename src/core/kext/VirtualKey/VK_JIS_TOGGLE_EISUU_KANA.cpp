@@ -20,7 +20,7 @@ bool VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(const Params_KeyboardEventCall
 
   Params_KeyboardEventCallBack p(params.eventType, params.flags, newkeycode_,
                                  params.keyboardType, params.repeat);
-  EventOutputQueue::FireKey::fire(p);
+  EventOutputQueue::FireKey::fire(p, autogenId);
 
   return true;
 }

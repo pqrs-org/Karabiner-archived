@@ -45,7 +45,7 @@ bool VirtualKey::VK_PARTIAL::handle(const Params_KeyboardEventCallBack& params, 
                                    params.origCharSet,
                                    params.keyboardType,
                                    params.repeat);
-    EventOutputQueue::FireKey::fire(p);
+    EventOutputQueue::FireKey::fire(p, autogenId);
 
     // We need to register a key for changedKeyCodes_ after EventOutputQueue::FireKey::fire
     // because changedKeyCodes_ blocks key events.

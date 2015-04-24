@@ -30,7 +30,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
                                         key_,
                                         CommonData::getcurrent_keyboardType(),
                                         false);
-    EventOutputQueue::FireKey::fire(params);
+    EventOutputQueue::FireKey::fire(params, autogenId);
     if (add_to_keyrepeat) {
       KeyboardRepeat::set(params, autogenId, delayUntilRepeat, keyRepeat);
     }
@@ -75,10 +75,10 @@ void ToEvent::fire_downup(AutogenId autogenId, bool add_to_keyrepeat) const {
     KeyboardType keyboardType = CommonData::getcurrent_keyboardType();
     ModifierFlag f = key_.getModifierFlag();
 
-#define CALL_FIREKEY_FIRE(params)          \
-  EventOutputQueue::FireKey::fire(params); \
-  if (add_to_keyrepeat) {                  \
-    KeyboardRepeat::primitive_add(params); \
+#define CALL_FIREKEY_FIRE(params)                     \
+  EventOutputQueue::FireKey::fire(params, autogenId); \
+  if (add_to_keyrepeat) {                             \
+    KeyboardRepeat::primitive_add(params);            \
   }
 
     if (f != ModifierFlag::ZERO) {

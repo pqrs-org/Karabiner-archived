@@ -47,7 +47,7 @@ void PressDownKeys::clear(void) {
 
     Params_KeyboardEventCallBack params(EventType::UP, Flags(0), p->key, p->keyboardType, false);
 
-    EventOutputQueue::push(params);
+    EventOutputQueue::push(params, AutogenId::maxValue());
     IOLOG_DEVEL("PressDownKeys::clear key:%d, keyboardType:%d\n", params.key.get(), params.keyboardType.get());
 
     p = static_cast<Item*>(list_.erase_and_delete(p));

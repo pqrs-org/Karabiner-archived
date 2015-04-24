@@ -10,7 +10,7 @@ bool VirtualKey::VK_JIS_BACKSLASH::handle(const Params_KeyboardEventCallBack& pa
 
   Params_KeyboardEventCallBack p(params.eventType, params.flags, KeyCode::BACKSLASH,
                                  KeyboardType::MACBOOK, params.repeat);
-  EventOutputQueue::FireKey::fire(p);
+  EventOutputQueue::FireKey::fire(p, autogenId);
 
   return true;
 }

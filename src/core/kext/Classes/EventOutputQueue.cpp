@@ -34,7 +34,7 @@ void EventOutputQueue::terminate(void) {
     queue_.push_back(new Item(p, AutogenId(serialNumber_))); \
     fire_timer_.setTimeoutMS(0, false);                      \
   }
-void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
+void EventOutputQueue::push(const Params_KeyboardEventCallBack& p, AutogenId autogenId) {
   PUSH_TO_OUTPUTQUEUE;
   if (p.eventType == EventType::DOWN) {
     FlagStatus::globalFlagStatus().sticky_clear();
@@ -235,7 +235,7 @@ void EventOutputQueue::collapseModifierKeyUpDownEvent(void) {
 // ======================================================================
 Flags EventOutputQueue::FireModifiers::lastFlags_(0);
 
-void EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardType) {
+void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, Flags toFlags, KeyboardType keyboardType) {
   if (lastFlags_ == toFlags) return;
 
   // ------------------------------------------------------------
@@ -262,7 +262,7 @@ void EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardT
     lastFlags_.remove(flag);
 
     Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
-    EventOutputQueue::push(params);
+    EventOutputQueue::push(params, autogenId);
   }
 
   // KeyDown
@@ -281,7 +281,7 @@ void EventOutputQueue::FireModifiers::fire(Flags toFlags, KeyboardType keyboardT
     lastFlags_.add(flag);
 
     Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
-    EventOutputQueue::push(params);
+    EventOutputQueue::push(params, autogenId);
   }
 }
 
@@ -306,13 +306,13 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
     return;
   }
 
-  FireModifiers::fire(newflags, params.keyboardType);
+  FireModifiers::fire(autogenId, newflags, params.keyboardType);
 
   if (params.eventType == EventType::DOWN || params.eventType == EventType::UP) {
     Params_KeyboardEventCallBack p(params.eventType, newflags, newkeycode,
                                    params.charCode, params.charSet, params.origCharCode, params.origCharSet,
                                    params.keyboardType, params.repeat);
-    EventOutputQueue::push(p);
+    EventOutputQueue::push(p, autogenId);
 
     if (!params.repeat) {
       if (params.eventType == EventType::DOWN) {
@@ -333,7 +333,7 @@ void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallb
     return;
   }
 
-  FireModifiers::fire();
+  FireModifiers::fire(autogenId);
 
   EventOutputQueue::push(params, autogenId);
 }
@@ -368,7 +368,7 @@ void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, Buttons to
   bool isButtonReleased = !releasedButtons.isNONE();
 
   if (!isButtonReleased) {
-    FireModifiers::fire();
+    FireModifiers::fire(autogenId);
   }
 
   // Sending button event
@@ -386,13 +386,13 @@ void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, Buttons to
   }
 
   if (isButtonReleased) {
-    FireModifiers::fire();
+    FireModifiers::fire(autogenId);
   }
 }
 
 // ======================================================================
 void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId) {
-  FireModifiers::fire();
+  FireModifiers::fire(autogenId);
   EventOutputQueue::push(params, autogenId);
 }
 

@@ -162,7 +162,7 @@ void resetWhenPressingPhysicalKeysIsEmpty(void) {
     FlagStatus::globalFlagStatus().reset();
     ButtonStatus::reset();
     VirtualKey::reset();
-    EventOutputQueue::FireModifiers::fire(FlagStatus::globalFlagStatus().makeFlags());
+    EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), FlagStatus::globalFlagStatus().makeFlags());
     EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue());
     PressDownKeys::clear();
   }
@@ -211,7 +211,7 @@ void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
                                    params->keyboardType,
                                    false);
     KeyboardRepeat::set(p, AutogenId::maxValue());
-    EventOutputQueue::FireKey::fire(p);
+    EventOutputQueue::FireKey::fire(p, AutogenId::maxValue());
   }
 
   resetWhenPressingPhysicalKeysIsEmpty();
