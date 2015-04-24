@@ -8,6 +8,7 @@ Since 10.6.0
 * Multiple displays support has been improved. The status message will be shown in the all screen.
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
+    * `__DropAllKeys__` has been added.
     * `Option::KEYTOKEY_DELAYED_ACTION` has been added.
     * `Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW` has been added.
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
