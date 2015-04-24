@@ -24,8 +24,12 @@
         __KeyOverlaidModifier__
         KeyCode::S,
 
+        <!--
+            Use notsave.simple_vi_mode in order to be higher priority.
+            Use ModifierFlag::SIMPLE_VI_MODE_2 for __DropAllKeys__.
+        -->
         @begin
-        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simple_vi_mode,
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simple_vi_mode, ModifierFlag::SIMPLE_VI_MODE_2,
         @end
 
         @begin
@@ -48,6 +52,13 @@
       <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
 
       <autogen>__KeyToKey__ KeyCode::F, KeyCode::FN</autogen>
+
+      <autogen>
+        __DropAllKeys__
+        ModifierFlag::SIMPLE_VI_MODE_2,
+
+        Option::DROPALLKEYS_DROP_KEY,
+      </autogen>
     </item>
 
     <item><name>──────────────────────────────</name></item>

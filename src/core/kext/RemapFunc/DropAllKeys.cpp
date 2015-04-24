@@ -42,6 +42,22 @@ void DropAllKeys::add(AddDataType datatype, AddValue newval) {
 }
 
 bool DropAllKeys::remap(RemapParams& remapParams) {
+  // We do not drop key events in `remap`.
+  // We need to drop key events in `cancelEventOutputQueueItems`.
+  //
+  // Why:
+  // __DropAllKeys__ will be used in mode in order to ignore invalid keys.
+  // (eg. enable only hjkl keys in simple vi mode v2.)
+  //
+  // In this case, we should not drop modifier keys in order to use shift+hjkl keys.
+  // Therefore, we do not drop modifier keys.
+  // When we enabled "change space to shift", space+hjkl should be shift+hjkl and
+  // the shift modifier should not be dropped.
+  // If we set `remapParams.remapped` in `remap`,
+  // the space key will not be changed to shift key and space+hjkl will be hjkl without modifier.
+  //
+  // So, we pass key events to other remap functions and drop key events in `cancelEventOutputQueueItems`.
+
   if (fromModifierFlags_.empty()) {
     IOLOG_WARN("Ignore __DropAllKeys__ with no ModifierFlag.\n");
 

@@ -64,7 +64,11 @@
   <modifierdef>LAUNCHER_MODE_V2</modifierdef>
 
   <!-- For "Mouse Keys Mode v2" -->
+  <modifierdef>MOUSE_KEYS_MODE_2</modifierdef>
   <modifierdef>MOUSE_KEYS_MODE_2_SCROLL</modifierdef>
+
+  <!-- Simple Vi Mode v2 -->
+  <modifierdef>SIMPLE_VI_MODE_2</modifierdef>
 
   <!-- For remap.app_rdc_command_to_control -->
   <modifierdef>RDC_COMMAND</modifierdef>
