@@ -48,8 +48,12 @@
         __KeyOverlaidModifier__
         KeyCode::D,
 
+        <!--
+            Use notsave.mouse_keys_mode_2 in order to be higher priority.
+            Use ModifierFlag::MOUSE_KEYS_MODE_2 for __DropAllKeys__.
+        -->
         @begin
-        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mouse_keys_mode_2,
+        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_mouse_keys_mode_2, ModifierFlag::MOUSE_KEYS_MODE_2,
         @end
 
         @begin
@@ -108,6 +112,13 @@
 
       <!-- warp cursor position -->
       <autogen>__KeyToKey__ KeyCode::I, KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center</autogen>
+
+      <autogen>
+        __DropAllKeys__
+        ModifierFlag::MOUSE_KEYS_MODE_2,
+
+        Option::DROPALLKEYS_DROP_KEY,
+      </autogen>
     </item>
 
     <item><name>──────────────────────────────</name></item>
