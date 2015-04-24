@@ -1537,7 +1537,7 @@ Two Lines</autogen>
     </item>
 
     <item>
-      <name>DropKey</name>
+      <name>DropAllKeys</name>
       <item>
         <identifier>remap.samples_drop_key</identifier>
         <appendix>Drop all key combinations while the right option key is pressed.</appendix>
