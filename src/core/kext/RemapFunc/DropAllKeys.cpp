@@ -46,17 +46,17 @@ bool DropAllKeys::remap(RemapParams& remapParams) {
     IOLOG_WARN("Ignore __DropAllKeys__ with no ModifierFlag.\n");
 
     modifierMatched_ = false;
-    dropTargetAutogenId_ = AutogenId(0);
+    doCancel_ = false;
     return false;
   } else {
     modifierMatched_ = FlagStatus::globalFlagStatus().isOn(fromModifierFlags_);
-    dropTargetAutogenId_ = AutogenId(EventOutputQueue::getLastPushedSerialNumber());
+    doCancel_ = true;
     return true;
   }
 }
 
 void DropAllKeys::cancelEventOutputQueueItems(void) {
-  if (dropTargetAutogenId_ == 0) {
+  if (!doCancel_) {
     return;
   }
 
@@ -66,7 +66,8 @@ void DropAllKeys::cancelEventOutputQueueItems(void) {
     if (EventInputQueue::currentSerialNumber() != p->getEventInputQueueSerialNumber()) {
       continue;
     }
-    if (dropTargetAutogenId_ >= p->getAutogenId()) {
+    // Do not cancel events which are pushed before this __DropAllKeys__.
+    if (p->getAutogenId() < autogenId_) {
       continue;
     }
 
@@ -98,7 +99,7 @@ void DropAllKeys::cancelEventOutputQueueItems(void) {
       }
     }
   }
-  dropTargetAutogenId_ = AutogenId(0);
+  doCancel_ = false;
 }
 
 void DropAllKeys::dropKey(EventOutputQueue::Item& item) {

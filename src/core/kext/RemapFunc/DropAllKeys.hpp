@@ -13,7 +13,7 @@ public:
                                      dropConsumerKey_(false),
                                      dropPointingButton_(false),
                                      modifierMatched_(false),
-                                     dropTargetAutogenId_(AutogenId(0)) {}
+                                     doCancel_(false) {}
 
   bool remap(RemapParams& remapParams) override;
   void cancelEventOutputQueueItems(void) override;
@@ -45,7 +45,7 @@ private:
   bool dropPointingButton_;
 
   bool modifierMatched_;
-  AutogenId dropTargetAutogenId_;
+  bool doCancel_;
   List dropped_;
 };
 }
