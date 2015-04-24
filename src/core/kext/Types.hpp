@@ -48,6 +48,10 @@ public:
   operator uint64_t(void) {
     return value_;
   }
+  bool operator>(AutogenId other) const { return value_ > other.value_; }
+  bool operator>=(AutogenId other) const { return value_ >= other.value_; }
+  bool operator<(AutogenId other) const { return value_ < other.value_; }
+  bool operator<=(AutogenId other) const { return value_ <= other.value_; }
 
   static AutogenId maxValue(void) {
     //       1234567812345678
