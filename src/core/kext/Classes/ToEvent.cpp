@@ -42,7 +42,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
                                                flags,
                                                consumer_,
                                                false);
-    EventOutputQueue::FireConsumer::fire(params);
+    EventOutputQueue::FireConsumer::fire(params, autogenId);
     if (add_to_keyrepeat) {
       KeyboardRepeat::set(params, autogenId, delayUntilRepeat, keyRepeat);
     }
@@ -114,10 +114,10 @@ void ToEvent::fire_downup(AutogenId autogenId, bool add_to_keyrepeat) const {
   case Type::CONSUMER_KEY: {
     Flags flags = FlagStatus::globalFlagStatus().makeFlags();
 
-#define CALL_FIRECONSUMER_FIRE(params)          \
-  EventOutputQueue::FireConsumer::fire(params); \
-  if (add_to_keyrepeat) {                       \
-    KeyboardRepeat::primitive_add(params);      \
+#define CALL_FIRECONSUMER_FIRE(params)                     \
+  EventOutputQueue::FireConsumer::fire(params, autogenId); \
+  if (add_to_keyrepeat) {                                  \
+    KeyboardRepeat::primitive_add(params);                 \
   }
 
     {

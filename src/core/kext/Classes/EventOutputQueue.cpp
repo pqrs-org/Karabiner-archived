@@ -40,7 +40,7 @@ void EventOutputQueue::push(const Params_KeyboardEventCallBack& p) {
     FlagStatus::globalFlagStatus().sticky_clear();
   }
 }
-void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p) {
+void EventOutputQueue::push(const Params_KeyboardSpecialEventCallback& p, AutogenId autogenId) {
   PUSH_TO_OUTPUTQUEUE;
   if (p.ex_iskeydown) {
     FlagStatus::globalFlagStatus().sticky_clear();
@@ -325,7 +325,7 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
 }
 
 // ======================================================================
-void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params) {
+void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params, AutogenId autogenId) {
   // skip no-outputable keycodes.
   // Note: check before FireModifiers to avoid meaningless modifier event.
   if (params.key == ConsumerKeyCode::VK_NONE ||
@@ -335,7 +335,7 @@ void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallb
 
   FireModifiers::fire();
 
-  EventOutputQueue::push(params);
+  EventOutputQueue::push(params, autogenId);
 }
 
 // ======================================================================

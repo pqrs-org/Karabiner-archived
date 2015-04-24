@@ -40,7 +40,7 @@ bool VirtualKey::VK_CONSUMERKEY::handle(const Params_KeyboardEventCallBack& para
                                         params.flags,
                                         key,
                                         params.repeat);
-  EventOutputQueue::FireConsumer::fire(p);
+  EventOutputQueue::FireConsumer::fire(p, autogenId);
 
   return true;
 }

@@ -45,7 +45,7 @@ public:
 
   class FireConsumer final {
   public:
-    static void fire(const Params_KeyboardSpecialEventCallback& params);
+    static void fire(const Params_KeyboardSpecialEventCallback& params, AutogenId autogenId);
   };
 
   class FireRelativePointer final {
@@ -125,7 +125,7 @@ private:
   static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);
   static unsigned int calcDelay(const Params_Base& params);
   static void push(const Params_KeyboardEventCallBack& p);
-  static void push(const Params_KeyboardSpecialEventCallback& p);
+  static void push(const Params_KeyboardSpecialEventCallback& p, AutogenId autogenId);
   static void push(const Params_RelativePointerEventCallback& p, AutogenId autogenId);
   static void push(const Params_ScrollWheelEventCallback& p, AutogenId autogenId);
   static void push(const Params_Wait& p, AutogenId autogenId);
