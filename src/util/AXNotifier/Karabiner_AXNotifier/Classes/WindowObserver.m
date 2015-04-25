@@ -4,6 +4,7 @@
 enum {
   WINDOWID_LAUNCHPAD,
   WINDOWID_SPOTLIGHT,
+    WINDOWID_QUICKSILVER,
   WINDOWID__END__,
 };
 
@@ -165,6 +166,17 @@ enum {
   return NO;
 }
 
+- (BOOL)isQuicksilver:(NSString*)windowOwnerName
+           windowName:(NSString*)windowName
+          windowLayer:(NSInteger)windowLayer {
+    if ([windowOwnerName isEqualToString:@"Quicksilver"]) {
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
@@ -192,6 +204,12 @@ enum {
                    windowName:windowName
                   windowLayer:windowLayer]) {
           rawWindowIDs_[WINDOWID_SPOTLIGHT] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+        }
+          
+        if ([self isQuicksilver:windowOwnerName
+                   windowName:windowName
+                  windowLayer:windowLayer]) {
+          rawWindowIDs_[WINDOWID_QUICKSILVER] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
         }
       }
 
@@ -224,6 +242,9 @@ enum {
           }
           if (rawWindowIDs_[WINDOWID_SPOTLIGHT] == windowNumber) {
             key = @"Spotlight";
+          }
+          if (rawWindowIDs_[WINDOWID_QUICKSILVER] == windowNumber) {
+            key = @"Quicksilver";
           }
 
           if (key) {
