@@ -115,7 +115,6 @@ void DropAllKeys::cancelEventOutputQueueItems(void) {
       }
     }
   }
-  doCancel_ = false;
 }
 
 void DropAllKeys::dropKey(EventOutputQueue::Item& item) {
@@ -123,7 +122,9 @@ void DropAllKeys::dropKey(EventOutputQueue::Item& item) {
   if (item.getParamsBase().iskeydown(iskeydown)) {
     if (iskeydown) {
       if (modifierMatched_) {
-        dropped_.push_back(new Item(item.getParamsBase()));
+        if (!item.getParamsBase().isRepeat()) {
+          dropped_.push_back(new Item(item.getParamsBase()));
+        }
         item.cancel();
       }
     } else {
