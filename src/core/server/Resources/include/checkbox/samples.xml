@@ -1570,9 +1570,12 @@ Two Lines</autogen>
     <item>
       <name>DropAllKeys</name>
       <item>
-        <identifier>remap.samples_drop_key</identifier>
+        <identifier>remap.samples_DropAllKeys</identifier>
         <appendix>Drop all key combinations while the right option key is pressed.</appendix>
         <appendix>(Except option-qwer)</appendix>
+        <appendix></appendix>
+        <appendix>With "change S to left shift key".</appendix>
+        <appendix>(option-S-Q will be option-shift-Q, option-S-A will be ignored.)</appendix>
         <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::Q, ModifierFlag::OPTION_R</autogen>
         <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::OPTION_R, KeyCode::W, ModifierFlag::OPTION_R</autogen>
         <autogen>__KeyToKey__ KeyCode::E, ModifierFlag::OPTION_R, KeyCode::E, ModifierFlag::OPTION_R</autogen>
@@ -1585,9 +1588,13 @@ Two Lines</autogen>
           Option::DROPALLKEYS_DROP_CONSUMERKEY,
           Option::DROPALLKEYS_DROP_POINTINGBUTTON,
         </autogen>
+        <!-- Settings after __DropAllKeys__ will be ignored. -->
+        <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::OPTION_R, KeyCode::A, ModifierFlag::OPTION_R</autogen>
+        <!-- However, modifier flags are enabled even if it is changed after __DropAllKeys__. -->
+        <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::OPTION_R, KeyCode::SHIFT_L, ModifierFlag::OPTION_R</autogen>
       </item>
       <item>
-        <identifier>remap.samples_drop_key_key</identifier>
+        <identifier>remap.samples_DropAllKeys_key</identifier>
         <appendix>Drop all keys while the right option key is pressed.</appendix>
         <autogen>
           __DropAllKeys__
@@ -1597,7 +1604,7 @@ Two Lines</autogen>
         </autogen>
       </item>
       <item>
-        <identifier>remap.samples_drop_key_consumerkey</identifier>
+        <identifier>remap.samples_DropAllKeys_consumerkey</identifier>
         <appendix>Drop all consumer keys while the right option key is pressed.</appendix>
         <autogen>
           __DropAllKeys__
@@ -1607,7 +1614,7 @@ Two Lines</autogen>
         </autogen>
       </item>
       <item>
-        <identifier>remap.samples_drop_key_pointingbutton</identifier>
+        <identifier>remap.samples_DropAllKeys_pointingbutton</identifier>
         <appendix>Drop all pointing buttons while the right option key is pressed.</appendix>
         <autogen>
           __DropAllKeys__
