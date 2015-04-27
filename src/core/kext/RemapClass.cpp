@@ -107,10 +107,32 @@ bool RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
 void RemapClass::Item::cancelEventOutputQueueItems(void) {
   if (!processor_) return;
 
-  if (!parent_.enabled()) return;
-  if (isblocked()) return;
+  for (EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(EventOutputQueue::getQueue().safe_front());
+       p;
+       p = static_cast<EventOutputQueue::Item*>(p->getnext())) {
+    if (EventInputQueue::currentSerialNumber() != p->getEventInputQueueSerialNumber()) {
+      continue;
+    }
+    // Do not cancel events which are pushed before this __DropAllKeys__.
+    if (p->getAutogenId() < processor_->getAutogenId()) {
+      continue;
+    }
 
-  processor_->cancelEventOutputQueueItems();
+    auto& paramsBase = p->getParamsBase();
+    bool iskeydown = false;
+    if (!paramsBase.iskeydown(iskeydown)) {
+      iskeydown = true;
+    }
+
+    if (iskeydown && !paramsBase.isRepeat()) {
+      if (!parent_.enabled()) continue;
+      if (isblocked()) continue;
+    } else {
+      if (isblocked_keyup()) continue;
+    }
+
+    processor_->cancelEventOutputQueueItems(*p);
+  }
 }
 
 bool RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {

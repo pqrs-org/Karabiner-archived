@@ -16,7 +16,7 @@ public:
                                      doCancel_(false) {}
 
   bool remap(RemapParams& remapParams) override;
-  void cancelEventOutputQueueItems(void) override;
+  void cancelEventOutputQueueItems(EventOutputQueue::Item& item) override;
 
   void add(AddDataType datatype, AddValue newval) override;
 

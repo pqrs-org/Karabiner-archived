@@ -71,47 +71,35 @@ bool DropAllKeys::remap(RemapParams& remapParams) {
   }
 }
 
-void DropAllKeys::cancelEventOutputQueueItems(void) {
+void DropAllKeys::cancelEventOutputQueueItems(EventOutputQueue::Item& item) {
   if (!doCancel_) {
     return;
   }
 
-  for (EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(EventOutputQueue::getQueue().safe_front());
-       p;
-       p = static_cast<EventOutputQueue::Item*>(p->getnext())) {
-    if (EventInputQueue::currentSerialNumber() != p->getEventInputQueueSerialNumber()) {
-      continue;
-    }
-    // Do not cancel events which are pushed before this __DropAllKeys__.
-    if (p->getAutogenId() < autogenId_) {
-      continue;
-    }
+  auto& paramsBase = item.getParamsBase();
 
-    auto& paramsBase = p->getParamsBase();
+  // Do not drop any modifier flags.
+  if (paramsBase.isModifier()) return;
 
-    // Do not drop any modifier flags.
-    if (paramsBase.isModifier()) continue;
-
-    {
-      auto params = paramsBase.get_Params_KeyboardEventCallBack();
-      if (params && dropKey_) {
-        dropKey(*p);
-      }
+  {
+    auto params = paramsBase.get_Params_KeyboardEventCallBack();
+    if (params && dropKey_) {
+      dropKey(item);
     }
-    {
-      auto params = paramsBase.get_Params_KeyboardSpecialEventCallback();
-      if (params && dropConsumerKey_) {
-        dropKey(*p);
-      }
+  }
+  {
+    auto params = paramsBase.get_Params_KeyboardSpecialEventCallback();
+    if (params && dropConsumerKey_) {
+      dropKey(item);
     }
-    {
-      auto params = paramsBase.get_Params_RelativePointerEventCallback();
-      if (params && dropPointingButton_) {
-        if (modifierMatched_ &&
-            !(params->buttons).isNONE()) {
-          p->cancel();
-          return;
-        }
+  }
+  {
+    auto params = paramsBase.get_Params_RelativePointerEventCallback();
+    if (params && dropPointingButton_) {
+      if (modifierMatched_ &&
+          !(params->buttons).isNONE()) {
+        item.cancel();
+        return;
       }
     }
   }
@@ -121,11 +109,22 @@ void DropAllKeys::dropKey(EventOutputQueue::Item& item) {
   bool iskeydown = false;
   if (item.getParamsBase().iskeydown(iskeydown)) {
     if (iskeydown) {
-      if (modifierMatched_) {
-        if (!item.getParamsBase().isRepeat()) {
+      if (!item.getParamsBase().isRepeat()) {
+        if (modifierMatched_) {
           dropped_.push_back(new Item(item.getParamsBase()));
+          item.cancel();
         }
-        item.cancel();
+      } else {
+        bool found = false;
+        for (Item* p = static_cast<Item*>(dropped_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+          if ((p->fromEvent).isTargetEvent(item.getParamsBase())) {
+            found = true;
+            break;
+          }
+        }
+        if (found) {
+          item.cancel();
+        }
       }
     } else {
       bool found = false;

@@ -2,6 +2,7 @@
 #define REMAPFUNCBASE_HPP
 
 #include "bridge.h"
+#include "EventOutputQueue.hpp"
 #include "FromEvent.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
@@ -54,7 +55,7 @@ public:
 
   virtual bool remap(RemapParams& remapParams) { return false; }
   virtual bool drop(const Params_KeyboardEventCallBack& params) { return false; }
-  virtual void cancelEventOutputQueueItems(void) {}
+  virtual void cancelEventOutputQueueItems(EventOutputQueue::Item& item) {}
   virtual RemapSimultaneousKeyPressesResult::Value remapSimultaneousKeyPresses(void) {
     return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
   }
