@@ -3,33 +3,6 @@
   <item>
     <name>Change Arrow(Up/Down/Left/Right) Key</name>
     <item>
-      <name>Arrow(Down/Left/Right) to Command_L</name>
-      <appendix>Disable Up-Arrow</appendix>
-      <identifier>remap.arrow2commandL</identifier>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::COMMAND_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::COMMAND_L</autogen>
-    </item>
-    <item>
-      <name>Arrow(Down/Left/Right) to Fn</name>
-      <appendix>Disable Up-Arrow</appendix>
-      <identifier>remap.arrow2fn</identifier>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::FN</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::FN</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::FN</autogen>
-    </item>
-    <item>
-      <name>Arrow(Down/Left/Right) to Option_L</name>
-      <appendix>Disable Up-Arrow</appendix>
-      <identifier>remap.arrow2optionL</identifier>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::OPTION_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::OPTION_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L</autogen>
-    </item>
-    <item>
       <name>Command+Arrow to Option_L+Arrow</name>
       <identifier>remap.commandArrow2optionLarrow</identifier>
       <autogen>__KeyToKey__ KeyCode::CURSOR_UP, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_UP, ModifierFlag::OPTION_L</autogen>
@@ -162,6 +135,46 @@
       <identifier>remap.fnupdown_to_brightness</identifier>
       <autogen>__KeyToKey__ KeyCode::CURSOR_UP,   KeyCode::F15</autogen>
       <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::F14</autogen>
+    </item>
+
+    <item>
+      <name>Use arrow keys as modifier keys</name>
+      <item>
+        <name>Arrow(Down/Left/Right) to Command_L</name>
+        <appendix>Disable Up-Arrow</appendix>
+        <identifier>remap.arrow2commandL</identifier>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::COMMAND_L</autogen>
+      </item>
+      <item>
+        <name>Arrow(Down/Left/Right) to Fn</name>
+        <appendix>Disable Up-Arrow</appendix>
+        <identifier>remap.arrow2fn</identifier>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::FN</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::FN</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::FN</autogen>
+      </item>
+      <item>
+        <name>Arrow(Down/Left/Right) to Option_L</name>
+        <appendix>Disable Up-Arrow</appendix>
+        <identifier>remap.arrow2optionL</identifier>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::VK_NONE</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::OPTION_L</autogen>
+      </item>
+    </item>
+
+    <item>
+      <name>Disable arrow keys</name>
+      <identifier>remap.disable_arrow_keys</identifier>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_NONE</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_NONE</autogen>
     </item>
 
   </item>
