@@ -1582,6 +1582,8 @@ Two Lines</autogen>
         <autogen>__KeyToKey__ KeyCode::R, ModifierFlag::OPTION_R, KeyCode::R, ModifierFlag::OPTION_R</autogen>
         <autogen>
           __DropAllKeys__
+          <!-- You have to specify ModifierFlag to __DropAllKeys__. -->
+          <!-- ModifierFlag::NONE is not permitted. -->
           ModifierFlag::OPTION_R,
 
           Option::DROPALLKEYS_DROP_KEY,
