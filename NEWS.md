@@ -10,6 +10,7 @@ Since 10.6.0
 * Updates for people who add new settings by oneself:
     * `__DropAllKeys__` has been added.
     * `Option::KEYTOKEY_DELAYED_ACTION` has been added.
+    * `Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS` has been added.
     * `Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW` has been added.
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * The following filters have been added.
