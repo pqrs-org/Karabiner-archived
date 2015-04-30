@@ -955,6 +955,8 @@ Two Lines</autogen>
             |
             | This option is useful when you want to change a key to normal key and
             | you also want to increase modifiers while pressing the target key.
+            |
+            | See `notsave.simple_vi_mode` in `vi_mode.xml`.
         -->
 
         <block>
