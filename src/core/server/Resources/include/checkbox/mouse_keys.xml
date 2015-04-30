@@ -9,12 +9,6 @@
     </item>
 
     <item>
-      <name>Mouse Keys scroll direction: not natural</name>
-      <appendix>(Enable this setting if your scroll direction of trackpad/mouse is not natural.)</appendix>
-      <identifier essential="true">parameter.mouse_key_scroll_not_natural_direction</identifier>
-    </item>
-
-    <item>
       <name>Mouse Keys Mode v2</name>
       <appendix>You can move mouse pointer by d+hjkl keys, and scroll by d+s+hjkl keys.</appendix>
       <appendix></appendix>
@@ -121,6 +115,12 @@
 
         Option::DROPALLKEYS_DROP_KEY,
       </autogen>
+    </item>
+
+    <item>
+      <name>Mouse Keys scroll direction: not natural</name>
+      <appendix>(Enable this setting if your scroll direction of trackpad/mouse is not natural.)</appendix>
+      <identifier essential="true">parameter.mouse_key_scroll_not_natural_direction</identifier>
     </item>
 
     <item><name>──────────────────────────────</name></item>
