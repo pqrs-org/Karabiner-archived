@@ -29,7 +29,8 @@
             Use ModifierFlag::SIMPLE_VI_MODE_2 for __DropAllKeys__.
         -->
         @begin
-        KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_simple_vi_mode, ModifierFlag::SIMPLE_VI_MODE_2,
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_simple_vi_mode,
+        KeyCode::VK_MODIFIER_SIMPLE_VI_MODE_2,
         @end
 
         @begin
@@ -39,6 +40,7 @@
     </item>
     <item hidden="true">
       <identifier vk_config="true">notsave.simple_vi_mode</identifier>
+      <modifier_only>ModifierFlag::SIMPLE_VI_MODE_2</modifier_only>
 
       {{ SIMPLE_VI_MODE_EXTRA }}
 
@@ -46,12 +48,37 @@
         __BlockUntilKeyUp__ KeyCode::S
       </autogen>
 
-      <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
-      <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
-      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
-      <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT,
 
-      <autogen>__KeyToKey__ KeyCode::F, KeyCode::FN</autogen>
+        Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+        ModifierFlag::SIMPLE_VI_MODE_2,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN,
+
+        Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+        ModifierFlag::SIMPLE_VI_MODE_2,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP,
+
+        Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+        ModifierFlag::SIMPLE_VI_MODE_2,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT,
+
+        Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+        ModifierFlag::SIMPLE_VI_MODE_2,
+      </autogen>
+
+      <autogen>
+        __KeyToKey__ KeyCode::F, KeyCode::FN,
+
+        Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+        ModifierFlag::SIMPLE_VI_MODE_2,
+      </autogen>
 
       <autogen>
         __DropAllKeys__
