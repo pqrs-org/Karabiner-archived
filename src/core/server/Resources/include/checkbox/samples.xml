@@ -933,6 +933,68 @@ Two Lines</autogen>
       </item>
 
       <item>
+        <identifier>remap.samples_keytokey_KEYTOKEY_INCREASE_MODIFIER_FLAGS</identifier>
+        <name>Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS</name>
+        <appendix>────────</appendix>
+        <appendix>Change HJKL keys to arrow key while you press S key.</appendix>
+        <appendix></appendix>
+        <appendix><![CDATA[    * S down, J down, S up, L down, J up, L up =>  down arrow, right arrow  ]]></appendix>
+        <appendix>────────</appendix>
+
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::S,
+          KeyCode::VK_MODIFIER_EXTRA1,
+          KeyCode::S,
+        </autogen>
+
+        <!--
+            | You do not need to use Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS when:
+            | * You want to change a key to key+modifier. (eg. change command-C to control-C.)
+            | * You want to change a key to modifier combinations. (eg. change the right option key to option-shift.)
+            |
+            | This option is useful when you want to change a key to normal key and
+            | you also want to increase modifiers while pressing the target key.
+        -->
+
+        <block>
+          <modifier_only>ModifierFlag::EXTRA1</modifier_only>
+          <autogen>
+            __KeyToKey__
+            KeyCode::H,
+            KeyCode::CURSOR_LEFT,
+
+            Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+            ModifierFlag::EXTRA1,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::J,
+            KeyCode::CURSOR_DOWN,
+
+            Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+            ModifierFlag::EXTRA1,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::K,
+            KeyCode::CURSOR_UP,
+
+            Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+            ModifierFlag::EXTRA1,
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::L,
+            KeyCode::CURSOR_RIGHT,
+
+            Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS,
+            ModifierFlag::EXTRA1,
+          </autogen>
+        </block>
+      </item>
+
+      <item>
         <identifier>remap.samples_keytokey_apply_from_to_top</identifier>
         <name>Apply from the top sequentially.</name>
         <appendix>1 to A</appendix>
