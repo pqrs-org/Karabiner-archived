@@ -64,6 +64,7 @@ private:
       DELAYED_ACTION_KEYS,
       DELAYED_ACTION_CANCELED_DEFAULT_KEYS,
       DELAYED_ACTION_CANCELED_BY_KEYS,
+      INCREASE_MODIFIER_FLAGS,
     };
   };
 
@@ -81,6 +82,8 @@ private:
       return delayedActionCanceledDefaultKeys_;
     case CurrentToEvent::DELAYED_ACTION_CANCELED_BY_KEYS:
       return delayedActionCanceledByKeys_.back();
+    case CurrentToEvent::INCREASE_MODIFIER_FLAGS:
+      return increaseModifierFlags_;
     }
   }
 
@@ -96,6 +99,7 @@ private:
   Vector_ToEvent delayedActionKeys_;
   Vector_ToEvent delayedActionCanceledDefaultKeys_;
   Vector_Vector_ToEvent delayedActionCanceledByKeys_;
+  Vector_ToEvent increaseModifierFlags_;
   CurrentToEvent::Value currentToEvent_;
 
   static TimerWrapper fire_timer_;

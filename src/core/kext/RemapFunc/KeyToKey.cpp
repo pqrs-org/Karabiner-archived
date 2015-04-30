@@ -80,6 +80,9 @@ void KeyToKey::add(AddDataType datatype, AddValue newval) {
       Vector_ToEvent v;
       delayedActionCanceledByKeys_.push_back(v);
       currentToEvent_ = CurrentToEvent::DELAYED_ACTION_CANCELED_BY_KEYS;
+    } else if (Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS == option) {
+      increaseModifierFlags_.push_back(ToEvent(KeyCode::VK_NONE));
+      currentToEvent_ = CurrentToEvent::INCREASE_MODIFIER_FLAGS;
     } else if (Option::USE_SEPARATOR == option ||
                Option::SEPARATOR == option) {
       // do nothing
@@ -118,6 +121,7 @@ void KeyToKey::clearToKeys(void) {
   delayedActionKeys_.clear();
   delayedActionCanceledDefaultKeys_.clear();
   delayedActionCanceledByKeys_.clear();
+  increaseModifierFlags_.clear();
 
   currentToEvent_ = CurrentToEvent::TO_KEYS;
 }
@@ -186,9 +190,17 @@ bool KeyToKey::remap(RemapParams& remapParams) {
   if (fromEvent_.isPressing()) {
     FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
     ButtonStatus::decrease(fromEvent_.getPointingButton());
+
+    if (!increaseModifierFlags_.empty()) {
+      FlagStatus::globalFlagStatus().increase(increaseModifierFlags_.back().getModifierFlags());
+    }
   } else {
     FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
     ButtonStatus::increase(fromEvent_.getPointingButton());
+
+    if (!increaseModifierFlags_.empty()) {
+      FlagStatus::globalFlagStatus().decrease(increaseModifierFlags_.back().getModifierFlags());
+    }
   }
 
   // ----------------------------------------

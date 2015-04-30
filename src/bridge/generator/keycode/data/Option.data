@@ -22,6 +22,9 @@ KEYTOKEY_DELAYED_ACTION                        --AUTO--
 KEYTOKEY_DELAYED_ACTION_CANCELED_BY            --AUTO--
 KEYTOKEY_DELAYED_ACTION_CANCELED_DEFAULT       --AUTO--
 
+// Increase modifier flags when key is pressed.
+KEYTOKEY_INCREASE_MODIFIER_FLAGS               --AUTO--
+
 // For __PointingRelativeToScroll__
 POINTINGRELATIVETOSCROLL_TOFLAGS               --AUTO--
 POINTINGRELATIVETOSCROLL_TOKEYS                --AUTO--
