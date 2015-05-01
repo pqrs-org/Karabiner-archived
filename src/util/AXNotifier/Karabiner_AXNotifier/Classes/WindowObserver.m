@@ -1,21 +1,22 @@
 #import "NotificationKeys.h"
 #import "WindowObserver.h"
 
-enum {
-  WINDOWID_LAUNCHPAD,
-  WINDOWID_SPOTLIGHT,
-  WINDOWID__END__,
-};
+#define kTargetWindowLaunchpad @"Launchpad"
+#define kTargetWindowSpotlight @"Spotlight"
 
 @interface WindowObserver () {
   NSTimer* timer_;
   NSTimer* refreshWindowIDsTimer_;
   NSMutableDictionary* shown_;
 
+  // targetWindows_ = { windowID: application type }
+  //
+  // For example, { 1234: "Spotlight" }
+  NSMutableDictionary* targetWindows_;
   // rawWindowIDs_ should be pointer sized type in order to pass CFArrayCreate.
   // (We need to manage long[] in order to put non-object-pointer into CFArray.)
-  long rawWindowIDs_[WINDOWID__END__];
-  CFArrayRef windowIDs_;
+  long* rawWindowIDs_;
+  CFArrayRef cfWindowIDs_;
 }
 @end
 
@@ -26,6 +27,7 @@ enum {
 
   if (self) {
     shown_ = [NSMutableDictionary new];
+    targetWindows_ = [NSMutableDictionary new];
 
     refreshWindowIDsTimer_ = [NSTimer scheduledTimerWithTimeInterval:10
                                                               target:self
@@ -49,8 +51,30 @@ enum {
 - (void)dealloc {
   [timer_ invalidate];
 
-  if (windowIDs_) {
-    CFRelease(windowIDs_);
+  [targetWindows_ removeAllObjects];
+  [self updateCfWindowIDs];
+}
+
+- (void)updateCfWindowIDs {
+  if (cfWindowIDs_) {
+    CFRelease(cfWindowIDs_);
+    cfWindowIDs_ = NULL;
+  }
+  if (rawWindowIDs_) {
+    free(rawWindowIDs_);
+    rawWindowIDs_ = NULL;
+  }
+
+  NSArray* keys = [targetWindows_ allKeys];
+  NSUInteger count = [keys count];
+  if (count > 0) {
+    rawWindowIDs_ = (long*)(malloc(sizeof(long*) * count));
+    if (rawWindowIDs_) {
+      for (NSUInteger i = 0; i < count; ++i) {
+        rawWindowIDs_[i] = [keys[i] integerValue];
+      }
+    }
+    cfWindowIDs_ = CFArrayCreate(NULL, (const void**)(rawWindowIDs_), count, NULL);
   }
 }
 
@@ -169,11 +193,8 @@ enum {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       // ----------------------------------------
-      // update rawWindowIDs_
-
-      for (size_t i = 0; i < WINDOWID__END__; ++i) {
-        rawWindowIDs_[i] = 0;
-      }
+      // update targetWindows_.
+      [targetWindows_ removeAllObjects];
 
       NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionAll,
                                                                                  kCGNullWindowID));
@@ -185,24 +206,20 @@ enum {
         if ([self isLaunchpad:windowOwnerName
                    windowName:windowName
                   windowLayer:windowLayer]) {
-          rawWindowIDs_[WINDOWID_LAUNCHPAD] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          targetWindows_[@(windowNumber)] = kTargetWindowLaunchpad;
         }
 
         if ([self isSpotlight:windowOwnerName
                    windowName:windowName
                   windowLayer:windowLayer]) {
-          rawWindowIDs_[WINDOWID_SPOTLIGHT] = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          targetWindows_[@(windowNumber)] = kTargetWindowSpotlight;
         }
       }
 
       // ----------------------------------------
-      // update windowIDs_
-
-      if (windowIDs_) {
-        CFRelease(windowIDs_);
-        windowIDs_ = NULL;
-      }
-      windowIDs_ = CFArrayCreate(NULL, (const void**)(rawWindowIDs_), WINDOWID__END__, NULL);
+      [self updateCfWindowIDs];
     }
   });
 }
@@ -210,22 +227,14 @@ enum {
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      if (windowIDs_) {
-        NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(windowIDs_));
+      if (cfWindowIDs_) {
+        NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(cfWindowIDs_));
         for (NSDictionary* window in windows) {
           pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
           long windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
           BOOL isOnScreen = [window[(__bridge NSString*)(kCGWindowIsOnscreen)] boolValue];
 
-          NSString* key = NULL;
-
-          if (rawWindowIDs_[WINDOWID_LAUNCHPAD] == windowNumber) {
-            key = @"Launchpad";
-          }
-          if (rawWindowIDs_[WINDOWID_SPOTLIGHT] == windowNumber) {
-            key = @"Spotlight";
-          }
-
+          NSString* key = targetWindows_[@(windowNumber)];
           if (key) {
             if (isOnScreen) {
               if (! shown_[key]) {
