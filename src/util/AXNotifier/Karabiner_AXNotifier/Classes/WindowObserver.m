@@ -3,6 +3,7 @@
 
 #define kTargetWindowLaunchpad @"Launchpad"
 #define kTargetWindowSpotlight @"Spotlight"
+#define kTargetWindowQuicksilver @"Quicksilver"
 
 @interface WindowObserver () {
   NSTimer* timer_;
@@ -189,6 +190,18 @@
   return NO;
 }
 
+- (BOOL)isQuicksilver:(NSString*)windowOwnerName
+           windowName:(NSString*)windowName
+          windowLayer:(NSInteger)windowLayer {
+  // Ignore Quicksilver in statusbar.
+  if ([windowOwnerName isEqualToString:@"Quicksilver"] &&
+      windowLayer == 101) {
+    return YES;
+  }
+
+  return NO;
+}
+
 - (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
@@ -215,6 +228,13 @@
                   windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
           targetWindows_[@(windowNumber)] = kTargetWindowSpotlight;
+        }
+
+        if ([self isQuicksilver:windowOwnerName
+                     windowName:windowName
+                    windowLayer:windowLayer]) {
+          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          targetWindows_[@(windowNumber)] = kTargetWindowQuicksilver;
         }
       }
 
