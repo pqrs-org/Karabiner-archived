@@ -171,6 +171,10 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     CFRelease(applicationElement_);
     applicationElement_ = NULL;
   }
+  if (focusedWindowElementForAXTitleChangedNotification_) {
+    CFRelease(focusedWindowElementForAXTitleChangedNotification_);
+    focusedWindowElementForAXTitleChangedNotification_ = NULL;
+  }
 }
 
 - (BOOL)observeAXNotification:(AXUIElementRef)element notification:(CFStringRef)notification add:(BOOL)add {
@@ -221,6 +225,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
                    notification:kAXTitleChangedNotification
                             add:NO];
 
+    CFRelease(focusedWindowElementForAXTitleChangedNotification_);
     focusedWindowElementForAXTitleChangedNotification_ = NULL;
   }
 }
