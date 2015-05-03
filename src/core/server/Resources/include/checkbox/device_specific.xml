@@ -3,7 +3,7 @@
   <item>
     <name>Device Specific Mixed Settings</name>
     <item>
-      <name>For MacBook series (vid/pid: 0x05ac,0x0236)</name>
+      <name>For MacBook family (vid/pid: 0x05ac,0x0236)</name>
       <item>
         <name>Swap Command_L and Option_L on MacBook pro (vid/pid: 0x05ac,0x0236)</name>
         <identifier>remap.swap_commandL_and_optionL_mac_book_pro_0x0236</identifier>
@@ -16,7 +16,7 @@
     </item>
 
     <item>
-      <name>For MacBook series (vid/pid: 0x05ac,0x021a)</name>
+      <name>For MacBook family (vid/pid: 0x05ac,0x021a)</name>
       <item>
         <name>Backslash to R Bracket</name>
         <identifier>remap.backslash_to_bracket_r_0x05ac_0x021a</identifier>
@@ -42,7 +42,7 @@
     </item>
 
     <item>
-      <name>For MacBook series (vid/pid: 0x05ac,0x0218)</name>
+      <name>For MacBook family (vid/pid: 0x05ac,0x0218)</name>
       <item>
         <name>Swap Shift_L and CapsLock on the Mac's internal kbd (vid/pid: 0x05ac,0x0218)</name>
         <appendix>(*Note: You have to set Seil to remap CapsLock to ExposeAll on all kbds*)</appendix>

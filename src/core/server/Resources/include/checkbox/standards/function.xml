@@ -1291,7 +1291,7 @@
         </item>
 
         <item>
-          <name>Macbook series: Keyboard Preferences Configured to Standard Function Keys</name>
+          <name>Macbook family: Keyboard Preferences Configured to Standard Function Keys</name>
           <appendix>(Except in Virtual Machine, RDC)</appendix>
           <include path="../snippets/caution_functionkey.xml" />
           <item>
