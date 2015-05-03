@@ -751,6 +751,11 @@
         <autogen>__KeyToKey__ KeyCode::JIS_YEN, KeyCode::VK_JIS_BACKSLASH</autogen>
       </item>
       <item>
+        <name>JIS Yen(¥) to Backslash(\)</name>
+        <identifier>remap.jis_yen2backslash_always</identifier>
+        <autogen>__KeyToKey__ KeyCode::JIS_YEN, KeyCode::VK_JIS_BACKSLASH</autogen>
+      </item>
+      <item>
         <name>JIS Yen(¥) to Forward Delete</name>
         <identifier>remap.jis_yen2forwarddelete</identifier>
         <autogen>__KeyToKey__ KeyCode::JIS_YEN, KeyCode::FORWARD_DELETE</autogen>
