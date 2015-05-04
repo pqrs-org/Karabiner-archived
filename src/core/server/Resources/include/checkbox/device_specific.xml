@@ -436,6 +436,23 @@
         <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::OPTION_L,     KeyCode::F11</autogen>
         <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::OPTION_L,     KeyCode::F12</autogen>
       </item>
+      <item>
+        <name>HHKB JP + US keycap hacks</name>
+        <appendix></appendix>
+        <identifier>remap.hhkb_jp_us_keycap</identifier>
+        <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::OPTION_L,     KeyCode::F1</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_2, ModifierFlag::OPTION_L,     KeyCode::F2</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_3, ModifierFlag::OPTION_L,     KeyCode::F3</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_4, ModifierFlag::OPTION_L,     KeyCode::F4</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_5, ModifierFlag::OPTION_L,     KeyCode::F5</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::OPTION_L,     KeyCode::F6</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::OPTION_L,     KeyCode::F7</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::OPTION_L,     KeyCode::F8</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::OPTION_L,     KeyCode::F9</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::OPTION_L,     KeyCode::F10</autogen>
+        <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::OPTION_L,     KeyCode::F11</autogen>
+        <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::OPTION_L,     KeyCode::F12</autogen>
+      </item>
     </item>
 
     <item>
