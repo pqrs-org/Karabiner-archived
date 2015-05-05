@@ -5,18 +5,16 @@
 #include "ListHookedPointing.hpp"
 #include "PressDownKeys.hpp"
 #include "RemapClass.hpp"
-#include "VirtualKey.hpp"
 #include "VK_IOHIDPOSTEVENT.hpp"
+#include "VirtualKey.hpp"
 
 namespace org_pqrs_Karabiner {
 List EventOutputQueue::queue_;
 TimerWrapper EventOutputQueue::fire_timer_;
 Buttons EventOutputQueue::previousButtons_;
-uint64_t EventOutputQueue::lastProcessedEventInputQueueSerialNumber_;
 
 void EventOutputQueue::initialize(IOWorkLoop& workloop) {
   fire_timer_.initialize(&workloop, nullptr, EventOutputQueue::fire_timer_callback);
-  lastProcessedEventInputQueueSerialNumber_ = 0;
 }
 
 void EventOutputQueue::terminate(void) {
@@ -204,33 +202,6 @@ void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSo
   delay = maxDelay(delay, calcDelay(next->getParamsBase()));
 
   fire_timer_.setTimeoutMS(delay);
-}
-
-void EventOutputQueue::collapseModifierKeyUpDownEvent(void) {
-  // Find EventType::UP
-  for (Item* p = static_cast<Item*>(queue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-    auto params = (p->getParamsBase()).get_Params_KeyboardEventCallBack();
-    if (params &&
-        params->isModifier() &&
-        !params->ex_iskeydown) {
-      // `p` is modifier up event.
-      // Check next event is EventType::DOWN
-      auto next = static_cast<Item*>(p->getnext());
-      if (next &&
-          p->getEventInputQueueSerialNumber() == next->getEventInputQueueSerialNumber()) {
-#if 0
-        auto nextParams = (next->getParamsBase()).get_Params_KeyboardEventCallBack();
-        if (nextParams &&
-            params->key == nextParams->key &&
-            nextParams->ex_iskeydown) {
-          // `next` is modifier down event.
-          p->cancel();
-          next->cancel();
-        }
-#endif
-      }
-    }
-  }
 }
 
 // ======================================================================

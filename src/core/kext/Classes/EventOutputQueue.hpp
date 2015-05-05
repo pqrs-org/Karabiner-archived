@@ -99,23 +99,6 @@ public:
   static const List& getQueue(void) { return queue_; }
 
 private:
-  // Collapse continuous up,down modifier key events in the same EventInputQueue.
-  //
-  // For example, if EventInputQueue is follows,
-  //   EventOutputQueue[0]: escape up
-  //   EventOutputQueue[1]: shift up
-  //   EventOutputQueue[2]: shift down
-  //   EventOutputQueue[3]: tab down
-  // queue will be collapsed.
-  //   EventOutputQueue[0]: escape up
-  //   EventOutputQueue[1]: shift up    (canceled)
-  //   EventOutputQueue[2]: shift down  (canceled)
-  //   EventOutputQueue[3]: tab down
-  //
-  // We need to do this in order to reduce unnecessary modifier events in the same time.
-  //
-  static void collapseModifierKeyUpDownEvent(void);
-
   static void fire_timer_callback(OSObject* /* owner */, IOTimerEventSource* /* sender */);
   static unsigned int calcDelay(const Params_Base& params);
   static void push(const Params_KeyboardEventCallBack& p, AutogenId autogenId);
