@@ -219,9 +219,6 @@ void ListHookedKeyboard::Item::apply(const Params_KeyboardEventCallBack& params)
   }
 
   // ------------------------------------------------------------
-  if (RemapClassManager::remap_dropkeyafterremap(params)) return;
-
-  // ------------------------------------------------------------
   KeyboardEventCallback callback = orig_keyboardEventAction_;
   if (!callback) return;
 

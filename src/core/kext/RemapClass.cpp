@@ -84,26 +84,6 @@ void RemapClass::Item::remap(RemapParams& remapParams) {
   active_ = processor_->isActive(iskeydown);
 }
 
-bool RemapClass::Item::drop(const Params_KeyboardEventCallBack& params) {
-  if (!processor_) return false;
-
-  if (params.ex_iskeydown) {
-    if (!parent_.enabled()) return false;
-    if (isblocked()) return false;
-  } else {
-    // We ignore event if active_ is not set at KeyDown.
-    if (!active_) return false;
-    if (isblocked_keyup()) return false;
-  }
-
-  if (!processor_->drop(params)) {
-    return false;
-  }
-
-  active_ = processor_->isActive(params.ex_iskeydown);
-  return true;
-}
-
 void RemapClass::Item::cancelEventOutputQueueItems(void) {
   if (!processor_) return;
 
@@ -445,23 +425,6 @@ bool RemapClass::remap_simultaneouskeypresses(bool iskeydown, bool passThroughEn
   }
 
   return queue_changed;
-}
-
-bool RemapClass::remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled) {
-  bool dropped = false;
-
-  for (size_t i = 0; i < items_.size(); ++i) {
-    Item* p = items_[i];
-    if (p) {
-      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
-
-      if (p->drop(params)) {
-        dropped = true;
-      }
-    }
-  }
-
-  return dropped;
 }
 
 void RemapClass::cancelEventOutputQueueItems(bool passThroughEnabled) {
@@ -815,20 +778,6 @@ bool remap_simultaneouskeypresses(bool iskeydown) {
   }
 
   return queue_changed;
-}
-
-bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params) {
-  bool passThroughEnabled = isPassThroughEnabled();
-  bool dropped = false;
-
-  for (size_t i = 0; i < enabled_remapclasses_.size(); ++i) {
-    RemapClass* p = enabled_remapclasses_[i];
-    if (p) {
-      if (p->remap_dropkeyafterremap(params, passThroughEnabled)) dropped = true;
-    }
-  }
-
-  return dropped;
 }
 
 void cancelEventOutputQueueItems(void) {

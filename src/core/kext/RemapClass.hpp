@@ -21,8 +21,7 @@ public:
 
     // --------------------
     void remap(RemapParams& remapParams);
-    // for DropKeyAfterRemap
-    bool drop(const Params_KeyboardEventCallBack& params);
+    // for DropAllKeys, DropKeyAfterRemap
     void cancelEventOutputQueueItems(void);
     // for BlockUntilKeyUp
     bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
@@ -73,7 +72,6 @@ public:
   // for BlockUntilKeyUp
   bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
   bool remap_simultaneouskeypresses(bool iskeydown, bool passThroughEnabled);
-  bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params, bool passThroughEnabled);
   void cancelEventOutputQueueItems(bool passThroughEnabled);
   const char* get_statusmessage(void) const { return statusmessage_; }
   bool enabled(void) const { return enabled_; }
@@ -130,9 +128,6 @@ bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
 // If passed Params_Base is deleted by pop queue,
 // access violation will happen.
 bool remap_simultaneouskeypresses(bool iskeydown);
-
-// return true if dropped.
-bool remap_dropkeyafterremap(const Params_KeyboardEventCallBack& params);
 
 void cancelEventOutputQueueItems(void);
 
