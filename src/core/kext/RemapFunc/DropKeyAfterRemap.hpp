@@ -7,17 +7,19 @@ namespace org_pqrs_Karabiner {
 namespace RemapFunc {
 class DropKeyAfterRemap final : public RemapFuncBase {
 public:
-  DropKeyAfterRemap(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP, autogenId) {}
+  DropKeyAfterRemap(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP, autogenId),
+                                           dropped_(false) {}
 
-  bool drop(const Params_KeyboardEventCallBack& params) override;
+  void cancelEventOutputQueueItems(EventOutputQueue::Item& item) override;
 
   // ----------------------------------------
   // [0] => fromKey_
   void add(AddDataType datatype, AddValue newval) override;
 
 private:
-  FromEvent fromEvent_;
-  Vector_ModifierFlag fromModifierFlags_;
+  KeyCode key_;
+  Flags flags_;
+  bool dropped_;
 };
 }
 };
