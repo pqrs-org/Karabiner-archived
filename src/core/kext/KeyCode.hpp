@@ -110,6 +110,9 @@ public:
 
     return (value_ & bits) == bits;
   }
+  bool isOn(Flags flags) const {
+    return (*this & flags) == flags;
+  }
 
 private:
   unsigned int value_;
