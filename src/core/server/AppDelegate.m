@@ -15,7 +15,10 @@
 #import "StatusMessageManager.h"
 #import "Updater.h"
 #import "WorkSpaceData.h"
+
 #include <stdlib.h>
+#include <CoreFoundation/CoreFoundation.h>
+#include <ApplicationServices/ApplicationServices.h>
 
 @interface AppDelegate () {
   NSDictionary* focusedUIElementInformation_;
@@ -28,6 +31,8 @@
   dispatch_queue_t axnotifierManagerQueue_;
 
   struct BridgeWorkSpaceData bridgeworkspacedata_;
+
+  NSTimer* sessionCheckTimer_;
 }
 @end
 
@@ -214,26 +219,44 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
-- (void)observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
+- (BOOL)isUserActive {
+  BOOL result = NO;
+  CFDictionaryRef sessionInfoDict = CGSessionCopyCurrentDictionary();
 
-    [statusMessageManager_ resetStatusMessage];
+  if (sessionInfoDict) {
+    CFBooleanRef userIsActive = CFDictionaryGetValue(sessionInfoDict, kCGSessionOnConsoleKey);
+    if (userIsActive) {
+      result = CFBooleanGetValue(userIsActive);
+    }
+    CFRelease(sessionInfoDict);
+  }
 
-    [self registerIONotification];
-    [self registerWakeNotification];
-  });
+  return result;
 }
 
-- (void)observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification {
+- (void)sessionCheckTimerFireMethod:(NSTimer*)timer {
+  // NSWorkspaceSessionDidResignActiveNotification is sometimes ignored. (OS X bug?)
+  // Therefore, we have to check session state in timer.
+
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
+      static BOOL lastState = NO;
+      BOOL currentState = [self isUserActive];
+      if (lastState != currentState) {
+        NSLog(@"Session state has been changed. (%s)", currentState ? "active" : "inactive");
+        lastState = currentState;
 
-    [statusMessageManager_ resetStatusMessage];
+        [statusMessageManager_ resetStatusMessage];
 
-    [self unregisterIONotification];
-    [self unregisterWakeNotification];
-    [clientForKernelspace disconnect_from_kext];
+        if (currentState) {
+          [self registerIONotification];
+          [self registerWakeNotification];
+
+        } else {
+          [self unregisterIONotification];
+          [self unregisterWakeNotification];
+          [clientForKernelspace disconnect_from_kext];
+        }
+      }
   });
 }
 
@@ -298,12 +321,16 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   [preferencesManager_ load];
 
-  [self registerIONotification];
-  [self registerWakeNotification];
-
   [statusMessageManager_ setupStatusMessageManager];
   [statusbar_ refresh];
   [xmlCompiler_ reload];
+
+  sessionCheckTimer_ = [NSTimer scheduledTimerWithTimeInterval:1
+                                                        target:self
+                                                      selector:@selector(sessionCheckTimerFireMethod:)
+                                                      userInfo:nil
+                                                       repeats:YES];
+  [sessionCheckTimer_ fire];
 
   // ------------------------------------------------------------
   // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
@@ -324,17 +351,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                            selector:@selector(observer_ConfigXMLReloaded:)
                                                name:kConfigXMLReloadedNotification
                                              object:nil];
-
-  // ------------------------------
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceSessionDidBecomeActiveNotification:)
-                                                             name:NSWorkspaceSessionDidBecomeActiveNotification
-                                                           object:nil];
-
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
-                                                             name:NSWorkspaceSessionDidResignActiveNotification
-                                                           object:nil];
 
   // ------------------------------------------------------------
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
@@ -374,6 +390,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void)dealloc {
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+  [sessionCheckTimer_ invalidate];
 }
 
 // ------------------------------------------------------------
