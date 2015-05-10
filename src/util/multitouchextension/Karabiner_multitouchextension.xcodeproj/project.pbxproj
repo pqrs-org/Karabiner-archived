@@ -19,6 +19,7 @@
 		349AD37613098E7A00474EFD /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349AD37513098E7A00474EFD /* MultitouchSupport.framework */; };
 		349DCA291956B4DA00EC272A /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 349DCA281956B4DA00EC272A /* Relauncher.m */; };
 		34D94446193217400062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94445193217400062E422 /* StartAtLoginUtilities.m */; };
+		34FF3D881AFF88490031125C /* SessionObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FF3D871AFF88490031125C /* SessionObserver.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -55,6 +56,8 @@
 		34B2A68B1374629A00694134 /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../share/KarabinerKeys.h; sourceTree = "<group>"; };
 		34D94444193217400062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		34D94445193217400062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
+		34FF3D861AFF88490031125C /* SessionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionObserver.h; path = ../../share/SessionObserver.h; sourceTree = "<group>"; };
+		34FF3D871AFF88490031125C /* SessionObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionObserver.m; path = ../../share/SessionObserver.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Karabiner_multitouchextension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karabiner_multitouchextension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -170,6 +173,8 @@
 				3477DDA2194B046C00E46EDC /* MigrationUtilities.m */,
 				349DCA271956B4DA00EC272A /* Relauncher.h */,
 				349DCA281956B4DA00EC272A /* Relauncher.m */,
+				34FF3D861AFF88490031125C /* SessionObserver.h */,
+				34FF3D871AFF88490031125C /* SessionObserver.m */,
 				34D94444193217400062E422 /* StartAtLoginUtilities.h */,
 				34D94445193217400062E422 /* StartAtLoginUtilities.m */,
 			);
@@ -246,6 +251,7 @@
 				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
 				349AD35113098DD400474EFD /* KarabinerClient.m in Sources */,
 				343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */,
+				34FF3D881AFF88490031125C /* SessionObserver.m in Sources */,
 				3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */,
 				349DCA291956B4DA00EC272A /* Relauncher.m in Sources */,
 				3477DDA3194B046C00E46EDC /* MigrationUtilities.m in Sources */,
@@ -298,6 +304,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;

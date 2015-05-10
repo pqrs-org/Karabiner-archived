@@ -4,6 +4,7 @@
 #import "MigrationUtilities.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
+#import "SessionObserver.h"
 
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
@@ -11,6 +12,11 @@ static FingerStatus* lastFingerStatus_ = nil;
 static BOOL has_last_device = NO;
 static int last_device = 0;
 static NSTimer* global_timer_[MAX_FINGERS];
+
+@interface AppDelegate () {
+  SessionObserver* sessionObserver_;
+}
+@end
 
 @implementation AppDelegate
 
@@ -389,28 +395,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ----------------------------------------
-- (void)observer_NSWorkspaceSessionDidBecomeActiveNotification:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_NSWorkspaceSessionDidBecomeActiveNotification");
-    [self registerIONotification];
-    [self registerWakeNotification];
-
-    // sleep until devices are settled.
-    [NSThread sleepForTimeInterval:1.0];
-
-    [self setcallback:YES];
-  });
-}
-
-- (void)observer_NSWorkspaceSessionDidResignActiveNotification:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_NSWorkspaceSessionDidResignActiveNotification");
-    [self unregisterIONotification];
-    [self unregisterWakeNotification];
-    [self setcallback:NO];
-  });
-}
-
 - (void)distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
@@ -438,18 +422,19 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   global_ignoredAreaView_ = ignoredAreaView_;
   global_client_ = client_;
 
-  [self registerIONotification];
-  [self registerWakeNotification];
+  sessionObserver_ = [[SessionObserver alloc] init:1 active:^{
+    [self registerIONotification];
+    [self registerWakeNotification];
 
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceSessionDidBecomeActiveNotification:)
-                                                             name:NSWorkspaceSessionDidBecomeActiveNotification
-                                                           object:nil];
+    // sleep until devices are settled.
+    [NSThread sleepForTimeInterval:1.0];
 
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceSessionDidResignActiveNotification:)
-                                                             name:NSWorkspaceSessionDidResignActiveNotification
-                                                           object:nil];
+    [self setcallback:YES];
+  } inactive:^{
+    [self unregisterIONotification];
+    [self unregisterWakeNotification];
+    [self setcallback:NO];
+  }];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_kKarabinerServerDidLaunchNotification:)
