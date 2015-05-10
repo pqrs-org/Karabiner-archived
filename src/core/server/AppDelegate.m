@@ -10,6 +10,7 @@
 #import "PreferencesManager.h"
 #import "Relauncher.h"
 #import "ServerForUserspace.h"
+#import "SessionObserver.h"
 #import "StartAtLoginUtilities.h"
 #import "StatusBar.h"
 #import "StatusMessageManager.h"
@@ -17,8 +18,6 @@
 #import "WorkSpaceData.h"
 
 #include <stdlib.h>
-#include <CoreFoundation/CoreFoundation.h>
-#include <ApplicationServices/ApplicationServices.h>
 
 @interface AppDelegate () {
   NSDictionary* focusedUIElementInformation_;
@@ -32,7 +31,7 @@
 
   struct BridgeWorkSpaceData bridgeworkspacedata_;
 
-  NSTimer* sessionCheckTimer_;
+  SessionObserver* sessionObserver_;
 }
 @end
 
@@ -48,50 +47,50 @@
 // ------------------------------------------------------------
 - (void)distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [WorkSpaceData refreshEnabledInputSources];
+      [WorkSpaceData refreshEnabledInputSources];
   });
 }
 
 - (void)distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
-    [workSpaceData_ getInputSourceID:inputSource
-                  output_inputSource:(&(bridgeworkspacedata_.inputsource))
-            output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
-    [self send_workspacedata_to_kext];
+      InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
+      [workSpaceData_ getInputSourceID:inputSource
+                    output_inputSource:(&(bridgeworkspacedata_.inputsource))
+              output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
+      [self send_workspacedata_to_kext];
 
-    @synchronized(self) {
-      inputSourceInformation_ = [NSMutableDictionary new];
-      inputSourceInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
+      @synchronized(self) {
+        inputSourceInformation_ = [NSMutableDictionary new];
+        inputSourceInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
 
-      if ([inputSource languagecode]) {
-        inputSourceInformation_[@"languageCode"] = [inputSource languagecode];
+        if ([inputSource languagecode]) {
+          inputSourceInformation_[@"languageCode"] = [inputSource languagecode];
+        }
+        if ([inputSource inputSourceID]) {
+          inputSourceInformation_[@"inputSourceID"] = [inputSource inputSourceID];
+        }
+        if ([inputSource inputModeID]) {
+          inputSourceInformation_[@"inputModeID"] = [inputSource inputModeID];
+        }
       }
-      if ([inputSource inputSourceID]) {
-        inputSourceInformation_[@"inputSourceID"] = [inputSource inputSourceID];
-      }
-      if ([inputSource inputModeID]) {
-        inputSourceInformation_[@"inputModeID"] = [inputSource inputModeID];
-      }
-    }
   });
 }
 
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    // If <appdef> or <inputsourcedef> is updated,
-    // the following values might be changed.
-    // Therefore, we need to resend values to kext.
-    //
-    // - bridgeworkspacedata_.applicationtype
-    // - bridgeworkspacedata_.windowname
-    // - bridgeworkspacedata_.uielementrole
-    // - bridgeworkspacedata_.inputsource
-    // - bridgeworkspacedata_.inputsourcedetail
+      // If <appdef> or <inputsourcedef> is updated,
+      // the following values might be changed.
+      // Therefore, we need to resend values to kext.
+      //
+      // - bridgeworkspacedata_.applicationtype
+      // - bridgeworkspacedata_.windowname
+      // - bridgeworkspacedata_.uielementrole
+      // - bridgeworkspacedata_.inputsource
+      // - bridgeworkspacedata_.inputsourcedetail
 
-    [self updateFocusedUIElementInformation:nil];
-    [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
-    [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
+      [self updateFocusedUIElementInformation:nil];
+      [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
+      [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
   });
 }
 
@@ -107,15 +106,15 @@
 
 - (void)observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_NSWorkspaceDidWakeNotification");
-    [self callClearNotSave];
+      NSLog(@"observer_NSWorkspaceDidWakeNotification");
+      [self callClearNotSave];
   });
 }
 
 - (void)observer_NSWorkspaceScreensDidWakeNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_NSWorkspaceScreensDidWakeNotification");
-    [self callClearNotSave];
+      NSLog(@"observer_NSWorkspaceScreensDidWakeNotification");
+      [self callClearNotSave];
   });
 }
 
@@ -142,32 +141,32 @@
 // ------------------------------------------------------------
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_IONotification");
+      NSLog(@"observer_IONotification");
 
-    AppDelegate* self = (__bridge AppDelegate*)(refcon);
-    if (! self) {
-      NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
-      return;
-    }
+      AppDelegate* self = (__bridge AppDelegate*)(refcon);
+      if (! self) {
+        NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
+        return;
+      }
 
-    for (;;) {
-      io_object_t obj = IOIteratorNext(iterator);
-      if (! obj) break;
+      for (;;) {
+        io_object_t obj = IOIteratorNext(iterator);
+        if (! obj) break;
 
-      IOObjectRelease(obj);
-    }
-    // Do not release iterator.
+        IOObjectRelease(obj);
+      }
+      // Do not release iterator.
 
-    // = Documentation of IOKit =
-    // - Introduction to Accessing Hardware From Applications
-    //   - Finding and Accessing Devices
-    //
-    // In the case of IOServiceAddMatchingNotification, make sure you release the iterator only if you’re also ready to stop receiving notifications:
-    // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
+      // = Documentation of IOKit =
+      // - Introduction to Accessing Hardware From Applications
+      //   - Finding and Accessing Devices
+      //
+      // In the case of IOServiceAddMatchingNotification, make sure you release the iterator only if you’re also ready to stop receiving notifications:
+      // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
-    // ------------------------------------------------------------
-    [[self clientForKernelspace] refresh_connection_with_retry];
-    [self send_workspacedata_to_kext];
+      // ------------------------------------------------------------
+      [[self clientForKernelspace] refresh_connection_with_retry];
+      [self send_workspacedata_to_kext];
   });
 }
 
@@ -216,48 +215,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     return;
   }
   CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
-}
-
-// ------------------------------------------------------------
-- (BOOL)isUserActive {
-  BOOL result = NO;
-  CFDictionaryRef sessionInfoDict = CGSessionCopyCurrentDictionary();
-
-  if (sessionInfoDict) {
-    CFBooleanRef userIsActive = CFDictionaryGetValue(sessionInfoDict, kCGSessionOnConsoleKey);
-    if (userIsActive) {
-      result = CFBooleanGetValue(userIsActive);
-    }
-    CFRelease(sessionInfoDict);
-  }
-
-  return result;
-}
-
-- (void)sessionCheckTimerFireMethod:(NSTimer*)timer {
-  // NSWorkspaceSessionDidResignActiveNotification is sometimes ignored. (OS X bug?)
-  // Therefore, we have to check session state in timer.
-
-  dispatch_async(dispatch_get_main_queue(), ^{
-      static BOOL lastState = NO;
-      BOOL currentState = [self isUserActive];
-      if (lastState != currentState) {
-        NSLog(@"Session state has been changed. (%s)", currentState ? "active" : "inactive");
-        lastState = currentState;
-
-        [statusMessageManager_ resetStatusMessage];
-
-        if (currentState) {
-          [self registerIONotification];
-          [self registerWakeNotification];
-
-        } else {
-          [self unregisterIONotification];
-          [self unregisterWakeNotification];
-          [clientForKernelspace disconnect_from_kext];
-        }
-      }
-  });
 }
 
 // ------------------------------------------------------------
@@ -325,12 +282,16 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [statusbar_ refresh];
   [xmlCompiler_ reload];
 
-  sessionCheckTimer_ = [NSTimer scheduledTimerWithTimeInterval:1
-                                                        target:self
-                                                      selector:@selector(sessionCheckTimerFireMethod:)
-                                                      userInfo:nil
-                                                       repeats:YES];
-  [sessionCheckTimer_ fire];
+  sessionObserver_ = [[SessionObserver alloc] init:1 active:^{
+      [statusMessageManager_ resetStatusMessage];
+      [self registerIONotification];
+      [self registerWakeNotification];
+  } inactive:^{
+      [statusMessageManager_ resetStatusMessage];
+      [self unregisterIONotification];
+      [self unregisterWakeNotification];
+      [clientForKernelspace disconnect_from_kext];
+  }];
 
   // ------------------------------------------------------------
   // We need to speficy NSNotificationSuspensionBehaviorDeliverImmediately for NSDistributedNotificationCenter
@@ -390,8 +351,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (void)dealloc {
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-  [sessionCheckTimer_ invalidate];
 }
 
 // ------------------------------------------------------------
@@ -431,31 +390,31 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (void)launchNewAXNotifier {
   dispatch_sync(axnotifierManagerQueue_, ^{
-    NSString* path = [self AXNotifierPath];
-    NSURL* url = [NSURL fileURLWithPath:path];
-    // Set NSWorkspaceLaunchNewInstance because
-    // AXNotifier might be running (terminating) immediately after terminateAXNotifier.
-    NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault | NSWorkspaceLaunchNewInstance;
-    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
-                                                  options:options
-                                            configuration:nil
-                                                    error:nil];
+      NSString* path = [self AXNotifierPath];
+      NSURL* url = [NSURL fileURLWithPath:path];
+      // Set NSWorkspaceLaunchNewInstance because
+      // AXNotifier might be running (terminating) immediately after terminateAXNotifier.
+      NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault | NSWorkspaceLaunchNewInstance;
+      [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
+                                                    options:options
+                                              configuration:nil
+                                                      error:nil];
   });
 }
 
 - (void)terminateAXNotifiers {
   dispatch_sync(axnotifierManagerQueue_, ^{
-    NSString* path = [self AXNotifierPath];
-    NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
+      NSString* path = [self AXNotifierPath];
+      NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
 
-    // If Karabiner has been moved into /Applications/Utilities, bundleIdentifier will be nil.
+      // If Karabiner has been moved into /Applications/Utilities, bundleIdentifier will be nil.
 
-    if (bundleIdentifier) {
-      NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
-      for (NSRunningApplication* runningApplication in applications) {
-        [runningApplication terminate];
+      if (bundleIdentifier) {
+        NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
+        for (NSRunningApplication* runningApplication in applications) {
+          [runningApplication terminate];
+        }
       }
-    }
   });
 }
 
