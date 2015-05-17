@@ -76,6 +76,7 @@ bool VirtualKey::VK_CONFIG::handle(const Params_KeyboardEventCallBack& params, A
       } else {
         remapclass->setEnabled(false);
       }
+      EventOutputQueue::FireModifiers::fire(autogenId);
       goto refresh;
     }
   }
