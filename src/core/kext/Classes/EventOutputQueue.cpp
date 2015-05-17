@@ -278,7 +278,85 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
     return;
   }
 
-  FireModifiers::fire(autogenId, newflags, params.keyboardType);
+  // Keep last modifier flags at EventType::UP to avoid unnecessary modifier events.
+  //
+  // For example, consider these rules:
+  //
+  //   * Change Shift-N to Control-N
+  //   * Change Shift-P to Control-P
+  //
+  // Case 1:
+  //   Actual input:
+  //     1. shift down
+  //     2. p down
+  //     3. p up
+  //     4. n down
+  //     5. n up
+  //     6. shift up
+  //
+  //   Desirable results:
+  //     1. shift down
+  //     2. shift up, control down, p down
+  //     3. p up
+  //     4. n down
+  //     5. n up
+  //     6. control up
+  //
+  //
+  // Case 2:
+  //   Actual input:
+  //     1. shift down
+  //     2. p down
+  //     3. command down
+  //     4. p up
+  //     5. shift up
+  //     6. command up
+  //
+  //   Desirable results:
+  //     1. shift down
+  //     2. shift up, control down, p down
+  //     3. control up, command down, shift down (== shift-command)
+  //     4. p up
+  //     5. shift up
+  //     6. command up
+  //
+  //
+  // Case 3:
+  //   Actual input:
+  //     1. shift down
+  //     2. p down
+  //     3. shift up
+  //     4. p up
+  //
+  //   Desirable results:
+  //     1. shift down
+  //     2. shift up, control down, p down
+  //     3. control up
+  //     4. p up
+  //
+  //
+  // Case 4:
+  //   Actual input:
+  //     1. shift down
+  //     2. e down
+  //     3. p down
+  //     4. e up
+  //     5. p up
+  //     6. shift up
+  //
+  //   Desirable results:
+  //     1. shift down
+  //     2. e down
+  //     3. shift up, control down, p down
+  //     4. e up
+  //     5. p up
+  //     6. control up
+
+  if (params.eventType == EventType::UP) {
+    newflags = FireModifiers::getLastFlags();
+  } else {
+    FireModifiers::fire(autogenId, newflags, params.keyboardType);
+  }
 
   if (params.eventType == EventType::DOWN || params.eventType == EventType::UP) {
     Params_KeyboardEventCallBack p(params.eventType, newflags, newkeycode,
