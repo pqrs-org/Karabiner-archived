@@ -367,17 +367,30 @@ bool KeyToKey::remap(RemapParams& remapParams) {
 
     } else {
       if (isLastToEventModifierKey || isLastToEventLikeModifier) {
-        // For Lazy-Modifiers (KeyCode::VK_LAZY_*),
-        // we need to handle these keys before restoring pureFromModifierFlags_, lastKeyFlags and lastKeyModifierFlag.
-        // The unnecessary modifier events occur unless we do it.
-        if (isLastToEventLikeModifier) {
-          lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, false);
-        }
-
         FlagStatus::globalFlagStatus().decrease(lastToEventModifierFlag, lastToEvent.getModifierFlags());
         FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
+
+        // We decrease pureFromModifierFlags_ temporarily to reduce unnecessary modifier events.
+        //
+        // For example, "change shift-option to command" by this autogen.
+        //    <autogen>
+        //      __KeyToKey__
+        //      KeyCode::OPTION_L, ModifierFlag::SHIFT_L,
+        //      KeyCode::COMMAND_L,
+        //    </autogen>
+        //
+        // When we press keys by this procedure in order to send COMMAND_L twice,
+        // we should not restore SHIFT_L when OPTION_L is up.
+        //
+        //   1. SHIFT_L down
+        //   2. OPTION_L down   (-> SHIFT_L up, COMMAND_L down)
+        //   3. OPTION_L up     (-> COMMAND_L up)
+        //   4. OPTION_L down   (-> COMMAND_L down)
+        //   5. OPTION_L up     (-> COMMAND_L up)
+        //
         FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
-        EventOutputQueue::FireModifiers::fire(autogenId_);
+
+        lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, false);
 
       } else {
         if (KeyboardRepeat::getID() == keyboardRepeatID_) {
