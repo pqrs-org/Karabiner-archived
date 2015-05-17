@@ -99,7 +99,6 @@ refresh:
   }
 
 finish:
-  EventOutputQueue::FireModifiers::fire(autogenId);
   return true;
 }
 
