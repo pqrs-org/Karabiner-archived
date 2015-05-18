@@ -586,4 +586,9 @@
     <prefix>com.jetbrains.intellij</prefix>
   </appdef>
 
+  <appdef>
+    <appname>SKIM</appname>
+    <equal>net.sourceforge.skim-app.skim</equal>
+  </appdef>
+
 </root>

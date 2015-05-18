@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Enable at only Skim</name>
+
+    <item>
+      <name>Fix Skim.app navigation</name>
+      <appendix>* Enable the space key navigation.</appendix>
+      <appendix>* Invert page up and page down.</appendix>
+      <identifier>remap.skim_navfix</identifier>
+      <only>SKIM</only>
+      <uielementrole_only>AXTextArea</uielementrole_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SPACE,
+        KeyCode::CURSOR_DOWN
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        FROMKEYCODE_PAGEUP,
+        KeyCode::CURSOR_DOWN, ModifierFlag::FN
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        FROMKEYCODE_PAGEDOWN,
+        KeyCode::CURSOR_UP, ModifierFlag::FN
+      </autogen>
+    </item>
+  </item>
+
+</root>

@@ -93,6 +93,7 @@
     <include path="include/checkbox/apps/digitalcolor_meter.xml" />
     <include path="include/checkbox/apps/vnc.xml" />
     <include path="include/checkbox/apps/mucommander.xml" />
+    <include path="include/checkbox/apps/skim.xml" />
   </item>
 
   <include path="include/checkbox/keyboard_layouts.xml" />
