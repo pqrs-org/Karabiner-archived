@@ -45,7 +45,7 @@ KEY_9 0x19
 // ----------------------------------------
 // symbol
 
-BACKQUOTE     0x32
+BACKQUOTE     0x32 // also known as grave accent or backtick
 BACKSLASH     0x2a
 BRACKET_LEFT  0x21
 BRACKET_RIGHT 0x1e
