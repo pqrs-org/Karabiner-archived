@@ -45,6 +45,7 @@ KEY_9 0x19
 // ----------------------------------------
 // symbol
 
+// BACKQUOTE is also known as grave accent or backtick.
 BACKQUOTE     0x32
 BACKSLASH     0x2a
 BRACKET_LEFT  0x21
