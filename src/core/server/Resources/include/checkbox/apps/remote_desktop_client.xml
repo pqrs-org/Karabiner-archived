@@ -23,7 +23,7 @@
 
         Option::KEYTOKEY_AFTER_KEYUP,
         KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
-        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
+        KeyCode::VK_LOCK_OPTION_L_FORCE_OFF,
       </autogen>
       <autogen>
         __KeyOverlaidModifier__
@@ -39,13 +39,14 @@
 
         Option::KEYTOKEY_AFTER_KEYUP,
         KeyCode::VK_NEGATIVE_LOCK_ALL_FORCE_OFF,
-        KeyCode::VK_STICKY_OPTION_L_FORCE_OFF,
+        KeyCode::VK_LOCK_OPTION_L_FORCE_OFF,
       </autogen>
       <autogen>
         __KeyToKey__
         KeyCode::TAB, ModifierFlag::RDC_COMMAND,
         KeyCode::TAB, ModifierFlag::OPTION_L | ModifierFlag::RDC_COMMAND,
-        KeyCode::VK_STICKY_OPTION_L_FORCE_ON,
+        <!-- Use lock to enable arrow keys in command-tab -->
+        KeyCode::VK_LOCK_OPTION_L_FORCE_ON,
 
         Option::KEYTOKEY_BEFORE_KEYDOWN,
         KeyCode::VK_NEGATIVE_LOCK_CONTROL_L_FORCE_ON,
