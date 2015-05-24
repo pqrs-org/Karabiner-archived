@@ -426,4 +426,11 @@
     </url>
   </vkopenurldef>
 
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_JXA_keystroke_HelloWorld</name>
+    <url type="shell">
+      osascript -l JavaScript -e "Application('System Events').keystroke('Hello World');"
+    </url>
+  </vkopenurldef>
+
 </root>
