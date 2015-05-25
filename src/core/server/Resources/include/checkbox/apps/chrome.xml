@@ -36,6 +36,18 @@
     </item>
 
     <item>
+      <name>Disable Close Tab shortcut (command-w) on Google Calendar.</name>
+      <identifier>remap.app_google_chrome_disable_close_tab_on_google_calendar</identifier>
+      <only>GOOGLE_CHROME</only>
+      <windowname_only>Google_Calendar</windowname_only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+      </autogen>
+    </item>
+
+    <item>
       <name>Disable Close Tab shortcut (command-w) on Google Translate.</name>
       <identifier>remap.app_google_chrome_disable_close_tab_on_google_translate</identifier>
       <only>GOOGLE_CHROME</only>

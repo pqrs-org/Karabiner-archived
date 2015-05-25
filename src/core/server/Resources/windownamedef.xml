@@ -26,6 +26,16 @@
   </windownamedef>
 
   <windownamedef>
+    <name>Google_Calendar</name>
+    <regex>^Google Calendar$</regex>   <!-- https://www.google.com/calendar?hl=en -->
+    <regex>^Google Kalender$</regex>   <!-- https://www.google.com/calendar?hl=de -->
+    <regex>^Google Agenda$</regex>     <!-- https://www.google.com/calendar?hl=fr -->
+    <regex>^Google Calendar$</regex>   <!-- https://www.google.com/calendar?hl=it -->
+    <regex>^Google カレンダー$</regex> <!-- https://www.google.com/calendar?hl=ja -->
+    <regex>^Календарь Google$</regex>  <!-- https://www.google.com/calendar?hl=ru -->
+  </windownamedef>
+
+  <windownamedef>
     <name>Launchpad</name>
     <regex>^Launchpad$</regex>
   </windownamedef>
