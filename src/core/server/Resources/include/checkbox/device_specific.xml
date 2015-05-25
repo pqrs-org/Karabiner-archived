@@ -444,6 +444,64 @@
         <autogen>__KeyToKey__ KeyCode::JIS_YEN, KeyCode::BACKSLASH</autogen>
         <autogen>__KeyToKey__ KeyCode::DELETE, KeyCode::BACKQUOTE</autogen>
       </item>
+
+      <item>
+        <name>Remappings for Happy Hacking Professional</name>
+        <item>
+          <name>Change backslash to `</name>
+          <identifier>remap.hhkbpro_swap_backslash_and_backtick</identifier>
+          <autogen>
+            __KeyToKey__
+            KeyCode::BACKSLASH,
+            KeyCode::BACKQUOTE
+          </autogen>
+        </item>
+        <item>
+          <name>Shift + ESC to ~</name>
+          <identifier>remap.hhkbpro_swap_shirf_esc_to_tilde</identifier>
+          <autogen>
+            __KeyToKey__
+            KeyCode::ESCAPE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+            KeyCode::BACKQUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          </autogen>
+        </item>
+        <item>
+          <name>Command + ESC to `</name>
+          <identifier>remap.hhkbpro_swap_command_esc_to_backtick</identifier>
+          <autogen>
+            __KeyToKey__
+            KeyCode::ESCAPE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+            KeyCode::BACKQUOTE
+          </autogen>
+        </item>
+        <item>
+          <name>Change ` to DEL</name>
+          <identifier>remap.hhkbpro_swap_backtick_to_delete</identifier>
+          <autogen>
+            __KeyToKey__
+            KeyCode::BACKQUOTE,
+            KeyCode::DELETE
+          </autogen>
+        </item>
+        <item>
+          <name>Change Shift+DEL to Pipe (|)</name>
+          <identifier>remap.hhkbpro_swap_shiftdelete_to_pipe</identifier>
+          <autogen>
+            __KeyToKey__
+            KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+            KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          </autogen>
+        </item>
+        <item>
+          <name>Change DEL to Backslash</name>
+          <identifier>remap.hhkbpro_swap_delete_to_backslash</identifier>
+          <autogen>
+            __KeyToKey__
+            KeyCode::DELETE,
+            KeyCode::BACKSLASH
+          </autogen>
+        </item>
+      </item>
     </item>
 
     <item>
