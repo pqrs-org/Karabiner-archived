@@ -62,4 +62,10 @@ private:
   uint64_t value_;
 };
 
+enum class PhysicalEventType {
+  DOWN,
+  UP,
+  // We do not provide PhysicalEventType::MODIFY. Use DOWN or UP for modifier events.
+};
+
 #endif
