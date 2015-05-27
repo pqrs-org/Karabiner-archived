@@ -591,4 +591,10 @@
     <equal>net.sourceforge.skim-app.skim</equal>
   </appdef>
 
+  <!-- fallback -->
+  <appdef>
+    <appname>JavaApps</appname>
+    <prefix>com.jetbrains.</prefix>
+  </appdef>
+
 </root>
