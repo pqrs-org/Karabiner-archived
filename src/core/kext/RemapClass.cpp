@@ -741,7 +741,7 @@ void remap_forcenumlockon(ListHookedKeyboard::Item* item) {
   CALL_REMAPCLASS_FUNC(remap_forcenumlockon, item);
 }
 
-void remap(RemapParams& remapParams) {
+void remap(RemapParams& remapParams, PhysicalEventType physicalEventType) {
   bool passThroughEnabled = isPassThroughEnabled();
   CALL_REMAPCLASS_FUNC(remap, remapParams);
 }
@@ -828,7 +828,7 @@ void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
   }
 }
 
-void prepare(RemapParams& remapParams) {
+void prepare(RemapParams& remapParams, PhysicalEventType physicalEventType) {
   // VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::needToDrop will be set in KeyToKey::prepare.
   // If needToDrop is set in prepare, we should ignore this event.
   // So, set remapParams.isremapped true when needToDrop is set.

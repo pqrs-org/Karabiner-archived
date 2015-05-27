@@ -174,6 +174,10 @@ void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_KeyboardEventCallBack();
   if (!params) return;
 
+  PhysicalEventType physicalEventType = PhysicalEventType::UP;
+  if (params->ex_iskeydown) {
+    physicalEventType = PhysicalEventType::DOWN;
+  }
   RemapParams remapParams(*params);
 
   // Call `prepare` before FlagStatus::set.
@@ -193,11 +197,11 @@ void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   // If we call prepare after FlagStatus::set,
   // `shift-a` will be sent. It's not intended.
 
-  RemapClassManager::prepare(remapParams);
+  RemapClassManager::prepare(remapParams, physicalEventType);
 
   FlagStatus::globalFlagStatus().set(params->key, params->flags);
 
-  RemapClassManager::remap(remapParams);
+  RemapClassManager::remap(remapParams, physicalEventType);
 
   // ------------------------------------------------------------
   if (!remapParams.isremapped) {
@@ -223,9 +227,13 @@ void remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_KeyboardSpecialEventCallback();
   if (!params) return;
 
+  PhysicalEventType physicalEventType = PhysicalEventType::UP;
+  if (params->ex_iskeydown) {
+    physicalEventType = PhysicalEventType::DOWN;
+  }
   RemapParams remapParams(*params);
-  RemapClassManager::prepare(remapParams);
-  RemapClassManager::remap(remapParams);
+  RemapClassManager::prepare(remapParams, physicalEventType);
+  RemapClassManager::remap(remapParams, physicalEventType);
 
   // ----------------------------------------
   if (!remapParams.isremapped) {
@@ -250,9 +258,14 @@ void remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
 
   ButtonStatus::set(params->ex_button, params->ex_isbuttondown);
 
+  PhysicalEventType physicalEventType = PhysicalEventType::UP;
+  if (params->ex_button != PointingButton::NONE &&
+      params->ex_isbuttondown) {
+    physicalEventType = PhysicalEventType::DOWN;
+  }
   RemapParams remapParams(*params);
-  RemapClassManager::prepare(remapParams);
-  RemapClassManager::remap(remapParams);
+  RemapClassManager::prepare(remapParams, physicalEventType);
+  RemapClassManager::remap(remapParams, physicalEventType);
 
   // ------------------------------------------------------------
   if (!remapParams.isremapped) {
@@ -268,9 +281,10 @@ void remap_ScrollWheelEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_ScrollWheelEventCallback();
   if (!params) return;
 
+  PhysicalEventType physicalEventType = PhysicalEventType::DOWN;
   RemapParams remapParams(*params);
-  RemapClassManager::prepare(remapParams);
-  RemapClassManager::remap(remapParams);
+  RemapClassManager::prepare(remapParams, physicalEventType);
+  RemapClassManager::remap(remapParams, physicalEventType);
 
   if (!remapParams.isremapped) {
     EventOutputQueue::FireScrollWheel::fire(*params, AutogenId::maxValue());
