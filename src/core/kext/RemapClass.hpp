@@ -115,7 +115,7 @@ void refresh(void);
 
 void remap_setkeyboardtype(KeyboardType& keyboardType);
 void remap_forcenumlockon(ListHookedKeyboard::Item* item);
-void remap(RemapParams& remapParams, PhysicalEventType physicalEventType);
+void remap(RemapParams& remapParams);
 
 // for BlockUntilKeyUp
 bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
@@ -148,7 +148,7 @@ private:
 
 void registerPrepareTargetItem(RemapFunc::RemapFuncBase* processor);
 void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor);
-void prepare(RemapParams& remapParams, PhysicalEventType physicalEventType);
+void prepare(RemapParams& remapParams);
 }
 }
 

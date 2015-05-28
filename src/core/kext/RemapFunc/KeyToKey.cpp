@@ -464,7 +464,7 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
   }
 }
 
-bool KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType) {
+bool KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType, PhysicalEventType physicalEventType) {
   bool result = false;
 
   // ----------------------------------------
@@ -480,7 +480,7 @@ bool KeyToKey::call_remap_with_VK_PSEUDO_KEY(EventType eventType) {
                                       KeyCode::VK_PSEUDO_KEY,
                                       CommonData::getcurrent_keyboardType(),
                                       false);
-  RemapParams rp(params);
+  RemapParams rp(params, physicalEventType);
   result = remap(rp);
 
   return result;

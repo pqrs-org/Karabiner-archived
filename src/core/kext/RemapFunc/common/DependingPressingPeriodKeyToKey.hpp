@@ -216,6 +216,7 @@ private:
   EventWatcher::Target eventWatcherTarget_;
   IntervalChecker ic_;
   int keyboardRepeatID_;
+  PhysicalEventType lastPhysicalEventType_;
 
   bool interruptibleByScrollWheel_;
 };

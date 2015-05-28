@@ -140,6 +140,7 @@ DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(RemapFunc::Rema
                                                                                                                                    {autogenId}},
                                                                                                                          beforeAfterKeys_(autogenId),
                                                                                                                          keyboardRepeatID_(0),
+                                                                                                                         lastPhysicalEventType_(PhysicalEventType::DOWN),
                                                                                                                          interruptibleByScrollWheel_(true) {
   for (size_t i = 0; i < KeyToKeyType::END_; ++i) {
     keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
@@ -200,6 +201,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
       }
 
       remapParams.isremapped = true;
+      lastPhysicalEventType_ = remapParams.physicalEventType;
 
       if (iskeydown) {
         target_ = this;
@@ -209,7 +211,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
         FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
         FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
-        beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+        beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
 
         // We need save FlagStatus at keydown.
         // For example, "Change Space to Shift_L" is enabled,
@@ -244,7 +246,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
 
         FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
 
-        beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+        beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
 
         RemapClassManager::unregisterPrepareTargetItem(owner_);
       }
@@ -270,7 +272,7 @@ void DependingPressingPeriodKeyToKey::dokeydown(RemapParams& remapParams) {
     {
       FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
 
-      keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+      keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
 
       // Call prepare in order to cancel delayed action.
       //
@@ -304,13 +306,13 @@ void DependingPressingPeriodKeyToKey::dokeyup(void) {
   switch (periodtype_) {
   case PeriodType::SHORT_PERIOD: {
     periodtype_ = PeriodType::NONE;
-    keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+    keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
     break;
   }
 
   case PeriodType::LONG_PERIOD: {
     periodtype_ = PeriodType::NONE;
-    keytokey_[KeyToKeyType::LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+    keytokey_[KeyToKeyType::LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
 
     // ----------------------------------------
     // handle PRESSING_TARGET_KEY_ONLY
@@ -319,8 +321,8 @@ void DependingPressingPeriodKeyToKey::dokeyup(void) {
           ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
         FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
 
-        keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-        keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+        keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, lastPhysicalEventType_);
+        keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
       }
     }
 
@@ -329,7 +331,7 @@ void DependingPressingPeriodKeyToKey::dokeyup(void) {
 
   case PeriodType::LONG_LONG_PERIOD: {
     periodtype_ = PeriodType::NONE;
-    keytokey_[KeyToKeyType::LONG_LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+    keytokey_[KeyToKeyType::LONG_LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
     break;
   }
 
@@ -350,7 +352,7 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
 
     {
       FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
-      (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+      (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, target_->lastPhysicalEventType_);
     }
 
     (target_->eventWatcherTarget_).observe();
@@ -370,7 +372,7 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
     // we cancel LONG_LONG_PERIOD event.
     bool isKeyboardRepeatCanceled = (target_->keyboardRepeatID_ != KeyboardRepeat::getID());
 
-    (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+    (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::UP, target_->lastPhysicalEventType_);
 
     if (isKeyboardRepeatCanceled) {
       target_->periodtype_ = PeriodType::NONE;
@@ -380,7 +382,7 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
 
       {
         FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
-        (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+        (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, target_->lastPhysicalEventType_);
       }
     }
 

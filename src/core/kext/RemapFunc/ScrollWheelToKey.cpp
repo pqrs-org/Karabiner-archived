@@ -103,8 +103,8 @@ bool ScrollWheelToKey::remap(RemapParams& remapParams) {
   isContinuousScrollEventRemapped_ = true;
 
   if (keyrepeat_ic_.getmillisec() > static_cast<uint32_t>(Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_scrollwheeltokey_keyrepeat_wait))) {
-    keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-    keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+    keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+    keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
 
     keyrepeat_ic_.begin();
   }

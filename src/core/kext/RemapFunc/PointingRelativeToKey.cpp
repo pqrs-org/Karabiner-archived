@@ -98,8 +98,8 @@ bool PointingRelativeToKey::remap(RemapParams& remapParams) {
     }
 
     if (keytokey_index != KEYTOKEY__END__) {
-      keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-      keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+      keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+      keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
       // clear temporary flags.
       FlagStatus::globalFlagStatus().set();
 

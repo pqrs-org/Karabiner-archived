@@ -108,8 +108,8 @@ bool DoublePressModifier::remap(RemapParams& remapParams) {
 
       // clear temporary flags.
       FlagStatus::globalFlagStatus().set();
-      keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-      keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+      keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+      keytokey_fire_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
     }
   }
 

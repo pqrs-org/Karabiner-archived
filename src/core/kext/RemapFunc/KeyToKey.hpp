@@ -41,7 +41,7 @@ public:
   void add(KeyCode newval) { add(AddDataType(BRIDGE_DATATYPE_KEYCODE), AddValue(newval.get())); }
   void add(Option newval) { add(AddDataType(BRIDGE_DATATYPE_OPTION), AddValue(newval.get())); }
 
-  bool call_remap_with_VK_PSEUDO_KEY(EventType eventType);
+  bool call_remap_with_VK_PSEUDO_KEY(EventType eventType, PhysicalEventType physicalEventType);
 
   size_t toKeysSize(void) const { return toKeys_.size(); }
   void clearToKeys(void);

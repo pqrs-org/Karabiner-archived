@@ -151,8 +151,8 @@ bool PointingRelativeToScroll::remap(RemapParams& remapParams) {
         if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
           // Fire by a click event.
           if (isToKeysDefined_) {
-            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
 
           } else {
             toEvent_.fire_downup(autogenId_);

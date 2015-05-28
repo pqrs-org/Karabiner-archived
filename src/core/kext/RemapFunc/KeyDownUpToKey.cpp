@@ -80,10 +80,10 @@ void KeyDownUpToKey::prepare(RemapParams& remapParams) {
   bool iskeydown = false;
   if (remapParams.paramsBase.iskeydown(iskeydown)) {
     if (keytokey_from_.remap(remapParams)) {
-      keytokey_downup_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
-      keytokey_downup_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+      keytokey_downup_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+      keytokey_downup_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
     } else {
-      keytokey_interrupted_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN);
+      keytokey_interrupted_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
       interrupted_ = true;
     }
     RemapClassManager::unregisterPrepareTargetItem(this);
@@ -95,7 +95,7 @@ bool KeyDownUpToKey::remap(RemapParams& remapParams) {
 
   if (interrupted_) {
     interrupted_ = false;
-    keytokey_interrupted_.call_remap_with_VK_PSEUDO_KEY(EventType::UP);
+    keytokey_interrupted_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
   }
 
   if (keytokey_from_.isPressing()) {
