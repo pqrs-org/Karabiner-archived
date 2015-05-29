@@ -244,7 +244,7 @@ void remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
                                           params->guid,
                                           false);
     KeyboardRepeat::set(p, AutogenId::maxValue());
-    EventOutputQueue::FireConsumer::fire(p, AutogenId::maxValue());
+    EventOutputQueue::FireConsumer::fire(p, AutogenId::maxValue(), physicalEventType);
   }
 
   resetWhenPressingPhysicalKeysIsEmpty();

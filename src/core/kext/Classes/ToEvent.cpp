@@ -42,7 +42,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId, Physic
                                                flags,
                                                consumer_,
                                                false);
-    EventOutputQueue::FireConsumer::fire(params, autogenId);
+    EventOutputQueue::FireConsumer::fire(params, autogenId, physicalEventType);
     if (add_to_keyrepeat) {
       KeyboardRepeat::set(params, autogenId, delayUntilRepeat, keyRepeat);
     }
@@ -114,10 +114,10 @@ void ToEvent::fire_downup(AutogenId autogenId, PhysicalEventType physicalEventTy
   case Type::CONSUMER_KEY: {
     Flags flags = FlagStatus::globalFlagStatus().makeFlags();
 
-#define CALL_FIRECONSUMER_FIRE(params)                     \
-  EventOutputQueue::FireConsumer::fire(params, autogenId); \
-  if (add_to_keyrepeat) {                                  \
-    KeyboardRepeat::primitive_add(params);                 \
+#define CALL_FIRECONSUMER_FIRE(params)                                        \
+  EventOutputQueue::FireConsumer::fire(params, autogenId, physicalEventType); \
+  if (add_to_keyrepeat) {                                                     \
+    KeyboardRepeat::primitive_add(params);                                    \
   }
 
     {

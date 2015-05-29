@@ -184,7 +184,8 @@ void KeyboardRepeat::fire_timer_callback(OSObject* owner, IOTimerEventSource* se
                   params->flags,
                   params->key,
                   queue_.size() == 1 ? true : false),
-              autogenId_);
+              autogenId_,
+              PhysicalEventType::DOWN);
         }
       }
 

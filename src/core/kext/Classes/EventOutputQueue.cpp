@@ -375,7 +375,7 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
 }
 
 // ======================================================================
-void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params, AutogenId autogenId) {
+void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallback& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   // skip no-outputable keycodes.
   // Note: check before FireModifiers to avoid meaningless modifier event.
   if (params.key == ConsumerKeyCode::VK_NONE ||

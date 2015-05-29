@@ -39,7 +39,7 @@ public:
 
   class FireConsumer final {
   public:
-    static void fire(const Params_KeyboardSpecialEventCallback& params, AutogenId autogenId);
+    static void fire(const Params_KeyboardSpecialEventCallback& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   };
 
   class FireRelativePointer final {
