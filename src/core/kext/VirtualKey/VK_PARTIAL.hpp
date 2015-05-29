@@ -10,7 +10,7 @@ class VK_PARTIAL final {
 public:
   static void initialize(void);
   static void terminate(void);
-  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
+  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
 
 private:
   class Item final : public List::Item {

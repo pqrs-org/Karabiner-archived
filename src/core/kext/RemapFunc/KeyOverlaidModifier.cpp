@@ -1,6 +1,5 @@
 #include <IOKit/IOLib.h>
 
-#include "../VirtualKey/VK_LAZY.hpp"
 #include "Config.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyOverlaidModifier.hpp"

@@ -9,7 +9,7 @@ public:
   static void terminate(void);
   static void reset(void);
 
-  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
+  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   static bool isKeyLikeModifier(KeyCode keycode);
 
 private:

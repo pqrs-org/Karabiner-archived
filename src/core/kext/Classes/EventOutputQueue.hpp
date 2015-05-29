@@ -34,7 +34,7 @@ public:
 
   class FireKey final {
   public:
-    static void fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
+    static void fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   };
 
   class FireConsumer final {

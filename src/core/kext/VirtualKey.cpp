@@ -41,50 +41,50 @@ void VirtualKey::reset(void) {
   VirtualKey::VK_MOUSEKEY::reset();
 }
 
-bool VirtualKey::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
-  if (VirtualKey::VK_CONFIG::handle(params, autogenId)) {
+bool VirtualKey::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
+  if (VirtualKey::VK_CONFIG::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_CONSUMERKEY::handle(params, autogenId)) {
+  if (VirtualKey::VK_CONSUMERKEY::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_DEFINED_IN_USERSPACE::handle(params, autogenId)) {
+  if (VirtualKey::VK_DEFINED_IN_USERSPACE::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_IOHIDPOSTEVENT::handle(params, autogenId)) {
+  if (VirtualKey::VK_IOHIDPOSTEVENT::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK::handle(params, autogenId)) {
+  if (VirtualKey::VK_IOHIKEYBOARD_TOGGLE_NUMLOCK::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::handle(params, autogenId)) {
+  if (VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_LAZY::handle(params, autogenId)) {
+  if (VirtualKey::VK_LAZY::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_LOCK::handle(params, autogenId)) {
+  if (VirtualKey::VK_LOCK::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_MOUSEKEY::handle(params, autogenId)) {
+  if (VirtualKey::VK_MOUSEKEY::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_PARTIAL::handle(params, autogenId)) {
+  if (VirtualKey::VK_PARTIAL::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_STICKY::handle(params, autogenId)) {
+  if (VirtualKey::VK_STICKY::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_WAIT::handle(params, autogenId)) {
+  if (VirtualKey::VK_WAIT::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_JIS_BACKSLASH::handle(params, autogenId)) {
+  if (VirtualKey::VK_JIS_BACKSLASH::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params, autogenId)) {
+  if (VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(params, autogenId, physicalEventType)) {
     return true;
   }
-  if (VirtualKey::VK_JIS_YEN::handle(params, autogenId)) {
+  if (VirtualKey::VK_JIS_YEN::handle(params, autogenId, physicalEventType)) {
     return true;
   }
   return false;

@@ -14,7 +14,7 @@ void VirtualKey::VK_PARTIAL::terminate(void) {
   changedKeyCodes_.clear();
 }
 
-bool VirtualKey::VK_PARTIAL::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_PARTIAL::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   // ------------------------------------------------------------
   // Process VK_PARTIAL
   if (params.key == KeyCode::VK_PARTIAL_KEYDOWN ||
@@ -45,7 +45,7 @@ bool VirtualKey::VK_PARTIAL::handle(const Params_KeyboardEventCallBack& params, 
                                    params.origCharSet,
                                    params.keyboardType,
                                    params.repeat);
-    EventOutputQueue::FireKey::fire(p, autogenId);
+    EventOutputQueue::FireKey::fire(p, autogenId, physicalEventType);
 
     // We need to register a key for changedKeyCodes_ after EventOutputQueue::FireKey::fire
     // because changedKeyCodes_ blocks key events.

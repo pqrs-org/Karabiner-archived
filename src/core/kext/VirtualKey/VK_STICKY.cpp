@@ -6,7 +6,7 @@
 #include "VK_STICKY.hpp"
 
 namespace org_pqrs_Karabiner {
-bool VirtualKey::VK_STICKY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_STICKY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   bool isFirstKeyDownEvent = (params.ex_iskeydown && params.repeat == false);
 
   {

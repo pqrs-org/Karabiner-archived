@@ -258,8 +258,8 @@ void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, Flags toFlags, K
 }
 
 // ======================================================================
-void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
-  if (VirtualKey::handle(params, autogenId)) return;
+void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
+  if (VirtualKey::handle(params, autogenId, physicalEventType)) return;
 
   // ------------------------------------------------------------
   KeyCode newkeycode = params.key;

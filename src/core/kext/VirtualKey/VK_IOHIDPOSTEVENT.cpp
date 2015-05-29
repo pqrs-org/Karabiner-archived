@@ -5,7 +5,7 @@
 #include "VK_IOHIDPOSTEVENT.hpp"
 
 namespace org_pqrs_Karabiner {
-bool VirtualKey::VK_IOHIDPOSTEVENT::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_IOHIDPOSTEVENT::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   // We need to send events at handleAfterEnqueued.
   // See VK_DEFINED_IN_USERSPACE::handle.
 

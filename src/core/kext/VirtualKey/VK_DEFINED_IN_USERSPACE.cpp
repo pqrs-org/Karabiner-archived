@@ -22,7 +22,7 @@ void VirtualKey::VK_DEFINED_IN_USERSPACE::clear_items(void) {
   items_.clear();
 }
 
-bool VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_DEFINED_IN_USERSPACE::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   // VK_DEFINED_IN_USERSPACE uses UserClient which is effective immediately.
   // Considering KeyCode::VK_WAIT, we should not send notification via UserClient at here.
   //

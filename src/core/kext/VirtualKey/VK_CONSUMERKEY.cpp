@@ -5,7 +5,7 @@
 #include "VK_CONSUMERKEY.hpp"
 
 namespace org_pqrs_Karabiner {
-bool VirtualKey::VK_CONSUMERKEY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_CONSUMERKEY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   ConsumerKeyCode key = ConsumerKeyCode::VK_NONE;
 
   /**/ if (params.key == KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN) { key = ConsumerKeyCode::BRIGHTNESS_DOWN; } else if (params.key == KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP) {

@@ -10,7 +10,7 @@ namespace VirtualKey {
 void initialize(IOWorkLoop& workloop);
 void terminate(void);
 void reset(void);
-bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
+bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
 bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 
 bool isKeyLikeModifier(KeyCode keycode);

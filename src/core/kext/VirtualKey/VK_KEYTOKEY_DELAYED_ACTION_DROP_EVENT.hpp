@@ -7,7 +7,7 @@ class VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT final {
 public:
   static void reset(void);
 
-  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
+  static bool handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
 
   static bool needToDrop(void) { return needToDrop_; }
   static void setNeedToDrop(bool v) { needToDrop_ = v; }
