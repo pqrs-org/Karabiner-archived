@@ -18,7 +18,7 @@ bool ToEvent::isEventLikeModifier(void) const {
   }
 }
 
-void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
+void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId, PhysicalEventType physicalEventType,
                    bool add_to_keyrepeat, int delayUntilRepeat, int keyRepeat) {
   switch (type_) {
   case Type::NONE:
@@ -66,7 +66,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId,
   }
 }
 
-void ToEvent::fire_downup(AutogenId autogenId, bool add_to_keyrepeat) const {
+void ToEvent::fire_downup(AutogenId autogenId, PhysicalEventType physicalEventType, bool add_to_keyrepeat) const {
   switch (type_) {
   case Type::NONE:
     break;

@@ -16,6 +16,7 @@ public:
                                   currentToEvent_(CurrentToEvent::TO_KEYS),
                                   keyboardRepeatID_(-1),
                                   isRepeatEnabled_(true),
+                                  lastPhysicalEventType_(PhysicalEventType::DOWN),
                                   delayUntilRepeat_(-1),
                                   keyRepeat_(-1) {}
 
@@ -108,6 +109,7 @@ private:
 
   int keyboardRepeatID_;
   bool isRepeatEnabled_;
+  PhysicalEventType lastPhysicalEventType_;
 
   int delayUntilRepeat_;
   int keyRepeat_;

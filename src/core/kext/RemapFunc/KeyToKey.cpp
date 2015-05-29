@@ -168,6 +168,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
                                       FlagStatus::globalFlagStatus(),
                                       fromModifierFlags_)) return false;
   remapParams.isremapped = true;
+  lastPhysicalEventType_ = remapParams.physicalEventType;
 
   // ------------------------------------------------------------
   // handle EventType & Modifiers
@@ -225,7 +226,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
     for (size_t i = 0; i < beforeKeys_.size(); ++i) {
       FlagStatus::globalFlagStatus().temporary_increase(beforeKeys_[i].getModifierFlags());
 
-      beforeKeys_[i].fire_downup(autogenId_);
+      beforeKeys_[i].fire_downup(autogenId_, remapParams.physicalEventType);
 
       FlagStatus::globalFlagStatus().temporary_decrease(beforeKeys_[i].getModifierFlags());
     }
@@ -299,7 +300,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       }
     }
 
-    toKeys_[0].fire(newEventType, FlagStatus::globalFlagStatus().makeFlags(), autogenId_,
+    toKeys_[0].fire(newEventType, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, remapParams.physicalEventType,
                     add_to_keyrepeat, getDelayUntilRepeat(), getKeyRepeat());
 
     if (!add_to_keyrepeat) {
@@ -331,7 +332,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       for (size_t i = 0; i < size; ++i) {
         FlagStatus::globalFlagStatus().temporary_increase(toKeys_[i].getModifierFlags());
 
-        toKeys_[i].fire_downup(autogenId_, true);
+        toKeys_[i].fire_downup(autogenId_, remapParams.physicalEventType, true);
 
         FlagStatus::globalFlagStatus().temporary_decrease(toKeys_[i].getModifierFlags());
       }
@@ -348,7 +349,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
           //
           // Intentionally VK_LAZY_* stop sending MODIFY events.
           // EventOutputQueue::FireModifiers::fire destroys this behavior.
-          lastToEvent.fire(EventType::DOWN, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, false);
+          lastToEvent.fire(EventType::DOWN, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, remapParams.physicalEventType, false);
 
         } else {
           EventOutputQueue::FireModifiers::fire(autogenId_);
@@ -390,7 +391,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         //
         FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
-        lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, false);
+        lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, remapParams.physicalEventType, false);
 
       } else {
         if (KeyboardRepeat::getID() == keyboardRepeatID_) {
@@ -414,7 +415,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       for (size_t i = 0; i < afterKeys_.size(); ++i) {
         FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getModifierFlags());
 
-        afterKeys_[i].fire_downup(autogenId_);
+        afterKeys_[i].fire_downup(autogenId_, remapParams.physicalEventType);
 
         FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getModifierFlags());
       }
@@ -453,7 +454,7 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
 
       FlagStatus::globalFlagStatus().temporary_increase(keys[i].getModifierFlags());
 
-      keys[i].fire_downup(autogenId_);
+      keys[i].fire_downup(autogenId_, lastPhysicalEventType_);
 
       FlagStatus::globalFlagStatus().temporary_decrease(keys[i].getModifierFlags());
     }

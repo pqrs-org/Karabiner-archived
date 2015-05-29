@@ -59,9 +59,9 @@ public:
   }
   bool isEventLikeModifier(void) const;
 
-  void fire(EventType eventType, Flags flags, AutogenId autogenId,
+  void fire(EventType eventType, Flags flags, AutogenId autogenId, PhysicalEventType physicalEventType,
             bool add_to_keyrepeat, int delayUntilRepeat = 0, int keyRepeat = 0);
-  void fire_downup(AutogenId autogenId, bool add_to_keyrepeat = false) const;
+  void fire_downup(AutogenId autogenId, PhysicalEventType physicalEventType, bool add_to_keyrepeat = false) const;
 
   bool operator==(const Params_Base& paramsBase) const {
     switch (type_) {

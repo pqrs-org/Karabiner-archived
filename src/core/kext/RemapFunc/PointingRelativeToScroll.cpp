@@ -155,7 +155,7 @@ bool PointingRelativeToScroll::remap(RemapParams& remapParams) {
             keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
 
           } else {
-            toEvent_.fire_downup(autogenId_);
+            toEvent_.fire_downup(autogenId_, remapParams.physicalEventType);
           }
         }
       }
