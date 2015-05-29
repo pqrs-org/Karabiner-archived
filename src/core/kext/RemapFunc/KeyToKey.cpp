@@ -352,7 +352,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
           lastToEvent.fire(EventType::DOWN, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, remapParams.physicalEventType, false);
 
         } else {
-          EventOutputQueue::FireModifiers::fire(autogenId_);
+          EventOutputQueue::FireModifiers::fire(autogenId_, remapParams.physicalEventType);
         }
       }
 

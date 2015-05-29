@@ -47,7 +47,7 @@ bool VirtualKey::VK_LOCK::handle(const Params_KeyboardEventCallBack& params, Aut
   return false;
 
 remapped:
-  EventOutputQueue::FireModifiers::fire(autogenId);
+  EventOutputQueue::FireModifiers::fire(autogenId, physicalEventType);
   return true;
 }
 }

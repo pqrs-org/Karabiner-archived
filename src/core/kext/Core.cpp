@@ -162,7 +162,7 @@ void resetWhenPressingPhysicalKeysIsEmpty(void) {
     FlagStatus::globalFlagStatus().reset();
     ButtonStatus::reset();
     VirtualKey::reset();
-    EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), FlagStatus::globalFlagStatus().makeFlags());
+    EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), PhysicalEventType::UP, FlagStatus::globalFlagStatus().makeFlags());
     EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), PhysicalEventType::UP);
     PressDownKeys::clear();
   }

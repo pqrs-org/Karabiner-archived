@@ -23,6 +23,7 @@ public:
   class FireModifiers final {
   public:
     static void fire(AutogenId autogenId,
+                     PhysicalEventType physicalEventType,
                      Flags toFlags = FlagStatus::globalFlagStatus().makeFlags(),
                      KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
 

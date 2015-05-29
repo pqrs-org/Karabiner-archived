@@ -58,7 +58,7 @@ bool VirtualKey::VK_STICKY::handle(const Params_KeyboardEventCallBack& params, A
   return false;
 
 remapped:
-  EventOutputQueue::FireModifiers::fire(autogenId);
+  EventOutputQueue::FireModifiers::fire(autogenId, physicalEventType);
   return true;
 }
 }

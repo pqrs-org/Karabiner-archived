@@ -207,7 +207,7 @@ void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSo
 // ======================================================================
 Flags EventOutputQueue::FireModifiers::lastFlags_(0);
 
-void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, Flags toFlags, KeyboardType keyboardType) {
+void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, PhysicalEventType physicalEventType, Flags toFlags, KeyboardType keyboardType) {
   if (lastFlags_ == toFlags) return;
 
   // ------------------------------------------------------------
@@ -355,7 +355,7 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
   if (params.eventType == EventType::UP) {
     newflags = FireModifiers::getLastFlags();
   } else {
-    FireModifiers::fire(autogenId, newflags, params.keyboardType);
+    FireModifiers::fire(autogenId, physicalEventType, newflags, params.keyboardType);
   }
 
   if (params.eventType == EventType::DOWN || params.eventType == EventType::UP) {
@@ -383,7 +383,7 @@ void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallb
     return;
   }
 
-  FireModifiers::fire(autogenId);
+  FireModifiers::fire(autogenId, physicalEventType);
 
   EventOutputQueue::push(params, autogenId);
 }
@@ -418,7 +418,7 @@ void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, PhysicalEv
   bool isButtonReleased = !releasedButtons.isNONE();
 
   if (!isButtonReleased) {
-    FireModifiers::fire(autogenId);
+    FireModifiers::fire(autogenId, physicalEventType);
   }
 
   // Sending button event
@@ -436,13 +436,13 @@ void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, PhysicalEv
   }
 
   if (isButtonReleased) {
-    FireModifiers::fire(autogenId);
+    FireModifiers::fire(autogenId, physicalEventType);
   }
 }
 
 // ======================================================================
 void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
-  FireModifiers::fire(autogenId);
+  FireModifiers::fire(autogenId, physicalEventType);
   EventOutputQueue::push(params, autogenId);
 }
 
