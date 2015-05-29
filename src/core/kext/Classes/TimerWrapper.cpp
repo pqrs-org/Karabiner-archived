@@ -116,7 +116,9 @@ void TimerWrapper::callback_(OSObject* owner, IOTimerEventSource* sender) {
   org_pqrs_Karabiner_TimerWrapperObject* object = OSDynamicCast(org_pqrs_Karabiner_TimerWrapperObject, owner);
   if (!object) return;
 
-  object->setActive(false);
-  (object->getaction())(object->getowner(), sender);
+  if (object->isActive()) {
+    object->setActive(false);
+    (object->getaction())(object->getowner(), sender);
+  }
 }
 }
