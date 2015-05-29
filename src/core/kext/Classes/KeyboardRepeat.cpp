@@ -192,7 +192,7 @@ void KeyboardRepeat::fire_timer_callback(OSObject* owner, IOTimerEventSource* se
       {
         auto params = (p->getParamsBase()).get_Params_RelativePointerEventCallback();
         if (params) {
-          EventOutputQueue::FireRelativePointer::fire(autogenId_, params->buttons, params->dx, params->dy);
+          EventOutputQueue::FireRelativePointer::fire(autogenId_, PhysicalEventType::DOWN, params->buttons, params->dx, params->dy);
         }
       }
     }

@@ -56,7 +56,7 @@ void ToEvent::fire(EventType eventType, Flags flags, AutogenId autogenId, Physic
       ButtonStatus::decrease(button_);
     }
 
-    EventOutputQueue::FireRelativePointer::fire(autogenId, ButtonStatus::makeButtons());
+    EventOutputQueue::FireRelativePointer::fire(autogenId, physicalEventType, ButtonStatus::makeButtons());
 
     if (add_to_keyrepeat) {
       // Do nothing
@@ -143,7 +143,7 @@ void ToEvent::fire_downup(AutogenId autogenId, PhysicalEventType physicalEventTy
       }
 
       Buttons buttons(ButtonStatus::makeButtons());
-      EventOutputQueue::FireRelativePointer::fire(autogenId, buttons);
+      EventOutputQueue::FireRelativePointer::fire(autogenId, physicalEventType, buttons);
       if (add_to_keyrepeat) {
         KeyboardRepeat::primitive_add(buttons);
       }

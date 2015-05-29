@@ -391,7 +391,7 @@ void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallb
 // ======================================================================
 Buttons EventOutputQueue::FireRelativePointer::lastButtons_(0);
 
-void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, Buttons toButtons, int dx, int dy) {
+void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, PhysicalEventType physicalEventType, Buttons toButtons, int dx, int dy) {
   // When changing space to command+left click,
   //   __KeyToKey__ KeyCode::SPACE, PointingButton::LEFT, ModifierFlag::COMMAND_L
   //

@@ -12,6 +12,7 @@ int VirtualKey::VK_MOUSEKEY::scale_;
 bool VirtualKey::VK_MOUSEKEY::scrollmode_;
 bool VirtualKey::VK_MOUSEKEY::highspeed_;
 AutogenId VirtualKey::VK_MOUSEKEY::currentAutogenId_(0);
+PhysicalEventType VirtualKey::VK_MOUSEKEY::lastPhysicalEventType_ = PhysicalEventType::DOWN;
 TimerWrapper VirtualKey::VK_MOUSEKEY::fire_timer_;
 
 void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
@@ -21,6 +22,7 @@ void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
   scrollmode_ = false;
   highspeed_ = false;
   currentAutogenId_ = AutogenId(0);
+  lastPhysicalEventType_ = PhysicalEventType::DOWN;
 
   fire_timer_.initialize(&workloop, nullptr, VirtualKey::VK_MOUSEKEY::fire_timer_callback);
 }
@@ -36,15 +38,18 @@ void VirtualKey::VK_MOUSEKEY::reset(void) {
   scrollmode_ = false;
   highspeed_ = false;
   currentAutogenId_ = AutogenId(0);
+  lastPhysicalEventType_ = PhysicalEventType::DOWN;
 
   fire_timer_.cancelTimeout();
 }
 
 bool VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
-  if (handle_button(params, autogenId)) return true;
-  if (handle_move(params, autogenId)) return true;
-  if (handle_fixeddistancemove(params, autogenId)) return true;
-  if (handle_lock_button(params, autogenId)) return true;
+  lastPhysicalEventType_ = physicalEventType;
+
+  if (handle_button(params, autogenId, physicalEventType)) return true;
+  if (handle_move(params, autogenId, physicalEventType)) return true;
+  if (handle_fixeddistancemove(params, autogenId, physicalEventType)) return true;
+  if (handle_lock_button(params, autogenId, physicalEventType)) return true;
   return false;
 }
 
@@ -202,7 +207,7 @@ bool VirtualKey::VK_MOUSEKEY::isKeyLikeModifier(KeyCode keycode) {
   return false;
 }
 
-bool VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   PointingButton button = getPointingButton(params.key);
   if (button == PointingButton::NONE) return false;
 
@@ -211,17 +216,17 @@ bool VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& 
   // ----------------------------------------
   if (params.ex_iskeydown) {
     ButtonStatus::increase(button);
-    EventOutputQueue::FireRelativePointer::fire(autogenId, ButtonStatus::makeButtons());
+    EventOutputQueue::FireRelativePointer::fire(autogenId, physicalEventType, ButtonStatus::makeButtons());
 
   } else {
     ButtonStatus::decrease(button);
-    EventOutputQueue::FireRelativePointer::fire(autogenId, ButtonStatus::makeButtons());
+    EventOutputQueue::FireRelativePointer::fire(autogenId, physicalEventType, ButtonStatus::makeButtons());
   }
 
   return true;
 }
 
-bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
     if (params.repeat) return true;
     if (params.ex_iskeydown) {
@@ -367,7 +372,7 @@ bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& pa
   return true;
 }
 
-bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   int fdx = 0;
   int fdy = 0;
 
@@ -384,7 +389,7 @@ bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEven
   }
 
   if (params.ex_iskeydown) {
-    EventOutputQueue::FireRelativePointer::fire(autogenId,
+    EventOutputQueue::FireRelativePointer::fire(autogenId, physicalEventType,
                                                 ButtonStatus::makeButtons(),
                                                 fdx * Config::get_fixed_distance_magnification(),
                                                 fdy * Config::get_fixed_distance_magnification());
@@ -393,10 +398,10 @@ bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEven
   return true;
 }
 
-bool VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId) {
+bool VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   if (params.key == KeyCode::VK_MOUSEKEY_LOCK_BUTTON_ALL_FORCE_OFF) {
     ButtonStatus::lock_clear();
-    EventOutputQueue::FireRelativePointer::fire(autogenId, ButtonStatus::makeButtons());
+    EventOutputQueue::FireRelativePointer::fire(autogenId, physicalEventType, ButtonStatus::makeButtons());
     return true;
   }
 
@@ -409,7 +414,7 @@ bool VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallB
   // ----------------------------------------
   if (params.ex_iskeydown) {
     ButtonStatus::lock_toggle(button);
-    EventOutputQueue::FireRelativePointer::fire(autogenId, ButtonStatus::makeButtons());
+    EventOutputQueue::FireRelativePointer::fire(autogenId, physicalEventType, ButtonStatus::makeButtons());
   }
 
   return true;
@@ -420,7 +425,7 @@ void VirtualKey::VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTime
     int s = scale_;
     if (highspeed_) s = Config::get_mousekey_high_speed_of_pointer();
 
-    EventOutputQueue::FireRelativePointer::fire(currentAutogenId_, ButtonStatus::makeButtons(), dx_ * s, dy_ * s);
+    EventOutputQueue::FireRelativePointer::fire(currentAutogenId_, lastPhysicalEventType_, ButtonStatus::makeButtons(), dx_ * s, dy_ * s);
 
   } else {
     int s = scale_;

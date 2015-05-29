@@ -163,7 +163,7 @@ void resetWhenPressingPhysicalKeysIsEmpty(void) {
     ButtonStatus::reset();
     VirtualKey::reset();
     EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), FlagStatus::globalFlagStatus().makeFlags());
-    EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue());
+    EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), PhysicalEventType::UP);
     PressDownKeys::clear();
   }
 }
@@ -269,7 +269,7 @@ void remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
 
   // ------------------------------------------------------------
   if (!remapParams.isremapped) {
-    EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), ButtonStatus::makeButtons(), params->dx, params->dy);
+    EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), physicalEventType, ButtonStatus::makeButtons(), params->dx, params->dy);
   }
 
   if (params->ex_button != PointingButton::NONE) {

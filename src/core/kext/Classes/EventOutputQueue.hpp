@@ -44,7 +44,7 @@ public:
 
   class FireRelativePointer final {
   public:
-    static void fire(AutogenId autogenId, Buttons toButtons = ButtonStatus::makeButtons(), int dx = 0, int dy = 0);
+    static void fire(AutogenId autogenId, PhysicalEventType physicalEventType, Buttons toButtons = ButtonStatus::makeButtons(), int dx = 0, int dy = 0);
 
   private:
     static Buttons lastButtons_;

@@ -44,7 +44,7 @@ bool FlipPointingRelative::remap(RemapParams& remapParams) {
     dy = -dy;
   }
 
-  EventOutputQueue::FireRelativePointer::fire(autogenId_, ButtonStatus::makeButtons(), dx, dy);
+  EventOutputQueue::FireRelativePointer::fire(autogenId_, remapParams.physicalEventType, ButtonStatus::makeButtons(), dx, dy);
 
   return true;
 }

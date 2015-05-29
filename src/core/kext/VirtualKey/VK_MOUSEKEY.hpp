@@ -15,10 +15,10 @@ public:
 private:
   static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
 
-  static bool handle_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
-  static bool handle_move(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
-  static bool handle_fixeddistancemove(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
-  static bool handle_lock_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId);
+  static bool handle_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
+  static bool handle_move(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
+  static bool handle_fixeddistancemove(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
+  static bool handle_lock_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   static PointingButton getPointingButton(KeyCode keycode);
   static PointingButton getPointingButtonFromLockKey(KeyCode keycode);
 
@@ -28,6 +28,7 @@ private:
   static bool highspeed_;
   static bool scrollmode_;
   static AutogenId currentAutogenId_;
+  static PhysicalEventType lastPhysicalEventType_;
   static TimerWrapper fire_timer_;
 };
 }
