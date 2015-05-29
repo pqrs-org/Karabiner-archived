@@ -593,7 +593,7 @@
 
   <!-- fallback -->
   <appdef>
-    <appname>JavaApps</appname>
+    <appname>JetBrainsApps</appname>
     <prefix>com.jetbrains.</prefix>
   </appdef>
 

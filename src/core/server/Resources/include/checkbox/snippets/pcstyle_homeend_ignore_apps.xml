@@ -11,13 +11,17 @@
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
   </block>
   <block>
-    <only>BLUEFISH,WORD,EXCEL,POWERPOINT</only>
+    <only>
+      BLUEFISH,
+      WORD,
+      EXCEL,
+      POWERPOINT,
+      IntelliJ,
+      PhpStorm,
+      RubyMine,
+      JetBrainsApps,
+    </only>
     <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::HOME</autogen>
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::END</autogen>
-  </block>
-  <block>
-    <only>IntelliJ, PhpStorm, RubyMine, JavaApps</only>
-    <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
-    <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
   </block>
 </root>
