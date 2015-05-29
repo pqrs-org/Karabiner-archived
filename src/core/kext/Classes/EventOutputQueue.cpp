@@ -441,12 +441,12 @@ void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, PhysicalEv
 }
 
 // ======================================================================
-void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId) {
+void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   FireModifiers::fire(autogenId);
   EventOutputQueue::push(params, autogenId);
 }
 
-void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2, AutogenId autogenId) {
+void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2, AutogenId autogenId, PhysicalEventType physicalEventType) {
   short deltaAxis1;
   short deltaAxis2;
   IOFixed fixedDelta1;
@@ -473,7 +473,7 @@ void EventOutputQueue::FireScrollWheel::fire(int delta1, int delta2, AutogenId a
                                          fixedDelta1, fixedDelta2, 0,
                                          pointDelta1, pointDelta2, 0,
                                          options);
-  EventOutputQueue::FireScrollWheel::fire(params, autogenId);
+  EventOutputQueue::FireScrollWheel::fire(params, autogenId, physicalEventType);
 }
 
 // ======================================================================

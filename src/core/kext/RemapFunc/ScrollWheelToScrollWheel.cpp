@@ -43,7 +43,7 @@ bool ScrollWheelToScrollWheel::remap(RemapParams& remapParams) {
   FlagStatus::globalFlagStatus().temporary_decrease(fromModifierFlags_);
   FlagStatus::globalFlagStatus().temporary_increase(toModifierFlags_);
 
-  EventOutputQueue::FireScrollWheel::fire(*params, autogenId_);
+  EventOutputQueue::FireScrollWheel::fire(*params, autogenId_, remapParams.physicalEventType);
   RemapFunc::PointingRelativeToScroll::cancelScroll();
 
   // We need to restore temporary flags.

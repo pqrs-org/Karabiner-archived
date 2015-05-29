@@ -12,6 +12,7 @@ List PointingRelativeToScroll::queue_;
 Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;
 Vector_ModifierFlag PointingRelativeToScroll::currentToModifierFlags_;
 AutogenId PointingRelativeToScroll::currentAutogenId_(0);
+PhysicalEventType PointingRelativeToScroll::lastPhysicalEventType_ = PhysicalEventType::DOWN;
 TimerWrapper PointingRelativeToScroll::timer_;
 
 void PointingRelativeToScroll::static_initialize(IOWorkLoop& workloop) {
@@ -185,6 +186,7 @@ doremap:
 
 returntrue:
   remapParams.isremapped = true;
+  lastPhysicalEventType_ = remapParams.physicalEventType;
   return true;
 }
 
@@ -299,7 +301,7 @@ void PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSourc
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_horizontal_scrolling)) {
       d2 = -d2;
     }
-    EventOutputQueue::FireScrollWheel::fire(d1, d2, currentAutogenId_);
+    EventOutputQueue::FireScrollWheel::fire(d1, d2, currentAutogenId_, lastPhysicalEventType_);
   }
   // We need to restore temporary flags.
   // Because normal cursor move event don't restore temporary_count_.

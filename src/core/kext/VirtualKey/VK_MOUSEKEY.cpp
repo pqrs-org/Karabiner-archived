@@ -439,7 +439,7 @@ void VirtualKey::VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTime
       delta2 = -delta2;
     }
 
-    EventOutputQueue::FireScrollWheel::fire(delta1, delta2, currentAutogenId_);
+    EventOutputQueue::FireScrollWheel::fire(delta1, delta2, currentAutogenId_, lastPhysicalEventType_);
   }
 
   int max = scrollmode_ ? Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_scroll) : Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_maximum_speed_of_pointer);

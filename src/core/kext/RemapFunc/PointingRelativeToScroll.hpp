@@ -99,6 +99,7 @@ private:
   static Vector_ModifierFlag currentFromModifierFlags_;
   static Vector_ModifierFlag currentToModifierFlags_;
   static AutogenId currentAutogenId_;
+  static PhysicalEventType lastPhysicalEventType_;
   static TimerWrapper timer_;
 };
 }

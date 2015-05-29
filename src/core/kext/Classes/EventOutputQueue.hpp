@@ -58,8 +58,8 @@ public:
       POINTING_POINT_SCALE = 10,    // (== SCROLL_WHEEL_TO_PIXEL_SCALE >> 16)
       DELTA_SCALE = 128,
     };
-    static void fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId);
-    static void fire(int delta1, int delta2, AutogenId autogenId);
+    static void fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId, PhysicalEventType physicalEventType);
+    static void fire(int delta1, int delta2, AutogenId autogenId, PhysicalEventType physicalEventType);
   };
 
   class FireWait final {
