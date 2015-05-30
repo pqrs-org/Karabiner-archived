@@ -206,9 +206,18 @@ void EventOutputQueue::fire_timer_callback(OSObject* /* owner */, IOTimerEventSo
 
 // ======================================================================
 Flags EventOutputQueue::FireModifiers::lastFlags_(0);
+bool EventOutputQueue::FireModifiers::isIgnorePhysicalUpEvent_(false);
 
 void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, PhysicalEventType physicalEventType, Flags toFlags, KeyboardType keyboardType) {
   if (lastFlags_ == toFlags) return;
+
+  if (physicalEventType == PhysicalEventType::DOWN) {
+    isIgnorePhysicalUpEvent_ = false;
+  } else if (physicalEventType == PhysicalEventType::UP) {
+    if (isIgnorePhysicalUpEvent_) {
+      return;
+    }
+  }
 
   // ------------------------------------------------------------
   // At first we handle KeyUp events and handle KeyDown events next.
@@ -355,6 +364,9 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
   if (params.eventType == EventType::UP) {
     newflags = FireModifiers::getLastFlags();
   } else {
+    if (params.ex_iskeydown) {
+      FireModifiers::setIgnorePhysicalUpEvent(false);
+    }
     FireModifiers::fire(autogenId, physicalEventType, newflags, params.keyboardType);
   }
 
@@ -383,6 +395,9 @@ void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallb
     return;
   }
 
+  if (params.ex_iskeydown) {
+    FireModifiers::setIgnorePhysicalUpEvent(false);
+  }
   FireModifiers::fire(autogenId, physicalEventType);
 
   EventOutputQueue::push(params, autogenId);
@@ -417,6 +432,8 @@ void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, PhysicalEv
   releasedButtons.remove(toButtons);
   bool isButtonReleased = !releasedButtons.isNONE();
 
+  FireModifiers::setIgnorePhysicalUpEvent(false);
+
   if (!isButtonReleased) {
     FireModifiers::fire(autogenId, physicalEventType);
   }
@@ -442,6 +459,7 @@ void EventOutputQueue::FireRelativePointer::fire(AutogenId autogenId, PhysicalEv
 
 // ======================================================================
 void EventOutputQueue::FireScrollWheel::fire(const Params_ScrollWheelEventCallback& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
+  FireModifiers::setIgnorePhysicalUpEvent(false);
   FireModifiers::fire(autogenId, physicalEventType);
   EventOutputQueue::push(params, autogenId);
 }

@@ -238,6 +238,54 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
 
         RemapClassManager::registerPrepareTargetItem(owner_);
 
+        // Stop modifier flag events until normal key event is happen or physical key down event is happen
+        // in order to reduce unnecessary modifier events.
+        //
+        // For example, we consider the following autogens:
+        //
+        //    <autogen>
+        //      __KeyOverlaidModifier__
+        //      KeyCode::COMMAND_L,
+        //      KeyCode::CONTROL_L,
+        //      KeyCode::ESCAPE,
+        //    </autogen>
+        //    <autogen>
+        //      __KeyOverlaidModifier__
+        //      KeyCode::SPACE,
+        //      KeyCode::SHIFT_L,
+        //      KeyCode::SPACE,
+        //    </autogen>
+        //
+        // * Change the left command key to control key.
+        // * Change the space key to shift key.
+        // * Send an escape key event when the left command key is pressed alone,
+        // * Send a space key event when the space key is pressed alone.
+        //
+        // When we press keys by this order.
+        // #1 Press COMMAND_L.
+        // #2 Press SPACE.
+        // #3 Release COMMAND_L.
+        // #4 Release SPACE.
+        //
+        // The result is control-space at #4.
+        //
+        // If we does not stop modifier events, CONTROL_L events are sent at #3 and #4.
+        //
+        // #1 -> CONTROL_L down.
+        // #2 -> SHIFT_L down.
+        // #3 -> CONTROL_L up.
+        // #4 -> CONTROL_L down, SHIFT_L up, SPACE down, SPACE up.
+        //
+        // To reduce these events, we ignore modifier events at physical key up.
+        //
+        // #1 -> CONTROL_L down
+        // #2 -> SHIFT_L down.
+        // #3 -> Do nothing.
+        // #4 -> SHIFT_L up, SPACE down, SPACE up.
+        //
+
+        EventOutputQueue::FireModifiers::setIgnorePhysicalUpEvent(true);
+
       } else {
         FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
 

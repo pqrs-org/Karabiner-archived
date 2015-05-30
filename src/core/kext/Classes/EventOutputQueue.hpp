@@ -28,9 +28,11 @@ public:
                      KeyboardType keyboardType = CommonData::getcurrent_keyboardType());
 
     static Flags getLastFlags(void) { return lastFlags_; }
+    static void setIgnorePhysicalUpEvent(bool newval) { isIgnorePhysicalUpEvent_ = newval; }
 
   private:
     static Flags lastFlags_;
+    static bool isIgnorePhysicalUpEvent_;
   };
 
   class FireKey final {
