@@ -387,9 +387,9 @@
     </item>
 
     <item>
-      <name>For HHK (Happy Hacking Keyboard) Users</name>
+      <name>For HHKB (Happy Hacking Keyboard) Users</name>
       <item>
-        <name>Enable HHK compatible Arrow Key Mode</name>
+        <name>Enable HHKB compatible Arrow Key Mode</name>
         <identifier>remap.hhkmode</identifier>
         <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::FN, KeyCode::CURSOR_UP</autogen>
         <autogen>__KeyToKey__ KeyCode::SEMICOLON,    ModifierFlag::FN, KeyCode::CURSOR_LEFT</autogen>
@@ -413,7 +413,7 @@
         <autogen>__KeyToKey__ KeyCode::EQUAL,        ModifierFlag::FN, KeyCode::F12</autogen>
       </item>
       <item>
-        <name>Enable Fn+hjkl at HHK to Left/Down/Up/Right</name>
+        <name>Enable Fn+hjkl at HHKB to Left/Down/Up/Right</name>
         <identifier>remap.hhkmode_vi_cursor</identifier>
         <autogen>__KeyToKey__ KeyCode::KEYPAD_MULTIPLY, KeyCode::CURSOR_LEFT</autogen>
         <autogen>__KeyToKey__ KeyCode::KEYPAD_SLASH,    KeyCode::CURSOR_DOWN</autogen>
