@@ -274,14 +274,14 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
         // #1 -> CONTROL_L down.
         // #2 -> SHIFT_L down.
         // #3 -> CONTROL_L up.
-        // #4 -> CONTROL_L down, SHIFT_L up, SPACE down, SPACE up.
+        // #4 -> CONTROL_L down, SHIFT_L up, SPACE down, SPACE up, CONTROL_L up.
         //
         // To reduce these events, we ignore modifier events at physical key up.
         //
         // #1 -> CONTROL_L down
         // #2 -> SHIFT_L down.
         // #3 -> Do nothing.
-        // #4 -> SHIFT_L up, SPACE down, SPACE up.
+        // #4 -> SHIFT_L up, SPACE down, SPACE up, CONTROL_L up.
         //
 
         EventOutputQueue::FireModifiers::setIgnorePhysicalUpEvent(true);
