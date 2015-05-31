@@ -142,7 +142,7 @@ void KeyToKey::prepare(RemapParams& remapParams) {
         fire_timer_.cancelTimeout();
 
         // clear temporary flags.
-        FlagStatus::globalFlagStatus().globalFlagStatus().set();
+        FlagStatus::globalFlagStatus().set();
 
         // delayed action canceled by
         for (size_t i = 0; i < delayedActionCanceledByKeys_.size(); ++i) {
@@ -408,14 +408,25 @@ bool KeyToKey::remap(RemapParams& remapParams) {
   // ----------------------------------------
   // Handle afterKeys_
   if (!fromEvent_.isPressing()) {
-    // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
     for (size_t afterKeysIndex = 0; afterKeysIndex < afterKeys_.size(); ++afterKeysIndex) {
-      // clear temporary flags.
-      FlagStatus::globalFlagStatus().globalFlagStatus().set();
-
-      FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
+      // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
+      // Therefore, we clear temporary flags here (== in this loop).
+      FlagStatus::globalFlagStatus().set();
 
       auto& toEvents = afterKeys_[afterKeysIndex];
+      if (toEvents.empty()) {
+        continue;
+      }
+
+      // Check modifier condition.
+      if (!FlagStatus::globalFlagStatus().isOn(toEvents[0].getModifierFlags())) {
+        continue;
+      }
+
+      // ----------------------------------------
+      FlagStatus::globalFlagStatus().temporary_decrease(toEvents[0].getModifierFlags());
+      FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
+
       for (size_t i = 1; i < toEvents.size(); ++i) {
         FlagStatus::globalFlagStatus().temporary_increase(toEvents[i].getModifierFlags());
 
@@ -425,6 +436,9 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       }
 
       FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
+      FlagStatus::globalFlagStatus().temporary_increase(toEvents[0].getModifierFlags());
+
+      // ----------------------------------------
       break;
     }
   }

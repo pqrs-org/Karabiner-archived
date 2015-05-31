@@ -790,6 +790,60 @@ Two Lines</autogen>
       </item>
 
       <item>
+        <identifier>remap.samples_keytokey_afterkeyup1</identifier>
+        <name>AfterKeyUp with ModifierFlag conditional pattern matching. (1)</name>
+        <appendix>* Change the right option key to control key.</appendix>
+        <appendix>* AfterKeyUp f1 when the left shift key and the left control key are pressed.</appendix>
+        <appendix>* AfterKeyUp f2 when the left shift key is pressed.</appendix>
+        <appendix>* AfterKeyUp f3 when the left control key is pressed.</appendix>
+        <appendix>* Otherwise, AfterKeyUp f4.</appendix>
+        <appendix></appendix>
+        <appendix>For example, OPTION_R down, SHIFT_L down, OPTION_R up sends f2.</appendix>
+        <autogen>
+          __KeyToKey__
+          KeyCode::OPTION_R,
+          KeyCode::CONTROL_L,
+
+          Option::KEYTOKEY_AFTER_KEYUP, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+          KeyCode::F1,
+
+          Option::KEYTOKEY_AFTER_KEYUP, ModifierFlag::SHIFT_L,
+          KeyCode::F2,
+
+          Option::KEYTOKEY_AFTER_KEYUP, ModifierFlag::CONTROL_L,
+          KeyCode::F3,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::F4,
+        </autogen>
+      </item>
+
+      <item>
+        <identifier>remap.samples_keytokey_afterkeyup2</identifier>
+        <name>AfterKeyUp with ModifierFlag conditional pattern matching. (2)</name>
+        <appendix>* Change the right shift key to shift-right arrow.</appendix>
+        <appendix>* AfterKeyUp command-c.</appendix>
+        <appendix>* If the escape key is pressed, AfterKeyUp will be cancel.</appendix>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SHIFT_R,
+          KeyCode::CURSOR_RIGHT,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::VK_LOCK_SHIFT_R_FORCE_ON,
+
+          Option::KEYTOKEY_AFTER_KEYUP, ModifierFlag::SHIFT_R,
+          KeyCode::VK_LOCK_SHIFT_R_FORCE_OFF,
+          KeyCode::C, ModifierFlag::COMMAND_L,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::ESCAPE, ModifierFlag::SHIFT_R,
+          KeyCode::VK_LOCK_SHIFT_R_FORCE_OFF,
+        </autogen>
+      </item>
+
+      <item>
         <identifier>remap.samples_keytokey_delayed_action</identifier>
         <name>Option::KEYTOKEY_DELAYED_ACTION</name>
         <appendix>────────</appendix>

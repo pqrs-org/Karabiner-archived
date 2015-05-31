@@ -13,10 +13,11 @@ Since 10.6.0
     * `Option::KEYTOKEY_DELAYED_ACTION` has been added.
     * `Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS` has been added.
     * `Option::SIMULTANEOUSKEYPRESSES_POST_FROM_EVENTS_AS_RAW` has been added.
-    * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * The following filters have been added.
         * `<pressingphysicalkeys_greaterthan>`
         * `<pressingphysicalkeys_lessthan>`
+    * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
+    * ModifierFlag pattern matching has been introduced into `Option::KEYTOKEY_AFTER_KEYUP`.
 * Fixed issues:
     * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic)
 
