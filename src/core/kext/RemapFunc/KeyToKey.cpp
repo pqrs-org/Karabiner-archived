@@ -71,6 +71,9 @@ void KeyToKey::add(AddDataType datatype, AddValue newval) {
     } else if (Option::KEYTOKEY_BEFORE_KEYDOWN == option) {
       currentToEvent_ = CurrentToEvent::BEFORE_KEYS;
     } else if (Option::KEYTOKEY_AFTER_KEYUP == option) {
+      Vector_ToEvent v;
+      afterKeys_.push_back(v);
+      afterKeys_.back().push_back(ToEvent(KeyCode::VK_NONE));
       currentToEvent_ = CurrentToEvent::AFTER_KEYS;
     } else if (Option::KEYTOKEY_DELAYED_ACTION == option) {
       currentToEvent_ = CurrentToEvent::DELAYED_ACTION_KEYS;
@@ -406,21 +409,23 @@ bool KeyToKey::remap(RemapParams& remapParams) {
   // Handle afterKeys_
   if (!fromEvent_.isPressing()) {
     // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
-    if (afterKeys_.size() > 0) {
+    for (size_t afterKeysIndex = 0; afterKeysIndex < afterKeys_.size(); ++afterKeysIndex) {
       // clear temporary flags.
       FlagStatus::globalFlagStatus().globalFlagStatus().set();
 
       FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
-      for (size_t i = 0; i < afterKeys_.size(); ++i) {
-        FlagStatus::globalFlagStatus().temporary_increase(afterKeys_[i].getModifierFlags());
+      auto& toEvents = afterKeys_[afterKeysIndex];
+      for (size_t i = 1; i < toEvents.size(); ++i) {
+        FlagStatus::globalFlagStatus().temporary_increase(toEvents[i].getModifierFlags());
 
-        afterKeys_[i].fire_downup(autogenId_, remapParams.physicalEventType);
+        toEvents[i].fire_downup(autogenId_, remapParams.physicalEventType);
 
-        FlagStatus::globalFlagStatus().temporary_decrease(afterKeys_[i].getModifierFlags());
+        FlagStatus::globalFlagStatus().temporary_decrease(toEvents[i].getModifierFlags());
       }
 
       FlagStatus::globalFlagStatus().temporary_increase(pureFromModifierFlags_);
+      break;
     }
   }
 

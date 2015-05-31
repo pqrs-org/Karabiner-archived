@@ -76,7 +76,7 @@ private:
     case CurrentToEvent::BEFORE_KEYS:
       return beforeKeys_;
     case CurrentToEvent::AFTER_KEYS:
-      return afterKeys_;
+      return afterKeys_.back();
     case CurrentToEvent::DELAYED_ACTION_KEYS:
       return delayedActionKeys_;
     case CurrentToEvent::DELAYED_ACTION_CANCELED_DEFAULT_KEYS:
@@ -96,7 +96,7 @@ private:
 
   Vector_ToEvent toKeys_;
   Vector_ToEvent beforeKeys_;
-  Vector_ToEvent afterKeys_;
+  Vector_Vector_ToEvent afterKeys_;
   Vector_ToEvent delayedActionKeys_;
   Vector_ToEvent delayedActionCanceledDefaultKeys_;
   Vector_Vector_ToEvent delayedActionCanceledByKeys_;
