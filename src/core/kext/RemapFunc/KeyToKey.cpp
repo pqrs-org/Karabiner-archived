@@ -419,6 +419,14 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       }
 
       // Check modifier condition.
+      // toEvents[0] is always KeyCode::VK_NONE and conditional modifier flags.
+      // If conditional modifier flags are specified as follows,
+      // send toEvents only when modifier flags is pressed.
+      //
+      //     Option::KEYTOKEY_AFTER_KEYUP, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+      //     KeyCode::F1,
+      //
+
       if (!FlagStatus::globalFlagStatus().isOn(toEvents[0].getModifierFlags())) {
         continue;
       }
