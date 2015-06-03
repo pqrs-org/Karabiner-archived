@@ -80,6 +80,11 @@
     <productname>APPLE_EXTERNAL_KEYBOARD_0x022c</productname>
     <productid>0x022c</productid>
   </deviceproductdef>
+  
+  <deviceproductdef>
+    <productname>APPLE_EXTERNAL_KEYBOARD_0x024f</productname>
+    <productid>0x024f</productid>
+  </deviceproductdef>
 
   <deviceproductdef>
     <productname>APPLE_ALUMINUM_KEYBOARD_JIS</productname>
