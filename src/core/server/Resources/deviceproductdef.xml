@@ -80,7 +80,7 @@
     <productname>APPLE_EXTERNAL_KEYBOARD_0x022c</productname>
     <productid>0x022c</productid>
   </deviceproductdef>
-  
+
   <deviceproductdef>
     <productname>APPLE_EXTERNAL_KEYBOARD_0x024f</productname>
     <productid>0x024f</productid>
@@ -215,7 +215,7 @@
     <productname>LOGITECH_G9X</productname>
     <productid>0xc249</productid>
   </deviceproductdef>
-  
+
   <deviceproductdef>
     <productname>LOGITECH_G502</productname>
     <productid>0xc07d</productid>
@@ -270,7 +270,7 @@
     <productname>MICROSOFT_NANO_TRANSCEIVER_2-1</productname>
     <productid>0x07a5</productid>
   </deviceproductdef>
-  
+
   <deviceproductdef>
     <productname>MICROSOFT_BLUETOOTH_MOBILE_KEYBOARD_6000</productname>
     <productid>0x0762</productid>
