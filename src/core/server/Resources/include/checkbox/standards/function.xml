@@ -717,6 +717,14 @@
         </item>
         <item><name>──────────────────────────────</name></item>
         <item>
+          <name>Volume controls by F1,F2 and F3</name>
+          <identifier>remap.f1_f2_f3_volume_controls</identifier>
+          <autogen>__KeyToKey__ KeyCode::F1, ConsumerKeyCode::VOLUME_MUTE</autogen>
+          <autogen>__KeyToKey__ KeyCode::F2, ConsumerKeyCode::VOLUME_DOWN</autogen>
+          <autogen>__KeyToKey__ KeyCode::F3, ConsumerKeyCode::VOLUME_UP</autogen>
+        </item>
+        <item><name>──────────────────────────────</name></item>
+        <item>
           <name>F3 to Volume Mute (except virtual machine, RDC)</name>
           <identifier>remap.f3_to_volumemute</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
