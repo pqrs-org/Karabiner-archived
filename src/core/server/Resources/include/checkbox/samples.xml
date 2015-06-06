@@ -864,6 +864,24 @@ Two Lines</autogen>
           KeyCode::RETURN,
           KeyCode::VK_NONE,
 
+          <!--
+              | You can send key events in the timeout callback that is set at key up by Option::KEYTOKEY_DELAYED_ACTION.
+              | (You can adjust timeout milliseconds by Preferences > Key Repeat tab.)
+              |
+              | You can also send key events when timeout callback is cancelled.
+              | * Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY
+              | * Option::KEYTOKEY_DELAYED_ACTION_CANCELED_DEFAULT
+              |
+              | If you specify KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+              | the pressed key will be ignored.
+              | For example, the following command sends the space key event if you interrupted timeout callback by the return key.
+              | The KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT suppresses the return key event.
+              | Without it, the space key and the return key events will be sent.
+              |
+              |   Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::RETURN,
+              |   KeyCode::SPACE,
+              |   KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+          -->
           Option::KEYTOKEY_DELAYED_ACTION,
           KeyCode::RETURN,
 
