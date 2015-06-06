@@ -131,4 +131,14 @@
     <vendorid>0x05f3</vendorid>
   </devicevendordef>
 
+  <devicevendordef>
+    <vendorname>Corsair</vendorname>
+    <vendorid>0x1b1c</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
+    <vendorname>Cooler_Master</vendorname>
+    <vendorid>0x2516</vendorid>
+  </devicevendordef>
+
 </root>

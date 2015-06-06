@@ -341,4 +341,19 @@
     <productid>0x0007</productid>
   </deviceproductdef>
 
+  <deviceproductdef>
+    <productname>Corsair_K65</productname>
+    <productid>0x1b07</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>CM_Novatouch_TKL</productname>
+    <productid>0x0027</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>CM_Quick_Fire_Rapid</productname>
+    <productid>0x0004</productid>
+  </deviceproductdef>
+
 </root>
