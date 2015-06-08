@@ -14,6 +14,7 @@
 
   <!-- 下駄入力(qwerty,ATOK版) -->
   <inputsource_only>JAPANESE</inputsource_only>
+  <include path="../snippets/password_exception.xml" />
 
   <!-- 左手 -->
   <!-- 単打 -->

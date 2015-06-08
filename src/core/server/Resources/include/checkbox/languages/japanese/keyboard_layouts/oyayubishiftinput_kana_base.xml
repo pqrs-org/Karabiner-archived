@@ -3,6 +3,7 @@
   <include path="oyayubishiftinput_ignore_apps.xml" />
 
   <inputsource_only>JAPANESE</inputsource_only>
+  <include path="../snippets/password_exception.xml" />
   <!-- 左手 中段 -->
   <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::KEY_4</autogen>
   <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::D</autogen>

@@ -352,12 +352,14 @@
         <name>：キーをDeleteキーにする（後退キー）</name>
         <identifier>remap.jis_oyayubishiftinput_backspace</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
         <autogen>__KeyToKey__ KeyCode::JIS_COLON, KeyCode::DELETE</autogen>
       </item>
       <item>
         <name>］キーをEscapeキーにする（取消キー）</name>
         <identifier>remap.jis_oyayubishiftinput_escape</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
         <autogen>__KeyToKey__ KeyCode::JIS_BRACKET_RIGHT, KeyCode::ESCAPE</autogen>
       </item>
       <item><name>──────────────────────────────</name></item>
@@ -493,6 +495,7 @@
         <name>新下駄配列（ことえり向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
         <include path="keyboard_layouts/shingeta_base.xml" />
         <include path="keyboard_layouts/shingeta_kotoeri.xml" />
       </item>
@@ -500,6 +503,7 @@
         <name>新下駄配列（ATOK向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
         <include path="keyboard_layouts/shingeta_base.xml" />
         <include path="keyboard_layouts/shingeta_atok.xml" />
       </item>
@@ -512,11 +516,13 @@
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_dvorak</identifier>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <include path="keyboard_layouts/shingeta_base.xml" />
           <include path="keyboard_layouts/shingeta_kotoeri.xml" />
         </block>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -540,11 +546,13 @@
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_dvorak</identifier>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <include path="keyboard_layouts/shingeta_base.xml" />
           <include path="keyboard_layouts/shingeta_atok.xml" />
         </block>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -565,6 +573,7 @@
         <name>新下駄配列 US Keyboard 向け（ことえり向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_us</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
         <include path="keyboard_layouts/shingeta_base_for_us.xml" />
         <include path="keyboard_layouts/shingeta_kotoeri.xml" />
       </item>
@@ -572,6 +581,7 @@
         <name>新下駄配列 US Keyboard 向け（ATOK向け・ローマ字入力）</name>
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_us</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
         <include path="keyboard_layouts/shingeta_base_for_us.xml" />
         <include path="keyboard_layouts/shingeta_atok.xml" />
       </item>
@@ -584,11 +594,13 @@
         <identifier>remap.jis_shingeta_input_roman_qwerty_kotoeri_for_dvorak_for_us</identifier>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <include path="keyboard_layouts/shingeta_base_for_us.xml" />
           <include path="keyboard_layouts/shingeta_kotoeri.xml" />
         </block>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -612,11 +624,13 @@
         <identifier>remap.jis_shingeta_input_roman_qwerty_atok_for_dvorak_for_us</identifier>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <include path="keyboard_layouts/shingeta_base_for_us.xml" />
           <include path="keyboard_layouts/shingeta_atok.xml" />
         </block>
         <block>
           <inputsource_only>JAPANESE</inputsource_only>
+          <include path="snippets/password_exception.xml" />
           <modifier_only>
             ModifierFlag::COMMAND_L,
             ModifierFlag::COMMAND_R,
@@ -641,6 +655,7 @@
         <appendix>数字段のシフト面は未定義</appendix>
         <identifier>remap.jis_asuka_roman_space_kana</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
 
         <include path="keyboard_layouts/asuka_roman.xml">
           <replacementdef>
@@ -659,6 +674,7 @@
         <appendix>数字段のシフト面は未定義</appendix>
         <identifier>remap.jis_asuka_roman_eisuu_space</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="snippets/password_exception.xml" />
 
         <include path="keyboard_layouts/asuka_roman.xml">
           <replacementdef>

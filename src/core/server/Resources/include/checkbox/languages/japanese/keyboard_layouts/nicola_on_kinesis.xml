@@ -9,6 +9,7 @@
       <name>Enable Nicola on Kinesis (Kana-Kawasemi)</name>
       <identifier>enable_nicola_on_kinesis_kana_kawasemi</identifier>
       <inputsource_only>JAPANESE</inputsource_only>
+      <include path="../snippets/password_exception.xml" />
       <config_not>enable_nicola_on_kinesis_romaji</config_not>
 
       <block>
@@ -320,6 +321,7 @@
       <name>Enable Nicola on Kinesis (Romaji)</name>
       <identifier>enable_nicola_on_kinesis_romaji</identifier>
       <inputsource_only>JAPANESE</inputsource_only>
+      <include path="../snippets/password_exception.xml" />
       <config_not>enable_nicola_on_kinesis_kana_kawasemi</config_not>
 
       <block>
@@ -596,6 +598,7 @@
       <config_not>remap.kinesis_holding_back_space_to_control</config_not>
       <block>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="../snippets/password_exception.xml" />
         <block>
           <config_only>nicola_kinesis_quote_to_back_space</config_only>
           <block>
@@ -613,6 +616,7 @@
       <config_not>remap.kinesis_holding_back_space_to_option</config_not>
       <block>
         <inputsource_only>JAPANESE</inputsource_only>
+        <include path="../snippets/password_exception.xml" />
         <block>
           <config_only>nicola_kinesis_quote_to_back_space</config_only>
           <block>

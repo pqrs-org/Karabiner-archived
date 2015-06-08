@@ -17,6 +17,7 @@
   <include path="oyayubishiftinput_ignore_apps.xml" />
 
   <inputsource_only>JAPANESE</inputsource_only>
+  <include path="../snippets/password_exception.xml" />
 
   <!-- FKB7628-801、FMV-KB232ではハードウェア的に特殊なレイアウトになっているため、
        以下のようにする必要がある。
