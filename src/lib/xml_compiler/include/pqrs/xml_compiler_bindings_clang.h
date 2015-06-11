@@ -9,12 +9,6 @@ typedef void pqrs_xml_compiler;
 typedef void pqrs_xml_compiler_preferences_checkbox_node_tree;
 typedef void pqrs_xml_compiler_preferences_number_node_tree;
 
-typedef enum {
-  pqrs_xml_compiler_definition_type_appdef,
-  pqrs_xml_compiler_definition_type_inputsourcedef,
-  pqrs_xml_compiler_definition_type_windownamedef,
-} pqrs_xml_compiler_definition_type;
-
 // ------------------------------------------------------------
 int pqrs_xml_compiler_initialize(pqrs_xml_compiler** out,
                                  const char* system_xml_directory,
@@ -33,7 +27,18 @@ uint32_t pqrs_xml_compiler_get_symbol_map_value(const pqrs_xml_compiler* p, cons
 const char* pqrs_xml_compiler_get_symbol_map_name(const pqrs_xml_compiler* p, const char* type, uint32_t value);
 const char* pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index);
 int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* identifier);
-size_t pqrs_xml_compiler_get_definition_count(const pqrs_xml_compiler* p, pqrs_xml_compiler_definition_type type);
+size_t pqrs_xml_compiler_get_app_vector_size(const pqrs_xml_compiler* p);
+size_t pqrs_xml_compiler_get_inputsource_vector_size(const pqrs_xml_compiler* p);
+size_t pqrs_xml_compiler_get_window_name_vector_size(const pqrs_xml_compiler* p);
+bool pqrs_xml_compiler_is_app_matched(const pqrs_xml_compiler* p, uint32_t* appid, size_t index, const char* application_identifier);
+bool pqrs_xml_compiler_is_inputsource_matched(const pqrs_xml_compiler* p,
+                                              uint32_t* inputsource,
+                                              uint32_t* inputsource_detail,
+                                              size_t index,
+                                              const char* languagecode,
+                                              const char* inputsourceid,
+                                              const char* inputmodeid);
+bool pqrs_xml_compiler_is_window_name_matched(const pqrs_xml_compiler* p, uint32_t* windownameid, size_t index, const char* window_name);
 uint32_t pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier);
 uint32_t pqrs_xml_compiler_get_windownameid(const pqrs_xml_compiler* p, const char* window_name);
 uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,

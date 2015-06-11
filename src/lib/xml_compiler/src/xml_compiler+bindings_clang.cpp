@@ -90,20 +90,62 @@ int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* i
   return *v;
 }
 
-size_t pqrs_xml_compiler_get_definition_count(const pqrs_xml_compiler* p, pqrs_xml_compiler_definition_type type) {
+size_t pqrs_xml_compiler_get_app_vector_size(const pqrs_xml_compiler* p) {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (!xml_compiler) return 0;
 
-  switch (type) {
-  case pqrs_xml_compiler_definition_type_appdef:
-    return xml_compiler->get_app_vector_size();
-  case pqrs_xml_compiler_definition_type_inputsourcedef:
-    return xml_compiler->get_inputsource_vector_size();
-  case pqrs_xml_compiler_definition_type_windownamedef:
-    return xml_compiler->get_window_name_vector_size();
-  }
+  return xml_compiler->get_app_vector_size();
+}
 
-  return 0;
+size_t pqrs_xml_compiler_get_inputsource_vector_size(const pqrs_xml_compiler* p) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return 0;
+
+  return xml_compiler->get_inputsource_vector_size();
+}
+
+size_t pqrs_xml_compiler_get_window_name_vector_size(const pqrs_xml_compiler* p) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return 0;
+
+  return xml_compiler->get_window_name_vector_size();
+}
+
+bool pqrs_xml_compiler_is_app_matched(const pqrs_xml_compiler* p, uint32_t* appid, size_t index, const char* application_identifier) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return false;
+
+  if (!appid) return false;
+
+  return xml_compiler->is_app_matched(*appid, index, application_identifier != nullptr ? application_identifier : "");
+}
+
+bool pqrs_xml_compiler_is_inputsource_matched(const pqrs_xml_compiler* p,
+                                              uint32_t* inputsource,
+                                              uint32_t* inputsource_detail,
+                                              size_t index,
+                                              const char* languagecode,
+                                              const char* inputsourceid,
+                                              const char* inputmodeid) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return false;
+
+  if (!inputsource) return false;
+  if (!inputsource_detail) return false;
+
+  return xml_compiler->is_inputsource_matched(*inputsource, *inputsource_detail, index,
+                                              languagecode != nullptr ? languagecode : "",
+                                              inputsourceid != nullptr ? inputsourceid : "",
+                                              inputmodeid != nullptr ? inputmodeid : "");
+}
+
+bool pqrs_xml_compiler_is_window_name_matched(const pqrs_xml_compiler* p, uint32_t* windownameid, size_t index, const char* window_name) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return false;
+
+  if (!windownameid) return false;
+
+  return xml_compiler->is_window_name_matched(*windownameid, index, window_name != nullptr ? window_name : "");
 }
 
 uint32_t
