@@ -211,6 +211,73 @@ TEST(pqrs_xml_compiler, reload) {
   EXPECT_EQ("ConsumerKeyCode::BRIGHTNESS_UP", *(xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 2)));
   EXPECT_EQ(boost::none, xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 12345));
 
+  // system 6 + private 3 == 9
+  EXPECT_EQ(9, xml_compiler.get_app_vector_size());
+  // system 51 + private 1 == 52
+  EXPECT_EQ(52, xml_compiler.get_inputsource_vector_size());
+  // system 2 + private 0 == 2
+  EXPECT_EQ(2, xml_compiler.get_window_name_vector_size());
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL_APPLE")));
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "com.apple.Terminal")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH")));
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::MY_ENGLISH")));
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSource::ENGLISH")));
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::ENGLISH")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_inputsource_vector_size(); ++i) {
+      uint32_t inputsource = 0;
+      uint32_t inputsource_detail = 0;
+      if (xml_compiler.is_inputsource_matched(inputsource,
+                                              inputsource_detail,
+                                              i,
+                                              "en",
+                                              "com.apple.keylayout.US",
+                                              "")) {
+        actual.push_back(inputsource_detail);
+        actual.push_back(inputsource);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("WindowName::Gmail")));
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("WindowName::Google")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_window_name_vector_size(); ++i) {
+      uint32_t windownameid;
+
+      if (xml_compiler.is_window_name_matched(windownameid,
+                                              i,
+                                              "Example - Gmail")) {
+        actual.push_back(windownameid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
   EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map().get_optional("ApplicationType::VI"));
   EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::VI"),
             xml_compiler.get_appid("org.vim.MacVim"));

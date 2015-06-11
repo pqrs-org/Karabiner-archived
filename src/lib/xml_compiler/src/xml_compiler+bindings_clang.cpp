@@ -90,6 +90,22 @@ int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* i
   return *v;
 }
 
+size_t pqrs_xml_compiler_get_definition_count(const pqrs_xml_compiler* p, pqrs_xml_compiler_definition_type type) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return 0;
+
+  switch (type) {
+  case pqrs_xml_compiler_definition_type_appdef:
+    return xml_compiler->get_app_vector_size();
+  case pqrs_xml_compiler_definition_type_inputsourcedef:
+    return xml_compiler->get_inputsource_vector_size();
+  case pqrs_xml_compiler_definition_type_windownamedef:
+    return xml_compiler->get_window_name_vector_size();
+  }
+
+  return 0;
+}
+
 uint32_t
 pqrs_xml_compiler_get_appid(const pqrs_xml_compiler* p, const char* application_identifier) {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);

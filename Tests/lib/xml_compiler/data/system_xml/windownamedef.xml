@@ -7,4 +7,11 @@
     <regex> - Gmail$</regex>
   </windownamedef>
 
+  <windownamedef>
+    <name>Google</name>
+    <regex> - Gmail$</regex>
+    <regex>^Google Translate$</regex>
+    <regex>^Google Calendar$</regex>
+  </windownamedef>
+
 </root>

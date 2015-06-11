@@ -317,6 +317,90 @@ xml_compiler::get_config_index(const std::string& identifier) const {
   return boost::none;
 }
 
+bool xml_compiler::is_app_matched(uint32_t& appid, size_t index, const std::string& application_identifier) const {
+  if (index >= app_vector_.size()) {
+    return false;
+  }
+
+  const auto& item = app_vector_[index];
+  if (!item) return false;
+
+  if (!item->is_rules_matched(application_identifier)) {
+    return false;
+  }
+
+  auto name = item->get_name();
+  if (!name) return false;
+
+  auto v = symbol_map_.get_optional(std::string("ApplicationType::") + *name);
+  if (!v) return false;
+
+  appid = *v;
+  return true;
+}
+
+bool xml_compiler::is_inputsource_matched(uint32_t& inputsource,
+                                          uint32_t& inputsource_detail,
+                                          size_t index,
+                                          const std::string& languagecode,
+                                          const std::string& inputsourceid,
+                                          const std::string& inputmodeid) const {
+  if (index >= inputsource_vector_.size()) {
+    return false;
+  }
+
+  const auto& item = inputsource_vector_[index];
+  if (!item) return false;
+
+  if (!item->is_rules_matched(languagecode, inputsourceid, inputmodeid)) {
+    return false;
+  }
+
+  auto name = item->get_name();
+  if (!name) return false;
+
+  {
+    auto v = symbol_map_.get_optional(std::string("InputSource::") + *name);
+    if (!v) return false;
+    inputsource = *v;
+  }
+
+  auto detail = item->get_detail();
+  if (detail) {
+    auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *detail);
+    if (!v) return false;
+    inputsource_detail = *v;
+  } else {
+    auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *name);
+    if (!v) return false;
+    inputsource_detail = *v;
+  }
+
+  return true;
+}
+
+bool xml_compiler::is_window_name_matched(uint32_t& windownameid, size_t index, const std::string& window_name) const {
+  if (index >= window_name_vector_.size()) {
+    return false;
+  }
+
+  const auto& item = window_name_vector_[index];
+  if (!item) return false;
+
+  if (!item->is_rules_matched(window_name)) {
+    return false;
+  }
+
+  auto name = item->get_name();
+  if (!name) return false;
+
+  auto v = symbol_map_.get_optional(std::string("WindowName::") + *name);
+  if (!v) return false;
+
+  windownameid = *v;
+  return true;
+}
+
 uint32_t
 xml_compiler::get_appid(const std::string& application_identifier) const {
   for (const auto& it : app_vector_) {

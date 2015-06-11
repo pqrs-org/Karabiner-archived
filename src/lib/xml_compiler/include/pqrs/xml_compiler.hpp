@@ -64,6 +64,17 @@ public:
 
   boost::optional<const std::string&> get_identifier(int config_index) const;
   boost::optional<int> get_config_index(const std::string& identifier) const;
+  size_t get_app_vector_size(void) const { return app_vector_.size(); }
+  size_t get_inputsource_vector_size(void) const { return inputsource_vector_.size(); }
+  size_t get_window_name_vector_size(void) const { return window_name_vector_.size(); }
+  bool is_app_matched(uint32_t& appid, size_t index, const std::string& application_identifier) const;
+  bool is_inputsource_matched(uint32_t& inputsource,
+                              uint32_t& inputsource_detail,
+                              size_t index,
+                              const std::string& languagecode,
+                              const std::string& inputsourceid,
+                              const std::string& inputmodeid) const;
+  bool is_window_name_matched(uint32_t& windownameid, size_t index, const std::string& window_name) const;
   uint32_t get_appid(const std::string& application_identifier) const;
   uint32_t get_windownameid(const std::string& window_name) const;
   bool is_vk_change_inputsource_matched(uint32_t keycode,
