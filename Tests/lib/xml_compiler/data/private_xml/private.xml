@@ -44,9 +44,14 @@
     <equal>  com.apple.appstore  </equal>
   </appdef>
 
-  <!-- overwrite system value -->
   <appdef>
     <appname>TERMINAL_APPLE</appname>
+    <equal>com.apple.Terminal</equal>
+  </appdef>
+
+  <!-- overwrite system value -->
+  <appdef>
+    <appname>TERMINAL</appname>
     <equal>com.apple.Terminal</equal>
   </appdef>
 

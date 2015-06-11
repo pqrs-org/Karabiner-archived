@@ -73,6 +73,11 @@ void xml_compiler::app_loader::traverse(const extracted_ptree& pt) const {
         continue;
       }
 
+      // Ignore already registered items.
+      if (symbol_map_.get_optional("ApplicationType", *(newapp->get_name()))) {
+        continue;
+      }
+
       symbol_map_.add("ApplicationType", *(newapp->get_name()));
       app_vector_.push_back(newapp);
     }

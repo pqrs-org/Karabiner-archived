@@ -211,8 +211,8 @@ TEST(pqrs_xml_compiler, reload) {
   EXPECT_EQ("ConsumerKeyCode::BRIGHTNESS_UP", *(xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 2)));
   EXPECT_EQ(boost::none, xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 12345));
 
-  // system 6 + private 3 == 9
-  EXPECT_EQ(9, xml_compiler.get_app_vector_size());
+  // system 6 + private 4 - duplicated 2 == 8
+  EXPECT_EQ(8, xml_compiler.get_app_vector_size());
   // system 51 + private 1 == 52
   EXPECT_EQ(52, xml_compiler.get_inputsource_vector_size());
   // system 2 + private 0 == 2
@@ -282,18 +282,18 @@ TEST(pqrs_xml_compiler, reload) {
   EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::VI"),
             xml_compiler.get_appid("org.vim.MacVim"));
 
-  EXPECT_EQ(boost::optional<uint32_t>(7), xml_compiler.get_symbol_map().get_optional("ApplicationType::SPACE_IS_IGNORED"));
+  EXPECT_EQ(boost::optional<uint32_t>(6), xml_compiler.get_symbol_map().get_optional("ApplicationType::SPACE_IS_IGNORED"));
 
   // com.apple.Terminal is overwritten by private.xml.
   EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL_APPLE"),
             xml_compiler.get_appid("com.apple.Terminal"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
             xml_compiler.get_appid("com.googlecode.iterm2"));
 
   // org.gnu.Emacs is overwritten by private.xml.
   EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::EMACS"),
             xml_compiler.get_appid("org.gnu.Emacs"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::EMACS"),
+  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
             xml_compiler.get_appid("org.gnu.AquamacsEmacs"));
 
   EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::PREFIX_TEST"),
