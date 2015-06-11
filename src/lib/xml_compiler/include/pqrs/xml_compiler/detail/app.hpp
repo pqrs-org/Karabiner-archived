@@ -30,6 +30,7 @@ public:
   void traverse(const extracted_ptree& pt) const;
 
 private:
+  bool exists(const std::string& name) const;
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
   std::vector<std::shared_ptr<app>>& app_vector_;

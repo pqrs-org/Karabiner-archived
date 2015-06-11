@@ -74,7 +74,7 @@ void xml_compiler::app_loader::traverse(const extracted_ptree& pt) const {
       }
 
       // Ignore already registered items.
-      if (symbol_map_.get_optional("ApplicationType", *(newapp->get_name()))) {
+      if (exists(*(newapp->get_name()))) {
         continue;
       }
 
@@ -82,5 +82,15 @@ void xml_compiler::app_loader::traverse(const extracted_ptree& pt) const {
       app_vector_.push_back(newapp);
     }
   }
+}
+
+bool xml_compiler::app_loader::exists(const std::string& name) const {
+  for (const auto& it : app_vector_) {
+    auto n = it->get_name();
+    if (n && *n == name) {
+      return true;
+    }
+  }
+  return false;
 }
 }
