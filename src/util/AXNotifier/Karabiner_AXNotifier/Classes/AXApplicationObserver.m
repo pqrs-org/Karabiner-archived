@@ -95,6 +95,14 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         // https://github.com/tekezo/Karabiner/issues/337
         [[runningApplication bundleIdentifier] isEqualToString:@"com.screencastomatic.app"] ||
 
+        // RazorSQL
+        // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
+        [[runningApplication bundleIdentifier] isEqualToString:@"com.razorsql.RazorSQL"] ||
+
+        // EditRocket
+        // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
+        [[runningApplication bundleIdentifier] isEqualToString:@"com.editrocket.EditRocket"] ||
+
         // Putting false in order to allow tailing || in the last valid item.
         false) {
 #if 0
