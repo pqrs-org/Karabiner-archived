@@ -19,7 +19,7 @@ Since 10.6.0
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * ModifierFlag pattern matching has been introduced into `Option::KEYTOKEY_AFTER_KEYUP`.
 * Fixed issues:
-    * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic)
+    * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic, RazorSQL, EditRocket)
 
 Version 10.6.0
 --------------
