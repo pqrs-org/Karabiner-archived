@@ -45,6 +45,11 @@ private:
   static KeyboardType current_keyboardType_;
   static DeviceIdentifier current_deviceIdentifier_;
   static BridgeWorkSpaceData current_workspacedata_;
+  static Vector_WorkspaceAppId current_workspaceAppIds_;
+  static Vector_WorkspaceInputSourceId current_workspaceInputSourceIds_;
+  static Vector_WorkspaceInputSourceDetailId current_workspaceInputSourceDetailIds_;
+  static WorkspaceUIElementRoleId current_workspaceUIElementRoleId_;
+  static Vector_WorkspaceWindowNameId current_workspaceWindowNameIds_;
   static LastPressedPhysicalKey current_lastpressedphysicalkey_;
 
   static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];

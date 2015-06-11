@@ -8,6 +8,12 @@ AbsoluteTime CommonData::current_ts_;
 KeyboardType CommonData::current_keyboardType_;
 DeviceIdentifier CommonData::current_deviceIdentifier_;
 BridgeWorkSpaceData CommonData::current_workspacedata_;
+Vector_WorkspaceAppId CommonData::current_workspaceAppIds_;
+Vector_WorkspaceInputSourceId CommonData::current_workspaceInputSourceIds_;
+Vector_WorkspaceInputSourceDetailId CommonData::current_workspaceInputSourceDetailIds_;
+WorkspaceUIElementRoleId CommonData::current_workspaceUIElementRoleId_;
+Vector_WorkspaceWindowNameId CommonData::current_workspaceWindowNameIds_;
+
 LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
 char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 

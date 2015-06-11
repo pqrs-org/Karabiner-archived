@@ -68,4 +68,33 @@ enum class PhysicalEventType {
   // We do not provide PhysicalEventType::MODIFY. Use DOWN or UP for modifier events.
 };
 
+// ========================================
+#define DECLARE_WORKSPACE_CLASS(CLASSNAME)                                   \
+  class CLASSNAME final {                                                    \
+  public:                                                                    \
+    CLASSNAME(void) : value_(0) {}                                           \
+    explicit CLASSNAME(uint32_t v) : value_(v) {}                            \
+    uint32_t get(void) const { return value_; }                              \
+    bool operator==(CLASSNAME other) const { return value_ == other.get(); } \
+    bool operator!=(CLASSNAME other) const { return !(*this == other); }     \
+                                                                             \
+  private:                                                                   \
+    uint32_t value_;                                                         \
+  };
+
+DECLARE_WORKSPACE_CLASS(WorkspaceAppId);
+DECLARE_VECTOR(WorkspaceAppId);
+
+DECLARE_WORKSPACE_CLASS(WorkspaceInputSourceId);
+DECLARE_VECTOR(WorkspaceInputSourceId);
+
+DECLARE_WORKSPACE_CLASS(WorkspaceInputSourceDetailId);
+DECLARE_VECTOR(WorkspaceInputSourceDetailId);
+
+DECLARE_WORKSPACE_CLASS(WorkspaceUIElementRoleId);
+// no vector
+
+DECLARE_WORKSPACE_CLASS(WorkspaceWindowNameId);
+DECLARE_VECTOR(WorkspaceWindowNameId);
+
 #endif
