@@ -68,10 +68,18 @@ enum {
     NSString* misc = [NSString stringWithFormat:@"misc:%@", dict[@"misc"]];
 
     [string appendFormat:@"%@ %@ %@ %@ %@\n",
-                         [eventType stringByPaddingToLength:25 withString:@" " startingAtIndex:0],
-                         [code stringByPaddingToLength:15 withString:@" " startingAtIndex:0],
-                         [name stringByPaddingToLength:20 withString:@" " startingAtIndex:0],
-                         [flags stringByPaddingToLength:40 withString:@" " startingAtIndex:0],
+                         [eventType stringByPaddingToLength:25
+                                                 withString:@" "
+                                            startingAtIndex:0],
+                         [code stringByPaddingToLength:15
+                                            withString:@" "
+                                       startingAtIndex:0],
+                         [name stringByPaddingToLength:20
+                                            withString:@" "
+                                       startingAtIndex:0],
+                         [flags stringByPaddingToLength:40
+                                             withString:@" "
+                                        startingAtIndex:0],
                          misc];
   }
 

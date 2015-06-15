@@ -103,21 +103,21 @@
 - (void)systemApplicationObserversRefreshTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      for (NSString* bundleIdentifier in @[@"com.apple.systemuiserver",
-                                           @"com.apple.notificationcenterui"]) {
+      for (NSString* bundleIdentifier in @[ @"com.apple.systemuiserver",
+                                            @"com.apple.notificationcenterui" ]) {
         {
           // Remove if terminated.
           AXApplicationObserver* o = systemApplicationObservers_[bundleIdentifier];
           if (o) {
             NSRunningApplication* runningApplication = o.runningApplication;
-            if (! runningApplication || runningApplication.terminated) {
+            if (!runningApplication || runningApplication.terminated) {
               NSLog(@"Remove %@ from systemApplicationObservers_", bundleIdentifier);
               [systemApplicationObservers_ removeObjectForKey:bundleIdentifier];
             }
           }
         }
 
-        if (! systemApplicationObservers_[bundleIdentifier]) {
+        if (!systemApplicationObservers_[bundleIdentifier]) {
           NSArray* runningApplications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
           if ([runningApplications count] > 0) {
             @try {
@@ -137,7 +137,7 @@
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      if (! runningApplicationForAXApplicationObserver_) {
+      if (!runningApplicationForAXApplicationObserver_) {
         retryCounter_ = 0;
 
       } else {

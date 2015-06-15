@@ -178,9 +178,9 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
         }
       }
 
-      [fingerStatus add:identifier active:(! ignored)];
+      [fingerStatus add:identifier active:(!ignored)];
 
-      if (! ignored) {
+      if (!ignored) {
         ++valid_fingers;
       }
 
@@ -422,19 +422,21 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   global_ignoredAreaView_ = ignoredAreaView_;
   global_client_ = client_;
 
-  sessionObserver_ = [[SessionObserver alloc] init:1 active:^{
-    [self registerIONotification];
-    [self registerWakeNotification];
+  sessionObserver_ = [[SessionObserver alloc] init:1
+      active:^{
+        [self registerIONotification];
+        [self registerWakeNotification];
 
-    // sleep until devices are settled.
-    [NSThread sleepForTimeInterval:1.0];
+        // sleep until devices are settled.
+        [NSThread sleepForTimeInterval:1.0];
 
-    [self setcallback:YES];
-  } inactive:^{
-    [self unregisterIONotification];
-    [self unregisterWakeNotification];
-    [self setcallback:NO];
-  }];
+        [self setcallback:YES];
+      }
+      inactive:^{
+        [self unregisterIONotification];
+        [self unregisterWakeNotification];
+        [self setcallback:NO];
+      }];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(distributedObserver_kKarabinerServerDidLaunchNotification:)

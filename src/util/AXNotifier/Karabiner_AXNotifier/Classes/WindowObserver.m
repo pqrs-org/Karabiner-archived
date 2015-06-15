@@ -257,7 +257,7 @@
           NSString* key = targetWindows_[@(windowNumber)];
           if (key) {
             if (isOnScreen) {
-              if (! shown_[key]) {
+              if (!shown_[key]) {
                 NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
                 if (bundleIdentifier) {
                   shown_[key] = bundleIdentifier;

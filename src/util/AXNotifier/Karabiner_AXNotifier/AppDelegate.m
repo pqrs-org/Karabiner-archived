@@ -71,9 +71,9 @@ send:
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
       focusedUIElementInformation_ = @{
-        @"BundleIdentifier": d[@"bundleIdentifier"],
-        @"WindowName": d[@"title"],
-        @"UIElementRole": d[@"role"],
+        @"BundleIdentifier" : d[@"bundleIdentifier"],
+        @"WindowName" : d[@"title"],
+        @"UIElementRole" : d[@"role"],
       };
       [self tellToServer];
     }
@@ -86,9 +86,9 @@ send:
       NSDictionary* d = [notification userInfo];
       if ([d[@"visibility"] isEqualToNumber:@YES]) {
         overlaidWindowElementInformation_ = @{
-          @"BundleIdentifier": d[@"bundleIdentifier"],
-          @"WindowName": d[@"windowName"],
-          @"UIElementRole": d[@"role"],
+          @"BundleIdentifier" : d[@"bundleIdentifier"],
+          @"WindowName" : d[@"windowName"],
+          @"UIElementRole" : d[@"role"],
         };
       } else {
         overlaidWindowElementInformation_ = nil;
@@ -102,11 +102,11 @@ send:
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       if (AXIsProcessTrusted()) {
-        if (! [[NSApplication sharedApplication] isHidden]) {
+        if (![[NSApplication sharedApplication] isHidden]) {
           [[NSApplication sharedApplication] hide:self];
         }
 
-        if (! axEnabled_) {
+        if (!axEnabled_) {
           axEnabled_ = YES;
 
           // Renew AXApplicationObserverManager
