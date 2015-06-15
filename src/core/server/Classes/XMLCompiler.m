@@ -311,6 +311,21 @@
   }
 }
 
+- (NSArray*)appids:(NSString*)bundleIdentifier {
+  @synchronized(self) {
+    NSMutableArray* ids = [NSMutableArray new];
+    size_t size = pqrs_xml_compiler_get_app_vector_size(pqrs_xml_compiler_);
+    const char* identifier = [bundleIdentifier UTF8String];
+    for (size_t i = 0; i < size; ++i) {
+      uint32_t appid = 0;
+      if (pqrs_xml_compiler_is_app_matched(pqrs_xml_compiler_, &appid, i, identifier)) {
+        [ids addObject:@(appid)];
+      }
+    }
+    return ids;
+  }
+}
+
 - (uint32_t)windownameid:(NSString*)windowName {
   @synchronized(self) {
     return pqrs_xml_compiler_get_windownameid(pqrs_xml_compiler_, [windowName UTF8String]);
