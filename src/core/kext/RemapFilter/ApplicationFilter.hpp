@@ -12,21 +12,18 @@ public:
     targets_.reserve(length);
 
     for (size_t i = 0; i < length; ++i) {
-      targets_.push_back(AddValue(vec[i]));
+      targets_.push_back(WorkspaceAppId(vec[i]));
     }
   }
 
-  bool
-  isblocked(void) override {
-    unsigned int current = CommonData::getcurrent_workspacedata().applicationtype;
-
+  bool isblocked(void) override {
     if (get_type() == BRIDGE_FILTERTYPE_APPLICATION_NOT ||
         get_type() == BRIDGE_FILTERTYPE_APPLICATION_ONLY) {
 
       bool isnot = (get_type() == BRIDGE_FILTERTYPE_APPLICATION_NOT);
 
       for (size_t i = 0; i < targets_.size(); ++i) {
-        if (targets_[i] == current) {
+        if (CommonData::getcurrent_workspaceAppIds().is_include(targets_[i])) {
           return isnot ? true : false;
         }
       }
@@ -39,7 +36,7 @@ public:
   }
 
 private:
-  Vector_AddValue targets_;
+  Vector_WorkspaceAppId targets_;
 };
 }
 }
