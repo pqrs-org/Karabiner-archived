@@ -83,7 +83,7 @@ enum class PhysicalEventType {
   };
 
 DECLARE_WORKSPACE_CLASS(WorkspaceAppId);
-DECLARE_VECTOR(WorkspaceAppId);
+DECLARE_VECTOR_WITH_HELPER(WorkspaceAppId);
 
 DECLARE_WORKSPACE_CLASS(WorkspaceInputSourceId);
 DECLARE_VECTOR(WorkspaceInputSourceId);
