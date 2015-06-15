@@ -75,7 +75,6 @@ public:
                               const std::string& inputsourceid,
                               const std::string& inputmodeid) const;
   bool is_window_name_matched(uint32_t& windownameid, size_t index, const std::string& window_name) const;
-  uint32_t get_appid(const std::string& application_identifier) const;
   uint32_t get_windownameid(const std::string& window_name) const;
   bool is_vk_change_inputsource_matched(uint32_t keycode,
                                         const std::string& languagecode,

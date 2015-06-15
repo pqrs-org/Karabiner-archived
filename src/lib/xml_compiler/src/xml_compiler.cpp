@@ -402,27 +402,6 @@ bool xml_compiler::is_window_name_matched(uint32_t& windownameid, size_t index, 
 }
 
 uint32_t
-xml_compiler::get_appid(const std::string& application_identifier) const {
-  for (const auto& it : app_vector_) {
-    if (!it) continue;
-
-    if (it->is_rules_matched(application_identifier)) {
-      auto name = it->get_name();
-      if (!name) goto notfound;
-
-      auto v = symbol_map_.get_optional(std::string("ApplicationType::") + *name);
-      if (!v) goto notfound;
-
-      return *v;
-    }
-  }
-
-notfound:
-  // return ApplicationType::UNKNOWN (== 0)
-  return 0;
-}
-
-uint32_t
 xml_compiler::get_windownameid(const std::string& window_name) const {
   for (const auto& it : window_name_vector_) {
     if (!it) continue;

@@ -4,12 +4,6 @@
 
 @implementation WorkSpaceData
 
-- (unsigned int)getApplicationType:(NSString *)name {
-  if (!name) return 0;
-
-  return [xmlCompiler_ appid:name];
-}
-
 - (unsigned int)getWindowName:(NSString *)name {
   if (!name) return 0;
 

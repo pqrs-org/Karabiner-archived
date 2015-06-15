@@ -305,12 +305,6 @@
   }
 }
 
-- (uint32_t)appid:(NSString*)bundleIdentifier {
-  @synchronized(self) {
-    return pqrs_xml_compiler_get_appid(pqrs_xml_compiler_, [bundleIdentifier UTF8String]);
-  }
-}
-
 - (NSArray*)appids:(NSString*)bundleIdentifier {
   @synchronized(self) {
     NSMutableArray* ids = [NSMutableArray new];
@@ -322,6 +316,11 @@
         [ids addObject:@(appid)];
       }
     }
+
+    if ([ids count] == 0) {
+      [ids addObject:@0];
+    }
+
     return ids;
   }
 }

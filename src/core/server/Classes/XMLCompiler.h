@@ -21,7 +21,6 @@
 - (NSString*)identifier:(uint32_t)config_index;
 - (NSString*)symbolMapName:(NSString*)type value:(uint32_t)value;
 - (int)config_index:(NSString*)identifier;
-- (uint32_t)appid:(NSString*)bundleIdentifier;
 - (NSArray*)appids:(NSString*)bundleIdentifier;
 - (uint32_t)windownameid:(NSString*)windowName;
 - (uint32_t)uielementroleid:(NSString*)uiElementRole;

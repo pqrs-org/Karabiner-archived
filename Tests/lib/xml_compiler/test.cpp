@@ -218,6 +218,7 @@ TEST(pqrs_xml_compiler, reload) {
   // system 2 + private 0 == 2
   EXPECT_EQ(2, xml_compiler.get_window_name_vector_size());
 
+  // ---------------------------------------
   {
     std::vector<uint32_t> expect;
     expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL_APPLE")));
@@ -234,6 +235,153 @@ TEST(pqrs_xml_compiler, reload) {
     EXPECT_EQ(expect, actual);
   }
 
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::VI")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "org.vim.MacVim")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "com.googlecode.iterm2")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::EMACS")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "org.gnu.Emacs")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "org.gnu.AquamacsEmacs")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::PREFIX_TEST")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "org.pqrs.prefix.test")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::PREFIX_TEST")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "org.pqrs.prefix.test1111")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "dummy.org.pqrs.prefix.test")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::SUFFIX_TEST")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "test.suffix.pqrs.org")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("ApplicationType::SUFFIX_TEST")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "1111test.suffix.pqrs.org")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  {
+    std::vector<uint32_t> expect;
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_app_vector_size(); ++i) {
+      uint32_t appid = 0;
+      if (xml_compiler.is_app_matched(appid, i, "test.suffix.pqrs.org.dummy")) {
+        actual.push_back(appid);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+  // ---------------------------------------
   {
     std::vector<uint32_t> expect;
     expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH")));
@@ -278,37 +426,7 @@ TEST(pqrs_xml_compiler, reload) {
     EXPECT_EQ(expect, actual);
   }
 
-  EXPECT_EQ(boost::optional<uint32_t>(5), xml_compiler.get_symbol_map().get_optional("ApplicationType::VI"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::VI"),
-            xml_compiler.get_appid("org.vim.MacVim"));
-
   EXPECT_EQ(boost::optional<uint32_t>(6), xml_compiler.get_symbol_map().get_optional("ApplicationType::SPACE_IS_IGNORED"));
-
-  // com.apple.Terminal is overwritten by private.xml.
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::TERMINAL_APPLE"),
-            xml_compiler.get_appid("com.apple.Terminal"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
-            xml_compiler.get_appid("com.googlecode.iterm2"));
-
-  // org.gnu.Emacs is overwritten by private.xml.
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::EMACS"),
-            xml_compiler.get_appid("org.gnu.Emacs"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
-            xml_compiler.get_appid("org.gnu.AquamacsEmacs"));
-
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::PREFIX_TEST"),
-            xml_compiler.get_appid("org.pqrs.prefix.test"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::PREFIX_TEST"),
-            xml_compiler.get_appid("org.pqrs.prefix.test1111"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
-            xml_compiler.get_appid("dummy.org.pqrs.prefix.test"));
-
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::SUFFIX_TEST"),
-            xml_compiler.get_appid("test.suffix.pqrs.org"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::SUFFIX_TEST"),
-            xml_compiler.get_appid("1111test.suffix.pqrs.org"));
-  EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("ApplicationType::UNKNOWN"),
-            xml_compiler.get_appid("test.suffix.pqrs.org.dummy"));
 
   EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map().get_optional("DeviceVendor::HEWLETT_PACKARD"));
   EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map().get_optional("DeviceVendor::SPACE_IS_IGNORED"));
