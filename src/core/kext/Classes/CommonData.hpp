@@ -31,6 +31,7 @@ public:
       current_workspaceAppIds_.push_back(WorkspaceAppId(ids[i]));
     }
   }
+  static const Vector_WorkspaceAppId& getcurrent_workspaceAppIds(void) { return current_workspaceAppIds_; }
   static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) { current_workspacedata_ = newval; }
   static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
