@@ -81,8 +81,6 @@ private:
     };
   };
 
-
-
   const xml_compiler& xml_compiler_;
   symbol_map& symbol_map_;
   remapclasses_initialize_vector& remapclasses_initialize_vector_;
