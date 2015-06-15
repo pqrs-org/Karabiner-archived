@@ -23,36 +23,36 @@ bool USERCLIENT_KEXT_CLASSNAME::notification_enabled_ = false;
 
 IOExternalMethodDispatch USERCLIENT_KEXT_CLASSNAME::methods_[BRIDGE_USERCLIENT__END__] = {
     {
-     // BRIDGE_USERCLIENT_OPEN
-     reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
-     1,                                                               // One scalar input value.
-     0,                                                               // No struct input value.
-     1,                                                               // One scalar output value.
-     0                                                                // No struct output value.
+        // BRIDGE_USERCLIENT_OPEN
+        reinterpret_cast<IOExternalMethodAction>(&static_callback_open), // Method pointer.
+        1,                                                               // One scalar input value.
+        0,                                                               // No struct input value.
+        1,                                                               // One scalar output value.
+        0                                                                // No struct output value.
     },
     {
-     // BRIDGE_USERCLIENT_CLOSE
-     reinterpret_cast<IOExternalMethodAction>(&static_callback_close), // Method pointer.
-     0,                                                                // No scalar input values.
-     0,                                                                // No struct input value.
-     0,                                                                // No scalar output values.
-     0                                                                 // No struct output value.
+        // BRIDGE_USERCLIENT_CLOSE
+        reinterpret_cast<IOExternalMethodAction>(&static_callback_close), // Method pointer.
+        0,                                                                // No scalar input values.
+        0,                                                                // No struct input value.
+        0,                                                                // No scalar output values.
+        0                                                                 // No struct output value.
     },
     {
-     // BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION
-     reinterpret_cast<IOExternalMethodAction>(&static_callback_synchronized_communication), // Method pointer.
-     0,                                                                                     // No scalar input values.
-     sizeof(BridgeUserClientStruct),                                                        // The size of the input struct.
-     1,                                                                                     // One scalar output value.
-     0,                                                                                     // No struct output value.
+        // BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION
+        reinterpret_cast<IOExternalMethodAction>(&static_callback_synchronized_communication), // Method pointer.
+        0,                                                                                     // No scalar input values.
+        sizeof(BridgeUserClientStruct),                                                        // The size of the input struct.
+        1,                                                                                     // One scalar output value.
+        0,                                                                                     // No struct output value.
     },
     {
-     // BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT
-     reinterpret_cast<IOExternalMethodAction>(&static_callback_notification_from_kext), // Method pointer.
-     0,                                                                                 // No scalar input values.
-     0,                                                                                 // No struct input value.
-     0,                                                                                 // No scalar output values.
-     0                                                                                  // No struct output value.
+        // BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT
+        reinterpret_cast<IOExternalMethodAction>(&static_callback_notification_from_kext), // Method pointer.
+        0,                                                                                 // No scalar input values.
+        0,                                                                                 // No struct input value.
+        0,                                                                                 // No scalar output values.
+        0                                                                                  // No struct output value.
     }};
 
 // ============================================================

@@ -31,7 +31,7 @@
     [self load:YES];
     [outlineview_ reloadData];
     [self filter:self];
-    if (! ischeckbox_) {
+    if (!ischeckbox_) {
       [self expand:self];
     }
   });
