@@ -105,6 +105,11 @@
     <productname>APPLE_WIRELESS_KEYBOARD_0x0255</productname>
     <productid>0x0255</productid>
   </deviceproductdef>
+  
+  <deviceproductdef>
+    <productname>APPLE_WIRELESS_KEYBOARD_0x0256</productname>
+    <productid>0x0256</productid>
+  </deviceproductdef>
 
   <deviceproductdef>
     <productname>APPLE_WIRELESS_TRACKPAD_0x030e</productname>
