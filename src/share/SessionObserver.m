@@ -43,22 +43,22 @@
   // Therefore, we have to check session state in timer.
 
   dispatch_async(dispatch_get_main_queue(), ^{
-      BOOL currentState = [self isUserActive];
-      if (lastState_ != currentState) {
-        NSLog(@"Session state has been changed. (%s)", currentState ? "active" : "inactive");
-        lastState_ = currentState;
+    BOOL currentState = [self isUserActive];
+    if (lastState_ != currentState) {
+      NSLog(@"Session state has been changed. (%s)", currentState ? "active" : "inactive");
+      lastState_ = currentState;
 
-        if (currentState) {
-          if (active_) {
-            active_();
-          }
+      if (currentState) {
+        if (active_) {
+          active_();
+        }
 
-        } else {
-          if (inactive_) {
-            inactive_();
-          }
+      } else {
+        if (inactive_) {
+          inactive_();
         }
       }
+    }
   });
 }
 
