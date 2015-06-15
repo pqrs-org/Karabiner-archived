@@ -22,6 +22,7 @@
 - (void)disconnect_from_kext;
 
 - (void)send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata;
+- (void)send_uint32_array_to_kext:(uint32_t)type array:(NSArray*)array;
 - (void)send_config_to_kext;
 - (void)set_config_one:(struct BridgeSetConfigOne*)bridgeSetConfigOne;
 - (NSArray*)device_information:(NSInteger)type;

@@ -21,77 +21,74 @@
 - (void)callback_NotificationFromKext:(uint32_t)type option:(uint32_t)option {
   dispatch_async(dispatch_get_main_queue(), ^{
     switch (type) {
-      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED:
-        {
-          uint32_t enabled = 0;
+    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED: {
+      uint32_t enabled = 0;
 
-          struct BridgeUserClientStruct bridgestruct;
-          bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED;
-          bridgestruct.option = option;
-          bridgestruct.data   = (user_addr_t)(&enabled);
-          bridgestruct.size   = sizeof(enabled);
+      struct BridgeUserClientStruct bridgestruct;
+      bridgestruct.type = BRIDGE_USERCLIENT_TYPE_GET_CONFIG_ENABLED;
+      bridgestruct.option = option;
+      bridgestruct.data = (user_addr_t)(&enabled);
+      bridgestruct.size = sizeof(enabled);
 
-          if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) return;
+      if (![userClient_userspace_ synchronized_communication:&bridgestruct]) return;
 
-          uint32_t configindex = option;
-          NSString* name = [xmlCompiler_ identifier:(int)(configindex)];
-          if (name) {
-            // Do not call set_config_one here. (== Call setValue with tellToKext:NO.)
-            [preferencesManager_ setValue:enabled forName:name tellToKext:NO];
+      uint32_t configindex = option;
+      NSString* name = [xmlCompiler_ identifier:(int)(configindex)];
+      if (name) {
+        // Do not call set_config_one here. (== Call setValue with tellToKext:NO.)
+        [preferencesManager_ setValue:enabled forName:name tellToKext:NO];
+      }
+      break;
+    }
+
+    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED: {
+      char buf[512];
+
+      struct BridgeUserClientStruct bridgestruct;
+      bridgestruct.type = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
+      bridgestruct.option = option;
+      bridgestruct.data = (user_addr_t)(buf);
+      bridgestruct.size = sizeof(buf);
+
+      if (![userClient_userspace_ synchronized_communication:&bridgestruct]) return;
+
+      [statusMessageManager_ setStatusMessage:option message:@(buf)];
+      break;
+    }
+
+    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
+      [workSpaceData_ selectInputSource:option];
+      break;
+
+    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL: {
+      NSString* url = [xmlCompiler_ url:option];
+      if (url) {
+        NSString* urlType = [xmlCompiler_ urlType:option];
+
+        if ([urlType isEqualToString:@"shell"]) {
+          [[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[ @"-c", url ]] waitUntilExit];
+        } else if ([urlType isEqualToString:@"file"]) {
+          [[NSWorkspace sharedWorkspace] openFile:url];
+        } else {
+          BOOL openInBackground = [xmlCompiler_ urlIsBackground:option];
+          if (openInBackground) {
+            NSArray* urls = [NSArray arrayWithObject:[NSURL URLWithString:url]];
+            [[NSWorkspace sharedWorkspace] openURLs:urls
+                            withAppBundleIdentifier:nil
+                                            options:NSWorkspaceLaunchWithoutActivation
+                     additionalEventParamDescriptor:nil
+                                  launchIdentifiers:nil];
+          } else {
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
           }
-          break;
         }
+      }
+      break;
+    }
 
-      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_STATUS_MESSAGE_UPDATED:
-        {
-          char buf[512];
-
-          struct BridgeUserClientStruct bridgestruct;
-          bridgestruct.type   = BRIDGE_USERCLIENT_TYPE_GET_STATUS_MESSAGE;
-          bridgestruct.option = option;
-          bridgestruct.data   = (user_addr_t)(buf);
-          bridgestruct.size   = sizeof(buf);
-
-          if (! [userClient_userspace_ synchronized_communication:&bridgestruct]) return;
-
-          [statusMessageManager_ setStatusMessage:option message:@(buf)];
-          break;
-        }
-
-      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-        [workSpaceData_ selectInputSource:option];
-        break;
-
-      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL:
-        {
-          NSString* url = [xmlCompiler_ url:option];
-          if (url) {
-            NSString* urlType = [xmlCompiler_ urlType:option];
-
-            if ([urlType isEqualToString:@"shell"]) {
-              [[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[@"-c", url]] waitUntilExit];
-            } else if ([urlType isEqualToString:@"file"]) {
-              [[NSWorkspace sharedWorkspace] openFile:url];
-            } else {
-              BOOL openInBackground = [xmlCompiler_ urlIsBackground:option];
-              if (openInBackground) {
-                NSArray* urls = [NSArray arrayWithObject:[NSURL URLWithString:url]];
-                [[NSWorkspace sharedWorkspace] openURLs:urls
-                                withAppBundleIdentifier:nil
-                                                options:NSWorkspaceLaunchWithoutActivation
-                         additionalEventParamDescriptor:nil
-                                      launchIdentifiers:nil];
-              } else {
-                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
-              }
-            }
-          }
-          break;
-        }
-
-      case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
-        [iohidPostEventWrapper_ postKey:option];
-        break;
+    case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
+      [iohidPostEventWrapper_ postKey:option];
+      break;
     }
   });
 }
@@ -169,7 +166,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      if (! [timer isValid]) {
+      if (![timer isValid]) {
         // disconnect_from_kext is already called.
         // return immediately.
         return;
@@ -343,6 +340,28 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   bridgestruct.size = sizeof(*bridgeworkspacedata);
 
   [userClient_userspace_ synchronized_communication:&bridgestruct];
+}
+
+- (void)send_uint32_array_to_kext:(uint32_t)type array:(NSArray*)array {
+  NSUInteger count = [array count];
+  if (count > 0) {
+    size_t size = count * sizeof(uint32_t);
+    uint32_t* data = (uint32_t*)(malloc(size));
+
+    for (NSUInteger i = 0; i < count; ++i) {
+      data[i] = [array[i] unsignedIntValue];
+    }
+
+    struct BridgeUserClientStruct bridgestruct;
+    bridgestruct.type = type;
+    bridgestruct.option = 0;
+    bridgestruct.data = (user_addr_t)(data);
+    bridgestruct.size = size;
+
+    [userClient_userspace_ synchronized_communication:&bridgestruct];
+
+    free(data);
+  }
 }
 
 - (NSArray*)device_information:(NSInteger)type {
