@@ -42,8 +42,29 @@
 
 // ----------------------------------------
 - (void)send_workspacedata_to_kext {
-  [clientForKernelspace send_workspacedata_to_kext:&bridgeworkspacedata_];
-  [clientForKernelspace send_uint32_array_to_kext:BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA_APP_IDS array:workspaceAppIds_];
+  NSMutableArray* workspaceIds = [NSMutableArray new];
+  // Add dummy item to ensure send data.
+  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_NONE)];
+  [workspaceIds addObject:@0];
+
+  for (NSNumber* n in workspaceAppIds_) {
+    [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_APP_ID)];
+    [workspaceIds addObject:n];
+  }
+
+  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_INPUT_SOURCE_ID)];
+  [workspaceIds addObject:@(bridgeworkspacedata_.inputsource)];
+
+  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_INPUT_SOURCE_DETAIL_ID)];
+  [workspaceIds addObject:@(bridgeworkspacedata_.inputsourcedetail)];
+
+  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID)];
+  [workspaceIds addObject:@(bridgeworkspacedata_.uielementrole)];
+
+  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID)];
+  [workspaceIds addObject:@(bridgeworkspacedata_.windowname)];
+
+  [clientForKernelspace send_workspacedata_to_kext:workspaceIds];
 }
 
 // ------------------------------------------------------------

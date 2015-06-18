@@ -332,17 +332,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   [userClient_userspace_ synchronized_communication:&bridgestruct];
 }
 
-- (void)send_workspacedata_to_kext:(struct BridgeWorkSpaceData*)bridgeworkspacedata {
-  struct BridgeUserClientStruct bridgestruct;
-  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
-  bridgestruct.option = 0;
-  bridgestruct.data = (user_addr_t)(bridgeworkspacedata);
-  bridgestruct.size = sizeof(*bridgeworkspacedata);
-
-  [userClient_userspace_ synchronized_communication:&bridgestruct];
-}
-
-- (void)send_uint32_array_to_kext:(uint32_t)type array:(NSArray*)array {
+- (void)send_workspacedata_to_kext:(NSArray*)array {
   NSUInteger count = [array count];
   if (count > 0) {
     size_t size = count * sizeof(uint32_t);
@@ -353,7 +343,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     }
 
     struct BridgeUserClientStruct bridgestruct;
-    bridgestruct.type = type;
+    bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA;
     bridgestruct.option = 0;
     bridgestruct.data = (user_addr_t)(data);
     bridgestruct.size = size;

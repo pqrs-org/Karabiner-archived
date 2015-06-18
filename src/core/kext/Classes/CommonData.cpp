@@ -27,6 +27,43 @@ bool CommonData::initialize(void) {
 
 void CommonData::terminate(void) {}
 
+void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
+  current_workspaceAppIds_.clear();
+  for (size_t i = 0; i < count - 1; i += 2) {
+    uint32_t type = ids[i];
+    uint32_t value = ids[i + 1];
+
+    switch (type) {
+    case BRIDGE_WORKSPACETYPE_NONE:
+      break;
+
+    case BRIDGE_WORKSPACETYPE_APP_ID:
+      current_workspaceAppIds_.push_back(WorkspaceAppId(value));
+      break;
+
+    case BRIDGE_WORKSPACETYPE_INPUT_SOURCE_ID:
+      current_workspacedata_.inputsource = value;
+      break;
+
+    case BRIDGE_WORKSPACETYPE_INPUT_SOURCE_DETAIL_ID:
+      current_workspacedata_.inputsourcedetail = value;
+      break;
+
+    case BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID:
+      current_workspacedata_.uielementrole = value;
+      break;
+
+    case BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID:
+      current_workspacedata_.windowname = value;
+      break;
+
+    default:
+      IOLOG_WARN("CommonData::setcurrent_workspaceIds invalid type: %d", type);
+      break;
+    }
+  }
+}
+
 void CommonData::clear_statusmessage(int index) {
   if (index <= BRIDGE_USERCLIENT_STATUS_MESSAGE_NONE) return;
   if (index >= BRIDGE_USERCLIENT_STATUS_MESSAGE__END__) return;

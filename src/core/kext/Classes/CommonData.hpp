@@ -25,14 +25,8 @@ public:
   }
   static const DeviceIdentifier& getcurrent_deviceIdentifier(void) { return current_deviceIdentifier_; }
 
-  static void setcurrent_workspaceAppIds(const uint32_t* ids, size_t count) {
-    current_workspaceAppIds_.clear();
-    for (size_t i = 0; i < count; ++i) {
-      current_workspaceAppIds_.push_back(WorkspaceAppId(ids[i]));
-    }
-  }
+  static void setcurrent_workspaceIds(const uint32_t* ids, size_t count);
   static const Vector_WorkspaceAppId& getcurrent_workspaceAppIds(void) { return current_workspaceAppIds_; }
-  static void setcurrent_workspacedata(const BridgeWorkSpaceData& newval) { current_workspacedata_ = newval; }
   static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
   static void setcurrent_lastpressedphysicalkey(const Params_Base& newval) {

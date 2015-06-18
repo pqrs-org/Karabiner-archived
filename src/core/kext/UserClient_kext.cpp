@@ -449,26 +449,13 @@ void USERCLIENT_KEXT_CLASSNAME::handle_synchronized_communication(uint32_t type,
   }
 
   case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA: {
-    if (size != sizeof(BridgeWorkSpaceData)) {
-      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA wrong 'size' parameter\n");
-    } else {
-      const BridgeWorkSpaceData* p = reinterpret_cast<const BridgeWorkSpaceData*>(buffer);
-      if (p) {
-        KEXT_NAMESPACE::CommonData::setcurrent_workspacedata(*p);
-        *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
-      }
-    }
-    break;
-  }
-
-  case BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA_APP_IDS: {
     size_t count = size / sizeof(uint32_t);
     if (count * sizeof(uint32_t) != size) {
-      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA_APP_IDS wrong 'size' parameter\n");
+      IOLOG_ERROR("BRIDGE_USERCLIENT_TYPE_SET_WORKSPACEDATA wrong 'size' parameter\n");
     } else {
       const uint32_t* ids = reinterpret_cast<uint32_t*>(buffer);
       if (ids) {
-        KEXT_NAMESPACE::CommonData::setcurrent_workspaceAppIds(ids, count);
+        KEXT_NAMESPACE::CommonData::setcurrent_workspaceIds(ids, count);
         *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
       }
     }
