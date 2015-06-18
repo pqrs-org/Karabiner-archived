@@ -91,7 +91,7 @@
   <autogen>__KeyToKey__                          KeyCode::T,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::X,KeyCode::U,                KeyCode::VK_NONE </autogen>
   <autogen>__SimultaneousKeyPresses__ {{LEFT_THUMB}},KeyCode::Y,                ModifierFlag::NONE,                      KeyCode::V,KeyCode::U,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
   <autogen>__KeyToKey__                          KeyCode::Y,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::V,KeyCode::U,                KeyCode::VK_NONE </autogen>
-  <autogen>__SimultaneousKeyPresses__ {{LEFT_THUMB}},KeyCode::U,                ModifierFlag::NONE,                      KeyCode::KEY_5,ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA1 </autogen>
+  <autogen>__SimultaneousKeyPresses__ {{LEFT_THUMB}},KeyCode::U,                ModifierFlag::NONE,                      KeyCode::KEY_1,ModifierFlag::SHIFT_L, KeyCode::VK_MODIFIER_EXTRA1 </autogen>
   <autogen>__KeyToKey__                          KeyCode::U,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::KEY_1,ModifierFlag::SHIFT_L, KeyCode::VK_NONE            </autogen>
   <autogen>__SimultaneousKeyPresses__ {{LEFT_THUMB}},KeyCode::I,                ModifierFlag::NONE,                      KeyCode::Y,KeyCode::O,                KeyCode::VK_MODIFIER_EXTRA1 </autogen>
   <autogen>__KeyToKey__                          KeyCode::I,                ModifierFlag::EXTRA1|ModifierFlag::NONE, KeyCode::Y,KeyCode::O,                KeyCode::VK_NONE </autogen>
