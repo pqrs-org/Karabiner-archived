@@ -29,6 +29,7 @@ void CommonData::terminate(void) {}
 
 void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
   current_workspaceAppIds_.clear();
+
   for (size_t i = 0; i < count - 1; i += 2) {
     uint32_t type = ids[i];
     uint32_t value = ids[i + 1];
