@@ -243,6 +243,25 @@
       <autogen>__KeyToKey__ KeyCode::FN, KeyCode::OPTION_L, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
+      <name>Use the fn key as sticky modifier. (without lock)</name>
+      <identifier>remap.sticky_fn</identifier>
+      <include path="../commons/sticky_modifiers/FN.xml" />
+    </item>
+    <item>
+      <name>Use the fn key as sticky modifier. (with lock)</name>
+      <identifier>remap.sticky_fn_lock</identifier>
+      <include path="../commons/sticky_modifiers/WITH_LOCK.xml">
+        <replacementdef>
+          <replacementname>FROM_MODIFIER</replacementname>
+          <replacementvalue>FN</replacementvalue>
+        </replacementdef>
+        <replacementdef>
+          <replacementname>TO_MODIFIER</replacementname>
+          <replacementvalue>FN</replacementvalue>
+        </replacementdef>
+      </include>
+    </item>
+    <item>
       <name>Fn to All Modifiers Mode</name>
       <item>
         <name>FN to Shift+Control+Option+Command</name>
