@@ -66,6 +66,21 @@
         KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
       </autogen>
     </item>
+    <item>
+      <name>Change control-a/e to command-left/right arrow.</name>
+      <identifier>remap.app_thunderbird_control_ae</identifier>
+      <only>THUNDERBIRD</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+      </autogen>
+    </item>
   </item>
 
   <item>
