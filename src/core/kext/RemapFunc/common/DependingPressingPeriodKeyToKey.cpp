@@ -208,6 +208,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
         active_ = true;
         periodtype_ = PeriodType::NONE;
 
+        ButtonStatus::decrease(fromEvent_.getPointingButton());
         FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
         FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
@@ -287,6 +288,7 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
         EventOutputQueue::FireModifiers::setIgnorePhysicalUpEvent(true);
 
       } else {
+        ButtonStatus::increase(fromEvent_.getPointingButton());
         FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
 
         dokeydown(remapParams);
