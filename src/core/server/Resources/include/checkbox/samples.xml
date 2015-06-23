@@ -1155,6 +1155,18 @@ Two Lines</autogen>
           KeyCode::A, ModifierFlag::COMMAND_R,
         </autogen>
       </item>
+      <item>
+        <identifier>remap.samples_keyoverlaidmodifier3</identifier>
+        <name>With PointingButton</name>
+        <appendix>Change the right click to shift. (click alone, send space)</appendix>
+        <appendix>(Note: "right button down, move pointer, right button up" sends a space key event.)</appendix>
+        <autogen>
+          __KeyOverlaidModifier__
+          PointingButton::RIGHT,
+          KeyCode::SHIFT_L,
+          KeyCode::SPACE,
+        </autogen>
+      </item>
 
       <!-- ============================================================ -->
       <item>
