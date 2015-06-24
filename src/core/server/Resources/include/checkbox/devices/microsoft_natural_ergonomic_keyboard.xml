@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<root>
+
+  <!-- Dave Griffin customisation for the Microsoft Natural Ergonomic Keyboard 4000 (UK) -->
+
+  <item>
+    <name>For Microsoft Natural Ergonomic 4000 Keyboard (UK)</name>
+
+    <item>
+      <name>fix Backquote(`) key</name>
+      <identifier>remap.microsoft_natural_ergonomic_keyboard.fix_backquote</identifier>
+      <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
+      <!-- note that BACKQUOTE is actually BACKSLASH, and UK_SECTION is the real BACKTICK -->
+      <autogen>__KeyToKey__ KeyCode::BACKQUOTE, KeyCode::UK_SECTION</autogen>
+    </item>
+
+    <item>
+      <name>fix backslash(\) key</name>
+      <identifier>remap.microsoft_natural_ergonomic_keyboard.fix_backslash</identifier>
+      <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
+      <!-- UK_SECTION to BACKQUOTE - makes the actual backslash key sends backslash ! -->
+      <autogen>__KeyToKey__ KeyCode::UK_SECTION, KeyCode::BACKQUOTE</autogen>
+    </item>
+
+    <item>
+      <name>Use Windows Key as Option</name>
+      <identifier>remap.microsoft_natural_ergonomic_keyboard.Windows_key_as_Option</identifier>
+      <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+    </item>
+
+    <item>
+      <name>Use Alt Key as Command</name>
+      <identifier>remap.microsoft_natural_ergonomic_keyboard.Alt_key_as_Command</identifier>
+      <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
+      <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>Swap @ and double-quote(") Done by default if 'British PC'keyboard already specified?</name>
+      <!-- this is done by default it seems -->
+      <identifier>remap.microsoft_natural_ergonomic_keyboard.switch_doublequote</identifier>
+      <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
+      <autogen>__KeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::QUOTE, ModifierFlag::SHIFT_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::QUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEY_2, ModifierFlag::SHIFT_L</autogen>
+    </item>
+
+  </item>
+
+</root>
