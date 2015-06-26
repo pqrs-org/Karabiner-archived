@@ -210,7 +210,9 @@ bool KeyToKey::remap(RemapParams& remapParams) {
   // ----------------------------------------
   // Handle delayedActionKeys_
   if (fromEvent_.isPressing()) {
-    if (!delayedActionKeys_.empty()) {
+    if (!delayedActionKeys_.empty() ||
+        !delayedActionCanceledDefaultKeys_.empty() ||
+        !delayedActionCanceledByKeys_.empty()) {
       auto timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keytokey_delayed_action_timeout);
 
       target_ = this;
