@@ -45,7 +45,7 @@ DECLARE_VECTOR(AddValueWithDataType);
 class AutogenId final {
 public:
   explicit AutogenId(uint64_t v) : value_(v) {}
-  operator uint64_t(void) {
+  operator uint64_t(void) const {
     return value_;
   }
   bool operator>(AutogenId other) const { return value_ > other.value_; }
