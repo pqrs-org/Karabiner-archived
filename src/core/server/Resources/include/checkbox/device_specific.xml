@@ -267,6 +267,70 @@
         </autogen>
       </item>
 
+      <item>
+        <name>Workaround for duplicated modifier events on Logitech keyboards.</name>
+        <appendix>Some Logitech keyboards sends same modifier events twice when you pressed</appendix>
+        <appendix>modifier keys.</appendix>
+        <appendix>Karabiner counts them and changes only the first event.</appendix>
+        <appendix>That causes extra modifiers will be added into the changed keys.</appendix>
+        <appendix></appendix>
+        <appendix>For example:</appendix>
+        <appendix>"Change control-D to delete" setting should send "delete" key event when you</appendix>
+        <appendix>press control-D.</appendix>
+        <appendix>But "control-delete" key event will be sent with some Logitech keyboards.</appendix>
+        <appendix></appendix>
+        <appendix>This setting solves this issue.</appendix>
+        <identifier high_priority="true">remap.logitech_ignore_duplicated_modifiers</identifier>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::COMMAND_L</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::VK_NONE</autogen>
+        </block>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::COMMAND_R</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::VK_NONE</autogen>
+        </block>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::CONTROL_L</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::CONTROL_L, KeyCode::VK_NONE</autogen>
+        </block>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::CONTROL_R</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::VK_NONE</autogen>
+        </block>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::OPTION_L</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::VK_NONE</autogen>
+        </block>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::OPTION_R</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_NONE</autogen>
+        </block>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::SHIFT_L</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::SHIFT_L, KeyCode::VK_NONE</autogen>
+        </block>
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::SHIFT_R</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::100</elapsedtimesincelastpressed_lessthan>
+          <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::VK_NONE</autogen>
+        </block>
+      </item>
+
       <include path="devices/logitech_m560.xml" />
       <include path="devices/logitech_m510.xml" />
     </item>
