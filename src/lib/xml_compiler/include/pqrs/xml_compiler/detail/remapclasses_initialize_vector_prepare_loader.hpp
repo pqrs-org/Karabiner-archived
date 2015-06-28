@@ -74,10 +74,12 @@ public:
                 }
 
                 // ----------------------------------------
-                if (boost::starts_with(identifier, "notsave_")) {
-                  identifiers_notsave_.push_back(identifier);
+                auto attr_high_priority = child.get_optional("<xmlattr>.high_priority");
+                if (boost::starts_with(identifier, "notsave_") ||
+                    attr_high_priority) {
+                  identifiers_high_priority_.push_back(identifier);
                 } else {
-                  identifiers_except_notsave_.push_back(identifier);
+                  identifiers_normal_priority_.push_back(identifier);
                 }
               }
             }
@@ -111,15 +113,15 @@ public:
     fixup();
 
     // "notsave" has higher priority.
-    for (const auto& it : identifiers_notsave_) {
+    for (const auto& it : identifiers_high_priority_) {
       symbol_map_.add("ConfigIndex", it);
     }
-    identifiers_notsave_.clear();
+    identifiers_high_priority_.clear();
 
-    for (const auto& it : identifiers_except_notsave_) {
+    for (const auto& it : identifiers_normal_priority_) {
       symbol_map_.add("ConfigIndex", it);
     }
-    identifiers_except_notsave_.clear();
+    identifiers_normal_priority_.clear();
   }
 
 private:
@@ -129,6 +131,6 @@ private:
   preferences_node_tree_t* preferences_node_tree_;
   preferences_node_tree_t* const root_preferences_node_tree_;
 
-  std::vector<std::string> identifiers_notsave_;
-  std::vector<std::string> identifiers_except_notsave_;
+  std::vector<std::string> identifiers_high_priority_;
+  std::vector<std::string> identifiers_normal_priority_;
 };
