@@ -277,5 +277,31 @@
         KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
       </autogen>
     </item>
+    <item><name>──────────────────────────────</name></item>
+    <item>
+      <name>Change screen shot shortcuts</name>
+      <appendix>(Swap command-shift-3/4 and command-control-shift-3)</appendix>
+      <identifier>remap.change_screen_shot_shortcuts</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::CONTROL_L,
+      </autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
+        KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+      </autogen>
+    </item>
   </item>
 </root>
