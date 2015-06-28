@@ -18,6 +18,7 @@ Since 10.6.0
         * `<pressingphysicalkeys_lessthan>`
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * ModifierFlag pattern matching has been introduced into `Option::KEYTOKEY_AFTER_KEYUP`.
+    * `high_priority` attribute has been introduced into `<identifier` tag.
     * `<appdef>` behavior has been improved. It preserves prepared settings when you use `<appdef>` in private.xml for bundle identifiers that are in prepared appdef.xml.
 * Fixed issues:
     * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic, RazorSQL, EditRocket)
