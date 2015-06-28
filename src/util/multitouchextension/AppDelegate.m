@@ -130,7 +130,11 @@ static void setPreference(int fingers, int newvalue) {
 // ------------------------------------------------------------
 // Multitouch callback
 static int callback(int device, Finger* data, int fingers, double timestamp, int frame) {
-  dispatch_async(dispatch_get_main_queue(), ^{
+  if (!data) {
+    fingers = 0;
+  }
+
+  dispatch_sync(dispatch_get_main_queue(), ^{
     // ------------------------------------------------------------
     // If there are multiple devices (For example, Trackpad and Magic Mouse),
     // we handle only one device at the same time.
