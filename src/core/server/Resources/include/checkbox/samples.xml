@@ -2445,6 +2445,22 @@ Two Lines</autogen>
         <autogen>__ShowStatusMessage__ notsave.sample</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::D</autogen>
       </item>
+
+      <item><name>──────────────────────────────</name></item>
+
+      <item>
+        <identifier>remap.samples_high_priority</identifier>
+        <name>high_priority attribute: base mapping</name>
+        <appendix>B to C</appendix>
+        <appendix>(B becomes D when `high_priority` is active)</appendix>
+        <autogen>__KeyToKey__ KeyCode::B, KeyCode::C</autogen>
+      </item>
+      <item>
+        <identifier high_priority="true">remap.samples_high_priority_2</identifier>
+        <name>high_priority attribute: high_priority</name>
+        <appendix>B to D</appendix>
+        <autogen>__KeyToKey__ KeyCode::B, KeyCode::D</autogen>
+      </item>
     </item>
 
     <item>
