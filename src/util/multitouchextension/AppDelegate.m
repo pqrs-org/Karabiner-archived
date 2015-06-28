@@ -134,6 +134,7 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
     fingers = 0;
   }
 
+  // Use dispatch_sync in order to ensure data's lifetime.
   dispatch_sync(dispatch_get_main_queue(), ^{
     // ------------------------------------------------------------
     // If there are multiple devices (For example, Trackpad and Magic Mouse),
