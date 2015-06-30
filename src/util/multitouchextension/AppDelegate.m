@@ -134,15 +134,21 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
     fingers = 0;
   }
 
-  // Use dispatch_sync in order to ensure data's lifetime.
-  dispatch_sync(dispatch_get_main_queue(), ^{
+  __block Finger* dataCopy = NULL;
+  if (fingers > 0) {
+    size_t size = sizeof(Finger) * fingers;
+    dataCopy = (Finger*)(malloc(size));
+    memcpy(dataCopy, data, size);
+  }
+
+  dispatch_async(dispatch_get_main_queue(), ^{
     // ------------------------------------------------------------
     // If there are multiple devices (For example, Trackpad and Magic Mouse),
     // we handle only one device at the same time.
     if (has_last_device) {
       // ignore other devices.
       if (device != last_device) {
-        return;
+        goto finish;
       }
     }
 
@@ -156,72 +162,80 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
     // ------------------------------------------------------------
     [global_ignoredAreaView_ clearFingers];
 
-    int valid_fingers = 0;
+    {
+      int valid_fingers = 0;
+      FingerStatus* fingerStatus = [FingerStatus new];
 
-    FingerStatus* fingerStatus = [FingerStatus new];
+      for (int i = 0; i < fingers; ++i) {
+        // state values:
+        //   4: touched
+        //   1-3,5-7: near
+        if (dataCopy[i].state != 4) {
+          continue;
+        }
 
-    for (int i = 0; i < fingers; ++i) {
-      // state values:
-      //   4: touched
-      //   1-3,5-7: near
-      if (data[i].state != 4) {
-        continue;
+        int identifier = dataCopy[i].identifier;
+        NSPoint point = NSMakePoint(dataCopy[i].normalized.position.x, dataCopy[i].normalized.position.y);
+
+        BOOL ignored = NO;
+        if ([IgnoredAreaView isIgnoredArea:point]) {
+          ignored = YES;
+
+          // Finding FingerStatus by identifier.
+          if ([lastFingerStatus_ isActive:identifier]) {
+            // If a finger is already active, we should not ignore this finger.
+            // (This finger has been moved into ignored area from active area.)
+            ignored = NO;
+          }
+        }
+
+        [fingerStatus add:identifier active:(!ignored)];
+
+        if (!ignored) {
+          ++valid_fingers;
+        }
+
+        [global_ignoredAreaView_ addFinger:point ignored:ignored];
       }
 
-      int identifier = data[i].identifier;
-      NSPoint point = NSMakePoint(data[i].normalized.position.x, data[i].normalized.position.y);
+      lastFingerStatus_ = fingerStatus;
 
-      BOOL ignored = NO;
-      if ([IgnoredAreaView isIgnoredArea:point]) {
-        ignored = YES;
-
-        // Finding FingerStatus by identifier.
-        if ([lastFingerStatus_ isActive:identifier]) {
-          // If a finger is already active, we should not ignore this finger.
-          // (This finger has been moved into ignored area from active area.)
-          ignored = NO;
+      // ----------------------------------------
+      // deactivating settings first.
+      for (int i = 0; i < MAX_FINGERS; ++i) {
+        if (current_status_[i] && valid_fingers != i + 1) {
+          current_status_[i] = 0;
+          setPreference(i + 1, 0);
         }
       }
 
-      [fingerStatus add:identifier active:(!ignored)];
-
-      if (!ignored) {
-        ++valid_fingers;
+      // activating setting.
+      //
+      // Note: Set current_status_ only if the targeted setting is enabled.
+      // If not, unintentional deactivation is called in above.
+      //
+      // - one finger: disabled
+      // - two fingers: enabled
+      //
+      // In this case,
+      // we must not call "setPreference" if only one finger is touched/released on multi-touch device.
+      // If we don't check [PreferencesController isSettingEnabled],
+      // setPreference is called in above when we release one finger from device.
+      //
+      if (valid_fingers > 0 && current_status_[valid_fingers - 1] == 0 &&
+          [PreferencesController isSettingEnabled:valid_fingers]) {
+        current_status_[valid_fingers - 1] = 1;
+        setPreference(valid_fingers, 1);
       }
-
-      [global_ignoredAreaView_ addFinger:point ignored:ignored];
     }
 
-    lastFingerStatus_ = fingerStatus;
-
-    // ----------------------------------------
-    // deactivating settings first.
-    for (int i = 0; i < MAX_FINGERS; ++i) {
-      if (current_status_[i] && valid_fingers != i + 1) {
-        current_status_[i] = 0;
-        setPreference(i + 1, 0);
-      }
-    }
-
-    // activating setting.
-    //
-    // Note: Set current_status_ only if the targeted setting is enabled.
-    // If not, unintentional deactivation is called in above.
-    //
-    // - one finger: disabled
-    // - two fingers: enabled
-    //
-    // In this case,
-    // we must not call "setPreference" if only one finger is touched/released on multi-touch device.
-    // If we don't check [PreferencesController isSettingEnabled],
-    // setPreference is called in above when we release one finger from device.
-    //
-    if (valid_fingers > 0 && current_status_[valid_fingers - 1] == 0 &&
-        [PreferencesController isSettingEnabled:valid_fingers]) {
-      current_status_[valid_fingers - 1] = 1;
-      setPreference(valid_fingers, 1);
+  finish:
+    if (dataCopy) {
+      free(dataCopy);
+      dataCopy = NULL;
     }
   });
+
   return 0;
 }
 
