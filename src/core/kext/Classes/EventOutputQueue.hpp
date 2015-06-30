@@ -85,7 +85,7 @@ public:
 
     const Params_Base& getParamsBase(void) const { return Params_Base::safe_dereference(p_); }
     AutogenId getAutogenId(void) const { return autogenId_; }
-    uint64_t getEventInputQueueSerialNumber(void) const { return eventInputQueueSerialNumber_; }
+    EventInputQueue::SerialNumber getEventInputQueueSerialNumber(void) const { return eventInputQueueSerialNumber_; }
     bool isCanceled(void) const { return canceled_; }
     void cancel(void) { canceled_ = true; }
 
@@ -95,7 +95,7 @@ public:
 
     const Params_Base* p_;
     const AutogenId autogenId_;
-    const uint64_t eventInputQueueSerialNumber_;
+    const EventInputQueue::SerialNumber eventInputQueueSerialNumber_;
     bool canceled_;
   };
 

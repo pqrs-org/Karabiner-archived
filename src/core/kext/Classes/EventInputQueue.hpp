@@ -17,10 +17,12 @@ class EventInputQueue final {
   friend class RemapFunc::SimultaneousKeyPresses;
 
 public:
+  class SerialNumber final : public ::SerialNumber {};
+
   static void initialize(IOWorkLoop& workloop);
   static void terminate(void);
 
-  static uint64_t currentSerialNumber(void) { return serialNumber_; }
+  static SerialNumber currentSerialNumber(void) { return serialNumber_; }
 
   class ScopedSerialNumberDecreaser {
   public:
@@ -199,7 +201,7 @@ private:
   static IntervalChecker ic_;
   static TimerWrapper fire_timer_;
   // Increment at fire_timer_callback.
-  static uint64_t serialNumber_;
+  static SerialNumber serialNumber_;
 };
 }
 

@@ -17,7 +17,7 @@ namespace org_pqrs_Karabiner {
 List EventInputQueue::queue_;
 IntervalChecker EventInputQueue::ic_;
 TimerWrapper EventInputQueue::fire_timer_;
-uint64_t EventInputQueue::serialNumber_;
+EventInputQueue::SerialNumber EventInputQueue::serialNumber_;
 
 List EventInputQueue::BlockUntilKeyUpHander::blockedQueue_;
 List EventInputQueue::BlockUntilKeyUpHander::pressingEvents_;
@@ -26,7 +26,7 @@ TimerWrapper EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_;
 void EventInputQueue::initialize(IOWorkLoop& workloop) {
   ic_.begin();
   fire_timer_.initialize(&workloop, nullptr, EventInputQueue::fire_timer_callback);
-  serialNumber_ = 0;
+  serialNumber_.reset();
 
   BlockUntilKeyUpHander::initialize(workloop);
 }
