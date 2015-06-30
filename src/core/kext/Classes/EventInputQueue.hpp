@@ -22,6 +22,12 @@ public:
 
   static uint64_t currentSerialNumber(void) { return serialNumber_; }
 
+  class ScopedSerialNumberDecreaser {
+  public:
+    ScopedSerialNumberDecreaser(void) { --serialNumber_; }
+    ~ScopedSerialNumberDecreaser(void) { ++serialNumber_; }
+  };
+
   // ------------------------------------------------------------
   static void push_KeyboardEventCallback(OSObject* target,
                                          unsigned int eventType,
