@@ -68,6 +68,33 @@ enum class PhysicalEventType {
   // We do not provide PhysicalEventType::MODIFY. Use DOWN or UP for modifier events.
 };
 
+class SerialNumber {
+public:
+  SerialNumber(void) : value_(0) {}
+  explicit SerialNumber(uint64_t v) : value_(v) {}
+  // Do not provide virtual destructor.
+  uint64_t get(void) const { return value_; }
+  SerialNumber& operator++(void) {
+    ++value_;
+    return *this;
+  }
+  SerialNumber& operator--(void) {
+    --value_;
+    return *this;
+  }
+  bool operator==(SerialNumber other) const { return value_ == other.get(); }
+  bool operator!=(SerialNumber other) const { return !(*this == other); }
+  bool operator>(SerialNumber other) const { return value_ > other.value_; }
+  bool operator>=(SerialNumber other) const { return value_ >= other.value_; }
+  bool operator<(SerialNumber other) const { return value_ < other.value_; }
+  bool operator<=(SerialNumber other) const { return value_ <= other.value_; }
+
+  void reset(void) { value_ = 0; }
+
+private:
+  uint64_t value_;
+};
+
 // ========================================
 #define DECLARE_WORKSPACE_CLASS(CLASSNAME)                                   \
   class CLASSNAME final {                                                    \
