@@ -113,8 +113,6 @@ private:
   static List queue_;
   static TimerWrapper fire_timer_;
   static Buttons previousButtons_;
-
-  static uint64_t lastProcessedEventInputQueueSerialNumber_;
 };
 }
 
