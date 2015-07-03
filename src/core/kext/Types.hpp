@@ -70,7 +70,8 @@ enum class PhysicalEventType {
 
 class SerialNumber {
 public:
-  SerialNumber(void) : value_(0) {}
+  // Set initial value to 1. (Use 0 as invalid value.)
+  SerialNumber(void) : value_(1) {}
   explicit SerialNumber(uint64_t v) : value_(v) {}
   // Do not provide virtual destructor.
   uint64_t get(void) const { return value_; }
@@ -89,7 +90,7 @@ public:
   bool operator<(SerialNumber other) const { return value_ < other.value_; }
   bool operator<=(SerialNumber other) const { return value_ <= other.value_; }
 
-  void reset(void) { value_ = 0; }
+  void reset(void) { value_ = 1; }
 
 private:
   uint64_t value_;
