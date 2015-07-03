@@ -135,6 +135,25 @@ TEST(Vector, clear) {
   EXPECT_EQ(static_cast<size_t>(0), v.capacity());
 }
 
+TEST(Vector, assignment) {
+  Vector_int v;
+  v.push_back(1);
+  v.push_back(2);
+  v.push_back(3);
+
+  EXPECT_EQ(1, v[0]);
+  EXPECT_EQ(2, v[1]);
+  EXPECT_EQ(3, v[2]);
+
+  v[0] = 10;
+  v[1] = 20;
+  v[2] = 30;
+
+  EXPECT_EQ(10, v[0]);
+  EXPECT_EQ(20, v[1]);
+  EXPECT_EQ(30, v[2]);
+}
+
 TEST(Vector, is_include) {
   Vector_int v;
   v.push_back(1);
