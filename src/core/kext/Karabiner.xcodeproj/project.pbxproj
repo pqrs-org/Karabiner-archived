@@ -147,6 +147,7 @@
 		34B8199511DF925500BD8E0B /* DropKeyAfterRemap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */; };
 		34B8199611DF925500BD8E0B /* DropKeyAfterRemap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */; };
 		34BE702D1AB559050028EE50 /* WeakPointer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34BE702C1AB559050028EE50 /* WeakPointer.hpp */; };
+		34C1D62D1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C1D62C1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
 		34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */; };
@@ -310,6 +311,7 @@
 		34B8199311DF925500BD8E0B /* DropKeyAfterRemap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropKeyAfterRemap.cpp; path = RemapFunc/DropKeyAfterRemap.cpp; sourceTree = "<group>"; };
 		34B8199411DF925500BD8E0B /* DropKeyAfterRemap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DropKeyAfterRemap.hpp; path = RemapFunc/DropKeyAfterRemap.hpp; sourceTree = "<group>"; };
 		34BE702C1AB559050028EE50 /* WeakPointer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = WeakPointer.hpp; path = Classes/WeakPointer.hpp; sourceTree = "<group>"; };
+		34C1D62C1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CancelEventOutputQueueItemsHelper.hpp; path = RemapFunc/common/CancelEventOutputQueueItemsHelper.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
 		34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToScroll.cpp; path = RemapFunc/PointingRelativeToScroll.cpp; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 		342BB27A13BB6A7400E18FDD /* common */ = {
 			isa = PBXGroup;
 			children = (
+				34C1D62C1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp */,
 				340800D513BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.cpp */,
 				340800D613BE0FF800CA0BF2 /* DependingPressingPeriodKeyToKey.hpp */,
 				342BB27C13BB6A9900E18FDD /* RemapFuncClasses.hpp */,
@@ -608,6 +611,7 @@
 				341272FF11D8FE0E000A62DB /* HoldingKeyToKey.hpp in Headers */,
 				34779375185B1FA800B3EF06 /* ListHookedDevice.hpp in Headers */,
 				34AC5ED211DA3BD60089BC58 /* KeyOverlaidModifier.hpp in Headers */,
+				34C1D62D1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp in Headers */,
 				3477937F185B1FA800B3EF06 /* PressDownKeys.hpp in Headers */,
 				34E04BFE11DD878D001AE230 /* SimultaneousKeyPresses.hpp in Headers */,
 				3442A85219B07F11007FD563 /* RemapFilterFactory.hpp in Headers */,
