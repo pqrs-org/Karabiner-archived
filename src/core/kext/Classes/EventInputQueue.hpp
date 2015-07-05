@@ -18,6 +18,7 @@ class EventInputQueue final {
 
 public:
   class SerialNumber final : public ::SerialNumber {};
+  DECLARE_VECTOR_WITH_HELPER(SerialNumber);
 
   static void initialize(IOWorkLoop& workloop);
   static void terminate(void);
