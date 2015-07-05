@@ -74,7 +74,10 @@ public:
   SerialNumber(void) : value_(1) {}
   explicit SerialNumber(uint64_t v) : value_(v) {}
   // Do not provide virtual destructor.
+
   uint64_t get(void) const { return value_; }
+  void set(const SerialNumber& v) { value_ = v.value_; }
+
   SerialNumber& operator++(void) {
     ++value_;
     return *this;
@@ -89,6 +92,8 @@ public:
   bool operator>=(SerialNumber other) const { return value_ >= other.value_; }
   bool operator<(SerialNumber other) const { return value_ < other.value_; }
   bool operator<=(SerialNumber other) const { return value_ <= other.value_; }
+  SerialNumber operator+(int v) { return SerialNumber(value_ + v); }
+  SerialNumber operator-(int v) { return SerialNumber(value_ - v); }
 
   void reset(void) { value_ = 1; }
 
