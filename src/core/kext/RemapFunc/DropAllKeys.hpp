@@ -3,6 +3,7 @@
 
 #include "EventOutputQueue.hpp"
 #include "RemapFuncBase.hpp"
+#include "CancelEventOutputQueueItemsHelper.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
@@ -38,6 +39,8 @@ private:
 
     FromEvent fromEvent;
   };
+
+  CancelEventOutputQueueItemsHelper helper_;
 
   Vector_ModifierFlag fromModifierFlags_;
   bool dropKey_;

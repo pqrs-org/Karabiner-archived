@@ -58,6 +58,8 @@ bool DropAllKeys::remap(RemapParams& remapParams) {
   //
   // So, we pass key events to other remap functions and drop key events in `cancelEventOutputQueueItems`.
 
+  helper_.registerSerialNumber();
+
   if (fromModifierFlags_.empty()) {
     IOLOG_WARN("Ignore __DropAllKeys__ with no ModifierFlag.\n");
 
@@ -72,6 +74,10 @@ bool DropAllKeys::remap(RemapParams& remapParams) {
 }
 
 void DropAllKeys::cancelEventOutputQueueItems(EventOutputQueue::Item& item) {
+  if (!helper_.isTarget(item)) {
+    return;
+  }
+
   if (!doCancel_) {
     return;
   }
