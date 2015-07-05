@@ -290,6 +290,13 @@ bool KeyToKey::remap(RemapParams& remapParams) {
       //
       // We should increase and temporary_decrease pureFromModifierFlags_ when key up
       // in order to avoid undesirable results.
+      // And temporary_increase toKeys_[0].getModifierFlags for the case of
+      // "Change Shift-A to Control-Shift".
+      //
+      // Example configurations:
+      // <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L</autogen>
+      // <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+      // <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::OPTION_L</autogen>
 
       if (toModifierFlag != ModifierFlag::ZERO) {
         newEventType = EventType::MODIFY;
@@ -302,6 +309,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         FlagStatus::globalFlagStatus().decrease(toModifierFlag, toKeys_[0].getModifierFlags());
         FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
         FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
+        FlagStatus::globalFlagStatus().temporary_increase(toKeys_[0].getModifierFlags());
       }
     }
 
