@@ -24,7 +24,16 @@ void DropKeyAfterRemap::add(AddDataType datatype, AddValue newval) {
   }
 }
 
-void DropKeyAfterRemap::cancelEventOutputQueueItems(EventOutputQueue::Item &item) {
+bool DropKeyAfterRemap::remap(RemapParams& remapParams) {
+  helper_.registerSerialNumber();
+  return true;
+}
+
+void DropKeyAfterRemap::cancelEventOutputQueueItems(EventOutputQueue::Item& item) {
+  if (!helper_.isTarget(item)) {
+    return;
+  }
+
   auto params = item.getParamsBase().get_Params_KeyboardEventCallBack();
   if (params) {
     if (params->key != key_) {
