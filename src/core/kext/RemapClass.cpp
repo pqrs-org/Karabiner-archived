@@ -90,9 +90,6 @@ void RemapClass::Item::cancelEventOutputQueueItems(void) {
   for (EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(EventOutputQueue::getQueue().safe_front());
        p;
        p = static_cast<EventOutputQueue::Item*>(p->getnext())) {
-    if (EventInputQueue::currentSerialNumber() != p->getEventInputQueueSerialNumber()) {
-      continue;
-    }
     // Do not cancel events which are pushed before this __DropAllKeys__.
     if (p->getAutogenId() < processor_->getAutogenId()) {
       continue;
@@ -829,6 +826,9 @@ void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor) {
 }
 
 void prepare(RemapParams& remapParams) {
+  // Decrease EventInputQueue::serialNumber_ in order to avoid event cancellation by cancelEventOutputQueueItems.
+  EventInputQueue::ScopedSerialNumberDecreaser scopedSerialNumberDecreaser;
+
   // VirtualKey::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT::needToDrop will be set in KeyToKey::prepare.
   // If needToDrop is set in prepare, we should ignore this event.
   // So, set remapParams.isremapped true when needToDrop is set.
