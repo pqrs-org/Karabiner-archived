@@ -294,6 +294,9 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
   //   * Change Shift-N to Control-N
   //   * Change Shift-P to Control-P
   //
+  //   <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::N, ModifierFlag::CONTROL_L</autogen>
+  //   <autogen>__KeyToKey__ KeyCode::P, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::P, ModifierFlag::CONTROL_L</autogen>
+  //
   // Case 1:
   //   Actual input:
   //     1. shift down
