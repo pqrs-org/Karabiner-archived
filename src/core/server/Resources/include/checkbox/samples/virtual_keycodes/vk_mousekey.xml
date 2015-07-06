@@ -72,6 +72,15 @@
       <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_RIGHT</autogen>
     </item>
     <item>
+      <name>Fixed Distance Scroll</name>
+      <appendix>Change Arrows to VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_UP/DOWN/LEFT/RIGHT</appendix>
+      <identifier>remap.samples_vk_mousekeys_fixed_distance_scroll</identifier>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_UP,    KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,  KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_RIGHT</autogen>
+    </item>
+    <item>
       <name>Lock</name>
       <appendix>Change 1 to VK_MOUSEKEY_LOCK_BUTTON_LEFT</appendix>
       <appendix>Change 2 to VK_MOUSEKEY_LOCK_BUTTON_MIDDLE</appendix>
