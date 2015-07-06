@@ -18,6 +18,7 @@ private:
   static bool handle_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   static bool handle_move(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   static bool handle_fixeddistancemove(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
+  static bool handle_fixeddistancescroll(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   static bool handle_lock_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);
   static PointingButton getPointingButton(KeyCode keycode);
   static PointingButton getPointingButtonFromLockKey(KeyCode keycode);

@@ -199,6 +199,14 @@
           <identifier essential="true" default="50" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
         </item>
       </item>
+
+      <item>
+        <name>Fixed Distance Scroll</name>
+        <item>
+          <name>Magnification of "Fixed Distance Scroll"</name>
+          <identifier essential="true" default="300" step="100" baseunit="">parameter.fixed_distance_scroll_magnification</identifier>
+        </item>
+      </item>
     </item>
   </item>
 </root>

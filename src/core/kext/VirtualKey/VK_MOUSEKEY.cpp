@@ -49,6 +49,7 @@ bool VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params,
   if (handle_button(params, autogenId, physicalEventType)) return true;
   if (handle_move(params, autogenId, physicalEventType)) return true;
   if (handle_fixeddistancemove(params, autogenId, physicalEventType)) return true;
+  if (handle_fixeddistancescroll(params, autogenId, physicalEventType)) return true;
   if (handle_lock_button(params, autogenId, physicalEventType)) return true;
   return false;
 }
@@ -393,6 +394,37 @@ bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancemove(const Params_KeyboardEven
                                                 ButtonStatus::makeButtons(),
                                                 fdx * Config::get_fixed_distance_magnification(),
                                                 fdy * Config::get_fixed_distance_magnification());
+  }
+
+  return true;
+}
+
+bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancescroll(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
+  int fdx = 0;
+  int fdy = 0;
+
+  /*  */ if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_UP) {
+    --fdy;
+  } else if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_DOWN) {
+    ++fdy;
+  } else if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_LEFT) {
+    --fdx;
+  } else if (params.key == KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_RIGHT) {
+    ++fdx;
+  } else {
+    return false;
+  }
+
+  if (params.ex_iskeydown) {
+    int delta1 = fdy * Config::get_fixed_distance_scroll_magnification() * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+    int delta2 = fdx * Config::get_fixed_distance_scroll_magnification() * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mouse_key_scroll_not_natural_direction)) {
+      delta1 = -delta1;
+      delta2 = -delta2;
+    }
+
+    EventOutputQueue::FireScrollWheel::fire(delta1, delta2, autogenId, physicalEventType);
   }
 
   return true;

@@ -122,6 +122,10 @@ public:
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_fixed_distance_magnification);
     return getvalue(v, 0);
   }
+  static unsigned int get_fixed_distance_scroll_magnification(void) {
+    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_fixed_distance_scroll_magnification);
+    return getvalue(v, 0);
+  }
 
 private:
   static unsigned int getvalue(int value, int minval) {
