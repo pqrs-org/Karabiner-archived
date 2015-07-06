@@ -93,7 +93,7 @@ chmod 755 \
 # --------------------------------------------------
 echo "Create pkg"
 
-pkgName="Karabiner.pkg"
+pkgName="Karabiner.sparkle_guided.pkg"
 pkgIdentifier="org.pqrs.driver.Karabiner"
 archiveName="Karabiner-${version}"
 
