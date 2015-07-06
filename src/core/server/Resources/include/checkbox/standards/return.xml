@@ -72,5 +72,13 @@
       <identifier>remap.drop_return</identifier>
       <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::VK_NONE</autogen>
     </item>
+    <item>
+      <name>Non-Breaking Return to Normal Return</name>
+      <appendix>(Option+Return to Return)</appendix>
+      <appendix>(Option+Shift+Return to Return)</appendix>
+      <identifier>remap.option_return_to_return</identifier>
+      <autogen>__KeyToKey__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::RETURN</autogen>
+      <autogen>__KeyToKey__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::RETURN</autogen>
+    </item>
   </item>
 </root>
