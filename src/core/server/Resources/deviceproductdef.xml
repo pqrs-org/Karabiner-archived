@@ -227,6 +227,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Logitech_Trackman_Marble</productname>
+    <productid>0xc408</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>HHKB_Professional_JP_0x000d</productname>
     <productid>0x000d</productid>
   </deviceproductdef>
