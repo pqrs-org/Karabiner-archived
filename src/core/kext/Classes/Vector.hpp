@@ -60,9 +60,13 @@ public:                                                                 \
     clear();                                                            \
     capacity_ = rhs.capacity_;                                          \
     size_ = rhs.size_;                                                  \
-    vector_ = new TYPENAME[capacity_];                                  \
-    for (size_t i = 0; i < size_; ++i) {                                \
-      vector_[i] = rhs.vector_[i];                                      \
+    if (size_ == 0) {                                                   \
+      vector_ = nullptr;                                                \
+    } else {                                                            \
+      vector_ = new TYPENAME[capacity_];                                \
+      for (size_t i = 0; i < size_; ++i) {                              \
+        vector_[i] = rhs.vector_[i];                                    \
+      }                                                                 \
     }                                                                   \
                                                                         \
     return *this;                                                       \
