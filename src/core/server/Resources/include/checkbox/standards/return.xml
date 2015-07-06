@@ -72,5 +72,11 @@
       <identifier>remap.drop_return</identifier>
       <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::VK_NONE</autogen>
     </item>
+    <item>
+      <name>Linefeed to Return</name>
+      <appendix>(Control+Return to Return)</appendix>
+      <identifier>remap.option_return_to_return</identifier>
+      <autogen>__KeyToKey__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE, KeyCode::RETURN</autogen>
+    </item>
   </item>
 </root>
