@@ -29,6 +29,7 @@
 
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;
 - (NSDictionary*)getFocusedUIElementInformation;
+- (NSArray*)getWorkspaceAppIds;
 - (NSDictionary*)getInputSourceInformation;
 
 - (IBAction)restartAXNotifier:(id)sender;

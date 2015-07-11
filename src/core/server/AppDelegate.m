@@ -403,6 +403,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 }
 
+- (NSArray*)getWorkspaceAppIds {
+  @synchronized(self) {
+    return workspaceAppIds_;
+  }
+}
+
 - (NSDictionary*)getInputSourceInformation {
   @synchronized(self) {
     return inputSourceInformation_;
