@@ -108,6 +108,10 @@
   return [appDelegate_ getFocusedUIElementInformation];
 }
 
+- (NSArray*)workspace_app_ids {
+  return [appDelegate_ getWorkspaceAppIds];
+}
+
 - (NSDictionary*)inputsource_information {
   return [appDelegate_ getInputSourceInformation];
 }
