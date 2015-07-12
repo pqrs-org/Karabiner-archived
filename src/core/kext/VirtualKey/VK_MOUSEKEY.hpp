@@ -13,6 +13,38 @@ public:
   static bool isKeyLikeModifier(KeyCode keycode);
 
 private:
+  class FixedDistanceScroll {
+  public:
+    static void initialize(IOWorkLoop& workloop);
+    static void terminate(void);
+    static void reset(void);
+
+    static void set(int d1, int d2, AutogenId a, PhysicalEventType p) {
+      delta1_ = d1 / MAX_COUNT;
+      delta2_ = d2 / MAX_COUNT;
+      counter_ = MAX_COUNT;
+      autogenId_ = a;
+      physicalEventType_ = p;
+
+      fire_timer_.setTimeoutMS(TIMER_INTERVAL);
+    }
+
+  private:
+    enum {
+      MAX_COUNT = 100,
+      TIMER_INTERVAL = 1,
+    };
+
+    static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
+
+    static int delta1_;
+    static int delta2_;
+    static int counter_;
+    static AutogenId autogenId_;
+    static PhysicalEventType physicalEventType_;
+    static TimerWrapper fire_timer_;
+  };
+
   static void fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender);
 
   static bool handle_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType);

@@ -12,8 +12,14 @@ int VirtualKey::VK_MOUSEKEY::scale_;
 bool VirtualKey::VK_MOUSEKEY::scrollmode_;
 bool VirtualKey::VK_MOUSEKEY::highspeed_;
 AutogenId VirtualKey::VK_MOUSEKEY::currentAutogenId_(0);
-PhysicalEventType VirtualKey::VK_MOUSEKEY::lastPhysicalEventType_ = PhysicalEventType::DOWN;
+PhysicalEventType VirtualKey::VK_MOUSEKEY::lastPhysicalEventType_(PhysicalEventType::DOWN);
 TimerWrapper VirtualKey::VK_MOUSEKEY::fire_timer_;
+int VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::delta1_;
+int VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::delta2_;
+int VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::counter_;
+AutogenId VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::autogenId_(0);
+PhysicalEventType VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::physicalEventType_(PhysicalEventType::DOWN);
+TimerWrapper VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::fire_timer_;
 
 void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
   dx_ = 0;
@@ -25,9 +31,27 @@ void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
   lastPhysicalEventType_ = PhysicalEventType::DOWN;
 
   fire_timer_.initialize(&workloop, nullptr, VirtualKey::VK_MOUSEKEY::fire_timer_callback);
+
+  FixedDistanceScroll::initialize(workloop);
+}
+
+void VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::initialize(IOWorkLoop& workloop) {
+  delta1_ = 0;
+  delta2_ = 0;
+  counter_ = 0;
+  autogenId_ = AutogenId(0);
+  physicalEventType_ = PhysicalEventType::DOWN;
+
+  fire_timer_.initialize(&workloop, nullptr, VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::fire_timer_callback);
 }
 
 void VirtualKey::VK_MOUSEKEY::terminate(void) {
+  fire_timer_.terminate();
+
+  FixedDistanceScroll::terminate();
+}
+
+void VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::terminate(void) {
   fire_timer_.terminate();
 }
 
@@ -41,6 +65,12 @@ void VirtualKey::VK_MOUSEKEY::reset(void) {
   lastPhysicalEventType_ = PhysicalEventType::DOWN;
 
   fire_timer_.cancelTimeout();
+
+  FixedDistanceScroll::reset();
+}
+
+void VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::reset(void) {
+  // Do nothing in order to keep scroll even if all keys are released.
 }
 
 bool VirtualKey::VK_MOUSEKEY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
@@ -424,10 +454,20 @@ bool VirtualKey::VK_MOUSEKEY::handle_fixeddistancescroll(const Params_KeyboardEv
       delta2 = -delta2;
     }
 
-    EventOutputQueue::FireScrollWheel::fire(delta1, delta2, autogenId, physicalEventType);
+    FixedDistanceScroll::set(delta1, delta2, autogenId, physicalEventType);
   }
 
   return true;
+}
+
+void VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::fire_timer_callback(OSObject* notuse_owner, IOTimerEventSource* notuse_sender) {
+  if (counter_ <= 0) {
+    return;
+  }
+  --counter_;
+
+  EventOutputQueue::FireScrollWheel::fire(delta1_, delta2_, autogenId_, physicalEventType_);
+  fire_timer_.setTimeoutMS(TIMER_INTERVAL);
 }
 
 bool VirtualKey::VK_MOUSEKEY::handle_lock_button(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
