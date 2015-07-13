@@ -16,7 +16,7 @@ public:
       targets_.push_back(v);
     }
 
-    for (size_t i = 0; i < length - 1; i += 2) {
+    for (int i = 0; i < static_cast<int>(length) - 1; i += 2) {
       AddDataType datatype(vec[i]);
       AddValue newval(vec[i + 1]);
 

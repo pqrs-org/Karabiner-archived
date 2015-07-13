@@ -11,7 +11,7 @@ public:
   ElapsedTimeSinceLastPressedFilter(unsigned int type, const unsigned int* vec, size_t length) : RemapFilterBase(type) {
     targets_.reserve(length / 2);
 
-    for (size_t i = 0; i < length - 1; i += 2) {
+    for (int i = 0; i < static_cast<int>(length) - 1; i += 2) {
       targets_.push_back(AddValueWithDataType(AddDataType(vec[i]), AddValue(vec[i + 1])));
     }
 

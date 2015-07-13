@@ -11,7 +11,7 @@ public:
   DeviceFilter(unsigned int type, const unsigned int* vec, size_t length) : RemapFilterBase(type) {
     targets_.reserve(length / 3);
 
-    for (size_t i = 0; i < length - 2; i += 3) {
+    for (int i = 0; i < static_cast<int>(length) - 2; i += 3) {
       targets_.push_back(DeviceIdentifier(DeviceVendor(vec[i]),
                                           DeviceProduct(vec[i + 1]),
                                           DeviceLocation(vec[i + 2])));
