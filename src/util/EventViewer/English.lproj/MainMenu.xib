@@ -274,17 +274,17 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Applications" borderType="line" id="879">
-                                            <rect key="frame" x="6" y="67" width="816" height="422"/>
+                                            <rect key="frame" x="6" y="159" width="816" height="330"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="814" height="406"/>
+                                                <rect key="frame" x="1" y="1" width="814" height="314"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <scrollView focusRingType="none" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="883">
-                                                        <rect key="frame" x="18" y="14" width="778" height="350"/>
+                                                        <rect key="frame" x="18" y="14" width="778" height="258"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" id="bOl-cR-gr0">
-                                                            <rect key="frame" x="1" y="17" width="761" height="332"/>
+                                                            <rect key="frame" x="1" y="17" width="761" height="240"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="886" id="884">
@@ -369,7 +369,7 @@
                                                         </tableHeaderView>
                                                     </scrollView>
                                                     <button verticalHuggingPriority="750" id="882">
-                                                        <rect key="frame" x="12" y="368" width="162" height="32"/>
+                                                        <rect key="frame" x="12" y="276" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="898">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -380,7 +380,7 @@
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="905">
-                                                        <rect key="frame" x="174" y="368" width="135" height="32"/>
+                                                        <rect key="frame" x="174" y="276" width="135" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="clear the result" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="906">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -414,6 +414,36 @@
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Window Name and UIElement Role require accessibility features.
 If these values are empty, please permit accessibility features to Karabiner_AXNotifier.</string>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </view>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box autoresizesSubviews="NO" title="Karabiner internal" borderType="line" id="49z-lQ-jK7">
+                                            <rect key="frame" x="6" y="82" width="816" height="52"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView">
+                                                <rect key="frame" x="1" y="1" width="814" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" id="zOb-Ri-BOu">
+                                                        <rect key="frame" x="16" y="14" width="120" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="current appnames:" id="YcO-QQ-qiE">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" id="0T6-um-tJ5" userLabel="label_appnames">
+                                                        <rect key="frame" x="153" y="14" width="645" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="appnames" id="akU-hQ-5fu">
+                                                            <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -643,6 +673,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                 <outlet property="client_" destination="641" id="923"/>
                 <outlet property="devices_" destination="787" id="810"/>
                 <outlet property="keyResponder_" destination="925" id="928"/>
+                <outlet property="label_appnames_" destination="0T6-um-tJ5" id="iLc-WN-f8j"/>
                 <outlet property="otherinformationstore_" destination="633" id="638"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>

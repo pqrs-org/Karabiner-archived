@@ -25,6 +25,18 @@
         lastMtime = information[@"mtime"];
 
         [appQueue_ push:information];
+
+        NSMutableString* appnames = [NSMutableString new];
+        for (NSNumber* app_id in [[client_ proxy] workspace_app_ids]) {
+          NSString* name = [[client_ proxy] symbolMapName:@"ApplicationType" value:[app_id intValue]];
+          if (name) {
+            if ([appnames length] > 0) {
+              [appnames appendString:@", "];
+            }
+            [appnames appendString:[name substringFromIndex:[@"ApplicationType::" length]]];
+          }
+        }
+        [label_appnames_ setStringValue:appnames];
       }
     }
     @catch (NSException* exception) {

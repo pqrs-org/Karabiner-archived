@@ -19,6 +19,7 @@
   IBOutlet KarabinerClient* client_;
   IBOutlet OtherInformationStore* otherinformationstore_;
   IBOutlet KeyResponder* keyResponder_;
+  IBOutlet NSTextField* label_appnames_;
 }
 
 @property(weak) IBOutlet NSWindow* window;
