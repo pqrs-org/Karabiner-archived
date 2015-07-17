@@ -4,12 +4,6 @@
 
 @implementation WorkSpaceData
 
-- (unsigned int)getWindowName:(NSString *)name {
-  if (!name) return 0;
-
-  return [xmlCompiler_ windownameid:name];
-}
-
 - (unsigned int)getUIElementRole:(NSString *)name {
   if (!name) return 0;
 

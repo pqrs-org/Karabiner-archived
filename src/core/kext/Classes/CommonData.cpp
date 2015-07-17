@@ -29,6 +29,7 @@ void CommonData::terminate(void) {}
 
 void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
   current_workspaceAppIds_.clear();
+  current_workspaceWindowNameIds_.clear();
 
   for (int i = 0; i < static_cast<int>(count) - 1; i += 2) {
     uint32_t type = ids[i];
@@ -55,7 +56,7 @@ void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
       break;
 
     case BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID:
-      current_workspacedata_.windowname = value;
+      current_workspaceWindowNameIds_.push_back(WorkspaceWindowNameId(value));
       break;
 
     default:

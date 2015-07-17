@@ -8,7 +8,6 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 }
 
-- (unsigned int)getWindowName:(NSString*)name;
 - (unsigned int)getUIElementRole:(NSString*)name;
 
 @end

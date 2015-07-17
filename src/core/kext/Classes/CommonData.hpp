@@ -27,6 +27,7 @@ public:
 
   static void setcurrent_workspaceIds(const uint32_t* ids, size_t count);
   static const Vector_WorkspaceAppId& getcurrent_workspaceAppIds(void) { return current_workspaceAppIds_; }
+  static const Vector_WorkspaceWindowNameId& getcurrent_workspaceWindowNameIds(void) { return current_workspaceWindowNameIds_; }
   static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
 
   static void setcurrent_lastpressedphysicalkey(const Params_Base& newval) {

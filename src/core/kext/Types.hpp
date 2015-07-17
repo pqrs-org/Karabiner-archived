@@ -128,6 +128,6 @@ DECLARE_WORKSPACE_CLASS(WorkspaceUIElementRoleId);
 // no vector
 
 DECLARE_WORKSPACE_CLASS(WorkspaceWindowNameId);
-DECLARE_VECTOR(WorkspaceWindowNameId);
+DECLARE_VECTOR_WITH_HELPER(WorkspaceWindowNameId);
 
 #endif

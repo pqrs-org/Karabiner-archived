@@ -325,9 +325,19 @@
   }
 }
 
-- (uint32_t)windownameid:(NSString*)windowName {
+- (NSArray*)windownameids:(NSString*)windowName {
   @synchronized(self) {
-    return pqrs_xml_compiler_get_windownameid(pqrs_xml_compiler_, [windowName UTF8String]);
+    NSMutableArray* ids = [NSMutableArray new];
+    size_t size = pqrs_xml_compiler_get_window_name_vector_size(pqrs_xml_compiler_);
+    const char* utf8string = [windowName UTF8String];
+    for (size_t i = 0; i < size; ++i) {
+      uint32_t windownameid = 0;
+      if (pqrs_xml_compiler_is_window_name_matched(pqrs_xml_compiler_, &windownameid, i, utf8string)) {
+        [ids addObject:@(windownameid)];
+      }
+    }
+
+    return ids;
   }
 }
 

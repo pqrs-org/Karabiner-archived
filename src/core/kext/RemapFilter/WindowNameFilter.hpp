@@ -11,7 +11,7 @@ public:
     targets_.reserve(length);
 
     for (size_t i = 0; i < length; ++i) {
-      targets_.push_back(AddValue(vec[i]));
+      targets_.push_back(WorkspaceWindowNameId(vec[i]));
     }
   }
 
@@ -20,12 +20,10 @@ public:
     if (get_type() == BRIDGE_FILTERTYPE_WINDOWNAME_NOT ||
         get_type() == BRIDGE_FILTERTYPE_WINDOWNAME_ONLY) {
 
-      unsigned int current = CommonData::getcurrent_workspacedata().windowname;
-
       bool isnot = (get_type() == BRIDGE_FILTERTYPE_WINDOWNAME_NOT);
 
       for (size_t i = 0; i < targets_.size(); ++i) {
-        if (targets_[i] == current) {
+        if (CommonData::getcurrent_workspaceWindowNameIds().is_include(targets_[i])) {
           return isnot ? true : false;
         }
       }
@@ -38,7 +36,7 @@ public:
   }
 
 private:
-  Vector_AddValue targets_;
+  Vector_WorkspaceWindowNameId targets_;
 };
 }
 }

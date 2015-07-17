@@ -165,12 +165,11 @@ struct BridgeSetConfigOne {
 enum { STATIC_ASSERT__sizeof_BridgeSetConfigOne = 1 / (sizeof(struct BridgeSetConfigOne) == 12) };
 
 struct BridgeWorkSpaceData {
-  uint32_t windowname;
   uint32_t uielementrole;
   uint32_t inputsource;
   uint32_t inputsourcedetail;
 };
-enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 16) };
+enum { STATIC_ASSERT__sizeof_BridgeWorkSpaceData = 1 / (sizeof(struct BridgeWorkSpaceData) == 12) };
 
 struct BridgeDeviceInformation {
   uint32_t isFound;

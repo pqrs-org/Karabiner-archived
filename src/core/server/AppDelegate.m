@@ -31,6 +31,7 @@
 
   struct BridgeWorkSpaceData bridgeworkspacedata_;
   NSArray* workspaceAppIds_;
+  NSArray* workspaceWindowNameIds_;
 
   SessionObserver* sessionObserver_;
 }
@@ -61,8 +62,10 @@
   [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID)];
   [workspaceIds addObject:@(bridgeworkspacedata_.uielementrole)];
 
-  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID)];
-  [workspaceIds addObject:@(bridgeworkspacedata_.windowname)];
+  for (NSNumber* n in workspaceWindowNameIds_) {
+    [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID)];
+    [workspaceIds addObject:n];
+  }
 
   [clientForKernelspace send_workspacedata_to_kext:workspaceIds];
 }
@@ -388,10 +391,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       focusedUIElementInformation_ = information;
     }
 
-    bridgeworkspacedata_.windowname = [workSpaceData_ getWindowName:focusedUIElementInformation_[@"WindowName"]];
     bridgeworkspacedata_.uielementrole = [workSpaceData_ getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]];
 
     workspaceAppIds_ = [xmlCompiler_ appids:focusedUIElementInformation_[@"BundleIdentifier"]];
+    workspaceWindowNameIds_ = [xmlCompiler_ windownameids:focusedUIElementInformation_[@"WindowName"]];
 
     [self send_workspacedata_to_kext];
   }
@@ -406,6 +409,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (NSArray*)getWorkspaceAppIds {
   @synchronized(self) {
     return workspaceAppIds_;
+  }
+}
+
+- (NSArray*)getWorkspaceWindowNameIds {
+  @synchronized(self) {
+    return workspaceWindowNameIds_;
   }
 }
 
