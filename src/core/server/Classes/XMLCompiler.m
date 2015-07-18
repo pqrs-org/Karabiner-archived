@@ -337,6 +337,10 @@
       }
     }
 
+    if ([ids count] == 0) {
+      [ids addObject:@0];
+    }
+
     return ids;
   }
 }
