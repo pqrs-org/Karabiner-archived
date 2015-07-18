@@ -32,6 +32,7 @@
   struct BridgeWorkSpaceData bridgeworkspacedata_;
   NSArray* workspaceAppIds_;
   NSArray* workspaceWindowNameIds_;
+  NSNumber* workspaceUIElementRoleId_;
 
   SessionObserver* sessionObserver_;
 }
@@ -59,8 +60,10 @@
   [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_INPUT_SOURCE_DETAIL_ID)];
   [workspaceIds addObject:@(bridgeworkspacedata_.inputsourcedetail)];
 
-  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID)];
-  [workspaceIds addObject:@(bridgeworkspacedata_.uielementrole)];
+  if (workspaceUIElementRoleId_) {
+    [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID)];
+    [workspaceIds addObject:workspaceUIElementRoleId_];
+  }
 
   for (NSNumber* n in workspaceWindowNameIds_) {
     [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID)];
@@ -108,8 +111,6 @@
     // the following values might be changed.
     // Therefore, we need to resend values to kext.
     //
-    // - bridgeworkspacedata_.windowname
-    // - bridgeworkspacedata_.uielementrole
     // - bridgeworkspacedata_.inputsource
     // - bridgeworkspacedata_.inputsourcedetail
 
@@ -391,10 +392,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       focusedUIElementInformation_ = information;
     }
 
-    bridgeworkspacedata_.uielementrole = [workSpaceData_ getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]];
-
     workspaceAppIds_ = [xmlCompiler_ appids:focusedUIElementInformation_[@"BundleIdentifier"]];
     workspaceWindowNameIds_ = [xmlCompiler_ windownameids:focusedUIElementInformation_[@"WindowName"]];
+    workspaceUIElementRoleId_ = @([workSpaceData_ getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]]);
 
     [self send_workspacedata_to_kext];
   }

@@ -30,6 +30,7 @@ void CommonData::terminate(void) {}
 void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
   current_workspaceAppIds_.clear();
   current_workspaceWindowNameIds_.clear();
+  current_workspaceUIElementRoleId_ = WorkspaceUIElementRoleId(0);
 
   for (int i = 0; i < static_cast<int>(count) - 1; i += 2) {
     uint32_t type = ids[i];
@@ -52,7 +53,7 @@ void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
       break;
 
     case BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID:
-      current_workspacedata_.uielementrole = value;
+      current_workspaceUIElementRoleId_ = WorkspaceUIElementRoleId(value);
       break;
 
     case BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID:

@@ -125,7 +125,7 @@ DECLARE_WORKSPACE_CLASS(WorkspaceInputSourceDetailId);
 DECLARE_VECTOR(WorkspaceInputSourceDetailId);
 
 DECLARE_WORKSPACE_CLASS(WorkspaceUIElementRoleId);
-// no vector
+DECLARE_VECTOR_WITH_HELPER(WorkspaceUIElementRoleId);
 
 DECLARE_WORKSPACE_CLASS(WorkspaceWindowNameId);
 DECLARE_VECTOR_WITH_HELPER(WorkspaceWindowNameId);

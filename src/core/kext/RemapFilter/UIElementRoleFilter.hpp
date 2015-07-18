@@ -12,7 +12,7 @@ public:
     targets_.reserve(length);
 
     for (size_t i = 0; i < length; ++i) {
-      targets_.push_back(AddValue(vec[i]));
+      targets_.push_back(WorkspaceUIElementRoleId(vec[i]));
     }
   }
 
@@ -21,7 +21,7 @@ public:
     if (get_type() == BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT ||
         get_type() == BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY) {
 
-      unsigned int current = CommonData::getcurrent_workspacedata().uielementrole;
+      auto current = CommonData::getcurrent_workspaceUIElementRoleId();
 
       bool isnot = (get_type() == BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT);
 
@@ -39,7 +39,7 @@ public:
   }
 
 private:
-  Vector_AddValue targets_;
+  Vector_WorkspaceUIElementRoleId targets_;
 };
 }
 }
