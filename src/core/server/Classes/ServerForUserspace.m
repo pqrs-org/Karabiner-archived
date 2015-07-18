@@ -112,6 +112,10 @@
   return [appDelegate_ getWorkspaceAppIds];
 }
 
+- (NSArray*)workspace_window_name_ids {
+  return [appDelegate_ getWorkspaceWindowNameIds];
+}
+
 - (NSDictionary*)inputsource_information {
   return [appDelegate_ getInputSourceInformation];
 }

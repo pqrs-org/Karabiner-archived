@@ -15,6 +15,28 @@
   [window makeFirstResponder:keyResponder_];
 }
 
+- (NSString*)joinNamesFromIds:(NSString*)type ids:(NSArray*)ids {
+  NSMutableString* result = [NSMutableString new];
+
+  for (NSNumber* n in ids) {
+    NSString* name = [[client_ proxy] symbolMapName:type value:[n intValue]];
+    if (name) {
+      if ([result length] > 0) {
+        [result appendString:@", "];
+      }
+      // When type == @"ApplicationType", name == @"ApplicationType::NAME".
+      // We make a substring which does not contain @"ApplicationType::".
+      [result appendString:[name substringFromIndex:[type length] + 2]];
+    }
+  }
+
+  if ([result length] == 0) {
+    return @"---";
+  }
+
+  return result;
+}
+
 - (void)addToAppQueue {
   @synchronized(self) {
     static NSNumber* lastMtime = nil;
@@ -26,17 +48,13 @@
 
         [appQueue_ push:information];
 
-        NSMutableString* appnames = [NSMutableString new];
-        for (NSNumber* app_id in [[client_ proxy] workspace_app_ids]) {
-          NSString* name = [[client_ proxy] symbolMapName:@"ApplicationType" value:[app_id intValue]];
-          if (name) {
-            if ([appnames length] > 0) {
-              [appnames appendString:@", "];
-            }
-            [appnames appendString:[name substringFromIndex:[@"ApplicationType::" length]]];
-          }
-        }
-        [label_appnames_ setStringValue:appnames];
+        // ----------------------------------------
+        // set labels
+        [label_appnames_ setStringValue:[self joinNamesFromIds:@"ApplicationType"
+                                                           ids:[[client_ proxy] workspace_app_ids]]];
+
+        [label_windownames_ setStringValue:[self joinNamesFromIds:@"WindowName"
+                                                              ids:[[client_ proxy] workspace_window_name_ids]]];
       }
     }
     @catch (NSException* exception) {

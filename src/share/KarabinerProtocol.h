@@ -28,6 +28,7 @@
 - (NSArray *)device_information:(NSInteger)type;
 - (NSDictionary *)focused_uielement_information;
 - (NSArray *)workspace_app_ids;
+- (NSArray *)workspace_window_name_ids;
 - (NSDictionary *)inputsource_information;
 
 @end

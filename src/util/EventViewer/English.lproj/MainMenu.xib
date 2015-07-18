@@ -424,25 +424,43 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Karabiner internal" borderType="line" id="49z-lQ-jK7">
-                                            <rect key="frame" x="6" y="82" width="816" height="52"/>
+                                            <rect key="frame" x="6" y="73" width="816" height="70"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="814" height="36"/>
+                                                <rect key="frame" x="1" y="1" width="814" height="54"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" id="zOb-Ri-BOu">
-                                                        <rect key="frame" x="16" y="14" width="120" height="17"/>
+                                                        <rect key="frame" x="16" y="37" width="120" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="current appnames:" id="YcO-QQ-qiE">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" alignment="right" title="current appnames:" id="YcO-QQ-qiE">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" id="Dpe-zu-HyR">
+                                                        <rect key="frame" x="16" y="21" width="144" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" alignment="right" title="current windownames:" id="Tgf-1T-zzo">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" id="0T6-um-tJ5" userLabel="label_appnames">
-                                                        <rect key="frame" x="153" y="14" width="645" height="17"/>
+                                                        <rect key="frame" x="179" y="37" width="619" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="appnames" id="akU-hQ-5fu">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" id="Y8b-q7-zHt" userLabel="label_windownames">
+                                                        <rect key="frame" x="179" y="21" width="619" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="windownames" id="UjF-3b-sil">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -674,6 +692,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                 <outlet property="devices_" destination="787" id="810"/>
                 <outlet property="keyResponder_" destination="925" id="928"/>
                 <outlet property="label_appnames_" destination="0T6-um-tJ5" id="iLc-WN-f8j"/>
+                <outlet property="label_windownames_" destination="Y8b-q7-zHt" id="LYU-30-39L"/>
                 <outlet property="otherinformationstore_" destination="633" id="638"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
