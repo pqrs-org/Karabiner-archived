@@ -64,7 +64,9 @@ xml_compiler::symbol_map::add(const std::string& type, const std::string& name, 
   // register value if the definition does not exists.
   auto n = type + "::" + name;
   symbol_map_.emplace(n, value);
-  map_for_get_name_.emplace(type + "::" + boost::lexical_cast<std::string>(value), n);
+  if (name != "VK__AUTOINDEX__BEGIN__") {
+    map_for_get_name_.emplace(type + "::" + boost::lexical_cast<std::string>(value), n);
+  }
 
   return value;
 }
