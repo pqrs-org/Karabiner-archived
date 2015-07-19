@@ -10,7 +10,6 @@ DeviceIdentifier CommonData::current_deviceIdentifier_;
 BridgeWorkSpaceData CommonData::current_workspacedata_;
 Vector_WorkspaceAppId CommonData::current_workspaceAppIds_;
 Vector_WorkspaceInputSourceId CommonData::current_workspaceInputSourceIds_;
-Vector_WorkspaceInputSourceDetailId CommonData::current_workspaceInputSourceDetailIds_;
 WorkspaceUIElementRoleId CommonData::current_workspaceUIElementRoleId_;
 Vector_WorkspaceWindowNameId CommonData::current_workspaceWindowNameIds_;
 

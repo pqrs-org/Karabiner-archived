@@ -461,20 +461,6 @@ private:
 };
 
 // ======================================================================
-class InputSourceDetail final {
-public:
-  explicit InputSourceDetail(unsigned int v = 0) : value_(v) {}
-  unsigned int get(void) const { return value_; }
-  bool operator==(InputSourceDetail other) const { return value_ == other.get(); }
-  bool operator!=(InputSourceDetail other) const { return !(*this == other); }
-
-#include "../../../src/bridge/output/include.kext.InputSourceDetail.hpp"
-
-private:
-  unsigned int value_;
-};
-
-// ======================================================================
 class DeviceVendor final {
 public:
   explicit DeviceVendor(unsigned int v = 0) : value_(v) {}

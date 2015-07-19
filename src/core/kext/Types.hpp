@@ -121,9 +121,6 @@ DECLARE_VECTOR_WITH_HELPER(WorkspaceAppId);
 DECLARE_WORKSPACE_CLASS(WorkspaceInputSourceId);
 DECLARE_VECTOR(WorkspaceInputSourceId);
 
-DECLARE_WORKSPACE_CLASS(WorkspaceInputSourceDetailId);
-DECLARE_VECTOR(WorkspaceInputSourceDetailId);
-
 DECLARE_WORKSPACE_CLASS(WorkspaceUIElementRoleId);
 DECLARE_VECTOR_WITH_HELPER(WorkspaceUIElementRoleId);
 
