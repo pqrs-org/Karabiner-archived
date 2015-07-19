@@ -29,7 +29,6 @@
                            inputSourceID:(NSString*)inputSourceID
                              inputModeID:(NSString*)inputModeID;
 - (void)inputsourceid:(uint32_t*)inputSource
-    inputSourceDetail:(uint32_t*)inputSourceDetail
          languagecode:(NSString*)languagecode
         inputSourceID:(NSString*)inputSourceID
           inputModeID:(NSString*)inputModeID;

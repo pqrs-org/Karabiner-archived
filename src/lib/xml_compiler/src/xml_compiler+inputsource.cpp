@@ -82,9 +82,6 @@ void xml_compiler::inputsource_loader::traverse(const extracted_ptree& pt) const
             }
           }
 
-        } else if (child.get_tag_name() == "detail") {
-          newinputsource->set_detail(pqrs::string::remove_whitespaces_copy(child.get_data()));
-
         } else {
           if (child.get_tag_name() == "languagecode") {
             newinputsource->add_rule_languagecode(boost::trim_copy(child.get_data()));
@@ -120,8 +117,6 @@ void xml_compiler::inputsource_loader::traverse(const extracted_ptree& pt) const
         continue;
       }
 
-      // detail_ can be empty.
-
       // ----------------------------------------
       // register to symbol_map_.
       switch (definition_type) {
@@ -139,11 +134,6 @@ void xml_compiler::inputsource_loader::traverse(const extracted_ptree& pt) const
 
       case definition_type::inputsourcedef:
         symbol_map_.add("InputSource", *(newinputsource->get_name()));
-        if (newinputsource->get_detail()) {
-          symbol_map_.add("InputSourceDetail", *(newinputsource->get_detail()));
-        } else {
-          symbol_map_.add("InputSourceDetail", *(newinputsource->get_name()));
-        }
         inputsource_vector_.push_back(newinputsource);
 
         break;

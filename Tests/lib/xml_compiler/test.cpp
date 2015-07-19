@@ -106,72 +106,57 @@ TEST(pqrs_xml_compiler, reload) {
   // inputsourcedef
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
     xml_compiler.get_inputsourceid(inputsource,
-                                   inputsource_detail,
                                    "en",
                                    "com.apple.keylayout.Canadian",
                                    "");
     EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::CANADIAN"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::CANADIAN"), inputsource_detail);
-
     EXPECT_TRUE(xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH") != inputsource);
-    EXPECT_TRUE(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::FRENCH") != inputsource_detail);
   }
 
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
-    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+    xml_compiler.get_inputsourceid(inputsource,
                                    "",
                                    "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak",
                                    "");
     EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::BEPO"), inputsource_detail);
   }
 
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
-    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+    xml_compiler.get_inputsourceid(inputsource,
                                    "",
                                    "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd",
                                    "");
     EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::BEPO_AZERTYCMD"), inputsource_detail);
   }
 
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
-    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+    xml_compiler.get_inputsourceid(inputsource,
                                    "ja",
                                    "com.apple.inputmethod.Kotoeri.Japanese",
                                    "com.apple.inputmethod.Japanese");
     EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::JAPANESE"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::JAPANESE"), inputsource_detail);
   }
 
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
-    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+    xml_compiler.get_inputsourceid(inputsource,
                                    "fr",
                                    "com.apple.keylayout.French",
                                    "");
     EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::FRENCH"), inputsource_detail);
   }
 
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
-    xml_compiler.get_inputsourceid(inputsource, inputsource_detail,
+    xml_compiler.get_inputsourceid(inputsource,
                                    "en",
                                    "com.apple.keylayout.US",
                                    "");
     EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH"), inputsource);
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::MY_ENGLISH"), inputsource_detail);
   }
 
   // ------------------------------------------------------------
@@ -385,21 +370,16 @@ TEST(pqrs_xml_compiler, reload) {
   {
     std::vector<uint32_t> expect;
     expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH")));
-    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::MY_ENGLISH")));
     expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSource::ENGLISH")));
-    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSourceDetail::ENGLISH")));
 
     std::vector<uint32_t> actual;
     for (size_t i = 0; i < xml_compiler.get_inputsource_vector_size(); ++i) {
       uint32_t inputsource = 0;
-      uint32_t inputsource_detail = 0;
       if (xml_compiler.is_inputsource_matched(inputsource,
-                                              inputsource_detail,
                                               i,
                                               "en",
                                               "com.apple.keylayout.US",
                                               "")) {
-        actual.push_back(inputsource_detail);
         actual.push_back(inputsource);
       }
     }
@@ -595,30 +575,24 @@ TEST(pqrs_xml_compiler, reload_bindings_clang) {
 
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
 
     pqrs_xml_compiler_get_inputsourceid(p,
                                         &inputsource,
-                                        &inputsource_detail,
                                         "fr",
                                         "com.apple.keylayout.French",
                                         nullptr);
     EXPECT_TRUE(inputsource != 0);
-    EXPECT_TRUE(inputsource_detail != 0);
   }
 
   {
     uint32_t inputsource;
-    uint32_t inputsource_detail;
 
     pqrs_xml_compiler_get_inputsourceid(p,
                                         &inputsource,
-                                        &inputsource_detail,
                                         nullptr,
                                         nullptr,
                                         nullptr);
     EXPECT_TRUE(inputsource == 0);
-    EXPECT_TRUE(inputsource_detail == 0);
   }
 
   pqrs_xml_compiler_terminate(&p);
@@ -1188,10 +1162,6 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
   s.add("InputSource", "INPUTSOURCE1", 110);
   s.add("InputSource", "INPUTSOURCE2", 111);
   s.add("InputSource", "INPUTSOURCE3", 112);
-  s.add("InputSourceDetail", "NONE", 0);
-  s.add("InputSourceDetail", "INPUTSOURCEDETAIL1", 120);
-  s.add("InputSourceDetail", "INPUTSOURCEDETAIL2", 121);
-  s.add("InputSourceDetail", "INPUTSOURCEDETAIL3", 122);
   s.add("ConfigIndex", "config1", 1000);
   s.add("ConfigIndex", "config2", 2000);
   s.add("ConfigIndex", "config3", 3000);
@@ -1224,10 +1194,6 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
                   "  <inputsource_not>INPUTSOURCE2, INPUTSOURCE3</inputsource_not>"
                   "  <inputmode_only>INPUTSOURCE1</inputmode_only>"
                   "  <inputmode_not>INPUTSOURCE2, INPUTSOURCE3</inputmode_not>"
-                  "  <inputsourcedetail_only>INPUTSOURCEDETAIL1</inputsourcedetail_only>"
-                  "  <inputsourcedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputsourcedetail_not>"
-                  "  <inputmodedetail_only>INPUTSOURCEDETAIL1</inputmodedetail_only>"
-                  "  <inputmodedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputmodedetail_not>"
                   "  <config_only>config1,config2</config_only>"
                   "  <config_not>config3</config_not>"
                   "  <modifier_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifier_only>"
@@ -1341,28 +1307,6 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
     expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT);
     expected.push_back(111);
     expected.push_back(112);
-
-    // <inputsourcedetail_only>INPUTSOURCEDETAIL1</inputsourcedetail_only>
-    expected.push_back(2); // count
-    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY);
-    expected.push_back(120);
-
-    // <inputsourcedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputsourcedetail_not>
-    expected.push_back(3); // count
-    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT);
-    expected.push_back(121);
-    expected.push_back(122);
-
-    // <inputmodedetail_only>INPUTSOURCEDETAIL1</inputmodedetail_only>
-    expected.push_back(2); // count
-    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY);
-    expected.push_back(120);
-
-    // <inputmodedetail_not>INPUTSOURCEDETAIL2, INPUTSOURCEDETAIL3</inputmodedetail_not>
-    expected.push_back(3); // count
-    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT);
-    expected.push_back(121);
-    expected.push_back(122);
 
     // <config_only>config1,config2</config_only>
     expected.push_back(3); // count

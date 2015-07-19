@@ -69,7 +69,6 @@ public:
   size_t get_window_name_vector_size(void) const { return window_name_vector_.size(); }
   bool is_app_matched(uint32_t& appid, size_t index, const std::string& application_identifier) const;
   bool is_inputsource_matched(uint32_t& inputsource,
-                              uint32_t& inputsource_detail,
                               size_t index,
                               const std::string& languagecode,
                               const std::string& inputsourceid,
@@ -80,7 +79,6 @@ public:
                                         const std::string& inputsourceid,
                                         const std::string& inputmodeid) const;
   void get_inputsourceid(uint32_t& inputsource,
-                         uint32_t& inputsource_detail,
                          const std::string& languagecode,
                          const std::string& inputsourceid,
                          const std::string& inputmodeid) const;

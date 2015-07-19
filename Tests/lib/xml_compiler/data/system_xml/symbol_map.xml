@@ -33,8 +33,6 @@
   <symbol_map type="KeyCode" name="VK__AUTOINDEX__BEGIN__" value="1191" />
   <symbol_map type="InputSource" name="NONE" value="0" />
   <symbol_map type="InputSource" name="VK__AUTOINDEX__BEGIN__" value="1" />
-  <symbol_map type="InputSourceDetail" name="NONE" value="0" />
-  <symbol_map type="InputSourceDetail" name="VK__AUTOINDEX__BEGIN__" value="1" />
   <symbol_map type="ModifierFlag" name="ZERO" value="0" />
   <symbol_map type="ModifierFlag" name="CAPSLOCK" value="1" />
   <symbol_map type="ModifierFlag" name="SHIFT_L" value="2" />

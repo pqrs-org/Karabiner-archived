@@ -367,14 +367,12 @@
 }
 
 - (void)inputsourceid:(uint32_t*)inputSource
-    inputSourceDetail:(uint32_t*)inputSourceDetail
          languagecode:(NSString*)languagecode
         inputSourceID:(NSString*)inputSourceID
           inputModeID:(NSString*)inputModeID {
   @synchronized(self) {
     pqrs_xml_compiler_get_inputsourceid(pqrs_xml_compiler_,
                                         inputSource,
-                                        inputSourceDetail,
                                         [languagecode UTF8String],
                                         [inputSourceID UTF8String],
                                         [inputModeID UTF8String]);

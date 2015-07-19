@@ -135,7 +135,6 @@ output_inputSourceDetail:(uint32_t*)output_inputSourceDetail {
   }
 
   [xmlCompiler_ inputsourceid:output_inputSource
-            inputSourceDetail:output_inputSourceDetail
                  languagecode:inputSource.languagecode
                 inputSourceID:inputSource.inputSourceID
                   inputModeID:inputSource.inputModeID];

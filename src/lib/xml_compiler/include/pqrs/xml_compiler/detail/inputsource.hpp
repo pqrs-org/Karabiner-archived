@@ -8,12 +8,6 @@ public:
   }
   void set_name(const std::string& v) { name_ = v; }
 
-  boost::optional<const std::string&> get_detail(void) const {
-    if (!detail_) return boost::none;
-    return *detail_;
-  }
-  void set_detail(const std::string& v) { detail_ = v; }
-
   void add_rule_languagecode(const std::string& v) {
     if (!v.empty()) {
       rules_languagecode_.push_back(v);
@@ -46,7 +40,6 @@ public:
 
 private:
   boost::optional<std::string> name_;
-  boost::optional<std::string> detail_;
   std::vector<std::string> rules_languagecode_;
   std::vector<std::string> rules_inputsourceid_equal_;
   std::vector<std::string> rules_inputsourceid_prefix_;

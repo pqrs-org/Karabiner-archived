@@ -340,7 +340,6 @@ bool xml_compiler::is_app_matched(uint32_t& appid, size_t index, const std::stri
 }
 
 bool xml_compiler::is_inputsource_matched(uint32_t& inputsource,
-                                          uint32_t& inputsource_detail,
                                           size_t index,
                                           const std::string& languagecode,
                                           const std::string& inputsourceid,
@@ -359,22 +358,9 @@ bool xml_compiler::is_inputsource_matched(uint32_t& inputsource,
   auto name = item->get_name();
   if (!name) return false;
 
-  {
-    auto v = symbol_map_.get_optional(std::string("InputSource::") + *name);
-    if (!v) return false;
-    inputsource = *v;
-  }
-
-  auto detail = item->get_detail();
-  if (detail) {
-    auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *detail);
-    if (!v) return false;
-    inputsource_detail = *v;
-  } else {
-    auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *name);
-    if (!v) return false;
-    inputsource_detail = *v;
-  }
+  auto v = symbol_map_.get_optional(std::string("InputSource::") + *name);
+  if (!v) return false;
+  inputsource = *v;
 
   return true;
 }
@@ -417,33 +403,18 @@ bool xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
 }
 
 void xml_compiler::get_inputsourceid(uint32_t& inputsource,
-                                     uint32_t& inputsource_detail,
                                      const std::string& languagecode,
                                      const std::string& inputsourceid,
                                      const std::string& inputmodeid) const {
   inputsource = 0;        // InputSource::NONE
-  inputsource_detail = 0; // InputSourceDetail::NONE
 
   for (const auto& it : inputsource_vector_) {
     if (!it) continue;
 
     if (it->is_rules_matched(languagecode, inputsourceid, inputmodeid)) {
-      {
-        auto v = symbol_map_.get_optional(std::string("InputSource::") + *(it->get_name()));
-        if (!v) return;
-        inputsource = *v;
-      }
-      {
-        if (it->get_detail()) {
-          auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *(it->get_detail()));
-          if (!v) return;
-          inputsource_detail = *v;
-        } else {
-          auto v = symbol_map_.get_optional(std::string("InputSourceDetail::") + *(it->get_name()));
-          if (!v) return;
-          inputsource_detail = *v;
-        }
-      }
+      auto v = symbol_map_.get_optional(std::string("InputSource::") + *(it->get_name()));
+      if (!v) return;
+      inputsource = *v;
       return;
     }
   }

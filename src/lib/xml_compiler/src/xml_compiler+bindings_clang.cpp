@@ -122,7 +122,6 @@ bool pqrs_xml_compiler_is_app_matched(const pqrs_xml_compiler* p, uint32_t* appi
 
 bool pqrs_xml_compiler_is_inputsource_matched(const pqrs_xml_compiler* p,
                                               uint32_t* inputsource,
-                                              uint32_t* inputsource_detail,
                                               size_t index,
                                               const char* languagecode,
                                               const char* inputsourceid,
@@ -131,9 +130,9 @@ bool pqrs_xml_compiler_is_inputsource_matched(const pqrs_xml_compiler* p,
   if (!xml_compiler) return false;
 
   if (!inputsource) return false;
-  if (!inputsource_detail) return false;
 
-  return xml_compiler->is_inputsource_matched(*inputsource, *inputsource_detail, index,
+  return xml_compiler->is_inputsource_matched(*inputsource,
+                                              index,
                                               languagecode != nullptr ? languagecode : "",
                                               inputsourceid != nullptr ? inputsourceid : "",
                                               inputmodeid != nullptr ? inputmodeid : "");
@@ -165,7 +164,6 @@ pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
 
 void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
                                          uint32_t* inputsource,
-                                         uint32_t* inputsource_detail,
                                          const char* languagecode,
                                          const char* inputsourceid,
                                          const char* inputmodeid) {
@@ -173,10 +171,8 @@ void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
   if (!xml_compiler) return;
 
   if (!inputsource) return;
-  if (!inputsource_detail) return;
 
   return xml_compiler->get_inputsourceid(*inputsource,
-                                         *inputsource_detail,
                                          languagecode != nullptr ? languagecode : "",
                                          inputsourceid != nullptr ? inputsourceid : "",
                                          inputmodeid != nullptr ? inputmodeid : "");

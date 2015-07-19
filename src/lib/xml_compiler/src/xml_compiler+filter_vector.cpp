@@ -50,14 +50,6 @@ void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
                it.get_tag_name() == "inputmode_only") {
       // We allow "inputmode_*" for compatibility.
       add_(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY, "InputSource::", it.get_data());
-    } else if (it.get_tag_name() == "inputsourcedetail_not" ||
-               it.get_tag_name() == "inputmodedetail_not") {
-      // We allow "inputmode_*" for compatibility.
-      add_(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT, "InputSourceDetail::", it.get_data());
-    } else if (it.get_tag_name() == "inputsourcedetail_only" ||
-               it.get_tag_name() == "inputmodedetail_only") {
-      // We allow "inputmode_*" for compatibility.
-      add_(BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY, "InputSourceDetail::", it.get_data());
     } else if (it.get_tag_name() == "lastpressedphysicalkey_not") {
       add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT, "", it.get_data());
     } else if (it.get_tag_name() == "lastpressedphysicalkey_only") {

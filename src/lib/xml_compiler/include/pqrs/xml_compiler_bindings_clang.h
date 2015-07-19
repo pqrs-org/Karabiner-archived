@@ -33,7 +33,6 @@ size_t pqrs_xml_compiler_get_window_name_vector_size(const pqrs_xml_compiler* p)
 bool pqrs_xml_compiler_is_app_matched(const pqrs_xml_compiler* p, uint32_t* appid, size_t index, const char* application_identifier);
 bool pqrs_xml_compiler_is_inputsource_matched(const pqrs_xml_compiler* p,
                                               uint32_t* inputsource,
-                                              uint32_t* inputsource_detail,
                                               size_t index,
                                               const char* languagecode,
                                               const char* inputsourceid,
@@ -46,7 +45,6 @@ uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compi
                                                             const char* inputmodeid);
 void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
                                          uint32_t* inputsource,
-                                         uint32_t* inputsource_detail,
                                          const char* languagecode,
                                          const char* inputsourceid,
                                          const char* inputmodeid);
