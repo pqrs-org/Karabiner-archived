@@ -198,7 +198,7 @@
         }
         NSString* value = arguments[2];
         int current = [[client proxy] value:value];
-        [[client proxy] setValue:(!current)forName:value];
+        [[client proxy] setValue:(!current) forName:value];
 
       } else {
         [self output:[NSString stringWithFormat:@"Unknown argument: %@\n", command]];

@@ -8,7 +8,9 @@ namespace org_pqrs_Karabiner {
 bool VirtualKey::VK_CONSUMERKEY::handle(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   ConsumerKeyCode key = ConsumerKeyCode::VK_NONE;
 
-  /**/ if (params.key == KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN) { key = ConsumerKeyCode::BRIGHTNESS_DOWN; } else if (params.key == KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP) {
+  /*  */ if (params.key == KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN) {
+    key = ConsumerKeyCode::BRIGHTNESS_DOWN;
+  } else if (params.key == KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP) {
     key = ConsumerKeyCode::BRIGHTNESS_UP;
   } else if (params.key == KeyCode::VK_CONSUMERKEY_KEYBOARDLIGHT_LOW) {
     key = ConsumerKeyCode::KEYBOARDLIGHT_LOW;

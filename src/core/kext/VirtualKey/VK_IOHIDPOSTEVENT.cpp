@@ -47,7 +47,9 @@ bool VirtualKey::VK_IOHIDPOSTEVENT::handleAfterEnqueued(const Params_KeyboardEve
 
 void VirtualKey::VK_IOHIDPOSTEVENT::post(const Params_KeyboardSpecialEventCallback& params) {
   uint32_t keytype = 0;
-  /**/ if (params.key == ConsumerKeyCode::BRIGHTNESS_DOWN) { keytype = NX_KEYTYPE_BRIGHTNESS_DOWN; } else if (params.key == ConsumerKeyCode::BRIGHTNESS_UP) {
+  /*  */ if (params.key == ConsumerKeyCode::BRIGHTNESS_DOWN) {
+    keytype = NX_KEYTYPE_BRIGHTNESS_DOWN;
+  } else if (params.key == ConsumerKeyCode::BRIGHTNESS_UP) {
     keytype = NX_KEYTYPE_BRIGHTNESS_UP;
   } else if (params.key == ConsumerKeyCode::KEYBOARDLIGHT_OFF) {
     keytype = NX_KEYTYPE_ILLUMINATION_TOGGLE;
