@@ -69,7 +69,7 @@
   NSArray* keys = [targetWindows_ allKeys];
   NSUInteger count = [keys count];
   if (count > 0) {
-    rawWindowIDs_ = (long*)(malloc(sizeof(long*) * count));
+    rawWindowIDs_ = (long*)(malloc(sizeof(long) * count));
     if (rawWindowIDs_) {
       for (NSUInteger i = 0; i < count; ++i) {
         rawWindowIDs_[i] = [keys[i] integerValue];
