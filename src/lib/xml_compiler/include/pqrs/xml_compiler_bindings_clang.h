@@ -39,7 +39,6 @@ bool pqrs_xml_compiler_is_inputsource_matched(const pqrs_xml_compiler* p,
                                               const char* inputsourceid,
                                               const char* inputmodeid);
 bool pqrs_xml_compiler_is_window_name_matched(const pqrs_xml_compiler* p, uint32_t* windownameid, size_t index, const char* window_name);
-uint32_t pqrs_xml_compiler_get_windownameid(const pqrs_xml_compiler* p, const char* window_name);
 uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
                                                             uint32_t keycode,
                                                             const char* languagecode,

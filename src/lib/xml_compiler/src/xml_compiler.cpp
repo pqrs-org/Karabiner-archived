@@ -401,27 +401,6 @@ bool xml_compiler::is_window_name_matched(uint32_t& windownameid, size_t index, 
   return true;
 }
 
-uint32_t
-xml_compiler::get_windownameid(const std::string& window_name) const {
-  for (const auto& it : window_name_vector_) {
-    if (!it) continue;
-
-    if (it->is_rules_matched(window_name)) {
-      auto name = it->get_name();
-      if (!name) goto notfound;
-
-      auto v = symbol_map_.get_optional(std::string("WindowName::") + *name);
-      if (!v) goto notfound;
-
-      return *v;
-    }
-  }
-
-notfound:
-  // return WindowName::UNKNOWN (== 0)
-  return 0;
-}
-
 bool xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
                                                     const std::string& languagecode,
                                                     const std::string& inputsourceid,
