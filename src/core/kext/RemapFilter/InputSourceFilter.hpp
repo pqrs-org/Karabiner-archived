@@ -12,32 +12,19 @@ public:
     targets_.reserve(length);
 
     for (size_t i = 0; i < length; ++i) {
-      targets_.push_back(AddValue(vec[i]));
+      targets_.push_back(WorkspaceInputSourceId(vec[i]));
     }
   }
 
   bool
   isblocked(void) override {
     if (get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_NOT ||
-        get_type() == BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT ||
-        get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY ||
-        get_type() == BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY) {
+        get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY) {
 
-      unsigned int current = 0;
-      if (get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_NOT ||
-          get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY) {
-        current = CommonData::getcurrent_workspacedata().inputsource;
-      }
-      if (get_type() == BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT ||
-          get_type() == BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_ONLY) {
-        current = CommonData::getcurrent_workspacedata().inputsourcedetail;
-      }
-
-      bool isnot = (get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_NOT ||
-                    get_type() == BRIDGE_FILTERTYPE_INPUTSOURCEDETAIL_NOT);
+      bool isnot = (get_type() == BRIDGE_FILTERTYPE_INPUTSOURCE_NOT);
 
       for (size_t i = 0; i < targets_.size(); ++i) {
-        if (targets_[i] == current) {
+        if (CommonData::getcurrent_workspaceInputSourceIds().is_include(targets_[i])) {
           return isnot ? true : false;
         }
       }
@@ -50,7 +37,7 @@ public:
   }
 
 private:
-  Vector_AddValue targets_;
+  Vector_WorkspaceInputSourceId targets_;
 };
 }
 }

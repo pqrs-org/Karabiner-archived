@@ -177,15 +177,23 @@
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
+                                        <customView id="925" customClass="KeyResponder">
+                                            <rect key="frame" x="659" y="14" width="160" height="160"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <outlet property="client_" destination="641" id="926"/>
+                                                <outlet property="eventqueue_" destination="571" id="927"/>
+                                            </connections>
+                                        </customView>
                                         <box autoresizesSubviews="NO" title="Input Source" borderType="line" id="811">
-                                            <rect key="frame" x="6" y="10" width="648" height="135"/>
+                                            <rect key="frame" x="6" y="5" width="648" height="169"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="646" height="119"/>
+                                                <rect key="frame" x="1" y="1" width="646" height="153"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" id="593">
-                                                        <rect key="frame" x="23" y="14" width="98" height="17"/>
+                                                        <rect key="frame" x="23" y="48" width="98" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Input Mode ID:" id="594">
                                                             <font key="font" metaFont="system"/>
@@ -193,8 +201,17 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <textField verticalHuggingPriority="750" id="HKW-al-9Bg">
+                                                        <rect key="frame" x="16" y="14" width="117" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Karabiner internal:" id="UaU-yK-VfH">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                     <textField verticalHuggingPriority="750" id="606">
-                                                        <rect key="frame" x="123" y="14" width="508" height="17"/>
+                                                        <rect key="frame" x="123" y="48" width="508" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_inputmodeid" id="607">
                                                             <font key="font" metaFont="system"/>
@@ -203,7 +220,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" id="644">
-                                                        <rect key="frame" x="15" y="39" width="106" height="17"/>
+                                                        <rect key="frame" x="15" y="73" width="106" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Input Source ID:" id="647">
                                                             <font key="font" metaFont="system"/>
@@ -212,7 +229,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" id="812">
-                                                        <rect key="frame" x="15" y="64" width="106" height="17"/>
+                                                        <rect key="frame" x="15" y="98" width="106" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Language Code:" id="813">
                                                             <font key="font" metaFont="system"/>
@@ -221,7 +238,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" id="645">
-                                                        <rect key="frame" x="123" y="39" width="508" height="17"/>
+                                                        <rect key="frame" x="123" y="73" width="508" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_inputsourceid" id="646">
                                                             <font key="font" metaFont="system"/>
@@ -230,7 +247,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" id="814">
-                                                        <rect key="frame" x="123" y="64" width="508" height="17"/>
+                                                        <rect key="frame" x="123" y="98" width="508" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_languagecode" id="815">
                                                             <font key="font" metaFont="system"/>
@@ -239,7 +256,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <button verticalHuggingPriority="750" id="626">
-                                                        <rect key="frame" x="12" y="81" width="162" height="32"/>
+                                                        <rect key="frame" x="12" y="115" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="627">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -249,19 +266,27 @@
                                                             <action selector="copy:" target="633" id="637"/>
                                                         </connections>
                                                     </button>
+                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="adL-9z-q40">
+                                                        <rect key="frame" x="9" y="40" width="623" height="5"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <font key="titleFont" metaFont="system"/>
+                                                    </box>
+                                                    <textField verticalHuggingPriority="750" id="U36-7A-elZ">
+                                                        <rect key="frame" x="141" y="14" width="508" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_karabiner_internal_input_sources" id="Jl1-LF-34A">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                 </subviews>
                                             </view>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <customView id="925" customClass="KeyResponder">
-                                            <rect key="frame" x="659" y="14" width="160" height="160"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <connections>
-                                                <outlet property="client_" destination="641" id="926"/>
-                                                <outlet property="eventqueue_" destination="571" id="927"/>
-                                            </connections>
-                                        </customView>
                                     </subviews>
                                 </view>
                                 <connections>
@@ -684,6 +709,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
             <connections>
                 <outlet property="initialFirstResponder" destination="925" id="929"/>
             </connections>
+            <point key="canvasLocation" x="305" y="465.5"/>
         </window>
         <customObject id="494" userLabel="App Delegate" customClass="AppDelegate">
             <connections>
@@ -692,6 +718,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                 <outlet property="devices_" destination="787" id="810"/>
                 <outlet property="keyResponder_" destination="925" id="928"/>
                 <outlet property="label_appnames_" destination="0T6-um-tJ5" id="iLc-WN-f8j"/>
+                <outlet property="label_input_sources_" destination="U36-7A-elZ" id="eC9-cg-V5i"/>
                 <outlet property="label_windownames_" destination="Y8b-q7-zHt" id="LYU-30-39L"/>
                 <outlet property="otherinformationstore_" destination="633" id="638"/>
                 <outlet property="window" destination="371" id="532"/>
@@ -724,6 +751,15 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="W9q-2J-Sz1"/>
+        <textField verticalHuggingPriority="750" id="mnU-0O-P8B">
+            <rect key="frame" x="0.0" y="0.0" width="508" height="17"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_inputmodeid" id="0fT-nr-IPQ">
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+        </textField>
     </objects>
     <resources>
         <image name="NSInfo" width="32" height="32"/>

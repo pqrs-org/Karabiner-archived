@@ -24,6 +24,9 @@
 - (NSArray*)appids:(NSString*)bundleIdentifier;
 - (NSArray*)windownameids:(NSString*)windowName;
 - (uint32_t)uielementroleid:(NSString*)uiElementRole;
+- (NSArray*)inputsourceids:(NSString*)languagecode
+             inputSourceID:(NSString*)inputSourceID
+               inputModeID:(NSString*)inputModeID;
 - (BOOL)is_vk_change_inputsource_matched:(uint32_t)keycode
                             languagecode:(NSString*)languagecode
                            inputSourceID:(NSString*)inputSourceID

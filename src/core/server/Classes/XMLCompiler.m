@@ -352,6 +352,30 @@
   }
 }
 
+- (NSArray*)inputsourceids:(NSString*)languagecode
+             inputSourceID:(NSString*)inputSourceID
+               inputModeID:(NSString*)inputModeID {
+  @synchronized(self) {
+    NSMutableArray* ids = [NSMutableArray new];
+    size_t size = pqrs_xml_compiler_get_inputsource_vector_size(pqrs_xml_compiler_);
+    const char* languagecode_u8 = [languagecode UTF8String];
+    const char* inputsourceid_u8 = [inputSourceID UTF8String];
+    const char* inputmodeid_u8 = [inputModeID UTF8String];
+    for (size_t i = 0; i < size; ++i) {
+      uint32_t inputsource = 0;
+      if (pqrs_xml_compiler_is_inputsource_matched(pqrs_xml_compiler_, &inputsource, i, languagecode_u8, inputsourceid_u8, inputmodeid_u8)) {
+        [ids addObject:@(inputsource)];
+      }
+    }
+
+    if ([ids count] == 0) {
+      [ids addObject:@0];
+    }
+
+    return ids;
+  }
+}
+
 - (BOOL)is_vk_change_inputsource_matched:(uint32_t)keycode
                             languagecode:(NSString*)languagecode
                            inputSourceID:(NSString*)inputSourceID

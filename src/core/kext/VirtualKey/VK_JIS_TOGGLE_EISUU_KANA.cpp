@@ -11,7 +11,7 @@ bool VirtualKey::VK_JIS_TOGGLE_EISUU_KANA::handle(const Params_KeyboardEventCall
   if (params.key != KeyCode::VK_JIS_TOGGLE_EISUU_KANA) return false;
 
   if (params.ex_iskeydown) {
-    if (InputSource::JAPANESE == InputSource(CommonData::getcurrent_workspacedata().inputsource)) {
+    if (CommonData::getcurrent_workspaceInputSourceIds().is_include(WorkspaceInputSourceId(InputSource::JAPANESE.get()))) {
       newkeycode_ = KeyCode::JIS_EISUU;
     } else {
       newkeycode_ = KeyCode::JIS_KANA;

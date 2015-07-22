@@ -7,7 +7,6 @@ namespace org_pqrs_Karabiner {
 AbsoluteTime CommonData::current_ts_;
 KeyboardType CommonData::current_keyboardType_;
 DeviceIdentifier CommonData::current_deviceIdentifier_;
-BridgeWorkSpaceData CommonData::current_workspacedata_;
 Vector_WorkspaceAppId CommonData::current_workspaceAppIds_;
 Vector_WorkspaceInputSourceId CommonData::current_workspaceInputSourceIds_;
 WorkspaceUIElementRoleId CommonData::current_workspaceUIElementRoleId_;
@@ -30,6 +29,7 @@ void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
   current_workspaceAppIds_.clear();
   current_workspaceWindowNameIds_.clear();
   current_workspaceUIElementRoleId_ = WorkspaceUIElementRoleId(0);
+  current_workspaceInputSourceIds_.clear();
 
   for (int i = 0; i < static_cast<int>(count) - 1; i += 2) {
     uint32_t type = ids[i];
@@ -44,11 +44,7 @@ void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
       break;
 
     case BRIDGE_WORKSPACETYPE_INPUT_SOURCE_ID:
-      current_workspacedata_.inputsource = value;
-      break;
-
-    case BRIDGE_WORKSPACETYPE_INPUT_SOURCE_DETAIL_ID:
-      current_workspacedata_.inputsourcedetail = value;
+      current_workspaceInputSourceIds_.push_back(WorkspaceInputSourceId(value));
       break;
 
     case BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID:

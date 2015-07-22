@@ -21,6 +21,7 @@
   IBOutlet KeyResponder* keyResponder_;
   IBOutlet NSTextField* label_appnames_;
   IBOutlet NSTextField* label_windownames_;
+  IBOutlet NSTextField* label_input_sources_;
 }
 
 @property(weak) IBOutlet NSWindow* window;

@@ -29,7 +29,7 @@ public:
   static const Vector_WorkspaceAppId& getcurrent_workspaceAppIds(void) { return current_workspaceAppIds_; }
   static const Vector_WorkspaceWindowNameId& getcurrent_workspaceWindowNameIds(void) { return current_workspaceWindowNameIds_; }
   static const WorkspaceUIElementRoleId getcurrent_workspaceUIElementRoleId(void) { return current_workspaceUIElementRoleId_; }
-  static const BridgeWorkSpaceData& getcurrent_workspacedata(void) { return current_workspacedata_; }
+  static const Vector_WorkspaceInputSourceId& getcurrent_workspaceInputSourceIds(void) { return current_workspaceInputSourceIds_; }
 
   static void setcurrent_lastpressedphysicalkey(const Params_Base& newval) {
     current_lastpressedphysicalkey_.update(newval);
@@ -47,7 +47,6 @@ private:
   static AbsoluteTime current_ts_;
   static KeyboardType current_keyboardType_;
   static DeviceIdentifier current_deviceIdentifier_;
-  static BridgeWorkSpaceData current_workspacedata_;
   static Vector_WorkspaceAppId current_workspaceAppIds_;
   static Vector_WorkspaceInputSourceId current_workspaceInputSourceIds_;
   static WorkspaceUIElementRoleId current_workspaceUIElementRoleId_;

@@ -31,6 +31,7 @@
 - (NSDictionary*)getFocusedUIElementInformation;
 - (NSArray*)getWorkspaceAppIds;
 - (NSArray*)getWorkspaceWindowNameIds;
+- (NSArray*)getWorkspaceInputSourceIds;
 - (NSDictionary*)getInputSourceInformation;
 
 - (IBAction)restartAXNotifier:(id)sender;

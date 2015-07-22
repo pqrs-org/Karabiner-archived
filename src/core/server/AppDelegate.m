@@ -29,10 +29,10 @@
 
   dispatch_queue_t axnotifierManagerQueue_;
 
-  struct BridgeWorkSpaceData bridgeworkspacedata_;
   NSArray* workspaceAppIds_;
   NSArray* workspaceWindowNameIds_;
   NSNumber* workspaceUIElementRoleId_;
+  NSArray* workspaceInputSourceIds_;
 
   SessionObserver* sessionObserver_;
 }
@@ -54,11 +54,10 @@
     [workspaceIds addObject:n];
   }
 
-  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_INPUT_SOURCE_ID)];
-  [workspaceIds addObject:@(bridgeworkspacedata_.inputsource)];
-
-  [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_INPUT_SOURCE_DETAIL_ID)];
-  [workspaceIds addObject:@(bridgeworkspacedata_.inputsourcedetail)];
+  for (NSNumber* n in workspaceInputSourceIds_) {
+    [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_INPUT_SOURCE_ID)];
+    [workspaceIds addObject:n];
+  }
 
   if (workspaceUIElementRoleId_) {
     [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID)];
@@ -83,9 +82,13 @@
 - (void)distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
-    [workSpaceData_ getInputSourceID:inputSource
-                  output_inputSource:(&(bridgeworkspacedata_.inputsource))
-            output_inputSourceDetail:(&(bridgeworkspacedata_.inputsourcedetail))];
+    if (!inputSource) {
+      workspaceInputSourceIds_ = nil;
+    } else {
+      workspaceInputSourceIds_ = [xmlCompiler_ inputsourceids:inputSource.languagecode
+                                                inputSourceID:inputSource.inputSourceID
+                                                  inputModeID:inputSource.inputModeID];
+    }
     [self send_workspacedata_to_kext];
 
     @synchronized(self) {
@@ -111,8 +114,10 @@
     // the following values might be changed.
     // Therefore, we need to resend values to kext.
     //
-    // - bridgeworkspacedata_.inputsource
-    // - bridgeworkspacedata_.inputsourcedetail
+    // - workspaceAppIds_
+    // - workspaceWindowNameIds_
+    // - workspaceUIElementRoleId_
+    // - workspaceInputSourceIds_
 
     [self updateFocusedUIElementInformation:nil];
     [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
@@ -415,6 +420,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (NSArray*)getWorkspaceWindowNameIds {
   @synchronized(self) {
     return workspaceWindowNameIds_;
+  }
+}
+
+- (NSArray*)getWorkspaceInputSourceIds {
+  @synchronized(self) {
+    return workspaceInputSourceIds_;
   }
 }
 

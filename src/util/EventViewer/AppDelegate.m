@@ -75,6 +75,9 @@
         [otherinformationstore_ setLanguageCode:information[@"languageCode"]];
         [otherinformationstore_ setInputSourceID:information[@"inputSourceID"]];
         [otherinformationstore_ setInputModeID:information[@"inputModeID"]];
+
+        [label_input_sources_ setStringValue:[self joinNamesFromIds:@"InputSource"
+                                                                ids:[[client_ proxy] workspace_inputsource_ids]]];
       }
     }
     @catch (NSException* exception) {
