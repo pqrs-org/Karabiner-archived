@@ -1,52 +1,75 @@
 <?xml version="1.0"?>
 <root>
-  <!-- ============================================================ -->
-  <!-- inputsourceid_equal -->
+
+  <inputsourcedef>
+    <name>AINU</name>
+    <inputmodeid_equal>com.apple.kotoeri.Ainu</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BRITISH</name>
+    <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BELGIAN</name>
+    <languagecode>nl</languagecode>
+  </inputsourcedef>
+
+  <!-- bepo begin ======================================== -->
   <inputsourcedef>
     <name>BEPO</name>
-    <detail>BEPO_AZERTYCMD</detail>
+    <inputsourceid_prefix>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_STANDARD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_AZERTYCMD</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_AZERTYCMDROMAN</detail>
+    <name>BEPO_AZERTYCMDROMAN</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmdRoman</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTYCMD</detail>
+    <name>BEPO_QWERTYCMD</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmd</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTYCMDROMAN</detail>
+    <name>BEPO_QWERTYCMDROMAN</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmdRoman</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTZCMD</detail>
+    <name>BEPO_QWERTZCMD</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmd</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTZCMDROMAN</detail>
+    <name>BEPO_QWERTZCMDROMAN</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmdRoman</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_ROMAN</detail>
+    <name>BEPO_ROMAN</name>
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorakRoman</inputsourceid_equal>
   </inputsourcedef>
+  <!-- bepo end ======================================== -->
 
   <inputsourcedef>
     <name>BULGARIAN</name>
-    <detail>BULGARIAN_PHONETIC</detail>
+    <languagecode>bg</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BULGARIAN_PHONETIC</name>
     <inputsourceid_prefix>com.apple.keylayout.Bulgarian-Phonetic</inputsourceid_prefix>
   </inputsourcedef>
 
@@ -175,15 +198,6 @@
 
   <!-- ============================================================ -->
   <!-- inputsourceid_prefix -->
-  <inputsourcedef>
-    <name>BEPO</name>
-    <inputsourceid_prefix>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_prefix>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>BRITISH</name>
-    <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
-  </inputsourcedef>
 
   <inputsourcedef>
     <name>CANADIAN</name>
@@ -202,10 +216,6 @@
 
   <!-- ============================================================ -->
   <!-- inputmodeid_equal -->
-  <inputsourcedef>
-    <name>AINU</name>
-    <inputmodeid_equal>com.apple.kotoeri.Ainu</inputmodeid_equal>
-  </inputsourcedef>
 
   <inputsourcedef>
     <name>ENGLISH</name>
@@ -260,15 +270,6 @@
 
   <!-- ============================================================ -->
   <!-- languagecode -->
-  <inputsourcedef>
-    <name>BELGIAN</name>
-    <languagecode>nl</languagecode>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>BULGARIAN</name>
-    <languagecode>bg</languagecode>
-  </inputsourcedef>
 
   <inputsourcedef>
     <name>CROATIAN</name>
