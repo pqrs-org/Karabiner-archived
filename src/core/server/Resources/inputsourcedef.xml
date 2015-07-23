@@ -74,9 +74,33 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>CANADIAN</name>
+    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>CHINESE_SIMPLIFIED</name>
+    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>CHINESE_TRADITIONAL</name>
-    <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
+    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>CHINESE_TRADITIONAL_YAHOO_KEYKEY</name>
     <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>CROATIAN</name>
+    <languagecode>hr</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>CZECH</name>
+    <languagecode>cs</languagecode>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -200,11 +224,6 @@
   <!-- inputsourceid_prefix -->
 
   <inputsourcedef>
-    <name>CANADIAN</name>
-    <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
-  </inputsourcedef>
-
-  <inputsourcedef>
     <name>DVORAK</name>
     <inputsourceid_prefix>com.apple.keylayout.Dvorak</inputsourceid_prefix>
   </inputsourcedef>
@@ -254,32 +273,12 @@
   <!-- ============================================================ -->
   <!-- inputmodeid_prefix -->
   <inputsourcedef>
-    <name>CHINESE_SIMPLIFIED</name>
-    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>CHINESE_TRADITIONAL</name>
-    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
-  </inputsourcedef>
-
-  <inputsourcedef>
     <name>KOREAN</name>
     <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
   </inputsourcedef>
 
   <!-- ============================================================ -->
   <!-- languagecode -->
-
-  <inputsourcedef>
-    <name>CROATIAN</name>
-    <languagecode>hr</languagecode>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>CZECH</name>
-    <languagecode>cs</languagecode>
-  </inputsourcedef>
 
   <inputsourcedef>
     <name>DANISH</name>
