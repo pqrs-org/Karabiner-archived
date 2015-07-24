@@ -200,12 +200,40 @@
     <inputsourceid_equal>com.apple.keylayout.Italian</inputsourceid_equal>
   </inputsourcedef>
 
-
-
   <inputsourcedef>
     <name>JANSI</name>
     <inputsourceid_equal>org.unknown.keylayout.JANSI</inputsourceid_equal>
   </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_HIRAGANA</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_KATAKANA</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_FULLWIDTH_ROMAN</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_HALFWIDTH_KANA</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
+  </inputsourcedef>
+
+
+
+
+
 
   <inputsourcedef>
     <name>LITHUANIAN</name>
@@ -281,35 +309,6 @@
 
   <!-- ============================================================ -->
   <!-- inputmodeid_equal -->
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_HIRAGANA</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_KATAKANA</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_FULLWIDTH_ROMAN</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_HALFWIDTH_KANA</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
-  </inputsourcedef>
 
   <!-- ============================================================ -->
   <!-- inputmodeid_prefix -->
