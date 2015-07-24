@@ -190,20 +190,17 @@
     <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPROPC</inputsourceid_equal>
   </inputsourcedef>
 
-
-
-
   <inputsourcedef>
     <name>ITALIAN</name>
-    <detail>ITALIAN</detail>
-    <inputsourceid_equal>com.apple.keylayout.Italian-Pro</inputsourceid_equal>
+    <languagecode>it</languagecode>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>ITALIAN</name>
-    <detail>ITALIAN_TYPEWRITER</detail>
+    <name>ITALIAN_TYPEWRITER</name>
     <inputsourceid_equal>com.apple.keylayout.Italian</inputsourceid_equal>
   </inputsourcedef>
+
+
 
   <inputsourcedef>
     <name>JANSI</name>
@@ -323,11 +320,6 @@
 
   <!-- ============================================================ -->
   <!-- languagecode -->
-
-  <inputsourcedef>
-    <name>ITALIAN</name>
-    <languagecode>it</languagecode>
-  </inputsourcedef>
 
   <inputsourcedef>
     <name>NORWEGIAN</name>
