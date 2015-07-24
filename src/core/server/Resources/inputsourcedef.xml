@@ -79,6 +79,12 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>CHINESE</name>
+    <languagecode>zh-Hans</languagecode>
+    <languagecode>zh-Hant</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>CHINESE_SIMPLIFIED</name>
     <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
   </inputsourcedef>
