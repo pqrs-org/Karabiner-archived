@@ -110,22 +110,41 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>DANISH</name>
+    <languagecode>da</languagecode>
+  </inputsourcedef>
+
+  <!-- dvorak begin ======================================== -->
+  <inputsourcedef>
     <name>DVORAK</name>
-    <detail>DVORAK_LEFT</detail>
+    <inputsourceid_prefix>com.apple.keylayout.Dvorak</inputsourceid_prefix>
+    <inputsourceid_prefix>com.apple.keylayout.DVORAK</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>DVORAK_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>DVORAK_LEFT</name>
     <inputsourceid_equal>com.apple.keylayout.Dvorak-Left</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>DVORAK</name>
-    <detail>DVORAK_QWERTYCMD</detail>
+    <name>DVORAK_QWERTYCMD</name>
     <inputsourceid_equal>com.apple.keylayout.DVORAK-QWERTYCMD</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>DVORAK</name>
-    <detail>DVORAK_RIGHT</detail>
+    <name>DVORAK_RIGHT</name>
     <inputsourceid_equal>com.apple.keylayout.Dvorak-Right</inputsourceid_equal>
   </inputsourcedef>
+  <!-- dvorak end ======================================== -->
+
+
+
+
 
   <inputsourcedef>
     <name>ENGLISH_TYPOGRAPHIC</name>
@@ -230,11 +249,6 @@
   <!-- inputsourceid_prefix -->
 
   <inputsourcedef>
-    <name>DVORAK</name>
-    <inputsourceid_prefix>com.apple.keylayout.Dvorak</inputsourceid_prefix>
-  </inputsourcedef>
-
-  <inputsourcedef>
     <name>SWISS</name>
     <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
   </inputsourcedef>
@@ -285,11 +299,6 @@
 
   <!-- ============================================================ -->
   <!-- languagecode -->
-
-  <inputsourcedef>
-    <name>DANISH</name>
-    <languagecode>da</languagecode>
-  </inputsourcedef>
 
   <inputsourcedef>
     <name>ENGLISH</name>
