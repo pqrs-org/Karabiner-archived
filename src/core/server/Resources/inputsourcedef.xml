@@ -7,11 +7,6 @@
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BRITISH</name>
-    <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
-  </inputsourcedef>
-
-  <inputsourcedef>
     <name>BELGIAN</name>
     <languagecode>nl</languagecode>
   </inputsourcedef>
@@ -62,6 +57,11 @@
     <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorakRoman</inputsourceid_equal>
   </inputsourcedef>
   <!-- bepo end ======================================== -->
+
+  <inputsourcedef>
+    <name>BRITISH</name>
+    <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
+  </inputsourcedef>
 
   <inputsourcedef>
     <name>BULGARIAN</name>
