@@ -230,28 +230,37 @@
     <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
   </inputsourcedef>
 
-
-
-
-
+  <inputsourcedef>
+    <name>KOREAN</name>
+    <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
+  </inputsourcedef>
 
   <inputsourcedef>
     <name>LITHUANIAN</name>
-    <detail>LITHUANIAN</detail>
     <inputsourceid_equal>com.apple.keylayout.Lithuanian</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
     <name>NORWEGIAN</name>
-    <detail>NORWEGIAN_EXTENDED</detail>
+    <languagecode>nb</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>NORWEGIAN_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Norwegian</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>NORWEGIAN_EXTENDED</name>
     <inputsourceid_equal>com.apple.keylayout.NorwegianExtended</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>NORWEGIAN</name>
-    <detail>NORWEGIAN_SAMI_PC</detail>
+    <name>NORWEGIAN_SAMI_PC</name>
     <inputsourceid_equal>com.apple.keylayout.NorwegianSami-PC</inputsourceid_equal>
   </inputsourcedef>
+
+
 
   <inputsourcedef>
     <name>POLISH</name>
@@ -312,18 +321,9 @@
 
   <!-- ============================================================ -->
   <!-- inputmodeid_prefix -->
-  <inputsourcedef>
-    <name>KOREAN</name>
-    <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
-  </inputsourcedef>
 
   <!-- ============================================================ -->
   <!-- languagecode -->
-
-  <inputsourcedef>
-    <name>NORWEGIAN</name>
-    <languagecode>nb</languagecode>
-  </inputsourcedef>
 
   <inputsourcedef>
     <name>POLISH</name>
