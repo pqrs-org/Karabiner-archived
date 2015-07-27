@@ -66,6 +66,20 @@
     <inputsourceid_prefix>com.apple.keylayout.Canadian</inputsourceid_prefix>
   </vkchangeinputsourcedef>
 
+  <!-- OS X might have a bug around Chinese input source switching.
+       Please see comments of KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE. -->
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CHINESE_SIMPLIFIED</name>
+    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
+  </vkchangeinputsourcedef>
+
+  <!-- OS X might have a bug around Chinese input source switching.
+       Please see comments of KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE. -->
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CHINESE_TRADITIONAL</name>
+    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
+  </vkchangeinputsourcedef>
+
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_COLEMAK</name>
     <inputsourceid_equal>com.apple.keylayout.Colemak</inputsourceid_equal>
@@ -156,16 +170,6 @@
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_US</name>
     <inputsourceid_equal>com.apple.keylayout.US</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CHINESE_SIMPLIFIED</name>
-    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CHINESE_TRADITIONAL</name>
-    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
