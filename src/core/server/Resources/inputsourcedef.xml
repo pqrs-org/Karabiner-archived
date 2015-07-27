@@ -260,74 +260,19 @@
     <inputsourceid_equal>com.apple.keylayout.NorwegianSami-PC</inputsourceid_equal>
   </inputsourcedef>
 
-
-
-  <inputsourcedef>
-    <name>POLISH</name>
-    <detail>POLISH_PRO</detail>
-    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>RUSSIAN</name>
-    <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>RUSSIAN_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>SPANISH</name>
-    <detail>SPANISH_ISO</detail>
-    <inputsourceid_equal>com.apple.keylayout.Spanish-ISO</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>SWISS</name>
-    <detail>SWISS_FRENCH</detail>
-    <inputsourceid_equal>com.apple.keylayout.SwissFrench</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>SWISS</name>
-    <detail>SWISS_GERMAN</detail>
-    <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
-  </inputsourcedef>
-
-  <!-- A popular UKRAINIAN PC layout from http://bluezbox.com/uapc.html -->
-  <inputsourcedef>
-    <name>UKRAINIAN</name>
-    <detail>UKRAINIAN_PC</detail>
-    <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>UNICODEHEXINPUT</name>
-    <inputsourceid_equal>com.apple.keylayout.UnicodeHexInput</inputsourceid_equal>
-  </inputsourcedef>
-
-  <!-- ============================================================ -->
-  <!-- inputsourceid_prefix -->
-
-  <inputsourcedef>
-    <name>SWISS</name>
-    <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
-  </inputsourcedef>
-
-  <!-- ============================================================ -->
-  <!-- inputmodeid_equal -->
-
-  <!-- ============================================================ -->
-  <!-- inputmodeid_prefix -->
-
-  <!-- ============================================================ -->
-  <!-- languagecode -->
-
   <inputsourcedef>
     <name>POLISH</name>
     <languagecode>pl</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>POLISH_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Polish</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>POLISH_PRO</name>
+    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -338,6 +283,27 @@
   <inputsourcedef>
     <name>RUSSIAN</name>
     <languagecode>ru</languagecode>
+    <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Russian</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_WIN</name>
+    <inputsourceid_equal>com.apple.keylayout.RussianWin</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_PHONETIC</name>
+    <inputsourceid_equal>com.apple.keylayout.Russian-Phonetic</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_TYPOGRAPHIC</name>
+    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -351,8 +317,28 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>SPANISH_ISO</name>
+    <inputsourceid_equal>com.apple.keylayout.Spanish-ISO</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>SWEDISH</name>
     <languagecode>sv</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>SWISS</name>
+    <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>SWISS_FRENCH</name>
+    <inputsourceid_equal>com.apple.keylayout.SwissFrench</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>SWISS_GERMAN</name>
+    <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -363,6 +349,17 @@
   <inputsourcedef>
     <name>UKRAINIAN</name>
     <languagecode>uk</languagecode>
+  </inputsourcedef>
+
+  <!-- A popular UKRAINIAN PC layout from http://bluezbox.com/uapc.html -->
+  <inputsourcedef>
+    <name>UKRAINIAN_PC</name>
+    <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>UNICODEHEXINPUT</name>
+    <inputsourceid_equal>com.apple.keylayout.UnicodeHexInput</inputsourceid_equal>
   </inputsourcedef>
 
 </root>
