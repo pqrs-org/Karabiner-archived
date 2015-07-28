@@ -43,12 +43,16 @@ void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
     } else if (it.get_tag_name() == "modifierstuck_only") {
       add_(BRIDGE_FILTERTYPE_MODIFIER_STUCK_ONLY, "", it.get_data());
     } else if (it.get_tag_name() == "inputsource_not" ||
-               it.get_tag_name() == "inputmode_not") {
-      // We allow "inputmode_*" for compatibility.
+               it.get_tag_name() == "inputmode_not" ||
+               it.get_tag_name() == "inputsourcedetail_not" ||
+               it.get_tag_name() == "inputmodedetail_not") {
+      // We allow "inputmode_*", "inputmodedetail_*", "inputsourcedetail_*" for compatibility.
       add_(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT, "InputSource::", it.get_data());
     } else if (it.get_tag_name() == "inputsource_only" ||
-               it.get_tag_name() == "inputmode_only") {
-      // We allow "inputmode_*" for compatibility.
+               it.get_tag_name() == "inputmode_only" ||
+               it.get_tag_name() == "inputsourcedetail_only" ||
+               it.get_tag_name() == "inputmodedetail_only") {
+      // We allow "inputmode_*", "inputmodedetail_*", "inputsourcedetail_*" for compatibility.
       add_(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY, "InputSource::", it.get_data());
     } else if (it.get_tag_name() == "lastpressedphysicalkey_not") {
       add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT, "", it.get_data());
