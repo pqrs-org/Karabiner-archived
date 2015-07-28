@@ -13,14 +13,6 @@
       <name>Option+AEIUO to àèìùò on "Italian Input Source"</name>
       <identifier>remap.italian_optionAEIUO_grave_italian</identifier>
       <block>
-        <inputsourcedetail_only>ITALIAN_TYPEWRITER</inputsourcedetail_only>
-        <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::A</autogen>
-        <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::E</autogen>
-        <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::I</autogen>
-        <autogen>__KeyToKey__ KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::U</autogen>
-        <autogen>__KeyToKey__ KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_0, ModifierFlag::OPTION_L, KeyCode::O</autogen>
-      </block>
-      <block>
         <inputsource_only>ITALIAN</inputsource_only>
         <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_9, ModifierFlag::OPTION_L, KeyCode::A</autogen>
         <autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_9, ModifierFlag::OPTION_L, KeyCode::E</autogen>
