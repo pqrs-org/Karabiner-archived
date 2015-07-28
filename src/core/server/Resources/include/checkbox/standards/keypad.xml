@@ -244,7 +244,7 @@
       </block>
       <block>
         <!-- Parentheses is Shift+8,9 in some Input Sources. -->
-        <inputsourcedetail_only>SPANISH_ISO</inputsourcedetail_only>
+        <inputsource_only>SPANISH_ISO</inputsource_only>
         <include path="../devices/logitech_n305.xml">
           <replacementdef>
             <replacementname>LOGITECH_N305_LEFT_PARENTHES</replacementname>
