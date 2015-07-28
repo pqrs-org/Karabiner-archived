@@ -146,6 +146,7 @@
     <name>ENGLISH</name>
     <languagecode>en</languagecode>
     <inputmodeid_equal>com.apple.inputmethod.Roman</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
     <inputsourceid_equal>org.unknown.keylayout.JANSI</inputsourceid_equal>
   </inputsourcedef>
 
@@ -208,10 +209,14 @@
   <inputsourcedef>
     <name>JAPANESE</name>
     <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
     <name>JAPANESE_HIRAGANA</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
     <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
   </inputsourcedef>
 
