@@ -14,7 +14,7 @@
 
   {{JAPANESE_OYAYUBISHIFT_EXTRA}}
 
-  <inputmode_only>JAPANESE</inputmode_only>
+  <inputsource_only>JAPANESE</inputsource_only>
   <!-- 左手 中段 -->
   <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::U,             KeyCode::VK_NONE</autogen>
   <autogen>__KeyToKey__ KeyCode::S, ModifierFlag::NONE, KeyCode::S, KeyCode::I, KeyCode::VK_NONE</autogen>
