@@ -105,6 +105,27 @@ TEST(pqrs_xml_compiler, reload) {
   // ------------------------------------------------------------
   // inputsourcedef
   {
+    std::vector<uint32_t> expect;
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSource::CANADIAN")));
+    expect.push_back(*(xml_compiler.get_symbol_map().get_optional("InputSource::ENGLISH")));
+
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < xml_compiler.get_inputsource_vector_size(); ++i) {
+      uint32_t inputsource = 0;
+      if (xml_compiler.is_inputsource_matched(inputsource,
+                                              i,
+                                              "en",
+                                              "com.apple.keylayout.Canadian",
+                                              "")) {
+        actual.push_back(inputsource);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
+  }
+
+#if 0
+  {
     uint32_t inputsource;
     xml_compiler.get_inputsourceid(inputsource,
                                    "en",
@@ -158,6 +179,7 @@ TEST(pqrs_xml_compiler, reload) {
                                    "");
     EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH"), inputsource);
   }
+#endif
 
   // ------------------------------------------------------------
   // vkopenurldef
@@ -198,8 +220,8 @@ TEST(pqrs_xml_compiler, reload) {
 
   // system 6 + private 4 - duplicated 2 == 8
   EXPECT_EQ(8, xml_compiler.get_app_vector_size());
-  // system 51 + private 1 == 52
-  EXPECT_EQ(52, xml_compiler.get_inputsource_vector_size());
+  // system 70 + private 1 == 71
+  EXPECT_EQ(71, xml_compiler.get_inputsource_vector_size());
   // system 2 + private 0 == 2
   EXPECT_EQ(2, xml_compiler.get_window_name_vector_size());
 
@@ -574,25 +596,43 @@ TEST(pqrs_xml_compiler, reload_bindings_clang) {
   pqrs_xml_compiler_reload(p);
 
   {
-    uint32_t inputsource;
+    std::vector<uint32_t> expect;
+    expect.push_back(pqrs_xml_compiler_get_symbol_map_value(p, "InputSource::CANADIAN"));
+    expect.push_back(pqrs_xml_compiler_get_symbol_map_value(p, "InputSource::ENGLISH"));
 
-    pqrs_xml_compiler_get_inputsourceid(p,
-                                        &inputsource,
-                                        "fr",
-                                        "com.apple.keylayout.French",
-                                        nullptr);
-    EXPECT_TRUE(inputsource != 0);
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < pqrs_xml_compiler_get_inputsource_vector_size(p); ++i) {
+      uint32_t inputsource = 0;
+      if (pqrs_xml_compiler_is_inputsource_matched(p,
+                                                   &inputsource,
+                                                   i,
+                                                   "en",
+                                                   "com.apple.keylayout.Canadian",
+                                                   "")) {
+        actual.push_back(inputsource);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
   }
 
   {
-    uint32_t inputsource;
+    std::vector<uint32_t> expect;
 
-    pqrs_xml_compiler_get_inputsourceid(p,
-                                        &inputsource,
-                                        nullptr,
-                                        nullptr,
-                                        nullptr);
-    EXPECT_TRUE(inputsource == 0);
+    std::vector<uint32_t> actual;
+    for (size_t i = 0; i < pqrs_xml_compiler_get_inputsource_vector_size(p); ++i) {
+      uint32_t inputsource = 0;
+      if (pqrs_xml_compiler_is_inputsource_matched(p,
+                                                   &inputsource,
+                                                   i,
+                                                   nullptr,
+                                                   nullptr,
+                                                   nullptr)) {
+        actual.push_back(inputsource);
+      }
+    }
+
+    EXPECT_EQ(expect, actual);
   }
 
   pqrs_xml_compiler_terminate(&p);
@@ -647,8 +687,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/dup_identifier");
     xml_compiler.reload();
     const char* message = "Duplicated identifier:\n"
-                          "\n"
-                          "<identifier>private.swap_space_and_tab</identifier>";
+      "\n"
+      "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -668,8 +708,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place");
     xml_compiler.reload();
     const char* message = "<identifier> must be placed directly under <item>:\n"
-                          "\n"
-                          "<identifier>private.swap_space_and_tab</identifier>";
+      "\n"
+      "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -677,8 +717,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place2");
     xml_compiler.reload();
     const char* message = "<identifier> must be placed directly under <item>:\n"
-                          "\n"
-                          "<identifier>private.swap_space_and_tab</identifier>";
+      "\n"
+      "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -686,7 +726,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place3");
     xml_compiler.reload();
     const char* message = "You should not write <identifier> in <item> which has child <item> nodes.\n"
-                          "Remove <identifier>private.invalid_identifier_place3</identifier>.";
+      "Remove <identifier>private.invalid_identifier_place3</identifier>.";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -697,8 +737,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_autogen");
     xml_compiler.reload();
     const char* message = "Invalid <autogen>:\n"
-                          "\n"
-                          "<autogen>__KeyToKey2__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
+      "\n"
+      "<autogen>__KeyToKey2__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
 
@@ -771,8 +811,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_type");
     xml_compiler.reload();
     const char* message = "Cannot connect(|) except ModifierFlag:\n"
-                          "\n"
-                          "KeyCode::SPACE|KeyCode::TAB";
+      "\n"
+      "KeyCode::SPACE|KeyCode::TAB";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -877,8 +917,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_invalid_value");
     xml_compiler.reload();
     const char* message = "Invalid 'value' Attribute within <symbol_map>:\n"
-                          "\n"
-                          "<symbol_map type=\"ConsumerKeyCode\" name=\"BRIGHTNESS_UP\" value=\"XXX\" />";
+      "\n"
+      "<symbol_map type=\"ConsumerKeyCode\" name=\"BRIGHTNESS_UP\" value=\"XXX\" />";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -968,8 +1008,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_invalid_value");
     xml_compiler.reload();
     const char* message = "Invalid <vendorid> within <devicevendordef>:\n"
-                          "\n"
-                          "<vendorid>XXX</vendorid>";
+      "\n"
+      "<vendorid>XXX</vendorid>";
     EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -1004,8 +1044,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_invalid_value");
     xml_compiler.reload();
     const char* message = "Invalid <productid> within <deviceproductdef>:\n"
-                          "\n"
-                          "<productid>XXX</productid>";
+      "\n"
+      "<productid>XXX</productid>";
     EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -1192,8 +1232,12 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
                   "  <device_not></device_not>"
                   "  <inputsource_only>INPUTSOURCE1</inputsource_only>"
                   "  <inputsource_not>INPUTSOURCE2, INPUTSOURCE3</inputsource_not>"
+                  "  <inputsourcedetail_only>INPUTSOURCE1</inputsourcedetail_only>"
+                  "  <inputsourcedetail_not>INPUTSOURCE2, INPUTSOURCE3</inputsourcedetail_not>"
                   "  <inputmode_only>INPUTSOURCE1</inputmode_only>"
                   "  <inputmode_not>INPUTSOURCE2, INPUTSOURCE3</inputmode_not>"
+                  "  <inputmodedetail_only>INPUTSOURCE1</inputmodedetail_only>"
+                  "  <inputmodedetail_not>INPUTSOURCE2, INPUTSOURCE3</inputmodedetail_not>"
                   "  <config_only>config1,config2</config_only>"
                   "  <config_not>config3</config_not>"
                   "  <modifier_only>ModifierFlag::MOD1 ||| ModifierFlag::MOD3</modifier_only>"
@@ -1297,12 +1341,34 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
     expected.push_back(111);
     expected.push_back(112);
 
+    // <inputsourcedetail_only>InputSource::INPUTSOURCE1</inputsourcedetail_only>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY);
+    expected.push_back(110);
+
+    // <inputsourcedetail_not>InputSource::INPUTSOURCE2, InputSource::INPUTSOURCE3</inputsourcedetail_not>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT);
+    expected.push_back(111);
+    expected.push_back(112);
+
     // <inputmode_only>INPUTSOURCE1</inputmode_only>
     expected.push_back(2); // count
     expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY);
     expected.push_back(110);
 
     // <inputmode_not>INPUTSOURCE2, INPUTSOURCE3</inputmode_not>
+    expected.push_back(3); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT);
+    expected.push_back(111);
+    expected.push_back(112);
+
+    // <inputmodedetail_only>INPUTSOURCE1</inputmodedetail_only>
+    expected.push_back(2); // count
+    expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY);
+    expected.push_back(110);
+
+    // <inputmodedetail_not>INPUTSOURCE2, INPUTSOURCE3</inputmodedetail_not>
     expected.push_back(3); // count
     expected.push_back(BRIDGE_FILTERTYPE_INPUTSOURCE_NOT);
     expected.push_back(111);

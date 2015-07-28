@@ -3,141 +3,77 @@
   {{ INPUTSOURCEDEF_REPLACEMENT }}
 
   <!-- ============================================================ -->
-  <!-- inputsourcedef -->
 
-  <!-- inputsourceid_equal -->
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_AZERTYCMD</detail>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+    <name>AINU</name>
+    <inputmodeid_equal>com.apple.kotoeri.Ainu</inputmodeid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_AZERTYCMDROMAN</detail>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmdRoman</inputsourceid_equal>
+    <name>BELGIAN</name>
+    <languagecode>nl</languagecode>
   </inputsourcedef>
 
-  <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTYCMD</detail>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmd</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTYCMDROMAN</detail>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmdRoman</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTZCMD</detail>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmd</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_QWERTZCMDROMAN</detail>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmdRoman</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>BEPO</name>
-    <detail>BEPO_ROMAN</detail>
-    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorakRoman</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>CHINESE_TRADITIONAL</name>
-    <detail>CHINESE_TRADITIONAL_YAHOO_KEYKEY</detail>
-    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>DVORAK</name>
-    <detail>DVORAK_LEFT</detail>
-    <inputsourceid_equal>com.apple.keylayout.Dvorak-Left</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>DVORAK</name>
-    <detail>DVORAK_QWERTYCMD</detail>
-    <inputsourceid_equal>com.apple.keylayout.DVORAK-QWERTYCMD</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>DVORAK</name>
-    <detail>DVORAK_RIGHT</detail>
-    <inputsourceid_equal>com.apple.keylayout.Dvorak-Right</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>ENGLISH_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>ENGLISH</name>
-    <name>JANSI</name>
-    <inputsourceid_equal>org.unknown.keylayout.JANSI</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>NORWEGIAN</name>
-    <detail>NORWEGIAN_EXTENDED</detail>
-    <inputsourceid_equal>com.apple.keylayout.NorwegianExtended</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>NORWEGIAN</name>
-    <detail>NORWEGIAN_SAMI_PC</detail>
-    <inputsourceid_equal>com.apple.keylayout.NorwegianSami-PC</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>POLISH</name>
-    <detail>POLISH_PRO</detail>
-    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>RUSSIAN</name>
-    <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>RUSSIAN_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>SPANISH</name>
-    <detail>SPANISH_ISO</detail>
-    <inputsourceid_equal>com.apple.keylayout.Spanish-ISO</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>SWISS</name>
-    <detail>SWISS_FRENCH</detail>
-    <inputsourceid_equal>com.apple.keylayout.SwissFrench</inputsourceid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>SWISS</name>
-    <detail>SWISS_GERMAN</detail>
-    <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
-  </inputsourcedef>
-
-  <!-- inputsourceid_prefix -->
+  <!-- bepo begin ======================================== -->
   <inputsourcedef>
     <name>BEPO</name>
     <inputsourceid_prefix>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_prefix>
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>BEPO_STANDARD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_AZERTYCMD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_AZERTYCMDROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmdRoman</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_QWERTYCMD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmd</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_QWERTYCMDROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertyCmdRoman</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_QWERTZCMD</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmd</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_QWERTZCMDROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-QwertzCmdRoman</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BEPO_ROMAN</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorakRoman</inputsourceid_equal>
+  </inputsourcedef>
+  <!-- bepo end ======================================== -->
+
+  <inputsourcedef>
     <name>BRITISH</name>
     <inputsourceid_prefix>com.apple.keylayout.British</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BULGARIAN</name>
+    <languagecode>bg</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>BULGARIAN_PHONETIC</name>
+    <inputsourceid_prefix>com.apple.keylayout.Bulgarian-Phonetic</inputsourceid_prefix>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -146,71 +82,24 @@
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>DVORAK</name>
-    <inputsourceid_prefix>com.apple.keylayout.Dvorak</inputsourceid_prefix>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>SWISS</name>
-    <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
-  </inputsourcedef>
-
-  <!-- inputmodeid_equal -->
-  <inputsourcedef>
-    <name>AINU</name>
-    <inputmodeid_equal>com.apple.kotoeri.Ainu</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>CHINESE_TRADITIONAL</name>
-    <inputmodeid_equal>com.apple.inputmethod.TCIM</inputmodeid_equal>
+    <name>CHINESE</name>
+    <languagecode>zh-Hans</languagecode>
+    <languagecode>zh-Hant</languagecode>
   </inputsourcedef>
 
   <inputsourcedef>
     <name>CHINESE_SIMPLIFIED</name>
-    <inputmodeid_equal>com.apple.inputmethod.SCIM</inputmodeid_equal>
+    <inputmodeid_prefix>com.apple.inputmethod.SCIM</inputmodeid_prefix>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_HIRAGANA</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
+    <name>CHINESE_TRADITIONAL</name>
+    <inputmodeid_prefix>com.apple.inputmethod.TCIM</inputmodeid_prefix>
   </inputsourcedef>
 
   <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_KATAKANA</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_FULLWIDTH_ROMAN</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <detail>JAPANESE_HALFWIDTH_KANA</detail>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>JAPANESE</name>
-    <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
-  </inputsourcedef>
-
-  <inputsourcedef>
-    <name>KOREAN</name>
-    <inputmodeid_equal>com.apple.inputmethod.Korean</inputmodeid_equal>
-  </inputsourcedef>
-
-  <!-- inputmodeid_prefix -->
-
-  <!-- languagecode -->
-  <inputsourcedef>
-    <name>BULGARIAN</name>
-    <languagecode>bg</languagecode>
+    <name>CHINESE_TRADITIONAL_YAHOO_KEYKEY</name>
+    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -224,8 +113,49 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>DANISH</name>
+    <languagecode>da</languagecode>
+  </inputsourcedef>
+
+  <!-- dvorak begin ======================================== -->
+  <inputsourcedef>
+    <name>DVORAK</name>
+    <inputsourceid_prefix>com.apple.keylayout.Dvorak</inputsourceid_prefix>
+    <inputsourceid_prefix>com.apple.keylayout.DVORAK</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>DVORAK_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>DVORAK_LEFT</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak-Left</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>DVORAK_QWERTYCMD</name>
+    <inputsourceid_equal>com.apple.keylayout.DVORAK-QWERTYCMD</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>DVORAK_RIGHT</name>
+    <inputsourceid_equal>com.apple.keylayout.Dvorak-Right</inputsourceid_equal>
+  </inputsourcedef>
+  <!-- dvorak end ======================================== -->
+
+  <inputsourcedef>
     <name>ENGLISH</name>
     <languagecode>en</languagecode>
+    <inputmodeid_equal>com.apple.inputmethod.Roman</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
+    <inputsourceid_equal>org.unknown.keylayout.JANSI</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>ENGLISH_TYPOGRAPHIC</name>
+    <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -244,8 +174,78 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>HEBREW</name>
+    <languagecode>he</languagecode>
+    <inputsourceid_equal>org.unknown.keylayout.Hebrew</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>HUNGARIAN</name>
     <languagecode>hu</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>HUNGARIAN_PRO</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPRO</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>HUNGARIAN_PRO_PC</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPROPC</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>ITALIAN</name>
+    <languagecode>it</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>ITALIAN_TYPEWRITER</name>
+    <inputsourceid_equal>com.apple.keylayout.Italian</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JANSI</name>
+    <inputsourceid_equal>org.unknown.keylayout.JANSI</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_HIRAGANA</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese</inputmodeid_equal>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Hiragana</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_KATAKANA</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.Katakana</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_FULLWIDTH_ROMAN</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.FullWidthRoman</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>JAPANESE_HALFWIDTH_KANA</name>
+    <inputmodeid_equal>com.apple.inputmethod.Japanese.HalfWidthKana</inputmodeid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>KOREAN</name>
+    <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>LITHUANIAN</name>
+    <inputsourceid_equal>com.apple.keylayout.Lithuanian</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -254,13 +254,64 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>NORWEGIAN_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Norwegian</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>NORWEGIAN_EXTENDED</name>
+    <inputsourceid_equal>com.apple.keylayout.NorwegianExtended</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>NORWEGIAN_SAMI_PC</name>
+    <inputsourceid_equal>com.apple.keylayout.NorwegianSami-PC</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>POLISH</name>
     <languagecode>pl</languagecode>
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>POLISH_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Polish</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>POLISH_PRO</name>
+    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>PORTUGUESE</name>
+    <languagecode>pt</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>RUSSIAN</name>
     <languagecode>ru</languagecode>
+    <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_STANDARD</name>
+    <inputsourceid_equal>com.apple.keylayout.Russian</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_WIN</name>
+    <inputsourceid_equal>com.apple.keylayout.RussianWin</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_PHONETIC</name>
+    <inputsourceid_equal>com.apple.keylayout.Russian-Phonetic</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>RUSSIAN_TYPOGRAPHIC</name>
+    <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -274,8 +325,28 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>SPANISH_ISO</name>
+    <inputsourceid_equal>com.apple.keylayout.Spanish-ISO</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>SWEDISH</name>
     <languagecode>sv</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>SWISS</name>
+    <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>SWISS_FRENCH</name>
+    <inputsourceid_equal>com.apple.keylayout.SwissFrench</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>SWISS_GERMAN</name>
+    <inputsourceid_equal>com.apple.keylayout.SwissGerman</inputsourceid_equal>
   </inputsourcedef>
 
   <inputsourcedef>
@@ -286,6 +357,17 @@
   <inputsourcedef>
     <name>UKRAINIAN</name>
     <languagecode>uk</languagecode>
+  </inputsourcedef>
+
+  <!-- A popular UKRAINIAN PC layout from http://bluezbox.com/uapc.html -->
+  <inputsourcedef>
+    <name>UKRAINIAN_PC</name>
+    <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
+    <name>UNICODEHEXINPUT</name>
+    <inputsourceid_equal>com.apple.keylayout.UnicodeHexInput</inputsourceid_equal>
   </inputsourcedef>
 
 </root>
