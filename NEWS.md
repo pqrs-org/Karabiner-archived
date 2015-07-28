@@ -3,6 +3,8 @@ Since 10.6.0
 
 * *Incompatibility changes*:
     * The default mouse keys scroll direction has been changed to `natural`.
+    * `<inputsourcedetail_only>` and `<inputsourcedetail_not>` filters have been merged into `<inputsource_only>` and `<inputsource_not>`. <br />
+      Please use `<inputsource_only>` and `<inputsource_not>` in your private.xml.
 * New option has been added into command line interface: `toggle`
 * "Status Message > Show caps lock state" option has been added.
 * Multiple displays support has been improved. The status message will be shown in the all screen.
