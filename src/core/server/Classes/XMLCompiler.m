@@ -390,19 +390,6 @@
   }
 }
 
-- (void)inputsourceid:(uint32_t*)inputSource
-         languagecode:(NSString*)languagecode
-        inputSourceID:(NSString*)inputSourceID
-          inputModeID:(NSString*)inputModeID {
-  @synchronized(self) {
-    pqrs_xml_compiler_get_inputsourceid(pqrs_xml_compiler_,
-                                        inputSource,
-                                        [languagecode UTF8String],
-                                        [inputSourceID UTF8String],
-                                        [inputModeID UTF8String]);
-  }
-}
-
 - (NSString*)url:(uint32_t)keycode {
   @synchronized(self) {
     const char* p = pqrs_xml_compiler_get_url(pqrs_xml_compiler_, keycode);

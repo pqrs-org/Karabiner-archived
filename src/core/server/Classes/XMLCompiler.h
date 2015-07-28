@@ -31,10 +31,6 @@
                             languagecode:(NSString*)languagecode
                            inputSourceID:(NSString*)inputSourceID
                              inputModeID:(NSString*)inputModeID;
-- (void)inputsourceid:(uint32_t*)inputSource
-         languagecode:(NSString*)languagecode
-        inputSourceID:(NSString*)inputSourceID
-          inputModeID:(NSString*)inputModeID;
 - (NSString*)url:(uint32_t)keycode;
 - (NSString*)urlType:(uint32_t)keycode;
 - (BOOL)urlIsBackground:(uint32_t)keycode;
