@@ -86,6 +86,21 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CROATIAN</name>
+    <languagecode>hr</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CZECH</name>
+    <languagecode>cs</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DANISH</name>
+    <languagecode>da</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK</name>
     <inputsourceid_equal>com.apple.keylayout.Dvorak</inputsourceid_equal>
   </vkchangeinputsourcedef>
@@ -116,86 +131,14 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.sil.ukelele.keyboardlayout.t.english- ilya birman typography</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH_NUMERICAL</name>
-    <inputsourceid_equal>com.apple.keylayout.French-numerical</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</name>
-    <languagecode>he</languagecode>
-    <inputsourceid_equal>org.unknown.keylayout.Hebrew</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN_PRO</name>
-    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPRO</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN_PRO_PC</name>
-    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPROPC</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_POLISH_PRO</name>
-    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <!-- A popular UKRAINIAN PC layout from http://bluezbox.com/uapc.html -->
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN_PC</name>
-    <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</name>
-    <inputsourceid_equal>org.sil.ukelele.keyboardlayout.t.russian- ilya birman typography</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH_PRO</name>
-    <inputsourceid_equal>com.apple.keylayout.Swedish-Pro</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</name>
-    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_US</name>
-    <inputsourceid_equal>com.apple.keylayout.US</inputsourceid_equal>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_KOREAN</name>
-    <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CROATIAN</name>
-    <languagecode>hr</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_CZECH</name>
-    <languagecode>cs</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
-    <name>KeyCode::VK_CHANGE_INPUTSOURCE_DANISH</name>
-    <languagecode>da</languagecode>
-  </vkchangeinputsourcedef>
-
-  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH</name>
     <languagecode>en</languagecode>
     <inputsourceid_equal>org.unknown.keylayout.English-IlyaBirmanTypography</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH_TYPOGRAPHIC</name>
+    <inputsourceid_equal>org.sil.ukelele.keyboardlayout.t.english- ilya birman typography</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -214,6 +157,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_FRENCH_NUMERICAL</name>
+    <inputsourceid_equal>com.apple.keylayout.French-numerical</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_GERMAN</name>
     <languagecode>de</languagecode>
   </vkchangeinputsourcedef>
@@ -224,8 +172,24 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HEBREW</name>
+    <languagecode>he</languagecode>
+    <inputsourceid_equal>org.unknown.keylayout.Hebrew</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN</name>
     <languagecode>hu</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN_PRO</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPRO</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_HUNGARIAN_PRO_PC</name>
+    <inputsourceid_equal>com.apple.keyboardlayout.unicode.keylayout.HungarianPROPC</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -265,6 +229,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_KOREAN</name>
+    <inputmodeid_prefix>com.apple.inputmethod.Korean</inputmodeid_prefix>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_NORWEGIAN</name>
     <languagecode>nb</languagecode>
   </vkchangeinputsourcedef>
@@ -272,6 +241,11 @@
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_POLISH</name>
     <languagecode>pl</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_POLISH_PRO</name>
+    <inputsourceid_equal>com.apple.keylayout.PolishPro</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -284,6 +258,11 @@
     <languagecode>ru</languagecode>
     <inputsourceid_equal>org.unknown.keylayout.RussianWin</inputsourceid_equal>
     <inputsourceid_equal>org.unknown.keylayout.Russian-IlyaBirmanTypography</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_RUSSIAN_TYPOGRAPHIC</name>
+    <inputsourceid_equal>org.sil.ukelele.keyboardlayout.t.russian- ilya birman typography</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
@@ -302,6 +281,11 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWEDISH_PRO</name>
+    <inputsourceid_equal>com.apple.keylayout.Swedish-Pro</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_SWISS</name>
     <inputsourceid_prefix>com.apple.keylayout.Swiss</inputsourceid_prefix>
   </vkchangeinputsourcedef>
@@ -317,13 +301,29 @@
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_TRADITIONAL_CHINESE_YAHOO_KEYKEY</name>
+    <inputsourceid_equal>com.yahoo.inputmethod.KeyKey</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN</name>
     <languagecode>uk</languagecode>
+  </vkchangeinputsourcedef>
+
+  <!-- A popular UKRAINIAN PC layout from http://bluezbox.com/uapc.html -->
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_UKRAINIAN_PC</name>
+    <inputsourceid_equal>org.unknown.keylayout.Ukrainian-PC</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
   <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_UNICODEHEXINPUT</name>
     <inputsourceid_equal>com.apple.keylayout.UnicodeHexInput</inputsourceid_equal>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_US</name>
+    <inputsourceid_equal>com.apple.keylayout.US</inputsourceid_equal>
   </vkchangeinputsourcedef>
 
 </root>
