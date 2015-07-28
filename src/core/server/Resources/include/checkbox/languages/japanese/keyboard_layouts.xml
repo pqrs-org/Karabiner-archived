@@ -102,23 +102,13 @@
     <item>
       <name>Use JIS X 6004</name>
       <identifier>remap.jis_layout_jisx6004</identifier>
-      <inputsourcedetail_only>
-        JAPANESE,
-        JAPANESE_HIRAGANA,
-        JAPANESE_KATAKANA,
-        JAPANESE_HALFWIDTH_KANA
-      </inputsourcedetail_only>
+      <inputsource_only>JAPANESE</inputsource_only>
       <include path="keyboard_layouts/jisx6004.xml" />
     </item>
     <item>
       <name>Use JIS X 6004 for US Keyboard</name>
       <identifier>remap.jis_layout_jisx6004_us</identifier>
-      <inputsourcedetail_only>
-        JAPANESE,
-        JAPANESE_HIRAGANA,
-        JAPANESE_KATAKANA,
-        JAPANESE_HALFWIDTH_KANA
-      </inputsourcedetail_only>
+      <inputsource_only>JAPANESE</inputsource_only>
       <include path="keyboard_layouts/jisx6004_us.xml" />
     </item>
     <item><name>──────────────────────────────</name></item>
@@ -708,12 +698,7 @@
     </item>
     <item>
       <name>Use Windows Kana-Input Layout on US Keyboard</name>
-      <inputsourcedetail_only>
-        JAPANESE,
-        JAPANESE_HIRAGANA,
-        JAPANESE_KATAKANA,
-        JAPANESE_HALFWIDTH_KANA,
-      </inputsourcedetail_only>
+      <inputsource_only>JAPANESE</inputsource_only>
       <autogen>__KeyToKey__ KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L</autogen>
       <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::EQUAL, ModifierFlag::SHIFT_L</autogen>
@@ -739,13 +724,7 @@
         <name>日本語入力のときだけAIU配列にする</name>
         <appendix>（Command+CなどのショートカットはQWERTY配列のまま）</appendix>
         <identifier>remap.jis_layout_aiu</identifier>
-        <inputsourcedetail_only>
-          JAPANESE,
-          JAPANESE_HIRAGANA,
-          JAPANESE_KATAKANA,
-          JAPANESE_HALFWIDTH_KANA,
-          AINU
-        </inputsourcedetail_only>
+        <inputsource_only>JAPANESE, AINU</inputsource_only>
         <modifier_not>
           ModifierFlag::COMMAND_L,
           ModifierFlag::COMMAND_R,
