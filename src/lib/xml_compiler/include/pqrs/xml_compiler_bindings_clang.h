@@ -43,11 +43,6 @@ uint32_t pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compi
                                                             const char* languagecode,
                                                             const char* inputsourceid,
                                                             const char* inputmodeid);
-void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
-                                         uint32_t* inputsource,
-                                         const char* languagecode,
-                                         const char* inputsourceid,
-                                         const char* inputmodeid);
 const char* pqrs_xml_compiler_get_url(const pqrs_xml_compiler* p, uint32_t keycode);
 const char* pqrs_xml_compiler_get_url_type(const pqrs_xml_compiler* p, uint32_t keycode);
 bool pqrs_xml_compiler_get_url_background(const pqrs_xml_compiler* p, uint32_t keycode);

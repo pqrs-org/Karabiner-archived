@@ -78,10 +78,6 @@ public:
                                         const std::string& languagecode,
                                         const std::string& inputsourceid,
                                         const std::string& inputmodeid) const;
-  void get_inputsourceid(uint32_t& inputsource,
-                         const std::string& languagecode,
-                         const std::string& inputsourceid,
-                         const std::string& inputmodeid) const;
   boost::optional<const std::string&> get_url(int keycode) const;
   boost::optional<const std::string&> get_url_type(int keycode) const;
   bool get_url_background(int keycode) const;

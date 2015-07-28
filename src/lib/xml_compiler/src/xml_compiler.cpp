@@ -402,24 +402,6 @@ bool xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
   return it->second->is_rules_matched(languagecode, inputsourceid, inputmodeid);
 }
 
-void xml_compiler::get_inputsourceid(uint32_t& inputsource,
-                                     const std::string& languagecode,
-                                     const std::string& inputsourceid,
-                                     const std::string& inputmodeid) const {
-  inputsource = 0;        // InputSource::NONE
-
-  for (const auto& it : inputsource_vector_) {
-    if (!it) continue;
-
-    if (it->is_rules_matched(languagecode, inputsourceid, inputmodeid)) {
-      auto v = symbol_map_.get_optional(std::string("InputSource::") + *(it->get_name()));
-      if (!v) return;
-      inputsource = *v;
-      return;
-    }
-  }
-}
-
 boost::optional<const std::string&>
 xml_compiler::get_url(int keycode) const {
   auto it = vk_open_url_map_.find(keycode);

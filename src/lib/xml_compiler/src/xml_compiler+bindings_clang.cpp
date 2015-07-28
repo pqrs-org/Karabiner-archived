@@ -162,22 +162,6 @@ pqrs_xml_compiler_is_vk_change_inputsource_matched(const pqrs_xml_compiler* p,
                                                         inputmodeid != nullptr ? inputmodeid : "");
 }
 
-void pqrs_xml_compiler_get_inputsourceid(const pqrs_xml_compiler* p,
-                                         uint32_t* inputsource,
-                                         const char* languagecode,
-                                         const char* inputsourceid,
-                                         const char* inputmodeid) {
-  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
-  if (!xml_compiler) return;
-
-  if (!inputsource) return;
-
-  return xml_compiler->get_inputsourceid(*inputsource,
-                                         languagecode != nullptr ? languagecode : "",
-                                         inputsourceid != nullptr ? inputsourceid : "",
-                                         inputmodeid != nullptr ? inputmodeid : "");
-}
-
 const char*
 pqrs_xml_compiler_get_url(const pqrs_xml_compiler* p, uint32_t keycode) {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
