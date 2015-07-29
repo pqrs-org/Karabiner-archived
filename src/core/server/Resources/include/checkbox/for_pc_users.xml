@@ -364,14 +364,14 @@
       <appendix>(Use Home and End key to beginning-of-line/end-of-line.)</appendix>
       <appendix>(Actually, change Home/End key to Command+Left/Right.)</appendix>
       <appendix></appendix>
-      <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11,Eclipse)</appendix>
-      <appendix>(+ Change End to Control+E in Emacs,Terminal,X11,Eclipse)</appendix>
+      <appendix>(+ Change Home to Control+A in Emacs,Terminal,X11)</appendix>
+      <appendix>(+ Change End to Control+E in Emacs,Terminal,X11)</appendix>
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikehomeend</identifier>
       <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <block>
-        <only>EMACS, TERMINAL, X11, ECLIPSE</only>
+        <only>EMACS, TERMINAL, X11</only>
         <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
       </block>

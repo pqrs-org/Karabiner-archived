@@ -6,7 +6,7 @@
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::END,  ModifierFlag::SHIFT_L</autogen>
   </block>
   <block>
-    <only>PHOTOSHOP</only>
+    <only>PHOTOSHOP, ECLIPSE</only>
     <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
   </block>
