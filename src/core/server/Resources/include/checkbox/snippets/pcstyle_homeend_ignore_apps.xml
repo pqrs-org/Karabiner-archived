@@ -1,21 +1,26 @@
 <?xml version="1.0"?>
 <root>
   <block>
-    <only>DREAMWEAVER</only>
+    <only>
+      DREAMWEAVER,
+    </only>
     <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::HOME, ModifierFlag::SHIFT_L</autogen>
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::END,  ModifierFlag::SHIFT_L</autogen>
   </block>
   <block>
-    <only>PHOTOSHOP, ECLIPSE</only>
+    <only>
+      PHOTOSHOP,
+      ECLIPSE,
+      POWERPOINT, <!-- PowerPoint requires command-left arrow in the search field. -->
+      WORD, <!-- Word requires command-left arrow in the search field. -->
+    </only>
     <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
   </block>
   <block>
     <only>
       BLUEFISH,
-      WORD,
-      EXCEL,
-      POWERPOINT,
+      EXCEL, <!-- Excel does not support command-left/right arrow. -->
       IntelliJ,
       PhpStorm,
       RubyMine,
