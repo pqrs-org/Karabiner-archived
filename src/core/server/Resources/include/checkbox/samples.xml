@@ -1005,6 +1005,36 @@ Two Lines</autogen>
       </item>
 
       <item>
+        <identifier>remap.samples_keytokey_delayed_action_5</identifier>
+        <name>Option::KEYTOKEY_DELAYED_ACTION with key repeat</name>
+        <appendix>* change space x2 to f1 with key repeat</appendix>
+
+        <!-- The delayed action does not support key repeat itself. -->
+        <!-- We have to change the key by __KeyToKey__ to support key repeat. -->
+        <!-- Use sticky modifier to apply __KeyToKey__ only the second event. -->
+        <block>
+          <modifierstuck_only>ModifierFlag::EXTRA1</modifierstuck_only>
+          <autogen>
+            __KeyToKey__
+            KeyCode::SPACE,
+            KeyCode::F1,
+          </autogen>
+        </block>
+
+        <autogen>
+          __KeyToKey__
+          KeyCode::SPACE,
+          KeyCode::VK_NONE,
+
+          Option::KEYTOKEY_DELAYED_ACTION,
+          KeyCode::SPACE,
+
+          Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::SPACE,
+          KeyCode::VK_STICKY_EXTRA1_FORCE_ON,
+        </autogen>
+      </item>
+
+      <item>
         <identifier>remap.samples_keytokey_KEYTOKEY_INCREASE_MODIFIER_FLAGS</identifier>
         <name>Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS</name>
         <appendix>────────</appendix>
