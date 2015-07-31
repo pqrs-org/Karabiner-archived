@@ -91,10 +91,10 @@
         <autogen>__PassThrough__</autogen>
       </item>
       <item>
-        <identifier>remap.samples_passthrough_magic_mouse</identifier>
-        <name>Disable all settings on Magic Mouse.</name>
+        <identifier>remap.samples_passthrough_apple_devices</identifier>
+        <name>Disable all settings on Apple keyboards and pointing devices.</name>
         <appendix>(using device_only, DeviceVendor::*, DeviceProduct::*)</appendix>
-        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE</device_only>
+        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::ANY</device_only>
         <autogen>__PassThrough__</autogen>
       </item>
     </item>
