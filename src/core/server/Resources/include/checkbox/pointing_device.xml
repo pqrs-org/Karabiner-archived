@@ -130,7 +130,7 @@
           <identifier essential="true">option.pointing_disable_vertical_scroll</identifier>
         </item>
         <item>
-          <name>Disable Momentum Scroll</name>
+          <name>Disable Momentum (Inertia) Scroll</name>
           <identifier essential="true">option.pointing_disable_momentum_scroll</identifier>
         </item>
       </item>

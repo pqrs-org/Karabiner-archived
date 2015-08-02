@@ -1838,7 +1838,7 @@ Two Lines</autogen>
       </item>
       <item>
         <identifier>remap.samples_dropscrollwheel_momentum_scroll</identifier>
-        <name>Drop momentum scrolling on safari</name>
+        <name>Drop momentum (inertia) scrolling on safari</name>
         <only>SAFARI</only>
         <autogen>__DropScrollWheel__ Option::DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL</autogen>
       </item>
