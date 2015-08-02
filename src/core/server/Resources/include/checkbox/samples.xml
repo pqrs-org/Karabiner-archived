@@ -913,7 +913,7 @@ Two Lines</autogen>
         <appendix>────────</appendix>
         <appendix>Change the right command key x2 to shift-space.</appendix>
         <appendix></appendix>
-        <appendix>* When you press the right command key twice, shift-space will be sent.</appendix>
+        <appendix>* When you press the right command key twice, "right command, shift-space" will be sent.</appendix>
         <appendix>* When you press the right command key once, right command key event will be sent.</appendix>
         <appendix>────────</appendix>
 
