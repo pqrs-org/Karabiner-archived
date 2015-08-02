@@ -92,14 +92,13 @@
 
   <!-- {/} -->
   <autogen>
-    __KeyToKey__ KeyCode::BRACKET_LEFT, ModifierFlag::NONE,
+    __KeyToKey__ KeyCode::BRACKET_LEFT, VK_SHIFT|ModifierFlag::NONE,
     {{VIM_EMU_BEFORE_MOVE}},
     KeyCode::A, {{VIM_EMU_USE_SHIFT}}VK_CONTROL,
     {{VIM_EMU_AFTER_MOVE}}
   </autogen>
   <autogen>
-    __KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::NONE,
-    VK_SHIFT|ModifierFlag::NONE,
+    __KeyToKey__ KeyCode::BRACKET_RIGHT, VK_SHIFT|ModifierFlag::NONE,
     {{VIM_EMU_BEFORE_MOVE}},
     KeyCode::E, {{VIM_EMU_USE_SHIFT}}VK_CONTROL,
     {{VIM_EMU_AFTER_MOVE}}
