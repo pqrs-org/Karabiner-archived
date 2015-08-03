@@ -386,10 +386,11 @@ bool KeyToKey::remap(RemapParams& remapParams) {
 
         // We decrease pureFromModifierFlags_ temporarily to reduce unnecessary modifier events.
         //
-        // For example, "change shift-option to command" by this autogen.
+        // For example, "change shift-option to space,command" by this autogen.
         //    <autogen>
         //      __KeyToKey__
         //      KeyCode::OPTION_L, ModifierFlag::SHIFT_L,
+        //      KeyCode::SPACE,
         //      KeyCode::COMMAND_L,
         //    </autogen>
         //
@@ -397,14 +398,18 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         // we should not restore SHIFT_L when OPTION_L is up.
         //
         //   1. SHIFT_L down
-        //   2. OPTION_L down   (-> SHIFT_L up, COMMAND_L down)
+        //   2. OPTION_L down   (-> SHIFT_L up, SPACE down, SPACE up, COMMAND_L down)
         //   3. OPTION_L up     (-> COMMAND_L up)
-        //   4. OPTION_L down   (-> COMMAND_L down)
+        //   4. OPTION_L down   (-> SPACE down, SPACE up, COMMAND_L down)
         //   5. OPTION_L up     (-> COMMAND_L up)
         //
         FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
-        lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, remapParams.physicalEventType, false);
+        if (isLastToEventLikeModifier) {
+          lastToEvent.fire(EventType::UP, FlagStatus::globalFlagStatus().makeFlags(), autogenId_, remapParams.physicalEventType, false);
+        } else {
+          EventOutputQueue::FireModifiers::fire(autogenId_, remapParams.physicalEventType);
+        }
 
       } else {
         if (KeyboardRepeat::getID() == keyboardRepeatID_) {
