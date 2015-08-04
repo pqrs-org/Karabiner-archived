@@ -687,8 +687,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/dup_identifier");
     xml_compiler.reload();
     const char* message = "Duplicated identifier:\n"
-      "\n"
-      "<identifier>private.swap_space_and_tab</identifier>";
+                          "\n"
+                          "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -708,8 +708,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place");
     xml_compiler.reload();
     const char* message = "<identifier> must be placed directly under <item>:\n"
-      "\n"
-      "<identifier>private.swap_space_and_tab</identifier>";
+                          "\n"
+                          "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -717,8 +717,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place2");
     xml_compiler.reload();
     const char* message = "<identifier> must be placed directly under <item>:\n"
-      "\n"
-      "<identifier>private.swap_space_and_tab</identifier>";
+                          "\n"
+                          "<identifier>private.swap_space_and_tab</identifier>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -726,7 +726,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place3");
     xml_compiler.reload();
     const char* message = "You should not write <identifier> in <item> which has child <item> nodes.\n"
-      "Remove <identifier>private.invalid_identifier_place3</identifier>.";
+                          "Remove <identifier>private.invalid_identifier_place3</identifier>.";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -737,8 +737,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_autogen");
     xml_compiler.reload();
     const char* message = "Invalid <autogen>:\n"
-      "\n"
-      "<autogen>__KeyToKey2__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
+                          "\n"
+                          "<autogen>__KeyToKey2__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
 
@@ -811,8 +811,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/autogen_invalid_pipe_type");
     xml_compiler.reload();
     const char* message = "Cannot connect(|) except ModifierFlag:\n"
-      "\n"
-      "KeyCode::SPACE|KeyCode::TAB";
+                          "\n"
+                          "KeyCode::SPACE|KeyCode::TAB";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -917,8 +917,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_invalid_value");
     xml_compiler.reload();
     const char* message = "Invalid 'value' Attribute within <symbol_map>:\n"
-      "\n"
-      "<symbol_map type=\"ConsumerKeyCode\" name=\"BRIGHTNESS_UP\" value=\"XXX\" />";
+                          "\n"
+                          "<symbol_map type=\"ConsumerKeyCode\" name=\"BRIGHTNESS_UP\" value=\"XXX\" />";
     EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -1008,8 +1008,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_invalid_value");
     xml_compiler.reload();
     const char* message = "Invalid <vendorid> within <devicevendordef>:\n"
-      "\n"
-      "<vendorid>XXX</vendorid>";
+                          "\n"
+                          "<vendorid>XXX</vendorid>";
     EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
@@ -1044,8 +1044,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_invalid_value");
     xml_compiler.reload();
     const char* message = "Invalid <productid> within <deviceproductdef>:\n"
-      "\n"
-      "<productid>XXX</productid>";
+                          "\n"
+                          "<productid>XXX</productid>";
     EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
     EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
   }
