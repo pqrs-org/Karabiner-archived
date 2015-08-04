@@ -75,6 +75,10 @@
   [preferencesManager_ configlist_delete:rowIndex];
 }
 
+- (void)configlist_clear_all_values:(NSInteger)rowIndex {
+  [preferencesManager_ configlist_clear_all_values:rowIndex];
+}
+
 // ----------------------------------------------------------------------
 - (void)configxml_reload {
   [xmlCompiler_ reload];

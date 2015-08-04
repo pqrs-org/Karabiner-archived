@@ -15,6 +15,7 @@
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString *)name;
 - (void)configlist_append;
 - (void)configlist_delete:(NSInteger)rowIndex;
+- (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
 - (void)configxml_reload;
 - (NSString *)symbolMapName:(NSString *)type value:(NSInteger)value;
@@ -29,7 +30,8 @@
 - (NSDictionary *)focused_uielement_information;
 - (NSArray *)workspace_app_ids;
 - (NSArray *)workspace_window_name_ids;
-- (NSArray *)workspace_inputsource_ids;;
+- (NSArray *)workspace_inputsource_ids;
+;
 - (NSDictionary *)inputsource_information;
 
 @end

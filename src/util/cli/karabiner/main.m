@@ -34,6 +34,7 @@
   [self output:@"    $ karabiner export\n"];
   [self output:@"    $ karabiner reloadxml\n"];
   [self output:@"    $ karabiner relaunch\n"];
+  [self output:@"    $ karabiner be_careful_to_use__clear_all_values_by_name PROFILE_NAME\n"];
   [self output:@"\n"];
   [self output:@"Examples:\n"];
   [self output:@"  $ karabiner list\n"];
@@ -53,6 +54,7 @@
   [self output:@"  $ karabiner export\n"];
   [self output:@"  $ karabiner reloadxml\n"];
   [self output:@"  $ karabiner relaunch\n"];
+  [self output:@"  $ karabiner be_careful_to_use__clear_all_values_by_name NewItem\n"];
 
   exit(2);
 }
@@ -199,6 +201,22 @@
         NSString* value = arguments[2];
         int current = [[client proxy] value:value];
         [[client proxy] setValue:(!current) forName:value];
+
+      } else if ([command isEqualToString:@"be_careful_to_use__clear_all_values_by_name"]) {
+        if ([arguments count] != 3) {
+          [self usage];
+        }
+        NSString* value = arguments[2];
+        int index = 0;
+        for (NSDictionary* config in [[client proxy] configlist_getConfigList]) {
+          if ([value isEqualToString:config[@"name"]]) {
+            [[client proxy] configlist_clear_all_values:index];
+            return;
+          }
+          ++index;
+        }
+        [self output:[NSString stringWithFormat:@"\"%@\" is not found.\n", value]];
+        exit(1);
 
       } else {
         [self output:[NSString stringWithFormat:@"Unknown argument: %@\n", command]];

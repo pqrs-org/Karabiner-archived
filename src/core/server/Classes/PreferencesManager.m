@@ -432,6 +432,16 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
+- (void)configlist_clear_all_values:(NSInteger)rowIndex {
+  NSString* identifier = [self configlist_identifier:rowIndex];
+  if (!identifier) return;
+
+  [[NSUserDefaults standardUserDefaults] setObject:[NSMutableDictionary new] forKey:identifier];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+  [clientForKernelspace_ send_config_to_kext];
+}
+
 - (NSInteger)configlist_maxAppendIndex {
   NSInteger maxAppendIndex = 0;
 
