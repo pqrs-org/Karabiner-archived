@@ -494,5 +494,10 @@
       <identifier>remap.commandR2commandR_controlF8</identifier>
       <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::F8, ModifierFlag::CONTROL_L</autogen>
     </item>
+    <item>
+      <name>Send a section (§) key event when the right command key is pressed alone.</name>
+      <identifier>remap.right_command_section</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::UK_SECTION</autogen>
+    </item>
   </item>
 </root>
