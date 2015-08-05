@@ -46,6 +46,19 @@ public:
 
   size_t toKeysSize(void) const { return toKeys_.size(); }
   void clearToKeys(void);
+  bool isLastToEventModifierKeyOrLikeModifier(void) const {
+    if (toKeys_.empty()) return false;
+
+    auto& lastToEvent = toKeys_[toKeys_.size() - 1];
+    if (lastToEvent.getModifierFlag() != ModifierFlag::ZERO) {
+      return true;
+    }
+    if (lastToEvent.isEventLikeModifier()) {
+      return true;
+    }
+
+    return false;
+  }
 
   bool isPressing(void) const { return fromEvent_.isPressing(); }
 
