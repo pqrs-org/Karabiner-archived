@@ -192,6 +192,12 @@ private:
     };
   };
 
+  enum class Manipulation {
+    DECREASE,
+    INCREASE,
+  };
+
+  void manipulatePureFromModifierFlags(const KeyToKey& keytokey, Manipulation manipulation, bool force = false);
   void dokeydown(RemapParams& remapParams);
   void dokeyup(void);
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
@@ -203,6 +209,7 @@ private:
 
   bool active_;
   PeriodType::Value periodtype_;
+  bool isFromModifierDecreased_;
   FlagStatus flagStatusWhenKeyPressed_;
 
   FromEvent fromEvent_;

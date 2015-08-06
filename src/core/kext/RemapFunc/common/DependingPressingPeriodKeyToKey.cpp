@@ -134,6 +134,7 @@ void DependingPressingPeriodKeyToKey::static_terminate(void) {
 DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(RemapFunc::RemapFuncBase* owner, AutogenId autogenId) : owner_(owner),
                                                                                                                          active_(false),
                                                                                                                          periodtype_(PeriodType::NONE),
+                                                                                                                         isFromModifierDecreased_(false),
                                                                                                                          keytokey_{{autogenId},
                                                                                                                                    {autogenId},
                                                                                                                                    {autogenId},
@@ -210,25 +211,76 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
 
         ButtonStatus::decrease(fromEvent_.getPointingButton());
         FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
-        FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
 
-        beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+        manipulatePureFromModifierFlags(beforeAfterKeys_, Manipulation::DECREASE, true);
+        {
+          beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
 
-        // We need save FlagStatus at keydown.
-        // For example, "Change Space to Shift_L" is enabled,
-        //
-        // (1) Control_L down
-        // (2) Space down
-        // (3) Control_L up
-        // (4) Space up        -> We should send Control_L+Space here.
-        //
-        // At (4), Control_L is not presssed.
-        // We should send Control_L+Space at (4) because user pressed Space with Control_L at (2).
-        //
-        // Therefore, we need to save FlagStatus at (2).
-        // And restore it at (4).
-        //
-        flagStatusWhenKeyPressed_ = FlagStatus::globalFlagStatus();
+          // We need save FlagStatus at keydown.
+          // For example, "Change Space to Shift_L" is enabled,
+          //
+          // (1) Control_L down
+          // (2) Space down
+          // (3) Control_L up
+          // (4) Space up        -> We should send Control_L+Space here.
+          //
+          // At (4), Control_L is not presssed.
+          // We should send Control_L+Space at (4) because user pressed Space with Control_L at (2).
+          //
+          // Therefore, we need to save FlagStatus at (2).
+          // And restore it at (4).
+          //
+          flagStatusWhenKeyPressed_ = FlagStatus::globalFlagStatus();
+
+          // Stop modifier flag events until normal key event is happen or physical key down event is happen
+          // in order to reduce unnecessary modifier events.
+          //
+          // For example, we consider the following autogens:
+          //
+          //    <autogen>
+          //      __KeyOverlaidModifier__
+          //      KeyCode::COMMAND_L,
+          //      KeyCode::CONTROL_L,
+          //      KeyCode::ESCAPE,
+          //    </autogen>
+          //    <autogen>
+          //      __KeyOverlaidModifier__
+          //      KeyCode::SPACE,
+          //      KeyCode::SHIFT_L,
+          //      KeyCode::SPACE,
+          //    </autogen>
+          //
+          // * Change the left command key to control key.
+          // * Change the space key to shift key.
+          // * Send an escape key event when the left command key is pressed alone,
+          // * Send a space key event when the space key is pressed alone.
+          //
+          // When we press keys by this order.
+          // #1 Press COMMAND_L.
+          // #2 Press SPACE.
+          // #3 Release COMMAND_L.
+          // #4 Release SPACE.
+          //
+          // The result is control-space at #4.
+          //
+          // If we does not stop modifier events, CONTROL_L events are sent at #3 and #4.
+          //
+          // #1 -> CONTROL_L down.
+          // #2 -> SHIFT_L down.
+          // #3 -> CONTROL_L up.
+          // #4 -> CONTROL_L down, SHIFT_L up, SPACE down, SPACE up, CONTROL_L up.
+          //
+          // To reduce these events, we ignore modifier events at physical key up.
+          //
+          // #1 -> CONTROL_L down
+          // #2 -> SHIFT_L down.
+          // #3 -> Do nothing.
+          // #4 -> SHIFT_L up, SPACE down, SPACE up, CONTROL_L up.
+          //
+
+          EventOutputQueue::FireModifiers::setIgnorePhysicalUpEvent(true);
+        }
+        manipulatePureFromModifierFlags(beforeAfterKeys_, Manipulation::INCREASE, true);
 
         unsigned int ms = periodMS_.get(PeriodMS::Type::SHORT_PERIOD);
         if (ms == 0) {
@@ -239,64 +291,27 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
 
         RemapClassManager::registerPrepareTargetItem(owner_);
 
-        // Stop modifier flag events until normal key event is happen or physical key down event is happen
-        // in order to reduce unnecessary modifier events.
-        //
-        // For example, we consider the following autogens:
-        //
-        //    <autogen>
-        //      __KeyOverlaidModifier__
-        //      KeyCode::COMMAND_L,
-        //      KeyCode::CONTROL_L,
-        //      KeyCode::ESCAPE,
-        //    </autogen>
-        //    <autogen>
-        //      __KeyOverlaidModifier__
-        //      KeyCode::SPACE,
-        //      KeyCode::SHIFT_L,
-        //      KeyCode::SPACE,
-        //    </autogen>
-        //
-        // * Change the left command key to control key.
-        // * Change the space key to shift key.
-        // * Send an escape key event when the left command key is pressed alone,
-        // * Send a space key event when the space key is pressed alone.
-        //
-        // When we press keys by this order.
-        // #1 Press COMMAND_L.
-        // #2 Press SPACE.
-        // #3 Release COMMAND_L.
-        // #4 Release SPACE.
-        //
-        // The result is control-space at #4.
-        //
-        // If we does not stop modifier events, CONTROL_L events are sent at #3 and #4.
-        //
-        // #1 -> CONTROL_L down.
-        // #2 -> SHIFT_L down.
-        // #3 -> CONTROL_L up.
-        // #4 -> CONTROL_L down, SHIFT_L up, SPACE down, SPACE up, CONTROL_L up.
-        //
-        // To reduce these events, we ignore modifier events at physical key up.
-        //
-        // #1 -> CONTROL_L down
-        // #2 -> SHIFT_L down.
-        // #3 -> Do nothing.
-        // #4 -> SHIFT_L up, SPACE down, SPACE up, CONTROL_L up.
-        //
-
-        EventOutputQueue::FireModifiers::setIgnorePhysicalUpEvent(true);
-
       } else {
+        // Restore fromEvent_ state to event firing in `dokeyup` for __KeyOverlaidModifier__.
+        //
+        // For example, we have to restore PointingButton::RIGHT before `dokeyup` for this autogen:
+        //
+        // <autogen>
+        //   __KeyOverlaidModifier__
+        //   PointingButton::RIGHT,
+        //   KeyCode::VK_MODIFIER_BUTTON2,
+        //   PointingButton::RIGHT,
+        // </autogen>
+
         ButtonStatus::increase(fromEvent_.getPointingButton());
         FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
 
         dokeydown(remapParams);
         dokeyup();
 
-        FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
-
+        manipulatePureFromModifierFlags(beforeAfterKeys_, Manipulation::DECREASE, true);
         beforeAfterKeys_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
+        manipulatePureFromModifierFlags(beforeAfterKeys_, Manipulation::INCREASE, true);
 
         RemapClassManager::unregisterPrepareTargetItem(owner_);
       }
@@ -305,6 +320,49 @@ bool DependingPressingPeriodKeyToKey::remap(RemapParams& remapParams) {
   }
 
   return false;
+}
+
+void DependingPressingPeriodKeyToKey::manipulatePureFromModifierFlags(const KeyToKey& keytokey, Manipulation manipulation, bool force) {
+  // already decreased.
+  if (manipulation == Manipulation::DECREASE && isFromModifierDecreased_) {
+    return;
+  }
+  // not decreased.
+  if (manipulation == Manipulation::INCREASE && !isFromModifierDecreased_) {
+    return;
+  }
+
+  bool needToManipulate = false;
+
+  if (force) {
+    needToManipulate = true;
+  } else {
+    if (keytokey.isLastToEventModifierKeyOrLikeModifier()) {
+      // to modifier
+      if (manipulation == Manipulation::DECREASE) {
+        needToManipulate = true;
+      } else {
+        needToManipulate = false;
+      }
+    } else {
+      // to key
+      needToManipulate = true;
+    }
+  }
+
+  if (needToManipulate) {
+    switch (manipulation) {
+    case Manipulation::DECREASE:
+      isFromModifierDecreased_ = true;
+      FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
+      break;
+
+    case Manipulation::INCREASE:
+      isFromModifierDecreased_ = false;
+      FlagStatus::globalFlagStatus().increase(pureFromModifierFlags_);
+      break;
+    }
+  }
 }
 
 void DependingPressingPeriodKeyToKey::dokeydown(RemapParams& remapParams) {
@@ -320,25 +378,30 @@ void DependingPressingPeriodKeyToKey::dokeydown(RemapParams& remapParams) {
     periodtype_ = PeriodType::SHORT_PERIOD;
 
     {
-      FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
+      auto& ktk = keytokey_[KeyToKeyType::SHORT_PERIOD];
+      manipulatePureFromModifierFlags(ktk, Manipulation::DECREASE);
+      {
+        FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
 
-      keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+        ktk.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
 
-      // Call prepare in order to cancel delayed action.
-      //
-      // For example:
-      //   1. Enable remap.samples_keytokey_delayed_action_3 in samples.xml.
-      //   2. Type return.
-      //   3. Type space.
-      //   4. It should be changed to 1,space.
-      //
-      // If we don't call prepare, the delayed action will be registered when we type the space key
-      // and it will not be canceled.
-      // The result becomes `space,1`. (`1` is entered by delayed action after space key.)
-      //
-      // Therefore we need to call prepare to preserve events order.
+        // Call prepare in order to cancel delayed action.
+        //
+        // For example:
+        //   1. Enable remap.samples_keytokey_delayed_action_3 in samples.xml.
+        //   2. Type return.
+        //   3. Type space.
+        //   4. It should be changed to 1,space.
+        //
+        // If we don't call prepare, the delayed action will be registered when we type the space key
+        // and it will not be canceled.
+        // The result becomes `space,1`. (`1` is entered by delayed action after space key.)
+        //
+        // Therefore we need to call prepare to preserve events order.
 
-      keytokey_[KeyToKeyType::SHORT_PERIOD].prepare(remapParams);
+        ktk.prepare(remapParams);
+      }
+      manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
     }
 
     break;
@@ -356,23 +419,36 @@ void DependingPressingPeriodKeyToKey::dokeyup(void) {
   switch (periodtype_) {
   case PeriodType::SHORT_PERIOD: {
     periodtype_ = PeriodType::NONE;
-    keytokey_[KeyToKeyType::SHORT_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+    {
+      auto& ktk = keytokey_[KeyToKeyType::SHORT_PERIOD];
+      ktk.call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+      manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
+    }
     break;
   }
 
   case PeriodType::LONG_PERIOD: {
     periodtype_ = PeriodType::NONE;
-    keytokey_[KeyToKeyType::LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+    {
+      auto& ktk = keytokey_[KeyToKeyType::LONG_PERIOD];
+      ktk.call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+      manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
+    }
 
     // ----------------------------------------
     // handle PRESSING_TARGET_KEY_ONLY
     if (periodMS_.enabled(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
       if (!eventWatcherTarget_.isAnyEventHappen() &&
           ic_.getmillisec() < periodMS_.get(PeriodMS::Type::PRESSING_TARGET_KEY_ONLY)) {
-        FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
 
-        keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, lastPhysicalEventType_);
-        keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+        auto& ktk = keytokey_[KeyToKeyType::PRESSING_TARGET_KEY_ONLY];
+        manipulatePureFromModifierFlags(ktk, Manipulation::DECREASE);
+        {
+          FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusWhenKeyPressed_);
+          ktk.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, lastPhysicalEventType_);
+          ktk.call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+        }
+        manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
       }
     }
 
@@ -381,7 +457,11 @@ void DependingPressingPeriodKeyToKey::dokeyup(void) {
 
   case PeriodType::LONG_LONG_PERIOD: {
     periodtype_ = PeriodType::NONE;
-    keytokey_[KeyToKeyType::LONG_LONG_PERIOD].call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+    {
+      auto& ktk = keytokey_[KeyToKeyType::LONG_LONG_PERIOD];
+      ktk.call_remap_with_VK_PSEUDO_KEY(EventType::UP, lastPhysicalEventType_);
+      manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
+    }
     break;
   }
 
@@ -401,8 +481,13 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
     target_->periodtype_ = PeriodType::LONG_PERIOD;
 
     {
-      FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
-      (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, target_->lastPhysicalEventType_);
+      auto& ktk = target_->keytokey_[KeyToKeyType::LONG_PERIOD];
+      target_->manipulatePureFromModifierFlags(ktk, Manipulation::DECREASE);
+      {
+        FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
+        ktk.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, target_->lastPhysicalEventType_);
+      }
+      target_->manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
     }
 
     (target_->eventWatcherTarget_).observe();
@@ -422,7 +507,11 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
     // we cancel LONG_LONG_PERIOD event.
     bool isKeyboardRepeatCanceled = (target_->keyboardRepeatID_ != KeyboardRepeat::getID());
 
-    (target_->keytokey_[KeyToKeyType::LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::UP, target_->lastPhysicalEventType_);
+    {
+      auto& ktk = (target_->keytokey_[KeyToKeyType::LONG_PERIOD]);
+      ktk.call_remap_with_VK_PSEUDO_KEY(EventType::UP, target_->lastPhysicalEventType_);
+      target_->manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
+    }
 
     if (isKeyboardRepeatCanceled) {
       target_->periodtype_ = PeriodType::NONE;
@@ -431,8 +520,13 @@ void DependingPressingPeriodKeyToKey::fire_timer_callback(OSObject* /* owner */,
       target_->periodtype_ = PeriodType::LONG_LONG_PERIOD;
 
       {
-        FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
-        (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, target_->lastPhysicalEventType_);
+        auto& ktk = (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]);
+        target_->manipulatePureFromModifierFlags(ktk, Manipulation::DECREASE);
+        {
+          FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), target_->flagStatusWhenKeyPressed_);
+          (target_->keytokey_[KeyToKeyType::LONG_LONG_PERIOD]).call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, target_->lastPhysicalEventType_);
+        }
+        target_->manipulatePureFromModifierFlags(ktk, Manipulation::INCREASE);
       }
     }
 
