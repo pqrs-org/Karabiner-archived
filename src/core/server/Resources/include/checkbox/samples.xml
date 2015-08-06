@@ -1187,14 +1187,60 @@ Two Lines</autogen>
       </item>
       <item>
         <identifier>remap.samples_keyoverlaidmodifier3</identifier>
+        <name>Standard3</name>
+        <appendix>Change shift-A to option (send space when alone)</appendix>
+        <appendix>Change shift-S to tab (send space when alone)</appendix>
+        <appendix>Change shift-Control_L to option (send space when alone)</appendix>
+        <appendix>Change shift-Command_L to tab (send space when alone)</appendix>
+        <appendix></appendix>
+        <appendix><![CDATA[  Press shift, Press A, Press Q -> option-Q  ]]></appendix>
+        <appendix><![CDATA[  Press shift, Press S, Press Q -> tab,shift-Q  ]]></appendix>
+        <appendix><![CDATA[  Press shift, Press Control_L, Press Q -> option-Q  ]]></appendix>
+        <appendix><![CDATA[  Press shift, Press Command_L, Press Q -> tab,shift-Q  ]]></appendix>
+
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::OPTION_L,
+          KeyCode::SPACE,
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::TAB,
+          KeyCode::SPACE,
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::CONTROL_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::OPTION_L,
+          KeyCode::SPACE,
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::TAB,
+          KeyCode::SPACE,
+        </autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_keyoverlaidmodifier_pointingbutton</identifier>
         <name>With PointingButton</name>
         <appendix>Change the right click to shift. (click alone, send space)</appendix>
         <appendix>(Note: "right button down, move pointer, right button up" sends a space key event.)</appendix>
+        <appendix></appendix>
+        <appendix>Change button4 to shift. (click alone, send button4)</appendix>
         <autogen>
           __KeyOverlaidModifier__
           PointingButton::RIGHT,
           KeyCode::SHIFT_L,
           KeyCode::SPACE,
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          PointingButton::BUTTON4,
+          KeyCode::SHIFT_L,
+          PointingButton::BUTTON4,
         </autogen>
       </item>
 
@@ -1341,12 +1387,62 @@ Two Lines</autogen>
         <appendix>Change right shift key to option key.</appendix>
         <appendix>(Send space key event if right shift key is pressed alone.)</appendix>
         <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,Shift+E,F)</appendix>
+        <appendix></appendix>
+        <appendix>Change option-a to shift.</appendix>
+        <appendix>(Send space key event if option-a is pressed alone.)</appendix>
+        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,Shift+E,F)</appendix>
+        <appendix></appendix>
+        <appendix>Change option-s to tab.</appendix>
+        <appendix>(Send space key event if option-a is pressed alone.)</appendix>
+        <appendix>(BeforeKeyDown Shift+B,C AfterKeyUp Option+D,Shift+E,F)</appendix>
         <autogen>
           __KeyOverlaidModifier__
           KeyCode::SHIFT_R,
 
           @begin
           KeyCode::OPTION_L,
+          @end
+
+          @begin
+          KeyCode::SPACE,
+          @end
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::B, ModifierFlag::SHIFT_R,
+          KeyCode::C,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::D, ModifierFlag::OPTION_L,
+          KeyCode::E, ModifierFlag::SHIFT_R,
+          KeyCode::F,
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+          @begin
+          KeyCode::SHIFT_L,
+          @end
+
+          @begin
+          KeyCode::SPACE,
+          @end
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::B, ModifierFlag::SHIFT_R,
+          KeyCode::C,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::D, ModifierFlag::OPTION_L,
+          KeyCode::E, ModifierFlag::SHIFT_R,
+          KeyCode::F,
+        </autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+          @begin
+          KeyCode::TAB,
           @end
 
           @begin
