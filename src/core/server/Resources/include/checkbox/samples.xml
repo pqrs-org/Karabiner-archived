@@ -1715,6 +1715,7 @@ Two Lines</autogen>
         <appendix>- T down</appendix>
         <appendix>- T up</appendix>
         <appendix></appendix>
+        <appendix>Note: __BlockUntilKeyUp__ has timeout. You have to press these keys quickly.</appendix>
         <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen>
       </item>
 
