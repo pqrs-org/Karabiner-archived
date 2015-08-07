@@ -54,8 +54,8 @@
       <appendix></appendix>
       <appendix>eventType:keyMod          code:0x3a       name:Option_L        flags:Opt</appendix>
       <appendix>eventType:keyMod          code:0x38       name:Shift_L         flags:Shift Opt</appendix>
-      <appendix>eventType:keyMod          code:0x3a       name:Option_L        flags:Shift</appendix>
-      <appendix>eventType:keyMod          code:0x38       name:Shift_L         flags:</appendix>
+      <appendix>eventType:keyMod          code:0x38       name:Shift_L         flags:Opt</appendix>
+      <appendix>eventType:keyMod          code:0x3a       name:Option_L        flags:</appendix>
       <appendix></appendix>
       <appendix></appendix>
       <appendix>The events are follows when you press "right command-c".</appendix>

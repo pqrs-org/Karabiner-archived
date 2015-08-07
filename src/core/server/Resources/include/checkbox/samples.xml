@@ -1848,8 +1848,10 @@ Two Lines</autogen>
         <identifier>remap.samples_DropAllKeys</identifier>
         <appendix>Drop all key combinations while the right option key is pressed.</appendix>
         <appendix>(Except option-qwer)</appendix>
+        <appendix>(__DropAllKeys__ does not drop modifier events.)</appendix>
         <appendix></appendix>
         <appendix>With "change S to left shift key".</appendix>
+        <appendix>(option-S sends option,shift key events.)</appendix>
         <appendix>(option-S-Q will be option-shift-Q, option-S-A will be ignored.)</appendix>
         <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::Q, ModifierFlag::OPTION_R</autogen>
         <autogen>__KeyToKey__ KeyCode::W, ModifierFlag::OPTION_R, KeyCode::W, ModifierFlag::OPTION_R</autogen>
@@ -2525,12 +2527,12 @@ Two Lines</autogen>
       <name>ForceNumLockOn</name>
       <item>
         <identifier>remap.samples_forcenumlockon</identifier>
-        <name>Force turn NumLock on at Apple Internal Keyboard (0x05ac,0x0245)</name>
-        <appendix>(The jkl keys on MacBook will be changed to 123 when numlock is on.)</appendix>
+        <name>Force turn NumLock on at Apple Keyboards.</name>
+        <appendix>(The jkl keys will be changed to 123 when numlock is on.)</appendix>
         <autogen>
           __ForceNumLockOn__
-          DeviceVendor::RawValue::0x05ac,
-          DeviceProduct::RawValue::0x0245,
+          DeviceVendor::APPLE_INC,
+          DeviceProduct::ANY,
         </autogen>
       </item>
       <item>
@@ -2544,11 +2546,11 @@ Two Lines</autogen>
       </item>
       <item>
         <identifier>remap.samples_forcenumlockon_force_off</identifier>
-        <name>Force turn NumLock *off* at Apple Internal Keyboard (0x05ac,0x0245)</name>
+        <name>Force turn NumLock *off* at Apple Keyboards</name>
         <autogen>
           __ForceNumLockOn__
-          DeviceVendor::RawValue::0x05ac,
-          DeviceProduct::RawValue::0x0245,
+          DeviceVendor::APPLE_INC,
+          DeviceProduct::ANY,
           Option::FORCENUMLOCKON_FORCE_OFF,
         </autogen>
       </item>
