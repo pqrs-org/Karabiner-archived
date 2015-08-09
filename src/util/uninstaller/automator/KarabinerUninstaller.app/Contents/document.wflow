@@ -55,9 +55,9 @@
 	display dialog "Are you sure you want to remove Karabiner?" buttons {"Cancel", "OK"}
 	if the button returned of the result is "OK" then
 		try
-			do shell script "test -f /Applications/Karabiner.app/Contents/Library/extra/uninstall.sh"
+			do shell script "test -f '/Library/Application Support/org.pqrs/Karabiner/uninstall.sh'"
 			try
-				do shell script "/Applications/Karabiner.app/Contents/Library/extra/uninstall.sh" with administrator privileges
+				do shell script "sh '/Library/Application Support/org.pqrs/Karabiner/uninstall.sh'" with administrator privileges
 				display alert "Karabiner has been uninstalled.
 Please restart OS X."
 			on error
@@ -104,9 +104,9 @@ end run
 					<dict>
 						<key>default value</key>
 						<string>on run {input, parameters}
-	
+
 	(* Your script goes here *)
-	
+
 	return input
 end run</string>
 						<key>name</key>
