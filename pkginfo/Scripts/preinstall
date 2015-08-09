@@ -5,8 +5,8 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # ----------------------------------------
 # unload before install
-kextload="/Applications/Karabiner.app/Contents/Library/bin/kextload"
-[ -f "$kextload" ] && "$kextload" unload
+startup='/Library/Application Support/org.pqrs/Karabiner/startup.sh'
+[ -f "$startup" ] && "$startup" stop
 
 # old scripts
 for f in /Library/LaunchDaemons/org.pqrs.KeyRemap4MacBook.* /Library/LaunchAgents/org.pqrs.KeyRemap4MacBook.*; do
@@ -28,9 +28,14 @@ startup="/Applications/KeyRemap4MacBook.app/Contents/Library/scripts/startup.sh"
 kextload="/Applications/KeyRemap4MacBook.app/Contents/Library/bin/kextload"
 [ -f "$kextload" ] && "$kextload" unload
 
+kextload="/Applications/Karabiner.app/Contents/Library/bin/kextload"
+[ -f "$kextload" ] && "$kextload" unload
+
 # ----------------------------------------
 # uninstall
 rm -rf /Applications/Karabiner.app
+rm -rf '/Library/Application Support/org.pqrs/Karabiner'
+rm -f /Library/LaunchDaemons/org.pqrs.Karabiner.load.plist
 
 # remove old files
 rm -rf /Library/StartupItems/KeyRemap4MacBook
