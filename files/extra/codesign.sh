@@ -12,7 +12,8 @@ fi
 
 # ------------------------------------------------------------
 # sign
-targets=`find "$1" -name '*.app' -or -name '*.signed.kext' -or -path '*/bin/*' | sort -r`
+cd "$1"
+targets=`find * -name '*.app' -or -name '*.signed.kext' -or -path '*/bin/*' | sort -r`
 
 for f in $targets; do
     echo -ne '\033[33;40m'
