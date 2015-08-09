@@ -35,26 +35,9 @@ basedir="pkgroot/Applications/Karabiner.app/Contents/Applications/Utilities"
 mkdir -p "$basedir"
 cp -R files/Utilities/*.app "$basedir"
 
-basedir="pkgroot/Applications/Karabiner.app/Contents/Library"
-mkdir -p "$basedir"
-cp -R src/core/kext/build/Release/Karabiner.kext "$basedir/Karabiner.signed.kext"
-
 basedir="pkgroot/Applications/Karabiner.app/Contents/Library/bin"
 mkdir -p "$basedir"
-cp -R src/bin/kextload/build/Release/kextload "$basedir"
 cp -R src/util/cli/build/Release/karabiner "$basedir"
-
-basedir="pkgroot/Applications/Karabiner.app/Contents/Library/extra"
-mkdir -p "$basedir"
-cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
-for f in \
-    files/extra/launchUninstaller.sh \
-    files/extra/setpermissions.sh \
-    files/extra/uninstall.sh \
-    ;
-do
-    cp -R "$f" "$basedir"
-done
 
 basedir="pkgroot/Applications/Karabiner.app/Contents/Library/utilities/bin"
 mkdir -p "$basedir"
@@ -65,8 +48,27 @@ basedir="pkgroot/Applications/Karabiner.app/Contents/Library/vendor/bin"
 mkdir -p "$basedir"
 cp -R src/vendor/blueutil/build/Release/blueutil "$basedir"
 
+mkdir -p                  "pkgroot/Library"
+cp -R files/LaunchDaemons "pkgroot/Library"
+
+basedir="pkgroot/Library/Application Support/org.pqrs/Karabiner"
+mkdir -p "$basedir"
+cp -R src/core/kext/build/Release/Karabiner.kext "$basedir/Karabiner.signed.kext"
+
+cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
+for f in \
+    files/extra/launchUninstaller.sh \
+    files/extra/setpermissions.sh \
+    files/extra/startup.sh \
+    files/extra/uninstall.sh \
+    ;
+do
+    cp -R "$f" "$basedir"
+done
+
 # Sign with Developer ID
-bash files/extra/codesign.sh pkgroot
+bash files/extra/codesign.sh "pkgroot/Applications"
+bash files/extra/codesign.sh "pkgroot/Library/Application Support"
 
 # Setting file permissions.
 #
@@ -82,7 +84,6 @@ bash files/extra/codesign.sh pkgroot
 #   Then, we need to repair file permissions in postinstall script.
 #   Please also see postinstall.
 #
-chmod 4755 pkgroot/Applications/Karabiner.app/Contents/Library/bin/kextload
 sh "files/extra/setpermissions.sh" pkgroot
 sh "files/extra/setpermissions.sh" pkginfo
 chmod 755 \
