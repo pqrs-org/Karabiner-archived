@@ -499,7 +499,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (IBAction)launchUninstaller:(id)sender {
-  system("/Applications/Karabiner.app/Contents/Library/extra/launchUninstaller.sh");
+  system("sh '/Library/Application Support/org.pqrs/Karabiner/launchUninstaller.sh'");
 }
 
 - (IBAction)openPreferences:(id)sender {
