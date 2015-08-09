@@ -1,4 +1,3 @@
-#import "KextLoader.h"
 #import "Relauncher.h"
 #import "UserClient_userspace.h"
 #include "bridge.h"
@@ -37,8 +36,6 @@
 
 - (void)openUserClient {
   io_iterator_t iterator;
-
-  [KextLoader load]; // Load kext before use org_pqrs_driver_Karabiner
 
   kern_return_t kernResult = IOServiceGetMatchingServices(kIOMasterPortDefault, IOServiceMatching("org_pqrs_driver_Karabiner"), &iterator);
   if (kernResult != KERN_SUCCESS) {
