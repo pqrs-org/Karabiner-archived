@@ -19,5 +19,5 @@ all:
 
 install: all
 	sudo cp -r *.xml include /Applications/Karabiner.app/Contents/Resources
-	sudo /Applications/Karabiner.app/Contents/Library/extra/setpermissions.sh /Applications/Karabiner.app/Contents/Resources
+	sudo ../../../../files/extra/setpermissions.sh /Applications/Karabiner.app/Contents/Resources
 	/Applications/Karabiner.app/Contents/Library/bin/karabiner reloadxml
