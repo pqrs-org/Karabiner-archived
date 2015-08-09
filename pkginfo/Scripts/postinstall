@@ -4,10 +4,12 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 # ------------------------------------------------------------
 # set file permissions
 for f in \
-    /Applications/Karabiner.app \
+    '/Applications/Karabiner.app' \
+    '/Library/Application Support/org.pqrs/Karabiner' \
+    '/Library/LaunchDaemons/org.pqrs.Karabiner.load.plist' \
     ; do
     echo "set file permissions: $f"
-    sh /Applications/Karabiner.app/Contents/Library/extra/setpermissions.sh "$f"
+    sh '/Library/Application Support/org.pqrs/Karabiner/setpermissions.sh' "$f"
     chown -Rh root:wheel "$f"
 done
 
@@ -16,6 +18,11 @@ done
 
 /Applications/Karabiner.app/Contents/Library/bin/karabiner \
     relaunch
+
+# ------------------------------------------------------------
+# load kext
+# (We have to load kext after relaunch Karabiner.app to avoid "kext version mismatched alert".)
+sh "/Library/Application Support/org.pqrs/Karabiner/startup.sh" start
 
 # ------------------------------------------------------------
 exit 0
