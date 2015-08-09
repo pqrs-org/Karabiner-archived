@@ -25,6 +25,7 @@ Since 10.6.0
     * `KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_*` have been added.
 * Fixed issues:
     * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic, RazorSQL, EditRocket)
+    * kext loading issue on OS X 10.11 beta 6 has been fixed.
 
 Version 10.6.0
 --------------
