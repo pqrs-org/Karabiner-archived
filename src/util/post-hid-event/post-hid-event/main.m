@@ -78,6 +78,9 @@
           [flags addObject:@(NX_ALTERNATEMASK)];
         } else if ([f isEqualToString:@"shift"]) {
           [flags addObject:@(NX_SHIFTMASK)];
+        } else {
+          [self output:[NSString stringWithFormat:@"Unknown flag: %@\n", f]];
+          return 1;
         }
       }
     } else {
@@ -107,7 +110,7 @@
       }
     }
 
-    [self output:[NSString stringWithFormat:@"Unknown keycode:%@\n", keycode]];
+    [self output:[NSString stringWithFormat:@"Unknown keycode: %@\n", keycode]];
     return 1;
   }
 
