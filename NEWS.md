@@ -1,5 +1,5 @@
-Since 10.6.0
-------------
+Version 10.7.0
+--------------
 
 * *Incompatibility changes*:
     * The default mouse keys scroll direction has been changed to `natural`.
