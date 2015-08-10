@@ -5,7 +5,7 @@ Version 10.7.0
     * The default mouse keys scroll direction has been changed to `natural`.
     * `<inputsourcedetail_only>` and `<inputsourcedetail_not>` filters have been merged into `<inputsource_only>` and `<inputsource_not>`. <br />
       Please use `<inputsource_only>` and `<inputsource_not>` in your private.xml.
-* New option has been added into command line interface: `toggle`
+* New option has been added into command line interface: `toggle`, `be_careful_to_use__clear_all_values_by_name`
 * "Status Message > Show caps lock state" option has been added.
 * Multiple displays support has been improved. The status message will be shown in the all screen.
 * Fast User Switching support has been improved.
@@ -20,7 +20,7 @@ Version 10.7.0
         * `<pressingphysicalkeys_lessthan>`
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * ModifierFlag pattern matching has been introduced into `Option::KEYTOKEY_AFTER_KEYUP`.
-    * `high_priority` attribute has been introduced into `<identifier` tag.
+    * `high_priority` attribute has been introduced into `<identifier>` tag.
     * `<appdef>` behavior has been improved. It preserves prepared settings when you use `<appdef>` in private.xml for bundle identifiers that are in prepared appdef.xml.
     * `KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_*` have been added.
 * Fixed issues:
