@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+
+  <autogen>
+    __ShowStatusMessage__
+A and S are pressed.
+This message should be hidden
+when you release A and S keys.
+  </autogen>
+
+</root>

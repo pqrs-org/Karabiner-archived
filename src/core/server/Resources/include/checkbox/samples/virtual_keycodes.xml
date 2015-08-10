@@ -155,7 +155,8 @@
       <appendix>For example Google Chrome will always be in foreground.</appendix>
       <identifier>remap.samples_vk_open_url</identifier>
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::COMMAND_R, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::F, ModifierFlag::COMMAND_R,
         KeyCode::VK_OPEN_URL_APP_Finder,
         KeyCode::VK_WAIT_100MS,
@@ -295,12 +296,7 @@
       </item>
       <item hidden="true">
         <identifier vk_config="true">notsave.samples_vk_config_config_only</identifier>
-        <autogen>
-          __ShowStatusMessage__
-          A and S are pressed.
-          This message should be hidden
-          when you release A and S keys.
-        </autogen>
+        <include path="messages/notsave.samples_vk_config_config_only.xml" />
       </item>
     </item>
     <item>
