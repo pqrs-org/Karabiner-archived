@@ -4,6 +4,7 @@
 
 @interface IOHIDPostEventWrapper () {
   mach_port_t eventDriver_;
+  IOOptionBits eventFlags_;
 }
 @end
 
@@ -13,6 +14,8 @@
   self = [super init];
 
   if (self) {
+    eventFlags_ = 0;
+
     // ------------------------------------------------------------
     // Getting eventDriver_
 
@@ -46,6 +49,23 @@
   return self;
 }
 
+- (void)postModifierKey:(IOOptionBits)mask keydown:(BOOL)keydown {
+  NXEventData event;
+  bzero(&event, sizeof(event));
+
+  if (keydown) {
+    eventFlags_ |= mask;
+  } else {
+    eventFlags_ &= ~mask;
+  }
+
+  IOGPoint loc = {0, 0};
+  kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_FLAGSCHANGED, loc, &event, kNXEventDataVersion, eventFlags_, TRUE);
+  if (KERN_SUCCESS != kr) {
+    NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
+  }
+}
+
 - (void)postAuxKey:(uint8_t)auxKeyCode {
   if (!eventDriver_) return;
 
@@ -58,7 +78,7 @@
     event.compound.misc.L[0] = (auxKeyCode << 16 | keydownup[i] << 8);
 
     IOGPoint loc = {0, 0};
-    kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, 0, FALSE);
+    kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, eventFlags_, FALSE);
     if (KERN_SUCCESS != kr) {
       NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
     }

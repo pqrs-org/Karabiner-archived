@@ -4,6 +4,14 @@
 
 @interface IOHIDPostEventWrapper : NSObject
 
+// mask:
+// * NX_ALPHASHIFTMASK
+// * NX_SHIFTMASK
+// * NX_CONTROLMASK
+// * NX_ALTERNATEMASK
+// * NX_COMMANDMASK
+- (void)postModifierKey:(IOOptionBits)mask keydown:(BOOL)keydown;
+
 - (void)postKey:(uint8_t)keyCode;
 
 @end
