@@ -37,34 +37,72 @@
 
 - (void)usage {
   [self output:@"Usage:\n"];
-  [self output:@"  post-hid-event keycode\n"];
+  [self output:@"  post-hid-event [--flag flag] keycode\n"];
   [self output:@"\n"];
   [self output:@"Example:\n"];
   [self output:@"  post-hid-event NX_KEYTYPE_MUTE\n"];
   [self output:@"  post-hid-event NX_KEYTYPE_PLAY\n"];
   [self output:@"  post-hid-event NX_KEYTYPE_BRIGHTNESS_UP\n"];
+  [self output:@"  post-hid-event --flag shift --flag option NX_KEYTYPE_SOUND_UP\n"];
   [self output:@"\n"];
   [self output:@"List of keycodes:\n"];
   for (NSArray* a in [self keycodes]) {
     NSString* name = a[0];
     [self output:[NSString stringWithFormat:@"  %@\n", name]];
   }
+  [self output:@"\n"];
+  [self output:@"List of flags:\n"];
+  [self output:@"  command\n"];
+  [self output:@"  control\n"];
+  [self output:@"  option\n"];
+  [self output:@"  shift\n"];
 
   [[NSApplication sharedApplication] terminate:nil];
 }
 
 - (int)main {
   NSArray* arguments = [[NSProcessInfo processInfo] arguments];
+  NSString* keycode = nil;
+  NSMutableArray* flags = [NSMutableArray new];
 
-  if ([arguments count] == 1) {
+  for (NSUInteger i = 1; i < [arguments count]; ++i) {
+    if ([arguments[i] isEqualToString:@"--flag"]) {
+      ++i;
+      if (i < [arguments count]) {
+        NSString* f = arguments[i];
+        if ([f isEqualToString:@"command"]) {
+          [flags addObject:@(NX_COMMANDMASK)];
+        } else if ([f isEqualToString:@"control"]) {
+          [flags addObject:@(NX_CONTROLMASK)];
+        } else if ([f isEqualToString:@"option"]) {
+          [flags addObject:@(NX_ALTERNATEMASK)];
+        } else if ([f isEqualToString:@"shift"]) {
+          [flags addObject:@(NX_SHIFTMASK)];
+        }
+      }
+    } else {
+      keycode = arguments[i];
+    }
+  }
+
+  if (!keycode) {
     [self usage];
   } else {
-    NSString* keycode = arguments[1];
-
     for (NSArray* a in [self keycodes]) {
       NSString* name = a[0];
       if ([name isEqualToString:keycode]) {
-        [[IOHIDPostEventWrapper new] postKey:[a[1] intValue]];
+        IOHIDPostEventWrapper* wrapper = [IOHIDPostEventWrapper new];
+
+        for (NSNumber* flag in flags) {
+          [wrapper postModifierKey:[flag intValue] keydown:YES];
+        }
+
+        [wrapper postKey:[a[1] intValue]];
+
+        for (NSNumber* flag in flags) {
+          [wrapper postModifierKey:[flag intValue] keydown:NO];
+        }
+
         return 0;
       }
     }
