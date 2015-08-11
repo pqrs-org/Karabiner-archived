@@ -11,6 +11,7 @@ Version 10.7.0
       old: `<autogen>__KeyDownUpToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>` <br />
       new: `<autogen>__KeyDownUpToKey__ KeyCode::A, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>` <br />
 * New option has been added into command line interface: `toggle`, `be_careful_to_use__clear_all_values_by_name`
+* New option has been added into `post-hid-event` command line utility: `--flag`
 * "Status Message > Show caps lock state" option has been added.
 * Multiple displays support has been improved. The status message will be shown in the all screen.
 * Fast User Switching support has been improved.
@@ -25,6 +26,7 @@ Version 10.7.0
         * `<pressingphysicalkeys_lessthan>`
     * `__HoldingKeyToKey__` has been improved at you pressed modifiers while holding target key down.
     * ModifierFlag pattern matching has been introduced into `Option::KEYTOKEY_AFTER_KEYUP`.
+    * `<background />` support has been added into `<vkopenurldef>` tag.
     * `high_priority` attribute has been introduced into `<identifier>` tag.
     * `<appdef>` behavior has been improved. It preserves prepared settings when you use `<appdef>` in private.xml for bundle identifiers that are in prepared appdef.xml.
     * `KeyCode::VK_MOUSEKEY_FIXED_DISTANCE_SCROLL_*` have been added.
