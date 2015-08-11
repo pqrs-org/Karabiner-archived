@@ -6,7 +6,7 @@ Version 10.7.0
     * `<inputsourcedetail_only>` and `<inputsourcedetail_not>` filters have been merged into `<inputsource_only>` and `<inputsource_not>`. <br />
       Please use `<inputsource_only>` and `<inputsource_not>` in your private.xml.
     * Launcher Mode v2 uses own modifier flag in order to improve usability. <br />
-      If you extended Launcher Mode v2 by `LAUNCHER_MODE_V2_EXTRA`, please remove `ModifierFlag::NONE`from `LAUNCHER_MODE_V2_EXTRA`. <br />
+      If you extended Launcher Mode v2 by `LAUNCHER_MODE_V2_EXTRA`, please remove `ModifierFlag::NONE` from `LAUNCHER_MODE_V2_EXTRA`. <br />
       <br />
       For example:<br />
       old: `<autogen>__KeyDownUpToKey__ KeyCode::A, ModifierFlag::NONE, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>` <br />
