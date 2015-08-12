@@ -10,12 +10,32 @@
   <block>
     <only>
       PHOTOSHOP,
-      ECLIPSE,
-      POWERPOINT, <!-- PowerPoint requires command-left arrow in the search field. -->
-      WORD, <!-- Word requires command-left arrow in the search field. -->
     </only>
     <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+  </block>
+  <block>
+    <only>
+      POWERPOINT, <!-- PowerPoint requires command-left arrow in the search field. -->
+      WORD, <!-- Word requires command-left arrow in the search field. -->
+    </only>
+    <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::HOME,         MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::HOME,         ModifierFlag::COMMAND_L</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_END,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::END,          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_END,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::END,          ModifierFlag::COMMAND_L</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_HOME,                                            KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_END,                                             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
+  </block>
+  <block>
+    <only>
+      ECLIPSE,
+    </only>
+    <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::HOME</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::HOME</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_END,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::END</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_END,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::END</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_HOME,                                            KeyCode::CURSOR_LEFT,  ModifierFlag::COMMAND_L</autogen>
+    <autogen>__KeyToKey__ FROMKEYCODE_END,                                             KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L</autogen>
   </block>
   <block>
     <only>
