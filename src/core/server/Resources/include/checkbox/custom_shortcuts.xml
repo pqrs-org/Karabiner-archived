@@ -7,12 +7,43 @@
       <appendix>(You can adjust the threshold time of holding by</appendix>
       <appendix>"Holding Key to Key &gt; Holding Threshold" in Key Repeat tab.)</appendix>
       <identifier>remap.holdcommandQ</identifier>
-      <autogen>__HoldingKeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE, KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, Option::NOREPEAT</autogen>
+      <modifier_not>
+        ModifierFlag::CONTROL_L,
+        ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,
+        ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>
+        __HoldingKeyToKey__
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+
+        @begin
+        KeyCode::VK_NONE,
+        @end
+
+        @begin
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
+        @end
+
+        Option::NOREPEAT,
+      </autogen>
     </item>
     <item>
       <name>Press Command+Q twice to Quit Application</name>
       <identifier>remap.doublepresscommandQ</identifier>
-      <autogen>__DoublePressModifier__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+      <modifier_not>
+        ModifierFlag::CONTROL_L,
+        ModifierFlag::CONTROL_R,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,
+        ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>
+        __DoublePressModifier__
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
         KeyCode::VK_NONE,
         KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND
       </autogen>
@@ -52,7 +83,7 @@
     <item><name>──────────────────────────────</name></item>
     <item>
       <!--
-      Based off an idea from http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#controlescape
+          Based off an idea from http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#controlescape
       -->
       <name>F19 to Escape and Control</name>
       <appendix>Tap F19 for Escape, Hold F19 for Control</appendix>
