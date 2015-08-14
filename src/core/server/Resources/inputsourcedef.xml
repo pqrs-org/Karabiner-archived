@@ -7,6 +7,11 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>ARABIC</name>
+    <languagecode>ar</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>BELGIAN</name>
     <languagecode>nl</languagecode>
   </inputsourcedef>

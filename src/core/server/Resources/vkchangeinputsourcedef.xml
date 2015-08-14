@@ -2,6 +2,11 @@
 <root>
 
   <vkchangeinputsourcedef>
+    <name>KeyCode::VK_CHANGE_INPUTSOURCE_ARABIC</name>
+    <languagecode>ar</languagecode>
+  </vkchangeinputsourcedef>
+
+  <vkchangeinputsourcedef>
     <name>KeyCode::VK_CHANGE_INPUTSOURCE_BELGIAN</name>
     <languagecode>nl</languagecode>
   </vkchangeinputsourcedef>
