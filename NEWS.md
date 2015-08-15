@@ -1,3 +1,9 @@
+Since 10.7.0
+------------
+
+* AXNotifier supported new Alfred (Alfred 2.7.2).
+* Prepared settings have been updated.
+
 Version 10.7.0
 --------------
 
