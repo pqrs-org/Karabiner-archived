@@ -4,6 +4,7 @@
 #define kTargetWindowLaunchpad @"Launchpad"
 #define kTargetWindowSpotlight @"Spotlight"
 #define kTargetWindowQuicksilver @"Quicksilver"
+#define kTargetWindowAlfred @"Alfred"
 
 @interface WindowObserver () {
   NSTimer* timer_;
@@ -202,6 +203,18 @@
   return NO;
 }
 
+- (BOOL)isAlfred:(NSString*)windowOwnerName
+      windowName:(NSString*)windowName
+     windowLayer:(NSInteger)windowLayer {
+  // Ignore Alfred in statusbar.
+  if ([windowOwnerName isEqualToString:@"Alfred 2"] &&
+      windowLayer == 27) {
+    return YES;
+  }
+
+  return NO;
+}
+
 - (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
@@ -235,6 +248,13 @@
                     windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
           targetWindows_[@(windowNumber)] = kTargetWindowQuicksilver;
+        }
+
+        if ([self isAlfred:windowOwnerName
+                 windowName:windowName
+                windowLayer:windowLayer]) {
+          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          targetWindows_[@(windowNumber)] = kTargetWindowAlfred;
         }
       }
 
