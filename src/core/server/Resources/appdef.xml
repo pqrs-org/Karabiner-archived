@@ -399,6 +399,7 @@
   <appdef>
     <appname>ALFRED</appname>
     <equal>com.alfredapp.Alfred</equal>
+    <equal>com.runningwithcrayons.Alfred-2</equal>
   </appdef>
 
   <appdef>
