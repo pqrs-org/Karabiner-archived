@@ -1248,12 +1248,20 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
                   "  <modifierstuck_not> ModifierFlag::MOD2 </modifierstuck_not>"
                   "  <lastpressedphysicalkey_not>KeyCode::KC1</lastpressedphysicalkey_not>"
                   "  <lastpressedphysicalkey_only>KeyCode::KC2</lastpressedphysicalkey_only>"
+                  "  <lastreleasedphysicalkey_not>KeyCode::KC1</lastreleasedphysicalkey_not>"
+                  "  <lastreleasedphysicalkey_only>KeyCode::KC2</lastreleasedphysicalkey_only>"
                   "  <elapsedtimesincelastpressed_greaterthan>"
                   "    Millisecond::RawValue::1000"
                   "  </elapsedtimesincelastpressed_greaterthan>"
                   "  <elapsedtimesincelastpressed_lessthan>"
                   "    Millisecond::RawValue::500"
                   "  </elapsedtimesincelastpressed_lessthan>"
+                  "  <elapsedtimesincelastreleased_greaterthan>"
+                  "    Millisecond::RawValue::1000"
+                  "  </elapsedtimesincelastreleased_greaterthan>"
+                  "  <elapsedtimesincelastreleased_lessthan>"
+                  "    Millisecond::RawValue::500"
+                  "  </elapsedtimesincelastreleased_lessthan>"
                   "  <pressingphysicalkeys_greaterthan>1</pressingphysicalkeys_greaterthan>"
                   "  <pressingphysicalkeys_lessthan>2</pressingphysicalkeys_lessthan>"
                   "</item>");
@@ -1451,6 +1459,18 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
     expected.push_back(BRIDGE_DATATYPE_KEYCODE);
     expected.push_back(5000);
 
+    // <lastreleasedphysicalkey_not>KeyCode::KC1</lastreleasedphysicalkey_not>
+    expected.push_back(3);
+    expected.push_back(BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_NOT);
+    expected.push_back(BRIDGE_DATATYPE_KEYCODE);
+    expected.push_back(4000);
+
+    // <lastreleasedphysicalkey_only>KeyCode::KC2</lastreleasedphysicalkey_only>
+    expected.push_back(3);
+    expected.push_back(BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY);
+    expected.push_back(BRIDGE_DATATYPE_KEYCODE);
+    expected.push_back(5000);
+
     // <elapsedtimesincelastpressed_greaterthan>
     //   Millisecond::RawValue::1000
     // </elapsedtimesincelastpressed_greaterthan>
@@ -1464,6 +1484,22 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
     // </elapsedtimesincelastpressed_lessthan>
     expected.push_back(3);
     expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN);
+    expected.push_back(BRIDGE_DATATYPE_MILLISECOND);
+    expected.push_back(500);
+
+    // <elapsedtimesincelastreleased_greaterthan>
+    //   Millisecond::RawValue::1000
+    // </elapsedtimesincelastreleased_greaterthan>
+    expected.push_back(3);
+    expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_GREATERTHAN);
+    expected.push_back(BRIDGE_DATATYPE_MILLISECOND);
+    expected.push_back(1000);
+
+    // <elapsedtimesincelastreleased_lessthan>
+    //   Millisecond::RawValue::500
+    // </elapsedtimesincelastreleased_lessthan>
+    expected.push_back(3);
+    expected.push_back(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_LESSTHAN);
     expected.push_back(BRIDGE_DATATYPE_MILLISECOND);
     expected.push_back(500);
 

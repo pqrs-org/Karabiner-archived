@@ -30,6 +30,10 @@ void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
       add_(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN, "", it.get_data());
     } else if (it.get_tag_name() == "elapsedtimesincelastpressed_lessthan") {
       add_(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN, "", it.get_data());
+    } else if (it.get_tag_name() == "elapsedtimesincelastreleased_greaterthan") {
+      add_(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_GREATERTHAN, "", it.get_data());
+    } else if (it.get_tag_name() == "elapsedtimesincelastreleased_lessthan") {
+      add_(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_LESSTHAN, "", it.get_data());
     } else if (it.get_tag_name() == "modifier_not") {
       add_(BRIDGE_FILTERTYPE_MODIFIER_NOT, "", it.get_data());
     } else if (it.get_tag_name() == "modifier_only") {
@@ -58,6 +62,10 @@ void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
       add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT, "", it.get_data());
     } else if (it.get_tag_name() == "lastpressedphysicalkey_only") {
       add_(BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY, "", it.get_data());
+    } else if (it.get_tag_name() == "lastreleasedphysicalkey_not") {
+      add_(BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_NOT, "", it.get_data());
+    } else if (it.get_tag_name() == "lastreleasedphysicalkey_only") {
+      add_(BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY, "", it.get_data());
     } else if (it.get_tag_name() == "pressingphysicalkeys_greaterthan") {
       add_(BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN, "Count::RawValue::", it.get_data());
     } else if (it.get_tag_name() == "pressingphysicalkeys_lessthan") {
@@ -111,8 +119,12 @@ void xml_compiler::filter_vector::add_(uint32_t filter_type,
 
     case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
     case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
+    case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_GREATERTHAN:
+    case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_LESSTHAN:
     case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
-    case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY: {
+    case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
+    case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_NOT:
+    case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY: {
       normalize_identifier_(arg);
       data_.push_back(xml_compiler_utilities::get_datatype(arg));
       ++count;
