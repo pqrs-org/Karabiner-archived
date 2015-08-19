@@ -765,7 +765,7 @@
       </item>
     </item>
     <item>
-      <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC, Eclipse</name>
+      <name>Behavior in Emacs, Terminal, X11, VMware, Parallels, RDC</name>
       <item>
         <name>Force change C-d to Forward Delete</name>
         <item>
@@ -784,12 +784,6 @@
           <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
           <identifier>option.emacsmode_force_controlD_vm</identifier>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
-        </item>
-        <item>
-          <name>In Eclipse</name>
-          <identifier>option.emacsmode_force_controlD_eclipse</identifier>
-          <only>ECLIPSE</only>
           <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
         </item>
       </item>
@@ -813,12 +807,6 @@
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>__KeyToKey__ KeyCode::H, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE</autogen>
         </item>
-        <item>
-          <name>In Eclipse</name>
-          <identifier>option.emacsmode_force_controlH_eclipse</identifier>
-          <only>ECLIPSE</only>
-          <autogen>__KeyToKey__ KeyCode::H, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE</autogen>
-        </item>
       </item>
       <item>
         <name>Force change C-i to Tab</name>
@@ -838,12 +826,6 @@
           <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
           <identifier>option.emacsmode_force_controlI_vm</identifier>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
-        </item>
-        <item>
-          <name>In Eclipse</name>
-          <identifier>option.emacsmode_force_controlI_eclipse</identifier>
-          <only>ECLIPSE</only>
           <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
         </item>
       </item>
@@ -867,12 +849,6 @@
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
         </item>
-        <item>
-          <name>In Eclipse</name>
-          <identifier>option.emacsmode_force_controlM_eclipse</identifier>
-          <only>ECLIPSE</only>
-          <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
-        </item>
       </item>
       <item>
         <name>Force change C-[ to Escape</name>
@@ -894,12 +870,6 @@
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE</autogen>
         </item>
-        <item>
-          <name>In Eclipse</name>
-          <identifier>option.emacsmode_force_controlLeftbracket_eclipse</identifier>
-          <only>ECLIPSE</only>
-          <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::ESCAPE</autogen>
-        </item>
       </item>
       <item>
         <name>Force change C-pnbf to Up/Down/Left/Right</name>
@@ -919,12 +889,6 @@
           <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
           <identifier>option.emacsmode_force_controlPNBF_vm</identifier>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <include path="snippets/emacsmode_controlPNBF.xml" />
-        </item>
-        <item>
-          <name>In Eclipse</name>
-          <identifier>option.emacsmode_force_controlPNBF_eclipse</identifier>
-          <only>ECLIPSE</only>
           <include path="snippets/emacsmode_controlPNBF.xml" />
         </item>
       </item>
@@ -951,12 +915,6 @@
           <name>In VMware Fusion, Parallels Desktop, Remote Desktop Connection</name>
           <identifier>option.emacsmode_force_controlPNBF_ex_vm</identifier>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
-          <include path="snippets/emacsmode_controlPNBF_ex.xml" />
-        </item>
-        <item>
-          <name>In Eclipse</name>
-          <identifier>option.emacsmode_force_controlPNBF_ex_eclipse</identifier>
-          <only>ECLIPSE</only>
           <include path="snippets/emacsmode_controlPNBF_ex.xml" />
         </item>
       </item>
