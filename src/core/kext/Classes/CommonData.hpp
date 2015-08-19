@@ -3,6 +3,7 @@
 
 #include "KeyCode.hpp"
 #include "LastPressedPhysicalKey.hpp"
+#include "LastReleasedPhysicalKey.hpp"
 #include "bridge.h"
 #include <string.h>
 
@@ -37,6 +38,12 @@ public:
   static const LastPressedPhysicalKey& getcurrent_lastpressedphysicalkey(void) {
     return current_lastpressedphysicalkey_;
   }
+  static void setcurrent_lastreleasedphysicalkey(const Params_Base& newval) {
+    current_lastreleasedphysicalkey_.update(newval);
+  }
+  static const LastReleasedPhysicalKey& getcurrent_lastreleasedphysicalkey(void) {
+    return current_lastreleasedphysicalkey_;
+  }
 
   static void clear_statusmessage(int index);
   static void append_statusmessage(int index, const char* message);
@@ -52,6 +59,7 @@ private:
   static WorkspaceUIElementRoleId current_workspaceUIElementRoleId_;
   static Vector_WorkspaceWindowNameId current_workspaceWindowNameIds_;
   static LastPressedPhysicalKey current_lastpressedphysicalkey_;
+  static LastReleasedPhysicalKey current_lastreleasedphysicalkey_;
 
   static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 };
