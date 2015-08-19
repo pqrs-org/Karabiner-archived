@@ -3,6 +3,20 @@
   <item>
     <name>Emacs Mode</name>
     <item>
+      <name>Note:</name>
+      <appendix>Emacs Mode will be disabled in the following apps.</appendix>
+      <appendix></appendix>
+      <appendix>* Emacs</appendix>
+      <appendix>* Remote Desktop</appendix>
+      <appendix>* Terminal</appendix>
+      <appendix>* Vi</appendix>
+      <appendix>* X11</appendix>
+      <appendix></appendix>
+      <appendix>If you want to change these ignored apps, please modify EMACS_MODE_IGNORE_APPS</appendix>
+      <appendix>in private.xml.</appendix>
+      <appendix>(See "Expand prepared settings's capabilities" section in private.xml Reference Manual.)</appendix>
+    </item>
+    <item>
       <name>Control+D to Forward Delete</name>
       <identifier>option.emacsmode_controlD</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
@@ -138,6 +152,33 @@
         ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
         ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
       </modifier_not>
+
+      <block>
+        <only>EXCEL</only>
+        <!-- In editing cell, we should send home/end. -->
+        <!-- But in search field, we should send command-left, right. -->
+        <!-- So, we send home/end if control-a,control-e twice. -->
+
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::A</lastpressedphysicalkey_only>
+          <lastreleasedphysicalkey_only>KeyCode::A</lastreleasedphysicalkey_only>
+          <autogen>
+            __KeyToKey__
+            KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+            KeyCode::HOME,
+          </autogen>
+        </block>
+        <block>
+          <lastpressedphysicalkey_only>KeyCode::E</lastpressedphysicalkey_only>
+          <lastreleasedphysicalkey_only>KeyCode::E</lastreleasedphysicalkey_only>
+          <autogen>
+            __KeyToKey__
+            KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+            KeyCode::END,
+          </autogen>
+        </block>
+      </block>
+
       <autogen>
         __KeyToKey__
         KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
