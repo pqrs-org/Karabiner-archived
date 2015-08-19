@@ -231,6 +231,13 @@
 }
 
 - (void)outputKeyEvent:(NSEvent*)event eventType:(NSString*)eventType {
+  // An invalid event will be sent when we press command-tab and switch the current app to EventViewer.
+  // (keyMod and keyCode == 0).
+  // So, we ignore it.
+  if ([eventType isEqualToString:@"keyMod"] && [event keyCode] == 0) {
+    return;
+  }
+
   NSString* keyCodeName = [[client_ proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
   // Show `characters` at last because `characters` might be newline. (== newline truncates message.)
   NSString* misc = [NSString stringWithFormat:@"%@\tcharacters:%@",
