@@ -31,6 +31,7 @@
 		34379D4714B7794B0004B0F4 /* ScrollWheelToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */; };
 		3439051316EB83E6006B30D1 /* VK_PARTIAL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */; };
 		3439051416EB83E6006B30D1 /* VK_PARTIAL.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */; };
+		343C33D31B84241D00DE7892 /* LastReleasedPhysicalKeyFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343C33D21B84241D00DE7892 /* LastReleasedPhysicalKeyFilter.hpp */; };
 		343CB4EB1A19F0AA009EC95F /* KeyDownUpToKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 343CB4E91A19F0AA009EC95F /* KeyDownUpToKey.cpp */; };
 		343CB4EC1A19F0AA009EC95F /* KeyDownUpToKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 343CB4EA1A19F0AA009EC95F /* KeyDownUpToKey.hpp */; };
 		3442A85219B07F11007FD563 /* RemapFilterFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */; };
@@ -150,6 +151,9 @@
 		34C1D62D1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C1D62C1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp */; };
 		34C7A9A20CE45EA400C98397 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C7A9A10CE45EA400C98397 /* Config.cpp */; };
 		34C7A9B00CE4605B00C98397 /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C7A9AF0CE4605B00C98397 /* Config.hpp */; };
+		34C879011B83562600FF759A /* LastReleasedPhysicalKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C878FF1B83562600FF759A /* LastReleasedPhysicalKey.cpp */; };
+		34C879021B83562600FF759A /* LastReleasedPhysicalKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C879001B83562600FF759A /* LastReleasedPhysicalKey.hpp */; };
+		34C879041B83563500FF759A /* ElapsedTimeSinceLastReleasedFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C879031B83563500FF759A /* ElapsedTimeSinceLastReleasedFilter.hpp */; };
 		34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */; };
 		34C8E8D311DEEC0400E2FE41 /* PointingRelativeToScroll.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */; };
 		34CAB8561261195200C3FFCB /* ConfigFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34CAB8531261195200C3FFCB /* ConfigFilter.hpp */; };
@@ -195,6 +199,7 @@
 		34379D4514B7794B0004B0F4 /* ScrollWheelToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToKey.hpp; path = RemapFunc/ScrollWheelToKey.hpp; sourceTree = "<group>"; };
 		3439051116EB83E6006B30D1 /* VK_PARTIAL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_PARTIAL.cpp; path = VirtualKey/VK_PARTIAL.cpp; sourceTree = "<group>"; };
 		3439051216EB83E6006B30D1 /* VK_PARTIAL.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_PARTIAL.hpp; path = VirtualKey/VK_PARTIAL.hpp; sourceTree = "<group>"; };
+		343C33D21B84241D00DE7892 /* LastReleasedPhysicalKeyFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LastReleasedPhysicalKeyFilter.hpp; path = RemapFilter/LastReleasedPhysicalKeyFilter.hpp; sourceTree = "<group>"; };
 		343CB4E91A19F0AA009EC95F /* KeyDownUpToKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KeyDownUpToKey.cpp; path = RemapFunc/KeyDownUpToKey.cpp; sourceTree = "<group>"; };
 		343CB4EA1A19F0AA009EC95F /* KeyDownUpToKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = KeyDownUpToKey.hpp; path = RemapFunc/KeyDownUpToKey.hpp; sourceTree = "<group>"; };
 		3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RemapFilterFactory.hpp; path = RemapFilter/RemapFilterFactory.hpp; sourceTree = "<group>"; };
@@ -314,6 +319,9 @@
 		34C1D62C1B439F9300A27863 /* CancelEventOutputQueueItemsHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CancelEventOutputQueueItemsHelper.hpp; path = RemapFunc/common/CancelEventOutputQueueItemsHelper.hpp; sourceTree = "<group>"; };
 		34C7A9A10CE45EA400C98397 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
 		34C7A9AF0CE4605B00C98397 /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		34C878FF1B83562600FF759A /* LastReleasedPhysicalKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LastReleasedPhysicalKey.cpp; path = Classes/LastReleasedPhysicalKey.cpp; sourceTree = "<group>"; };
+		34C879001B83562600FF759A /* LastReleasedPhysicalKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LastReleasedPhysicalKey.hpp; path = Classes/LastReleasedPhysicalKey.hpp; sourceTree = "<group>"; };
+		34C879031B83563500FF759A /* ElapsedTimeSinceLastReleasedFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ElapsedTimeSinceLastReleasedFilter.hpp; path = RemapFilter/ElapsedTimeSinceLastReleasedFilter.hpp; sourceTree = "<group>"; };
 		34C8E8D011DEEC0400E2FE41 /* PointingRelativeToScroll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointingRelativeToScroll.cpp; path = RemapFunc/PointingRelativeToScroll.cpp; sourceTree = "<group>"; };
 		34C8E8D111DEEC0400E2FE41 /* PointingRelativeToScroll.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PointingRelativeToScroll.hpp; path = RemapFunc/PointingRelativeToScroll.hpp; sourceTree = "<group>"; };
 		34CAB8531261195200C3FFCB /* ConfigFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ConfigFilter.hpp; path = RemapFilter/ConfigFilter.hpp; sourceTree = "<group>"; };
@@ -493,6 +501,8 @@
 				34779AE918FF881500820FCB /* KeyCodeModifierFlagPairs.hpp */,
 				34779341185B1FA800B3EF06 /* LastPressedPhysicalKey.cpp */,
 				34779342185B1FA800B3EF06 /* LastPressedPhysicalKey.hpp */,
+				34C878FF1B83562600FF759A /* LastReleasedPhysicalKey.cpp */,
+				34C879001B83562600FF759A /* LastReleasedPhysicalKey.hpp */,
 				34779343185B1FA800B3EF06 /* List.cpp */,
 				34779344185B1FA800B3EF06 /* List.hpp */,
 				34779345185B1FA800B3EF06 /* ListHookedConsumer.cpp */,
@@ -565,8 +575,10 @@
 				34CAB8531261195200C3FFCB /* ConfigFilter.hpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
 				346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */,
+				34C879031B83563500FF759A /* ElapsedTimeSinceLastReleasedFilter.hpp */,
 				34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */,
 				3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */,
+				343C33D21B84241D00DE7892 /* LastReleasedPhysicalKeyFilter.hpp */,
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				34A7DABA1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
@@ -590,6 +602,7 @@
 				34779364185B1FA800B3EF06 /* FlagStatus.hpp in Headers */,
 				34EE5C54192CDEAA00D73DDE /* WindowNameFilter.hpp in Headers */,
 				34779AEA18FF881500820FCB /* KeyCodeModifierFlagPairs.hpp in Headers */,
+				343C33D31B84241D00DE7892 /* LastReleasedPhysicalKeyFilter.hpp in Headers */,
 				34BE702D1AB559050028EE50 /* WeakPointer.hpp in Headers */,
 				345004AE0E7CE48F0075324B /* Core.hpp in Headers */,
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
@@ -603,8 +616,10 @@
 				34A7883110CBD79100DF72FD /* KeyCode.hpp in Headers */,
 				3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */,
 				3477E3BC11CFAC9D00DC05C9 /* RemapClass.hpp in Headers */,
+				34C879021B83562600FF759A /* LastReleasedPhysicalKey.hpp in Headers */,
 				34779384185B236C00B3EF06 /* FromEvent.hpp in Headers */,
 				345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */,
+				34C879041B83563500FF759A /* ElapsedTimeSinceLastReleasedFilter.hpp in Headers */,
 				34D347E711D8106C00D70815 /* KeyToKey.hpp in Headers */,
 				34340FB3185CA89800D72086 /* Types.hpp in Headers */,
 				3443E81211D8536B00BB28FB /* DoublePressModifier.hpp in Headers */,
@@ -706,7 +721,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0640;
 			};
 			buildConfigurationList = 1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "Karabiner" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -768,6 +783,7 @@
 				341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */,
 				34AC5ED111DA3BD60089BC58 /* KeyOverlaidModifier.cpp in Sources */,
 				34779361185B1FA800B3EF06 /* EventWatcher.cpp in Sources */,
+				34C879011B83562600FF759A /* LastReleasedPhysicalKey.cpp in Sources */,
 				34E04BFD11DD878D001AE230 /* SimultaneousKeyPresses.cpp in Sources */,
 				34C8E8D211DEEC0400E2FE41 /* PointingRelativeToScroll.cpp in Sources */,
 				34779368185B1FA800B3EF06 /* IntervalChecker.cpp in Sources */,
