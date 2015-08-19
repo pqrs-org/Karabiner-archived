@@ -6,9 +6,11 @@
 #include "ConfigFilter.hpp"
 #include "DeviceFilter.hpp"
 #include "ElapsedTimeSinceLastPressedFilter.hpp"
+#include "ElapsedTimeSinceLastReleasedFilter.hpp"
 #include "IOLogWrapper.hpp"
 #include "InputSourceFilter.hpp"
 #include "LastPressedPhysicalKeyFilter.hpp"
+#include "LastReleasedPhysicalKeyFilter.hpp"
 #include "ModifierFilter.hpp"
 #include "PressingPhysicalKeysFilter.hpp"
 #include "UIElementRoleFilter.hpp"
@@ -49,6 +51,10 @@ public:
     case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:
       return new ElapsedTimeSinceLastPressedFilter(type, vec, length);
 
+    case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_GREATERTHAN:
+    case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTRELEASED_LESSTHAN:
+      return new ElapsedTimeSinceLastReleasedFilter(type, vec, length);
+
     case BRIDGE_FILTERTYPE_INPUTSOURCE_NOT:
     case BRIDGE_FILTERTYPE_INPUTSOURCE_ONLY:
       return new InputSourceFilter(type, vec, length);
@@ -56,6 +62,10 @@ public:
     case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
     case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
       return new LastPressedPhysicalKeyFilter(type, vec, length);
+
+    case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_NOT:
+    case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY:
+      return new LastReleasedPhysicalKeyFilter(type, vec, length);
 
     case BRIDGE_FILTERTYPE_MODIFIER_NOT:
     case BRIDGE_FILTERTYPE_MODIFIER_ONLY:
