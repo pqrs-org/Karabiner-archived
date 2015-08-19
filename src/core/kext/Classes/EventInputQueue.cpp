@@ -669,6 +669,7 @@ void EventInputQueue::doFire(void) {
   }
 
   CommonData::setcurrent_lastpressedphysicalkey(p->getParamsBase());
+  CommonData::setcurrent_lastreleasedphysicalkey(p->getParamsBase());
 
   queue_.pop_front();
 }
