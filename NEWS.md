@@ -3,6 +3,12 @@ Since 10.7.0
 
 * AXNotifier supported new Alfred (Alfred 2.7.2).
 * Prepared settings have been updated.
+* Updates for people who add new settings by oneself:
+  * The following filters have been added.
+    * `<lastreleasedphysicalkey_only>`
+    * `<lastreleasedphysicalkey_not>`
+    * `<elapsedtimesincelastreleased_greaterthan>`
+    * `<elapsedtimesincelastreleased_lessthan>`
 
 Version 10.7.0
 --------------
