@@ -350,6 +350,11 @@
       <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::PAGEDOWN</autogen>
     </item>
     <item>
+      <name>Option_R to Return</name>
+      <identifier>remap.right_option_to_return</identifier>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::RETURN</autogen>
+    </item>
+    <item>
       <name>Option_R to Command_L+Right-Arrow (except virtual machine, RDC)</name>
       <identifier>remap.optionR2commandLrightarrow</identifier>
       <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
