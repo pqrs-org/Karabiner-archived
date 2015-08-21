@@ -65,6 +65,7 @@ void VirtualKey::VK_MOUSEKEY::reset(void) {
   move_left_ = false;
   move_right_ = false;
   move_up_ = false;
+
   scale_ = 1;
   scrollmode_ = false;
   highspeed_ = false;
