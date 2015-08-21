@@ -404,26 +404,26 @@ Use the first two settings below.</string>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <button verticalHuggingPriority="750" id="aHD-Jz-eLA">
-                                            <rect key="frame" x="17" y="16" width="82" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="smallSquare" title="Open All" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSe-mc-SWg">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="expand:" target="1167" id="Igu-Dy-DbL"/>
-                                            </connections>
-                                        </button>
                                         <button verticalHuggingPriority="750" id="oab-4R-uNc">
-                                            <rect key="frame" x="107" y="16" width="82" height="20"/>
+                                            <rect key="frame" x="119" y="16" width="100" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="smallSquare" title="Close All" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jms-ut-J0m">
+                                            <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jms-ut-J0m">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="collapse:" target="1167" id="20y-VJ-fwq"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="aHD-Jz-eLA">
+                                            <rect key="frame" x="17" y="16" width="94" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSe-mc-SWg">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="expand:" target="1167" id="Igu-Dy-DbL"/>
                                             </connections>
                                         </button>
                                     </subviews>
