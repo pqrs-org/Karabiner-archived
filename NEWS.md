@@ -2,6 +2,8 @@ Since 10.7.0
 ------------
 
 * AXNotifier supported new Alfred (Alfred 2.7.2).
+* Fixed issues:
+  * multi touch extension stops working after wake up.
 * Prepared settings have been updated.
 * Updates for people who add new settings by oneself:
   * The following filters have been added.
