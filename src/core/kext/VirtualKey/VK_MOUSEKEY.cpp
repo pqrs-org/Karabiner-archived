@@ -6,8 +6,10 @@
 #include "VK_MOUSEKEY.hpp"
 
 namespace org_pqrs_Karabiner {
-int VirtualKey::VK_MOUSEKEY::dx_;
-int VirtualKey::VK_MOUSEKEY::dy_;
+bool VirtualKey::VK_MOUSEKEY::move_down_;
+bool VirtualKey::VK_MOUSEKEY::move_left_;
+bool VirtualKey::VK_MOUSEKEY::move_right_;
+bool VirtualKey::VK_MOUSEKEY::move_up_;
 int VirtualKey::VK_MOUSEKEY::scale_;
 bool VirtualKey::VK_MOUSEKEY::scrollmode_;
 bool VirtualKey::VK_MOUSEKEY::highspeed_;
@@ -22,8 +24,11 @@ PhysicalEventType VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::physicalEventTyp
 TimerWrapper VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::fire_timer_;
 
 void VirtualKey::VK_MOUSEKEY::initialize(IOWorkLoop& workloop) {
-  dx_ = 0;
-  dy_ = 0;
+  move_down_ = false;
+  move_left_ = false;
+  move_right_ = false;
+  move_up_ = false;
+
   scale_ = 1;
   scrollmode_ = false;
   highspeed_ = false;
@@ -56,8 +61,10 @@ void VirtualKey::VK_MOUSEKEY::FixedDistanceScroll::terminate(void) {
 }
 
 void VirtualKey::VK_MOUSEKEY::reset(void) {
-  dx_ = 0;
-  dy_ = 0;
+  move_down_ = false;
+  move_left_ = false;
+  move_right_ = false;
+  move_up_ = false;
   scale_ = 1;
   scrollmode_ = false;
   highspeed_ = false;
@@ -260,109 +267,81 @@ bool VirtualKey::VK_MOUSEKEY::handle_button(const Params_KeyboardEventCallBack& 
 bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
   /*  */ if (params.key == KeyCode::VK_MOUSEKEY_UP) {
     if (params.repeat) return true;
+    move_up_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      --dy_;
       scrollmode_ = false;
-    } else {
-      ++dy_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_DOWN) {
     if (params.repeat) return true;
+    move_down_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      ++dy_;
       scrollmode_ = false;
-    } else {
-      --dy_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_LEFT) {
     if (params.repeat) return true;
+    move_left_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      --dx_;
       scrollmode_ = false;
-    } else {
-      ++dx_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_RIGHT) {
     if (params.repeat) return true;
+    move_right_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      ++dx_;
       scrollmode_ = false;
-    } else {
-      --dx_;
     }
 
   } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_NE) {
     if (params.repeat) return true;
+    move_up_ = params.ex_iskeydown;
+    move_right_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      ++dx_;
-      --dy_;
       scrollmode_ = false;
-    } else {
-      --dx_;
-      ++dy_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_NW) {
     if (params.repeat) return true;
+    move_up_ = params.ex_iskeydown;
+    move_left_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      --dx_;
-      --dy_;
       scrollmode_ = false;
-    } else {
-      ++dx_;
-      ++dy_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_SE) {
     if (params.repeat) return true;
+    move_down_ = params.ex_iskeydown;
+    move_right_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      ++dx_;
-      ++dy_;
       scrollmode_ = false;
-    } else {
-      --dx_;
-      --dy_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_DIAGONAL_SW) {
     if (params.repeat) return true;
+    move_down_ = params.ex_iskeydown;
+    move_left_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      --dx_;
-      ++dy_;
       scrollmode_ = false;
-    } else {
-      ++dx_;
-      --dy_;
     }
 
   } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_UP) {
     if (params.repeat) return true;
+    move_up_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      --dy_;
       scrollmode_ = true;
-    } else {
-      ++dy_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_DOWN) {
     if (params.repeat) return true;
+    move_down_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      ++dy_;
       scrollmode_ = true;
-    } else {
-      --dy_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_LEFT) {
     if (params.repeat) return true;
+    move_left_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      --dx_;
       scrollmode_ = true;
-    } else {
-      ++dx_;
     }
   } else if (params.key == KeyCode::VK_MOUSEKEY_SCROLL_RIGHT) {
     if (params.repeat) return true;
+    move_right_ = params.ex_iskeydown;
     if (params.ex_iskeydown) {
-      ++dx_;
       scrollmode_ = true;
-    } else {
-      --dx_;
     }
 
   } else if (params.key == KeyCode::VK_MOUSEKEY_HIGHSPEED) {
@@ -373,15 +352,9 @@ bool VirtualKey::VK_MOUSEKEY::handle_move(const Params_KeyboardEventCallBack& pa
     return false;
   }
 
-  // normalize dx_,dy_.
-  if (dx_ > 0) dx_ = 1;
-  if (dx_ < 0) dx_ = -1;
-  if (dy_ > 0) dy_ = 1;
-  if (dy_ < 0) dy_ = -1;
-
   currentAutogenId_ = autogenId;
 
-  if (dx_ != 0 || dy_ != 0) {
+  if (calculate_dx() != 0 || calculate_dy() != 0) {
     if (scrollmode_) {
       fire_timer_.setTimeoutMS(Config::get_mousekey_initial_wait_of_scroll());
     } else {
@@ -497,14 +470,14 @@ void VirtualKey::VK_MOUSEKEY::fire_timer_callback(OSObject* notuse_owner, IOTime
     int s = scale_;
     if (highspeed_) s = Config::get_mousekey_high_speed_of_pointer();
 
-    EventOutputQueue::FireRelativePointer::fire(currentAutogenId_, lastPhysicalEventType_, ButtonStatus::makeButtons(), dx_ * s, dy_ * s);
+    EventOutputQueue::FireRelativePointer::fire(currentAutogenId_, lastPhysicalEventType_, ButtonStatus::makeButtons(), calculate_dx() * s, calculate_dy() * s);
 
   } else {
     int s = scale_;
     if (highspeed_) s = Config::get_mousekey_high_speed_of_scroll();
 
-    int delta1 = dy_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
-    int delta2 = dx_ * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+    int delta1 = calculate_dy() * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
+    int delta2 = calculate_dx() * s * EventOutputQueue::FireScrollWheel::DELTA_SCALE;
 
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_mouse_key_scroll_not_natural_direction)) {
       delta1 = -delta1;

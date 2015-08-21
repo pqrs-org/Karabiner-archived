@@ -55,8 +55,16 @@ private:
   static PointingButton getPointingButton(KeyCode keycode);
   static PointingButton getPointingButtonFromLockKey(KeyCode keycode);
 
-  static int dx_;
-  static int dy_;
+  // Manage each direction separately.
+  // If we use counter like ++move_x_, --move_y_, move_x_ will not be reset accidentally even if we release all physical keys.
+  // (When physical key release does not send key up event by hardware issue, the accident happen.)
+  static int calculate_dx(void) { return (move_right_ ? 1 : 0) + (move_left_ ? -1 : 0); }
+  static int calculate_dy(void) { return (move_down_ ? 1 : 0) + (move_up_ ? -1 : 0); }
+  static bool move_down_;
+  static bool move_left_;
+  static bool move_right_;
+  static bool move_up_;
+
   static int scale_;
   static bool highspeed_;
   static bool scrollmode_;
