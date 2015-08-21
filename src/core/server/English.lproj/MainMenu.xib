@@ -188,17 +188,6 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
                                         </scrollView>
-                                        <button verticalHuggingPriority="750" id="1371">
-                                            <rect key="frame" x="17" y="33" width="94" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1372">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="expand:" target="710" id="1373"/>
-                                            </connections>
-                                        </button>
                                         <button verticalHuggingPriority="750" id="665">
                                             <rect key="frame" x="483" y="527" width="129" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -230,6 +219,28 @@
                                                 <action selector="openPrivateXMLUsageURL:" target="1181" id="ZB2-ib-ytq"/>
                                             </connections>
                                         </button>
+                                        <button verticalHuggingPriority="750" id="1371">
+                                            <rect key="frame" x="17" y="33" width="123" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1372">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="expand:" target="710" id="1373"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="1374">
+                                            <rect key="frame" x="148" y="33" width="122" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1375">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="collapse:" target="710" id="1377"/>
+                                            </connections>
+                                        </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="kpZ-u8-Qe2">
                                             <rect key="frame" x="17" y="28" width="362" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -237,15 +248,26 @@
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <button verticalHuggingPriority="750" id="1374">
-                                            <rect key="frame" x="119" y="33" width="100" height="20"/>
+                                        <button verticalHuggingPriority="750" id="Ywu-Nf-CWd">
+                                            <rect key="frame" x="148" y="6" width="164" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1375">
+                                            <buttonCell key="cell" type="smallSquare" title="Quit Karabiner completely" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DgO-pY-cfu">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="collapse:" target="710" id="1377"/>
+                                                <action selector="quit:" target="494" id="s9a-eC-ecA"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="nbh-hC-aUy">
+                                            <rect key="frame" x="17" y="6" width="123" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="smallSquare" title="Close this window" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftj-ib-Ila">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="performClose:" target="628" id="9ha-vK-3dP"/>
                                             </connections>
                                         </button>
                                         <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="PPX-iV-3at">
@@ -255,17 +277,6 @@
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <button verticalHuggingPriority="750" id="Ywu-Nf-CWd">
-                                            <rect key="frame" x="17" y="6" width="103" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="smallSquare" title="Quit Karabiner" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DgO-pY-cfu">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="quit:" target="494" id="s9a-eC-ecA"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -404,26 +415,26 @@ Use the first two settings below.</string>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <button verticalHuggingPriority="750" id="oab-4R-uNc">
-                                            <rect key="frame" x="119" y="16" width="100" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jms-ut-J0m">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="collapse:" target="1167" id="20y-VJ-fwq"/>
-                                            </connections>
-                                        </button>
                                         <button verticalHuggingPriority="750" id="aHD-Jz-eLA">
-                                            <rect key="frame" x="17" y="16" width="94" height="20"/>
+                                            <rect key="frame" x="17" y="16" width="116" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSe-mc-SWg">
+                                            <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSe-mc-SWg">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="expand:" target="1167" id="Igu-Dy-DbL"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="oab-4R-uNc">
+                                            <rect key="frame" x="141" y="16" width="122" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jms-ut-J0m">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="collapse:" target="1167" id="20y-VJ-fwq"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1322,6 +1333,7 @@ You need to enable AXNotifier if you want to use following settings:
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>
         <image name="NSInfo" width="32" height="32"/>
+        <image name="NSPathTemplate" width="16" height="10"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
