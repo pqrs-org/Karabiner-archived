@@ -5,6 +5,7 @@ Since 10.7.0
 * Fixed issues:
   * multi-touch extension stops working after wake up.
 * Prepared settings have been updated.
+* `__PassThrough__` behavior has been improved.
 * Updates for people who add new settings by oneself:
   * The following filters have been added.
     * `<lastreleasedphysicalkey_only>`
