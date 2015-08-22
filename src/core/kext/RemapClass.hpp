@@ -35,10 +35,6 @@ public:
     bool active(void) const { return active_; }
 
     bool isPassThroughEnabled(void) const;
-    bool isIgnorePassThrough(void) const {
-      if (!processor_) return false;
-      return processor_->getIgnorePassThrough();
-    }
 
   private:
     bool isblocked(void) const;
@@ -46,6 +42,11 @@ public:
 
     Item(const Item& rhs);            // Prevent copy-construction
     Item& operator=(const Item& rhs); // Prevent assignment
+
+    bool isIgnorePassThrough(void) const {
+      if (!processor_) return false;
+      return processor_->getIgnorePassThrough();
+    }
 
     const RemapClass& parent_;
 
