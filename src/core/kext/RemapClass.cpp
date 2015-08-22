@@ -161,8 +161,8 @@ bool RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown, bool passThr
 }
 
 void RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled) {
-  if (passThroughEnabled && !isIgnorePassThrough()) return;
   if (!processor_) return;
+  if (passThroughEnabled && !isIgnorePassThrough()) return;
   if (isblocked()) return;
   if (!parent_.enabled()) return;
 
@@ -170,8 +170,8 @@ void RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType, bool pa
 }
 
 void RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled) {
-  if (passThroughEnabled && !isIgnorePassThrough()) return;
   if (!processor_) return;
+  if (passThroughEnabled && !isIgnorePassThrough()) return;
   if (isblocked()) return;
   if (!parent_.enabled()) return;
 
