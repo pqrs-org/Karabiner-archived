@@ -30,7 +30,7 @@ public:
     //
     void remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled);
     //
-    void remap_forcenumlockon(ListHookedKeyboard::Item* item);
+    void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
 
     bool active(void) const { return active_; }
 

@@ -165,7 +165,8 @@ void RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType, bool pa
   processor_->remapSetKeyboardType(keyboardType);
 }
 
-void RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item) {
+void RemapClass::Item::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled) {
+  if (passThroughEnabled && !isIgnorePassThrough()) return;
   if (!processor_) return;
   if (isblocked()) return;
   if (!parent_.enabled()) return;
@@ -371,9 +372,7 @@ void RemapClass::remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passT
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
-      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
-
-      p->remap_forcenumlockon(item);
+      p->remap_forcenumlockon(item, passThroughEnabled);
     }
   }
 }
