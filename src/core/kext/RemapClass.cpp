@@ -113,12 +113,13 @@ void RemapClass::Item::cancelEventOutputQueueItems(void) {
   }
 }
 
-bool RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase) {
+bool RemapClass::Item::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled) {
   if (!processor_) return false;
 
   // BlockUntilKeyUp does not use Flags.
   // So, we do not need to use "active_" flag.
 
+  if (passThroughEnabled && !isIgnorePassThrough()) return false;
   if (!parent_.enabled()) return false;
   if (isblocked()) return false;
 
@@ -394,9 +395,7 @@ bool RemapClass::isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, 
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
-      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
-
-      if (p->isTargetEventForBlockUntilKeyUp(paramsBase)) {
+      if (p->isTargetEventForBlockUntilKeyUp(paramsBase, passThroughEnabled)) {
         isTargetEvent = true;
       }
     }

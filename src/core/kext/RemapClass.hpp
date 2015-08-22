@@ -24,7 +24,7 @@ public:
     // for DropAllKeys, DropKeyAfterRemap
     void cancelEventOutputQueueItems(void);
     // for BlockUntilKeyUp
-    bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase);
+    bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
     //
     bool remap_SimultaneousKeyPresses(bool iskeydown);
     //
