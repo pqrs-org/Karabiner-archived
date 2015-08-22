@@ -20,7 +20,7 @@ public:
     void append_filter(const uint32_t* vec, size_t length);
 
     // --------------------
-    void remap(RemapParams& remapParams);
+    void remap(RemapParams& remapParams, bool passThroughEnabled);
     // for DropAllKeys, DropKeyAfterRemap
     void cancelEventOutputQueueItems(void);
     // for BlockUntilKeyUp
@@ -28,7 +28,7 @@ public:
     //
     bool remap_SimultaneousKeyPresses(bool iskeydown);
     //
-    void remap_setkeyboardtype(KeyboardType& keyboardType);
+    void remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled);
     //
     void remap_forcenumlockon(ListHookedKeyboard::Item* item);
 

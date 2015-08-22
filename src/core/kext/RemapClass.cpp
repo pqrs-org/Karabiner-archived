@@ -60,7 +60,7 @@ void RemapClass::Item::append_filter(const unsigned int* vec, size_t length) {
   filters_.push_back(newp);
 }
 
-void RemapClass::Item::remap(RemapParams& remapParams) {
+void RemapClass::Item::remap(RemapParams& remapParams, bool passThroughEnabled) {
   if (!processor_) return;
 
   bool iskeydown = false;
@@ -69,6 +69,7 @@ void RemapClass::Item::remap(RemapParams& remapParams) {
   }
 
   if (iskeydown) {
+    if (passThroughEnabled && !isIgnorePassThrough()) return;
     if (!parent_.enabled()) return;
     if (isblocked()) return;
   } else {
@@ -155,7 +156,8 @@ bool RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown) {
   return true;
 }
 
-void RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType) {
+void RemapClass::Item::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled) {
+  if (passThroughEnabled && !isIgnorePassThrough()) return;
   if (!processor_) return;
   if (isblocked()) return;
   if (!parent_.enabled()) return;
@@ -360,9 +362,7 @@ void RemapClass::remap_setkeyboardtype(KeyboardType& keyboardType, bool passThro
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
-      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
-
-      p->remap_setkeyboardtype(keyboardType);
+      p->remap_setkeyboardtype(keyboardType, passThroughEnabled);
     }
   }
 }
@@ -382,11 +382,9 @@ void RemapClass::remap(RemapParams& remapParams, bool passThroughEnabled) {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
-      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
-
       // DependingPressingPeriodKeyToKey watches another key status.
       // Therefore, we need to call 'p->remap(remapParams)' for all items.
-      p->remap(remapParams);
+      p->remap(remapParams, passThroughEnabled);
     }
   }
 }
