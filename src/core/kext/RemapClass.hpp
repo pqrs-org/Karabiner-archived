@@ -26,7 +26,7 @@ public:
     // for BlockUntilKeyUp
     bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
     //
-    bool remap_SimultaneousKeyPresses(bool iskeydown);
+    bool remap_SimultaneousKeyPresses(bool iskeydown, bool passThroughEnabled);
     //
     void remap_setkeyboardtype(KeyboardType& keyboardType, bool passThroughEnabled);
     //
