@@ -22,7 +22,7 @@ public:
     // --------------------
     void remap(RemapParams& remapParams, bool passThroughEnabled);
     // for DropAllKeys, DropKeyAfterRemap
-    void cancelEventOutputQueueItems(void);
+    void cancelEventOutputQueueItems(bool passThroughEnabled);
     // for BlockUntilKeyUp
     bool isTargetEventForBlockUntilKeyUp(const Params_Base& paramsBase, bool passThroughEnabled);
     //

@@ -85,8 +85,10 @@ void RemapClass::Item::remap(RemapParams& remapParams, bool passThroughEnabled) 
   active_ = processor_->isActive(iskeydown);
 }
 
-void RemapClass::Item::cancelEventOutputQueueItems(void) {
+void RemapClass::Item::cancelEventOutputQueueItems(bool passThroughEnabled) {
   if (!processor_) return;
+
+  if (passThroughEnabled && !isIgnorePassThrough()) return;
 
   for (EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(EventOutputQueue::getQueue().safe_front());
        p;
@@ -423,9 +425,7 @@ void RemapClass::cancelEventOutputQueueItems(bool passThroughEnabled) {
   for (size_t i = 0; i < items_.size(); ++i) {
     Item* p = items_[i];
     if (p) {
-      if (passThroughEnabled && !p->isIgnorePassThrough()) continue;
-
-      p->cancelEventOutputQueueItems();
+      p->cancelEventOutputQueueItems(passThroughEnabled);
     }
   }
 }
