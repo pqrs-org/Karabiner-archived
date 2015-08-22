@@ -16,10 +16,10 @@
     width *= 2;
     break;
   case 2: // Large
-    width *= 3;
+    width *= 4;
     break;
   case 3: // Huge
-    width *= 4;
+    width *= 8;
     break;
   default: // Small
     break;
