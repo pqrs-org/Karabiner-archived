@@ -10,5 +10,39 @@
       <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::KEYPAD_DOT</autogen>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, KeyCode::KEYPAD_DOT, ModifierFlag::SHIFT_L</autogen>
     </item>
+    <item>
+      <name>Improve ISO Keyboard Layout</name>
+      	<appendix>( ''' to Pipe, 'Alt-gr +4' to '§' and '' to '\' )</appendix>
+      	<identifier>remap.no_saneuklayout</identifier>
+      	<autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
+      	<autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
+      	<autogen>__KeyToKey__ KeyCode::EQUAL, KeyCode::KEY_7, ModifierFlag::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+      </item>
+    <item>
+      <name>Curly brackets</name>
+      	<name>( 'Alt-gr +7' to '{' and 'Alt-gr +0') to '}' )</name>
+      	<identifier>remap.no_curly_brackets</identifier>
+      	<autogen>__KeyToKey__ KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_8, ModifierFlag::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+      	<autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_9, ModifierFlag::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+     </item>
+    <item>
+      <name>At sign fix</name>
+      	<name>( 'Alt-gr +2' to '@' )</name>
+      	<identifier>remap.no_at_sign</identifier>
+      	<autogen>__KeyToKey__ KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::BACKSLASH</autogen>
+     </item>
+    <item>
+      <name>Star sign fix</name>
+      	<name>( '@' to ''' and 'Shift + ''' to '*' )</name>
+      	<identifier>remap.no_star</identifier>
+      	<autogen>__KeyToKey__ KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L</autogen>
+      	<autogen>__KeyToKey__ KeyCode::BACKSLASH, KeyCode::DANISH_DOLLAR, ModifierFlag::NONE</autogen>
+     </item>
+     <item>
+      <name>Euro sign fix</name>
+      	<name>( 'Alt-gr +e' to '€' )</name>
+      	<identifier>remap.no_euro_sign</identifier>
+      	<autogen>__KeyToKey__ KeyCode::E, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
+     </item>
   </item>
 </root>
