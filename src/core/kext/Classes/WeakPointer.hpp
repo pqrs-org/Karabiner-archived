@@ -86,6 +86,9 @@ namespace org_pqrs_Karabiner {
 
 #define DEFINE_WEAKPOINTER(TYPENAME) \
   List WeakPointerManager_##TYPENAME::list_;
+
+#define DEFINE_WEAKPOINTER_IN_CLASS(CLASS, TYPENAME) \
+  List CLASS::WeakPointerManager_##TYPENAME::list_;
 }
 
 #endif
