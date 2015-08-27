@@ -42,12 +42,13 @@ void EventInputQueue::terminate(void) {
 void EventInputQueue::enqueue_(const Params_Base& paramsBase,
                                bool retainFlagStatusTemporaryCount,
                                const DeviceIdentifier& deviceIdentifier,
+                               const ListHookedDevice::WeakPointer_Item& device,
                                bool push_back,
                                bool isSimultaneousKeyPressesTarget) {
   // Because we handle the key repeat ourself, drop the key repeat.
   if (paramsBase.isRepeat()) return;
 
-  Item* item = new Item(paramsBase, retainFlagStatusTemporaryCount, deviceIdentifier);
+  Item* item = new Item(paramsBase, retainFlagStatusTemporaryCount, deviceIdentifier, device);
   if (item) {
     item->isSimultaneousKeyPressesTarget = isSimultaneousKeyPressesTarget;
     if (push_back) {
@@ -242,9 +243,10 @@ void EventInputQueue::push_KeyboardEventCallback(OSObject* target,
 
   // ------------------------------------------------------------
   bool retainFlagStatusTemporaryCount = false;
+  ListHookedDevice::WeakPointer_Item wp(static_cast<ListHookedDevice::Item*>(item));
   bool push_back = true;
   bool isSimultaneousKeyPressesTarget = true;
-  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), push_back, isSimultaneousKeyPressesTarget);
+  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), wp, push_back, isSimultaneousKeyPressesTarget);
 
   setTimer();
 }
@@ -318,7 +320,8 @@ void EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
 
   // ------------------------------------------------------------
   bool retainFlagStatusTemporaryCount = false;
-  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+  ListHookedDevice::WeakPointer_Item wp(static_cast<ListHookedDevice::Item*>(item));
+  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), wp);
 
   setTimer();
 }
@@ -362,12 +365,14 @@ void EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
     if (justPressed.isOn(btn)) {
       Params_RelativePointerEventCallback params(buttons, 0, 0, btn, true);
       bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-      enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+      ListHookedDevice::WeakPointer_Item wp(static_cast<ListHookedDevice::Item*>(item));
+      enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), wp);
     }
     if (justReleased.isOn(btn)) {
       Params_RelativePointerEventCallback params(buttons, 0, 0, btn, false);
       bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-      enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+      ListHookedDevice::WeakPointer_Item wp(static_cast<ListHookedDevice::Item*>(item));
+      enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), wp);
     }
   }
   // If (dx == 0 && dy == 0), the event is either needless event or just pressing/releasing buttons event.
@@ -376,7 +381,8 @@ void EventInputQueue::push_RelativePointerEventCallback(OSObject* target,
   if (dx != 0 || dy != 0) {
     Params_RelativePointerEventCallback params(buttons, dx, dy, PointingButton::NONE, false);
     bool retainFlagStatusTemporaryCount = true;
-    enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+    ListHookedDevice::WeakPointer_Item wp(static_cast<ListHookedDevice::Item*>(item));
+    enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), wp);
   }
 
   setTimer();
@@ -429,7 +435,8 @@ void EventInputQueue::push_ScrollWheelEventCallback(OSObject* target,
 
   // ------------------------------------------------------------
   bool retainFlagStatusTemporaryCount = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_lazy_modifiers_with_mouse_event);
-  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier());
+  ListHookedDevice::WeakPointer_Item wp(static_cast<ListHookedDevice::Item*>(item));
+  enqueue_(params, retainFlagStatusTemporaryCount, item->getDeviceIdentifier(), wp);
 
   setTimer();
 }
@@ -588,7 +595,9 @@ void EventInputQueue::doFire(void) {
       // Both (1) and (4) fire DOWN event.
 
       if (params->key != KeyCode::CAPSLOCK) {
-        PressingPhysicalKeys::update(p->getParamsBase());
+        if (!(p->deviceWeakPointer).expired()) {
+          p->deviceWeakPointer->updatePressingPhysicalKeys(p->getParamsBase());
+        }
       }
 
       Core::remap_KeyboardEventCallback(p->getParamsBase());
@@ -606,7 +615,9 @@ void EventInputQueue::doFire(void) {
       }
 
       // ------------------------------------------------------------
-      PressingPhysicalKeys::update(p->getParamsBase());
+      if (!(p->deviceWeakPointer).expired()) {
+        p->deviceWeakPointer->updatePressingPhysicalKeys(p->getParamsBase());
+      }
 
       Core::remap_KeyboardSpecialEventCallback(p->getParamsBase());
     }
@@ -647,7 +658,9 @@ void EventInputQueue::doFire(void) {
 
       // ------------------------------------------------------------
       if (params->ex_button != PointingButton::NONE) {
-        PressingPhysicalKeys::update(p->getParamsBase());
+        if (!(p->deviceWeakPointer).expired()) {
+          p->deviceWeakPointer->updatePressingPhysicalKeys(p->getParamsBase());
+        }
       }
 
       Core::remap_RelativePointerEventCallback(p->getParamsBase());

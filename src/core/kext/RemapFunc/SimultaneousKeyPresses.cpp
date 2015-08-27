@@ -137,6 +137,7 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
 
   // backup device information.
   DeviceIdentifier deviceIdentifier(front->deviceIdentifier);
+  ListHookedDevice::WeakPointer_Item device(front->deviceWeakPointer);
 
   // ------------------------------------------------------------
   // fire KeyUp event if needed.
@@ -164,7 +165,7 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
       return RemapSimultaneousKeyPressesResult::QUEUE_CHANGED;
     }
 
-    push_remapped(false, deviceIdentifier);
+    push_remapped(false, deviceIdentifier, device);
     return RemapSimultaneousKeyPressesResult::APPLIED;
   }
 
@@ -257,12 +258,13 @@ scan:
           EventInputQueue::enqueue_((downKeys_[i].item)->getParamsBase(),
                                     retainFlagStatusTemporaryCount,
                                     deviceIdentifier,
+                                    device,
                                     push_back,
                                     isSimultaneousKeyPressesTarget);
         }
         EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
       }
-      push_remapped(true, deviceIdentifier);
+      push_remapped(true, deviceIdentifier, device);
       return RemapSimultaneousKeyPressesResult::APPLIED;
     }
 
@@ -282,7 +284,7 @@ scan:
   return RemapSimultaneousKeyPressesResult::NOT_CHANGED;
 }
 
-void SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier) {
+void SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier, const ListHookedDevice::WeakPointer_Item& device) {
   EventType eventType = isKeyDown ? EventType::DOWN : EventType::UP;
 
   KeyCode key = virtualkey_;
@@ -302,7 +304,7 @@ void SimultaneousKeyPresses::push_remapped(bool isKeyDown, const DeviceIdentifie
   bool retainFlagStatusTemporaryCount = false;
   bool push_back = false;
   bool isSimultaneousKeyPressesTarget = false;
-  EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceIdentifier, push_back, isSimultaneousKeyPressesTarget);
+  EventInputQueue::enqueue_(params, retainFlagStatusTemporaryCount, deviceIdentifier, device, push_back, isSimultaneousKeyPressesTarget);
 }
 
 bool SimultaneousKeyPresses::remap(RemapParams& remapParams) {

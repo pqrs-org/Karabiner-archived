@@ -5,6 +5,7 @@
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
 #include "List.hpp"
+#include "ListHookedDevice.hpp"
 #include "Params.hpp"
 #include "TimerWrapper.hpp"
 
@@ -88,17 +89,19 @@ public:
   // ------------------------------------------------------------
   class Item final : public List::Item {
   public:
-    Item(const Params_Base& p, bool r, const DeviceIdentifier& di) : p_(Params_Factory::copy(p)),
-                                                                     retainFlagStatusTemporaryCount(r),
-                                                                     deviceIdentifier(di),
-                                                                     isSimultaneousKeyPressesTarget(true),
-                                                                     enqueuedFrom(ENQUEUED_FROM_HARDWARE) {
+    Item(const Params_Base& p, bool r, const DeviceIdentifier& di, const ListHookedDevice::WeakPointer_Item& device) : p_(Params_Factory::copy(p)),
+                                                                                                                       retainFlagStatusTemporaryCount(r),
+                                                                                                                       deviceIdentifier(di),
+                                                                                                                       deviceWeakPointer(device),
+                                                                                                                       isSimultaneousKeyPressesTarget(true),
+                                                                                                                       enqueuedFrom(ENQUEUED_FROM_HARDWARE) {
       ic.begin();
     }
 
     Item(const Item& rhs) : p_(Params_Factory::copy(rhs.getParamsBase())),
                             retainFlagStatusTemporaryCount(rhs.retainFlagStatusTemporaryCount),
                             deviceIdentifier(rhs.deviceIdentifier),
+                            deviceWeakPointer(rhs.deviceWeakPointer),
                             ic(rhs.ic),
                             isSimultaneousKeyPressesTarget(rhs.isSimultaneousKeyPressesTarget),
                             enqueuedFrom(rhs.enqueuedFrom) {}
@@ -113,6 +116,7 @@ public:
 
     bool retainFlagStatusTemporaryCount;
     DeviceIdentifier deviceIdentifier;
+    ListHookedDevice::WeakPointer_Item deviceWeakPointer;
 
     IntervalChecker ic;
 
@@ -189,10 +193,10 @@ private:
 
   // ------------------------------------------------------------
   static void enqueue_(const Params_Base& paramsBase,
-                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di, bool push_back, bool isSimultaneousKeyPressesTarget);
+                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di, const ListHookedDevice::WeakPointer_Item& device, bool push_back, bool isSimultaneousKeyPressesTarget);
   static void enqueue_(const Params_Base& paramsBase,
-                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di) {
-    enqueue_(paramsBase, retainFlagStatusTemporaryCount, di, true, true);
+                       bool retainFlagStatusTemporaryCount, const DeviceIdentifier& di, const ListHookedDevice::WeakPointer_Item& device) {
+    enqueue_(paramsBase, retainFlagStatusTemporaryCount, di, device, true, true);
   }
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
   static void doFire(void);

@@ -34,7 +34,7 @@ public:
   void add(AddDataType datatype, AddValue newval) override;
 
 private:
-  void push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier);
+  void push_remapped(bool isKeyDown, const DeviceIdentifier& deviceIdentifier, const ListHookedDevice::WeakPointer_Item& device);
 
   class FromInfo final {
   public:

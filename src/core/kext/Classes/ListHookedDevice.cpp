@@ -7,21 +7,15 @@
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
 #include "Params.hpp"
-#include "PressingPhysicalKeys.hpp"
 #include "TimerWrapper.hpp"
 #include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_Karabiner {
 TimerWrapper ListHookedDevice::refreshInProgressDevices_timer_;
 
-// ======================================================================
-ListHookedDevice::Item::Item(IOHIDevice* d) : device_(d),
-                                              deviceType_(DeviceType::UNKNOWN),
-                                              inProgress_(false) {
-  setDeviceIdentifier();
-  setDeviceType();
-}
+DEFINE_WEAKPOINTER_IN_CLASS(ListHookedDevice, Item);
 
+// ======================================================================
 void ListHookedDevice::Item::setDeviceIdentifier(void) {
   if (!device_) return;
 
@@ -158,20 +152,12 @@ bool ListHookedDevice::Item::isConsumer(const char* name) {
 }
 
 // ======================================================================
-namespace {
-void reset(void) {
-  PressingPhysicalKeys::clear();
-}
-}
-
 bool ListHookedDevice::initialize(void) {
   return true;
 }
 
 void ListHookedDevice::terminate(void) {
   list_.clear();
-
-  reset();
 }
 
 void ListHookedDevice::push_back(ListHookedDevice::Item* newp) {
@@ -179,9 +165,6 @@ void ListHookedDevice::push_back(ListHookedDevice::Item* newp) {
 
   last_ = newp->device_;
   list_.push_back(newp);
-
-  // Call reset whenever the device status is changed.
-  reset();
 
   IOLOG_DEVEL("ListHookedDevice::push_back list_.size = %d\n", static_cast<int>(list_.size()));
 
@@ -194,9 +177,6 @@ void ListHookedDevice::erase(IOHIDevice* p) {
   if (!item) return;
 
   list_.erase_and_delete(item);
-
-  // Call reset whenever the device status is changed.
-  reset();
 
   IOLOG_DEVEL("ListHookedDevice::erase list_.size = %d\n", static_cast<int>(list_.size()));
 
@@ -232,10 +212,7 @@ ListHookedDevice::get_replaced(void) {
 
 void ListHookedDevice::refresh(void) {
   for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
-    if (p->refresh()) {
-      // Call reset whenever the device status is changed.
-      reset();
-    }
+    p->refresh();
   }
 }
 
@@ -247,6 +224,15 @@ bool ListHookedDevice::isInProgress(void) const {
   }
 
   return false;
+}
+
+size_t ListHookedDevice::pressingPhysicalKeysCount(void) const {
+  size_t count = 0;
+  for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    count += (p->pressingPhysicalKeys_).count();
+  }
+
+  return count;
 }
 
 void ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) const {
@@ -318,6 +304,12 @@ void ListHookedDevice::refreshAll(void) {
   ListHookedKeyboard::instance().refresh();
   ListHookedConsumer::instance().refresh();
   ListHookedPointing::instance().refresh();
+}
+
+size_t ListHookedDevice::pressingPhysicalKeysCountAll(void) {
+  return ListHookedKeyboard::instance().pressingPhysicalKeysCount() +
+         ListHookedConsumer::instance().pressingPhysicalKeysCount() +
+         ListHookedPointing::instance().pressingPhysicalKeysCount();
 }
 
 void ListHookedDevice::start_refreshInProgressDevices_timer(void) {

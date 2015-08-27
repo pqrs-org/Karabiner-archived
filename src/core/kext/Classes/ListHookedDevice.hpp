@@ -5,18 +5,32 @@
 
 #include "KeyCode.hpp"
 #include "List.hpp"
+#include "PressingPhysicalKeys.hpp"
+#include "WeakPointer.hpp"
 
 namespace org_pqrs_Karabiner {
 class TimerWrapper;
 
 class ListHookedDevice {
 public:
+  DECLARE_WEAKPOINTER(Item);
+
   class Item : public List::Item {
     friend class ListHookedDevice;
 
   protected:
-    Item(IOHIDevice* d);
-    virtual ~Item(void){};
+    Item(IOHIDevice* d) : device_(d),
+                          deviceType_(DeviceType::UNKNOWN),
+                          inProgress_(false) {
+      setDeviceIdentifier();
+      setDeviceType();
+
+      WeakPointerManager_Item::add(this);
+    }
+
+    virtual ~Item(void) {
+      WeakPointerManager_Item::remove(this);
+    };
 
   public:
     virtual bool isReplaced(void) const = 0;
@@ -26,6 +40,10 @@ public:
     DeviceType::DeviceType getDeviceType(void) const { return deviceType_; }
 
     bool isInternalDevice(void) const { return deviceType_ == DeviceType::APPLE_INTERNAL; }
+
+    void updatePressingPhysicalKeys(const Params_Base& paramsBase) {
+      pressingPhysicalKeys_.update(paramsBase);
+    }
 
   protected:
     IOHIDevice* device_;
@@ -38,6 +56,8 @@ public:
     //
     // We mark such device by inProgress_ flag and run timer until inProgress_ is true.
     bool inProgress_;
+
+    PressingPhysicalKeys pressingPhysicalKeys_;
 
     virtual bool refresh(void) = 0;
 
@@ -55,6 +75,8 @@ public:
   void refresh(void);
   bool isInProgress(void) const;
 
+  size_t pressingPhysicalKeysCount(void) const;
+
   ListHookedDevice::Item* get(const IOHIDevice* device);
   ListHookedDevice::Item* get_replaced(void);
 
@@ -63,6 +85,7 @@ public:
   static void initializeAll(IOWorkLoop& workloop);
   static void terminateAll(void);
   static void refreshAll(void);
+  static size_t pressingPhysicalKeysCountAll(void);
 
   static void start_refreshInProgressDevices_timer(void);
   static void refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender);

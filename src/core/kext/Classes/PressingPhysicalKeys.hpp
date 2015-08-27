@@ -7,12 +7,10 @@
 namespace org_pqrs_Karabiner {
 class PressingPhysicalKeys final {
 public:
-  static void initialize(void);
-  static void terminate(void);
-  static void update(const Params_Base& paramsBase);
-  static void clear(void);
-  static bool empty(void);
-  static size_t count(void);
+  void update(const Params_Base& paramsBase);
+  void clear(void);
+  bool empty(void) const;
+  size_t count(void) const;
 
 private:
   class Item final : public List::Item {
@@ -22,7 +20,7 @@ private:
 
     FromEvent fromEvent;
   };
-  static List list_;
+  List list_;
 };
 }
 

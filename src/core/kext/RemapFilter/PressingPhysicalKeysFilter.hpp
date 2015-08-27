@@ -3,7 +3,7 @@
 
 #include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
-#include "PressingPhysicalKeys.hpp"
+#include "ListHookedDevice.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
@@ -20,7 +20,7 @@ public:
     if (get_type() == BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN ||
         get_type() == BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_LESSTHAN) {
 
-      auto current = PressingPhysicalKeys::count();
+      auto current = ListHookedDevice::pressingPhysicalKeysCountAll();
 
       if (get_type() == BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN) {
         if (count_ >= current) return true;
