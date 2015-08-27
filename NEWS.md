@@ -1,3 +1,8 @@
+Since 10.8.0
+------------
+
+* The external keyboard handling has been improved.
+
 Version 10.8.0
 --------------
 
