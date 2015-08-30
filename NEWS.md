@@ -1,5 +1,10 @@
 # Since 10.8.0
 
+* Incompatibility changes:
+  * The fn keypad has been removed from Implicit behavior. <br />
+    Please use either of the following settings instead if you need.
+    * "Fn+Number to KeyPad"
+    * "Use old style fn keypad"
 * New functions and improvements:
   * The external keyboard handling has been improved.
   * Prepared settings have been updated.
