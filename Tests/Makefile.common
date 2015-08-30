@@ -7,8 +7,7 @@ CXXFLAGS = \
 
 LDFLAGS = \
 	-L../../Pods/build/Release/ \
-    -lPods \
-    -lPods-GoogleTest
+    -lGoogleTest
 
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(patsubst %.cpp,%.o,$(SOURCES))
