@@ -1,12 +1,11 @@
-Since 10.8.0
-------------
+# Since 10.8.0
 
 * New functions and improvements:
   * The external keyboard handling has been improved.
   * Prepared settings have been updated.
 
-Version 10.8.0
---------------
+
+# Version 10.8.0
 
 * New functions and improvements:
   * AXNotifier supported new Alfred (Alfred 2.7.2).
@@ -21,8 +20,8 @@ Version 10.8.0
 * Fixed issues:
   * multi-touch extension might stop working after wake up.
 
-Version 10.7.0
---------------
+
+# Version 10.7.0
 
 * Incompatibility changes:
     * The default mouse keys scroll direction has been changed to `natural`.
@@ -57,16 +56,16 @@ Version 10.7.0
     * Some Java apps might be crash when AXNotifier is enabled. (Eclipse, Screencast-O-Matic, RazorSQL, EditRocket)
     * kext loading issue on OS X 10.11 beta 6 has been fixed.
 
-Version 10.6.0
---------------
+
+# Version 10.6.0
 
 * A following prepared setting has been fixed.
     * General &gt; Disable an internal keyboard while external keyboards are connected.
 * "Sort by name" and "Sort by created" button have been added in Preferences &gt; MenuBar.
 * Prepared settings have been updated.
 
-Version 10.5.0
---------------
+
+# Version 10.5.0
 
 * Fixed issues:
     * Some Java apps might be crash when AXNotifier is enabled. (IntelliJ IDEA, PhpStorm, RubyMine, Android Studio)
@@ -83,13 +82,13 @@ Version 10.5.0
     * \_\_KeyDownUpToKey\_\_ has been added.
     * &lt;include&gt; ignores missing files. (Karabiner does not show an alert dialog when &lt;include&gt; refers missing files.)
 
-Version 10.4.0
---------------
+
+# Version 10.4.0
 
 * A broken prepared setting has been fixed.
 
-Version 10.3.0
---------------
+
+# Version 10.3.0
 
 * Stability at reloading XML has been improved.
 * OS X 10.10 support has been improved.
@@ -105,8 +104,8 @@ Version 10.3.0
         * &lt;modifierstuck_only&gt;
         * &lt;modifierstuck_not&gt;
 
-Version 10.2.0
---------------
+
+# Version 10.2.0
 
 * Fixed issues:
     * Shortcuts (eg. Ctrl-C, Ctrl-V) might not work properly in Microsoft Remote Desktop.
@@ -119,8 +118,8 @@ Version 10.2.0
     * \_\_HoldingKeyToKey\_\_ and \_\_KeyOverlaidModifier\_\_ support Option::KEYTOKEY\_BEFORE\_KEYDOWN and Option::KEYTOKEY\_AFTER\_KEYUP.
     * You can also use \_\_{ }\_\_ as well as @begin, @end.
 
-Version 10.1.0
---------------
+
+# Version 10.1.0
 
 * Fixed issues:
     * The continuous key sequence will be improper order in environments which VMWare Fusion is installed.
@@ -131,8 +130,8 @@ Version 10.1.0
 * Updated prepared settings.
 * Some minor improvements.
 
-Version 10.0.0
---------------
+
+# Version 10.0.0
 
 * KeyRemap4MacBook has been renamed to "Karabiner".
 * AXNotifier has been added. <br />
@@ -198,8 +197,8 @@ Version 10.0.0
         * KeyCode::VK\_JIS\_TEMPORARY_* are removed.<br />
           Please use &lt;inputsource\_filter&gt;, Option::KEYTOKEY\_BEFORE\_KEYDOWN, Option::KEYTOKEY\_AFTER\_KEYUP, KeyCode::JIS\_EISUU and KeyCode::JIS\_KANA instead.
 
-Version 9.3.0
--------------
+
+# Version 9.3.0
 
 * Fixed an issue:
     * "Kernel extension is not loaded" alert might be shown on some machines when automatic login is enabled.
@@ -236,16 +235,16 @@ Version 9.3.0
         &lt;/autogen&gt;
         </pre>
 
-Version 9.2.0
--------------
+
+# Version 9.2.0
 
 * KeyRemap4MacBook no longer requires system restart at installing or upgrading. <br />
   If you need to restart system for some reason, KeyRemap4MacBook will show an alert which urges you to restart.
 * Fixed issues:
     * System might crash when you disconnected a keyboard.
 
-Version 9.0.0
--------------
+
+# Version 9.0.0
 
 * Optimized for OS X 10.9. <br />
   KeyRemap4MacBook 9.0.0 requires OS X 10.9+.
@@ -265,8 +264,7 @@ Version 9.0.0
 * Signed with Developer ID.
 
 
-Version 8.4.0
--------------
+# Version 8.4.0
 
 * Icons have been refined. (Thanks to Kouji TAMURA.)
 * Introduced @begin and @end in private.xml. <br />
@@ -274,23 +272,20 @@ Version 8.4.0
 * Supported shell commands execution with KeyCode::VK\_OPEN\_URL\_*.
 
 
-Version 8.3.0
--------------
+# Version 8.3.0
 
 * Fixed a bug that "Look up" feature of OS X (tap trackpad with three fingers) does not work properly.
 * Some minor improvements.
 
 
-Version 8.2.0
--------------
+# Version 8.2.0
 
 * Fixed a bug that object selection is disabled on Adobe Fireworks.
 * Fixed a bug that "General > Don't remap XXX" does not take effect immediately.
 * Fixed a bug that control-eject shortcut does not work properly on OS X 10.7 and 10.6.
 
 
-Version 8.1.0
--------------
+# Version 8.1.0
 
 * Power button remapping has been supported. (Thanks to Peter Kamb who is the author of PowerKey.)
 * Added "Quit KeyRemap4MacBook" into menu bar.
@@ -310,8 +305,7 @@ Version 8.1.0
 * Some minor improvements.
 
 
-Version 8.0.0
--------------
+# Version 8.0.0
 
 * Changed Preferences location. <br />
   https://pqrs.org/osx/karabiner/document.html
@@ -327,22 +321,19 @@ Version 8.0.0
 * Some minor improvements.
 
 
-Version 7.8.0
--------------
+# Version 7.8.0
 
 * Fixed a bug that private.xml does not work properly if &lt;identifier&gt; contains white space.
 * Fixed a bug that "General &gt; Don't restore modifiers in the mouse event" does not work properly.
 * Some minor improvements.
 
 
-Version 7.7.0
--------------
+# Version 7.7.0
 
 * Fixed a bug introduced in version 7.6.0 that detecting of Input Sources does not work properly in Japanese and some other languages.
 
 
-Version 7.6.0
--------------
+# Version 7.6.0
 
 * Added &lt;replacementdef&gt;. You can replace preset settings behavior by this.
 * Added &lt;include&gt;. You can load xml files in private.xml.
@@ -354,8 +345,7 @@ Version 7.6.0
 * Some minor improvements.
 
 
-Version 7.5.0
--------------
+# Version 7.5.0
 
 * Dynamic ApplicationType,DeviceVendor,DeviceProduct definition feature has been added.
 * Support Growl-1.3 on notifications. <br />
@@ -367,8 +357,7 @@ Version 7.5.0
 * Added about 40 kinds settings to preset.
 
 
-Version 7.4.0
--------------
+# Version 7.4.0
 
 * Some improvements on Mac OS X 10.7 (Lion).
 * Removed "General &gt; Enable CapsLock LED Hack".<br />
@@ -385,8 +374,7 @@ Version 7.4.0
 * Added some settings to preset.
 
 
-Version 7.3.0
--------------
+# Version 7.3.0
 
 * Improved stability when using Sticky Keys in Universal Access.
 * Improved stability when using multi-touch extension together.
@@ -399,16 +387,15 @@ Version 7.3.0
 * Added about 80 kinds settings.
 
 
-version 7.2.0
--------------
+# Version 7.2.0
 
 * Fixed a bug that Growl notification did not work in specific environment.
 * Fixed a bug that the default setting of checkForUpdate was "Nothing".
 * Improved multi-touch extension around sleep/wakeup.
 * Added about 20 kinds settings.
 
-Version 7.1.0
--------------
+
+# Version 7.1.0
 
 * Added setting to be able to use "Logitech Number Pad" which we were not able not use in Mac OS X. <br />
   Activate "Change KeyPad Key &gt; Logitech Number Pad Hack".
