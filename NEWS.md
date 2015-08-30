@@ -1,22 +1,25 @@
 Since 10.8.0
 ------------
 
-* The external keyboard handling has been improved.
+* New functions and improvements:
+  * The external keyboard handling has been improved.
+  * Prepared settings have been updated.
 
 Version 10.8.0
 --------------
 
-* AXNotifier supported new Alfred (Alfred 2.7.2).
+* New functions and improvements:
+  * AXNotifier supported new Alfred (Alfred 2.7.2).
+  * Prepared settings have been updated.
+  * `__PassThrough__` behavior has been improved.
+  * Updates for people who add new settings by oneself:
+    * The following filters have been added.
+      * `<lastreleasedphysicalkey_only>`
+      * `<lastreleasedphysicalkey_not>`
+      * `<elapsedtimesincelastreleased_greaterthan>`
+      * `<elapsedtimesincelastreleased_lessthan>`
 * Fixed issues:
   * multi-touch extension might stop working after wake up.
-* Prepared settings have been updated.
-* `__PassThrough__` behavior has been improved.
-* Updates for people who add new settings by oneself:
-  * The following filters have been added.
-    * `<lastreleasedphysicalkey_only>`
-    * `<lastreleasedphysicalkey_not>`
-    * `<elapsedtimesincelastreleased_greaterthan>`
-    * `<elapsedtimesincelastreleased_lessthan>`
 
 Version 10.7.0
 --------------
