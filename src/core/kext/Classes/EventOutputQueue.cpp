@@ -226,12 +226,18 @@ void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, PhysicalEventTyp
   // When Option_L+Shift_L has a meaning (switch input language at Windows),
   // it does not works well when the last is KeyUp of Command.
 
+  // ModifierFlag::NUMPAD handling.
+  // (We need to remove ModifierFlag::NUMPAD at first in order to strip NUMPAD flag from normal modifier key events.)
+  if (! toFlags.isOn(ModifierFlag::NUMPAD)) {
+    lastFlags_.remove(ModifierFlag::NUMPAD);
+  }
+
   // ------------------------------------------------------------
   // KeyUp
   for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
     ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
 
-    // Skipping ModifierFlag::NUMPAD
+    // Skipping invalid flags
     if (flag.getKeyCode() == KeyCode::VK_NONE) continue;
     // Skipping virtual modifiers.
     if (flag.getRawBits() == 0) continue;
@@ -250,7 +256,7 @@ void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, PhysicalEventTyp
   for (size_t i = 0; i < FlagStatus::globalFlagStatus().itemSize(); ++i) {
     ModifierFlag flag = FlagStatus::globalFlagStatus().getFlag(i);
 
-    // Skipping ModifierFlag::NUMPAD
+    // Skipping invalid flags
     if (flag.getKeyCode() == KeyCode::VK_NONE) continue;
     // Skipping virtual modifiers.
     if (flag.getRawBits() == 0) continue;
@@ -263,6 +269,12 @@ void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, PhysicalEventTyp
 
     Params_KeyboardEventCallBack params(EventType::MODIFY, lastFlags_, flag.getKeyCode(), keyboardType, false);
     EventOutputQueue::push(params, autogenId);
+  }
+
+  // ModifierFlag::NUMPAD handling.
+  // (We need to add ModifierFlag::NUMPAD at last in order to strip NUMPAD flag from normal modifier key events.)
+  if (toFlags.isOn(ModifierFlag::NUMPAD)) {
+    lastFlags_.add(ModifierFlag::NUMPAD);
   }
 }
 
