@@ -781,6 +781,15 @@
       </block>
     </item>
     <item>
+      <name>Use PC Style Lock Screen (Lock screen by command-L)</name>
+      <identifier>remap.pc_style_lock_screen</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+        ConsumerKeyCode::POWER, ModifierFlag::CONTROL_L, ModifierFlag::SHIFT_L,
+      </autogen>
+    </item>
+    <item>
       <name>Simulate Windows Copy Paste keys.</name>
       <appendix>(Change Command+Fn to Command+C)</appendix>
       <appendix>(Change Shift+Fn to Command+V)</appendix>
