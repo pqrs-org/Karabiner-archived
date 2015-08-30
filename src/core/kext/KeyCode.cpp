@@ -33,23 +33,6 @@ bool KeyCode::FNKeyHack::remap(KeyCode& key, Flags flags, EventType eventType, b
 
 namespace {
 KeyCode::FNKeyHack fnkeyhack[] = {
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_0, KeyCode::M),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_1, KeyCode::J),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_2, KeyCode::K),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_3, KeyCode::L),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_4, KeyCode::U),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_5, KeyCode::I),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_6, KeyCode::O),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_7, KeyCode::KEY_7),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_8, KeyCode::KEY_8),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_9, KeyCode::KEY_9),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_PLUS, KeyCode::SLASH),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_MINUS, KeyCode::SEMICOLON),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_MULTIPLY, KeyCode::P),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_SLASH, KeyCode::KEY_0),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_EQUAL, KeyCode::MINUS),
-    KeyCode::FNKeyHack(KeyCode::KEYPAD_DOT, KeyCode::DOT),
     KeyCode::FNKeyHack(KeyCode::PAGEUP, KeyCode::CURSOR_UP),
     KeyCode::FNKeyHack(KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN),
     KeyCode::FNKeyHack(KeyCode::HOME, KeyCode::CURSOR_LEFT),
@@ -63,34 +46,14 @@ void KeyCode::normalizeKey(KeyCode& key, Flags& flags, EventType eventType, Keyb
   // We can drop NUMPAD flags, because we'll set these flags at reverseNormalizeKey.
   flags.stripNUMPAD();
 
-  if (keyboardType == KeyboardType::POWERBOOK ||
-      keyboardType == KeyboardType::POWERBOOK_G4 ||
-      keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-    if (key == KeyCode::ENTER_POWERBOOK) {
-      key = KeyCode::ENTER;
-    }
-  }
-
-  if (!Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_numpad_hack)) {
-    for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-      if (fnkeyhack[i].normalize(key, flags, eventType)) break;
-    }
+  for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
+    if (fnkeyhack[i].normalize(key, flags, eventType)) break;
   }
 }
 
 void KeyCode::reverseNormalizeKey(KeyCode& key, Flags& flags, EventType eventType, KeyboardType keyboardType) {
-  if (!Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_numpad_hack)) {
-    for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
-      if (fnkeyhack[i].reverse(key, flags, eventType)) break;
-    }
-  }
-
-  if (keyboardType == KeyboardType::POWERBOOK ||
-      keyboardType == KeyboardType::POWERBOOK_G4 ||
-      keyboardType == KeyboardType::POWERBOOK_G4_TI) {
-    if (key == KeyCode::ENTER) {
-      key = KeyCode::ENTER_POWERBOOK;
-    }
+  for (unsigned int i = 0; i < sizeof(fnkeyhack) / sizeof(fnkeyhack[0]); ++i) {
+    if (fnkeyhack[i].reverse(key, flags, eventType)) break;
   }
 
   // ------------------------------------------------------------
