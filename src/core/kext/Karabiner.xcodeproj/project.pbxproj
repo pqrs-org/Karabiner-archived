@@ -48,6 +48,9 @@
 		345004B00E7CE48F0075324B /* Driver.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345004AB0E7CE48F0075324B /* Driver.hpp */; };
 		3456837C10DA734200D7E2E6 /* VirtualKey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3456837A10DA734100D7E2E6 /* VirtualKey.cpp */; };
 		3456837D10DA734200D7E2E6 /* VirtualKey.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3456837B10DA734200D7E2E6 /* VirtualKey.hpp */; };
+		34580BDF1B969DC7009598C8 /* LastSentEventFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34580BDE1B969DC7009598C8 /* LastSentEventFilter.hpp */; };
+		34580BE21B969DDD009598C8 /* LastSentEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34580BE01B969DDD009598C8 /* LastSentEvent.cpp */; };
+		34580BE31B969DDD009598C8 /* LastSentEvent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34580BE11B969DDD009598C8 /* LastSentEvent.hpp */; };
 		345C2F0F1936B86F005CB203 /* UIElementRoleFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */; };
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
@@ -216,6 +219,9 @@
 		345004AB0E7CE48F0075324B /* Driver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Driver.hpp; sourceTree = "<group>"; };
 		3456837A10DA734100D7E2E6 /* VirtualKey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VirtualKey.cpp; sourceTree = "<group>"; };
 		3456837B10DA734200D7E2E6 /* VirtualKey.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = VirtualKey.hpp; sourceTree = "<group>"; };
+		34580BDE1B969DC7009598C8 /* LastSentEventFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LastSentEventFilter.hpp; path = RemapFilter/LastSentEventFilter.hpp; sourceTree = "<group>"; };
+		34580BE01B969DDD009598C8 /* LastSentEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LastSentEvent.cpp; path = Classes/LastSentEvent.cpp; sourceTree = "<group>"; };
+		34580BE11B969DDD009598C8 /* LastSentEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LastSentEvent.hpp; path = Classes/LastSentEvent.hpp; sourceTree = "<group>"; };
 		345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UIElementRoleFilter.hpp; path = RemapFilter/UIElementRoleFilter.hpp; sourceTree = "<group>"; };
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
@@ -503,6 +509,8 @@
 				34779342185B1FA800B3EF06 /* LastPressedPhysicalKey.hpp */,
 				34C878FF1B83562600FF759A /* LastReleasedPhysicalKey.cpp */,
 				34C879001B83562600FF759A /* LastReleasedPhysicalKey.hpp */,
+				34580BE01B969DDD009598C8 /* LastSentEvent.cpp */,
+				34580BE11B969DDD009598C8 /* LastSentEvent.hpp */,
 				34779343185B1FA800B3EF06 /* List.cpp */,
 				34779344185B1FA800B3EF06 /* List.hpp */,
 				34779345185B1FA800B3EF06 /* ListHookedConsumer.cpp */,
@@ -579,6 +587,7 @@
 				34B5E8B41261960700DCFB0D /* InputSourceFilter.hpp */,
 				3496DB871707C134002BE306 /* LastPressedPhysicalKeyFilter.hpp */,
 				343C33D21B84241D00DE7892 /* LastReleasedPhysicalKeyFilter.hpp */,
+				34580BDE1B969DC7009598C8 /* LastSentEventFilter.hpp */,
 				05CB4A2A12BB4C0800737491 /* ModifierFilter.hpp */,
 				34A7DABA1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
@@ -607,6 +616,7 @@
 				345004AE0E7CE48F0075324B /* Core.hpp in Headers */,
 				345004B00E7CE48F0075324B /* Driver.hpp in Headers */,
 				34779382185B1FA800B3EF06 /* Vector.hpp in Headers */,
+				34580BDF1B969DC7009598C8 /* LastSentEventFilter.hpp in Headers */,
 				34096FED1AD3E92E00481A54 /* DropAllKeys.hpp in Headers */,
 				3477936D185B1FA800B3EF06 /* KeyboardRepeat.hpp in Headers */,
 				349A10911907D0290000E43F /* BlockUntilKeyUp.hpp in Headers */,
@@ -660,6 +670,7 @@
 				345C2F0F1936B86F005CB203 /* UIElementRoleFilter.hpp in Headers */,
 				34B464F013A659CD00470265 /* VK_JIS_TOGGLE_EISUU_KANA.hpp in Headers */,
 				34B464F413A65AED00470265 /* VK_JIS_BACKSLASH.hpp in Headers */,
+				34580BE31B969DDD009598C8 /* LastSentEvent.hpp in Headers */,
 				3434FAAD19B771C400E904C0 /* RemapFuncFactory.hpp in Headers */,
 				34A7DABB1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp in Headers */,
 				34779369185B1FA800B3EF06 /* IntervalChecker.hpp in Headers */,
@@ -778,6 +789,7 @@
 				3477E3BB11CFAC9D00DC05C9 /* RemapClass.cpp in Sources */,
 				345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */,
 				34D347E611D8106C00D70815 /* KeyToKey.cpp in Sources */,
+				34580BE21B969DDD009598C8 /* LastSentEvent.cpp in Sources */,
 				34779357185B1FA800B3EF06 /* ButtonStatus.cpp in Sources */,
 				3443E81111D8536B00BB28FB /* DoublePressModifier.cpp in Sources */,
 				341272FE11D8FE0E000A62DB /* HoldingKeyToKey.cpp in Sources */,

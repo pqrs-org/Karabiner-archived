@@ -11,6 +11,7 @@
 #include "InputSourceFilter.hpp"
 #include "LastPressedPhysicalKeyFilter.hpp"
 #include "LastReleasedPhysicalKeyFilter.hpp"
+#include "LastSentEventFilter.hpp"
 #include "ModifierFilter.hpp"
 #include "PressingPhysicalKeysFilter.hpp"
 #include "UIElementRoleFilter.hpp"
@@ -66,6 +67,10 @@ public:
     case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_NOT:
     case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY:
       return new LastReleasedPhysicalKeyFilter(type, vec, length);
+
+    case BRIDGE_FILTERTYPE_LASTSENTEVENT_NOT:
+    case BRIDGE_FILTERTYPE_LASTSENTEVENT_ONLY:
+      return new LastSentEventFilter(type, vec, length);
 
     case BRIDGE_FILTERTYPE_MODIFIER_NOT:
     case BRIDGE_FILTERTYPE_MODIFIER_ONLY:

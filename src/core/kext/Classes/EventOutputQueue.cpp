@@ -26,6 +26,7 @@ void EventOutputQueue::terminate(void) {
 // ----------------------------------------------------------------------
 #define PUSH_TO_OUTPUTQUEUE                              \
   {                                                      \
+    CommonData::setcurrent_lastsentevent(p);             \
     queue_.push_back(new Item(p, AutogenId(autogenId))); \
     fire_timer_.setTimeoutMS(0, false);                  \
   }
@@ -228,7 +229,7 @@ void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, PhysicalEventTyp
 
   // ModifierFlag::NUMPAD handling.
   // (We need to remove ModifierFlag::NUMPAD at first in order to strip NUMPAD flag from normal modifier key events.)
-  if (! toFlags.isOn(ModifierFlag::NUMPAD)) {
+  if (!toFlags.isOn(ModifierFlag::NUMPAD)) {
     lastFlags_.remove(ModifierFlag::NUMPAD);
   }
 
@@ -280,7 +281,10 @@ void EventOutputQueue::FireModifiers::fire(AutogenId autogenId, PhysicalEventTyp
 
 // ======================================================================
 void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params, AutogenId autogenId, PhysicalEventType physicalEventType) {
-  if (VirtualKey::handle(params, autogenId, physicalEventType)) return;
+  if (VirtualKey::handle(params, autogenId, physicalEventType)) {
+    CommonData::setcurrent_lastsentevent(params);
+    return;
+  }
 
   // ------------------------------------------------------------
   KeyCode newkeycode = params.key;
@@ -292,10 +296,12 @@ void EventOutputQueue::FireKey::fire(const Params_KeyboardEventCallBack& params,
   // Note: check before FireModifiers to avoid meaningless modifier event.
   if (newkeycode == KeyCode::VK_NONE ||
       newkeycode == KeyCode::VK_PSEUDO_KEY) {
+    // Do not call CommonData::setcurrent_lastsentevent.
     return;
   }
   if (newkeycode.isModifier() && newkeycode.getModifierFlag().getRawBits() == 0) {
     // virtual modifiers.
+    CommonData::setcurrent_lastsentevent(params);
     return;
   }
 
@@ -407,6 +413,7 @@ void EventOutputQueue::FireConsumer::fire(const Params_KeyboardSpecialEventCallb
   // Note: check before FireModifiers to avoid meaningless modifier event.
   if (params.key == ConsumerKeyCode::VK_NONE ||
       params.key == ConsumerKeyCode::VK_PSEUDO_KEY) {
+    // Do not call CommonData::setcurrent_lastsentevent.
     return;
   }
 

@@ -2,8 +2,10 @@
 #define COMMONDATA_HPP
 
 #include "KeyCode.hpp"
+#include "IOLogWrapper.hpp"
 #include "LastPressedPhysicalKey.hpp"
 #include "LastReleasedPhysicalKey.hpp"
+#include "LastSentEvent.hpp"
 #include "bridge.h"
 #include <string.h>
 
@@ -44,6 +46,16 @@ public:
   static const LastReleasedPhysicalKey& getcurrent_lastreleasedphysicalkey(void) {
     return current_lastreleasedphysicalkey_;
   }
+  static void setcurrent_lastsentevent(const Params_Base& newval) {
+    current_lastsentevent_.update(newval);
+    IOLOG_DEVEL("LastSentEvent: %d:%d, %d\n",
+                current_lastsentevent_.get_datatype(),
+                current_lastsentevent_.get_value(),
+                current_lastsentevent_.get_eventtype().get());
+  }
+  static const LastSentEvent& getcurrent_lastsentevent(void) {
+    return current_lastsentevent_;
+  }
 
   static void clear_statusmessage(int index);
   static void append_statusmessage(int index, const char* message);
@@ -60,6 +72,7 @@ private:
   static Vector_WorkspaceWindowNameId current_workspaceWindowNameIds_;
   static LastPressedPhysicalKey current_lastpressedphysicalkey_;
   static LastReleasedPhysicalKey current_lastreleasedphysicalkey_;
+  static LastSentEvent current_lastsentevent_;
 
   static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 };

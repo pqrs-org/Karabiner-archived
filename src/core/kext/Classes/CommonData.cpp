@@ -14,6 +14,7 @@ Vector_WorkspaceWindowNameId CommonData::current_workspaceWindowNameIds_;
 
 LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
 LastReleasedPhysicalKey CommonData::current_lastreleasedphysicalkey_;
+LastSentEvent CommonData::current_lastsentevent_;
 char CommonData::statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 
 bool CommonData::initialize(void) {
