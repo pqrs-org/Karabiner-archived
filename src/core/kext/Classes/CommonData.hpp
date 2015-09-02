@@ -48,10 +48,26 @@ public:
   }
   static void setcurrent_lastsentevent(const Params_Base& newval) {
     current_lastsentevent_.update(newval);
-    IOLOG_DEVEL("LastSentEvent: %d:%d, %d\n",
-                current_lastsentevent_.get_datatype(),
+    IOLOG_DEVEL("LastSentEvent: %s:0x%04x, %s\n",
+                (current_lastsentevent_.get_datatype() == BRIDGE_DATATYPE_KEYCODE
+                     ? "KeyCode"
+                     : (current_lastsentevent_.get_datatype() == BRIDGE_DATATYPE_CONSUMERKEYCODE
+                            ? "ConsumerKeyCode"
+                            : (current_lastsentevent_.get_datatype() == BRIDGE_DATATYPE_POINTINGBUTTON
+                                   ? "PointingButton"
+                                   : (current_lastsentevent_.get_datatype() == BRIDGE_DATATYPE_SCROLLWHEEL
+                                          ? "ScrollWheel"
+                                          : "Unknown")))),
                 current_lastsentevent_.get_value(),
-                current_lastsentevent_.get_eventtype().get());
+                (current_lastsentevent_.get_eventtype() == EventType::NONE
+                     ? "EventType::NONE"
+                     : (current_lastsentevent_.get_eventtype() == EventType::DOWN
+                            ? "EventType::DOWN"
+                            : (current_lastsentevent_.get_eventtype() == EventType::UP
+                                   ? "EventType::UP"
+                                   : (current_lastsentevent_.get_eventtype() == EventType::MODIFY
+                                          ? "EventType::MODIFY"
+                                          : "Unknown")))));
   }
   static const LastSentEvent& getcurrent_lastsentevent(void) {
     return current_lastsentevent_;
