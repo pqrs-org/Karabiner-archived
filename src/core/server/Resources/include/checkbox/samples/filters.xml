@@ -814,6 +814,55 @@
       </item>
     </item>
 
+    <item>
+      <name>Last Sent Event</name>
+      <item>
+        <name>Standard</name>
+        <appendix>Change 1 to KeyCode::A</appendix>
+        <appendix>Change 2 to KeyCode::VK_MODIFIER_EXTRA1</appendix>
+        <appendix>Change 3 to KeyCode::SHIFT_L</appendix>
+        <appendix></appendix>
+        <appendix>Change Return to Tab when:</appendix>
+        <appendix>* the last sent event is KeyCode::A, EventType::DOWN</appendix>
+        <appendix>* the last sent event is KeyCode::B</appendix>
+        <appendix>* the last sent event is KeyCode::VK_MODIFIER_EXTRA1</appendix>
+        <appendix>* the last sent event is KeyCode::SHIFT_L</appendix>
+        <appendix></appendix>
+        <appendix>Change Space to Tab when:</appendix>
+        <appendix>* the last sent event is not KeyCode::A</appendix>
+        <identifier>remap.samples_lastsentevent</identifier>
+
+        <autogen>__KeyToKey__ KeyCode::KEY_1, KeyCode::A</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::VK_MODIFIER_EXTRA1</autogen>
+        <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::SHIFT_L</autogen>
+
+        <block>
+          <lastsentevent_only>KeyCode::A, EventType::DOWN</lastsentevent_only>
+          <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::TAB</autogen>
+        </block>
+        <block>
+          <!-- If EventType is not specified, this filter works for both EventType::DOWN and EventType::UP. -->
+          <lastsentevent_only>KeyCode::B</lastsentevent_only>
+          <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::TAB</autogen>
+        </block>
+        <block>
+          <!-- You cannot use EventType::DOWN and EventType::UP for modifier events. -->
+          <!-- Use EventType::MODIFY or do not specify EventType. -->
+          <lastsentevent_only>KeyCode::VK_MODIFIER_EXTRA1, EventType::MODIFY</lastsentevent_only>
+          <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::TAB</autogen>
+        </block>
+        <block>
+          <lastsentevent_only>KeyCode::SHIFT_L</lastsentevent_only>
+          <autogen>__KeyToKey__ KeyCode::RETURN, KeyCode::TAB</autogen>
+        </block>
+
+        <block>
+          <lastsentevent_not>KeyCode::A</lastsentevent_not>
+          <autogen>__KeyToKey__ KeyCode::SPACE, KeyCode::TAB</autogen>
+        </block>
+      </item>
+    </item>
+
     <!-- block -->
     <item>
       <name>block sample</name>
