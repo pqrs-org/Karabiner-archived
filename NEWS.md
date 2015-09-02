@@ -8,6 +8,10 @@
 * New functions and improvements:
   * The external keyboard handling has been improved.
   * Prepared settings have been updated.
+  * Updates for people who add new settings by oneself:
+    * The following filters have been added.
+      * `<lastsentevent_not>`
+      * `<lastsentevent_only>`
 
 
 # Version 10.8.0
