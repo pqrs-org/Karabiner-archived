@@ -66,6 +66,10 @@ void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
       add_(BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_NOT, "", it.get_data());
     } else if (it.get_tag_name() == "lastreleasedphysicalkey_only") {
       add_(BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY, "", it.get_data());
+    } else if (it.get_tag_name() == "lastsentevent_not") {
+      add_(BRIDGE_FILTERTYPE_LASTSENTEVENT_NOT, "", it.get_data());
+    } else if (it.get_tag_name() == "lastsentevent_only") {
+      add_(BRIDGE_FILTERTYPE_LASTSENTEVENT_ONLY, "", it.get_data());
     } else if (it.get_tag_name() == "pressingphysicalkeys_greaterthan") {
       add_(BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN, "Count::RawValue::", it.get_data());
     } else if (it.get_tag_name() == "pressingphysicalkeys_lessthan") {
@@ -124,7 +128,9 @@ void xml_compiler::filter_vector::add_(uint32_t filter_type,
     case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_NOT:
     case BRIDGE_FILTERTYPE_LASTPRESSEDPHYSICALKEY_ONLY:
     case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_NOT:
-    case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY: {
+    case BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY:
+    case BRIDGE_FILTERTYPE_LASTSENTEVENT_NOT:
+    case BRIDGE_FILTERTYPE_LASTSENTEVENT_ONLY: {
       normalize_identifier_(arg);
       data_.push_back(xml_compiler_utilities::get_datatype(arg));
       ++count;

@@ -1211,6 +1211,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
   s.add("KeyCode", "KC1", 4000);
   s.add("KeyCode", "KC2", 5000);
   s.add("KeyCode", "KC3", 6000);
+  s.add("EventType", "DOWN", 10);
+  s.add("EventType", "UP", 11);
 
   std::string xml("<?xml version=\"1.0\"?>"
                   "<item>"
@@ -1250,6 +1252,8 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
                   "  <lastpressedphysicalkey_only>KeyCode::KC2</lastpressedphysicalkey_only>"
                   "  <lastreleasedphysicalkey_not>KeyCode::KC1</lastreleasedphysicalkey_not>"
                   "  <lastreleasedphysicalkey_only>KeyCode::KC2</lastreleasedphysicalkey_only>"
+                  "  <lastsentevent_not>KeyCode::KC1, EventType::DOWN</lastsentevent_not>"
+                  "  <lastsentevent_only>KeyCode::KC2, EventType::UP</lastsentevent_only>"
                   "  <elapsedtimesincelastpressed_greaterthan>"
                   "    Millisecond::RawValue::1000"
                   "  </elapsedtimesincelastpressed_greaterthan>"
@@ -1470,6 +1474,22 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
     expected.push_back(BRIDGE_FILTERTYPE_LASTRELEASEDPHYSICALKEY_ONLY);
     expected.push_back(BRIDGE_DATATYPE_KEYCODE);
     expected.push_back(5000);
+
+    // <lastsentevent_not>KeyCode::KC1, EventType::DOWN</lastsentevent_not>
+    expected.push_back(5);
+    expected.push_back(BRIDGE_FILTERTYPE_LASTSENTEVENT_NOT);
+    expected.push_back(BRIDGE_DATATYPE_KEYCODE);
+    expected.push_back(4000);
+    expected.push_back(BRIDGE_DATATYPE_EVENTTYPE);
+    expected.push_back(10);
+
+    // <lastsentevent_only>KeyCode::KC2, EventType::UP</lastsentevent_only>
+    expected.push_back(5);
+    expected.push_back(BRIDGE_FILTERTYPE_LASTSENTEVENT_ONLY);
+    expected.push_back(BRIDGE_DATATYPE_KEYCODE);
+    expected.push_back(5000);
+    expected.push_back(BRIDGE_DATATYPE_EVENTTYPE);
+    expected.push_back(11);
 
     // <elapsedtimesincelastpressed_greaterthan>
     //   Millisecond::RawValue::1000
