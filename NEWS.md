@@ -13,7 +13,7 @@
       * `<lastsentevent_not>`
       * `<lastsentevent_only>`
 * Fixed issues:
-  * `__DropKeyAfterRemap__` does not work properly if the target key is changed by `<autogen>` that are defined before `__DropKeyAfterRemap__`.
+  * `__DropKeyAfterRemap__` does not work properly if the target key is changed by `<autogen>` that is defined before `__DropKeyAfterRemap__`.
 
 
 # Version 10.8.0
