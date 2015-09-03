@@ -67,7 +67,6 @@ public:
   unsigned int getType(void) const { return type_; }
   void setIgnorePassThrough(bool v) { ignorePassThrough_ = v; }
   bool getIgnorePassThrough(void) const { return ignorePassThrough_; }
-  AutogenId getAutogenId(void) { return autogenId_; }
 
 private:
   unsigned int type_;

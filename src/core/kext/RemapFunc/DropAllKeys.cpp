@@ -83,7 +83,7 @@ void DropAllKeys::cancelEventOutputQueueItems(EventOutputQueue::Item& item) {
   }
 
   // Do not cancel events which are pushed before this __DropAllKeys__.
-  if (item.getAutogenId() < getAutogenId()) {
+  if (item.getAutogenId() < autogenId_) {
     return;
   }
 
