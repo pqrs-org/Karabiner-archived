@@ -9,6 +9,7 @@ namespace RemapFunc {
 class DropKeyAfterRemap final : public RemapFuncBase {
 public:
   DropKeyAfterRemap(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_DROPKEYAFTERREMAP, autogenId),
+                                           strictFlagsMatch_(false),
                                            dropped_(false) {}
 
   bool remap(RemapParams& remapParams) override;
@@ -28,6 +29,7 @@ private:
 
   KeyCode key_;
   Flags flags_;
+  bool strictFlagsMatch_;
   bool dropped_;
 };
 }

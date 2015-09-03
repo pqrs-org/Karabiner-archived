@@ -14,7 +14,11 @@ void DropKeyAfterRemap::add(AddDataType datatype, AddValue newval) {
 
   case BRIDGE_DATATYPE_MODIFIERFLAG:
   case BRIDGE_DATATYPE_MODIFIERFLAGS_END: {
-    flags_.add(datatype, newval);
+    ModifierFlag modifierFlag(datatype, newval);
+    flags_.add(modifierFlag);
+    if (ModifierFlag::NONE == modifierFlag) {
+      strictFlagsMatch_ = true;
+    }
     break;
   }
 
@@ -46,7 +50,8 @@ void DropKeyAfterRemap::cancelEventOutputQueueItems(EventOutputQueue::Item& item
         item.cancel();
       }
     } else {
-      if (params->flags.isOn(flags_)) {
+      if (params->flags.isOn(flags_) &&
+          (!strictFlagsMatch_ || params->flags == flags_)) {
         dropped_ = true;
         item.cancel();
       }
