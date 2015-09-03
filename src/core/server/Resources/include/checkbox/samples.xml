@@ -1835,9 +1835,9 @@ Two Lines</autogen>
         <appendix>Drop Shift+Return</appendix>
         <appendix>Change A to Tab (== dropped)</appendix>
         <appendix>Change B to Shift_L+Return (== dropped)</appendix>
+        <autogen>__KeyToKey__ KeyCode::A, KeyCode::TAB</autogen>
         <autogen>__DropKeyAfterRemap__ KeyCode::TAB</autogen>
         <autogen>__DropKeyAfterRemap__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
-        <autogen>__KeyToKey__ KeyCode::A, KeyCode::TAB</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
       </item>
     </item>
