@@ -1833,12 +1833,18 @@ Two Lines</autogen>
         <name>Standard</name>
         <appendix>Drop Tab</appendix>
         <appendix>Drop Shift+Return</appendix>
+        <appendix>Drop Option+Return (if no other modifiers are not pressed)</appendix>
         <appendix>Change A to Tab (== dropped)</appendix>
         <appendix>Change B to Shift_L+Return (== dropped)</appendix>
+        <appendix>Change C to Option_L+Return (== dropped)</appendix>
+        <appendix></appendix>
+        <appendix>Control+C will be Control+Option+Return and it will not be dropped.</appendix>
         <autogen>__KeyToKey__ KeyCode::A, KeyCode::TAB</autogen>
         <autogen>__DropKeyAfterRemap__ KeyCode::TAB</autogen>
         <autogen>__DropKeyAfterRemap__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT</autogen>
+        <autogen>__DropKeyAfterRemap__ KeyCode::RETURN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE</autogen>
         <autogen>__KeyToKey__ KeyCode::B, KeyCode::RETURN, ModifierFlag::SHIFT_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::C, KeyCode::RETURN, ModifierFlag::OPTION_L</autogen>
       </item>
     </item>
 
