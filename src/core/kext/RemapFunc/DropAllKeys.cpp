@@ -82,6 +82,11 @@ void DropAllKeys::cancelEventOutputQueueItems(EventOutputQueue::Item& item) {
     return;
   }
 
+  // Do not cancel events which are pushed before this __DropAllKeys__.
+  if (item.getAutogenId() < getAutogenId()) {
+    return;
+  }
+
   auto& paramsBase = item.getParamsBase();
 
   // Do not drop any modifier flags.

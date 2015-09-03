@@ -93,11 +93,6 @@ void RemapClass::Item::cancelEventOutputQueueItems(bool passThroughEnabled) {
   for (EventOutputQueue::Item* p = static_cast<EventOutputQueue::Item*>(EventOutputQueue::getQueue().safe_front());
        p;
        p = static_cast<EventOutputQueue::Item*>(p->getnext())) {
-    // Do not cancel events which are pushed before this __DropAllKeys__.
-    if (p->getAutogenId() < processor_->getAutogenId()) {
-      continue;
-    }
-
     auto& paramsBase = p->getParamsBase();
     bool iskeydown = false;
     if (!paramsBase.iskeydown(iskeydown)) {
