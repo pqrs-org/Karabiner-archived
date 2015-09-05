@@ -112,12 +112,12 @@
           <identifier essential="true">option.pointing_reverse_horizontal_scrolling</identifier>
         </item>
         <item>
-          <name>Disable horizontal scroll.</name>
-          <identifier essential="true">option.pointing_disable_horizontal_scroll</identifier>
-        </item>
-        <item>
           <name>Disable vertical scroll.</name>
           <identifier essential="true">option.pointing_disable_vertical_scroll</identifier>
+        </item>
+        <item>
+          <name>Disable horizontal scroll.</name>
+          <identifier essential="true">option.pointing_disable_horizontal_scroll</identifier>
         </item>
       </item>
     </item>
