@@ -118,14 +118,6 @@
     </item>
 
     <item>
-      <name>Mouse Keys scroll direction: not natural</name>
-      <appendix>(Enable this setting if your scroll direction of trackpad/mouse is not natural.)</appendix>
-      <identifier essential="true">parameter.mouse_key_scroll_not_natural_direction</identifier>
-    </item>
-
-    <item><name>──────────────────────────────</name></item>
-
-    <item>
       <name>Other settings</name>
 
       <item>
