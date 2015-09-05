@@ -13,46 +13,49 @@
   </item>
 
   <item>
-    <name>General</name>
+    <name>Karabiner core settings</name>
     <item>
-      <name>Don't remap an internal keyboard</name>
-      <identifier essential="true">general.dont_remap_internal</identifier>
-    </item>
-    <item>
-      <name>Don't remap external keyboards</name>
-      <identifier essential="true">general.dont_remap_external</identifier>
-    </item>
-    <item>
-      <name>Don't remap any pointing devices</name>
-      <identifier essential="true">general.dont_remap_any_pointing</identifier>
-    </item>
-    <item>
-      <name>Don't remap Apple's keyboards</name>
-      <identifier essential="true">general.dont_remap_apple_keyboard</identifier>
-    </item>
-    <item>
-      <name>Don't remap Apple's pointing devices</name>
-      <identifier essential="true">general.dont_remap_apple_pointing</identifier>
-    </item>
-    <item>
-      <name>Don't remap non-Apple's keyboards</name>
-      <appendix>(For example: Generic USB keyboard)</appendix>
-      <identifier essential="true">general.dont_remap_non_apple_keyboard</identifier>
-    </item>
-    <item>
-      <name>Don't remap non-Apple's pointing devices</name>
-      <appendix>(For example: Generic USB mouse)</appendix>
-      <identifier essential="true">general.dont_remap_non_apple_pointing</identifier>
-    </item>
-    <item>
-      <name>Don't remap keyboards which have third vendor's driver</name>
-      <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
-      <identifier essential="true">general.dont_remap_thirdvendor_keyboard</identifier>
-    </item>
-    <item>
-      <name>Don't remap pointing devices which has third vendor's driver</name>
-      <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
-      <identifier essential="true">general.dont_remap_thirdvendor_pointing</identifier>
+      <name>Exclude devices</name>
+      <item>
+        <name>Don't remap an internal keyboard</name>
+        <identifier essential="true">general.dont_remap_internal</identifier>
+      </item>
+      <item>
+        <name>Don't remap external keyboards</name>
+        <identifier essential="true">general.dont_remap_external</identifier>
+      </item>
+      <item>
+        <name>Don't remap any pointing devices</name>
+        <identifier essential="true">general.dont_remap_any_pointing</identifier>
+      </item>
+      <item>
+        <name>Don't remap Apple's keyboards</name>
+        <identifier essential="true">general.dont_remap_apple_keyboard</identifier>
+      </item>
+      <item>
+        <name>Don't remap Apple's pointing devices</name>
+        <identifier essential="true">general.dont_remap_apple_pointing</identifier>
+      </item>
+      <item>
+        <name>Don't remap non-Apple's keyboards</name>
+        <appendix>(For example: Generic USB keyboard)</appendix>
+        <identifier essential="true">general.dont_remap_non_apple_keyboard</identifier>
+      </item>
+      <item>
+        <name>Don't remap non-Apple's pointing devices</name>
+        <appendix>(For example: Generic USB mouse)</appendix>
+        <identifier essential="true">general.dont_remap_non_apple_pointing</identifier>
+      </item>
+      <item>
+        <name>Don't remap keyboards which have third vendor's driver</name>
+        <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
+        <identifier essential="true">general.dont_remap_thirdvendor_keyboard</identifier>
+      </item>
+      <item>
+        <name>Don't remap pointing devices which has third vendor's driver</name>
+        <appendix>(Logitech, Microsoft, Kensington, ...)</appendix>
+        <identifier essential="true">general.dont_remap_thirdvendor_pointing</identifier>
+      </item>
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
@@ -91,7 +94,7 @@
       <appendix>these modes are not suitable for password input.</appendix>
       <appendix></appendix>
       <appendix>This setting allows you to keep these modes's states.</appendix>
-      <identifier>general.keep_notsave_at_wake</identifier>
+      <identifier essential="true">general.keep_notsave_at_wake</identifier>
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
