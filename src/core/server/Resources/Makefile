@@ -15,6 +15,13 @@ all:
 			echo 'Using --KeyToKey-- style autogen. Replace --KeyToKey-- with __KeyToKey__.'; \
 			exit 1; \
 		fi; \
+		if [ $$f != "include/checkbox/core.xml" -a $$f != "number.xml" ]; then \
+			/usr/bin/grep -E ' essential="' $$f; \
+			if [ $$? != 1 ]; then \
+				echo 'An identifier with essential attribute is found.'; \
+				exit 1; \
+			fi; \
+		fi; \
 	done
 
 install: all
