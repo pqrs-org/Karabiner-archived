@@ -8,11 +8,11 @@ public:
                   const std::string& xml_file_path) : xml_compiler_(xml_compiler),
                                                       replacement_(replacement),
                                                       pt_(pt),
-                                                      included_files_ptr_(new std::deque<std::string>),
-                                                      included_files_(*included_files_ptr_),
+                                                      local_included_files_ptr_(new std::deque<std::string>),
+                                                      local_included_files_(*local_included_files_ptr_),
                                                       stack_ptr_(new std::stack<stack_data>),
                                                       stack_(*stack_ptr_) {
-    included_files_.push_back(xml_file_path);
+    local_included_files_.push_back(xml_file_path);
   }
 
   class node final {
@@ -192,14 +192,14 @@ public:
       {
         auto path = it.second.get_optional<std::string>("<xmlattr>.path");
         if (path) {
-          assert(!extracted_ptree_.included_files_.empty());
-          xml_file_path = xml_compiler.make_file_path(pqrs::file_path::dirname(extracted_ptree_.included_files_.back()),
+          assert(!extracted_ptree_.local_included_files_.empty());
+          xml_file_path = xml_compiler.make_file_path(pqrs::file_path::dirname(extracted_ptree_.local_included_files_.back()),
                                                       *path);
         }
       }
 
       if (!xml_file_path.empty()) {
-        for (const auto& i : extracted_ptree_.included_files_) {
+        for (const auto& i : extracted_ptree_.local_included_files_) {
           if (i == xml_file_path) {
             xml_compiler.error_information_.set("An infinite include loop is detected:\n" + xml_file_path);
             return;
@@ -215,14 +215,14 @@ public:
           // Skip <include> next time.
           ++(top.it);
           // Do not call collapse_ here.
-          // (Keep included_files_ to detect an infinite include loop.)
+          // (Keep local_included_files_ to detect an infinite include loop.)
 
           if (!pt_ptr->empty()) {
             auto root_node = pt_ptr->begin();
             const auto& root_children = root_node->second;
             if (!root_children.empty()) {
               extracted_ptree_.stack_.push(stack_data(pt_ptr, replacement_ptr, root_children));
-              extracted_ptree_.included_files_.push_back(xml_file_path);
+              extracted_ptree_.local_included_files_.push_back(xml_file_path);
               extract_include_();
             }
           }
@@ -242,8 +242,8 @@ public:
         }
 
         if (top.extracted()) {
-          assert(!extracted_ptree_.included_files_.empty());
-          extracted_ptree_.included_files_.pop_back();
+          assert(!extracted_ptree_.local_included_files_.empty());
+          extracted_ptree_.local_included_files_.pop_back();
         }
         extracted_ptree_.stack_.pop();
       }
@@ -274,16 +274,16 @@ private:
                   const boost::property_tree::ptree& pt) : xml_compiler_(extracted_ptree.xml_compiler_),
                                                            replacement_(replacement),
                                                            pt_(pt),
-                                                           included_files_(extracted_ptree.included_files_),
+                                                           local_included_files_(extracted_ptree.local_included_files_),
                                                            stack_(extracted_ptree.stack_) {}
 
   const xml_compiler& xml_compiler_;
   const pqrs::string::replacement& replacement_;
   const boost::property_tree::ptree& pt_;
 
-  // shared_ptr for included_files_.
-  std::shared_ptr<std::deque<std::string>> included_files_ptr_;
-  std::deque<std::string>& included_files_;
+  // shared_ptr for local_included_files_.
+  std::shared_ptr<std::deque<std::string>> local_included_files_ptr_;
+  std::deque<std::string>& local_included_files_;
 
   // shared_ptr for stack_.
   std::shared_ptr<std::stack<stack_data>> stack_ptr_;
