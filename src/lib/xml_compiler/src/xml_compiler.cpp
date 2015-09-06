@@ -5,8 +5,7 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-static void
-append_environments_to_replacement(pqrs::string::replacement& r) {
+static void append_environments_to_replacement(pqrs::string::replacement& r) {
   if (r.find("ENV_HOME") == r.end()) {
     const char* p = std::getenv("HOME");
     if (!p) {
@@ -298,8 +297,7 @@ void xml_compiler::read_xml_(ptree_ptr& out,
   }
 }
 
-boost::optional<const std::string&>
-xml_compiler::get_identifier(int config_index) const {
+boost::optional<const std::string&> xml_compiler::get_identifier(int config_index) const {
   auto it = identifier_map_.find(config_index);
   if (it == identifier_map_.end()) {
     return boost::none;
@@ -307,8 +305,7 @@ xml_compiler::get_identifier(int config_index) const {
   return it->second;
 }
 
-boost::optional<int>
-xml_compiler::get_config_index(const std::string& identifier) const {
+boost::optional<int> xml_compiler::get_config_index(const std::string& identifier) const {
   for (const auto& it : identifier_map_) {
     if (it.second == identifier) {
       return it.first;
@@ -402,8 +399,7 @@ bool xml_compiler::is_vk_change_inputsource_matched(uint32_t keycode,
   return it->second->is_rules_matched(languagecode, inputsourceid, inputmodeid);
 }
 
-boost::optional<const std::string&>
-xml_compiler::get_url(int keycode) const {
+boost::optional<const std::string&> xml_compiler::get_url(int keycode) const {
   auto it = vk_open_url_map_.find(keycode);
   if (it == vk_open_url_map_.end()) {
     return boost::none;
@@ -415,8 +411,7 @@ xml_compiler::get_url(int keycode) const {
   return it->second->get_url();
 }
 
-boost::optional<const std::string&>
-xml_compiler::get_url_type(int keycode) const {
+boost::optional<const std::string&> xml_compiler::get_url_type(int keycode) const {
   auto it = vk_open_url_map_.find(keycode);
   if (it == vk_open_url_map_.end()) {
     return boost::none;
