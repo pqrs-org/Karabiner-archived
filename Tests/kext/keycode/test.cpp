@@ -129,26 +129,6 @@ TEST(Flags, isOn) {
 }
 
 namespace {
-KeyCode keypads[][2] = {
-    {KeyCode::KEYPAD_0, KeyCode::M},
-    {KeyCode::KEYPAD_1, KeyCode::J},
-    {KeyCode::KEYPAD_2, KeyCode::K},
-    {KeyCode::KEYPAD_3, KeyCode::L},
-    {KeyCode::KEYPAD_4, KeyCode::U},
-    {KeyCode::KEYPAD_5, KeyCode::I},
-    {KeyCode::KEYPAD_6, KeyCode::O},
-    {KeyCode::KEYPAD_7, KeyCode::KEY_7},
-    {KeyCode::KEYPAD_8, KeyCode::KEY_8},
-    {KeyCode::KEYPAD_9, KeyCode::KEY_9},
-    {KeyCode::KEYPAD_CLEAR, KeyCode::KEY_6},
-    {KeyCode::KEYPAD_PLUS, KeyCode::SLASH},
-    {KeyCode::KEYPAD_MINUS, KeyCode::SEMICOLON},
-    {KeyCode::KEYPAD_MULTIPLY, KeyCode::P},
-    {KeyCode::KEYPAD_SLASH, KeyCode::KEY_0},
-    {KeyCode::KEYPAD_EQUAL, KeyCode::MINUS},
-    {KeyCode::KEYPAD_DOT, KeyCode::DOT},
-};
-
 KeyCode cursors[][2] = {
     {KeyCode::PAGEUP, KeyCode::CURSOR_UP},
     {KeyCode::PAGEDOWN, KeyCode::CURSOR_DOWN},
@@ -179,24 +159,10 @@ struct NormalizeItem {
 TEST(KeyCode, normalizeKey) {
   std::vector<NormalizeItem> vec;
 
-  // ENTER_POWERBOOK (without FN) -> ENTER
-  vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, Flags(ModifierFlag::SHIFT_L),
-                              KeyCode::ENTER, Flags(ModifierFlag::SHIFT_L), KeyboardType::POWERBOOK));
-
-  // ENTER_POWERBOOK(+FN) -> ENTER(+FN) -> RETURN
-  vec.push_back(NormalizeItem(KeyCode::ENTER_POWERBOOK, ModifierFlag::SHIFT_L | ModifierFlag::FN,
-                              KeyCode::RETURN, ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::POWERBOOK));
-
   // ----------------------------------------
   // normal key (without FN)
   vec.push_back(NormalizeItem(KeyCode::A, Flags(ModifierFlag::SHIFT_L),
                               KeyCode::A, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
-
-  // KEYPAD (without FN) -> Don't change key.
-  for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    vec.push_back(NormalizeItem(keypads[i][0], Flags(ModifierFlag::SHIFT_L),
-                                keypads[i][0], Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
-  }
 
   // PAGEUP (without FN) -> Don't change key.
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
@@ -219,12 +185,6 @@ TEST(KeyCode, normalizeKey) {
 
   vec.push_back(NormalizeItem(KeyCode::K, ModifierFlag::SHIFT_L | ModifierFlag::FN,
                               KeyCode::K, ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
-
-  // KEYPAD(+FN) -> JKL...+FN
-  for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    vec.push_back(NormalizeItem(keypads[i][0], ModifierFlag::SHIFT_L | ModifierFlag::FN,
-                                keypads[i][1], ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
-  }
 
   // PAGEUP(+FN) -> Arrow+FN
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
@@ -321,17 +281,6 @@ TEST(KeyCode, reverseNormalizeKey) {
   vec.push_back(NormalizeItem(KeyCode::A, Flags(ModifierFlag::SHIFT_L),
                               KeyCode::A, Flags(ModifierFlag::SHIFT_L), KeyboardType::MACBOOK));
 
-  // KEYPAD (without FN)
-  for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    KeyCode key = keypads[i][0];
-    Flags fromFlags = Flags(ModifierFlag::SHIFT_L);
-    Flags toFlags = fromFlags;
-    if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) toFlags.add(ModifierFlag::NUMPAD);
-
-    vec.push_back(NormalizeItem(key, fromFlags,
-                                key, toFlags, KeyboardType::MACBOOK));
-  }
-
   // PAGEUP (without FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
     vec.push_back(NormalizeItem(cursors[i][0], Flags(ModifierFlag::SHIFT_L),
@@ -356,17 +305,6 @@ TEST(KeyCode, reverseNormalizeKey) {
   // normal key(+FN)
   vec.push_back(NormalizeItem(KeyCode::A, ModifierFlag::SHIFT_L | ModifierFlag::FN,
                               KeyCode::A, ModifierFlag::SHIFT_L | ModifierFlag::FN, KeyboardType::MACBOOK));
-
-  // KEYPAD(+FN)
-  for (size_t i = 0; i < sizeof(keypads) / sizeof(keypads[0]); ++i) {
-    KeyCode key = keypads[i][0];
-    Flags fromFlags = ModifierFlag::SHIFT_L | ModifierFlag::FN;
-    Flags toFlags = fromFlags;
-    if (key != KeyCode::KEYPAD_CLEAR && key != KeyCode::KEYPAD_COMMA) toFlags.add(ModifierFlag::NUMPAD);
-
-    vec.push_back(NormalizeItem(key, fromFlags,
-                                key, toFlags, KeyboardType::MACBOOK));
-  }
 
   // PAGEUP(+FN)
   for (size_t i = 0; i < sizeof(cursors) / sizeof(cursors[0]); ++i) {
