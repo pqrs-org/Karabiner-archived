@@ -80,6 +80,7 @@
     <equal>org.mozilla.aurora</equal>
     <!-- Firefox Nightly Builds -->
     <equal>org.mozilla.nightly</equal>
+    <equal>org.mozilla.firefoxdeveloperedition</equal>
   </appdef>
 
   <appdef>
