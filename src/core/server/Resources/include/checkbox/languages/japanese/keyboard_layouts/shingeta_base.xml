@@ -207,11 +207,12 @@
   <autogen>__SimultaneousKeyPresses__ KeyCode::K, KeyCode::KEY_3, KeyCode::X, KeyCode::U,                    KeyCode::VK_NONE</autogen>
   <autogen>__SimultaneousKeyPresses__ KeyCode::K, KeyCode::KEY_4, KeyCode::X, KeyCode::E,                    KeyCode::VK_NONE</autogen>
   <autogen>__SimultaneousKeyPresses__ KeyCode::K, KeyCode::KEY_5, KeyCode::X, KeyCode::O,                    KeyCode::VK_NONE</autogen>
-  <!-- L:ゃミャミュミョ -->
+  <!-- L:ゃミャミュミョゎ -->
   <autogen>__SimultaneousKeyPresses__ KeyCode::L, KeyCode::KEY_1, KeyCode::X, KeyCode::Y, KeyCode::A,        KeyCode::VK_NONE</autogen>
   <autogen>__SimultaneousKeyPresses__ KeyCode::L, KeyCode::KEY_2, KeyCode::M, KeyCode::Y, KeyCode::A,        KeyCode::VK_NONE</autogen>
   <autogen>__SimultaneousKeyPresses__ KeyCode::L, KeyCode::KEY_3, KeyCode::M, KeyCode::Y, KeyCode::U,        KeyCode::VK_NONE</autogen>
   <autogen>__SimultaneousKeyPresses__ KeyCode::L, KeyCode::KEY_4, KeyCode::M, KeyCode::Y, KeyCode::O,        KeyCode::VK_NONE</autogen>
+  <autogen>__SimultaneousKeyPresses__ KeyCode::L, KeyCode::KEY_5, KeyCode::X, KeyCode::W, KeyCode::A,        KeyCode::VK_NONE</autogen>
   <!-- I:ゅビャビュビョ -->
   <autogen>__SimultaneousKeyPresses__ KeyCode::I, KeyCode::KEY_1, KeyCode::X, KeyCode::Y, KeyCode::U,        KeyCode::VK_NONE</autogen>
   <autogen>__SimultaneousKeyPresses__ KeyCode::I, KeyCode::KEY_2, KeyCode::B, KeyCode::Y, KeyCode::A,        KeyCode::VK_NONE</autogen>
