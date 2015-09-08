@@ -1,3 +1,9 @@
+# Since 10.9.0
+
+* New functions and improvements:
+  * Prepared settings have been updated.
+
+
 # Version 10.9.0
 
 * Incompatibility changes:
