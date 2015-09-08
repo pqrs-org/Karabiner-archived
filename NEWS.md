@@ -1,7 +1,7 @@
 # Version 10.9.0
 
 * Incompatibility changes:
-  * The fn keypad has been removed from Implicit behavior. <br />
+  * The fn keypad has been removed from implicit behavior. <br />
     Please use either of the following settings instead if you need.
     * "Fn+Number to KeyPad"
     * "Use old style fn keypad"
