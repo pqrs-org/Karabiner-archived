@@ -2,12 +2,14 @@
 <root>
   <!-- ============================================================ -->
   <!-- include -->
-  <include path="include.xml">
+  <include path="include.xml" once="true">
     <replacementdef>
       <replacementname>MY_INCLUDE_TEST</replacementname>
       <replacementvalue>123</replacementvalue>
     </replacementdef>
   </include>
+
+  <include path="include.xml" once="true" />
 
   <replacementdef>
     <replacementname>MY_INCLUDE_TEST</replacementname>

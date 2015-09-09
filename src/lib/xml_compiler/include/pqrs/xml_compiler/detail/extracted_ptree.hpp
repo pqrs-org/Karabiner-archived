@@ -199,6 +199,18 @@ public:
       }
 
       if (!xml_file_path.empty()) {
+        // check global_included_files_
+        auto attr_once = it.second.get_optional<std::string>("<xmlattr>.once");
+        if (attr_once) {
+          for (const auto& i : xml_compiler.global_included_files_) {
+            if (i == xml_file_path) {
+              return;
+            }
+          }
+        }
+        xml_compiler.global_included_files_.push_back(xml_file_path);
+
+        // check local_included_files_
         for (const auto& i : extracted_ptree_.local_included_files_) {
           if (i == xml_file_path) {
             xml_compiler.error_information_.set("An infinite include loop is detected:\n" + xml_file_path);
@@ -283,6 +295,7 @@ private:
 
   // shared_ptr for local_included_files_.
   std::shared_ptr<std::deque<std::string>> local_included_files_ptr_;
+  // for infinite loop detection.
   std::deque<std::string>& local_included_files_;
 
   // shared_ptr for stack_.

@@ -141,6 +141,8 @@ private:
   mutable error_information error_information_;
   mutable std::string replacement_warnings_;
 
+  mutable std::vector<std::string> global_included_files_;
+
   pqrs::string::replacement replacement_;
   symbol_map symbol_map_;
   boost::unordered_map<uint32_t, std::shared_ptr<modifier>> modifier_map_;

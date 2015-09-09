@@ -18,6 +18,7 @@ static void append_environments_to_replacement(pqrs::string::replacement& r) {
 void xml_compiler::reload(void) {
   error_information_.clear();
   replacement_warnings_.clear();
+  global_included_files_.clear();
   replacement_.clear();
   symbol_map_.clear();
   modifier_map_.clear();
@@ -67,6 +68,9 @@ void xml_compiler::reload(void) {
     // Reset replacement warnings that occur during loading replacement.
     replacement_warnings_.clear();
 
+    // Reset global_included_files_ for each loading.
+    global_included_files_.clear();
+
     // ------------------------------------------------------------
     // Then, we read private.xml with replacement and loaders share it.
 
@@ -85,6 +89,8 @@ void xml_compiler::reload(void) {
       }
 
       loader_wrapper<symbol_map_loader>::traverse_system_xml(*this, loader, "symbol_map.xml");
+
+      global_included_files_.clear();
     }
 
     // modifier
@@ -100,6 +106,8 @@ void xml_compiler::reload(void) {
       }
 
       loader_wrapper<modifier_loader>::traverse_system_xml(*this, loader, "modifierdef.xml");
+
+      global_included_files_.clear();
     }
 
     // app
@@ -111,6 +119,8 @@ void xml_compiler::reload(void) {
       }
 
       loader_wrapper<app_loader>::traverse_system_xml(*this, loader, "appdef.xml");
+
+      global_included_files_.clear();
     }
 
     // window_name
@@ -122,6 +132,8 @@ void xml_compiler::reload(void) {
       }
 
       loader_wrapper<window_name_loader>::traverse_system_xml(*this, loader, "windownamedef.xml");
+
+      global_included_files_.clear();
     }
 
     // ui_element_role
@@ -133,6 +145,8 @@ void xml_compiler::reload(void) {
       }
 
       loader_wrapper<ui_element_role_loader>::traverse_system_xml(*this, loader, "uielementroledef.xml");
+
+      global_included_files_.clear();
     }
 
     // device
@@ -146,6 +160,8 @@ void xml_compiler::reload(void) {
       loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicevendordef.xml");
       loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "deviceproductdef.xml");
       loader_wrapper<device_loader>::traverse_system_xml(*this, loader, "devicelocationdef.xml");
+
+      global_included_files_.clear();
     }
 
     // inputsource
@@ -163,6 +179,8 @@ void xml_compiler::reload(void) {
 
       loader_wrapper<inputsource_loader>::traverse_system_xml(*this, loader, "vkchangeinputsourcedef.xml");
       loader_wrapper<inputsource_loader>::traverse_system_xml(*this, loader, "inputsourcedef.xml");
+
+      global_included_files_.clear();
     }
 
     // url
@@ -178,6 +196,8 @@ void xml_compiler::reload(void) {
       }
 
       loader_wrapper<url_loader>::traverse_system_xml(*this, loader, "vkopenurldef.xml");
+
+      global_included_files_.clear();
     }
 
     // config_index, remapclasses_initialize_vector, preferences_node
@@ -201,6 +221,8 @@ void xml_compiler::reload(void) {
             loader.fixup();
           }
           loader.cleanup();
+
+          global_included_files_.clear();
         }
         {
           remapclasses_initialize_vector_prepare_loader<preferences_node_tree<preferences_checkbox_node>> loader(*this, symbol_map_, essential_configurations_, &preferences_checkbox_node_tree_);
@@ -214,6 +236,8 @@ void xml_compiler::reload(void) {
             loader.fixup();
           }
           loader.cleanup();
+
+          global_included_files_.clear();
         }
 
         // ----------------------------------------
@@ -228,6 +252,8 @@ void xml_compiler::reload(void) {
           if (checkbox_xml_ptree_ptr) {
             loader.traverse(make_extracted_ptree(*checkbox_xml_ptree_ptr, checkbox_xml_file_path), "");
           }
+
+          global_included_files_.clear();
         }
 
         remapclasses_initialize_vector_.freeze();

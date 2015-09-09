@@ -2,6 +2,8 @@
 
 * New functions and improvements:
   * Prepared settings have been updated.
+  * Updates for people who add new settings by oneself:
+    * `once` attribute has been introduced into `<include>` tag.
 
 
 # Version 10.9.0
