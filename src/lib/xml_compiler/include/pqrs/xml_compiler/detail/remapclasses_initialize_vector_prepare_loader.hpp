@@ -22,7 +22,7 @@ public:
                                                                                                   preferences_node_tree_(preferences_node_tree),
                                                                                                   root_preferences_node_tree_(preferences_node_tree) {}
 
-  void traverse(const extracted_ptree& pt) {
+  void traverse(const extracted_ptree& pt, const std::string& parent_tag_name) {
     for (const auto& it : pt) {
       // Hack for speed improvement.
       // We can stop traversing when we met <autogen>.
@@ -31,73 +31,70 @@ public:
       }
 
       // traverse
-      {
-        if (it.get_tag_name() != "item") {
+      if (it.get_tag_name() == "item") {
+        assert(preferences_node_tree_);
+        std::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
+        assert(ptr);
+
+        auto saved_preferences_node_tree = preferences_node_tree_;
+        preferences_node_tree_ = ptr.get();
+        {
           if (!it.children_empty()) {
-            traverse(it.children_extracted_ptree());
+            traverse(it.children_extracted_ptree(), it.get_tag_name());
           }
-        } else {
-          // preferences_node_tree
-          assert(preferences_node_tree_);
-          std::shared_ptr<preferences_node_tree_t> ptr(new preferences_node_tree_t(preferences_node_tree_->get_node()));
-          assert(ptr);
+        }
+        preferences_node_tree_ = saved_preferences_node_tree;
 
-          for (const auto& child : it.children_extracted_ptree()) {
-            ptr->handle_item_child(child);
+        auto attr_hidden = it.get_optional("<xmlattr>.hidden");
+        if (!attr_hidden) {
+          preferences_node_tree_->push_back(ptr);
+        }
 
-            if (child.get_tag_name() == "identifier") {
-              auto raw_identifier = boost::trim_copy(child.get_data());
-              if (xml_compiler_.valid_identifier_(raw_identifier, it.get_tag_name())) {
-                auto identifier = raw_identifier;
-                normalize_identifier_(identifier);
+      } else {
+        assert(preferences_node_tree_);
+        preferences_node_tree_->handle_item_child(it);
 
-                // ----------------------------------------
-                auto attr_essential = child.get_optional("<xmlattr>.essential");
-                if (attr_essential) {
-                  essential_configurations_.push_back(std::shared_ptr<essential_configuration>(new essential_configuration(ptr->get_node())));
-                  // Do not treat essentials anymore.
-                  continue;
-                }
+        if (it.get_tag_name() == "identifier") {
+          auto raw_identifier = boost::trim_copy(it.get_data());
+          if (xml_compiler_.valid_identifier_(raw_identifier, parent_tag_name)) {
+            auto identifier = raw_identifier;
+            normalize_identifier_(identifier);
 
-                // ----------------------------------------
-                auto attr_vk_config = child.get_optional("<xmlattr>.vk_config");
-                if (attr_vk_config) {
-                  const char* names[] = {
-                      "VK_CONFIG_TOGGLE_",
-                      "VK_CONFIG_FORCE_ON_",
-                      "VK_CONFIG_FORCE_OFF_",
-                      "VK_CONFIG_SYNC_KEYDOWNUP_",
-                  };
-                  for (const auto& n : names) {
-                    symbol_map_.add("KeyCode", std::string(n) + identifier);
-                  }
-                }
+            // ----------------------------------------
+            auto attr_essential = it.get_optional("<xmlattr>.essential");
+            if (attr_essential) {
+              essential_configurations_.push_back(std::shared_ptr<essential_configuration>(new essential_configuration(preferences_node_tree_->get_node())));
+              // Do not treat essentials anymore.
+              continue;
+            }
 
-                // ----------------------------------------
-                auto attr_high_priority = child.get_optional("<xmlattr>.high_priority");
-                if (boost::starts_with(identifier, "notsave_") ||
-                    attr_high_priority) {
-                  identifiers_high_priority_.push_back(identifier);
-                } else {
-                  identifiers_normal_priority_.push_back(identifier);
-                }
+            // ----------------------------------------
+            auto attr_vk_config = it.get_optional("<xmlattr>.vk_config");
+            if (attr_vk_config) {
+              const char* names[] = {
+                  "VK_CONFIG_TOGGLE_",
+                  "VK_CONFIG_FORCE_ON_",
+                  "VK_CONFIG_FORCE_OFF_",
+                  "VK_CONFIG_SYNC_KEYDOWNUP_",
+              };
+              for (const auto& n : names) {
+                symbol_map_.add("KeyCode", std::string(n) + identifier);
               }
             }
-          }
 
-          auto saved_preferences_node_tree = preferences_node_tree_;
-          preferences_node_tree_ = ptr.get();
-          {
-            if (!it.children_empty()) {
-              traverse(it.children_extracted_ptree());
+            // ----------------------------------------
+            auto attr_high_priority = it.get_optional("<xmlattr>.high_priority");
+            if (boost::starts_with(identifier, "notsave_") ||
+                attr_high_priority) {
+              identifiers_high_priority_.push_back(identifier);
+            } else {
+              identifiers_normal_priority_.push_back(identifier);
             }
           }
-          preferences_node_tree_ = saved_preferences_node_tree;
+        }
 
-          auto attr_hidden = it.get_optional("<xmlattr>.hidden");
-          if (!attr_hidden) {
-            preferences_node_tree_->push_back(ptr);
-          }
+        if (!it.children_empty()) {
+          traverse(it.children_extracted_ptree(), it.get_tag_name());
         }
       }
     }
