@@ -204,7 +204,7 @@
   @synchronized(self) {
     [XMLCompiler prepare_private_xml];
 
-    pqrs_xml_compiler_reload(pqrs_xml_compiler_);
+    pqrs_xml_compiler_reload(pqrs_xml_compiler_, "checkbox.xml");
 
     // build preferencepane_checkbox_
     {

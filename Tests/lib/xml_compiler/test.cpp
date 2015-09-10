@@ -593,7 +593,7 @@ TEST(pqrs_xml_compiler, reload) {
 TEST(pqrs_xml_compiler, reload_bindings_clang) {
   pqrs_xml_compiler* p = nullptr;
   EXPECT_EQ(0, pqrs_xml_compiler_initialize(&p, "data/system_xml", "data/private_xml"));
-  pqrs_xml_compiler_reload(p);
+  pqrs_xml_compiler_reload(p, "checkbox.xml");
 
   {
     std::vector<uint32_t> expect;

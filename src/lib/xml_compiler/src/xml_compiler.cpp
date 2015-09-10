@@ -15,7 +15,7 @@ static void append_environments_to_replacement(pqrs::string::replacement& r) {
   }
 }
 
-void xml_compiler::reload(void) {
+void xml_compiler::reload(const std::string& checkbox_xml_file_name) {
   error_information_.clear();
   replacement_warnings_.clear();
   global_included_files_.clear();
@@ -202,7 +202,7 @@ void xml_compiler::reload(void) {
 
     // config_index, remapclasses_initialize_vector, preferences_node
     {
-      std::string checkbox_xml_file_path = make_file_path(system_xml_directory_, "checkbox.xml");
+      std::string checkbox_xml_file_path = make_file_path(system_xml_directory_, checkbox_xml_file_name);
       ptree_ptr checkbox_xml_ptree_ptr;
       read_xml_(checkbox_xml_ptree_ptr, checkbox_xml_file_path);
 

@@ -50,7 +50,8 @@ public:
   xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) : system_xml_directory_(system_xml_directory),
                                                                                                     private_xml_directory_(private_xml_directory) {}
 
-  void reload(void);
+  void reload(const std::string& checkbox_xml_file_name);
+  void reload(void) { reload("checkbox.xml"); }
 
   const remapclasses_initialize_vector& get_remapclasses_initialize_vector(void) const {
     return remapclasses_initialize_vector_;
