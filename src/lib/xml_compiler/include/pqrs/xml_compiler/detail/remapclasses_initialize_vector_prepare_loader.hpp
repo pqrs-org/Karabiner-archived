@@ -52,7 +52,9 @@ public:
 
       } else {
         assert(preferences_node_tree_);
-        preferences_node_tree_->handle_item_child(it);
+        if (parent_tag_name == "item") {
+          preferences_node_tree_->handle_item_child(it);
+        }
 
         if (it.get_tag_name() == "identifier") {
           auto raw_identifier = boost::trim_copy(it.get_data());
