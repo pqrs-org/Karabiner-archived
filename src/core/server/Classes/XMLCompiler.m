@@ -192,9 +192,6 @@
     pqrs_xml_compiler_initialize(&pqrs_xml_compiler_,
                                  [[[NSBundle mainBundle] resourcePath] UTF8String],
                                  [[[XMLCompiler get_private_xml_path] stringByDeletingLastPathComponent] UTF8String]);
-    pqrs_xml_compiler_append_environment_variable_for_replacement(pqrs_xml_compiler_,
-                                                                  "ENV_Karabiner_Resources",
-                                                                  [[[NSBundle mainBundle] resourcePath] UTF8String]);
   }
 
   return self;

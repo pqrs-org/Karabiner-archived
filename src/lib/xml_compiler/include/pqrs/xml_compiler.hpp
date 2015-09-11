@@ -50,10 +50,6 @@ public:
   xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) : system_xml_directory_(system_xml_directory),
                                                                                                     private_xml_directory_(private_xml_directory) {}
 
-  void append_environment_variable_for_replacement(const std::string& name, const std::string& value) {
-    extra_environment_variables_[name] = value;
-  }
-
   void reload(const std::string& checkbox_xml_file_name);
   void reload(void) { reload("checkbox.xml"); }
 
@@ -150,7 +146,6 @@ private:
 
   mutable std::vector<std::string> global_included_files_;
 
-  boost::unordered_map<std::string, std::string> extra_environment_variables_;
   pqrs::string::replacement replacement_;
   symbol_map symbol_map_;
   boost::unordered_map<uint32_t, std::shared_ptr<modifier>> modifier_map_;

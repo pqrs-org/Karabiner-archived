@@ -14,9 +14,7 @@ void xml_compiler::append_environments_to_replacement_(pqrs::string::replacement
     r["ENV_HOME"] = p;
   }
 
-  for (auto& it : extra_environment_variables_) {
-    r.emplace(it.first, it.second);
-  }
+  r.emplace("ENV_Karabiner_Resources", system_xml_directory_);
 }
 
 void xml_compiler::reload(const std::string& checkbox_xml_file_name) {

@@ -22,19 +22,6 @@ void pqrs_xml_compiler_terminate(pqrs_xml_compiler** out) {
 }
 
 // ------------------------------------------------------------
-void pqrs_xml_compiler_append_environment_variable_for_replacement(pqrs_xml_compiler* p,
-                                                                   const char* name,
-                                                                   const char* value) {
-  pqrs::xml_compiler* xml_compiler = reinterpret_cast<pqrs::xml_compiler*>(p);
-  if (!xml_compiler) return;
-
-  if (!name) return;
-
-  xml_compiler->append_environment_variable_for_replacement(name,
-                                                            value != nullptr ? value : "");
-}
-
-// ------------------------------------------------------------
 void pqrs_xml_compiler_reload(pqrs_xml_compiler* p, const char* checkbox_xml_file_name) {
   pqrs::xml_compiler* xml_compiler = reinterpret_cast<pqrs::xml_compiler*>(p);
   if (!xml_compiler) return;

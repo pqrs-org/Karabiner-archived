@@ -16,11 +16,6 @@ int pqrs_xml_compiler_initialize(pqrs_xml_compiler** out,
 void pqrs_xml_compiler_terminate(pqrs_xml_compiler** out);
 
 // ------------------------------------------------------------
-void pqrs_xml_compiler_append_environment_variable_for_replacement(pqrs_xml_compiler* p,
-                                                                   const char* name,
-                                                                   const char* value);
-
-// ------------------------------------------------------------
 void pqrs_xml_compiler_reload(pqrs_xml_compiler* p, const char* checkbox_xml_file_name);
 
 // ------------------------------------------------------------
