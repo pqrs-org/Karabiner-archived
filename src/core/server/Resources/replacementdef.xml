@@ -5,6 +5,7 @@
       Environment variables which you can use without replacementdef:
 
       - You can use {{ ENV_HOME }} to specify home directory.
+      - You can use {{ ENV_Karabiner_Resources }} to specify "Karabiner.app/Contents/Resources" directory.
     -->
 
   <!-- ============================================================ -->
