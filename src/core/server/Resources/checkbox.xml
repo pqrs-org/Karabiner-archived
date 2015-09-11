@@ -1,138 +1,138 @@
 <?xml version="1.0"?>
 <root>
-  <include once="true" path="include/checkbox/core.xml" />
-  <include once="true" path="include/checkbox/flags.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/core.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/flags.xml" />
 
-  <include once="true" path="include/checkbox/ignore_apps_and_devices.xml" />
-  <include once="true" path="include/checkbox/pass_through_mode.xml" />
-  <include once="true" path="include/checkbox/pointing_device.xml" />
-
-  <item><name>──────────────────────────────</name></item>
-  <include once="true" path="include/checkbox/standards/arrow.xml" />
-  <include once="true" path="include/checkbox/standards/backquote.xml" />
-  <include once="true" path="include/checkbox/standards/backslash.xml" />
-  <include once="true" path="include/checkbox/standards/bracket.xml" />
-  <include once="true" path="include/checkbox/standards/capslock.xml" />
-  <include once="true" path="include/checkbox/standards/command.xml" />
-  <include once="true" path="include/checkbox/standards/control.xml" />
-  <include once="true" path="include/checkbox/standards/delete.xml" />
-  <include once="true" path="include/checkbox/standards/eject.xml" />
-  <include once="true" path="include/checkbox/standards/escape.xml" />
-  <include once="true" path="include/checkbox/standards/expose.xml" />
-  <include once="true" path="include/checkbox/standards/fn.xml" />
-  <include once="true" path="include/checkbox/standards/forward_delete.xml" />
-  <include once="true" path="include/checkbox/standards/function.xml" />
-  <include once="true" path="include/checkbox/standards/help.xml" />
-  <include once="true" path="include/checkbox/standards/keypad.xml" />
-  <include once="true" path="include/checkbox/standards/minus.xml" />
-  <include once="true" path="include/checkbox/standards/number.xml" />
-  <include once="true" path="include/checkbox/standards/option.xml" />
-  <include once="true" path="include/checkbox/standards/pageup_pagedown.xml" />
-  <include once="true" path="include/checkbox/standards/power.xml" />
-  <include once="true" path="include/checkbox/standards/quote.xml" />
-  <include once="true" path="include/checkbox/standards/return.xml" />
-  <include once="true" path="include/checkbox/standards/semicolon.xml" />
-  <include once="true" path="include/checkbox/standards/shift.xml" />
-  <include once="true" path="include/checkbox/standards/slash.xml" />
-  <include once="true" path="include/checkbox/standards/space.xml" />
-  <include once="true" path="include/checkbox/standards/tab.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/ignore_apps_and_devices.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/pass_through_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/pointing_device.xml" />
 
   <item><name>──────────────────────────────</name></item>
-  <include once="true" path="include/checkbox/custom_shortcuts.xml" />
-  <include once="true" path="include/checkbox/sticky_modifier.xml" />
-  <include once="true" path="include/checkbox/diamond_cursor.xml" />
-  <include once="true" path="include/checkbox/browsing_mode.xml" />
-  <include once="true" path="include/checkbox/overtype_mode.xml" />
-  <include once="true" path="include/checkbox/emacs_mode.xml" />
-  <include once="true" path="include/checkbox/mouse_keys.xml" />
-  <include once="true" path="include/checkbox/hjkl_arrow.xml" />
-  <include once="true" path="include/checkbox/vi_mode.xml" />
-  <include once="true" path="include/checkbox/ubiquitous_vim_bindings.xml" />
-  <include once="true" path="include/checkbox/vim_emu.xml" />
-  <include once="true" path="include/checkbox/complete_vi_mode.xml" />
-  <include once="true" path="include/checkbox/simultaneouskeypresses_vi_mode.xml" />
-  <include once="true" path="include/checkbox/homerow_mode.xml" />
-  <include once="true" path="include/checkbox/homerow_numbers.xml" />
-  <include once="true" path="include/checkbox/touchcursor.xml" />
-  <include once="true" path="include/checkbox/simultaneouskeypresses.xml" />
-  <include once="true" path="include/checkbox/thumbsense.xml" />
-  <include once="true" path="include/checkbox/for_mission_control.xml" />
-  <include once="true" path="include/checkbox/launcher_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/arrow.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/backquote.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/backslash.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/bracket.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/capslock.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/command.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/control.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/delete.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/eject.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/escape.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/expose.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/fn.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/forward_delete.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/function.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/help.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/keypad.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/minus.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/number.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/option.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/pageup_pagedown.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/power.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/quote.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/return.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/semicolon.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/shift.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/slash.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/space.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/standards/tab.xml" />
 
-  <include once="true" path="include/checkbox/grenouille.xml" />
-  <include once="true" path="include/checkbox/asetniop.xml" />
-  <include once="true" path="include/checkbox/engelbart.xml" />
-  <include once="true" path="include/checkbox/programmer_settings.xml" />
+  <item><name>──────────────────────────────</name></item>
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/custom_shortcuts.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/sticky_modifier.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/diamond_cursor.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/browsing_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/overtype_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/emacs_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/mouse_keys.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/hjkl_arrow.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/vi_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/ubiquitous_vim_bindings.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/vim_emu.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/complete_vi_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/simultaneouskeypresses_vi_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/homerow_mode.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/homerow_numbers.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/touchcursor.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/simultaneouskeypresses.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/thumbsense.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/for_mission_control.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/launcher_mode.xml" />
+
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/grenouille.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/asetniop.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/engelbart.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/programmer_settings.xml" />
 
   <item>
     <name>For Applications</name>
-    <include once="true" path="include/checkbox/apps/virtual_machine.xml" />
-    <include once="true" path="include/checkbox/apps/finder.xml" />
-    <include once="true" path="include/checkbox/apps/terminal.xml" />
-    <include once="true" path="include/checkbox/apps/adobe.xml" />
-    <include once="true" path="include/checkbox/apps/safari.xml" />
-    <include once="true" path="include/checkbox/apps/firefox.xml" />
-    <include once="true" path="include/checkbox/apps/chrome.xml" />
-    <include once="true" path="include/checkbox/apps/office.xml" />
-    <include once="true" path="include/checkbox/apps/macsoup.xml" />
-    <include once="true" path="include/checkbox/apps/vienna.xml" />
-    <include once="true" path="include/checkbox/apps/gruml.xml" />
-    <include once="true" path="include/checkbox/apps/launchbar.xml" />
-    <include once="true" path="include/checkbox/apps/league_of_legends.xml" />
-    <include once="true" path="include/checkbox/apps/remote_desktop_client.xml" />
-    <include once="true" path="include/checkbox/apps/world_of_warcraft.xml" />
-    <include once="true" path="include/checkbox/apps/starcraft2.xml" />
-    <include once="true" path="include/checkbox/apps/warcraftiii.xml" />
-    <include once="true" path="include/checkbox/apps/skype.xml" />
-    <include once="true" path="include/checkbox/apps/dictionary.xml" />
-    <include once="true" path="include/checkbox/apps/tweetdeck.xml" />
-    <include once="true" path="include/checkbox/apps/quicksilver.xml" />
-    <include once="true" path="include/checkbox/apps/wine.xml" />
-    <include once="true" path="include/checkbox/apps/propresenter.xml" />
-    <include once="true" path="include/checkbox/apps/schismtracker.xml" />
-    <include once="true" path="include/checkbox/apps/blender.xml" />
-    <include once="true" path="include/checkbox/apps/digitalcolor_meter.xml" />
-    <include once="true" path="include/checkbox/apps/vnc.xml" />
-    <include once="true" path="include/checkbox/apps/mucommander.xml" />
-    <include once="true" path="include/checkbox/apps/skim.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/virtual_machine.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/finder.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/terminal.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/adobe.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/safari.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/firefox.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/chrome.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/office.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/macsoup.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/vienna.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/gruml.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/launchbar.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/league_of_legends.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/remote_desktop_client.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/world_of_warcraft.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/starcraft2.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/warcraftiii.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/skype.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/dictionary.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/tweetdeck.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/quicksilver.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/wine.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/propresenter.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/schismtracker.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/blender.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/digitalcolor_meter.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/vnc.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/mucommander.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/skim.xml" />
   </item>
 
-  <include once="true" path="include/checkbox/keyboard_layouts.xml" />
-  <include once="true" path="include/checkbox/for_pc_users.xml" />
-  <include once="true" path="include/checkbox/for_dvorak_users.xml" />
-  <include once="true" path="include/checkbox/for_blind_users.xml" />
-  <include once="true" path="include/checkbox/device_specific.xml" />
-  <include once="true" path="include/checkbox/change_input_source_temporary.xml" />
-  <include once="true" path="include/checkbox/for_broken_keys.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/keyboard_layouts.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/for_pc_users.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/for_dvorak_users.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/for_blind_users.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/device_specific.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/change_input_source_temporary.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/for_broken_keys.xml" />
 
   <item><name>──────────────────────────────</name></item>
-  <include once="true" path="include/checkbox/languages/iso_keyboard.xml" />
-  <include once="true" path="include/checkbox/latin_american_iso_keyboard_layout.xml" />
-  <include once="true" path="include/checkbox/languages/belgian.xml" />
-  <include once="true" path="include/checkbox/languages/bulgarian.xml" />
-  <include once="true" path="include/checkbox/languages/canadian.xml" />
-  <include once="true" path="include/checkbox/languages/croatian.xml" />
-  <include once="true" path="include/checkbox/languages/czech.xml" />
-  <include once="true" path="include/checkbox/languages/danish.xml" />
-  <include once="true" path="include/checkbox/languages/finnish.xml" />
-  <include once="true" path="include/checkbox/languages/french.xml" />
-  <include once="true" path="include/checkbox/languages/german.xml" />
-  <include once="true" path="include/checkbox/languages/hebrew.xml" />
-  <include once="true" path="include/checkbox/languages/italian.xml" />
-  <include once="true" path="include/checkbox/languages/japanese.xml" />
-  <include once="true" path="include/checkbox/languages/korean.xml" />
-  <include once="true" path="include/checkbox/languages/lithuanian.xml" />
-  <include once="true" path="include/checkbox/languages/norwegian.xml" />
-  <include once="true" path="include/checkbox/languages/polish.xml" />
-  <include once="true" path="include/checkbox/languages/portuguese.xml" />
-  <include once="true" path="include/checkbox/languages/russian.xml" />
-  <include once="true" path="include/checkbox/languages/slovenian.xml" />
-  <include once="true" path="include/checkbox/languages/spanish.xml" />
-  <include once="true" path="include/checkbox/languages/swedish.xml" />
-  <include once="true" path="include/checkbox/languages/swiss.xml" />
-  <include once="true" path="include/checkbox/languages/ukrainian.xml" />
-  <include once="true" path="include/checkbox/languages/us.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/iso_keyboard.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/latin_american_iso_keyboard_layout.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/belgian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/bulgarian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/canadian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/croatian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/czech.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/danish.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/finnish.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/french.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/german.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/hebrew.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/italian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/japanese.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/korean.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/lithuanian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/norwegian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/polish.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/portuguese.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/russian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/slovenian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/spanish.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/swedish.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/swiss.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/ukrainian.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/languages/us.xml" />
 
   <item><name>──────────────────────────────</name></item>
-  <include once="true" path="include/checkbox/samples.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/samples.xml" />
 </root>

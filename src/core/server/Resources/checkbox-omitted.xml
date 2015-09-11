@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <root>
-  <include once="true" path="include/checkbox/core.xml" />
-  <include once="true" path="include/checkbox/flags.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/core.xml" />
+  <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/flags.xml" />
 </root>
