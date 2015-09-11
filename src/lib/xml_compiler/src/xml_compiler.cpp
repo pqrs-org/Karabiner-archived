@@ -5,13 +5,17 @@
 #include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
-static void append_environments_to_replacement(pqrs::string::replacement& r) {
+void xml_compiler::append_environments_to_replacement_(pqrs::string::replacement& r) const {
   if (r.find("ENV_HOME") == r.end()) {
     const char* p = std::getenv("HOME");
     if (!p) {
       p = "";
     }
     r["ENV_HOME"] = p;
+  }
+
+  for (auto& it : extra_environment_variables_) {
+    r.emplace(it.first, it.second);
   }
 }
 
@@ -42,7 +46,7 @@ void xml_compiler::reload(const std::string& checkbox_xml_file_name) {
       replacement_loader loader(*this, replacement_);
 
       pqrs::string::replacement dummy; // Use dummy replacement when we read <replacementdef>.
-      append_environments_to_replacement(dummy);
+      append_environments_to_replacement_(dummy);
 
       // private.xml
       {
@@ -62,7 +66,7 @@ void xml_compiler::reload(const std::string& checkbox_xml_file_name) {
         }
       }
 
-      append_environments_to_replacement(replacement_);
+      append_environments_to_replacement_(replacement_);
     }
 
     // Reset replacement warnings that occur during loading replacement.
