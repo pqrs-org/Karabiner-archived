@@ -2,6 +2,7 @@
 #import "EnvironmentChecker.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
+#import "PreferencesKeys.h"
 #import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
@@ -204,7 +205,12 @@
   @synchronized(self) {
     [XMLCompiler prepare_private_xml];
 
-    pqrs_xml_compiler_reload(pqrs_xml_compiler_, "checkbox.xml");
+    const char* checkbox_xml_file_name = "checkbox.xml";
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings]) {
+      checkbox_xml_file_name = "checkbox-omitted.xml";
+    }
+
+    pqrs_xml_compiler_reload(pqrs_xml_compiler_, checkbox_xml_file_name);
 
     // build preferencepane_checkbox_
     {

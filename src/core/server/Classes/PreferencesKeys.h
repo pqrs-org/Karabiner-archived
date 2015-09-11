@@ -14,3 +14,4 @@
 #define kStatusWindowFontSize @"statusWindowFontSize"
 #define kStatusWindowPosition @"statusWindowPosition"
 #define kIsAXNotifierEnabled @"kIsAXNotifierEnabled"
+#define kUsePreparedSettings @"kUsePreparedSettings"

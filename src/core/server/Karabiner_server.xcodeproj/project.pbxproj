@@ -59,6 +59,7 @@
 		34B682EA1AC845AD00915847 /* StatusMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B682E91AC845AD00915847 /* StatusMessageManager.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */; };
+		34CD9CCD1BA1E67A004F0218 /* checkbox-omitted.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */; };
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
@@ -170,6 +171,7 @@
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
 		34CB2F2E19565E2B00A6E0E3 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
 		34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
+		34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "checkbox-omitted.xml"; path = "Resources/checkbox-omitted.xml"; sourceTree = "<group>"; };
 		34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkchangeinputsourcedef.xml; path = Resources/vkchangeinputsourcedef.xml; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputSource.m"; path = "Classes/WorkSpaceData+InputSource.m"; sourceTree = "<group>"; };
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				343BB0C913E055B10037A81F /* app.icns */,
 				34A83BCE144B1EAA00AE5687 /* appdef.xml */,
+				34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */,
 				34A611921531707E0003894B /* checkbox.xml */,
 				348F120015EA8ADA008A2BDA /* devicelocationdef.xml */,
 				3451A54F14532D400030EAD7 /* deviceproductdef.xml */,
@@ -467,6 +470,7 @@
 				34192A8618FEC13000AC2390 /* modifierdef.xml in Resources */,
 				34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */,
 				343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */,
+				34CD9CCD1BA1E67A004F0218 /* checkbox-omitted.xml in Resources */,
 				3431D7CB19E1395D00AE3219 /* icon.statusbar.tif in Resources */,
 				34A611931531707E0003894B /* checkbox.xml in Resources */,
 				3481FAA61ACCFAD60063828A /* StatusMessageEdgeWindow.xib in Resources */,
