@@ -16,11 +16,13 @@ void PressingPhysicalKeys::update(const Params_Base &paramsBase) {
     for (;;) {
       if (!p) break;
 
-      // We remove only one matched item. (keep other matched items.)
-      // Because, if keyboard has same key (by Seil or multiple keyboards are connected),
-      // the same key entries might exist in list_.
       if ((p->fromEvent).isTargetEvent(paramsBase)) {
         p = static_cast<Item *>(list_.erase_and_delete(p));
+
+        if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_allow_devices_multiple_same_key)) {
+          break;
+        }
+
       } else {
         p = static_cast<Item *>(p->getnext());
       }

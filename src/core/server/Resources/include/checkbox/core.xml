@@ -139,6 +139,11 @@
         <identifier essential="true">general.allow_devices_vendor_id_product_id_are_zero</identifier>
       </item>
       <item>
+        <name>Allow devices which has a multiple same key.</name>
+        <appendix>(For example, enable this option when you use a keyboard which has two left shift keys.)</appendix>
+        <identifier essential="true">general.allow_devices_multiple_same_key</identifier>
+      </item>
+      <item>
         <name>Don't leave any modes automatically when the machine wakes from sleep.</name>
         <appendix>(Pass Through Mode, Browsing Mode, etc.)</appendix>
         <appendix></appendix>
