@@ -86,14 +86,6 @@
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAGS_ANY, KeyCode::COMMAND_L, MODIFIERFLAGS_ANY, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
-        <name>Command_L to Command_L</name>
-        <appendix>(+ When you type Command_L only, send EISUU)</appendix>
-        <appendix>(+ When you type Command_R+Command_L only, toggle Complete Vi Mode)</appendix>
-        <identifier>remap.jis_commandL2commandL_vimode_eisuu</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
-      </item>
-      <item>
         <name>Command_L to Command_L (except Terminal)</name>
         <appendix>(+ When you type Command_L only, send EISUU)</appendix>
         <identifier>remap.jis_commandL2commandL_eisuu_ex_term</identifier>
@@ -118,16 +110,6 @@
         <appendix>(+ When you type Shift+Command_L only, send ESCAPE)</appendix>
         <identifier>remap.jis_commandL2controlL_eisuu_escape</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
-      </item>
-      <item>
-        <name>Command_L to Control_L</name>
-        <appendix>(+ When you type Command_L only, send EISUU)</appendix>
-        <appendix>(+ When you type Command_R+Command_L only, toggle Complete Vi Mode)</appendix>
-        <appendix>(+ When you type Shift+Command_L only, send ESCAPE)</appendix>
-        <identifier>remap.jis_commandL2controlL_eisuu_vimode_escape</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
@@ -183,14 +165,6 @@
       </item>
       <item>
         <name>Command_R to Command_R</name>
-        <appendix>(+ When you type Command_R only, send KANA)</appendix>
-        <appendix>(+ When you type Command_L+Command_R only, toggle Complete Vi Mode)</appendix>
-        <identifier>remap.jis_commandR2commandR_vimode_kana</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, ModifierFlag::COMMAND_L, KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
-      </item>
-      <item>
-        <name>Command_R to Command_R</name>
         <appendix>(+ When you type Command_R only, send KANA/EISUU (toggle))</appendix>
         <identifier>remap.jis_commandR2commandR_toggle_kana_eisuu</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
@@ -201,16 +175,6 @@
         <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
         <identifier>remap.jis_commandR2commandR_kana_return</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
-      </item>
-      <item>
-        <name>Command_R to Command_R</name>
-        <appendix>(+ When you type Command_R only, send KANA)</appendix>
-        <appendix>(+ When you type Control+Command_R only, toggle Complete Vi Mode)</appendix>
-        <appendix>(+ When you type Shift+Command_R only, send Return)</appendix>
-        <identifier>remap.jis_commandR2commandR_kana_vimode_return</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
@@ -418,16 +382,6 @@
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
       </item>
       <item>
-        <name>EISUU to Control_L</name>
-        <appendix>(+ When you type Shift+EISUU only, send Escape)</appendix>
-        <appendix>(+ When you type Command_R+EISUU only, toggle Complete Vi Mode)</appendix>
-        <appendix>(+ When you type EISUU only, send EISUU)</appendix>
-        <identifier>remap.jis_eisuu2controlL_eisuu_vimode_escape</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::CONTROL_L, ModifierFlag::SHIFT_L, KeyCode::ESCAPE</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, ModifierFlag::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_R, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::CONTROL_L, KeyCode::JIS_EISUU</autogen>
-      </item>
-      <item>
         <name>EISUU to Fn</name>
         <identifier>remap.jis_eisuu2fn</identifier>
         <autogen>__KeyToKey__ KeyCode::JIS_EISUU, KeyCode::FN</autogen>
@@ -584,16 +538,6 @@
         <appendix>(+ When you type KANA only, send KANA)</appendix>
         <identifier>remap.jis_kana2commandR_kana_return</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
-      </item>
-      <item>
-        <name>KANA to Command_R</name>
-        <appendix>(+ When you type Shift+KANA only, send Return)</appendix>
-        <appendix>(+ When you type Control+KANA only, toggle Complete Vi Mode)</appendix>
-        <appendix>(+ When you type KANA only, send KANA)</appendix>
-        <identifier>remap.jis_kana2commandR_kana_vimode_return</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::COMMAND_R, ModifierFlag::SHIFT_L, KeyCode::RETURN</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::COMMAND_R, ModifierFlag::CONTROL_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_KANA, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
       </item>
       <item>
@@ -1157,11 +1101,6 @@
 
     <item>
       <name>Simultaneous Key Presses</name>
-      <item>
-        <name>Simultaneous Key Presses [EISUU+KANA] to toggle Vi Mode</name>
-        <identifier>remap.vimode_toggle_eisuukana</identifier>
-        <autogen>__SimultaneousKeyPresses__ KeyCode::JIS_EISUU, KeyCode::JIS_KANA, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-      </item>
       <item>
         <name>Simultaneous Key Presses [EISUU+KANA] to Return</name>
         <appendix>(We can change the key once again)</appendix>
