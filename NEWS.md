@@ -3,6 +3,8 @@
 * New functions and improvements:
   * Prepared settings have been updated.
   * Updates for people who add new settings by oneself:
+    * "Use prepared settings" option has been added into Karabiner Preferences > Misc & Uninstall tab. <br />
+      Turning off the setting allows you to drop prepared settings and improve the speed of reloading XML.
     * `once` attribute has been introduced into `<include>` tag.
 
 
