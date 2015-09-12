@@ -352,6 +352,18 @@ void FlagStatus::subtract(const FlagStatus& other, Vector_ModifierFlag& modifier
   }
 }
 
+void FlagStatus::log(void) const {
+  for (size_t i = 0; i < item_.size(); ++i) {
+    int sum = item_[i].sum(false);
+    if (sum != 0) {
+      const char* name = ModifierName::getName(item_[i].flag_);
+      if (name) {
+        IOLOG_DEVEL("FlagStatus %s: %d\n", name, sum);
+      }
+    }
+  }
+}
+
 void FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
   CommonData::clear_statusmessage(statusMessageIndex);
 

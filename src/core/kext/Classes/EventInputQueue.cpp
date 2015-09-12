@@ -681,6 +681,8 @@ void EventInputQueue::doFire(void) {
     }
   }
 
+  FlagStatus::globalFlagStatus().log();
+
   CommonData::setcurrent_lastpressedphysicalkey(p->getParamsBase());
   CommonData::setcurrent_lastreleasedphysicalkey(p->getParamsBase());
 

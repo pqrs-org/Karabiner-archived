@@ -173,6 +173,8 @@ public:
 
   void subtract(const FlagStatus& other, Vector_ModifierFlag& modifierFlags) const;
 
+  void log(void) const;
+
   static FlagStatus& globalFlagStatus(void);
 
 private:
