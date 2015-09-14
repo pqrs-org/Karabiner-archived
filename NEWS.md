@@ -3,6 +3,8 @@
 * New functions and improvements:
   * "Use prepared settings" option has been added into Karabiner Preferences > Misc & Uninstall tab. <br />
     Turning off the setting allows you to drop prepared settings and improve the speed of reloading XML.
+  * EventViewer has been improved.<br />
+    Media control events and some key combinations are supported.
   * Prepared settings have been updated.
   * Updates for people who add new settings by oneself:
     * `once` attribute has been introduced into `<include>` tag.
