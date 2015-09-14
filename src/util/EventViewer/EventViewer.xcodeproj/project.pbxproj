@@ -11,6 +11,7 @@
 		256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */; };
 		343EEA0E19C5E1D1001A969F /* TabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 343EEA0D19C5E1D1001A969F /* TabView.m */; };
 		3441AA3E194AF4CB00A96684 /* KarabinerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3441AA3B194AF4CB00A96684 /* KarabinerClient.m */; };
+		346FDD281BA6E58500B1072E /* EventViewerApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 346FDD271BA6E58500B1072E /* EventViewerApplication.m */; };
 		3488F176174FB64C00178158 /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3488F175174FB64C00178158 /* app.icns */; };
 		34BD67F01956620000587BE7 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BD67EF1956620000587BE7 /* Relauncher.m */; };
 		34C92D221122EDA100B0B4ED /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C92D211122EDA100B0B4ED /* Carbon.framework */; };
@@ -44,6 +45,8 @@
 		3441AA3B194AF4CB00A96684 /* KarabinerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KarabinerClient.m; path = ../../share/KarabinerClient.m; sourceTree = "<group>"; };
 		3441AA3C194AF4CB00A96684 /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../share/KarabinerKeys.h; sourceTree = "<group>"; };
 		3441AA3D194AF4CB00A96684 /* KarabinerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerProtocol.h; path = ../../share/KarabinerProtocol.h; sourceTree = "<group>"; };
+		346FDD261BA6E58500B1072E /* EventViewerApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewerApplication.h; path = Classes/EventViewerApplication.h; sourceTree = "<group>"; };
+		346FDD271BA6E58500B1072E /* EventViewerApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewerApplication.m; path = Classes/EventViewerApplication.m; sourceTree = "<group>"; };
 		348323671934E0FD0038CA78 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
 		3488F175174FB64C00178158 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = Resources/app.icns; sourceTree = "<group>"; };
 		34BD67EE1956620000587BE7 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 				34CA6976174FB72900EC8EFB /* Devices.m */,
 				34CA6977174FB72900EC8EFB /* EventQueue.h */,
 				34CA6978174FB72900EC8EFB /* EventQueue.m */,
+				346FDD261BA6E58500B1072E /* EventViewerApplication.h */,
+				346FDD271BA6E58500B1072E /* EventViewerApplication.m */,
 				34CA6979174FB72900EC8EFB /* KeyResponder.h */,
 				34CA697A174FB72900EC8EFB /* KeyResponder.m */,
 				34CA697B174FB72900EC8EFB /* OtherInformationStore.h */,
@@ -261,6 +266,7 @@
 				34BD67F01956620000587BE7 /* Relauncher.m in Sources */,
 				34F16534194B096600D9765F /* MigrationUtilities.m in Sources */,
 				34CA697D174FB72900EC8EFB /* AppQueue.m in Sources */,
+				346FDD281BA6E58500B1072E /* EventViewerApplication.m in Sources */,
 				343EEA0E19C5E1D1001A969F /* TabView.m in Sources */,
 				34CA697E174FB72900EC8EFB /* Devices.m in Sources */,
 				34CA697F174FB72900EC8EFB /* EventQueue.m in Sources */,
