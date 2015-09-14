@@ -248,6 +248,33 @@ enum {
         misc:misc];
 }
 
+- (void)pushSystemDefinedEvent:(NSEvent*)event {
+  if ([event subtype] == NX_SUBTYPE_AUX_CONTROL_BUTTONS) {
+    int keyCode = (([event data1] & 0xFFFF0000) >> 16);
+    int keyFlags = ([event data1] & 0x0000FFFF);
+    int keyState = ((keyFlags & 0xFF00) >> 8);
+
+    NSString* eventType = nil;
+    switch (keyState) {
+    case NX_KEYDOWN:
+      eventType = @"SysKeyDown";
+      break;
+    case NX_KEYUP:
+      eventType = @"SysKeyUp";
+      break;
+    }
+    if (!eventType) {
+      return;
+    }
+
+    [self push:eventType
+          code:[NSString stringWithFormat:@"0x%x", keyCode]
+          name:@""
+         flags:[self modifierFlagsToString:[event modifierFlags]]
+          misc:@""];
+  }
+}
+
 - (void)pushMouseEvent:(NSEvent*)event eventType:(NSString*)eventType {
   [self push:eventType
         code:[NSString stringWithFormat:@"0x%x", (int)([event buttonNumber])]
@@ -276,6 +303,10 @@ enum {
 
   case NSFlagsChanged:
     [self pushKeyEvent:event eventType:@"FlagsChanged"];
+    break;
+
+  case NSSystemDefined:
+    [self pushSystemDefinedEvent:event];
     break;
 
   default:
