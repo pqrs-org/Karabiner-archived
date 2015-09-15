@@ -5,6 +5,7 @@
 #define kTargetWindowSpotlight @"Spotlight"
 #define kTargetWindowQuicksilver @"Quicksilver"
 #define kTargetWindowAlfred @"Alfred"
+#define kTargetWindowOmniFocus @"OmniFocus"
 
 @interface WindowObserver () {
   NSTimer* timer_;
@@ -215,6 +216,17 @@
   return NO;
 }
 
+- (BOOL)isOmniFocus:(NSString*)windowOwnerName
+         windowName:(NSString*)windowName
+        windowLayer:(NSInteger)windowLayer {
+  if ([windowOwnerName isEqualToString:@"OmniFocus"] &&
+      windowLayer == 8) {
+    return YES;
+  }
+
+  return NO;
+}
+
 - (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
@@ -255,6 +267,13 @@
                 windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
           targetWindows_[@(windowNumber)] = kTargetWindowAlfred;
+        }
+
+        if ([self isOmniFocus:windowOwnerName
+                   windowName:windowName
+                  windowLayer:windowLayer]) {
+          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+          targetWindows_[@(windowNumber)] = kTargetWindowOmniFocus;
         }
       }
 
