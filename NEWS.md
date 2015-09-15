@@ -5,6 +5,7 @@
     Turning off the setting allows you to drop prepared settings and improve the speed of reloading XML.
   * EventViewer has been improved.<br />
     Media control events and some key combinations are supported.
+  * AXNotifier supported OmniFocus2 Quick Entry.
   * Prepared settings have been updated.
   * Updates for people who add new settings by oneself:
     * `once` attribute has been introduced into `<include>` tag.
