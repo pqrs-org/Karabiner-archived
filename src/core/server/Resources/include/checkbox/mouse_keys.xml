@@ -38,6 +38,9 @@
       <appendix>Warp cursor position:</appendix>
       <appendix>* D+I: Move mouse cursor to the center of the frontmost app's window.</appendix>
       <identifier>remap.mouse_keys_mode_2</identifier>
+
+      {{ MOUSE_KEYS_MODE_2_CONDITION }}
+
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::D,

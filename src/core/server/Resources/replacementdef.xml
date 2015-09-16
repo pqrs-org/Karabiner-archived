@@ -3,10 +3,9 @@
   <!-- ============================================================ -->
   <!--
       Environment variables which you can use without replacementdef:
-
-      - You can use {{ ENV_HOME }} to specify home directory.
-      - You can use {{ ENV_Karabiner_Resources }} to specify "Karabiner.app/Contents/Resources" directory.
-    -->
+      * You can use {{ ENV_HOME }} to specify home directory.
+      * You can use {{ ENV_Karabiner_Resources }} to specify "Karabiner.app/Contents/Resources" directory.
+  -->
 
   <!-- ============================================================ -->
   <!-- Common -->
@@ -52,6 +51,24 @@
 
   <!-- ============================================================ -->
   <replacementdef>
+    <replacementname>MOUSE_KEYS_MODE_2_CONDITION</replacementname>
+    <replacementvalue>
+      <![CDATA[
+               <modifier_not>
+                 ModifierFlag::COMMAND_L,
+                 ModifierFlag::COMMAND_R,
+                 ModifierFlag::CONTROL_L,
+                 ModifierFlag::CONTROL_R,
+                 ModifierFlag::OPTION_L,
+                 ModifierFlag::OPTION_R,
+                 ModifierFlag::SHIFT_L,
+                 ModifierFlag::SHIFT_R,
+               </modifier_not>
+               ]]>
+    </replacementvalue>
+  </replacementdef>
+
+  <replacementdef>
     <replacementname>MOUSE_KEYS_MODE_2_EXTRA</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
@@ -61,8 +78,8 @@
     <replacementname>THUMBSENSE_EXTRA</replacementname>
     <replacementvalue>
       <![CDATA[
-        <autogen>__ShowStatusMessage__ ThumbSense</autogen>
-        ]]>
+               <autogen>__ShowStatusMessage__ ThumbSense</autogen>
+      ]]>
     </replacementvalue>
   </replacementdef>
 
@@ -70,8 +87,8 @@
     <replacementname>THUMBSENSE_COPYANDPASTE_EXTRA</replacementname>
     <replacementvalue>
       <![CDATA[
-        <autogen>__ShowStatusMessage__ Copy&amp;Paste</autogen>
-        ]]>
+               <autogen>__ShowStatusMessage__ Copy&amp;Paste</autogen>
+      ]]>
     </replacementvalue>
   </replacementdef>
 
@@ -141,7 +158,7 @@
 
   <!--
       Do not overwrite UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING in private.xml.
-    -->
+  -->
   <replacementdef>
     <replacementname>UBIQUITOUS_VIM_BINDINGS_CANCEL_OPERATOR_PENDING</replacementname>
     <replacementvalue>
@@ -187,7 +204,7 @@
     <replacementvalue>
       <![CDATA[
                <windowname_not>Chrome_Remote_Desktop</windowname_not>
-      ]]>
+               ]]>
     </replacementvalue>
   </replacementdef>
 
