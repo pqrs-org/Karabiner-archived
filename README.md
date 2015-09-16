@@ -38,7 +38,7 @@ System requirements:
 * Boost 1.56.0+ (header-only) http://www.boost.org/
 * CocoaPods http://cocoapods.org/ (`sudo gem install cocoapods && pod setup`)
 
-Please install Boost into `/usr/local/include/boost`. (eg. `/usr/local/include/boost/version.hpp`)
+Please install Boost into `/opt/local/include/boost`. (eg. `/opt/local/include/boost/version.hpp`)
 
 ### Step 1: Getting source code
 
