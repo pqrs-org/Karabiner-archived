@@ -60,6 +60,7 @@
                  ModifierFlag::COMMAND_R,
                  ModifierFlag::CONTROL_L,
                  ModifierFlag::CONTROL_R,
+                 ModifierFlag::FN,
                  ModifierFlag::OPTION_L,
                  ModifierFlag::OPTION_R,
                  ModifierFlag::SHIFT_L,
@@ -123,6 +124,26 @@
   </replacementdef>
 
   <!-- ============================================================ -->
+  <replacementdef>
+    <replacementname>SIMPLE_VI_MODE_CONDITION</replacementname>
+    <replacementvalue>
+      <![CDATA[
+               <!-- Disable Simple Vi Mode v2 when any modifiers are pressed in order to keep shift-S key repeat. -->
+               <modifier_not>
+                 ModifierFlag::COMMAND_L,
+                 ModifierFlag::COMMAND_R,
+                 ModifierFlag::CONTROL_L,
+                 ModifierFlag::CONTROL_R,
+                 ModifierFlag::FN,
+                 ModifierFlag::OPTION_L,
+                 ModifierFlag::OPTION_R,
+                 ModifierFlag::SHIFT_L,
+                 ModifierFlag::SHIFT_R,
+               </modifier_not>
+               ]]>
+    </replacementvalue>
+  </replacementdef>
+
   <replacementdef>
     <replacementname>SIMPLE_VI_MODE_EXTRA</replacementname>
     <replacementvalue></replacementvalue>

@@ -20,6 +20,9 @@
       <appendix><![CDATA[  * S+F+K: Page Up  ]]></appendix>
       <appendix><![CDATA[  * S+F+L: End  ]]></appendix>
       <identifier>remap.simple_vi_mode</identifier>
+
+      {{ SIMPLE_VI_MODE_CONDITION }}
+
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::S,
