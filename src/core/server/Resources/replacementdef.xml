@@ -54,6 +54,7 @@
     <replacementname>MOUSE_KEYS_MODE_2_CONDITION</replacementname>
     <replacementvalue>
       <![CDATA[
+               <!-- Disable Mouse Keys Mode v2 when any modifiers are pressed in order to keep control-D key repeat. -->
                <modifier_not>
                  ModifierFlag::COMMAND_L,
                  ModifierFlag::COMMAND_R,
