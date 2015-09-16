@@ -83,7 +83,6 @@ public:
                            const Vector_ModifierFlag& fromFlags);
 
   bool isPressing(void) const { return isPressing_; }
-  void unsetPressingState(void) { isPressing_ = false; }
 
   // Primitive functions:
   // These functions do not treat Flags.
