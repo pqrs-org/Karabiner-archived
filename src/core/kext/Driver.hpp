@@ -8,11 +8,11 @@ class org_pqrs_driver_Karabiner final : public IOService {
   OSDeclareDefaultStructors(org_pqrs_driver_Karabiner);
 
 public:
-  virtual bool init(OSDictionary* dictionary = 0);
-  virtual void free(void);
-  virtual IOService* probe(IOService* provider, SInt32* score);
-  virtual bool start(IOService* provider);
-  virtual void stop(IOService* provider);
+  virtual bool init(OSDictionary* dictionary = 0) override;
+  virtual void free(void) override;
+  virtual IOService* probe(IOService* provider, SInt32* score) override;
+  virtual bool start(IOService* provider) override;
+  virtual void stop(IOService* provider) override;
 
 private:
   bool initialize_notification(void);
