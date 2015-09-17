@@ -1,30 +1,37 @@
 #ifndef USERCLIENT_KEXT_HPP
 #define USERCLIENT_KEXT_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
+#include <IOKit/IOUserClient.h>
+END_IOKIT_INCLUDE;
+
 #include "Driver.hpp"
 #include "bridge.h"
-#include <IOKit/IOUserClient.h>
 
 #define KEXT_CLASSNAME org_pqrs_driver_Karabiner
 #define USERCLIENT_KEXT_CLASSNAME org_pqrs_driver_Karabiner_UserClient_kext
 
 class USERCLIENT_KEXT_CLASSNAME final : public IOUserClient {
-  OSDeclareDefaultStructors(USERCLIENT_KEXT_CLASSNAME) public :
-      // IOUserClient methods
-      virtual bool initWithTask(task_t owningTask, void* securityToken, UInt32 type);
+  OSDeclareDefaultStructors(USERCLIENT_KEXT_CLASSNAME);
 
-  virtual bool start(IOService* provider);
-  virtual void stop(IOService* provider);
+public:
+  // IOUserClient methods
+  virtual bool initWithTask(task_t owningTask, void* securityToken, UInt32 type) override;
 
-  virtual IOReturn clientClose(void);
+  virtual bool start(IOService* provider) override;
+  virtual void stop(IOService* provider) override;
 
-  virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer);
+  virtual IOReturn clientClose(void) override;
+
+  virtual bool didTerminate(IOService* provider, IOOptionBits options, bool* defer) override;
 
   static void send_notification_to_userspace(uint32_t type, uint32_t option);
 
 protected:
   virtual IOReturn externalMethod(uint32_t selector, IOExternalMethodArguments* arguments,
-                                  IOExternalMethodDispatch* dispatch, OSObject* target, void* reference);
+                                  IOExternalMethodDispatch* dispatch, OSObject* target, void* reference) override;
 
 private:
   // ------------------------------------------------------------
