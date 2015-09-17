@@ -55,6 +55,7 @@
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
 		346A727819D8F55E00DEEDE6 /* Params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346A727719D8F55E00DEEDE6 /* Params.cpp */; };
+		346E35981BAB2D2E006EA09B /* diagnostic_macros.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346E35971BAB2D2E006EA09B /* diagnostic_macros.hpp */; settings = {ASSET_TAGS = (); }; };
 		346EE06C1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */; };
 		3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3472914014CEFC64006586F5 /* VK_WAIT.cpp */; };
 		3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3472914114CEFC64006586F5 /* VK_WAIT.hpp */; };
@@ -226,6 +227,7 @@
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
 		346A727719D8F55E00DEEDE6 /* Params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Params.cpp; path = Classes/Params.cpp; sourceTree = "<group>"; };
+		346E35971BAB2D2E006EA09B /* diagnostic_macros.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = diagnostic_macros.hpp; sourceTree = "<group>"; };
 		346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ElapsedTimeSinceLastPressedFilter.hpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.hpp; sourceTree = "<group>"; };
 		3472914014CEFC64006586F5 /* VK_WAIT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_WAIT.cpp; path = VirtualKey/VK_WAIT.cpp; sourceTree = "<group>"; };
 		3472914114CEFC64006586F5 /* VK_WAIT.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = VK_WAIT.hpp; path = VirtualKey/VK_WAIT.hpp; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				34C7A9AF0CE4605B00C98397 /* Config.hpp */,
 				345004A80E7CE48F0075324B /* Core.cpp */,
 				345004A90E7CE48F0075324B /* Core.hpp */,
+				346E35971BAB2D2E006EA09B /* diagnostic_macros.hpp */,
 				345004AA0E7CE48F0075324B /* Driver.cpp */,
 				345004AB0E7CE48F0075324B /* Driver.hpp */,
 				34A7882E10CBD79100DF72FD /* KeyCode.cpp */,
@@ -657,6 +660,7 @@
 				343CB4EC1A19F0AA009EC95F /* KeyDownUpToKey.hpp in Headers */,
 				348077B818BCEEDC00314700 /* DeltaBuffer.hpp in Headers */,
 				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
+				346E35981BAB2D2E006EA09B /* diagnostic_macros.hpp in Headers */,
 				3477936F185B1FA800B3EF06 /* LastPressedPhysicalKey.hpp in Headers */,
 				05CB4A2C12BB4C0800737491 /* ModifierFilter.hpp in Headers */,
 				3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */,
