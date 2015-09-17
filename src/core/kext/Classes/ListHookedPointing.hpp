@@ -1,7 +1,11 @@
 #ifndef LISTHOOKEDPOINTING_HPP
 #define LISTHOOKEDPOINTING_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/hidsystem/IOHIPointing.h>
+END_IOKIT_INCLUDE;
 
 #include "ListHookedDevice.hpp"
 #include "Params.hpp"

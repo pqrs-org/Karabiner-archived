@@ -1,7 +1,11 @@
 #ifndef DRIVER_HPP
 #define DRIVER_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/IOService.h>
+END_IOKIT_INCLUDE;
 
 // http://developer.apple.com/documentation/Darwin/Conceptual/KEXTConcept/KEXTConceptIOKit/hello_iokit.html#//apple_ref/doc/uid/20002366-CIHECHHE
 class org_pqrs_driver_Karabiner final : public IOService {

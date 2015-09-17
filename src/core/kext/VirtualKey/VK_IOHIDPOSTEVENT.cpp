@@ -1,5 +1,9 @@
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/IOLib.h>
 #include <IOKit/hidsystem/ev_keymap.h>
+END_IOKIT_INCLUDE;
 
 #include "UserClient_kext.hpp"
 #include "VK_IOHIDPOSTEVENT.hpp"

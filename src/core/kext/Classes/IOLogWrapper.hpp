@@ -1,7 +1,11 @@
 #ifndef IOLOGWRAPPER_HPP
 #define IOLOGWRAPPER_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/IOLib.h>
+END_IOKIT_INCLUDE;
 
 #include "Config.hpp"
 

@@ -1,7 +1,11 @@
 #ifndef LISTHOOKEDCONSUMER_HPP
 #define LISTHOOKEDCONSUMER_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/hidsystem/IOHIKeyboard.h>
+END_IOKIT_INCLUDE;
 
 #include "ListHookedDevice.hpp"
 

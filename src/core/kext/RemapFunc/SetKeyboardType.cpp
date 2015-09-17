@@ -1,4 +1,8 @@
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/IOLib.h>
+END_IOKIT_INCLUDE;
 
 #include "IOLogWrapper.hpp"
 #include "SetKeyboardType.hpp"

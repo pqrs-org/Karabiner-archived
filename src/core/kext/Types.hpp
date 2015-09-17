@@ -1,8 +1,13 @@
 #ifndef ORG_PQRS_TYPES_HPP
 #define ORG_PQRS_TYPES_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/IOLib.h>
 #include <IOKit/IOTimerEventSource.h>
+END_IOKIT_INCLUDE;
+
 #include "bridge.h"
 #include "Vector.hpp"
 

@@ -1,7 +1,11 @@
 #ifndef TIMERWRAPPER_HPP
 #define TIMERWRAPPER_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/IOTimerEventSource.h>
+END_IOKIT_INCLUDE;
 
 class org_pqrs_Karabiner_TimerWrapperObject final : public OSObject {
   OSDeclareDefaultStructors(org_pqrs_Karabiner_TimerWrapperObject);

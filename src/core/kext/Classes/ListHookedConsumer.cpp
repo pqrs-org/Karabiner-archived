@@ -1,6 +1,10 @@
+#include "diagnostic_macros.hpp"
+
 #define protected public // A hack for access private member of IOHIKeyboard
 #define private public
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/hidsystem/IOHIKeyboard.h>
+END_IOKIT_INCLUDE;
 #undef protected
 #undef private
 

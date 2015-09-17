@@ -1,7 +1,11 @@
 #ifndef LISTHOOKEDDEVICE_HPP
 #define LISTHOOKEDDEVICE_HPP
 
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/hidsystem/IOHIDevice.h>
+END_IOKIT_INCLUDE;
 
 #include "KeyCode.hpp"
 #include "List.hpp"

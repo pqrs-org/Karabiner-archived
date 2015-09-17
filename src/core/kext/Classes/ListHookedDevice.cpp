@@ -1,4 +1,8 @@
+#include "diagnostic_macros.hpp"
+
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/hid/IOHIDKeys.h>
+END_IOKIT_INCLUDE;
 
 #include "Config.hpp"
 #include "IOLogWrapper.hpp"

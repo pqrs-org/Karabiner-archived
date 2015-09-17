@@ -1,6 +1,10 @@
+#include "diagnostic_macros.hpp"
+
 #define protected public // A hack for access private member of IOHIPointing
 #define private public
+BEGIN_IOKIT_INCLUDE;
 #include <IOKit/hidsystem/IOHIPointing.h>
+END_IOKIT_INCLUDE;
 #undef protected
 #undef private
 
