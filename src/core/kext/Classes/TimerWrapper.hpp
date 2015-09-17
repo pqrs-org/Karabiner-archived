@@ -9,7 +9,7 @@ class org_pqrs_Karabiner_TimerWrapperObject final : public OSObject {
 public:
   static org_pqrs_Karabiner_TimerWrapperObject* timerEventSource(OSObject* owner, IOTimerEventSource::Action action);
   bool init(OSObject* owner, IOTimerEventSource::Action action);
-  void free(void);
+  void free(void) override;
 
   OSObject* getowner(void) const { return owner_; }
   IOTimerEventSource::Action getaction(void) const { return action_; }
