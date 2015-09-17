@@ -446,7 +446,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault | NSWorkspaceLaunchNewInstance;
     [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
                                                   options:options
-                                            configuration:nil
+                                            configuration:@{}
                                                     error:nil];
   });
 }
