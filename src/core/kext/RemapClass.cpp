@@ -614,6 +614,12 @@ bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_init
       uint32_t configindex = *p++;
       --size;
 
+      if (configindex >= remapclasses_.size()) {
+        IOLOG_ERROR("%s invalid configindex %d (remapclasses_.size() == %d).\n", __FUNCTION__,
+                    configindex, static_cast<int>(remapclasses_.size()));
+        goto error;
+      }
+
       RemapClass* newp = new RemapClass(p, size, configindex);
       if (!newp) {
         IOLOG_ERROR("%s newp == nullptr.\n", __FUNCTION__);
@@ -621,11 +627,6 @@ bool load_remapclasses_initialize_vector(const uint32_t* const remapclasses_init
       }
       p += size;
 
-      if (configindex >= remapclasses_.size()) {
-        IOLOG_ERROR("%s invalid configindex %d (remapclasses_.size() == %d).\n", __FUNCTION__,
-                    configindex, static_cast<int>(remapclasses_.size()));
-        goto error;
-      }
       remapclasses_[configindex] = newp;
     }
 
