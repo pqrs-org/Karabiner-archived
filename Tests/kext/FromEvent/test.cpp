@@ -202,20 +202,6 @@ TEST(Generic, changePressingState) {
   }
 }
 
-TEST(Generic, unsetPressingState) {
-  {
-    FromEvent fe(KeyCode::RETURN);
-    FlagStatus currentFlags;
-    Vector_ModifierFlag fromFlags;
-
-    EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
-    EXPECT_EQ(true, fe.isPressing());
-
-    fe.unsetPressingState();
-    EXPECT_EQ(false, fe.isPressing());
-  }
-}
-
 TEST(Generic, isTargetDownEvent) {
   {
     FromEvent fe(KeyCode::RETURN);
