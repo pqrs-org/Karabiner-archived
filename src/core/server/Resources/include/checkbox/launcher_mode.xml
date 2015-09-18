@@ -39,10 +39,11 @@
 
       <identifier>remap.launcher_mode_v2</identifier>
 
-      <pressingphysicalkeys_lessthan>2</pressingphysicalkeys_lessthan>
+      {{ LAUNCHER_MODE_V2_CONDITION }}
+
       <autogen>
         __KeyOverlaidModifier__
-        KeyCode::O, ModifierFlag::NONE,
+        {{ LAUNCHER_MODE_V2_KEY }},
 
         <!--
             Use notsave.launcher_mode_v2 in order to be higher priority.
@@ -53,7 +54,7 @@
         @end
 
         @begin
-        KeyCode::O,
+        {{ LAUNCHER_MODE_V2_KEY }},
         @end
       </autogen>
     </item>
@@ -64,7 +65,7 @@
       {{ LAUNCHER_MODE_V2_EXTRA }}
 
       <autogen>
-        __BlockUntilKeyUp__ KeyCode::O
+        __BlockUntilKeyUp__ {{ LAUNCHER_MODE_V2_KEY }}
       </autogen>
 
       <autogen>__KeyDownUpToKey__ KeyCode::A, KeyCode::VK_OPEN_URL_APP_Activity_Monitor</autogen>
