@@ -12,11 +12,11 @@
     </item>
     <item>
       <name>Improve ISO Keyboard Layout</name>
-      <appendix>( ''' to Pipe, 'Alt-gr +4' to '§' and '' to '\' )</appendix>
+      <appendix>( ''' to Pipe, 'Alt-gr +4' to '$' and '' to '\' )</appendix>
       <identifier>remap.no_saneuklayout</identifier>
-      <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_4, ModifierFlag::SHIFT_L</autogen>
-      <autogen>__KeyToKey__ KeyCode::EQUAL, KeyCode::KEY_7, ModifierFlag::SHIFT_L, ModifierFlag::OPTION_L</autogen>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::SHIFT_L, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Curly brackets</name>
