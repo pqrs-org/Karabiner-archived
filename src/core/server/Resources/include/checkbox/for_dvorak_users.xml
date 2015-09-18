@@ -204,9 +204,40 @@
       <!-- If ModifierFlag::FN is pressed, retain keys to convert Fn+jkl to 123 (numpad) -->
       <modifier_not>ModifierFlag::FN</modifier_not>
 
+      <!-- caps lock + shift -->
+      <block>
+        <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SHIFT_L,
+          KeyCode::VK_NONE,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::CAPSLOCK,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::CAPSLOCK,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SHIFT_R,
+          KeyCode::VK_NONE,
+
+          Option::KEYTOKEY_BEFORE_KEYDOWN,
+          KeyCode::CAPSLOCK,
+
+          Option::KEYTOKEY_AFTER_KEYUP,
+          KeyCode::CAPSLOCK,
+        </autogen>
+      </block>
+
       <block>
         <!-- caps lock + numbers -->
         <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+        <modifier_not>
+          ModifierFlag::SHIFT_L,
+          ModifierFlag::SHIFT_R,
+        </modifier_not>
         <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::KEY_7</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::KEY_5</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::KEY_3</autogen>
