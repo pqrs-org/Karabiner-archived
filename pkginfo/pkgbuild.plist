@@ -9,5 +9,12 @@
       <key>BundleIsVersionChecked</key>      <false/>
       <key>BundleOverwriteAction</key>       <string>upgrade</string>
     </dict>
+    <dict>
+      <key>RootRelativeBundlePath</key>      <string>Library/Application Support/org.pqrs/Karabiner/Karabiner.signed.kext</string>
+      <key>BundleHasStrictIdentifier</key>   <false/>
+      <key>BundleIsRelocatable</key>         <false/>
+      <key>BundleIsVersionChecked</key>      <false/>
+      <key>BundleOverwriteAction</key>       <string>upgrade</string>
+    </dict>
   </array>
 </plist>
