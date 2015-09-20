@@ -595,6 +595,11 @@
     <equal>net.sourceforge.skim-app.skim</equal>
   </appdef>
 
+  <appdef>
+    <appname>Slack</appname>
+    <equal>com.tinyspeck.slackmacgap</equal>
+  </appdef>
+
   <!-- fallback -->
   <appdef>
     <appname>JetBrainsApps</appname>
