@@ -515,12 +515,14 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (IBAction)quit:(id)sender {
-  NSAlert* alert = [NSAlert alertWithMessageText:@"Quit Karabiner?"
-                                   defaultButton:@"Quit"
-                                 alternateButton:@"Cancel"
-                                     otherButton:nil
-                       informativeTextWithFormat:@"Are you sure you want to quit Karabiner?"];
-  if ([alert runModal] != NSAlertDefaultReturn) return;
+  NSAlert* alert = [NSAlert new];
+  alert.messageText = @"Quit Karabiner?";
+  alert.informativeText = @"Are you sure you want to quit Karabiner?";
+  [alert addButtonWithTitle:@"Quit"];
+  [alert addButtonWithTitle:@"Cancel"];
+  if ([alert runModal] != NSAlertFirstButtonReturn) {
+    return;
+  }
 
   [StartAtLoginUtilities setStartAtLogin:NO];
   [NSApp terminate:nil];
