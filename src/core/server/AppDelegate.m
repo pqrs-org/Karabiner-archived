@@ -516,8 +516,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 - (IBAction)quit:(id)sender {
   NSAlert* alert = [NSAlert new];
-  alert.messageText = @"Quit Karabiner?";
-  alert.informativeText = @"Are you sure you want to quit Karabiner?";
+  alert.messageText = @"Are you sure you want to quit Karabiner?";
+  alert.informativeText = @"The changed key will be restored after Karabiner is quit.";
   [alert addButtonWithTitle:@"Quit"];
   [alert addButtonWithTitle:@"Cancel"];
   if ([alert runModal] != NSAlertFirstButtonReturn) {
