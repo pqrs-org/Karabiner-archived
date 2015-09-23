@@ -3,11 +3,61 @@
 
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
+#include "List.hpp"
 #include "Params.hpp"
 #include "Vector.hpp"
 #include "bridge.h"
 
 namespace org_pqrs_Karabiner {
+class FromEvent;
+
+class FromEventManager {
+  friend class FromEvent;
+
+public:
+  class Item final : public List::Item {
+  public:
+    Item(const FromEvent* p) : fromEvent_(p) {}
+    ~Item(void);
+
+    const FromEvent* getFromEvent(void) const { return fromEvent_; }
+
+  private:
+    const FromEvent* fromEvent_;
+  };
+
+  static void clear(void) {
+    list_.clear();
+  }
+
+  static void push_back(const FromEvent* p) {
+    list_.push_back(new Item(p));
+  }
+
+  static void erase_One(const FromEvent* p) {
+    for (Item* q = static_cast<Item*>(list_.safe_front()); q; q = static_cast<Item*>(q->getnext())) {
+      if (q->getFromEvent() == p) {
+        list_.erase_and_delete(q);
+        return;
+      }
+    }
+  }
+
+  static void erase_all(const FromEvent* p) {
+    Item* q = static_cast<Item*>(list_.safe_front());
+    while (q) {
+      if (q->getFromEvent() == p) {
+        q = static_cast<Item*>(list_.erase_and_delete(q));
+      } else {
+        q = static_cast<Item*>(q->getnext());
+      }
+    }
+  }
+
+private:
+  static List list_;
+};
+
 class FromEvent final {
 public:
   class Type final {

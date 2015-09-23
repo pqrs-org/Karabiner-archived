@@ -1,6 +1,8 @@
 #include "FromEvent.hpp"
 
 namespace org_pqrs_Karabiner {
+List FromEventManager::list_;
+
 bool FromEvent::isTargetEvent(bool& isDown, const Params_Base& paramsBase) const {
   switch (type_) {
   case Type::NONE: {
