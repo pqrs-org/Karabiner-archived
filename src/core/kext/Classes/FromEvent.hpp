@@ -34,7 +34,7 @@ public:
     list_.push_back(new Item(p));
   }
 
-  static void erase_One(const FromEvent* p) {
+  static void erase_one(const FromEvent* p) {
     for (Item* q = static_cast<Item*>(list_.safe_front()); q; q = static_cast<Item*>(q->getnext())) {
       if (q->getFromEvent() == p) {
         list_.erase_and_delete(q);
@@ -70,12 +70,14 @@ public:
     };
   };
 
-  FromEvent(void) : isPressing_(false), type_(Type::NONE) {}
-  explicit FromEvent(KeyCode v) : isPressing_(false), type_(Type::KEY), key_(v) {}
-  explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY), consumer_(v) {}
-  explicit FromEvent(PointingButton v) : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v) {}
+  FromEvent(void) : isPressing_(false), type_(Type::NONE) { FromEventManager::push_back(this); }
+  explicit FromEvent(KeyCode v) : isPressing_(false), type_(Type::KEY), key_(v) { FromEventManager::push_back(this); }
+  explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY), consumer_(v) { FromEventManager::push_back(this); }
+  explicit FromEvent(PointingButton v) : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v) { FromEventManager::push_back(this); }
 
   explicit FromEvent(const Params_Base& paramsBase) : isPressing_(false) {
+    FromEventManager::push_back(this);
+
     type_ = Type::NONE;
 
     {
@@ -105,6 +107,8 @@ public:
   }
 
   FromEvent(AddDataType datatype, AddValue v) : isPressing_(false) {
+    FromEventManager::push_back(this);
+
     switch (datatype) {
     case BRIDGE_DATATYPE_KEYCODE:
       type_ = Type::KEY;
@@ -123,6 +127,10 @@ public:
       type_ = Type::NONE;
       break;
     }
+  }
+
+  ~FromEvent(void) {
+    FromEventManager::erase_one(this);
   }
 
   Type::Value getType(void) const { return type_; }
