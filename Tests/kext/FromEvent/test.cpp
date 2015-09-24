@@ -200,6 +200,18 @@ TEST(Generic, changePressingState) {
     EXPECT_EQ(true, fe.changePressingState(*up_shift, currentFlags, fromFlags));
     EXPECT_EQ(false, fe.isPressing());
   }
+  // multiple times
+  {
+    FromEvent fe(KeyCode::RETURN);
+    FlagStatus currentFlags;
+    Vector_ModifierFlag fromFlags;
+    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
+    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
+  }
 }
 
 TEST(Generic, isTargetDownEvent) {
