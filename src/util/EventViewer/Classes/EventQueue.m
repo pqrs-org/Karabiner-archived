@@ -267,11 +267,14 @@ enum {
       return;
     }
 
+    NSString* keyCodeName = [[client_ proxy] symbolMapName:@"ConsumerKeyCode" value:keyCode];
+    NSString* misc = keyCodeName ? keyCodeName : @"";
+
     [self push:eventType
           code:[NSString stringWithFormat:@"0x%x", keyCode]
           name:@""
          flags:[self modifierFlagsToString:[event modifierFlags]]
-          misc:@""];
+          misc:misc];
   }
 }
 
