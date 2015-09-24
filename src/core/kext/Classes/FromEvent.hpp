@@ -18,7 +18,7 @@ public:
   class Item final : public List::Item {
   public:
     Item(const FromEvent* p) : fromEvent_(p) {}
-    ~Item(void);
+    ~Item(void) {}
 
     const FromEvent* getFromEvent(void) const { return fromEvent_; }
 
