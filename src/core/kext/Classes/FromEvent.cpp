@@ -51,13 +51,12 @@ bool FromEvent::changePressingState(const Params_Base& paramsBase,
 
   if (isDown) {
     if (currentFlags.isOn(fromFlags)) {
-      isPressing_ = true;
+      FromEventManager::push_back(this);
       return true;
     }
 
   } else {
-    if (isPressing_) {
-      isPressing_ = false;
+    if (FromEventManager::erase(this)) {
       return true;
     }
   }

@@ -26,6 +26,15 @@ public:
     const FromEvent* fromEvent_;
   };
 
+  static Item* find(const FromEvent* p) {
+    for (Item* q = static_cast<Item*>(list_.safe_front()); q; q = static_cast<Item*>(q->getnext())) {
+      if (q->getFromEvent() == p) {
+        return q;
+      }
+    }
+    return nullptr;
+  }
+
   static void clear(void) {
     list_.clear();
   }
@@ -34,22 +43,19 @@ public:
     list_.push_back(new Item(p));
   }
 
-  static void erase_one(const FromEvent* p) {
-    for (Item* q = static_cast<Item*>(list_.safe_front()); q; q = static_cast<Item*>(q->getnext())) {
-      if (q->getFromEvent() == p) {
-        list_.erase_and_delete(q);
-        return;
-      }
+  static bool erase(const FromEvent* p) {
+    Item* q = find(p);
+    if (q) {
+      list_.erase_and_delete(q);
+      return true;
     }
+    return false;
   }
 
   static void erase_all(const FromEvent* p) {
-    Item* q = static_cast<Item*>(list_.safe_front());
-    while (q) {
-      if (q->getFromEvent() == p) {
-        q = static_cast<Item*>(list_.erase_and_delete(q));
-      } else {
-        q = static_cast<Item*>(q->getnext());
+    for (;;) {
+      if (!erase(p)) {
+        break;
       }
     }
   }
@@ -70,14 +76,12 @@ public:
     };
   };
 
-  FromEvent(void) : isPressing_(false), type_(Type::NONE) { FromEventManager::push_back(this); }
-  explicit FromEvent(KeyCode v) : isPressing_(false), type_(Type::KEY), key_(v) { FromEventManager::push_back(this); }
-  explicit FromEvent(ConsumerKeyCode v) : isPressing_(false), type_(Type::CONSUMER_KEY), consumer_(v) { FromEventManager::push_back(this); }
-  explicit FromEvent(PointingButton v) : isPressing_(false), type_(Type::POINTING_BUTTON), button_(v) { FromEventManager::push_back(this); }
+  FromEvent(void) : type_(Type::NONE) {}
+  explicit FromEvent(KeyCode v) : type_(Type::KEY), key_(v) {}
+  explicit FromEvent(ConsumerKeyCode v) : type_(Type::CONSUMER_KEY), consumer_(v) {}
+  explicit FromEvent(PointingButton v) : type_(Type::POINTING_BUTTON), button_(v) {}
 
-  explicit FromEvent(const Params_Base& paramsBase) : isPressing_(false) {
-    FromEventManager::push_back(this);
-
+  explicit FromEvent(const Params_Base& paramsBase) {
     type_ = Type::NONE;
 
     {
@@ -106,9 +110,7 @@ public:
     }
   }
 
-  FromEvent(AddDataType datatype, AddValue v) : isPressing_(false) {
-    FromEventManager::push_back(this);
-
+  FromEvent(AddDataType datatype, AddValue v) {
     switch (datatype) {
     case BRIDGE_DATATYPE_KEYCODE:
       type_ = Type::KEY;
@@ -129,9 +131,7 @@ public:
     }
   }
 
-  ~FromEvent(void) {
-    FromEventManager::erase_one(this);
-  }
+  ~FromEvent(void) { FromEventManager::erase_all(this); }
 
   Type::Value getType(void) const { return type_; }
 
@@ -140,7 +140,7 @@ public:
                            const FlagStatus& currentFlags,
                            const Vector_ModifierFlag& fromFlags);
 
-  bool isPressing(void) const { return isPressing_; }
+  bool isPressing(void) const { return FromEventManager::find(this); }
 
   // Primitive functions:
   // These functions do not treat Flags.
@@ -161,8 +161,6 @@ public:
 
 private:
   bool isTargetEvent(bool& isDown, const Params_Base& paramsBase) const;
-
-  bool isPressing_;
 
   // Do not store Flags in FromEvent because SimultaneousKeyPresses uses multiple FromEvents.
 
