@@ -11,7 +11,7 @@
 namespace org_pqrs_Karabiner {
 class FromEvent;
 
-class FromEventManager {
+class PressingFromEvents {
   friend class FromEvent;
 
 public:
@@ -131,7 +131,7 @@ public:
     }
   }
 
-  ~FromEvent(void) { FromEventManager::erase_all(this); }
+  ~FromEvent(void) { PressingFromEvents::erase_all(this); }
 
   Type::Value getType(void) const { return type_; }
 
@@ -140,7 +140,7 @@ public:
                            const FlagStatus& currentFlags,
                            const Vector_ModifierFlag& fromFlags);
 
-  bool isPressing(void) const { return FromEventManager::find(this); }
+  bool isPressing(void) const { return PressingFromEvents::find(this); }
 
   // Primitive functions:
   // These functions do not treat Flags.

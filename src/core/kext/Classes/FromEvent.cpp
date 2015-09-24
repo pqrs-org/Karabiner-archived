@@ -1,7 +1,7 @@
 #include "FromEvent.hpp"
 
 namespace org_pqrs_Karabiner {
-List FromEventManager::list_;
+List PressingFromEvents::list_;
 
 bool FromEvent::isTargetEvent(bool& isDown, const Params_Base& paramsBase) const {
   switch (type_) {
@@ -51,12 +51,12 @@ bool FromEvent::changePressingState(const Params_Base& paramsBase,
 
   if (isDown) {
     if (currentFlags.isOn(fromFlags)) {
-      FromEventManager::push_back(this);
+      PressingFromEvents::push_back(this);
       return true;
     }
 
   } else {
-    if (FromEventManager::erase(this)) {
+    if (PressingFromEvents::erase(this)) {
       return true;
     }
   }
