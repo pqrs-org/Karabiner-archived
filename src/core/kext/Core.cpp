@@ -169,7 +169,7 @@ void resetWhenPressingPhysicalKeysIsEmpty(void) {
     EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), PhysicalEventType::UP, FlagStatus::globalFlagStatus().makeFlags());
     EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), PhysicalEventType::UP);
     PressDownKeys::clear();
-    FromEventManager::clear();
+    PressingFromEvents::clear();
   }
 }
 }
