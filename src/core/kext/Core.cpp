@@ -13,6 +13,7 @@ END_IOKIT_INCLUDE;
 #include "EventInputQueue.hpp"
 #include "EventOutputQueue.hpp"
 #include "EventWatcher.hpp"
+#include "FromEvent.hpp"
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
@@ -168,6 +169,7 @@ void resetWhenPressingPhysicalKeysIsEmpty(void) {
     EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), PhysicalEventType::UP, FlagStatus::globalFlagStatus().makeFlags());
     EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), PhysicalEventType::UP);
     PressDownKeys::clear();
+    FromEventManager::clear();
   }
 }
 }
