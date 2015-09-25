@@ -11,7 +11,7 @@
 namespace org_pqrs_Karabiner {
 class FromEvent;
 
-class PressingFromEvents {
+class PressingFromEvents final {
   friend class FromEvent;
 
 public:
