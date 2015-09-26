@@ -46,6 +46,22 @@
   }
 }
 
++ (BOOL)checkKirgudu {
+  @synchronized(self) {
+    static dispatch_once_t onceToken = 0;
+    static BOOL result = NO;
+
+    dispatch_once(&onceToken, ^{
+      // Check kextstat.
+      if (system("/bin/test -n \"`/usr/sbin/kextstat -l -b com.pihto.driver.KirguduDriver`\"") == 0) {
+        result = YES;
+      }
+    });
+
+    return result;
+  }
+}
+
 + (BOOL)checkSmoothMouse {
   @synchronized(self) {
     static dispatch_once_t onceToken = 0;

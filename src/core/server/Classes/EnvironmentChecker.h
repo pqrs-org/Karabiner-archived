@@ -6,6 +6,7 @@
 
 + (BOOL)checkDoubleCommand;
 + (BOOL)checkKeyRemap4MacBook;
++ (BOOL)checkKirgudu;
 + (BOOL)checkSmoothMouse;
 
 @end

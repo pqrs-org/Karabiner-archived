@@ -254,6 +254,9 @@
   if ([EnvironmentChecker checkKeyRemap4MacBook]) {
     [self insert_caution_into_preferencepane_checkbox:@"An old kernel extension has still been loaded. Please restart your system in order to unload it."];
   }
+  if ([EnvironmentChecker checkKirgudu]) {
+    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: Kirgudu\n\nKarabiner ignores keyboard devices.\n(You can use Karabiner as a pointing device remapper.)"];
+  }
   if ([EnvironmentChecker checkSmoothMouse]) {
     [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKarabiner ignores pointing devices.\n(You can use Karabiner as a keyboard device remapper.)"];
   }

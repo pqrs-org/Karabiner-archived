@@ -247,6 +247,9 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkKeyRemap4MacBook]) {
       newvalue = 0;
     }
+    if ([EnvironmentChecker checkKirgudu]) {
+      newvalue = 0;
+    }
     [preferencesManager_ setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
   }
   {
