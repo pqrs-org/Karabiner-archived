@@ -13,6 +13,71 @@ public:
     MAX_ALLOCATION_COUNT = (8 * 1024 * 1024) / sizeof(uint32_t), // 8MB
   };
 
+  class Item;
+
+  class ActiveItems final {
+    friend class Item;
+
+  public:
+    class Item final : public List::Item {
+    public:
+      enum class Type {
+        NORMAL,
+        SIMULTANEOUSBUTTONPRESSES,
+      };
+
+      Item(const RemapClass::Item* p, Type t) : item_(p), type_(t) {}
+      ~Item(void) {}
+
+      const RemapClass::Item* getItem(void) const { return item_; }
+      Type getType(void) const { return type_; }
+
+    private:
+      const RemapClass::Item* item_;
+      Type type_;
+    };
+
+    static Item* find(const RemapClass::Item* p, Item::Type t) {
+      for (Item* q = static_cast<Item*>(list_.safe_front()); q; q = static_cast<Item*>(q->getnext())) {
+        if (q->getItem() == p && q->getType() == t) {
+          return q;
+        }
+      }
+      return nullptr;
+    }
+
+    static void clear(void) {
+      list_.clear();
+    }
+
+    static void push_back(const RemapClass::Item* p, Item::Type t) {
+      list_.push_back(new Item(p, t));
+    }
+
+    static bool erase(const RemapClass::Item* p, Item::Type t) {
+      Item* q = find(p, t);
+      if (q) {
+        list_.erase_and_delete(q);
+        return true;
+      }
+      return false;
+    }
+
+    static void erase_all(const RemapClass::Item* p) {
+      Item* q = static_cast<Item*>(list_.safe_front());
+      while (q) {
+        if (q->getItem() == p) {
+          q = static_cast<Item*>(list_.erase_and_delete(q));
+        } else {
+          q = static_cast<Item*>(q->getnext());
+        }
+      }
+    }
+
+  private:
+    static List list_;
+  };
+
   class Item final {
   public:
     Item(const RemapClass& parent, const uint32_t* vec, size_t length);

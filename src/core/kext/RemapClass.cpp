@@ -20,6 +20,8 @@ END_IOKIT_INCLUDE;
 #include "strlcpy_utf8.hpp"
 
 namespace org_pqrs_Karabiner {
+List RemapClass::ActiveItems::list_;
+
 RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) : parent_(parent),
                                                                                        type_(BRIDGE_REMAPTYPE_NONE),
                                                                                        active_(false),
