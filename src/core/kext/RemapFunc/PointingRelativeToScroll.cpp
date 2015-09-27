@@ -133,34 +133,35 @@ bool PointingRelativeToScroll::remap(RemapParams& remapParams) {
                                                                FlagStatus::globalFlagStatus(),
                                                                fromModifierFlags_);
     if (pressingStateChanged) {
-      if (fromEvent_.isPressing()) {
-        // down event
-        FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
-        ButtonStatus::decrease(fromEvent_.getPointingButton());
+      bool iskeydown;
+      if (remapParams.paramsBase.iskeydown(iskeydown)) {
+        if (iskeydown) {
+          FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
+          ButtonStatus::decrease(fromEvent_.getPointingButton());
 
-        absolute_distance_ = 0;
-        begin_ic_.begin();
-        chained_ic_.begin();
-        chained_delta1_ = 0;
-        chained_delta2_ = 0;
+          absolute_distance_ = 0;
+          begin_ic_.begin();
+          chained_ic_.begin();
+          chained_delta1_ = 0;
+          chained_delta2_ = 0;
 
-      } else {
-        // up event
-        FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
-        ButtonStatus::increase(fromEvent_.getPointingButton());
+        } else {
+          FlagStatus::globalFlagStatus().increase(fromEvent_.getModifierFlag());
+          ButtonStatus::increase(fromEvent_.getPointingButton());
 
-        cancelScroll();
+          cancelScroll();
 
-        const uint32_t DISTANCE_THRESHOLD = 5;
-        const uint32_t TIME_THRESHOLD = 300;
-        if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
-          // Fire by a click event.
-          if (isToKeysDefined_) {
-            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
-            keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
+          const uint32_t DISTANCE_THRESHOLD = 5;
+          const uint32_t TIME_THRESHOLD = 300;
+          if (absolute_distance_ <= DISTANCE_THRESHOLD && begin_ic_.getmillisec() < TIME_THRESHOLD) {
+            // Fire by a click event.
+            if (isToKeysDefined_) {
+              keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+              keytokey_.call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
 
-          } else {
-            toEvent_.fire_downup(autogenId_, remapParams.physicalEventType);
+            } else {
+              toEvent_.fire_downup(autogenId_, remapParams.physicalEventType);
+            }
           }
         }
       }
