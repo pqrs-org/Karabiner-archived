@@ -19,11 +19,6 @@ public:
   // [0] => fromKey_
   void add(AddDataType datatype, AddValue newval) override;
 
-  // Always call `remap`.
-  bool isActive(bool iskeydown) override {
-    return true;
-  }
-
 private:
   CancelEventOutputQueueItemsHelper helper_;
 

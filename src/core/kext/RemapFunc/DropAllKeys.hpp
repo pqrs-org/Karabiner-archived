@@ -21,15 +21,6 @@ public:
 
   void add(AddDataType datatype, AddValue newval) override;
 
-  // Always call `remap`.
-  bool isActive(bool iskeydown) override {
-    if (iskeydown) {
-      return true;
-    } else {
-      return !dropped_.empty();
-    }
-  }
-
 private:
   void dropKey(EventOutputQueue::Item& item);
 
