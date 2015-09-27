@@ -140,6 +140,17 @@ public:
                            const FlagStatus& currentFlags,
                            const Vector_ModifierFlag& fromFlags);
 
+  // Caution:
+  // `isPressing` may return true at key up event if you connected multiple keyboards and pressing the same key.
+  //
+  // For example,
+  //  1. Press the return key in keyboard1.   (isPressing == true)
+  //  2. Press the return key in keyboard2.   (isPressing == true)
+  //  3. Release the return key in keyboard1. (isPressing == true)
+  //  4. Release the return key in keyboard2. (isPressing == false)
+  //
+  // So you must not use `isPressing` to detect the input event is key down or key up.
+  // (You should use `Params_Base::iskeydown` to determine key down or key up.)
   bool isPressing(void) const { return PressingFromEvents::find(this); }
 
   // Primitive functions:
