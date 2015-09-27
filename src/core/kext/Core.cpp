@@ -170,6 +170,7 @@ void resetWhenPressingPhysicalKeysIsEmpty(void) {
     EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), PhysicalEventType::UP);
     PressDownKeys::clear();
     PressingFromEvents::clear();
+    RemapClass::ActiveItems::clear();
   }
 }
 }
