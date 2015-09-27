@@ -52,6 +52,9 @@ public:
 
     static void push_back(const RemapClass::Item* p, Item::Type t) {
       list_.push_back(new Item(p, t));
+      if (list_.size() > 60000) {
+        IOLOG_WARN("RemapClass::ActiveItems too many item count: %ld\n", list_.size());
+      }
     }
 
     static bool erase(const RemapClass::Item* p, Item::Type t) {
@@ -97,7 +100,7 @@ public:
     //
     void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
 
-    bool active(void) const { return active_; }
+    bool active(void) const { return ActiveItems::find(this, ActiveItems::Item::Type::NORMAL); }
 
     bool isPassThroughEnabled(void) const;
 
@@ -118,7 +121,6 @@ public:
     uint32_t type_;
 
     // true if remapped at KeyDown.
-    bool active_;
     bool active_SimultaneousButtonPresses_;
 
     RemapFunc::RemapFuncBase* processor_;

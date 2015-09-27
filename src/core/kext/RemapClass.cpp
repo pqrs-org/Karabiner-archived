@@ -24,13 +24,14 @@ List RemapClass::ActiveItems::list_;
 
 RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) : parent_(parent),
                                                                                        type_(BRIDGE_REMAPTYPE_NONE),
-                                                                                       active_(false),
                                                                                        active_SimultaneousButtonPresses_(false) {
   auto autogenId = AutogenId((static_cast<uint64_t>(parent_.configindex_) << 32) | (parent.items_.size() + 1));
   processor_ = RemapFunc::RemapFuncFactory::create(vec, length, autogenId);
 }
 
 RemapClass::Item::~Item(void) {
+  ActiveItems::erase_all(this);
+
   if (processor_) {
     delete processor_;
     processor_ = nullptr;
@@ -70,8 +71,10 @@ void RemapClass::Item::remap(RemapParams& remapParams, bool passThroughEnabled) 
   if (!processor_) return;
 
   bool iskeydown = false;
+  bool isalwayskeydown = false;
   if (!remapParams.paramsBase.iskeydown(iskeydown)) {
     iskeydown = true;
+    isalwayskeydown = true;
   }
 
   if (iskeydown) {
@@ -79,8 +82,8 @@ void RemapClass::Item::remap(RemapParams& remapParams, bool passThroughEnabled) 
     if (!parent_.enabled()) return;
     if (isblocked()) return;
   } else {
-    // We ignore event if active_ is not set at KeyDown.
-    if (!active_) return;
+    // We ignore event if `this` is not processed at KeyDown.
+    if (!ActiveItems::find(this, ActiveItems::Item::Type::NORMAL)) return;
     if (isblocked_keyup()) return;
   }
 
@@ -88,7 +91,13 @@ void RemapClass::Item::remap(RemapParams& remapParams, bool passThroughEnabled) 
     return;
   }
 
-  active_ = processor_->isActive(iskeydown);
+  if (!isalwayskeydown) {
+    if (iskeydown) {
+      ActiveItems::push_back(this, ActiveItems::Item::Type::NORMAL);
+    } else {
+      ActiveItems::erase(this, ActiveItems::Item::Type::NORMAL);
+    }
+  }
 }
 
 void RemapClass::Item::cancelEventOutputQueueItems(bool passThroughEnabled) {
