@@ -167,9 +167,16 @@ void KeyToKey::prepare(RemapParams& remapParams) {
 
 bool KeyToKey::remap(RemapParams& remapParams) {
   if (remapParams.isremapped) return false;
+
+  bool iskeydown = false;
+  if (! remapParams.paramsBase.iskeydown(iskeydown)) {
+    return false;
+  }
+
   if (!fromEvent_.changePressingState(remapParams.paramsBase,
                                       FlagStatus::globalFlagStatus(),
                                       fromModifierFlags_)) return false;
+
   remapParams.isremapped = true;
   lastPhysicalEventType_ = remapParams.physicalEventType;
 
@@ -191,7 +198,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
   //
   // Note: we need to use pureFromModifierFlags_ after calling fromEvent_.changePressingState.
 
-  if (fromEvent_.isPressing()) {
+  if (iskeydown) {
     FlagStatus::globalFlagStatus().decrease(fromEvent_.getModifierFlag());
     ButtonStatus::decrease(fromEvent_.getPointingButton());
 
@@ -209,7 +216,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
 
   // ----------------------------------------
   // Handle delayedActionKeys_
-  if (fromEvent_.isPressing()) {
+  if (iskeydown) {
     if (!delayedActionKeys_.empty() ||
         !delayedActionCanceledDefaultKeys_.empty() ||
         !delayedActionCanceledByKeys_.empty()) {
@@ -225,7 +232,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
 
   // ----------------------------------------
   // Handle beforeKeys_
-  if (fromEvent_.isPressing()) {
+  if (iskeydown) {
     FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
 
     for (size_t i = 0; i < beforeKeys_.size(); ++i) {
@@ -242,7 +249,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
   // ----------------------------------------
   // Handle toKeys_
   bool add_to_keyrepeat = true;
-  if (fromEvent_.isPressing() && !isRepeatEnabled_) {
+  if (iskeydown && !isRepeatEnabled_) {
     add_to_keyrepeat = false;
   }
 
@@ -251,7 +258,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
     break;
 
   case 1: {
-    EventType newEventType = fromEvent_.isPressing() ? EventType::DOWN : EventType::UP;
+    EventType newEventType = iskeydown ? EventType::DOWN : EventType::UP;
     ModifierFlag toModifierFlag = toKeys_[0].getModifierFlag();
 
     if (toModifierFlag == ModifierFlag::ZERO && !toKeys_[0].isEventLikeModifier()) {
@@ -302,7 +309,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         newEventType = EventType::MODIFY;
       }
 
-      if (fromEvent_.isPressing()) {
+      if (iskeydown) {
         FlagStatus::globalFlagStatus().increase(toModifierFlag, toKeys_[0].getModifierFlags());
         FlagStatus::globalFlagStatus().decrease(pureFromModifierFlags_);
       } else {
@@ -329,7 +336,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
     bool isLastToEventModifierKey = (lastToEventModifierFlag != ModifierFlag::ZERO);
     bool isLastToEventLikeModifier = lastToEvent.isEventLikeModifier();
 
-    if (fromEvent_.isPressing()) {
+    if (iskeydown) {
       KeyboardRepeat::cancel();
 
       FlagStatus::globalFlagStatus().temporary_decrease(pureFromModifierFlags_);
@@ -422,7 +429,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
 
   // ----------------------------------------
   // Handle afterKeys_
-  if (!fromEvent_.isPressing()) {
+  if (!iskeydown) {
     for (size_t afterKeysIndex = 0; afterKeysIndex < afterKeys_.size(); ++afterKeysIndex) {
       // We need to keep temporary flags for "general.lazy_modifiers_with_mouse_event" when afterKeys_ is empty.
       // Therefore, we clear temporary flags here (== in this loop).
