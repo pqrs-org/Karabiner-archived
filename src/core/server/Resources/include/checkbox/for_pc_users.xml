@@ -181,6 +181,27 @@
         <autogen>__KeyToKey__ KeyCode::PC_INSERT, KeyCode::PAGEDOWN</autogen>
       </item>
       <item>
+        <name>Insert Key to Control+T</name>
+        <appendix>(This setting is useful in Midnight Commander.)</appendix>
+        <identifier>remap.pc_insert2controlT</identifier>
+        <modifier_not>
+          ModifierFlag::COMMAND_L,
+          ModifierFlag::COMMAND_R,
+          ModifierFlag::CONTROL_L,
+          ModifierFlag::CONTROL_R,
+          ModifierFlag::FN,
+          ModifierFlag::OPTION_L,
+          ModifierFlag::OPTION_R,
+          ModifierFlag::SHIFT_L,
+          ModifierFlag::SHIFT_R,
+        </modifier_not>
+        <autogen>
+          __KeyToKey__
+          KeyCode::PC_INSERT,
+          KeyCode::T, ModifierFlag::CONTROL_L
+        </autogen>
+      </item>
+      <item>
         <name>Insert Key to Tab</name>
         <identifier>remap.pc_insert2tab</identifier>
         <autogen>__KeyToKey__ KeyCode::PC_INSERT, KeyCode::TAB</autogen>
