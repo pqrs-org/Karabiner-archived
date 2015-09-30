@@ -23,8 +23,7 @@ namespace org_pqrs_Karabiner {
 List RemapClass::ActiveItems::list_;
 
 RemapClass::Item::Item(const RemapClass& parent, const uint32_t* vec, size_t length) : parent_(parent),
-                                                                                       type_(BRIDGE_REMAPTYPE_NONE),
-                                                                                       active_SimultaneousButtonPresses_(false) {
+                                                                                       type_(BRIDGE_REMAPTYPE_NONE) {
   auto autogenId = AutogenId((static_cast<uint64_t>(parent_.configindex_) << 32) | (parent.items_.size() + 1));
   processor_ = RemapFunc::RemapFuncFactory::create(vec, length, autogenId);
 }
@@ -154,8 +153,8 @@ bool RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown, bool passThr
     if (!parent_.enabled()) return false;
     if (isblocked()) return false;
   } else {
-    // We ignore event if active_SimultaneousButtonPresses_ is not set at KeyDown.
-    if (!active_SimultaneousButtonPresses_) return false;
+    // We ignore event if `this` is not processed at KeyDown.
+    if (!ActiveItems::find(this, ActiveItems::Item::Type::SIMULTANEOUSBUTTONPRESSES)) return false;
     if (isblocked_keyup()) return false;
   }
 
@@ -165,7 +164,11 @@ bool RemapClass::Item::remap_SimultaneousKeyPresses(bool iskeydown, bool passThr
   }
 
   if (result == RemapSimultaneousKeyPressesResult::APPLIED) {
-    active_SimultaneousButtonPresses_ = iskeydown;
+    if (iskeydown) {
+      ActiveItems::push_back(this, ActiveItems::Item::Type::SIMULTANEOUSBUTTONPRESSES);
+    } else {
+      ActiveItems::erase(this, ActiveItems::Item::Type::SIMULTANEOUSBUTTONPRESSES);
+    }
   }
   return true;
 }

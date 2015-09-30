@@ -120,9 +120,6 @@ public:
 
     uint32_t type_;
 
-    // true if remapped at KeyDown.
-    bool active_SimultaneousButtonPresses_;
-
     RemapFunc::RemapFuncBase* processor_;
     RemapFilter::Vector_RemapFilterBasePointer filters_;
   };

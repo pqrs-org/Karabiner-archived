@@ -29,6 +29,7 @@ END_IOKIT_INCLUDE;
 #include "RemapFunc/KeyToKey.hpp"
 #include "RemapFunc/PointingRelativeToScroll.hpp"
 #include "RemapFunc/common/DependingPressingPeriodKeyToKey.hpp"
+#include "SimultaneousKeyPresses.hpp"
 #include "TimerWrapper.hpp"
 #include "VirtualKey.hpp"
 
@@ -171,6 +172,7 @@ void resetWhenPressingPhysicalKeysIsEmpty(void) {
     PressDownKeys::clear();
     PressingFromEvents::clear();
     RemapClass::ActiveItems::clear();
+    RemapFunc::SimultaneousKeyPresses::clearActiveFromInfos();
   }
 }
 }

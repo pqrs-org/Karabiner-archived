@@ -11,6 +11,8 @@ END_IOKIT_INCLUDE;
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {
+List SimultaneousKeyPresses::ActiveFromInfos::list_;
+
 void SimultaneousKeyPresses::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_KEYCODE:
@@ -146,7 +148,7 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
   // ------------------------------------------------------------
   // fire KeyUp event if needed.
   for (size_t i = 0; i < fromInfo_.size(); ++i) {
-    if (!fromInfo_[i].isActive()) continue;
+    if (!fromInfo_[i].isActive(device)) continue;
     if (!fromInfo_[i].fromEvent().isTargetUpEvent(front->getParamsBase())) continue;
 
     // --------------------
@@ -155,13 +157,13 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
     } else {
       EventInputQueue::queue_.pop_front();
     }
-    fromInfo_[i].deactivate();
+    fromInfo_[i].deactivate(device);
 
     // --------------------
     // if all keys are released, fire KeyUp event.
     bool isAllDeactived = true;
     for (size_t j = 0; j < fromInfo_.size(); ++j) {
-      if (fromInfo_[j].isActive()) {
+      if (fromInfo_[j].isActive(device)) {
         isAllDeactived = false;
       }
     }
@@ -251,7 +253,7 @@ scan:
     if (isAllKeysDown) {
       // We use the reverse iterator for isPostFromEventsAsRaw_.
       for (int i = static_cast<int>(fromInfo_.size()) - 1; i >= 0; --i) {
-        fromInfo_[i].activate();
+        fromInfo_[i].activate(device);
 
         if (!downKeys_[i].item) continue;
 
