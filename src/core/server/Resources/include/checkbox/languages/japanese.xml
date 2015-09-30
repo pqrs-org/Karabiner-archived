@@ -8,7 +8,25 @@
       <appendix>（右コマンドキーをかなキーにする）</appendix>
 
       <item>
-        <name>コマンドキーの動作を優先モード v2</name>
+        <name>以下の中からいずれか一つを選択してください。</name>
+        <appendix>複数の設定を有効した場合、上にある設定のほうが優先されます。</appendix>
+      </item>
+
+      <item><name>──────────────────────────────</name></item>
+
+      <item>
+        <name>コマンドキーの動作を優先モード （★おすすめ）</name>
+        <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
+        <appendix>（コマンドキーを押している間に他のキーを打つと通常のコマンドキーとして動作）</appendix>
+        <identifier>remap.jis_command2eisuukana_prefer_command</identifier>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
+      </item>
+
+      <item><name>──────────────────────────────</name></item>
+
+      <item>
+        <name>コマンドキーの動作を優先モード（＋意図しないコマンドキーを防止）</name>
         <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
         <appendix>（コマンドキーを押している間に他のキーを打つと通常のコマンドキーとして動作。</appendix>
         <appendix>ただし、他のキーを離す前にコマンドキーを離した場合は「英数／かな」として扱う。）</appendix>
@@ -32,15 +50,6 @@
         <autogen>__BlockUntilKeyUp__ KeyCode::COMMAND_R</autogen>
       </item>
 
-      <item><name>──────────────────────────────</name></item>
-      <item>
-        <name>コマンドキーの動作を優先モード v1</name>
-        <appendix>（コマンドキーの空打ちで「英数／かな」）</appendix>
-        <appendix>（コマンドキーを押している間に他のキーを打つと通常のコマンドキーとして動作）</appendix>
-        <identifier>remap.jis_command2eisuukana_prefer_command</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
-        <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
-      </item>
       <item>
         <name>──────────────────────────────</name>
         <identifier vk_config="true">notsave.jis_command2eisuukana_prefer_eisuukana</identifier>
