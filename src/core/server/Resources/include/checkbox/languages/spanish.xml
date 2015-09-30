@@ -80,7 +80,8 @@
     </item>
 
     <item>
-      <name>Correct Microsoft Ergonomic Keyboard 4000 Spanish configuration in "Spanish - ISO" input source</name>
+      <name>Correct Microsoft Ergonomic Keyboard 4000 Spanish configuration in "Spanish - ISO"</name>
+      <appendix>input source.</appendix>
       <identifier>remap.spanish_map_microsoft_to_mac</identifier>
       <inputsource_only>SPANISH_ISO</inputsource_only>
 
