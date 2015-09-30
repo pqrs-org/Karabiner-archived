@@ -32,7 +32,7 @@ namespace org_pqrs_Karabiner {
     /* WeakPointerManager::expired will return false with deleted pointer. */                    \
                                                                                                  \
     static void add(const TYPENAME* p) {                                                         \
-      auto item = new WeakPointerManagerItem(p);                                                 \
+      auto item = new WeakPointerManagerItem(p, ++lastid_);                                      \
       if (item) {                                                                                \
         list_.push_back(item);                                                                   \
       }                                                                                          \
@@ -49,46 +49,67 @@ namespace org_pqrs_Karabiner {
       }                                                                                          \
     }                                                                                            \
                                                                                                  \
-    static bool expired(const TYPENAME* pointer) {                                               \
+    static bool expired(const TYPENAME* pointer, int id) {                                       \
       for (WeakPointerManagerItem* p = static_cast<WeakPointerManagerItem*>(list_.safe_front()); \
            p;                                                                                    \
            p = static_cast<WeakPointerManagerItem*>(p->getnext())) {                             \
-        if (p->pointer == pointer) {                                                             \
+        if (p->pointer == pointer && p->id == id) {                                              \
           return false;                                                                          \
         }                                                                                        \
       }                                                                                          \
       return true;                                                                               \
     }                                                                                            \
                                                                                                  \
+    static int getid(const TYPENAME* pointer) {                                                  \
+      for (WeakPointerManagerItem* p = static_cast<WeakPointerManagerItem*>(list_.safe_front()); \
+           p;                                                                                    \
+           p = static_cast<WeakPointerManagerItem*>(p->getnext())) {                             \
+        if (p->pointer == pointer) {                                                             \
+          return p->id;                                                                          \
+        }                                                                                        \
+      }                                                                                          \
+      return -1;                                                                                 \
+    }                                                                                            \
+                                                                                                 \
   private:                                                                                       \
-    class WeakPointerManagerItem : public List::Item {                                           \
+    class WeakPointerManagerItem final : public List::Item {                                     \
     public:                                                                                      \
-      WeakPointerManagerItem(const TYPENAME* p) : pointer(p) {}                                  \
-      virtual ~WeakPointerManagerItem(void) {}                                                   \
+      WeakPointerManagerItem(const TYPENAME* p, int c) : pointer(p), id(c) {}                    \
+      ~WeakPointerManagerItem(void) {}                                                           \
                                                                                                  \
       const TYPENAME* pointer;                                                                   \
+      int id;                                                                                    \
     };                                                                                           \
                                                                                                  \
     static List list_;                                                                           \
+    static int lastid_;                                                                          \
   };                                                                                             \
                                                                                                  \
   class WeakPointer_##TYPENAME final {                                                           \
   public:                                                                                        \
-    WeakPointer_##TYPENAME(TYPENAME* p) : pointer_(p) {}                                         \
-    bool expired(void) const { return WeakPointerManager_##TYPENAME::expired(pointer_); }        \
+    WeakPointer_##TYPENAME(TYPENAME* p) : pointer_(p),                                           \
+                                          id_(WeakPointerManager_##TYPENAME::getid(p)) {}        \
+    bool expired(void) const { return WeakPointerManager_##TYPENAME::expired(pointer_, id_); }   \
                                                                                                  \
     TYPENAME* operator->(void) const { return pointer_; }                                        \
     TYPENAME* get(void) const { return pointer_; }                                               \
                                                                                                  \
+    bool operator==(WeakPointer_##TYPENAME other) const {                                        \
+      return pointer_ == other.pointer_ && id_ == other.id_;                                     \
+    }                                                                                            \
+                                                                                                 \
   private:                                                                                       \
     TYPENAME* pointer_;                                                                          \
+    int id_;                                                                                     \
   };
 
-#define DEFINE_WEAKPOINTER(TYPENAME) \
-  List WeakPointerManager_##TYPENAME::list_;
+#define DEFINE_WEAKPOINTER(TYPENAME)         \
+  List WeakPointerManager_##TYPENAME::list_; \
+  int WeakPointerManager_##TYPENAME::lastid_ = 0;
 
 #define DEFINE_WEAKPOINTER_IN_CLASS(CLASS, TYPENAME) \
-  List CLASS::WeakPointerManager_##TYPENAME::list_;
+  List CLASS::WeakPointerManager_##TYPENAME::list_;  \
+  int CLASS::WeakPointerManager_##TYPENAME::lastid_ = 0;
 }
 
 #endif
