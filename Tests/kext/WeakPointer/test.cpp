@@ -23,6 +23,23 @@ private:
 
 DEFINE_WEAKPOINTER(TestItem);
 
+DECLARE_WEAKPOINTER(TestReuseAddrItem);
+
+int dummy = 10;
+TestReuseAddrItem* dummyAddress = reinterpret_cast<TestReuseAddrItem*>(&dummy);
+
+class TestReuseAddrItem final {
+public:
+  TestReuseAddrItem(void) {
+    WeakPointerManager_TestReuseAddrItem::add(dummyAddress);
+  }
+  ~TestReuseAddrItem(void) {
+    WeakPointerManager_TestReuseAddrItem::remove(dummyAddress);
+  }
+};
+
+DEFINE_WEAKPOINTER(TestReuseAddrItem);
+
 TEST(WeakPointer, expired) {
   auto p1 = new TestItem();
   auto p2 = new TestItem();
@@ -47,6 +64,26 @@ TEST(WeakPointer, expired) {
 
   EXPECT_TRUE(wp1.expired());
   EXPECT_TRUE(wp2.expired());
+}
+
+TEST(WeakPointer, reuse_address) {
+  auto p1 = new TestReuseAddrItem();
+
+  WeakPointer_TestReuseAddrItem wp1(dummyAddress);
+
+  EXPECT_FALSE(wp1.expired());
+
+  delete p1;
+
+  EXPECT_TRUE(wp1.expired());
+
+  auto p2 = new TestReuseAddrItem();
+  WeakPointer_TestReuseAddrItem wp2(dummyAddress);
+
+  EXPECT_TRUE(wp1.expired());
+  EXPECT_FALSE(wp2.expired());
+
+  delete p2;
 }
 
 int main(int argc, char** argv) {
