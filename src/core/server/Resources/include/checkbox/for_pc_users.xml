@@ -215,6 +215,11 @@
         <autogen>__KeyToKey__ KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::F11</autogen>
       </item>
       <item>
+        <name>Change Keypad Num Lock to Keypad Equal</name>
+        <identifier>remap.pc_num_lock_to_equal</identifier>
+        <autogen>__KeyToKey__ KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::KEYPAD_EQUAL</autogen>
+      </item>
+      <item>
         <name>Disable NumLock Key</name>
         <identifier>remap.drop_numlock</identifier>
         <autogen>__KeyToKey__ KeyCode::PC_KEYPAD_NUMLOCK, KeyCode::VK_NONE</autogen>
