@@ -19,3 +19,6 @@ indent_size = 4
 
 [preinstall]
 indent_size = 4
+
+[*.applescript]
+indent_size = 4
