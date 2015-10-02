@@ -13,9 +13,7 @@ fi
 # ------------------------------------------------------------
 # sign
 cd "$1"
-targets=`find * -name '*.app' -or -name '*.signed.kext' -or -path '*/bin/*' | sort -r`
-
-for f in $targets; do
+find * -name '*.app' -or -name '*.signed.kext' -or -path '*/bin/*' | sort -r | while read f; do
     echo -ne '\033[33;40m'
     echo "code sign $f"
     echo -ne '\033[0m'
@@ -30,7 +28,7 @@ for f in $targets; do
 done
 
 # verify
-for f in $targets; do
+find * -name '*.app' -or -name '*.signed.kext' -or -path '*/bin/*' | sort -r | while read f; do
     echo -ne '\033[31;40m'
     codesign --verify --deep "$f"
     echo -ne '\033[0m'
