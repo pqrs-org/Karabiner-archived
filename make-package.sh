@@ -25,7 +25,6 @@ for d in \
     src/util/AXNotifier/build/Release/Karabiner_AXNotifier.app \
     src/util/EventViewer/build/Release/EventViewer.app \
     src/util/multitouchextension/build/Release/Karabiner_multitouchextension.app \
-    src/util/uninstaller/automator/KarabinerUninstaller.app \
     ;
 do
     cp -R "$d" "$basedir"
@@ -57,18 +56,17 @@ cp -R src/core/kext/build/Release/Karabiner.kext "$basedir/Karabiner.signed.kext
 
 cp -R pkginfo/Scripts/preinstall "$basedir/uninstall_core.sh"
 for f in \
-    files/extra/launchUninstaller.sh \
     files/extra/setpermissions.sh \
     files/extra/startup.sh \
     files/extra/uninstall.sh \
+    files/extra/uninstaller.applescript \
     ;
 do
     cp -R "$f" "$basedir"
 done
 
 # Sign with Developer ID
-bash files/extra/codesign.sh "pkgroot/Applications"
-bash files/extra/codesign.sh "pkgroot/Library/Application Support"
+bash files/extra/codesign.sh "pkgroot"
 
 # Setting file permissions.
 #

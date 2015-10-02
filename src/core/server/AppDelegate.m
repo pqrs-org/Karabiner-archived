@@ -499,7 +499,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (IBAction)launchUninstaller:(id)sender {
-  system("sh '/Library/Application Support/org.pqrs/Karabiner/launchUninstaller.sh'");
+  NSString* path = @"/Library/Application Support/org.pqrs/Karabiner/uninstaller.applescript";
+  [[[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:nil] executeAndReturnError:nil];
 }
 
 - (IBAction)openPreferences:(id)sender {
