@@ -202,7 +202,7 @@
 		3401000C192C63AA00B0A3A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Takayama Fumihiko";
 			};
 			buildConfigurationList = 3401000F192C63AA00B0A3A5 /* Build configuration list for PBXProject "Karabiner_AXNotifier" */;
@@ -328,6 +328,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Karabiner_AXNotifier/Karabiner_AXNotifier-Prefix.pch";
 				INFOPLIST_FILE = Karabiner_AXNotifier/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.pqrs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
