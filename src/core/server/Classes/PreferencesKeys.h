@@ -14,4 +14,6 @@
 #define kStatusWindowFontSize @"statusWindowFontSize"
 #define kStatusWindowPosition @"statusWindowPosition"
 #define kIsAXNotifierEnabled @"kIsAXNotifierEnabled"
+#define kAXNotifierDisabledInJavaApps @"kAXNotifierDisabledInJavaApps"
+#define kAXNotifierDisabledInPreview @"kAXNotifierDisabledInPreview"
 #define kUsePreparedSettings @"kUsePreparedSettings"

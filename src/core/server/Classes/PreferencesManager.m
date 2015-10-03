@@ -30,6 +30,8 @@
     kStatusWindowFontSize : @0, // Small
     kStatusWindowPosition : @3, // Bottom right
     kIsAXNotifierEnabled : @YES,
+    kAXNotifierDisabledInJavaApps : @YES,
+    kAXNotifierDisabledInPreview : @YES,
     kUsePreparedSettings : @YES,
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
