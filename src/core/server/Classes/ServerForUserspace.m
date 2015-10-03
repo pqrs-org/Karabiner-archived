@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "KarabinerKeys.h"
+#import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "Relauncher.h"
 #import "ServerForUserspace.h"
@@ -99,6 +100,13 @@
 }
 
 // ----------------------------------------------------------------------
+- (NSDictionary*)preferencesForAXNotifier {
+  return @{
+    @"kAXNotifierDisabledInJavaApps" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps]),
+    @"kAXNotifierDisabledInPreview" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview]),
+  };
+}
+
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information {
   return [appDelegate_ updateFocusedUIElementInformation:information];
 }
