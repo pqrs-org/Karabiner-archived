@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -110,6 +111,7 @@
                     <tabView initialItem="633" id="630">
                         <rect key="frame" x="13" y="10" width="642" height="604"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <animations/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Change Key" identifier="1" id="633">
@@ -120,6 +122,7 @@
                                         <button id="663">
                                             <rect key="frame" x="259" y="535" width="228" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="check" title="show enabled only (0 items)" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="675">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -131,6 +134,7 @@
                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" id="666">
                                             <rect key="frame" x="17" y="533" width="236" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="667">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -150,6 +154,7 @@
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" headerView="669" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
                                                         <rect key="frame" x="0.0" y="0.0" width="571" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <animations/>
                                                         <size key="intercellSpacing" width="2" height="3"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -173,24 +178,30 @@
                                                         </connections>
                                                     </outlineView>
                                                 </subviews>
+                                                <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </clipView>
+                                            <animations/>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="670">
                                                 <rect key="frame" x="-100" y="-100" width="543" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="671">
                                                 <rect key="frame" x="572" y="17" width="15" height="473"/>
                                                 <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
                                             </scroller>
                                             <tableHeaderView key="headerView" id="669">
                                                 <rect key="frame" x="0.0" y="0.0" width="571" height="17"/>
                                                 <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
                                             </tableHeaderView>
                                         </scrollView>
                                         <button verticalHuggingPriority="750" id="665">
                                             <rect key="frame" x="483" y="527" width="129" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="push" title="Reload XML" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="668">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -202,6 +213,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cA4-9j-dKU">
                                             <rect key="frame" x="395" y="29" width="212" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Do you want to add your own settings?" id="zTw-95-O8N">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -211,6 +223,7 @@
                                         <button verticalHuggingPriority="750" id="gpt-OH-jDS">
                                             <rect key="frame" x="401" y="6" width="205" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Open the documentation web site" bezelStyle="smallSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" state="on" borderStyle="border" inset="2" id="T1a-er-beZ">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -222,6 +235,7 @@
                                         <button verticalHuggingPriority="750" id="1371">
                                             <rect key="frame" x="17" y="33" width="123" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1372">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -233,6 +247,7 @@
                                         <button verticalHuggingPriority="750" id="1374">
                                             <rect key="frame" x="148" y="33" width="122" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1375">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -244,6 +259,7 @@
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="kpZ-u8-Qe2">
                                             <rect key="frame" x="17" y="28" width="362" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -251,6 +267,7 @@
                                         <button verticalHuggingPriority="750" id="Ywu-Nf-CWd">
                                             <rect key="frame" x="148" y="6" width="164" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Quit Karabiner completely" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DgO-pY-cfu">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -262,6 +279,7 @@
                                         <button verticalHuggingPriority="750" id="nbh-hC-aUy">
                                             <rect key="frame" x="17" y="6" width="123" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Close this window" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftj-ib-Ila">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -273,11 +291,13 @@
                                         <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="PPX-iV-3at">
                                             <rect key="frame" x="376" y="7" width="5" height="48"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                     </subviews>
+                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Key Repeat" identifier="Item 2" id="632">
@@ -295,6 +315,7 @@
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" headerView="681" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="683" id="678">
                                                         <rect key="frame" x="0.0" y="0.0" width="571" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <animations/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -372,31 +393,37 @@
                                                         </connections>
                                                     </outlineView>
                                                 </subviews>
+                                                <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </clipView>
+                                            <animations/>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="680">
                                                 <rect key="frame" x="-100" y="-100" width="543" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="679">
                                                 <rect key="frame" x="572" y="17" width="15" height="441"/>
                                                 <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
                                             </scroller>
                                             <tableHeaderView key="headerView" id="681">
                                                 <rect key="frame" x="0.0" y="0.0" width="571" height="17"/>
                                                 <autoresizingMask key="autoresizingMask"/>
+                                                <animations/>
                                             </tableHeaderView>
                                         </scrollView>
                                         <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="1368">
                                             <rect key="frame" x="14" y="502" width="594" height="52"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="9by-gL-eKj">
                                                 <rect key="frame" x="1" y="1" width="592" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" id="1331">
                                                         <rect key="frame" x="66" y="9" width="460" height="34"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1332">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Karabiner overrides the OS X's standard Key Repeat settings.
@@ -408,16 +435,20 @@ Use the first two settings below.</string>
                                                     <imageView id="1369">
                                                         <rect key="frame" x="29" y="11" width="32" height="32"/>
                                                         <autoresizingMask key="autoresizingMask"/>
+                                                        <animations/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="1370"/>
                                                     </imageView>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <button verticalHuggingPriority="750" id="aHD-Jz-eLA">
                                             <rect key="frame" x="17" y="16" width="116" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSe-mc-SWg">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -429,6 +460,7 @@ Use the first two settings below.</string>
                                         <button verticalHuggingPriority="750" id="oab-4R-uNc">
                                             <rect key="frame" x="141" y="16" width="122" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jms-ut-J0m">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -438,6 +470,7 @@ Use the first two settings below.</string>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Status Message" identifier="StatusMessage" id="1221">
@@ -448,13 +481,14 @@ Use the first two settings below.</string>
                                         <box autoresizesSubviews="NO" title="On/Off" borderType="line" id="1324">
                                             <rect key="frame" x="14" y="426" width="594" height="119"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="kGM-SP-nxb">
                                                 <rect key="frame" x="1" y="1" width="592" height="103"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button id="1223" userLabel="Show status message">
                                                         <rect key="frame" x="16" y="77" width="266" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show status message (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1224">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -467,6 +501,7 @@ Use the first two settings below.</string>
                                                     <button id="wdT-lG-Jfw" userLabel="Show status message">
                                                         <rect key="frame" x="40" y="57" width="236" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show caps lock state (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Rle-nl-rpW">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -479,6 +514,7 @@ Use the first two settings below.</string>
                                                     <button id="1325" userLabel="Show status message">
                                                         <rect key="frame" x="40" y="17" width="329" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show pointing button lock state (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1326">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -491,6 +527,7 @@ Use the first two settings below.</string>
                                                     <button id="1315" userLabel="Show status message">
                                                         <rect key="frame" x="40" y="37" width="292" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show sticky modifiers state (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1316">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -501,20 +538,23 @@ Use the first two settings below.</string>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Position" borderType="line" id="1330">
                                             <rect key="frame" x="14" y="120" width="594" height="61"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="jI1-A7-I3N">
                                                 <rect key="frame" x="1" y="1" width="592" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" id="1241">
                                                         <rect key="frame" x="15" y="17" width="66" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Position:" id="1242">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -524,6 +564,7 @@ Use the first two settings below.</string>
                                                     <popUpButton verticalHuggingPriority="750" id="1235" userLabel="Position">
                                                         <rect key="frame" x="83" y="11" width="290" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" title="Bottom right (Default)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1246" id="1236">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -542,20 +583,23 @@ Use the first two settings below.</string>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Appearance" borderType="line" id="1323">
                                             <rect key="frame" x="14" y="201" width="594" height="204"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="QtK-AK-YnC">
                                                 <rect key="frame" x="1" y="1" width="592" height="188"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" id="1401">
                                                         <rect key="frame" x="15" y="159" width="66" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Type:" id="1402">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -565,6 +609,7 @@ Use the first two settings below.</string>
                                                     <popUpButton verticalHuggingPriority="750" id="1403" userLabel="Type">
                                                         <rect key="frame" x="83" y="154" width="290" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" title="Edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1410" id="1404">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -590,6 +635,7 @@ Use the first two settings below.</string>
                                                     <textField verticalHuggingPriority="750" id="1233">
                                                         <rect key="frame" x="15" y="119" width="66" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Color:" id="1234">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -599,6 +645,7 @@ Use the first two settings below.</string>
                                                     <popUpButton verticalHuggingPriority="750" id="1227" userLabel="Theme">
                                                         <rect key="frame" x="83" y="113" width="290" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1228">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -627,6 +674,7 @@ Use the first two settings below.</string>
                                                     <textField verticalHuggingPriority="750" id="1247">
                                                         <rect key="frame" x="8" y="79" width="73" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Opacity:" id="1248">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -636,6 +684,7 @@ Use the first two settings below.</string>
                                                     <textField verticalHuggingPriority="750" id="1279">
                                                         <rect key="frame" x="83" y="43" width="37" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clear" id="1280">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -645,6 +694,7 @@ Use the first two settings below.</string>
                                                     <textField verticalHuggingPriority="750" id="1299">
                                                         <rect key="frame" x="274" y="43" width="43" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default" id="1300">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -654,6 +704,7 @@ Use the first two settings below.</string>
                                                     <textField verticalHuggingPriority="750" id="1281">
                                                         <rect key="frame" x="327" y="43" width="46" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Colored" id="1282">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -663,6 +714,7 @@ Use the first two settings below.</string>
                                                     <slider verticalHuggingPriority="750" id="1249" userLabel="Opacity">
                                                         <rect key="frame" x="84" y="67" width="288" height="25"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="20" maxValue="100" doubleValue="20" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1250"/>
                                                         <connections>
                                                             <action selector="refresh:" target="606" id="1295"/>
@@ -672,6 +724,7 @@ Use the first two settings below.</string>
                                                     <textField verticalHuggingPriority="750" id="1301">
                                                         <rect key="frame" x="8" y="16" width="73" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font size:" id="1302">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -681,6 +734,7 @@ Use the first two settings below.</string>
                                                     <popUpButton verticalHuggingPriority="750" id="1303" userLabel="Font size">
                                                         <rect key="frame" x="83" y="11" width="290" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" title="Huge" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1309" id="1304">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -699,11 +753,14 @@ Use the first two settings below.</string>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="MenuBar" identifier="Item 3" id="631">
@@ -714,7 +771,7 @@ Use the first two settings below.</string>
                                         <box autoresizesSubviews="NO" title="SettingList" borderType="line" id="695">
                                             <rect key="frame" x="14" y="80" width="594" height="375"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="gKU-xd-mya">
                                                 <rect key="frame" x="1" y="1" width="592" height="359"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
@@ -728,6 +785,7 @@ Use the first two settings below.</string>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="703">
                                                                     <rect key="frame" x="0.0" y="0.0" width="554" height="19"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <animations/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -753,20 +811,25 @@ Use the first two settings below.</string>
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
+                                                            <animations/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </clipView>
+                                                        <animations/>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="702">
                                                             <rect key="frame" x="1" y="119" width="223" height="15"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <animations/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="701">
                                                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <animations/>
                                                         </scroller>
                                                     </scrollView>
                                                     <button id="699">
                                                         <rect key="frame" x="18" y="14" width="24" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="706">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -778,6 +841,7 @@ Use the first two settings below.</string>
                                                     <button id="698">
                                                         <rect key="frame" x="41" y="14" width="24" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="707">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -789,6 +853,7 @@ Use the first two settings below.</string>
                                                     <textField verticalHuggingPriority="750" id="1389">
                                                         <rect key="frame" x="15" y="246" width="460" height="102"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1390">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">You can make multiple profiles.
@@ -804,6 +869,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                     <button verticalHuggingPriority="750" id="ZYB-aW-UwD">
                                                         <rect key="frame" x="91" y="7" width="111" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Sort by name" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NUF-0z-CqG">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
@@ -815,6 +881,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                     <button verticalHuggingPriority="750" id="JBN-HF-WTq">
                                                         <rect key="frame" x="195" y="7" width="122" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Sort by created" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WWs-oh-umf">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
@@ -824,20 +891,23 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="On/Off" borderType="line" id="1381">
                                             <rect key="frame" x="14" y="471" width="594" height="74"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="qQS-xb-LW2">
                                                 <rect key="frame" x="1" y="1" width="592" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button id="696">
                                                         <rect key="frame" x="16" y="32" width="251" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -850,6 +920,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                     <button id="694">
                                                         <rect key="frame" x="40" y="12" width="308" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show setting name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -860,11 +931,14 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="AXNotifier" identifier="" id="fN6-dc-HpZ">
@@ -875,13 +949,14 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                         <box autoresizesSubviews="NO" title="On/Off" borderType="line" id="9xz-eA-K3t">
                                             <rect key="frame" x="14" y="49" width="594" height="397"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="9mK-vH-viB">
                                                 <rect key="frame" x="1" y="1" width="592" height="381"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button id="27K-KA-6hE">
                                                         <rect key="frame" x="16" y="355" width="217" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WZS-lb-Ap5">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -894,18 +969,20 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                     <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="6QB-Ee-oLk">
                                                         <rect key="frame" x="15" y="21" width="562" height="310"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView">
+                                                        <view key="contentView" id="gbg-VU-zVB">
                                                             <rect key="frame" x="1" y="1" width="560" height="308"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView id="Qz6-Jz-LBo">
                                                                     <rect key="frame" x="18" y="262" width="32" height="32"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <animations/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="ODw-fA-ogD"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jUH-Ca-wfX">
                                                                     <rect key="frame" x="56" y="58" width="520" height="238"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <animations/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="e3W-S7-z09">
                                                                         <font key="font" metaFont="system"/>
                                                                         <string key="title">Be careful:
@@ -927,25 +1004,30 @@ You need to enable AXNotifier if you want to use following settings:
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <animations/>
                                                         </view>
+                                                        <animations/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </box>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Control" borderType="line" id="k0c-8Q-yOU">
                                             <rect key="frame" x="14" y="469" width="594" height="76"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="4Z2-Km-8ki">
                                                 <rect key="frame" x="1" y="1" width="592" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="Tt2-Lg-Afr">
                                                         <rect key="frame" x="12" y="15" width="153" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Restart AXNotifier" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jbg-Cb-4xH">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -957,6 +1039,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="oqD-On-FVF">
                                                         <rect key="frame" x="165" y="14" width="411" height="36"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Please restart AXNotifier when your application specific settings do not work properly." id="uZc-3Z-yUz">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -964,11 +1047,14 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Misc &amp; Uninstall" identifier="2" id="634">
@@ -979,6 +1065,7 @@ You need to enable AXNotifier if you want to use following settings:
                                         <textField verticalHuggingPriority="750" id="641">
                                             <rect key="frame" x="15" y="538" width="114" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Karabiner.version" id="642">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -988,6 +1075,7 @@ You need to enable AXNotifier if you want to use following settings:
                                         <textField verticalHuggingPriority="750" id="640">
                                             <rect key="frame" x="133" y="538" width="129" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <animations/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="x.x.xx" id="643">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -997,13 +1085,14 @@ You need to enable AXNotifier if you want to use following settings:
                                         <box autoresizesSubviews="NO" title="Update" borderType="line" id="639">
                                             <rect key="frame" x="14" y="433" width="594" height="97"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="bfX-e8-5Po">
                                                 <rect key="frame" x="1" y="1" width="592" height="81"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <popUpButton verticalHuggingPriority="750" id="646">
                                                         <rect key="frame" x="214" y="47" width="286" height="26"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="647">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -1022,6 +1111,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <textField verticalHuggingPriority="750" id="645">
                                                         <rect key="frame" x="15" y="53" width="197" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Check for updates on startup:" id="652">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1031,6 +1121,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <button verticalHuggingPriority="750" id="644">
                                                         <rect key="frame" x="12" y="7" width="155" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1042,6 +1133,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <button verticalHuggingPriority="750" id="1435">
                                                         <rect key="frame" x="363" y="16" width="212" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="miniSystem"/>
@@ -1051,20 +1143,23 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Uninstall" borderType="line" id="638">
                                             <rect key="frame" x="14" y="353" width="594" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="2Vk-yJ-tK2">
                                                 <rect key="frame" x="1" y="1" width="592" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="654">
                                                         <rect key="frame" x="12" y="6" width="156" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="655">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1074,20 +1169,23 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Custom Setting" borderType="line" id="637">
                                             <rect key="frame" x="14" y="248" width="594" height="87"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="6b6-ZY-ZNT">
                                                 <rect key="frame" x="1" y="1" width="592" height="71"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="656">
                                                         <rect key="frame" x="12" y="33" width="149" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Open private.xml" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="657">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1099,6 +1197,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <button id="qZa-XW-7Lm">
                                                         <rect key="frame" x="16" y="12" width="239" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Use prepared settings (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Q97-uy-r6v">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1109,20 +1208,23 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Web sites" borderType="line" id="VHx-J0-axb">
                                             <rect key="frame" x="14" y="5" width="595" height="100"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="kio-0y-lSX">
                                                 <rect key="frame" x="1" y="1" width="593" height="84"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="B4b-iA-pXM">
                                                         <rect key="frame" x="158" y="47" width="250" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1134,6 +1236,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <button verticalHuggingPriority="750" id="yat-77-L8T">
                                                         <rect key="frame" x="158" y="14" width="289" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1145,6 +1248,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="R0Y-fc-sdF">
                                                         <rect key="frame" x="16" y="57" width="142" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open download page:" id="I4N-M6-GEH">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1154,6 +1258,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="i8T-VC-eT0">
                                                         <rect key="frame" x="71" y="24" width="87" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open github:" id="xhl-dh-25o">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1161,20 +1266,23 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" title="Helper Applications" borderType="line" id="636">
                                             <rect key="frame" x="14" y="120" width="594" height="109"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
+                                            <view key="contentView" id="Pxe-rP-7J1">
                                                 <rect key="frame" x="1" y="1" width="592" height="93"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" id="659">
                                                         <rect key="frame" x="12" y="55" width="165" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Launch EventViewer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="660">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1186,6 +1294,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                     <button verticalHuggingPriority="750" id="658">
                                                         <rect key="frame" x="12" y="22" width="241" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Launch &quot;multi-touch extension&quot;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="661">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1195,11 +1304,14 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                             </view>
+                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <animations/>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
@@ -1208,6 +1320,7 @@ You need to enable AXNotifier if you want to use following settings:
                         </connections>
                     </tabView>
                 </subviews>
+                <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="1181" id="1209"/>
