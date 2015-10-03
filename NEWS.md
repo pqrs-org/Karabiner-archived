@@ -10,6 +10,8 @@
   * Prepared settings have been updated.
   * Updates for people who add new settings by oneself:
     * `once` attribute has been introduced into `<include>` tag.
+* Fixed issues:
+  * The CPU usage of Preview.app might be 100% at opening a huge PDF file when AXNotifier is enabled.
 
 
 # Version 10.9.0
