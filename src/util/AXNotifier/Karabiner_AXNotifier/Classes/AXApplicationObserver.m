@@ -1,6 +1,7 @@
 #import "AXApplicationObserver.h"
 #import "AXUtilities.h"
 #import "NotificationKeys.h"
+#import "PreferencesKeys.h"
 
 @interface AXApplicationObserver () {
   AXUIElementRef applicationElement_;
@@ -44,7 +45,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
 @implementation AXApplicationObserver
 
-- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication {
+- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication preferences:(NSDictionary*)preferences {
   self = [super init];
 
   if (self) {
@@ -64,51 +65,61 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     }
 
     // Java apps will be crashed if observe. (We confirm crash in SQLDeveloper.)
-    if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
-        [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
-        [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
+    if ([preferences[kAXNotifierDisabledInJavaApps] boolValue]) {
+      if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
+          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
+          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
 
-        // Eclipse
-        [[[runningApplication executableURL] absoluteString] hasSuffix:@"/eclipse"] ||
+          // Eclipse
+          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/eclipse"] ||
 
-        // LibreOffice
-        // https://github.com/tekezo/Karabiner/issues/243
-        [[runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"] ||
+          // LibreOffice
+          // https://github.com/tekezo/Karabiner/issues/243
+          [[runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"] ||
 
-        // Matlab
-        // https://github.com/tekezo/Karabiner/issues/259
-        [[runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"] ||
+          // Matlab
+          // https://github.com/tekezo/Karabiner/issues/259
+          [[runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"] ||
 
-        // IntelliJ IDEA (com.jetbrains.intellij*)
-        // PhpStorm (com.jetbrains.PhpStorm)
-        // RubyMine (com.jetbrains.rubymine)
-        // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
-        //
-        // We treat JetBrains's products are made by Java.
-        [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."] ||
+          // IntelliJ IDEA (com.jetbrains.intellij*)
+          // PhpStorm (com.jetbrains.PhpStorm)
+          // RubyMine (com.jetbrains.rubymine)
+          // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
+          //
+          // We treat JetBrains's products are made by Java.
+          [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."] ||
 
-        // Android Studio
-        // https://github.com/tekezo/Karabiner/issues/255
-        [[runningApplication bundleIdentifier] isEqualToString:@"com.google.android.studio"] ||
+          // Android Studio
+          // https://github.com/tekezo/Karabiner/issues/255
+          [[runningApplication bundleIdentifier] isEqualToString:@"com.google.android.studio"] ||
 
-        // Screencast-O-Matic
-        // https://github.com/tekezo/Karabiner/issues/337
-        [[runningApplication bundleIdentifier] isEqualToString:@"com.screencastomatic.app"] ||
+          // Screencast-O-Matic
+          // https://github.com/tekezo/Karabiner/issues/337
+          [[runningApplication bundleIdentifier] isEqualToString:@"com.screencastomatic.app"] ||
 
-        // RazorSQL
-        // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
-        [[runningApplication bundleIdentifier] isEqualToString:@"com.razorsql.RazorSQL"] ||
+          // RazorSQL
+          // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
+          [[runningApplication bundleIdentifier] isEqualToString:@"com.razorsql.RazorSQL"] ||
 
-        // EditRocket
-        // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
-        [[runningApplication bundleIdentifier] isEqualToString:@"com.editrocket.EditRocket"] ||
+          // EditRocket
+          // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
+          [[runningApplication bundleIdentifier] isEqualToString:@"com.editrocket.EditRocket"] ||
 
-        // Putting false in order to allow tailing || in the last valid item.
-        false) {
+          // Putting false in order to allow tailing || in the last valid item.
+          false) {
 #if 0
       NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
 #endif
-      observable = NO;
+        observable = NO;
+      }
+    }
+
+    // Preview.app will be slow when opening large pdf if Preview.app is observed.
+    // eg. http://web.mit.edu/rsi/www/pdfs/beamer-tutorial.pdf
+    if ([preferences[kAXNotifierDisabledInPreview] boolValue]) {
+      if ([[runningApplication bundleIdentifier] isEqualToString:@"com.apple.Preview"]) {
+        observable = NO;
+      }
     }
 
     // ----------------------------------------

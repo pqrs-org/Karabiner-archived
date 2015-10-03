@@ -83,6 +83,8 @@
  */
 
 @interface AXApplicationObserverManager () {
+  NSDictionary* preferences_;
+
   NSMutableDictionary* systemApplicationObservers_;
 
   // We need to observe frontmostApplication only because
@@ -121,7 +123,7 @@
           NSArray* runningApplications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
           if ([runningApplications count] > 0) {
             @try {
-              systemApplicationObservers_[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0]];
+              systemApplicationObservers_[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0] preferences:preferences_];
             } @catch (NSException* e) {
 #if 0
               NSLog(@"%@", e);
@@ -154,7 +156,7 @@
 #endif
 
         @try {
-          observer_ = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplicationForAXApplicationObserver_];
+          observer_ = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplicationForAXApplicationObserver_ preferences:preferences_];
           [observer_ observeTitleChangedNotification];
           [observer_ postNotification];
 
@@ -183,10 +185,13 @@
   });
 }
 
-- (instancetype)init {
+- (instancetype)initWithPreferences:(NSDictionary*)preferences {
   self = [super init];
 
   if (self) {
+    preferences_ = preferences;
+    NSLog(@"AXNotifier Preferences: %@", preferences_);
+
     systemApplicationObservers_ = [NSMutableDictionary new];
 
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self

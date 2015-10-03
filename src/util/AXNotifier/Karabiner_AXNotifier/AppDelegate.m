@@ -110,7 +110,7 @@ send:
           axEnabled_ = YES;
 
           // Renew AXApplicationObserverManager
-          axApplicationObserverManager_ = [AXApplicationObserverManager new];
+          [self setupAXApplicationObserverManager];
         }
 
       } else {
@@ -168,7 +168,7 @@ send:
   if (AXIsProcessTrusted()) {
     axEnabled_ = YES;
   }
-  axApplicationObserverManager_ = [AXApplicationObserverManager new];
+  [self setupAXApplicationObserverManager];
   windowObserver_ = [WindowObserver new];
 
   [NSTimer scheduledTimerWithTimeInterval:0.5
@@ -179,6 +179,10 @@ send:
 
   // ----------------------------------------
   [Relauncher resetRelaunchedCount];
+}
+
+- (void) setupAXApplicationObserverManager {
+  axApplicationObserverManager_ = [[AXApplicationObserverManager alloc] initWithPreferences:[[self.client proxy] preferencesForAXNotifier]];
 }
 
 @end
