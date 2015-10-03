@@ -946,77 +946,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                     <rect key="frame" x="10" y="33" width="622" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box autoresizesSubviews="NO" title="On/Off" borderType="line" id="9xz-eA-K3t">
-                                            <rect key="frame" x="14" y="49" width="594" height="397"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" id="9mK-vH-viB">
-                                                <rect key="frame" x="1" y="1" width="592" height="381"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button id="27K-KA-6hE">
-                                                        <rect key="frame" x="16" y="355" width="217" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WZS-lb-Ap5">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="manageAXNotifier:" target="494" id="39y-1a-xeO"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kIsAXNotifierEnabled" id="YMa-nF-sYh"/>
-                                                        </connections>
-                                                    </button>
-                                                    <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="6QB-Ee-oLk">
-                                                        <rect key="frame" x="15" y="21" width="562" height="310"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView" id="gbg-VU-zVB">
-                                                            <rect key="frame" x="1" y="1" width="560" height="308"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <imageView id="Qz6-Jz-LBo">
-                                                                    <rect key="frame" x="18" y="262" width="32" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                    <animations/>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="ODw-fA-ogD"/>
-                                                                </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jUH-Ca-wfX">
-                                                                    <rect key="frame" x="56" y="58" width="520" height="238"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <animations/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="e3W-S7-z09">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <string key="title">Be careful:
-Do not disable AXNotifier if you do not know much about AXNotifier.
-
-
-You need to enable AXNotifier if you want to use following settings:
-
-* application specific settings.
-    (eg. "Change the command key only in Terminal".)
-
-* window name specific settings.
-    (eg. "Disable command-w in Gmail on Google Chrome".)
-
-* ui element role specific settings.
-    (eg. "Change hjkl keys to arrow keys when you are not editing text.)</string>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                            <animations/>
-                                                        </view>
-                                                        <animations/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </box>
-                                                </subviews>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
                                         <box autoresizesSubviews="NO" title="Control" borderType="line" id="k0c-8Q-yOU">
                                             <rect key="frame" x="14" y="469" width="594" height="76"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1042,6 +971,96 @@ You need to enable AXNotifier if you want to use following settings:
                                                         <animations/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Please restart AXNotifier when your application specific settings do not work properly." id="uZc-3Z-yUz">
                                                             <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <animations/>
+                                            </view>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box autoresizesSubviews="NO" title="On/Off" borderType="line" id="9xz-eA-K3t">
+                                            <rect key="frame" x="14" y="85" width="594" height="361"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="9mK-vH-viB">
+                                                <rect key="frame" x="1" y="1" width="592" height="345"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button id="27K-KA-6hE">
+                                                        <rect key="frame" x="16" y="319" width="217" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WZS-lb-Ap5">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="manageAXNotifier:" target="494" id="39y-1a-xeO"/>
+                                                            <binding destination="1176" name="value" keyPath="values.kIsAXNotifierEnabled" id="YMa-nF-sYh"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button id="TIe-Bi-YgY">
+                                                        <rect key="frame" x="36" y="299" width="444" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Disable window name and role observation in Java apps. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="cu0-ah-J1P">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="manageAXNotifier:" target="494" id="c7U-lP-8ZW"/>
+                                                            <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInJavaApps" id="xeG-bG-Yxa"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button id="l8Y-ol-1AD">
+                                                        <rect key="frame" x="36" y="279" width="457" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Disable window name and role observation in Preview.app. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="nm8-pK-Ye8">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="manageAXNotifier:" target="494" id="ZqJ-Nm-WCV"/>
+                                                            <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInPreview" id="eHV-eW-29L"/>
+                                                        </connections>
+                                                    </button>
+                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="1yU-Fh-Xme">
+                                                        <rect key="frame" x="16" y="252" width="556" height="5"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <font key="titleFont" metaFont="system"/>
+                                                    </box>
+                                                    <imageView id="Qz6-Jz-LBo">
+                                                        <rect key="frame" x="16" y="214" width="32" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="ODw-fA-ogD"/>
+                                                    </imageView>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="jUH-Ca-wfX">
+                                                        <rect key="frame" x="54" y="14" width="520" height="232"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="e3W-S7-z09">
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="title">Be careful:
+Do not change these settings if you do not know much about AXNotifier.
+
+You need to enable AXNotifier if you want to use following settings:
+
+* Application specific settings.
+    (eg. "Change the command key only in Terminal".)
+
+* Window name specific settings.
+    (eg. "Disable command-w in Gmail on Google Chrome".)
+
+* UI element role specific settings.
+    (eg. "Change hjkl keys to arrow keys when you are not editing text.)</string>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
