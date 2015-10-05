@@ -161,6 +161,11 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>ESTONIAN</name>
+    <languagecode>et</languagecode>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>FINNISH</name>
     <languagecode>fi</languagecode>
   </inputsourcedef>
