@@ -388,8 +388,17 @@
           KeyCode::CURSOR_RIGHT, ModifierFlag::COMMAND_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
         </autogen>
       </block>
-      <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-      <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+
+      <block>
+        <inputsource_only>AZERTY</inputsource_only>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::Q, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+      </block>
+      <block>
+        <inputsource_not>AZERTY</inputsource_not>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+      </block>
     </item>
     <item>
       <name>Use PC Style Home/End #2</name>
@@ -404,8 +413,17 @@
       <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <block>
         <only>EMACS, TERMINAL, X11</only>
-        <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
-        <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+
+        <block>
+          <inputsource_only>AZERTY</inputsource_only>
+          <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::Q, ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+        </block>
+        <block>
+          <inputsource_not>AZERTY</inputsource_not>
+          <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
+        </block>
       </block>
       <block>
         <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
