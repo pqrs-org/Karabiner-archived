@@ -148,11 +148,11 @@
                                             <rect key="frame" x="17" y="54" width="588" height="474"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n2M-kD-RD0">
-                                                <rect key="frame" x="1" y="17" width="571" height="473"/>
+                                                <rect key="frame" x="1" y="1" width="571" height="472"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" headerView="669" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
-                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="19"/>
+                                                    <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
+                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="472"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <animations/>
                                                         <size key="intercellSpacing" width="2" height="3"/>
@@ -187,16 +187,11 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <animations/>
                                             </scroller>
-                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="671">
-                                                <rect key="frame" x="572" y="17" width="15" height="473"/>
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="671">
+                                                <rect key="frame" x="572" y="1" width="15" height="472"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <animations/>
                                             </scroller>
-                                            <tableHeaderView key="headerView" id="669">
-                                                <rect key="frame" x="0.0" y="0.0" width="571" height="17"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <animations/>
-                                            </tableHeaderView>
                                         </scrollView>
                                         <button verticalHuggingPriority="750" id="665">
                                             <rect key="frame" x="483" y="527" width="129" height="32"/>
