@@ -12,6 +12,14 @@
   </inputsourcedef>
 
   <inputsourcedef>
+    <name>AZERTY</name>
+    <inputsourceid_equal>com.apple.keylayout.ABC-AZERTY</inputsourceid_equal>
+    <inputsourceid_equal>com.apple.keylayout.French-PC</inputsourceid_equal>
+    <inputsourceid_equal>com.apple.keylayout.French-numerical</inputsourceid_equal>
+    <inputsourceid_equal>com.apple.keylayout.French</inputsourceid_equal>
+  </inputsourcedef>
+
+  <inputsourcedef>
     <name>BELGIAN</name>
     <languagecode>nl</languagecode>
   </inputsourcedef>
