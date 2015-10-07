@@ -221,7 +221,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "EventViewer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -310,6 +310,7 @@
 				GCC_PREFIX_HEADER = EventViewer_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.pqrs.Karabiner.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = EventViewer;
 			};
 			name = Release;
