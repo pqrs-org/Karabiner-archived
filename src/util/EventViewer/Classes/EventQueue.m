@@ -2,6 +2,7 @@
 
 #import "EventQueue.h"
 #import "KarabinerClient.h"
+#import "PreferencesKeys.h"
 
 @implementation EventQueue
 
@@ -229,8 +230,10 @@ enum {
   // An invalid event will be sent when we press command-tab and switch the current app to EventViewer.
   // (keyMod and keyCode == 0).
   // So, we ignore it.
-  if ([eventType isEqualToString:@"FlagsChanged"] && [event keyCode] == 0) {
-    return;
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kHideIgnorableEvents]) {
+    if ([eventType isEqualToString:@"FlagsChanged"] && [event keyCode] == 0) {
+      return;
+    }
   }
 
   NSString* keyCodeName = [[client_ proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
@@ -265,6 +268,13 @@ enum {
     }
     if (!eventType) {
       return;
+    }
+
+    // Hide Help (0x5) and NumLock (0xa)
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kHideIgnorableEvents]) {
+      if (keyCode == 0x5 || keyCode == 0xa) {
+        return;
+      }
     }
 
     NSString* keyCodeName = [[client_ proxy] symbolMapName:@"ConsumerKeyCode" value:keyCode];

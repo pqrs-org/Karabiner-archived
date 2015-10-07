@@ -758,6 +758,32 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
+                                        <box title="Others" borderType="line" id="lH0-6O-BWP">
+                                            <rect key="frame" x="134" y="208" width="560" height="73"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="xoA-9x-cwN">
+                                                <rect key="frame" x="1" y="1" width="558" height="57"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button id="cCs-zq-ovo">
+                                                        <rect key="frame" x="18" y="21" width="239" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Hide ignorable events. (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xfY-PO-icV">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="W9q-2J-Sz1" name="value" keyPath="values.kHideIgnorableEvents" id="edc-Yz-Iry"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <animations/>
+                                            </view>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
                                     </subviews>
                                     <animations/>
                                 </view>
@@ -816,6 +842,16 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="W9q-2J-Sz1"/>
+        <button id="TaI-Bk-Vr2">
+            <rect key="frame" x="0.0" y="0.0" width="61" height="18"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
+            <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cbl-sN-y2X">
+                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+        </button>
+        <customObject id="rei-LJ-AZr" customClass="PreferencesManager"/>
     </objects>
     <resources>
         <image name="NSInfo" width="32" height="32"/>

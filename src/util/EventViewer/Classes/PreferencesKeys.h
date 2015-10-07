@@ -2,3 +2,4 @@
 
 #define kForceStayTop @"kForceStayTop"
 #define kShowInAllSpaces @"kShowInAllSpaces"
+#define kHideIgnorableEvents @"kHideIgnorableEvents"
