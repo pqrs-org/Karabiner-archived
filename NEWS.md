@@ -1,4 +1,4 @@
-# Since 10.9.0
+# Version 10.10.0
 
 * New functions and improvements:
   * "Use prepared settings" option has been added into Karabiner Preferences > Misc & Uninstall tab. <br />
