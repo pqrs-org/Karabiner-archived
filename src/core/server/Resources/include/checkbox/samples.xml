@@ -1313,7 +1313,7 @@ Two Lines</autogen>
       </item>
 
       <item>
-        <identifier>remap.samples_keyoverlaidmodifier_reepat_tokeys</identifier>
+        <identifier>remap.samples_keyoverlaidmodifier_repeat_tokeys</identifier>
         <name>With Option::KEYOVERLAIDMODIFIER_REPEAT_TOKEYS</name>
         <appendix>Change "a" key "abc". (+ repeat tokeys: "123".)</appendix>
         <appendix>(Send "def" if you press only "a" key.)</appendix>
