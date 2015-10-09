@@ -48,17 +48,46 @@ private:
   public:
     class Item final : public List::Item {
     public:
-      Item(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d, EventInputQueue::SerialNumber s) : fromInfo_(p),
-                                                                                                              device_(d),
-                                                                                                              eventInputQueueSerialNumber_(s) {}
+      Item(const FromInfo* p,
+           const ListHookedDevice::WeakPointer_Item& d,
+           const DeviceIdentifier& f,
+           const ListHookedDevice::WeakPointer_Item& fd,
+           EventInputQueue::SerialNumber s) : fromInfo_(p),
+                                              device_(d),
+                                              frontDeviceIdentifier_(f),
+                                              frontDevice_(fd),
+                                              eventInputQueueSerialNumber_(s) {}
       ~Item(void) {}
 
       const FromInfo* getFromInfo(void) const { return fromInfo_; }
       const ListHookedDevice::WeakPointer_Item& getDevice(void) const { return device_; }
+      const DeviceIdentifier& getFrontDeviceIdentifier(void) const { return frontDeviceIdentifier_; }
+      const ListHookedDevice::WeakPointer_Item& getFrontDevice(void) const { return frontDevice_; }
+      EventInputQueue::SerialNumber getEventInputQueueSerialNumber(void) const { return eventInputQueueSerialNumber_; }
 
     private:
       const FromInfo* fromInfo_;
-      const ListHookedDevice::WeakPointer_Item device_;
+
+      // Different of device_ and frontDevice_:
+      //
+      // For example: S+D => F
+      //
+      //   When we press keyboard1:S and keyboard2:D,
+      //
+      //   FromInfo:S
+      //   * device_ == keyboard1
+      //   * frontDevice_ == keyboard1
+      //
+      //   FromInfo:D
+      //   * device == keyboard2
+      //   * frontDevice_ == keyboard1
+      //
+      //   We need to store frontDevice_ in order to send KeyUp event.
+      //
+      const ListHookedDevice::WeakPointer_Item device_; // device which is pressed.
+      const DeviceIdentifier frontDeviceIdentifier_;
+      const ListHookedDevice::WeakPointer_Item frontDevice_; // `push_remapped` argument.
+
       const EventInputQueue::SerialNumber eventInputQueueSerialNumber_;
     };
 
@@ -71,14 +100,27 @@ private:
       return nullptr;
     }
 
+    static Item* find_by_serial_number(const FromInfo* p, EventInputQueue::SerialNumber s) {
+      for (Item* q = static_cast<Item*>(list_.safe_front()); q; q = static_cast<Item*>(q->getnext())) {
+        if (q->getFromInfo() == p && q->getEventInputQueueSerialNumber() == s) {
+          return q;
+        }
+      }
+      return nullptr;
+    }
+
     static void clear(void) {
       list_.clear();
     }
 
-    static void push_back(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d, EventInputQueue::SerialNumber s) {
+    static void push_back(const FromInfo* p,
+                          const ListHookedDevice::WeakPointer_Item& d,
+                          const DeviceIdentifier& f,
+                          const ListHookedDevice::WeakPointer_Item& fd,
+                          EventInputQueue::SerialNumber s) {
       erase_expired();
 
-      list_.push_back(new Item(p, d, s));
+      list_.push_back(new Item(p, d, f, fd, s));
     }
 
     static bool erase(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d) {
@@ -129,14 +171,22 @@ private:
       ActiveFromInfos::erase_all(this);
     }
 
-    void activate(const ListHookedDevice::WeakPointer_Item& d, EventInputQueue::SerialNumber s) {
-      ActiveFromInfos::push_back(this, d, s);
+    void activate(const ListHookedDevice::WeakPointer_Item& d,
+                  const DeviceIdentifier& f,
+                  const ListHookedDevice::WeakPointer_Item& fd,
+                  EventInputQueue::SerialNumber s) {
+      ActiveFromInfos::push_back(this, d, f, fd, s);
     }
     void deactivate(ListHookedDevice::WeakPointer_Item& d) {
       ActiveFromInfos::erase(this, d);
     }
 
+    ActiveFromInfos::Item* getActiveFromInfosItem(ListHookedDevice::WeakPointer_Item& d) {
+      return ActiveFromInfos::find(this, d);
+    }
+
     bool isActive(ListHookedDevice::WeakPointer_Item& d) const { return ActiveFromInfos::find(this, d); }
+    bool isActiveBySerialNumber(EventInputQueue::SerialNumber s) const { return ActiveFromInfos::find_by_serial_number(this, s); }
 
     const FromEvent& fromEvent(void) { return fromEvent_; }
 

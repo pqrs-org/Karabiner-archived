@@ -151,6 +151,13 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
     if (!fromInfo_[i].isActive(frontDevice)) continue;
     if (!fromInfo_[i].fromEvent().isTargetUpEvent(front->getParamsBase())) continue;
 
+    auto activeItem = fromInfo_[i].getActiveFromInfosItem(frontDevice);
+    if (!activeItem) continue;
+
+    auto serialNumber = activeItem->getEventInputQueueSerialNumber();
+    auto deviceIdentifier = activeItem->getFrontDeviceIdentifier();
+    auto device = activeItem->getFrontDevice();
+
     // --------------------
     if (isPostFromEventsAsRaw_) {
       front->isSimultaneousKeyPressesTarget = false;
@@ -158,12 +165,14 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
       EventInputQueue::queue_.pop_front();
     }
     fromInfo_[i].deactivate(frontDevice);
+    // activeItem has been invalidated by `deactivate`.
+    activeItem = nullptr;
 
     // --------------------
     // if all keys are released, fire KeyUp event.
     bool isAllDeactived = true;
     for (size_t j = 0; j < fromInfo_.size(); ++j) {
-      if (fromInfo_[j].isActive(frontDevice)) {
+      if (fromInfo_[j].isActiveBySerialNumber(serialNumber)) {
         isAllDeactived = false;
       }
     }
@@ -171,7 +180,7 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
       return RemapSimultaneousKeyPressesResult::QUEUE_CHANGED;
     }
 
-    push_remapped(false, frontDeviceIdentifier, frontDevice);
+    push_remapped(false, deviceIdentifier, device);
     return RemapSimultaneousKeyPressesResult::APPLIED;
   }
 
@@ -255,7 +264,10 @@ scan:
       for (int i = static_cast<int>(fromInfo_.size()) - 1; i >= 0; --i) {
         if (!downKeys_[i].item) continue;
 
-        fromInfo_[i].activate((downKeys_[i].item)->deviceWeakPointer, EventInputQueue::currentSerialNumber());
+        fromInfo_[i].activate((downKeys_[i].item)->deviceWeakPointer,
+                              frontDeviceIdentifier,
+                              frontDevice,
+                              EventInputQueue::currentSerialNumber());
 
         if (isPostFromEventsAsRaw_) {
           bool retainFlagStatusTemporaryCount = false;
