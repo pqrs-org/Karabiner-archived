@@ -48,7 +48,9 @@ private:
   public:
     class Item final : public List::Item {
     public:
-      Item(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d) : fromInfo_(p), device_(d) {}
+      Item(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d, EventInputQueue::SerialNumber s) : fromInfo_(p),
+                                                                                                              device_(d),
+                                                                                                              eventInputQueueSerialNumber_(s) {}
       ~Item(void) {}
 
       const FromInfo* getFromInfo(void) const { return fromInfo_; }
@@ -57,6 +59,7 @@ private:
     private:
       const FromInfo* fromInfo_;
       const ListHookedDevice::WeakPointer_Item device_;
+      const EventInputQueue::SerialNumber eventInputQueueSerialNumber_;
     };
 
     static Item* find(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d) {
@@ -72,10 +75,10 @@ private:
       list_.clear();
     }
 
-    static void push_back(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d) {
+    static void push_back(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d, EventInputQueue::SerialNumber s) {
       erase_expired();
 
-      list_.push_back(new Item(p, d));
+      list_.push_back(new Item(p, d, s));
     }
 
     static bool erase(const FromInfo* p, const ListHookedDevice::WeakPointer_Item& d) {
@@ -126,8 +129,8 @@ private:
       ActiveFromInfos::erase_all(this);
     }
 
-    void activate(const ListHookedDevice::WeakPointer_Item& d) {
-      ActiveFromInfos::push_back(this, d);
+    void activate(const ListHookedDevice::WeakPointer_Item& d, EventInputQueue::SerialNumber s) {
+      ActiveFromInfos::push_back(this, d, s);
     }
     void deactivate(ListHookedDevice::WeakPointer_Item& d) {
       ActiveFromInfos::erase(this, d);

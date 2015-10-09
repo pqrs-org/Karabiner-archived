@@ -253,7 +253,7 @@ scan:
     if (isAllKeysDown) {
       // We use the reverse iterator for isPostFromEventsAsRaw_.
       for (int i = static_cast<int>(fromInfo_.size()) - 1; i >= 0; --i) {
-        fromInfo_[i].activate(device);
+        fromInfo_[i].activate(device, EventInputQueue::currentSerialNumber());
 
         if (!downKeys_[i].item) continue;
 
