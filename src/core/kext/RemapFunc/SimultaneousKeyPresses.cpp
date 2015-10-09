@@ -142,13 +142,13 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
   }
 
   // backup device information.
-  DeviceIdentifier deviceIdentifier(front->deviceIdentifier);
-  ListHookedDevice::WeakPointer_Item device(front->deviceWeakPointer);
+  DeviceIdentifier frontDeviceIdentifier(front->deviceIdentifier);
+  ListHookedDevice::WeakPointer_Item frontDevice(front->deviceWeakPointer);
 
   // ------------------------------------------------------------
   // fire KeyUp event if needed.
   for (size_t i = 0; i < fromInfo_.size(); ++i) {
-    if (!fromInfo_[i].isActive(device)) continue;
+    if (!fromInfo_[i].isActive(frontDevice)) continue;
     if (!fromInfo_[i].fromEvent().isTargetUpEvent(front->getParamsBase())) continue;
 
     // --------------------
@@ -157,13 +157,13 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
     } else {
       EventInputQueue::queue_.pop_front();
     }
-    fromInfo_[i].deactivate(device);
+    fromInfo_[i].deactivate(frontDevice);
 
     // --------------------
     // if all keys are released, fire KeyUp event.
     bool isAllDeactived = true;
     for (size_t j = 0; j < fromInfo_.size(); ++j) {
-      if (fromInfo_[j].isActive(device)) {
+      if (fromInfo_[j].isActive(frontDevice)) {
         isAllDeactived = false;
       }
     }
@@ -171,7 +171,7 @@ SimultaneousKeyPresses::remapSimultaneousKeyPresses(void) {
       return RemapSimultaneousKeyPressesResult::QUEUE_CHANGED;
     }
 
-    push_remapped(false, deviceIdentifier, device);
+    push_remapped(false, frontDeviceIdentifier, frontDevice);
     return RemapSimultaneousKeyPressesResult::APPLIED;
   }
 
@@ -253,9 +253,9 @@ scan:
     if (isAllKeysDown) {
       // We use the reverse iterator for isPostFromEventsAsRaw_.
       for (int i = static_cast<int>(fromInfo_.size()) - 1; i >= 0; --i) {
-        fromInfo_[i].activate(device, EventInputQueue::currentSerialNumber());
-
         if (!downKeys_[i].item) continue;
+
+        fromInfo_[i].activate((downKeys_[i].item)->deviceWeakPointer, EventInputQueue::currentSerialNumber());
 
         if (isPostFromEventsAsRaw_) {
           bool retainFlagStatusTemporaryCount = false;
@@ -263,14 +263,14 @@ scan:
           bool isSimultaneousKeyPressesTarget = false;
           EventInputQueue::enqueue_((downKeys_[i].item)->getParamsBase(),
                                     retainFlagStatusTemporaryCount,
-                                    deviceIdentifier,
-                                    device,
+                                    frontDeviceIdentifier,
+                                    frontDevice,
                                     push_back,
                                     isSimultaneousKeyPressesTarget);
         }
         EventInputQueue::queue_.erase_and_delete(downKeys_[i].item);
       }
-      push_remapped(true, deviceIdentifier, device);
+      push_remapped(true, frontDeviceIdentifier, frontDevice);
       return RemapSimultaneousKeyPressesResult::APPLIED;
     }
 
