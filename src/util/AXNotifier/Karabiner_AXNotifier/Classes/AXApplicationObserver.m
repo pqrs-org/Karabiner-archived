@@ -182,9 +182,9 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
     // Log ignoredApps_
     {
-      if (! observable) {
+      if (!observable) {
         NSString* path = [[runningApplication executableURL] absoluteString];
-        if (! ignoredApps_[path]) {
+        if (!ignoredApps_[path]) {
           ignoredApps_[path] = @YES;
           NSLog(@"Ignore app: %@", path);
         }
