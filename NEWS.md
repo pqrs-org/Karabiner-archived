@@ -2,6 +2,7 @@
 
 * Fixed issues:
   * `__SimultaneousKeyPresses__` sends key events continuously even if all keys are released when using multiple keyboards at the same time and both keyboards are pressed.
+  * Some Java apps might be crash when AXNotifier is enabled. (Spine, SpineTrial)
 
 # Version 10.10.0
 
