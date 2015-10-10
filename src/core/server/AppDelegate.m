@@ -265,6 +265,15 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
     if (![bundlePath isEqualToString:@"/Applications/Karabiner.app"]) {
       NSLog(@"Skip setStartAtLogin for %@", bundlePath);
+
+      dispatch_async(dispatch_get_main_queue(), ^{
+        NSAlert* alert = [NSAlert new];
+        [alert setMessageText:@"Karabiner Alert"];
+        [alert addButtonWithTitle:@"Close"];
+        [alert setInformativeText:@"Karabiner.app should be located in /Applications/Karabiner.app.\nDo not move Karabiner.app into other folders."];
+        [alert runModal];
+      });
+
     } else {
       if (![StartAtLoginUtilities isStartAtLogin]) {
         [StartAtLoginUtilities setStartAtLogin:YES];
