@@ -3,6 +3,8 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 
+static NSMutableDictionary* ignoredApps_ = nil;
+
 @interface AXApplicationObserver () {
   AXUIElementRef applicationElement_;
   AXUIElementRef focusedWindowElementForAXTitleChangedNotification_;
@@ -44,6 +46,10 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 }
 
 @implementation AXApplicationObserver
+
++ (void)initialize {
+  ignoredApps_ = [NSMutableDictionary new];
+}
 
 - (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication preferences:(NSDictionary*)preferences {
   self = [super init];
@@ -111,9 +117,6 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
           // Putting false in order to allow tailing || in the last valid item.
           false) {
-#if 0
-      NSLog(@"Ignore Java app to avoid Java app's crash: %@", [runningApplication bundleIdentifier]);
-#endif
         observable = NO;
       }
     }
@@ -175,6 +178,17 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       CFRunLoopAddSource(CFRunLoopGetCurrent(),
                          AXObserverGetRunLoopSource(observer_),
                          kCFRunLoopDefaultMode);
+    }
+
+    // Log ignoredApps_
+    {
+      if (! observable) {
+        NSString* path = [[runningApplication executableURL] absoluteString];
+        if (! ignoredApps_[path]) {
+          ignoredApps_[path] = @YES;
+          NSLog(@"Ignore app: %@", path);
+        }
+      }
     }
   }
 
