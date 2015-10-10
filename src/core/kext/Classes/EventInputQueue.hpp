@@ -18,11 +18,7 @@ class EventInputQueue final {
   friend class RemapFunc::SimultaneousKeyPresses;
 
 public:
-  class SerialNumber final : public ::SerialNumber {
-  public:
-    SerialNumber(void) : ::SerialNumber() {}
-    explicit SerialNumber(uint64_t v) : ::SerialNumber(v) {}
-  };
+  class SerialNumber final : public ::SerialNumber {};
   DECLARE_VECTOR_WITH_HELPER(SerialNumber);
 
   static void initialize(IOWorkLoop& workloop);
