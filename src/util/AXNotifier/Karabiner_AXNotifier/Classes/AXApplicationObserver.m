@@ -105,6 +105,10 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
           // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
           [[runningApplication bundleIdentifier] isEqualToString:@"com.editrocket.EditRocket"] ||
 
+          // Spine
+          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/SpineTrial"] ||
+          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/Spine"] ||
+
           // Putting false in order to allow tailing || in the last valid item.
           false) {
 #if 0
