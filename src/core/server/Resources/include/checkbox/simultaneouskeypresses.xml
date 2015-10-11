@@ -108,11 +108,6 @@
       <autogen>__SimultaneousKeyPresses__ KeyCode::F, KeyCode::N, KeyCode::VK_LOCK_FN</autogen>
     </item>
     <item>
-      <name>Simultaneous Key Presses [V+I] to toggle Complete Vi Mode</name>
-      <identifier>remap.simultaneouskeypresses_vi_to_vimode</identifier>
-      <autogen>__SimultaneousKeyPresses__ KeyCode::V, KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
-    </item>
-    <item>
       <name>Simultaneous Key Presses [Q+P] to M</name>
       <identifier>remap.simultaneouskeypresses_pq2m</identifier>
       <autogen>__SimultaneousKeyPresses__ KeyCode::P, KeyCode::Q, KeyCode::M</autogen>
@@ -190,6 +185,16 @@
         @begin
         KeyCode::HOME,
         Option::SIMULTANEOUSKEYPRESSES_STRICT_KEY_ORDER,
+        @end
+      </autogen>
+      <autogen>
+        __SimultaneousKeyPresses__
+        @begin
+        KeyCode::F, KeyCode::D, KeyCode::S,
+        @end
+
+        @begin
+        KeyCode::VK_NONE,
         @end
       </autogen>
     </item>

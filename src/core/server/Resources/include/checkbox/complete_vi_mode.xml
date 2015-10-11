@@ -151,6 +151,11 @@
       <autogen>__SimultaneousKeyPresses__ KeyCode::COMMAND_R, KeyCode::COMMAND_L, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
     </item>
     <item>
+      <name>Simultaneous Key Presses [V+I] to toggle Complete Vi Mode</name>
+      <identifier>remap.simultaneouskeypresses_vi_to_vimode</identifier>
+      <autogen>__SimultaneousKeyPresses__ KeyCode::V, KeyCode::I, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
+    </item>
+    <item>
       <name>Holding "V" Key to toggle Vi Mode</name>
       <identifier>remap.vimode_holding_v</identifier>
       <autogen>__HoldingKeyToKey__ KeyCode::V, ModifierFlag::NONE, KeyCode::V, KeyCode::VK_NONE, KeyCode::VK_CONFIG_TOGGLE_notsave_complete_vimode</autogen>
