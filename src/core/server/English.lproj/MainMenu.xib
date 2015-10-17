@@ -152,7 +152,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
-                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="472"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <animations/>
                                                         <size key="intercellSpacing" width="2" height="3"/>
@@ -1097,43 +1097,26 @@ You need to enable AXNotifier if you want to use following settings:
                                             </textFieldCell>
                                         </textField>
                                         <box autoresizesSubviews="NO" title="Update" borderType="line" id="639">
-                                            <rect key="frame" x="14" y="433" width="594" height="97"/>
+                                            <rect key="frame" x="14" y="438" width="594" height="92"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <view key="contentView" id="bfX-e8-5Po">
-                                                <rect key="frame" x="1" y="1" width="592" height="81"/>
+                                                <rect key="frame" x="1" y="1" width="592" height="76"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <popUpButton verticalHuggingPriority="750" id="646">
-                                                        <rect key="frame" x="214" y="47" width="286" height="26"/>
+                                                    <button id="BRh-R3-iqY">
+                                                        <rect key="frame" x="18" y="48" width="281" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <animations/>
-                                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="647">
-                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
-                                                            <menu key="menu" title="OtherViews" id="648">
-                                                                <items>
-                                                                    <menuItem title="Nothing" id="649"/>
-                                                                    <menuItem title="The stable release only (default)" id="650"/>
-                                                                    <menuItem title="Beta &amp; stable releases" id="651"/>
-                                                                </items>
-                                                            </menu>
-                                                            <connections>
-                                                                <binding destination="1176" name="selectedIndex" keyPath="values.isCheckUpdate" id="1191"/>
-                                                            </connections>
-                                                        </popUpButtonCell>
-                                                    </popUpButton>
-                                                    <textField verticalHuggingPriority="750" id="645">
-                                                        <rect key="frame" x="15" y="53" width="197" height="17"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Check for updates on startup:" id="652">
+                                                        <buttonCell key="cell" type="check" title="Check for updates on startup (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rkn-B3-QBc">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="1176" name="value" keyPath="values.isCheckUpdate" id="6Np-3V-Rul"/>
+                                                        </connections>
+                                                    </button>
                                                     <button verticalHuggingPriority="750" id="644">
-                                                        <rect key="frame" x="12" y="7" width="155" height="32"/>
+                                                        <rect key="frame" x="14" y="14" width="155" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
@@ -1145,7 +1128,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="1435">
-                                                        <rect key="frame" x="363" y="16" width="212" height="16"/>
+                                                        <rect key="frame" x="363" y="23" width="212" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
@@ -1154,32 +1137,6 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="checkForUpdatesWithBetaVersion:" target="588" id="1438"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                        <box autoresizesSubviews="NO" title="Uninstall" borderType="line" id="638">
-                                            <rect key="frame" x="14" y="353" width="594" height="60"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView" id="2Vk-yJ-tK2">
-                                                <rect key="frame" x="1" y="1" width="592" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" id="654">
-                                                        <rect key="frame" x="12" y="6" width="156" height="32"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="655">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="launchUninstaller:" target="494" id="1197"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1315,6 +1272,32 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="launchMultiTouchExtension:" target="494" id="1200"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <animations/>
+                                            </view>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box autoresizesSubviews="NO" title="Uninstall" borderType="line" id="638">
+                                            <rect key="frame" x="14" y="357" width="594" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <view key="contentView" id="2Vk-yJ-tK2">
+                                                <rect key="frame" x="1" y="1" width="592" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" id="654">
+                                                        <rect key="frame" x="12" y="6" width="156" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="655">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="launchUninstaller:" target="494" id="1197"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

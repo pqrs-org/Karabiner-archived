@@ -19,7 +19,7 @@
     kIsStatusBarEnabled : @YES,
     kIsShowSettingNameInStatusBar : @NO,
     kConfigListSelectedIndex : @0,
-    kCheckForUpdates : @1,
+    kCheckForUpdates : @YES,
     kIsStatusWindowEnabled : @YES,
     kIsStatusWindowShowCapsLock : @NO,
     kIsStatusWindowShowStickyModifier : @NO,
@@ -485,8 +485,8 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSInteger)checkForUpdatesMode {
-  return [[NSUserDefaults standardUserDefaults] integerForKey:kCheckForUpdates];
+- (BOOL)isCheckForUpdates {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
 }
 
 // ----------------------------------------------------------------------

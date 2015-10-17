@@ -39,7 +39,7 @@
 - (void)configlist_sortByAppendIndex;
 - (void)configlist_sortByName;
 
-- (NSInteger)checkForUpdatesMode;
+- (BOOL)isCheckForUpdates;
 
 - (IBAction)sendConfigListChangedNotification:(id)sender;
 
