@@ -143,7 +143,7 @@
         <name>Disable ScrollWheel</name>
         <identifier>remap.dropscrollwheel_0x05ac_0x030d</identifier>
         <block>
-          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_MOUSE</device_only>
+          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_KEYBOARD,DeviceProduct::MAGIC_MOUSE</device_only>
           <autogen>__DropScrollWheel__</autogen>
         </block>
       </item>

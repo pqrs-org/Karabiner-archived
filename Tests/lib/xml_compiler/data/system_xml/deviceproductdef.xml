@@ -73,6 +73,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>MAGIC_KEYBOARD</productname>
+    <productid>0x0267</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>MAGIC_MOUSE</productname>
     <productid>0x030d</productid>
   </deviceproductdef>
