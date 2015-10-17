@@ -36,6 +36,7 @@
 - (void)check:(BOOL)isBackground {
   if (! [preferencesManager_ isCheckForUpdates]) {
     NSLog(@"skip checkForUpdates");
+    return;
   }
 
   NSString* url = [self getFeedURL:NO];
