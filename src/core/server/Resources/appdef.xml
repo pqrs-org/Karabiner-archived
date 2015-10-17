@@ -600,6 +600,12 @@
     <equal>com.tinyspeck.slackmacgap</equal>
   </appdef>
 
+  <appdef>
+    <appname>BBEdit</appname>
+    <equal>com.barebones.bbedit</equal>
+    <equal>com.barebones.textwrangler</equal>
+  </appdef>
+
   <!-- fallback -->
   <appdef>
     <appname>JetBrainsApps</appname>
