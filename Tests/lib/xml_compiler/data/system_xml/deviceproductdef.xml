@@ -83,6 +83,16 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>MAGIC_TRACKPAD</productname>
+    <productid>0x030e</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
+    <productname>MAGIC_TRACKPAD_0x0265</productname>
+    <productid>0x0265</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>TYPEMATRIX_KEYBOARD_0x2030</productname>
     <productid>0x2030</productid>
   </deviceproductdef>
