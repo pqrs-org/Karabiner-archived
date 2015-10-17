@@ -143,7 +143,9 @@
         <name>Disable ScrollWheel</name>
         <identifier>remap.dropscrollwheel_0x05ac_0x030d</identifier>
         <block>
-          <device_only>DeviceVendor::APPLE_COMPUTER,DeviceProduct::MAGIC_KEYBOARD,DeviceProduct::MAGIC_MOUSE</device_only>
+          <device_only>
+            DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE,
+          </device_only>
           <autogen>__DropScrollWheel__</autogen>
         </block>
       </item>
@@ -157,7 +159,10 @@
         <appendix>(This setting flips only pointer and scroll. So, gestures do not work properly.</appendix>
         <appendix>Please disable gestures from System Preferences.)</appendix>
         <identifier>remap.flip_magic_trackpad</identifier>
-        <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_TRACKPAD, DeviceProduct::MAGIC_TRACKPAD_0x0265</device_only>
+        <device_only>
+          DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_TRACKPAD,
+          DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_TRACKPAD_0x0265,
+        </device_only>
         <autogen>
           __FlipPointingRelative__
           Option::FLIPPOINTINGRELATIVE_HORIZONTAL,
@@ -180,10 +185,16 @@
           DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_MX620,
           DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_G9X,
         </device_only>
-        <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT, ModifierFlag::NONE,
-          KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
-        <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ModifierFlag::NONE,
-          KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __ScrollWheelToKey__
+          ScrollWheel::LEFT, ModifierFlag::NONE,
+          KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L,
+        </autogen>
+        <autogen>
+          __ScrollWheelToKey__
+          ScrollWheel::RIGHT, ModifierFlag::NONE,
+          KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L,
+        </autogen>
       </item>
 
       <item>
@@ -680,11 +691,13 @@
         <identifier>remap.sun.greaterkey</identifier>
         <device_only>DeviceVendor::FUJITSU, DeviceProduct::SUN_TYPE_6_KEYBOARD</device_only>
         <!-- The order is important -->
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_R | ModifierFlag::NONE,
           KeyCode::KEY_7, ModifierFlag::OPTION_R
         </autogen>
-        <autogen>__KeyToKey__
+        <autogen>
+          __KeyToKey__
           KeyCode::GERMAN_CIRCUMFLEX, ModifierFlag::OPTION_L | ModifierFlag::NONE,
           KeyCode::KEY_7, ModifierFlag::OPTION_L
         </autogen>
