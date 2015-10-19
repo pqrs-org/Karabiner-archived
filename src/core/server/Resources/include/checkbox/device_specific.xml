@@ -161,7 +161,7 @@
         <identifier>remap.flip_magic_trackpad</identifier>
         <device_only>
           DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_TRACKPAD,
-          DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_TRACKPAD_0x0265,
+          DeviceVendor::Apple_Bluetooth, DeviceProduct::MAGIC_TRACKPAD_0x0265,
         </device_only>
         <autogen>
           __FlipPointingRelative__
