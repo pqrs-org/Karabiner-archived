@@ -79,11 +79,11 @@ bool ListHookedKeyboard::Item::refresh(void) {
     goto restore;
   }
   if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_apple_keyboard) &&
-      getDeviceIdentifier().isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
+      getDeviceIdentifier().isApple()) {
     goto restore;
   }
   if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_dont_remap_non_apple_keyboard) &&
-      !getDeviceIdentifier().isEqualVendor(DeviceVendor::APPLE_COMPUTER)) {
+      !getDeviceIdentifier().isApple()) {
     goto restore;
   }
 
