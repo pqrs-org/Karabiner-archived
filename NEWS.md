@@ -1,7 +1,7 @@
 # Since 10.11.0
 
 * New functions and improvements:
-  * "Don't remap Apple's keyboards" supports Magic Keyboard.
+  * "Don't remap Apple's keyboards" setting supported Magic Keyboard.
   * Prepared settings have been updated.
 
 
