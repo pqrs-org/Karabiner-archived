@@ -181,7 +181,7 @@ send:
   [Relauncher resetRelaunchedCount];
 }
 
-- (void) setupAXApplicationObserverManager {
+- (void)setupAXApplicationObserverManager {
   axApplicationObserverManager_ = [[AXApplicationObserverManager alloc] initWithPreferences:[[self.client proxy] preferencesForAXNotifier]];
 }
 

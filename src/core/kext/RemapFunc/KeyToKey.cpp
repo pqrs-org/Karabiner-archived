@@ -169,7 +169,7 @@ bool KeyToKey::remap(RemapParams& remapParams) {
   if (remapParams.isremapped) return false;
 
   bool iskeydown = false;
-  if (! remapParams.paramsBase.iskeydown(iskeydown)) {
+  if (!remapParams.paramsBase.iskeydown(iskeydown)) {
     return false;
   }
 
