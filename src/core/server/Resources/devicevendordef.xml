@@ -12,6 +12,11 @@
   </devicevendordef>
 
   <devicevendordef>
+    <vendorname>Apple_Bluetooth</vendorname>
+    <vendorid>0x004c</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
     <vendorname>TYPEMATRIX</vendorname>
     <vendorid>0x1e54</vendorid>
   </devicevendordef>

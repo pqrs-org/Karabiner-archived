@@ -4,5 +4,6 @@
 // Note: We use "APPLE_COMPUTER" instead of "APPLE".
 // Because "APPLE" will be replaced by preprocessor, and it causes a compile-error.
 APPLE_COMPUTER   0x05ac
+Apple_Bluetooth  0x004c
 PSEUDO           0x0000
 LOGITECH         0x046d
