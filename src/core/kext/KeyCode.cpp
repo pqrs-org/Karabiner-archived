@@ -208,4 +208,12 @@ bool ConsumerKeyCode::isRepeatable(void) const {
 
   return false;
 }
+
+bool DeviceVendor::isApple(void) const {
+  if (*this == DeviceVendor::APPLE_COMPUTER ||
+      *this == DeviceVendor::Apple_Bluetooth) {
+    return true;
+  }
+  return false;
+}
 }

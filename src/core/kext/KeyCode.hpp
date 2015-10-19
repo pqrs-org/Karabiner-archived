@@ -468,6 +468,8 @@ public:
   bool operator==(DeviceVendor other) const { return value_ == other.get(); }
   bool operator!=(DeviceVendor other) const { return !(*this == other); }
 
+  bool isApple(void) const;
+
 #include "../../../src/bridge/output/include.kext.DeviceVendor.hpp"
 
 private:
@@ -547,6 +549,7 @@ public:
   bool isEqual(const DeviceIdentifier& v) const {
     return isEqual(v.vendor_, v.product_, v.location_);
   }
+  bool isApple(void) const { return vendor_.isApple(); }
 
 private:
   DeviceVendor vendor_;
