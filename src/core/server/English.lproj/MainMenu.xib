@@ -1116,7 +1116,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="644">
-                                                        <rect key="frame" x="14" y="14" width="155" height="32"/>
+                                                        <rect key="frame" x="14" y="9" width="155" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
@@ -1128,7 +1128,7 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" id="1435">
-                                                        <rect key="frame" x="363" y="23" width="212" height="16"/>
+                                                        <rect key="frame" x="363" y="18" width="212" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
