@@ -188,7 +188,7 @@ void EventInputQueue::push_KeyboardEventCallback(OSObject* target,
                                       OrigCharCode(origCharCode),
                                       OrigCharSet(origCharSet),
                                       newkeyboardtype,
-                                      repeat);
+                                      false);
 
   // ------------------------------------------------------------
   IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
@@ -239,7 +239,37 @@ void EventInputQueue::push_KeyboardEventCallback(OSObject* target,
 
   // ------------------------------------------------------------
   // Because we handle the key repeat ourself, drop the key repeat by hardware.
-  if (repeat) return;
+  //
+  // Caution:
+  // We sometimes receive keyup event (eventType 11) with "repeat = true".
+  //
+  // Example:
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0028, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0001, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0003, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0002, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0026, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x00000000, key 0x0026, kbdType  40, repeat = 1
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0025, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0026, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0028, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0025, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x00000000, key 0x0028, kbdType  40, repeat = 1
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0028, kbdType  40, repeat = 1
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0001, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0003, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0028, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0028, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0003, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 11, flags 0x80000000, key 0x0001, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x80000000, key 0x0026, kbdType  40, repeat = 0
+  //   KeyboardEventCallback [ caught]: eventType 10, flags 0x00000000, key 0x0026, kbdType  40, repeat = 1
+  //
+  // In this case, we do not receive keyup event with "repeat = false"
+  // So we should not skip "repeat = true" events unless eventType == 10.
+  //
+
+  if (repeat && eventType == 10) return;
 
   // ------------------------------------------------------------
   bool retainFlagStatusTemporaryCount = false;
@@ -291,7 +321,7 @@ void EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
   Params_KeyboardSpecialEventCallback params(EventType(eventType),
                                              Flags(flags),
                                              ConsumerKeyCode(key),
-                                             flavor, guid, repeat);
+                                             flavor, guid, false);
 
   // ------------------------------------------------------------
   IOHIKeyboard* device = OSDynamicCast(IOHIKeyboard, sender);
@@ -316,7 +346,8 @@ void EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
 
   // ------------------------------------------------------------
   // Because we handle the key repeat ourself, drop the key repeat by hardware.
-  if (repeat) return;
+  // Note: See comments in push_KeyboardEventCallback.
+  if (repeat && eventType == 10) return;
 
   // ------------------------------------------------------------
   bool retainFlagStatusTemporaryCount = false;
