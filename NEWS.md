@@ -1,6 +1,7 @@
 # Since 10.11.0
 
 * New functions and improvements:
+  * The key up event handling has been improved in some keyboards.
   * "Don't remap Apple's keyboards" setting supported Magic Keyboard.
   * Prepared settings have been updated.
 
