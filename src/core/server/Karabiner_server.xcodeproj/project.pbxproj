@@ -48,6 +48,7 @@
 		348C6A2E128E4504005F516D /* StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A2D128E4504005F516D /* StatusBar.m */; };
 		348F120115EA8ADA008A2BDA /* devicelocationdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 348F120015EA8ADA008A2BDA /* devicelocationdef.xml */; };
 		349120481925E19C0088F2C3 /* FrontmostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 349120471925E19C0088F2C3 /* FrontmostWindow.m */; };
+		3493C43D1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3493C43C1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m */; };
 		34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */; };
 		34A5572F16EA075E000E5399 /* StatusMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5572E16EA075E000E5399 /* StatusMessageView.m */; };
 		34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5573016EA10B4000E5399 /* StatusMessageView_nano.m */; };
@@ -151,6 +152,8 @@
 		348F120015EA8ADA008A2BDA /* devicelocationdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicelocationdef.xml; path = Resources/devicelocationdef.xml; sourceTree = "<group>"; };
 		349120461925E19C0088F2C3 /* FrontmostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontmostWindow.h; path = ../../share/FrontmostWindow.h; sourceTree = "<group>"; };
 		349120471925E19C0088F2C3 /* FrontmostWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontmostWindow.m; path = ../../share/FrontmostWindow.m; sourceTree = "<group>"; };
+		3493C43B1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalDomainKeyRepeatObserver.h; path = Classes/GlobalDomainKeyRepeatObserver.h; sourceTree = "<group>"; };
+		3493C43C1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalDomainKeyRepeatObserver.m; path = Classes/GlobalDomainKeyRepeatObserver.m; sourceTree = "<group>"; };
 		34A5572916EA04D6000E5399 /* StatusMessageView_normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView_normal.h; path = Classes/StatusMessage/StatusMessageView_normal.h; sourceTree = "<group>"; };
 		34A5572A16EA04D6000E5399 /* StatusMessageView_normal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView_normal.m; path = Classes/StatusMessage/StatusMessageView_normal.m; sourceTree = "<group>"; };
 		34A5572C16EA075E000E5399 /* StatusMessageView_nano.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageView_nano.h; path = Classes/StatusMessage/StatusMessageView_nano.h; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */,
 				3429B704171A990000C7DB64 /* EnvironmentChecker.h */,
 				3429B705171A990000C7DB64 /* EnvironmentChecker.m */,
+				3493C43B1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.h */,
+				3493C43C1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m */,
 				340B7E3D1545090D00FB3237 /* InputSource.h */,
 				340B7E3E1545090D00FB3237 /* InputSource.m */,
 				3401D0FB1658718100CF962F /* NotificationKeys.h */,
@@ -231,9 +236,9 @@
 				3401D0D91657CE6A00CF962F /* Updater.m */,
 				345647341346A7AF00FD0C38 /* UserClient_userspace.h */,
 				345647351346A7AF00FD0C38 /* UserClient_userspace.m */,
-				34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */,
 				34B893FB128E448C00BC955A /* WorkSpaceData.h */,
 				34B893FC128E448C00BC955A /* WorkSpaceData.m */,
+				34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */,
 				34848264152F533500A9A3BE /* XMLCompiler.h */,
 				34848265152F54B700A9A3BE /* XMLCompiler.m */,
 			);
@@ -560,6 +565,7 @@
 				3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */,
 				34207C051666209F00E7FD08 /* OutlineView_checkbox.m in Sources */,
 				34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */,
+				3493C43D1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m in Sources */,
 				34207C061666209F00E7FD08 /* OutlineView_number.m in Sources */,
 				34207C071666209F00E7FD08 /* OutlineView.m in Sources */,
 				34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */,
