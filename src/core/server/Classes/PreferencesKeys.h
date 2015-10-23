@@ -17,3 +17,5 @@
 #define kAXNotifierDisabledInJavaApps @"kAXNotifierDisabledInJavaApps"
 #define kAXNotifierDisabledInPreview @"kAXNotifierDisabledInPreview"
 #define kUsePreparedSettings @"kUsePreparedSettings"
+#define kIsMigratedIsOverwriteKeyRepeat @"kIsMigratedOverwriteKeyRepeat"
+#define kIsOverwriteKeyRepeat @"kIsOverwriteKeyRepeat"
