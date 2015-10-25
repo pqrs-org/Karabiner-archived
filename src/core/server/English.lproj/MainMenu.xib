@@ -104,7 +104,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="398" y="285" width="800" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-            <value key="minSize" type="size" width="800" height="400"/>
+            <value key="minSize" type="size" width="800" height="620"/>
             <view key="contentView" id="629">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="620"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -227,6 +227,13 @@
                                                 <action selector="collapse:" target="710" id="1377"/>
                                             </connections>
                                         </button>
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
+                                            <rect key="frame" x="17" y="32" width="499" height="5"/>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nbh-hC-aUy">
                                             <rect key="frame" x="17" y="7" width="121" height="20"/>
                                             <animations/>
@@ -269,13 +276,6 @@
                                                 <action selector="openPrivateXMLUsageURL:" target="1181" id="ZB2-ib-ytq"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
-                                            <rect key="frame" x="17" y="32" width="499" height="5"/>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
-                                        </box>
                                         <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="9Yg-sZ-0oJ">
                                             <rect key="frame" x="522" y="8" width="5" height="50"/>
                                             <animations/>
@@ -290,12 +290,12 @@
                                         <constraint firstItem="663" firstAttribute="top" secondItem="662" secondAttribute="top" constant="10" id="1ca-3O-HAg"/>
                                         <constraint firstAttribute="bottom" secondItem="9Yg-sZ-0oJ" secondAttribute="bottom" constant="8" id="2hk-UQ-98L"/>
                                         <constraint firstAttribute="trailing" secondItem="664" secondAttribute="trailing" constant="17" id="2uk-xR-SGf"/>
+                                        <constraint firstItem="Ywu-Nf-CWd" firstAttribute="centerY" secondItem="nbh-hC-aUy" secondAttribute="centerY" id="3ED-Gw-bYI"/>
                                         <constraint firstAttribute="trailing" secondItem="665" secondAttribute="trailing" constant="17" id="41H-YI-Y8t"/>
                                         <constraint firstItem="Ywu-Nf-CWd" firstAttribute="leading" secondItem="nbh-hC-aUy" secondAttribute="trailing" constant="8" id="4w6-Gg-TiM"/>
                                         <constraint firstItem="663" firstAttribute="leading" secondItem="666" secondAttribute="trailing" constant="8" id="6Wa-sX-CE6"/>
                                         <constraint firstItem="9Yg-sZ-0oJ" firstAttribute="top" secondItem="664" secondAttribute="bottom" constant="7" id="8US-5e-82d"/>
                                         <constraint firstItem="666" firstAttribute="leading" secondItem="662" secondAttribute="leading" constant="17" id="Aja-zG-0N0"/>
-                                        <constraint firstAttribute="bottom" secondItem="Ywu-Nf-CWd" secondAttribute="bottom" constant="8" id="DLG-Fq-x9b"/>
                                         <constraint firstItem="665" firstAttribute="top" secondItem="662" secondAttribute="top" constant="6" id="GLy-Va-JOg"/>
                                         <constraint firstItem="9Yg-sZ-0oJ" firstAttribute="leading" secondItem="yzW-7Y-jBA" secondAttribute="trailing" constant="8" id="Gyc-QY-FEC"/>
                                         <constraint firstItem="nbh-hC-aUy" firstAttribute="leading" secondItem="662" secondAttribute="leading" constant="17" id="KCY-jq-FaF"/>
@@ -311,7 +311,7 @@
                                         <constraint firstItem="cA4-9j-dKU" firstAttribute="leading" secondItem="9Yg-sZ-0oJ" secondAttribute="trailing" constant="8" id="noH-X6-fW3"/>
                                         <constraint firstAttribute="bottom" secondItem="nbh-hC-aUy" secondAttribute="bottom" constant="8" id="ozO-Lu-qc8"/>
                                         <constraint firstAttribute="trailing" secondItem="cA4-9j-dKU" secondAttribute="trailing" constant="17" id="phy-c7-qIF"/>
-                                        <constraint firstItem="Ywu-Nf-CWd" firstAttribute="top" secondItem="yzW-7Y-jBA" secondAttribute="bottom" constant="8" id="tpX-Gc-rZL"/>
+                                        <constraint firstItem="nbh-hC-aUy" firstAttribute="top" secondItem="yzW-7Y-jBA" secondAttribute="bottom" constant="8" id="rXC-jt-6gG"/>
                                         <constraint firstItem="1374" firstAttribute="leading" secondItem="1371" secondAttribute="trailing" constant="8" id="ugv-Sv-JRI"/>
                                     </constraints>
                                     <animations/>
