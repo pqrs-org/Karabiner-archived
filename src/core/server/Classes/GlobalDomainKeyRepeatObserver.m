@@ -33,6 +33,8 @@
 
 - (void)timerFireMethod:(NSTimer*)timer {
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]) {
+    previousInitialKeyRepeat_ = -1;
+    previousKeyRepeat_ = -1;
     return;
   }
 
