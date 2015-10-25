@@ -164,7 +164,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
-                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="455"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <animations/>
                                                         <size key="intercellSpacing" width="2" height="3"/>
@@ -426,7 +426,7 @@
                                                 <animations/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="679">
-                                                <rect key="frame" x="1" y="0.0" width="15" height="0.0"/>
+                                                <rect key="frame" x="572" y="23" width="15" height="435"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <animations/>
                                             </scroller>
@@ -766,20 +766,78 @@ Use the first two settings below.</string>
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="SettingList" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="695">
-                                            <rect key="frame" x="14" y="80" width="594" height="375"/>
+                                        <box autoresizesSubviews="NO" title="SettingList" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="695">
+                                            <rect key="frame" x="14" y="13" width="726" height="438"/>
                                             <view key="contentView" id="gKU-xd-mya">
-                                                <rect key="frame" x="1" y="1" width="592" height="359"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="422"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700">
-                                                        <rect key="frame" x="18" y="46" width="556" height="192"/>
-                                                        <clipView key="contentView" ambiguous="YES" id="XEC-4K-dD2">
-                                                            <rect key="frame" x="1" y="1" width="554" height="190"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1389">
+                                                        <rect key="frame" x="15" y="327" width="694" height="85"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1390">
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="title">You can make multiple profiles.
+Click '+', and then rename it. (eg 'Games').
+Choose a profile from menu bar.
+
+Note: You cannot delete a profile that is in use (in the menu bar).</string>
+                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="699">
+                                                        <rect key="frame" x="17" y="10" width="17" height="23"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="706">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="add:" target="718" id="1201"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="698">
+                                                        <rect key="frame" x="34" y="10" width="17" height="23"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="707">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="delete:" target="718" id="1202"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZYB-aW-UwD">
+                                                        <rect key="frame" x="75" y="4" width="110" height="32"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="push" title="Sort by name" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NUF-0z-CqG">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="sortByName:" target="718" id="5f0-iY-bWk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-HF-WTq">
+                                                        <rect key="frame" x="183" y="4" width="122" height="32"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="push" title="Sort by created" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WWs-oh-umf">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="sortByCreated:" target="718" id="g8a-ju-Eie"/>
+                                                        </connections>
+                                                    </button>
+                                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700">
+                                                        <rect key="frame" x="17" y="43" width="690" height="274"/>
+                                                        <clipView key="contentView" id="XEC-4K-dD2">
+                                                            <rect key="frame" x="1" y="1" width="688" height="272"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="703">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="554" height="190"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="272"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <animations/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -787,7 +845,7 @@ Use the first two settings below.</string>
                                                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                     <tableColumns>
-                                                                        <tableColumn width="551" minWidth="40" maxWidth="1000" id="704">
+                                                                        <tableColumn width="685" minWidth="40" maxWidth="1000" id="704">
                                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                                 <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -817,97 +875,43 @@ Use the first two settings below.</string>
                                                             <animations/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="701">
-                                                            <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
+                                                            <rect key="frame" x="674" y="1" width="15" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <animations/>
                                                         </scroller>
                                                     </scrollView>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="699">
-                                                        <rect key="frame" x="18" y="14" width="24" height="24"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="706">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="add:" target="718" id="1201"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="698">
-                                                        <rect key="frame" x="41" y="14" width="24" height="24"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="707">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="delete:" target="718" id="1202"/>
-                                                        </connections>
-                                                    </button>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1389">
-                                                        <rect key="frame" x="15" y="246" width="460" height="102"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1390">
-                                                            <font key="font" metaFont="system"/>
-                                                            <string key="title">You can make multiple profiles.
-Click '+', and then rename it. (eg 'Games').
-Choose a profile from menu bar.
-
-Note: You cannot delete a profile that is in use (in the menu bar).
-</string>
-                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYB-aW-UwD">
-                                                        <rect key="frame" x="91" y="7" width="111" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Sort by name" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NUF-0z-CqG">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="sortByName:" target="718" id="5f0-iY-bWk"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-HF-WTq">
-                                                        <rect key="frame" x="195" y="7" width="122" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Sort by created" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WWs-oh-umf">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="sortByCreated:" target="718" id="g8a-ju-Eie"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="699" secondAttribute="bottom" constant="10" id="8Qa-fN-04D"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1389" secondAttribute="trailing" constant="17" id="FI9-lq-QvI"/>
+                                                    <constraint firstItem="699" firstAttribute="leading" secondItem="gKU-xd-mya" secondAttribute="leading" constant="17" id="Fa6-E3-ifC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="700" secondAttribute="trailing" constant="17" id="H75-uk-560"/>
+                                                    <constraint firstItem="JBN-HF-WTq" firstAttribute="leading" secondItem="ZYB-aW-UwD" secondAttribute="trailing" constant="10" id="KUO-gi-7lp"/>
+                                                    <constraint firstItem="699" firstAttribute="top" secondItem="700" secondAttribute="bottom" constant="10" id="P3d-tQ-teh"/>
+                                                    <constraint firstItem="700" firstAttribute="leading" secondItem="gKU-xd-mya" secondAttribute="leading" constant="17" id="PHz-m2-UWP"/>
+                                                    <constraint firstItem="ZYB-aW-UwD" firstAttribute="centerY" secondItem="699" secondAttribute="centerY" id="Rk2-RH-2M1"/>
+                                                    <constraint firstItem="698" firstAttribute="leading" secondItem="699" secondAttribute="trailing" id="Tgi-Zx-sHz"/>
+                                                    <constraint firstItem="ZYB-aW-UwD" firstAttribute="leading" secondItem="698" secondAttribute="trailing" constant="30" id="Y6I-NW-cZg"/>
+                                                    <constraint firstItem="JBN-HF-WTq" firstAttribute="centerY" secondItem="699" secondAttribute="centerY" id="jPu-n2-Y2W"/>
+                                                    <constraint firstItem="1389" firstAttribute="leading" secondItem="gKU-xd-mya" secondAttribute="leading" constant="17" id="mT6-nZ-b1l"/>
+                                                    <constraint firstItem="698" firstAttribute="centerY" secondItem="699" secondAttribute="centerY" id="qI2-Z4-Rq7"/>
+                                                    <constraint firstItem="700" firstAttribute="top" secondItem="1389" secondAttribute="bottom" constant="10" id="tht-di-J82"/>
+                                                    <constraint firstItem="1389" firstAttribute="top" secondItem="gKU-xd-mya" secondAttribute="top" constant="10" id="vXJ-VW-GK9"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1381">
-                                            <rect key="frame" x="14" y="471" width="594" height="74"/>
+                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1381">
+                                            <rect key="frame" x="14" y="467" width="726" height="74"/>
                                             <view key="contentView" id="qQS-xb-LW2">
-                                                <rect key="frame" x="1" y="1" width="592" height="58"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="58"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="696">
-                                                        <rect key="frame" x="16" y="32" width="251" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1186"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="694">
-                                                        <rect key="frame" x="40" y="12" width="308" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
+                                                        <rect key="frame" x="25" y="8" width="296" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Show setting name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -918,7 +922,26 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                                             <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
                                                         </connections>
                                                     </button>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
+                                                        <rect key="frame" x="15" y="32" width="241" height="18"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1186"/>
+                                                            <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="694" firstAttribute="top" secondItem="696" secondAttribute="bottom" constant="10" id="4n2-M8-dQA"/>
+                                                    <constraint firstItem="696" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="17" id="6Qv-SH-PE7"/>
+                                                    <constraint firstItem="694" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="27" id="U5Z-L9-pDF"/>
+                                                    <constraint firstItem="696" firstAttribute="top" secondItem="qQS-xb-LW2" secondAttribute="top" constant="10" id="aYt-t9-ETf"/>
+                                                    <constraint firstAttribute="bottom" secondItem="694" secondAttribute="bottom" constant="10" id="bGl-oO-mnf"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
@@ -926,6 +949,15 @@ Note: You cannot delete a profile that is in use (in the menu bar).
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1381" firstAttribute="top" secondItem="693" secondAttribute="top" constant="17" id="BCy-tU-oZC"/>
+                                        <constraint firstAttribute="trailing" secondItem="695" secondAttribute="trailing" constant="17" id="Lab-5q-0Dp"/>
+                                        <constraint firstItem="1381" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="SGD-9V-YAb"/>
+                                        <constraint firstItem="695" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="Tfx-Hi-UTk"/>
+                                        <constraint firstItem="695" firstAttribute="top" secondItem="1381" secondAttribute="bottom" constant="20" id="i33-Hg-dHY"/>
+                                        <constraint firstAttribute="bottom" secondItem="695" secondAttribute="bottom" constant="17" id="tWa-zY-qlJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="1381" secondAttribute="trailing" constant="17" id="yLf-D0-ZQQ"/>
+                                    </constraints>
                                     <animations/>
                                 </view>
                             </tabViewItem>
@@ -1059,17 +1091,17 @@ You need to enable AXNotifier if you want to use following settings:
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="641">
-                                            <rect key="frame" x="15" y="538" width="114" height="17"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="641">
+                                            <rect key="frame" x="15" y="524" width="112" height="17"/>
                                             <animations/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Karabiner.version" id="642">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Karabiner.version:" id="642">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="640">
-                                            <rect key="frame" x="133" y="538" width="129" height="17"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="640">
+                                            <rect key="frame" x="131" y="524" width="39" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="x.x.xx" id="643">
                                                 <font key="font" metaFont="system"/>
@@ -1077,25 +1109,14 @@ You need to enable AXNotifier if you want to use following settings:
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Update" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="639">
-                                            <rect key="frame" x="14" y="438" width="594" height="92"/>
+                                        <box title="Update" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="639">
+                                            <rect key="frame" x="14" y="433" width="726" height="81"/>
                                             <view key="contentView" id="bfX-e8-5Po">
-                                                <rect key="frame" x="1" y="1" width="592" height="76"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRh-R3-iqY">
-                                                        <rect key="frame" x="18" y="48" width="281" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Check for updates on startup (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rkn-B3-QBc">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <binding destination="1176" name="value" keyPath="values.isCheckUpdate" id="6Np-3V-Rul"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="644">
-                                                        <rect key="frame" x="14" y="9" width="155" height="32"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="644">
+                                                        <rect key="frame" x="11" y="3" width="152" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1105,32 +1126,81 @@ You need to enable AXNotifier if you want to use following settings:
                                                             <action selector="checkForUpdatesStableOnly:" target="588" id="1439"/>
                                                         </connections>
                                                     </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1435">
-                                                        <rect key="frame" x="363" y="18" width="212" height="16"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1435">
+                                                        <rect key="frame" x="418" y="3" width="295" height="32"/>
                                                         <animations/>
-                                                        <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
+                                                        <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="miniSystem"/>
+                                                            <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="checkForUpdatesWithBetaVersion:" target="588" id="1438"/>
                                                         </connections>
                                                     </button>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="BRh-R3-iqY">
+                                                        <rect key="frame" x="15" y="39" width="281" height="18"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Check for updates on startup (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rkn-B3-QBc">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <binding destination="1176" name="value" keyPath="values.isCheckUpdate" id="6Np-3V-Rul"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="BRh-R3-iqY" firstAttribute="top" secondItem="bfX-e8-5Po" secondAttribute="top" constant="10" id="4eT-gE-3H0"/>
+                                                    <constraint firstAttribute="bottom" secondItem="644" secondAttribute="bottom" constant="10" id="HAZ-gB-4dX"/>
+                                                    <constraint firstItem="644" firstAttribute="top" secondItem="BRh-R3-iqY" secondAttribute="bottom" constant="10" id="NFo-sJ-pE6"/>
+                                                    <constraint firstItem="BRh-R3-iqY" firstAttribute="leading" secondItem="bfX-e8-5Po" secondAttribute="leading" constant="17" id="TXE-EM-ZJc"/>
+                                                    <constraint firstItem="1435" firstAttribute="centerY" secondItem="644" secondAttribute="centerY" id="iaM-X5-zI1"/>
+                                                    <constraint firstItem="644" firstAttribute="leading" secondItem="bfX-e8-5Po" secondAttribute="leading" constant="17" id="ldp-HQ-JYc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1435" secondAttribute="trailing" constant="17" id="woF-dU-U4i"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Custom Setting" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="637">
-                                            <rect key="frame" x="14" y="248" width="594" height="87"/>
-                                            <view key="contentView" id="6b6-ZY-ZNT">
-                                                <rect key="frame" x="1" y="1" width="592" height="71"/>
+                                        <box title="Uninstall" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="638">
+                                            <rect key="frame" x="14" y="360" width="726" height="57"/>
+                                            <view key="contentView" id="2Vk-yJ-tK2">
+                                                <rect key="frame" x="1" y="1" width="724" height="41"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="656">
-                                                        <rect key="frame" x="12" y="33" width="149" height="32"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="654">
+                                                        <rect key="frame" x="11" y="3" width="151" height="32"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="655">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="launchUninstaller:" target="494" id="1197"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="654" firstAttribute="top" secondItem="2Vk-yJ-tK2" secondAttribute="top" constant="10" id="M0K-hJ-0xM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="654" secondAttribute="bottom" constant="10" id="NtO-y3-tDz"/>
+                                                    <constraint firstItem="654" firstAttribute="leading" secondItem="2Vk-yJ-tK2" secondAttribute="leading" constant="17" id="tGb-Ry-NOh"/>
+                                                </constraints>
+                                                <animations/>
+                                            </view>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box title="Custom Setting" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="637">
+                                            <rect key="frame" x="14" y="263" width="726" height="81"/>
+                                            <view key="contentView" id="6b6-ZY-ZNT">
+                                                <rect key="frame" x="1" y="1" width="724" height="65"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="656">
+                                                        <rect key="frame" x="11" y="27" width="143" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Open private.xml" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="657">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1140,8 +1210,8 @@ You need to enable AXNotifier if you want to use following settings:
                                                             <action selector="openPrivateXML:" target="494" id="1198"/>
                                                         </connections>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qZa-XW-7Lm">
-                                                        <rect key="frame" x="16" y="12" width="239" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="qZa-XW-7Lm">
+                                                        <rect key="frame" x="15" y="8" width="238" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Use prepared settings (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Q97-uy-r6v">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1153,6 +1223,13 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="656" firstAttribute="leading" secondItem="6b6-ZY-ZNT" secondAttribute="leading" constant="17" id="5cO-HG-mWZ"/>
+                                                    <constraint firstItem="qZa-XW-7Lm" firstAttribute="leading" secondItem="6b6-ZY-ZNT" secondAttribute="leading" constant="17" id="DKW-c0-NUU"/>
+                                                    <constraint firstItem="qZa-XW-7Lm" firstAttribute="top" secondItem="656" secondAttribute="bottom" constant="10" id="I5R-8t-cmf"/>
+                                                    <constraint firstItem="656" firstAttribute="top" secondItem="6b6-ZY-ZNT" secondAttribute="top" constant="10" id="gSJ-TQ-wIP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qZa-XW-7Lm" secondAttribute="bottom" constant="10" id="xRz-eu-1uT"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
@@ -1247,31 +1324,22 @@ You need to enable AXNotifier if you want to use following settings:
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Uninstall" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="638">
-                                            <rect key="frame" x="14" y="357" width="594" height="60"/>
-                                            <view key="contentView" id="2Vk-yJ-tK2">
-                                                <rect key="frame" x="1" y="1" width="592" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="654">
-                                                        <rect key="frame" x="12" y="6" width="156" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="655">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="launchUninstaller:" target="494" id="1197"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="640" firstAttribute="centerY" secondItem="641" secondAttribute="centerY" id="043-pf-zvA"/>
+                                        <constraint firstItem="638" firstAttribute="top" secondItem="639" secondAttribute="bottom" constant="20" id="0YI-tK-o85"/>
+                                        <constraint firstItem="639" firstAttribute="top" secondItem="641" secondAttribute="bottom" constant="10" id="1sT-tc-zc1"/>
+                                        <constraint firstItem="641" firstAttribute="top" secondItem="635" secondAttribute="top" constant="17" id="H79-8c-SUO"/>
+                                        <constraint firstItem="640" firstAttribute="leading" secondItem="641" secondAttribute="trailing" constant="8" id="LBE-1K-oAq"/>
+                                        <constraint firstAttribute="trailing" secondItem="639" secondAttribute="trailing" constant="17" id="amW-01-tdw"/>
+                                        <constraint firstItem="637" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="jZr-ek-pBS"/>
+                                        <constraint firstItem="638" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="nrW-U3-cZe"/>
+                                        <constraint firstItem="641" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="qSd-Ql-Mz5"/>
+                                        <constraint firstAttribute="trailing" secondItem="638" secondAttribute="trailing" constant="17" id="t82-86-V23"/>
+                                        <constraint firstAttribute="trailing" secondItem="637" secondAttribute="trailing" constant="17" id="t9a-Zy-4UF"/>
+                                        <constraint firstItem="637" firstAttribute="top" secondItem="638" secondAttribute="bottom" constant="20" id="z2A-1J-OHe"/>
+                                        <constraint firstItem="639" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="zWx-hw-t4k"/>
+                                    </constraints>
                                     <animations/>
                                 </view>
                             </tabViewItem>
