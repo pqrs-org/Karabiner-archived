@@ -1,6 +1,8 @@
 # Since 10.11.0
 
 * New functions and improvements:
+  * "Overwrite the key repeat values of system" option has been added. <br />
+    Karabiner uses the system values unless this option is enabled.
   * The key up event handling has been improved in some keyboards.
   * "Don't remap Apple's keyboards" setting supported Magic Keyboard.
   * Prepared settings have been updated.
