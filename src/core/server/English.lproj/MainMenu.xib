@@ -1236,67 +1236,14 @@ You need to enable AXNotifier if you want to use following settings:
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Web sites" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="VHx-J0-axb">
-                                            <rect key="frame" x="14" y="5" width="595" height="100"/>
-                                            <view key="contentView" id="kio-0y-lSX">
-                                                <rect key="frame" x="1" y="1" width="593" height="84"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B4b-iA-pXM">
-                                                        <rect key="frame" x="158" y="47" width="250" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="openURL:" target="1181" id="qrI-dA-Z36"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yat-77-L8T">
-                                                        <rect key="frame" x="158" y="14" width="289" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="openURL:" target="1181" id="dWw-gm-YXn"/>
-                                                        </connections>
-                                                    </button>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0Y-fc-sdF">
-                                                        <rect key="frame" x="16" y="57" width="142" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open download page:" id="I4N-M6-GEH">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i8T-VC-eT0">
-                                                        <rect key="frame" x="71" y="24" width="87" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open github:" id="xhl-dh-25o">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Helper Applications" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="636">
-                                            <rect key="frame" x="14" y="120" width="594" height="109"/>
+                                        <box title="Helper Applications" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="636">
+                                            <rect key="frame" x="14" y="159" width="726" height="88"/>
                                             <view key="contentView" id="Pxe-rP-7J1">
-                                                <rect key="frame" x="1" y="1" width="592" height="93"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="659">
-                                                        <rect key="frame" x="12" y="55" width="165" height="32"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="659">
+                                                        <rect key="frame" x="11" y="34" width="163" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Launch EventViewer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="660">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1306,8 +1253,8 @@ You need to enable AXNotifier if you want to use following settings:
                                                             <action selector="launchEventViewer:" target="494" id="1199"/>
                                                         </connections>
                                                     </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="658">
-                                                        <rect key="frame" x="12" y="22" width="241" height="32"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="658">
+                                                        <rect key="frame" x="11" y="3" width="231" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Launch &quot;multi-touch extension&quot;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="661">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1318,6 +1265,77 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="658" firstAttribute="leading" secondItem="Pxe-rP-7J1" secondAttribute="leading" constant="17" id="28Y-t1-YiK"/>
+                                                    <constraint firstAttribute="bottom" secondItem="658" secondAttribute="bottom" constant="10" id="9bX-zj-aYh"/>
+                                                    <constraint firstItem="659" firstAttribute="top" secondItem="Pxe-rP-7J1" secondAttribute="top" constant="10" id="F0s-Vq-Ncr"/>
+                                                    <constraint firstItem="658" firstAttribute="top" secondItem="659" secondAttribute="bottom" constant="10" id="jcI-75-brz"/>
+                                                    <constraint firstItem="659" firstAttribute="leading" secondItem="Pxe-rP-7J1" secondAttribute="leading" constant="17" id="lwf-Ka-70n"/>
+                                                </constraints>
+                                                <animations/>
+                                            </view>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box title="Web sites" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="VHx-J0-axb">
+                                            <rect key="frame" x="14" y="63" width="726" height="80"/>
+                                            <view key="contentView" id="kio-0y-lSX">
+                                                <rect key="frame" x="1" y="1" width="724" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R0Y-fc-sdF">
+                                                        <rect key="frame" x="15" y="37" width="137" height="17"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open download page:" id="I4N-M6-GEH">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B4b-iA-pXM">
+                                                        <rect key="frame" x="154" y="28" width="246" height="32"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="openURL:" target="1181" id="qrI-dA-Z36"/>
+                                                        </connections>
+                                                    </button>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i8T-VC-eT0">
+                                                        <rect key="frame" x="69" y="10" width="83" height="17"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open github:" id="xhl-dh-25o">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yat-77-L8T">
+                                                        <rect key="frame" x="154" y="1" width="284" height="32"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="openURL:" target="1181" id="dWw-gm-YXn"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="R0Y-fc-sdF" firstAttribute="leading" secondItem="kio-0y-lSX" secondAttribute="leading" constant="17" id="1e2-fz-NMn"/>
+                                                    <constraint firstItem="B4b-iA-pXM" firstAttribute="centerY" secondItem="R0Y-fc-sdF" secondAttribute="centerY" id="aHu-Di-ycw"/>
+                                                    <constraint firstItem="R0Y-fc-sdF" firstAttribute="top" secondItem="kio-0y-lSX" secondAttribute="top" constant="10" id="gET-a0-szh"/>
+                                                    <constraint firstItem="B4b-iA-pXM" firstAttribute="leading" secondItem="R0Y-fc-sdF" secondAttribute="trailing" constant="10" id="gV3-gO-YRN"/>
+                                                    <constraint firstItem="i8T-VC-eT0" firstAttribute="trailing" secondItem="R0Y-fc-sdF" secondAttribute="trailing" id="gmE-7T-EIZ"/>
+                                                    <constraint firstItem="yat-77-L8T" firstAttribute="centerY" secondItem="i8T-VC-eT0" secondAttribute="centerY" id="i6O-ox-tOO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="i8T-VC-eT0" secondAttribute="bottom" constant="10" id="jar-yE-zOh"/>
+                                                    <constraint firstItem="i8T-VC-eT0" firstAttribute="top" secondItem="R0Y-fc-sdF" secondAttribute="bottom" constant="10" id="nTR-Xy-5Pi"/>
+                                                    <constraint firstItem="yat-77-L8T" firstAttribute="leading" secondItem="B4b-iA-pXM" secondAttribute="leading" id="w5u-m7-BS1"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
@@ -1327,14 +1345,20 @@ You need to enable AXNotifier if you want to use following settings:
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="640" firstAttribute="centerY" secondItem="641" secondAttribute="centerY" id="043-pf-zvA"/>
+                                        <constraint firstItem="VHx-J0-axb" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="0FM-DS-WO3"/>
                                         <constraint firstItem="638" firstAttribute="top" secondItem="639" secondAttribute="bottom" constant="20" id="0YI-tK-o85"/>
                                         <constraint firstItem="639" firstAttribute="top" secondItem="641" secondAttribute="bottom" constant="10" id="1sT-tc-zc1"/>
                                         <constraint firstItem="641" firstAttribute="top" secondItem="635" secondAttribute="top" constant="17" id="H79-8c-SUO"/>
                                         <constraint firstItem="640" firstAttribute="leading" secondItem="641" secondAttribute="trailing" constant="8" id="LBE-1K-oAq"/>
+                                        <constraint firstItem="VHx-J0-axb" firstAttribute="top" secondItem="636" secondAttribute="bottom" constant="20" id="PGk-Rq-T9c"/>
+                                        <constraint firstAttribute="trailing" secondItem="636" secondAttribute="trailing" constant="17" id="PhM-iZ-VQo"/>
+                                        <constraint firstAttribute="trailing" secondItem="VHx-J0-axb" secondAttribute="trailing" constant="17" id="Qrl-F3-iYu"/>
                                         <constraint firstAttribute="trailing" secondItem="639" secondAttribute="trailing" constant="17" id="amW-01-tdw"/>
+                                        <constraint firstItem="636" firstAttribute="top" secondItem="637" secondAttribute="bottom" constant="20" id="dp7-kT-gRR"/>
                                         <constraint firstItem="637" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="jZr-ek-pBS"/>
                                         <constraint firstItem="638" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="nrW-U3-cZe"/>
                                         <constraint firstItem="641" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="qSd-Ql-Mz5"/>
+                                        <constraint firstItem="636" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="qd2-lf-BXX"/>
                                         <constraint firstAttribute="trailing" secondItem="638" secondAttribute="trailing" constant="17" id="t82-86-V23"/>
                                         <constraint firstAttribute="trailing" secondItem="637" secondAttribute="trailing" constant="17" id="t9a-Zy-4UF"/>
                                         <constraint firstItem="637" firstAttribute="top" secondItem="638" secondAttribute="bottom" constant="20" id="z2A-1J-OHe"/>
