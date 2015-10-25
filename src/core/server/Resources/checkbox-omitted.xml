@@ -2,4 +2,12 @@
 <root>
   <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/core.xml" />
   <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/flags.xml" />
+
+  <item>
+    <name>Prepared settings are disabled.</name>
+    <appendix>If you want enable prepared settings, please do one of follows:</appendix>
+    <appendix>* Enable "Use prepared settings" in Misc &amp; Uninstall tab.</appendix>
+    <appendix>* Include prepared settings in your private.xml.</appendix>
+  </item>
+
 </root>
