@@ -496,14 +496,14 @@ Use the first two settings below.</string>
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1324">
-                                            <rect key="frame" x="14" y="426" width="594" height="119"/>
+                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1324">
+                                            <rect key="frame" x="14" y="419" width="726" height="122"/>
                                             <view key="contentView" id="kGM-SP-nxb">
-                                                <rect key="frame" x="1" y="1" width="592" height="103"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1223" userLabel="Show status message">
-                                                        <rect key="frame" x="16" y="77" width="266" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="1223" userLabel="Show status message">
+                                                        <rect key="frame" x="15" y="80" width="236" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Show status message (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1224">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -514,8 +514,8 @@ Use the first two settings below.</string>
                                                             <binding destination="1176" name="value" keyPath="values.isStatusWindowEnabled" id="1255"/>
                                                         </connections>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdT-lG-Jfw" userLabel="Show status message">
-                                                        <rect key="frame" x="40" y="57" width="236" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="wdT-lG-Jfw" userLabel="Show status message">
+                                                        <rect key="frame" x="25" y="56" width="234" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Show caps lock state (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Rle-nl-rpW">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -526,20 +526,8 @@ Use the first two settings below.</string>
                                                             <binding destination="1176" name="value" keyPath="values.isStatusWindowShowCapsLock" id="CAy-g3-pDK"/>
                                                         </connections>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1325" userLabel="Show status message">
-                                                        <rect key="frame" x="40" y="17" width="329" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Show pointing button lock state (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1326">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="refresh:" target="606" id="1328"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isStatusWindowShowPointingButtonLock" id="1329"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1315" userLabel="Show status message">
-                                                        <rect key="frame" x="40" y="37" width="292" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="1315" userLabel="Show status message">
+                                                        <rect key="frame" x="25" y="32" width="272" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Show sticky modifiers state (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1316">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -550,63 +538,44 @@ Use the first two settings below.</string>
                                                             <binding destination="1176" name="value" keyPath="values.isStatusWindowShowStickyModifier" id="1319"/>
                                                         </connections>
                                                     </button>
-                                                </subviews>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Position" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1330">
-                                            <rect key="frame" x="14" y="120" width="594" height="61"/>
-                                            <view key="contentView" id="jI1-A7-I3N">
-                                                <rect key="frame" x="1" y="1" width="592" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1241">
-                                                        <rect key="frame" x="15" y="17" width="66" height="17"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="1325" userLabel="Show status message">
+                                                        <rect key="frame" x="25" y="8" width="295" height="18"/>
                                                         <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Position:" id="1242">
+                                                        <buttonCell key="cell" type="check" title="Show pointing button lock state (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1326">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1235" userLabel="Position">
-                                                        <rect key="frame" x="83" y="11" width="290" height="26"/>
-                                                        <animations/>
-                                                        <popUpButtonCell key="cell" type="push" title="Bottom right (Default)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1246" id="1236">
-                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
-                                                            <menu key="menu" title="OtherViews" id="1237">
-                                                                <items>
-                                                                    <menuItem title="Top left" id="1243"/>
-                                                                    <menuItem title="Top right" id="1244"/>
-                                                                    <menuItem title="Bottom left" id="1245"/>
-                                                                    <menuItem title="Bottom right (Default)" state="on" id="1246"/>
-                                                                </items>
-                                                            </menu>
-                                                        </popUpButtonCell>
+                                                        </buttonCell>
                                                         <connections>
-                                                            <action selector="refresh:" target="606" id="1296"/>
-                                                            <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowPosition" id="1274"/>
+                                                            <action selector="refresh:" target="606" id="1328"/>
+                                                            <binding destination="1176" name="value" keyPath="values.isStatusWindowShowPointingButtonLock" id="1329"/>
                                                         </connections>
-                                                    </popUpButton>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="1223" firstAttribute="top" secondItem="kGM-SP-nxb" secondAttribute="top" constant="10" id="B2l-gT-vrR"/>
+                                                    <constraint firstItem="1315" firstAttribute="top" secondItem="wdT-lG-Jfw" secondAttribute="bottom" constant="10" id="DQi-A4-Uuu"/>
+                                                    <constraint firstItem="1223" firstAttribute="leading" secondItem="kGM-SP-nxb" secondAttribute="leading" constant="17" id="FEq-49-tOk"/>
+                                                    <constraint firstItem="1325" firstAttribute="top" secondItem="1315" secondAttribute="bottom" constant="10" id="HqB-ce-VIk"/>
+                                                    <constraint firstItem="1315" firstAttribute="leading" secondItem="kGM-SP-nxb" secondAttribute="leading" constant="27" id="eQh-oo-53R"/>
+                                                    <constraint firstAttribute="bottom" secondItem="1325" secondAttribute="bottom" constant="10" id="fct-ze-LA5"/>
+                                                    <constraint firstItem="wdT-lG-Jfw" firstAttribute="leading" secondItem="kGM-SP-nxb" secondAttribute="leading" constant="27" id="gdV-Kh-5BV"/>
+                                                    <constraint firstItem="1325" firstAttribute="leading" secondItem="kGM-SP-nxb" secondAttribute="leading" constant="27" id="vOu-o2-2KO"/>
+                                                    <constraint firstItem="wdT-lG-Jfw" firstAttribute="top" secondItem="1223" secondAttribute="bottom" constant="10" id="vRo-do-bgH"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Appearance" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1323">
-                                            <rect key="frame" x="14" y="201" width="594" height="204"/>
+                                        <box title="Appearance" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1323">
+                                            <rect key="frame" x="14" y="244" width="726" height="159"/>
                                             <view key="contentView" id="QtK-AK-YnC">
-                                                <rect key="frame" x="1" y="1" width="592" height="188"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="143"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1401">
-                                                        <rect key="frame" x="15" y="159" width="66" height="17"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1401">
+                                                        <rect key="frame" x="40" y="116" width="38" height="17"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Type:" id="1402">
                                                             <font key="font" metaFont="system"/>
@@ -614,33 +583,8 @@ Use the first two settings below.</string>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1403" userLabel="Type">
-                                                        <rect key="frame" x="83" y="154" width="290" height="26"/>
-                                                        <animations/>
-                                                        <popUpButtonCell key="cell" type="push" title="Edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1410" id="1404">
-                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
-                                                            <menu key="menu" title="OtherViews" id="1405">
-                                                                <items>
-                                                                    <menuItem title="Normal (Default)" id="1406">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                    <menuItem title="Nano" id="1407">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                    <menuItem title="Edge of screen" state="on" id="1410">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                </items>
-                                                            </menu>
-                                                        </popUpButtonCell>
-                                                        <connections>
-                                                            <action selector="refresh:" target="606" id="1408"/>
-                                                            <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowType" id="1412"/>
-                                                        </connections>
-                                                    </popUpButton>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1233">
-                                                        <rect key="frame" x="15" y="119" width="66" height="17"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1233">
+                                                        <rect key="frame" x="37" y="89" width="41" height="17"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Color:" id="1234">
                                                             <font key="font" metaFont="system"/>
@@ -648,8 +592,11 @@ Use the first two settings below.</string>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1227" userLabel="Theme">
-                                                        <rect key="frame" x="83" y="113" width="290" height="26"/>
+                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1227" userLabel="Theme">
+                                                        <rect key="frame" x="84" y="84" width="305" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="zdz-mo-WNE"/>
+                                                        </constraints>
                                                         <animations/>
                                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1228">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -676,8 +623,8 @@ Use the first two settings below.</string>
                                                             <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowTheme" id="1298"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1247">
-                                                        <rect key="frame" x="8" y="79" width="73" height="17"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1247">
+                                                        <rect key="frame" x="23" y="62" width="55" height="17"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Opacity:" id="1248">
                                                             <font key="font" metaFont="system"/>
@@ -685,35 +632,11 @@ Use the first two settings below.</string>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1279">
-                                                        <rect key="frame" x="83" y="43" width="37" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clear" id="1280">
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1299">
-                                                        <rect key="frame" x="274" y="43" width="43" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default" id="1300">
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1281">
-                                                        <rect key="frame" x="327" y="43" width="46" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Colored" id="1282">
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1249" userLabel="Opacity">
-                                                        <rect key="frame" x="84" y="67" width="288" height="25"/>
+                                                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1249" userLabel="Opacity">
+                                                        <rect key="frame" x="84" y="58" width="304" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="60M-Hp-Mwt"/>
+                                                        </constraints>
                                                         <animations/>
                                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="20" maxValue="100" doubleValue="20" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1250"/>
                                                         <connections>
@@ -721,8 +644,35 @@ Use the first two settings below.</string>
                                                             <binding destination="1176" name="value" keyPath="values.statusWindowOpacity" id="1261"/>
                                                         </connections>
                                                     </slider>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1301">
-                                                        <rect key="frame" x="8" y="16" width="73" height="17"/>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1279">
+                                                        <rect key="frame" x="84" y="40" width="32" height="14"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clear" id="1280">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1299">
+                                                        <rect key="frame" x="286" y="40" width="42" height="14"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default" id="1300">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1281">
+                                                        <rect key="frame" x="342" y="40" width="46" height="14"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Colored" id="1282">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1301">
+                                                        <rect key="frame" x="15" y="13" width="63" height="17"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font size:" id="1302">
                                                             <font key="font" metaFont="system"/>
@@ -730,8 +680,11 @@ Use the first two settings below.</string>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1303" userLabel="Font size">
-                                                        <rect key="frame" x="83" y="11" width="290" height="26"/>
+                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1303" userLabel="Font size">
+                                                        <rect key="frame" x="84" y="8" width="305" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="v9v-C9-dFr"/>
+                                                        </constraints>
                                                         <animations/>
                                                         <popUpButtonCell key="cell" type="push" title="Huge" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1309" id="1304">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -750,7 +703,114 @@ Use the first two settings below.</string>
                                                             <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowFontSize" id="1312"/>
                                                         </connections>
                                                     </popUpButton>
+                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1403" userLabel="Type">
+                                                        <rect key="frame" x="84" y="111" width="305" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="uwA-Nn-7Bz"/>
+                                                        </constraints>
+                                                        <animations/>
+                                                        <popUpButtonCell key="cell" type="push" title="Edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1410" id="1404">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" title="OtherViews" id="1405">
+                                                                <items>
+                                                                    <menuItem title="Normal (Default)" id="1406">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="Nano" id="1407">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="Edge of screen" state="on" id="1410">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="refresh:" target="606" id="1408"/>
+                                                            <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowType" id="1412"/>
+                                                        </connections>
+                                                    </popUpButton>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="1303" firstAttribute="leading" secondItem="1403" secondAttribute="leading" id="6JQ-Ur-klG"/>
+                                                    <constraint firstItem="1247" firstAttribute="top" secondItem="1233" secondAttribute="bottom" constant="10" id="8yz-eD-Efz"/>
+                                                    <constraint firstItem="1227" firstAttribute="centerY" secondItem="1233" secondAttribute="centerY" id="9fE-Zg-8tT"/>
+                                                    <constraint firstItem="1401" firstAttribute="top" secondItem="QtK-AK-YnC" secondAttribute="top" constant="10" id="A0X-Ct-mAF"/>
+                                                    <constraint firstItem="1303" firstAttribute="centerY" secondItem="1301" secondAttribute="centerY" id="AzF-gc-kfu"/>
+                                                    <constraint firstItem="1279" firstAttribute="top" secondItem="1249" secondAttribute="bottom" constant="5" id="EHt-6t-gfh"/>
+                                                    <constraint firstItem="1301" firstAttribute="top" secondItem="1279" secondAttribute="bottom" constant="10" id="HCM-qc-bOo"/>
+                                                    <constraint firstItem="1249" firstAttribute="centerY" secondItem="1247" secondAttribute="centerY" id="KAv-xF-Hw5"/>
+                                                    <constraint firstItem="1247" firstAttribute="trailing" secondItem="1401" secondAttribute="trailing" id="UID-WT-Jo6"/>
+                                                    <constraint firstItem="1299" firstAttribute="centerY" secondItem="1279" secondAttribute="centerY" id="X5E-Ks-t5A"/>
+                                                    <constraint firstItem="1281" firstAttribute="centerY" secondItem="1279" secondAttribute="centerY" id="fc3-of-wvi"/>
+                                                    <constraint firstItem="1299" firstAttribute="leading" secondItem="1279" secondAttribute="trailing" constant="174" id="grl-Mu-baX"/>
+                                                    <constraint firstItem="1227" firstAttribute="leading" secondItem="1403" secondAttribute="leading" id="kjW-mm-LwM"/>
+                                                    <constraint firstItem="1403" firstAttribute="centerY" secondItem="1401" secondAttribute="centerY" id="lRJ-fU-PXR"/>
+                                                    <constraint firstItem="1401" firstAttribute="trailing" secondItem="1301" secondAttribute="trailing" id="meS-2o-ghG"/>
+                                                    <constraint firstItem="1281" firstAttribute="trailing" secondItem="1249" secondAttribute="trailing" id="nch-21-6ux"/>
+                                                    <constraint firstItem="1279" firstAttribute="leading" secondItem="1249" secondAttribute="leading" id="oUq-pe-XcM"/>
+                                                    <constraint firstItem="1249" firstAttribute="leading" secondItem="1403" secondAttribute="leading" id="qff-ul-irb"/>
+                                                    <constraint firstItem="1403" firstAttribute="leading" secondItem="1401" secondAttribute="trailing" constant="10" id="rjc-Jv-d6t"/>
+                                                    <constraint firstItem="1301" firstAttribute="leading" secondItem="QtK-AK-YnC" secondAttribute="leading" constant="17" id="w3q-fb-zBe"/>
+                                                    <constraint firstItem="1233" firstAttribute="trailing" secondItem="1401" secondAttribute="trailing" id="xOq-wa-ZoZ"/>
+                                                    <constraint firstItem="1233" firstAttribute="top" secondItem="1401" secondAttribute="bottom" constant="10" id="ypg-N0-CJl"/>
+                                                </constraints>
+                                                <animations/>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="1301" secondAttribute="bottom" constant="10" id="i23-Uh-vxd"/>
+                                            </constraints>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box title="Position" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1330">
+                                            <rect key="frame" x="14" y="175" width="726" height="53"/>
+                                            <view key="contentView" id="jI1-A7-I3N">
+                                                <rect key="frame" x="1" y="1" width="724" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1241">
+                                                        <rect key="frame" x="15" y="10" width="57" height="17"/>
+                                                        <animations/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Position:" id="1242">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1235" userLabel="Position">
+                                                        <rect key="frame" x="78" y="5" width="305" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="y5J-oX-lxM"/>
+                                                        </constraints>
+                                                        <animations/>
+                                                        <popUpButtonCell key="cell" type="push" title="Bottom right (Default)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1246" id="1236">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" title="OtherViews" id="1237">
+                                                                <items>
+                                                                    <menuItem title="Top left" id="1243"/>
+                                                                    <menuItem title="Top right" id="1244"/>
+                                                                    <menuItem title="Bottom left" id="1245"/>
+                                                                    <menuItem title="Bottom right (Default)" state="on" id="1246"/>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="refresh:" target="606" id="1296"/>
+                                                            <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowPosition" id="1274"/>
+                                                        </connections>
+                                                    </popUpButton>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="1235" firstAttribute="centerY" secondItem="1241" secondAttribute="centerY" id="G2e-t0-bBq"/>
+                                                    <constraint firstItem="1235" firstAttribute="leading" secondItem="1241" secondAttribute="trailing" constant="10" id="Ukx-CM-Xe9"/>
+                                                    <constraint firstItem="1241" firstAttribute="leading" secondItem="jI1-A7-I3N" secondAttribute="leading" constant="17" id="gsi-fx-5fM"/>
+                                                    <constraint firstItem="1241" firstAttribute="top" secondItem="jI1-A7-I3N" secondAttribute="top" constant="10" id="qap-i5-V3t"/>
+                                                    <constraint firstAttribute="bottom" secondItem="1241" secondAttribute="bottom" constant="10" id="rmH-Lv-WxA"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
@@ -758,6 +818,17 @@ Use the first two settings below.</string>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1324" firstAttribute="leading" secondItem="1222" secondAttribute="leading" constant="17" id="32t-fE-BWV"/>
+                                        <constraint firstItem="1323" firstAttribute="top" secondItem="1324" secondAttribute="bottom" constant="20" id="Bcs-L2-qo0"/>
+                                        <constraint firstAttribute="trailing" secondItem="1323" secondAttribute="trailing" constant="17" id="C0r-sj-TFJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="1324" secondAttribute="trailing" constant="17" id="HHw-S0-HWo"/>
+                                        <constraint firstItem="1324" firstAttribute="top" secondItem="1222" secondAttribute="top" constant="17" id="Wua-Qb-TW0"/>
+                                        <constraint firstItem="1330" firstAttribute="leading" secondItem="1222" secondAttribute="leading" constant="17" id="bpC-q8-OAq"/>
+                                        <constraint firstItem="1330" firstAttribute="top" secondItem="1323" secondAttribute="bottom" constant="20" id="cIu-YT-vAm"/>
+                                        <constraint firstItem="1323" firstAttribute="leading" secondItem="1222" secondAttribute="leading" constant="17" id="vbg-Ye-pKR"/>
+                                        <constraint firstAttribute="trailing" secondItem="1330" secondAttribute="trailing" constant="17" id="xD2-C2-gQC"/>
+                                    </constraints>
                                     <animations/>
                                 </view>
                             </tabViewItem>
