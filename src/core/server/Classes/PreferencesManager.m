@@ -1,4 +1,5 @@
 #import "ClientForKernelspace.h"
+#import "GlobalDomainKeyRepeatObserver.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
@@ -8,6 +9,7 @@
 @interface PreferencesManager () {
   NSMutableDictionary* default_;
   NSArray* essential_configuration_identifiers_;
+  GlobalDomainKeyRepeatObserver* globalDomainKeyRepeatObserver_;
 }
 @end
 
@@ -33,6 +35,8 @@
     kAXNotifierDisabledInJavaApps : @YES,
     kAXNotifierDisabledInPreview : @YES,
     kUsePreparedSettings : @YES,
+    kIsMigratedIsOverwriteKeyRepeat : @NO,
+    kIsOverwriteKeyRepeat : @NO,
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
@@ -69,6 +73,8 @@
   if (self) {
     default_ = [NSMutableDictionary new];
     [self setDefault];
+
+    globalDomainKeyRepeatObserver_ = [[GlobalDomainKeyRepeatObserver alloc] initWithPreferencesManager:self];
 
     essential_configuration_identifiers_ = [NSArray arrayWithObjects:
 #include "../../../bridge/output/include.bridge_essential_configuration_identifiers.m"
@@ -135,6 +141,22 @@
 
     [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
   }
+
+  // ------------------------------------------------------------
+  // migration
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsMigratedIsOverwriteKeyRepeat]) {
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsMigratedIsOverwriteKeyRepeat];
+    if ([self defaultValue:@"repeat.initial_wait"] != [self value:@"repeat.initial_wait"] ||
+        [self defaultValue:@"repeat.wait"] != [self value:@"repeat.wait"]) {
+      [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsOverwriteKeyRepeat];
+    } else {
+      [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:kIsOverwriteKeyRepeat];
+    }
+    NSLog(@"Migration: Set kIsOverwriteKeyRepeat:%d", [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]);
+  }
+
+  // ------------------------------------------------------------
+  [globalDomainKeyRepeatObserver_ start];
 }
 
 // ----------------------------------------------------------------------
