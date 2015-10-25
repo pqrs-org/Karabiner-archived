@@ -164,7 +164,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
-                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="455"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <animations/>
                                                         <size key="intercellSpacing" width="2" height="3"/>
@@ -966,14 +966,14 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Control" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="k0c-8Q-yOU">
-                                            <rect key="frame" x="14" y="469" width="594" height="76"/>
+                                        <box title="Control" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="k0c-8Q-yOU">
+                                            <rect key="frame" x="14" y="486" width="726" height="55"/>
                                             <view key="contentView" id="4Z2-Km-8ki">
-                                                <rect key="frame" x="1" y="1" width="592" height="60"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="39"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tt2-Lg-Afr">
-                                                        <rect key="frame" x="12" y="15" width="153" height="32"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tt2-Lg-Afr">
+                                                        <rect key="frame" x="11" y="1" width="150" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Restart AXNotifier" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jbg-Cb-4xH">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -983,8 +983,8 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                             <action selector="restartAXNotifier:" target="494" id="FPB-01-3un"/>
                                                         </connections>
                                                     </button>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqD-On-FVF">
-                                                        <rect key="frame" x="165" y="14" width="411" height="36"/>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqD-On-FVF">
+                                                        <rect key="frame" x="163" y="10" width="526" height="17"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Please restart AXNotifier when your application specific settings do not work properly." id="uZc-3Z-yUz">
                                                             <font key="font" metaFont="system"/>
@@ -993,20 +993,27 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Tt2-Lg-Afr" firstAttribute="leading" secondItem="4Z2-Km-8ki" secondAttribute="leading" constant="17" id="0oc-pf-VXD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="oqD-On-FVF" secondAttribute="bottom" constant="10" id="2N0-2V-nwA"/>
+                                                    <constraint firstItem="oqD-On-FVF" firstAttribute="centerY" secondItem="Tt2-Lg-Afr" secondAttribute="centerY" id="PKc-jc-NO2"/>
+                                                    <constraint firstItem="Tt2-Lg-Afr" firstAttribute="top" secondItem="4Z2-Km-8ki" secondAttribute="top" constant="10" id="YXv-Um-q05"/>
+                                                    <constraint firstItem="oqD-On-FVF" firstAttribute="leading" secondItem="Tt2-Lg-Afr" secondAttribute="trailing" constant="10" id="dxE-bJ-5JQ"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9xz-eA-K3t">
-                                            <rect key="frame" x="14" y="85" width="594" height="361"/>
+                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9xz-eA-K3t">
+                                            <rect key="frame" x="14" y="130" width="726" height="340"/>
                                             <view key="contentView" id="9mK-vH-viB">
-                                                <rect key="frame" x="1" y="1" width="592" height="345"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="324"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="27K-KA-6hE">
-                                                        <rect key="frame" x="16" y="319" width="217" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="27K-KA-6hE">
+                                                        <rect key="frame" x="15" y="298" width="210" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WZS-lb-Ap5">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1017,8 +1024,8 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                             <binding destination="1176" name="value" keyPath="values.kIsAXNotifierEnabled" id="YMa-nF-sYh"/>
                                                         </connections>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIe-Bi-YgY">
-                                                        <rect key="frame" x="36" y="299" width="444" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="TIe-Bi-YgY">
+                                                        <rect key="frame" x="25" y="274" width="444" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Java apps. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="cu0-ah-J1P">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1029,8 +1036,8 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                             <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInJavaApps" id="xeG-bG-Yxa"/>
                                                         </connections>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8Y-ol-1AD">
-                                                        <rect key="frame" x="36" y="279" width="457" height="18"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="l8Y-ol-1AD">
+                                                        <rect key="frame" x="25" y="250" width="457" height="18"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Preview.app. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="nm8-pK-Ye8">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1041,20 +1048,23 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                             <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInPreview" id="eHV-eW-29L"/>
                                                         </connections>
                                                     </button>
-                                                    <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-Fh-Xme">
-                                                        <rect key="frame" x="16" y="252" width="556" height="5"/>
+                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-Fh-Xme">
+                                                        <rect key="frame" x="17" y="239" width="690" height="5"/>
                                                         <animations/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <font key="titleFont" metaFont="system"/>
                                                     </box>
-                                                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qz6-Jz-LBo">
-                                                        <rect key="frame" x="16" y="214" width="32" height="32"/>
+                                                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="Qz6-Jz-LBo">
+                                                        <rect key="frame" x="17" y="199" width="32" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="32" id="wPy-si-s6v"/>
+                                                        </constraints>
                                                         <animations/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="ODw-fA-ogD"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUH-Ca-wfX">
-                                                        <rect key="frame" x="54" y="14" width="520" height="232"/>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jUH-Ca-wfX">
+                                                        <rect key="frame" x="57" y="10" width="652" height="221"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="e3W-S7-z09">
                                                             <font key="font" metaFont="system"/>
@@ -1076,6 +1086,23 @@ You need to enable AXNotifier if you want to use following settings:
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="1yU-Fh-Xme" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="17" id="1SK-oZ-yD8"/>
+                                                    <constraint firstItem="l8Y-ol-1AD" firstAttribute="top" secondItem="TIe-Bi-YgY" secondAttribute="bottom" constant="10" id="7IS-Op-Qqa"/>
+                                                    <constraint firstItem="1yU-Fh-Xme" firstAttribute="top" secondItem="l8Y-ol-1AD" secondAttribute="bottom" constant="10" id="CIv-RD-PxB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1yU-Fh-Xme" secondAttribute="trailing" constant="17" id="EqS-sf-YXa"/>
+                                                    <constraint firstItem="27K-KA-6hE" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="17" id="F9h-Ye-MA5"/>
+                                                    <constraint firstItem="jUH-Ca-wfX" firstAttribute="leading" secondItem="Qz6-Jz-LBo" secondAttribute="trailing" constant="10" id="K8W-t9-bFp"/>
+                                                    <constraint firstItem="TIe-Bi-YgY" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="27" id="QF3-9y-zei"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jUH-Ca-wfX" secondAttribute="trailing" constant="17" id="ZUV-3N-Frh"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jUH-Ca-wfX" secondAttribute="bottom" constant="10" id="cHb-YD-rpJ"/>
+                                                    <constraint firstItem="l8Y-ol-1AD" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="27" id="d25-nq-n6Z"/>
+                                                    <constraint firstItem="jUH-Ca-wfX" firstAttribute="top" secondItem="Qz6-Jz-LBo" secondAttribute="top" id="hrw-aV-sQc"/>
+                                                    <constraint firstItem="TIe-Bi-YgY" firstAttribute="top" secondItem="27K-KA-6hE" secondAttribute="bottom" constant="10" id="lKT-3v-rbj"/>
+                                                    <constraint firstItem="Qz6-Jz-LBo" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="17" id="qop-e6-oIg"/>
+                                                    <constraint firstItem="27K-KA-6hE" firstAttribute="top" secondItem="9mK-vH-viB" secondAttribute="top" constant="10" id="w5f-GX-tWP"/>
+                                                    <constraint firstItem="Qz6-Jz-LBo" firstAttribute="top" secondItem="1yU-Fh-Xme" secondAttribute="bottom" constant="10" id="whb-Ti-rIb"/>
+                                                </constraints>
                                                 <animations/>
                                             </view>
                                             <animations/>
@@ -1083,6 +1110,14 @@ You need to enable AXNotifier if you want to use following settings:
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9xz-eA-K3t" firstAttribute="top" secondItem="k0c-8Q-yOU" secondAttribute="bottom" constant="20" id="1T1-lv-5Vp"/>
+                                        <constraint firstItem="9xz-eA-K3t" firstAttribute="leading" secondItem="zdM-6k-jSP" secondAttribute="leading" constant="17" id="Dt3-fZ-LAg"/>
+                                        <constraint firstAttribute="trailing" secondItem="9xz-eA-K3t" secondAttribute="trailing" constant="17" id="eMa-mt-7qA"/>
+                                        <constraint firstItem="k0c-8Q-yOU" firstAttribute="top" secondItem="zdM-6k-jSP" secondAttribute="top" constant="17" id="iXA-tv-xYe"/>
+                                        <constraint firstItem="k0c-8Q-yOU" firstAttribute="leading" secondItem="zdM-6k-jSP" secondAttribute="leading" constant="17" id="jEU-rR-B3k"/>
+                                        <constraint firstAttribute="trailing" secondItem="k0c-8Q-yOU" secondAttribute="trailing" constant="17" id="uNY-zf-LBm"/>
+                                    </constraints>
                                     <animations/>
                                 </view>
                             </tabViewItem>
@@ -1384,7 +1419,7 @@ You need to enable AXNotifier if you want to use following settings:
             <connections>
                 <outlet property="delegate" destination="1181" id="1209"/>
             </connections>
-            <point key="canvasLocation" x="376" y="466"/>
+            <point key="canvasLocation" x="747" y="371"/>
         </window>
         <customObject id="710" customClass="OutlineView_checkbox">
             <connections>
