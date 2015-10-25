@@ -1,212 +1,203 @@
 <?xml version="1.0"?>
 <root>
-  <item>
-    <name>Basic Configurations</name>
 
+  <item hidden="true">
+    <item>
+      <name>Delay Until Repeat</name>
+      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.initial_wait</identifier>
+    </item>
     <item>
       <name>Key Repeat</name>
-      <item>
-        <name>Delay Until Repeat</name>
-        <identifier essential="true" default="500" step="100" baseunit="ms">repeat.initial_wait</identifier>
-      </item>
-      <item>
-        <name>Key Repeat</name>
-        <identifier essential="true" default="83" step="10" baseunit="ms">repeat.wait</identifier>
-      </item>
+      <identifier essential="true" default="83" step="10" baseunit="ms">repeat.wait</identifier>
     </item>
   </item>
-
-  <item><name></name></item>
 
   <item>
-    <name>Advanced Configurations</name>
+    <name>Core</name>
+    <item>
+      <name>Wait before and after a modifier key event</name>
+      <identifier essential="true" default="10" step="1" baseunit="ms">parameter.wait_before_and_after_a_modifier_key_event</identifier>
+    </item>
+    <item>
+      <name>Wait before and after a pointing device click event</name>
+      <identifier essential="true" default="10" step="1" baseunit="ms">parameter.wait_before_and_after_a_click_event</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>Media Keys Repeat</name>
+    <item>
+      <name>Delay Until Repeat</name>
+      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.consumer_initial_wait</identifier>
+    </item>
+    <item>
+      <name>Key Repeat</name>
+      <identifier essential="true" default="100" step="10" baseunit="ms">repeat.consumer_wait</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>Ignore bouncing/chattering events</name>
+    <item>
+      <name>Ignore threshold for keyboards.</name>
+      <identifier essential="true" default="30" step="5" baseunit="ms">parameter.ignore_bouncing_threshold_for_keyboard</identifier>
+    </item>
+    <item>
+      <name>Ignore threshold for mice.</name>
+      <identifier essential="true" default="40" step="5" baseunit="ms">parameter.ignore_bouncing_threshold_for_mice</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>KeyToKey</name>
+    <item>
+      <name>Timeout of delayed action</name>
+      <identifier essential="true" default="300" step="100" baseunit="ms">parameter.keytokey_delayed_action_timeout</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>Key Overlaid Modifier</name>
+    <item>
+      <name>Initial Modifier Wait</name>
+      <identifier essential="true" default="0" step="10" baseunit="ms">parameter.keyoverlaidmodifier_initial_modifier_wait</identifier>
+    </item>
+    <item>
+      <name>Timeout</name>
+      <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.keyoverlaidmodifier_timeout</identifier>
+    </item>
+    <item>
+      <name>Delay Until Repeat</name>
+      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.keyoverlaidmodifier_initial_wait</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>Simultaneous Key Presses</name>
+    <item>
+      <name>Delay Threshold of Key</name>
+      <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_delay</identifier>
+    </item>
+    <item>
+      <name>Delay Threshold of PointingButton</name>
+      <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_pointingbutton_delay</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>Double Press Modifier</name>
+    <item>
+      <name>Recognition Threshold</name>
+      <identifier essential="true" default="500" step="100" baseunit="ms">parameter.doublepressmodifier_threshold</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>Holding Key to Key</name>
+    <item>
+      <name>Holding Threshold</name>
+      <identifier essential="true" default="200" step="50" baseunit="ms">parameter.holdingkeytokey_wait</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>__BlockUntilKeyUp__</name>
+    <item>
+      <name>Timeout</name>
+      <identifier essential="true" default="200" step="100" baseunit="ms">parameter.blockuntilkeyup_timeout</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>CursorMove to ScrollWheel</name>
+    <item>
+      <name>Rate</name>
+      <identifier essential="true" default="150" step="10" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>ScrollWheel to Key</name>
+    <item>
+      <name>Key Repeat Wait</name>
+      <identifier essential="true" default="500" step="100" baseunit="ms">parameter.scrollwheeltokey_keyrepeat_wait</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>PointingRelative to Key</name>
+    <item>
+      <name>Detection interval</name>
+      <identifier essential="true" default="200" step="100" baseunit="ms">parameter.pointingrelativetokey_detection_interval</identifier>
+    </item>
+  </item>
+
+  <item>
+    <name>Mouse Key</name>
 
     <item>
-      <name>Functional Key Repeat</name>
+      <name>Pointer</name>
       <item>
-        <name>Delay Until Repeat</name>
-        <identifier essential="true" default="500" step="100" baseunit="ms">repeat.consumer_initial_wait</identifier>
+        <name>Acceleration of the pointer</name>
+        <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_pointer</identifier>
       </item>
       <item>
-        <name>Key Repeat</name>
-        <identifier essential="true" default="100" step="10" baseunit="ms">repeat.consumer_wait</identifier>
+        <name>Maximum speed of the pointer</name>
+        <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_pointer</identifier>
+      </item>
+      <item>
+        <name>Speed in high speed mode</name>
+        <identifier essential="true" default="50" step="10" baseunit="">parameter.mousekey_high_speed_of_pointer</identifier>
+      </item>
+      <item>
+        <name>Initial Wait</name>
+        <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_initial_wait_of_pointer</identifier>
+      </item>
+      <item>
+        <name>Repeat Wait</name>
+        <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_repeat_wait_of_pointer</identifier>
       </item>
     </item>
 
     <item>
-      <name>Generic</name>
+      <name>Scroll</name>
       <item>
-        <name>Wait before and after a modifier key event</name>
-        <identifier essential="true" default="10" step="1" baseunit="ms">parameter.wait_before_and_after_a_modifier_key_event</identifier>
+        <name>Acceleration of the scroll</name>
+        <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_scroll</identifier>
       </item>
       <item>
-        <name>Wait before and after a pointing device click event</name>
-        <identifier essential="true" default="10" step="1" baseunit="ms">parameter.wait_before_and_after_a_click_event</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>Ignore bouncing/chattering events</name>
-      <item>
-        <name>Ignore threshold for keyboards.</name>
-        <identifier essential="true" default="30" step="5" baseunit="ms">parameter.ignore_bouncing_threshold_for_keyboard</identifier>
+        <name>Maximum speed of the scroll</name>
+        <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_scroll</identifier>
       </item>
       <item>
-        <name>Ignore threshold for mice.</name>
-        <identifier essential="true" default="40" step="5" baseunit="ms">parameter.ignore_bouncing_threshold_for_mice</identifier>
+        <name>Speed in high speed mode</name>
+        <identifier essential="true" default="50" step="10" baseunit="">parameter.mousekey_high_speed_of_scroll</identifier>
       </item>
-    </item>
-
-    <item>
-      <name>KeyToKey</name>
       <item>
-        <name>Timeout of delayed action</name>
-        <identifier essential="true" default="300" step="100" baseunit="ms">parameter.keytokey_delayed_action_timeout</identifier>
+        <name>Initial Wait</name>
+        <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_initial_wait_of_scroll</identifier>
+      </item>
+      <item>
+        <name>Repeat Wait</name>
+        <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_repeat_wait_of_scroll</identifier>
       </item>
     </item>
 
     <item>
-      <name>Key Overlaid Modifier</name>
+      <name>Fixed Distance Move</name>
       <item>
-        <name>Initial Modifier Wait</name>
-        <identifier essential="true" default="0" step="10" baseunit="ms">parameter.keyoverlaidmodifier_initial_modifier_wait</identifier>
-      </item>
-      <item>
-        <name>Timeout</name>
-        <identifier essential="true" default="1000" step="100" baseunit="ms">parameter.keyoverlaidmodifier_timeout</identifier>
-      </item>
-      <item>
-        <name>Delay Until Repeat</name>
-        <identifier essential="true" default="500" step="100" baseunit="ms">repeat.keyoverlaidmodifier_initial_wait</identifier>
+        <name>Magnification of "Fixed Distance Move"</name>
+        <identifier essential="true" default="50" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
       </item>
     </item>
 
     <item>
-      <name>Simultaneous Key Presses</name>
+      <name>Fixed Distance Scroll</name>
       <item>
-        <name>Delay Threshold of Key</name>
-        <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_delay</identifier>
-      </item>
-      <item>
-        <name>Delay Threshold of PointingButton</name>
-        <identifier essential="true" default="50" step="10" baseunit="ms">parameter.simultaneouskeypresses_pointingbutton_delay</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>Double Press Modifier</name>
-      <item>
-        <name>Recognition Threshold</name>
-        <identifier essential="true" default="500" step="100" baseunit="ms">parameter.doublepressmodifier_threshold</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>Holding Key to Key</name>
-      <item>
-        <name>Holding Threshold</name>
-        <identifier essential="true" default="200" step="50" baseunit="ms">parameter.holdingkeytokey_wait</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>__BlockUntilKeyUp__</name>
-      <item>
-        <name>Timeout</name>
-        <identifier essential="true" default="200" step="100" baseunit="ms">parameter.blockuntilkeyup_timeout</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>CursorMove to ScrollWheel</name>
-      <item>
-        <name>Rate</name>
-        <identifier essential="true" default="150" step="10" baseunit="/ 1000">pointing.relative2scroll_rate</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>ScrollWheel to Key</name>
-      <item>
-        <name>Key Repeat Wait</name>
-        <identifier essential="true" default="500" step="100" baseunit="ms">parameter.scrollwheeltokey_keyrepeat_wait</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>PointingRelative to Key</name>
-      <item>
-        <name>Detection interval</name>
-        <identifier essential="true" default="200" step="100" baseunit="ms">parameter.pointingrelativetokey_detection_interval</identifier>
-      </item>
-    </item>
-
-    <item>
-      <name>Mouse Key</name>
-
-      <item>
-        <name>Pointer</name>
-        <item>
-          <name>Acceleration of the pointer</name>
-          <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_pointer</identifier>
-        </item>
-        <item>
-          <name>Maximum speed of the pointer</name>
-          <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_pointer</identifier>
-        </item>
-        <item>
-          <name>Speed in high speed mode</name>
-          <identifier essential="true" default="50" step="10" baseunit="">parameter.mousekey_high_speed_of_pointer</identifier>
-        </item>
-        <item>
-          <name>Initial Wait</name>
-          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_initial_wait_of_pointer</identifier>
-        </item>
-        <item>
-          <name>Repeat Wait</name>
-          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_repeat_wait_of_pointer</identifier>
-        </item>
-      </item>
-
-      <item>
-        <name>Scroll</name>
-        <item>
-          <name>Acceleration of the scroll</name>
-          <identifier essential="true" default="1" step="1" baseunit="">parameter.acceleration_of_scroll</identifier>
-        </item>
-        <item>
-          <name>Maximum speed of the scroll</name>
-          <identifier essential="true" default="20" step="5" baseunit="">parameter.maximum_speed_of_scroll</identifier>
-        </item>
-        <item>
-          <name>Speed in high speed mode</name>
-          <identifier essential="true" default="50" step="10" baseunit="">parameter.mousekey_high_speed_of_scroll</identifier>
-        </item>
-        <item>
-          <name>Initial Wait</name>
-          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_initial_wait_of_scroll</identifier>
-        </item>
-        <item>
-          <name>Repeat Wait</name>
-          <identifier essential="true" default="20" step="5" baseunit="ms">parameter.mousekey_repeat_wait_of_scroll</identifier>
-        </item>
-      </item>
-
-      <item>
-        <name>Fixed Distance Move</name>
-        <item>
-          <name>Magnification of "Fixed Distance Move"</name>
-          <identifier essential="true" default="50" step="10" baseunit="">parameter.fixed_distance_magnification</identifier>
-        </item>
-      </item>
-
-      <item>
-        <name>Fixed Distance Scroll</name>
-        <item>
-          <name>Magnification of "Fixed Distance Scroll"</name>
-          <identifier essential="true" default="300" step="100" baseunit="">parameter.fixed_distance_scroll_magnification</identifier>
-        </item>
+        <name>Magnification of "Fixed Distance Scroll"</name>
+        <identifier essential="true" default="300" step="100" baseunit="">parameter.fixed_distance_scroll_magnification</identifier>
       </item>
     </item>
   </item>
+
 </root>
