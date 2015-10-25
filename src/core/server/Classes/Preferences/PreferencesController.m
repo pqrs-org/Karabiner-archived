@@ -2,6 +2,7 @@
 
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
+#import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
@@ -10,18 +11,21 @@
 - (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
+    [self refreshKeyRepeatTab:nil];
   });
 }
 
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
+    // refreshKeyRepeatTab is not needed here.
   });
 }
 
 - (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
+    [self refreshKeyRepeatTab:nil];
   });
 }
 
@@ -102,6 +106,7 @@
 - (void)windowDidBecomeMain:(NSNotification*)notification {
   [self drawVersion];
   [self drawEnabledCount];
+  [self refreshKeyRepeatTab:nil];
   [self sendStatusWindowPreferencesNotification:[[tabView_ selectedTabViewItem] identifier]];
 }
 
@@ -127,6 +132,33 @@
 - (IBAction)openPrivateXMLUsageURL:(id)sender {
   NSString* url = @"https://pqrs.org/osx/karabiner/document.html#privatexml";
   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
+- (IBAction)refreshKeyRepeatTab:(id)sender {
+  BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat];
+
+  [delayUntilRepeatTextField_ setEnabled:enabled];
+  [delayUntilRepeatStepper_ setEnabled:enabled];
+  [keyRepeatTextField_ setEnabled:enabled];
+  [keyRepeatStepper_ setEnabled:enabled];
+
+  int delayUntilRepeat = [preferencesManager_ value:@"repeat.initial_wait"];
+  int keyRepeat = [preferencesManager_ value:@"repeat.wait"];
+
+  [delayUntilRepeatTextField_ setIntegerValue:delayUntilRepeat];
+  [delayUntilRepeatStepper_ setIntegerValue:delayUntilRepeat];
+  [keyRepeatTextField_ setIntegerValue:keyRepeat];
+  [keyRepeatStepper_ setIntegerValue:keyRepeat];
+}
+
+- (IBAction)changeDelayUntilRepeat:(id)sender {
+  [preferencesManager_ setValue:[sender intValue] forName:@"repeat.initial_wait"];
+  [self refreshKeyRepeatTab:sender];
+}
+
+- (IBAction)changeKeyRepeat:(id)sender {
+  [preferencesManager_ setValue:[sender intValue] forName:@"repeat.wait"];
+  [self refreshKeyRepeatTab:sender];
 }
 
 @end

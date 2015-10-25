@@ -10,10 +10,18 @@
   IBOutlet NSWindow* preferencesWindow_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet XMLCompiler* xmlCompiler_;
+
+  IBOutlet NSTextField* delayUntilRepeatTextField_;
+  IBOutlet NSTextField* keyRepeatTextField_;
+  IBOutlet NSStepper* delayUntilRepeatStepper_;
+  IBOutlet NSStepper* keyRepeatStepper_;
 }
 
 - (void)show;
 - (IBAction)openURL:(id)sender;
 - (IBAction)openPrivateXMLUsageURL:(id)sender;
+- (IBAction)refreshKeyRepeatTab:(id)sender;
+- (IBAction)changeDelayUntilRepeat:(id)sender;
+- (IBAction)changeKeyRepeat:(id)sender;
 
 @end
