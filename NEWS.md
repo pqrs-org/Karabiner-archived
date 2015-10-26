@@ -5,6 +5,7 @@
     Karabiner uses the system values unless this option is enabled.
   * The key up event handling has been improved in some keyboards.
   * "Don't remap Apple's keyboards" setting supported Magic Keyboard.
+  * Karabiner Preferences became resizable.
   * Prepared settings have been updated.
 
 
