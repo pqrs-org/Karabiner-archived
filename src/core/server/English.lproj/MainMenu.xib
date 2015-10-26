@@ -324,7 +324,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Parameters" identifier="" id="kTU-wu-5r1">
-                                <view key="view" id="Bpk-8v-BJe">
+                                <view key="view" wantsLayer="YES" id="Bpk-8v-BJe">
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -354,8 +354,9 @@
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                             </tableColumn>
-                                                            <tableColumn identifier="default" editable="NO" width="60" minWidth="10" maxWidth="3.4028234663852886e+38" id="684">
+                                                            <tableColumn identifier="default" editable="NO" width="60" minWidth="60" maxWidth="60" id="684">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="default">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -367,7 +368,7 @@
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </tableColumn>
-                                                            <tableColumn identifier="value" width="60" minWidth="10" maxWidth="3.4028234663852886e+38" id="685">
+                                                            <tableColumn identifier="value" width="60" minWidth="60" maxWidth="60" id="685">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="value">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -385,7 +386,7 @@
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </tableColumn>
-                                                            <tableColumn identifier="stepper" width="142" minWidth="10" maxWidth="3.4028234663852886e+38" id="682">
+                                                            <tableColumn identifier="stepper" width="10" minWidth="10" maxWidth="10" id="682">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -394,9 +395,8 @@
                                                                 <stepperCell key="dataCell" controlSize="small" alignment="left" minValue="-1" maxValue="1" autorepeat="NO" id="692">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                 </stepperCell>
-                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             </tableColumn>
-                                                            <tableColumn identifier="baseunit" editable="NO" width="61" minWidth="10" maxWidth="3.4028234663852886e+38" id="686">
+                                                            <tableColumn identifier="baseunit" editable="NO" width="61" minWidth="61" maxWidth="61" id="686">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
