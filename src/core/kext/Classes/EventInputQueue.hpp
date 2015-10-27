@@ -141,7 +141,7 @@ private:
     DELAY_TYPE_POINTING_BUTTON,
   };
 
-  class BlockUntilKeyUpHander final {
+  class BlockUntilKeyUpHandler final {
   public:
     static void initialize(IOWorkLoop& workloop);
     static void terminate(void);

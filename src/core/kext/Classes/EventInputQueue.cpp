@@ -19,16 +19,16 @@ IntervalChecker EventInputQueue::ic_;
 TimerWrapper EventInputQueue::fire_timer_;
 EventInputQueue::SerialNumber EventInputQueue::serialNumber_;
 
-List EventInputQueue::BlockUntilKeyUpHander::blockedQueue_;
-List EventInputQueue::BlockUntilKeyUpHander::pressingEvents_;
-TimerWrapper EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_;
+List EventInputQueue::BlockUntilKeyUpHandler::blockedQueue_;
+List EventInputQueue::BlockUntilKeyUpHandler::pressingEvents_;
+TimerWrapper EventInputQueue::BlockUntilKeyUpHandler::blockingTimeOut_timer_;
 
 void EventInputQueue::initialize(IOWorkLoop& workloop) {
   ic_.begin();
   fire_timer_.initialize(&workloop, nullptr, EventInputQueue::fire_timer_callback);
   serialNumber_.reset();
 
-  BlockUntilKeyUpHander::initialize(workloop);
+  BlockUntilKeyUpHandler::initialize(workloop);
 }
 
 void EventInputQueue::terminate(void) {
@@ -36,7 +36,7 @@ void EventInputQueue::terminate(void) {
 
   queue_.clear();
 
-  BlockUntilKeyUpHander::terminate();
+  BlockUntilKeyUpHandler::terminate();
 }
 
 void EventInputQueue::enqueue_(const Params_Base& paramsBase,
@@ -571,7 +571,7 @@ void EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEve
   // Note:
   // We need to handle BlockUntilKeyUp after SimultaneousKeyPresses
   // in order to avoid unintended modification by SimultaneousKeyPresses.
-  bool needToFire = BlockUntilKeyUpHander::doBlockUntilKeyUp();
+  bool needToFire = BlockUntilKeyUpHandler::doBlockUntilKeyUp();
   if (needToFire) {
     doFire();
   }
@@ -720,18 +720,18 @@ void EventInputQueue::doFire(void) {
   queue_.pop_front();
 }
 
-void EventInputQueue::BlockUntilKeyUpHander::initialize(IOWorkLoop& workloop) {
-  blockingTimeOut_timer_.initialize(&workloop, nullptr, EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback);
+void EventInputQueue::BlockUntilKeyUpHandler::initialize(IOWorkLoop& workloop) {
+  blockingTimeOut_timer_.initialize(&workloop, nullptr, EventInputQueue::BlockUntilKeyUpHandler::blockingTimeOut_timer_callback);
 }
 
-void EventInputQueue::BlockUntilKeyUpHander::terminate(void) {
+void EventInputQueue::BlockUntilKeyUpHandler::terminate(void) {
   blockingTimeOut_timer_.terminate();
 
   blockedQueue_.clear();
   pressingEvents_.clear();
 }
 
-bool EventInputQueue::BlockUntilKeyUpHander::doBlockUntilKeyUp(void) {
+bool EventInputQueue::BlockUntilKeyUpHandler::doBlockUntilKeyUp(void) {
   Item* front = static_cast<Item*>(queue_.safe_front());
   if (!front) return true;
 
@@ -870,7 +870,7 @@ endBlocking:
   return true;
 }
 
-bool EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(const Item& front) {
+bool EventInputQueue::BlockUntilKeyUpHandler::isTargetDownEventInBlockedQueue(const Item& front) {
   FromEvent fromEvent(front.getParamsBase());
 
   for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
@@ -882,7 +882,7 @@ bool EventInputQueue::BlockUntilKeyUpHander::isTargetDownEventInBlockedQueue(con
   return false;
 }
 
-bool EventInputQueue::BlockUntilKeyUpHander::isOrphanKeyUpEventExistsInBlockedQueue(void) {
+bool EventInputQueue::BlockUntilKeyUpHandler::isOrphanKeyUpEventExistsInBlockedQueue(void) {
   for (Item* p = static_cast<Item*>(blockedQueue_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
     bool iskeydown;
     if ((p->getParamsBase()).iskeydown(iskeydown) && !iskeydown) {
@@ -902,7 +902,7 @@ bool EventInputQueue::BlockUntilKeyUpHander::isOrphanKeyUpEventExistsInBlockedQu
   return false;
 }
 
-void EventInputQueue::BlockUntilKeyUpHander::endBlocking(void) {
+void EventInputQueue::BlockUntilKeyUpHandler::endBlocking(void) {
   if (blockedQueue_.size() > 0) {
     // restore queue_
     for (;;) {
@@ -918,14 +918,14 @@ void EventInputQueue::BlockUntilKeyUpHander::endBlocking(void) {
   blockingTimeOut_timer_.cancelTimeout();
 }
 
-void EventInputQueue::BlockUntilKeyUpHander::setIgnoreToAllPressingEvents(void) {
+void EventInputQueue::BlockUntilKeyUpHandler::setIgnoreToAllPressingEvents(void) {
   // Ignore pressingEvents_ from next.
   for (PressingEvent* p = static_cast<PressingEvent*>(pressingEvents_.safe_front()); p; p = static_cast<PressingEvent*>(p->getnext())) {
     p->setIgnore();
   }
 }
 
-void EventInputQueue::BlockUntilKeyUpHander::blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
+void EventInputQueue::BlockUntilKeyUpHandler::blockingTimeOut_timer_callback(OSObject* owner, IOTimerEventSource* sender) {
   endBlocking();
   setIgnoreToAllPressingEvents();
   setTimer();
