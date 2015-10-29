@@ -8,6 +8,29 @@ void PressingPhysicalKeys::update(const Params_Base &paramsBase) {
   bool iskeydown;
   if (!paramsBase.iskeydown(iskeydown)) return;
 
+  // ------------------------------------------------------------
+  // When we press&release CapsLock, key event is fired only once.
+  // (down or up depending on the state of CapsLock)
+  // If we use Virtual CapsLock (remapped CapsLock) like "Change A to CapsLock",
+  // the PressingPhysicalKeys state is increase illegally.
+  // So, we ignore Hardware CapsLock at PressingPhysicalKeys.
+  //
+  // (1) Press Hardware CapsLock (EventType::DOWN is fired.)
+  // (2) Press A (EventType::DOWN is fired.)
+  // (2') (A is changed to CapsLock.)
+  // (3) Release A (EventType::UP is fired.)
+  // (3') (A is changed to CapsLock.)
+  // (4) Press Hardware CapsLock (EventType::DOWN is fired.)
+  //
+  // Both (1) and (4) fire DOWN event.
+  {
+    auto params = paramsBase.get_Params_KeyboardEventCallBack();
+    if (params && params->key == KeyCode::CAPSLOCK) {
+      return;
+    }
+  }
+
+  // ------------------------------------------------------------
   if (iskeydown) {
     list_.push_back(new Item(paramsBase));
 
