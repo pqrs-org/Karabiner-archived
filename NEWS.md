@@ -7,6 +7,8 @@
   * "Don't remap Apple's keyboards" setting supported Magic Keyboard.
   * Karabiner Preferences became resizable.
   * Prepared settings have been updated.
+* Fixed issues:
+  * `__SimultaneousKeyPresses__` sometimes fails sending key up event when `__BlockUntilKeyUp__` is used together.
 
 
 # Version 10.11.0
