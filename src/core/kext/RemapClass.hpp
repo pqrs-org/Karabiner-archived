@@ -100,7 +100,10 @@ public:
     //
     void remap_forcenumlockon(ListHookedKeyboard::Item* item, bool passThroughEnabled);
 
-    bool active(void) const { return ActiveItems::find(this, ActiveItems::Item::Type::NORMAL); }
+    bool active(void) const {
+      return (ActiveItems::find(this, ActiveItems::Item::Type::NORMAL) ||
+              ActiveItems::find(this, ActiveItems::Item::Type::SIMULTANEOUSBUTTONPRESSES));
+    }
 
     bool isPassThroughEnabled(void) const;
 
