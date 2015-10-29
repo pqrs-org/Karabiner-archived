@@ -566,14 +566,55 @@ void EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEve
   }
 
   // ------------------------------------------------------------
-  // handle BlockUntilKeyUp
-  //
-  // Note:
-  // We need to handle BlockUntilKeyUp after SimultaneousKeyPresses
-  // in order to avoid unintended modification by SimultaneousKeyPresses.
-  bool needToFire = BlockUntilKeyUpHandler::doBlockUntilKeyUp();
-  if (needToFire) {
-    doFire();
+  // Fire front item.
+  Item* front = static_cast<Item*>(queue_.safe_front());
+  if (front) {
+    ++serialNumber_;
+
+    // ------------------------------------------------------------
+    // Handle PressingPhysicalKeys
+    //
+    // We must call PressingPhysicalKeys after inputqueue. (Not before queuing)
+    // For example, when we type Command_L+S.
+    //
+    // (1) Command_L down (queued)
+    // (2) KeyCode::S down (Command_L+S)
+    // (1') dequeue Command_L down
+    // (3) Command_L up
+    // (4) KeyCode::S up
+    // (2') dequeue KeyCode::S down
+    //
+    // if PressingPhysicalKeys called when (4), Command_L state is reset.
+    // Then (2') send KeyCode::S without Modifiers.
+    //
+    // ------------------------------------------------------------
+    // We must call PressingPhysicalKeys before BlockUntilKeyUp.
+    // Because if both SimultaneousKeyPresses and BlockUntilKeyUp are enabled,
+    // we have to increase PressingPhysicalKeys in order to prevent RemapClass::ActiveItems::clear in Core::resetWhenPressingPhysicalKeysIsEmpty.
+    //
+    // For example:
+    //   1. BlockUntilKeyUp key down
+    //   2. SimultaneousKeyPresses key down
+    //   3. BlockUntilKeyUp key up
+    //      *** resetWhenPressingPhysicalKeysIsEmpty will be called here unless call PressingPhysicalKeys before BlockUntilKeyUp. ***
+    //   4. SimultaneousKeyPresses key up
+    //
+    // If resetWhenPressingPhysicalKeysIsEmpty is called, the SimultaneousKeyPresses key up is not changed property.
+
+    if (!(front->deviceWeakPointer).expired()) {
+      front->deviceWeakPointer->updatePressingPhysicalKeys(front->getParamsBase());
+    }
+
+    // ------------------------------------------------------------
+    // handle BlockUntilKeyUp
+    //
+    // Note:
+    // We need to handle BlockUntilKeyUp after SimultaneousKeyPresses
+    // in order to avoid unintended modification by SimultaneousKeyPresses.
+    bool needToFire = BlockUntilKeyUpHandler::doBlockUntilKeyUp();
+    if (needToFire) {
+      doFire();
+    }
   }
 
   setTimer();
@@ -582,8 +623,6 @@ void EventInputQueue::fire_timer_callback(OSObject* /*notuse_owner*/, IOTimerEve
 void EventInputQueue::doFire(void) {
   Item* p = static_cast<Item*>(queue_.safe_front());
   if (!p) return;
-
-  ++serialNumber_;
 
   {
     auto params = (p->getParamsBase()).get_Params_KeyboardEventCallBack();
@@ -596,41 +635,6 @@ void EventInputQueue::doFire(void) {
       }
 
       // ------------------------------------------------------------
-      // We must call PressingPhysicalKeys after inputqueue. (Not before queuing)
-      // For example, when we type Command_L+S.
-      //
-      // (1) Command_L down (queued)
-      // (2) KeyCode::S down (Command_L+S)
-      // (1') dequeue Command_L down
-      // (3) Command_L up
-      // (4) KeyCode::S up
-      // (2') dequeue KeyCode::S down
-      //
-      // if PressingPhysicalKeys called when (4), Command_L state is reset.
-      // Then (2') send KeyCode::S without Modifiers.
-      //
-      // ------------------------------------------------------------
-      // When we press&release CapsLock, key event is fired only once.
-      // (down or up depending on the state of CapsLock)
-      // If we use Virtual CapsLock (remapped CapsLock) like "Change A to CapsLock",
-      // the PressingPhysicalKeys state is increase illegally.
-      // So, we ignore Hardware CapsLock at PressingPhysicalKeys.
-      //
-      // (1) Press Hardware CapsLock (EventType::DOWN is fired.)
-      // (2) Press A (EventType::DOWN is fired.)
-      // (2') (A is changed to CapsLock.)
-      // (3) Release A (EventType::UP is fired.)
-      // (3') (A is changed to CapsLock.)
-      // (4) Press Hardware CapsLock (EventType::DOWN is fired.)
-      //
-      // Both (1) and (4) fire DOWN event.
-
-      if (params->key != KeyCode::CAPSLOCK) {
-        if (!(p->deviceWeakPointer).expired()) {
-          p->deviceWeakPointer->updatePressingPhysicalKeys(p->getParamsBase());
-        }
-      }
-
       Core::remap_KeyboardEventCallback(p->getParamsBase());
     }
   }
@@ -646,10 +650,6 @@ void EventInputQueue::doFire(void) {
       }
 
       // ------------------------------------------------------------
-      if (!(p->deviceWeakPointer).expired()) {
-        p->deviceWeakPointer->updatePressingPhysicalKeys(p->getParamsBase());
-      }
-
       Core::remap_KeyboardSpecialEventCallback(p->getParamsBase());
     }
   }
@@ -688,12 +688,6 @@ void EventInputQueue::doFire(void) {
       }
 
       // ------------------------------------------------------------
-      if (params->ex_button != PointingButton::NONE) {
-        if (!(p->deviceWeakPointer).expired()) {
-          p->deviceWeakPointer->updatePressingPhysicalKeys(p->getParamsBase());
-        }
-      }
-
       Core::remap_RelativePointerEventCallback(p->getParamsBase());
     }
   }
