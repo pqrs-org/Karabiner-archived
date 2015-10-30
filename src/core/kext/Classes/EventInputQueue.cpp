@@ -7,11 +7,15 @@
 #include "FlagStatus.hpp"
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
+#include "KeyboardRepeat.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"
+#include "PressDownKeys.hpp"
 #include "PressingPhysicalKeys.hpp"
 #include "RemapClass.hpp"
+#include "SimultaneousKeyPresses.hpp"
+#include "VirtualKey.hpp"
 
 namespace org_pqrs_Karabiner {
 List EventInputQueue::queue_;
@@ -711,7 +715,34 @@ void EventInputQueue::doFire(void) {
   CommonData::setcurrent_lastpressedphysicalkey(p->getParamsBase());
   CommonData::setcurrent_lastreleasedphysicalkey(p->getParamsBase());
 
+  bool iskeydown;
+  bool isdownupevent = (p->getParamsBase()).iskeydown(iskeydown);
+
   queue_.pop_front();
+
+  if (isdownupevent) {
+    resetInternalStateIfNeeded();
+  }
+}
+
+void EventInputQueue::resetInternalStateIfNeeded(void) {
+  // Reset if all keys are released and EventInputQueue is empty.
+  if (ListHookedDevice::pressingPhysicalKeysCountAll() == 0 &&
+      queue_.empty() && BlockUntilKeyUpHandler::isQueueEmpty()) {
+    IOLOG_DEVEL("EventInputQueue::resetInternalStateIfNeeded reset internal state.\n");
+    KeyboardRepeat::cancel();
+    EventWatcher::reset();
+    FlagStatus::globalFlagStatus().reset();
+    ButtonStatus::reset();
+    VirtualKey::reset();
+    EventOutputQueue::FireModifiers::setIgnorePhysicalUpEvent(false);
+    EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), PhysicalEventType::UP, FlagStatus::globalFlagStatus().makeFlags());
+    EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), PhysicalEventType::UP);
+    PressDownKeys::clear();
+    PressingFromEvents::clear();
+    RemapClass::ActiveItems::clear();
+    RemapFunc::SimultaneousKeyPresses::clearActiveFromInfos();
+  }
 }
 
 void EventInputQueue::BlockUntilKeyUpHandler::initialize(IOWorkLoop& workloop) {

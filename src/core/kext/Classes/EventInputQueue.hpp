@@ -149,6 +149,10 @@ private:
     // Return true if you need to call doFire.
     static bool doBlockUntilKeyUp(void);
 
+    static bool isQueueEmpty(void) {
+      return blockedQueue_.empty();
+    }
+
   private:
     static bool isTargetDownEventInBlockedQueue(const Item& front);
     static bool isOrphanKeyUpEventExistsInBlockedQueue(void);
@@ -200,6 +204,7 @@ private:
   }
   static void fire_timer_callback(OSObject* owner, IOTimerEventSource* sender);
   static void doFire(void);
+  static void resetInternalStateIfNeeded(void);
   static void setTimer(void);
 
   static List queue_;

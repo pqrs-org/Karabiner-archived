@@ -157,27 +157,6 @@ bool IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon,
 }
 
 // ======================================================================
-namespace {
-void resetWhenPressingPhysicalKeysIsEmpty(void) {
-  if (ListHookedDevice::pressingPhysicalKeysCountAll() == 0) {
-    IOLOG_DEVEL("resetWhenPressingPhysicalKeysIsEmpty\n");
-    KeyboardRepeat::cancel();
-    EventWatcher::reset();
-    FlagStatus::globalFlagStatus().reset();
-    ButtonStatus::reset();
-    VirtualKey::reset();
-    EventOutputQueue::FireModifiers::setIgnorePhysicalUpEvent(false);
-    EventOutputQueue::FireModifiers::fire(AutogenId::maxValue(), PhysicalEventType::UP, FlagStatus::globalFlagStatus().makeFlags());
-    EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), PhysicalEventType::UP);
-    PressDownKeys::clear();
-    PressingFromEvents::clear();
-    RemapClass::ActiveItems::clear();
-    RemapFunc::SimultaneousKeyPresses::clearActiveFromInfos();
-  }
-}
-}
-
-// ======================================================================
 void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
   auto params = paramsBase.get_Params_KeyboardEventCallBack();
   if (!params) return;
@@ -226,8 +205,6 @@ void remap_KeyboardEventCallback(const Params_Base& paramsBase) {
     EventOutputQueue::FireKey::fire(p, AutogenId::maxValue(), physicalEventType);
   }
 
-  resetWhenPressingPhysicalKeysIsEmpty();
-
   RemapFunc::PointingRelativeToScroll::cancelScroll();
 }
 
@@ -255,8 +232,6 @@ void remap_KeyboardSpecialEventCallback(const Params_Base& paramsBase) {
     EventOutputQueue::FireConsumer::fire(p, AutogenId::maxValue(), physicalEventType);
   }
 
-  resetWhenPressingPhysicalKeysIsEmpty();
-
   RemapFunc::PointingRelativeToScroll::cancelScroll();
 }
 
@@ -278,10 +253,6 @@ void remap_RelativePointerEventCallback(const Params_Base& paramsBase) {
   // ------------------------------------------------------------
   if (!remapParams.isremapped) {
     EventOutputQueue::FireRelativePointer::fire(AutogenId::maxValue(), physicalEventType, ButtonStatus::makeButtons(), params->dx, params->dy);
-  }
-
-  if (params->ex_button != PointingButton::NONE) {
-    resetWhenPressingPhysicalKeysIsEmpty();
   }
 }
 
