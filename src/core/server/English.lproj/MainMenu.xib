@@ -604,7 +604,7 @@ So, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.9.
                                                         </constraints>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="73N-9b-z3e">
-                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Eiz-GV-wlZ">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Eiz-GV-wlZ">
                                                                 <real key="minimum" value="0.0"/>
                                                             </numberFormatter>
                                                             <font key="font" metaFont="system"/>
