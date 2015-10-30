@@ -241,7 +241,9 @@
                [columnIdentifier isEqualToString:@"stepper"]) {
       if (!identifier) return nil;
 
-      return @([preferencesManager_ value:identifier]);
+      // @(12345) will be @"12,345" in view.
+      // So we return NSString to show numbers without comma.
+      return [[NSString alloc] initWithFormat:@"%d", [preferencesManager_ value:identifier]];
     }
   }
 
