@@ -513,7 +513,7 @@
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Note for OS X 10.9 Users:
 OS X 10.9 has an issue about getting the system configuration values.
-So, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.9.</string>
+Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.9.</string>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
@@ -604,7 +604,7 @@ So, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.9.
                                                         </constraints>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="73N-9b-z3e">
-                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Eiz-GV-wlZ">
+                                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Eiz-GV-wlZ">
                                                                 <real key="minimum" value="0.0"/>
                                                             </numberFormatter>
                                                             <font key="font" metaFont="system"/>
