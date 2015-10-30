@@ -123,7 +123,10 @@
     }
     {
       int default_value = pqrs_xml_compiler_get_preferences_number_node_tree_default_value(child);
-      dict[@"default"] = @(default_value);
+
+      // @(12345) will be @"12,345" in view.
+      // So we return NSString to show numbers without comma.
+      dict[@"default"] = [[NSString alloc] initWithFormat:@"%d", default_value];
     }
     {
       int step = pqrs_xml_compiler_get_preferences_number_node_tree_step(child);

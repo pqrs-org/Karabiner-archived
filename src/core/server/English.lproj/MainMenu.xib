@@ -386,7 +386,7 @@
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                 </tableHeaderCell>
-                                                                <stepperCell key="dataCell" controlSize="small" continuous="YES" alignment="left" minValue="-1" maxValue="1" id="692">
+                                                                <stepperCell key="dataCell" controlSize="small" alignment="left" minValue="-1" maxValue="1" autorepeat="NO" id="692">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                 </stepperCell>
                                                             </tableColumn>
