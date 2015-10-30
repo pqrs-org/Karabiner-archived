@@ -102,15 +102,15 @@
         </menu>
         <window title="Karabiner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="628" userLabel="Preferences">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="398" y="285" width="882" height="620"/>
+            <rect key="contentRect" x="398" y="285" width="800" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <value key="minSize" type="size" width="800" height="620"/>
             <view key="contentView" id="629">
-                <rect key="frame" x="0.0" y="0.0" width="882" height="620"/>
+                <rect key="frame" x="0.0" y="0.0" width="800" height="620"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView initialItem="633" translatesAutoresizingMaskIntoConstraints="NO" id="630">
-                        <rect key="frame" x="13" y="10" width="856" height="604"/>
+                        <rect key="frame" x="13" y="10" width="774" height="604"/>
                         <animations/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
@@ -146,7 +146,7 @@
                                                 <action selector="filter:" target="710" id="721"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="665">
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="665">
                                             <rect key="frame" x="613" y="524" width="130" height="32"/>
                                             <animations/>
                                             <buttonCell key="cell" type="push" title="Reload XML" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="668">
@@ -157,7 +157,7 @@
                                                 <action selector="reloadXML:" target="710" id="723"/>
                                             </connections>
                                         </button>
-                                        <scrollView misplaced="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="664">
+                                        <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="664">
                                             <rect key="frame" x="17" y="65" width="720" height="457"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n2M-kD-RD0">
                                                 <rect key="frame" x="1" y="1" width="703" height="455"/>
@@ -227,7 +227,7 @@
                                                 <action selector="collapse:" target="710" id="1377"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" misplaced="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
                                             <rect key="frame" x="17" y="32" width="499" height="5"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -262,7 +262,7 @@
                                                 <action selector="quit:" target="494" id="s9a-eC-ecA"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cA4-9j-dKU">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cA4-9j-dKU">
                                             <rect key="frame" x="531" y="30" width="208" height="14"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Do you want to add your own settings?" id="zTw-95-O8N">
@@ -271,7 +271,7 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpt-OH-jDS">
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gpt-OH-jDS">
                                             <rect key="frame" x="534" y="7" width="203" height="20"/>
                                             <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Open the documentation web site" bezelStyle="smallSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" state="on" borderStyle="border" inset="2" id="T1a-er-beZ">
@@ -282,7 +282,7 @@
                                                 <action selector="openPrivateXMLUsageURL:" target="1181" id="ZB2-ib-ytq"/>
                                             </connections>
                                         </button>
-                                        <box horizontalHuggingPriority="750" misplaced="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="9Yg-sZ-0oJ">
+                                        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="9Yg-sZ-0oJ">
                                             <rect key="frame" x="522" y="8" width="5" height="50"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -325,17 +325,17 @@
                             </tabViewItem>
                             <tabViewItem label="Parameters" identifier="" id="kTU-wu-5r1">
                                 <view key="view" wantsLayer="YES" id="Bpk-8v-BJe">
-                                    <rect key="frame" x="10" y="33" width="836" height="558"/>
+                                    <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <scrollView misplaced="YES" horizontalLineScroll="18" horizontalPageScroll="10" verticalLineScroll="18" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="677">
-                                            <rect key="frame" x="17" y="38" width="793" height="503"/>
+                                        <scrollView horizontalLineScroll="18" horizontalPageScroll="10" verticalLineScroll="18" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="677">
+                                            <rect key="frame" x="17" y="38" width="720" height="503"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="9G2-q6-FVr">
-                                                <rect key="frame" x="1" y="0.0" width="776" height="502"/>
+                                                <rect key="frame" x="1" y="0.0" width="703" height="502"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" headerView="681" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="683" id="678">
-                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="18"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="479"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <animations/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
@@ -425,12 +425,12 @@
                                                 <animations/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="679">
-                                                <rect key="frame" x="777" y="23" width="15" height="479"/>
+                                                <rect key="frame" x="704" y="23" width="15" height="479"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <animations/>
                                             </scroller>
                                             <tableHeaderView key="headerView" id="681">
-                                                <rect key="frame" x="0.0" y="0.0" width="776" height="23"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="703" height="23"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <animations/>
                                             </tableHeaderView>
@@ -473,13 +473,13 @@
                             </tabViewItem>
                             <tabViewItem label="Key Repeat" identifier="Item 2" id="632">
                                 <view key="view" wantsLayer="YES" id="676">
-                                    <rect key="frame" x="10" y="33" width="836" height="558"/>
+                                    <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-oU-tB8">
-                                            <rect key="frame" x="14" y="419" width="808" height="122"/>
+                                            <rect key="frame" x="14" y="419" width="726" height="122"/>
                                             <view key="contentView" id="a8N-oT-Gk2">
-                                                <rect key="frame" x="1" y="1" width="806" height="106"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="pVL-Uu-jsq">
@@ -495,7 +495,7 @@
                                                         </connections>
                                                     </button>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-0y-9mw">
-                                                        <rect key="frame" x="17" y="69" width="772" height="5"/>
+                                                        <rect key="frame" x="17" y="69" width="690" height="5"/>
                                                         <animations/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -510,7 +510,7 @@
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="Twf-oX-yk0"/>
                                                     </imageView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-Am-TVJ">
-                                                        <rect key="frame" x="57" y="10" width="734" height="51"/>
+                                                        <rect key="frame" x="57" y="10" width="652" height="51"/>
                                                         <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="g55-Vv-bm5">
                                                             <font key="font" metaFont="system"/>
@@ -542,9 +542,9 @@ Karabiner takes about 2-5 seconds to reflect new values when you change the syst
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box title="Parameters" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="8KE-NW-duE">
-                                            <rect key="frame" x="14" y="323" width="808" height="80"/>
+                                            <rect key="frame" x="14" y="323" width="726" height="80"/>
                                             <view key="contentView" id="h8T-cg-KIQ">
-                                                <rect key="frame" x="1" y="1" width="806" height="64"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="64"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IfG-cq-Oel">
