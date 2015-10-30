@@ -282,7 +282,27 @@
       NSString* columnIdentifier = [tableColumn identifier];
       if ([columnIdentifier isEqualToString:@"value"] ||
           [columnIdentifier isEqualToString:@"stepper"]) {
-        [preferencesManager_ setValue:[object intValue] forName:identifier];
+        NSInteger newvalue = 0;
+        if ([object isKindOfClass:[NSString class]]) {
+          NSNumberFormatter* f = [NSNumberFormatter new];
+          f.numberStyle = NSNumberFormatterDecimalStyle;
+          NSNumber* n = [f numberFromString:object];
+          if (!n) {
+            return;
+          }
+          newvalue = [n integerValue];
+        } else {
+          newvalue = [object integerValue];
+        }
+
+        if (newvalue < 0) {
+          return;
+        }
+        if (newvalue > 1073741824) {
+          return;
+        }
+
+        [preferencesManager_ setValue:(int)(newvalue) forName:identifier];
         [outlineView reloadItem:item];
       }
     }
