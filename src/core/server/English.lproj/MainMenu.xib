@@ -513,7 +513,7 @@
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Note for OS X 10.9 Users:
 OS X 10.9 has an issue about getting the system configuration values.
-So, Karabiner takes about 2-5 seconds to reflect system values in OS X 10.9.</string>
+So, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.9.</string>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
