@@ -2434,11 +2434,16 @@ Two Lines</autogen>
           ConsumerKeyCode::VOLUME_MUTE,
         </autogen>
       </item>
+
+      <item hidden="true">
+        <identifier vk_config="true">notsave.samples_pointing_relative_to_scroll</identifier>
+        <autogen>__PointingRelativeToScroll__ PointingButton::NONE</autogen>
+      </item>
       <item>
         <identifier>remap.samples_pointingrelativetoscroll_simultaneouskeypresses</identifier>
         <name>SimultaneousKeyPresses</name>
         <appendix>LeftClick+RightClick+CursorMove to ScrollWheel</appendix>
-        <autogen>__SimultaneousKeyPresses__ PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_pointing_relative_to_scroll</autogen>
+        <autogen>__SimultaneousKeyPresses__ PointingButton::LEFT, PointingButton::RIGHT, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_samples_pointing_relative_to_scroll</autogen>
       </item>
     </item>
 
