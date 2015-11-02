@@ -56,7 +56,7 @@
   // If System Preferences has never changed, dictionary[@"InitialKeyRepeat"] is nil.
   // (We can confirm in Guest account.)
   if (!dictionary || !dictionary[@"InitialKeyRepeat"]) {
-    return [preferencesManager_ value:@"repeat.initial_wait"];
+    return [preferencesManager_ defaultValue:@"repeat.initial_wait"];
   }
   // The unit of InitialKeyRepeat is 1/60 second.
   return (int)([dictionary[@"InitialKeyRepeat"] floatValue] * 1000 / 60);
@@ -66,7 +66,7 @@
   // If System Preferences has never changed, dictionary[@"KeyRepeat"] is nil.
   // (We can confirm in Guest account.)
   if (!dictionary || !dictionary[@"KeyRepeat"]) {
-    return [preferencesManager_ value:@"repeat.wait"];
+    return [preferencesManager_ defaultValue:@"repeat.wait"];
   }
   // The unit of KeyRepeat is 1/60 second.
   return (int)([dictionary[@"KeyRepeat"] floatValue] * 1000 / 60);
