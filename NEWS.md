@@ -1,4 +1,4 @@
-# Version 10.12.0
+# Version 10.13.0
 
 * New functions and improvements:
   * "Overwrite the key repeat values of system" option has been added. <br />
