@@ -9,7 +9,4 @@
 - (instancetype)initWithPreferencesManager:(PreferencesManager*)manager;
 - (void)start;
 
-- (int)getInitialKeyRepeat;
-- (int)getKeyRepeat;
-
 @end

@@ -42,40 +42,34 @@
   int currentInitialKeyRepeat = [self getInitialKeyRepeatFromDictionary:dictionary];
   int currentKeyRepeat = [self getKeyRepeatFromDictionary:dictionary];
 
-  if (previousInitialKeyRepeat_ != currentInitialKeyRepeat && currentInitialKeyRepeat > 0) {
+  if (previousInitialKeyRepeat_ != currentInitialKeyRepeat) {
     [preferencesManager_ setValue:currentInitialKeyRepeat forName:@"repeat.initial_wait"];
     previousInitialKeyRepeat_ = currentInitialKeyRepeat;
   }
-  if (previousKeyRepeat_ != currentKeyRepeat && currentKeyRepeat > 0) {
+  if (previousKeyRepeat_ != currentKeyRepeat) {
     [preferencesManager_ setValue:currentKeyRepeat forName:@"repeat.wait"];
     previousKeyRepeat_ = currentKeyRepeat;
   }
 }
 
 - (int)getInitialKeyRepeatFromDictionary:(NSDictionary*)dictionary {
-  if (!dictionary) {
-    return 0;
+  // If System Preferences has never changed, dictionary[@"InitialKeyRepeat"] is nil.
+  // (We can confirm in Guest account.)
+  if (!dictionary || !dictionary[@"InitialKeyRepeat"]) {
+    return [preferencesManager_ value:@"repeat.initial_wait"];
   }
   // The unit of InitialKeyRepeat is 1/60 second.
   return (int)([dictionary[@"InitialKeyRepeat"] floatValue] * 1000 / 60);
 }
 
 - (int)getKeyRepeatFromDictionary:(NSDictionary*)dictionary {
-  if (!dictionary) {
-    return 0;
+  // If System Preferences has never changed, dictionary[@"KeyRepeat"] is nil.
+  // (We can confirm in Guest account.)
+  if (!dictionary || !dictionary[@"KeyRepeat"]) {
+    return [preferencesManager_ value:@"repeat.wait"];
   }
   // The unit of KeyRepeat is 1/60 second.
   return (int)([dictionary[@"KeyRepeat"] floatValue] * 1000 / 60);
-}
-
-- (int)getInitialKeyRepeat {
-  NSDictionary* dictionary = [[NSUserDefaults standardUserDefaults] persistentDomainForName:NSGlobalDomain];
-  return [self getInitialKeyRepeatFromDictionary:dictionary];
-}
-
-- (int)getKeyRepeat {
-  NSDictionary* dictionary = [[NSUserDefaults standardUserDefaults] persistentDomainForName:NSGlobalDomain];
-  return [self getKeyRepeatFromDictionary:dictionary];
 }
 
 @end
