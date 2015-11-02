@@ -1,4 +1,5 @@
 #import "GlobalDomainKeyRepeatObserver.h"
+#import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 
@@ -13,11 +14,23 @@
 
 @implementation GlobalDomainKeyRepeatObserver
 
+- (void)observer_PreferencesChanged:(NSNotification*)notification {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    previousInitialKeyRepeat_ = -1;
+    previousKeyRepeat_ = -1;
+  });
+}
+
 - (instancetype)initWithPreferencesManager:(PreferencesManager*)manager {
   self = [super init];
 
   if (self) {
     preferencesManager_ = manager;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_PreferencesChanged:)
+                                                 name:kPreferencesChangedNotification
+                                               object:nil];
   }
 
   return self;
@@ -32,24 +45,26 @@
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]) {
-    previousInitialKeyRepeat_ = -1;
-    previousKeyRepeat_ = -1;
-    return;
-  }
+  dispatch_async(dispatch_get_main_queue(), ^{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]) {
+      previousInitialKeyRepeat_ = -1;
+      previousKeyRepeat_ = -1;
+      return;
+    }
 
-  NSDictionary* dictionary = [[NSUserDefaults standardUserDefaults] persistentDomainForName:NSGlobalDomain];
-  int currentInitialKeyRepeat = [self getInitialKeyRepeatFromDictionary:dictionary];
-  int currentKeyRepeat = [self getKeyRepeatFromDictionary:dictionary];
+    NSDictionary* dictionary = [[NSUserDefaults standardUserDefaults] persistentDomainForName:NSGlobalDomain];
+    int currentInitialKeyRepeat = [self getInitialKeyRepeatFromDictionary:dictionary];
+    int currentKeyRepeat = [self getKeyRepeatFromDictionary:dictionary];
 
-  if (previousInitialKeyRepeat_ != currentInitialKeyRepeat) {
-    [preferencesManager_ setValue:currentInitialKeyRepeat forName:@"repeat.initial_wait"];
-    previousInitialKeyRepeat_ = currentInitialKeyRepeat;
-  }
-  if (previousKeyRepeat_ != currentKeyRepeat) {
-    [preferencesManager_ setValue:currentKeyRepeat forName:@"repeat.wait"];
-    previousKeyRepeat_ = currentKeyRepeat;
-  }
+    if (previousInitialKeyRepeat_ != currentInitialKeyRepeat) {
+      [preferencesManager_ setValue:currentInitialKeyRepeat forName:@"repeat.initial_wait"];
+      previousInitialKeyRepeat_ = currentInitialKeyRepeat;
+    }
+    if (previousKeyRepeat_ != currentKeyRepeat) {
+      [preferencesManager_ setValue:currentKeyRepeat forName:@"repeat.wait"];
+      previousKeyRepeat_ = currentKeyRepeat;
+    }
+  });
 }
 
 - (int)getInitialKeyRepeatFromDictionary:(NSDictionary*)dictionary {
