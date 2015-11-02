@@ -42,11 +42,11 @@
   int currentInitialKeyRepeat = [self getInitialKeyRepeatFromDictionary:dictionary];
   int currentKeyRepeat = [self getKeyRepeatFromDictionary:dictionary];
 
-  if (previousInitialKeyRepeat_ != currentInitialKeyRepeat) {
+  if (previousInitialKeyRepeat_ != currentInitialKeyRepeat && currentInitialKeyRepeat > 0) {
     [preferencesManager_ setValue:currentInitialKeyRepeat forName:@"repeat.initial_wait"];
     previousInitialKeyRepeat_ = currentInitialKeyRepeat;
   }
-  if (previousKeyRepeat_ != currentKeyRepeat) {
+  if (previousKeyRepeat_ != currentKeyRepeat && currentKeyRepeat > 0) {
     [preferencesManager_ setValue:currentKeyRepeat forName:@"repeat.wait"];
     previousKeyRepeat_ = currentKeyRepeat;
   }
