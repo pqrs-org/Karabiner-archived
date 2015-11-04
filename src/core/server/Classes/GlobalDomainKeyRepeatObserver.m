@@ -57,12 +57,22 @@
     int currentKeyRepeat = [self getKeyRepeatFromDictionary:dictionary];
 
     if (previousInitialKeyRepeat_ != currentInitialKeyRepeat) {
-      [preferencesManager_ setValue:currentInitialKeyRepeat forName:@"repeat.initial_wait"];
       previousInitialKeyRepeat_ = currentInitialKeyRepeat;
+
+      NSString* name = @"repeat.initial_wait";
+      if ([preferencesManager_ value:name] != currentInitialKeyRepeat) {
+        NSLog(@"Set %@ from NSGlobalDomain.InitialKeyRepeat: %d milliseconds", name, currentInitialKeyRepeat);
+        [preferencesManager_ setValue:currentInitialKeyRepeat forName:name];
+      }
     }
     if (previousKeyRepeat_ != currentKeyRepeat) {
-      [preferencesManager_ setValue:currentKeyRepeat forName:@"repeat.wait"];
       previousKeyRepeat_ = currentKeyRepeat;
+
+      NSString* name = @"repeat.wait";
+      if ([preferencesManager_ value:name] != currentKeyRepeat) {
+        NSLog(@"Set %@ from NSGlobalDomain.KeyRepeat: %d milliseconds", name, currentKeyRepeat);
+        [preferencesManager_ setValue:currentKeyRepeat forName:name];
+      }
     }
   });
 }
