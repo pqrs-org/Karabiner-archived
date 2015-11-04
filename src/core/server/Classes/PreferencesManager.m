@@ -228,6 +228,8 @@
     // [[NSUserDefaults standardUserDefaults] synchronize];
 
     if (oldval != newval) {
+      // We post notification only when newval is different from oldval in order to avoid infinity loop.
+      // (`setValue` might be called in observer.)
       [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
       if (tellToKext) {
         [self callSetConfigOne:name value:newval];
