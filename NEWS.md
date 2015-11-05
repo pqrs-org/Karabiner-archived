@@ -1,3 +1,9 @@
+# Version 10.14.0
+
+* New functions and improvements:
+  * "Karabiner Preferences > Key Repeat tab" UI has been improved.
+
+
 # Version 10.13.0
 
 * New functions and improvements:
