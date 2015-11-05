@@ -151,8 +151,10 @@
   int delayUntilRepeat = [preferencesManager_ value:@"repeat.initial_wait"];
   int keyRepeat = [preferencesManager_ value:@"repeat.wait"];
 
+  [delayUntilRepeatLabel_ setStringValue:[NSString stringWithFormat:@"%d milliseconds", delayUntilRepeat]];
   [delayUntilRepeatTextField_ setIntegerValue:delayUntilRepeat];
   [delayUntilRepeatStepper_ setIntegerValue:delayUntilRepeat];
+  [keyRepeatLabel_ setStringValue:[NSString stringWithFormat:@"%d milliseconds", keyRepeat]];
   [keyRepeatTextField_ setIntegerValue:keyRepeat];
   [keyRepeatStepper_ setIntegerValue:keyRepeat];
 }

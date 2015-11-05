@@ -12,6 +12,8 @@
   IBOutlet XMLCompiler* xmlCompiler_;
 
   IBOutlet NSTabView* keyRepeatParameters_;
+  IBOutlet NSTextField* delayUntilRepeatLabel_;
+  IBOutlet NSTextField* keyRepeatLabel_;
   IBOutlet NSTextField* delayUntilRepeatTextField_;
   IBOutlet NSTextField* keyRepeatTextField_;
   IBOutlet NSStepper* delayUntilRepeatStepper_;
