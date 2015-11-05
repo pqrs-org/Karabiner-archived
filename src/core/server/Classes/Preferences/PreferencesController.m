@@ -137,6 +137,12 @@
 - (IBAction)refreshKeyRepeatTab:(id)sender {
   BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat];
 
+  if (enabled) {
+    [keyRepeatParameters_ selectTabViewItemAtIndex:1];
+  } else {
+    [keyRepeatParameters_ selectTabViewItemAtIndex:0];
+  }
+
   [delayUntilRepeatTextField_ setEnabled:enabled];
   [delayUntilRepeatStepper_ setEnabled:enabled];
   [keyRepeatTextField_ setEnabled:enabled];
@@ -149,6 +155,10 @@
   [delayUntilRepeatStepper_ setIntegerValue:delayUntilRepeat];
   [keyRepeatTextField_ setIntegerValue:keyRepeat];
   [keyRepeatStepper_ setIntegerValue:keyRepeat];
+}
+
+- (IBAction)openSystemPreferencesKeyboard:(id)sender {
+  [[NSWorkspace sharedWorkspace] openFile:@"/System/Library/PreferencePanes/Keyboard.prefPane"];
 }
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
