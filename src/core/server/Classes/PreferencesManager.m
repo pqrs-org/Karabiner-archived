@@ -146,12 +146,22 @@
   // migration
   if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsMigratedIsOverwriteKeyRepeat]) {
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsMigratedIsOverwriteKeyRepeat];
-    if ([self defaultValue:@"repeat.initial_wait"] != [self value:@"repeat.initial_wait"] ||
-        [self defaultValue:@"repeat.wait"] != [self value:@"repeat.wait"]) {
+
+    if ([self valueAsNumber:@"repeat.initial_wait"] || [self valueAsNumber:@"repeat.wait"]) {
       [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsOverwriteKeyRepeat];
+
+      if (![self valueAsNumber:@"repeat.initial_wait"]) {
+        // old defalut value is 500.
+        [self setValue:500 forName:@"repeat.initial_wait"];
+      }
+      if (![self valueAsNumber:@"repeat.wait"]) {
+        // old defalut value is 83.
+        [self setValue:83 forName:@"repeat.wait"];
+      }
     } else {
       [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:kIsOverwriteKeyRepeat];
     }
+
     NSLog(@"Migration: Set kIsOverwriteKeyRepeat:%d", [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]);
   }
 
