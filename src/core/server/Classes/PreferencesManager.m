@@ -160,20 +160,26 @@
 }
 
 // ----------------------------------------------------------------------
-- (int)value:(NSString*)name {
+- (NSNumber*)valueAsNumber:(NSString*)name {
   // user setting
   NSString* identifier = [self configlist_selectedIdentifier];
   if (identifier) {
     NSDictionary* dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
     if (dict) {
-      NSNumber* number = dict[name];
-      if (number) {
-        return [number intValue];
-      }
+      return dict[name];
     }
   }
 
-  return [self defaultValue:name];
+  return nil;
+}
+
+- (int)value:(NSString*)name {
+  NSNumber* number = [self valueAsNumber:name];
+  if (number) {
+    return [number intValue];
+  } else {
+    return [self defaultValue:name];
+  }
 }
 
 - (int)defaultValue:(NSString*)name {
