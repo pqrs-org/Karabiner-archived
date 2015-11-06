@@ -1,3 +1,10 @@
+# Since 10.14.0
+
+* New functions and improvements:
+  * Updates for people who add new settings by oneself:
+    * Improved some error messages.
+
+
 # Version 10.14.0
 
 * New functions and improvements:
