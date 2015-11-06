@@ -191,7 +191,9 @@ public:
       std::string xml_file_path;
       {
         auto path = it.second.get_optional<std::string>("<xmlattr>.path");
-        if (path) {
+        if (! path) {
+          xml_compiler.error_information_.set("path attribute is not found in <include>:\n" + xml_file_path);
+        } else {
           assert(!extracted_ptree_.local_included_files_.empty());
           xml_file_path = xml_compiler.make_file_path(pqrs::file_path::dirname(extracted_ptree_.local_included_files_.back()),
                                                       *path);
