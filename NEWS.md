@@ -1,6 +1,7 @@
 # Since 10.14.0
 
 * New functions and improvements:
+  * Prepared settings have been updated.
   * Updates for people who add new settings by oneself:
     * Some error messages have been improved.
 
