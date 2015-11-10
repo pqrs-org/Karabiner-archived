@@ -12,7 +12,10 @@
 
       <item>
         <name>애플 키보드</name>
-        <device_only>DeviceVendor::APPLE_COMPUTER</device_only>
+        <device_only>
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+          DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
+        </device_only>
         <identifier>remap.ksc_with_apple_keyboard</identifier>
 
         <block>
@@ -41,7 +44,10 @@
 
       <item>
         <name>한글 103/106키 키보드</name>
-        <device_not>DeviceVendor::APPLE_COMPUTER</device_not>
+        <device_not>
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+          DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
+        </device_not>
         <identifier>remap.ksc_with_103_106_keyboard</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
@@ -57,7 +63,10 @@
 
       <item>
         <name>한글 101키 키보드 (오른쪽에 Alt, Ctrl키가 없는 키보드)</name>
-        <device_not>DeviceVendor::APPLE_COMPUTER</device_not>
+        <device_not>
+          DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY,
+          DeviceVendor::Apple_Bluetooth, DeviceProduct::ANY,
+        </device_not>
         <identifier>remap.ksc_with_101_keyboard</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
