@@ -44,6 +44,13 @@
     </item>
 
     <item>
+      <name>Disable all settings on Apple devices.</name>
+      <identifier>ignore_devices.apple_devices</identifier>
+      <device_only>DeviceVendor::APPLE_INC, DeviceProduct::ANY</device_only>
+      <autogen>__PassThrough__</autogen>
+    </item>
+
+    <item>
       <name>Disable all settings on Magic Mouse.</name>
       <identifier>ignore_devices.magic_mouse</identifier>
       <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE</device_only>
