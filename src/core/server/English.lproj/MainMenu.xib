@@ -470,89 +470,24 @@
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-oU-tB8">
-                                            <rect key="frame" x="14" y="419" width="726" height="122"/>
-                                            <view key="contentView" id="a8N-oT-Gk2">
-                                                <rect key="frame" x="1" y="1" width="724" height="106"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="pVL-Uu-jsq">
-                                                        <rect key="frame" x="15" y="80" width="359" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Overwrite the key repeat values of system (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cum-b2-gcl">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="refreshKeyRepeatTab:" target="1181" id="9Gv-4F-JTs"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kIsOverwriteKeyRepeat" id="gj9-5Y-dsC"/>
-                                                        </connections>
-                                                    </button>
-                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-0y-9mw">
-                                                        <rect key="frame" x="17" y="69" width="690" height="5"/>
-                                                        <animations/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="system"/>
-                                                    </box>
-                                                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="73G-DP-yfL">
-                                                        <rect key="frame" x="17" y="29" width="32" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="32" id="rnX-HX-6jn"/>
-                                                        </constraints>
-                                                        <animations/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="Twf-oX-yk0"/>
-                                                    </imageView>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-Am-TVJ">
-                                                        <rect key="frame" x="57" y="10" width="652" height="51"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="g55-Vv-bm5">
-                                                            <font key="font" metaFont="system"/>
-                                                            <string key="title">Note for OS X 10.9 Users:
-OS X 10.9 has an issue about getting the system configuration values.
-Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.9.</string>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="4NL-Am-TVJ" secondAttribute="trailing" constant="17" id="0Co-Mp-fWf"/>
-                                                    <constraint firstItem="4NL-Am-TVJ" firstAttribute="top" secondItem="73G-DP-yfL" secondAttribute="top" id="3Y2-n8-Vjd"/>
-                                                    <constraint firstItem="pVL-Uu-jsq" firstAttribute="top" secondItem="a8N-oT-Gk2" secondAttribute="top" constant="10" id="4Df-O8-M7b"/>
-                                                    <constraint firstItem="4NL-Am-TVJ" firstAttribute="leading" secondItem="73G-DP-yfL" secondAttribute="trailing" constant="10" id="AXK-hR-T2T"/>
-                                                    <constraint firstItem="pVL-Uu-jsq" firstAttribute="leading" secondItem="a8N-oT-Gk2" secondAttribute="leading" constant="17" id="S8e-vm-ggG"/>
-                                                    <constraint firstItem="ufm-0y-9mw" firstAttribute="leading" secondItem="a8N-oT-Gk2" secondAttribute="leading" constant="17" id="dGA-eF-bOK"/>
-                                                    <constraint firstItem="ufm-0y-9mw" firstAttribute="top" secondItem="pVL-Uu-jsq" secondAttribute="bottom" constant="10" id="e80-w9-mqQ"/>
-                                                    <constraint firstItem="73G-DP-yfL" firstAttribute="leading" secondItem="pVL-Uu-jsq" secondAttribute="leading" id="faQ-sD-5PH"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ufm-0y-9mw" secondAttribute="trailing" constant="17" id="gUs-HI-GEH"/>
-                                                    <constraint firstItem="73G-DP-yfL" firstAttribute="top" secondItem="ufm-0y-9mw" secondAttribute="bottom" constant="10" id="lgo-Ot-e0R"/>
-                                                    <constraint firstAttribute="bottom" secondItem="4NL-Am-TVJ" secondAttribute="bottom" constant="10" id="z2X-ZQ-yCu"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
                                         <box title="Parameters" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="8KE-NW-duE">
-                                            <rect key="frame" x="14" y="249" width="726" height="154"/>
+                                            <rect key="frame" x="14" y="221" width="726" height="254"/>
                                             <view key="contentView" id="h8T-cg-KIQ">
-                                                <rect key="frame" x="1" y="1" width="724" height="138"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="238"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tabView drawsBackground="NO" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="FoC-hs-Aq9">
-                                                        <rect key="frame" x="17" y="10" width="690" height="118"/>
+                                                        <rect key="frame" x="17" y="10" width="690" height="218"/>
                                                         <animations/>
                                                         <font key="font" metaFont="system"/>
                                                         <tabViewItems>
                                                             <tabViewItem label="Default" identifier="1" id="lMn-JF-tti">
                                                                 <view key="view" id="ZVH-xV-KjQ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="690" height="118"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="690" height="218"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K5f-X5-e7O">
-                                                                            <rect key="frame" x="-2" y="101" width="461" height="17"/>
+                                                                            <rect key="frame" x="-2" y="201" width="461" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please adjust the key repeat values from &quot;System Preferences &gt; Keyboard&quot;." id="cU3-mB-bdS">
                                                                                 <font key="font" metaFont="system"/>
@@ -561,7 +496,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yda-5Q-nA9">
-                                                                            <rect key="frame" x="-6" y="63" width="271" height="32"/>
+                                                                            <rect key="frame" x="-6" y="163" width="271" height="32"/>
                                                                             <animations/>
                                                                             <buttonCell key="cell" type="push" title="Open System Preferences &gt; Keyboard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EPJ-D0-2Xg">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -572,7 +507,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </connections>
                                                                         </button>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vG4-HH-AZa">
-                                                                            <rect key="frame" x="-2" y="38" width="268" height="17"/>
+                                                                            <rect key="frame" x="-2" y="138" width="268" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="The current &quot;Delay Until Repeat&quot; of system:" id="QHR-Mw-dqB">
                                                                                 <font key="font" metaFont="system"/>
@@ -581,7 +516,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UdG-LD-xC9">
-                                                                            <rect key="frame" x="267" y="38" width="53" height="17"/>
+                                                                            <rect key="frame" x="267" y="138" width="53" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1000ms" id="Rnl-Ou-uHT">
                                                                                 <font key="font" metaFont="system"/>
@@ -589,8 +524,17 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZRE-m5-N9R">
+                                                                            <rect key="frame" x="41" y="111" width="225" height="17"/>
+                                                                            <animations/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="The current &quot;Key Repeat&quot; of system:" id="aZV-LM-rcp">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gyI-dt-Yze">
-                                                                            <rect key="frame" x="267" y="11" width="45" height="17"/>
+                                                                            <rect key="frame" x="267" y="111" width="45" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="100ms" id="aJf-x4-UNN">
                                                                                 <font key="font" metaFont="system"/>
@@ -598,11 +542,29 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZRE-m5-N9R">
-                                                                            <rect key="frame" x="41" y="11" width="225" height="17"/>
+                                                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-0y-9mw">
+                                                                            <rect key="frame" x="0.0" y="78" width="690" height="5"/>
                                                                             <animations/>
-                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="The current &quot;Key Repeat&quot; of system:" id="aZV-LM-rcp">
+                                                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                            <font key="titleFont" metaFont="system"/>
+                                                                        </box>
+                                                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" id="73G-DP-yfL">
+                                                                            <rect key="frame" x="0.0" y="38" width="32" height="32"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="32" id="rnX-HX-6jn"/>
+                                                                            </constraints>
+                                                                            <animations/>
+                                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="Twf-oX-yk0"/>
+                                                                        </imageView>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-Am-TVJ">
+                                                                            <rect key="frame" x="40" y="19" width="506" height="51"/>
+                                                                            <animations/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="g55-Vv-bm5">
                                                                                 <font key="font" metaFont="system"/>
+                                                                                <string key="title">Note for OS X 10.9 Users:
+OS X 10.9 has an issue about getting the system configuration values.
+Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.9.</string>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -611,15 +573,22 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                     <constraints>
                                                                         <constraint firstItem="vG4-HH-AZa" firstAttribute="top" secondItem="yda-5Q-nA9" secondAttribute="bottom" constant="15" id="6vK-27-Vfc"/>
                                                                         <constraint firstItem="ZRE-m5-N9R" firstAttribute="trailing" secondItem="vG4-HH-AZa" secondAttribute="trailing" id="8cO-id-Yq3"/>
+                                                                        <constraint firstItem="73G-DP-yfL" firstAttribute="leading" secondItem="ufm-0y-9mw" secondAttribute="leading" id="HfF-jK-Dc5"/>
+                                                                        <constraint firstItem="4NL-Am-TVJ" firstAttribute="leading" secondItem="73G-DP-yfL" secondAttribute="trailing" constant="10" id="TJn-Eb-Yb6"/>
+                                                                        <constraint firstItem="73G-DP-yfL" firstAttribute="top" secondItem="ufm-0y-9mw" secondAttribute="bottom" constant="10" id="TzS-xl-bK8"/>
                                                                         <constraint firstItem="gyI-dt-Yze" firstAttribute="centerY" secondItem="ZRE-m5-N9R" secondAttribute="centerY" id="UUK-RW-ebr"/>
                                                                         <constraint firstItem="K5f-X5-e7O" firstAttribute="leading" secondItem="ZVH-xV-KjQ" secondAttribute="leading" id="crb-DP-g3o"/>
                                                                         <constraint firstItem="yda-5Q-nA9" firstAttribute="top" secondItem="K5f-X5-e7O" secondAttribute="bottom" constant="10" id="dBp-PN-JiM"/>
                                                                         <constraint firstItem="UdG-LD-xC9" firstAttribute="centerY" secondItem="vG4-HH-AZa" secondAttribute="centerY" id="eaM-6y-66H"/>
+                                                                        <constraint firstItem="4NL-Am-TVJ" firstAttribute="top" secondItem="73G-DP-yfL" secondAttribute="top" id="eyR-UQ-if1"/>
                                                                         <constraint firstItem="yda-5Q-nA9" firstAttribute="leading" secondItem="ZVH-xV-KjQ" secondAttribute="leading" id="fds-6y-NVD"/>
                                                                         <constraint firstItem="UdG-LD-xC9" firstAttribute="leading" secondItem="vG4-HH-AZa" secondAttribute="trailing" constant="5" id="gFo-4O-DjK"/>
                                                                         <constraint firstItem="K5f-X5-e7O" firstAttribute="top" secondItem="ZVH-xV-KjQ" secondAttribute="top" id="kvg-q6-PLv"/>
                                                                         <constraint firstItem="ZRE-m5-N9R" firstAttribute="top" secondItem="vG4-HH-AZa" secondAttribute="bottom" constant="10" id="obG-Kn-peU"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="ufm-0y-9mw" secondAttribute="trailing" id="ppA-Jz-wOM"/>
+                                                                        <constraint firstItem="ufm-0y-9mw" firstAttribute="top" secondItem="ZRE-m5-N9R" secondAttribute="bottom" constant="30" id="rS1-NX-zjk"/>
                                                                         <constraint firstItem="gyI-dt-Yze" firstAttribute="leading" secondItem="ZRE-m5-N9R" secondAttribute="trailing" constant="5" id="uAN-Ls-x3S"/>
+                                                                        <constraint firstItem="ufm-0y-9mw" firstAttribute="leading" secondItem="ZVH-xV-KjQ" secondAttribute="leading" id="zFC-cG-z3t"/>
                                                                         <constraint firstItem="vG4-HH-AZa" firstAttribute="leading" secondItem="K5f-X5-e7O" secondAttribute="leading" id="zZe-Y6-IqW"/>
                                                                     </constraints>
                                                                     <animations/>
@@ -627,11 +596,11 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             </tabViewItem>
                                                             <tabViewItem label="Overwrite" identifier="2" id="4d3-g2-gch">
                                                                 <view key="view" id="CKs-yN-9K4">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="690" height="68"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="690" height="259"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IfG-cq-Oel">
-                                                                            <rect key="frame" x="-2" y="51" width="114" height="17"/>
+                                                                            <rect key="frame" x="-2" y="242" width="114" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Delay until repeat:" id="szL-tx-dNN">
                                                                                 <font key="font" metaFont="system"/>
@@ -640,7 +609,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eU-LB-0AH">
-                                                                            <rect key="frame" x="120" y="49" width="80" height="22"/>
+                                                                            <rect key="frame" x="120" y="240" width="80" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="80" id="j9Q-xS-ceG"/>
                                                                             </constraints>
@@ -659,7 +628,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </connections>
                                                                         </textField>
                                                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EYw-oz-bOf">
-                                                                            <rect key="frame" x="202" y="46" width="19" height="27"/>
+                                                                            <rect key="frame" x="202" y="237" width="19" height="27"/>
                                                                             <animations/>
                                                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="100" maxValue="999999" id="xwa-ff-Gv7"/>
                                                                             <connections>
@@ -667,7 +636,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </connections>
                                                                         </stepper>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-cp-jez">
-                                                                            <rect key="frame" x="39" y="24" width="73" height="17"/>
+                                                                            <rect key="frame" x="39" y="215" width="73" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Key repeat:" id="kgp-CP-Oi4">
                                                                                 <font key="font" metaFont="system"/>
@@ -676,7 +645,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l8l-Vo-9k0">
-                                                                            <rect key="frame" x="120" y="22" width="80" height="22"/>
+                                                                            <rect key="frame" x="120" y="213" width="80" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="80" id="kqU-nU-gH9"/>
                                                                             </constraints>
@@ -695,7 +664,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </connections>
                                                                         </textField>
                                                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yow-Uc-UYf">
-                                                                            <rect key="frame" x="202" y="19" width="19" height="27"/>
+                                                                            <rect key="frame" x="202" y="210" width="19" height="27"/>
                                                                             <animations/>
                                                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="10" maxValue="999999" id="c9w-T2-NNw"/>
                                                                             <connections>
@@ -703,7 +672,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </connections>
                                                                         </stepper>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D3U-w3-x1r">
-                                                                            <rect key="frame" x="221" y="25" width="79" height="17"/>
+                                                                            <rect key="frame" x="221" y="216" width="79" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="milliseconds" id="1Dv-mz-Lix">
                                                                                 <font key="font" metaFont="system"/>
@@ -712,7 +681,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V5B-Os-C8O">
-                                                                            <rect key="frame" x="221" y="52" width="79" height="17"/>
+                                                                            <rect key="frame" x="221" y="243" width="79" height="17"/>
                                                                             <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="milliseconds" id="YLk-L8-HEF">
                                                                                 <font key="font" metaFont="system"/>
@@ -754,8 +723,38 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                 <animations/>
                                             </view>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="150" id="vAu-b9-pUd"/>
+                                                <constraint firstAttribute="height" constant="250" id="vAu-b9-pUd"/>
                                             </constraints>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="WOY-oU-tB8">
+                                            <rect key="frame" x="14" y="491" width="726" height="50"/>
+                                            <view key="contentView" id="a8N-oT-Gk2">
+                                                <rect key="frame" x="1" y="1" width="724" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="pVL-Uu-jsq">
+                                                        <rect key="frame" x="15" y="8" width="359" height="18"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Overwrite the key repeat values of system (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cum-b2-gcl">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="refreshKeyRepeatTab:" target="1181" id="9Gv-4F-JTs"/>
+                                                            <binding destination="1176" name="value" keyPath="values.kIsOverwriteKeyRepeat" id="gj9-5Y-dsC"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="pVL-Uu-jsq" firstAttribute="top" secondItem="a8N-oT-Gk2" secondAttribute="top" constant="10" id="4Df-O8-M7b"/>
+                                                    <constraint firstItem="pVL-Uu-jsq" firstAttribute="leading" secondItem="a8N-oT-Gk2" secondAttribute="leading" constant="17" id="S8e-vm-ggG"/>
+                                                    <constraint firstAttribute="bottom" secondItem="pVL-Uu-jsq" secondAttribute="bottom" constant="10" id="oRN-5d-Qcj"/>
+                                                </constraints>
+                                                <animations/>
+                                            </view>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
