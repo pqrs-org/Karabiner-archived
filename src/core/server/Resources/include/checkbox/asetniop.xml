@@ -5,7 +5,7 @@
     <item>
       <name>Note:</name>
       <appendix>To make typing a little easier you should increased the [Simultaneous Keypresses]</appendix>
-      <appendix>Delay Threshold in the “Key Repeat” tab to 300 ms.</appendix>
+      <appendix>Delay Threshold in the Parameters tab to 300 ms.</appendix>
       <appendix>This means you don’t have to press the keys at exactly the same moment.</appendix>
       <appendix>It also means you can’t type too fast or things will get messed up.</appendix>
       <appendix>See what fits you and change it when you get used to asetniop typing.</appendix>

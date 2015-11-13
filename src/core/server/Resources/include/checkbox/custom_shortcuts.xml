@@ -5,7 +5,7 @@
     <item>
       <name>Hold Command+Q to Quit Application</name>
       <appendix>(You can adjust the threshold time of holding by</appendix>
-      <appendix>"Holding Key to Key &gt; Holding Threshold" in Key Repeat tab.)</appendix>
+      <appendix>"Holding Key to Key &gt; Holding Threshold" in Parameters tab.)</appendix>
       <identifier>remap.holdcommandQ</identifier>
       <modifier_not>
         ModifierFlag::CONTROL_L,

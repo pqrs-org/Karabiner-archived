@@ -129,7 +129,7 @@
       </item>
       <item>
         <name>Ignore bouncing (chattering) events.</name>
-        <appendix>(Please adjust threshold in "Key Repeat" tab.)</appendix>
+        <appendix>(Please adjust threshold in Parameters tab.)</appendix>
         <identifier essential="true">general.ignore_bouncing_events</identifier>
       </item>
       <item>

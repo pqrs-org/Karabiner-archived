@@ -12,7 +12,7 @@
       <appendix><![CDATA[  * Right-arrow: S down -> L down -> L up  ]]></appendix>
       <appendix></appendix>
       <appendix>The hjkl keys also act as arrow keys when you hold s+hjkl keys down.</appendix>
-      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
+      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in Parameters tab.</appendix>
       <appendix></appendix>
       <appendix>F key acts as fn key when S key is pressed.</appendix>
       <appendix><![CDATA[  * S+F+H: Home  ]]></appendix>

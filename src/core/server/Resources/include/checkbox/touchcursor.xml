@@ -32,7 +32,7 @@
 
     <item>
       <name>Activate TouchCursor by Space</name>
-      <appendix>(Please adjust "[Key Overlaid Modifier] Initial Modifier Wait" in Key Repeat tab</appendix>
+      <appendix>(Please adjust "[Key Overlaid Modifier] Initial Modifier Wait" in Parameters tab</appendix>
       <appendix>in order to avoid mis-detection of space key if your typing speed is fast.)</appendix>
       <identifier>remap.touchcursor</identifier>
       <autogen>

@@ -866,7 +866,7 @@ Two Lines</autogen>
 
           <!--
               | You can send key events in the timeout callback that is set at key up by Option::KEYTOKEY_DELAYED_ACTION.
-              | (You can adjust timeout milliseconds by Preferences > Key Repeat tab.)
+              | (You can adjust timeout milliseconds by Preferences > Parameters tab.)
               |
               | You can also send key events when timeout callback is cancelled.
               | * Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY

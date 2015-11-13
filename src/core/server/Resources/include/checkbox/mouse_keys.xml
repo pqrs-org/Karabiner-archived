@@ -21,7 +21,7 @@
       <appendix><![CDATA[  * Right: D down -> L down -> L up  ]]></appendix>
       <appendix></appendix>
       <appendix>The hjkl keys also act as mouse keys when you hold d+hjkl keys down.</appendix>
-      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in "Key Repeat" tab.</appendix>
+      <appendix>(You can adjust timeout by "__BlockUntilKeyUp__ Timeout" in Parameters tab.</appendix>
       <appendix></appendix>
       <appendix>Use S key to enable scroll. ("S"croll)</appendix>
       <appendix>* D+S+HJKL: Scroll wheel.</appendix>
