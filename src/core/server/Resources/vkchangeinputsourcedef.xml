@@ -217,7 +217,9 @@
       |
       | <autogen>
       |   __KeyToKey__
+      |
       |   KeyCode::SHIFT_R,
+      |
       |   KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
       |   KeyCode::VK_WAIT_100MS,
       |   KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
