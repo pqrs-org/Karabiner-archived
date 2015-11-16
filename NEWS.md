@@ -4,6 +4,8 @@
   * Prepared settings have been updated.
   * Updates for people who add new settings by oneself:
     * Some error messages have been improved.
+  * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
+    * Razer DeathAdder Chroma has been supported.
 
 
 # Version 10.14.0
