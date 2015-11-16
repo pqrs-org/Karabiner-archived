@@ -330,6 +330,12 @@ bool ListHookedKeyboard::isExternalDevicesConnected(void) const {
       }
     }
 
+    // Ignore Mice which has keyboard interface:
+    // * Razer DeathAdder Chroma
+    if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Razer, DeviceProduct::Razer_DeathAdder_Chroma)) {
+      continue;
+    }
+
     if (p->getDeviceType() != DeviceType::APPLE_MIKEY_HID_DRIVER &&
         p->getDeviceType() != DeviceType::APPLE_INTERNAL) {
       return true;

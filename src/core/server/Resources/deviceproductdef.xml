@@ -381,4 +381,9 @@
     <productid>0x0004</productid>
   </deviceproductdef>
 
+  <deviceproductdef>
+    <productname>Razer_DeathAdder_Chroma</productname>
+    <productid>0x0043</productid>
+  </deviceproductdef>
+
 </root>

@@ -7,3 +7,4 @@ APPLE_COMPUTER   0x05ac
 Apple_Bluetooth  0x004c
 PSEUDO           0x0000
 LOGITECH         0x046d
+Razer            0x1532

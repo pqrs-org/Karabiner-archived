@@ -8,6 +8,9 @@ APPLE_INTERNAL_KEYBOARD_TRACKPAD_0x0218 0x0218
 LOGITECH_CORDLESS_PRESENTER             0xc515
 LOGITECH_USB_HEADSET                    0x0a0b
 
+// Razer
+Razer_DeathAdder_Chroma                 0x0043
+
 //
 PSEUDO                                  0x0000
 ANY                                     0x0000

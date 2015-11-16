@@ -146,4 +146,9 @@
     <vendorid>0x2516</vendorid>
   </devicevendordef>
 
+  <devicevendordef>
+    <vendorname>Razer</vendorname>
+    <vendorid>0x1532</vendorid>
+  </devicevendordef>
+
 </root>
