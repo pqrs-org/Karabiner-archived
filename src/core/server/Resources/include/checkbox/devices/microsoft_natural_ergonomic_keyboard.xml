@@ -30,10 +30,24 @@
     </item>
 
     <item>
-      <name>Use Alt Key as Command</name>
+      <name>Use Left Alt Key as Command</name>
       <identifier>remap.microsoft_natural_ergonomic_keyboard.Alt_key_as_Command</identifier>
       <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
       <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+    </item>
+
+    <item>
+      <name>Use Right Alt Key as Command</name>
+      <identifier>remap.microsoft_natural_ergonomic_keyboard.Right_Alt_key_as_Command</identifier>
+      <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+    </item>
+
+    <item>
+      <name>Use Application Key as Option</name>
+      <identifier>remap.microsoft_natural_ergonomic_keyboard.Application_key_as_Option</identifier>
+      <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_NATURAL_ERGONOMIC_4000</device_only>
+      <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_R</autogen>
     </item>
 
     <item>
