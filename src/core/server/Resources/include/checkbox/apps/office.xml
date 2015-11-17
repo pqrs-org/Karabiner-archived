@@ -48,17 +48,51 @@
           <appendix>(+ Change Dashboard to Command+Y)</appendix>
           <identifier>remap.app_excel_launchpad_to_commandLy</identifier>
           <only>EXCEL</only>
-          <autogen>__KeyToKey__ KeyCode::LAUNCHPAD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::LAUNCHPAD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::DASHBOARD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::DASHBOARD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+
+          <block>
+            <inputsource_only>
+              SWISS_FRENCH,
+              SWISS_GERMAN,
+            </inputsource_only>
+            <autogen>__KeyToKey__ KeyCode::LAUNCHPAD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::LAUNCHPAD,                    ModifierFlag::NONE, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::DASHBOARD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::DASHBOARD,                    ModifierFlag::NONE, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          </block>
+
+          <block>
+            <inputsource_not>
+              SWISS_FRENCH,
+              SWISS_GERMAN,
+            </inputsource_not>
+            <autogen>__KeyToKey__ KeyCode::LAUNCHPAD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::LAUNCHPAD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::DASHBOARD, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::DASHBOARD,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          </block>
         </item>
         <item>
           <name>Change F4 to Command+Y</name>
           <identifier>remap.app_excel_f4_to_commandLy</identifier>
           <only>EXCEL</only>
-          <autogen>__KeyToKey__ KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
-          <autogen>__KeyToKey__ KeyCode::F4,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+
+          <block>
+            <inputsource_only>
+              SWISS_FRENCH,
+              SWISS_GERMAN,
+            </inputsource_only>
+            <autogen>__KeyToKey__ KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::F4,                    ModifierFlag::NONE, KeyCode::Z, ModifierFlag::COMMAND_L</autogen>
+          </block>
+
+          <block>
+            <inputsource_not>
+              SWISS_FRENCH,
+              SWISS_GERMAN,
+            </inputsource_not>
+            <autogen>__KeyToKey__ KeyCode::F4, ModifierFlag::FN | ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+            <autogen>__KeyToKey__ KeyCode::F4,                    ModifierFlag::NONE, KeyCode::Y, ModifierFlag::COMMAND_L</autogen>
+          </block>
         </item>
       </item>
       <item>
