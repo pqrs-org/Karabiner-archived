@@ -262,6 +262,16 @@
         </item>
       </item>
       <item>
+        <name>Change button4 to the mission control key</name>
+        <identifier>remap.button4_to_mission_control</identifier>
+        <autogen>__KeyToKey__ PointingButton::BUTTON4, KeyCode::MISSION_CONTROL</autogen>
+      </item>
+      <item>
+        <name>Change button5 to the mission control key</name>
+        <identifier>remap.button5_to_mission_control</identifier>
+        <autogen>__KeyToKey__ PointingButton::BUTTON5, KeyCode::MISSION_CONTROL</autogen>
+      </item>
+      <item>
         <name>Open Mission Control when you press and hold the right button for 500 milliseconds.</name>
         <identifier>remap.open_mission_control_by_holding_right_button</identifier>
         <autogen>
