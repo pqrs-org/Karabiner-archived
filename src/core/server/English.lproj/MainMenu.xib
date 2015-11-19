@@ -1420,7 +1420,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="e3W-S7-z09">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Be careful:
-Do not change these settings if you do not know much about AXNotifier.
+Please keep AXNotifier enabled if you do not know much about AXNotifier.
 
 You need to enable AXNotifier if you want to use following settings:
 
