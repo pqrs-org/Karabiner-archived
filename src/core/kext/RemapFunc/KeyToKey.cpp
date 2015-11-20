@@ -485,9 +485,6 @@ void KeyToKey::doDelayedAction(const Vector_ToEvent& keys, bool delayedActionCan
   if (!keys.empty()) {
     FlagStatus::ScopedSetter scopedSetter(FlagStatus::globalFlagStatus(), flagStatusForDelayedActionKeys_);
 
-    // clear temporary flags.
-    FlagStatus::globalFlagStatus().set();
-
     if (delayedActionCanceledBy && keys.size() > 0) {
       FlagStatus::globalFlagStatus().temporary_decrease(keys[0].getModifierFlags());
     }
