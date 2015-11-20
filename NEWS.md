@@ -4,9 +4,9 @@
   * Prepared settings have been updated.
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Razer DeathAdder Chroma has been supported.
+  * ModifierFlag treatment has been improved in `Option::KEYTOKEY_DELAYED_ACTION`.
   * Updates for people who add new settings by oneself:
     * Some error messages have been improved.
-
 
 # Version 10.14.0
 
