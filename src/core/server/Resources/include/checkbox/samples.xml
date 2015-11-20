@@ -858,6 +858,9 @@ Two Lines</autogen>
         <appendix>* When you press control-tab twice, "left shift, a, option-b, control-c, d" will be sent.</appendix>
         <appendix>* When you press control-tab once, "left shift" will be sent.</appendix>
         <appendix>────────</appendix>
+        <appendix>Change control-escape to option-1.</appendix>
+        <appendix>+ Change control-escape x2 to option-2.</appendix>
+        <appendix>────────</appendix>
 
         <autogen>
           __KeyToKey__
@@ -904,6 +907,19 @@ Two Lines</autogen>
           KeyCode::C, ModifierFlag::CONTROL_L,
           KeyCode::D,
           KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT, <!-- drop second tab key event -->
+        </autogen>
+
+        <autogen>
+          __KeyToKey__
+          KeyCode::ESCAPE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+          KeyCode::VK_NONE,
+
+          Option::KEYTOKEY_DELAYED_ACTION,
+          KeyCode::KEY_1, ModifierFlag::OPTION_L,
+
+          Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::ESCAPE,
+          KeyCode::KEY_2, ModifierFlag::OPTION_L,
+          KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT, <!-- drop second escapet key event -->
         </autogen>
       </item>
 
