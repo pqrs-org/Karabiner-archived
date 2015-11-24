@@ -1,6 +1,8 @@
 # Since 10.14.0
 
 * New functions and improvements:
+  * The safety limit of key repeat rate has been removed.<br />
+    You can overwrite key repeat rate by extreme fast values.
   * Prepared settings have been updated.
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Razer DeathAdder Chroma has been supported.
