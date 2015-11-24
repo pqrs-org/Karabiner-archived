@@ -32,19 +32,11 @@ public:
 
   static unsigned int get_repeat_initial_wait(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_initial_wait);
-    if (get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_unlimited_key_repeat_rate)) {
-      return getvalue(v, 1);
-    } else {
-      return getvalue(v, 200);
-    }
+    return getvalue(v, 1);
   }
   static unsigned int get_repeat_wait(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_wait);
-    if (get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_unlimited_key_repeat_rate)) {
-      return getvalue(v, 1);
-    } else {
-      return getvalue(v, 5);
-    }
+    return getvalue(v, 1);
   }
   static unsigned int get_repeat_consumer_initial_wait(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_initial_wait);

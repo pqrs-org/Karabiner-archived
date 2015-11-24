@@ -122,12 +122,6 @@
     <item>
       <name>Advanced configurations</name>
       <item>
-        <name>Unlimited rapid key repeat rate</name>
-        <appendix>(Karabiner limits most rapid "Delay Until Repeat" to 200ms for safe.</appendix>
-        <appendix>This setting allows you unlimited "Delay Until Repeat".)</appendix>
-        <identifier essential="true">general.unlimited_key_repeat_rate</identifier>
-      </item>
-      <item>
         <name>Ignore bouncing (chattering) events.</name>
         <appendix>(Please adjust threshold in Parameters tab.)</appendix>
         <identifier essential="true">general.ignore_bouncing_events</identifier>
