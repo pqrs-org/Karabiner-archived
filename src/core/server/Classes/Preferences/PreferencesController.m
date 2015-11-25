@@ -212,10 +212,12 @@
                                                                            green:(0xde * 1.0 / 255)
                                                                             blue:(0xde * 1.0 / 255)
                                                                            alpha:1.0]];
+    debugModeGuideTextField_.drawsBackground = YES;
+
   } else {
     [debugModeGuideTextField_ setStringValue:@"Debug Mode is disabled.\nAdministrator privileges are required to enable Debug Mode."];
-    [debugModeGuideTextField_ setTextColor:[NSColor labelColor]];
-    [debugModeGuideTextField_ setBackgroundColor:[NSColor clearColor]];
+    [debugModeGuideTextField_ setTextColor:[NSColor textColor]];
+    debugModeGuideTextField_.drawsBackground = NO;
   }
 }
 
