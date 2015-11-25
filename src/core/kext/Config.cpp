@@ -82,12 +82,15 @@ void Config::set_initialized(bool newvalue) {
   // ----------------------------------------
   // reset sysctl_debug* and essential_config_.
   if (newvalue == false) {
-    sysctl_debug = 0;
-    sysctl_debug_devel = 0;
-    sysctl_debug_pointing = 0;
-
+    unset_debug_flags();
     load_essential_config_default();
   }
+}
+
+void Config::unset_debug_flags(void) {
+  sysctl_debug = 0;
+  sysctl_debug_devel = 0;
+  sysctl_debug_pointing = 0;
 }
 
 bool Config::get_initialized(void) { return sysctl_initialized; }

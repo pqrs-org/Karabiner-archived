@@ -14,6 +14,7 @@ public:
 
   // ----------------------------------------
   static void set_initialized(bool newvalue);
+  static void unset_debug_flags(void);
   static bool get_initialized(void);
   static bool get_debug(void);
   static bool get_debug_devel(void);

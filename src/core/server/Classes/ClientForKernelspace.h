@@ -25,5 +25,6 @@
 - (void)send_config_to_kext;
 - (void)set_config_one:(struct BridgeSetConfigOne*)bridgeSetConfigOne;
 - (NSArray*)device_information:(NSInteger)type;
+- (void)unset_debug_flags;
 
 @end

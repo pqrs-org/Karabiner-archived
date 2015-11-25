@@ -1,10 +1,14 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
+#import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
+
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 @implementation PreferencesController
 
@@ -107,6 +111,7 @@
   [self drawVersion];
   [self drawEnabledCount];
   [self refreshKeyRepeatTab:nil];
+  [self updateDebugModeGuide];
   [self sendStatusWindowPreferencesNotification:[[tabView_ selectedTabViewItem] identifier]];
 }
 
@@ -116,6 +121,7 @@
 
 /* ---------------------------------------------------------------------- */
 - (void)tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem {
+  [self updateDebugModeGuide];
   [self sendStatusWindowPreferencesNotification:[tabViewItem identifier]];
 }
 
@@ -171,6 +177,46 @@
 - (IBAction)changeKeyRepeat:(id)sender {
   [preferencesManager_ setValue:[sender intValue] forName:@"repeat.wait"];
   [self refreshKeyRepeatTab:sender];
+}
+
+- (IBAction)openConsoleApp:(id)sender {
+  [[NSWorkspace sharedWorkspace] openFile:@"/Applications/Utilities/Console.app"];
+}
+
+- (IBAction)toggleDebugMode:(id)sender {
+  if ([self isDebugMode]) {
+    [clientForKernelspace_ unset_debug_flags];
+  } else {
+    [[[NSAppleScript alloc] initWithSource:@"do shell script \"/usr/sbin/sysctl -w karabiner.debug=1\" with administrator privileges"] executeAndReturnError:nil];
+  }
+  [self updateDebugModeGuide];
+}
+
+- (BOOL)isDebugMode {
+  int debug;
+  size_t len = sizeof(debug);
+  sysctlbyname("karabiner.debug", &debug, &len, NULL, 0);
+  return debug;
+}
+
+- (void)updateDebugModeGuide {
+  if ([self isDebugMode]) {
+    [debugModeGuideTextField_ setStringValue:@"Debug Mode is enabled.\nYour key input are logged into system.log."];
+    // #a94442
+    [debugModeGuideTextField_ setTextColor:[NSColor colorWithCalibratedRed:(0xa9 * 1.0 / 255)
+                                                                     green:(0x44 * 1.0 / 255)
+                                                                      blue:(0x42 * 1.0 / 255)
+                                                                     alpha:1.0]];
+    // #f2dede
+    [debugModeGuideTextField_ setBackgroundColor:[NSColor colorWithCalibratedRed:(0xf2 * 1.0 / 255)
+                                                                           green:(0xde * 1.0 / 255)
+                                                                            blue:(0xde * 1.0 / 255)
+                                                                           alpha:1.0]];
+  } else {
+    [debugModeGuideTextField_ setStringValue:@"Debug Mode is disabled.\nAdministrator privileges are required to enable Debug Mode."];
+    [debugModeGuideTextField_ setTextColor:[NSColor labelColor]];
+    [debugModeGuideTextField_ setBackgroundColor:[NSColor clearColor]];
+  }
 }
 
 @end

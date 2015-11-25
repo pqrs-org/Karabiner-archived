@@ -394,4 +394,15 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   return information;
 }
 
+- (void)unset_debug_flags {
+  uint32_t dummy = 1;
+  struct BridgeUserClientStruct bridgestruct;
+  bridgestruct.type = BRIDGE_USERCLIENT_TYPE_UNSET_DEBUG_FLAGS;
+  bridgestruct.option = 0;
+  bridgestruct.data = &dummy;
+  bridgestruct.size = sizeof(dummy);
+
+  [userClient_userspace_ synchronized_communication:&bridgestruct];
+}
+
 @end

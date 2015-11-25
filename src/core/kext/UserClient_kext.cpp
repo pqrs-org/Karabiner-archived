@@ -492,5 +492,11 @@ void USERCLIENT_KEXT_CLASSNAME::handle_synchronized_communication(uint32_t type,
 
     break;
   }
+
+  case BRIDGE_USERCLIENT_TYPE_UNSET_DEBUG_FLAGS: {
+    KEXT_NAMESPACE::Config::unset_debug_flags();
+    *outputdata = BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION_RETURN_SUCCESS;
+    break;
+  }
   }
 }
