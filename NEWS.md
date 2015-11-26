@@ -10,6 +10,8 @@
   * ModifierFlag treatment has been improved in `Option::KEYTOKEY_DELAYED_ACTION`.
   * Updates for people who add new settings by oneself:
     * Some error messages have been improved.
+* Fixed issues:
+  * Some Java apps might be crash when AXNotifier is enabled. (Fiji)
 
 
 # Version 10.14.0

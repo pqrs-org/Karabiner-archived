@@ -115,6 +115,10 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
           [[[runningApplication executableURL] absoluteString] hasSuffix:@"/SpineTrial"] ||
           [[[runningApplication executableURL] absoluteString] hasSuffix:@"/Spine"] ||
 
+          // Fiji
+          // https://github.com/tekezo/Karabiner/issues/522
+          [[runningApplication bundleIdentifier] isEqualToString:@"org.fiji"] ||
+
           // Putting false in order to allow tailing || in the last valid item.
           false) {
         observable = NO;
