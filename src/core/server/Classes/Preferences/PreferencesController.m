@@ -201,7 +201,7 @@
 
 - (void)updateDebugModeGuide {
   if ([self isDebugMode]) {
-    [debugModeGuideTextField_ setStringValue:@"Debug Mode is enabled.\nYour key input are logged into system.log."];
+    [debugModeGuideTextField_ setStringValue:@"Debug Mode is enabled. Do not type sensitive information such as password.\nYour key input are saved into system.log."];
     // #a94442
     [debugModeGuideTextField_ setTextColor:[NSColor colorWithCalibratedRed:(0xa9 * 1.0 / 255)
                                                                      green:(0x44 * 1.0 / 255)
