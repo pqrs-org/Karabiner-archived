@@ -744,8 +744,8 @@
         </item>
         <item><name>──────────────────────────────</name></item>
         <item>
-          <name>F3,F4 to Expose/Launchpad (except in Virtual Machine/RDP)</name>
-          <identifier>remap.f3f4_launchpad</identifier>
+          <name>F3,F4 to Mission Control,Launchpad (except in Virtual Machine/RDP)</name>
+          <identifier>remap.f3f4_mission_control_launchpad</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>__KeyToKey__ KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
           <autogen>__KeyToKey__ KeyCode::F4, KeyCode::LAUNCHPAD</autogen>
