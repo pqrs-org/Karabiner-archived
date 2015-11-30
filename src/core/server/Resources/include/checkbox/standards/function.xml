@@ -744,7 +744,7 @@
         </item>
         <item><name>──────────────────────────────</name></item>
         <item>
-          <name>F3,F4 to Expose/Launchpad (except in Parallels/RDP)</name>
+          <name>F3,F4 to Expose/Launchpad (except in Virtual Machine/RDP)</name>
           <identifier>remap.f3f4_launchpad</identifier>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <autogen>__KeyToKey__ KeyCode::F3, KeyCode::EXPOSE_ALL</autogen>
