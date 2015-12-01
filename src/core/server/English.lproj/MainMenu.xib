@@ -1117,6 +1117,50 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1381">
+                                            <rect key="frame" x="14" y="467" width="726" height="74"/>
+                                            <view key="contentView" id="qQS-xb-LW2">
+                                                <rect key="frame" x="1" y="1" width="724" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
+                                                        <rect key="frame" x="25" y="8" width="296" height="18"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Show setting name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1187"/>
+                                                            <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
+                                                        <rect key="frame" x="15" y="32" width="241" height="18"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1186"/>
+                                                            <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="694" firstAttribute="top" secondItem="696" secondAttribute="bottom" constant="10" id="4n2-M8-dQA"/>
+                                                    <constraint firstItem="696" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="17" id="6Qv-SH-PE7"/>
+                                                    <constraint firstItem="694" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="27" id="U5Z-L9-pDF"/>
+                                                    <constraint firstItem="696" firstAttribute="top" secondItem="qQS-xb-LW2" secondAttribute="top" constant="10" id="aYt-t9-ETf"/>
+                                                    <constraint firstAttribute="bottom" secondItem="694" secondAttribute="bottom" constant="10" id="bGl-oO-mnf"/>
+                                                </constraints>
+                                                <animations/>
+                                            </view>
+                                            <animations/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
                                         <box autoresizesSubviews="NO" title="SettingList" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="695">
                                             <rect key="frame" x="14" y="13" width="726" height="438"/>
                                             <view key="contentView" id="gKU-xd-mya">
@@ -1138,7 +1182,11 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="699">
-                                                        <rect key="frame" x="17" y="10" width="17" height="23"/>
+                                                        <rect key="frame" x="17" y="10" width="24" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="24" id="506-AJ-jrc"/>
+                                                            <constraint firstAttribute="height" constant="24" id="Aoj-Fg-PzU"/>
+                                                        </constraints>
                                                         <animations/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="706">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1149,7 +1197,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="698">
-                                                        <rect key="frame" x="34" y="10" width="17" height="23"/>
+                                                        <rect key="frame" x="41" y="10" width="24" height="24"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="707">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1160,7 +1208,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZYB-aW-UwD">
-                                                        <rect key="frame" x="75" y="4" width="110" height="32"/>
+                                                        <rect key="frame" x="89" y="5" width="110" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Sort by name" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NUF-0z-CqG">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1171,7 +1219,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-HF-WTq">
-                                                        <rect key="frame" x="183" y="4" width="122" height="32"/>
+                                                        <rect key="frame" x="197" y="5" width="122" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Sort by created" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WWs-oh-umf">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1182,13 +1230,13 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </connections>
                                                     </button>
                                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700">
-                                                        <rect key="frame" x="17" y="43" width="690" height="274"/>
+                                                        <rect key="frame" x="17" y="44" width="690" height="273"/>
                                                         <clipView key="contentView" id="XEC-4K-dD2">
-                                                            <rect key="frame" x="1" y="1" width="688" height="272"/>
+                                                            <rect key="frame" x="1" y="1" width="688" height="271"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="703">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="19"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="271"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <animations/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -1234,6 +1282,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="699" secondAttribute="bottom" constant="10" id="8Qa-fN-04D"/>
+                                                    <constraint firstItem="698" firstAttribute="width" secondItem="699" secondAttribute="width" id="DLK-hp-yx4"/>
                                                     <constraint firstAttribute="trailing" secondItem="1389" secondAttribute="trailing" constant="17" id="FI9-lq-QvI"/>
                                                     <constraint firstItem="699" firstAttribute="leading" secondItem="gKU-xd-mya" secondAttribute="leading" constant="17" id="Fa6-E3-ifC"/>
                                                     <constraint firstAttribute="trailing" secondItem="700" secondAttribute="trailing" constant="17" id="H75-uk-560"/>
@@ -1246,52 +1295,9 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     <constraint firstItem="JBN-HF-WTq" firstAttribute="centerY" secondItem="699" secondAttribute="centerY" id="jPu-n2-Y2W"/>
                                                     <constraint firstItem="1389" firstAttribute="leading" secondItem="gKU-xd-mya" secondAttribute="leading" constant="17" id="mT6-nZ-b1l"/>
                                                     <constraint firstItem="698" firstAttribute="centerY" secondItem="699" secondAttribute="centerY" id="qI2-Z4-Rq7"/>
+                                                    <constraint firstItem="698" firstAttribute="height" secondItem="699" secondAttribute="height" id="tGd-4A-kFf"/>
                                                     <constraint firstItem="700" firstAttribute="top" secondItem="1389" secondAttribute="bottom" constant="10" id="tht-di-J82"/>
                                                     <constraint firstItem="1389" firstAttribute="top" secondItem="gKU-xd-mya" secondAttribute="top" constant="10" id="vXJ-VW-GK9"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1381">
-                                            <rect key="frame" x="14" y="467" width="726" height="74"/>
-                                            <view key="contentView" id="qQS-xb-LW2">
-                                                <rect key="frame" x="1" y="1" width="724" height="58"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
-                                                        <rect key="frame" x="25" y="8" width="296" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Show setting name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1187"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
-                                                        <rect key="frame" x="15" y="32" width="241" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1186"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="694" firstAttribute="top" secondItem="696" secondAttribute="bottom" constant="10" id="4n2-M8-dQA"/>
-                                                    <constraint firstItem="696" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="17" id="6Qv-SH-PE7"/>
-                                                    <constraint firstItem="694" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="27" id="U5Z-L9-pDF"/>
-                                                    <constraint firstItem="696" firstAttribute="top" secondItem="qQS-xb-LW2" secondAttribute="top" constant="10" id="aYt-t9-ETf"/>
-                                                    <constraint firstAttribute="bottom" secondItem="694" secondAttribute="bottom" constant="10" id="bGl-oO-mnf"/>
                                                 </constraints>
                                                 <animations/>
                                             </view>
