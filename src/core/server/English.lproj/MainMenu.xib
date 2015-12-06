@@ -1831,6 +1831,8 @@ Debug Mode Guide</string>
                 <animations/>
             </view>
             <connections>
+                <binding destination="1176" name="contentHeight" keyPath="values.kKarabinerPreferencesHeight" id="rlI-3a-nlh"/>
+                <binding destination="1176" name="contentWidth" keyPath="values.kKarabinerPreferencesWidth" previousBinding="rlI-3a-nlh" id="PdX-ep-2BH"/>
                 <outlet property="delegate" destination="1181" id="1209"/>
             </connections>
             <point key="canvasLocation" x="747" y="371"/>
