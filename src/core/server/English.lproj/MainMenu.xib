@@ -157,14 +157,14 @@
                                                 <action selector="reloadXML:" target="710" id="723"/>
                                             </connections>
                                         </button>
-                                        <scrollView horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="664">
+                                        <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="664">
                                             <rect key="frame" x="17" y="65" width="720" height="457"/>
                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n2M-kD-RD0">
-                                                <rect key="frame" x="1" y="1" width="703" height="455"/>
+                                                <rect key="frame" x="1" y="1" width="718" height="455"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
-                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="718" height="455"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <animations/>
                                                         <size key="intercellSpacing" width="2" height="3"/>
@@ -199,7 +199,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <animations/>
                                             </scroller>
-                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="671">
+                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="671">
                                                 <rect key="frame" x="704" y="1" width="15" height="455"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <animations/>
