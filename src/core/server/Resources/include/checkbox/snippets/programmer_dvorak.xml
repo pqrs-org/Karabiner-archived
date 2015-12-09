@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<root>
+  <!-- If ModifierFlag::FN is pressed, retain keys to convert Fn+jkl to 123 (numpad) -->
+  <modifier_not>ModifierFlag::FN</modifier_not>
+
+  <!-- caps lock + shift -->
+  <block>
+    <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+    <autogen>
+      __KeyToKey__
+      KeyCode::SHIFT_L,
+      KeyCode::VK_NONE,
+
+      Option::KEYTOKEY_BEFORE_KEYDOWN,
+      KeyCode::CAPSLOCK,
+
+      Option::KEYTOKEY_AFTER_KEYUP,
+      KeyCode::CAPSLOCK,
+    </autogen>
+    <autogen>
+      __KeyToKey__
+      KeyCode::SHIFT_R,
+      KeyCode::VK_NONE,
+
+      Option::KEYTOKEY_BEFORE_KEYDOWN,
+      KeyCode::CAPSLOCK,
+
+      Option::KEYTOKEY_AFTER_KEYUP,
+      KeyCode::CAPSLOCK,
+    </autogen>
+  </block>
+
+  <block>
+    <!-- caps lock + numbers -->
+    <modifier_only>ModifierFlag::CAPSLOCK</modifier_only>
+    <modifier_not>
+      ModifierFlag::SHIFT_L,
+      ModifierFlag::SHIFT_R,
+    </modifier_not>
+    <autogen>__KeyToKey__ KeyCode::KEY_2, KeyCode::KEY_7</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_3, KeyCode::KEY_5</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_4, KeyCode::KEY_3</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_5, KeyCode::KEY_1</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_6, KeyCode::KEY_9</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_7, KeyCode::KEY_0</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_8, KeyCode::KEY_2</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_9, KeyCode::KEY_4</autogen>
+    <autogen>__KeyToKey__ KeyCode::KEY_0, KeyCode::KEY_6</autogen>
+    <autogen>__KeyToKey__ KeyCode::MINUS, KeyCode::KEY_8</autogen>
+  </block>
+
+  <!-- ======================================== -->
+  <autogen>__KeyToKey__ KeyCode::Q, KeyCode::SEMICOLON</autogen>
+  <autogen>__KeyToKey__ KeyCode::W, KeyCode::COMMA</autogen>
+  <autogen>__KeyToKey__ KeyCode::E, KeyCode::DOT</autogen>
+  <autogen>__KeyToKey__ KeyCode::R, KeyCode::P</autogen>
+  <autogen>__KeyToKey__ KeyCode::T, KeyCode::Y</autogen>
+  <autogen>__KeyToKey__ KeyCode::Y, KeyCode::F</autogen>
+  <autogen>__KeyToKey__ KeyCode::U, KeyCode::G</autogen>
+  <autogen>__KeyToKey__ KeyCode::I, KeyCode::C</autogen>
+  <autogen>__KeyToKey__ KeyCode::O, KeyCode::R</autogen>
+  <autogen>__KeyToKey__ KeyCode::P, KeyCode::L</autogen>
+  <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, KeyCode::SLASH</autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::BRACKET_RIGHT,
+    KeyCode::KEY_2, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <!-- ======================================== -->
+  <autogen>__KeyToKey__ KeyCode::S, KeyCode::O</autogen>
+  <autogen>__KeyToKey__ KeyCode::D, KeyCode::E</autogen>
+  <autogen>__KeyToKey__ KeyCode::F, KeyCode::U</autogen>
+  <autogen>__KeyToKey__ KeyCode::G, KeyCode::I</autogen>
+  <autogen>__KeyToKey__ KeyCode::H, KeyCode::D</autogen>
+  <autogen>__KeyToKey__ KeyCode::J, KeyCode::H</autogen>
+  <autogen>__KeyToKey__ KeyCode::K, KeyCode::T</autogen>
+  <autogen>__KeyToKey__ KeyCode::L, KeyCode::N</autogen>
+  <autogen>__KeyToKey__ KeyCode::SEMICOLON, KeyCode::S</autogen>
+  <autogen>__KeyToKey__ KeyCode::QUOTE, KeyCode::MINUS</autogen>
+
+  <!-- ======================================== -->
+  <autogen>__KeyToKey__ KeyCode::Z, KeyCode::QUOTE</autogen>
+  <autogen>__KeyToKey__ KeyCode::X, KeyCode::Q</autogen>
+  <autogen>__KeyToKey__ KeyCode::C, KeyCode::J</autogen>
+  <autogen>__KeyToKey__ KeyCode::V, KeyCode::K</autogen>
+  <autogen>__KeyToKey__ KeyCode::B, KeyCode::X</autogen>
+  <autogen>__KeyToKey__ KeyCode::N, KeyCode::B</autogen>
+  <autogen>__KeyToKey__ KeyCode::COMMA, KeyCode::W</autogen>
+  <autogen>__KeyToKey__ KeyCode::DOT, KeyCode::V</autogen>
+  <autogen>__KeyToKey__ KeyCode::SLASH, KeyCode::Z</autogen>
+
+  <!-- ======================================== -->
+  <autogen>
+    __KeyToKey__
+    KeyCode::BACKQUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::BACKQUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::BACKQUOTE,
+    KeyCode::KEY_4, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_1,
+    KeyCode::KEY_7, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_2, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_7,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_2,
+    KeyCode::BRACKET_LEFT,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_5,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_3,
+    KeyCode::BRACKET_LEFT, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_4, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_3,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_4,
+    KeyCode::BRACKET_RIGHT, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_1,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_5,
+    KeyCode::KEY_9, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_9,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_6,
+    KeyCode::EQUAL,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_0,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_7,
+    KeyCode::KEY_8, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_2,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_8,
+    KeyCode::KEY_0, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_4,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_9,
+    KeyCode::EQUAL, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_6,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::KEY_0,
+    KeyCode::BRACKET_RIGHT,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::KEY_8,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::MINUS,
+    KeyCode::KEY_1, ModifierFlag::SHIFT_L,
+  </autogen>
+
+  <autogen>
+    __KeyToKey__
+    KeyCode::EQUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+    KeyCode::BACKQUOTE,
+  </autogen>
+  <autogen>
+    __KeyToKey__
+    KeyCode::EQUAL,
+    KeyCode::KEY_3, ModifierFlag::SHIFT_L,
+  </autogen>
+</root>
