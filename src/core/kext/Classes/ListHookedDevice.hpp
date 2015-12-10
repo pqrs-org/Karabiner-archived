@@ -80,6 +80,7 @@ public:
   bool isInProgress(void) const;
 
   size_t pressingPhysicalKeysCount(void) const;
+  void clearPressingPhysicalKeysCount(void) const;
 
   ListHookedDevice::Item* get(const IOHIDevice* device);
   ListHookedDevice::Item* get_replaced(void);
@@ -90,6 +91,7 @@ public:
   static void terminateAll(void);
   static void refreshAll(void);
   static size_t pressingPhysicalKeysCountAll(void);
+  static void clearInternalKeyboardPressingPhysicalKeysCountAll(void);
 
   static void start_refreshInProgressDevices_timer(void);
   static void refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender);

@@ -239,6 +239,14 @@ size_t ListHookedDevice::pressingPhysicalKeysCount(void) const {
   return count;
 }
 
+void ListHookedDevice::clearPressingPhysicalKeysCount(void) const {
+  for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
+    if (p->isInternalDevice()) {
+      (p->pressingPhysicalKeys_).clear();
+    }
+  }
+}
+
 void ListHookedDevice::getDeviceInformation(BridgeDeviceInformation& out, size_t index) const {
   out.isFound = 0;
   out.manufacturer[0] = '\0';
@@ -316,6 +324,11 @@ size_t ListHookedDevice::pressingPhysicalKeysCountAll(void) {
                  ListHookedPointing::instance().pressingPhysicalKeysCount();
   IOLOG_DEVEL("ListHookedDevice::pressingPhysicalKeysCountAll: %ld\n", count);
   return count;
+}
+
+void ListHookedDevice::clearInternalKeyboardPressingPhysicalKeysCountAll(void) {
+  ListHookedKeyboard::instance().clearPressingPhysicalKeysCount();
+  ListHookedConsumer::instance().clearPressingPhysicalKeysCount();
 }
 
 void ListHookedDevice::start_refreshInProgressDevices_timer(void) {
