@@ -208,7 +208,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Karabiner_multitouchextension" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -297,6 +297,7 @@
 				GCC_PREFIX_HEADER = Karabiner_multitouchextension_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = org.pqrs.Karabiner.multitouchextension;
 				PRODUCT_NAME = Karabiner_multitouchextension;
 			};
 			name = Release;
