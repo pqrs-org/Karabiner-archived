@@ -93,29 +93,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="540" height="567"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="576">
-                        <rect key="frame" x="20" y="483" width="79" height="84"/>
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="576">
+                        <rect key="frame" x="10" y="482" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="8VJ-nH-BT4"/>
+                            <constraint firstAttribute="width" constant="80" id="lHr-5g-nTa"/>
+                        </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="app" id="577"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="581">
-                        <rect key="frame" x="104" y="516" width="419" height="18"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="581">
+                        <rect key="frame" x="98" y="513" width="292" height="18"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karabiner multi-touch extension preferences" id="582">
                             <font key="font" metaFont="system" size="14"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <tabView fixedFrame="YES" initialItem="591" translatesAutoresizingMaskIntoConstraints="NO" id="590">
-                        <rect key="frame" x="13" y="10" width="514" height="471"/>
+                    <tabView initialItem="591" translatesAutoresizingMaskIntoConstraints="NO" id="590">
+                        <rect key="frame" x="3" y="0.0" width="534" height="478"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Main" identifier="1" id="591">
-                                <view key="view" ambiguous="YES" id="594">
-                                    <rect key="frame" x="10" y="33" width="494" height="425"/>
+                                <view key="view" id="594">
+                                    <rect key="frame" x="10" y="33" width="514" height="432"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" fixedFrame="YES" title="Basic" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="580">
-                                            <rect key="frame" x="6" y="326" width="482" height="99"/>
+                                            <rect key="frame" x="6" y="333" width="482" height="99"/>
                                             <view key="contentView" id="hck-Mb-Jdu">
                                                 <rect key="frame" x="1" y="1" width="480" height="83"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +152,7 @@
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box autoresizesSubviews="NO" fixedFrame="YES" title="Behavior" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="539">
-                                            <rect key="frame" x="6" y="57" width="482" height="256"/>
+                                            <rect key="frame" x="6" y="64" width="482" height="256"/>
                                             <view key="contentView" id="tld-jM-dX7">
                                                 <rect key="frame" x="1" y="1" width="480" height="240"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -634,6 +638,16 @@ when you touch fingers to trackpad.
                         </tabViewItems>
                     </tabView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="576" firstAttribute="top" secondItem="372" secondAttribute="top" constant="5" id="1gf-jL-HP7"/>
+                    <constraint firstItem="590" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="10" id="7fX-Q3-y2P"/>
+                    <constraint firstItem="576" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="10" id="9gs-VZ-S5R"/>
+                    <constraint firstItem="590" firstAttribute="top" secondItem="576" secondAttribute="bottom" constant="10" id="Hxu-b6-VFo"/>
+                    <constraint firstItem="581" firstAttribute="leading" secondItem="576" secondAttribute="trailing" constant="10" id="K6R-Iz-wa0"/>
+                    <constraint firstAttribute="trailing" secondItem="590" secondAttribute="trailing" constant="10" id="jKY-Pm-twx"/>
+                    <constraint firstAttribute="bottom" secondItem="590" secondAttribute="bottom" constant="10" id="p00-7D-fvC"/>
+                    <constraint firstItem="581" firstAttribute="centerY" secondItem="576" secondAttribute="centerY" id="rh9-jT-TlT"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="533" id="583"/>
