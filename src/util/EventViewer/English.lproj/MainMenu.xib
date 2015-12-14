@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -42,7 +42,6 @@
                     <tabView initialItem="656" id="655" customClass="TabView">
                         <rect key="frame" x="13" y="10" width="848" height="535"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <animations/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Main" identifier="Main" id="656">
@@ -60,7 +59,6 @@
                                                     <button verticalHuggingPriority="750" id="539">
                                                         <rect key="frame" x="174" y="257" width="135" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="clear the result" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="540">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -72,7 +70,6 @@
                                                     <button verticalHuggingPriority="750" id="541">
                                                         <rect key="frame" x="12" y="257" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="542">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -91,7 +88,6 @@
                                                                 <tableView autoresizesSubviews="NO" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="565" id="564">
                                                                     <rect key="frame" x="0.0" y="0.0" width="761" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <animations/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
@@ -163,37 +159,29 @@
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <animations/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </clipView>
-                                                        <animations/>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="563">
                                                             <rect key="frame" x="-100" y="-100" width="785" height="15"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="562">
                                                             <rect key="frame" x="762" y="17" width="15" height="224"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                         <tableHeaderView key="headerView" autoresizesSubviews="NO" focusRingType="none" id="565">
                                                             <rect key="frame" x="0.0" y="0.0" width="761" height="17"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </tableHeaderView>
                                                     </scrollView>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <customView id="925" customClass="KeyResponder">
                                             <rect key="frame" x="659" y="14" width="160" height="160"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <connections>
                                                 <outlet property="eventQueue_" destination="571" id="HwU-Vx-j1v"/>
                                             </connections>
@@ -208,7 +196,6 @@
                                                     <textField verticalHuggingPriority="750" id="593">
                                                         <rect key="frame" x="23" y="48" width="98" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Input Mode ID:" id="594">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -218,7 +205,6 @@
                                                     <textField verticalHuggingPriority="750" id="HKW-al-9Bg">
                                                         <rect key="frame" x="16" y="14" width="117" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Karabiner internal:" id="UaU-yK-VfH">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -228,7 +214,6 @@
                                                     <textField verticalHuggingPriority="750" id="606">
                                                         <rect key="frame" x="123" y="48" width="508" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_inputmodeid" id="607">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -238,7 +223,6 @@
                                                     <textField verticalHuggingPriority="750" id="644">
                                                         <rect key="frame" x="15" y="73" width="106" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Input Source ID:" id="647">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -248,7 +232,6 @@
                                                     <textField verticalHuggingPriority="750" id="812">
                                                         <rect key="frame" x="15" y="98" width="106" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="Language Code:" id="813">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -258,7 +241,6 @@
                                                     <textField verticalHuggingPriority="750" id="645">
                                                         <rect key="frame" x="123" y="73" width="508" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_inputsourceid" id="646">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -268,7 +250,6 @@
                                                     <textField verticalHuggingPriority="750" id="814">
                                                         <rect key="frame" x="123" y="98" width="508" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_languagecode" id="815">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -278,7 +259,6 @@
                                                     <button verticalHuggingPriority="750" id="626">
                                                         <rect key="frame" x="12" y="115" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="627">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -290,7 +270,6 @@
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="adL-9z-q40">
                                                         <rect key="frame" x="9" y="40" width="623" height="5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <font key="titleFont" metaFont="system"/>
@@ -298,7 +277,6 @@
                                                     <textField verticalHuggingPriority="750" id="U36-7A-elZ">
                                                         <rect key="frame" x="141" y="14" width="508" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="label_karabiner_internal_input_sources" id="Jl1-LF-34A">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -306,14 +284,11 @@
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
-                                    <animations/>
                                 </view>
                                 <connections>
                                     <outlet property="initialFirstResponder" destination="925" id="930"/>
@@ -341,7 +316,6 @@
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="886" id="884">
                                                                     <rect key="frame" x="0.0" y="0.0" width="761" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <animations/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
@@ -405,30 +379,24 @@
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <animations/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </clipView>
-                                                        <animations/>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="885">
                                                             <rect key="frame" x="-100" y="-100" width="761" height="15"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="887">
                                                             <rect key="frame" x="762" y="17" width="15" height="332"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                         <tableHeaderView key="headerView" id="886">
                                                             <rect key="frame" x="0.0" y="0.0" width="761" height="17"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </tableHeaderView>
                                                     </scrollView>
                                                     <button verticalHuggingPriority="750" id="882">
                                                         <rect key="frame" x="12" y="276" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="898">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -440,7 +408,6 @@
                                                     <button verticalHuggingPriority="750" id="905">
                                                         <rect key="frame" x="174" y="276" width="135" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="clear the result" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="906">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -450,9 +417,7 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -466,13 +431,11 @@
                                                     <imageView id="d8G-TF-VNV">
                                                         <rect key="frame" x="18" y="16" width="32" height="32"/>
                                                         <autoresizingMask key="autoresizingMask"/>
-                                                        <animations/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="bZa-Vw-TNh"/>
                                                     </imageView>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EYh-8r-92q">
                                                         <rect key="frame" x="56" y="14" width="742" height="34"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="ska-M2-30n">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Window Name and UIElement Role require accessibility features.
@@ -482,9 +445,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -498,7 +459,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <textField verticalHuggingPriority="750" id="zOb-Ri-BOu">
                                                         <rect key="frame" x="16" y="37" width="120" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" alignment="right" title="current appnames:" id="YcO-QQ-qiE">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -508,7 +468,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <textField verticalHuggingPriority="750" id="Dpe-zu-HyR">
                                                         <rect key="frame" x="16" y="21" width="144" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" alignment="right" title="current windownames:" id="Tgf-1T-zzo">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -518,7 +477,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <textField verticalHuggingPriority="750" id="0T6-um-tJ5" userLabel="label_appnames">
                                                         <rect key="frame" x="179" y="37" width="619" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="appnames" id="akU-hQ-5fu">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -528,7 +486,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <textField verticalHuggingPriority="750" id="Y8b-q7-zHt" userLabel="label_windownames">
                                                         <rect key="frame" x="179" y="21" width="619" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" title="windownames" id="UjF-3b-sil">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -536,14 +493,11 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Devices" identifier="Devices" id="657">
@@ -568,7 +522,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="752" id="750">
                                                                     <rect key="frame" x="0.0" y="0.0" width="761" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <animations/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
@@ -658,30 +611,24 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <animations/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </clipView>
-                                                        <animations/>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="751">
                                                             <rect key="frame" x="-100" y="-100" width="761" height="15"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="753">
                                                             <rect key="frame" x="762" y="17" width="15" height="336"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                         <tableHeaderView key="headerView" id="752">
                                                             <rect key="frame" x="0.0" y="0.0" width="761" height="17"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </tableHeaderView>
                                                     </scrollView>
                                                     <button verticalHuggingPriority="750" id="784">
                                                         <rect key="frame" x="174" y="369" width="101" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="refresh" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" alternateImage="NSRefreshTemplate" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="785">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -693,7 +640,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <button verticalHuggingPriority="750" id="765">
                                                         <rect key="frame" x="12" y="369" width="162" height="32"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="782">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -703,14 +649,11 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Preferences" identifier="" id="xC1-NR-t4e">
@@ -728,7 +671,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <button id="qpH-oY-yl0">
                                                         <rect key="frame" x="16" y="77" width="430" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Force EventViewer to stay on top of other windows. (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WCA-8e-MOA">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -741,7 +683,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <button id="hsb-w2-bkZ">
                                                         <rect key="frame" x="16" y="34" width="305" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show EventViewer in all spaces. (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Be8-wB-67e">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -752,9 +693,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -768,7 +707,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <button id="cCs-zq-ovo">
                                                         <rect key="frame" x="18" y="21" width="239" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Hide ignorable events. (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xfY-PO-icV">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -778,14 +716,11 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
@@ -794,7 +729,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                         </connections>
                     </tabView>
                 </subviews>
-                <animations/>
             </view>
             <connections>
                 <outlet property="initialFirstResponder" destination="925" id="929"/>
@@ -842,15 +776,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
             </connections>
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="W9q-2J-Sz1"/>
-        <button id="TaI-Bk-Vr2">
-            <rect key="frame" x="0.0" y="0.0" width="61" height="18"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <animations/>
-            <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cbl-sN-y2X">
-                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                <font key="font" metaFont="system"/>
-            </buttonCell>
-        </button>
         <customObject id="rei-LJ-AZr" customClass="PreferencesManager"/>
     </objects>
     <resources>
