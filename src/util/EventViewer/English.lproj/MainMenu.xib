@@ -31,16 +31,17 @@
             </items>
         </menu>
         <window title="EventViewer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="371">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="122" width="874" height="551"/>
+            <rect key="contentRect" x="335" y="122" width="874" height="550"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <value key="minSize" type="size" width="874" height="550"/>
             <view key="contentView" wantsLayer="YES" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="874" height="551"/>
+                <rect key="frame" x="0.0" y="0.0" width="874" height="550"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView initialItem="656" translatesAutoresizingMaskIntoConstraints="NO" id="655" customClass="TabView">
-                        <rect key="frame" x="10" y="7" width="854" height="540"/>
+                        <rect key="frame" x="10" y="7" width="854" height="539"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Main" identifier="Main" id="656">
@@ -473,23 +474,43 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                             </tabViewItem>
                             <tabViewItem label="Devices" identifier="Devices" id="657">
                                 <view key="view" id="658">
-                                    <rect key="frame" x="10" y="33" width="828" height="489"/>
+                                    <rect key="frame" x="10" y="33" width="834" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Device information" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="764">
-                                            <rect key="frame" x="6" y="66" width="816" height="423"/>
+                                        <box title="Device information" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="764">
+                                            <rect key="frame" x="14" y="13" width="806" height="470"/>
                                             <view key="contentView" id="LNK-eL-ry6">
-                                                <rect key="frame" x="1" y="1" width="814" height="407"/>
+                                                <rect key="frame" x="1" y="1" width="804" height="454"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <scrollView focusRingType="none" fixedFrame="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="749">
-                                                        <rect key="frame" x="18" y="14" width="778" height="354"/>
-                                                        <clipView key="contentView" ambiguous="YES" id="sNt-DB-b00">
-                                                            <rect key="frame" x="1" y="17" width="761" height="336"/>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="765">
+                                                        <rect key="frame" x="11" y="416" width="158" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="782">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="copy:" target="787" id="791"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="784">
+                                                        <rect key="frame" x="167" y="416" width="101" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="refresh" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" alternateImage="NSRefreshTemplate" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="785">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="refresh:" target="787" id="792"/>
+                                                        </connections>
+                                                    </button>
+                                                    <scrollView focusRingType="none" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="749">
+                                                        <rect key="frame" x="17" y="10" width="770" height="403"/>
+                                                        <clipView key="contentView" id="sNt-DB-b00">
+                                                            <rect key="frame" x="1" y="0.0" width="753" height="402"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="752" id="750">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="761" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="753" height="379"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -561,7 +582,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                         </tableColumn>
-                                                                        <tableColumn identifier="locationID" editable="NO" width="80" minWidth="10" maxWidth="3.4028234663852886e+38" id="762">
+                                                                        <tableColumn identifier="locationID" editable="NO" width="72" minWidth="10" maxWidth="3.4028234663852886e+38" id="762">
                                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" alignment="left" title="Location ID">
                                                                                 <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -587,40 +608,36 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="753">
-                                                            <rect key="frame" x="762" y="17" width="15" height="336"/>
+                                                            <rect key="frame" x="754" y="23" width="15" height="379"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                         <tableHeaderView key="headerView" id="752">
-                                                            <rect key="frame" x="0.0" y="0.0" width="761" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="753" height="23"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableHeaderView>
                                                     </scrollView>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="784">
-                                                        <rect key="frame" x="174" y="369" width="101" height="32"/>
-                                                        <buttonCell key="cell" type="push" title="refresh" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" alternateImage="NSRefreshTemplate" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="785">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="refresh:" target="787" id="792"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="765">
-                                                        <rect key="frame" x="12" y="369" width="162" height="32"/>
-                                                        <buttonCell key="cell" type="push" title="copy to pasteboard" bezelStyle="rounded" alignment="center" refusesFirstResponder="YES" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="782">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="copy:" target="787" id="791"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="765" firstAttribute="leading" secondItem="LNK-eL-ry6" secondAttribute="leading" constant="17" id="3kx-aj-VIr"/>
+                                                    <constraint firstItem="749" firstAttribute="top" secondItem="765" secondAttribute="bottom" constant="10" id="L1V-fI-7zC"/>
+                                                    <constraint firstItem="784" firstAttribute="centerY" secondItem="765" secondAttribute="centerY" id="VYc-d9-OmS"/>
+                                                    <constraint firstItem="784" firstAttribute="leading" secondItem="765" secondAttribute="trailing" constant="10" id="W3E-Hq-sBv"/>
+                                                    <constraint firstItem="749" firstAttribute="leading" secondItem="765" secondAttribute="leading" id="ZyD-BV-ujG"/>
+                                                    <constraint firstItem="765" firstAttribute="top" secondItem="LNK-eL-ry6" secondAttribute="top" constant="10" id="aig-0u-aNd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="749" secondAttribute="bottom" constant="10" id="uao-n5-jQ4"/>
+                                                    <constraint firstAttribute="trailing" secondItem="749" secondAttribute="trailing" constant="17" id="zvk-bh-PIh"/>
+                                                </constraints>
                                             </view>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="764" secondAttribute="bottom" constant="17" id="IXu-eh-Dm1"/>
+                                        <constraint firstItem="764" firstAttribute="leading" secondItem="658" secondAttribute="leading" constant="17" id="LOq-LY-QVd"/>
+                                        <constraint firstItem="764" firstAttribute="top" secondItem="658" secondAttribute="top" constant="10" id="Rpk-fF-Ds9"/>
+                                        <constraint firstAttribute="trailing" secondItem="764" secondAttribute="trailing" constant="17" id="sIn-Nw-XZ3"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Preferences" identifier="" id="xC1-NR-t4e">
