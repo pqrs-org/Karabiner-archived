@@ -36,8 +36,7 @@
         <autogen>__KeyToKey__ FROMKEYCODE_FORWARD_DELETE, KeyCode::DELETE, ModifierFlag::COMMAND_L</autogen>
       </item>
       <item>
-        <name>Return Key Opens a file</name>
-        <appendix>(use F2 to rename)</appendix>
+        <name>Use Return as Open</name>
         <only>FINDER</only>
         <uielementrole_not>{{ UIELEMENTROLES_EDITING_IN_FINDER }}</uielementrole_not>
         <identifier>remap.KPReturn_to_Ctrl_O</identifier>
