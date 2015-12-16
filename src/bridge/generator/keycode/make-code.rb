@@ -6,6 +6,19 @@ Dir.chdir("data")
 
 alldata = []
 
+def is_cpphpp_target(classname, name)
+  case classname
+  when 'KeyCode'
+    # skip KeyCode::0 - KeyCode::9 in order to avoid build error.
+    return false if /^\d+$/ =~ name
+
+    return true
+
+  else
+    return true
+  end
+end
+
 Dir.glob("*.data") do |filename|
   if /(.+)\.data/ =~ File.basename(filename) then
     classname = $1
@@ -28,7 +41,9 @@ Dir.glob("*.data") do |filename|
           end
           lastvalue = value
 
-          outfile[:hpp] << "static const #{classname} #{name};\n"
+          if is_cpphpp_target(classname, name) then
+            outfile[:hpp] << "static const #{classname} #{name};\n"
+          end
           alldata << {
             :name      => "#{classname}::#{name}",
             :value     => value,
@@ -63,7 +78,9 @@ end
 filepath = "../../../output/include.kext.keycode.cpp.tmp"
 open(filepath, 'w') do |f|
   alldata.each do |info|
-    f << "const #{info[:classname]} #{info[:name]}(#{info[:value]});\n"
+    if is_cpphpp_target(info[:classname], info[:nameonly]) then
+      f << "const #{info[:classname]} #{info[:name]}(#{info[:value]});\n"
+    end
   end
 end
 KarabinerBridge::Converter.update_file_if_needed(filepath)
