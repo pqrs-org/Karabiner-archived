@@ -123,6 +123,15 @@
         <appendix>Ctrl-n/p: Enter Complement mode:</appendix>
         <appendix>* In Complement mode, use Ctrl-n/p to choose a candidate.</appendix>
         <appendix>* Ctrl-h to skip, ESC/Ctrl-[ to choose a candidate.</appendix>
+        <appendix>With **Additional settings of Control + X at insert mode.**</appendix>
+        <appendix>* Ctrl-c: Change to normal mode.</appendix>
+        <appendix>* Ctrl-i: Tab.</appendix>
+        <appendix>* Ctrl-j: Return.</appendix>
+        <appendix>* Ctrl-m: Return.</appendix>
+        <appendix>* Ctrl-t: Insert Tab at the beggining of current line.</appendix>
+        <appendix>* Ctrl-u: Cut the text between the beggining of the line and the current position.</appendix>
+        <appendix>* Ctrl-w: Cut the word before the cursor.</appendix>
+        <appendix>* Note: Some Control-X shortcut keys emacs like movements are originally available in Mac (see https://support.apple.com/en-ap/HT201236).</appendix>
       </item>
     </item>
     <item>
