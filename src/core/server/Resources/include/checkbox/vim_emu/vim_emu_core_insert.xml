@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Additional settings of Control + X at insert mode</name>
+    <identifier>remap.vim_emu_ctl_x_at_insert{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block>
+      <block> <!-- Complement Mode -->
+        <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::C,
+          KeyCode::RETURN,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Search Mode -->
+        <config_only>notsave.vim_emu_search{{VIM_EMU_ALTCONFIG}}</config_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::C,
+          KeyCode::ESCAPE,
+          KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_search{{VIM_EMU_ALTCONFIG}},
+          {{VIM_EMU_EMU_ON}}
+          KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <block> <!-- Turn Off also IME if enabled -->
+        <inputsource_only>JAPANESE</inputsource_only>
+        <autogen>
+          __HoldingKeyToKey__ KeyCode::C,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE,
+          KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
+          {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+          KeyCode::VK_NONE,
+          KeyCode::ESCAPE, Option::NOREPEAT
+        </autogen>
+      </block>
+      <!-- Others -->
+      <config_not>notsave.vim_emu_normal{{VIM_EMU_ALTCONFIG}}</config_not>
+      <autogen>
+        __HoldingKeyToKey__ KeyCode::C,
+        {{VIM_EMU_FORCE_ON_NORMAL_MODE}},
+        KeyCode::VK_NONE,
+        KeyCode::ESCAPE, Option::NOREPEAT
+      </autogen>
+    </block>
+    <autogen>
+      __KeyToKey__ KeyCode::I,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::TAB
+    </autogen>
+    <autogen>
+      __KeyToKey__ KeyCode::J,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::RETURN
+    </autogen>
+    <autogen>
+      __KeyToKey__ KeyCode::M,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::RETURN
+    </autogen>
+    <autogen>
+      __KeyToKey__ KeyCode::T,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::CURSOR_LEFT, VK_COMMAND,
+      KeyCode::TAB
+    </autogen>
+    <autogen>
+      __KeyToKey__ KeyCode::U,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::CURSOR_LEFT, VK_COMMAND, VK_SHIFT,
+      KeyCode::X, VK_COMMAND
+    </autogen>
+    <autogen>
+      __KeyToKey__ KeyCode::W,
+      VK_CONTROL|ModifierFlag::NONE,
+      KeyCode::CURSOR_LEFT, VK_OPTION, VK_SHIFT,
+      KeyCode::X, VK_COMMAND
+    </autogen>
+  </item>
+</root>

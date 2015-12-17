@@ -26,6 +26,7 @@
   <include path="vim_emu_core_disable.xml"></include>
   <include path="vim_emu_core_lb.xml"></include>
   <include path="vim_emu_core_reset.xml"></include>
+  <include path="vim_emu_core_insert.xml"></include>
   <!--
   <include path="vim_emu_core_vb.xml"></include>
   <include path="vim_emu_core_rep.xml"></include>
