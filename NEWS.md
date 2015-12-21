@@ -1,4 +1,4 @@
-# Since 10.14.0
+# Version 10.15.0
 
 * New functions and improvements:
   * The safety limit of key repeat rate has been removed.<br />
