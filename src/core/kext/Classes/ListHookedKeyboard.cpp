@@ -335,6 +335,10 @@ bool ListHookedKeyboard::isExternalDevicesConnected(void) const {
     // * Mionix Naos 7000
     if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Razer, DeviceProduct::Razer_DeathAdder_Chroma) ||
         p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Mionix, DeviceProduct::Mionix_Naos_7000) ||
+#if 0
+        /* Debug code: HHKB Professional JP */
+        p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor(0x04fe), DeviceProduct(0x000d)) ||
+#endif
         false) {
       continue;
     }
