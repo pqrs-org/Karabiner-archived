@@ -1,3 +1,9 @@
+# Since 10.15.0
+
+  * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
+    * Mionix Naos 7000 has been supported.
+
+
 # Version 10.15.0
 
 * New functions and improvements:
