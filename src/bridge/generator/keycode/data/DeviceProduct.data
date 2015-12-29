@@ -11,6 +11,9 @@ LOGITECH_USB_HEADSET                    0x0a0b
 // Razer
 Razer_DeathAdder_Chroma                 0x0043
 
+// Mionix
+Mionix_Naos_7000                        0x130c
+
 //
 PSEUDO                                  0x0000
 ANY                                     0x0000

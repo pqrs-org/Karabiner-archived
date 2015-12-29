@@ -332,7 +332,10 @@ bool ListHookedKeyboard::isExternalDevicesConnected(void) const {
 
     // Ignore Mice which has keyboard interface:
     // * Razer DeathAdder Chroma
-    if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Razer, DeviceProduct::Razer_DeathAdder_Chroma)) {
+    // * Mionix Naos 7000
+    if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Razer, DeviceProduct::Razer_DeathAdder_Chroma) ||
+        p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Mionix, DeviceProduct::Mionix_Naos_7000) ||
+        false) {
       continue;
     }
 

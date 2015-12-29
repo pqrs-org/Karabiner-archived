@@ -151,4 +151,9 @@
     <vendorid>0x1532</vendorid>
   </devicevendordef>
 
+  <devicevendordef>
+    <vendorname>Mionix</vendorname>
+    <vendorid>0x22d4</vendorid>
+  </devicevendordef>
+
 </root>

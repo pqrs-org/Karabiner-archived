@@ -386,4 +386,9 @@
     <productid>0x0043</productid>
   </deviceproductdef>
 
+  <deviceproductdef>
+    <productname>Mionix_Naos_7000</productname>
+    <productid>0x130c</productid>
+  </deviceproductdef>
+
 </root>
