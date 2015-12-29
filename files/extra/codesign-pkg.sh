@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CODESIGN_IDENTITY="Developer ID Installer: Fumihiko Takayama (G43BCU2T37)"
+CODESIGN_IDENTITY='79E265756C43F62E157DB5C8FA405B54428653F9'
 
 # ------------------------------------------------------------
 PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
