@@ -78,6 +78,10 @@
           <identifier essential="true">general.treat_unifying_as_pointing_device</identifier>
         </item>
         <item>
+          <name>Treat Bluetooth USB Host Controller (Broadcom Corp.) as pointing device.</name>
+          <identifier essential="true">general.treat_bluetooth_usb_host_controller_broadcom_as_pointing_device</identifier>
+        </item>
+        <item>
           <name>Ignore devices that do not have valid Vendor ID and Product ID.</name>
           <appendix>(Vendor ID == 0x0000 and Product ID == 0x0000)</appendix>
           <identifier essential="true">general.ignore_invalid_devices_from_external_keyboard</identifier>

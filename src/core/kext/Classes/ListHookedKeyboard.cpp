@@ -324,6 +324,11 @@ bool ListHookedKeyboard::isExternalDevicesConnected(void) const {
         continue;
       }
     }
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_treat_bluetooth_usb_host_controller_broadcom_as_pointing_device)) {
+      if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor(0x05ac), DeviceProduct(0x8290))) {
+        continue;
+      }
+    }
     if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_ignore_invalid_devices_from_external_keyboard)) {
       if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor(0x0000), DeviceProduct(0x0000))) {
         continue;
