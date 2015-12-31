@@ -37,6 +37,7 @@
   <appdef>
     <appname>VIRTUALMACHINE</appname>
     <equal>com.vmware.fusion</equal>
+    <equal>com.vmware.horizon</equal>
     <equal>com.vmware.view</equal>
     <equal>com.parallels.desktop</equal>
     <equal>com.parallels.vm</equal>
