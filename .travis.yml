@@ -4,6 +4,4 @@ os:
 compiler:
 - clang
 before_install:
-#- brew update; brew upgrade
-- gem install cocoapods; pod setup
-- make
+- gem install cocoapods; pod setup; make
