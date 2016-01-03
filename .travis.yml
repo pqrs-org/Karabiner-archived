@@ -1,0 +1,9 @@
+language: cpp
+os:
+- osx
+compiler:
+- clang
+before_install:
+#- brew update; brew upgrade
+- gem install cocoapods; pod setup
+- make
