@@ -1,0 +1,7 @@
+language: cpp
+os:
+- osx
+compiler:
+- clang
+before_install:
+- gem install cocoapods; pod setup; make
