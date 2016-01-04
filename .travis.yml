@@ -4,4 +4,4 @@ os:
 compiler:
 - clang
 before_install:
-- gem install cocoapods; pod setup; make
+- gem install cocoapods; pod setup; make > /dev/null
