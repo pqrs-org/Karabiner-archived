@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tekezo/Karabiner.svg?branch=master)](https://travis-ci.org/tekezo/Karabiner)
+
 Karabiner
 =========
 
