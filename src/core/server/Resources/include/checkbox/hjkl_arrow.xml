@@ -63,6 +63,22 @@
       <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
       <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
     </item>
+
+    <item>
+      <name>Enable in Twitter.</name>
+      <identifier>remap.hjkl_arrow_twitter</identifier>
+      <only>Twitter</only>
+      <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+      <modifier_only>
+        ModifierFlag::NONE,
+        ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+        ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+      </modifier_only>
+      <autogen>__KeyToKey__ KeyCode::H, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ KeyCode::J, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ KeyCode::K, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ KeyCode::L, KeyCode::CURSOR_RIGHT</autogen>
+    </item>
   </item>
 
 </root>
