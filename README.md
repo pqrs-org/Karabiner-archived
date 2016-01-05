@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/tekezo/Karabiner.svg?branch=master)](https://travis-ci.org/tekezo/Karabiner)
+[![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://github.com/tekezo/Karabiner/blob/master/LICENSE.md)
 
 Karabiner
 =========
