@@ -4,6 +4,7 @@
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Mionix Naos 7000 has been supported.
     * Logitech Bluetooth Mouse M555b
+  * Prepared settings have been updated.
 
 
 # Version 10.15.0
