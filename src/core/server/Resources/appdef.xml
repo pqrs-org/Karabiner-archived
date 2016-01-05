@@ -608,6 +608,11 @@
     <equal>com.barebones.textwrangler</equal>
   </appdef>
 
+  <appdef>
+    <appname>Twitter</appname>
+    <equal>com.twitter.twitter-mac</equal>
+  </appdef>
+
   <!-- fallback -->
   <appdef>
     <appname>JetBrainsApps</appname>
