@@ -1,8 +1,6 @@
 language: cpp
-os:
-- osx
-compiler:
-- clang
-before_install:
-- gem install cocoapods > /dev/null; pod setup > /dev/null; make > /dev/null; make -C Tests
+os: osx
+compiler: clang
+before_install: gem install cocoapods > /dev/null && pod setup > /dev/null
 install: true
+script: make > /dev/null && make -C Tests
