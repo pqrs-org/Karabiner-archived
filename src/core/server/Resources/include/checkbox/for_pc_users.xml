@@ -395,7 +395,12 @@
         <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
       </block>
       <block>
-        <inputsource_not>AZERTY</inputsource_not>
+        <inputsource_only>DVORAK</inputsource_only>
+        <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+        <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::D, ModifierFlag::CONTROL_L</autogen>
+      </block>
+      <block>
+        <inputsource_not>AZERTY, DVORAK</inputsource_not>
         <autogen>__KeyToKey__ FROMKEYCODE_HOME,             KeyCode::A, ModifierFlag::CONTROL_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_END,              KeyCode::E, ModifierFlag::CONTROL_L</autogen>
       </block>
@@ -420,7 +425,12 @@
           <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
         </block>
         <block>
-          <inputsource_not>AZERTY</inputsource_not>
+          <inputsource_only>DVORAK</inputsource_only>
+          <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
+          <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::D, ModifierFlag::CONTROL_L</autogen>
+        </block>
+        <block>
+          <inputsource_not>AZERTY, DVORAK</inputsource_not>
           <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::A, ModifierFlag::CONTROL_L</autogen>
           <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::E, ModifierFlag::CONTROL_L</autogen>
         </block>
