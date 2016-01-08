@@ -305,16 +305,33 @@
         ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
         ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
       </modifier_not>
-      <autogen>
-        __KeyToKey__
-        KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
-        KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
-        KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
-      </autogen>
+
+      <block>
+        <inputsource_only>DVORAK</inputsource_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Y, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
+        </autogen>
+      </block>
+      <block>
+        <inputsource_not>DVORAK</inputsource_not>
+        <autogen>
+          __KeyToKey__
+          KeyCode::B, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_L,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+          KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_L,
+        </autogen>
+      </block>
     </item>
     <item>
       <name>Option+D to Option+Forward Delete</name>
