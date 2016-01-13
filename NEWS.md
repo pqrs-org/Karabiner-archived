@@ -1,6 +1,7 @@
 # Since 10.15.0
 
 * New functions and improvements:
+  * "Show icon in Dock" setting has been added.
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Mionix Naos 7000 has been supported.
     * Logitech Bluetooth Mouse M555b
