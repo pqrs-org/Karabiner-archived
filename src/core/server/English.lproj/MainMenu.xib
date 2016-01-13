@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -111,7 +111,6 @@
                 <subviews>
                     <tabView initialItem="633" translatesAutoresizingMaskIntoConstraints="NO" id="630">
                         <rect key="frame" x="13" y="10" width="774" height="604"/>
-                        <animations/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Change Key" identifier="1" id="633">
@@ -125,7 +124,6 @@
                                                 <constraint firstAttribute="height" constant="22" id="MfY-fr-zRX"/>
                                                 <constraint firstAttribute="width" constant="250" id="hcH-RM-ECp"/>
                                             </constraints>
-                                            <animations/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" bezelStyle="round" id="667">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -137,7 +135,6 @@
                                         </searchField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="663">
                                             <rect key="frame" x="273" y="532" width="192" height="18"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="show enabled only (0 items)" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="675">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -148,7 +145,6 @@
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="665">
                                             <rect key="frame" x="613" y="524" width="130" height="32"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="push" title="Reload XML" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="668">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -166,7 +162,6 @@
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="673" id="672">
                                                         <rect key="frame" x="0.0" y="0.0" width="718" height="19"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <animations/>
                                                         <size key="intercellSpacing" width="2" height="3"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -191,24 +186,19 @@
                                                         </connections>
                                                     </outlineView>
                                                 </subviews>
-                                                <animations/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
-                                            <animations/>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="670">
                                                 <rect key="frame" x="-100" y="-100" width="543" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <animations/>
                                             </scroller>
                                             <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="671">
                                                 <rect key="frame" x="704" y="1" width="15" height="455"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <animations/>
                                             </scroller>
                                         </scrollView>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1371">
                                             <rect key="frame" x="17" y="39" width="114" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1372">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -219,7 +209,6 @@
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1374">
                                             <rect key="frame" x="139" y="39" width="120" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1375">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -230,7 +219,6 @@
                                         </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
                                             <rect key="frame" x="17" y="32" width="499" height="5"/>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -240,7 +228,6 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="XC3-2j-7JT"/>
                                             </constraints>
-                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Close this window" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ftj-ib-Ila">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -254,7 +241,6 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="PFD-1h-e6S"/>
                                             </constraints>
-                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Quit Karabiner completely" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DgO-pY-cfu">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -265,7 +251,6 @@
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cA4-9j-dKU">
                                             <rect key="frame" x="531" y="30" width="208" height="14"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Do you want to add your own settings?" id="zTw-95-O8N">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -274,7 +259,6 @@
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gpt-OH-jDS">
                                             <rect key="frame" x="534" y="7" width="203" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Open the documentation web site" bezelStyle="smallSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" state="on" borderStyle="border" inset="2" id="T1a-er-beZ">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -285,7 +269,6 @@
                                         </button>
                                         <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="9Yg-sZ-0oJ">
                                             <rect key="frame" x="522" y="8" width="5" height="50"/>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -321,7 +304,6 @@
                                         <constraint firstItem="nbh-hC-aUy" firstAttribute="top" secondItem="yzW-7Y-jBA" secondAttribute="bottom" constant="8" id="rXC-jt-6gG"/>
                                         <constraint firstItem="1374" firstAttribute="leading" secondItem="1371" secondAttribute="trailing" constant="8" id="ugv-Sv-JRI"/>
                                     </constraints>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Parameters" identifier="" id="kTU-wu-5r1">
@@ -338,7 +320,6 @@
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" headerView="681" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="683" id="678">
                                                         <rect key="frame" x="0.0" y="0.0" width="571" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <animations/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -410,29 +391,23 @@
                                                         </connections>
                                                     </outlineView>
                                                 </subviews>
-                                                <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </clipView>
-                                            <animations/>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="680">
                                                 <rect key="frame" x="-100" y="-100" width="543" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <animations/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="679">
                                                 <rect key="frame" x="704" y="23" width="15" height="479"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <animations/>
                                             </scroller>
                                             <tableHeaderView key="headerView" id="681">
                                                 <rect key="frame" x="0.0" y="0.0" width="703" height="23"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <animations/>
                                             </tableHeaderView>
                                         </scrollView>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aHD-Jz-eLA">
                                             <rect key="frame" x="17" y="9" width="114" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Expand all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PSe-mc-SWg">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -443,7 +418,6 @@
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oab-4R-uNc">
                                             <rect key="frame" x="141" y="9" width="120" height="20"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="smallSquare" title="Collapse all items" bezelStyle="smallSquare" image="NSPathTemplate" imagePosition="left" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jms-ut-J0m">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
@@ -463,7 +437,6 @@
                                         <constraint firstAttribute="trailing" secondItem="677" secondAttribute="trailing" constant="17" id="mP5-ca-nIS"/>
                                         <constraint firstItem="677" firstAttribute="top" secondItem="Bpk-8v-BJe" secondAttribute="top" constant="17" id="u1f-86-fsX"/>
                                     </constraints>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Key Repeat" identifier="Item 2" id="632">
@@ -479,7 +452,6 @@
                                                 <subviews>
                                                     <tabView drawsBackground="NO" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="FoC-hs-Aq9">
                                                         <rect key="frame" x="17" y="10" width="690" height="218"/>
-                                                        <animations/>
                                                         <font key="font" metaFont="system"/>
                                                         <tabViewItems>
                                                             <tabViewItem label="Default" identifier="1" id="lMn-JF-tti">
@@ -489,7 +461,6 @@
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K5f-X5-e7O">
                                                                             <rect key="frame" x="-2" y="201" width="461" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please adjust the key repeat values from &quot;System Preferences &gt; Keyboard&quot;." id="cU3-mB-bdS">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -498,7 +469,6 @@
                                                                         </textField>
                                                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yda-5Q-nA9">
                                                                             <rect key="frame" x="-6" y="163" width="271" height="32"/>
-                                                                            <animations/>
                                                                             <buttonCell key="cell" type="push" title="Open System Preferences &gt; Keyboard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EPJ-D0-2Xg">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -509,7 +479,6 @@
                                                                         </button>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vG4-HH-AZa">
                                                                             <rect key="frame" x="-2" y="138" width="268" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="The current &quot;Delay Until Repeat&quot; of system:" id="QHR-Mw-dqB">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -518,7 +487,6 @@
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UdG-LD-xC9">
                                                                             <rect key="frame" x="267" y="138" width="53" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1000ms" id="Rnl-Ou-uHT">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -527,7 +495,6 @@
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZRE-m5-N9R">
                                                                             <rect key="frame" x="41" y="111" width="225" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="The current &quot;Key Repeat&quot; of system:" id="aZV-LM-rcp">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -536,7 +503,6 @@
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gyI-dt-Yze">
                                                                             <rect key="frame" x="267" y="111" width="45" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="100ms" id="aJf-x4-UNN">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -545,7 +511,6 @@
                                                                         </textField>
                                                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ufm-0y-9mw">
                                                                             <rect key="frame" x="0.0" y="78" width="690" height="5"/>
-                                                                            <animations/>
                                                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <font key="titleFont" metaFont="system"/>
@@ -555,12 +520,10 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="32" id="rnX-HX-6jn"/>
                                                                             </constraints>
-                                                                            <animations/>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="Twf-oX-yk0"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4NL-Am-TVJ">
                                                                             <rect key="frame" x="40" y="19" width="506" height="51"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="g55-Vv-bm5">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <string key="title">Note for OS X 10.9 Users:
@@ -592,7 +555,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                         <constraint firstItem="ufm-0y-9mw" firstAttribute="leading" secondItem="ZVH-xV-KjQ" secondAttribute="leading" id="zFC-cG-z3t"/>
                                                                         <constraint firstItem="vG4-HH-AZa" firstAttribute="leading" secondItem="K5f-X5-e7O" secondAttribute="leading" id="zZe-Y6-IqW"/>
                                                                     </constraints>
-                                                                    <animations/>
                                                                 </view>
                                                             </tabViewItem>
                                                             <tabViewItem label="Overwrite" identifier="2" id="4d3-g2-gch">
@@ -602,7 +564,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IfG-cq-Oel">
                                                                             <rect key="frame" x="-2" y="242" width="114" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Delay until repeat:" id="szL-tx-dNN">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -614,7 +575,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="80" id="j9Q-xS-ceG"/>
                                                                             </constraints>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="lzb-Q1-JwL">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="l0H-DR-gnA">
                                                                                     <real key="minimum" value="0.0"/>
@@ -630,7 +590,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                         </textField>
                                                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EYw-oz-bOf">
                                                                             <rect key="frame" x="202" y="237" width="19" height="27"/>
-                                                                            <animations/>
                                                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="100" maxValue="999999" id="xwa-ff-Gv7"/>
                                                                             <connections>
                                                                                 <action selector="changeDelayUntilRepeat:" target="1181" id="Kma-UI-D6l"/>
@@ -638,7 +597,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                         </stepper>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-cp-jez">
                                                                             <rect key="frame" x="39" y="215" width="73" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Key repeat:" id="kgp-CP-Oi4">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -650,7 +608,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="80" id="kqU-nU-gH9"/>
                                                                             </constraints>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="73N-9b-z3e">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Eiz-GV-wlZ">
                                                                                     <real key="minimum" value="0.0"/>
@@ -666,7 +623,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                         </textField>
                                                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yow-Uc-UYf">
                                                                             <rect key="frame" x="202" y="210" width="19" height="27"/>
-                                                                            <animations/>
                                                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="10" maxValue="999999" id="c9w-T2-NNw"/>
                                                                             <connections>
                                                                                 <action selector="changeKeyRepeat:" target="1181" id="ZYP-pI-OVE"/>
@@ -674,7 +630,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                         </stepper>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D3U-w3-x1r">
                                                                             <rect key="frame" x="221" y="216" width="79" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="milliseconds" id="1Dv-mz-Lix">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -683,7 +638,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V5B-Os-C8O">
                                                                             <rect key="frame" x="221" y="243" width="79" height="17"/>
-                                                                            <animations/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="milliseconds" id="YLk-L8-HEF">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -709,7 +663,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                         <constraint firstItem="1eU-LB-0AH" firstAttribute="leading" secondItem="IfG-cq-Oel" secondAttribute="trailing" constant="10" id="oxq-EE-2JN"/>
                                                                         <constraint firstItem="EYw-oz-bOf" firstAttribute="leading" secondItem="1eU-LB-0AH" secondAttribute="trailing" constant="5" id="vfz-7V-e3p"/>
                                                                     </constraints>
-                                                                    <animations/>
                                                                 </view>
                                                             </tabViewItem>
                                                         </tabViewItems>
@@ -721,12 +674,10 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="FoC-hs-Aq9" firstAttribute="top" secondItem="h8T-cg-KIQ" secondAttribute="top" constant="10" id="Ccj-hC-MsA"/>
                                                     <constraint firstAttribute="bottom" secondItem="FoC-hs-Aq9" secondAttribute="bottom" constant="10" id="VNH-zN-Bpv"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="250" id="vAu-b9-pUd"/>
                                             </constraints>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -738,7 +689,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="pVL-Uu-jsq">
                                                         <rect key="frame" x="15" y="8" width="359" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Overwrite the key repeat values of system (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cum-b2-gcl">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -754,9 +704,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="pVL-Uu-jsq" firstAttribute="leading" secondItem="a8N-oT-Gk2" secondAttribute="leading" constant="17" id="S8e-vm-ggG"/>
                                                     <constraint firstAttribute="bottom" secondItem="pVL-Uu-jsq" secondAttribute="bottom" constant="10" id="oRN-5d-Qcj"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -769,7 +717,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                         <constraint firstItem="WOY-oU-tB8" firstAttribute="top" secondItem="676" secondAttribute="top" constant="17" id="XYY-Ps-myn"/>
                                         <constraint firstItem="8KE-NW-duE" firstAttribute="top" secondItem="WOY-oU-tB8" secondAttribute="bottom" constant="20" id="YuI-4d-CZ4"/>
                                     </constraints>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Status Message" identifier="StatusMessage" id="1221">
@@ -785,7 +732,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="1223" userLabel="Show status message">
                                                         <rect key="frame" x="15" y="80" width="236" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show status message (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1224">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -797,7 +743,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="wdT-lG-Jfw" userLabel="Show status message">
                                                         <rect key="frame" x="25" y="56" width="234" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show caps lock state (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Rle-nl-rpW">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -809,7 +754,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="1315" userLabel="Show status message">
                                                         <rect key="frame" x="25" y="32" width="272" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show sticky modifiers state (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1316">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -821,7 +765,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="1325" userLabel="Show status message">
                                                         <rect key="frame" x="25" y="8" width="295" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show pointing button lock state (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="1326">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -843,9 +786,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="1325" firstAttribute="leading" secondItem="kGM-SP-nxb" secondAttribute="leading" constant="27" id="vOu-o2-2KO"/>
                                                     <constraint firstItem="wdT-lG-Jfw" firstAttribute="top" secondItem="1223" secondAttribute="bottom" constant="10" id="vRo-do-bgH"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -857,7 +798,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1401">
                                                         <rect key="frame" x="40" y="116" width="38" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Type:" id="1402">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -866,7 +806,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1233">
                                                         <rect key="frame" x="37" y="89" width="41" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Color:" id="1234">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -878,7 +817,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="zdz-mo-WNE"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="1228">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -906,7 +844,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </popUpButton>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1247">
                                                         <rect key="frame" x="23" y="62" width="55" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Opacity:" id="1248">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -918,7 +855,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="60M-Hp-Mwt"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="20" maxValue="100" doubleValue="20" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1250"/>
                                                         <connections>
                                                             <action selector="refresh:" target="606" id="1295"/>
@@ -927,7 +863,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </slider>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1279">
                                                         <rect key="frame" x="84" y="40" width="32" height="14"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Clear" id="1280">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -936,7 +871,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1299">
                                                         <rect key="frame" x="286" y="40" width="42" height="14"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default" id="1300">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -945,7 +879,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1281">
                                                         <rect key="frame" x="342" y="40" width="46" height="14"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Colored" id="1282">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -954,7 +887,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1301">
                                                         <rect key="frame" x="15" y="13" width="63" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Font size:" id="1302">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -966,7 +898,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="v9v-C9-dFr"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" title="Huge" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1309" id="1304">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -989,7 +920,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="uwA-Nn-7Bz"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" title="Edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1410" id="1404">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -1037,12 +967,10 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="1233" firstAttribute="trailing" secondItem="1401" secondAttribute="trailing" id="xOq-wa-ZoZ"/>
                                                     <constraint firstItem="1233" firstAttribute="top" secondItem="1401" secondAttribute="bottom" constant="10" id="ypg-N0-CJl"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="1301" secondAttribute="bottom" constant="10" id="i23-Uh-vxd"/>
                                             </constraints>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -1054,7 +982,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1241">
                                                         <rect key="frame" x="15" y="10" width="57" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Position:" id="1242">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1066,7 +993,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="y5J-oX-lxM"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <popUpButtonCell key="cell" type="push" title="Bottom right (Default)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1246" id="1236">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
@@ -1092,9 +1018,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="1241" firstAttribute="top" secondItem="jI1-A7-I3N" secondAttribute="top" constant="10" id="qap-i5-V3t"/>
                                                     <constraint firstAttribute="bottom" secondItem="1241" secondAttribute="bottom" constant="10" id="rmH-Lv-WxA"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -1110,7 +1034,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                         <constraint firstItem="1323" firstAttribute="leading" secondItem="1222" secondAttribute="leading" constant="17" id="vbg-Ye-pKR"/>
                                         <constraint firstAttribute="trailing" secondItem="1330" secondAttribute="trailing" constant="17" id="xD2-C2-gQC"/>
                                     </constraints>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="MenuBar" identifier="Item 3" id="631">
@@ -1126,7 +1049,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
                                                         <rect key="frame" x="25" y="8" width="296" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show setting name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1138,7 +1060,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
                                                         <rect key="frame" x="15" y="32" width="241" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1156,9 +1077,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="696" firstAttribute="top" secondItem="qQS-xb-LW2" secondAttribute="top" constant="10" id="aYt-t9-ETf"/>
                                                     <constraint firstAttribute="bottom" secondItem="694" secondAttribute="bottom" constant="10" id="bGl-oO-mnf"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -1170,7 +1089,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1389">
                                                         <rect key="frame" x="15" y="327" width="694" height="85"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1390">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">You can make multiple profiles.
@@ -1191,7 +1109,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="703">
                                                                     <rect key="frame" x="0.0" y="0.0" width="688" height="19"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <animations/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
@@ -1217,19 +1134,15 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <animations/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </clipView>
-                                                        <animations/>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="702">
                                                             <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="701">
                                                             <rect key="frame" x="674" y="1" width="15" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <animations/>
                                                         </scroller>
                                                     </scrollView>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="699">
@@ -1238,7 +1151,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                             <constraint firstAttribute="width" constant="24" id="506-AJ-jrc"/>
                                                             <constraint firstAttribute="height" constant="24" id="Aoj-Fg-PzU"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="706">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1249,7 +1161,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="698">
                                                         <rect key="frame" x="41" y="10" width="24" height="24"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="707">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1260,7 +1171,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZYB-aW-UwD">
                                                         <rect key="frame" x="89" y="5" width="110" height="32"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Sort by name" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NUF-0z-CqG">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
@@ -1271,7 +1181,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JBN-HF-WTq">
                                                         <rect key="frame" x="197" y="5" width="122" height="32"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Sort by created" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WWs-oh-umf">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
@@ -1300,9 +1209,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     <constraint firstItem="700" firstAttribute="top" secondItem="1389" secondAttribute="bottom" constant="10" id="tht-di-J82"/>
                                                     <constraint firstItem="1389" firstAttribute="top" secondItem="gKU-xd-mya" secondAttribute="top" constant="10" id="vXJ-VW-GK9"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -1316,7 +1223,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                         <constraint firstAttribute="bottom" secondItem="695" secondAttribute="bottom" constant="17" id="tWa-zY-qlJ"/>
                                         <constraint firstAttribute="trailing" secondItem="1381" secondAttribute="trailing" constant="17" id="yLf-D0-ZQQ"/>
                                     </constraints>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="AXNotifier" identifier="" id="fN6-dc-HpZ">
@@ -1332,7 +1238,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tt2-Lg-Afr">
                                                         <rect key="frame" x="11" y="1" width="150" height="32"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="push" title="Restart AXNotifier" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Jbg-Cb-4xH">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1343,7 +1248,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqD-On-FVF">
                                                         <rect key="frame" x="163" y="10" width="526" height="17"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Please restart AXNotifier when your application specific settings do not work properly." id="uZc-3Z-yUz">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1358,9 +1262,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     <constraint firstItem="Tt2-Lg-Afr" firstAttribute="top" secondItem="4Z2-Km-8ki" secondAttribute="top" constant="10" id="YXv-Um-q05"/>
                                                     <constraint firstItem="oqD-On-FVF" firstAttribute="leading" secondItem="Tt2-Lg-Afr" secondAttribute="trailing" constant="10" id="dxE-bJ-5JQ"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -1372,7 +1274,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="27K-KA-6hE">
                                                         <rect key="frame" x="15" y="281" width="210" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WZS-lb-Ap5">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1384,7 +1285,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="TIe-Bi-YgY">
                                                         <rect key="frame" x="25" y="257" width="444" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Java apps. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="cu0-ah-J1P">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1396,7 +1296,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="l8Y-ol-1AD">
                                                         <rect key="frame" x="25" y="233" width="457" height="18"/>
-                                                        <animations/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Preview.app. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="nm8-pK-Ye8">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1408,7 +1307,6 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-Fh-Xme">
                                                         <rect key="frame" x="17" y="222" width="690" height="5"/>
-                                                        <animations/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <font key="titleFont" metaFont="system"/>
@@ -1418,12 +1316,10 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="32" id="wPy-si-s6v"/>
                                                         </constraints>
-                                                        <animations/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSInfo" id="ODw-fA-ogD"/>
                                                     </imageView>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jUH-Ca-wfX">
                                                         <rect key="frame" x="57" y="10" width="652" height="204"/>
-                                                        <animations/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="e3W-S7-z09">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Be careful:
@@ -1460,9 +1356,7 @@ The following settings will not work properly if you disable AXNotifier.
                                                     <constraint firstItem="27K-KA-6hE" firstAttribute="top" secondItem="9mK-vH-viB" secondAttribute="top" constant="10" id="w5f-GX-tWP"/>
                                                     <constraint firstItem="Qz6-Jz-LBo" firstAttribute="top" secondItem="1yU-Fh-Xme" secondAttribute="bottom" constant="10" id="whb-Ti-rIb"/>
                                                 </constraints>
-                                                <animations/>
                                             </view>
-                                            <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
@@ -1475,7 +1369,6 @@ The following settings will not work properly if you disable AXNotifier.
                                         <constraint firstItem="k0c-8Q-yOU" firstAttribute="leading" secondItem="zdM-6k-jSP" secondAttribute="leading" constant="17" id="jEU-rR-B3k"/>
                                         <constraint firstAttribute="trailing" secondItem="k0c-8Q-yOU" secondAttribute="trailing" constant="17" id="uNY-zf-LBm"/>
                                     </constraints>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Misc &amp; Uninstall" identifier="2" id="634">
@@ -1485,7 +1378,6 @@ The following settings will not work properly if you disable AXNotifier.
                                     <subviews>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="641">
                                             <rect key="frame" x="15" y="535" width="112" height="17"/>
-                                            <animations/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Karabiner.version:" id="642">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1494,327 +1386,300 @@ The following settings will not work properly if you disable AXNotifier.
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="640">
                                             <rect key="frame" x="131" y="535" width="39" height="17"/>
-                                            <animations/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="x.x.xx" id="643">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box title="Update" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="639">
-                                            <rect key="frame" x="14" y="444" width="726" height="81"/>
-                                            <view key="contentView" id="bfX-e8-5Po">
-                                                <rect key="frame" x="1" y="1" width="724" height="65"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="644">
-                                                        <rect key="frame" x="11" y="3" width="152" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="checkForUpdatesStableOnly:" target="588" id="1439"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1435">
-                                                        <rect key="frame" x="418" y="3" width="295" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="checkForUpdatesWithBetaVersion:" target="588" id="1438"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="BRh-R3-iqY">
-                                                        <rect key="frame" x="15" y="39" width="281" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Check for updates on startup (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rkn-B3-QBc">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <binding destination="1176" name="value" keyPath="values.isCheckUpdate" id="6Np-3V-Rul"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="BRh-R3-iqY" firstAttribute="top" secondItem="bfX-e8-5Po" secondAttribute="top" constant="10" id="4eT-gE-3H0"/>
-                                                    <constraint firstAttribute="bottom" secondItem="644" secondAttribute="bottom" constant="10" id="HAZ-gB-4dX"/>
-                                                    <constraint firstItem="644" firstAttribute="top" secondItem="BRh-R3-iqY" secondAttribute="bottom" constant="10" id="NFo-sJ-pE6"/>
-                                                    <constraint firstItem="BRh-R3-iqY" firstAttribute="leading" secondItem="bfX-e8-5Po" secondAttribute="leading" constant="17" id="TXE-EM-ZJc"/>
-                                                    <constraint firstItem="1435" firstAttribute="centerY" secondItem="644" secondAttribute="centerY" id="iaM-X5-zI1"/>
-                                                    <constraint firstItem="644" firstAttribute="leading" secondItem="bfX-e8-5Po" secondAttribute="leading" constant="17" id="ldp-HQ-JYc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1435" secondAttribute="trailing" constant="17" id="woF-dU-U4i"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LoB-mA-WN5">
+                                            <rect key="frame" x="17" y="517" width="720" height="5"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <box title="Uninstall" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="638">
-                                            <rect key="frame" x="14" y="381" width="726" height="57"/>
-                                            <view key="contentView" id="2Vk-yJ-tK2">
-                                                <rect key="frame" x="1" y="1" width="724" height="41"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="654">
-                                                        <rect key="frame" x="11" y="3" width="151" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="655">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="launchUninstaller:" target="494" id="1197"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="654" firstAttribute="top" secondItem="2Vk-yJ-tK2" secondAttribute="top" constant="10" id="M0K-hJ-0xM"/>
-                                                    <constraint firstAttribute="bottom" secondItem="654" secondAttribute="bottom" constant="10" id="NtO-y3-tDz"/>
-                                                    <constraint firstItem="654" firstAttribute="leading" secondItem="2Vk-yJ-tK2" secondAttribute="leading" constant="17" id="tGb-Ry-NOh"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JOj-GD-zmd">
+                                            <rect key="frame" x="108" y="487" width="56" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Update:" id="qA5-FG-eIH">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="BRh-R3-iqY">
+                                            <rect key="frame" x="170" y="487" width="281" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Check for updates on startup (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rkn-B3-QBc">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="1176" name="value" keyPath="values.isCheckUpdate" id="6Np-3V-Rul"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="644">
+                                            <rect key="frame" x="166" y="451" width="152" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="653">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkForUpdatesStableOnly:" target="588" id="1439"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1435">
+                                            <rect key="frame" x="448" y="451" width="295" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="checkForUpdatesWithBetaVersion:" target="588" id="1438"/>
+                                            </connections>
+                                        </button>
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TNB-Mo-4Qt">
+                                            <rect key="frame" x="17" y="440" width="720" height="5"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <box title="Custom Setting" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="637">
-                                            <rect key="frame" x="14" y="294" width="726" height="81"/>
-                                            <view key="contentView" id="6b6-ZY-ZNT">
-                                                <rect key="frame" x="1" y="1" width="724" height="65"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="656">
-                                                        <rect key="frame" x="11" y="27" width="143" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Open private.xml" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="657">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="openPrivateXML:" target="494" id="1198"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="qZa-XW-7Lm">
-                                                        <rect key="frame" x="15" y="8" width="238" height="18"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="check" title="Use prepared settings (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Q97-uy-r6v">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="reloadXML:" target="710" id="CLV-E7-aKP"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kUsePreparedSettings" id="0tC-rV-Er6"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="656" firstAttribute="leading" secondItem="6b6-ZY-ZNT" secondAttribute="leading" constant="17" id="5cO-HG-mWZ"/>
-                                                    <constraint firstItem="qZa-XW-7Lm" firstAttribute="leading" secondItem="6b6-ZY-ZNT" secondAttribute="leading" constant="17" id="DKW-c0-NUU"/>
-                                                    <constraint firstItem="qZa-XW-7Lm" firstAttribute="top" secondItem="656" secondAttribute="bottom" constant="10" id="I5R-8t-cmf"/>
-                                                    <constraint firstItem="656" firstAttribute="top" secondItem="6b6-ZY-ZNT" secondAttribute="top" constant="10" id="gSJ-TQ-wIP"/>
-                                                    <constraint firstAttribute="bottom" secondItem="qZa-XW-7Lm" secondAttribute="bottom" constant="10" id="xRz-eu-1uT"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VyX-5h-w7l">
+                                            <rect key="frame" x="98" y="410" width="66" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Uninstall:" id="GAU-7P-7Yu">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="654">
+                                            <rect key="frame" x="166" y="401" width="151" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Launch uninstaller" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="655">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="launchUninstaller:" target="494" id="1197"/>
+                                            </connections>
+                                        </button>
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="pJT-zW-wrA">
+                                            <rect key="frame" x="17" y="390" width="720" height="5"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <box title="Helper Applications" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="636">
-                                            <rect key="frame" x="14" y="200" width="726" height="88"/>
-                                            <view key="contentView" id="Pxe-rP-7J1">
-                                                <rect key="frame" x="1" y="1" width="724" height="72"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="659">
-                                                        <rect key="frame" x="11" y="34" width="163" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Launch EventViewer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="660">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="launchEventViewer:" target="494" id="1199"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="658">
-                                                        <rect key="frame" x="11" y="3" width="231" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Launch &quot;multi-touch extension&quot;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="661">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="launchMultiTouchExtension:" target="494" id="1200"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="658" firstAttribute="leading" secondItem="Pxe-rP-7J1" secondAttribute="leading" constant="17" id="28Y-t1-YiK"/>
-                                                    <constraint firstAttribute="bottom" secondItem="658" secondAttribute="bottom" constant="10" id="9bX-zj-aYh"/>
-                                                    <constraint firstItem="659" firstAttribute="top" secondItem="Pxe-rP-7J1" secondAttribute="top" constant="10" id="F0s-Vq-Ncr"/>
-                                                    <constraint firstItem="658" firstAttribute="top" secondItem="659" secondAttribute="bottom" constant="10" id="jcI-75-brz"/>
-                                                    <constraint firstItem="659" firstAttribute="leading" secondItem="Pxe-rP-7J1" secondAttribute="leading" constant="17" id="lwf-Ka-70n"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S53-gC-gxA">
+                                            <rect key="frame" x="55" y="360" width="109" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Custom Setting:" id="jsb-cu-i8V">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="656">
+                                            <rect key="frame" x="166" y="351" width="143" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Open private.xml" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="657">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openPrivateXML:" target="494" id="1198"/>
+                                            </connections>
+                                        </button>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="qZa-XW-7Lm">
+                                            <rect key="frame" x="170" y="332" width="238" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Use prepared settings (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Q97-uy-r6v">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="reloadXML:" target="710" id="CLV-E7-aKP"/>
+                                                <binding destination="1176" name="value" keyPath="values.kUsePreparedSettings" id="0tC-rV-Er6"/>
+                                            </connections>
+                                        </button>
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-Fs-3nn">
+                                            <rect key="frame" x="17" y="316" width="720" height="5"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <box title="Web sites" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="VHx-J0-axb">
-                                            <rect key="frame" x="14" y="114" width="726" height="80"/>
-                                            <view key="contentView" id="kio-0y-lSX">
-                                                <rect key="frame" x="1" y="1" width="724" height="64"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R0Y-fc-sdF">
-                                                        <rect key="frame" x="15" y="37" width="137" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open download page:" id="I4N-M6-GEH">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B4b-iA-pXM">
-                                                        <rect key="frame" x="154" y="28" width="246" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="openURL:" target="1181" id="qrI-dA-Z36"/>
-                                                        </connections>
-                                                    </button>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i8T-VC-eT0">
-                                                        <rect key="frame" x="69" y="10" width="83" height="17"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Open github:" id="xhl-dh-25o">
-                                                            <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yat-77-L8T">
-                                                        <rect key="frame" x="154" y="1" width="284" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="openURL:" target="1181" id="dWw-gm-YXn"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="R0Y-fc-sdF" firstAttribute="leading" secondItem="kio-0y-lSX" secondAttribute="leading" constant="17" id="1e2-fz-NMn"/>
-                                                    <constraint firstItem="B4b-iA-pXM" firstAttribute="centerY" secondItem="R0Y-fc-sdF" secondAttribute="centerY" id="aHu-Di-ycw"/>
-                                                    <constraint firstItem="R0Y-fc-sdF" firstAttribute="top" secondItem="kio-0y-lSX" secondAttribute="top" constant="10" id="gET-a0-szh"/>
-                                                    <constraint firstItem="B4b-iA-pXM" firstAttribute="leading" secondItem="R0Y-fc-sdF" secondAttribute="trailing" constant="10" id="gV3-gO-YRN"/>
-                                                    <constraint firstItem="i8T-VC-eT0" firstAttribute="trailing" secondItem="R0Y-fc-sdF" secondAttribute="trailing" id="gmE-7T-EIZ"/>
-                                                    <constraint firstItem="yat-77-L8T" firstAttribute="centerY" secondItem="i8T-VC-eT0" secondAttribute="centerY" id="i6O-ox-tOO"/>
-                                                    <constraint firstAttribute="bottom" secondItem="i8T-VC-eT0" secondAttribute="bottom" constant="10" id="jar-yE-zOh"/>
-                                                    <constraint firstItem="i8T-VC-eT0" firstAttribute="top" secondItem="R0Y-fc-sdF" secondAttribute="bottom" constant="10" id="nTR-Xy-5Pi"/>
-                                                    <constraint firstItem="yat-77-L8T" firstAttribute="leading" secondItem="B4b-iA-pXM" secondAttribute="leading" id="w5u-m7-BS1"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0sJ-8e-EgS">
+                                            <rect key="frame" x="28" y="286" width="136" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Helper Applications:" id="Vk6-v2-yWr">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="659">
+                                            <rect key="frame" x="166" y="277" width="163" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Launch EventViewer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="660">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="launchEventViewer:" target="494" id="1199"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="658">
+                                            <rect key="frame" x="166" y="246" width="231" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Launch &quot;multi-touch extension&quot;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="661">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="launchMultiTouchExtension:" target="494" id="1200"/>
+                                            </connections>
+                                        </button>
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ZTx-N8-36Q">
+                                            <rect key="frame" x="17" y="235" width="720" height="5"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
                                         </box>
-                                        <box title="Debug" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="12H-Pa-A0o">
-                                            <rect key="frame" x="14" y="14" width="726" height="94"/>
-                                            <view key="contentView" id="UBc-eM-cPM">
-                                                <rect key="frame" x="1" y="1" width="724" height="78"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hOF-gU-Ds0">
-                                                        <rect key="frame" x="11" y="40" width="164" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Launch Console.app" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mf9-V5-Sca">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="openConsoleApp:" target="1181" id="ThQ-Cx-nx2"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HyL-o3-wzh">
-                                                        <rect key="frame" x="11" y="9" width="163" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Toggle Debug Mode" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xud-ZU-2eP">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="toggleDebugMode:" target="1181" id="kTf-p0-PXc"/>
-                                                        </connections>
-                                                    </button>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yy-Qp-aKZ">
-                                                        <rect key="frame" x="176" y="10" width="121" height="34"/>
-                                                        <animations/>
-                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" drawsBackground="YES" id="Wny-dk-qix">
-                                                            <font key="font" metaFont="system"/>
-                                                            <string key="title">Debug Mode Guide
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-dI-24Y">
+                                            <rect key="frame" x="91" y="205" width="73" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Web Sites:" id="UN5-gJ-xGT">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B4b-iA-pXM">
+                                            <rect key="frame" x="166" y="196" width="246" height="32"/>
+                                            <buttonCell key="cell" type="push" title="https://pqrs.org/osx/karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="qwD-X6-U5B">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openURL:" target="1181" id="qrI-dA-Z36"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yat-77-L8T">
+                                            <rect key="frame" x="166" y="165" width="284" height="32"/>
+                                            <buttonCell key="cell" type="push" title="https://github.com/tekezo/Karabiner/" bezelStyle="rounded" image="NSFollowLinkFreestandingTemplate" imagePosition="left" alignment="center" borderStyle="border" inset="2" id="8ya-l7-Qgj">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openURL:" target="1181" id="dWw-gm-YXn"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i8T-VC-eT0">
+                                            <rect key="frame" x="452" y="174" width="88" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(source code)" id="xhl-dh-25o">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="fS2-h7-83w">
+                                            <rect key="frame" x="17" y="154" width="720" height="5"/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Phh-vp-qNd">
+                                            <rect key="frame" x="113" y="124" width="51" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Debug:" id="lYm-cL-bFL">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hOF-gU-Ds0">
+                                            <rect key="frame" x="166" y="115" width="164" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Launch Console.app" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Mf9-V5-Sca">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openConsoleApp:" target="1181" id="ThQ-Cx-nx2"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Yy-Qp-aKZ">
+                                            <rect key="frame" x="333" y="85" width="121" height="34"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" drawsBackground="YES" id="Wny-dk-qix">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Debug Mode Guide
 Debug Mode Guide</string>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="HyL-o3-wzh" firstAttribute="top" secondItem="hOF-gU-Ds0" secondAttribute="bottom" constant="10" id="2Ec-r8-Sbg"/>
-                                                    <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="leading" secondItem="HyL-o3-wzh" secondAttribute="trailing" constant="8" id="Hhz-72-Lba"/>
-                                                    <constraint firstItem="HyL-o3-wzh" firstAttribute="leading" secondItem="hOF-gU-Ds0" secondAttribute="leading" id="Xpr-fN-Bjy"/>
-                                                    <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="centerY" secondItem="HyL-o3-wzh" secondAttribute="centerY" id="amG-h6-pMM"/>
-                                                    <constraint firstItem="hOF-gU-Ds0" firstAttribute="leading" secondItem="UBc-eM-cPM" secondAttribute="leading" constant="17" id="dah-lu-N9W"/>
-                                                    <constraint firstAttribute="bottom" secondItem="8Yy-Qp-aKZ" secondAttribute="bottom" constant="10" id="sMF-JG-95U"/>
-                                                    <constraint firstItem="hOF-gU-Ds0" firstAttribute="top" secondItem="UBc-eM-cPM" secondAttribute="top" constant="10" id="yOU-ZA-0KR"/>
-                                                </constraints>
-                                                <animations/>
-                                            </view>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HyL-o3-wzh">
+                                            <rect key="frame" x="166" y="84" width="163" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Toggle Debug Mode" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xud-ZU-2eP">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="toggleDebugMode:" target="1181" id="kTf-p0-PXc"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="640" firstAttribute="centerY" secondItem="641" secondAttribute="centerY" id="043-pf-zvA"/>
-                                        <constraint firstItem="VHx-J0-axb" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="0FM-DS-WO3"/>
-                                        <constraint firstItem="638" firstAttribute="top" secondItem="639" secondAttribute="bottom" constant="10" id="0YI-tK-o85"/>
-                                        <constraint firstItem="639" firstAttribute="top" secondItem="641" secondAttribute="bottom" constant="10" id="1sT-tc-zc1"/>
+                                        <constraint firstItem="B4b-iA-pXM" firstAttribute="leading" secondItem="dxO-dI-24Y" secondAttribute="trailing" constant="10" id="0yJ-oY-X12"/>
+                                        <constraint firstItem="656" firstAttribute="leading" secondItem="S53-gC-gxA" secondAttribute="trailing" constant="10" id="3OF-6c-ZGj"/>
+                                        <constraint firstItem="i8T-VC-eT0" firstAttribute="leading" secondItem="yat-77-L8T" secondAttribute="trailing" constant="10" id="3tG-U3-kJu"/>
+                                        <constraint firstItem="656" firstAttribute="centerY" secondItem="S53-gC-gxA" secondAttribute="centerY" id="4Sb-lH-Mwq"/>
+                                        <constraint firstItem="654" firstAttribute="leading" secondItem="VyX-5h-w7l" secondAttribute="trailing" constant="10" id="5s2-vn-goj"/>
+                                        <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="leading" secondItem="HyL-o3-wzh" secondAttribute="trailing" constant="10" id="6vg-sC-hK6"/>
+                                        <constraint firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" constant="17" id="6vx-Cu-ULt"/>
+                                        <constraint firstItem="TNB-Mo-4Qt" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="BOb-vK-GCH"/>
+                                        <constraint firstItem="fS2-h7-83w" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="BmJ-lM-Feq"/>
+                                        <constraint firstItem="VyX-5h-w7l" firstAttribute="top" secondItem="TNB-Mo-4Qt" secondAttribute="bottom" constant="15" id="DXR-xm-xLh"/>
+                                        <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="centerY" secondItem="HyL-o3-wzh" secondAttribute="centerY" id="F4m-ZQ-jKT"/>
+                                        <constraint firstItem="BRh-R3-iqY" firstAttribute="centerY" secondItem="JOj-GD-zmd" secondAttribute="centerY" id="FhZ-Or-csu"/>
+                                        <constraint firstItem="pJT-zW-wrA" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="Gnh-ty-23a"/>
                                         <constraint firstItem="641" firstAttribute="top" secondItem="635" secondAttribute="top" constant="6" id="H79-8c-SUO"/>
+                                        <constraint firstItem="658" firstAttribute="leading" secondItem="659" secondAttribute="leading" id="HeT-Dc-uT9"/>
+                                        <constraint firstItem="pJT-zW-wrA" firstAttribute="top" secondItem="654" secondAttribute="bottom" constant="15" id="ISv-Sz-NA2"/>
+                                        <constraint firstItem="HyL-o3-wzh" firstAttribute="leading" secondItem="hOF-gU-Ds0" secondAttribute="leading" id="JFG-N9-Avf"/>
+                                        <constraint firstItem="Phh-vp-qNd" firstAttribute="top" secondItem="fS2-h7-83w" secondAttribute="bottom" constant="15" id="Kru-uv-zPx"/>
                                         <constraint firstItem="640" firstAttribute="leading" secondItem="641" secondAttribute="trailing" constant="8" id="LBE-1K-oAq"/>
-                                        <constraint firstItem="VHx-J0-axb" firstAttribute="top" secondItem="636" secondAttribute="bottom" constant="10" id="PGk-Rq-T9c"/>
-                                        <constraint firstAttribute="trailing" secondItem="636" secondAttribute="trailing" constant="17" id="PhM-iZ-VQo"/>
-                                        <constraint firstAttribute="trailing" secondItem="VHx-J0-axb" secondAttribute="trailing" constant="17" id="Qrl-F3-iYu"/>
-                                        <constraint firstItem="12H-Pa-A0o" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="RTh-wh-XsH"/>
-                                        <constraint firstAttribute="trailing" secondItem="639" secondAttribute="trailing" constant="17" id="amW-01-tdw"/>
-                                        <constraint firstItem="12H-Pa-A0o" firstAttribute="top" secondItem="VHx-J0-axb" secondAttribute="bottom" constant="10" id="d4H-E6-SMH"/>
-                                        <constraint firstItem="636" firstAttribute="top" secondItem="637" secondAttribute="bottom" constant="10" id="dp7-kT-gRR"/>
-                                        <constraint firstAttribute="trailing" secondItem="12H-Pa-A0o" secondAttribute="trailing" constant="17" id="eS6-pW-cnY"/>
-                                        <constraint firstItem="637" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="jZr-ek-pBS"/>
-                                        <constraint firstItem="638" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="nrW-U3-cZe"/>
+                                        <constraint firstItem="hOF-gU-Ds0" firstAttribute="leading" secondItem="Phh-vp-qNd" secondAttribute="trailing" constant="10" id="Lou-k4-nRk"/>
+                                        <constraint firstItem="VyX-5h-w7l" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="N4I-xe-e18"/>
+                                        <constraint firstItem="ee8-Fs-3nn" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="OPU-wB-Xoc"/>
+                                        <constraint firstItem="S53-gC-gxA" firstAttribute="trailing" secondItem="VyX-5h-w7l" secondAttribute="trailing" id="Qeo-W6-jpm"/>
+                                        <constraint firstItem="0sJ-8e-EgS" firstAttribute="top" secondItem="ee8-Fs-3nn" secondAttribute="bottom" constant="15" id="RST-Zl-PLc"/>
+                                        <constraint firstItem="ZTx-N8-36Q" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="SB2-8l-4cu"/>
+                                        <constraint firstItem="ee8-Fs-3nn" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="SDX-jJ-E13"/>
+                                        <constraint firstItem="qZa-XW-7Lm" firstAttribute="top" secondItem="656" secondAttribute="bottom" constant="10" id="SNb-hj-MZw"/>
+                                        <constraint firstItem="fS2-h7-83w" firstAttribute="top" secondItem="yat-77-L8T" secondAttribute="bottom" constant="15" id="TRq-8q-VhW"/>
+                                        <constraint firstItem="dxO-dI-24Y" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="UyL-n8-pcE"/>
+                                        <constraint firstItem="644" firstAttribute="top" secondItem="BRh-R3-iqY" secondAttribute="bottom" constant="10" id="VGD-br-NSZ"/>
+                                        <constraint firstItem="ZTx-N8-36Q" firstAttribute="top" secondItem="658" secondAttribute="bottom" constant="15" id="VyH-Xk-EhO"/>
+                                        <constraint firstItem="644" firstAttribute="leading" secondItem="BRh-R3-iqY" secondAttribute="leading" id="WXZ-cD-X7N"/>
+                                        <constraint firstAttribute="trailing" secondItem="1435" secondAttribute="trailing" constant="17" id="Zo5-wc-FaR"/>
+                                        <constraint firstItem="hOF-gU-Ds0" firstAttribute="centerY" secondItem="Phh-vp-qNd" secondAttribute="centerY" id="ZpW-uy-5ol"/>
+                                        <constraint firstItem="ZTx-N8-36Q" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="a0z-N9-h8b"/>
+                                        <constraint firstItem="JOj-GD-zmd" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="110" id="bIz-rk-5Xr"/>
+                                        <constraint firstItem="BRh-R3-iqY" firstAttribute="leading" secondItem="JOj-GD-zmd" secondAttribute="trailing" constant="10" id="bOX-aU-Bgr"/>
+                                        <constraint firstItem="JOj-GD-zmd" firstAttribute="top" secondItem="LoB-mA-WN5" secondAttribute="bottom" constant="15" id="cIu-Mr-HhV"/>
+                                        <constraint firstItem="0sJ-8e-EgS" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="cx4-9U-2NS"/>
+                                        <constraint firstItem="HyL-o3-wzh" firstAttribute="top" secondItem="hOF-gU-Ds0" secondAttribute="bottom" constant="10" id="eEK-fb-Bdz"/>
+                                        <constraint firstItem="LoB-mA-WN5" firstAttribute="top" secondItem="641" secondAttribute="bottom" constant="15" id="f54-ey-0tg"/>
+                                        <constraint firstItem="yat-77-L8T" firstAttribute="leading" secondItem="B4b-iA-pXM" secondAttribute="leading" id="f8Q-Ty-Vb2"/>
+                                        <constraint firstItem="yat-77-L8T" firstAttribute="top" secondItem="B4b-iA-pXM" secondAttribute="bottom" constant="10" id="gv7-fG-t1A"/>
+                                        <constraint firstItem="659" firstAttribute="centerY" secondItem="0sJ-8e-EgS" secondAttribute="centerY" id="jDx-Yq-lm6"/>
+                                        <constraint firstItem="i8T-VC-eT0" firstAttribute="centerY" secondItem="yat-77-L8T" secondAttribute="centerY" id="jq9-gy-nCd"/>
+                                        <constraint firstItem="S53-gC-gxA" firstAttribute="top" secondItem="pJT-zW-wrA" secondAttribute="bottom" constant="15" id="l5D-xY-S0i"/>
+                                        <constraint firstItem="fS2-h7-83w" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="lNd-B3-LPi"/>
+                                        <constraint firstItem="LoB-mA-WN5" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="mTH-UO-dlm"/>
+                                        <constraint firstItem="1435" firstAttribute="centerY" secondItem="644" secondAttribute="centerY" id="nxs-0P-cDb"/>
+                                        <constraint firstItem="B4b-iA-pXM" firstAttribute="centerY" secondItem="dxO-dI-24Y" secondAttribute="centerY" id="oSu-jF-qF6"/>
+                                        <constraint firstItem="659" firstAttribute="leading" secondItem="0sJ-8e-EgS" secondAttribute="trailing" constant="10" id="q47-13-jbj"/>
                                         <constraint firstItem="641" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="qSd-Ql-Mz5"/>
-                                        <constraint firstItem="636" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="qd2-lf-BXX"/>
-                                        <constraint firstAttribute="trailing" secondItem="638" secondAttribute="trailing" constant="17" id="t82-86-V23"/>
-                                        <constraint firstAttribute="trailing" secondItem="637" secondAttribute="trailing" constant="17" id="t9a-Zy-4UF"/>
-                                        <constraint firstItem="637" firstAttribute="top" secondItem="638" secondAttribute="bottom" constant="10" id="z2A-1J-OHe"/>
-                                        <constraint firstItem="639" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="zWx-hw-t4k"/>
+                                        <constraint firstItem="pJT-zW-wrA" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="rZe-qF-TUw"/>
+                                        <constraint firstItem="dxO-dI-24Y" firstAttribute="top" secondItem="ZTx-N8-36Q" secondAttribute="bottom" constant="15" id="sEA-yf-2lp"/>
+                                        <constraint firstItem="ee8-Fs-3nn" firstAttribute="top" secondItem="qZa-XW-7Lm" secondAttribute="bottom" constant="15" id="t1U-Ef-Zqs"/>
+                                        <constraint firstItem="654" firstAttribute="centerY" secondItem="VyX-5h-w7l" secondAttribute="centerY" id="tbu-Si-v30"/>
+                                        <constraint firstItem="Phh-vp-qNd" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="v2U-dT-Nhz"/>
+                                        <constraint firstItem="qZa-XW-7Lm" firstAttribute="leading" secondItem="656" secondAttribute="leading" id="wok-k9-XQm"/>
+                                        <constraint firstItem="TNB-Mo-4Qt" firstAttribute="top" secondItem="644" secondAttribute="bottom" constant="15" id="xyg-LC-pz8"/>
+                                        <constraint firstItem="TNB-Mo-4Qt" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="yX9-MX-wq5"/>
+                                        <constraint firstItem="658" firstAttribute="top" secondItem="659" secondAttribute="bottom" constant="10" id="zjK-xu-CKb"/>
                                     </constraints>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
@@ -1829,7 +1694,6 @@ Debug Mode Guide</string>
                     <constraint firstAttribute="trailing" secondItem="630" secondAttribute="trailing" constant="20" id="ZUz-np-dYB"/>
                     <constraint firstItem="630" firstAttribute="top" secondItem="629" secondAttribute="top" constant="12" id="aEP-TK-f3K"/>
                 </constraints>
-                <animations/>
             </view>
             <connections>
                 <binding destination="1176" name="contentHeight" keyPath="values.kKarabinerPreferencesHeight" id="rlI-3a-nlh"/>
