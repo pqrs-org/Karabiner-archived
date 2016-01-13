@@ -37,6 +37,7 @@
     kUsePreparedSettings : @YES,
     kIsMigratedIsOverwriteKeyRepeat : @NO,
     kIsOverwriteKeyRepeat : @NO,
+    kShowIconInDock: @NO,
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }

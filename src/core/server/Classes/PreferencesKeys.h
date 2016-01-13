@@ -19,6 +19,7 @@
 #define kUsePreparedSettings @"kUsePreparedSettings"
 #define kIsMigratedIsOverwriteKeyRepeat @"kIsMigratedOverwriteKeyRepeat"
 #define kIsOverwriteKeyRepeat @"kIsOverwriteKeyRepeat"
+#define kShowIconInDock @"kShowIconInDock"
 
 #define kKarabinerPreferencesWidth @"kKarabinerPreferencesWidth"
 #define kKarabinerPreferencesHeight @"kKarabinerPreferencesHeight"
