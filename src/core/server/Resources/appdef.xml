@@ -58,6 +58,7 @@
     <equal>com.p5sys.jump.mac.viewer</equal>
     <equal>com.p5sys.jump.mac.viewer.web</equal>
     <equal>com.vmware.horizon</equal>
+    <equal>com.2X.Client.Mac</equal>
   </appdef>
 
   <appdef>
