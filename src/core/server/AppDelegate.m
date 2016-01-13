@@ -260,35 +260,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 
   // ------------------------------------------------------------
-  BOOL openPreferences = NO;
-  {
-    NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
-    if (![bundlePath isEqualToString:@"/Applications/Karabiner.app"]) {
-      NSLog(@"Skip setStartAtLogin for %@", bundlePath);
-
-      dispatch_async(dispatch_get_main_queue(), ^{
-        NSAlert* alert = [NSAlert new];
-        [alert setMessageText:@"Karabiner Alert"];
-        [alert addButtonWithTitle:@"Close"];
-        [alert setInformativeText:@"Karabiner.app should be located in /Applications/Karabiner.app.\nDo not move Karabiner.app into other folders."];
-        [alert runModal];
-      });
-
-    } else {
-      if (![StartAtLoginUtilities isStartAtLogin]) {
-        [StartAtLoginUtilities setStartAtLogin:YES];
-        openPreferences = YES;
-      }
-    }
-  }
-
-  // ------------------------------------------------------------
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowIconInDock]) {
-    ProcessSerialNumber psn = {0, kCurrentProcess};
-    TransformProcessType(&psn, kProcessTransformToForegroundApplication);
-  }
-
-  // ------------------------------------------------------------
   if (![serverForUserspace_ register]) {
     // Relaunch when register is failed.
     NSLog(@"[ServerForUserspace register] is failed. Restarting process.");
@@ -299,6 +270,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // Wait until other apps connect to me.
   [NSThread sleepForTimeInterval:1];
+
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowIconInDock]) {
+    ProcessSerialNumber psn = {0, kCurrentProcess};
+    TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+  }
 
   axnotifierManagerQueue_ = dispatch_queue_create("org.pqrs.Karabiner.axnotifierManagerQueue_", NULL);
 
@@ -365,9 +341,29 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // ------------------------------------------------------------
   // Open Preferences if Karabiner was launched by hand.
-  if (openPreferences &&
-      !isDescendantProcess) {
-    [preferencesController_ show];
+  // ------------------------------------------------------------
+  {
+    NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
+    if (![bundlePath isEqualToString:@"/Applications/Karabiner.app"]) {
+      NSLog(@"Skip setStartAtLogin for %@", bundlePath);
+
+      dispatch_async(dispatch_get_main_queue(), ^{
+        NSAlert* alert = [NSAlert new];
+        [alert setMessageText:@"Karabiner Alert"];
+        [alert addButtonWithTitle:@"Close"];
+        [alert setInformativeText:@"Karabiner.app should be located in /Applications/Karabiner.app.\nDo not move Karabiner.app into other folders."];
+        [alert runModal];
+      });
+
+    } else {
+      if (![StartAtLoginUtilities isStartAtLogin]) {
+        [StartAtLoginUtilities setStartAtLogin:YES];
+
+        if (!isDescendantProcess) {
+          [preferencesController_ show];
+        }
+      }
+    }
   }
 }
 
