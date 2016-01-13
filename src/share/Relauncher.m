@@ -75,19 +75,25 @@
 
 // ------------------------------------------------------------
 + (void)relaunch {
-  const int RETRY_COUNT = 5;
+  // Use dispatch_async in order to avoid "disconnected from server".
+  //
+  // Example error message of disconnection:
+  //   "karabiner: connection went invalid while waiting for a reply because a mach port died"
+  dispatch_async(dispatch_get_main_queue(), ^{
+    const int RETRY_COUNT = 5;
 
-  NSInteger count = [self getRelaunchedCount];
-  if (count < RETRY_COUNT) {
-    NSLog(@"Relaunching (count:%d)", (int)(count));
-    [self setRelaunchedCount:(int)(count + 1)];
-    [self setPreviousProcessVersion];
-    [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
-  } else {
-    NSLog(@"Give up relaunching.");
-  }
+    NSInteger count = [self getRelaunchedCount];
+    if (count < RETRY_COUNT) {
+      NSLog(@"Relaunching (count:%d)", (int)(count));
+      [self setRelaunchedCount:(int)(count + 1)];
+      [self setPreviousProcessVersion];
+      [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
+    } else {
+      NSLog(@"Give up relaunching.");
+    }
 
-  [NSApp terminate:self];
+    [NSApp terminate:self];
+  });
 }
 
 @end

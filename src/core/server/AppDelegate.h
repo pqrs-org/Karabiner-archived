@@ -42,5 +42,6 @@
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)openPrivateXML:(id)sender;
 - (IBAction)quit:(id)sender;
+- (IBAction)relaunch:(id)sender;
 
 @end

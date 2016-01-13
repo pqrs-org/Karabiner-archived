@@ -544,4 +544,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [NSApp terminate:nil];
 }
 
+- (IBAction)relaunch:(id)sender {
+  [Relauncher relaunch];
+}
+
 @end
