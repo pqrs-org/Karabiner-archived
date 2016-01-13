@@ -283,23 +283,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 
   // ------------------------------------------------------------
-  {
-    // Remove old pkg files and finish_installation.app in
-    // "~/Library/Application Support/Karabiner/.Sparkle".
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString* sparkle = paths[0];
-    if (sparkle) {
-      sparkle = [sparkle stringByAppendingPathComponent:[MigrationUtilities applicationSupportName]];
-      sparkle = [sparkle stringByAppendingPathComponent:@".Sparkle"];
-
-      NSFileManager* fm = [NSFileManager defaultManager];
-      if ([fm fileExistsAtPath:sparkle]) {
-        [fm removeItemAtPath:sparkle error:nil];
-      }
-    }
-  }
-
-  // ------------------------------------------------------------
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowIconInDock]) {
     ProcessSerialNumber psn = {0, kCurrentProcess};
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
