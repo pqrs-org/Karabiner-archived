@@ -90,7 +90,13 @@
 }
 
 - (void)relaunch {
-  [Relauncher relaunch];
+  // Use dispatch_async in order to avoid "disconnected from server".
+  //
+  // Example error message of disconnection:
+  //   "karabiner: connection went invalid while waiting for a reply because a mach port died"
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [Relauncher relaunch];
+  });
 }
 
 // ----------------------------------------------------------------------
