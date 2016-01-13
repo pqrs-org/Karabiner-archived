@@ -1,5 +1,6 @@
 #import "NotificationKeys.h"
 #import "OutlineView.h"
+#import "OutlineViewDataSourceCheckbox.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
@@ -92,7 +93,7 @@
   if (datasource_) return;
 
   if (ischeckbox_) {
-    datasource_ = [xmlCompiler_ preferencepane_checkbox];
+    [outlineViewDataSourceCheckbox_ load:force];
   } else {
     datasource_ = [xmlCompiler_ preferencepane_number];
   }
@@ -323,88 +324,19 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (NSDictionary*)filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  // ------------------------------------------------------------
-  // check children
-  NSArray* children = dictionary[@"children"];
-  if (children) {
-    NSMutableArray* newchildren = [NSMutableArray new];
-    for (NSDictionary* dict in children) {
-      NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
-      if (d) {
-        [newchildren addObject:d];
-      }
-    }
-
-    if ([newchildren count] > 0) {
-      NSMutableDictionary* newdictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-      newdictionary[@"children"] = newchildren;
-      return newdictionary;
-    }
-  }
-
-  // ------------------------------------------------------------
-  // filter by isEnabledOnly
-  if (isEnabledOnly) {
-    NSString* identifier = dictionary[@"identifier"];
-    if (!identifier) {
-      return nil;
-    }
-    if (![preferencesManager_ value:identifier]) {
-      return nil;
-    }
-  }
-
-  // check self name
-  NSString* string_for_filter = dictionary[@"string_for_filter"];
-  if (string_for_filter) {
-    BOOL hit = YES;
-    for (NSString* s in strings) {
-      if ([string_for_filter rangeOfString:s].location == NSNotFound) hit = NO;
-    }
-    if (hit) {
-      return dictionary;
-    }
-  }
-
-  return nil;
-}
-
-- (void)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string {
-  [self load:YES];
-  if (!datasource_) return;
-
-  NSMutableArray* newdatasource = [NSMutableArray new];
-
-  NSMutableArray* strings = [NSMutableArray new];
-  if (string) {
-    for (NSString* s in [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]) {
-      if ([s length] == 0) continue;
-      [strings addObject:[s lowercaseString]];
-    }
-  }
-
-  for (NSDictionary* dict in datasource_) {
-    NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
-    if (d) {
-      [newdatasource addObject:d];
-    }
-  }
-
-  datasource_ = newdatasource;
-  [outlineview_ reloadData];
-
-  if ([string length] == 0 && isEnabledOnly == NO) {
-    [outlineview_ collapseItem:nil collapseChildren:YES];
-  } else {
-    [outlineview_ expandItem:nil expandChildren:YES];
-  }
-}
-
 - (IBAction)filter:(id)sender {
   if (ischeckbox_) {
     BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
-    [self filterDataSource:isEnabledOnly string:[searchText_ stringValue]];
+    NSString* string = [searchText_ stringValue];
+    [outlineViewDataSourceCheckbox_ filterDataSource:isEnabledOnly string:string];
+
+    [outlineview_ reloadData];
+
+    if ([string length] == 0 && isEnabledOnly == NO) {
+      [outlineview_ collapseItem:nil collapseChildren:YES];
+    } else {
+      [outlineview_ expandItem:nil expandChildren:YES];
+    }
   }
 }
 

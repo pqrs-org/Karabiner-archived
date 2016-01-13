@@ -4,6 +4,7 @@
 
 @class PreferencesManager;
 @class XMLCompiler;
+@class OutlineViewDataSourceCheckbox;
 
 @interface OutlineView : NSObject {
 @protected
@@ -13,6 +14,7 @@
   IBOutlet NSOutlineView* outlineview_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet XMLCompiler* xmlCompiler_;
+  IBOutlet OutlineViewDataSourceCheckbox* outlineViewDataSourceCheckbox_;
 
   // for OutlineView_checkbox
   IBOutlet NSSearchField* searchText_;
@@ -20,7 +22,6 @@
 }
 
 - (void)load:(BOOL)force;
-- (void)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 
 - (IBAction)filter:(id)sender;
 - (IBAction)expand:(id)sender;

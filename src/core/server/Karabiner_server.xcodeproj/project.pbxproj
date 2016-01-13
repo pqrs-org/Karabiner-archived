@@ -60,6 +60,7 @@
 		34B682EA1AC845AD00915847 /* StatusMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B682E91AC845AD00915847 /* StatusMessageManager.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */; };
+		34CB80271C4699970007DE3A /* OutlineViewDataSourceCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CB80261C4699970007DE3A /* OutlineViewDataSourceCheckbox.m */; };
 		34CD9CCD1BA1E67A004F0218 /* checkbox-omitted.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */; };
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */; };
@@ -174,6 +175,8 @@
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
 		34CB2F2E19565E2B00A6E0E3 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
 		34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
+		34CB80251C4699970007DE3A /* OutlineViewDataSourceCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineViewDataSourceCheckbox.h; path = Classes/Preferences/OutlineViewDataSourceCheckbox.h; sourceTree = "<group>"; };
+		34CB80261C4699970007DE3A /* OutlineViewDataSourceCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineViewDataSourceCheckbox.m; path = Classes/Preferences/OutlineViewDataSourceCheckbox.m; sourceTree = "<group>"; };
 		34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "checkbox-omitted.xml"; path = "Resources/checkbox-omitted.xml"; sourceTree = "<group>"; };
 		34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkchangeinputsourcedef.xml; path = Resources/vkchangeinputsourcedef.xml; sourceTree = "<group>"; };
 		34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WorkSpaceData+InputSource.m"; path = "Classes/WorkSpaceData+InputSource.m"; sourceTree = "<group>"; };
@@ -343,14 +346,16 @@
 		34207BFB1666209100E7FD08 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				3406F70F1668ED7B00FE1E80 /* PreferencesController.h */,
-				3406F7101668ED7B00FE1E80 /* PreferencesController.m */,
 				34207BFD1666209F00E7FD08 /* OutlineView_checkbox.h */,
 				34207BFE1666209F00E7FD08 /* OutlineView_checkbox.m */,
 				34207BFF1666209F00E7FD08 /* OutlineView_number.h */,
 				34207C001666209F00E7FD08 /* OutlineView_number.m */,
 				34207C011666209F00E7FD08 /* OutlineView.h */,
 				34207C021666209F00E7FD08 /* OutlineView.m */,
+				34CB80251C4699970007DE3A /* OutlineViewDataSourceCheckbox.h */,
+				34CB80261C4699970007DE3A /* OutlineViewDataSourceCheckbox.m */,
+				3406F70F1668ED7B00FE1E80 /* PreferencesController.h */,
+				3406F7101668ED7B00FE1E80 /* PreferencesController.m */,
 				34207C031666209F00E7FD08 /* TableView_configlist.h */,
 				34207C041666209F00E7FD08 /* TableView_configlist.m */,
 			);
@@ -556,6 +561,7 @@
 				34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */,
 				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
 				3416745C1AFE5201005D6E58 /* SessionObserver.m in Sources */,
+				34CB80271C4699970007DE3A /* OutlineViewDataSourceCheckbox.m in Sources */,
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */,
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
 				34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */,
