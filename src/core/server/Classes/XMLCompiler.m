@@ -426,13 +426,13 @@
   }
 }
 
-- (NSArray*)preferencepane_checkbox {
+- (NSMutableArray*)preferencepane_checkbox {
   @synchronized(self) {
     return preferencepane_checkbox_;
   }
 }
 
-- (NSArray*)preferencepane_number;
+- (NSMutableArray*)preferencepane_number;
 {
   @synchronized(self) {
     return preferencepane_number_;

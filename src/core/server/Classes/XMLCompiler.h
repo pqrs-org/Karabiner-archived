@@ -35,8 +35,8 @@
 - (NSString*)urlType:(uint32_t)keycode;
 - (BOOL)urlIsBackground:(uint32_t)keycode;
 
-- (NSArray*)preferencepane_checkbox;
-- (NSArray*)preferencepane_number;
+- (NSMutableArray*)preferencepane_checkbox;
+- (NSMutableArray*)preferencepane_number;
 - (NSString*)preferencepane_error_message;
 
 @end
