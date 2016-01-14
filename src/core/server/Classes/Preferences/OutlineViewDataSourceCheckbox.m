@@ -117,7 +117,7 @@
     a = item[@"children"];
   }
 
-  if ((NSUInteger)(index) > [a count]) return nil;
+  if ((NSUInteger)(index) >= [a count]) return nil;
   return a[index];
 }
 
