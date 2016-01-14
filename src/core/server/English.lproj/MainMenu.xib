@@ -386,7 +386,7 @@
                                                             </tableColumn>
                                                         </tableColumns>
                                                         <connections>
-                                                            <outlet property="dataSource" destination="1167" id="1171"/>
+                                                            <outlet property="dataSource" destination="s9s-xO-cMU" id="aiJ-Hl-fgI"/>
                                                             <outlet property="delegate" destination="1167" id="1172"/>
                                                         </connections>
                                                     </outlineView>
@@ -1896,6 +1896,12 @@ Debug Mode Guide</string>
             <connections>
                 <outlet property="preferencesManager" destination="592" id="OJc-yw-DAn"/>
                 <outlet property="xmlCompiler" destination="591" id="Fnu-Ro-xJu"/>
+            </connections>
+        </customObject>
+        <customObject id="s9s-xO-cMU" customClass="OutlineViewDataSourceNumber">
+            <connections>
+                <outlet property="preferencesManager" destination="592" id="DpC-kJ-MhG"/>
+                <outlet property="xmlCompiler" destination="591" id="MyH-uY-R2d"/>
             </connections>
         </customObject>
     </objects>

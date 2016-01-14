@@ -66,6 +66,7 @@
 		34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D4F83B12C45CF3001819AA /* WorkSpaceData+InputSource.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
 		34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94448193217A80062E422 /* StartAtLoginUtilities.m */; };
+		34D9602D1C4758B900B997A7 /* OutlineViewDataSourceNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D9602C1C4758B900B997A7 /* OutlineViewDataSourceNumber.m */; };
 		34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* inputsourcedef.xml */; };
 		34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB9591128F985A0088B235 /* PreferencesManager.m */; };
 		34FEAE4D148695AE0042D507 /* replacementdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34FEAE4C148695AE0042D507 /* replacementdef.xml */; };
@@ -183,6 +184,8 @@
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
 		34D94447193217A80062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		34D94448193217A80062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
+		34D9602B1C4758B900B997A7 /* OutlineViewDataSourceNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutlineViewDataSourceNumber.h; path = Classes/Preferences/OutlineViewDataSourceNumber.h; sourceTree = "<group>"; };
+		34D9602C1C4758B900B997A7 /* OutlineViewDataSourceNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutlineViewDataSourceNumber.m; path = Classes/Preferences/OutlineViewDataSourceNumber.m; sourceTree = "<group>"; };
 		34F37D53149A2E7800D4694B /* inputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = inputsourcedef.xml; path = Resources/inputsourcedef.xml; sourceTree = "<group>"; };
 		34FB9590128F98510088B235 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
 		34FB9591128F985A0088B235 /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = Classes/PreferencesManager.m; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				34207C021666209F00E7FD08 /* OutlineView.m */,
 				34CB80251C4699970007DE3A /* OutlineViewDataSourceCheckbox.h */,
 				34CB80261C4699970007DE3A /* OutlineViewDataSourceCheckbox.m */,
+				34D9602B1C4758B900B997A7 /* OutlineViewDataSourceNumber.h */,
+				34D9602C1C4758B900B997A7 /* OutlineViewDataSourceNumber.m */,
 				3406F70F1668ED7B00FE1E80 /* PreferencesController.h */,
 				3406F7101668ED7B00FE1E80 /* PreferencesController.m */,
 				34207C031666209F00E7FD08 /* TableView_configlist.h */,
@@ -582,6 +587,7 @@
 				34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */,
 				34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */,
 				3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */,
+				34D9602D1C4758B900B997A7 /* OutlineViewDataSourceNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
