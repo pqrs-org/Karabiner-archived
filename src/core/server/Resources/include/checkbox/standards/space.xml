@@ -172,7 +172,18 @@
     </item>
 
     <item>
-      <name>SandS v2</name>
+      <name>SandS</name>
+      <appendix>* Change the space key to the left shift key.</appendix>
+      <appendix>* Send a space key event when the space key is pressed alone.</appendix>
+
+      <identifier>remap.sands</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::SPACE, KeyCode::SHIFT_L, KeyCode::SPACE</autogen>
+    </item>
+
+    <item>
+      <name>SandS (another version)</name>
+      <appendix>This version keeps the space key behavior while fast typing.</appendix>
+      <appendix></appendix>
       <appendix>* Change the space key to the left shift key.</appendix>
       <appendix>* Send a space key event when the space key is pressed alone.</appendix>
       <appendix></appendix>
