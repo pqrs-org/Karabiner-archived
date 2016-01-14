@@ -1,6 +1,7 @@
 #import "NotificationKeys.h"
 #import "OutlineView.h"
 #import "OutlineViewDataSourceCheckbox.h"
+#import "OutlineViewDataSourceNumber.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
@@ -84,63 +85,14 @@
 }
 
 - (void)load:(BOOL)force {
-  if (force) {
-    if (datasource_) {
-      datasource_ = nil;
-    }
-  }
-
-  if (datasource_) return;
-
   if (ischeckbox_) {
     [outlineViewDataSourceCheckbox_ load:force];
   } else {
-    datasource_ = [xmlCompiler_ preferencepane_number];
+    [outlineViewDataSourceNumber_ load:force];
   }
 }
 
 /* ---------------------------------------------------------------------- */
-- (NSUInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
-  [self load:NO];
-
-  // ----------------------------------------
-  NSArray* a = nil;
-
-  // root object
-  if (!item) {
-    a = datasource_;
-
-  } else {
-    a = item[@"children"];
-  }
-
-  return [a count];
-}
-
-- (id)outlineView:(NSOutlineView*)outlineView child:(NSUInteger)idx ofItem:(id)item {
-  [self load:NO];
-
-  // ----------------------------------------
-  NSArray* a = nil;
-
-  // root object
-  if (!item) {
-    a = datasource_;
-
-  } else {
-    a = item[@"children"];
-  }
-
-  if (!a) return nil;
-  if (idx >= [a count]) return nil;
-  return a[idx];
-}
-
-- (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
-  NSArray* a = item[@"children"];
-  return a ? YES : NO;
-}
-
 - (BOOL)isTextCell:(NSTableColumn*)tableColumn item:(id)item {
   if (ischeckbox_) {
     NSString* identifier = item[@"identifier"];
@@ -217,43 +169,6 @@
   }
 }
 
-- (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-  NSString* identifier = item[@"identifier"];
-
-  if (ischeckbox_) {
-    if ([self isTextCell:tableColumn item:item]) {
-      return nil;
-    } else {
-      return @([preferencesManager_ value:identifier]);
-    }
-
-  } else {
-    NSString* columnIdentifier = [tableColumn identifier];
-
-    if ([columnIdentifier isEqualToString:@"name"]) {
-      return item[columnIdentifier];
-
-    } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
-               [columnIdentifier isEqualToString:@"default"]) {
-      if (!identifier) return nil;
-      return item[columnIdentifier];
-
-    } else if ([columnIdentifier isEqualToString:@"value"]) {
-      if (!identifier) return nil;
-
-      // @(12345) will be @"12,345" in view.
-      // So we return NSString to show numbers without comma.
-      return [[NSString alloc] initWithFormat:@"%d", [preferencesManager_ value:identifier]];
-
-    } else if ([columnIdentifier isEqualToString:@"stepper"]) {
-      if (!identifier) return nil;
-      return @([preferencesManager_ value:identifier]);
-    }
-  }
-
-  return nil;
-}
-
 - (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
   NSNumber* lineCount = item[@"height"];
   __block NSNumber* height = @([outlineView rowHeight]);
@@ -269,58 +184,6 @@
   }
 
   return [height floatValue];
-}
-
-- (void)outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-  NSString* identifier = item[@"identifier"];
-
-  if (identifier) {
-    if (ischeckbox_) {
-      if (![self isTextCell:tableColumn item:item]) {
-        int value = [preferencesManager_ value:identifier];
-        value = !value;
-        [preferencesManager_ setValue:value forName:identifier];
-      }
-
-    } else {
-      NSString* columnIdentifier = [tableColumn identifier];
-      if ([columnIdentifier isEqualToString:@"value"] ||
-          [columnIdentifier isEqualToString:@"stepper"]) {
-        NSInteger newvalue = 0;
-        if ([object isKindOfClass:[NSString class]]) {
-          NSNumberFormatter* f = [NSNumberFormatter new];
-          f.numberStyle = NSNumberFormatterDecimalStyle;
-          NSNumber* n = [f numberFromString:object];
-          if (!n) {
-            return;
-          }
-          newvalue = [n integerValue];
-        } else {
-          newvalue = [object integerValue];
-        }
-
-        if (newvalue < 0) {
-          return;
-        }
-        if (newvalue > 1073741824) {
-          return;
-        }
-
-        [preferencesManager_ setValue:(int)(newvalue) forName:identifier];
-        [outlineView reloadItem:item];
-      }
-    }
-
-  } else {
-    // expand/collapse tree
-    if ([outlineView isExpandable:item]) {
-      if ([outlineView isItemExpanded:item]) {
-        [outlineView collapseItem:item];
-      } else {
-        [outlineView expandItem:item];
-      }
-    }
-  }
 }
 
 /* ---------------------------------------------------------------------- */

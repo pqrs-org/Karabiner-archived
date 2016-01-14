@@ -5,16 +5,17 @@
 @class PreferencesManager;
 @class XMLCompiler;
 @class OutlineViewDataSourceCheckbox;
+@class OutlineViewDataSourceNumber;
 
 @interface OutlineView : NSObject {
 @protected
-  NSArray* datasource_;
   BOOL ischeckbox_;
 
   IBOutlet NSOutlineView* outlineview_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet XMLCompiler* xmlCompiler_;
   IBOutlet OutlineViewDataSourceCheckbox* outlineViewDataSourceCheckbox_;
+  IBOutlet OutlineViewDataSourceNumber* outlineViewDataSourceNumber_;
 
   // for OutlineView_checkbox
   IBOutlet NSSearchField* searchText_;

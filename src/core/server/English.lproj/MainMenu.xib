@@ -1767,6 +1767,7 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="1167" customClass="OutlineView_number">
             <connections>
+                <outlet property="outlineViewDataSourceNumber_" destination="s9s-xO-cMU" id="zxS-Ia-WB6"/>
                 <outlet property="outlineview_" destination="678" id="1170"/>
                 <outlet property="preferencesManager_" destination="592" id="1168"/>
                 <outlet property="xmlCompiler_" destination="591" id="1169"/>
