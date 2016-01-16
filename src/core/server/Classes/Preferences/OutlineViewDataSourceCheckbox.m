@@ -22,10 +22,6 @@
   }
 }
 
-- (BOOL)isTextCell:(NSString*)identifier {
-  return (!identifier || [identifier hasPrefix:@"notsave."]);
-}
-
 - (NSDictionary*)filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
   // ------------------------------------------------------------
   // check children
@@ -128,7 +124,7 @@
 - (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
   NSString* identifier = item[@"identifier"];
 
-  if ([self isTextCell:identifier]) {
+  if (![OutlineViewDataSourceCheckbox isCheckbox:identifier]) {
     return nil;
   }
 
@@ -139,7 +135,7 @@
   NSString* identifier = item[@"identifier"];
 
   if (identifier) {
-    if (![self isTextCell:identifier]) {
+    if ([OutlineViewDataSourceCheckbox isCheckbox:identifier]) {
       int value = [self.preferencesManager value:identifier];
       value = !value;
       [self.preferencesManager setValue:value forName:identifier];
@@ -154,6 +150,14 @@
       }
     }
   }
+}
+
++ (BOOL)isCheckbox:(NSString*)identifier {
+  if (!identifier ||
+      [identifier hasPrefix:@"notsave."]) {
+    return NO;
+  }
+  return YES;
 }
 
 @end
