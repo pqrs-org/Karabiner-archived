@@ -1267,13 +1267,13 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9xz-eA-K3t">
-                                            <rect key="frame" x="14" y="147" width="726" height="323"/>
+                                            <rect key="frame" x="14" y="123" width="726" height="347"/>
                                             <view key="contentView" id="9mK-vH-viB">
-                                                <rect key="frame" x="1" y="1" width="724" height="307"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="331"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="27K-KA-6hE">
-                                                        <rect key="frame" x="15" y="281" width="210" height="18"/>
+                                                        <rect key="frame" x="15" y="305" width="210" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="WZS-lb-Ap5">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1284,7 +1284,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="TIe-Bi-YgY">
-                                                        <rect key="frame" x="25" y="257" width="444" height="18"/>
+                                                        <rect key="frame" x="25" y="281" width="444" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Java apps. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="cu0-ah-J1P">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1295,7 +1295,7 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="l8Y-ol-1AD">
-                                                        <rect key="frame" x="25" y="233" width="457" height="18"/>
+                                                        <rect key="frame" x="25" y="257" width="457" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Preview.app. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="nm8-pK-Ye8">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1338,11 +1338,22 @@ The following settings will not work properly if you disable AXNotifier.
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="7B1-Lp-x4v">
+                                                        <rect key="frame" x="25" y="233" width="482" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Disable window name and role observation in Microsoft Office. (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="N2o-Ib-vs2">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="manageAXNotifier:" target="494" id="jp6-Si-tJF"/>
+                                                            <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInMicrosoftOffice" id="dlJ-l9-job"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="1yU-Fh-Xme" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="17" id="1SK-oZ-yD8"/>
                                                     <constraint firstItem="l8Y-ol-1AD" firstAttribute="top" secondItem="TIe-Bi-YgY" secondAttribute="bottom" constant="10" id="7IS-Op-Qqa"/>
-                                                    <constraint firstItem="1yU-Fh-Xme" firstAttribute="top" secondItem="l8Y-ol-1AD" secondAttribute="bottom" constant="10" id="CIv-RD-PxB"/>
+                                                    <constraint firstItem="1yU-Fh-Xme" firstAttribute="top" secondItem="7B1-Lp-x4v" secondAttribute="bottom" constant="10" id="9E8-Ax-M2G"/>
                                                     <constraint firstAttribute="trailing" secondItem="1yU-Fh-Xme" secondAttribute="trailing" constant="17" id="EqS-sf-YXa"/>
                                                     <constraint firstItem="27K-KA-6hE" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="17" id="F9h-Ye-MA5"/>
                                                     <constraint firstItem="jUH-Ca-wfX" firstAttribute="leading" secondItem="Qz6-Jz-LBo" secondAttribute="trailing" constant="10" id="K8W-t9-bFp"/>
@@ -1351,7 +1362,9 @@ The following settings will not work properly if you disable AXNotifier.
                                                     <constraint firstAttribute="bottom" secondItem="jUH-Ca-wfX" secondAttribute="bottom" constant="10" id="cHb-YD-rpJ"/>
                                                     <constraint firstItem="l8Y-ol-1AD" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="27" id="d25-nq-n6Z"/>
                                                     <constraint firstItem="jUH-Ca-wfX" firstAttribute="top" secondItem="Qz6-Jz-LBo" secondAttribute="top" id="hrw-aV-sQc"/>
+                                                    <constraint firstItem="7B1-Lp-x4v" firstAttribute="top" secondItem="l8Y-ol-1AD" secondAttribute="bottom" constant="10" id="klW-SD-L0A"/>
                                                     <constraint firstItem="TIe-Bi-YgY" firstAttribute="top" secondItem="27K-KA-6hE" secondAttribute="bottom" constant="10" id="lKT-3v-rbj"/>
+                                                    <constraint firstItem="7B1-Lp-x4v" firstAttribute="leading" secondItem="l8Y-ol-1AD" secondAttribute="leading" id="q6M-uN-rcr"/>
                                                     <constraint firstItem="Qz6-Jz-LBo" firstAttribute="leading" secondItem="9mK-vH-viB" secondAttribute="leading" constant="17" id="qop-e6-oIg"/>
                                                     <constraint firstItem="27K-KA-6hE" firstAttribute="top" secondItem="9mK-vH-viB" secondAttribute="top" constant="10" id="w5f-GX-tWP"/>
                                                     <constraint firstItem="Qz6-Jz-LBo" firstAttribute="top" secondItem="1yU-Fh-Xme" secondAttribute="bottom" constant="10" id="whb-Ti-rIb"/>

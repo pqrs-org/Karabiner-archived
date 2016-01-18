@@ -133,6 +133,16 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       }
     }
 
+    // Microsoft Excel.app will reset scrolling by scroll wheel if it is observed.
+    if ([preferences[kAXNotifierDisabledInMicrosoftOffice] boolValue]) {
+      if ([[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Excel"] ||
+          [[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Powerpoint"] ||
+          [[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Word"] ||
+          false) {
+        observable = NO;
+      }
+    }
+
     // ----------------------------------------
     if (observable) {
       pid_t pid = [self.runningApplication processIdentifier];

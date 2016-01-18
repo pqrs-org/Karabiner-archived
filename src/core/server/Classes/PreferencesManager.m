@@ -34,6 +34,7 @@
     kIsAXNotifierEnabled : @YES,
     kAXNotifierDisabledInJavaApps : @YES,
     kAXNotifierDisabledInPreview : @YES,
+    kAXNotifierDisabledInMicrosoftOffice : @YES,
     kUsePreparedSettings : @YES,
     kIsMigratedIsOverwriteKeyRepeat : @NO,
     kIsOverwriteKeyRepeat : @NO,
