@@ -1,12 +1,13 @@
 # Since 10.15.0
 
 * New functions and improvements:
-  * AXNotifier has been disabled in Microsoft Office. (You can enable from Karabiner Preferences.)
   * "Show icon in Dock" setting has been added.
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Mionix Naos 7000 has been supported.
     * Logitech Bluetooth Mouse M555b
   * Prepared settings have been updated.
+* Fixed issues:
+  * Microsoft Excel scroll position is sometimes reset while using scroll wheel.
 
 
 # Version 10.15.0
