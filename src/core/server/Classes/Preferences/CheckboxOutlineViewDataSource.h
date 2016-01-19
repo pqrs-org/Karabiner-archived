@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OutlineViewDataSourceCheckbox : NSObject <NSOutlineViewDataSource>
+@interface CheckboxOutlineViewDataSource : NSObject <NSOutlineViewDataSource>
 
 - (void)load:(BOOL)force;
 - (void)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;

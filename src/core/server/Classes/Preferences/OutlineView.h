@@ -2,10 +2,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OutlineViewDataSourceNumber;
 @class PreferencesManager;
 @class XMLCompiler;
-@class OutlineViewDataSourceCheckbox;
-@class OutlineViewDataSourceNumber;
 
 @interface OutlineView : NSObject {
 @protected
@@ -14,7 +13,6 @@
   IBOutlet NSOutlineView* outlineview_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet XMLCompiler* xmlCompiler_;
-  IBOutlet OutlineViewDataSourceCheckbox* outlineViewDataSourceCheckbox_;
   IBOutlet OutlineViewDataSourceNumber* outlineViewDataSourceNumber_;
 
   // for OutlineView_checkbox

@@ -1,6 +1,6 @@
+#import "CheckboxOutlineViewDataSource.h"
 #import "NotificationKeys.h"
 #import "OutlineView.h"
-#import "OutlineViewDataSourceCheckbox.h"
 #import "OutlineViewDataSourceNumber.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
@@ -9,6 +9,9 @@
   NSMutableDictionary* textsHeightCache_;
   dispatch_queue_t textsHeightQueue_;
 }
+
+@property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
+
 @end
 
 @implementation OutlineView
@@ -86,7 +89,7 @@
 
 - (void)load:(BOOL)force {
   if (ischeckbox_) {
-    [outlineViewDataSourceCheckbox_ load:force];
+    [self.checkboxOutlineViewDataSource load:force];
   } else {
     [outlineViewDataSourceNumber_ load:force];
   }
@@ -191,7 +194,7 @@
   if (ischeckbox_) {
     BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
     NSString* string = [searchText_ stringValue];
-    [outlineViewDataSourceCheckbox_ filterDataSource:isEnabledOnly string:string];
+    [self.checkboxOutlineViewDataSource filterDataSource:isEnabledOnly string:string];
 
     [outlineview_ reloadData];
 

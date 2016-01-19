@@ -1,14 +1,14 @@
-#import "OutlineViewDataSourceCheckbox.h"
+#import "CheckboxOutlineViewDataSource.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
-@interface OutlineViewDataSourceCheckbox ()
+@interface CheckboxOutlineViewDataSource ()
 @property NSMutableArray* dataSource;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @end
 
-@implementation OutlineViewDataSourceCheckbox
+@implementation CheckboxOutlineViewDataSource
 
 - (void)load:(BOOL)force {
   if (force) {
@@ -124,7 +124,7 @@
 - (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
   NSString* identifier = item[@"identifier"];
 
-  if (![OutlineViewDataSourceCheckbox isCheckbox:identifier]) {
+  if (![CheckboxOutlineViewDataSource isCheckbox:identifier]) {
     return nil;
   }
 
@@ -135,7 +135,7 @@
   NSString* identifier = item[@"identifier"];
 
   if (identifier) {
-    if ([OutlineViewDataSourceCheckbox isCheckbox:identifier]) {
+    if ([CheckboxOutlineViewDataSource isCheckbox:identifier]) {
       int value = [self.preferencesManager value:identifier];
       value = !value;
       [self.preferencesManager setValue:value forName:identifier];

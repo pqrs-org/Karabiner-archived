@@ -1770,7 +1770,7 @@ Debug Mode Guide</string>
         </window>
         <customObject id="710" customClass="OutlineView_checkbox">
             <connections>
-                <outlet property="outlineViewDataSourceCheckbox_" destination="Vvy-Zk-dMA" id="4Kg-9f-kzM"/>
+                <outlet property="checkboxOutlineViewDataSource" destination="Vvy-Zk-dMA" id="6ic-zw-tvI"/>
                 <outlet property="outlineview_" destination="672" id="713"/>
                 <outlet property="preferencesManager_" destination="592" id="717"/>
                 <outlet property="searchText_" destination="666" id="712"/>
@@ -1906,7 +1906,7 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="1320" customClass="IOHIDPostEventWrapper"/>
         <userDefaultsController representsSharedInstance="YES" id="1176"/>
-        <customObject id="Vvy-Zk-dMA" customClass="OutlineViewDataSourceCheckbox">
+        <customObject id="Vvy-Zk-dMA" customClass="CheckboxOutlineViewDataSource">
             <connections>
                 <outlet property="preferencesManager" destination="592" id="OJc-yw-DAn"/>
                 <outlet property="xmlCompiler" destination="591" id="Fnu-Ro-xJu"/>
