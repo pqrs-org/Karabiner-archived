@@ -1912,12 +1912,27 @@ Debug Mode Guide</string>
                 <outlet property="xmlCompiler" destination="591" id="Fnu-Ro-xJu"/>
             </connections>
         </customObject>
+        <customObject id="nHm-UC-8X2" customClass="CheckboxOutlineViewDelegate">
+            <connections>
+                <outlet property="wrappedTextHeightCalculator" destination="s09-5a-Znl" id="E43-sU-E1f"/>
+            </connections>
+        </customObject>
         <customObject id="s9s-xO-cMU" customClass="OutlineViewDataSourceNumber">
             <connections>
                 <outlet property="preferencesManager" destination="592" id="DpC-kJ-MhG"/>
                 <outlet property="xmlCompiler" destination="591" id="MyH-uY-R2d"/>
             </connections>
         </customObject>
+        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="400" id="s09-5a-Znl">
+            <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="WrappedTextHeightCalculator" id="hV0-P4-7eX">
+                <font key="font" metaFont="system"/>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="747" y="790"/>
+        </textField>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
