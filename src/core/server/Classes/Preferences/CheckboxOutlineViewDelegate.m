@@ -1,10 +1,19 @@
+#import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
+#import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxOutlineViewDelegate.h"
+#import "PreferencesManager.h"
+
+#define kLabelLeadingSpaceWithCheckbox 24
+#define kLabelLeadingSpaceWithoutCheckbox 4
+#define kLabelTopSpace 2
+#define kLabelBottomSpace 2
 
 @interface CheckboxOutlineViewDelegate () {
   dispatch_queue_t textsHeightQueue_;
 }
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property NSFont* font;
 @end
 
@@ -22,10 +31,60 @@
 }
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
-  CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"OutlineViewDelegateTextCellView" owner:self];
-  result.textField.stringValue = item[@"name"];
+  NSString* identifier = item[@"identifier"];
+  NSString* name = item[@"name"];
+  NSString* style = item[@"style"];
+  NSInteger preferredMaxLayoutWidth = [item[@"preferredMaxLayoutWidth"] integerValue];
+
+  CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
+  result.settingIdentifier = identifier;
+  result.preferencesManager = self.preferencesManager;
+
+  result.textField.stringValue = name;
   result.textField.font = self.font;
-  result.settingIdentifier = item[@"identifier"];
+  if (preferredMaxLayoutWidth) {
+    result.textField.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
+  }
+
+  result.labelTopSpace.constant = kLabelTopSpace;
+  result.labelBottomSpace.constant = kLabelBottomSpace;
+
+  if (![CheckboxOutlineViewDataSource isCheckbox:identifier]) {
+    result.checkbox.enabled = NO;
+    result.checkbox.hidden = YES;
+    result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
+  } else {
+    result.checkbox.enabled = YES;
+    result.checkbox.hidden = NO;
+    result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
+
+    if ([self.preferencesManager value:identifier]) {
+      result.checkbox.state = NSOnState;
+    } else {
+      result.checkbox.state = NSOffState;
+    }
+  }
+
+  if ([style isEqualToString:@"caution"]) {
+    result.background.hidden = NO;
+    result.background.color = [NSColor greenColor];
+    result.background.needsDisplay = YES;
+    result.textField.textColor = [NSColor blackColor];
+  } else if ([style isEqualToString:@"important"]) {
+    result.background.hidden = NO;
+    result.background.color = [NSColor orangeColor];
+    result.background.needsDisplay = YES;
+    result.textField.textColor = [NSColor blackColor];
+  } else if ([style isEqualToString:@"slight"]) {
+    result.background.hidden = NO;
+    result.background.color = [NSColor lightGrayColor];
+    result.background.needsDisplay = YES;
+    result.textField.textColor = [NSColor blackColor];
+  } else {
+    result.background.hidden = YES;
+    result.textField.textColor = [NSColor textColor];
+  }
+
   return result;
 }
 
@@ -33,10 +92,18 @@
 // So, we need to calculate the height by using wrappedTextHeightCalculator.
 
 - (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
+  NSString* identifier = item[@"identifier"];
+
   NSTableColumn* column = [outlineView outlineTableColumn];
 
   CGFloat indentation = outlineView.indentationPerLevel * ([outlineView levelForItem:item] + 1);
-  NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - 24 - indentation;
+  NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - indentation;
+
+  if ([CheckboxOutlineViewDataSource isCheckbox:identifier]) {
+    preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
+  } else {
+    preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;
+  }
 
   if ([item[@"preferredMaxLayoutWidth"] integerValue] != preferredMaxLayoutWidth) {
     dispatch_sync(textsHeightQueue_, ^{
@@ -47,8 +114,7 @@
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 
       NSSize size = [self.wrappedTextHeightCalculator fittingSize];
-      NSInteger margin = 2;
-      item[@"height"] = @(size.height + margin * 2);
+      item[@"height"] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
     });
   }
 

@@ -35,6 +35,7 @@
 		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
 		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
+		346E2B5C1C5129A500719E5E /* CheckboxBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 346E2B5B1C5129A500719E5E /* CheckboxBackgroundView.m */; };
 		34738785192589CC00F605BD /* windownamedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34738784192589CC00F605BD /* windownamedef.xml */; };
 		347828F613EE5F3400D50AB1 /* karabiner_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* karabiner_pub.pem */; };
 		3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */; };
@@ -144,6 +145,8 @@
 		345647411346AE1700FD0C38 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
+		346E2B5A1C5129A500719E5E /* CheckboxBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxBackgroundView.h; path = Classes/Preferences/CheckboxBackgroundView.h; sourceTree = "<group>"; };
+		346E2B5B1C5129A500719E5E /* CheckboxBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxBackgroundView.m; path = Classes/Preferences/CheckboxBackgroundView.m; sourceTree = "<group>"; };
 		34738784192589CC00F605BD /* windownamedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = windownamedef.xml; path = Resources/windownamedef.xml; sourceTree = "<group>"; };
 		347828F513EE5F3400D50AB1 /* karabiner_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = karabiner_pub.pem; path = Resources/karabiner_pub.pem; sourceTree = "<group>"; };
 		3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkopenurldef.xml; path = Resources/vkopenurldef.xml; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 		34207BFB1666209100E7FD08 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				346E2B5A1C5129A500719E5E /* CheckboxBackgroundView.h */,
+				346E2B5B1C5129A500719E5E /* CheckboxBackgroundView.m */,
 				34F3FF521C4E9C9300B9B82C /* CheckboxCellView.h */,
 				34F3FF531C4E9C9300B9B82C /* CheckboxCellView.m */,
 				34F3FF551C4E9CE300B9B82C /* CheckboxOutlineView.h */,
@@ -602,6 +607,7 @@
 				34A5572F16EA075E000E5399 /* StatusMessageView.m in Sources */,
 				34B682EA1AC845AD00915847 /* StatusMessageManager.m in Sources */,
 				34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */,
+				346E2B5C1C5129A500719E5E /* CheckboxBackgroundView.m in Sources */,
 				34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */,
 				3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */,
 				34D9602D1C4758B900B997A7 /* OutlineViewDataSourceNumber.m in Sources */,
