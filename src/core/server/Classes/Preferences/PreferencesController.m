@@ -1,6 +1,5 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
-#import "CheckboxOutlineView.h"
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
@@ -12,7 +11,7 @@
 #include <sys/sysctl.h>
 
 @interface PreferencesController()
-@property(weak) IBOutlet CheckboxOutlineView* checkboxOutlineView;
+@property(weak) IBOutlet NSOutlineView* checkboxOutlineView;
 
 @end
 

@@ -39,6 +39,7 @@
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.settingIdentifier = identifier;
   result.preferencesManager = self.preferencesManager;
+  result.outlineView = outlineView;
 
   result.textField.stringValue = name;
   result.textField.font = self.font;
@@ -50,12 +51,10 @@
   result.labelBottomSpace.constant = kLabelBottomSpace;
 
   if (![CheckboxOutlineViewDataSource isCheckbox:identifier]) {
-    result.checkbox.enabled = NO;
-    result.checkbox.hidden = YES;
+    result.checkbox.imagePosition = NSNoImage;
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
   } else {
-    result.checkbox.enabled = YES;
-    result.checkbox.hidden = NO;
+    result.checkbox.imagePosition = NSImageLeft;
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
 
     if ([self.preferencesManager value:identifier]) {

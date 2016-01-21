@@ -13,6 +13,5 @@
 @property(weak) IBOutlet NSLayoutConstraint* labelBottomSpace;
 @property NSString* settingIdentifier;
 @property(weak) PreferencesManager* preferencesManager;
-
-- (void)toggleCheckboxState;
+@property(weak) NSOutlineView* outlineView;
 @end
