@@ -11,7 +11,19 @@
   NSInteger row = [self rowAtPoint:point];
   if (row >= 0) {
     CheckboxCellView* view = [self viewAtColumn:0 row:row makeIfNecessary:NO];
-    [view toggleCheckboxState];
+    if (view.checkbox.enabled) {
+      [view toggleCheckboxState];
+    } else {
+      // expand/collapse tree
+      NSDictionary* item = [self itemAtRow:row];
+      if ([self isExpandable:item]) {
+        if ([self isItemExpanded:item]) {
+          [self collapseItem:item];
+        } else {
+          [self expandItem:item];
+        }
+      }
+    }
   }
 }
 
