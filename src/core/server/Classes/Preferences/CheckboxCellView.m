@@ -1,11 +1,6 @@
 #import "CheckboxCellView.h"
 #import "PreferencesManager.h"
 
-@interface CheckboxCellView()
-@property(weak) IBOutlet PreferencesManager* preferencesManager;
-
-@end
-
 @implementation CheckboxCellView
 
 - (void)toggleCheckboxState {
@@ -20,7 +15,10 @@
 }
 
 - (IBAction)valueChanged:(id)sender {
-  NSLog(@"valueChanged: %@", self.settingIdentifier);
+  if (self.checkbox.enabled) {
+    int value = (self.checkbox.state == NSOnState);
+    [self.preferencesManager setValue:value forName:self.settingIdentifier];
+  }
 }
 
 @end
