@@ -1,5 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
+#import "CheckboxOutlineView.h"
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
 #import "PreferencesController.h"
@@ -9,6 +10,11 @@
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
+
+@interface PreferencesController()
+@property(weak) IBOutlet CheckboxOutlineView* checkboxOutlineView;
+
+@end
 
 @implementation PreferencesController
 
@@ -117,6 +123,10 @@
 
 - (void)windowWillClose:(NSNotification*)notification {
   [self sendStatusWindowPreferencesNotification:nil];
+}
+
+- (void)windowDidResize:(NSNotification*)notification {
+  [self.checkboxOutlineView reloadData];
 }
 
 /* ---------------------------------------------------------------------- */
