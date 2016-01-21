@@ -3,9 +3,11 @@
 @import Cocoa;
 
 @class PreferencesManager;
+@class CheckboxBackgroundView;
 
 @interface CheckboxCellView : NSTableCellView
 @property(weak) IBOutlet NSButton* checkbox;
+@property(weak) IBOutlet CheckboxBackgroundView* background;
 @property(weak) IBOutlet NSLayoutConstraint* labelLeadingSpace;
 @property(weak) IBOutlet NSLayoutConstraint* labelTopSpace;
 @property(weak) IBOutlet NSLayoutConstraint* labelBottomSpace;
