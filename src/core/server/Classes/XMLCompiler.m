@@ -39,12 +39,8 @@
     {
       const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(child);
       if (name) {
-        dict[@"name"] = @(name);
+        dict[@"name"] = [@(name) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
       }
-    }
-    {
-      int name_line_count = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(child);
-      dict[@"height"] = @(name_line_count);
     }
     {
       const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
@@ -77,11 +73,8 @@
 }
 
 - (void)insert_caution_into_preferencepane_checkbox:(NSString*)message {
-  NSUInteger height = [[message componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] count];
-
   NSMutableDictionary* dict = [NSMutableDictionary new];
-  dict[@"name"] = message;
-  dict[@"height"] = @(height);
+  dict[@"name"] = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
   dict[@"string_for_filter"] = [message lowercaseString];
   dict[@"style"] = @("caution");
 
