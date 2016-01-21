@@ -109,33 +109,7 @@
   if (!tableColumn) return nil;
 
   if (ischeckbox_) {
-    NSButtonCell* cell = [NSButtonCell new];
-    [cell setFont:[OutlineView font]];
-    [cell setButtonType:NSSwitchButton];
-    [cell setTitle:item[@"name"]];
-
-    {
-      NSColor* backgroundColor = nil;
-      NSString* style = item[@"style"];
-      if ([style isEqualToString:@"caution"]) {
-        backgroundColor = [NSColor greenColor];
-      } else if ([style isEqualToString:@"important"]) {
-        backgroundColor = [NSColor orangeColor];
-      } else if ([style isEqualToString:@"slight"]) {
-        backgroundColor = [NSColor lightGrayColor];
-      }
-
-      if (backgroundColor) {
-        [cell setBackgroundColor:backgroundColor];
-      }
-    }
-
-    if ([self isTextCell:tableColumn item:item]) {
-      [cell setImagePosition:NSNoImage];
-    }
-
-    return cell;
-
+    return nil;
   } else {
     NSString* identifier = item[@"identifier"];
     NSString* columnIdentifier = [tableColumn identifier];
