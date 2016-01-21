@@ -122,34 +122,10 @@
 }
 
 - (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-  NSString* identifier = item[@"identifier"];
-
-  if (![CheckboxOutlineViewDataSource isCheckbox:identifier]) {
-    return nil;
-  }
-
-  return @([self.preferencesManager value:identifier]);
+  return nil;
 }
 
 - (void)outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-  NSString* identifier = item[@"identifier"];
-
-  if (identifier) {
-    if ([CheckboxOutlineViewDataSource isCheckbox:identifier]) {
-      int value = [self.preferencesManager value:identifier];
-      value = !value;
-      [self.preferencesManager setValue:value forName:identifier];
-    }
-  } else {
-    // expand/collapse tree
-    if ([outlineView isExpandable:item]) {
-      if ([outlineView isItemExpanded:item]) {
-        [outlineView collapseItem:item];
-      } else {
-        [outlineView expandItem:item];
-      }
-    }
-  }
 }
 
 + (BOOL)isCheckbox:(NSString*)identifier {
