@@ -5,6 +5,7 @@
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Mionix Naos 7000 has been supported.
     * Logitech Bluetooth Mouse M555b
+  * The word-wrap property of setting description-wrap became break-word.
   * Prepared settings have been updated.
 * Fixed issues:
   * Microsoft Excel scroll position is sometimes reset while using scroll wheel.
