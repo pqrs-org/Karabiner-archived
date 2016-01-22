@@ -170,24 +170,22 @@
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                 <prototypeCellViews>
                                                                     <tableCellView identifier="CheckboxCellView" id="gNO-xU-zAR" customClass="CheckboxCellView">
-                                                                        <rect key="frame" x="1" y="1" width="716" height="38"/>
+                                                                        <rect key="frame" x="1" y="1" width="716" height="21"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="NK9-zh-F69" customClass="CheckboxBackgroundView">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="716" height="38"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="716" height="21"/>
                                                                             </customView>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsv-ed-2re">
-                                                                                <rect key="frame" x="22" y="2" width="696" height="34"/>
-                                                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="1ol-YY-B0g">
+                                                                                <rect key="frame" x="22" y="2" width="696" height="17"/>
+                                                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="1ol-YY-B0g">
                                                                                     <font key="font" metaFont="system"/>
-                                                                                    <string key="title">Multiline Label
-Multiline Label</string>
                                                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                 </textFieldCell>
                                                                             </textField>
                                                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="RVp-OD-GpI">
-                                                                                <rect key="frame" x="2" y="-2" width="716" height="42"/>
+                                                                                <rect key="frame" x="2" y="-2" width="716" height="25"/>
                                                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Ktg-no-uF9">
                                                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                     <font key="font" metaFont="system"/>
