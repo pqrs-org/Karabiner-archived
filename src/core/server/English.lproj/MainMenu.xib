@@ -157,7 +157,7 @@
                                                         <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
-                                                            <tableColumn identifier="checkbox" editable="NO" width="716" minWidth="600" maxWidth="1000000" id="673">
+                                                            <tableColumn identifier="" editable="NO" width="716" minWidth="600" maxWidth="1000000" id="673">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="remapping">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -187,7 +187,7 @@ Multiline Label</string>
                                                                                 </textFieldCell>
                                                                             </textField>
                                                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="RVp-OD-GpI">
-                                                                                <rect key="frame" x="2" y="0.0" width="716" height="38"/>
+                                                                                <rect key="frame" x="2" y="-2" width="716" height="42"/>
                                                                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Ktg-no-uF9">
                                                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                     <font key="font" metaFont="system"/>
@@ -198,16 +198,16 @@ Multiline Label</string>
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
-                                                                            <constraint firstItem="RVp-OD-GpI" firstAttribute="bottom" secondItem="hsv-ed-2re" secondAttribute="bottom" id="Fvy-a2-25Z"/>
+                                                                            <constraint firstItem="RVp-OD-GpI" firstAttribute="top" secondItem="gNO-xU-zAR" secondAttribute="top" id="Goe-Xc-mha"/>
                                                                             <constraint firstItem="NK9-zh-F69" firstAttribute="leading" secondItem="gNO-xU-zAR" secondAttribute="leading" id="K4T-yF-XzB"/>
-                                                                            <constraint firstItem="RVp-OD-GpI" firstAttribute="trailing" secondItem="hsv-ed-2re" secondAttribute="trailing" id="LNl-cU-nuf"/>
                                                                             <constraint firstAttribute="bottom" secondItem="hsv-ed-2re" secondAttribute="bottom" constant="2" id="VOr-IO-UPS"/>
                                                                             <constraint firstItem="hsv-ed-2re" firstAttribute="leading" secondItem="gNO-xU-zAR" secondAttribute="leading" constant="24" id="W3n-3k-enk"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="RVp-OD-GpI" secondAttribute="trailing" id="WMJ-UE-o8f"/>
                                                                             <constraint firstItem="RVp-OD-GpI" firstAttribute="leading" secondItem="gNO-xU-zAR" secondAttribute="leading" constant="4" id="Zta-HQ-mx1"/>
                                                                             <constraint firstAttribute="bottom" secondItem="NK9-zh-F69" secondAttribute="bottom" id="coE-W1-5yw"/>
                                                                             <constraint firstAttribute="trailing" secondItem="hsv-ed-2re" secondAttribute="trailing" id="mYy-cO-xJr"/>
                                                                             <constraint firstItem="hsv-ed-2re" firstAttribute="top" secondItem="gNO-xU-zAR" secondAttribute="top" constant="2" id="qxd-Rb-ayj"/>
-                                                                            <constraint firstItem="RVp-OD-GpI" firstAttribute="top" secondItem="hsv-ed-2re" secondAttribute="top" id="x7R-wr-QBu"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="RVp-OD-GpI" secondAttribute="bottom" id="rAn-24-LC0"/>
                                                                             <constraint firstItem="NK9-zh-F69" firstAttribute="top" secondItem="gNO-xU-zAR" secondAttribute="top" id="x8a-Tb-fJK"/>
                                                                             <constraint firstAttribute="trailing" secondItem="NK9-zh-F69" secondAttribute="trailing" id="yrf-Z2-LJv"/>
                                                                         </constraints>
