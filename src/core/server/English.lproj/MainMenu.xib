@@ -212,6 +212,7 @@
                                                                         <connections>
                                                                             <outlet property="background" destination="NK9-zh-F69" id="OUg-Fm-CaG"/>
                                                                             <outlet property="checkbox" destination="RVp-OD-GpI" id="Bwz-0D-Ktj"/>
+                                                                            <outlet property="checkboxOutlineViewDelegate" destination="nHm-UC-8X2" id="GHJ-bA-vHN"/>
                                                                             <outlet property="labelBottomSpace" destination="VOr-IO-UPS" id="fog-gp-8Jr"/>
                                                                             <outlet property="labelLeadingSpace" destination="W3n-3k-enk" id="Wkh-BC-ecR"/>
                                                                             <outlet property="labelTopSpace" destination="qxd-Rb-ayj" id="lYs-GA-hzB"/>
@@ -1966,6 +1967,7 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="nHm-UC-8X2" customClass="CheckboxOutlineViewDelegate">
             <connections>
+                <outlet property="outlineView" destination="672" id="bGs-5C-77c"/>
                 <outlet property="preferencesManager" destination="592" id="bqJ-uv-sah"/>
                 <outlet property="wrappedTextHeightCalculator" destination="s09-5a-Znl" id="E43-sU-E1f"/>
             </connections>

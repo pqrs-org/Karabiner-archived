@@ -13,7 +13,6 @@
   dispatch_queue_t textsHeightQueue_;
 }
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
-@property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property NSFont* font;
 @end
 
@@ -38,8 +37,6 @@
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.settingIdentifier = identifier;
-  result.preferencesManager = self.preferencesManager;
-  result.outlineView = outlineView;
 
   result.textField.stringValue = name;
   result.textField.font = self.font;

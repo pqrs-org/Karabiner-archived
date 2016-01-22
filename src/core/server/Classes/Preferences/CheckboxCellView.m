@@ -1,27 +1,28 @@
 #import "CheckboxCellView.h"
+#import "CheckboxOutlineViewDelegate.h"
 #import "PreferencesManager.h"
 
 @implementation CheckboxCellView
 
 - (IBAction)valueChanged:(id)sender {
   // select row
-  NSInteger row = [self.outlineView rowForView:self];
-  [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
-  [[self.outlineView window] makeFirstResponder:self.outlineView];
+  NSInteger row = [self.checkboxOutlineViewDelegate.outlineView rowForView:self];
+  [self.checkboxOutlineViewDelegate.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
+  [[self.checkboxOutlineViewDelegate.outlineView window] makeFirstResponder:self.checkboxOutlineViewDelegate.outlineView];
 
   // toggle setting
   if (self.checkbox.imagePosition != NSNoImage) {
     int value = (self.checkbox.state == NSOnState);
-    [self.preferencesManager setValue:value forName:self.settingIdentifier];
+    [self.checkboxOutlineViewDelegate.preferencesManager setValue:value forName:self.settingIdentifier];
 
   } else {
     // expand/collapse tree
-    NSDictionary* item = [self.outlineView itemAtRow:row];
-    if ([self.outlineView isExpandable:item]) {
-      if ([self.outlineView isItemExpanded:item]) {
-        [self.outlineView collapseItem:item];
+    NSDictionary* item = [self.checkboxOutlineViewDelegate.outlineView itemAtRow:row];
+    if ([self.checkboxOutlineViewDelegate.outlineView isExpandable:item]) {
+      if ([self.checkboxOutlineViewDelegate.outlineView isItemExpanded:item]) {
+        [self.checkboxOutlineViewDelegate.outlineView collapseItem:item];
       } else {
-        [self.outlineView expandItem:item];
+        [self.checkboxOutlineViewDelegate.outlineView expandItem:item];
       }
     }
   }

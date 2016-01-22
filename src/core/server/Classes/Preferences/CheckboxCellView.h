@@ -2,8 +2,8 @@
 
 @import Cocoa;
 
-@class PreferencesManager;
 @class CheckboxBackgroundView;
+@class CheckboxOutlineViewDelegate;
 
 @interface CheckboxCellView : NSTableCellView
 @property(weak) IBOutlet NSButton* checkbox;
@@ -11,7 +11,6 @@
 @property(weak) IBOutlet NSLayoutConstraint* labelLeadingSpace;
 @property(weak) IBOutlet NSLayoutConstraint* labelTopSpace;
 @property(weak) IBOutlet NSLayoutConstraint* labelBottomSpace;
+@property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
 @property NSString* settingIdentifier;
-@property(weak) PreferencesManager* preferencesManager;
-@property(weak) NSOutlineView* outlineView;
 @end
