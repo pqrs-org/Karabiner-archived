@@ -52,7 +52,11 @@
       <name>Enable in Xcode.</name>
       <identifier>remap.hjkl_arrow_xcode</identifier>
       <only>XCODE</only>
-      <uielementrole_not>AXTextField, AXTextArea</uielementrole_not>
+      <uielementrole_not>
+        AXTextField,
+        AXTextArea,
+        AXComboBox,
+      </uielementrole_not>
       <modifier_only>
         ModifierFlag::NONE,
         ModifierFlag::SHIFT_L | ModifierFlag::NONE,
