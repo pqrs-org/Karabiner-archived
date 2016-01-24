@@ -120,7 +120,6 @@
   // Check filter condition is changed from previous filterDataSource.
   FilterCondition* filterCondition = [[FilterCondition alloc] init:isEnabledOnly string:string];
   if ([self.filterCondition isEqualToFilterCondition:filterCondition]) {
-    NSLog(@"%@", filterCondition.string);
     return NO;
   }
 
