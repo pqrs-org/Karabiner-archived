@@ -182,12 +182,10 @@
 
 - (IBAction)expand:(id)sender {
   [outlineview_ expandItem:nil expandChildren:YES];
-  [outlineview_ setNeedsDisplay:YES];
 }
 
 - (IBAction)collapse:(id)sender {
   [outlineview_ collapseItem:nil collapseChildren:YES];
-  [outlineview_ setNeedsDisplay:YES];
 }
 
 @end
