@@ -40,12 +40,12 @@ public:
     return getvalue(v, 1);
   }
   static unsigned int get_repeat_consumer_initial_wait(void) {
-    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_initial_wait);
-    return getvalue(v, 10);
+    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_initial_wait);
+    return getvalue(v, 250);
   }
   static unsigned int get_repeat_consumer_wait(void) {
-    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_consumer_wait);
-    return getvalue(v, 10);
+    int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_repeat_wait);
+    return getvalue(v, 33);
   }
   static unsigned int get_wait_before_and_after_a_modifier_key_event(void) {
     int v = get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_wait_before_and_after_a_modifier_key_event);

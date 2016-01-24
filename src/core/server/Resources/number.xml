@@ -25,18 +25,6 @@
   </item>
 
   <item>
-    <name>Media Keys Repeat</name>
-    <item>
-      <name>Delay Until Repeat</name>
-      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.consumer_initial_wait</identifier>
-    </item>
-    <item>
-      <name>Key Repeat</name>
-      <identifier essential="true" default="100" step="10" baseunit="ms">repeat.consumer_wait</identifier>
-    </item>
-  </item>
-
-  <item>
     <name>Ignore bouncing/chattering events</name>
     <item>
       <name>Ignore threshold for keyboards.</name>
