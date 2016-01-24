@@ -6,6 +6,7 @@
     * Mionix Naos 7000 has been supported.
     * Logitech Bluetooth Mouse M555b
   * The word-wrap property of setting description in Preferences became break-word.
+  * The consumer keys (media keys) repeat values has been synchronized with the key repeat values.
   * Prepared settings have been updated.
 * Fixed issues:
   * Microsoft Excel scroll position is sometimes reset while using scroll wheel.
