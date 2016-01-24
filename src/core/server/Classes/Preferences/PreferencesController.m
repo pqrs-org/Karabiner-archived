@@ -10,9 +10,9 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
-@interface PreferencesController()
+@interface PreferencesController ()
 @property(weak) IBOutlet NSOutlineView* checkboxOutlineView;
-
+@property NSTimer* resizeTimer;
 @end
 
 @implementation PreferencesController
@@ -125,7 +125,19 @@
 }
 
 - (void)windowDidResize:(NSNotification*)notification {
-  [self.checkboxOutlineView reloadData];
+  [self.resizeTimer invalidate];
+
+  self.resizeTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                      target:self
+                                                    selector:@selector(reloadCheckboxOutlineView:)
+                                                    userInfo:nil
+                                                     repeats:NO];
+}
+
+- (void)reloadCheckboxOutlineView:(NSTimer*)timer {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.checkboxOutlineView reloadData];
+  });
 }
 
 /* ---------------------------------------------------------------------- */
