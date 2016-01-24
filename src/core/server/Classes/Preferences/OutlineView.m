@@ -168,14 +168,14 @@
   if (ischeckbox_) {
     BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
     NSString* string = [searchText_ stringValue];
-    [self.checkboxOutlineViewDataSource filterDataSource:isEnabledOnly string:string];
+    if ([self.checkboxOutlineViewDataSource filterDataSource:isEnabledOnly string:string]) {
+      [outlineview_ reloadData];
 
-    [outlineview_ reloadData];
-
-    if ([string length] == 0 && isEnabledOnly == NO) {
-      [outlineview_ collapseItem:nil collapseChildren:YES];
-    } else {
-      [outlineview_ expandItem:nil expandChildren:YES];
+      if ([string length] == 0 && isEnabledOnly == NO) {
+        [outlineview_ collapseItem:nil collapseChildren:YES];
+      } else {
+        [outlineview_ expandItem:nil expandChildren:YES];
+      }
     }
   }
 }
