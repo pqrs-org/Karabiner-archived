@@ -66,8 +66,6 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compil
 const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
 
-int pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
-
 const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
 
@@ -90,8 +88,6 @@ pqrs_xml_compiler_get_preferences_number_node_tree_child(const pqrs_xml_compiler
 
 const char*
 pqrs_xml_compiler_get_preferences_number_node_tree_name(const pqrs_xml_compiler_preferences_number_node_tree* p);
-
-int pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(const pqrs_xml_compiler_preferences_number_node_tree* p);
 
 const char*
 pqrs_xml_compiler_get_preferences_number_node_tree_identifier(const pqrs_xml_compiler_preferences_number_node_tree* p);

@@ -105,10 +105,6 @@
       }
     }
     {
-      int name_line_count = pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(child);
-      dict[@"height"] = @(name_line_count);
-    }
-    {
       const char* identifier = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(child);
       if (identifier) {
         dict[@"identifier"] = @(identifier);

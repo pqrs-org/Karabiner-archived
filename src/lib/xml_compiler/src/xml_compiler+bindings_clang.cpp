@@ -266,13 +266,6 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compile
   return (node_tree->get_node()).get_name().c_str();
 }
 
-int pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_line_count(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
-  auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (!node_tree) return 0;
-
-  return (node_tree->get_node()).get_name_line_count();
-}
-
 const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_for_filter(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
@@ -344,13 +337,6 @@ pqrs_xml_compiler_get_preferences_number_node_tree_name(const pqrs_xml_compiler_
   if (!node_tree) return nullptr;
 
   return (node_tree->get_node()).get_name().c_str();
-}
-
-int pqrs_xml_compiler_get_preferences_number_node_tree_name_line_count(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
-  if (!node_tree) return 0;
-
-  return (node_tree->get_node()).get_name_line_count();
 }
 
 const char*

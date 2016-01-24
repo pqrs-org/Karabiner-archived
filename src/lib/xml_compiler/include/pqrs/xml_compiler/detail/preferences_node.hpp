@@ -2,14 +2,12 @@
 
 class preferences_node {
 protected:
-  preferences_node(void) : name_line_count_(1),
-                           default_value_(0) {}
+  preferences_node(void) : default_value_(0) {}
 
 public:
   virtual ~preferences_node(void) {}
 
   const std::string& get_name(void) const { return name_; }
-  int get_name_line_count(void) const { return name_line_count_; }
   const std::string& get_identifier(void) const { return identifier_; }
   int get_default_value(void) const { return default_value_; }
   const std::string& get_style(void) const { return style_; }
@@ -18,7 +16,6 @@ protected:
   bool handle_name_and_appendix_(const extracted_ptree::node& it);
 
   std::string name_;
-  int name_line_count_;
   std::string identifier_;
   int default_value_;
   std::string style_;

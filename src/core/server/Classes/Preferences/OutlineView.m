@@ -5,13 +5,8 @@
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
-@interface OutlineView () {
-  NSMutableDictionary* textsHeightCache_;
-  dispatch_queue_t textsHeightQueue_;
-}
-
+@interface OutlineView ()
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
-
 @end
 
 @implementation OutlineView
@@ -46,24 +41,10 @@
   return [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
 }
 
-+ (CGFloat)textsHeight:(NSUInteger)lineCount {
-  if (lineCount == 0) return 0.0f;
-
-  NSString* line = @"gM\n";
-  NSUInteger length = [line length] * lineCount - 1; // skip last '\n'
-  NSString* texts = [[NSString string] stringByPaddingToLength:length withString:line startingAtIndex:0];
-  NSDictionary* attributes = @{NSFontAttributeName : [OutlineView font]};
-  NSSize size = [texts sizeWithAttributes:attributes];
-  return size.height;
-}
-
 - (id)init {
   self = [super init];
 
   if (self) {
-    textsHeightCache_ = [NSMutableDictionary new];
-    textsHeightQueue_ = dispatch_queue_create("org.pqrs.Karabiner.OutlineView.textsHeightQueue_", NULL);
-
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_PreferencesChanged:)
                                                  name:kPreferencesChangedNotification
@@ -144,23 +125,6 @@
 
     return cell;
   }
-}
-
-- (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
-  NSNumber* lineCount = item[@"height"];
-  __block NSNumber* height = @([outlineView rowHeight]);
-
-  if ([lineCount integerValue] > 1) {
-    dispatch_sync(textsHeightQueue_, ^{
-      if (textsHeightCache_[lineCount] == nil) {
-        textsHeightCache_[lineCount] = @([OutlineView textsHeight:[lineCount unsignedIntegerValue]]);
-      }
-      // We add [outlineView rowHeight] as vertical margin.
-      height = @([textsHeightCache_[lineCount] floatValue] + [outlineView rowHeight]);
-    });
-  }
-
-  return [height floatValue];
 }
 
 /* ---------------------------------------------------------------------- */

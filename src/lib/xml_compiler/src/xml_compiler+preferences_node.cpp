@@ -5,7 +5,6 @@ bool xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_p
   if (it.get_tag_name() == "name") {
     if (!name_.empty()) {
       name_ += "\n";
-      ++name_line_count_;
     }
     name_ += boost::trim_copy(it.get_data());
 
@@ -23,7 +22,6 @@ bool xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_p
   } else if (it.get_tag_name() == "appendix") {
     if (!name_.empty()) {
       name_ += "\n";
-      ++name_line_count_;
     }
     name_ += "  ";
     name_ += boost::trim_copy(it.get_data());
