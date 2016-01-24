@@ -5,27 +5,44 @@
 @implementation CheckboxCellView
 
 - (IBAction)valueChanged:(id)sender {
-  // select row
-  NSInteger row = [self.checkboxOutlineViewDelegate.outlineView rowForView:self];
-  [self.checkboxOutlineViewDelegate.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
-  [[self.checkboxOutlineViewDelegate.outlineView window] makeFirstResponder:self.checkboxOutlineViewDelegate.outlineView];
-
-  // toggle setting
   if (self.checkbox.imagePosition != NSNoImage) {
     int value = (self.checkbox.state == NSOnState);
     [self.checkboxOutlineViewDelegate.preferencesManager setValue:value forName:self.settingIdentifier];
-
-  } else {
-    // expand/collapse tree
-    NSDictionary* item = [self.checkboxOutlineViewDelegate.outlineView itemAtRow:row];
-    if ([self.checkboxOutlineViewDelegate.outlineView isExpandable:item]) {
-      if ([self.checkboxOutlineViewDelegate.outlineView isItemExpanded:item]) {
-        [self.checkboxOutlineViewDelegate.outlineView collapseItem:item];
-      } else {
-        [self.checkboxOutlineViewDelegate.outlineView expandItem:item];
-      }
-    }
   }
+
+  [self selectSelf];
+  if (self.checkbox.imagePosition == NSNoImage) {
+    [self expandOrCollapseTree];
+  }
+
+  // Call makeFirstResponder via dispatch_async for safe.
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [[self.checkboxOutlineViewDelegate.outlineView window] makeFirstResponder:self.checkboxOutlineViewDelegate.outlineView];
+  });
+}
+
+- (void)selectSelf {
+  NSInteger row = [self.checkboxOutlineViewDelegate.outlineView rowForView:self];
+  if (row == -1) return;
+
+  [self.checkboxOutlineViewDelegate.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
+}
+
+- (void)expandOrCollapseTree {
+  NSInteger row = [self.checkboxOutlineViewDelegate.outlineView rowForView:self];
+  if (row == -1) return;
+
+  NSDictionary* item = [self.checkboxOutlineViewDelegate.outlineView itemAtRow:row];
+  if (![self.checkboxOutlineViewDelegate.outlineView isExpandable:item]) {
+    return;
+  }
+
+  if ([self.checkboxOutlineViewDelegate.outlineView isItemExpanded:item]) {
+    [self.checkboxOutlineViewDelegate.outlineView collapseItem:item];
+  } else {
+    [self.checkboxOutlineViewDelegate.outlineView expandItem:item];
+  }
+  [self.checkboxOutlineViewDelegate.outlineView setNeedsDisplay:YES];
 }
 
 @end
