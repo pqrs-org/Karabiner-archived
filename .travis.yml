@@ -1,9 +1,11 @@
 language: cpp
 os: osx
-osx_image: xcode7.3
-# CocoaPods crashes with a segmentation fault.
-# https://docs.travis-ci.com/user/common-build-problems/#CocoaPods-fails-with-a-segmentation-fault
-rvm: 1.9.3
+osx_image: xcode7.2
 compiler: clang
-install: true
+# We have to install newer ruby because CocoaPods will be crashed with the default ruby (ruby-2.0.0-p643).
+install:
+  - rvm install ruby-2.2.4
+  - rvm --default use 2.2.4
+  - gem install cocoapods
+  - pod setup
 script: make > /dev/null && make -C Tests
