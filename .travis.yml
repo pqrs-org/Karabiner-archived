@@ -7,5 +7,5 @@ install:
   - rvm install ruby-2.2.4
   - rvm --default use 2.2.4
   - gem install cocoapods
-  - pod setup
+  - pod setup > /dev/null
 script: make > /dev/null && make -C Tests
