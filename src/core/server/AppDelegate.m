@@ -271,6 +271,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // Wait until other apps connect to me.
   [NSThread sleepForTimeInterval:1];
 
+  [[NSApplication sharedApplication] disableRelaunchOnLogin];
+
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowIconInDock]) {
     ProcessSerialNumber psn = {0, kCurrentProcess};
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
