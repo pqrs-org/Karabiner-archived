@@ -1,6 +1,9 @@
 language: cpp
 os: osx
 osx_image: xcode7.3
+# CocoaPods crashes with a segmentation fault.
+# https://docs.travis-ci.com/user/common-build-problems/#CocoaPods-fails-with-a-segmentation-fault
+rvm: 1.9.3
 compiler: clang
 install: true
 script: make > /dev/null && make -C Tests
