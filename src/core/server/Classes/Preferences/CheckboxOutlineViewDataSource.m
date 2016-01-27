@@ -156,6 +156,10 @@
   return item ? [item[@"children"] count] : [self.dataSource count];
 }
 
+- (void)clearFilterCondition {
+  self.filterCondition = nil;
+}
+
 - (id)outlineView:(NSOutlineView*)outlineView child:(NSInteger)index ofItem:(id)item {
   [self load:NO];
 

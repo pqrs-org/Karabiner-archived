@@ -19,9 +19,9 @@
 
 - (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [self load:YES];
     [outlineview_ reloadData];
     if ([showEnabledOnly_ state] == NSOnState) {
+      [self.checkboxOutlineViewDataSource clearFilterCondition];
       [self filter:self];
     }
   });
