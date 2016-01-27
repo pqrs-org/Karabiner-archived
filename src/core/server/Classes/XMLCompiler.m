@@ -44,7 +44,7 @@
     return self.alternativeName;
   }
 
-  const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name2(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
   if (!name) {
     return @"";
   }

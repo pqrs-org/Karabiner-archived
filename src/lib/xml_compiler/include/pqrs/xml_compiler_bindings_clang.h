@@ -63,10 +63,7 @@ const pqrs_xml_compiler_preferences_checkbox_node_tree*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compiler_preferences_checkbox_node_tree* p,
                                                            size_t index);
 
-const char*
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
-
-const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_name2(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size);
+const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size);
 
 const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
