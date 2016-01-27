@@ -60,19 +60,6 @@ bool FlipScrollWheel::remap(RemapParams& remapParams) {
     pd1 = -pd1;
   }
   if (rotate_) {
-    // normal:
-    //
-    //     dy(-)
-    // dx(-)    dx(+)
-    //     dy(+)
-    //
-    // rotated:
-    //
-    //     dx(-)
-    // dy(-)    dy(+)
-    //     dx(+)
-    //
-
 #define SWAP(TYPE, VAL1, VAL2) \
   {                            \
     TYPE tmp = VAL1;           \
