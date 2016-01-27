@@ -68,15 +68,10 @@ bool FlipScrollWheel::remap(RemapParams& remapParams) {
     //
     // rotated:
     //
-    //     dx(+)
-    // dy(-)    dy(+)
     //     dx(-)
+    // dy(-)    dy(+)
+    //     dx(+)
     //
-
-    // So flip dy (vertiacal) and then swap dx and dy.
-    da1 = -da1;
-    fd1 = -fd1;
-    pd1 = -pd1;
 
 #define SWAP(TYPE, VAL1, VAL2) \
   {                            \

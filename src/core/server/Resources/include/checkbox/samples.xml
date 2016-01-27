@@ -2034,7 +2034,11 @@ Two Lines</autogen>
       </item>
       <item>
         <identifier>remap.samples_flipscrollwheel_rotate</identifier>
-        <name>Rotate ScrollWheel</name>
+        <name>Rotate ScrollWheel when option key is pressed.</name>
+        <modifier_only>
+          ModifierFlag::OPTION_L,
+          ModifierFlag::OPTION_R,
+        </modifier_only>
         <autogen>
           __FlipScrollWheel__
           Option::FLIPSCROLLWHEEL_ROTATE,
@@ -2042,7 +2046,11 @@ Two Lines</autogen>
       </item>
       <item>
         <identifier>remap.samples_flipscrollwheel_rotate_reverse</identifier>
-        <name>Rotate ScrollWheel (reverse)</name>
+        <name>Rotate ScrollWheel when option key is pressed. (reverse)</name>
+        <modifier_only>
+          ModifierFlag::OPTION_L,
+          ModifierFlag::OPTION_R,
+        </modifier_only>
         <autogen>
           __FlipScrollWheel__
           Option::FLIPSCROLLWHEEL_HORIZONTAL,
