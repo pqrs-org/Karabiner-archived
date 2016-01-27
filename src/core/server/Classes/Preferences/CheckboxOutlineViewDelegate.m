@@ -3,6 +3,7 @@
 #import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxOutlineViewDelegate.h"
 #import "PreferencesManager.h"
+#import "XMLCompiler.h"
 
 #define kLabelLeadingSpaceWithCheckbox 24
 #define kLabelLeadingSpaceWithoutCheckbox 4
@@ -31,7 +32,7 @@
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   NSString* identifier = item[@"identifier"];
-  NSString* name = item[@"name"];
+  NSString* name = [(XMLCompilerItem*)(item[@"xmlCompilerItem"]) getName];
   NSString* style = item[@"style"];
   NSInteger preferredMaxLayoutWidth = [item[@"preferredMaxLayoutWidth"] integerValue];
 
@@ -105,7 +106,7 @@
     dispatch_sync(textsHeightQueue_, ^{
       item[@"preferredMaxLayoutWidth"] = @(preferredMaxLayoutWidth);
 
-      self.wrappedTextHeightCalculator.stringValue = item[@"name"];
+      self.wrappedTextHeightCalculator.stringValue = [(XMLCompilerItem*)(item[@"xmlCompilerItem"]) getName];
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 

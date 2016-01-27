@@ -6,6 +6,52 @@
 #import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
+@interface XMLCompilerItem ()
+@property pqrs_xml_compiler* pqrs_xml_compiler;
+@property size_t* indexes;
+@property size_t indexes_size;
+@property NSString* alternativeName;
+@end
+
+@implementation XMLCompilerItem
+- (instancetype)initWithParent:(pqrs_xml_compiler*)pqrs_xml_compiler parent:(XMLCompilerItem*)parent index:(size_t)index {
+  self = [super init];
+
+  if (self) {
+    self.pqrs_xml_compiler = pqrs_xml_compiler;
+
+    if (parent) {
+      self.indexes_size = parent.indexes_size + 1;
+    } else {
+      self.indexes_size = 1;
+    }
+
+    self.indexes = (size_t*)malloc(sizeof(size_t) * self.indexes_size);
+
+    if (parent) {
+      memcpy(self.indexes, parent.indexes, sizeof(self.indexes[0]) * parent.indexes_size);
+    }
+    self.indexes[self.indexes_size - 1] = index;
+
+    self.alternativeName = @"";
+  }
+
+  return self;
+}
+
+- (NSString*)getName {
+  if (!self.pqrs_xml_compiler) {
+    return self.alternativeName;
+  }
+
+  const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name2(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  if (!name) {
+    return @"";
+  }
+  return @(name);
+}
+@end
+
 @interface XMLCompiler () {
   pqrs_xml_compiler* pqrs_xml_compiler_;
 
@@ -19,7 +65,7 @@
 // ------------------------------------------------------------
 // private methods
 
-+ (NSMutableArray*)build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree {
+- (NSMutableArray*)build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree parent:(XMLCompilerItem*)parent {
   if (!node_tree) return nil;
 
   size_t size = pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(node_tree);
@@ -36,12 +82,9 @@
     // making dictionary
     NSMutableDictionary* dict = [NSMutableDictionary new];
 
-    {
-      const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(child);
-      if (name) {
-        dict[@"name"] = @(name);
-      }
-    }
+    XMLCompilerItem* xmlCompilerItem = [[XMLCompilerItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
+    dict[@"xmlCompilerItem"] = xmlCompilerItem;
+
     {
       const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
       if (identifier) {
@@ -61,7 +104,7 @@
       }
     }
 
-    NSMutableArray* a = [self build_preferencepane_checkbox:child];
+    NSMutableArray* a = [self build_preferencepane_checkbox:child parent:xmlCompilerItem];
     if (a) {
       dict[@"children"] = a;
     }
@@ -74,7 +117,9 @@
 
 - (void)insert_caution_into_preferencepane_checkbox:(NSString*)message {
   NSMutableDictionary* dict = [NSMutableDictionary new];
-  dict[@"name"] = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  XMLCompilerItem* xmlCompilerItem = [[XMLCompilerItem alloc] initWithParent:NULL parent:nil index:0];
+  xmlCompilerItem.alternativeName = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  dict[@"xmlCompilerItem"] = xmlCompilerItem;
   dict[@"string_for_filter"] = [message lowercaseString];
   dict[@"style"] = @("caution");
 
@@ -209,7 +254,7 @@
       const pqrs_xml_compiler_preferences_checkbox_node_tree* node_tree =
           pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(pqrs_xml_compiler_);
 
-      preferencepane_checkbox_ = [XMLCompiler build_preferencepane_checkbox:node_tree];
+      preferencepane_checkbox_ = [self build_preferencepane_checkbox:node_tree parent:nil];
     }
 
     // build preferencepane_number_

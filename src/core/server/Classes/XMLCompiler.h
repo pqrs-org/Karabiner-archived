@@ -5,6 +5,10 @@
 
 @class ClientForKernelspace;
 
+@interface XMLCompilerItem : NSObject
+- (NSString*)getName;
+@end
+
 @interface XMLCompiler : NSObject {
   IBOutlet ClientForKernelspace* clientForKernelspace_;
 }
