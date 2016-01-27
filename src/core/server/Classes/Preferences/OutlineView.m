@@ -13,13 +13,14 @@
 
 - (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [outlineview_ setNeedsDisplay:YES];
+    [outlineview_ reloadData];
   });
 }
 
 - (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [outlineview_ setNeedsDisplay:YES];
+    [self load:YES];
+    [outlineview_ reloadData];
     if ([showEnabledOnly_ state] == NSOnState) {
       [self filter:self];
     }
