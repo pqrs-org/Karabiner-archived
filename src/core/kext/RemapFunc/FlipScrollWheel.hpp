@@ -9,7 +9,8 @@ class FlipScrollWheel final : public RemapFuncBase {
 public:
   FlipScrollWheel(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_FLIPSCROLLWHEEL, autogenId),
                                          flipHorizontalScroll_(false),
-                                         flipVerticalScroll_(false) {}
+                                         flipVerticalScroll_(false),
+                                         rotate_(false) {}
 
   bool remap(RemapParams& remapParams) override;
 
@@ -18,6 +19,7 @@ public:
 private:
   bool flipHorizontalScroll_;
   bool flipVerticalScroll_;
+  bool rotate_;
 };
 }
 }

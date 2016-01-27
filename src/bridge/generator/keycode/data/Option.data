@@ -45,6 +45,7 @@ FLIPPOINTINGRELATIVE_VERTICAL                  --AUTO--
 // For __FlipScrollWheel__
 FLIPSCROLLWHEEL_HORIZONTAL                     --AUTO--
 FLIPSCROLLWHEEL_VERTICAL                       --AUTO--
+FLIPSCROLLWHEEL_ROTATE                         --AUTO--
 
 // For __KeyOverlaidModifier__ and __HoldingKeyToKey__
 UNINTERRUPTIBLE_BY_SCROLL_WHEEL                --AUTO--

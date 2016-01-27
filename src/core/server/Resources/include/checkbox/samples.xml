@@ -2032,6 +2032,24 @@ Two Lines</autogen>
           Option::FLIPSCROLLWHEEL_VERTICAL,
         </autogen>
       </item>
+      <item>
+        <identifier>remap.samples_flipscrollwheel_rotate</identifier>
+        <name>Rotate ScrollWheel</name>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_ROTATE,
+        </autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_flipscrollwheel_rotate_reverse</identifier>
+        <name>Rotate ScrollWheel (reverse)</name>
+        <autogen>
+          __FlipScrollWheel__
+          Option::FLIPSCROLLWHEEL_HORIZONTAL,
+          Option::FLIPSCROLLWHEEL_VERTICAL,
+          Option::FLIPSCROLLWHEEL_ROTATE,
+        </autogen>
+      </item>
     </item>
 
     <item>

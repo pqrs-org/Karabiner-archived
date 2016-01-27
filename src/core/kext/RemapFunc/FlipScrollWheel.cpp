@@ -18,6 +18,8 @@ void FlipScrollWheel::add(AddDataType datatype, AddValue newval) {
       flipHorizontalScroll_ = true;
     } else if (Option::FLIPSCROLLWHEEL_VERTICAL == option) {
       flipVerticalScroll_ = true;
+    } else if (Option::FLIPSCROLLWHEEL_ROTATE == option) {
+      rotate_ = true;
     } else {
       IOLOG_ERROR("FlipScrollWheel::add unknown option:%u\n", static_cast<unsigned int>(newval));
     }
@@ -56,6 +58,36 @@ bool FlipScrollWheel::remap(RemapParams& remapParams) {
     da1 = -da1;
     fd1 = -fd1;
     pd1 = -pd1;
+  }
+  if (rotate_) {
+    // normal:
+    //
+    //     dy(-)
+    // dx(-)    dx(+)
+    //     dy(+)
+    //
+    // rotated:
+    //
+    //     dx(+)
+    // dy(-)    dy(+)
+    //     dx(-)
+    //
+
+    // So flip dy (vertiacal) and then swap dx and dy.
+    da1 = -da1;
+    fd1 = -fd1;
+    pd1 = -pd1;
+
+#define SWAP(TYPE, VAL1, VAL2) \
+  {                            \
+    TYPE tmp = VAL1;           \
+    VAL1 = VAL2;               \
+    VAL2 = tmp;                \
+  }
+
+    SWAP(short, da1, da2);
+    SWAP(IOFixed, fd1, fd2);
+    SWAP(SInt32, pd1, pd2);
   }
 
   Params_ScrollWheelEventCallback p(da1, da2, da3,
