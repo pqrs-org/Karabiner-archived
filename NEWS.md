@@ -9,6 +9,8 @@
   * The consumer keys (media keys) repeat values has been synchronized with the key repeat values.
   * The behavior of starting Karabiner on system startup has been improved.
   * Prepared settings have been updated.
+  * Updates for people who add new settings by oneself:
+    * `Option::FLIPSCROLLWHEEL_ROTATE` has been added.
 * Fixed issues:
   * Microsoft Excel scroll position is sometimes reset while using scroll wheel.
 
