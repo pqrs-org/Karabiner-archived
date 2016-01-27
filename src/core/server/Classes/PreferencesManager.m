@@ -208,6 +208,10 @@
 }
 
 - (void)setValue:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext {
+  [self setValue:newval forName:name tellToKext:tellToKext notificationUserInfo:nil];
+}
+
+- (void)setValue:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext notificationUserInfo:(NSDictionary*)notificationUserInfo {
   @synchronized(self) {
     int oldval = [self value:name];
 
@@ -248,7 +252,7 @@
     if (oldval != newval) {
       // We post notification only when newval is different from oldval in order to avoid infinity loop.
       // (`setValue` might be called in observer.)
-      [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+      [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil userInfo:notificationUserInfo];
       if (tellToKext) {
         [self callSetConfigOne:name value:newval];
       }

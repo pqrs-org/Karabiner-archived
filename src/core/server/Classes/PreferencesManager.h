@@ -17,6 +17,7 @@
 - (int)defaultValue:(NSString*)name;
 - (void)setValue:(int)newval forName:(NSString*)name;
 - (void)setValue:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext;
+- (void)setValue:(int)newval forName:(NSString*)name tellToKext:(BOOL)tellToKext notificationUserInfo:(NSDictionary*)notificationUserInfo;
 - (void)clearNotSave;
 
 - (NSArray*)essential_config;

@@ -1,5 +1,6 @@
 #import "CheckboxCellView.h"
 #import "CheckboxOutlineViewDelegate.h"
+#import "NotificationKeys.h"
 #import "PreferencesManager.h"
 
 @implementation CheckboxCellView
@@ -7,7 +8,15 @@
 - (IBAction)valueChanged:(id)sender {
   if (self.checkbox.imagePosition != NSNoImage) {
     int value = (self.checkbox.state == NSOnState);
-    [self.checkboxOutlineViewDelegate.preferencesManager setValue:value forName:self.settingIdentifier];
+
+    NSDictionary* notificationUserInfo = @{
+      kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
+    };
+
+    [self.checkboxOutlineViewDelegate.preferencesManager setValue:value
+                                                          forName:self.settingIdentifier
+                                                       tellToKext:YES
+                                             notificationUserInfo:notificationUserInfo];
   }
 
   [self selectSelf];

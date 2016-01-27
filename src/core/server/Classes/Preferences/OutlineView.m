@@ -13,6 +13,9 @@
 
 - (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
+    if (notification.userInfo && notification.userInfo[kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI]) {
+      return;
+    }
     [outlineview_ reloadData];
   });
 }
