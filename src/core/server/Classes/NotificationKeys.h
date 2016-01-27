@@ -5,3 +5,5 @@
 #define kPreferencesChangedNotification @"PreferencesChanged"
 #define kStatusWindowPreferencesOpenedNotification @"StatusWindowPreferencesOpenedNotification"
 #define kStatusWindowPreferencesClosedNotification @"StatusWindowPreferencesClosedNotification"
+
+#define kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI @"kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI"
