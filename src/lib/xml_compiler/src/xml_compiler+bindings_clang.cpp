@@ -266,6 +266,34 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compile
   return (node_tree->get_node()).get_name().c_str();
 }
 
+namespace {
+const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>* get_checkbox_node_tree_from_indexes(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return nullptr;
+
+  auto node_tree = &(xml_compiler->get_preferences_checkbox_node_tree());
+
+  for (size_t i = 0; i < indexes_size; ++i) {
+    if (!node_tree) return nullptr;
+
+    auto children = node_tree->get_children();
+    if (!children) return nullptr;
+    if (indexes[i] >= children->size()) return nullptr;
+
+    node_tree = ((*children)[indexes[i]]).get();
+  }
+
+  return node_tree;
+}
+}
+
+const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_name2(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_checkbox_node_tree_from_indexes(p, indexes, indexes_size);
+  if (!node_tree) return nullptr;
+
+  return (node_tree->get_node()).get_name().c_str();
+}
+
 const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_for_filter(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);

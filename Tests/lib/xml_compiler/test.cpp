@@ -635,6 +635,15 @@ TEST(pqrs_xml_compiler, reload_bindings_clang) {
     EXPECT_EQ(expect, actual);
   }
 
+  {
+    const char* expect = "style test: important";
+
+    size_t indexes[] = {1};
+    const char* actual = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name2(p, indexes, sizeof(indexes) / sizeof(indexes[0]));
+
+    EXPECT_EQ(std::string(expect), std::string(actual));
+  }
+
   pqrs_xml_compiler_terminate(&p);
 }
 
