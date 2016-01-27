@@ -39,7 +39,7 @@
     {
       const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(child);
       if (name) {
-        dict[@"name"] = [@(name) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        dict[@"name"] = @(name);
       }
     }
     {
