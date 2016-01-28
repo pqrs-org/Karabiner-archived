@@ -32,7 +32,7 @@
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   NSString* identifier = item[@"identifier"];
-  NSString* name = [(XMLCompilerItem*)(item[@"xmlCompilerItem"]) getName];
+  NSString* name = [(XMLCompilerItem*)(item[@"xmlCompilerItem"])getName];
   NSString* style = item[@"style"];
   NSInteger preferredMaxLayoutWidth = [item[@"preferredMaxLayoutWidth"] integerValue];
 
@@ -62,24 +62,27 @@
     }
   }
 
+  // ----------------------------------------
+  // Set backgroundView
+
+  // Remove background from reused cell
+  [result.backgroundView removeFromSuperview];
+
+  NSColor* backgroundColor = nil;
   if ([style isEqualToString:@"caution"]) {
-    result.background.hidden = NO;
-    result.background.color = [NSColor greenColor];
-    result.background.needsDisplay = YES;
-    result.textField.textColor = [NSColor blackColor];
+    backgroundColor = [NSColor greenColor];
   } else if ([style isEqualToString:@"important"]) {
-    result.background.hidden = NO;
-    result.background.color = [NSColor orangeColor];
-    result.background.needsDisplay = YES;
-    result.textField.textColor = [NSColor blackColor];
+    backgroundColor = [NSColor orangeColor];
   } else if ([style isEqualToString:@"slight"]) {
-    result.background.hidden = NO;
-    result.background.color = [NSColor lightGrayColor];
-    result.background.needsDisplay = YES;
-    result.textField.textColor = [NSColor blackColor];
-  } else {
-    result.background.hidden = YES;
-    result.textField.textColor = [NSColor textColor];
+    backgroundColor = [NSColor lightGrayColor];
+  }
+
+  if (backgroundColor) {
+    result.backgroundView = [CheckboxBackgroundView new];
+    result.backgroundView.color = backgroundColor;
+    result.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
+    [result addSubview:result.backgroundView positioned:NSWindowBelow relativeTo:result.textField];
+    [result.backgroundView setLayoutConstraint];
   }
 
   return result;
@@ -106,7 +109,7 @@
     dispatch_sync(textsHeightQueue_, ^{
       item[@"preferredMaxLayoutWidth"] = @(preferredMaxLayoutWidth);
 
-      self.wrappedTextHeightCalculator.stringValue = [(XMLCompilerItem*)(item[@"xmlCompilerItem"]) getName];
+      self.wrappedTextHeightCalculator.stringValue = [(XMLCompilerItem*)(item[@"xmlCompilerItem"])getName];
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 
