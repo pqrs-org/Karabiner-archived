@@ -39,6 +39,13 @@
   return self;
 }
 
+- (void)dealloc {
+  if (self.indexes) {
+    free(self.indexes);
+    self.indexes = NULL;
+  }
+}
+
 - (NSString*)getName {
   if (!self.pqrs_xml_compiler) {
     return self.alternativeName;
