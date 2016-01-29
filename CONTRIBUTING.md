@@ -1,12 +1,12 @@
 # Submitting issues
 
-Please check your issue in this Q & A page before submitting issue.
+Please check your issue in this Q & A page before submitting new issue.
 
 https://pqrs.org/osx/karabiner/faq.html.en
 
 ## Required information with bug reports
 
-Please fill your information when you send bug reports:
+Please fill the following information, and describe your issue.
 
 ```
 * OS X version:
