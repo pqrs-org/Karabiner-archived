@@ -27,8 +27,8 @@
                                              notificationUserInfo:notificationUserInfo];
   }
 
-  [self selectSelf];
   if (self.checkbox.imagePosition == NSNoImage) {
+    [self selectSelf];
     [self expandOrCollapseTree];
   }
 
@@ -59,7 +59,6 @@
   } else {
     [self.checkboxOutlineViewDelegate.outlineView expandItem:item];
   }
-  [self.checkboxOutlineViewDelegate.outlineView setNeedsDisplay:YES];
 }
 
 @end
