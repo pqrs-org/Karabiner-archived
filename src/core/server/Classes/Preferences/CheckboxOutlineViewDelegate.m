@@ -65,9 +65,6 @@
   // ----------------------------------------
   // Set backgroundView
 
-  // Remove background from reused cell
-  [result.backgroundView removeFromSuperview];
-
   NSColor* backgroundColor = nil;
   if ([style isEqualToString:@"caution"]) {
     backgroundColor = [NSColor greenColor];

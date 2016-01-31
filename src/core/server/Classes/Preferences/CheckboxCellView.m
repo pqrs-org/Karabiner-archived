@@ -1,9 +1,17 @@
+#import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
 #import "CheckboxOutlineViewDelegate.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
 
 @implementation CheckboxCellView
+
+- (void)prepareForReuse {
+  [super prepareForReuse];
+
+  [self.backgroundView removeFromSuperview];
+  self.backgroundView = nil;
+}
 
 - (IBAction)valueChanged:(id)sender {
   if (self.checkbox.imagePosition != NSNoImage) {
