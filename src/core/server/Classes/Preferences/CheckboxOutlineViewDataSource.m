@@ -181,13 +181,6 @@
   return [item[@"children"] count] > 0;
 }
 
-- (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-  return nil;
-}
-
-- (void)outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-}
-
 + (BOOL)isCheckbox:(NSString*)identifier {
   if (!identifier ||
       [identifier hasPrefix:@"notsave."]) {
