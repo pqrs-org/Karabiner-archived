@@ -1,12 +1,13 @@
 #import "CheckboxOutlineViewDataSource.h"
 #import "NotificationKeys.h"
 #import "OutlineView.h"
-#import "OutlineViewDataSourceNumber.h"
+#import "ParameterOutlineViewDataSource.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
 @interface OutlineView ()
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
+@property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
 @end
 
 @implementation OutlineView
@@ -76,7 +77,7 @@
   if (ischeckbox_) {
     [self.checkboxOutlineViewDataSource load:force];
   } else {
-    [outlineViewDataSourceNumber_ load:force];
+    [self.parameterOutlineViewDataSource load:force];
   }
 }
 

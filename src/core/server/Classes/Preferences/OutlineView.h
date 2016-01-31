@@ -2,7 +2,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class OutlineViewDataSourceNumber;
 @class PreferencesManager;
 @class XMLCompiler;
 
@@ -13,7 +12,6 @@
   IBOutlet NSOutlineView* outlineview_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet XMLCompiler* xmlCompiler_;
-  IBOutlet OutlineViewDataSourceNumber* outlineViewDataSourceNumber_;
 
   // for OutlineView_checkbox
   IBOutlet NSSearchField* searchText_;

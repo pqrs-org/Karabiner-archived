@@ -1825,8 +1825,8 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="1167" customClass="OutlineView_number">
             <connections>
-                <outlet property="outlineViewDataSourceNumber_" destination="s9s-xO-cMU" id="zxS-Ia-WB6"/>
                 <outlet property="outlineview_" destination="678" id="1170"/>
+                <outlet property="parameterOutlineViewDataSource" destination="s9s-xO-cMU" id="8dq-ue-tFP"/>
                 <outlet property="preferencesManager_" destination="592" id="1168"/>
                 <outlet property="xmlCompiler_" destination="591" id="1169"/>
             </connections>
@@ -1965,7 +1965,7 @@ Debug Mode Guide</string>
                 <outlet property="wrappedTextHeightCalculator" destination="s09-5a-Znl" id="E43-sU-E1f"/>
             </connections>
         </customObject>
-        <customObject id="s9s-xO-cMU" customClass="OutlineViewDataSourceNumber">
+        <customObject id="s9s-xO-cMU" customClass="ParameterOutlineViewDataSource">
             <connections>
                 <outlet property="preferencesManager" destination="592" id="DpC-kJ-MhG"/>
                 <outlet property="xmlCompiler" destination="591" id="MyH-uY-R2d"/>

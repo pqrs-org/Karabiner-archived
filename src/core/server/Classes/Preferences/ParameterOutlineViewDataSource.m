@@ -1,14 +1,14 @@
-#import "OutlineViewDataSourceNumber.h"
+#import "ParameterOutlineViewDataSource.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
-@interface OutlineViewDataSourceNumber ()
+@interface ParameterOutlineViewDataSource ()
 @property NSMutableArray* dataSource;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @end
 
-@implementation OutlineViewDataSourceNumber
+@implementation ParameterOutlineViewDataSource
 
 - (void)load:(BOOL)force {
   if (force) {
