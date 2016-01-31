@@ -114,11 +114,11 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Change Key" identifier="1" id="633">
-                                <view key="view" wantsLayer="YES" id="662">
+                                <view key="view" id="662">
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="666">
+                                        <searchField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="666">
                                             <rect key="frame" x="17" y="530" width="250" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="MfY-fr-zRX"/>
@@ -352,7 +352,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Parameters" identifier="" id="kTU-wu-5r1">
-                                <view key="view" wantsLayer="YES" id="Bpk-8v-BJe">
+                                <view key="view" id="Bpk-8v-BJe">
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -485,7 +485,7 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Key Repeat" identifier="Item 2" id="632">
-                                <view key="view" wantsLayer="YES" id="676">
+                                <view key="view" id="676">
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
