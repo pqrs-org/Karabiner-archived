@@ -1,4 +1,3 @@
-#import "CheckboxOutlineViewDataSource.h"
 #import "NotificationKeys.h"
 #import "OutlineView.h"
 #import "ParameterOutlineViewDataSource.h"
@@ -6,89 +5,13 @@
 #import "XMLCompiler.h"
 
 @interface OutlineView ()
-@property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
 @property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
 @end
 
 @implementation OutlineView
 
-- (void)observer_PreferencesChanged:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    if (notification.userInfo && notification.userInfo[kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI]) {
-      return;
-    }
-    [outlineview_ reloadData];
-  });
-}
-
-- (void)observer_ConfigListChanged:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [outlineview_ reloadData];
-    if ([showEnabledOnly_ state] == NSOnState) {
-      [self.checkboxOutlineViewDataSource clearFilterCondition];
-      [self filter:self];
-    }
-  });
-}
-
-- (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self load:YES];
-    [outlineview_ reloadData];
-    [self filter:self];
-    if (!ischeckbox_) {
-      [self expand:self];
-    }
-  });
-}
-
 + (NSFont*)font {
   return [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
-}
-
-- (id)init {
-  self = [super init];
-
-  if (self) {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_PreferencesChanged:)
-                                                 name:kPreferencesChangedNotification
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_ConfigListChanged:)
-                                                 name:kConfigListChangedNotification
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_ConfigXMLReloaded:)
-                                                 name:kConfigXMLReloadedNotification
-                                               object:nil];
-  }
-
-  return self;
-}
-
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)load:(BOOL)force {
-  if (ischeckbox_) {
-    [self.checkboxOutlineViewDataSource load:force];
-  } else {
-    [self.parameterOutlineViewDataSource load:force];
-  }
-}
-
-/* ---------------------------------------------------------------------- */
-- (BOOL)isTextCell:(NSTableColumn*)tableColumn item:(id)item {
-  if (ischeckbox_) {
-    NSString* identifier = item[@"identifier"];
-    return (!identifier || [identifier hasPrefix:@"notsave."]);
-  } else {
-    return NO;
-  }
 }
 
 - (NSCell*)outlineView:(NSOutlineView*)outlineView dataCellForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
@@ -130,31 +53,6 @@
 
     return cell;
   }
-}
-
-/* ---------------------------------------------------------------------- */
-- (IBAction)filter:(id)sender {
-  if (ischeckbox_) {
-    BOOL isEnabledOnly = ([showEnabledOnly_ state] == NSOnState);
-    NSString* string = [searchText_ stringValue];
-    if ([self.checkboxOutlineViewDataSource filterDataSource:isEnabledOnly string:string]) {
-      [outlineview_ reloadData];
-
-      if ([string length] == 0 && isEnabledOnly == NO) {
-        [outlineview_ collapseItem:nil collapseChildren:YES];
-      } else {
-        [outlineview_ expandItem:nil expandChildren:YES];
-      }
-    }
-  }
-}
-
-- (IBAction)expand:(id)sender {
-  [outlineview_ expandItem:nil expandChildren:YES];
-}
-
-- (IBAction)collapse:(id)sender {
-  [outlineview_ collapseItem:nil collapseChildren:YES];
 }
 
 @end

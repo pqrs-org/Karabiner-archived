@@ -18,10 +18,4 @@
   IBOutlet NSButton* showEnabledOnly_;
 }
 
-- (void)load:(BOOL)force;
-
-- (IBAction)filter:(id)sender;
-- (IBAction)expand:(id)sender;
-- (IBAction)collapse:(id)sender;
-
 @end

@@ -1,7 +1,9 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
+#import "CheckboxOutlineViewDataSource.h"
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
+#import "ParameterOutlineViewDataSource.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
@@ -11,7 +13,11 @@
 #include <sys/sysctl.h>
 
 @interface PreferencesController ()
+@property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
 @property(weak) IBOutlet NSOutlineView* checkboxOutlineView;
+@property(weak) IBOutlet NSOutlineView* parameterOutlineView;
+@property(weak) IBOutlet NSSearchField* checkboxSearchText;
+@property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
 @property NSTimer* resizeTimer;
 @end
 
@@ -21,6 +27,14 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
     [self refreshKeyRepeatTab:nil];
+
+    [self.checkboxOutlineView reloadData];
+    [self.parameterOutlineView reloadData];
+
+    if ([checkbox_showEnabledOnly_ state] == NSOnState) {
+      [self.checkboxOutlineViewDataSource clearFilterCondition];
+      [self filterCheckboxOutlineView:self];
+    }
   });
 }
 
@@ -28,6 +42,14 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
     // refreshKeyRepeatTab is not needed here.
+
+    [self.checkboxOutlineViewDataSource load:YES];
+    [self.parameterOutlineViewDataSource load:YES];
+    [self.checkboxOutlineView reloadData];
+    [self.parameterOutlineView reloadData];
+
+    [self filterCheckboxOutlineView:self];
+    [self expandParameterOutlineView:self];
   });
 }
 
@@ -35,6 +57,13 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
     [self refreshKeyRepeatTab:nil];
+
+    if (notification.userInfo && notification.userInfo[kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI]) {
+      // do nothing
+    } else {
+      [self.checkboxOutlineView reloadData];
+      [self.parameterOutlineView reloadData];
+    }
   });
 }
 
@@ -150,6 +179,40 @@
 - (void)show {
   [preferencesWindow_ makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
+}
+
+- (IBAction)reloadXML:(id)sender {
+  [xmlCompiler_ reload];
+}
+
+- (IBAction)filterCheckboxOutlineView:(id)sender {
+  BOOL isEnabledOnly = ([checkbox_showEnabledOnly_ state] == NSOnState);
+  NSString* string = [self.checkboxSearchText stringValue];
+  if ([self.checkboxOutlineViewDataSource filterDataSource:isEnabledOnly string:string]) {
+    [self.checkboxOutlineView reloadData];
+
+    if ([string length] == 0 && isEnabledOnly == NO) {
+      [self.checkboxOutlineView collapseItem:nil collapseChildren:YES];
+    } else {
+      [self.checkboxOutlineView expandItem:nil expandChildren:YES];
+    }
+  }
+}
+
+- (IBAction)expandCheckboxOutlineView:(id)sender {
+  [self.checkboxOutlineView expandItem:nil expandChildren:YES];
+}
+
+- (IBAction)collapseCheckboxOutlineView:(id)sender {
+  [self.checkboxOutlineView collapseItem:nil collapseChildren:YES];
+}
+
+- (IBAction)expandParameterOutlineView:(id)sender {
+  [self.parameterOutlineView expandItem:nil expandChildren:YES];
+}
+
+- (IBAction)collapseParameterOutlineView:(id)sender {
+  [self.parameterOutlineView collapseItem:nil collapseChildren:YES];
 }
 
 - (IBAction)openURL:(id)sender {

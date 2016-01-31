@@ -130,7 +130,7 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </searchFieldCell>
                                             <connections>
-                                                <action selector="filter:" target="710" id="1210"/>
+                                                <action selector="filterCheckboxOutlineView:" target="1181" id="lZ2-MH-LLG"/>
                                             </connections>
                                         </searchField>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="663">
@@ -140,7 +140,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="filter:" target="710" id="721"/>
+                                                <action selector="filterCheckboxOutlineView:" target="1181" id="JmT-J3-FAP"/>
                                             </connections>
                                         </button>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="21" horizontalPageScroll="10" verticalLineScroll="21" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="664">
@@ -239,7 +239,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="reloadXML:" target="710" id="723"/>
+                                                <action selector="reloadXML:" target="1181" id="kP2-nP-fMw"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1371">
@@ -249,7 +249,7 @@
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="expand:" target="710" id="1373"/>
+                                                <action selector="expandCheckboxOutlineView:" target="1181" id="2bB-jN-TB3"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1374">
@@ -259,7 +259,7 @@
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="collapse:" target="710" id="1377"/>
+                                                <action selector="collapseCheckboxOutlineView:" target="1181" id="Mwg-Pl-j74"/>
                                             </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
@@ -458,7 +458,7 @@
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="expand:" target="1167" id="Igu-Dy-DbL"/>
+                                                <action selector="expandParameterOutlineView:" target="1181" id="2T3-aJ-aZx"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oab-4R-uNc">
@@ -468,7 +468,7 @@
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="collapse:" target="1167" id="20y-VJ-fwq"/>
+                                                <action selector="collapseParameterOutlineView:" target="1181" id="jme-Tc-1mN"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1549,7 +1549,6 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="reloadXML:" target="710" id="CLV-E7-aKP"/>
                                                 <binding destination="1176" name="value" keyPath="values.kUsePreparedSettings" id="0tC-rV-Er6"/>
                                             </connections>
                                         </button>
@@ -1813,16 +1812,6 @@ Debug Mode Guide</string>
             </connections>
             <point key="canvasLocation" x="747" y="371"/>
         </window>
-        <customObject id="710" customClass="OutlineView_checkbox">
-            <connections>
-                <outlet property="checkboxOutlineViewDataSource" destination="Vvy-Zk-dMA" id="6ic-zw-tvI"/>
-                <outlet property="outlineview_" destination="672" id="713"/>
-                <outlet property="preferencesManager_" destination="592" id="717"/>
-                <outlet property="searchText_" destination="666" id="712"/>
-                <outlet property="showEnabledOnly_" destination="663" id="714"/>
-                <outlet property="xmlCompiler_" destination="591" id="715"/>
-            </connections>
-        </customObject>
         <customObject id="1167" customClass="OutlineView_number">
             <connections>
                 <outlet property="outlineview_" destination="678" id="1170"/>
@@ -1841,6 +1830,8 @@ Debug Mode Guide</string>
         <customObject id="1181" customClass="PreferencesController">
             <connections>
                 <outlet property="checkboxOutlineView" destination="672" id="Nbb-sr-GBa"/>
+                <outlet property="checkboxOutlineViewDataSource" destination="Vvy-Zk-dMA" id="13k-YF-65z"/>
+                <outlet property="checkboxSearchText" destination="666" id="obf-yN-FKd"/>
                 <outlet property="checkbox_showEnabledOnly_" destination="663" id="1182"/>
                 <outlet property="clientForKernelspace_" destination="600" id="Jdv-ip-9F0"/>
                 <outlet property="debugModeGuideTextField_" destination="8Yy-Qp-aKZ" id="zwU-CW-I3e"/>
@@ -1851,6 +1842,8 @@ Debug Mode Guide</string>
                 <outlet property="keyRepeatParameters_" destination="FoC-hs-Aq9" id="k6s-6I-ou6"/>
                 <outlet property="keyRepeatStepper_" destination="yow-Uc-UYf" id="MwO-Y9-eHs"/>
                 <outlet property="keyRepeatTextField_" destination="l8l-Vo-9k0" id="knm-Rf-uNb"/>
+                <outlet property="parameterOutlineView" destination="678" id="7AI-dn-e1M"/>
+                <outlet property="parameterOutlineViewDataSource" destination="s9s-xO-cMU" id="pfm-i0-iHr"/>
                 <outlet property="preferencesManager_" destination="592" id="1185"/>
                 <outlet property="preferencesWindow_" destination="628" id="1206"/>
                 <outlet property="tabView_" destination="630" id="1292"/>
