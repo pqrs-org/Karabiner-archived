@@ -107,7 +107,7 @@
             <value key="minSize" type="size" width="800" height="620"/>
             <view key="contentView" id="629">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="620"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tabView initialItem="633" translatesAutoresizingMaskIntoConstraints="NO" id="630">
                         <rect key="frame" x="13" y="10" width="774" height="604"/>
@@ -118,7 +118,7 @@
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <searchField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="666">
+                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="666">
                                             <rect key="frame" x="17" y="530" width="250" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="MfY-fr-zRX"/>
@@ -363,7 +363,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="16" headerView="681" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="683" id="678">
-                                                        <rect key="frame" x="0.0" y="0.0" width="571" height="18"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="479"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
