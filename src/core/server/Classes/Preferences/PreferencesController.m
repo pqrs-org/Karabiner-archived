@@ -48,6 +48,7 @@
     [self.checkboxOutlineView reloadData];
     [self.parameterOutlineView reloadData];
 
+    [self.checkboxOutlineViewDataSource clearFilterCondition];
     [self filterCheckboxOutlineView:self];
     [self expandParameterOutlineView:self];
   });

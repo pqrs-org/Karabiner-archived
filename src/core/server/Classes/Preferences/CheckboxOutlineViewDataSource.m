@@ -116,6 +116,7 @@
   return nil;
 }
 
+// return YES if we need to call [NSOutlineView reloadData]
 - (BOOL)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string {
   // Check filter condition is changed from previous filterDataSource.
   FilterCondition* filterCondition = [[FilterCondition alloc] init:isEnabledOnly string:string];
@@ -128,8 +129,6 @@
 
   if (!self.dataSource) return NO;
 
-  NSMutableArray* newdatasource = [NSMutableArray new];
-
   NSMutableArray* strings = [NSMutableArray new];
   if (string) {
     for (NSString* s in [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]) {
@@ -138,14 +137,18 @@
     }
   }
 
-  for (NSDictionary* dict in self.dataSource) {
-    NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
-    if (d) {
-      [newdatasource addObject:d];
+  if (isEnabledOnly || [strings count] > 0) {
+    NSMutableArray* newdatasource = [NSMutableArray new];
+    for (NSDictionary* dict in self.dataSource) {
+      NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
+      if (d) {
+        [newdatasource addObject:d];
+      }
     }
+
+    self.dataSource = newdatasource;
   }
 
-  self.dataSource = newdatasource;
   self.filterCondition = filterCondition;
   return YES;
 }
