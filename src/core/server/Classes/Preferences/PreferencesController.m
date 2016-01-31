@@ -28,13 +28,14 @@
     [self drawEnabledCount];
     [self refreshKeyRepeatTab:nil];
 
-    [self.checkboxOutlineView reloadData];
-    [self.parameterOutlineView reloadData];
-
     if ([checkbox_showEnabledOnly_ state] == NSOnState) {
       [self.checkboxOutlineViewDataSource clearFilterCondition];
       [self filterCheckboxOutlineView:self];
+    } else {
+      [self.checkboxOutlineView reloadData];
     }
+
+    [self.parameterOutlineView reloadData];
   });
 }
 
@@ -45,11 +46,11 @@
 
     [self.checkboxOutlineViewDataSource load:YES];
     [self.parameterOutlineViewDataSource load:YES];
-    [self.checkboxOutlineView reloadData];
-    [self.parameterOutlineView reloadData];
 
     [self.checkboxOutlineViewDataSource clearFilterCondition];
     [self filterCheckboxOutlineView:self];
+
+    [self.parameterOutlineView reloadData];
     [self expandParameterOutlineView:self];
   });
 }
