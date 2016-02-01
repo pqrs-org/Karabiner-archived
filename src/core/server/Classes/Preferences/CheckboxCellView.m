@@ -55,7 +55,7 @@
   [self valueChanged:self];
 }
 
-- (IBAction)valueChanged:(id)sender {
+- (void)valueChanged:(id)sender {
   if (self.checkbox) {
     int value = (self.checkbox.state == NSOnState);
 

@@ -58,6 +58,8 @@
     result.checkbox = [NSButton new];
     [result.checkbox setButtonType:NSSwitchButton];
     result.checkbox.imagePosition = NSImageOnly;
+    result.checkbox.target = result;
+    result.checkbox.action = @selector(valueChanged:);
     if ([self.preferencesManager value:identifier]) {
       result.checkbox.state = NSOnState;
     } else {
