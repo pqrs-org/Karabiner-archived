@@ -15,4 +15,5 @@
 @property NSString* settingIdentifier;
 
 - (void)addLayoutConstraint:(NSView*)subview top:(CGFloat)top bottom:(CGFloat)bottom leading:(CGFloat)leading trailing:(CGFloat)trailing;
+- (void)toggle;
 @end

@@ -47,6 +47,11 @@
   self.backgroundView = nil;
 }
 
+- (void)toggle {
+  [self.checkbox setNextState];
+  [self valueChanged:self];
+}
+
 - (IBAction)valueChanged:(id)sender {
   if (self.checkbox.imagePosition != NSNoImage) {
     int value = (self.checkbox.state == NSOnState);
