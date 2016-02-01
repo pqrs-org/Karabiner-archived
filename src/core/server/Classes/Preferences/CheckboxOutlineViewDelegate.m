@@ -78,7 +78,7 @@
     result.backgroundView = [CheckboxBackgroundView new];
     result.backgroundView.color = backgroundColor;
     result.backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
-    [result addSubview:result.backgroundView positioned:NSWindowBelow relativeTo:result.textField];
+    [result addSubview:result.backgroundView positioned:NSWindowBelow relativeTo:nil];
     [result addLayoutConstraint:result.backgroundView top:0 bottom:0 leading:0 trailing:0];
   }
 
