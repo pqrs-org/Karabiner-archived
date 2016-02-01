@@ -52,7 +52,7 @@
     result.checkbox.imagePosition = NSNoImage;
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
   } else {
-    result.checkbox.imagePosition = NSImageLeft;
+    result.checkbox.imagePosition = NSImageOnly;
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
 
     if ([self.preferencesManager value:identifier]) {
