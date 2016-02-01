@@ -49,17 +49,37 @@
   result.labelBottomSpace.constant = kLabelBottomSpace;
 
   if (![CheckboxOutlineViewDataSource isCheckbox:identifier]) {
-    result.checkbox.imagePosition = NSNoImage;
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
   } else {
-    result.checkbox.imagePosition = NSImageOnly;
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
 
+    // ----------------------------------------
+    // Add checkbox
+    result.checkbox = [NSButton new];
+    [result.checkbox setButtonType:NSSwitchButton];
+    result.checkbox.imagePosition = NSImageOnly;
     if ([self.preferencesManager value:identifier]) {
       result.checkbox.state = NSOnState;
     } else {
       result.checkbox.state = NSOffState;
     }
+    result.checkbox.translatesAutoresizingMaskIntoConstraints = NO;
+    [result addSubview:result.checkbox positioned:NSWindowBelow relativeTo:nil];
+
+    [result addConstraint:[NSLayoutConstraint constraintWithItem:result.checkbox
+                                                       attribute:NSLayoutAttributeLeading
+                                                       relatedBy:NSLayoutRelationEqual
+                                                          toItem:result
+                                                       attribute:NSLayoutAttributeLeading
+                                                      multiplier:1.0
+                                                        constant:4]];
+    [result addConstraint:[NSLayoutConstraint constraintWithItem:result.checkbox
+                                                       attribute:NSLayoutAttributeCenterY
+                                                       relatedBy:NSLayoutRelationEqual
+                                                          toItem:result
+                                                       attribute:NSLayoutAttributeCenterY
+                                                      multiplier:1.0
+                                                        constant:0]];
   }
 
   // ----------------------------------------

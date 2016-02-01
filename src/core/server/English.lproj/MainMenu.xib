@@ -174,16 +174,6 @@
                                                                         <rect key="frame" x="1" y="0.0" width="716" height="21"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
-                                                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="RVp-OD-GpI">
-                                                                                <rect key="frame" x="2" y="2" width="18" height="18"/>
-                                                                                <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="left" state="on" inset="2" id="Ktg-no-uF9">
-                                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                                                    <font key="font" metaFont="system"/>
-                                                                                </buttonCell>
-                                                                                <connections>
-                                                                                    <action selector="valueChanged:" target="gNO-xU-zAR" id="o8e-lx-Pdl"/>
-                                                                                </connections>
-                                                                            </button>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsv-ed-2re">
                                                                                 <rect key="frame" x="22" y="2" width="696" height="17"/>
                                                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="1ol-YY-B0g">
@@ -196,13 +186,10 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="bottom" secondItem="hsv-ed-2re" secondAttribute="bottom" constant="2" id="VOr-IO-UPS"/>
                                                                             <constraint firstItem="hsv-ed-2re" firstAttribute="leading" secondItem="gNO-xU-zAR" secondAttribute="leading" constant="24" id="W3n-3k-enk"/>
-                                                                            <constraint firstItem="RVp-OD-GpI" firstAttribute="leading" secondItem="gNO-xU-zAR" secondAttribute="leading" constant="4" id="Zta-HQ-mx1"/>
                                                                             <constraint firstAttribute="trailing" secondItem="hsv-ed-2re" secondAttribute="trailing" id="mYy-cO-xJr"/>
                                                                             <constraint firstItem="hsv-ed-2re" firstAttribute="top" secondItem="gNO-xU-zAR" secondAttribute="top" constant="2" id="qxd-Rb-ayj"/>
-                                                                            <constraint firstItem="RVp-OD-GpI" firstAttribute="centerY" secondItem="gNO-xU-zAR" secondAttribute="centerY" id="wl1-wv-d0z"/>
                                                                         </constraints>
                                                                         <connections>
-                                                                            <outlet property="checkbox" destination="RVp-OD-GpI" id="Bwz-0D-Ktj"/>
                                                                             <outlet property="checkboxOutlineViewDelegate" destination="nHm-UC-8X2" id="GHJ-bA-vHN"/>
                                                                             <outlet property="labelBottomSpace" destination="VOr-IO-UPS" id="fog-gp-8Jr"/>
                                                                             <outlet property="labelLeadingSpace" destination="W3n-3k-enk" id="Wkh-BC-ecR"/>

@@ -45,6 +45,9 @@
 
   [self.backgroundView removeFromSuperview];
   self.backgroundView = nil;
+
+  [self.checkbox removeFromSuperview];
+  self.checkbox = nil;
 }
 
 - (void)toggle {
@@ -53,7 +56,7 @@
 }
 
 - (IBAction)valueChanged:(id)sender {
-  if (self.checkbox.imagePosition != NSNoImage) {
+  if (self.checkbox) {
     int value = (self.checkbox.state == NSOnState);
 
     NSDictionary* notificationUserInfo = @{
@@ -64,9 +67,7 @@
                                                           forName:self.settingIdentifier
                                                        tellToKext:YES
                                              notificationUserInfo:notificationUserInfo];
-  }
-
-  if (self.checkbox.imagePosition == NSNoImage) {
+  } else {
     [self selectSelf];
     [self expandOrCollapseTree];
   }
