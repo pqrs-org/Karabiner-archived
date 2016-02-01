@@ -13,4 +13,6 @@
 @property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
 @property CheckboxBackgroundView* backgroundView;
 @property NSString* settingIdentifier;
+
+- (void)addLayoutConstraint:(NSView*)subview top:(CGFloat)top bottom:(CGFloat)bottom leading:(CGFloat)leading trailing:(CGFloat)trailing;
 @end
