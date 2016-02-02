@@ -1534,6 +1534,7 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="reloadXML:" target="1181" id="NVZ-N9-OUT"/>
                                                 <binding destination="1176" name="value" keyPath="values.kUsePreparedSettings" id="0tC-rV-Er6"/>
                                             </connections>
                                         </button>
