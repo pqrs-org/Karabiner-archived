@@ -47,6 +47,7 @@ public:
 
         auto attr_hidden = it.get_optional("<xmlattr>.hidden");
         if (!attr_hidden) {
+          ptr->trim_name();
           preferences_node_tree_->push_back(ptr);
         }
 

@@ -12,6 +12,8 @@ public:
   int get_default_value(void) const { return default_value_; }
   const std::string& get_style(void) const { return style_; }
 
+  void trim_name(void) { boost::trim(name_); }
+
 protected:
   bool handle_name_and_appendix_(const extracted_ptree::node& it);
 
@@ -66,6 +68,9 @@ public:
   }
   void handle_item_child(const extracted_ptree::node& it) {
     node_.handle_item_child(it);
+  }
+  void trim_name() {
+    node_.trim_name();
   }
 
   const T& get_node(void) const { return node_; }

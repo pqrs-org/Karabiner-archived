@@ -3,11 +3,11 @@
 namespace pqrs {
 bool xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_ptree::node& it) {
   if (it.get_tag_name() == "name") {
+    if (!name_.empty()) {
+      name_ += "\n";
+    }
     auto s = boost::trim_copy(it.get_data());
     if (!s.empty()) {
-      if (!name_.empty()) {
-        name_ += "\n";
-      }
       name_ += s;
     }
 
@@ -23,11 +23,11 @@ bool xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_p
     return true;
 
   } else if (it.get_tag_name() == "appendix") {
+    if (!name_.empty()) {
+      name_ += "\n";
+    }
     auto s = boost::trim_copy(it.get_data());
     if (!s.empty()) {
-      if (!name_.empty()) {
-        name_ += "\n";
-      }
       name_ += "  ";
       name_ += s;
     }
