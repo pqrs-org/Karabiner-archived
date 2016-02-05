@@ -221,35 +221,6 @@
       <identifier>remap.commandR2shiftL</identifier>
       <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SHIFT_L</autogen>
     </item>
-    <item>
-      <name>Command_R to Command_R</name>
-      <appendix>(+ When you type Command_R only, send Delete)</appendix>
-      <identifier>remap.commandR2commandR_delete</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::DELETE</autogen>
-    </item>
-    <item>
-      <name>Command_R to Command_R</name>
-      <appendix>(+ When you type Command_R only, send Delete) + [KeyRepeat]</appendix>
-      <identifier>remap.commandR2commandR_delete_keyrepeat</identifier>
-      <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::DELETE</autogen>
-    </item>
-    <item>
-      <name>Command_R to Command_R</name>
-      <appendix>(+ When you type Command_R only, send Enter)</appendix>
-      <identifier>remap.commandR2commandR_enter</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
-    </item>
-    <item>
-      <name>Command_R to Command_R</name>
-      <appendix>(+ When you type Command_R only, send Enter) + [KeyRepeat]</appendix>
-      <identifier>remap.commandR2commandR_enter_keyrepeat</identifier>
-      <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
-    </item>
-    <item>
-      <name>Option_R+Command_R to Control_L</name>
-      <identifier>remap.optionRcommandR2controlL</identifier>
-      <autogen>__KeyToKey__ KeyCode::COMMAND_R, ModifierFlag::OPTION_R, KeyCode::CONTROL_L</autogen>
-    </item>
 
     <item>
       <name>Variations for specific apps</name>
@@ -335,6 +306,36 @@
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::HOME</autogen>
       </item>
       <item><name>──────────────────────────────</name></item>
+    </item>
+
+    <item>
+      <name>Command_R to Command_R</name>
+      <appendix>(+ When you type Command_R only, send Delete)</appendix>
+      <identifier>remap.commandR2commandR_delete</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::DELETE</autogen>
+    </item>
+    <item>
+      <name>Command_R to Command_R</name>
+      <appendix>(+ When you type Command_R only, send Delete) + [KeyRepeat]</appendix>
+      <identifier>remap.commandR2commandR_delete_keyrepeat</identifier>
+      <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::DELETE</autogen>
+    </item>
+    <item>
+      <name>Command_R to Command_R</name>
+      <appendix>(+ When you type Command_R only, send Enter)</appendix>
+      <identifier>remap.commandR2commandR_enter</identifier>
+      <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
+    </item>
+    <item>
+      <name>Command_R to Command_R</name>
+      <appendix>(+ When you type Command_R only, send Enter) + [KeyRepeat]</appendix>
+      <identifier>remap.commandR2commandR_enter_keyrepeat</identifier>
+      <autogen>__KeyOverlaidModifierWithRepeat__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::ENTER</autogen>
+    </item>
+    <item>
+      <name>Option_R+Command_R to Control_L</name>
+      <identifier>remap.optionRcommandR2controlL</identifier>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, ModifierFlag::OPTION_R, KeyCode::CONTROL_L</autogen>
     </item>
 
     <item>
