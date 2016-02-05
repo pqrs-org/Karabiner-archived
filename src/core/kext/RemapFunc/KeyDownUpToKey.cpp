@@ -27,6 +27,7 @@ void KeyDownUpToKey::add(AddDataType datatype, AddValue newval) {
 
     case INDEXTYPE_INTERRUPTED:
       if (needClearInterruptedToKeys_) {
+        needClearInterruptedToKeys_ = false;
         keytokey_interrupted_.clearToKeys();
       }
       keytokey_interrupted_.add(datatype, newval);
