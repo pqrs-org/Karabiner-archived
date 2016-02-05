@@ -1837,12 +1837,22 @@ Two Lines</autogen>
         <appendix>- S</appendix>
         <appendix>- Tab</appendix>
         <appendix></appendix>
+        <appendix></appendix>
+        <appendix>The B key will be changed the space,return key</appendix>
+        <appendix>when you pressed and released the B key without other keys press.</appendix>
+        <appendix>Otherwise change the B key to the tab,escape key</appendix>
 
         <autogen>
           __KeyDownUpToKey__
           KeyCode::A,
           __{ KeyCode::SPACE }__
           __{ KeyCode::TAB }__
+        </autogen>
+        <autogen>
+          __KeyDownUpToKey__
+          KeyCode::B,
+          __{ KeyCode::SPACE, KeyCode::RETURN }__
+          __{ KeyCode::TAB, KeyCode::ESCAPE }__
         </autogen>
       </item>
     </item>
