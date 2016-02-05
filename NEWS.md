@@ -13,6 +13,7 @@
     * `Option::FLIPSCROLLWHEEL_ROTATE` has been added.
 * Fixed issues:
   * Microsoft Excel scroll position is sometimes reset while using scroll wheel.
+  * `__KeyDownUpToKey__` sends only the last interrupted events when multiple interrupted events are specified.
 
 
 # Version 10.15.0
