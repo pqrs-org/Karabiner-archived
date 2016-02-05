@@ -68,6 +68,21 @@
       <identifier>remap.uk_forwarddelete2section</identifier>
       <autogen>__KeyToKey__ FROMKEYCODE_FORWARD_DELETE, KeyCode::UK_SECTION</autogen>
     </item>
+
+    <item>
+      <name>Change Command_R to Control_L+Command_L (aka AltGr in Windows)</name>
+      <appendix>(only virtual machine, RDC)</appendix>
+      <identifier>remap.iso_command_r_to_control_l_command_l</identifier>
+      <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::CONTROL_L, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+      <name>Swap Command_R with Options_R</name>
+      <identifier>remap.iso_keypad_swap_command_r_with_options_r</identifier>
+      <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+    </item>
+
     <item>
       <name>Change Section(§) Key</name>
       <item>
