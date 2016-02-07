@@ -456,7 +456,7 @@ TEST(pqrs_xml_compiler, reload) {
   EXPECT_TRUE(node_tree.get_children() != nullptr);
   {
     auto node_ptr = (*(node_tree.get_children()))[0];
-    EXPECT_EQ("Swap Space and Tab\n  appendix1\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
+    EXPECT_EQ("Swap Space and Tab\n  appendix1\n\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
   }
   {
     auto node_ptr = (*(node_tree.get_children()))[1];
