@@ -32,8 +32,9 @@
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   NSString* identifier = item[@"identifier"];
-  NSString* name = [(XMLCompilerItem*)(item[@"xmlCompilerItem"])getName];
-  NSString* style = item[@"style"];
+  XMLCompilerItem* xmlCompilerItem = (XMLCompilerItem*)(item[@"xmlCompilerItem"]);
+  NSString* name = [xmlCompilerItem getName];
+  NSString* style = [xmlCompilerItem getStyle];
   NSInteger preferredMaxLayoutWidth = [item[@"preferredMaxLayoutWidth"] integerValue];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];

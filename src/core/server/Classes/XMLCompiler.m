@@ -10,7 +10,6 @@
 @property pqrs_xml_compiler* pqrs_xml_compiler;
 @property size_t* indexes;
 @property size_t indexes_size;
-@property NSString* alternativeName;
 @end
 
 @implementation XMLCompilerItem
@@ -32,8 +31,6 @@
       memcpy(self.indexes, parent.indexes, sizeof(self.indexes[0]) * parent.indexes_size);
     }
     self.indexes[self.indexes_size - 1] = index;
-
-    self.alternativeName = @"";
   }
 
   return self;
@@ -47,15 +44,34 @@
 }
 
 - (NSString*)getName {
-  if (!self.pqrs_xml_compiler) {
-    return self.alternativeName;
-  }
-
   const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
   if (!name) {
     return @"";
   }
   return @(name);
+}
+
+- (NSString*)getStyle {
+  const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  if (!style) {
+    return @"";
+  }
+  return @(style);
+}
+
+@end
+
+@interface CheckboxItemWithStaticData : XMLCompilerItem
+@property NSString* name;
+@property NSString* style;
+@end
+
+@implementation CheckboxItemWithStaticData
+- (NSString*)getName {
+  return self.name ? self.name : @"";
+}
+- (NSString*)getStyle {
+  return self.style ? self.style : @"";
 }
 @end
 
@@ -104,12 +120,6 @@
         dict[@"string_for_filter"] = @(name_for_filter);
       }
     }
-    {
-      const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(child);
-      if (style) {
-        dict[@"style"] = @(style);
-      }
-    }
 
     NSMutableArray* a = [self build_preferencepane_checkbox:child parent:xmlCompilerItem];
     if (a) {
@@ -124,11 +134,11 @@
 
 - (void)insert_caution_into_preferencepane_checkbox:(NSString*)message {
   NSMutableDictionary* dict = [NSMutableDictionary new];
-  XMLCompilerItem* xmlCompilerItem = [[XMLCompilerItem alloc] initWithParent:NULL parent:nil index:0];
-  xmlCompilerItem.alternativeName = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  dict[@"xmlCompilerItem"] = xmlCompilerItem;
+  CheckboxItemWithStaticData* checkboxItem = [CheckboxItemWithStaticData new];
+  checkboxItem.name = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  checkboxItem.style = @"caution";
+  dict[@"xmlCompilerItem"] = checkboxItem;
   dict[@"string_for_filter"] = [message lowercaseString];
-  dict[@"style"] = @("caution");
 
   [preferencepane_checkbox_ insertObject:dict atIndex:0];
 }

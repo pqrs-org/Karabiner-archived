@@ -7,6 +7,7 @@
 
 @interface XMLCompilerItem : NSObject
 - (NSString*)getName;
+- (NSString*)getStyle;
 @end
 
 @interface XMLCompiler : NSObject {
