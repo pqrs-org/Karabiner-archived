@@ -12,6 +12,7 @@
   * Updates for people who add new settings by oneself:
     * `Option::FLIPSCROLLWHEEL_ROTATE` has been added.
 * Fixed issues:
+  * Some Qt apps might be crash when AXNotifier is enabled. (WISO apps)
   * Microsoft Excel scroll position is sometimes reset while using scroll wheel.
   * `__KeyDownUpToKey__` sends only the last interrupted events when multiple interrupted events are specified.
 
