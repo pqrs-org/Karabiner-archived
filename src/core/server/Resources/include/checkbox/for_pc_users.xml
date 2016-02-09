@@ -750,6 +750,25 @@
       </autogen>
     </item>
     <item>
+      <name>Quit application by control-q</name>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
+      <identifier>remap.pcstyle_control_q</identifier>
+
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,  ModifierFlag::SHIFT_R,
+      </modifier_not>
+
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
+      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <autogen>
+        __KeyToKey__
+        KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::Q, ModifierFlag::COMMAND_L,
+      </autogen>
+    </item>
+    <item>
       <name>Use PC Style Delete-Last-Word</name>
       <name>(Control+Delete to Option+Delete)</name>
       <appendix></appendix>
