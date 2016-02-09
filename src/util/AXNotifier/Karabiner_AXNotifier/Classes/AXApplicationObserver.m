@@ -127,14 +127,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
     // Qt apps will be crashed if observe.
     if ([preferences[kAXNotifierDisabledInQtApps] boolValue]) {
-      if ([[runningApplication bundleIdentifier] isEqualToString:@"com.buhldata.wisosteuer2016"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.buhldata.wisosteuer2017"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.BuhlData.WISOsteuerMac2016"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.BuhlData.WISOsteuerMac2017"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.BuhlData.WISOeurMac2016"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.BuhlData.WISOeurMac2017"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.buhldata.wisoeur2016"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.buhldata.wisoeur2017"] ||
+      if ([[[runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
           false) {
         observable = NO;
       }
