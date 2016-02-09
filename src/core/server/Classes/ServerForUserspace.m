@@ -103,6 +103,7 @@
 - (NSDictionary*)preferencesForAXNotifier {
   return @{
     @"kAXNotifierDisabledInJavaApps" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps]),
+    @"kAXNotifierDisabledInQtApps" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps]),
     @"kAXNotifierDisabledInPreview" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview]),
     @"kAXNotifierDisabledInMicrosoftOffice" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice]),
   };

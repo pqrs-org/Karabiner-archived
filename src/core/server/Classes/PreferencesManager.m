@@ -33,6 +33,7 @@
     kStatusWindowPosition : @3, // Bottom right
     kIsAXNotifierEnabled : @YES,
     kAXNotifierDisabledInJavaApps : @YES,
+    kAXNotifierDisabledInQtApps : @YES,
     kAXNotifierDisabledInPreview : @YES,
     kAXNotifierDisabledInMicrosoftOffice : @YES,
     kUsePreparedSettings : @YES,

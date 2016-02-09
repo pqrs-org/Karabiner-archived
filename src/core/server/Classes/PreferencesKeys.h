@@ -15,6 +15,7 @@
 #define kStatusWindowPosition @"statusWindowPosition"
 #define kIsAXNotifierEnabled @"kIsAXNotifierEnabled"
 #define kAXNotifierDisabledInJavaApps @"kAXNotifierDisabledInJavaApps"
+#define kAXNotifierDisabledInQtApps @"kAXNotifierDisabledInQtApps"
 #define kAXNotifierDisabledInPreview @"kAXNotifierDisabledInPreview"
 #define kAXNotifierDisabledInMicrosoftOffice @"kAXNotifierDisabledInMicrosoftOffice"
 #define kUsePreparedSettings @"kUsePreparedSettings"
