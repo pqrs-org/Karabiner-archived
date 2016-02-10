@@ -65,6 +65,7 @@ pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compil
 
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size);
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size);
+bool pqrs_xml_compiler_is_preferences_checkbox_node_tree_name_icontains(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size, const char* string);
 
 const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
