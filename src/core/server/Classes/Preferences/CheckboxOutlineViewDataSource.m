@@ -70,6 +70,38 @@
 }
 
 - (NSDictionary*)filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+  // check strings
+  BOOL stringsMatched = YES;
+  if (strings) {
+    XMLCompilerItem* xmlCompilerItem = dictionary[@"xmlCompilerItem"];
+    // Remove matched strings from strings for children.
+    //
+    // For example:
+    //   strings == @[@"Emacs", @"Mode", @"Tab"]
+    //
+    //   * Emacs Mode
+    //     * Control+I to Tab
+    //
+    //   notMatchedStrings == @[@"Tab"] at "Emacs Mode".
+    //   Then "Control+I to Tab" will be matched by strings == @[@"Tab"].
+
+    NSMutableArray* notMatchedStrings = nil;
+    for (NSString* s in strings) {
+      if (![xmlCompilerItem isNameMatched:s]) {
+        stringsMatched = NO;
+      } else {
+        if (!notMatchedStrings) {
+          notMatchedStrings = [NSMutableArray arrayWithArray:strings];
+        }
+        [notMatchedStrings removeObject:s];
+      }
+    }
+
+    if (notMatchedStrings) {
+      strings = notMatchedStrings;
+    }
+  }
+
   // ------------------------------------------------------------
   // check children
   NSArray* children = dictionary[@"children"];
@@ -101,19 +133,12 @@
     }
   }
 
-  // check self name
-  NSString* string_for_filter = dictionary[@"string_for_filter"];
-  if (string_for_filter) {
-    BOOL hit = YES;
-    for (NSString* s in strings) {
-      if ([string_for_filter rangeOfString:s].location == NSNotFound) hit = NO;
-    }
-    if (hit) {
-      return dictionary;
-    }
+  // check strings
+  if (!stringsMatched) {
+    return nil;
   }
 
-  return nil;
+  return dictionary;
 }
 
 // return YES if we need to call [NSOutlineView reloadData]
@@ -133,7 +158,7 @@
   if (string) {
     for (NSString* s in [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]) {
       if ([s length] == 0) continue;
-      [strings addObject:[s lowercaseString]];
+      [strings addObject:s];
     }
   }
 
