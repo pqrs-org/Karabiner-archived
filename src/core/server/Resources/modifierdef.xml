@@ -111,5 +111,19 @@
   <modifierdef notify="false">BUTTON3</modifierdef>
   <modifierdef notify="false">BUTTON4</modifierdef>
   <modifierdef notify="false">BUTTON5</modifierdef>
+  <modifierdef notify="false">BUTTON6</modifierdef>
+  <modifierdef notify="false">BUTTON7</modifierdef>
+  <modifierdef notify="false">BUTTON8</modifierdef>
+  <modifierdef notify="false">BUTTON9</modifierdef>
+  <modifierdef notify="false">BUTTON10</modifierdef>
+  <modifierdef notify="false">BUTTON11</modifierdef>
+  <modifierdef notify="false">BUTTON12</modifierdef>
+  <modifierdef notify="false">BUTTON13</modifierdef>
+  <modifierdef notify="false">BUTTON14</modifierdef>
+  <modifierdef notify="false">BUTTON15</modifierdef>
+  <modifierdef notify="false">BUTTON16</modifierdef>
+  <modifierdef notify="false">BUTTON17</modifierdef>
+  <modifierdef notify="false">BUTTON18</modifierdef>
+  <modifierdef notify="false">BUTTON19</modifierdef>
 
 </root>
