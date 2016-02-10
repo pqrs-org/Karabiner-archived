@@ -67,6 +67,7 @@
 		34D542D41C5FA44200B23979 /* CheckboxOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D542D31C5FA44200B23979 /* CheckboxOutlineView.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
 		34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94448193217A80062E422 /* StartAtLoginUtilities.m */; };
+		34E917031C6B481200C014BD /* ParameterOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E917021C6B481200C014BD /* ParameterOutlineView.m */; };
 		34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* inputsourcedef.xml */; };
 		34F3FF511C4E9A6B00B9B82C /* CheckboxOutlineViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F3FF501C4E9A6B00B9B82C /* CheckboxOutlineViewDataSource.m */; };
 		34F3FF541C4E9C9300B9B82C /* CheckboxCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F3FF531C4E9C9300B9B82C /* CheckboxCellView.m */; };
@@ -189,6 +190,8 @@
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
 		34D94447193217A80062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		34D94448193217A80062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
+		34E917011C6B481200C014BD /* ParameterOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParameterOutlineView.h; path = Classes/Preferences/ParameterOutlineView.h; sourceTree = "<group>"; };
+		34E917021C6B481200C014BD /* ParameterOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParameterOutlineView.m; path = Classes/Preferences/ParameterOutlineView.m; sourceTree = "<group>"; };
 		34F37D53149A2E7800D4694B /* inputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = inputsourcedef.xml; path = Resources/inputsourcedef.xml; sourceTree = "<group>"; };
 		34F3FF4F1C4E9A6B00B9B82C /* CheckboxOutlineViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxOutlineViewDataSource.h; path = Classes/Preferences/CheckboxOutlineViewDataSource.h; sourceTree = "<group>"; };
 		34F3FF501C4E9A6B00B9B82C /* CheckboxOutlineViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxOutlineViewDataSource.m; path = Classes/Preferences/CheckboxOutlineViewDataSource.m; sourceTree = "<group>"; };
@@ -372,6 +375,8 @@
 				34207C001666209F00E7FD08 /* OutlineView_number.m */,
 				34207C011666209F00E7FD08 /* OutlineView.h */,
 				34207C021666209F00E7FD08 /* OutlineView.m */,
+				34E917011C6B481200C014BD /* ParameterOutlineView.h */,
+				34E917021C6B481200C014BD /* ParameterOutlineView.m */,
 				34D542C61C5E517600B23979 /* ParameterOutlineViewDataSource.h */,
 				34D542C71C5E517600B23979 /* ParameterOutlineViewDataSource.m */,
 				3406F70F1668ED7B00FE1E80 /* PreferencesController.h */,
@@ -577,6 +582,7 @@
 				34D542C81C5E517600B23979 /* ParameterOutlineViewDataSource.m in Sources */,
 				34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */,
 				348C6A2E128E4504005F516D /* StatusBar.m in Sources */,
+				34E917031C6B481200C014BD /* ParameterOutlineView.m in Sources */,
 				342A42D81A8EE7EE0007D37E /* IOHIDPostEventWrapper.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
 				34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */,
