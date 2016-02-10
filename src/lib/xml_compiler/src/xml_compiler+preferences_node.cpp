@@ -40,9 +40,7 @@ bool xml_compiler::preferences_node::handle_name_and_appendix_(const extracted_p
 
 void xml_compiler::preferences_checkbox_node::handle_item_child(const extracted_ptree::node& it) {
   if (preferences_node::handle_name_and_appendix_(it)) {
-    name_for_filter_ += boost::algorithm::to_lower_copy(boost::trim_copy(it.get_data()));
-    name_for_filter_ += " ";
-
+    // do nothing
   } else if (it.get_tag_name() == "identifier") {
     identifier_ = boost::trim_copy(it.get_data());
   }

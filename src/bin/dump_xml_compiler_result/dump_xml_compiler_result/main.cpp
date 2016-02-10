@@ -34,7 +34,6 @@ void dump_tree(const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compile
 
       if (dump_all) {
         std::cout << "<identifier>" << node.get_identifier() << "</identifier>" << std::endl;
-        std::cout << "<name_for_filter>" << node.get_name_for_filter() << "</name_for_filter>" << std::endl;
       }
 
       dump_tree(*it, dump_all);

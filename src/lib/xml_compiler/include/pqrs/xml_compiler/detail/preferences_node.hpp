@@ -25,15 +25,7 @@ protected:
 
 class preferences_checkbox_node final : public preferences_node {
 public:
-  preferences_checkbox_node(void) {}
-  preferences_checkbox_node(const preferences_checkbox_node& parent_node) : name_for_filter_(parent_node.name_for_filter_ + " ") {}
-
   void handle_item_child(const extracted_ptree::node& it);
-
-  const std::string& get_name_for_filter(void) const { return name_for_filter_; }
-
-private:
-  std::string name_for_filter_;
 };
 
 class preferences_number_node final : public preferences_node {

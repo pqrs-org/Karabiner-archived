@@ -80,6 +80,9 @@
 - (NSString*)getStyle {
   return self.style ? self.style : @"";
 }
+- (BOOL)isNameMatched:(NSString*)string {
+  return YES;
+}
 @end
 
 @interface XMLCompiler () {
@@ -121,12 +124,6 @@
         dict[@"identifier"] = @(identifier);
       }
     }
-    {
-      const char* name_for_filter = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_for_filter(child);
-      if (name_for_filter) {
-        dict[@"string_for_filter"] = @(name_for_filter);
-      }
-    }
 
     NSMutableArray* a = [self build_preferencepane_checkbox:child parent:xmlCompilerItem];
     if (a) {
@@ -145,7 +142,6 @@
   checkboxItem.name = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
   checkboxItem.style = @"caution";
   dict[@"xmlCompilerItem"] = checkboxItem;
-  dict[@"string_for_filter"] = [message lowercaseString];
 
   [preferencepane_checkbox_ insertObject:dict atIndex:0];
 }

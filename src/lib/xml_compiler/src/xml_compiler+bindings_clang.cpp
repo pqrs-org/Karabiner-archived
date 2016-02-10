@@ -304,14 +304,6 @@ bool pqrs_xml_compiler_is_preferences_checkbox_node_tree_name_icontains(const pq
 }
 
 const char*
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_name_for_filter(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
-  auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (!node_tree) return nullptr;
-
-  return (node_tree->get_node()).get_name_for_filter().c_str();
-}
-
-const char*
 pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
   if (!node_tree) return nullptr;
