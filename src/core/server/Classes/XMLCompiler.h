@@ -6,6 +6,9 @@
 @class ClientForKernelspace;
 
 @interface XMLCompilerItem : NSObject
+@end
+
+@interface CheckboxItem : XMLCompilerItem
 - (NSString*)getName;
 - (NSString*)getStyle;
 - (BOOL)isNameMatched:(NSString*)string;

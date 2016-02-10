@@ -32,9 +32,9 @@
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   NSString* identifier = item[@"identifier"];
-  XMLCompilerItem* xmlCompilerItem = (XMLCompilerItem*)(item[@"xmlCompilerItem"]);
-  NSString* name = [xmlCompilerItem getName];
-  NSString* style = [xmlCompilerItem getStyle];
+  CheckboxItem* checkboxItem = (CheckboxItem*)(item[@"checkboxItem"]);
+  NSString* name = [checkboxItem getName];
+  NSString* style = [checkboxItem getStyle];
   NSInteger preferredMaxLayoutWidth = [item[@"preferredMaxLayoutWidth"] integerValue];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
@@ -129,7 +129,7 @@
     dispatch_sync(textsHeightQueue_, ^{
       item[@"preferredMaxLayoutWidth"] = @(preferredMaxLayoutWidth);
 
-      self.wrappedTextHeightCalculator.stringValue = [(XMLCompilerItem*)(item[@"xmlCompilerItem"])getName];
+      self.wrappedTextHeightCalculator.stringValue = [(CheckboxItem*)(item[@"checkboxItem"])getName];
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 

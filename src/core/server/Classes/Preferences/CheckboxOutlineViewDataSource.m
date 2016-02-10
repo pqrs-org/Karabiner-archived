@@ -73,7 +73,7 @@
   // check strings
   BOOL stringsMatched = YES;
   if (strings) {
-    XMLCompilerItem* xmlCompilerItem = dictionary[@"xmlCompilerItem"];
+    CheckboxItem* checkboxItem = dictionary[@"checkboxItem"];
     // Remove matched strings from strings for children.
     //
     // For example:
@@ -87,7 +87,7 @@
 
     NSMutableArray* notMatchedStrings = nil;
     for (NSString* s in strings) {
-      if (![xmlCompilerItem isNameMatched:s]) {
+      if (![checkboxItem isNameMatched:s]) {
         stringsMatched = NO;
       } else {
         if (!notMatchedStrings) {

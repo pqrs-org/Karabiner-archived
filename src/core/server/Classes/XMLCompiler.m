@@ -42,6 +42,9 @@
     self.indexes = NULL;
   }
 }
+@end
+
+@implementation CheckboxItem
 
 - (NSString*)getName {
   const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
@@ -68,7 +71,7 @@
 
 @end
 
-@interface CheckboxItemWithStaticData : XMLCompilerItem
+@interface CheckboxItemWithStaticData : CheckboxItem
 @property NSString* name;
 @property NSString* style;
 @end
@@ -98,7 +101,7 @@
 // ------------------------------------------------------------
 // private methods
 
-- (NSMutableArray*)build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree parent:(XMLCompilerItem*)parent {
+- (NSMutableArray*)build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree parent:(CheckboxItem*)parent {
   if (!node_tree) return nil;
 
   size_t size = pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(node_tree);
@@ -115,8 +118,8 @@
     // making dictionary
     NSMutableDictionary* dict = [NSMutableDictionary new];
 
-    XMLCompilerItem* xmlCompilerItem = [[XMLCompilerItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
-    dict[@"xmlCompilerItem"] = xmlCompilerItem;
+    CheckboxItem* checkboxItem = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
+    dict[@"checkboxItem"] = checkboxItem;
 
     {
       const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
@@ -125,7 +128,7 @@
       }
     }
 
-    NSMutableArray* a = [self build_preferencepane_checkbox:child parent:xmlCompilerItem];
+    NSMutableArray* a = [self build_preferencepane_checkbox:child parent:checkboxItem];
     if (a) {
       dict[@"children"] = a;
     }
@@ -141,7 +144,7 @@
   CheckboxItemWithStaticData* checkboxItem = [CheckboxItemWithStaticData new];
   checkboxItem.name = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
   checkboxItem.style = @"caution";
-  dict[@"xmlCompilerItem"] = checkboxItem;
+  dict[@"checkboxItem"] = checkboxItem;
 
   [preferencepane_checkbox_ insertObject:dict atIndex:0];
 }
