@@ -248,16 +248,17 @@
                                             </connections>
                                         </button>
                                         <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dc9-R1-qWB">
-                                            <rect key="frame" x="299" y="36" width="145" height="25"/>
+                                            <rect key="frame" x="299" y="36" width="164" height="25"/>
                                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="YsB-Hj-btS">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <segments>
-                                                    <segment label="small font" width="71"/>
-                                                    <segment label="regular font" width="71" selected="YES" tag="1"/>
+                                                    <segment label="default font" width="81"/>
+                                                    <segment label="large font" width="80" selected="YES" tag="1"/>
                                                 </segments>
                                             </segmentedCell>
                                             <connections>
                                                 <action selector="setCheckboxOutlineViewFont:" target="1181" id="M4o-EX-zNK"/>
+                                                <binding destination="1176" name="selectedIndex" keyPath="values.kKarabinerPreferencesCheckboxFont" id="R5Y-P7-Nlq"/>
                                             </connections>
                                         </segmentedControl>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">

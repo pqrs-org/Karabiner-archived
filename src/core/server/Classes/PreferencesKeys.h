@@ -25,3 +25,4 @@
 
 #define kKarabinerPreferencesWidth @"kKarabinerPreferencesWidth"
 #define kKarabinerPreferencesHeight @"kKarabinerPreferencesHeight"
+#define kKarabinerPreferencesCheckboxFont @"kKarabinerPreferencesCheckboxFont"

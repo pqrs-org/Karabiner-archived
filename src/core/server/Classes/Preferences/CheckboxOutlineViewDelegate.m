@@ -2,6 +2,7 @@
 #import "CheckboxCellView.h"
 #import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxOutlineViewDelegate.h"
+#import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
@@ -25,15 +26,15 @@
 
   if (self) {
     textsHeightQueue_ = dispatch_queue_create("org.pqrs.Karabiner.CheckboxOutlineViewDelegate.textsHeightQueue_", NULL);
-    self.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
     self.heightCache = [NSMutableDictionary new];
+    [self updateFont];
   }
 
   return self;
 }
 
-- (void)setFontByIndex:(NSInteger)index {
-  switch (index) {
+- (void)updateFont {
+  switch ([[NSUserDefaults standardUserDefaults] integerForKey:kKarabinerPreferencesCheckboxFont]) {
   case 0:
     self.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
     break;

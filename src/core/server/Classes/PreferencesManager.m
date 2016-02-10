@@ -40,6 +40,7 @@
     kIsMigratedIsOverwriteKeyRepeat : @NO,
     kIsOverwriteKeyRepeat : @NO,
     kShowIconInDock : @NO,
+    kKarabinerPreferencesCheckboxFont : @0,
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }

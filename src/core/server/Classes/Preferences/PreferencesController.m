@@ -215,7 +215,7 @@
 }
 
 - (IBAction)setCheckboxOutlineViewFont:(id)sender {
-  [self.checkboxOutlineViewDelegate setFontByIndex:[self.checkboxFontSegmentedControl selectedSegment]];
+  [self.checkboxOutlineViewDelegate updateFont];
   [self.checkboxOutlineViewDelegate clearHeightCache];
   [self.checkboxOutlineView reloadData];
 }
