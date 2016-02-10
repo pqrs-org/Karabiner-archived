@@ -6,6 +6,7 @@
 @class ClientForKernelspace;
 
 @interface XMLCompilerItem : NSObject
+@property (readonly) NSNumber* id;
 @end
 
 @interface CheckboxItem : XMLCompilerItem

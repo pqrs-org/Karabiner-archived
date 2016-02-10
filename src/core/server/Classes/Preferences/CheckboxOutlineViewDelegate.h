@@ -10,5 +10,6 @@
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 
 - (void)setFontByIndex:(NSInteger)index;
+- (void)clearHeightCache;
 
 @end

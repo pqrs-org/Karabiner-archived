@@ -15,6 +15,7 @@
 }
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
 @property NSFont* font;
+@property NSMutableDictionary* heightCache;
 @end
 
 @implementation CheckboxOutlineViewDelegate
@@ -25,6 +26,7 @@
   if (self) {
     textsHeightQueue_ = dispatch_queue_create("org.pqrs.Karabiner.CheckboxOutlineViewDelegate.textsHeightQueue_", NULL);
     self.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+    self.heightCache = [NSMutableDictionary new];
   }
 
   return self;
@@ -41,21 +43,21 @@
   }
 }
 
+- (void)clearHeightCache {
+  [self.heightCache removeAllObjects];
+}
+
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   NSString* identifier = item[@"identifier"];
   CheckboxItem* checkboxItem = (CheckboxItem*)(item[@"checkboxItem"]);
   NSString* name = [checkboxItem getName];
   NSString* style = [checkboxItem getStyle];
-  NSInteger preferredMaxLayoutWidth = [item[@"preferredMaxLayoutWidth"] integerValue];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.settingIdentifier = identifier;
 
   result.textField.stringValue = name;
   result.textField.font = self.font;
-  if (preferredMaxLayoutWidth) {
-    result.textField.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
-  }
 
   result.labelTopSpace.constant = kLabelTopSpace;
   result.labelBottomSpace.constant = kLabelBottomSpace;
@@ -123,38 +125,36 @@
 // So, we need to calculate the height by using wrappedTextHeightCalculator.
 
 - (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
-  NSString* identifier = item[@"identifier"];
-
-  NSTableColumn* column = [outlineView outlineTableColumn];
-
-  CGFloat indentation = outlineView.indentationPerLevel * ([outlineView levelForItem:item] + 1);
-  NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - indentation;
-
-  if ([CheckboxOutlineViewDataSource isCheckbox:identifier]) {
-    preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
-  } else {
-    preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;
+  CheckboxItem* checkboxItem = item[@"checkboxItem"];
+  if (!checkboxItem) {
+    return [outlineView rowHeight];
   }
 
-  if ([item[@"preferredMaxLayoutWidth"] integerValue] != preferredMaxLayoutWidth) {
-    dispatch_sync(textsHeightQueue_, ^{
-      item[@"preferredMaxLayoutWidth"] = @(preferredMaxLayoutWidth);
+  if (!self.heightCache[checkboxItem.id]) {
+    NSString* identifier = item[@"identifier"];
 
-      self.wrappedTextHeightCalculator.stringValue = [(CheckboxItem*)(item[@"checkboxItem"])getName];
+    NSTableColumn* column = [outlineView outlineTableColumn];
+
+    CGFloat indentation = outlineView.indentationPerLevel * ([outlineView levelForItem:item] + 1);
+    NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - indentation;
+
+    if ([CheckboxOutlineViewDataSource isCheckbox:identifier]) {
+      preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
+    } else {
+      preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;
+    }
+
+    dispatch_sync(textsHeightQueue_, ^{
+      self.wrappedTextHeightCalculator.stringValue = [checkboxItem getName];
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 
       NSSize size = [self.wrappedTextHeightCalculator fittingSize];
-      item[@"height"] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
+      self.heightCache[checkboxItem.id] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
     });
   }
 
-  NSInteger height = [item[@"height"] integerValue];
-  if (height == 0) {
-    return [outlineView rowHeight];
-  } else {
-    return height;
-  }
+  return [self.heightCache[checkboxItem.id] integerValue];
 }
 
 @end

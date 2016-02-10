@@ -50,6 +50,7 @@
     [self.checkboxOutlineViewDataSource load:YES];
     [self.parameterOutlineViewDataSource load:YES];
 
+    [self.checkboxOutlineViewDelegate clearHeightCache];
     [self.checkboxOutlineViewDataSource clearFilterCondition];
     [self filterCheckboxOutlineView:self];
 
@@ -170,6 +171,7 @@
 
 - (void)reloadCheckboxOutlineView:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
+    [self.checkboxOutlineViewDelegate clearHeightCache];
     [self.checkboxOutlineView reloadData];
   });
 }
@@ -214,6 +216,7 @@
 
 - (IBAction)setCheckboxOutlineViewFont:(id)sender {
   [self.checkboxOutlineViewDelegate setFontByIndex:[self.checkboxFontSegmentedControl selectedSegment]];
+  [self.checkboxOutlineViewDelegate clearHeightCache];
   [self.checkboxOutlineView reloadData];
 }
 

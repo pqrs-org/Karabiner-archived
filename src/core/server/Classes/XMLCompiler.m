@@ -6,6 +6,9 @@
 #import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
+static NSInteger xmlCompilerItemId_;
+static dispatch_queue_t xmlCompilerItemIdQueue_;
+
 @interface XMLCompilerItem ()
 @property pqrs_xml_compiler* pqrs_xml_compiler;
 @property size_t* indexes;
@@ -13,6 +16,11 @@
 @end
 
 @implementation XMLCompilerItem
++ (void)initialize {
+  xmlCompilerItemId_ = 0;
+  xmlCompilerItemIdQueue_ = dispatch_queue_create("org.pqrs.Karabiner.XMLCompiler.xmlCompilerItemIdQueue_", NULL);
+}
+
 - (instancetype)initWithParent:(pqrs_xml_compiler*)pqrs_xml_compiler parent:(XMLCompilerItem*)parent index:(size_t)index {
   self = [super init];
 
@@ -31,6 +39,11 @@
       memcpy(self.indexes, parent.indexes, sizeof(self.indexes[0]) * parent.indexes_size);
     }
     self.indexes[self.indexes_size - 1] = index;
+
+    dispatch_sync(xmlCompilerItemIdQueue_, ^{
+      ++xmlCompilerItemId_;
+      _id = @(xmlCompilerItemId_);
+    });
   }
 
   return self;
