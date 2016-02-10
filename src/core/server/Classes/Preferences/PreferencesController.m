@@ -1,6 +1,7 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "CheckboxOutlineViewDataSource.h"
+#import "CheckboxOutlineViewDelegate.h"
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
 #import "ParameterOutlineViewDataSource.h"
@@ -14,9 +15,11 @@
 
 @interface PreferencesController ()
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
+@property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
 @property(weak) IBOutlet NSOutlineView* checkboxOutlineView;
 @property(weak) IBOutlet NSOutlineView* parameterOutlineView;
 @property(weak) IBOutlet NSSearchField* checkboxSearchText;
+@property(weak) IBOutlet NSSegmentedControl* checkboxFontSegmentedControl;
 @property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
 @property NSTimer* resizeTimer;
 @end
@@ -207,6 +210,11 @@
 
 - (IBAction)collapseCheckboxOutlineView:(id)sender {
   [self.checkboxOutlineView collapseItem:nil collapseChildren:YES];
+}
+
+- (IBAction)setCheckboxOutlineViewFont:(id)sender {
+  [self.checkboxOutlineViewDelegate setFontByIndex:[self.checkboxFontSegmentedControl selectedSegment]];
+  [self.checkboxOutlineView reloadData];
 }
 
 - (IBAction)expandParameterOutlineView:(id)sender {

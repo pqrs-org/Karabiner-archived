@@ -247,6 +247,19 @@
                                                 <action selector="collapseCheckboxOutlineView:" target="1181" id="Mwg-Pl-j74"/>
                                             </connections>
                                         </button>
+                                        <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dc9-R1-qWB">
+                                            <rect key="frame" x="299" y="36" width="145" height="25"/>
+                                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="YsB-Hj-btS">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <segments>
+                                                    <segment label="small font" width="71"/>
+                                                    <segment label="regular font" width="71" selected="YES" tag="1"/>
+                                                </segments>
+                                            </segmentedCell>
+                                            <connections>
+                                                <action selector="setCheckboxOutlineViewFont:" target="1181" id="M4o-EX-zNK"/>
+                                            </connections>
+                                        </segmentedControl>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
                                             <rect key="frame" x="17" y="32" width="499" height="5"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -315,6 +328,7 @@
                                         <constraint firstItem="Ywu-Nf-CWd" firstAttribute="leading" secondItem="nbh-hC-aUy" secondAttribute="trailing" constant="8" id="4w6-Gg-TiM"/>
                                         <constraint firstItem="663" firstAttribute="leading" secondItem="666" secondAttribute="trailing" constant="8" id="6Wa-sX-CE6"/>
                                         <constraint firstItem="9Yg-sZ-0oJ" firstAttribute="top" secondItem="664" secondAttribute="bottom" constant="7" id="8US-5e-82d"/>
+                                        <constraint firstItem="Dc9-R1-qWB" firstAttribute="centerY" secondItem="1374" secondAttribute="centerY" id="9ue-vW-p3k"/>
                                         <constraint firstItem="666" firstAttribute="leading" secondItem="662" secondAttribute="leading" constant="17" id="Aja-zG-0N0"/>
                                         <constraint firstItem="665" firstAttribute="top" secondItem="662" secondAttribute="top" constant="6" id="GLy-Va-JOg"/>
                                         <constraint firstItem="9Yg-sZ-0oJ" firstAttribute="leading" secondItem="yzW-7Y-jBA" secondAttribute="trailing" constant="8" id="Gyc-QY-FEC"/>
@@ -333,6 +347,7 @@
                                         <constraint firstAttribute="trailing" secondItem="cA4-9j-dKU" secondAttribute="trailing" constant="17" id="phy-c7-qIF"/>
                                         <constraint firstItem="nbh-hC-aUy" firstAttribute="top" secondItem="yzW-7Y-jBA" secondAttribute="bottom" constant="8" id="rXC-jt-6gG"/>
                                         <constraint firstItem="1374" firstAttribute="leading" secondItem="1371" secondAttribute="trailing" constant="8" id="ugv-Sv-JRI"/>
+                                        <constraint firstItem="Dc9-R1-qWB" firstAttribute="leading" secondItem="1374" secondAttribute="trailing" constant="40" id="yrR-NV-tFo"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
@@ -1828,8 +1843,10 @@ Debug Mode Guide</string>
         <customObject id="606" customClass="StatusMessageManager"/>
         <customObject id="1181" customClass="PreferencesController">
             <connections>
+                <outlet property="checkboxFontSegmentedControl" destination="Dc9-R1-qWB" id="Lm7-GV-t8d"/>
                 <outlet property="checkboxOutlineView" destination="672" id="Nbb-sr-GBa"/>
                 <outlet property="checkboxOutlineViewDataSource" destination="Vvy-Zk-dMA" id="13k-YF-65z"/>
+                <outlet property="checkboxOutlineViewDelegate" destination="nHm-UC-8X2" id="tsK-Pt-rFy"/>
                 <outlet property="checkboxSearchText" destination="666" id="obf-yN-FKd"/>
                 <outlet property="checkbox_showEnabledOnly_" destination="663" id="1182"/>
                 <outlet property="clientForKernelspace_" destination="600" id="Jdv-ip-9F0"/>

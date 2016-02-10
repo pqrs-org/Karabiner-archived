@@ -30,6 +30,17 @@
   return self;
 }
 
+- (void)setFontByIndex:(NSInteger)index {
+  switch (index) {
+  case 0:
+    self.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+    break;
+  default:
+    self.font = [NSFont systemFontOfSize:[NSFont systemFontSize]];
+    break;
+  }
+}
+
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   NSString* identifier = item[@"identifier"];
   CheckboxItem* checkboxItem = (CheckboxItem*)(item[@"checkboxItem"]);

@@ -9,4 +9,6 @@
 @property(weak) IBOutlet NSOutlineView* outlineView;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 
+- (void)setFontByIndex:(NSInteger)index;
+
 @end
