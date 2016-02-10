@@ -59,6 +59,13 @@
   return @(style);
 }
 
+- (BOOL)isNameMatched:(NSString*)string {
+  if (!string) {
+    return NO;
+  }
+  return pqrs_xml_compiler_is_preferences_checkbox_node_tree_name_icontains(self.pqrs_xml_compiler, self.indexes, self.indexes_size, [string UTF8String]);
+}
+
 @end
 
 @interface CheckboxItemWithStaticData : XMLCompilerItem

@@ -8,6 +8,7 @@
 @interface XMLCompilerItem : NSObject
 - (NSString*)getName;
 - (NSString*)getStyle;
+- (BOOL)isNameMatched:(NSString*)string;
 @end
 
 @interface XMLCompiler : NSObject {
