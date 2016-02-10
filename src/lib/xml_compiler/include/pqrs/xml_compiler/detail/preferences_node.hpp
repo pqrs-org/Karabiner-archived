@@ -31,7 +31,6 @@ public:
 class preferences_number_node final : public preferences_node {
 public:
   preferences_number_node(void) : step_(1) {}
-  preferences_number_node(const preferences_number_node& /*parent_node*/) : preferences_number_node() {}
 
   void handle_item_child(const extracted_ptree::node& it);
 
