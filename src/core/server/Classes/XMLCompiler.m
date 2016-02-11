@@ -40,18 +40,16 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   if (self) {
     self.pqrs_xml_compiler = pqrs_xml_compiler;
 
-    if (parent) {
-      self.indexes_size = parent.indexes_size + 1;
+    if (!parent) {
+      self.indexes_size = 0;
     } else {
-      self.indexes_size = 1;
+      self.indexes_size = parent.indexes_size + 1;
+      self.indexes = (size_t*)malloc(sizeof(size_t) * self.indexes_size);
+      if (parent.indexes_size > 0) {
+        memcpy(self.indexes, parent.indexes, sizeof(self.indexes[0]) * parent.indexes_size);
+      }
+      self.indexes[self.indexes_size - 1] = index;
     }
-
-    self.indexes = (size_t*)malloc(sizeof(size_t) * self.indexes_size);
-
-    if (parent) {
-      memcpy(self.indexes, parent.indexes, sizeof(self.indexes[0]) * parent.indexes_size);
-    }
-    self.indexes[self.indexes_size - 1] = index;
   }
 
   return self;
@@ -80,6 +78,10 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 - (NSString*)getIdentifier {
   const char* value = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
   return value ? @(value) : @"";
+}
+
+- (NSUInteger)getChildrenCount {
+  return pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
 }
 
 - (BOOL)needsShowCheckbox {
@@ -115,6 +117,9 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 - (NSString*)getIdentifier {
   return @"";
 }
+- (NSUInteger)getChildrenCount {
+  return 0;
+}
 - (BOOL)needsShowCheckbox {
   return NO;
 }
@@ -136,27 +141,20 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 // ------------------------------------------------------------
 // private methods
 
-- (NSMutableArray*)build_preferencepane_checkbox:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)node_tree parent:(CheckboxItem*)parent {
-  if (!node_tree) return nil;
-
-  size_t size = pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(node_tree);
+- (NSMutableArray*)build_preferencepane_checkbox:(CheckboxItem*)parent {
+  size_t size = [parent getChildrenCount];
   if (size == 0) return nil;
 
   NSMutableArray* array = [NSMutableArray new];
 
   for (size_t i = 0; i < size; ++i) {
-    const pqrs_xml_compiler_preferences_checkbox_node_tree* child =
-        pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(node_tree, i);
-    if (!child) continue;
-
-    // ----------------------------------------
     // making dictionary
     NSMutableDictionary* dict = [NSMutableDictionary new];
 
     CheckboxItem* checkboxItem = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
     dict[@"checkboxItem"] = checkboxItem;
 
-    NSMutableArray* a = [self build_preferencepane_checkbox:child parent:checkboxItem];
+    NSMutableArray* a = [self build_preferencepane_checkbox:checkboxItem];
     if (a) {
       dict[@"children"] = a;
     }
@@ -302,10 +300,8 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
     // build preferencepane_checkbox_
     {
-      const pqrs_xml_compiler_preferences_checkbox_node_tree* node_tree =
-          pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(pqrs_xml_compiler_);
-
-      preferencepane_checkbox_ = [self build_preferencepane_checkbox:node_tree parent:nil];
+      CheckboxItem* root = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:nil index:0];
+      preferencepane_checkbox_ = [self build_preferencepane_checkbox:root];
     }
 
     // build preferencepane_number_

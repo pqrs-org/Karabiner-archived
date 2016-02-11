@@ -6,13 +6,14 @@
 @class ClientForKernelspace;
 
 @interface XMLCompilerItem : NSObject
-@property (readonly) NSNumber* id;
+@property(readonly) NSNumber* id;
 @end
 
 @interface CheckboxItem : XMLCompilerItem
 - (NSString*)getName;
 - (NSString*)getStyle;
 - (NSString*)getIdentifier;
+- (NSUInteger)getChildrenCount;
 - (BOOL)needsShowCheckbox;
 - (BOOL)isNameMatched:(NSString*)string;
 @end
