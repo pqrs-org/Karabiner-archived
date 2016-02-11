@@ -53,13 +53,6 @@ size_t pqrs_xml_compiler_get_remapclasses_initialize_vector_size(const pqrs_xml_
 uint32_t pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(const pqrs_xml_compiler* p);
 
 // ------------------------------------------------------------
-const pqrs_xml_compiler_preferences_checkbox_node_tree*
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(const pqrs_xml_compiler* p);
-
-const pqrs_xml_compiler_preferences_checkbox_node_tree*
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compiler_preferences_checkbox_node_tree* p,
-                                                           size_t index);
-
 size_t pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size);
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size);
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size);

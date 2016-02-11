@@ -221,32 +221,6 @@ pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(const pqrs_xml
 }
 
 // ------------------------------------------------------------
-const pqrs_xml_compiler_preferences_checkbox_node_tree*
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(const pqrs_xml_compiler* p) {
-  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
-  if (!xml_compiler) return nullptr;
-
-  return reinterpret_cast<const pqrs_xml_compiler_preferences_checkbox_node_tree*>(&(xml_compiler->get_preferences_checkbox_node_tree()));
-}
-
-static const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>*
-cast_to_preferences_checkbox_node_tree(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
-  return reinterpret_cast<const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>*>(p);
-}
-
-const pqrs_xml_compiler_preferences_checkbox_node_tree*
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compiler_preferences_checkbox_node_tree* p,
-                                                           size_t index) {
-  auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (!node_tree) return nullptr;
-
-  auto children = node_tree->get_children();
-  if (!children) return nullptr;
-  if (index >= children->size()) return nullptr;
-
-  return reinterpret_cast<const pqrs_xml_compiler_preferences_checkbox_node_tree*>(((*children)[index]).get());
-}
-
 namespace {
 const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_checkbox_node>* get_checkbox_node_tree_from_indexes(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
   auto xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
