@@ -12,6 +12,8 @@
 @interface CheckboxItem : XMLCompilerItem
 - (NSString*)getName;
 - (NSString*)getStyle;
+- (NSString*)getIdentifier;
+- (BOOL)needsShowCheckbox;
 - (BOOL)isNameMatched:(NSString*)string;
 @end
 

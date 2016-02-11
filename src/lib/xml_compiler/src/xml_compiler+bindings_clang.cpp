@@ -303,15 +303,11 @@ bool pqrs_xml_compiler_is_preferences_checkbox_node_tree_name_icontains(const pq
   return boost::icontains(name, string);
 }
 
-const char*
-pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
-  auto node_tree = cast_to_preferences_checkbox_node_tree(p);
+const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_checkbox_node_tree_from_indexes(p, indexes, indexes_size);
   if (!node_tree) return nullptr;
 
-  const auto& identifier = (node_tree->get_node()).get_identifier();
-  if (identifier.empty()) return nullptr;
-
-  return identifier.c_str();
+  return (node_tree->get_node()).get_identifier().c_str();
 }
 
 // ------------------------------------------------------------

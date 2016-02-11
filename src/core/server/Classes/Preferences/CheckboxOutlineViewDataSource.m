@@ -70,10 +70,11 @@
 }
 
 - (NSDictionary*)filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+  CheckboxItem* checkboxItem = dictionary[@"checkboxItem"];
+
   // check strings
   BOOL stringsMatched = YES;
   if (strings) {
-    CheckboxItem* checkboxItem = dictionary[@"checkboxItem"];
     // Remove matched strings from strings for children.
     //
     // For example:
@@ -124,8 +125,8 @@
   // ------------------------------------------------------------
   // filter by isEnabledOnly
   if (isEnabledOnly) {
-    NSString* identifier = dictionary[@"identifier"];
-    if (!identifier) {
+    NSString* identifier = [checkboxItem getIdentifier];
+    if ([identifier length] == 0) {
       return nil;
     }
     if (![self.preferencesManager value:identifier]) {
@@ -207,14 +208,6 @@
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
   return [item[@"children"] count] > 0;
-}
-
-+ (BOOL)isCheckbox:(NSString*)identifier {
-  if (!identifier ||
-      [identifier hasPrefix:@"notsave."]) {
-    return NO;
-  }
-  return YES;
 }
 
 @end

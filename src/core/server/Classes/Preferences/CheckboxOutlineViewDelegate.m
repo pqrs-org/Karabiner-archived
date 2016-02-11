@@ -1,6 +1,5 @@
 #import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
-#import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxOutlineViewDelegate.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
@@ -49,10 +48,10 @@
 }
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
-  NSString* identifier = item[@"identifier"];
   CheckboxItem* checkboxItem = (CheckboxItem*)(item[@"checkboxItem"]);
   NSString* name = [checkboxItem getName];
   NSString* style = [checkboxItem getStyle];
+  NSString* identifier = [checkboxItem getIdentifier];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.settingIdentifier = identifier;
@@ -63,7 +62,7 @@
   result.labelTopSpace.constant = kLabelTopSpace;
   result.labelBottomSpace.constant = kLabelBottomSpace;
 
-  if (![CheckboxOutlineViewDataSource isCheckbox:identifier]) {
+  if (![checkboxItem needsShowCheckbox]) {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
   } else {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
@@ -132,14 +131,12 @@
   }
 
   if (!self.heightCache[checkboxItem.id]) {
-    NSString* identifier = item[@"identifier"];
-
     NSTableColumn* column = [outlineView outlineTableColumn];
 
     CGFloat indentation = outlineView.indentationPerLevel * ([outlineView levelForItem:item] + 1);
     NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - indentation;
 
-    if ([CheckboxOutlineViewDataSource isCheckbox:identifier]) {
+    if ([checkboxItem needsShowCheckbox]) {
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
     } else {
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;

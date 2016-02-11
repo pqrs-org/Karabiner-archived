@@ -21,8 +21,21 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   xmlCompilerItemIdQueue_ = dispatch_queue_create("org.pqrs.Karabiner.XMLCompiler.xmlCompilerItemIdQueue_", NULL);
 }
 
-- (instancetype)initWithParent:(pqrs_xml_compiler*)pqrs_xml_compiler parent:(XMLCompilerItem*)parent index:(size_t)index {
+- (instancetype)init {
   self = [super init];
+
+  if (self) {
+    dispatch_sync(xmlCompilerItemIdQueue_, ^{
+      ++xmlCompilerItemId_;
+      _id = @(xmlCompilerItemId_);
+    });
+  }
+
+  return self;
+}
+
+- (instancetype)initWithParent:(pqrs_xml_compiler*)pqrs_xml_compiler parent:(XMLCompilerItem*)parent index:(size_t)index {
+  self = [self init];
 
   if (self) {
     self.pqrs_xml_compiler = pqrs_xml_compiler;
@@ -39,11 +52,6 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       memcpy(self.indexes, parent.indexes, sizeof(self.indexes[0]) * parent.indexes_size);
     }
     self.indexes[self.indexes_size - 1] = index;
-
-    dispatch_sync(xmlCompilerItemIdQueue_, ^{
-      ++xmlCompilerItemId_;
-      _id = @(xmlCompilerItemId_);
-    });
   }
 
   return self;
@@ -60,19 +68,27 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 @implementation CheckboxItem
 
 - (NSString*)getName {
-  const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  if (!name) {
-    return @"";
-  }
-  return @(name);
+  const char* value = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  return value ? @(value) : @"";
 }
 
 - (NSString*)getStyle {
-  const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  if (!style) {
-    return @"";
+  const char* value = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  return value ? @(value) : @"";
+}
+
+- (NSString*)getIdentifier {
+  const char* value = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  return value ? @(value) : @"";
+}
+
+- (BOOL)needsShowCheckbox {
+  NSString* identifier = [self getIdentifier];
+  if ([identifier length] == 0 ||
+      [identifier hasPrefix:@"notsave."]) {
+    return NO;
   }
-  return @(style);
+  return YES;
 }
 
 - (BOOL)isNameMatched:(NSString*)string {
@@ -95,6 +111,12 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 }
 - (NSString*)getStyle {
   return self.style ? self.style : @"";
+}
+- (NSString*)getIdentifier {
+  return @"";
+}
+- (BOOL)needsShowCheckbox {
+  return NO;
 }
 - (BOOL)isNameMatched:(NSString*)string {
   return YES;
@@ -133,13 +155,6 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
     CheckboxItem* checkboxItem = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
     dict[@"checkboxItem"] = checkboxItem;
-
-    {
-      const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
-      if (identifier) {
-        dict[@"identifier"] = @(identifier);
-      }
-    }
 
     NSMutableArray* a = [self build_preferencepane_checkbox:child parent:checkboxItem];
     if (a) {

@@ -123,8 +123,8 @@
 
   if (checkbox) {
     for (NSDictionary* dict in checkbox) {
-      NSString* identifier = dict[@"identifier"];
-      if (identifier) {
+      NSString* identifier = [dict[@"checkboxItem"] getIdentifier];
+      if ([identifier length] > 0) {
         if ([changed[identifier] intValue] != 0) {
           ++count;
         }

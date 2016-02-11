@@ -7,6 +7,5 @@
 - (void)load:(BOOL)force;
 - (BOOL)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 - (void)clearFilterCondition;
-+ (BOOL)isCheckbox:(NSString*)identifier;
 
 @end
