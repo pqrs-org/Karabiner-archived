@@ -338,7 +338,7 @@ int pqrs_xml_compiler_get_preferences_number_node_tree_default_value(const pqrs_
 
 int pqrs_xml_compiler_get_preferences_number_node_tree_step(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
   auto node_tree = get_number_node_tree_from_indexes(p, indexes, indexes_size);
-  if (!node_tree) return 0;
+  if (!node_tree) return 1;
 
   return (node_tree->get_node()).get_step();
 }
