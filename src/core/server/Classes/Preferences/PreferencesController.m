@@ -111,26 +111,28 @@
   // So, we skip this calculation if the preferences window was invisible.
   if (![preferencesWindow_ isVisible]) return;
 
-  int count = [self enabled_count:[xmlCompiler_ preferencepane_checkbox]
+  int count = [self enabled_count:xmlCompiler_.preferencepane_checkbox
                           changed:[preferencesManager_ changed]];
 
   [checkbox_showEnabledOnly_ setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items" : @"item"]];
 }
 
 /* ---------------------------------------------------------------------- */
-- (int)enabled_count:(NSArray*)checkbox changed:(NSDictionary*)changed {
+- (int)enabled_count:(XMLCompilerTree*)tree changed:(NSDictionary*)changed {
   int count = 0;
 
-  if (checkbox) {
-    for (NSDictionary* dict in checkbox) {
-      NSString* identifier = [dict[@"checkboxItem"] getIdentifier];
-      if ([identifier length] > 0) {
-        if ([changed[identifier] intValue] != 0) {
-          ++count;
-        }
+  if (tree) {
+    NSString* identifier = [tree.node getIdentifier];
+    if ([identifier length] > 0) {
+      if ([changed[identifier] intValue] != 0) {
+        ++count;
       }
+    }
 
-      count += [self enabled_count:dict[@"children"] changed:changed];
+    if (tree.children) {
+      for (XMLCompilerTree* child in tree.children) {
+        count += [self enabled_count:child changed:changed];
+      }
     }
   }
 

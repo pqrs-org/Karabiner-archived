@@ -128,10 +128,12 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 }
 @end
 
+@implementation XMLCompilerTree
+@end
+
 @interface XMLCompiler () {
   pqrs_xml_compiler* pqrs_xml_compiler_;
 
-  NSMutableArray* preferencepane_checkbox_;
   NSMutableArray* preferencepane_number_;
 }
 @end
@@ -141,38 +143,54 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 // ------------------------------------------------------------
 // private methods
 
-- (NSMutableArray*)build_preferencepane_checkbox:(CheckboxItem*)parent {
+- (XMLCompilerTree*)newCautionNode:(NSString*)name {
+  CheckboxItemWithStaticData* checkboxItem = [CheckboxItemWithStaticData new];
+  checkboxItem.name = name;
+  checkboxItem.style = @"caution";
+
+  XMLCompilerTree* tree = [XMLCompilerTree new];
+  tree.node = checkboxItem;
+
+  return tree;
+}
+
+- (NSArray*)build_preferencepane_checkbox:(CheckboxItem*)parent {
   size_t size = [parent getChildrenCount];
   if (size == 0) return nil;
 
-  NSMutableArray* array = [NSMutableArray new];
+  NSMutableArray* children = [NSMutableArray new];
 
-  for (size_t i = 0; i < size; ++i) {
-    // making dictionary
-    NSMutableDictionary* dict = [NSMutableDictionary new];
-
-    CheckboxItem* checkboxItem = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
-    dict[@"checkboxItem"] = checkboxItem;
-
-    NSMutableArray* a = [self build_preferencepane_checkbox:checkboxItem];
-    if (a) {
-      dict[@"children"] = a;
+  if (parent.indexes_size == 0) {
+    // Add error messages into root children.
+    {
+      NSString* message = [self preferencepane_error_message];
+      if (message) {
+        [children addObject:[self newCautionNode:message]];
+      }
     }
-
-    [array addObject:dict];
+    if ([EnvironmentChecker checkDoubleCommand]) {
+      [children addObject:[self newCautionNode:@"A conflicting application is installed: DoubleCommand\n\nKarabiner ignores keyboard devices.\n(You can use Karabiner as a pointing device remapper.)"]];
+    }
+    if ([EnvironmentChecker checkKeyRemap4MacBook]) {
+      [children addObject:[self newCautionNode:@"An old kernel extension has still been loaded. Please restart your system in order to unload it."]];
+    }
+    if ([EnvironmentChecker checkKirgudu]) {
+      [children addObject:[self newCautionNode:@"A conflicting application is installed: Kirgudu\n\nKarabiner ignores keyboard devices.\n(You can use Karabiner as a pointing device remapper.)"]];
+    }
+    if ([EnvironmentChecker checkSmoothMouse]) {
+      [children addObject:[self newCautionNode:@"A conflicting application is installed: SmoothMouse\n\nKarabiner ignores pointing devices.\n(You can use Karabiner as a keyboard device remapper.)"]];
+    }
   }
 
-  return array;
-}
+  for (size_t i = 0; i < size; ++i) {
+    XMLCompilerTree* child = [XMLCompilerTree new];
+    child.node = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
+    child.children = [self build_preferencepane_checkbox:child.node];
 
-- (void)insert_caution_into_preferencepane_checkbox:(NSString*)message {
-  NSMutableDictionary* dict = [NSMutableDictionary new];
-  CheckboxItemWithStaticData* checkboxItem = [CheckboxItemWithStaticData new];
-  checkboxItem.name = [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  checkboxItem.style = @"caution";
-  dict[@"checkboxItem"] = checkboxItem;
+    [children addObject:child];
+  }
 
-  [preferencepane_checkbox_ insertObject:dict atIndex:0];
+  return children;
 }
 
 + (NSMutableArray*)build_preferencepane_number:(const pqrs_xml_compiler_preferences_number_node_tree*)node_tree {
@@ -298,10 +316,11 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
     pqrs_xml_compiler_reload(pqrs_xml_compiler_, checkbox_xml_file_name);
 
-    // build preferencepane_checkbox_
     {
       CheckboxItem* root = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:nil index:0];
-      preferencepane_checkbox_ = [self build_preferencepane_checkbox:root];
+      XMLCompilerTree* tree = [XMLCompilerTree new];
+      tree.children = [self build_preferencepane_checkbox:root];
+      self.preferencepane_checkbox = tree;
     }
 
     // build preferencepane_number_
@@ -314,35 +333,23 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   }
 
   // ------------------------------------------------------------
-  if (pqrs_xml_compiler_get_error_count(pqrs_xml_compiler_) > 0) {
+  {
     NSString* message = [self preferencepane_error_message];
-    [self insert_caution_into_preferencepane_checkbox:message];
+    if (message) {
+      NSUInteger maxlen = 500;
+      if ([message length] > maxlen) {
+        message = [message substringToIndex:maxlen];
+      }
 
-    NSUInteger maxlen = 500;
-    if ([message length] > maxlen) {
-      message = [message substringToIndex:maxlen];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        NSAlert* alert = [NSAlert new];
+        [alert setMessageText:@"Karabiner Error"];
+        [alert addButtonWithTitle:@"Close"];
+        [alert setInformativeText:message];
+
+        [alert runModal];
+      });
     }
-
-    NSAlert* alert = [NSAlert new];
-    [alert setMessageText:@"Karabiner Error"];
-    [alert addButtonWithTitle:@"Close"];
-    [alert setInformativeText:message];
-
-    [alert runModal];
-  }
-
-  // ------------------------------------------------------------
-  if ([EnvironmentChecker checkDoubleCommand]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: DoubleCommand\n\nKarabiner ignores keyboard devices.\n(You can use Karabiner as a pointing device remapper.)"];
-  }
-  if ([EnvironmentChecker checkKeyRemap4MacBook]) {
-    [self insert_caution_into_preferencepane_checkbox:@"An old kernel extension has still been loaded. Please restart your system in order to unload it."];
-  }
-  if ([EnvironmentChecker checkKirgudu]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: Kirgudu\n\nKarabiner ignores keyboard devices.\n(You can use Karabiner as a pointing device remapper.)"];
-  }
-  if ([EnvironmentChecker checkSmoothMouse]) {
-    [self insert_caution_into_preferencepane_checkbox:@"A conflicting application is installed: SmoothMouse\n\nKarabiner ignores pointing devices.\n(You can use Karabiner as a keyboard device remapper.)"];
   }
 
   // ------------------------------------------------------------
@@ -504,12 +511,6 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 - (BOOL)urlIsBackground:(uint32_t)keycode {
   @synchronized(self) {
     return pqrs_xml_compiler_get_url_background(pqrs_xml_compiler_, keycode);
-  }
-}
-
-- (NSMutableArray*)preferencepane_checkbox {
-  @synchronized(self) {
-    return preferencepane_checkbox_;
   }
 }
 

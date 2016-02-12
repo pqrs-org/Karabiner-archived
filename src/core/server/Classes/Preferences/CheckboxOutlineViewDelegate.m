@@ -48,10 +48,10 @@
 }
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
-  CheckboxItem* checkboxItem = (CheckboxItem*)(item[@"checkboxItem"]);
-  NSString* name = [checkboxItem getName];
-  NSString* style = [checkboxItem getStyle];
-  NSString* identifier = [checkboxItem getIdentifier];
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  NSString* name = [tree.node getName];
+  NSString* style = [tree.node getStyle];
+  NSString* identifier = [tree.node getIdentifier];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.settingIdentifier = identifier;
@@ -62,7 +62,7 @@
   result.labelTopSpace.constant = kLabelTopSpace;
   result.labelBottomSpace.constant = kLabelBottomSpace;
 
-  if (![checkboxItem needsShowCheckbox]) {
+  if (![tree.node needsShowCheckbox]) {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
   } else {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
@@ -125,34 +125,34 @@
 // So, we need to calculate the height by using wrappedTextHeightCalculator.
 
 - (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
-  CheckboxItem* checkboxItem = item[@"checkboxItem"];
-  if (!checkboxItem) {
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  if (!tree.node) {
     return [outlineView rowHeight];
   }
 
-  if (!self.heightCache[checkboxItem.id]) {
+  if (!self.heightCache[tree.node.id]) {
     NSTableColumn* column = [outlineView outlineTableColumn];
 
     CGFloat indentation = outlineView.indentationPerLevel * ([outlineView levelForItem:item] + 1);
     NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - indentation;
 
-    if ([checkboxItem needsShowCheckbox]) {
+    if ([tree.node needsShowCheckbox]) {
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
     } else {
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;
     }
 
     dispatch_sync(textsHeightQueue_, ^{
-      self.wrappedTextHeightCalculator.stringValue = [checkboxItem getName];
+      self.wrappedTextHeightCalculator.stringValue = [tree.node getName];
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 
       NSSize size = [self.wrappedTextHeightCalculator fittingSize];
-      self.heightCache[checkboxItem.id] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
+      self.heightCache[tree.node.id] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
     });
   }
 
-  return [self.heightCache[checkboxItem.id] integerValue];
+  return [self.heightCache[tree.node.id] integerValue];
 }
 
 @end

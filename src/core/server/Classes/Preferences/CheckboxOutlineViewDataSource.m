@@ -49,7 +49,7 @@
 @interface CheckboxOutlineViewDataSource ()
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
-@property NSMutableArray* dataSource;
+@property XMLCompilerTree* dataSource;
 @property FilterCondition* filterCondition;
 @end
 
@@ -64,14 +64,12 @@
   }
 
   if (!self.dataSource) {
-    self.dataSource = [self.xmlCompiler preferencepane_checkbox];
+    self.dataSource = self.xmlCompiler.preferencepane_checkbox;
     self.filterCondition = nil;
   }
 }
 
-- (NSDictionary*)filterDataSource_core:(NSDictionary*)dictionary isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  CheckboxItem* checkboxItem = dictionary[@"checkboxItem"];
-
+- (XMLCompilerTree*)filterDataSource_core:(XMLCompilerTree*)tree isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
   // check strings
   BOOL stringsMatched = YES;
   if (strings) {
@@ -88,7 +86,7 @@
 
     NSMutableArray* notMatchedStrings = nil;
     for (NSString* s in strings) {
-      if (![checkboxItem isNameMatched:s]) {
+      if (![tree.node isNameMatched:s]) {
         stringsMatched = NO;
       } else {
         if (!notMatchedStrings) {
@@ -105,27 +103,28 @@
 
   // ------------------------------------------------------------
   // check children
-  NSArray* children = dictionary[@"children"];
-  if (children) {
+  XMLCompilerTree* newtree = [XMLCompilerTree new];
+  newtree.node = tree.node;
+
+  if (tree.children) {
     NSMutableArray* newchildren = [NSMutableArray new];
-    for (NSDictionary* dict in children) {
-      NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
-      if (d) {
-        [newchildren addObject:d];
+    for (XMLCompilerTree* child in tree.children) {
+      XMLCompilerTree* t = [self filterDataSource_core:child isEnabledOnly:isEnabledOnly strings:strings];
+      if (t) {
+        [newchildren addObject:t];
       }
     }
 
     if ([newchildren count] > 0) {
-      NSMutableDictionary* newdictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];
-      newdictionary[@"children"] = newchildren;
-      return newdictionary;
+      newtree.children = newchildren;
+      return newtree;
     }
   }
 
   // ------------------------------------------------------------
   // filter by isEnabledOnly
   if (isEnabledOnly) {
-    NSString* identifier = [checkboxItem getIdentifier];
+    NSString* identifier = [tree.node getIdentifier];
     if ([identifier length] == 0) {
       return nil;
     }
@@ -139,7 +138,7 @@
     return nil;
   }
 
-  return dictionary;
+  return newtree;
 }
 
 // return YES if we need to call [NSOutlineView reloadData]
@@ -164,14 +163,10 @@
   }
 
   if (isEnabledOnly || [strings count] > 0) {
-    NSMutableArray* newdatasource = [NSMutableArray new];
-    for (NSDictionary* dict in self.dataSource) {
-      NSDictionary* d = [self filterDataSource_core:dict isEnabledOnly:isEnabledOnly strings:strings];
-      if (d) {
-        [newdatasource addObject:d];
-      }
+    XMLCompilerTree* newdatasource = [self filterDataSource_core:self.dataSource isEnabledOnly:isEnabledOnly strings:strings];
+    if (!newdatasource) {
+      newdatasource = [XMLCompilerTree new];
     }
-
     self.dataSource = newdatasource;
   }
 
@@ -182,7 +177,8 @@
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
   [self load:NO];
 
-  return item ? [item[@"children"] count] : [self.dataSource count];
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  return tree ? [tree.children count] : [self.dataSource.children count];
 }
 
 - (void)clearFilterCondition {
@@ -193,21 +189,17 @@
   [self load:NO];
 
   // ----------------------------------------
-  NSMutableArray* a = nil;
-
-  // root object
-  if (!item) {
-    a = self.dataSource;
-  } else {
-    a = item[@"children"];
-  }
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  NSArray* a = tree ? tree.children : self.dataSource.children;
 
   if ((NSUInteger)(index) >= [a count]) return nil;
   return a[index];
 }
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
-  return [item[@"children"] count] > 0;
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  NSArray* a = tree ? tree.children : self.dataSource.children;
+  return [a count] > 0;
 }
 
 @end

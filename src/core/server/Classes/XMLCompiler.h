@@ -18,9 +18,16 @@
 - (BOOL)isNameMatched:(NSString*)string;
 @end
 
+@interface XMLCompilerTree : NSObject
+@property CheckboxItem* node;
+@property NSArray* children;
+@end
+
 @interface XMLCompiler : NSObject {
   IBOutlet ClientForKernelspace* clientForKernelspace_;
 }
+
+@property XMLCompilerTree* preferencepane_checkbox;
 
 + (NSString*)get_private_xml_path;
 
@@ -48,7 +55,6 @@
 - (NSString*)urlType:(uint32_t)keycode;
 - (BOOL)urlIsBackground:(uint32_t)keycode;
 
-- (NSMutableArray*)preferencepane_checkbox;
 - (NSMutableArray*)preferencepane_number;
 - (NSString*)preferencepane_error_message;
 
