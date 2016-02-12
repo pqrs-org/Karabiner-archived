@@ -86,7 +86,8 @@
 
     NSMutableArray* notMatchedStrings = nil;
     for (NSString* s in strings) {
-      if (![tree.node isNameMatched:s]) {
+      CheckboxItem* checkboxItem = [tree castNodeToCheckboxItem];
+      if (![checkboxItem isNameMatched:s]) {
         stringsMatched = NO;
       } else {
         if (!notMatchedStrings) {
@@ -124,7 +125,8 @@
   // ------------------------------------------------------------
   // filter by isEnabledOnly
   if (isEnabledOnly) {
-    NSString* identifier = [tree.node getIdentifier];
+    CheckboxItem* checkboxItem = [tree castNodeToCheckboxItem];
+    NSString* identifier = [checkboxItem getIdentifier];
     if ([identifier length] == 0) {
       return nil;
     }

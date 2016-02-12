@@ -164,12 +164,19 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 @end
 
 @implementation XMLCompilerTree
+
+- (CheckboxItem*)castNodeToCheckboxItem {
+  return [self.node isKindOfClass:[CheckboxItem class]] ? (CheckboxItem*)(self.node) : nil;
+}
+
+- (ParameterItem*)castNodeToParameterItem {
+  return [self.node isKindOfClass:[ParameterItem class]] ? (ParameterItem*)(self.node) : nil;
+}
+
 @end
 
 @interface XMLCompiler () {
   pqrs_xml_compiler* pqrs_xml_compiler_;
-
-  NSMutableArray* preferencepane_number_;
 }
 @end
 
@@ -219,8 +226,9 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
   for (size_t i = 0; i < size; ++i) {
     XMLCompilerTree* child = [XMLCompilerTree new];
-    child.node = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
-    child.children = [self build_preferencepane_checkbox:child.node];
+    CheckboxItem* node = [[CheckboxItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
+    child.node = node;
+    child.children = [self build_preferencepane_checkbox:node];
 
     [children addObject:child];
   }
@@ -228,33 +236,22 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   return children;
 }
 
-- (NSMutableArray*)build_preferencepane_number:(ParameterItem*)parent {
+- (NSArray*)build_preferencepane_parameter:(ParameterItem*)parent {
   size_t size = [parent getChildrenCount];
   if (size == 0) return nil;
 
-  NSMutableArray* array = [NSMutableArray new];
+  NSMutableArray* children = [NSMutableArray new];
 
   for (size_t i = 0; i < size; ++i) {
-    ParameterItem* parameterItem = [[ParameterItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
+    XMLCompilerTree* child = [XMLCompilerTree new];
+    ParameterItem* node = [[ParameterItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
+    child.node = node;
+    child.children = [self build_preferencepane_parameter:node];
 
-    // ----------------------------------------
-    // making dictionary
-    NSMutableDictionary* dict = [NSMutableDictionary new];
-    dict[@"name"] = [parameterItem getName];
-    dict[@"identifier"] = [parameterItem getIdentifier];
-    dict[@"default"] = [[NSString alloc] initWithFormat:@"%ld", [parameterItem getDefaultValue]];
-    dict[@"step"] = @([parameterItem getStep]);
-    dict[@"baseunit"] = [parameterItem getBaseUnit];
-
-    NSMutableArray* a = [self build_preferencepane_number:parameterItem];
-    if (a) {
-      dict[@"children"] = a;
-    }
-
-    [array addObject:dict];
+    [children addObject:child];
   }
 
-  return array;
+  return children;
 }
 
 // ------------------------------------------------------------
@@ -329,10 +326,12 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       self.preferencepane_checkbox = tree;
     }
 
-    // build preferencepane_number_
+    // build preferencepane_parameter
     {
       ParameterItem* root = [[ParameterItem alloc] initWithParent:pqrs_xml_compiler_ parent:nil index:0];
-      preferencepane_number_ = [self build_preferencepane_number:root];
+      XMLCompilerTree* tree = [XMLCompilerTree new];
+      tree.children = [self build_preferencepane_parameter:root];
+      self.preferencepane_parameter = tree;
     }
   }
 
@@ -515,13 +514,6 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 - (BOOL)urlIsBackground:(uint32_t)keycode {
   @synchronized(self) {
     return pqrs_xml_compiler_get_url_background(pqrs_xml_compiler_, keycode);
-  }
-}
-
-- (NSMutableArray*)preferencepane_number;
-{
-  @synchronized(self) {
-    return preferencepane_number_;
   }
 }
 

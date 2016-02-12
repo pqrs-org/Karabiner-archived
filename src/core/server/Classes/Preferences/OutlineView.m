@@ -20,10 +20,13 @@
   if (ischeckbox_) {
     return nil;
   } else {
-    NSString* identifier = item[@"identifier"];
+    XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+    ParameterItem* parameterItem = [tree castNodeToParameterItem];
+    NSString* identifier = [parameterItem getIdentifier];
+
     NSString* columnIdentifier = [tableColumn identifier];
 
-    if (identifier) {
+    if ([identifier length] > 0) {
       if ([columnIdentifier isEqualToString:@"value"]) {
         NSTextFieldCell* cell = [NSTextFieldCell new];
         [cell setFont:[OutlineView font]];
@@ -36,7 +39,7 @@
 
         [cell setMinValue:0];
         [cell setMaxValue:1073741824]; // 2^30
-        [cell setIncrement:[item[@"step"] intValue]];
+        [cell setIncrement:[parameterItem getStep]];
         [cell setAutorepeat:NO];
         [cell setValueWraps:NO];
         return cell;

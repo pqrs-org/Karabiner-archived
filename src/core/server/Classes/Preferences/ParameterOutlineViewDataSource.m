@@ -3,9 +3,9 @@
 #import "XMLCompiler.h"
 
 @interface ParameterOutlineViewDataSource ()
-@property NSMutableArray* dataSource;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
+@property XMLCompilerTree* dataSource;
 @end
 
 @implementation ParameterOutlineViewDataSource
@@ -18,59 +18,61 @@
   }
 
   if (!self.dataSource) {
-    self.dataSource = [self.xmlCompiler preferencepane_number];
+    self.dataSource = self.xmlCompiler.preferencepane_parameter;
   }
 }
 
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
   [self load:NO];
 
-  return item ? [item[@"children"] count] : [self.dataSource count];
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  return tree ? [tree.children count] : [self.dataSource.children count];
 }
 
 - (id)outlineView:(NSOutlineView*)outlineView child:(NSInteger)index ofItem:(id)item {
   [self load:NO];
 
   // ----------------------------------------
-  NSMutableArray* a = nil;
-
-  // root object
-  if (!item) {
-    a = self.dataSource;
-  } else {
-    a = item[@"children"];
-  }
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  NSArray* a = tree ? tree.children : self.dataSource.children;
 
   if ((NSUInteger)(index) >= [a count]) return nil;
   return a[index];
 }
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
-  return [item[@"children"] count] > 0;
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  NSArray* a = tree ? tree.children : self.dataSource.children;
+  return [a count] > 0;
 }
 
 - (id)outlineView:(NSOutlineView*)outlineView objectValueForTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-  NSString* identifier = item[@"identifier"];
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  ParameterItem* parameterItem = [tree castNodeToParameterItem];
+  NSString* identifier = [parameterItem getIdentifier];
 
   NSString* columnIdentifier = [tableColumn identifier];
 
   if ([columnIdentifier isEqualToString:@"name"]) {
-    return item[columnIdentifier];
+    return [parameterItem getName];
 
-  } else if ([columnIdentifier isEqualToString:@"baseunit"] ||
-             [columnIdentifier isEqualToString:@"default"]) {
-    if (!identifier) return nil;
-    return item[columnIdentifier];
+  } else if ([columnIdentifier isEqualToString:@"baseunit"]) {
+    if ([identifier length] == 0) return nil;
+    return [parameterItem getBaseUnit];
+
+  } else if ([columnIdentifier isEqualToString:@"default"]) {
+    if ([identifier length] == 0) return nil;
+    return @([parameterItem getDefaultValue]);
 
   } else if ([columnIdentifier isEqualToString:@"value"]) {
-    if (!identifier) return nil;
+    if ([identifier length] == 0) return nil;
 
     // @(12345) will be @"12,345" in view.
     // So we return NSString to show numbers without comma.
     return [[NSString alloc] initWithFormat:@"%d", [self.preferencesManager value:identifier]];
 
   } else if ([columnIdentifier isEqualToString:@"stepper"]) {
-    if (!identifier) return nil;
+    if ([identifier length] == 0) return nil;
     return @([self.preferencesManager value:identifier]);
   }
 
@@ -78,9 +80,11 @@
 }
 
 - (void)outlineView:(NSOutlineView*)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn*)tableColumn byItem:(id)item {
-  NSString* identifier = item[@"identifier"];
+  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  ParameterItem* parameterItem = [tree castNodeToParameterItem];
+  NSString* identifier = [parameterItem getIdentifier];
 
-  if (identifier) {
+  if ([identifier length] > 0) {
     NSString* columnIdentifier = [tableColumn identifier];
     if ([columnIdentifier isEqualToString:@"value"] ||
         [columnIdentifier isEqualToString:@"stepper"]) {
