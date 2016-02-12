@@ -18,6 +18,15 @@
 - (BOOL)isNameMatched:(NSString*)string;
 @end
 
+@interface ParameterItem : XMLCompilerItem
+- (NSString*)getName;
+- (NSString*)getIdentifier;
+- (NSInteger)getDefaultValue;
+- (NSInteger)getStep;
+- (NSString*)getBaseUnit;
+- (NSUInteger)getChildrenCount;
+@end
+
 @interface XMLCompilerTree : NSObject
 @property CheckboxItem* node;
 @property NSArray* children;

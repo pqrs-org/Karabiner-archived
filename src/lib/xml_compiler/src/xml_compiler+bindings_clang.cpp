@@ -284,22 +284,29 @@ const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(cons
 }
 
 // ------------------------------------------------------------
-const pqrs_xml_compiler_preferences_number_node_tree*
-pqrs_xml_compiler_get_preferences_number_node_tree_root(const pqrs_xml_compiler* p) {
-  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+namespace {
+const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_number_node>* get_number_node_tree_from_indexes(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (!xml_compiler) return nullptr;
 
-  return reinterpret_cast<const pqrs_xml_compiler_preferences_number_node_tree*>(&(xml_compiler->get_preferences_number_node_tree()));
+  auto node_tree = &(xml_compiler->get_preferences_number_node_tree());
+
+  for (size_t i = 0; i < indexes_size; ++i) {
+    if (!node_tree) return nullptr;
+
+    auto children = node_tree->get_children();
+    if (!children) return nullptr;
+    if (indexes[i] >= children->size()) return nullptr;
+
+    node_tree = ((*children)[indexes[i]]).get();
+  }
+
+  return node_tree;
+}
 }
 
-static const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_number_node>*
-cast_to_preferences_number_node_tree(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  return reinterpret_cast<const pqrs::xml_compiler::preferences_node_tree<pqrs::xml_compiler::preferences_number_node>*>(p);
-}
-
-size_t
-pqrs_xml_compiler_get_preferences_number_node_tree_children_count(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
+size_t pqrs_xml_compiler_get_preferences_number_node_tree_children_count(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_number_node_tree_from_indexes(p, indexes, indexes_size);
   if (!node_tree) return 0;
 
   auto children = node_tree->get_children();
@@ -308,59 +315,37 @@ pqrs_xml_compiler_get_preferences_number_node_tree_children_count(const pqrs_xml
   return children->size();
 }
 
-const pqrs_xml_compiler_preferences_number_node_tree*
-pqrs_xml_compiler_get_preferences_number_node_tree_child(const pqrs_xml_compiler_preferences_number_node_tree* p,
-                                                         size_t index) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
-  if (!node_tree) return nullptr;
-
-  auto children = node_tree->get_children();
-  if (!children) return nullptr;
-  if (index >= children->size()) return nullptr;
-
-  return reinterpret_cast<const pqrs_xml_compiler_preferences_number_node_tree*>(((*children)[index]).get());
-}
-
-const char*
-pqrs_xml_compiler_get_preferences_number_node_tree_name(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
+const char* pqrs_xml_compiler_get_preferences_number_node_tree_name(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_number_node_tree_from_indexes(p, indexes, indexes_size);
   if (!node_tree) return nullptr;
 
   return (node_tree->get_node()).get_name().c_str();
 }
 
-const char*
-pqrs_xml_compiler_get_preferences_number_node_tree_identifier(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
+const char* pqrs_xml_compiler_get_preferences_number_node_tree_identifier(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_number_node_tree_from_indexes(p, indexes, indexes_size);
   if (!node_tree) return nullptr;
 
-  const auto& identifier = (node_tree->get_node()).get_identifier();
-  if (identifier.empty()) return nullptr;
-
-  return identifier.c_str();
+  return (node_tree->get_node()).get_identifier().c_str();
 }
 
-int pqrs_xml_compiler_get_preferences_number_node_tree_default_value(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
+int pqrs_xml_compiler_get_preferences_number_node_tree_default_value(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_number_node_tree_from_indexes(p, indexes, indexes_size);
   if (!node_tree) return 0;
 
   return (node_tree->get_node()).get_default_value();
 }
 
-int pqrs_xml_compiler_get_preferences_number_node_tree_step(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
+int pqrs_xml_compiler_get_preferences_number_node_tree_step(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_number_node_tree_from_indexes(p, indexes, indexes_size);
   if (!node_tree) return 0;
 
   return (node_tree->get_node()).get_step();
 }
 
-const char*
-pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const pqrs_xml_compiler_preferences_number_node_tree* p) {
-  auto node_tree = cast_to_preferences_number_node_tree(p);
+const char* pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const pqrs_xml_compiler* p, size_t indexes[], size_t indexes_size) {
+  auto node_tree = get_number_node_tree_from_indexes(p, indexes, indexes_size);
   if (!node_tree) return nullptr;
 
-  const auto& base_unit = (node_tree->get_node()).get_base_unit();
-  if (base_unit.empty()) return nullptr;
-
-  return base_unit.c_str();
+  return (node_tree->get_node()).get_base_unit().c_str();
 }

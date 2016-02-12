@@ -16,6 +16,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 @end
 
 @implementation XMLCompilerItem
+
 + (void)initialize {
   xmlCompilerItemId_ = 0;
   xmlCompilerItemIdQueue_ = dispatch_queue_create("org.pqrs.Karabiner.XMLCompiler.xmlCompilerItemIdQueue_", NULL);
@@ -61,6 +62,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
     self.indexes = NULL;
   }
 }
+
 @end
 
 @implementation CheckboxItem
@@ -108,6 +110,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 @end
 
 @implementation CheckboxItemWithStaticData
+
 - (NSString*)getName {
   return self.name ? self.name : @"";
 }
@@ -126,6 +129,38 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 - (BOOL)isNameMatched:(NSString*)string {
   return YES;
 }
+
+@end
+
+@implementation ParameterItem
+
+- (NSString*)getName {
+  const char* value = pqrs_xml_compiler_get_preferences_number_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  return value ? @(value) : @"";
+}
+
+- (NSString*)getIdentifier {
+  const char* value = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  return value ? @(value) : @"";
+}
+
+- (NSInteger)getDefaultValue {
+  return pqrs_xml_compiler_get_preferences_number_node_tree_default_value(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+}
+
+- (NSInteger)getStep {
+  return pqrs_xml_compiler_get_preferences_number_node_tree_step(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+}
+
+- (NSString*)getBaseUnit {
+  const char* value = pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+  return value ? @(value) : @"";
+}
+
+- (NSUInteger)getChildrenCount {
+  return pqrs_xml_compiler_get_preferences_number_node_tree_children_count(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
+}
+
 @end
 
 @implementation XMLCompilerTree
@@ -193,54 +228,25 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   return children;
 }
 
-+ (NSMutableArray*)build_preferencepane_number:(const pqrs_xml_compiler_preferences_number_node_tree*)node_tree {
-  if (!node_tree) return nil;
-
-  size_t size = pqrs_xml_compiler_get_preferences_number_node_tree_children_count(node_tree);
+- (NSMutableArray*)build_preferencepane_number:(ParameterItem*)parent {
+  size_t size = [parent getChildrenCount];
   if (size == 0) return nil;
 
   NSMutableArray* array = [NSMutableArray new];
 
   for (size_t i = 0; i < size; ++i) {
-    const pqrs_xml_compiler_preferences_number_node_tree* child =
-        pqrs_xml_compiler_get_preferences_number_node_tree_child(node_tree, i);
-    if (!child) continue;
+    ParameterItem* parameterItem = [[ParameterItem alloc] initWithParent:pqrs_xml_compiler_ parent:parent index:i];
 
     // ----------------------------------------
     // making dictionary
     NSMutableDictionary* dict = [NSMutableDictionary new];
+    dict[@"name"] = [parameterItem getName];
+    dict[@"identifier"] = [parameterItem getIdentifier];
+    dict[@"default"] = [[NSString alloc] initWithFormat:@"%ld", [parameterItem getDefaultValue]];
+    dict[@"step"] = @([parameterItem getStep]);
+    dict[@"baseunit"] = [parameterItem getBaseUnit];
 
-    {
-      const char* name = pqrs_xml_compiler_get_preferences_number_node_tree_name(child);
-      if (name) {
-        dict[@"name"] = @(name);
-      }
-    }
-    {
-      const char* identifier = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(child);
-      if (identifier) {
-        dict[@"identifier"] = @(identifier);
-      }
-    }
-    {
-      int default_value = pqrs_xml_compiler_get_preferences_number_node_tree_default_value(child);
-
-      // @(12345) will be @"12,345" in view.
-      // So we return NSString to show numbers without comma.
-      dict[@"default"] = [[NSString alloc] initWithFormat:@"%d", default_value];
-    }
-    {
-      int step = pqrs_xml_compiler_get_preferences_number_node_tree_step(child);
-      dict[@"step"] = @(step);
-    }
-    {
-      const char* base_unit = pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(child);
-      if (base_unit) {
-        dict[@"baseunit"] = @(base_unit);
-      }
-    }
-
-    NSMutableArray* a = [self build_preferencepane_number:child];
+    NSMutableArray* a = [self build_preferencepane_number:parameterItem];
     if (a) {
       dict[@"children"] = a;
     }
@@ -325,10 +331,8 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
     // build preferencepane_number_
     {
-      const pqrs_xml_compiler_preferences_number_node_tree* node_tree =
-          pqrs_xml_compiler_get_preferences_number_node_tree_root(pqrs_xml_compiler_);
-
-      preferencepane_number_ = [XMLCompiler build_preferencepane_number:node_tree];
+      ParameterItem* root = [[ParameterItem alloc] initWithParent:pqrs_xml_compiler_ parent:nil index:0];
+      preferencepane_number_ = [self build_preferencepane_number:root];
     }
   }
 
