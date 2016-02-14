@@ -3,6 +3,7 @@
 #import "CheckboxOutlineViewDelegate.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
+#import "XMLCompiler.h"
 
 @implementation CheckboxCellView
 
@@ -89,7 +90,7 @@
   NSInteger row = [self.checkboxOutlineViewDelegate.outlineView rowForView:self];
   if (row == -1) return;
 
-  NSDictionary* item = [self.checkboxOutlineViewDelegate.outlineView itemAtRow:row];
+  XMLCompilerTree* item = [self.checkboxOutlineViewDelegate.outlineView itemAtRow:row];
   if (![self.checkboxOutlineViewDelegate.outlineView isExpandable:item]) {
     return;
   }
