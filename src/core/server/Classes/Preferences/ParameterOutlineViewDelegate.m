@@ -1,3 +1,4 @@
+#import "ParameterDiffCellView.h"
 #import "ParameterOutlineViewDelegate.h"
 #import "ParameterValueCellView.h"
 #import "PreferencesManager.h"
@@ -33,10 +34,7 @@
       result.stepper.minValue = 0;
       result.stepper.maxValue = 1073741824; // 2^30
       result.stepper.increment = [parameterItem getStep];
-      // autorepeat has bug.
-      // The repeat receiver will be changed randomly.
-      // Therefore, we have to disable autorepeat.
-      result.stepper.autorepeat = NO;
+      result.stepper.autorepeat = YES;
       result.stepper.valueWraps = NO;
       result.preferencesManager = self.preferencesManager;
       result.settingIdentifier = identifier;
@@ -45,6 +43,15 @@
     } else if ([tableColumn.identifier isEqualToString:@"ParameterBaseUnitColumn"]) {
       NSTableCellView* result = [outlineView makeViewWithIdentifier:@"ParameterBaseUnitCellView" owner:self];
       result.textField.stringValue = [parameterItem getBaseUnit];
+      return result;
+
+    } else if ([tableColumn.identifier isEqualToString:@"ParameterDiffColumn"]) {
+      ParameterDiffCellView* result = [outlineView makeViewWithIdentifier:@"ParameterDiffCellView" owner:self];
+      result.preferencesManager = self.preferencesManager;
+      result.settingIdentifier = identifier;
+      result.defaultValue = [parameterItem getDefaultValue];
+      [result setObserver];
+      [result updateValue];
       return result;
     }
   }

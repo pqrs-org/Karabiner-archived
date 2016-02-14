@@ -57,6 +57,7 @@
 		34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B41846194B5C1900707306 /* MigrationUtilities.m */; };
 		34B682EA1AC845AD00915847 /* StatusMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B682E91AC845AD00915847 /* StatusMessageManager.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
+		34C157581C70146A00E6E81B /* ParameterDiffCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C157571C70146A00E6E81B /* ParameterDiffCellView.m */; };
 		34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */; };
 		34CD9CCD1BA1E67A004F0218 /* checkbox-omitted.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */; };
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
@@ -174,6 +175,8 @@
 		34B682E91AC845AD00915847 /* StatusMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageManager.m; path = Classes/StatusMessage/StatusMessageManager.m; sourceTree = "<group>"; };
 		34B893FB128E448C00BC955A /* WorkSpaceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkSpaceData.h; path = Classes/WorkSpaceData.h; sourceTree = "<group>"; };
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
+		34C157561C70146A00E6E81B /* ParameterDiffCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParameterDiffCellView.h; path = Classes/Preferences/ParameterDiffCellView.h; sourceTree = "<group>"; };
+		34C157571C70146A00E6E81B /* ParameterDiffCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParameterDiffCellView.m; path = Classes/Preferences/ParameterDiffCellView.m; sourceTree = "<group>"; };
 		34CB2F2E19565E2B00A6E0E3 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
 		34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
 		34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "checkbox-omitted.xml"; path = "Resources/checkbox-omitted.xml"; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 				34F3FF501C4E9A6B00B9B82C /* CheckboxOutlineViewDataSource.m */,
 				34F3FF581C4E9E4200B9B82C /* CheckboxOutlineViewDelegate.h */,
 				34F3FF591C4E9E4200B9B82C /* CheckboxOutlineViewDelegate.m */,
+				34C157561C70146A00E6E81B /* ParameterDiffCellView.h */,
+				34C157571C70146A00E6E81B /* ParameterDiffCellView.m */,
 				34E917011C6B481200C014BD /* ParameterOutlineView.h */,
 				34E917021C6B481200C014BD /* ParameterOutlineView.m */,
 				34D542C61C5E517600B23979 /* ParameterOutlineViewDataSource.h */,
@@ -612,6 +617,7 @@
 				34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */,
 				3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */,
 				34F3FF511C4E9A6B00B9B82C /* CheckboxOutlineViewDataSource.m in Sources */,
+				34C157581C70146A00E6E81B /* ParameterDiffCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

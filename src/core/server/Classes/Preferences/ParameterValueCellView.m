@@ -1,3 +1,4 @@
+#import "NotificationKeys.h"
 #import "ParameterValueCellView.h"
 #import "PreferencesManager.h"
 
@@ -7,7 +8,14 @@
 @implementation ParameterValueCellView
 
 - (void)updatePreferences {
-  [self.preferencesManager setValue:self.stepper.intValue forName:self.settingIdentifier];
+  NSDictionary* notificationUserInfo = @{
+    kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
+  };
+
+  [self.preferencesManager setValue:self.stepper.intValue
+                            forName:self.settingIdentifier
+                         tellToKext:YES
+               notificationUserInfo:notificationUserInfo];
 }
 
 - (IBAction)valueChangedByStepper:(id)sender {
