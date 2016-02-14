@@ -26,10 +26,8 @@
       // clicked
       [view toggle];
     }
-    self.mouseDownCheckboxCellView = view;
-  } else {
-    self.mouseDownCheckboxCellView = nil;
   }
+  self.mouseDownCheckboxCellView = nil;
 }
 
 @end
