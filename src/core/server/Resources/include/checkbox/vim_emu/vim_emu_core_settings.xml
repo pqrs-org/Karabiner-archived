@@ -120,7 +120,7 @@
         <name></name>
         <appendix>Starting from this mode</appendix>
         <appendix>ESC/Ctrl-[ (or other ChangeKeys): Enter VIM Normal mode</appendix>
-        <appendix>Ctrl-n/p: Enter Complement mode:</appendix>
+        <appendix>Ctrl-n/p: Enter Complement mode, if "Enable Vim like complement" is checked:</appendix>
         <appendix>* In Complement mode, use Ctrl-n/p to choose a candidate.</appendix>
         <appendix>* Ctrl-h to skip, ESC/Ctrl-[ to choose a candidate.</appendix>
         <appendix>With **Additional settings of Control + X at insert mode.**</appendix>

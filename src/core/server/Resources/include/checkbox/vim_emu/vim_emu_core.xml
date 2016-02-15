@@ -22,6 +22,7 @@
   </item>
   <include path="vim_emu_core_ck.xml"></include>
   <include path="vim_emu_core_emu.xml"></include>
+  <include path="vim_emu_core_complement.xml"></include>
   <include path="vim_emu_core_rm.xml"></include>
   <include path="vim_emu_core_disable.xml"></include>
   <include path="vim_emu_core_lb.xml"></include>

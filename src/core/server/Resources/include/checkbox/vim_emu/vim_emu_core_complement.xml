@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable Vim like complement</name>
+    <identifier>remap.vim_emu_complement_{{VIM_EMU_ALTCONFIG}}</identifier>
+    <only>{{VIM_EMU_ONLY_APPS}}</only>
+    <not>{{VIM_EMU_IGNORE_APPS}}</not>
+    <block> <!-- Insert Mode (OS Normal State) Begin -->
+      <!-- Insert Mode: Complement Begin -->
+      <config_not>notsave.vim_emu{{VIM_EMU_ALTCONFIG}}</config_not>
+      <autogen>
+        __KeyToKey__ KeyCode::N,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::ESCAPE,
+        {{VIM_EMU_EMU_ON}}
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::P,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::ESCAPE,
+          {{VIM_EMU_EMU_ON}}
+        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <!-- Insert Mode: Complement End -->
+    </block> <!-- Insert Mode End -->
+
+    <block> <!-- Complement Mode Begin -->
+      <config_only>notsave.vim_emu_complement{{VIM_EMU_ALTCONFIG}}</config_only>
+      <autogen>
+        __KeyToKey__ KeyCode::N,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::CURSOR_DOWN,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::P,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::CURSOR_UP,
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::H,
+        VK_CONTROL|ModifierFlag::NONE,
+        KeyCode::ESCAPE,
+        {{VIM_EMU_EMU_ON}}
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+      <autogen>
+        __KeyToKey__ KeyCode::RETURN, ModifierFlag::NONE,
+        KeyCode::RETURN,
+        {{VIM_EMU_EMU_OFF}}
+        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_complement{{VIM_EMU_ALTCONFIG}},
+      </autogen>
+    </block> <!-- Complement Mode End -->
+  </item>
+</root>
