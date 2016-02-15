@@ -1223,59 +1223,30 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                     </constraints>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="MenuBar" identifier="Item 3" id="631">
+                            <tabViewItem label="Profiles" identifier="Item 3" id="631">
                                 <view key="view" id="693">
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="1381">
-                                            <rect key="frame" x="14" y="467" width="726" height="74"/>
-                                            <view key="contentView" id="qQS-xb-LW2">
-                                                <rect key="frame" x="1" y="1" width="724" height="58"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
-                                                        <rect key="frame" x="25" y="8" width="296" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Show setting name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1187"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
-                                                        <rect key="frame" x="15" y="32" width="241" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1186"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="694" firstAttribute="top" secondItem="696" secondAttribute="bottom" constant="10" id="4n2-M8-dQA"/>
-                                                    <constraint firstItem="696" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="17" id="6Qv-SH-PE7"/>
-                                                    <constraint firstItem="694" firstAttribute="leading" secondItem="qQS-xb-LW2" secondAttribute="leading" constant="27" id="U5Z-L9-pDF"/>
-                                                    <constraint firstItem="696" firstAttribute="top" secondItem="qQS-xb-LW2" secondAttribute="top" constant="10" id="aYt-t9-ETf"/>
-                                                    <constraint firstAttribute="bottom" secondItem="694" secondAttribute="bottom" constant="10" id="bGl-oO-mnf"/>
-                                                </constraints>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                        <box autoresizesSubviews="NO" title="SettingList" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="695">
-                                            <rect key="frame" x="14" y="13" width="726" height="438"/>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
+                                            <rect key="frame" x="15" y="525" width="292" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Show profile name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="sendConfigListChangedNotification:" target="592" id="1187"/>
+                                                <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
+                                            </connections>
+                                        </button>
+                                        <box autoresizesSubviews="NO" title="Profiles" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="695">
+                                            <rect key="frame" x="14" y="13" width="726" height="495"/>
                                             <view key="contentView" id="gKU-xd-mya">
-                                                <rect key="frame" x="1" y="1" width="724" height="422"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="479"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1389">
-                                                        <rect key="frame" x="15" y="327" width="694" height="85"/>
+                                                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1389">
+                                                        <rect key="frame" x="15" y="383" width="694" height="85"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1390">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">You can make multiple profiles.
@@ -1288,13 +1259,13 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                         </textFieldCell>
                                                     </textField>
                                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700">
-                                                        <rect key="frame" x="17" y="44" width="690" height="273"/>
+                                                        <rect key="frame" x="17" y="44" width="690" height="330"/>
                                                         <clipView key="contentView" id="XEC-4K-dD2">
-                                                            <rect key="frame" x="1" y="1" width="688" height="271"/>
+                                                            <rect key="frame" x="1" y="1" width="688" height="328"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="703">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="19"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="328"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1402,13 +1373,12 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                         </box>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="1381" firstAttribute="top" secondItem="693" secondAttribute="top" constant="17" id="BCy-tU-oZC"/>
+                                        <constraint firstItem="695" firstAttribute="top" secondItem="693" secondAttribute="top" constant="50" id="4hF-gc-viP"/>
+                                        <constraint firstItem="694" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="BxI-vx-rFv"/>
                                         <constraint firstAttribute="trailing" secondItem="695" secondAttribute="trailing" constant="17" id="Lab-5q-0Dp"/>
-                                        <constraint firstItem="1381" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="SGD-9V-YAb"/>
                                         <constraint firstItem="695" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="Tfx-Hi-UTk"/>
-                                        <constraint firstItem="695" firstAttribute="top" secondItem="1381" secondAttribute="bottom" constant="20" id="i33-Hg-dHY"/>
+                                        <constraint firstItem="694" firstAttribute="top" secondItem="693" secondAttribute="top" constant="17" id="jWn-xQ-nnu"/>
                                         <constraint firstAttribute="bottom" secondItem="695" secondAttribute="bottom" constant="17" id="tWa-zY-qlJ"/>
-                                        <constraint firstAttribute="trailing" secondItem="1381" secondAttribute="trailing" constant="17" id="yLf-D0-ZQQ"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
@@ -1842,8 +1812,19 @@ Debug Mode Guide</string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
+                                            <rect key="frame" x="170" y="107" width="241" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="sendConfigListChangedNotification:" target="592" id="1186"/>
+                                                <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
+                                            </connections>
+                                        </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="NjG-52-LcZ">
-                                            <rect key="frame" x="170" y="107" width="217" height="18"/>
+                                            <rect key="frame" x="170" y="83" width="217" height="18"/>
                                             <buttonCell key="cell" type="check" title="Show icon in Dock (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="h2i-ht-GOj">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1853,7 +1834,7 @@ Debug Mode Guide</string>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="91I-rI-qK8">
-                                            <rect key="frame" x="170" y="87" width="465" height="17"/>
+                                            <rect key="frame" x="170" y="63" width="465" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" (You have to relaunch Karabiner to reflect this &quot;Show icon in Dock&quot; setting.)" id="TGg-Hn-kkg">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1861,7 +1842,7 @@ Debug Mode Guide</string>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oaZ-01-vkk">
-                                            <rect key="frame" x="166" y="49" width="158" height="32"/>
+                                            <rect key="frame" x="166" y="25" width="158" height="32"/>
                                             <buttonCell key="cell" type="push" title="Relaunch Karabiner" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dvz-Xv-isk">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1877,10 +1858,12 @@ Debug Mode Guide</string>
                                         <constraint firstItem="656" firstAttribute="leading" secondItem="S53-gC-gxA" secondAttribute="trailing" constant="10" id="3OF-6c-ZGj"/>
                                         <constraint firstItem="i8T-VC-eT0" firstAttribute="leading" secondItem="yat-77-L8T" secondAttribute="trailing" constant="10" id="3tG-U3-kJu"/>
                                         <constraint firstItem="656" firstAttribute="centerY" secondItem="S53-gC-gxA" secondAttribute="centerY" id="4Sb-lH-Mwq"/>
+                                        <constraint firstItem="NjG-52-LcZ" firstAttribute="leading" secondItem="696" secondAttribute="leading" id="4ws-A4-X6n"/>
                                         <constraint firstItem="654" firstAttribute="leading" secondItem="VyX-5h-w7l" secondAttribute="trailing" constant="10" id="5s2-vn-goj"/>
                                         <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="leading" secondItem="HyL-o3-wzh" secondAttribute="trailing" constant="10" id="6vg-sC-hK6"/>
                                         <constraint firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" constant="17" id="6vx-Cu-ULt"/>
                                         <constraint firstItem="TNB-Mo-4Qt" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="BOb-vK-GCH"/>
+                                        <constraint firstItem="696" firstAttribute="leading" secondItem="tgg-o9-eqX" secondAttribute="trailing" constant="10" id="BUl-wW-pMe"/>
                                         <constraint firstItem="fS2-h7-83w" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="BmJ-lM-Feq"/>
                                         <constraint firstItem="VyX-5h-w7l" firstAttribute="top" secondItem="TNB-Mo-4Qt" secondAttribute="bottom" constant="10" id="DXR-xm-xLh"/>
                                         <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="centerY" secondItem="HyL-o3-wzh" secondAttribute="centerY" id="F4m-ZQ-jKT"/>
@@ -1890,7 +1873,6 @@ Debug Mode Guide</string>
                                         <constraint firstItem="658" firstAttribute="leading" secondItem="659" secondAttribute="leading" id="HeT-Dc-uT9"/>
                                         <constraint firstItem="pJT-zW-wrA" firstAttribute="top" secondItem="654" secondAttribute="bottom" constant="10" id="ISv-Sz-NA2"/>
                                         <constraint firstItem="HyL-o3-wzh" firstAttribute="leading" secondItem="hOF-gU-Ds0" secondAttribute="leading" id="JFG-N9-Avf"/>
-                                        <constraint firstItem="NjG-52-LcZ" firstAttribute="centerY" secondItem="tgg-o9-eqX" secondAttribute="centerY" id="Jdk-jg-ivT"/>
                                         <constraint firstItem="Phh-vp-qNd" firstAttribute="top" secondItem="fS2-h7-83w" secondAttribute="bottom" constant="10" id="Kru-uv-zPx"/>
                                         <constraint firstItem="640" firstAttribute="leading" secondItem="641" secondAttribute="trailing" constant="8" id="LBE-1K-oAq"/>
                                         <constraint firstItem="hOF-gU-Ds0" firstAttribute="leading" secondItem="Phh-vp-qNd" secondAttribute="trailing" constant="10" id="Lou-k4-nRk"/>
@@ -1902,6 +1884,7 @@ Debug Mode Guide</string>
                                         <constraint firstItem="ZTx-N8-36Q" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="SB2-8l-4cu"/>
                                         <constraint firstItem="ee8-Fs-3nn" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="SDX-jJ-E13"/>
                                         <constraint firstItem="qZa-XW-7Lm" firstAttribute="top" secondItem="656" secondAttribute="bottom" constant="10" id="SNb-hj-MZw"/>
+                                        <constraint firstItem="NjG-52-LcZ" firstAttribute="top" secondItem="696" secondAttribute="bottom" constant="10" id="T4T-jY-u0o"/>
                                         <constraint firstItem="fS2-h7-83w" firstAttribute="top" secondItem="yat-77-L8T" secondAttribute="bottom" constant="10" id="TRq-8q-VhW"/>
                                         <constraint firstItem="dxO-dI-24Y" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="UyL-n8-pcE"/>
                                         <constraint firstItem="644" firstAttribute="top" secondItem="BRh-R3-iqY" secondAttribute="bottom" constant="10" id="VGD-br-NSZ"/>
@@ -1919,6 +1902,7 @@ Debug Mode Guide</string>
                                         <constraint firstItem="JOj-GD-zmd" firstAttribute="top" secondItem="LoB-mA-WN5" secondAttribute="bottom" constant="10" id="cIu-Mr-HhV"/>
                                         <constraint firstItem="0sJ-8e-EgS" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="cx4-9U-2NS"/>
                                         <constraint firstItem="HyL-o3-wzh" firstAttribute="top" secondItem="hOF-gU-Ds0" secondAttribute="bottom" constant="10" id="eEK-fb-Bdz"/>
+                                        <constraint firstItem="696" firstAttribute="centerY" secondItem="tgg-o9-eqX" secondAttribute="centerY" id="epy-To-9NC"/>
                                         <constraint firstItem="LoB-mA-WN5" firstAttribute="top" secondItem="641" secondAttribute="bottom" constant="10" id="f54-ey-0tg"/>
                                         <constraint firstItem="yat-77-L8T" firstAttribute="leading" secondItem="B4b-iA-pXM" secondAttribute="leading" id="f8Q-Ty-Vb2"/>
                                         <constraint firstItem="yat-77-L8T" firstAttribute="top" secondItem="B4b-iA-pXM" secondAttribute="bottom" constant="10" id="gv7-fG-t1A"/>
@@ -1940,7 +1924,6 @@ Debug Mode Guide</string>
                                         <constraint firstItem="654" firstAttribute="centerY" secondItem="VyX-5h-w7l" secondAttribute="centerY" id="tbu-Si-v30"/>
                                         <constraint firstItem="Phh-vp-qNd" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="v2U-dT-Nhz"/>
                                         <constraint firstItem="qZa-XW-7Lm" firstAttribute="leading" secondItem="656" secondAttribute="leading" id="wok-k9-XQm"/>
-                                        <constraint firstItem="NjG-52-LcZ" firstAttribute="leading" secondItem="tgg-o9-eqX" secondAttribute="trailing" constant="10" id="xuT-S9-8mc"/>
                                         <constraint firstItem="TNB-Mo-4Qt" firstAttribute="top" secondItem="644" secondAttribute="bottom" constant="10" id="xyg-LC-pz8"/>
                                         <constraint firstItem="TNB-Mo-4Qt" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="yX9-MX-wq5"/>
                                         <constraint firstItem="91I-rI-qK8" firstAttribute="top" secondItem="NjG-52-LcZ" secondAttribute="bottom" constant="5" id="yzk-nf-ItZ"/>
